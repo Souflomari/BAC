@@ -1171,10 +1171,11 @@ presse-papier, impression, typographie. Toutes avec leur test négatif joué.
 
 ## 9. Addendum du 2026-09-05 — l'arc « ce que l'item dit sans le dire »
 
-> Trois défauts, tous dans le CONTENU plutôt que dans le code, tous
-> invisibles pour tous les instruments existants, tous mesurés puis clos
-> puis gardés. Ils partagent un trait qui vaut d'être retenu : **le harnais
-> les avait sous les yeux et ne les regardait pas.**
+> Quatre défauts, tous dans le CONTENU plutôt que dans le code (le dernier
+> avec un bug de générateur en prime), tous invisibles pour tous les
+> instruments existants, tous mesurés puis clos puis gardés. Ils partagent un
+> trait qui vaut d'être retenu : **le harnais les avait sous les yeux et ne les
+> regardait pas.**
 
 ### 9.1 L'indice de longueur — le défaut que l'outil annonçait lui-même
 
@@ -1278,7 +1279,49 @@ seulement à empêcher que ça grandisse, et le cliquet le fait.
 
 **À lire :** `docs/audits/indice-absolu.md`.
 
-### 9.4 La règle de méthode que ces trois arcs ajoutent
+### 9.4 La couverture diagnostique — le moteur ne voyait rien sur une notion sur quatre
+
+**Le défaut le plus grave de la journée, et le plus silencieux.** Le seul fil
+qui relie « l'élève se trompe » à « le produit sait quoi lui proposer ensuite »
+est un champ : `misconception:` sur un distracteur. Sans lui, une mauvaise
+réponse n'est qu'un point perdu et le produit redevient un quiz.
+
+**Mesuré :** 1 017 distracteurs sur 4 855 sans aucun tag ; 47 tags pointant un
+id non déclaré ; et **17 notions sur 62 AVEUGLES** — aucune misconception n'y
+atteignant le plancher de 3 items du banc, donc jamais évaluable. La **SVT
+entière** en faisait partie.
+
+**Un bug de générateur, en prime.** Le corpus écrit aussi
+`misconception: [a, b]` (un distracteur peut exhiber deux erreurs à la fois).
+`build-learner-inputs.mjs` et son jumeau client `payload.ts` testaient
+`typeof === "string"` : ces choix ne comptaient pour rien. Résultat mesuré sur
+`pc/systemes-oscillants` : `M-OSC-RES-3` restait à 2 items dans la carte des
+planchers pendant que le décompte écrit à la main dans le fichier annonçait 4
+et `floor_met: true`. **Une vérification qui affirme sans mesurer — le mode de
+défaillance que la règle des blocs de vérification existe pour empêcher,
+déplacé d'une migration vers un générateur.**
+
+**Fait :** 1 017 → **111**, et ces 111 sont tous des `misconception: null`
+EXPLICITES, c'est-à-dire des décisions d'auteur. **Zéro omission, zéro
+fantôme, zéro notion aveugle, 416 misconceptions évaluables (contre 340).**
+Aucune erreur inventée : chaque inventaire est tiré des `feedback` déjà écrits
+sur les distracteurs.
+
+**Gardé :** `web/scripts/couverture-diagnostique.mjs --porte`, en CI. Porte
+FRANCHE sur les omissions et les fantômes ; cliquet sur le reste ; le nombre de
+misconceptions évaluables d'une notion ne peut que MONTER.
+
+**Ce qui reste — et c'est une décision d'auteur, pas un défaut :** 335
+misconceptions sont déclarées, visées, et sous le plancher de 3 items. Avec
+6 items de banc, une notion de SVT ne peut porter que deux ou trois erreurs
+évaluables. La dette est désormais EXACTE, notion par notion : `svt/soi-non-soi`
+affiche 1 évaluable et 6 sous le plancher, ce qui se lit « il manque une
+douzaine d'items ici ». Regrouper les erreurs pour faire le plancher aurait
+menti sur la pédagogie ; ça n'a pas été fait.
+
+**À lire :** `docs/audits/couverture-diagnostique.md`.
+
+### 9.5 La règle de méthode que ces quatre arcs ajoutent
 
 **Un instrument qui SIGNALE sans GARDER finit par ne plus être lu.**
 `item-stats` disait la vérité depuis des mois, dans un format qui n'obligeait
@@ -1291,6 +1334,15 @@ premier test négatif, la sonde des accents connaissait 130 formes quand la
 réparation en connaissait 600 : sur trois mots sabotés volontairement, elle
 n'en voyait qu'un. Une porte plus étroite que la réparation déclare propre ce
 qu'elle ne sait pas voir.
+
+**Troisième corollaire, venu de la couverture diagnostique : un commentaire
+honnête n'est pas une porte.** Deux fichiers du corpus documentaient
+exactement leur propre dette — « les items R0-R7/R12 antérieurs ne portent pas
+encore d'id de misconception », « SO-19, SO-20, SO-21 predate the misconception
+schéma ». Les deux disaient vrai. Les deux ont vieilli en silence pendant des
+mois, parce qu'aucune exécution ne les relisait. Ce qui n'est pas mesuré à
+chaque commit n'est pas gardé, quelle que soit la qualité de la note qui
+l'accompagne.
 
 **Second corollaire, venu de l'indice de l'absolu : deux portes qui gardent
 la même surface s'attrapent l'une l'autre, et c'est le signe qu'aucune ne

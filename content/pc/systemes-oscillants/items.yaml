@@ -1,6 +1,91 @@
 notion: systemes-oscillants
 skill_code: pc_systemes_oscillants
 misconceptions:
+  # ── LES CHAPITRES R1-R5, ENFIN COUVERTS (2026-09-05). L'inventaire ne
+  #    portait que l'amortissement et la résonance ; les 24 items du banc sur
+  #    l'oscillateur libre — isochronisme, formules de période, énergie —
+  #    étaient muets. Sept familles, tirées des distracteurs eux-mêmes.
+  - id: M-OSC-ISO-1
+    label: "Isochronisme nié : la période dépendrait de l'amplitude ou de la masse"
+    description: >-
+      L'élève fait varier la période propre avec l'écart initial (« le trajet
+      est plus long, donc l'aller-retour est plus long ») ou avec la masse
+      accrochée (« plus lourd, donc plus vite » — ou l'inverse), voire avec la
+      matière de la bille.
+    contradicts_principle: >-
+      Aux petites oscillations, la période propre est ISOCHRONE : elle ne dépend
+      pas de l'amplitude. Et selon l'oscillateur, elle dépend de $m$ et $k$
+      (pendule élastique) ou de $L$ et $g$ SEULEMENT (pendule simple, où la
+      masse se simplifie) — jamais de la matière ni de l'amplitude.
+  - id: M-OSC-FORM-1
+    label: "Formule de la période propre inversée, ou dépouillée de son 2π et de sa racine"
+    description: >-
+      L'élève écrit $T_0 = \\sqrt{m/k}$ sans le $2\\pi$, met le rapport à
+      l'envers ($\\sqrt{k/m}$, $\\sqrt{C/J}$), oublie la racine, confond
+      $\\omega_0$ et $f_0$ (facteur $2\\pi$), ou applique au pendule pesant la
+      formule du pendule simple.
+    contradicts_principle: >-
+      Une même architecture pour les quatre oscillateurs :
+      $T_0 = 2\\pi\\sqrt{\\text{inertie}/\\text{rappel}}$ — $m/k$, $L/g$,
+      $J_\\Delta/(mgd)$, $J/C$ — d'où $\\omega_0 = \\sqrt{\\text{rappel}/\\text{inertie}}$
+      et $f_0 = \\omega_0/(2\\pi)$. Inverser le rapport, perdre la racine ou le
+      $2\\pi$ change l'ordre de grandeur du résultat.
+  - id: M-OSC-RAID-1
+    label: "« Plus raide, donc plus lent »"
+    description: >-
+      L'élève raisonne sur la difficulté à déformer : un ressort plus raide, ou
+      un fil de torsion plus rigide, résisterait davantage et ralentirait donc
+      l'oscillateur. Variante : la raideur n'interviendrait pas du tout.
+    contradicts_principle: >-
+      La raideur est le terme de RAPPEL, au dénominateur de la période :
+      $T_0 = 2\\pi\\sqrt{m/k}$. Un rappel plus fort ramène plus vite vers
+      l'équilibre, donc la période DIMINUE et l'oscillateur va plus vite.
+  - id: M-OSC-EQD-1
+    label: "Équation différentielle de l'oscillateur mal posée"
+    description: >-
+      L'élève écrit un signe $-$ devant le terme de rappel, laisse un second
+      membre non nul ($mg$), ou n'écrit qu'une dérivée première.
+    contradicts_principle: >-
+      La deuxième loi de Newton projetée donne $\\ddot{x} + \\dfrac{k}{m}x = 0$ :
+      dérivée SECONDE, signe $+$ devant le terme de rappel (c'est lui qui ramène
+      vers l'équilibre), et second membre NUL sur un banc horizontal, où le
+      poids est compensé par la réaction du support.
+  - id: M-OSC-ENER-1
+    label: "Énergie de l'oscillateur mal répartie, ou mal reliée à l'amplitude"
+    description: >-
+      L'élève place l'énergie cinétique maximale aux extrémités, la croit
+      constante, confond énergie potentielle élastique et de pesanteur selon
+      l'oscillateur, fait varier $E_m$ comme l'amplitude plutôt que comme son
+      carré, ou oublie le facteur $\\frac12$.
+    contradicts_principle: >-
+      L'énergie mécanique se CONSERVE et s'échange : $E_c$ est maximale au
+      passage par l'équilibre, nulle aux extrémités, où l'énergie potentielle
+      est maximale. Cette énergie potentielle est ÉLASTIQUE pour un ressort
+      ($\\frac12 k x^2$), de PESANTEUR pour un pendule simple, de TORSION pour un
+      fil ($\\frac12 C\\theta^2$). Et $E_m \\propto X_m^2$ : doubler l'amplitude
+      quadruple l'énergie.
+  - id: M-OSC-LIBRE-1
+    label: "Un oscillateur libre sans frottement s'arrêterait — ou s'amplifierait"
+    description: >-
+      L'élève arrête le mobile à l'équilibre (« c'est là que le ressort ne tire
+      plus »), le fait s'immobiliser avant d'y arriver, ou lui fait perdre
+      (voire gagner) de l'amplitude à chaque aller-retour alors que le frottement
+      est négligeable.
+    contradicts_principle: >-
+      À l'équilibre la FORCE est nulle, pas la VITESSE : le mobile y passe à
+      vitesse maximale et le dépasse. Sans frottement, l'énergie mécanique se
+      conserve : l'amplitude reste la même d'un aller-retour à l'autre, ni
+      décroissante ni croissante.
+  - id: M-OSC-PHASE-1
+    label: "Phase à l'origine lue sans le sens du lancer"
+    description: >-
+      L'élève choisit le signe de $\\varphi$ au hasard, ou juge qu'on ne peut la
+      déterminer sans connaître d'abord l'amplitude.
+    contradicts_principle: >-
+      $\\varphi$ se lit dans les CONDITIONS INITIALES, position ET sens de la
+      vitesse : un lancer depuis l'équilibre dans le sens positif impose
+      $x(0)=0$ et $\\dot{x}(0)>0$, donc $\\varphi = -\\pi/2$. L'amplitude, elle,
+      n'intervient pas dans ce choix.
   - id: M-OSC-AMO-1
     label: "Amortissement confondu avec une dérive de la période"
     description: >-
@@ -94,6 +179,7 @@ items:
           $T_0$ est plus grande pour l'angle de $12^\circ$, car le trajet
           parcouru à chaque aller-retour est plus long.
         correct: false
+        misconception: M-OSC-ISO-1
         feedback: >
           Ce choix suppose que la période dépend de la distance parcourue,
           donc de l'amplitude. Mais $T_0 = 2\pi\sqrt{L/g}$ : l'amplitude
@@ -108,6 +194,7 @@ items:
           $T_0$ est plus petite pour l'angle de $12^\circ$, car la vitesse
           moyenne du pendule est plus grande.
         correct: false
+        misconception: M-OSC-ISO-1
         feedback: >
           Même erreur que le choix précédent, dans l'autre sens : la vitesse
           moyenne est effectivement plus grande pour un lâcher à $12^\circ$,
@@ -117,6 +204,7 @@ items:
       - id: D
         text: "On ne peut pas savoir sans connaître la masse du pendule."
         correct: false
+        misconception: M-OSC-ISO-1
         feedback: >
           La masse n'intervient pas non plus : elle se simplifie complètement
           dans l'établissement de l'équation du pendule simple (des deux
@@ -159,6 +247,7 @@ items:
           La bille de $200\ \text{g}$ met moins de temps, car elle est plus
           lourde et tombe plus vite.
         correct: false
+        misconception: M-OSC-ISO-1
         feedback: >
           C'est la même confusion masse/poids qu'en chute libre : un objet
           plus lourd ne « tombe » pas plus vite, et un pendule plus lourd
@@ -171,6 +260,7 @@ items:
           La bille de $50\ \text{g}$ met moins de temps, car elle est plus
           légère et réagit plus vite au rappel.
         correct: false
+        misconception: M-OSC-ISO-1
         feedback: >
           Une masse plus faible n'accélère pas « plus vite au rappel » ici :
           la force de rappel $-mg\sin\theta$ est elle-même proportionnelle à
@@ -182,6 +272,7 @@ items:
           Cela dépend de la matière dont sont faites les billes (acier,
           plomb...).
         correct: false
+        misconception: M-OSC-ISO-1
         feedback: >
           La nature du matériau n'intervient que par la masse (et éventuellement
           la résistance de l'air, négligée ici), et la masse s'annule
@@ -220,6 +311,7 @@ items:
       - id: B
         text: "$\\omega_0 = 5\\ \\text{rad/s}$"
         correct: false
+        misconception: M-OSC-FORM-1
         feedback: >
           Ce nombre, c'est $f_0 = 1/T_0 = 5\ \text{Hz}$ — la fréquence, pas la
           pulsation. Ce choix confond les deux grandeurs : $\omega_0$ (en
@@ -229,6 +321,7 @@ items:
       - id: C
         text: "$\\omega_0 = 0{,}20\\ \\text{rad/s}$"
         correct: false
+        misconception: M-OSC-FORM-1
         feedback: >
           Ce choix recopie directement la valeur de $T_0$ comme si
           $\omega_0 = T_0$. Ce sont deux grandeurs différentes, reliées par
@@ -237,6 +330,7 @@ items:
       - id: D
         text: "$\\omega_0 \\approx 6{,}28\\ \\text{rad/s}$"
         correct: false
+        misconception: M-OSC-FORM-1
         feedback: >
           $6{,}28 \approx 2\pi$ : ce choix s'arrête après avoir calculé « les
           radians d'un cycle complet », mais oublie de diviser par $T_0$ pour
@@ -271,6 +365,7 @@ items:
       - id: B
         text: "$f_0 = 4\\pi\\ \\text{Hz}$"
         correct: false
+        misconception: M-OSC-FORM-1
         feedback: >
           Ce choix recopie la valeur numérique de $\omega_0$ (en rad/s) et la
           renomme « Hz » sans aucune conversion. $\omega_0$ compte des
@@ -280,6 +375,7 @@ items:
       - id: C
         text: "$f_0 = 4\\ \\text{Hz}$"
         correct: false
+        misconception: M-OSC-FORM-1
         feedback: >
           Ce résultat vient d'une division par $\pi$ au lieu de $2\pi$ — la
           moitié du bon facteur a été oubliée. La relation exacte est
@@ -287,6 +383,7 @@ items:
       - id: D
         text: "$f_0 = 0{,}5\\ \\text{Hz}$"
         correct: false
+        misconception: M-OSC-FORM-1
         feedback: >
           $0{,}5\ \text{s}$ est la valeur de la PÉRIODE $T_0 = 2\pi/\omega_0$,
           pas de la fréquence. $T_0$ et $f_0$ sont reliées par
@@ -319,6 +416,7 @@ items:
       - id: B
         text: "$\\ddot{x} - \\dfrac{k}{m}x = 0$"
         correct: false
+        misconception: M-OSC-EQD-1
         feedback: >
           Erreur de signe : cette équation décrirait un écart qui s'emballe
           exponentiellement, jamais une oscillation. La force de rappel du
@@ -329,6 +427,7 @@ items:
       - id: C
         text: "$m\\ddot{x} + kx = mg$"
         correct: false
+        misconception: M-OSC-EQD-1
         feedback: >
           Ce choix ajoute un terme $mg$ comme si le poids agissait le long de
           l'axe du mouvement. Mais le ressort est horizontal : le poids et la
@@ -339,6 +438,7 @@ items:
       - id: D
         text: "$\\dot{x} + \\dfrac{k}{m}x = 0$"
         correct: false
+        misconception: M-OSC-EQD-1
         feedback: >
           Ce choix utilise la dérivée première (la vitesse) au lieu de la
           dérivée seconde (l'accélération). La deuxième loi de Newton relie
@@ -377,6 +477,7 @@ items:
         text: >-
           Au moment où l'écart $x$ est maximal (aux extrémités du mouvement).
         correct: false
+        misconception: M-OSC-ENER-1
         feedback: >
           Aux extrémités, le solide s'arrête un instant pour repartir en sens
           inverse : $\dot{x}=0$, donc $E_c=0$ à cet endroit précisément — c'est
@@ -388,6 +489,7 @@ items:
         text: >-
           $E_c$ est constante tout au long du mouvement ; seule $E_{pe}$ varie.
         correct: false
+        misconception: M-OSC-ENER-1
         feedback: >
           Si $E_c$ restait constante pendant que $E_{pe}$ varie, leur somme
           $E_m = E_c + E_{pe}$ ne serait pas constante — ce qui contredirait
@@ -400,6 +502,7 @@ items:
           Cela dépend de la phase à l'origine $\varphi$, donc ça change d'une
           expérience à l'autre.
         correct: false
+        misconception: M-OSC-ENER-1
         feedback: >
           L'INSTANT où $E_c$ est maximale dépend bien de $\varphi$ (cela se
           produit chaque fois que $x(t)=0$, ce qui arrive à des instants
@@ -435,6 +538,7 @@ items:
       - id: A
         text: "Il revient vers l'équilibre et s'y arrête définitivement, car c'est l'endroit où le ressort n'exerce plus aucune force."
         correct: false
+        misconception: M-OSC-LIBRE-1
         feedback: >
           Ce raisonnement confond « force nulle » et « vitesse nulle » : le
           chariot arrive à l'équilibre avec de la vitesse, acquise pendant
@@ -446,6 +550,7 @@ items:
       - id: C
         text: "Il revient vers l'équilibre, le dépasse, puis continue indéfiniment dans le même sens en s'éloignant de plus en plus."
         correct: false
+        misconception: M-OSC-LIBRE-1
         feedback: >
           Dès que le chariot dépasse l'équilibre, le ressort change de côté
           d'étirement, donc de sens de rappel : la force recommence
@@ -454,6 +559,7 @@ items:
       - id: D
         text: "Il ralentit progressivement en s'approchant de l'équilibre et s'arrête avant même de l'atteindre, car le ressort perd de la force à mesure qu'il se détend."
         correct: false
+        misconception: M-OSC-LIBRE-1
         feedback: >
           C'est l'inverse : à mesure que le chariot se rapproche de
           l'équilibre, la force de rappel diminue, mais la vitesse, elle,
@@ -488,6 +594,7 @@ items:
       - id: A
         text: "Il diminue progressivement à chaque aller-retour, même sans frottement, car le chariot « perd de l'élan » en repassant plusieurs fois par l'équilibre."
         correct: false
+        misconception: M-OSC-LIBRE-1
         feedback: >
           Rien, dans un mouvement sans frottement, ne « consomme » l'écart au
           fil des cycles : repasser par l'équilibre ne coûte rien en soi. Une
@@ -497,6 +604,7 @@ items:
       - id: B
         text: "Il ne peut pas rester le même indéfiniment : aucun mouvement ne peut se répéter sans une cause extérieure qui l'entretient en permanence."
         correct: false
+        misconception: M-OSC-LIBRE-1
         feedback: >
           C'est vrai pour un système réellement freiné (il faudrait alors un
           dispositif d'entretien pour compenser les pertes) — mais ici, le
@@ -509,6 +617,7 @@ items:
       - id: D
         text: "Il augmente à chaque aller-retour, le ressort « emmagasinant » de plus en plus d'énergie au fil des cycles."
         correct: false
+        misconception: M-OSC-LIBRE-1
         feedback: >
           Le ressort ne reçoit aucun apport d'énergie supplémentaire entre
           les allers-retours : il n'y a ici ni frottement qui dissipe, ni
@@ -539,6 +648,7 @@ items:
       - id: A
         text: "Plus lentement, car un ressort plus raide est plus difficile à déformer, ce qui ralentit davantage le mouvement."
         correct: false
+        misconception: M-OSC-RAID-1
         feedback: >
           « Difficile à déformer » décrit l'intensité de la force nécessaire
           pour étirer le ressort d'un écart donné, pas la vitesse du
@@ -549,6 +659,7 @@ items:
       - id: B
         text: "Pareil, car la raideur du ressort n'intervient pas dans la durée d'un aller-retour, seule la masse compte."
         correct: false
+        misconception: M-OSC-RAID-1
         feedback: >
           C'est le rôle de la masse dans le pendule simple (elle s'annule)
           qu'on étend ici à tort au ressort. Pour le pendule élastique, la
@@ -558,6 +669,7 @@ items:
       - id: C
         text: "Cela dépend de l'amplitude du lâcher : pour un petit écart, plus raide va plus vite ; pour un grand écart, l'effet s'inverse."
         correct: false
+        misconception: M-OSC-RAID-1
         feedback: >
           La durée d'un aller-retour d'un pendule élastique ne dépend jamais
           de l'amplitude du lâcher (on le vérifiera précisément dans les
@@ -593,6 +705,7 @@ items:
       - id: A
         text: "$T_0 = \\sqrt{m/k} = \\sqrt{0{,}25/100} = 0{,}05\\ \\text{s}$"
         correct: false
+        misconception: M-OSC-FORM-1
         feedback: >
           Le facteur $2\pi$ a été oublié : $T_0 = 2\pi\sqrt{m/k}$, pas
           $\sqrt{m/k}$ seul. Le rapport $\sqrt{m/k}$ donne une durée
@@ -604,6 +717,7 @@ items:
       - id: C
         text: "$T_0 = 2\\pi\\sqrt{k/m} \\approx 2\\pi \\times 20 \\approx 125{,}7\\ \\text{s}$"
         correct: false
+        misconception: M-OSC-FORM-1
         feedback: >
           Le rapport est inversé : c'est $\sqrt{m/k}$ qui figure dans $T_0$,
           pas $\sqrt{k/m}$ (c'est ce dernier rapport qui donne $\omega_0$,
@@ -613,6 +727,7 @@ items:
       - id: D
         text: "$T_0 = k/m = 400\\ \\text{s}$"
         correct: false
+        misconception: M-OSC-FORM-1
         feedback: >
           Ce calcul confond $\omega_0^2 = k/m$ avec $T_0$ lui-même : il
           manque à la fois la racine carrée et le facteur $2\pi$. $k/m$
@@ -643,6 +758,7 @@ items:
       - id: A
         text: "$T_0$ est plus grande pour le lancer à $6\\ \\text{cm}$, car le chariot doit parcourir une plus grande distance à chaque aller-retour."
         correct: false
+        misconception: M-OSC-ISO-1
         feedback: >
           Un plus grand écart signifie un plus grand trajet, mais aussi une
           force de rappel (et donc une vitesse) proportionnellement plus
@@ -652,6 +768,7 @@ items:
       - id: B
         text: "On ne peut pas savoir sans connaître $\\varphi$ dans chaque cas."
         correct: false
+        misconception: M-OSC-ISO-1
         feedback: >
           $\varphi$ change bien d'un lancer à l'autre (c'est un paramètre
           fixé par les conditions initiales), mais ce n'est pas parce qu'un
@@ -664,6 +781,7 @@ items:
       - id: D
         text: "$T_0$ est plus petite pour le lancer à $6\\ \\text{cm}$, car un plus grand écart initial provoque une force de rappel plus grande dès le départ, donc un retour plus rapide."
         correct: false
+        misconception: M-OSC-ISO-1
         feedback: >
           La force de rappel est effectivement plus grande dès le départ
           pour un plus grand écart — mais elle doit aussi ramener le chariot
@@ -698,6 +816,7 @@ items:
       - id: A
         text: "$\\varphi = \\pi/2$"
         correct: false
+        misconception: M-OSC-PHASE-1
         feedback: >
           $\cos\varphi = 0$ admet deux solutions, $\varphi=\pi/2$ ou
           $\varphi=-\pi/2$ : ce choix retient la première sans vérifier
@@ -707,6 +826,7 @@ items:
       - id: B
         text: "$\\varphi = 0$"
         correct: false
+        misconception: M-OSC-PHASE-1
         feedback: >
           $\varphi=0$ correspond au cas d'un lâcher sans vitesse depuis
           l'écart maximal ($x(0)=X_m$, $v(0)=0$), déjà rencontré dans la
@@ -715,6 +835,7 @@ items:
       - id: C
         text: "On ne peut pas déterminer $\\varphi$ sans connaître d'abord $X_m$."
         correct: false
+        misconception: M-OSC-PHASE-1
         feedback: >
           Ce n'est pas l'ordre de résolution : $x(0)=X_m\cos\varphi=0$
           impose déjà $\cos\varphi=0$ (donc $\varphi=\pm\pi/2$) sans
@@ -750,6 +871,7 @@ items:
       - id: A
         text: "Oui, car tout pendule qui oscille sous l'effet de la pesanteur, quelle que soit sa forme, obéit à la même formule $2\\pi\\sqrt{L/g}$ avec $L$ la distance de l'axe au centre de gravité."
         correct: false
+        misconception: M-OSC-FORM-1
         feedback: >
           Cette formule est un cas particulier, valable seulement quand
           toute la masse est concentrée en un point (le pendule simple).
@@ -763,6 +885,7 @@ items:
       - id: C
         text: "Oui, à la seule condition de remplacer $L$ par le moment d'inertie $J_\\Delta$ directement dans la formule, ce qui donne $T_0 = 2\\pi\\sqrt{J_\\Delta/g}$."
         correct: false
+        misconception: M-OSC-FORM-1
         feedback: >
           Ce n'est pas une simple substitution de $L$ par $J_\Delta$ : la
           formule correcte, $T_0=2\pi\sqrt{J_\Delta/(mgd)}$, fait intervenir
@@ -771,6 +894,7 @@ items:
       - id: D
         text: "Non, la période propre du pendule pesant ne dépend d'aucune des grandeurs $m$, $g$, $J_\\Delta$ ou $d$ prises séparément, seulement de la forme géométrique globale du solide."
         correct: false
+        misconception: M-OSC-FORM-1
         feedback: >
           C'est l'inverse : $T_0=2\pi\sqrt{J_\Delta/(mgd)}$ est construite
           exactement à partir de ces quatre grandeurs. La « forme
@@ -803,6 +927,7 @@ items:
       - id: A
         text: "$T_0 = 2\\pi\\sqrt{C/J}$"
         correct: false
+        misconception: M-OSC-FORM-1
         feedback: >
           Le rapport est inversé : c'est $J$ (l'« inertie ») qui doit être
           au numérateur et $C$ (le « rappel ») au dénominateur, exactement
@@ -811,6 +936,7 @@ items:
       - id: B
         text: "$T_0 = 2\\pi\\sqrt{m/C}$"
         correct: false
+        misconception: M-OSC-FORM-1
         feedback: >
           Ce choix remplace le moment d'inertie $J$ par la masse $m$ toute
           seule, comme si l'inertie en rotation ne dépendait que de la
@@ -823,6 +949,7 @@ items:
       - id: D
         text: "$T_0 = 2\\pi\\sqrt{J/(mgd)}$"
         correct: false
+        misconception: M-OSC-FORM-1
         feedback: >
           Cette formule est celle du pendule pesant, où le rappel vient de
           la pesanteur. Ici, le poids du solide et la réaction du fil
@@ -852,6 +979,7 @@ items:
       - id: A
         text: "Plus lentement (période $T_0$ plus grande), car un fil plus raide résiste davantage à la rotation, ce qui ralentit le mouvement."
         correct: false
+        misconception: M-OSC-RAID-1
         feedback: >
           « Résister à la rotation » décrit ici un moment de rappel plus
           fort, pas un frein qui ralentit la vitesse angulaire. Au
@@ -861,6 +989,7 @@ items:
       - id: B
         text: "Cela ne change rien : $T_0$ ne dépend que de $J$, pas de $C$."
         correct: false
+        misconception: M-OSC-RAID-1
         feedback: >
           $T_0 = 2\pi\sqrt{J/C}$ contient bien $C$ au dénominateur :
           augmenter $C$ diminue $T_0$. Ce choix étend à tort au pendule de
@@ -869,6 +998,7 @@ items:
       - id: C
         text: "Cela dépend de l'angle de torsion initial : pour un petit angle, un $C$ plus grand accélère ; pour un grand angle, l'effet peut s'inverser."
         correct: false
+        misconception: M-OSC-RAID-1
         feedback: >
           L'effet de $C$ sur $T_0$ ne dépend jamais de l'amplitude du
           lâcher : $\theta_m$ n'apparaît pas dans $T_0=2\pi\sqrt{J/C}$, tout
@@ -906,6 +1036,7 @@ items:
       - id: B
         text: "$\\omega_0 = \\sqrt{J/C} = \\sqrt{2{,}5\\times10^{-3}} \\approx 0{,}05\\ \\text{rad/s}$"
         correct: false
+        misconception: M-OSC-FORM-1
         feedback: >
           Le rapport est inversé : $\omega_0 = \sqrt{C/J}$ (le rappel au
           numérateur, l'inertie au dénominateur), pas $\sqrt{J/C}$ — ce
@@ -913,6 +1044,7 @@ items:
       - id: C
         text: "$\\omega_0 = C/J = 400\\ \\text{rad/s}$"
         correct: false
+        misconception: M-OSC-FORM-1
         feedback: >
           La racine carrée a été oubliée : $C/J = 400$ est $\omega_0^2$ (en
           $\text{rad}^2/\text{s}^2$), pas $\omega_0$ lui-même. Il faut
@@ -920,6 +1052,7 @@ items:
       - id: D
         text: "$\\omega_0 = 2\\pi\\sqrt{C/J} = 2\\pi\\times20 \\approx 125{,}7\\ \\text{rad/s}$"
         correct: false
+        misconception: M-OSC-FORM-1
         feedback: >
           Le facteur $2\pi$ n'a rien à faire ici : $\omega_0=\sqrt{C/J}$
           directement, sans $2\pi$. C'est $T_0=2\pi/\omega_0$ qui contient
@@ -950,6 +1083,7 @@ items:
       - id: A
         text: "$E_m' = 0{,}08\\ \\text{J}$ (inchangée), car l'énergie mécanique ne dépend que de $k$, pas de l'amplitude."
         correct: false
+        misconception: M-OSC-ENER-1
         feedback: >
           C'est la période $T_0$ qui ne dépend pas de l'amplitude
           (isochronisme), pas l'énergie mécanique. $E_m = \frac{1}{2}kX_m^2$
@@ -961,6 +1095,7 @@ items:
       - id: C
         text: "$E_m' = 0{,}02\\ \\text{J}$ (divisée par 4), car en doublant l'amplitude, on double la distance à parcourir donc on divise le temps, et l'énergie par 4."
         correct: false
+        misconception: M-OSC-ENER-1
         feedback: >
           Ce raisonnement mélange plusieurs grandeurs sans lien direct avec
           $E_m$ : la formule est simplement $E_m=\frac{1}{2}kX_m^2$. Doubler
@@ -969,6 +1104,7 @@ items:
       - id: D
         text: "$E_m' = 0{,}16\\ \\text{J}$ (doublée), car l'énergie mécanique est proportionnelle à l'amplitude."
         correct: false
+        misconception: M-OSC-ENER-1
         feedback: >
           $E_m=\frac{1}{2}kX_m^2$ est proportionnelle au carré de
           l'amplitude, pas à l'amplitude elle-même. Doubler $X_m$ multiplie
@@ -995,6 +1131,7 @@ items:
       - id: A
         text: "L'énergie potentielle élastique $E_{pe} = \\frac{1}{2}k\\theta^2$, en remplaçant $x$ par $\\theta$ et $k$ par $g/L$, comme le suggère l'équation différentielle du mouvement."
         correct: false
+        misconception: M-OSC-ENER-1
         feedback: >
           Cette substitution de variables ($x\to\theta$, $k/m\to g/L$) est
           légitime pour l'équation différentielle, où les deux systèmes ont
@@ -1004,6 +1141,7 @@ items:
       - id: B
         text: "Aucune énergie potentielle n'intervient ici : seule l'énergie cinétique compte, puisque le pendule simple ne comporte aucun ressort."
         correct: false
+        misconception: M-OSC-ENER-1
         feedback: >
           C'est vrai qu'il n'y a pas d'énergie élastique (pas de ressort) —
           mais ce n'est pas la même chose que « aucune énergie
@@ -1015,6 +1153,7 @@ items:
       - id: D
         text: "L'énergie potentielle électrique, par analogie directe avec le condensateur du circuit LC étudié au chapitre précédent."
         correct: false
+        misconception: M-OSC-ENER-1
         feedback: >
           L'analogie avec le circuit LC concerne la forme de l'équation
           différentielle, pas la nature physique du système : un pendule
@@ -1049,6 +1188,7 @@ items:
       - id: A
         text: "Le régime apériodique, puisque le mouvement du solide finit malgré tout par s'arrêter complètement."
         correct: false
+        misconception: M-OSC-AMO-2
         feedback: >
           Le régime apériodique se reconnaît à l'absence totale
           d'oscillation : le solide revient vers l'équilibre sans jamais le
@@ -1059,6 +1199,7 @@ items:
       - id: B
         text: "Le régime périodique, puisqu'un intervalle de temps parfaitement régulier subsiste entre deux passages successifs aux extrêmes."
         correct: false
+        misconception: M-OSC-AMO-2
         feedback: >
           La régularité de l'intervalle est un indice, mais le régime
           périodique exige en plus une amplitude constante (frottement quasi
@@ -1067,6 +1208,7 @@ items:
       - id: C
         text: "On ne peut identifier aucun régime sans connaître au préalable la valeur exacte du coefficient de frottement $h$."
         correct: false
+        misconception: M-OSC-AMO-2
         feedback: >
           Le régime se reconnaît sur son comportement observable (intervalle
           régulier + amplitude qui décroît), pas sur la valeur numérique de
@@ -1109,6 +1251,7 @@ items:
       - id: B
         text: "$T$ diminue nettement : davantage de frottement fait osciller le système plus vite qu'auparavant."
         correct: false
+        misconception: M-OSC-AMO-1
         feedback: >
           C'est le frottement qui gouverne l'amortissement (la vitesse à
           laquelle l'amplitude décroît), pas la fréquence des oscillations
@@ -1117,6 +1260,7 @@ items:
       - id: C
         text: "$T$ augmente nettement : davantage de frottement freine le mouvement, si bien que chaque aller-retour prend plus de temps."
         correct: false
+        misconception: M-OSC-AMO-1
         feedback: >
           Le frottement dissipe de l'énergie (donc réduit l'amplitude)
           plutôt que de ralentir fondamentalement le rythme des passages par
@@ -1126,6 +1270,7 @@ items:
       - id: D
         text: "$T$ devient égale à $2\\pi\\sqrt{h/k}$, une nouvelle expression qui fait intervenir le coefficient $h$."
         correct: false
+        misconception: M-OSC-AMO-1
         feedback: >
           Aucune formule de ce type n'a été établie dans la leçon : établir
           l'équation différentielle amortie s'arrête volontairement là
@@ -1161,6 +1306,7 @@ items:
       - id: A
         text: "Il impose sa propre fréquence au balancier, comme le ferait un moteur qui entraînerait le mouvement depuis l'extérieur du mécanisme."
         correct: false
+        misconception: M-OSC-RES-3
         feedback: >
           L'entretien ne pilote pas la fréquence : il compense exactement
           l'énergie perdue par frottement, sans imposer de rythme. Le
@@ -1173,6 +1319,7 @@ items:
       - id: C
         text: "Sans ce dispositif, le balancier oscillerait bien plus vite ; il ralentit donc le mouvement afin de le rendre parfaitement régulier tout au long de la journée."
         correct: false
+        misconception: M-OSC-RES-3
         feedback: >
           Le dispositif ne joue pas le rôle d'un frein régulateur : sans
           lui, le balancier ne ralentirait pas ni n'accélérerait, il
@@ -1182,6 +1329,7 @@ items:
       - id: D
         text: "Il n'a aucun effet sur les oscillations du balancier ; son seul rôle est de faire avancer les aiguilles de la montre."
         correct: false
+        misconception: M-OSC-RES-3
         feedback: >
           C'est l'inverse : sans ce dispositif, les frottements internes
           amortiraient et arrêteraient le balancier, et la montre
@@ -1222,6 +1370,7 @@ items:
       - id: A
         text: "L'affirmation est vraie : en doublant la masse, $T_0$ double aussi, ce qui donnerait, pour la masse initiale, une valeur de référence $T_0 \\approx 6{,}28\\ \\text{s}$."
         correct: false
+        misconception: M-OSC-ISO-1
         feedback: >
           $T_0 = 2\pi\sqrt{L/g}$ ne contient pas la masse : elle se
           simplifie complètement dans l'établissement de l'équation du
@@ -1232,6 +1381,7 @@ items:
       - id: B
         text: "L'affirmation est fausse, mais $T_0 \\approx 0{,}5\\ \\text{s}$ (on a confondu $T_0$ avec $\\sqrt{L/g}$, en oubliant le facteur $2\\pi$ entièrement)."
         correct: false
+        misconception: M-OSC-FORM-1
         feedback: >
           Le rejet de l'affirmation sur la masse est correct, mais le
           calcul numérique oublie complètement le facteur $2\pi$ :
@@ -1243,6 +1393,7 @@ items:
       - id: D
         text: "L'affirmation est fausse, mais $T_0 \\approx 1{,}57\\ \\text{s}$ (on a calculé $\\pi\\sqrt{L/g}$ au lieu de $2\\pi\\sqrt{L/g}$)."
         correct: false
+        misconception: M-OSC-FORM-1
         feedback: >
           Le rejet de l'affirmation sur la masse est correct, mais il
           manque un facteur 2 dans le calcul : c'est $2\pi\sqrt{L/g}$, pas
@@ -1282,6 +1433,7 @@ items:
       - id: A
         text: "$E_m = 1{,}8\\times10^{-2}\\ \\text{J}$ (calculée comme $C\\theta_0^2$, sans le facteur $\\frac12$)."
         correct: false
+        misconception: M-OSC-ENER-1
         feedback: >
           Le facteur $\frac12$ a été oublié : $E_{p,tor}=\frac{1}{2}C\theta_0^2$,
           exactement comme $E_{pe}=\frac{1}{2}kx^2$ pour le ressort. Sans ce
@@ -1289,6 +1441,7 @@ items:
       - id: B
         text: "$E_m = 3{,}0\\times10^{-2}\\ \\text{J}$ (calculée comme $\\frac{1}{2}C\\theta_0$, avec $\\theta_0$ à la puissance 1)."
         correct: false
+        misconception: M-OSC-ENER-1
         feedback: >
           L'énergie potentielle varie comme le carré de l'écart, pas
           proportionnellement à l'écart : il faut $\theta_0^2$, pas
@@ -1297,6 +1450,7 @@ items:
       - id: C
         text: "$E_m = \\frac{1}{2}J\\theta_0^2 = 2{,}25\\times10^{-4}\\ \\text{J}$."
         correct: false
+        misconception: M-OSC-ENER-1
         feedback: >
           Ce calcul utilise $J$ (la grandeur d'« inertie », qui
           interviendrait dans une énergie cinétique, $E_c=\frac12
@@ -1338,6 +1492,7 @@ items:
       - id: B
         text: "Pendule élastique : $k/m$ ; pendule simple : $L/g$ ; pendule pesant : $J_\\Delta/(mgd)$ ; pendule de torsion : $J/C$."
         correct: false
+        misconception: M-OSC-FORM-1
         feedback: >
           Chaque rapport (sauf celui du pendule élastique) est inversé :
           « inertie » doit toujours être au dénominateur et « rappel » au
@@ -1346,6 +1501,7 @@ items:
       - id: C
         text: "Pendule élastique : $k/m$ ; pendule simple : $g/L$ ; pendule pesant : $g/L$ (comme le pendule simple) ; pendule de torsion : $C/J$."
         correct: false
+        misconception: M-OSC-FORM-1
         feedback: >
           Le pendule pesant ne se réduit à $g/L$ que dans le cas particulier
           d'une masse ponctuelle. Pour un solide étendu quelconque, il faut
@@ -1355,6 +1511,7 @@ items:
       - id: D
         text: "Pendule élastique : $k/m$ ; pendule simple : $g/L$ ; pendule pesant : $mgd/J_\\Delta$ ; pendule de torsion : $J/C$."
         correct: false
+        misconception: M-OSC-FORM-1
         feedback: >
           Les trois premiers rapports sont corrects, mais celui du pendule
           de torsion est inversé : c'est $J$ (l'inertie) qui doit être au

@@ -33,6 +33,10 @@
  *   • sous-plancher — couvertes par 1 ou 2 items : déclarées, visées, et
  *                   pourtant inévaluables. C'est la dette la plus trompeuse,
  *                   parce qu'elle a l'air d'un travail fait.
+ *   • omissions   — sans tag MOINS les nuls explicites : les distracteurs dont
+ *                   le champ manque tout court. Gardé par une PORTE FRANCHE à
+ *                   zéro depuis le 2026-09-05 : le corpus entier a été passé en
+ *                   revue, donc un champ absent est désormais toujours un oubli.
  *   • AVEUGLE     — aucune misconception au plancher. Sur cette notion, le
  *                   modèle ne dira jamais rien de l'élève.
  *
@@ -172,7 +176,8 @@ for (const matiere of fs
     notions.push({
       matiere, slug, cle,
       itemsBanc: itemsBanc.length, itemsChk: itemsChk.length,
-      declarees: declarees.size, distracteurs, sansTag, nulExplicite, fantomes,
+      declarees: declarees.size, distracteurs, sansTag, nulExplicite,
+      omissions: sansTag - nulExplicite, fantomes,
       plancher, sousPlancher, orphelines,
       aveugle: plancher === 0,
     });
@@ -271,14 +276,23 @@ for (const n of notions) {
   if (!ref) {
     // Notion NEUVE : elle naît sans dette. Un contenu écrit aujourd'hui n'a
     // aucune raison de livrer des distracteurs muets.
-    if (n.sansTag > 0)
-      echecs.push(`${n.cle} — notion NEUVE avec ${n.sansTag} distracteur(s) sans tag misconception.`);
+    if (n.omissions > 0)
+      echecs.push(`${n.cle} — notion NEUVE avec ${n.omissions} distracteur(s) sans champ misconception.`);
     if (n.fantomes > 0)
       echecs.push(`${n.cle} — notion NEUVE avec ${n.fantomes} tag(s) non déclaré(s) dans son inventaire.`);
     continue;
   }
   if (n.sansTag > ref.sansTag)
     echecs.push(`${n.cle} — distracteurs SANS TAG : ${ref.sansTag} → ${n.sansTag}.`);
+  // PORTE FRANCHE, pas cliquet : depuis le 2026-09-05, tout distracteur du
+  // corpus porte soit un tag, soit un `misconception: null` EXPLICITE. Un
+  // champ simplement ABSENT est donc toujours un oubli, jamais une décision —
+  // et il n'y a plus de dette à amortir sur cette ligne.
+  if (n.omissions > 0)
+    echecs.push(
+      `${n.cle} — ${n.omissions} distracteur(s) sans champ \`misconception\`. ` +
+        `Écrire le tag, ou \`misconception: null\` si le distracteur ne porte volontairement aucune erreur nommée.`
+    );
   if (n.fantomes > ref.fantomes)
     echecs.push(`${n.cle} — tags FANTÔMES (non déclarés) : ${ref.fantomes} → ${n.fantomes}.`);
   if (n.plancher < ref.plancher)
