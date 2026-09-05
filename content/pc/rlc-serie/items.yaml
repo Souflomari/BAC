@@ -69,19 +69,19 @@ items:
         text: "Elles persistent sans s'amortir : le circuit entre en régime périodique."
         correct: true
       - id: B
-        text: "Elles s'arrêtent car plus rien ne les entretient."
+        text: "Elles s'arrêtent, car plus rien n'apporte l'énergie qui les entretenait."
         correct: false
         misconception: mc.physics.rlc_serie.resistance-entretient-oscillations
         also_reveals: []
         feedback: "Ce raisonnement suppose que R est le moteur des oscillations. Or R ne fait que dissiper l'énergie par effet Joule ; supprimer R supprime l'amortissement, pas les oscillations."
       - id: C
-        text: "Elles s'amortissent plus vite."
+        text: "Elles s'amortissent bien plus vite qu'auparavant et disparaissent."
         correct: false
         misconception: mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
         also_reveals: []
         feedback: "C'est l'inverse : moins de R signifie moins d'amortissement, pas plus. L'amortissement est proportionnel à la puissance dissipée $P = Ri^2$."
       - id: D
-        text: "Leur période $T_0$ augmente fortement."
+        text: "Leur période propre $T_0$ augmente fortement avec la baisse de $R$."
         correct: false
         misconception: null
         also_reveals: []
@@ -112,19 +112,19 @@ items:
         text: "Aucun élément extérieur : l'énergie initiale du condensateur s'échange entre C et L."
         correct: true
       - id: B
-        text: "La résistance (effet Joule)."
+        text: "La résistance du circuit, par effet Joule, qui restitue l'énergie dissipée."
         correct: false
         misconception: mc.physics.rlc_serie.resistance-entretient-oscillations
         also_reveals: []
         feedback: "Il n'y a pas de résistance dans ce circuit. Et même si elle existait, R ne fournirait rien : elle ne ferait que dissiper de l'énergie."
       - id: C
-        text: "La bobine, car $E_L = \\frac{1}{2}Li^2$ est l'énergie motrice."
+        text: "La bobine, car l'énergie magnétique $E_L = \\frac{1}{2}Li^2$ est ici l'énergie motrice."
         correct: false
         misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
         also_reveals: []
         feedback: "La bobine stocke de l'énergie magnétique, mais elle ne la crée pas. Elle reçoit l'énergie du condensateur et la lui renvoie."
       - id: D
-        text: "Le circuit puise l'énergie dans le champ magnétique terrestre."
+        text: "Le circuit puise en permanence son énergie dans le champ magnétique terrestre."
         correct: false
         misconception: null
         also_reveals: []
@@ -153,19 +153,19 @@ items:
         text: "Non. Augmenter $R$ accélère la dissipation d'énergie ($P = Ri^2$) et rend l'amortissement plus rapide ; pour prolonger les oscillations il faut **diminuer** $R$."
         correct: true
       - id: B
-        text: "Oui. Une plus grande résistance fournit plus d'énergie aux oscillations."
+        text: "Oui. Une plus grande résistance fournit davantage d'énergie aux oscillations, qui durent donc plus longtemps avant de s'éteindre."
         correct: false
         misconception: mc.physics.rlc_serie.resistance-entretient-oscillations
         also_reveals: []
         feedback: "R ne fournit jamais d'énergie : la puissance dissipée par R est $P = Ri^2 \\geq 0$, toujours positive, donc toujours perdue en chaleur."
       - id: C
-        text: "Oui. Une plus grande résistance augmente la fréquence et les oscillations semblent plus nombreuses."
+        text: "Oui. Une plus grande résistance augmente la fréquence des oscillations, qui semblent alors plus nombreuses sur la même durée d'observation."
         correct: false
         misconception: mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
         also_reveals: []
         feedback: "R n'agit pas sur la fréquence. Augmenter R amplifie l'amortissement ; les oscillations meurent plus vite, pas plus vite en fréquence."
       - id: D
-        text: "Non. R n'a aucun effet sur les oscillations libres."
+        text: "Non. La résistance $R$ n'a aucun effet sur des oscillations libres : seules $L$ et $C$ fixent leur amplitude comme leur durée."
         correct: false
         misconception: null
         also_reveals: []
@@ -279,19 +279,19 @@ items:
         text: "$E$ diminue car une partie est convertie en chaleur dans R par effet Joule ($P = Ri^2$). L'échange C↔L continue à chaque oscillation."
         correct: true
       - id: B
-        text: "$E$ diminue car les composants consomment et détruisent l'énergie."
+        text: "$E$ diminue car les composants du circuit consomment et détruisent réellement une partie de l'énergie à chaque cycle."
         correct: false
         misconception: mc.physics.rlc_serie.energie-consommee-non-conservee
         also_reveals: []
         feedback: "L'énergie ne se détruit pas. Elle est convertie en chaleur spécifiquement dans R. C et L ne consomment rien ; ils stockent et restituent."
       - id: C
-        text: "$E$ reste constante : seule l'amplitude de $u_C$ change, pas l'énergie totale."
+        text: "$E$ reste constante : seule l'amplitude de $u_C$ change au fil du temps, l'énergie totale du circuit étant conservée."
         correct: false
         misconception: null
         also_reveals: []
         feedback: "La conservation de l'énergie totale n'est vraie que pour $R = 0$. Avec $R \\neq 0$, la dissipation Joule fait diminuer $E$ à chaque oscillation."
       - id: D
-        text: "$E$ est nulle à chaque instant où $u_C = 0$, donc l'énergie disparaît périodiquement."
+        text: "$E$ est nulle à chaque instant où $u_C = 0$, si bien que l'énergie du circuit disparaît puis réapparaît périodiquement."
         correct: false
         misconception: mc.physics.rlc_serie.energie-consommee-non-conservee
         also_reveals: [mc.physics.rlc_serie.confusion-roles-C-L-stockage]
@@ -409,19 +409,19 @@ items:
         text: "Régime apériodique. Juste avant la transition, la pseudo-période était restée approximativement constante (seule l'amplitude avait diminué plus vite)."
         correct: true
       - id: B
-        text: "Régime apériodique. Juste avant la transition, les oscillations s'étaient accélérées progressivement."
+        text: "Régime apériodique. Juste avant la transition, les oscillations s'étaient progressivement accélérées, leur pseudo-période diminuant nettement."
         correct: false
         misconception: mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
         also_reveals: []
         feedback: "Les oscillations ne s'accélèrent pas quand R augmente. La pseudo-période reste voisine de $T_0$ (fixée par L et C) jusqu'à ce que le circuit passe directement au régime apériodique."
       - id: C
-        text: "Régime critique. La fréquence a doublé juste avant la disparition des oscillations."
+        text: "Régime critique. La fréquence des oscillations avait doublé juste avant qu'elles ne disparaissent complètement de la trace."
         correct: false
         misconception: mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
         also_reveals: []
         feedback: "Il n'y a pas d'accélération progressive de la fréquence. L'amortissement croît, mais la pseudo-période reste quasi-constante."
       - id: D
-        text: "Régime forcé. La résistance impose alors sa propre fréquence."
+        text: "Régime forcé. C'est alors la résistance du circuit qui impose sa propre fréquence aux oscillations observées."
         correct: false
         misconception: mc.physics.rlc_serie.entretien-est-regime-force
         also_reveals: []
@@ -535,19 +535,19 @@ items:
         text: "$T_{0,1} = T_{0,2}$ : les deux circuits ont la même période propre car $L$ et $C$ sont identiques."
         correct: true
       - id: B
-        text: "$T_{0,2} > T_{0,1}$ : plus R est grande, plus la période est longue."
+        text: "$T_{0,2} > T_{0,1}$ : plus la résistance est grande, plus la période propre est longue."
         correct: false
         misconception: mc.physics.rlc_serie.T0-depend-de-R
         also_reveals: [mc.physics.rlc_serie.plus-de-R-oscille-plus-vite]
         feedback: "$T_0 = 2\\pi\\sqrt{LC}$ ne dépend pas de R. Les deux circuits ont les mêmes L et C, donc exactement la même $T_0$."
       - id: C
-        text: "$T_{0,2} < T_{0,1}$ : plus R est grande, plus la période est courte."
+        text: "$T_{0,2} < T_{0,1}$ : plus la résistance est grande, plus la période propre est courte."
         correct: false
         misconception: mc.physics.rlc_serie.T0-depend-de-R
         also_reveals: [mc.physics.rlc_serie.plus-de-R-oscille-plus-vite]
         feedback: "Ni dans un sens ni dans l'autre : $T_0$ est indépendante de R. Les deux $T_0$ sont égales."
       - id: D
-        text: "La comparaison est impossible car le circuit 2 est apériodique."
+        text: "La comparaison est impossible, car le circuit 2 se trouve en régime apériodique."
         correct: false
         misconception: null
         also_reveals: []
@@ -711,19 +711,19 @@ items:
         text: "On établit l'équation différentielle $L\\ddot{q} + R\\dot{q} + q/C = 0$, mais on ne donne pas de solution $q(t)$ sous forme close ; on décrit le régime qualitativement et expérimentalement."
         correct: true
       - id: B
-        text: "$q(t) = Q_{max}\\cos\\!\\left(\\frac{2\\pi t}{T_0} + \\varphi\\right)$ avec $T_0 = 2\\pi\\sqrt{LC}$, comme dans le cas idéal."
+        text: "$q(t) = Q_{max}\\cos\\!\\left(\\frac{2\\pi t}{T_0} + \\varphi\\right)$ avec $T_0 = 2\\pi\\sqrt{LC}$, exactement comme dans le cas idéal sans résistance, la résistance ne modifiant que l'amplitude."
         correct: false
         misconception: mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
         also_reveals: []
         feedback: "Ce cosinus est la solution du cas idéal ($R = 0$). Substitué dans l'équation amortie, il laisse un reste $R\\dot{q} \\neq 0$, donc il ne la satisfait pas. En régime amorti, on établit l'équation et on s'arrête là."
       - id: C
-        text: "$q(t) = Q_{max}\\,e^{-t/\\tau}$ (exponentielle décroissante pure)."
+        text: "$q(t) = Q_{max}\\,e^{-t/\\tau}$, une exponentielle décroissante pure, sans la moindre oscillation, la résistance imposant au circuit un simple retour progressif à l'équilibre."
         correct: false
         misconception: mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
         also_reveals: []
         feedback: "Une exponentielle pure décrit le régime apériodique ou une charge RC, pas le régime pseudo-périodique. De plus, donner une forme close pour le régime amorti dépasse le cadre du programme."
       - id: D
-        text: "$q(t)$ est constante : le circuit ne peut pas osciller si $R \\neq 0$."
+        text: "$q(t)$ est constante au cours du temps : le circuit ne peut pas osciller dès lors que la résistance $R$ est différente de zéro."
         correct: false
         misconception: null
         also_reveals: []
@@ -758,19 +758,19 @@ items:
         text: "Ce cosinus n'est pas solution de l'équation amortie ; on ne peut pas écrire $q(t)$ sous forme close dans le cadre du programme."
         correct: true
       - id: B
-        text: "L'élève a fait une erreur de calcul : avec les bons coefficients le reste devrait être nul."
+        text: "L'élève a commis une erreur de calcul : avec les bons coefficients, le reste obtenu devrait être rigoureusement nul."
         correct: false
         misconception: mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
         also_reveals: []
         feedback: "Il n'y a pas d'erreur de calcul. Le terme $R\\dot{q}$ introduit un sinus qui ne peut pas s'annuler avec les termes en cosinus. Le cosinus simple n'est structurellement pas solution de l'ODE amortie."
       - id: C
-        text: "Le reste est nul si on choisit $\\varphi = \\pi/2$."
+        text: "Le reste devient nul dès que l'on choisit la phase $\\varphi = \\pi/2$ dans l'expression proposée pour $q(t)$."
         correct: false
         misconception: mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
         also_reveals: []
         feedback: "Changer $\\varphi$ ne supprime pas le terme $R\\dot{q}$ qui oscille en sinus. Quelle que soit la valeur de $\\varphi$, un cosinus simple ne satisfait pas l'ODE amortie."
       - id: D
-        text: "L'équation est fausse : il faudrait ajouter un terme $\\frac{dR}{dt}$."
+        text: "L'équation différentielle est fausse : il faudrait y ajouter un terme en $\\frac{dR}{dt}$ pour tenir compte de la résistance."
         correct: false
         misconception: null
         also_reveals: []
@@ -804,19 +804,19 @@ items:
         text: "Il est incorrect : cette forme close sinusoïdale n'est valide que pour $R \\approx 0$. En régime amorti, on ne résout pas l'ODE ; $T \\approx T_0$ est une approximation, pas une identité."
         correct: true
       - id: B
-        text: "Il est correct : le cosinus est toujours la solution de l'ODE RLC, amorti ou non."
+        text: "Il est correct : le cosinus est toujours la solution de l'équation différentielle du circuit RLC, que le régime soit amorti ou non."
         correct: false
         misconception: mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
         also_reveals: [mc.physics.rlc_serie.pseudo-periode-egale-periode-propre]
         feedback: "Le cosinus simple ne satisfait pas l'ODE amortie (il laisse un reste $R\\dot{q} \\neq 0$). Il n'est valable que pour $R = 0$."
       - id: C
-        text: "Il est partiellement correct : la forme est juste mais l'amplitude $Q_{max}$ doit être remplacée par une exponentielle décroissante."
+        text: "Il est partiellement correct : la forme sinusoïdale est juste, mais l'amplitude $Q_{max}$ doit être remplacée par une exponentielle décroissante du temps."
         correct: false
         misconception: mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
         also_reveals: []
         feedback: "Donner une expression de la solution amortie (même avec une enveloppe exponentielle) dépasse le cadre du programme. En régime amorti, on établit l'ODE et on s'arrête là."
       - id: D
-        text: "Il est correct : l'approximation $T \\approx T_0$ est toujours une égalité exacte."
+        text: "Il est correct : l'approximation $T \\approx T_0$ est en réalité toujours une égalité exacte, quelle que soit la valeur de la résistance."
         correct: false
         misconception: mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
         also_reveals: [mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee]
@@ -849,19 +849,19 @@ items:
         text: "Condensateur : $E_C = \\frac{1}{2}\\frac{q^2}{C}$ (maximale quand $u_C$ est maximal) ; bobine : $E_L = \\frac{1}{2}Li^2$ (maximale quand $i$ est maximal)."
         correct: true
       - id: B
-        text: "Condensateur : $E_C = \\frac{1}{2}Li^2$ ; bobine : $E_L = \\frac{1}{2}Cu_C^2$."
+        text: "Condensateur : $E_C = \\frac{1}{2}Li^2$ ; bobine : $E_L = \\frac{1}{2}Cu_C^2$, chacune étant maximale au même instant du cycle."
         correct: false
         misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
         also_reveals: []
         feedback: "Les formules sont interverties. L'énergie électrique est stockée dans le condensateur ($E_C = \\frac{1}{2}Cu_C^2$) ; l'énergie magnétique est stockée dans la bobine ($E_L = \\frac{1}{2}Li^2$)."
       - id: C
-        text: "Les deux énergies sont maximales au même instant."
+        text: "Les deux énergies sont maximales exactement au même instant du cycle, puisque le condensateur et la bobine se chargent ensemble."
         correct: false
         misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
         also_reveals: []
         feedback: "Dans le cas idéal, $E_C$ et $E_L$ sont en opposition de phase : quand l'une est maximale, l'autre est nulle. Elles ne sont jamais maximales simultanément."
       - id: D
-        text: "$E_C$ et $E_L$ sont toujours égales à chaque instant."
+        text: "$E_C$ et $E_L$ sont égales à chaque instant du cycle, l'énergie se répartissant en permanence à parts égales entre les deux."
         correct: false
         misconception: null
         also_reveals: []
@@ -1024,19 +1024,19 @@ items:
         text: "$k = R$ : le générateur compense exactement la perte Joule, restituant à chaque cycle l'énergie dissipée par $R$."
         correct: true
       - id: B
-        text: "$k = R$ : le générateur impose alors la fréquence de résonance du circuit."
+        text: "$k = R$ : le générateur impose alors au circuit la fréquence de résonance qui lui est propre."
         correct: false
         misconception: mc.physics.rlc_serie.entretien-est-regime-force
         also_reveals: []
         feedback: "La condition $k = R$ annule l'amortissement et restaure l'oscillation libre à $T_0 = 2\\pi\\sqrt{LC}$. Il ne s'agit pas d'une résonance forcée : aucune fréquence extérieure n'est imposée."
       - id: C
-        text: "$k = 1/R$ : le générateur doit être l'inverse de R pour compenser son effet."
+        text: "$k = 1/R$ : le générateur doit valoir l'inverse de la résistance pour en compenser exactement l'effet."
         correct: false
         misconception: null
         also_reveals: []
         feedback: "La condition correcte est $k = R$ (même unité : $\\Omega$ = V/A). Cela annule directement le terme $(R - k)$ dans l'ODE, pas $1/R$."
       - id: D
-        text: "$k = 0$ : sans apport extérieur d'énergie les oscillations persistent d'elles-mêmes."
+        text: "$k = 0$ : sans aucun apport extérieur d'énergie, les oscillations persistent d'elles-mêmes indéfiniment."
         correct: false
         misconception: mc.physics.rlc_serie.resistance-entretient-oscillations
         also_reveals: []
@@ -1179,7 +1179,7 @@ items:
         text: '$T_0 = 2\pi\sqrt{LC} = 2\pi\sqrt{40 \times 10^{-3} \times 10 \times 10^{-6}} \approx 3{,}97 \times 10^{-3}\,\text{s} \approx 4{,}0\,\text{ms}$'
         correct: true
       - id: B
-        text: '$T_0 = 2\pi\sqrt{RC} = 2\pi\sqrt{5 \times 10^{-5}} \approx 1{,}4\,\text{ms}$'
+        text: "$T_0 = 2\\pi\\sqrt{RC} = 2\\pi\\sqrt{5 \\times 10^{-5}} \\approx 1{,}4\\,\\text{ms}$, la période propre étant fixée par $R$ et $C$."
         correct: false
         misconception: mc.physics.rlc_serie.T0-depend-de-R
         also_reveals: []
@@ -1188,7 +1188,7 @@ items:
           pas la période d'oscillation du circuit RLC.
           La période propre s'écrit $T_0 = 2\pi\sqrt{LC}$ : R n'y figure pas.
       - id: C
-        text: '$T_0 = 2\pi\sqrt{L/C} = 2\pi\sqrt{4000} \approx 396\,\text{s}$'
+        text: "$T_0 = 2\\pi\\sqrt{L/C} = 2\\pi\\sqrt{4000} \\approx 396\\,\\text{s}$, en formant le rapport de $L$ sur $C$ plutôt que leur produit."
         correct: false
         misconception: mc.physics.rlc_serie.T0-depend-de-R
         also_reveals: []
@@ -1196,7 +1196,7 @@ items:
           $\sqrt{L/C}$ a les dimensions d'une résistance (ohms), pas d'un temps.
           La formule correcte est $T_0 = 2\pi\sqrt{LC}$, dont l'unité est bien la seconde.
       - id: D
-        text: '$T_0 = RC = 5 \times 10^{-5}\,\text{s} = 50\,\mu\text{s}$'
+        text: "$T_0 = RC = 5 \\times 10^{-5}\\,\\text{s} = 50\\,\\mu\\text{s}$, comme pour la constante de temps d'un dipôle RC."
         correct: false
         misconception: mc.physics.rlc_serie.T0-depend-de-R
         also_reveals: []
@@ -1238,8 +1238,7 @@ items:
         correct: true
       - id: B
         text: |
-          Le condensateur stocke l'énergie magnétique $E_C = \tfrac{1}{2}Li^2$ ;
-          la bobine stocke l'énergie électrique $E_L = \tfrac{1}{2}Cu_C^2$.
+          Le condensateur stocke l'énergie magnétique $E_C = \tfrac{1}{2}Li^2$, maximale quand le courant est maximal ; la bobine stocke l'énergie électrique $E_L = \tfrac{1}{2}Cu_C^2$, maximale quand la tension est maximale.
         correct: false
         misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
         also_reveals: []
@@ -1250,8 +1249,7 @@ items:
           liée au courant $i$).
       - id: C
         text: |
-          Les deux énergies sont maximales au même instant,
-          quand le courant $i$ est maximal.
+          Les deux énergies sont maximales exactement au même instant du cycle, celui où le courant $i$ qui traverse le circuit atteint sa valeur maximale.
         correct: false
         misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
         also_reveals: []
@@ -1261,8 +1259,7 @@ items:
           l'une est maximale exactement quand l'autre est nulle.
       - id: D
         text: |
-          Les deux énergies sont maximales au même instant,
-          quand la tension $u_C$ est maximale.
+          Les deux énergies sont maximales exactement au même instant du cycle, celui où la tension $u_C$ aux bornes du condensateur atteint son maximum.
         correct: false
         misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
         also_reveals: []
@@ -1492,19 +1489,19 @@ items:
         text: "Contrairement à la résistance, qui dissipe l'énergie, la bobine l'emmagasine puis la renvoie vers le condensateur, ce qui inverse le sens de $u_C$ au lieu de la laisser s'annuler."
         correct: true
       - id: B
-        text: "Il n'y a pas de différence réelle : les deux circuits produisent la même décroissance exponentielle vers 0, seule l'échelle de temps change."
+        text: "Il n'y a aucune différence réelle entre les deux circuits : tous deux produisent la même décroissance exponentielle vers zéro, et seule l'échelle de temps du phénomène change."
         correct: false
         misconception: mc.physics.rlc_serie.confond-oscillation-avec-decharge-rc
         also_reveals: []
         feedback: "Les deux comportements sont qualitativement différents : la décharge RC ne change jamais de signe, alors que $u_C(t)$ dans le circuit LC oscille — elle traverse zéro et repart dans l'autre sens."
       - id: C
-        text: "La différence vient du fait qu'il manque une résistance : sans elle, aucun courant ne devrait circuler, donc la trace observée est anormale."
+        text: "La différence vient de ce qu'il manque une résistance au montage : sans elle aucun courant ne devrait circuler, si bien que la trace observée est anormale."
         correct: false
         misconception: mc.physics.rlc_serie.resistance-entretient-oscillations
         also_reveals: []
         feedback: "Le courant circule très bien sans résistance : c'est justement l'absence de dissipation qui permet à l'oscillation de durer indéfiniment. La trace observée est la trace normale du cas idéal."
       - id: D
-        text: "La différence vient du fait que, dans le circuit LC, l'énergie est stockée deux fois plus qu'en RC."
+        text: "La différence vient de ce que, dans le circuit LC, l'énergie est stockée deux fois plus longtemps qu'elle ne l'est dans un circuit RC ordinaire."
         correct: false
         misconception: null
         also_reveals: []
@@ -1541,19 +1538,19 @@ items:
         text: "Non. Le générateur annule seulement l'amortissement (réglage $k = R$) ; la fréquence observée reste $1/T_0$, fixée par $L$ et $C$, comme en oscillations libres."
         correct: true
       - id: B
-        text: "Oui : dès qu'un générateur externe est branché, le régime devient nécessairement un régime forcé imposé de l'extérieur."
+        text: "Oui : dès qu'un générateur externe est branché dans le circuit, le régime devient nécessairement un régime forcé, dont la fréquence est imposée de l'extérieur."
         correct: false
         misconception: mc.physics.rlc_serie.entretien-est-regime-force
         also_reveals: []
         feedback: "Ce générateur d'entretien n'impose rien : $u_G = k\\,i$ est proportionnel au courant du circuit lui-même. Il compense la perte Joule ; il ne fixe pas de fréquence extérieure."
       - id: C
-        text: "Non, mais parce que c'est la résistance $R$ qui impose la fréquence observée dans ce montage."
+        text: "Non, mais parce que c'est la résistance $R$ du circuit qui impose la fréquence observée dans ce montage particulier, et non le couple $L$ et $C$."
         correct: false
         misconception: mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
         also_reveals: []
         feedback: "$R$ n'a jamais fixé la fréquence, ni seule ni via ce montage : la fréquence est $1/T_0 = 1/(2\\pi\\sqrt{LC})$, déterminée uniquement par $L$ et $C$."
       - id: D
-        text: "Non, car sans le générateur les oscillations n'existeraient pas du tout : c'est lui qui crée le phénomène oscillatoire."
+        text: "Non, car sans le générateur les oscillations n'existeraient pas du tout : c'est lui qui crée de toutes pièces le phénomène oscillatoire observé."
         correct: false
         misconception: mc.physics.rlc_serie.entretien-est-regime-force
         also_reveals: [mc.physics.rlc_serie.resistance-entretient-oscillations]
@@ -1708,11 +1705,7 @@ items:
         feedback: "Avec $k = R$, l'ODE redevient $L\\ddot{q} + q/C = 0$ : la fréquence des oscillations entretenues reste $1/T_0 = 1/(2\\pi\\sqrt{LC})$, indépendante de $k$. Le générateur ne fixe aucune fréquence propre."
       - id: D
         text: |
-          (a) $E_0 = 4{,}0 \times 10^{-4}\,\text{J}$.
-          (b) L'énergie perdue par R finit par se retrouver stockée
-          définitivement dans la bobine, sous forme magnétique, sans
-          jamais revenir vers le condensateur.
-          (c) $k = R = 25\,\Omega$ ; $T_0 \approx 7{,}9\,\text{ms}$.
+          (a) $E_0 = 4{,}0 \times 10^{-4}\,\text{J}$. (b) L'énergie perdue par $R$ finit par se retrouver stockée définitivement dans la bobine, sous forme magnétique, sans jamais revenir vers le condensateur ; l'amplitude de $u_C$ décroît donc tandis que celle du courant se maintient. (c) $k = R = 25\,\Omega$ ; $T_0 \approx 7{,}9\,\text{ms}$.
         correct: false
         misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
         also_reveals: []
@@ -1817,7 +1810,7 @@ items:
         text: "(a) $T = t_2 - t_1 = 6{,}0\\,\\text{ms} \\approx T_0 = 5{,}96\\,\\text{ms}$ (écart $\\approx$ 0,7 %, cohérent avec un faible amortissement). (b) $E_{C,1} = 3{,}75\\times10^{-5}\\,\\text{J}$, $E_{C,2} = 1{,}35\\times10^{-5}\\,\\text{J}$ ; la différence ($2{,}4\\times10^{-5}\\,\\text{J}$) a été dissipée par effet Joule dans $R$ entre $t_1$ et $t_2$."
         correct: true
       - id: B
-        text: "(a) $T$ doit être exactement égal à $T_0 = 5{,}96\\,\\text{ms}$ ; la valeur mesurée ($6{,}0\\,\\text{ms}$) est une erreur d'expérience à corriger. (b) $E_{C,1} = 3{,}75\\times10^{-5}\\,\\text{J}$, $E_{C,2} = 1{,}35\\times10^{-5}\\,\\text{J}$."
+        text: "(a) $T$ doit être exactement égal à $T_0 = 5{,}96\\,\\text{ms}$ ; la valeur mesurée ($6{,}0\\,\\text{ms}$) est une simple erreur d'expérience qu'il faut corriger avant toute exploitation. (b) $E_{C,1} = 3{,}75\\times10^{-5}\\,\\text{J}$ et $E_{C,2} = 1{,}35\\times10^{-5}\\,\\text{J}$, sans autre commentaire."
         correct: false
         misconception: mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
         also_reveals: []

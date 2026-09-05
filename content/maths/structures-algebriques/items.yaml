@@ -208,7 +208,7 @@ items:
         text: "Vérifier que la loi est associative, ET que chaque élément possède un symétrique — la commutativité n'est pas un des axiomes du groupe."
         correct: true
       - id: B
-        text: "Rien : ces trois propriétés suffisent à définir un groupe."
+        text: "Rien de plus : ces trois propriétés suffisent à elles seules à définir un groupe commutatif."
         correct: false
         misconception: mc.math.structures_algebriques.axiome-oublie
         feedback: >
@@ -218,7 +218,7 @@ items:
           symétrique pour chaque élément. Modèle erroné : « trois
           propriétés lues sur la table suffisent ».
       - id: C
-        text: "Vérifier que la loi est associative ; l'existence des symétriques est automatique dès qu'il y a un neutre."
+        text: "Vérifier que la loi est associative ; l'existence des symétriques est automatique dès lors qu'un élément neutre a été trouvé dans la table."
         correct: false
         misconception: mc.math.structures_algebriques.axiome-oublie
         feedback: >
@@ -227,7 +227,7 @@ items:
           automatique. Il faut le vérifier explicitement, élément par
           élément, en cherchant dans chaque ligne si le neutre apparaît.
       - id: D
-        text: "Vérifier que $E$ est un ensemble fini."
+        text: "Vérifier que $E$ est bien un ensemble fini, condition sans laquelle la structure de groupe ne peut pas être établie."
         correct: false
         feedback: >
           La finitude de $E$ n'est pas une condition du groupe : des
@@ -317,7 +317,7 @@ items:
         text: "Non, car certains éléments non nuls de $\\mathbb{Z}$ (par exemple $2$) n'ont pas de symétrique pour $\\times$ dans $\\mathbb{Z}$."
         correct: true
       - id: B
-        text: "Oui, car $(\\mathbb{Z},+,\\times)$ vérifie déjà tous les axiomes d'un anneau."
+        text: "Oui, car $(\\mathbb{Z},+,\\times)$ vérifie déjà tous les axiomes d'un anneau, et tout anneau est un corps."
         correct: false
         misconception: mc.math.structures_algebriques.groupe-anneau
         feedback: >
@@ -329,14 +329,14 @@ items:
           échoue. Modèle erroné : « un anneau est automatiquement un
           corps ».
       - id: C
-        text: "Non, car $(\\mathbb{Z},+)$ n'est pas un groupe commutatif."
+        text: "Non, car $(\\mathbb{Z},+)$ n'est pas un groupe commutatif, l'addition n'y étant pas partout définie."
         correct: false
         feedback: >
           $(\mathbb{Z},+)$ EST un groupe commutatif (neutre $0$, symétrique
           de $x$ égal à $-x$, commutatif) — ce n'est pas là que ça bloque.
           Le problème est spécifique à la seconde loi $\times$.
       - id: D
-        text: "Oui, car $2$ possède un symétrique pour $\\times$, à savoir $\\frac{1}{2}$."
+        text: "Oui, car $2$ possède bien un symétrique pour la multiplication, à savoir le nombre $\\frac{1}{2}$."
         correct: false
         feedback: >
           $\frac{1}{2}$ n'appartient pas à $\mathbb{Z}$ : le symétrique
@@ -714,7 +714,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "On ne peut pas savoir : il faudrait vérifier un par un chacun des symétriques, ce qui est impossible car $E$ est infini."
+        text: "On ne peut pas savoir : il faudrait vérifier un par un chacun des symétriques, ce qui est matériellement impossible puisque l'ensemble $E$ des entiers pairs est infini."
         correct: false
         feedback: >
           Comme pour l'associativité (héritée de $\mathbb{Z}$), on peut
@@ -726,7 +726,7 @@ items:
         text: "Oui : il reste à vérifier que chaque élément pair $x$ a un symétrique pair, ce qui est le cas — le symétrique de $x$ est $-x$, qui est pair dès que $x$ l'est. Les quatre axiomes sont vérifiés."
         correct: true
       - id: C
-        text: "Non : il manque de vérifier que $0$ est bien pair, sinon le neutre n'appartient pas à $E$."
+        text: "Non : il manque de vérifier que $0$ est bien un entier pair, faute de quoi l'élément neutre n'appartiendrait pas à l'ensemble $E$ considéré."
         correct: false
         feedback: >
           $0$ est bien un entier pair ($0=2\times0$), donc $0\in E$ : le
@@ -734,7 +734,7 @@ items:
           ici — la question restante est celle du symétrique, pas celle du
           neutre.
       - id: D
-        text: "Non : les trois propriétés vérifiées ne suffisent pas, et ici $2$ n'a pas de symétrique pair."
+        text: "Non : les trois propriétés déjà vérifiées ne suffisent pas, et ici l'entier $2$ ne possède aucun symétrique qui soit lui-même pair."
         correct: false
         feedback: >
           Faux : le symétrique de $2$ pour $+$ est $-2$, qui EST pair, donc
@@ -768,7 +768,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Oui : la commutativité découle automatiquement des quatre axiomes du groupe."
+        text: "Oui : la commutativité de la loi découle automatiquement des quatre axiomes qui définissent un groupe, il est inutile de la vérifier."
         correct: false
         misconception: mc.math.structures_algebriques.groupe-implique-commutatif
         feedback: >
@@ -825,7 +825,7 @@ items:
         text: "$(f\\circ g)(3)=7$ et $(g\\circ f)(3)=8$ : les deux résultats diffèrent, ce qui confirme, sur un nouvel exemple, que $\\circ$ n'est pas commutative pour $f$ et $g$."
         correct: true
       - id: B
-        text: "$(f\\circ g)(3) = g(f(3)) = 8$ et $(g\\circ f)(3)=f(g(3))=7$ : on retrouve les mêmes valeurs, juste échangées."
+        text: "$(f\\circ g)(3) = g(f(3)) = 8$ et $(g\\circ f)(3)=f(g(3))=7$ : on retrouve les deux mêmes valeurs, simplement échangées d'un calcul à l'autre."
         correct: false
         feedback: >
           $(f\circ g)(x)$ signifie « appliquer $g$ d'abord, puis $f$ »,
@@ -833,7 +833,7 @@ items:
           $(f\circ g)(3)=f(g(3))=f(6)=7$, et $(g\circ f)(3)=g(f(3))=g(4)=8$ :
           les définitions sont interverties dans cette réponse.
       - id: C
-        text: "$(f\\circ g)(3)=7$ et $(g\\circ f)(3)=8$, donc $\\circ$ n'est jamais commutative, quelles que soient les fonctions choisies."
+        text: "$(f\\circ g)(3)=7$ et $(g\\circ f)(3)=8$, donc la composition n'est jamais commutative, quelles que soient les deux fonctions que l'on choisit."
         correct: false
         misconception: mc.math.structures_algebriques.generalisation-hative
         feedback: >
@@ -842,7 +842,7 @@ items:
           commutative en général : le groupe des symétries du rectangle
           (chapitres 4 à 6), lui, a une loi de composition parfaitement commutative.
       - id: D
-        text: "$(f\\circ g)(3)=7$ et $(g\\circ f)(3)=7$ : les deux résultats coïncident, donc $\\circ$ est commutative pour ce couple."
+        text: "$(f\\circ g)(3)=7$ et $(g\\circ f)(3)=7$ : les deux résultats coïncident, donc la composition est bien commutative pour ce couple de fonctions."
         correct: false
         feedback: >
           Recalcule $(g\circ f)(3)$ : $f(3)=4$, puis $g(4)=8$ — pas $7$.
@@ -926,7 +926,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Rien : un seul triplet ne prouve jamais une propriété pour tous les triplets, donc on ne peut pas savoir si $\\times$ est distributive sur tout $\\mathbb{Z}/4\\mathbb{Z}$."
+        text: "Rien du tout : un seul triplet ne prouve jamais une propriété valable pour tous les triplets, donc ce calcul ne dit pas si $\\times$ est distributive sur tout $\\mathbb{Z}/4\\mathbb{Z}$."
         correct: false
         feedback: >
           Comme pour l'associativité (chapitres 3 et 4), on peut invoquer un argument
@@ -938,7 +938,7 @@ items:
         text: "$3\\times(2+3) = 3\\times1=3$ et $3\\times2+3\\times3 = 2+1=3$ : les deux membres coïncident, cohérent avec la distributivité de $\\times$ par rapport à $+$, déjà établie en général (chapitre 7) pour cet anneau."
         correct: true
       - id: C
-        text: "$3\\times(2+3) = 3\\times1=3$, mais $3\\times2+3\\times3 = 6+9=15$ (sans réduire modulo $4$), donc les deux membres ne coïncident pas."
+        text: "$3\\times(2+3) = 3\\times1=3$, mais $3\\times2+3\\times3 = 6+9=15$ si l'on oublie de réduire modulo $4$, si bien que les deux membres ne coïncident pas."
         correct: false
         misconception: mc.math.structures_algebriques.cloture-non-verifiee
         feedback: >
@@ -948,7 +948,7 @@ items:
           $\mathbb{Z}/4\mathbb{Z}$, égal à l'autre membre. Oublier de
           réduire modulo $4$ fait croire à tort que l'égalité échoue.
       - id: D
-        text: "Les deux membres coïncident, donc $(\\mathbb{Z}/4\\mathbb{Z},\\times)$ est lui-même un groupe."
+        text: "Les deux membres coïncident, ce qui montre que $(\\mathbb{Z}/4\\mathbb{Z},\\times)$ est lui-même un groupe pour la multiplication modulo quatre."
         correct: false
         misconception: mc.math.structures_algebriques.groupe-anneau
         feedback: >
@@ -983,7 +983,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Non : un anneau exige que $\\times$ ait un élément neutre, donc l'absence de $1$ dans $E$ empêche $(E,+,\\times)$ d'être un anneau."
+        text: "Non : la définition d'un anneau exige que la multiplication possède un élément neutre, si bien que l'absence du nombre $1$ dans l'ensemble $E$ empêche $(E,+,\\times)$ d'en être un."
         correct: false
         misconception: mc.math.structures_algebriques.groupe-anneau
         feedback: >
@@ -993,7 +993,7 @@ items:
           rapport à $+$. L'absence de neutre pour $\times$ n'est pas un
           obstacle.
       - id: B
-        text: "Non : $(E,+)$ n'est pas un groupe commutatif, car $E=2\\mathbb{Z}$ ne contient pas l'élément neutre $0$."
+        text: "Non : $(E,+)$ n'est pas un groupe commutatif, car l'ensemble $E=2\\mathbb{Z}$ des entiers pairs ne contient pas l'élément neutre $0$ de l'addition."
         correct: false
         feedback: >
           $0$ est bien un entier pair ($0=2\times0$), donc $0\in E$ :
@@ -1001,10 +1001,10 @@ items:
           $x$ égal à $-x$, qui est pair dès que $x$ l'est). Le problème
           n'est pas là.
       - id: C
-        text: "Oui : la définition de l'anneau n'exige aucun neutre pour $\\times$ — seulement que $(E,+)$ soit un groupe commutatif et que $\\times$ soit associative et distributive. L'absence de neutre pour $\\times$ n'empêche pas $(E,+,\\times)$ d'être un anneau."
+        text: "Oui : la définition de l'anneau n'exige aucun neutre pour $\\times$ — seulement que $(E,+)$ soit un groupe commutatif et que $\\times$ soit associative et distributive."
         correct: true
       - id: D
-        text: "Non : un anneau exige que chaque élément non nul ait un symétrique pour $\\times$, ce qui échoue clairement ici."
+        text: "Non : la définition d'un anneau exige que chaque élément non nul possède un symétrique pour la multiplication, condition qui échoue clairement ici."
         correct: false
         misconception: mc.math.structures_algebriques.groupe-anneau
         feedback: >
@@ -1043,7 +1043,7 @@ items:
         text: "Oui : chacun des quatre éléments non nuls ($1,2,3,4$) possède un symétrique pour $\\times$ dans $\\mathbb{Z}/5\\mathbb{Z}$ (respectivement $1$, $3$, $2$, $4$), donc la condition supplémentaire du corps est satisfaite."
         correct: true
       - id: B
-        text: "Non : comme pour $\\mathbb{Z}$, certains éléments non nuls n'ont pas de symétrique pour $\\times$."
+        text: "Non : comme dans $\\mathbb{Z}$, certains éléments non nuls de cet ensemble n'ont aucun symétrique pour la multiplication modulo cinq."
         correct: false
         misconception: mc.math.structures_algebriques.generalisation-hative
         feedback: >
@@ -1054,7 +1054,7 @@ items:
           vérifier CE cas précis, pas recopier la conclusion d'un exemple
           différent.
       - id: C
-        text: "Non : $(\\mathbb{Z}/5\\mathbb{Z},+,\\times)$ n'est même pas un anneau, car $5$ n'est pas premier."
+        text: "Non : $(\\mathbb{Z}/5\\mathbb{Z},+,\\times)$ n'est même pas un anneau, car le nombre $5$ n'est pas premier et la structure s'effondre."
         correct: false
         feedback: >
           $5$ est bien un nombre premier, et de toute façon la primalité
@@ -1064,7 +1064,7 @@ items:
           $4$ n'est pas premier, chapitre 7). C'est le fait d'être un CORPS qui
           dépend de la primalité de $n$.
       - id: D
-        text: "Oui, mais seulement pour les éléments $1$ et $4$, qui sont leur propre symétrique — $2$ et $3$ n'en ont pas besoin."
+        text: "Oui, mais seulement pour les éléments $1$ et $4$, qui sont chacun leur propre symétrique — les éléments $2$ et $3$, eux, n'ont besoin d'aucun symétrique pour cela."
         correct: false
         feedback: >
           La définition du corps exige un symétrique pour TOUS les
@@ -1099,7 +1099,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Dans un corps, $(E,+)$ est un groupe alors que dans un anneau, $(E,+)$ n'a besoin d'être qu'une loi interne."
+        text: "Dans un corps, $(E,+)$ est un groupe, alors que dans un anneau la loi $+$ n'a besoin d'être qu'une loi interne sur l'ensemble considéré."
         correct: false
         misconception: mc.math.structures_algebriques.groupe-anneau
         feedback: >
@@ -1109,7 +1109,7 @@ items:
           (commutativité et symétrique pour tout élément non nul), pas sur
           $+$.
       - id: B
-        text: "Dans un corps, l'élément neutre $0$ de $+$ doit aussi posséder un symétrique pour $\\times$."
+        text: "Dans un corps, l'élément neutre $0$ de l'addition doit lui aussi posséder un symétrique pour la multiplication, ce qu'un anneau n'exige pas."
         correct: false
         misconception: mc.math.structures_algebriques.groupe-anneau
         feedback: >
@@ -1119,7 +1119,7 @@ items:
           justement $0$ : c'est TOUT ÉLÉMENT NON NUL qui doit avoir un
           symétrique.
       - id: C
-        text: "Un corps est un anneau où $+$ et $\\times$ jouent exactement le même rôle, symétriquement."
+        text: "Un corps est un anneau dans lequel les deux lois $+$ et $\\times$ jouent exactement le même rôle, de façon parfaitement symétrique."
         correct: false
         feedback: >
           Non : même dans un corps, $+$ et $\times$ restent dissymétriques
@@ -1155,7 +1155,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Loi interne, associative, neutre $0$ : ces trois vérifications suffisent, la commutativité d'un groupe fini étant automatique."
+        text: "Loi interne, associativité, élément neutre $0$ : ces trois vérifications suffisent à conclure, la commutativité d'un groupe fini étant de toute façon automatique dès lors que l'ensemble considéré ne compte qu'un nombre fini d'éléments distincts."
         correct: false
         misconception: mc.math.structures_algebriques.groupe-implique-commutatif
         also_reveals: [mc.math.structures_algebriques.axiome-oublie]
@@ -1170,7 +1170,7 @@ items:
         text: "Loi interne (chaque somme réduite modulo $5$ reste dans $E$), associative (héritée de $\\mathbb{Z}$), neutre $0$, chacun des cinq éléments a un symétrique ($0\\to0$, $1\\to4$, $2\\to3$, $3\\to2$, $4\\to1$), et la table est symétrique par rapport à la diagonale : les quatre axiomes du groupe et la commutativité sont tous vérifiés."
         correct: true
       - id: C
-        text: "Il suffit de vérifier que $0$ est neutre et que la table est symétrique : cela garantit à la fois le groupe et sa commutativité."
+        text: "Il suffit de vérifier que $0$ est bien l'élément neutre et que la table est symétrique par rapport à sa diagonale : cela garantit d'un seul coup la structure de groupe et sa commutativité."
         correct: false
         misconception: mc.math.structures_algebriques.axiome-oublie
         feedback: >
@@ -1179,7 +1179,7 @@ items:
           symétriques : ce sont des axiomes séparés, chacun à vérifier
           indépendamment.
       - id: D
-        text: "Loi interne, neutre $0$, symétrique pour chaque élément : ces trois vérifications suffisent, l'associativité étant automatique dès qu'il y a un neutre."
+        text: "Loi interne, élément neutre $0$, symétrique pour chacun des cinq éléments : ces trois vérifications suffisent, l'associativité de la loi étant automatique dès qu'un neutre a été trouvé."
         correct: false
         misconception: mc.math.structures_algebriques.axiome-oublie
         feedback: >
