@@ -893,56 +893,346 @@ items:
 # Rung distribution: R0=3 (TDS-7,8,9) R1=3 (TDS-1,3,4) R2=3 (TDS-5,10,11)
 #                     R3=3 (TDS-2,6,12) R4=3 (TDS-13,14,15)
 
+  # Ajoutés le 2026-09-05 : cinq familles sous le plancher de 3 items du banc —
+  # `reversible-jamais-quasi-totale` (AUCUN item : sondée en leçon seulement),
+  # `vitesse-implique-avancement` (1), `equilibre-coexistence-signifie-arret`
+  # (2), `double-fleche-signifie-lente` (2), `presence-produit-determine-sens`
+  # (2). Trois items suffisent : chacun porte trois familles distinctes.
+  - id: TDS-16
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_transformations_deux_sens
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_deux_sens.reversible-jamais-quasi-totale
+    stem: >
+      Une réaction est écrite avec une double flèche. Une mesure donne un taux
+      d'avancement final $\tau = 0{,}98$. Que conclure ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La transformation est limitée, mais si peu qu'elle est quasi totale :
+          la double flèche dit que les deux sens coexistent, jamais où se situe
+          l'équilibre
+        correct: true
+      - id: B
+        text: >-
+          La mesure est nécessairement fausse : une double flèche impose un
+          taux d'avancement nettement inférieur à $1$
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.reversible-jamais-quasi-totale
+        feedback: >
+          La double flèche est une information QUALITATIVE : elle dit que la
+          réaction inverse existe, donc que $\tau < 1$ strictement. Elle ne
+          borne pas $\tau$ pour autant. Une constante d'équilibre très grande
+          donne un $\tau$ aussi proche de $1$ qu'on veut, sans jamais l'atteindre
+          — $0{,}98$ est parfaitement ordinaire.
+      - id: C
+        text: >-
+          À $\tau = 0{,}98$, la réaction inverse a cessé : il ne reste plus
+          assez de produits pour qu'elle se poursuive, donc tout est figé
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.equilibre-coexistence-signifie-arret
+        feedback: >
+          À l'équilibre, les deux sens continuent — c'est même la définition
+          d'un équilibre DYNAMIQUE : la réaction directe et la réaction inverse
+          se produisent à la même vitesse, si bien que les quantités globales ne
+          bougent plus. Ce qui est figé, c'est le bilan, pas l'activité
+          moléculaire.
+      - id: D
+        text: >-
+          Un tel taux d'avancement s'obtient seulement si l'on a attendu très
+          longtemps : plus une réaction est lente, plus elle finit par aller
+          loin
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.vitesse-implique-avancement
+        feedback: >
+          La durée décide de QUAND l'équilibre est atteint, jamais d'OÙ il se
+          situe. Une réaction rapide peut s'arrêter à $\tau = 0{,}1$, une
+          réaction lente atteindre $0{,}98$ — et attendre plus longtemps ne
+          déplace rien une fois l'équilibre installé. Cinétique et
+          thermodynamique répondent à deux questions différentes.
+    correct_feedback: >
+      Une double flèche signifie que la réaction inverse existe, donc que
+      $\tau < 1$ strictement. Elle ne dit rien de la VALEUR de $\tau$ : selon la
+      constante d'équilibre, une transformation limitée peut s'arrêter très tôt
+      ou aller presque jusqu'au bout. $\tau = 0{,}98$ décrit une transformation
+      limitée quasi totale.
+    solution: |
+      **Ce que la double flèche dit.** Les deux réactions, directe et inverse,
+      coexistent. Il en résulte un état d'équilibre où $\tau < 1$ strictement :
+      il reste toujours des réactifs.
+
+      **Ce qu'elle ne dit pas.** À quelle valeur $\tau$ s'arrête. Cela dépend de
+      la constante d'équilibre : plus $K$ est grande, plus l'équilibre est
+      déplacé vers les produits, plus $\tau$ approche $1$.
+
+      **En pratique.** On qualifie une transformation de « quasi totale » quand
+      $\tau > 0{,}95$ environ. Elle reste limitée au sens strict — il subsiste
+      des traces de réactifs — mais rien ne la distingue expérimentalement d'une
+      transformation totale.
+
+  - id: TDS-17
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_transformations_deux_sens
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_deux_sens.double-fleche-signifie-lente
+    stem: >
+      Dans un bécher, les quantités des espèces cessent de varier au bout de
+      dix minutes, alors que des réactifs sont encore présents. Quelle
+      explication est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La réaction inverse s'est mise à compenser exactement la réaction
+          directe : les deux se poursuivent à la même vitesse, donc le bilan
+          global ne bouge plus
+        correct: true
+      - id: B
+        text: >-
+          La réaction est devenue si lente qu'elle ne progresse plus de façon
+          mesurable ; avec un appareil plus sensible, on verrait qu'elle
+          continue d'avancer
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.double-fleche-signifie-lente
+        feedback: >
+          Une réaction lente finit toujours par arriver quelque part : si la
+          lenteur était seule en cause, attendre suffirait. Or ici, attendre des
+          heures ne change rien — l'état est STABLE, pas seulement lent. Ce qui
+          l'explique n'est pas un ralentissement, c'est une compensation exacte
+          entre deux sens.
+      - id: C
+        text: >-
+          La transformation ira nécessairement jusqu'au bout si on lui laisse
+          assez de temps : ce qu'on observe n'est qu'une étape intermédiaire
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.vitesse-implique-avancement
+        feedback: >
+          C'est déduire l'avancement final de la durée, ce que rien n'autorise.
+          Le test est simple : attendre. Si l'état ne bouge plus après des
+          heures alors que des réactifs subsistent, la transformation est
+          LIMITÉE — elle a atteint son terme, qui n'est pas la disparition d'un
+          réactif.
+      - id: D
+        text: >-
+          Les deux réactions se sont arrêtées faute de rencontres suffisamment
+          nombreuses entre molécules : plus rien ne se produit dans le bécher
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.equilibre-coexistence-signifie-arret
+        feedback: >
+          Les molécules ne cessent ni de bouger ni de se rencontrer. Le marquage
+          isotopique le montre directement : en marquant un atome d'un réactif,
+          on le retrouve dans les produits bien après que les quantités ont
+          cessé de varier. L'équilibre est dynamique — immobile en apparence,
+          actif en réalité.
+    correct_feedback: >
+      L'état stable ne vient pas d'un ralentissement mais d'une COMPENSATION :
+      la réaction inverse se produit exactement aussi vite que la directe. Les
+      quantités globales sont figées, les molécules continuent de réagir dans
+      les deux sens.
+    solution: |
+      **Deux explications concurrentes** de « plus rien ne bouge » :
+
+      1. *La réaction est devenue trop lente.* Prédiction : attendre plus
+         longtemps ferait avancer la transformation.
+      2. *Les deux sens se compensent.* Prédiction : attendre ne changera plus
+         rien, indéfiniment.
+
+      **Ce que l'expérience tranche.** L'état reste inchangé pendant des heures
+      alors que des réactifs subsistent. C'est la seconde explication.
+
+      **La preuve directe.** Le marquage isotopique : un atome marqué dans un
+      réactif se retrouve progressivement dans les produits, bien après la
+      stabilisation des quantités. Rien ne s'est arrêté — tout se compense.
+
+  - id: TDS-18
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_transformations_deux_sens
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_deux_sens.presence-produit-determine-sens
+    stem: >
+      On dispose des quatre espèces d'un même système chimique et l'on prépare
+      deux mélanges. Dans le premier, on verse d'abord les réactifs puis les
+      produits ; dans le second, l'inverse. Les quantités finales de chaque
+      espèce sont identiques dans les deux mélanges. Qu'est-ce qui détermine le
+      sens dans lequel chacun évolue ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Les quantités relatives présentes au départ, comparées à l'état
+          d'équilibre : l'ordre d'introduction n'entre nulle part dans le calcul
+        correct: true
+      - id: B
+        text: >-
+          L'espèce versée en dernier, qui se trouve en excès local au moment du
+          mélange et impose donc le sens de l'évolution
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.presence-produit-determine-sens
+        feedback: >
+          L'ordre d'introduction n'apparaît dans aucune grandeur du problème :
+          ni dans les quantités initiales une fois le mélange fait, ni dans la
+          constante d'équilibre. C'est d'ailleurs ce que montre l'énoncé — deux
+          ordres opposés, un seul état final. Un excès local se dissipe en
+          quelques instants d'agitation.
+      - id: C
+        text: >-
+          La double flèche, qui impose de toute façon une évolution lente et
+          faible dans le sens direct
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.reversible-jamais-quasi-totale
+        feedback: >
+          La double flèche ne fixe ni le sens, ni la vitesse, ni l'ampleur de
+          l'évolution : elle dit seulement que les deux sens coexistent. Selon
+          les quantités mises au départ, le MÊME système peut évoluer dans le
+          sens direct, dans le sens inverse, ou ne pas évoluer du tout s'il est
+          déjà à l'équilibre.
+      - id: D
+        text: >-
+          Rien ne le détermine à l'avance : une fois les quatre espèces
+          présentes, le système est à l'équilibre et n'évolue plus
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.equilibre-coexistence-signifie-arret
+        feedback: >
+          La présence des quatre espèces ne suffit pas à faire un équilibre :
+          il faut que leurs quantités soient dans le rapport particulier qu'exige
+          la constante d'équilibre. Tant que ce n'est pas le cas, le système
+          évolue — vers cet état-là, et dans le sens que la comparaison indique.
+    correct_feedback: >
+      Le sens d'évolution se lit dans les quantités relatives présentes au
+      départ, comparées à celles de l'état d'équilibre. L'ordre d'introduction
+      ne figure dans aucune de ces grandeurs — d'où le résultat de l'expérience :
+      deux ordres opposés, un seul état final.
+    solution: |
+      **Ce qui compte.** L'état initial, c'est-à-dire les quantités de chaque
+      espèce une fois le mélange effectué. Comparé à l'état d'équilibre du
+      système, il détermine le sens dans lequel la transformation évolue.
+
+      **Ce qui ne compte pas.** L'ordre d'introduction, la manière d'agiter, le
+      récipient. Rien de tout cela n'apparaît dans les quantités initiales, donc
+      rien de tout cela n'influence l'état final. L'expérience de l'énoncé est
+      justement conçue pour le montrer.
+
+      **La conséquence forte.** Un même système peut être atteint « par la
+      gauche » ou « par la droite » : partir des réactifs ou partir des produits
+      conduit au même état d'équilibre. C'est la signature d'un état d'équilibre
+      véritable, et non d'un arrêt accidentel.
+
+  - id: TDS-19
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_transformations_deux_sens
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_deux_sens.reversible-jamais-quasi-totale
+    stem: >
+      Deux transformations sont écrites avec une double flèche. La première
+      atteint $\tau = 0{,}12$, la seconde $\tau = 0{,}995$. Un élève en conclut
+      que la seconde n'aurait pas dû être écrite avec une double flèche. A-t-il
+      raison ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non : la double flèche dit que les deux sens coexistent, donc que
+          $\tau < 1$ strictement — elle ne fixe aucune borne inférieure
+        correct: true
+      - id: B
+        text: >-
+          Oui : au-delà de $0{,}95$, une transformation s'écrit avec une flèche
+          simple, la double flèche étant réservée exclusivement aux réactions
+          nettement limitées
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.reversible-jamais-quasi-totale
+        feedback: >
+          Il n'existe aucun seuil de ce genre. La flèche simple dit que la
+          transformation est TOTALE — le réactif limitant disparaît
+          entièrement — et $\tau = 0{,}995$ n'est pas $1$ : il reste des
+          réactifs, donc la double flèche est la seule écriture exacte.
+          « Quasi totale » est une commodité de langage, pas un changement de
+          nature.
+      - id: C
+        text: >-
+          Oui, mais pour une autre raison : un taux aussi élevé prouve que la
+          réaction inverse a cessé de se produire
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.equilibre-coexistence-signifie-arret
+        feedback: >
+          La réaction inverse ne cesse jamais : à l'équilibre, elle se produit
+          exactement à la même vitesse que la directe. C'est même ce qui
+          empêche $\tau$ d'atteindre $1$ — s'il n'y avait plus de réaction
+          inverse, plus rien ne retiendrait la transformation avant son terme.
+      - id: D
+        text: >-
+          Non, mais son erreur est ailleurs : c'est l'ordre dans lequel on
+          introduit les espèces qui fixe la valeur de $\tau$, pas le type de
+          flèche
+        correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.presence-produit-determine-sens
+        feedback: >
+          L'ordre d'introduction ne fixe rien : une fois le mélange fait, seules
+          comptent les quantités présentes et la constante d'équilibre. Deux
+          expérimentateurs qui versent les mêmes espèces dans un ordre opposé
+          obtiennent le même état final.
+    correct_feedback: >
+      L'élève a tort. La double flèche est une information qualitative : les
+      deux sens coexistent, donc $\tau < 1$ strictement. Elle ne dit rien de la
+      VALEUR de $\tau$, qui dépend de la constante d'équilibre — $0{,}12$ et
+      $0{,}995$ sont deux transformations limitées, l'une très peu avancée,
+      l'autre presque achevée.
+    solution: |
+      **Ce que chaque écriture affirme.**
+
+      | écriture | affirmation | conséquence |
+      |---|---|---|
+      | flèche simple | transformation totale | le réactif limitant disparaît, $\tau = 1$ |
+      | double flèche | les deux sens coexistent | il reste des réactifs, $\tau < 1$ |
+
+      **Ce que la double flèche ne dit pas.** La valeur de $\tau$. Celle-ci
+      dépend de la constante d'équilibre : plus $K$ est grande, plus l'équilibre
+      est déplacé vers les produits, plus $\tau$ approche $1$ — sans jamais
+      l'atteindre.
+
+      **Le vocabulaire.** On dit « quasi totale » au-delà de $\tau \approx 0{,}95$.
+      C'est une commodité de description, pas un changement de nature : l'état
+      reste un équilibre, et l'écriture reste une double flèche.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
-# Ajouté le 2026-09-05. Cette notion n'en avait aucun : son état de couverture
-# n'était lisible qu'en relançant un instrument, donc invisible à qui ouvrait le
-# fichier — et une dette qu'aucun document ne nomme est une dette qu'on ne paie
-# jamais. Le tableau est GÉNÉRÉ contre la convention de la chaîne
-# (web/scripts/lib/couverture-compte.mjs) et gardé par
-# scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
-# `total_items` cesse de correspondre au contenu du fichier — dans les DEUX
-# directions, donc combler le plancher oblige aussi à venir retourner le drapeau.
+# RÉÉCRIT le 2026-09-05, après TDS-16 à TDS-19. Cinq familles siégeaient sous
+# le plancher, dont `reversible-jamais-quasi-totale` sans AUCUN item de banc —
+# elle n'était sondée que par un checkpoint, ce qui ne compte pas dans le
+# modèle apprenant. Tableau GÉNÉRÉ, gardé par scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
-    apprenant est bâti sur le banc de fin seul.
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
   per_misconception:
-    mc.physics.pc_transformations_deux_sens.vitesse-implique-avancement:           { count: 1, items: [TDS-8] }
+    mc.physics.pc_transformations_deux_sens.vitesse-implique-avancement:           { count: 3, items: [TDS-8, TDS-16, TDS-17] }
     mc.physics.pc_transformations_deux_sens.conclusion-refusee-a-tort:             { count: 6, items: [TDS-2, TDS-4, TDS-9, TDS-10, TDS-12, TDS-13] }
     mc.physics.pc_transformations_deux_sens.reaction-toujours-totale:              { count: 5, items: [TDS-1, TDS-2, TDS-6, TDS-7, TDS-10] }
     mc.physics.pc_transformations_deux_sens.catalyseur-ou-temps-change-etat-final: { count: 6, items: [TDS-1, TDS-5, TDS-7, TDS-8, TDS-10, TDS-11] }
     mc.physics.pc_transformations_deux_sens.limitee-rien-ne-se-passe:              { count: 5, items: [TDS-5, TDS-6, TDS-9, TDS-11, TDS-14] }
-    mc.physics.pc_transformations_deux_sens.equilibre-coexistence-signifie-arret:  { count: 2, items: [TDS-12, TDS-15] }
-    mc.physics.pc_transformations_deux_sens.double-fleche-signifie-lente:          { count: 2, items: [TDS-3, TDS-4] }
-    mc.physics.pc_transformations_deux_sens.reversible-jamais-quasi-totale:        { count: 0, items: [] }
+    mc.physics.pc_transformations_deux_sens.equilibre-coexistence-signifie-arret:  { count: 6, items: [TDS-12, TDS-15, TDS-16, TDS-17, TDS-18, TDS-19] }
+    mc.physics.pc_transformations_deux_sens.double-fleche-signifie-lente:          { count: 3, items: [TDS-3, TDS-4, TDS-17] }
+    mc.physics.pc_transformations_deux_sens.reversible-jamais-quasi-totale:        { count: 3, items: [TDS-16, TDS-18, TDS-19] }
     mc.physics.pc_transformations_deux_sens.sens-propriete-fixe:                   { count: 3, items: [TDS-12, TDS-13, TDS-15] }
-    mc.physics.pc_transformations_deux_sens.presence-produit-determine-sens:       { count: 2, items: [TDS-13, TDS-15] }
+    mc.physics.pc_transformations_deux_sens.presence-produit-determine-sens:       { count: 4, items: [TDS-13, TDS-15, TDS-18, TDS-19] }
     mc.physics.pc_transformations_deux_sens.conditions-physiques-sans-effet:       { count: 5, items: [TDS-1, TDS-5, TDS-7, TDS-9, TDS-14] }
-  total_items: 15
+  total_items: 19
   floor: 3
-  floor_met: false
+  floor_met: true
   ramp_coverage:
     R0: 3
-    R1: 3
-    R2: 3
-    R3: 3
+    R1: 4
+    R2: 5
+    R3: 4
     R4: 3
-  under_floor:
-    # Déclarées, et INÉVALUABLES : sous 3 items du banc, le modèle apprenant
-    # les laisse « unassessed » à jamais — ni détectées, ni écartées.
-    # `manquants` = nombre d'items à écrire pour franchir le plancher.
-    # « sondée en leçon » = un checkpoint la vise, ce qui NE COMPTE PAS : le
-    # modèle est bâti sur le banc de fin seul (pas de double comptage).
-    mc.physics.pc_transformations_deux_sens.reversible-jamais-quasi-totale:        { items: 0, manquants: 3 }   # sondée en leçon seulement
-    mc.physics.pc_transformations_deux_sens.vitesse-implique-avancement:           { items: 1, manquants: 2 }
-    mc.physics.pc_transformations_deux_sens.double-fleche-signifie-lente:          { items: 2, manquants: 1 }
-    mc.physics.pc_transformations_deux_sens.equilibre-coexistence-signifie-arret:  { items: 2, manquants: 1 }
-    mc.physics.pc_transformations_deux_sens.presence-produit-determine-sens:       { items: 2, manquants: 1 }
   honest_state: >-
-    Cinq des onze misconceptions déclarées siègent SOUS le
-    plancher : le modèle apprenant ne peut pas les évaluer. L'une d'entre
-    elles n'a AUCUN item de banc.
-    Il manque huit items au total pour les y amener — dette NOMMÉE,
-    pas dette masquée.
+    Les onze misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Quatre y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

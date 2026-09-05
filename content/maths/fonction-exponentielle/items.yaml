@@ -1511,53 +1511,352 @@ items:
 # rupture-gates), un `primary_misconception` par item, et un `misconception`
 # par distracteur. Comptes ci-dessous BY PRIMARY (chaque item compte une fois,
 # vers son modele primaire). Ils sont reels, non gonfles.
+  # Ajoutés le 2026-09-05 : sept familles siégeaient sous le plancher de 3 items
+  # du banc — croissances-comparees-inversees (1), inegalite-reference-erreur
+  # (1), puis cinq à 2 items (exp-signe-ou-domaine, bijection-existence-unicite,
+  # somme-produit-confondus, limite-exp-moins-infini,
+  # exp-valeur-negative-impossible). Neuf places à combler, trois items de trois
+  # distracteurs : l'ajustement est exact, chaque distracteur porte une famille
+  # distincte.
+  - id: EXP-28
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_fonction_exponentielle
+    tags: [croissances_comparees, inegalite_de_reference]
+    primary_misconception: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
+    stem: >
+      Que vaut $\displaystyle\lim_{x \to +\infty} \frac{e^x}{x}$, et quel
+      argument le justifie le plus simplement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $+\infty$ : c'est la croissance comparée de référence, l'exponentielle
+          l'emportant sur toute puissance de $x$
+        correct: true
+      - id: B
+        text: >-
+          $0$, comme $\dfrac{\ln x}{x}$ : au voisinage de $+\infty$, le
+          dénominateur finit par l'emporter sur le numérateur
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
+        feedback: >
+          C'est la limite de $\dfrac{\ln x}{x}$, pas celle de $\dfrac{e^x}{x}$ :
+          les deux fonctions sont réciproques l'une de l'autre, et leurs
+          croissances comparées vont donc en sens opposés. $\ln$ croît plus
+          lentement que $x$, $\exp$ croît plus vite — et plus vite que $x^n$
+          pour tout entier $n$.
+      - id: C
+        text: >-
+          $1$ : le quotient est de la forme $\dfrac{+\infty}{+\infty}$, et deux
+          infinis de même nature se compensent
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
+        feedback: >
+          « $\infty/\infty$ » n'est pas un nombre, c'est une forme
+          INDÉTERMINÉE : elle signale seulement que le calcul direct ne conclut
+          pas. Selon les fonctions en jeu, la limite peut valoir $0$, un réel
+          quelconque, ou $+\infty$. Ici, c'est justement le rôle du théorème de
+          croissance comparée de trancher.
+      - id: D
+        text: >-
+          On peut minorer par l'inégalité de référence : $e^x \geqslant x$, donc
+          $\dfrac{e^x}{x} \geqslant 1$, ce qui donne $1$ pour limite
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.inegalite-reference-erreur
+        feedback: >
+          Deux erreurs. L'inégalité de référence est $e^x \geqslant x + 1$ — le
+          « $+1$ » n'est pas décoratif, c'est lui qui rend l'inégalité stricte
+          en $0$ et qui sert dans les démonstrations. Et surtout, une
+          minoration par $1$ ne donne pas la limite $1$ : elle dit seulement que
+          la limite est $\geqslant 1$.
+    correct_feedback: >
+      $\displaystyle\lim_{x \to +\infty} \frac{e^x}{x} = +\infty$. C'est la
+      croissance comparée de référence : l'exponentielle l'emporte sur toute
+      puissance de $x$. Le repère qui évite l'inversion : $\exp$ et $\ln$ sont
+      réciproques, donc leurs croissances comparées vont en sens opposés.
+    solution: |
+      **Le résultat de cours.**
+      $$\lim_{x \to +\infty} \frac{e^x}{x} = +\infty
+      \qquad\text{et plus généralement}\qquad
+      \lim_{x \to +\infty} \frac{e^x}{x^n} = +\infty \ \ (n \in \mathbb{N})$$
+
+      **Le contraste à retenir.** Du côté du logarithme, tout s'inverse :
+      $$\lim_{x \to +\infty} \frac{\ln x}{x} = 0$$
+      C'est cohérent : $\exp$ et $\ln$ sont réciproques l'une de l'autre, donc
+      leurs courbes sont symétriques par rapport à la droite $y = x$. L'une
+      s'échappe au-dessus, l'autre s'aplatit en dessous.
+
+      **Pourquoi la forme indéterminée n'est pas une impasse.** $\infty/\infty$
+      dit seulement que le calcul terme à terme ne conclut pas ; c'est
+      précisément ce que les théorèmes de croissance comparée servent à lever.
+
+  - id: EXP-29
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: maths_fonction_exponentielle
+    tags: [equation, bijection, tvi]
+    primary_misconception: mc.math.maths_fonction_exponentielle.bijection-existence-unicite
+    stem: >
+      Soit $f$ définie sur $\mathbb{R}$ par $f(x) = e^x + x - 3$. Que peut-on
+      affirmer des solutions de l'équation $f(x) = 0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elle admet exactement une solution : $f$ est continue, strictement
+          croissante sur $\mathbb{R}$, de limites $-\infty$ et $+\infty$
+        correct: true
+      - id: B
+        text: >-
+          Elle n'admet aucune solution : $e^x > 0$ pour tout $x$, donc
+          $e^x + x - 3$ ne peut pas s'annuler
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.exp-signe-ou-domaine
+        feedback: >
+          $e^x > 0$ est vrai, mais ne se transmet pas à $e^x + x - 3$ : les deux
+          autres termes peuvent être négatifs et l'emporter. En $x = 0$ par
+          exemple, $f(0) = 1 + 0 - 3 = -2 < 0$. La positivité de $\exp$ ne dit
+          rien du signe d'une expression qui la contient.
+      - id: C
+        text: >-
+          Elle admet deux solutions : une exponentielle croise une droite en
+          deux points, comme le montre l'allure des deux courbes
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.bijection-existence-unicite
+        feedback: >
+          C'est vrai pour certaines droites — $y = 3x$ coupe $y = e^x$ deux fois
+          — mais pas ici. Le raisonnement sûr ne passe pas par une intuition
+          graphique : $f'(x) = e^x + 1 > 0$ sur $\mathbb{R}$, donc $f$ est
+          STRICTEMENT croissante ; une fonction strictement monotone et continue
+          s'annule au plus une fois.
+      - id: D
+        text: >-
+          On ne peut pas conclure : le corollaire du théorème des valeurs
+          intermédiaires ne s'applique que sur un intervalle fermé borné
+          $[a\,;b]$
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.bijection-existence-unicite
+        feedback: >
+          Le corollaire s'applique sur tout intervalle, ouvert ou non, borné ou
+          non, à condition de remplacer les images des bornes par les LIMITES
+          aux bornes. Ici $\lim_{-\infty} f = -\infty$ et
+          $\lim_{+\infty} f = +\infty$ : $0$ est bien compris entre les deux, et
+          la stricte croissance donne l'unicité.
+    correct_feedback: >
+      Exactement une solution. $f$ est continue et dérivable sur $\mathbb{R}$
+      avec $f'(x) = e^x + 1 > 0$, donc strictement croissante ; ses limites sont
+      $-\infty$ et $+\infty$. Le corollaire du théorème des valeurs
+      intermédiaires donne l'existence, la stricte monotonie donne l'unicité.
+    solution: |
+      **Continuité et dérivabilité.** $f$ est somme de fonctions dérivables sur
+      $\mathbb{R}$, donc dérivable, donc continue.
+
+      **Sens de variation.**
+      $$f'(x) = e^x + 1 > 0 \quad \text{pour tout } x \in \mathbb{R}$$
+      donc $f$ est strictement croissante sur $\mathbb{R}$.
+
+      **Limites aux bornes.**
+      $$\lim_{x \to -\infty} f(x) = 0 + (-\infty) - 3 = -\infty
+      \qquad \lim_{x \to +\infty} f(x) = +\infty$$
+
+      **Conclusion.** $f$ réalise une bijection de $\mathbb{R}$ sur
+      $\mathbb{R}$ ; $0$ appartient à l'image, donc l'équation $f(x) = 0$ admet
+      une solution, et une seule. On peut l'encadrer : $f(0) = -2 < 0$ et
+      $f(1) = e - 2 > 0$, donc $\alpha \in \,]0\,;1[$.
+
+  - id: EXP-30
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_fonction_exponentielle
+    tags: [proprietes_algebriques, limites, equations]
+    primary_misconception: mc.math.maths_fonction_exponentielle.somme-produit-confondus
+    stem: >
+      Trois affirmations sont proposées sur la fonction exponentielle. Laquelle
+      est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $e^{a} \times e^{b} = e^{a+b}$ pour tous réels $a$ et $b$ : le produit
+          des images correspond à la somme des exposants
+        correct: true
+      - id: B
+        text: >-
+          $e^{a+b} = e^{a} + e^{b}$ : l'exponentielle transforme la somme en
+          somme, comme toute fonction usuelle
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.somme-produit-confondus
+        feedback: >
+          C'est précisément ce que l'exponentielle NE fait pas : elle transforme
+          la somme en PRODUIT, $e^{a+b} = e^a \times e^b$. Un contre-exemple
+          règle la question en trois secondes :
+          $e^{0+0} = e^0 = 1$, alors que $e^0 + e^0 = 2$.
+      - id: C
+        text: >-
+          $\displaystyle\lim_{x \to -\infty} e^x = -\infty$, l'exponentielle
+          suivant en $-\infty$ le comportement de $x$
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.limite-exp-moins-infini
+        feedback: >
+          $\displaystyle\lim_{x \to -\infty} e^x = 0^{+}$ : la courbe s'écrase
+          sur l'axe des abscisses, qui est asymptote horizontale en $-\infty$.
+          Une limite $-\infty$ contredirait d'ailleurs $e^x > 0$ : une fonction
+          strictement positive ne peut pas tendre vers $-\infty$.
+      - id: D
+        text: >-
+          L'équation $e^x = -4$ a pour solution $x = \ln 4$, obtenue en prenant
+          le logarithme des deux membres
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.exp-valeur-negative-impossible
+        feedback: >
+          $e^x = -4$ n'a AUCUNE solution : $e^x$ est strictement positive pour
+          tout réel $x$. Le passage au logarithme est illégitime ici, puisque
+          $\ln$ n'est pas défini sur les négatifs — écrire $\ln(-4)$ ou changer
+          discrètement le signe sont deux façons de contourner la conclusion,
+          qui est justement qu'il n'y a rien à résoudre.
+    correct_feedback: >
+      $e^{a} \times e^{b} = e^{a+b}$ : c'est la propriété fondamentale de
+      l'exponentielle, celle qui transforme les sommes en produits — l'exact
+      symétrique du logarithme, qui transforme les produits en sommes.
+    solution: |
+      **La propriété fondamentale.**
+      $$e^{a+b} = e^a \times e^b \qquad \text{d'où} \qquad
+      e^{-a} = \frac{1}{e^a}, \quad e^{a-b} = \frac{e^a}{e^b}, \quad
+      \left(e^a\right)^n = e^{na}$$
+      Elle est le miroir de $\ln(ab) = \ln a + \ln b$ : l'une transforme les
+      sommes en produits, l'autre les produits en sommes.
+
+      **Les limites de référence.**
+      $$\lim_{x \to -\infty} e^x = 0^{+} \qquad
+      \lim_{x \to +\infty} e^x = +\infty$$
+      L'axe des abscisses est asymptote horizontale en $-\infty$ — jamais en
+      $+\infty$.
+
+      **Le signe.** $e^x > 0$ pour tout réel $x$. Une équation $e^x = k$ avec
+      $k \leqslant 0$ n'a donc pas de solution, et il n'y a rien à calculer :
+      la réponse est « aucune solution ».
+
+  - id: EXP-31
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: maths_fonction_exponentielle
+    tags: [croissances_comparees, forme_indeterminee]
+    primary_misconception: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
+    stem: >
+      On veut déterminer $\displaystyle\lim_{x \to +\infty}\left(e^x -
+      x^2\right)$. Quel raisonnement conclut correctement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Écrire $e^x - x^2 = x^2\left(\dfrac{e^x}{x^2} - 1\right)$ : la
+          croissance comparée donne $\dfrac{e^x}{x^2} \to +\infty$, donc le
+          produit tend vers $+\infty$
+        correct: true
+      - id: B
+        text: >-
+          Utiliser l'inégalité de référence $e^x \geqslant x$ : il vient
+          $e^x - x^2 \geqslant x - x^2$, dont la limite est $+\infty$
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.inegalite-reference-erreur
+        feedback: >
+          Deux fautes en une ligne. L'inégalité de référence est
+          $e^x \geqslant x+1$, pas $e^x \geqslant x$ — le « $+1$ » fait partie
+          de l'énoncé. Et surtout $x - x^2 = x(1-x)$ tend vers $-\infty$ : une
+          minoration par une quantité qui tend vers $-\infty$ ne prouve
+          strictement rien.
+      - id: C
+        text: >-
+          Par croissance comparée, $\dfrac{e^x}{x^2} \to 0$ : c'est donc $x^2$
+          qui l'emporte, et la limite vaut $-\infty$
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
+        feedback: >
+          La croissance comparée dit l'inverse : $\dfrac{e^x}{x^n} \to +\infty$
+          pour tout entier $n$ — l'exponentielle l'emporte sur toute puissance.
+          C'est du côté du logarithme que le quotient tend vers $0$
+          ($\ln x / x \to 0$), et confondre les deux revient à échanger une
+          fonction avec sa réciproque.
+      - id: D
+        text: >-
+          Aucun : la limite est de la forme indéterminée $\infty - \infty$, donc
+          elle n'existe pas
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
+        feedback: >
+          « Forme indéterminée » ne veut pas dire « pas de limite » : cela veut
+          dire que le calcul terme à terme ne conclut pas, et qu'il faut
+          transformer l'écriture. Ici, mettre $x^2$ en facteur suffit à lever
+          l'indétermination — et la limite existe bel et bien.
+    correct_feedback: >
+      $e^x - x^2 = x^2\left(\dfrac{e^x}{x^2} - 1\right)$. Par croissance
+      comparée, $\dfrac{e^x}{x^2} \to +\infty$, donc la parenthèse tend vers
+      $+\infty$ et le produit aussi. La limite vaut $+\infty$.
+    solution: |
+      **L'obstacle.** $e^x \to +\infty$ et $x^2 \to +\infty$ : la différence est
+      une forme indéterminée $\infty - \infty$. Le calcul direct ne conclut pas ;
+      il faut changer d'écriture.
+
+      **La factorisation.** On met en facteur le terme qu'on soupçonne d'être le
+      plus faible :
+      $$e^x - x^2 = x^2\left(\frac{e^x}{x^2} - 1\right)$$
+
+      **La croissance comparée.**
+      $$\lim_{x \to +\infty} \frac{e^x}{x^2} = +\infty
+      \quad\Longrightarrow\quad
+      \lim_{x \to +\infty}\left(\frac{e^x}{x^2} - 1\right) = +\infty$$
+
+      **La conclusion.** Produit de $x^2 \to +\infty$ par une parenthèse qui
+      tend vers $+\infty$ :
+      $$\lim_{x \to +\infty}\left(e^x - x^2\right) = +\infty$$
+
+      **Le réflexe transférable.** Devant $\infty - \infty$, factoriser par le
+      terme dominant transforme la différence en produit — et les produits, eux,
+      se traitent sans indétermination dès qu'on connaît le signe des facteurs.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après EXP-28 à EXP-31. Sept familles siégeaient sous
+# le plancher de 3 items du banc — deux à un item, cinq à deux. Neuf places à
+# combler, quatre items : croissances comparées et inégalité de référence
+# (EXP-28, EXP-31), bijection et signe de l'exponentielle (EXP-29), propriétés
+# algébriques, limite en $-\infty$ et équation sans solution (EXP-30). Tableau
+# GÉNÉRÉ, gardé par scripts/resume-couverture.mjs.
 coverage_summary:
-  total_items: 27
-  per_rung:
-    R0: 3   # EXP-7, EXP-8, EXP-9
-    R1: 3   # EXP-1, EXP-10, EXP-11
-    R2: 3   # EXP-2, EXP-3, EXP-12
-    R3: 3   # EXP-4, EXP-13, EXP-14
-    R4: 3   # EXP-5, EXP-15, EXP-16
-    R5: 3   # EXP-17, EXP-18, EXP-19
-    R6: 3   # EXP-20, EXP-21, EXP-22
-    R7: 3   # EXP-6, EXP-23, EXP-24
-    R8: 3   # EXP-25, EXP-26, EXP-27
-  per_misconception:   # BY PRIMARY
-    mc.math.maths_fonction_exponentielle.valeurs-et-reciprocite-confondues: 3   # EXP-7, EXP-10, EXP-11  (floor met)
-    mc.math.maths_fonction_exponentielle.derivee-exp-composee: 3                # EXP-4, EXP-13, EXP-14  (floor met)
-    mc.math.maths_fonction_exponentielle.allure-courbe-erreur: 3                # EXP-17, EXP-18, EXP-19 (floor met)
-    mc.math.maths_fonction_exponentielle.primitive-exp-erreur: 3               # EXP-20, EXP-21, EXP-22 (floor met)
-    mc.math.maths_fonction_exponentielle.resolution-exp-erreur: 3             # EXP-6, EXP-23, EXP-25  (floor met)
-    mc.math.maths_fonction_exponentielle.bijection-existence-unicite: 2        # EXP-9, EXP-26          (BELOW floor)
-    mc.math.maths_fonction_exponentielle.somme-produit-confondus: 2           # EXP-2, EXP-8           (BELOW floor)
-    mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur: 2   # EXP-3, EXP-12          (BELOW floor)
-    mc.math.maths_fonction_exponentielle.exp-valeur-negative-impossible: 2    # EXP-24, EXP-27         (BELOW floor)
-    mc.math.maths_fonction_exponentielle.exp-signe-ou-domaine: 1              # EXP-1                  (BELOW floor)
-    mc.math.maths_fonction_exponentielle.croissances-comparees-inversees: 1   # EXP-5                  (BELOW floor)
-    mc.math.maths_fonction_exponentielle.limite-exp-moins-infini: 1           # EXP-15                 (BELOW floor)
-    mc.math.maths_fonction_exponentielle.inegalite-reference-erreur: 1        # EXP-16                 (BELOW floor)
-  floor_met: false          # 5 modèles sur 13 atteignent >=3 par primaire ; 8 restent en dessous.
-  models_defined: 13
-  models_meeting_floor: 5   # valeurs-et-reciprocite, derivee-exp-composee, allure-courbe, primitive-exp, resolution-exp
-  models_below_floor: 8     # les 8 modèles marques BELOW floor ci-dessus
-  # Distracteurs dont le modele differe du primaire de leur item — couverture
-  # SECONDAIRE, NON comptee ci-dessus (un item est compte une seule fois).
-  secondary_coverage:
-    - { item: EXP-2,  choice: D, misconception: mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur, note: "e^a - e^b = e^{a-b} : différence lue comme quotient (item primaire : somme-produit)." }
-    - { item: EXP-8,  choice: B, misconception: mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur, note: "E(a+b)=E(a)-E(b) : somme lue comme soustraction (item primaire : somme-produit)." }
-    - { item: EXP-8,  choice: D, misconception: mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur, note: "E(a+b)=E(a)/E(b) : somme lue comme quotient (item primaire : somme-produit)." }
-    - { item: EXP-19, choice: A, misconception: mc.math.maths_fonction_exponentielle.limite-exp-moins-infini,        note: "lim -inf = -inf (item primaire : allure-courbe)." }
-    - { item: EXP-26, choice: B, misconception: mc.math.maths_fonction_exponentielle.exp-signe-ou-domaine,           note: "« e^x>0 donc g>0 » generalise a g=e^x+2x-3 (item primaire : bijection-existence-unicite)." }
-    - { item: EXP-27, choice: C, misconception: mc.math.maths_fonction_exponentielle.resolution-exp-erreur,          note: "« besoin de calculer k(1) a part » : injectivite mal exploitee (item primaire : exp-valeur-negative-impossible)." }
-    - { item: EXP-27, choice: D, misconception: mc.math.maths_fonction_exponentielle.resolution-exp-erreur,          note: "sens de comparaison des exposants inverse (item primaire : exp-valeur-negative-impossible)." }
-  notes: >-
-    Backfill uniquement : aucun nouvel item écrit, aucun compte gonfle. Le bank
-    herite (27 items) precede le plancher >=3-par-modele : sur 13 modèles alignés
-    sur les rupture-gates, 5 l'atteignent par primaire et 8 restent EN DESSOUS
-    (dont les gates R4 croissances-comparees-inversees, limite-exp-moins-infini
-    et inegalite-reference-erreur, chacun a 1 item primaire seulement). Les
-    clones de checkpoints (checkpoints.yaml) sont surfaces en ligne et NE sont
-    PAS comptes ici. Un futur passage d'items devra epaissir les 8 modèles sous
-    le plancher pour declarer la notion DONE ; ce manque est lui-même le livrable
-    de ce backfill (honnete, non maquille).
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
+  per_misconception:
+    mc.math.maths_fonction_exponentielle.exp-signe-ou-domaine:              { count: 3, items: [EXP-1, EXP-26, EXP-29] }
+    mc.math.maths_fonction_exponentielle.valeurs-et-reciprocite-confondues: { count: 3, items: [EXP-7, EXP-10, EXP-11] }
+    mc.math.maths_fonction_exponentielle.bijection-existence-unicite:       { count: 3, items: [EXP-9, EXP-26, EXP-29] }
+    mc.math.maths_fonction_exponentielle.somme-produit-confondus:           { count: 3, items: [EXP-2, EXP-8, EXP-30] }
+    mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur:   { count: 4, items: [EXP-2, EXP-3, EXP-8, EXP-12] }
+    mc.math.maths_fonction_exponentielle.derivee-exp-composee:              { count: 3, items: [EXP-4, EXP-13, EXP-14] }
+    mc.math.maths_fonction_exponentielle.croissances-comparees-inversees:   { count: 3, items: [EXP-5, EXP-28, EXP-31] }
+    mc.math.maths_fonction_exponentielle.limite-exp-moins-infini:           { count: 3, items: [EXP-15, EXP-19, EXP-30] }
+    mc.math.maths_fonction_exponentielle.inegalite-reference-erreur:        { count: 3, items: [EXP-16, EXP-28, EXP-31] }
+    mc.math.maths_fonction_exponentielle.allure-courbe-erreur:              { count: 3, items: [EXP-17, EXP-18, EXP-19] }
+    mc.math.maths_fonction_exponentielle.primitive-exp-erreur:              { count: 3, items: [EXP-20, EXP-21, EXP-22] }
+    mc.math.maths_fonction_exponentielle.resolution-exp-erreur:             { count: 4, items: [EXP-6, EXP-23, EXP-25, EXP-27] }
+    mc.math.maths_fonction_exponentielle.exp-valeur-negative-impossible:    { count: 3, items: [EXP-24, EXP-27, EXP-30] }
+  total_items: 31
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 3
+    R2: 4
+    R3: 3
+    R4: 5
+    R5: 3
+    R6: 3
+    R7: 4
+    R8: 3
+  honest_state: >-
+    Les treize misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Onze y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

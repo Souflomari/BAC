@@ -1197,41 +1197,265 @@ items:
 # the floor would require NEW end-bank stems, deliberately deferred rather than
 # padded here.
 # ──────────────────────────────────────────────────────────────────────────────
+  # Ajoutés le 2026-09-05 : trois familles sous le plancher de 3 items du banc —
+  # `celerite-est-vitesse-point` (AUCUN item : elle n'était sondée que par un
+  # checkpoint, ce qui ne compte pas), `son-nature` (1) et
+  # `periodicite-hors-cadre` (1). Trois items, trois situations : une secousse
+  # unique chronométrée, le son dans une salle, un raisonnement à critiquer.
+  - id: OMP-19
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [celerite, retard, perturbation_unique]
+    stem: >
+      On envoie UNE seule secousse le long d'une corde tendue de
+      $8{,}0\ \text{m}$. Elle met $0{,}40\ \text{s}$ pour parcourir la corde
+      d'un bout à l'autre. Qu'en déduire ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La célérité vaut $c = 8{,}0/0{,}40 =
+          20\ \text{m}\cdot\text{s}^{-1}$ : c'est la perturbation qui avance
+          à cette vitesse, pas la matière
+        correct: true
+      - id: B
+        text: >-
+          Chaque point de la corde se déplace à
+          $20\ \text{m}\cdot\text{s}^{-1}$ le long de la corde, du départ vers
+          l'arrivée
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-est-vitesse-point
+        feedback: >
+          Aucun point de la corde ne voyage : chacun monte, redescend, et
+          retrouve sa place. C'est la PERTURBATION qui se déplace, pas la
+          matière — le bouchon sur l'eau ne rejoint jamais le bord. La célérité
+          mesure la progression du signal ; la vitesse d'un point, elle, est
+          verticale et varie sans cesse au cours de son va-et-vient.
+      - id: C
+        text: >-
+          La longueur d'onde vaut $\lambda = c\,T$ avec $T = 0{,}40\ \text{s}$,
+          soit $\lambda = 8{,}0\ \text{m}$
+        correct: false
+        misconception: mc.physics.pc_omp.periodicite-hors-cadre
+        feedback: >
+          Une perturbation UNIQUE n'a ni période ni longueur d'onde : ces deux
+          grandeurs décrivent la répétition, et il n'y a rien qui se répète ici.
+          $0{,}40\ \text{s}$ est un RETARD — la durée que met le signal pour
+          aller d'un bout à l'autre — pas une période. La relation
+          $\lambda = c\,T$ appartient aux ondes périodiques.
+      - id: D
+        text: >-
+          La célérité dépend de la force avec laquelle on a produit la
+          secousse : une secousse plus vive irait plus vite
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-depend-source
+        feedback: >
+          La célérité est une propriété du MILIEU — ici la tension de la corde
+          et sa masse par unité de longueur — pas de la source. Une secousse
+          plus vive donne une perturbation de plus grande amplitude, qui
+          voyage exactement à la même vitesse.
+    correct_feedback: >
+      $c = d/\Delta t = 8{,}0/0{,}40 = 20\ \text{m}\cdot\text{s}^{-1}$. C'est la
+      vitesse de propagation de la perturbation le long de la corde ; les points
+      de la corde, eux, ne font que monter et redescendre sur place.
+    solution: |
+      $$c = \frac{d}{\Delta t} = \frac{8{,}0}{0{,}40}
+      = 20\ \text{m}\cdot\text{s}^{-1}$$
+      **Ce que ce nombre est.** La vitesse à laquelle la déformation progresse
+      dans le milieu. Elle ne dépend que du milieu.
+
+      **Ce qu'il n'est pas.** La vitesse d'un point de la corde : celle-là est
+      verticale, varie à chaque instant, s'annule aux extrémités du va-et-vient,
+      et son déplacement net est nul — le point revient toujours à sa place.
+
+      **Et il n'y a ici ni période ni longueur d'onde**, puisque rien ne se
+      répète : $0{,}40\ \text{s}$ est le retard de propagation d'un bout à
+      l'autre.
+
+  - id: OMP-20
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [son, onde_longitudinale, trois_dimensions]
+    stem: >
+      Un haut-parleur émet un son dans une salle. Comment cette onde se
+      propage-t-elle ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          C'est une onde longitudinale — l'air est comprimé et dilaté DANS la
+          direction de propagation — et elle se propage en trois dimensions
+        correct: true
+      - id: B
+        text: >-
+          C'est une onde transversale comme sur une corde : les molécules d'air
+          vibrent perpendiculairement à la direction de propagation
+        correct: false
+        misconception: mc.physics.pc_omp.son-nature
+        feedback: >
+          Le son est LONGITUDINAL : les molécules d'air oscillent le long de la
+          direction de propagation, créant des zones de compression et de
+          dilatation. Une onde transversale demanderait à l'air de résister au
+          cisaillement, ce qu'un fluide ne fait pas — c'est justement pourquoi
+          le son ne peut pas être transversal dans l'air.
+      - id: C
+        text: >-
+          Elle se propage selon une seule direction, celle vers laquelle le
+          haut-parleur est tourné
+        correct: false
+        misconception: mc.physics.pc_omp.son-nature
+        feedback: >
+          Le son se propage à TROIS dimensions : ses fronts d'onde sont des
+          sphères qui s'éloignent de la source. L'expérience la plus ordinaire
+          le montre — on entend un haut-parleur en se plaçant derrière lui, ou
+          dans la pièce voisine. Sa direction n'affecte que l'intensité reçue,
+          pas l'existence de la propagation.
+      - id: D
+        text: >-
+          Les molécules d'air voyagent du haut-parleur jusqu'à l'oreille, à la
+          célérité du son, soit environ $340\ \text{m}\cdot\text{s}^{-1}$
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-est-vitesse-point
+        feedback: >
+          Une onde transporte de l'énergie, pas de la matière. Chaque molécule
+          d'air oscille autour d'une position moyenne qu'elle ne quitte pas ;
+          c'est la compression qui voyage de proche en proche. Si l'air lui-même
+          se déplaçait à $340\ \text{m}\cdot\text{s}^{-1}$, écouter de la
+          musique serait une expérience venteuse.
+    correct_feedback: >
+      Le son est une onde mécanique LONGITUDINALE à trois dimensions : l'air se
+      comprime et se dilate dans la direction même de propagation, et les fronts
+      d'onde sont des sphères. Aucune molécule ne voyage — seule la
+      perturbation se propage.
+    solution: |
+      **Longitudinale.** Le haut-parleur pousse et tire l'air devant lui,
+      créant des zones de surpression et de dépression qui se succèdent le long
+      de la direction de propagation. Les molécules oscillent donc PARALLÈLEMENT
+      à cette direction — c'est la définition d'une onde longitudinale.
+      Un fluide ne transmet pas le cisaillement : une onde transversale y est
+      impossible.
+
+      **À trois dimensions.** Les fronts d'onde sont des sphères centrées sur la
+      source. C'est pourquoi on entend un son en se plaçant n'importe où autour
+      d'un haut-parleur.
+
+      **Sans transport de matière.** Chaque molécule oscille autour d'une
+      position fixe ; l'énergie, elle, se propage.
+
+  - id: OMP-21
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [perturbation_unique, retard, critique_de_raisonnement]
+    stem: >
+      Un élève observe une vague UNIQUE traverser une cuve et écrit : « sa
+      longueur d'onde vaut $\lambda = c\,T$ ; comme la vague met $2\ \text{s}$
+      à traverser la cuve, $T = 2\ \text{s}$ ». Que penser de ce raisonnement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Deux erreurs : une perturbation unique n'a ni période ni longueur
+          d'onde, et la durée de traversée est un retard
+        correct: true
+      - id: B
+        text: >-
+          Une seule erreur : la relation est bonne, mais $T$ désigne la durée
+          pendant laquelle un point du milieu reste en mouvement, pas la durée
+          de traversée
+        correct: false
+        misconception: mc.physics.pc_omp.periodicite-hors-cadre
+        feedback: >
+          Le problème n'est pas la valeur de $T$, c'est son existence même. Une
+          période suppose quelque chose qui se répète, donc une source
+          périodique. Ici la source a produit UNE perturbation et s'est arrêtée :
+          il n'y a ni période, ni fréquence, ni longueur d'onde à calculer.
+      - id: C
+        text: >-
+          Le raisonnement tient si l'on remplace $c$ par la vitesse du point le
+          plus haut de la vague, qui est la vraie vitesse de l'onde
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-est-vitesse-point
+        feedback: >
+          La célérité n'est pas la vitesse d'un point du milieu : les deux sont
+          des grandeurs différentes, l'une horizontale et constante, l'autre
+          verticale et variable. Et remplacer $c$ ne réglerait rien, puisque le
+          $T$ de la relation n'existe pas dans cette situation.
+      - id: D
+        text: >-
+          Le raisonnement vaudrait pour une vague, mais pas pour un son, qui n'a
+          ni longueur d'onde ni période parce qu'il est longitudinal
+        correct: false
+        misconception: mc.physics.pc_omp.son-nature
+        feedback: >
+          Être longitudinal n'empêche nullement d'être périodique : un son pur
+          a une fréquence, une période et une longueur d'onde parfaitement
+          définies — c'est même ce qui fixe sa hauteur. Longitudinal et
+          périodique décrivent deux choses indépendantes : la DIRECTION de la
+          vibration, et sa RÉPÉTITION.
+    correct_feedback: >
+      Deux erreurs superposées. D'abord, une perturbation unique n'a ni période
+      ni longueur d'onde : ces grandeurs supposent une source périodique.
+      Ensuite, $2\ \text{s}$ est le retard de propagation d'un bord à l'autre —
+      la durée que met le signal pour parcourir la cuve — jamais une période.
+    solution: |
+      **Première erreur : le cadre.** $\lambda = c\,T$ appartient aux ondes
+      progressives PÉRIODIQUES. Elle décrit la double périodicité : la source se
+      répète toutes les $T$ secondes, le milieu recopie ce motif tous les
+      $\lambda$ mètres. Une perturbation isolée ne se répète pas ; il n'y a rien
+      dont mesurer la période.
+
+      **Seconde erreur : la grandeur lue.** Les $2\ \text{s}$ mesurent le RETARD
+      $\tau$ entre l'entrée et la sortie de la cuve :
+      $$\tau = \frac{d}{c}$$
+      C'est cette relation-là qui s'applique ici, et elle donne la célérité si
+      l'on connaît la largeur de la cuve.
+
+      **Ce qu'on peut légitimement calculer** sur une perturbation unique : sa
+      célérité, son retard entre deux points, son amplitude. Pas sa période.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après OMP-19, OMP-20 et OMP-21. L'ancien déclarait
+# franchement `floor_met: false` et nommait la dette — mais il comptait au
+# `primary_misconception` (une tête d'affiche par item) là où la chaîne compte
+# au distracteur. Sous la convention de la chaîne, quatre des huit familles
+# qu'il donnait pour courtes étaient déjà au plancher ; il restait
+# `celerite-est-vitesse-point` (AUCUN item de banc : elle n'était sondée que
+# par un checkpoint, ce qui ne compte pas), `son-nature` (1) et
+# `periodicite-hors-cadre` (1). Tableau GÉNÉRÉ contre
+# web/scripts/lib/couverture-compte.mjs, gardé par
+# scripts/resume-couverture.mjs.
 coverage_summary:
-  method: "item-level, by primary_misconception (one item = one count)"
-  total_items: 18
-  floor: 3
-  floor_met: false
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
   per_misconception:
-    mc.physics.pc_omp.onde-transporte-matiere: 4        # OMP-1, OMP-7, OMP-8, OMP-10  (met)
-    mc.physics.pc_omp.confusion-transversale-longitudinale: 3  # OMP-3, OMP-11, OMP-12  (met)
-    mc.physics.pc_omp.celerite-depend-source: 3         # OMP-4, OMP-16, OMP-18  (met)
-    mc.physics.pc_omp.retard-relation-fausse: 3         # OMP-5, OMP-13, OMP-17  (met)
-    mc.physics.pc_omp.front-onde-dimension: 2           # OMP-14, OMP-15  (UNDER floor)
-    mc.physics.pc_omp.onde-sans-energie: 1              # OMP-2  (UNDER floor)
-    mc.physics.pc_omp.onde-sans-milieu: 1               # OMP-9  (UNDER floor)
-    mc.physics.pc_omp.son-nature: 1                     # OMP-6  (UNDER floor)
-    mc.physics.pc_omp.celerite-est-vitesse-point: 0     # end bank; surfaced by cp-r3-celerite-vs-point (UNDER floor)
-    mc.physics.pc_omp.periodicite-hors-cadre: 0         # end bank; surfaced by cp-r3-periodicite + OMP-18 D distractor (UNDER floor)
-  models_meeting_floor: 4
-  models_under_floor: 6
+    mc.physics.pc_omp.onde-transporte-matiere:              { count: 6, items: [OMP-1, OMP-2, OMP-7, OMP-8, OMP-9, OMP-10] }
+    mc.physics.pc_omp.onde-sans-energie:                    { count: 4, items: [OMP-2, OMP-7, OMP-8, OMP-10] }
+    mc.physics.pc_omp.onde-sans-milieu:                     { count: 3, items: [OMP-1, OMP-6, OMP-9] }
+    mc.physics.pc_omp.confusion-transversale-longitudinale: { count: 4, items: [OMP-3, OMP-11, OMP-12, OMP-17] }
+    mc.physics.pc_omp.celerite-depend-source:               { count: 4, items: [OMP-4, OMP-16, OMP-18, OMP-19] }
+    mc.physics.pc_omp.celerite-est-vitesse-point:           { count: 3, items: [OMP-19, OMP-20, OMP-21] }
+    mc.physics.pc_omp.retard-relation-fausse:               { count: 4, items: [OMP-5, OMP-13, OMP-16, OMP-17] }
+    mc.physics.pc_omp.front-onde-dimension:                 { count: 3, items: [OMP-6, OMP-14, OMP-15] }
+    mc.physics.pc_omp.son-nature:                           { count: 3, items: [OMP-6, OMP-20, OMP-21] }
+    mc.physics.pc_omp.periodicite-hors-cadre:               { count: 3, items: [OMP-18, OMP-19, OMP-21] }
+  total_items: 21
+  floor: 3
+  floor_met: true
   ramp_coverage:
-    R0: 3   # OMP-7, OMP-8, OMP-9
-    R1: 3   # OMP-1, OMP-2, OMP-10
-    R2: 3   # OMP-3, OMP-11, OMP-12
-    R3: 3   # OMP-4, OMP-5, OMP-13
-    R4: 3   # OMP-6, OMP-14, OMP-15
-    R5: 3   # OMP-16, OMP-17, OMP-18
-  note: >
-    Per-distractor tagging promoted and item-level primary_misconception added
-    in this pass (additive only). Floor debt surfaced honestly, not padded:
-    onde-transporte-matiere (4), confusion-transversale-longitudinale (3),
-    celerite-depend-source (3) and retard-relation-fausse (3) meet the ≥3 floor;
-    front-onde-dimension (2), onde-sans-energie (1), onde-sans-milieu (1) and
-    son-nature (1) are under it. celerite-est-vitesse-point and
-    periodicite-hors-cadre have no dedicated end-bank item (they are probed by
-    the in-lesson checkpoints and, for periodicite-hors-cadre, by OMP-18's D
-    distractor). A follow-up item pass should add fresh stems to close the six
-    under-covered models to ≥3 — not restatements of existing items or of the
-    bac exercise in exercises.yaml. Per-distractor tags are diagnostic metadata
-    layered onto the item-level floor count; they do not change the method above.
+    R0: 3
+    R1: 4
+    R2: 3
+    R3: 4
+    R4: 4
+    R5: 3
+  honest_state: >-
+    Les dix misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Cinq y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

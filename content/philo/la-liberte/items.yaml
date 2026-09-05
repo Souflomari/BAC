@@ -1014,52 +1014,249 @@ items:
       **Pourquoi c'est important :** c'est exactement ce point aveugle que
       l'antithèse (Spinoza, servitude des passions) va exploiter.
 
+  # Ajoutés le 2026-09-05 : quatre familles sous le plancher de 3 items du banc —
+  # `autrui-limite-par-nature` (AUCUN item : sondée en leçon seulement, ce qui ne
+  # compte pas), `loi-liberte-mal-articulees` (1),
+  # `negative-confondue-avec-positive` (2) et `liberte-confondue-avec-pouvoir`
+  # (2). Trois items, trois entrées : Rousseau, l'objection ordinaire du
+  # « pouvoir tout faire », et Spinoza.
+  - id: LIB-16
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: philo_liberte
+    tags: [rousseau, loi, autonomie, contrat-social]
+    stem: >
+      « Chacun s'unissant à tous n'obéit pourtant qu'à lui-même et reste aussi
+      libre qu'auparavant », écrit Rousseau. Que soutient-il exactement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Qu'une loi qu'on s'est prescrite à soi-même, comme membre du corps politique, n'est pas une contrainte subie : y obéir, c'est obéir à sa propre volonté."
+        correct: true
+      - id: B
+        text: "Que toute loi ampute nécessairement la liberté de chacun, mais que ce sacrifice est le prix à payer pour la sécurité qu'apporte la vie en société."
+        correct: false
+        misconception: mc.philo.liberte.loi-liberte-mal-articulees
+        feedback: >
+          C'est la thèse que Rousseau conteste. Sa question est précisément
+          celle-ci : à quelles conditions une loi peut-elle obliger sans
+          asservir ? Sa réponse tient dans l'origine de la loi — non pas
+          imposée du dehors, mais issue de la volonté générale dont je suis
+          partie prenante. Une loi qu'on se donne n'est pas un sacrifice
+          consenti : c'est l'exercice même de l'autonomie.
+      - id: C
+        text: "Que la présence des autres réduit mécaniquement l'espace de ma liberté, chaque homme libre autour de moi étant un obstacle de plus sur mon chemin."
+        correct: false
+        misconception: mc.philo.liberte.autrui-limite-par-nature
+        feedback: >
+          C'est exactement le contraire du contrat social. Pour Rousseau,
+          l'association ne retranche pas de la liberté : elle en fonde une
+          nouvelle, civile, plus assurée que la liberté naturelle où chacun
+          dépend de la force du plus fort. Autrui n'y est pas un obstacle de
+          plus, il est la condition d'une liberté commune.
+      - id: D
+        text: "Que la liberté comme absence de contrainte extérieure et la liberté intérieure sont une seule et même chose, mesurables au même critère."
+        correct: false
+        misconception: mc.philo.liberte.negative-confondue-avec-positive
+        feedback: >
+          Ces deux libertés se dissocient — c'est même ce qui rend le problème
+          intéressant. Un homme sans entrave peut agir sous l'emprise de ses
+          passions ; un homme contraint peut garder l'autonomie de son jugement.
+          Rousseau ne les confond pas : il montre comment la loi civile peut
+          servir la seconde sans ruiner la première.
+    correct_feedback: >
+      Rousseau ne dit pas que la loi limite moins qu'on ne croit : il déplace la
+      question vers son ORIGINE. Une loi que je me suis donnée, comme membre du
+      souverain, n'est pas une volonté étrangère qui s'impose à la mienne — lui
+      obéir, c'est m'obéir. C'est cela, l'autonomie, littéralement.
+    solution: |
+      **Le problème.** Toute société suppose des lois ; toute loi semble limiter
+      la liberté. Faut-il en conclure que vivre ensemble coûte nécessairement
+      une part de liberté ?
+
+      **Le déplacement de Rousseau.** Il ne discute pas l'ÉTENDUE de la
+      contrainte, mais son ORIGINE. Une loi imposée du dehors asservit ; une loi
+      que le citoyen se prescrit à lui-même, en tant que membre du souverain,
+      n'est pas une volonté étrangère.
+
+      **D'où la formule.** « N'obéir qu'à soi-même » ne veut pas dire faire ce
+      qu'on veut : cela veut dire que la source de la loi et celle de ma volonté
+      coïncident. L'obéissance à la loi qu'on s'est prescrite est liberté —
+      c'est l'autonomie, au sens propre du mot.
+
+      **À distinguer de Montesquieu**, qui définit la liberté politique comme le
+      droit de faire tout ce que les lois permettent : chez lui la loi TRACE
+      l'espace de la liberté, chez Rousseau elle en est l'acte même.
+
+  - id: LIB-17
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: philo_liberte
+    tags: [liberte-et-pouvoir, definition, objection]
+    stem: >
+      Un élève affirme : « Être libre, c'est pouvoir faire tout ce qu'on veut. »
+      Quelle réponse est la plus solide ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que la liberté ne se mesure pas à l'étendue de ce qu'on peut faire : un homme enfermé peut rester libre de son jugement, un homme tout-puissant peut agir sous l'emprise de ses passions."
+        correct: true
+      - id: B
+        text: "Qu'il a raison sur le fond : la liberté est bien la puissance d'agir, et c'est pourquoi les hommes les plus puissants sont aussi, en toute rigueur, les plus libres."
+        correct: false
+        misconception: mc.philo.liberte.liberte-confondue-avec-pouvoir
+        feedback: >
+          Confondre liberté et puissance rend la question insoluble : personne
+          n'étant tout-puissant, personne ne serait libre, et le mot ne
+          désignerait plus qu'un idéal inaccessible. La liberté ne porte pas sur
+          l'ÉTENDUE de ce que je peux, mais sur ce qui DÉTERMINE ce que je fais
+          — mes propres raisons, ou une cause qui m'échappe.
+      - id: C
+        text: "Qu'il oublie la loi, laquelle est par nature l'ennemie de la liberté et en réduit toujours l'étendue, quel que soit celui qui l'édicte."
+        correct: false
+        misconception: mc.philo.liberte.loi-liberte-mal-articulees
+        feedback: >
+          « Par nature » est de trop. Une loi imposée du dehors contraint ;
+          une loi qu'on s'est prescrite, chez Rousseau, est l'exercice même de
+          l'autonomie. Et chez Montesquieu, la loi ne retranche pas la liberté :
+          elle en trace l'espace, en garantissant que nul ne subira l'arbitraire
+          d'un autre.
+      - id: D
+        text: "Qu'il oublie autrui, qui borne mécaniquement ce que je peux faire : moins il y a de monde autour de moi, plus je suis libre de mes mouvements."
+        correct: false
+        misconception: mc.philo.liberte.autrui-limite-par-nature
+        feedback: >
+          Cette réponse accepte la définition qu'elle prétend corriger : elle
+          continue de mesurer la liberté à l'espace d'action disponible. Et elle
+          traite autrui comme un obstacle par construction, sans envisager qu'il
+          puisse en être la condition — la reconnaissance mutuelle des libertés
+          est ce qui les rend effectives plutôt que précaires.
+    correct_feedback: >
+      La liberté n'est pas la puissance. Ce qui la définit n'est pas l'étendue
+      de ce que je peux faire, mais ce qui détermine ce que je fais : mes
+      propres raisons, ou des causes qui m'échappent. D'où deux figures qui
+      ruinent l'équation — le prisonnier lucide et le tyran esclave de ses
+      passions.
+    solution: |
+      **Pourquoi l'équation ne tient pas.** Si liberté = puissance, alors la
+      liberté se mesure en capacités, et nul n'étant tout-puissant, nul n'est
+      libre. Le mot perdrait tout usage.
+
+      **Les deux contre-exemples classiques.** Le prisonnier qui garde
+      l'autonomie de son jugement est libre en un sens que ses murs n'atteignent
+      pas. Le tyran qui obéit à ses passions est esclave en un sens que sa
+      puissance n'efface pas.
+
+      **Ce que la liberté désigne alors.** Non pas l'étendue du possible, mais
+      l'ORIGINE de l'acte : est-ce moi, avec mes raisons, ou une cause qui me
+      traverse sans que je la connaisse ? C'est le terrain sur lequel Spinoza,
+      Sartre et Rousseau donnent chacun leur réponse.
+
+  - id: LIB-18
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: philo_liberte
+    tags: [spinoza, necessite, connaissance-des-causes]
+    stem: >
+      Spinoza soutient qu'être libre, ce n'est pas échapper à la nécessité, mais
+      la comprendre. Lequel de ces quatre élèves l'a compris ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Celui qui dit : la pierre qui tombe se croirait libre si elle avait conscience de son mouvement ; l'homme devient libre en connaissant les causes qui le déterminent, non en s'y soustrayant."
+        correct: true
+      - id: B
+        text: "Celui qui dit : Spinoza mesure la liberté à l'absence d'obstacle extérieur, exactement comme il mesure la liberté intérieure — chez lui les deux sont une seule et même chose."
+        correct: false
+        misconception: mc.philo.liberte.negative-confondue-avec-positive
+        feedback: >
+          C'est précisément ce que Spinoza sépare. L'absence d'obstacle ne fait
+          pas la liberté : la pierre qui tombe ne rencontre aucun obstacle et
+          n'est pas libre pour autant. Ce qui la distingue de l'homme libre,
+          c'est la CONNAISSANCE des causes — une affaire intérieure, sans
+          rapport avec l'espace laissé au mouvement.
+      - id: C
+        text: "Celui qui dit : pour Spinoza, être libre suppose de pouvoir agir sans subir aucune cause, donc d'être aussi puissant que possible face au monde."
+        correct: false
+        misconception: mc.philo.liberte.liberte-confondue-avec-pouvoir
+        feedback: >
+          Spinoza nie qu'un tel affranchissement soit possible : tout, dans la
+          nature, est causé, l'homme compris. Sa thèse n'est pas qu'il faille
+          gagner en puissance pour échapper aux causes, mais qu'il faut les
+          COMPRENDRE — et que cette compréhension change le rapport que
+          j'entretiens avec ce qui me détermine.
+      - id: D
+        text: "Celui qui dit : comprendre ne change rien tant qu'autrui continue de me contraindre — la liberté commence exactement là où les autres s'arrêtent."
+        correct: false
+        misconception: mc.philo.liberte.autrui-limite-par-nature
+        feedback: >
+          Cette réponse ramène la liberté à une question de frontière entre les
+          personnes, alors que Spinoza la place ailleurs : dans le passage de
+          l'idée inadéquate à l'idée adéquate. On peut être seul et servile
+          — mené par des passions dont on ignore les causes — comme on peut être
+          entouré et libre.
+    correct_feedback: >
+      L'exemple de la pierre est le cœur de l'argument : elle tombe par
+      nécessité, et si elle avait conscience de son élan, elle croirait tomber
+      parce qu'elle le veut. Le sentiment de liberté ne prouve donc rien. La
+      liberté véritable commence avec la connaissance des causes qui nous
+      déterminent.
+    solution: |
+      **Le point de départ.** Tout, dans la nature, est nécessairement causé —
+      l'homme n'y fait pas exception. Chercher la liberté du côté d'une
+      exception à la causalité, c'est la chercher là où elle ne peut pas être.
+
+      **L'exemple de la pierre.** Une pierre lancée poursuit son mouvement par
+      nécessité. Si elle avait conscience de son élan, elle se croirait libre —
+      elle sentirait son mouvement sans en connaître la cause. Les hommes sont
+      dans ce cas : conscients de leurs désirs, ignorants des causes qui les
+      produisent.
+
+      **Le déplacement.** La liberté n'est donc pas l'absence de cause, mais le
+      passage de l'ignorance à la connaissance : comprendre pourquoi je désire
+      ce que je désire, c'est cesser d'être mené par des idées inadéquates.
+
+      **Ce que cela écarte.** Le sentiment de liberté (la pierre l'aurait), la
+      puissance (elle ne change rien à la causalité), et la mesure par les
+      obstacles extérieurs (la pierre n'en rencontre aucun).
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après LIB-16, LIB-17 et LIB-18. L'ancien disait vrai
+# et demandait la suite en toutes lettres : « liberte-confondue-avec-pouvoir
+# (2) et loi-liberte-mal-articulees (1) sont réels mais minces dans le banc
+# hérité — une passe d'items devrait en ajouter un ou deux chacun ». C'est
+# fait, et `autrui-limite-par-nature`, qui n'avait AUCUN item de banc, est
+# refermée du même geste. Tableau GÉNÉRÉ, gardé par
+# scripts/resume-couverture.mjs.
 coverage_summary:
-  # Computed by loading this file with js-yaml and tallying every
-  # choices[].misconception (+ also_reveals[]) value per item — an item
-  # counts once per misconception if ANY of its distractors carries that id
-  # (house convention, matching content/philo/analyse-de-texte/items.yaml).
-  # This is a LEGACY end-bank (LIB-1..LIB-15 predate per-distractor tagging —
-  # Gap-4 finding, task instruction) retrofitted in this pass: every one of
-  # the 45 distractors across the 15 items now carries a real misconception
-  # id (no null tags), which is stricter than the house default. Per the
-  # recipe's "Honest coverage" judgment call, floor gaps below are reported
-  # truthfully rather than padded.
-  total_items: 15
-  floor: 3
-  floor_met: false
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
   per_misconception:
-    mc.philo.liberte.faux-dilemme-libre-arbitre-determinisme: 4
-    mc.philo.liberte.libre-arbitre-exige-absence-de-cause: 6
-    mc.philo.liberte.contrainte-egale-determination: 3
-    mc.philo.liberte.echapper-a-la-liberte: 5
-    mc.philo.liberte.sentiment-de-liberte-suffit: 3
-    mc.philo.liberte.negative-confondue-avec-positive: 3
-    mc.philo.liberte.liberte-confondue-avec-pouvoir: 2
-    mc.philo.liberte.loi-liberte-mal-articulees: 1
-    mc.philo.liberte.licence-est-liberte-achevee: 3
-    mc.philo.liberte.autrui-limite-par-nature: 0
-    mc.philo.liberte.methode-dissertation-appliquee-mecaniquement: 3
-  notes: >-
-    Every distractor across the 15 legacy items now carries a real
-    misconception id (no null tags) — the Gap-4 fix this pass exists to make.
-    8 of 11 models clear the ≥3 floor. THREE do not, and floor_met is
-    reported honestly rather than padded: liberte-confondue-avec-pouvoir (2,
-    LIB-2/LIB-15) and loi-liberte-mal-articulees (1, LIB-3) are real but
-    thin in the legacy bank — a follow-up item pass should add 1-2 items each.
-    autrui-limite-par-nature (0) is a genuinely NEW axis this pass surfaces:
-    it comes from the r-bac Bakounine text (liberté et autrui), which the
-    lesson's own R0-R4 body does not teach directly, so no legacy item
-    exercises it — it is covered by checkpoints.yaml's cp-bac-autrui instead
-    (checkpoints do not count toward this floor, per house convention), and
-    is flagged here as the clearest item-authoring gap for a follow-up pass.
-    Dual-tagging is used once, deliberately: LIB-15's choice C is filed
-    primarily under licence-est-liberte-achevee with also_reveals
-    negative-confondue-avec-positive, since it conflates the lesson's two
-    named senses of "faire tout ce que l'on veut" at once.
-    Length rebalance (recipe's philo addendum): the legacy bank's correct
-    answer was the LONGEST option in all 15/15 items before this pass — an
-    exact instance of the campaign's cited ~97% tell. Distractors were
-    enriched with additional philosophical substance (never by trimming the
-    correct answer's content) so the correct choice is now longest in only
-    3/15, shortest in 5/15, and a middle length in 7/15.
+    mc.philo.liberte.faux-dilemme-libre-arbitre-determinisme:      { count: 4, items: [LIB-5, LIB-6, LIB-7, LIB-10] }
+    mc.philo.liberte.libre-arbitre-exige-absence-de-cause:         { count: 6, items: [LIB-1, LIB-4, LIB-5, LIB-10, LIB-11, LIB-12] }
+    mc.philo.liberte.contrainte-egale-determination:               { count: 3, items: [LIB-5, LIB-6, LIB-9] }
+    mc.philo.liberte.echapper-a-la-liberte:                        { count: 5, items: [LIB-1, LIB-2, LIB-4, LIB-6, LIB-7] }
+    mc.philo.liberte.sentiment-de-liberte-suffit:                  { count: 3, items: [LIB-4, LIB-11, LIB-12] }
+    mc.philo.liberte.negative-confondue-avec-positive:             { count: 4, items: [LIB-8, LIB-12, LIB-16, LIB-18] }
+    mc.philo.liberte.liberte-confondue-avec-pouvoir:               { count: 4, items: [LIB-2, LIB-15, LIB-17, LIB-18] }
+    mc.philo.liberte.loi-liberte-mal-articulees:                   { count: 3, items: [LIB-3, LIB-16, LIB-17] }
+    mc.philo.liberte.licence-est-liberte-achevee:                  { count: 3, items: [LIB-3, LIB-14, LIB-15] }
+    mc.philo.liberte.autrui-limite-par-nature:                     { count: 3, items: [LIB-16, LIB-17, LIB-18] }
+    mc.philo.liberte.methode-dissertation-appliquee-mecaniquement: { count: 3, items: [LIB-13, LIB-14, LIB-15] }
+  total_items: 18
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 4
+    R2: 4
+    R3: 4
+    R4: 3
+  honest_state: >-
+    Les onze misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Six y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.
