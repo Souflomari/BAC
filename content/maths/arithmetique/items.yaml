@@ -1579,96 +1579,409 @@ items:
       $35$ et $18$ sont premiers entre eux, bien qu'aucun des deux ne
       soit premier : les deux notions sont indépendantes.
 
+  # Ajoutés le 2026-09-05 : huit familles sous le plancher de 3 items du banc,
+  # dont `fermat-condition-ou-exposant` sans AUCUN item — elle n'était sondée
+  # que par un checkpoint, ce qui ne compte pas dans le modèle apprenant.
+  # Quatre items, douze places : trois sur le petit théorème de Fermat et les
+  # équations diophantiennes, un sur divisibilité et primalité.
+  - id: AR-28
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [fermat, diophantienne, solution_generale]
+    primary_misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+    stem: >
+      Soit $p = 7$, premier. Que peut-on affirmer de $a^{6} \bmod 7$ pour un
+      entier $a$ quelconque ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $a^{6} \equiv 1 \pmod 7$ dès que $7 \nmid a$ ; si $7 \mid a$, alors
+          $a^{6} \equiv 0$
+        correct: true
+      - id: B
+        text: >-
+          $a^{6} \equiv 1 \pmod 7$ pour tout entier $a$, sans aucune condition
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          La condition $p \nmid a$ n'est pas décorative : pour $a = 7$, on a
+          $a^{6} = 7^{6} \equiv 0 \pmod 7$, et non $1$. Le petit théorème de
+          Fermat s'énonce $a^{p-1} \equiv 1 \pmod p$ SI $p \nmid a$. La variante
+          sans condition existe, mais elle s'écrit autrement :
+          $a^{p} \equiv a \pmod p$, vraie pour tout $a$.
+      - id: C
+        text: >-
+          $a^{7} \equiv 1 \pmod 7$, l'exposant du théorème étant $p$ lui-même
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          Les deux formes du théorème se distinguent par leur exposant ET leur
+          membre de droite : $a^{p-1} \equiv 1$ (avec la condition $p \nmid a$)
+          ou $a^{p} \equiv a$ (sans condition). Mélanger l'exposant $p$ avec le
+          résultat $1$ donne un énoncé faux : $2^{7} = 128 = 18\times 7 + 2
+          \equiv 2 \pmod 7$, pas $1$.
+      - id: D
+        text: >-
+          $a^{6} \equiv -1 \pmod 7$, ce qui se vérifie sur $a = 2$ :
+          $2^{6} = 64$
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-puissance-mal-reduite
+        feedback: >
+          La vérification est mal conduite : $64 = 9 \times 7 + 1$, donc
+          $2^{6} \equiv 1 \pmod 7$, et non $-1$. La valeur $-1$ apparaît une
+          étape plus tôt, pour l'exposant moitié —
+          $2^{3} = 8 \equiv 1$ ici, mais $3^{3} = 27 \equiv -1 \pmod 7$ —, ce qui
+          en fait un piège récurrent.
+    correct_feedback: >
+      Petit théorème de Fermat : si $p$ est premier et $p \nmid a$, alors
+      $a^{p-1} \equiv 1 \pmod p$. Pour $p = 7$ : $a^{6} \equiv 1 \pmod 7$ dès
+      que $7$ ne divise pas $a$. Si $7 \mid a$, toutes les puissances de $a$
+      sont congrues à $0$.
+    solution: |
+      **L'énoncé exact.** Pour $p$ premier :
+      $$p \nmid a \quad\Longrightarrow\quad a^{p-1} \equiv 1 \pmod p$$
+
+      **La forme sans condition**, souvent plus commode :
+      $$a^{p} \equiv a \pmod p \quad \text{pour TOUT entier } a$$
+      Les deux sont équivalentes quand $p \nmid a$ ; la seconde reste vraie
+      quand $p \mid a$, puisque les deux membres sont alors nuls modulo $p$.
+
+      **Vérification sur $p = 7$.**
+      $$2^{6} = 64 = 9\times 7 + 1 \equiv 1
+      \qquad 3^{6} = 729 = 104\times 7 + 1 \equiv 1$$
+      mais $7^{6} \equiv 0$, ce qui montre que la condition est indispensable.
+
+  - id: AR-29
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [diophantienne, solution_generale, fermat]
+    primary_misconception: mc.math.maths_arithmetique.solution-generale-mal-parametree
+    stem: >
+      L'équation $5x + 3y = 1$ admet la solution particulière $(x_0, y_0) =
+      (2, -3)$. Quelle est la forme générale de ses solutions entières ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $x = 2 + 3t$, $y = -3 - 5t$, avec $t \in \mathbb{Z}$
+        correct: true
+      - id: B
+        text: >-
+          $x = 2 + 5t$, $y = -3 - 3t$, avec $t \in \mathbb{Z}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.solution-generale-mal-parametree
+        feedback: >
+          Les coefficients sont croisés à l'envers. Le paramètre porte sur $x$ le
+          coefficient de $y$, et sur $y$ celui de $x$ : $x = x_0 + bt$,
+          $y = y_0 - at$. La vérification tranche :
+          $5(2+5t) + 3(-3-3t) = 1 + 16t$, qui ne vaut $1$ que pour $t = 0$.
+      - id: C
+        text: >-
+          $x = 2 + 3t$, $y = -3 + 5t$, avec $t \in \mathbb{Z}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.solution-generale-mal-parametree
+        feedback: >
+          Les coefficients sont bien croisés, mais le signe manque : les deux
+          termes doivent se compenser. $5(2+3t) + 3(-3+5t) = 1 + 30t$, qui ne
+          vaut $1$ que pour $t = 0$. Avec $y = -3 - 5t$, en revanche,
+          $15t - 15t = 0$ et l'équation est satisfaite pour tout $t$.
+      - id: D
+        text: >-
+          $(2, -3)$ seulement : une équation diophantienne à second membre $1$
+          admet exactement une solution
+        correct: false
+        misconception: mc.math.maths_arithmetique.solution-unique-vs-infinie
+        feedback: >
+          Dès qu'une équation $ax + by = c$ admet une solution, elle en admet une
+          INFINITÉ : on passe de l'une à l'autre en ajoutant $b$ à $x$ et en
+          retranchant $a$ à $y$, ce qui laisse le total inchangé. Ici $(5, -8)$
+          et $(-1, 2)$ conviennent aussi.
+    correct_feedback: >
+      $x = 2 + 3t$, $y = -3 - 5t$. Le paramètre reçoit les coefficients CROISÉS
+      et de signes opposés : $5(3t) + 3(-5t) = 15t - 15t = 0$, donc la somme
+      reste égale à $1$ pour tout entier $t$.
+    solution: |
+      **La structure des solutions.** Si $(x_0, y_0)$ est une solution
+      particulière de $ax + by = c$ avec $a$ et $b$ premiers entre eux, alors
+      l'ensemble des solutions est
+      $$x = x_0 + bt, \qquad y = y_0 - at, \qquad t \in \mathbb{Z}$$
+
+      **Pourquoi les coefficients sont croisés.** Il faut que la variation
+      s'annule :
+      $$a(bt) + b(-at) = abt - abt = 0$$
+      Toute autre répartition laisse un reste en $t$, comme le montrent les
+      vérifications des choix B et C.
+
+      **Ici** : $a = 5$, $b = 3$, $(x_0,y_0) = (2,-3)$, d'où
+      $x = 2 + 3t$ et $y = -3 - 5t$. Contrôle pour $t = 1$ :
+      $5\times 5 + 3\times(-8) = 25 - 24 = 1$. ✓
+
+  - id: AR-30
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [bezout, mise_a_echelle, fermat]
+    primary_misconception: mc.math.maths_arithmetique.solution-mise-a-echelle
+    stem: >
+      On sait que $7 \times 3 - 4 \times 5 = 1$, c'est-à-dire que
+      $\mathrm{PGCD}(7,4) = 1$ avec le couple de Bézout $(3, -5)$. Comment en
+      déduire une solution de $7x + 4y = 6$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          En multipliant les DEUX coordonnées du couple par $6$, ce qui donne
+          $(x, y) = (18, -30)$
+        correct: true
+      - id: B
+        text: >-
+          En gardant le couple tel quel : $(x, y) = (3, -5)$, puisqu'il vérifie
+          déjà l'identité de Bézout
+        correct: false
+        misconception: mc.math.maths_arithmetique.solution-mise-a-echelle
+        feedback: >
+          Ce couple donne $7\times 3 + 4\times(-5) = 1$, pas $6$. L'identité de
+          Bézout fournit une solution pour le second membre $d = \mathrm{PGCD}$ ;
+          pour un second membre $c$ multiple de $d$, il faut multiplier les deux
+          coordonnées par $c/d$ — ici par $6/1 = 6$.
+      - id: C
+        text: >-
+          En multipliant seulement la première coordonnée par $6$ :
+          $(x, y) = (18, -5)$
+        correct: false
+        misconception: mc.math.maths_arithmetique.solution-mise-a-echelle
+        feedback: >
+          La mise à l'échelle doit porter sur les DEUX coordonnées, sans quoi
+          l'égalité se casse : $7\times 18 + 4\times(-5) = 126 - 20 = 106$. On
+          multiplie l'identité tout entière par $6$, ce qui multiplie chacun de
+          ses termes.
+      - id: D
+        text: >-
+          On ne peut pas : $6$ n'étant pas premier, le petit théorème de Fermat
+          ne s'applique pas à cette équation
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          Le petit théorème de Fermat n'a rien à faire ici : il porte sur les
+          congruences de puissances, pas sur les équations diophantiennes. Ce qui
+          décide de l'existence d'une solution de $ax + by = c$, c'est un autre
+          critère : $c$ doit être un multiple de $\mathrm{PGCD}(a,b)$ — ici
+          $\mathrm{PGCD}(7,4) = 1$ divise $6$, donc les solutions existent.
+    correct_feedback: >
+      On multiplie l'identité entière par $6$ :
+      $7\times 18 + 4\times(-30) = 126 - 120 = 6$. Règle générale : pour passer
+      d'un second membre $d = \mathrm{PGCD}(a,b)$ à un second membre $c$, on
+      multiplie les DEUX coordonnées par $c/d$.
+    solution: |
+      **L'identité de départ.**
+      $$7 \times 3 + 4 \times (-5) = 21 - 20 = 1$$
+
+      **La mise à l'échelle.** Multiplier l'égalité entière par $6$ :
+      $$7 \times 18 + 4 \times (-30) = 126 - 120 = 6$$
+      d'où la solution particulière $(x_0, y_0) = (18, -30)$.
+
+      **La règle générale.** Si $d = \mathrm{PGCD}(a,b)$ et si $d \mid c$, une
+      solution de $ax + by = c$ s'obtient en multipliant un couple de Bézout par
+      le facteur $\dfrac{c}{d}$ — jamais par $c$ tout seul quand $d \neq 1$, et
+      jamais sur une seule coordonnée.
+
+      **Puis la forme générale**, comme toujours :
+      $x = 18 + 4t$, $y = -30 - 7t$.
+
+  - id: AR-31
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [primalite, divisibilite, criteres]
+    primary_misconception: mc.math.maths_arithmetique.primalite-test-incomplet
+    stem: >
+      Le nombre $221$ est-il premier ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non : $221 = 13 \times 17$, ce que l'on trouve en testant les premiers
+          jusqu'à $\sqrt{221} \approx 14{,}9$
+        correct: true
+      - id: B
+        text: >-
+          Oui : il n'est divisible ni par $2$, ni par $3$, ni par $5$, ni par
+          $7$, donc il est premier
+        correct: false
+        misconception: mc.math.maths_arithmetique.primalite-test-incomplet
+        feedback: >
+          Le test doit se poursuivre jusqu'à $\sqrt{n}$, soit environ $14{,}9$ :
+          il restait à essayer $11$ et $13$. Et $221 = 13 \times 17$. S'arrêter
+          trop tôt est l'erreur la plus fréquente sur ce type de question ;
+          l'arrêt à $\sqrt{n}$, lui, est justifié — au-delà, un diviseur aurait
+          déjà un complément plus petit, donc déjà rencontré.
+      - id: C
+        text: >-
+          Oui : la somme de ses chiffres vaut $5$, qui n'est pas un multiple de
+          $9$, donc $221$ n'a pas de diviseur
+        correct: false
+        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+        feedback: >
+          Le critère par la somme des chiffres ne teste QUE la divisibilité par
+          $3$ et par $9$. Il ne dit rien des autres diviseurs, et une somme non
+          multiple de $9$ ne signifie certainement pas « aucun diviseur ». Un
+          critère de divisibilité répond à une question précise ; il ne remplace
+          pas un test de primalité.
+      - id: D
+        text: >-
+          Non : $221$ divise $13$, comme le montre l'écriture
+          $13 = 221 \times k$
+        correct: false
+        misconception: mc.math.maths_arithmetique.diviser-relation-inversee
+        feedback: >
+          La relation est écrite à l'envers. « $b$ divise $a$ » signifie
+          $a = b \times k$ : le diviseur est le plus PETIT des deux, le multiple
+          le plus grand. Ici c'est $13$ qui divise $221$, puisque
+          $221 = 13 \times 17$. Écrire $13 = 221 k$ imposerait $k = 1/17$, qui
+          n'est pas entier.
+    correct_feedback: >
+      $221$ n'est pas premier : $221 = 13 \times 17$. Le test s'arrête à
+      $\sqrt{221} \approx 14{,}9$, donc il faut essayer $2, 3, 5, 7, 11, 13$ —
+      et c'est le dernier qui répond.
+    solution: |
+      **Pourquoi on s'arrête à $\sqrt{n}$.** Si $n = ab$ avec $a \leqslant b$,
+      alors $a \leqslant \sqrt{n}$. Tout diviseur non trivial admet donc un
+      complice inférieur ou égal à $\sqrt{n}$ : le tester suffit.
+
+      **Le test complet pour $221$.** $\sqrt{221} \approx 14{,}9$, donc les
+      premiers à essayer sont $2, 3, 5, 7, 11, 13$.
+      $$221 \ \text{impair} \quad 2+2+1 = 5 \ \text{non multiple de } 3 \quad
+      \text{ne finit ni par } 0 \text{ ni par } 5$$
+      $$221 = 31\times 7 + 4 \qquad 221 = 20\times 11 + 1 \qquad
+      221 = 17 \times 13$$
+      Le dernier essai répond : $221$ est composé.
+
+      **La leçon de méthode.** S'arrêter avant $\sqrt{n}$ ne prouve rien ; et un
+      critère de divisibilité (par $3$, par $9$, par $11$) répond à une question
+      précise, jamais à la question de la primalité.
+
+  - id: AR-32
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [diophantienne, bezout, critique_de_raisonnement]
+    primary_misconception: mc.math.maths_arithmetique.solution-mise-a-echelle
+    stem: >
+      Un élève résout $11x + 4y = 3$ ainsi : « $\mathrm{PGCD}(11,4) = 1$ et
+      $11\times(-1) + 4\times 3 = 1$, donc $(-1,\,3)$ est une solution, et la
+      forme générale est $x = -1 + 11t$, $y = 3 - 4t$. » Que contient ce
+      raisonnement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Deux erreurs : le couple n'a pas été multiplié par $3$, et les
+          coefficients sont placés du mauvais côté du paramètre
+        correct: true
+      - id: B
+        text: >-
+          Une seule erreur : la mise à l'échelle manque, mais la forme générale
+          est correctement paramétrée
+        correct: false
+        misconception: mc.math.maths_arithmetique.solution-generale-mal-parametree
+        feedback: >
+          Le paramétrage est faux lui aussi : il faut $x = x_0 + bt$ et
+          $y = y_0 - at$, donc $x = x_0 + 4t$ et $y = y_0 - 11t$. Avec la version
+          de l'élève, $11(11t) + 4(-4t) = 121t - 16t = 105t$, qui ne s'annule que
+          pour $t = 0$ — la « famille » ne contient qu'un seul élément.
+      - id: C
+        text: >-
+          Une seule erreur : les coefficients sont mal placés, mais le couple
+          $(-1,\,3)$ convient tel quel pour un second membre égal à $3$
+        correct: false
+        misconception: mc.math.maths_arithmetique.solution-mise-a-echelle
+        feedback: >
+          $11\times(-1) + 4\times 3 = 1$, pas $3$. L'identité de Bézout donne une
+          solution pour le second membre $\mathrm{PGCD}(a,b)$ ; pour un second
+          membre $c$, il faut multiplier les deux coordonnées par $c/d$ — ici
+          par $3$, ce qui donne $(-3,\,9)$.
+      - id: D
+        text: >-
+          Aucune erreur, à condition de préciser que $11$ étant premier, le petit
+          théorème de Fermat garantit l'existence des solutions
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          Le petit théorème de Fermat porte sur les congruences de puissances
+          ($a^{p-1} \equiv 1 \pmod p$ si $p \nmid a$) et n'a rien à voir avec
+          l'existence de solutions d'une équation diophantienne. Le critère
+          pertinent est tout autre : $ax + by = c$ admet des solutions si et
+          seulement si $\mathrm{PGCD}(a,b)$ divise $c$.
+    correct_feedback: >
+      Deux erreurs. La solution particulière n'a pas été mise à l'échelle : il
+      fallait multiplier $(-1,\,3)$ par $3$, ce qui donne $(-3,\,9)$. Et les
+      coefficients du paramètre sont échangés : la forme générale est
+      $x = -3 + 4t$, $y = 9 - 11t$.
+    solution: |
+      **Erreur 1 — la mise à l'échelle.** L'identité de Bézout donne
+      $$11\times(-1) + 4\times 3 = 1$$
+      Pour un second membre $3$, on multiplie l'égalité entière par $3$ :
+      $$11\times(-3) + 4\times 9 = 3$$
+      d'où la solution particulière $(-3,\,9)$.
+
+      **Erreur 2 — le paramétrage.** La forme générale est
+      $x = x_0 + bt$, $y = y_0 - at$, avec les coefficients CROISÉS :
+      $$x = -3 + 4t, \qquad y = 9 - 11t, \qquad t \in \mathbb{Z}$$
+      Contrôle : $11(4t) + 4(-11t) = 44t - 44t = 0$. Avec la version de l'élève,
+      la variation vaut $105t$ et ne s'annule pas.
+
+      **Vérification finale**, pour $t = 1$ :
+      $11\times 1 + 4\times(-2) = 11 - 8 = 3$. ✓
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après AR-28 à AR-32. Huit familles sous le plancher,
+# dont `fermat-condition-ou-exposant` sans AUCUN item de banc — elle n'était
+# sondée que par un checkpoint, ce qui ne compte pas dans le modèle apprenant.
+# Les quatre autres pièges des équations diophantiennes (mise à l'échelle du
+# couple de Bézout, croisement des coefficients, unicité supposée, réduction
+# d'une puissance) et les trois de la divisibilité sont refermés du même geste.
+# Tableau GÉNÉRÉ, gardé par scripts/resume-couverture.mjs.
 coverage_summary:
-  total_items: 27
-  # NOTE (§6 honnête) — banque « legacy » rétro-taguée. Les 27 items ont été
-  # rédigés AVANT la discipline du tag par distracteur (misconceptions: [] à
-  # l'origine) : conçus pour la VARIÉTÉ des pièges par item, pas pour la
-  # profondeur ≥3 par modèle. DEUX comptages, aucun gonflé :
-  #   • any_distractor = nb d'items où le modèle apparaît sur ≥1 distracteur ;
-  #   • primary        = nb d'items CONSTRUITS pour cibler ce modèle.
-  # Le gap majeur est HONNÊTE et déclaré : fermat-condition-ou-exposant = 0 item,
-  # le petit théorème de Fermat n'ayant pas de rung dans la leçon (surfacé
-  # inline par cp-r6-fermat, non recompté ici).
-  counting_convention: any_distractor   # métrique retenue pour le plancher ≥3
-  floor_met: false
-  per_rung: { R0: 3, R1: 3, R2: 3, R3: 3, R4: 3, R5: 3, R6: 3, R7: 3, R8: 3 }
-
-  per_misconception_any_distractor:
-    mc.math.maths_arithmetique.diophantienne-critere-existence: 7
-    mc.math.maths_arithmetique.premier-vs-premiers-entre-eux: 6
-    mc.math.maths_arithmetique.pgcd-plus-grand-oublie: 4
-    mc.math.maths_arithmetique.reste-non-normalise: 4
-    mc.math.maths_arithmetique.pgcd-vs-ppcm: 3
-    mc.math.maths_arithmetique.gauss-condition-ignoree: 3
-    mc.math.maths_arithmetique.bezout-portee: 3
-    mc.math.maths_arithmetique.prime-divise-produit: 3
-    mc.math.maths_arithmetique.congruence-puissance-mal-reduite: 2
-    mc.math.maths_arithmetique.critere-divisibilite-mal-applique: 2
-    mc.math.maths_arithmetique.solution-unique-vs-infinie: 2
-    mc.math.maths_arithmetique.primalite-test-incomplet: 2
-    mc.math.maths_arithmetique.diviser-relation-inversee: 2
-    mc.math.maths_arithmetique.solution-generale-mal-parametree: 1
-    mc.math.maths_arithmetique.solution-mise-a-echelle: 1
-    mc.math.maths_arithmetique.fermat-condition-ou-exposant: 0
-
-  per_misconception_primary:
-    mc.math.maths_arithmetique.diophantienne-critere-existence: 5
-    mc.math.maths_arithmetique.gauss-condition-ignoree: 3
-    mc.math.maths_arithmetique.premier-vs-premiers-entre-eux: 2
-    mc.math.maths_arithmetique.pgcd-vs-ppcm: 2
-    mc.math.maths_arithmetique.pgcd-plus-grand-oublie: 2
-    mc.math.maths_arithmetique.reste-non-normalise: 2
-    mc.math.maths_arithmetique.congruence-puissance-mal-reduite: 2
-    mc.math.maths_arithmetique.bezout-portee: 2
-    mc.math.maths_arithmetique.solution-unique-vs-infinie: 2
-    mc.math.maths_arithmetique.critere-divisibilite-mal-applique: 1
-    mc.math.maths_arithmetique.primalite-test-incomplet: 1
-    mc.math.maths_arithmetique.solution-mise-a-echelle: 1
-    mc.math.maths_arithmetique.diviser-relation-inversee: 1
-    mc.math.maths_arithmetique.prime-divise-produit: 1
-    # jamais en primary (seulement distracteur secondaire) :
-    # solution-generale-mal-parametree, fermat-condition-ou-exposant.
-
-  meets_floor_any_distractor:   # ≥3 items exposent ces 8 modèles
-    - mc.math.maths_arithmetique.diophantienne-critere-existence   # 7
-    - mc.math.maths_arithmetique.premier-vs-premiers-entre-eux     # 6
-    - mc.math.maths_arithmetique.pgcd-plus-grand-oublie            # 4
-    - mc.math.maths_arithmetique.reste-non-normalise               # 4
-    - mc.math.maths_arithmetique.pgcd-vs-ppcm                      # 3
-    - mc.math.maths_arithmetique.gauss-condition-ignoree           # 3
-    - mc.math.maths_arithmetique.bezout-portee                     # 3
-    - mc.math.maths_arithmetique.prime-divise-produit              # 3
-
-  under_floor:
-    # <3 items — surfacé honnêtement, PAS gonflé. Priorité au trou réel :
-    # fermat-condition-ou-exposant (0 item — le petit théorème de Fermat, requis
-    # par la question 1.d du sujet r-bac, n'est enseigné dans AUCUN rung de la
-    # leçon ; il n'est surfacé qu'inline par le checkpoint cp-r6-fermat).
-    count_models_below_floor: 8
-    models:
-      - mc.math.maths_arithmetique.fermat-condition-ou-exposant       # 0 (PTF hors-leçon)
-      - mc.math.maths_arithmetique.congruence-puissance-mal-reduite   # 2
-      - mc.math.maths_arithmetique.critere-divisibilite-mal-applique  # 2
-      - mc.math.maths_arithmetique.solution-unique-vs-infinie         # 2
-      - mc.math.maths_arithmetique.primalite-test-incomplet           # 2
-      - mc.math.maths_arithmetique.diviser-relation-inversee          # 2
-      - mc.math.maths_arithmetique.solution-generale-mal-parametree   # 1
-      - mc.math.maths_arithmetique.solution-mise-a-echelle            # 1
-    follow_up: >-
-      Passe d'items à commander (item-author). PRIORITÉ ABSOLUE : ajouter un rung
-      « petit théorème de Fermat » à la leçon PUIS ≥3 items
-      fermat-condition-ou-exposant (condition p∤a, exposant p−1, valeur 1) — la
-      question 1.d du sujet r-bac mobilise un outil aujourd'hui non enseigné.
-      Ensuite porter à ≥3 les modèles conceptuels sous plancher :
-      congruence-puissance-mal-reduite, primalite-test-incomplet,
-      solution-unique-vs-infinie, diviser-relation-inversee,
-      critere-divisibilite-mal-applique, solution-generale-mal-parametree,
-      solution-mise-a-echelle. Les modèles déjà ≥3 (reachability, premier/premiers
-      entre eux, PGCD, Gauss, Bézout, lemme d'Euclide) sont bien couverts.
-    checkpoints_note: >-
-      Les checkpoints in-leçon (checkpoints.yaml) surfacent EN PLUS, inline,
-      fermat-condition-ou-exposant (cp-r6-fermat, l'outil hors-rung de la 1.d),
-      gauss-condition-ignoree, pgcd-vs-ppcm, congruence-puissance-mal-reduite et
-      diophantienne-critere-existence — mais ne sont PAS recomptés dans ce
-      plancher (clones/formatifs, non ajoutés à la banque, cf. RLC/PC).
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
+  per_misconception:
+    mc.math.maths_arithmetique.premier-vs-premiers-entre-eux:     { count: 6, items: [AR-4, AR-7, AR-16, AR-17, AR-19, AR-27] }
+    mc.math.maths_arithmetique.pgcd-vs-ppcm:                      { count: 3, items: [AR-3, AR-14, AR-21] }
+    mc.math.maths_arithmetique.pgcd-plus-grand-oublie:            { count: 4, items: [AR-3, AR-14, AR-15, AR-21] }
+    mc.math.maths_arithmetique.gauss-condition-ignoree:           { count: 3, items: [AR-5, AR-18, AR-19] }
+    mc.math.maths_arithmetique.reste-non-normalise:               { count: 4, items: [AR-1, AR-2, AR-10, AR-13] }
+    mc.math.maths_arithmetique.congruence-puissance-mal-reduite:  { count: 3, items: [AR-2, AR-12, AR-28] }
+    mc.math.maths_arithmetique.critere-divisibilite-mal-applique: { count: 3, items: [AR-1, AR-13, AR-31] }
+    mc.math.maths_arithmetique.diophantienne-critere-existence:   { count: 7, items: [AR-6, AR-7, AR-8, AR-9, AR-17, AR-23, AR-25] }
+    mc.math.maths_arithmetique.bezout-portee:                     { count: 3, items: [AR-5, AR-16, AR-17] }
+    mc.math.maths_arithmetique.solution-unique-vs-infinie:        { count: 3, items: [AR-24, AR-25, AR-29] }
+    mc.math.maths_arithmetique.solution-generale-mal-parametree:  { count: 3, items: [AR-24, AR-29, AR-32] }
+    mc.math.maths_arithmetique.primalite-test-incomplet:          { count: 3, items: [AR-20, AR-27, AR-31] }
+    mc.math.maths_arithmetique.fermat-condition-ou-exposant:      { count: 3, items: [AR-28, AR-30, AR-32] }
+    mc.math.maths_arithmetique.solution-mise-a-echelle:           { count: 3, items: [AR-26, AR-30, AR-32] }
+    mc.math.maths_arithmetique.diviser-relation-inversee:         { count: 3, items: [AR-11, AR-22, AR-31] }
+    mc.math.maths_arithmetique.prime-divise-produit:              { count: 3, items: [AR-2, AR-12, AR-22] }
+  total_items: 32
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 3
+    R2: 3
+    R3: 3
+    R4: 4
+    R5: 3
+    R6: 4
+    R7: 5
+    R8: 4
+  honest_state: >-
+    Les seize misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Douze y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

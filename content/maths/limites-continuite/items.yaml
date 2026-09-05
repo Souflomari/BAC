@@ -1711,40 +1711,491 @@ items:
 # item = one count toward the floor). LIMCONT-22..26 (trig) are counted
 # alongside for a whole-notion picture but were NOT modified this pass.
 # ──────────────────────────────────────────────────────────────────────────────
+  # Ajoutés le 2026-09-05 : six familles sous le plancher de 3 items du banc —
+  # cinq à UN item (les quatre limites trigonométriques de référence et
+  # l'asymptote verticale, plus la limite latérale) et une à deux. Quatre items,
+  # onze places : le formulaire trigonométrique en deux énoncés, puis la
+  # fonction définie par morceaux et l'asymptote.
+  - id: LIMCONT-27
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: [limites_trigonometriques, formulaire]
+    primary_misconception: mc.math.maths_limites_continuite.trig-coefficient-argument-non-ajuste
+    stem: >
+      Que vaut $\displaystyle\lim_{x \to 0} \frac{\sin(3x)}{x}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $3$ : on écrit $\dfrac{\sin(3x)}{x} = 3 \times \dfrac{\sin(3x)}{3x}$,
+          et le second facteur tend vers $1$
+        correct: true
+      - id: B
+        text: >-
+          $1$ : la forme $\dfrac{\sin(\text{quelque chose})}{\text{quelque
+          chose}}$ est reconnue, et sa limite de référence vaut $1$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-coefficient-argument-non-ajuste
+        feedback: >
+          Le motif n'est pas là : le dénominateur est $x$, pas $3x$. Pour faire
+          apparaître la limite de référence, il faut réécrire l'expression —
+          $\dfrac{\sin(3x)}{x} = 3\,\dfrac{\sin(3x)}{3x}$ — et le facteur $3$ qui
+          sort ne disparaît pas. La limite vaut donc $3$.
+      - id: C
+        text: >-
+          $1$ également, comme $\displaystyle\lim_{x\to 0}\dfrac{1-\cos x}{x^2}$
+          : toutes les limites trigonométriques de référence valent $1$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-toutes-limites-valent-1
+        feedback: >
+          Le formulaire n'est pas uniforme :
+          $\displaystyle\lim_{x\to 0}\dfrac{\sin x}{x} = 1$ et
+          $\displaystyle\lim_{x\to 0}\dfrac{\tan x}{x} = 1$, mais
+          $\displaystyle\lim_{x\to 0}\dfrac{1-\cos x}{x^2} = \dfrac{1}{2}$. Le
+          $\frac12$ n'est pas une coquetterie : il vient du développement de
+          $\cos$, où le terme dominant est $\dfrac{x^2}{2}$.
+      - id: D
+        text: >-
+          $-3$, car $\sin(3x)$ et $x$ sont de signes contraires au voisinage de
+          $0$, comme dans $\dfrac{\cos x - 1}{x^2}$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-1-moins-cos-signe-confondu
+        feedback: >
+          $\sin(3x)$ et $x$ ont le MÊME signe au voisinage de $0$ — le sinus y
+          est croissant et s'annule en $0$ comme son argument. Le signe négatif
+          appartient à une autre limite :
+          $\displaystyle\lim_{x\to 0}\dfrac{\cos x - 1}{x^2} = -\dfrac{1}{2}$,
+          l'opposée de celle avec $1 - \cos x$.
+    correct_feedback: >
+      $\displaystyle\lim_{x \to 0} \frac{\sin(3x)}{x} = 3$. On force l'apparition
+      de la forme de référence en écrivant
+      $\dfrac{\sin(3x)}{x} = 3 \times \dfrac{\sin(3x)}{3x}$ : le second facteur
+      tend vers $1$, et le $3$ sorti reste.
+    solution: |
+      **Le formulaire de référence.**
+      $$\lim_{u \to 0}\frac{\sin u}{u} = 1$$
+      Il exige que le MÊME $u$ figure au numérateur, dans le sinus, et au
+      dénominateur.
+
+      **L'ajustement.** Ici le sinus porte $3x$ et le dénominateur $x$ :
+      $$\frac{\sin(3x)}{x} = 3 \times \frac{\sin(3x)}{3x}$$
+      En posant $u = 3x$, qui tend vers $0$ quand $x$ tend vers $0$ :
+      $$\lim_{x \to 0}\frac{\sin(3x)}{3x} = 1
+      \quad\Longrightarrow\quad \lim_{x \to 0}\frac{\sin(3x)}{x} = 3$$
+
+      **La règle générale.**
+      $\displaystyle\lim_{x\to 0}\frac{\sin(kx)}{x} = k$ : le coefficient de
+      l'argument se retrouve dans la limite.
+
+  - id: LIMCONT-28
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: [limites_trigonometriques, conditions_dapplication]
+    primary_misconception: mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0
+    stem: >
+      Que vaut $\displaystyle\lim_{x \to +\infty} \frac{\sin x}{x}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $0$, par encadrement : $-\dfrac{1}{x} \leqslant \dfrac{\sin x}{x}
+          \leqslant \dfrac{1}{x}$, et les deux bornes tendent vers $0$
+        correct: true
+      - id: B
+        text: >-
+          $1$ : c'est la limite de référence $\dfrac{\sin u}{u}$, valable partout
+          où le motif apparaît
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0
+        feedback: >
+          La limite de référence exige que l'argument du sinus tende vers $0$ —
+          c'est ce qui rend $\sin u$ équivalent à $u$. Ici $x$ tend vers
+          $+\infty$ : $\sin x$ ne cesse d'osciller entre $-1$ et $1$ sans se
+          rapprocher de $x$, et le motif ne vaut plus rien.
+      - id: C
+        text: >-
+          $1$ aussi, puisque toutes les limites trigonométriques de référence
+          valent $1$, quel que soit le point où on les prend
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-toutes-limites-valent-1
+        feedback: >
+          Deux généralisations abusives d'un coup. Le formulaire n'est pas
+          uniforme — $\displaystyle\lim_{x\to 0}\dfrac{1-\cos x}{x^2}$ vaut
+          $\dfrac12$ — et surtout, une limite de référence est attachée à UN
+          point : celles-ci sont toutes prises en $0$, et ne disent rien de ce
+          qui se passe en $+\infty$.
+      - id: D
+        text: >-
+          $3$ : il faudrait d'abord réécrire $\dfrac{\sin x}{x}$ sous la forme
+          $3\,\dfrac{\sin(3x)}{3x}$ pour ajuster le coefficient
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-coefficient-argument-non-ajuste
+        feedback: >
+          L'ajustement du coefficient sert quand l'argument du sinus et le
+          dénominateur diffèrent — $\dfrac{\sin(3x)}{x}$, par exemple. Ici ils
+          sont identiques, il n'y a rien à ajuster ; et le problème est ailleurs :
+          l'argument ne tend pas vers $0$.
+    correct_feedback: >
+      $\displaystyle\lim_{x \to +\infty} \frac{\sin x}{x} = 0$. La limite de
+      référence ne s'applique pas — l'argument doit tendre vers $0$ — mais
+      l'encadrement $-\frac1x \leqslant \frac{\sin x}{x} \leqslant \frac1x$
+      conclut immédiatement par le théorème des gendarmes.
+    solution: |
+      **Pourquoi le formulaire ne s'applique pas.**
+      $\displaystyle\lim_{u\to 0}\frac{\sin u}{u} = 1$ repose sur le fait que
+      $\sin u$ se confond avec $u$ au voisinage de $0$. En $+\infty$, $\sin x$
+      oscille indéfiniment entre $-1$ et $1$ : rien ne se confond avec rien.
+
+      **Ce qui marche.** Le sinus est borné, le dénominateur explose :
+      $$-1 \leqslant \sin x \leqslant 1
+      \quad\Longrightarrow\quad
+      -\frac{1}{x} \leqslant \frac{\sin x}{x} \leqslant \frac{1}{x}
+      \quad (x > 0)$$
+      Les deux bornes tendent vers $0$, donc par le théorème des gendarmes :
+      $$\lim_{x \to +\infty}\frac{\sin x}{x} = 0$$
+
+      **Le réflexe à garder.** Devant une expression trigonométrique, deux
+      questions : *où* la limite est-elle prise, et *l'argument tend-il vers
+      $0$* ? Si non, le formulaire est hors de propos et c'est l'encadrement qui
+      travaille.
+
+  - id: LIMCONT-29
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: [limite_laterale, fonction_par_morceaux, continuite]
+    primary_misconception: mc.math.maths_limites_continuite.limite-laterale-non-verifiee
+    stem: >
+      Soit $f$ définie par $f(x) = x + 1$ si $x < 2$ et $f(x) = x^2 - 1$ si
+      $x \geqslant 2$. La fonction $f$ admet-elle une limite en $2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non : les deux morceaux ont des expressions différentes, donc leurs
+          limites en $2$ ne peuvent pas coïncider
+        correct: false
+        misconception: mc.math.maths_limites_continuite.limite-laterale-non-verifiee
+        feedback: >
+          Des expressions différentes peuvent parfaitement se rejoindre en un
+          point : c'est même exactement ce qu'on vérifie en étudiant la
+          continuité d'une fonction définie par morceaux. Ici $x + 1$ et
+          $x^2 - 1$ valent toutes deux $3$ en $2$. Il faut CALCULER les deux
+          limites, jamais les déclarer différentes sur la seule forme des
+          expressions.
+      - id: B
+        text: >-
+          Oui, elle vaut $3$ : les deux limites latérales valent $3$, et
+          $f(2) = 3$ également
+        correct: true
+      - id: C
+        text: >-
+          Oui, elle vaut $3$ : la limite à gauche vaut $3$, ce qui suffit puisque
+          $f$ est définie des deux côtés
+        correct: false
+        misconception: mc.math.maths_limites_continuite.limite-laterale-non-verifiee
+        feedback: >
+          La conclusion est juste par accident : une seule limite latérale ne
+          suffit jamais. Si la seconde branche avait été $x^2 + 1$, la limite à
+          droite aurait valu $5$ et la fonction n'aurait admis AUCUNE limite en
+          $2$ — sans que le calcul de gauche change d'un iota.
+      - id: D
+        text: >-
+          Oui, elle vaut $4$ : quand les deux morceaux donnent des valeurs
+          proches, la limite est leur moyenne
+        correct: false
+        misconception: mc.math.maths_limites_continuite.limite-laterale-non-verifiee
+        feedback: >
+          Il n'existe aucune règle de moyenne. Soit les deux limites latérales
+          coïncident, et leur valeur commune EST la limite ; soit elles
+          diffèrent, et la fonction n'a pas de limite en ce point. Rien
+          n'autorise à inventer une valeur intermédiaire.
+    correct_feedback: >
+      Oui, $\displaystyle\lim_{x\to 2} f(x) = 3$. À gauche, $x + 1 \to 3$ ; à
+      droite, $x^2 - 1 \to 3$. Les deux limites latérales coïncident, donc la
+      limite existe — et comme $f(2) = 3$, la fonction est de plus continue en
+      $2$.
+    solution: |
+      **La méthode, en trois temps.**
+
+      1. *Limite à gauche* ($x < 2$, donc $f(x) = x+1$) :
+      $$\lim_{x \to 2^-} f(x) = 2 + 1 = 3$$
+      2. *Limite à droite* ($x \geqslant 2$, donc $f(x) = x^2 - 1$) :
+      $$\lim_{x \to 2^+} f(x) = 2^2 - 1 = 3$$
+      3. *Comparaison.* Les deux valent $3$, donc
+      $\displaystyle\lim_{x \to 2} f(x) = 3$.
+
+      **Le bonus.** $f(2) = 3$ également : la limite égale la valeur, donc $f$
+      est continue en $2$. La continuité demande TROIS choses — la limite à
+      gauche, la limite à droite, et la valeur en ce point — et il faut les
+      voir toutes les trois.
+
+      **Le contre-exemple à garder en tête.** Avec $f(x) = x^2 + 1$ à droite, on
+      aurait $5 \neq 3$ : pas de limite du tout, et le calcul de gauche serait
+      resté identique.
+
+  - id: LIMCONT-30
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_limites_continuite
+    tags: [asymptote, limite_infinie, limite_laterale]
+    primary_misconception: mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee
+    stem: >
+      Soit $f(x) = \dfrac{1}{x - 4}$. On observe
+      $\displaystyle\lim_{x \to 4^+} f(x) = +\infty$. Qu'en déduire sur la
+      courbe de $f$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Que la droite d'équation $x = 4$ est asymptote verticale à la courbe
+        correct: true
+      - id: B
+        text: >-
+          Que la droite d'équation $y = 4$ est asymptote à la courbe, l'équation
+          d'une asymptote s'écrivant toujours en $y$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee
+        feedback: >
+          Une asymptote VERTICALE est une droite verticale : son équation est de
+          la forme $x = a$. Les équations en $y$ décrivent les droites
+          horizontales, qui apparaissent quand $x$ tend vers l'infini et que
+          $f(x)$ tend vers un réel — la situation exactement inverse de
+          celle-ci.
+      - id: C
+        text: >-
+          Qu'il faut d'abord calculer $\displaystyle\lim_{x \to 4^-} f(x)$ et
+          vérifier qu'elle vaut $+\infty$ elle aussi, sans quoi il n'y a pas
+          d'asymptote
+        correct: false
+        misconception: mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee
+        feedback: >
+          Une seule limite infinie suffit à créer l'asymptote : la courbe s'y
+          colle du côté où elle explose. Ici la limite à gauche vaut d'ailleurs
+          $-\infty$, et la droite $x = 4$ est bel et bien asymptote — la courbe
+          la longe par le haut d'un côté, par le bas de l'autre.
+      - id: D
+        text: >-
+          Que $f$ admet en $4$ une limite égale à la moyenne de ses deux limites
+          latérales
+        correct: false
+        misconception: mc.math.maths_limites_continuite.limite-laterale-non-verifiee
+        feedback: >
+          Aucune règle de moyenne n'existe, et elle serait ici sans objet : les
+          limites latérales valent $-\infty$ et $+\infty$. Quand les deux
+          limites latérales diffèrent, la fonction n'admet pas de limite en ce
+          point — un point, c'est tout.
+    correct_feedback: >
+      La droite d'équation $x = 4$ est asymptote verticale. Une limite infinie
+      EN UN POINT fini donne une asymptote verticale, dont l'équation s'écrit en
+      $x$ ; une limite finie À L'INFINI donnerait une asymptote horizontale,
+      dont l'équation s'écrit en $y$.
+    solution: |
+      **Les deux situations à ne pas confondre.**
+
+      | ce qu'on observe | l'asymptote | son équation |
+      |---|---|---|
+      | $\displaystyle\lim_{x \to a} f(x) = \pm\infty$ ($a$ fini) | verticale | $x = a$ |
+      | $\displaystyle\lim_{x \to \pm\infty} f(x) = \ell$ ($\ell$ fini) | horizontale | $y = \ell$ |
+
+      **Ici.** La limite est infinie en un point fini : asymptote VERTICALE
+      d'équation $x = 4$.
+
+      **Une seule limite latérale suffit.** L'autre côté peut valoir $-\infty$
+      (c'est le cas ici), $+\infty$, ou même ne pas exister si la fonction n'est
+      définie que d'un côté : la droite reste asymptote.
+
+  - id: LIMCONT-31
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: [limites_trigonometriques, formulaire, signe]
+    primary_misconception: mc.math.maths_limites_continuite.trig-1-moins-cos-signe-confondu
+    stem: >
+      Que vaut $\displaystyle\lim_{x \to 0} \frac{\cos x - 1}{x^2}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $-\dfrac{1}{2}$ : c'est l'opposé de la limite de référence, qui porte
+          sur $1 - \cos x$
+        correct: true
+      - id: B
+        text: >-
+          $\dfrac{1}{2}$ : c'est exactement la limite de référence, l'ordre des
+          deux termes de la soustraction étant sans importance
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-1-moins-cos-signe-confondu
+        feedback: >
+          L'ordre change tout : $\cos x - 1 = -(1 - \cos x)$, donc les deux
+          limites sont opposées. Le contrôle de signe se fait sans calcul :
+          au voisinage de $0$, $\cos x < 1$, donc $\cos x - 1$ est NÉGATIF, et
+          $x^2$ positif. Le quotient ne peut pas tendre vers une valeur positive.
+      - id: C
+        text: >-
+          $1$, comme toutes les limites trigonométriques de référence prises
+          en $0$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-toutes-limites-valent-1
+        feedback: >
+          Le formulaire n'est pas uniforme.
+          $\displaystyle\lim_{x\to0}\frac{\sin x}{x} = 1$ et
+          $\displaystyle\lim_{x\to0}\frac{\tan x}{x} = 1$, mais
+          $\displaystyle\lim_{x\to0}\frac{1-\cos x}{x^2} = \frac12$ — parce que
+          $1 - \cos x$ se comporte comme $\frac{x^2}{2}$, et non comme $x^2$.
+      - id: D
+        text: >-
+          $-2$ : le dénominateur portant $x^2$, il faut ajuster le coefficient
+          comme pour $\dfrac{\sin(2x)}{x}$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-coefficient-argument-non-ajuste
+        feedback: >
+          L'ajustement de coefficient concerne l'ARGUMENT de la fonction
+          trigonométrique — $\sin(kx)$ contre $x$ — pas la puissance du
+          dénominateur. Ici l'argument du cosinus est $x$, le même que celui de
+          la limite de référence : il n'y a rien à ajuster, seulement un signe à
+          respecter.
+    correct_feedback: >
+      $\displaystyle\lim_{x \to 0} \frac{\cos x - 1}{x^2} = -\frac{1}{2}$. La
+      limite de référence est $\displaystyle\lim_{x\to0}\frac{1-\cos x}{x^2}
+      = \frac12$ ; inverser l'ordre de la soustraction change le signe. Le
+      contrôle immédiat : $\cos x < 1$ près de $0$, donc le numérateur est
+      négatif.
+    solution: |
+      **La limite de référence.**
+      $$\lim_{x \to 0}\frac{1 - \cos x}{x^2} = \frac{1}{2}$$
+
+      **Le passage à l'expression demandée.**
+      $$\frac{\cos x - 1}{x^2} = -\,\frac{1 - \cos x}{x^2}
+      \quad\Longrightarrow\quad
+      \lim_{x \to 0}\frac{\cos x - 1}{x^2} = -\frac{1}{2}$$
+
+      **Le contrôle de signe, à faire avant tout calcul.** Sur un voisinage de
+      $0$ privé de $0$, $\cos x < 1$ : le numérateur est strictement négatif, le
+      dénominateur strictement positif. Une réponse positive est donc fausse
+      d'avance — et ce contrôle coûte deux secondes.
+
+      **D'où vient le $\frac12$.** De $\cos x \approx 1 - \dfrac{x^2}{2}$ au
+      voisinage de $0$ : $1 - \cos x$ se comporte comme $\dfrac{x^2}{2}$, pas
+      comme $x^2$.
+
+  - id: LIMCONT-32
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: [asymptote, limite_infinie, lecture_graphique]
+    primary_misconception: mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee
+    stem: >
+      Une fonction $g$ vérifie $\displaystyle\lim_{x \to -\infty} g(x) = 2$ et
+      $\displaystyle\lim_{x \to 1^-} g(x) = -\infty$. Quelles sont les
+      asymptotes de sa courbe, et leurs équations ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Une asymptote horizontale d'équation $y = 2$, donnée par la limite à
+          l'infini, et une asymptote verticale d'équation $x = 1$
+        correct: true
+      - id: B
+        text: >-
+          Une asymptote horizontale $y = 2$ et une asymptote verticale $y = 1$,
+          les équations d'asymptotes s'écrivant toujours en $y$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee
+        feedback: >
+          Une droite verticale ne peut pas avoir une équation en $y$ : $y = 1$
+          désigne une droite HORIZONTALE. La règle tient en une phrase — une
+          limite infinie en un point fini $a$ donne l'asymptote verticale
+          $x = a$ ; une limite finie $\ell$ à l'infini donne l'asymptote
+          horizontale $y = \ell$.
+      - id: C
+        text: >-
+          Une asymptote horizontale $x = 2$ et une asymptote verticale $y = 1$ :
+          les deux équations sont échangées par rapport aux limites
+        correct: false
+        misconception: mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee
+        feedback: >
+          Les deux équations sont effectivement échangées, et c'est l'erreur.
+          Le repère qui l'évite : l'équation d'une asymptote nomme la
+          COORDONNÉE CONSTANTE le long de la droite. Une horizontale garde son
+          ordonnée, d'où $y = \ell$ ; une verticale garde son abscisse, d'où
+          $x = a$.
+      - id: D
+        text: >-
+          Aucune conclusion sans la limite en $1^{+}$ : tant que les deux
+          limites latérales ne sont pas connues, on ne peut rien affirmer
+        correct: false
+        misconception: mc.math.maths_limites_continuite.limite-laterale-non-verifiee
+        feedback: >
+          Pour une ASYMPTOTE, une seule limite infinie suffit : la courbe se
+          colle à la droite du côté où elle explose, et ce qui se passe de
+          l'autre côté n'y change rien. La comparaison des deux limites
+          latérales sert à une autre question — l'existence d'une limite en un
+          point, donc la continuité.
+    correct_feedback: >
+      Asymptote horizontale $y = 2$ (limite finie à l'infini) et asymptote
+      verticale $x = 1$ (limite infinie en un point fini). L'équation nomme
+      toujours la coordonnée qui reste constante le long de la droite.
+    solution: |
+      **Deux lectures, deux droites.**
+
+      | limite donnée | asymptote | équation |
+      |---|---|---|
+      | $\displaystyle\lim_{x \to -\infty} g(x) = 2$ | horizontale, en $-\infty$ | $y = 2$ |
+      | $\displaystyle\lim_{x \to 1^-} g(x) = -\infty$ | verticale | $x = 1$ |
+
+      **Le repère qui évite l'échange.** L'équation d'une droite nomme la
+      coordonnée qui ne varie pas le long d'elle. Sur une horizontale, l'ordonnée
+      est constante : $y = \ell$. Sur une verticale, l'abscisse est constante :
+      $x = a$.
+
+      **Une seule limite latérale suffit** pour l'asymptote verticale : la
+      courbe la longe par en bas du côté gauche, quel que soit son comportement
+      à droite.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après LIMCONT-27 à LIMCONT-32. Six familles sous le
+# plancher, dont les quatre pièges du formulaire trigonométrique — coefficient
+# de l'argument non ajusté, « toutes les limites de référence valent 1 », signe
+# de $1-\cos x$, et la condition « l'argument doit tendre vers 0 » — plus la
+# limite latérale et l'asymptote verticale. Tableau GÉNÉRÉ, gardé par
+# scripts/resume-couverture.mjs.
 coverage_summary:
-  method: "item-level, by primary_misconception (one item = one count)"
-  total_items: 26
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
   per_misconception:
-    mc.math.maths_limites_continuite.forme-indeterminee-traitee-comme-valeur-litterale: 5   # LIMCONT-3,4,8,14,21
-    mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees: 4             # LIMCONT-6,17,18,20
-    mc.math.maths_limites_continuite.sur-generalise-forme-indeterminee: 3                    # LIMCONT-2,12,13
-    mc.math.maths_limites_continuite.definition-continuite-mal-appliquee: 3                  # LIMCONT-5,15,16
-    mc.math.maths_limites_continuite.confond-point-et-voisinage: 2                           # LIMCONT-7,9
-    mc.math.maths_limites_continuite.parite-signe-terme-dominant-mal-geree: 2                # LIMCONT-11,19
-    mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0: 2                     # LIMCONT-25,26
-    mc.math.maths_limites_continuite.limite-laterale-non-verifiee: 1                         # LIMCONT-1
-    mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee: 1                   # LIMCONT-10
-    mc.math.maths_limites_continuite.trig-forme-reference-mal-geree: 1                       # LIMCONT-22
-    mc.math.maths_limites_continuite.trig-coefficient-argument-non-ajuste: 1                 # LIMCONT-23
-    mc.math.maths_limites_continuite.trig-toutes-limites-valent-1: 1                         # LIMCONT-24
-    mc.math.maths_limites_continuite.trig-1-moins-cos-signe-confondu: 0                       # jamais primary (distractor seul, LIMCONT-24.C)
+    mc.math.maths_limites_continuite.trig-forme-reference-mal-geree:                    { count: 5, items: [LIMCONT-22, LIMCONT-23, LIMCONT-24, LIMCONT-25, LIMCONT-26] }
+    mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0:                  { count: 3, items: [LIMCONT-25, LIMCONT-26, LIMCONT-28] }
+    mc.math.maths_limites_continuite.trig-coefficient-argument-non-ajuste:              { count: 4, items: [LIMCONT-23, LIMCONT-27, LIMCONT-28, LIMCONT-31] }
+    mc.math.maths_limites_continuite.trig-toutes-limites-valent-1:                      { count: 4, items: [LIMCONT-24, LIMCONT-27, LIMCONT-28, LIMCONT-31] }
+    mc.math.maths_limites_continuite.trig-1-moins-cos-signe-confondu:                   { count: 3, items: [LIMCONT-24, LIMCONT-27, LIMCONT-31] }
+    mc.math.maths_limites_continuite.confond-point-et-voisinage:                        { count: 5, items: [LIMCONT-1, LIMCONT-3, LIMCONT-7, LIMCONT-9, LIMCONT-16] }
+    mc.math.maths_limites_continuite.limite-laterale-non-verifiee:                      { count: 4, items: [LIMCONT-1, LIMCONT-29, LIMCONT-30, LIMCONT-32] }
+    mc.math.maths_limites_continuite.sur-generalise-forme-indeterminee:                 { count: 3, items: [LIMCONT-2, LIMCONT-12, LIMCONT-13] }
+    mc.math.maths_limites_continuite.forme-indeterminee-traitee-comme-valeur-litterale: { count: 5, items: [LIMCONT-3, LIMCONT-4, LIMCONT-8, LIMCONT-14, LIMCONT-21] }
+    mc.math.maths_limites_continuite.definition-continuite-mal-appliquee:               { count: 4, items: [LIMCONT-5, LIMCONT-15, LIMCONT-16, LIMCONT-21] }
+    mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees:          { count: 4, items: [LIMCONT-6, LIMCONT-17, LIMCONT-18, LIMCONT-20] }
+    mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee:                { count: 3, items: [LIMCONT-10, LIMCONT-30, LIMCONT-32] }
+    mc.math.maths_limites_continuite.parite-signe-terme-dominant-mal-geree:             { count: 3, items: [LIMCONT-11, LIMCONT-13, LIMCONT-19] }
+  total_items: 32
   floor: 3
-  floor_met: false
-  models_below_floor:
-    - "mc.math.maths_limites_continuite.confond-point-et-voisinage (2)"
-    - "mc.math.maths_limites_continuite.parite-signe-terme-dominant-mal-geree (2)"
-    - "mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0 (2)"
-    - "mc.math.maths_limites_continuite.limite-laterale-non-verifiee (1)"
-    - "mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee (1)"
-    - "mc.math.maths_limites_continuite.trig-forme-reference-mal-geree (1)"
-    - "mc.math.maths_limites_continuite.trig-coefficient-argument-non-ajuste (1)"
-    - "mc.math.maths_limites_continuite.trig-toutes-limites-valent-1 (1)"
-    - "mc.math.maths_limites_continuite.trig-1-moins-cos-signe-confondu (0)"
-  note: >
-    Honest count, not padded. LIMCONT-1..21 backfilled this pass (item-level
-    primary_misconception + per-distractor tags, rc-charge method) against 8
-    new R0-R5 models; LIMCONT-22..26 (trig, untouched) counted alongside for
-    a whole-notion picture. Nine of the thirteen models in play sit under the
-    floor of 3 — flagged honestly for a follow-up item-authoring pass, per
-    the recipe's "surfacing floor_met: false is itself a deliverable" rule.
-    No items invented and no counts padded to clear the floor.
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 5
+    R2: 3
+    R3: 3
+    R4: 4
+    R5: 3
+    R6: 8
+    R7: 3
+  honest_state: >-
+    Les treize misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Cinq y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

@@ -2153,49 +2153,421 @@ items:
 # per rung), which is orthogonal to the ≥3-per-misconception depth goal; hence
 # several models sit below the floor. Counts below are by `primary_misconception`.
 # ──────────────────────────────────────────────────────────────────────────────
+  # Ajoutés le 2026-09-05 : cinq familles siégeaient à UN item du banc, donc
+  # sous le plancher de 3 — bornee-implique-monotone,
+  # quotient-monotonie-sans-positivite, signe-fx-mauvais-domaine,
+  # forme-indeterminee-mal-geree, tendance-implique-limite. Quatre items, dix
+  # places : chaque famille apparaît dans exactement deux d'entre eux.
+  - id: SUITES-34
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_suites_numeriques
+    tags: [monotonie, quotient, bornes]
+    primary_misconception: mc.math.sma_suites_numeriques.bornee-implique-monotone
+    stem: >
+      Une suite $(u_n)$ vérifie $0 < u_n < 5$ pour tout $n$. Que peut-on en
+      déduire sur son sens de variation ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Rien : être bornée ne dit rien du sens de variation, une suite peut
+          rester entre deux bornes en oscillant sans cesse
+        correct: true
+      - id: B
+        text: >-
+          Qu'elle est croissante : puisqu'elle est majorée par $5$, elle monte
+          nécessairement vers cette borne
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.bornee-implique-monotone
+        feedback: >
+          Être majorée dit seulement qu'aucun terme ne dépasse $5$ ; cela
+          n'oblige la suite ni à monter, ni à s'approcher de $5$. La suite
+          $u_n = 2 + (-1)^n$ vit entre $1$ et $3$ sans être monotone, et
+          $u_n = 4 - 1/n$ est croissante mais tend vers $4$, pas vers son
+          majorant $5$.
+      - id: C
+        text: >-
+          Qu'elle est croissante si $u_{n+1}/u_n \geqslant 1$, ce qu'on peut
+          tester directement sans autre vérification
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.quotient-monotonie-sans-positivite
+        feedback: >
+          La méthode du quotient exige que TOUS les termes soient strictement
+          positifs — sans quoi multiplier l'inégalité par $u_n$ en change le
+          sens. Ici l'énoncé donne bien $u_n > 0$, donc la méthode serait
+          applicable ; mais elle n'est pas « directe » : la positivité se vérifie
+          avant, et le quotient reste à calculer.
+      - id: D
+        text: >-
+          Qu'elle est décroissante si $f(x) - x < 0$ sur $\mathbb{R}$, en posant
+          $u_{n+1} = f(u_n)$
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.signe-fx-mauvais-domaine
+        feedback: >
+          Deux problèmes. L'énoncé ne dit pas que la suite est définie par une
+          relation de récurrence $u_{n+1} = f(u_n)$. Et même dans ce cas, le
+          signe de $f(x) - x$ ne se lit pas sur $\mathbb{R}$ tout entier : il
+          faut le restreindre à l'intervalle où vivent réellement les $u_n$ —
+          ici $\,]0\,;5[$ — car c'est le seul endroit où la suite passe.
+    correct_feedback: >
+      Rien du tout. Une suite bornée peut être croissante, décroissante, ou ni
+      l'un ni l'autre : $u_n = 2 + (-1)^n$ oscille indéfiniment entre $1$ et $3$
+      sans jamais devenir monotone. Bornes et monotonie sont deux propriétés
+      indépendantes.
+    solution: |
+      **Ce qu'une borne affirme.** $0 < u_n < 5$ dit que tous les termes vivent
+      dans l'intervalle $\,]0\,;5[$. C'est une contrainte sur les VALEURS, pas
+      sur l'ordre dans lequel elles se succèdent.
+
+      **Trois suites bornées par les mêmes nombres :**
+      $$u_n = 4 - \frac{1}{n+1} \ \text{(croissante)}, \quad
+      u_n = 1 + \frac{1}{n+1} \ \text{(décroissante)}, \quad
+      u_n = 2 + (-1)^n \ \text{(ni l'un ni l'autre)}$$
+
+      **Ce que les bornes servent vraiment à faire.** Combinées à la monotonie —
+      et seulement combinées à elle — elles donnent le théorème de la limite
+      monotone : une suite croissante ET majorée converge. Chacune seule ne
+      conclut rien.
+
+  - id: SUITES-35
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_suites_numeriques
+    tags: [monotonie, quotient, limites]
+    primary_misconception: mc.math.sma_suites_numeriques.quotient-monotonie-sans-positivite
+    stem: >
+      Pour étudier la monotonie de la suite définie par
+      $u_n = \dfrac{(-2)^n}{n+1}$, un élève calcule $\dfrac{u_{n+1}}{u_n}$,
+      trouve $\dfrac{-2(n+1)}{n+2}$, constate que ce quotient est inférieur à
+      $1$ et conclut que la suite est décroissante. Que penser de sa méthode ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elle est invalide ici : la méthode du quotient suppose tous les termes
+          strictement positifs, et $(-2)^n$ change de signe
+        correct: true
+      - id: B
+        text: >-
+          Elle est valide : comparer $u_{n+1}/u_n$ à $1$ conclut sur la monotonie
+          dans tous les cas de figure
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.quotient-monotonie-sans-positivite
+        feedback: >
+          Passer de $u_{n+1}/u_n < 1$ à $u_{n+1} < u_n$ demande de multiplier par
+          $u_n$ — ce qui ne conserve l'inégalité que si $u_n > 0$. Avec des
+          termes alternés, la conclusion s'inverse un terme sur deux, et la suite
+          n'est en fait monotone dans aucun sens.
+      - id: C
+        text: >-
+          Elle est valide, car la suite est bornée : une suite bornée est
+          nécessairement monotone à partir d'un certain rang
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.bornee-implique-monotone
+        feedback: >
+          Être bornée n'entraîne aucune monotonie, ni au début ni à partir d'un
+          rang : $u_n = (-1)^n$ est bornée et n'est monotone sur aucun segment
+          de son parcours. Et cette suite-ci n'est d'ailleurs pas bornée — ses
+          termes explosent en valeur absolue.
+      - id: D
+        text: >-
+          Elle est valide, mais le calcul est faux : $u_{n+1}/u_n$ vaut
+          $-\infty - \infty$, une forme indéterminée sans limite
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.forme-indeterminee-mal-geree
+        feedback: >
+          Le quotient $\dfrac{-2(n+1)}{n+2}$ n'a rien d'indéterminé : c'est un
+          quotient de deux polynômes de même degré, dont la limite vaut $-2$. Et
+          « forme indéterminée » ne signifie jamais « pas de limite » : cela
+          signifie que le calcul terme à terme ne conclut pas et qu'il faut
+          transformer l'écriture.
+    correct_feedback: >
+      La méthode du quotient exige $u_n > 0$ pour tout $n$ : c'est cette
+      positivité qui autorise à multiplier l'inégalité par $u_n$ sans en changer
+      le sens. Ici $(-2)^n$ alterne de signe, donc la méthode ne s'applique pas —
+      et la suite n'est effectivement pas monotone.
+    solution: |
+      **L'étape cachée de la méthode.** De $\dfrac{u_{n+1}}{u_n} < 1$, on veut
+      déduire $u_{n+1} < u_n$. Cela demande de multiplier par $u_n$ :
+      $$\frac{u_{n+1}}{u_n} < 1 \ \text{ et } \ u_n > 0
+      \quad\Longrightarrow\quad u_{n+1} < u_n$$
+      Si $u_n < 0$, l'inégalité s'inverse et la conclusion est exactement
+      contraire.
+
+      **Ici.** $u_n = \dfrac{(-2)^n}{n+1}$ vaut $1$, $-1$, $\dfrac{4}{3}$,
+      $-2$, … : les signes alternent. La suite n'est monotone dans aucun sens.
+
+      **La méthode qui reste toujours valable.** Étudier le signe de
+      $u_{n+1} - u_n$ : aucune hypothèse de signe n'est nécessaire.
+
+  - id: SUITES-36
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: maths_suites_numeriques
+    tags: [recurrence_fonctionnelle, limites, forme_indeterminee]
+    primary_misconception: mc.math.sma_suites_numeriques.signe-fx-mauvais-domaine
+    stem: >
+      Soit $(u_n)$ définie par $u_0 = 0{,}5$ et $u_{n+1} = f(u_n)$ avec
+      $f(x) = \dfrac{x+2}{x+3}$. On a montré par récurrence que
+      $u_n \in \,]0\,;1[$ pour tout $n$. Pour étudier la monotonie, on veut le
+      signe de $f(x) - x$. Sur quel ensemble faut-il l'étudier, et pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Sur $\,]0\,;1[$ seulement : c'est là que vivent tous les termes, donc
+          le seul endroit où le signe soit utilisable
+        correct: true
+      - id: B
+        text: >-
+          Sur $\mathbb{R}$ privé de $-3$, c'est-à-dire l'ensemble de définition
+          entier de $f$ : restreindre l'intervalle ferait perdre de l'information
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.signe-fx-mauvais-domaine
+        feedback: >
+          L'information supplémentaire porterait sur des valeurs que la suite ne
+          prend jamais. Pire, elle peut égarer : $f(x) - x$ change de signe
+          au-delà de $1$, et un tableau sur $\mathbb{R}$ suggérerait une
+          monotonie qui ne concerne pas cette suite. Le domaine pertinent est
+          celui que la récurrence a établi.
+      - id: C
+        text: >-
+          Sur l'intervalle où la suite est bornée, ce qui garantit du même coup
+          qu'elle y est monotone
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.bornee-implique-monotone
+        feedback: >
+          L'intervalle est le bon, la justification non : une suite bornée n'est
+          pas monotone pour autant. C'est le signe de $f(x) - x$ sur cet
+          intervalle qui donne la monotonie, et c'est ensuite la conjonction des
+          deux — monotone ET bornée — qui donne la convergence.
+      - id: D
+        text: >-
+          Sur aucun : $f(x) - x$ est une différence de deux quantités qui tendent
+          vers l'infini, donc une forme indéterminée
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.forme-indeterminee-mal-geree
+        feedback: >
+          On étudie ici un SIGNE sur un intervalle borné, pas une limite à
+          l'infini : la question de l'indétermination ne se pose pas. Et même en
+          $+\infty$, $f(x) - x$ n'est pas indéterminée : $f(x)$ tend vers $1$,
+          donc la différence tend vers $-\infty$.
+    correct_feedback: >
+      Sur $\,]0\,;1[$, l'intervalle que la récurrence a établi comme stable : la
+      suite n'en sort jamais, donc c'est le seul endroit où le signe de
+      $f(x) - x$ dise quelque chose sur elle. Étudier ailleurs, c'est décrire un
+      comportement que la suite n'aura pas.
+    solution: |
+      **Pourquoi le signe de $f(x) - x$ donne la monotonie.**
+      $$u_{n+1} - u_n = f(u_n) - u_n$$
+      Le signe de cette différence est donc celui de $f(x) - x$ ÉVALUÉ EN
+      $x = u_n$. Seules les valeurs réellement prises par la suite comptent.
+
+      **Le calcul sur $\,]0\,;1[$.**
+      $$f(x) - x = \frac{x+2}{x+3} - x = \frac{x + 2 - x(x+3)}{x+3}
+      = \frac{-x^2 - 2x + 2}{x+3}$$
+      Sur $\,]0\,;1[$, le dénominateur est positif et le numérateur s'annule en
+      $x = -1 + \sqrt{3} \approx 0{,}73$ : la différence est positive avant,
+      négative après. La suite n'est donc pas monotone sur tout l'intervalle —
+      information qu'un tableau sur $\mathbb{R}$ aurait noyée.
+
+      **La leçon de méthode.** L'étape « montrer par récurrence que $u_n \in I$ »
+      n'est pas une formalité : elle FOURNIT le domaine d'étude de tout ce qui
+      suit.
+
+  - id: SUITES-37
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_suites_numeriques
+    tags: [limite, preuve, intuition]
+    primary_misconception: mc.math.sma_suites_numeriques.tendance-implique-limite
+    stem: >
+      Un élève calcule les six premiers termes d'une suite, constate qu'ils
+      décroissent, et écrit : « la suite décroît, donc elle tend vers $0$ ».
+      Que penser de cette conclusion ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elle est correcte sur le principe : il suffit de calculer quelques
+          termes de plus pour confirmer que la limite est bien $0$
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.tendance-implique-limite
+        feedback: >
+          Aucun nombre fini de termes ne prouve une limite. La suite
+          $u_n = \dfrac{1}{n} - \dfrac{n}{1000}$ décroît et paraît tendre vers
+          $0$ pendant des centaines de termes, avant de plonger vers $-\infty$.
+          Une limite se démontre ; elle ne se constate pas sur un tableau de
+          valeurs.
+      - id: B
+        text: >-
+          Elle est injustifiée : décroître ne fixe aucune limite ; il faudrait
+          une minoration pour conclure à la convergence
+        correct: true
+      - id: C
+        text: >-
+          Elle est correcte : une suite décroissante finit toujours par se
+          rapprocher de zéro, c'est le sens même de la décroissance
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.tendance-implique-limite
+        feedback: >
+          $u_n = 10 - n$ décroît et tend vers $-\infty$ ; $u_n = 3 + 1/n$ décroît
+          et tend vers $3$. Décroître dit dans quel SENS on va, jamais où l'on
+          arrive. Et l'observation des premiers termes ne prouve rien du tout :
+          une suite peut décroître dix mille fois puis remonter.
+      - id: D
+        text: >-
+          Elle est correcte à condition que la suite soit bornée, car une suite
+          bornée est automatiquement monotone et de limite nulle
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.bornee-implique-monotone
+        feedback: >
+          Être bornée n'entraîne pas la monotonie — $(-1)^n$ le montre — et
+          n'impose aucune limite particulière. Le théorème utile va dans l'autre
+          sens : une suite DÉCROISSANTE et MINORÉE converge ; il donne
+          l'existence de la limite, jamais sa valeur.
+    correct_feedback: >
+      La conclusion ne tient pas. Décroître indique un sens, pas une
+      destination : $10 - n$ décroît vers $-\infty$, $3 + 1/n$ décroît vers $3$.
+      Avec une minoration en plus, le théorème de la limite monotone garantirait
+      la CONVERGENCE — mais il faudrait encore un autre argument pour en trouver
+      la valeur.
+    solution: |
+      **Ce que l'observation de six termes établit.** Rien. Une suite peut
+      décroître longtemps puis remonter ; la monotonie se démontre, par le signe
+      de $u_{n+1} - u_n$ ou par récurrence.
+
+      **Ce que la décroissance, une fois démontrée, établit.** Un sens de
+      parcours. Deux issues restent possibles :
+      $$u_n = 10 - n \longrightarrow -\infty \qquad
+      u_n = 3 + \frac{1}{n} \longrightarrow 3$$
+
+      **Ce qu'il faut ajouter.** Une minoration. Le théorème de la limite
+      monotone dit alors : toute suite décroissante et minorée CONVERGE. Il
+      garantit l'existence de la limite, jamais sa valeur — laquelle s'obtient
+      ensuite, par exemple en résolvant $\ell = f(\ell)$ pour une suite
+      récurrente.
+
+  - id: SUITES-38
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: maths_suites_numeriques
+    tags: [intuition, limite, majoration]
+    primary_misconception: mc.math.sma_suites_numeriques.tendance-implique-limite
+    stem: >
+      Les dix premiers termes d'une suite $(u_n)$ augmentent régulièrement et
+      le dixième dépasse $100$. Un élève en conclut que la suite tend vers
+      $+\infty$. Qu'en penser ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Rien ne le garantit : croître dit dans quel sens on va, jamais
+          jusqu'où — $u_n = 200 - \dfrac{1000}{n}$ croît sans jamais atteindre
+          $200$
+        correct: true
+      - id: B
+        text: >-
+          La conclusion est juste : une suite qui augmente sur ses dix premiers
+          termes continuera d'augmenter, donc finira par dépasser toute valeur
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.tendance-implique-limite
+        feedback: >
+          Deux sauts injustifiés en une phrase. D'abord, dix termes ne prouvent
+          pas que la croissance se poursuive : elle se démontre, par le signe de
+          $u_{n+1} - u_n$ ou par récurrence. Ensuite, même démontrée, la
+          croissance n'entraîne pas la divergence : une suite croissante et
+          majorée converge, elle ne dépasse jamais son majorant.
+      - id: C
+        text: >-
+          La conclusion est juste si la suite est majorée : le majorant est alors
+          la limite, et une suite croissante finit toujours par l'atteindre
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.majorant-atteint-ou-limite
+        feedback: >
+          Un majorant n'est ni atteint ni limite en général : $u_n = 3 - 1/n$
+          est majorée par $10$, par $5$, par $3$ — et sa limite est $3$, la plus
+          petite de ces bornes, qu'elle n'atteint jamais. Le théorème de la
+          limite monotone garantit l'EXISTENCE d'une limite, sans en donner la
+          valeur.
+      - id: D
+        text: >-
+          La conclusion est fausse : dépasser $100$ prouve que la suite est
+          bornée, donc qu'elle est décroissante à partir d'un certain rang
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.bornee-implique-monotone
+        feedback: >
+          Dépasser $100$ ne prouve aucune bornitude — au contraire, c'est un
+          argument qui va dans l'autre sens. Et une suite bornée n'est ni
+          croissante, ni décroissante par nature : $u_n = (-1)^n$ est bornée et
+          n'est monotone sur aucun segment de son parcours.
+    correct_feedback: >
+      Rien ne le garantit. Croître indique un sens, pas une destination : la
+      suite $u_n = 200 - \dfrac{1000}{n}$ croît indéfiniment et reste pourtant
+      sous $200$. Et dix termes ne démontrent même pas la croissance.
+    solution: |
+      **Deux lacunes distinctes.**
+
+      1. *La croissance n'est pas établie.* Dix termes n'en prouvent rien ; il
+         faut le signe de $u_{n+1} - u_n$, ou une récurrence.
+      2. *La croissance, même établie, ne donne pas la limite.* Deux issues
+         restent ouvertes :
+      $$u_n = n \longrightarrow +\infty \qquad
+      u_n = 200 - \frac{1000}{n} \longrightarrow 200$$
+
+      **Ce qui trancherait.** Une majoration. Le théorème de la limite monotone
+      dit alors : toute suite croissante et majorée CONVERGE — et sa limite est
+      la plus petite des bornes supérieures, qui n'est en général ni atteinte,
+      ni égale au majorant qu'on avait sous la main.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après SUITES-34 à SUITES-38. Cinq familles siégeaient
+# à UN item du banc : bornée n'implique pas monotone, la méthode du quotient
+# exige la positivité, le signe de $f(x)-x$ se lit sur l'intervalle stable,
+# une forme indéterminée n'est pas une absence de limite, et le comportement
+# des premiers termes ne prédit rien. Tableau GÉNÉRÉ contre
+# web/scripts/lib/couverture-compte.mjs, gardé par
+# scripts/resume-couverture.mjs.
 coverage_summary:
-  total_items: 33
-  per_rung:
-    R0: 3   # SUITES-7, SUITES-8, SUITES-9
-    R1: 3   # SUITES-1, SUITES-10, SUITES-11
-    R2: 3   # SUITES-12, SUITES-13, SUITES-14
-    R3: 3   # SUITES-2, SUITES-15, SUITES-16
-    R4: 3   # SUITES-17, SUITES-18, SUITES-19
-    R5: 3   # SUITES-3, SUITES-20, SUITES-21
-    R6: 3   # SUITES-4, SUITES-22, SUITES-23
-    R7: 3   # SUITES-24, SUITES-25, SUITES-26
-    R8: 3   # SUITES-5, SUITES-27, SUITES-28
-    R9: 3   # SUITES-6, SUITES-29, SUITES-30
-    R10: 3  # SUITES-31, SUITES-32, SUITES-33
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
   per_misconception:
-    # ── floor MET (≥3 end-bank items) ──
-    mc.math.sma_suites_numeriques.recurrence-etape-manquante: 3        # SUITES-1, SUITES-10, SUITES-11
-    mc.math.sma_suites_numeriques.preuve-par-termes-calcules: 3        # SUITES-9, SUITES-16, SUITES-17
-    mc.math.sma_suites_numeriques.majorant-atteint-ou-limite: 3        # SUITES-5, SUITES-15, SUITES-25
-    mc.math.sma_suites_numeriques.monotone-hypothese-partielle: 3      # SUITES-24, SUITES-26, SUITES-31
-    mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique: 3 # SUITES-4, SUITES-22, SUITES-23
-    mc.math.sma_suites_numeriques.adjacentes-condition-incomplete: 3   # SUITES-6, SUITES-29, SUITES-30
-    mc.math.sma_suites_numeriques.arith-geom-confondues: 5             # SUITES-12, SUITES-13, SUITES-14, SUITES-28, SUITES-32
-    # ── floor NOT met (< 3 end-bank items) — flagged for a follow-up item pass ──
-    mc.math.sma_suites_numeriques.point-fixe-prouve-convergence: 2     # SUITES-27, SUITES-33
-    mc.math.sma_suites_numeriques.limite-liee-terme-initial: 2         # SUITES-3, SUITES-21
-    mc.math.sma_suites_numeriques.ordre-notation-recurrence: 2         # SUITES-7, SUITES-8
-    mc.math.sma_suites_numeriques.bornee-implique-monotone: 1          # SUITES-2
-    mc.math.sma_suites_numeriques.quotient-monotonie-sans-positivite: 1 # SUITES-18
-    mc.math.sma_suites_numeriques.signe-fx-mauvais-domaine: 1          # SUITES-19
-    mc.math.sma_suites_numeriques.forme-indeterminee-mal-geree: 1      # SUITES-20
-    mc.math.sma_suites_numeriques.tendance-implique-limite: 0          # end-bank: none — gated in-lesson by cp-r0-predict (checkpoints.yaml)
-  floor_met: false   # 7 of 15 models reach ≥3 end-bank items; 8 are under-covered (honest — NOT padded)
-
-  rupture_gate_floor:
-    # The four rupture families the in-lesson checkpoints gate (checkpoints.yaml),
-    # and their END-BANK floor status:
-    recurrence_les_deux_etapes:        { model: recurrence-etape-manquante, end_bank_items: 3, floor_met: true, checkpoint: cp-recurrence-deux-etapes }
-    sens_de_variation_via_difference:  { model: preuve-par-termes-calcules, end_bank_items: 3, floor_met: true, checkpoint: cp-sens-variation }
-    suite_majoree_minoree:             { model: majorant-atteint-ou-limite, end_bank_items: 3, floor_met: true, checkpoint: cp-majoree-minoree }
-    convergence_limite_point_fixe:     { model: point-fixe-prouve-convergence, end_bank_items: 2, floor_met: false, checkpoint: cp-convergence-pointfixe, note: "under floor by 1 — add one R8 point-fixe item; convergence reasoning is additionally covered by monotone-hypothese-partielle (3) and majorant-atteint-ou-limite (3)" }
-
-  followup:
-    - "Per-distractor `misconception:` tagging of the 33 end-bank items (currently item-level primary only, per the legacy path)."
-    - "Add ≥1 item each to reach the ≥3 floor for: point-fixe-prouve-convergence (2→3), limite-liee-terme-initial (2→3), ordre-notation-recurrence (2→3), bornee-implique-monotone (1→3), quotient-monotonie-sans-positivite (1→3), signe-fx-mauvais-domaine (1→3), forme-indeterminee-mal-geree (1→3)."
-    - "skill_code sma_suites_numeriques is proposed — supabase-architect to reconcile."
+    mc.math.sma_suites_numeriques.recurrence-etape-manquante:         { count: 4, items: [SUITES-1, SUITES-10, SUITES-11, SUITES-31] }
+    mc.math.sma_suites_numeriques.preuve-par-termes-calcules:         { count: 3, items: [SUITES-1, SUITES-16, SUITES-17] }
+    mc.math.sma_suites_numeriques.bornee-implique-monotone:           { count: 6, items: [SUITES-2, SUITES-34, SUITES-35, SUITES-36, SUITES-37, SUITES-38] }
+    mc.math.sma_suites_numeriques.majorant-atteint-ou-limite:         { count: 4, items: [SUITES-5, SUITES-15, SUITES-25, SUITES-38] }
+    mc.math.sma_suites_numeriques.quotient-monotonie-sans-positivite: { count: 3, items: [SUITES-18, SUITES-34, SUITES-35] }
+    mc.math.sma_suites_numeriques.signe-fx-mauvais-domaine:           { count: 3, items: [SUITES-19, SUITES-34, SUITES-36] }
+    mc.math.sma_suites_numeriques.monotone-hypothese-partielle:       { count: 5, items: [SUITES-24, SUITES-25, SUITES-26, SUITES-31, SUITES-33] }
+    mc.math.sma_suites_numeriques.point-fixe-prouve-convergence:      { count: 3, items: [SUITES-5, SUITES-27, SUITES-31] }
+    mc.math.sma_suites_numeriques.forme-indeterminee-mal-geree:       { count: 3, items: [SUITES-20, SUITES-35, SUITES-36] }
+    mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique: { count: 3, items: [SUITES-4, SUITES-22, SUITES-23] }
+    mc.math.sma_suites_numeriques.adjacentes-condition-incomplete:    { count: 3, items: [SUITES-6, SUITES-29, SUITES-30] }
+    mc.math.sma_suites_numeriques.arith-geom-confondues:              { count: 8, items: [SUITES-3, SUITES-12, SUITES-13, SUITES-14, SUITES-21, SUITES-28, SUITES-32, SUITES-33] }
+    mc.math.sma_suites_numeriques.limite-liee-terme-initial:          { count: 3, items: [SUITES-3, SUITES-5, SUITES-21] }
+    mc.math.sma_suites_numeriques.ordre-notation-recurrence:          { count: 3, items: [SUITES-7, SUITES-8, SUITES-11] }
+    mc.math.sma_suites_numeriques.tendance-implique-limite:           { count: 3, items: [SUITES-9, SUITES-37, SUITES-38] }
+  total_items: 38
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 4
+    R1: 3
+    R2: 3
+    R3: 3
+    R4: 5
+    R5: 4
+    R6: 3
+    R7: 3
+    R8: 4
+    R9: 3
+    R10: 3
+  honest_state: >-
+    Les quinze misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Dix y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

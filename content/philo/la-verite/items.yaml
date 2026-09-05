@@ -1773,70 +1773,386 @@ items:
       clos). Se contenter de reformuler le paragraphe sur le cogito manque
       la moitié de la question.
 
+  # Ajoutés le 2026-09-05 : sept familles sous le plancher de 3 items du banc —
+  # quatre à un item (le vocabulaire de Popper et la propagande), trois à deux
+  # (opinion, portée d'un critère, mensonge contre erreur). Quatre items, onze
+  # places.
+  - id: VERITE-31
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: philo_la_verite
+    tags: [popper, falsifiabilite, corroboration]
+    stem: >
+      Une théorie scientifique a résisté à tous les tests qu'on lui a fait
+      subir. Un élève écrit : « elle est donc démontrée vraie ». Quelle
+      correction Popper apporterait-il ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Qu'elle est corroborée, c'est-à-dire non encore réfutée : un statut solide et provisoire, jamais une démonstration de vérité définitive."
+        correct: true
+      - id: B
+        text: "Qu'elle est au contraire douteuse, puisque « non encore réfutée » signifie qu'elle attend encore d'être mise à l'épreuve pour de bon."
+        correct: false
+        misconception: mc.philo.la_verite.non-refutee-jugee-douteuse
+        feedback: >
+          « Non encore réfutée » ne veut pas dire « non encore testée » — c'est
+          même l'inverse : le statut ne s'obtient qu'APRÈS des tests sévères, et
+          plus ils sont nombreux et exigeants, plus la corroboration est forte.
+          Ce qui reste ouvert, c'est l'avenir : un test futur pourrait échouer.
+          Le provisoire n'est pas le douteux.
+      - id: C
+        text: "Qu'une théorie qui résiste ainsi cesse d'être falsifiable, la falsifiabilité désignant le fait d'être fréquemment réfutée par l'expérience."
+        correct: false
+        misconception: mc.philo.la_verite.falsifiable-confondu-refutee
+        feedback: >
+          Falsifiable signifie réfutable EN PRINCIPE : on peut dire d'avance
+          quelle observation, si elle se produisait, mettrait la théorie en
+          défaut. C'est un critère de forme, pas un bilan d'échecs. Une théorie
+          jamais réfutée reste parfaitement falsifiable — et c'est précisément ce
+          qui fait d'elle une théorie scientifique plutôt qu'un dogme.
+      - id: D
+        text: "Que puisque aucune théorie n'est jamais certaine, aucune ne vaut mieux qu'une autre : toutes les opinions se valent également."
+        correct: false
+        misconception: mc.philo.la_verite.fallibilisme-confondu-relativisme
+        feedback: >
+          Le fallibilisme dit qu'aucune connaissance n'est absolument certaine ;
+          le relativisme dit que toutes se valent. Le premier n'entraîne pas le
+          second — au contraire, il suppose qu'on puisse comparer : une théorie
+          corroborée par mille tests sévères vaut mieux qu'une hypothèse jamais
+          éprouvée, même si aucune des deux n'est certaine.
+    correct_feedback: >
+      Popper remplace « démontrée vraie » par CORROBORÉE : la théorie a résisté
+      aux tentatives de réfutation, ce qui est un titre sérieux et toujours
+      révisable. Aucune accumulation de confirmations ne démontre une loi
+      universelle ; un seul contre-exemple la réfute.
+    solution: |
+      **L'asymétrie logique, au cœur de l'argument.** Aucun nombre
+      d'observations favorables ne démontre un énoncé universel : « tous les
+      cygnes sont blancs » reste indémontrable, quel que soit le nombre de
+      cygnes blancs observés. Une seule observation contraire, en revanche, le
+      réfute définitivement.
+
+      **D'où le statut d'une théorie qui tient.** Elle est corroborée : elle a
+      subi des tests susceptibles de la démentir, et n'a pas été démentie. Ce
+      titre est d'autant plus fort que les tests étaient sévères.
+
+      **Trois mots à ne pas confondre.**
+      - *Falsifiable* : réfutable en principe — un critère de forme.
+      - *Réfutée* : effectivement démentie par l'expérience.
+      - *Corroborée* : testée sévèrement et non réfutée jusqu'ici.
+
+  - id: VERITE-32
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: philo_la_verite
+    tags: [propagande, popper, verite-et-pouvoir]
+    stem: >
+      Qu'est-ce qui distingue le plus nettement une théorie scientifique d'un
+      discours de propagande ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La théorie dit d'avance ce qui la mettrait en défaut et s'expose à ce test ; la propagande organise sa cohérence de façon qu'aucun fait ne puisse jamais la contredire."
+        correct: true
+      - id: B
+        text: "La propagande repose elle aussi sur des énoncés falsifiables et vérifiés par correspondance aux faits ; elle s'en distingue seulement par l'intention de celui qui la diffuse."
+        correct: false
+        misconception: mc.philo.la_verite.propagande-mal-caracterisee
+        feedback: >
+          La propagande ne s'expose pas au démenti : elle réinterprète tout ce
+          qui la contrarie comme une confirmation de plus — un échec devient un
+          complot, une objection devient une preuve d'hostilité. C'est cette
+          IMMUNITÉ construite qui la caractérise, et non la seule mauvaise
+          intention. Un discours peut être sincère et rester impossible à
+          réfuter.
+      - id: C
+        text: "La théorie scientifique n'a jamais été réfutée, tandis que la propagande l'a été de nombreuses fois : c'est le nombre de démentis qui les sépare."
+        correct: false
+        misconception: mc.philo.la_verite.falsifiable-confondu-refutee
+        feedback: >
+          Le critère ne porte pas sur le nombre de démentis subis, mais sur la
+          POSSIBILITÉ d'en subir. Une théorie scientifique peut avoir été
+          réfutée — c'est arrivé à beaucoup — et rester scientifique ; un
+          discours de propagande n'est jamais réfuté, précisément parce qu'il est
+          construit pour ne pas pouvoir l'être.
+      - id: D
+        text: "La théorie scientifique est une vérité définitive, tandis que la propagande n'est que provisoirement acceptée en attendant qu'on la vérifie."
+        correct: false
+        misconception: mc.philo.la_verite.non-refutee-jugee-douteuse
+        feedback: >
+          Les deux termes sont intervertis. C'est la théorie scientifique qui est
+          provisoire — corroborée, jamais démontrée définitivement — et c'est la
+          propagande qui se présente comme certaine et close. Le provisoire est
+          ici du côté de la rigueur, pas du côté du soupçon.
+    correct_feedback: >
+      Le partage passe par l'exposition au démenti. Une théorie scientifique dit
+      d'avance quelle observation la mettrait en défaut ; un discours de
+      propagande est agencé pour absorber toute objection — ce qui le contredit
+      devient une preuve de plus.
+    solution: |
+      **Le critère de démarcation.** Ce n'est pas la certitude, ni la sincérité,
+      ni même la vérité du contenu : c'est la RÉFUTABILITÉ. Une théorie
+      scientifique prend un risque — elle interdit certains faits, et si l'un
+      d'eux survient, elle tombe.
+
+      **Ce que fait la propagande.** Elle supprime le risque. Tout événement,
+      favorable ou non, est réinterprété comme une confirmation : la victoire
+      prouve la justesse de la cause, la défaite prouve la puissance de l'ennemi.
+      Ce qui explique tout n'explique plus rien.
+
+      **Pourquoi l'intention ne suffit pas à caractériser.** Un discours peut
+      être diffusé de bonne foi et rester irréfutable ; c'est sa STRUCTURE, et
+      non l'état d'esprit de qui le tient, que le critère examine. L'intention
+      distingue le mensonge de l'erreur — une autre question.
+
+  - id: VERITE-33
+    rung: "R8"
+    difficulty_level: 3
+    skill_code: philo_la_verite
+    tags: [mensonge, erreur, intention, propagande]
+    stem: >
+      Un professeur affirme devant sa classe une date historique erronée, qu'il
+      croit sincèrement exacte. Un autre affirme une date qu'il sait fausse,
+      pour appuyer sa démonstration. En quoi les deux cas diffèrent-ils ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Par l'intention : le premier se trompe, le second ment. Le contenu énoncé est faux dans les deux cas, mais seul le second cherche à tromper autrui."
+        correct: true
+      - id: B
+        text: "Ils ne diffèrent pas vraiment : ce qui compte est que l'énoncé soit faux, et un énoncé faux reste un énoncé faux quelle que soit la tête de celui qui le prononce."
+        correct: false
+        misconception: mc.philo.la_verite.mensonge-confondu-erreur
+        feedback: >
+          Le contenu est en effet identique, et c'est justement ce qui montre que
+          la différence est ailleurs. Le mensonge suppose que le menteur SACHE
+          le vrai et dise autre chose dans l'intention de tromper. L'erreur
+          sincère n'engage pas la même responsabilité — on la corrige, on ne la
+          reproche pas moralement.
+      - id: C
+        text: "Par le degré de certitude : le premier hésite intérieurement, tandis que le second est absolument certain de ce qu'il avance à sa classe."
+        correct: false
+        misconception: mc.philo.la_verite.mensonge-confondu-erreur
+        feedback: >
+          La certitude n'est pas le bon critère. Le professeur qui se trompe est
+          parfaitement certain de sa date : c'est même pour cela qu'il l'énonce.
+          Et le menteur, lui, est certain du contraire de ce qu'il dit. La
+          différence tient à la relation entre ce qu'on croit et ce qu'on dit,
+          pas à la force de la croyance.
+      - id: D
+        text: "Par le domaine : en histoire, l'exactitude d'une date est une affaire d'opinion, alors que la distinction du vrai et du faux n'a de sens qu'en mathématiques."
+        correct: false
+        misconception: mc.philo.la_verite.critere-restreint-a-un-domaine-a-tort
+        feedback: >
+          Rien ne justifie de restreindre ainsi la vérité aux mathématiques. Une
+          date historique est vraie ou fausse selon qu'elle correspond ou non à
+          ce qui a eu lieu — c'est exactement la définition par correspondance.
+          Ce qui varie d'un domaine à l'autre, ce sont les MOYENS d'établir le
+          vrai, pas l'existence du partage.
+    correct_feedback: >
+      La différence est d'INTENTION, non de contenu. Les deux énoncés sont
+      également faux ; seul le second est un mensonge, parce que celui qui le
+      profère connaît le vrai et dit autre chose pour tromper. On corrige une
+      erreur, on reproche un mensonge.
+    solution: |
+      **Ce que les deux cas ont en commun.** Un énoncé faux, prononcé devant un
+      auditoire qui le reçoit.
+
+      **Ce qui les sépare.** La relation entre ce que le locuteur CROIT et ce
+      qu'il DIT :
+      - *Erreur* : il dit ce qu'il croit ; sa croyance se trouve fausse.
+      - *Mensonge* : il dit le contraire de ce qu'il croit, pour que l'autre le
+        croie.
+
+      **La conséquence morale.** L'erreur relève de la connaissance : on la
+      corrige. Le mensonge relève du rapport à autrui : il instrumentalise sa
+      confiance, et c'est à ce titre qu'on le blâme.
+
+      **Le cas limite instructif.** Un menteur peut dire le VRAI par accident, en
+      croyant mentir. L'énoncé est alors exact et l'acte reste un mensonge :
+      preuve que le partage ne porte pas sur le contenu.
+
+  - id: VERITE-34
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: philo_la_verite
+    tags: [opinion, verite, portee-des-criteres]
+    stem: >
+      « J'en suis absolument convaincu, donc c'est vrai. » Que manque cette
+      inférence ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que la conviction est un état de celui qui pense, tandis que la vérité est une propriété de l'énoncé : la force du sentiment ne fait rien à la relation entre l'énoncé et ce qui est."
+        correct: true
+      - id: B
+        text: "Rien, à condition que la conviction soit sincère et ferme : une opinion tenue avec constance et bonne foi est par là même une opinion vraie."
+        correct: false
+        misconception: mc.philo.la_verite.opinion-confondue-verite
+        feedback: >
+          Sincérité et fermeté sont des qualités du sujet, pas de l'énoncé. On
+          peut être absolument sincère et absolument dans l'erreur — l'histoire
+          des sciences est faite de convictions fermes et fausses. Ce qui rend
+          un énoncé vrai, c'est son accord avec ce qui est, jamais l'intensité
+          avec laquelle on y adhère.
+      - id: C
+        text: "Que cette inférence ne vaut qu'en mathématiques, seul domaine où l'on peut parler de vérité : ailleurs, chacun est légitime à tenir son opinion pour vraie."
+        correct: false
+        misconception: mc.philo.la_verite.critere-restreint-a-un-domaine-a-tort
+        feedback: >
+          Deux erreurs empilées. L'inférence ne vaut nulle part, mathématiques
+          comprises — une démonstration n'est pas valide parce qu'on y croit
+          fort. Et restreindre la vérité à un domaine est arbitraire : « il a
+          plu hier » est vrai ou faux selon qu'il a plu ou non, sans qu'aucune
+          conviction n'y change quoi que ce soit.
+      - id: D
+        text: "Que l'énoncé pourrait être faux sans que celui qui le tient soit pour autant un menteur, ce qui suffit à rendre l'inférence acceptable."
+        correct: false
+        misconception: mc.philo.la_verite.mensonge-confondu-erreur
+        feedback: >
+          La remarque est juste — se tromper n'est pas mentir — mais elle ne
+          répare rien : elle explique seulement qu'on ne reprochera pas l'erreur.
+          L'inférence, elle, reste invalide : de « je suis convaincu », on ne
+          peut pas conclure « c'est vrai », que la sincérité soit entière ou
+          non.
+    correct_feedback: >
+      La conviction décrit un état du sujet, la vérité une propriété de
+      l'énoncé. Aucune intensité de croyance ne fabrique un accord avec ce qui
+      est : on peut être absolument certain et absolument dans l'erreur — et
+      l'histoire des sciences en est faite.
+    solution: |
+      **Deux registres qu'il faut séparer.**
+      - *La certitude* : un état psychologique, mesurable en degrés, propre à
+        celui qui pense.
+      - *La vérité* : une relation entre un énoncé et ce qui est, indépendante
+        de qui l'énonce.
+
+      **Pourquoi le passage de l'un à l'autre échoue.** Si la certitude faisait
+      la vérité, deux personnes également certaines de thèses contraires
+      auraient toutes deux raison. L'histoire des sciences abonde en
+      convictions massives et fausses — les épicycles, le phlogistique.
+
+      **Le sens de la distinction.** Elle ne dévalorise pas la certitude : elle
+      la remet à sa place. La certitude peut être le RÉSULTAT d'une vérité
+      établie ; elle n'en est jamais la preuve.
+
+  - id: VERITE-35
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: philo_la_verite
+    tags: [fallibilisme, relativisme, propagande]
+    stem: >
+      « Puisque la science se corrige sans cesse, ses affirmations ne valent pas
+      mieux que celles d'un discours militant. » Que répondre à cette objection ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que se corriger est précisément ce qui les sépare : la science expose ses énoncés au démenti et en tire des révisions, là où un discours militant absorbe toute objection sans jamais rien réviser."
+        correct: true
+      - id: B
+        text: "Rien : si aucune connaissance n'est jamais certaine, alors aucune ne peut prétendre valoir plus qu'une autre, et toutes les opinions se valent également."
+        correct: false
+        misconception: mc.philo.la_verite.fallibilisme-confondu-relativisme
+        feedback: >
+          Le fallibilisme dit qu'aucune connaissance n'est absolument certaine ;
+          le relativisme dit qu'elles se valent toutes. Passer du premier au
+          second suppose qu'entre deux énoncés faillibles on ne puisse pas
+          choisir — or on le peut : celui qui a résisté à des tests sévères vaut
+          mieux que celui qui n'en a subi aucun. Reconnaître qu'on peut se
+          tromper, c'est justement se donner les moyens de corriger.
+      - id: C
+        text: "Que le discours militant s'appuie lui aussi sur des énoncés réfutables et des faits vérifiés ; la différence entre les deux n'est finalement qu'une affaire de style et de ton."
+        correct: false
+        misconception: mc.philo.la_verite.propagande-mal-caracterisee
+        feedback: >
+          Ce qui caractérise un discours de propagande n'est pas son ton, c'est
+          son IMMUNITÉ : il est agencé de façon qu'aucun fait ne puisse le
+          démentir — l'objection devient une preuve d'hostilité, l'échec une
+          preuve de complot. Un énoncé qu'aucune observation ne pourrait mettre
+          en défaut ne prend aucun risque, et c'est pour cela qu'il n'apprend
+          rien.
+      - id: D
+        text: "Que l'objection part d'un fait inexact : une théorie corroborée est définitivement établie, et la science ne revient jamais sur ce qu'elle a démontré."
+        correct: false
+        misconception: mc.philo.la_verite.non-refutee-jugee-douteuse
+        feedback: >
+          La science revient bel et bien sur ses théories — la mécanique
+          newtonienne a été dépassée sans avoir jamais été « mal faite ». Nier la
+          révisabilité pour défendre la science lui retire ce qui fait sa force.
+          Le bon argument est l'inverse : c'est parce qu'elle se corrige qu'elle
+          vaut mieux qu'un discours qui ne le fait pas.
+    correct_feedback: >
+      L'objection retourne à l'envers ce qu'elle observe. La révisabilité n'est
+      pas une faiblesse de la science, c'est son opération propre : elle expose
+      ses énoncés au démenti et les corrige quand ils échouent. Un discours qui
+      ne se corrige jamais n'est pas plus sûr — il est seulement à l'abri de
+      l'épreuve.
+    solution: |
+      **Le glissement de l'objection.** Elle passe de « aucune connaissance
+      n'est certaine » (le fallibilisme) à « toutes se valent » (le
+      relativisme). Le second ne suit pas du premier : on peut comparer deux
+      énoncés faillibles, par le nombre et la sévérité des tests qu'ils ont
+      subis.
+
+      **Ce que la correction prouve.** Qu'il existe un contrôle extérieur —
+      l'expérience — capable de faire plier une théorie. Un discours que rien ne
+      peut faire plier n'est pas mieux fondé : il est simplement hors d'atteinte.
+
+      **La formule à retenir.** Reconnaître qu'on peut se tromper est la
+      condition pour se corriger. Le fallibilisme est donc l'exact contraire de
+      l'indifférence relativiste : il est ce qui rend la critique possible.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après VERITE-31 à VERITE-35. Sept familles sous le
+# plancher : le vocabulaire de Popper (corroborée, falsifiable, réfutée), la
+# caractérisation de la propagande, le passage abusif du faillibilisme au
+# relativisme, l'opinion prise pour la vérité, la portée d'un critère
+# arbitrairement restreinte, et le partage mensonge/erreur. Tableau GÉNÉRÉ,
+# gardé par scripts/resume-couverture.mjs.
 coverage_summary:
-  # Computed by loading this file with js-yaml and tallying every
-  # choices[].misconception value per item (house convention, matching
-  # content/philo/la-liberte/items.yaml and content/philo/analyse-de-texte/
-  # items.yaml). This is a LEGACY end-bank (VERITE-1..30 predate
-  # per-distractor tagging — the same Gap-4 state la-liberte started from)
-  # retrofitted in this pass: every one of the 90 distractors across the 30
-  # items now carries a real misconception id (no null tags). Per the
-  # recipe's "Honest coverage" judgment call, floor gaps below are reported
-  # truthfully rather than padded.
-  total_items: 30
-  floor: 3
-  floor_met: false
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
   per_misconception:
-    mc.philo.la_verite.accord-nombre-fait-verite: 5
-    mc.philo.la_verite.relativisme-chacun-sa-verite: 6
-    mc.philo.la_verite.difficulte-justifie-renoncer-a-chercher: 5
-    mc.philo.la_verite.reel-confondu-verite: 5
-    mc.philo.la_verite.opinion-confondue-verite: 3
-    mc.philo.la_verite.coherence-confondue-correspondance: 11
-    mc.philo.la_verite.certitude-suffit-a-verite: 8
-    mc.philo.la_verite.acces-direct-au-reel-sans-interpretation: 3
-    mc.philo.la_verite.obstacle-epistemologique-mal-compris: 7
-    mc.philo.la_verite.doute-methodique-mal-compris: 4
-    mc.philo.la_verite.doute-methodique-confondu-scepticisme: 4
-    mc.philo.la_verite.cogito-etendu-a-tort: 4
-    mc.philo.la_verite.critere-restreint-a-un-domaine-a-tort: 2
-    mc.philo.la_verite.non-refutee-jugee-douteuse: 2
-    mc.philo.la_verite.confirmation-prouve-la-verite: 6
-    mc.philo.la_verite.falsifiable-confondu-refutee: 1
-    mc.philo.la_verite.mensonge-confondu-erreur: 4
-    mc.philo.la_verite.propagande-mal-caracterisee: 2
-    mc.philo.la_verite.fallibilisme-confondu-relativisme: 2
-    mc.philo.la_verite.methode-dissertation-appliquee-mecaniquement: 6
-  notes: >-
-    Every distractor across the 30 legacy items now carries a real
-    misconception id (no null tags) — the same Gap-4 fix la-liberte's pass
-    made for its own bank. 15 of 20 models clear the ≥3 floor. FIVE do not,
-    and floor_met is reported honestly rather than padded:
-    critere-restreint-a-un-domaine-a-tort (2, VERITE-13/VERITE-27),
-    non-refutee-jugee-douteuse (2, VERITE-23 x2),
-    falsifiable-confondu-refutee (1, VERITE-6) — the thinnest, a direct hit
-    on R7's own "erreur à éviter" box —, propagande-mal-caracterisee (2,
-    VERITE-26 x2), and fallibilisme-confondu-relativisme (2, VERITE-27 x2) —
-    also a direct R8 "erreur à éviter" box hit. Unlike la-liberte's
-    autrui-limite-par-nature gap (a genuinely new axis with zéro coverage),
-    all five here are already-taught R2/R7/R8 material that simply has thin
-    end-bank représentation; none is at zéro. All five are reinforced by a
-    dedicated checkpoints.yaml rupture-gate (checkpoints don't count toward
-    this floor, per house convention, but give every student in-lesson
-    exposure regardless) — see checkpoints.yaml's header for the mapping.
-    Flagged here as the clearest item-authoring gap for a follow-up pass:
-    2-3 additional items each would clear the floor for all five.
-    Length rebalance (recipe's philo addendum, mandatory — cited ~97% tell):
-    an initial programmatic pass (js-yaml length check, strict-longest
-    définition) found the correct choice was the STRICT-longest option in
-    23/30 items (77%) — this legacy bank (VERITE-1..30 predate the
-    rebalance discipline la-liberte's pilot introduced) had never been
-    audited for this tell before this pass. Distractors in all 23 items
-    were enriched with additional philosophical substance — an extra
-    justifying clause, a named premise, a spelled-out conséquence — never
-    by trimming the correct answer's content. Final programmatic result:
-    0/30 strict-longest violations; 1/30 (VERITE-15) ties for longest
-    between the correct choice and one distractor (not a violation under
-    the strict-longest définition); the remaining 29/30 have the correct
-    choice at a middle rank. The correct choice is never systematically
-    longest across the bank.
+    mc.philo.la_verite.accord-nombre-fait-verite:                    { count: 5, items: [VERITE-1, VERITE-7, VERITE-15, VERITE-16, VERITE-19] }
+    mc.philo.la_verite.relativisme-chacun-sa-verite:                 { count: 6, items: [VERITE-5, VERITE-9, VERITE-16, VERITE-21, VERITE-28, VERITE-30] }
+    mc.philo.la_verite.difficulte-justifie-renoncer-a-chercher:      { count: 4, items: [VERITE-5, VERITE-7, VERITE-8, VERITE-9] }
+    mc.philo.la_verite.reel-confondu-verite:                         { count: 4, items: [VERITE-7, VERITE-10, VERITE-11, VERITE-12] }
+    mc.philo.la_verite.opinion-confondue-verite:                     { count: 3, items: [VERITE-10, VERITE-12, VERITE-34] }
+    mc.philo.la_verite.coherence-confondue-correspondance:           { count: 8, items: [VERITE-1, VERITE-2, VERITE-8, VERITE-13, VERITE-14, VERITE-15, VERITE-16, VERITE-24] }
+    mc.philo.la_verite.certitude-suffit-a-verite:                    { count: 7, items: [VERITE-1, VERITE-5, VERITE-11, VERITE-14, VERITE-18, VERITE-21, VERITE-22] }
+    mc.philo.la_verite.acces-direct-au-reel-sans-interpretation:     { count: 3, items: [VERITE-9, VERITE-13, VERITE-14] }
+    mc.philo.la_verite.obstacle-epistemologique-mal-compris:         { count: 3, items: [VERITE-3, VERITE-17, VERITE-18] }
+    mc.philo.la_verite.doute-methodique-mal-compris:                 { count: 4, items: [VERITE-4, VERITE-19, VERITE-22, VERITE-30] }
+    mc.philo.la_verite.doute-methodique-confondu-scepticisme:        { count: 4, items: [VERITE-4, VERITE-11, VERITE-19, VERITE-20] }
+    mc.philo.la_verite.cogito-etendu-a-tort:                         { count: 3, items: [VERITE-4, VERITE-20, VERITE-22] }
+    mc.philo.la_verite.critere-restreint-a-un-domaine-a-tort:        { count: 4, items: [VERITE-13, VERITE-27, VERITE-33, VERITE-34] }
+    mc.philo.la_verite.non-refutee-jugee-douteuse:                   { count: 4, items: [VERITE-23, VERITE-31, VERITE-32, VERITE-35] }
+    mc.philo.la_verite.confirmation-prouve-la-verite:                { count: 4, items: [VERITE-6, VERITE-17, VERITE-23, VERITE-24] }
+    mc.philo.la_verite.falsifiable-confondu-refutee:                 { count: 3, items: [VERITE-6, VERITE-31, VERITE-32] }
+    mc.philo.la_verite.mensonge-confondu-erreur:                     { count: 4, items: [VERITE-25, VERITE-26, VERITE-33, VERITE-34] }
+    mc.philo.la_verite.propagande-mal-caracterisee:                  { count: 3, items: [VERITE-26, VERITE-32, VERITE-35] }
+    mc.philo.la_verite.fallibilisme-confondu-relativisme:            { count: 3, items: [VERITE-27, VERITE-31, VERITE-35] }
+    mc.philo.la_verite.methode-dissertation-appliquee-mecaniquement: { count: 3, items: [VERITE-28, VERITE-29, VERITE-30] }
+  total_items: 35
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 4
+    R2: 3
+    R3: 3
+    R4: 3
+    R5: 3
+    R6: 3
+    R7: 5
+    R8: 5
+    R9: 3
+  honest_state: >-
+    Les vingt misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Huit y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.
