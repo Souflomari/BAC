@@ -878,6 +878,49 @@ try {
     else console.log(`  ✓ ${prog.nb} matières, couvertures ${prog.couvertures.join(" · ")} — factuelles, sans %, sans Cover`);
   }
 
+  // (2026-09-05) UN TITRE D'EXERCICE EST DU TEXTE, PAS DU TeX.
+  //
+  // Le `title` d'une entrée de banque est rendu en TEXTE BRUT — dans la liste
+  // « S'entraîner » d'une leçon et dans l'en-tête de carte d'une épreuve.
+  // Cinq titres portaient du TeX : un élève d'arithmétique lisait, dans son
+  // choix d'exercices, « les diviseurs premiers de $1+p+\ldots+p^{p-1}$ » et
+  // « remonté dans $\mathbb{C}$ » — dollars et commandes LaTeX à l'écran.
+  // Le corpus écrit ses 242 autres titres en Unicode (ℤ, ⁿ, −, ℂ) : ce
+  // n'était pas une convention, c'était un oubli.
+  //
+  // Et l'ANNÉE : la carte affiche déjà « Bac 2017 · Normale » en pastille
+  // sous le titre. Onze titres la répétaient entre parenthèses — dont un qui
+  // se terminait par « = 2017 (2017) ». Même classe que le libellé
+  // « Exercice V (2,75 points) » à côté de sa colonne « 2,75 pts ».
+  {
+    console.log(`\n[banques] SWEEP: les titres d'exercice sont du texte, et ne répètent pas la pastille`);
+    const { EXAMENS } = loadCurriculum();
+    const TEX = /\$[^$\n]{1,120}\$|\\[a-zA-Z]{2,}/;
+    const ANNEE = /\((?:19|20)\d{2}(?:\s+(?:normale|rattrapage))?\)\s*$/i;
+    const tex = [], annee = [];
+    let titres = 0;
+    for (const ep of EXAMENS.listEpreuves()) {
+      for (const x of ep.exercices) {
+        const t = x.entry.title ?? "";
+        titres++;
+        if (TEX.test(t)) tex.push(`${x.entry.id} : « ${t.slice(0, 70)} »`);
+        if (ANNEE.test(t)) annee.push(`${x.entry.id} : « ${t.slice(-46)} »`);
+      }
+    }
+    checks++;
+    if (tex.length)
+      failures += fail(
+        `${tex.length} titre(s) d'exercice avec du TeX brut — ${tex.slice(0, 2).join(" ; ")} ` +
+          `(le titre est rendu en texte : écris-le en Unicode, comme les 242 autres — ℤ, ℂ, ⁿ, −)`
+      );
+    else if (annee.length)
+      failures += fail(
+        `${annee.length} titre(s) d'exercice répétant l'année — ${annee.slice(0, 2).join(" ; ")} ` +
+          `(la pastille « Bac AAAA · Session » est déjà sous le titre)`
+      );
+    else console.log(`  ✓ ${titres} titres d'exercice — 0 TeX brut, 0 année répétée`);
+  }
+
   // (2026-09-05) UN EN-TÊTE D'EXERCICE DIT CE QU'IL Y A DEDANS.
   //
   // Les épreuves se servent en MORCEAUX : un exercice du sujet réparti entre
