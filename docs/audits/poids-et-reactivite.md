@@ -170,7 +170,19 @@ arbre `"className":"katex"` = base, chaîne `<span class="katex-mathml"`
 - **Le LCP sur une vraie 3G** : mesuré ici en bridage CDP, à 2,0–2,1 s sur
   toutes les routes — donc « bon » au sens Core Web Vitals, et ce n'est pas
   là qu'est le problème.
-- **La consommation de données sur un forfait**. L'accueil tire encore
-  ~920 ko de préchargement RSC des leçons (Next précharge les liens
-  visibles). C'est après la peinture, donc invisible au chronomètre — mais
-  pas au forfait de l'élève. Non instrumenté, non arbitré.
+- **La consommation de données sur un forfait — INSTRUMENTÉ ET CORRIGÉ le
+  2026-09-05, et le chiffre écrit ici était très en dessous.** Ce paragraphe
+  annonçait « ~920 ko de préchargement RSC » sur l'accueil : c'était ce que
+  la page tire IMMOBILE. En défilant jusqu'en bas, `donnees-sweep` a mesuré
+  **6 475 ko**, soit 91 % du transfert de la page — parce que `next/link`
+  précharge à l'entrée dans le champ de vision, et que l'accueil porte 62
+  liens de leçon. Le préchargement est passé du champ de vision à
+  l'INTENTION (survol, focus, doigt posé) dans `src/components/ui/Lien.tsx` ;
+  l'accueil est retombé à 791 ko et une séance de révision de 8,72 Mo à
+  1,38 Mo. Voir `docs/audits/donnees-et-forfait.md`, et la porte
+  `donnees-sweep --porte` qui garde le terrain repris.
+
+  La leçon de méthode : **ce balayage-ci mesure la PATIENCE de l'élève, pas
+  sa FACTURE**, et il arrête de compter exactement là où le préchargement
+  commence. Un chiffre cité de mémoire dans la colonne « ce qu'on ne mesure
+  pas » n'est pas une mesure — il n'a jamais été réexécuté par personne.

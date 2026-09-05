@@ -1725,3 +1725,75 @@ sont inchangés : la SVT n'a toujours ni `bank.yaml` ni `exercises.yaml` (il
 n'existe aucun `docs/sujets/svt/`), douze notions de philo n'ont pas de
 `bank.yaml`, et le champ `correct_feedback` reste renseigné sur 1 451 items
 sans être rendu nulle part.
+
+### 10.10 Le produit facturait 6,5 Mo à l'élève pour lui montrer une liste
+
+**Le fait.** Sur l'accueil, écran de téléphone, cache vide : **525 ko pour
+voir la page, puis 6 475 ko tirés tout seuls en défilant** — 91 % du
+transfert. `next/link` précharge par défaut la charge RSC de tout lien qui
+entre dans le champ de vision ; l'accueil porte 62 liens de leçon, et l'élève
+en ouvrira une. Une séance de révision complète — accueil, défiler, une
+matière, une leçon, dérouler, une deuxième leçon — coûtait **8,72 Mo, dont
+86 % de préchargement.** Soit 117 séances dans un forfait de 1 Go.
+
+**Le chiffre qui circulait valait sept fois moins.** `INSTRUMENTS.md` et
+`poids-et-reactivite.md` annonçaient tous deux « ~920 ko de préchargement
+RSC » sur l'accueil. C'était vrai pour une page IMMOBILE ; personne n'avait
+défilé. Un chiffre cité dans la colonne « ce qu'on ne mesure pas » n'est pas
+une mesure — rien ne le réexécute, donc il est juste le jour où on l'écrit.
+C'est **le défaut du §10.8 commis sur un autre sujet**, et il a été corrigé
+dans les deux documents.
+
+**Et le balayage hors ligne avait déjà tranché la seule défense possible.**
+Le 2026-09-04, `hors-ligne.md` mesurait qu'une leçon déjà préchargée ne
+s'ouvre pas davantage quand la connexion tombe, et écrivait noir sur blanc :
+« le préchargement est donc un coût de données pur ». La phrase est restée
+sans suite pendant une journée. Il ne manquait que la mesure de ce que ce
+coût valait — **une conclusion posée n'agit pas toute seule.**
+
+**Pourquoi aucun instrument ne l'avait vu, et c'est la seule chose à retenir.**
+Parce que le préchargement part APRÈS la peinture. Il n'entre dans aucun LCP,
+dans aucun temps de blocage, dans aucune capture, dans aucun `cls-sweep` — et
+`poids-sweep`, qui somme les `transferSize` au moment où la page se peint,
+**arrête de compter exactement là où le préchargement commence**. Sept
+fenêtres de mesure avaient été ouvertes sur la vitesse ; aucune ne regardait
+la facture.
+
+> **Le poids et la consommation sont deux questions différentes.** La
+> première mesure la patience de l'élève, la seconde son forfait. Un produit
+> peut être excellent sur l'une et ruineux sur l'autre, et c'était le cas.
+
+**Le correctif tient dans un fichier — parce qu'il n'y a qu'une porte.**
+Tout le produit passe par `src/components/ui/Lien.tsx`, l'unique wrapper de
+`next/link` (écrit en R4 pour la continuité entre routes). Le préchargement y
+est passé du CHAMP DE VISION à l'INTENTION : survol, focus clavier, doigt
+posé (`touchstart`). Ce sont exactement les octets que le clic allait
+demander — ils ne coûtent rien de plus, ils arrivent plus tôt. Entrer dans le
+champ de vision n'est pas une intention. Et l'économiseur de données de
+l'appareil (`navigator.connection.saveData`, ou un lien mesuré 2G) coupe
+toute spéculation : l'élève a demandé qu'on dépense moins.
+
+Une seule exception, déclarée là où elle vaut : la recommandation « quoi
+étudier ensuite » du tableau de bord garde `prefetch`. C'est le seul lien
+dont on sait qu'il sera suivi — une charge, pas soixante-deux.
+
+**Après :** l'accueil passe de 7 146 ko à **791 ko**, chaque page de matière
+de 1,4–2,6 Mo à ~507 ko, la séance de révision de 8,72 Mo à **1,38 Mo** —
+743 séances dans le même forfait au lieu de 117. Le préchargement à
+l'intention est vérifié geste par geste : survol, focus et `touchstart`
+tirent chacun 79 ko, la route visée et elle seule.
+
+**La porte a deux sens, et c'est ce qui la rend utile.** Elle échoue si une
+page de liste tire quoi que ce soit sans geste — mais AUSSI si le survol ne
+précharge plus rien, et AUSSI si l'économiseur n'est pas honoré. Sans les
+deux derniers, on passerait le contrôle en supprimant tout préchargement,
+c'est-à-dire en rendant la navigation plus lente partout. C'est la même
+leçon que les deux cliquets d'indices : **le remède d'un défaut crée le
+défaut symétrique s'il est appliqué sans regarder.**
+
+Et elle a été mise au rouge exprès avant d'être armée — défaut réintroduit,
+build refait, porte relancée : elle échoue en nommant les trois routes et
+leurs octets. Une porte qui n'a jamais été rouge ne certifie rien.
+
+Détail complet : `docs/audits/donnees-et-forfait.md`. Instrument :
+`web/scripts/donnees-sweep.mjs` (quatre passes + `--porte`).

@@ -250,6 +250,26 @@ jobs:
       - name: Portes resume-couverture (un fichier ne se déclare pas complet à tort)
         run: node scripts/resume-couverture.mjs --porte
 
+      # PORTE DONNÉES (2026-09-05). Ce que le produit coûte au FORFAIT de
+      # l'élève, qui n'est pas ce que le chronomètre montre. `next/link`
+      # précharge par défaut tout lien entré dans le champ de vision, et ce
+      # trafic part APRÈS la peinture : invisible au LCP, au temps de
+      # blocage, aux captures, à `cls-sweep` — et facturé par l'opérateur.
+      # Mesuré : l'accueil tirait 6,5 Mo en défilant, 91 % du transfert, pour
+      # 62 leçons dont l'élève en ouvre une ; une séance de révision coûtait
+      # 8,72 Mo, soit 117 séances dans un forfait de 1 Go.
+      # Le préchargement est passé du champ de vision à l'INTENTION (survol,
+      # focus, doigt posé) dans le seul `src/components/ui/Lien.tsx` : 1,38 Mo
+      # la séance, 743 dans le même forfait.
+      # La porte a DEUX sens, et c'est ce qui la rend utile : couper tout
+      # préchargement passerait le contrôle « rien sans geste » en rendant la
+      # navigation plus lente partout. Elle exige donc AUSSI que le survol
+      # précharge, et que l'économiseur de données soit honoré.
+      - name: Porte données (défiler une liste ne coûte rien au forfait)
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/donnees-sweep.mjs --porte
+
       - name: Model-id hygiene gate
         working-directory: .
         run: |

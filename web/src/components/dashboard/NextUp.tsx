@@ -134,7 +134,14 @@ export function NextUp({ notions }: { notions: NotionMeta[] }) {
         <section aria-label="Quoi étudier ensuite" className="max-w-list">
           <p data-reco-source={nextUp.source} className="text-body-sm text-secondary">
             {frenchTypography(before)}
-            <Link href={notionHref(stateMeta.subject, stateMeta.slug)} className={RECO_LINK_CLASS}>
+            <Link
+              href={notionHref(stateMeta.subject, stateMeta.slug)}
+              className={RECO_LINK_CLASS}
+              // La seule recommandation de la page : c'est le lien que
+              // l'élève suit. Il garde le préchargement au champ de vision
+              // que `Lien` a retiré partout ailleurs (une charge, pas 62).
+              prefetch
+            >
               {frenchTypography(stateMeta.title)}
             </Link>
             {frenchTypography(after)}
@@ -160,6 +167,7 @@ export function NextUp({ notions }: { notions: NotionMeta[] }) {
         {frenchTypography("Ensuite dans le parcours :")}{" "}
         <Link
           href={notionHref(pick.subject, pick.slug)}
+          prefetch
           className={cn(
             "font-medium text-primary",
             "underline decoration-border-soft underline-offset-2",
