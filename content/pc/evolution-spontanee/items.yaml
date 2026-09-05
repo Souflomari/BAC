@@ -229,7 +229,7 @@ items:
         text: "Que la transformation reste spontanée (le critère $Q_{r,i}<K$ est vérifié) sans que cela implique une chaleur perceptible - cela dépend aussi de la quantité de matière qui réagit."
         correct: true
       - id: B
-        text: "Que la transformation n'est en réalité pas spontanée, puisqu'une transformation spontanée dégage toujours une chaleur qu'on peut sentir."
+        text: "Que la transformation n'est en réalité pas spontanée, puisqu'une transformation spontanée dégage toujours une chaleur que la main peut sentir au contact."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur
         feedback: >
@@ -240,7 +240,7 @@ items:
           quantité de matière mise en jeu (quelques milligrammes, une goutte)
           est trop faible pour libérer une énergie totale perceptible.
       - id: C
-        text: "Que le critère $Q_{r,i}$ face à $K$ ne s'applique pas ici, puisqu'il n'y a pas de dégagement de chaleur détectable."
+        text: "Que le critère comparant $Q_{r,i}$ à $K$ ne s'applique pas ici, puisqu'aucun dégagement de chaleur n'est détectable dans la goutte de solution."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur
         feedback: >
@@ -250,7 +250,7 @@ items:
           mélanger deux choses séparées - le critère de sens d'évolution, et
           la quantité d'énergie effectivement libérée.
       - id: D
-        text: "Que la réaction s'est arrêtée avant même de commencer, faute d'énergie suffisante pour démarrer."
+        text: "Que la réaction s'est arrêtée avant même d'avoir commencé, faute d'une énergie suffisante pour franchir le seuil de démarrage."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur
         feedback: >
@@ -292,10 +292,10 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle sera beaucoup plus faible, car une grande partie de l'énergie libérée emprunte alors le circuit sous forme électrique plutôt que de se dissiper sur place en chaleur - la réaction chimique et son critère de spontanéité restent pourtant identiques."
+        text: "Elle sera beaucoup plus faible, car une grande partie de l'énergie libérée emprunte alors le circuit sous forme électrique plutôt que de se dissiper sur place en chaleur."
         correct: true
       - id: B
-        text: "Elle sera la même, car une transformation spontanée dégage toujours la même quantité de chaleur, quel que soit le montage utilisé."
+        text: "Elle sera exactement la même, car une transformation spontanée dégage toujours la même quantité de chaleur, quel que soit le montage dans lequel on la réalise."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur
         feedback: >
@@ -306,7 +306,7 @@ items:
           transformation, avec le même critère $Q_{r,i}<K$, peut donc
           dégager des quantités de chaleur très différentes selon le montage.
       - id: C
-        text: "La réaction ne sera plus spontanée du tout, puisqu'elle ne peut plus libérer de chaleur directement au point de contact."
+        text: "La réaction ne sera plus spontanée du tout, puisqu'elle ne peut plus libérer sa chaleur directement au point de contact entre le métal et la solution."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur
         feedback: >
@@ -316,7 +316,7 @@ items:
           contact direct change seulement le chemin de l'énergie libérée -
           jamais le verdict de spontanéité.
       - id: D
-        text: "Il n'y aura plus aucune énergie libérée du tout, puisque le circuit électrique capte la totalité de l'énergie de la réaction."
+        text: "Il n'y aura plus aucune énergie libérée du tout, puisque le circuit électrique capte la totalité de l'énergie que la réaction met en jeu."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur
         feedback: >
@@ -359,7 +359,7 @@ items:
         text: "Non - il n'y a ni séparation physique des réactifs, ni courant mesurable dans un circuit extérieur ; c'est un transfert direct d'électrons, pas une pile."
         correct: true
       - id: B
-        text: "Oui, puisqu'il s'agit d'une réaction d'oxydoréduction, et qu'une pile est définie par la présence d'une oxydoréduction."
+        text: "Oui, puisqu'il s'agit d'une réaction d'oxydoréduction, et qu'une pile se définit précisément par la présence d'une oxydoréduction en son sein."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.oxydoreduction-egale-pile
         feedback: >
@@ -370,7 +370,7 @@ items:
           $Cu^{2+}$ sont dans le même bécher, en contact : les électrons
           sautent directement de l'un à l'autre, sans passer par aucun fil.
       - id: C
-        text: "Non, car le zinc et le cuivre ne forment pas des couples oxydant/réducteur valides pour construire une pile."
+        text: "Non, car le zinc et le cuivre ne forment pas des couples oxydant/réducteur valides pour construire une pile digne de ce nom."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.oxydoreduction-egale-pile
         feedback: >
@@ -380,7 +380,7 @@ items:
           pas une pile n'est pas la nature des couples : c'est l'absence de
           séparation physique des réactifs et de circuit extérieur mesurable.
       - id: D
-        text: "Oui, car la réaction dégage de la chaleur, ce qui est la signature caractéristique d'une pile en fonctionnement."
+        text: "Oui, car la réaction dégage de la chaleur, ce qui constitue la signature caractéristique d'une pile en cours de fonctionnement."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.oxydoreduction-egale-pile
         feedback: >
@@ -422,10 +422,10 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "A est une pile (détour forcé, courant mesurable) ; B est un transfert direct (pas de circuit extérieur, pas de courant mesurable) - bien que la réaction chimique et son critère de spontanéité soient identiques dans les deux cas."
+        text: "A est une pile (détour forcé, courant mesurable) ; B est un transfert direct, sans circuit extérieur ni courant mesurable - alors que la réaction et son critère de spontanéité sont identiques."
         correct: true
       - id: B
-        text: "A et B sont tous deux des piles, puisque la même réaction spontanée s'y produit dans les deux cas."
+        text: "A et B sont tous deux des piles, puisque c'est la même réaction spontanée qui s'y produit, avec la même valeur de $K$ dans les deux montages."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.oxydoreduction-egale-pile
         feedback: >
@@ -436,7 +436,7 @@ items:
           réactifs sont physiquement séparés et reliés par un circuit,
           mérite le nom de pile.
       - id: C
-        text: "Seul B est une véritable réaction chimique ; dans A, il ne s'agit que d'un phénomène purement électrique, sans réaction chimique sous-jacente."
+        text: "Seul B est une véritable réaction chimique ; dans le montage A, il ne s'agit que d'un phénomène purement électrique, sans la moindre réaction chimique sous-jacente."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.oxydoreduction-egale-pile
         feedback: >
@@ -447,7 +447,7 @@ items:
           direct. Le courant mesuré dans A EST la trace électrique de cette
           réaction chimique, pas un phénomène séparé.
       - id: D
-        text: "On ne peut rien affirmer sans connaître la valeur de $K$ pour chaque montage séparément."
+        text: "On ne peut rien affirmer sans connaître la valeur de la constante $K$ pour chacun des deux montages considérés séparément."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.oxydoreduction-egale-pile
         feedback: >
@@ -538,17 +538,17 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "C'est faux en général : rien ne garantit que cette réaction inverse soit spontanée dans ce nouveau mélange - il faudrait comparer le $Q_{r,i}$ de CE mélange (cuivre + $Zn^{2+}$) à $K$ pour trancher."
+        text: "C'est faux en général : rien ne garantit que cette réaction inverse soit spontanée dans ce nouveau mélange - il faudrait comparer le $Q_{r,i}$ de CE mélange à $K$ pour trancher."
         correct: true
       - id: B
-        text: "C'est vrai : toute réaction d'oxydoréduction spontanée dans un sens l'est tout autant dans l'autre sens, selon le mélange choisi."
+        text: "C'est vrai : toute réaction d'oxydoréduction spontanée dans un sens l'est tout autant dans l'autre sens, selon le mélange que l'on choisit de préparer."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.sens-symetrique
         feedback: >
           Le sens n'est jamais symétrique par principe : il dépend du
           calcul $Q_{r,i}$ face à $K$ pour le mélange considéré.
       - id: C
-        text: "C'est faux, car le cuivre métallique ne peut jamais être un réducteur - seul le zinc peut céder des électrons parmi ces deux métaux."
+        text: "C'est faux, car le cuivre métallique ne peut jamais jouer le rôle de réducteur - seul le zinc est capable de céder des électrons parmi ces deux métaux."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.reactivite-metal-fixe
         feedback: >
@@ -556,7 +556,7 @@ items:
           uniquement la comparaison $Q_{r,i}$ face à $K$, pas une propriété
           fixe du métal, qui décide.
       - id: D
-        text: "C'est faux, car dès qu'une réaction a eu lieu dans un sens, $K$ change de valeur et empêche la réaction inverse de se produire."
+        text: "C'est faux, car dès qu'une réaction a eu lieu dans un sens, la constante $K$ change de valeur et empêche la réaction inverse de jamais se produire."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.confond-qr-et-k
         feedback: >
@@ -684,24 +684,24 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle est incomplète : une demi-équation seule fait apparaître des électrons libres $e^-$, qui n'existent pas durablement en solution ; il faut la combiner avec celle du couple $Ag^+/Ag$, qui capte exactement ces électrons, pour obtenir la réaction réelle."
+        text: "Elle est incomplète : une demi-équation seule fait apparaître des électrons libres $e^-$, qui n'existent pas durablement en solution ; il faut la combiner avec celle du couple $Ag^+/Ag$."
         correct: true
       - id: B
-        text: "Elle est correcte : une demi-équation, à elle seule, décrit toujours une transformation qui peut réellement se produire seule en solution."
+        text: "Elle est correcte : une demi-équation, prise à elle seule, décrit toujours une transformation qui peut réellement se produire d'elle-même en solution aqueuse."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.demi-equation-isolee
         feedback: >
           Des électrons libres ne s'accumulent jamais en solution : une
           demi-équation seule n'est qu'une brique, pas une réaction réelle.
       - id: C
-        text: "Elle est incorrecte pour une autre raison : c'est la demi-équation du couple $Ag^+/Ag$, et non celle du fer, qui décrit à elle seule la transformation réelle."
+        text: "Elle est incorrecte pour une autre raison : c'est la demi-équation du couple $Ag^+/Ag$, et non celle du fer, qui décrit à elle seule la transformation réellement observée."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.demi-equation-isolee
         feedback: >
           Aucune des deux demi-équations, seule, ne suffit : il faut
           toujours les combiner pour éliminer les électrons libres.
       - id: D
-        text: "Elle est incorrecte pour une autre raison : il manque un troisième couple oxydant/réducteur, en plus de $Fe^{2+}/Fe$ et $Ag^+/Ag$, pour que la réaction soit complète."
+        text: "Elle est incorrecte pour une autre raison : il manque un troisième couple oxydant/réducteur, en plus de $Fe^{2+}/Fe$ et de $Ag^+/Ag$, pour que la réaction soit complète."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.demi-equation-isolee
         feedback: >
@@ -737,24 +737,24 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Il est faux : l'aluminium échange 3 électrons, le zinc n'en échange que 2 ; il faut d'abord multiplier chaque demi-équation par le facteur qui rend ce nombre identique des deux côtés (ici, 6, plus petit commun multiple de 3 et 2) avant d'additionner - sinon un électron libre subsiste, ce qui est impossible."
+        text: "Il est faux : l'aluminium échange 3 électrons, le zinc n'en échange que 2 ; il faut d'abord multiplier chaque demi-équation par le facteur qui rend ce nombre identique (ici 6) avant d'additionner, sinon un électron libre subsiste."
         correct: true
       - id: B
-        text: "Il est correct : additionner directement les deux demi-équations, sans les ajuster, donne toujours l'équation-bilan correcte, quel que soit le nombre d'électrons échangés par chaque couple."
+        text: "Il est correct : additionner directement les deux demi-équations, sans les ajuster au préalable, donne toujours l'équation-bilan correcte, quel que soit le nombre d'électrons échangés par chacun des deux couples mis en jeu."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.electrons-non-equilibres
         feedback: >
           Sans ajustement préalable, un électron libre subsiste dans le
           bilan - ce qui est physiquement impossible en solution.
       - id: C
-        text: "Il est faux, mais uniquement parce que l'ordre des espèces est incorrect - il faudrait écrire $Zn^{2+} + Al \\rightleftharpoons Zn + Al^{3+} + e^-$, ce qui règle le problème."
+        text: "Il est faux, mais uniquement parce que l'ordre des espèces est incorrect - il faudrait écrire $Zn^{2+} + Al \\rightleftharpoons Zn + Al^{3+} + e^-$, ce qui règle entièrement le problème posé."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.electrons-non-equilibres
         feedback: >
           L'ordre d'écriture n'est pas le problème : c'est le nombre
           d'électrons échangés, non équilibré, qui laisse un $e^-$ libre.
       - id: D
-        text: "Il est faux, car l'aluminium et les ions $Zn^{2+}$ ne peuvent pas réagir ensemble : un métal solide et un ion métallique ne peuvent jamais échanger d'électrons."
+        text: "Il est faux, car l'aluminium et les ions $Zn^{2+}$ ne peuvent pas réagir ensemble : un métal solide et un ion métallique ne peuvent jamais échanger le moindre électron."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.reactivite-metal-fixe
         feedback: >
@@ -884,24 +884,24 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle est fausse : le fil conducteur est le seul trajet emprunté par les électrons, donc le seul mesurable à l'ampèremètre ; la jonction ne sert qu'à maintenir l'électroneutralité des solutions. Couper le fil arrête le courant mesurable, même si la jonction reste intacte."
+        text: "Elle est fausse : le fil conducteur est le seul trajet emprunté par les électrons, donc le seul mesurable à l'ampèremètre ; la jonction ne sert qu'à maintenir l'électroneutralité des solutions."
         correct: true
       - id: B
-        text: "Elle est correcte : le fil et la jonction jouent un rôle interchangeable, tous deux permettant aux électrons de circuler d'un compartiment à l'autre."
+        text: "Elle est correcte : le fil et la jonction jouent un rôle parfaitement interchangeable, tous deux permettant aux électrons de circuler d'un compartiment vers l'autre."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.fil-jonction-confondus
         feedback: >
           Seul le fil conducteur transporte les électrons du circuit ; la
           jonction a un rôle différent, l'électroneutralité des solutions.
       - id: C
-        text: "Elle est fausse, mais pour la raison inverse : c'est la jonction, et non le fil, qui transporte les électrons du circuit extérieur, mesurables à l'ampèremètre."
+        text: "Elle est fausse, mais pour la raison exactement inverse : c'est la jonction, et non le fil, qui transporte les électrons du circuit extérieur, seuls mesurables à l'ampèremètre."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.fil-jonction-confondus
         feedback: >
           C'est l'inverse : c'est le fil qui transporte les électrons
           mesurables, la jonction ne fait que maintenir l'électroneutralité.
       - id: D
-        text: "Elle est fausse, car ni le fil ni la jonction ne sont réellement nécessaires : les électrons peuvent directement traverser la solution d'un compartiment à l'autre sans aucun support matériel."
+        text: "Elle est fausse, car ni le fil ni la jonction ne sont réellement nécessaires : les électrons traversent directement la solution d'un compartiment à l'autre, sans aucun support matériel."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.fil-jonction-confondus
         feedback: >
@@ -1033,24 +1033,24 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle est fausse : $Q_r$ se construit toujours avec les produits (tels qu'écrite l'équation) au numérateur et les réactifs au dénominateur. L'expression correcte est $Q_r = \\dfrac{[A^-]_i\\,[BH^+]_i}{[AH]_i\\,[B]_i}$ - l'inverse de ce qui est écrit ici."
+        text: "Elle est fausse : $Q_r$ se construit toujours avec les produits au numérateur et les réactifs au dénominateur. L'expression correcte est $Q_r = \\dfrac{[A^-]_i\\,[BH^+]_i}{[AH]_i\\,[B]_i}$, l'inverse de ce qui est écrit ici."
         correct: true
       - id: B
-        text: "Elle est correcte : peu importe que ce soient les produits ou les réactifs au numérateur, tant que les mêmes espèces apparaissent, la comparaison à $K$ reste valable."
+        text: "Elle est correcte : peu importe que ce soient les produits ou les réactifs qui figurent au numérateur, tant que les mêmes espèces apparaissent, la comparaison à $K$ reste valable."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.qr-produits-reactifs-inverses
         feedback: >
           Inverser numérateur et dénominateur change la valeur de $Q_r$
           (et son inverse) : ce n'est pas un choix arbitraire.
       - id: C
-        text: "Elle est fausse, mais pour une autre raison : il manque la concentration de l'eau au numérateur, solvant de la réaction."
+        text: "Elle est fausse, mais pour une tout autre raison : il manque la concentration de l'eau au numérateur, celle-ci étant le solvant dans lequel se produit la réaction."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.qr-produits-reactifs-inverses
         feedback: >
           Seules les espèces qui figurent réellement dans l'équation-bilan
           écrite entrent dans $Q_r$ ; l'eau n'y apparaît pas ici.
       - id: D
-        text: "Elle est fausse, car les concentrations initiales ne doivent jamais être utilisées dans $Q_r$ - seules les concentrations à l'équilibre permettent de le calculer."
+        text: "Elle est fausse, car les concentrations initiales ne doivent jamais être utilisées dans $Q_r$ - seules les concentrations mesurées à l'équilibre permettent de le calculer."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.confond-qr-et-k
         feedback: >
@@ -1189,17 +1189,17 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Le sens est direct ($Q_{r,i} = [Cu^{2+}]_i/[Ag^+]_i^2 \\approx 6{,}3\\times10^{-4} \\ll K$ : le cuivre est oxydé, les ions $Ag^+$ sont réduits), mais l'affirmation sur l'ampèremètre est fausse : cuivre et $Ag^+$ sont en contact direct dans le même bécher, sans fil ni circuit extérieur - transfert direct, pas de courant mesurable."
+        text: "Le sens est direct ($Q_{r,i} = [Cu^{2+}]_i/[Ag^+]_i^2 \\approx 6{,}3\\times10^{-4} \\ll K$), mais l'affirmation sur l'ampèremètre est fausse : cuivre et $Ag^+$ sont en contact direct dans le même bécher, sans fil ni circuit extérieur."
         correct: true
       - id: B
-        text: "Le sens est direct, et l'affirmation est juste : toute réaction spontanée fait dévier un ampèremètre, qu'il y ait ou non un circuit extérieur."
+        text: "Le sens est direct, et l'affirmation est juste : toute réaction spontanée fait dévier un ampèremètre, qu'il y ait ou non un circuit extérieur pour relier les réactifs."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.oxydoreduction-egale-pile
         feedback: >
           La spontanéité ne suffit pas : sans réactifs séparés reliés par
           un fil, il n'existe aucun circuit où mesurer un courant.
       - id: C
-        text: "Le sens est inverse ($Q_{r,i} > K$), donc l'affirmation est fausse car la réaction ne se produit même pas dans le sens observé."
+        text: "Le sens est inverse ($Q_{r,i} > K$), donc l'affirmation est fausse, car la réaction ne se produit même pas dans le sens que l'on croit observer dans le bécher."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.critere-inverse
         feedback: >
@@ -1207,7 +1207,7 @@ items:
           $K \approx 4{,}0\times10^{15}$ : le sens est direct, conforme au
           dépôt observé.
       - id: D
-        text: "Le sens est direct, mais l'affirmation sur l'ampèremètre serait juste seulement si l'on remplaçait le bécher par un tube en U - la présence d'un simple récipient fermé suffit alors à créer un circuit mesurable."
+        text: "Le sens est direct, mais l'affirmation sur l'ampèremètre ne serait juste que si l'on remplaçait le bécher par un tube en U - la présence d'un simple récipient fermé suffirait alors à créer un circuit mesurable dans le montage."
         correct: false
         misconception: mc.chemistry.pc_evolution_spontanee.oxydoreduction-egale-pile
         feedback: >
