@@ -1505,7 +1505,12 @@ pas, et leur blocage n'est pas technique.**
    est-ce un manque, ou la banque n'a-t-elle pas de sens pour une épreuve de
    dissertation ? La question n'a jamais été posée explicitement.
 3. **`pc/atome-mecanique-newton` n'a pas de `bank.yaml`** — seule notion de PC
-   dans ce cas, probablement un simple trou à combler.
+   dans ce cas, et ce n'est PAS un trou à combler : `docs/sujets/pc/INDEX.md`
+   établit que la notion est absente des 21 sessions couvertes (2008-2025), le
+   seul candidat de routage (2025 N, exercice 4 partie 1) ayant été confirmé
+   hors périmètre le 2026-08-06. Le ship `unsourced` est une décision
+   verrouillée par le propriétaire du plan. À ne rouvrir que si un sujet
+   authentique apparaît.
 4. **`philo/le-bonheur` et `philo/l-histoire` n'ont pas d'`exercices`**, et
    n'en auront pas tant que l'arbitrage curriculaire du §10.2 n'est pas rendu.
 
