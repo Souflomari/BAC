@@ -6138,6 +6138,18 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "SNS-1": [
       "mc.svt.svt_soi_non_soi.tolerance-passive"
     ],
+    "SNS-10": [
+      "mc.svt.svt_soi_non_soi.anticorps-immun-vs-naturel",
+      "mc.svt.svt_soi_non_soi.mauvais-antigene-vise"
+    ],
+    "SNS-11": [
+      "mc.svt.svt_soi_non_soi.anticorps-immun-vs-naturel",
+      "mc.svt.svt_soi_non_soi.mauvais-antigene-vise"
+    ],
+    "SNS-12": [
+      "mc.svt.svt_soi_non_soi.reconnaissance-non-specifique",
+      "mc.svt.svt_soi_non_soi.soi-modifie-devient-etranger"
+    ],
     "SNS-2": [
       "mc.svt.svt_soi_non_soi.antigene-anticorps-confondus",
       "mc.svt.svt_soi_non_soi.reconnaissance-non-specifique"
@@ -6156,6 +6168,19 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "SNS-6": [
       "mc.svt.svt_soi_non_soi.reconnaissance-non-specifique",
       "mc.svt.svt_soi_non_soi.soi-modifie-devient-etranger"
+    ],
+    "SNS-7": [
+      "mc.svt.svt_soi_non_soi.reconnaissance-non-specifique",
+      "mc.svt.svt_soi_non_soi.tolerance-passive"
+    ],
+    "SNS-8": [
+      "mc.svt.svt_soi_non_soi.antigene-anticorps-confondus",
+      "mc.svt.svt_soi_non_soi.reconnaissance-non-specifique"
+    ],
+    "SNS-9": [
+      "mc.svt.svt_soi_non_soi.antigene-anticorps-confondus",
+      "mc.svt.svt_soi_non_soi.soi-modifie-devient-etranger",
+      "mc.svt.svt_soi_non_soi.tolerance-passive"
     ]
   },
   "svt/theorie-tectonique-plaques": {

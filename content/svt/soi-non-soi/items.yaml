@@ -455,3 +455,376 @@ items:
       plus au répertoire habituel du soi ; le système immunitaire la traite
       comme du non-soi, alors même que la cellule provient génétiquement de
       l'individu — c'est le principe du « soi modifié ».
+
+  # ── SIX ITEMS AJOUTÉS LE 2026-09-05 ────────────────────────────────────────
+  # Motif : couverture-diagnostique.mjs montrait 6 misconceptions déclarées sur
+  # 7 SOUS LE PLANCHER de 3 items du banc — donc inévaluables par le modèle
+  # apprenant, quoi que fasse l'élève. Les six items ci-dessous sont écrits
+  # pour combler exactement ce déficit, en restant dans le périmètre de
+  # lesson.md (chapitres R1 à R5) : aucune notion nouvelle, aucun auteur, aucun
+  # fait qui ne soit déjà enseigné plus haut. Après ajout, les sept
+  # misconceptions de la notion atteignent le plancher.
+  - id: SNS-7
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: svt_soi_non_soi
+    tags: [soi_non_soi, tolerance_immunitaire]
+    stem: >
+      Un nouveau-né possède-t-il, dans son sang, des cellules immunitaires
+      capables de réagir contre les molécules de son propre foie ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Presque aucune : celles qui auraient réagi contre les molécules déjà présentes dans l'organisme ont été éliminées ou neutralisées pendant la vie embryonnaire, avant même la naissance."
+        correct: true
+      - id: B
+        text: "Oui, il en possède, mais elles restent inactives : les molécules du foie ne portent aucun déterminant reconnaissable, si bien qu'aucune cellule immunitaire n'a jamais rien à quoi se lier."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.tolerance-passive
+        feedback: >
+          Les molécules du soi sont parfaitement détectables — c'est
+          justement pour cela qu'un greffon incompatible est repéré par le
+          système immunitaire d'un AUTRE individu. La non-réaction ne vient
+          pas d'une invisibilité, mais de l'élimination précoce des cellules
+          immunitaires qui auraient réagi.
+      - id: C
+        text: "Non, aucune : la frontière entre le soi et le non-soi est inscrite dans le patrimoine génétique dès la fécondation, sans qu'aucun apprentissage n'ait à se produire pendant le développement."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.tolerance-passive
+        feedback: >
+          La tolérance n'est pas une catégorie figée héritée telle quelle :
+          c'est un PROCESSUS ACTIF, qui se déroule pendant la vie
+          embryonnaire et élimine les cellules immunitaires auto-réactives.
+          Sans ce tri, l'organisme s'attaquerait lui-même.
+      - id: D
+        text: "Non, aucune : le système immunitaire ne fabrique jamais de cellules dirigées contre des molécules internes, puisqu'il ne réagit par principe qu'à ce qui vient de l'extérieur de l'organisme."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.reconnaissance-non-specifique
+        feedback: >
+          Le système immunitaire ne trie pas selon la provenance d'une
+          molécule, mais selon la RECONNAISSANCE de molécules précises. Des
+          cellules capables de réagir contre le soi apparaissent bel et bien
+          au cours du développement : c'est parce qu'elles sont éliminées
+          ensuite que l'organisme se tolère.
+    correct_feedback: >
+      La tolérance immunitaire est un tri actif, mené pendant la vie
+      embryonnaire : les cellules immunitaires capables de réagir contre les
+      molécules déjà présentes sont éliminées ou neutralisées. C'est ce tri,
+      et non une invisibilité des molécules du soi, qui explique qu'un
+      organisme ne s'auto-détruise pas.
+    solution: |
+      **Ce qu'il faut écarter :** l'idée que les molécules du foie seraient
+      indétectables. Elles sont détectables — le rejet d'un greffon de foie
+      chez un autre individu le prouve.
+
+      **Le mécanisme réel :** pendant la vie embryonnaire, l'organisme met en
+      place ses molécules du soi ; les cellules immunitaires qui se montrent
+      capables de réagir contre elles sont éliminées ou neutralisées avant la
+      naissance.
+
+      **Conséquence :** la tolérance est apprise, pas donnée. C'est ce qui la
+      rend fragile — et c'est pourquoi sa rupture existe.
+
+  - id: SNS-8
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: svt_soi_non_soi
+    tags: [antigene_anticorps, specificite]
+    stem: >
+      Les molécules de groupe sanguin portées par les hématies d'un donneur
+      sont qualifiées d'antigènes lorsqu'elles arrivent chez un receveur
+      incompatible. Pourtant, aucun microbe n'intervient dans cette
+      transfusion. Qu'est-ce que cela apprend sur la notion d'antigène ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Qu'un antigène est simplement une molécule reconnaissable spécifiquement par le système immunitaire d'un individu donné : aucun agent pathogène n'est requis pour qu'une molécule ait ce statut."
+        correct: true
+      - id: B
+        text: "Que ces molécules de groupe sanguin sont en réalité des anticorps, puisque ce sont elles qui déclenchent la reconnaissance et provoquent la réaction observée chez le receveur incompatible."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.antigene-anticorps-confondus
+        feedback: >
+          Les deux rôles sont inversés. L'ANTIGÈNE est la molécule reconnue,
+          portée ici par les hématies du donneur ; l'ANTICORPS est la molécule
+          qui la reconnaît, présente ici dans le plasma du receveur. Ce sont
+          deux entités complémentaires, jamais interchangeables.
+      - id: C
+        text: "Que le système immunitaire du receveur réagit à tout ce qui lui est étranger, quelle que soit la molécule portée par les cellules qu'il rencontre, sans reconnaissance préalable."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.reconnaissance-non-specifique
+        feedback: >
+          Si l'étrangeté suffisait, un receveur de groupe A agglutinerait
+          aussi bien du sang O que du sang B — ce n'est pas ce qu'on observe.
+          Seules les hématies portant l'antigène visé par une agglutinine
+          présente dans le plasma sont agglutinées.
+      - id: D
+        text: "Que les mots antigène et anticorps désignent au fond la même famille de molécules, l'un servant à décrire ce qui vient du donneur et l'autre ce qui vient du receveur."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.antigene-anticorps-confondus
+        feedback: >
+          Ce n'est pas la provenance qui distingue les deux mots, mais la
+          FONCTION : l'antigène est reconnu, l'anticorps reconnaît. Un
+          receveur porte lui aussi des antigènes sur ses propres hématies, et
+          un donneur des anticorps dans son plasma.
+    correct_feedback: >
+      Un antigène est une molécule capable d'être reconnue spécifiquement par
+      le système immunitaire, et de déclencher une réaction s'il la considère
+      étrangère. Les molécules de groupe sanguin le deviennent dès qu'elles
+      changent d'organisme — sans qu'aucun microbe soit impliqué.
+    solution: |
+      **Ce que dit la définition :** un antigène est une molécule
+      RECONNAISSABLE, pas nécessairement dangereuse ni microbienne.
+
+      **Ce que montre la transfusion :** les agglutinogènes des hématies du
+      donneur sont, pour le receveur, des molécules jamais tolérées — donc
+      des antigènes, au sens strict.
+
+      **Le mot voisin, à ne pas confondre :** l'anticorps est la protéine qui
+      se lie spécifiquement à cet antigène. Ici, l'agglutinine du plasma du
+      receveur.
+
+  - id: SNS-9
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: svt_soi_non_soi
+    tags: [cmh, soi_non_soi, statut_relatif]
+    stem: >
+      Une molécule de CMH portée par les cellules de Karim est-elle un
+      antigène ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Cela dépend de l'organisme qui la rencontre : pour Karim elle fait partie du soi et reste tolérée, mais transplantée chez un autre individu elle devient pour lui un antigène."
+        correct: true
+      - id: B
+        text: "Non, jamais : une molécule qui appartient au soi d'un individu ne porte, par définition, aucun déterminant susceptible d'être reconnu par un système immunitaire, quel qu'il soit."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.tolerance-passive
+        feedback: >
+          Appartenir au soi de quelqu'un ne rend pas une molécule
+          indétectable : cela signifie seulement que SON système immunitaire a
+          appris à ne pas y réagir. Les molécules de CMH sont d'ailleurs
+          parfaitement détectables — c'est bien pour cela qu'un greffon est
+          rejeté.
+      - id: C
+        text: "Oui, toujours : une molécule de CMH est un anticorps de surface, et tout anticorps est par nature un antigène pour l'organisme qui le porte comme pour ceux qui le rencontrent."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.antigene-anticorps-confondus
+        feedback: >
+          Une molécule de CMH n'est pas un anticorps : c'est une
+          glycoprotéine de surface, une molécule RECONNUE. L'anticorps, lui,
+          est la protéine qui reconnaît. Les deux ne se confondent pas, et
+          aucune des deux n'est « par nature » un antigène : le statut dépend
+          de qui regarde.
+      - id: D
+        text: "Non : elle ne le deviendrait qu'après avoir été profondément modifiée par une infection ou une mutation, comme le sont les molécules affichées par une cellule cancéreuse."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.soi-modifie-devient-etranger
+        feedback: >
+          Le soi modifié est un cas de figure parmi d'autres, pas la condition
+          générale. Une molécule de CMH parfaitement normale, non modifiée,
+          devient un antigène du seul fait de changer d'organisme : c'est tout
+          le problème du rejet de greffe.
+    correct_feedback: >
+      Le statut d'une molécule n'est pas absolu : il dépend du système
+      immunitaire qui la rencontre. Une molécule du soi de Karim, tolérée
+      chez lui depuis la vie embryonnaire, devient un antigène chez un
+      receveur qui ne l'a jamais tolérée.
+    solution: |
+      **La règle générale :** une molécule est « soi » pour l'organisme qui
+      l'a apprise comme sienne pendant la tolérance immunitaire, et
+      « antigène » pour tout organisme qui ne l'a pas apprise.
+
+      **Appliquée au CMH :** les molécules de CMH de Karim sont du pur soi
+      pour lui. Transplantées avec un greffon, elles rencontrent un système
+      immunitaire qui ne les a jamais tolérées : elles deviennent le signal
+      de non-soi qui déclenche le rejet.
+
+      **Ce que cela n'exige pas :** aucune modification de la molécule, aucun
+      microbe. Le changement de statut vient du changement d'organisme.
+
+  - id: SNS-10
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: svt_soi_non_soi
+    tags: [groupe_sanguin, abo, transfusion]
+    stem: >
+      Une personne de groupe sanguin A reçoit une transfusion de sang de
+      groupe B. Quelle est la cause précise de la réaction d'agglutination
+      observée ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'agglutinine anti-B du plasma du receveur reconnaît l'agglutinogène B porté par les hématies du donneur, et relie ces hématies entre elles en amas."
+        correct: true
+      - id: B
+        text: "L'agglutinine anti-A du plasma du donneur reconnaît l'agglutinogène A porté par les hématies du receveur, et provoque de cette façon l'agglutination du sang du receveur."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.mauvais-antigene-vise
+        feedback: >
+          C'est le bon couple antigène-anticorps, mais pris dans le mauvais
+          sens. La règle de compatibilité regarde les agglutinines du
+          RECEVEUR face aux agglutinogènes du DONNEUR : le plasma du donneur
+          est très dilué dans celui du receveur et n'est pas le facteur
+          déterminant.
+      - id: C
+        text: "L'absence de l'agglutinogène A sur les hématies du donneur est reconnue comme une anomalie par le plasma du receveur, ce qui déclenche à soi seul l'agglutination des hématies transfusées."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.mauvais-antigene-vise
+        feedback: >
+          Une agglutinine se lie à un agglutinogène PRÉSENT, elle ne détecte
+          jamais une absence. C'est pour cette raison que les hématies du
+          groupe O, qui n'en portent aucun, ne sont agglutinées par aucun
+          plasma — d'où le donneur universel.
+      - id: D
+        text: "Le receveur fabrique, dans les jours qui suivent la transfusion, un anticorps anti-B qu'il ne possédait pas auparavant, et c'est cet anticorps nouveau qui agglutine les hématies reçues."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.anticorps-immun-vs-naturel
+        feedback: >
+          C'est le comportement de l'anticorps anti-D du système Rhésus, pas
+          celui des agglutinines ABO. Les agglutinines sont des anticorps
+          NATURELS, présents dès les premiers mois de la vie sans aucun
+          contact préalable : elles réagissent dès la première transfusion
+          incompatible.
+    correct_feedback: >
+      Un receveur de groupe A possède naturellement l'agglutinine anti-B. Les
+      hématies du donneur de groupe B portent l'agglutinogène B : la
+      reconnaissance spécifique a lieu, et chaque anticorps reliant plusieurs
+      hématies, celles-ci s'agglutinent en amas.
+    solution: |
+      **La règle de compatibilité :** une transfusion est sans risque, au sens
+      ABO, si le plasma du RECEVEUR ne contient aucune agglutinine dirigée
+      contre un agglutinogène porté par les hématies du DONNEUR.
+
+      **Appliquée ici :** receveur A, donc plasma contenant anti-B. Donneur B,
+      donc hématies portant l'agglutinogène B. La rencontre a lieu.
+
+      **Le mécanisme :** chaque anticorps peut se lier à plusieurs hématies à
+      la fois ; il les relie entre elles, d'où des amas visibles capables
+      d'obstruer de petits vaisseaux et de provoquer une hémolyse massive.
+
+  - id: SNS-11
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: svt_soi_non_soi
+    tags: [rhesus, anticorps_immun, transfusion]
+    stem: >
+      Une personne de groupe O Rhésus négatif reçoit par erreur du sang O
+      Rhésus positif. Aucune réaction n'est observée sur le moment. Six mois
+      plus tard, une seconde transfusion de sang O Rh+ provoque une
+      agglutination franche. Comment expliquer ce contraste ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La première transfusion a sensibilisé l'organisme, qui a produit des anticorps anti-D dans les semaines suivantes ; ces anticorps, présents lors de la seconde, agglutinent les hématies Rh+ reçues."
+        correct: true
+      - id: B
+        text: "L'anticorps anti-D était déjà présent dès la naissance chez cette personne, comme les agglutinines du système ABO ; il a simplement fallu deux expositions successives pour qu'il atteigne une concentration suffisante."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.anticorps-immun-vs-naturel
+        feedback: >
+          C'est justement la différence entre les deux systèmes. Les
+          agglutinines ABO sont des anticorps NATURELS, présents sans aucun
+          contact préalable. L'anti-D, lui, est un anticorps IMMUN : il
+          n'existe pas avant la première exposition à l'antigène D.
+      - id: C
+        text: "La seconde transfusion a été mal appariée sur le système ABO, ce qui suffit à expliquer l'agglutination observée ; le facteur Rhésus n'intervient pas dans ce contraste entre les deux épisodes."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.mauvais-antigene-vise
+        feedback: >
+          L'énoncé précise que les deux transfusions sont de groupe O, comme
+          la receveuse : l'appariement ABO est correct dans les deux cas.
+          Le seul facteur qui change entre les deux épisodes est l'anticorps
+          anti-D, absent la première fois, présent la seconde.
+      - id: D
+        text: "Les hématies Rh+ de la seconde poche portaient une quantité d'antigène D bien plus élevée que celles de la première, ce qui explique qu'elles aient franchi le seuil de déclenchement de la réaction."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.anticorps-immun-vs-naturel
+        feedback: >
+          Rien ne distingue les hématies des deux poches : elles portent
+          l'antigène D dans les deux cas. Ce qui a changé, c'est le RECEVEUR —
+          il possède désormais l'anticorps anti-D que la première exposition
+          lui a fait produire.
+    correct_feedback: >
+      L'anticorps anti-D est un anticorps « immun » : il n'apparaît qu'après
+      une première exposition à l'antigène D. La première transfusion
+      sensibilise sans provoquer de réaction immédiate ; c'est la seconde qui
+      rencontre un anti-D déjà présent, et qui agglutine.
+    solution: |
+      **Ce qui distingue Rhésus et ABO :** un individu Rh- ne porte PAS
+      naturellement d'anti-D, alors qu'un individu de groupe A porte
+      naturellement de l'anti-B dès les premiers mois de la vie.
+
+      **Premier épisode :** aucun anti-D dans le plasma, donc rien pour
+      reconnaître l'antigène D des hématies reçues — pas de réaction
+      immédiate. Mais l'organisme, exposé, se met à produire de l'anti-D.
+
+      **Second épisode :** l'anti-D est là. Il reconnaît l'antigène D des
+      nouvelles hématies Rh+, les relie entre elles, et l'agglutination se
+      produit.
+
+  - id: SNS-12
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: svt_soi_non_soi
+    tags: [soi_modifie, greffe, non_soi]
+    stem: >
+      Un grand brûlé reçoit une greffe de peau prélevée sur sa propre cuisse
+      (autogreffe). Cette greffe n'est jamais rejetée, alors qu'une cellule de
+      son propre foie infectée par un virus, elle, serait ciblée par son
+      système immunitaire. Comment concilier ces deux faits ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Ce qui compte n'est pas l'origine génétique de la cellule mais ce qu'elle affiche à sa surface : la peau greffée affiche la signature habituelle du soi, la cellule infectée affiche en plus des fragments viraux."
+        correct: true
+      - id: B
+        text: "La cellule infectée a cessé d'appartenir génétiquement à l'organisme au moment de l'infection : son patrimoine étant devenu celui du virus, elle bascule entièrement du côté du non-soi."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.soi-modifie-devient-etranger
+        feedback: >
+          Le patrimoine génétique de la cellule ne change pas de
+          propriétaire : elle reste une cellule DE l'organisme, qui héberge un
+          virus. Ce qui change, c'est le profil moléculaire affiché à sa
+          surface — pas son origine.
+      - id: C
+        text: "Le système immunitaire épargne systématiquement tout ce qui provient du corps du patient et attaque systématiquement toute cellule anormale, sans avoir à examiner de molécules particulières."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.reconnaissance-non-specifique
+        feedback: >
+          Cette règle générale ne peut pas fonctionner : la cellule infectée
+          provient elle aussi du corps du patient, et serait donc épargnée.
+          La reconnaissance passe toujours par des molécules PRÉCISES
+          affichées à la surface, jamais par une origine ou une impression
+          d'anormalité.
+      - id: D
+        text: "La cellule infectée perd la totalité de ses molécules de CMH, et c'est cette disparition complète de signature qui la fait éliminer, alors que la peau greffée conserve les siennes."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.soi-modifie-devient-etranger
+        feedback: >
+          Ce n'est pas le mécanisme décrit dans la leçon : la cellule infectée
+          AFFICHE des molécules anormales ou étrangères (fragments viraux),
+          plutôt que de perdre toute molécule de surface. C'est une signature
+          modifiée, détectable, pas une signature absente.
+    correct_feedback: >
+      Une autogreffe porte exactement la signature du soi que le système
+      immunitaire a apprise : rien à signaler. Une cellule infectée reste
+      génétiquement du soi, mais affiche en plus des fragments viraux — c'est
+      cette signature modifiée, et elle seule, qui la rend détectable.
+    solution: |
+      **Le critère commun :** dans les deux cas, le système immunitaire lit
+      les molécules AFFICHÉES à la surface des cellules.
+
+      **Autogreffe :** les cellules de peau du patient affichent son propre
+      CMH, tolérée depuis la vie embryonnaire. Aucune réaction — c'est
+      d'ailleurs pourquoi l'autogreffe est la solution de référence chez le
+      grand brûlé.
+
+      **Cellule infectée :** même origine génétique, mais des fragments
+      viraux s'ajoutent à la surface. Le répertoire affiché ne correspond plus
+      au soi appris : la cellule est traitée comme du non-soi.
+
+      **Ce qu'il ne faut pas en conclure :** ni que la cellule a changé de
+      patrimoine, ni qu'elle a perdu sa signature. Elle en a acquis une
+      seconde.
