@@ -16,8 +16,14 @@
  *     « unassessed » à jamais — ni détectée, ni écartée.
  *
  * D'où quatre nombres par notion, et un verdict :
- *   • sans tag    — distracteurs sans `misconception:`. Une réponse fausse que
- *                   la chaîne ne sait rattacher à rien.
+ *   • sans tag    — distracteurs sans `misconception:` exploitable. Une réponse
+ *                   fausse que la chaîne ne sait rattacher à rien. La colonne
+ *                   « dont nul » en isole la part DÉLIBÉRÉE : `misconception:
+ *                   null`, écrit par l'auteur pour dire « ce distracteur n'est
+ *                   pas piloté par une erreur nommée ». Les deux comptent
+ *                   pareil pour le moteur — une réponse fausse qu'il ne sait
+ *                   pas nommer — mais pas pour le lecteur : l'un est un oubli,
+ *                   l'autre une décision.
  *   • fantômes    — distracteurs dont le tag n'est PAS déclaré dans le bloc
  *                   `misconceptions:` de la notion. La chaîne compte l'id, mais
  *                   rien ne peut en afficher le libellé : l'élève verrait un
@@ -121,6 +127,7 @@ for (const matiere of fs
 
     let distracteurs = 0;
     let sansTag = 0;
+    let nulExplicite = 0;
     let fantomes = 0;
     const utilises = new Set();
     /** misconception → nombre d'items DU BANC qui la visent (règle du plancher) */
@@ -138,6 +145,7 @@ for (const matiere of fs
           const ts = tags(c.misconception);
           if (ts.length === 0) {
             sansTag++;
+            if (c.misconception === null) nulExplicite++;
             if (DETAIL) detail.push(`sans-tag   ${cle} ${it.id} ${c.id ?? "?"}`);
             continue;
           }
@@ -164,7 +172,7 @@ for (const matiere of fs
     notions.push({
       matiere, slug, cle,
       itemsBanc: itemsBanc.length, itemsChk: itemsChk.length,
-      declarees: declarees.size, distracteurs, sansTag, fantomes,
+      declarees: declarees.size, distracteurs, sansTag, nulExplicite, fantomes,
       plancher, sousPlancher, orphelines,
       aveugle: plancher === 0,
     });
@@ -200,26 +208,26 @@ const aveugles = notions.filter((n) => n.aveugle);
 if (!PORTE) {
   console.log("");
   console.log("couverture-diagnostique — le moteur voit-il quelque chose, et sur quelles notions ?");
-  console.log("═".repeat(112));
+  console.log("═".repeat(122));
   console.log(
     `${"notion".padEnd(44)} ${"banc".padStart(5)} ${"distr.".padStart(6)} ${"sans tag".padStart(9)} ` +
-      `${"fantômes".padStart(9)} ${"plancher".padStart(9)} ${"sous-pl.".padStart(9)} ${"orph.".padStart(6)}`
+      `${"dont nul".padStart(9)} ${"fantômes".padStart(9)} ${"plancher".padStart(9)} ${"sous-pl.".padStart(9)} ${"orph.".padStart(6)}`
   );
-  console.log("─".repeat(112));
+  console.log("─".repeat(122));
   for (const n of [...notions].sort(
     (a, b) => a.plancher - b.plancher || b.sansTag - a.sansTag || a.cle.localeCompare(b.cle)
   )) {
     console.log(
       `${n.cle.padEnd(44)} ${String(n.itemsBanc).padStart(5)} ${String(n.distracteurs).padStart(6)} ` +
-        `${String(n.sansTag).padStart(9)} ${String(n.fantomes).padStart(9)} ${String(n.plancher).padStart(9)} ` +
+        `${String(n.sansTag).padStart(9)} ${String(n.nulExplicite).padStart(9)} ${String(n.fantomes).padStart(9)} ${String(n.plancher).padStart(9)} ` +
         `${String(n.sousPlancher).padStart(9)} ${String(n.orphelines).padStart(6)}` +
         (n.aveugle ? "  ← AVEUGLE" : "")
     );
   }
-  console.log("─".repeat(112));
+  console.log("─".repeat(122));
   console.log(
     `${"TOTAL".padEnd(44)} ${String(T("itemsBanc")).padStart(5)} ${String(T("distracteurs")).padStart(6)} ` +
-      `${String(T("sansTag")).padStart(9)} ${String(T("fantomes")).padStart(9)} ${String(T("plancher")).padStart(9)} ` +
+      `${String(T("sansTag")).padStart(9)} ${String(T("nulExplicite")).padStart(9)} ${String(T("fantomes")).padStart(9)} ${String(T("plancher")).padStart(9)} ` +
       `${String(T("sousPlancher")).padStart(9)} ${String(T("orphelines")).padStart(6)}`
   );
   console.log("");
@@ -228,8 +236,9 @@ if (!PORTE) {
       `le plancher de ${PLANCHER} items du banc, donc le modèle n'y dira jamais rien de l'élève.`
   );
   console.log(
-    `${T("sansTag")} distracteur(s) sur ${T("distracteurs")} ne portent aucun tag — une réponse fausse\n` +
-      `que la chaîne ne sait rattacher à aucune erreur nommée.`
+    `${T("sansTag")} distracteur(s) sur ${T("distracteurs")} ne portent aucun tag exploitable — une\n` +
+      `réponse fausse que la chaîne ne sait rattacher à aucune erreur nommée. ${T("nulExplicite")} d'entre\n` +
+      `eux portent un \`misconception: null\` EXPLICITE : une décision d'auteur, pas un oubli.`
   );
   console.log("");
   if (DETAIL) {

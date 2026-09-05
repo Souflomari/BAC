@@ -5372,28 +5372,74 @@
     "CDM-6": []
   },
   "svt/dysfonctionnements-immunitaires": {
-    "DI-1": [],
-    "DI-2": [],
-    "DI-3": [],
-    "DI-4": [],
-    "DI-5": [],
-    "DI-6": []
+    "DI-1": [
+      "mc.svt.svt_dysfonctionnements_immunitaires.vaccin-protection-universelle",
+      "mc.svt.svt_dysfonctionnements_immunitaires.vaccination-serotherapie-confondues"
+    ],
+    "DI-2": [
+      "mc.svt.svt_dysfonctionnements_immunitaires.immunite-passive-mal-comprise",
+      "mc.svt.svt_dysfonctionnements_immunitaires.vaccination-serotherapie-confondues"
+    ],
+    "DI-3": [
+      "mc.svt.svt_dysfonctionnements_immunitaires.vaccination-serotherapie-confondues"
+    ],
+    "DI-4": [
+      "mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus"
+    ],
+    "DI-5": [
+      "mc.svt.svt_dysfonctionnements_immunitaires.critere-de-distinction-non-pertinent",
+      "mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus"
+    ],
+    "DI-6": [
+      "mc.svt.svt_dysfonctionnements_immunitaires.cible-du-vih-mal-identifiee",
+      "mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus"
+    ]
   },
   "svt/genetique-humaine": {
-    "GH-1": [],
-    "GH-2": [],
-    "GH-3": [],
-    "GH-4": [],
-    "GH-5": [],
-    "GH-6": []
+    "GH-1": [
+      "mc.svt.svt_genetique_humaine.autosomes-gonosomes-confondus"
+    ],
+    "GH-2": [
+      "mc.svt.svt_genetique_humaine.axes-de-decision-melanges",
+      "mc.svt.svt_genetique_humaine.dominance-mal-deduite"
+    ],
+    "GH-3": [
+      "mc.svt.svt_genetique_humaine.axes-de-decision-melanges",
+      "mc.svt.svt_genetique_humaine.hemizygotie-masculine-ignoree"
+    ],
+    "GH-4": [
+      "mc.svt.svt_genetique_humaine.hemizygotie-masculine-ignoree"
+    ],
+    "GH-5": [
+      "mc.svt.svt_genetique_humaine.probabilite-non-conditionnee"
+    ],
+    "GH-6": [
+      "mc.svt.svt_genetique_humaine.dominance-mal-deduite",
+      "mc.svt.svt_genetique_humaine.hemizygotie-masculine-ignoree"
+    ]
   },
   "svt/genetique-populations": {
-    "GP-1": [],
-    "GP-2": [],
-    "GP-3": [],
-    "GP-4": [],
-    "GP-5": [],
-    "GP-6": []
+    "GP-1": [
+      "mc.svt.svt_genetique_pop.frequence-allelique-vs-genotypique"
+    ],
+    "GP-2": [
+      "mc.svt.svt_genetique_pop.frequence-allelique-vs-genotypique"
+    ],
+    "GP-3": [
+      "mc.svt.svt_genetique_pop.allele-recessif-condamne",
+      "mc.svt.svt_genetique_pop.conditions-hw-mal-maniees"
+    ],
+    "GP-4": [
+      "mc.svt.svt_genetique_pop.allele-recessif-condamne",
+      "mc.svt.svt_genetique_pop.selection-sans-effet-sur-les-frequences"
+    ],
+    "GP-5": [
+      "mc.svt.svt_genetique_pop.conditions-hw-mal-maniees"
+    ],
+    "GP-6": [
+      "mc.svt.svt_genetique_pop.conditions-hw-mal-maniees",
+      "mc.svt.svt_genetique_pop.frequence-allelique-vs-genotypique"
+    ]
   },
   "svt/granitisation-deformation": {
     "GRD-1": [],
@@ -5403,16 +5449,33 @@
     "GRD-5": []
   },
   "svt/liberation-energie-matiere-organique": {
-    "LIB-1": [],
-    "LIB-2": [],
-    "LIB-3": [],
-    "LIB-4": [],
-    "LIB-5": [],
-    "LIB-6": []
+    "LIB-1": [
+      "mc.svt.svt_liberation_energie.atp-reserve-plutot-que-monnaie"
+    ],
+    "LIB-2": [
+      "mc.svt.svt_liberation_energie.bilan-metabolique-incomplet",
+      "mc.svt.svt_liberation_energie.localisation-des-etapes-confondue"
+    ],
+    "LIB-3": [
+      "mc.svt.svt_liberation_energie.bilan-metabolique-incomplet",
+      "mc.svt.svt_liberation_energie.localisation-des-etapes-confondue"
+    ],
+    "LIB-4": [
+      "mc.svt.svt_liberation_energie.localisation-des-etapes-confondue",
+      "mc.svt.svt_liberation_energie.role-du-dioxygene-inverse"
+    ],
+    "LIB-5": [
+      "mc.svt.svt_liberation_energie.fermentation-mal-comprise"
+    ],
+    "LIB-6": [
+      "mc.svt.svt_liberation_energie.fermentation-mal-comprise",
+      "mc.svt.svt_liberation_energie.localisation-des-etapes-confondue"
+    ]
   },
   "svt/moyens-de-defense": {
     "MD-M1-1": [
-      "mc.svt.svt_moyens_defense.confond-innee-adaptative"
+      "mc.svt.svt_moyens_defense.confond-innee-adaptative",
+      "mc.svt.svt_moyens_defense.inflammation-reduite-a-un-phenomene-vasculaire"
     ],
     "MD-M1-2": [
       "mc.svt.svt_moyens_defense.confond-innee-adaptative"
@@ -5421,9 +5484,11 @@
       "mc.svt.svt_moyens_defense.anticorps-detruisent-directement"
     ],
     "MD-M2-2": [
-      "mc.svt.svt_moyens_defense.anticorps-detruisent-directement"
+      "mc.svt.svt_moyens_defense.anticorps-detruisent-directement",
+      "mc.svt.svt_moyens_defense.portee-des-anticorps-mal-situee"
     ],
     "MD-M3-1": [
+      "mc.svt.svt_moyens_defense.confond-innee-adaptative",
       "mc.svt.svt_moyens_defense.confond-lb-lt"
     ],
     "MD-M3-2": [
@@ -5431,20 +5496,56 @@
     ]
   },
   "svt/role-enzymes": {
-    "RE-1": [],
-    "RE-2": [],
-    "RE-3": [],
-    "RE-4": [],
-    "RE-5": [],
-    "RE-6": []
+    "RE-1": [
+      "mc.svt.svt_role_enzymes.effet-attribue-au-substrat",
+      "mc.svt.svt_role_enzymes.enzyme-consommee-par-la-reaction"
+    ],
+    "RE-2": [
+      "mc.svt.svt_role_enzymes.enzyme-consommee-par-la-reaction",
+      "mc.svt.svt_role_enzymes.enzyme-usee-ou-modifiee-par-la-catalyse"
+    ],
+    "RE-3": [
+      "mc.svt.svt_role_enzymes.effet-attribue-au-substrat",
+      "mc.svt.svt_role_enzymes.specificites-substrat-action-confondues"
+    ],
+    "RE-4": [
+      "mc.svt.svt_role_enzymes.effet-attribue-au-substrat",
+      "mc.svt.svt_role_enzymes.enzyme-usee-ou-modifiee-par-la-catalyse",
+      "mc.svt.svt_role_enzymes.specificites-substrat-action-confondues"
+    ],
+    "RE-5": [
+      "mc.svt.svt_role_enzymes.denaturation-reversible",
+      "mc.svt.svt_role_enzymes.effet-attribue-au-substrat",
+      "mc.svt.svt_role_enzymes.optimum-ignore"
+    ],
+    "RE-6": [
+      "mc.svt.svt_role_enzymes.effet-attribue-au-substrat",
+      "mc.svt.svt_role_enzymes.enzyme-consommee-par-la-reaction"
+    ]
   },
   "svt/soi-non-soi": {
-    "SNS-1": [],
-    "SNS-2": [],
-    "SNS-3": [],
-    "SNS-4": [],
-    "SNS-5": [],
-    "SNS-6": []
+    "SNS-1": [
+      "mc.svt.svt_soi_non_soi.tolerance-passive"
+    ],
+    "SNS-2": [
+      "mc.svt.svt_soi_non_soi.antigene-anticorps-confondus",
+      "mc.svt.svt_soi_non_soi.reconnaissance-non-specifique"
+    ],
+    "SNS-3": [
+      "mc.svt.svt_soi_non_soi.systemes-de-marqueurs-confondus"
+    ],
+    "SNS-4": [
+      "mc.svt.svt_soi_non_soi.mauvais-antigene-vise",
+      "mc.svt.svt_soi_non_soi.systemes-de-marqueurs-confondus"
+    ],
+    "SNS-5": [
+      "mc.svt.svt_soi_non_soi.anticorps-immun-vs-naturel",
+      "mc.svt.svt_soi_non_soi.systemes-de-marqueurs-confondus"
+    ],
+    "SNS-6": [
+      "mc.svt.svt_soi_non_soi.reconnaissance-non-specifique",
+      "mc.svt.svt_soi_non_soi.soi-modifie-devient-etranger"
+    ]
   },
   "svt/theorie-tectonique-plaques": {
     "TTP-1": [],

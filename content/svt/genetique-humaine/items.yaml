@@ -1,6 +1,71 @@
 notion: genetique-humaine
 skill_code: svt_genetique_humaine
-misconceptions: []
+misconceptions:
+  # Inventaire écrit le 2026-09-05, tiré des feedbacks déjà présents.
+  - id: mc.svt.svt_genetique_humaine.autosomes-gonosomes-confondus
+    label: "« Le nombre et le rôle des gonosomes sont mal situés dans le caryotype »"
+    description: >
+      L'élève compte plusieurs paires de gonosomes, ou une paire par sexe, ou
+      nie la distinction en traitant les 23 paires comme équivalentes.
+    contradicts_principle: >
+      Le caryotype humain compte 22 paires d'AUTOSOMES et UNE seule paire de
+      GONOSOMES, la 23e. C'est sa COMPOSITION qui change d'un sexe à l'autre
+      (XX ou XY), jamais son nombre — et c'est parce qu'elle ne se transmet pas
+      comme les autres qu'on la distingue.
+
+  - id: mc.svt.svt_genetique_humaine.dominance-mal-deduite
+    label: "« Un allèle qui finit par s'exprimer est dominant » / « un caractère saute une génération à cause du chromosome »"
+    description: >
+      L'élève lit la dominance dans l'apparition du phénotype plutôt que dans la
+      règle d'expression, ou attribue un « saut de génération » à la
+      localisation chromosomique. Variante : il juge qu'on ne peut rien
+      conclure d'un enfant atteint né de deux parents sains.
+    contradicts_principle: >
+      Un allèle DOMINANT s'exprime dès qu'il est présent en un seul exemplaire :
+      il ne peut jamais rester invisible chez un parent qui le porte. « Enfant
+      atteint, deux parents sains » élimine donc mécaniquement l'hypothèse
+      dominante — c'est une conclusion certaine, pas une indétermination. Et le
+      saut de génération est la signature de la RÉCESSIVITÉ, pas d'une position
+      sur un chromosome.
+
+  - id: mc.svt.svt_genetique_humaine.axes-de-decision-melanges
+    label: "« Un même test tranche à la fois récessif/dominant et autosomal/lié à l'X »"
+    description: >
+      L'élève tire d'un seul indice les deux conclusions à la fois, ou réclame
+      une information sans rapport (le phénotype de l'autre parent) pour
+      conclure sur un axe déjà tranché.
+    contradicts_principle: >
+      Ce sont DEUX axes de décision séparés, chacun avec son propre test.
+      « Deux parents sains, enfant atteint » tranche récessif/dominant et rien
+      d'autre. « Fille atteinte, père sain » tranche autosomal/lié à l'X et rien
+      d'autre — sans avoir besoin du phénotype de la mère.
+
+  - id: mc.svt.svt_genetique_humaine.hemizygotie-masculine-ignoree
+    label: "« L'homme a deux exemplaires de ses gonosomes comme des autres chromosomes »"
+    description: >
+      L'élève raisonne sur l'X et l'Y masculins comme sur une paire ordinaire :
+      il imagine un « porteur sain » masculin pour un gène de l'X, croit que le
+      Y compense l'allèle récessif de l'X, pense qu'un allèle « devient
+      dominant » chez l'homme, ou transmet le Y à la moitié des fils seulement.
+    contradicts_principle: >
+      L'homme est HÉMIZYGOTE : un seul X, un seul Y. Sur l'X, aucun second
+      exemplaire ne peut masquer un allèle récessif — d'où l'absence de porteur
+      sain masculin et la fréquence bien plus grande des atteintes chez les
+      hommes ; le Y, beaucoup plus petit, ne porte pas de version équivalente de
+      la quasi-totalité des gènes de l'X. Et le Y unique est transmis
+      intégralement à TOUS les fils, jamais à une fille.
+
+  - id: mc.svt.svt_genetique_humaine.probabilite-non-conditionnee
+    label: "« On lit la probabilité dans l'échiquier complet, sans tenir compte de ce qu'on sait déjà »"
+    description: >
+      Sachant l'enfant sain, l'élève garde les proportions de l'échiquier entier
+      (1/4, 1/2) au lieu de recompter sur les seules issues compatibles, ou
+      conclut à une certitude.
+    contradicts_principle: >
+      L'information « cet enfant est sain » élimine l'issue $a//a$ : il faut
+      recompter sur les trois issues restantes, où $A//a$ apparaît deux fois et
+      $A//A$ une seule — soit $2/3$. Ni $1/2$, ni $1/4$, ni une certitude.
+
 items:
   - id: GH-1
     rung: "R1"
@@ -19,6 +84,7 @@ items:
       - id: B
         text: "23 paires d'autosomes, et aucune paire de gonosomes : tous les chromosomes se transmettent de la même façon."
         correct: false
+        misconception: mc.svt.svt_genetique_humaine.autosomes-gonosomes-confondus
         feedback: >
           C'est l'inverse de ce que montre la leçon : c'est justement parce
           que la 23ᵉ paire (X et Y) ne se transmet PAS de la même façon
@@ -29,6 +95,7 @@ items:
       - id: C
         text: "11 paires d'autosomes et 12 paires de gonosomes."
         correct: false
+        misconception: mc.svt.svt_genetique_humaine.autosomes-gonosomes-confondus
         feedback: >
           Il n'existe qu'UNE seule paire de gonosomes chez l'être humain (la
           23ᵉ paire, X et Y) — jamais douze. Les 22 autres paires sont toutes
@@ -37,6 +104,7 @@ items:
       - id: D
         text: "22 paires d'autosomes et 2 paires de gonosomes, une pour chaque sexe."
         correct: false
+        misconception: mc.svt.svt_genetique_humaine.autosomes-gonosomes-confondus
         feedback: >
           Il n'y a qu'UNE seule paire de gonosomes au total, pas deux
           paires séparées selon le sexe : c'est la COMPOSITION de cette
@@ -75,6 +143,7 @@ items:
       - id: B
         text: "L'allèle est dominant, puisqu'il a bien fini par s'exprimer chez l'enfant."
         correct: false
+        misconception: mc.svt.svt_genetique_humaine.dominance-mal-deduite
         feedback: >
           Un allèle dominant s'exprime dès qu'il est présent en un seul
           exemplaire — il ne peut donc jamais rester invisible chez un
@@ -85,6 +154,7 @@ items:
       - id: C
         text: "On ne peut rien conclure : un enfant peut être atteint sans que le mode de dominance soit déterminable à partir de ce seul fait."
         correct: false
+        misconception: mc.svt.svt_genetique_humaine.dominance-mal-deduite
         feedback: >
           C'est justement le test décisif du chapitre 3 : « enfant atteint, deux
           parents sains » élimine mécaniquement l'hypothèse dominante (elle
@@ -94,6 +164,7 @@ items:
       - id: D
         text: "L'allèle est nécessairement lié au chromosome X, puisque les deux parents sont sains."
         correct: false
+        misconception: mc.svt.svt_genetique_humaine.axes-de-decision-melanges
         feedback: >
           Ce test répond à une seule question — récessif ou dominant — pas
           à l'autre — autosomal ou lié à l'X. Ce sont deux axes de décision
@@ -131,6 +202,7 @@ items:
       - id: B
         text: "Non : le père a pu transmettre l'allèle malade à sa fille sans être lui-même atteint, comme n'importe quel porteur sain hétérozygote pour le gène en cause."
         correct: false
+        misconception: mc.svt.svt_genetique_humaine.hemizygotie-masculine-ignoree
         feedback: >
           C'est oublier l'hémizygotie masculine (chapitre 5) : un homme n'a qu'un
           seul chromosome X, sans second exemplaire pour masquer un allèle
@@ -141,6 +213,7 @@ items:
       - id: C
         text: "Non, cela confirme au contraire une transmission liée à l'X, puisque les filles héritent toujours d'un chromosome X de leur père et peuvent donc en recevoir l'allèle malade sans qu'il se manifeste chez lui."
         correct: false
+        misconception: mc.svt.svt_genetique_humaine.axes-de-decision-melanges
         feedback: >
           Le problème n'est pas de savoir SI la fille hérite d'un X de son
           père (elle en hérite toujours un) : le problème est LEQUEL. Le
@@ -151,6 +224,7 @@ items:
       - id: D
         text: "On ne peut rien en conclure sans connaître aussi le phénotype de la mère, qui détermine à elle seule le mode de transmission de la maladie."
         correct: false
+        misconception: mc.svt.svt_genetique_humaine.axes-de-decision-melanges
         feedback: >
           Le phénotype de la mère n'est pas nécessaire ici : que la mère
           soit porteuse ou non ne change rien au fait que le père,
@@ -192,6 +266,7 @@ items:
       - id: B
         text: "Parce qu'un homme ne peut de toute façon jamais être atteint d'une maladie liée à l'X : ces maladies ne concernent que les femmes, qui possèdent deux chromosomes X."
         correct: false
+        misconception: mc.svt.svt_genetique_humaine.hemizygotie-masculine-ignoree
         feedback: >
           C'est l'inverse de ce que montre la leçon : les hommes sont au
           contraire BEAUCOUP plus souvent atteints de maladies récessives
@@ -201,6 +276,7 @@ items:
       - id: C
         text: "Parce que l'allèle situé sur son chromosome Y compense automatiquement l'allèle récessif situé sur son X, exactement comme le ferait un second chromosome X."
         correct: false
+        misconception: mc.svt.svt_genetique_humaine.hemizygotie-masculine-ignoree
         feedback: >
           Pour la quasi-totalité des gènes portés par l'X, le chromosome Y
           — beaucoup plus petit — ne porte pas de version équivalente du
@@ -210,6 +286,7 @@ items:
       - id: D
         text: "Parce que chez l'homme l'allèle récessif devient automatiquement dominant dès lors qu'il se trouve seul, sans allèle partenaire capable de le masquer."
         correct: false
+        misconception: mc.svt.svt_genetique_humaine.hemizygotie-masculine-ignoree
         feedback: >
           La dominance est une relation entre deux allèles d'un même gène
           présents ensemble dans un génotype — elle ne « change » pas selon
@@ -255,6 +332,7 @@ items:
       - id: B
         text: "$\\frac{1}{2}$"
         correct: false
+        misconception: mc.svt.svt_genetique_humaine.probabilite-non-conditionnee
         feedback: >
           Ce chiffre traiterait $A//A$ et $A//a$ comme deux issues
           également probables — mais dans l'échiquier complet, elles ne le
@@ -265,6 +343,7 @@ items:
       - id: C
         text: "$\\frac{1}{4}$"
         correct: false
+        misconception: mc.svt.svt_genetique_humaine.probabilite-non-conditionnee
         feedback: >
           $\frac14$ est la proportion de $A//a$ dans l'échiquier COMPLET
           (toutes issues confondues, y compris $a//a$). Mais on sait déjà
@@ -274,6 +353,7 @@ items:
       - id: D
         text: "$1$"
         correct: false
+        misconception: mc.svt.svt_genetique_humaine.probabilite-non-conditionnee
         feedback: >
           Ce n'est pas une certitude : un enfant sain issu de deux parents
           hétérozygotes peut tout aussi bien être homozygote sain ($A//A$),
@@ -314,6 +394,7 @@ items:
       - id: B
         text: "Seule la moitié des fils est atteinte, comme pour un caractère porté par le chromosome X, l'autre moitié recevant l'allèle sain de leur père."
         correct: false
+        misconception: mc.svt.svt_genetique_humaine.hemizygotie-masculine-ignoree
         feedback: >
           Ce résultat importe à tort le raisonnement de l'X (où une mère
           hétérozygote transmet l'un ou l'autre de ses deux X, chacun avec
@@ -324,6 +405,7 @@ items:
       - id: C
         text: "La fille est atteinte, car elle reçoit un chromosome X de son père, qui porte lui aussi l'allèle $M$ responsable du caractère étudié."
         correct: false
+        misconception: mc.svt.svt_genetique_humaine.hemizygotie-masculine-ignoree
         feedback: >
           La fille reçoit effectivement un X de son père — mais le
           caractère $M$ est porté par le chromosome Y, pas par l'X. Or une
@@ -333,6 +415,7 @@ items:
       - id: D
         text: "Aucun enfant n'est atteint, car un caractère héréditaire saute toujours une génération avant de réapparaître chez les petits-enfants."
         correct: false
+        misconception: mc.svt.svt_genetique_humaine.dominance-mal-deduite
         feedback: >
           Ce « saut de génération » est la signature d'une transmission
           RÉCESSIVE (chapitre 3), pas d'une localisation chromosomique. La

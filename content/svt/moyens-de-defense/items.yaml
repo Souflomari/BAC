@@ -2,6 +2,33 @@ notion: moyens-de-defense
 skill_code: svt_moyens_defense
 
 misconceptions:
+  # Ajoutées le 2026-09-05 : quatre distracteurs restaient sans tag, dont deux
+  # portaient une erreur qu'aucune entrée existante ne décrivait.
+  - id: mc.svt.svt_moyens_defense.inflammation-reduite-a-un-phenomene-vasculaire
+    label: "« L'inflammation ne mobilise aucune cellule immunitaire : ce n'est qu'une dilatation des vaisseaux »"
+    description: >
+      Symétrique de la confusion innée/adaptative : au lieu de prêter à
+      l'inflammation une reconnaissance qu'elle n'a pas, l'élève lui retire
+      toute dimension cellulaire et la réduit à un phénomène circulatoire.
+    contradicts_principle: >
+      La réaction inflammatoire mobilise bel et bien des cellules immunitaires —
+      les phagocytes, qui rejoignent le tissu lésé par diapédèse. Ce qui lui
+      manque, ce n'est pas la présence de cellules immunitaires, c'est la
+      SPÉCIFICITÉ.
+
+  - id: mc.svt.svt_moyens_defense.portee-des-anticorps-mal-situee
+    label: "« Les anticorps atteignent un virus déjà entré dans une cellule — ou n'existent pas du tout contre lui »"
+    description: >
+      L'élève situe mal le champ d'action des anticorps : soit il les fait
+      agir à l'intérieur d'une cellule infectée, soit, constatant qu'ils n'y
+      parviennent pas, il en conclut qu'aucun anticorps n'est jamais produit
+      contre ce virus.
+    contradicts_principle: >
+      Des anticorps spécifiques sont bien produits : ils agissent sur les
+      particules virales encore LIBRES, avant qu'elles n'infectent une nouvelle
+      cellule. Une fois le virus entré, ils ne peuvent plus l'atteindre — c'est
+      alors le lymphocyte T cytotoxique qui prend le relais.
+
   - id: mc.svt.svt_moyens_defense.confond-innee-adaptative
     label: "« Toute réaction immunitaire est une reconnaissance spécifique de l'intrus »"
     description: >
@@ -91,7 +118,7 @@ items:
       - id: C
         text: "Non, mais uniquement parce que l'inflammation ne fait intervenir aucune cellule immunitaire : elle se réduit à une dilatation des vaisseaux sanguins de la zone blessée, sans participation des globules blancs."
         correct: false
-        misconception: null
+        misconception: mc.svt.svt_moyens_defense.inflammation-reduite-a-un-phenomene-vasculaire
         feedback: >
           C'est faux pour une autre raison : la réaction inflammatoire mobilise
           bien des cellules immunitaires, les phagocytes, qui rejoignent le
@@ -213,7 +240,7 @@ items:
       - id: C
         text: "Le complexe immun formé transforme le virus en une cellule infectée, que l'anticorps élimine ensuite lui-même par contact, sans qu'aucune autre cellule immunitaire n'ait à intervenir."
         correct: false
-        misconception: null
+        misconception: mc.svt.svt_moyens_defense.anticorps-detruisent-directement
         feedback: >
           Un virus libre dans le sang n'est pas une « cellule » et un complexe
           immun ne transforme rien en cellule infectée. Le complexe immun est
@@ -272,7 +299,7 @@ items:
       - id: C
         text: "Non, car aucun anticorps n'est jamais produit contre ce type de virus : l'organisme ne dispose contre lui que de la phagocytose, seule capable d'atteindre une cellule infectée."
         correct: false
-        misconception: null
+        misconception: mc.svt.svt_moyens_defense.portee-des-anticorps-mal-situee
         feedback: >
           Des anticorps spécifiques de ce virus peuvent parfaitement être
           produits (ils agiraient sur les particules virales encore libres,
@@ -347,7 +374,7 @@ items:
       - id: D
         text: "Le phagocyte, qui présente l'antigène aux autres cellules immunitaires."
         correct: false
-        misconception: null
+        misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
         feedback: >
           Le phagocyte (ou la cellule présentatrice d'antigène) capture et
           présente l'antigène, mais ne produit pas d'anticorps. Cette fonction

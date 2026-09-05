@@ -1,6 +1,105 @@
 notion: soi-non-soi
 skill_code: svt_soi_non_soi
-misconceptions: []
+misconceptions:
+  # Inventaire écrit le 2026-09-05. Les six items existaient, leurs feedbacks
+  # nommaient déjà chaque erreur avec précision — mais aucun distracteur ne
+  # portait de tag, donc le modèle apprenant ne pouvait rien conclure de cette
+  # notion. Les erreurs ci-dessous sont TIRÉES des feedbacks, pas inventées.
+  - id: mc.svt.svt_soi_non_soi.tolerance-passive
+    label: "« Si l'organisme n'attaque pas son propre soi, c'est qu'il n'a rien à y voir »"
+    description: >
+      L'élève explique la tolérance immunitaire par une absence : le soi ne
+      porterait aucun antigène, ou le non-soi n'existerait pas encore à la
+      naissance, ou la frontière soi/non-soi serait inscrite une fois pour
+      toutes dans les gènes. Dans les trois cas, il n'y a rien à apprendre et
+      rien à faire — la tolérance serait donnée, pas construite.
+    contradicts_principle: >
+      Les molécules du soi (CMH, marqueurs ABO) sont parfaitement détectables —
+      c'est bien pour cela qu'une greffe incompatible est repérée par le système
+      immunitaire d'un AUTRE individu. La tolérance est un processus ACTIF :
+      pendant la vie embryonnaire, les cellules immunitaires capables de réagir
+      contre les molécules déjà présentes sont éliminées ou neutralisées.
+
+  - id: mc.svt.svt_soi_non_soi.reconnaissance-non-specifique
+    label: "« Le système immunitaire réagit à “l'étranger” en général, pas à un antigène précis »"
+    description: >
+      L'élève remplace la reconnaissance moléculaire par une réaction à
+      l'étrangeté : un anticorps se lierait à n'importe quelle cellule venue
+      d'ailleurs, une cellule anormale serait attaquée sans reconnaissance
+      préalable. La spécificité antigène-anticorps disparaît de son modèle.
+    contradicts_principle: >
+      Chaque anticorps reconnaît UN antigène précis. Si l'étrangeté suffisait,
+      un sérum anti-A agglutinerait les quatre groupes O, A, B et AB ; seuls A
+      et AB réagissent, parce que seuls eux portent l'antigène A. Même exigence
+      pour une cellule infectée : elle est ciblée sur des molécules précises
+      affichées à sa surface, jamais sur son seul caractère « anormal ».
+
+  - id: mc.svt.svt_soi_non_soi.antigene-anticorps-confondus
+    label: "« Antigène et anticorps désignent la même chose sous deux noms »"
+    description: >
+      L'élève traite les deux termes comme interchangeables et imagine
+      l'agglutination comme la rencontre de deux molécules identiques.
+    contradicts_principle: >
+      Ce sont deux entités différentes et complémentaires : l'antigène est la
+      molécule RECONNUE (portée ici par les hématies), l'anticorps la molécule
+      qui la reconnaît (présente ici dans le sérum). L'agglutination est leur
+      liaison, pas leur ressemblance.
+
+  - id: mc.svt.svt_soi_non_soi.systemes-de-marqueurs-confondus
+    label: "« ABO, Rhésus et CMH sont interchangeables : l'un renseigne sur la compatibilité gouvernée par l'autre »"
+    description: >
+      L'élève traite les trois systèmes de marqueurs comme un seul : un groupe
+      ABO identique garantirait la compatibilité d'une greffe, ou le facteur
+      Rhésus déciderait d'une transfusion à la place du système ABO, ou ABO et
+      Rhésus ne concerneraient que les organes.
+    contradicts_principle: >
+      Trois systèmes indépendants, trois portées distinctes : ABO et Rhésus sont
+      des marqueurs des HÉMATIES et gouvernent les transfusions ; le CMH,
+      extrêmement polymorphe et quasi unique à chaque individu (sauf vrais
+      jumeaux), gouverne le rejet des GREFFES d'organes. L'identité sur l'un ne
+      dit rien de la compatibilité sur l'autre.
+
+  - id: mc.svt.svt_soi_non_soi.mauvais-antigene-vise
+    label: "« On vérifie l'antigène du receveur au lieu de celui que porte le sang du donneur »"
+    description: >
+      Dans un raisonnement transfusionnel, l'élève cherche l'antigène du
+      receveur chez le donneur (« les hématies du donneur ne portent pas
+      l'antigène B, donc pas de risque ») au lieu de confronter l'antigène
+      RÉELLEMENT porté par le donneur aux anticorps du receveur.
+    contradicts_principle: >
+      Le risque naît de la rencontre entre l'antigène porté par les hématies du
+      DONNEUR et l'anticorps présent dans le plasma du RECEVEUR. Un receveur B
+      possède l'anticorps anti-A ; des hématies A portent l'antigène A : la
+      rencontre a lieu, l'agglutination aussi.
+
+  - id: mc.svt.svt_soi_non_soi.anticorps-immun-vs-naturel
+    label: "« Une première transfusion sans réaction prouve l'absence de risque futur »"
+    description: >
+      L'élève applique à l'anticorps anti-D ce qui vaut pour les agglutinines
+      naturelles du système ABO : il les croit présents dès la naissance, donc
+      immédiatement actifs — d'où sa conclusion qu'une absence de réaction
+      immédiate signe une tolérance définitive. Variante : il croit que ce sont
+      les anticorps du donneur qui attaquent le receveur.
+    contradicts_principle: >
+      L'anticorps anti-D est un anticorps IMMUN : il n'apparaît qu'APRÈS une
+      première exposition à l'antigène D, dans les semaines qui suivent. La
+      première transfusion sensibilise ; c'est la seconde qui est dangereuse.
+      Et l'anticorps en cause est produit par le RECEVEUR, pas apporté par le
+      sang du donneur.
+
+  - id: mc.svt.svt_soi_non_soi.soi-modifie-devient-etranger
+    label: "« Une cellule infectée ou cancéreuse change de patrimoine, ou perd tous ses marqueurs »"
+    description: >
+      Pour expliquer qu'une cellule du soi puisse être ciblée, l'élève la fait
+      sortir du soi : elle deviendrait génétiquement étrangère, ou elle perdrait
+      entièrement ses molécules de CMH, devenant une cellule sans signature.
+    contradicts_principle: >
+      La cellule reste génétiquement une cellule DE l'organisme. Ce qui change,
+      c'est le profil moléculaire qu'elle AFFICHE : elle présente des molécules
+      anormales ou étrangères (fragments viraux, protéines mutées) qui ne
+      correspondent plus au soi appris. C'est une signature modifiée, détectable
+      — pas une signature absente.
+
 items:
   - id: SNS-1
     rung: "R1"
@@ -19,6 +118,7 @@ items:
       - id: B
         text: "Parce que les molécules du soi ne portent aucun antigène : dépourvues de tout déterminant reconnaissable, elles échappent à la surveillance des cellules immunitaires, qui n'ont rien à quoi réagir."
         correct: false
+        misconception: mc.svt.svt_soi_non_soi.tolerance-passive
         feedback: >
           C'est l'inverse : les molécules du soi (CMH, marqueurs sanguins)
           sont bel et bien détectables — c'est justement ce qui permet, par
@@ -29,6 +129,7 @@ items:
       - id: C
         text: "Parce que le non-soi n'existe pas encore à la naissance : aucun agent étranger n'ayant encore été rencontré, le système immunitaire n'a rien à distinguer du soi à ce stade."
         correct: false
+        misconception: mc.svt.svt_soi_non_soi.tolerance-passive
         feedback: >
           Le non-soi (agents pathogènes, greffons éventuels) peut se
           présenter à tout âge, y compris très tôt après la naissance. La
@@ -38,6 +139,7 @@ items:
       - id: D
         text: "Parce que le soi et le non-soi sont deux catégories fixées une fois pour toutes, inscrites dans le patrimoine génétique, indépendamment de tout apprentissage du système immunitaire."
         correct: false
+        misconception: mc.svt.svt_soi_non_soi.tolerance-passive
         feedback: >
           La tolérance montre au contraire que la non-réaction contre le
           soi résulte d'un processus actif (l'élimination des cellules
@@ -78,6 +180,7 @@ items:
       - id: B
         text: "Les anticorps se lient à n'importe quelle hématie étrangère au sérum utilisé : c'est le caractère étranger de la cellule, et non un antigène particulier qu'elle porterait, qui provoque l'agglutination."
         correct: false
+        misconception: mc.svt.svt_soi_non_soi.reconnaissance-non-specifique
         feedback: >
           Si c'était le cas, les quatre échantillons (O, A, B, AB) auraient
           tous été agglutinés par le sérum anti-A, puisque tous sont
@@ -87,6 +190,7 @@ items:
       - id: C
         text: "Antigène et anticorps désignent la même chose sous deux noms : l'agglutination se produit simplement quand deux de ces molécules identiques se rencontrent, quel que soit l'échantillon d'hématies testé."
         correct: false
+        misconception: mc.svt.svt_soi_non_soi.antigene-anticorps-confondus
         feedback: >
           Antigène et anticorps sont deux entités différentes et
           complémentaires : l'antigène est la molécule reconnue (ici, porté
@@ -95,6 +199,7 @@ items:
       - id: D
         text: "L'agglutination dépend uniquement du groupe sanguin d'origine du sérum : c'est la nature de ce sérum qui décide à elle seule des échantillons qui agglutinent, indépendamment des hématies testées."
         correct: false
+        misconception: mc.svt.svt_soi_non_soi.reconnaissance-non-specifique
         feedback: >
           Le résultat observé dépend précisément de la présence ou de
           l'absence de l'antigène A sur les hématies testées (A et AB
@@ -131,6 +236,7 @@ items:
       - id: B
         text: "Le donneur non apparenté, car un groupe sanguin ABO identique garantit à lui seul une compatibilité complète : dès lors que les hématies appartiennent au même groupe, l'organe greffé ne peut être rejeté."
         correct: false
+        misconception: mc.svt.svt_soi_non_soi.systemes-de-marqueurs-confondus
         feedback: >
           La compatibilité ABO concerne les hématies (transfusions) et ne
           renseigne en rien sur la compatibilité du CMH, qui gouverne le
@@ -140,6 +246,7 @@ items:
       - id: C
         text: "Les deux donneurs présentent exactement le même risque, puisque le rejet de greffe ne dépend pas des molécules du CMH mais de la seule qualité de l'intervention chirurgicale et du traitement qui la suit."
         correct: false
+        misconception: mc.svt.svt_soi_non_soi.systemes-de-marqueurs-confondus
         feedback: >
           C'est au contraire le CMH, extrêmement polymorphe et quasiment
           unique à chaque individu (sauf vrais jumeaux), qui gouverne la
@@ -148,6 +255,7 @@ items:
       - id: D
         text: "Le frère jumeau, mais uniquement parce que deux jumeaux ont automatiquement le même groupe sanguin ABO : c'est cette identité ABO, et non le patrimoine génétique dans son ensemble, qui écarte le rejet."
         correct: false
+        misconception: mc.svt.svt_soi_non_soi.systemes-de-marqueurs-confondus
         feedback: >
           Le partage du groupe ABO n'est pas systématique entre jumeaux
           monozygotes pour la conclusion recherchée ici : ce qui rend le
@@ -187,6 +295,7 @@ items:
       - id: B
         text: "Oui, car les hématies du donneur (groupe A) ne portent pas l'antigène B : le receveur étant de groupe B, rien dans le sang reçu ne peut réagir avec son plasma, et la transfusion se déroule sans risque."
         correct: false
+        misconception: mc.svt.svt_soi_non_soi.mauvais-antigene-vise
         feedback: >
           C'est regarder le mauvais antigène. La réaction ne vient pas de
           l'antigène B (absent chez le donneur), mais de l'antigène A que
@@ -195,6 +304,7 @@ items:
       - id: C
         text: "Oui, car le système ABO ne concerne que les greffes d'organes : pour une simple transfusion sanguine, seul le volume transfusé importe, et non la correspondance des groupes entre donneur et receveur."
         correct: false
+        misconception: mc.svt.svt_soi_non_soi.systemes-de-marqueurs-confondus
         feedback: >
           C'est l'inverse : le système ABO est précisément le système de
           marqueurs qui conditionne la compatibilité des transfusions
@@ -203,6 +313,7 @@ items:
       - id: D
         text: "Non, mais uniquement à cause du facteur Rhésus : c'est lui, et non le système ABO, qui décide de la compatibilité entre un donneur et un receveur lors d'une transfusion de sang total."
         correct: false
+        misconception: mc.svt.svt_soi_non_soi.systemes-de-marqueurs-confondus
         feedback: >
           Le facteur Rhésus n'est pas en cause ici : le problème vient
           directement du système ABO — l'anticorps anti-A du receveur (groupe
@@ -241,6 +352,7 @@ items:
       - id: B
         text: "Oui, car l'absence de réaction lors de cette première transfusion prouve que son organisme tolère l'antigène D et qu'il ne produira donc jamais d'anticorps anti-D, quel que soit le nombre d'expositions."
         correct: false
+        misconception: mc.svt.svt_soi_non_soi.anticorps-immun-vs-naturel
         feedback: >
           C'est confondre l'absence de réaction immédiate avec une absence
           définitive de risque. Contrairement aux agglutinines du système
@@ -251,6 +363,7 @@ items:
       - id: C
         text: "Oui, car le système Rhésus ne concerne que les greffes d'organes : lors d'une transfusion, seule la compatibilité ABO est en jeu, le facteur Rhésus restant sans effet."
         correct: false
+        misconception: mc.svt.svt_soi_non_soi.systemes-de-marqueurs-confondus
         feedback: >
           Le système Rhésus, comme le système ABO, est un système de
           marqueurs des hématies : il concerne directement les transfusions
@@ -258,6 +371,7 @@ items:
       - id: D
         text: "Non, car le sang Rh+ transfusé contient toujours des anticorps anti-D qui attaquent directement les hématies du receveur, dès la première transfusion comme lors de toutes les suivantes."
         correct: false
+        misconception: mc.svt.svt_soi_non_soi.anticorps-immun-vs-naturel
         feedback: >
           Le risque ne vient pas d'anticorps apportés par le sang du
           donneur, mais de l'anticorps anti-D que LE RECEVEUR peut
@@ -297,6 +411,7 @@ items:
       - id: B
         text: "Parce qu'une cellule infectée ou cancéreuse devient génétiquement étrangère à l'organisme : son patrimoine n'étant plus celui de l'individu, elle bascule automatiquement dans le non-soi au sens strict."
         correct: false
+        misconception: mc.svt.svt_soi_non_soi.soi-modifie-devient-etranger
         feedback: >
           Le patrimoine génétique de la cellule ne change pas de propriétaire
           : elle reste, génétiquement, une cellule DE l'organisme. Ce qui
@@ -305,6 +420,7 @@ items:
       - id: C
         text: "Parce que le système immunitaire attaque systématiquement toute cellule infectée ou anormale, sans aucune reconnaissance moléculaire préalable : c'est l'anomalie elle-même qui déclenche la destruction."
         correct: false
+        misconception: mc.svt.svt_soi_non_soi.reconnaissance-non-specifique
         feedback: >
           Cela contredirait le principe de spécificité vu au chapitre 3 : la
           reconnaissance repose toujours sur des molécules précises
@@ -314,6 +430,7 @@ items:
       - id: D
         text: "Parce qu'une cellule infectée ou cancéreuse perd entièrement ses molécules de CMH : privée de toute signature de surface, elle n'est plus reconnue comme du soi et se trouve automatiquement éliminée."
         correct: false
+        misconception: mc.svt.svt_soi_non_soi.soi-modifie-devient-etranger
         feedback: >
           Ce n'est pas le mécanisme décrit ici : la cellule affiche des
           molécules ANORMALES ou ÉTRANGÈRES (fragments viraux, molécules

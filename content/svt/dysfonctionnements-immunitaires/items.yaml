@@ -1,6 +1,82 @@
 notion: dysfonctionnements-immunitaires
 skill_code: svt_dysfonctionnements_immunitaires
-misconceptions: []
+misconceptions:
+  # Inventaire écrit le 2026-09-05, tiré des feedbacks déjà présents.
+  - id: mc.svt.svt_dysfonctionnements_immunitaires.vaccination-serotherapie-confondues
+    label: "« Vaccination et sérothérapie, c'est la même chose »"
+    description: >
+      L'élève échange les deux dispositifs : il croit qu'un vaccin injecte des
+      anticorps prêts à l'emploi et protège dès l'injection, ou qu'une
+      sérothérapie déclenche une mémoire immunitaire durable, ou qu'un vaccin
+      (même suivi d'un rappel) peut sauver quelqu'un dans l'heure.
+    contradicts_principle: >
+      Le vaccin apporte un ANTIGÈNE rendu inoffensif : c'est l'organisme du
+      vacciné qui sélectionne, multiplie et différencie ses propres lymphocytes
+      — une réponse primaire, donc plusieurs jours à quelques semaines, mais une
+      mémoire durable. La sérothérapie apporte des ANTICORPS déjà fabriqués par
+      un autre organisme : action immédiate, aucune mémoire, protection brève.
+
+  - id: mc.svt.svt_dysfonctionnements_immunitaires.immunite-passive-mal-comprise
+    label: "« Les anticorps injectés se multiplient dans le receveur — ou bien ils ne servent à rien »"
+    description: >
+      L'élève traite les anticorps injectés comme des cellules vivantes qui se
+      multiplieraient et resteraient ; ou, à l'inverse, il juge tout apport
+      extérieur inutile puisque seule une réponse produite par l'organisme
+      protégerait vraiment.
+    contradicts_principle: >
+      Un anticorps est une MOLÉCULE, pas une cellule : il ne se multiplie jamais
+      chez le receveur et finit reconnu comme étranger puis éliminé — d'où une
+      protection brève. Mais dans l'intervalle il neutralise, agglutine ou
+      marque sa cible dès son arrivée : c'est précisément ce qui rend la
+      sérothérapie précieuse en urgence (venin, toxine).
+
+  - id: mc.svt.svt_dysfonctionnements_immunitaires.vaccin-protection-universelle
+    label: "« Un vaccin protège définitivement, et contre toutes les maladies »"
+    description: >
+      L'élève généralise la protection vaccinale : le vacciné deviendrait
+      capable de reconnaître n'importe quel agent infectieux, et pour toujours.
+    contradicts_principle: >
+      Un vaccin protège contre UN agent précis — celui dont il porte l'antigène.
+      Et la population de lymphocytes mémoire décroît avec le temps : des
+      rappels sont parfois nécessaires pour la maintenir.
+
+  - id: mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus
+    label: "« Allergie, maladie auto-immune et déficit immunitaire se ressemblent »"
+    description: >
+      L'élève interchange les trois dysfonctionnements : il décrit une allergie
+      pour définir une maladie auto-immune, invoque la destruction des LT4 par
+      un virus, parle d'une incapacité à produire des anticorps, ou prête au VIH
+      la fabrication d'auto-anticorps.
+    contradicts_principle: >
+      Trois mécanismes distincts. ALLERGIE : réaction excessive contre un
+      allergène EXTÉRIEUR et inoffensif. AUTO-IMMUNITÉ : rupture de la tolérance
+      au soi, le système fonctionne mais se trompe de cible. DÉFICIT (SIDA) :
+      destruction des LT4 par le VIH, le système perd ses coordinateurs. Ce qui
+      les sépare est la CIBLE, pas l'intensité.
+
+  - id: mc.svt.svt_dysfonctionnements_immunitaires.critere-de-distinction-non-pertinent
+    label: "« Ce qui distingue allergie et auto-immunité, c'est l'âge, ou l'origine génétique »"
+    description: >
+      Pour séparer les deux, l'élève choisit un critère extérieur au mécanisme :
+      l'âge du patient, une origine héréditaire d'un côté et infectieuse de
+      l'autre.
+    contradicts_principle: >
+      Les deux surviennent à tout âge et peuvent avoir une composante de
+      terrain. Le seul critère de fond est la NATURE DE LA CIBLE attaquée :
+      un allergène extérieur pour l'allergie, une molécule du soi pour
+      l'auto-immunité.
+
+  - id: mc.svt.svt_dysfonctionnements_immunitaires.cible-du-vih-mal-identifiee
+    label: "« Le VIH détruit tous les globules blancs, ou bloque la phagocytose »"
+    description: >
+      L'élève rend le VIH indifféremment destructeur, ou lui fait attaquer
+      l'immunité innée.
+    contradicts_principle: >
+      Le VIH reconnaît SPÉCIFIQUEMENT le récepteur CD4, porté par les seuls
+      lymphocytes T4. C'est la perte progressive de cette population — les
+      coordinateurs de la réponse adaptative — qui désorganise l'ensemble, non
+      une destruction générale ni un blocage de la phagocytose.
+
 items:
   - id: DI-1
     rung: "R4"
@@ -17,6 +93,7 @@ items:
       - id: B
         text: "Une immunité passive et immédiate, car on injecte directement des anticorps prêts à l'emploi, que l'organisme n'a pas eu à fabriquer lui-même"
         correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.vaccination-serotherapie-confondues
         feedback: >
           Ça, c'est la sérothérapie, pas la vaccination. Le vaccin n'injecte
           aucun anticorps tout prêt : il apporte seulement un antigène rendu
@@ -27,6 +104,7 @@ items:
       - id: C
         text: "Une immunité qui agit dès l'injection, sans le moindre délai, parce que le produit injecté contient déjà tout ce qui protège le vacciné"
         correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.vaccination-serotherapie-confondues
         feedback: >
           Non : comme toute réponse primaire, la réponse vaccinale exige
           d'abord la sélection puis l'expansion du clone de lymphocytes
@@ -36,6 +114,7 @@ items:
       - id: D
         text: "Une protection définitive contre toutes les maladies, l'organisme vacciné devenant capable de reconnaître n'importe quel agent infectieux"
         correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.vaccin-protection-universelle
         feedback: >
           Un vaccin protège contre UN agent précis (celui dont il porte
           l'antigène), pas contre toutes les maladies, et des rappels sont
@@ -73,6 +152,7 @@ items:
       - id: B
         text: "Différée mais durable, comme après un vaccin : les anticorps injectés stimulent les lymphocytes du patient, qui prennent le relais et gardent la mémoire de l'agent infectieux rencontré"
         correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.vaccination-serotherapie-confondues
         feedback: >
           C'est l'inverse de la réalité. Les anticorps injectés agissent tout
           de suite, sans le délai d'une réponse primaire ; mais comme le
@@ -83,6 +163,7 @@ items:
       - id: C
         text: "Durable, car les anticorps injectés se multiplient dans l'organisme du patient au même titre que ses cellules immunitaires, et y restent présents longtemps après l'injection"
         correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.immunite-passive-mal-comprise
         feedback: >
           Les anticorps sont des molécules, pas des cellules vivantes : ils
           ne se multiplient jamais dans l'organisme receveur. Au contraire,
@@ -91,6 +172,7 @@ items:
       - id: D
         text: "Aucune : injecter des anticorps tout faits ne sert à rien, puisque seule une réponse fabriquée par l'organisme lui-même est capable de le protéger contre un agent infectieux"
         correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.immunite-passive-mal-comprise
         feedback: >
           Au contraire, c'est justement ce qui rend la sérothérapie précieuse
           en URGENCE (venin, toxine) : les anticorps injectés neutralisent,
@@ -126,6 +208,7 @@ items:
       - id: B
         text: "La vaccination, car elle protège durablement contre le venin et permet à l'organisme de fabriquer lui-même les anticorps dont il a besoin"
         correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.vaccination-serotherapie-confondues
         feedback: >
           Une vaccination déclencherait une réponse primaire, qui exige
           plusieurs jours de sélection puis d'expansion clonale avant de
@@ -136,6 +219,7 @@ items:
       - id: C
         text: "Attendre que l'organisme fabrique lui-même ses anticorps, une réponse plus solide qu'un apport extérieur et qui laissera en outre une mémoire immunitaire"
         correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.vaccination-serotherapie-confondues
         feedback: >
           Attendre reviendrait à laisser s'installer une réponse primaire,
           bien trop lente (plusieurs jours) pour une urgence vitale. Il faut
@@ -145,6 +229,7 @@ items:
       - id: D
         text: "Un vaccin suivi immédiatement d'un rappel, afin d'accélérer la production d'anticorps et d'obtenir une protection en quelques heures"
         correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.vaccination-serotherapie-confondues
         feedback: >
           Même enchaînés, un vaccin puis un rappel exigent que l'organisme du
           patient sélectionne et différencie ses propres lymphocytes, ce qui
@@ -179,6 +264,7 @@ items:
       - id: B
         text: "Une réaction exagérée du système immunitaire face à une substance étrangère et pourtant inoffensive, qui déclenche des symptômes sans qu'aucun agent dangereux ne soit en cause"
         correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus
         feedback: >
           Ça, c'est une ALLERGIE : une réaction excessive dirigée contre un
           allergène EXTÉRIEUR et normalement inoffensif (pollen, venin,
@@ -188,6 +274,7 @@ items:
       - id: C
         text: "Une destruction des lymphocytes T4 par un virus, qui prive l'organisme des cellules chargées de coordonner l'ensemble de sa réponse immunitaire adaptative"
         correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus
         feedback: >
           C'est le mécanisme du SIDA (déficit immunitaire dû au VIH, qui
           détruit spécifiquement les LT4), pas celui d'une maladie
@@ -197,6 +284,7 @@ items:
       - id: D
         text: "Une incapacité totale à produire des anticorps, le système immunitaire restant muet face aux agents infectieux comme face aux molécules du soi"
         correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus
         feedback: >
           Une maladie auto-immune n'est pas un DÉFICIT de production : le
           système immunitaire fonctionne, parfois même avec excès
@@ -232,6 +320,7 @@ items:
       - id: B
         text: "L'allergie touche surtout les enfants, tandis que l'auto-immunité se déclare à l'âge adulte"
         correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.critere-de-distinction-non-pertinent
         feedback: >
           L'âge n'est pas le critère : les deux peuvent survenir à tout âge
           (on peut devenir allergique adulte, ou développer un diabète de
@@ -240,6 +329,7 @@ items:
       - id: C
         text: "L'allergie est d'origine génétique, tandis que l'auto-immunité est déclenchée par une infection"
         correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.critere-de-distinction-non-pertinent
         feedback: >
           Ni l'une ni l'autre n'est « infectieuse » à proprement parler, et
           les deux peuvent avoir une composante de terrain (génétique ou
@@ -249,6 +339,7 @@ items:
       - id: D
         text: "L'allergie détruit les lymphocytes, tandis que l'auto-immunité les active de façon excessive"
         correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus
         feedback: >
           Aucune des deux ne se résume à cela : l'allergie, comme
           l'auto-immunité, repose au contraire sur l'ACTIVATION de
@@ -287,6 +378,7 @@ items:
       - id: B
         text: "Il détruit directement tous les globules blancs de l'organisme, qui se retrouve alors sans aucune cellule capable de le défendre"
         correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.cible-du-vih-mal-identifiee
         feedback: >
           Le VIH ne détruit pas indifféremment tous les globules blancs : il
           reconnaît spécifiquement le récepteur CD4, porté par les seuls
@@ -297,6 +389,7 @@ items:
       - id: C
         text: "Il empêche uniquement la phagocytose, première étape de toute réponse immunitaire, ce qui bloque du même coup la réponse adaptative qui devait la suivre"
         correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.cible-du-vih-mal-identifiee
         feedback: >
           Le problème n'est pas la phagocytose (un mécanisme de l'immunité
           innée que le VIH ne cible pas) mais la destruction des LT4, qui
@@ -307,6 +400,7 @@ items:
       - id: D
         text: "Il fabrique des anticorps dirigés contre l'organisme lui-même, qui détruisent progressivement les cellules immunitaires du malade"
         correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus
         feedback: >
           Le VIH ne fabrique aucun anticorps : c'est un virus, pas une
           cellule immunitaire ; confondre les deux mécanismes reviendrait à
