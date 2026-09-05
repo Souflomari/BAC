@@ -24,7 +24,7 @@
  * la note est étiquetée « indicative » précisément pour ça.
  */
 
-import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { Link } from "@/components/ui/Lien";
 import { cn } from "@/lib/utils";
 import { frenchTypography } from "@/lib/frenchTypography";
@@ -82,6 +82,153 @@ function ptsDepuisStem(stem: string): number | null {
 function formatNote(n: number): string {
   return (Math.round(n * 100) / 100).toFixed(2).replace(".", ",").replace(/,?0+$/, "") || "0";
 }
+
+
+type ExoData = EpreuveData["exercices"][number];
+
+/**
+ * Un exercice de l'épreuve, MÉMOÏSÉ (2026-09-05). La révélation progressive
+ * fait un commit par question ; sans mémo, chaque commit réconciliait les dix
+ * articles — 40 commits × tout l'arbre, et la mesure par question coûtait
+ * plus qu'elle n'économisait (le sujet complet passait de 4,8 s à 11,8 s à
+ * ×6). Les compteurs reçus sont BORNÉS à l'exercice : un article dont rien ne
+ * change garde des props identiques et n'est pas re-rendu.
+ */
+const ExerciceArticle = memo(function ExerciceArticle({
+  exo,
+  i,
+  nbSujet,
+  nbCorrige,
+  enCorrection,
+  verdicts,
+  setVerdicts,
+  bareme,
+}: {
+  exo: ExoData;
+  i: number;
+  nbSujet: number;
+  nbCorrige: number;
+  enCorrection: boolean;
+  verdicts: Record<string, Verdict>;
+  setVerdicts: React.Dispatch<React.SetStateAction<Record<string, Verdict>>>;
+  bareme: Map<string, number>;
+}) {
+  return (
+    <li key={i}>
+      <article
+        data-exam-exo
+        className="overflow-hidden rounded-xl border border-subtle bg-surface-raised shadow-elevation-1"
+      >
+        <header className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b border-subtle bg-surface-container-low px-5 py-3">
+          {/* `min-w-0 break-words` : l'intitulé est un item flex, et un item
+              flex ne descend pas sous son mot le plus long. Sur les vieux
+              sujets SPC l'intitulé EST le titre (« Exercice de Chimie —
+              Première partie : suivi conductimétrique ») ; à 200 % de
+              texte sur 360 px, « conductimétrique » dépassait la carte de
+              44 à 92 px et `overflow-hidden` le coupait (2026-09-05). */}
+          <h2 className="min-w-0 break-words text-h4 font-semibold text-primary">
+            {exo.exerciseLabel ?? `Exercice ${i + 1}`}
+          </h2>
+          <p className="min-w-0 flex-1 truncate text-body-sm text-secondary" title={exo.titre}>
+            {exo.titre}
+          </p>
+          {exo.baremeTotal != null && (
+            <span className="mono-inline shrink-0 text-body-sm text-tertiary">
+              {formatNote(exo.baremeTotal)} pts
+            </span>
+          )}
+        </header>
+        <div className="space-y-5 px-5 py-5">
+          {exo.intro && nbSujet > 0 && <MdBlock>{exo.intro}</MdBlock>}
+          {exo.questions.map((q, k) => {
+            if (k >= nbSujet) return null;
+            const cle = `${i}:${q.id}`;
+            const verdict = verdicts[cle];
+            const qPts = bareme.get(cle) ?? 0;
+            return (
+              <div key={q.id} className="border-t border-subtle pt-4 first:border-t-0 first:pt-0">
+                {q.part && (
+                  <p className="mb-1 text-caption font-medium uppercase tracking-eyebrow text-tertiary">
+                    {q.part}
+                  </p>
+                )}
+                <MdBlock>{q.stem}</MdBlock>
+
+                {/* ATTEMPT-FIRST ABSOLU : le raisonnement n’entre dans
+                    le DOM qu’en phase correction — dom-truth l’asserte. */}
+                {enCorrection && k >= nbCorrige && (
+                  <p className="mt-3 text-body-sm text-tertiary" aria-busy="true">
+                    Le corrigé se prépare…
+                  </p>
+                )}
+                {enCorrection && k < nbCorrige && (
+                  <div className="mt-3 rounded-lg border border-subtle bg-surface-container-low p-4">
+                    <p className="mb-2 text-caption font-medium uppercase tracking-eyebrow text-secondary">
+                      Raisonnement expert
+                    </p>
+                    <MdBlock>{q.reasoning}</MdBlock>
+                    <div
+                      role="radiogroup"
+                      aria-label={frenchTypography(`Auto-évaluation de la question (${formatNote(qPts)} pt)`)}
+                      className="mt-4 flex flex-wrap items-center gap-2"
+                    >
+                      <span className="text-body-sm text-secondary">
+                        Ta copie :
+                      </span>
+                      {(["juste", "partiel", "faux"] as const).map((v) => (
+                        <button
+                          key={v}
+                          type="button"
+                          role="radio"
+                          aria-checked={verdict === v}
+                          onClick={() =>
+                            setVerdicts((prev) => ({ ...prev, [cle]: v }))
+                          }
+                          className={cn(
+                            "min-h-touch rounded-lg border px-3 text-body-sm font-medium",
+                            "state-layer focus-ring [--focus-radius:8px]",
+                            "transition-colors duration-micro ease-enter",
+                            verdict === v
+                              ? "border-field bg-surface-overlay text-primary shadow-elevation-1"
+                              : "border-subtle text-secondary hover:text-primary"
+                          )}
+                        >
+                          {v === "juste"
+                            ? `Juste · ${formatNote(qPts)} pt`
+                            : v === "partiel"
+                              ? `Partiel · ${formatNote(qPts / 2)}`
+                              : "Faux · 0"}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+          {nbSujet < exo.questions.length && (
+            <p className="text-body-sm text-tertiary" aria-busy="true">
+              Le sujet se prépare…
+            </p>
+          )}
+          {enCorrection && (
+            <p className="border-t border-subtle pt-4 text-body-sm">
+              <Link
+                href={notionHref(exo.subject, exo.notionSlug)}
+                className={cn(
+                  "font-medium text-accent underline-offset-2 hover:underline",
+                  "focus-ring rounded [--focus-radius:4px]"
+                )}
+              >
+                Revoir la notion — {exo.notionTitle} →
+              </Link>
+            </p>
+          )}
+        </div>
+      </article>
+    </li>
+  );
+});
 
 export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
   const [phase, setPhase] = useState<Phase>("seuil");
@@ -311,120 +458,17 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
       {/* Les exercices, dans l’ordre du sujet réel. */}
       <ol className="space-y-8" aria-label="Exercices de l'épreuve">
         {epreuve.exercices.map((exo, i) => (
-          <li key={i}>
-            <article
-              data-exam-exo
-              className="overflow-hidden rounded-xl border border-subtle bg-surface-raised shadow-elevation-1"
-            >
-              <header className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b border-subtle bg-surface-container-low px-5 py-3">
-                {/* `min-w-0 break-words` : l'intitulé est un item flex, et un item
-                    flex ne descend pas sous son mot le plus long. Sur les vieux
-                    sujets SPC l'intitulé EST le titre (« Exercice de Chimie —
-                    Première partie : suivi conductimétrique ») ; à 200 % de
-                    texte sur 360 px, « conductimétrique » dépassait la carte de
-                    44 à 92 px et `overflow-hidden` le coupait (2026-09-05). */}
-                <h2 className="min-w-0 break-words text-h4 font-semibold text-primary">
-                  {exo.exerciseLabel ?? `Exercice ${i + 1}`}
-                </h2>
-                <p className="min-w-0 flex-1 truncate text-body-sm text-secondary" title={exo.titre}>
-                  {exo.titre}
-                </p>
-                {exo.baremeTotal != null && (
-                  <span className="mono-inline shrink-0 text-body-sm text-tertiary">
-                    {formatNote(exo.baremeTotal)} pts
-                  </span>
-                )}
-              </header>
-              <div className="space-y-5 px-5 py-5">
-                {exo.intro && debuts[i] < reveleSujet && <MdBlock>{exo.intro}</MdBlock>}
-                {exo.questions.map((q, k) => {
-                  const g = debuts[i] + k; // rang global de la question
-                  if (g >= reveleSujet) return null;
-                  const cle = `${i}:${q.id}`;
-                  const verdict = verdicts[cle];
-                  const qPts = bareme.get(cle) ?? 0;
-                  return (
-                    <div key={q.id} className="border-t border-subtle pt-4 first:border-t-0 first:pt-0">
-                      {q.part && (
-                        <p className="mb-1 text-caption font-medium uppercase tracking-eyebrow text-tertiary">
-                          {q.part}
-                        </p>
-                      )}
-                      <MdBlock>{q.stem}</MdBlock>
-
-                      {/* ATTEMPT-FIRST ABSOLU : le raisonnement n’entre dans
-                          le DOM qu’en phase correction — dom-truth l’asserte. */}
-                      {enCorrection && g >= reveleCorrige && (
-                        <p className="mt-3 text-body-sm text-tertiary" aria-busy="true">
-                          Le corrigé se prépare…
-                        </p>
-                      )}
-                      {enCorrection && g < reveleCorrige && (
-                        <div className="mt-3 rounded-lg border border-subtle bg-surface-container-low p-4">
-                          <p className="mb-2 text-caption font-medium uppercase tracking-eyebrow text-secondary">
-                            Raisonnement expert
-                          </p>
-                          <MdBlock>{q.reasoning}</MdBlock>
-                          <div
-                            role="radiogroup"
-                            aria-label={frenchTypography(`Auto-évaluation de la question (${formatNote(qPts)} pt)`)}
-                            className="mt-4 flex flex-wrap items-center gap-2"
-                          >
-                            <span className="text-body-sm text-secondary">
-                              Ta copie :
-                            </span>
-                            {(["juste", "partiel", "faux"] as const).map((v) => (
-                              <button
-                                key={v}
-                                type="button"
-                                role="radio"
-                                aria-checked={verdict === v}
-                                onClick={() =>
-                                  setVerdicts((prev) => ({ ...prev, [cle]: v }))
-                                }
-                                className={cn(
-                                  "min-h-touch rounded-lg border px-3 text-body-sm font-medium",
-                                  "state-layer focus-ring [--focus-radius:8px]",
-                                  "transition-colors duration-micro ease-enter",
-                                  verdict === v
-                                    ? "border-field bg-surface-overlay text-primary shadow-elevation-1"
-                                    : "border-subtle text-secondary hover:text-primary"
-                                )}
-                              >
-                                {v === "juste"
-                                  ? `Juste · ${formatNote(qPts)} pt`
-                                  : v === "partiel"
-                                    ? `Partiel · ${formatNote(qPts / 2)}`
-                                    : "Faux · 0"}
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-                {debuts[i] + exo.questions.length > reveleSujet && (
-                  <p className="text-body-sm text-tertiary" aria-busy="true">
-                    Le sujet se prépare…
-                  </p>
-                )}
-                {enCorrection && (
-                  <p className="border-t border-subtle pt-4 text-body-sm">
-                    <Link
-                      href={notionHref(exo.subject, exo.notionSlug)}
-                      className={cn(
-                        "font-medium text-accent underline-offset-2 hover:underline",
-                        "focus-ring rounded [--focus-radius:4px]"
-                      )}
-                    >
-                      Revoir la notion — {exo.notionTitle} →
-                    </Link>
-                  </p>
-                )}
-              </div>
-            </article>
-          </li>
+          <ExerciceArticle
+            key={i}
+            exo={exo}
+            i={i}
+            nbSujet={Math.min(exo.questions.length, Math.max(0, reveleSujet - debuts[i]))}
+            nbCorrige={enCorrection ? Math.min(exo.questions.length, Math.max(0, reveleCorrige - debuts[i])) : 0}
+            enCorrection={enCorrection}
+            verdicts={verdicts}
+            setVerdicts={setVerdicts}
+            bareme={bareme}
+          />
         ))}
       </ol>
 

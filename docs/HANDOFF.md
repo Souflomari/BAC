@@ -3289,15 +3289,28 @@ l'épreuve, le parent se re-rend à chaque seconde du chrono.
   quand le dernier exercice de la phase est rendu.
 
 **LA PREMIÈRE VERSION, ET CE QU'ELLE A APPRIS.** La révélation a d'abord
-été faite par EXERCICE. Mesurée sur 10 sujets (processeur ×6) : le premier
-corrigé apparaît en **0,4 à 0,9 s** au lieu de 11 à 30 s, le premier énoncé
-en 1,2 à 2,9 s au lieu de 7 à 13 s — mais la tâche la plus longue restait de
-1,6 à 4,8 s sur les sujets denses : un exercice de corrigé de 250 formules
+été faite par EXERCICE. Mesurée sur 12 sujets (processeur ×6) : le premier
+corrigé apparaît en **0,4 à 0,9 s** (médiane 0,7 s) au lieu de 11 à 30 s, le
+premier énoncé en 1,2 à 2,9 s (médiane 2,1 s) au lieu de 7 à 13 s ; le
+corrigé complet en 11,5 s de médiane au lieu de 17 — mais la tâche la plus
+longue restait de 1,6 à 4,8 s (médiane 2,1 s) sur les sujets denses : un exercice de corrigé de 250 formules
 est un seul rendu, et React ne découpe pas À L'INTÉRIEUR d'un composant qui
 parse et rend d'un bloc. L'unité est donc devenue la QUESTION : chaque bloc
 de raisonnement est un rendu, la tâche la plus longue est bornée par le plus
 gros bloc du sujet. Les chiffres définitifs, par question, sont dans le
 tableau ci-dessous.
+
+**LA DEUXIÈME VERSION, ET CE QU'ELLE A COÛTÉ.** Par question, la tâche la
+plus longue est tombée où on l'attendait (médiane 2,1 s → 0,6 s à ×6, sur 5
+sujets), mais le sujet complet est passé de 5,2 s à 10,7 s de médiane et le
+corrigé complet de 11,5 s à 22,5 s — plus lent que SANS révélation
+progressive. Quarante
+commits au lieu de dix, et chacun réconciliait les dix articles entiers : le
+découpage coûtait plus qu'il n'économisait. L'article d'exercice est donc un
+composant mémoïsé (`ExerciceArticle`) qui reçoit des compteurs BORNÉS à
+l'exercice — un article dont rien ne change garde des props identiques et
+n'est pas re-rendu. Les chiffres définitifs sont ceux de cette troisième
+version, dans le tableau.
 
 Et dom-truth a trouvé un défaut de la première version avant qu'elle ne soit
 mesurée : il appuie sur « Terminer » une centaine de millisecondes après
@@ -3308,7 +3321,11 @@ du corrigé atteignait la fin et posait `data-corrige-complet` : « 4/10
 exercices corrigés », marqueur présent. Un élève sur un téléphone lent peut
 faire la même chose. Le sujet finit maintenant toujours avant que le corrigé
 ne commence, quelle que soit la phase, et le marqueur du corrigé exige celui
-du sujet.
+du sujet. Re-mesuré par dom-truth sur le build corrigé, avec le même
+« Terminer » à 100 ms : « 10 exercices sans correction pendant l'épreuve ;
+10/10 corrigés + auto-notation après ». (Le seul rouge de ce run était le
+garde-fou de fraîcheur du build — deux commits faits pendant qu'il tournait ;
+la CI le refait sur HEAD.)
 
 **CE QUE ÇA CHANGE POUR LES INSTRUMENTS.** Dix instruments ouvrent les 39
 sujets ; ils attendaient `[data-exam-exo]` puis un délai de 250 à 500 ms. Avec
