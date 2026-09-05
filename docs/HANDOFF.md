@@ -2250,3 +2250,33 @@ pédagogique** — et il appartient à l'owner.
 > **La règle.** « Livré » et « vérifié » ne disent rien de « présent ». Un
 > mécanisme peut être parfaitement testé et n'exister nulle part. Le
 > troisième chiffre — sur combien de pages — n'était compté par personne.
+
+### 10.20 Deux résultats négatifs sur la lane des épreuves, et une fausse alerte
+
+**Les épreuves sont complètes.** 39 épreuves assemblées, 247 exercices,
+**1 472 questions — toutes avec leur `reasoning`** (le raisonnement d'expert,
+pas juste la réponse), et 4 043 étapes de solution. Les 340 questions sans
+tableau d'étapes ne sont pas des trous : ce sont les questions courtes dont
+la réponse EST la prose (« interpréter graphiquement le résultat obtenu »),
+et le champ est optionnel par construction (`steps.length > 0 ? steps :
+undefined`).
+
+**Aucune entrée de banque n'est orpheline.** Les 247 entrées portant une
+source datée sont toutes assemblées dans une épreuve : rien de transcrit
+n'est invisible à l'élève. C'est la vérification symétrique de la classe
+« écrit et jamais rendu » (celle du champ `correct_feedback`, §10.7) — et
+sur cette lane-là, elle est vide.
+
+**Et une fausse alerte, gardée pour la méthode.** Une extraction maison du
+HTML brut (`<[^>]+>` remplacé par une espace) faisait lire « 4 exercice s »
+sur l'index des épreuves. Le défaut semblait certain, et il n'existe pas :
+JSX rend `exercice` et `s` en deux nœuds de texte, React SSR insère un
+`<!-- -->` entre eux, et c'est ce commentaire que la substitution a
+transformé en espace. Vérifié dans un navigateur avant d'être rapporté :
+`innerText` dit « 4 exercices ».
+
+> **Le texte que l'élève lit est `innerText`, jamais une regex sur le
+> balisage.** C'est pourquoi `typo-francaise`, `accents-manquants` et
+> `renvois-visibles` lisent tous le DOM rendu. Une sonde bricolée en deux
+> minutes pour « juste vérifier » est exactement l'endroit où l'on
+> réintroduit le défaut que ces instruments existent pour éviter.

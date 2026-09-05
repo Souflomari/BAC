@@ -229,6 +229,17 @@ carte de figure. C'est ce témoin qui aurait dû exister d'emblée — il aurait
 > ordinaire. Dans un script, `\u202f` ; à la lecture, on imprime le point de
 > code, jamais on ne juge une espace à l'œil dans un terminal.
 
+> **Un texte extrait du HTML BRUT n'est pas le texte rendu.** Le 2026-09-05,
+> une extraction maison (`<[^>]+>` remplacé par une espace) a fait lire
+> « 4 exercice s » sur l'index des épreuves, et le défaut typographique
+> semblait certain. Il n'existe pas : JSX rend `exercice` et `s` en deux
+> nœuds de texte, React SSR insère un `<!-- -->` entre eux, et c'est le
+> commentaire que la substitution a transformé en espace. **Le texte que
+> l'élève lit est `innerText`, jamais une regex sur le balisage** — et c'est
+> pour ça que `typo-francaise`, `accents-manquants` et `renvois-visibles`
+> lisent tous le DOM rendu. Le défaut n'a pas été rapporté : il a été
+> vérifié dans un navigateur avant de l'être.
+
 **Et le corollaire du corollaire, payé le 2026-09-04 sur le balayage réseau :
 une scène de test qui ÉCHOUE doit prouver qu'elle a EU LIEU.** Le premier
 `a[href^="/notions/"]` d'une page de leçon vit dans le panneau replié du
