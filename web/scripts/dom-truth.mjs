@@ -4159,7 +4159,9 @@ try {
       fuite: document.body.innerText.toLowerCase().includes("raisonnement expert"),
     }));
     await epage.click("[data-barre-epreuve] button.btn-primary");
-    await epage.waitForTimeout(500);
+    // Le corrigé se révèle exercice par exercice (transitions découpées) :
+    // on attend le marqueur de fin, pas un délai.
+    await epage.waitForSelector("[data-corrige-complet]", { timeout: 30000 });
     const correction = await epage.evaluate(() => ({
       couverts: [...document.querySelectorAll("[data-exam-exo]")].filter((e) =>
         e.innerText.toLowerCase().includes("raisonnement expert")
@@ -4257,7 +4259,7 @@ try {
       checks++;
       await opage.goto(`${BASE}/examens/${id}`, { waitUntil: "networkidle" });
       await opage.click("[data-primary-action]");
-      await opage.waitForSelector("[data-exam-exo]", { timeout: 3000 });
+      await opage.waitForSelector("[data-sujet-complet]", { timeout: 30000 });
       const labels = await opage.evaluate(() =>
         [...document.querySelectorAll("[data-exam-exo] h2")].map((h) => h.textContent.trim())
       );

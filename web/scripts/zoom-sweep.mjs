@@ -113,9 +113,9 @@ for (const W of largeurs) {
     const commencer = p.getByRole("button", { name: /Commencer l.épreuve/i });
     if (await commencer.count()) {
       await commencer.first().click();
-      await p.waitForSelector("[data-exam-exo]", { timeout: 10000 });
+      await p.waitForSelector("[data-sujet-complet]", { timeout: 60000 });
       const terminer = p.getByRole("button", { name: /Terminer l.épreuve/i });
-      if (await terminer.count()) { await terminer.first().click(); await p.waitForTimeout(400); }
+      if (await terminer.count()) { await terminer.first().click(); await p.waitForSelector("[data-corrige-complet]", { timeout: 60000 }); }
     }
     mesurees++;
     const m = await p.evaluate(async () => {

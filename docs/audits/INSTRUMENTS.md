@@ -65,6 +65,23 @@
 | `web/scripts/item-stats.mjs` | Le biais de position des bonnes réponses, avant/après mélange, **plus l'indice de longueur brut** — que le script signale lui-même comme non réglé par le mélange | La GRAVITÉ de cet indice : `indice-longueur.mjs` la mesure et la garde. Et la qualité des distracteurs |
 | `web/scripts/regle-atelier.mjs` | La règle NORTH-STAR-V2 §4, rendue mécanique | — |
 
+### Le protocole d'ouverture d'une épreuve (2026-09-05, soir)
+
+Une page `/examens/<id>` se rend en trois temps, et un instrument qui n'en
+joue qu'un mesure un masthead. Le protocole commun aux dix instruments qui
+ouvrent les 39 sujets (`routes-examens.mjs` les liste) :
+
+1. cliquer « Commencer l'épreuve » (rôle `button`) ;
+2. attendre `[data-sujet-complet]` — PAS `[data-exam-exo]`, et PAS un délai :
+   depuis la révélation progressive, les coquilles d'exercice sont là
+   d'emblée mais les énoncés arrivent exercice par exercice ;
+3. cliquer « Terminer l'épreuve », puis attendre `[data-corrige-complet]`.
+
+Un `waitForTimeout(400)` à la place du marqueur mesurait une page à moitié
+rendue — et l'aurait mesurée VERTE (moins de texte, moins de défauts). Les
+deux marqueurs sont posés par `EpreuveShell` sur sa racine quand le dernier
+exercice de la phase est rendu.
+
 ## Les harnais d'image
 
 | Instrument | Mesure |

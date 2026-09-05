@@ -24,7 +24,7 @@
  * L73-82); reasoning stays expert-annotated (L65-71) once earned.
  */
 
-import { useState } from "react";
+import { memo, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import remarkGfm from "remark-gfm";
@@ -40,8 +40,13 @@ import { useAttemptRecorder } from "./AttemptEvents";
 import { frenchTypography } from "@/lib/frenchTypography";
 
 /** Block-level markdown + KaTeX renderer (stems and reasoning are prose).
- *  Exported so the bank card's intro renders identically (BANK-SPEC §3). */
-export function MdBlock({ children, className }: { children: string; className?: string }) {
+ *  Exported so the bank card's intro renders identically (BANK-SPEC §3).
+ *
+ *  `memo` (2026-09-05) : le pipeline markdown + KaTeX se ré-exécutait à CHAQUE
+ *  rendu du parent — dans l'épreuve, à chaque seconde du chrono, pour chaque
+ *  énoncé de la page. Les props sont deux chaînes : si elles n'ont pas changé,
+ *  rien à refaire. */
+export const MdBlock = memo(function MdBlock({ children, className }: { children: string; className?: string }) {
   return (
     <div className={cn("prose-lesson max-w-none [&_.katex-display]:my-3", className)}>
       <ReactMarkdown
@@ -56,7 +61,7 @@ export function MdBlock({ children, className }: { children: string; className?:
       </ReactMarkdown>
     </div>
   );
-}
+});
 
 function Question({
   index,

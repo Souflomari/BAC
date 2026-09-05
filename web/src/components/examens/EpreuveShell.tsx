@@ -24,7 +24,7 @@
  * la note est étiquetée « indicative » précisément pour ça.
  */
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { Link } from "@/components/ui/Lien";
 import { cn } from "@/lib/utils";
 import { frenchTypography } from "@/lib/frenchTypography";
@@ -88,6 +88,32 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
   const [secondes, setSecondes] = useState(0);
   const [enPause, setEnPause] = useState(false);
   const [verdicts, setVerdicts] = useState<Record<string, Verdict>>({});
+  // RÉVÉLATION PROGRESSIVE (2026-09-05). Rendre d'un coup les 39 sujets —
+  // 145 à 375 formules d'énoncé, 480 à 1 100 de corrigé — gelait un
+  // téléphone bon marché (processeur ×6) 10 s au « Commencer » et 14 à 27 s
+  // au « Terminer », en UNE tâche de 5 à 10 s. Les exercices se révèlent
+  // maintenant un par un, chacun dans une transition (rendu découpé en
+  // tranches, le fil reste libre entre deux), et le premier apparaît en une
+  // fraction du temps. Deux compteurs : le sujet (phase en cours) et le
+  // corrigé (phase correction) — les énoncés déjà rendus restent en place.
+  // Les instruments attendent `data-sujet-complet` / `data-corrige-complet`.
+  const [reveleSujet, setReveleSujet] = useState(0);
+  const [reveleCorrige, setReveleCorrige] = useState(0);
+  const [, startTransition] = useTransition();
+  const nbExos = epreuve.exercices.length;
+  useEffect(() => {
+    const cible = phase === "encours" ? reveleSujet : phase === "correction" ? reveleCorrige : nbExos;
+    if (cible >= nbExos) return;
+    let annule = false;
+    const id = window.requestAnimationFrame(() => {
+      if (annule) return;
+      startTransition(() => {
+        if (phase === "encours") setReveleSujet((k) => Math.min(nbExos, k + 1));
+        else setReveleCorrige((k) => Math.min(nbExos, k + 1));
+      });
+    });
+    return () => { annule = true; window.cancelAnimationFrame(id); };
+  }, [phase, reveleSujet, reveleCorrige, nbExos]);
   const chronoFinal = useRef<number>(0);
 
   // Chrono : écoulé, 1 s, coupé en pause et en correction. L'onglet inactif
@@ -100,12 +126,14 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
   }, [phase, enPause]);
 
   const commencer = useCallback(() => {
+    setReveleSujet(0);
     setPhase("encours");
     window.scrollTo({ top: 0 });
   }, []);
 
   const terminer = useCallback(() => {
     chronoFinal.current = secondes;
+    setReveleCorrige(0);
     setPhase("correction");
     window.scrollTo({ top: 0 });
   }, [secondes]);
@@ -188,9 +216,14 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
   }
 
   const enCorrection = phase === "correction";
+  const sujetComplet = reveleSujet >= nbExos;
+  const corrigeComplet = enCorrection && reveleCorrige >= nbExos;
 
   return (
-    <div>
+    <div
+      data-sujet-complet={sujetComplet ? "" : undefined}
+      data-corrige-complet={corrigeComplet ? "" : undefined}
+    >
       {/* Barre d’épreuve — sticky, discrète. Le chrono est un FAIT en mono,
           pas une alarme : jamais de rouge, jamais de compte à rebours. */}
       <div
@@ -284,6 +317,11 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
                   </span>
                 )}
               </header>
+              {i >= reveleSujet ? (
+                <p className="px-5 py-5 text-body-sm text-tertiary" aria-busy="true">
+                  Le sujet se prépare…
+                </p>
+              ) : (
               <div className="space-y-5 px-5 py-5">
                 {exo.intro && <MdBlock>{exo.intro}</MdBlock>}
                 {exo.questions.map((q) => {
@@ -301,7 +339,12 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
 
                       {/* ATTEMPT-FIRST ABSOLU : le raisonnement n’entre dans
                           le DOM qu’en phase correction — dom-truth l’asserte. */}
-                      {enCorrection && (
+                      {enCorrection && i >= reveleCorrige && (
+                        <p className="mt-3 text-body-sm text-tertiary" aria-busy="true">
+                          Le corrigé se prépare…
+                        </p>
+                      )}
+                      {enCorrection && i < reveleCorrige && (
                         <div className="mt-3 rounded-lg border border-subtle bg-surface-container-low p-4">
                           <p className="mb-2 text-caption font-medium uppercase tracking-eyebrow text-secondary">
                             Raisonnement expert
@@ -360,6 +403,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
                   </p>
                 )}
               </div>
+              )}
             </article>
           </li>
         ))}

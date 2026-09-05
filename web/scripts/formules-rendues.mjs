@@ -168,9 +168,9 @@ for (const route of routes) {
   const commencer = page.getByRole("button", { name: /Commencer l.épreuve/i });
   if (await commencer.count()) {
     await commencer.first().click();
-    await page.waitForSelector("[data-exam-exo]", { timeout: 10000 });
+    await page.waitForSelector("[data-sujet-complet]", { timeout: 60000 });
     const terminer = page.getByRole("button", { name: /Terminer l.épreuve/i });
-    if (await terminer.count()) { await terminer.first().click(); await page.waitForTimeout(400); }
+    if (await terminer.count()) { await terminer.first().click(); await page.waitForSelector("[data-corrige-complet]", { timeout: 60000 }); }
   }
   mesurees++;
   const r = await page.evaluate(() => {

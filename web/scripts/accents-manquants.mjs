@@ -141,7 +141,7 @@ for (const route of routes) {
   const commencer = page.getByRole("button", { name: /Commencer l.épreuve/i });
   if (await commencer.count()) {
     await commencer.first().click();
-    await page.waitForSelector("[data-exam-exo]", { timeout: 10000 });
+    await page.waitForSelector("[data-sujet-complet]", { timeout: 60000 });
     // ET LA CORRECTION. Le raisonnement expert — la partie du produit qui
     // prétend enseigner — n'entre dans le DOM qu'en phase « correction »
     // (attempt-first absolu, gardé par dom-truth). Sans ce second clic, la
@@ -149,7 +149,7 @@ for (const route of routes) {
     const terminer = page.getByRole("button", { name: /Terminer l.épreuve/i });
     if (await terminer.count()) {
       await terminer.first().click();
-      await page.waitForTimeout(400);
+      await page.waitForSelector("[data-corrige-complet]", { timeout: 60000 });
     }
   }
   mesurees++;
