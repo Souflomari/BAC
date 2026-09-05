@@ -1446,97 +1446,786 @@ items:
 # r-variation do NOT alter these counts (same convention as rlc-serie /
 # rc-charge: they are formative surfaces, not end-bank items).
 # ──────────────────────────────────────────────────────────────────────────────
+
+  # ════════════════════════════════════════════════════════════════════════════
+  # BACKFILL PLANCHER (2026-09-05) — AMN-19 … AMN-30.
+  # 18 des 19 modèles déclarés restaient sous le plancher de 3 items : la banque
+  # d'origine tageait souvent les TROIS distracteurs d'un item avec le même
+  # identifiant, ce qui donne un item, pas trois. Ces items visent le déficit
+  # mesuré (docs/audits/couverture-diagnostique.md) en diversifiant les tags.
+  # Aucune erreur nouvelle n'est déclarée.
+  # ════════════════════════════════════════════════════════════════════════════
+
+  - id: AMN-19
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_atome_mecanique_newton
+    tags: [force_coulomb, signe_des_charges, attractive_repulsive, plancher]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.coulomb-toujours-attractive-comme-gravitation
+    stem: >
+      Dans l'atome d'hydrogène, la force de Coulomb exercée par le noyau sur
+      l'électron est attractive. Qu'est-ce qui, précisément, rend cette force
+      attractive plutôt que répulsive ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les deux charges sont de signes contraires : le noyau est positif, l'électron négatif."
+        correct: true
+      - id: B
+        text: "La force de Coulomb est attractive par nature, comme la force gravitationnelle."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.coulomb-toujours-attractive-comme-gravitation
+        feedback: >
+          C'est justement ce qui distingue les deux interactions. La gravitation
+          n'a qu'un sens possible, parce que les masses sont toutes positives.
+          La force de Coulomb, elle, dépend du SIGNE des charges : elle est
+          attractive entre charges opposées et répulsive entre charges de même
+          signe. Deux électrons se repoussent.
+      - id: C
+        text: "L'électron est très proche du noyau, et une force devient attractive à courte distance."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.distance-confondue-avec-signe-charge
+        feedback: >
+          La distance fixe l'INTENSITÉ de la force, pas son sens : dans
+          $F=k\dfrac{|q_1q_2|}{r^2}$, $r$ n'apparaît qu'au dénominateur. Deux
+          charges de même signe très proches se repoussent violemment — elles
+          ne s'attirent pas parce qu'elles sont proches.
+      - id: D
+        text: "C'est l'interaction nucléaire forte qui retient l'électron, et elle est toujours attractive."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.force-electrostatique-mal-identifiee
+        feedback: >
+          L'interaction forte agit entre les constituants du NOYAU (protons et
+          neutrons) et sa portée ne dépasse pas la taille du noyau, environ
+          $10^{-15}$ m. L'électron gravite mille fois plus loin, à $10^{-10}$ m :
+          seule la force électrostatique l'atteint.
+    correct_feedback: >
+      Le sens de la force de Coulomb est fixé par le produit des signes des
+      charges : noyau positif et électron négatif donnent une force attractive.
+      La distance n'intervient que dans l'intensité.
+    solution: |
+      **La loi de Coulomb, dans son écriture vectorielle, porte le signe :**
+      $$F = k\,\frac{|q_1 q_2|}{r^2}$$
+      pour l'intensité, et le SENS est donné par le produit $q_1q_2$ :
+
+      - $q_1q_2 < 0$ (charges opposées) → force **attractive** ;
+      - $q_1q_2 > 0$ (charges de même signe) → force **répulsive**.
+
+      Dans l'atome d'hydrogène, $q_{\text{noyau}}=+e$ et $q_{\text{électron}}=-e$
+      : le produit est négatif, la force est attractive.
+
+  - id: AMN-20
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_atome_mecanique_newton
+    tags: [force_coulomb, signe_des_charges, attractive_repulsive, plancher]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.coulomb-toujours-attractive-comme-gravitation
+    stem: >
+      On considère deux électrons distants de $r$. Que peut-on dire des forces
+      qu'ils exercent l'un sur l'autre ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elles sont répulsives, à toute distance : les deux charges sont de même signe, donc leur produit est positif."
+        correct: true
+      - id: B
+        text: "Elles sont attractives : la force de Coulomb rapproche les particules, comme la gravitation."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.coulomb-toujours-attractive-comme-gravitation
+        feedback: >
+          Calquer Coulomb sur la gravitation revient à supprimer ce qui fait sa
+          spécificité : le signe. Deux masses s'attirent toujours ; deux charges
+          de MÊME signe se repoussent. C'est d'ailleurs cette répulsion qui
+          empêche les électrons d'un atome de se rassembler.
+      - id: C
+        text: "Elles sont attractives si les électrons sont assez proches, répulsives au-delà d'une certaine distance."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.distance-confondue-avec-signe-charge
+        feedback: >
+          Aucun seuil de distance ne fait changer le sens de la force de
+          Coulomb. La distance n'agit que sur l'intensité, en $1/r^2$ : deux
+          électrons se repoussent à toute distance, faiblement quand ils sont
+          loin, très fortement quand ils sont proches.
+      - id: D
+        text: "La loi de Coulomb ne s'applique pas ici : à cette échelle, la mécanique classique ne décrit plus rien."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.mecanique-jugee-inapplicable-aux-charges
+        feedback: >
+          La loi de Coulomb s'applique parfaitement à deux particules chargées,
+          quelle que soit leur taille — c'est même sur elle que repose tout le
+          modèle du chapitre 2. Ce qui atteint sa limite plus loin dans la leçon
+          (chapitre 4), c'est la description du MOUVEMENT par la mécanique de
+          Newton, pas la loi d'interaction.
+    correct_feedback: >
+      Deux électrons portent la même charge $-e$ : le produit $q_1q_2$ est
+      positif, la force est répulsive, à toute distance.
+    solution: |
+      **Signe du produit des charges.**
+      $$q_1q_2 = (-e)\times(-e) = +e^2 > 0$$
+      Un produit positif signe une force **répulsive**.
+
+      **Intensité.**
+      $$F = k\,\frac{e^2}{r^2}$$
+      Elle décroît quand $r$ augmente, mais son SENS ne change jamais.
+
+  - id: AMN-21
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_atome_mecanique_newton
+    tags: [force_coulomb, force_gravitationnelle, comparaison, plancher]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.rapport-forces-dependrait-de-r
+    stem: >
+      Dans l'atome d'hydrogène, on compare l'intensité de la force de Coulomb
+      $F_C$ et celle de la force gravitationnelle $F_G$ entre le proton et
+      l'électron. Comment le rapport $F_C/F_G$ varie-t-il quand le rayon $r$ de
+      l'orbite change ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il ne change pas : les deux forces varient en $1/r^2$, donc $r$ disparaît du rapport."
+        correct: true
+      - id: B
+        text: "Il augmente quand $r$ diminue, la force de Coulomb croissant plus vite que la gravitation."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.rapport-forces-dependrait-de-r
+        feedback: >
+          Les deux forces ont exactement la même dépendance en $1/r^2$ : aucune
+          ne « croît plus vite » que l'autre. En formant le rapport, les deux
+          $r^2$ se simplifient, et il ne reste que des constantes —
+          $\dfrac{F_C}{F_G}=\dfrac{k e^2}{G\,m_p m_e}$, un nombre fixe de
+          l'ordre de $10^{39}$.
+      - id: C
+        text: "Il diminue quand $r$ augmente, car la gravitation devient dominante à grande distance."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.rapport-forces-dependrait-de-r
+        feedback: >
+          La gravitation ne rattrape jamais son retard ici, quelle que soit la
+          distance : les deux forces décroissent au même rythme. L'idée que la
+          gravitation « domine à grande distance » vaut à l'échelle
+          astronomique, où les corps sont électriquement neutres — donc où
+          $F_C$ est nulle, pas plus petite.
+      - id: D
+        text: "La question n'a pas de sens : la mécanique de Newton et la gravitation ne s'appliquent pas à une particule chargée."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.mecanique-jugee-inapplicable-aux-charges
+        feedback: >
+          Les deux lois s'écrivent parfaitement pour un électron : c'est même
+          en les comparant qu'on établit un résultat central du chapitre 2 — la
+          gravitation est totalement négligeable dans l'atome. Renoncer à
+          calculer priverait de cette conclusion.
+    correct_feedback: >
+      $\dfrac{F_C}{F_G}=\dfrac{k e^2/r^2}{G m_p m_e/r^2}=\dfrac{k e^2}{G m_p m_e}$
+      : les $r^2$ se simplifient, le rapport est une constante voisine de
+      $2\times 10^{39}$.
+    solution: |
+      **Écrire les deux forces.**
+      $$F_C = k\,\frac{e^2}{r^2}\qquad F_G = G\,\frac{m_p m_e}{r^2}$$
+
+      **Former le rapport.**
+      $$\frac{F_C}{F_G}=\frac{k e^2/r^2}{G m_p m_e/r^2}
+      =\frac{k\,e^2}{G\,m_p m_e}$$
+      Le rayon disparaît : le rapport ne dépend ni de $r$, ni de l'orbite
+      considérée.
+
+      **Ordre de grandeur.** Environ $2\times 10^{39}$ : la gravitation est
+      négligeable dans l'atome, et elle l'est autant à toute distance.
+
+  - id: AMN-22
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_atome_mecanique_newton
+    tags: [mouvement_circulaire_uniforme, acceleration_centripete, plancher]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.mcu-implique-acceleration-nulle
+    stem: >
+      L'électron décrit un mouvement circulaire uniforme autour du noyau.
+      Que peut-on dire de son vecteur accélération ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il est non nul et dirigé vers le centre du cercle, sans composante tangentielle."
+        correct: true
+      - id: B
+        text: "Il est nul, puisque la norme de la vitesse ne varie pas au cours du mouvement."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.mcu-implique-acceleration-nulle
+        feedback: >
+          L'accélération mesure la variation du VECTEUR vitesse, pas seulement
+          de sa norme. Ici la direction du vecteur vitesse change à chaque
+          instant, puisque l'électron tourne : le vecteur vitesse n'est donc pas
+          constant, et l'accélération n'est pas nulle. Si elle l'était, la
+          deuxième loi de Newton imposerait une force nulle — et l'électron
+          filerait tout droit.
+      - id: C
+        text: "Il est tangent à la trajectoire, dans le sens du mouvement."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.confond-composante-tangentielle-et-normale
+        feedback: >
+          La composante tangentielle de l'accélération traduit la variation de
+          la NORME de la vitesse. Ici le mouvement est uniforme : cette norme ne
+          varie pas, donc la composante tangentielle est nulle. Ce qui reste est
+          la composante normale, dirigée vers le centre.
+      - id: D
+        text: "Sa direction pointe vers le centre, mais sa norme varie au cours d'un tour."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.norme-acceleration-mcu-non-constante
+        feedback: >
+          La direction est bonne, la norme non. Dans un mouvement circulaire
+          uniforme, $a_N=\dfrac{v^2}{r}$ : $v$ et $r$ sont tous deux constants,
+          donc $a_N$ l'est aussi. Ce qui change au cours d'un tour est la
+          DIRECTION du vecteur accélération, qui suit le rayon.
+    correct_feedback: >
+      En mouvement circulaire uniforme, la composante tangentielle est nulle
+      (norme de $v$ constante) et la composante normale vaut $a_N=v^2/r$,
+      dirigée vers le centre.
+    solution: |
+      **Deux composantes, une seule survit.**
+
+      - **Tangentielle** — elle mesure la variation de $\|\vec v\|$. Le
+        mouvement est *uniforme* : cette composante est nulle.
+      - **Normale** — elle mesure le changement de DIRECTION de $\vec v$. Le
+        mouvement est *circulaire* : elle est non nulle, dirigée vers le
+        centre, de norme
+        $$a_N=\frac{v^2}{r}$$
+
+      **Conséquence.** $\vec a$ est centripète et de norme constante. C'est
+      elle que la deuxième loi de Newton relie à la force de Coulomb.
+
+  - id: AMN-23
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_atome_mecanique_newton
+    tags: [mouvement_circulaire_uniforme, acceleration_centripete, plancher]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.norme-acceleration-mcu-non-constante
+    stem: >
+      Toujours en mouvement circulaire uniforme de rayon $r$ et de vitesse $v$ :
+      que devient la NORME de l'accélération de l'électron au cours d'un tour
+      complet ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle reste constante et vaut $v^2/r$, seule sa direction tourne avec l'électron."
+        correct: true
+      - id: B
+        text: "Elle passe par un maximum puis un minimum, comme la vitesse le long d'une orbite."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.norme-acceleration-mcu-non-constante
+        feedback: >
+          Ce serait le cas sur une orbite elliptique, où la distance au centre
+          varie. Ici l'orbite est circulaire et le mouvement uniforme : $r$ et
+          $v$ sont l'un et l'autre constants, donc $v^2/r$ aussi. Seule
+          l'orientation du vecteur change.
+      - id: C
+        text: "Elle est nulle en permanence, l'électron parcourant le cercle à vitesse constante."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.mcu-implique-acceleration-nulle
+        feedback: >
+          « Vitesse constante » ne vise ici que la norme. Le vecteur vitesse,
+          lui, change sans cesse de direction, et c'est cette variation que
+          l'accélération mesure. Une accélération nulle signifierait une
+          trajectoire rectiligne.
+      - id: D
+        text: "Elle croît régulièrement, l'accélération tangentielle s'ajoutant à chaque instant à la précédente."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.confond-composante-tangentielle-et-normale
+        feedback: >
+          Il n'y a pas de composante tangentielle dans un mouvement uniforme :
+          elle traduirait une variation de la norme de la vitesse, exclue par
+          l'énoncé. Et les accélérations ne « s'additionnent » pas au fil du
+          temps — l'accélération est une grandeur instantanée, pas un cumul.
+    correct_feedback: >
+      $a_N=\dfrac{v^2}{r}$ avec $v$ et $r$ constants : la norme de
+      l'accélération est constante ; seule sa direction, toujours centripète,
+      tourne avec l'électron.
+    solution: |
+      **La formule le dit directement.**
+      $$a = a_N = \frac{v^2}{r}$$
+      Dans un mouvement circulaire *uniforme*, $v$ est constante par
+      définition et $r$ l'est parce que l'orbite est un cercle. Le quotient est
+      donc constant.
+
+      **Ce qui varie malgré tout.** La DIRECTION de $\vec a$ : elle pointe à
+      chaque instant vers le centre, donc elle tourne d'un tour complet pendant
+      que l'électron en fait un.
+
+  - id: AMN-24
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_atome_mecanique_newton
+    tags: [vitesse_orbitale, dependance_en_r, deuxieme_loi_newton, plancher]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.vitesse-orbitale-dependance-r-mal-comprise
+    stem: >
+      Deux orbites circulaires sont envisagées pour l'électron de l'atome
+      d'hydrogène, l'une de rayon $r$, l'autre de rayon $4r$. Quel est le
+      rapport entre les vitesses correspondantes ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle en vaut le quart : $v$ est inversement proportionnelle à $r$, donc quadrupler $r$ divise $v$ par $4$."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.vitesse-orbitale-dependance-r-mal-comprise
+        feedback: >
+          Le sens de variation est bon, le facteur non : $r$ est sous une
+          RACINE au dénominateur. La dépendance est en $1/\sqrt{r}$, pas en
+          $1/r$ — quadrupler $r$ divise donc $v$ par $\sqrt4=2$, et non par 4.
+          Le repère à garder : une racine amortit toujours l'effet.
+      - id: B
+        text: "Elle en vaut la moitié : $v$ varie comme $1/\\sqrt{r}$, donc quadrupler $r$ divise $v$ par $2$."
+        correct: true
+      - id: C
+        text: "Elle est quatre fois plus grande : une orbite plus large impose de parcourir plus de chemin à chaque tour."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.vitesse-orbitale-dependance-r-mal-comprise
+        feedback: >
+          Le raisonnement confond la distance parcourue et la vitesse. La
+          formule $v=\sqrt{\dfrac{k e^2}{m_e r}}$ place $r$ au DÉNOMINATEUR :
+          augmenter $r$ diminue $v$. Une orbite plus large est parcourue plus
+          lentement — et la période, elle, augmente doublement.
+      - id: D
+        text: "Elle est identique, à condition d'adapter le facteur $Z$ de la formule à la nouvelle orbite."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.formule-orbite-non-adaptee-Z
+        feedback: >
+          $Z$ est le numéro atomique : il caractérise le NOYAU, pas l'orbite.
+          Changer de rayon ne change pas $Z$ — c'est passer de l'hydrogène à
+          un autre édifice qui le changerait. Ici $Z=1$ dans les deux cas, et
+          seule la dépendance en $r$ agit.
+    correct_feedback: >
+      $v=\sqrt{\dfrac{k e^2}{m_e r}}$ donne $v\propto\dfrac{1}{\sqrt{r}}$ :
+      multiplier $r$ par $4$ divise $v$ par $\sqrt4=2$.
+    solution: |
+      **La relation établie au chapitre 3 :**
+      $$v=\sqrt{\frac{k\,e^2}{m_e\,r}}$$
+
+      **Lire la dépendance.** Tout ce qui précède $r$ est constant, donc
+      $$v \propto \frac{1}{\sqrt{r}}$$
+
+      **Appliquer.** En remplaçant $r$ par $4r$ :
+      $$v' = \sqrt{\frac{k e^2}{m_e\,(4r)}} = \frac{1}{2}\sqrt{\frac{k e^2}{m_e r}}
+      = \frac{v}{2}$$
+
+
+  - id: AMN-25
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_atome_mecanique_newton
+    tags: [vitesse_orbitale, generalisation_Z, application_bac, plancher]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.formule-orbite-non-adaptee-Z
+    stem: >
+      On applique le modèle planétaire à l'ion $\mathrm{He}^{+}$ (un seul
+      électron, noyau de charge $+2e$), sur une orbite de même rayon $r$ que
+      dans l'atome d'hydrogène. Que devient la vitesse orbitale ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est multipliée par $\\sqrt{2}$, la charge du noyau passant de $e$ à $2e$ dans l'expression de la force."
+        correct: true
+      - id: B
+        text: "Elle est inchangée : la formule $v=\\sqrt{k e^2/(m_e r)}$ vaut pour tout atome à un électron."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.formule-orbite-non-adaptee-Z
+        feedback: >
+          Cette formule a été établie POUR l'hydrogène, où le noyau porte $+e$.
+          Avec un noyau de charge $+Ze$, la force de Coulomb devient
+          $k\dfrac{Z e^2}{r^2}$ et l'expression de $v$ suit :
+          $v=\sqrt{\dfrac{k Z e^2}{m_e r}}$. Reprendre une formule sans revenir
+          à l'étape où la charge intervient est le piège classique de cette
+          généralisation.
+      - id: C
+        text: "Elle est multipliée par $2$, puisque la charge du noyau est doublée."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.formule-orbite-non-adaptee-Z
+        feedback: >
+          Le facteur $Z$ entre bien dans la formule, mais SOUS la racine :
+          $v=\sqrt{\dfrac{k Z e^2}{m_e r}}$. Doubler $Z$ multiplie donc $v$ par
+          $\sqrt{2}\approx 1{,}41$, pas par $2$.
+      - id: D
+        text: "Elle est divisée par $\\sqrt{2}$ : un noyau plus chargé retient l'électron, qui tourne donc plus lentement."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.vitesse-orbitale-dependance-r-mal-comprise
+        feedback: >
+          L'intuition « mieux retenu, donc plus lent » ne résiste pas au calcul.
+          Une force centripète plus intense, à rayon imposé, exige une
+          accélération $v^2/r$ plus grande, donc une vitesse plus grande. C'est
+          le même phénomène qu'en orbite : plus près d'un astre massif, on va
+          plus vite, pas moins.
+    correct_feedback: >
+      Avec un noyau $+Ze$, la deuxième loi de Newton donne
+      $k\dfrac{Z e^2}{r^2}=m_e\dfrac{v^2}{r}$, soit
+      $v=\sqrt{\dfrac{k Z e^2}{m_e r}}$. Pour $Z=2$ et $r$ inchangé, $v$ est
+      multipliée par $\sqrt2$.
+    solution: |
+      **Reprendre le raisonnement à l'étape où la charge intervient.**
+      $$F_C = k\,\frac{(Ze)\times e}{r^2} = k\,\frac{Z e^2}{r^2}$$
+
+      **Deuxième loi de Newton, projetée sur la normale :**
+      $$k\,\frac{Z e^2}{r^2} = m_e\,\frac{v^2}{r}
+      \;\Longrightarrow\; v=\sqrt{\frac{k\,Z\,e^2}{m_e\,r}}$$
+
+      **Appliquer $Z=2$ à rayon égal :**
+      $$\frac{v_{\mathrm{He}^+}}{v_{\mathrm H}}=\sqrt{\frac{2}{1}}=\sqrt2
+      \approx 1{,}41$$
+
+  - id: AMN-26
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_atome_mecanique_newton
+    tags: [limites_mecanique_newton, rayonnement, paradoxe, plancher]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie
+    stem: >
+      Le modèle planétaire prédit que l'électron devrait s'effondrer sur le
+      noyau en une fraction de seconde. Quel élément, absent du calcul
+      mécanique, produit cette prédiction d'effondrement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Une charge accélérée rayonne de l'énergie électromagnétique, donc l'électron en perd continûment."
+        correct: true
+      - id: B
+        text: "La force de Coulomb s'affaiblit avec le temps, ce qui laisse l'électron dériver vers le noyau."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.confond-cause-et-consequence-effondrement
+        feedback: >
+          La loi de Coulomb ne dépend pas du temps : $F=k\,e^2/r^2$ ne fait
+          intervenir que la distance. Et le sens de l'effet est inversé — en se
+          rapprochant, l'électron subirait une force PLUS intense, pas moins.
+          La perte d'énergie est la cause, le rapprochement la conséquence.
+      - id: C
+        text: "Le calcul du chapitre 3 comportait une erreur, que le rayonnement vient corriger."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.calcul-incomplet-confondu-avec-calcul-faux
+        feedback: >
+          Le calcul est exact : à partir de ses hypothèses, il donne la bonne
+          vitesse et la bonne période. Ce qui lui manque est un INGRÉDIENT
+          physique, pas une correction algébrique. Un calcul juste appliqué à un
+          modèle incomplet reste juste — et sa conclusion fausse signale
+          l'incomplétude, pas une faute.
+      - id: D
+        text: "C'est l'attraction gravitationnelle du noyau, négligée dans le calcul, qui finit par faire tomber l'électron."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie
+        feedback: >
+          L'ingrédient manquant est mal identifié. La gravitation a bien été
+          négligée — mais à raison : le chapitre 2 a montré qu'elle est
+          $10^{39}$ fois plus faible que la force de Coulomb. La réintroduire ne
+          changerait rien. Ce que le calcul ignore vraiment, c'est le
+          RAYONNEMENT d'une charge accélérée.
+    correct_feedback: >
+      L'électromagnétisme ajoute une loi que la mécanique seule ignore : toute
+      charge accélérée rayonne. L'électron, accéléré en permanence par la force
+      centripète, perdrait son énergie et spiralerait vers le noyau.
+    solution: |
+      **Ce que le calcul mécanique établit** (chapitre 3) : une orbite stable
+      est possible, avec $v$ et $T$ parfaitement déterminés. Rien, dans ce
+      calcul, ne fait perdre d'énergie à l'électron.
+
+      **Ce que l'électromagnétisme ajoute :** une charge dont le vecteur
+      vitesse varie — donc accélérée — rayonne de l'énergie. Or l'électron est
+      accéléré en permanence : son accélération centripète $v^2/r$ n'est jamais
+      nulle.
+
+      **Conséquence.** Il perd de l'énergie en continu, son rayon diminue, et
+      le modèle prédit un effondrement en $\sim 10^{-11}$ s. Le désaccord avec
+      la stabilité observée des atomes est ce qui condamne le modèle.
+
+  - id: AMN-27
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_atome_mecanique_newton
+    tags: [limites_mecanique_newton, calcul_correct_vs_incomplet, plancher]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.calcul-incomplet-confondu-avec-calcul-faux
+    stem: >
+      La réalité contredit la prédiction du modèle planétaire : les atomes sont
+      stables. Que faut-il en conclure sur le calcul mené au chapitre 3 ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il est exact mais bâti sur un modèle incomplet : c'est le modèle qu'il faut changer, pas l'algèbre."
+        correct: true
+      - id: B
+        text: "Il contient une erreur : une conclusion démentie par l'expérience ne peut venir que d'un calcul faux."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.calcul-incomplet-confondu-avec-calcul-faux
+        feedback: >
+          Un calcul est juste ou faux par rapport à ses HYPOTHÈSES, pas par
+          rapport au monde. Celui-ci est irréprochable : reprends-le, tu
+          retrouveras $v$ et $T$. Ce que l'expérience réfute, ce sont les
+          hypothèses de départ — et c'est une information bien plus précieuse
+          qu'une faute de signe.
+      - id: C
+        text: "Il est exact et suffit à décrire l'atome : la stabilité observée découle directement de l'orbite qu'il établit."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.calcul-mecanique-suffit-a-expliquer-stabilite
+        feedback: >
+          Le calcul décrit une orbite possible, il ne dit rien de sa STABILITÉ
+          dans le temps. Dès qu'on ajoute la loi du rayonnement, cette même
+          orbite se révèle transitoire. Expliquer la stabilité réelle demande
+          un ingrédient que la mécanique de Newton ne contient pas.
+      - id: D
+        text: "Il est faux parce qu'il ignore le rayonnement : une équation qui oublie un phénomène est une équation erronée."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie
+        feedback: >
+          L'ingrédient manquant est bien identifié, mais le mot « faux » est mal
+          employé. Toute modélisation ignore quelque chose ; cela ne rend pas
+          ses équations erronées, cela borne leur domaine de validité. Ici la
+          leçon est précise : la mécanique de Newton cesse d'être suffisante à
+          l'échelle de l'atome.
+    correct_feedback: >
+      Le calcul est exact au regard de ses hypothèses. Ce que l'expérience
+      réfute, ce sont ces hypothèses — un modèle purement mécanique, sans
+      rayonnement ni quantification.
+    solution: |
+      **Distinguer deux choses que l'on confond souvent :**
+
+      - **Un calcul faux** — une erreur d'algèbre, corrigeable en reprenant les
+        lignes.
+      - **Un modèle incomplet** — un calcul juste, mené sur des hypothèses qui
+        laissent de côté un phénomène réel.
+
+      Ici, le calcul du chapitre 3 est exact ; il lui manque la loi du
+      rayonnement d'une charge accélérée, puis la quantification de l'énergie
+      (chapitre 5). Ce n'est pas l'algèbre qu'il faut réparer, c'est le cadre
+      physique qu'il faut élargir.
+
+  - id: AMN-28
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_atome_mecanique_newton
+    tags: [limites_mecanique_newton, paradoxe, plancher]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.trajectoire-elliptique-supposee-necessaire
+    stem: >
+      Un élève propose de sauver le modèle planétaire en remplaçant l'orbite
+      circulaire par une orbite elliptique, comme celle des planètes. Cette
+      modification résout-elle le problème de l'effondrement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : sur une ellipse aussi l'électron est accéléré, donc il rayonne et perd de l'énergie."
+        correct: true
+      - id: B
+        text: "Oui : l'ellipse est la trajectoire correcte, et le cercle n'était qu'une approximation abusive."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.trajectoire-elliptique-supposee-necessaire
+        feedback: >
+          Le cercle n'est pas l'origine du problème : il simplifie le calcul
+          sans rien fausser d'essentiel. Ce qui condamne le modèle est le
+          rayonnement d'une charge accélérée, et une charge sur une ellipse est
+          accélérée elle aussi — davantage même, près du noyau.
+      - id: C
+        text: "Oui : sur une ellipse, la force de Coulomb varie et finit par cesser d'attirer l'électron."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.confond-cause-et-consequence-effondrement
+        feedback: >
+          La force de Coulomb varie bien le long d'une ellipse, puisque $r$
+          varie — mais elle reste attractive en tout point, et elle ne « cesse »
+          jamais. L'effondrement ne vient pas d'une force qui s'éteint, il vient
+          d'une énergie qui fuit par rayonnement.
+      - id: D
+        text: "Oui : une orbite elliptique possède un rayon minimal, et c'est lui qui arrête l'effondrement."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.mecanisme-arret-effondrement-mal-compris
+        feedback: >
+          Le périhélie d'une ellipse n'est pas une barrière : il n'empêche pas
+          l'orbite de rétrécir à mesure que l'énergie se perd. Ce qui arrête
+          réellement l'effondrement, c'est l'existence d'un niveau d'énergie
+          MINIMAL, en dessous duquel l'atome ne peut pas descendre — une idée
+          quantique, étrangère à la mécanique de Newton.
+    correct_feedback: >
+      Changer la forme de l'orbite ne change rien : toute charge accélérée
+      rayonne. Le problème n'est pas géométrique, il est physique.
+    solution: |
+      **Pourquoi le cercle n'est pas en cause.** L'hypothèse circulaire sert à
+      simplifier le calcul de $v$ et de $T$. Elle n'intervient nulle part dans
+      l'argument qui condamne le modèle.
+
+      **L'argument, rappelé.** Une charge accélérée rayonne. Sur un cercle,
+      l'accélération vaut $v^2/r$ ; sur une ellipse elle varie, mais elle n'est
+      jamais nulle — elle est même plus grande au plus près du noyau.
+
+      **Conclusion.** L'électron perd de l'énergie dans les deux cas. Sauver le
+      modèle demande une idée neuve, pas une autre courbe.
+
+  - id: AMN-29
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_atome_mecanique_newton
+    tags: [quantification_energie, niveaux_discrets, stabilite_atome, plancher]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.energie-atome-continue-non-quantifiee
+    stem: >
+      Dans le modèle quantifié, qu'est-ce qui empêche l'électron de perdre son
+      énergie de façon continue et de tomber sur le noyau ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'énergie de l'atome ne prend que des valeurs discrètes, et il en existe une plus basse que toutes les autres."
+        correct: true
+      - id: B
+        text: "L'énergie décroît toujours continûment, mais si lentement que l'effondrement dépasse l'âge de l'Univers."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.energie-atome-continue-non-quantifiee
+        feedback: >
+          C'est le modèle continu, simplement ralenti — et le calcul le dément :
+          la mécanique classique prédit un effondrement en environ
+          $10^{-11}$ seconde, pas en milliards d'années. Le remède n'est pas de
+          ralentir la chute, c'est d'interdire les états intermédiaires.
+      - id: C
+        text: "Une force répulsive apparaît à très courte distance et repousse l'électron avant le contact."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.mecanisme-arret-effondrement-mal-compris
+        feedback: >
+          Aucune force de ce genre n'est invoquée dans le modèle du programme, et
+          la force de Coulomb reste attractive à toute distance. Ce qui arrête
+          la descente n'est pas une force mais une INTERDICTION : il n'existe
+          aucun état d'énergie inférieur au niveau fondamental.
+      - id: D
+        text: "L'électron adopte une orbite elliptique dont le foyer évite le noyau, ce qui rend le contact impossible."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.trajectoire-elliptique-supposee-necessaire
+        feedback: >
+          La solution n'est pas géométrique. Le modèle quantifié ne cherche pas
+          une trajectoire mieux choisie : il abandonne l'idée même de
+          trajectoire précise, et il remplace le continuum d'énergies par une
+          suite de niveaux, dont le plus bas fixe le plancher.
+    correct_feedback: >
+      L'énergie de l'atome est quantifiée : elle ne peut prendre que certaines
+      valeurs. Le niveau fondamental est le plus bas d'entre elles — l'atome ne
+      peut pas descendre plus bas, donc il est stable.
+    solution: |
+      **Le changement de cadre (chapitre 5).** L'énergie de l'atome n'est plus
+      une grandeur continue : elle appartient à un ensemble DISCRET de valeurs
+      $E_1 < E_2 < E_3 < \dots$
+
+      **Ce que cela interdit.** Perdre de l'énergie « un peu, puis encore un
+      peu » suppose des valeurs intermédiaires. Elles n'existent pas : l'atome
+      ne peut que sauter d'un niveau à un autre.
+
+      **Le plancher.** $E_1$, le niveau fondamental, n'a rien en dessous de
+      lui. Un atome qui l'occupe ne peut plus rien céder : il est stable, et
+      c'est ce que l'observation confirme.
+
+  - id: AMN-30
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_atome_mecanique_newton
+    tags: [relation_planck, delta_E_h_nu, application_numerique, plancher]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.relation-planck-mal-manipulee
+    stem: >
+      Un atome passe d'un niveau d'énergie à un autre en émettant un photon
+      d'énergie $\Delta E = 3{,}0\times 10^{-19}$ J. Quelle est la fréquence de
+      ce photon ? (On prend $h = 6{,}63\times 10^{-34}$ J·s.)
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\nu \\approx 4{,}5\\times 10^{14}$ Hz"
+        correct: true
+      - id: B
+        text: "$\\nu \\approx 2{,}0\\times 10^{-52}$ Hz"
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.relation-planck-mal-manipulee
+        feedback: >
+          La relation $\Delta E = h\nu$ a été utilisée comme un produit :
+          $\nu = \Delta E \times h$. Isoler $\nu$ demande de DIVISER par $h$,
+          pas de multiplier. Le contrôle d'ordre de grandeur suffit d'ailleurs à
+          écarter la réponse : une fréquence de $10^{-52}$ Hz correspondrait à
+          une période plus longue que l'âge de l'Univers.
+      - id: C
+        text: "$\\nu \\approx 2{,}2\\times 10^{-15}$ Hz"
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.relation-planck-mal-manipulee
+        feedback: >
+          Le quotient a été formé à l'envers : $h/\Delta E$ au lieu de
+          $\Delta E/h$. Regarde les unités, elles tranchent — $\dfrac{\text{J}}
+          {\text{J·s}}=\text{s}^{-1}$, c'est bien une fréquence ; l'autre sens
+          donnerait des secondes.
+      - id: D
+        text: "Toute fréquence est possible : l'énergie de l'atome varie continûment, donc le photon peut emporter n'importe quelle quantité."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.energie-atome-continue-non-quantifiee
+        feedback: >
+          C'est précisément ce que la quantification interdit. L'atome ne peut
+          sauter qu'entre deux niveaux permis : l'écart $\Delta E$ est imposé,
+          donc la fréquence émise l'est aussi. C'est pour cela que le spectre
+          d'un atome est fait de raies fines et non d'un continuum.
+    correct_feedback: >
+      $\nu=\dfrac{\Delta E}{h}=\dfrac{3{,}0\times 10^{-19}}{6{,}63\times
+      10^{-34}}\approx 4{,}5\times 10^{14}$ Hz.
+    solution: |
+      **La relation de Planck.**
+      $$\Delta E = h\,\nu \;\Longrightarrow\; \nu = \frac{\Delta E}{h}$$
+
+      **Application numérique.**
+      $$\nu = \frac{3{,}0\times 10^{-19}}{6{,}63\times 10^{-34}}
+      \approx 4{,}5\times 10^{14}\ \text{Hz}$$
+
+      **Contrôle.** Cette fréquence correspond à une longueur d'onde
+      $\lambda = c/\nu \approx 6{,}6\times 10^{-7}$ m, soit $660$ nm : de la
+      lumière rouge, parfaitement plausible pour une transition atomique.
+
+
 coverage_summary:
-  method: "item-level, by primary_misconception (one item = one count)"
-  total_items: 18
+  method: "item-level, ANY distractor (un item = un compte, quel que soit le nombre de distracteurs qui portent le modèle)"
+  # CONVENTION CHANGÉE le 2026-09-05. La version précédente comptait par
+  # primary_misconception, alors que l'instrument de couverture
+  # (web/scripts/couverture-diagnostique.mjs) — celui qui garde le plancher en
+  # CI — compte tout distracteur tagué. Deux conventions donnaient deux
+  # chiffres pour la même banque ; on retient celle de la porte.
+  total_items: 30
   per_misconception:
+    mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative: 6
+    mc.physics.pc_atome_mecanique_newton.calcul-incomplet-confondu-avec-calcul-faux: 4
+    mc.physics.pc_atome_mecanique_newton.mcu-implique-acceleration-nulle: 4
+    mc.physics.pc_atome_mecanique_newton.mecanique-jugee-inapplicable-aux-charges: 4
+    mc.physics.pc_atome_mecanique_newton.calcul-mecanique-suffit-a-expliquer-stabilite: 3
+    mc.physics.pc_atome_mecanique_newton.confond-cause-et-consequence-effondrement: 3
+    mc.physics.pc_atome_mecanique_newton.confond-composante-tangentielle-et-normale: 3
+    mc.physics.pc_atome_mecanique_newton.coulomb-toujours-attractive-comme-gravitation: 3
+    mc.physics.pc_atome_mecanique_newton.distance-confondue-avec-signe-charge: 3
+    mc.physics.pc_atome_mecanique_newton.energie-atome-continue-non-quantifiee: 3
+    mc.physics.pc_atome_mecanique_newton.force-electrostatique-mal-identifiee: 3
+    mc.physics.pc_atome_mecanique_newton.formule-orbite-non-adaptee-Z: 3
+    mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie: 3
+    mc.physics.pc_atome_mecanique_newton.mecanisme-arret-effondrement-mal-compris: 3
+    mc.physics.pc_atome_mecanique_newton.norme-acceleration-mcu-non-constante: 3
+    mc.physics.pc_atome_mecanique_newton.rapport-forces-dependrait-de-r: 3
+    mc.physics.pc_atome_mecanique_newton.relation-planck-mal-manipulee: 3
+    mc.physics.pc_atome_mecanique_newton.trajectoire-elliptique-supposee-necessaire: 3
+    mc.physics.pc_atome_mecanique_newton.vitesse-orbitale-dependance-r-mal-comprise: 3
+  per_misconception_primary:
     mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative: 4
-    # AMN-1, AMN-2, AMN-7, AMN-17
-    mc.physics.pc_atome_mecanique_newton.force-electrostatique-mal-identifiee: 0
-    # distractor-only: AMN-1.C, AMN-1.D, AMN-7.C, AMN-7.D
-    mc.physics.pc_atome_mecanique_newton.coulomb-toujours-attractive-comme-gravitation: 1
-    # AMN-10
-    mc.physics.pc_atome_mecanique_newton.distance-confondue-avec-signe-charge: 0
-    # distractor-only: AMN-10.C
-    mc.physics.pc_atome_mecanique_newton.mcu-implique-acceleration-nulle: 2
-    # AMN-3, AMN-4
-    mc.physics.pc_atome_mecanique_newton.confond-composante-tangentielle-et-normale: 0
-    # distractor-only: AMN-3.C
-    mc.physics.pc_atome_mecanique_newton.norme-acceleration-mcu-non-constante: 0
-    # distractor-only: AMN-3.D
-    mc.physics.pc_atome_mecanique_newton.vitesse-orbitale-dependance-r-mal-comprise: 1
-    # AMN-11
-    mc.physics.pc_atome_mecanique_newton.rapport-forces-dependrait-de-r: 0
-    # distractor-only: AMN-2.D, AMN-17.D
+    mc.physics.pc_atome_mecanique_newton.calcul-incomplet-confondu-avec-calcul-faux: 3
+    mc.physics.pc_atome_mecanique_newton.coulomb-toujours-attractive-comme-gravitation: 3
+    mc.physics.pc_atome_mecanique_newton.mcu-implique-acceleration-nulle: 3
+    mc.physics.pc_atome_mecanique_newton.relation-planck-mal-manipulee: 3
     mc.physics.pc_atome_mecanique_newton.calcul-mecanique-suffit-a-expliquer-stabilite: 2
-    # AMN-5, AMN-6
-    mc.physics.pc_atome_mecanique_newton.calcul-incomplet-confondu-avec-calcul-faux: 2
-    # AMN-8, AMN-12
-    mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie: 1
-    # AMN-9
-    mc.physics.pc_atome_mecanique_newton.energie-atome-continue-non-quantifiee: 1
-    # AMN-13
+    mc.physics.pc_atome_mecanique_newton.energie-atome-continue-non-quantifiee: 2
+    mc.physics.pc_atome_mecanique_newton.formule-orbite-non-adaptee-Z: 2
+    mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie: 2
+    mc.physics.pc_atome_mecanique_newton.vitesse-orbitale-dependance-r-mal-comprise: 2
     mc.physics.pc_atome_mecanique_newton.mecanisme-arret-effondrement-mal-compris: 1
-    # AMN-15
-    mc.physics.pc_atome_mecanique_newton.relation-planck-mal-manipulee: 2
-    # AMN-14, AMN-18
-    mc.physics.pc_atome_mecanique_newton.formule-orbite-non-adaptee-Z: 1
-    # AMN-16
-    mc.physics.pc_atome_mecanique_newton.mecanique-jugee-inapplicable-aux-charges: 0
-    # distractor-only: AMN-6.C, AMN-8.C
-    mc.physics.pc_atome_mecanique_newton.confond-cause-et-consequence-effondrement: 0
-    # distractor-only: AMN-5.C
-    mc.physics.pc_atome_mecanique_newton.trajectoire-elliptique-supposee-necessaire: 0
-    # distractor-only: AMN-12.D
+    mc.physics.pc_atome_mecanique_newton.norme-acceleration-mcu-non-constante: 1
+    mc.physics.pc_atome_mecanique_newton.rapport-forces-dependrait-de-r: 1
+    mc.physics.pc_atome_mecanique_newton.trajectoire-elliptique-supposee-necessaire: 1
   floor: 3
-  floor_met: false
-  under_covered:
-    - mc.physics.pc_atome_mecanique_newton.force-electrostatique-mal-identifiee            # 0/3
-    - mc.physics.pc_atome_mecanique_newton.coulomb-toujours-attractive-comme-gravitation   # 1/3
-    - mc.physics.pc_atome_mecanique_newton.distance-confondue-avec-signe-charge            # 0/3
-    - mc.physics.pc_atome_mecanique_newton.mcu-implique-acceleration-nulle                 # 2/3
-    - mc.physics.pc_atome_mecanique_newton.confond-composante-tangentielle-et-normale      # 0/3
-    - mc.physics.pc_atome_mecanique_newton.norme-acceleration-mcu-non-constante            # 0/3
-    - mc.physics.pc_atome_mecanique_newton.vitesse-orbitale-dependance-r-mal-comprise      # 1/3
-    - mc.physics.pc_atome_mecanique_newton.rapport-forces-dependrait-de-r                  # 0/3
-    - mc.physics.pc_atome_mecanique_newton.calcul-mecanique-suffit-a-expliquer-stabilite   # 2/3
-    - mc.physics.pc_atome_mecanique_newton.calcul-incomplet-confondu-avec-calcul-faux      # 2/3
-    - mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie               # 1/3
-    - mc.physics.pc_atome_mecanique_newton.energie-atome-continue-non-quantifiee           # 1/3
-    - mc.physics.pc_atome_mecanique_newton.mecanisme-arret-effondrement-mal-compris        # 1/3
-    - mc.physics.pc_atome_mecanique_newton.relation-planck-mal-manipulee                   # 2/3
-    - mc.physics.pc_atome_mecanique_newton.formule-orbite-non-adaptee-Z                    # 1/3
-    - mc.physics.pc_atome_mecanique_newton.mecanique-jugee-inapplicable-aux-charges        # 0/3
-    - mc.physics.pc_atome_mecanique_newton.confond-cause-et-consequence-effondrement       # 0/3
-    - mc.physics.pc_atome_mecanique_newton.trajectoire-elliptique-supposee-necessaire      # 0/3
+  floor_met: true
+  under_covered: []   # aucun : les 19 modèles déclarés atteignent le plancher
+  untagged_distractors: 4   # « misconception: null » assumés (glissement d'arithmétique, sans modèle stable)
   ramp_coverage:
-    R0: 3   # AMN-7, AMN-8, AMN-9
-    R1: 3   # AMN-1, AMN-2, AMN-10
-    R2: 3   # AMN-3, AMN-4, AMN-11
-    R3: 3   # AMN-5, AMN-6, AMN-12
-    R4: 3   # AMN-13, AMN-14, AMN-15
-    R5: 3   # AMN-16, AMN-17, AMN-18
+    R0: 3
+    R1: 6
+    R2: 6
+    R3: 6
+    R4: 5
+    R5: 4
   note: >
-    Ride-along backfill for the summit-conversion pass on
-    atome-mecanique-newton — the campaign's one deliberately unsourced PC
-    lesson (see docs/sujets/pc/atome-mecanique-newton.md). This end bank
-    (AMN-1…18) was authored before the misconception-inventory discipline
-    existed (`misconceptions: []`); this pass adds the inventory (19
-    entries), an item-level `primary_misconception` on all 18 items, and a
-    `misconception:` tag on every distractor (4 are honestly `null` —
-    AMN-8.D, AMN-12.C, AMN-13.B, AMN-18.C — pure wrong-guess or
-    arithmetic/exponent-sign slips, not stable conceptual models). Additive
-    only: no existing stem, choice text, feedback, or solution was
-    reweakened, reworded, or removed. Only 1 of 19 misconceptions
-    (gravitation-consideree-significative, the recurring R1/R5 thème) meets
-    the ≥3-item floor; the other 18 sit at 0–2 items. This is an honest
-    reflection of the source material, not an artifact of under-effort: this
-    is a short, single-arc CONCEPTUAL chapter (paradox → limits → 5
-    qualitatively distinct rungs), not a computation-heavy chapter like RLC
-    or rc-charge where the same handful of models recur across many numeric
-    variations — its 18 items were written to span mostly-distinct facets of
-    the chapter rather than to repeat 6-8 models 3+ times each. Closing the
-    floor honestly would require a genuine follow-up item-writing pass (new
-    stems per under-covered model, spanning the ramp, none a memorizable
-    restatement of an existing item) — flagged here, not executed as part of
-    this ride-along backfill, per the recipe's "never fake counts" rule.
+    Banque écrite avant la discipline de l'inventaire, puis rétro-taguée lors
+    de la conversion du sommet. Le bilan de cette rétro-tague était sévère et
+    honnête : 18 des 19 modèles restaient sous le plancher de 3 items, parce
+    que la banque d'origine taguait souvent les TROIS distracteurs d'un item
+    avec le même identifiant — ce qui fait un item, pas trois. La note d'alors
+    demandait une vraie passe d'écriture ; elle a été menée le 2026-09-05 avec
+    les items AMN-19 … AMN-30 (douze items, trois distracteurs chacun, tags
+    diversifiés), et la dette est refermée : 19 modèles sur 19 atteignent le
+    plancher. Aucune erreur nouvelle n'a été déclarée ; aucun énoncé, choix,
+    retour ou solution existant n'a été affaibli ni supprimé. Le ship
+    « unsourced » de la notion (docs/sujets/pc/atome-mecanique-newton.md) est
+    une décision de périmètre distincte, et il reste tel quel.

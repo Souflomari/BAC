@@ -1930,14 +1930,70 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "AMN-18": [
       "mc.physics.pc_atome_mecanique_newton.relation-planck-mal-manipulee"
     ],
+    "AMN-19": [
+      "mc.physics.pc_atome_mecanique_newton.coulomb-toujours-attractive-comme-gravitation",
+      "mc.physics.pc_atome_mecanique_newton.distance-confondue-avec-signe-charge",
+      "mc.physics.pc_atome_mecanique_newton.force-electrostatique-mal-identifiee"
+    ],
     "AMN-2": [
       "mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative",
       "mc.physics.pc_atome_mecanique_newton.rapport-forces-dependrait-de-r"
+    ],
+    "AMN-20": [
+      "mc.physics.pc_atome_mecanique_newton.coulomb-toujours-attractive-comme-gravitation",
+      "mc.physics.pc_atome_mecanique_newton.distance-confondue-avec-signe-charge",
+      "mc.physics.pc_atome_mecanique_newton.mecanique-jugee-inapplicable-aux-charges"
+    ],
+    "AMN-21": [
+      "mc.physics.pc_atome_mecanique_newton.mecanique-jugee-inapplicable-aux-charges",
+      "mc.physics.pc_atome_mecanique_newton.rapport-forces-dependrait-de-r"
+    ],
+    "AMN-22": [
+      "mc.physics.pc_atome_mecanique_newton.confond-composante-tangentielle-et-normale",
+      "mc.physics.pc_atome_mecanique_newton.mcu-implique-acceleration-nulle",
+      "mc.physics.pc_atome_mecanique_newton.norme-acceleration-mcu-non-constante"
+    ],
+    "AMN-23": [
+      "mc.physics.pc_atome_mecanique_newton.confond-composante-tangentielle-et-normale",
+      "mc.physics.pc_atome_mecanique_newton.mcu-implique-acceleration-nulle",
+      "mc.physics.pc_atome_mecanique_newton.norme-acceleration-mcu-non-constante"
+    ],
+    "AMN-24": [
+      "mc.physics.pc_atome_mecanique_newton.formule-orbite-non-adaptee-Z",
+      "mc.physics.pc_atome_mecanique_newton.vitesse-orbitale-dependance-r-mal-comprise"
+    ],
+    "AMN-25": [
+      "mc.physics.pc_atome_mecanique_newton.formule-orbite-non-adaptee-Z",
+      "mc.physics.pc_atome_mecanique_newton.vitesse-orbitale-dependance-r-mal-comprise"
+    ],
+    "AMN-26": [
+      "mc.physics.pc_atome_mecanique_newton.calcul-incomplet-confondu-avec-calcul-faux",
+      "mc.physics.pc_atome_mecanique_newton.confond-cause-et-consequence-effondrement",
+      "mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie"
+    ],
+    "AMN-27": [
+      "mc.physics.pc_atome_mecanique_newton.calcul-incomplet-confondu-avec-calcul-faux",
+      "mc.physics.pc_atome_mecanique_newton.calcul-mecanique-suffit-a-expliquer-stabilite",
+      "mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie"
+    ],
+    "AMN-28": [
+      "mc.physics.pc_atome_mecanique_newton.confond-cause-et-consequence-effondrement",
+      "mc.physics.pc_atome_mecanique_newton.mecanisme-arret-effondrement-mal-compris",
+      "mc.physics.pc_atome_mecanique_newton.trajectoire-elliptique-supposee-necessaire"
+    ],
+    "AMN-29": [
+      "mc.physics.pc_atome_mecanique_newton.energie-atome-continue-non-quantifiee",
+      "mc.physics.pc_atome_mecanique_newton.mecanisme-arret-effondrement-mal-compris",
+      "mc.physics.pc_atome_mecanique_newton.trajectoire-elliptique-supposee-necessaire"
     ],
     "AMN-3": [
       "mc.physics.pc_atome_mecanique_newton.confond-composante-tangentielle-et-normale",
       "mc.physics.pc_atome_mecanique_newton.mcu-implique-acceleration-nulle",
       "mc.physics.pc_atome_mecanique_newton.norme-acceleration-mcu-non-constante"
+    ],
+    "AMN-30": [
+      "mc.physics.pc_atome_mecanique_newton.energie-atome-continue-non-quantifiee",
+      "mc.physics.pc_atome_mecanique_newton.relation-planck-mal-manipulee"
     ],
     "AMN-4": [
       "mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative",
