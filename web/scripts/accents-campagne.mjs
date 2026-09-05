@@ -55,7 +55,11 @@ import yaml from "js-yaml";
 const WEB = process.cwd();
 const ROOT = path.join(WEB, "..", "content");
 const APPLIQUE = process.argv.includes("--appliquer");
-const RENDU = /(?:^|\/)(lesson\.md|items\.yaml|bank\.yaml|checkpoints\.yaml|retenir\.md|figures\.yaml)$/;
+// `exercises.yaml` — l'exercice SOMMET de chaque lecon — manquait a cette
+// liste. Il est servi a l'eleve comme le reste, simplement derriere une
+// tentative : c'est une raison de plus de le corriger, pas une raison de
+// l'oublier. Ajoute le 2026-09-05, 49 fichiers.
+const RENDU = /(?:^|\/)(lesson\.md|items\.yaml|bank\.yaml|checkpoints\.yaml|exercises\.yaml|retenir\.md|figures\.yaml)$/;
 
 // Formes nues qui SONT du francais valide, ou dont la correction est ambigue,
 // ou qui sont des mots anglais susceptibles d'etre voulus. Exclues sans debat :

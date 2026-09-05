@@ -495,7 +495,7 @@ entries:
           On applique la méthode du chapitre 8 — bilan des forces, deuxième loi, projection sur l'axe choisi. Seules deux forces s'exercent ici (la poussée d'Archimède est explicitement négligée, contrairement à d'autres sujets sur cette même expérience) : le poids $\vec P=m\vec g$ et le frottement $\vec f=-k\,v\,\vec j$. Avec l'axe $(O,\vec j)$ orienté vers le bas, le poids se projette positivement et le frottement négativement (il s'oppose au mouvement). On projette, on divise par $m$, et on range le terme en $v$ à gauche pour retrouver la forme demandée.
         steps:
           - math: 'm\vec a = \vec P + \vec f'
-            note: "Deuxième loi de Newton ; deux forces seulement, Archimede negligee par hypothèse."
+            note: "Deuxième loi de Newton ; deux forces seulement, Archimede négligée par hypothèse."
           - math: 'm\frac{dv}{dt} = mg - k\,v'
             note: "Projection sur (O, j) oriente vers le bas : le poids +mg, le frottement -kv."
           - math: '\frac{dv}{dt} = g - \frac{k}{m}\,v'
@@ -2225,7 +2225,7 @@ entries:
           Projection sur l'axe $(O\vec z)$, vertical **descendant** (figure 1). Le poids, orienté vers le bas, se projette positivement ; la poussée d'Archimède, orientée vers le HAUT (elle s'oppose toujours au poids), se projette négativement ; le frottement, qui s'oppose au mouvement (la bille descend), se projette lui aussi négativement.
         steps:
           - math: 'm\vec a = \vec P + \vec F + \vec f'
-            note: "Deuxième loi de Newton (chapitre Lois de Newton) ; trois forces, Archimede n'est PAS negligee ici (chapitre 8)."
+            note: "Deuxième loi de Newton (chapitre Lois de Newton) ; trois forces, Archimede n'est PAS négligée ici (chapitre 8)."
           - math: 'm\,\frac{dv_G}{dt} = mg - \rho V g - k\,v_G'
             note: "Projection sur (O,z) descendant : poids +mg, Archimede -rho.V.g (opposée au poids), frottement -k.v_G (oppose au mouvement)."
           - math: '\frac{dv_G}{dt} = g - \frac{\rho V g}{m} - \frac{k}{m}\,v_G'
@@ -3173,7 +3173,7 @@ entries:
           **Le piège de cette question.** Écrire $r$ au dénominateur sans le carré, ou confondre la force de gravitation avec le poids. Ici il n'y a pas de « poids » — pas de sol, pas d'astre de référence : il n'y a que l'attraction mutuelle entre deux corps, et c'est elle qui joue, à l'échelle du système solaire, le rôle que le poids joue à la surface de la Terre.
         steps:
           - math: '\boxed{F_{S/J} = G\,\frac{M_S\,M_J}{r^{2}}}'
-            note: "Loi de la gravitation universelle. Les deux corps sont traites comme ponctuels : l'énoncé le justifie par la répartition spherique des masses."
+            note: "Loi de la gravitation universelle. Les deux corps sont traites comme ponctuels : l'énoncé le justifie par la répartition sphérique des masses."
       - id: q2
         stem: |-
           **1-2-** En appliquant la deuxième loi de Newton :
@@ -3286,7 +3286,7 @@ entries:
           - math: '\boxed{r = \sqrt[3]{\frac{G\,M_S\,T_J^{\,2}}{4\pi^{2}}}}'
             note: "Inversion de la troisième loi de Kepler établie a la question 1-2-b."
           - math: 'G\,M_S\,T_J^{\,2} = 6{,}67\times10^{-11} \times 2\times10^{30} \times 1{,}399\times10^{17} = 1{,}866\times10^{37}'
-            note: "Numérateur, puissances de dix traitees a part. T_J au carré vaut 1,399 x 10^17."
+            note: "Numérateur, puissances de dix traitées a part. T_J au carré vaut 1,399 x 10^17."
           - math: 'r^{3} = \frac{1{,}866\times10^{37}}{4\pi^{2}} = \frac{1{,}866\times10^{37}}{39{,}48} = 4{,}727\times10^{35}\ \text{m}^{3}'
             note: "Rayon au cube."
           - math: 'r = \sqrt[3]{472{,}7\times10^{33}} = \sqrt[3]{472{,}7}\times10^{11}'
@@ -3359,6 +3359,6 @@ entries:
           - math: 'T_{Io} = 1{,}77 \times 24 \times 3600 = 152\,928\ \text{s}'
             note: "Conversion préalable et séparée : la période est donnée en jours, G est en unités SI."
           - math: 'M_J = \frac{39{,}48 \times 7{,}409\times10^{25}}{6{,}67\times10^{-11} \times 2{,}339\times10^{10}} = \frac{2{,}925\times10^{27}}{1{,}560}'
-            note: "Application numérique, puissances de dix traitees a part."
+            note: "Application numérique, puissances de dix traitées a part."
           - math: '\boxed{M_J \approx 1{,}88\times10^{27}\ \text{kg}}'
             note: "Valeur exacte 1,875 x 10^27 kg. La masse réelle de Jupiter est 1,898 x 10^27 kg : écart 1,2 pour cent, du aux données arrondies."
