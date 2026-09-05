@@ -11,7 +11,7 @@
  * `/options/end` ont été purgés en août) sans que le lien qui la citait
  * disparaisse avec elle.
  *
- * MESURE À L'ÉCRITURE (2026-09-05) : 74 pages visitées, 108 cibles internes
+ * MESURE À L'ÉCRITURE (2026-09-05) : 72 pages visitées, 108 cibles internes
  * distinctes, **0 morte**. La classe est propre.
  *
  * PAS DE PORTE, ET C'EST DÉLIBÉRÉ. Le job CI venait d'être mesuré à ~30 min
