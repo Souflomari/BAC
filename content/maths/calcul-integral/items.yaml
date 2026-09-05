@@ -147,6 +147,7 @@ items:
       - id: B
         text: "$\\dfrac{41}{3}$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
         feedback: >
           Ce choix ajoute $5$ au résultat final, comme si la constante ne
           disparaissait pas. Mais $F(3)-F(1) = \left(9+5\right) -
@@ -156,6 +157,7 @@ items:
       - id: C
         text: "$-\\dfrac{26}{3}$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
         feedback: >
           Ce résultat correspond à $F(1)-F(3)$ au lieu de $F(3)-F(1)$ :
           l'ordre des bornes a été inversé. L'intégrale $\int_1^3$ se calcule
@@ -163,6 +165,7 @@ items:
       - id: D
         text: "$14$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
         feedback: >
           $14$ est la valeur de $F(3)$ seule — la soustraction de $F(1)$ a
           été complètement oubliée. Une intégrale $\int_a^b f$ n'est jamais
@@ -251,6 +254,7 @@ items:
       - id: B
         text: "$\\int_1^4 f(x)\\,\\mathrm{d}x = 10$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
         feedback: >
           $f \leq g$ ne veut pas dire $f=g$ : on sait seulement que $f$ reste
           en dessous de $g$, pas qu'elle lui est égale. Rien dans l'énoncé ne
@@ -258,6 +262,7 @@ items:
       - id: C
         text: "$\\int_1^4 f(x)\\,\\mathrm{d}x \\geq 10$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
         feedback: >
           C'est l'inégalité inversée. Puisque $f \leq g$ sur tout
           l'intervalle, la comparaison du chapitre 5 donne $\int_1^4 f \leq \int_1^4
@@ -265,6 +270,7 @@ items:
       - id: D
         text: "On ne peut rien affirmer, car le signe de $f$ n'est pas garanti."
         correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
         feedback: >
           L'énoncé donne justement $0 \leq f(x)$ sur tout l'intervalle : le
           signe de $f$ est garanti positif. Combinée à $f \leq g$, la
@@ -301,6 +307,7 @@ items:
       - id: B
         text: "$12$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
         feedback: >
           Ce choix oublie complètement de diviser par la longueur de
           l'intervalle. La valeur moyenne n'est pas l'intégrale elle-même,
@@ -308,6 +315,7 @@ items:
       - id: C
         text: "$2{,}4$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
         feedback: >
           Ce choix divise par $5$ (la borne supérieure seule) au lieu de
           $b-a=5-2=3$ (la longueur de l'intervalle). Le dénominateur de la
@@ -315,6 +323,7 @@ items:
       - id: D
         text: "$36$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
         feedback: >
           Ce choix multiplie $12$ par $3$ au lieu de diviser. La définition
           de la valeur moyenne est $\mu = \dfrac{1}{b-a}\int_a^b f(x)\,
@@ -345,6 +354,7 @@ items:
       - id: B
         text: "$u=e^{2x}$ et $v'=x$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
         feedback: >
           Dériver $e^{2x}$ redonne $2e^{2x}$ : ça ne simplifie rien, la
           fonction exponentielle reste aussi compliquée après dérivation.
@@ -354,6 +364,7 @@ items:
       - id: C
         text: "$u=x\\,e^{2x}$ et $v'=1$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
         feedback: >
           Prendre le produit entier comme $u$ ne sépare rien : dériver
           $x\,e^{2x}$ (règle du produit) redonne une expression aussi
@@ -362,6 +373,7 @@ items:
       - id: D
         text: "L'intégration par parties ne s'applique pas ici, car il n'y a qu'un seul terme."
         correct: false
+        misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
         feedback: >
           $x\,e^{2x}$ est bien un produit de deux fonctions différentes,
           $x$ et $e^{2x}$ — exactement la situation où l'IPP s'applique. Ce
@@ -463,6 +475,7 @@ items:
       - id: B
         text: "Parce que la vitesse devient bien trop grande à la fin de l'intervalle pour que ces formules restent applicables."
         correct: false
+        misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
         feedback: >
           Ce raisonnement fait dépendre la méthode de la taille des
           nombres, alors que c'est la forme du contour (droite ou courbe)
@@ -471,6 +484,7 @@ items:
       - id: C
         text: "Parce que la voiture part de l'arrêt, avec $v(0)=0$, ce qui interdit d'utiliser la moindre formule d'aire usuelle."
         correct: false
+        misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
         feedback: >
           Un rectangle ou un triangle peut très bien avoir un côté de
           hauteur nulle en un point — ce n'est pas $v(0)=0$ qui pose
@@ -479,6 +493,7 @@ items:
       - id: D
         text: "Parce que le temps $t$ n'est pas une longueur : on ne peut donc pas parler d'aire sous une courbe de vitesse."
         correct: false
+        misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
         feedback: >
           Sur un graphique vitesse-temps, l'aire sous la courbe se lit bien
           comme une distance (produit vitesse × temps), quelles que soient
@@ -515,6 +530,7 @@ items:
       - id: A
         text: "Plus grande que $4$, car la vitesse augmente de plus en plus vite : la courbe finit par dépasser la droite avant $t=2$."
         correct: false
+        misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
         feedback: >
           Vérifie sur un point intermédiaire, $t=1$ : la parabole vaut
           $v(1)=1$, alors que la droite (qui va de $0$ à $4$ en $2$
@@ -525,6 +541,7 @@ items:
       - id: B
         text: "Égale à $4$, puisque les deux courbes partagent les mêmes valeurs en $t=0$ et $t=2$."
         correct: false
+        misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
         feedback: >
           Partager les mêmes valeurs aux deux extrémités ne suffit pas à
           rendre les aires égales : entre ces deux points, la parabole et
@@ -536,6 +553,7 @@ items:
       - id: D
         text: "Impossible à savoir sans calculer précisément l'intégrale."
         correct: false
+        misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
         feedback: >
           On peut comparer deux aires sans les calculer exactement,
           simplement en comparant les hauteurs des deux courbes point par
@@ -571,6 +589,7 @@ items:
       - id: A
         text: "Elle est exactement égale à $8$ m, car c'est la vitesse atteinte en fin de trajet qui détermine la distance totale parcourue."
         correct: false
+        misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
         feedback: >
           La vitesse à l'instant final ne résume pas tout le trajet : la
           voiture a roulé plus lentement pendant presque tout l'intervalle
@@ -578,6 +597,7 @@ items:
       - id: B
         text: "Elle est supérieure à $8$ m, car la voiture accélère sans cesse et dépasse donc les $4$ m/s bien avant l'instant $t=2$."
         correct: false
+        misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
         feedback: >
           Sur l'intervalle $[0,2]$, $v(t)=t^2$ est croissante et atteint
           son maximum PRÉCISÉMENT en $t=2$, avec $v(2)=4$ — elle ne dépasse
@@ -586,6 +606,7 @@ items:
       - id: C
         text: "On ne peut rien en dire du tout, car $4\\times2$ est un calcul de vitesse et non un calcul de distance parcourue."
         correct: false
+        misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
         feedback: >
           Une vitesse constante multipliée par une durée donne bien une
           distance (m/s $\times$ s = m) — le calcul $4\times2=8$ m est
@@ -627,6 +648,7 @@ items:
       - id: A
         text: "$\\ln(x) - \\ln(t)$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
         feedback: >
           $t$ est la variable d'intégration : une fois la primitive
           évaluée aux bornes, $t$ ne doit plus apparaître dans le résultat.
@@ -639,6 +661,7 @@ items:
       - id: C
         text: "$\\ln(x)$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
         feedback: >
           Ce résultat oublie de soustraire la valeur de la primitive à la
           borne inférieure, $\ln(2)$. La définition du chapitre 2 est toujours une
@@ -647,6 +670,7 @@ items:
       - id: D
         text: "$\\ln(x-2)$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
         feedback: >
           Ce choix applique la primitive à la DIFFÉRENCE des bornes,
           $\ln(x-2)$, au lieu de calculer la différence des valeurs de la
@@ -684,6 +708,7 @@ items:
       - id: A
         text: "Oui : la définition $F(b)-F(a)$ ne s'applique que si la fonction $f$ reste positive sur tout l'intervalle d'intégration."
         correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
         feedback: >
           Non — relis la définition du chapitre 2 : elle suppose seulement que $f$
           est CONTINUE sur $[a,b]$, sans aucune condition de signe. C'est
@@ -693,6 +718,7 @@ items:
       - id: B
         text: "Non, mais il faut changer le signe de la primitive partout où $f<0$, avant de procéder à son évaluation."
         correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
         feedback: >
           On n'a jamais besoin de « changer le signe » de la primitive. La
           primitive de $x\mapsto x$ est $F(x)=\frac{x^2}{2}$, quelle que
@@ -704,6 +730,7 @@ items:
       - id: D
         text: "Non, car la fonction $f(x)=x$ n'admet aucune primitive sur un intervalle contenant des valeurs négatives de $x$."
         correct: false
+        misconception: mc.math.maths_calcul_integral.primitive-vs-derivee
         feedback: >
           $f(x)=x$ est parfaitement continue sur $\mathbb{R}$, y compris
           sur les réels négatifs, et admet la primitive
@@ -743,6 +770,7 @@ items:
       - id: A
         text: "Oui, car la linéarité de l'intégrale permet précisément de multiplier les deux intégrales l'une par l'autre."
         correct: false
+        misconception: mc.math.maths_calcul_integral.linearite-abusive
         feedback: >
           La linéarité (chapitre 3) ne porte que sur les SOMMES et les produits
           par un facteur CONSTANT — $\int(f+g)=\int f+\int g$ et $\int kf =
@@ -753,6 +781,7 @@ items:
       - id: B
         text: "Oui, mais à la seule condition que $f$ et $g$ soient toutes les deux positives sur l'intervalle $[0,1]$."
         correct: false
+        misconception: mc.math.maths_calcul_integral.linearite-abusive
         feedback: >
           Le signe de $f$ et $g$ ne change rien au problème : même pour
           deux fonctions positives, l'intégrale d'un produit n'est en
@@ -763,6 +792,7 @@ items:
       - id: C
         text: "On ne peut rien en dire sans connaître au préalable les expressions exactes des deux fonctions $f$ et $g$."
         correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
         feedback: >
           On peut au moins affirmer que ce raisonnement particulier —
           multiplier les deux intégrales — n'est PAS une règle valide de
@@ -803,6 +833,7 @@ items:
       - id: A
         text: "$22$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
         feedback: >
           Ce calcul ajoute le terme constant $7$ une seule fois à
           $\int_1^4 2x\,\mathrm{d}x=15$, comme s'il ne fallait pas le
@@ -816,6 +847,7 @@ items:
       - id: C
         text: "$15$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
         feedback: >
           Ce calcul oublie complètement la contribution du terme constant
           $7$ — seul $\int_1^4 2x\,\mathrm{d}x=15$ a été calculé. Par
@@ -823,6 +855,7 @@ items:
       - id: D
         text: "$43$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
         feedback: >
           Ce calcul multiplie le terme constant par la borne supérieure
           $b=4$ au lieu de la longueur de l'intervalle $b-a=4-1=3$ :
@@ -859,6 +892,7 @@ items:
       - id: A
         text: "$29$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
         feedback: >
           Ce choix additionne les deux intégrales données, $20+9=29$, au
           lieu d'isoler $\int_0^3 f$ dans la relation de Chasles
@@ -867,6 +901,7 @@ items:
       - id: B
         text: "$20$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
         feedback: >
           Ce choix reprend directement $\int_0^7 f(x)\,\mathrm{d}x$ sans
           tenir compte du découpage en $c=3$ : la relation de Chasles
@@ -878,6 +913,7 @@ items:
       - id: D
         text: "$-11$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
         feedback: >
           Ce choix inverse le signe du résultat, comme si la relation de
           Chasles s'écrivait $\int_3^7 f = \int_0^3 f - \int_0^7 f$. Or
@@ -911,6 +947,7 @@ items:
       - id: B
         text: "$15$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
         feedback: >
           Inverser l'ordre des bornes change le signe de l'intégrale, par
           convention : $\int_6^2 f(x)\,\mathrm{d}x = -\int_2^6 f(x)\,
@@ -919,6 +956,7 @@ items:
       - id: C
         text: "$\\dfrac{1}{15}$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
         feedback: >
           Inverser l'ordre des bornes change le SIGNE de l'intégrale, ce
           n'est pas une opération qui inverse sa valeur (comme un inverse
@@ -927,6 +965,7 @@ items:
       - id: D
         text: "On ne peut pas savoir, car $6>2$ alors que l'intégrale s'écrit habituellement avec la borne du bas plus petite que celle du haut."
         correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
         feedback: >
           C'est justement pour ce genre de cas que la convention du chapitre 4
           existe : elle donne un sens à $\int_b^a$ même quand $b>a$, à
@@ -1014,6 +1053,7 @@ items:
       - id: A
         text: "Oui, car $f\\geq0$ garantit que toute intégrale de $f$ est positive, quel que soit l'ordre des bornes."
         correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
         feedback: >
           La propriété de positivité du chapitre 5 exige explicitement $a\leq b$ :
           elle dit $\int_a^b f \geq 0$ quand $a\leq b$ et $f\geq0$ sur
@@ -1025,6 +1065,7 @@ items:
       - id: C
         text: "Non, car $f\\geq0$ sur $[2,5]$ n'implique rien du tout sur le signe d'aucune intégrale de $f$."
         correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
         feedback: >
           $f\geq0$ sur $[2,5]$ implique bien quelque chose : $\int_2^5
           f(x)\,\mathrm{d}x \geq 0$ (bornes dans l'ordre croissant). C'est
@@ -1033,6 +1074,7 @@ items:
       - id: D
         text: "Oui, car une aire est toujours positive, quel que soit le sens dans lequel on la parcourt."
         correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
         feedback: >
           $\int_5^2 f(x)\,\mathrm{d}x$ n'est pas une aire, c'est une
           intégrale signée avec les bornes inversées : par convention
@@ -1071,6 +1113,7 @@ items:
       - id: A
         text: "Oui, car il suffit que l'inégalité soit vraie aux bornes de l'intervalle pour qu'elle soit vraie sur tout l'intervalle par continuité."
         correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
         feedback: >
           La continuité ne garantit rien de tel : $f$ et $g$ peuvent très
           bien vérifier $f\leq g$ aux deux bornes tout en ayant $g<f$
@@ -1080,6 +1123,7 @@ items:
       - id: B
         text: "Oui, car la propriété de comparaison ne porte que sur les valeurs de $f$ et $g$ aux bornes de l'intégrale."
         correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
         feedback: >
           C'est l'inverse : la propriété de comparaison du chapitre 5 porte sur le
           comportement de $f$ et $g$ SUR TOUT L'INTERVALLE $[a,b]$, pas
@@ -1088,6 +1132,7 @@ items:
       - id: C
         text: "Non, car la comparaison des intégrales ne s'applique qu'à des fonctions positives."
         correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
         feedback: >
           La comparaison (chapitre 5) ne demande pas que $f$ et $g$ soient
           positives — seulement que $f\leq g$ sur tout l'intervalle. La
@@ -1126,6 +1171,7 @@ items:
       - id: A
         text: "$2 \\leq \\int_3^8 f(x)\\,\\mathrm{d}x \\leq 6$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
         feedback: >
           Ce choix oublie de multiplier $m=2$ et $M=6$ par la longueur de
           l'intervalle $b-a=8-3=5$. L'inégalité de la moyenne s'écrit
@@ -1135,6 +1181,7 @@ items:
       - id: B
         text: "$16 \\leq \\int_3^8 f(x)\\,\\mathrm{d}x \\leq 48$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
         feedback: >
           Ce choix multiplie $m$ et $M$ par $8$ (la borne supérieure
           seule) au lieu de $b-a=8-3=5$ (la longueur de l'intervalle). Le
@@ -1146,6 +1193,7 @@ items:
       - id: D
         text: "$10 \\leq \\int_3^8 f(x)\\,\\mathrm{d}x \\leq 6$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
         feedback: >
           Ce choix multiplie correctement $m=2$ par $b-a=5$ (donnant
           $10$), mais oublie de faire la même chose pour $M=6$, qui reste
@@ -1177,6 +1225,7 @@ items:
       - id: A
         text: "$m=9$ et $M=4$, car on prend toujours la borne du haut pour $m$ et celle du bas pour $M$."
         correct: false
+        misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
         feedback: >
           Il n'y a pas de règle fixe « borne du haut pour $m$ » : $m$ et
           $M$ sont respectivement le minimum et le maximum de $f$ SUR
@@ -1187,6 +1236,7 @@ items:
       - id: B
         text: "$m=\\sqrt{9}=3$ et $M=\\sqrt{4}=2$, car $f$ est croissante donc ses valeurs augmentent en dépassant la racine de la borne du haut."
         correct: false
+        misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
         feedback: >
           Les valeurs de $m$ et $M$ sont inversées par rapport à leur
           définition : $m$ doit être le PLUS PETIT des deux, $M$ le PLUS
@@ -1196,6 +1246,7 @@ items:
       - id: C
         text: "$m=4$ et $M=9$, en utilisant directement les bornes de l'intervalle sans passer par $f$."
         correct: false
+        misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
         feedback: >
           $m$ et $M$ sont le minimum et le maximum de $f(x)$ —
           c'est-à-dire des valeurs de la fonction $\sqrt{x}$ — pas les
@@ -1232,6 +1283,7 @@ items:
       - id: A
         text: "$\\left|\\int_0^4 f(x)\\,\\mathrm{d}x\\right| \\leq 3$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
         feedback: >
           Ce choix oublie de multiplier le majorant $M=3$ par la longueur
           de l'intervalle, $b-a=4-0=4$. Le corollaire s'écrit
@@ -1243,6 +1295,7 @@ items:
       - id: C
         text: "$\\left|\\int_0^4 f(x)\\,\\mathrm{d}x\\right| \\geq 12$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
         feedback: >
           Le corollaire donne une borne SUPÉRIEURE au module de
           l'intégrale, pas une borne inférieure : $|f|\leq M$ garantit que
@@ -1252,6 +1305,7 @@ items:
       - id: D
         text: "On ne peut rien affirmer, car on ne connaît pas le signe de $f$."
         correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
         feedback: >
           Le corollaire du chapitre 6 s'applique précisément à $|f(x)|\leq M$ sans
           avoir besoin de connaître le signe de $f$ — c'est tout l'intérêt
@@ -1284,6 +1338,7 @@ items:
       - id: B
         text: "$18$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
         feedback: >
           Ce résultat est la valeur de $\int_1^4(2x+1)\,\mathrm{d}x$
           seule, sans division par la longueur de l'intervalle
@@ -1292,6 +1347,7 @@ items:
       - id: C
         text: "$9$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
         feedback: >
           Ce résultat correspond à $f(4)=2\times4+1=9$, la valeur de $f$ à
           la borne supérieure seule. La valeur moyenne de $f$ sur tout
@@ -1301,6 +1357,7 @@ items:
       - id: D
         text: "$4{,}5$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
         feedback: >
           Ce résultat divise $18$ par $4$ (la borne supérieure) au lieu de
           $3$ (la longueur de l'intervalle $b-a=4-1$). Le dénominateur de
@@ -1331,6 +1388,7 @@ items:
       - id: A
         text: "Oui, la valeur moyenne d'une fonction est toujours sa valeur au point milieu de l'intervalle."
         correct: false
+        misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
         feedback: >
           C'est une confusion fréquente mais fausse en général : la valeur
           moyenne est définie par $\mu=\frac{1}{b-a}\int_a^b f(x)\,
@@ -1340,6 +1398,7 @@ items:
       - id: B
         text: "Oui, car $x^2$ est symétrique par rapport à l'axe des ordonnées, donc sa valeur moyenne se lit directement au centre de l'intervalle."
         correct: false
+        misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
         feedback: >
           La symétrie de $x^2$ par rapport à l'axe des ordonnées (en
           $x=0$) ne dit rien sur son comportement sur l'intervalle
@@ -1352,6 +1411,7 @@ items:
       - id: D
         text: "Non, car la formule de la valeur moyenne ne s'applique qu'à des fonctions affines."
         correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
         feedback: >
           La définition de la valeur moyenne (chapitre 7) s'applique à TOUTE
           fonction continue, pas seulement aux fonctions affines — c'est
@@ -1390,6 +1450,7 @@ items:
       - id: A
         text: "$\\int_0^1 x\\,e^x\\,\\mathrm{d}x = \\big[x\\,e^x\\big]_0^1 + \\int_0^1 e^x\\,\\mathrm{d}x$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
         feedback: >
           Le signe entre le terme de bord et l'intégrale restante est un
           MOINS, pas un plus. La formule de l'IPP est $\int_a^b uv' =
@@ -1402,6 +1463,7 @@ items:
       - id: C
         text: "$\\int_0^1 x\\,e^x\\,\\mathrm{d}x = \\big[e^x\\big]_0^1 - \\int_0^1 x\\,e^x\\,\\mathrm{d}x$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
         feedback: >
           Le terme de bord $[uv]_a^b$ doit contenir le PRODUIT
           $u(x)v(x)=x\,e^x$, pas seulement $v(x)=e^x$ seul. Oublier le
@@ -1410,6 +1472,7 @@ items:
       - id: D
         text: "$\\int_0^1 x\\,e^x\\,\\mathrm{d}x = \\big[x\\,e^x\\big]_0^1 - \\int_0^1 x\\,e^x\\,\\mathrm{d}x$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
         feedback: >
           L'intégrale restante dans la formule de l'IPP est $\int_a^b
           u'(x)v(x)\,\mathrm{d}x$, c'est-à-dire $\int_0^1 1\times e^x\,
@@ -1509,6 +1572,7 @@ items:
       - id: A
         text: "Calculer $\\int_{-1}^2 \\big(g(x)-f(x)\\big)\\,\\mathrm{d}x = \\int_{-1}^2 \\big(x^2-x-2\\big)\\,\\mathrm{d}x$, car on prend toujours « la deuxième courbe moins la première » dans ce genre de calcul."
         correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
         feedback: >
           Il n'y a pas de convention « deuxième moins première » : il faut
           toujours soustraire la fonction du DESSOUS à la fonction du
@@ -1521,6 +1585,7 @@ items:
       - id: C
         text: "Calculer $\\int_{-1}^2 f(x)\\,\\mathrm{d}x + \\int_{-1}^2 g(x)\\,\\mathrm{d}x$, en additionnant les deux aires sous chaque courbe."
         correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
         feedback: >
           Additionner les deux intégrales ne donne pas l'aire ENTRE les
           deux courbes : cela reviendrait à empiler les deux régions au
@@ -1530,6 +1595,7 @@ items:
       - id: D
         text: "Calculer directement $\\big(f(2)-g(2)\\big) - \\big(f(-1)-g(-1)\\big)$, la différence des valeurs de $f-g$ aux deux points d'intersection."
         correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
         feedback: >
           Aux deux points d'intersection, $f(x)-g(x)=0$ (c'est la
           définition même de ces points) : ce calcul donnerait $0-0=0$, ce
@@ -1571,6 +1637,7 @@ items:
       - id: A
         text: "$15\\ \\text{cm}^2$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-aire
         feedback: >
           Ce calcul multiplie $5$ u.a. par $3$ une seule fois. Mais $1$
           u.a. est l'aire d'un CARRÉ de côté $1$, donc dans ce repère, $1$
@@ -1580,6 +1647,7 @@ items:
       - id: B
         text: "$8\\ \\text{cm}^2$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-aire
         feedback: >
           Ce résultat correspond à $5+3$, comme si l'on ajoutait l'échelle
           du repère à l'aire en u.a. La conversion entre u.a. et cm² est
@@ -1591,6 +1659,7 @@ items:
       - id: D
         text: "$5\\ \\text{cm}^2$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-aire
         feedback: >
           Ce choix ne convertit pas du tout : il garde le nombre $5$ tel
           quel, en changeant seulement l'unité affichée de u.a. à cm².
@@ -1632,6 +1701,7 @@ items:
       - id: B
         text: "Calculer directement $F(3)-F(0)$ et prendre ce nombre comme l'aire cherchée, puisque $F$ est une primitive de $f$ sur tout l'intervalle $[0,3]$."
         correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
         feedback: >
           $F(3)-F(0) = \int_0^3 f(x)\,\mathrm{d}x$ est l'intégrale SIGNÉE
           sur tout l'intervalle : comme $f$ change de signe en $x=2$, les
@@ -1641,6 +1711,7 @@ items:
       - id: C
         text: "Calculer $\\left|F(3)-F(0)\\right|$, en prenant la valeur absolue du résultat global."
         correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
         feedback: >
           Prendre la valeur absolue APRÈS avoir tout combiné ne corrige
           pas l'annulation partielle entre la partie où $f\leq0$ et celle
@@ -1650,6 +1721,7 @@ items:
       - id: D
         text: "Calculer $F(2)-F(0)$ pour l'aire sur $[0,2]$ et $F(3)-F(2)$ pour celle sur $[2,3]$, sans changer le moindre signe, puis additionner les deux résultats."
         correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
         feedback: >
           Sur $[0,2]$, $f\leq0$, donc $F(2)-F(0)=\int_0^2 f(x)\,
           \mathrm{d}x$ est NÉGATIF — ce n'est pas encore l'aire de ce
@@ -1688,6 +1760,7 @@ items:
       - id: A
         text: "La valeur moyenne de $g$ vaut exactement $3$ également, car les deux fonctions sont comparables sur le même intervalle."
         correct: false
+        misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
         feedback: >
           $f\leq g$ n'implique pas $f=g$, donc rien ne garantit que leurs
           valeurs moyennes coïncident. On sait seulement que celle de $g$
@@ -1695,6 +1768,7 @@ items:
       - id: B
         text: "On ne peut rien affirmer sur la valeur moyenne de $g$ sans connaître son expression explicite."
         correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
         feedback: >
           On PEUT affirmer quelque chose : la comparaison $f\leq g$ (chapitre 5),
           combinée à la définition de la valeur moyenne (chapitre 7), donne
@@ -1703,6 +1777,7 @@ items:
       - id: C
         text: "La valeur moyenne de $g$ est inférieure ou égale à $3$, car $g$ étant plus grande que $f$, son intégrale « compense » en étant plus petite en moyenne."
         correct: false
+        misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
         feedback: >
           C'est l'inégalité inversée. $f\leq g$ sur tout l'intervalle
           donne $\int f\leq\int g$ (chapitre 5), donc en divisant par $b-a>0$ (ce
@@ -1744,6 +1819,7 @@ items:
       - id: A
         text: "$e^2-3$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
         feedback: >
           Ce choix reprend directement la valeur de l'intégrale, sans la
           diviser par la longueur de l'intervalle $b-a=2-0=2$. La valeur
@@ -1755,6 +1831,7 @@ items:
       - id: C
         text: "$2(e^2-3)$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
         feedback: >
           Ce choix MULTIPLIE l'intégrale par $b-a=2$ au lieu de la
           DIVISER. La définition de la valeur moyenne est
@@ -1763,6 +1840,7 @@ items:
       - id: D
         text: "$\\dfrac{e^2-3}{e^2}$"
         correct: false
+        misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
         feedback: >
           Ce choix divise l'intégrale par $q(2)=e^2$ (une valeur de la
           fonction) au lieu de diviser par la longueur de l'intervalle

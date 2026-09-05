@@ -104,6 +104,7 @@ items:
       - id: A
         text: "Rien : l'hérédité qu'il a rédigée suffit à conclure."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.recurrence-etape-manquante
         feedback: >
           L'hérédité montre seulement une implication conditionnelle : « si
           c'est vrai à un rang, ça reste vrai au suivant ». Sans vérifier que
@@ -116,6 +117,7 @@ items:
       - id: C
         text: "Il manque de vérifier l'hérédité séparément pour chaque valeur de $n$."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.recurrence-etape-manquante
         feedback: >
           C'est l'inverse de ce que demande la récurrence : l'hérédité se
           démontre UNE fois, pour un rang $n$ quelconque fixé, pas rang par
@@ -125,6 +127,7 @@ items:
       - id: D
         text: "Il manque de calculer $u_1$, $u_2$, $u_3$ pour vérifier numériquement."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.preuve-par-termes-calcules
         feedback: >
           Calculer quelques termes ne prouve rien pour l'infinité des rangs
           restants — une suite peut très bien vérifier une inégalité sur ses
@@ -165,6 +168,7 @@ items:
       - id: A
         text: "Elle est croissante, car elle reste bornée par le haut."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.bornee-implique-monotone
         feedback: >
           Être majorée ne dit rien sur le sens de variation. Une suite bornée
           peut très bien osciller entre 2 et 8 sans jamais se stabiliser dans
@@ -172,6 +176,7 @@ items:
       - id: B
         text: "Elle est décroissante, car elle reste bornée par le bas."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.bornee-implique-monotone
         feedback: >
           Même erreur symétrique : être minorée ne force pas la décroissance.
           Une suite peut rester au-dessus de 2 tout en montant, descendant, ou
@@ -182,6 +187,7 @@ items:
       - id: D
         text: "Elle est nécessairement constante, puisqu'elle ne peut ni dépasser 8 ni descendre sous 2."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.bornee-implique-monotone
         feedback: >
           Rester entre deux bornes n'oblige pas une suite à être constante :
           elle peut très bien varier tant qu'elle reste dans l'intervalle
@@ -218,6 +224,7 @@ items:
       - id: B
         text: "Elle n'a pas de limite, car la raison $q=-0{,}8$ est négative."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
         feedback: >
           Le signe négatif de $q$ ne suffit pas à empêcher la convergence.
           Seule la condition $q \leq -1$ empêche $(q^n)$ d'avoir une limite.
@@ -226,6 +233,7 @@ items:
       - id: C
         text: "$+\\infty$"
         correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
         feedback: >
           $(-0{,}8)^n$ tendrait vers l'infini si $|q|>1$, ce qui n'est pas le
           cas ici : $|-0{,}8| = 0{,}8 < 1$. Les puissances d'un nombre de
@@ -233,6 +241,7 @@ items:
       - id: D
         text: "$5$"
         correct: false
+        misconception: mc.math.sma_suites_numeriques.limite-liee-terme-initial
         feedback: >
           $5$ est la valeur de $u_0$ (le terme initial), pas la limite. La
           limite dépend du comportement de $q^n$ quand $n \to +\infty$, pas
@@ -269,6 +278,7 @@ items:
       - id: A
         text: "Oui, le théorème des gendarmes garantit que $w_n \\to 1$."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique
         feedback: >
           Le théorème des gendarmes exige que les DEUX bornes convergent vers
           la MÊME limite. Ici la borne inférieure tend vers 1 mais la borne
@@ -281,6 +291,7 @@ items:
       - id: C
         text: "Oui, car les deux bornes convergent (l'une vers 1, l'autre vers 3), et c'est suffisant pour appliquer le théorème."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique
         feedback: >
           Le fait que les deux bornes convergent ne suffit pas : il faut
           qu'elles convergent vers la MÊME valeur. Ici elles convergent vers
@@ -289,6 +300,7 @@ items:
       - id: D
         text: "Non, car il faudrait que les trois suites soient strictement positives."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique
         feedback: >
           La positivité des suites n'est pas une condition du théorème des
           gendarmes. La vraie condition manquante ici, c'est que les deux
@@ -327,6 +339,7 @@ items:
       - id: A
         text: "C'est correct : le minorant utilisé pour prouver la convergence est toujours la limite."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.majorant-atteint-ou-limite
         feedback: >
           Le théorème de la limite monotone donne l'EXISTENCE d'une limite,
           pas sa valeur. Le minorant utilisé n'est en général qu'un plancher
@@ -339,6 +352,7 @@ items:
       - id: C
         text: "C'est incorrect : la limite ne peut jamais être calculée, seule son existence peut être prouvée."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.point-fixe-prouve-convergence
         feedback: >
           C'est une sur-correction. Une fois la convergence établie (par le
           théorème de la limite monotone), on PEUT calculer la valeur exacte
@@ -347,6 +361,7 @@ items:
       - id: D
         text: "C'est correct, car $u_0=0$ et la suite converge vers sa valeur initiale."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.limite-liee-terme-initial
         feedback: >
           Rien ne garantit qu'une suite converge vers son terme initial — ici
           $u_0=0$ n'a aucun rapport avec la valeur de la limite, qui se
@@ -389,6 +404,7 @@ items:
       - id: A
         text: "Oui, car l'écart entre les deux suites tend vers 0, ce qui est exactement la condition demandée par la définition des suites adjacentes."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.adjacentes-condition-incomplete
         feedback: >
           L'écart qui tend vers 0 n'est qu'une des trois conditions requises
           pour l'adjacence. Ici, ni $(u_n)$ ni $(v_n)$ ne convergent — elles
@@ -400,6 +416,7 @@ items:
       - id: C
         text: "Oui, car $(u_n)$ est croissante et $(v_n)$ est décroissante, ce qui suffit à établir l'adjacence dès lors que leur écart tend vers zéro."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.adjacentes-condition-incomplete
         feedback: >
           C'est factuellement faux ici : $(v_n)$ est elle aussi croissante
           (elle tend vers $+\infty$ avec $n$), pas décroissante. Vérifier
@@ -409,6 +426,7 @@ items:
       - id: D
         text: "Non, car il faudrait en plus que les deux suites soient positives à partir d'un certain rang pour que la définition puisse s'appliquer."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.adjacentes-condition-incomplete
         feedback: >
           La positivité n'est pas une condition de la définition des suites
           adjacentes. La vraie raison pour laquelle elles ne sont pas
@@ -456,6 +474,7 @@ items:
       - id: B
         text: "$64{,}5$"
         correct: false
+        misconception: mc.math.sma_suites_numeriques.ordre-notation-recurrence
         feedback: >
           Ceci correspond à $0{,}75\times(80+6)$ — additionner 6 AVANT de
           multiplier par $0{,}75$. Mais l'énoncé précise l'ordre : la pompe
@@ -465,6 +484,7 @@ items:
       - id: C
         text: "$86$"
         correct: false
+        misconception: mc.math.sma_suites_numeriques.ordre-notation-recurrence
         feedback: >
           Ceci correspond à $80+6$, en oubliant complètement le retrait de
           la pompe (le facteur $0{,}75$). La relation $u_{n+1}=0{,}75u_n+6$
@@ -473,6 +493,7 @@ items:
       - id: D
         text: "$60$"
         correct: false
+        misconception: mc.math.sma_suites_numeriques.ordre-notation-recurrence
         feedback: >
           Ceci correspond à $0{,}75\times80$, en oubliant l'ajout de 6 fait
           par le tuyau. Il manque la seconde étape de la règle
@@ -509,6 +530,7 @@ items:
       - id: A
         text: "$n=5$, il faut déjà connaître $u_5$."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.ordre-notation-recurrence
         feedback: >
           C'est circulaire : on ne peut pas utiliser $u_5$ pour calculer
           $u_5$. La relation $u_{n+1}=0{,}5u_n+10$ donne un terme à partir
@@ -519,6 +541,7 @@ items:
       - id: C
         text: "$n=5$, il faut déjà connaître $u_6$."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.ordre-notation-recurrence
         feedback: >
           C'est l'inverse du sens de la relation : $u_{n+1}$ se calcule à
           PARTIR de $u_n$ (le terme précédent), pas à partir d'un terme
@@ -526,6 +549,7 @@ items:
       - id: D
         text: "$n=6$, il faut déjà connaître $u_5$."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.ordre-notation-recurrence
         feedback: >
           Avec $n=6$, la relation $u_{n+1}=0{,}5u_n+10$ donne $u_7$, pas
           $u_5$ — ce n'est donc pas le bon choix de $n$ pour l'objectif
@@ -560,6 +584,7 @@ items:
       - id: A
         text: "La suite finira par atteindre exactement 0, puisqu'elle ne cesse de diminuer."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.tendance-implique-limite
         feedback: >
           Rien n'oblige une suite qui diminue à atteindre 0 : elle peut très
           bien diminuer indéfiniment sans jamais l'atteindre, ou se
@@ -568,6 +593,7 @@ items:
       - id: B
         text: "La suite continue de diminuer indéfiniment, sans jamais se stabiliser."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.tendance-implique-limite
         feedback: >
           C'est contredit par les valeurs elles-mêmes : l'écart entre termes
           consécutifs se rétrécit fortement (de $40$ à $30$, l'écart est de
@@ -580,6 +606,7 @@ items:
       - id: D
         text: "Comme les termes diminuent tous, on peut conclure immédiatement que la suite converge vers 20 : les calculs numériques suffisent comme preuve."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.tendance-implique-limite
         feedback: >
           Observer une tendance sur quelques termes calculés numériquement
           ne constitue jamais une preuve pour l'infinité des rangs restants.
@@ -618,6 +645,7 @@ items:
       - id: A
         text: "Aucune erreur : c'est exactement la bonne façon de formuler l'étape d'hérédité dans une démonstration par récurrence bien rédigée."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.recurrence-etape-manquante
         feedback: >
           C'est justement l'erreur : supposer $P(n)$ vraie POUR TOUT $n$
           dès le départ revient à supposer déjà démontré ce qu'on cherche à
@@ -626,6 +654,7 @@ items:
       - id: B
         text: "Il manque l'initialisation : sans elle, l'hérédité seule ne suffit jamais à établir la propriété, quelle que soit la qualité de sa rédaction."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.recurrence-etape-manquante
         feedback: >
           C'est un vrai type d'erreur en récurrence (voir un autre exemple),
           mais ce n'est pas celle illustrée ici : le problème ne porte pas
@@ -634,6 +663,7 @@ items:
       - id: C
         text: "Il faudrait vérifier l'hérédité séparément pour chaque valeur de $n$, et non une fois pour toutes, faute de quoi la démonstration laisse des rangs non couverts."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.recurrence-etape-manquante
         feedback: >
           C'est l'inverse de ce qu'exige la récurrence : l'hérédité se
           démontre UNE fois, pour un rang $n$ quelconque fixé — c'est
@@ -683,6 +713,7 @@ items:
       - id: B
         text: "L'étape est correcte : multiplier les deux membres d'une inégalité par un nombre quelconque en conserve toujours le sens, quel que soit le signe de ce nombre."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.ordre-notation-recurrence
         feedback: >
           C'est faux en général : multiplier une inégalité par un nombre
           NÉGATIF inverse son sens. Ici, $u_n \leq 5$ multiplié par $-2$
@@ -691,6 +722,7 @@ items:
       - id: C
         text: "L'étape est incorrecte : il fallait multiplier par $-2$ l'ÉGALITÉ de récurrence $u_{n+1}=-2u_n+3$, et non l'inégalité $u_n\\leq5$ que l'on suppose vraie."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.ordre-notation-recurrence
         feedback: >
           Ce n'est pas là que se situe l'erreur : multiplier l'hypothèse
           $u_n\leq5$ par $-2$ est la bonne démarche pour faire apparaître
@@ -700,6 +732,7 @@ items:
       - id: D
         text: "L'étape est incorrecte, mais uniquement parce qu'il manque l'initialisation à ce stade du raisonnement, l'hérédité elle-même étant correctement conduite."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.recurrence-etape-manquante
         feedback: >
           L'initialisation est une étape séparée et distincte, qui n'est
           simplement pas encore rédigée ici — ce n'est pas une erreur DANS
@@ -747,6 +780,7 @@ items:
       - id: A
         text: "Suite arithmétique de raison 4 ; $u_3 = 3+3\\times4=15$."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
         feedback: >
           $(u_n)$ n'est pas arithmétique : on passe d'un terme au suivant en
           MULTIPLIANT par 4, pas en ajoutant 4. Appliquer la formule
@@ -758,6 +792,7 @@ items:
       - id: C
         text: "Suite géométrique de raison 4 ; $u_3 = 3\\times 4^2 = 48$."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
         feedback: >
           La nature (géométrique, raison 4) est correcte, mais l'exposant
           est faux : pour $u_3$, on part de $u_0$ et on multiplie par 4
@@ -766,6 +801,7 @@ items:
       - id: D
         text: "Suite géométrique, mais de raison 3 (car $u_0=3$) ; $u_3 = 4\\times 3^3=108$."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
         feedback: >
           Les rôles sont inversés : $3$ est le terme initial $u_0$, et $4$
           est la raison $q$ — pas l'inverse. La formule est
@@ -799,6 +835,7 @@ items:
       - id: A
         text: "$728$"
         correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
         feedback: >
           Ceci vient d'avoir appliqué la formule de somme GÉOMÉTRIQUE,
           $S_n=u_0\times\frac{1-q^{n+1}}{1-q}$, en prenant $q=r=3$. Mais
@@ -807,6 +844,7 @@ items:
       - id: B
         text: "$47{,}5$"
         correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
         feedback: >
           Ceci vient d'avoir compté $n=5$ termes au lieu de $n+1=6$ : de
           $u_0$ à $u_5$, il y a bien SIX termes ($u_0,u_1,u_2,u_3,u_4,u_5$),
@@ -817,6 +855,7 @@ items:
       - id: D
         text: "$114$"
         correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
         feedback: >
           Le calcul $(n+1)\times(u_0+u_n) = 6\times19=114$ est presque
           juste, mais il manque la division par 2 dans la formule
@@ -854,6 +893,7 @@ items:
       - id: A
         text: "$u_n = 5\\times 3^n$"
         correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
         feedback: >
           $(u_n)$ n'est pas géométrique : on passe d'un terme au suivant en
           AJOUTANT 3, pas en multipliant par 3. La formule
@@ -861,6 +901,7 @@ items:
       - id: B
         text: "$u_n = 5n+3$"
         correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
         feedback: >
           Les rôles du terme initial et de la raison sont inversés : ici
           $5$ est $u_0$ (le terme initial, une constante) et $3$ est $r$ (la
@@ -869,6 +910,7 @@ items:
       - id: C
         text: "$u_n = 5+3(n-1)$"
         correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
         feedback: >
           C'est un décalage d'indice d'une unité : cette formule donnerait
           $u_1=5$ (donc $u_0=5$ serait en fait « $u_1$ »). Or $u_0=5$ est
@@ -911,6 +953,7 @@ items:
       - id: B
         text: "C'est correct : un majorant obtenu par une démonstration en bonne et due forme est toujours le plus petit majorant possible de la suite étudiée."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.majorant-atteint-ou-limite
         feedback: >
           C'est faux : si $M$ est un majorant de $(u_n)$, alors $M+1$,
           $M+10$, etc. en sont aussi. Démontrer « $u_n\leq10$ pour tout $n$
@@ -919,6 +962,7 @@ items:
       - id: C
         text: "C'est incorrect : $10$ ne peut pas être un majorant de cette suite, car un majorant doit toujours être atteint par au moins un terme de la suite qu'il majore."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.majorant-atteint-ou-limite
         feedback: >
           Un majorant n'a pas besoin d'être atteint par la suite. « $u_n\leq
           M$ pour tout $n$ » n'exige pas qu'il existe un $n$ avec
@@ -927,6 +971,7 @@ items:
       - id: D
         text: "C'est correct, car toute suite majorée converge nécessairement vers le plus petit de ses majorants, qui est donc bien la limite cherchée ici."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.majorant-atteint-ou-limite
         feedback: >
           Être majorée seule ne garantit même pas la convergence (il faut
           aussi la monotonie, voir le théorème de la limite monotone) — et
@@ -965,6 +1010,7 @@ items:
       - id: A
         text: "Oui, car les termes calculés se rapprochent de plus en plus de $50$ sans jamais le dépasser, si bien que la tendance observée se confirmera indéfiniment."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.preuve-par-termes-calcules
         feedback: >
           Observer que quelques termes restent en dessous de 50 ne prouve
           rien pour l'infinité des rangs non calculés. Une suite peut très
@@ -977,6 +1023,7 @@ items:
       - id: C
         text: "Oui, car la suite étant croissante, elle ne peut que se rapprocher de $50$ sans jamais le dépasser, ce que les quatre premiers termes suffisent à établir."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.preuve-par-termes-calcules
         feedback: >
           Être croissante n'implique par elle-même AUCUN majorant précis :
           rien ne garantit qu'une suite croissante reste sous 50 plutôt que
@@ -986,6 +1033,7 @@ items:
       - id: D
         text: "Non, car il faudrait calculer une infinité de termes pour en être sûr, ce qui est impossible — la propriété ne peut donc jamais être démontrée pour tout $n$."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.preuve-par-termes-calcules
         feedback: >
           C'est une sur-correction : la récurrence permet justement de
           couvrir l'infinité des rangs en un nombre FINI d'étapes
@@ -1026,6 +1074,7 @@ items:
       - id: A
         text: "La conclusion est valide : on voit clairement que les termes diminuent les uns après les autres, et rien n'indique que cette tendance puisse s'inverser plus loin."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.preuve-par-termes-calcules
         feedback: >
           Voir une tendance sur quatre termes n'est pas une preuve pour
           l'infinité des rangs restants. Une suite peut très bien décroître
@@ -1034,6 +1083,7 @@ items:
       - id: B
         text: "La conclusion est valide, car quatre termes consécutifs suffisent toujours à établir une propriété de monotonie pour l'ensemble des rangs d'une suite."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.preuve-par-termes-calcules
         feedback: >
           C'est faux en général : quatre termes ne couvrent qu'un nombre
           fini de rangs parmi une infinité. Aucune propriété portant sur «
@@ -1045,6 +1095,7 @@ items:
       - id: D
         text: "La conclusion n'est pas justifiée, car il faudrait au contraire commencer par vérifier que la suite est bornée avant de pouvoir parler de sa monotonie sur l'ensemble des rangs."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.preuve-par-termes-calcules
         feedback: >
           Bornée et monotone sont deux propriétés indépendantes (voir le chapitre 4) :
           il n'est pas nécessaire de démontrer l'une avant l'autre. Le vrai
@@ -1081,6 +1132,7 @@ items:
       - id: A
         text: "L'affirmation est correcte : un quotient $u_{n+1}/u_n$ inférieur à 1 signifie toujours que la suite décroît, quels que soient les signes des termes en jeu."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.quotient-monotonie-sans-positivite
         feedback: >
           Faux dans ce cas précis : avec $u_n=-100\times0{,}5^n$, on a
           $u_0=-100$, $u_1=-50$, $u_2=-25,\ldots$ — la suite est en réalité
@@ -1090,6 +1142,7 @@ items:
       - id: C
         text: "L'affirmation est correcte, car un quotient constant signifie automatiquement que la suite est géométrique, et toute suite géométrique est monotone."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.quotient-monotonie-sans-positivite
         feedback: >
           Le fait qu'une suite soit géométrique (quotient constant) ne dit
           rien à lui seul sur le SENS de sa monotonie quand les termes
@@ -1099,6 +1152,7 @@ items:
       - id: D
         text: "L'affirmation n'est pas justifiée, car un quotient ne peut jamais servir à étudier la monotonie d'une suite ; seule la différence $u_{n+1}-u_n$ le permet réellement."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.quotient-monotonie-sans-positivite
         feedback: >
           C'est une sur-correction : la méthode du quotient EST valide,
           mais seulement sous une condition précise (tous les $u_n>0$). Ce
@@ -1146,6 +1200,7 @@ items:
       - id: B
         text: "Oui, le calcul de $f(x)-x$ montre bien que la suite est croissante, et il n'y a rien à ajouter à ce raisonnement pour conclure."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.signe-fx-mauvais-domaine
         feedback: >
           Le calcul $f(x)-x>0$ pour $x<20$ est vrai en lui-même, mais il ne
           s'applique pas à notre suite : les $u_n$ vivent tous dans
@@ -1154,6 +1209,7 @@ items:
       - id: C
         text: "Non, car la méthode consistant à étudier $f(x)-x$ ne s'applique jamais aux suites récurrentes de la forme $u_{n+1}=f(u_n)$ ; seule la différence $u_{n+1}-u_n$ calculée directement est valable."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.signe-fx-mauvais-domaine
         feedback: >
           C'est une sur-correction : la méthode $f(x)-x$ EST valide et
           utile pour ce type de suite — c'est justement l'outil présenté au
@@ -1162,6 +1218,7 @@ items:
       - id: D
         text: "Oui, car le signe de $f(x)-x=10-0{,}5x$ est le même quel que soit le réel $x$ considéré, ce qui rend inutile toute restriction d'intervalle."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.signe-fx-mauvais-domaine
         feedback: >
           C'est factuellement faux : $10-0{,}5x$ change de signe en $x=20$
           (positif avant, négatif après). Le signe de cette expression
@@ -1206,6 +1263,7 @@ items:
       - id: A
         text: "L'affirmation est correcte : une forme $+\\infty+(-\\infty)$ n'a jamais de limite déterminable, quel que soit l'exemple choisi et quelles que soient les suites en jeu."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.forme-indeterminee-mal-geree
         feedback: >
           C'est justement l'erreur classique : « forme indéterminée » ne
           signifie pas « pas de limite », mais « il faut transformer
@@ -1217,6 +1275,7 @@ items:
       - id: C
         text: "L'affirmation est incorrecte : il suffisait d'additionner directement les deux limites, ce qui donne $(+\\infty)+(-\\infty)=0$ et clôt immédiatement la question."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.forme-indeterminee-mal-geree
         feedback: >
           $(+\infty)+(-\infty)$ n'est PAS égal à 0 par une règle générale —
           ce n'est justement pas une opération qui se devine : le résultat
@@ -1225,6 +1284,7 @@ items:
       - id: D
         text: "L'affirmation est correcte, et de plus $\\lim(u_n+v_n)$ ne peut être déterminée que dans le cas où $u_n$ et $v_n$ convergent toutes les deux vers une limite finie."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.forme-indeterminee-mal-geree
         feedback: >
           C'est une exigence inventée et fausse : de nombreuses sommes de
           suites divergentes ont une limite parfaitement déterminable après
@@ -1262,6 +1322,7 @@ items:
       - id: A
         text: "$+\\infty$, car $u_0=1000$ est un grand nombre positif."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.limite-liee-terme-initial
         feedback: >
           La valeur de $u_0$ n'a aucune influence sur le SENS de la limite
           d'une suite arithmétique — seul le signe de la raison $r$
@@ -1270,6 +1331,7 @@ items:
       - id: D
         text: "La suite n'a pas de limite car $r$ est négatif."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
         feedback: >
           C'est une confusion avec la règle des suites GÉOMÉTRIQUES, où
           c'est la condition $q\leq-1$ qui empêche l'existence d'une limite.
@@ -1283,6 +1345,7 @@ items:
       - id: B
         text: "$1000$, car une suite arithmétique converge toujours vers son premier terme."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.limite-liee-terme-initial
         feedback: >
           C'est faux : une suite arithmétique de raison $r\neq0$ ne
           converge JAMAIS (elle tend vers $+\infty$ si $r>0$, vers
@@ -1321,6 +1384,7 @@ items:
       - id: A
         text: "La conclusion est correcte : $u_n$ étant plus grande que $v_n$, elle est nécessairement majorée."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique
         feedback: >
           C'est l'inverse du théorème de comparaison : si $u_n\geq v_n$ et
           que $v_n\to+\infty$, alors $u_n$ « hérite » du fait de dépasser
@@ -1329,6 +1393,7 @@ items:
       - id: C
         text: "La conclusion est incorrecte, car on ne peut rien dire sur $u_n$ sans connaître une minoration de $v_n$ également."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique
         feedback: >
           Aucune information supplémentaire n'est nécessaire : le théorème
           de comparaison, avec seulement $u_n\geq v_n$ et $v_n\to+\infty$,
@@ -1336,6 +1401,7 @@ items:
       - id: D
         text: "La conclusion est correcte, car une suite plus grande qu'une suite qui tend vers $+\\infty$ finit toujours par se stabiliser à une valeur finie."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique
         feedback: >
           C'est l'inverse de ce qui se passe : une suite plus grande qu'une
           suite qui explose vers $+\infty$ explose elle aussi vers
@@ -1381,6 +1447,7 @@ items:
       - id: B
         text: "La conclusion est correcte : une seule borne qui tend vers $0$ suffit à appliquer le théorème des gendarmes, dès lors que l'inégalité est vraie pour tout $n$."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique
         feedback: >
           Le théorème des gendarmes a besoin de DEUX bornes, une en
           dessous et une au-dessus, convergeant toutes deux vers la même
@@ -1390,6 +1457,7 @@ items:
       - id: C
         text: "La conclusion est incorrecte, car il faudrait que $w_n$ soit positive pour tout $n$ afin de pouvoir appliquer le théorème des gendarmes à cette majoration."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique
         feedback: >
           La positivité n'est pas une condition du théorème des gendarmes.
           La vraie condition manquante ici est l'absence d'une deuxième
@@ -1397,6 +1465,7 @@ items:
       - id: D
         text: "La conclusion est correcte, car toute suite majorée par une suite convergente est automatiquement convergente, et vers la même limite que celle qui la majore."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique
         feedback: >
           C'est faux : être majorée par une suite qui converge ne garantit
           ni la convergence, ni a fortiori la même limite. Par exemple,
@@ -1433,6 +1502,7 @@ items:
       - id: A
         text: "Elle converge nécessairement, car toute suite croissante finit par se stabiliser."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.monotone-hypothese-partielle
         feedback: >
           Le théorème de la limite monotone exige croissante ET majorée
           ensemble pour garantir la convergence. Une suite croissante mais
@@ -1444,6 +1514,7 @@ items:
       - id: C
         text: "On ne peut rien affirmer du tout sans plus d'informations sur la suite."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.monotone-hypothese-partielle
         feedback: >
           Le théorème de la limite monotone couvre justement ce cas :
           « croissante et non majorée » est une situation décisive, qui
@@ -1452,6 +1523,7 @@ items:
       - id: D
         text: "$\\lim\\limits_{n\\to+\\infty}u_n = -\\infty$, car une suite non majorée est nécessairement non bornée aussi vers le bas."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.monotone-hypothese-partielle
         feedback: >
           « Non majorée » (pas de plafond) ne veut pas dire « non minorée »
           (pas de plancher) — ce sont deux notions indépendantes. Une suite
@@ -1488,6 +1560,7 @@ items:
       - id: A
         text: "C'est correct : le théorème de la limite monotone donne directement la valeur de la limite, qui est toujours le minorant utilisé dans la démonstration."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.majorant-atteint-ou-limite
         feedback: >
           C'est le point capital à ne pas confondre : le théorème de la
           limite monotone garantit seulement l'EXISTENCE de la limite, pas
@@ -1497,6 +1570,7 @@ items:
       - id: D
         text: "C'est correct, à la seule condition que $3$ soit bien le plus petit minorant possible de la suite, ce que l'énoncé laisse ici entendre."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.majorant-atteint-ou-limite
         feedback: >
           Même si $3$ était le plus petit minorant possible (la « borne
           inférieure » exacte), rien ne garantirait encore que la suite
@@ -1509,6 +1583,7 @@ items:
       - id: C
         text: "C'est incorrect : une suite décroissante et minorée ne converge pas forcément, il faudrait en plus qu'elle soit majorée pour que le théorème s'applique."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.monotone-hypothese-partielle
         feedback: >
           C'est une condition superflue : une suite décroissante est
           automatiquement majorée par son premier terme $u_0$ (puisqu'elle
@@ -1551,6 +1626,7 @@ items:
       - id: A
         text: "Oui, car le théorème de la limite monotone s'applique à toute suite bornée, qu'elle soit monotone ou non, la bornitude étant sa seule véritable hypothèse."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.monotone-hypothese-partielle
         feedback: >
           Le nom du théorème le dit : il exige la MONOTONIE (croissante ou
           décroissante), en plus de la majoration/minoration. Être bornée
@@ -1559,6 +1635,7 @@ items:
       - id: C
         text: "Oui, car toute suite bornée converge nécessairement, qu'elle soit monotone ou non, et le théorème ne fait ici que confirmer ce résultat général."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.monotone-hypothese-partielle
         feedback: >
           C'est faux : par exemple $u_n=(-1)^n$ est bornée ($-1\leq
           u_n\leq1$) mais oscille indéfiniment entre $-1$ et $1$ sans jamais
@@ -1567,6 +1644,7 @@ items:
       - id: D
         text: "Non, car il faudrait d'abord démontrer que la suite est arithmétique ou géométrique avant de pouvoir utiliser le moindre théorème de convergence à son sujet."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.monotone-hypothese-partielle
         feedback: >
           Le théorème de la limite monotone ne demande rien de tel : il
           s'applique à n'importe quelle suite croissante-majorée ou
@@ -1611,6 +1689,7 @@ items:
       - id: B
         text: "C'est correct : $L=1$ est bien LA limite de la suite, la résolution de $L=f(L)$ suffit toujours à la trouver."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.point-fixe-prouve-convergence
         feedback: >
           Résoudre $L=f(L)$ trouve un point fixe, mais ne prouve JAMAIS à
           lui seul que la suite converge. Ici, en calculant les termes :
@@ -1620,6 +1699,7 @@ items:
       - id: C
         text: "C'est incorrect : $L=1$ n'est pas solution de l'équation $L=f(L)$ ; il fallait trouver $L=-3$."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.point-fixe-prouve-convergence
         feedback: >
           L'algèbre de l'élève est en fait correcte : $L=-2L+3 \Rightarrow
           3L=3 \Rightarrow L=1$ est bien la bonne résolution de $L=f(L)$.
@@ -1629,6 +1709,7 @@ items:
       - id: D
         text: "C'est correct, car dès qu'une fonction $f$ admet un point fixe, la suite définie par $u_{n+1}=f(u_n)$ converge automatiquement vers ce point fixe, quelle que soit la fonction considérée."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.point-fixe-prouve-convergence
         feedback: >
           C'est faux en général — et ce contre-exemple le montre : $f$ a
           bien un point fixe ($L=1$), et pourtant $(u_n)$ ne converge pas du
@@ -1678,6 +1759,7 @@ items:
       - id: A
         text: "Il n'y a aucune erreur dans ce raisonnement : la raison de la suite géométrique obtenue est bien l'expression $0{,}3u_n$, qui dépend du rang considéré."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
         feedback: >
           Une raison géométrique doit TOUJOURS être un nombre fixe, jamais
           une expression qui dépend de $n$ ou de $u_n$. « $0{,}3u_n$ » n'est
@@ -1689,6 +1771,7 @@ items:
       - id: C
         text: "L'erreur est d'avoir soustrait $10$ : il fallait poser $v_n = u_n+10$ pour obtenir une suite géométrique, la limite devant être ajoutée et non retranchée."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
         feedback: >
           C'est l'inverse : c'est bien $v_n=u_n-10$ (soustraire le point
           fixe $L=10$) qui « recentre » la suite pour la rendre géométrique.
@@ -1697,6 +1780,7 @@ items:
       - id: D
         text: "L'erreur est que la suite $(v_n)$ ne peut pas être géométrique ici, puisque la suite $(u_n)$ dont elle est issue n'est elle-même ni arithmétique ni géométrique."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
         feedback: >
           C'est justement l'intérêt de la technique de la suite auxiliaire
           (chapitres 3 et 9) : transformer une suite $u_{n+1}=f(u_n)$ qui n'est
@@ -1743,6 +1827,7 @@ items:
       - id: A
         text: "Oui : l'écart tend vers $0$ et les deux suites convergent vers la même limite, ce qui est exactement ce que demande la définition des suites adjacentes."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.adjacentes-condition-incomplete
         feedback: >
           Ce n'est pas suffisant : la définition des suites adjacentes
           exige en plus que l'une soit croissante ET l'autre décroissante.
@@ -1751,6 +1836,7 @@ items:
       - id: B
         text: "Non, car pour être adjacentes il faudrait que $u_n \\geq v_n$ pour tout $n$, alors qu'ici c'est l'inverse qui se produit à chacun des rangs considérés."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.adjacentes-condition-incomplete
         feedback: >
           Ce n'est pas la bonne raison : l'ordre $u_n\leq v_n$ (comme c'est
           le cas ici) est en fait la situation ATTENDUE pour deux suites
@@ -1763,6 +1849,7 @@ items:
       - id: D
         text: "Oui, car deux suites qui convergent vers une même limite sont automatiquement adjacentes, l'écart entre elles tendant nécessairement vers zéro."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.adjacentes-condition-incomplete
         feedback: >
           C'est faux : converger vers la même limite ne dit rien sur la
           monotonie de chacune des suites. Deux suites peuvent très bien
@@ -1807,6 +1894,7 @@ items:
       - id: A
         text: "C'est correct : pour deux suites adjacentes, la limite commune est toujours exactement la moyenne des deux termes pris à un même rang quelconque."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.adjacentes-condition-incomplete
         feedback: >
           C'est faux en général : le théorème des suites adjacentes garantit
           seulement l'encadrement $u_n\leq L\leq v_n$ pour tout $n$, pas que
@@ -1815,6 +1903,7 @@ items:
       - id: C
         text: "C'est incorrect, car on ne peut rien affirmer sur $L$ tant qu'on n'a pas calculé les termes $u_n$ et $v_n$ pour TOUS les rangs $n$, ce qui est hors de portée."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.adjacentes-condition-incomplete
         feedback: >
           C'est une sur-correction : l'encadrement $u_{10}\leq L\leq v_{10}$
           est déjà une information valide et exploitable à partir d'un seul
@@ -1823,6 +1912,7 @@ items:
       - id: D
         text: "C'est correct, car pour deux suites adjacentes la quantité $(u_n+v_n)/2$ est constante et vaut exactement $L$ à chaque rang, ce qui donne la limite d'un coup."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.adjacentes-condition-incomplete
         feedback: >
           C'est un invariant inventé et faux : rien dans la définition des
           suites adjacentes ne garantit que la moyenne $(u_n+v_n)/2$ reste
@@ -1872,6 +1962,7 @@ items:
       - id: B
         text: "Rien ne manque : la croissance suffit à elle seule à garantir la convergence par le théorème de la limite monotone, sans autre hypothèse à vérifier."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.monotone-hypothese-partielle
         feedback: >
           Le théorème de la limite monotone exige les DEUX conditions
           ensemble : croissante ET majorée. Une suite croissante mais non
@@ -1880,6 +1971,7 @@ items:
       - id: C
         text: "Il manque de calculer d'abord la limite $L$ par la méthode du point fixe, avant de pouvoir invoquer le théorème de la limite monotone pour conclure."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.point-fixe-prouve-convergence
         feedback: >
           C'est l'ordre inverse de la bonne démarche : le point fixe ($R8$)
           se calcule APRÈS avoir établi la convergence (via le théorème de
@@ -1888,6 +1980,7 @@ items:
       - id: D
         text: "Il manque de vérifier que $u_0=2$ est bien inférieur à $u_1$, faute de quoi le théorème de la limite monotone ne peut jamais s'appliquer à cette suite."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.recurrence-etape-manquante
         feedback: >
           Vérifier un seul pas ($u_0<u_1$) ne prouve rien pour l'infinité
           des rangs suivants — c'est exactement le problème que la
@@ -1930,6 +2023,7 @@ items:
       - id: A
         text: "$v_0=13$, raison $=\\dfrac{2}{5}$"
         correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
         feedback: >
           Erreur de signe dans le calcul de $v_0$ : $v_0=u_0-15=2-15=-13$,
           pas $13$. C'est l'ordre de la soustraction qui compte :
@@ -1940,6 +2034,7 @@ items:
       - id: C
         text: "$v_0=-13$, raison $=9$"
         correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
         feedback: >
           $9$ est le terme constant de $f(x)=\frac{2}{5}x+9$, pas la raison
           de la suite auxiliaire $(v_n)$. En développant
@@ -1949,6 +2044,7 @@ items:
       - id: D
         text: "$v_0=-13$, raison $=15$"
         correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
         feedback: >
           $15$ est la valeur du point fixe $L$, pas la raison de la suite
           géométrique $(v_n)$. La raison se lit dans le calcul de
@@ -1992,6 +2088,7 @@ items:
       - id: A
         text: "$\\lim u_n = 15$, mais le théorème de la limite monotone démontré plus tôt était inutile puisqu'on a maintenant une formule explicite."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.monotone-hypothese-partielle
         feedback: >
           La valeur $15$ est correcte, mais pas le jugement sur le
           théorème : loin d'être inutile, il fournit une vérification
@@ -2003,6 +2100,7 @@ items:
       - id: C
         text: "$\\lim u_n = -13$, car c'est le coefficient qui domine dans la formule explicite quand $n$ est grand."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
         feedback: >
           C'est l'inverse : quand $n\to+\infty$, c'est le terme
           $\left(\frac{2}{5}\right)^n$ qui tend vers $0$ (car
@@ -2012,6 +2110,7 @@ items:
       - id: D
         text: "La suite n'a pas de limite unique, car deux méthodes différentes (théorème de la limite monotone et formule explicite) donneraient a priori deux résultats potentiellement différents."
         correct: false
+        misconception: mc.math.sma_suites_numeriques.monotone-hypothese-partielle
         feedback: >
           La limite d'une suite convergente est toujours UNIQUE (chapitre 6) : deux
           méthodes valides appliquées à la même suite doivent nécessairement

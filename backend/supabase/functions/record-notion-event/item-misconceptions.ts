@@ -126,44 +126,104 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ]
   },
   "maths/calcul-integral": {
-    "CI-1": [],
-    "CI-10": [],
-    "CI-11": [],
-    "CI-12": [],
-    "CI-13": [],
-    "CI-14": [],
-    "CI-15": [],
+    "CI-1": [
+      "mc.math.maths_calcul_integral.constante-et-bornes"
+    ],
+    "CI-10": [
+      "mc.math.maths_calcul_integral.constante-et-bornes"
+    ],
+    "CI-11": [
+      "mc.math.maths_calcul_integral.hypothese-non-verifiee",
+      "mc.math.maths_calcul_integral.integrale-signee-vs-aire",
+      "mc.math.maths_calcul_integral.primitive-vs-derivee"
+    ],
+    "CI-12": [
+      "mc.math.maths_calcul_integral.hypothese-non-verifiee",
+      "mc.math.maths_calcul_integral.linearite-abusive"
+    ],
+    "CI-13": [
+      "mc.math.maths_calcul_integral.constante-et-bornes"
+    ],
+    "CI-14": [
+      "mc.math.maths_calcul_integral.chasles-mal-appliquee"
+    ],
+    "CI-15": [
+      "mc.math.maths_calcul_integral.constante-et-bornes"
+    ],
     "CI-16": [
       "mc.math.maths_calcul_integral.chasles-mal-appliquee"
     ],
-    "CI-17": [],
-    "CI-18": [],
-    "CI-19": [],
+    "CI-17": [
+      "mc.math.maths_calcul_integral.constante-et-bornes",
+      "mc.math.maths_calcul_integral.hypothese-non-verifiee",
+      "mc.math.maths_calcul_integral.integrale-signee-vs-aire"
+    ],
+    "CI-18": [
+      "mc.math.maths_calcul_integral.hypothese-non-verifiee"
+    ],
+    "CI-19": [
+      "mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur"
+    ],
     "CI-2": [
       "mc.math.maths_calcul_integral.linearite-abusive"
     ],
-    "CI-20": [],
-    "CI-21": [],
-    "CI-22": [],
-    "CI-23": [],
-    "CI-24": [],
+    "CI-20": [
+      "mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur"
+    ],
+    "CI-21": [
+      "mc.math.maths_calcul_integral.hypothese-non-verifiee",
+      "mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur"
+    ],
+    "CI-22": [
+      "mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee"
+    ],
+    "CI-23": [
+      "mc.math.maths_calcul_integral.hypothese-non-verifiee",
+      "mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee"
+    ],
+    "CI-24": [
+      "mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe"
+    ],
     "CI-25": [
       "mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe"
     ],
-    "CI-26": [],
-    "CI-27": [],
-    "CI-28": [],
-    "CI-29": [],
-    "CI-3": [],
-    "CI-30": [],
-    "CI-4": [],
-    "CI-5": [],
+    "CI-26": [
+      "mc.math.maths_calcul_integral.integrale-signee-vs-aire"
+    ],
+    "CI-27": [
+      "mc.math.maths_calcul_integral.conversion-unites-aire"
+    ],
+    "CI-28": [
+      "mc.math.maths_calcul_integral.integrale-signee-vs-aire"
+    ],
+    "CI-29": [
+      "mc.math.maths_calcul_integral.hypothese-non-verifiee",
+      "mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur"
+    ],
+    "CI-3": [
+      "mc.math.maths_calcul_integral.hypothese-non-verifiee"
+    ],
+    "CI-30": [
+      "mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee"
+    ],
+    "CI-4": [
+      "mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee"
+    ],
+    "CI-5": [
+      "mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe"
+    ],
     "CI-6": [
       "mc.math.maths_calcul_integral.integrale-signee-vs-aire"
     ],
-    "CI-7": [],
-    "CI-8": [],
-    "CI-9": [],
+    "CI-7": [
+      "mc.math.maths_calcul_integral.aire-naive-geometrique"
+    ],
+    "CI-8": [
+      "mc.math.maths_calcul_integral.aire-naive-geometrique"
+    ],
+    "CI-9": [
+      "mc.math.maths_calcul_integral.aire-naive-geometrique"
+    ],
     "cp-aire-signe": [
       "mc.math.maths_calcul_integral.integrale-signee-vs-aire"
     ],
@@ -1434,39 +1494,115 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ]
   },
   "maths/suites-numeriques": {
-    "SUITES-1": [],
-    "SUITES-10": [],
-    "SUITES-11": [],
-    "SUITES-12": [],
-    "SUITES-13": [],
-    "SUITES-14": [],
-    "SUITES-15": [],
-    "SUITES-16": [],
-    "SUITES-17": [],
-    "SUITES-18": [],
-    "SUITES-19": [],
-    "SUITES-2": [],
-    "SUITES-20": [],
-    "SUITES-21": [],
-    "SUITES-22": [],
-    "SUITES-23": [],
-    "SUITES-24": [],
-    "SUITES-25": [],
-    "SUITES-26": [],
-    "SUITES-27": [],
-    "SUITES-28": [],
-    "SUITES-29": [],
-    "SUITES-3": [],
-    "SUITES-30": [],
-    "SUITES-31": [],
-    "SUITES-32": [],
-    "SUITES-33": [],
-    "SUITES-4": [],
-    "SUITES-5": [],
-    "SUITES-6": [],
-    "SUITES-7": [],
-    "SUITES-8": [],
-    "SUITES-9": [],
+    "SUITES-1": [
+      "mc.math.sma_suites_numeriques.preuve-par-termes-calcules",
+      "mc.math.sma_suites_numeriques.recurrence-etape-manquante"
+    ],
+    "SUITES-10": [
+      "mc.math.sma_suites_numeriques.recurrence-etape-manquante"
+    ],
+    "SUITES-11": [
+      "mc.math.sma_suites_numeriques.ordre-notation-recurrence",
+      "mc.math.sma_suites_numeriques.recurrence-etape-manquante"
+    ],
+    "SUITES-12": [
+      "mc.math.sma_suites_numeriques.arith-geom-confondues"
+    ],
+    "SUITES-13": [
+      "mc.math.sma_suites_numeriques.arith-geom-confondues"
+    ],
+    "SUITES-14": [
+      "mc.math.sma_suites_numeriques.arith-geom-confondues"
+    ],
+    "SUITES-15": [
+      "mc.math.sma_suites_numeriques.majorant-atteint-ou-limite"
+    ],
+    "SUITES-16": [
+      "mc.math.sma_suites_numeriques.preuve-par-termes-calcules"
+    ],
+    "SUITES-17": [
+      "mc.math.sma_suites_numeriques.preuve-par-termes-calcules"
+    ],
+    "SUITES-18": [
+      "mc.math.sma_suites_numeriques.quotient-monotonie-sans-positivite"
+    ],
+    "SUITES-19": [
+      "mc.math.sma_suites_numeriques.signe-fx-mauvais-domaine"
+    ],
+    "SUITES-2": [
+      "mc.math.sma_suites_numeriques.bornee-implique-monotone"
+    ],
+    "SUITES-20": [
+      "mc.math.sma_suites_numeriques.forme-indeterminee-mal-geree"
+    ],
+    "SUITES-21": [
+      "mc.math.sma_suites_numeriques.arith-geom-confondues",
+      "mc.math.sma_suites_numeriques.limite-liee-terme-initial"
+    ],
+    "SUITES-22": [
+      "mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique"
+    ],
+    "SUITES-23": [
+      "mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique"
+    ],
+    "SUITES-24": [
+      "mc.math.sma_suites_numeriques.monotone-hypothese-partielle"
+    ],
+    "SUITES-25": [
+      "mc.math.sma_suites_numeriques.majorant-atteint-ou-limite",
+      "mc.math.sma_suites_numeriques.monotone-hypothese-partielle"
+    ],
+    "SUITES-26": [
+      "mc.math.sma_suites_numeriques.monotone-hypothese-partielle"
+    ],
+    "SUITES-27": [
+      "mc.math.sma_suites_numeriques.point-fixe-prouve-convergence"
+    ],
+    "SUITES-28": [
+      "mc.math.sma_suites_numeriques.arith-geom-confondues"
+    ],
+    "SUITES-29": [
+      "mc.math.sma_suites_numeriques.adjacentes-condition-incomplete"
+    ],
+    "SUITES-3": [
+      "mc.math.sma_suites_numeriques.arith-geom-confondues",
+      "mc.math.sma_suites_numeriques.limite-liee-terme-initial"
+    ],
+    "SUITES-30": [
+      "mc.math.sma_suites_numeriques.adjacentes-condition-incomplete"
+    ],
+    "SUITES-31": [
+      "mc.math.sma_suites_numeriques.monotone-hypothese-partielle",
+      "mc.math.sma_suites_numeriques.point-fixe-prouve-convergence",
+      "mc.math.sma_suites_numeriques.recurrence-etape-manquante"
+    ],
+    "SUITES-32": [
+      "mc.math.sma_suites_numeriques.arith-geom-confondues"
+    ],
+    "SUITES-33": [
+      "mc.math.sma_suites_numeriques.arith-geom-confondues",
+      "mc.math.sma_suites_numeriques.monotone-hypothese-partielle"
+    ],
+    "SUITES-4": [
+      "mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique"
+    ],
+    "SUITES-5": [
+      "mc.math.sma_suites_numeriques.limite-liee-terme-initial",
+      "mc.math.sma_suites_numeriques.majorant-atteint-ou-limite",
+      "mc.math.sma_suites_numeriques.point-fixe-prouve-convergence"
+    ],
+    "SUITES-6": [
+      "mc.math.sma_suites_numeriques.adjacentes-condition-incomplete"
+    ],
+    "SUITES-7": [
+      "mc.math.sma_suites_numeriques.ordre-notation-recurrence"
+    ],
+    "SUITES-8": [
+      "mc.math.sma_suites_numeriques.ordre-notation-recurrence"
+    ],
+    "SUITES-9": [
+      "mc.math.sma_suites_numeriques.tendance-implique-limite"
+    ],
     "cp-convergence-pointfixe": [
       "mc.math.sma_suites_numeriques.limite-liee-terme-initial",
       "mc.math.sma_suites_numeriques.point-fixe-prouve-convergence"
