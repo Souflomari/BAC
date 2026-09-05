@@ -60,7 +60,7 @@ checkpoints:
 
     choices:
       - id: A
-        text: "Elle saute instantanément à $E$ : le condensateur se remplit d'un coup dès la fermeture."
+        text: "Elle saute instantanément à $E$ : le condensateur se remplit d'un seul coup dès la fermeture de l'interrupteur."
         correct: false
         misconception: mc.physics.pc_rc_charge.uc-saute-instantanement
         feedback: |
@@ -72,7 +72,7 @@ checkpoints:
           fini) : elle ne peut pas sauter.
 
       - id: B
-        text: "Elle monte en ligne droite, à vitesse constante, jusqu'à $E$, puis s'arrête net."
+        text: "Elle monte en ligne droite, à vitesse rigoureusement constante, jusqu'à $E$, puis s'arrête net une fois cette valeur atteinte."
         correct: false
         misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
         feedback: |
@@ -92,7 +92,7 @@ checkpoints:
           leçon.
 
       - id: D
-        text: "Elle dépasse $E$ un bref instant, puis redescend et se stabilise à $E$."
+        text: "Elle dépasse $E$ pendant un bref instant, puis redescend et finit par se stabiliser exactement sur cette valeur."
         correct: false
         misconception: mc.physics.pc_rc_charge.uc-depasse-E
         feedback: |
@@ -134,7 +134,7 @@ checkpoints:
           $u_C(0) = E(1 - e^{0}) = 0$. La tension part de zéro, puis grimpe.
 
       - id: B
-        text: "$u_C(0^+) = E$ : le condensateur se charge instantanément."
+        text: "$u_C(0^+) = E$ : le condensateur se charge instantanément dès la fermeture de l'interrupteur."
         correct: false
         misconception: mc.physics.pc_rc_charge.uc-saute-instantanement
         feedback: |
@@ -143,7 +143,7 @@ checkpoints:
           elle vaut $0$ à $t = 0^+$, exactement comme juste avant.
 
       - id: C
-        text: "$u_C(0^+) = E$, atteinte en montant en ligne droite dès la fermeture."
+        text: "$u_C(0^+) = E$, atteinte en montant en ligne droite dès l'instant de la fermeture du circuit."
         correct: false
         misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
         feedback: |
@@ -152,7 +152,7 @@ checkpoints:
           $t = 0^+$ est $0$, pas $E$ : la tension part de zéro.
 
       - id: D
-        text: "$u_C(0^+)$ dépasse brièvement $E$ avant de se stabiliser."
+        text: "$u_C(0^+)$ dépasse brièvement la valeur $E$ avant de se stabiliser sur celle-ci."
         correct: false
         misconception: mc.physics.pc_rc_charge.uc-depasse-E
         feedback: |
@@ -184,7 +184,7 @@ checkpoints:
 
     choices:
       - id: A
-        text: "Progressivement, en se rapprochant de $E$ de plus en plus lentement : environ $63\\ \\%$ à $t = \\tau$, plus de $99\\ \\%$ à $t \\approx 5\\tau$, sans jamais sauter ni dépasser $E$."
+        text: "Progressivement, en se rapprochant de $E$ de plus en plus lentement : environ $63\\ \\%$ à $t = \\tau$, plus de $99\\ \\%$ à $t \\approx 5\\tau$."
         correct: true
         feedback: |
           Exact. $u_C(t) = E\left(1 - e^{-t/\tau}\right)$ est une approche
@@ -193,7 +193,7 @@ checkpoints:
           de temps, puis s'approche de $E$ sans jamais le dépasser.
 
       - id: B
-        text: "Instantanément : dès la fermeture, $u_C$ saute à $E$."
+        text: "Instantanément : dès la fermeture de l'interrupteur, la tension $u_C$ saute directement à $E$."
         correct: false
         misconception: mc.physics.pc_rc_charge.uc-saute-instantanement
         feedback: |
@@ -202,7 +202,7 @@ checkpoints:
           $\tau = RC$.
 
       - id: C
-        text: "En ligne droite, à débit constant, jusqu'à $E$, puis la charge s'arrête net."
+        text: "En ligne droite, à débit rigoureusement constant, jusqu'à la valeur $E$, où la charge s'arrête alors net."
         correct: false
         misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
         feedback: |
@@ -211,7 +211,7 @@ checkpoints:
           impossible. La montée décélère, elle ne suit pas une droite.
 
       - id: D
-        text: "Elle dépasse $E$, puis redescend et se stabilise à $E$."
+        text: "Elle dépasse $E$ un court instant, puis redescend et se stabilise sur cette valeur."
         correct: false
         misconception: mc.physics.pc_rc_charge.uc-depasse-E
         feedback: |
@@ -316,7 +316,7 @@ checkpoints:
           constante de temps.
 
       - id: B
-        text: "$\\tau = R/C$, en secondes."
+        text: "$\\tau = R/C$, exprimée elle aussi en secondes dans le Système International."
         correct: false
         misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
         feedback: |
@@ -325,7 +325,7 @@ checkpoints:
           quotient $R/C$.
 
       - id: C
-        text: "$\\tau = L/R$, comme pour un circuit avec bobine."
+        text: "$\\tau = L/R$, exactement comme dans un circuit comportant une bobine."
         correct: false
         misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
         feedback: |
@@ -334,7 +334,7 @@ checkpoints:
           est $\tau = RC$.
 
       - id: D
-        text: "$\\tau = RC$, mais c'est l'instant précis où la charge s'arrête et où $u_C = E$."
+        text: "$\\tau = RC$, mais c'est l'instant précis où la charge s'arrête et où la tension $u_C$ atteint enfin $E$."
         correct: false
         misconception: mc.physics.pc_rc_charge.tau-instant-d-arret
         feedback: |

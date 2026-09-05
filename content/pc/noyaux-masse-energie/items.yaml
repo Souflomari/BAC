@@ -95,14 +95,13 @@ items:
     choices:
       - id: A
         text: >-
-          Non — $E_l$ est l'énergie qu'il faudrait fournir de l'extérieur
-          pour casser le noyau, pas une énergie que le noyau contient
-          prête à s'échapper.
+          Non — $E_l$ est l'énergie qu'il faudrait fournir de l'extérieur pour casser le
+          noyau, pas une énergie qu'il contiendrait prête à sortir.
         correct: true
       - id: B
         text: >-
-          Oui, un peu à chaque instant, comme une pile qui se décharge
-          lentement.
+          Oui, un peu à chaque instant, exactement comme une pile qui se décharge
+          lentement au fil du temps.
         correct: false
         misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
         feedback: >
@@ -110,7 +109,7 @@ items:
           spontanément : c'est le prix à payer pour le dissocier. Un noyau
           stable ne se dissocie pas tout seul, donc il ne « rend » rien.
       - id: C
-        text: "Oui, mais seulement si le noyau est chauffé."
+        text: "Oui, mais seulement à la condition que le noyau soit chauffé suffisamment fort."
         correct: false
         misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
         feedback: >
@@ -120,8 +119,8 @@ items:
           bien au-delà de ce qu'apporte l'agitation thermique ordinaire.
       - id: D
         text: >-
-          Impossible à savoir sans connaître la constante radioactive
-          $\lambda$ du noyau.
+          Impossible à savoir sans connaître au préalable la constante radioactive
+          $\lambda$ propre à ce noyau.
         correct: false
         misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
         feedback: >
@@ -160,7 +159,7 @@ items:
           Y.
         correct: true
       - id: B
-        text: "Oui, une énergie de liaison totale plus grande signifie toujours un noyau plus stable."
+        text: "Oui : une énergie de liaison totale plus grande signifie toujours un noyau plus solidement lié, donc plus stable."
         correct: false
         misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
         feedback: >
@@ -171,8 +170,8 @@ items:
           honnêtement deux noyaux de tailles différentes.
       - id: C
         text: >-
-          Non, on ne peut rien conclure du tout sans connaître le rapport
-          $N/Z$ de chaque noyau.
+          Non, on ne peut rien conclure du tout sans connaître au préalable le rapport
+          $N/Z$ de chacun des deux noyaux.
         correct: false
         misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
         feedback: >
@@ -183,8 +182,8 @@ items:
           sans connaître $N/Z$.
       - id: D
         text: >-
-          Oui, car $E_l$ est proportionnelle à $A$, donc $E_l/A$ serait
-          aussi deux fois plus grand pour X.
+          Oui, car $E_l$ est proportionnelle à $A$, si bien que $E_l/A$ serait lui aussi
+          deux fois plus grand pour X.
         correct: false
         misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
         feedback: >
@@ -663,8 +662,8 @@ items:
     choices:
       - id: A
         text: >-
-          Le résultat est correct, car l'unité u est déjà une unité du
-          Système International.
+          Le résultat est parfaitement correct, car l'unité de masse atomique u
+          appartient déjà au Système International.
         correct: false
         misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
         feedback: >
@@ -674,16 +673,14 @@ items:
           systèmes d'unités et donne un résultat sans sens physique.
       - id: B
         text: >-
-          Le résultat est faux : il faut d'abord convertir $\Delta m$ de u
-          en kilogrammes avant d'appliquer $E=mc^2$ en unités SI — ou,
-          plus simplement, utiliser directement le raccourci $1\ \text{u}
-          \approx 931{,}5\ \text{MeV}/c^2$ établi au chapitre 2.
+          Le résultat est faux : il faut convertir $\Delta m$ de u en kilogrammes avant
+          d'appliquer $E=mc^2$ en unités SI — ou utiliser le raccourci $1\ \text{u}
+          \approx 931{,}5\ \text{MeV}/c^2$.
         correct: true
       - id: C
         text: >-
-          Le résultat est faux, mais seulement parce qu'il fallait
-          exprimer $c$ en kilomètres par seconde plutôt qu'en mètres par
-          seconde.
+          Le résultat est faux, mais seulement parce qu'il fallait exprimer la célérité
+          $c$ en kilomètres par seconde plutôt qu'en mètres par seconde.
         correct: false
         misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
         feedback: >
@@ -692,9 +689,9 @@ items:
           avec $c$ en unités SI, pas l'unité de $c$ elle-même.
       - id: D
         text: >-
-          Le résultat est faux, mais ça n'a pas d'importance : à
-          l'échelle nucléaire, $\Delta m$ est de toute façon trop petit
-          pour donner une énergie mesurable.
+          Le résultat est faux, mais cela n'a guère d'importance : à l'échelle
+          nucléaire, $\Delta m$ est de toute façon trop petit pour donner une énergie
+          mesurable.
         correct: false
         misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
         feedback: >

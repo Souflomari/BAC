@@ -308,15 +308,13 @@ items:
     choices:
       - id: A
         text: >-
-          $\lambda = 440\ \text{nm}$ à l'intérieur du verre, mais la couleur
-          perçue reste rouge, car c'est la fréquence — invariante — qui
-          détermine la couleur, pas la valeur numérique de $\lambda$.
+          $\lambda = 440\ \text{nm}$ dans le verre, mais la couleur perçue reste rouge :
+          c'est la fréquence, invariante, qui détermine la couleur.
         correct: true
       - id: B
         text: >-
-          $\lambda$ reste égale à $660\ \text{nm}$ dans le verre : la
-          longueur d'onde d'une radiation ne change jamais, quel que soit le
-          milieu traversé.
+          $\lambda$ reste égale à $660\ \text{nm}$ dans le verre : la longueur d'onde
+          d'une radiation ne change jamais, quel que soit le milieu qu'elle traverse.
         correct: false
         misconception: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
         feedback: >
@@ -327,8 +325,8 @@ items:
           d'indice $n$.
       - id: C
         text: >-
-          $\lambda = 440\ \text{nm}$ à l'intérieur du verre, et la lumière
-          est donc perçue comme bleue tant qu'elle reste dans le verre.
+          $\lambda = 440\ \text{nm}$ à l'intérieur du verre, et la lumière y est donc
+          perçue comme bleue aussi longtemps qu'elle reste dans ce milieu.
         correct: false
         misconception: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
         feedback: >
@@ -338,7 +336,7 @@ items:
           n'a pas changé. La lumière reste rouge, même si sa longueur d'onde
           locale correspond numériquement à une valeur du bleu dans le vide.
       - id: D
-        text: "$\\lambda = 990\\ \\text{nm}$ à l'intérieur du verre, car $\\lambda = n \\times \\lambda_0$."
+        text: "$\\lambda = 990\\ \\text{nm}$ à l'intérieur du verre, puisque la longueur d'onde s'y obtient par le produit $\\lambda = n \\times \\lambda_0$."
         correct: false
         misconception: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
         feedback: >
@@ -380,15 +378,13 @@ items:
     choices:
       - id: A
         text: >-
-          Le violet est dévié plus fortement que le rouge, car
-          $n_{violet} > n_{rouge}$ : un indice plus grand rapproche le rayon
-          réfracté de la normale, donc l'écarte davantage de sa direction
-          initiale.
+          Le violet est dévié plus fortement que le rouge, car $n_{violet} > n_{rouge}$
+          : un indice plus grand rapproche le rayon réfracté de la normale.
         correct: true
       - id: B
         text: >-
-          Le rouge est dévié plus fortement que le violet, car le rouge a
-          une plus grande longueur d'onde.
+          Le rouge est dévié plus fortement que le violet, car le rouge possède une
+          longueur d'onde nettement plus grande dans le vide.
         correct: false
         misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
         feedback: >
@@ -398,8 +394,8 @@ items:
           grand indice, qui est dévié le plus fortement — pas le rouge.
       - id: C
         text: >-
-          Rouge et violet sont déviés de façon identique, car l'indice $n$
-          d'un verre ne dépend pas de la couleur de la lumière.
+          Rouge et violet sont déviés de façon rigoureusement identique, car l'indice
+          $n$ d'un verre ne dépend jamais de la couleur de la lumière.
         correct: false
         misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
         feedback: >
@@ -410,8 +406,8 @@ items:
           prisme ne pourrait jamais disperser la lumière blanche.
       - id: D
         text: >-
-          On ne peut rien conclure sans connaître les longueurs d'onde
-          exactes du rouge et du violet.
+          On ne peut rien conclure sans connaître les longueurs d'onde exactes du rouge
+          et du violet dans le verre du prisme.
         correct: false
         misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
         feedback: >
@@ -925,16 +921,14 @@ items:
     choices:
       - id: A
         text: >-
-          La fréquence $\nu$ reste inchangée (elle est imposée par la
-          source), tandis que la longueur d'onde $\lambda$ diminue, car
-          $\lambda$ dépend de la vitesse de propagation qui change avec le
-          milieu.
+          La fréquence $\nu$ reste inchangée, imposée par la source, tandis que la
+          longueur d'onde $\lambda$ diminue, car elle dépend de la vitesse de
+          propagation.
         correct: true
       - id: B
         text: >-
-          La longueur d'onde $\lambda$ reste inchangée, tandis que la
-          fréquence $\nu$ diminue, car c'est elle qui dépend de la vitesse de
-          propagation.
+          La longueur d'onde $\lambda$ reste inchangée, tandis que la fréquence $\nu$
+          diminue, car c'est elle qui dépend de la vitesse de propagation du milieu.
         correct: false
         misconception: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
         feedback: >
@@ -953,9 +947,8 @@ items:
           diminue.
       - id: D
         text: >-
-          Ni la fréquence $\nu$ ni la longueur d'onde $\lambda$ ne changent :
-          seule la vitesse de propagation $v$ est affectée par le changement
-          de milieu.
+          Ni la fréquence $\nu$ ni la longueur d'onde $\lambda$ ne changent : seule la
+          vitesse de propagation $v$ se trouve affectée par le changement de milieu.
         correct: false
         misconception: mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu
         feedback: >
@@ -1050,7 +1043,7 @@ items:
         correct: true
       - id: B
         text: >-
-          Un spectre de couleurs, comme avec la lumière blanche, car tout
+          Un spectre de couleurs, exactement comme avec la lumière blanche, car tout
           prisme disperse nécessairement la lumière qui le traverse.
         correct: false
         misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
@@ -1060,8 +1053,8 @@ items:
           monochromatique), il n'y a rien à séparer.
       - id: C
         text: >-
-          Aucune déviation du faisceau, car un prisme ne peut dévier que de
-          la lumière polychromatique.
+          Aucune déviation du faisceau, car un prisme ne peut dévier que de la lumière
+          polychromatique, jamais monochromatique.
         correct: false
         misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
         feedback: >
@@ -1071,8 +1064,8 @@ items:
           bien dévié.
       - id: D
         text: >-
-          Un spectre de couleurs, mais uniquement si l'indice du verre dépend
-          fortement de la longueur d'onde utilisée.
+          Un spectre de couleurs, mais uniquement si l'indice du verre dépend fortement
+          de la longueur d'onde du laser utilisé.
         correct: false
         misconception: mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme
         feedback: >
@@ -1290,11 +1283,9 @@ items:
     choices:
       - id: A
         text: >-
-          L'affirmation est fausse : bien qu'un cheveu (environ $0{,}08\
-          \text{mm}$) soit environ 125 fois plus large que $\lambda_0$, il
-          reste de l'ordre du dixième de millimètre, assez fin pour produire
-          une diffraction mesurable ; $\theta = \lambda_0/a \approx
-          7{,}9\times10^{-3}\ \text{rad}$.
+          L'affirmation est fausse : bien qu'un cheveu soit environ 125 fois plus large
+          que $\lambda_0$, il reste assez fin pour produire une diffraction mesurable ;
+          $\theta = \lambda_0/a \approx 7{,}9\times10^{-3}\ \text{rad}$.
         correct: true
       - id: B
         text: >-
@@ -1309,9 +1300,9 @@ items:
           millimètre) pour produire une diffraction bien mesurable.
       - id: C
         text: >-
-          L'affirmation est fausse, mais l'écart angulaire vaut $\theta =
-          a/\lambda_0 \approx 126\ \text{rad}$, une valeur bien supérieure à
-          celle attendue pour un phénomène de diffraction.
+          L'affirmation est fausse, mais l'écart angulaire vaut $\theta = a/\lambda_0
+          \approx 126\ \text{rad}$, une valeur bien supérieure à celle que l'on
+          attendrait d'un phénomène de diffraction.
         correct: false
         misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
         feedback: >

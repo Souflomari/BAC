@@ -302,8 +302,8 @@ items:
         correct: true
       - id: B
         text: >-
-          Parce que la résistance interne $r$ de la bobine est toujours très
-          élevée et limite fortement le courant.
+          Parce que la résistance interne $r$ de la bobine est toujours très élevée et
+          limite fortement l'intensité du courant.
         correct: false
         misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
         feedback: >
@@ -313,8 +313,8 @@ items:
           en cause.
       - id: C
         text: >-
-          Parce que le courant doit d'abord « remplir » physiquement les
-          spires de la bobine, comme un réservoir se remplit d'eau.
+          Parce que le courant doit d'abord « remplir » physiquement les spires de la
+          bobine, comme un réservoir se remplit lentement d'eau.
         correct: false
         misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
         feedback: >
@@ -322,7 +322,7 @@ items:
           la charge. La bobine ne stocke pas de charge électrique ; elle
           s'oppose aux variations rapides du courant via l'auto-induction.
       - id: D
-        text: "Parce que la loi d'Ohm ne s'applique pas du tout aux bobines."
+        text: "Parce que la loi d'Ohm ne s'applique tout simplement pas aux bobines, quelles que soient leurs caractéristiques."
         correct: false
         misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
         feedback: >
@@ -982,8 +982,9 @@ items:
     choices:
       - id: A
         text: >-
-          La bobine libère d'un coup toute l'énergie qu'elle avait stockée
-          sous forme de courant, comme une décharge de condensateur.
+          La bobine libère d'un seul coup toute l'énergie qu'elle avait stockée sous
+          forme de courant, exactement comme le ferait la décharge brutale d'un
+          condensateur.
         correct: false
         misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
         feedback: >
@@ -993,16 +994,14 @@ items:
           variation brutale de $i$, qui crée l'étincelle — pas une décharge.
       - id: B
         text: >-
-          La bobine s'oppose à la disparition brutale du courant : comme $i$
-          ne peut pas s'annuler instantanément alors que le circuit se coupe
-          presque, $di/dt$ devient très grand en valeur absolue, donc
-          $u_L = L\,di/dt$ devient très élevée — assez pour ioniser l'air
-          entre les contacts.
+          La bobine s'oppose à la disparition brutale du courant : $i$ ne pouvant
+          s'annuler instantanément, $di/dt$ devient très grand, donc $u_L = L\,di/dt$
+          très élevée — assez pour ioniser l'air.
         correct: true
       - id: C
         text: >-
-          Le courant s'annule instantanément dès l'ouverture ; l'étincelle
-          n'a aucun rapport avec cette annulation.
+          Le courant s'annule instantanément dès l'ouverture de l'interrupteur ;
+          l'étincelle observée n'a aucun rapport avec cette annulation.
         correct: false
         misconception: mc.physics.pc_dipole_rl.courant-saute-instantane
         feedback: >
@@ -1012,8 +1011,8 @@ items:
           devient énorme — et c'est cela, précisément, qui cause l'étincelle.
       - id: D
         text: >-
-          C'est un phénomène purement mécanique, dû au frottement des
-          contacts, sans lien avec la bobine.
+          C'est un phénomène purement mécanique, dû au frottement des contacts
+          métalliques, et sans le moindre lien avec la bobine du circuit.
         correct: false
         misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
         feedback: >
@@ -1051,13 +1050,12 @@ items:
     choices:
       - id: A
         text: >-
-          La durée d'établissement augmente (via $\tau = L/(R_0+r)$, qui
-          croît avec $L$), mais la valeur finale $I_{max} = E/(R_0+r)$ reste
-          identique : $L$ n'intervient pas dans $I_{max}$.
+          La durée d'établissement augmente, via $\tau = L/(R_0+r)$, mais la valeur
+          finale $I_{max} = E/(R_0+r)$ reste identique : $L$ n'y intervient pas.
         correct: true
       - id: B
         text: >-
-          $I_{max}$ augmente aussi, puisqu'une bobine plus grosse peut
+          $I_{max}$ augmente elle aussi, puisqu'une bobine plus grosse est capable de
           stocker davantage de courant.
         correct: false
         misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
@@ -1068,8 +1066,8 @@ items:
           durée de l'établissement.
       - id: C
         text: >-
-          Cela ne change rien du tout : ni la durée d'établissement, ni la
-          valeur finale.
+          Cela ne change rigoureusement rien : ni la durée d'établissement du courant,
+          ni sa valeur finale.
         correct: false
         misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
         feedback: >
@@ -1078,8 +1076,8 @@ items:
           Seule la valeur finale $I_{max}$, elle, ne dépend pas de $L$.
       - id: D
         text: >-
-          Une inductance plus grande accélère l'établissement : le courant
-          atteint plus vite sa valeur finale.
+          Une inductance plus grande accélère l'établissement du courant : celui-ci
+          atteint donc plus vite sa valeur finale.
         correct: false
         misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
         feedback: >
@@ -1237,8 +1235,8 @@ items:
     choices:
       - id: A
         text: >-
-          Oui, c'est exactement la définition de $\tau$ : l'instant où le
-          régime permanent est atteint.
+          Oui, c'est exactement la définition de $\tau$ : l'instant précis où le régime
+          permanent se trouve atteint dans le circuit.
         correct: false
         misconception: mc.physics.pc_dipole_rl.lecture-tau-erronee
         feedback: >
@@ -1248,8 +1246,8 @@ items:
           palier, elle ne l'a pas encore rejoint.
       - id: B
         text: >-
-          Oui, mais seulement si on regarde $i(t)$ et pas $u_L(t)$ : les deux
-          courbes n'ont pas le même $\tau$.
+          Oui, mais seulement si l'on regarde la courbe $i(t)$ et non celle de $u_L(t)$
+          : les deux n'ont pas la même constante de temps.
         correct: false
         misconception: mc.physics.pc_dipole_rl.lecture-tau-erronee
         feedback: >
@@ -1259,8 +1257,8 @@ items:
           l'instant où le palier final est atteint.
       - id: C
         text: >-
-          Non, l'affirmation est fausse : $\tau$ ne peut se lire que sur la
-          courbe $i(t)$, jamais sur $u_L(t)$.
+          Non, l'affirmation est fausse : $\tau$ ne peut se lire que sur la courbe
+          $i(t)$, et jamais sur celle de $u_L(t)$.
         correct: false
         misconception: mc.physics.pc_dipole_rl.lecture-tau-erronee
         feedback: >
@@ -1270,11 +1268,9 @@ items:
           courbe, c'est d'y placer $\tau$ à l'instant du palier final.
       - id: D
         text: >-
-          Non : à $t=\tau$, $u_L$ n'a parcouru que $63\%$ du chemin entre $E$
-          et $rI_{max}$, elle n'a pas encore atteint son palier ; $\tau$ est
-          une échelle de temps caractéristique, pas l'instant où le régime
-          permanent est atteint (celui-ci n'est que pratiquement atteint vers
-          $5\tau$).
+          Non : à $t=\tau$, $u_L$ n'a parcouru que $63\%$ du chemin entre $E$ et
+          $rI_{max}$ ; $\tau$ est une échelle de temps caractéristique, pas l'instant du
+          régime permanent.
         correct: true
     correct_feedback: >
       $\tau$ est une échelle de temps caractéristique du circuit, la même sur

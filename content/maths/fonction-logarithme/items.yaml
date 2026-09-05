@@ -712,7 +712,7 @@ items:
         text: "$f'(x) = \\dfrac{1-x}{x}$, positive sur $]0,1[$ et négative sur $]1,+\\infty[$ : $f$ est croissante sur $]0,1]$ puis décroissante sur $[1,+\\infty[$, avec un maximum en $x=1$"
         correct: true
       - id: B
-        text: "$f'(x) = \\dfrac1x - 1$ est toujours positive, car $\\dfrac1x>0$ pour tout $x>0$"
+        text: "$f'(x) = \\dfrac1x - 1$ est toujours positive, car $\\dfrac1x>0$ pour tout $x>0$ : $f$ est donc croissante partout"
         correct: false
         misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
         feedback: >
@@ -721,7 +721,7 @@ items:
           $1$, donc de la position de $x$ par rapport à $1$ — ce n'est pas
           toujours positif, seulement sur $]0,1[$.
       - id: C
-        text: "$f'(x) = \\dfrac1x - 1$ est toujours négative, donc $f$ est strictement décroissante sur tout $]0,+\\infty[$"
+        text: "$f'(x) = \\dfrac1x - 1$ est toujours négative, si bien que la fonction $f$ est strictement décroissante sur tout l'intervalle $]0,+\\infty[$"
         correct: false
         misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
         feedback: >
@@ -729,7 +729,7 @@ items:
           après. Une seule direction de variation sur tout $]0,+\infty[$
           est fausse — $f$ croît d'abord, puis décroît.
       - id: D
-        text: "$f'(x) = \\dfrac{x-1}{x}$, donc $f$ est décroissante sur $]0,1[$ puis croissante sur $]1,+\\infty[$"
+        text: "$f'(x) = \\dfrac{x-1}{x}$, donc $f$ est d'abord décroissante sur $]0,1[$, puis croissante sur $]1,+\\infty[$, avec un minimum en $x=1$"
         correct: false
         misconception: mc.math.maths_fonction_logarithme.derivee-de-ln-u
         feedback: >
@@ -965,7 +965,7 @@ items:
         text: "La courbe de $\\ln$ reste toujours en dessous de la droite $y=x-1$, c'est-à-dire $\\ln(x)\\leq x-1$ pour tout $x>0$"
         correct: true
       - id: B
-        text: "La courbe de $\\ln$ reste toujours au-dessus de la droite $y=x-1$"
+        text: "La courbe de $\\ln$ reste toujours au-dessus de la droite $y=x-1$, quel que soit le réel $x>0$"
         correct: false
         misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
         feedback: >
@@ -974,7 +974,7 @@ items:
           donc sa courbe reste en dessous de chacune de ses tangentes, pas
           au-dessus.
       - id: C
-        text: "La courbe coupe la tangente en $x=1$, puis repasse au-dessus pour $x>1$"
+        text: "La courbe coupe la tangente au point $x=1$, puis repasse au-dessus d'elle pour tout $x>1$"
         correct: false
         misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
         feedback: >
@@ -982,7 +982,7 @@ items:
           sans changer de sens en cours de route. La courbe ne repasse
           jamais au-dessus de cette tangente, quel que soit $x$.
       - id: D
-        text: "On ne peut rien dire sans calculer $\\ln''(x)$ en chaque point de la courbe"
+        text: "On ne peut rien en dire sans avoir calculé $\\ln''(x)$ en chacun des points de la courbe"
         correct: false
         misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
         feedback: >
@@ -1119,7 +1119,7 @@ items:
         text: "Elle admet une unique solution dans $]0,+\\infty[$, par le corollaire du théorème des valeurs intermédiaires"
         correct: true
       - id: B
-        text: "Elle n'admet aucune solution, car $h$ ne peut pas s'annuler entre deux infinis"
+        text: "Elle n'admet aucune solution, car $h$ ne peut pas s'annuler entre deux limites infinies de signes opposés"
         correct: false
         misconception: mc.math.maths_fonction_logarithme.unicite-bijection-tvi
         feedback: >
@@ -1128,7 +1128,7 @@ items:
           au moins une fois. « Deux infinis » n'empêche rien — c'est
           précisément ce qui force le passage par $0$.
       - id: C
-        text: "Elle admet une infinité de solutions, car $h$ varie sur tout $\\mathbb{R}$"
+        text: "Elle admet une infinité de solutions, puisque $h$ prend toutes les valeurs de $\\mathbb{R}$ sur cet intervalle"
         correct: false
         misconception: mc.math.maths_fonction_logarithme.unicite-bijection-tvi
         feedback: >
@@ -1138,7 +1138,7 @@ items:
           $\mathbb{R}$ » ne veut pas dire repasser plusieurs fois par les
           mêmes valeurs.
       - id: D
-        text: "On ne peut rien conclure sans calculer $h'(x)$ précisément"
+        text: "On ne peut rien conclure sans avoir calculé précisément la dérivée $h'(x)$ de la fonction"
         correct: false
         misconception: mc.math.maths_fonction_logarithme.unicite-bijection-tvi
         feedback: >
