@@ -1319,6 +1319,25 @@ affiche 1 évaluable et 6 sous le plancher, ce qui se lit « il manque une
 douzaine d'items ici ». Regrouper les erreurs pour faire le plancher aurait
 menti sur la pédagogie ; ça n'a pas été fait.
 
+**Ce que la mesure a révélé ensuite, et qui n'avait jamais été chiffré : la
+SVT était quatre fois plus pauvre que les autres matières.** Médiane de 6
+items QCM par notion contre 27 en maths, 24 en PC, 24 en philo — 64 items au
+total contre 365, 617 et 301. Sans checkpoints ni banque d'exercices, c'était
+TOUT l'entraînement et TOUT le diagnostic d'un élève de SVT sur une notion.
+D'où, mécaniquement, onze notions aveugles sur onze.
+
+**38 items neufs** ont été écrits contre ce déficit, erreur par erreur, dans le
+périmètre strict des leçons : SVT 64 → 102 items, 11 → 0 notions aveugles,
+41 → 0 erreurs sous le plancher, 3 → 57 erreurs évaluables. L'écart avec les
+autres matières n'est pas refermé ; la matière est passée du côté où le modèle
+a quelque chose à dire.
+
+**La file d'attente, chiffrée.** 310 misconceptions restent sous le plancher
+hors SVT — au mieux 167 items neufs. Les plus creuses :
+`maths/geometrie-espace` (23 erreurs inévaluables), `philo/la-violence` (18),
+`pc/atome-mecanique-newton` (18), `maths/nombres-complexes-1` (16),
+`philo/autrui` (16). `node scripts/couverture-diagnostique.mjs` les classe.
+
 **À lire :** `docs/audits/couverture-diagnostique.md`.
 
 ### 9.5 La règle de méthode que ces quatre arcs ajoutent

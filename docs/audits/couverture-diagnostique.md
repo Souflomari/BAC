@@ -112,7 +112,7 @@ formuler, la rattacher.
 | **omissions réelles** (champ absent) | 1 017 | **0** |
 | tags fantômes | 47 | **0** |
 | notions AVEUGLES | **17** | **0** |
-| misconceptions évaluables | 340 | **416** |
+| misconceptions évaluables | 340 | **458** |
 | notions couvertes | 48 | **62** |
 
 Les 111 qui restent sont des **décisions d'auteur** : `misconception: null`,
@@ -121,6 +121,50 @@ nommée » — un piège de lecture, une valeur numérique fausse sans modèle
 derrière. Distinguer les deux comptes autant que les compter : l'un est un
 oubli, l'autre un choix. L'instrument affiche la colonne « dont nul » pour
 cette raison.
+
+## Ce que la mesure a révélé ensuite : la SVT était quatre fois plus pauvre
+
+Une fois les tags posés, le déficit de plancher a rendu visible un fait que
+personne n'avait chiffré — la taille des banques d'items, par matière :
+
+| matière | notions | items QCM, médiane par notion | total |
+|---|---:|---:|---:|
+| maths | 14 | 27 | 365 |
+| pc | 25 | 24 | 617 |
+| philo | 12 | 24 | 301 |
+| **svt** | **11** | **6** | **64** |
+
+Cinq ou six items par notion, sans checkpoints ni banque d'exercices : c'était
+**tout** l'entraînement et **tout** le diagnostic qu'un élève de SVT recevait
+sur une notion. Conséquence mécanique du plancher : **les onze notions de SVT
+étaient AVEUGLES**, et 41 erreurs y étaient déclarées sans pouvoir être
+évaluées.
+
+**38 items neufs** ont été écrits contre ce déficit, erreur par erreur :
+
+| | avant | après |
+|---|---:|---:|
+| items QCM de SVT | 64 | **102** |
+| notions aveugles | 11 | **0** |
+| erreurs sous le plancher | 41 | **0** |
+| erreurs évaluables | 3 | **57** |
+
+L'écart avec les autres matières n'est pas refermé — 102 contre 365, 617 et
+301 — mais la SVT est passée du côté où le modèle a quelque chose à dire.
+
+**Comment ces items ont été écrits, et ce que cela garantit.** Chacun vise une
+erreur DÉJÀ déclarée dans l'inventaire de sa notion, et reste strictement dans
+le périmètre de `lesson.md` : aucune notion nouvelle, aucun auteur, aucun fait
+qui n'y soit déjà enseigné. Les distracteurs reprennent les modèles faux que
+les `feedback` existants nommaient. Chaque lot est passé par
+`validate-content --strict`, `indice-longueur`, `indice-absolu` et
+`couverture-diagnostique` avant d'être versé.
+
+**Les deux portes de forme ont travaillé pendant l'écriture**, et c'est le
+meilleur argument pour les avoir armées : `SNS-8` et `MD-M4-2` sont sortis avec
+leur clé seule à porter un absolu (« aucun agent pathogène n'est requis »,
+« jamais un virus déjà entré »), et la porte `indice-absolu` les a refusés.
+Corrigés en rendant à un distracteur l'absolu qui lui revenait.
 
 ## Trois choses que la campagne a apprises
 
@@ -171,6 +215,14 @@ pédagogie.
 **Combien d'items manquent réellement.** La colonne « sous-pl. » compte les
 misconceptions inévaluables ; elle ne dit pas si la bonne réponse est d'écrire
 des items ou de fusionner des erreurs trop fines. C'est un arbitrage d'auteur.
+
+**Où en est la dette, après la SVT.** 310 misconceptions restent sous le
+plancher, hors SVT — un déficit cumulé de 499 items·misconception, soit **au
+mieux 167 items neufs** si chacun visait trois erreurs distinctes. Les notions
+les plus creuses : `maths/geometrie-espace` (23 erreurs inévaluables),
+`pc/atome-mecanique-newton` (18), `maths/nombres-complexes-1` (16),
+`philo/la-violence` (18), `philo/autrui` (16). Ce n'est plus une zone d'ombre :
+c'est une file d'attente chiffrée, notion par notion.
 
 ## Lancer l'instrument
 
