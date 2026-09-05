@@ -321,7 +321,8 @@ $$\left(\overrightarrow{MA}-\overrightarrow{MB}\right)\cdot\left(\overrightarrow
 
 Or $\overrightarrow{MA}-\overrightarrow{MB} = \overrightarrow{BA}$ (relation de Chasles), et $\overrightarrow{MA}+\overrightarrow{MB} = 2\,\overrightarrow{MI}$ puisque $I$ est le milieu de $[AB]$. La condition devient :
 
-$$2\,\overrightarrow{BA}\cdot\overrightarrow{MI} = 0
+$$
+2\,\overrightarrow{BA}\cdot\overrightarrow{MI} = 0
 \qquad\Longleftrightarrow\qquad
 \overrightarrow{AB}\cdot\overrightarrow{IM} = 0
 $$

@@ -1243,16 +1243,20 @@ items:
       **La règle du produit.**
       $$(uv)' = u'v + uv'$$
       Avec $u = x^{3}$, $u' = 3x^{2}$, $v = 2x+1$, $v' = 2$ :
-      $$f'(x) = 3x^{2}(2x+1) + x^{3}\times 2 = 6x^{3} + 3x^{2} + 2x^{3}
-      = 8x^{3} + 3x^{2}$$
+      $$
+      f'(x) = 3x^{2}(2x+1) + x^{3}\times 2 = 6x^{3} + 3x^{2} + 2x^{3}
+      = 8x^{3} + 3x^{2}
+      $$
 
       **La vérification qui ne coûte rien.** Développer d'abord :
       $f(x) = 2x^{4} + x^{3}$, donc $f'(x) = 8x^{3} + 3x^{2}$. Les deux chemins
       concordent.
 
       **Les deux formules à ne pas mélanger.**
-      $$(uv)' = u'v + uv' \qquad
-      \left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^{2}}$$
+      $$
+      (uv)' = u'v + uv' \qquad
+      \left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^{2}}
+      $$
       Mêmes termes, mais somme contre différence, et un carré au dénominateur
       d'un seul côté.
 
@@ -1318,8 +1322,10 @@ items:
 
       **Le décalage d'un cran.** La conclusion porte sur $g'$. Donc pour
       conclure sur $f''$, on prend $g = f'$ :
-      $$f' \ \text{continue sur } [a;b], \ \text{dérivable sur } ]a;b[, \
-      f'(a) = f'(b) \ \Longrightarrow \ \exists c, \ f''(c) = 0$$
+      $$
+      f' \ \text{continue sur } [a;b], \ \text{dérivable sur } ]a;b[, \
+      f'(a) = f'(b) \ \Longrightarrow \ \exists c, \ f''(c) = 0
+      $$
 
       **Les deux pièges du sujet.** Se tromper de fonction (partir de $f$ pour
       conclure sur $f''$) et durcir l'hypothèse (exiger $f'(a) = f'(b) = 0$ au
@@ -1523,8 +1529,10 @@ items:
     solution: |
       **Le domaine.** Une fraction rationnelle existe partout sauf là où son
       dénominateur s'annule :
-      $$x + 3 = 0 \iff x = -3
-      \quad\Longrightarrow\quad D_g = \mathbb{R}\setminus\{-3\}$$
+      $$
+      x + 3 = 0 \iff x = -3
+      \quad\Longrightarrow\quad D_g = \mathbb{R}\setminus\{-3\}
+      $$
 
       **L'asymptote verticale.** En $-3$, le numérateur tend vers $-5 \neq 0$ et
       le dénominateur vers $0$ : la limite est infinie. La droite $x = -3$ est
@@ -1590,8 +1598,10 @@ items:
       unique.
     solution: |
       **Le calcul du taux d'accroissement en $0$.**
-      $$\frac{|x| - |0|}{x - 0} = \frac{|x|}{x}
-      = \begin{cases} +1 & \text{si } x > 0 \\ -1 & \text{si } x < 0\end{cases}$$
+      $$
+      \frac{|x| - |0|}{x - 0} = \frac{|x|}{x}
+      = \begin{cases} +1 & \text{si } x > 0 \\ -1 & \text{si } x < 0\end{cases}
+      $$
       Les deux limites latérales valent $+1$ et $-1$ : elles diffèrent, donc la
       limite n'existe pas et $f$ n'est pas dérivable en $0$.
 
@@ -1662,8 +1672,10 @@ items:
       leurs termes et diffèrent par tout le reste.
     solution: |
       **Les deux formules.**
-      $$(uv)' = u'v + uv' \qquad
-      \left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^{2}}$$
+      $$
+      (uv)' = u'v + uv' \qquad
+      \left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^{2}}
+      $$
 
       **Trois contrôles qui les retrouvent sans les apprendre.**
       - $u = v = x$ : $(x^{2})' = 1\cdot x + x\cdot 1 = 2x$ ✓

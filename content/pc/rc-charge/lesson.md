@@ -248,7 +248,8 @@ Les deux méthodes précédentes lisent le temps en abscisse. Un sujet peut te d
 
 Reprends-la et isole la dérivée :
 
-$$RC\,\frac{du_C}{dt} + u_C = E
+$$
+RC\,\frac{du_C}{dt} + u_C = E
 \qquad\Longrightarrow\qquad
 \frac{du_C}{dt} = \frac{E}{RC} - \frac{1}{RC}\,u_C
 $$

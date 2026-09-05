@@ -1664,9 +1664,11 @@ entries:
 
           **On intègre une seconde fois : les positions.** Les constantes d'intégration sont les coordonnées initiales, toutes deux nulles ici puisque l'origine est en $B$ :
 
-          $$\boxed{\ x(t) = V_B\cos\alpha \cdot t \ }
+          $$
+          \boxed{\ x(t) = V_B\cos\alpha \cdot t \ }
           \qquad\qquad
-          \boxed{\ y(t) = \frac{1}{2}g\,t^2 + V_B\sin\alpha \cdot t \ }$$
+          \boxed{\ y(t) = \frac{1}{2}g\,t^2 + V_B\sin\alpha \cdot t \ }
+          $$
 
           **Les valeurs numériques, pour la suite.** Avec $V_B = 0{,}80\ \text{m.s}^{-1}$ et $\alpha = 20°$ : $V_B\cos\alpha = 0{,}80 \times 0{,}940 = 0{,}752\ \text{m.s}^{-1}$ et $V_B\sin\alpha = 0{,}80 \times 0{,}342 = 0{,}274\ \text{m.s}^{-1}$.
 
@@ -1720,9 +1722,11 @@ entries:
 
           **La conversion, avant tout calcul.** L'équation $y = 8{,}85\,x^2 + 0{,}36\,x$ a été établie avec $g$ en $\text{m.s}^{-2}$ et $V_B$ en $\text{m.s}^{-1}$ : ses coefficients ne sont valables que si $x$ et $y$ sont en **mètres**. Or l'énoncé donne les coordonnées de $N$ en centimètres. Donc :
 
-          $$x_N = 20\ \text{cm} = 0{,}20\ \text{m}
+          $$
+          x_N = 20\ \text{cm} = 0{,}20\ \text{m}
           \qquad\text{et}\qquad
-          y_N = 42{,}6\ \text{cm} = 0{,}426\ \text{m}$$
+          y_N = 42{,}6\ \text{cm} = 0{,}426\ \text{m}
+          $$
 
           **Le calcul, terme par terme.**
 
@@ -1745,9 +1749,11 @@ entries:
 
           **Le chaînon manquant : à quel instant le solide est-il en $N$ ?** Les équations de vitesse dépendent de $t$, et l'énoncé ne donne pas $t_N$. On le récupère par l'équation horaire de $x$, qui est la plus simple :
 
-          $$x_N = V_B\cos\alpha \cdot t_N
+          $$
+          x_N = V_B\cos\alpha \cdot t_N
           \qquad\Longrightarrow\qquad
-          t_N = \frac{x_N}{V_B\cos\alpha} = \frac{0{,}20}{0{,}752} = 0{,}266\ \text{s}$$
+          t_N = \frac{x_N}{V_B\cos\alpha} = \frac{0{,}20}{0{,}752} = 0{,}266\ \text{s}
+          $$
 
           **La composante horizontale : elle n'a pas bougé.** Aucune force horizontale, donc $V_x$ est constante depuis $B$ :
 
@@ -1755,13 +1761,17 @@ entries:
 
           **La composante verticale : c'est elle qui a grandi.**
 
-          $$V_y(t_N) = g\,t_N + V_B\sin\alpha = 10 \times 0{,}266 + 0{,}274
-          = 2{,}66 + 0{,}274 = 2{,}934\ \text{m.s}^{-1}$$
+          $$
+          V_y(t_N) = g\,t_N + V_B\sin\alpha = 10 \times 0{,}266 + 0{,}274
+          = 2{,}66 + 0{,}274 = 2{,}934\ \text{m.s}^{-1}
+          $$
 
           **La composition.** La vitesse est un vecteur ; sa norme se calcule par le théorème de Pythagore appliqué à ses deux composantes orthogonales :
 
-          $$V_N = \sqrt{V_x^{2} + V_y^{2}} = \sqrt{(0{,}752)^{2} + (2{,}934)^{2}}
-          = \sqrt{0{,}566 + 8{,}608} = \sqrt{9{,}174}$$
+          $$
+          V_N = \sqrt{V_x^{2} + V_y^{2}} = \sqrt{(0{,}752)^{2} + (2{,}934)^{2}}
+          = \sqrt{0{,}566 + 8{,}608} = \sqrt{9{,}174}
+          $$
 
           $$\boxed{V_N \approx 3{,}0\ \text{m.s}^{-1}}$$
 

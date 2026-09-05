@@ -1572,9 +1572,11 @@ items:
       $\frac{1-\cos x}{x^2}=\left(\frac{\sin x}{x}\right)^2 \times
       \frac{1}{1+\cos x} \to 1^2 \times \frac{1}{2} = \frac{1}{2}$.
     solution: |
-      $$\frac{1-\cos x}{x^2} = \frac{(1-\cos x)(1+\cos x)}{x^2(1+\cos x)}
+      $$
+      \frac{1-\cos x}{x^2} = \frac{(1-\cos x)(1+\cos x)}{x^2(1+\cos x)}
       = \frac{1-\cos^2 x}{x^2(1+\cos x)} = \frac{\sin^2 x}{x^2(1+\cos x)}
-      = \left(\frac{\sin x}{x}\right)^2 \times \frac{1}{1+\cos x}$$
+      = \left(\frac{\sin x}{x}\right)^2 \times \frac{1}{1+\cos x}
+      $$
       Quand $x \to 0$ : $\left(\frac{\sin x}{x}\right)^2 \to 1$ et
       $\frac{1}{1+\cos x} \to \frac{1}{1+1}=\frac12$, donc
       $$\lim_{x \to 0} \frac{1-\cos x}{x^2} = \frac{1}{2}$$
@@ -1695,8 +1697,10 @@ items:
 
       Le numérateur $\sin(x+1) \to \sin(1) \neq 0$, et le dénominateur
       $x\to 0$ : c'est le cas « nombre non nul divisé par $0$ » du chapitre 3.
-      $$\lim_{x \to 0^{+}} \frac{\sin(x+1)}{x} = +\infty \qquad\qquad
-      \lim_{x \to 0^{-}} \frac{\sin(x+1)}{x} = -\infty$$
+      $$
+      \lim_{x \to 0^{+}} \frac{\sin(x+1)}{x} = +\infty \qquad\qquad
+      \lim_{x \to 0^{-}} \frac{\sin(x+1)}{x} = -\infty
+      $$
       Les deux limites latérales diffèrent : la limite globale n'existe
       pas.
 
@@ -1781,8 +1785,10 @@ items:
       **L'ajustement.** Ici le sinus porte $3x$ et le dénominateur $x$ :
       $$\frac{\sin(3x)}{x} = 3 \times \frac{\sin(3x)}{3x}$$
       En posant $u = 3x$, qui tend vers $0$ quand $x$ tend vers $0$ :
-      $$\lim_{x \to 0}\frac{\sin(3x)}{3x} = 1
-      \quad\Longrightarrow\quad \lim_{x \to 0}\frac{\sin(3x)}{x} = 3$$
+      $$
+      \lim_{x \to 0}\frac{\sin(3x)}{3x} = 1
+      \quad\Longrightarrow\quad \lim_{x \to 0}\frac{\sin(3x)}{x} = 3
+      $$
 
       **La règle générale.**
       $\displaystyle\lim_{x\to 0}\frac{\sin(kx)}{x} = k$ : le coefficient de
@@ -1849,10 +1855,12 @@ items:
       oscille indéfiniment entre $-1$ et $1$ : rien ne se confond avec rien.
 
       **Ce qui marche.** Le sinus est borné, le dénominateur explose :
-      $$-1 \leqslant \sin x \leqslant 1
+      $$
+      -1 \leqslant \sin x \leqslant 1
       \quad\Longrightarrow\quad
       -\frac{1}{x} \leqslant \frac{\sin x}{x} \leqslant \frac{1}{x}
-      \quad (x > 0)$$
+      \quad (x > 0)
+      $$
       Les deux bornes tendent vers $0$, donc par le théorème des gendarmes :
       $$\lim_{x \to +\infty}\frac{\sin x}{x} = 0$$
 
@@ -2068,9 +2076,11 @@ items:
       $$\lim_{x \to 0}\frac{1 - \cos x}{x^2} = \frac{1}{2}$$
 
       **Le passage à l'expression demandée.**
-      $$\frac{\cos x - 1}{x^2} = -\,\frac{1 - \cos x}{x^2}
+      $$
+      \frac{\cos x - 1}{x^2} = -\,\frac{1 - \cos x}{x^2}
       \quad\Longrightarrow\quad
-      \lim_{x \to 0}\frac{\cos x - 1}{x^2} = -\frac{1}{2}$$
+      \lim_{x \to 0}\frac{\cos x - 1}{x^2} = -\frac{1}{2}
+      $$
 
       **Le contrôle de signe, à faire avant tout calcul.** Sur un voisinage de
       $0$ privé de $0$, $\cos x < 1$ : le numérateur est strictement négatif, le

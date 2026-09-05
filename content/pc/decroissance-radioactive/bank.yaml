@@ -404,17 +404,21 @@ entries:
 
           **La relation, et d'où elle vient.** Au bout d'une demi-vie, il ne reste que la moitié des noyaux :
 
-          $$N\left(t_{1/2}\right) = \frac{N_0}{2}
+          $$
+          N\left(t_{1/2}\right) = \frac{N_0}{2}
           \qquad\text{soit}\qquad
-          N_0\,e^{-\lambda t_{1/2}} = \frac{N_0}{2}$$
+          N_0\,e^{-\lambda t_{1/2}} = \frac{N_0}{2}
+          $$
 
           On divise par $N_0$, on applique le logarithme népérien — c'est lui qui fait descendre $\lambda t_{1/2}$ de l'exposant :
 
-          $$e^{-\lambda t_{1/2}} = \frac{1}{2}
+          $$
+          e^{-\lambda t_{1/2}} = \frac{1}{2}
           \qquad\Longrightarrow\qquad
           -\lambda\,t_{1/2} = \ln\frac{1}{2} = -\ln 2
           \qquad\Longrightarrow\qquad
-          \boxed{\lambda = \frac{\ln 2}{t_{1/2}}}$$
+          \boxed{\lambda = \frac{\ln 2}{t_{1/2}}}
+          $$
 
           Cette relation vaut la peine d'être sue **et** d'être reconstruite : elle tombe en trois lignes, et la reconstruire évite de se demander si c'est $\ln 2$ qui divise ou qui multiplie.
 
@@ -447,17 +451,21 @@ entries:
 
           **La loi, et son retournement.**
 
-          $$a(t) = a_0\,e^{-\lambda t}
+          $$
+          a(t) = a_0\,e^{-\lambda t}
           \qquad\Longrightarrow\qquad
-          a_1 = a_0\,e^{-\lambda t_1}$$
+          a_1 = a_0\,e^{-\lambda t_1}
+          $$
 
           On divise par $a_0$, on applique le logarithme, on isole $t_1$ :
 
-          $$\frac{a_1}{a_0} = e^{-\lambda t_1}
+          $$
+          \frac{a_1}{a_0} = e^{-\lambda t_1}
           \qquad\Longrightarrow\qquad
           -\lambda\,t_1 = \ln\!\left(\frac{a_1}{a_0}\right)
           \qquad\Longrightarrow\qquad
-          t_1 = \frac{1}{\lambda}\,\ln\!\left(\frac{a_0}{a_1}\right)$$
+          t_1 = \frac{1}{\lambda}\,\ln\!\left(\frac{a_0}{a_1}\right)
+          $$
 
           Au dernier passage, on a **retourné le rapport** pour absorber le signe moins — $-\ln\frac{a_1}{a_0} = \ln\frac{a_0}{a_1}$. Le résultat est ainsi manifestement positif, ce qui est un contrôle en soi.
 
@@ -1581,25 +1589,31 @@ entries:
 
           **La loi, écrite en activités.** L'activité suit la même exponentielle que le nombre de noyaux :
 
-          $$a(t) = a_0\,e^{-\lambda t}
+          $$
+          a(t) = a_0\,e^{-\lambda t}
           \qquad\Longrightarrow\qquad
-          a_1 = a_0\,e^{-\lambda t_1}$$
+          a_1 = a_0\,e^{-\lambda t_1}
+          $$
 
           **On isole $t_1$.** On divise par $a_0$, puis on applique le logarithme népérien — c'est lui qui fait descendre $t_1$ de l'exposant :
 
-          $$\frac{a_1}{a_0} = e^{-\lambda t_1}
+          $$
+          \frac{a_1}{a_0} = e^{-\lambda t_1}
           \qquad\Longrightarrow\qquad
           \ln\!\left(\frac{a_1}{a_0}\right) = -\lambda t_1
           \qquad\Longrightarrow\qquad
-          t_1 = \frac{1}{\lambda}\,\ln\!\left(\frac{a_0}{a_1}\right)$$
+          t_1 = \frac{1}{\lambda}\,\ln\!\left(\frac{a_0}{a_1}\right)
+          $$
 
           au dernier passage, on a retourné le rapport pour absorber le signe moins — $-\ln\frac{a_1}{a_0} = \ln\frac{a_0}{a_1}$, ce qui rend le résultat manifestement positif.
 
           **Le lien avec la demi-vie, qu'il faut rappeler au point d'usage.** L'énoncé ne donne pas $\lambda$ mais $t_{1/2}$. La relation du chapitre 5 les relie :
 
-          $$\lambda = \frac{\ln 2}{t_{1/2}}
+          $$
+          \lambda = \frac{\ln 2}{t_{1/2}}
           \qquad\Longrightarrow\qquad
-          \frac{1}{\lambda} = \frac{t_{1/2}}{\ln 2}$$
+          \frac{1}{\lambda} = \frac{t_{1/2}}{\ln 2}
+          $$
 
           D'où la formule de travail :
 

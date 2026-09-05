@@ -69,13 +69,15 @@ exercises:
         reasoning: |-
           On calcule d'abord les quantités initiales. La solution d'hydroxyde de sodium apporte $n_B = C_B \cdot V = 10 \times 2\cdot10^{-4} = 2\cdot10^{-3}\ \text{mol}$, et l'énoncé impose $n_E = n_B = 2\cdot10^{-3}\ \text{mol}$ : le mélange est **stœchiométrique**. Chaque avancement $x$ consomme une mole d'ester et une mole d'ion hydroxyde, et forme une mole d'ion méthanoate et une mole de méthanol. Le sodium n'apparaît pas dans le tableau d'avancement (il ne réagit pas), mais reste présent à concentration constante.
 
-          $$\begin{array}{l|cccc}
+          $$
+          \begin{array}{l|cccc}
           \text{état} & \text{HCO}_2\text{CH}_3 & \text{OH}^- & \text{HCO}_2^- & \text{CH}_3\text{OH} \\
           \hline
           \text{initial}\ (x=0) & n_E & n_B & 0 & 0 \\
           \text{en cours}\ (x) & n_E - x & n_B - x & x & x \\
           \text{final}\ (x_{max}) & n_E - x_{max} & n_B - x_{max} & x_{max} & x_{max}
-          \end{array}$$
+          \end{array}
+          $$
 
           Comme $n_E = n_B$ et que la réaction est totale, les deux réactifs s'épuisent ensemble : $x_{max} = n_B = 2\cdot10^{-3}\ \text{mol}$.
       - id: q3
@@ -158,13 +160,15 @@ exercises:
         reasoning: |-
           Chaque avancement $x$ consomme une mole de $\text{RCl}$ (et deux d'eau, en excès, qu'on ne suit pas) et forme une mole de $\text{ROH}$, une mole de $\text{H}_3\text{O}^+$ et une mole de $\text{Cl}^-$. Le réactif limitant est $\text{RCl}$ (l'eau est en large excès), donc $x_{max} = n_0$.
 
-          $$\begin{array}{l|cccc}
+          $$
+          \begin{array}{l|cccc}
           \text{état} & \text{RCl} & \text{ROH} & \text{H}_3\text{O}^+ & \text{Cl}^- \\
           \hline
           \text{initial}\ (x=0) & n_0 & 0 & 0 & 0 \\
           \text{en cours}\ (x) & n_0 - x & x & x & x \\
           \text{final}\ (x_{max}) & 0 & x_{max} & x_{max} & x_{max}
-          \end{array}$$
+          \end{array}
+          $$
 
           avec $x_{max} = n_0 = 1{,}0\cdot10^{-3}\ \text{mol}$.
       - id: q3

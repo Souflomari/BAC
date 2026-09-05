@@ -2221,9 +2221,11 @@ items:
       sur l'ordre dans lequel elles se succèdent.
 
       **Trois suites bornées par les mêmes nombres :**
-      $$u_n = 4 - \frac{1}{n+1} \ \text{(croissante)}, \quad
+      $$
+      u_n = 4 - \frac{1}{n+1} \ \text{(croissante)}, \quad
       u_n = 1 + \frac{1}{n+1} \ \text{(décroissante)}, \quad
-      u_n = 2 + (-1)^n \ \text{(ni l'un ni l'autre)}$$
+      u_n = 2 + (-1)^n \ \text{(ni l'un ni l'autre)}
+      $$
 
       **Ce que les bornes servent vraiment à faire.** Combinées à la monotonie —
       et seulement combinées à elle — elles donnent le théorème de la limite
@@ -2290,8 +2292,10 @@ items:
     solution: |
       **L'étape cachée de la méthode.** De $\dfrac{u_{n+1}}{u_n} < 1$, on veut
       déduire $u_{n+1} < u_n$. Cela demande de multiplier par $u_n$ :
-      $$\frac{u_{n+1}}{u_n} < 1 \ \text{ et } \ u_n > 0
-      \quad\Longrightarrow\quad u_{n+1} < u_n$$
+      $$
+      \frac{u_{n+1}}{u_n} < 1 \ \text{ et } \ u_n > 0
+      \quad\Longrightarrow\quad u_{n+1} < u_n
+      $$
       Si $u_n < 0$, l'inégalité s'inverse et la conclusion est exactement
       contraire.
 
@@ -2365,8 +2369,10 @@ items:
       $x = u_n$. Seules les valeurs réellement prises par la suite comptent.
 
       **Le calcul sur $\,]0\,;1[$.**
-      $$f(x) - x = \frac{x+2}{x+3} - x = \frac{x + 2 - x(x+3)}{x+3}
-      = \frac{-x^2 - 2x + 2}{x+3}$$
+      $$
+      f(x) - x = \frac{x+2}{x+3} - x = \frac{x + 2 - x(x+3)}{x+3}
+      = \frac{-x^2 - 2x + 2}{x+3}
+      $$
       Sur $\,]0\,;1[$, le dénominateur est positif et le numérateur s'annule en
       $x = -1 + \sqrt{3} \approx 0{,}73$ : la différence est positive avant,
       négative après. La suite n'est donc pas monotone sur tout l'intervalle —
@@ -2440,8 +2446,10 @@ items:
 
       **Ce que la décroissance, une fois démontrée, établit.** Un sens de
       parcours. Deux issues restent possibles :
-      $$u_n = 10 - n \longrightarrow -\infty \qquad
-      u_n = 3 + \frac{1}{n} \longrightarrow 3$$
+      $$
+      u_n = 10 - n \longrightarrow -\infty \qquad
+      u_n = 3 + \frac{1}{n} \longrightarrow 3
+      $$
 
       **Ce qu'il faut ajouter.** Une minoration. Le théorème de la limite
       monotone dit alors : toute suite décroissante et minorée CONVERGE. Il
@@ -2513,8 +2521,10 @@ items:
          faut le signe de $u_{n+1} - u_n$, ou une récurrence.
       2. *La croissance, même établie, ne donne pas la limite.* Deux issues
          restent ouvertes :
-      $$u_n = n \longrightarrow +\infty \qquad
-      u_n = 200 - \frac{1000}{n} \longrightarrow 200$$
+      $$
+      u_n = n \longrightarrow +\infty \qquad
+      u_n = 200 - \frac{1000}{n} \longrightarrow 200
+      $$
 
       **Ce qui trancherait.** Une majoration. Le théorème de la limite monotone
       dit alors : toute suite croissante et majorée CONVERGE — et sa limite est

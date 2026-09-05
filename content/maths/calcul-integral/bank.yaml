@@ -987,25 +987,31 @@ entries:
 
           **Le théorème des sommes de Riemann, énoncé ici.** Si $h$ est continue sur $[0,1]$, alors :
 
-          $$\frac1n\sum_{k=0}^{n-1} h\!\left(\frac{k}{n}\right) \xrightarrow[n\to+\infty]{} \int_0^1 h(x)\,dx
+          $$
+          \frac1n\sum_{k=0}^{n-1} h\!\left(\frac{k}{n}\right) \xrightarrow[n\to+\infty]{} \int_0^1 h(x)\,dx
           \qquad\text{et}\qquad
-          \frac1n\sum_{k=1}^{n} h\!\left(\frac{k}{n}\right) \xrightarrow[n\to+\infty]{} \int_0^1 h(x)\,dx$$
+          \frac1n\sum_{k=1}^{n} h\!\left(\frac{k}{n}\right) \xrightarrow[n\to+\infty]{} \int_0^1 h(x)\,dx
+          $$
 
           — les sommes aux points **gauches** et aux points **droits** de la subdivision régulière de $[0,1]$ convergent toutes deux vers la même intégrale.
 
           **L'identification de $h$.** Pose $h(x) = \sqrt{1+e^{2x}}$. $h$ est continue sur $[0,1]$ (composée de $x\mapsto e^{2x}$, continue, de $t\mapsto 1+t$, continue, et de $\sqrt{\cdot}$, continue sur $]0,+\infty[$ où $1+e^{2x}$ reste toujours strictement positif). Les deux bornes de la question 2-a sont exactement :
 
-          $$\frac1n\sum_{k=0}^{n-1} h\!\left(\frac{k}{n}\right) \quad\text{(points gauches)}
+          $$
+          \frac1n\sum_{k=0}^{n-1} h\!\left(\frac{k}{n}\right) \quad\text{(points gauches)}
           \qquad\text{et}\qquad
-          \frac1n\sum_{k=1}^{n} h\!\left(\frac{k}{n}\right) \quad\text{(points droits)}$$
+          \frac1n\sum_{k=1}^{n} h\!\left(\frac{k}{n}\right) \quad\text{(points droits)}
+          $$
 
           **L'application du théorème.** $h$ étant continue sur $[0,1]$, les deux sommes convergent **toutes deux** vers $\displaystyle\int_0^1 h(x)\,dx = \int_0^1 \sqrt{1+e^{2x}}\,dx$.
 
           **La conclusion, par le théorème des gendarmes.** L'encadrement de la question 2-a place $S_n$ entre deux suites qui tendent vers la **même** limite :
 
-          $$\frac1n\sum_{k=0}^{n-1}\sqrt{1+e^{\frac{2k}{n}}} \longrightarrow \int_0^1\sqrt{1+e^{2x}}\,dx
+          $$
+          \frac1n\sum_{k=0}^{n-1}\sqrt{1+e^{\frac{2k}{n}}} \longrightarrow \int_0^1\sqrt{1+e^{2x}}\,dx
           \qquad\text{et}\qquad
-          \frac1n\sum_{k=1}^{n}\sqrt{1+e^{\frac{2k}{n}}} \longrightarrow \int_0^1\sqrt{1+e^{2x}}\,dx$$
+          \frac1n\sum_{k=1}^{n}\sqrt{1+e^{\frac{2k}{n}}} \longrightarrow \int_0^1\sqrt{1+e^{2x}}\,dx
+          $$
 
           Le théorème des gendarmes force $S_n$, coincé entre les deux, à converger vers cette même valeur :
 

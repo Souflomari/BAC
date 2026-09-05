@@ -588,10 +588,10 @@ entries:
         stem: |-
           **(0,5 pt)** Trouver l'expression de la période propre $T_0$ de l'oscillateur en fonction de $L$ et de $C$ pour que l'expression $q(t) = Q_m \cos\!\left(\dfrac{2\pi}{T_0}\,t\right)$ soit solution de cette équation différentielle.
         reasoning: |-
-          Même démarche que la vérification du chapitre 3 (derivation:verification-cosinus) : on injecte la forme cosinus proposée par l'énoncé — ici sans déphasage, cohérent avec la courbe de la figure 4 qui part bien de son maximum à $t=0$ — dans l'équation établie à la question précédente, et on identifie ce qui doit être vrai pour que ce cosinus soit solution.
+          Même démarche que la vérification du cosinus, au chapitre 3 : on injecte la forme cosinus proposée par l'énoncé — ici sans déphasage, cohérent avec la courbe de la figure 4 qui part bien de son maximum à $t=0$ — dans l'équation établie à la question précédente, et on identifie ce qui doit être vrai pour que ce cosinus soit solution.
         steps:
           - math: 'q(t) = Q_m\cos\!\left(\frac{2\pi}{T_0}\,t\right) \implies \frac{d^2q}{dt^2} = -\frac{4\pi^2}{T_0^2}\,q'
-            note: "Dérivée seconde du cosinus propose par l'énoncé (même geste qu'au chapitre 3, dérivation verification-cosinus)."
+            note: "Dérivée seconde du cosinus propose par l'énoncé (même geste qu'au chapitre 3, la vérification du cosinus)."
           - math: '-\frac{4\pi^2 L}{T_0^2}\,q + \frac{q}{C} = 0 \implies \frac{4\pi^2 L}{T_0^2} = \frac{1}{C}'
             note: "Substitution dans l'équation de la question précédente ; q se simplifie, il n'est jamais nul en permanence."
           - math: '\boxed{T_0 = 2\pi\sqrt{LC}}'
@@ -862,7 +862,7 @@ entries:
         stem: |-
           **(0,5 pt)** La solution de l'équation différentielle précédente est $u_C(t) = U_0\cos\!\left(\dfrac{2\pi}{T_0}t\right)$, où $U_0$ est la valeur maximale de la tension et $T_0$ la période propre des oscillations. Trouver l'expression de $T_0$ en fonction de $L$ et $C$.
         reasoning: |-
-          Même démarche que la vérification du chapitre 3 (derivation:verification-cosinus), et que la question 3 du sujet 2021 ci-dessus : on injecte la forme cosinus proposée par l'énoncé dans l'équation établie à la question 1, et on identifie ce qui doit être vrai pour que ce cosinus soit solution.
+          Même démarche que la vérification du cosinus, au chapitre 3, et que la question 3 du sujet 2021 ci-dessus : on injecte la forme cosinus proposée par l'énoncé dans l'équation établie à la question 1, et on identifie ce qui doit être vrai pour que ce cosinus soit solution.
         steps:
           - math: 'u_C(t) = U_0\cos\!\left(\frac{2\pi}{T_0}t\right) \implies \frac{d^2u_C}{dt^2} = -\frac{4\pi^2}{T_0^2}\,u_C'
             note: "Dérivée seconde du cosinus propose par l'énoncé (même geste qu'au chapitre 3)."
@@ -1651,9 +1651,11 @@ entries:
 
           En reportant $u_R = R\,i$ et cette expression dans la maille :
 
-          $$u_C + R\,i + L\,\frac{di}{dt} + r\,i = 0
+          $$
+          u_C + R\,i + L\,\frac{di}{dt} + r\,i = 0
           \qquad\Longleftrightarrow\qquad
-          u_C + (R + r)\,i + L\,\frac{di}{dt} = 0$$
+          u_C + (R + r)\,i + L\,\frac{di}{dt} = 0
+          $$
 
           **Le dernier remplacement, celui qui ferme l'équation.** On y substitue $i = C\,\dfrac{du_C}{dt}$, et donc $\dfrac{di}{dt} = C\,\dfrac{d^2u_C}{dt^2}$ :
 
@@ -1686,8 +1688,10 @@ entries:
 
           **On reporte, et c'est fini.**
 
-          $$E_t = \frac{1}{2}\,C\,u_C^2(t) + \frac{1}{2}\,L\,i^2(t)
-          = \boxed{\ \frac{1}{2}\,C\,u_C^2(t) + \frac{1}{2}\,L\left(\frac{u_R(t)}{R}\right)^2\ }$$
+          $$
+          E_t = \frac{1}{2}\,C\,u_C^2(t) + \frac{1}{2}\,L\,i^2(t)
+          = \boxed{\ \frac{1}{2}\,C\,u_C^2(t) + \frac{1}{2}\,L\left(\frac{u_R(t)}{R}\right)^2\ }
+          $$
 
           **Pourquoi ce n'est pas de la cosmétique.** Sous cette forme, chacun des deux termes se lit **directement sur une figure** : le premier sur la figure 3, le second sur la figure 4. À n'importe quel instant repéré sur les deux courbes, tu as l'énergie totale sans jamais avoir eu besoin de connaître l'échelle des temps — ce qui tombe bien, puisque ni la figure 3 ni la figure 4 ne porte de graduation temporelle chiffrée.
 
@@ -1711,25 +1715,33 @@ entries:
 
           **À $t_0 = 0$.** Le condensateur vient d'être chargé et le courant est nul — c'est ce que la question 2-1-1 a établi, et la figure 4 part bien de zéro. Le terme magnétique est donc nul et l'énergie est purement électrique :
 
-          $$E_t(0) = \frac{1}{2}\times 1{,}0\times10^{-7}\times (5{,}0)^2
-          = \frac{1}{2}\times 1{,}0\times10^{-7}\times 25 = 1{,}25\times10^{-6}\ \text{J}$$
+          $$
+          E_t(0) = \frac{1}{2}\times 1{,}0\times10^{-7}\times (5{,}0)^2
+          = \frac{1}{2}\times 1{,}0\times10^{-7}\times 25 = 1{,}25\times10^{-6}\ \text{J}
+          $$
 
           **À $t_1$, les deux termes.** Le terme électrique d'abord :
 
-          $$\frac{1}{2}\,C\,u_C^2(t_1) = \frac{1}{2}\times 1{,}0\times10^{-7}\times (1{,}5)^2
-          = \frac{1}{2}\times 1{,}0\times10^{-7}\times 2{,}25 = 1{,}125\times10^{-7}\ \text{J}$$
+          $$
+          \frac{1}{2}\,C\,u_C^2(t_1) = \frac{1}{2}\times 1{,}0\times10^{-7}\times (1{,}5)^2
+          = \frac{1}{2}\times 1{,}0\times10^{-7}\times 2{,}25 = 1{,}125\times10^{-7}\ \text{J}
+          $$
 
           Puis le terme magnétique. On passe d'abord à l'intensité, $i(t_1) = \dfrac{u_R(t_1)}{R} = \dfrac{5{,}1\times10^{-3}}{50} = 1{,}02\times10^{-4}\ \text{A}$, puis :
 
-          $$\frac{1}{2}\,L\,i^2(t_1) = \frac{1}{2}\times 2{,}0\times10^{-2}\times (1{,}02\times10^{-4})^2
-          = \frac{1}{2}\times 2{,}0\times10^{-2}\times 1{,}0404\times10^{-8} = 1{,}04\times10^{-10}\ \text{J}$$
+          $$
+          \frac{1}{2}\,L\,i^2(t_1) = \frac{1}{2}\times 2{,}0\times10^{-2}\times (1{,}02\times10^{-4})^2
+          = \frac{1}{2}\times 2{,}0\times10^{-2}\times 1{,}0404\times10^{-8} = 1{,}04\times10^{-10}\ \text{J}
+          $$
 
           $$E_t(t_1) = 1{,}125\times10^{-7} + 1{,}04\times10^{-10} = 1{,}126\times10^{-7}\ \text{J}$$
 
           **Le bilan.**
 
-          $$E_j = 1{,}250\times10^{-6} - 0{,}1126\times10^{-6} = 1{,}137\times10^{-6}\ \text{J}
-          \qquad\Longrightarrow\qquad \boxed{E_j \approx 1{,}1\ \mu\text{J}}$$
+          $$
+          E_j = 1{,}250\times10^{-6} - 0{,}1126\times10^{-6} = 1{,}137\times10^{-6}\ \text{J}
+          \qquad\Longrightarrow\qquad \boxed{E_j \approx 1{,}1\ \mu\text{J}}
+          $$
 
           C'est bien la valeur à vérifier. Autrement dit, **91 %** de l'énergie initiale a déjà été dissipée à l'instant $t_1$.
 

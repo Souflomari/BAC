@@ -2054,10 +2054,14 @@ items:
     solution: |
       **Les trois composantes (chapitre 4)**, chacune bâtie sur les deux axes
       qu'elle ne nomme pas :
-      $$\vec{u}\wedge\vec{v}=\big(y_uz_v-z_uy_v,\;\; z_ux_v-x_uz_v,\;\;
-      x_uy_v-y_ux_v\big)$$
-      $$=\big(2\times 6-3\times 5,\;\; 3\times 4-1\times 6,\;\;
-      1\times 5-2\times 4\big)=(-3,\,6,\,-3)$$
+      $$
+      \vec{u}\wedge\vec{v}=\big(y_uz_v-z_uy_v,\;\; z_ux_v-x_uz_v,\;\;
+      x_uy_v-y_ux_v\big)
+      $$
+      $$
+      =\big(2\times 6-3\times 5,\;\; 3\times 4-1\times 6,\;\;
+      1\times 5-2\times 4\big)=(-3,\,6,\,-3)
+      $$
       **Vérification :** le résultat doit être orthogonal aux deux vecteurs.
       $\vec{u}\cdot(\vec{u}\wedge\vec{v})=-3+12-9=0$ et
       $\vec{v}\cdot(\vec{u}\wedge\vec{v})=-12+30-18=0$.
@@ -2111,12 +2115,16 @@ items:
       $\frac{\sqrt{29}}{2}$.
     solution: |
       **Étape 1 — le produit vectoriel.**
-      $$\overrightarrow{AB}\wedge\overrightarrow{AC}=\big(2\times 1-2\times 0,\;
-      2\times 2-1\times 1,\; 1\times 0-2\times 2\big)=(2,\,3,\,-4)$$
+      $$
+      \overrightarrow{AB}\wedge\overrightarrow{AC}=\big(2\times 1-2\times 0,\;
+      2\times 2-1\times 1,\; 1\times 0-2\times 2\big)=(2,\,3,\,-4)
+      $$
 
       **Étape 2 — sa norme, qui est l'aire du parallélogramme.**
-      $$\|\overrightarrow{AB}\wedge\overrightarrow{AC}\|=\sqrt{2^2+3^2+(-4)^2}
-      =\sqrt{29}$$
+      $$
+      \|\overrightarrow{AB}\wedge\overrightarrow{AC}\|=\sqrt{2^2+3^2+(-4)^2}
+      =\sqrt{29}
+      $$
 
       **Étape 3 — le triangle est la moitié du parallélogramme.**
       $$\mathcal{A}(ABC)=\frac{1}{2}\sqrt{29}$$
@@ -2170,16 +2178,22 @@ items:
       $\sqrt{61}$ ; l'aire du triangle vaut $\frac{\sqrt{61}}{2}$.
     solution: |
       **Étape 1 — les deux vecteurs du triangle.**
-      $$\overrightarrow{AB}\,(2,\,1,\,0)\qquad
-      \overrightarrow{AC}\,(0,\,2,\,3)$$
+      $$
+      \overrightarrow{AB}\,(2,\,1,\,0)\qquad
+      \overrightarrow{AC}\,(0,\,2,\,3)
+      $$
 
       **Étape 2 — leur produit vectoriel.**
-      $$\overrightarrow{AB}\wedge\overrightarrow{AC}=\big(1\times 3-0\times 2,\;
-      0\times 0-2\times 3,\; 2\times 2-1\times 0\big)=(3,\,-6,\,4)$$
+      $$
+      \overrightarrow{AB}\wedge\overrightarrow{AC}=\big(1\times 3-0\times 2,\;
+      0\times 0-2\times 3,\; 2\times 2-1\times 0\big)=(3,\,-6,\,4)
+      $$
 
       **Étape 3 — norme, puis moitié.**
-      $$\sqrt{9+36+16}=\sqrt{61}\qquad
-      \mathcal{A}(ABC)=\frac{\sqrt{61}}{2}$$
+      $$
+      \sqrt{9+36+16}=\sqrt{61}\qquad
+      \mathcal{A}(ABC)=\frac{\sqrt{61}}{2}
+      $$
 
 
   # ── R4 · ce qu'un produit mixte nul dit, et ne dit pas ──────────────────────
@@ -2235,14 +2249,18 @@ items:
       vecteurs tiennent dans un même plan. C'est le critère de coplanarité.
     solution: |
       **Ce que mesure le produit mixte (chapitre 5) :**
-      $$\big|(\vec{u}\wedge\vec{v})\cdot\vec{w}\big| = \mathcal{V}
-      \quad\text{(volume du parallélépipède)}$$
+      $$
+      \big|(\vec{u}\wedge\vec{v})\cdot\vec{w}\big| = \mathcal{V}
+      \quad\text{(volume du parallélépipède)}
+      $$
 
       **Lecture du cas nul.** Un parallélépipède de volume nul est écrasé :
       sa troisième dimension a disparu. Les trois vecteurs sont alors dans un
       même plan.
-      $$(\vec{u}\wedge\vec{v})\cdot\vec{w}=0 \iff \vec{u},\vec{v},\vec{w}
-      \text{ coplanaires}$$
+      $$
+      (\vec{u}\wedge\vec{v})\cdot\vec{w}=0 \iff \vec{u},\vec{v},\vec{w}
+      \text{ coplanaires}
+      $$
 
   # ── R4 · le calcul, puis la conclusion ──────────────────────────────────────
   - id: GE-41
@@ -2295,12 +2313,16 @@ items:
       vaut $0+1+1=2\neq 0$ : les quatre points ne sont pas coplanaires.
     solution: |
       **Étape 1 — trois vecteurs issus du même point.**
-      $$\overrightarrow{AB}(-1,\,1,\,0)\qquad\overrightarrow{AC}(-1,\,0,\,1)
-      \qquad\overrightarrow{AD}(0,\,1,\,1)$$
+      $$
+      \overrightarrow{AB}(-1,\,1,\,0)\qquad\overrightarrow{AC}(-1,\,0,\,1)
+      \qquad\overrightarrow{AD}(0,\,1,\,1)
+      $$
 
       **Étape 2 — le produit vectoriel des deux premiers.**
-      $$\overrightarrow{AB}\wedge\overrightarrow{AC}=\big(1\times 1-0\times 0,\;
-      0\times(-1)-(-1)\times 1,\; (-1)\times 0-1\times(-1)\big)=(1,\,1,\,1)$$
+      $$
+      \overrightarrow{AB}\wedge\overrightarrow{AC}=\big(1\times 1-0\times 0,\;
+      0\times(-1)-(-1)\times 1,\; (-1)\times 0-1\times(-1)\big)=(1,\,1,\,1)
+      $$
 
       **Étape 3 — le produit mixte, puis la conclusion.**
       $$(1,1,1)\cdot(0,1,1)=0+1+1=2\neq 0$$
@@ -2357,8 +2379,10 @@ items:
     solution: |
       **Méthode (chapitre 6) :** on résout chaque équation en $t$, puis on
       vérifie que la MÊME valeur convient aux trois.
-      $$1+2t=5\;\Rightarrow\;t=2\qquad -1+t=1\;\Rightarrow\;t=2\qquad
-      3-t=2\;\Rightarrow\;t=1$$
+      $$
+      1+2t=5\;\Rightarrow\;t=2\qquad -1+t=1\;\Rightarrow\;t=2\qquad
+      3-t=2\;\Rightarrow\;t=1
+      $$
       Les deux premières s'accordent, la troisième non : $P\notin(D)$.
 
       **Contrôle direct :** pour $t=2$, la droite passe par $(5,\,1,\,1)$ — le
@@ -2634,8 +2658,10 @@ items:
       $$\overrightarrow{AB}\,(-1,\,2,\,0)\qquad\overrightarrow{AC}\,(-1,\,0,\,3)$$
 
       **Étape 2 — leur produit vectoriel est normal au plan.**
-      $$\overrightarrow{AB}\wedge\overrightarrow{AC}=\big(2\times 3-0\times 0,\;
-      0\times(-1)-(-1)\times 3,\; (-1)\times 0-2\times(-1)\big)=(6,\,3,\,2)$$
+      $$
+      \overrightarrow{AB}\wedge\overrightarrow{AC}=\big(2\times 3-0\times 0,\;
+      0\times(-1)-(-1)\times 3,\; (-1)\times 0-2\times(-1)\big)=(6,\,3,\,2)
+      $$
 
       **Vérification :** $(6,3,2)\cdot(-1,2,0)=-6+6+0=0$ et
       $(6,3,2)\cdot(-1,0,3)=-6+0+6=0$. Le vecteur est bien orthogonal aux deux
@@ -3156,8 +3182,10 @@ items:
       $\sqrt{R^2-d^2}=\sqrt{9-1}=2\sqrt2$.
     solution: |
       **Étape 1 — la distance du centre au plan.**
-      $$d(\Omega,P)=\frac{|2\times 1-2\times(-1)+2-9|}{\sqrt{2^2+(-2)^2+1^2}}
-      =\frac{|2+2+2-9|}{3}=\frac{3}{3}=1$$
+      $$
+      d(\Omega,P)=\frac{|2\times 1-2\times(-1)+2-9|}{\sqrt{2^2+(-2)^2+1^2}}
+      =\frac{|2+2+2-9|}{3}=\frac{3}{3}=1
+      $$
 
       **Étape 2 — comparer à $R$.** $d=1<3=R$ : le plan pénètre la sphère,
       l'intersection est un cercle.
@@ -3211,8 +3239,10 @@ items:
       est tangent, l'intersection se réduit à un point.
     solution: |
       **Étape 1 — la distance du centre $O(0,0,0)$ au plan.**
-      $$d(O,P)=\frac{|3\times 0+4\times 0+12\times 0-13|}{\sqrt{3^2+4^2+12^2}}
-      =\frac{13}{\sqrt{169}}=\frac{13}{13}=1$$
+      $$
+      d(O,P)=\frac{|3\times 0+4\times 0+12\times 0-13|}{\sqrt{3^2+4^2+12^2}}
+      =\frac{13}{\sqrt{169}}=\frac{13}{13}=1
+      $$
 
       **Étape 2 — comparer à $R=1$.**
       $$d=R \;\Longrightarrow\; \text{le plan est tangent à la sphère}$$

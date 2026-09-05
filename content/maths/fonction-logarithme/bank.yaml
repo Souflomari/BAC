@@ -1458,9 +1458,11 @@ entries:
 
           Donc le contenu de la parenthèse vaut $x^{\frac{1}{2n}} \cdot \dfrac{1}{2n}\ln x$. On l'élève à la puissance $n$ :
 
-          $$\left( x^{\frac{1}{2n}} \cdot \frac{1}{2n}\ln x \right)^{\!n}
+          $$
+          \left( x^{\frac{1}{2n}} \cdot \frac{1}{2n}\ln x \right)^{\!n}
           = \left(x^{\frac{1}{2n}}\right)^{\!n} \cdot \frac{1}{(2n)^n}\,(\ln x)^n
-          = x^{\frac{1}{2}} \cdot \frac{(\ln x)^n}{(2n)^n}$$
+          = x^{\frac{1}{2}} \cdot \frac{(\ln x)^n}{(2n)^n}
+          $$
 
           car $\left(x^{\frac{1}{2n}}\right)^{n} = x^{\frac{n}{2n}} = x^{\frac{1}{2}} = \sqrt{x}$.
 
@@ -1512,9 +1514,11 @@ entries:
 
           car $\dfrac{\sqrt x}{x} = \dfrac{1}{\sqrt x}$. Le membre de droite, maintenant, en réutilisant $\ln\!\left(x^{\frac{1}{2n}}\right) = \dfrac{1}{2n}\ln x$ :
 
-          $$(2n)^n \left( \frac{\frac{1}{2n}\ln x}{x^{\frac{1}{2n}}} \right)^{\!n}
+          $$
+          (2n)^n \left( \frac{\frac{1}{2n}\ln x}{x^{\frac{1}{2n}}} \right)^{\!n}
           = (2n)^n \cdot \frac{1}{(2n)^n} \cdot \frac{(\ln x)^n}{\left(x^{\frac{1}{2n}}\right)^{n}}
-          = \frac{(\ln x)^n}{\sqrt{x}}$$
+          = \frac{(\ln x)^n}{\sqrt{x}}
+          $$
 
           Les deux membres coïncident : l'identité est vérifiée sur $]0, +\infty[$.
 
@@ -1553,9 +1557,11 @@ entries:
 
           D'où, par produit :
 
-          $$\boxed{\ \lim_{x \to 0^+} \frac{f_n(x)}{x} = +\infty \ \text{ si } n \text{ est pair}\ }
+          $$
+          \boxed{\ \lim_{x \to 0^+} \frac{f_n(x)}{x} = +\infty \ \text{ si } n \text{ est pair}\ }
           \qquad
-          \boxed{\ \lim_{x \to 0^+} \frac{f_n(x)}{x} = -\infty \ \text{ si } n \text{ est impair}\ }$$
+          \boxed{\ \lim_{x \to 0^+} \frac{f_n(x)}{x} = -\infty \ \text{ si } n \text{ est impair}\ }
+          $$
 
           **L'interprétation graphique.** La limite du taux d'accroissement est **infinie**, donc :
 
@@ -1577,9 +1583,11 @@ entries:
 
           **La dérivation, terme par terme.** On applique la formule du produit $(uv)' = u'v + uv'$ avec $u(x) = \sqrt{x}$ et $v(x) = (\ln x)^n$ :
 
-          $$u'(x) = \frac{1}{2\sqrt{x}}
+          $$
+          u'(x) = \frac{1}{2\sqrt{x}}
           \qquad\text{et}\qquad
-          v'(x) = n\,(\ln x)^{n-1} \cdot \frac{1}{x}$$
+          v'(x) = n\,(\ln x)^{n-1} \cdot \frac{1}{x}
+          $$
 
           la seconde étant la dérivée d'une puissance composée, $\left(w^n\right)' = n\,w^{n-1}w'$ avec $w = \ln x$.
 
@@ -1724,9 +1732,11 @@ entries:
 
           **Le quotient, et il se simplifie entièrement.** Les termes sont strictement positifs (question précédente), donc le quotient est licite :
 
-          $$\frac{u_{n+1}}{u_n}
+          $$
+          \frac{u_{n+1}}{u_n}
           = \frac{\sqrt{\beta}\,(\ln \beta)^{n+1}}{\sqrt{\beta}\,(\ln \beta)^{n}}
-          = \ln \beta$$
+          = \ln \beta
+          $$
 
           Le facteur $\sqrt\beta$ disparaît, et il ne reste que la raison. La suite $(u_n)$ est donc **géométrique de raison $q = \ln\beta$**, de premier terme $u_1 = \sqrt\beta\,\ln\beta$.
 
@@ -1782,9 +1792,11 @@ entries:
 
           **Le calcul central, et il est court.** Évaluons $f_{n+1}$ en $x_n$ :
 
-          $$f_{n+1}(x_n) = \sqrt{x_n}\,(\ln x_n)^{n+1}
+          $$
+          f_{n+1}(x_n) = \sqrt{x_n}\,(\ln x_n)^{n+1}
           = \underbrace{\sqrt{x_n}\,(\ln x_n)^{n}}_{=\,f_n(x_n)\,=\,1} \times \ln x_n
-          = \ln x_n$$
+          = \ln x_n
+          $$
 
           On a simplement séparé un facteur $\ln x_n$ de la puissance $n+1$, et reconnu $f_n(x_n)$, qui vaut $1$ par définition de $x_n$.
 
@@ -1835,9 +1847,11 @@ entries:
 
           **Le retournement.** Par définition, $f_n(x_n) = 1$, c'est-à-dire :
 
-          $$\sqrt{x_n}\,(\ln x_n)^n = 1
+          $$
+          \sqrt{x_n}\,(\ln x_n)^n = 1
           \qquad\Longrightarrow\qquad
-          (\ln x_n)^n = \frac{1}{\sqrt{x_n}}$$
+          (\ln x_n)^n = \frac{1}{\sqrt{x_n}}
+          $$
 
           la division étant licite car $x_n > 1 > 0$, donc $\sqrt{x_n} \neq 0$.
 
@@ -1934,9 +1948,11 @@ entries:
 
           **Première intégration par parties.** Le choix se fait sur un principe : on **dérive** le logarithme (pour en baisser la puissance) et on **intègre** la puissance de $t$.
 
-          $$u(t) = (\ln t)^2,\quad u'(t) = \frac{2\ln t}{t}
+          $$
+          u(t) = (\ln t)^2,\quad u'(t) = \frac{2\ln t}{t}
           \qquad\qquad
-          v'(t) = t,\quad v(t) = \frac{t^2}{2}$$
+          v'(t) = t,\quad v(t) = \frac{t^2}{2}
+          $$
 
           Les deux fonctions sont de classe $C^1$ sur $]0, +\infty[$, l'IPP est licite :
 
@@ -1948,12 +1964,16 @@ entries:
 
           **Deuxième intégration par parties**, sur $\displaystyle\int_x^1 t\ln t\,dt$, avec le même principe :
 
-          $$u(t) = \ln t,\quad u'(t) = \frac{1}{t}
+          $$
+          u(t) = \ln t,\quad u'(t) = \frac{1}{t}
           \qquad\qquad
-          v'(t) = t,\quad v(t) = \frac{t^2}{2}$$
+          v'(t) = t,\quad v(t) = \frac{t^2}{2}
+          $$
 
-          $$\int_x^1 t\ln t\,dt = \left[\frac{t^2}{2}\ln t\right]_x^1 - \int_x^1 \frac{t}{2}\,dt
-          = \left(0 - \frac{x^2}{2}\ln x\right) - \left[\frac{t^2}{4}\right]_x^1$$
+          $$
+          \int_x^1 t\ln t\,dt = \left[\frac{t^2}{2}\ln t\right]_x^1 - \int_x^1 \frac{t}{2}\,dt
+          = \left(0 - \frac{x^2}{2}\ln x\right) - \left[\frac{t^2}{4}\right]_x^1
+          $$
 
           $$\int_x^1 t\ln t\,dt = -\frac{x^2}{2}\ln x - \left(\frac{1}{4} - \frac{x^2}{4}\right)$$
 
@@ -2188,9 +2208,11 @@ entries:
 
           **La seconde limite.** Elle est en réalité déjà faite — la parenthèse ci-dessus **est** le quotient :
 
-          $$\frac{f_n(x)}{x} = 1 - x^{n-1}\ln x
+          $$
+          \frac{f_n(x)}{x} = 1 - x^{n-1}\ln x
           \qquad\Longrightarrow\qquad
-          \boxed{\lim_{x \to +\infty} \frac{f_n(x)}{x} = -\infty}$$
+          \boxed{\lim_{x \to +\infty} \frac{f_n(x)}{x} = -\infty}
+          $$
 
           C'est le bénéfice de la factorisation : une seule écriture donne les deux réponses.
 
@@ -2267,9 +2289,11 @@ entries:
 
           Le signe de $f_n'(x)$ se ramène donc à la comparaison du produit $P(x) = x^{n-1}(1 + n\ln x)$ avec $1$ :
 
-          $$f_n'(x) > 0 \iff P(x) < 1
+          $$
+          f_n'(x) > 0 \iff P(x) < 1
           \qquad\text{et}\qquad
-          f_n'(x) < 0 \iff P(x) > 1$$
+          f_n'(x) < 0 \iff P(x) > 1
+          $$
 
           **Sur $]1, +\infty[$ : c'est immédiat.** Pour $x > 1$ :
           — $x^{n-1} > 1$, car $n - 1 \geq 1$ et $x > 1$ ;
@@ -2321,9 +2345,11 @@ entries:
 
           **Conclusion.** Pour tout $x \in [0, +\infty[$ :
 
-          $$f_n(x) - f_{n+1}(x) \geq 0
+          $$
+          f_n(x) - f_{n+1}(x) \geq 0
           \qquad\Longrightarrow\qquad
-          \boxed{f_{n+1}(x) \leq f_n(x)}$$
+          \boxed{f_{n+1}(x) \leq f_n(x)}
+          $$
 
           avec égalité **exactement** en $x = 0$ et $x = 1$.
 
@@ -2396,9 +2422,11 @@ entries:
 
           **Le point de départ.** Par définition, $\alpha_{n+1}$ est le zéro de $f_{n+1}$ dans $]1,2[$ :
 
-          $$f_{n+1}(\alpha_{n+1}) = 0
+          $$
+          f_{n+1}(\alpha_{n+1}) = 0
           \qquad\text{c’est-à-dire}\qquad
-          \alpha_{n+1} - \alpha_{n+1}^{\,n+1}\ln \alpha_{n+1} = 0$$
+          \alpha_{n+1} - \alpha_{n+1}^{\,n+1}\ln \alpha_{n+1} = 0
+          $$
 
           soit, en isolant :
 
@@ -2406,9 +2434,11 @@ entries:
 
           **La division, qu'il faut justifier.** $\alpha_{n+1} \in\, ]1, 2[$, donc $\alpha_{n+1} > 1 > 0$ : la division par $\alpha_{n+1}$ est licite. En divisant les deux membres :
 
-          $$\frac{\alpha_{n+1}^{\,n+1}}{\alpha_{n+1}}\,\ln\alpha_{n+1} = 1
+          $$
+          \frac{\alpha_{n+1}^{\,n+1}}{\alpha_{n+1}}\,\ln\alpha_{n+1} = 1
           \qquad\Longrightarrow\qquad
-          \boxed{\ \alpha_{n+1}^{\,n}\ln\alpha_{n+1} = 1\ }$$
+          \boxed{\ \alpha_{n+1}^{\,n}\ln\alpha_{n+1} = 1\ }
+          $$
 
           en utilisant $\dfrac{x^{n+1}}{x} = x^n$.
 
@@ -2451,9 +2481,11 @@ entries:
 
           **Le passage aux abscisses, et c'est là que le sens s'inverse.** Les deux points $\alpha_n$ et $\alpha_{n+1}$ appartiennent à $]1, 2[$, intervalle sur lequel $f_n$ est **strictement décroissante** (question 1-e). Une fonction strictement décroissante **renverse** l'ordre : si les images sont dans un sens, les antécédents sont dans l'autre.
 
-          $$f_n(\alpha_{n+1}) > f_n(\alpha_n)
+          $$
+          f_n(\alpha_{n+1}) > f_n(\alpha_n)
           \qquad\Longrightarrow\qquad
-          \alpha_{n+1} < \alpha_n$$
+          \alpha_{n+1} < \alpha_n
+          $$
 
           La suite $(\alpha_n)_{n\geq 2}$ est donc **strictement décroissante**.
 
@@ -2503,11 +2535,13 @@ entries:
 
           **Le point de départ.** Par définition de $\alpha_n$ :
 
-          $$f_n(\alpha_n) = 0
+          $$
+          f_n(\alpha_n) = 0
           \qquad\Longrightarrow\qquad
           \alpha_n - \alpha_n^{\,n}\ln\alpha_n = 0
           \qquad\Longrightarrow\qquad
-          \alpha_n^{\,n}\ln\alpha_n = \alpha_n$$
+          \alpha_n^{\,n}\ln\alpha_n = \alpha_n
+          $$
 
           On divise par $\alpha_n$, licite car $\alpha_n > 1 > 0$ :
 
@@ -2777,17 +2811,21 @@ entries:
 
           **On divise l'encadrement de 1-b par $x$**, strictement positif ici, ce qui conserve le sens des inégalités :
 
-          $$\frac{2x}{2+x} \le \ln(1+x) \le \frac12\cdot\frac{x^2+2x}{1+x}
+          $$
+          \frac{2x}{2+x} \le \ln(1+x) \le \frac12\cdot\frac{x^2+2x}{1+x}
           \quad\Longrightarrow\quad
-          \frac{2}{2+x} \le \frac{\ln(1+x)}{x} \le \frac12\cdot\frac{x+2}{1+x}$$
+          \frac{2}{2+x} \le \frac{\ln(1+x)}{x} \le \frac12\cdot\frac{x+2}{1+x}
+          $$
 
           c'est-à-dire $\dfrac{2}{2+x} \le g(x) \le \dfrac12\cdot\dfrac{x+2}{1+x}$.
 
           **On soustrait $1$ à chaque membre**, pour faire apparaître $g(x)-1$ :
 
-          $$\frac{2}{2+x}-1 = \frac{2-(2+x)}{2+x} = \frac{-x}{2+x}
+          $$
+          \frac{2}{2+x}-1 = \frac{2-(2+x)}{2+x} = \frac{-x}{2+x}
           \qquad\text{et}\qquad
-          \frac12\cdot\frac{x+2}{1+x}-1 = \frac{(x+2)-2(1+x)}{2(1+x)} = \frac{-x}{2(1+x)}$$
+          \frac12\cdot\frac{x+2}{1+x}-1 = \frac{(x+2)-2(1+x)}{2(1+x)} = \frac{-x}{2(1+x)}
+          $$
 
           donc $\dfrac{-x}{2+x} \le g(x)-1 \le \dfrac{-x}{2(1+x)}$.
 

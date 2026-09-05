@@ -142,6 +142,15 @@ for (const route of routes) {
   if (await commencer.count()) {
     await commencer.first().click();
     await page.waitForSelector("[data-exam-exo]", { timeout: 10000 });
+    // ET LA CORRECTION. Le raisonnement expert — la partie du produit qui
+    // prétend enseigner — n'entre dans le DOM qu'en phase « correction »
+    // (attempt-first absolu, gardé par dom-truth). Sans ce second clic, la
+    // porte mesure l'énoncé et pas le corrigé.
+    const terminer = page.getByRole("button", { name: /Terminer l.épreuve/i });
+    if (await terminer.count()) {
+      await terminer.first().click();
+      await page.waitForTimeout(400);
+    }
   }
   mesurees++;
   await page.waitForTimeout(200);

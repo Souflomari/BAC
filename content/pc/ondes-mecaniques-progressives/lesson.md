@@ -124,7 +124,8 @@ Un sujet donne parfois une expression de la célérité en fonction des grandeur
 
 Trois dimensions de base suffisent presque toujours en mécanique : la **longueur** $\text{L}$, la **masse** $\text{M}$, le **temps** $\text{T}$. Tout le reste s'en déduit par les définitions :
 
-$$[v] = \frac{[d]}{[\Delta t]} = \text{L}\cdot\text{T}^{-1}
+$$
+[v] = \frac{[d]}{[\Delta t]} = \text{L}\cdot\text{T}^{-1}
 \qquad
 [a] = \frac{[v]}{[\Delta t]} = \text{L}\cdot\text{T}^{-2}
 \qquad

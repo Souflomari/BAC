@@ -290,6 +290,21 @@ jobs:
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
           node scripts/accents-manquants.mjs --porte $routes $examens / /atelier /examens
 
+      # PORTE FORMULES (2026-09-05). KaTeX, quand il n'arrive pas à lire une
+      # formule, ne disparaît pas : il PEINT LA SOURCE, en rouge. Un élève en
+      # correction d'épreuve lisait « \qquad\Longrightarrow\qquad v_L =
+      # \frac{c}{n_L}$$ » à la place du raisonnement — 49 formules, sur 11 des
+      # 39 sujets. Cause : un bloc `$$…$$` dont les délimiteurs ne sont pas
+      # SEULS sur leur ligne ; le lecteur markdown ne voit pas le bloc et passe
+      # le `$$` de clôture à KaTeX, qui refuse. 215 blocs remis en forme
+      # canonique dans 47 fichiers. La porte ouvre les épreuves en DEUX temps —
+      # « Commencer » puis « Terminer » — parce que le corrigé, où vivaient les
+      # 49, n'entre dans le DOM qu'à la seconde action.
+      - name: Porte formules (aucune formule affichée en LaTeX brut)
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/formules-rendues.mjs --porte
+
       # CLIQUET INDICE-LONGUEUR (2026-09-05). `item-stats` disait déjà, en
       # toutes lettres, que la bonne réponse est la plus longue bien plus
       # souvent que le hasard ne l'explique — et que le mélange des choix n'y

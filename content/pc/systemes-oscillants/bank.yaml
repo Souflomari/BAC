@@ -388,11 +388,13 @@ entries:
 
           **La relation, et le retournement.**
 
-          $$T_0 = 2\pi\sqrt{\frac{m}{k}}
+          $$
+          T_0 = 2\pi\sqrt{\frac{m}{k}}
           \qquad\Longrightarrow\qquad
           T_0^2 = 4\pi^2\,\frac{m}{k}
           \qquad\Longrightarrow\qquad
-          k = \frac{4\pi^2\,m}{T_0^2}$$
+          k = \frac{4\pi^2\,m}{T_0^2}
+          $$
 
           **Le calcul, chiffre par chiffre.** $m = 0{,}5\ \text{kg}$ (déjà en kilogrammes, aucune conversion à faire), $T_0 = 1\ \text{s}$, et l'énoncé impose $\pi^2 = 10$ :
 
@@ -680,16 +682,20 @@ entries:
 
           *Première information — la valeur de départ.* À $t = 0$, la courbe part du trait chiffré $1$, donc $x(0) = 1\ \text{cm}$. En écrivant la solution à $t = 0$ :
 
-          $$x(0) = X_m\cos\varphi \qquad\Longrightarrow\qquad 1 = 2\cos\varphi
-          \qquad\Longrightarrow\qquad \cos\varphi = \frac{1}{2}$$
+          $$
+          x(0) = X_m\cos\varphi \qquad\Longrightarrow\qquad 1 = 2\cos\varphi
+          \qquad\Longrightarrow\qquad \cos\varphi = \frac{1}{2}
+          $$
 
           Cette équation a **deux** solutions dans un tour : $\varphi = +\dfrac{\pi}{3}$ et $\varphi = -\dfrac{\pi}{3}$. Le cosinus, à lui seul, ne peut pas trancher — il vaut la même chose pour un angle et son opposé. C'est le point où beaucoup de copies s'arrêtent, en choisissant au hasard.
 
           *Seconde information — le sens de départ.* L'énoncé le donne en toutes lettres : on envoie le solide « avec une **vitesse initiale dans le sens négatif** », et la figure le montre — à $t = 0$ la courbe **décroît**. Or la vitesse est la dérivée de $x$ :
 
-          $$v(t) = \dot{x}(t) = -X_m\,\frac{2\pi}{T_0}\sin\left(\frac{2\pi}{T_0}t + \varphi\right)
+          $$
+          v(t) = \dot{x}(t) = -X_m\,\frac{2\pi}{T_0}\sin\left(\frac{2\pi}{T_0}t + \varphi\right)
           \qquad\Longrightarrow\qquad
-          v(0) = -X_m\,\frac{2\pi}{T_0}\sin\varphi$$
+          v(0) = -X_m\,\frac{2\pi}{T_0}\sin\varphi
+          $$
 
           Comme $X_m > 0$ et $\dfrac{2\pi}{T_0} > 0$, la condition $v(0) < 0$ impose $\sin\varphi > 0$. Des deux candidats, seul $+\dfrac{\pi}{3}$ a un sinus positif.
 
@@ -715,9 +721,11 @@ entries:
 
           **On la retourne.** On élève au carré pour libérer $k$ de la racine, puis on isole :
 
-          $$T_0^2 = 4\pi^2\,\frac{m}{k}
+          $$
+          T_0^2 = 4\pi^2\,\frac{m}{k}
           \qquad\Longrightarrow\qquad
-          k = \frac{4\pi^2\,m}{T_0^2}$$
+          k = \frac{4\pi^2\,m}{T_0^2}
+          $$
 
           **Les valeurs, converties d'abord.** $m = 200\ \text{g} = 0{,}200\ \text{kg}$ — la conversion est obligatoire, le newton se définit avec des kilogrammes. $T_0 = 0{,}40\ \text{s}$, et l'énoncé impose $\pi^2 = 10$.
 
@@ -757,14 +765,20 @@ entries:
 
           **Le calcul, en factorisant pour n'écrire qu'une fois le $\frac{1}{2}k$.**
 
-          $$\Delta E_{pe} = \frac{1}{2}k\,x^2(t_1) - \frac{1}{2}k\,x^2(0)
-          = \frac{1}{2}k\left(x^2(t_1) - x^2(0)\right)$$
+          $$
+          \Delta E_{pe} = \frac{1}{2}k\,x^2(t_1) - \frac{1}{2}k\,x^2(0)
+          = \frac{1}{2}k\left(x^2(t_1) - x^2(0)\right)
+          $$
 
-          $$\Delta E_{pe} = \frac{1}{2} \times 50 \times \left[(2\times10^{-2})^2 - (1\times10^{-2})^2\right]
-          = 25 \times \left[4\times10^{-4} - 1\times10^{-4}\right]$$
+          $$
+          \Delta E_{pe} = \frac{1}{2} \times 50 \times \left[(2\times10^{-2})^2 - (1\times10^{-2})^2\right]
+          = 25 \times \left[4\times10^{-4} - 1\times10^{-4}\right]
+          $$
 
-          $$\Delta E_{pe} = 25 \times 3\times10^{-4}
-          = \boxed{7{,}5\times10^{-3}\ \text{J}}$$
+          $$
+          \Delta E_{pe} = 25 \times 3\times10^{-4}
+          = \boxed{7{,}5\times10^{-3}\ \text{J}}
+          $$
 
           **Lire le signe, et pas seulement le nombre.** $\Delta E_{pe} > 0$ : l'énergie potentielle élastique a **augmenté** entre $t_0$ et $t_1$. C'est cohérent — à $t_1$ le solide est à l'écart maximal, donc le ressort est le plus déformé qu'il puisse être, alors qu'à $t_0$ il ne l'était qu'à moitié.
 

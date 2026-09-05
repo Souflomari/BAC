@@ -2894,7 +2894,64 @@ renvoi de la forme `mot:identifiant`.
 État après : **accents 0 sur 104 pages, typographie 0 sur 111 pages** — les
 62 leçons ET les 39 épreuves —, dom-truth 262/262, six suites unitaires.
 
-### 11.14 Deux soupçons re-mesurés, et déjà traités
+### 11.14 49 formules affichées en LaTeX brut, dans les corrigés d'épreuve
+
+Suite immédiate du §11.13. Une fois les épreuves ouvertes, il restait une
+troisième porte fermée : le **corrigé**. `EpreuveShell` est attempt-first
+absolu — le raisonnement expert n'entre dans le DOM qu'en phase « correction »
+(dom-truth l'asserte, et c'est une bonne chose). Il faut donc DEUX actions
+pour voir tout ce que l'élève voit : « Commencer l'épreuve », puis
+« Terminer ». Les deux portes les font maintenant.
+
+Ce que la seconde action a révélé : **428 écarts de typographie, tous dans des
+`span.katex-error`.** C'est-à-dire : KaTeX n'avait pas réussi à lire la
+formule, et **il en peint la source, en rouge**. Un élève lisait, à la place
+du raisonnement :
+
+    \qquad\Longrightarrow\qquad
+    v_L = \frac{c}{n_L}$$
+
+    **L'application numérique.**
+
+**49 formules, sur 11 des 39 sujets.**
+
+La cause, une fois le message KaTeX lu (« Can't use function '$' in math
+mode ») : un bloc de maths d'affichage écrit
+
+    $$n_L = \frac{c}{v_L}
+    \qquad\Longrightarrow\qquad
+    v_L = \frac{c}{n_L}$$
+
+— les `$$` **collés au contenu**, sur plusieurs lignes. Le lecteur markdown ne
+reconnaît pas le bloc, passe la chaîne entière à KaTeX, et KaTeX bute sur le
+`$$` de clôture qu'elle contient. La forme canonique — les deux `$$` seuls sur
+leur ligne — rend partout. **215 blocs remis en forme dans 47 fichiers.**
+
+Les 62 leçons étaient à zéro avant comme après : la même forme y passe, parce
+que le markdown d'un `.md` donne au bloc un contexte que la chaîne YAML n'a
+pas. C'est pour cela que rien ne l'avait vu — le défaut n'existe que sur la
+surface qu'aucun instrument n'ouvrait.
+
+Une porte neuve garde l'acquis : `formules-rendues.mjs`, 101 pages (62 leçons
++ 39 épreuves), rouge dès **une** formule illisible. Vérifiée rouge en
+remettant un seul bloc dans l'ancienne forme :
+
+    ✗ /examens/spc-2025-rattrapage — 1 formule(s) en LaTeX brut
+    ParseError: KaTeX parse error: Can't use function '$' in math mode
+
+Ce qu'elle ne dit pas, et il faut l'écrire : **elle dit qu'une formule est
+LISIBLE, pas qu'elle est JUSTE.** Une formule fausse mais bien formée passe
+ici sans un mot.
+
+Trois défauts trouvés au passage dans le `\text{}` des formules, invisibles à
+la porte accents tant que le corrigé restait fermé : « qu'a l'etablissement »,
+« une espece chimique », « initialement charge ». Et deux renvois
+`derivation:verification-cosinus` cités en prose — réécrits en français (« la
+vérification du cosinus, au chapitre 3 ») : un identifiant n'a rien à faire
+dans une phrase lue par un élève, et la typographie française y insérait en
+plus une insécable avant le « : », ce qui le mangeait comme référence.
+
+### 11.15 Deux soupçons re-mesurés, et déjà traités
 
 Deux mesures lancées ce jour-là ont retrouvé un terrain déjà couvert, et il
 faut le dire pour que personne ne le refasse une troisième fois.

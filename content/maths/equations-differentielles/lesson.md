@@ -345,7 +345,8 @@ $$a\,y''(x) + b\,y'(x) + c\,y(x) = 0$$
 
 **L'idée qui débloque tout : chercher les solutions de la forme $y=e^{rx}$.** Ce n'est pas un coup de chance — c'est la seule famille de fonctions dont toutes les dérivées sont proportionnelles à elle-même, donc la seule où la combinaison $ay''+by'+cy$ a une chance de se simplifier. Pose $y(x)=e^{rx}$ avec $r$ à déterminer. Alors $y'(x)=r\,e^{rx}$ et $y''(x)=r^2e^{rx}$, et en reportant :
 
-$$a\,r^2e^{rx} + b\,r\,e^{rx} + c\,e^{rx} = 0
+$$
+a\,r^2e^{rx} + b\,r\,e^{rx} + c\,e^{rx} = 0
 \qquad\Longleftrightarrow\qquad
 \left(a r^2 + b r + c\right)e^{rx} = 0
 $$

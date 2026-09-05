@@ -218,7 +218,8 @@ Les deux méthodes précédentes lisent le temps en abscisse. Un sujet peut te d
 
 Reprends-la et isole la dérivée :
 
-$$L\,\frac{di}{dt} + (R+r)\,i = E
+$$
+L\,\frac{di}{dt} + (R+r)\,i = E
 \qquad\Longrightarrow\qquad
 \frac{di}{dt} = \frac{E}{L} - \frac{R+r}{L}\,i
 $$

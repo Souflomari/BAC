@@ -260,13 +260,15 @@ entries:
 
           **Les quantités initiales.** La solution $S_B$ apporte $n_B = C_B \times V = 10 \times 2\cdot10^{-4} = 2\cdot10^{-3}\ \text{mol}$ d'ions hydroxyde, et l'énoncé impose $n_E = n_B$ : le méthanoate de méthyle est introduit en **quantité égale**, exactement dans les proportions stœchiométriques de l'équation (tous les coefficients valent $1$).
 
-          $$\begin{array}{l|cccc}
+          $$
+          \begin{array}{l|cccc}
           \text{état} & \text{HCO}_2\text{CH}_3 & \text{OH}^- & \text{HCO}_2^- & \text{CH}_3\text{OH} \\
           \hline
           \text{initial}\ (x=0) & n_E & n_B & 0 & 0 \\
           \text{en cours}\ (x) & n_E - x & n_B - x & x & x \\
           \text{final}\ (x_{max}) & n_E - x_{max} & n_B - x_{max} & x_{max} & x_{max}
-          \end{array}$$
+          \end{array}
+          $$
 
           **Trouver $x_{max}$ : un cas particulier.** D'ordinaire, on compare $n_E$ et $n_B$ pour repérer lequel des deux réactifs s'annule en premier. Ici, $n_E = n_B$ exactement : les deux expressions $n_E - x$ et $n_B - x$ s'annulent donc **au même instant**, pour la même valeur de $x$ — aucun des deux réactifs n'est en excès, le mélange est dit stœchiométrique.
 
@@ -295,8 +297,10 @@ entries:
 
           **On substitue dans la loi d'additivité, et on factorise.**
 
-          $$G = k\left[\lambda_{\text{Na}^+}\frac{n_B}{V} + \lambda_{\text{OH}^-}\frac{n_B-x}{V} + \lambda_{\text{HCO}_2^-}\frac{x}{V}\right]
-          = \frac{k}{V}\Big[n_B\big(\lambda_{\text{Na}^+}+\lambda_{\text{OH}^-}\big) + x\big(\lambda_{\text{HCO}_2^-}-\lambda_{\text{OH}^-}\big)\Big]$$
+          $$
+          G = k\left[\lambda_{\text{Na}^+}\frac{n_B}{V} + \lambda_{\text{OH}^-}\frac{n_B-x}{V} + \lambda_{\text{HCO}_2^-}\frac{x}{V}\right]
+          = \frac{k}{V}\Big[n_B\big(\lambda_{\text{Na}^+}+\lambda_{\text{OH}^-}\big) + x\big(\lambda_{\text{HCO}_2^-}-\lambda_{\text{OH}^-}\big)\Big]
+          $$
 
           Le premier groupe (indépendant de $x$) va donner le terme constant ; le second (multiplié par $x$) va donner la pente. C'est cette **différence** $\lambda_{\text{HCO}_2^-}-\lambda_{\text{OH}^-}$, entre l'ion qui apparaît et l'ion qui disparaît, qui porte tout le signe de la pente — un point qui va resservir à la question suivante.
 

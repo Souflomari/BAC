@@ -567,9 +567,11 @@ entries:
 
           **L'approximation, et seulement maintenant.** L'équation ci-dessus est exacte mais n'est pas celle d'un oscillateur harmonique, à cause du $\sin\theta$. L'énoncé autorise $\sin\theta \approx \theta$ (petites oscillations). On remplace, puis on simplifie par $m$ et par $\ell$ — les deux disparaissent, ce qui est déjà un résultat :
 
-          $$\frac{1}{3}\ell\,\ddot\theta = -\,\frac{g}{2}\,\theta
+          $$
+          \frac{1}{3}\ell\,\ddot\theta = -\,\frac{g}{2}\,\theta
           \qquad\Longrightarrow\qquad
-          \boxed{\ddot\theta + \frac{3g}{2\ell}\,\theta = 0}$$
+          \boxed{\ddot\theta + \frac{3g}{2\ell}\,\theta = 0}
+          $$
 
           **Ce que la forme obtenue annonce.** C'est $\ddot\theta + \omega_0^2\,\theta = 0$, avec $\omega_0^2 = \dfrac{3g}{2\ell}$ : l'équation d'un **oscillateur harmonique**. La question 1-2 va en écrire la solution, la 1-3 en tirer la période.
 
@@ -631,9 +633,11 @@ entries:
 
           **Voie 2 — par report de la solution dans l'équation**, la démonstration complète. On repart de $\theta(t) = \theta_m\cos\!\left(\dfrac{2\pi}{T_0}t\right)$ et on dérive deux fois :
 
-          $$\dot\theta = -\theta_m\frac{2\pi}{T_0}\sin\!\left(\frac{2\pi}{T_0}t\right)
+          $$
+          \dot\theta = -\theta_m\frac{2\pi}{T_0}\sin\!\left(\frac{2\pi}{T_0}t\right)
           \qquad
-          \ddot\theta = -\theta_m\left(\frac{2\pi}{T_0}\right)^{2}\cos\!\left(\frac{2\pi}{T_0}t\right)$$
+          \ddot\theta = -\theta_m\left(\frac{2\pi}{T_0}\right)^{2}\cos\!\left(\frac{2\pi}{T_0}t\right)
+          $$
 
           On reporte $\theta$ et $\ddot\theta$ dans l'équation différentielle :
 
@@ -643,11 +647,13 @@ entries:
 
           **L'argument qui conclut, et c'est lui qui vaut le point.** Cette égalité doit être vraie **à tout instant** $t$. Or le facteur $\theta_m\cos\!\left(\frac{2\pi}{T_0}t\right)$ n'est pas identiquement nul (il ne s'annule qu'à des instants isolés). C'est donc le **crochet** qui doit s'annuler :
 
-          $$\left(\frac{2\pi}{T_0}\right)^{2} = \frac{3g}{2\ell}
+          $$
+          \left(\frac{2\pi}{T_0}\right)^{2} = \frac{3g}{2\ell}
           \qquad\Longrightarrow\qquad
           \frac{2\pi}{T_0} = \sqrt{\frac{3g}{2\ell}}
           \qquad\Longrightarrow\qquad
-          \boxed{T_0 = 2\pi\sqrt{\frac{2\ell}{3g}}}$$
+          \boxed{T_0 = 2\pi\sqrt{\frac{2\ell}{3g}}}
+          $$
 
           **Le contrôle d'homogénéité, à faire systématiquement.** $\dfrac{\ell}{g}$ est une longueur divisée par une accélération, soit $\dfrac{\text{m}}{\text{m.s}^{-2}} = \text{s}^2$ ; sa racine est bien un temps. Et le facteur $\dfrac{2}{3}$, sans dimension, ne change rien.
 
@@ -675,11 +681,13 @@ entries:
 
           **La condition de synchronisme**, et la simplification qui suit :
 
-          $$2\pi\sqrt{\frac{L}{g}} = 2\pi\sqrt{\frac{2\ell}{3g}}
+          $$
+          2\pi\sqrt{\frac{L}{g}} = 2\pi\sqrt{\frac{2\ell}{3g}}
           \qquad\Longrightarrow\qquad
           \frac{L}{g} = \frac{2\ell}{3g}
           \qquad\Longrightarrow\qquad
-          \boxed{L = \frac{2\ell}{3}}$$
+          \boxed{L = \frac{2\ell}{3}}
+          $$
 
           **Le $g$ disparaît des deux côtés** — ce qui est heureux, puisque le sujet n'en donne aucune valeur numérique. Le résultat est **exact**, pas approché :
 
@@ -748,15 +756,19 @@ entries:
 
           **Étape 3 — l'énergie cinétique de ROTATION** (chapitre 6), et c'est là que le moment d'inertie entre en jeu :
 
-          $$E_c = \frac{1}{2}\,J_\Delta\,\dot\theta^{\,2}
+          $$
+          E_c = \frac{1}{2}\,J_\Delta\,\dot\theta^{\,2}
           \qquad\text{avec}\qquad
-          J_\Delta = \frac{1}{3}m\ell^2 = \frac{1}{3}\times 0{,}203 \times 1{,}5^2 = 0{,}15225\ \text{kg}\cdot\text{m}^2$$
+          J_\Delta = \frac{1}{3}m\ell^2 = \frac{1}{3}\times 0{,}203 \times 1{,}5^2 = 0{,}15225\ \text{kg}\cdot\text{m}^2
+          $$
 
           **Étape 4 — isoler $\dot\theta$**, en remplaçant $J_\Delta$ par son expression pour obtenir une formule compacte :
 
-          $$|\dot\theta| = \sqrt{\frac{2E_c}{J_\Delta}} = \sqrt{\frac{2E_c}{\frac13 m\ell^2}} = \sqrt{\frac{6\,E_c}{m\,\ell^2}}
+          $$
+          |\dot\theta| = \sqrt{\frac{2E_c}{J_\Delta}} = \sqrt{\frac{2E_c}{\frac13 m\ell^2}} = \sqrt{\frac{6\,E_c}{m\,\ell^2}}
           = \sqrt{\frac{6 \times 12{,}6\times10^{-3}}{0{,}203 \times 2{,}25}}
-          = \sqrt{\frac{0{,}0756}{0{,}45675}}$$
+          = \sqrt{\frac{0{,}0756}{0{,}45675}}
+          $$
 
           $$\boxed{|\dot\theta| \approx 0{,}41\ \text{rad.s}^{-1}}$$
 
