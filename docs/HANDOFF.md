@@ -2635,3 +2635,33 @@ d'une étiquette figée dans le bon sens pour ce cas-là.
 > ne prévient pas : il garde ce qu'on lui a demandé de garder. Après une
 > correction qui change ce que le produit CHOISIT, il faut rouvrir les pages
 > où ce choix s'AFFICHE.
+
+### 11.9 Le lien le plus important du site n'avait aucun test
+
+`sessionFromState` (lib/session.ts) décide de l'ACTION PRINCIPALE de la page
+d'accueil : quelle notion proposer, et si l'on dit « commencer » ou
+« reprendre ». C'est le premier geste d'un élève qui ouvre le produit. Le
+module n'avait **aucun test** — alors qu'il est une fonction PURE (elle reçoit
+`notions` et `state`, elle ne lit rien), donc la chose la plus facile à
+épingler de tout le produit.
+
+Le manque s'est vu en corrigeant `startSession` le matin même. Il triait par
+DATE DE FICHIER et proposait « la plus récente » ; après un clone frais, cela
+retombe sur l'ordre du système de fichiers. **Rien n'aurait signalé le retour
+du défaut.**
+
+Dix tests, dont deux tombent si le tri par tableau revient — vérifié rouge en
+remettant `notions[0]` à la place de `premiereDuParcours`. Les autres épinglent
+ce qui n'avait jamais été énoncé nulle part :
+
+- la notion proposée EXISTE dans la liste reçue (le cadre connaît des
+  chapitres non construits) ;
+- une notion DISPARUE, ou une entrée `perNotion` absente, retombe sur
+  « commencer » — jamais une reprise cassée ;
+- un index de chapitre hors bornes (99, ou −5) est ramené dans l'intervalle ;
+- `chaptersTotal = 0` ne produit jamais « Chapitre 1 / 0 » ;
+- et le motif affiché à l'élève n'invoque plus jamais une DATE — c'est le
+  défaut du matin, épinglé par son énoncé même.
+
+Quatre suites unitaires tournent maintenant en CI, contre deux ce matin :
+apprenant (26) · écriture (20) · typographie (10) · session (10).
