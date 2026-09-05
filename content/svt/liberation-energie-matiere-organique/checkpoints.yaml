@@ -1,0 +1,501 @@
+notion: liberation-energie-matiere-organique
+skill_code: svt_liberation_energie
+
+# ──────────────────────────────────────────────────────────────────────────────
+# POINTS D'ARRÊT DANS LA LEÇON (campagne de conversion du sommet — SVT)
+#
+# Sondes formatives posées DANS la leçon, pas le banc de fin. Aucun score,
+# aucune série, aucun décompte ; le plancher du banc n'est pas modifié.
+#
+# Placement (identifiants = marqueurs [[checkpoint:…]] de lesson.md) :
+#   cp-r0-predict     (DANS le chapitre 1) — même voie pour les deux coureurs ?
+#   cp-r1-atp-monnaie (après le chapitre 2) — monnaie, pas réserve.
+#   cp-r2-glycolyse   (après le chapitre 3) — le bilan NET, investissement
+#                     compris, et les DEUX pyruvates.
+#   cp-r3-krebs       (après le chapitre 4) — le cycle charge des coenzymes.
+#   cp-r4-dioxygene   (après le chapitre 5) — accepteur final, pas fournisseur.
+#   cp-r5-bilan       (après le chapitre 6) — d'où viennent les 34 ATP.
+#   cp-r6-fermentation (après le chapitre 7) — régénérer le NAD+.
+#   cp-r7-comparaison (après le chapitre 8) — pourquoi le sprinter s'épuise.
+#
+# CHAQUE distracteur porte un identifiant réel de l'inventaire de items.yaml.
+# Aucune erreur nouvelle n'est déclarée : les sondes réutilisent les cinq
+# modèles existants, pour ne pas rouvrir de dette de couverture.
+#
+# Garde de périmètre : 2ème Bac SVT/PC — ATP, glycolyse, oxydation du pyruvate
+# et cycle de Krebs, chaîne respiratoire et phosphorylation oxydative, bilan
+# énergétique, fermentations lactique et alcoolique, lien structure-fonction de
+# la mitochondrie. La photosynthèse relève d'une autre notion.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: svt_liberation_energie
+    tags: [checkpoint, formative, misconception_driven, svt_liberation_energie, hook_commit]
+    primary_misconception: mc.svt.svt_liberation_energie.fermentation-mal-comprise
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Le sprinter tient une dizaine de secondes, le marathonien deux heures —
+      dans le même air, à la même teneur en dioxygène. **Engage-toi avant de
+      lire la suite :** qu'est-ce qui les sépare ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "L'air ne suffit plus au sprinter : sa respiration ne lui apporte pas assez de dioxygène, et une cellule privée d'oxygène de l'air ne peut plus rien produire du tout."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.fermentation-mal-comprise
+        feedback: |
+          Modèle détecté : chercher la cause dans l'air ambiant. L'air contient
+          la même proportion de dioxygène pour les deux coureurs — ce qui est
+          en cause, c'est la vitesse à laquelle ce dioxygène peut être ACHEMINÉ
+          jusqu'aux muscles. Et une cellule privée de dioxygène n'arrête pas de
+          produire : elle bascule sur une autre voie, moins rentable.
+
+      - id: B
+        text: "Leurs cellules musculaires n'empruntent pas la même voie de production d'ATP : celle du sprinter rapporte très peu par molécule de glucose, et ne peut donc pas durer."
+        correct: true
+        feedback: |
+          Oui — et toute la leçon consiste à mesurer cet écart. Le marathonien
+          respire au sens cellulaire du terme : oxydation complète du glucose,
+          de l'ordre de 36 à 38 ATP par molécule. Le sprinter fermente : 2 ATP
+          par molécule. Un rapport de près de vingt pour un, qui explique
+          pourquoi l'une des deux voies s'épuise si vite.
+
+      - id: C
+        text: "Le sprinter a épuisé ses réserves d'ATP : ses cellules en avaient stocké une quantité importante avant la course, et cette réserve s'est vidée en quelques secondes."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.atp-reserve-plutot-que-monnaie
+        feedback: |
+          Modèle détecté : traiter l'ATP comme une réserve que l'on remplit à
+          l'avance. La cellule n'en stocke qu'une quantité minuscule —
+          quelques secondes d'effort — et la régénère en permanence. Les
+          réserves de l'organisme sont ailleurs : glycogène, lipides. L'ATP est
+          une monnaie d'échange, pas un compte en banque.
+
+      - id: D
+        text: "Le sprinter utilise son cycle de Krebs au ralenti, ce qui divise le rendement par deux ; le marathonien, lui, le fait tourner à plein régime dans ses mitochondries."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.fermentation-mal-comprise
+        feedback: |
+          Modèle détecté : imaginer la voie du sprinter comme une respiration
+          ralentie. Ce n'est pas un ralentissement mais un ARRÊT : la
+          fermentation s'interrompt après la glycolyse, sans que le cycle de
+          Krebs ni la chaîne respiratoire n'interviennent. D'où un écart de
+          rendement bien supérieur à un facteur deux.
+
+  - id: cp-r1-atp-monnaie
+    rung: "R1"
+    habilete: comprehension
+    skill_code: svt_liberation_energie
+    tags: [checkpoint, formative, misconception_driven, svt_liberation_energie]
+    primary_misconception: mc.svt.svt_liberation_energie.atp-reserve-plutot-que-monnaie
+    item_source: original
+    lesson_placement: after_R1
+
+    stem: |
+      Un adulte au repos consomme chaque jour une masse d'ATP comparable à sa
+      propre masse corporelle, alors que la quantité d'ATP présente dans son
+      organisme à un instant donné se compte en dizaines de grammes. Que
+      faut-il en conclure ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Que chaque molécule d'ATP est hydrolysée puis reconstituée des milliers de fois par jour : la cellule ne stocke pas d'ATP, elle le fait circuler."
+        correct: true
+        feedback: |
+          Exactement — et c'est le sens de « monnaie énergétique ». L'ATP est
+          dépensé et refabriqué en continu, à un rythme vertigineux. Les
+          réserves de l'organisme sont stockées sous d'autres formes (glycogène,
+          lipides) ; l'ATP n'est que l'intermédiaire par lequel cette énergie
+          devient utilisable.
+
+      - id: B
+        text: "Que les mesures sont incompatibles : si l'organisme dépense autant d'ATP, il doit forcément en stocker une quantité équivalente quelque part."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.atp-reserve-plutot-que-monnaie
+        feedback: |
+          Modèle détecté : raisonner en stock plutôt qu'en flux. Il n'y a
+          aucune contradiction : un même euro peut financer mille achats dans la
+          journée s'il change mille fois de mains. Le renouvellement rapide
+          d'une petite quantité suffit à un très gros débit.
+
+      - id: C
+        text: "Que l'ATP est la véritable réserve énergétique de l'organisme, et que les lipides et le glycogène ne servent qu'à autre chose que la production d'énergie."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.atp-reserve-plutot-que-monnaie
+        feedback: |
+          Modèle détecté : promouvoir la monnaie au rang de réserve. Le rapport
+          des masses dit l'inverse : quelques dizaines de grammes d'ATP contre
+          des kilogrammes de lipides et de glycogène. Ce sont ces derniers qui
+          stockent ; l'ATP les convertit en énergie immédiatement dépensable.
+
+      - id: D
+        text: "Que la mitochondrie fabrique l'ATP puis l'exporte vers un compartiment de stockage cellulaire, où il attend d'être utilisé par la cellule."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.localisation-des-etapes-confondue
+        feedback: |
+          Modèle détecté : inventer un compartiment de stockage. Il n'existe pas
+          d'organite réservoir d'ATP : la molécule diffuse dans le cytoplasme et
+          est consommée en quelques secondes là où le travail cellulaire la
+          réclame. Produire et consommer sont ici presque simultanés.
+
+  - id: cp-r2-glycolyse
+    rung: "R2"
+    habilete: application
+    skill_code: svt_liberation_energie
+    tags: [checkpoint, formative, misconception_driven, svt_liberation_energie]
+    primary_misconception: mc.svt.svt_liberation_energie.bilan-metabolique-incomplet
+    item_source: original
+    lesson_placement: after_R2
+
+    stem: |
+      La glycolyse produit 4 molécules d'ATP par glucose, et pourtant on écrit
+      partout que son bilan est de 2 ATP. On lit par ailleurs qu'elle fournit
+      2 $NADH,H^+$. Quel énoncé du bilan est correct ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "2 ATP nets, parce que la glycolyse en a d'abord investi 2 pour amorcer la coupure du glucose ; s'y ajoutent 2 $NADH,H^+$, qui ne sont pas de l'ATP."
+        correct: true
+        feedback: |
+          Oui, et les deux moitiés comptent. La phase d'investissement consomme
+          2 ATP avant que la phase de récupération n'en produise 4 : le net est
+          bien de 2. Quant aux coenzymes réduits, ils sont une forme d'énergie
+          transportée, pas de l'ATP — ils ne seront convertis qu'au chapitre 6,
+          et seulement en présence de dioxygène.
+
+      - id: B
+        text: "4 ATP, le chiffre brut étant le seul qui compte : l'ATP investi au départ est récupéré à la fin du processus, il ne coûte donc rien au bilan."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.bilan-metabolique-incomplet
+        feedback: |
+          Modèle détecté : oublier l'investissement. Les 2 ATP consommés au
+          début ne sont pas rendus : leur phosphate a été transféré au sucre,
+          c'est ce qui rend la molécule assez réactive pour être coupée. Ce
+          qu'on peut dépenser ailleurs, c'est bien 4 − 2 = 2.
+
+      - id: C
+        text: "6 ATP, en ajoutant aux 4 ATP produits les 2 $NADH,H^+$, qui sont eux aussi des transporteurs d'énergie disponibles immédiatement pour la cellule."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.bilan-metabolique-incomplet
+        feedback: |
+          Modèle détecté : compter les coenzymes réduits comme de l'ATP. Un
+          $NADH,H^+$ ne peut pas payer un travail cellulaire : il transporte des
+          électrons jusqu'à la chaîne respiratoire, qui les convertira en ATP —
+          à condition qu'il y ait du dioxygène. Sans lui, ces coenzymes valent
+          zéro ATP.
+
+      - id: D
+        text: "2 ATP pour un pyruvate, donc 4 ATP au total puisque chaque glucose donne deux pyruvates que la suite du métabolisme traitera séparément."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.bilan-metabolique-incomplet
+        feedback: |
+          Modèle détecté : compter deux fois un bilan déjà global. Les 2 ATP
+          nets sont le bilan de la glycolyse d'UN glucose, les deux pyruvates
+          inclus. Le piège du facteur deux existe bel et bien, mais il est au
+          chapitre suivant : c'est l'oxydation du pyruvate et le cycle de Krebs
+          qui tournent deux fois par glucose.
+
+  - id: cp-r3-krebs
+    rung: "R3"
+    habilete: raisonnement
+    skill_code: svt_liberation_energie
+    tags: [checkpoint, formative, misconception_driven, svt_liberation_energie]
+    primary_misconception: mc.svt.svt_liberation_energie.localisation-des-etapes-confondue
+    item_source: original
+    lesson_placement: after_R3
+
+    stem: |
+      Le cycle de Krebs oxyde complètement le carbone du glucose et libère tout
+      le $CO_2$ de la respiration, mais ne fournit que 2 ATP par glucose. Où est
+      passée l'énergie extraite ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Elle est stockée dans les coenzymes réduits produits dans la matrice, qui la porteront jusqu'à la membrane interne où elle deviendra de l'ATP."
+        correct: true
+        feedback: |
+          Oui — et c'est pour cela que le cycle de Krebs n'a pas l'air rentable
+          quand on ne regarde que sa colonne ATP. Son vrai produit, ce sont les
+          8 $NADH,H^+$ et 2 $FADH_2$ qu'il charge à chaque glucose. La
+          conversion en ATP se fera ailleurs, sur les crêtes, au chapitre
+          suivant.
+
+      - id: B
+        text: "Elle est perdue sous forme de chaleur : le cycle de Krebs est une étape de dissipation, et seule la glycolyse produit de l'énergie réellement utilisable."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.bilan-metabolique-incomplet
+        feedback: |
+          Modèle détecté : conclure d'un faible rendement direct à une perte.
+          Le comptage final du chapitre 6 dit le contraire : les coenzymes
+          chargés dans la matrice rapportent à eux seuls l'essentiel des 38 ATP.
+          Le cycle de Krebs est la source majeure d'énergie de la respiration —
+          il la livre simplement sous une autre forme que l'ATP.
+
+      - id: C
+        text: "Elle sert à faire tourner la chaîne respiratoire, qui se trouve elle aussi dans la matrice mitochondriale, juste à côté des enzymes du cycle."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.localisation-des-etapes-confondue
+        feedback: |
+          Modèle détecté : loger la chaîne respiratoire dans la matrice. Elle
+          est enchâssée dans la MEMBRANE INTERNE, et cette localisation n'est
+          pas un détail : c'est parce qu'elle traverse une membrane qu'elle peut
+          pomper des $H^+$ d'un côté à l'autre et créer le gradient. Dans la
+          matrice, sans membrane à franchir, rien de tout cela ne serait
+          possible.
+
+      - id: D
+        text: "Elle est repartie dans le cytoplasme avec les coenzymes réduits, qui y sont convertis en ATP par les mêmes enzymes que celles de la glycolyse."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.localisation-des-etapes-confondue
+        feedback: |
+          Modèle détecté : ramener la conversion des coenzymes au cytoplasme.
+          Les coenzymes chargés dans la matrice y restent et cèdent leurs
+          électrons à la chaîne respiratoire de la membrane interne. Les enzymes
+          de la glycolyse, elles, ne produisent d'ATP que par phosphorylation
+          directe, et ne savent rien faire d'un $NADH,H^+$.
+
+  - id: cp-r4-dioxygene
+    rung: "R4"
+    habilete: comprehension
+    skill_code: svt_liberation_energie
+    tags: [checkpoint, formative, misconception_driven, svt_liberation_energie]
+    primary_misconception: mc.svt.svt_liberation_energie.role-du-dioxygene-inverse
+    item_source: original
+    lesson_placement: after_R4
+
+    stem: |
+      Quel est le rôle exact du dioxygène dans la respiration cellulaire ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Il fournit les électrons qui parcourent la chaîne respiratoire : sans cet apport, aucun gradient de $H^+$ ne pourrait s'établir sur la membrane interne."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.role-du-dioxygene-inverse
+        feedback: |
+          Modèle détecté : inverser le sens du flux d'électrons. Les électrons
+          viennent des coenzymes réduits, donc en dernière analyse du glucose.
+          Le dioxygène est à l'autre bout de la chaîne : il les RÉCUPÈRE, et
+          forme de l'eau avec les protons. Fournisseur et receveur ne sont pas
+          le même rôle.
+
+      - id: B
+        text: "Il accepte les électrons en bout de chaîne et forme de l'eau : sans ce receveur final, la chaîne s'engorge et cesse de pomper des $H^+$."
+        correct: true
+        feedback: |
+          Exact — accepteur final, rien de plus, rien de moins. L'image est
+          celle d'un tapis roulant : si personne ne décharge à l'arrivée, tout
+          s'arrête en amont. C'est ce blocage, et non un manque de « carburant »,
+          qui rend la respiration impossible sans dioxygène.
+
+      - id: C
+        text: "Il alimente directement l'ATP synthase, qui l'utilise comme substrat pour lier un phosphate à l'ADP et fabriquer chaque molécule d'ATP."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.role-du-dioxygene-inverse
+        feedback: |
+          Modèle détecté : faire du dioxygène un ingrédient de la synthèse
+          d'ATP. L'ATP synthase n'utilise que deux choses : le flux de $H^+$ qui
+          la traverse, et l'ADP + phosphate qu'elle assemble. Le dioxygène agit
+          en amont, sur la chaîne — c'est indirect, et c'est ce qui rend
+          l'énoncé « le dioxygène sert à fabriquer l'ATP » trompeur.
+
+      - id: D
+        text: "Il pénètre dans la matrice pour y oxyder directement le pyruvate, ce qui libère le $CO_2$ et permet au cycle de Krebs de se poursuivre."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.localisation-des-etapes-confondue
+        feedback: |
+          Modèle détecté : faire agir le dioxygène dans la matrice. L'oxydation
+          du pyruvate et le cycle de Krebs n'utilisent pas de dioxygène : ils
+          transfèrent les électrons à des coenzymes. Le dioxygène n'intervient
+          qu'au niveau de la membrane interne, en bout de chaîne.
+
+  - id: cp-r5-bilan
+    rung: "R5"
+    habilete: application
+    skill_code: svt_liberation_energie
+    tags: [checkpoint, formative, misconception_driven, svt_liberation_energie]
+    primary_misconception: mc.svt.svt_liberation_energie.bilan-metabolique-incomplet
+    item_source: original
+    lesson_placement: after_R5
+
+    stem: |
+      On ajoute à des cellules respirant normalement une substance qui bloque
+      uniquement l'ATP synthase, sans toucher au cycle de Krebs ni à la
+      glycolyse. Combien d'ATP par glucose la cellule peut-elle encore
+      produire, dans les tout premiers instants ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "38 : la glycolyse et le cycle de Krebs sont intacts, et ce sont eux qui produisent l'ATP ; l'ATP synthase ne fait que le distribuer dans la cellule."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.bilan-metabolique-incomplet
+        feedback: |
+          Modèle détecté : attribuer aux phosphorylations directes l'essentiel
+          du bilan. Le comptage dit l'inverse : sur 38 ATP, seuls 4 viennent de
+          la glycolyse et du cycle de Krebs. Les 34 autres sont produits par
+          l'ATP synthase, qui ne distribue rien — elle fabrique.
+
+      - id: B
+        text: "4 : les 2 ATP nets de la glycolyse et les 2 du cycle de Krebs. Les 34 autres passaient par l'ATP synthase, et disparaissent avec elle."
+        correct: true
+        feedback: |
+          Oui — et ce chiffre de 4 sur 38 est la meilleure façon de retenir la
+          répartition. Près de 90 % de l'ATP de la respiration vient de la
+          phosphorylation oxydative. C'est aussi pourquoi les poisons de la
+          chaîne respiratoire sont si rapidement mortels : ils ne coupent pas
+          une source d'appoint, ils coupent la principale.
+
+      - id: C
+        text: "34 : ce sont les coenzymes réduits déjà chargés qui portent l'essentiel de l'énergie, et ils peuvent la convertir en ATP par une autre voie que l'ATP synthase."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.role-du-dioxygene-inverse
+        feedback: |
+          Modèle détecté : imaginer une conversion des coenzymes indépendante de
+          l'ATP synthase. Il n'en existe pas : le seul chemin va des coenzymes à
+          la chaîne, de la chaîne au gradient de $H^+$, et du gradient à l'ATP
+          synthase. Bloquer la dernière étape bloque toute la conversion.
+
+      - id: D
+        text: "2 : seule la glycolyse produit de l'ATP par phosphorylation directe, le cycle de Krebs se contentant de charger des coenzymes sans jamais former d'ATP."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.bilan-metabolique-incomplet
+        feedback: |
+          Modèle détecté : un comptage à moitié juste. Le cycle de Krebs charge
+          effectivement des coenzymes — c'est son rôle principal — mais il
+          produit aussi 2 ATP par glucose, par phosphorylation directe dans la
+          matrice. Le tableau du chapitre 6 les compte à part, et il ne faut pas
+          les oublier.
+
+  - id: cp-r6-fermentation
+    rung: "R6"
+    habilete: raisonnement
+    skill_code: svt_liberation_energie
+    tags: [checkpoint, formative, misconception_driven, svt_liberation_energie]
+    primary_misconception: mc.svt.svt_liberation_energie.fermentation-mal-comprise
+    item_source: original
+    lesson_placement: after_R6
+
+    stem: |
+      La fermentation ne produit aucun ATP supplémentaire par rapport à la
+      glycolyse seule. À quoi sert-elle alors, et pourquoi la cellule
+      musculaire y a-t-elle recours ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Elle régénère le $NAD^+$ en réduisant le pyruvate, ce qui permet à la glycolyse de continuer à tourner et à ses 2 ATP par glucose de continuer d'arriver."
+        correct: true
+        feedback: |
+          Oui, et c'est un raisonnement qu'il faut savoir refaire. La glycolyse
+          consomme du $NAD^+$ ; le stock cellulaire est limité ; sans
+          régénération, elle s'arrêterait faute de coenzyme oxydé. La
+          fermentation ne rapporte rien en elle-même — elle débloque la seule
+          source d'ATP qui reste.
+
+      - id: B
+        text: "Elle relance le cycle de Krebs en mode dégradé, à un rythme ralenti que la cellule peut soutenir sans dioxygène pendant quelques dizaines de secondes."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.fermentation-mal-comprise
+        feedback: |
+          Modèle détecté : voir la fermentation comme une respiration au
+          ralenti. Le cycle de Krebs ne tourne pas du tout sans dioxygène : dès
+          que la chaîne respiratoire s'arrête, les coenzymes ne sont plus
+          réoxydés et le cycle se bloque. La fermentation se déroule entièrement
+          dans le cytoplasme, après la glycolyse, sans jamais entrer dans la
+          mitochondrie.
+
+      - id: C
+        text: "Elle est réservée aux micro-organismes : chez l'être humain, la cellule musculaire manque simplement d'oxygène et cesse toute production d'ATP jusqu'au retour au calme."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.fermentation-mal-comprise
+        feedback: |
+          Modèle détecté : réserver la fermentation aux levures et aux
+          bactéries. La cellule musculaire humaine fermente parfaitement — c'est
+          la fermentation lactique, et l'acide lactique qu'elle produit est
+          précisément ce qui s'accumule dans le muscle du sprinter. Une cellule
+          qui cesserait toute production d'ATP mourrait en quelques minutes.
+
+      - id: D
+        text: "Elle transporte les coenzymes réduits du cytoplasme vers la matrice mitochondriale, où ils seront réoxydés dès que le dioxygène redeviendra disponible."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.localisation-des-etapes-confondue
+        feedback: |
+          Modèle détecté : faire de la fermentation un transport vers la
+          mitochondrie. Elle est intégralement cytoplasmique et n'attend rien :
+          elle réoxyde le $NADH,H^+$ sur place, immédiatement, en réduisant le
+          pyruvate. C'est ce qui lui permet de fonctionner quand la mitochondrie
+          est à l'arrêt.
+
+  - id: cp-r7-comparaison
+    rung: "R7"
+    habilete: raisonnement
+    skill_code: svt_liberation_energie
+    tags: [checkpoint, formative, misconception_driven, svt_liberation_energie]
+    primary_misconception: mc.svt.svt_liberation_energie.fermentation-mal-comprise
+    item_source: original
+    lesson_placement: after_R7
+
+    stem: |
+      Deux tubes contiennent la même quantité de glucose et des levures. L'un
+      est aéré, l'autre fermé et privé de dioxygène. Après épuisement complet
+      du glucose, on compare. Que prévois-tu ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Le tube aéré a produit près de vingt fois plus d'ATP ; dans le tube fermé, l'essentiel de l'énergie du glucose reste piégée dans l'éthanol formé."
+        correct: true
+        feedback: |
+          Oui — et le mot « piégée » est important. L'énergie n'a pas disparu du
+          tube fermé : elle est toujours là, dans les liaisons chimiques de
+          l'éthanol, faute d'avoir pu être extraite par l'oxydation complète et
+          la chaîne respiratoire. C'est d'ailleurs pourquoi l'éthanol brûle.
+
+      - id: B
+        text: "Le tube fermé a produit autant d'ATP, mais plus lentement : le manque de dioxygène ralentit chaque étape sans changer le rendement final par glucose."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.fermentation-mal-comprise
+        feedback: |
+          Modèle détecté : réduire l'écart à une question de vitesse. C'est bien
+          le RENDEMENT qui change : 2 ATP par glucose contre 36 à 38. La
+          fermentation ne fait pas plus lentement la même chose, elle s'arrête
+          bien plus tôt sur le chemin d'oxydation du glucose.
+
+      - id: C
+        text: "Les deux tubes ont produit le même nombre d'ATP, l'énergie du glucose étant une quantité fixe qui se retrouve nécessairement dans l'ATP formé."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.bilan-metabolique-incomplet
+        feedback: |
+          Modèle détecté : croire que toute l'énergie d'un substrat finit
+          toujours en ATP. Elle ne finit en ATP que dans la mesure où la cellule
+          dispose des étapes pour l'extraire. Sans chaîne respiratoire, la plus
+          grande partie reste dans les produits terminaux — ici l'éthanol.
+
+      - id: D
+        text: "Le tube fermé a produit davantage d'ATP : privées de dioxygène, les levures compensent en accélérant leur cycle de Krebs et en consommant le glucose plus vite."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.fermentation-mal-comprise
+        feedback: |
+          Modèle détecté : imaginer une compensation par le cycle de Krebs. Sans
+          dioxygène, le cycle de Krebs est justement à l'arrêt : il ne peut rien
+          compenser. Les levures consomment effectivement le glucose plus vite
+          en fermentant — pour un rendement bien plus faible, pas plus élevé.

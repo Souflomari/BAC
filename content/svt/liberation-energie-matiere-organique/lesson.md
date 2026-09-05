@@ -10,6 +10,8 @@ Le sprinter ne peut pas tenir sa vitesse maximale plus de quelques dizaines de s
 
 **Avant de lire la suite, prends position.** Le sprinter et le marathonien produisent tous les deux de l'ATP dans leurs muscles pour se contracter. D'après toi, utilisent-ils exactement la même voie métabolique pour le faire ? Et si l'air ne manque pourtant pas autour du sprinter, pourquoi ses muscles finissent-ils par « manquer » d'énergie utilisable si vite ?
 
+[[checkpoint:cp-r0-predict]]
+
 Le sprinter et le marathonien ne sollicitent pas la même voie de production d'énergie dans leurs cellules musculaires — et ce n'est pas une question de quantité de dioxygène disponible dans l'air, mais de la vitesse à laquelle ce dioxygène peut être acheminé et utilisé par les mitochondries des fibres musculaires en pleine action. Quand la demande d'ATP explose en quelques secondes (le sprint), les mitochondries ne peuvent pas suivre : une autre voie prend le relais, plus rapide à démarrer mais beaucoup moins rentable en ATP — c'est elle qui produit l'acide lactique responsable de la sensation de brûlure.
 
 Pour comprendre précisément pourquoi cette voie de secours s'épuise si vite, et pourquoi celle du marathonien peut au contraire durer des heures, il faut d'abord comprendre ce qu'est l'ATP, comment la cellule le produit à partir du glucose par la respiration cellulaire, puis ce qui se passe quand le dioxygène manque. À la fin de cette leçon, tu sauras exactement pourquoi les jambes du sprinter brûlent et celles du marathonien non.
@@ -50,6 +52,8 @@ On estime qu'un adulte au repos hydrolyse et régénère, en une seule journée,
 
 Ne confonds pas l'ATP avec une réserve d'énergie de la cellule. La vraie réserve, c'est le glucose (et les lipides) — de grandes quantités peuvent en être stockées (glycogène, graisses) pendant des jours. L'ATP, lui, n'est jamais stocké en quantité : il est produit, dépensé, et reproduit en continu, à la demande. Si un jour tu lis qu'une cellule « stocke de l'ATP pour plus tard », corrige ce raisonnement : ce que la cellule stocke, c'est le glucose qui servira, plus tard, à refabriquer de l'ATP.
 
+[[checkpoint:cp-r1-atp-monnaie]]
+
 ---
 
 ## R2 — La glycolyse : la première étape, dans le cytoplasme
@@ -83,6 +87,8 @@ Ne confonds pas les 2 $NADH,H^+$ produits ici avec de l'ATP : un $NADH,H^+$ est 
 ### Vérification rapide
 
 Une molécule de glucose (6 C) donne exactement deux molécules de pyruvate (3 C chacune) : $6 = 3 + 3$. Aucun carbone n'est perdu à cette étape — la glycolyse ne libère aucun $CO_2$. On y reviendra au chapitre 4 : c'est là que la libération de carbone commence vraiment.
+
+[[checkpoint:cp-r2-glycolyse]]
 
 ---
 
@@ -126,6 +132,8 @@ Remarque bien : la matrice produit très peu d'ATP directement (seulement 2, par
 
 Ne conclus pas que le cycle de Krebs « ne sert à rien » parce qu'il ne produit que 2 ATP directs : c'est l'inverse. Son rôle principal n'est pas de produire de l'ATP directement, mais de charger un grand nombre de coenzymes ($NADH,H^+$ et $FADH_2$) qui alimenteront la chaîne respiratoire — la véritable source de la majorité de l'ATP produit par la respiration (chapitres 5 et 6).
 
+[[checkpoint:cp-r3-krebs]]
+
 ---
 
 ## R4 — La chaîne respiratoire et la phosphorylation oxydative : sur la membrane interne
@@ -157,6 +165,8 @@ $$O_2 + 4e^- + 4H^+ \rightarrow 2H_2O$$
 ### L'erreur classique à éviter ici
 
 Ne dis pas que « le dioxygène est utilisé pour fabriquer l'ATP » : ce n'est pas lui qui assemble l'ATP — c'est l'ATP synthase, actionnée par le flux de $H^+$. Le dioxygène ne fait qu'accepter les électrons en bout de chaîne, ce qui permet à la chaîne de continuer à fonctionner. Le lien est indirect, mais absolument nécessaire : sans accepteur final, tout le mécanisme s'arrête.
+
+[[checkpoint:cp-r4-dioxygene]]
 
 ---
 
@@ -192,6 +202,8 @@ $$2 \ (\text{glycolyse}) + 2 \ (\text{Krebs}) + 30 \ (NADH,H^+) + 4 \ (FADH_2) =
 ### Vérification rapide
 
 $2 + 2 + 30 + 4 = 38$. Et la part venant directement de la phosphorylation au niveau du substrat (glycolyse + Krebs) n'est que de 4 ATP sur 38 — une confirmation chiffrée de ce qu'annonçait le chapitre 4 : le cycle de Krebs « charge des coenzymes », il ne produit pas l'essentiel de l'ATP lui-même.
+
+[[checkpoint:cp-r5-bilan]]
 
 ---
 
@@ -230,6 +242,8 @@ L'essentiel de l'énergie chimique initialement contenue dans le glucose n'a pas
 
 Une erreur fréquente : croire que la fermentation est réservée aux micro-organismes. C'est faux — les cellules musculaires humaines la pratiquent aussi, ponctuellement, dès que l'apport en dioxygène ne suit plus la demande, exactement la situation du sprinter au chapitre 1. Une deuxième erreur : croire qu'en l'absence de dioxygène, la cellule ne produit plus du tout d'ATP. C'est faux également : elle en produit encore, seulement beaucoup moins (2 ATP au lieu d'environ 36 à 38), via la glycolyse seule, maintenue active par la fermentation.
 
+[[checkpoint:cp-r6-fermentation]]
+
 ---
 
 ## R7 — Respiration et fermentation : comparaison, et le lien structure-fonction de la mitochondrie
@@ -265,6 +279,8 @@ La mitochondrie n'est pas un compartiment uniforme : chacune de ses parties corr
 Reviens au chapitre 1. Le marathonien maintient un effort dont l'intensité reste compatible avec l'apport en dioxygène de ses fibres musculaires : ses mitochondries tournent en continu, produisant environ 36 à 38 ATP par glucose consommé — une source d'énergie durable, capable de tenir des heures.
 
 Le sprinter, lui, exige de ses muscles une demande d'ATP qui explose en quelques secondes — bien plus vite que ce que l'apport en dioxygène peut suivre. Ses fibres musculaires basculent alors vers la fermentation lactique : la glycolyse continue de tourner (2 ATP par glucose), mais l'acide lactique produit s'accumule localement, et c'est précisément lui qui est responsable de la sensation de brûlure et de la fatigue musculaire rapide. Deux ATP par glucose, contre environ 36 à 38 pour la respiration : ce n'est pas une petite différence, c'est un facteur d'environ 18 — voilà pourquoi cette voie de secours, si rapide à mobiliser, s'épuise si vite.
+
+[[checkpoint:cp-r7-comparaison]]
 
 ---
 

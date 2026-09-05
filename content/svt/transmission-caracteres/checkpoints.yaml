@@ -1,0 +1,380 @@
+notion: transmission-caracteres
+skill_code: svt_transmission_caracteres
+
+# ──────────────────────────────────────────────────────────────────────────────
+# POINTS D'ARRÊT DANS LA LEÇON (campagne de conversion du sommet — SVT)
+#
+# Sondes formatives posées DANS la leçon, pas le banc de fin. Aucun score,
+# aucune série, aucun décompte ; le plancher du banc n'est pas modifié.
+#
+# Placement (identifiants = marqueurs [[checkpoint:…]] de lesson.md) :
+#   cp-r0-predict      (DANS le chapitre 1) — parier sur la fraction de blancs.
+#   cp-r1-vocabulaire  (après le chapitre 2) — même phénotype, génotypes
+#                      différents.
+#   cp-r2-uniformite   (après le chapitre 3) — ce que la F1 dit, et ne dit pas.
+#   cp-r3-disjonction  (après le chapitre 4) — d'où vient exactement le quart.
+#   cp-r4-dihybridisme (après le chapitre 5) — multiplier, pas additionner.
+#   cp-r5-test-cross   (après le chapitre 6) — pourquoi le testeur est récessif.
+#
+# CHAQUE distracteur porte un identifiant réel de l'inventaire de items.yaml.
+# Aucune erreur nouvelle n'est déclarée : les sondes réutilisent les cinq
+# modèles existants, pour ne pas rouvrir de dette de couverture.
+#
+# Note d'écriture : les fractions des choix sont écrites en toutes lettres ou
+# sous la forme $1/4$, jamais avec une commande TeX à contre-oblique — un
+# scalaire YAML entre guillemets doubles ne survit pas à un seul backslash
+# (docs/pipeline/SUMMIT-CONVERSION-RECIPE.md, « pièges de schéma »).
+#
+# Garde de périmètre : 2ème Bac SVT/PC — vocabulaire de la génétique, lois de
+# Mendel, monohybridisme, dihybridisme à gènes indépendants, test-cross. Le
+# linkage (gènes liés) et la carte factorielle relèvent d'un autre cadre et ne
+# sont pas testés ici.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: svt_transmission_caracteres
+    tags: [checkpoint, formative, misconception_driven, svt_transmission_caracteres, hook_commit]
+    primary_misconception: mc.svt.svt_transmission_caracteres.genotype-phenotype-confondus
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Deux souris grises, des portées où apparaissent régulièrement des
+      souriceaux blancs. **Engage-toi avant de lire la suite :** sur un très
+      grand nombre de petits, quelle fraction de blancs attends-tu, et
+      pourquoi ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Aucune de façon régulière : deux parents gris transmettent leur pelage gris, et les blancs sont des accidents dont la fréquence varie d'une portée à l'autre."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.genotype-phenotype-confondus
+        feedback: |
+          Modèle détecté : lire le phénotype des parents comme ce qui se
+          transmet. Ce sont les allèles qui se transmettent, pas l'apparence —
+          et un parent gris peut parfaitement porter, sans le montrer, un allèle
+          de pelage blanc. C'est même la seule explication compatible avec ce
+          que l'observation donne : une fraction stable, pas une variation
+          erratique.
+
+      - id: B
+        text: "Un quart, parce que chaque parent gris porte un allèle blanc caché et le transmet une fois sur deux : la moitié multipliée par la moitié."
+        correct: true
+        feedback: |
+          C'est bien ce qu'on observe — la fraction se stabilise autour de $1/4$
+          sur un grand nombre de portées. Tu viens de poser, par intuition, tout
+          le raisonnement que les chapitres suivants vont rendre rigoureux :
+          l'allèle caché, sa transmission à une chance sur deux, et le produit
+          des deux probabilités.
+
+      - id: C
+        text: "La moitié, parce que chacun des deux parents porte un allèle gris et un allèle blanc : les deux caractères se partagent alors la descendance à parts égales."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.rapport-de-croisement-mal-attribue
+        feedback: |
+          Modèle détecté : appliquer un rapport de croisement au mauvais
+          croisement. La moitié est bien le résultat attendu d'un test-cross
+          (chapitre 6, hétérozygote × homozygote récessif), pas d'un croisement
+          entre deux hétérozygotes. Le premier repère à prendre : les deux
+          parents sont ici du même génotype.
+
+      - id: D
+        text: "Aucune, mais tous les petits devraient être gris clair : deux allèles différents chez chaque parent donnent forcément un phénotype intermédiaire entre les deux."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.dominance-mal-appliquee
+        feedback: |
+          Modèle détecté : le mélange des caractères. Deux allèles différents ne
+          se moyennent pas : l'un s'exprime et masque l'autre. C'est exactement
+          ce que l'observation montre — les souris sont grises ou blanches, sans
+          intermédiaire.
+
+  - id: cp-r1-vocabulaire
+    rung: "R1"
+    habilete: comprehension
+    skill_code: svt_transmission_caracteres
+    tags: [checkpoint, formative, misconception_driven, svt_transmission_caracteres]
+    primary_misconception: mc.svt.svt_transmission_caracteres.genotype-phenotype-confondus
+    item_source: original
+    lesson_placement: after_R1
+
+    stem: |
+      L'allèle $G$ (pelage gris) domine l'allèle $b$ (pelage blanc). On dispose
+      de trois souris : la première de génotype $G//G$, la deuxième $G//b$, la
+      troisième $b//b$. Que peut-on affirmer ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Les deux premières ont le même phénotype gris sans avoir le même génotype ; la troisième est la seule blanche, et son génotype se lit directement sur son pelage."
+        correct: true
+        feedback: |
+          Exactement, et les deux moitiés sont utiles. Un phénotype dominant ne
+          détermine pas le génotype : gris peut vouloir dire $G//G$ ou $G//b$ —
+          c'est tout le problème que le test-cross viendra résoudre. Un
+          phénotype récessif, lui, ne laisse aucune ambiguïté : il exige les
+          deux allèles récessifs.
+
+      - id: B
+        text: "La deuxième a un pelage d'une teinte intermédiaire entre celui de la première et celui de la troisième, puisqu'elle porte un allèle de chaque sorte."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.dominance-mal-appliquee
+        feedback: |
+          Modèle détecté : traiter l'hétérozygote comme un mélange. Dominer
+          signifie s'exprimer seul : chez $G//b$, seul l'allèle $G$ se voit, et
+          la souris est aussi grise que la $G//G$. C'est justement ce qui rend
+          les deux indiscernables à l'œil.
+
+      - id: C
+        text: "Les trois souris ont trois phénotypes différents, puisqu'elles ont trois génotypes différents : à chaque génotype correspond une apparence qui lui est propre."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.genotype-phenotype-confondus
+        feedback: |
+          Modèle détecté : faire correspondre un phénotype à chaque génotype. La
+          correspondance ne va que dans un sens : le génotype détermine le
+          phénotype, mais un phénotype dominant peut recouvrir deux génotypes.
+          Trois génotypes, deux phénotypes seulement.
+
+      - id: D
+        text: "La troisième est blanche parce que son allèle récessif $b$, présent en double, parvient à masquer l'allèle dominant $G$ qu'elle porte également."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.dominance-mal-appliquee
+        feedback: |
+          Modèle détecté : inverser le sens du masquage, et prêter à la souris
+          un allèle qu'elle n'a pas. $b//b$ signifie deux allèles $b$ et aucun
+          $G$ : il n'y a rien à masquer. Le récessif ne s'exprime que lorsque le
+          dominant est absent — c'est sa définition.
+
+  - id: cp-r2-uniformite
+    rung: "R2"
+    habilete: raisonnement
+    skill_code: svt_transmission_caracteres
+    tags: [checkpoint, formative, misconception_driven, svt_transmission_caracteres]
+    primary_misconception: mc.svt.svt_transmission_caracteres.rapport-de-croisement-mal-attribue
+    item_source: original
+    lesson_placement: after_R2
+
+    stem: |
+      On croise deux lignées pures qui diffèrent par un caractère, et toute la
+      F1 est uniforme, du phénotype de l'un des deux parents. Que peut-on
+      conclure, et que ne peut-on pas encore conclure ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "On sait que l'allèle exprimé en F1 est dominant et que toute la F1 est hétérozygote ; on ne sait rien encore des proportions attendues à la génération suivante."
+        correct: true
+        feedback: |
+          Oui — c'est exactement la portée de la première loi. L'uniformité
+          établit la dominance et le génotype de la F1, rien de plus. Les
+          proportions de la F2 demandent un raisonnement supplémentaire, celui
+          de la disjonction des allèles au chapitre 4.
+
+      - id: B
+        text: "On peut déjà annoncer trois quarts du phénotype dominant et un quart du récessif : c'est le rapport que donne tout croisement entre deux lignées pures différentes."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.rapport-de-croisement-mal-attribue
+        feedback: |
+          Modèle détecté : coller un rapport à un croisement qui n'est pas le
+          sien. Le rapport 3:1 est celui de la F2, c'est-à-dire du croisement
+          F1 × F1 entre deux hétérozygotes. Le croisement de lignées pures dont
+          on parle ici donne, lui, 100 % de dominants.
+
+      - id: C
+        text: "On peut conclure que les deux parents avaient le même phénotype, puisque leur descendance est uniforme et qu'une descendance uniforme reflète des parents identiques."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.genotype-phenotype-confondus
+        feedback: |
+          Modèle détecté : remonter du phénotype des enfants à celui des
+          parents. L'énoncé dit le contraire : les deux lignées pures diffèrent
+          par ce caractère. L'uniformité de la F1 vient de la dominance d'un
+          allèle sur l'autre, pas d'une ressemblance entre les parents.
+
+      - id: D
+        text: "On peut conclure que la F1 devrait présenter une teinte intermédiaire, et que son uniformité apparente masque en réalité deux sous-groupes très proches."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.dominance-mal-appliquee
+        feedback: |
+          Modèle détecté : le mélange, encore. Une F1 hétérozygote n'est pas
+          intermédiaire : elle affiche le phénotype dominant, purement et
+          simplement. Il n'y a pas de sous-groupes à chercher — l'uniformité est
+          réelle, et c'est ce qui donne son nom à la loi.
+
+  - id: cp-r3-disjonction
+    rung: "R3"
+    habilete: application
+    skill_code: svt_transmission_caracteres
+    tags: [checkpoint, formative, misconception_driven, svt_transmission_caracteres]
+    primary_misconception: mc.svt.svt_transmission_caracteres.probabilites-combinees-mal-calculees
+    item_source: original
+    lesson_placement: after_R3
+
+    stem: |
+      Dans le croisement $G//b \times G//b$, d'où vient exactement la fraction
+      $1/4$ de descendants blancs ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "De l'addition des deux chances de transmettre l'allèle blanc : la moitié du côté du père plus la moitié du côté de la mère, ce qui donne bien une chance sur quatre."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.probabilites-combinees-mal-calculees
+        feedback: |
+          Modèle détecté : additionner des probabilités qui doivent être
+          multipliées — et le calcul lui-même le trahit, puisqu'une moitié plus
+          une moitié fait un, pas un quart. Deux conditions qui doivent être
+          réunies SIMULTANÉMENT se multiplient : un demi fois un demi.
+
+      - id: B
+        text: "Du produit des deux transmissions indépendantes : une chance sur deux de recevoir $b$ du père, une chance sur deux de le recevoir de la mère."
+        correct: true
+        feedback: |
+          Oui. Chaque parent hétérozygote fabrique deux sortes de gamètes en
+          proportions égales, et les deux fécondations sont indépendantes. Il
+          faut $b$ des deux côtés à la fois pour être blanc : un demi fois un
+          demi. L'échiquier ne fait que dessiner ce produit.
+
+      - id: C
+        text: "Du fait qu'un quart seulement des gamètes de chaque parent porte l'allèle blanc, les trois autres quarts portant l'allèle gris qui est dominant."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.probabilites-combinees-mal-calculees
+        feedback: |
+          Modèle détecté : reporter la proportion de la descendance sur les
+          gamètes. Un hétérozygote produit exactement deux sortes de gamètes, en
+          parts égales : la moitié $G$, la moitié $b$. Le quart n'apparaît qu'à
+          la fécondation, quand les deux moitiés se rencontrent.
+
+      - id: D
+        text: "Du fait que trois des quatre cases de l'échiquier contiennent l'allèle dominant, et qu'un descendant portant cet allèle est gris quel que soit son second allèle."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.genotype-phenotype-confondus
+        feedback: |
+          Modèle détecté : décrire le résultat sans expliquer son origine. Ce
+          que tu énonces est vrai et c'est bien la lecture de l'échiquier — mais
+          la question porte sur ce qui PRODUIT ces quatre cases équiprobables :
+          la disjonction des allèles à la formation des gamètes, puis leur
+          rencontre au hasard.
+
+  - id: cp-r4-dihybridisme
+    rung: "R4"
+    habilete: application
+    skill_code: svt_transmission_caracteres
+    tags: [checkpoint, formative, misconception_driven, svt_transmission_caracteres]
+    primary_misconception: mc.svt.svt_transmission_caracteres.probabilites-combinees-mal-calculees
+    item_source: original
+    lesson_placement: after_R4
+
+    stem: |
+      Deux gènes indépendants. On croise deux doubles hétérozygotes. Quelle est
+      la probabilité qu'un descendant présente à la fois les deux phénotypes
+      récessifs ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Une chance sur seize, obtenue en multipliant la probabilité d'être récessif pour le premier caractère par celle d'être récessif pour le second."
+        correct: true
+        feedback: |
+          Oui : un quart pour le premier caractère, un quart pour le second, et
+          comme les deux gènes sont indépendants, un quart fois un quart. C'est
+          la case unique en bas à droite de l'échiquier à seize cases, et c'est
+          aussi le $1$ du rapport $9:3:3:1$.
+
+      - id: B
+        text: "Une chance sur deux, en additionnant les deux probabilités d'un quart : il y a deux façons pour un descendant d'exprimer un caractère récessif, et elles s'ajoutent."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.probabilites-combinees-mal-calculees
+        feedback: |
+          Modèle détecté : l'addition à la place de la multiplication — l'erreur
+          la plus fréquente de ce chapitre. Le test de bon sens la démonte
+          aussitôt : exiger DEUX conditions à la fois ne peut pas rendre
+          l'événement plus probable que chacune prise séparément. Une chance sur
+          deux serait supérieure à un quart.
+
+      - id: C
+        text: "Trois chances sur seize, puisque le rapport $9:3:3:1$ attribue trois cases sur seize à chacune des deux catégories où un caractère récessif s'exprime."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.rapport-de-croisement-mal-attribue
+        feedback: |
+          Modèle détecté : prendre la mauvaise part du rapport. Les deux
+          catégories à trois seizièmes sont celles où UN SEUL des deux
+          caractères est récessif, l'autre restant dominant. La catégorie
+          doublement récessive est celle du $1$ — une seule case sur seize.
+
+      - id: D
+        text: "Une chance sur quatre, comme dans le croisement à un seul gène : ajouter un second caractère indépendant ne modifie pas la probabilité du premier."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.rapport-de-croisement-mal-attribue
+        feedback: |
+          Modèle détecté : appliquer le rapport du monohybridisme à un
+          dihybridisme. Il est vrai que le second gène ne change pas la
+          probabilité du premier — mais la question demande les DEUX à la fois,
+          ce qui est un événement plus exigeant, donc plus rare : un quart d'un
+          quart.
+
+  - id: cp-r5-test-cross
+    rung: "R5"
+    habilete: raisonnement
+    skill_code: svt_transmission_caracteres
+    tags: [checkpoint, formative, misconception_driven, svt_transmission_caracteres]
+    primary_misconception: mc.svt.svt_transmission_caracteres.test-cross-mal-compris
+    item_source: original
+    lesson_placement: after_R5
+
+    stem: |
+      Pour savoir si une souris grise est $G//G$ ou $G//b$, pourquoi la
+      croise-t-on avec une souris blanche $b//b$, et non avec une autre souris
+      grise ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Parce que le testeur blanc ne peut transmettre que $b$ : le phénotype de chaque descendant révèle donc directement l'allèle reçu du parent testé."
+        correct: true
+        feedback: |
+          Exactement — c'est tout le principe. Le testeur homozygote récessif
+          n'apporte aucune information, et c'est sa qualité : il laisse le
+          phénotype des descendants dépendre du seul parent inconnu. Une
+          descendance entièrement grise indique $G//G$ ; l'apparition de blancs
+          signe $G//b$.
+
+      - id: B
+        text: "Parce qu'un testeur doit toujours porter le phénotype dominant pour que le croisement soit informatif, et une souris grise ferait donc aussi bien l'affaire."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.test-cross-mal-compris
+        feedback: |
+          Modèle détecté : inverser l'exigence sur le testeur. C'est l'inverse
+          qui est vrai : un testeur gris pourrait transmettre $G$, et ce $G$
+          masquerait le $b$ éventuellement reçu de l'autre parent. Tous les
+          descendants seraient gris quel que soit le génotype testé — le
+          croisement n'apprendrait rien.
+
+      - id: C
+        text: "Parce qu'un testeur blanc peut transmettre un allèle $G$ resté caché, ce qui permet de comparer les deux hypothèses sur un même croisement."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.test-cross-mal-compris
+        feedback: |
+          Modèle détecté : prêter un allèle caché à un homozygote récessif. Un
+          phénotype récessif exige les deux allèles récessifs : $b//b$ ne porte
+          aucun $G$, et ne peut donc rien cacher. C'est précisément cette
+          transparence qui en fait un bon testeur.
+
+      - id: D
+        text: "Parce que le croisement avec un homozygote récessif donne toujours trois quarts de descendants gris et un quart de blancs, quel que soit le génotype testé."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.rapport-de-croisement-mal-attribue
+        feedback: |
+          Modèle détecté : plaquer le rapport de la F2 sur un test-cross. Si le
+          rapport était le même dans les deux cas, le test ne distinguerait
+          rien. Il donne au contraire deux résultats bien séparés : 100 % gris
+          si le parent est $G//G$, moitié-moitié s'il est $G//b$.

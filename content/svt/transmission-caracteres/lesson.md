@@ -14,6 +14,8 @@ Mais dans chaque portée, un certain nombre de souriceaux naissent avec un pelag
 
 **Avant de lire la suite, prends position.** Si tu comptais tous les souriceaux nés de nombreux croisements de ce type (gris × gris, avec apparition de blancs), quelle fraction te semble la plus plausible pour les petits blancs ? Une souris sur deux ? Une sur trois ? Une sur quatre ? Note mentalement ta réponse — on y reviendra.
 
+[[checkpoint:cp-r0-predict]]
+
 Ce phénomène n'a rien d'un hasard chaotique. Sur un grand nombre de portées, la fraction de souriceaux blancs se stabilise systématiquement autour d'une valeur précise. Ni $\frac{1}{2}$, ni $\frac{1}{3}$. On observe presque toujours $\frac{1}{4}$.
 
 Comment deux parents gris peuvent-ils produire un quart de petits blancs — pas moins, pas plus ? Pour répondre à cette question avec certitude (et pas seulement par intuition), il faut construire, pièce par pièce, les outils de la génétique formelle : le vocabulaire exact, puis les lois découvertes par Mendel, puis l'outil de calcul qui les met en œuvre — l'échiquier de croisement. À la fin de cette leçon, on reviendra sur ces souris et ce $\frac{1}{4}$ n'aura plus rien de mystérieux.
@@ -58,6 +60,8 @@ Un individu qui porte deux allèles **identiques** pour un gène ($G//G$ ou $g//
 
 Regarde bien la souris 1 et la souris 2 dans le tableau : **même phénotype, génotypes différents**. Une souris grise n'est donc pas forcément « pure » pour le gris — elle peut très bien porter, sans le montrer, un allèle blanc caché. C'est exactement le mécanisme qui explique le mystère du chapitre 1 : un parent gris peut être hétérozygote ($G//g$) et transmettre, sans le savoir, l'allèle $g$ à sa descendance. On ne peut jamais déduire le génotype d'un individu à partir de son seul phénotype, dès que l'un des deux allèles est récessif — on y reviendra précisément au chapitre 6.
 
+[[checkpoint:cp-r1-vocabulaire]]
+
 ---
 
 ## R2 — Le monohybridisme et la première loi de Mendel : l'uniformité de la F1
@@ -93,6 +97,8 @@ La raison n'a rien de mystérieux, une fois qu'on la regarde du côté des gamè
 ### Vérification rapide
 
 Si on avait croisé deux lignées pures grises ($G//G \times G//G$), on obtiendrait bien sûr 100 % de $G//G$ — mais ça ne serait pas un « hybride » digne d'intérêt, puisque les deux parents partagent déjà le même allèle. Le monohybridisme s'intéresse au croisement de lignées pures **différentes** pour le caractère étudié.
+
+[[checkpoint:cp-r2-uniformite]]
 
 ---
 
@@ -148,6 +154,8 @@ Une deuxième erreur fréquente : oublier que $\frac{1}{4}$ vient d'une **multip
 ### Vérification rapide
 
 Les quatre cases de l'échiquier doivent totaliser $1$ : $\frac{1}{4} + \frac{1}{4} + \frac{1}{4} + \frac{1}{4} = 1$. C'est le cas — l'échiquier est complet, aucune combinaison de gamètes n'a été oubliée.
+
+[[checkpoint:cp-r3-disjonction]]
 
 ---
 
@@ -216,6 +224,8 @@ L'erreur la plus fréquente : **additionner** au lieu de **multiplier** les deux
 
 Une deuxième précision, importante pour rester dans le cadre de cette leçon : le raisonnement entier repose sur la condition « gènes indépendants » (portés par des paires de chromosomes différentes). Si les deux gènes étaient portés par la **même** paire de chromosomes, leur transmission serait liée et le rapport $9:3:3:1$ ne se vérifierait plus — ce cas de figure (les gènes liés) sort du programme de cette leçon.
 
+[[checkpoint:cp-r4-dihybridisme]]
+
 ---
 
 ## R5 — Le test-cross (croisement-test) : révéler un génotype caché
@@ -252,6 +262,8 @@ Observer ces quatre classes en proportions égales confirme **deux choses à la 
 ### L'erreur classique à éviter ici
 
 Une erreur fréquente : croire qu'on pourrait tester le génotype avec un partenaire au phénotype dominant plutôt que récessif. Un tel partenaire pourrait lui-même être hétérozygote et produirait alors, lui aussi, deux types de gamètes — les résultats mélangeraient les contributions des deux parents, rendant la lecture impossible. Le testeur doit être homozygote récessif précisément pour supprimer toute ambiguïté de son côté.
+
+[[checkpoint:cp-r5-test-cross]]
 
 ---
 
