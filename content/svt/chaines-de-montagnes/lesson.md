@@ -10,6 +10,8 @@ Ce n'est pas un cas isolé. Dans les Alpes, dans l'Himalaya, on trouve, coincés
 
 **Avant de lire la suite, prends position.** Comment une roche formée au fond d'une mer se retrouve-t-elle au point le plus élevé d'un continent, à des milliers de kilomètres de tout océan actuel ? Pose-toi vraiment la question, et choisis une piste avant de continuer : est-ce que le niveau de la mer était autrefois beaucoup plus haut, au point de recouvrir l'Everest ? Est-ce que cette roche a été transportée là, physiquement, par un mécanisme géologique ? Ou bien une autre explication te vient-elle ?
 
+[[checkpoint:cp-r0-predict]]
+
 Ce n'est pas une devinette gratuite. C'est exactement la question que doit résoudre la géologie des chaînes de montagnes — et la réponse va mobiliser tout ce que tu connais déjà sur la convergence des plaques et la subduction. Deux questions vont porter cette leçon de bout en bout :
 
 **Comment une chaîne de montagnes naît-elle de la rencontre de deux plaques ?**
@@ -53,6 +55,8 @@ Retiens ces deux signatures : une chaîne de subduction porte un **volcanisme ac
 
 **Avant de continuer, prends position sur une question.** L'Himalaya est, lui aussi, une chaîne de montagnes née de la convergence de deux plaques. À ton avis, l'Himalaya présente-t-il, comme les Andes, des volcans actifs et des séismes dont les foyers s'enfoncent à plusieurs centaines de kilomètres de profondeur ?
 
+[[checkpoint:cp-r1-himalaya]]
+
 ---
 
 ## R2 — La chaîne de collision : quand aucune des deux plaques ne peut plonger (l'Himalaya)
@@ -94,6 +98,8 @@ La prédiction « l'Himalaya doit ressembler aux Andes » se trompait précisém
 | Séismes | Foyers de plus en plus profonds vers l'intérieur | Peu profonds, liés aux failles de surface |
 | Effet principal en surface | Fosse + chaîne volcanique | Épaississement crustal, très forte altitude |
 
+[[checkpoint:cp-r2-collision]]
+
 ---
 
 ## R3 — Les ophiolites : la preuve fossile d'un océan disparu
@@ -124,6 +130,8 @@ Teste-le : le granite continental et la séquence basalte/gabbro/péridotite ne 
 
 C'est exactement le cas des ophiolites du Chenaillet, dans les Alpes françaises, ou de celles qu'on trouve le long de la suture qui sépare l'Inde de l'Asie dans l'Himalaya : dans les deux cas, un fragment de plancher océanique authentique, aujourd'hui perché à plusieurs milliers de mètres d'altitude, au sein d'une chaîne de collision.
 
+[[checkpoint:cp-r3-ophiolite]]
+
 ---
 
 ## R4 — Plis et chevauchements : la signature du raccourcissement
@@ -150,6 +158,8 @@ Un chevauchement fait exactement la même chose, mais en empilant des blocs enti
 
 Plis et chevauchements ne sont donc pas des curiosités isolées : ce sont la signature structurale directe du raccourcissement et de l'épaississement qui accompagnent toute collision. Là où on observe des couches intactes et horizontales, il n'y a pas eu de raccourcissement significatif. Là où on observe des plis serrés et des chevauchements empilés les uns sur les autres, la croûte a été comprimée et épaissie — exactement ce qu'on attend d'une chaîne de collision.
 
+[[checkpoint:cp-r4-chevauchement]]
+
 [[figure:plis-chevauchement]]
 
 ---
@@ -174,6 +184,8 @@ Si le métamorphisme exige un enfouissement à plusieurs dizaines de kilomètres
 
 Trouver une roche métamorphique exposée au sommet d'une chaîne de collision n'est donc pas anodin : c'est la preuve directe que cette portion de croûte a connu un enfouissement profond — la conséquence physique de l'épaississement décrit au chapitre 3 et au chapitre 5 — suivi d'une remontée vers la surface, portée par le soulèvement tectonique et révélée par l'érosion. Une roche qui n'aurait jamais été enfouie profondément ne pourrait tout simplement pas porter cette signature minérale : elle resterait de la roche sédimentaire ordinaire, non transformée.
 
+[[checkpoint:cp-r5-metamorphisme]]
+
 ---
 
 ## R6 — La suture : la cicatrice de la fermeture, et comment on reconstitue l'histoire d'une chaîne
@@ -196,6 +208,8 @@ Le raisonnement suit exactement la même logique que celui de Wegener face à se
 - **Localiser la suture** — la bande où ces trois indices se concentrent le plus — permet d'identifier précisément où les deux marges continentales se sont rejointes.
 
 Assemblés, ces quatre indices racontent une seule histoire cohérente, dans l'ordre où elle s'est vraiment déroulée : un océan s'ouvre entre deux continents ; sa lithosphère se détruit progressivement par subduction le long d'une marge active (chapitre 2), ce qui referme l'océan ; l'océan finit par disparaître entièrement, et les deux marges continentales entrent en collision (chapitre 3) ; la croûte, ne pouvant plus plonger, se raccourcit et s'épaissit par plis et chevauchements (chapitre 5), enfouissant profondément certaines de ses roches (chapitre 6) ; enfin, le soulèvement et l'érosion exhument ces roches et les ramènent à la surface, où on les observe aujourd'hui.
+
+[[checkpoint:cp-r6-suture]]
 
 ### Fermeture de l'arc
 

@@ -10,6 +10,8 @@ Voici le problème. Cette roche a de gros cristaux bien formés, visibles sans l
 
 **Avant de lire la suite, prends position.** Deux pistes se présentent, et une seule est la bonne : est-ce que ce granite s'est formé ICI, en surface — une coulée de lave refroidie à l'air libre, comme un volcan qui aurait craché puis se serait éteint ? Ou bien s'est-il formé ailleurs, non pas ailleurs dans l'espace, mais ailleurs en profondeur, à des dizaines de kilomètres sous nos pieds, et un long mécanisme l'aurait ensuite amené jusqu'ici ? Engage-toi vraiment avant de continuer : choisis une piste.
 
+[[checkpoint:cp-r0-predict]]
+
 Ce n'est pas une devinette gratuite. Répondre correctement demande de comprendre tout un enchaînement : ce qui arrive à une roche enfouie de plus en plus profondément dans une chaîne de collision — la même chaîne de collision que tu as étudiée au chapitre précédent, avec son épaississement crustal et ses roches métamorphiques. Deux questions vont porter cette leçon de bout en bout :
 
 **Pourquoi la même compression plie la roche à un endroit et la casse net à un autre ?**
@@ -59,6 +61,8 @@ Teste cette idée : si le comportement ductile ou cassant dépendait uniquement 
 
 Retiens ce principe : ce n'est jamais la roche, seule, qui « est » ductile ou cassante. C'est la roche, à une profondeur donnée, dans des conditions de température et de pression données.
 
+[[checkpoint:cp-r1-cassant-ductile]]
+
 ---
 
 ## R2 — Le métamorphisme régional : une série de faciès qui mesure la profondeur
@@ -97,6 +101,8 @@ Teste cette idée sur le mécanisme lui-même : si la différence entre ces troi
 
 Cette table est un thermomètre et un baromètre déguisés : lire le faciès, c'est lire la profondeur.
 
+[[checkpoint:cp-r2-facies]]
+
 ---
 
 ## R3 — L'anatexie : quand la roche franchit son seuil de fusion
@@ -124,6 +130,8 @@ Si l'enfouissement continue et que la proportion de matière fondue augmente, ce
 ### Ce que ça établit
 
 L'anatexie n'est donc pas un simple prolongement du métamorphisme : c'est sa rupture. Tant que la température reste sous le solidus, la roche se transforme en restant solide — c'est le métamorphisme du chapitre précédent. Dès que la température locale franchit le solidus — grâce à un enfouissement suffisant et, le plus souvent, à la présence d'eau — une partie de la roche cesse d'être solide et devient magma. C'est ce basculement précis, et rien d'autre, qui sépare un gneiss d'une migmatite, et une migmatite d'un magma granitique.
+
+[[checkpoint:cp-r3-anatexie]]
 
 ---
 
@@ -153,6 +161,8 @@ Teste cette idée directement sur la texture, qui est la preuve elle-même. Si l
 
 Retiens la règle générale qui se dégage : la texture d'une roche magmatique — grain fin ou grain grossier — est une preuve directe de sa vitesse de refroidissement, et donc de sa profondeur de cristallisation. Grain fin, refroidissement rapide, surface. Grain grossier, refroidissement lent, profondeur.
 
+[[checkpoint:cp-r4-texture]]
+
 ---
 
 ## R5 — Le granite, racine des chaînes de collision : une roche qu'il faut déterrer
@@ -178,6 +188,8 @@ Cela ne veut pas dire qu'une jeune chaîne de collision ne produit pas de granit
 Reviens au granite du chapitre 1. Il ne s'est pas formé là où tu marches, à l'air libre — il ne pouvait pas, puisque sa texture grenue exige des dizaines de milliers d'années de refroidissement lent, un temps qui n'existe qu'en profondeur. Ce granite s'est formé bien plus bas, à vingt-cinq ou trente kilomètres sous la surface, par fusion partielle de gneiss profondément enfouis lors d'une collision continentale ancienne — puis il a fallu des dizaines de millions d'années de soulèvement et d'érosion pour décaper toute la roche qui le recouvrait, et le mettre à nu là où tu peux aujourd'hui poser la main dessus.
 
 Reviens aussi aux deux questions du chapitre 1. La même compression plie la roche en profondeur, où la température et la pression de confinement la rendent ductile, et la casse net près de la surface, où elle reste froide et rigide (chapitre 2). Et une roche solide, enfouie assez profondément et suffisamment riche en eau, franchit son seuil de fusion — le solidus — pour donner naissance, par anatexie, au magma qui cristallise lentement en granite (chapitres 4 et 5). Le granite qu'on trouve aujourd'hui à l'air libre est la trace, remontée à la surface après une très longue histoire, de tout ce qui s'est joué à ces profondeurs.
+
+[[checkpoint:cp-r5-exhumation]]
 
 ---
 

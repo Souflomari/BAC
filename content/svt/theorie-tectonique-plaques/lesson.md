@@ -10,6 +10,8 @@ Ajoute un deuxième fait, en apparence sans rapport. Dans des couches de roches 
 
 **Avant de lire la suite, prends position.** Deux continents séparés aujourd'hui par tout l'océan Atlantique partagent une forme complémentaire ET un animal d'eau douce identique. Comment expliques-tu ça ? Note mentalement ta réponse parmi ces trois pistes, ou une autre si tu en vois une : un pur hasard géométrique et biologique ; un pont de terre aujourd'hui englouti qui aurait permis à l'animal de traverser ; ou bien les deux continents eux-mêmes qui, un jour, n'en formaient qu'un seul, avant de se séparer.
 
+[[checkpoint:cp-r0-predict]]
+
 Ce n'est pas une question de devinette isolée. C'est très exactement la question que s'est posée le météorologue allemand Alfred Wegener en 1912 — et la réponse qu'il a proposée (les continents ont bougé) a mis presque un demi-siècle à être acceptée, pour une raison précise qu'on va comprendre en détail. Cette leçon raconte cette histoire dans l'ordre où elle s'est vraiment déroulée : l'idée initiale et ses preuves, son rejet, puis les découvertes qui l'ont ressuscitée et transformée en la théorie complète qu'on enseigne aujourd'hui, la tectonique des plaques.
 
 ---
@@ -52,6 +54,8 @@ Le raisonnement : un climat glaciaire dans des régions aujourd'hui tropicales, 
 
 Ce qui fait la force du raisonnement de Wegener, ce n'est pas un seul de ces quatre arguments pris isolément — c'est qu'ils sont **indépendants les uns des autres** (géométrie des côtes, biologie des fossiles, structure des roches, traces climatiques n'ont rien à voir entre eux) et que pourtant, ils s'alignent tous vers la même reconstitution : un seul assemblage des continents, la Pangée, satisfait simultanément les quatre. Si la dérive des continents était fausse, il faudrait que ces quatre coïncidences indépendantes se soient produites par hasard, toutes en même temps, et toutes compatibles avec le même arrangement géographique. C'est cette convergence de preuves indépendantes qui a poussé Wegener à publier son hypothèse.
 
+[[checkpoint:cp-r1-wegener]]
+
 ---
 
 ## R2 — Pourquoi cette idée a d'abord été rejetée : l'absence de moteur
@@ -75,6 +79,8 @@ Des physiciens, en particulier le géophysicien britannique Harold Jeffreys, ont
 Voilà la vraie raison du rejet : **pas de moteur crédible.** Une théorie qui décrit correctement un phénomène (les continents ont bougé) mais qui s'appuie sur un mécanisme physiquement impossible (des continents labourant un plancher océanique rigide, poussés par des marées beaucoup trop faibles) ne peut pas être acceptée telle quelle par une communauté scientifique rigoureuse — même si l'idée de fond finit, des décennies plus tard, par se révéler juste.
 
 Retiens bien ce point, car il structure tout le reste de cette leçon : la dérive des continents de Wegener est une intuition puissante et une observation globalement correcte, mais ce n'est **pas encore** la théorie complète qu'on utilise aujourd'hui. Il lui manquait la pièce essentielle : comment, physiquement, une chose pareille peut-elle se produire ? Cette pièce ne viendra pas des continents eux-mêmes — elle viendra d'un endroit que personne, à l'époque de Wegener, n'avait encore les moyens d'explorer : le fond des océans.
+
+[[checkpoint:cp-r2-rejet]]
 
 ---
 
@@ -119,6 +125,8 @@ La symétrie des anomalies magnétiques et le gradient d'âge des sédiments son
 
 C'est la pièce que Wegener n'avait pas : ce ne sont pas les continents qui labourent, seuls, un océan immobile. C'est le plancher océanique tout entier — avec les continents qu'il porte — qui se renouvelle et se déplace. La dérive des continents devient, avec cette découverte, un cas particulier d'un phénomène bien plus large : celui qui va donner naissance à la tectonique des plaques.
 
+[[checkpoint:cp-r3-expansion]]
+
 ---
 
 ## R4 — La structure du globe : lithosphère rigide sur asthénosphère ductile
@@ -150,6 +158,8 @@ Autre confusion fréquente : penser que les plaques flottent sur l'eau des océa
 ### Vérification rapide
 
 Si la lithosphère et la croûte étaient réellement la même chose, alors toute plaque tectonique devrait s'arrêter net à la limite manteau/croûte, à quelques dizaines de kilomètres de profondeur tout au plus — or les études sismiques montrent que le comportement rigide, cassant, se prolonge nettement plus bas, jusqu'à une centaine de kilomètres de profondeur en moyenne, bien à l'intérieur du manteau. C'est exactement ce qu'on attend si la lithosphère inclut une partie du manteau, et pas seulement la croûte.
+
+[[checkpoint:cp-r4-lithosphere]]
 
 ---
 
@@ -190,6 +200,8 @@ Enfin, deux plaques peuvent simplement glisser latéralement, l'une contre l'aut
 | Convergente — collision | Rapprochement, aucune ne plonge | Épaississement, pas de destruction nette | Himalaya | Chaîne de montagnes, forte sismicité, peu de volcanisme |
 | Transformante | Coulissage latéral | Ni création ni destruction | Faille de San Andreas | Forte sismicité, pas de volcanisme |
 
+[[checkpoint:cp-r5-frontieres]]
+
 ---
 
 ## R6 — Les preuves modernes : séismes, volcans et mesures GPS
@@ -207,6 +219,8 @@ Le raisonnement : si les plaques n'étaient pas de vrais blocs rigides distincts
 Depuis les années 1990, des réseaux de stations au sol équipées de récepteurs GPS de haute précision mesurent directement, année après année, la position de points fixes à la surface de différentes plaques. Ces mesures confirment, en temps réel, que les plaques se déplacent effectivement les unes par rapport aux autres, à des vitesses de l'ordre de quelques centimètres par an — un ordre de grandeur cohérent avec les vitesses d'expansion océanique déduites, au chapitre 4, de l'âge des roches et des sédiments.
 
 Le raisonnement ferme la boucle : les inférences indirectes du passé (âges radiométriques du plancher océanique, largeur des bandes magnétiques) et la mesure directe du présent (déplacement GPS mesuré cette année, comparé à l'an dernier) donnent des vitesses du même ordre de grandeur. Ce n'est pas seulement une théorie qui explique bien le passé géologique — c'est un phénomène qu'on peut mesurer, littéralement, en train de se produire.
+
+[[checkpoint:cp-r6-repartition]]
 
 [[figure:seismicite-volcanisme-gps-carte]]
 
@@ -235,6 +249,8 @@ Voilà la réponse à la question laissée ouverte depuis le chapitre 3 : ce n'e
 Repense au puzzle du chapitre 1 : le renflement du Brésil qui s'emboîte dans le golfe de Guinée, et *Mesosaurus* trouvé des deux côtés de l'Atlantique. Ce n'est ni un hasard, ni la preuve d'un pont de terre englouti. C'est la trace d'un seul continent, la Pangée, découpé il y a environ 200 millions d'années par le même moteur qui continue de fonctionner aujourd'hui : la convection mantellique, qui écarte la plaque sud-américaine de la plaque africaine à la dorsale médio-atlantique, centimètre par centimètre, chaque année — et que les mesures GPS actuelles peuvent désormais confirmer, en direct.
 
 L'histoire complète, de la première idée à la théorie moderne, tient donc en une phrase : la dérive des continents de Wegener était une observation juste, mais incomplète, faute de moteur ; l'expansion océanique a révélé COMMENT le plancher se renouvelle ; la distinction lithosphère/asthénosphère a révélé CE QUI bouge réellement (des plaques rigides, pas seulement des continents) ; et la convection mantellique a enfin fourni le moteur qui manquait. C'est l'assemblage de ces quatre pièces qui constitue la théorie de la tectonique des plaques.
+
+[[checkpoint:cp-r7-moteur]]
 
 ---
 

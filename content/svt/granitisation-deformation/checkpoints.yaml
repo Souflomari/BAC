@@ -1,0 +1,375 @@
+notion: granitisation-deformation
+skill_code: svt_granitisation
+
+# ──────────────────────────────────────────────────────────────────────────────
+# POINTS D'ARRÊT DANS LA LEÇON (campagne de conversion du sommet — SVT)
+#
+# Sondes formatives posées DANS la leçon, pas le banc de fin. Aucun score,
+# aucune série, aucun décompte ; le plancher du banc n'est pas modifié.
+#
+# Placement (identifiants = marqueurs [[checkpoint:…]] de lesson.md) :
+#   cp-r0-predict     (DANS le chapitre 1) — le granite s'est-il formé ici ?
+#   cp-r1-cassant-ductile (après le chapitre 2) — ce n'est pas la roche qui
+#                     décide, ce sont les conditions.
+#   cp-r2-facies      (après le chapitre 3) — la série de faciès est un
+#                     baromètre.
+#   cp-r3-anatexie    (après le chapitre 4) — pourquoi la roche fond.
+#   cp-r4-texture     (après le chapitre 5) — la taille des cristaux mesure la
+#                     vitesse de refroidissement.
+#   cp-r5-exhumation  (après le chapitre 6) — pourquoi il faut déterrer un
+#                     granite.
+#
+# CHAQUE distracteur porte un identifiant réel de l'inventaire de items.yaml.
+# Aucune erreur nouvelle n'est déclarée : les sondes réutilisent les cinq
+# modèles existants, pour ne pas rouvrir de dette de couverture.
+#
+# Garde de périmètre : 2ème Bac SVT/PC — déformation cassante et ductile,
+# métamorphisme régional et série de faciès, anatexie, cristallisation d'un
+# magma et texture grenue, exhumation. La pétrologie détaillée des magmas
+# n'est pas au programme.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: svt_granitisation
+    tags: [checkpoint, formative, misconception_driven, svt_granitisation, hook_commit]
+    primary_misconception: mc.svt.svt_granitisation.granite-cru-volcanique-ou-sedimentaire
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Un affleurement de granite à l'air libre, avec de gros cristaux visibles
+      à l'œil nu. **Engage-toi avant de lire la suite :** cette roche s'est-elle
+      formée ici, en surface ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Oui : c'est une coulée de lave refroidie à l'air libre, et ses gros cristaux viennent de sa composition riche en quartz et en feldspath."
+        correct: false
+        misconception: mc.svt.svt_granitisation.granite-cru-volcanique-ou-sedimentaire
+        feedback: |
+          Modèle détecté : faire du granite une roche volcanique, et attribuer
+          la taille des cristaux à la composition. Le chapitre 5 montrera que
+          c'est la VITESSE de refroidissement qui commande cette taille — une
+          lave refroidie à l'air libre donne des cristaux minuscules, voire un
+          verre, quelle que soit sa composition.
+
+      - id: B
+        text: "Non : elle s'est formée en profondeur, et elle n'est visible aujourd'hui que parce que les roches qui la recouvraient ont été enlevées."
+        correct: true
+        feedback: |
+          C'est la bonne piste, et toute la leçon consiste à l'établir. Les gros
+          cristaux exigent un refroidissement très lent, donc profond et isolé ;
+          leur présence à l'air libre implique qu'une épaisseur considérable de
+          roches a disparu au-dessus. Tu verras au chapitre 6 comment on appelle
+          ce déterrement.
+
+      - id: C
+        text: "Oui : c'est une accumulation de cendres volcaniques tombées sur place et cimentées, et chaque cristal correspond à une particule déposée."
+        correct: false
+        misconception: mc.svt.svt_granitisation.granite-cru-volcanique-ou-sedimentaire
+        feedback: |
+          Modèle détecté : lire une roche cristalline comme un dépôt. Les
+          cristaux d'un granite sont enchevêtrés, sans espace vide entre eux :
+          ils ont grandi les uns contre les autres dans un liquide en train de
+          se figer, ce qu'aucune accumulation de particules ne produirait.
+
+      - id: D
+        text: "Non : c'est un schiste que l'érosion a suffisamment usé pour faire apparaître ses gros cristaux, restés cachés sous la surface altérée."
+        correct: false
+        misconception: mc.svt.svt_granitisation.transformation-attribuee-a-lerosion
+        feedback: |
+          Modèle détecté : demander à l'érosion de transformer une roche en une
+          autre. L'érosion enlève de la matière, elle ne fait pas grandir de
+          cristaux ni ne change une composition. Un schiste et un granite ne
+          diffèrent pas par leur état d'usure mais par leur histoire — et le
+          chapitre 4 dira laquelle.
+
+  - id: cp-r1-cassant-ductile
+    rung: "R1"
+    habilete: comprehension
+    skill_code: svt_granitisation
+    tags: [checkpoint, formative, misconception_driven, svt_granitisation]
+    primary_misconception: mc.svt.svt_granitisation.cassant-ductile-inverses
+    item_source: original
+    lesson_placement: after_R1
+
+    stem: |
+      Dans une même chaîne, la même compression produit des failles près de la
+      surface et des plis en profondeur. Comment lire ces deux structures ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "La faille est une rupture nette, donc une déformation cassante de surface ; le pli est une déformation ductile, qui demande la chaleur et la pression de la profondeur."
+        correct: true
+        feedback: |
+          Oui, et retiens le principe qui va avec : ce n'est jamais la roche
+          seule qui « est » cassante ou ductile, ce sont les conditions dans
+          lesquelles elle se trouve. La même roche cassera près de la surface et
+          fluera à vingt kilomètres de profondeur.
+
+      - id: B
+        text: "La faille est une déformation ductile, la roche ayant flué le long du plan de rupture ; le pli est cassant, puisque la courbure finit toujours par rompre les couches."
+        correct: false
+        misconception: mc.svt.svt_granitisation.cassant-ductile-inverses
+        feedback: |
+          Modèle détecté : intervertir les deux comportements. Le critère est
+          simple : y a-t-il eu perte de continuité ? Une faille sépare deux
+          blocs — c'est une rupture, donc du cassant. Un pli conserve la
+          continuité des couches, qui se sont déformées sans se briser — c'est
+          du ductile.
+
+      - id: C
+        text: "Les deux structures traduisent le même comportement cassant, la différence tenant seulement à la durée pendant laquelle la contrainte s'est exercée sur la roche."
+        correct: false
+        misconception: mc.svt.svt_granitisation.cassant-ductile-inverses
+        feedback: |
+          Modèle détecté : ramener les deux comportements à un seul. Ils sont
+          qualitativement différents : l'un rompt, l'autre non. Et le paramètre
+          qui les sépare dans cette leçon est la PROFONDEUR, à travers la
+          température et la pression de confinement qu'elle impose.
+
+      - id: D
+        text: "La faille se forme dans les roches dures et le pli dans les roches tendres : c'est la nature de chaque roche, et elle seule, qui décide de sa façon de se déformer."
+        correct: false
+        misconception: mc.svt.svt_granitisation.cassant-ductile-inverses
+        feedback: |
+          Modèle détecté : attribuer le comportement à la roche plutôt qu'aux
+          conditions. La nature de la roche joue un rôle, mais elle n'est pas
+          décisive : c'est bien la même formation qu'on retrouve faillée en haut
+          et plissée en bas d'une même coupe. Change la profondeur, tu changes
+          le comportement.
+
+  - id: cp-r2-facies
+    rung: "R2"
+    habilete: application
+    skill_code: svt_granitisation
+    tags: [checkpoint, formative, misconception_driven, svt_granitisation]
+    primary_misconception: mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause
+    item_source: original
+    lesson_placement: after_R2
+
+    stem: |
+      En marchant d'un bord d'une chaîne vers son cœur, on traverse
+      successivement des schistes, des micaschistes, des gneiss puis des
+      migmatites. Que mesure cette succession ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "La profondeur croissante à laquelle chacune de ces roches a été enfouie, et donc la température et la pression croissantes qu'elle y a subies."
+        correct: true
+        feedback: |
+          Oui — cette série est un thermomètre et un baromètre déguisés. Lire un
+          faciès, c'est lire des conditions passées. Et comme toutes ces roches
+          affleurent aujourd'hui côte à côte, la série dit aussi que l'érosion a
+          entamé la chaîne d'autant plus profondément qu'on va vers son cœur.
+
+      - id: B
+        text: "L'âge croissant des roches : les plus anciennes ont eu plus de temps pour se transformer, et les migmatites sont simplement les plus vieilles de la série."
+        correct: false
+        misconception: mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause
+        feedback: |
+          Modèle détecté : remplacer la profondeur par l'âge. Le métamorphisme
+          n'est pas une maturation qui progresserait avec les années : c'est une
+          réponse à des conditions de pression et de température. Une roche très
+          ancienne restée près de la surface ne devient jamais un gneiss.
+
+      - id: C
+        text: "La composition chimique initiale de chaque roche : quatre sédiments différents ont donné quatre roches différentes, sans qu'aucune transformation n'ait eu lieu."
+        correct: false
+        misconception: mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause
+        feedback: |
+          Modèle détecté : expliquer par la composition de départ ce qui vient
+          des conditions. C'est justement le contraire qui est frappant : une
+          même composition initiale, le plus souvent argileuse, donne toute la
+          série selon la profondeur atteinte. Les minéraux se réorganisent, la
+          chimie globale change peu.
+
+      - id: D
+        text: "L'intensité de l'érosion subie par chaque roche : la migmatite est un schiste que l'érosion a le plus profondément entamé et transformé."
+        correct: false
+        misconception: mc.svt.svt_granitisation.transformation-attribuee-a-lerosion
+        feedback: |
+          Modèle détecté : confier à l'érosion un rôle de transformation. Elle
+          n'agit qu'en surface et ne fait qu'enlever de la matière — elle ne
+          chauffe ni ne comprime rien. Son rôle réel est de nous DONNER ACCÈS à
+          des roches transformées ailleurs, en profondeur, ce qui n'est pas la
+          même chose.
+
+  - id: cp-r3-anatexie
+    rung: "R3"
+    habilete: comprehension
+    skill_code: svt_granitisation
+    tags: [checkpoint, formative, misconception_driven, svt_granitisation]
+    primary_misconception: mc.svt.svt_granitisation.fusion-mal-expliquee
+    item_source: original
+    lesson_placement: after_R3
+
+    stem: |
+      Une migmatite montre des zones restées solides et des zones qui ont
+      manifestement fondu. Pourquoi cette roche s'est-elle mise à fondre,
+      partiellement ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Parce qu'elle a été enfouie assez profondément pour que la température y dépasse son seuil de fusion, et que ce seuil n'est pas le même pour tous ses minéraux."
+        correct: true
+        feedback: |
+          Oui, et les deux moitiés comptent. La cause est l'enfouissement, qui
+          fait monter la température ; et la fusion est PARTIELLE parce que les
+          minéraux n'ont pas tous le même point de fusion — les plus fusibles
+          passent à l'état liquide, les autres tiennent. D'où l'aspect mixte
+          d'une migmatite.
+
+      - id: B
+        text: "Parce qu'elle est restée enfouie très longtemps : à la longue, une roche finit toujours par fondre, même sans que la température n'ait à augmenter."
+        correct: false
+        misconception: mc.svt.svt_granitisation.fusion-mal-expliquee
+        feedback: |
+          Modèle détecté : faire fondre par la durée. La fusion est un seuil, pas
+          une usure : sous son point de fusion, une roche peut rester solide
+          indéfiniment. Ce qui change, c'est la profondeur atteinte — donc la
+          température, pas le temps passé.
+
+      - id: C
+        text: "Parce qu'un magma venu du manteau est monté jusqu'à elle et l'a réchauffée par contact, ce qui a fait fondre les parties qu'il a directement touchées."
+        correct: false
+        misconception: mc.svt.svt_granitisation.fusion-mal-expliquee
+        feedback: |
+          Modèle détecté : chercher une source de chaleur extérieure. Ce serait
+          un métamorphisme de contact, et il produirait une auréole autour d'une
+          intrusion visible. Ici, la fusion est diffuse et concerne des volumes
+          entiers de la racine de la chaîne : c'est la profondeur elle-même qui
+          fournit la chaleur.
+
+      - id: D
+        text: "Parce que l'érosion l'a suffisamment amincie pour que la chaleur interne de la Terre l'atteigne plus facilement et la porte à son point de fusion."
+        correct: false
+        misconception: mc.svt.svt_granitisation.transformation-attribuee-a-lerosion
+        feedback: |
+          Modèle détecté : faire chauffer par l'érosion. Elle produit l'effet
+          exactement inverse : en enlevant les roches sus-jacentes, elle
+          RAPPROCHE la roche de la surface, donc la refroidit et la dépressurise.
+          C'est d'ailleurs ce qui met fin à l'anatexie et fige le magma.
+
+  - id: cp-r4-texture
+    rung: "R4"
+    habilete: raisonnement
+    skill_code: svt_granitisation
+    tags: [checkpoint, formative, misconception_driven, svt_granitisation]
+    primary_misconception: mc.svt.svt_granitisation.granite-cru-volcanique-ou-sedimentaire
+    item_source: original
+    lesson_placement: after_R4
+
+    stem: |
+      Deux roches ont exactement la même composition chimique. L'une montre de
+      gros cristaux visibles à l'œil nu, l'autre une pâte où l'on ne distingue
+      presque rien. Qu'est-ce qui les sépare ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "La vitesse à laquelle leur magma s'est refroidi : lentement en profondeur pour la première, brutalement en surface pour la seconde."
+        correct: true
+        feedback: |
+          Oui, et c'est une règle qu'on peut appliquer partout : la texture d'une
+          roche magmatique enregistre sa vitesse de refroidissement. Des
+          cristaux ont besoin de temps pour grandir. Même composition, deux
+          histoires thermiques, deux textures — c'est le couple granite/rhyolite.
+
+      - id: B
+        text: "Leur composition minéralogique : seuls le quartz et le feldspath peuvent former de gros cristaux, et la roche à pâte fine en est nécessairement dépourvue."
+        correct: false
+        misconception: mc.svt.svt_granitisation.granite-cru-volcanique-ou-sedimentaire
+        feedback: |
+          Modèle détecté : faire dépendre la taille des cristaux de la
+          composition. L'énoncé l'exclut — les deux roches ont la même chimie, et
+          contiennent donc les mêmes minéraux. Seule leur TAILLE diffère, et
+          c'est le temps de refroidissement qui la fixe.
+
+      - id: C
+        text: "Leur âge : la roche à gros cristaux est bien plus ancienne, ses cristaux ayant continué de grandir lentement pendant des millions d'années à l'état solide."
+        correct: false
+        misconception: mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause
+        feedback: |
+          Modèle détecté : faire grandir des cristaux dans une roche déjà
+          solide. La cristallisation se joue pendant le passage du liquide au
+          solide, et elle s'arrête quand la roche est figée. L'âge de la roche
+          par la suite n'y change plus rien.
+
+      - id: D
+        text: "L'érosion : la roche à gros cristaux a été davantage usée, ce qui a dégagé et grossi ses cristaux, tandis que l'autre est restée intacte sous sa surface."
+        correct: false
+        misconception: mc.svt.svt_granitisation.transformation-attribuee-a-lerosion
+        feedback: |
+          Modèle détecté : prêter à l'érosion un pouvoir de transformation. Elle
+          peut dégager un affleurement, jamais faire grossir un cristal. La
+          texture est acquise au moment de la cristallisation, bien avant que la
+          roche n'atteigne la surface.
+
+  - id: cp-r5-exhumation
+    rung: "R5"
+    habilete: raisonnement
+    skill_code: svt_granitisation
+    tags: [checkpoint, formative, misconception_driven, svt_granitisation]
+    primary_misconception: mc.svt.svt_granitisation.transformation-attribuee-a-lerosion
+    item_source: original
+    lesson_placement: after_R5
+
+    stem: |
+      On marche sur un granite à texture grenue, à l'air libre. Que faut-il
+      nécessairement admettre sur l'histoire de ce lieu ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Qu'une épaisseur considérable de roches recouvrait autrefois ce granite, et qu'elle a été enlevée depuis, ce qui l'a amené jusqu'à la surface."
+        correct: true
+        feedback: |
+          Oui — et c'est l'exhumation. La texture grenue impose une
+          cristallisation lente, donc profonde et isolée thermiquement ; le
+          granite ne peut donc pas s'être formé là où on le trouve. Ce sont le
+          soulèvement de la chaîne et l'érosion qui ont fait le trajet inverse.
+
+      - id: B
+        text: "Que le granite s'est formé sur place et que l'érosion l'a simplement nettoyé de la terre végétale qui le masquait, sans avoir enlevé de roche."
+        correct: false
+        misconception: mc.svt.svt_granitisation.transformation-attribuee-a-lerosion
+        feedback: |
+          Modèle détecté : réduire l'érosion à un décapage superficiel. La
+          question n'est pas ce qui masquait le granite mais où il s'est
+          CRISTALLISÉ. Sa texture répond : en profondeur. Il a donc fallu
+          enlever, réellement, l'épaisseur de roches qui l'en séparait.
+
+      - id: C
+        text: "Que ce granite est le plus ancien affleurement de la région, l'érosion ayant nécessairement dégagé les roches les plus vieilles avant toutes les autres."
+        correct: false
+        misconception: mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause
+        feedback: |
+          Modèle détecté : remplacer la profondeur par la chronologie. L'érosion
+          dégage ce qui est en dessous, pas ce qui est le plus ancien — et les
+          deux ne coïncident pas dans une chaîne, où les chevauchements peuvent
+          empiler de l'ancien sur du récent.
+
+      - id: D
+        text: "Qu'une éruption a mis ce granite en place à la surface, puis que le refroidissement lent de la coulée, isolée sous ses propres cendres, a permis aux cristaux de grandir."
+        correct: false
+        misconception: mc.svt.svt_granitisation.granite-cru-volcanique-ou-sedimentaire
+        feedback: |
+          Modèle détecté : sauver l'origine volcanique en inventant un isolant.
+          Une couverture de cendres ralentit un peu le refroidissement, très
+          loin de ce qu'exigent des cristaux centimétriques — il y faut des
+          milliers à des millions d'années, sous plusieurs kilomètres de roche.
