@@ -2080,3 +2080,55 @@ tableaux écrits à la main : affirmer sans réexécuter.
 > tenu quatre mois et cachait trois situations différentes : une prémisse
 > périmée, un jugement juste au mauvais temps, et un backlog d'une autre ère
 > encore largement valable.
+
+### 10.16 Re-certifier les figures au pixel : le corpus tient, et une distinction nouvelle
+
+Le balayage `--pixels-tous` — deux à quatre captures par texte, ~4 100
+textes, plus d'une heure par thème — avait été fait le 2026-09-04. Il a été
+**refait le lendemain, dans les deux thèmes**, sur les 258 figures. Résultat :
+**0 défaut de classe armée sur le corpus vivant, en clair comme en sombre.**
+Les 67 restants sont tous de la classe non armée « barre » (un tracé qui
+traverse une étiquette) ; les 50–52 autres sont sur les deux figures
+`rlc-serie` en dette owner, déjà au dossier d'arbitrage.
+
+**Une re-certification qui ne trouve rien EST un résultat** — c'est la seule
+façon de savoir que le harnais rapide, qui manque ~17 % des cas par
+construction, ne cache rien sur le corpus vivant. Sans elle, « la porte est
+verte » ne dit rien de plus que « la porte est verte ».
+
+**Ce qu'elle a ajouté.** Les 67 « barre » étaient traités en bloc — « tous
+sous 30 %, connus et documentés ». Rapportés à leur FICHIER :
+
+> **37 figures en portent au moins un. Dix le DÉCLARENT dans leur fichier ;
+> vingt-sept sont muettes.**
+
+Les dix déclarées portent une vraie note de décision : `subduction-andes`
+explique que l'étiquette doit rester SUR le plan qu'elle désigne et que le
+bord la traverse donc « sur un cinquième de sa largeur, mesuré, pas
+ignoré » ; `lecture-Ve-courbe-dosage` liste deux placements essayés et
+défaits. Les vingt-sept muettes sont pour la plupart à 5–17 %, sous le seuil
+où l'œil s'arrête — mais **rien n'y distingue un croisement pesé d'un
+croisement jamais regardé.**
+
+**Le pire cas du corpus était muet, et il est corrigé.**
+`pc/controle-catalyse/anhydride-alcool` : la note « (l'hydrogène n'a pas
+encore bougé) », posée dans l'étape 3, était rayée sur **29 % de sa largeur**
+par la flèche de l'étape 4 — seul cas au-dessus de 25 %. Le croisement
+n'existe qu'une fois l'étape 4 révélée, c'est-à-dire dans l'état où l'élève
+TERMINE la figure ; `figure-preview` rend toutes les étapes à la fois, et
+c'est précisément pour ça. Deux placements essayés, mesurés, et le premier
+défait (à y=324 la note recouvrait le « C » du squelette à 56 % — pire que le
+défaut de départ). Le retenu passe sous le ventre de la flèche. Vérifié aux
+pixels dans les deux thèmes, et REGARDÉ. Le raisonnement est écrit dans le
+SVG, à côté de l'étiquette.
+
+**Ce qui reste, borné et rangé** : vingt-six figures muettes, toutes à 24 %
+ou moins. La plus haute (`explication-bk-2019-n-x1`, 24 %) est **générée**
+par `scripts/figure-geometrie-espace-2019.py`, dont le code commente déjà son
+propre réglage — déclarée ailleurs, donc, et **à ne surtout pas corriger à la
+main : le SVG serait réécrit à la prochaine exécution.**
+
+> **La règle que cet arc ajoute.** Un seuil (« tous sous 30 % ») range une
+> classe ; il ne la documente pas. La question utile n'est pas « combien de
+> cas restent » mais **« combien ont été REGARDÉS »** — et cette
+> distinction-là ne se lit pas dans un total, seulement fichier par fichier.

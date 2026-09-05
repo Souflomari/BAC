@@ -140,6 +140,16 @@ Une leçon dense se peint en 0,5 s et reste sourde 6,7 s sur un téléphone bon
 marché. Voir `docs/audits/poids-et-reactivite.md`. Ce qui reste sous ce
 numéro, c'est la consommation de données — une autre question.)*
 
+*(RE-CERTIFIÉE le 2026-09-05, dans les deux thèmes, par un second
+`--pixels-tous` complet : **0 défaut de classe armée sur le corpus vivant**.
+Une re-certification qui ne trouve rien EST un résultat — c'est la seule
+façon de savoir que la passe rapide, qui manque ~17 % des cas par
+construction, ne cache rien. Elle a aussi produit une distinction que le
+total masquait : sur les 37 figures portant un « barre », **dix le déclarent
+dans leur fichier, vingt-sept sont muettes** ; le pire cas du corpus (29 %,
+`anhydride-alcool`) était muet et a été corrigé. Voir
+`docs/audits/contraste-figures.md`.)*
+
 *(La classe « contraste d'un texte de figure contre ce qui est vraiment peint
 derrière lui », nommée dans ce document le 2026-09-03 comme non instrumentée,
 a été mesurée et fermée le lendemain — et elle a rapporté une classe de

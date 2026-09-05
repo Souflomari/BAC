@@ -202,7 +202,18 @@
           stroke-width="1.8" stroke-dasharray="4,3" marker-end="url(#arrow-accent-1)"/>
     <text x="394" y="250" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">l’oxygène de l’alcool se lie au carbone</text>
     <text x="394" y="262" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">c’est la nouvelle liaison ester</text>
-    <text x="464" y="352" text-anchor="end" font-size="9" font-style="italic" fill="var(--figure-ink-soft)">(l’hydrogène n’a pas encore bougé)</text>
+    <!-- DESCENDUE de 352 à 366 (2026-09-05) : la note vit dans step-3, mais
+         la flèche de step-4 (M450,334 Q356,376 264,336) passe entre y=334 et
+         y=355 sur toute la largeur de la note — et figure-preview mesure
+         TOUTES les étapes révélées à la fois, l'état où l'élève arrive à
+         l'étape 4. La note était rayée sur 29 % de sa largeur : le pire cas
+         « barre » du corpus, et le seul au-dessus de 25 %.
+         Deux placements essayés : y=324 met la note en recouvrement à 56 %
+         avec le « C » du squelette ; y=366 passe SOUS le ventre de la
+         flèche, au-dessus de la ligne de step-4 (y=376), sans toucher
+         « l'oxygène reste lié… » qui s'arrête à x=256. Vérifié aux pixels,
+         clair ET sombre : zéro défaut. -->
+    <text x="464" y="366" text-anchor="end" font-size="9" font-style="italic" fill="var(--figure-ink-soft)">(l’hydrogène n’a pas encore bougé)</text>
   </g><!-- /step-3 -->
 
   <!-- ══════════════════════════════════════════════════════

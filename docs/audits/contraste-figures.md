@@ -175,12 +175,65 @@ dans les DEUX thèmes, sur l'arbre final :
 
 | | contraste / invisible / recouvert | classes informatives | dette owner |
 |---|---:|---:|---:|
-| clair | **0** | 67 | 50 |
-| sombre | **0** | 67 | 52 |
+| clair | **0** | 67 → **66** | 50 |
+| sombre | **0** | 67 → **66** | 52 |
+
+*(La flèche : re-certifié le 2026-09-05, un cas informatif corrigé — voir
+plus bas.)*
 
 Les 67 sont les deux classes non armées (« barre », « chevauche »), connues et
 documentées ; la dette owner est celle des deux figures `rlc-serie` sous
 arbitrage.
+
+### Re-certification du 2026-09-05, et ce qu'elle a ajouté
+
+Le balayage intégral a été **relancé le lendemain, dans les deux thèmes**,
+sur les mêmes 258 figures : **0 défaut de classe armée, 67 informatifs**
+(50 en dette owner en clair, 52 en sombre) — les deux lignes du tableau
+ci-dessus, à l'unité près. Le corpus n'a pas bougé, et c'est exactement ce
+qu'une re-certification doit pouvoir dire.
+
+*(Après la correction décrite plus bas, le compte informatif est de **66**
+dans les deux thèmes — vérifié par une passe rapide complète, clair et
+sombre.)*
+
+Elle a servi à autre chose, cependant. Les 67 « barre » avaient été traités
+en bloc — « tous sous 30 %, connus et documentés ». En les rapportant à leur
+FICHIER, la répartition est moins confortable :
+
+> **37 figures portent au moins un tracé qui barre une étiquette. Dix le
+> DÉCLARENT dans leur fichier ; vingt-sept sont muettes.**
+
+Les dix déclarées portent une vraie note de décision — `subduction-andes`
+explique que l'étiquette doit rester SUR le plan qu'elle désigne et que le
+bord la traverse donc « sur un cinquième de sa largeur, mesuré, pas
+ignoré » ; `lecture-Ve-courbe-dosage` liste deux placements essayés et
+défaits ; `pangee-reconstruction-preuves` note la remontée de 14 px qui a
+ramené son cas à 19 %. C'est la règle de la maison appliquée : l'exception
+vit dans le fichier.
+
+Les vingt-sept muettes ne sont pas forcément fautives — la plupart sont à
+5–17 %, sous le seuil où l'œil s'arrête. Mais **rien n'y distingue un
+croisement pesé d'un croisement jamais regardé.**
+
+**Le pire cas du corpus était muet, et il a été corrigé.** `anhydride-alcool`
+(pc/controle-catalyse) : la note en italique « (l'hydrogène n'a pas encore
+bougé) », posée dans step-3, était rayée sur **29 % de sa largeur** par la
+flèche de step-4 — le seul cas au-dessus de 25 %. Le croisement n'existe
+qu'une fois l'étape 4 révélée, c'est-à-dire dans l'état où l'élève termine la
+figure ; `figure-preview` rend toutes les étapes à la fois, et c'est
+précisément pour ça. Deux placements essayés : à y=324 la note recouvre le
+« C » du squelette à 56 % (pire) ; à y=366 elle passe sous le ventre de la
+flèche, au-dessus de la ligne de step-4, sans toucher sa voisine de gauche.
+**Vérifié aux pixels dans les deux thèmes : zéro défaut.** Le raisonnement
+est écrit dans le SVG, à côté de l'étiquette.
+
+Ce qui reste, pour qui reprendra : **vingt-six figures muettes, toutes à
+24 % ou moins**, dont la plus haute (`explication-bk-2019-n-x1`, 24 %) est
+GÉNÉRÉE par `scripts/figure-geometrie-espace-2019.py` — son réglage est déjà
+commenté dans le générateur (« −16 et non −8 : à 8 px l'étiquette R = √5
+était traversée »), donc déclarée ailleurs qu'ici. Une figure générée ne se
+corrige pas à la main : le SVG serait réécrit à la prochaine exécution.
 - **Le modèle seul manque 17 % des cas.** Sur ce corpus : 84 candidats
   trouvés par le modèle, 101 défauts réels trouvés par le balayage intégral
   (`--pixels-tous`, deux captures par texte, ~25 min sur 258 figures). Le
