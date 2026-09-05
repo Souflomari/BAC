@@ -805,7 +805,7 @@ items:
           garde le signe de $x$. Comme $x \to -\infty$ (négatif), $x^5$
           reste négatif et part vers $-\infty$, pas $+\infty$.
       - id: B
-        text: "$-\\infty$"
+        text: "$-\\infty$, l'exposant $5$ étant impair : le signe du résultat suit celui de $x$"
         correct: true
       - id: C
         text: "$0$, car plus $x$ devient grand en valeur absolue, plus $\\frac{1}{x^5}$ se rapproche de $0$, donc $x^5$ aussi."
@@ -1242,10 +1242,10 @@ items:
           coefficient dominant — c'est ce signe qui inverse le résultat
           final par rapport à $\lim x^3$ seul.
       - id: B
-        text: "$\\lim_{x \\to +\\infty} f(x) = -\\infty$ et $\\lim_{x \\to -\\infty} f(x) = +\\infty$."
+        text: "$\\lim_{x \\to +\\infty} f(x) = -\\infty$ et $\\lim_{x \\to -\\infty} f(x) = +\\infty$, le terme dominant $-x^3$ imposant son signe aux deux limites."
         correct: true
       - id: C
-        text: "$\\lim_{x \\to +\\infty} f(x) = +\\infty$ et $\\lim_{x \\to -\\infty} f(x) = +\\infty$ dans les deux cas, car le terme $6x$ devient négligeable et $-x^3$ élevé au cube donne toujours un résultat positif."
+        text: "$\\lim_{x \\to +\\infty} f(x) = +\\infty$ et $\\lim_{x \\to -\\infty} f(x) = +\\infty$, car $6x$ devient négligeable et un cube donnerait toujours un résultat positif."
         correct: false
         misconception: mc.math.maths_limites_continuite.parite-signe-terme-dominant-mal-geree
         feedback: >
@@ -1255,7 +1255,7 @@ items:
           facteur dominant $-x^3$ est positif quand $x<0$ et négatif quand
           $x>0$, jamais « toujours positif ».
       - id: D
-        text: "On ne peut pas conclure directement : $-x^3+6x$ est une forme $\\infty - \\infty$, indéterminée, et il n'existe aucune méthode pour la lever ici car ce n'est pas un quotient."
+        text: "On ne peut pas conclure : $-x^3+6x$ est une forme $\\infty - \\infty$ indéterminée, et aucune méthode ne permet de la lever puisque ce n'est pas un quotient."
         correct: false
         misconception: null
         feedback: >
