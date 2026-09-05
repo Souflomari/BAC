@@ -91,13 +91,24 @@ jobs:
       # vérifie que le corpus est CHARGÉ : `lib/content.ts` résout sa racine
       # depuis le répertoire courant et rend une liste VIDE ailleurs, sans
       # erreur, ce qui rendrait les douze autres verts pour rien.
-      - name: Tests unitaires (apprenant · session · typographie · écriture · épreuves)
+      #
+      # test-melange re-mesure une AFFIRMATION SUR DES DONNÉES, pas sur du
+      # code : « le biais rédactionnel sur le choix A disparaît après
+      # mélange ». Elle peut cesser d'être vraie sans qu'une ligne change —
+      # il suffit d'ajouter des items. Elle emploie deux témoins : la
+      # distribution est plate APRÈS, et le biais existe encore AVANT (sans
+      # quoi « c'est plat » serait vert avec le mélange retiré). Il compare
+      # aussi le comportement des DEUX copies de l'algorithme — item-stats et
+      # dom-truth en portent chacune une, et celle d'item-stats n'était
+      # gardée par rien.
+      - name: Tests unitaires (apprenant · session · typographie · écriture · épreuves · mélange)
         run: |
           npm run test-learner-model
           npm run test-attempt-events
           npm run test-typographie
           npm run test-session
           npm run test-examens
+          npm run test-melange
 
       # PORTE LIENS (2026-09-05). Ce projet se pilote par ses documents :
       # `.claude/CLAUDE.md` envoie vers la vision, la vision vers les règles,

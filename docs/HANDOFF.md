@@ -2703,3 +2703,56 @@ depuis la racine du dépôt (`not ok 1`, puis `not ok 12`).
 
 Cinq suites unitaires en CI, contre deux le matin : apprenant (26) ·
 écriture (20) · typographie (10) · session (10) · épreuves (13).
+
+### 11.11 Une affirmation vraie, dont le chiffre avait vieilli de sept points
+
+`lib/shuffle.ts` mélange les réponses d'un QCM de façon déterministe. Son
+en-tête portait, depuis des années, la justification du module :
+
+> le biais de **58 %** sur le choix A, mesuré dans l'ordre du fichier,
+> disparaît
+
+C'est une affirmation sur des **données**, pas sur du code. Elle peut cesser
+d'être vraie sans qu'une ligne change : il suffit d'ajouter des items. Elle
+n'avait jamais été re-mesurée.
+
+Re-mesurée, sur les 1 612 items à choix du corpus :
+
+    telle qu'écrite   A 65,0 %   B 14,0 %   C 11,4 %   D  9,7 %
+    après mélange     A 25,7 %   B 25,4 %   C 24,0 %   D 24,9 %
+
+**L'affirmation tient ; son chiffre avait vieilli de sept points.** Le biais
+rédactionnel a GRANDI avec le corpus — 58 % puis 65 %. C'est exactement le
+cas prévu par l'ADR 0031 : un chiffre dans un document voyage désormais avec
+la commande qui le produit (`npm run test-melange`), et il est re-mesuré à
+chaque passage de CI plutôt que recopié.
+
+**Deux témoins, et c'est le point de méthode.** Un test qui vérifierait
+seulement « c'est plat après mélange » serait vert sur un corpus déjà plat
+avant — donc vert **avec le mélange désarmé**. Le troisième test vérifie donc
+que le biais rédactionnel EXISTE encore. Vérifié rouge en remplaçant le corps
+de `shuffledChoices` par `return choices;` : `not ok 2`, les six autres verts.
+
+**Une copie que rien ne gardait.** L'algorithme est recopié à l'identique dans
+`item-stats.mjs` et `dom-truth.mjs` (un script Node ne peut pas importer le
+TypeScript de `web/src`). L'en-tête du module affirmait que « le sweep de
+dom-truth existe pour attraper la dérive » : vrai pour la copie de dom-truth,
+et seulement pour la notion balayée ce jour-là. **La copie d'`item-stats.mjs`
+n'était vérifiée par rien.** Le dernier test compare le COMPORTEMENT des deux
+copies au vrai module sur 500 tirages — pas leur texte, pour qu'un
+reformatage ne fasse pas échouer une porte de comportement. Vérifié rouge en
+changeant un seul chiffre du nombre premier FNV dans la copie
+(`0x01000193` → `0x01000195`) : « scripts/item-stats.mjs : hachage divergent
+sur « item-0-0 » ».
+
+**Deux soupçons écartés au passage**, et ils comptent autant. La graine est
+l'identifiant de l'item SEUL : neuf identifiants sur 1 612 sont portés par
+deux items — tous des `LIB-n`, « libération de l'énergie » (SVT) et « la
+liberté » (philo), une homonymie d'abréviation. Inoffensif pour le mélange
+(les choix diffèrent), et inoffensif ailleurs : `revealKey` préfixe déjà par
+la notion, et le modèle apprenant apparie toujours `notionId` +
+`misconceptionId`, jamais l'identifiant d'item seul. Un test garde quand même
+le plafond, pour qu'une collision de MASSE ne s'installe pas en silence.
+
+Six suites unitaires en CI : apprenant (26) · écriture (20) · typographie
+(10) · session (10) · épreuves (13) · mélange (7).

@@ -20,11 +20,24 @@
  *     every capture would make diffs noisy and reviews non-reproducible.
  *   - Still un-biased across items: the seed is derived from the item's own
  *     id (hashString), so DIFFERENT items land on DIFFERENT permutations —
- *     this isn't a fixed shuffle, it's a stable-per-item one. The 58%
- *     choice-A bias measured in file order (web/scripts/item-stats.mjs)
- *     disappears because each item's correct choice lands on a
+ *     this isn't a fixed shuffle, it's a stable-per-item one. The authored
+ *     choice-A bias disappears because each item's correct choice lands on a
  *     hash-dependent position instead of wherever the author happened to
  *     type it first.
+ *
+ *     RE-MEASURED 2026-09-05 — `npm run test-melange`, 1612 items, all with
+ *     four choices. The authored bias is no longer the 58% this comment
+ *     claimed for years; it has GROWN to 65% as content was added, which is
+ *     exactly why the figure now travels with the command that produces it:
+ *
+ *       as authored   A 65.0%   B 14.0%   C 11.4%   D  9.7%
+ *       after shuffle A 25.7%   B 25.4%   C 24.0%   D 24.9%
+ *
+ *     The claim itself holds. But it is a claim about DATA, so it can stop
+ *     being true without this file changing — one authoring habit is enough.
+ *     scripts/test-melange.mjs re-measures it on every CI run, and asserts
+ *     the authored bias still EXISTS: without that second witness, "flat
+ *     after shuffle" would also be green with the shuffle removed.
  *
  * Pure, dependency-free. No Math.random, no Date.now, no external state.
  *
