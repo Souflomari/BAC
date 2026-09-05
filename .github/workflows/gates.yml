@@ -147,6 +147,21 @@ jobs:
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
           node scripts/copie-maths.mjs --porte $routes
 
+      # PORTE IMPRESSION (2026-09-05). Un élève de terminale IMPRIME : pour
+      # annoter au stylo, pour réviser sans écran, pour emporter en salle
+      # d'étude. La feuille est un rendu du produit au même titre que la page.
+      # `globals.css` portait trois blocs @media print soignés que RIEN ne
+      # vérifiait — et l'un d'eux ne couvrait pas les jetons de figure : un
+      # élève qui lit en thème SOMBRE imprimait des aplats noirs pleine page.
+      # Six contrôles par page, dans les deux thèmes, sur les 62 leçons plus
+      # l'accueil, /examens et une page de matière.
+      - name: Porte impression (le papier n'a pas de thème)
+        run: |
+          routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)
+          test -n "$routes"
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/impression.mjs --porte $routes / /examens /matieres/pc
+
       - name: Model-id hygiene gate
         working-directory: .
         run: |

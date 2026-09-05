@@ -1077,13 +1077,22 @@ if (candidats.length) {
     // ce qui faisait tomber tout le balayage sur UNE figure. On rogne, et
     // si après rognage il ne reste rien, on le DIT au lieu de planter.
     const vp = page.viewportSize() ?? { width: 1280, height: 1200 };
-    const x0 = Math.max(0, Math.min(b.x - 1, vp.width - 1));
-    const y0 = Math.max(0, Math.min(b.y - 1, vp.height - 1));
+    // MINIMUM DE 8 px, centré sur l'élément. Un tspan d'exposant fait 4×5 px :
+    // rogné à la fenêtre il pouvait tomber sous 2 px, et l'instrument
+    // renonçait à le juger (« zone hors fenêtre »). Une zone un peu plus large
+    // que la lettre ne gêne pas la mesure — le fond y est le même — et elle
+    // évite de laisser des textes non certifiés dans le rapport.
+    const MIN = 8;
+    const cxE = b.x + b.width / 2, cyE = b.y + b.height / 2;
+    const w = Math.max(MIN, b.width + 2);
+    const h = Math.max(MIN, b.height + 2);
+    const x0 = Math.max(0, Math.min(cxE - w / 2, vp.width - w));
+    const y0 = Math.max(0, Math.min(cyE - h / 2, vp.height - h));
     const clip = {
-      x: x0,
-      y: y0,
-      width: Math.max(1, Math.min(b.width + 2, vp.width - x0)),
-      height: Math.max(1, Math.min(b.height + 2, vp.height - y0)),
+      x: Math.max(0, x0),
+      y: Math.max(0, y0),
+      width: Math.min(w, vp.width - Math.max(0, x0)),
+      height: Math.min(h, vp.height - Math.max(0, y0)),
     };
     if (clip.width < 2 || clip.height < 2) { d.pixels = "zone hors fenêtre"; continue; }
     let echecCapture = null;

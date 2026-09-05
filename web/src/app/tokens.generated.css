@@ -154,3 +154,70 @@
   --figure-regime-pseudo: #CB9E72;
   --figure-regime-aperiodic: #B695CF;
 }
+
+/* Le papier n'a pas de thème : le clair, quel que soit ce qu'on lit à l'écran.
+   Voir docs/audits/impression.md — mesuré, pas supposé. */
+@media print {
+  :root,
+  :root.dark {
+    --color-surface-base: #F7F7F4;
+    --color-surface-raised: #FFFFFF;
+    --color-surface-overlay: #FFFFFF;
+    --color-surface-container-lowest: #F0EFEC;
+    --color-surface-container-low: #F4F3F0;
+    --color-surface-container: #F8F8F5;
+    --color-surface-container-high: #FCFBFA;
+    --color-surface-container-highest: #FFFFFF;
+    --color-border-subtle: #E6E4E1;
+    --color-border-soft: #D6D4D0;
+    --color-border-field: #888681;
+    --color-text-primary: #1D1A14;
+    --color-text-secondary: #55524A;
+    --color-text-tertiary: #6F6C63;
+    --color-text-on-accent: #FFFFFF;
+    --color-accent: #00746A;
+    --color-accent-strong: #006359;
+    --color-accent-light: #61B6AB;
+    --color-accent-subtle: #E1F5F2;
+    --focus-halo: rgba(0,116,106,.16);
+    --color-success: #346F46;
+    --color-success-subtle: #E6F5E9;
+    --color-on-success: #FFFFFF;
+    --color-warning: #7C5911;
+    --color-warning-subtle: #FAF0DC;
+    --color-error: #97433A;
+    --color-error-subtle: #FDEDEA;
+    --color-on-error: #FFFFFF;
+    --subject-maths: #3F5D93;
+    --subject-maths-subtle: #E9F1FE;
+    --subject-maths-on: #FFFFFF;
+    --subject-pc: #864D23;
+    --subject-pc-subtle: #FBEDE4;
+    --subject-pc-on: #FFFFFF;
+    --subject-svt: #3F6A35;
+    --subject-svt-subtle: #E9F4E7;
+    --subject-svt-on: #FFFFFF;
+    --subject-philo: #7E4873;
+    --subject-philo-subtle: #F9EBF6;
+    --subject-philo-on: #FFFFFF;
+    --subject-si: #006B7B;
+    --subject-si-subtle: #E2F4F8;
+    --subject-si-on: #FFFFFF;
+    --elevation-0: none;
+    --elevation-1: 0 1px 2px 0 rgba(29,26,20,.04), 0 2px 8px -2px rgba(29,26,20,.05);
+    --elevation-2: 0 0 0 1px rgba(29,26,20,.04), 0 4px 12px -2px rgba(29,26,20,.07), 0 12px 32px -8px rgba(29,26,20,.09);
+    --elevation-3: 0 0 0 1px rgba(29,26,20,.05), 0 6px 16px -4px rgba(29,26,20,.09), 0 16px 40px -8px rgba(29,26,20,.11);
+    --elevation-4: 0 0 0 1px rgba(29,26,20,.06), 0 10px 24px -6px rgba(29,26,20,.11), 0 24px 56px -8px rgba(29,26,20,.16);
+    --figure-surface: #FFFFFF;
+    --figure-ink: #1D1A14;
+    --figure-ink-soft: #55524A;
+    --figure-grid: #ECEBE9;
+    --figure-accent: var(--color-accent);
+    --figure-energy-C: #3C5C98;
+    --figure-energy-L: #386B3A;
+    --figure-regime-periodic: #3C5C98;
+    --figure-regime-pseudo: #84582A;
+    --figure-regime-aperiodic: #704B89;
+    color-scheme: light;
+  }
+}

@@ -52,6 +52,34 @@ function emitBlock(selector, vars) {
   return `${selector} {\n${lines.join("\n")}\n}\n`;
 }
 
+/**
+ * LE BLOC D'IMPRESSION — le papier n'a pas de thème.
+ *
+ * Mesuré le 2026-09-05 (`web/scripts/impression.mjs`) : un élève qui lit en
+ * thème sombre et qui imprime sa leçon obtenait des figures sur fond
+ * `#1A1917`. Des aplats noirs pleine page : une cartouche vidée, et une
+ * feuille sur laquelle on ne peut plus annoter au stylo. Le bloc
+ * `@media print` de `globals.css` remettait bien le corps en blanc, mais il
+ * ne touchait pas aux jetons de FIGURE — et la classe `.dark` de ce fichier,
+ * de même spécificité et déclarée après, gardait la main.
+ *
+ * Le correctif appartient ICI et non à `globals.css` : la palette a une
+ * source unique, et une deuxième liste de couleurs écrite à la main dériverait
+ * dès la première retouche. On réémet donc le thème CLAIR, tel quel, sous
+ * `@media print`, pour `:root` comme pour `.dark`.
+ */
+function emitPrint() {
+  const vars = themes.light.vars;
+  const lignes = Object.entries(vars).map(([k, v]) => `    ${k}: ${v};`);
+  return (
+    "/* Le papier n'a pas de thème : le clair, quel que soit ce qu'on lit à l'écran.\n" +
+    "   Voir docs/audits/impression.md — mesuré, pas supposé. */\n" +
+    "@media print {\n" +
+    `  :root,\n  :root.dark {\n${lignes.join("\n")}\n    color-scheme: light;\n  }\n` +
+    "}\n"
+  );
+}
+
 function generate() {
   const blocks = Object.values(themes).map((theme) => {
     // The theme-independent tokens (invariant + the flattened motion vars)
@@ -63,7 +91,7 @@ function generate() {
         : theme.vars;
     return emitBlock(theme.selector, vars);
   });
-  return `${HEADER}\n${blocks.join("\n")}`;
+  return `${HEADER}\n${blocks.join("\n")}\n${emitPrint()}`;
 }
 
 const generated = generate();
