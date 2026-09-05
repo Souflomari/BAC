@@ -253,10 +253,10 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Le générateur fournit de l'énergie électrique, qui se retrouve stockée en partie sous forme d'énergie chimique dans les produits formés - la cellule consomme de l'énergie, elle n'en fabrique pas."
+        text: "Le générateur fournit de l'énergie électrique, stockée en partie sous forme d'énergie chimique dans les produits : la cellule consomme de l'énergie."
         correct: true
       - id: B
-        text: "La cellule renvoie au générateur plus d'énergie qu'elle n'en reçoit, grâce à la réaction chimique qu'elle contient."
+        text: "La cellule renvoie au générateur davantage d'énergie qu'elle n'en reçoit, grâce à la réaction chimique qui s'y produit en permanence."
         correct: false
         misconception: mc.physics.pc_electrolyse.electrolyse-source-energie
         feedback: >
@@ -266,7 +266,7 @@ items:
           - elle ne peut jamais en renvoyer davantage que ce qu'elle
           reçoit.
       - id: C
-        text: "Le bilan énergétique est nul : l'énergie électrique fournie ne fait que traverser la cellule sans être transformée."
+        text: "Le bilan énergétique est rigoureusement nul : l'énergie électrique fournie ne fait que traverser la cellule sans y être transformée."
         correct: false
         misconception: mc.physics.pc_electrolyse.electrolyse-source-energie
         feedback: >
@@ -276,7 +276,7 @@ items:
           Joule dans les fils et l'électrolyte. Elle ne traverse pas la
           cellule sans être modifiée.
       - id: D
-        text: "Seule une pile possède un bilan énergétique ; une cellule d'électrolyse, étant forcée, n'en a pas."
+        text: "Seule une pile possède un bilan énergétique ; une cellule d'électrolyse, étant forcée de l'extérieur, n'en a pas à proprement parler."
         correct: false
         misconception: mc.physics.pc_electrolyse.electrolyse-source-energie
         feedback: >
@@ -511,7 +511,7 @@ items:
         text: "Elle se dissout progressivement ; la solution qui l'entoure devient plus intensément bleue (enrichissement en $Cu^{2+}$)."
         correct: true
       - id: B
-        text: "Elle continue à se recouvrir de cuivre, comme dans le fonctionnement spontané de la pile."
+        text: "Elle continue de se recouvrir de cuivre, exactement comme dans le fonctionnement spontané de la pile Daniell."
         correct: false
         misconception: mc.physics.pc_electrolyse.sens-force-vs-spontane
         feedback: >
@@ -519,7 +519,7 @@ items:
           ici le générateur impose l'inverse du fonctionnement spontané,
           donc le cuivre se dissout au lieu de se déposer.
       - id: C
-        text: "Elle grossit d'un dépôt de cuivre, mais plus lentement qu'avec la pile seule."
+        text: "Elle grossit d'un dépôt de cuivre, mais nettement plus lentement qu'avec la pile fonctionnant seule."
         correct: false
         misconception: mc.physics.pc_electrolyse.seuil-tension-continu
         feedback: >
@@ -527,7 +527,7 @@ items:
           spontané ; un générateur assez fort ne freine pas ce sens, il
           l'inverse complètement.
       - id: D
-        text: "Elle reste inchangée, car le cuivre est un métal inerte qui ne réagit pas dans une électrolyse."
+        text: "Elle reste inchangée, car le cuivre est un métal inerte qui ne réagit jamais au cours d'une électrolyse."
         correct: false
         misconception: mc.physics.pc_electrolyse.sens-force-vs-spontane
         feedback: >
@@ -557,10 +557,10 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Le générateur impose à la réaction d'évoluer dans le sens inverse de son sens spontané - le sens que $Q_{r,i}$ face à $K$ interdirait si le système était livré à lui-même."
+        text: "Le générateur impose à la réaction d'évoluer dans le sens inverse de son sens spontané — celui que la comparaison de $Q_{r,i}$ à $K$ interdirait."
         correct: true
       - id: B
-        text: "Le générateur accélère la réaction dans son sens spontané, sans en changer la nature."
+        text: "Le générateur accélère simplement la réaction dans son sens spontané, sans en changer en rien la nature."
         correct: false
         misconception: mc.physics.pc_electrolyse.sens-force-vs-spontane
         feedback: >
@@ -568,7 +568,7 @@ items:
           naturel : c'est lui imposer le sens contraire, celui que la
           chimie seule interdirait.
       - id: C
-        text: "Le générateur permet à la réaction spontanée et à la réaction inverse de se produire simultanément, à parts égales."
+        text: "Le générateur permet à la réaction spontanée et à la réaction inverse de se produire simultanément, à parts rigoureusement égales."
         correct: false
         misconception: mc.physics.pc_electrolyse.seuil-tension-continu
         feedback: >
@@ -607,10 +607,10 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Les électrons se déplacent en sens inverse de $i$ : ils vont de la borne − du générateur vers la cathode, alors que $i$ est orienté de la cathode vers la borne −."
+        text: "Les électrons se déplacent en sens inverse de $i$ : ils vont de la borne − du générateur vers la cathode, alors que $i$ est orienté en sens contraire."
         correct: true
       - id: B
-        text: "Les électrons se déplacent dans le même sens que $i$, puisque ce sont eux qui transportent le courant."
+        text: "Les électrons se déplacent dans le même sens que $i$, puisque ce sont précisément eux qui transportent le courant électrique."
         correct: false
         misconception: mc.physics.pc_electrolyse.sens-courant-electrons
         feedback: >
@@ -626,7 +626,7 @@ items:
           électrique, y compris une électrolyse ; il n'est pas propre aux
           piles.
       - id: D
-        text: "Les électrons se déplacent de la cathode vers la borne − du générateur."
+        text: "Les électrons se déplacent de la cathode vers la borne − du générateur, dans le fil qui les relie l'une à l'autre."
         correct: false
         misconception: mc.physics.pc_electrolyse.sens-courant-electrons
         feedback: >
@@ -1119,10 +1119,10 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Non : tant que le générateur impose sa tension (au-delà du seuil $E$) et que les réactifs sont disponibles, l'électrolyse se poursuit ; le générateur maintient le système hors de l'état que $Q_{r,i}=K$ imposerait spontanément."
+        text: "Non : tant que le générateur impose sa tension au-delà du seuil $E$ et que les réactifs restent disponibles, l'électrolyse se poursuit sans s'arrêter."
         correct: true
       - id: B
-        text: "Oui : comme dans une pile, dès que $Q_{r,i}=K$, plus aucune évolution n'est possible, générateur ou pas."
+        text: "Oui : comme dans une pile, dès l'instant où $Q_{r,i}=K$, plus aucune évolution n'est possible, que le générateur soit branché ou non."
         correct: false
         misconception: mc.physics.pc_electrolyse.sens-force-vs-spontane
         feedback: >
@@ -1131,7 +1131,7 @@ items:
           le générateur impose précisément un sens que ce critère
           interdirait.
       - id: C
-        text: "Oui, mais seulement si la tension du générateur est inférieure au seuil $E$."
+        text: "Oui, mais seulement dans le cas où la tension imposée par le générateur reste inférieure au seuil $E$ de la cellule."
         correct: false
         misconception: mc.physics.pc_electrolyse.seuil-tension-continu
         feedback: >
@@ -1139,7 +1139,7 @@ items:
           simplement le sens spontané de la pile interne qui continue,
           sans lien avec un blocage « à $Q_{r,i}=K$ ».
       - id: D
-        text: "Non, l'électrolyse ne s'arrête jamais, même si l'un des réactifs vient à manquer complètement."
+        text: "Non, l'électrolyse ne s'arrête jamais d'elle-même, y compris lorsque l'un des réactifs vient à manquer complètement."
         correct: false
         misconception: mc.physics.pc_electrolyse.sens-force-vs-spontane
         feedback: >

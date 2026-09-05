@@ -458,10 +458,10 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "La courbe de $v$ est une parabole : ni le contour d'un rectangle (vitesse constante) ni celui d'un triangle (vitesse proportionnelle au temps) ne suit sa forme courbe."
+        text: "La courbe de $v$ est une parabole : ni le contour d'un rectangle ni celui d'un triangle n'épouse sa forme courbe."
         correct: true
       - id: B
-        text: "Parce que la vitesse devient trop grande à la fin de l'intervalle pour ces formules."
+        text: "Parce que la vitesse devient bien trop grande à la fin de l'intervalle pour que ces formules restent applicables."
         correct: false
         feedback: >
           Ce raisonnement fait dépendre la méthode de la taille des
@@ -469,7 +469,7 @@ items:
           qui décide si une formule de géométrie plane s'applique — pas
           l'ampleur des valeurs de $v(t)$.
       - id: C
-        text: "Parce que la voiture part de l'arrêt, avec $v(0)=0$, ce qui empêche d'utiliser une formule d'aire."
+        text: "Parce que la voiture part de l'arrêt, avec $v(0)=0$, ce qui interdit d'utiliser la moindre formule d'aire usuelle."
         correct: false
         feedback: >
           Un rectangle ou un triangle peut très bien avoir un côté de
@@ -477,7 +477,7 @@ items:
           problème, c'est le fait que $v(t)=t^2$ ne trace ni une droite
           horizontale ni une droite oblique entre $t=0$ et $t=2$.
       - id: D
-        text: "Parce que le temps $t$ n'est pas une longueur, donc on ne peut pas parler d'aire sous cette courbe."
+        text: "Parce que le temps $t$ n'est pas une longueur : on ne peut donc pas parler d'aire sous une courbe de vitesse."
         correct: false
         feedback: >
           Sur un graphique vitesse-temps, l'aire sous la courbe se lit bien
@@ -569,14 +569,14 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle est exactement égale à $8$ m, car c'est la vitesse en fin de trajet qui détermine la distance totale."
+        text: "Elle est exactement égale à $8$ m, car c'est la vitesse atteinte en fin de trajet qui détermine la distance totale parcourue."
         correct: false
         feedback: >
           La vitesse à l'instant final ne résume pas tout le trajet : la
           voiture a roulé plus lentement pendant presque tout l'intervalle
           $[0,2]$, avant d'atteindre $4$ m/s seulement à la toute fin.
       - id: B
-        text: "Elle est supérieure à $8$ m, car la voiture accélère sans cesse et dépasse donc $4$ m/s avant $t=2$."
+        text: "Elle est supérieure à $8$ m, car la voiture accélère sans cesse et dépasse donc les $4$ m/s bien avant l'instant $t=2$."
         correct: false
         feedback: >
           Sur l'intervalle $[0,2]$, $v(t)=t^2$ est croissante et atteint
@@ -584,7 +584,7 @@ items:
           jamais $4$ m/s sur cet intervalle, elle l'atteint seulement à
           l'instant final.
       - id: C
-        text: "On ne peut rien en dire, car $4\\times2$ est un calcul de vitesse, pas de distance."
+        text: "On ne peut rien en dire du tout, car $4\\times2$ est un calcul de vitesse et non un calcul de distance parcourue."
         correct: false
         feedback: >
           Une vitesse constante multipliée par une durée donne bien une
@@ -594,7 +594,7 @@ items:
           l'hypothèse que la voiture aurait roulé à $4$ m/s pendant tout le
           trajet.
       - id: D
-        text: "Elle est strictement inférieure à $8$ m, car la voiture n'a atteint $4$ m/s qu'à l'instant final $t=2$ — elle a roulé plus lentement pendant tout le reste du trajet."
+        text: "Elle est strictement inférieure à $8$ m, car la voiture n'a atteint $4$ m/s qu'à l'instant final $t=2$ — elle a roulé plus lentement le reste du temps."
         correct: true
     correct_feedback: >
       $8$ m suppose une vitesse constamment égale à $4$ m/s, alors que la
@@ -682,7 +682,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Oui : la définition $F(b)-F(a)$ ne s'applique que si $f\\geq0$ sur tout l'intervalle."
+        text: "Oui : la définition $F(b)-F(a)$ ne s'applique que si la fonction $f$ reste positive sur tout l'intervalle d'intégration."
         correct: false
         feedback: >
           Non — relis la définition du chapitre 2 : elle suppose seulement que $f$
@@ -691,7 +691,7 @@ items:
           sous la courbe ») qui exige $f\geq0$, pas la définition
           elle-même.
       - id: B
-        text: "Non, mais il faut changer le signe de la primitive quand $f<0$ avant de l'évaluer."
+        text: "Non, mais il faut changer le signe de la primitive partout où $f<0$, avant de procéder à son évaluation."
         correct: false
         feedback: >
           On n'a jamais besoin de « changer le signe » de la primitive. La
@@ -699,10 +699,10 @@ items:
           soit la partie de l'intervalle où $x$ est négatif — le signe de
           $f$ n'intervient nulle part dans le calcul de $F(b)-F(a)$.
       - id: C
-        text: "Non : la définition $F(b)-F(a)$ s'applique à toute fonction continue sur $[a,b]$, que $f$ garde un signe constant ou non. Seule l'interprétation en aire exige $f\\geq0$."
+        text: "Non : la définition $F(b)-F(a)$ vaut pour toute fonction continue sur $[a,b]$, que $f$ garde un signe constant ou non."
         correct: true
       - id: D
-        text: "Non, car $f(x)=x$ n'a pas de primitive sur un intervalle contenant des valeurs négatives de $x$."
+        text: "Non, car la fonction $f(x)=x$ n'admet aucune primitive sur un intervalle contenant des valeurs négatives de $x$."
         correct: false
         feedback: >
           $f(x)=x$ est parfaitement continue sur $\mathbb{R}$, y compris
@@ -741,7 +741,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Oui, car la linéarité de l'intégrale permet de multiplier les deux intégrales entre elles."
+        text: "Oui, car la linéarité de l'intégrale permet précisément de multiplier les deux intégrales l'une par l'autre."
         correct: false
         feedback: >
           La linéarité (chapitre 3) ne porte que sur les SOMMES et les produits
@@ -751,7 +751,7 @@ items:
           \left(\int_a^b f(x)\,\mathrm{d}x\right)\times\left(\int_a^b
           g(x)\,\mathrm{d}x\right)$.
       - id: B
-        text: "Oui, mais seulement si $f$ et $g$ sont toutes les deux positives sur $[0,1]$."
+        text: "Oui, mais à la seule condition que $f$ et $g$ soient toutes les deux positives sur l'intervalle $[0,1]$."
         correct: false
         feedback: >
           Le signe de $f$ et $g$ ne change rien au problème : même pour
@@ -761,7 +761,7 @@ items:
           $\int_0^1 x^2\,\mathrm{d}x=\frac13 \neq \left(\frac12\right)^2=
           \frac14$.
       - id: C
-        text: "On ne peut rien dire sans connaître les expressions exactes de $f$ et $g$."
+        text: "On ne peut rien en dire sans connaître au préalable les expressions exactes des deux fonctions $f$ et $g$."
         correct: false
         feedback: >
           On peut au moins affirmer que ce raisonnement particulier —
@@ -1507,7 +1507,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Calculer $\\int_{-1}^2 \\big(g(x)-f(x)\\big)\\,\\mathrm{d}x = \\int_{-1}^2 \\big(x^2-x-2\\big)\\,\\mathrm{d}x$, car on prend toujours « la deuxième courbe moins la première »."
+        text: "Calculer $\\int_{-1}^2 \\big(g(x)-f(x)\\big)\\,\\mathrm{d}x = \\int_{-1}^2 \\big(x^2-x-2\\big)\\,\\mathrm{d}x$, car on prend toujours « la deuxième courbe moins la première » dans ce genre de calcul."
         correct: false
         feedback: >
           Il n'y a pas de convention « deuxième moins première » : il faut
@@ -1516,7 +1516,7 @@ items:
           de $g$, donc c'est $f-g$ qu'il faut intégrer, pas $g-f$ — sinon
           on obtient un résultat négatif, qui n'est pas une aire.
       - id: B
-        text: "Calculer $\\int_{-1}^2 f(x)\\,\\mathrm{d}x - \\int_{-1}^2 g(x)\\,\\mathrm{d}x$, ce qui revient à $\\int_{-1}^2 \\big(f(x)-g(x)\\big)\\,\\mathrm{d}x$ par linéarité — la fonction du dessus ($f$) moins celle du dessous ($g$)."
+        text: "Calculer $\\int_{-1}^2 f(x)\\,\\mathrm{d}x - \\int_{-1}^2 g(x)\\,\\mathrm{d}x$, ce qui revient par linéarité à $\\int_{-1}^2 \\big(f(x)-g(x)\\big)\\,\\mathrm{d}x$ — celle du dessus moins celle du dessous."
         correct: true
       - id: C
         text: "Calculer $\\int_{-1}^2 f(x)\\,\\mathrm{d}x + \\int_{-1}^2 g(x)\\,\\mathrm{d}x$, en additionnant les deux aires sous chaque courbe."
@@ -1627,10 +1627,10 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Découper en $[0,2]$ et $[2,3]$ (Chasles), calculer $-\\big(F(2)-F(0)\\big)$ pour l'aire sur $[0,2]$ et $F(3)-F(2)$ pour l'aire sur $[2,3]$, puis additionner les deux."
+        text: "Découper en $[0,2]$ et $[2,3]$ par Chasles, calculer $-\\big(F(2)-F(0)\\big)$ pour l'aire sur $[0,2]$ et $F(3)-F(2)$ pour celle sur $[2,3]$, puis additionner."
         correct: true
       - id: B
-        text: "Calculer directement $F(3)-F(0)$ et prendre ce nombre comme l'aire, puisque $F$ est une primitive de $f$ sur tout $[0,3]$."
+        text: "Calculer directement $F(3)-F(0)$ et prendre ce nombre comme l'aire cherchée, puisque $F$ est une primitive de $f$ sur tout l'intervalle $[0,3]$."
         correct: false
         feedback: >
           $F(3)-F(0) = \int_0^3 f(x)\,\mathrm{d}x$ est l'intégrale SIGNÉE
@@ -1648,7 +1648,7 @@ items:
           valeurs absolues, comme vu au chapitre 9, pas après avoir calculé
           l'intégrale globale.
       - id: D
-        text: "Calculer $F(2)-F(0)$ pour l'aire sur $[0,2]$ et $F(3)-F(2)$ pour l'aire sur $[2,3]$, sans changer aucun signe, puis additionner."
+        text: "Calculer $F(2)-F(0)$ pour l'aire sur $[0,2]$ et $F(3)-F(2)$ pour celle sur $[2,3]$, sans changer le moindre signe, puis additionner les deux résultats."
         correct: false
         feedback: >
           Sur $[0,2]$, $f\leq0$, donc $F(2)-F(0)=\int_0^2 f(x)\,
