@@ -1400,30 +1400,38 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.structures_algebriques.cloture-non-verifiee"
     ],
     "SA-11": [
+      "mc.math.structures_algebriques.assoc-commut-confusion",
       "mc.math.structures_algebriques.cloture-non-verifiee"
     ],
     "SA-12": [
-      "mc.math.structures_algebriques.cloture-non-verifiee"
+      "mc.math.structures_algebriques.cloture-non-verifiee",
+      "mc.math.structures_algebriques.neutre-vs-symetrique"
     ],
     "SA-13": [
       "mc.math.structures_algebriques.assoc-commut-confusion",
       "mc.math.structures_algebriques.generalisation-hative"
     ],
-    "SA-14": [],
+    "SA-14": [
+      "mc.math.structures_algebriques.generalisation-hative",
+      "mc.math.structures_algebriques.neutre-vs-symetrique"
+    ],
     "SA-15": [
       "mc.math.structures_algebriques.assoc-commut-confusion",
       "mc.math.structures_algebriques.generalisation-hative",
       "mc.math.structures_algebriques.groupe-implique-commutatif"
     ],
     "SA-16": [
+      "mc.math.structures_algebriques.assoc-commut-confusion",
       "mc.math.structures_algebriques.generalisation-hative"
     ],
     "SA-17": [
+      "mc.math.structures_algebriques.assoc-commut-confusion",
       "mc.math.structures_algebriques.generalisation-hative",
       "mc.math.structures_algebriques.groupe-implique-commutatif"
     ],
     "SA-18": [
       "mc.math.structures_algebriques.cloture-non-verifiee",
+      "mc.math.structures_algebriques.generalisation-hative",
       "mc.math.structures_algebriques.groupe-anneau"
     ],
     "SA-19": [
@@ -1433,7 +1441,9 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.structures_algebriques.neutre-vs-symetrique"
     ],
     "SA-20": [
-      "mc.math.structures_algebriques.generalisation-hative"
+      "mc.math.structures_algebriques.generalisation-hative",
+      "mc.math.structures_algebriques.groupe-anneau",
+      "mc.math.structures_algebriques.neutre-vs-symetrique"
     ],
     "SA-21": [
       "mc.math.structures_algebriques.groupe-anneau"
@@ -1442,12 +1452,15 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.structures_algebriques.axiome-oublie",
       "mc.math.structures_algebriques.groupe-implique-commutatif"
     ],
-    "SA-23": [],
+    "SA-23": [
+      "mc.math.structures_algebriques.neutre-vs-symetrique"
+    ],
     "SA-24": [
       "mc.math.structures_algebriques.neutre-vs-symetrique"
     ],
     "SA-3": [
-      "mc.math.structures_algebriques.axiome-oublie"
+      "mc.math.structures_algebriques.axiome-oublie",
+      "mc.math.structures_algebriques.cloture-non-verifiee"
     ],
     "SA-4": [
       "mc.math.structures_algebriques.axiome-oublie"
@@ -1456,10 +1469,12 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.structures_algebriques.groupe-anneau"
     ],
     "SA-6": [
+      "mc.math.structures_algebriques.cloture-non-verifiee",
       "mc.math.structures_algebriques.groupe-anneau"
     ],
     "SA-7": [
-      "mc.math.structures_algebriques.cloture-non-verifiee"
+      "mc.math.structures_algebriques.cloture-non-verifiee",
+      "mc.math.structures_algebriques.loi-modulaire-mal-calculee"
     ],
     "SA-8": [
       "mc.math.structures_algebriques.cloture-non-verifiee",
@@ -1626,18 +1641,51 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ]
   },
   "pc/aspects-energetiques": {
-    "AE-1": [],
-    "AE-10": [],
-    "AE-11": [],
-    "AE-12": [],
-    "AE-13": [],
-    "AE-14": [],
-    "AE-15": [],
-    "AE-16": [],
-    "AE-19": [],
-    "AE-2": [],
-    "AE-20": [],
-    "AE-21": [],
+    "AE-1": [
+      "mc.physics.pc_energie.energie-oublie-masse",
+      "mc.physics.pc_energie.travail-poids-depend-du-chemin"
+    ],
+    "AE-10": [
+      "mc.physics.pc_energie.ec-mauvaise-dependance-en-v",
+      "mc.physics.pc_energie.energie-oublie-facteur-demi",
+      "mc.physics.pc_energie.energie-oublie-masse"
+    ],
+    "AE-11": [
+      "mc.physics.pc_energie.ec-mauvaise-dependance-en-v"
+    ],
+    "AE-12": [
+      "mc.physics.pc_energie.ec-grandeur-vectorielle"
+    ],
+    "AE-13": [
+      "mc.physics.pc_energie.travail-oublie-cos"
+    ],
+    "AE-14": [
+      "mc.physics.pc_energie.force-perpendiculaire-travaille"
+    ],
+    "AE-15": [
+      "mc.physics.pc_energie.confusion-v-et-v-carre",
+      "mc.physics.pc_energie.energie-oublie-facteur-demi",
+      "mc.physics.pc_energie.energie-oublie-masse"
+    ],
+    "AE-16": [
+      "mc.physics.pc_energie.energie-oublie-g",
+      "mc.physics.pc_energie.signe-travail-poids"
+    ],
+    "AE-19": [
+      "mc.physics.pc_energie.confusion-v-et-v-carre",
+      "mc.physics.pc_energie.em-conservee-malgre-frottement"
+    ],
+    "AE-2": [
+      "mc.physics.pc_energie.travail-poids-depend-du-chemin"
+    ],
+    "AE-20": [
+      "mc.physics.pc_energie.em-conservee-malgre-frottement",
+      "mc.physics.pc_energie.frottement-restitue-energie"
+    ],
+    "AE-21": [
+      "mc.physics.pc_energie.energie-oublie-facteur-demi",
+      "mc.physics.pc_energie.signe-travail-poids"
+    ],
     "AE-22": [
       "mc.physics.pc_energie.epe-confondue-avec-epp",
       "mc.physics.pc_energie.epe-depend-masse-ou-vitesse",
@@ -1678,17 +1726,36 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.pc_energie.pendule-hauteur-egale-longueur-fil",
       "mc.physics.pc_energie.pendule-ralentir-egale-perdre-energie"
     ],
-    "AE-3": [],
+    "AE-3": [
+      "mc.physics.pc_energie.confond-ec-et-em",
+      "mc.physics.pc_energie.energie-oublie-masse",
+      "mc.physics.pc_energie.pendule-em-maximale-en-bas"
+    ],
     "AE-30": [
       "mc.physics.pc_energie.pendule-em-maximale-en-bas",
       "mc.physics.pc_energie.pendule-hauteur-egale-longueur-fil",
       "mc.physics.pc_energie.pendule-ralentir-egale-perdre-energie"
     ],
-    "AE-4": [],
-    "AE-6": [],
-    "AE-7": [],
-    "AE-8": [],
-    "AE-9": [],
+    "AE-4": [
+      "mc.physics.pc_energie.confusion-v-et-v-carre",
+      "mc.physics.pc_energie.energie-oublie-facteur-demi",
+      "mc.physics.pc_energie.energie-oublie-masse"
+    ],
+    "AE-6": [
+      "mc.physics.pc_energie.confond-ec-et-em",
+      "mc.physics.pc_energie.em-conservee-malgre-frottement",
+      "mc.physics.pc_energie.signe-travail-poids"
+    ],
+    "AE-7": [
+      "mc.physics.pc_energie.travail-poids-depend-du-chemin"
+    ],
+    "AE-8": [
+      "mc.physics.pc_energie.travail-poids-depend-du-chemin"
+    ],
+    "AE-9": [
+      "mc.physics.pc_energie.em-conservee-malgre-frottement",
+      "mc.physics.pc_energie.frottement-restitue-energie"
+    ],
     "cp-r0-predict": [
       "mc.physics.pc_energie.travail-poids-depend-du-chemin"
     ],
@@ -1798,23 +1865,61 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ]
   },
   "pc/chute-mouvements-plans": {
-    "CMP-1": [],
-    "CMP-10": [],
-    "CMP-11": [],
-    "CMP-12": [],
-    "CMP-13": [],
-    "CMP-14": [],
-    "CMP-15": [],
-    "CMP-16": [],
-    "CMP-17": [],
-    "CMP-18": [],
-    "CMP-19": [],
-    "CMP-2": [],
-    "CMP-20": [],
-    "CMP-21": [],
-    "CMP-22": [],
-    "CMP-23": [],
-    "CMP-24": [],
+    "CMP-1": [
+      "mc.physics.pc_chute_plans.poids-agit-sur-lhorizontale",
+      "mc.physics.pc_chute_plans.vitesse-nulle-au-sommet",
+      "mc.physics.pc_chute_plans.vx-varie-pendant-le-vol"
+    ],
+    "CMP-10": [
+      "mc.physics.pc_chute_plans.signe-et-projection-mal-poses"
+    ],
+    "CMP-11": [
+      "mc.physics.pc_chute_plans.descente-plus-courte-que-montee"
+    ],
+    "CMP-12": [
+      "mc.physics.pc_chute_plans.signe-et-projection-mal-poses"
+    ],
+    "CMP-13": [
+      "mc.physics.pc_chute_plans.masse-influe-en-chute-libre",
+      "mc.physics.pc_chute_plans.signe-et-projection-mal-poses",
+      "mc.physics.pc_chute_plans.vitesse-nulle-au-sommet"
+    ],
+    "CMP-14": [
+      "mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie"
+    ],
+    "CMP-15": [
+      "mc.physics.pc_chute_plans.masse-influe-en-chute-libre"
+    ],
+    "CMP-16": [
+      "mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie"
+    ],
+    "CMP-17": [
+      "mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie"
+    ],
+    "CMP-18": [
+      "mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises"
+    ],
+    "CMP-19": [
+      "mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises"
+    ],
+    "CMP-2": [
+      "mc.physics.pc_chute_plans.vitesse-nulle-au-sommet"
+    ],
+    "CMP-20": [
+      "mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise"
+    ],
+    "CMP-21": [
+      "mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise"
+    ],
+    "CMP-22": [
+      "mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie"
+    ],
+    "CMP-23": [
+      "mc.physics.pc_chute_plans.vx-varie-pendant-le-vol"
+    ],
+    "CMP-24": [
+      "mc.physics.pc_chute_plans.vx-varie-pendant-le-vol"
+    ],
     "CMP-25": [
       "mc.physics.pc_chute_plans.acceleration-indefinie-avec-frottement",
       "mc.physics.pc_chute_plans.frottement-disparait-a-vlim",
@@ -1840,7 +1945,9 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.pc_chute_plans.euler-oubli-dt",
       "mc.physics.pc_chute_plans.euler-pente-non-recalculee"
     ],
-    "CMP-3": [],
+    "CMP-3": [
+      "mc.physics.pc_chute_plans.masse-influe-en-chute-libre"
+    ],
     "CMP-30": [
       "mc.physics.pc_chute_plans.euler-donne-valeur-exacte",
       "mc.physics.pc_chute_plans.euler-oubli-dt",
@@ -1876,12 +1983,26 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.pc_chute_plans.geostationnaire-toute-altitude",
       "mc.physics.pc_chute_plans.kepler3-exposants-inverses"
     ],
-    "CMP-4": [],
-    "CMP-5": [],
-    "CMP-6": [],
-    "CMP-7": [],
-    "CMP-8": [],
-    "CMP-9": [],
+    "CMP-4": [
+      "mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises"
+    ],
+    "CMP-5": [
+      "mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises"
+    ],
+    "CMP-6": [
+      "mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise"
+    ],
+    "CMP-7": [
+      "mc.physics.pc_chute_plans.poids-agit-sur-lhorizontale",
+      "mc.physics.pc_chute_plans.vitesse-nulle-au-sommet",
+      "mc.physics.pc_chute_plans.vx-varie-pendant-le-vol"
+    ],
+    "CMP-8": [
+      "mc.physics.pc_chute_plans.masse-influe-en-chute-libre"
+    ],
+    "CMP-9": [
+      "mc.physics.pc_chute_plans.poids-agit-sur-lhorizontale"
+    ],
     "cp-euler": [
       "mc.physics.pc_chute_plans.euler-donne-valeur-exacte",
       "mc.physics.pc_chute_plans.euler-oubli-dt",
@@ -3509,26 +3630,73 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ]
   },
   "pc/reactions-acido-basiques": {
-    "RAB-1": [],
-    "RAB-10": [],
-    "RAB-11": [],
-    "RAB-12": [],
-    "RAB-13": [],
-    "RAB-14": [],
-    "RAB-15": [],
-    "RAB-16": [],
-    "RAB-17": [],
-    "RAB-18": [],
-    "RAB-19": [],
-    "RAB-2": [],
-    "RAB-20": [],
-    "RAB-21": [],
-    "RAB-22": [],
-    "RAB-23": [],
-    "RAB-24": [],
-    "RAB-25": [],
-    "RAB-26": [],
-    "RAB-27": [],
+    "RAB-1": [
+      "AB-BASE-1",
+      "AB-BASE-3"
+    ],
+    "RAB-10": [
+      "AB-BASE-5"
+    ],
+    "RAB-11": [
+      "AB-BASE-5"
+    ],
+    "RAB-12": [
+      "AB-BASE-5"
+    ],
+    "RAB-13": [
+      "AB-BASE-2"
+    ],
+    "RAB-14": [
+      "AB-BASE-2"
+    ],
+    "RAB-15": [
+      "AB-BASE-1"
+    ],
+    "RAB-16": [
+      "AB-BASE-6"
+    ],
+    "RAB-17": [
+      "AB-BASE-4"
+    ],
+    "RAB-18": [
+      "AB-BASE-1",
+      "AB-BASE-3",
+      "AB-DIST-2"
+    ],
+    "RAB-19": [
+      "AB-DIST-1",
+      "AB-DIST-2"
+    ],
+    "RAB-2": [
+      "AB-BASE-1",
+      "AB-BASE-3"
+    ],
+    "RAB-20": [
+      "AB-BASE-1",
+      "AB-BASE-3",
+      "AB-DIST-2"
+    ],
+    "RAB-21": [
+      "AB-BASE-8"
+    ],
+    "RAB-22": [
+      "AB-BASE-7"
+    ],
+    "RAB-23": [
+      "AB-BASE-5"
+    ],
+    "RAB-24": [
+      "AB-BASE-8"
+    ],
+    "RAB-25": [
+      "AB-BASE-6"
+    ],
+    "RAB-26": [
+      "AB-BASE-6"
+    ],
+    "RAB-27": [
+      "AB-BASE-6"
+    ],
     "RAB-28": [
       "AB-DIST-1",
       "AB-DIST-2",
@@ -3539,7 +3707,9 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "AB-DIST-2",
       "AB-DIST-3"
     ],
-    "RAB-3": [],
+    "RAB-3": [
+      "AB-BASE-4"
+    ],
     "RAB-30": [
       "AB-DIST-1",
       "AB-DIST-2",
@@ -3590,12 +3760,24 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "AB-IND-2",
       "AB-IND-3"
     ],
-    "RAB-4": [],
-    "RAB-5": [],
-    "RAB-6": [],
-    "RAB-7": [],
-    "RAB-8": [],
-    "RAB-9": [],
+    "RAB-4": [
+      "AB-BASE-4"
+    ],
+    "RAB-5": [
+      "AB-BASE-3"
+    ],
+    "RAB-6": [
+      "AB-BASE-3"
+    ],
+    "RAB-7": [
+      "AB-BASE-3"
+    ],
+    "RAB-8": [
+      "AB-BASE-3"
+    ],
+    "RAB-9": [
+      "AB-BASE-3"
+    ],
     "cp-r0-predict": [
       "AB-EQU-1",
       "AB-TIT-1",

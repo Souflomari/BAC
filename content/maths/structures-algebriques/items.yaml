@@ -2,6 +2,20 @@ notion: structures-algebriques
 skill_code: maths_structures_alg
 
 misconceptions:
+  # Ajoutée le 2026-09-05 en taguant les items R1-R6, jusque-là muets.
+  - id: mc.math.structures_algebriques.loi-modulaire-mal-calculee
+    label: "« Le calcul modulo n donne un résultat hors de l'ensemble, ou le mauvais reste »"
+    description: >
+      Sur une loi définie par un reste (l'horloge modulo 12, $\\mathbb{Z}/n\\mathbb{Z}$),
+      l'élève garde le résultat de l'addition usuelle, en donne l'opposé négatif,
+      ou se trompe de reste — perdant de vue que la loi n'a de sens que ramenée
+      dans l'ensemble.
+    contradicts_principle: >
+      Une loi modulaire compose puis RAMÈNE dans l'ensemble : $x \\oplus y$ est le
+      reste de $x+y$ dans la division par $n$, toujours compris entre $0$ et
+      $n-1$. Un résultat négatif, ou supérieur à $n-1$, signale que la deuxième
+      étape a été oubliée.
+
   - id: mc.math.structures_algebriques.neutre-vs-symetrique
     label: "« Le symétrique d'un élément, c'est l'élément neutre »"
     description: "L'élève confond deux rôles distincts : le neutre $e$ (un seul élément, fixé pour tout $E$, qui ne change rien à personne) et le symétrique $x'$ d'un élément $x$ (un élément qui dépend de $x$, et qui, combiné à $x$, ramène au neutre). Face à la question « quel est le symétrique de $x$ ? », l'élève répond « $e$ » au lieu de chercher l'élément qui, combiné à $x$, donne $e$."
@@ -64,6 +78,7 @@ items:
       - id: C
         text: "$2$"
         correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
         feedback: >
           $2+2=4 \not\equiv 0 \pmod 5$ : $2$ n'est pas son propre symétrique
           ici (ce n'est vrai que pour certains éléments, pas pour tous — il
@@ -71,6 +86,7 @@ items:
       - id: D
         text: "$5$"
         correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
         feedback: >
           $5$ n'est même pas un élément de $\mathbb{Z}/5\mathbb{Z} = \{0,1,2,3,4\}$ :
           un symétrique doit appartenir à l'ensemble $E$ lui-même.
@@ -115,6 +131,7 @@ items:
       - id: C
         text: "$a$"
         correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
         feedback: >
           Sur la table, $a \star a = b \neq e$ : $a$ n'est pas son propre
           symétrique ici. Il faut lire la ligne de $a$ jusqu'à trouver la
@@ -122,6 +139,7 @@ items:
       - id: D
         text: "Il n'existe pas de symétrique pour $a$"
         correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
         feedback: >
           Regarde bien la ligne de $a$ dans la table : $a \star b = e$. Le
           symétrique existe bel et bien, c'est $b$.
@@ -174,6 +192,7 @@ items:
       - id: D
         text: "Non : la loi n'est pas interne sur $E$."
         correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
         feedback: >
           La loi EST bien interne : toutes les cases de la table de $\times$
           modulo $4$ restent dans $\{0,1,2,3\}$. Le problème n'est pas là —
@@ -229,6 +248,7 @@ items:
       - id: D
         text: "Vérifier que $E$ est bien un ensemble fini, condition sans laquelle la structure de groupe ne peut pas être établie."
         correct: false
+        misconception: mc.math.structures_algebriques.axiome-oublie
         feedback: >
           La finitude de $E$ n'est pas une condition du groupe : des
           groupes infinis existent (par exemple $(\mathbb{Z}, +)$). Ce
@@ -276,6 +296,7 @@ items:
       - id: C
         text: "$(E,+,\\times)$ est un groupe pour une loi combinée $+$ et $\\times$ appliquées ensemble."
         correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
         feedback: >
           Il n'existe pas de « loi combinée » de ce genre dans la
           définition de l'anneau : $+$ et $\times$ restent deux lois
@@ -331,6 +352,7 @@ items:
       - id: C
         text: "Non, car $(\\mathbb{Z},+)$ n'est pas un groupe commutatif, l'addition n'y étant pas partout définie."
         correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
         feedback: >
           $(\mathbb{Z},+)$ EST un groupe commutatif (neutre $0$, symétrique
           de $x$ égal à $-x$, commutatif) — ce n'est pas là que ça bloque.
@@ -338,6 +360,7 @@ items:
       - id: D
         text: "Oui, car $2$ possède bien un symétrique pour la multiplication, à savoir le nombre $\\frac{1}{2}$."
         correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
         feedback: >
           $\frac{1}{2}$ n'appartient pas à $\mathbb{Z}$ : le symétrique
           doit se trouver DANS l'ensemble $E$ étudié, pas dans un ensemble
@@ -384,12 +407,14 @@ items:
       - id: C
         text: "$-4$"
         correct: false
+        misconception: mc.math.structures_algebriques.loi-modulaire-mal-calculee
         feedback: >
           Le reste d'une division euclidienne est toujours positif ou nul :
           $16 = 1\times12+4$, le reste est $4$, pas $-4$.
       - id: D
         text: "$6$"
         correct: false
+        misconception: mc.math.structures_algebriques.loi-modulaire-mal-calculee
         feedback: >
           $6$ est l'un des deux termes de départ, pas le résultat de
           $10\oplus6$ : il faut bien additionner les deux heures, puis
@@ -437,6 +462,7 @@ items:
       - id: D
         text: "$8$h"
         correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
         feedback: >
           $8\oplus8=16$, qui laisse un reste de $4$ modulo $12$, pas $0$ :
           $8$h n'est pas sa propre heure opposée ici.
@@ -473,6 +499,7 @@ items:
       - id: B
         text: "L'existence d'un élément neutre."
         correct: false
+        misconception: mc.math.structures_algebriques.assoc-commut-confusion
         feedback: >
           Aucun des deux membres n'est $0$h, l'heure neutre : ce calcul ne
           parle pas du neutre, mais de l'ordre dans lequel on combine les
@@ -480,6 +507,7 @@ items:
       - id: C
         text: "L'existence d'un symétrique pour $3$."
         correct: false
+        misconception: mc.math.structures_algebriques.assoc-commut-confusion
         feedback: >
           Le symétrique de $3$h serait l'heure qui, ajoutée à $3$h, redonne
           $0$h — ici le résultat est $10$h, pas $0$h : ce calcul ne teste
@@ -522,6 +550,7 @@ items:
       - id: C
         text: "Non, car $\\mathbb{Z}$ ne contient pas de nombres décimaux, donc aucune division n'est jamais possible."
         correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
         feedback: >
           Certaines divisions restent bien dans $\mathbb{Z}$ (par exemple
           $6\div2=3$) : ce n'est pas qu'AUCUNE division ne fonctionne — il
@@ -530,6 +559,7 @@ items:
       - id: D
         text: "Oui, sauf pour la division par $0$."
         correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
         feedback: >
           Même en écartant la division par $0$, $3\div2=1{,}5\notin\mathbb{Z}$
           montre que le problème ne vient pas seulement de la division par
@@ -575,6 +605,7 @@ items:
       - id: C
         text: "Oui, car la table est bien remplie sur toutes ses cases, sans case vide."
         correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
         feedback: >
           Une table sans case vide n'est pas la même chose qu'une table dont
           toutes les cases appartiennent à $E$ : ici, les cases ne sont pas
@@ -582,6 +613,7 @@ items:
       - id: D
         text: "Non, car la table n'est pas symétrique par rapport à la diagonale."
         correct: false
+        misconception: mc.math.structures_algebriques.assoc-commut-confusion
         feedback: >
           Cette table EST en réalité symétrique (compare par exemple la
           case $(1,2)$ et sa réflexion $(2,1)$ : toutes deux valent $3$) —
@@ -621,6 +653,7 @@ items:
       - id: B
         text: "Oui, car $E$ est infini, et une loi sur un ensemble infini est toujours interne."
         correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
         feedback: >
           La taille (finie ou infinie) de $E$ n'a aucun rapport avec le
           caractère interne d'une loi : ce qui compte est uniquement que
@@ -632,6 +665,7 @@ items:
       - id: D
         text: "Non, car $E$ ne contient pas $0$, qui devrait être l'élément neutre."
         correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
         feedback: >
           Le caractère interne d'une loi ne dépend pas de l'existence d'un
           neutre — ce sont deux questions séparées (loi interne = premier
@@ -681,6 +715,7 @@ items:
       - id: C
         text: "$(2\\star3)\\star4 = 10$ et $2\\star(3\\star4) = 11$ : les deux résultats diffèrent, donc $\\star$ n'est pas associative."
         correct: false
+        misconception: mc.math.structures_algebriques.assoc-commut-confusion
         feedback: >
           Recalcule : $2\star3=2+3+1=6$, puis $6\star4=6+4+1=11$ (pas
           $10$ — le « $+1$ » de la définition de $\star$ doit être ajouté
@@ -716,6 +751,7 @@ items:
       - id: A
         text: "On ne peut pas savoir : il faudrait vérifier un par un chacun des symétriques, ce qui est matériellement impossible puisque l'ensemble $E$ des entiers pairs est infini."
         correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
         feedback: >
           Comme pour l'associativité (héritée de $\mathbb{Z}$), on peut
           donner un argument GÉNÉRAL, valable pour tout $x$ pair, sans
@@ -728,6 +764,7 @@ items:
       - id: C
         text: "Non : il manque de vérifier que $0$ est bien un entier pair, faute de quoi l'élément neutre n'appartiendrait pas à l'ensemble $E$ considéré."
         correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
         feedback: >
           $0$ est bien un entier pair ($0=2\times0$), donc $0\in E$ : le
           neutre appartient bien à l'ensemble. Ce n'est pas ce qui bloque
@@ -736,6 +773,7 @@ items:
       - id: D
         text: "Non : les trois propriétés déjà vérifiées ne suffisent pas, et ici l'entier $2$ ne possède aucun symétrique qui soit lui-même pair."
         correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
         feedback: >
           Faux : le symétrique de $2$ pour $+$ est $-2$, qui EST pair, donc
           appartient bien à $E$ — contrairement à l'exemple différent de
@@ -827,6 +865,7 @@ items:
       - id: B
         text: "$(f\\circ g)(3) = g(f(3)) = 8$ et $(g\\circ f)(3)=f(g(3))=7$ : on retrouve les deux mêmes valeurs, simplement échangées d'un calcul à l'autre."
         correct: false
+        misconception: mc.math.structures_algebriques.assoc-commut-confusion
         feedback: >
           $(f\circ g)(x)$ signifie « appliquer $g$ d'abord, puis $f$ »,
           c'est-à-dire $f(g(x))$ — pas $g(f(x))$. Ici
@@ -844,6 +883,7 @@ items:
       - id: D
         text: "$(f\\circ g)(3)=7$ et $(g\\circ f)(3)=7$ : les deux résultats coïncident, donc la composition est bien commutative pour ce couple de fonctions."
         correct: false
+        misconception: mc.math.structures_algebriques.assoc-commut-confusion
         feedback: >
           Recalcule $(g\circ f)(3)$ : $f(3)=4$, puis $g(4)=8$ — pas $7$.
           Les deux résultats sont bien différents ($7$ et $8$), pas égaux.
@@ -883,6 +923,7 @@ items:
       - id: B
         text: "$s_v\\circ r = s_h$ mais $r\\circ s_v = r$, donc ce couple ne commute pas."
         correct: false
+        misconception: mc.math.structures_algebriques.assoc-commut-confusion
         feedback: >
           Relis la table : ligne $r$, colonne $s_v$ donne $s_h$, pas $r$.
           Les deux résultats sont en réalité égaux ($s_h$ dans les deux
@@ -928,6 +969,7 @@ items:
       - id: A
         text: "Rien du tout : un seul triplet ne prouve jamais une propriété valable pour tous les triplets, donc ce calcul ne dit pas si $\\times$ est distributive sur tout $\\mathbb{Z}/4\\mathbb{Z}$."
         correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
         feedback: >
           Comme pour l'associativité (chapitres 3 et 4), on peut invoquer un argument
           d'HÉRITAGE : la distributivité de $\times$ sur $+$ est déjà vraie
@@ -995,6 +1037,7 @@ items:
       - id: B
         text: "Non : $(E,+)$ n'est pas un groupe commutatif, car l'ensemble $E=2\\mathbb{Z}$ des entiers pairs ne contient pas l'élément neutre $0$ de l'addition."
         correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
         feedback: >
           $0$ est bien un entier pair ($0=2\times0$), donc $0\in E$ :
           $(E,+)$ est bien un groupe commutatif (neutre $0$, symétrique de
@@ -1056,6 +1099,7 @@ items:
       - id: C
         text: "Non : $(\\mathbb{Z}/5\\mathbb{Z},+,\\times)$ n'est même pas un anneau, car le nombre $5$ n'est pas premier et la structure s'effondre."
         correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
         feedback: >
           $5$ est bien un nombre premier, et de toute façon la primalité
           de $n$ ne détermine pas si $(\mathbb{Z}/n\mathbb{Z},+,\times)$
@@ -1066,6 +1110,7 @@ items:
       - id: D
         text: "Oui, mais seulement pour les éléments $1$ et $4$, qui sont chacun leur propre symétrique — les éléments $2$ et $3$, eux, n'ont besoin d'aucun symétrique pour cela."
         correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
         feedback: >
           La définition du corps exige un symétrique pour TOUS les
           éléments non nuls, pas seulement ceux qui sont leur propre
@@ -1121,6 +1166,7 @@ items:
       - id: C
         text: "Un corps est un anneau dans lequel les deux lois $+$ et $\\times$ jouent exactement le même rôle, de façon parfaitement symétrique."
         correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
         feedback: >
           Non : même dans un corps, $+$ et $\times$ restent dissymétriques
           — c'est $0$ (neutre de $+$) qui est justement exclu de l'exigence
@@ -1219,6 +1265,7 @@ items:
       - id: A
         text: "$1$"
         correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
         feedback: >
           $1$ est justement l'élément EXCLU de $E$ (c'est le seul réel sans
           symétrique pour cette loi) — ce n'est pas le neutre. Teste :
@@ -1227,6 +1274,7 @@ items:
       - id: B
         text: "Il n'existe pas d'élément neutre pour cette loi."
         correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
         feedback: >
           Il existe bien un neutre : en résolvant $x+e-xe=x$ pour tout $x$,
           on trouve $e(1-x)=0$ pour tout $x$, ce qui impose $e=0$ — et on
@@ -1237,6 +1285,7 @@ items:
       - id: D
         text: "$-1$"
         correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
         feedback: >
           Teste $x\star(-1) = x+(-1)-x\times(-1) = x-1+x=2x-1$, qui n'est
           égal à $x$ que si $x=-1$ : ce n'est pas vrai pour tout $x$, donc
@@ -1277,12 +1326,14 @@ items:
       - id: C
         text: "$-3$"
         correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
         feedback: >
           Teste : $3\star(-3) = 3+(-3)-3\times(-3) = 0+9=9\neq0$ : $-3$ ne
           convient pas.
       - id: D
         text: "$3$"
         correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
         feedback: >
           Teste : $3\star3 = 3+3-9=-3\neq0$ : $3$ n'est pas son propre
           symétrique ici (ce n'était vrai que pour un autre élément dans un

@@ -128,6 +128,7 @@ items:
       - id: B
         text: "$\\approx 11{,}8\\ \\text{J}$"
         correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
         feedback: >
           Ce résultat vient du calcul $mgs$, en utilisant la longueur du
           chemin ($s = 6{,}0\ \text{m}$) au lieu de la dénivelée. Le travail
@@ -137,6 +138,7 @@ items:
       - id: C
         text: "$\\approx 3{,}9\\ \\text{J}$ (deux fois moins qu'en chute libre directe, car le chemin est deux fois plus long)"
         correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
         feedback: >
           Ce choix suppose qu'un chemin plus long "dilue" le travail du
           poids sur une plus grande distance. C'est l'inverse d'une erreur
@@ -146,6 +148,7 @@ items:
       - id: D
         text: "$\\approx 39\\ \\text{J}$"
         correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-masse
         feedback: >
           Ce nombre correspond à $gh$ seul, sans multiplier par la masse
           $m = 0{,}20\ \text{kg}$. Le travail du poids est $W(\vec F) = mgh$ :
@@ -192,6 +195,7 @@ items:
           Il est plus grand sur la rampe en S, car le poids a plus de temps
           et plus de distance pour agir sur un chemin plus long.
         correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
         feedback: >
           Le travail du poids ne dépend ni du temps mis à parcourir le
           chemin, ni de la longueur de ce chemin — seulement de la
@@ -203,6 +207,7 @@ items:
           Il est plus petit sur la rampe en S, car les virages successifs
           annulent une partie du travail du poids.
         correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
         feedback: >
           Les détours horizontaux de la rampe en S ne retranchent rien : à
           chaque instant, seule la composante verticale du déplacement
@@ -215,6 +220,7 @@ items:
           Impossible à comparer sans connaître la forme exacte de chaque
           rampe.
         correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
         feedback: >
           La formule $W(\vec F) = mg(z_A - z_B)$ ne demande de connaître que
           les altitudes de départ et d'arrivée, jamais la forme du chemin.
@@ -255,6 +261,7 @@ items:
       - id: B
         text: "$E_c = 6{,}0\\ \\text{J}$"
         correct: false
+        misconception: mc.physics.pc_energie.confond-ec-et-em
         feedback: >
           Ce choix confond $E_c$ avec $E_m$. C'est la SOMME
           $E_c + E_{pp}$ qui vaut $6{,}0\ \text{J}$ partout, pas $E_c$
@@ -265,6 +272,7 @@ items:
         text: >-
           On ne peut pas savoir sans connaître la masse de la bille.
         correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-masse
         feedback: >
           $E_c = \frac12 m v^2$ : avec $v = 0$, ce produit est nul quelle
           que soit la valeur de $m$. La masse n'est donc pas nécessaire
@@ -274,6 +282,7 @@ items:
           $E_c = 3{,}0\ \text{J}$, la moitié de l'énergie mécanique, répartie
           également entre $E_c$ et $E_{pp}$.
         correct: false
+        misconception: mc.physics.pc_energie.pendule-em-maximale-en-bas
         feedback: >
           Il n'existe aucune règle de partage à 50/50 entre $E_c$ et
           $E_{pp}$ : leur répartition dépend de la vitesse et de l'altitude
@@ -316,6 +325,7 @@ items:
       - id: B
         text: "$7{,}0\\ \\text{m/s}$"
         correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-facteur-demi
         feedback: >
           Ce résultat vient de $v = \sqrt{2 E_m / m}$, en confondant
           $E_c$ avec $E_m$ tout entière. Il faut d'abord soustraire
@@ -324,6 +334,7 @@ items:
       - id: C
         text: "$\\approx 2{,}4\\ \\text{m/s}$"
         correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-masse
         feedback: >
           Ce résultat oublie de diviser par la masse dans
           $E_c = \frac12 m v^2$ : il correspond à $v = \sqrt{2 E_c}$ au
@@ -332,6 +343,7 @@ items:
       - id: D
         text: "$\\approx 6{,}9\\ \\text{m/s}$"
         correct: false
+        misconception: mc.physics.pc_energie.confusion-v-et-v-carre
         feedback: >
           Ce résultat vient d'un calcul de $E_{pp}$ sans le facteur $g$
           (soit $E_{pp} = mz$ au lieu de $E_{pp} = mgz$). L'énergie
@@ -376,6 +388,7 @@ items:
       - id: B
         text: "$\\Delta E_m = 0\\ \\text{J}$, car l'énergie mécanique se conserve toujours"
         correct: false
+        misconception: mc.physics.pc_energie.em-conservee-malgre-frottement
         feedback: >
           L'énergie mécanique ne se conserve QUE en l'absence de
           frottement. Ici, un frottement agit et dissipe de l'énergie : sa
@@ -385,6 +398,7 @@ items:
       - id: C
         text: "$\\Delta E_m \\approx 4{,}9\\ \\text{J}$"
         correct: false
+        misconception: mc.physics.pc_energie.confond-ec-et-em
         feedback: >
           Ce résultat correspond en réalité à $\Delta E_c$ (la variation
           d'énergie cinétique, obtenue en ajoutant le travail du poids et
@@ -395,6 +409,7 @@ items:
       - id: D
         text: "$\\Delta E_m = +1{,}0\\ \\text{J}$"
         correct: false
+        misconception: mc.physics.pc_energie.signe-travail-poids
         feedback: >
           Le travail du frottement est toujours résistant (négatif) : il
           ne peut jamais AUGMENTER l'énergie mécanique. Le signe correct
@@ -445,6 +460,7 @@ items:
           La bille en chute libre arrive plus vite, car son trajet est plus
           direct.
         correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
         feedback: >
           Un chemin plus court ne donne pas une vitesse d'arrivée plus
           grande : le travail du poids, donc la vitesse finale, ne dépend
@@ -454,6 +470,7 @@ items:
           La bille sur le toboggan arrive plus vite, car son trajet plus
           long lui donne plus de temps pour prendre de la vitesse.
         correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
         feedback: >
           Un chemin plus long ne donne pas non plus plus de vitesse : seule
           la dénivelée $h$ compte pour le travail du poids, jamais la
@@ -461,6 +478,7 @@ items:
       - id: D
         text: "Impossible de savoir sans connaître la forme exacte du toboggan."
         correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
         feedback: >
           La forme du chemin n'intervient pas dans le résultat : la
           dénivelée commune et l'absence de frottement suffisent à conclure,
@@ -490,6 +508,7 @@ items:
       - id: A
         text: "Les deux billes arrivent en même temps et à la même vitesse."
         correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
         feedback: >
           Le toboggan impose un chemin plus long à parcourir : sa durée de
           trajet est donc plus longue, même si la vitesse finale, elle, est
@@ -504,6 +523,7 @@ items:
           La bille sur le toboggan met plus de temps ET arrive avec une
           vitesse plus faible, car son trajet est plus long.
         correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
         feedback: >
           La longueur du chemin allonge la durée du trajet, mais elle ne
           change rien à la vitesse finale, qui ne dépend que de la
@@ -513,6 +533,7 @@ items:
           La bille en chute libre met plus de temps à arriver, car elle a
           moins de distance pour accélérer.
         correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
         feedback: >
           C'est l'inverse : un trajet plus court se parcourt en moins de
           temps, à dénivelée égale — c'est la bille sur le toboggan qui met
@@ -545,6 +566,7 @@ items:
           Les deux billes arrivent malgré tout à la même vitesse, car seule la dénivelée
           compte, quel que soit le trajet suivi.
         correct: false
+        misconception: mc.physics.pc_energie.em-conservee-malgre-frottement
         feedback: >
           Ce résultat ("seule la dénivelée compte") n'est vrai que pour le
           travail du poids ; dès qu'un frottement s'exerce, il apporte sa
@@ -554,6 +576,7 @@ items:
           La bille sur le toboggan arrive plus vite, car le frottement
           échauffe la piste et lui restitue de l'énergie.
         correct: false
+        misconception: mc.physics.pc_energie.frottement-restitue-energie
         feedback: >
           Le frottement dissipe de l'énergie, il n'en restitue jamais au
           solide : son travail est toujours résistant (négatif), donc il ne
@@ -566,6 +589,7 @@ items:
       - id: D
         text: "Impossible de savoir sans connaître la valeur exacte du frottement."
         correct: false
+        misconception: mc.physics.pc_energie.em-conservee-malgre-frottement
         feedback: >
           La valeur exacte n'est pas nécessaire pour connaître le sens de
           l'effet : tout frottement non nul retranche de l'énergie
@@ -596,12 +620,14 @@ items:
       - id: A
         text: "$10{,}0\\ \\text{J}$"
         correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-facteur-demi
         feedback: >
           Ce résultat oublie le facteur $\frac12$ dans $E_c = \frac12 m v^2$
           : il correspond à $m v^2$ sans le diviser par deux.
       - id: B
         text: "$1{,}0\\ \\text{J}$"
         correct: false
+        misconception: mc.physics.pc_energie.ec-mauvaise-dependance-en-v
         feedback: >
           Ce résultat utilise $v$ au lieu de $v^2$ (soit $\frac12 m v$) :
           l'énergie cinétique varie comme le carré de la vitesse, jamais
@@ -609,6 +635,7 @@ items:
       - id: C
         text: "$12{,}5\\ \\text{J}$"
         correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-masse
         feedback: >
           Ce résultat correspond à $\frac12 v^2$ sans la masse $m$ : la
           formule $E_c = \frac12 m v^2$ exige de multiplier par $m$, pas de
@@ -637,18 +664,21 @@ items:
       - id: B
         text: "Elle est multipliée par 2, comme la vitesse."
         correct: false
+        misconception: mc.physics.pc_energie.ec-mauvaise-dependance-en-v
         feedback: >
           $E_c$ varie comme le carré de la vitesse, pas comme la vitesse
           elle-même : doubler $v$ multiplie $v^2$ par 4, pas par 2.
       - id: C
         text: "Elle est multipliée par 8."
         correct: false
+        misconception: mc.physics.pc_energie.ec-mauvaise-dependance-en-v
         feedback: >
           $E_c$ dépend de $v^2$, pas de $v^3$ : doubler $v$ multiplie $E_c$
           par $2^2 = 4$, pas par $2^3 = 8$.
       - id: D
         text: "Elle ne change pas, car seule la masse détermine l'énergie cinétique."
         correct: false
+        misconception: mc.physics.pc_energie.ec-mauvaise-dependance-en-v
         feedback: >
           $E_c = \frac12 m v^2$ dépend explicitement de $v$, pas seulement
           de $m$ : faire varier la vitesse fait nécessairement varier $E_c$.
@@ -676,6 +706,7 @@ items:
           Elles sont différentes, car $E_c$ est un vecteur orienté comme
           $\vec v$.
         correct: false
+        misconception: mc.physics.pc_energie.ec-grandeur-vectorielle
         feedback: >
           $E_c$ est une grandeur scalaire, pas un vecteur : elle ne porte
           aucune direction, contrairement au vecteur vitesse dont elle
@@ -690,6 +721,7 @@ items:
           Elles sont différentes, car il faut connaître la direction du
           mouvement pour savoir si l'énergie est motrice ou résistante.
         correct: false
+        misconception: mc.physics.pc_energie.ec-grandeur-vectorielle
         feedback: >
           "Motrice" ou "résistante" qualifie le travail d'une force selon
           sa direction par rapport au déplacement, pas l'énergie cinétique
@@ -699,6 +731,7 @@ items:
           Impossible de comparer sans connaître la trajectoire complète de
           chaque solide.
         correct: false
+        misconception: mc.physics.pc_energie.ec-grandeur-vectorielle
         feedback: >
           $E_c = \frac12 m v^2$ ne demande que la masse et la norme de la
           vitesse à l'instant considéré, jamais la trajectoire suivie.
@@ -728,6 +761,7 @@ items:
           $50\ \text{J}$ (le travail vaut simplement $F \times d$, sans
           tenir compte de l'angle)
         correct: false
+        misconception: mc.physics.pc_energie.travail-oublie-cos
         feedback: >
           Le travail est un produit scalaire, $W(\vec F) = F d \cos\theta$
           : il faut multiplier par $\cos\theta$, pas ignorer l'angle entre
@@ -737,6 +771,7 @@ items:
           $\approx 43\ \text{J}$ (en utilisant $\sin\theta$ au lieu de
           $\cos\theta$)
         correct: false
+        misconception: mc.physics.pc_energie.travail-oublie-cos
         feedback: >
           C'est $\cos\theta$ qui intervient dans le travail d'une force,
           pas $\sin\theta$ : ce dernier mesurerait la composante
@@ -749,6 +784,7 @@ items:
           $-25\ \text{J}$ (la force serait résistante dès que $\theta$
           n'est pas nul)
         correct: false
+        misconception: mc.physics.pc_energie.travail-oublie-cos
         feedback: >
           Le travail n'est négatif que si $\cos\theta < 0$, c'est-à-dire
           $90^\circ < \theta \leq 180^\circ$ ; ici $\theta = 60^\circ < 90^\circ$
@@ -777,6 +813,7 @@ items:
           $W(\vec N) = N \times d$, car $\vec N$ agit sur toute la distance
           parcourue $d$.
         correct: false
+        misconception: mc.physics.pc_energie.force-perpendiculaire-travaille
         feedback: >
           Cette formule ignore que $\vec N$ est perpendiculaire au
           déplacement : seule la composante d'une force alignée avec le
@@ -786,6 +823,7 @@ items:
           $W(\vec N)$ est négatif, car $\vec N$ s'oppose à l'enfoncement du
           solide dans le plan.
         correct: false
+        misconception: mc.physics.pc_energie.force-perpendiculaire-travaille
         feedback: >
           S'opposer à l'enfoncement (perpendiculaire au plan) n'est pas la
           même chose que s'opposer au déplacement (le long du plan) : c'est
@@ -794,6 +832,7 @@ items:
       - id: C
         text: "$W(\\vec N)$ dépend de l'angle $\\alpha$ du plan incliné."
         correct: false
+        misconception: mc.physics.pc_energie.force-perpendiculaire-travaille
         feedback: >
           C'est la norme de $N$ (par exemple $N = mg\cos\alpha$) qui dépend
           de l'angle, pas son travail : $\vec N$ reste perpendiculaire au
@@ -833,6 +872,7 @@ items:
           $\approx 9{,}9\ \text{m/s}$ (en oubliant le facteur 2 dans
           $v^2 = 2gh$)
         correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-facteur-demi
         feedback: >
           Le TEC donne $\frac12 m v^2 = mgh$, donc $v^2 = 2gh$ : oublier le
           facteur 2 revient à écrire $E_c = mv^2$ au lieu de
@@ -840,6 +880,7 @@ items:
       - id: C
         text: "Impossible de calculer sans connaître la masse de l'objet."
         correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-masse
         feedback: >
           La masse se simplifie des deux côtés de l'égalité TEC
           ($\frac12 m v^2 = mgh$) : $v = \sqrt{2gh}$ ne dépend pas de $m$,
@@ -849,6 +890,7 @@ items:
           $196\ \text{m/s}$ (en oubliant de prendre la racine carrée de
           $v^2$)
         correct: false
+        misconception: mc.physics.pc_energie.confusion-v-et-v-carre
         feedback: >
           $v^2 = 2gh = 196$ est le carré de la vitesse, pas la vitesse
           elle-même : il faut encore prendre la racine carrée pour obtenir
@@ -875,6 +917,7 @@ items:
       - id: A
         text: "$W(\\vec P) \\approx +5{,}9\\ \\text{J}$ ; $\\Delta E_{pp} \\approx -5{,}9\\ \\text{J}$"
         correct: false
+        misconception: mc.physics.pc_energie.signe-travail-poids
         feedback: >
           Le poids s'oppose ici au déplacement, qui est vers le haut : son
           travail est donc résistant (négatif), pas positif, quelle que
@@ -885,12 +928,14 @@ items:
       - id: C
         text: "$W(\\vec P) \\approx -5{,}9\\ \\text{J}$ ; $\\Delta E_{pp} \\approx -5{,}9\\ \\text{J}$"
         correct: false
+        misconception: mc.physics.pc_energie.signe-travail-poids
         feedback: >
           La relation est $W(\vec P) = -\Delta E_{pp}$ : si $W(\vec P)$ est
           négatif, $\Delta E_{pp}$ doit être positif, pas de même signe.
       - id: D
         text: "$W(\\vec P) \\approx -0{,}60\\ \\text{J}$ ; $\\Delta E_{pp} \\approx +0{,}60\\ \\text{J}$"
         correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-g
         feedback: >
           Ce résultat oublie le facteur $g$ dans $W(\vec P) = mgh$ (calcul
           $mh$ au lieu de $mgh$) : l'énergie potentielle de pesanteur
@@ -927,6 +972,7 @@ items:
       - id: B
         text: "$\\approx 39{,}2\\ \\text{m}$"
         correct: false
+        misconception: mc.physics.pc_energie.em-conservee-malgre-frottement
         feedback: >
           Ce résultat oublie le travail du frottement sur la piste inclinée
           (comme si $E_m$ y était conservée) : il faut retrancher
@@ -934,6 +980,7 @@ items:
       - id: C
         text: "$\\approx 186{,}0\\ \\text{m}$"
         correct: false
+        misconception: mc.physics.pc_energie.confusion-v-et-v-carre
         feedback: >
           Ce résultat utilise $mgL$ au lieu de $mgL\sin\alpha$ pour le
           travail du poids : seule la dénivelée $h = L\sin\alpha$ compte,
@@ -941,6 +988,7 @@ items:
       - id: D
         text: "$\\approx 146{,}0\\ \\text{m}$"
         correct: false
+        misconception: mc.physics.pc_energie.em-conservee-malgre-frottement
         feedback: >
           Ce résultat utilise le frottement de la piste inclinée
           ($f = 30\ \text{N}$) au lieu de celui de la portion horizontale
@@ -971,6 +1019,7 @@ items:
       - id: A
         text: "Égale, car le travail du poids ne change pas."
         correct: false
+        misconception: mc.physics.pc_energie.em-conservee-malgre-frottement
         feedback: >
           $\Delta E_c$ dépend de la somme de tous les travaux, pas
           seulement de $W(\vec P)$ : doubler $W(\vec f)$ (négatif) change
@@ -986,6 +1035,7 @@ items:
           Plus grande, car un frottement plus important échauffe davantage la piste et
           lui restitue cette énergie sous forme de mouvement.
         correct: false
+        misconception: mc.physics.pc_energie.frottement-restitue-energie
         feedback: >
           Le frottement dissipe de l'énergie, il n'en restitue jamais au
           solide : son travail reste résistant (négatif), donc augmenter le
@@ -993,6 +1043,7 @@ items:
       - id: D
         text: "Impossible à dire sans refaire tout le calcul numériquement."
         correct: false
+        misconception: mc.physics.pc_energie.em-conservee-malgre-frottement
         feedback: >
           Le TEC permet un raisonnement qualitatif sans refaire le calcul :
           $W(\vec P)$ inchangé, $W(\vec f)$ plus négatif $\implies E_c$ plus
@@ -1023,6 +1074,7 @@ items:
       - id: A
         text: "$\\approx 27\\ \\text{J}$"
         correct: false
+        misconception: mc.physics.pc_energie.signe-travail-poids
         feedback: >
           Ce résultat ignore le travail du poids dans le bilan (comme si
           $E_{c,bas} = W(\vec f)$ seul) : il faut écrire le TEC complet,
@@ -1030,6 +1082,7 @@ items:
       - id: B
         text: "$\\approx +17{,}1\\ \\text{J}$"
         correct: false
+        misconception: mc.physics.pc_energie.signe-travail-poids
         feedback: >
           Le frottement est nécessairement résistant : son travail est
           négatif. Le signe correct ici est celui de
@@ -1041,6 +1094,7 @@ items:
       - id: D
         text: "$\\approx 9{,}9\\ \\text{J}$"
         correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-facteur-demi
         feedback: >
           Ce résultat oublie le facteur $\frac12$ dans $E_c = \frac12 m v^2$
           (calcul $mv^2 = 54\ \text{J}$ au lieu de $27\ \text{J}$), ce qui

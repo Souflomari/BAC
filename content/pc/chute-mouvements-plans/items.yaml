@@ -5,6 +5,63 @@ misconceptions:
   #    Déclarée le 2026-09-05 : les checkpoints cp-r0-predict et cp-symetrie
   #    visaient ces cinq erreurs depuis leur écriture, mais aucune n'était
   #    déclarée ici — un diagnostic sans libellé, que rien ne pouvait afficher.
+  # Quatre familles ajoutées le 2026-09-05 en taguant les 24 items du banc,
+  # jusque-là muets : elles couvrent la grandeur mesurée (portée, flèche,
+  # angle), la mise en équation, l'orientation des axes, et la force de Lorentz.
+  - id: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
+    label: "« Portée, flèche et longueur de trajectoire sont interchangeables — et l'angle optimal est le plus grand »"
+    description: >
+      L'élève confond la PORTÉE (distance horizontale) avec la hauteur
+      maximale, la longueur réelle du trajet ou la vitesse d'impact ; il place
+      la portée maximale à $90^\\circ$ ; il fait varier flèche et portée comme
+      $v_0$ plutôt que comme $v_0^2$ ; ou il croit deux angles complémentaires
+      identiques en tout.
+    contradicts_principle: >
+      La PORTÉE est la distance horizontale entre le lancement et le retour au
+      sol ; la FLÈCHE est la hauteur maximale. La portée est maximale à
+      $45^\\circ$ — tirer à la verticale la réduit à zéro. Les deux varient en
+      $v_0^2$ : doubler $v_0$ les quadruple. Et deux angles complémentaires
+      donnent la MÊME portée, jamais la même flèche.
+
+  - id: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
+    label: "« Le coefficient, le signe ou le facteur ½ de l'équation de trajectoire est faux »"
+    description: >
+      Dans $y(x) = \\tan\\alpha\\,x - \\dfrac{g}{2v_0^2\\cos^2\\alpha}x^2$, l'élève
+      oublie le facteur $2$ du dénominateur, se trompe de signe sur le terme en
+      $x^2$, oublie le $\\cos^2\\alpha$, ou applique la formule de la flèche à la
+      portée (et réciproquement).
+    contradicts_principle: >
+      Le terme en $x^2$ est TOUJOURS négatif — la trajectoire est une parabole
+      tournée vers le bas — et son coefficient porte $2v_0^2\\cos^2\\alpha$ au
+      dénominateur. Flèche $f = \\dfrac{v_{0y}^2}{2g}$ et portée
+      $D = \\dfrac{v_0^2\\sin 2\\alpha}{g}$ sont deux formules distinctes.
+
+  - id: mc.physics.pc_chute_plans.signe-et-projection-mal-poses
+    label: "« Le signe de $a_y$ ou la projection de $v_0$ ne dépend pas de l'axe choisi »"
+    description: >
+      L'élève écrit $a_y = +g$ sur un axe orienté vers le haut, échange sinus et
+      cosinus dans la projection de la vitesse initiale, ou justifie $a_x = 0$
+      par une propriété de la vitesse plutôt que par celle de la force.
+    contradicts_principle: >
+      $\\vec g$ pointe vers le bas : sur un axe $Oy$ orienté vers le HAUT,
+      $a_y = -g$. La composante VERTICALE de $\\vec v_0$ est
+      $v_{0y} = v_0\\sin\\alpha$, l'horizontale $v_0\\cos\\alpha$. Et $a_x = 0$
+      parce que le POIDS n'a pas de composante horizontale — pas parce que
+      $v_{0x}$ serait nulle.
+
+  - id: mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise
+    label: "« La force de Lorentz accélère la particule, ou ignore le signe de la charge »"
+    description: >
+      L'élève lui prête une trajectoire parabolique comme un projectile, une
+      accélération dans le sens du mouvement, aucun effet sur une charge
+      positive, ou un rayon qui augmenterait avec $B$ ou avec $|q|$.
+    contradicts_principle: >
+      La force de Lorentz est PERPENDICULAIRE à la vitesse : elle en change la
+      direction, jamais la norme — d'où un mouvement circulaire UNIFORME. Le
+      rayon vaut $R = \\dfrac{m v_0}{|q|B}$ : il croît avec $v_0$ et $m$,
+      décroît avec $B$ et $|q|$. Deux charges opposées tournent dans des sens
+      contraires, sur des cercles de même rayon.
+
   - id: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
     label: "« La vitesse horizontale varie comme la verticale : elle ralentit à la montée, repart à la descente »"
     description: "L'élève lie les deux axes : il applique à $v_x$ le profil de $v_y$, comme si le mouvement était d'un seul bloc."
@@ -107,6 +164,7 @@ items:
       - id: B
         text: "Elle diminue progressivement au cours du vol, jusqu'à finir par s'annuler"
         correct: false
+        misconception: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
         feedback: >
           Rien ne freine horizontalement : les frottements sont négligés et le
           poids est vertical. Sur l'axe horizontal, $a_x = 0$, donc $v_x$ ne
@@ -114,12 +172,14 @@ items:
       - id: C
         text: "Elle augmente, entraînée par la chute du projectile vers le sol"
         correct: false
+        misconception: mc.physics.pc_chute_plans.poids-agit-sur-lhorizontale
         feedback: >
           La chute agit sur la composante VERTICALE. Les deux mouvements sont
           indépendants : le poids étant vertical, il ne modifie pas $v_x$.
       - id: D
         text: "Elle s'annule au sommet de la trajectoire, comme la composante verticale"
         correct: false
+        misconception: mc.physics.pc_chute_plans.vitesse-nulle-au-sommet
         feedback: >
           C'est $v_y$ qui s'annule au sommet, pas $v_x$. Au sommet la vitesse
           est purement horizontale et vaut justement $v_x = v_{0x}$.
@@ -150,6 +210,7 @@ items:
       - id: B
         text: "Nulle"
         correct: false
+        misconception: mc.physics.pc_chute_plans.vitesse-nulle-au-sommet
         feedback: >
           Au sommet, seule la composante VERTICALE $v_y$ s'annule. La
           composante horizontale $v_x = v_{0x}$ subsiste : la vitesse totale
@@ -157,6 +218,7 @@ items:
       - id: C
         text: "Verticale, dirigée vers le bas"
         correct: false
+        misconception: mc.physics.pc_chute_plans.vitesse-nulle-au-sommet
         feedback: >
           Juste après le sommet la vitesse aura une composante verticale vers
           le bas, mais AU sommet $v_y = 0$ : la vitesse y est purement
@@ -164,6 +226,7 @@ items:
       - id: D
         text: "Maximale sur toute la trajectoire"
         correct: false
+        misconception: mc.physics.pc_chute_plans.vitesse-nulle-au-sommet
         feedback: >
           C'est au contraire ou la vitesse est MINIMALE (il ne reste que
           $v_x$). Elle est maximale au départ et a l'arrivée au sol.
@@ -193,6 +256,7 @@ items:
       - id: B
         text: "La bille la plus lourde retombe plus vite et va moins loin"
         correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
         feedback: >
           C'est l'intuition trompeuse. La 2e loi donne $m\vec a = m\vec g$,
           d'ou $\vec a = \vec g$ : la masse se simplifie. Même accélération,
@@ -200,12 +264,14 @@ items:
       - id: C
         text: "La bille la plus legere va plus loin"
         correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
         feedback: >
           Sans frottements, la masse n'intervient pas : $\vec a = \vec g$ pour
           les deux. Les trajectoires se superposent exactement.
       - id: D
         text: "On ne peut pas savoir sans connaître les masses"
         correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
         feedback: >
           On peut : justement parce que $\vec a = \vec g$ est indépendant de
           la masse, la valeur des masses n'a aucune importance ici.
@@ -235,18 +301,21 @@ items:
       - id: B
         text: "La hauteur maximale atteinte par le projectile au cours de son vol"
         correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
         feedback: >
           Ca, c'est la FLECHE (hauteur du sommet). La portée est une distance
           HORIZONTALE, mesurée au sol.
       - id: C
         text: "La longueur totale de la trajectoire réellement parcourue par le projectile"
         correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
         feedback: >
           La portée n'est pas la longueur de l'arc parabolique, mais la
           distance horizontale entre le départ et l'arrivée au sol.
       - id: D
         text: "La vitesse du projectile au moment précis de son impact sur le sol"
         correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
         feedback: >
           Une portée est une distance (en mètres), pas une vitesse. Ne
           confonds pas la grandeur avec sa dimension.
@@ -276,6 +345,7 @@ items:
       - id: B
         text: "$90^\\circ$"
         correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
         feedback: >
           A $90^\circ$ le tir est vertical : la portée est nulle (le projectile
           retombe au point de départ). C'est un maximum de FLECHE, pas de
@@ -283,6 +353,7 @@ items:
       - id: C
         text: "$30^\\circ$"
         correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
         feedback: >
           $30^\circ$ donne une portée, mais pas la plus grande : $\sin(2\alpha)
           = \sin 60^\circ < 1$. Le maximum de $\sin(2\alpha)$ est atteint pour
@@ -290,6 +361,7 @@ items:
       - id: D
         text: "$60^\\circ$"
         correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
         feedback: >
           $60^\circ$ donne la même portée que $30^\circ$ (angles
           complementaires : $\sin 120^\circ = \sin 60^\circ$), mais pas le
@@ -321,6 +393,7 @@ items:
       - id: B
         text: "Parabolique, exactement comme celle d'un projectile lancé dans le champ de pesanteur"
         correct: false
+        misconception: mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise
         feedback: >
           C'est confondre la force de Lorentz avec une force constante comme le
           poids. La force $\vec F = q\vec v\wedge\vec B$ n'a pas une direction
@@ -330,6 +403,7 @@ items:
       - id: C
         text: "Rectiligne accélérée : la force de Lorentz communique sans cesse de la vitesse supplémentaire à la particule chargée"
         correct: false
+        misconception: mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise
         feedback: >
           La force de Lorentz est perpendiculaire à $\vec v$ : elle ne travaille
           pas, donc la norme de la vitesse ne change pas ($dv/dt = 0$). Elle
@@ -337,6 +411,7 @@ items:
       - id: D
         text: "Rectiligne uniforme : aucune force ne vient dévier la particule chargée de sa direction initiale de propagation"
         correct: false
+        misconception: mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise
         feedback: >
           Comme $\vec B \perp \vec v_0$, la force $\vec F = q\vec v\wedge\vec B$
           n'est pas nulle (sa norme vaut $|q|\,v_0\,B$) : elle courbe bel et
@@ -373,6 +448,7 @@ items:
       - id: A
         text: "Il ralentit lui aussi en montant, avant de reprendre de la vitesse en redescendant, comme le mouvement vertical"
         correct: false
+        misconception: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
         feedback: >
           C'est confondre les deux axes. Le mouvement vertical ralentit puis
           repart, mais le mouvement horizontal n'a aucune raison d'en faire
@@ -383,6 +459,7 @@ items:
       - id: C
         text: "Il s'arrete completement au sommet de la trajectoire, en même temps que le ballon cesse de monter"
         correct: false
+        misconception: mc.physics.pc_chute_plans.vitesse-nulle-au-sommet
         feedback: >
           C'est la vitesse VERTICALE qui s'annule au sommet, pas
           l'horizontale : au sommet, le ballon garde exactement sa vitesse
@@ -390,6 +467,7 @@ items:
       - id: D
         text: "Il accelere progressivement du début a la fin du vol, car le poids agit sur tout le mouvement"
         correct: false
+        misconception: mc.physics.pc_chute_plans.poids-agit-sur-lhorizontale
         feedback: >
           Le poids est une force purement verticale : il n'a aucune
           composante horizontale, donc il ne peut ni accélérer ni ralentir le
@@ -416,6 +494,7 @@ items:
       - id: A
         text: "La boule de petanque, plus lourde, va plus loin car elle est moins freinee par sa propre inertie"
         correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
         feedback: >
           En chute libre, la masse disparaît de la deuxième loi
           ($\vec a = \vec g$) : une masse plus grande ne donne aucun
@@ -423,6 +502,7 @@ items:
       - id: B
         text: "Impossible a dire sans connaître les masses exactes des deux objets"
         correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
         feedback: >
           On peut au contraire conclure sans les masses : c'est justement
           parce que $\vec a = \vec g$ ne dépend pas de $m$ que leur valeur
@@ -433,6 +513,7 @@ items:
       - id: D
         text: "La balle de tennis, plus legere, va plus loin car elle est plus facile a propulser"
         correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
         feedback: >
           Sans frottements, la masse n'intervient nulle part dans le
           mouvement : être plus legere ne donne aucun avantage de portée.
@@ -459,6 +540,7 @@ items:
       - id: A
         text: "Oui, un peu : même verticale, une force finit toujours par influencer un peu tous les axes du mouvement"
         correct: false
+        misconception: mc.physics.pc_chute_plans.poids-agit-sur-lhorizontale
         feedback: >
           Une force n'influence que les axes ou elle a une composante non
           nulle. Le poids étant purement vertical, sa composante horizontale
@@ -466,6 +548,7 @@ items:
       - id: B
         text: "Oui, completement : c'est elle qui fait ralentir puis repartir le ballon horizontalement, comme elle le fait verticalement"
         correct: false
+        misconception: mc.physics.pc_chute_plans.poids-agit-sur-lhorizontale
         feedback: >
           C'est confondre les deux axes. Le poids agit uniquement sur l'axe
           vertical ; l'axe horizontal n'est soumis a aucune force, donc a
@@ -473,6 +556,7 @@ items:
       - id: C
         text: "Cela dépend de l'angle de lancement : plus l'angle est grand, plus le poids agit horizontalement"
         correct: false
+        misconception: mc.physics.pc_chute_plans.poids-agit-sur-lhorizontale
         feedback: >
           L'angle de lancement change la direction de la vitesse initiale,
           pas la direction du poids : celui-ci reste vertical quel que soit
@@ -506,6 +590,7 @@ items:
       - id: B
         text: "Il n'y a aucune erreur : $a_y = +g$ reste vrai quel que soit le sens choisi pour orienter l'axe"
         correct: false
+        misconception: mc.physics.pc_chute_plans.signe-et-projection-mal-poses
         feedback: >
           Le signe de $a_y$ dépend entièrement du sens choisi pour $Oy$. Avec
           $Oy$ vers le haut, $\vec g$ (vers le bas) a une composante
@@ -513,6 +598,7 @@ items:
       - id: C
         text: "L'erreur vient d'avoir oublié la masse du projectile dans l'écriture de la deuxième loi de Newton"
         correct: false
+        misconception: mc.physics.pc_chute_plans.signe-et-projection-mal-poses
         feedback: >
           La masse n'est pas en cause ici : elle se simplifie des le départ
           ($\vec a = \vec g$). L'erreur porte uniquement sur le signe, lie a
@@ -520,6 +606,7 @@ items:
       - id: D
         text: "L'erreur vient d'avoir pris une vitesse initiale positive au lieu de la prendre négative sur cet axe"
         correct: false
+        misconception: mc.physics.pc_chute_plans.signe-et-projection-mal-poses
         feedback: >
           Le signe de $v_{0y}$ est indépendant de celui de $a_y$ : c'est une
           erreur sur l'accélération (projection de $\vec g$), pas sur la
@@ -550,6 +637,7 @@ items:
       - id: A
         text: "Moins de 1,0 s, car en redescendant la balle est plus rapide donc elle met moins de temps"
         correct: false
+        misconception: mc.physics.pc_chute_plans.descente-plus-courte-que-montee
         feedback: >
           Aller plus vite a l'arrivée ne veut pas dire mettre moins de temps :
           $y(t)$ est une parabole symétrique par rapport a son sommet, ce qui
@@ -560,6 +648,7 @@ items:
       - id: C
         text: "Plus de 1,0 s, car il faut d'abord que la vitesse s'annule avant de pouvoir redescendre"
         correct: false
+        misconception: mc.physics.pc_chute_plans.descente-plus-courte-que-montee
         feedback: >
           La vitesse s'annule justement AU sommet, a $t=1{,}0\ \text{s}$ : ce
           n'est pas un delai supplémentaire, c'est l'instant même ou la
@@ -567,6 +656,7 @@ items:
       - id: D
         text: "Impossible à savoir sans connaître la hauteur exacte atteinte au sommet"
         correct: false
+        misconception: mc.physics.pc_chute_plans.descente-plus-courte-que-montee
         feedback: >
           La symétrie de la parabole $y(t)$ donne directement
           $t_{sol} = 2\,t_{sommet}$, sans avoir besoin de calculer la hauteur
@@ -594,12 +684,14 @@ items:
       - id: A
         text: "$v_{0y} = v_0 \\cos\\alpha$"
         correct: false
+        misconception: mc.physics.pc_chute_plans.signe-et-projection-mal-poses
         feedback: >
           C'est l'expression de $v_{0x}$, pas de $v_{0y}$ : $\cos\alpha$
           projette sur l'axe horizontal, $\sin\alpha$ sur l'axe vertical.
       - id: B
         text: "$v_{0y} = v_0 \\tan\\alpha$"
         correct: false
+        misconception: mc.physics.pc_chute_plans.signe-et-projection-mal-poses
         feedback: >
           $\tan\alpha$ est le rapport $v_{0y}/v_{0x}$, pas une composante de
           $v_0$ elle-même : ce n'est pas la bonne fonction trigonométrique
@@ -610,6 +702,7 @@ items:
       - id: D
         text: "$v_{0y} = v_0$"
         correct: false
+        misconception: mc.physics.pc_chute_plans.signe-et-projection-mal-poses
         feedback: >
           Cela reviendrait a ignorer l'angle $\alpha$, comme si tout $v_0$
           était vertical : ce n'est vrai que dans le cas particulier
@@ -638,6 +731,7 @@ items:
       - id: A
         text: "Parce que la vitesse horizontale initiale $v_{0x}$ est toujours nulle au départ du mouvement"
         correct: false
+        misconception: mc.physics.pc_chute_plans.signe-et-projection-mal-poses
         feedback: >
           $v_{0x}$ n'est nulle que dans le cas particulier d'un lancer
           vertical ($\alpha=90^\circ$). En général $v_{0x}=v_0\cos\alpha \neq
@@ -645,6 +739,7 @@ items:
       - id: B
         text: "Parce que la masse du projectile est trop faible pour que $g$ puisse agir horizontalement sur lui"
         correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
         feedback: >
           La masse n'a aucun rôle ici : $a_x=0$ vient uniquement de la
           direction du poids (verticale), pas de la valeur de la masse,
@@ -652,6 +747,7 @@ items:
       - id: C
         text: "Parce qu'au sommet de la trajectoire la vitesse horizontale s'annule elle aussi, ce qui donne $a_x=0$"
         correct: false
+        misconception: mc.physics.pc_chute_plans.vitesse-nulle-au-sommet
         feedback: >
           C'est $v_y$ qui s'annule au sommet, pas $v_x$ : $v_x$ garde la
           valeur $v_{0x}$ à chaque instant, y compris au sommet.
@@ -686,18 +782,21 @@ items:
       - id: B
         text: "$y(x) = x - 0{,}049\\,x^2$"
         correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
         feedback: >
           Ce coefficient oublie le facteur $2$ au dénominateur :
           $g/(2v_0^2\cos^2\alpha)$, pas $g/(v_0^2\cos^2\alpha)$.
       - id: C
         text: "$y(x) = x - 0{,}0173\\,x^2$"
         correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
         feedback: >
           Ce coefficient utilise $\cos\alpha$ au lieu de $\cos^2\alpha$ au
           dénominateur : la formule exige le carré de $\cos\alpha$.
       - id: D
         text: "$y(x) = x + 0{,}0245\\,x^2$"
         correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
         feedback: >
           Erreur de signe : la parabole s'ouvre vers le BAS (le second terme
           se retranche), conséquence directe du signe négatif de $g$ dans
@@ -726,6 +825,7 @@ items:
       - id: A
         text: "Elle a disparu seulement à cette étape, en se simplifiant au moment de l'élimination du temps entre les deux équations"
         correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
         feedback: >
           Elle avait déjà disparu bien avant : des la deuxième loi de Newton,
           $\vec a_G = \vec g$ ne contient plus $m$. L'élimination du temps
@@ -736,6 +836,7 @@ items:
       - id: C
         text: "Elle est cachée dans le terme $g$, qui dépend en réalité légèrement de la masse du projectile considéré"
         correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
         feedback: >
           $g$ est l'accélération de pesanteur du lieu, indépendante de la
           masse de l'objet qui tombe : ce n'est pas une propriété du
@@ -743,6 +844,7 @@ items:
       - id: D
         text: "Elle intervient implicitement à travers $v_0$, qui dépend lui-même de la masse du lanceur utilisé"
         correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
         feedback: >
           $v_0$ est une donnée du problème (la vitesse a laquelle l'objet est
           lance), pas une conséquence de la masse de qui que ce soit dans
@@ -771,12 +873,14 @@ items:
       - id: A
         text: "$y = 7{,}5\\ \\text{m}$"
         correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
         feedback: >
           Ce calcul oublie completement le second terme
           ($0{,}01225\,x^2$) de l'équation.
       - id: B
         text: "$y \\approx 7{,}4\\ \\text{m}$"
         correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
         feedback: >
           Ce calcul oublie d'elever $x$ au carré dans le second terme
           ($0{,}01225\times x$ au lieu de $0{,}01225\times x^2$).
@@ -786,6 +890,7 @@ items:
       - id: D
         text: "$y \\approx 8{,}7\\ \\text{m}$"
         correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
         feedback: >
           Erreur de signe : le second terme se RETRANCHE (parabole vers le
           bas), il ne s'ajoute pas au premier.
@@ -810,18 +915,21 @@ items:
       - id: A
         text: "$f \\approx 28{,}6\\ \\text{m}$"
         correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
         feedback: >
           C'est la formule de la PORTÉE ($v_0^2\sin(2\alpha)/g$) qui a été
           utilisée ici, pas celle de la fleche.
       - id: B
         text: "$f \\approx 8{,}3\\ \\text{m}$"
         correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
         feedback: >
           Ce calcul oublie le facteur $2$ au dénominateur :
           $f=v_{0y}^2/(2g)$, pas $v_{0y}^2/g$.
       - id: C
         text: "$f \\approx 16{,}5\\ \\text{m}$"
         correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
         feedback: >
           Ce calcul utilise $v_0^2$ au lieu de $v_{0y}^2$ : la fleche ne
           dépend que de la composante VERTICALE de la vitesse initiale.
@@ -851,18 +959,21 @@ items:
       - id: B
         text: "Elles sont toutes les deux multipliees par 2, comme $v_0$"
         correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
         feedback: >
           $f$ et $D$ dependent de $v_0^2$, pas de $v_0$ : doubler $v_0$
           multiplie donc $v_0^2$ par $4$, pas par $2$.
       - id: C
         text: "Seule la portée double ; la fleche ne change pas, car elle ne dépend que de l'angle"
         correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
         feedback: >
           $f=v_0^2\sin^2\alpha/(2g)$ dépend elle aussi de $v_0^2$ : elle
           change avec $v_0$, exactement comme la portée.
       - id: D
         text: "Elles sont toutes les deux multipliees par 8"
         correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
         feedback: >
           $f$ et $D$ dependent de $v_0^2$ (une puissance 2), pas de $v_0^3$ :
           doubler $v_0$ multiplie donc par $2^2=4$, pas par $2^3=8$.
@@ -889,6 +1000,7 @@ items:
       - id: A
         text: "Les deux tirs ont la même portée ET la même fleche, puisque les angles sont complementaires"
         correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
         feedback: >
           Seule la portée est égale pour des angles complementaires
           ($\sin(2\alpha)$ identique). La fleche dépend de $\sin^2\alpha$,
@@ -899,6 +1011,7 @@ items:
       - id: C
         text: "Le tir a $70^\\circ$ a la plus grande portée, car un angle plus grand rapproche le tir de la verticale, donc du maximum"
         correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
         feedback: >
           La portée dépend de $\sin(2\alpha)$, maximale a $45^\circ$ puis
           redescendante : $20^\circ$ et $70^\circ$ donnent en réalité la
@@ -906,6 +1019,7 @@ items:
       - id: D
         text: "Le tir a $20^\\circ$ a la plus grande fleche, car un angle plus petit donne un tir plus tendu et plus efficace"
         correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
         feedback: >
           C'est l'inverse : la fleche $f=v_0^2\sin^2\alpha/(2g)$ croit avec
           $\alpha$. Le tir le plus incline ($70^\circ$) monte plus haut, pas
@@ -934,6 +1048,7 @@ items:
       - id: A
         text: "Elles suivent exactement la même trajectoire, car le champ magnetique ne dépend pas du signe de la charge"
         correct: false
+        misconception: mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise
         feedback: >
           Contrairement a la chute libre (ou la masse disparaît), le SIGNE
           de la charge intervient directement dans le sens de
@@ -941,6 +1056,7 @@ items:
       - id: B
         text: "La particule positive n'est pas déviée du tout, seule la négative subit la force de Lorentz"
         correct: false
+        misconception: mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise
         feedback: >
           La force de Lorentz agit sur toute charge non nulle, positive ou
           négative ; seul son SENS change avec le signe de $q$, pas son
@@ -951,6 +1067,7 @@ items:
       - id: D
         text: "Les deux sont déviées dans le même sens, mais avec des rayons différents selon le signe de la charge"
         correct: false
+        misconception: mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise
         feedback: >
           $R=mv_0/(|q|B)$ ne dépend que de la VALEUR de $q$ (identique ici),
           pas de son signe : c'est le SENS de la courbure qui diffère, pas le
@@ -980,18 +1097,21 @@ items:
       - id: A
         text: "Augmenter le champ magnetique $B$"
         correct: false
+        misconception: mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise
         feedback: >
           $B$ est au dénominateur : l'augmenter DIMINUE le rayon, il ne
           l'augmente pas.
       - id: B
         text: "Augmenter la charge $|q|$ de la particule"
         correct: false
+        misconception: mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise
         feedback: >
           $|q|$ est au dénominateur : l'augmenter DIMINUE le rayon, il ne
           l'augmente pas.
       - id: C
         text: "Diminuer la masse $m$ de la particule"
         correct: false
+        misconception: mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise
         feedback: >
           $m$ est au numérateur : la DIMINUER reduit le rayon ; c'est
           l'AUGMENTER qui l'agrandirait.
@@ -1024,18 +1144,21 @@ items:
       - id: B
         text: "$D \\approx 11{,}0\\ \\text{m}$"
         correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
         feedback: >
           Ce calcul oublie le facteur $2$ : $D=2v_{0x}v_{0y}/g$, pas
           $v_{0x}v_{0y}/g$.
       - id: C
         text: "$D \\approx 4{,}1\\ \\text{m}$"
         correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
         feedback: >
           C'est la formule de la FLECHE ($v_{0y}^2/(2g)$) qui a été utilisée
           ici, pas celle de la portée.
       - id: D
         text: "$D \\approx 16{,}5\\ \\text{m}$"
         correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
         feedback: >
           Les composantes ont été inversees : c'est $v_{0x}$ (horizontale)
           qui multiplie $t_{portee}$ pour donner une distance, pas $v_{0y}$.
@@ -1064,6 +1187,7 @@ items:
       - id: A
         text: "Elle est supérieure à $8{,}0\\ \\text{m/s}$, car la chute lui communique de la vitesse dans toutes les directions, y compris horizontalement"
         correct: false
+        misconception: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
         feedback: >
           Le poids, qui provoque la chute, est purement vertical : il ne
           communique aucune vitesse supplémentaire a l'axe horizontal.
@@ -1073,6 +1197,7 @@ items:
       - id: C
         text: "Elle est inférieure à $8{,}0\\ \\text{m/s}$, car une partie de la vitesse initiale se convertit progressivement en vitesse verticale"
         correct: false
+        misconception: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
         feedback: >
           Les deux axes sont indépendants : $v_{0x}$ ne se « convertit » pas
           en $v_y$, elle reste intacte pendant que $v_y$ se construit
@@ -1080,6 +1205,7 @@ items:
       - id: D
         text: "Impossible a dire sans connaître la hauteur de la falaise"
         correct: false
+        misconception: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
         feedback: >
           $a_x=0$ tient à chaque instant, quelle que soit la durée du vol ou
           la hauteur de chute : $v_x$ reste $v_{0x}$, hauteur connue ou non.
@@ -1111,6 +1237,7 @@ items:
       - id: A
         text: "Elle est vraie : comme dans une chute avec frottements, la vitesse $v_x$ finit toujours par se stabiliser, quel que soit le modèle utilisé pour la décrire"
         correct: false
+        misconception: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
         feedback: >
           Cela importe le résultat d'un AUTRE modèle (avec frottements). Ici,
           les frottements sont explicitement négligés : rien ne peut faire
@@ -1118,6 +1245,7 @@ items:
       - id: B
         text: "Elle est vraie uniquement pour de très longues portées, où les frottements de l'air finissent par ne plus pouvoir être négligés"
         correct: false
+        misconception: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
         feedback: >
           L'hypothèse « frottements négligés » est posée pour tout le
           problème, pas seulement pour les courtes distances : elle ne
@@ -1128,6 +1256,7 @@ items:
       - id: D
         text: "Elle est fausse, mais c'est la vitesse VERTICALE $v_y$, et non $v_x$, qui se stabiliserait à une vitesse limite dans ce modèle"
         correct: false
+        misconception: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
         feedback: >
           Dans CE modèle (frottements négligés), aucune des deux composantes
           ne se stabilise a une limite : $v_y$ croit indéfiniment en valeur

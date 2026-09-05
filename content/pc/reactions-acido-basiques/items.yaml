@@ -4,6 +4,85 @@ misconceptions:
   # Inventaire du cluster titrage + distribution (spec-extension.md §2-5).
   # Ne couvre que les 4 nouveaux chapitres R8-R11 ; les items R0-R7/R12
   # antérieurs ne portent pas encore d'id de misconception (schéma pré-cluster).
+  # ── LES CHAPITRES R0-R7, ENFIN COUVERTS (2026-09-05). Le commentaire
+  #    ci-dessus disait vrai : les items antérieurs au cluster titrage ne
+  #    portaient aucun id. Leurs 81 distracteurs étaient donc muets pour le
+  #    modèle apprenant. Huit familles, tirées des distracteurs eux-mêmes.
+  - id: AB-BASE-1
+    chapter: R0
+    label: "Échelle de pH lue à l'envers"
+    description: >-
+      Croit qu'un pH plus GRAND signale une solution plus acide, qu'une
+      multiplication de $[H_3O^+]$ par 10 fait MONTER le pH d'une unité, ou
+      qu'un pH élevé favorise la forme acide d'un couple — alors que
+      $\text{pH} = -\log[H_3O^+]$ varie en sens INVERSE de l'acidité.
+  - id: AB-BASE-2
+    chapter: R1
+    label: "pH et concentration confondus"
+    description: >-
+      Prend le pH pour la concentration elle-même ($[H_3O^+] = 6{,}0$ pour
+      $\text{pH} = 6$), oublie le signe moins du logarithme, ou réapplique le
+      log au lieu d'inverser la relation — alors que $\text{pH} =
+      -\log[H_3O^+]$ et $[H_3O^+] = 10^{-\text{pH}}$ sont deux écritures
+      d'une même bijection.
+  - id: AB-BASE-3
+    chapter: R2
+    label: "Force d'un acide et concentration confondues"
+    description: >-
+      Croit qu'à concentration apportée égale deux acides donnent le même pH,
+      qu'un pH bas prouve un acide fort, ou que diluer un acide faible le rend
+      plus faible (voire plus fort) — alors que la FORCE mesure le degré de
+      réaction avec l'eau (une propriété du couple, lisible dans $K_A$) et la
+      CONCENTRATION la quantité apportée : deux grandeurs indépendantes, dont
+      le pH est la conséquence commune.
+  - id: AB-BASE-4
+    chapter: R3
+    label: "K_A et pK_A mal comparés"
+    description: >-
+      Compare un $K_A$ à un $pK_A$ comme deux nombres de même nature, croit
+      qu'un $pK_A$ plus grand signale un acide plus fort, ou juge deux $K_A$
+      égaux parce que leur mantisse l'est — alors que $pK_A = -\log K_A$ :
+      l'acide le plus fort a le $K_A$ le plus GRAND, donc le $pK_A$ le plus
+      PETIT.
+  - id: AB-BASE-5
+    chapter: R4
+    label: "Définition de Brønsted mal appliquée"
+    description: >-
+      Définit l'acide par une propriété sensible (corrosif) ou par la présence
+      d'hydrogène dans la formule, intervertit acide et base dans un couple,
+      fait réagir ensemble les deux membres d'un même couple, ou laisse un
+      $H^+$ libre dans l'équation — alors qu'un acide de Brønsted est
+      exactement une espèce capable de CÉDER un proton, sa base conjuguée
+      celle qui le capte, et qu'un proton n'existe jamais libre en solution
+      aqueuse.
+  - id: AB-BASE-6
+    chapter: R5
+    label: "Autoprotolyse de l'eau mal comprise"
+    description: >-
+      Croit que $[H_3O^+]$ et $[HO^-]$ ne peuvent jamais être égales, qu'une
+      solution contenant des ions $HO^-$ est forcément basique, que $K_e$
+      change quand on dissout un sel neutre, ou qu'il faut un pH-mètre pour
+      conclure — alors que $[H_3O^+]\times[HO^-] = K_e$ vaut dans TOUTE
+      solution aqueuse à $25\,^\circ\text{C}$, et que c'est la COMPARAISON des
+      deux concentrations qui décide de la nature acide, neutre ou basique.
+  - id: AB-BASE-7
+    chapter: R6
+    label: "Constante de réaction mal construite"
+    description: >-
+      Inverse l'ordre des $pK_A$ dans l'exposant, multiplie les deux $K_A$ au
+      lieu de les diviser, ou fait dépendre $K$ du pH mesuré — alors que la
+      constante d'une réaction acido-basique entre deux couples se lit
+      directement dans l'écart de leurs $pK_A$, dans l'ordre imposé par le
+      sens d'écriture, et ne dépend que de la température.
+  - id: AB-BASE-8
+    chapter: R7
+    label: "Taux d'avancement prédit à partir du mauvais indice"
+    description: >-
+      Fait dépendre $\tau$ de la concentration apportée pour un acide fort, ou
+      le prédit à partir du SIGNE des $pK_A$ plutôt que de leur ÉCART — alors
+      qu'un acide fort réagit quasi totalement quelle que soit $c$, et que
+      c'est $K$ (donc $\Delta pK_A$) qui situe $\tau$ entre 0 et 1 : deux
+      $pK_A$ proches donnent $K \approx 1$, donc un $\tau$ intermédiaire.
   - id: AB-DIST-1
     chapter: R8
     label: "Frontière lue comme bascule totale"
@@ -116,6 +195,7 @@ items:
       - id: B
         text: "Elle est basique"
         correct: false
+        misconception: AB-BASE-1
         feedback: >
           C'est l'inverse : $\text{pH} = 3 < 7$. Un pH petit ne signifie pas
           « peu d'acidité » — il signifie, à cause du signe moins dans
@@ -124,12 +204,14 @@ items:
       - id: C
         text: "Elle est neutre"
         correct: false
+        misconception: AB-BASE-1
         feedback: >
           La neutralité correspond à $\text{pH} = 7$ à $25\,^\circ\text{C}$
           (là où $[H_3O^+] = [HO^-]$), pas à $\text{pH} = 3$.
       - id: D
         text: "On ne peut rien dire sans connaître la concentration apportée"
         correct: false
+        misconception: AB-BASE-3
         feedback: >
           Le pH seul suffit à classer une solution en acide, neutre ou
           basique : c'est précisément l'intérêt du critère « pH comparé à
@@ -164,6 +246,7 @@ items:
       - id: B
         text: "Celle de pH 9, car un nombre de pH plus grand indique une acidité plus grande"
         correct: false
+        misconception: AB-BASE-1
         feedback: >
           C'est l'inverse du sens de variation du pH. $\text{pH} =
           -\log[H_3O^+]$ : le signe moins fait qu'un $[H_3O^+]$ grand donne un
@@ -174,6 +257,7 @@ items:
       - id: C
         text: "Les deux solutions sont également acides, seul le nombre affiché change"
         correct: false
+        misconception: AB-BASE-1
         feedback: >
           Le pH mesure directement $[H_3O^+]$ (via un logarithme) : deux pH
           différents correspondent à deux concentrations en $H_3O^+$
@@ -182,6 +266,7 @@ items:
       - id: D
         text: "Impossible de comparer sans connaître les concentrations apportées"
         correct: false
+        misconception: AB-BASE-3
         feedback: >
           Le pH est déjà, par construction, une mesure directe de
           $[H_3O^+]$ : comparer deux pH revient à comparer deux acidités
@@ -216,6 +301,7 @@ items:
       - id: B
         text: "Le couple 2, car son pKA (6) est un nombre plus grand que le KA du couple 1 (0,001)"
         correct: false
+        misconception: AB-BASE-4
         feedback: >
           Ce choix compare directement un $pK_A$ à un $K_A$ — deux grandeurs
           différentes, reliées par un logarithme et un signe moins, qu'on ne
@@ -225,6 +311,7 @@ items:
       - id: C
         text: "Le couple 2, car un couple décrit par KA est toujours plus fort qu'un couple décrit par pKA"
         correct: false
+        misconception: AB-BASE-4
         feedback: >
           $K_A$ et $pK_A$ ne décrivent pas deux catégories différentes de
           couples : ce sont deux façons d'exprimer la même propriété d'un même
@@ -232,6 +319,7 @@ items:
       - id: D
         text: "Impossible de comparer sans connaître le KA du couple 2"
         correct: false
+        misconception: AB-BASE-4
         feedback: >
           Le $pK_A$ du couple 2 donne déjà accès à son $K_A$ : $K_A = 10^{-pK_A}
           = 10^{-6}$. Aucune donnée supplémentaire n'est nécessaire.
@@ -266,6 +354,7 @@ items:
       - id: B
         text: "KA augmente aussi, puisque KA et pKA décrivent la même force dans le même sens"
         correct: false
+        misconception: AB-BASE-4
         feedback: >
           $pK_A = -\log K_A$ contient un logarithme et un signe moins : les
           deux grandeurs varient en sens **opposés**, exactement comme
@@ -274,6 +363,7 @@ items:
       - id: C
         text: "KA reste inchangé, seul le pKA affiché change"
         correct: false
+        misconception: AB-BASE-4
         feedback: >
           $pK_A$ est calculé directement à partir de $K_A$ : les deux ne
           peuvent pas varier indépendamment l'un de l'autre. Si $pK_A$
@@ -281,6 +371,7 @@ items:
       - id: D
         text: "On ne peut pas savoir sans connaître la valeur exacte de la température"
         correct: false
+        misconception: AB-BASE-4
         feedback: >
           Le sens de variation entre $K_A$ et $pK_A$ (inverse l'un de
           l'autre) découle uniquement de la définition $pK_A = -\log K_A$ :
@@ -315,6 +406,7 @@ items:
       - id: B
         text: "Oui : un pH bas est toujours la preuve que l'acide dissous est un acide fort"
         correct: false
+        misconception: AB-BASE-3
         feedback: >
           Le pH dépend à la fois de la force de l'acide (son $K_A$) et de la
           concentration apportée $c$ : un acide faible pris à très forte
@@ -325,6 +417,7 @@ items:
       - id: C
         text: "Non, car un acide fort a toujours un pH proche de 7"
         correct: false
+        misconception: AB-BASE-3
         feedback: >
           Un acide fort donne au contraire un pH d'autant plus bas que sa
           concentration est élevée ($[H_3O^+] \approx c$) : rien n'oblige son
@@ -332,6 +425,7 @@ items:
       - id: D
         text: "Oui, mais seulement si la concentration est inférieure à 10⁻² mol/L"
         correct: false
+        misconception: AB-BASE-3
         feedback: >
           Aucune condition sur la concentration ne transforme ce raisonnement
           en argument valide : la force d'un acide (son $K_A$) ne dépend pas
@@ -370,6 +464,7 @@ items:
       - id: B
         text: "Aucun des deux : la force est forcément identique, puisque la concentration apportée est la même"
         correct: false
+        misconception: AB-BASE-3
         feedback: >
           La concentration apportée est bien la même dans les deux béchers,
           mais le pH mesuré est différent — c'est justement le signe que les
@@ -380,6 +475,7 @@ items:
       - id: C
         text: "Celui de la seconde solution (pH 3,9), car son pH plus proche de la neutralité montre un acide mieux maîtrisé"
         correct: false
+        misconception: AB-BASE-3
         feedback: >
           « Proche de la neutralité » ne signale pas un acide plus fort, mais
           l'inverse : à concentration égale, un pH plus proche de $7$
@@ -388,6 +484,7 @@ items:
       - id: D
         text: "Impossible à dire sans connaître le volume de chacune des deux solutions"
         correct: false
+        misconception: AB-BASE-3
         feedback: >
           Le pH est déjà une grandeur intensive (indépendante du volume) : à
           concentration apportée égale, comparer deux pH revient directement
@@ -430,6 +527,7 @@ items:
           Rien de particulier : à concentration apportée égale, deux acides
           donnent forcément le même pH — l'écart vient d'une erreur de mesure
         correct: false
+        misconception: AB-BASE-3
         feedback: >
           L'écart est un fait reproductible, pas une erreur : il révèle une
           vraie différence entre les deux acides que la concentration égale
@@ -439,6 +537,7 @@ items:
           Cet écart prouve que la concentration réelle de l'acide
           chlorhydrique est en fait plus grande que celle annoncée
         correct: false
+        misconception: AB-BASE-3
         feedback: >
           L'énoncé fixe les deux concentrations apportées comme rigoureusement
           égales ; l'explication est ailleurs.
@@ -447,6 +546,7 @@ items:
           Puisque la concentration apportée est la même, les deux acides ont
           nécessairement la même force acide
         correct: false
+        misconception: AB-BASE-3
         feedback: >
           C'est l'inverse : la force d'un acide est indépendante de la
           concentration à laquelle on le dissout.
@@ -480,6 +580,7 @@ items:
           Oui, car la concentration apportée détermine entièrement le pH,
           quel que soit l'acide dissous
         correct: false
+        misconception: AB-BASE-3
         feedback: >
           La concentration n'est qu'une des deux grandeurs en jeu ; la façon
           dont l'acide réagit avec l'eau compte tout autant, et $c$ ne la fixe
@@ -489,6 +590,7 @@ items:
           Oui, car $HNO_3$ et $HCOOH$ sont tous deux des acides, et deux
           acides à la même concentration ont toujours le même pH
         correct: false
+        misconception: AB-BASE-3
         feedback: >
           Porter la même étiquette « acide » ne garantit pas un comportement
           identique face à l'eau : chaque couple a sa propre réactivité.
@@ -497,6 +599,7 @@ items:
           Non, mais uniquement parce que les deux formules chimiques sont
           différentes, ce qui suffit à lui seul à expliquer un pH différent
         correct: false
+        misconception: AB-BASE-3
         feedback: >
           Ce n'est pas la formule en elle-même qui compte, mais la réactivité
           de l'acide avec l'eau qu'elle décrit.
@@ -529,6 +632,7 @@ items:
       - id: B
         text: "Oui, il devient un acide fort, car sa concentration a diminué"
         correct: false
+        misconception: AB-BASE-3
         feedback: >
           Diluer ne change rien à la façon dont l'acide réagit avec l'eau :
           c'est une propriété du couple, pas de la quantité dissoute.
@@ -537,6 +641,7 @@ items:
           Son pH sera automatiquement égal à celui du bécher 1 (pH $=2{,}0$),
           la concentration jouant plus que la nature de l'acide
         correct: false
+        misconception: AB-BASE-3
         feedback: >
           C'est l'inverse : c'est justement la nature faible de cet acide qui
           empêche son pH de rejoindre celui d'un acide fort.
@@ -545,6 +650,7 @@ items:
           La force de l'acide dépend de sa concentration : en le diluant dix
           fois, on le rend dix fois plus faible
         correct: false
+        misconception: AB-BASE-3
         feedback: >
           La force d'un acide ne dépend pas de $c$ : c'est une propriété
           fixée par le couple, à température donnée.
@@ -572,6 +678,7 @@ items:
       - id: B
         text: "Une espèce qui rend une solution corrosive au toucher"
         correct: false
+        misconception: AB-BASE-5
         feedback: >
           Brønsted ne définit ni acide ni base par une propriété macroscopique
           comme la corrosivité, mais uniquement par la capacité à céder un
@@ -579,6 +686,7 @@ items:
       - id: C
         text: "Une espèce capable de capter un proton $H^+$"
         correct: false
+        misconception: AB-BASE-5
         feedback: >
           C'est la définition de la base, pas de l'acide : ce choix inverse
           les deux rôles du couple.
@@ -587,6 +695,7 @@ items:
           Une espèce qui contient toujours l'atome d'hydrogène dans sa
           formule
         correct: false
+        misconception: AB-BASE-5
         feedback: >
           De nombreuses bases (comme $NH_3$) contiennent aussi des atomes
           d'hydrogène ; ce n'est pas leur présence qui définit l'acide, mais
@@ -614,6 +723,7 @@ items:
       - id: B
         text: "$NH_3$, car c'est la formule la plus simple des deux"
         correct: false
+        misconception: AB-BASE-5
         feedback: >
           La simplicité de la formule n'a aucun rapport avec le rôle
           acide/base : seul le sens du transfert de proton compte.
@@ -622,6 +732,7 @@ items:
           Les deux jouent le rôle d'acide en même temps, car le couple est
           noté avec les deux espèces ensemble
         correct: false
+        misconception: AB-BASE-5
         feedback: >
           La notation $AH/A^-$ regroupe l'acide et sa base conjuguée, mais un
           couple donné n'a qu'un seul acide : $NH_4^+$ ici.
@@ -630,6 +741,7 @@ items:
           Aucune des deux : seul $H^+$ est l'acide, les deux espèces citées ne
           sont que les produits de la réaction
         correct: false
+        misconception: AB-BASE-5
         feedback: >
           $H^+$ n'existe jamais libre en solution ; c'est justement
           $NH_4^+$, en le cédant, qui joue le rôle de l'acide du couple.
@@ -656,6 +768,7 @@ items:
       - id: B
         text: "$HCOOH + H_3O^+ \\rightleftharpoons HCOO^- + H_2O$"
         correct: false
+        misconception: AB-BASE-5
         feedback: >
           Ceci utilise $H_3O^+$ comme réactif et $H_2O$ comme produit : c'est
           l'inverse du sens dans lequel l'eau doit agir ici, en tant que base
@@ -663,6 +776,7 @@ items:
       - id: C
         text: "$HCOOH \\rightleftharpoons HCOO^- + H^+$"
         correct: false
+        misconception: AB-BASE-5
         feedback: >
           Cette demi-équation seule laisse un $H^+$ libre : il n'existe pas
           de proton libre en solution, il faut la combiner avec le couple de
@@ -670,6 +784,7 @@ items:
       - id: D
         text: "$HCOOH + H_2O \\rightleftharpoons HCOO^- + H_3O^+ + H^+$"
         correct: false
+        misconception: AB-BASE-5
         feedback: >
           Le $H^+$ échangé doit s'annuler exactement en additionnant les deux
           demi-équations ; il ne doit apparaître nulle part dans l'équation
@@ -698,6 +813,7 @@ items:
       - id: B
         text: "$\\text{pH} = -4{,}0$, en gardant le signe de l'exposant"
         correct: false
+        misconception: AB-BASE-2
         feedback: >
           Le signe moins de la définition $\text{pH} = -\log[H_3O^+]$
           s'applique en plus de celui de l'exposant : les deux se combinent
@@ -705,6 +821,7 @@ items:
       - id: C
         text: "$\\text{pH} = 10^{-4}$, le pH est directement la concentration"
         correct: false
+        misconception: AB-BASE-2
         feedback: >
           Le pH n'est pas la concentration elle-même, mais son logarithme
           décimal changé de signe.
@@ -713,6 +830,7 @@ items:
           $\text{pH} = 0{,}4$, en confondant l'exposant $-4$ avec une virgule
           décimale
         correct: false
+        misconception: AB-BASE-2
         feedback: >
           L'exposant $-4$ d'une notation scientifique n'est pas une virgule
           décimale à placer dans le résultat.
@@ -738,6 +856,7 @@ items:
           $[H_3O^+] = 6{,}0\ \text{mol/L}$, le pH étant directement la
           concentration
         correct: false
+        misconception: AB-BASE-2
         feedback: >
           Le pH n'est pas la concentration elle-même : il faut inverser la
           relation logarithmique pour la retrouver.
@@ -746,6 +865,7 @@ items:
           $[H_3O^+] = 10^{6}\ \text{mol/L}$, en oubliant le signe moins de
           $\text{pH} = -\log[H_3O^+]$
         correct: false
+        misconception: AB-BASE-2
         feedback: >
           En oubliant le signe moins lors de l'inversion, l'exposant change
           de signe et donne une concentration bien trop grande.
@@ -754,6 +874,7 @@ items:
           $[H_3O^+] = -\log(6{,}0)\ \text{mol/L}$, en appliquant à nouveau le
           logarithme au lieu d'inverser la relation
         correct: false
+        misconception: AB-BASE-2
         feedback: >
           Il faut défaire le logarithme avec $10^{(\cdot)}$, pas en
           appliquer un second sur la valeur du pH.
@@ -779,6 +900,7 @@ items:
       - id: B
         text: "Le pH est multiplié par $10$ aussi"
         correct: false
+        misconception: AB-BASE-1
         feedback: >
           Le pH est un logarithme de $[H_3O^+]$, pas une grandeur
           proportionnelle : multiplier $[H_3O^+]$ par $10$ décale le pH d'une
@@ -786,6 +908,7 @@ items:
       - id: C
         text: "Le pH augmente de $1$ unité"
         correct: false
+        misconception: AB-BASE-1
         feedback: >
           C'est le bon écart mais le mauvais sens : à cause du signe moins
           dans $\text{pH} = -\log[H_3O^+]$, une $[H_3O^+]$ plus grande donne
@@ -794,6 +917,7 @@ items:
         text: >-
           Le pH ne change pas, seule la concentration compte pour l'acidité
         correct: false
+        misconception: AB-BASE-1
         feedback: >
           Le pH est construit précisément pour suivre $[H_3O^+]$ : il ne peut
           pas rester constant quand cette concentration change.
@@ -825,6 +949,7 @@ items:
         text: >-
           On ne peut rien dire sur $[H_3O^+]$ sans mesurer le pH séparément
         correct: false
+        misconception: AB-BASE-6
         feedback: >
           $K_e = [H_3O^+][HO^-]$ relie déjà les deux concentrations à
           $25\,^\circ\text{C}$ : connaître $[HO^-]$ suffit à calculer
@@ -834,12 +959,14 @@ items:
           $[H_3O^+]$ est nécessairement différente de $[HO^-]$, car les deux
           espèces ne peuvent jamais être égales dans une même solution
         correct: false
+        misconception: AB-BASE-6
         feedback: >
           L'égalité $[H_3O^+] = [HO^-]$ définit exactement la neutralité : ce
           cas n'a rien d'impossible, c'est le cas particulier étudié ici.
       - id: D
         text: "La solution est basique, car $[HO^-]$ est une valeur non nulle"
         correct: false
+        misconception: AB-BASE-6
         feedback: >
           $[HO^-]$ est non nulle dans toute solution aqueuse, à cause de
           l'autoprotolyse de l'eau : sa seule présence ne signale pas une
@@ -872,6 +999,7 @@ items:
           Le couple $B$ est le plus fort, car son exposant ($-8$) est plus
           négatif, donc « plus fort »
         correct: false
+        misconception: AB-BASE-4
         feedback: >
           Un exposant plus négatif donne un $K_A$ plus petit, donc un acide
           plus faible, pas plus fort : c'est le sens inverse.
@@ -880,6 +1008,7 @@ items:
           On ne peut pas comparer deux $K_A$ directement ; il faut d'abord
           convertir chacun en pH
         correct: false
+        misconception: AB-BASE-4
         feedback: >
           $K_A$ est une propriété du couple, indépendante de toute solution
           particulière : comparer deux $K_A$ ne nécessite aucune mesure de
@@ -889,6 +1018,7 @@ items:
           Les deux couples ont la même force, car les deux $K_A$ commencent
           par « $4{,}0$ »
         correct: false
+        misconception: AB-BASE-4
         feedback: >
           C'est l'exposant, pas la mantisse, qui domine la comparaison : $10^{-5}$
           et $10^{-8}$ diffèrent d'un facteur $1000$.
@@ -919,6 +1049,7 @@ items:
           $CH_3COOH$ (l'acide), car un pH plus élevé signale toujours plus
           d'acide en solution
         correct: false
+        misconception: AB-BASE-1
         feedback: >
           C'est l'inverse : $\text{pH} > pK_A$ favorise la base $A^-$, pas
           l'acide $AH$.
@@ -927,6 +1058,7 @@ items:
           Les deux espèces sont à égalité, car le pH et le $pK_A$ sont tous
           deux « proches de 5 »
         correct: false
+        misconception: AB-DIST-2
         feedback: >
           L'égalité n'a lieu qu'exactement à $\text{pH} = pK_A$ ; un écart de
           $1{,}2$ unité de pH change déjà nettement le rapport des deux
@@ -934,6 +1066,7 @@ items:
       - id: D
         text: "Impossible à dire sans connaître la concentration apportée $c$"
         correct: false
+        misconception: AB-BASE-3
         feedback: >
           Le rapport $[A^-]/[AH] = 10^{\text{pH}-pK_A}$ ne dépend que de
           l'écart pH$-pK_A$, jamais de $c$.
@@ -959,12 +1092,14 @@ items:
       - id: B
         text: "L'espèce acide $AH$ a totalement disparu à ce pH"
         correct: false
+        misconception: AB-DIST-1
         feedback: >
           $\text{pH} = pK_A$ est la frontière d'égalité des deux formes, pas
           un point où l'une des deux disparaît.
       - id: C
         text: "C'est impossible : le pH ne peut jamais être égal au $pK_A$"
         correct: false
+        misconception: AB-DIST-1
         feedback: >
           Rien n'empêche une solution d'avoir exactement ce pH ; c'est
           précisément le cas particulier qui définit la frontière du
@@ -974,6 +1109,7 @@ items:
           La base $A^-$ prédomine légèrement, car $\text{pH} = pK_A$ favorise
           toujours un peu la forme basique
         correct: false
+        misconception: AB-DIST-2
         feedback: >
           $\text{pH} = pK_A$ ne favorise ni l'une ni l'autre forme : c'est le
           point exact d'égalité, pas un léger avantage pour $A^-$.
@@ -1005,6 +1141,7 @@ items:
           Très inférieur à $1$, car un pH élevé favorise toujours la forme
           acide $HCOOH$
         correct: false
+        misconception: AB-BASE-1
         feedback: >
           C'est l'inverse : un pH élevé, supérieur au $pK_A$, favorise la
           forme basique $A^-$, pas la forme acide.
@@ -1012,6 +1149,7 @@ items:
         text: >-
           Proche de $1$, car pH et $pK_A$ sont « du même ordre de grandeur »
         correct: false
+        misconception: AB-DIST-2
         feedback: >
           L'échelle est logarithmique : un écart de $3{,}6$ unités de pH
           correspond déjà à un facteur de plusieurs milliers sur le rapport,
@@ -1021,6 +1159,7 @@ items:
           Ce rapport ne peut se calculer qu'en connaissant les concentrations
           initiales des deux espèces
         correct: false
+        misconception: AB-BASE-3
         feedback: >
           Le rapport $10^{\text{pH}-pK_A}$ ne dépend que de l'écart entre pH
           et $pK_A$, jamais des concentrations initiales.
@@ -1053,6 +1192,7 @@ items:
           $\tau$ dépend fortement de la concentration $c$ : plus $c$ est petite, plus le
           taux $\tau$ est petit
         correct: false
+        misconception: AB-BASE-8
         feedback: >
           Cette dépendance de $\tau$ à $c$ caractérise un acide faible, pas un
           acide fort : par définition, l'acide fort réagit quasi totalement
@@ -1060,6 +1200,7 @@ items:
       - id: C
         text: "$\\tau \\approx 0$, car une faible concentration apportée signifie nécessairement une faible réaction"
         correct: false
+        misconception: AB-BASE-8
         feedback: >
           Une faible concentration donne peu de $H_3O^+$ en valeur absolue,
           mais ne change rien au *taux* — la proportion — d'acide qui a
@@ -1067,6 +1208,7 @@ items:
       - id: D
         text: "Impossible à savoir sans connaître le $K_A$ du couple"
         correct: false
+        misconception: AB-BASE-8
         feedback: >
           « Acide fort » signifie précisément une réaction quasi totale avec
           l'eau, par définition ; aucune valeur de $K_A$ n'est nécessaire
@@ -1099,6 +1241,7 @@ items:
           $K = 10^{pK_{A1}-pK_{A2}} = 10^{-5}$, en inversant l'ordre des deux
           $pK_A$ dans l'exposant
         correct: false
+        misconception: AB-BASE-7
         feedback: >
           $K = K_{A1}/K_{A2}$, ce qui donne l'exposant $pK_{A2}-pK_{A1}$, pas
           l'inverse : l'ordre des deux termes compte.
@@ -1107,6 +1250,7 @@ items:
           $K = K_{A1} \times K_{A2}$, en multipliant directement les deux
           constantes plutôt qu'en les divisant
         correct: false
+        misconception: AB-BASE-7
         feedback: >
           $K$ s'obtient en divisant $K_{A1}$ par $K_{A2}$ (le $[H_3O^+]$
           intermédiaire se simplifie ainsi), pas en les multipliant.
@@ -1115,6 +1259,7 @@ items:
           $K$ dépend du pH de la solution obtenue, il faut donc le mesurer
           expérimentalement
         correct: false
+        misconception: AB-BASE-7
         feedback: >
           $K = K_{A1}/K_{A2}$ ne dépend que des deux couples en présence :
           c'est justement ce qui en fait une constante, indépendante du pH.
@@ -1141,6 +1286,7 @@ items:
       - id: B
         text: "$HCOOH + NH_4^+ \\rightleftharpoons HCOO^- + NH_3$"
         correct: false
+        misconception: AB-BASE-5
         feedback: >
           Ceci fait réagir l'acide du couple 2 avec l'acide du couple 1 :
           $NH_4^+$ est l'acide de son couple, pas sa base — il ne peut pas
@@ -1148,6 +1294,7 @@ items:
       - id: C
         text: "$HCOOH + NH_3 \\rightleftharpoons HCOO^- + NH_4^+ + H^+$"
         correct: false
+        misconception: AB-BASE-5
         feedback: >
           Le $H^+$ échangé doit s'annuler en combinant les deux
           demi-équations ; il ne doit apparaître nulle part dans le bilan
@@ -1155,6 +1302,7 @@ items:
       - id: D
         text: "$2\\,HCOOH + NH_3 \\rightleftharpoons HCOO^- + NH_4^+$"
         correct: false
+        misconception: AB-BASE-5
         feedback: >
           Un seul proton est échangé entre les deux couples : le coefficient
           $2$ devant $HCOOH$ rompt l'équilibrage de la réaction.
@@ -1185,6 +1333,7 @@ items:
       - id: B
         text: "$\\tau \\approx 1$, car les deux $pK_A$ sont positifs"
         correct: false
+        misconception: AB-BASE-8
         feedback: >
           Le signe des $pK_A$ ne détermine rien ici : c'est l'écart entre les
           deux valeurs qui fixe $K$, pas leur signe.
@@ -1192,6 +1341,7 @@ items:
         text: >-
           $\tau \approx 0$, car aucun des deux $pK_A$ n'est très petit
         correct: false
+        misconception: AB-BASE-8
         feedback: >
           Un $pK_A$ « petit dans l'absolu » signale un acide fort face à
           l'eau, mais ici c'est l'écart entre les deux couples — très faible —
@@ -1201,6 +1351,7 @@ items:
           On ne peut rien prédire du tout sans connaître les concentrations
           initiales exactes
         correct: false
+        misconception: AB-BASE-8
         feedback: >
           $K = K_{A1}/K_{A2}$ ne dépend d'aucune concentration : sa valeur
           seule permet déjà de situer $\tau$ par rapport à $0$, $1$, ou
@@ -1235,6 +1386,7 @@ items:
           que $[H_3O^+]$, car dans toute solution les deux concentrations
           sont égales
         correct: false
+        misconception: AB-BASE-6
         feedback: >
           $[H_3O^+] = [HO^-]$ ne caractérise que la neutralité ($\text{pH} =
           7$) ; ici $\text{pH} = 3{,}9 \neq 7$, les deux concentrations sont
@@ -1242,6 +1394,7 @@ items:
       - id: C
         text: "$[HO^-] \\approx 10^{-3{,}9}\\ \\text{mol/L}$ directement, sans passer par $K_e$"
         correct: false
+        misconception: AB-BASE-6
         feedback: >
           $10^{-\text{pH}}$ donne $[H_3O^+]$, pas $[HO^-]$ : il faut passer
           par $K_e = [H_3O^+][HO^-]$ pour obtenir $[HO^-]$.
@@ -1250,6 +1403,7 @@ items:
           On ne peut pas calculer $[HO^-]$ sans connaître $pK_e$, qui n'est
           pas donné dans l'énoncé
         correct: false
+        misconception: AB-BASE-6
         feedback: >
           $K_e = 1{,}0 \times 10^{-14}$ (donc $pK_e = 14$) à $25\,^\circ
           \text{C}$ est une valeur de référence du programme, pas une donnée
@@ -1282,6 +1436,7 @@ items:
           Neutre, car le produit $[H_3O^+] \times [HO^-]$ vaut $K_e$ comme
           dans toute solution neutre
         correct: false
+        misconception: AB-BASE-6
         feedback: >
           Le produit $[H_3O^+][HO^-] = K_e$ est vrai dans **toute** solution
           aqueuse à $25\,^\circ\text{C}$, pas seulement les neutres : ce
@@ -1292,6 +1447,7 @@ items:
           Acide, car $[HO^-]$ est plus grande que sa valeur dans l'eau pure,
           ce qui signale un excès d'acide
         correct: false
+        misconception: AB-BASE-6
         feedback: >
           C'est l'espèce dont la concentration a *augmenté* par rapport à
           l'eau pure qu'il faut regarder ; ici c'est $[HO^-]$ qui a
@@ -1299,6 +1455,7 @@ items:
       - id: D
         text: "Impossible à conclure sans mesurer directement le pH au pH-mètre"
         correct: false
+        misconception: AB-BASE-6
         feedback: >
           $K_e$ et une seule des deux concentrations suffisent déjà à
           calculer l'autre et à conclure, sans mesure supplémentaire.
@@ -1330,6 +1487,7 @@ items:
           Non : toute espèce ionique dissoute dans l'eau modifie
           nécessairement $K_e$, donc le pH change
         correct: false
+        misconception: AB-BASE-6
         feedback: >
           $K_e$ ne dépend que de la température, pas des espèces dissoutes :
           ajouter des ions spectateurs ne le change pas.
@@ -1338,6 +1496,7 @@ items:
           Non : ajouter des ions positifs et négatifs revient à ajouter à la
           fois un acide et une base, donc le pH doit bouger
         correct: false
+        misconception: AB-BASE-6
         feedback: >
           $Na^+$ et $Cl^-$ ne cèdent ni ne captent de proton dans l'eau :
           porter une charge ne suffit pas à être acide ou base au sens de
@@ -1347,6 +1506,7 @@ items:
           Oui, mais seulement parce que les quantités de $Na^+$ et de $Cl^-$
           ajoutées sont rigoureusement égales — sinon le pH changerait
         correct: false
+        misconception: AB-BASE-6
         feedback: >
           La neutralité électrique impose des quantités égales, mais ce
           n'est pas la raison de la neutralité *acido-basique* ici : c'est
