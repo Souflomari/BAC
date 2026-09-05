@@ -1,6 +1,54 @@
 notion: transformations-deux-sens
 skill_code: pc_transformations_deux_sens
-misconceptions: []
+misconceptions:
+  # Déclarées le 2026-09-05. Les checkpoints de la leçon visaient déjà ces
+  # neuf erreurs par leur id ; l'inventaire, lui, était resté `[]` — la chaîne
+  # comptait les tags, mais rien ne pouvait en afficher le libellé.
+  - id: mc.physics.pc_transformations_deux_sens.reaction-toujours-totale
+    label: "« Toute réaction finit par consommer entièrement ses réactifs, il suffit d'attendre »"
+    description: "L'élève tient le caractère total pour la règle et le temps pour le seul obstacle : avec assez de patience, tout réactif disparaîtrait."
+    contradicts_principle: "Quand la réaction inverse coexiste, le système se stabilise avec les réactifs ENCORE PRÉSENTS — indéfiniment. Le temps ne fait pas disparaître un réactif : de l'acide et de l'alcool restent détectables des semaines après."
+
+  - id: mc.physics.pc_transformations_deux_sens.catalyseur-ou-temps-change-etat-final
+    label: "« Assez de catalyseur (ou assez de temps) pousse la réaction jusqu'au bout »"
+    description: "L'élève attribue au catalyseur, ou à la durée, un pouvoir sur la composition finale."
+    contradicts_principle: "Un catalyseur accélère l'ARRIVÉE à l'état stabilisé, il n'en change pas la composition. Avec dix fois plus de catalyseur, il resterait exactement autant d'acide et d'alcool."
+
+  - id: mc.physics.pc_transformations_deux_sens.limitee-rien-ne-se-passe
+    label: "« Une transformation limitée, c'est une transformation où il ne se passe presque rien »"
+    description: "L'élève confond « s'arrêter avant la fin » et « produire une quantité négligeable »."
+    contradicts_principle: "Une transformation limitée produit une quantité tout à fait notable de produits — assez, pour l'estérification, pour donner une odeur fruitée franche. « Non totale » ne veut pas dire « nulle »."
+
+  - id: mc.physics.pc_transformations_deux_sens.equilibre-coexistence-signifie-arret
+    label: "« À l'équilibre, tout est figé : plus aucune molécule ne réagit »"
+    description: "L'élève lit la stabilité des quantités globales comme l'arrêt de l'activité microscopique."
+    contradicts_principle: "Ce qui ne change plus, ce sont les quantités GLOBALES. Les deux réactions continuent et se compensent exactement, à la même vitesse : c'est un équilibre DYNAMIQUE, pas un arrêt."
+
+  - id: mc.physics.pc_transformations_deux_sens.double-fleche-signifie-lente
+    label: "« Le mélange se stabilise parce que la réaction est devenue trop lente »"
+    description: "L'élève explique l'arrêt apparent par un ralentissement, et non par la compensation des deux sens."
+    contradicts_principle: "Rapide ou lente, une transformation limitée s'arrête au MÊME état final : ce qui la stabilise est l'égalité des vitesses directe et inverse, pas leur faiblesse. La vitesse est une question séparée."
+
+  - id: mc.physics.pc_transformations_deux_sens.reversible-jamais-quasi-totale
+    label: "« Une réaction à double flèche reste toujours nettement limitée ($\\tau$ loin de 1) »"
+    description: "L'élève déduit de la double flèche une borne sur le taux d'avancement final."
+    contradicts_principle: "« Réversible » dit que les DEUX SENS existent, pas jusqu'où la transformation va. Acide éthanoïque + ammoniac est écrite à double flèche et atteint $\\tau \\approx 0{,}99$ — quasi totale."
+
+  - id: mc.physics.pc_transformations_deux_sens.sens-propriete-fixe
+    label: "« Le sens qui l'emporte est une propriété fixe de la réaction »"
+    description: "L'élève attribue un sens privilégié à l'équation elle-même, indépendamment de la composition du mélange."
+    contradicts_principle: "Le sens qui domine dépend de CE QU'ON A MIS AU DÉPART : c'est la comparaison de $Q_{r,i}$ à $K$ qui tranche, mélange par mélange. La même équation évolue dans un sens ou dans l'autre selon les quantités initiales."
+
+  - id: mc.physics.pc_transformations_deux_sens.presence-produit-determine-sens
+    label: "« C'est l'espèce qu'on vient d'ajouter qui impose le sens »"
+    description: "L'élève raisonne sur l'ordre d'introduction plutôt que sur les quantités relatives."
+    contradicts_principle: "Ajouter un PRODUIT pousse vers le sens INVERSE, pas vers le sens direct. Ce qui compte est la quantité relative de réactifs et de produits — jamais laquelle on vient de verser."
+
+  - id: mc.physics.pc_transformations_deux_sens.conditions-physiques-sans-effet
+    label: "« Le rendement est fixé une fois pour toutes par l'équation, quoi qu'on fasse »"
+    description: "L'élève tient la composition finale pour intouchable, l'équation en décidant seule."
+    contradicts_principle: "Agir sur les CONDITIONS INITIALES — excès d'un réactif, retrait continu d'un produit — déplace bel et bien l'état final vers plus de produit. Ce n'est pas l'équation qu'on change, ce sont les conditions."
+
 
 items:
 

@@ -113,6 +113,42 @@ test("itemTargets — untagged/empty/missing choices give []", () => {
   assert.deepEqual(itemTargets([{ id: "A", misconception: "" }]), []);
 });
 
+// Le corpus écrit AUSSI `misconception: [a, b]` — un distracteur peut
+// exhiber deux erreurs nommées à la fois (pc/systemes-oscillants SO-35/D).
+// Cette forme a été muette de 2026-07 au 2026-09-05 : `typeof === "string"`
+// la rejetait des DEUX côtés (générateur et client), si bien que
+// M-OSC-RES-3 stagnait à 2 items dans la carte des planchers alors que le
+// décompte écrit à la main dans items.yaml annonçait 4 et « floor_met: true ».
+test("itemTargets — la forme LISTE compte, et se déduplique avec la forme chaîne", () => {
+  assert.deepEqual(
+    itemTargets([
+      { id: "A", correct: false, misconception: ["mc.x.beta", "mc.x.alpha"] },
+      { id: "B", correct: true },
+      { id: "C", correct: false, misconception: "mc.x.alpha" },
+    ]),
+    ["mc.x.alpha", "mc.x.beta"]
+  );
+  // Entrées non conformes ignorées, jamais fatales.
+  assert.deepEqual(itemTargets([{ id: "A", misconception: ["", null, 3] }]), []);
+});
+
+test("answerPayload — un choix à tags multiples rapporte le PREMIER, jamais null", () => {
+  const p = answerPayload({
+    notionId: "pc/systemes-oscillants",
+    itemId: "SO-35",
+    kind: "item",
+    authoredChoices: [
+      { id: "A", correct: false, misconception: "M-OSC-RES-2" },
+      { id: "B", correct: true },
+      { id: "D", correct: false, misconception: ["M-OSC-RES-3", "M-OSC-RES-2"] },
+    ],
+    chosenChoiceId: "D",
+    chapterIndex: 0,
+  });
+  assert.equal(p.misconception_id, "M-OSC-RES-3", "le premier tag écrit fait foi");
+  assert.deepEqual(p.item_misconceptions, ["M-OSC-RES-2", "M-OSC-RES-3"]);
+});
+
 // ── answerPayload: authored index, correctness, tag routing ──────────────
 
 test("answerPayload — wrong choice: authored index, tag carried, targets full", () => {

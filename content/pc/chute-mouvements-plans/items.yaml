@@ -1,6 +1,35 @@
 notion: chute-mouvements-plans
 skill_code: pc_chute_plans
 misconceptions:
+  # ── la famille PROJECTILE (indépendance des axes, symétrie de la parabole).
+  #    Déclarée le 2026-09-05 : les checkpoints cp-r0-predict et cp-symetrie
+  #    visaient ces cinq erreurs depuis leur écriture, mais aucune n'était
+  #    déclarée ici — un diagnostic sans libellé, que rien ne pouvait afficher.
+  - id: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
+    label: "« La vitesse horizontale varie comme la verticale : elle ralentit à la montée, repart à la descente »"
+    description: "L'élève lie les deux axes : il applique à $v_x$ le profil de $v_y$, comme si le mouvement était d'un seul bloc."
+    contradicts_principle: "Le poids est purement vertical, donc $a_x = 0$ à chaque instant et $v_x(t) = v_{0x}$ reste constante du lancer à l'impact. Les deux axes sont indépendants : seul $v_y$ ralentit, s'annule au sommet, puis repart."
+
+  - id: mc.physics.pc_chute_plans.vitesse-nulle-au-sommet
+    label: "« Au sommet de la trajectoire, la vitesse du projectile est nulle »"
+    description: "L'élève transpose à la vitesse entière ce qui ne vaut que pour sa composante verticale : il conclut que le projectile s'arrête un instant au sommet."
+    contradicts_principle: "Au sommet, c'est $v_y$ qui s'annule, jamais $v_x$ : la vitesse y vaut exactement $v_{0x}$ et elle est horizontale. Un projectile ne s'arrête pas en l'air."
+
+  - id: mc.physics.pc_chute_plans.poids-agit-sur-lhorizontale
+    label: "« Le poids accélère aussi le mouvement horizontal »"
+    description: "L'élève fait agir le poids sur les deux axes à la fois : la chute, en accélérant, entraînerait selon lui l'ensemble du mouvement, horizontale comprise."
+    contradicts_principle: "La projection horizontale du poids est nulle. Aucune force n'agit selon $x$ (frottements négligés), donc $a_x = 0$ : le poids ne peut ni accélérer ni ralentir le mouvement horizontal."
+
+  - id: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
+    label: "« En chute libre, la masse change la trajectoire (le plus lourd tombe plus vite, le plus léger va plus loin) »"
+    description: "L'élève garde l'intuition d'Aristote : un corps plus lourd serait davantage entraîné vers le sol, un corps plus léger plus facile à propulser."
+    contradicts_principle: "La deuxième loi donne $m\\vec{a} = m\\vec{g}$, d'où $\\vec{a} = \\vec{g}$ : la masse se simplifie et n'intervient nulle part. Mêmes conditions initiales, même accélération, donc trajectoires superposées — tant qu'il n'y a pas de frottement."
+
+  - id: mc.physics.pc_chute_plans.descente-plus-courte-que-montee
+    label: "« La descente d'un projectile est plus rapide, donc plus courte en durée, que sa montée »"
+    description: "L'élève brise la symétrie de la parabole : parce que le projectile arrive vite au sol, il en déduit que la descente a duré moins longtemps que la montée."
+    contradicts_principle: "$y(t)$ est une parabole symétrique par rapport à son sommet : la descente dure exactement autant que la montée. Aller plus vite à l'arrivée ne signifie pas mettre moins de temps."
+
   - id: mc.physics.pc_chute_plans.frottement-disparait-a-vlim
     label: "« A la vitesse limite, il n'y a plus de force / la force de frottement a disparu »"
     description: "L'élève confond « somme des forces nulle » (a=0 a v_lim) et « aucune force ne s'exerce » ; il croit que le frottement s'annule au moment ou la vitesse se stabilise."

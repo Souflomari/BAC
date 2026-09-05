@@ -224,6 +224,17 @@ jobs:
       - name: Cliquet indice-absolu (la clé n'est pas la seule à ne pas sur-affirmer)
         run: node scripts/indice-absolu.mjs --porte
 
+      # CLIQUET COUVERTURE-DIAGNOSTIQUE (2026-09-05). Le seul fil qui relie
+      # « l'élève se trompe » à « le produit sait quoi lui proposer ensuite »
+      # est un champ : `misconception:` sur un distracteur. 1 017 distracteurs
+      # sur 4 855 n'en portaient aucun, 47 tags pointaient un id non déclaré,
+      # et 17 notions sur 62 étaient AVEUGLES (aucune misconception au
+      # plancher de 3 items du banc, donc jamais évaluable). Le cliquet garde
+      # ce qui a été repris : sans-tag et fantômes ne peuvent que descendre,
+      # le nombre de misconceptions évaluables ne peut que monter.
+      - name: Cliquet couverture-diagnostique (le moteur doit voir quelque chose)
+        run: node scripts/couverture-diagnostique.mjs --porte
+
       - name: Model-id hygiene gate
         working-directory: .
         run: |

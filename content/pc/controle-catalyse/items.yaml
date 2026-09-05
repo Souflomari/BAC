@@ -1,6 +1,34 @@
 notion: controle-catalyse
 skill_code: pc_controle_catalyse
-misconceptions: []
+misconceptions:
+  # Déclarées le 2026-09-05. Les cinq checkpoints de la leçon visaient déjà
+  # ces erreurs par leur id ; l'inventaire, lui, était resté `[]` — la chaîne
+  # comptait les tags, mais rien ne pouvait en afficher le libellé.
+  - id: mc.physics.pc_controle_catalyse.anhydride-mal-compris
+    label: "« Changer de réactif ne fait que gagner du temps, comme un catalyseur »"
+    description: "L'élève traite le passage de l'acide à l'anhydride comme une accélération : même équilibre limité au bout du compte, atteint plus vite."
+    contradicts_principle: "L'anhydride change aussi l'ÉTAT FINAL : sa réaction avec l'alcool s'écrit avec une seule flèche, elle est totale ($\\tau = 1$), et non un équilibre à $\\tau \\approx 2/3$. Un catalyseur, lui, ne toucherait qu'à la vitesse."
+
+  - id: mc.physics.pc_controle_catalyse.vitesse-avancement-confondus
+    label: "« Vitesse et avancement final vont ensemble (totale = lente, rapide = limitée) »"
+    description: "L'élève lie les deux propriétés : une transformation qui va au bout devrait, selon lui, prendre plus de temps, et inversement."
+    contradicts_principle: "« Rapide » (vitesse) et « totale » (avancement final) sont deux propriétés INDÉPENDANTES. La saponification est lente et totale ; l'anhydride est rapide et total. L'une ne se déduit jamais de l'autre."
+
+  - id: mc.physics.pc_controle_catalyse.catalyseur-dans-bilan
+    label: "« Le catalyseur figure dans le bilan, parmi les réactifs »"
+    description: "L'élève, voyant que le catalyseur participe activement, lui donne un coefficient stœchiométrique du côté des réactifs."
+    contradicts_principle: "Un catalyseur participe au MÉCANISME mais n'est pas consommé : il ressort en même quantité qu'au départ. Il ne figure donc pas dans l'équation-bilan, mais au-dessus de la flèche."
+
+  - id: mc.physics.pc_controle_catalyse.catalyseur-deplace-etat-final
+    label: "« Le catalyseur déplace l'équilibre / change l'état final »"
+    description: "L'élève range le catalyseur du côté des facteurs qui modifient la composition finale, et non du côté des facteurs cinétiques."
+    contradicts_principle: "Le catalyseur accélère les DEUX sens dans les mêmes proportions et laisse $K$ intact : c'est un facteur cinétique. Il change la vitesse d'arrivée, jamais l'état final atteint."
+
+  - id: mc.physics.pc_controle_catalyse.catalyse-classee-hors-phase
+    label: "« Les types de catalyse se distinguent par la nature chimique du catalyseur »"
+    description: "L'élève classe homogène / hétérogène / enzymatique selon que le catalyseur est minéral, organique ou biologique."
+    contradicts_principle: "Tous les catalyseurs sont des espèces distinctes des réactifs ; leur nature chimique ne tranche rien. Le critère est la PHASE : même phase que les réactifs (homogène), phase différente (hétérogène), catalyseur biologique agissant sur un substrat spécifique (enzymatique)."
+
 
 items:
   - id: CTC-1

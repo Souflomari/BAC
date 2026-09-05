@@ -65,7 +65,24 @@ function safeLoadYaml(filePath) {
  * choice shape). An item's targets = the non-null `misconception` value on
  * each of its choices (the `also_reveals` field is deliberately NOT
  * consulted here — targets are the direct choice-level tag only).
+ *
+ * A choice's tag may be a STRING or a LIST of strings. The list form is not
+ * a nicety: a distractor can genuinely exhibit two named errors at once
+ * (pc/systemes-oscillants SO-35/D exhibits M-OSC-RES-2 AND M-OSC-RES-3), and
+ * the authors used `misconception: [a, b]` for exactly that. Until 2026-09-05
+ * this function accepted only strings, so those choices contributed to
+ * NOTHING: `M-OSC-RES-3` sat at 2 items in the generated floor map while the
+ * hand-written tally in items.yaml claimed 4 and `floor_met: true`. The
+ * misconception was silently INEVALUABLE — the exact failure mode the
+ * house rule about verify blocks exists to prevent, in a generator instead
+ * of a migration.
  */
+function normalizeTags(value) {
+  if (typeof value === "string") return value.length > 0 ? [value] : [];
+  if (Array.isArray(value)) return value.filter((v) => typeof v === "string" && v.length > 0);
+  return [];
+}
+
 function targetsFromItems(items) {
   const out = new Map();
   if (!Array.isArray(items)) return out;
@@ -74,8 +91,7 @@ function targetsFromItems(items) {
     const targets = new Set();
     const choices = Array.isArray(item.choices) ? item.choices : [];
     for (const choice of choices) {
-      const m = choice && choice.misconception;
-      if (typeof m === "string" && m.length > 0) targets.add(m);
+      for (const tag of normalizeTags(choice && choice.misconception)) targets.add(tag);
     }
     out.set(item.id, targets);
   }

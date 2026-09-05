@@ -43,21 +43,38 @@ import type { AnswerEventPayload } from "./emitter";
 export interface AuthoredChoice {
   id: string;
   correct?: boolean;
-  misconception?: string | null;
+  /** A string, or a LIST when one distractor exhibits several named errors
+   *  at once (items.yaml `misconception: [a, b]`). Both forms are authored
+   *  in the corpus; both must be read. */
+  misconception?: string | readonly string[] | null;
+}
+
+/**
+ * The tags on one choice, normalized to a list. String and list forms are
+ * both authored — a distractor CAN exhibit two named errors at once
+ * (pc/systemes-oscillants SO-35/D). Reading only the string form silently
+ * dropped those choices from every target set until 2026-09-05.
+ */
+export function choiceTags(
+  misconception: string | readonly string[] | null | undefined
+): string[] {
+  if (typeof misconception === "string") return misconception.length > 0 ? [misconception] : [];
+  if (Array.isArray(misconception))
+    return misconception.filter((m): m is string => typeof m === "string" && m.length > 0);
+  return [];
 }
 
 /**
  * An item's target misconceptions — the client-side twin of
  * `build-learner-inputs.mjs`'s `targetsFromItems`: non-null, non-empty
- * `misconception` strings on the choices, deduplicated, sorted.
+ * `misconception` tags on the choices, deduplicated, sorted.
  */
 export function itemTargets(
   choices: readonly AuthoredChoice[] | undefined | null
 ): string[] {
   const out = new Set<string>();
   for (const choice of choices ?? []) {
-    const m = choice?.misconception;
-    if (typeof m === "string" && m.length > 0) out.add(m);
+    for (const tag of choiceTags(choice?.misconception)) out.add(tag);
   }
   return [...out].sort();
 }
@@ -84,10 +101,14 @@ export function answerPayload(args: AnswerArgs): AnswerEventPayload | null {
   const index = authored.findIndex((c) => c.id === args.chosenChoiceId);
   if (index === -1) return null;
   const chosen = authored[index];
-  const misconception =
-    typeof chosen.misconception === "string" && chosen.misconception.length > 0
-      ? chosen.misconception
-      : null;
+  // `misconception_id` is ONE text column (migration 043) — a list-tagged
+  // choice reports its FIRST tag, the one the author wrote first and thus
+  // named as primary. Reporting null instead would collapse "several errors
+  // at once" into "no error", which LEARNER-MODEL-SPEC §0.1 forbids
+  // (« non détecté » ne s'effondre jamais en « pas de misconception »).
+  // The full set still travels in `item_misconceptions`.
+  const tags = choiceTags(chosen.misconception);
+  const misconception = tags.length > 0 ? tags[0] : null;
   return {
     notion_id: args.notionId,
     item_id: args.itemId,

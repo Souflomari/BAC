@@ -71,7 +71,12 @@ export interface NotionChoice {
   id: string;
   text: string;
   correct: boolean;
-  misconception?: string | null;
+  /** One tag, or several when a single distracteur exhibits more than one
+   *  named error (items.yaml authors both `misconception: a` and
+   *  `misconception: [a, b]`). Normalize with `choiceTags` in
+   *  lib/events/payload.ts — never read this field with `typeof === "string"`
+   *  alone, which silently drops the list form. */
+  misconception?: string | string[] | null;
   feedback?: string;
 }
 

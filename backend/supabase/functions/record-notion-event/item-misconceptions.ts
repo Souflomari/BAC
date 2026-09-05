@@ -3803,6 +3803,7 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "hors_cadre_probe"
     ],
     "SO-27": [
+      "M-OSC-AMO-1",
       "M-OSC-AMO-3",
       "hors_cadre_probe"
     ],
@@ -3829,16 +3830,19 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "M-OSC-RES-1"
     ],
     "SO-35": [
-      "M-OSC-RES-2"
+      "M-OSC-RES-2",
+      "M-OSC-RES-3"
     ],
     "SO-36": [
+      "M-OSC-RES-1",
       "M-OSC-RES-3"
     ],
     "SO-37": [
       "M-OSC-RES-1"
     ],
     "SO-38": [
-      "M-OSC-RES-2"
+      "M-OSC-RES-2",
+      "M-OSC-RES-3"
     ],
     "SO-39": [
       "M-OSC-RES-3"
@@ -3864,7 +3868,8 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "hors_cadre_probe"
     ],
     "cp-r7-acuite": [
-      "M-OSC-RES-2"
+      "M-OSC-RES-2",
+      "M-OSC-RES-3"
     ],
     "cp-r7-resonance": [
       "M-OSC-RES-1"

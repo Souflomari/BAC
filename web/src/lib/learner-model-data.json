@@ -277,6 +277,7 @@
   },
   "pc/chute-mouvements-plans": {
     "mc.physics.pc_chute_plans.acceleration-indefinie-avec-frottement": 3,
+    "mc.physics.pc_chute_plans.descente-plus-courte-que-montee": 0,
     "mc.physics.pc_chute_plans.euler-donne-valeur-exacte": 3,
     "mc.physics.pc_chute_plans.euler-oubli-dt": 3,
     "mc.physics.pc_chute_plans.euler-pente-non-recalculee": 3,
@@ -284,10 +285,21 @@
     "mc.physics.pc_chute_plans.geostationnaire-immobile-absolu": 3,
     "mc.physics.pc_chute_plans.geostationnaire-toute-altitude": 3,
     "mc.physics.pc_chute_plans.kepler3-exposants-inverses": 3,
+    "mc.physics.pc_chute_plans.masse-influe-en-chute-libre": 0,
     "mc.physics.pc_chute_plans.masse-jamais-determinante-en-chute": 3,
     "mc.physics.pc_chute_plans.orbite-necessite-force-tangentielle": 3,
     "mc.physics.pc_chute_plans.orbite-sans-gravite": 3,
-    "mc.physics.pc_chute_plans.vitesse-orbitale-depend-masse-satellite": 3
+    "mc.physics.pc_chute_plans.poids-agit-sur-lhorizontale": 0,
+    "mc.physics.pc_chute_plans.vitesse-nulle-au-sommet": 0,
+    "mc.physics.pc_chute_plans.vitesse-orbitale-depend-masse-satellite": 3,
+    "mc.physics.pc_chute_plans.vx-varie-pendant-le-vol": 0
+  },
+  "pc/controle-catalyse": {
+    "mc.physics.pc_controle_catalyse.anhydride-mal-compris": 0,
+    "mc.physics.pc_controle_catalyse.catalyse-classee-hors-phase": 0,
+    "mc.physics.pc_controle_catalyse.catalyseur-dans-bilan": 0,
+    "mc.physics.pc_controle_catalyse.catalyseur-deplace-etat-final": 0,
+    "mc.physics.pc_controle_catalyse.vitesse-avancement-confondus": 0
   },
   "pc/decroissance-radioactive": {
     "mc.physics.decroissance_radioactive.alpha-se-comporte-comme-beta": 3,
@@ -514,13 +526,24 @@
     "mc.physics.pc_suivi_temporel_vitesse.vitesse-mal-reliee-a-la-pente": 3
   },
   "pc/systemes-oscillants": {
-    "M-OSC-AMO-1": 3,
+    "M-OSC-AMO-1": 4,
     "M-OSC-AMO-2": 3,
     "M-OSC-AMO-3": 3,
-    "M-OSC-RES-1": 3,
+    "M-OSC-RES-1": 4,
     "M-OSC-RES-2": 3,
-    "M-OSC-RES-3": 2,
+    "M-OSC-RES-3": 4,
     "hors_cadre_probe": 2
+  },
+  "pc/transformations-deux-sens": {
+    "mc.physics.pc_transformations_deux_sens.catalyseur-ou-temps-change-etat-final": 0,
+    "mc.physics.pc_transformations_deux_sens.conditions-physiques-sans-effet": 0,
+    "mc.physics.pc_transformations_deux_sens.double-fleche-signifie-lente": 0,
+    "mc.physics.pc_transformations_deux_sens.equilibre-coexistence-signifie-arret": 0,
+    "mc.physics.pc_transformations_deux_sens.limitee-rien-ne-se-passe": 0,
+    "mc.physics.pc_transformations_deux_sens.presence-produit-determine-sens": 0,
+    "mc.physics.pc_transformations_deux_sens.reaction-toujours-totale": 0,
+    "mc.physics.pc_transformations_deux_sens.reversible-jamais-quasi-totale": 0,
+    "mc.physics.pc_transformations_deux_sens.sens-propriete-fixe": 0
   },
   "pc/transformations-lentes-rapides": {
     "mc.physics.pc_transformations_lentes_rapides.changer-condition-change-nature": 4,
