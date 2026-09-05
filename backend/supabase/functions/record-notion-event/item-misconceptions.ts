@@ -5975,6 +5975,16 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.svt.svt_dysfonctionnements_immunitaires.vaccin-protection-universelle",
       "mc.svt.svt_dysfonctionnements_immunitaires.vaccination-serotherapie-confondues"
     ],
+    "DI-10": [
+      "mc.svt.svt_dysfonctionnements_immunitaires.cible-du-vih-mal-identifiee",
+      "mc.svt.svt_dysfonctionnements_immunitaires.critere-de-distinction-non-pertinent",
+      "mc.svt.svt_dysfonctionnements_immunitaires.vaccination-serotherapie-confondues"
+    ],
+    "DI-11": [
+      "mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus",
+      "mc.svt.svt_dysfonctionnements_immunitaires.immunite-passive-mal-comprise",
+      "mc.svt.svt_dysfonctionnements_immunitaires.vaccin-protection-universelle"
+    ],
     "DI-2": [
       "mc.svt.svt_dysfonctionnements_immunitaires.immunite-passive-mal-comprise",
       "mc.svt.svt_dysfonctionnements_immunitaires.vaccination-serotherapie-confondues"
@@ -5991,6 +6001,19 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "DI-6": [
       "mc.svt.svt_dysfonctionnements_immunitaires.cible-du-vih-mal-identifiee",
+      "mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus"
+    ],
+    "DI-7": [
+      "mc.svt.svt_dysfonctionnements_immunitaires.immunite-passive-mal-comprise",
+      "mc.svt.svt_dysfonctionnements_immunitaires.vaccin-protection-universelle",
+      "mc.svt.svt_dysfonctionnements_immunitaires.vaccination-serotherapie-confondues"
+    ],
+    "DI-8": [
+      "mc.svt.svt_dysfonctionnements_immunitaires.cible-du-vih-mal-identifiee",
+      "mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus"
+    ],
+    "DI-9": [
+      "mc.svt.svt_dysfonctionnements_immunitaires.critere-de-distinction-non-pertinent",
       "mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus"
     ]
   },
@@ -6132,6 +6155,20 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "RE-6": [
       "mc.svt.svt_role_enzymes.effet-attribue-au-substrat",
       "mc.svt.svt_role_enzymes.enzyme-consommee-par-la-reaction"
+    ],
+    "RE-7": [
+      "mc.svt.svt_role_enzymes.denaturation-reversible",
+      "mc.svt.svt_role_enzymes.enzyme-usee-ou-modifiee-par-la-catalyse",
+      "mc.svt.svt_role_enzymes.optimum-ignore"
+    ],
+    "RE-8": [
+      "mc.svt.svt_role_enzymes.effet-attribue-au-substrat",
+      "mc.svt.svt_role_enzymes.specificites-substrat-action-confondues"
+    ],
+    "RE-9": [
+      "mc.svt.svt_role_enzymes.denaturation-reversible",
+      "mc.svt.svt_role_enzymes.enzyme-consommee-par-la-reaction",
+      "mc.svt.svt_role_enzymes.optimum-ignore"
     ]
   },
   "svt/soi-non-soi": {

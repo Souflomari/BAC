@@ -422,3 +422,300 @@ items:
       SIDA, l'organisme ne peut plus contenir des infections dites
       opportunistes (ou certains cancers), qui deviennent la cause réelle et
       indirecte de la mortalité.
+
+  # ── TROIS ITEMS AJOUTÉS LE 2026-09-05 ──────────────────────────────────────
+  # Motif : quatre des six erreurs déclarées étaient sous le plancher de 3
+  # items du banc, donc inévaluables. Ces trois items comblent le déficit dans
+  # le périmètre de lesson.md (R1 à R6).
+  - id: DI-7
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: svt_dysfonctionnements_immunitaires
+    tags: [vaccination, serotherapie, titre_anticorps]
+    stem: >
+      On mesure le titre d'anticorps dans le sang de deux patients. Chez le
+      premier, il reste quasi nul plusieurs jours, monte progressivement, puis
+      se maintient en plateau pendant des années. Chez le second, il est déjà
+      élevé dès les premières heures, puis décline jusqu'à devenir quasi nul
+      en quelques semaines. Qu'a reçu chacun ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le premier a été vacciné (réponse construite par ses propres lymphocytes, entretenue par la mémoire) ; le second a reçu une sérothérapie (anticorps injectés, non renouvelés)."
+        correct: true
+      - id: B
+        text: "Le premier a reçu une sérothérapie et le second un vaccin : les anticorps injectés lors d'un sérum se multiplient dans l'organisme du patient, ce qui explique le plateau durable observé chez le premier."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.immunite-passive-mal-comprise
+        feedback: >
+          Un anticorps est une MOLÉCULE, pas une cellule vivante : il ne se
+          multiplie jamais chez le receveur. Les anticorps injectés sont au
+          contraire progressivement éliminés, d'où le déclin — c'est la
+          signature du second patient, pas du premier.
+      - id: C
+        text: "Les deux ont été vaccinés, contre deux agents différents : la durée de protection d'un vaccin dépend de l'agent visé, un vaccin protégeant de toute façon contre l'ensemble des maladies rencontrées ensuite."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.vaccin-protection-universelle
+        feedback: >
+          Un vaccin protège contre UN agent précis, celui dont il porte
+          l'antigène — jamais contre l'ensemble des maladies. Et la courbe du
+          second patient n'a pas la forme d'une réponse vaccinale : elle
+          commence haut et s'effondre, sans plateau ni mémoire.
+      - id: D
+        text: "Le premier a été vacciné et le second aussi, mais plus récemment : la différence entre les deux courbes tient uniquement au moment de la mesure, pas à la nature du produit injecté."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.vaccination-serotherapie-confondues
+        feedback: >
+          Le décalage dans le temps n'explique pas la forme des courbes : une
+          réponse vaccinale commence TOUJOURS par plusieurs jours de titre
+          quasi nul, jamais par un pic immédiat. Un titre élevé dès les
+          premières heures signe des anticorps apportés de l'extérieur.
+    correct_feedback: >
+      Les deux courbes sont des miroirs inversés. Le vaccin apporte un
+      antigène : le titre monte lentement, le temps de la réponse primaire,
+      puis se maintient grâce aux cellules mémoire. Le sérum apporte des
+      anticorps tout prêts : le titre est immédiat, puis s'effondre, faute de
+      cellules du patient pour en produire.
+    solution: |
+      **Ce que la forme d'une courbe révèle :** le DÉLAI de montée dit qui
+      produit les anticorps ; la DURÉE dit s'il existe une mémoire.
+
+      **Premier patient :** montée lente (sélection puis expansion clonale) et
+      plateau durable (cellules mémoire) — c'est une immunité ACTIVE, donc une
+      vaccination.
+
+      **Second patient :** pic immédiat (rien à construire) et déclin sans
+      remontée (rien pour renouveler) — c'est une immunité PASSIVE, donc une
+      sérothérapie.
+
+  - id: DI-8
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: svt_dysfonctionnements_immunitaires
+    tags: [vih, sida, lt4, deficit_immunitaire]
+    stem: >
+      Un patient séropositif au VIH, non traité, développe des infections dues
+      à des micro-organismes habituellement inoffensifs, et ses réponses à
+      anticorps comme ses réponses cytotoxiques s'effondrent toutes deux.
+      Comment un seul virus produit-il un effondrement aussi général ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il infecte et détruit les lymphocytes T4, qui coordonnent la différenciation des lymphocytes B en plasmocytes comme celle des lymphocytes T8 en cellules cytotoxiques : perdre le coordinateur désorganise les deux voies."
+        correct: true
+      - id: B
+        text: "Il détruit indifféremment toutes les cellules immunitaires qu'il rencontre dans le sang, sans reconnaissance particulière : c'est cette destruction générale qui explique que les deux types de réponse s'effondrent ensemble."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.cible-du-vih-mal-identifiee
+        feedback: >
+          Le VIH reconnaît SPÉCIFIQUEMENT le récepteur CD4, porté par les
+          seuls lymphocytes T4. Sa cible est étroite ; c'est la POSITION de
+          cette cible dans l'organisation de la réponse — un coordinateur —
+          qui rend ses conséquences générales.
+      - id: C
+        text: "Il détruit une part importante des molécules du soi affichées à la surface des cellules, si bien que le système immunitaire ne parvient plus à distinguer ses propres cellules des agents infectieux qu'il devrait combattre."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus
+        feedback: >
+          C'est décrire une rupture de la tolérance au soi, c'est-à-dire une
+          maladie AUTO-IMMUNE. Le SIDA est un DÉFICIT : le système ne se
+          trompe pas de cible, il perd les cellules qui coordonnent sa
+          réponse.
+      - id: D
+        text: "Il bloque la phagocytose, première étape de toute réponse immunitaire, ce qui empêche mécaniquement toutes les étapes suivantes de se mettre en place, anticorps comme cellules cytotoxiques."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.cible-du-vih-mal-identifiee
+        feedback: >
+          La phagocytose relève de l'immunité innée, et le VIH ne la cible
+          pas. Ce qu'il détruit, ce sont les LT4 — des acteurs de l'immunité
+          ADAPTATIVE, situés en amont des deux voies effectrices.
+    correct_feedback: >
+      Le VIH reconnaît spécifiquement le récepteur CD4 des lymphocytes T4, les
+      infecte et les détruit. Ces lymphocytes coordonnent la différenciation
+      des LB en plasmocytes et des LT8 en cellules cytotoxiques : leur
+      disparition progressive désorganise l'ensemble de la réponse adaptative.
+    solution: |
+      **La cible est étroite :** le récepteur CD4, porté par les seuls
+      lymphocytes T4. Le VIH ne détruit ni les hématies, ni les phagocytes, ni
+      « tous les globules blancs ».
+
+      **La conséquence est large :** parce que les LT4 sont des
+      COORDINATEURS. Sans eux, ni les lymphocytes B ne se différencient
+      correctement en plasmocytes, ni les LT8 en cellules cytotoxiques.
+
+      **Ce que cela n'est pas :** ni une maladie auto-immune (le système ne se
+      trompe pas de cible), ni un blocage de l'immunité innée.
+
+  - id: DI-9
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: svt_dysfonctionnements_immunitaires
+    tags: [allergie, auto_immunite, critere_de_distinction]
+    stem: >
+      Deux patientes du même âge consultent le même jour : la première réagit
+      violemment au pollen de bouleau, la seconde produit des anticorps
+      dirigés contre les cellules de sa propre thyroïde. Sur quel critère
+      range-t-on l'une du côté de l'allergie et l'autre du côté de
+      l'auto-immunité ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Sur la nature de la cible attaquée : un élément extérieur et inoffensif pour l'allergie, une molécule du soi pour l'auto-immunité — l'intensité de la réaction n'entre pas dans le classement."
+        correct: true
+      - id: B
+        text: "Sur l'âge d'apparition et sur l'origine : l'allergie se déclare typiquement dans l'enfance et relève d'un terrain héréditaire, tandis que l'auto-immunité apparaît à l'âge adulte à la suite d'une infection."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.critere-de-distinction-non-pertinent
+        feedback: >
+          Les deux surviennent à tout âge — on devient allergique adulte, on
+          développe un diabète de type 1 enfant — et les deux peuvent avoir
+          une composante de terrain. Ni l'âge ni l'origine ne séparent les
+          deux catégories.
+      - id: C
+        text: "Sur l'existence d'un traitement préventif : une allergie se prévient par une désensibilisation, alors qu'une maladie auto-immune ne se prévient jamais, ce qui suffit à les distinguer l'une de l'autre."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.critere-de-distinction-non-pertinent
+        feedback: >
+          La prise en charge est une conséquence, pas un critère de
+          définition. Ce qui range un dysfonctionnement d'un côté ou de
+          l'autre, c'est ce que le système immunitaire ATTAQUE, jamais la
+          façon dont on le soigne.
+      - id: D
+        text: "Sur la présence d'anticorps : la seconde patiente en produit, donc son cas est immunitaire, alors que la réaction de la première relève d'une intolérance sans production d'anticorps particulière."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus
+        feedback: >
+          L'allergie repose elle aussi sur la production d'anticorps — des IgE
+          sécrétées par des plasmocytes après une première exposition
+          sensibilisante. Les deux cas sont immunitaires ; ce qui les sépare
+          est la cible, pas la présence d'anticorps.
+    correct_feedback: >
+      Le seul critère de fond est la NATURE DE LA CIBLE : un allergène
+      extérieur et normalement inoffensif dans un cas, une molécule du soi
+      dans l'autre. Les deux reposent sur une activation excessive de
+      lymphocytes et peuvent survenir à tout âge.
+    solution: |
+      **Le critère qui range :** ce que le système immunitaire attaque.
+      Extérieur et inoffensif → allergie. Molécule du soi → auto-immunité.
+
+      **Les critères qui ne rangent rien :** l'âge (les deux surviennent à
+      tout âge), l'origine (les deux ont une composante de terrain),
+      l'intensité (les deux sont des réactions excessives), la présence
+      d'anticorps (les deux en produisent).
+
+      **Le troisième larron, à ne pas oublier :** le DÉFICIT immunitaire
+      (SIDA), où le système ne se trompe pas de cible — il perd les cellules
+      qui coordonnent sa réponse.
+
+  - id: DI-10
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: svt_dysfonctionnements_immunitaires
+    tags: [vih, allergie, auto_immunite, classement]
+    stem: >
+      Un élève range le SIDA, l'allergie au pollen et le diabète de type 1
+      dans une même catégorie, « les maladies du système immunitaire », et en
+      conclut qu'un même traitement pourrait les viser toutes les trois. Que
+      manque-t-il à ce raisonnement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que les trois reposent sur des mécanismes opposés : un déficit de coordination dans un cas, une réaction excessive contre un allergène extérieur dans le deuxième, une rupture de la tolérance au soi dans le troisième."
+        correct: true
+      - id: B
+        text: "Que les trois se distinguent par leur gravité et par leur fréquence dans la population, seuls critères qui permettent de décider si un même traitement pourrait raisonnablement les viser ensemble."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.critere-de-distinction-non-pertinent
+        feedback: >
+          Gravité et fréquence sont des données épidémiologiques, pas des
+          critères de classement immunologique. Ce qui range un
+          dysfonctionnement, c'est le MÉCANISME : que fait le système, et
+          contre quelle cible.
+      - id: C
+        text: "Que le VIH s'attaque en réalité à l'ensemble des globules blancs, ce qui distingue le SIDA des deux autres cas, où seule une catégorie précise de cellules immunitaires est touchée par la maladie."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.cible-du-vih-mal-identifiee
+        feedback: >
+          Le VIH est au contraire très sélectif : il reconnaît le récepteur
+          CD4, porté par les seuls lymphocytes T4. Ce qui distingue le SIDA
+          des deux autres n'est pas l'étendue de sa cible, mais le fait qu'il
+          RETIRE une cellule au système au lieu de le faire réagir à tort.
+      - id: D
+        text: "Qu'un vaccin bien choisi suffirait à traiter les trois, puisque la vaccination construit une mémoire immunitaire capable de corriger n'importe quel dérèglement de la réponse."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.vaccination-serotherapie-confondues
+        feedback: >
+          Un vaccin apporte un ANTIGÈNE pour préparer une réponse contre un
+          agent précis : il ne corrige aucun dérèglement. Il ne rendrait ni sa
+          tolérance à un système auto-immun, ni ses LT4 à un patient
+          séropositif.
+    correct_feedback: >
+      Trois mécanismes distincts, non trois degrés d'une même maladie. SIDA :
+      déficit, le système perd ses coordinateurs. Allergie : réaction
+      excessive contre un allergène extérieur inoffensif. Auto-immunité :
+      rupture de la tolérance, le système attaque le soi.
+    solution: |
+      **Ce que le mot « immunitaire » ne dit pas :** trois maladies peuvent
+      concerner le même système et fonctionner à l'envers l'une de l'autre.
+
+      **Trois questions pour trancher.** Le système réagit-il trop, ou pas
+      assez ? Contre quelle cible ? Quelle cellule est en cause ?
+
+      **Les trois réponses.** SIDA : pas assez, faute de LT4. Allergie : trop,
+      contre un allergène extérieur. Auto-immunité : trop, contre le soi.
+
+  - id: DI-11
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: svt_dysfonctionnements_immunitaires
+    tags: [serotherapie, vaccination, urgence]
+    stem: >
+      Un enfant non vacciné se blesse profondément avec un objet rouillé. Le
+      médecin lui administre à la fois un sérum antitétanique et une première
+      dose de vaccin. Pourquoi les deux à la fois ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le sérum protège immédiatement mais quelques semaines seulement ; le vaccin ne protégera qu'au bout de plusieurs jours, mais durablement, grâce à la mémoire que l'enfant construira lui-même."
+        correct: true
+      - id: B
+        text: "Le sérum sert à amorcer la réponse : les anticorps injectés se multiplient dans l'organisme de l'enfant et y restent, le vaccin ne venant qu'entretenir cette population d'anticorps déjà installée."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.immunite-passive-mal-comprise
+        feedback: >
+          Les anticorps injectés ne se multiplient jamais : ce sont des
+          molécules, progressivement reconnues comme étrangères puis
+          éliminées. Ils agissent tout de suite, mais ne laissent rien
+          derrière eux — d'où la nécessité du vaccin en parallèle.
+      - id: C
+        text: "Le vaccin est administré par précaution générale : une fois vacciné contre le tétanos, l'enfant sera protégé contre l'ensemble des infections que pourrait provoquer une plaie souillée."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.vaccin-protection-universelle
+        feedback: >
+          Un vaccin protège contre UN agent précis, celui dont il porte
+          l'antigène — ici la toxine tétanique. Il ne couvre pas les autres
+          micro-organismes susceptibles d'infecter une plaie.
+      - id: D
+        text: "Le sérum sert à calmer une réaction allergique au métal rouillé, et le vaccin à empêcher que le système immunitaire ne se retourne ensuite contre les tissus lésés de l'enfant."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus
+        feedback: >
+          Ni allergie ni auto-immunité ne sont en cause ici : le risque est
+          une INFECTION par une bactérie et sa toxine. Sérum et vaccin visent
+          tous deux cet agent précis, l'un dans l'urgence, l'autre pour la
+          suite.
+    correct_feedback: >
+      Les deux logiques se complètent exactement là où chacune est faible. Le
+      sérum comble le délai que le vaccin ne peut pas éviter ; le vaccin
+      comble l'absence de mémoire que le sérum ne peut pas fournir.
+    solution: |
+      **Le problème du moment :** la toxine tétanique peut agir en quelques
+      jours. Une réponse primaire, elle, demande plusieurs jours à quelques
+      semaines. Le temps manque.
+
+      **Ce que le sérum apporte :** des anticorps déjà fabriqués, actifs dès
+      l'injection — mais non renouvelés, donc éliminés en quelques semaines.
+
+      **Ce que le vaccin apporte :** un antigène qui déclenche la réponse de
+      l'enfant, lente à venir mais durable, avec des cellules mémoire pour les
+      années suivantes.

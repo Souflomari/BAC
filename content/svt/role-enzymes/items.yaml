@@ -447,3 +447,190 @@ items:
       entièrement une fois dans l'estomac, où une autre enzyme (la pepsine),
       adaptée à ce pH acide, prend le relais pour un autre substrat (les
       protéines).
+
+  # ── TROIS ITEMS AJOUTÉS LE 2026-09-05 ──────────────────────────────────────
+  # Motif : quatre des six erreurs déclarées étaient sous le plancher de 3
+  # items du banc, donc inévaluables par le modèle apprenant. Ces trois items
+  # comblent exactement ce déficit, dans le périmètre de lesson.md (R3 et R4).
+  - id: RE-7
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: svt_role_enzymes
+    tags: [temperature, denaturation, optimum]
+    stem: >
+      On porte un tube d'amylase salivaire à $70\,^\circ\text{C}$ pendant dix
+      minutes, puis on le ramène soigneusement à $37\,^\circ\text{C}$ avant
+      d'y ajouter de l'amidon. Aucune production de maltose n'est détectée.
+      Quelle explication est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La chaleur excessive a rompu les liaisons faibles qui maintenaient le repliement de la protéine : le site actif est détruit, et revenir à une température favorable ne le reconstruit pas."
+        correct: true
+      - id: B
+        text: "L'absence de réaction ne peut être qu'un défaut de manipulation : une fois la température ramenée à sa valeur optimale, l'amylase retrouve nécessairement l'activité qu'elle avait avant le chauffage."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.denaturation-reversible
+        feedback: >
+          C'est traiter la dénaturation comme une simple mise en veille. La
+          chaleur excessive rompt le repliement de la protéine, le plus
+          souvent de façon IRRÉVERSIBLE : rétablir la température ne
+          reconstruit pas un site actif détruit.
+      - id: C
+        text: "À $70\\,^\\circ\\text{C}$ l'amylase travaillait au contraire à plein régime et a transformé, en dix minutes, la totalité de l'amidon présent dans le tube avant même l'ajout."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.optimum-ignore
+        feedback: >
+          « Plus chaud = plus actif » ne vaut que JUSQU'À l'optimum thermique,
+          voisin de $37\,^\circ\text{C}$ pour l'amylase salivaire. Au-delà de
+          $45\,^\circ\text{C}$ environ, l'activité chute. Et l'énoncé précise
+          que l'amidon n'est ajouté qu'APRÈS le retour à $37\,^\circ\text{C}$.
+      - id: D
+        text: "L'amylase s'est usée pendant ces dix minutes de chauffage, chaque molécule ayant épuisé le nombre limité de coupures qu'elle est capable de réaliser au cours de son existence."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.enzyme-usee-ou-modifiee-par-la-catalyse
+        feedback: >
+          Une enzyme ne s'use pas en catalysant : elle ressort intacte de
+          chaque cycle et recommence indéfiniment. Et ici elle n'a rien
+          catalysé du tout pendant le chauffage, faute de substrat. Ce qui l'a
+          détruite, c'est la chaleur elle-même.
+    correct_feedback: >
+      Au-delà de son optimum thermique, la chaleur rompt les liaisons faibles
+      qui maintiennent le repliement de la protéine : le site actif perd sa
+      forme. Cette dénaturation est le plus souvent irréversible — revenir à
+      $37\,^\circ\text{C}$ ne restaure rien.
+    solution: |
+      **Ce que fait la chaleur excessive :** elle ne ralentit pas l'enzyme,
+      elle la déforme. Les liaisons faibles qui tiennent le repliement cèdent,
+      et le site actif — cette cavité de forme très précise — cesse d'exister.
+
+      **Pourquoi le retour à 37 °C ne suffit pas :** la température favorable
+      permet à une enzyme INTACTE de bien travailler ; elle ne replie pas une
+      protéine déjà dénaturée.
+
+      **À retenir :** l'optimum thermique décrit une activité maximale, pas un
+      seuil au-delà duquel on pourrait faire mieux.
+
+  - id: RE-8
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: svt_role_enzymes
+    tags: [specificite_substrat, specificite_action]
+    stem: >
+      Deux expériences sont menées sur l'amylase salivaire. (1) Sur l'amidon,
+      l'analyse des produits ne détecte jamais que du maltose, à tout instant.
+      (2) Mise en présence de saccharose, puis d'une protéine, l'amylase ne
+      produit rien. Quelles propriétés ces deux expériences mettent-elles en
+      évidence, dans cet ordre ?
+    type: mcq
+    choices:
+      - id: A
+        text: "D'abord la spécificité d'action (ce que l'enzyme fait à son substrat), puis la spécificité de substrat (quelles molécules elle accepte dans son site actif)."
+        correct: true
+      - id: B
+        text: "D'abord la spécificité de substrat, puis la spécificité d'action : la première expérience montre déjà que seul l'amidon convient, la seconde précise ensuite la nature de la transformation réalisée."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.specificites-substrat-action-confondues
+        feedback: >
+          Les deux sont interverties. L'expérience (1) ne compare AUCUN autre
+          substrat : elle observe un seul tube et regarde le produit obtenu —
+          c'est la spécificité d'action. L'expérience (2), elle, compare trois
+          substrats sans analyser les produits : c'est la spécificité de
+          substrat.
+      - id: C
+        text: "Les deux mettent en évidence la même et unique propriété, la spécificité de substrat, la seconde ne faisant que confirmer sur d'autres molécules ce que la première avait déjà établi sur l'amidon."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.specificites-substrat-action-confondues
+        feedback: >
+          Ce sont bien deux propriétés distinctes, qui répondent à deux
+          questions différentes : QUI l'enzyme accepte (substrat) et CE
+          QU'ELLE EN FAIT (action). Une enzyme pourrait accepter un seul
+          substrat et lui faire subir plusieurs transformations différentes —
+          ce n'est pas ce qu'on observe ici.
+      - id: D
+        text: "Aucune des deux ne renseigne sur l'enzyme : l'amidon ne contient qu'un seul type de liaison hydrolysable, et le saccharose comme la protéine sont chimiquement trop stables pour réagir."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.effet-attribue-au-substrat
+        feedback: >
+          L'amidon contient plusieurs types de liaisons en principe
+          attaquables, et saccharose comme protéines sont hydrolysés sans
+          difficulté par d'AUTRES enzymes. Dans les deux expériences, la
+          variable est l'amylase, pas la réactivité propre des molécules.
+    correct_feedback: >
+      Deux questions, deux expériences. Analyser les produits obtenus sur un
+      seul substrat teste la spécificité d'ACTION ; comparer plusieurs
+      substrats sans regarder les produits teste la spécificité de SUBSTRAT.
+    solution: |
+      **Expérience (1) — un seul substrat, plusieurs produits possibles.**
+      L'amidon est déjà en train de réagir ; on regarde CE QUI SORT. Toujours
+      du maltose, jamais du glucose libre : l'amylase réalise toujours la même
+      transformation. C'est la spécificité d'ACTION.
+
+      **Expérience (2) — plusieurs substrats, une seule question.** On ne
+      regarde pas les produits, on regarde s'il se passe quelque chose. Seul
+      l'amidon réagit : l'amylase n'accepte qu'un substrat précis dans son
+      site actif. C'est la spécificité de SUBSTRAT.
+
+      **Le repère :** demande-toi ce que l'expérience fait VARIER. Le
+      substrat ? spécificité de substrat. Rien, et on observe le produit ?
+      spécificité d'action.
+
+  - id: RE-9
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: svt_role_enzymes
+    tags: [ph_optimum, denaturation, digestion]
+    stem: >
+      Le bol alimentaire, très acide en sortie d'estomac, est neutralisé dans
+      l'intestin grêle : le pH y remonte au voisinage de la neutralité.
+      L'amylase salivaire qui a traversé l'estomac y retrouve-t-elle son
+      activité ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : le pH très acide de l'estomac a déformé son site actif, et le retour à un pH favorable ne restaure pas cette forme perdue — c'est l'amylase pancréatique qui prend le relais dans l'intestin."
+        correct: true
+      - id: B
+        text: "Oui : le pH acide n'avait fait que suspendre son activité le temps de la traversée de l'estomac, si bien qu'elle reprend son travail dès que le milieu redevient neutre autour d'elle."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.denaturation-reversible
+        feedback: >
+          Un pH très éloigné de l'optimum ne met pas l'enzyme en pause : il
+          déforme son site actif, comme le fait une chaleur excessive. Cette
+          dénaturation ne se défait pas quand les conditions redeviennent
+          favorables.
+      - id: C
+        text: "Oui, et son activité y dépasse même celle qu'elle avait en bouche : l'efficacité d'une enzyme augmente avec l'écart de pH qu'elle a subi auparavant, l'acidité jouant un rôle activateur."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.optimum-ignore
+        feedback: >
+          Il n'existe aucune loi de ce genre. Une enzyme a un pH OPTIMAL — de
+          part et d'autre, son activité diminue, et un écart important la
+          dénature. S'éloigner de l'optimum n'a jamais rendu une enzyme plus
+          efficace.
+      - id: D
+        text: "Non, mais pour une autre raison : l'amylase salivaire a été entièrement consommée dans la bouche, où chaque molécule a servi une fois, si bien qu'il n'en atteint jamais l'intestin."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.enzyme-consommee-par-la-reaction
+        feedback: >
+          Une enzyme n'est jamais consommée par la réaction qu'elle catalyse :
+          l'amylase qui quitte la bouche est en quantité inchangée. Ce n'est
+          pas une question de stock épuisé, mais de conditions de milieu qui
+          l'ont dénaturée.
+    correct_feedback: >
+      Un pH trop éloigné de l'optimum déforme le site actif, exactement comme
+      une chaleur excessive — et cette déformation ne se défait pas quand le
+      milieu redevient favorable. La digestion de l'amidon se poursuit dans
+      l'intestin grâce à une autre enzyme, l'amylase pancréatique.
+    solution: |
+      **Ce que fait un pH extrême :** il modifie les charges électriques qui
+      maintiennent le repliement de la protéine. Le site actif perd sa forme
+      précise — même mécanisme que la dénaturation thermique.
+
+      **Pourquoi le retour à la neutralité ne suffit pas :** un pH favorable
+      permet à une enzyme intacte de travailler, il ne replie pas une protéine
+      dénaturée.
+
+      **Comment l'organisme s'en accommode :** chaque compartiment digestif a
+      ses propres enzymes, dont l'optimum correspond au pH local — pepsine en
+      milieu gastrique acide, amylase pancréatique en milieu intestinal.
