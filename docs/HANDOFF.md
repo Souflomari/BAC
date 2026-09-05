@@ -3243,3 +3243,57 @@ jamais » dans un distracteur et pas dans la bonne réponse. Le cliquet
 tout ce qui sur-affirme ne laisse qu'UNE réponse debout, et c'est la bonne » —
 et il est à zéro. Les deux chiffres ne se contredisent pas : le mien compte
 une asymétrie, le sien compte une asymétrie EXPLOITABLE.
+
+### 11.20 Le téléphone gelait au « Commencer » et au « Terminer » d'une épreuve
+
+Le §8 avait mesuré une leçon dense qui ignore le doigt 6,7 s sur un
+téléphone bon marché (processeur bridé ×6), et laissé au propriétaire le vrai
+levier — ne pas rendre tous les chapitres d'un coup — parce qu'il casse quatre
+propriétés que la leçon tient. Personne n'avait posé la même question à la
+page d'épreuve. Elle est pire, et son levier ne casse rien.
+
+**LE FAIT.** Le document d'épreuve est léger (≤ 194 ko bruts, 53 ko gzip)
+parce que tout se rend côté client, en deux gestes : « Commencer » rend d'un
+coup tous les énoncés, « Terminer » d'un coup tous les corrigés. Sur les 39
+sujets, processeur bridé ×6, l'écran gèle **de 7 à 13 s au « Commencer »**
+(145 à 409 formules d'énoncé) et **de 11 à 30 s au « Terminer »** (480 à
+1 670 formules de corrigé), en UNE tâche de 4 à 13 s pendant laquelle rien ne
+répond — ni le défilement, ni un appui. Le tableau complet est plus bas.
+
+**LA CAUSE, en deux couches.** Chaque bloc de texte (énoncé, raisonnement,
+intro) passe par le pipeline markdown complet — remark, GFM, typographie
+française, KaTeX, RTL — dans le rendu React, et tous les blocs d'une phase
+sont rendus dans le même rendu : une seule tâche, aussi longue que la somme.
+Et `MdBlock`, le composant qui porte ce pipeline, n'était pas mémoïsé : à
+CHAQUE rendu du parent, chaque bloc repassait par le pipeline entier. Dans
+l'épreuve, le parent se re-rend à chaque seconde du chrono.
+
+**CE QUI A ÉTÉ FAIT.** Deux choses, mesurées ensemble ci-dessous.
+
+- `MdBlock` est mémoïsé (`React.memo`) : deux chaînes en props, inchangées,
+  rien à refaire. Cela vaut pour les 62 leçons aussi (cartes d'exercice,
+  points d'arrêt), pas seulement pour l'épreuve.
+- `EpreuveShell` révèle les exercices UN PAR UN, chacun dans une transition
+  React (`useTransition`) : le rendu d'une transition est découpé en
+  tranches, le fil d'exécution redevient libre entre deux, et chaque exercice
+  est validé (commit) avant que le suivant ne commence — le premier énoncé,
+  puis le premier corrigé, apparaissent en une fraction du temps total. Les
+  coquilles d'exercice (en-tête, points) sont là d'emblée ; les énoncés déjà
+  rendus restent en place pendant la correction (deux compteurs, un par
+  phase). La racine porte `data-sujet-complet` puis `data-corrige-complet`
+  quand le dernier exercice de la phase est rendu.
+
+**CE QUE ÇA CHANGE POUR LES INSTRUMENTS.** Dix instruments ouvrent les 39
+sujets ; ils attendaient `[data-exam-exo]` puis un délai de 250 à 500 ms. Avec
+la révélation progressive, ce délai mesurerait une page à moitié rendue — et
+la mesurerait VERTE, moins de texte donnant moins de défauts. Tous attendent
+désormais les deux marqueurs (INSTRUMENTS, « Le protocole d'ouverture d'une
+épreuve »), dom-truth compris.
+
+**CE QUE ÇA NE FAIT PAS.** Le travail total ne diminue pas : le corrigé de
+SPC 2024 R demande toujours ~1 350 rendus KaTeX. Il est découpé et le
+premier exercice arrive tôt ; la page redevient lisible et réactive pendant
+que le reste se prépare. Le levier suivant — ne rendre que ce qui est près
+de l'écran — a été écarté : les instruments qui lisent le DOM après
+« Terminer » perdraient leur portée, et un élève qui imprime son corrigé
+aussi.
