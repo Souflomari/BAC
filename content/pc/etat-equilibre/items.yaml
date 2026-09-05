@@ -253,7 +253,7 @@ items:
         text: "Qr peut être calculé à tout instant de la transformation à partir des concentrations présentes ; K est la valeur particulière de Qr une fois l'équilibre atteint."
         correct: true
       - id: B
-        text: "Qr et K désignent exactement la même grandeur, sous deux noms différents."
+        text: "Qr et K désignent exactement la même grandeur sous deux noms différents, l'un employé pendant la réaction et l'autre à la fin."
         correct: false
         misconception: mc.physics.pc_etat_equilibre.confond-qr-et-k
         feedback: >
@@ -264,7 +264,7 @@ items:
           l'information la plus utile de $Q_r$ : sa capacité à suivre où en
           est le système avant l'équilibre.
       - id: C
-        text: "K varie au cours du temps comme Qr, mais plus lentement."
+        text: "K varie au cours du temps exactement comme Qr, mais plus lentement, ce qui explique qu'on le mesure une fois l'équilibre atteint."
         correct: false
         misconception: mc.physics.pc_etat_equilibre.confond-qr-et-k
         feedback: >
@@ -272,7 +272,7 @@ items:
           température fixée) : c'est $Q_r$ seul qui évolue, en se rapprochant
           progressivement de $K$. $K$ est une constante - c'est même son nom.
       - id: D
-        text: "Qr est une constante fixée par la réaction, alors que K varie selon l'instant où on l'évalue."
+        text: "Qr est une constante fixée une fois pour toutes par la réaction, alors que K varie selon l'instant précis auquel on choisit de l'évaluer."
         correct: false
         misconception: mc.physics.pc_etat_equilibre.confond-qr-et-k
         feedback: >
@@ -311,7 +311,7 @@ items:
         text: "$K_1 = K_2$ : la constante d'équilibre ne dépend que de la réaction et de la température, pas des concentrations initiales, même si $\\tau$ diffère."
         correct: true
       - id: B
-        text: "$K_1 \\neq K_2$, car des taux d'avancement différents signalent forcément des constantes d'équilibre différentes."
+        text: "$K_1 \\neq K_2$, car des taux d'avancement différents signalent forcément des constantes d'équilibre différentes pour les deux expériences."
         correct: false
         misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
         feedback: >
@@ -320,7 +320,7 @@ items:
           possible d'avoir deux $\tau$ différents pour une seule et même
           valeur de $K$. Un $\tau$ différent ne prouve rien sur $K$.
       - id: C
-        text: "$K_2 > K_1$, car l'expérience 2 a un taux d'avancement plus élevé, donc une réaction plus favorisée."
+        text: "$K_2 > K_1$, car l'expérience 2 présente un taux d'avancement plus élevé, signe d'une réaction nettement plus favorisée dans ce cas."
         correct: false
         misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
         feedback: >
@@ -330,7 +330,7 @@ items:
           est plus en excès que dans l'expérience 1), ce qui pousse davantage
           le réactif limitant à réagir, à $K$ strictement identique.
       - id: D
-        text: "On ne peut rien conclure sans connaître les concentrations initiales exactes des deux expériences."
+        text: "On ne peut rien conclure sans connaître les concentrations initiales exactes utilisées dans chacune des deux expériences comparées."
         correct: false
         misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
         feedback: >
@@ -366,7 +366,7 @@ items:
         text: "Qr a changé (il s'écarte de sa valeur à l'équilibre) ; K, lui, n'a pas changé - c'est justement cet écart qui va faire évoluer le système vers un nouvel équilibre."
         correct: true
       - id: B
-        text: "K a changé, car diluer le mélange change la quantité de matière disponible pour réagir."
+        text: "K a changé, car diluer le mélange modifie la quantité de matière effectivement disponible pour réagir dans le volume considéré."
         correct: false
         misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
         feedback: >
@@ -375,7 +375,7 @@ items:
           jamais $K$. C'est $Q_r$, calculé avec les nouvelles concentrations
           diluées, qui s'écarte momentanément de $K$.
       - id: C
-        text: "Qr et K ont tous les deux changé dans les mêmes proportions, donc le système reste à l'équilibre."
+        text: "Qr et K ont tous les deux changé dans les mêmes proportions, si bien que le système se retrouve toujours à l'équilibre juste après la dilution."
         correct: false
         misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
         feedback: >
@@ -385,7 +385,7 @@ items:
           tout. C'est cet écart entre le nouveau $Q_r$ et $K$ qui prouve que
           le système n'est plus à l'équilibre.
       - id: D
-        text: "Ni Qr ni K n'ont changé, puisque diluer ne fait que rajouter de l'eau, qui n'entre pas dans l'expression de Qr."
+        text: "Ni Qr ni K n'ont changé, puisque diluer ne fait qu'ajouter de l'eau, qui n'entre pas dans l'expression du quotient de réaction."
         correct: false
         misconception: mc.physics.pc_etat_equilibre.dilution-effet-universel
         feedback: >
@@ -543,8 +543,8 @@ items:
     choices:
       - id: A
         text: >-
-          Rien ne devrait se passer, car les ions SCN- disponibles avaient
-          déjà été totalement consommés avant cet ajout.
+          Rien ne devrait se passer, car les ions SCN- disponibles avaient déjà été
+          totalement consommés avant même cet ajout de Fe3+.
         correct: false
         misconception: mc.physics.pc_etat_equilibre.reactif-epuise-transformation-totale
         feedback: >
@@ -552,7 +552,7 @@ items:
           l'équilibre (transformation limitée) ; son épuisement total
           n'explique pas la couleur figée.
       - id: B
-        text: "Rien ne devrait se passer, car la réaction est déjà terminée."
+        text: "Rien ne devrait se passer, car la réaction est déjà terminée et le mélange a atteint son état final définitif."
         correct: false
         misconception: mc.physics.pc_etat_equilibre.equilibre-est-un-arret
         feedback: >
@@ -561,8 +561,8 @@ items:
           de Fe3+.
       - id: C
         text: >-
-          La couleur devrait diminuer, car ajouter davantage de réactif
-          consommerait le complexe déjà formé.
+          La couleur devrait diminuer, car ajouter davantage de réactif consommerait une
+          partie du complexe coloré déjà formé.
         correct: false
         misconception: mc.physics.pc_etat_equilibre.une-reaction-domine
         feedback: >
@@ -606,8 +606,8 @@ items:
         correct: true
       - id: B
         text: >-
-          Parce que la réaction directe s'arrête net dès que la réaction
-          inverse démarre.
+          Parce que la réaction directe s'arrête net dès l'instant où la réaction
+          inverse démarre à son tour dans le mélange.
         correct: false
         misconception: mc.physics.pc_etat_equilibre.une-reaction-domine
         feedback: >
@@ -616,8 +616,9 @@ items:
           leurs vitesses, sans qu'aucune ne s'annule.
       - id: C
         text: >-
-          Parce que les ions Fe3+ et SCN- finissent par être totalement
-          consommés, ce qui annule la vitesse directe.
+          Parce que les ions Fe3+ et SCN- finissent par être totalement consommés dans
+          le mélange, ce qui annule complètement la vitesse de la réaction directe qui
+          les mettait en jeu.
         correct: false
         misconception: mc.physics.pc_etat_equilibre.reactif-epuise-transformation-totale
         feedback: >
@@ -626,8 +627,8 @@ items:
           total qui égalise les vitesses.
       - id: D
         text: >-
-          Parce qu'on a ajouté de l'eau en cours de réaction, ce qui a dilué
-          et ralenti la réaction directe.
+          Parce qu'on a ajouté de l'eau en cours de réaction, ce qui a dilué le mélange
+          et ralenti d'autant la réaction directe.
         correct: false
         misconception: mc.physics.pc_etat_equilibre.dilution-effet-universel
         feedback: >
@@ -933,8 +934,8 @@ items:
     choices:
       - id: A
         text: >-
-          Parce que $Q_r$ est par nature une fonction croissante du temps,
-          quelle que soit la réaction considérée.
+          Parce que $Q_r$ est par nature une fonction croissante du temps, quelle que
+          soit la réaction considérée et quel que soit son point de départ.
         correct: false
         misconception: mc.physics.pc_etat_equilibre.qr-croit-par-nature
         feedback: >
@@ -943,8 +944,8 @@ items:
           partait avec un excès de produit, $Q_r$ diminuerait vers K.
       - id: B
         text: >-
-          Parce que le volume du mélange diminue au cours de la réaction, ce
-          qui fait mécaniquement grimper toutes les concentrations.
+          Parce que le volume du mélange diminue au cours de la réaction, ce qui fait
+          mécaniquement grimper toutes les concentrations en présence dans le milieu.
         correct: false
         misconception: mc.physics.pc_etat_equilibre.qr-croit-par-nature
         feedback: >
@@ -959,8 +960,8 @@ items:
         correct: true
       - id: D
         text: >-
-          Parce que la constante K augmente elle-même progressivement à
-          mesure que la réaction avance, entraînant $Q_r$ avec elle.
+          Parce que la constante $K$ augmente elle-même progressivement à mesure que la
+          réaction avance, entraînant $Q_r$ avec elle vers le haut.
         correct: false
         misconception: mc.physics.pc_etat_equilibre.confond-qr-et-k
         feedback: >
@@ -996,8 +997,8 @@ items:
     choices:
       - id: A
         text: >-
-          $K_1 = K_2$ nécessairement, puisque K ne dépend jamais de rien
-          d'autre que l'équation de la réaction.
+          $K_1 = K_2$ nécessairement, puisque la constante d'équilibre $K$ ne dépend
+          jamais de rien d'autre que de l'équation de la réaction elle-même.
         correct: false
         misconception: mc.physics.pc_etat_equilibre.k-independant-temperature
         feedback: >
@@ -1006,8 +1007,8 @@ items:
           la température.
       - id: B
         text: >-
-          Comme les concentrations initiales sont identiques dans les deux
-          cas, $K_1 = K_2$ forcément.
+          Comme les concentrations initiales sont rigoureusement identiques dans les
+          deux cas, on a forcément $K_1 = K_2$ à l'arrivée.
         correct: false
         misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
         feedback: >
@@ -1016,8 +1017,8 @@ items:
           varier, et ici elle diffère justement entre les deux expériences.
       - id: C
         text: >-
-          On ne peut rien dire, car K n'est définie qu'à une seule
-          température de référence, jamais à 40 °C.
+          On ne peut rien dire de ces deux valeurs, car $K$ n'est définie qu'à une seule
+          température de référence, et jamais à $40\,^\circ\text{C}$.
         correct: false
         misconception: mc.physics.pc_etat_equilibre.k-independant-temperature
         feedback: >
@@ -1026,9 +1027,8 @@ items:
           température de référence.
       - id: D
         text: >-
-          Rien ne garantit qu'elles soient égales : K ne dépend que de la
-          réaction et de la température, donc un changement de température
-          peut, en toute généralité, changer sa valeur.
+          Rien ne garantit qu'elles soient égales : $K$ ne dépend que de la réaction et
+          de la température, donc un changement de température peut changer sa valeur.
         correct: true
     correct_feedback: >
       K est fixé par la réaction ET la température ; changer l'une des deux
@@ -1116,8 +1116,8 @@ items:
     choices:
       - id: A
         text: >-
-          Le système va évoluer dans le sens inverse, car atteindre K
-          signifie qu'il a "trop avancé" et doit reculer.
+          Le système va évoluer dans le sens inverse, car atteindre $K$ signifie qu'il a
+          « trop avancé » et qu'il doit maintenant reculer.
         correct: false
         misconception: mc.physics.pc_etat_equilibre.critere-evolution-errone
         feedback: >
@@ -1132,8 +1132,8 @@ items:
         correct: true
       - id: C
         text: >-
-          Le système va immédiatement évoluer dans le sens direct, car
-          $Q_{r,i}=K$ est justement la condition qui déclenche la réaction
+          Le système va immédiatement évoluer dans le sens direct, car l'égalité
+          $Q_{r,i}=K$ est justement la condition qui déclenche le départ de la réaction
           directe.
         correct: false
         misconception: mc.physics.pc_etat_equilibre.critere-evolution-errone
@@ -1143,8 +1143,8 @@ items:
           des deux sens.
       - id: D
         text: >-
-          On ne peut rien affirmer sans connaître aussi le taux
-          d'avancement final $\tau$ de ce système.
+          On ne peut rien affirmer sans connaître également le taux d'avancement final
+          $\tau$ atteint par ce système à l'équilibre.
         correct: false
         misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
         feedback: >
@@ -1359,7 +1359,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$\\tau = 1{,}6\\times10^{-3}/1{,}20\\times10^{-2} \\approx 0{,}13$."
+        text: "$\\tau = 1{,}6\\times10^{-3}/1{,}20\\times10^{-2} \\approx 0{,}13$ : transformation très peu avancée."
         correct: false
         misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
         feedback: >
@@ -1372,7 +1372,7 @@ items:
           transformation limitée ($\tau<1$), bien qu'assez avancée.
         correct: true
       - id: C
-        text: "$\\tau=0{,}80$, donc la transformation est totale."
+        text: "$\\tau=0{,}80$, donc la transformation est totale, l'avancement final étant proche de 1."
         correct: false
         misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
         feedback: >
@@ -1380,7 +1380,7 @@ items:
           totale ; $\tau=0{,}80$ laisse subsister $0{,}4\times10^{-3}$
           mol/L de $Cu^{2+}$ non consommé, ce qui reste limité.
       - id: D
-        text: "$\\tau = 1{,}6\\times10^{-3}/(2{,}0\\times10^{-3}/4) = 3{,}2$."
+        text: "$\\tau = 1{,}6\\times10^{-3}/(2{,}0\\times10^{-3}/4) = 3{,}2$ : transformation plus que totale."
         correct: false
         misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
         feedback: >

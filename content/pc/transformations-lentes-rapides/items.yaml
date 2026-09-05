@@ -358,8 +358,8 @@ items:
         correct: true
       - id: B
         text: >-
-          La concentration et la température agissent exactement de la même
-          façon : toutes deux n'augmentent que la fréquence des chocs.
+          La concentration et la température agissent exactement de la même façon :
+          toutes deux se contentent d'augmenter la fréquence des chocs entre entités.
         correct: false
         misconception: mc.physics.pc_transformations_lentes_rapides.temperature-concentration-confusion
         feedback: >
@@ -370,8 +370,8 @@ items:
           chocs.
       - id: C
         text: >-
-          La température n'a aucun effet sur la fréquence des chocs, elle
-          n'agit que sur leur énergie.
+          La température n'a aucun effet sur la fréquence des chocs entre les entités
+          réactives : elle n'agit que sur l'énergie de chacun d'eux.
         correct: false
         misconception: mc.physics.pc_transformations_lentes_rapides.temperature-concentration-confusion
         feedback: >
@@ -380,8 +380,8 @@ items:
           l'énergie de chaque choc.
       - id: D
         text: >-
-          La concentration augmente l'énergie de chaque choc, la température
-          n'augmente que leur fréquence.
+          La concentration augmente l'énergie de chaque choc, tandis que la température
+          se contente d'en augmenter la fréquence dans le mélange.
         correct: false
         misconception: mc.physics.pc_transformations_lentes_rapides.temperature-concentration-confusion
         feedback: >
@@ -484,8 +484,8 @@ items:
         correct: true
       - id: B
         text: >-
-          Comparer une précipitation et une réaction d'oxydoréduction, et
-          constater qu'elles n'ont pas la même vitesse.
+          Comparer une précipitation et une réaction d'oxydoréduction, puis constater
+          qu'elles ne se déroulent pas du tout à la même vitesse.
         correct: false
         misconception: mc.physics.pc_transformations_lentes_rapides.variable-non-isolee
         feedback: >
@@ -495,7 +495,7 @@ items:
           c'est la famille qui fixe la vitesse. Il faut au contraire garder
           la même réaction et ne faire varier que les conditions.
       - id: C
-        text: "Chronométrer très précisément la rouille du clou pour vérifier qu'elle ne dépasse jamais six mois."
+        text: "Chronométrer très précisément la rouille d'un clou de fer, afin de vérifier qu'elle ne dépasse jamais une durée de six mois."
         correct: false
         misconception: mc.physics.pc_transformations_lentes_rapides.variable-non-isolee
         feedback: >
@@ -503,7 +503,7 @@ items:
           sur ce qui contrôle cette durée. Il faut comparer au moins deux
           situations pour isoler un facteur.
       - id: D
-        text: "Vérifier que le fer et le bois appartiennent bien tous deux à la famille des combustibles."
+        text: "Vérifier que le fer et le bois appartiennent bien tous les deux à la grande famille chimique des combustibles."
         correct: false
         misconception: mc.physics.pc_transformations_lentes_rapides.famille-fixe-vitesse
         feedback: >
@@ -662,12 +662,12 @@ items:
     choices:
       - id: A
         text: >-
-          Une transformation lente peut être suivie pendant son déroulement
-          (prélèvements, mesures successives) ; une transformation rapide ne
-          se laisse observer qu'après coup, une fois l'état final atteint.
+          Une transformation lente peut être suivie pendant son déroulement, par
+          prélèvements et mesures successives ; une transformation rapide ne se laisse
+          observer qu'après coup.
         correct: true
       - id: B
-        text: "Une transformation rapide est plus facile à étudier, car elle libère plus vite les produits à analyser."
+        text: "Une transformation rapide est bien plus facile à étudier, car elle libère plus vite les produits que l'on souhaite analyser."
         correct: false
         misconception: mc.physics.pc_transformations_lentes_rapides.suivi-consequence-inversee
         feedback: >
@@ -676,7 +676,7 @@ items:
           on peut l'observer. Seul l'état final, pas son déroulement, est
           accessible.
       - id: C
-        text: "Une transformation lente ne peut jamais être suivie, car elle prend trop de temps pour qu'on reste au laboratoire."
+        text: "Une transformation lente ne peut jamais être suivie pendant son déroulement, car elle prend beaucoup trop de temps pour qu'on reste au laboratoire à l'observer."
         correct: false
         misconception: mc.physics.pc_transformations_lentes_rapides.suivi-consequence-inversee
         feedback: >
@@ -684,7 +684,7 @@ items:
           elle laisse le temps de prélever et de mesurer son évolution
           minute par minute, contrairement à une transformation rapide.
       - id: D
-        text: "Il n'y a aucune différence pratique : dans les deux cas, on ne peut observer que l'état final."
+        text: "Il n'y a aucune différence pratique entre les deux : dans les deux cas, on ne peut jamais observer que l'état final du mélange."
         correct: false
         misconception: mc.physics.pc_transformations_lentes_rapides.suivi-consequence-inversee
         feedback: >
@@ -767,15 +767,14 @@ items:
     choices:
       - id: A
         text: >-
-          Parce qu'il n'existe pas d'électron libre en solution : tout
-          électron cédé par le réducteur doit être immédiatement capté par
-          l'oxydant, donc les électrons doivent s'annuler exactement dans
-          l'équation globale.
+          Parce qu'il n'existe pas d'électron libre en solution : tout électron cédé par
+          le réducteur doit être capté par l'oxydant, donc les électrons doivent
+          s'annuler exactement.
         correct: true
       - id: B
         text: >-
-          Parce que le nombre d'électrons échangés doit toujours être pair,
-          pour respecter la conservation de la charge.
+          Parce que le nombre total d'électrons échangés doit toujours être un nombre
+          pair, afin que la conservation de la charge électrique soit respectée.
         correct: false
         misconception: mc.physics.pc_transformations_lentes_rapides.redox-combinaison-incorrecte
         feedback: >
@@ -785,8 +784,8 @@ items:
           exemple, pour le couple $MnO_4^-/Mn^{2+}$).
       - id: C
         text: >-
-          Parce que sinon la réaction globale serait trop lente pour être
-          suivie au chronomètre.
+          Parce que sinon la réaction globale se déroulerait beaucoup trop lentement
+          pour pouvoir être suivie au chronomètre.
         correct: false
         misconception: mc.physics.pc_transformations_lentes_rapides.critere-temps-inverse
         feedback: >
@@ -796,9 +795,8 @@ items:
           réelle à nos moyens d'observation.
       - id: D
         text: >-
-          Parce que l'équation globale doit obligatoirement comporter le
-          symbole $\rightleftharpoons$, réservé aux équations équilibrées en
-          électrons.
+          Parce que l'équation globale doit obligatoirement comporter le symbole
+          $\rightleftharpoons$, réservé aux équations équilibrées en électrons.
         correct: false
         misconception: mc.physics.pc_transformations_lentes_rapides.redox-combinaison-incorrecte
         feedback: >
@@ -883,15 +881,14 @@ items:
     choices:
       - id: A
         text: >-
-          Parce que si c'était le cas, seule la fréquence des chocs (donc la
-          concentration) contrôlerait la vitesse, ce qui n'explique pas
-          l'effet marqué de la température observé au chapitre 4, qui change peu
-          cette fréquence.
+          Parce que si c'était le cas, seule la fréquence des chocs, donc la
+          concentration, contrôlerait la vitesse — ce qui n'explique pas l'effet marqué
+          de la température vu au chapitre 4.
         correct: true
       - id: B
         text: >-
-          Parce qu'un choc entre deux entités identiques (deux ions iodure,
-          par exemple) est physiquement impossible.
+          Parce qu'un choc entre deux entités identiques, deux ions iodure par exemple,
+          est tout simplement impossible sur le plan physique.
         correct: false
         misconception: mc.physics.pc_transformations_lentes_rapides.tout-choc-suffit
         feedback: >
@@ -901,8 +898,9 @@ items:
           de la température sur la vitesse.
       - id: C
         text: >-
-          Parce qu'à l'échelle microscopique, il n'existe pas de chocs entre
-          les entités réactives, seulement des réactions instantanées.
+          Parce qu'à l'échelle microscopique il n'existe aucun choc entre les entités
+          réactives, mais seulement des réactions instantanées dès que deux d'entre
+          elles se rencontrent.
         correct: false
         misconception: mc.physics.pc_transformations_lentes_rapides.tout-choc-suffit
         feedback: >
@@ -912,8 +910,8 @@ items:
           existence.
       - id: D
         text: >-
-          Parce que la concentration n'a en réalité aucun effet sur le
-          nombre de chocs entre les entités.
+          Parce que la concentration des réactifs n'a en réalité aucun effet sur le
+          nombre de chocs entre les entités du mélange.
         correct: false
         misconception: mc.physics.pc_transformations_lentes_rapides.facteur-sans-effet
         feedback: >
@@ -1006,13 +1004,12 @@ items:
     choices:
       - id: A
         text: >-
-          À $4\,^\circ\text{C}$, l'agitation thermique des espèces
-          réactives est plus faible : les chocs sont moins fréquents, et une
-          plus petite proportion d'entre eux atteint l'énergie nécessaire
-          pour être efficace — la dégradation est donc beaucoup plus lente.
+          À $4\,^\circ\text{C}$, l'agitation thermique est plus faible : les chocs sont
+          moins fréquents, et une plus petite proportion d'entre eux atteint l'énergie
+          nécessaire — la dégradation est donc beaucoup plus lente.
         correct: true
       - id: B
-        text: "Le froid détruit chimiquement une partie des espèces réactives responsables du caillage du lait."
+        text: "Le froid du réfrigérateur détruit chimiquement une partie des espèces réactives responsables du caillage du lait."
         correct: false
         misconception: mc.physics.pc_transformations_lentes_rapides.froid-detruit-especes
         feedback: >
@@ -1020,7 +1017,7 @@ items:
           restent présentes, en même quantité. C'est la vitesse à laquelle
           elles réagissent qui diminue, pas leur quantité.
       - id: C
-        text: "Le réfrigérateur diminue la concentration des espèces réactives dans le lait, ce qui ralentit la dégradation."
+        text: "Le réfrigérateur diminue la concentration des espèces réactives présentes dans le lait, ce qui en ralentit la dégradation."
         correct: false
         misconception: mc.physics.pc_transformations_lentes_rapides.froid-baisse-concentration
         feedback: >
@@ -1071,13 +1068,12 @@ items:
     choices:
       - id: A
         text: >-
-          Il a combiné les deux facteurs cinétiques dans le sens qui
-          ralentit (température plus basse ET concentration plus faible) :
-          moins de chocs par seconde, et une moindre proportion d'entre eux
-          assez énergétique, d'où une transformation nettement plus lente.
+          Il a combiné les deux facteurs cinétiques dans le sens qui ralentit : moins de
+          chocs par seconde, et une moindre proportion d'entre eux assez énergétique,
+          d'où une transformation nettement plus lente.
         correct: true
       - id: B
-        text: "En diluant fortement les réactifs, il a en réalité changé la nature chimique de la réaction, ce qui explique le net ralentissement."
+        text: "En diluant fortement les réactifs, il a en réalité changé la nature chimique de la réaction étudiée, ce qui explique à lui seul le net ralentissement observé."
         correct: false
         misconception: mc.physics.pc_transformations_lentes_rapides.changer-condition-change-nature
         feedback: >
@@ -1086,7 +1082,7 @@ items:
           terminer : c'est toujours la même équation chimique, seulement
           plus lente.
       - id: C
-        text: "Seule la baisse de température explique le ralentissement ; diluer les réactifs n'a, en réalité, aucun effet sur la vitesse d'une réaction."
+        text: "Seule la baisse de température explique ce ralentissement ; diluer les réactifs n'a, en réalité, aucun effet sur la vitesse d'une transformation chimique, quelle qu'elle soit."
         correct: false
         misconception: mc.physics.pc_transformations_lentes_rapides.facteur-sans-effet
         feedback: >
@@ -1094,7 +1090,7 @@ items:
           cinétiques établis expérimentalement au chapitre 4 : la diluer ralentit
           bien la transformation, en plus de l'effet de la température.
       - id: D
-        text: "La transformation, en ralentissant autant, est probablement devenue une transformation rapide dont on ne voit plus que l'état final."
+        text: "La transformation, en ralentissant autant, est probablement devenue une transformation rapide dont on ne peut plus voir que l'état final."
         correct: false
         misconception: mc.physics.pc_transformations_lentes_rapides.critere-temps-inverse
         feedback: >
