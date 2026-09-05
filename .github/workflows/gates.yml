@@ -312,6 +312,23 @@ jobs:
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
           node scripts/accents-manquants.mjs --porte $routes $examens / /atelier /examens
 
+      # PORTE ZOOM (2026-09-05, soir). SC 1.4.4 : le texte doublé ne doit ni
+      # sortir du cadre ni être COUPÉ par une boîte `overflow-hidden`. Le
+      # HANDOFF consignait « 227 → 0 » pour cette mesure ; relancée, elle
+      # rendait 61 débords réels, puis 8 cartes d'épreuve qui coupaient leur
+      # contenu et 36 px de débord sur presque toutes les leçons à 320 px —
+      # trois vagues de défauts qu'aucune porte ne gardait (HANDOFF §11.17,
+      # §11.18). Une seule largeur ici, 320 px : la plus étroite que le
+      # produit promet, et celle qui a vu ce que 360 ne voyait pas. Le corpus
+      # entier, 105 pages, les 39 épreuves ouvertes en deux clics ; ~4 min
+      # mesurées sur la machine de travail. L'instrument lance son propre
+      # serveur et REFUSE de mesurer une page dont une feuille de style
+      # répond ≥ 400 — une page sans son CSS n'est pas une page.
+      - name: Porte zoom (texte à 200 %, rien ne sort du cadre, rien n'est coupé)
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/zoom-sweep.mjs --porte --largeurs=320
+
       # PORTE FORMULES (2026-09-05). KaTeX, quand il n'arrive pas à lire une
       # formule, ne disparaît pas : il PEINT LA SOURCE, en rouge. Un élève en
       # correction d'épreuve lisait « \qquad\Longrightarrow\qquad v_L =

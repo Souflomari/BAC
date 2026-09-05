@@ -123,7 +123,11 @@ export function BankCard({
             signaler. Il défile désormais dans sa propre boîte. */}
         <div className="flex-1 min-w-0 overflow-x-auto">
           <div className="flex items-start justify-between gap-3">
-            <h3 className="font-display text-h3 font-semibold text-primary">
+            {/* `min-w-0 break-words` (2026-09-05) : le titre est un item flex à
+                côté de la pastille ; sans cela il ne descend pas sous son mot
+                le plus long et, à 200 % de texte sur 320 px, dix titres sur
+                douze défilaient hors de la carte (de 16 à 218 px). */}
+            <h3 className="min-w-0 break-words font-display text-h3 font-semibold text-primary">
               {entry.title}
             </h3>
             {fait && (

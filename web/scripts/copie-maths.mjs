@@ -71,6 +71,7 @@ if (routes.length === 0) {
   process.exit(1);
 }
 const porte = process.argv.includes("--porte");
+// --porte : verdict seul (texte brut, trois copies). Sans lui, la mesure du collage riche s'ajoute.
 
 const nav = await chromium.launch({
   executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium",
@@ -202,7 +203,11 @@ for (const route of routes) {
   const n = await page.evaluate(() => document.querySelectorAll("main .katex").length);
   formules += n;
 
-  const riche = await mesurerRiche();
+  // Le collage RICHE est une MESURE (taille, masquage en ligne), pas un
+  // critère : rien ne conclut dessus. En mode porte on l'épargne — mesuré le
+  // 2026-09-05, il coûte 4 à 5,5 s par page dense (28 à 37 Mo de HTML à
+  // sérialiser), soit un tiers des 12 min que la porte prenait en CI.
+  const riche = porte ? null : await mesurerRiche();
   const reel = sansEspaces(await copierTout());
   await styler("copie-ideal", ".katex-mathml{display:none!important}");
   const ideal = sansEspaces(await copierTout());

@@ -19,30 +19,107 @@
  * tout `text-overflow: ellipsis` (troncature VOULUE, doublée d'un `title`).
  * Une quatrième, mesurée : l'opacité effective — une infobulle de rail est
  * « coupée » en permanence, et c'est son fonctionnement.
+ *
+ * CE QUE LE 2026-09-05 A APPRIS, pour que la prochaine lecture ne le
+ * réapprenne pas. Le HANDOFF consignait « 227 → 0 » ; relancé, l'instrument
+ * rendait 61 débords à 360 px. Le zéro consigné n'était pas reproductible —
+ * l'arbre de la veille, reconstruit, rend 61 aussi. Les 61 étaient RÉELS et
+ * tenaient à une seule loi : une boîte flex ou une piste de grille ne descend
+ * pas sous la largeur min-content de son contenu, et `overflow-wrap:
+ * break-word` n'y change RIEN. À 200 %, tout ce qui est en `rem`, `ch` ou
+ * max-content double ; l'écran, non. Correctifs : `min-w-0` sur l'item flex,
+ * `minmax(0,1fr)` sur la piste de grille (le `min-w-0` de l'item n'y suffit
+ * pas), `max-w-full` sur un bouton inline-flex, `min(28ch,100%)` sur une
+ * borne en `ch`. L'attente de `document.fonts.ready` ci-dessous est une
+ * HYGIÈNE de mesure ; elle n'explique aucun des 61.
+ *
+ * PORTÉE. Les 62 leçons, les 39 épreuves OUVERTES (« Commencer », puis
+ * « Terminer » : le corrigé n'entre dans le DOM qu'après ces deux actions),
+ * et les pages hors leçon. Avant ce jour, une seule épreuve, jamais ouverte.
+ *
+ *   node scripts/zoom-sweep.mjs [--porte] [--largeurs=1280,360]   ⚠️ depuis web/
+ *   Sans BASE, lance son propre serveur (comme les portes de CI).
  */
 import { chromium } from "playwright-core";
 import { readdirSync, existsSync } from "node:fs";
-const BASE = process.env.BASE ?? "http://localhost:3457";
+import { execSync, spawn } from "node:child_process";
+
+// Sans BASE, l'instrument lance SON serveur sur un port dérivé du pid — comme
+// les autres portes de CI (voir l'en-tête de dom-truth sur les ports) — et
+// l'arrête en sortant (détaché + `unref()` : un serveur qui garde la boucle
+// d'événements en vie a déjà tué un run, porte ancres, 2026-09-05).
+const PORT = Number(process.env.PORT_ZOOM ?? 3600 + (process.pid % 300));
+const AUTONOME = !process.env.BASE;
+const BASE = process.env.BASE ?? `http://127.0.0.1:${PORT}`;
+const porte = process.argv.includes("--porte");
+const argL = process.argv.find((a) => a.startsWith("--largeurs="));
+const largeurs = argL ? argL.slice(11).split(",").map(Number).filter(Boolean) : [1280, 360];
+
 const lecons = [];
 for (const m of readdirSync("../content")) {
   const d = `../content/${m}`;
   for (const s of readdirSync(d)) if (existsSync(`${d}/${s}/lesson.md`)) lecons.push(`/notions/${m}/${s}`);
 }
-const routes = [...lecons, "/", "/examens", "/examens/spc-2023-normale", "/matieres/pc", "/commencer"];
-const b = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium" });
-for (const W of [1280, 360]) {
+if (lecons.length < 30) {
+  // `../content` est résolu depuis le répertoire courant : ailleurs que dans
+  // web/, la liste est vide et le balayage serait vert sans rien mesurer.
+  console.error(`✗ ${lecons.length} leçon(s) trouvée(s) — lancé depuis le mauvais répertoire ? (il faut web/)`);
+  process.exit(1);
+}
+const epreuves = execSync("node scripts/routes-examens.mjs", { encoding: "utf8" }).trim().split(" ");
+const routes = [...lecons, ...epreuves, "/", "/examens", "/matieres/pc", "/commencer"];
+
+let serveur = null;
+if (AUTONOME) {
+  serveur = spawn("npx", ["next", "start", "-p", String(PORT)], { stdio: "ignore", detached: true });
+  serveur.unref();
+  const t0 = Date.now();
+  let pret = false;
+  while (Date.now() - t0 < 60000) {
+    try { if ((await fetch(`${BASE}/`)).ok) { pret = true; break; } } catch { /* pas encore */ }
+    await new Promise((r) => setTimeout(r, 500));
+  }
+  if (!pret) { console.error("✗ serveur absent — rien n'est mesuré"); try { process.kill(-serveur.pid); } catch {} process.exit(1); }
+}
+const arreter = () => { if (serveur?.pid) { try { process.kill(-serveur.pid); } catch {} } };
+
+const b = await chromium.launch({ executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium" });
+let total = 0;
+let mesurees = 0;
+for (const W of largeurs) {
   const p = await b.newPage({ viewport: { width: W, height: 900 } });
+  // UNE PAGE DONT LA FEUILLE DE STYLE MANQUE N'EST PAS UNE PAGE (2026-09-05).
+  // Un serveur `next start` qui survit au `next build` suivant garde en mémoire
+  // les anciens noms de fichiers CSS ; le disque ne les a plus ; la page se
+  // rend SANS globals.css et toute mesure de mise en page est fausse — ici,
+  // 876 px de débord sur une page qui en fait 0. Un 404 sur une feuille de
+  // style arrête l'instrument : rien de ce qu'il dirait ensuite ne serait vrai.
+  p.on("response", (rep) => {
+    if (rep.status() >= 400 && /\.css(\?|$)/.test(rep.url())) {
+      console.error(`✗ feuille de style ${rep.status()} : ${rep.url()} — le serveur ne sert pas le build mesuré. Arrêt.`);
+      arreter();
+      process.exit(2);
+    }
+  });
   const soucis = [];
   for (const r of routes) {
-    await p.goto(`${BASE}${r}`, { waitUntil: "networkidle" });
+    const rep = await p.goto(`${BASE}${r}`, { waitUntil: "networkidle" });
+    if (rep && rep.status() !== 200) {
+      console.error(`✗ ${r} — HTTP ${rep.status()} : cette route n'existe pas, rien n'est mesuré.`);
+      process.exitCode = 1;
+      continue;
+    }
+    // Les deux actions d'une épreuve : l'énoncé, puis le corrigé.
+    const commencer = p.getByRole("button", { name: /Commencer l.épreuve/i });
+    if (await commencer.count()) {
+      await commencer.first().click();
+      await p.waitForSelector("[data-exam-exo]", { timeout: 10000 });
+      const terminer = p.getByRole("button", { name: /Terminer l.épreuve/i });
+      if (await terminer.count()) { await terminer.first().click(); await p.waitForTimeout(400); }
+    }
+    mesurees++;
     const m = await p.evaluate(async () => {
-      // LES FONTES D'ABORD (2026-09-05). Sous charge — trois navigateurs et
-      // deux serveurs sur la même machine —, `networkidle` arrive avant que
-      // les fontes du site soient posées, et la mesure se fait avec les
-      // métriques du SUBSTITUT, plus large : 61 débords de 47 à 200 px sur des
-      // pages qui, seules et à froid, mesurent 0. Une largeur qui dépend de
-      // l'instant où on la lit n'est pas une mesure. On attend les fontes.
-      await document.fonts.ready;
+      await document.fonts.ready; // hygiène : mesurer avec les fontes du site, pas celles du substitut
       document.querySelectorAll("[data-chapter-section]").forEach((s) => (s.hidden = false));
       // SC 1.4.4 : texte redimensionnable à 200 % sans perte de contenu.
       document.documentElement.style.fontSize = "32px";
@@ -69,9 +146,14 @@ for (const W of [1280, 360]) {
       // texte COUPÉ : une boîte qui cache son contenu débordant.
       const coupes = [];
       for (const el of document.querySelectorAll("main *")) {
+        // D'abord les lectures de géométrie (une seule mise en page, puis
+        // gratuites), et seulement ENSUITE getComputedStyle : sur une page de
+        // 30 000 nœuds, calculer le style de chacun coûtait plusieurs secondes
+        // par page — le balayage des 105 pages prenait 18 min (2026-09-05).
+        if (el.scrollWidth - el.clientWidth <= 2 && el.scrollHeight - el.clientHeight <= 2) continue;
+        if (!el.textContent || !el.textContent.trim()) continue;
         const cs = getComputedStyle(el);
         if (cs.overflow !== "hidden" && cs.overflowY !== "hidden" && cs.overflowX !== "hidden") continue;
-        if (!el.textContent || !el.textContent.trim()) continue;
         // Les éléments VISUELLEMENT MASQUÉS (lien d'évitement, MathML de
         // KaTeX, libellé de rail hors cadre) sont coupés par construction :
         // c'est leur fonctionnement, pas une perte de contenu.
@@ -99,8 +181,22 @@ for (const W of [1280, 360]) {
     if (m.debord > 1) soucis.push(`${r} @${W} débord ${m.debord}px — ${m.chemin.join(' > ')}`);
     for (const c of m.coupes) soucis.push(`${r} @${W} COUPÉ ${c}`);
   }
-  console.log(`\n=== ${W}px, texte à 200 % — ${soucis.length} signalement(s)`);
-  for (const x of soucis.slice(0, 25)) console.log(`  ✗ ${x}`);
+  total += soucis.length;
+  console.log(`\n=== ${W}px, texte à 200 % — ${soucis.length} signalement(s) sur ${routes.length} pages`);
+  for (const x of soucis.slice(0, 40)) console.log(`  ✗ ${x}`);
   await p.close();
 }
 await b.close();
+console.log(`\n${mesurees} mesure(s) (${routes.length} pages × ${largeurs.length} largeur(s)) — ${total} signalement(s)`);
+arreter();
+if (porte && (total > 0 || process.exitCode === 1)) {
+  console.error(
+    "\n━━ porte zoom : à 200 % de texte, rien ne sort du cadre et rien n'est coupé ━━\n" +
+    "   Loi à connaître : un item flex ou une piste de grille ne descend pas sous la\n" +
+    "   largeur min-content de son contenu ; `overflow-wrap` n'y change rien.\n" +
+    "   → `min-w-0` sur l'item flex, `minmax(0,1fr)` sur la piste, `max-w-full` sur\n" +
+    "     un bouton inline-flex, `min(Nch,100%)` sur une borne en `ch`."
+  );
+  process.exit(1);
+}
+process.exit(0);

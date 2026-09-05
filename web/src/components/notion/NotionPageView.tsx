@@ -216,9 +216,14 @@ export function NotionPageView({
         <Breadcrumb subject={meta.subject} title={meta.title} />
       </div>
       <header className={cn(onSpine ? "mb-0" : "notion-prose mb-10")}>
+        {/* `break-words hyphens-auto` (2026-09-05) : à 200 % de texte sur
+            320 px, le titre d'un mot — « Arithmétique », 370 px en display-lg
+            doublé — ne peut pas se replier et poussait la PAGE de 58 px. Un
+            bloc, lui, casse un mot trop long quand on l'y autorise ; la
+            césure (lang="fr") le fait proprement quand le navigateur sait. */}
         <h1
           className={cn(
-            "font-display font-bold text-primary",
+            "break-words hyphens-auto font-display font-bold text-primary",
             titleClass
           )}
         >

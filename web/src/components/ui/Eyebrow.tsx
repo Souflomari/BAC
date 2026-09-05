@@ -49,7 +49,12 @@ export function Eyebrow({
           muted ? "bg-border-soft" : "bg-accent/60"
         )}
       />
-      {children}
+      {/* `min-w-0 break-words` (2026-09-05) : le libellé est un item flex à côté
+          du trait ; sans boîte propre il ne peut pas descendre sous son mot le
+          plus long. À 200 % de texte sur 320 px, « COMPRÉHENSION » (220 px)
+          dans la carte de point d'arrêt (160 px de large après ses marges)
+          faisait déborder la PAGE de 36 px — sur chaque leçon du corpus. */}
+      <span className="min-w-0 break-words">{children}</span>
     </p>
   );
 }

@@ -51,6 +51,17 @@ const nav = await chromium.launch({
 });
 const page = await nav.newPage({ viewport: { width: 1280, height: 900 } });
 
+// UNE PAGE DONT LA FEUILLE DE STYLE MANQUE N'EST PAS UNE PAGE (2026-09-05) : un
+// serveur `next start` qui survit au `next build` suivant sert un HTML qui
+// pointe vers des CSS effacés du disque ; la page se rend sans globals.css et
+// toute mesure de mise en page est fausse (INSTRUMENTS, piège n° 4). Arrêt.
+page.on("response", (rep) => {
+  if (rep.status() >= 400 && /\.css(\?|$)/.test(rep.url())) {
+    console.error(`✗ feuille de style ${rep.status()} : ${rep.url()} — le serveur ne sert pas le build mesuré. Arrêt.`);
+    process.exit(2);
+  }
+});
+
 const politesses = new Map();   // "assertive sur .x" → [routes]
 let sansEvitement = 0, desordre = 0, focusPerdu = 0, sansAnnonce = 0, vues = 0;
 const dits = [];

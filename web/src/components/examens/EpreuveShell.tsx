@@ -266,8 +266,14 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
               className="overflow-hidden rounded-xl border border-subtle bg-surface-raised shadow-elevation-1"
             >
               <header className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b border-subtle bg-surface-container-low px-5 py-3">
-                <h2 className="text-h4 font-semibold text-primary">
-                  {exo.exerciseLabel ?? `Exercice ${i + 1}`}
+                {/* `min-w-0 break-words` : l'intitulé est un item flex, et un item
+                    flex ne descend pas sous son mot le plus long. Sur les vieux
+                    sujets SPC l'intitulé EST le titre (« Exercice de Chimie —
+                    Première partie : suivi conductimétrique ») ; à 200 % de
+                    texte sur 360 px, « conductimétrique » dépassait la carte de
+                    44 à 92 px et `overflow-hidden` le coupait (2026-09-05). */}
+                <h2 className="min-w-0 break-words text-h4 font-semibold text-primary">
+                  {exo.exerciseLabel ?? `Exercice ${i + 1}`}
                 </h2>
                 <p className="min-w-0 flex-1 truncate text-body-sm text-secondary" title={exo.titre}>
                   {exo.titre}

@@ -284,7 +284,12 @@ export function ChapterTransport({ index }: { index: number }) {
   if (!hasPrev && !hasNext) return null;
 
   return (
-    <div className="chapter-transport mt-12 flex items-center justify-between gap-4">
+    // `flex-wrap` (2026-09-05) : à 200 % de texte sur 320 px, les deux boutons
+    // (icône + « Chapitre précédent » / « Chapitre suivant ») font ensemble
+    // 312 px dans une colonne de 256 — le second sortait de la colonne de
+    // 18 px sur chaque chapitre de chaque leçon. Quand ils ne tiennent pas
+    // côte à côte, ils se posent l'un sous l'autre.
+    <div className="chapter-transport mt-12 flex flex-wrap items-center justify-between gap-4">
       {hasPrev ? (
         <TransportButton onClick={() => goTo(index - 1)} aria-label="Chapitre précédent">
           <Icon name="chevron-left" size={14} />

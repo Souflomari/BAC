@@ -3118,7 +3118,65 @@ min-content d'un item flex ignore son `min-width: 0`.
 Retiré dans l'ADR 0031 (rétractations) : le zéro du §8.5, et ma phrase sur les
 métriques du substitut.
 
-### 11.18 Deux soupçons re-mesurés, et déjà traités
+### 11.18 Le même instrument, deux surfaces de plus : les 39 épreuves ouvertes, et 320 px
+
+Le §11.17 laissait l'instrument zoom à 0 sur 67 pages — les 62 leçons, une
+seule épreuve (jamais ouverte), et 360 px comme seule largeur de téléphone.
+Le soir même il a reçu ce que huit autres instruments avaient reçu dans la
+journée (§11.13) : les 39 épreuves par `routes-examens.mjs`, ouvertes en deux
+clics ; et une largeur de plus, 320 px, le plus petit écran que le produit
+promet (§8). Il a trouvé deux choses que rien n'avait mesurées.
+
+**Dans les cartes d'épreuve, du texte COUPÉ.** La carte d'exercice porte
+`overflow-hidden` pour arrondir ses coins ; ce qui la dépasse disparaît sans
+un mot. À 200 % de texte sur 360 px, 8 cartes sur 7 sujets SPC coupaient de
+6 à 93 px :
+
+- l'intitulé d'exercice (`h2`), item flex de l'en-tête, ne descend pas sous
+  son mot le plus long — et sur les vieux sujets SPC l'intitulé EST le titre
+  (« Exercice de Chimie — Première partie : suivi conductimétrique ») →
+  `min-w-0 break-words`, même correctif que le `h1` de /matieres au §11.17 ;
+- une formule inline dans une parenthèse en italique — `*(Contrôle de
+  tangence refait : $(T)$ passe par…)*`, corrigé SPC 2012 R — échappait aux
+  trois sélecteurs qui font défiler les formules inline sur téléphone (`p >`,
+  `li >`, `td >`) : `em >` et `strong >` s'y ajoutent, et `h2/h3/h4 >` pour la
+  formule d'un titre (arithmétique, « PGCD(252, 198) »).
+
+**Sur 320 px, la PAGE déborde de 36 px sur presque toutes les leçons.** Un
+seul coupable, trouvé par bissection : le libellé « VÉRIFIE TA COMPRÉHENSION »
+de la carte de point d'arrêt. Le composant `Eyebrow` met son texte à côté
+d'un trait, en flex, SANS boîte propre — un nœud texte nu est un item flex
+anonyme, et rien ne peut lui donner `min-w-0`. La carte a 48 px de marge de
+chaque côté à 200 %, il reste 160 px, et « COMPRÉHENSION » en capitales
+espacées en fait 220. Le libellé est maintenant un `span` à `min-w-0
+break-words`. Trois débords de moins d'un pixel de chaque côté du même écran
+ont été corrigés au passage : les deux boutons « Chapitre précédent /
+suivant » qui ne tenaient plus côte à côte (312 px dans 256 : `flex-wrap`),
+les titres des cartes d'exercice qui DÉFILAIENT dans leur carte au lieu de se
+replier (dix sur douze dans chute-mouvements-plans, jusqu'à 218 px :
+`min-w-0 break-words` sur le `h3`), et le titre de leçon d'un seul mot —
+« Arithmétique », 370 px en display-lg doublé — qui poussait la page de 58 px
+(`break-words hyphens-auto` : un bloc casse un mot trop long quand on l'y
+autorise, et la césure française le fait proprement).
+
+**Une demi-heure perdue, et une garde qui n'existait pas.** Après le
+rebuild, l'instrument a rendu 876 px de débord sur une leçon que la sonde
+donnait à 36. Aucun des six correctifs n'était en cause : le serveur relancé
+n'avait PAS été relancé — Next renomme son processus `next-server`, le `pkill
+-f "next start"` n'a rien tué, et l'ancien serveur servait un HTML pointant
+vers les fichiers CSS de l'ancien build, effacés du disque. Réponse 400 sur
+`globals.css`, page rendue aux seuls utilitaires Tailwind, et toute mesure
+fausse. Le serveur se tue désormais par son port ; et `zoom-sweep` refuse de
+mesurer une page dont une feuille de style répond ≥ 400 (INSTRUMENTS, piège
+n° 4). Une page sans sa feuille de style n'est pas une page.
+
+Deux autres changements à l'instrument, pour qu'il puisse entrer en CI : il
+lit d'abord la géométrie (`scrollWidth`, `clientWidth`) et ne calcule le
+style que des nœuds qui débordent — sur une page de 30 000 nœuds, calculer le
+style de chacun coûtait des secondes ; et il lance son propre serveur quand
+`BASE` manque, comme les autres portes.
+
+### 11.19 Deux soupçons re-mesurés, et déjà traités
 
 Deux mesures lancées ce jour-là ont retrouvé un terrain déjà couvert, et il
 faut le dire pour que personne ne le refasse une troisième fois.

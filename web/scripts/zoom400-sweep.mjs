@@ -51,6 +51,17 @@ const nav = await chromium.launch({
 // 320 × 256 CSS px : la fenêtre 1280 × 1024 vue à 400 %.
 const page = await nav.newPage({ viewport: { width: 320, height: 256 } });
 
+// UNE PAGE DONT LA FEUILLE DE STYLE MANQUE N'EST PAS UNE PAGE (2026-09-05) : un
+// serveur `next start` qui survit au `next build` suivant sert un HTML qui
+// pointe vers des CSS effacés du disque ; la page se rend sans globals.css et
+// toute mesure de mise en page est fausse (INSTRUMENTS, piège n° 4). Arrêt.
+page.on("response", (rep) => {
+  if (rep.status() >= 400 && /\.css(\?|$)/.test(rep.url())) {
+    console.error(`✗ feuille de style ${rep.status()} : ${rep.url()} — le serveur ne sert pas le build mesuré. Arrêt.`);
+    process.exit(2);
+  }
+});
+
 let debords = 0, barres = 0, etroits = 0, sansNav = 0, vus = 0;
 const dits = [];
 

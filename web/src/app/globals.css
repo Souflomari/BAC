@@ -660,10 +660,18 @@ body {
   overflow-x: auto;
 }
 
+/* `em > .katex`, `strong > .katex` (2026-09-05) : une formule inline dans une
+   parenthèse en italique — « *(Contrôle de tangence refait : $(T)$ passe
+   par…)* », corrigé SPC 2012 R — n'était couverte par aucun des trois
+   sélecteurs ci-dessous, et dépassait la carte d'épreuve de 62 px à 200 % de
+   texte sur 360 px ; `overflow-hidden` la coupait. */
 @media (max-width: 600px) {
   .prose-lesson p > .katex,
   .prose-lesson li > .katex,
-  .prose-lesson td > .katex {
+  .prose-lesson td > .katex,
+  .prose-lesson em > .katex,
+  .prose-lesson strong > .katex,
+  .prose-lesson :is(h2, h3, h4) > .katex {
     max-width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
