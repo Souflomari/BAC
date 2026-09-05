@@ -52,14 +52,18 @@ jobs:
       # TESTS UNITAIRES (ajoutés en CI le 2026-09-05). Ils existaient et ne
       # tournaient QUE localement — donc, en pratique, quand quelqu'un y
       # pensait. Ils gardent les deux moitiés du modèle apprenant : le calcul
-      # (test-learner-model) et le chemin d'écriture client, chemin de PERTE
-      # compris (test-attempt-events : réessai unique à 4 s, borne de 20, 401,
+      # (test-learner-model), la typographie française appliquée au texte que
+      # l'élève lit (test-typographie : apostrophes, guillemets, espaces fines,
+      # et la liaison insécable nombre-unité — dont le lookahead qui empêche
+      # « 3 mètres » de se lier), et le chemin d'écriture client, chemin de
+      # PERTE compris (test-attempt-events : réessai unique à 4 s, borne de 20, 401,
       # coupure réseau). Ils sont rapides et sans navigateur ; ils passent
       # avant tout le reste pour échouer vite.
-      - name: Tests unitaires (modèle apprenant + chemin d'écriture)
+      - name: Tests unitaires (modèle apprenant + typographie + chemin d'écriture)
         run: |
           npm run test-learner-model
           npm run test-attempt-events
+          npm run test-typographie
 
       # PORTE LIENS (2026-09-05). Ce projet se pilote par ses documents :
       # `.claude/CLAUDE.md` envoie vers la vision, la vision vers les règles,

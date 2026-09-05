@@ -25,6 +25,30 @@
  *      is inserted. The narrow no-break space keeps the punctuation glued
  *      to its word across line wraps.
  *
+ *  (d) A NO-BREAK SPACE (U+00A0) binds a NUMBER to the SI UNIT that follows
+ *      it — « 3 L », « 0 °C », « 25 mA ». The SI brochure (BIPM §5.4.3)
+ *      requires a space there AND forbids the value and its symbol to be
+ *      separated across a line break; a plain space does exactly what is
+ *      forbidden. Measured on the corpus at 390 px on 2026-09-05: five
+ *      breaks, on two lessons — « 3 » ending a line and « L » opening the
+ *      next, in the very hook that asks the student to reason about two
+ *      jerrycans. A rule here fixes the class for every page and for
+ *      everything written after it, which editing five strings would not.
+ *
+ *      The unit list is deliberately CLOSED. It is written longest-first as
+ *      a convention, but that order was TESTED and is NOT load-bearing: with
+ *      `m` before `mA`, « 25 mA » still binds correctly, because the only
+ *      thing the replacement inserts is a space in the slot the pattern
+ *      already consumed — there is no space between `m` and `A` to disturb.
+ *      (The first version of this comment claimed the opposite; the red test
+ *      that was supposed to prove it passed, which is how the claim was
+ *      caught.) What DOES the work is the trailing lookahead below.
+ *
+ *      Single-letter symbols that double as point or curve names in a maths
+ *      corpus (A, C, N, T…) are included anyway: the worst case of a wrong
+ *      bind is a line that wraps one word earlier — never a changed
+ *      character.
+ *
  * The function is pure (no I/O, no globals), well-typed, dependency-free,
  * and idempotent: running it on its own output yields the same string.
  *
@@ -86,6 +110,33 @@ const BEFORE_CLOSING_GUILLEMET = new RegExp(`${SPACE_CLASS}*(»)`, "gu");
  */
 const STRAIGHT_QUOTED_PROSE = /"([^"\n]*\p{L}[^"\n]*)"/gu;
 
+/**
+ * The SI unit symbols the corpus actually uses, longest first (a convention,
+ * not a requirement — see the note in the file header).
+ *
+ * `°C` and `%` are here too: the degree sign and the percent sign take the
+ * same non-breaking bind in French typography.
+ */
+const UNITES = [
+  "MeV", "kHz", "MHz", "min", "mol", "bar", "rad", "µs", "µF", "ms", "cm", "mm", "km",
+  "mL", "kg", "mg", "kJ", "mV", "mA", "nF", "pF", "mH", "eV", "tr", "°C", "Wb", "Hz",
+  "Pa", "°", "%", "m", "s", "h", "g", "L", "N", "J", "W", "V", "A", "K", "T", "F", "H", "C", "Ω",
+];
+
+/**
+ * A number, a plain (breakable) space, and a unit symbol standing alone.
+ *
+ * THE TRAILING LOOKAHEAD IS THE WHOLE SAFETY OF THIS RULE. Without it,
+ * « 3 mètres » would bind its `m` and « l'exercice 3 montre » would bind a
+ * word that is not a unit at all. Forbidding a letter or a digit right after
+ * the symbol is what keeps a spelled-out unit an ordinary word that wraps
+ * like one.
+ */
+const NOMBRE_UNITE = new RegExp(
+  `(\\d(?:[.,]\\d+)?)[ \\t](${UNITES.map((u) => u.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})(?![\\p{L}\\d])`,
+  "gu",
+);
+
 export function frenchTypography(s: string): string {
   let out = s;
 
@@ -100,6 +151,12 @@ export function frenchTypography(s: string): string {
   out = out.replace(BEFORE_HIGH_PUNCT, `${NNBSP}$1`);
   out = out.replace(AFTER_OPENING_GUILLEMET, `$1${NNBSP}`);
   out = out.replace(BEFORE_CLOSING_GUILLEMET, `${NNBSP}$1`);
+
+  // (d) a NO-BREAK space between a number and its unit (SI §5.4.3). Runs last:
+  // the punctuation pass above never touches this slot, and running it here
+  // keeps the function idempotent (a NBSP is not `[ \t]`, so a second pass
+  // finds nothing left to bind).
+  out = out.replace(NOMBRE_UNITE, `$1${NBSP}$2`);
 
   return out;
 }
