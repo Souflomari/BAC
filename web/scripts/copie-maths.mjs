@@ -173,6 +173,16 @@ const styler = (id, css) =>
 
 for (const route of routes) {
   const reponse = await page.goto(`${BASE}${route}`, { waitUntil: "networkidle" });
+  // L'ÉPREUVE S'OUVRE EN DEUX TEMPS (2026-09-05). Copier une formule du
+  // corrigé pour la coller dans ses notes est un geste d'élève ; le corrigé
+  // n'entre dans le DOM qu'après « Commencer » puis « Terminer ».
+  const commencer = page.getByRole("button", { name: /Commencer l.épreuve/i });
+  if (await commencer.count()) {
+    await commencer.first().click();
+    await page.waitForSelector("[data-exam-exo]", { timeout: 10000 });
+    const terminer = page.getByRole("button", { name: /Terminer l.épreuve/i });
+    if (await terminer.count()) { await terminer.first().click(); await page.waitForTimeout(400); }
+  }
   // UNE ROUTE QUI N'EXISTE PAS N'EST PAS UNE ROUTE PROPRE (2026-09-05).
   // La liste de routes EST la portée de cette porte, et une entrée fautive
   // l'amputait en silence : `/options` figurait dans la liste CI de la porte

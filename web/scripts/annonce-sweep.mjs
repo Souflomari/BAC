@@ -28,6 +28,7 @@
  *      le lecteur repart du haut) ? Et le nouveau titre est-il annoncé ?
  */
 import { chromium } from "playwright-core";
+import { execSync } from "node:child_process";
 import { readdirSync, existsSync } from "node:fs";
 
 const BASE = process.env.BASE ?? "http://127.0.0.1:3495";
@@ -39,7 +40,11 @@ for (const m of readdirSync("../content")) {
     if (existsSync(`${d}/${s}/lesson.md`)) lecons.push(`/notions/${m}/${s}`);
   }
 }
-const ROUTES = ["/", "/examens", "/examens/spc-2023-normale", "/matieres/pc", "/commencer", "/atelier", ...lecons];
+// LES 39 ÉPREUVES, lues là où la liste est vraie (`listEpreuves()`), pas
+// écrites en dur : une seule y figurait, et elle revenait propre parce que
+// rien n'était encore dans le DOM.
+const examens = execSync("node scripts/routes-examens.mjs", { cwd: process.cwd(), encoding: "utf8" }).trim().split(" ");
+const ROUTES = ["/", "/examens", ...examens, "/matieres/pc", "/commencer", "/atelier", ...lecons];
 
 const nav = await chromium.launch({
   executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium",
@@ -52,6 +57,17 @@ const dits = [];
 
 for (const route of ROUTES) {
   await page.goto(`${BASE}${route}`, { waitUntil: "networkidle", timeout: 120000 });
+  // L'ÉPREUVE S'OUVRE EN DEUX TEMPS (2026-09-05). Ce qui parle sur cette page
+  // — le chrono, la bannière de pause, les radios d'auto-évaluation — n'existe
+  // qu'APRÈS « Commencer », et le corrigé qu'après « Terminer ». Sans les deux
+  // clics, le balayage lisait un masthead : c'est-à-dire rien.
+  const commencer = page.getByRole("button", { name: /Commencer l.épreuve/i });
+  if (await commencer.count()) {
+    await commencer.first().click();
+    await page.waitForSelector("[data-exam-exo]", { timeout: 10000 });
+    const terminer = page.getByRole("button", { name: /Terminer l.épreuve/i });
+    if (await terminer.count()) { await terminer.first().click(); await page.waitForTimeout(400); }
+  }
   vues++;
   const m = await page.evaluate(() => {
     const live = [...document.querySelectorAll("[aria-live], [role=alert], [role=status], output")].map((e) => ({
