@@ -10,7 +10,9 @@ Des années plus tard, une seconde piqûre de guêpe, dans des circonstances pre
 
 **Avant de lire la suite, prends position.** Tu as appris, dans la leçon sur les moyens de défense, qu'une seconde rencontre avec le même antigène déclenche une réponse plus rapide et plus intense que la première, grâce à la mémoire immunitaire (lymphocytes B et T mémoire). Ici aussi, c'est la seconde rencontre qui produit la réaction la plus forte. Alors : est-ce que ce qui arrive à Karim est, au fond, la même chose que ce qui protège quelqu'un lors d'un rappel vaccinal — une réponse secondaire, normale, simplement plus intense ? Ou est-ce que quelque chose de fondamentalement différent est en train de se produire ? Engage-toi avant de continuer.
 
-Ce que Karim vit n'est pas une réponse secondaire qui le protège. C'est une réaction allergique — une des façons dont le système immunitaire, cet appareil de défense si précis qu'on a construit chapitre par le chapitre dans les deux leçons précédentes, peut aussi se dérégler. Et ce n'est qu'une des formes que peut prendre ce dérèglement. Un système immunitaire peut :
+[[checkpoint:cp-r0-predict]]
+
+Ce que Karim vit n'est pas une réponse secondaire qui le protège. C'est une réaction allergique — une des façons dont le système immunitaire, cet appareil de défense si précis qu'on a construit chapitre par chapitre dans les deux leçons précédentes, peut aussi se dérégler. Et ce n'est qu'une des formes que peut prendre ce dérèglement. Un système immunitaire peut :
 
 - réagir de façon exagérée contre un intrus pourtant inoffensif (l'**allergie**, ce qui arrive à Karim) ;
 - se retourner contre les propres cellules de l'organisme qu'il est censé protéger (les **maladies auto-immunes**) ;
@@ -58,6 +60,8 @@ Chez la personne déjà allergique, l'ingestion d'arachide est une rencontre ult
 
 Si l'allergie ne dépendait que de la dangerosité intrinsèque de l'allergène, la même quantité d'arachide devrait produire la même réaction chez tout le monde, dès le premier contact. Ce n'est pas ce qu'on observe : c'est l'historique immunitaire de CHAQUE individu (sensibilisé ou non) qui détermine la réaction, pas une propriété de l'allergène pris isolément.
 
+[[checkpoint:cp-r1-allergie]]
+
 ---
 
 ## R2 — Les maladies auto-immunes : quand la tolérance au soi se rompt
@@ -99,6 +103,8 @@ Ce ne sont donc pas deux intensités d'un même phénomène, mais deux échecs d
 ### Vérification rapide
 
 Si une maladie auto-immune n'était qu'une allergie plus intense, un test de recherche d'allergène (comme un test cutané) devrait pouvoir la révéler, puisque les deux situations relèveraient du même mécanisme. Ce n'est pas le cas : le diabète de type 1 se recherche par la présence d'auto-anticorps dirigés contre des molécules du soi, jamais par un test allergologique — la preuve que ce sont deux processus biologiquement distincts.
+
+[[checkpoint:cp-r2-auto-immune]]
 
 ---
 
@@ -154,6 +160,8 @@ Pendant la phase chronique, le nombre de LT4 diminue, mais reste, pendant longte
 
 Si le VIH tuait directement et rapidement, on ne devrait observer aucune phase chronique de plusieurs années sans symptôme — or c'est précisément ce qu'on observe couramment en l'absence de traitement. Cette longue phase silencieuse est la preuve que la destruction est progressive et ciblée sur une seule population cellulaire, pas un effondrement généralisé immédiat de tout l'organisme.
 
+[[checkpoint:cp-r3-vih]]
+
 ---
 
 ## R4 — La vaccination : construire la mémoire immunitaire sans subir la maladie
@@ -183,6 +191,8 @@ Lors de la primo-vaccination, l'antigène introduit rencontre, pour la première
 ### Vérification rapide
 
 Si la vaccination ne faisait que « renforcer temporairement » l'organisme sans laisser de trace durable, un rappel des années plus tard devrait redemander autant d'injections que la primo-vaccination. Ce n'est pas le cas : c'est la preuve que la primo-vaccination a bien laissé derrière elle une population de cellules mémoire, qui persiste et qui explique l'efficacité du rappel.
+
+[[checkpoint:cp-r4-vaccination]]
 
 ---
 
@@ -216,6 +226,8 @@ La toxine tétanique agit vite, en quelques jours à peine : un vaccin, à ce st
 
 Si la sérothérapie laissait une mémoire durable comme la vaccination, une seconde blessure survenant peu après la première ne devrait poser aucun problème. Ce n'est pas le cas : l'homme de l'exemple redevient entièrement vulnérable dès que les anticorps empruntés sont éliminés, ce qui confirme qu'aucune mémoire propre n'a été construite chez lui.
 
+[[checkpoint:cp-r5-serotherapie]]
+
 ---
 
 ## R6 — Vaccination et sérothérapie : deux logiques, à ne jamais confondre
@@ -246,6 +258,8 @@ Teste ce modèle sur les courbes qu'on obtiendrait en mesurant le titre d'antico
 **Après une sérothérapie :** le titre d'anticorps est déjà élevé dès les toutes premières heures — il n'y a aucun délai de montée, puisque les anticorps sont directement injectés. Mais ce titre, au lieu de se stabiliser en plateau, décline ensuite progressivement, sans jamais remonter, jusqu'à devenir quasi nul en quelques semaines : rien ne vient renouveler ces anticorps, puisqu'aucune cellule du patient n'a été activée pour continuer à en produire.
 
 Ces deux courbes sont presque des miroirs inversés l'une de l'autre : là où le vaccin monte lentement puis se maintient, le sérum monte instantanément puis s'effondre. Si on confondait les deux logiques, on s'attendrait, à tort, à ce qu'une personne vaccinée soit protégée dès l'injection (faux — il faut attendre la construction de la réponse), et à ce qu'une personne ayant reçu un sérum reste protégée pendant des années (faux — la protection s'efface en quelques semaines, faute de mémoire).
+
+[[checkpoint:cp-r6-deux-courbes]]
 
 ### Fermeture de l'arc
 

@@ -10,6 +10,8 @@ Un goût sucré apparaît progressivement. Il n'était pas là au premier instan
 
 **Avant de lire la suite, prends position.** D'où vient ce goût sucré, très précisément ? Deux explications possibles se disputent : soit le pain contenait déjà, caché, du sucre qui ne se révèle qu'une fois mélangé à la salive et broyé mécaniquement ; soit quelque chose, dans ta salive, transforme activement un composant du pain en sucre pendant que tu mâches. Engage-toi sur l'une des deux avant de continuer.
 
+[[checkpoint:cp-r0-predict]]
+
 Voici ce qui se passe réellement. Le pain est riche en **amidon**, un glucide complexe fait de très nombreuses unités de glucose enchaînées bout à bout — l'amidon lui-même n'a aucun goût sucré. Ta salive contient une molécule, l'**amylase salivaire**, qui découpe cette longue chaîne d'amidon en fragments courts appelés **maltose** — un sucre, celui-là bien réel, au goût nettement sucré. Plus tu mâches longtemps, plus l'amylase a le temps de couper de l'amidon en maltose, et plus le goût sucré s'intensifie.
 
 Si tu avais parié sur « sucre caché », l'observation te contredit : rien n'était sucré au départ, quelque chose a été **transformé** pendant que tu mâchais. Si tu avais parié sur une transformation active, tu as vu juste — mais la vraie question commence maintenant.
@@ -49,6 +51,8 @@ Cela n'est possible que si une seule molécule d'amylase peut couper une molécu
 Ne dis jamais qu'une enzyme est « utilisée » ou « détruite » par la réaction qu'elle catalyse, comme le serait un réactif ordinaire. Ce qui est transformé, ce sont les molécules sur lesquelles elle agit (l'amidon devient maltose) — pas l'enzyme elle-même, qui ressort structurellement identique, cycle après cycle. C'est exactement ce qui distingue un catalyseur d'un réactif : le réactif disparaît en produit, le catalyseur ne fait que rendre la transformation possible, plus vite, sans y laisser de traces.
 
 Retiens aussi que l'enzyme est une **protéine** : cette nature protéique, avec sa forme repliée précise, est ce qui va tout expliquer dans les chapitres suivants — comment elle reconnaît son substrat, et pourquoi son activité dépend autant des conditions du milieu.
+
+[[checkpoint:cp-r1-non-consommee]]
 
 ---
 
@@ -90,6 +94,8 @@ Ce cycle répond exactement à la question posée à la fin du chapitre 2 : pour
 ### L'erreur classique à éviter ici
 
 Ne confonds pas le site actif avec l'enzyme tout entière : le site actif n'est qu'une petite région précise de la molécule, celle qui entre en contact avec le substrat. Ne confonds pas non plus le complexe enzyme-substrat avec un produit final : c'est un état transitoire, qui existe seulement le temps de la réaction, avant de se séparer en enzyme libre (inchangée) et en produit(s) (transformés).
+
+[[checkpoint:cp-r2-site-actif]]
 
 ---
 
@@ -134,6 +140,8 @@ Une confusion très fréquente consiste à croire que « spécificité de substr
 ### Vérification rapide
 
 Si l'amylase n'avait qu'une spécificité de substrat, sans spécificité d'action, elle pourrait couper l'amidon tantôt en maltose, tantôt directement en glucose, tantôt ailleurs sur la chaîne, de façon imprévisible. Ce n'est pas ce qu'on observe expérimentalement : la coupure est toujours identique. C'est cette régularité qui prouve que les deux spécificités sont bien présentes, et bien distinctes, chez une même enzyme.
+
+[[checkpoint:cp-r3-double-specificite]]
 
 ---
 
@@ -188,6 +196,8 @@ Si on place la pepsine dans un milieu proche de la neutralité, ou l'amylase sal
 
 Ne retiens jamais « plus il fait chaud, plus une enzyme est active » comme une règle générale. C'est vrai uniquement en dessous de l'optimum thermique ; au-delà, c'est l'inverse qui se produit, et la perte d'activité qui en résulte est le plus souvent définitive. La bonne formulation, à retenir pour la température comme pour le pH : il existe, pour chaque enzyme, une valeur **optimale** à laquelle son activité est maximale — l'activité diminue de part et d'autre de cet optimum, et pas seulement d'un côté.
 
+[[checkpoint:cp-r4-optimum]]
+
 ---
 
 ## R5 — Les facteurs qui modifient l'activité enzymatique : concentration en substrat et en enzyme
@@ -216,6 +226,8 @@ Ce que ces deux expériences révèlent, mises côte à côte : la concentration
 
 Si la concentration en substrat n'avait aucune limite d'effet, ajouter de l'amidon dans un tube contenant une goutte unique d'amylase produirait du maltose de plus en plus vite, indéfiniment — ce qui n'a pas de sens physique, puisqu'une goutte d'amylase ne contient qu'un nombre fini de sites actifs. Le palier observé confirme bien que ce nombre fini de sites actifs, à un moment donné, devient le facteur limitant.
 
+[[checkpoint:cp-r5-saturation]]
+
 ---
 
 ## R6 — Le rôle des enzymes digestives : hydrolyser les macromolécules alimentaires
@@ -240,6 +252,8 @@ Chaque ligne de ce tableau applique directement ce que les chapitres précédent
 Voici un exemple concret qui relie le chapitre 5 et ce tableau. L'amylase salivaire, très efficace dans la bouche, cesse presque totalement d'agir une fois le bol alimentaire avalé et mélangé au suc gastrique, très acide. Ce n'est pas qu'elle « disparaît » : c'est que le pH très acide de l'estomac s'éloigne fortement de son optimum (proche de la neutralité), déformant progressivement son site actif — exactement le mécanisme du chapitre 5. À l'inverse, la pepsine, dont l'optimum de pH est justement très acide, s'active précisément dans cet environnement, et serait elle-même peu efficace si elle se retrouvait dans la bouche, à pH proche de la neutralité.
 
 Ce n'est pas une coïncidence : chaque enzyme digestive est adaptée à l'environnement physico-chimique du segment du tube digestif où elle doit agir. La digestion progresse ainsi comme une chaîne de relais, chaque enzyme prenant le relai exactement là où les conditions lui sont favorables.
+
+[[checkpoint:cp-r6-digestion]]
 
 ### Fermeture de l'arc : retour au pain du chapitre 1
 
