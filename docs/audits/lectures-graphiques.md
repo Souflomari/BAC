@@ -50,12 +50,12 @@ Trié par nombre de mentions.
 | 29 | `bk-2022-r-x3` | `pc/dipole-rl` | SPC 2022 rattrapage | 2.25 | oui | **non** |
 | 29 | `bk-2025-r-x3` | `pc/dipole-rl` | SPC 2025 rattrapage | 3.75 | oui | **non** |
 | 26 | `bk-2015-n-x3` | `pc/rc-charge` | SPC 2015 normale | 2.5 | oui | oui |
-| 24 | `bk-2013-r-x3b` | `pc/rlc-serie` | SPC 2013 rattrapage | 2.75 | oui | oui |
 | 23 | `bk-2023-r-x3` | `pc/rc-charge` | SPC 2023 rattrapage | 1.5 | oui | **non** |
 | 23 | `bk-2024-r-x4` | `pc/rc-charge` | SPC 2024 rattrapage | 1.5 | oui | **non** |
 | 21 | `bk-2012-r-x1b` | `pc/suivi-temporel-vitesse` | SPC 2012 rattrapage | 4 | oui | oui |
 | 21 | `bk-2021-r-x1` | `pc/reactions-acido-basiques` | SPC 2021 rattrapage | 5 | oui | **non** |
 | 21 | `bk-2021-r-x4b` | `pc/dipole-rl` | SPC 2021 rattrapage | 2 | oui | **non** |
+| 20 | `bk-2013-r-x3b` | `pc/rlc-serie` | SPC 2013 rattrapage | 2.75 | oui | oui |
 | 19 | `bk-2020-n-x4` | `pc/rlc-serie` | SPC 2020 normale | 3.5 | oui | **non** |
 | 19 | `bk-2021-r-x4c` | `pc/rlc-serie` | SPC 2021 rattrapage | 1.5 | oui | **non** |
 | 17 | `bk-2013-r-x3` | `pc/dipole-rl` | SPC 2013 rattrapage | 2.25 | oui | oui |
@@ -74,13 +74,12 @@ Trié par nombre de mentions.
 | 15 | `bk-2024-n-x1` | `pc/suivi-temporel-vitesse` | SPC 2024 normale | 2.25 | oui | **non** |
 | 14 | `bk-2011-n-x3` | `pc/rc-charge` | SPC 2011 normale | 4.5 | oui | oui |
 | 14 | `bk-2011-r-x2` | `pc/ondes-mecaniques-progressives` | SPC 2011 rattrapage | 2.5 | oui | oui |
-| 14 | `bk-2012-r-x3` | `pc/rlc-serie` | SPC 2012 rattrapage | 3 | oui | oui |
 | 14 | `bk-2023-n-x3` | `pc/dipole-rl` | SPC 2023 normale | 1.75 | oui | **non** |
 | 14 | `bk-2024-r-x5` | `pc/lois-de-newton` | SPC 2024 rattrapage | 2.25 | oui | **non** |
 | 13 | `bk-2010-n-x1` | `pc/transformations-lentes-rapides` | SPC 2010 normale | 4.25 | oui | oui |
 | 13 | `bk-2011-r-x3b` | `pc/rlc-serie` | SPC 2011 rattrapage | 2.5 | oui | oui |
 | 13 | `bk-2012-n-x4b` | `pc/rlc-serie` | SPC 2012 normale | 2 | oui | **non** |
-| 13 | `bk-2013-r-x1c` | `pc/esterification-hydrolyse` | SPC 2013 rattrapage | 2.75 | oui | oui |
+| 13 | `bk-2012-r-x3` | `pc/rlc-serie` | SPC 2012 rattrapage | 3 | oui | oui |
 | 13 | `bk-2015-n-x4b` | `pc/systemes-oscillants` | SPC 2015 normale | 2.5 | oui | oui |
 | 13 | `bk-2015-r-x3b` | `pc/rlc-serie` | SPC 2015 rattrapage | 2.5 | oui | oui |
 | 13 | `bk-2021-n-x4` | `pc/rc-charge` | SPC 2021 normale | 1 | oui | **non** |
@@ -94,6 +93,7 @@ Trié par nombre de mentions.
 | 11 | `bk-2023-r-x4` | `pc/chute-mouvements-plans` | SPC 2023 rattrapage | 3 | oui | **non** |
 | 11 | `bk-2025-r-x1c` | `pc/suivi-temporel-vitesse` | SPC 2025 rattrapage | 2.25 | oui | **non** |
 | 11 | `bk-2025-r-x4` | `pc/chute-mouvements-plans` | SPC 2025 rattrapage | 2 | oui | **non** |
+| 10 | `bk-2013-r-x1c` | `pc/esterification-hydrolyse` | SPC 2013 rattrapage | 2.75 | oui | oui |
 | 10 | `bk-2021-n-x4` | `pc/rlc-serie` | SPC 2021 normale | 2 | oui | **non** |
 | 10 | `bk-2022-n-x3` | `pc/rlc-serie` | SPC 2022 normale | 3 | oui | **non** |
 | 10 | `bk-2025-r-x3b` | `pc/ondes-em-modulation` | SPC 2025 rattrapage | 1.25 | oui | **non** |
