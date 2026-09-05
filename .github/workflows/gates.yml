@@ -36,6 +36,12 @@ jobs:
     #
     # Total observé jusqu'à la coupe : ~30 min. 50 min laisse la marge d'un
     # runner lent sans masquer un blocage réel.
+    #
+    # RE-MESURÉ le 2026-09-05, après l'ouverture des 39 épreuves : run 451,
+    # VERT en 28 min 35 s de bout en bout — trois portes balaient désormais
+    # 39 pages de plus chacune (chacune ouverte en deux clics), et une porte
+    # neuve, `formules`, en balaie 101. Le budget de 50 min tient ; il n'a pas
+    # besoin d'être relevé, et le relever masquerait de nouveau un blocage.
     timeout-minutes: 50
     defaults:
       run:
