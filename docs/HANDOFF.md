@@ -2365,3 +2365,26 @@ pour ordonner ou dater. Deux `statSync` par notion disparaissent au passage.
 > contenu qu'aussi longtemps que personne ne clone le dépôt.** Elle a coûté
 > trois défauts en une journée — l'ordre de la fin de leçon, l'action
 > principale du tableau de bord, et cette date affichée sur 62 pages.
+
+### 10.23 Où les décisions de cet arc sont consignées
+
+Les §10.1 à §10.22 racontent ce qui a été mesuré, trouvé et réparé — le
+détail, dans l'ordre où il est venu. Les **décisions** qui en sortent, celles
+qui gouvernent le code au-delà des correctifs du jour, sont dans
+`docs/decisions/0031-faits-fabriques-et-portee-mesuree.md` :
+
+| # | La décision | Née de |
+|---|---|---|
+| 1 | Un fait affiché vient d'une source qui survit au clone | §10.20, §10.21, §10.22 |
+| 2 | Deux surfaces qui répondent à la même question partagent leur source | §10.20, §10.21 |
+| 3 | Un chiffre dans un document porte la commande qui le produit | §10.16 |
+| 4 | Une étiquette de statut se pose par document | §10.17 |
+| 5 | Un blocage consigné nomme ce qui le lève | §10.17 |
+| 6 | Un renvoi est une instruction (zone vivante / zone d'archive) | §10.14 |
+| 7 | La portée d'un mécanisme se mesure, séparément de son bon fonctionnement | §10.12 |
+| 8 | Une porte a deux sens quand un seul se laisse contourner | §10.10 |
+
+Et les deux corrections que l'arc s'est appliquées à lui-même — la fausse
+alerte « 4 exercice s » et le premier correctif de figure défait par la
+mesure — sont dans la section *Retractions and Corrections* du même ADR,
+parce qu'une méthode qui n'enregistre que ses succès n'est pas une méthode.

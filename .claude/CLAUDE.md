@@ -60,6 +60,13 @@ Read the right document for the task at hand:
   Fable close** (site skeleton, the 61-lesson fill, the D10 media layer,
   Lesson Experience v2, the handoff corpus — HANDOFF §5, the post-Fable
   work order, DASHBOARD-SPEC, THEME-ARCHITECTURE, the three skills).
+  **ADR 0031 consolidates the September-2026 arc** (a displayed fact must
+  come from a source that survives a clone — file dates are banned as
+  content facts; programme order is the single ordering source; a figure
+  in a document carries the command that produces it; status labels are
+  per-document; a cross-reference is an instruction — the live/archive
+  link gate; a mechanism's REACH is measured separately from whether it
+  works; a gate has two directions when one alone can be gamed).
 - **`docs/HANDOFF.md`** — *start here after the July-2026 sprint.* The
   open-gates list (owner decisions pending), the external-audit triage,
   and the "how not to regress this" invariants — written as the sprint's
