@@ -3031,7 +3031,7 @@ run 451, sur la même pile d'instruments, était vert en 28 min 35 s.
 | `token-gate` | tout le code composant | une seule syntaxe |
 | `validate-content --strict` | 62 notions | 0 échec |
 | `etroit-sweep` | 108 pages × 320/360/390 px — les 39 épreuves ouvertes en deux clics | 0 débord |
-| `zoom400-sweep` | 70 pages à 400 % (le balayage à 108 pages, épreuves ouvertes, tourne au moment de ce commit — son chiffre suivra) | 0 débord, 0 barre collante, 0 navigation inatteignable |
+| `zoom400-sweep` | 108 pages à 400 % (320 × 256 px) — les 39 épreuves ouvertes en deux clics | 0 débord, 0 barre collante, 0 page à moins de 3 lignes de prose, 0 navigation inatteignable |
 | `zoom-sweep` (texte à 200 %) | 67 pages, mesuré SOUS CHARGE | **61 débords** de 47 à 200 px — que trois pages re-mesurées seules et à froid ramènent à **0** : l'instrument lisait la largeur avec les métriques de la fonte de SUBSTITUT, `networkidle` arrivant avant les fontes. Il attend désormais `document.fonts.ready`. Le balayage complet à froid est à refaire avant de dire « zéro » sur 67 pages ; il suivra dans le commit suivant |
 | `pagination-probe` | 60 liens profonds | 60 tenues, 0 rompue |
 | `annonce-sweep` | 106 pages dont les 39 épreuves | 0 région assertive, 0 focus perdu, 0 recul de tabulation |
