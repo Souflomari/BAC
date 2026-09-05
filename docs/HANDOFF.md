@@ -3255,10 +3255,15 @@ page d'épreuve. Elle est pire, et son levier ne casse rien.
 **LE FAIT.** Le document d'épreuve est léger (≤ 194 ko bruts, 53 ko gzip)
 parce que tout se rend côté client, en deux gestes : « Commencer » rend d'un
 coup tous les énoncés, « Terminer » d'un coup tous les corrigés. Sur les 39
-sujets, processeur bridé ×6, l'écran gèle **de 7 à 13 s au « Commencer »**
-(145 à 409 formules d'énoncé) et **de 11 à 30 s au « Terminer »** (480 à
-1 670 formules de corrigé), en UNE tâche de 4 à 13 s pendant laquelle rien ne
-répond — ni le défilement, ni un appui. Le tableau complet est plus bas.
+sujets, processeur bridé ×6, l'écran gèle **de 3 à 15 s au « Commencer »**
+(médiane 10 s ; 66 à 433 formules d'énoncé) et **de 3 à 30 s au
+« Terminer »** (médiane 17 s ; 256 à 1 668 formules de corrigé), la plus
+longue tâche unique allant de 2,6 à 15,9 s (médiane 6,4 s) — un intervalle
+pendant lequel rien ne répond, ni le défilement, ni un appui. Le coût se
+décompose en une part fixe et une part par formule : au « Terminer », environ
+6 s + 16 ms par formule ; au « Commencer », 4 s + 25 ms par formule (le
+pipeline markdown pèse plus que KaTeX sur les énoncés, courts et nombreux).
+Le tableau complet, avant et après, est plus bas.
 
 **LA CAUSE, en deux couches.** Chaque bloc de texte (énoncé, raisonnement,
 intro) passe par le pipeline markdown complet — remark, GFM, typographie
