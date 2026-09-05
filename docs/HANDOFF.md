@@ -1625,12 +1625,27 @@ corrigés. La convention de comptage a été extraite dans
 et `resume-couverture` : deux comptages parallèles finiraient par diverger, et
 le second accuserait le premier de mentir en se trompant lui-même.
 
-**Ce qui reste.** 219 misconceptions restent sous le plancher ailleurs dans le
-corpus — mais leurs notions déclarent honnêtement `floor_met: false` : c'est de
-la dette NOMMÉE, pas de la dette masquée, et c'est le sujet de la campagne
-d'items, pas de cette porte-ci. Et **18 notions n'ont aucun résumé** ; le
-cliquet empêche leur nombre de monter, il n'oblige personne à en écrire. Onze
-d'entre elles sont les notions SVT et deux les notions de philo `le-bonheur` et
-`l-histoire` — le même périmètre que les arbitrages propriétaire du §10.6.
+**La deuxième passe.** Les 18 notions qui n'avaient AUCUN résumé en ont un,
+généré : 11 en SVT, 2 en philo, 4 en PC, 1 en maths. Celles qui ne sont pas au
+plancher portent un bloc `under_floor` qui nomme chaque misconception
+inévaluable et le nombre d'items qui lui manquent. Un résumé absent n'est pas
+un mensonge, mais il produit le même effet — une dette qu'aucun document ne
+nomme est une dette qu'on ne paie jamais. Le corpus est **62 sur 62** à se
+décrire, cliquet scellé à zéro : un résumé ne peut plus disparaître.
+
+Cette passe a fait apparaître un cas qu'aucun des deux instruments ne voyait :
+une misconception **déclarée mais qu'aucun item du banc ne vise**. Elle compte
+zéro — pire que sous le plancher — et échappait aux deux décomptes (l'un ne
+connaît que les tags rencontrés, l'autre ne compte « orpheline » que ce qui
+n'est utilisé NULLE PART, checkpoints compris ; or un checkpoint ne compte pas
+dans le plancher). Il y en a **16**. Le périmètre du plancher est désormais
+l'union du déclaré et du tagué, dans l'instrument comme dans les tableaux.
+
+**L'état du corpus** : 767 misconceptions déclarées ou taguées, **532
+évaluables**, 235 sous le plancher (dont 16 sans aucun item de banc), **30
+notions sur 62 entièrement évaluables**. Les 235 sont de la dette NOMMÉE :
+chaque notion concernée déclare `floor_met: false` et dit dans son
+`under_floor` ce qui manque et combien. C'est le sujet de la campagne d'items,
+pas de cette porte-ci.
 
 Détail complet : `docs/audits/resume-couverture.md`.

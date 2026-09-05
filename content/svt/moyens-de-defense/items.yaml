@@ -643,3 +643,38 @@ items:
       **La nuance à ne pas manquer.** Les anticorps n'atteignent pas un virus
       DÉJÀ intracellulaire ; ils l'atteignent quand il circule. Leur perte
       compte donc, même face à un agent qui finit par entrer.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# Ajouté le 2026-09-05. Cette notion n'en avait aucun : son état de couverture
+# n'était lisible qu'en relançant un instrument, donc invisible à qui ouvrait le
+# fichier — et une dette qu'aucun document ne nomme est une dette qu'on ne paie
+# jamais. Le tableau est GÉNÉRÉ contre la convention de la chaîne
+# (web/scripts/lib/couverture-compte.mjs) et gardé par
+# scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
+# `total_items` cesse de correspondre au contenu du fichier — dans les DEUX
+# directions, donc combler le plancher oblige aussi à venir retourner le drapeau.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul.
+  per_misconception:
+    mc.svt.svt_moyens_defense.inflammation-reduite-a-un-phenomene-vasculaire: { count: 3, items: [MD-M1-1, MD-M4-1, MD-M4-3] }
+    mc.svt.svt_moyens_defense.portee-des-anticorps-mal-situee:                { count: 3, items: [MD-M2-2, MD-M4-2, MD-M4-3] }
+    mc.svt.svt_moyens_defense.confond-innee-adaptative:                       { count: 4, items: [MD-M1-1, MD-M1-2, MD-M3-1, MD-M4-1] }
+    mc.svt.svt_moyens_defense.anticorps-detruisent-directement:               { count: 3, items: [MD-M2-1, MD-M2-2, MD-M4-1] }
+    mc.svt.svt_moyens_defense.confond-lb-lt:                                  { count: 3, items: [MD-M3-1, MD-M3-2, MD-M4-2] }
+  total_items: 9
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R2: 1
+    R3: 3
+    R4: 2
+    R5: 1
+    R6: 2
+  honest_state: >-
+    Les cinq misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Quatre y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

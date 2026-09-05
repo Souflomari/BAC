@@ -29,7 +29,8 @@
  * relus par des humains. Deux champs, en revanche, n'ont qu'une lecture :
  *
  *   • `floor_met` — « le modèle apprenant peut évaluer toutes les
- *     misconceptions de cette notion ». La seule convention qui compte ici est
+ *     misconceptions de cette notion », déclarées ET taguées : une misconception
+ *     déclarée qu'aucun item du banc ne vise compte zéro, pas rien. La seule convention qui compte ici est
  *     celle de la CHAÎNE (lib/couverture-compte.mjs), puisque c'est elle qui
  *     construit learner-model-data.json. Vrai ou faux, sans échappatoire.
  *   • `total_items` — un nombre d'items. Il n'y a pas deux façons de compter
@@ -77,7 +78,18 @@ for (const n of listerNotions(CONTENU)) {
   const m = mesurerNotion(n);
   if (!m) continue;
   const resume = m.banc && typeof m.banc.coverage_summary === "object" ? m.banc.coverage_summary : null;
-  const sous = [...m.parMc].filter(([, k]) => k < PLANCHER).sort((a, b) => a[1] - b[1] || a[0].localeCompare(b[0]));
+  // Le périmètre du plancher, c'est l'union de ce qui est DÉCLARÉ et de ce qui
+  // est TAGUÉ : une misconception déclarée qu'aucun item du banc ne vise compte
+  // ZÉRO, ce qui est pire que sous le plancher — elle n'apparaîtrait dans aucun
+  // décompte si l'on se contentait des tags rencontrés. Seize existent dans le
+  // corpus au 2026-09-05, toutes dans des notions qui déclarent honnêtement
+  // `floor_met: false` ; certaines ne sont sondées QUE par un checkpoint, ce qui
+  // ne compte pas — le modèle apprenant lit le banc de fin seul.
+  const perimetre = new Set([...m.declareesSet, ...m.parMc.keys()]);
+  const sous = [...perimetre]
+    .map((id) => [id, m.parMc.get(id) || 0])
+    .filter(([, k]) => k < PLANCHER)
+    .sort((a, b) => a[1] - b[1] || a[0].localeCompare(b[0]));
   notions.push({
     cle: m.cle,
     items: Array.isArray(m.banc.items) ? m.banc.items.length : 0,

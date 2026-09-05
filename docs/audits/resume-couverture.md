@@ -128,15 +128,61 @@ partie qui empêche de la refaire.
 
 Effet mesuré sur le corpus entier : **517 → 532 misconceptions évaluables**.
 
+## Deuxième passe — les 18 notions qui n'en avaient aucun
+
+Un résumé absent n'est pas un mensonge, mais il produit le même effet : l'état
+de couverture d'une notion n'était lisible qu'en relançant un instrument, donc
+invisible à qui ouvrait le fichier. **Une dette qu'aucun document ne nomme est
+une dette qu'on ne paie jamais.**
+
+Les 18 blocs manquants ont donc été **générés** — les 11 notions de SVT, deux
+de philo (`le-bonheur`, `l-histoire`), quatre de physique-chimie, une de maths
+— avec, pour celles qui ne sont pas au plancher, un bloc `under_floor` qui
+nomme chaque misconception inévaluable et le nombre d'items qui lui manquent.
+Onze déclarent `floor_met: true`, sept déclarent `false` en disant ce qui reste.
+Le corpus est désormais **62 notions sur 62** à se décrire, et le cliquet est
+scellé à zéro : un résumé ne peut plus disparaître.
+
+### Ce que cette passe a fait apparaître
+
+Le générateur a buté sur un cas que ni cet instrument ni
+`couverture-diagnostique` ne voyaient : une misconception **déclarée dans
+l'inventaire de la notion, mais qu'aucun item du banc ne vise**. Elle compte
+zéro — pire que sous le plancher — et elle était absente des deux décomptes,
+parce que l'un ne connaît que les tags rencontrés et l'autre ne compte comme
+« orpheline » que ce qui n'est utilisé nulle part, checkpoints compris.
+
+Il y en a **16** dans le corpus. Plusieurs ne sont sondées QUE par un
+checkpoint, ce qui ne compte pas : le modèle apprenant est bâti sur le banc de
+fin seul, pour ne pas compter deux fois un item cloné en leçon. Le périmètre du
+plancher est donc désormais l'**union du déclaré et du tagué**, dans
+l'instrument comme dans les tableaux générés. Les 16 vivent toutes dans des
+notions qui déclarent honnêtement `floor_met: false` — la porte est restée
+verte en devenant plus exigeante.
+
+### L'état du corpus après les deux passes
+
+| | |
+|---|---:|
+| misconceptions déclarées ou taguées | **767** |
+| évaluables (≥ 3 items du banc) | **532** |
+| sous le plancher | **235** |
+| … dont sans aucun item de banc | **16** |
+| notions entièrement évaluables | **30** sur 62 |
+| notions portant un `coverage_summary` | **62** sur 62 |
+
 ## Ce que ce document ne dit pas
 
 - **Si les tableaux par-misconception sont justes.** Ils restent de la prose,
   relue par des humains. L'instrument garde deux affirmations, pas le tableau.
-- **Les 18 notions sans aucun résumé.** Le cliquet empêche leur nombre de
-  monter ; il n'oblige personne à en écrire. Onze d'entre elles sont les notions
-  SVT, deux les notions de philo `le-bonheur` et `l-histoire` — le même
-  périmètre que les arbitrages propriétaire encore ouverts (HANDOFF §10.6).
-- **Les 219 misconceptions encore sous le plancher ailleurs dans le corpus.**
-  Elles ne sont pas un mensonge : les notions concernées déclarent honnêtement
-  `floor_met: false`. C'est de la dette nommée, pas de la dette masquée — et
-  c'est le sujet de la campagne d'items, pas de cette porte-ci.
+- **Les 235 misconceptions encore sous le plancher.** Elles ne sont pas un
+  mensonge : leurs notions déclarent toutes `floor_met: false` et nomment, dans
+  leur bloc `under_floor`, ce qui manque et combien. C'est de la dette NOMMÉE,
+  pas de la dette masquée — et c'est le sujet de la campagne d'items, pas de
+  cette porte-ci.
+- **Si un résumé généré est UTILE.** Il est exact et gardé, ce qui n'est pas la
+  même chose qu'éclairant : les notes qui expliquent une décision d'auteur — un
+  périmètre volontairement réduit, un item hérité qu'on garde et pourquoi — ne
+  se génèrent pas. Les quatre résumés réécrits à la main en portent ; les 18
+  générés n'en portent aucune, et c'est à l'auteur de la notion de les y
+  ajouter quand il en a une.

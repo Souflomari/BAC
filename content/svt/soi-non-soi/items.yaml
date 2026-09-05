@@ -828,3 +828,40 @@ items:
       **Ce qu'il ne faut pas en conclure :** ni que la cellule a changé de
       patrimoine, ni qu'elle a perdu sa signature. Elle en a acquis une
       seconde.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# Ajouté le 2026-09-05. Cette notion n'en avait aucun : son état de couverture
+# n'était lisible qu'en relançant un instrument, donc invisible à qui ouvrait le
+# fichier — et une dette qu'aucun document ne nomme est une dette qu'on ne paie
+# jamais. Le tableau est GÉNÉRÉ contre la convention de la chaîne
+# (web/scripts/lib/couverture-compte.mjs) et gardé par
+# scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
+# `total_items` cesse de correspondre au contenu du fichier — dans les DEUX
+# directions, donc combler le plancher oblige aussi à venir retourner le drapeau.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul.
+  per_misconception:
+    mc.svt.svt_soi_non_soi.tolerance-passive:               { count: 3, items: [SNS-1, SNS-7, SNS-9] }
+    mc.svt.svt_soi_non_soi.reconnaissance-non-specifique:   { count: 5, items: [SNS-2, SNS-6, SNS-7, SNS-8, SNS-12] }
+    mc.svt.svt_soi_non_soi.antigene-anticorps-confondus:    { count: 3, items: [SNS-2, SNS-8, SNS-9] }
+    mc.svt.svt_soi_non_soi.systemes-de-marqueurs-confondus: { count: 3, items: [SNS-3, SNS-4, SNS-5] }
+    mc.svt.svt_soi_non_soi.mauvais-antigene-vise:           { count: 3, items: [SNS-4, SNS-10, SNS-11] }
+    mc.svt.svt_soi_non_soi.anticorps-immun-vs-naturel:      { count: 3, items: [SNS-5, SNS-10, SNS-11] }
+    mc.svt.svt_soi_non_soi.soi-modifie-devient-etranger:    { count: 3, items: [SNS-6, SNS-9, SNS-12] }
+  total_items: 12
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R1: 2
+    R2: 2
+    R3: 2
+    R4: 4
+    R5: 2
+  honest_state: >-
+    Les sept misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Six y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

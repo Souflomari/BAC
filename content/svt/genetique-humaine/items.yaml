@@ -616,3 +616,38 @@ items:
 
       **La génération suivante, elle, changera :** les filles conductrices
       transmettront l'allèle à un fils sur deux.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# Ajouté le 2026-09-05. Cette notion n'en avait aucun : son état de couverture
+# n'était lisible qu'en relançant un instrument, donc invisible à qui ouvrait le
+# fichier — et une dette qu'aucun document ne nomme est une dette qu'on ne paie
+# jamais. Le tableau est GÉNÉRÉ contre la convention de la chaîne
+# (web/scripts/lib/couverture-compte.mjs) et gardé par
+# scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
+# `total_items` cesse de correspondre au contenu du fichier — dans les DEUX
+# directions, donc combler le plancher oblige aussi à venir retourner le drapeau.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul.
+  per_misconception:
+    mc.svt.svt_genetique_humaine.autosomes-gonosomes-confondus: { count: 4, items: [GH-1, GH-7, GH-8, GH-9] }
+    mc.svt.svt_genetique_humaine.dominance-mal-deduite:         { count: 3, items: [GH-2, GH-6, GH-8] }
+    mc.svt.svt_genetique_humaine.axes-de-decision-melanges:     { count: 3, items: [GH-2, GH-3, GH-8] }
+    mc.svt.svt_genetique_humaine.hemizygotie-masculine-ignoree: { count: 3, items: [GH-3, GH-4, GH-6] }
+    mc.svt.svt_genetique_humaine.probabilite-non-conditionnee:  { count: 3, items: [GH-5, GH-7, GH-9] }
+  total_items: 9
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R1: 1
+    R2: 1
+    R3: 3
+    R4: 2
+    R5: 2
+  honest_state: >-
+    Les cinq misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Quatre y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

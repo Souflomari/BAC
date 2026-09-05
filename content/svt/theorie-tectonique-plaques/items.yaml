@@ -554,3 +554,38 @@ items:
       **Ce qu'ils n'établissent pas directement.** Le moteur. La convection
       mantellique est une inférence, appuyée sur d'autres arguments
       (tomographie, flux de chaleur), non une lecture d'écran GPS.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# Ajouté le 2026-09-05. Cette notion n'en avait aucun : son état de couverture
+# n'était lisible qu'en relançant un instrument, donc invisible à qui ouvrait le
+# fichier — et une dette qu'aucun document ne nomme est une dette qu'on ne paie
+# jamais. Le tableau est GÉNÉRÉ contre la convention de la chaîne
+# (web/scripts/lib/couverture-compte.mjs) et gardé par
+# scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
+# `total_items` cesse de correspondre au contenu du fichier — dans les DEUX
+# directions, donc combler le plancher oblige aussi à venir retourner le drapeau.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul.
+  per_misconception:
+    mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise:         { count: 4, items: [TTP-1, TTP-2, TTP-7, TTP-8] }
+    mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers:                        { count: 4, items: [TTP-3, TTP-6, TTP-7, TTP-8] }
+    mc.svt.svt_tectonique_plaques.enveloppes-et-support-des-plaques-confondus: { count: 3, items: [TTP-3, TTP-4, TTP-5] }
+    mc.svt.svt_tectonique_plaques.repartition-uniforme-des-seismes:            { count: 3, items: [TTP-6, TTP-7, TTP-8] }
+  total_items: 8
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R1: 1
+    R2: 1
+    R3: 1
+    R4: 2
+    R6: 2
+    R7: 1
+  honest_state: >-
+    Les quatre misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Deux y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

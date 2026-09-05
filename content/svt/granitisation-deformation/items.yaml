@@ -693,3 +693,38 @@ items:
       **L'histoire reconstituée.** Mise en place en profondeur, déformation
       ductile pendant la collision, puis refroidissement et exhumation par
       érosion, où la roche ne peut plus que casser.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# Ajouté le 2026-09-05. Cette notion n'en avait aucun : son état de couverture
+# n'était lisible qu'en relançant un instrument, donc invisible à qui ouvrait le
+# fichier — et une dette qu'aucun document ne nomme est une dette qu'on ne paie
+# jamais. Le tableau est GÉNÉRÉ contre la convention de la chaîne
+# (web/scripts/lib/couverture-compte.mjs) et gardé par
+# scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
+# `total_items` cesse de correspondre au contenu du fichier — dans les DEUX
+# directions, donc combler le plancher oblige aussi à venir retourner le drapeau.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul.
+  per_misconception:
+    mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause: { count: 3, items: [GRD-1, GRD-2, GRD-5] }
+    mc.svt.svt_granitisation.cassant-ductile-inverses:                           { count: 3, items: [GRD-1, GRD-6, GRD-9] }
+    mc.svt.svt_granitisation.transformation-attribuee-a-lerosion:                { count: 4, items: [GRD-2, GRD-6, GRD-7, GRD-8] }
+    mc.svt.svt_granitisation.fusion-mal-expliquee:                               { count: 3, items: [GRD-3, GRD-6, GRD-8] }
+    mc.svt.svt_granitisation.granite-cru-volcanique-ou-sedimentaire:             { count: 3, items: [GRD-4, GRD-7, GRD-9] }
+  total_items: 9
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R1: 1
+    R2: 2
+    R3: 2
+    R4: 3
+    R5: 1
+  honest_state: >-
+    Les cinq misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Quatre y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

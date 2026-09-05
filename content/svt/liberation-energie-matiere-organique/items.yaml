@@ -646,3 +646,40 @@ items:
 
       **L'image juste.** Une monnaie qui circule vite, pas un coffre qui se
       remplit — d'où l'expression « monnaie énergétique ».
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# Ajouté le 2026-09-05. Cette notion n'en avait aucun : son état de couverture
+# n'était lisible qu'en relançant un instrument, donc invisible à qui ouvrait le
+# fichier — et une dette qu'aucun document ne nomme est une dette qu'on ne paie
+# jamais. Le tableau est GÉNÉRÉ contre la convention de la chaîne
+# (web/scripts/lib/couverture-compte.mjs) et gardé par
+# scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
+# `total_items` cesse de correspondre au contenu du fichier — dans les DEUX
+# directions, donc combler le plancher oblige aussi à venir retourner le drapeau.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul.
+  per_misconception:
+    mc.svt.svt_liberation_energie.atp-reserve-plutot-que-monnaie:    { count: 3, items: [LIB-1, LIB-8, LIB-9] }
+    mc.svt.svt_liberation_energie.bilan-metabolique-incomplet:       { count: 3, items: [LIB-2, LIB-3, LIB-7] }
+    mc.svt.svt_liberation_energie.localisation-des-etapes-confondue: { count: 4, items: [LIB-2, LIB-3, LIB-4, LIB-6] }
+    mc.svt.svt_liberation_energie.role-du-dioxygene-inverse:         { count: 3, items: [LIB-4, LIB-7, LIB-9] }
+    mc.svt.svt_liberation_energie.fermentation-mal-comprise:         { count: 3, items: [LIB-5, LIB-6, LIB-8] }
+  total_items: 9
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R1: 1
+    R2: 2
+    R3: 1
+    R4: 1
+    R5: 1
+    R6: 2
+    R7: 1
+  honest_state: >-
+    Les cinq misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Quatre y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

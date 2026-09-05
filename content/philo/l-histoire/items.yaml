@@ -1391,3 +1391,54 @@ items:
       **Antithèse :** Aron -- contingence, donc acteurs véritables.
 
       **Erreur à éviter :** inverser les deux camps, ou nier toute tension.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# Ajouté le 2026-09-05. Cette notion n'en avait aucun : son état de couverture
+# n'était lisible qu'en relançant un instrument, donc invisible à qui ouvrait le
+# fichier — et une dette qu'aucun document ne nomme est une dette qu'on ne paie
+# jamais. Le tableau est GÉNÉRÉ contre la convention de la chaîne
+# (web/scripts/lib/couverture-compte.mjs) et gardé par
+# scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
+# `total_items` cesse de correspondre au contenu du fichier — dans les DEUX
+# directions, donc combler le plancher oblige aussi à venir retourner le drapeau.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul.
+  per_misconception:
+    mc.philo.histoire.auteurs-echanges:                         { count: 13, items: [HIST-2, HIST-3, HIST-4, HIST-6, HIST-9, HIST-12, HIST-13, HIST-15, HIST-16, HIST-17, HIST-22, HIST-23, HIST-24] }
+    mc.philo.histoire.ruse-de-la-raison-durcie-en-determinisme: { count: 2, items: [HIST-2, HIST-13] }
+    mc.philo.histoire.contingence-lue-comme-absurdite:          { count: 4, items: [HIST-4, HIST-9, HIST-12, HIST-13] }
+    mc.philo.histoire.objectivite-tout-ou-rien:                 { count: 3, items: [HIST-5, HIST-18, HIST-19] }
+    mc.philo.histoire.memoire-histoire-passe-confondus:         { count: 4, items: [HIST-1, HIST-10, HIST-11, HIST-21] }
+    mc.philo.histoire.memoire-sacralisee-ou-disqualifiee:       { count: 2, items: [HIST-6, HIST-20] }
+    mc.philo.histoire.objection-du-chapitre-1-mal-lue:          { count: 3, items: [HIST-7, HIST-8, HIST-9] }
+    mc.philo.histoire.infrastructure-superstructure-inversees:  { count: 2, items: [HIST-14, HIST-15] }
+  total_items: 24
+  floor: 3
+  floor_met: false
+  ramp_coverage:
+    R0: 3
+    R1: 3
+    R2: 3
+    R3: 3
+    R4: 3
+    R5: 3
+    R6: 3
+    R7: 3
+  under_floor:
+    # Déclarées, et INÉVALUABLES : sous 3 items du banc, le modèle apprenant
+    # les laisse « unassessed » à jamais — ni détectées, ni écartées.
+    # `manquants` = nombre d'items à écrire pour franchir le plancher.
+    # « sondée en leçon » = un checkpoint la vise, ce qui NE COMPTE PAS : le
+    # modèle est bâti sur le banc de fin seul (pas de double comptage).
+    mc.philo.histoire.infrastructure-superstructure-inversees:  { items: 2, manquants: 1 }
+    mc.philo.histoire.memoire-sacralisee-ou-disqualifiee:       { items: 2, manquants: 1 }
+    mc.philo.histoire.ruse-de-la-raison-durcie-en-determinisme: { items: 2, manquants: 1 }
+  honest_state: >-
+    Trois des huit misconceptions déclarées siègent SOUS le
+    plancher : le modèle apprenant ne peut pas les évaluer.
+    Il manque trois items au total pour les y amener — dette NOMMÉE,
+    pas dette masquée.

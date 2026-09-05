@@ -719,3 +719,39 @@ items:
       **Ce que le vaccin apporte :** un antigène qui déclenche la réponse de
       l'enfant, lente à venir mais durable, avec des cellules mémoire pour les
       années suivantes.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# Ajouté le 2026-09-05. Cette notion n'en avait aucun : son état de couverture
+# n'était lisible qu'en relançant un instrument, donc invisible à qui ouvrait le
+# fichier — et une dette qu'aucun document ne nomme est une dette qu'on ne paie
+# jamais. Le tableau est GÉNÉRÉ contre la convention de la chaîne
+# (web/scripts/lib/couverture-compte.mjs) et gardé par
+# scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
+# `total_items` cesse de correspondre au contenu du fichier — dans les DEUX
+# directions, donc combler le plancher oblige aussi à venir retourner le drapeau.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul.
+  per_misconception:
+    mc.svt.svt_dysfonctionnements_immunitaires.vaccination-serotherapie-confondues:  { count: 5, items: [DI-1, DI-2, DI-3, DI-7, DI-10] }
+    mc.svt.svt_dysfonctionnements_immunitaires.immunite-passive-mal-comprise:        { count: 3, items: [DI-2, DI-7, DI-11] }
+    mc.svt.svt_dysfonctionnements_immunitaires.vaccin-protection-universelle:        { count: 3, items: [DI-1, DI-7, DI-11] }
+    mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus:         { count: 6, items: [DI-4, DI-5, DI-6, DI-8, DI-9, DI-11] }
+    mc.svt.svt_dysfonctionnements_immunitaires.critere-de-distinction-non-pertinent: { count: 3, items: [DI-5, DI-9, DI-10] }
+    mc.svt.svt_dysfonctionnements_immunitaires.cible-du-vih-mal-identifiee:          { count: 3, items: [DI-6, DI-8, DI-10] }
+  total_items: 11
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R2: 3
+    R3: 3
+    R4: 1
+    R5: 2
+    R6: 2
+  honest_state: >-
+    Les six misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Quatre y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

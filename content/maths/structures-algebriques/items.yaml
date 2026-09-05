@@ -1376,3 +1376,52 @@ items:
 # (no under-covered model). Floor already met before this pass ; no items
 # added, no counts edited. The in-lesson checkpoints (checkpoints.yaml) surface
 # clones inline and are NOT counted against this end-bank floor.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# Ajouté le 2026-09-05. Cette notion n'en avait aucun : son état de couverture
+# n'était lisible qu'en relançant un instrument, donc invisible à qui ouvrait le
+# fichier — et une dette qu'aucun document ne nomme est une dette qu'on ne paie
+# jamais. Le tableau est GÉNÉRÉ contre la convention de la chaîne
+# (web/scripts/lib/couverture-compte.mjs) et gardé par
+# scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
+# `total_items` cesse de correspondre au contenu du fichier — dans les DEUX
+# directions, donc combler le plancher oblige aussi à venir retourner le drapeau.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul.
+  per_misconception:
+    mc.math.structures_algebriques.loi-modulaire-mal-calculee: { count: 1, items: [SA-7] }
+    mc.math.structures_algebriques.neutre-vs-symetrique:       { count: 8, items: [SA-1, SA-2, SA-8, SA-12, SA-14, SA-20, SA-23, SA-24] }
+    mc.math.structures_algebriques.axiome-oublie:              { count: 3, items: [SA-3, SA-4, SA-22] }
+    mc.math.structures_algebriques.groupe-anneau:              { count: 6, items: [SA-5, SA-6, SA-18, SA-19, SA-20, SA-21] }
+    mc.math.structures_algebriques.cloture-non-verifiee:       { count: 8, items: [SA-3, SA-6, SA-7, SA-8, SA-10, SA-11, SA-12, SA-18] }
+    mc.math.structures_algebriques.assoc-commut-confusion:     { count: 6, items: [SA-9, SA-11, SA-13, SA-15, SA-16, SA-17] }
+    mc.math.structures_algebriques.generalisation-hative:      { count: 7, items: [SA-13, SA-14, SA-15, SA-16, SA-17, SA-18, SA-20] }
+    mc.math.structures_algebriques.groupe-implique-commutatif: { count: 3, items: [SA-15, SA-17, SA-22] }
+  total_items: 24
+  floor: 3
+  floor_met: false
+  ramp_coverage:
+    R0: 3
+    R1: 3
+    R2: 3
+    R3: 3
+    R4: 3
+    R5: 3
+    R6: 3
+    R7: 3
+  under_floor:
+    # Déclarées, et INÉVALUABLES : sous 3 items du banc, le modèle apprenant
+    # les laisse « unassessed » à jamais — ni détectées, ni écartées.
+    # `manquants` = nombre d'items à écrire pour franchir le plancher.
+    # « sondée en leçon » = un checkpoint la vise, ce qui NE COMPTE PAS : le
+    # modèle est bâti sur le banc de fin seul (pas de double comptage).
+    mc.math.structures_algebriques.loi-modulaire-mal-calculee: { items: 1, manquants: 2 }
+  honest_state: >-
+    Une des huit misconceptions déclarées siège SOUS le
+    plancher : le modèle apprenant ne peut pas les évaluer.
+    Il manque deux items au total pour les y amener — dette NOMMÉE,
+    pas dette masquée.

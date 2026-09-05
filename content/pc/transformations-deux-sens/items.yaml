@@ -892,3 +892,57 @@ items:
 #      → TDS-12 (R3), TDS-13 (R4), TDS-15 (R4)                                = 3
 # Rung distribution: R0=3 (TDS-7,8,9) R1=3 (TDS-1,3,4) R2=3 (TDS-5,10,11)
 #                     R3=3 (TDS-2,6,12) R4=3 (TDS-13,14,15)
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# Ajouté le 2026-09-05. Cette notion n'en avait aucun : son état de couverture
+# n'était lisible qu'en relançant un instrument, donc invisible à qui ouvrait le
+# fichier — et une dette qu'aucun document ne nomme est une dette qu'on ne paie
+# jamais. Le tableau est GÉNÉRÉ contre la convention de la chaîne
+# (web/scripts/lib/couverture-compte.mjs) et gardé par
+# scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
+# `total_items` cesse de correspondre au contenu du fichier — dans les DEUX
+# directions, donc combler le plancher oblige aussi à venir retourner le drapeau.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul.
+  per_misconception:
+    mc.physics.pc_transformations_deux_sens.vitesse-implique-avancement:           { count: 1, items: [TDS-8] }
+    mc.physics.pc_transformations_deux_sens.conclusion-refusee-a-tort:             { count: 6, items: [TDS-2, TDS-4, TDS-9, TDS-10, TDS-12, TDS-13] }
+    mc.physics.pc_transformations_deux_sens.reaction-toujours-totale:              { count: 5, items: [TDS-1, TDS-2, TDS-6, TDS-7, TDS-10] }
+    mc.physics.pc_transformations_deux_sens.catalyseur-ou-temps-change-etat-final: { count: 6, items: [TDS-1, TDS-5, TDS-7, TDS-8, TDS-10, TDS-11] }
+    mc.physics.pc_transformations_deux_sens.limitee-rien-ne-se-passe:              { count: 5, items: [TDS-5, TDS-6, TDS-9, TDS-11, TDS-14] }
+    mc.physics.pc_transformations_deux_sens.equilibre-coexistence-signifie-arret:  { count: 2, items: [TDS-12, TDS-15] }
+    mc.physics.pc_transformations_deux_sens.double-fleche-signifie-lente:          { count: 2, items: [TDS-3, TDS-4] }
+    mc.physics.pc_transformations_deux_sens.reversible-jamais-quasi-totale:        { count: 0, items: [] }
+    mc.physics.pc_transformations_deux_sens.sens-propriete-fixe:                   { count: 3, items: [TDS-12, TDS-13, TDS-15] }
+    mc.physics.pc_transformations_deux_sens.presence-produit-determine-sens:       { count: 2, items: [TDS-13, TDS-15] }
+    mc.physics.pc_transformations_deux_sens.conditions-physiques-sans-effet:       { count: 5, items: [TDS-1, TDS-5, TDS-7, TDS-9, TDS-14] }
+  total_items: 15
+  floor: 3
+  floor_met: false
+  ramp_coverage:
+    R0: 3
+    R1: 3
+    R2: 3
+    R3: 3
+    R4: 3
+  under_floor:
+    # Déclarées, et INÉVALUABLES : sous 3 items du banc, le modèle apprenant
+    # les laisse « unassessed » à jamais — ni détectées, ni écartées.
+    # `manquants` = nombre d'items à écrire pour franchir le plancher.
+    # « sondée en leçon » = un checkpoint la vise, ce qui NE COMPTE PAS : le
+    # modèle est bâti sur le banc de fin seul (pas de double comptage).
+    mc.physics.pc_transformations_deux_sens.reversible-jamais-quasi-totale:        { items: 0, manquants: 3 }   # sondée en leçon seulement
+    mc.physics.pc_transformations_deux_sens.vitesse-implique-avancement:           { items: 1, manquants: 2 }
+    mc.physics.pc_transformations_deux_sens.double-fleche-signifie-lente:          { items: 2, manquants: 1 }
+    mc.physics.pc_transformations_deux_sens.equilibre-coexistence-signifie-arret:  { items: 2, manquants: 1 }
+    mc.physics.pc_transformations_deux_sens.presence-produit-determine-sens:       { items: 2, manquants: 1 }
+  honest_state: >-
+    Cinq des onze misconceptions déclarées siègent SOUS le
+    plancher : le modèle apprenant ne peut pas les évaluer. L'une d'entre
+    elles n'a AUCUN item de banc.
+    Il manque huit items au total pour les y amener — dette NOMMÉE,
+    pas dette masquée.

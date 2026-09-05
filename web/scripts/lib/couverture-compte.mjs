@@ -147,6 +147,11 @@ export function mesurerNotion({ matiere, slug, cle, dir }, detail = null) {
     itemsBanc: itemsBanc.length,
     itemsChk: itemsChk.length,
     declarees: declarees.size,
+    // L'ENSEMBLE, pas seulement son cardinal : resume-couverture en a besoin
+    // pour repérer les misconceptions DÉCLARÉES qu'aucun item du banc ne vise
+    // (zéro item — pires que sous le plancher, et absentes de `parMc` par
+    // construction puisque celui-ci ne connaît que les tags rencontrés).
+    declareesSet: declarees,
     distracteurs,
     sansTag,
     nulExplicite,

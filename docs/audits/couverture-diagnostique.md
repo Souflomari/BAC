@@ -267,9 +267,17 @@ Deux campagnes d'items ont suivi le même jour, et le nombre de misconceptions
 | avant la journée | 340 | — |
 | après la campagne de tagage | 458 | 293 |
 | après la campagne d'items (3 notions closes) | 517 | 234 |
-| après la réparation des résumés (4 notions closes) | **532** | **219** |
+| après la réparation des résumés (4 notions closes) | **532** | 219 |
+| après l'extension du périmètre (déclaré ∪ tagué) | **532** | **235** |
 
-La dernière ligne mérite son propre document : quatre notions déclaraient
+La dernière ligne n'ajoute aucune dette : elle en RÉVÈLE. 16 misconceptions
+sont déclarées dans l'inventaire d'une notion sans qu'aucun item du BANC ne les
+vise — elles comptaient zéro et n'apparaissaient dans aucun décompte, ni au
+plancher ni sous le plancher, parce que cet instrument ne compte « orpheline »
+que ce qui n'est utilisé nulle part, checkpoints compris. Or un checkpoint ne
+compte pas dans le plancher : le modèle apprenant lit le banc de fin seul.
+
+Les deux dernières lignes méritent leur propre document : quatre notions déclaraient
 `floor_met: true` alors que 15 misconceptions siégeaient sous le plancher — non
 par négligence, mais parce que leur résumé disait vrai le jour de son écriture
 et que le périmètre du fichier a doublé après. C'est le sujet de

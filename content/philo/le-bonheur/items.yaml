@@ -1197,3 +1197,53 @@ items:
 
       **L'erreur de l'élève :** remplacer ce mouvement par une affirmation
       de conclusion.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# Ajouté le 2026-09-05. Cette notion n'en avait aucun : son état de couverture
+# n'était lisible qu'en relançant un instrument, donc invisible à qui ouvrait le
+# fichier — et une dette qu'aucun document ne nomme est une dette qu'on ne paie
+# jamais. Le tableau est GÉNÉRÉ contre la convention de la chaîne
+# (web/scripts/lib/couverture-compte.mjs) et gardé par
+# scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
+# `total_items` cesse de correspondre au contenu du fichier — dans les DEUX
+# directions, donc combler le plancher oblige aussi à venir retourner le drapeau.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul.
+  per_misconception:
+    mc.philo.bonheur.doctrines-echangees:                  { count: 11, items: [BON-1, BON-2, BON-3, BON-4, BON-5, BON-6, BON-11, BON-14, BON-17, BON-18, BON-20] }
+    mc.philo.bonheur.renoncement-radical-prete-aux-sages:  { count: 8, items: [BON-1, BON-2, BON-4, BON-5, BON-6, BON-11, BON-13, BON-15] }
+    mc.philo.bonheur.plaisir-reduit-a-lintensite:          { count: 4, items: [BON-2, BON-10, BON-12, BON-13] }
+    mc.philo.bonheur.bonheur-suspendu-aux-circonstances:   { count: 2, items: [BON-4, BON-15] }
+    mc.philo.bonheur.kant-mal-lu:                          { count: 3, items: [BON-5, BON-15, BON-16] }
+    mc.philo.bonheur.accroche-lue-comme-une-preuve:        { count: 3, items: [BON-7, BON-8, BON-9] }
+    mc.philo.bonheur.critere-etranger-a-la-question:       { count: 5, items: [BON-1, BON-6, BON-7, BON-8, BON-9] }
+    mc.philo.bonheur.finalite-de-la-chaine-mal-comprise:   { count: 1, items: [BON-10] }
+    mc.philo.bonheur.methode-de-dissertation-mal-comprise: { count: 3, items: [BON-19, BON-20, BON-21] }
+  total_items: 21
+  floor: 3
+  floor_met: false
+  ramp_coverage:
+    R0: 3
+    R1: 3
+    R2: 3
+    R3: 3
+    R4: 3
+    R5: 3
+    R6: 3
+  under_floor:
+    # Déclarées, et INÉVALUABLES : sous 3 items du banc, le modèle apprenant
+    # les laisse « unassessed » à jamais — ni détectées, ni écartées.
+    # `manquants` = nombre d'items à écrire pour franchir le plancher.
+    # « sondée en leçon » = un checkpoint la vise, ce qui NE COMPTE PAS : le
+    # modèle est bâti sur le banc de fin seul (pas de double comptage).
+    mc.philo.bonheur.finalite-de-la-chaine-mal-comprise:   { items: 1, manquants: 2 }
+    mc.philo.bonheur.bonheur-suspendu-aux-circonstances:   { items: 2, manquants: 1 }
+  honest_state: >-
+    Deux des neuf misconceptions déclarées siègent SOUS le
+    plancher : le modèle apprenant ne peut pas les évaluer.
+    Il manque trois items au total pour les y amener — dette NOMMÉE,
+    pas dette masquée.
