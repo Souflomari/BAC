@@ -362,3 +362,188 @@ items:
 
       **Conclusion :** le rapport observé (environ 50-50) correspond au
       second cas : la souris testée est hétérozygote.
+
+  # ── DEUX ITEMS AJOUTÉS LE 2026-09-05 ───────────────────────────────────────
+  # Motif : trois des cinq erreurs déclarées étaient sous le plancher de 3
+  # items du banc, donc inévaluables. Périmètre : lesson.md, R2 à R5.
+  - id: TC-6
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: svt_transmission_caracteres
+    tags: [dihybridisme, genes_independants, probabilites]
+    stem: >
+      Deux drosophiles doubles hétérozygotes ($C//c \, ; \, L//l$, gènes
+      indépendants) sont croisées. Quelle est la probabilité d'obtenir une
+      mouche au corps gris (dominant) ET aux ailes vestigiales (récessif) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\frac{3}{16}$ : la probabilité du phénotype dominant pour un caractère est $\\frac34$, celle du phénotype récessif pour l'autre est $\\frac14$, et les deux gènes étant indépendants on multiplie."
+        correct: true
+      - id: B
+        text: "$1$ : puisque chaque caractère apparaît nécessairement sous l'une de ses deux formes, la combinaison demandée finit toujours par se produire dans une descendance suffisamment nombreuse."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.probabilites-combinees-mal-calculees
+        feedback: >
+          La question porte sur la PROPORTION attendue dans la descendance, pas
+          sur la possibilité qu'un tel individu existe. Chaque caractère a bien
+          deux formes possibles, mais la combinaison demandée n'en représente
+          qu'une fraction précise.
+      - id: C
+        text: "$1$ moins $\\frac{1}{16}$, soit $\\frac{15}{16}$ : il suffit de retirer du total la seule classe doublement récessive, la combinaison demandée occupant tout le reste de l'échiquier."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.probabilites-combinees-mal-calculees
+        feedback: >
+          Le complément de la classe doublement récessive regroupe TROIS
+          classes différentes : gris-longues, gris-vestigiales et
+          noires-longues. La combinaison demandée n'en est qu'une, et
+          l'échiquier de 16 cases en donne 3.
+      - id: D
+        text: "$\\frac{1}{4}$ : le caractère dominant s'exprimant systématiquement, seul le caractère récessif limite la probabilité, et sa fréquence attendue suffit à répondre à la question posée."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.dominance-mal-appliquee
+        feedback: >
+          Le phénotype dominant n'est pas garanti : il occupe $\frac34$ de
+          l'échiquier, pas la totalité — un individu sur quatre est
+          homozygote récessif pour ce caractère aussi. Il faut donc bien
+          multiplier $\frac34$ par $\frac14$.
+    correct_feedback: >
+      Deux gènes indépendants, deux probabilités à multiplier. Pour le
+      caractère dominant : $\frac34$. Pour le caractère récessif :
+      $\frac14$. Leur produit vaut $\frac{3}{16}$ — l'une des quatre classes
+      phénotypiques de la F2 en dihybridisme.
+    solution: |
+      **Caractère par caractère.** Croisement $C//c \times C//c$ : $\frac34$ de
+      corps gris. Croisement $L//l \times L//l$ : $\frac14$ d'ailes
+      vestigiales.
+
+      **La règle des gènes indépendants.** Les deux caractères se transmettent
+      sans se gêner : on MULTIPLIE les probabilités.
+
+      **Le calcul.** $\frac34 \times \frac14 = \frac{3}{16}$.
+
+      **La vérification.** Les quatre classes de la F2 en dihybridisme :
+      $\frac{9}{16}$, $\frac{3}{16}$, $\frac{3}{16}$, $\frac{1}{16}$ — somme
+      égale à 1.
+
+  - id: TC-7
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: svt_transmission_caracteres
+    tags: [test_cross, genotype_inconnu, probabilites]
+    stem: >
+      Une souris grise de génotype inconnu est croisée avec une souris blanche
+      $g//g$. Sur trente petits, tous sont gris. Que peut-on conclure, et avec
+      quelle certitude ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Qu'elle est très probablement homozygote $G//G$ : si elle était hétérozygote, la moitié des petits environ serait blanche, et en obtenir trente gris de suite serait extrêmement improbable."
+        correct: true
+      - id: B
+        text: "Qu'elle est homozygote avec une certitude absolue : une descendance uniforme démontre le génotype du parent testé, et trente petits suffisent amplement à en faire une preuve définitive."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.probabilites-combinees-mal-calculees
+        feedback: >
+          Un test-cross donne une conclusion PROBABLE, jamais certaine : une
+          hétérozygote pourrait, par un hasard extrême, ne donner que des
+          petits gris. Trente petits rendent cette hypothèse très improbable,
+          ils ne l'éliminent pas.
+      - id: C
+        text: "Qu'elle est hétérozygote $G//g$ : le partenaire testeur étant homozygote récessif, il masque l'allèle $g$ de la mère, si bien que tous les petits présentent le phénotype dominant."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.test-cross-mal-compris
+        feedback: >
+          Un homozygote récessif ne masque rien : il ne transmet que $g$,
+          justement pour que le génotype de l'autre parent se lise directement
+          dans la descendance. Si la mère était $G//g$, la moitié des petits
+          seraient blancs.
+      - id: D
+        text: "Qu'on ne peut rien conclure : il aurait fallu croiser la souris grise avec une autre souris grise, le seul croisement dont la descendance renseigne sur un génotype inconnu."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.test-cross-mal-compris
+        feedback: >
+          C'est l'inverse du principe. Croiser avec une souris grise
+          laisserait deux génotypes inconnus au lieu d'un. Le testeur doit être
+          homozygote RÉCESSIF, précisément pour ne rien ajouter d'ambigu.
+    correct_feedback: >
+      Le testeur $g//g$ ne transmet que $g$ : le phénotype de chaque petit
+      révèle directement l'allèle reçu de la mère. Trente petits tous gris
+      rendent l'hypothèse hétérozygote très improbable — sans jamais
+      l'éliminer tout à fait.
+    solution: |
+      **Ce que fait le testeur.** Homozygote récessif, il ne transmet qu'un
+      seul type de gamète : $g$. Le phénotype du petit lit donc directement
+      l'allèle venu de l'autre parent.
+
+      **Les deux hypothèses.** Si la mère est $G//G$ : $100\,\%$ de petits
+      gris. Si elle est $G//g$ : environ la moitié de blancs.
+
+      **Ce que trente petits gris disent.** Sous l'hypothèse hétérozygote, la
+      probabilité d'un tel résultat est de l'ordre de $(\frac12)^{30}$ —
+      négligeable. On conclut donc à l'homozygotie, avec une confiance très
+      forte.
+
+      **La nuance de méthode.** Une conclusion probabiliste n'est pas une
+      démonstration : plus la descendance est nombreuse, plus la confiance
+      est grande, sans jamais atteindre la certitude.
+
+  - id: TC-8
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: svt_transmission_caracteres
+    tags: [test_cross, genotype_inconnu, methode]
+    stem: >
+      Pour identifier le génotype d'une plante à fleurs rouges (rouge dominant
+      sur blanc), un élève propose trois croisements : avec une plante rouge,
+      avec une plante blanche, ou avec elle-même par autofécondation. Lequel
+      permet de lire le génotype inconnu le plus directement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le croisement avec la plante blanche : homozygote récessive, elle ne transmet qu'un seul type de gamète, si bien que le phénotype de chaque descendant révèle l'allèle venu de la plante testée."
+        correct: true
+      - id: B
+        text: "Le croisement avec la plante rouge : deux phénotypes dominants confrontés donnent la descendance la plus informative, puisque les allèles récessifs éventuels des deux parents s'y révèlent ensemble."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.test-cross-mal-compris
+        feedback: >
+          Ce croisement laisse DEUX génotypes inconnus au lieu d'un : une
+          descendance blanche prouverait que les deux parents portent
+          l'allèle récessif, sans dire lequel a quoi. Le testeur doit être
+          homozygote récessif, précisément pour ne rien ajouter d'ambigu.
+      - id: C
+        text: "L'autofécondation : c'est le seul croisement où le génotype du partenaire est connu avec certitude, puisqu'il s'agit de la plante elle-même, ce qui lève toute ambiguïté sur la descendance obtenue."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.test-cross-mal-compris
+        feedback: >
+          L'autofécondation est effectivement informative, mais moins directe :
+          une hétérozygote donne alors $\frac34$ de rouges et $\frac14$ de
+          blanches, un rapport qu'il faut interpréter. Avec le testeur récessif,
+          on lit $50\,\%$ / $50\,\%$ ou $100\,\%$ — sans calcul.
+      - id: D
+        text: "Aucun des trois : le génotype d'une plante ne se lit que par analyse directe de son patrimoine génétique, aucun croisement ne pouvant renseigner sur des allèles que le phénotype ne montre pas."
+        correct: false
+        misconception: mc.svt.svt_transmission_caracteres.genotype-phenotype-confondus
+        feedback: >
+          C'est précisément ce que le test-cross permet de faire : révéler par
+          la DESCENDANCE un allèle que le phénotype du parent masque. Le
+          génotype se déduit du croisement, sans avoir à lire l'ADN.
+    correct_feedback: >
+      Le principe du test-cross : croiser l'individu de génotype inconnu avec
+      un homozygote RÉCESSIF, qui ne transmet qu'un seul type de gamète. La
+      répartition des phénotypes chez les descendants se lit alors
+      directement — $100\,\%$ dominants si l'inconnu est homozygote, environ
+      moitié-moitié s'il est hétérozygote.
+    solution: |
+      **Pourquoi le testeur doit être récessif.** Parce qu'il ne peut
+      transmettre qu'un allèle récessif : tout descendant au phénotype dominant
+      l'a reçu de l'autre parent. Le voile est levé.
+
+      **Ce que donnent les deux hypothèses.** Inconnu homozygote : $100\,\%$
+      de descendants dominants. Inconnu hétérozygote : environ $50\,\%$
+      dominants, $50\,\%$ récessifs.
+
+      **Pourquoi les deux autres croisements sont moins bons.** Avec une plante
+      rouge, deux inconnues au lieu d'une. Par autofécondation, un rapport 3:1
+      à interpréter au lieu d'une lecture directe.

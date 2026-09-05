@@ -472,3 +472,177 @@ items:
       **Conséquence :** la fermentation se limite au bilan de la glycolyse
       seule (2 ATP nets), alors que la respiration complète extrait, via ces
       étapes supplémentaires, environ 36 à 38 ATP par glucose.
+
+  # ── DEUX ITEMS AJOUTÉS LE 2026-09-05 ───────────────────────────────────────
+  # Motif : quatre des cinq erreurs déclarées étaient sous le plancher de 3
+  # items du banc, donc inévaluables. Périmètre : lesson.md, R1 à R6.
+  - id: LIB-7
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: svt_liberation_energie
+    tags: [chaine_respiratoire, atp, role_dioxygene]
+    stem: >
+      On place des mitochondries isolées, avec du glucose déjà dégradé en
+      pyruvate et des coenzymes réduits, dans un milieu où le dioxygène a été
+      entièrement retiré. La production d'ATP s'arrête presque aussitôt.
+      Pourquoi le retrait du dioxygène a-t-il un effet aussi immédiat ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Sans accepteur final, les électrons ne circulent plus le long de la chaîne respiratoire ; le pompage des ions $H^+$ cesse, et l'ATP synthase, privée du flux qui l'actionne, s'arrête."
+        correct: true
+      - id: B
+        text: "Parce que le dioxygène est la source des électrons qui alimentent la chaîne respiratoire : le retirer, c'est couper l'apport même de ce que les complexes transportent d'un bout à l'autre de la membrane."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.role-du-dioxygene-inverse
+        feedback: >
+          Les électrons proviennent des coenzymes réduits, chargés lors de la
+          glycolyse et du cycle de Krebs — l'énoncé précise d'ailleurs qu'ils
+          sont présents. Le dioxygène intervient tout à la fin, comme
+          ACCEPTEUR, jamais comme fournisseur.
+      - id: C
+        text: "Parce que l'ATP synthase utilise directement le dioxygène comme substrat pour assembler l'ADP et le phosphate inorganique : sans lui, la réaction d'assemblage ne peut tout simplement plus avoir lieu."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.role-du-dioxygene-inverse
+        feedback: >
+          L'ATP synthase est actionnée par le FLUX D'IONS $H^+$ à travers la
+          membrane interne, pas par le dioxygène. Le rôle de ce dernier est
+          indirect : en acceptant les électrons en bout de chaîne, il permet
+          au pompage de $H^+$ de se poursuivre.
+      - id: D
+        text: "Parce que la mitochondrie doit d'abord recompter son bilan : privée de dioxygène, elle ne peut plus convertir en ATP les deux coenzymes réduits que la glycolyse lui avait déjà livrés sous forme d'ATP."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.bilan-metabolique-incomplet
+        feedback: >
+          Un coenzyme réduit n'est pas de l'ATP et n'a jamais été livré comme
+          tel : c'est un transporteur d'électrons, dont le potentiel ne devient
+          de l'ATP qu'APRÈS passage par la chaîne respiratoire. Les compter
+          comme de l'ATP déjà acquis fausse tout le bilan.
+    correct_feedback: >
+      Le dioxygène est l'accepteur FINAL des électrons. Sans lui, la chaîne se
+      bloque : les électrons ne circulent plus, le gradient de $H^+$ ne se
+      reconstitue plus, et l'ATP synthase — actionnée par ce flux — s'arrête.
+    solution: |
+      **La chaîne, de bout en bout.** Coenzymes réduits → complexes de la
+      membrane interne → dioxygène. À chaque étape, le passage des électrons
+      permet de pomper des $H^+$ vers l'espace intermembranaire.
+
+      **Ce qui actionne l'ATP synthase.** Le retour de ces $H^+$ vers la
+      matrice, à travers elle. Pas le dioxygène directement.
+
+      **Pourquoi l'arrêt est immédiat.** Sans accepteur en bout de chaîne, les
+      électrons s'accumulent et le transport s'arrête — donc le pompage, donc
+      le gradient, donc l'ATP.
+
+  - id: LIB-8
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: svt_liberation_energie
+    tags: [fermentation, atp, bilan, comparaison]
+    stem: >
+      Une levure placée en absence de dioxygène consomme dix fois plus de
+      glucose qu'en présence de dioxygène pour maintenir la même activité.
+      Comment expliquer cet écart ?
+    type: mcq
+    choices:
+      - id: A
+        text: "En fermentation, le bilan s'arrête à 2 ATP nets par glucose (glycolyse seule) contre 36 à 38 en respiration : il faut donc dégrader bien plus de glucose pour obtenir la même quantité d'ATP."
+        correct: true
+      - id: B
+        text: "Parce que la levure stocke, en présence de dioxygène, de grandes réserves d'ATP qu'elle puise ensuite au fur et à mesure : privée de ces réserves, elle doit consommer davantage de glucose en continu."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.atp-reserve-plutot-que-monnaie
+        feedback: >
+          Une cellule ne stocke jamais l'ATP en grande quantité : la quantité
+          présente reste très faible à chaque instant, et c'est la VITESSE de
+          régénération qui compte. L'ATP est une monnaie d'échange, pas un
+          réservoir.
+      - id: C
+        text: "Parce qu'en l'absence de dioxygène la levure gaspille une grande partie du glucose sous forme de chaleur avant même la glycolyse, ce qui l'oblige à en consommer davantage pour un même résultat."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.fermentation-mal-comprise
+        feedback: >
+          La glycolyse est IDENTIQUE dans les deux voies : rien n'est gaspillé
+          en amont. Ce qui diffère, c'est ce qui se passe APRÈS — cycle de
+          Krebs et chaîne respiratoire, absents en fermentation.
+      - id: D
+        text: "Parce qu'une molécule d'ATP produite par fermentation contient dix fois moins d'énergie qu'une molécule d'ATP produite par respiration, ce qui oblige la cellule à en fabriquer d'autant plus."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.atp-reserve-plutot-que-monnaie
+        feedback: >
+          Une molécule d'ATP est une molécule d'ATP : son hydrolyse libère la
+          même énergie quelle que soit la voie qui l'a produite. Ce qui change,
+          c'est le NOMBRE d'ATP obtenus par glucose, pas leur contenu.
+    correct_feedback: >
+      La fermentation s'arrête après la glycolyse : 2 ATP nets par glucose,
+      contre 36 à 38 pour la respiration complète. Pour un même besoin en ATP,
+      il faut donc dégrader une quantité de glucose bien plus grande — un
+      rapport voisin de celui qu'on observe.
+    solution: |
+      **Ce que les deux voies partagent.** La glycolyse : un glucose donne deux
+      pyruvates et 2 ATP nets, dans le cytoplasme, avec ou sans dioxygène.
+
+      **Ce que seule la respiration ajoute.** L'oxydation du pyruvate, le cycle
+      de Krebs, puis la chaîne respiratoire — d'où l'essentiel des 36 à 38 ATP.
+
+      **Le calcul de l'écart.** $36/2 = 18$ : l'ordre de grandeur observé, une
+      consommation de glucose bien plus élevée pour le même service rendu.
+
+      **Ce que l'écart n'est pas.** Ni une perte en chaleur avant la glycolyse,
+      ni un ATP de moindre qualité.
+
+  - id: LIB-9
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: svt_liberation_energie
+    tags: [atp, monnaie_energetique, chaine_respiratoire]
+    stem: >
+      Une cellule musculaire contient à tout instant une quantité d'ATP qui
+      suffirait à quelques secondes d'effort seulement. Elle soutient pourtant
+      un exercice de plusieurs minutes. Comment est-ce possible ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'ATP hydrolysé en ADP et phosphate est reformé en continu, grâce à l'énergie extraite du glucose : c'est la vitesse de ce cycle, et non un stock, qui soutient l'effort."
+        correct: true
+      - id: B
+        text: "La cellule puise dans une réserve d'ATP constituée au repos et stockée dans le cytoplasme, exactement comme elle met du glucose de côté sous forme de glycogène pour les périodes de forte demande."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.atp-reserve-plutot-que-monnaie
+        feedback: >
+          Une cellule ne stocke jamais l'ATP en grande quantité — l'énoncé le
+          dit d'ailleurs : quelques secondes d'effort tout au plus. Ce qu'elle
+          stocke, c'est du glucose (glycogène) ; l'ATP, lui, est régénéré en
+          permanence.
+      - id: C
+        text: "Chaque molécule d'ATP est détruite définitivement après usage, mais la cellule en fabrique sans cesse de nouvelles à partir de rien, ce qui explique qu'elle n'ait pas besoin d'en conserver."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.atp-reserve-plutot-que-monnaie
+        feedback: >
+          L'ATP n'est pas détruit : son hydrolyse donne de l'ADP et du
+          phosphate inorganique, qui sont ensuite RECHARGÉS en ATP. C'est un
+          cycle décharge-recharge, pas une fabrication à partir de rien.
+      - id: D
+        text: "Le dioxygène apporté par le sang se transforme progressivement en ATP au fil de l'effort, ce qui permet de compenser la faible quantité initialement présente dans la cellule musculaire."
+        correct: false
+        misconception: mc.svt.svt_liberation_energie.role-du-dioxygene-inverse
+        feedback: >
+          Le dioxygène ne se transforme pas en ATP : il est l'ACCEPTEUR FINAL
+          des électrons en bout de chaîne respiratoire, et finit en eau.
+          L'énergie qui recharge l'ADP vient du glucose, transmise par les
+          coenzymes réduits.
+    correct_feedback: >
+      L'ATP est une monnaie d'échange, pas un réservoir : la quantité présente
+      reste faible à chaque instant, mais elle est régénérée en permanence à
+      partir de l'ADP et du phosphate, grâce à l'énergie extraite du glucose.
+    solution: |
+      **Le fait de départ.** Quelques secondes de réserve : l'ATP ne peut donc
+      pas être un stock.
+
+      **Le mécanisme.** $\text{ATP} \rightarrow \text{ADP} + P_i$ libère
+      l'énergie utilisée par la cellule ; la dégradation du glucose fournit
+      l'énergie qui refait le chemin inverse. Le même stock de molécules tourne
+      en boucle.
+
+      **L'image juste.** Une monnaie qui circule vite, pas un coffre qui se
+      remplit — d'où l'expression « monnaie énergétique ».

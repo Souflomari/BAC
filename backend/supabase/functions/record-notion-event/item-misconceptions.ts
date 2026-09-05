@@ -6127,6 +6127,18 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "LIB-6": [
       "mc.svt.svt_liberation_energie.fermentation-mal-comprise",
       "mc.svt.svt_liberation_energie.localisation-des-etapes-confondue"
+    ],
+    "LIB-7": [
+      "mc.svt.svt_liberation_energie.bilan-metabolique-incomplet",
+      "mc.svt.svt_liberation_energie.role-du-dioxygene-inverse"
+    ],
+    "LIB-8": [
+      "mc.svt.svt_liberation_energie.atp-reserve-plutot-que-monnaie",
+      "mc.svt.svt_liberation_energie.fermentation-mal-comprise"
+    ],
+    "LIB-9": [
+      "mc.svt.svt_liberation_energie.atp-reserve-plutot-que-monnaie",
+      "mc.svt.svt_liberation_energie.role-du-dioxygene-inverse"
     ]
   },
   "svt/moyens-de-defense": {
@@ -6296,6 +6308,18 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.svt.svt_transmission_caracteres.rapport-de-croisement-mal-attribue"
     ],
     "TC-5": [
+      "mc.svt.svt_transmission_caracteres.genotype-phenotype-confondus",
+      "mc.svt.svt_transmission_caracteres.test-cross-mal-compris"
+    ],
+    "TC-6": [
+      "mc.svt.svt_transmission_caracteres.dominance-mal-appliquee",
+      "mc.svt.svt_transmission_caracteres.probabilites-combinees-mal-calculees"
+    ],
+    "TC-7": [
+      "mc.svt.svt_transmission_caracteres.probabilites-combinees-mal-calculees",
+      "mc.svt.svt_transmission_caracteres.test-cross-mal-compris"
+    ],
+    "TC-8": [
       "mc.svt.svt_transmission_caracteres.genotype-phenotype-confondus",
       "mc.svt.svt_transmission_caracteres.test-cross-mal-compris"
     ]
