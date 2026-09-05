@@ -3203,6 +3203,15 @@ renommé la mauvaise feuille (la première par ordre alphabétique, que les
 leçons ne chargent pas) et n'avait rien déclenché — un test rouge qui ne
 rougit pas dit d'abord que le test vise à côté.
 
+**Le chiffre final.** Build reconstruit, serveur relancé par son port,
+feuilles de style vérifiées à 200 : **0 signalement sur 105 pages à 360 px,
+0 sur 105 pages à 320 px** — 210 mesures en 8 min 16 s, les 39 épreuves
+ouvertes. Le build mesuré portait encore le `hyphens-auto` du titre de leçon,
+retiré dans le même commit ; c'est une classe qui n'agit que quand un mot ne
+tient pas, et le titre tient (mesuré : 320 px de document, chapitre 1, à
+200 %). La CI (run 459, porte zoom à 320 px) re-mesure le même zéro sur le
+code exact.
+
 Deux autres changements à l'instrument, pour qu'il puisse entrer en CI : il
 lit d'abord la géométrie (`scrollWidth`, `clientWidth`) et ne calcule le
 style que des nœuds qui débordent — sur une page de 30 000 nœuds, calculer le
