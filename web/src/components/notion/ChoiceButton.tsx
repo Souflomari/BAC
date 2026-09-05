@@ -95,6 +95,21 @@ export interface ChoiceButtonProps {
    * + cursor classes so the rendered class set is preserved verbatim.
    */
   disabledExtra: string[];
+  /**
+   * Quand l'élève s'est trompé, faut-il AUSSI afficher le retour du bon choix
+   * (la ligne révélée en vert), et pas seulement celui qu'il a coché ?
+   *
+   * `false` (défaut, McqItem) : la banque de fin porte son explication dans
+   * `item.solution`, rendu juste en dessous par McqItem — dupliquer le retour
+   * de la clé au-dessus n'ajouterait rien.
+   *
+   * `true` (CheckpointItem) : un point d'arrêt n'a PAS de `solution` (0 sur
+   * 362, mesuré le 2026-09-05). Sans cela, l'élève qui se trompe voit son
+   * erreur nommée et la bonne réponse surlignée — sans jamais lire pourquoi
+   * elle est bonne. Un tuteur qui montre la réponse sans la justifier ne fait
+   * que la moitié du travail (VISION : « un tuteur patient »).
+   */
+  revealCorrectFeedback?: boolean;
 }
 
 export function ChoiceButton({
@@ -106,6 +121,7 @@ export function ChoiceButton({
   feedbackId,
   idleSurface,
   disabledExtra,
+  revealCorrectFeedback = false,
 }: ChoiceButtonProps) {
   const isSelected = selectedId === choice.id;
   const label = CHOICE_LABELS[index] ?? String(index + 1);
@@ -116,6 +132,10 @@ export function ChoiceButton({
   }
 
   const isRevealedCorrect = answered && choice.correct && !isSelected;
+  // La justification du bon choix, montrée à qui s'est trompé.
+  // Porte le TEXTE (et non un booléen) pour que TypeScript le rétrécisse.
+  const revealedFeedback =
+    isRevealedCorrect && revealCorrectFeedback ? choice.feedback : undefined;
 
   return (
     <li>
@@ -124,7 +144,9 @@ export function ChoiceButton({
         disabled={answered}
         onClick={() => !answered && onSelect(choice.id)}
         aria-pressed={isSelected}
-        aria-describedby={isSelected && answered ? feedbackId : undefined}
+        aria-describedby={
+          (isSelected && answered) || revealedFeedback ? feedbackId : undefined
+        }
         className={cn(
           // Base layout
           "w-full flex items-start gap-3",
@@ -294,6 +316,36 @@ export function ChoiceButton({
           )}
         >
           <MathText>{choice.feedback}</MathText>
+        </div>
+      )}
+
+      {/* Justification du BON choix, pour l'élève qui s'est trompé.
+          Même gabarit que le bloc ci-dessus, toujours en tonalité succès —
+          la ligne qu'il commente est celle qui est surlignée en vert. Ne
+          s'affiche que sur opt-in (`revealCorrectFeedback`), donc jamais dans
+          la banque de fin, dont la clé n'a pas de `feedback` de toute façon et
+          dont l'explication est portée par `item.solution`. */}
+      {revealedFeedback && (
+        <div
+          id={feedbackId}
+          /* PAS de role="status" ici, délibérément. Répondre déclenche déjà
+             DEUX régions live : le retour du choix coché, et la ligne de
+             résultat. En ajouter une troisième ferait s'empiler trois
+             annonces sur un même geste. Ce bloc est du contenu explicatif —
+             il est lu dans l'ordre du document, et il est la description
+             (aria-describedby) de la ligne correcte. */
+          className={cn(
+            "mt-2 ml-9",
+            "px-4 py-3 rounded-lg",
+            "border-l-2",
+            "text-body-sm",
+            "overflow-x-auto",
+            "bg-success-subtle",
+            "border-success",
+            "text-primary"
+          )}
+        >
+          <MathText>{revealedFeedback}</MathText>
         </div>
       )}
     </li>

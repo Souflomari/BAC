@@ -140,6 +140,10 @@ export function CheckpointItem({ item }: CheckpointItemProps) {
             // MCQ rows, not the page BASE tone. An elevation-1 chip toned at the
             // page base contradicted its own lift; surface-raised resolves it.
             idleSurface="bg-surface-raised"
+            // Un point d'arrêt n'a pas de `solution` : sans ceci, l'élève qui
+            // se trompe verrait la bonne réponse surlignée sans jamais lire
+            // pourquoi elle est bonne. Voir ChoiceButton.revealCorrectFeedback.
+            revealCorrectFeedback
             disabledExtra={[
               // The single dimmed/inert treatment (ADR 0024) replaces opacity-50.
               "cursor-default",

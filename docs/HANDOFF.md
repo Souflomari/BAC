@@ -1514,3 +1514,51 @@ pas, et leur blocage n'est pas technique.**
 4. **`philo/le-bonheur` et `philo/l-histoire` n'ont pas d'`exercices`**, et
    n'en auront pas tant que l'arbitrage curriculaire du §10.2 n'est pas rendu.
 
+
+### 10.7 Le point d'arrêt montrait la bonne réponse sans jamais la justifier
+
+Trouvé en regardant, pour la première fois, une des 90 sondes RENDUE plutôt
+que dans son fichier — la règle du §8.4, appliquée à mon propre livrable.
+
+Le parcours d'un élève qui se trompe était : son erreur nommée en rouge (bien),
+la bonne réponse surlignée en vert (bien), et **rien d'autre**. Aucune phrase
+ne lui disait pourquoi cette réponse-là est la bonne. Le composant n'affichait
+le retour que du choix COCHÉ ; celui de la clé restait dans le fichier.
+
+Ce n'était pas visible en lisant le YAML, où la justification est bien écrite,
+sur les 362 points d'arrêt du corpus sans exception. Elle n'était simplement
+jamais atteinte par qui en avait le plus besoin.
+
+Deux mesures cadrent la portée du correctif :
+
+- **362 points d'arrêt sur 362** portent une justification de la clé, et
+  **0 sur 362** portent un champ `solution`. Le point d'arrêt n'a donc aucune
+  autre voie pour l'expliquer : ce qui n'est pas montré là est perdu.
+- La banque de fin est dans la situation inverse : **1 336 items sur 1 385**
+  portent une `solution`, que `McqItem` affiche déjà après réponse. Le
+  correctif ne doit donc PAS s'y appliquer — il n'y ajouterait qu'une
+  redite au-dessus d'une explication plus complète.
+
+D'où la forme retenue : un drapeau explicite (`revealCorrectFeedback`) que le
+point d'arrêt lève et que la banque de fin ne lève pas. Le comportement de
+`McqItem` est inchangé, par construction et non par coïncidence.
+
+**Un détail d'accessibilité qui a changé la mise en œuvre.** La première
+version donnait au nouveau bloc `role="status"`, comme son voisin rouge.
+Répondre aurait alors déclenché TROIS annonces simultanées (le retour du choix
+coché, la ligne de résultat, la justification), là où il y en avait deux. Le
+bloc a été rendu non-live : il est du contenu explicatif, lu dans l'ordre du
+document, et il est la description (`aria-describedby`) de la ligne correcte.
+La règle qui s'en dégage : **ajouter du contenu à un composant n'autorise pas
+à ajouter une région live.**
+
+**Un fait mesuré, laissé au décideur.** Le champ `correct_feedback` est
+renseigné sur **1 451 items du corpus — 288 151 caractères** — et n'est rendu
+NULLE PART. Sur les 1 385 items de banque, il fait double emploi avec la
+`solution`, plus complète et affichée : la perte est une redondance, pas un
+silence. Sur les 66 points d'arrêt qui le portent en plus du retour de leur
+clé, il est mort pour rien. Le brief de squelette
+(`docs/pipeline/skeleton-lesson-brief.md`) le demande pourtant à chaque item
+neuf. Trois issues, aucune n'étant à moi : le rendre, le supprimer du schéma,
+ou l'assumer comme note d'auteur non destinée à l'élève — mais il faut
+trancher, sinon chaque item écrit demain paiera à nouveau ce champ.
