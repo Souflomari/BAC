@@ -4,6 +4,35 @@ misconceptions:
   # Déclarées le 2026-09-05. Les checkpoints de la leçon visaient déjà ces
   # neuf erreurs par leur id ; l'inventaire, lui, était resté `[]` — la chaîne
   # comptait les tags, mais rien ne pouvait en afficher le libellé.
+  # Deux entrées ajoutées le 2026-09-05 en taguant le BANC (les neuf autres
+  # venaient des checkpoints, qui ne comptent pas au plancher).
+  - id: mc.physics.pc_transformations_deux_sens.vitesse-implique-avancement
+    label: "« Une réaction lente finit forcément par aller jusqu'au bout, puisqu'elle a le temps »"
+    description: >
+      L'élève déduit l'avancement final de la durée observée : plus une
+      transformation met de temps à se stabiliser, plus elle serait totale.
+      Variante : il nie la lenteur constatée plutôt que de renoncer à la règle.
+    contradicts_principle: >
+      La durée que met une transformation à se stabiliser ne renseigne EN RIEN
+      sur son caractère total ou limité. Une transformation peut être lente et
+      totale (la rouille), rapide et limitée. Vitesse et avancement final sont
+      deux propriétés indépendantes.
+
+  - id: mc.physics.pc_transformations_deux_sens.conclusion-refusee-a-tort
+    label: "« On ne peut rien conclure sans mesure exacte » — alors que le qualitatif suffit"
+    description: >
+      Devant une information qualitative pourtant décisive (« riche en
+      produits », « pauvre en réactif », deux tests identiques à cinq heures
+      d'intervalle), l'élève réclame des concentrations exactes, un autre
+      protocole, ou invoque un critère hors sujet pour ne pas trancher.
+    contradicts_principle: >
+      Le sens qui domine se lit dans la comparaison RELATIVE des quantités : un
+      mélange riche en produits et pauvre en réactif évolue en sens inverse,
+      sans qu'aucun chiffre soit nécessaire. Et deux tests identiques à cinq
+      heures d'intervalle établissent que l'état final est atteint. Refuser de
+      conclure quand l'information suffit est une erreur au même titre que
+      conclure à tort.
+
   - id: mc.physics.pc_transformations_deux_sens.reaction-toujours-totale
     label: "« Toute réaction finit par consommer entièrement ses réactifs, il suffit d'attendre »"
     description: "L'élève tient le caractère total pour la règle et le temps pour le seul obstacle : avec assez de patience, tout réactif disparaîtrait."
@@ -74,6 +103,7 @@ items:
       - id: B
         text: "Oui - toute réaction chimique finit toujours par consommer entièrement ses réactifs si on lui laisse assez de temps ; ici, quelques jours n'ont simplement pas suffi."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.reaction-toujours-totale
         feedback: >
           C'est l'erreur centrale à éviter dans ce chapitre : croire qu'une
           réaction va nécessairement jusqu'au bout si on attend assez
@@ -85,6 +115,7 @@ items:
       - id: C
         text: "Oui, mais seulement si on ajoute encore du catalyseur - le temps seul ne suffit jamais à consommer entièrement l'acide et l'alcool présents dans le ballon."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.catalyseur-ou-temps-change-etat-final
         feedback: >
           Un catalyseur accélère la vitesse à laquelle le mélange atteint son
           état stabilisé - il ne change rien à la composition de cet état. Le
@@ -94,6 +125,7 @@ items:
       - id: D
         text: "Non, car il faudrait changer complètement d'équation chimique pour que la réaction devienne totale : celle-ci ne peut pas dépasser l'avancement déjà observé."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.conditions-physiques-sans-effet
         feedback: >
           Ce n'est pas l'équation qu'il faut changer, mais les conditions
           physiques du système (par exemple, retirer l'un des produits au fur
@@ -135,6 +167,7 @@ items:
       - id: B
         text: "Comme pour toute réaction, il suffit d'attendre assez longtemps pour que tout le $NH_3$ finisse par réagir."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.reaction-toujours-totale
         feedback: >
           Ce n'est pas vrai pour toutes les réactions : certaines, comme
           celle-ci, sont non totales par nature - les deux sens (direct et
@@ -143,6 +176,7 @@ items:
       - id: C
         text: "Puisque des ions $NH_4^+$ se sont formés, on peut affirmer que la réaction est totale."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.reaction-toujours-totale
         feedback: >
           Former du produit ne suffit pas à rendre une transformation totale
           - il faut, en plus, qu'au moins un réactif de départ ait totalement
@@ -152,6 +186,7 @@ items:
       - id: D
         text: "On ne peut rien conclure, car l'ammoniac est une base et non un acide."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.conclusion-refusee-a-tort
         feedback: >
           La nature acide ou basique de l'espèce ne détermine pas, à elle
           seule, si la réaction est totale ou limitée. Le critère est le
@@ -189,6 +224,7 @@ items:
       - id: B
         text: "Elle est vraie : une double flèche signale toujours une transformation lente, jamais rapide - c'est précisément le rôle de cette notation dans une équation chimique."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.double-fleche-signifie-lente
         feedback: >
           C'est confondre deux questions indépendantes. La double flèche
           renseigne uniquement sur le caractère totale ou non totale d'une
@@ -197,6 +233,7 @@ items:
       - id: C
         text: "Elle est vraie, mais seulement pour les réactions organiques comme l'estérification, où la lenteur est la règle et justifie à elle seule cette écriture particulière."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.double-fleche-signifie-lente
         feedback: >
           La double flèche a la même signification quelle que soit la
           famille chimique de la réaction (organique, acido-basique,
@@ -206,6 +243,7 @@ items:
       - id: D
         text: "Elle est fausse, car la double flèche signifie en réalité que la réaction est instantanée : elle atteint son état final dès l'instant où les réactifs sont mélangés."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.double-fleche-signifie-lente
         feedback: >
           Ce choix remplace une affirmation fausse sur la vitesse par une
           autre affirmation fausse sur la vitesse. La double flèche ne dit
@@ -246,6 +284,7 @@ items:
       - id: B
         text: "Si, cette règle est toujours vraie : c'est justement ce qui distingue les deux notations, la flèche simple étant réservée aux réactions rapides et la double flèche aux réactions lentes et progressives."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.double-fleche-signifie-lente
         feedback: >
           Le type de flèche ne renseigne jamais sur la vitesse. Il existe des
           transformations totales qui prennent des mois (la rouille d'un clou
@@ -255,6 +294,7 @@ items:
       - id: C
         text: "Non, mais seulement dans un sens : une flèche simple peut correspondre à une réaction lente, tandis qu'une double flèche signale toujours, elle, une réaction lente et jamais rapide."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.double-fleche-signifie-lente
         feedback: >
           Les deux moitiés de la règle sont fausses, pas une seule. Une
           transformation non totale peut très bien s'installer quasi
@@ -264,6 +304,7 @@ items:
       - id: D
         text: "On ne peut rien dire sans connaître la formule chimique exacte des réactifs : c'est leur nature, et non la notation employée pour les écrire, qui détermine la vitesse de la réaction."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.conclusion-refusee-a-tort
         feedback: >
           Il n'est pas nécessaire de connaître la formule exacte : le critère
           qui décide entre flèche simple et double flèche est le même pour
@@ -302,6 +343,7 @@ items:
       - id: B
         text: "Elle est vraie : une transformation non totale, par définition, ne produit aucun changement observable dans le mélange, et le test ne devrait révéler que les réactifs du départ."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.limitee-rien-ne-se-passe
         feedback: >
           « Non totale » ne veut pas dire « rien ne se passe » : ça veut dire
           que la transformation s'arrête avant que l'un des réactifs ait
@@ -312,6 +354,7 @@ items:
       - id: C
         text: "Elle est vraie seulement si le mélange n'a pas été chauffé : sans apport d'énergie, la transformation reste au point de départ et aucun ester ne peut se former dans le ballon."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.conditions-physiques-sans-effet
         feedback: >
           Le chauffage change la vitesse à laquelle le mélange atteint son
           état stabilisé, pas le fait qu'un produit s'y forme réellement.
@@ -320,6 +363,7 @@ items:
       - id: D
         text: "Elle est fausse, mais seulement parce qu'il y a un catalyseur dans le mélange : sans lui, la mention « non totale » signifierait bien qu'aucun produit ne s'est formé du tout."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.catalyseur-ou-temps-change-etat-final
         feedback: >
           Le catalyseur accélère la réaction, il ne crée pas, à lui seul, la
           formation de produit : sans catalyseur, la même transformation se
@@ -359,6 +403,7 @@ items:
       - id: B
         text: "C'est vrai : si $NH_3$ n'a pas totalement disparu, on peut considérer que la transformation ne s'est presque pas produite et que les ions détectés sont négligeables."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.limitee-rien-ne-se-passe
         feedback: >
           Le fait qu'il reste du $NH_3$ intact ne veut pas dire que rien ne
           s'est produit : des ions $NH_4^+$ et $HO^-$, absents au départ, sont
@@ -368,6 +413,7 @@ items:
       - id: C
         text: "C'est faux, mais uniquement parce que $NH_3$ est une base forte qui réagit toujours complètement avec l'eau : la fraction non transformée provient nécessairement d'une erreur de mesure."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.reaction-toujours-totale
         feedback: >
           C'est l'inverse : c'est précisément parce que $NH_3$ ne réagit
           qu'en partie avec l'eau que la transformation est limitée. Si
@@ -376,6 +422,7 @@ items:
       - id: D
         text: "C'est vrai seulement si la quantité de $NH_4^+$ formée est plus petite que celle de $NH_3$ restant : c'est ce rapport qui décide si la transformation a eu lieu."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.limitee-rien-ne-se-passe
         feedback: >
           Comparer les quantités relatives de produit et de réactif restant
           ne dit rien sur le fait qu'une transformation a eu lieu ou non.
@@ -412,6 +459,7 @@ items:
       - id: A
         text: "Oui - c'est vrai pour toute réaction chimique : il suffit d'attendre assez longtemps pour que les réactifs finissent par disparaître entièrement."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.reaction-toujours-totale
         feedback: >
           C'est l'erreur à éviter : le test chimique montrera au contraire
           que l'acide et l'alcool restent détectables indéfiniment.
@@ -421,12 +469,14 @@ items:
       - id: C
         text: "Oui, car un chauffage prolongé fournit toujours assez d'énergie pour consommer la totalité des réactifs présents au départ dans le ballon."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.conditions-physiques-sans-effet
         feedback: >
           Le chauffage accélère la réaction, il ne change pas le fait que ce
           mélange laisse coexister acide et alcool avec l'ester et l'eau.
       - id: D
         text: "Non, mais seulement parce qu'il n'y a pas assez de catalyseur dans ce mélange pour mener la transformation jusqu'à son terme."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.catalyseur-ou-temps-change-etat-final
         feedback: >
           Ce n'est pas une question de quantité de catalyseur : même avec
           plus de catalyseur, le mélange atteindrait le même état stabilisé.
@@ -455,12 +505,14 @@ items:
       - id: A
         text: "Il est valide : plus une réaction est lente, plus elle a de chances d'être totale, car elle dispose de davantage de temps pour consommer ses réactifs."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.vitesse-implique-avancement
         feedback: >
           C'est confondre deux axes indépendants : la vitesse et le
           caractère totale/limitée n'ont aucun lien logique.
       - id: B
         text: "Il est valide, mais seulement parce qu'il y a un catalyseur dans ce mélange : sans lui, la lenteur ne dirait rien du caractère total de la réaction."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.catalyseur-ou-temps-change-etat-final
         feedback: >
           Le catalyseur ne change que la vitesse d'installation de l'état
           stabilisé, jamais le fait que des réactifs y restent ou non.
@@ -470,6 +522,7 @@ items:
       - id: D
         text: "Il est invalide, car en réalité cette réaction est rapide et non lente : l'odeur met des heures à se stabiliser pour de tout autres raisons."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.vitesse-implique-avancement
         feedback: >
           Le problème n'est pas la vitesse réelle de cette réaction, mais le
           fait que vitesse et caractère totale/limitée sont indépendants.
@@ -498,18 +551,21 @@ items:
       - id: A
         text: "Elle est correcte : la présence persistante des réactifs prouve qu'aucune réaction n'a eu lieu dans le ballon, et l'odeur perçue vient nécessairement d'ailleurs."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.limitee-rien-ne-se-passe
         feedback: >
           L'odeur fruitée qui se développe est la preuve sensible qu'une
           transformation réelle a eu lieu, malgré les réactifs restants.
       - id: B
         text: "Elle est correcte, mais seulement parce que le mélange n'a pas assez chauffé : avec un chauffage plus fort, les réactifs auraient fini par disparaître entièrement."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.conditions-physiques-sans-effet
         feedback: >
           Chauffer davantage changerait la vitesse d'installation de l'état
           stabilisé, pas le fait qu'une odeur d'ester s'est déjà développée.
       - id: C
         text: "On ne peut rien dire sans mesurer précisément les quantités en présence : la seule détection d'acide et d'alcool ne permet aucune conclusion sur la transformation."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.conclusion-refusee-a-tort
         feedback: >
           L'odeur perceptible suffit déjà à indiquer qu'un produit nouveau
           s'est formé, sans qu'une mesure précise soit nécessaire.
@@ -547,18 +603,21 @@ items:
       - id: B
         text: "Elle est probable : plus on attend, plus la quantité de réactifs restants diminue, jusqu'à disparaître complètement ; deux heures sont une durée bien trop courte pour une transformation de ce type."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.reaction-toujours-totale
         feedback: >
           Un test répété qui donne le même résultat est au contraire le
           signe que l'état est stabilisé : rien ne disparaîtra de plus.
       - id: C
         text: "On ne peut rien conclure du test répété : deux résultats identiques ne prouvent rien, il faudrait changer complètement de méthode de test pour savoir si le mélange évolue encore ou non."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.conclusion-refusee-a-tort
         feedback: >
           Deux résultats identiques à deux heures d'intervalle sont au
           contraire le critère même utilisé pour reconnaître un état stabilisé.
       - id: D
         text: "Elle est probable, mais seulement si on ajoute davantage de catalyseur avant de refaire le test : sans cet ajout, la transformation resterait effectivement bloquée là où elle en est aujourd'hui."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.catalyseur-ou-temps-change-etat-final
         feedback: >
           Le catalyseur change la vitesse d'atteinte de l'état stabilisé,
           pas la composition de cet état une fois atteint.
@@ -591,6 +650,7 @@ items:
       - id: A
         text: "Elle est correcte : pour qu'on puisse dire qu'une transformation a eu lieu, la quantité de produit formé doit dépasser celle des réactifs restants, faute de quoi le mélange reste celui du départ."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.limitee-rien-ne-se-passe
         feedback: >
           Rien n'impose qu'un produit dépasse en quantité les réactifs
           restants pour que la transformation soit reconnue comme réelle.
@@ -600,12 +660,14 @@ items:
       - id: C
         text: "Elle est correcte, à moins que l'ester formé ne dépasse la moitié de la quantité initiale d'acide : c'est ce seuil, et lui seul, qui décide si la transformation compte réellement pour quelque chose dans le bilan."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.limitee-rien-ne-se-passe
         feedback: >
           Il n'existe aucun seuil de proportion à atteindre : dès qu'une
           quantité détectable de produit apparaît, la transformation a eu lieu.
       - id: D
         text: "Elle est correcte, car le trop petit volume de catalyseur a empêché la réaction de vraiment démarrer : avec davantage de catalyseur, l'ester serait devenu largement majoritaire dans le ballon."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.catalyseur-ou-temps-change-etat-final
         feedback: >
           Un catalyseur en faible quantité ralentit l'installation de l'état
           stabilisé, il n'empêche pas la réaction de se produire.
@@ -637,6 +699,7 @@ items:
       - id: A
         text: "Elle est fausse : c'est en réalité toujours le sens direct qui domine au départ, quelle que soit la composition initiale du mélange, car c'est le sens dans lequel l'équation a été écrite."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.sens-propriete-fixe
         feedback: >
           Ce n'est pas vrai non plus en toute généralité : l'expérience B du
           cours (ester et eau purs) montre le contraire quand la composition
@@ -644,6 +707,7 @@ items:
       - id: B
         text: "On ne peut rien affirmer sans calculer précisément les concentrations de chaque espèce présente : la seule liste des espèces initiales ne permet jamais de prévoir le sens qui va dominer."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.conclusion-refusee-a-tort
         feedback: >
           Le raisonnement qualitatif suffit ici : comparer les quantités
           relatives de chaque couple permet déjà de prédire le sens dominant.
@@ -653,6 +717,7 @@ items:
       - id: D
         text: "On ne peut rien prédire : puisque les deux sens coexistent toujours en même temps dans ce type de transformation, aucun des deux ne peut dominer l'autre, même au tout début, quelles que soient les quantités introduites."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.equilibre-coexistence-signifie-arret
         feedback: >
           Les deux sens coexistent en permanence, mais l'un peut dominer
           l'autre à un instant donné, comme le montrent les expériences A et B.
@@ -683,18 +748,21 @@ items:
       - id: A
         text: "Le sens direct va dominer, car $NH_4Cl$ est le solide qu'on vient d'ajouter au mélange, et c'est toujours l'espèce introduite en dernier qui impose le sens de la réaction dans le milieu."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.presence-produit-determine-sens
         feedback: >
           $NH_4^+$ est un produit de la réaction directe, pas son réactif :
           sa présence abondante pousse au contraire vers le sens inverse.
       - id: B
         text: "Le sens direct va dominer, comme dans toute solution contenant de l'ammoniac, quelle que soit sa composition initiale et quelles que soient les espèces déjà présentes."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.sens-propriete-fixe
         feedback: >
           Le sens n'est pas une propriété fixe attachée à l'ammoniac : il
           dépend de la composition initiale de ce mélange précis.
       - id: C
         text: "On ne peut pas prédire sans connaître les concentrations exactes de chaque espèce : les seules indications « riche » et « pauvre » ne suffisent pas à trancher."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.conclusion-refusee-a-tort
         feedback: >
           Un raisonnement qualitatif suffit : comparer ce qui est abondant
           (les produits) à ce qui est rare ($NH_3$) prédit déjà le sens.
@@ -731,18 +799,21 @@ items:
       - id: B
         text: "C'est vrai : une transformation limitée, par définition, ne produit pas de changement mesurable, et le test ne peut détecter que les réactifs restés en place dans le ballon."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.limitee-rien-ne-se-passe
         feedback: >
           « Limitée » ne veut pas dire « rien ne se passe » : le test
           détecte bel et bien du propanoate de méthyle et de l'eau formés.
       - id: C
         text: "C'est vrai, dans le sens où l'ester formé n'est pas un vrai produit tant que la réaction n'est pas totale : il faut attendre la disparition des réactifs pour parler véritablement de produit formé."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.limitee-rien-ne-se-passe
         feedback: >
           L'ester formé est un produit tout aussi réel, qu'il soit issu
           d'une transformation totale ou limitée.
       - id: D
         text: "C'est vrai, mais seulement parce que le chauffage n'a pas été assez long pour que la réaction avance vraiment : quelques heures de chauffage de plus auraient tout changé."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.conditions-physiques-sans-effet
         feedback: >
           Chauffer plus longtemps changerait la vitesse d'installation de
           l'état stabilisé, pas le fait que réactifs et produits coexistent.
@@ -774,6 +845,7 @@ items:
       - id: A
         text: "Le sens direct va dominer, car c'est le solide qu'on vient de dissoudre qui pilote toujours le sens de la réaction, indépendamment des espèces déjà présentes en solution."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.presence-produit-determine-sens
         feedback: >
           Ce solide libère justement les deux produits de la réaction, ce
           qui pousse au contraire vers le sens inverse.
@@ -783,6 +855,7 @@ items:
       - id: C
         text: "Aucun sens ne peut dominer, car il n'y a aucun réactif libre au départ pour amorcer la réaction : le mélange reste tel quel tant qu'on n'y ajoute pas d'acide éthanoïque ou d'ammoniac."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.equilibre-coexistence-signifie-arret
         feedback: >
           Rien n'empêche le sens inverse de démarrer : $CH_3COO^-$ et
           $NH_4^+$ peuvent réagir entre eux pour reformer $CH_3COOH$ et
@@ -790,6 +863,7 @@ items:
       - id: D
         text: "Le sens direct va dominer quand même, car c'est le sens qui domine par défaut dans toute réaction acido-basique, quel que soit le contenu initial du mélange préparé."
         correct: false
+        misconception: mc.physics.pc_transformations_deux_sens.sens-propriete-fixe
         feedback: >
           Il n'existe pas de sens « par défaut » : le sens qui domine dépend
           de la composition initiale de chaque mélange, pas de la famille

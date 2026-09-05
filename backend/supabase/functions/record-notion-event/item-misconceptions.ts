@@ -1772,24 +1772,68 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ]
   },
   "pc/controle-catalyse": {
-    "CTC-1": [],
-    "CTC-10": [],
-    "CTC-11": [],
-    "CTC-12": [],
-    "CTC-13": [],
-    "CTC-14": [],
-    "CTC-15": [],
-    "CTC-16": [],
-    "CTC-17": [],
-    "CTC-18": [],
-    "CTC-2": [],
-    "CTC-3": [],
-    "CTC-4": [],
-    "CTC-5": [],
-    "CTC-6": [],
-    "CTC-7": [],
-    "CTC-8": [],
-    "CTC-9": [],
+    "CTC-1": [
+      "mc.physics.pc_controle_catalyse.anhydride-mal-compris"
+    ],
+    "CTC-10": [
+      "mc.physics.pc_controle_catalyse.anhydride-mal-compris",
+      "mc.physics.pc_controle_catalyse.reactif-limitant-ou-pertes-invoques"
+    ],
+    "CTC-11": [
+      "mc.physics.pc_controle_catalyse.catalyseur-dans-bilan"
+    ],
+    "CTC-12": [
+      "mc.physics.pc_controle_catalyse.catalyseur-deplace-etat-final",
+      "mc.physics.pc_controle_catalyse.selectivite-du-catalyseur-ignoree"
+    ],
+    "CTC-13": [
+      "mc.physics.pc_controle_catalyse.catalyse-classee-hors-phase"
+    ],
+    "CTC-14": [
+      "mc.physics.pc_controle_catalyse.catalyse-classee-hors-phase"
+    ],
+    "CTC-15": [
+      "mc.physics.pc_controle_catalyse.vitesse-avancement-confondus"
+    ],
+    "CTC-16": [
+      "mc.physics.pc_controle_catalyse.anhydride-mal-compris",
+      "mc.physics.pc_controle_catalyse.catalyseur-deplace-etat-final",
+      "mc.physics.pc_controle_catalyse.vitesse-avancement-confondus"
+    ],
+    "CTC-17": [
+      "mc.physics.pc_controle_catalyse.hydrophile-hydrophobe-inverses",
+      "mc.physics.pc_controle_catalyse.stoechiometrie-du-triglyceride-ignoree"
+    ],
+    "CTC-18": [
+      "mc.physics.pc_controle_catalyse.catalyse-classee-hors-phase",
+      "mc.physics.pc_controle_catalyse.catalyseur-deplace-etat-final",
+      "mc.physics.pc_controle_catalyse.selectivite-du-catalyseur-ignoree"
+    ],
+    "CTC-2": [
+      "mc.physics.pc_controle_catalyse.equation-de-lanhydride-erronee"
+    ],
+    "CTC-3": [
+      "mc.physics.pc_controle_catalyse.catalyseur-deplace-etat-final"
+    ],
+    "CTC-4": [
+      "mc.physics.pc_controle_catalyse.catalyse-classee-hors-phase"
+    ],
+    "CTC-5": [
+      "mc.physics.pc_controle_catalyse.saponification-confondue-avec-lesterification"
+    ],
+    "CTC-6": [
+      "mc.physics.pc_controle_catalyse.hydrophile-hydrophobe-inverses"
+    ],
+    "CTC-7": [
+      "mc.physics.pc_controle_catalyse.vitesse-avancement-confondus"
+    ],
+    "CTC-8": [
+      "mc.physics.pc_controle_catalyse.reactif-limitant-ou-pertes-invoques",
+      "mc.physics.pc_controle_catalyse.vitesse-avancement-confondus"
+    ],
+    "CTC-9": [
+      "mc.physics.pc_controle_catalyse.double-fleche-mal-comprise"
+    ],
     "cp-r0-predict": [
       "mc.physics.pc_controle_catalyse.anhydride-mal-compris",
       "mc.physics.pc_controle_catalyse.vitesse-avancement-confondus"
@@ -3876,21 +3920,73 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ]
   },
   "pc/transformations-deux-sens": {
-    "TDS-1": [],
-    "TDS-10": [],
-    "TDS-11": [],
-    "TDS-12": [],
-    "TDS-13": [],
-    "TDS-14": [],
-    "TDS-15": [],
-    "TDS-2": [],
-    "TDS-3": [],
-    "TDS-4": [],
-    "TDS-5": [],
-    "TDS-6": [],
-    "TDS-7": [],
-    "TDS-8": [],
-    "TDS-9": [],
+    "TDS-1": [
+      "mc.physics.pc_transformations_deux_sens.catalyseur-ou-temps-change-etat-final",
+      "mc.physics.pc_transformations_deux_sens.conditions-physiques-sans-effet",
+      "mc.physics.pc_transformations_deux_sens.reaction-toujours-totale"
+    ],
+    "TDS-10": [
+      "mc.physics.pc_transformations_deux_sens.catalyseur-ou-temps-change-etat-final",
+      "mc.physics.pc_transformations_deux_sens.conclusion-refusee-a-tort",
+      "mc.physics.pc_transformations_deux_sens.reaction-toujours-totale"
+    ],
+    "TDS-11": [
+      "mc.physics.pc_transformations_deux_sens.catalyseur-ou-temps-change-etat-final",
+      "mc.physics.pc_transformations_deux_sens.limitee-rien-ne-se-passe"
+    ],
+    "TDS-12": [
+      "mc.physics.pc_transformations_deux_sens.conclusion-refusee-a-tort",
+      "mc.physics.pc_transformations_deux_sens.equilibre-coexistence-signifie-arret",
+      "mc.physics.pc_transformations_deux_sens.sens-propriete-fixe"
+    ],
+    "TDS-13": [
+      "mc.physics.pc_transformations_deux_sens.conclusion-refusee-a-tort",
+      "mc.physics.pc_transformations_deux_sens.presence-produit-determine-sens",
+      "mc.physics.pc_transformations_deux_sens.sens-propriete-fixe"
+    ],
+    "TDS-14": [
+      "mc.physics.pc_transformations_deux_sens.conditions-physiques-sans-effet",
+      "mc.physics.pc_transformations_deux_sens.limitee-rien-ne-se-passe"
+    ],
+    "TDS-15": [
+      "mc.physics.pc_transformations_deux_sens.equilibre-coexistence-signifie-arret",
+      "mc.physics.pc_transformations_deux_sens.presence-produit-determine-sens",
+      "mc.physics.pc_transformations_deux_sens.sens-propriete-fixe"
+    ],
+    "TDS-2": [
+      "mc.physics.pc_transformations_deux_sens.conclusion-refusee-a-tort",
+      "mc.physics.pc_transformations_deux_sens.reaction-toujours-totale"
+    ],
+    "TDS-3": [
+      "mc.physics.pc_transformations_deux_sens.double-fleche-signifie-lente"
+    ],
+    "TDS-4": [
+      "mc.physics.pc_transformations_deux_sens.conclusion-refusee-a-tort",
+      "mc.physics.pc_transformations_deux_sens.double-fleche-signifie-lente"
+    ],
+    "TDS-5": [
+      "mc.physics.pc_transformations_deux_sens.catalyseur-ou-temps-change-etat-final",
+      "mc.physics.pc_transformations_deux_sens.conditions-physiques-sans-effet",
+      "mc.physics.pc_transformations_deux_sens.limitee-rien-ne-se-passe"
+    ],
+    "TDS-6": [
+      "mc.physics.pc_transformations_deux_sens.limitee-rien-ne-se-passe",
+      "mc.physics.pc_transformations_deux_sens.reaction-toujours-totale"
+    ],
+    "TDS-7": [
+      "mc.physics.pc_transformations_deux_sens.catalyseur-ou-temps-change-etat-final",
+      "mc.physics.pc_transformations_deux_sens.conditions-physiques-sans-effet",
+      "mc.physics.pc_transformations_deux_sens.reaction-toujours-totale"
+    ],
+    "TDS-8": [
+      "mc.physics.pc_transformations_deux_sens.catalyseur-ou-temps-change-etat-final",
+      "mc.physics.pc_transformations_deux_sens.vitesse-implique-avancement"
+    ],
+    "TDS-9": [
+      "mc.physics.pc_transformations_deux_sens.conclusion-refusee-a-tort",
+      "mc.physics.pc_transformations_deux_sens.conditions-physiques-sans-effet",
+      "mc.physics.pc_transformations_deux_sens.limitee-rien-ne-se-passe"
+    ],
     "cp-r0-predict": [
       "mc.physics.pc_transformations_deux_sens.catalyseur-ou-temps-change-etat-final",
       "mc.physics.pc_transformations_deux_sens.limitee-rien-ne-se-passe",
