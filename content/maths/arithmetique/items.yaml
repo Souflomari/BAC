@@ -530,7 +530,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$(2, 4)$"
+        text: "$(2, 4)$, car il suffit que les deux contenances soient paires pour tout mesurer"
         correct: false
         misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
         feedback: >
@@ -538,17 +538,17 @@ items:
           Toute quantite obtenue avec cette paire est donc un multiple de
           $2$, jamais $1$ L.
       - id: B
-        text: "$(4, 9)$, car $\\mathrm{PGCD}(4,9) = 1$"
+        text: "$(4, 9)$, car $\\mathrm{PGCD}(4,9) = 1$ : on peut donc atteindre $1$ L"
         correct: true
       - id: C
-        text: "$(3, 9)$"
+        text: "$(3, 9)$, car $9$ est un multiple de $3$, ce qui permet de descendre à $1$ L"
         correct: false
         misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
         feedback: >
           $9$ est un multiple de $3$ : $\mathrm{PGCD}(3,9) = 3$. Avec cette
           paire "emboitee", on ne mesure jamais que des multiples de $3$.
       - id: D
-        text: "$(6, 8)$"
+        text: "$(6, 8)$, car $8 - 6 = 2$, puis on retire encore $1$ L par différences"
         correct: false
         misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
         feedback: >
@@ -581,7 +581,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$1$ L"
+        text: "$1$ L, car deux bidons de contenances entières permettent toujours de mesurer $1$ L"
         correct: false
         misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
         feedback: >
@@ -589,7 +589,7 @@ items:
           entre eux, $\mathrm{PGCD}(6,8) = 2$. Toute quantite mesurable est
           un multiple de $2$, jamais $1$.
       - id: B
-        text: "$6$ L"
+        text: "$6$ L, car c'est la contenance du plus petit des deux bidons disponibles"
         correct: false
         misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
         feedback: >
@@ -598,10 +598,10 @@ items:
           $8$ L puis en le remplissant, on isole $8 - 6 = 2$ L, plus petit
           que $6$.
       - id: C
-        text: "$2$ L, car c'est $\\mathrm{PGCD}(6,8)$, obtenu par $8-6$"
+        text: "$2$ L, car c'est $\\mathrm{PGCD}(6,8)$, obtenu par $8-6$, et toute quantité mesurable en est un multiple"
         correct: true
       - id: D
-        text: "$14$ L"
+        text: "$14$ L, car $6+8 = 14$ est la seule quantité que l'on puisse mesurer exactement"
         correct: false
         misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
         feedback: >
@@ -634,7 +634,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$-1$"
+        text: "$-1$, car $-50 = 7\\times(-7) - 1$ est une écriture possible"
         correct: false
         misconception: mc.math.maths_arithmetique.reste-non-normalise
         feedback: >
@@ -642,7 +642,7 @@ items:
           (entre $0$ et $6$ ici). Tu as garde le quotient $-7$ (car
           $-50 = 7\times(-7) - 1$), mais $-1$ n'est pas un reste valide.
       - id: B
-        text: "$1$"
+        text: "$1$, car le reste de la division de $50$ par $7$ vaut $1$"
         correct: false
         misconception: mc.math.maths_arithmetique.reste-non-normalise
         feedback: >
@@ -651,7 +651,7 @@ items:
           simplement l'oppose de celle de $50$ : il faut $-50 = 7q + r$
           avec $0 \le r < 7$, ce qui donne $q = -8$ et $r = 6$, pas $1$.
       - id: C
-        text: "$-8$"
+        text: "$-8$, car $-50$ divisé par $7$ vaut environ $-8$ à l'unité près"
         correct: false
         misconception: mc.math.maths_arithmetique.reste-non-normalise
         feedback: >
@@ -735,7 +735,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$1$"
+        text: "$1$, car $2^{100}$ est pair alors que $7$ est impair"
         correct: false
         misconception: mc.math.maths_arithmetique.congruence-puissance-mal-reduite
         feedback: >
@@ -747,7 +747,7 @@ items:
         text: "$2$, car $2^3 \\equiv 1 \\pmod 7$, $100 = 3\\times33+1$, donc $2^{100} \\equiv 2^1 \\equiv 2$"
         correct: true
       - id: C
-        text: "$4$"
+        text: "$4$, car $100 = 3\\times33+1$ et l'on obtient $2^{33} \\equiv 4 \\pmod 7$"
         correct: false
         misconception: mc.math.maths_arithmetique.congruence-puissance-mal-reduite
         feedback: >
@@ -755,7 +755,7 @@ items:
           $100 = 3\times33+1$, donc le reste est $1$ (pas $2$). Avec un
           reste de $2$ on trouverait $2^2=4$, mais ici c'est bien $2^1=2$.
       - id: D
-        text: "$0$"
+        text: "$0$, car $2^{100}$ est un multiple de $7$ dès que l'exposant dépasse $7$"
         correct: false
         misconception: mc.math.maths_arithmetique.prime-divise-produit
         feedback: >
@@ -786,7 +786,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$17$"
+        text: "$17$, car la somme des chiffres vaut $3+7+2+5 = 17$, qui est le reste"
         correct: false
         misconception: mc.math.maths_arithmetique.reste-non-normalise
         feedback: >
@@ -794,7 +794,7 @@ items:
           intermediaire. Comme $17 \ge 9$, il faut encore reduire :
           $17 = 9\times1+8$, donc le reste final est $8$, pas $17$.
       - id: B
-        text: "$0$"
+        text: "$0$, car $3725$ est divisible par $9$ comme tout nombre à quatre chiffres"
         correct: false
         misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
         feedback: >
@@ -806,7 +806,7 @@ items:
         text: "$8$, car la somme des chiffres $3+7+2+5 = 17$, et $17 \\equiv 8 \\pmod 9$"
         correct: true
       - id: D
-        text: "$5$"
+        text: "$5$, car $5$ est le dernier chiffre de $3725$, donc le reste cherché"
         correct: false
         misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
         feedback: >
@@ -836,7 +836,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$5$"
+        text: "$5$, car $5$ divise à la fois $210$ et $45$, et c'est le plus grand qui saute aux yeux"
         correct: false
         misconception: mc.math.maths_arithmetique.pgcd-plus-grand-oublie
         feedback: >
@@ -844,7 +844,7 @@ items:
           diviseur commun : $15$ divise aussi les deux nombres
           ($210 = 15\times14$, $45 = 15\times3$).
       - id: B
-        text: "$45$"
+        text: "$45$, car $45$ divise $210$, donc c'est le plus grand diviseur commun des deux"
         correct: false
         misconception: mc.math.maths_arithmetique.pgcd-plus-grand-oublie
         feedback: >
@@ -852,7 +852,7 @@ items:
           $210 = 45\times4 + 30$ : $45$ ne divise pas exactement $210$,
           donc $45$ n'est pas un diviseur commun.
       - id: C
-        text: "$630$"
+        text: "$630$, car c'est le plus petit multiple commun à $210$ et à $45$"
         correct: false
         misconception: mc.math.maths_arithmetique.pgcd-vs-ppcm
         feedback: >
@@ -987,7 +987,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Oui, de tels $u,v$ existent toujours"
+        text: "Oui, de tels entiers $u$ et $v$ existent toujours, quels que soient les coefficients"
         correct: false
         misconception: mc.math.maths_arithmetique.bezout-portee
         feedback: >
@@ -996,7 +996,7 @@ items:
           $\mathrm{PGCD}(6,4)=2 \neq 1$, donc $6u+4v=1$ n'a pas de
           solution.
       - id: B
-        text: "Oui, en prenant $u$ et $v$ assez grands"
+        text: "Oui, en prenant $u$ et $v$ assez grands en valeur absolue et de signes opposés"
         correct: false
         misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
         feedback: >
@@ -1007,7 +1007,7 @@ items:
         text: "Non : toute valeur de $6u+4v$ est un multiple de $2$, or $1$ n'en est pas un"
         correct: true
       - id: D
-        text: "Non, car $6$ et $4$ ne sont pas des nombres premiers"
+        text: "Non, car $6$ et $4$ ne sont ni premiers ni premiers entre eux dans cette équation"
         correct: false
         misconception: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
         feedback: >
@@ -1040,7 +1040,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Oui, $6 \\mid 4$ ou $6 \\mid 9$ necessairement"
+        text: "Oui, nécessairement : $6$ divise le produit, donc il divise l'un des deux facteurs"
         correct: false
         misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
         feedback: >
@@ -1050,7 +1050,7 @@ items:
           deux hypotheses n'est verifiee : Gauss ne s'applique pas, et de
           fait ni $6\mid4$ ni $6\mid9$.
       - id: B
-        text: "Oui, car $6 = 2\\times3$, et $2\\mid 4$, $3\\mid 9$"
+        text: "Oui, car $6 = 2\\times3$, avec $2\\mid 4$ et $3\\mid 9$, ce qui suffit à conclure"
         correct: false
         misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
         feedback: >
@@ -1060,7 +1060,7 @@ items:
           pour que $6\mid4$ ou $6\mid9$ ; ce n'est le cas ni pour $4$
           ($6\nmid4$) ni pour $9$ ($6\nmid9$).
       - id: C
-        text: "On ne peut pas savoir sans calculer $4\\times9$"
+        text: "On ne peut pas savoir sans calculer $4\\times9$ et en chercher tous les diviseurs"
         correct: false
         misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
         feedback: >
@@ -1070,7 +1070,7 @@ items:
           l'un des facteurs : la reponse depend des PGCD, pas d'un calcul
           supplementaire.
       - id: D
-        text: "Non : la condition $\\mathrm{PGCD}=1$ n'est verifiee ni pour $(6,4)$ ni pour $(6,9)$, donc le theoreme de Gauss ne s'applique pas (et de fait $6 \\nmid 4$, $6 \\nmid 9$)"
+        text: "Non : $\\mathrm{PGCD}(6,4) \\neq 1$ et $\\mathrm{PGCD}(6,9) \\neq 1$, donc le théorème de Gauss ne s'applique pas"
         correct: true
     correct_feedback: >
       Exact. Le theoreme de Gauss exige $\mathrm{PGCD}(a,b)=1$. Ici
@@ -1098,10 +1098,10 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Non : $\\mathrm{PGCD}(4,6)=2 \\neq 1$, donc on ne peut pas conclure (contre-exemple : $12$, divisible par $4$ et $6$ mais pas par $24$)"
+        text: "Non : $\\mathrm{PGCD}(4,6)=2 \\neq 1$, donc on ne peut pas conclure — contre-exemple : $12$"
         correct: true
       - id: B
-        text: "Oui, car $4\\times 6 = 24$"
+        text: "Oui, car $4\\times 6 = 24$, et un nombre divisible par les deux l'est par leur produit"
         correct: false
         misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
         feedback: >
@@ -1111,7 +1111,7 @@ items:
           plus petit multiple commun est $\mathrm{PPCM}(4,6)=12$, pas
           $24$.
       - id: C
-        text: "Oui : divisible par deux nombres, alors divisible par leur produit"
+        text: "Oui : dès qu'un entier est divisible par deux nombres, il l'est par leur produit"
         correct: false
         misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
         feedback: >
@@ -1119,7 +1119,7 @@ items:
           les deux nombres sont premiers entre eux. Contre-exemple : $12$
           est divisible par $4$ et par $6$, mais pas par $4\times6=24$.
       - id: D
-        text: "Non, car $4$ et $6$ ne sont pas des nombres premiers"
+        text: "Non, car $4$ et $6$ ne sont pas des nombres premiers, condition ici indispensable"
         correct: false
         misconception: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
         feedback: >
@@ -1487,7 +1487,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$(-2, 3)$"
+        text: "$(-2, 3)$, la solution que donne directement l'identité de départ"
         correct: false
         misconception: mc.math.maths_arithmetique.solution-mise-a-echelle
         feedback: >
@@ -1495,7 +1495,7 @@ items:
           depart, non mise a l'echelle. Il faut multiplier toute
           l'identite par $8/4=2$ pour atteindre le second membre voulu.
       - id: B
-        text: "$(-2, 6)$"
+        text: "$(-2, 6)$, obtenue en doublant seulement la seconde coordonnée de l'identité"
         correct: false
         misconception: mc.math.maths_arithmetique.solution-mise-a-echelle
         feedback: >
@@ -1503,7 +1503,7 @@ items:
           passer de $112x+76y=4$ a $112x+76y=8$, il faut multiplier LES
           DEUX coordonnees par le meme facteur $2$.
       - id: C
-        text: "$(-8, 12)$"
+        text: "$(-8, 12)$, obtenue en multipliant l'identité de départ par $k = 4$"
         correct: false
         misconception: mc.math.maths_arithmetique.solution-mise-a-echelle
         feedback: >
@@ -1511,7 +1511,7 @@ items:
           L'identite de depart vaut deja $4$ ; il suffit de la
           multiplier par $2$ (pas par $8$) pour obtenir $8$.
       - id: D
-        text: "$(-4, 6)$, obtenue en multipliant l'identite par $k = 8/4 = 2$"
+        text: "$(-4, 6)$, obtenue en multipliant l'identité par $k = 8/4 = 2$"
         correct: true
     correct_feedback: >
       Exact. L'identite $112\times(-2)+76\times3=4$ multipliee par
