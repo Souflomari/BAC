@@ -36,7 +36,10 @@ export function FiliereChooser({ redirectOnPick = false }: { redirectOnPick?: bo
           .map((s) => (SUBJECTS[s.id]?.label ? subjectLabel(s.id) : s.id))
           .join(" · ");
         return (
-          <li key={f.id}>
+          <li key={f.id} className="min-w-0">
+            {/* `min-w-0` : item de grille, sinon la piste ne descend pas sous la
+                largeur min-content de la carte — 98 px de débord à 200 % de texte
+                (SC 1.4.4), mesuré le 2026-09-05. Même geste que ProgrammeMap. */}
             <button
               type="button"
               onClick={() => pick(f.id)}
@@ -52,7 +55,7 @@ export function FiliereChooser({ redirectOnPick = false }: { redirectOnPick?: bo
               )}
             >
               <div className="flex items-baseline justify-between gap-3">
-                <span className="font-display text-h4 font-semibold text-primary group-hover:text-accent transition-colors duration-micro">
+                <span className="min-w-0 break-words font-display text-h4 font-semibold text-primary group-hover:text-accent transition-colors duration-micro">
                   {f.name}
                 </span>
                 <span

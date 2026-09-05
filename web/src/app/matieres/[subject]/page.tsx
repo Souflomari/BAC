@@ -94,7 +94,9 @@ export default function SubjectPage({ params }: { params: { subject: string } })
           />
           {/* h1 en h1 à compact (« Mathématiques » à 48 px remplissait les
               390 px au pixel près), display à partir de medium. */}
-          <h1 className="font-display text-h1 bp-medium:text-display font-bold text-primary">
+          {/* `min-w-0 break-words` : item flex, sinon « Physique-Chimie » à 200 % de
+              texte (SC 1.4.4) refuse de se couper et déborde de 54 px à 360 px. */}
+          <h1 className="min-w-0 break-words font-display text-h1 bp-medium:text-display font-bold text-primary">
             {subjectLabel(subject.id)}
           </h1>
         </div>

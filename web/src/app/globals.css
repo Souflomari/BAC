@@ -340,6 +340,12 @@ body {
     gap: 0.5rem;
     min-height: 48px;
     padding: 0 1.5rem; /* 24px — on the 8 dp grid (was 20px) */
+    /* À 200 % de texte (SC 1.4.4), 48 px de padding de chaque côté et un
+       libellé de 28 px de corps font 288 px dans une colonne de 280 : le
+       bouton poussait l'accueil de 16 px. Il ne dépasse plus sa colonne ; le
+       libellé se replie, centré. Mesuré le 2026-09-05. */
+    max-width: 100%;
+    text-align: center;
     border-radius: 12px; /* = radius lg (was an off-scale 10px) */
     font-size: 0.875rem;
     font-weight: 600;

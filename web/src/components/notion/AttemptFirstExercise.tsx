@@ -114,7 +114,10 @@ function Question({
                   type="button"
                   onClick={handleReveal}
                   className={cn(
-                    "inline-flex items-center gap-1.5 px-3 py-2",
+                    // `max-w-full text-left` : à 200 % de texte (SC 1.4.4) ce bouton prenait
+                    // sa largeur max-content (255 px) dans une colonne de 208 et poussait la
+                    // page de 47 px sur 15 leçons. Il se replie maintenant dans sa colonne.
+                    "inline-flex items-center gap-1.5 px-3 py-2 max-w-full text-left",
                     "min-h-touch rounded-md",
                     "text-body-sm font-medium",
                     "text-secondary",

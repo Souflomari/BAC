@@ -26,7 +26,7 @@ export function Breadcrumb({ segments }: { segments: Crumb[] }) {
       {segments.map((seg, i) => {
         const last = i === segments.length - 1;
         return (
-          <span key={i} className="flex items-center gap-2">
+          <span key={i} className="flex items-center gap-2 min-w-0 max-w-full">
             {seg.href && !last ? (
               <Link
                 href={seg.href}
@@ -52,7 +52,12 @@ export function Breadcrumb({ segments }: { segments: Crumb[] }) {
                   // (audit R6, P2-5). Le titre complet vit juste dessous en
                   // h1 — la troncature n'est qu'un garde-fou d'espace.
                   last
-                    ? "text-primary font-medium truncate max-w-[28ch] bp-medium:max-w-[48ch]"
+                    // `min(…,100%)` : à 200 % de texte (SC 1.4.4), 28ch fait
+                    // 430 px sur un écran de 360 — la borne en ch grandit avec la
+                    // fonte, l'écran non. Mesuré le 2026-09-05 : 200 px de débord
+                    // sur « Nombres complexes 1 ». La borne ne dépasse plus jamais
+                    // la colonne ; l'ellipse fait le reste.
+                    ? "text-primary font-medium truncate max-w-[min(28ch,100%)] bp-medium:max-w-[min(48ch,100%)]"
                     : "text-secondary"
                 )}
                 aria-current={last ? "page" : undefined}

@@ -700,7 +700,10 @@ export function StagedFigure({
           >
             {stage}
           </span>
-          <span className="font-display text-body-lg text-primary">
+          {/* `min-w-0 break-words` : item flex, sinon la légende ne peut pas
+              descendre sous son mot le plus long — 49 px de débord à 200 % de
+              texte sur géométrie-espace (SC 1.4.4), mesuré le 2026-09-05. */}
+          <span className="min-w-0 break-words font-display text-body-lg text-primary">
             {frenchTypography(currentCaption)}
           </span>
         </figcaption>

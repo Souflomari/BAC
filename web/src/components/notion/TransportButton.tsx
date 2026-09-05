@@ -22,7 +22,7 @@ import type { ButtonHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 export const TRANSPORT_BTN_CLASS = cn(
-  "inline-flex items-center gap-1.5 px-3 py-2",
+  "inline-flex items-center gap-1.5 px-3 py-2 max-w-full",
   // §9 touch target: 48px
   "min-h-touch min-w-touch rounded-md",
   "text-caption font-medium",

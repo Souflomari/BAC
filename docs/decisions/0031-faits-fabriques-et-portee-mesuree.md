@@ -195,3 +195,20 @@ notions sur 62, les dérivations dépliables sur **une**.
   28 px : la mesure a montré un recouvrement à 56 % avec le squelette —
   pire que le défaut de départ. Le placement retenu est le second, vérifié
   aux pixels dans les deux thèmes.
+- **Un zéro consigné qui n'existait pas, et une explication fausse publiée
+  avant la mesure.** Le HANDOFF §8.5 consignait, pour le texte à 200 %,
+  « 227 signalements, ramenés à 0 ». L'audit complet a relancé le même
+  instrument sur le même corpus : **61 débords réels**, de 16 à 200 px, sur
+  67 pages. Ma première explication — écrite dans le commit de l'audit —
+  fut que la machine était chargée et que les largeurs se lisaient avec les
+  métriques de la fonte de substitut. C'était faux : relancé seul, à froid,
+  fontes attendues, 61 ; l'arbre d'hier, reconstruit et balayé par son propre
+  script, 61 aussi. Le zéro d'hier n'est pas reproductible et sa cause n'est
+  pas établie ; les 61 étaient réels et sont corrigés (HANDOFF §11.17 : six
+  espèces, une seule loi — une boîte flex ou une piste de grille ne descend
+  pas sous la largeur min-content de son contenu, et `overflow-wrap` n'y
+  change rien). **Quand une mesure contredit un chiffre consigné, la
+  première hypothèse à écarter est que le chiffre était faux — pas que la
+  machine était lente.** Et une explication d'écart se mesure avant de
+  s'écrire : la mienne tenait dans un `document.fonts.ready` qui, ajouté,
+  n'a rien changé au compte.

@@ -742,7 +742,12 @@ aucun focus dans un chapitre masqué, aucun arrêt invisible ou de taille
 nulle, aucun `tabindex` positif, aucun piège, un indicateur visible partout.
 Un résultat négatif, armé quand même : cette classe régresse en silence.
 
-**Le texte à 200 % (SC 1.4.4) — 227 signalements, ramenés à 0.** Trois
+**Le texte à 200 % (SC 1.4.4) — 227 signalements, ramenés à 0.** *[CORRIGÉ le
+2026-09-05, §11.16 : ce zéro n'était pas reproductible. L'arbre de ce
+commit (6dfcb92), reconstruit dans un worktree et balayé par son propre
+script sur une machine à froid, rend 61 débords à 360 px. Les 61 étaient
+réels et sont corrigés à la source le 2026-09-05 ; la cause du faux zéro
+d'hier n'est pas établie.]* Trois
 causes, toutes structurelles : onze titres de leçon débordaient parce qu'une
 piste de grille sans `min-w-0` ne peut pas descendre sous la largeur
 min-content de son contenu (`overflow-wrap: break-word` autorise la coupure
@@ -3032,7 +3037,7 @@ run 451, sur la même pile d'instruments, était vert en 28 min 35 s.
 | `validate-content --strict` | 62 notions | 0 échec |
 | `etroit-sweep` | 108 pages × 320/360/390 px — les 39 épreuves ouvertes en deux clics | 0 débord |
 | `zoom400-sweep` | 108 pages à 400 % (320 × 256 px) — les 39 épreuves ouvertes en deux clics | 0 débord, 0 barre collante, 0 page à moins de 3 lignes de prose, 0 navigation inatteignable |
-| `zoom-sweep` (texte à 200 %) | 67 pages, mesuré SOUS CHARGE | **61 débords** de 47 à 200 px — que trois pages re-mesurées seules et à froid ramènent à **0** : l'instrument lisait la largeur avec les métriques de la fonte de SUBSTITUT, `networkidle` arrivant avant les fontes. Il attend désormais `document.fonts.ready`. Le balayage complet à froid est à refaire avant de dire « zéro » sur 67 pages ; il suivra dans le commit suivant |
+| `zoom-sweep` (texte à 200 %, SC 1.4.4) | 67 pages, 360 px, machine à froid | **61 débords réels**, de 16 à 200 px — ramenés à **0** le même soir (§11.17). Le « 0 » consigné hier au §8.5 n'était pas reproductible : l'arbre d'hier, reconstruit, rend 61 |
 | `pagination-probe` | 60 liens profonds | 60 tenues, 0 rompue |
 | `annonce-sweep` | 106 pages dont les 39 épreuves | 0 région assertive, 0 focus perdu, 0 recul de tabulation |
 | `copie-maths` | 39 épreuves, 29 325 formules | 0 caractère en trop |
@@ -3075,7 +3080,45 @@ un trou. Le chiffre reste un majorant ; il est maintenant lu.
 restent vrais : `etroit-sweep`, `zoom400-sweep`, `annonce-sweep` lisent les
 39 sujets par `routes-examens.mjs` et font les deux clics.
 
-### 11.17 Deux soupçons re-mesurés, et déjà traités
+### 11.17 Texte à 200 % : le zéro d'hier n'existait pas, les 61 débords oui
+
+Le §8.5 dit, depuis hier : « 227 signalements, ramenés à 0 ». L'audit complet
+a relancé le même instrument sur le même corpus : **61 débords à 360 px**, de
+16 à 200 px. Ma première explication — écrite dans le commit de l'audit — fut
+que la machine était chargée et que les largeurs se lisaient avec les métriques
+de la fonte de substitut. **C'était faux**, et il faut le dire dans cet ordre :
+relancé seul, machine à froid, fontes attendues : 61. Puis l'arbre d'HIER
+(6dfcb92), reconstruit dans un worktree et balayé par son propre script : **61
+aussi**. Le zéro d'hier n'était pas reproductible ; sa cause n'est pas établie.
+L'attente de `document.fonts.ready` ajoutée à l'instrument reste — c'est une
+hygiène de mesure — mais elle n'expliquait rien.
+
+**Les 61 étaient réels, et de six espèces.** Toutes tiennent à la même loi de
+mise en page, celle que le §8.5 énonçait déjà sans l'avoir appliquée partout :
+*une boîte flex ou une piste de grille ne descend pas sous la largeur
+min-content de son contenu, et `overflow-wrap: break-word` ne change PAS cette
+largeur.* À 200 % de texte, tout ce qui est dimensionné en `rem`, `ch` ou
+max-content double ; l'écran, non.
+
+| espèce | pages | débord | correction |
+|---|---|---|---|
+| fil d'Ariane : dernier maillon `truncate max-w-[28ch]` — 28ch font 430 px | 62 leçons | 47 à 200 px | `max-w-[min(28ch,100%)]`, `min-w-0 max-w-full` sur le maillon |
+| bouton « J'ai fait ma tentative — voir le raisonnement » : inline-flex à largeur max-content dans une colonne de 208 px | 15 leçons | 47 px | `max-w-full text-left` (idem TransportButton, ExplicationPlayer) |
+| légende de figure : item flex sans `min-w-0` | géométrie-espace | 49 px | `min-w-0 break-words` |
+| `h1` « Physique-Chimie » : item flex à côté du point de couleur | /matieres/* | 54 px | `min-w-0 break-words` |
+| cartes de filière : item de GRILLE sans `min-w-0` | /commencer | 98 px | `min-w-0` sur le `li` |
+| accueil : bouton `.btn-primary` (48 px de padding de chaque côté) et piste de grille implicite `auto` fixée par « Mathématiques » | / | 16 px | `max-width: 100%` sur le bouton ; `grid-cols-1` (= `minmax(0,1fr)`) sur la grille |
+
+Trois passes de mesure, à froid : 61 → 2 → 1 → **0 sur 67 pages**. Le mot le
+plus long, « Mathématiques », a été le dernier debout : sur un item flex,
+`min-w-0` suffit pour qu'il se coupe ; sur une piste de grille, non — la piste
+elle-même doit être bornée (`minmax(0, 1fr)`), parce que la contribution
+min-content d'un item flex ignore son `min-width: 0`.
+
+Retiré dans l'ADR 0031 (rétractations) : le zéro du §8.5, et ma phrase sur les
+métriques du substitut.
+
+### 11.18 Deux soupçons re-mesurés, et déjà traités
 
 Deux mesures lancées ce jour-là ont retrouvé un terrain déjà couvert, et il
 faut le dire pour que personne ne le refasse une troisième fois.

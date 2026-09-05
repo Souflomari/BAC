@@ -60,7 +60,13 @@ export function ProgrammeMap({ notions }: { notions: NotionMeta[] }) {
         </p>
       </div>
 
-      <div className="mt-6 grid gap-4 bp-large:grid-cols-2">
+      {/* `grid-cols-1` et non `grid` seul : une piste implicite est `auto`, donc
+          au moins aussi large que le mot le plus long d'une carte — et
+          `overflow-wrap: break-word` ne change PAS cette largeur (§8.5). À 200 %
+          de texte (SC 1.4.4), « Mathématiques » fixait la piste à 344 px dans
+          une colonne de 296 : 16 px de débord sur l'accueil. `minmax(0, 1fr)`
+          borne la piste à la colonne ; le mot se coupe ensuite. 2026-09-05. */}
+      <div className="mt-6 grid grid-cols-1 gap-4 bp-large:grid-cols-2">
         {ordre.map((id) => {
           // L'ORDRE DU PROGRAMME, jamais l'alphabet. Cette carte annonce
           // « couverture du cadre officiel » : un élève y lit l'ordre de son
@@ -102,7 +108,11 @@ export function ProgrammeMap({ notions }: { notions: NotionMeta[] }) {
                 />
                 <Link
                   href={subjectHref(id)}
-                  className="min-w-0 focus-ring rounded text-h4 font-semibold text-primary hover:underline"
+                  // `break-words` : « Mathématiques » est un seul mot ; à 200 % de
+                  // texte (SC 1.4.4) il faisait 290 px dans une colonne de 216 et
+                  // poussait l'accueil de 16 px. `min-w-0` laisse le lien rétrécir,
+                  // `break-words` laisse le mot se couper. Mesuré le 2026-09-05.
+                  className="min-w-0 break-words focus-ring rounded text-h4 font-semibold text-primary hover:underline"
                 >
                   {subjectLabel(id)}
                 </Link>

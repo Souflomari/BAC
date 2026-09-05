@@ -117,7 +117,7 @@ export function ExplicationPlayer({
           type="button"
           onClick={() => setRevealed(true)}
           className={cn(
-            "inline-flex items-center gap-1.5 px-3 py-2",
+            "inline-flex items-center gap-1.5 px-3 py-2 max-w-full",
             "min-h-touch rounded-md",
             "text-body-sm font-medium",
             "text-secondary",
