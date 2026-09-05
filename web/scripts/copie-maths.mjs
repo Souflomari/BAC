@@ -80,6 +80,45 @@ const copierTout = async () => {
   return page.evaluate(() => navigator.clipboard.readText());
 };
 
+/**
+ * L'AUTRE SAVEUR DU PRESSE-PAPIER. Un élève qui colle dans Word ou Docs ne
+ * reçoit pas `text/plain` mais `text/html`. Deux questions s'y posent, et une
+ * seule a une bonne réponse :
+ *   · le MathML y est-il encore MASQUÉ ? OUI — Chrome sérialise les styles
+ *     calculés en ligne, donc `clip-path`, `position: absolute`, `width: 1px`
+ *     et même `user-select: none` voyagent avec. Un éditeur qui honore les
+ *     styles en ligne ne montrera pas la formule en double.
+ *   · quelle TAILLE ? Mesurée sur `rlc-serie` : 855 ko de HTML pour 5,9 ko de
+ *     texte — 145 fois. La cause n'est pas le produit mais la préflight de
+ *     Tailwind, qui pose une trentaine de variables `--tw-*` sur CHAQUE
+ *     élément ; Chrome les recopie toutes, sur chaque span. Rien à corriger
+ *     ici sans toucher au socle CSS : c'est une mesure, pas une porte.
+ */
+const mesurerRiche = async () => {
+  await page.keyboard.press("Control+A");
+  await page.keyboard.press("Control+C");
+  return page.evaluate(async () => {
+    try {
+      const items = await navigator.clipboard.read();
+      for (const it of items) {
+        if (!it.types.includes("text/html")) continue;
+        const html = await (await it.getType("text/html")).text();
+        const plain = it.types.includes("text/plain")
+          ? await (await it.getType("text/plain")).text() : "";
+        const j = html.indexOf("katex-mathml");
+        const bout = j >= 0 ? html.slice(j, j + 3000) : "";
+        return {
+          html: html.length,
+          plain: plain.length,
+          masque: /clip-path|clip:/.test(bout) && /width:\s*1px/.test(bout),
+          formules: (html.match(/katex-mathml/g) || []).length,
+        };
+      }
+    } catch { /* le presse-papier riche n'est pas lisible partout */ }
+    return null;
+  });
+};
+
 let pagesSales = 0, fuitesTotal = 0, formules = 0;
 const exemples = [];
 
@@ -131,6 +170,7 @@ for (const route of routes) {
   const n = await page.evaluate(() => document.querySelectorAll("main .katex").length);
   formules += n;
 
+  const riche = await mesurerRiche();
   const reel = sansEspaces(await copierTout());
   await styler("copie-ideal", ".katex-mathml{display:none!important}");
   const ideal = sansEspaces(await copierTout());
@@ -165,6 +205,13 @@ for (const route of routes) {
     `le témoin voit ${temoin.length - ideal.length} caractère(s) parasites sans le correctif, ` +
     `le livré en a ${enTrop}`
   );
+  if (riche) {
+    console.log(
+      `      collage RICHE : ${(riche.html / 1024).toFixed(0)} ko de HTML pour ` +
+      `${(riche.plain / 1024).toFixed(1)} ko de texte (×${(riche.html / Math.max(1, riche.plain)).toFixed(0)}) · ` +
+      `MathML ${riche.masque ? "masqué en ligne ✓" : "SANS ses styles de masquage ✗"}`
+    );
+  }
 }
 
 console.log(

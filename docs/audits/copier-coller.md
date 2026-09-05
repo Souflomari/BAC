@@ -91,11 +91,31 @@ presse-papier.**
 
 ---
 
+## Le collage RICHE : une bonne nouvelle et un chiffre à arbitrer
+
+Mesuré ensuite, et l'instrument le rapporte à chaque exécution.
+
+**La bonne nouvelle.** En `text/html`, le MathML voyage **avec ses styles de
+masquage** : Chrome sérialise les styles calculés en ligne, donc `clip-path`,
+`position: absolute`, `width: 1px` et même `user-select: none` partent avec
+lui. Un éditeur qui honore les styles en ligne — Word, Docs — ne montrera
+donc pas la formule en double. Le correctif tient dans les deux saveurs.
+
+**Le chiffre.** Copier une leçon ENTIÈRE (chapitres dépliés) produit
+**27,8 Mo de HTML pour 67,5 ko de texte — 413 fois.** La cause n'est pas le
+produit : c'est la préflight de Tailwind, qui pose une trentaine de variables
+`--tw-*` sur CHAQUE élément, et Chrome les recopie toutes, sur chaque span.
+
+**Pourquoi ce n'est PAS corrigé ici, et ce que l'arbitrage coûte.** On saurait
+le faire : un écouteur `copy` qui reconstruit le HTML depuis la sélection en
+retirant `.katex-mathml` ramènerait la charge à quelques centaines de ko. Mais
+un HTML reconstruit **perd les styles calculés que Chrome inline** — donc le
+rendu visuel des formules, qui est précisément ce que le collage riche apporte
+aujourd'hui. Échanger « 28 Mo » contre « des formules qui se collent en vrac »
+est un arbitrage de produit, pas un correctif : il revient à l'owner.
+
 ## Ce que la mesure ne dit pas
 
-- **Le collage RICHE.** On lit `text/plain`. Ce qu'un traitement de texte
-  reçoit en `text/html` — donc ce qui arrive dans Word ou Docs quand le
-  collage garde la mise en forme — n'est pas mesuré.
 - **`innerText` continue d'inclure les deux arbres.** Les balayages qui
   lisent le texte rendu voient donc encore la formule en double. C'est sans
   conséquence pour ceux d'aujourd'hui (ils cherchent des motifs de rédaction,

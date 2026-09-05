@@ -79,10 +79,13 @@
    qu'un seul morceau de JavaScript perdu laisse le cours lisible et la page
    MORTE, sans un mot pour l'élève. Ce que ce balayage ne touche pas : ce qui
    est ENVOYÉ après une réponse — la sauvegarde, pas l'affichage.
-5 bis. **Le collage RICHE et la recherche du navigateur.** Le presse-papier
-   en `text/plain` est mesuré et propre depuis le 2026-09-05
-   (`copie-maths`) ; ce qu'un traitement de texte reçoit en `text/html`, et
-   ce que ⌘F trouve dans le MathML masqué, ne le sont pas.
+5 bis. **La recherche du navigateur (⌘F)** — mord-elle dans le MathML masqué ?
+   Non mesuré. Le collage RICHE, lui, l'est depuis le 2026-09-05 : le MathML
+   y voyage avec ses styles de masquage (donc pas de formule doublée dans
+   Word ou Docs), mais une leçon entière pèse **27,8 Mo de HTML pour 67,5 ko
+   de texte** — la préflight de Tailwind, recopiée sur chaque span. Un
+   arbitrage owner est ouvert : le corriger coûterait le rendu visuel des
+   formules dans le collage riche (`docs/audits/copier-coller.md`).
 6. **Le reste du multilingue.** `dom-truth` garde maintenant la DIRECTION
    d'un bloc arabe. Ce qu'il ne garde pas : la césure, la fonte arabe
    réellement choisie par le navigateur (aucune des fontes du site n'a de
