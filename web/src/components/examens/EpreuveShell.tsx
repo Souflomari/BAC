@@ -100,20 +100,38 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
   const [reveleSujet, setReveleSujet] = useState(0);
   const [reveleCorrige, setReveleCorrige] = useState(0);
   const [, startTransition] = useTransition();
-  const nbExos = epreuve.exercices.length;
+  // L'unité de révélation est la QUESTION, pas l'exercice : un exercice de
+  // corrigé dense (250 formules) restait une seule tâche de 3 à 4 s à ×6 ; une
+  // question, c'est un bloc — la tâche la plus longue est bornée par le plus
+  // gros bloc du sujet. `debuts[i]` = rang de la première question de
+  // l'exercice i ; `nbUnites` = nombre total de questions.
+  const { debuts, nbUnites } = useMemo(() => {
+    const d: number[] = [];
+    let n = 0;
+    for (const e of epreuve.exercices) { d.push(n); n += e.questions.length; }
+    return { debuts: d, nbUnites: n };
+  }, [epreuve]);
   useEffect(() => {
-    const cible = phase === "encours" ? reveleSujet : phase === "correction" ? reveleCorrige : nbExos;
-    if (cible >= nbExos) return;
+    if (phase === "seuil") return;
+    // Le SUJET d'abord, toujours — même en phase correction. Un « Terminer »
+    // tapé pendant que les énoncés se révèlent encore (un robot le fait en
+    // 100 ms, un élève sur un téléphone lent le peut) laissait sinon les
+    // exercices non révélés sans énoncé ET sans corrigé, tandis que le
+    // compteur du corrigé atteignait la fin et posait son marqueur : dom-truth
+    // a vu « 4/10 exercices corrigés » avec `data-corrige-complet` posé.
+    const sujetAFinir = reveleSujet < nbUnites;
+    const corrigeAFinir = phase === "correction" && reveleCorrige < nbUnites;
+    if (!sujetAFinir && !corrigeAFinir) return;
     let annule = false;
     const id = window.requestAnimationFrame(() => {
       if (annule) return;
       startTransition(() => {
-        if (phase === "encours") setReveleSujet((k) => Math.min(nbExos, k + 1));
-        else setReveleCorrige((k) => Math.min(nbExos, k + 1));
+        if (sujetAFinir) setReveleSujet((k) => Math.min(nbUnites, k + 1));
+        else setReveleCorrige((k) => Math.min(nbUnites, k + 1));
       });
     });
     return () => { annule = true; window.cancelAnimationFrame(id); };
-  }, [phase, reveleSujet, reveleCorrige, nbExos]);
+  }, [phase, reveleSujet, reveleCorrige, nbUnites]);
   const chronoFinal = useRef<number>(0);
 
   // Chrono : écoulé, 1 s, coupé en pause et en correction. L'onglet inactif
@@ -216,8 +234,8 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
   }
 
   const enCorrection = phase === "correction";
-  const sujetComplet = reveleSujet >= nbExos;
-  const corrigeComplet = enCorrection && reveleCorrige >= nbExos;
+  const sujetComplet = reveleSujet >= nbUnites;
+  const corrigeComplet = enCorrection && sujetComplet && reveleCorrige >= nbUnites;
 
   return (
     <div
@@ -317,14 +335,11 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
                   </span>
                 )}
               </header>
-              {i >= reveleSujet ? (
-                <p className="px-5 py-5 text-body-sm text-tertiary" aria-busy="true">
-                  Le sujet se prépare…
-                </p>
-              ) : (
               <div className="space-y-5 px-5 py-5">
-                {exo.intro && <MdBlock>{exo.intro}</MdBlock>}
-                {exo.questions.map((q) => {
+                {exo.intro && debuts[i] < reveleSujet && <MdBlock>{exo.intro}</MdBlock>}
+                {exo.questions.map((q, k) => {
+                  const g = debuts[i] + k; // rang global de la question
+                  if (g >= reveleSujet) return null;
                   const cle = `${i}:${q.id}`;
                   const verdict = verdicts[cle];
                   const qPts = bareme.get(cle) ?? 0;
@@ -339,12 +354,12 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
 
                       {/* ATTEMPT-FIRST ABSOLU : le raisonnement n’entre dans
                           le DOM qu’en phase correction — dom-truth l’asserte. */}
-                      {enCorrection && i >= reveleCorrige && (
+                      {enCorrection && g >= reveleCorrige && (
                         <p className="mt-3 text-body-sm text-tertiary" aria-busy="true">
                           Le corrigé se prépare…
                         </p>
                       )}
-                      {enCorrection && i < reveleCorrige && (
+                      {enCorrection && g < reveleCorrige && (
                         <div className="mt-3 rounded-lg border border-subtle bg-surface-container-low p-4">
                           <p className="mb-2 text-caption font-medium uppercase tracking-eyebrow text-secondary">
                             Raisonnement expert
@@ -389,6 +404,11 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
                     </div>
                   );
                 })}
+                {debuts[i] + exo.questions.length > reveleSujet && (
+                  <p className="text-body-sm text-tertiary" aria-busy="true">
+                    Le sujet se prépare…
+                  </p>
+                )}
                 {enCorrection && (
                   <p className="border-t border-subtle pt-4 text-body-sm">
                     <Link
@@ -403,7 +423,6 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
                   </p>
                 )}
               </div>
-              )}
             </article>
           </li>
         ))}

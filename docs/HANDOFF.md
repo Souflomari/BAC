@@ -3288,6 +3288,28 @@ l'épreuve, le parent se re-rend à chaque seconde du chrono.
   phase). La racine porte `data-sujet-complet` puis `data-corrige-complet`
   quand le dernier exercice de la phase est rendu.
 
+**LA PREMIÈRE VERSION, ET CE QU'ELLE A APPRIS.** La révélation a d'abord
+été faite par EXERCICE. Mesurée sur 10 sujets (processeur ×6) : le premier
+corrigé apparaît en **0,4 à 0,9 s** au lieu de 11 à 30 s, le premier énoncé
+en 1,2 à 2,9 s au lieu de 7 à 13 s — mais la tâche la plus longue restait de
+1,6 à 4,8 s sur les sujets denses : un exercice de corrigé de 250 formules
+est un seul rendu, et React ne découpe pas À L'INTÉRIEUR d'un composant qui
+parse et rend d'un bloc. L'unité est donc devenue la QUESTION : chaque bloc
+de raisonnement est un rendu, la tâche la plus longue est bornée par le plus
+gros bloc du sujet. Les chiffres définitifs, par question, sont dans le
+tableau ci-dessous.
+
+Et dom-truth a trouvé un défaut de la première version avant qu'elle ne soit
+mesurée : il appuie sur « Terminer » une centaine de millisecondes après
+« Commencer » — pendant que les énoncés se révèlent encore. Le passage en
+phase correction figeait le compteur du sujet ; les exercices dont l'énoncé
+n'avait pas été révélé n'avaient ni énoncé ni corrigé, tandis que le compteur
+du corrigé atteignait la fin et posait `data-corrige-complet` : « 4/10
+exercices corrigés », marqueur présent. Un élève sur un téléphone lent peut
+faire la même chose. Le sujet finit maintenant toujours avant que le corrigé
+ne commence, quelle que soit la phase, et le marqueur du corrigé exige celui
+du sujet.
+
 **CE QUE ÇA CHANGE POUR LES INSTRUMENTS.** Dix instruments ouvrent les 39
 sujets ; ils attendaient `[data-exam-exo]` puis un délai de 250 à 500 ms. Avec
 la révélation progressive, ce délai mesurerait une page à moitié rendue — et
