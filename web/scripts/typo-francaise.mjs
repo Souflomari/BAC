@@ -82,6 +82,15 @@ for (const route of routes) {
     process.exitCode = 1;
     continue;
   }
+  // LES ÉNONCÉS D'ÉPREUVE SONT DERRIÈRE « Commencer » (2026-09-05). Même
+  // angle mort que pour la porte accents : `EpreuveShell` démarre au « seuil »
+  // et les 39 sujets n'entrent dans le DOM qu'après l'action primaire. Une
+  // porte qui n'ouvre pas la page mesure le masthead et se déclare verte.
+  const commencer = page.getByRole("button", { name: /Commencer l.épreuve/i });
+  if (await commencer.count()) {
+    await commencer.first().click();
+    await page.waitForSelector("[data-exam-exo]", { timeout: 10000 });
+  }
   await page.waitForTimeout(250);
   const r = await page.evaluate(() => {
     const racine = document.querySelector("main");

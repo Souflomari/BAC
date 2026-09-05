@@ -98,6 +98,15 @@ const nav = await chromium.launch({
 const page = await (await nav.newContext({ viewport: { width: 1280, height: 900 } })).newPage();
 
 let total = 0;
+// LE TEXTE D'EXAMEN EST TRANSCRIT VERBATIM, FAUTES COMPRISES (2026-09-05).
+// Les sujets officiels contiennent leurs propres coquilles — « désintegration »,
+// « coincïde » (tréma mal placé), « complétement », « la reception ». Le corpus
+// les reproduit TELLES QUELLES et les signale d'un « (sic) » au point d'usage :
+// c'est une règle éditoriale, pas un oubli, et la corriger détruirait la fidélité
+// au sujet que l'élève verra le jour de l'épreuve. La porte saute donc un mot
+// suivi d'un « (sic » dans les 60 caractères — la marque EST l'exemption.
+// Une passe de correction avait accentué « la reception *(sic)* » du rattrapage
+// 2012 ; c'est ce qui a rendu cette exemption nécessaire.
 // PAGES RÉELLEMENT MESURÉES (2026-09-05). Le compte affiché disait
 // `routes.length` : sur une liste dont TOUTES les routes rendaient un 404,
 // la porte annonçait « aucun mot désaccentué sur 62 pages » — une phrase
@@ -121,6 +130,19 @@ for (const route of routes) {
     process.exitCode = 1;
     continue;
   }
+  // LES ÉNONCÉS D'ÉPREUVE N'ENTRENT DANS LE DOM QU'APRÈS « Commencer »
+  // (2026-09-05). `EpreuveShell` a trois phases et démarre au « seuil » : la
+  // page /examens/<id> ne contient, au chargement, que le masthead et les
+  // conditions. Les 39 sujets — le plus gros bloc de prose française du
+  // produit après les leçons, et le seul transcrit VERBATIM — n'avaient donc
+  // jamais été balayés : la porte les rendait verts en ne mesurant rien.
+  // C'est la règle de l'ADR 0031 : la PORTÉE d'un mécanisme se mesure à part
+  // de son bon fonctionnement.
+  const commencer = page.getByRole("button", { name: /Commencer l.épreuve/i });
+  if (await commencer.count()) {
+    await commencer.first().click();
+    await page.waitForSelector("[data-exam-exo]", { timeout: 10000 });
+  }
   mesurees++;
   await page.waitForTimeout(200);
   const r = await page.evaluate((motif) => {
@@ -139,8 +161,17 @@ for (const route of routes) {
       // dont le contenu ressemble à des mots sans en être.
       if (nd.parentElement?.closest(".katex-mathml, code, pre, style, script")) continue;
       const t = nd.nodeValue || "";
-      const trouves = t.match(RE);
-      if (!trouves) continue;
+      // Le « (sic) » vit dans un <em> VOISIN, pas dans ce nœud de texte : on
+      // regarde le bloc entier, sinon l'exemption ne verrait jamais la marque.
+      const bloc = (nd.parentElement?.closest("p, li, td, th, blockquote, div")?.textContent) || t;
+      const trouves = [];
+      for (const m of t.matchAll(RE)) {
+        const dansBloc = bloc.indexOf(m[0], Math.max(0, bloc.indexOf(t)));
+        const suite = dansBloc < 0 ? "" : bloc.slice(dansBloc + m[0].length, dansBloc + m[0].length + 60);
+        if (/\(\s*sic/i.test(suite)) continue;   // transcription verbatim assumée
+        trouves.push(m[0]);
+      }
+      if (trouves.length === 0) continue;
       n += trouves.length;
       for (const m of trouves) mots[m.toLowerCase()] = (mots[m.toLowerCase()] || 0) + 1;
       let e = nd.parentElement, chemin = [];

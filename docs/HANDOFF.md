@@ -2817,7 +2817,84 @@ Liste de la porte : **654 → 846 formes**. Vérifié sur le rendu, 65 pages,
 zéro occurrence — et zéro faux positif, ce qui était le risque réel d'un
 élargissement de 192 formes.
 
-### 11.13 Deux soupçons re-mesurés, et déjà traités
+### 11.13 Les 39 épreuves n'avaient jamais été balayées
+
+En vérifiant l'exemption « (sic) » du §11.12, elle est restée verte dans les
+deux sens — avec l'exemption, sans elle. Un contrôle qui ne peut pas devenir
+rouge ne contrôle rien : la raison n'était pas l'exemption, c'était que **le
+texte de l'épreuve n'était pas là**.
+
+`EpreuveShell` a trois phases et démarre au « seuil » : la page
+`/examens/<id>` ne contient, au chargement, que le masthead et les conditions.
+L'énoncé n'entre dans le DOM qu'après « Commencer l'épreuve ». Les portes
+faisaient `goto` puis `networkidle`, et mesuraient le masthead.
+
+**Et les 39 routes n'étaient même pas dans la liste.** La porte accents ne
+portait que `/examens` — la page de LISTE. La porte typographie portait une
+seule page de sujet, ajoutée à la main, qui revenait verte pour la raison
+ci-dessus. Le plus gros bloc de prose française du produit après les leçons,
+et le seul transcrit VERBATIM, n'avait jamais été ouvert par un instrument.
+C'est l'ADR 0031 mot pour mot : **la PORTÉE d'un mécanisme se mesure à part
+de son bon fonctionnement.**
+
+Les deux portes cliquent maintenant le bouton, et la liste des 39 se lit là où
+elle est vraie (`scripts/routes-examens.mjs` appelle `listEpreuves()`, la même
+fonction que la page /examens) plutôt qu'écrite en dur dans le YAML de CI —
+une liste figée aurait rendu vertes les épreuves ajoutées ensuite.
+
+Ce que l'ouverture a trouvé, en une fois :
+
+**1. Des commentaires de rédaction AFFICHÉS à l'élève.** Quatorze notes
+internes, `<!--` compris, dans le texte d'énoncé de huit sujets. Sur le
+rattrapage 2012, un élève qui ouvre l'épreuve lit :
+
+    <!-- DÉFAUT DU SUJET OFFICIEL, DÉCLARÉ ET RÉPARÉ ICI (F4), 2026-09-04.
+    Le bandeau de la page 2 du document officiel francophone imprime, mot
+    pour mot : « Première partie (03 points) : Électrolyse de la solution
+    de cuivre II. » — les mots « bromure de » MANQUENT. […] l'original
+    arabe RS28 écrit « برومور …
+
+Le markdown des leçons retire ces commentaires ; le chemin de l'énoncé
+d'épreuve, non. Rien ne pouvait le voir : le HTML pré-rendu ne les contient
+pas non plus, puisque l'énoncé n'existe qu'après le clic. Les quatorze notes
+sont sorties du texte rendu et remises en commentaires YAML au-dessus de leur
+champ — **verbatim, pas une ligne perdue** : c'est du travail de sourcing, il
+a de la valeur, il n'a simplement rien à faire sous les yeux d'un élève.
+
+**2. 626 écarts de typographie française, sur les 39 sujets sans exception.**
+Apostrophes droites, pas d'insécable devant « : ? ; ». Tous dans les deux
+seuls champs rendus en texte NU — l'en-tête d'exercice (`h2`) et le libellé de
+partie — donc hors du chemin markdown qui applique `remarkFrenchTypography`.
+Une ligne dans `app/examens/[id]/page.tsx` répare la surface entière : **626 →
+0**, sans toucher un fichier de contenu.
+
+**3. Un mot désaccentué qui restait**, « interpretation graphique » dans un
+libellé de partie de SM 2024. Plus deux régressions de MA passe du §11.12,
+trouvées ici et nulle part ailleurs — voir ci-dessous.
+
+**Les deux régressions que j'avais poussées.** La passe d'accents avait touché
+deux choses qu'elle n'aurait jamais dû toucher :
+
+- `« la transmission et la reception *(sic)* »` — du texte d'examen transcrit
+  **verbatim**. Le corpus reproduit les coquilles des sujets officiels et les
+  signale d'un « (sic) » : « désintegration », « coincïde » (tréma mal placé),
+  « complétement ». C'est une règle éditoriale, et la corriger détruit la
+  fidélité au sujet que l'élève verra le jour de l'épreuve. La marque devenait
+  en plus absurde, posée sur un mot devenu correct.
+- `(derivation:verification-cosinus)` → `(dérivation:…)` — un renvoi à
+  l'identifiant d'une dérivation, cité en prose. Rien ne casse à l'exécution ;
+  le renvoi désigne simplement un identifiant qui n'existe pas.
+
+Les deux sont rétablies. La porte saute désormais un mot suivi d'un « (sic »
+dans les 60 caractères — **la marque EST l'exemption** —, et le script de
+campagne ne touche ni une ligne verbatim, ni les six lignes qui suivent une
+annonce du type « Coquilles reproduites verbatim, non réparées : », ni un
+renvoi de la forme `mot:identifiant`.
+
+État après : **accents 0 sur 104 pages, typographie 0 sur 111 pages** — les
+62 leçons ET les 39 épreuves —, dom-truth 262/262, six suites unitaires.
+
+### 11.14 Deux soupçons re-mesurés, et déjà traités
 
 Deux mesures lancées ce jour-là ont retrouvé un terrain déjà couvert, et il
 faut le dire pour que personne ne le refasse une troisième fois.

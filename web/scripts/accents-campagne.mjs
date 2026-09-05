@@ -191,7 +191,7 @@ const FERME = "";
 // echappe par accident — il porte un trait d'union, que la frontiere de mot
 // exclut deja. Ne pas dependre d'un accident : on masque la directive entiere.
 const masque = (s, jetons) =>
-  s.replace(/\[\[[^\]]*\]\]|\$\$[\s\S]*?\$\$|\$[^$\n]*\$|`[^`\n]*`|\\[a-zA-Z]+/g, (x) => {
+  s.replace(/\b[a-z]{4,}:[a-z0-9][a-z0-9-]{2,}|\[\[[^\]]*\]\]|\$\$[\s\S]*?\$\$|\$[^$\n]*\$|`[^`\n]*`|\\[a-zA-Z]+/g, (x) => {
     jetons.push(x);
     return OUVRE + (jetons.length - 1) + FERME;
   });
@@ -201,8 +201,19 @@ const demasque = (s, jetons) =>
 // Les valeurs de chaines YAML uniquement : jamais une cle, jamais un commentaire.
 function corrigeYaml(brut, rel) {
   const out = [];
+  let zoneVerbatim = 0;
   for (const l of brut.split("\n")) {
     if (/^\s*#/.test(l)) { out.push(l); continue; }
+    // TEXTE D'EXAMEN TRANSCRIT VERBATIM : on n'y touche pas. Les sujets
+    // officiels portent leurs propres coquilles, le corpus les reproduit et
+    // les signale d'un « (sic) ». La premiere passe avait accentue « la
+    // reception *(sic)* » du rattrapage 2012 — la marque devenait absurde et
+    // la fidelite au sujet, perdue.
+    // Une annonce (« Coquilles de langue reproduites verbatim, non réparées : »)
+    // est suivie de la LISTE des citations, sur les lignes d'apres, qui ne
+    // portent plus la marque. La zone protegee court donc six lignes.
+    if (/\(\s*sic|tel qu.imprim|verbatim|non r[ée]par|non corrig/i.test(l)) { zoneVerbatim = 6; out.push(l); continue; }
+    if (zoneVerbatim > 0) { zoneVerbatim--; out.push(l); continue; }
     const m = l.match(/^(\s*(?:-\s*)?(?:[A-Za-z_][\w-]*:\s*)?)(.*)$/);
     const tete = m[1];
     let corps = m[2];

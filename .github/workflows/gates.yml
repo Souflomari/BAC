@@ -252,10 +252,17 @@ jobs:
         run: |
           routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)
           test -n "$routes"
+          # LES 39 ÉPREUVES (2026-09-05). Une seule figurait ici, et elle
+          # revenait verte : la porte ne cliquait pas « Commencer », donc elle
+          # mesurait le masthead. Ouvertes pour de bon : 626 écarts, sur les
+          # 39 sujets sans exception — en-têtes d'exercice et libellés de
+          # partie, les deux champs rendus en texte NU, hors markdown.
+          examens=$(node scripts/routes-examens.mjs)
+          test -n "$examens"
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
-          node scripts/typo-francaise.mjs --porte $routes / /examens \
+          node scripts/typo-francaise.mjs --porte $routes $examens / /examens \
             /matieres/pc /matieres/maths /matieres/svt /matieres/philo /commencer \
-            /atelier /connexion /options/wide/m1 /examens/spc-2023-normale
+            /atelier /connexion /options/wide/m1
 
       # PORTE ACCENTS (2026-09-05). Le corpus contenait, à côté d'une prose
       # soignée, des passages entiers écrits sans le moindre accent —
@@ -273,8 +280,15 @@ jobs:
         run: |
           routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)
           test -n "$routes"
+          # LES 39 ÉPREUVES (2026-09-05). Elles n'avaient JAMAIS été balayées :
+          # la liste ne portait que /examens, la page de LISTE. Et même
+          # nommées, les 39 pages seraient revenues vertes — `EpreuveShell`
+          # démarre au « seuil » et l'énoncé n'entre dans le DOM qu'après
+          # « Commencer ». Les deux portes cliquent maintenant ce bouton.
+          examens=$(node scripts/routes-examens.mjs)
+          test -n "$examens"
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
-          node scripts/accents-manquants.mjs --porte $routes / /atelier /examens
+          node scripts/accents-manquants.mjs --porte $routes $examens / /atelier /examens
 
       # CLIQUET INDICE-LONGUEUR (2026-09-05). `item-stats` disait déjà, en
       # toutes lettres, que la bonne réponse est la plus longue bien plus

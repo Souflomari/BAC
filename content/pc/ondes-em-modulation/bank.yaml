@@ -1521,22 +1521,23 @@ entries:
         QUATRE coquilles sur l'ensemble du sujet et UNE divergence de fond
         où c'est lui qui a tort. Aucune étape intermédiaire n'est reprise,
         et aucune valeur de cette entrée n'en provient.
+    # DÉFAUT DU SUJET OFFICIEL, DÉCLARÉ (F5), 2026-09-04.
+    # Le sommaire de la page 1 du document officiel francophone imprime
+    # « Réception d'une MODULÉE en amplitude, et la démodulation
+    # d'amplitude » — le mot « onde » MANQUE. L'original arabe RS28 écrit
+    # « استقبال موجة مضمنة الوسع وإزالة التضمين » = « reception d'une ONDE
+    # modulée en amplitude et démodulation », et le corps de la page 5 du
+    # français est, lui, CORRECT : « Réception d'une onde modulée en
+    # amplitude et démodulation ». Le titre retenu ici est donc celui du
+    # CORPS, qui est celui qui titre réellement la partie ; le défaut ne
+    # porte que sur la ligne du sommaire. Cosmétique, aucune conséquence.
+    # L'edition française de ce sujet étant MINISTERIELLE (code d'examen
+    # RS28 au cartouche ; pieds de page vides sur 6/6 ; colonne « Barème »
+    # miroir de la colonne arabe), c'est un défaut de l'edition OFFICIELLE
+    # de langue française, pas d'un intermédiaire prive. Voir
+    # docs/sujets/_incoming/pc-2012-r.md, F5 / V.7.
     intro: |-
-      **Réception d'une onde modulée en amplitude et démodulation (examen national, session de rattrapage 2012 — exercice « Electricité », Deuxième partie, 2,00 points sur 05,00).** <!-- DÉFAUT DU SUJET OFFICIEL, DÉCLARÉ (F5), 2026-09-04.
-           Le sommaire de la page 1 du document officiel francophone imprime
-           « Réception d'une MODULÉE en amplitude, et la démodulation
-           d'amplitude » — le mot « onde » MANQUE. L'original arabe RS28 écrit
-           « استقبال موجة مضمنة الوسع وإزالة التضمين » = « reception d'une ONDE
-           modulée en amplitude et démodulation », et le corps de la page 5 du
-           français est, lui, CORRECT : « Réception d'une onde modulée en
-           amplitude et démodulation ». Le titre retenu ici est donc celui du
-           CORPS, qui est celui qui titre réellement la partie ; le défaut ne
-           porte que sur la ligne du sommaire. Cosmétique, aucune conséquence.
-           L'edition française de ce sujet étant MINISTERIELLE (code d'examen
-           RS28 au cartouche ; pieds de page vides sur 6/6 ; colonne « Barème »
-           miroir de la colonne arabe), c'est un défaut de l'edition OFFICIELLE
-           de langue française, pas d'un intermédiaire prive. Voir
-           docs/sujets/_incoming/pc-2012-r.md, F5 / V.7. -->
+      **Réception d'une onde modulée en amplitude et démodulation (examen national, session de rattrapage 2012 — exercice « Electricité », Deuxième partie, 2,00 points sur 05,00).**
 
       *La première partie du même exercice est indépendante — le sujet l'écrit — et vit ailleurs : l'étude du circuit idéal LC (3,00 pt) sous « Circuit RLC série », entrée bk-2012-r-x3. 3,00 + 2,00 = 5,00, le barème imprimé.*
 
@@ -1607,61 +1608,62 @@ entries:
           - math: '\boxed{L_1 \approx 2{,}1\times10^{-3}\ \text{H} = 2{,}1\ \text{mH}}'
             note: "Valeur exacte 2,105 mH. Quelques millihenrys : l'ordre de grandeur réel d'une bobine d'accord de récepteur AM."
       - id: q3
+        # DÉFAUT F1 DU SUJET OFFICIEL, DÉCLARÉ ET NON RÉPARÉ — ARBITRAGE OWNER OUVERT, 2026-09-04.
+        # VERBATIM DE LA COUCHE DE TEXTE FRANÇAISE, p. 5 : « 2- Les deux
+        # parties 1 et 2, permettent la démodulation du signal recu. Quel est
+        # le rôle de chacune des deux parties dans la démodulation ? (0,5) ».
+        # TROIS TÉMOINS INDÉPENDANTS DISENT « 2 ET 3 », les trois relus AU
+        # RENDU par deux passes séparées :
+        # 1. L'ORIGINAL ARABE, DEUX OCCURRENCES SUR LA MÊME LIGNE (p. 5,
+        # y = 519,7) : « الجزءان 2 و3 » en x = [416,2 ; 479,0] et
+        # « الجزئين 2 » + « و3 » en x = [128,9 ; 177,1] et
+        # [109,0 ; 129,1]. Les deux croppees a 300 dpi, AGRANDIES x10 et
+        # lues a l'oeil : les chiffres 2 et 3 sont nets dans les deux
+        # cas. L'edition française supprime en outre la SECONDE
+        # occurrence (l'arabe renomme les deux parties, le français
+        # écrit « chacune des deux parties »).
+        # 2. LE CORRIGE ARABE (element/39378, p. 6, y = 245,1 et 258,1),
+        # relu a 400 dpi : « rôle de la partie 2 : élimination de l'onde
+        # porteuse de haute fréquence f » et « rôle de la partie 3 :
+        # élimination de la tension continue U0 ». Il ne dit PAS UN MOT
+        # de la partie 1 dans cette réponse.
+        # 3. LA FIGURE 3, etiquettes relues au rendu (« الجزء 1 · الجزء 2 ·
+        # الجزء3 » de gauche à droite) et schéma français extrait du PDF
+        # (782 x 342 a 171 dpi) et REGARDE : partie 1 = antenne +
+        # (L ajustable // C1), CIRCUIT D'ACCORD, elle ne demodule rien ;
+        # partie 2 = diode D + (C2 // R2), detection d'enveloppe ;
+        # partie 3 = C3 en série + R3, passe-haut.
+        # PORTÉE EXACTE, SANS L'EXAGERER : la question reste RESOLUBLE — un
+        # eleve qui a compris le montage répond sur 2 et 3 —, mais un élève
+        # qui suit l'énoncé A LA LETTRE repete la réponse de 1-1 et laisse
+        # sans réponse la partie 3, soit la moitié du barème. 0,5 PT EXPOSE.
+        # CLASSIFICATION : l'edition française de ce sujet est MINISTERIELLE
+        # (code d'examen RS28 au cartouche ; mention d'époque
+        # « (الترجمة الفرنسية) » sans le cadre anachronique
+        # « المسالك الدولية » ; pieds de page VIDES sur 6/6 ; colonne
+        # « Barème » miroir valeur par valeur de la colonne arabe). C'est
+        # donc un défaut du SUJET OFFICIEL, pas d'un intermédiaire prive.
+        # CE QUI EST FAIT ICI : énoncé VERBATIM (« 1 et 2 »), défaut declare
+        # au fil du texte de l'élève et dans le sourcing.note, RÉPONSE ÉCRITE
+        # POUR LES PARTIES 2 ET 3 — jamais pour la partie 1.
+        # CE QUI N'EST PAS FAIT, ET DÉLIBÉRÉMENT : l'arbitrage entre les deux
+        # issues. (a) VERBATIM + NOTE ÉDITORIALE — la forme dans laquelle
+        # cette entrée est écrite aujourd'hui, parce qu'il faut bien qu'elle
+        # soit écrite d'une façon ; ce n'est PAS une decision. (b) CORRECTION
+        # DECLAREE — l'énoncé écrit « 2 et 3 » avec la reparation declaree au
+        # point d'usage, comme F2/F3/F4/F5 le sont dans les autres entrées de
+        # ce sujet. Précédents maison, les deux : PC 2012 N (correction
+        # declaree) ; PC 2015 N (decision owner demandee et laissee ouverte).
+        # POUR PASSER DE (a) A (b) : remplacer « 1 et 2 » par « 2 et 3 » dans
+        # ce stem et convertir cet avertissement en declaration de
+        # correction. Le reasoning ne bouge PAS — il répond déjà pour les
+        # parties 2 et 3. L'OWNER TRANCHE ; RIEN N'EST DECIDE ICI.
+        # Voir docs/sujets/_incoming/pc-2012-r.md, F1 / D1 / V.6 / V.15 /
+        # V.16, et la NOTE ÉDITORIALE en tête de cette entrée.
         stem: |-
           **2-** (0,5 pt) Les deux parties **1 et 2**, permettent la démodulation du signal recu *(sic)*. Quel est le rôle de chacune des deux parties dans la démodulation ?
 
-          ⚠️ **Un avertissement sur cette question, que tu dois lire avant d'y répondre.** L'énoncé ci-dessus est reproduit **exactement tel que le sujet officiel l'imprime**, « 1 et 2 » compris — et **il est fautif**. Les parties qui démodulent sont les parties **2 et 3** : la partie 1 est le circuit d'accord, elle **sélectionne** la station et ne démodule rien, ce que la question 1-1 vient précisément d'établir. Trois témoins indépendants le confirment : l'original arabe du même sujet écrit **deux fois** « les parties 2 et 3 », le corrigé répond pour les parties 2 et 3, et la figure 3 elle-même montre que la partie 1 est un simple circuit bouchon. **C'est un défaut du sujet officiel, déclaré ici et non réparé — et la réponse attendue porte sur les parties 2 et 3.** <!-- DÉFAUT F1 DU SUJET OFFICIEL, DÉCLARÉ ET NON RÉPARÉ — ARBITRAGE OWNER OUVERT, 2026-09-04.
-               VERBATIM DE LA COUCHE DE TEXTE FRANÇAISE, p. 5 : « 2- Les deux
-               parties 1 et 2, permettent la démodulation du signal recu. Quel est
-               le rôle de chacune des deux parties dans la démodulation ? (0,5) ».
-               TROIS TÉMOINS INDÉPENDANTS DISENT « 2 ET 3 », les trois relus AU
-               RENDU par deux passes séparées :
-                 1. L'ORIGINAL ARABE, DEUX OCCURRENCES SUR LA MÊME LIGNE (p. 5,
-                    y = 519,7) : « الجزءان 2 و3 » en x = [416,2 ; 479,0] et
-                    « الجزئين 2 » + « و3 » en x = [128,9 ; 177,1] et
-                    [109,0 ; 129,1]. Les deux croppees a 300 dpi, AGRANDIES x10 et
-                    lues a l'oeil : les chiffres 2 et 3 sont nets dans les deux
-                    cas. L'edition française supprime en outre la SECONDE
-                    occurrence (l'arabe renomme les deux parties, le français
-                    écrit « chacune des deux parties »).
-                 2. LE CORRIGE ARABE (element/39378, p. 6, y = 245,1 et 258,1),
-                    relu a 400 dpi : « rôle de la partie 2 : élimination de l'onde
-                    porteuse de haute fréquence f » et « rôle de la partie 3 :
-                    élimination de la tension continue U0 ». Il ne dit PAS UN MOT
-                    de la partie 1 dans cette réponse.
-                 3. LA FIGURE 3, etiquettes relues au rendu (« الجزء 1 · الجزء 2 ·
-                    الجزء3 » de gauche à droite) et schéma français extrait du PDF
-                    (782 x 342 a 171 dpi) et REGARDE : partie 1 = antenne +
-                    (L ajustable // C1), CIRCUIT D'ACCORD, elle ne demodule rien ;
-                    partie 2 = diode D + (C2 // R2), detection d'enveloppe ;
-                    partie 3 = C3 en série + R3, passe-haut.
-               PORTÉE EXACTE, SANS L'EXAGERER : la question reste RESOLUBLE — un
-               eleve qui a compris le montage répond sur 2 et 3 —, mais un élève
-               qui suit l'énoncé A LA LETTRE repete la réponse de 1-1 et laisse
-               sans réponse la partie 3, soit la moitié du barème. 0,5 PT EXPOSE.
-               CLASSIFICATION : l'edition française de ce sujet est MINISTERIELLE
-               (code d'examen RS28 au cartouche ; mention d'époque
-               « (الترجمة الفرنسية) » sans le cadre anachronique
-               « المسالك الدولية » ; pieds de page VIDES sur 6/6 ; colonne
-               « Barème » miroir valeur par valeur de la colonne arabe). C'est
-               donc un défaut du SUJET OFFICIEL, pas d'un intermédiaire prive.
-               CE QUI EST FAIT ICI : énoncé VERBATIM (« 1 et 2 »), défaut declare
-               au fil du texte de l'élève et dans le sourcing.note, RÉPONSE ÉCRITE
-               POUR LES PARTIES 2 ET 3 — jamais pour la partie 1.
-               CE QUI N'EST PAS FAIT, ET DÉLIBÉRÉMENT : l'arbitrage entre les deux
-               issues. (a) VERBATIM + NOTE ÉDITORIALE — la forme dans laquelle
-               cette entrée est écrite aujourd'hui, parce qu'il faut bien qu'elle
-               soit écrite d'une façon ; ce n'est PAS une decision. (b) CORRECTION
-               DECLAREE — l'énoncé écrit « 2 et 3 » avec la reparation declaree au
-               point d'usage, comme F2/F3/F4/F5 le sont dans les autres entrées de
-               ce sujet. Précédents maison, les deux : PC 2012 N (correction
-               declaree) ; PC 2015 N (decision owner demandee et laissee ouverte).
-               POUR PASSER DE (a) A (b) : remplacer « 1 et 2 » par « 2 et 3 » dans
-               ce stem et convertir cet avertissement en declaration de
-               correction. Le reasoning ne bouge PAS — il répond déjà pour les
-               parties 2 et 3. L'OWNER TRANCHE ; RIEN N'EST DECIDE ICI.
-               Voir docs/sujets/_incoming/pc-2012-r.md, F1 / D1 / V.6 / V.15 /
-               V.16, et la NOTE ÉDITORIALE en tête de cette entrée. -->
+          ⚠️ **Un avertissement sur cette question, que tu dois lire avant d'y répondre.** L'énoncé ci-dessus est reproduit **exactement tel que le sujet officiel l'imprime**, « 1 et 2 » compris — et **il est fautif**. Les parties qui démodulent sont les parties **2 et 3** : la partie 1 est le circuit d'accord, elle **sélectionne** la station et ne démodule rien, ce que la question 1-1 vient précisément d'établir. Trois témoins indépendants le confirment : l'original arabe du même sujet écrit **deux fois** « les parties 2 et 3 », le corrigé répond pour les parties 2 et 3, et la figure 3 elle-même montre que la partie 1 est un simple circuit bouchon. **C'est un défaut du sujet officiel, déclaré ici et non réparé — et la réponse attendue porte sur les parties 2 et 3.**
         reasoning: |-
           **La réponse porte sur les parties 2 et 3** — pas sur les parties 1 et 2 (voir l'avertissement porté à l'énoncé). Démoduler, c'est retrouver le signal informatif à partir de l'onde reçue, et cela se fait en **deux étapes successives**, une par partie (chapitre 5).
 

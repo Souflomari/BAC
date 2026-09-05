@@ -588,7 +588,7 @@ entries:
         stem: |-
           **(0,5 pt)** Trouver l'expression de la période propre $T_0$ de l'oscillateur en fonction de $L$ et de $C$ pour que l'expression $q(t) = Q_m \cos\!\left(\dfrac{2\pi}{T_0}\,t\right)$ soit solution de cette équation différentielle.
         reasoning: |-
-          Même démarche que la vérification du chapitre 3 (dérivation:verification-cosinus) : on injecte la forme cosinus proposée par l'énoncé — ici sans déphasage, cohérent avec la courbe de la figure 4 qui part bien de son maximum à $t=0$ — dans l'équation établie à la question précédente, et on identifie ce qui doit être vrai pour que ce cosinus soit solution.
+          Même démarche que la vérification du chapitre 3 (derivation:verification-cosinus) : on injecte la forme cosinus proposée par l'énoncé — ici sans déphasage, cohérent avec la courbe de la figure 4 qui part bien de son maximum à $t=0$ — dans l'équation établie à la question précédente, et on identifie ce qui doit être vrai pour que ce cosinus soit solution.
         steps:
           - math: 'q(t) = Q_m\cos\!\left(\frac{2\pi}{T_0}\,t\right) \implies \frac{d^2q}{dt^2} = -\frac{4\pi^2}{T_0^2}\,q'
             note: "Dérivée seconde du cosinus propose par l'énoncé (même geste qu'au chapitre 3, dérivation verification-cosinus)."
@@ -862,7 +862,7 @@ entries:
         stem: |-
           **(0,5 pt)** La solution de l'équation différentielle précédente est $u_C(t) = U_0\cos\!\left(\dfrac{2\pi}{T_0}t\right)$, où $U_0$ est la valeur maximale de la tension et $T_0$ la période propre des oscillations. Trouver l'expression de $T_0$ en fonction de $L$ et $C$.
         reasoning: |-
-          Même démarche que la vérification du chapitre 3 (dérivation:verification-cosinus), et que la question 3 du sujet 2021 ci-dessus : on injecte la forme cosinus proposée par l'énoncé dans l'équation établie à la question 1, et on identifie ce qui doit être vrai pour que ce cosinus soit solution.
+          Même démarche que la vérification du chapitre 3 (derivation:verification-cosinus), et que la question 3 du sujet 2021 ci-dessus : on injecte la forme cosinus proposée par l'énoncé dans l'équation établie à la question 1, et on identifie ce qui doit être vrai pour que ce cosinus soit solution.
         steps:
           - math: 'u_C(t) = U_0\cos\!\left(\frac{2\pi}{T_0}t\right) \implies \frac{d^2u_C}{dt^2} = -\frac{4\pi^2}{T_0^2}\,u_C'
             note: "Dérivée seconde du cosinus propose par l'énoncé (même geste qu'au chapitre 3)."
@@ -2508,6 +2508,43 @@ entries:
         dernier terme — l'équation encadrée est dimensionnellement
         incohérente, alors que c'est exactement ce que la question demande.
         Aucune valeur de cette entrée n'en provient.
+    # DIVERGENCE DÉCLARÉE, 2026-09-04 : l'original arabe RS28 écrit ici
+    # « (الشكل 3) » = « (figure 3) », renvoi que l'édition française a
+    # SUPPRIMÉ. Conséquence dans le document officiel français : la figure 3
+    # n'est appelée nulle part avant la question 5, alors que le schéma est
+    # bien légendé « Figure 3 ». Perte de renvoi, sans conséquence sur la
+    # résolubilité (la légende est là) ; le renvoi est rétabli ici pour que
+    # le texte se suive. L'édition française de ce sujet étant
+    # MINISTÉRIELLE (code d'examen RS28 encadré, imprimé à l'identique dans
+    # les deux cartouches), c'est un défaut du DOCUMENT OFFICIEL
+    # francophone, pas un artefact de traduction professorale. Voir
+    # docs/sujets/_incoming/pc-2013-r.md, V.6 / V.7 / V.8.
+    # DÉFAUT DU SUJET F1, DÉCLARÉ ET NON RÉPARÉ, 2026-09-04.
+    # Mesure refaite sur les deux éditions par deux chaînes indépendantes :
+    # extrema successifs 4,471 / -4,053 / +3,828 / -3,458 / +3,278 V, soit
+    # un rapport d'amplitude par pseudo-periode de 0,8553 (0,8561 / 0,8533 /
+    # 0,8564 ; l'ajustement log-lineaire de l'enveloppe donne 0,8557). Pour
+    # un RLC série ce rapport vaut exp(-R_tot T / 2L), d'ou
+    # R_tot(dessin) = -2 L ln(0,8553) / T = 49,7 ohms, contre les 208,4 ohms
+    # imposes par R' + r : facteur 4,19. Le rapport que 208,4 ohms
+    # predirait est 0,519.
+    # MÉCANISME IDENTIFIE (hypothèse etayee a 0,2 %, pas un fait établi) :
+    # le seul nombre du sujet qui reproduise l'amortissement dessine est
+    # R + r = 42 + 8,4 = 50,4 ohms, la résistance totale de la PREMIÈRE
+    # expérience — tout se passe comme si la courbe avait été calculée en
+    # gardant la résistance du montage précédent.
+    # CE QUE LA GARDE INTERDIT : aucune valeur de résistance ne doit être
+    # tirée de l'allure de la figure 4, et aucune valeur de l'exercice ne
+    # doit être obtenue en recalculant l'amortissement depuis R' et r. La
+    # question 4 se répond par LECTURE des deux amplitudes, comme la
+    # consigne le demande. Le calcul par R' + r donnerait
+    # u_C(3T/2) = 1,67 V et W_J = 1,72 microjoules, au lieu des 3,5 V et
+    # 0,80 microjoule du dessin.
+    # CE QUE LA GARDE NE COUTE PAS : les quatre questions qui touchent la
+    # figure restent resolubles — q1 répond « pseudo-periodique » dans les
+    # deux cas, q3 lit la pseudo-periode, q4 lit deux amplitudes, q5-2 est
+    # algebrique.
+    # Voir docs/sujets/_incoming/pc-2013-r.md, F1 / V.5.
     intro: |-
       **Oscillations dans un circuit RLC série — deuxième expérience (examen national, session de rattrapage 2013 — exercice « Electricité », 2,75 points sur 05,00).**
 
@@ -2515,17 +2552,7 @@ entries:
 
       **Deuxième expérience :**
 
-      On monte la bobine précédente, en série, avec un condensateur (initialement chargé complétement *(sic)*) de capacité $C = 0{,}2\ \mu\text{F}$ et un résistor de résistance $R' = 200\ \Omega$ (**figure 3**). <!-- DIVERGENCE DÉCLARÉE, 2026-09-04 : l'original arabe RS28 écrit ici
-           « (الشكل 3) » = « (figure 3) », renvoi que l'édition française a
-           SUPPRIMÉ. Conséquence dans le document officiel français : la figure 3
-           n'est appelée nulle part avant la question 5, alors que le schéma est
-           bien légendé « Figure 3 ». Perte de renvoi, sans conséquence sur la
-           résolubilité (la légende est là) ; le renvoi est rétabli ici pour que
-           le texte se suive. L'édition française de ce sujet étant
-           MINISTÉRIELLE (code d'examen RS28 encadré, imprimé à l'identique dans
-           les deux cartouches), c'est un défaut du DOCUMENT OFFICIEL
-           francophone, pas un artefact de traduction professorale. Voir
-           docs/sujets/_incoming/pc-2013-r.md, V.6 / V.7 / V.8. -->
+      On monte la bobine précédente, en série, avec un condensateur (initialement chargé complétement *(sic)*) de capacité $C = 0{,}2\ \mu\text{F}$ et un résistor de résistance $R' = 200\ \Omega$ (**figure 3**).
 
       On obtient, à l'aide du même dispositif informatique, la courbe de la **figure 4** qui représente les variations de la tension $u_C$ aux bornes du condensateur en fonction du temps.
 
@@ -2539,32 +2566,8 @@ entries:
       - **la courbe** part de $u_C \approx +4{,}5\ \text{V}$ à $t = 0$, descend, coupe l'axe, atteint un minimum, et oscille en s'amortissant lentement : on voit **deux minima et deux maxima** complets, puis la courbe redescend au bord droit ;
       - amplitudes successives lisibles : $+4{,}5$ puis $\approx -4{,}0$, $+3{,}8$, $\approx -3{,}5$, $+3{,}3\ \text{V}$ ; les passages par zéro sont régulièrement espacés, et **le repère $\pi/5$ marque exactement la demi-pseudo-période**.
 
-      **⚠️ Un avertissement sur cette figure, que tu dois lire avant de t'en servir.** Le tracé est fidèle en **période** et en **amplitudes lues**, mais **pas en amortissement** : la décroissance dessinée correspondrait à une résistance totale d'environ $50\ \Omega$, alors que ce circuit-ci en impose $R' + r = 208{,}4\ \Omega$ — un facteur $4{,}2$. C'est un **défaut du sujet officiel**, présent dans les deux éditions, déclaré ici et non réparé. <!-- DÉFAUT DU SUJET F1, DÉCLARÉ ET NON RÉPARÉ, 2026-09-04.
-           Mesure refaite sur les deux éditions par deux chaînes indépendantes :
-           extrema successifs 4,471 / -4,053 / +3,828 / -3,458 / +3,278 V, soit
-           un rapport d'amplitude par pseudo-periode de 0,8553 (0,8561 / 0,8533 /
-           0,8564 ; l'ajustement log-lineaire de l'enveloppe donne 0,8557). Pour
-           un RLC série ce rapport vaut exp(-R_tot T / 2L), d'ou
-           R_tot(dessin) = -2 L ln(0,8553) / T = 49,7 ohms, contre les 208,4 ohms
-           imposes par R' + r : facteur 4,19. Le rapport que 208,4 ohms
-           predirait est 0,519.
-           MÉCANISME IDENTIFIE (hypothèse etayee a 0,2 %, pas un fait établi) :
-           le seul nombre du sujet qui reproduise l'amortissement dessine est
-           R + r = 42 + 8,4 = 50,4 ohms, la résistance totale de la PREMIÈRE
-           expérience — tout se passe comme si la courbe avait été calculée en
-           gardant la résistance du montage précédent.
-           CE QUE LA GARDE INTERDIT : aucune valeur de résistance ne doit être
-           tirée de l'allure de la figure 4, et aucune valeur de l'exercice ne
-           doit être obtenue en recalculant l'amortissement depuis R' et r. La
-           question 4 se répond par LECTURE des deux amplitudes, comme la
-           consigne le demande. Le calcul par R' + r donnerait
-           u_C(3T/2) = 1,67 V et W_J = 1,72 microjoules, au lieu des 3,5 V et
-           0,80 microjoule du dessin.
-           CE QUE LA GARDE NE COUTE PAS : les quatre questions qui touchent la
-           figure restent resolubles — q1 répond « pseudo-periodique » dans les
-           deux cas, q3 lit la pseudo-periode, q4 lit deux amplitudes, q5-2 est
-           algebrique.
-           Voir docs/sujets/_incoming/pc-2013-r.md, F1 / V.5. --> **Ce que cela change pour toi : ne tire jamais une valeur de résistance de la forme de cette courbe, et ne cherche pas à retrouver les amplitudes par le calcul à partir de $R'$ et $r$ — lis-les.**
+      **⚠️ Un avertissement sur cette figure, que tu dois lire avant de t'en servir.** Le tracé est fidèle en **période** et en **amplitudes lues**, mais **pas en amortissement** : la décroissance dessinée correspondrait à une résistance totale d'environ $50\ \Omega$, alors que ce circuit-ci en impose $R' + r = 208{,}4\ \Omega$ — un facteur $4{,}2$. C'est un **défaut du sujet officiel**, présent dans les deux éditions, déclaré ici et non réparé.
+           **Ce que cela change pour toi : ne tire jamais une valeur de résistance de la forme de cette courbe, et ne cherche pas à retrouver les amplitudes par le calcul à partir de $R'$ et $r$ — lis-les.**
     questions:
       - id: q1
         part: "Electricité — Deuxième expérience (circuit RLC série en régime libre)"
@@ -2946,7 +2949,7 @@ entries:
         résolubilité — une seule figure de circuit existe. L'entrée écrit
         « figure 1 » et déclare la correction au point d'usage. Coquilles de
         langue reproduites verbatim, non réparées : « jouent un rôle très
-        important », « la réception d'ondes électromagnétiques »,
+        important », « la reception d'ondes électromagnétiques »,
         « l'étude du circuit idéal LC et à la réception » (rupture de
         construction), « d'une ondes modulée en amplitude »,
         « Interruptur K à double position », « soit chargé complétement »,
@@ -2966,12 +2969,35 @@ entries:
         du sujet et UNE divergence de fond où c'est lui qui a tort. Aucune
         étape intermédiaire de ce corrigé n'est reprise, et aucune valeur
         de cette entrée n'en provient.
+    # DÉFAUT DU SUJET OFFICIEL, DÉCLARÉ ET RÉPARÉ ICI (F2), 2026-09-04.
+    # Le corps de la page 4 du document officiel francophone imprime « On
+    # realise le circuit de la FIGURE 2 » (couche de texte, y = 645,9),
+    # alors que la legende du schéma, 98 points plus bas SUR LA MÊME PAGE
+    # (y = 743,8), imprime « Figure 1 » — et que « figure 2 » designe en
+    # réalité la courbe E_e(t) de la page 5 (legende y = 303,6). L'edition
+    # française se contredit donc sur sa propre page, et le renvoi imprime
+    # pointe vers la mauvaise figure.
+    # L'original arabe RS28 est cohérent, et les trois occurrences ont été
+    # relues AU RENDU par la cloture du 2026-09-04 : « الشكل1 » dans le
+    # corps (p. 4 y = 466,4) ET en legende (p. 4 y = 608,3), « الشكل2 »
+    # pour la courbe d'énergie (p. 4 y = 760,9 et 795,3).
+    # Aucune conséquence sur la resolubilite : une seule figure de circuit
+    # existe dans tout l'exercice. La reparation ne touche qu'un chiffre de
+    # renvoi, elle est faite ici et DECLAREE plutôt que faite en silence.
+    # IMPORTANT POUR LA CLASSIFICATION : l'edition française de ce sujet est
+    # MINISTERIELLE (code d'examen RS28 au cartouche ; mention d'époque
+    # « (الترجمة الفرنسية) » sans le cadre anachronique « المسالك الدولية » ;
+    # pieds de page VIDES sur les six pages ; colonne « Barème » miroir
+    # valeur par valeur de la colonne arabe). Ce n'est donc PAS un artefact
+    # de traduction professorale — c'est un défaut de l'edition OFFICIELLE
+    # de langue française. Voir docs/sujets/_incoming/pc-2012-r.md,
+    # F2 / D2 / V.7 / V.15.
     intro: |-
       **Étude du circuit idéal LC (examen national, session de rattrapage 2012 — exercice « Electricité », Première partie, 3,00 points sur 05,00).**
 
       *La deuxième partie du même exercice est indépendante — le sujet l'écrit — et vit ailleurs : la réception d'une onde modulée en amplitude et sa démodulation (2,00 pt) sous « Ondes électromagnétiques et modulation », entrée bk-2012-r-x3b. 3,00 + 2,00 = 5,00, le barème imprimé.*
 
-      Les condensateurs et les bobines jouent un rôle *(sic)* très important dans la transmission et la réception *(sic)* d'ondes électromagnétiques.
+      Les condensateurs et les bobines jouent un rôle *(sic)* très important dans la transmission et la reception *(sic)* d'ondes électromagnétiques.
 
       Le but de cet exercice est l'étude du circuit idéal LC et à la réception *(sic — rupture de construction : « et l'étude de la réception » attendu)* et démodulation d'une ondes *(sic)* modulée en amplitude.
 
@@ -2979,29 +3005,8 @@ entries:
 
       **Première partie : Étude du circuit LC**
 
-      On réalise le circuit de la **figure 1** <!-- DÉFAUT DU SUJET OFFICIEL, DÉCLARÉ ET RÉPARÉ ICI (F2), 2026-09-04.
-           Le corps de la page 4 du document officiel francophone imprime « On
-           realise le circuit de la FIGURE 2 » (couche de texte, y = 645,9),
-           alors que la legende du schéma, 98 points plus bas SUR LA MÊME PAGE
-           (y = 743,8), imprime « Figure 1 » — et que « figure 2 » designe en
-           réalité la courbe E_e(t) de la page 5 (legende y = 303,6). L'edition
-           française se contredit donc sur sa propre page, et le renvoi imprime
-           pointe vers la mauvaise figure.
-           L'original arabe RS28 est cohérent, et les trois occurrences ont été
-           relues AU RENDU par la cloture du 2026-09-04 : « الشكل1 » dans le
-           corps (p. 4 y = 466,4) ET en legende (p. 4 y = 608,3), « الشكل2 »
-           pour la courbe d'énergie (p. 4 y = 760,9 et 795,3).
-           Aucune conséquence sur la resolubilite : une seule figure de circuit
-           existe dans tout l'exercice. La reparation ne touche qu'un chiffre de
-           renvoi, elle est faite ici et DECLAREE plutôt que faite en silence.
-           IMPORTANT POUR LA CLASSIFICATION : l'edition française de ce sujet est
-           MINISTERIELLE (code d'examen RS28 au cartouche ; mention d'époque
-           « (الترجمة الفرنسية) » sans le cadre anachronique « المسالك الدولية » ;
-           pieds de page VIDES sur les six pages ; colonne « Barème » miroir
-           valeur par valeur de la colonne arabe). Ce n'est donc PAS un artefact
-           de traduction professorale — c'est un défaut de l'edition OFFICIELLE
-           de langue française. Voir docs/sujets/_incoming/pc-2012-r.md,
-           F2 / D2 / V.7 / V.15. -->, qui est constitué de :
+      On réalise le circuit de la **figure 1**
+           , qui est constitué de :
 
       - Générateur de f.é.m. $E = 12\ \text{V}$ et de résistance négligeable ;
       - Condensateur de capacité $C = 4{,}7\times10^{-3}\ \text{F}$ ;

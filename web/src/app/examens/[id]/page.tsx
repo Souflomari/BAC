@@ -12,6 +12,7 @@ import { PageShell } from "@/components/ui/PageShell";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { listNotions } from "@/lib/content";
 import { listEpreuves, getEpreuve, epreuveTitre, filiereLabel } from "@/lib/examens";
+import { frenchTypography } from "@/lib/frenchTypography";
 import { EpreuveShell, type EpreuveData } from "@/components/examens/EpreuveShell";
 
 export function generateStaticParams() {
@@ -50,14 +51,24 @@ export default function EpreuvePage({ params }: { params: { id: string } }) {
     exercices: ep.exercices.map((x) => ({
       subject: x.subject,
       notionSlug: x.notionSlug,
-      notionTitle: x.notionTitle,
-      exerciseLabel: x.exerciseLabel,
-      titre: x.entry.title,
+      notionTitle: frenchTypography(x.notionTitle),
+      // TYPOGRAPHIE FRANÇAISE SUR LE TEXTE NON-MARKDOWN (2026-09-05).
+      // `intro`, `stem` et `reasoning` passent par MdBlock, donc par
+      // `remarkFrenchTypography`. Ces quatre champs-ci sont rendus en texte
+      // NU — en-tête d'exercice, titre, libellé de partie, nom de notion — et
+      // sortaient donc avec des apostrophes droites et sans insécable devant
+      // « : ? ; ». Mesuré le 2026-09-05, la première fois que la porte
+      // typographie a su ouvrir une épreuve : 626 occurrences, sur les 39
+      // sujets, sans exception. Un seul endroit répare la surface entière.
+      exerciseLabel: x.exerciseLabel ? frenchTypography(x.exerciseLabel) : x.exerciseLabel,
+      titre: frenchTypography(x.entry.title),
       baremeTotal: x.entry.baremeTotal,
       intro: x.entry.intro,
       questions: x.entry.questions.map((q) => ({
         id: q.id,
-        part: (q as { part?: string }).part,
+        part: (q as { part?: string }).part
+          ? frenchTypography((q as { part?: string }).part as string)
+          : (q as { part?: string }).part,
         stem: q.stem,
         reasoning: q.reasoning,
       })),

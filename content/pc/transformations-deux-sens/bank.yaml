@@ -131,6 +131,22 @@ entries:
         donne pas de valeurs numériques attendues à ces questions, seulement
         les énoncés et les données de départ (pKA1, pKA2, masses, masses
         molaires), toutes reproduites ici sans changement.
+    # CORRECTION ASSUMÉE DU SUJET OFFICIEL, déclarée le 2026-08-28.
+    # Le sujet imprimé étiquette les DEUX couples « pKA1 » — vérifié deux
+    # fois sur le scan (couche de texte du PDF + lecture à l'œil sur la
+    # page 2). Tel quel, la question 1-2, qui demande de comparer pKA1 et
+    # pKA2, est formellement insoluble : le second symbole n'existe nulle
+    # part dans l'énoncé.
+    # Cette entrée écrit donc « pKA2 » pour le second couple. C'est le
+    # seul choix qui rende la question traitable, et il est
+    # pédagogiquement juste. Mais il n'était PAS déclaré : un lecteur
+    # comparant cette banque au scan aurait cru à une erreur de
+    # transcription, alors que c'est une réparation délibérée.
+    # Trouvé par la passe de vérification de la PHYSIQUE du même sujet
+    # (docs/sujets/_incoming/pc-2012-n.md), hors de son périmètre.
+    # Voir known-issues K-8 : c'est le même écart banque↔source que
+    # PC 2019 et PC 2010, mais dans l'autre sens — ici la banque a
+    # raison contre le sujet.
     intro: |-
       **Réaction de l'acide éthanoïque avec l'ammoniac et avec un alcool (examen national, session normale 2012 — Exercice de Chimie, Première partie, 5 points).**
 
@@ -143,22 +159,6 @@ entries:
       **Données :**
       - $pK_A$ du couple $(\text{CH}_3\text{COOH}/\text{CH}_3\text{COO}^-)$ : $pK_{A1} = 4{,}8$ ;
       - $pK_A$ du couple $(\text{NH}_4^+/\text{NH}_3)$ : $pK_{A2} = 9{,}2$ ;
-      <!-- CORRECTION ASSUMÉE DU SUJET OFFICIEL, déclarée le 2026-08-28.
-           Le sujet imprimé étiquette les DEUX couples « pKA1 » — vérifié deux
-           fois sur le scan (couche de texte du PDF + lecture à l'œil sur la
-           page 2). Tel quel, la question 1-2, qui demande de comparer pKA1 et
-           pKA2, est formellement insoluble : le second symbole n'existe nulle
-           part dans l'énoncé.
-           Cette entrée écrit donc « pKA2 » pour le second couple. C'est le
-           seul choix qui rende la question traitable, et il est
-           pédagogiquement juste. Mais il n'était PAS déclaré : un lecteur
-           comparant cette banque au scan aurait cru à une erreur de
-           transcription, alors que c'est une réparation délibérée.
-           Trouvé par la passe de vérification de la PHYSIQUE du même sujet
-           (docs/sujets/_incoming/pc-2012-n.md), hors de son périmètre.
-           Voir known-issues K-8 : c'est le même écart banque↔source que
-           PC 2019 et PC 2010, mais dans l'autre sens — ici la banque a
-           raison contre le sujet. -->
       - Masse molaire de l'alcool $\text{ROH}$ : $M(\text{ROH}) = 154\ \text{g}\cdot\text{mol}^{-1}$ ;
       - Masse molaire de l'ester $E$ : $M(E) = 196\ \text{g}\cdot\text{mol}^{-1}$.
 
