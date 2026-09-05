@@ -2665,3 +2665,41 @@ ce qui n'avait jamais été énoncé nulle part :
 
 Quatre suites unitaires tournent maintenant en CI, contre deux ce matin :
 apprenant (26) · écriture (20) · typographie (10) · session (10).
+
+### 11.10 Le module le plus accidenté du produit n'avait aucun test non plus
+
+`lib/examens.ts` assemble les 33 épreuves de bac à partir de morceaux
+dispersés dans les banques. Son propre en-tête raconte **quatre défauts
+d'ordre déjà corrigés** :
+
+1. le repli sur l'identifiant, qui abîmait les épreuves mixtes (K-7) ;
+2. le `??` qui ne rattrape pas `NaN`, et faisait passer un romain hors table
+   pour « égal » ;
+3. les sujets qui ne numérotent pas leurs exercices ;
+4. une cinquième convention d'ordinal, ajoutée après un désordre constaté au
+   rendu.
+
+Un **cinquième** a été trouvé le 2026-09-05 : SPC 2015 listait le rattrapage
+avant la normale, faute de départage explicite par session — deux épreuves du
+même millésime restaient dans l'ordre où la `Map` les avait rencontrées.
+
+Quatre corrections consignées, une cinquième trouvée à la main, et **pas une
+ligne de test**. Chacune de ces cinq régressions serait revenue en silence.
+
+Treize tests, sur le **corpus réel**. C'est délibéré et c'est le point de
+méthode : les cinq défauts viennent tous de la rencontre entre une règle et
+un LIBELLÉ PARTICULIER (« Partie II », « § 2 », « Deuxième partie », « 2ᵉ
+situation », « — III. »). Un jeu d'essai inventé aurait contenu les cas
+auxquels je pensais, c'est-à-dire ceux qui marchent. Le corpus contient ceux
+auxquels personne n'a pensé. Prix : une dizaine de secondes.
+
+Le premier test ne vérifie pas une règle métier — il vérifie que **le corpus
+est chargé**. `lib/content.ts` résout sa racine depuis le répertoire courant
+et rend une liste VIDE ailleurs, SANS erreur ; c'est le piège qui m'a fait
+publier deux fois « 0 épreuve » dans la journée. Sans ce test, les douze
+autres seraient verts sur zéro donnée. Vérifié rouge dans les deux sens :
+en retirant le départage par session (`not ok 4`), et en lançant la suite
+depuis la racine du dépôt (`not ok 1`, puis `not ok 12`).
+
+Cinq suites unitaires en CI, contre deux le matin : apprenant (26) ·
+écriture (20) · typographie (10) · session (10) · épreuves (13).

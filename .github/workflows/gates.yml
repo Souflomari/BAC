@@ -82,12 +82,22 @@ jobs:
       # PERTE compris (test-attempt-events : réessai unique à 4 s, borne de 20, 401,
       # coupure réseau). Ils sont rapides et sans navigateur ; ils passent
       # avant tout le reste pour échouer vite.
-      - name: Tests unitaires (apprenant · session · typographie · écriture)
+      #
+      # test-examens est la seule exception à « sans navigateur ni contenu » :
+      # il charge le corpus réel, parce que les CINQ défauts d'ordre déjà
+      # corrigés dans `lib/examens.ts` venaient tous de la rencontre entre une
+      # règle et un libellé particulier — aucun jeu d'essai inventé ne les
+      # aurait produits. Il coûte une dizaine de secondes. Son PREMIER test
+      # vérifie que le corpus est CHARGÉ : `lib/content.ts` résout sa racine
+      # depuis le répertoire courant et rend une liste VIDE ailleurs, sans
+      # erreur, ce qui rendrait les douze autres verts pour rien.
+      - name: Tests unitaires (apprenant · session · typographie · écriture · épreuves)
         run: |
           npm run test-learner-model
           npm run test-attempt-events
           npm run test-typographie
           npm run test-session
+          npm run test-examens
 
       # PORTE LIENS (2026-09-05). Ce projet se pilote par ses documents :
       # `.claude/CLAUDE.md` envoie vers la vision, la vision vers les règles,
