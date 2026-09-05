@@ -203,7 +203,7 @@ entries:
           - math: '\tau = \dfrac{L}{R+r}'
             note: "La constante de temps est le coefficient de i dans l'équation différentielle (chapitre 3)."
           - math: '\tau = 0{,}01\ \text{s}'
-            note: "Tangente (T) a l'origine : coupe l'asymptote i = I_max a t = 0,01 s (méthode du chapitre 4)."
+            note: "Tangente (T) à l'origine : coupe l'asymptote i = I_max a t = 0,01 s (méthode du chapitre 4)."
           - math: 'L = \tau\,(R+r) = 0{,}01\times(90+10)'
             note: "On isole L ; R = 90 Ohm donnée, r = 10 Ohm question 2."
           - math: '\boxed{L = 1\ \text{H}}'
@@ -579,7 +579,7 @@ entries:
           **Le piège de cette question.** Confondre $\tau$ avec l'instant où la courbe $C_1$ rejoint VISUELLEMENT son palier — la droite $(T)$ sort d'ailleurs du cadre par le haut vers $t\approx1{,}25\ \text{ms}$, bien avant que la courbe elle-même n'ait l'air stabilisée. $\tau$ se lit uniquement sur l'intersection de la tangente avec le palier, jamais sur l'allure visuelle de la courbe.
         steps:
           - math: '\tau \approx 1{,}0\ \text{ms} = 1{,}0\times10^{-3}\ \text{s}'
-            note: "Tangente (T) a l'origine : coupe le niveau du palier a t = 1,0 ms (méthode du chapitre 4)."
+            note: "Tangente (T) à l'origine : coupe le niveau du palier a t = 1,0 ms (méthode du chapitre 4)."
           - math: 'L_0 = \tau\,(R+r) = 1{,}0\times10^{-3}\times500'
             note: "tau = L0/(R+r) (chapitre 4), avec R+r = 500 Ohm (question 1.4)."
           - math: '\boxed{L_0 = 0{,}5\ \text{H}}'
@@ -692,9 +692,9 @@ entries:
           - math: '\boxed{R = 500\ \Omega}'
             note: "Application numérique."
           - math: '\tau \approx 2{,}0\ \text{ms}'
-            note: "Tangente (T) a l'origine : coupe le palier au premier trait chiffre de la figure 2 (méthode du chapitre 4)."
+            note: "Tangente (T) à l'origine : coupe le palier au premier trait chiffre de la figure 2 (méthode du chapitre 4)."
           - math: 'L = R\,\tau = 500\times 2\times10^{-3}'
-            note: "On isole L a partir de tau = L/R (chapitre 4)."
+            note: "On isole L à partir de tau = L/R (chapitre 4)."
           - math: '\boxed{L = 1\ \text{H}}'
             note: "Exactement la valeur demandee."
       - id: q3
@@ -783,7 +783,7 @@ entries:
           L'équation de la question 2-1 réarrangée est $\dfrac{di}{dt}=-\dfrac{R_1+r}{L}i+\dfrac{E}{L}$ — c'est exactement la relation linéaire entre $\dfrac{di}{dt}$ et $i$ déjà présente au chapitre 3 sous la forme $\dfrac{di}{dt}=-\dfrac{R}{L}\left(i-\dfrac{E}{R}\right)$, mais ici on l'exploite en la lisant directement sur un graphe de $\dfrac{di}{dt}$ en fonction de $i$ plutôt que sur la courbe usuelle $i(t)$ — une lecture graphique que le chapitre 4 ne couvre pas explicitement (voir la scope note de sourcing). En $i=0$, l'ordonnée à l'origine de cette droite vaut $E/L$ : on la lit sur la figure 4, puis on isole $L$.
         steps:
           - math: '\left.\dfrac{di}{dt}\right|_{i=0} = \dfrac{E}{L}'
-            note: "On evalue l'équation de la question 2-1 en i=0 : c'est l'ordonnée a l'origine de la figure 4."
+            note: "On evalue l'équation de la question 2-1 en i=0 : c'est l'ordonnée à l'origine de la figure 4."
           - math: '\left.\dfrac{di}{dt}\right|_{i=0} = 3\times10^{3}\ \text{A.s}^{-1}'
             note: "Lecture directe sur la figure 4 (coin supérieur gauche du segment)."
           - math: 'L = \dfrac{E}{3\times10^{3}} = \dfrac{6}{3\times10^{3}}'
@@ -1010,7 +1010,7 @@ entries:
           **Le piège de cette question.** Lire le pas de l'ordonnée comme $2{,}5\ \text{V}$ par division au lieu de $1{,}25\ \text{V}$ — les traits chiffrés « $2{,}5$ » et « $5$ » de la figure 2 sont séparés par DEUX divisions, pas une seule : une lecture au pas double donnerait un palier à $20\ \text{V}$, un $I_0$ deux fois trop grand, et une valeur de $L$ (question suivante) hors de portée de celle à vérifier. Deuxième piège : confondre le palier de $u_R$ (ce qu'on lit) avec $I_0$ (ce qu'on demande) — il faut repasser par $R$.
         steps:
           - math: '\tau \approx 1{,}0\ \text{ms} = 1{,}0\times10^{-3}\ \text{s}'
-            note: "Tangente (T) a l'origine : coupe le palier au premier trait vertical (méthode du chapitre 4)."
+            note: "Tangente (T) à l'origine : coupe le palier au premier trait vertical (méthode du chapitre 4)."
           - math: '0{,}63\times10 = 6{,}3\ \text{V} \quad \text{a } t=1{,}00\ \text{ms}'
             note: "Controle croise par la méthode des 63% (chapitre 4) : même tau."
           - math: 'I_0 = \frac{u_{R,max}}{R} = \frac{10}{100}'
@@ -1085,7 +1085,7 @@ entries:
           - math: 'i(0^+) = i(0^-) \quad \text{(continuite du courant dans une bobine, rung 1)}'
             note: "Le courant dans une bobine ne peut pas sauter : même valeur juste après l'ouverture."
           - math: '\boxed{i(0^+) = 0{,}1\ \text{A} = 100\ \text{mA}}'
-            note: "Intensité dans la bobine a l'instant t = 0+."
+            note: "Intensité dans la bobine à l'instant t = 0+."
       - id: q6
         stem: |-
           **2-2.** (0,25 pt) vérifier que la tension aux bornes du conducteur ohmique de résistance $R_1$ est $u_{R_1} = 100\ \text{V}$.
@@ -1321,7 +1321,7 @@ entries:
           Le contrôle qui rassure. $r=8\ \Omega$ et $L=0{,}10\ \text{H}$ sont des valeurs rondes — le signe qu'on a bien lu la bonne courbe, pas un artefact de mesure.
         steps:
           - math: 'I_{max} = A \approx 120\ \text{mA} \qquad \tau \approx 1{,}0\ \text{ms}'
-            note: "Deux lectures graphiques indépendantes sur la figure 2 : palier et tangente a l'origine (chapitre 4)."
+            note: "Deux lectures graphiques indépendantes sur la figure 2 : palier et tangente à l'origine (chapitre 4)."
           - math: 'R+r = \frac{E}{A} = \frac{12}{0{,}120} = 100\ \Omega'
             note: "On inverse A = E/(R+r) ; E = 12 V, R = 92 Ohm donnes par l'énoncé."
           - math: '\boxed{r = 100 - 92 = 8\ \Omega}'
@@ -1377,7 +1377,7 @@ entries:
         lignes de grille noires, une maille = 2 ms horizontalement et 1 V
         verticalement. Courbe (98 points) : décroissance exponentielle
         partant de (0 ; 6,00 V). Tangente (T), regression sur 8 tirets :
-        ordonnée a l'origine 5,96-5,98 V (part bien du départ de la courbe),
+        ordonnée à l'origine 5,96-5,98 V (part bien du départ de la courbe),
         coupe l'axe des temps a t = 2,77-2,78 ms. Contre-calcul refait ici,
         chiffre par chiffre : I_p = E/(R+r) = 6,5/65 = 0,100 A ; u_R(0) =
         R.I_p = 60x0,1 = 6,00 V (coherent avec le départ mesure de la
@@ -1509,7 +1509,7 @@ entries:
           $$L = \tau\,(R+r) = 2{,}8\times10^{-3}\times65$$
         steps:
           - math: '\tau \approx 2{,}8\ \text{ms}'
-            note: "Tangente a l'origine de la figure 2 (méthode du chapitre 4) : coupe l'axe des temps a t = tau."
+            note: "Tangente à l'origine de la figure 2 (méthode du chapitre 4) : coupe l'axe des temps a t = tau."
           - math: 'L = \tau\,(R+r) = 2{,}8\times10^{-3}\times65'
             note: "On inverse tau = L/(R+r) (question 2.2), R+r = 65 Ohm (question 2.3-a)."
           - math: '\boxed{L \approx 0{,}182\ \text{H} = 182\ \text{mH}}'
@@ -1534,7 +1534,7 @@ entries:
           - math: 'E_m = \frac{1}{2}\,L\,i(\tau)^2 = \frac{1}{2}\times0{,}182\times(3{,}68\times10^{-2})^2'
             note: "Chapitre 5 : énergie emmagasinée, avec le courant INSTANTANE i(tau), pas I_p."
           - math: '\boxed{E_m \approx 1{,}23\times10^{-4}\ \text{J}}'
-            note: "Énergie magnetique emmagasinée a l'instant t1 = tau."
+            note: "Énergie magnetique emmagasinée à l'instant t1 = tau."
 
   # ── bk-2015-r-x3 — 2015 R, Exercice 3 (§ 1) : réponse d'un dipôle RL à un échelon de tension ascendant ──
   #

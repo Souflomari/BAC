@@ -334,7 +334,7 @@ entries:
           Une fois l'entretien réalisé (question précédente), le circuit obéit à l'équation idéale du chapitre 3 — la période observée sur la figure 6 n'est plus une pseudo-période approchée, c'est exactement $T_0$. On la lit entre deux maxima consécutifs (chapitre 7) : $t\approx1\ \text{ms}$ et $t\approx3\ \text{ms}$, soit $T_0\approx2\ \text{ms}$. On inverse ensuite $T_0 = 2\pi\sqrt{LC}$ (chapitre 3) avec $C = 2{,}5\ \mu\text{F}$ donné. Ce sujet ne fournit pas l'indication « $\pi^2 = 10$ » utilisée ailleurs : on garde la valeur usuelle de $\pi^2$, comme dans les exemples numériques de la leçon elle-même.
         steps:
           - math: 'T_0 = t_2 - t_1 = 3 - 1 = 2\ \text{ms}'
-            note: "Deux maxima consecutifs sur la figure 6 (chapitre 7) ; sous entretien, c'est exactement T0, pas une pseudo-periode approchee."
+            note: "Deux maxima consecutifs sur la figure 6 (chapitre 7) ; sous entretien, c'est exactement T0, pas une pseudo-periode approchée."
           - math: 'T_0 = 2\pi\sqrt{LC} \implies L = \frac{T_0^2}{4\pi^2 C}'
             note: "On isole L (chapitre 3)."
           - math: 'L = \frac{(2\times10^{-3})^2}{4\pi^2\times2{,}5\times10^{-6}} \approx \frac{4\times10^{-6}}{9{,}87\times10^{-5}}'
@@ -440,7 +440,7 @@ entries:
           L'énoncé donne ici l'approximation du chapitre 7 ($T \approx T_0$ pour un amortissement faible) comme une égalité à utiliser directement : $T_0 = T = 10\ \text{ms}$, lu sur la figure 4 par la méthode du chapitre 7 (extrema exactement espacés de $10\ \text{ms}$). On inverse ensuite $T_0 = 2\pi\sqrt{LC}$ (chapitre 3) pour isoler $C$, avec $L = 1\ \text{H}$ — une valeur établie en Partie I (réponse du dipôle RL, hors périmètre RLC, transcrite sous « Dipôle RL ».md), pas une donnée de cette partie-ci.
         steps:
           - math: 'T_0 = T = 10\ \text{ms}'
-            note: "Pseudo-periode lue sur la figure 4 (chapitre 7), prise egale a T0 par hypothèse de l'énoncé."
+            note: "Pseudo-periode lue sur la figure 4 (chapitre 7), prise égale a T0 par hypothèse de l'énoncé."
           - math: 'T_0 = 2\pi\sqrt{LC} \implies C = \frac{T_0^2}{4\pi^2 L}'
             note: "On isole C (chapitre 3)."
           - math: 'C = \frac{(10\times10^{-3})^2}{4\times10\times1} = \frac{10^{-4}}{40}'
@@ -473,7 +473,7 @@ entries:
           - math: 'i(0) = I_m\cos\varphi = 0 \quad \text{et} \quad \left.\frac{di}{dt}\right|_{t=0} < 0'
             note: "La courbe part de zéro en decroissant a t=0 (figure 6)."
           - math: '\boxed{\varphi = \frac{\pi}{2}}'
-            note: "Seul phi = pi/2 donne a la fois cos(phi)=0 et une pente négative a l'origine (phi = -pi/2 donnerait une pente positive)."
+            note: "Seul phi = pi/2 donne à la fois cos(phi)=0 et une pente négative à l'origine (phi = -pi/2 donnerait une pente positive)."
       - id: q2c
         stem: |-
           **(0,5 pt)** Déterminer l'énergie totale $E_t$ du circuit.
@@ -892,7 +892,7 @@ entries:
           C'est directement la formule du chapitre 2 : l'énergie totale, à un instant donné, est la somme de ce qui est stocké dans le condensateur et de ce qui est stocké dans la bobine — quel que soit le régime. Ce qui change dans ce deuxième cas, ce n'est pas la formule (toujours vraie instant par instant), c'est que cette somme n'est **plus constante** au fil du temps : la résistance $r$, non négligeable ici, la fait décroître (chapitre 4/4).
         steps:
           - math: '\boxed{E_t = \frac{1}{2}C\,u_C(t)^2 + \frac{1}{2}L\,i(t)^2}'
-            note: "Somme des deux énergies stockees a l'instant t (chapitre 2), valable dans les deux cas ; seule la constance de cette somme diffère entre le cas ideal et le cas amorti."
+            note: "Somme des deux énergies stockees à l'instant t (chapitre 2), valable dans les deux cas ; seule la constance de cette somme diffère entre le cas ideal et le cas amorti."
       - id: q6
         stem: |-
           **(0,75 pt)** En exploitant les courbes de la figure 4, trouver l'énergie $\Delta E$ dissipée dans le circuit entre les instants $t_0 = 0$ et $t_1 = 9\ \text{ms}$.
@@ -3085,7 +3085,7 @@ entries:
           - math: '\frac{\mathrm{d}^2q}{\mathrm{d}t^2} = -Q_m\omega_0^{2}\cos(\omega_0 t) = -\omega_0^{2}\,q(t)'
             note: "Deux derivations : le cosinus se reproduit, affecte du facteur -omega0 au carré."
           - math: '\left[\frac{1}{LC} - \omega_0^{2}\right]q(t) = 0 \quad \forall t \quad\Longrightarrow\quad \omega_0^{2} = \frac{1}{LC}'
-            note: "L'égalité doit valoir a chaque instant et q(t) n'est pas identiquement nulle : le crochet est donc nul."
+            note: "L'égalité doit valoir à chaque instant et q(t) n'est pas identiquement nulle : le crochet est donc nul."
           - math: '\boxed{T_0 = 2\pi\sqrt{LC}}'
             note: "Période propre. Elle ne dépend que du circuit, jamais de la manière dont on l'a excite."
       - id: q3
@@ -3144,7 +3144,7 @@ entries:
           - math: '\text{Fin de la charge (position 1)\,: régime permanent} \Rightarrow i = 0 \Rightarrow u_R = 0 \Rightarrow u_C = E'
             note: "En régime permanent aucun courant ne circule : le resistor ne prend aucune tension. R ne fixe que la durée de la charge."
           - math: 'q = C\,u_C \quad\text{et}\quad q(0) = Q_m \quad\text{(le basculement se fait condensateur pleinement chargé)}'
-            note: "Définition de la capacité, appliquee a l'instant du basculement. Coherent avec q(t) = Qm cos(omega0 t), qui vaut Qm en t = 0."
+            note: "Définition de la capacité, appliquee à l'instant du basculement. Coherent avec q(t) = Qm cos(omega0 t), qui vaut Qm en t = 0."
           - math: '\boxed{Q_m = C\,E = 4{,}7\times10^{-3} \times 12 = 5{,}64\times10^{-2}\ \text{C}}'
             note: "Charge maximale. Controle : la courbe d'énergie électrique de la figure 2 part bien d'un maximum en t = 0."
       - id: q5
@@ -3238,6 +3238,6 @@ entries:
           - math: 'L\,\omega_0^{2} = \frac{1}{C} \quad\Longrightarrow\quad E_T = \frac{Q_m^{2}}{2C}\left[\cos^{2}(\omega_0 t) + \sin^{2}(\omega_0 t)\right]'
             note: "Geste decisif : la relation omega0 carré = 1/(LC) rend les deux coefficients identiques et permet de factoriser."
           - math: '\boxed{E_T = \frac{Q_m^{2}}{2C} = \text{constante}}'
-            note: "Le crochet vaut 1 a chaque instant : E_T ne dépend plus du temps. Sans résistance, rien ne se dissipe."
+            note: "Le crochet vaut 1 à chaque instant : E_T ne dépend plus du temps. Sans résistance, rien ne se dissipe."
           - math: '\boxed{E_T = \frac{\left(5{,}64\times10^{-2}\right)^{2}}{2 \times 4{,}7\times10^{-3}} \approx 0{,}34\ \text{J}}'
             note: "Valeur numérique, 0,3384 J exactement. Controle interne : E_T = CE carré sur 2 = 0,5 x 4,7e-3 x 144 = 0,3384 J, même nombre par un autre chemin."

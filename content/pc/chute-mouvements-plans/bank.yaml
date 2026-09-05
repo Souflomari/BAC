@@ -501,7 +501,7 @@ entries:
           - math: '\frac{dv}{dt} = g - \frac{k}{m}\,v'
             note: "On divise par la masse m."
           - math: '\boxed{\frac{dv}{dt} + \frac{k}{m}\,v = g}'
-            note: "On range le terme en v a gauche : c'est la forme demandee."
+            note: "On range le terme en v à gauche : c'est la forme demandee."
       - id: q2
         stem: |-
           **(0,25 pt)** Trouver l'expression de la vitesse limite $v_\ell$ de $G$ en fonction de $g$, $m$ et $k$.
@@ -632,7 +632,7 @@ entries:
           - math: 'm\frac{dv}{dt} = mg - \alpha\,v^2'
             note: "Projection sur l'axe (O, k), oriente vers le bas comme la chute : poids +mg, frottement -alpha v^2 (il s'oppose au mouvement)."
           - math: '\boxed{\frac{dv}{dt} + \frac{\alpha}{m}\,v^2 = g}'
-            note: "On divise par m et on range le terme en v^2 a gauche."
+            note: "On divise par m et on range le terme en v^2 à gauche."
       - id: q2b
         stem: |-
           **(0,25 pt)** Trouver l'expression de la vitesse limite $V_\ell$ du mouvement en fonction de $m$, $g$ et $\alpha$.
@@ -1068,7 +1068,7 @@ entries:
           Exactement la méthode du chapitre 10 : la force gravitationnelle est purement centripète (dirigée vers $O$), donc sa projection sur la tangente est nulle — le mouvement est circulaire uniforme — et sa projection sur la normale égale $m_s\,v^2/r$. On identifie cette projection normale à la norme de la force trouvée en 1.1 (option B), avec $r=R_T+h_1$, puis on isole $v$.
         steps:
           - math: 'm_s\frac{v^2}{R_T+h_1} = G\frac{M_T\,m_s}{(R_T+h_1)^2}'
-            note: "Deuxième loi projetee sur la normale (chapitre 10), avec la force trouvée a la question 1.1 (option B)."
+            note: "Deuxième loi projetée sur la normale (chapitre 10), avec la force trouvée a la question 1.1 (option B)."
           - math: 'v^2 = \frac{G\,M_T}{R_T+h_1}'
             note: "La masse m_s du satellite se simplifie des deux cotes -- même mécanisme qu'au chapitre 10."
           - math: '\boxed{v = \sqrt{\frac{G\,M_T}{R_T+h_1}}}'
@@ -1099,7 +1099,7 @@ entries:
           - math: 'r_2 = 7380\times\left(\frac{24}{1{,}754}\right)^{2/3} \approx 4{,}23\times 10^4\ \text{km}'
             note: "Application numérique, avec T_2 = 24 h et T_1 = 1,754 h dans la même unité."
           - math: '\boxed{h_2 = r_2 - R_T \approx 4{,}23\times 10^4 - 6{,}38\times 10^3 \approx 3{,}6\times 10^4\ \text{km}}'
-            note: "On retranche le rayon terrestre : c'est l'altitude geostationnaire (chapitre 11), coherente avec T_2 = 24 h."
+            note: "On retranche le rayon terrestre : c'est l'altitude géostationnaire (chapitre 11), coherente avec T_2 = 24 h."
 
   # ── bk-2023-n-x4 — 2023 N, Exercice 4 (Partie I) : chute d'une balle, frottement linéaire, Euler ──
   - id: bk-2023-n-x4
@@ -1207,7 +1207,7 @@ entries:
           - math: '\frac{dv_z}{dt} = -g - \frac{\lambda}{m}\,v_z'
             note: "On divise par la masse m."
           - math: '\boxed{\frac{dv_z}{dt} + \frac{1}{\tau}v_z + g = 0} \qquad \text{avec} \qquad \tau=\frac{m}{\lambda}'
-            note: "On range tout a gauche : le +g (au lieu du =g du chapitre 8) vient uniquement du choix d'axe vers le haut -- exactement la leçon du chapitre 2 sur l'arbitraire du signe."
+            note: "On range tout à gauche : le +g (au lieu du =g du chapitre 8) vient uniquement du choix d'axe vers le haut -- exactement la leçon du chapitre 2 sur l'arbitraire du signe."
       - id: q3b
         stem: |-
           **(0,25 pt)** Déduire la norme de la vitesse limite du mouvement du centre d'inertie $G$ de la balle.
@@ -1227,7 +1227,7 @@ entries:
           Ici l'énoncé donne l'accélération $a_{i-1}$, pas la vitesse $v_{i-1}$ — l'inverse de toutes les autres applications d'Euler de cette banque, qui partent toujours d'une vitesse connue pour en déduire l'accélération. Il faut donc d'abord **inverser** l'équation différentielle de la question 2-1 pour retrouver $v_{i-1}$ à partir de $a_{i-1}$ donné (une manipulation algébrique, pas une nouvelle idée physique), puis appliquer la récurrence d'Euler standard du chapitre 9, $v_i=v_{i-1}+a_{i-1}\Delta t$, exactement comme d'habitude.
         steps:
           - math: 'a_{i-1} = -g-\frac{v_{i-1}}{\tau} = 5 \implies v_{i-1} = -\tau\left(g+5\right)'
-            note: "On repart de l'équation différentielle (question 2-1) pour retrouver v_(i-1) a partir de a_(i-1) donne -- le chapitre 9 part toujours de v_i connu, jamais l'inverse ; pont fait ici."
+            note: "On repart de l'équation différentielle (question 2-1) pour retrouver v_(i-1) à partir de a_(i-1) donne -- le chapitre 9 part toujours de v_i connu, jamais l'inverse ; pont fait ici."
           - math: 'v_{i-1} = -0{,}667\times(10+5) \approx -10\ \text{m.s}^{-1}'
             note: "Application numérique."
           - math: 'v_z(t_i) = v_{i-1} + a_{i-1}\,\Delta t = -10 + 5\times 0{,}066'
@@ -1872,7 +1872,7 @@ entries:
           - math: 'v_S = \frac{2\pi(R_T+h)}{T}'
             note: "Vitesse = périmètre du cercle / période (mouvement circulaire uniforme, question 2-1)."
           - math: '\frac{2\pi(R_T+h)}{T} = \sqrt{\frac{G\,m_T}{R_T+h}}'
-            note: "On egale les deux expressions de v_S (question 2-2 et ci-dessus), comme au chapitre 11."
+            note: "On égale les deux expressions de v_S (question 2-2 et ci-dessus), comme au chapitre 11."
           - math: '\frac{4\pi^2(R_T+h)^2}{T^2} = \frac{G\,m_T}{R_T+h}'
             note: "On élève les deux membres au carré."
           - math: '\boxed{\frac{T^2}{(R_T+h)^3} = \frac{4\pi^2}{G\,m_T} = k}'
@@ -2271,7 +2271,7 @@ entries:
           - math: '\boxed{V_{\ell im} \approx 1{,}50\ \text{m.s}^{-1}}'
             note: "Ordonnée du palier de la figure 2 (régime permanent)."
           - math: '\boxed{\tau \approx 0{,}20\ \text{s}}'
-            note: "Tangente a l'origine : coupe le palier V_lim a cet instant (méthode du chapitre 8)."
+            note: "Tangente à l'origine : coupe le palier V_lim a cet instant (méthode du chapitre 8)."
       - id: q5
         stem: |-
           **5-** (1 pt) Déterminer la valeur du coefficient $k$.
@@ -2483,7 +2483,7 @@ entries:
           - math: 'y(t) = -\frac12\,g\,t^2 \quad \text{(chute libre depuis C, sans vitesse verticale initiale)}'
             note: "Deux primitivations d'une accélération constante -g, origine des positions en C."
           - math: 'h = \frac12\,g\,t_D^2 = \frac12\times9{,}8\times(0{,}86)^2'
-            note: "h est la distance (positive) sous C atteinte a l'instant t_D."
+            note: "h est la distance (positive) sous C atteinte à l'instant t_D."
           - math: '\boxed{h \approx 3{,}62\ \text{m}}'
             note: "Altitude de C au-dessus de l'eau."
 
@@ -2704,7 +2704,7 @@ entries:
           $$y(x) = \tan\theta\cdot x - \frac{g}{2V_0^2\cos^2\theta}\,x^2 = 1\times x - \frac{10}{2\times10^2\times0{,}5}\,x^2$$
         steps:
           - math: 'y(x) = \tan\theta\cdot x - \frac{g}{2V_0^2\cos^2\theta}\,x^2'
-            note: "Elimination du temps entre x(t) et y(t) (chapitre 4)."
+            note: "Élimination du temps entre x(t) et y(t) (chapitre 4)."
           - math: '\tan45^\circ = 1 \qquad \frac{g}{2V_0^2\cos^2 45^\circ} = \frac{10}{2\times100\times0{,}5} = 0{,}1'
             note: "Simplification propre a theta = 45 degrés."
           - math: '\boxed{y(x) = x - 0{,}1\,x^2}'
@@ -2834,13 +2834,13 @@ entries:
           **Deux primitivations successives** (chapitre 3), puis l'élimination du temps (chapitre 4) : la première équation horaire donne $t = \dfrac{x}{v_D\cos\theta}$, qu'on reporte dans la seconde pour obtenir la trajectoire.
         steps:
           - math: 'a_x = 0 \qquad a_y = -g'
-            note: "Chute libre : seul le poids agit (air neglige), deuxième loi projetee dans (D, i prime, j prime) -- chapitre 3."
+            note: "Chute libre : seul le poids agit (air neglige), deuxième loi projetée dans (D, i prime, j prime) -- chapitre 3."
           - math: 'v_x(t) = v_D\cos\theta \qquad v_y(t) = -g\,t + v_D\sin\theta'
             note: "Première primitivation, avec les composantes de v_D comme conditions initiales."
           - math: '\boxed{x(t) = v_D\cos\theta\cdot t \qquad y(t) = -\frac12\,g\,t^2 + v_D\sin\theta\cdot t}'
             note: "Deuxième primitivation, origine des positions en D : x(0) = y(0) = 0."
           - math: '\boxed{y = -\frac{g\,x^2}{2\,v_D^2\cos^2\theta} + x\tan\theta}'
-            note: "Elimination du temps t = x/(v_D.cos(theta)) entre les deux équations horaires (chapitre 4)."
+            note: "Élimination du temps t = x/(v_D.cos(theta)) entre les deux équations horaires (chapitre 4)."
       - id: q2
         part: "3-2 — La vitesse v_D, depuis le point de chute P (scope note en tête de fichier)"
         stem: |-
@@ -3242,7 +3242,7 @@ entries:
           - math: 'V = \frac{2\pi r}{T_J} \quad\Longrightarrow\quad V^{2} = \frac{4\pi^{2}r^{2}}{T_J^{\,2}}'
             note: "Expression géométrique : le périmètre parcouru en une période, valable SEULEMENT parce que le mouvement est uniforme."
           - math: '\frac{4\pi^{2}r^{2}}{T_J^{\,2}} = \frac{G\,M_S}{r} \quad\Longrightarrow\quad 4\pi^{2}r^{3} = G\,M_S\,T_J^{\,2}'
-            note: "Les deux expressions décrivent le même V au carré : on les egale et on multiplie en croix."
+            note: "Les deux expressions décrivent le même V au carré : on les égale et on multiplie en croix."
           - math: '\boxed{\frac{T_J^{\,2}}{r^{3}} = \frac{4\pi^{2}}{G\,M_S}}'
             note: "Troisième loi de Kepler, cas circulaire. Le membre de droite ne dépend que de l'astre central, jamais de la planète."
       - id: q4

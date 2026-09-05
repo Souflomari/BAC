@@ -893,7 +893,7 @@ entries:
           - math: '\lim_{x \to 0^+} x\ln x = 0'
             note: "Corollaire de croissances comparees, chapitre 5 (limite de référence en 0+)."
           - math: '\lim_{x\to0^+} f(x) = \lim_{x\to0^+}\left(2x\ln x - 2x\right) = 2\times 0 - 0 = 0 = f(0)'
-            note: "Les deux termes tendent vers 0 : continuite a droite en 0 vérifiée."
+            note: "Les deux termes tendent vers 0 : continuite à droite en 0 vérifiée."
       - id: q2
         part: "Limites en +infini et direction asymptotique"
         stem: |-
@@ -929,7 +929,7 @@ entries:
           - math: '\lim_{x\to0^+} (2\ln x - 2) = -\infty \ \text{(R4)}'
             note: "Ln x tend vers moins l'infini en 0+."
           - math: '\lim_{x\to0^+} \dfrac{f(x)}{x} = -\infty \implies (C) \text{ admet une demi-tangente verticale au point } (0,0)'
-            note: "Taux d'accroissement infini : tangente verticale a l'origine."
+            note: "Taux d'accroissement infini : tangente verticale à l'origine."
       - id: q5
         stem: |-
           **(0,5 pt)** Calculer $f'(x)$ pour tout $x$ de $]0, +\infty[$.
@@ -1056,7 +1056,7 @@ entries:
           - math: '\lim_{x\to0^+} h(x) = \lim_{x\to0^+} (2x\ln x - 2x) = 0 \quad (\text{même calcul que la question 1})'
             note: "Reutilisation du corollaire x ln x tend vers 0."
           - math: '\lim_{x\to0^-} h(x) = \lim_{x\to0^+} h(x) = h(0) = 0 \implies h \text{ continue en } 0'
-            note: "Limites a gauche et a droite egales a h(0)."
+            note: "Limites à gauche et à droite égales a h(0)."
       - id: q16
         stem: |-
           **(0,5 pt)** Étudier la dérivabilité de la fonction $h$ à gauche au point $0$ puis interpréter géométriquement le résultat.
@@ -1066,9 +1066,9 @@ entries:
           - math: '\dfrac{h(x)-h(0)}{x-0} = \dfrac{x^3+3x}{x} = x^2+3 \quad (x\ne0)'
             note: "Taux d'accroissement, simplification par x."
           - math: '\lim_{x\to0^-} (x^2+3) = 3'
-            note: "Limite finie : h dérivable a gauche en 0."
-          - math: '\text{Interpretation\,: } (C_h) \text{ admet en } (0,0) \text{ une demi-tangente a gauche de coefficient directeur } 3'
-            note: "Interpretation géométrique de la derivabilite a gauche."
+            note: "Limite finie : h dérivable à gauche en 0."
+          - math: '\text{Interpretation\,: } (C_h) \text{ admet en } (0,0) \text{ une demi-tangente à gauche de coefficient directeur } 3'
+            note: "Interpretation géométrique de la derivabilite à gauche."
       - id: q17
         stem: |-
           **(0,25 pt)** La fonction $h$ est-elle dérivable au point $0$ ? justifier.
@@ -2038,7 +2038,7 @@ entries:
           - math: 'F(0) = \int_0^1 \left(f_1(t)\right)^2 dt = \frac{1}{4}'
             note: "Même intégrale, mêmes bornes : c'est exactement F(0), établi a la question 2-b."
           - math: 'V = \pi \times \frac{1}{4}'
-            note: "Repère orthonormé avec norme de i egale a 1 cm : l'unité de volume vaut 1 cm3."
+            note: "Repère orthonormé avec norme de i égale a 1 cm : l'unité de volume vaut 1 cm3."
           - math: '\boxed{V = \frac{\pi}{4}\ \text{cm}^3 \approx 0{,}785\ \text{cm}^3}'
             note: "Positif et de l'ordre du cm3 : vraisemblable pour une courbe qui reste sous 1 sur [0,1]."
   # ── bk-2024-r-x1 — 2024 R, Exercice 1 : la famille f_n(x) = x - x^n ln x,
@@ -2847,7 +2847,7 @@ entries:
           - math: '(C) \text{ admet la droite } y=0 \text{ pour asymptote horizontale en } +\infty'
             note: "Limite finie (0) en plus l'infini : lecture graphique directe."
       - id: q4a
-        part: "Partie II — 2. Continuite et derivabilite a droite en 0"
+        part: "Partie II — 2. Continuite et derivabilite à droite en 0"
         stem: |-
           **2- a)** (0,25 pt) Montrer que $f$ est continue à droite en $0$.
         reasoning: |-
@@ -2873,7 +2873,7 @@ entries:
             note: "Même encadrement qu'a la question I-2, gendarmes en 0."
           - math: '\lim_{x\to 0^+} e^{-x} = e^{0} = 1 \quad (\text{continuite de exp en 0})'
             note: "Fonction exponentielle continue partout, en particulier en 0."
-          - math: '\lim_{x\to 0^+} f(x) = 1\times 1 = 1 = f(0) \ \Longrightarrow\ f \text{ continue a droite en } 0'
+          - math: '\lim_{x\to 0^+} f(x) = 1\times 1 = 1 = f(0) \ \Longrightarrow\ f \text{ continue à droite en } 0'
             note: "Produit de deux limites finies, aucune indetermination."
       - id: q4b
         stem: |-
@@ -2941,8 +2941,8 @@ entries:
             note: "Deux limites déjà etablies plus haut dans le problème, reutilisees telles quelles."
           - math: '\lim_{x\to 0^+}\frac{f(x)-1}{x} = (-1)\times 1 + \left(-\frac12\right) = -\frac32'
             note: "Identité de la question 2-b : produit des deux premières limites, plus la troisième."
-          - math: '\boxed{f \text{ dérivable a droite en } 0, \quad f''_d(0) = -\frac32}'
-            note: "Limite finie du taux d'accroissement : la derivabilite a droite est acquise, avec ce nombre derive."
+          - math: '\boxed{f \text{ dérivable à droite en } 0, \quad f''_d(0) = -\frac32}'
+            note: "Limite finie du taux d'accroissement : la derivabilite à droite est acquise, avec ce nombre derive."
       - id: q5
         part: "Partie III — 3. Derivabilite sur ]0, plus infini[ et formule de f'"
         stem: |-
@@ -3113,7 +3113,7 @@ entries:
         steps:
           - math: '(0\,;\,1) \quad (\text{point de départ, } f(0)=1)'
             note: "Premier ingredient : la valeur en 0, déjà etablie."
-          - math: 'f''_d(0) = -\frac32 \quad (\text{question 2-c, pente de la demi-tangente a droite en 0})'
+          - math: 'f''_d(0) = -\frac32 \quad (\text{question 2-c, pente de la demi-tangente à droite en 0})'
             note: "Deuxième ingredient : la pente de départ, oblique et raide."
           - math: 'f \text{ strictement décroissante sur } [0,+\infty[ \quad (\text{question 5-a})'
             note: "Troisième ingredient : un seul sens de variation, sans palier ni remontee."
@@ -3385,7 +3385,7 @@ entries:
       *Aucune figure n'est imprimée : la question 6-b demande au candidat de construire la courbe lui-même. La carte des domaines : cette leçon (« Fonction logarithme ») porte l'ossature — le taux d'accroissement de $\ln$ en $1$ (chapitre 4), la limite de référence $\ln x/x\to0$ (chapitre 5) — mais les questions 1, 2 et 3-c empruntent aux limites et à la continuité, la question 3-b au théorème des accroissements finis (dérivabilité et étude de fonctions, spécifique SM, énoncé et appliqué au point d'usage, jamais supposé acquis), les questions 4, 5-c/5-d, 6 et 7 à la dérivabilité et à l'étude de fonctions, la question 5 dans son entier au calcul intégral, et la question 8 aux suites numériques — avec, pour la question 8-a, un second usage du même théorème des accroissements finis qu'à la question 3-b.*
     questions:
       - id: q1
-        part: "1. Continuite a droite en 1"
+        part: "1. Continuite à droite en 1"
         stem: |-
           **(0,5 pt)** Montrer que $f$ est continue à droite en $1$.
         reasoning: |-
@@ -3410,9 +3410,9 @@ entries:
           - math: 'f(x) = \dfrac{\ln x}{(x-1)(x+1)} = \dfrac{\ln x - \ln 1}{x-1} \times \dfrac{1}{x+1}'
             note: "Factorisation du dénominateur, pour faire apparaître un taux d'accroissement."
           - math: '\lim_{x\to 1} \dfrac{\ln x - \ln 1}{x-1} = \ln''(1) = 1 \quad (\text{R3\,: ln dérivable en 1})'
-            note: "Taux d'accroissement de ln en 1, egal a la dérivée de ln en 1."
+            note: "Taux d'accroissement de ln en 1, égal a la dérivée de ln en 1."
           - math: '\lim_{x\to 1^+} f(x) = 1 \times \dfrac{1}{1+1} = \dfrac12 = f(1)'
-            note: "Produit des deux limites : f continue a droite en 1."
+            note: "Produit des deux limites : f continue à droite en 1."
       - id: q2
         part: "2. Limite en +infini et interpretation graphique"
         stem: |-
@@ -3508,7 +3508,7 @@ entries:
           - math: '\varphi(u) = -\sqrt{u}+\ln(1+\sqrt{u}), \quad \varphi(0)=0, \qquad \varphi \text{ continue sur } [0,t], \text{ dérivable sur } ]0,t['
             note: "Fonction auxiliaire et vérification des deux hypothèses du TAF."
           - math: '\varphi''(u) = -\dfrac{1}{2\sqrt{u}}+\dfrac{1}{(1+\sqrt{u})\,2\sqrt{u}} = \dfrac{-1}{2(1+\sqrt{u})}'
-            note: "Dérivée de phi, calculée a partir de la dérivée de racine et de ln compose."
+            note: "Dérivée de phi, calculée à partir de la dérivée de racine et de ln compose."
           - math: '\exists\, c\in\,]0,t[\ ;\quad \dfrac{\varphi(t)-\varphi(0)}{t} = \varphi''(c) = \dfrac{-1}{2(1+\sqrt{c})} \quad (\text{TAF sur } [0,t])'
             note: "Application du théorème des accroissements finis, hors socle de cette leçon."
           - math: '0<c<t \implies 1<1+\sqrt{c}<1+\sqrt{t} \implies \dfrac{1}{1+\sqrt{t}} < \dfrac{1}{1+\sqrt{c}} < 1'
@@ -3548,7 +3548,7 @@ entries:
           - math: '\boxed{\lim_{x\to1^+} \dfrac{1-x+\ln x}{(x-1)^2} = -\dfrac12} \quad (\text{via l''identité de la question 3-a})'
             note: "Retour a x, par l'identité etablie a la question 3-a."
       - id: q4a
-        part: "4. Derivabilite a droite en 1"
+        part: "4. Derivabilite à droite en 1"
         stem: |-
           **4- a)** (0,5 pt) Montrer que : $\forall x \in\, ]1, +\infty[\ ,\quad \dfrac{f(x) - \dfrac{1}{2}}{x - 1} = -\dfrac{\ln(x)}{x-1} \times \dfrac{1}{2(x+1)} + \dfrac{\ln(x) - x + 1}{2(x-1)^2}$
         reasoning: |-
@@ -3615,9 +3615,9 @@ entries:
           - math: '\dfrac{\ln x-x+1}{2(x-1)^2} = \dfrac12\times\dfrac{1-x+\ln x}{(x-1)^2} \ \xrightarrow[x\to1^+]{} \ \dfrac12\times\left(-\dfrac12\right) = -\dfrac14 \quad (\text{via question 3-c})'
             note: "Second terme : reutilisation directe du résultat de la question 3-c."
           - math: '\lim_{x\to1^+} \dfrac{f(x)-\frac12}{x-1} = -\dfrac14-\dfrac14 = -\dfrac12 \implies f''_d(1) = -\dfrac12'
-            note: "Somme des deux limites : f dérivable a droite en 1."
-          - math: '(C) \text{ admet en } A\!\left(1,\dfrac12\right) \text{ une demi-tangente a droite de coefficient directeur } -\dfrac12'
-            note: "Interpretation graphique de la dérivée a droite."
+            note: "Somme des deux limites : f dérivable à droite en 1."
+          - math: '(C) \text{ admet en } A\!\left(1,\dfrac12\right) \text{ une demi-tangente à droite de coefficient directeur } -\dfrac12'
+            note: "Interpretation graphique de la dérivée à droite."
       - id: q5a
         part: "5. Deux intégrales pour retrouver le signe de f'"
         stem: |-
@@ -3644,7 +3644,7 @@ entries:
           **Le piège nommé de cette question.** Comparer les intégrandes seulement pour $t=x$ (la borne) au lieu de pour **tout** $t$ dans l'intervalle d'intégration $[1,x]$ — la comparaison d'intégrales exige l'inégalité **sur tout l'intervalle**, pas seulement en un point.
         steps:
           - math: 't\ge1 \implies t^3\ge t^2>0 \text{ et } t^2-1\ge0 \implies 0\le\dfrac{t^2-1}{t^3}\le\dfrac{t^2-1}{t^2}'
-            note: "Comparaison des integrandes sur [1,x] : même numérateur positif, dénominateur plus grand a gauche."
+            note: "Comparaison des integrandes sur [1,x] : même numérateur positif, dénominateur plus grand à gauche."
           - math: '\int_1^x 0\,dt \le \int_1^x \dfrac{t^2-1}{t^3}\,dt \le \int_1^x \dfrac{t^2-1}{t^2}\,dt \quad (\text{R4 calcul integral, positivite et comparaison, hors socle})'
             note: "Intégration de l'encadrement des integrandes sur [1,x], bornes dans l'ordre 1 <= x."
           - math: '\boxed{0 \le I(x) \le J(x)} \quad \forall x\in[1,+\infty['
@@ -3773,7 +3773,7 @@ entries:
           **Le piège nommé de cette question.** Écrire $f'(x)\le 0$ au tableau (l'inégalité large de la question 5-d) sans vérifier si l'égalité est atteinte quelque part : un tableau de variations avec une case « $f'=0$ » isolée changerait la nature de la décroissance (un palier local). Ici, il n'y a aucun point où $f'$ s'annule sur $]1,+\infty[$.
         steps:
           - math: 'f''(x) = 0 \iff I(x) = 0, \quad I(x) = \int_1^x \dfrac{t^2-1}{t^3}\,dt > 0 \ \forall x>1 \implies f''(x) < 0 \text{ strictement sur } ]1,+\infty['
-            note: "Signe strict de f' affine a partir de la question 5-c : I(x) strictement positif pour x>1."
+            note: "Signe strict de f' affine à partir de la question 5-c : I(x) strictement positif pour x>1."
           - math: 'f(1) = \dfrac12, \qquad \lim_{x\to+\infty} f(x) = 0'
             note: "Valeurs aux bornes, déjà etablies (donnée de l'énoncé et question 2)."
           - math: 'f \text{ strictement décroissante sur } [1,+\infty[, \text{ de } \dfrac12 \text{ vers } 0 \text{ (limite jamais atteinte)}'
@@ -3795,7 +3795,7 @@ entries:
         steps:
           - math: 'A\left(1\,;\,\dfrac12\right) \quad (\text{point de départ, } f(1)=\dfrac12 \text{ atteint})'
             note: "Premier ingredient : la valeur en 1, donnée par l'énoncé."
-          - math: 'f''_d(1) = -\dfrac12 \quad (\text{question 4-b, pente de la demi-tangente a droite en 1})'
+          - math: 'f''_d(1) = -\dfrac12 \quad (\text{question 4-b, pente de la demi-tangente à droite en 1})'
             note: "Deuxième ingredient : la pente de départ, oblique et nettement négative."
           - math: 'f \text{ strictement décroissante sur } [1,+\infty[ \quad (\text{question 6-a})'
             note: "Troisième ingredient : un seul sens de variation, sans palier."
@@ -4063,7 +4063,7 @@ entries:
           - math: '1-x+x^2-\dfrac{1}{x+1} = \dfrac{(1-x+x^2)(x+1)-1}{x+1} = \dfrac{x^3}{x+1}'
             note: "Mise au même dénominateur x+1, strictement positif pour x >= 0."
           - math: '\forall x \ge 0\ ;\quad 0 \le \dfrac{x^3}{x+1} \le x^3 \quad (\text{car } x+1 \ge 1)'
-            note: "x cube positif divise par x+1 supérieur ou egal a 1 : le quotient est encadre entre 0 et x cube."
+            note: "x cube positif divise par x+1 supérieur ou égal a 1 : le quotient est encadre entre 0 et x cube."
       - id: q2
         part: "Partie A — 2. Par intégration, un encadrement de ln(1+x)"
         stem: |-
@@ -4096,7 +4096,7 @@ entries:
           - math: '\forall x \ge 0\ ;\quad 0 \le x-\dfrac{x^2}{2}+\dfrac{x^3}{3}-\ln(1+x) \le \dfrac{x^4}{4}'
             note: "Intégration de l'encadrement de la question 1 entre 0 et x."
       - id: q3a
-        part: "Partie B — 1. Continuite et derivabilite a droite en 0, limite en +infini"
+        part: "Partie B — 1. Continuite et derivabilite à droite en 0, limite en +infini"
         stem: |-
           **1- a)** (0,5 pt) Montrer que $f$ est continue à droite en $0$.
         reasoning: |-
@@ -4151,7 +4151,7 @@ entries:
           - math: '-\dfrac13 \le \dfrac{f(x)-f(0)}{x} \le -\dfrac13+\dfrac{x}{4} \quad (x>0)'
             note: "Division par x strictement positif : le sens est conserve."
           - math: '\lim_{x\to0^+} \dfrac{f(x)-f(0)}{x} = -\dfrac13 \quad (\text{gendarmes}) \implies f''_d(0) = -\dfrac13'
-            note: "Les deux bornes tendent vers -1/3 : f est dérivable a droite en 0."
+            note: "Les deux bornes tendent vers -1/3 : f est dérivable à droite en 0."
       - id: q3c
         stem: |-
           **1- c)** (0,5 pt) Calculer $\displaystyle\lim_{x \to +\infty} f(x)$, puis interpréter graphiquement le résultat obtenu.
@@ -4300,10 +4300,10 @@ entries:
           **Le piège nommé de cette question.** Conclure seulement « $f'\le0$ » sans vérifier si l'inégalité est stricte partout : $g(x)>0$ pour $x>0$ (pas seulement $\ge0$) donne une décroissance strictement, sans aucun palier — un détail qui compte pour le tableau de variations de la question suivante.
         steps:
           - math: 'g''(x) = \left(\dfrac{x}{x+1}\right)^2 > 0 \text{ pour } x>0, \ g(0)=0 \implies g(x)>0 \text{ pour } x>0'
-            note: "g strictement croissante a partir de 0 : elle est strictement positive au-dela."
+            note: "g strictement croissante à partir de 0 : elle est strictement positive au-dela."
           - math: 'x>0 \implies f''(x) = -\dfrac{g(x)}{x^3} < 0 \quad (g(x)>0, \ x^3>0)'
             note: "Report du signe de g dans l'expression de f' de la question 2-a."
-          - math: 'f \text{ strictement décroissante sur } ]0,+\infty[, \text{ donc sur } I \text{ (continuite a droite en 0, question 1-a)}'
+          - math: 'f \text{ strictement décroissante sur } ]0,+\infty[, \text{ donc sur } I \text{ (continuite à droite en 0, question 1-a)}'
             note: "Extension a I tout entier grâce a la continuite déjà etablie."
       - id: q5a
         part: "Partie B — 3. Tableau de variations et courbe (C)"
@@ -4350,7 +4350,7 @@ entries:
         steps:
           - math: '\left(0\,;\,\dfrac12\right) \quad (\text{point de départ, } f(0)=\tfrac12)'
             note: "Premier ingredient : la valeur en 0."
-          - math: 'f''_d(0) = -\dfrac13 \quad (\text{question 1-b, pente de la demi-tangente a droite en 0})'
+          - math: 'f''_d(0) = -\dfrac13 \quad (\text{question 1-b, pente de la demi-tangente à droite en 0})'
             note: "Deuxième ingredient : la pente de départ, oblique et moderee."
           - math: 'f \text{ strictement décroissante sur } I \quad (\text{question 3-a})'
             note: "Troisième ingredient : un seul sens de variation."

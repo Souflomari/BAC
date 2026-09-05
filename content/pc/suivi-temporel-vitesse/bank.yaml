@@ -301,7 +301,7 @@ entries:
           Comme au chapitre 3, $v(t_1) = \dfrac{1}{V}\left.\dfrac{dx}{dt}\right|_{t_1}$, et $\left.\dfrac{dx}{dt}\right|_{t_1}$ est la pente de la tangente $(T)$ tracée en ce point (chapitre 4). On lit deux points sur cette droite plutôt que d'estimer la pente à l'oeil : son ordonnée à l'origine ($t=0$) et le point de tangence marqué par la croix ($t_1=60\ \text{h}$), tous deux transcrits dans l'énoncé. Ici, contrairement au sujet de conductimétrie, $x$ est déjà en mmol et $V$ déjà en litres — l'unité demandée ne réclame aucune conversion supplémentaire.
         steps:
           - math: '\text{pente}(T) \approx \dfrac{0{,}41 - 0{,}26}{60 - 0} = \dfrac{0{,}15}{60}'
-            note: "Deux points de (T) : ordonnée a l'origine (t=0, x=0,26 mmol) et point de tangence (t1=60 h, x=0,41 mmol)."
+            note: "Deux points de (T) : ordonnée à l'origine (t=0, x=0,26 mmol) et point de tangence (t1=60 h, x=0,41 mmol)."
           - math: '\text{pente}(T) \approx 2{,}5\times10^{-3}\ \text{mmol.h}^{-1}'
             note: "Pente de la tangente, estimee par lecture graphique (chapitre 4)."
           - math: 'v(t_1) = \dfrac{1}{V}\times\text{pente}(T) = \dfrac{2{,}5\times10^{-3}}{0{,}200}'
@@ -609,7 +609,7 @@ entries:
           - math: '\boxed{n_i(H_3O^+) = 0{,}03\ \text{mol}}'
             note: "Quantité initiale d'ions oxonium."
           - math: 'n_i(Zn) = \frac{m}{M(Zn)} = \frac{0{,}6}{65{,}4}'
-            note: "Quantité de matière a partir de la masse pesee et de la masse molaire du zinc."
+            note: "Quantité de matière à partir de la masse pesee et de la masse molaire du zinc."
           - math: '\boxed{n_i(Zn) \approx 9{,}17\times10^{-3}\ \text{mol}}'
             note: "Quantité initiale de zinc."
       - id: q3
@@ -632,7 +632,7 @@ entries:
           Exactement le principe du chapitre 2 : on ne mesure jamais $x$ directement, on mesure une grandeur SUBSTITUT qui lui est reliée par une loi connue — ici, ce n'est pas une absorbance ou une conductivité, c'est une pression. Le tableau de la question 1 dit que le seul gaz produit est $H_2$, en quantité $x(t)$ à l'instant $t$ : c'est donc l'apparition de ce gaz, seule, qui fait monter la pression au-delà de sa valeur initiale $P_0$. En appliquant la loi des gaz parfaits à ce $H_2$ formé, dans le volume constant $V$ du ballon :
         steps:
           - math: 'n(H_2) = x(t) \quad \text{(coefficient 1 dans le tableau, question 1)}'
-            note: "Le seul gaz produit est H2, en quantité egale a l'avancement x(t)."
+            note: "Le seul gaz produit est H2, en quantité égale a l'avancement x(t)."
           - math: '\Delta P \cdot V = x(t)\cdot R\cdot T'
             note: "Loi des gaz parfaits P.V=n.R.T appliquee au H2 forme : DeltaP est la pression due a ce gaz, dans le volume V constant."
           - math: '\boxed{x(t) = \frac{\Delta P \cdot V}{R\cdot T}}'
@@ -1052,9 +1052,9 @@ entries:
           - math: 'x_{\text{max}} = 0{,}100\ \text{mol} \quad\text{(ester limitant)} \qquad x_{\text{éq}} = x_f = 0{,}085\ \text{mol} \quad\text{(lu sur la courbe)}'
             note: "Ne pas confondre : x_max est calcule (réactif limitant), x_f est LU sur la courbe. C'est x_f qui remplit le tableau."
           - math: 'n_f(E) = 0{,}100 - 0{,}085 = 0{,}015\ \text{mol} \qquad n_f(\text{H}_2\text{O}) = 1{,}94 - 0{,}085 = 1{,}855\ \text{mol}'
-            note: "Les deux réactifs a l'équilibre. L'ester n'a pas disparu : la transformation est limitée."
+            note: "Les deux réactifs à l'équilibre. L'ester n'a pas disparu : la transformation est limitée."
           - math: '\boxed{n_f(\text{acide}) = n_f(\text{alcool}) = x_{\text{éq}} = 0{,}085\ \text{mol}}'
-            note: "Les deux produits, formes en quantités egales (coefficients stoechiometriques tous égaux a 1)."
+            note: "Les deux produits, formes en quantités égales (coefficients stoechiometriques tous égaux a 1)."
           - math: '\tau = \frac{x_f}{x_{\text{max}}} = \frac{0{,}085}{0{,}100} = 85\ \%'
             note: "Controle de vraisemblance, non demande : 85 pour cent, coherent avec un large excès d'eau, et strictement inférieur a 100."
       - id: q6

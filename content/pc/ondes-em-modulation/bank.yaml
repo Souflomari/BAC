@@ -240,7 +240,7 @@ entries:
           - math: 'f_s = \frac{1}{T_s} = \frac{1}{10\times10^{-3}} = 100\ \text{Hz}'
             note: "Fréquence de la tension modulante."
           - math: 'F_p = \frac{1}{T_p} = \frac{1}{0{,}5\times10^{-3}} = 2000\ \text{Hz} = 2\ \text{kHz}'
-            note: "Fréquence de la porteuse, a partir de Tp = 0,5 ms (valeur reprise de r-bac ; la figure vérifiée ne detaille pas ce comptage fin)."
+            note: "Fréquence de la porteuse, à partir de Tp = 0,5 ms (valeur reprise de r-bac ; la figure vérifiée ne detaille pas ce comptage fin)."
       - id: q3
         stem: |-
           **(0,5 pt)** Déterminer le taux de modulation et en déduire la qualité de modulation.
@@ -1087,7 +1087,7 @@ entries:
         incidence ici : « 1 microF = 10^-12 F » imprimé p.5 (c'est le picofarad
         qui vaut 10^-12 F), sans conséquence car les capacités C1, C2 sont
         données directement en pF ; et une collision de notation, $C_0$
-        désignant a la fois le condensateur du circuit RC de la Première
+        désignant à la fois le condensateur du circuit RC de la Première
         partie ET celui de l'etage Y ici, deux composants différents (voir la
         note éditoriale en tête de ce fichier). Recalcul indépendant :
         f1 = 1/(2.pi.racine(L.C1)) = 604,0 kHz ; f2 = 1/(2.pi.racine(L.C2)) =
@@ -1599,7 +1599,7 @@ entries:
           **Les deux pièges de cette question.** Le premier : **oublier de convertir les kilohertz**, et calculer avec $f = 160$. Le résultat sort alors $10^{6}$ fois trop grand — $2{,}1\times10^{3}\ \text{H}$, une bobine impossible. Le second : **oublier le carré sur $f$** ou le $4\pi^2$ ; on part de $f_0 = \dfrac{1}{2\pi\sqrt{L_1C_1}}$ et l'on élève **les deux membres au carré avant** d'isoler, ce qui fait apparaître $4\pi^2$ et $f^2$ ensemble. Aucune des deux fautes ne se voit sans contrôle d'ordre de grandeur.
         steps:
           - math: 'f = f_0 = \frac{1}{2\pi\sqrt{L_1 C_1}}'
-            note: "Condition d'accord : la fréquence propre du circuit bouchon egale la fréquence de l'onde a recevoir (chapitre 6)."
+            note: "Condition d'accord : la fréquence propre du circuit bouchon égale la fréquence de l'onde a recevoir (chapitre 6)."
           - math: '\boxed{L_1 = \frac{1}{4\pi^{2} f^{2} C_1}}'
             note: "On élève les deux membres au carré AVANT d'isoler : c'est la que naissent le 4 pi carré et le f carré."
           - math: 'L_1 = \frac{1}{4\pi^{2} \times \left(1{,}60\times10^{5}\right)^{2} \times 4{,}7\times10^{-10}} = \frac{1}{4{,}75\times10^{2}}'
@@ -1625,12 +1625,12 @@ entries:
                     occurrence (l'arabe renomme les deux parties, le français
                     écrit « chacune des deux parties »).
                  2. LE CORRIGE ARABE (element/39378, p. 6, y = 245,1 et 258,1),
-                    relu a 400 dpi : « rôle de la partie 2 : elimination de l'onde
+                    relu a 400 dpi : « rôle de la partie 2 : élimination de l'onde
                     porteuse de haute fréquence f » et « rôle de la partie 3 :
-                    elimination de la tension continue U0 ». Il ne dit PAS UN MOT
+                    élimination de la tension continue U0 ». Il ne dit PAS UN MOT
                     de la partie 1 dans cette réponse.
                  3. LA FIGURE 3, etiquettes relues au rendu (« الجزء 1 · الجزء 2 ·
-                    الجزء3 » de gauche a droite) et schéma français extrait du PDF
+                    الجزء3 » de gauche à droite) et schéma français extrait du PDF
                     (782 x 342 a 171 dpi) et REGARDE : partie 1 = antenne +
                     (L ajustable // C1), CIRCUIT D'ACCORD, elle ne demodule rien ;
                     partie 2 = diode D + (C2 // R2), detection d'enveloppe ;

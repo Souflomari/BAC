@@ -1316,7 +1316,7 @@ entries:
           - math: 'e^{x-2}\ge8 \ \Rightarrow\ e^{x-2}-4\ge\tfrac12e^{x-2} \ \Rightarrow\ e^{x-2}\left(e^{x-2}-4\right)\ge\tfrac12e^{2x-4}'
             note: "Pour x assez grand, on minore le produit par la moitié du carré du terme exponentiel."
           - math: '\dfrac{e^{2x-4}}{x} = 2\times\dfrac{e^{X}}{X}\times\dfrac{X}{X+4} \xrightarrow[X=2x-4\to+\infty]{} +\infty \quad (R4)'
-            note: "Changement de variable X egal 2x moins 4 : on retrouve directement la croissance comparee du chapitre 5."
+            note: "Changement de variable X égal 2x moins 4 : on retrouve directement la croissance comparee du chapitre 5."
           - math: '\dfrac{e^{x-2}(e^{x-2}-4)}{x} \ge \dfrac12\dfrac{e^{2x-4}}{x} \ \Rightarrow\ \dfrac{e^{x-2}(e^{x-2}-4)}{x} \to +\infty'
             note: "Minoree par une quantité qui explose : forcee de suivre."
           - math: '\dfrac{f(x)}{x} \to -1+0-\tfrac12\times(+\infty) = -\infty'
@@ -1339,7 +1339,7 @@ entries:
           $$f'(x) = -\left(e^{x-2}-1\right)^2$$
         steps:
           - math: 'u = e^{x-2}, \qquad f(x) = -x + \tfrac52 - \tfrac12u^2 + 2u \quad (\text{substitution})'
-            note: "On pose u egal e puissance x moins 2 : f se reecrit comme un polynôme du second degré en u."
+            note: "On pose u égal e puissance x moins 2 : f se reecrit comme un polynôme du second degré en u."
           - math: 'f''(x) = -1 + 2u - u^2 \quad (\text{derivation terme a terme, u est sa propre dérivée, R3})'
             note: "On derive terme a terme ; u étant sa propre dérivée (chapitre 4), le facteur u apparaît directement."
           - math: 'f''(x) = -\left(u^2 - 2u + 1\right) = -(u-1)^2'
@@ -1384,7 +1384,7 @@ entries:
           - math: 'e^{x-2}>0 \ \Rightarrow\ \text{signe de } f^{(2)}(x) = \text{signe de } \left(1-e^{x-2}\right)'
             note: "Le facteur e puissance x moins 2 est toujours positif : il ne compte pas dans le signe."
           - math: 'e^{x-2}<1 \iff x<2 \ \Rightarrow\ f^{(2)}>0 \text{ sur } \,]-\infty,2[\, ;\quad f^{(2)}<0 \text{ sur } \,]2,+\infty[\, ;\quad f^{(2)}(2)=0'
-            note: "f seconde change de signe exactement en x egal 2 : convexe avant, concave après."
+            note: "f seconde change de signe exactement en x égal 2 : convexe avant, concave après."
           - math: 'f(2)=2 \quad (\text{question 4-b}) \ \Rightarrow\ I(2,f(2)) = A(2,2) \text{ est un point d''inflexion de } (C)'
             note: "f(2) vaut 2 (déjà établi) : le point ou f seconde change de signe est bien A(2,2)."
       - id: q6
@@ -1403,7 +1403,7 @@ entries:
           - math: 'f \text{ continue et strictement décroissante sur } \mathbb{R},\ \text{de } +\infty \text{ a } -\infty \ \Rightarrow\ \exists!\,\alpha\in\mathbb{R},\ f(\alpha)=0'
             note: "f est continue, strictement décroissante, et parcourt tout R : l'équation f(x)=0 a une unique solution sur R (corollaire du théorème des valeurs intermediaires)."
           - math: 'f(2+\ln3) = -(2+\ln3)+\tfrac52-\tfrac12\times3\times(-1) = 2-\ln3 > 0 \quad (\ln3\approx1{,}1)'
-            note: "On evalue f en 2 plus ln3, avec e puissance x moins 2 egal 3 : le résultat est positif."
+            note: "On evalue f en 2 plus ln3, avec e puissance x moins 2 égal 3 : le résultat est positif."
           - math: 'f(2+\ln4) = -(2+\ln4)+\tfrac52-\tfrac12\times4\times0 = \tfrac12-\ln4 < 0 \quad (\ln4\approx1{,}4)'
             note: "On evalue f en 2 plus ln4, ou le second terme s'annule entièrement : le résultat est négatif."
           - math: 'f(2+\ln3)>0>f(2+\ln4) \ \Rightarrow\ \exists!\,\alpha\in\,]2+\ln3,\,2+\ln4[,\ f(\alpha)=0'
@@ -1456,7 +1456,7 @@ entries:
           - math: 'f^{-1}(2-\ln3) = 2+\ln3 \quad (\text{question 6})'
             note: "La remarque de l'énoncé reprend directement le résultat de la question 6, lu a l'envers."
           - math: 'e^{(2+\ln3)-2} = e^{\ln3} = 3 \ \Rightarrow\ f''(2+\ln3) = -(3-1)^2 = -4'
-            note: "On evalue f prime en 2 plus ln3, avec e puissance x moins 2 egal 3 a ce point."
+            note: "On evalue f prime en 2 plus ln3, avec e puissance x moins 2 égal 3 a ce point."
           - math: '\left(f^{-1}\right)''(2-\ln3) = \dfrac{1}{f''(2+\ln3)} = \dfrac{1}{-4} = -\dfrac14'
             note: "Dérivée de la réciproque : 1 sur f prime evaluee au point correspondant."
 
@@ -1676,7 +1676,7 @@ entries:
           - math: '\int_{1/2}^1 f(x)\,dx = \int_0^{1/2} f(x)\,dx \quad (\text{question précédente})'
             note: "Les deux morceaux valent la même chose."
           - math: '\int_0^1 f(x)\,dx = 2\int_0^{1/2} f(x)\,dx'
-            note: "On additionne deux quantités egales : c'est le double de l'une d'elles."
+            note: "On additionne deux quantités égales : c'est le double de l'une d'elles."
       - id: qI-5a
         part: "Partie I, 5 — Changement de variable et primitive en arctan"
         stem: |-
@@ -1695,7 +1695,7 @@ entries:
           $$\int_0^{1/2} f(x)\,dx = \int_1^{\sqrt e} \dfrac{dt}{t^2+e}$$
         steps:
           - math: 't=e^{x} \ \Rightarrow\ dt=e^{x}\,dx=t\,dx \ \Rightarrow\ dx=\dfrac{dt}{t}'
-            note: "Dérivée de e puissance x : dt egale t fois dx."
+            note: "Dérivée de e puissance x : dt égale t fois dx."
           - math: 'x=0\to t=1,\qquad x=\tfrac12\to t=\sqrt e'
             note: "On transforme les deux bornes avec t = e puissance x."
           - math: 'f(x) = \dfrac{e^{x}}{e^{2x}+e} = \dfrac{t}{t^{2}+e} \ \Rightarrow\ f(x)\,dx = \dfrac{t}{t^{2}+e}\times\dfrac{dt}{t} = \dfrac{dt}{t^{2}+e}'
@@ -2066,8 +2066,8 @@ entries:
             note: "Croissance comparee du chapitre 5 : u fois e puissance moins u tend vers 0."
           - math: '\lim_{u\to+\infty} e^{-u} = 0 \quad (R4)'
             note: "e puissance moins u tend vers 0 quand u tend vers plus l'infini."
-          - math: '\lim_{x\to0^+} f(x) = 0+0 = 0 = f(0) \ \Rightarrow\ f \text{ continue a droite en } 0'
-            note: "Somme de deux limites nulles : la limite vaut f(0), continuite a droite etablie."
+          - math: '\lim_{x\to0^+} f(x) = 0+0 = 0 = f(0) \ \Rightarrow\ f \text{ continue à droite en } 0'
+            note: "Somme de deux limites nulles : la limite vaut f(0), continuite à droite etablie."
       - id: q1-1b
         stem: |-
           **(0,5 pt)** Montrer que la fonction $f$ est dérivable à droite en $0$.
@@ -2088,8 +2088,8 @@ entries:
             note: "On écrit u carré e puissance moins u comme un carré pour reutiliser la même croissance comparee."
           - math: '\Rightarrow\ u^2e^{-u} \to 0^2 = 0'
             note: "Le carré d'une quantité qui tend vers 0 tend vers 0."
-          - math: '\lim_{x\to0^+} \frac{f(x)}{x} = 0+0=0 \ \Rightarrow\ f \text{ dérivable a droite en } 0,\ f''_d(0)=0'
-            note: "Limite finie du taux d'accroissement : f est dérivable a droite en 0, de nombre derive 0."
+          - math: '\lim_{x\to0^+} \frac{f(x)}{x} = 0+0=0 \ \Rightarrow\ f \text{ dérivable à droite en } 0,\ f''_d(0)=0'
+            note: "Limite finie du taux d'accroissement : f est dérivable à droite en 0, de nombre derive 0."
       - id: q1-1c
         stem: |-
           **(0,5 pt)** Montrer que la fonction $f$ est dérivable sur $]0, +\infty[$ puis calculer $f'(x)$ pour tout $x$ dans l'intervalle $]0, +\infty[$.
@@ -2476,9 +2476,9 @@ entries:
           - math: '\int_0^x(1-t)\,dt \le \int_0^x\dfrac1{1+t}\,dt \le \int_0^x(1-t+t^2)\,dt \quad (\text{comparaison, intégration de la question précédente sur } [0,x])'
             note: "On integre l'encadrement de la question précédente sur [0, x]."
           - math: '\int_0^x(1-t)\,dt = x-\dfrac{x^2}2 \, ;\qquad \int_0^x\dfrac1{1+t}\,dt = \ln(1+x) \quad (\text{primitive } u''/u)'
-            note: "Primitive du polynôme a gauche ; primitive de 1 sur (1+t) au milieu, qui vaut ln(1+t)."
+            note: "Primitive du polynôme à gauche ; primitive de 1 sur (1+t) au milieu, qui vaut ln(1+t)."
           - math: '\int_0^x(1-t+t^2)\,dt = x-\dfrac{x^2}2+\dfrac{x^3}3'
-            note: "Primitive du polynôme a droite."
+            note: "Primitive du polynôme à droite."
           - math: 'x-\dfrac{x^2}2 \le \ln(1+x) \le x-\dfrac{x^2}2+\dfrac{x^3}3'
             note: "On rassemble les trois calculs dans l'encadrement."
           - math: '\Rightarrow\ -\dfrac{x^2}2 \le -x+\ln(1+x) \le -\dfrac{x^2}2+\dfrac{x^3}3 \quad (\text{on soustrait } x \text{ aux trois membres})'
@@ -2555,7 +2555,7 @@ entries:
           $$\lim_{n\to+\infty} a_n = +\infty$$
         steps:
           - math: 'a_n\ge1 \ \Rightarrow\ \dfrac1{a_n}\le1 \ \Rightarrow\ \dfrac2{3a_n}\le\dfrac23 \ \Rightarrow\ 1-\dfrac2{3a_n}\ge\dfrac13'
-            note: "On minore le membre de gauche de l'encadrement précédent, grâce a a_n supérieur ou egal a 1."
+            note: "On minore le membre de gauche de l'encadrement précédent, grâce a a_n supérieur ou égal a 1."
           - math: '\dfrac{2a_n^2}n \ge 1-\dfrac2{3a_n} \ge \dfrac13 \ \Rightarrow\ a_n^2\ge\dfrac n6 \ \Rightarrow\ a_n\ge\sqrt{\dfrac n6} \quad (a_n>0)'
             note: "On combine avec la question 3-b, puis on isole a_n par racine carree."
           - math: '\sqrt{\dfrac n6}\xrightarrow[n\to+\infty]{}+\infty \ \Rightarrow\ \lim_{n\to+\infty} a_n = +\infty \quad (\text{théorème de comparaison})'
@@ -2724,7 +2724,7 @@ entries:
           - math: 'n=0\ :\ f_0''(x) = -\dfrac{2e^x}{(1+e^x)^2} < 0 \quad (\forall x\in\mathbb{R})'
             note: "Pour n=0, f_n prime est l'oppose d'une quantité strictement positive : toujours négative."
           - math: 'n\ge1\ :\ f_n''(x) = n-\dfrac{2e^x}{(1+e^x)^2} \ge n-\dfrac12 \ge \dfrac12 > 0 \quad (\forall x\in\mathbb{R})'
-            note: "Pour n supérieur ou egal a 1, le terme soustrait ne depasse jamais 1/2 : f_n prime reste strictement positive."
+            note: "Pour n supérieur ou égal a 1, le terme soustrait ne depasse jamais 1/2 : f_n prime reste strictement positive."
       - id: q3a
         part: "3 — Tangente et point d'inflexion"
         stem: |-

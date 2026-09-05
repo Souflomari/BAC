@@ -300,7 +300,7 @@ entries:
           - math: '\lim_{x\to+\infty}\left(f(x)-x\right) = 0 - 0 = 0 \quad (\text{mêmes deux limites qu''en question 1a})'
             note: "Les deux fractions s'effacent, exactement comme dans la question précédente : rien a recalculer."
           - math: '\lim_{x\to+\infty}\left(f(x)-x\right)=0 \ \Longrightarrow\ (C) \text{ admet pour asymptote } (D): y=x \text{ au voisinage de } +\infty'
-            note: "Écart nul a l'infini entre la courbe et la droite : c'est la définition même d'une asymptote oblique, pas un théorème a part."
+            note: "Écart nul à l'infini entre la courbe et la droite : c'est la définition même d'une asymptote oblique, pas un théorème a part."
       - id: qII1c
         part: "Partie II, 1) — Limite de f en −∞"
         stem: |-
@@ -431,7 +431,7 @@ entries:
           - math: 'x^{2}-5x+4 = (x-1)(x-4) \qquad e^{-x}>0 \ (\forall x) \ \Longrightarrow\ \text{signe de } f^{(2)}(x) = \text{signe de } (x-1)(x-4)'
             note: "On factorise le trinome ; le facteur exponentiel, toujours positif, ne pèse jamais sur le signe."
           - math: '(x-1)(x-4) < 0 \text{ sur } \left]1,4\right[ \qquad (x-1)(x-4) > 0 \text{ ailleurs, avec changement strict en } x=1 \text{ et } x=4'
-            note: "Deux racines simples et distinctes : le signe bascule réellement a chaque racine, pas un simple contact avec zéro."
+            note: "Deux racines simples et distinctes : le signe bascule réellement à chaque racine, pas un simple contact avec zéro."
           - math: 'f^{(2)} \text{ s''annule en changeant de signe en } x=1 \text{ et en } x=4 \ \Longrightarrow\ (C) \text{ admet deux points d''inflexion, d''abscisses } 1 \text{ et } 4'
             note: "Définition du point d'inflexion (chapitre 6) : changement STRICT de signe de la dérivée seconde, verifie ici aux deux racines."
       - id: qII5
@@ -468,7 +468,7 @@ entries:
       - id: qII6b
         part: "Partie II, 6) — Intégration par parties"
         stem: |-
-          **(0,75 pt)** A l'aide d'une intégration par parties montrer que $\displaystyle\int_{0}^{1} x e^{-x}\,dx = \dfrac{e - 2}{e}$.
+          **(0,75 pt)** à l'aide d'une intégration par parties montrer que $\displaystyle\int_{0}^{1} x e^{-x}\,dx = \dfrac{e - 2}{e}$.
         reasoning: |-
           $x\,e^{-x}$ est un produit dont aucun des deux facteurs ne se primitive facilement avec l'autre en place — le signal exact du chapitre 8 de « Calcul intégral » pour sortir l'intégration par parties. Choisis $u=x$ (à dériver, ça devient $1$ : plus simple) et $v'=e^{-x}$ (à primitiver, immédiat) — jamais l'inverse : dériver $e^{-x}$ ne le simplifierait pas, il resterait une exponentielle.
         steps:
@@ -557,4 +557,4 @@ entries:
           - math: 'f(L)=L \iff (L^{2}-L)e^{-L}=0 \iff L^{2}-L=0 \iff L(L-1)=0 \iff L=0 \text{ ou } L=1'
             note: "e puissance moins L n'est jamais nul : seul le facteur L(L moins 1) peut s'annuler."
           - math: '(u_{n}) \text{ décroissante et } u_{0}=\dfrac12 \ \Longrightarrow\ L \le \dfrac12 < 1 \ \Longrightarrow\ L \ne 1 \ \Longrightarrow\ L = 0'
-            note: "La suite décroît a partir d'un demi : la limite ne peut pas être 1, donc elle vaut 0."
+            note: "La suite décroît à partir d'un demi : la limite ne peut pas être 1, donc elle vaut 0."

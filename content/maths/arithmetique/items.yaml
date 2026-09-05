@@ -226,7 +226,7 @@ items:
       Exact : $250 = 7 \times 35 + 5$ avec $0 \le 5 < 7$. Le reste est bien
       l'unique entier de $\{0,\dots,6\}$ qui rend l'égalité vraie.
     solution: |
-      On cherche le plus grand multiple de $7$ inférieur ou egal a $250$.
+      On cherche le plus grand multiple de $7$ inférieur ou égal à $250$.
       $$7 \times 35 = 245$$
       $$250 - 245 = 5$$
       Comme $0 \le 5 < 7$, la division euclidienne s'écrit $250 = 7 \times 35 + 5$ :
@@ -441,7 +441,7 @@ items:
         feedback: >
           La taille de $x, y$ n'y change rien : le membre de gauche reste un
           multiple de $\mathrm{PGCD}(6,4) = 2$, donc toujours pair, jamais
-          egal a $5$.
+          égal à $5$.
       - id: D
         text: "Non, car $6$ et $4$ ne sont pas premiers entre eux"
         correct: false
@@ -460,7 +460,7 @@ items:
       si et seulement si $\mathrm{PGCD}(a, b) \mid c$.
       $$\mathrm{PGCD}(6, 4) = 2$$
       Or $2$ ne divise pas $5$ (qui est impair). Donc l'équation n'a aucune
-      solution entière : tout $6x + 4y$ est pair, jamais egal a $5$.
+      solution entière : tout $6x + 4y$ est pair, jamais égal à $5$.
 
   - id: AR-7
     rung: "R0"
@@ -667,7 +667,7 @@ items:
       bien $6$, un entier de $\{0,\dots,6\}$.
     solution: |
       On cherche $q, r$ entiers avec $-50 = 7q + r$ et $0 \le r < 7$. Le
-      multiple de $7$ juste en dessous ou egal a $-50$ est $7 \times (-8)
+      multiple de $7$ juste en dessous ou égal à $-50$ est $7 \times (-8)
       = -56$ :
       $$-50 = 7 \times (-8) + 6$$
       Comme $0 \le 6 < 7$, le quotient est $-8$ et le reste est $6$.
@@ -901,7 +901,7 @@ items:
         misconception: mc.math.maths_arithmetique.pgcd-plus-grand-oublie
         feedback: >
           Tu regardes la mauvaise colonne : l'algorithme d'Euclide
-          produit une suite de quotients ET de restes a chaque division,
+          produit une suite de quotients ET de restes à chaque division,
           mais c'est le dernier RESTE non nul qui est le PGCD, pas le
           quotient.
       - id: D
@@ -1167,7 +1167,7 @@ items:
         text: "Non : $143 = 11 \\times 13$"
         correct: true
       - id: C
-        text: "Non, car tout nombre impair supérieur a $100$ est compose"
+        text: "Non, car tout nombre impair supérieur à $100$ est compose"
         correct: false
         misconception: mc.math.maths_arithmetique.primalite-test-incomplet
         feedback: >
@@ -1244,7 +1244,7 @@ items:
       = 2^2\times3 = 12$. Le facteur $5$ (absent de $84$) et $7$ (absent
       de $360$) ne sont pas retenus.
     solution: |
-      A partir des decompositions
+      à partir des decompositions
       $$360 = 2^3\times3^2\times5 \qquad 84 = 2^2\times3\times7$$
       le PGCD garde les facteurs premiers COMMUNS avec le plus PETIT
       exposant :
@@ -1290,9 +1290,9 @@ items:
         correct: false
         misconception: mc.math.maths_arithmetique.diviser-relation-inversee
         feedback: >
-          "Diviser" n'est pas "être egal a". Par exemple $7 \mid
+          "Diviser" n'est pas "être égal a". Par exemple $7 \mid
           14\times3$ (car $14\times3=42=7\times6$) et $7\mid14$, sans que
-          $7$ soit egal a $14$ ni a $3$.
+          $7$ soit égal à $14$ ni a $3$.
       - id: D
         text: "$7 \\mid a$ ou $7 \\mid b$"
         correct: true
@@ -1360,7 +1360,7 @@ items:
       $\mathbb{Z}^2$ si et seulement si $\mathrm{PGCD}(a,b) \mid c$.
       $$\mathrm{PGCD}(15,6) = 3$$
       Or $3 \mid 9$ (car $9 = 3\times3$), donc l'équation $15x+6y=9$
-      admet bien des solutions entières (une infinite, obtenues a partir
+      admet bien des solutions entières (une infinite, obtenues à partir
       d'une solution particulière).
 
   - id: AR-24
@@ -1437,7 +1437,7 @@ items:
         misconception: mc.math.maths_arithmetique.solution-unique-vs-infinie
         feedback: >
           Des qu'une équation $ax+by=c$ a UNE solution (avec
-          $\mathrm{PGCD}(a,b) \mid c$), elle en a une INFINITE : a partir
+          $\mathrm{PGCD}(a,b) \mid c$), elle en a une INFINITE : à partir
           d'une solution particulière $(x_0,y_0)$, on obtient toutes les
           autres par $x=x_0+\frac{b}{d}t$, $y=y_0-\frac{a}{d}t$,
           $t\in\mathbb{Z}$.
@@ -1460,7 +1460,7 @@ items:
           Le nombre $8$ qui apparaît ici est le second membre de
           l'équation, pas un compte de solutions. Des que
           $\mathrm{PGCD}(a,b)$ divise $c$, l'ensemble des solutions
-          entières est infini, pas un nombre fini egal a $c$.
+          entières est infini, pas un nombre fini égal à $c$.
     correct_feedback: >
       Exact. Comme $\mathrm{PGCD}(112,76)=4$ et $4\mid8$, l'équation
       $112x+76y=8$ admet des solutions, et comme pour toute équation de
@@ -1492,7 +1492,7 @@ items:
         misconception: mc.math.maths_arithmetique.solution-mise-a-echelle
         feedback: >
           $(-2,3)$ verifie $112x+76y=4$, pas $8$ : c'est la relation de
-          départ, non mise a l'échelle. Il faut multiplier toute
+          départ, non mise à l'échelle. Il faut multiplier toute
           l'identité par $8/4=2$ pour atteindre le second membre voulu.
       - id: B
         text: "$(-2, 6)$, obtenue en doublant seulement la seconde coordonnée de l'identité"

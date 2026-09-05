@@ -153,7 +153,7 @@ entries:
           - math: '(u\,m)^8 = u^8\,m^8 \equiv u^8\,(-\,n^8) = -\,(u\,n)^8 \equiv -1 \pmod{2969}'
             note: "On multiplie par u puissance 8 ; (u fois n) puissance 8 est congru a 1 car u fois n est congru a 1 (chapitre 3)."
           - math: '(u\,m)^{2968} = \big((u\,m)^8\big)^{371} \equiv (-1)^{371} = -1 \pmod{2969}'
-            note: "2968 egale 8 fois 371 ; 371 est impair, donc moins un puissance 371 vaut moins un."
+            note: "2968 égale 8 fois 371 ; 371 est impair, donc moins un puissance 371 vaut moins un."
       - id: q3
         stem: |-
           **(0,5 pt)** Montrer que $2969$ ne divise pas $u \times m$
@@ -276,7 +276,7 @@ entries:
           - math: '7 \times 2 = 14 \equiv 1 \pmod{13}'
             note: "2 est l'inverse de 7 modulo 13, trouve par tatonnement."
           - math: '2 \times 7x^3 \equiv 2 \times 5 \pmod{13} \implies x^3 \equiv 10 \pmod{13}'
-            note: "On multiplie les deux membres par cet inverse 2 : a gauche il reste x cube (2 fois 7 vaut 1), a droite 2 fois 5 egale 10."
+            note: "On multiplie les deux membres par cet inverse 2 : à gauche il reste x cube (2 fois 7 vaut 1), à droite 2 fois 5 égale 10."
       - id: q4
         stem: |-
           **(0,5 pt)** En déduire que : $x^{12} \equiv 3\ [13]$
@@ -286,11 +286,11 @@ entries:
           Reste à calculer $10^4$ modulo 13 sans le calculer en entier. $10^2 = 100$, et $100 = 7\times13+9$, donc $10^2 \equiv 9 \pmod{13}$. Alors $10^4 = (10^2)^2 \equiv 9^2 = 81 \pmod{13}$, et $81 = 6\times13+3$, donc $81 \equiv 3 \pmod{13}$. D'où $x^{12} \equiv 3 \pmod{13}$.
         steps:
           - math: 'x^{12} = (x^3)^4 \equiv 10^4 \pmod{13}'
-            note: "12 egale 3 fois 4 ; on élève x cube congru a 10 a la puissance 4."
+            note: "12 égale 3 fois 4 ; on élève x cube congru a 10 a la puissance 4."
           - math: '10^2 = 100 \equiv 9 \pmod{13}'
-            note: "100 egale 7 fois 13 plus 9."
+            note: "100 égale 7 fois 13 plus 9."
           - math: '10^4 = (10^2)^2 \equiv 9^2 = 81 \equiv 3 \pmod{13}'
-            note: "81 egale 6 fois 13 plus 3 : donc x puissance douze congru a 3 modulo 13."
+            note: "81 égale 6 fois 13 plus 3 : donc x puissance douze congru a 3 modulo 13."
       - id: q5
         part: "Partie B — La contradiction : deux valeurs pour $x^{12}$"
         stem: |-
@@ -347,7 +347,7 @@ entries:
           - math: 'p \mid n \implies p \mid ny'
             note: "p divise n (c'est son plus petit diviseur premier), donc p divise tout multiple de n, en particulier ny."
           - math: '(x+1)^n - x^n = ny \equiv 0 \pmod p'
-            note: "L'équation (E_n) donne (x+1) puissance n moins x puissance n egale ny, congru a 0 modulo p."
+            note: "L'équation (E_n) donne (x+1) puissance n moins x puissance n égale ny, congru a 0 modulo p."
           - math: '(x+1)^n \equiv x^n \pmod p'
             note: "On reecrit la différence congrue a 0 comme une égalité de congruences."
       - id: q2
@@ -367,7 +367,7 @@ entries:
           - math: 'p\ \text{premier et}\ p \mid (x+1)^n \implies p \mid (x+1)'
             note: "Lemme d'Euclide (chapitre 7) : un premier qui divise une puissance divise la base."
           - math: 'p \mid x \ \text{et}\ p \mid (x+1) \implies p \mid 1'
-            note: "p diviserait alors leur différence, qui vaut 1 : impossible car p est supérieur ou egal a 2."
+            note: "p diviserait alors leur différence, qui vaut 1 : impossible car p est supérieur ou égal a 2."
           - math: 'p \nmid x \ \text{et, par le même argument,}\ p \nmid (x+1) \implies \mathrm{PGCD}(p,x) = \mathrm{PGCD}(p,x+1) = 1'
             note: "Même raisonnement en echangeant les roles de x et x+1 : p est premier avec les deux."
       - id: q3
@@ -381,7 +381,7 @@ entries:
           - math: 'x^{p-1} \equiv 1 \pmod p \quad \text{et} \quad (x+1)^{p-1} \equiv 1 \pmod p'
             note: "Petit théorème de Fermat applique a x et a (x+1), tous deux premiers avec p (question précédente)."
           - math: '(x+1)^{p-1} \equiv 1 \equiv x^{p-1} \pmod p'
-            note: "Les deux congruences partagent la même valeur 1 : elles sont donc egales entre elles."
+            note: "Les deux congruences partagent la même valeur 1 : elles sont donc égales entre elles."
       - id: q4
         part: "Partie B — Le cas $n$ pair : pas de solution"
         stem: |-
@@ -635,7 +635,7 @@ entries:
           - math: '\mathrm{PGCD}(43,47) = 1 \ \text{et}\ 43 \mid 47(x-11) \implies 43 \mid (x-11)'
             note: "43 et 47 sont deux premiers distincts, donc premiers entre eux (chapitre 5) ; Gauss (chapitre 6) isole x moins 11."
           - math: 'x = 11 + 43k, \qquad y = 12 + 47k \qquad (k \in \mathbb{Z})'
-            note: "On reporte x moins 11 egale 43k dans l'égalité : 47k egale y moins 12."
+            note: "On reporte x moins 11 égale 43k dans l'égalité : 47k égale y moins 12."
       - id: q3
         part: "Partie II — Fermat modulo $43$, l'équation (F)"
         stem: |-
@@ -680,7 +680,7 @@ entries:
           L'équivalence est donc complète : $(F) \iff x \equiv 11 \pmod{43}$. L'ensemble des solutions est $S = \{\, 11 + 43k \ : \ k \in \mathbb{Z} \,\}$.
         steps:
           - math: 'x \equiv 11 \pmod{43} \implies x^{42} \equiv 1 \pmod{43} \ \text{et}\ 4x \equiv 44 \equiv 1 \pmod{43}'
-            note: "Réciproque : Fermat redonne x puissance 42 congru a 1, et 4 fois 11 egale 44 congru a 1."
+            note: "Réciproque : Fermat redonne x puissance 42 congru a 1, et 4 fois 11 égale 44 congru a 1."
           - math: 'x^{42} \equiv 4x \pmod{43} \implies x(x^{41}-4) \equiv 0 \pmod{43} \implies x^{41} \equiv 4 \pmod{43}'
             note: "43 premier et ne divise pas x (lemme d'Euclide, chapitre 7) : force x puissance 41 congru a 4."
           - math: 'S = \{\, 11 + 43k \ : \ k \in \mathbb{Z} \,\}'
@@ -713,7 +713,7 @@ entries:
           En reportant dans $x = 11 + 43k$ : $x = 11 + 43(12+47t) = 11 + 516 + 43 \times 47\,t = 527 + 2021t$ (car $43 \times 47 = 2021$). D'où $x \equiv 527 \pmod{2021}$.
         steps:
           - math: 'x \equiv 11 \pmod{43} \implies x = 11 + 43k \ (k \in \mathbb{Z})'
-            note: "On écrit x a partir de la première congruence de (S prime)."
+            note: "On écrit x à partir de la première congruence de (S prime)."
           - math: '11 + 43k \equiv 10 \pmod{47} \implies 43k \equiv -1 \pmod{47}'
             note: "On reporte dans la seconde congruence x congru a 10 modulo 47."
           - math: '47 \times 11 - 43 \times 12 = 1 \implies 43 \times 12 \equiv -1 \pmod{47}'
@@ -820,7 +820,7 @@ entries:
           - math: '0 \equiv 2 \pmod p \implies p \mid 2'
             note: "Or (E) donne x carré congru a 2 : contradiction avec 0 congru a 2."
           - math: 'p\ \text{premier impair} \implies p \geq 3 \implies p \nmid 2 \implies \mathrm{PGCD}(p,x) = 1'
-            note: "p est supérieur ou egal a 3 et ne divise pas 2 : impossible, donc p ne divise pas x, et p premier donne p premier avec x (chapitre 5)."
+            note: "p est supérieur ou égal a 3 et ne divise pas 2 : impossible, donc p ne divise pas x, et p premier donne p premier avec x (chapitre 5)."
       - id: q4
         stem: |-
           **(0,5 pt)** En déduire que : $2^{\frac{p-1}{2}} \equiv 1\ [p]$ *(On pourra utiliser le théorème de Fermat.)*
@@ -874,7 +874,7 @@ entries:
           - math: '(1+i)^p = \left(\sqrt2\right)^p\left(\cos\frac{p\pi}{4} + i\sin\frac{p\pi}{4}\right)'
             note: "Formule de Moivre, appliquee a la forme trigonométrique précédente."
           - math: '\left(\sqrt2\right)^p = 2^{\frac{p}{2}} \implies (1+i)^p = 2^{\frac{p}{2}}\cos\!\left(p\frac{\pi}{4}\right) + i\,2^{\frac{p}{2}}\sin\!\left(p\frac{\pi}{4}\right)'
-            note: "Racine de 2 puissance p egale 2 puissance p demi : c'est exactement l'égalité demandee."
+            note: "Racine de 2 puissance p égale 2 puissance p demi : c'est exactement l'égalité demandee."
       - id: q7
         stem: |-
           **(0,5 pt)** On admet que : $(1+i)^p = \displaystyle\sum_{k=0}^{k=\frac{p-1}{2}} (-1)^k C_p^{2k} + i \sum_{k=0}^{k=\frac{p-1}{2}} (-1)^k C_p^{2k+1}$. Montrer que : $2^{\frac{p}{2}}\cos\!\left(p\dfrac{\pi}{4}\right) \in \mathbb{Z}$ et $2^{\frac{p}{2}}\cos\!\left(p\dfrac{\pi}{4}\right) \equiv 1\ [p]$ *(on pourra utiliser la question 3-)*
@@ -890,7 +890,7 @@ entries:
           Donc $2^{\frac{p}{2}}\cos\!\left(p\frac{\pi}{4}\right) \equiv 1 \pmod p$.
         steps:
           - math: '2^{\frac{p}{2}}\cos\!\left(p\frac{\pi}{4}\right) = \sum_{k=0}^{\frac{p-1}{2}} (-1)^k C_p^{2k}'
-            note: "On egale les deux ecritures de la partie réelle de (1+i) puissance p."
+            note: "On égale les deux ecritures de la partie réelle de (1+i) puissance p."
           - math: 'C_p^{2k} \in \mathbb{Z}\ \text{pour tout}\ k \implies \sum_{k=0}^{\frac{p-1}{2}} (-1)^k C_p^{2k} \in \mathbb{Z}'
             note: "Une somme finie de coefficients binomiaux, entiers par nature, reste un entier."
           - math: 'k \in \{1,\ldots,\tfrac{p-1}{2}\} \implies 2k \in \{1,\ldots,p-1\} \implies p \mid C_p^{2k}'
@@ -1254,7 +1254,7 @@ entries:
           - math: '11 \mid \left(2^{2n+1}-1\right) \implies 2^{\frac{11-1}{2}} \equiv 1 \pmod{11}\ \text{(question précédente, p=11)}'
             note: "Hypothèse absurde : la question 3-a, appliquee avec p = 11, donne 2 puissance 5 congru a 1."
           - math: '2^5 = 32 \equiv 10 \pmod{11} \ \text{et}\ 10 \not\equiv 1 \pmod{11}'
-            note: "Calcul direct : 32 egale 2 fois 11 plus 10. Contradiction avec la congruence attendue."
+            note: "Calcul direct : 32 égale 2 fois 11 plus 10. Contradiction avec la congruence attendue."
           - math: '\mathrm{PGCD}\!\left(11,\,2^{2n+1}-1\right) = 1 \implies (\exists\ x,y \in \mathbb{Z})\ 11x + \left(2^{2n+1}-1\right)y = 1'
             note: "11 ne divise pas 2 puissance 2n+1 moins 1 : le PGCD vaut donc 1, et Bezout (chapitre 5) fournit x et y."
       - id: q6

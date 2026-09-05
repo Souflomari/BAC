@@ -9,7 +9,7 @@ misconceptions:
   - id: mc.physics.pc_chute_plans.acceleration-indefinie-avec-frottement
     label: "« Avec frottement, l'objet accelere indéfiniment / tombe de plus en plus vite tout du long »"
     description: "L'élève ignore que le frottement croit avec la vitesse et finit par compenser le poids ; il generalise le comportement du régime initial ($a=g$) a toute la chute."
-    contradicts_principle: "L'accélération décroît continument depuis $g$ (régime initial) vers 0 (régime permanent) a mesure que $kv$ se rapproche de $mg$ ; la vitesse plafonne a $v_\\ell=mg/k$, elle n'augmente pas indéfiniment."
+    contradicts_principle: "L'accélération décroît continûment depuis $g$ (régime initial) vers 0 (régime permanent) à mesure que $kv$ se rapproche de $mg$ ; la vitesse plafonne a $v_\\ell=mg/k$, elle n'augmente pas indéfiniment."
 
   - id: mc.physics.pc_chute_plans.masse-jamais-determinante-en-chute
     label: "« La masse ne joue jamais dans une chute (comme en chute libre) »"
@@ -27,9 +27,9 @@ misconceptions:
     contradicts_principle: "$a_i\\,\\Delta t$ est homogène a une vitesse (accélération x temps) ; $v_i+a_i$ additionnerait une vitesse et une accélération, ce qui n'a pas de sens physique."
 
   - id: mc.physics.pc_chute_plans.euler-pente-non-recalculee
-    label: "« La pente $a_i$ reste fixe (egale a $g$) a chaque pas, comme en chute libre »"
-    description: "L'élève n'actualise pas $a_i$ a partir de $v_i$ a chaque étape ; il applique implicitement le modèle sans frottement tout au long du tableau."
-    contradicts_principle: "$a_i=g-\\frac{k}{m}v_i$ dépend de $v_i$ et doit être recalculee a chaque ligne : c'est cette actualisation qui fait apparaître l'effet du frottement (la pente décroît ligne après ligne)."
+    label: "« La pente $a_i$ reste fixe (égale à $g$) à chaque pas, comme en chute libre »"
+    description: "L'élève n'actualise pas $a_i$ à partir de $v_i$ à chaque étape ; il applique implicitement le modèle sans frottement tout au long du tableau."
+    contradicts_principle: "$a_i=g-\\frac{k}{m}v_i$ dépend de $v_i$ et doit être recalculée à chaque ligne : c'est cette actualisation qui fait apparaître l'effet du frottement (la pente décroît ligne après ligne)."
 
   - id: mc.physics.pc_chute_plans.orbite-sans-gravite
     label: "« En orbite il n'y a pas de gravite / le satellite ne subit aucune force »"
@@ -52,12 +52,12 @@ misconceptions:
     contradicts_principle: "L'etablissement (egaler $v=\\sqrt{GM/r}$ et $v=2\\pi r/T$) donne directement $T^2/r^3=4\\pi^2/GM$ : le carré est sur la période, le cube sur le rayon."
 
   - id: mc.physics.pc_chute_plans.geostationnaire-immobile-absolu
-    label: "« Le satellite geostationnaire est immobile dans l'espace / n'a pas de vitesse »"
-    description: "L'élève confond « immobile par rapport au sol » et « immobile dans l'absolu », en oubliant le référentiel geocentrique."
-    contradicts_principle: "Dans le référentiel geocentrique, le satellite geostationnaire parcourt un cercle a sa vitesse orbitale (quelques km/s) ; il n'est immobile que par rapport a un observateur au sol, parce qu'il tourne a la même vitesse angulaire que la Terre."
+    label: "« Le satellite géostationnaire est immobile dans l'espace / n'a pas de vitesse »"
+    description: "L'élève confond « immobile par rapport au sol » et « immobile dans l'absolu », en oubliant le référentiel géocentrique."
+    contradicts_principle: "Dans le référentiel géocentrique, le satellite géostationnaire parcourt un cercle a sa vitesse orbitale (quelques km/s) ; il n'est immobile que par rapport a un observateur au sol, parce qu'il tourne a la même vitesse angulaire que la Terre."
 
   - id: mc.physics.pc_chute_plans.geostationnaire-toute-altitude
-    label: "« N'importe quelle altitude peut être geostationnaire »"
+    label: "« N'importe quelle altitude peut être géostationnaire »"
     description: "L'élève ne voit pas que la condition $T=T_{Terre}$ combinee a la 3e loi impose un rayon unique."
     contradicts_principle: "$T^2/r^3=4\\pi^2/GM_T$ relie $T$ et $r$ de façon biunivoque pour un astre donne : se donner $T=24\\ \\text{h}$ determine une seule valeur de $r$, pas une plage de rayons possibles."
 items:
@@ -76,20 +76,20 @@ items:
         text: "Elle reste constante, car aucune force horizontale n'agit sur le projectile"
         correct: true
       - id: B
-        text: "Elle diminue progressivement jusqu'a s'annuler"
+        text: "Elle diminue progressivement au cours du vol, jusqu'à finir par s'annuler"
         correct: false
         feedback: >
           Rien ne freine horizontalement : les frottements sont négligés et le
           poids est vertical. Sur l'axe horizontal, $a_x = 0$, donc $v_x$ ne
           diminue pas.
       - id: C
-        text: "Elle augmente, entrainee par la chute"
+        text: "Elle augmente, entraînée par la chute du projectile vers le sol"
         correct: false
         feedback: >
           La chute agit sur la composante VERTICALE. Les deux mouvements sont
           indépendants : le poids étant vertical, il ne modifie pas $v_x$.
       - id: D
-        text: "Elle s'annule au sommet de la trajectoire"
+        text: "Elle s'annule au sommet de la trajectoire, comme la composante verticale"
         correct: false
         feedback: >
           C'est $v_y$ qui s'annule au sommet, pas $v_x$. Au sommet la vitesse
@@ -116,7 +116,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Horizontale et non nulle, egale a $v_{0x}$"
+        text: "Horizontale et non nulle, égale à $v_{0x}$"
         correct: true
       - id: B
         text: "Nulle"
@@ -188,7 +188,7 @@ items:
       2e loi, le poids étant la seule force :
       $$m\vec a = m\vec g$$
       $$\vec a = \vec g$$
-      L'accélération ne dépend pas de $m$. A conditions initiales egales, les
+      L'accélération ne dépend pas de $m$. A conditions initiales égales, les
       deux billes suivent la même trajectoire.
 
   - id: CMP-4
@@ -204,19 +204,19 @@ items:
         text: "La distance horizontale entre le point de lancement et le point de retour au sol"
         correct: true
       - id: B
-        text: "La hauteur maximale atteinte par le projectile"
+        text: "La hauteur maximale atteinte par le projectile au cours de son vol"
         correct: false
         feedback: >
           Ca, c'est la FLECHE (hauteur du sommet). La portée est une distance
           HORIZONTALE, mesurée au sol.
       - id: C
-        text: "La longueur totale de la trajectoire parcourue"
+        text: "La longueur totale de la trajectoire réellement parcourue par le projectile"
         correct: false
         feedback: >
           La portée n'est pas la longueur de l'arc parabolique, mais la
           distance horizontale entre le départ et l'arrivée au sol.
       - id: D
-        text: "La vitesse du projectile au moment de l'impact"
+        text: "La vitesse du projectile au moment précis de son impact sur le sol"
         correct: false
         feedback: >
           Une portée est une distance (en mètres), pas une vitesse. Ne
@@ -281,32 +281,32 @@ items:
     skill_code: pc_chute_plans
     tags: []
     stem: >
-      Une particule chargee penetre avec une vitesse $\vec v_0$ dans un champ
+      Une particule chargée penetre avec une vitesse $\vec v_0$ dans un champ
       magnétique uniforme $\vec B$ perpendiculaire à $\vec v_0$ (poids négligé).
       Quelle est la nature de son mouvement dans le champ ?
     type: mcq
     choices:
       - id: A
-        text: "Circulaire uniforme : la force de Lorentz, perpendiculaire a la vitesse, ne change pas la norme de la vitesse et courbe la trajectoire en cercle"
+        text: "Circulaire uniforme : la force de Lorentz, perpendiculaire à la vitesse, n'en change pas la norme et courbe la trajectoire en cercle"
         correct: true
       - id: B
-        text: "Parabolique, comme un projectile dans le champ de pesanteur"
+        text: "Parabolique, exactement comme celle d'un projectile lancé dans le champ de pesanteur"
         correct: false
         feedback: >
           C'est confondre la force de Lorentz avec une force constante comme le
           poids. La force $\vec F = q\vec v\wedge\vec B$ n'a pas une direction
           fixe : elle reste perpendiculaire a une vitesse qui tourne. Une force
-          de norme constante toujours perpendiculaire a $\vec v$ donne un
+          de norme constante toujours perpendiculaire à $\vec v$ donne un
           cercle, pas une parabole.
       - id: C
-        text: "Rectiligne accelere : la force communique de la vitesse a la particule"
+        text: "Rectiligne accélérée : la force de Lorentz communique sans cesse de la vitesse supplémentaire à la particule chargée"
         correct: false
         feedback: >
-          La force de Lorentz est perpendiculaire a $\vec v$ : elle ne travaille
+          La force de Lorentz est perpendiculaire à $\vec v$ : elle ne travaille
           pas, donc la norme de la vitesse ne change pas ($dv/dt = 0$). Elle
           devie la particule sans l'accélérer ni la ralentir.
       - id: D
-        text: "Rectiligne uniforme : aucune force ne devie la particule"
+        text: "Rectiligne uniforme : aucune force ne vient dévier la particule chargée de sa direction initiale de propagation"
         correct: false
         feedback: >
           Comme $\vec B \perp \vec v_0$, la force $\vec F = q\vec v\wedge\vec B$
@@ -453,7 +453,7 @@ items:
         correct: true
     correct_feedback: >
       Exact : projete sur l'axe horizontal, le poids donne une composante
-      nulle a chaque instant, donc $a_x = 0$ quel que soit l'angle de
+      nulle à chaque instant, donc $a_x = 0$ quel que soit l'angle de
       lancement.
     solution: |
       Le poids $\vec P = m\vec g$ est purement vertical. Sa projection sur
@@ -472,24 +472,24 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Il a oublie que $\\vec g$ pointe vers le bas, donc dans le sens oppose a $Oy$ : sa composante sur cet axe est négative, $a_y = -g$"
+        text: "Il a oublié que $\\vec g$ pointe vers le bas, donc dans le sens opposé à $Oy$ : sa composante sur cet axe est négative, $a_y = -g$"
         correct: true
       - id: B
-        text: "Il n'y a pas d'erreur : $a_y = +g$ est toujours vrai, quel que soit le sens choisi pour l'axe"
+        text: "Il n'y a aucune erreur : $a_y = +g$ reste vrai quel que soit le sens choisi pour orienter l'axe"
         correct: false
         feedback: >
           Le signe de $a_y$ dépend entièrement du sens choisi pour $Oy$. Avec
           $Oy$ vers le haut, $\vec g$ (vers le bas) a une composante
           négative : $a_y = -g$, pas $+g$.
       - id: C
-        text: "L'erreur vient d'avoir oublie la masse dans la deuxième loi de Newton"
+        text: "L'erreur vient d'avoir oublié la masse du projectile dans l'écriture de la deuxième loi de Newton"
         correct: false
         feedback: >
           La masse n'est pas en cause ici : elle se simplifie des le départ
           ($\vec a = \vec g$). L'erreur porte uniquement sur le signe, lie a
           l'orientation de l'axe.
       - id: D
-        text: "L'erreur vient d'avoir pris une vitesse initiale positive au lieu de négative"
+        text: "L'erreur vient d'avoir pris une vitesse initiale positive au lieu de la prendre négative sur cet axe"
         correct: false
         feedback: >
           Le signe de $v_{0y}$ est indépendant de celui de $a_y$ : c'est une
@@ -524,7 +524,7 @@ items:
         feedback: >
           Aller plus vite a l'arrivée ne veut pas dire mettre moins de temps :
           $y(t)$ est une parabole symétrique par rapport a son sommet, ce qui
-          impose une durée de descente egale a celle de la montee.
+          impose une durée de descente égale a celle de la montee.
       - id: B
         text: "Exactement 1,0 s : la montee et la descente prennent le même temps, par symétrie de $y(t)$"
         correct: true
@@ -536,7 +536,7 @@ items:
           n'est pas un delai supplémentaire, c'est l'instant même ou la
           montee se termine et la descente commence.
       - id: D
-        text: "Impossible a savoir sans connaître la hauteur exacte atteinte au sommet"
+        text: "Impossible à savoir sans connaître la hauteur exacte atteinte au sommet"
         correct: false
         feedback: >
           La symétrie de la parabole $y(t)$ donne directement
@@ -602,32 +602,32 @@ items:
     tags: []
     stem: >
       Pour un projectile soumis uniquement a son poids (frottements
-      négligés), pourquoi peut-on affirmer que $a_x = 0$ a chaque instant du
+      négligés), pourquoi peut-on affirmer que $a_x = 0$ à chaque instant du
       vol ?
     type: mcq
     choices:
       - id: A
-        text: "Parce que la vitesse horizontale initiale $v_{0x}$ est toujours nulle"
+        text: "Parce que la vitesse horizontale initiale $v_{0x}$ est toujours nulle au départ du mouvement"
         correct: false
         feedback: >
           $v_{0x}$ n'est nulle que dans le cas particulier d'un lancer
           vertical ($\alpha=90^\circ$). En général $v_{0x}=v_0\cos\alpha \neq
           0$, et pourtant $a_x=0$ quand même.
       - id: B
-        text: "Parce que la masse du projectile est trop faible pour que $g$ agisse horizontalement"
+        text: "Parce que la masse du projectile est trop faible pour que $g$ puisse agir horizontalement sur lui"
         correct: false
         feedback: >
           La masse n'a aucun rôle ici : $a_x=0$ vient uniquement de la
           direction du poids (verticale), pas de la valeur de la masse,
           petite ou grande.
       - id: C
-        text: "Parce qu'au sommet de la trajectoire, la vitesse horizontale s'annule aussi, ce qui donne $a_x=0$"
+        text: "Parce qu'au sommet de la trajectoire la vitesse horizontale s'annule elle aussi, ce qui donne $a_x=0$"
         correct: false
         feedback: >
           C'est $v_y$ qui s'annule au sommet, pas $v_x$ : $v_x$ garde la
-          valeur $v_{0x}$ a chaque instant, y compris au sommet.
+          valeur $v_{0x}$ à chaque instant, y compris au sommet.
       - id: D
-        text: "Parce que le poids est une force purement verticale : sa projection sur l'axe horizontal est nulle a chaque instant"
+        text: "Parce que le poids est une force purement verticale : sa projection sur l'axe horizontal est nulle à chaque instant"
         correct: true
     correct_feedback: >
       Oui : le poids est la seule force, et il est purement vertical, donc sa
@@ -690,29 +690,29 @@ items:
     stem: >
       L'équation de la trajectoire
       $y(x) = \tan\alpha \cdot x - \dfrac{g}{2v_0^2\cos^2\alpha}x^2$ a été
-      obtenue en eliminant le temps entre $x(t)$ et $y(t)$. Que peut-on dire
+      obtenue en éliminant le temps entre $x(t)$ et $y(t)$. Que peut-on dire
       de la masse $m$ du projectile dans cette équation ?
     type: mcq
     choices:
       - id: A
-        text: "Elle a disparu seulement a cette étape, en se simplifiant lors de l'elimination du temps"
+        text: "Elle a disparu seulement à cette étape, en se simplifiant au moment de l'élimination du temps entre les deux équations"
         correct: false
         feedback: >
           Elle avait déjà disparu bien avant : des la deuxième loi de Newton,
-          $\vec a_G = \vec g$ ne contient plus $m$. L'elimination du temps
+          $\vec a_G = \vec g$ ne contient plus $m$. L'élimination du temps
           n'a rien simplifie de plus a ce sujet.
       - id: B
         text: "Elle n'apparaît nulle part : elle a déjà disparu des la deuxième loi de Newton ($\\vec a_G = \\vec g$), avant même d'écrire $x(t)$ et $y(t)$"
         correct: true
       - id: C
-        text: "Elle est cachee dans le terme $g$, qui dépend en réalité legerement de la masse du projectile"
+        text: "Elle est cachée dans le terme $g$, qui dépend en réalité légèrement de la masse du projectile considéré"
         correct: false
         feedback: >
           $g$ est l'accélération de pesanteur du lieu, indépendante de la
           masse de l'objet qui tombe : ce n'est pas une propriété du
           projectile.
       - id: D
-        text: "Elle intervient implicitement a travers $v_0$, qui dépend de la masse du lanceur"
+        text: "Elle intervient implicitement à travers $v_0$, qui dépend lui-même de la masse du lanceur utilisé"
         correct: false
         feedback: >
           $v_0$ est une donnée du problème (la vitesse a laquelle l'objet est
@@ -861,7 +861,7 @@ items:
         text: "Les deux tirs ont la même portée ET la même fleche, puisque les angles sont complementaires"
         correct: false
         feedback: >
-          Seule la portée est egale pour des angles complementaires
+          Seule la portée est égale pour des angles complementaires
           ($\sin(2\alpha)$ identique). La fleche dépend de $\sin^2\alpha$,
           qui diffère : le tir le plus incline monte plus haut.
       - id: B
@@ -898,7 +898,7 @@ items:
     stem: >
       Deux particules, l'une de charge positive et l'autre de charge
       négative (même masse, même valeur $|q|$), entrent avec la même vitesse
-      $\vec v_0$ dans le même champ $\vec B$ perpendiculaire a $\vec v_0$.
+      $\vec v_0$ dans le même champ $\vec B$ perpendiculaire à $\vec v_0$.
       Que peut-on dire de leurs trajectoires ?
     type: mcq
     choices:
@@ -910,7 +910,7 @@ items:
           de la charge intervient directement dans le sens de
           $\vec F = q\vec v\wedge\vec B$ : il ne disparaît pas.
       - id: B
-        text: "La particule positive n'est pas deviee du tout, seule la négative subit la force de Lorentz"
+        text: "La particule positive n'est pas déviée du tout, seule la négative subit la force de Lorentz"
         correct: false
         feedback: >
           La force de Lorentz agit sur toute charge non nulle, positive ou
@@ -920,7 +920,7 @@ items:
         text: "Elles décrivent des cercles de même rayon $R=mv_0/(|q|B)$, mais courbes en sens opposés, selon le signe de la charge"
         correct: true
       - id: D
-        text: "Les deux sont deviees dans le même sens, mais avec des rayons différents selon le signe de la charge"
+        text: "Les deux sont déviées dans le même sens, mais avec des rayons différents selon le signe de la charge"
         correct: false
         feedback: >
           $R=mv_0/(|q|B)$ ne dépend que de la VALEUR de $q$ (identique ici),
@@ -942,7 +942,7 @@ items:
     skill_code: pc_chute_plans
     tags: []
     stem: >
-      Le rayon de la trajectoire circulaire d'une particule chargee dans un
+      Le rayon de la trajectoire circulaire d'une particule chargée dans un
       champ magnetique uniforme vaut $R = \dfrac{m\,v_0}{|q|\,B}$. Laquelle
       de ces modifications, prise seule (toutes les autres grandeurs restant
       fixees), AUGMENTE ce rayon ?
@@ -1033,7 +1033,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Elle est supérieure a $8{,}0\\ \\text{m/s}$, car la chute lui communique de la vitesse dans toutes les directions, y compris horizontalement"
+        text: "Elle est supérieure à $8{,}0\\ \\text{m/s}$, car la chute lui communique de la vitesse dans toutes les directions, y compris horizontalement"
         correct: false
         feedback: >
           Le poids, qui provoque la chute, est purement vertical : il ne
@@ -1042,7 +1042,7 @@ items:
         text: "Elle vaut encore exactement $8{,}0\\ \\text{m/s}$ : que le sol soit plus bas que le point de lancement ne change rien a $a_x=0$"
         correct: true
       - id: C
-        text: "Elle est inférieure a $8{,}0\\ \\text{m/s}$, car une partie de la vitesse initiale se convertit progressivement en vitesse verticale"
+        text: "Elle est inférieure à $8{,}0\\ \\text{m/s}$, car une partie de la vitesse initiale se convertit progressivement en vitesse verticale"
         correct: false
         feedback: >
           Les deux axes sont indépendants : $v_{0x}$ ne se « convertit » pas
@@ -1052,14 +1052,14 @@ items:
         text: "Impossible a dire sans connaître la hauteur de la falaise"
         correct: false
         feedback: >
-          $a_x=0$ tient a chaque instant, quelle que soit la durée du vol ou
+          $a_x=0$ tient à chaque instant, quelle que soit la durée du vol ou
           la hauteur de chute : $v_x$ reste $v_{0x}$, hauteur connue ou non.
     correct_feedback: >
       $a_x=0$ tout au long du vol, quelle que soit la hauteur de la falaise :
-      $v_x$ reste egale a $v_0=8{,}0\ \text{m/s}$ du lancer jusqu'a
+      $v_x$ reste égale à $v_0=8{,}0\ \text{m/s}$ du lancer jusqu'a
       l'impact.
     solution: |
-      Seul le poids agit, purement vertical : $a_x=0$ a chaque instant, quel
+      Seul le poids agit, purement vertical : $a_x=0$ à chaque instant, quel
       que soit le niveau du sol d'arrivée. $v_x(t)=v_{0x}=8{,}0\ \text{m/s}$
       reste donc constante jusqu'a l'impact.
 
@@ -1074,20 +1074,20 @@ items:
       avec frottements fluides finit par atteindre un régime permanent, a
       vitesse limite constante. Un élève affirme : « Même ici, si le vol dure
       assez longtemps, la vitesse horizontale $v_x$ finira par se stabiliser
-      a une valeur limite, a cause de l'air. » Que penser de cette
+      a une valeur limite, à cause de l'air. » Que penser de cette
       affirmation, dans le cadre du modèle étudié ici (frottements
       négligés) ?
     type: mcq
     choices:
       - id: A
-        text: "Elle est vraie : comme en chute avec frottements, $v_x$ finit toujours par se stabiliser, quel que soit le modèle utilise"
+        text: "Elle est vraie : comme dans une chute avec frottements, la vitesse $v_x$ finit toujours par se stabiliser, quel que soit le modèle utilisé pour la décrire"
         correct: false
         feedback: >
           Cela importe le résultat d'un AUTRE modèle (avec frottements). Ici,
           les frottements sont explicitement négligés : rien ne peut faire
           varier $v_x$, ni la stabiliser a une limite.
       - id: B
-        text: "Elle est vraie uniquement pour de très longues portées, ou les frottements finissent par ne plus pouvoir être négligés"
+        text: "Elle est vraie uniquement pour de très longues portées, où les frottements de l'air finissent par ne plus pouvoir être négligés"
         correct: false
         feedback: >
           L'hypothèse « frottements négligés » est posée pour tout le
@@ -1097,7 +1097,7 @@ items:
         text: "Elle est hors-sujet ici : le modèle étudié néglige explicitement les frottements, donc $v_x = v_{0x}$ reste rigoureusement constante, sans jamais tendre vers une valeur limite"
         correct: true
       - id: D
-        text: "Elle est fausse, mais c'est la vitesse VERTICALE $v_y$, et non $v_x$, qui se stabiliserait a une vitesse limite dans ce modèle"
+        text: "Elle est fausse, mais c'est la vitesse VERTICALE $v_y$, et non $v_x$, qui se stabiliserait à une vitesse limite dans ce modèle"
         correct: false
         feedback: >
           Dans CE modèle (frottements négligés), aucune des deux composantes
@@ -1141,7 +1141,7 @@ items:
         also_reveals: []
         feedback: >
           Somme nulle ne veut pas dire absence de force. A $v_\ell$, le
-          frottement est au contraire maximal, exactement egal au poids
+          frottement est au contraire maximal, exactement égal au poids
           ($k v_\ell = mg$) : c'est leur somme qui s'annule, pas le
           frottement lui-même.
       - id: C
@@ -1164,7 +1164,7 @@ items:
           n'ont pas la même vitesse limite.
     correct_feedback: >
       Exact : a $v_\ell$, $dv/dt=0$ donc la somme des forces est nulle, ce
-      qui impose $k v_\ell = mg$ — le frottement y est maximal, egal au
+      qui impose $k v_\ell = mg$ — le frottement y est maximal, égal au
       poids, pas nul.
     solution: |
       Bilan : poids $mg$ et frottement $kv$ (frottement linéaire), axe
@@ -1172,7 +1172,7 @@ items:
       $$m\frac{dv}{dt} = mg - kv \implies \frac{dv}{dt} = g - \frac{k}{m}v$$
       A $v_\ell$, l'accélération est nulle :
       $$g - \frac{k}{m}v_\ell = 0 \implies k v_\ell = mg$$
-      Le frottement est donc maximal a cet instant, exactement egal au
+      Le frottement est donc maximal a cet instant, exactement égal au
       poids ; c'est leur somme (donc l'accélération) qui s'annule, pas le
       frottement.
 
@@ -1182,7 +1182,7 @@ items:
     skill_code: pc_chute_plans
     tags: [misconception_driven, frottement_fluide, resolution]
     stem: >
-      Une bille de masse $m=0{,}20\ \text{kg}$ est lachee sans vitesse
+      Une bille de masse $m=0{,}20\ \text{kg}$ est lâchée sans vitesse
       initiale dans un liquide visqueux ; le frottement est linéaire, de
       coefficient $k=2{,}0\ \text{kg/s}$ ($g\approx9{,}8\ \text{m/s}^2$). La
       2e loi donne $\dfrac{dv}{dt}=9{,}8-10{,}0\,v$ ($v$ en m/s, $t$ en s).
@@ -1190,7 +1190,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$v_\\ell$ correspond a l'instant ou le frottement s'annule completement ; comme $k=2{,}0\\ \\text{kg/s}\\neq 0$, cette bille n'atteint jamais de vitesse limite"
+        text: "$v_\\ell$ correspond à l'instant ou le frottement s'annule completement ; comme $k=2{,}0\\ \\text{kg/s}\\neq 0$, cette bille n'atteint jamais de vitesse limite"
         correct: false
         misconception: mc.physics.pc_chute_plans.frottement-disparait-a-vlim
         also_reveals: []
@@ -1205,7 +1205,7 @@ items:
         misconception: mc.physics.pc_chute_plans.acceleration-indefinie-avec-frottement
         also_reveals: []
         feedback: >
-          C'est l'inverse : a mesure que $v$ augmente, le frottement $kv$
+          C'est l'inverse : à mesure que $v$ augmente, le frottement $kv$
           augmente aussi et se rapproche du poids, donc l'accélération
           DIMINUE. Elle s'annule a $v_\ell=0{,}98\ \text{m/s}$ ; la vitesse
           ne croit pas indéfiniment.
@@ -1243,26 +1243,26 @@ items:
     tags: [misconception_driven, frottement_fluide, application_experimentale]
     stem: >
       Sur un graphe $v=f(t)$ obtenu en TP pour deux billes de même forme
-      (donc même $k$) mais de masses $m_1 < m_2$, lachees sans vitesse dans
+      (donc même $k$) mais de masses $m_1 < m_2$, lâchées sans vitesse dans
       le même fluide (frottement linéaire), on observe deux courbes
       distinctes, chacune montant vers une asymptote horizontale. Que
       peut-on en conclure ?
     type: mcq
     choices:
       - id: A
-        text: "Les deux asymptotes marquent l'instant ou le frottement disparaît sur chaque bille ; au-dela, seul le poids agit"
+        text: "Les deux asymptotes marquent l'instant où le frottement disparaît sur chaque bille ; au-delà de cet instant, seul le poids agit encore"
         correct: false
         misconception: mc.physics.pc_chute_plans.frottement-disparait-a-vlim
         also_reveals: []
         feedback: >
           Au palier, le frottement n'a pas disparu : il est au contraire
-          maximal et egal au poids ($kv_\ell = mg$). Ce qui s'annule, c'est
+          maximal et égal au poids ($kv_\ell = mg$). Ce qui s'annule, c'est
           la somme des forces, pas le frottement lui-même.
       - id: B
         text: "Les deux courbes montent vers des paliers différents : la bille $m_2$ (la plus lourde) se stabilise a une vitesse limite plus grande, car $v_\\ell = mg/k$ croit avec $m$"
         correct: true
       - id: C
-        text: "Ce ne sont pas de vrais paliers : si l'enregistrement durait plus longtemps, les deux courbes continueraient de monter"
+        text: "Ce ne sont pas de vrais paliers : si l'enregistrement durait plus longtemps, les deux courbes continueraient tranquillement de monter"
         correct: false
         misconception: mc.physics.pc_chute_plans.acceleration-indefinie-avec-frottement
         also_reveals: []
@@ -1272,7 +1272,7 @@ items:
           frottement a rejoint le poids. Prolonger l'enregistrement ne
           ferait pas remonter la courbe.
       - id: D
-        text: "Les deux billes devraient se stabiliser exactement a la même vitesse : la masse n'a pas d'effet sur un mouvement de chute"
+        text: "Les deux billes devraient se stabiliser exactement à la même vitesse : la masse n'a aucun effet sur un mouvement de chute dans un fluide"
         correct: false
         misconception: mc.physics.pc_chute_plans.masse-jamais-determinante-en-chute
         also_reveals: []
@@ -1281,7 +1281,7 @@ items:
           frottement, $v_\ell=mg/k$ dépend de $m$ : la bille la plus lourde
           atteint un palier plus haut.
     correct_feedback: >
-      Exact : $v_\ell = mg/k$ croit avec $m$ (a $k$ egal), donc la bille la
+      Exact : $v_\ell = mg/k$ croit avec $m$ (a $k$ égal), donc la bille la
       plus lourde ($m_2$) se stabilise a une vitesse limite plus grande que
       la bille $m_1$ — contraste direct avec la chute libre, ou la masse
       n'intervenait pas.
@@ -1304,11 +1304,11 @@ items:
     stem: >
       Dans la méthode d'Euler appliquee a une équation différentielle
       $\dfrac{dv}{dt}=a(v)$, avec un pas de temps $\Delta t$, comment
-      obtient-on $v_{i+1}$ a partir de $v_i$ ?
+      obtient-on $v_{i+1}$ à partir de $v_i$ ?
     type: mcq
     choices:
       - id: A
-        text: "$v_{i+1}=v_i+a_i$, ou $a_i$ est l'accélération calculée a partir de $v_i$"
+        text: "$v_{i+1}=v_i+a_i$, ou $a_i$ est l'accélération calculée à partir de $v_i$"
         correct: false
         misconception: mc.physics.pc_chute_plans.euler-oubli-dt
         also_reveals: []
@@ -1317,7 +1317,7 @@ items:
           incoherence dimensionnelle. Il manque le facteur $\Delta t$
           (accélération x temps = vitesse).
       - id: B
-        text: "$v_{i+1}=v_i+g\\,\\Delta t$, en gardant $a=g$ fixe a chaque pas"
+        text: "$v_{i+1}=v_i+g\\,\\Delta t$, en gardant $a=g$ fixe à chaque pas"
         correct: false
         misconception: mc.physics.pc_chute_plans.euler-pente-non-recalculee
         also_reveals: []
@@ -1326,7 +1326,7 @@ items:
           autre force dependant de $v$) : ca redonne la chute libre, pas la
           solution de l'équation différentielle etudiee.
       - id: C
-        text: "$v_{i+1}$ est la valeur exacte de $v$ a l'instant $t_{i+1}$, quel que soit le pas $\\Delta t$ choisi"
+        text: "$v_{i+1}$ est la valeur exacte de $v$ à l'instant $t_{i+1}$, quel que soit le pas $\\Delta t$ choisi"
         correct: false
         misconception: mc.physics.pc_chute_plans.euler-donne-valeur-exacte
         also_reveals: []
@@ -1336,18 +1336,18 @@ items:
           qu'approximativement. L'écart avec la vraie courbe se reduit
           quand $\Delta t$ diminue, sans jamais s'annuler pour un pas fini.
       - id: D
-        text: "$v_{i+1}=v_i+a_i\\,\\Delta t$, avec $a_i$ recalcule a chaque pas a partir de l'équation différentielle en $v_i$"
+        text: "$v_{i+1}=v_i+a_i\\,\\Delta t$, avec $a_i$ recalcule à chaque pas à partir de l'équation différentielle en $v_i$"
         correct: true
     correct_feedback: >
       Exact : c'est la formule d'Euler. Le facteur $\Delta t$ est
-      indispensable (homogeneite), et $a_i$ doit être recalcule a chaque
-      pas a partir de $v_i$ courant, sinon on perd l'effet de la force qui
+      indispensable (homogeneite), et $a_i$ doit être recalcule à chaque
+      pas à partir de $v_i$ courant, sinon on perd l'effet de la force qui
       dépend de $v$.
     solution: |
       $$v_{i+1} = v_i + \left(\frac{dv}{dt}\right)_i \Delta t = v_i +
       a_i\,\Delta t, \qquad a_i = g - \frac{k}{m}v_i$$
-      Deux points a vérifier a chaque application : le facteur $\Delta t$
-      (homogeneite) et le recalcul de $a_i$ a partir de $v_i$ courant, pas
+      Deux points a vérifier à chaque application : le facteur $\Delta t$
+      (homogeneite) et le recalcul de $a_i$ à partir de $v_i$ courant, pas
       d'une valeur figee.
 
   - id: CMP-29
@@ -1364,7 +1364,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$v_{i+1}=2{,}0+6{,}0\\times0{,}10=2{,}6\\ \\text{m/s}$, une valeur approchee (elle se rapprocherait de la vraie courbe si $\\Delta t$ était plus petit)"
+        text: "$v_{i+1}=2{,}0+6{,}0\\times0{,}10=2{,}6\\ \\text{m/s}$, une valeur approchée (elle se rapprocherait de la vraie courbe si $\\Delta t$ était plus petit)"
         correct: true
       - id: B
         text: "$v_{i+1}=2{,}0+6{,}0=8{,}0\\ \\text{m/s}$ : on ajoute directement $a_i$ a $v_i$"
@@ -1376,7 +1376,7 @@ items:
           $v_i$ : sans ce facteur, on additionne une vitesse et une
           accélération, ce qui n'est pas homogène.
       - id: C
-        text: "$v_{i+1}=2{,}0+9{,}8\\times0{,}10\\approx2{,}98\\ \\text{m/s}$ : on utilise $g$ plutôt que de recalculer $a_i$ a partir de l'équation différentielle"
+        text: "$v_{i+1}=2{,}0+9{,}8\\times0{,}10\\approx2{,}98\\ \\text{m/s}$ : on utilise $g$ plutôt que de recalculer $a_i$ à partir de l'équation différentielle"
         correct: false
         misconception: mc.physics.pc_chute_plans.euler-pente-non-recalculee
         also_reveals: []
@@ -1392,7 +1392,7 @@ items:
         also_reveals: []
         feedback: >
           La valeur $2{,}6\ \text{m/s}$ est correcte, mais elle reste
-          approchee : Euler suppose la pente constante sur tout le pas, ce
+          approchée : Euler suppose la pente constante sur tout le pas, ce
           qui n'est vrai qu'a la limite $\Delta t \to 0$.
     correct_feedback: >
       Exact : $v_{i+1}=v_i+a_i\Delta t = 2{,}0+6{,}0\times0{,}10=
@@ -1401,7 +1401,7 @@ items:
     solution: |
       $$v_{i+1} = v_i + a_i\,\Delta t = 2{,}0 + 6{,}0\times0{,}10 =
       2{,}0+0{,}60 = 2{,}6\ \text{m/s}$$
-      C'est une valeur approchee, obtenue en supposant la pente constante
+      C'est une valeur approchée, obtenue en supposant la pente constante
       ($=a_i$) sur tout le pas $\Delta t$.
 
   - id: CMP-30
@@ -1419,16 +1419,16 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Rien ne change : dans l'équation différentielle, $a_i$ ne dépend pas vraiment de $v_i$, seulement du temps"
+        text: "Rien ne change : dans l'équation différentielle, $a_i$ ne dépend pas vraiment de $v_i$, mais seulement du temps écoulé depuis le début"
         correct: false
         misconception: mc.physics.pc_chute_plans.euler-pente-non-recalculee
         also_reveals: []
         feedback: >
           Au contraire : $a_i=g-\frac{k}{m}v_i$ dépend explicitement de
           $v_i$ (via le frottement). Garder $a_i=g$ fixe revient a annuler
-          artificiellement l'effet du frottement a chaque ligne.
+          artificiellement l'effet du frottement à chaque ligne.
       - id: B
-        text: "Le tableau reste exact malgre ce raccourci : la méthode d'Euler donne toujours la valeur exacte de $v(t)$"
+        text: "Le tableau reste exact malgré ce raccourci : la méthode d'Euler donne de toute façon la valeur exacte de $v(t)$ à chaque ligne"
         correct: false
         misconception: mc.physics.pc_chute_plans.euler-donne-valeur-exacte
         also_reveals: []
@@ -1437,10 +1437,10 @@ items:
           elle suppose la pente constante sur chaque pas, ce qui reste une
           approximation qui s'ameliore seulement quand $\Delta t$ diminue.
       - id: C
-        text: "Ce raccourci revient a ignorer le frottement (on retrouve la droite de la chute libre) ; indépendamment de ce raccourci, la méthode d'Euler elle-même ne donne qu'une valeur approchee, qui se rapproche de la vraie courbe quand $\\Delta t$ diminue"
+        text: "Ce raccourci revient à ignorer le frottement, et l'on retrouve la droite de la chute libre ; par ailleurs la méthode d'Euler ne donne jamais qu'une valeur approchée"
         correct: true
       - id: D
-        text: "Le vrai problème du tableau, c'est d'avoir oublie de multiplier $a_i$ par $\\Delta t$ a chaque ligne — pas d'avoir garde $a_i$ fixe"
+        text: "Le vrai problème de ce tableau, c'est d'avoir oublié de multiplier $a_i$ par le pas $\\Delta t$ à chaque ligne — et non d'avoir gardé $a_i$ fixe"
         correct: false
         misconception: mc.physics.pc_chute_plans.euler-oubli-dt
         also_reveals: []
@@ -1451,16 +1451,16 @@ items:
     correct_feedback: >
       Exact : garder $a_i=g$ fixe supprime l'effet du frottement (on
       retombe sur la droite de la chute libre) ; indépendamment de cela,
-      Euler reste par nature une méthode approchee, d'autant meilleure que
+      Euler reste par nature une méthode approchée, d'autant meilleure que
       $\Delta t$ est petit.
     solution: |
       Avec $a_i=g$ fixe, la recurrence devient $v_{i+1}=v_i+g\Delta t$ :
       c'est exactement la suite d'Euler de la chute libre (sans
       frottement), une droite de pente $g$, qui ne rejoint jamais
       l'asymptote $v_\ell$. Le bon calcul recalcule $a_i=g-\frac{k}{m}v_i$
-      a chaque ligne, ce qui fait decroitre la pente et fait tendre $v_i$
+      à chaque ligne, ce qui fait decroitre la pente et fait tendre $v_i$
       vers $v_\ell$. Dans les deux cas, Euler ne donne que des valeurs
-      approchees, d'autant plus fideles que $\Delta t$ est petit.
+      approchées, d'autant plus fideles que $\Delta t$ est petit.
 
   # ══════════════════════════════════════════════════════════════
   # R9 — gravitation et mouvement circulaire : force centripete (3 items)
@@ -1487,7 +1487,7 @@ items:
           droite. Or il reste sur une orbite fermee : une force agit bel et
           bien, et c'est la gravite.
       - id: B
-        text: "La force gravitationnelle, centripete (dirigée vers le centre de la Terre), perpendiculaire a la vitesse a chaque instant"
+        text: "La force gravitationnelle, centripete (dirigée vers le centre de la Terre), perpendiculaire a la vitesse à chaque instant"
         correct: true
       - id: C
         text: "Une force dans le sens du mouvement, qui le pousse continuellement vers l'avant"
@@ -1525,7 +1525,7 @@ items:
     skill_code: pc_chute_plans
     tags: [misconception_driven, gravitation_satellite, resolution]
     stem: >
-      La 2e loi projetee sur la normale donne la vitesse orbitale d'un
+      La 2e loi projetée sur la normale donne la vitesse orbitale d'un
       satellite en orbite circulaire de rayon $r$ autour de la Terre
       (masse $M_T$). Quelle est cette vitesse, et de quoi depend-elle ?
     type: mcq
@@ -1537,7 +1537,7 @@ items:
         also_reveals: []
         feedback: >
           La masse du satellite apparaît des deux cotes de la 2e loi
-          projetee ($mv^2/r = GM_Tm/r^2$) et se simplifie completement : la
+          projetée ($mv^2/r = GM_Tm/r^2$) et se simplifie completement : la
           formule finale $v=\sqrt{GM_T/r}$ ne la contient plus.
       - id: B
         text: "La question n'a pas de sens : en orbite, aucune force n'agit, donc rien n'impose de vitesse particulière"
@@ -1546,7 +1546,7 @@ items:
         also_reveals: []
         feedback: >
           Une force agit bien : la gravite, centripete. C'est justement
-          elle qui, via la 2e loi, impose la vitesse orbitale a chaque
+          elle qui, via la 2e loi, impose la vitesse orbitale à chaque
           rayon $r$.
       - id: C
         text: "$v$ dépend de la poussée d'un moteur qui maintient le satellite sur son orbite, pas seulement de $G$, $M_T$ et $r$"
@@ -1659,22 +1659,22 @@ items:
           $T$ determine donc un $r$ unique, pas une famille de rayons
           possibles.
       - id: C
-        text: "$T^2/r^3 = 4\\pi^2/GM$ = constante, pour tous les satellites d'un même astre central — y compris un satellite geostationnaire, qui n'echappe a aucune loi physique en paraissant immobile depuis le sol"
+        text: "$T^2/r^3 = 4\\pi^2/GM$ = constante, pour tous les satellites d'un même astre central — y compris un satellite géostationnaire, qui n'echappe a aucune loi physique en paraissant immobile depuis le sol"
         correct: true
       - id: D
-        text: "Cette relation ne concerne que les satellites en mouvement ; un satellite geostationnaire, étant immobile, n'a pas de $T$ a proprement parler et echappe a la 3e loi"
+        text: "Cette relation ne concerne que les satellites en mouvement ; un satellite géostationnaire, étant immobile, n'a pas de $T$ a proprement parler et echappe a la 3e loi"
         correct: false
         misconception: mc.physics.pc_chute_plans.geostationnaire-immobile-absolu
         also_reveals: []
         feedback: >
-          Un satellite geostationnaire a bien une période
-          $T\approx24\ \text{h}$ (dans le référentiel geocentrique, il
+          Un satellite géostationnaire a bien une période
+          $T\approx24\ \text{h}$ (dans le référentiel géocentrique, il
           parcourt un cercle) : la 3e loi s'applique a lui exactement comme
           aux autres satellites.
     correct_feedback: >
       Exact : en egalant $v=\sqrt{GM/r}$ (2e loi) et $v=2\pi r/T$
       (géométrie du cercle), on obtient $T^2/r^3=4\pi^2/GM$, une constante
-      propre a l'astre central, valable pour tout satellite, geostationnaire
+      propre a l'astre central, valable pour tout satellite, géostationnaire
       compris.
     solution: |
       $$\frac{2\pi r}{T} = \sqrt{\frac{GM}{r}} \implies \frac{4\pi^2
@@ -1682,7 +1682,7 @@ items:
       \frac{4\pi^2}{GM}$$
       Le membre de droite ne dépend que de $M$ (l'astre central) :
       $T^2/r^3$ est donc la même constante pour tous ses satellites, y
-      compris un satellite geostationnaire.
+      compris un satellite géostationnaire.
 
   - id: CMP-35
     rung: "R10"
@@ -1690,36 +1690,36 @@ items:
     skill_code: pc_chute_plans
     tags: [misconception_driven, kepler_geostationnaire, utilisation]
     stem: >
-      Un satellite geostationnaire est décrit comme « fixe au-dessus d'un
+      Un satellite géostationnaire est décrit comme « fixe au-dessus d'un
       point de l'equateur ». Est-il réellement immobile ?
     type: mcq
     choices:
       - id: A
-        text: "Sa période $T$ et son rayon $r$ verifient $T^3/r^2=4\\pi^2/GM_T$, ce qui explique son immobilite apparente"
+        text: "Sa période $T$ et son rayon $r$ vérifient $T^3/r^2=4\\pi^2/GM_T$, ce qui explique à soi seul son immobilité apparente au-dessus du sol"
         correct: false
         misconception: mc.physics.pc_chute_plans.kepler3-exposants-inverses
         also_reveals: []
         feedback: >
           La formule elle-même est fausse (exposants inverses : c'est
           $T^2/r^3$, pas $T^3/r^2$), et surtout ce n'est pas une formule
-          qui « explique une immobilite » — c'est une relation entre $T$ et
+          qui « explique une immobilité » — c'est une relation entre $T$ et
           $r$, qui vaut pour tout satellite, immobile ou non par rapport au
           sol.
       - id: B
-        text: "Il est immobile seulement pour un observateur au sol ; dans le référentiel geocentrique, il parcourt un cercle a sa vitesse orbitale $v=\\sqrt{GM_T/r}$, de l'ordre de quelques km/s"
+        text: "Il est immobile seulement pour un observateur au sol ; dans le référentiel géocentrique, il parcourt un cercle à la vitesse $v=\\sqrt{GM_T/r}$"
         correct: true
       - id: C
-        text: "Il est totalement immobile dans l'espace, sans aucune vitesse, dans n'importe quel référentiel"
+        text: "Il est totalement immobile dans l'espace, sans aucune vitesse, et cela dans n'importe quel référentiel que l'on choisisse"
         correct: false
         misconception: mc.physics.pc_chute_plans.geostationnaire-immobile-absolu
         also_reveals: []
         feedback: >
           « Immobile » n'a de sens que par rapport a un référentiel. Dans
-          le référentiel geocentrique, ce satellite se deplace bel et
+          le référentiel géocentrique, ce satellite se deplace bel et
           bien, a sa vitesse orbitale ; ce n'est que par rapport au sol
           qu'il parait fixe.
       - id: D
-        text: "N'importe quel satellite, a n'importe quelle altitude, peut être rendu geostationnaire simplement en ajustant sa vitesse"
+        text: "N'importe quel satellite, à n'importe quelle altitude, peut être rendu géostationnaire simplement en ajustant convenablement sa vitesse"
         correct: false
         misconception: mc.physics.pc_chute_plans.geostationnaire-toute-altitude
         also_reveals: []
@@ -1728,15 +1728,15 @@ items:
           astre donne : seul un rayon précis donne $T=T_{Terre}$. Changer
           la vitesse a un autre rayon ne redonnerait pas la bonne période.
     correct_feedback: >
-      Exact : « geostationnaire » décrit une immobilite relative au sol,
-      due a une vitesse angulaire egale a celle de la Terre. Dans le
-      référentiel geocentrique, le satellite parcourt réellement un
+      Exact : « géostationnaire » décrit une immobilité relative au sol,
+      due a une vitesse angulaire égale a celle de la Terre. Dans le
+      référentiel géocentrique, le satellite parcourt réellement un
       cercle, a une vitesse de l'ordre de 3 km/s.
     solution: |
-      Dans le référentiel geocentrique, le satellite geostationnaire suit
+      Dans le référentiel géocentrique, le satellite géostationnaire suit
       un mouvement circulaire uniforme a la vitesse $v=\sqrt{GM_T/r}$
       (chapitre 10), non nulle. Il n'est « immobile » que par rapport a un
-      point du sol, parce que sa vitesse angulaire est exactement egale a
+      point du sol, parce que sa vitesse angulaire est exactement égale a
       celle de la rotation terrestre : le sol et le satellite tournent
       ensemble, d'ou l'impression de fixite relative.
 
@@ -1747,22 +1747,22 @@ items:
     tags: [misconception_driven, kepler_geostationnaire, resolution]
     stem: >
       Quelles conditions un satellite doit-il remplir pour être
-      geostationnaire, et combien d'altitudes différentes satisfont ces
+      géostationnaire, et combien d'altitudes différentes satisfont ces
       conditions autour de la Terre ?
     type: mcq
     choices:
       - id: A
-        text: "Il suffit que le satellite ait une vitesse nulle par rapport au sol des le lancement ; aucune condition sur la période n'est nécessaire"
+        text: "Il suffit que le satellite ait une vitesse nulle par rapport au sol dès son lancement ; aucune condition sur la période n'est alors nécessaire"
         correct: false
         misconception: mc.physics.pc_chute_plans.geostationnaire-immobile-absolu
         also_reveals: []
         feedback: >
           Une vitesse nulle par rapport au sol au lancement ne garantit
           rien pour la suite : c'est la condition sur la PÉRIODE
-          ($T=T_{Terre}$), combinee au plan equatorial et au sens de
+          ($T=T_{Terre}$), combinee au plan équatorial et au sens de
           rotation, qui maintient le satellite au-dessus du même point.
       - id: B
-        text: "N'importe quelle altitude convient, du moment que le satellite est en orbite circulaire autour de la Terre"
+        text: "N'importe quelle altitude convient, du moment que le satellite décrit une orbite circulaire autour de la Terre et dans le bon sens"
         correct: false
         misconception: mc.physics.pc_chute_plans.geostationnaire-toute-altitude
         also_reveals: []
@@ -1770,9 +1770,9 @@ items:
           Une orbite circulaire quelconque a une période donnée par la 3e
           loi, différente de 24 h sauf a un rayon précis : un satellite
           « quelconque » derive par rapport au sol, il n'est pas
-          geostationnaire.
+          géostationnaire.
       - id: C
-        text: "Il suffit que $T^3=r^2\\times(4\\pi^2/GM_T)$ soit vérifiée, ce qui laisse plusieurs rayons possibles pour une période donnée"
+        text: "Il suffit que la relation $T^3=r^2\\times(4\\pi^2/GM_T)$ soit vérifiée, ce qui laisse plusieurs rayons possibles pour une même période"
         correct: false
         misconception: mc.physics.pc_chute_plans.kepler3-exposants-inverses
         also_reveals: []
@@ -1781,21 +1781,21 @@ items:
           $T^2/r^3=4\pi^2/GM_T$, pas $T^3/r^2=\ldots$) ; et même corrigee,
           elle donnerait un seul $r$ pour un $T$ donne, pas plusieurs.
       - id: D
-        text: "$T=T_{\\text{Terre}}\\approx24\\ \\text{h}$, orbite dans le plan equatorial, même sens que la rotation terrestre ; la 3e loi fixe alors, pour un astre donne, un rayon unique — une seule altitude est geostationnaire"
+        text: "$T=T_{\\text{Terre}}\\approx24\\ \\text{h}$, orbite dans le plan équatorial, même sens que la rotation terrestre ; la 3e loi fixe alors un rayon unique"
         correct: true
     correct_feedback: >
-      Exact : les trois conditions (période terrestre, plan equatorial,
+      Exact : les trois conditions (période terrestre, plan équatorial,
       même sens de rotation) sont simultanement nécessaires ; combinees a
       la 3e loi, elles fixent une unique valeur de $r$ (environ
       $4{,}2\times10^7\ \text{m}$ pour la Terre), donc une seule altitude
-      geostationnaire possible.
+      géostationnaire possible.
     solution: |
       Trois conditions simultanees : $T=T_{Terre}\approx24\ \text{h}$ (ou
-      $86\,164\ \text{s}$), orbite equatoriale, même sens que la rotation
+      $86\,164\ \text{s}$), orbite équatoriale, même sens que la rotation
       terrestre. La 3e loi, appliquee avec $T=T_{Terre}$, donne :
       $$r = \left(\frac{GM_T\,T^2}{4\pi^2}\right)^{1/3} \approx
       4{,}2\times10^7\ \text{m}$$
-      une valeur unique : il n'existe qu'une seule altitude geostationnaire
+      une valeur unique : il n'existe qu'une seule altitude géostationnaire
       autour d'un astre donne.
 
 coverage_summary:

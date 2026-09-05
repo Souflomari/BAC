@@ -415,7 +415,7 @@ entries:
           On lit $\tau$ sur la courbe par la méthode de la tangente à l'origine — la même construction qu'au chapitre 4, mais appliquée à une décroissance : la pente à l'origine vaut $-E/\tau$, donc une droite partant de $E$ avec cette pente atteint $0$ après une durée $\tau$. La tangente à l'origine coupe donc l'axe des abscisses exactement en $t = \tau$, et l'énoncé indique que cela se produit vers $t = 4\ \text{ms}$. On remonte ensuite à $C_2$ par $\tau = RC_2$, puisque $R$ est donnée.
         steps:
           - math: '\tau = 4{,}0\ \text{ms} = 4{,}0\times10^{-3}\ \text{s}'
-            note: "Lecture graphique : la tangente a l'origine coupe l'axe des abscisses a t = tau."
+            note: "Lecture graphique : la tangente à l'origine coupe l'axe des abscisses a t = tau."
           - math: 'C_2 = \frac{\tau}{R} = \frac{4{,}0\times10^{-3}}{1600} = 2{,}5\times10^{-6}\ \text{F} = 2{,}5\ \mu\text{F}'
             note: "On inverse tau = R C2 ; application numérique avec R = 1600 ohms."
 
@@ -559,7 +559,7 @@ entries:
           Nouvelle lecture graphique, à ponter avec la question précédente : la leçon ne trace jamais $\dfrac{du_C}{dt}$ en fonction de $u_C$ elle-même — ses courbes sont $q(t)$, $u_C(t)$ ou $i(t)$ contre le temps, lues par la tangente à l'origine ou la méthode des $63\ \%$ (chapitre 4). Mais l'équation établie en question 1 EST la droite qu'on regarde ici : $\dfrac{du_c}{dt} = -\dfrac{1}{RC}u_c + \dfrac{E}{RC}$ est affine en $u_c$, de pente $-\dfrac{1}{RC}$ et d'ordonnée à l'origine $\dfrac{E}{RC}$. Deux lectures suffisent : à $u_c = 0$ (ordonnée à l'origine), on lit $\dfrac{E}{RC} = 1000\ \text{V.s}^{-1}$ ; là où la droite coupe l'axe des abscisses ($\dfrac{du_c}{dt}=0$), on lit directement $u_c = E = 12\ \text{V}$ — c'est le régime permanent, retrouvé ici par lecture graphique plutôt que par la limite $t\to\infty$ vue au chapitre 3. Une fois $E$ connu, on combine les deux lectures pour remonter à $RC$, puis à $C$ puisque $R$ est donnée.
         steps:
           - math: 'u_c = 0 \implies \frac{du_c}{dt} = \frac{E}{RC} = 1000\ \text{V.s}^{-1}'
-            note: "Ordonnée a l'origine de la droite (figure 2) : lecture directe."
+            note: "Ordonnée à l'origine de la droite (figure 2) : lecture directe."
           - math: '\frac{du_c}{dt} = 0 \implies u_c = E = 12\ \text{V}'
             note: "Abscisse ou la droite coupe l'axe : régime permanent, u_c = E (chapitre 3), retrouve ici par lecture graphique."
           - math: 'RC = \frac{E}{1000} = \frac{12}{1000} = 1{,}2\times10^{-2}\ \text{s}'
@@ -1366,7 +1366,7 @@ entries:
           - math: '\text{terme en } e^{-\alpha t} : R\,A\,\alpha - \frac{A}{C_0} = 0 \implies \alpha = \frac{1}{RC_0}'
             note: "Le terme exponentiel doit s'annuler identiquement : ceci fixe alpha."
           - math: '\boxed{\alpha = \frac{1}{R\,C_0}}'
-            note: "Constante de temps inverse, homogène a l'inverse d'un temps (question 1-6)."
+            note: "Constante de temps inverse, homogène à l'inverse d'un temps (question 1-6)."
       - id: q5
         part: "1-5 — L'expression du courant"
         stem: |-
@@ -1419,7 +1419,7 @@ entries:
           - math: '\boxed{R = \frac{9}{2\times10^{-3}} = 4500\ \Omega = 4{,}5\ \text{k}\Omega}'
             note: "Lecture directe : i(0+) = E/R, avec i(0+) = 2 mA lu sur le départ de la courbe (question 1-5)."
           - math: '\tau = 13\ \text{ms} = 13\times10^{-3}\ \text{s}'
-            note: "Lecture graphique de tau par la méthode de la tangente (T) a l'origine (chapitre 4), celle que l'énoncé designe explicitement. La méthode concurrente i0/e donnerait 12,4 ms sur cette même figure -- défaut du sujet officiel (la tangente dessinee n'est pas celle de la courbe), non retenu ici."
+            note: "Lecture graphique de tau par la méthode de la tangente (T) à l'origine (chapitre 4), celle que l'énoncé designe explicitement. La méthode concurrente i0/e donnerait 12,4 ms sur cette même figure -- défaut du sujet officiel (la tangente dessinee n'est pas celle de la courbe), non retenu ici."
           - math: 'C_0 = \frac{\tau}{R} = \frac{13\times10^{-3}}{4500}'
             note: "On inverse tau = R.C0 (question 1-5), avec R trouve ci-dessus."
           - math: '\boxed{C_0 \approx 2{,}89\times10^{-6}\ \text{F} = 2{,}89\ \mu\text{F}}'
@@ -1569,7 +1569,7 @@ entries:
           **Le piège de cette question.** Répondre « τ augmente avec la température », par l'intuition qu'un système chauffé est plus « agité » donc plus lent à se stabiliser. C'est confondre deux mécanismes : ici, $\tau$ ne dépend que de $R$ et de $C$ (chapitre 2), jamais directement de l'agitation thermique — et c'est précisément parce que $R$, la résistance PARTICULIÈRE de cette sonde, décroît avec $\theta$ (une propriété du composant, lue sur les trois courbes) que $\tau$ décroît à son tour.
         steps:
           - math: '\tau_1 \approx 0{,}50\ \text{ms}'
-            note: "Lecture graphique sur la courbe etiquetee 205 degrés C de la figure 2 (chapitre 4 : tangente a l'origine ou méthode des 63 pourcent)."
+            note: "Lecture graphique sur la courbe etiquetee 205 degrés C de la figure 2 (chapitre 4 : tangente à l'origine ou méthode des 63 pourcent)."
           - math: '\tau(205\,^\circ\text{C}) < \tau(185\,^\circ\text{C}) < \tau(175\,^\circ\text{C}) \implies R(205\,^\circ\text{C}) < R(185\,^\circ\text{C}) < R(175\,^\circ\text{C})'
             note: "tau = RC (chapitre 2), C fixe pour les trois courbes : l'ordre des tau donne directement l'ordre des R."
           - math: '\boxed{\text{une elevation de température RACCOURCIT la charge}}'
@@ -1727,7 +1727,7 @@ entries:
           **Une chaîne de mesure, pas une donnée imprimée.** Comme sur toute lecture graphique de ce sujet, aucun corrigé officiel n'existe pour le confirmer : les deux méthodes de lecture, indépendantes l'une de l'autre, qui retombent à moins de $3\ \%$ l'une de l'autre, sont le plafond de preuve atteignable ici.
         steps:
           - math: '\tau \approx 2{,}4\ \text{ms}'
-            note: "Lecture graphique (chapitre 4, méthode de la tangente a l'origine ET méthode U0/e, les deux concordantes -- voir le raisonnement)."
+            note: "Lecture graphique (chapitre 4, méthode de la tangente à l'origine ET méthode U0/e, les deux concordantes -- voir le raisonnement)."
           - math: 'C = \frac{\tau}{R} = \frac{2{,}4\times10^{-3}}{200}'
             note: "tau = RC (chapitre 2), R=200 Ohm donne dans l'énoncé."
           - math: '\boxed{C \approx 1{,}2\times10^{-5}\ \text{F} = 12\ \mu\text{F}}'
@@ -1845,7 +1845,7 @@ entries:
           - math: '\text{terme constant\,: } A = E'
             note: "Le terme sans exponentielle doit egaler E a lui seul."
           - math: '\text{terme en } e^{-t/\tau} : \frac{RC}{\tau} - 1 = 0 \implies \tau = RC'
-            note: "Le terme exponentiel doit s annuler identiquement, a chaque instant."
+            note: "Le terme exponentiel doit s annuler identiquement, à chaque instant."
           - math: '\boxed{A = E \qquad \tau = RC}'
             note: "Identification complete (chapitre 3)."
       - id: q3
@@ -1922,4 +1922,4 @@ entries:
           - math: 'R_S = \frac{\Delta t}{C\,\ln(2{,}5)} = \frac{80}{220\times10^{-6}\times0{,}916}'
             note: "Condition limite t_S = Delta t = 80 s, avec C, E et U_S inchanges (énoncé) -- même pont ln que la question 2-1."
           - math: '\boxed{R_S \approx 3{,}97\times10^{5}\ \Omega}'
-            note: "Toute résistance supérieure ou egale a R_S laisse la lampe allumee jusqu a l arrivée -- concordant avec le corrige non officiel."
+            note: "Toute résistance supérieure ou égale a R_S laisse la lampe allumee jusqu a l arrivée -- concordant avec le corrige non officiel."

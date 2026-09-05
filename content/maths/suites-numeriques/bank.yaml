@@ -777,9 +777,9 @@ entries:
           - math: 'f_n''(x) = \dfrac{-2e^x}{(1+e^x)^2}+n \quad (\text{calcul de quotient identique a la question 1-a})'
             note: "Dérivée de f_n pour n quelconque : même calcul que pour f0, le terme n s'ajoute."
           - math: 'n\ge2,\ \dfrac{2e^x}{(1+e^x)^2}\le\dfrac12 \quad(\text{q1-b}) \ \Rightarrow\ f_n''(x) \ge n-\dfrac12 \ge \dfrac32 > 0'
-            note: "On reutilise l'inégalité de la question 1-b : f_n prime reste strictement positive pour n supérieur ou egal a 2."
+            note: "On reutilise l'inégalité de la question 1-b : f_n prime reste strictement positive pour n supérieur ou égal a 2."
           - math: '\dfrac{-2e^x}{1+e^x}\in\,]-2,0[ \quad (\text{terme borne}) \ \Rightarrow\ \lim_{x\to-\infty} f_n(x) = -\infty,\quad \lim_{x\to+\infty} f_n(x) = +\infty \quad (n>0)'
-            note: "Le terme exponentiel reste borne ; c'est le terme n fois x qui pilote le comportement a l'infini."
+            note: "Le terme exponentiel reste borne ; c'est le terme n fois x qui pilote le comportement à l'infini."
           - math: '\Rightarrow\ \exists!\ x_n\in\mathbb{R} \text{ tel que } f_n(x_n)=0 \quad (\text{corollaire du TVI})'
             note: "Continue, strictement croissante, de moins l'infini a plus l'infini : un unique zéro."
       - id: q3-1b
@@ -799,7 +799,7 @@ entries:
           - math: 'f_n(0) = \dfrac{-2}{1+1}+0 = -1 < 0'
             note: "On evalue f_n en 0."
           - math: 'f_n(1) = \dfrac{-2e}{1+e}+n \ge n-1{,}47 \ge 2-1{,}47 = 0{,}53 > 0 \quad (\text{indication}\ \tfrac{2e}{1+e}<1{,}47,\ n\ge2)'
-            note: "On evalue f_n en 1 et on utilise l'indication de l'énoncé avec n supérieur ou egal a 2."
+            note: "On evalue f_n en 1 et on utilise l'indication de l'énoncé avec n supérieur ou égal a 2."
           - math: 'f_n(0)<0<f_n(1),\ f_n \text{ strictement croissante} \ \Rightarrow\ 0<x_n<1'
             note: "Le zéro unique de f_n est encadre par 0 et 1."
       - id: q3-2a
@@ -830,7 +830,7 @@ entries:
           - math: 'f_{n+1}(x_n) > f_{n+1}(x_{n+1}),\ f_{n+1} \text{ strictement croissante} \ \Rightarrow\ x_n > x_{n+1}'
             note: "Une fonction strictement croissante compare les entrées dans le même sens que les sorties."
           - math: '\Rightarrow\ (x_n)_{n\ge2} \text{ strictement décroissante}'
-            note: "Vrai pour tout n supérieur ou egal a 2 : conclusion."
+            note: "Vrai pour tout n supérieur ou égal a 2 : conclusion."
       - id: q3-2c
         stem: |-
           **(0,5 pt)** Montrer que la suite $(x_n)_{n \ge 2}$ est convergente.

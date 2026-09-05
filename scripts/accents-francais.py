@@ -246,6 +246,31 @@ SUR = {
     "sphere": "sphère", "spheres": "sphères",
     "portee": "portée", "portees": "portées",
     "lancee": "lancée", "lancees": "lancées",
+    # ── quatrième vague : participes féminins et vocabulaire restant ─────────
+    # La forme en « -ée » d'un participe est sans ambiguïté : le masculin
+    # (« chargé ») et le féminin (« chargée ») portent le même accent, seul le
+    # « e » final les distingue. Cette classe entière est donc sûre.
+    "entrainee": "entraînée", "entrainees": "entraînées", "entrainer": "entraîner",
+    "chargee": "chargée", "chargees": "chargées",
+    "cachee": "cachée", "cachees": "cachées",
+    "approchee": "approchée", "approchees": "approchées",
+    "acceleree": "accélérée", "accelerees": "accélérées",
+    "deviee": "déviée", "deviees": "déviées",
+    "courbee": "courbée", "courbees": "courbées",
+    "projetee": "projetée", "projetees": "projetées",
+    "lachee": "lâchée", "lachees": "lâchées",
+    "eliminant": "éliminant", "elimination": "élimination",
+    "legerement": "légèrement", "malgre": "malgré", "definit": "définit",
+    "geostationnaire": "géostationnaire", "geostationnaires": "géostationnaires",
+    "immobilite": "immobilité", "verifient": "vérifient",
+    "equatorial": "équatorial", "equatoriale": "équatoriale",
+    "geocentrique": "géocentrique", "heliocentrique": "héliocentrique",
+    "recalculee": "recalculée", "recalculees": "recalculées",
+    "continument": "continûment", "decroit": "décroît",
+    # « égale » : le participe « égalé » existe, mais le corpus n'en compte
+    # qu'UNE occurrence contre 254 de « égale ». Le risque est mesuré, pas
+    # supposé — et la relecture du diff le confirme.
+    "egal": "égal", "egale": "égale", "egales": "égales", "egaux": "égaux",
     # « négligés » : la deuxième personne du singulier (« tu négliges ») aurait
     # la même forme nue, mais le corpus ne tutoie jamais dans un énoncé — le
     # mot y est toujours le participe (« frottements négligés »).
@@ -333,6 +358,31 @@ SUR = {
     "sphere": "sphère", "spheres": "sphères",
     "portee": "portée", "portees": "portées",
     "lancee": "lancée", "lancees": "lancées",
+    # ── quatrième vague : participes féminins et vocabulaire restant ─────────
+    # La forme en « -ée » d'un participe est sans ambiguïté : le masculin
+    # (« chargé ») et le féminin (« chargée ») portent le même accent, seul le
+    # « e » final les distingue. Cette classe entière est donc sûre.
+    "entrainee": "entraînée", "entrainees": "entraînées", "entrainer": "entraîner",
+    "chargee": "chargée", "chargees": "chargées",
+    "cachee": "cachée", "cachees": "cachées",
+    "approchee": "approchée", "approchees": "approchées",
+    "acceleree": "accélérée", "accelerees": "accélérées",
+    "deviee": "déviée", "deviees": "déviées",
+    "courbee": "courbée", "courbees": "courbées",
+    "projetee": "projetée", "projetees": "projetées",
+    "lachee": "lâchée", "lachees": "lâchées",
+    "eliminant": "éliminant", "elimination": "élimination",
+    "legerement": "légèrement", "malgre": "malgré", "definit": "définit",
+    "geostationnaire": "géostationnaire", "geostationnaires": "géostationnaires",
+    "immobilite": "immobilité", "verifient": "vérifient",
+    "equatorial": "équatorial", "equatoriale": "équatoriale",
+    "geocentrique": "géocentrique", "heliocentrique": "héliocentrique",
+    "recalculee": "recalculée", "recalculees": "recalculées",
+    "continument": "continûment", "decroit": "décroît",
+    # « égale » : le participe « égalé » existe, mais le corpus n'en compte
+    # qu'UNE occurrence contre 254 de « égale ». Le risque est mesuré, pas
+    # supposé — et la relecture du diff le confirme.
+    "egal": "égal", "egale": "égale", "egales": "égales", "egaux": "égaux",
     # « négligés » : la deuxième personne du singulier (« tu négliges ») aurait
     # la même forme nue, mais le corpus ne tutoie jamais dans un énoncé — le
     # mot y est toujours le participe (« frottements négligés »).
@@ -395,20 +445,40 @@ RE_TEXTE_LATEX = re.compile(r"(\\text(?:rm|bf|it)?\{)([^{}$]*)(\})")
 # verbe (vérifie), « domaine verifie » est un participe (vérifié). Tout ce qui
 # n'entre dans aucune règle reste dans AMBIGUS et part en relecture humaine.
 CONTEXTUEL = [
-    (re.compile(r"" + BORNE_G + r"(l'|L'|un |Un |d'|D'|chaque |Chaque |on |On )eleve" + BORNE_D + r""),
-     lambda m: m.group(1) + "élève"),
-    (re.compile(r"" + BORNE_G + r"eleves" + BORNE_D + r""), lambda m: "élèves"),
-    (re.compile(r"" + BORNE_G + r"(on |On |se |Se )verifie" + BORNE_D + r""),
-     lambda m: m.group(1) + "vérifie"),
-    (re.compile(r"" + BORNE_G + r"verifiee" + BORNE_D + r""), lambda m: "vérifiée"),
-    (re.compile(r"" + BORNE_G + r"verifiees" + BORNE_D + r""), lambda m: "vérifiées"),
-    (re.compile(r"" + BORNE_G + r"verifies" + BORNE_D + r""), lambda m: "vérifiés"),
-    (re.compile(r"" + BORNE_G + r"(on |On |se |Se )separe" + BORNE_D + r""),
-     lambda m: m.group(1) + "sépare"),
-    (re.compile(r"" + BORNE_G + r"separes" + BORNE_D + r""), lambda m: "séparés"),
-    (re.compile(r"" + BORNE_G + r"(on |On )releve" + BORNE_D + r""),
-     lambda m: m.group(1) + "relève"),
-    (re.compile(r"" + BORNE_G + r"releves" + BORNE_D + r""), lambda m: "relevés"),
+    # (motif, remplacement, formes fautives à signaler à la sonde)
+    (re.compile(r"" + BORNE_G + r"(l'|L'|un |Un |d'|D'|chaque |Chaque |on |On )eleve" + BORNE_D),
+     lambda m: m.group(1) + "élève", ("eleve",)),
+    (re.compile(r"" + BORNE_G + r"eleves" + BORNE_D), lambda m: "élèves", ("eleves",)),
+    (re.compile(r"" + BORNE_G + r"(on |On |se |Se )verifie" + BORNE_D),
+     lambda m: m.group(1) + "vérifie", ("verifie",)),
+    (re.compile(r"" + BORNE_G + r"verifiee" + BORNE_D), lambda m: "vérifiée", ("verifiee",)),
+    (re.compile(r"" + BORNE_G + r"verifiees" + BORNE_D), lambda m: "vérifiées", ("verifiees",)),
+    (re.compile(r"" + BORNE_G + r"verifies" + BORNE_D), lambda m: "vérifiés", ("verifies",)),
+    (re.compile(r"" + BORNE_G + r"(on |On |se |Se )separe" + BORNE_D),
+     lambda m: m.group(1) + "sépare", ("separe",)),
+    (re.compile(r"" + BORNE_G + r"separes" + BORNE_D), lambda m: "séparés", ("separes",)),
+    (re.compile(r"" + BORNE_G + r"(on |On )releve" + BORNE_D),
+     lambda m: m.group(1) + "relève", ("releve",)),
+    (re.compile(r"" + BORNE_G + r"releves" + BORNE_D), lambda m: "relevés", ("releves",)),
+    # « a » → « à » : impossible en général (« il a » / « à »), sûr dans des
+    # tournures où le verbe AVOIR ne peut pas se glisser. Chaque entrée est une
+    # locution figée ou un adjectif qui appelle « à ». Aucune forme n'est
+    # exportée vers la sonde : le mot fautif est « a », qui est aussi un verbe.
+    *[
+        (re.compile(r"" + BORNE_G + r"(" + g + r") a ", re.I),
+         (lambda gr: (lambda m: m.group(1) + " à "))(g), ())
+        for g in [r"perpendiculaire", r"parall[èe]le", r"[ée]gale?", r"identique",
+                  r"sup[ée]rieure?", r"inf[ée]rieure?", r"proportionnelle?",
+                  r"semblable", r"conforme"]
+    ],
+    *[
+        (re.compile(r"" + BORNE_G + r"a (" + d + r")" + BORNE_D, re.I),
+         (lambda dr: (lambda m: "à " + m.group(1)))(d), ())
+        for d in [r"partir", r"chaque", r"nouveau", r"peu pr[èe]s", r"travers",
+                  r"cause", r"mesure que", r"condition", r"savoir", r"droite",
+                  r"gauche", r"l'infini", r"la fois", r"l'instant", r"l'origine",
+                  r"l'[ée]chelle", r"l'[ée]quilibre", r"l'aide", r"l'inverse"]
+    ],
 ]
 
 # Lignes qui ne portent JAMAIS de prose destinée à l'élève : clés techniques,
@@ -436,7 +506,7 @@ def _corrige_prose(fragment: str, compteur: list) -> str:
         compteur[0] += 1
         return respecte_la_casse(mo.group(1), SUR[mo.group(1).lower()])
     fragment = re.sub(RE_SUR.pattern, rempl, fragment, flags=re.I)
-    for motif, remplace in CONTEXTUEL:
+    for motif, remplace, _ in CONTEXTUEL:
         def r2(mo):
             compteur[0] += 1
             return remplace(mo)
@@ -529,11 +599,13 @@ def exporter_liste(chemin: str) -> None:
     en deux langages, on en exporte une.
     """
     import json
-    formes = sorted(set(SUR) | AMBIGUS | {
-        m for motif, _ in CONTEXTUEL
-        for m in re.findall(r"[a-z-]{4,}", motif.pattern)
-        if m not in ("l", "un", "on", "se", "chaque")
-    })
+    # Les formes des règles contextuelles sont DÉCLARÉES, jamais extraites de
+    # leurs expressions régulières. La version précédente les devinait — et
+    # exportait du même coup les mots de CONTEXTE (« fois », « droite »,
+    # « partir », qui apparaissent dans les règles « a → à »). La sonde criait
+    # alors sur du français parfaitement écrit, sur onze leçons. Un motif dit
+    # ce qu'il CHERCHE et ce qui l'ENTOURE ; seul le premier est une faute.
+    formes = sorted(set(SUR) | AMBIGUS | {f for _, _, fs in CONTEXTUEL for f in fs})
     with open(chemin, "w", encoding="utf-8") as fh:
         json.dump({
             "_lisezMoi": "Généré par scripts/accents-francais.py --exporter. "
