@@ -8,9 +8,12 @@ description: La vérité rendue et déployée — lancer/étendre dom-truth, scr
 ## Les trois jambes (aucune ne remplace l'autre — HANDOFF §5)
 
 1. **dom-truth** : `cd /home/user/BAC/web && node scripts/dom-truth.mjs`
-   (121+ verts, deux fois si un échec ne se reproduit pas — le boot à
-   froid flake). Boot autonome port 3200+(pid%500) ; vérifie le build
-   stamp == HEAD (attrape le .next périmé).
+   (**253 contrôles au 2026-09-05**, deux fois si un échec ne se reproduit
+   pas — le boot à froid flake). Boot autonome port 3200+(pid%500) ; vérifie
+   le build stamp == HEAD (attrape le .next périmé).
+   *(Ce nombre disait « 121+ » jusqu'au 2026-09-05, soit moins de la moitié
+   du réel : un chiffre écrit dans une compétence TOUJOURS chargée, que rien
+   ne réexécute, vieillit comme les autres.)*
 2. **Gestalt** : shots.mjs + REGARDER (bible §10) contre
    `docs/design/AUDIT-SCORECARD.md`.
 3. **Œil externe frais** sur le site déployé, périodique, sans contexte
@@ -40,6 +43,37 @@ description: La vérité rendue et déployée — lancer/étendre dom-truth, scr
 `pgrep -f next-server | xargs kill` (exit 144 attendu), puis prouver par
 curl qu'une chaîne fraîche est servie AVANT de croire un shot (trois
 séries périmées ont été servies en une seule journée).
+
+## Les portes, et l'ordre où les lancer
+
+dom-truth n'est qu'une des portes. La liste complète et ce que chacune juge
+vit dans `docs/audits/INSTRUMENTS.md` ; l'ordre d'exécution est celui de
+`.github/workflows/gates.yml`. En local, du moins cher au plus cher :
+
+```sh
+cd /home/user/BAC/web
+npm run test-learner-model && npm run test-attempt-events   # sans navigateur
+node scripts/liens-fichiers.mjs --porte                     # sans navigateur
+node scripts/validate-content.mjs --strict $(cd .. && ls -d content/*/*/)
+node scripts/couverture-diagnostique.mjs --porte
+node scripts/resume-couverture.mjs --porte
+node scripts/indice-longueur.mjs --porte
+node scripts/indice-absolu.mjs --porte
+npm run build
+npm run dom-truth                                           # ~15 min
+node scripts/ancres-uniques.mjs --porte
+node scripts/donnees-sweep.mjs --porte
+```
+
+Deux règles qui les gouvernent toutes :
+
+- **Une porte ne s'arme que sur une classe PROPRE.** Sinon l'instrument
+  reste un OUTIL et la dette s'écrit — une porte armée sur une classe sale
+  est désarmée la semaine suivante.
+- **Toute exception vit dans le fichier**, et NOMME sa cible :
+  `RECOUVREMENT ASSUMÉ:`, `DETTE OWNER:`, `CHEMIN DISPARU:`,
+  `data-hors-panneau`. Un marqueur qui vaudrait pour tout un fichier ferait
+  taire l'instrument pour l'accident qu'on y introduira demain.
 
 ## Langage de statut (§13) et discipline
 
