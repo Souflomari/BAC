@@ -252,12 +252,36 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
   // question, c'est un bloc — la tâche la plus longue est bornée par le plus
   // gros bloc du sujet. `debuts[i]` = rang de la première question de
   // l'exercice i ; `nbUnites` = nombre total de questions.
-  const { debuts, nbUnites } = useMemo(() => {
+  // Par LOTS, à budget (2026-09-05, quatrième mesure). Un commit par question
+  // bornait la tâche la plus longue (0,6 s à ×6) mais quarante commits
+  // coûtaient chacun une mise en page de toute la page — le corrigé complet
+  // passait de 11,5 s à 22 s, mémo ou pas. On révèle donc autant de questions
+  // par commit qu'en tient un budget de formules (le `$` compte les formules,
+  // à peu près) : une dizaine de commits, chacun borné à ~80 formules, sauf
+  // quand une seule question en porte plus — un bloc est atomique.
+  const { debuts, nbUnites, poidsSujet, poidsCorrige } = useMemo(() => {
     const d: number[] = [];
+    const ps: number[] = [];
+    const pc: number[] = [];
+    const formules = (t: string | undefined) => Math.max(1, Math.round(((t ?? "").match(/\$/g) ?? []).length / 2));
     let n = 0;
-    for (const e of epreuve.exercices) { d.push(n); n += e.questions.length; }
-    return { debuts: d, nbUnites: n };
+    for (const e of epreuve.exercices) {
+      d.push(n);
+      e.questions.forEach((q, k) => {
+        ps.push(formules(q.stem) + (k === 0 ? formules(e.intro) : 0));
+        pc.push(formules(q.reasoning));
+      });
+      n += e.questions.length;
+    }
+    return { debuts: d, nbUnites: n, poidsSujet: ps, poidsCorrige: pc };
   }, [epreuve]);
+  const BUDGET_FORMULES = 80;
+  const lotSuivant = useCallback((k: number, poids: number[]) => {
+    let j = k;
+    let acc = 0;
+    while (j < nbUnites && (j === k || acc + poids[j] <= BUDGET_FORMULES)) { acc += poids[j]; j++; }
+    return j;
+  }, [nbUnites]);
   useEffect(() => {
     if (phase === "seuil") return;
     // Le SUJET d'abord, toujours — même en phase correction. Un « Terminer »
@@ -273,12 +297,12 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
     const id = window.requestAnimationFrame(() => {
       if (annule) return;
       startTransition(() => {
-        if (sujetAFinir) setReveleSujet((k) => Math.min(nbUnites, k + 1));
-        else setReveleCorrige((k) => Math.min(nbUnites, k + 1));
+        if (sujetAFinir) setReveleSujet((k) => lotSuivant(k, poidsSujet));
+        else setReveleCorrige((k) => lotSuivant(k, poidsCorrige));
       });
     });
     return () => { annule = true; window.cancelAnimationFrame(id); };
-  }, [phase, reveleSujet, reveleCorrige, nbUnites]);
+  }, [phase, reveleSujet, reveleCorrige, nbUnites, lotSuivant, poidsSujet, poidsCorrige]);
   const chronoFinal = useRef<number>(0);
 
   // Chrono : écoulé, 1 s, coupé en pause et en correction. L'onglet inactif

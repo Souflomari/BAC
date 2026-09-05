@@ -3309,8 +3309,19 @@ commits au lieu de dix, et chacun réconciliait les dix articles entiers : le
 découpage coûtait plus qu'il n'économisait. L'article d'exercice est donc un
 composant mémoïsé (`ExerciceArticle`) qui reçoit des compteurs BORNÉS à
 l'exercice — un article dont rien ne change garde des props identiques et
-n'est pas re-rendu. Les chiffres définitifs sont ceux de cette troisième
-version, dans le tableau.
+n'est pas re-rendu. **Cela n'a rien changé** : sur trois sujets re-mesurés,
+corrigé complet 22,5 → 22,0 s, 9,8 → 10,3 s, 27,0 → 25,2 s ; même nombre de
+tâches longues (68, 43, 71) — du bruit. Le coût par commit n'était
+donc pas la réconciliation React mais la MISE EN PAGE de toute la page à
+chaque commit — trente mille nœuds relus quarante fois. La conclusion
+s'inverse : moins de commits, plus gros, et bornés.
+
+**LA QUATRIÈME VERSION, par LOTS à budget.** Chaque commit révèle autant de
+questions qu'en tient un budget d'environ 80 formules (le `$` compte les
+formules, à peu près), et au moins une : une dizaine de commits par sujet,
+chacun borné — sauf quand une seule question dépasse le budget à elle seule,
+un bloc étant atomique. L'article mémoïsé reste (il ne coûte rien). Les
+chiffres définitifs sont ceux de cette version, dans le tableau.
 
 Et dom-truth a trouvé un défaut de la première version avant qu'elle ne soit
 mesurée : il appuie sur « Terminer » une centaine de millisecondes après
