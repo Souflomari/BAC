@@ -257,6 +257,26 @@ banc d'entraînement (`bank.yaml`) ni exercice de sommet (`exercises.yaml`),
 faute d'une banque d'annales — `docs/sujets/` n'a jamais eu de dossier `svt/`.
 Voir HANDOFF §10.6 pour la liste complète de ce qui reste et à qui.
 
+## Suite de la journée — 340 → 458 → 517 → 532
+
+Deux campagnes d'items ont suivi le même jour, et le nombre de misconceptions
+évaluables est le seul qui les résume :
+
+| | évaluables | sous le plancher |
+|---|---:|---:|
+| avant la journée | 340 | — |
+| après la campagne de tagage | 458 | 293 |
+| après la campagne d'items (3 notions closes) | 517 | 234 |
+| après la réparation des résumés (4 notions closes) | **532** | **219** |
+
+La dernière ligne mérite son propre document : quatre notions déclaraient
+`floor_met: true` alors que 15 misconceptions siégeaient sous le plancher — non
+par négligence, mais parce que leur résumé disait vrai le jour de son écriture
+et que le périmètre du fichier a doublé après. C'est le sujet de
+`docs/audits/resume-couverture.md` et de la porte
+`web/scripts/resume-couverture.mjs`, qui partage désormais la convention de
+comptage de CET instrument via `web/scripts/lib/couverture-compte.mjs`.
+
 ## Lancer l'instrument
 
 ```bash

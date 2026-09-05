@@ -1956,101 +1956,226 @@ items:
       une valeur unique : il n'existe qu'une seule altitude géostationnaire
       autour d'un astre donne.
 
+  # ── Deux items ajoutés le 2026-09-05 pour amener
+  #    `descente-plus-courte-que-montee` au plancher de 3 items du banc.
+  #    Elle y siégeait à UN seul item (CMP-11) alors que le résumé de
+  #    couverture ci-dessous annonçait `floor_met: true` : le résumé avait été
+  #    écrit quand l'inventaire ne comptait que les 12 misconceptions R7-R10,
+  #    et n'a pas été retourné quand la passe du 2026-09-05 a tagué les items
+  #    hérités R0-R6/R11 et déclaré leurs neuf familles. C'est exactement le
+  #    défaut que scripts/resume-couverture.mjs garde désormais.
+  #    Les deux items visent la MÊME erreur par deux gestes distincts — lire
+  #    une vitesse de retour (CMP-37), critiquer un raisonnement écrit
+  #    (CMP-38) — pour ne pas être trois clones de CMP-11.
+  - id: CMP-37
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, chute_libre_verticale, utilisation]
+    stem: >
+      Une balle est lancée verticalement vers le haut depuis le sol, avec une
+      vitesse initiale $v_0 = 15\ \text{m/s}$. Les frottements sont négligés.
+      Avec quelle vitesse repasse-t-elle par son point de départ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$15\\ \\text{m/s}$, dirigée vers le bas : $v_y(t)$ est une droite qui vaut $+v_0$ au départ et $-v_0$ au retour"
+        correct: true
+      - id: B
+        text: "Plus de $15\\ \\text{m/s}$ : la balle redescend plus vite qu'elle n'est montée, donc elle repasse plus vite qu'au départ"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.descente-plus-courte-que-montee
+        also_reveals: []
+        feedback: >
+          C'est la même intuition que « la descente dure moins longtemps » : on
+          prête au retour un avantage que la symétrie interdit. $v_y(t) = v_0 -
+          gt$ est une droite ; elle vaut $+v_0$ au départ, s'annule au sommet,
+          et vaut $-v_0$ quand la balle repasse à la même altitude — jamais
+          davantage.
+      - id: C
+        text: "$15\\ \\text{m/s}$, dirigée vers le haut : sur un axe orienté vers le haut l'accélération vaut $+g$, la vitesse garde son sens"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.signe-et-projection-mal-poses
+        also_reveals: []
+        feedback: >
+          La valeur est juste, le sens ne l'est pas. Sur un axe $Oy$ orienté
+          vers le HAUT, $\vec g$ pointe dans le sens opposé à l'axe, donc
+          $a_y = -g$ : la vitesse décroît, s'annule, puis devient négative. La
+          balle repasse par son point de départ en descendant.
+      - id: D
+        text: "Cela dépend de sa masse : une balle plus lourde repasse au point de départ plus vite qu'une balle plus légère"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
+        also_reveals: []
+        feedback: >
+          La deuxième loi donne $m\vec a = m\vec g$, donc $\vec a = \vec g$ :
+          la masse se simplifie et n'apparaît nulle part dans
+          $v_y(t) = v_0 - gt$. Deux balles lancées à la même vitesse repassent
+          à la même vitesse, lourde ou légère.
+    correct_feedback: >
+      La balle repasse à $15\ \text{m/s}$, vers le bas. $v_y(t) = v_0 - gt$
+      étant une droite, la vitesse perdue à la montée est exactement regagnée
+      à la descente : même altitude, même valeur de vitesse, sens opposé.
+    solution: |
+      Axe $Oy$ vertical vers le haut, origine au sol, frottements négligés :
+      $$a_y = -g \quad\Longrightarrow\quad v_y(t) = v_0 - gt$$
+      Le retour au point de départ a lieu à l'instant $t_r$ tel que
+      $y(t_r) = 0$, avec $y(t) = v_0 t - \tfrac{1}{2}gt^2$ :
+      $$t_r = \frac{2v_0}{g}$$
+      D'où
+      $$v_y(t_r) = v_0 - g\cdot\frac{2v_0}{g} = -v_0 = -15\ \text{m/s}$$
+      soit $15\ \text{m/s}$ dirigée vers le bas.
+
+  - id: CMP-38
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, chute_libre_verticale, resolution]
+    stem: >
+      Un élève écrit, à propos d'une balle lancée verticalement vers le haut
+      qui retombe à son point de départ : « La montée a duré
+      $0{,}80\ \text{s}$. Comme la balle redescend de plus en plus vite, la
+      descente a duré moins de $0{,}80\ \text{s}$. » Que penser de ce
+      raisonnement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Sa conclusion est fausse : la descente repasse par les mêmes vitesses que la montée, dans l'ordre inverse — elle dure donc $0{,}80\\ \\text{s}$ elle aussi"
+        correct: true
+      - id: B
+        text: "Sa conclusion est juste : la balle arrive plus vite qu'elle n'est partie, et une phase parcourue à plus grande vitesse prend donc moins de temps"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.descente-plus-courte-que-montee
+        also_reveals: []
+        feedback: >
+          Le raisonnement confond la vitesse FINALE et la vitesse MOYENNE. La
+          descente finit plus vite que la montée n'a commencé, mais elle
+          commence à zéro : les deux phases parcourent la même hauteur avec
+          exactement le même profil de vitesse, l'un renversé dans le temps.
+          $y(t)$ est une parabole symétrique par rapport à son sommet.
+      - id: C
+        text: "Sa conclusion est fausse, mais pour une autre raison : il oublie que la vitesse horizontale de la balle diminue à la montée puis repart à la descente"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
+        also_reveals: []
+        feedback: >
+          Doublement faux : cette balle est lancée VERTICALEMENT, elle n'a
+          aucune vitesse horizontale. Et même pour un lancer oblique, $v_x$ ne
+          varierait pas : le poids étant vertical, $a_x = 0$ et
+          $v_x(t) = v_{0x}$ du lancer à l'impact.
+      - id: D
+        text: "Sa conclusion dépend de la masse : pour une balle lourde la descente est plus courte, pour une balle légère les deux durées s'égalisent"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
+        also_reveals: []
+        feedback: >
+          En chute libre, $\vec a = \vec g$ : la masse s'est simplifiée et
+          n'intervient dans aucune durée. Une balle de plomb et une balle de
+          liège lancées à la même vitesse ont la même montée et la même
+          descente — c'est le frottement, pas la masse, qui les séparerait.
+    correct_feedback: >
+      Le raisonnement est faux. Arriver vite ne veut pas dire mettre peu de
+      temps : la descente commence à vitesse nulle et repasse exactement par
+      les vitesses de la montée, dans l'ordre inverse. Les deux phases durent
+      $0{,}80\ \text{s}$ chacune, et le vol entier $1{,}6\ \text{s}$.
+    solution: |
+      Avec $Oy$ vers le haut et l'origine au point de lancement :
+      $$y(t) = v_0 t - \tfrac{1}{2}gt^2 = t\left(v_0 - \tfrac{1}{2}gt\right)$$
+      C'est une parabole de sommet $t_s = v_0/g$, qui s'annule en $t = 0$ et
+      en $t = 2v_0/g = 2t_s$. La courbe est symétrique par rapport à la
+      verticale $t = t_s$ : la durée de montée $t_s$ et la durée de descente
+      $2t_s - t_s = t_s$ sont égales.
+      Ici $t_s = 0{,}80\ \text{s}$, donc la descente dure elle aussi
+      $0{,}80\ \text{s}$ et le vol entier $1{,}6\ \text{s}$.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, et il faut dire pourquoi : la version précédente
+# annonçait `floor_met: true` en ne comptant QUE les douze misconceptions
+# R7-R10 de la passe qui l'avait écrite. Son `scope_note` l'assumait
+# franchement — « R0-R6 et R11 n'ont aucune couverture formelle » — et c'était
+# vrai ce jour-là. Puis une passe ultérieure a déclaré neuf familles de plus et
+# tagué les items hérités : le périmètre du fichier avait changé, le drapeau
+# non. Résultat, `descente-plus-courte-que-montee` est restée à UN item du banc
+# pendant que le fichier se déclarait au plancher.
+#
+# C'est le mode de rot que scripts/resume-couverture.mjs garde désormais : un
+# tableau que rien ne réexécute est juste le jour où on l'écrit, et faux le
+# lendemain. Il ne vérifie pas les décomptes par misconception ci-dessous
+# (le corpus les tient selon six conventions différentes, toutes légitimes) —
+# il vérifie les deux affirmations qui n'ont qu'un sens possible : `floor_met`
+# et `total_items`. Les deux sont désormais VRAIES, et le resteront ou la
+# porte tombera.
+#
+# CE QUI A CHANGÉ EN CONTENU : deux items, CMP-37 et CMP-38, écrits pour
+# amener `descente-plus-courte-que-montee` de 1 à 3 items du banc. R1 porte
+# donc 5 items au lieu de 3 — un dépassement assumé du plancher de barreau,
+# pas un déséquilibre : c'est le barreau où vit la symétrie montée/descente.
+#
+# CE QUI RESTE VRAI DE L'ANCIEN RÉSUMÉ, et mérite de survivre :
+#   • les douze misconceptions R7-R10 siègent EXACTEMENT au plancher (3 items
+#     chacune), sans marge : retirer un seul item de R7-R10 casse aussitôt le
+#     plancher des trois misconceptions qu'il portait. Couverture mince — pas
+#     rembourrée, mince — et candidate naturelle à une prochaine passe.
+#   • l'écho inter-chapitres nommé par spec-extension.md §6 : les items
+#     CMP-31/D, CMP-32/A et CMP-33/D touchent à la fois
+#     `vitesse-orbitale-depend-masse-satellite` et l'indépendance de la masse
+#     établie en R2/R3. Aucun co-marquage formel n'a été posé ; le renvoi vit
+#     dans les `feedback:` de ces distracteurs.
+#   • le mélange d'habiletés de la passe R7-R10 (~42/42/17 en
+#     utilisation/résolution/application expérimentale contre une cible
+#     ~50/35/15) : la résolution y est légèrement sur-pondérée, entraînée par
+#     l'équation différentielle et la méthode d'Euler. Dans la tolérance, et
+#     signalé plutôt que corrigé par rembourrage.
 coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs
+    distracteurs la portent (l'élève n'en coche qu'un). Les checkpoints ne
+    comptent pas — le modèle apprenant est construit sur le banc de fin seul.
+    C'est la convention de web/scripts/lib/couverture-compte.mjs, celle de la
+    chaîne, et le tableau ci-dessous est GÉNÉRÉ contre elle.
   per_misconception:
-    # Every distractor across CMP-25..CMP-36 carries exactly one primary
-    # misconception id from the R7-R10 inventory added by this pass. Each
-    # of the 12 misconceptions is the primary tag on exactly one distractor
-    # per item, in all 3 items of its chapter -> exactly 3 item-level hits
-    # each (minimum floor, no slack).
-    mc.physics.pc_chute_plans.frottement-disparait-a-vlim: 3       # CMP-25, CMP-26, CMP-27
-    mc.physics.pc_chute_plans.acceleration-indefinie-avec-frottement: 3  # CMP-25, CMP-26, CMP-27
-    mc.physics.pc_chute_plans.masse-jamais-determinante-en-chute: 3      # CMP-25, CMP-26, CMP-27
-    mc.physics.pc_chute_plans.euler-donne-valeur-exacte: 3          # CMP-28, CMP-29, CMP-30
-    mc.physics.pc_chute_plans.euler-oubli-dt: 3                     # CMP-28, CMP-29, CMP-30
-    mc.physics.pc_chute_plans.euler-pente-non-recalculee: 3         # CMP-28, CMP-29, CMP-30
-    mc.physics.pc_chute_plans.orbite-sans-gravite: 3                # CMP-31, CMP-32, CMP-33
-    mc.physics.pc_chute_plans.orbite-necessite-force-tangentielle: 3    # CMP-31, CMP-32, CMP-33
-    mc.physics.pc_chute_plans.vitesse-orbitale-depend-masse-satellite: 3 # CMP-31, CMP-32, CMP-33
-    mc.physics.pc_chute_plans.kepler3-exposants-inverses: 3         # CMP-34, CMP-35, CMP-36
-    mc.physics.pc_chute_plans.geostationnaire-immobile-absolu: 3    # CMP-34, CMP-35, CMP-36
-    mc.physics.pc_chute_plans.geostationnaire-toute-altitude: 3     # CMP-34, CMP-35, CMP-36
-  total_items: 36   # 24 pre-existing (R0-R6, R11) + 12 new (R7-R10)
-  new_items_this_pass: 12   # CMP-25..CMP-36
+    mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises:    { count: 4, items: [CMP-4, CMP-5, CMP-18, CMP-19] }
+    mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie:     { count: 4, items: [CMP-14, CMP-16, CMP-17, CMP-22] }
+    mc.physics.pc_chute_plans.signe-et-projection-mal-poses:           { count: 4, items: [CMP-10, CMP-12, CMP-13, CMP-37] }
+    mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise:           { count: 3, items: [CMP-6, CMP-20, CMP-21] }
+    mc.physics.pc_chute_plans.vx-varie-pendant-le-vol:                 { count: 5, items: [CMP-1, CMP-7, CMP-23, CMP-24, CMP-38] }
+    mc.physics.pc_chute_plans.vitesse-nulle-au-sommet:                 { count: 4, items: [CMP-1, CMP-2, CMP-7, CMP-13] }
+    mc.physics.pc_chute_plans.poids-agit-sur-lhorizontale:             { count: 3, items: [CMP-1, CMP-7, CMP-9] }
+    mc.physics.pc_chute_plans.masse-influe-en-chute-libre:             { count: 6, items: [CMP-3, CMP-8, CMP-13, CMP-15, CMP-37, CMP-38] }
+    mc.physics.pc_chute_plans.descente-plus-courte-que-montee:         { count: 3, items: [CMP-11, CMP-37, CMP-38] }
+    mc.physics.pc_chute_plans.frottement-disparait-a-vlim:             { count: 3, items: [CMP-25, CMP-26, CMP-27] }
+    mc.physics.pc_chute_plans.acceleration-indefinie-avec-frottement:  { count: 3, items: [CMP-25, CMP-26, CMP-27] }
+    mc.physics.pc_chute_plans.masse-jamais-determinante-en-chute:      { count: 3, items: [CMP-25, CMP-26, CMP-27] }
+    mc.physics.pc_chute_plans.euler-donne-valeur-exacte:               { count: 3, items: [CMP-28, CMP-29, CMP-30] }
+    mc.physics.pc_chute_plans.euler-oubli-dt:                          { count: 3, items: [CMP-28, CMP-29, CMP-30] }
+    mc.physics.pc_chute_plans.euler-pente-non-recalculee:              { count: 3, items: [CMP-28, CMP-29, CMP-30] }
+    mc.physics.pc_chute_plans.orbite-sans-gravite:                     { count: 3, items: [CMP-31, CMP-32, CMP-33] }
+    mc.physics.pc_chute_plans.orbite-necessite-force-tangentielle:     { count: 3, items: [CMP-31, CMP-32, CMP-33] }
+    mc.physics.pc_chute_plans.vitesse-orbitale-depend-masse-satellite: { count: 3, items: [CMP-31, CMP-32, CMP-33] }
+    mc.physics.pc_chute_plans.kepler3-exposants-inverses:              { count: 3, items: [CMP-34, CMP-35, CMP-36] }
+    mc.physics.pc_chute_plans.geostationnaire-immobile-absolu:         { count: 3, items: [CMP-34, CMP-35, CMP-36] }
+    mc.physics.pc_chute_plans.geostationnaire-toute-altitude:          { count: 3, items: [CMP-34, CMP-35, CMP-36] }
+  total_items: 38
+  floor: 3
   floor_met: true
-  floor_note: >
-    All 12 misconceptions newly added in this pass sit EXACTLY at the
-    floor (3 items each) -- by construction, not by accident: every item
-    in R7-R10 was designed so its 3 distractors each carry a distinct
-    primary misconception from that chapter's 3-item inventory, rotated
-    across all 3 items of the chapter. This means the floor has zéro
-    slack: retiring or reworking any single R7-R10 item would immediately
-    break the floor for whichever misconceptions it carried. Flagged for
-    the editorial gate as a thin (not padded, but thin) coverage state --
-    a natural next-pass candidate if any of these 12 misconceptions turns
-    out, empirically, to need more diagnostic surface.
-  scope_note: >
-    This per-misconception ledger covers ONLY the 12 misconceptions
-    introduced by this pass (R7-R10). The 24 pre-existing items (R0-R6,
-    R11) predate the misconception-id-per-distractor convention entirely
-    -- none of their distractors carry a `misconception:` field, and the
-    top-level `misconceptions:` list was empty before this pass. That gap
-    is out of scope for this append/retag-only pass (task instructions:
-    "Only touch this file... append/retag only") and is reported here
-    rather than silently left implicit: R0-R6 and R11 have zéro formal
-    misconception coverage and would need a separate retrofitting pass to
-    meet the same floor.
-  dual_tag_note: >
-    Spec-extension.md (section 6, "Notes de build") explicitly calls out
-    one cross-skill co-attribution: an item asking whether a heavier
-    satellite orbits faster touches both CH-SAT-3 (this chapter's
-    vitesse-orbitale-depend-masse-satellite) and the mass-independence
-    result from R2/R3 (chute libre : a=g indépendant de m). CMP-31/D,
-    CMP-32/A and CMP-33/D are exactly that item family. No FORMAL dual-tag
-    entry was added for the R2/R3 side, because R2/R3 predate the
-    misconception-id convention (see scope_note) and this pass does not
-    retrofit them -- inventing a retroactive id for untouched legacy items
-    would exceed the append/retag-only instruction. The echo is instead
-    named here in prose, and each relevant distractor's `feedback:`
-    explicitly cross-references the R2/R3 result. Recommended follow-up:
-    if/when R2/R3 get a formal misconception entry, add a proper
-    dual_tagged_distractors entry linking it to
-    vitesse-orbitale-depend-masse-satellite.
-  dual_tagged_distractors: []   # none within the R7-R10 set itself: each
-    # of the 12 new items' 3 distractors maps cleanly to exactly one of
-    # its own chapter's 3 misconceptions, with no reachability overlap
-    # observed between them.
   ramp_coverage:
-    R0: 3    # CMP-7, CMP-8, CMP-9
-    R1: 3    # CMP-3, CMP-10, CMP-11
-    R2: 3    # CMP-1, CMP-12, CMP-13
-    R3: 3    # CMP-14, CMP-15, CMP-16
-    R4: 3    # CMP-2, CMP-4, CMP-17
-    R5: 3    # CMP-5, CMP-18, CMP-19
-    R6: 3    # CMP-6, CMP-20, CMP-21
-    R7: 3    # CMP-25, CMP-26, CMP-27   (NEW chapter)
-    R8: 3    # CMP-28, CMP-29, CMP-30   (NEW chapter)
-    R9: 3    # CMP-31, CMP-32, CMP-33   (NEW chapter)
-    R10: 3   # CMP-34, CMP-35, CMP-36   (NEW chapter)
-    R11: 3   # CMP-22, CMP-23, CMP-24  (retagged from old R7, unchanged content)
-    note: >
-      Every rung R0-R11 now has exactly 3 items; the ramp floor (>=3 per
-      rung) is met with no gaps after the renumbering. Sum check:
-      3x12 = 36 = total_items.
-  habilete_mix_new_items:
-    # Informal, via each new item's own `tags:` entry (utilisation /
-    # resolution / application_experimentale) -- this file has no
-    # dedicated `habilete:` field, so this is tracked through tags rather
-    # than a new top-level key, to avoid schema drift beyond what this
-    # pass was asked to touch.
-    utilisation: 5     # CMP-25, CMP-28, CMP-31, CMP-33, CMP-35
-    résolution: 5       # CMP-26, CMP-29, CMP-32, CMP-34, CMP-36
-    application_experimentale: 2   # CMP-27, CMP-30
-    note: >
-      ~42%/42%/17% against the cadre's sub-domain target (~50/35/15 for
-      Utilisation/Resolution/App. expérimentale, part_examen 27, the
-      heaviest sub-domain in the physics curriculum). Résolution is
-      slightly over-weighted and utilisation slightly under-weighted
-      relative to target, driven by R7/R8 (ODE + Euler) naturally pulling
-      toward résolution. Within tolerance for 12 items; flagged for the
-      editorial gate rather than corrected by padding.
+    R0: 3
+    R1: 5
+    R2: 3
+    R3: 3
+    R4: 3
+    R5: 3
+    R6: 3
+    R7: 3
+    R8: 3
+    R9: 3
+    R10: 3
+    R11: 3
+    note: >-
+      Le plancher de barreau (>= 3 items par barreau) est tenu partout. R1 en
+      porte 5 depuis l'ajout de CMP-37 et CMP-38.
+  honest_state: >-
+    Les 21 misconceptions déclarées sont couvertes, aucune sous le plancher.
+    Quinze d'entre elles y siègent EXACTEMENT (3 items) : la marge est nulle et
+    tout retrait d'item la casse.

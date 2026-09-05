@@ -52,7 +52,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
-import yaml from "js-yaml";
+import { PLANCHER, listerNotions, mesurerNotion } from "./lib/couverture-compte.mjs";
 
 const ICI = path.dirname(new URL(import.meta.url).pathname);
 const REPO = path.resolve(ICI, "..", "..");
@@ -64,124 +64,17 @@ const PORTE = ARGS.includes("--porte");
 const SCELLER = ARGS.includes("--sceller");
 const DETAIL = ARGS.includes("--detail");
 
-/** Le modèle n'évalue une misconception qu'au-delà de ce nombre d'items du banc. */
-const PLANCHER = 3;
-
-/**
- * Les tags qui ne sont PAS des misconceptions et n'ont donc pas à figurer
- * dans l'inventaire d'une notion. `hors_cadre_probe` marque un distracteur
- * SONDE DE BORD : il teste la limite du programme (« forcé » n'est pas un
- * régime d'oscillations libres) plutôt qu'une erreur nommée. La convention
- * est documentée dans pc/systemes-oscillants/items.yaml, bloc
- * `non_floor_tags`, avec sa règle : une sonde de bord n'est jamais la clé.
- */
-const SENTINELLES = new Set(["hors_cadre_probe"]);
-
-/**
- * Les tags d'un choix, normalisés en liste. Le corpus écrit les DEUX formes —
- * `misconception: a` et `misconception: [a, b]`, cette dernière quand un
- * distracteur exhibe deux erreurs à la fois. Lire la seule forme chaîne rend
- * la seconde muette : c'est exactement ce qui laissait M-OSC-RES-3 à 2 items
- * quand son propre décompte en annonçait 4.
- */
-function tags(valeur) {
-  if (typeof valeur === "string") return valeur.length > 0 ? [valeur] : [];
-  if (Array.isArray(valeur)) return valeur.filter((v) => typeof v === "string" && v.length > 0);
-  return [];
-}
-
-function charger(p) {
-  try {
-    return yaml.load(fs.readFileSync(p, "utf-8"));
-  } catch {
-    return null;
-  }
-}
-
-function qcm(liste) {
-  return (Array.isArray(liste) ? liste : []).filter(
-    (i) => i && typeof i.id === "string" && i.type === "mcq" && Array.isArray(i.choices)
-  );
-}
-
 // ── la mesure ──
+// La convention de comptage vit dans scripts/lib/couverture-compte.mjs, parce
+// que resume-couverture.mjs la partage : deux instruments qui compteraient
+// chacun de leur côté finiraient par s'accuser mutuellement de mentir.
 
 const notions = [];
-const detail = [];
+const detail = DETAIL ? [] : null;
 
-for (const matiere of fs
-  .readdirSync(CONTENU)
-  .filter((n) => !n.startsWith("_") && !n.startsWith("."))
-  .filter((n) => fs.statSync(path.join(CONTENU, n)).isDirectory())
-  .sort()) {
-  for (const slug of fs
-    .readdirSync(path.join(CONTENU, matiere))
-    .filter((n) => !n.startsWith("_") && !n.startsWith("."))
-    .filter((n) => fs.statSync(path.join(CONTENU, matiere, n)).isDirectory())
-    .sort()) {
-    const dir = path.join(CONTENU, matiere, slug);
-    const banc = charger(path.join(dir, "items.yaml")) || {};
-    const chk = charger(path.join(dir, "checkpoints.yaml")) || {};
-    const cle = `${matiere}/${slug}`;
-
-    const declarees = new Set((banc.misconceptions || []).map((m) => m && m.id).filter(Boolean));
-    const itemsBanc = qcm(banc.items);
-    const itemsChk = qcm(chk.checkpoints);
-    if (itemsBanc.length === 0 && itemsChk.length === 0) continue;
-
-    let distracteurs = 0;
-    let sansTag = 0;
-    let nulExplicite = 0;
-    let fantomes = 0;
-    const utilises = new Set();
-    /** misconception → nombre d'items DU BANC qui la visent (règle du plancher) */
-    const parMc = new Map();
-
-    for (const [source, liste] of [
-      ["banc", itemsBanc],
-      ["checkpoint", itemsChk],
-    ]) {
-      for (const it of liste) {
-        const vus = new Set();
-        for (const c of it.choices) {
-          if (!c || c.correct === true) continue;
-          distracteurs++;
-          const ts = tags(c.misconception);
-          if (ts.length === 0) {
-            sansTag++;
-            if (c.misconception === null) nulExplicite++;
-            if (DETAIL) detail.push(`sans-tag   ${cle} ${it.id} ${c.id ?? "?"}`);
-            continue;
-          }
-          for (const tag of ts) {
-            if (SENTINELLES.has(tag)) continue; // sonde de bord : pas une misconception
-            utilises.add(tag);
-            if (!declarees.has(tag)) {
-              fantomes++;
-              if (DETAIL) detail.push(`fantôme    ${cle} ${it.id} ${c.id ?? "?"} → ${tag}`);
-            }
-            if (source === "banc") vus.add(tag);
-          }
-        }
-        for (const tag of vus) parMc.set(tag, (parMc.get(tag) || 0) + 1);
-      }
-    }
-
-    let plancher = 0;
-    let sousPlancher = 0;
-    for (const [, n] of parMc) (n >= PLANCHER ? plancher++ : sousPlancher++);
-    const orphelines = [...declarees].filter((id) => !utilises.has(id)).length;
-    if (DETAIL) for (const id of declarees) if (!utilises.has(id)) detail.push(`orpheline  ${cle} ${id}`);
-
-    notions.push({
-      matiere, slug, cle,
-      itemsBanc: itemsBanc.length, itemsChk: itemsChk.length,
-      declarees: declarees.size, distracteurs, sansTag, nulExplicite,
-      omissions: sansTag - nulExplicite, fantomes,
-      plancher, sousPlancher, orphelines,
-      aveugle: plancher === 0,
-    });
-  }
+for (const n of listerNotions(CONTENU)) {
+  const m = mesurerNotion(n, detail);
+  if (m) notions.push(m);
 }
 
 // ── mode --sceller ──

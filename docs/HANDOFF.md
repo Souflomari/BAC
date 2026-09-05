@@ -1562,3 +1562,75 @@ clé, il est mort pour rien. Le brief de squelette
 neuf. Trois issues, aucune n'étant à moi : le rendre, le supprimer du schéma,
 ou l'assumer comme note d'auteur non destinée à l'élève — mais il faut
 trancher, sinon chaque item écrit demain paiera à nouveau ce champ.
+
+### 10.8 Quatre fichiers se déclaraient complets — et l'étaient à l'écriture
+
+Le défaut le plus instructif de la journée, parce que personne n'y a menti.
+
+Chaque `items.yaml` se termine par un `coverage_summary` : un tableau écrit à
+la main qui annonce combien d'items couvrent chaque misconception et si le
+plancher diagnostique de 3 items est atteint. Il est lu par les humains qui
+reprennent la notion, et **réexécuté par rien**. C'est la forme exacte que le
+§9.5 nomme et proscrit : *un commentaire honnête n'est pas une porte*.
+
+**Ce qui a été mesuré.** Quatre notions déclaraient `floor_met: true` alors que
+**15 misconceptions déclarées et taguées** siégeaient sous le plancher — donc
+inévaluables par le modèle apprenant, à jamais : `pc/aspects-energetiques` (7),
+`pc/systemes-oscillants` (4), `pc/reactions-acido-basiques` (3),
+`pc/chute-mouvements-plans` (1).
+
+**Comment c'est arrivé.** Les quatre résumés disaient VRAI le jour de leur
+écriture, et deux le disaient explicitement : *« R0-R6 et R11 n'ont aucune
+couverture formelle ; hors périmètre de cette passe »*, *« l'inventaire ne
+contient que les 12 ids AB-\* »*. Puis une passe ultérieure a déclaré les
+familles manquantes et tagué les items hérités. **Le périmètre a doublé, la
+conclusion est restée.** C'est la forme la plus dangereuse du défaut : le
+périmètre était énoncé, la conclusion était juste dedans, et personne n'avait
+tort — seul le temps a menti. Deux affirmations annexes avaient ranci de la
+même façon (« SO-19/20/21 ne portent aucun tag », idem pour AE-19/20/21 :
+faux depuis la passe de tagage).
+
+**Ce que la porte juge, et ce qu'elle refuse de juger.** Le corpus tient ses
+tableaux par-misconception selon **six conventions différentes** — par item,
+par distracteur, par attribution primaire — toutes légitimes et toutes
+déclarées dans le fichier qui les emploie. Les comparer entre elles accuserait
+de mensonge une notion honnête, et une porte qui crie au loup est désarmée dans
+la semaine. `scripts/resume-couverture.mjs` ne garde donc que les deux
+affirmations à **sens unique** : `floor_met` (dont la seule convention valable
+est celle de la chaîne, qui construit `learner-model-data.json`) et
+`total_items` (un nombre de lignes). `gated_floor_met`, affirmation de portée
+réduite, est délibérément ignoré.
+
+**La porte B mérite un mot** : elle échoue aussi sur un `floor_met: false`
+alors qu'aucune misconception n'est sous le plancher. Sans ce miroir, le corpus
+s'améliore et sa documentation reste au passé — une campagne d'items réussie
+laisse un drapeau périmé que personne ne pense à retourner. Avec lui, **finir le
+travail inclut de le dire**.
+
+**La réparation.** Le message d'échec nomme deux remèdes, jamais un troisième :
+écrire les items qui manquent, ou dire la vérité sur ce qui manque. Ici le
+premier — 15 misconceptions inévaluables sont 15 erreurs d'élève que le produit
+voit passer sans savoir les nommer. **Onze items** (CMP-37/38, RAB-40/41/42,
+SO-42/43, AE-31→34), chacun portant deux ou trois familles distinctes sur ses
+distracteurs. Les quatre résumés réécrits, tableau **généré** cette fois,
+affirmations rancies supprimées plutôt que rafistolées. Corpus :
+**517 → 532 misconceptions évaluables**.
+
+**Une note de méthode, payée sur place.** En rédigeant les nouveaux résumés
+j'ai écrit à la main deux nombres (« quatorze », « seize » misconceptions
+exactement au plancher) — les deux étaient faux. Le même défaut, dans le même
+geste, une heure après l'avoir nommé. Ils ont été recomptés par l'instrument et
+corrigés. La convention de comptage a été extraite dans
+`web/scripts/lib/couverture-compte.mjs`, partagée par `couverture-diagnostique`
+et `resume-couverture` : deux comptages parallèles finiraient par diverger, et
+le second accuserait le premier de mentir en se trompant lui-même.
+
+**Ce qui reste.** 219 misconceptions restent sous le plancher ailleurs dans le
+corpus — mais leurs notions déclarent honnêtement `floor_met: false` : c'est de
+la dette NOMMÉE, pas de la dette masquée, et c'est le sujet de la campagne
+d'items, pas de cette porte-ci. Et **18 notions n'ont aucun résumé** ; le
+cliquet empêche leur nombre de monter, il n'oblige personne à en écrire. Onze
+d'entre elles sont les notions SVT et deux les notions de philo `le-bonheur` et
+`l-histoire` — le même périmètre que les arbitrages propriétaire du §10.6.
+
+Détail complet : `docs/audits/resume-couverture.md`.

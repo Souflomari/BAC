@@ -2644,56 +2644,238 @@ items:
       (résonance floue) pour le résonateur fortement amorti, et une plage
       étroite (résonance aiguë) pour le résonateur faiblement amorti.
 
+  # ── Deux items ajoutés le 2026-09-05 pour amener au plancher les quatre
+  #    familles qui y siégeaient en dessous : M-OSC-EQD-1 (1 item),
+  #    M-OSC-PHASE-1 (1), M-OSC-LIBRE-1 (2), M-OSC-RAID-1 (2). Le résumé de
+  #    couverture en fin de fichier annonçait `floor_met: true` en ne comptant
+  #    que les six ids AMO/RES du cluster amortissement-résonance, décrits comme
+  #    « le seul inventaire tagué de la notion » — ce qui avait cessé d'être
+  #    vrai. Voir scripts/resume-couverture.mjs, qui garde désormais l'écart
+  #    entre ce qu'un fichier affirme et ce qu'il contient.
+  - id: SO-42
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [conditions_initiales, phase_a_l_origine, equation_differentielle]
+    stem: >
+      Un solide accroché à un ressort horizontal de raideur $k$ est lancé à
+      $t = 0$ depuis sa position d'ÉQUILIBRE, avec une vitesse dirigée dans le
+      sens positif de l'axe. On écrit son mouvement sous la forme
+      $x(t) = X_m\cos(\omega_0 t + \varphi)$. Quelle proposition est
+      entièrement correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\varphi = -\\dfrac{\\pi}{2}$, et $x(t)$ vérifie $\\ddot{x} + \\dfrac{k}{m}x = 0$, soit $x(t) = X_m\\sin(\\omega_0 t)$ avec $\\omega_0 = \\sqrt{k/m}$"
+        correct: true
+      - id: B
+        text: >-
+          $\varphi = +\dfrac{\pi}{2}$, et $x(t)$ vérifie
+          $\ddot{x} + \dfrac{k}{m}x = 0$ : le sens du lancer ne change pas le
+          signe de la phase
+        correct: false
+        misconception: M-OSC-PHASE-1
+        feedback: >
+          Le sens du lancer est justement ce qui fixe le signe. Avec
+          $\varphi = +\pi/2$, on aurait $\dot{x}(0) = -X_m\omega_0 < 0$ : le
+          solide partirait dans le sens NÉGATIF. Les deux conditions initiales
+          se lisent ensemble — $x(0) = 0$ donne $\varphi = \pm\pi/2$, et
+          $\dot{x}(0) > 0$ tranche pour $-\pi/2$.
+      - id: C
+        text: >-
+          $\varphi = -\dfrac{\pi}{2}$, et $x(t)$ vérifie
+          $\ddot{x} - \dfrac{k}{m}x = 0$, le signe moins traduisant le rappel
+          qui s'oppose au mouvement
+        correct: false
+        misconception: M-OSC-EQD-1
+        feedback: >
+          Le signe « moins » du rappel est déjà passé de l'autre côté de
+          l'égalité : $m\ddot{x} = -kx$ s'écrit $\ddot{x} + \frac{k}{m}x = 0$,
+          avec un PLUS. Avec un moins, les solutions seraient des
+          exponentielles réelles — un écart qui s'emballe, jamais une
+          oscillation.
+      - id: D
+        text: >-
+          $\varphi = -\dfrac{\pi}{2}$ et $\ddot{x} + \dfrac{k}{m}x = 0$, mais
+          avec un ressort plus raide la pulsation $\omega_0$ serait plus petite
+        correct: false
+        misconception: M-OSC-RAID-1
+        feedback: >
+          Les deux premières affirmations sont justes, la troisième non.
+          $\omega_0 = \sqrt{k/m}$ : la raideur est au NUMÉRATEUR. Un ressort
+          plus raide rappelle plus fort, donc oscille plus vite — pulsation
+          plus grande, période plus courte. L'intuition « plus dur à déformer,
+          donc plus lent » confond la force qu'il faut exercer et la vitesse
+          du retour à l'équilibre.
+    correct_feedback: >
+      $x(0) = 0$ impose $\cos\varphi = 0$, donc $\varphi = \pm\pi/2$ ; le sens
+      du lancer, $\dot{x}(0) > 0$, tranche pour $\varphi = -\pi/2$. Et la
+      deuxième loi de Newton projetée sur l'axe donne
+      $\ddot{x} + \frac{k}{m}x = 0$, avec un PLUS devant le terme de rappel.
+    solution: |
+      **L'équation différentielle.** La seule force selon $(Ox)$ est le
+      rappel $-kx$ (poids et réaction se compensent verticalement) :
+      $$m\ddot{x} = -kx \quad\Longrightarrow\quad
+      \ddot{x} + \frac{k}{m}x = 0, \qquad \omega_0 = \sqrt{\frac{k}{m}}$$
+      **La phase.** Les deux conditions initiales se lisent ensemble :
+      $$x(0) = X_m\cos\varphi = 0 \quad\Longrightarrow\quad
+      \varphi = \pm\frac{\pi}{2}$$
+      $$\dot{x}(0) = -X_m\omega_0\sin\varphi > 0 \quad\Longrightarrow\quad
+      \sin\varphi < 0 \quad\Longrightarrow\quad \varphi = -\frac{\pi}{2}$$
+      La position seule laisse deux possibilités ; c'est le SENS de la vitesse
+      qui choisit. L'amplitude $X_m$, elle, n'intervient jamais dans ce choix.
+
+  - id: SO-43
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [oscillateur_libre, conservation_energie, equation_differentielle]
+    stem: >
+      Sur un banc à coussin d'air (frottements négligeables), un solide
+      accroché à un ressort est écarté de $X_m$ de sa position d'équilibre,
+      puis lâché SANS vitesse initiale. Que peut-on affirmer de la suite du
+      mouvement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il oscille indéfiniment entre $-X_m$ et $+X_m$, et passe par l'équilibre à vitesse maximale"
+        correct: true
+      - id: B
+        text: >-
+          Il revient à sa position d'équilibre et s'y arrête : c'est là que le
+          ressort ne tire plus, donc plus rien ne le met en mouvement
+        correct: false
+        misconception: M-OSC-LIBRE-1
+        feedback: >
+          À l'équilibre, c'est la FORCE qui est nulle, pas la VITESSE. Le
+          solide y arrive lancé — l'énergie potentielle élastique du départ
+          s'y est entièrement convertie en énergie cinétique — et il le
+          dépasse. Une force nulle ne freine rien : elle cesse simplement
+          d'accélérer.
+      - id: C
+        text: >-
+          Son écart obéit à $\ddot{x} - \dfrac{k}{m}x = 0$ : il s'éloigne donc
+          de plus en plus de l'équilibre
+        correct: false
+        misconception: M-OSC-EQD-1
+        feedback: >
+          Cette équation-là décrirait bien une fuite exponentielle — et c'est
+          précisément le contrôle qui permet de repérer l'erreur de signe. Le
+          rappel du ressort vaut $-kx$, d'où $\ddot{x} + \frac{k}{m}x = 0$,
+          dont les solutions sont sinusoïdales.
+      - id: D
+        text: >-
+          Il oscille selon $x(t) = X_m\cos(\omega_0 t + \varphi)$, la phase
+          $\varphi$ valant $+\dfrac{\pi}{2}$ ou $-\dfrac{\pi}{2}$ selon le côté
+          d'où on l'a lâché
+        correct: false
+        misconception: M-OSC-PHASE-1
+        feedback: >
+          Lâché SANS vitesse depuis l'écart maximal, le solide part d'un
+          sommet de la sinusoïde : $x(0) = X_m$ donne $\cos\varphi = 1$, donc
+          $\varphi = 0$ (et $\varphi = \pi$ s'il est lâché de l'autre côté).
+          Les valeurs $\pm\pi/2$ correspondent au cas inverse — un départ
+          DEPUIS l'équilibre, à vitesse maximale.
+    correct_feedback: >
+      Sans frottement, l'énergie mécanique se conserve : le solide repasse
+      indéfiniment par les mêmes positions, entre $-X_m$ et $+X_m$. À
+      l'équilibre l'énergie est entièrement cinétique, donc la vitesse y est
+      maximale ; aux extrémités elle est entièrement potentielle, donc la
+      vitesse y est nulle.
+    solution: |
+      L'équation du mouvement est $\ddot{x} + \dfrac{k}{m}x = 0$, dont les
+      solutions sont sinusoïdales : $x(t) = X_m\cos(\omega_0 t + \varphi)$ avec
+      $\omega_0 = \sqrt{k/m}$. Ici $x(0) = X_m$ et $\dot{x}(0) = 0$ donnent
+      $\varphi = 0$, soit $x(t) = X_m\cos(\omega_0 t)$.
+      Le raisonnement énergétique dit la même chose sans calcul :
+      $$E_m = \frac{1}{2}kx^2 + \frac{1}{2}m\dot{x}^2 = \frac{1}{2}kX_m^2
+      = \text{constante}$$
+      En $x = 0$, tout est cinétique : $\dot{x}$ y est maximale en valeur
+      absolue. En $x = \pm X_m$, tout est potentiel : la vitesse y est nulle.
+      Rien ne retire d'énergie au système, donc l'amplitude ne décroît pas.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05. La version précédente annonçait `floor_met: true` en
+# ne comptant que les six ids AMO/RES du cluster amortissement-résonance,
+# qu'elle décrivait comme « le seul inventaire tagué de la notion ». C'était
+# vrai à l'écriture. Depuis, les sept familles antérieures (ISO, FORM, RAID,
+# EQD, ENER, LIBRE, PHASE) ont été déclarées et les items hérités tagués : le
+# périmètre a doublé, le drapeau n'a pas bougé, et quatre familles siégeaient
+# sous le plancher — M-OSC-EQD-1 (1 item), M-OSC-PHASE-1 (1), M-OSC-LIBRE-1
+# (2), M-OSC-RAID-1 (2).
+#
+# Deux items les y amènent : SO-42 (R2, phase à l'origine lue avec le SENS du
+# lancer, signe du terme de rappel, place de $k$ dans $\omega_0$) et SO-43 (R1,
+# ce que fait un oscillateur libre sans frottement). R1 porte désormais 4 items
+# et R2 en porte 4.
+#
+# DEUX AUTRES AFFIRMATIONS de l'ancien résumé étaient devenues fausses et sont
+# supprimées plutôt que corrigées :
+#   • « SO-19, SO-20, SO-21 ne portent aucun champ `misconception:` » — ils en
+#     portent tous, depuis la passe de tagage. Le bloc
+#     `legacy_items_not_retagged` n'avait plus d'objet.
+#   • les décomptes AMO/RES eux-mêmes, qui excluaient ces trois items.
+# Le tableau ci-dessous est désormais GÉNÉRÉ contre la convention de la chaîne
+# (web/scripts/lib/couverture-compte.mjs) et gardé par
+# scripts/resume-couverture.mjs.
 coverage_summary:
-  note: >-
-    Coverage floor per ADR 0011: >=3 items exposing each misconception id.
-    An item "exposes" an id when at least one of its choices carries that
-    id, whether tagged solo or as part of a dual-tag (cross-misconception
-    co-attribution across one distractor — not a stem defect; see SO-27/C,
-    SO-35/D, SO-36/D, SO-38/D). Counts below include dual-tag exposures.
-    The floor here is GATED on per-distractor tags: every counted exposure
-    is a real `misconception:` field on a choice (never an item-level-only
-    attribution), so floor_met and gated_floor_met coincide.
-  summit_conversion_note: >-
-    Summit-conversion pass (R8 "Pour t'entraîner"): the legacy worked bac
-    exercise and its "À toi" variations were removed from lesson.md and
-    replaced by [[exercise:r-bac]] (verified 2018 sujet, oscillation part) +
-    [[exercise:r-variation]] in exercises.yaml. Five in-lesson checkpoints
-    were added in checkpoints.yaml (cp-r0-predict + four rupture gates that
-    CLONE SO-25/SO-26/SO-34/SO-35). Inline surfacing does NOT re-count: the
-    per-misconception tally below is unchanged by this pass. The end-bank R8
-    practice items (SO-22, SO-23, SO-24 — isochronisme/masse, énergie de
-    torsion, synthèse analogique) remain in place as foundational-skill
-    items; they carry no M-OSC-* tag because they do not exhibit an
-    amortissement/résonance misconception (the notion's only tagged
-    inventory). Per-distractor tags on ALL floor items (SO-25..SO-41) are
-    verified present.
-  floor_target: 3
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte — tag simple ou co-marquage $[a, b]$ — une seule fois
+    par item. Les checkpoints ne comptent pas : le modèle apprenant est bâti
+    sur le banc de fin seul, et les cinq checkpoints du sommet R8 sont des
+    clones formatifs surfacés en ligne.
+  per_misconception:
+    M-OSC-ISO-1:   { count: 4, items: [SO-1, SO-2, SO-11, SO-22] }
+    M-OSC-FORM-1:  { count: 8, items: [SO-3, SO-4, SO-10, SO-13, SO-14, SO-16, SO-22, SO-24] }
+    M-OSC-RAID-1:  { count: 3, items: [SO-9, SO-15, SO-42] }
+    M-OSC-EQD-1:   { count: 3, items: [SO-5, SO-42, SO-43] }
+    M-OSC-ENER-1:  { count: 4, items: [SO-6, SO-17, SO-18, SO-23] }
+    M-OSC-LIBRE-1: { count: 3, items: [SO-7, SO-8, SO-43] }
+    M-OSC-PHASE-1: { count: 3, items: [SO-12, SO-42, SO-43] }
+    M-OSC-AMO-1:   { count: 5, items: [SO-20, SO-25, SO-27, SO-28, SO-31] }
+    M-OSC-AMO-2:   { count: 4, items: [SO-19, SO-26, SO-29, SO-32] }
+    M-OSC-AMO-3:   { count: 3, items: [SO-27, SO-30, SO-33] }
+    M-OSC-RES-1:   { count: 4, items: [SO-34, SO-36, SO-37, SO-40] }
+    M-OSC-RES-2:   { count: 3, items: [SO-35, SO-38, SO-41] }
+    M-OSC-RES-3:   { count: 5, items: [SO-21, SO-35, SO-36, SO-38, SO-39] }
+  total_items: 43
+  floor: 3
   floor_met: true
-  gated_floor_met: true
-  by_misconception:
-    M-OSC-AMO-1: {count: 4, items: [SO-25, SO-27, SO-28, SO-31]}
-    M-OSC-AMO-2: {count: 3, items: [SO-26, SO-29, SO-32]}
-    M-OSC-AMO-3: {count: 3, items: [SO-27, SO-30, SO-33]}
-    M-OSC-RES-1: {count: 4, items: [SO-34, SO-36, SO-37, SO-40]}
-    M-OSC-RES-2: {count: 3, items: [SO-35, SO-38, SO-41]}
-    M-OSC-RES-3: {count: 4, items: [SO-35, SO-36, SO-38, SO-39]}
+  ramp_coverage:
+    R0: 3
+    R1: 4
+    R2: 4
+    R3: 3
+    R4: 3
+    R5: 3
+    R6: 12
+    R7: 8
+    R8: 3
+    note: >-
+      Le plancher de barreau (>= 3 items) est tenu partout. R1 et R2 en portent
+      4 depuis l'ajout de SO-43 et SO-42. R6 et R7 sont plus fournis (12 et 8)
+      : ce sont les deux chapitres du cluster amortissement-résonance.
+  summit_conversion_note: >-
+    La conversion du sommet R8 (« Pour t'entraîner ») a retiré de lesson.md
+    l'exercice de bac rédigé et ses variations « À toi » au profit de
+    [[exercise:r-bac]] (sujet 2018 vérifié, partie oscillations) et
+    [[exercise:r-variation]], et ajouté cinq checkpoints en ligne
+    (cp-r0-predict + quatre portes de rupture CLONANT SO-25/SO-26/SO-34/SO-35).
+    Le surfaçage en ligne ne recompte pas : le tableau ci-dessus est inchangé
+    par cette passe. Les items de banc R8 (SO-22, SO-23, SO-24) restent en
+    place comme items de compétence fondamentale ; ils ne portent aucun tag
+    M-OSC-* parce qu'ils n'exhibent aucune erreur d'amortissement ou de
+    résonance.
   non_floor_tags:
     note: >-
-      Boundary-tripwire / vocabulary-noise distractors are intentionally
-      excluded from the misconception floor above. They probe the
-      amortissement LIMITE (no closed-form pseudo-période as f(m,h,k);
-      "forcé" is out of scope for oscillations libres) rather than
-      exhibiting a named M-OSC-* misconception. Per spec-extension.md §6,
-      a boundary-probe distractor must never be the key — verified true
-      for both occurrences below.
+      Les distracteurs SONDE DE BORD sont délibérément exclus du plancher :
+      ils testent la limite du programme (pas de pseudo-période en forme close
+      $f(m, h, k)$ pour l'amortissement LIMITE ; le régime « forcé » est hors
+      champ des oscillations libres) plutôt qu'une erreur nommée. Règle de
+      spec-extension.md §6 : une sonde de bord n'est JAMAIS la clé — vérifié
+      pour les deux occurrences.
     hors_cadre_probe: {count: 2, items: [SO-26/D, SO-27/D]}
-  legacy_items_not_retagged:
-    note: >-
-      SO-19, SO-20, SO-21 (rung R6) predate the misconception schéma and
-      carry no `misconception:` field on their choices. Per the
-      append/retag-only working discipline, they were left untouched
-      rather than retrofitted; SO-25..SO-33 were authored fresh instead so
-      that R6's M-OSC-AMO-* coverage is carried honestly by items that
-      actually declare it.
-    items: [SO-19, SO-20, SO-21]
+  gated_floor_met: true
+  honest_state: >-
+    Les 13 misconceptions déclarées sont couvertes, aucune sous le plancher.

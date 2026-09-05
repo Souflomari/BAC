@@ -1733,111 +1733,379 @@ items:
       jamais — c'est exactement ce qu'affirme la conservation de l'énergie
       mécanique sans frottement.
 
+  # ── Quatre items ajoutés le 2026-09-05 pour amener au plancher les SEPT
+  #    familles qui y siégeaient en dessous : ec-grandeur-vectorielle (1 item),
+  #    energie-oublie-g (1), force-perpendiculaire-travaille (1),
+  #    travail-oublie-cos (1), confond-ec-et-em (2),
+  #    ec-mauvaise-dependance-en-v (2), frottement-restitue-energie (2).
+  #    Le résumé en fin de fichier annonçait `floor_met: true` : c'est la plus
+  #    grosse des quatre dérives relevées par scripts/resume-couverture.mjs.
+  #    Chaque item porte TROIS familles distinctes sur ses trois distracteurs,
+  #    de sorte que quatre items suffisent à combler onze places.
+  - id: AE-31
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [energie_cinetique, dependance_en_v, grandeur_scalaire]
+    stem: >
+      Un chariot roule à $v = 3{,}0\ \text{m/s}$ sur une table horizontale
+      située à $1{,}0\ \text{m}$ au-dessus du sol. On double sa vitesse, tout
+      le reste étant inchangé. Par combien son énergie cinétique est-elle
+      multipliée ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Par 2 : l'énergie cinétique suit la vitesse, donc doubler l'une
+          double l'autre
+        correct: false
+        misconception: mc.physics.pc_energie.ec-mauvaise-dependance-en-v
+        feedback: >
+          $E_c = \frac12 mv^2$ : c'est le CARRÉ de la vitesse qui intervient.
+          Doubler $v$ multiplie $E_c$ par $2^2 = 4$, pas par 2 — c'est la
+          raison pour laquelle une voiture qui roule deux fois plus vite met
+          quatre fois plus de distance à s'arrêter.
+      - id: B
+        text: >-
+          Par 4 : l'énergie cinétique varie comme le CARRÉ de la vitesse,
+          $E_c = \frac12 mv^2$, et $2^2 = 4$
+        correct: true
+      - id: C
+        text: >-
+          Par 4 si le chariot continue dans le même sens ; s'il repart en sens
+          inverse, son énergie cinétique change aussi de signe
+        correct: false
+        misconception: mc.physics.pc_energie.ec-grandeur-vectorielle
+        feedback: >
+          $E_c$ est une grandeur SCALAIRE, toujours positive : elle ne dépend
+          que de la NORME de la vitesse. Un chariot lancé vers la gauche à
+          $6{,}0\ \text{m/s}$ a exactement la même énergie cinétique que le
+          même chariot lancé vers la droite à la même allure.
+      - id: D
+        text: >-
+          Par 4 seulement si la table était au niveau du sol : à
+          $1{,}0\ \text{m}$ de hauteur, l'énergie potentielle s'ajoute à
+          l'énergie cinétique et le rapport n'est plus 4
+        correct: false
+        misconception: mc.physics.pc_energie.confond-ec-et-em
+        feedback: >
+          C'est l'énergie MÉCANIQUE $E_m = E_c + E_{pp}$ qui contiendrait ce
+          terme d'altitude — pas l'énergie cinétique. $E_c = \frac12 mv^2$
+          ignore complètement la hauteur : la table peut être au sol ou au
+          sommet d'un immeuble, le rapport reste 4.
+    correct_feedback: >
+      $E_c = \frac12 mv^2$ dépend du CARRÉ de la vitesse : la multiplier par 2
+      multiplie l'énergie cinétique par $2^2 = 4$. L'altitude de la table,
+      elle, n'entre que dans l'énergie potentielle de pesanteur.
+    solution: |
+      $$E_c = \frac{1}{2}mv^2 \qquad\text{et}\qquad
+      E_c' = \frac{1}{2}m(2v)^2 = \frac{1}{2}m \times 4v^2 = 4\,E_c$$
+      Le rapport ne fait intervenir ni la masse (elle se simplifie), ni la
+      direction du mouvement (seule la norme $v$ figure dans la formule), ni
+      l'altitude (qui appartient à $E_{pp} = mgz$, pas à $E_c$).
+
+  - id: AE-32
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [travail_force_constante, produit_scalaire, reaction_normale]
+    stem: >
+      Une caisse est tirée sur $d = 5{,}0\ \text{m}$ le long d'un sol
+      horizontal par une force $\vec F$ de norme $F = 40\ \text{N}$, inclinée
+      de $\theta = 60^\circ$ au-dessus de l'horizontale. Le sol exerce sur elle
+      une réaction normale $\vec N$ verticale. Quels sont les travaux de
+      $\vec F$ et de $\vec N$ sur ce déplacement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $W(\vec F) = F\,d\cos 60^\circ = 40 \times 5{,}0 \times 0{,}50 =
+          100\ \text{J}$, et $W(\vec N) = 0\ \text{J}$ puisque
+          $\cos 90^\circ = 0$
+        correct: true
+      - id: B
+        text: >-
+          $W(\vec F) = F \times d = 200\ \text{J}$ et $W(\vec N) = 0\ \text{J}$
+          : la force entière accompagne le déplacement
+        correct: false
+        misconception: mc.physics.pc_energie.travail-oublie-cos
+        feedback: >
+          Seule la composante de $\vec F$ ALIGNÉE avec le déplacement
+          travaille, d'où le facteur $\cos\theta$ du produit scalaire :
+          $W(\vec F) = \vec F \cdot \vec{AB} = F\,d\cos 60^\circ = 100\
+          \text{J}$. La composante verticale, elle, ne déplace rien.
+      - id: C
+        text: >-
+          $W(\vec F) = 100\ \text{J}$ et $W(\vec N) = N \times d$ : la
+          réaction du sol accompagne la caisse sur toute la distance
+        correct: false
+        misconception: mc.physics.pc_energie.force-perpendiculaire-travaille
+        feedback: >
+          $\vec N$ est verticale et le déplacement horizontal : l'angle vaut
+          $90^\circ$, donc $\cos 90^\circ = 0$ et $W(\vec N) = 0\ \text{J}$.
+          Une force perpendiculaire au déplacement ne travaille jamais, si
+          grande soit sa norme — « accompagner » n'est pas « travailler ».
+      - id: D
+        text: >-
+          $W(\vec F) = 100\ \text{J}$, mais ce travail est dirigé vers l'avant
+          : comme l'énergie cinétique qu'il produit, c'est une grandeur qui
+          porte une direction
+        correct: false
+        misconception: mc.physics.pc_energie.ec-grandeur-vectorielle
+        feedback: >
+          La valeur est juste, l'interprétation non. Le travail et l'énergie
+          cinétique sont des SCALAIRES : ils ont un signe, jamais une
+          direction. « Moteur » ou « résistant » qualifie le SIGNE du travail
+          d'une force, ce qui n'en fait pas un vecteur.
+    correct_feedback: >
+      $W(\vec F) = F\,d\cos\theta = 40 \times 5{,}0 \times \cos 60^\circ =
+      40 \times 5{,}0 \times 0{,}50 = 100\ \text{J}$, et $W(\vec N) = 0$ car
+      $\vec N$ est perpendiculaire au déplacement.
+    solution: |
+      Le travail d'une force constante sur un déplacement rectiligne est le
+      produit scalaire de la force par le déplacement :
+      $$W(\vec F) = \vec F \cdot \vec{AB} = F\,d\,\cos\theta$$
+      Pour $\vec F$, $\theta = 60^\circ$ :
+      $$W(\vec F) = 40 \times 5{,}0 \times 0{,}50 = 100\ \text{J}$$
+      Pour $\vec N$, verticale alors que le déplacement est horizontal,
+      $\theta = 90^\circ$ :
+      $$W(\vec N) = N \times d \times \cos 90^\circ = 0\ \text{J}$$
+      Le poids, lui aussi vertical, ne travaille pas davantage.
+
+  - id: AE-33
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [travail_du_poids, plan_incline, reaction_normale]
+    stem: >
+      Un solide de masse $m = 2{,}0\ \text{kg}$ glisse de $d = 4{,}0\ \text{m}$
+      le long d'un plan incliné à $30^\circ$ : il descend donc d'une hauteur
+      $h = 2{,}0\ \text{m}$. La réaction normale du plan vaut
+      $N = 17\ \text{N}$. On prend $g = 10\ \text{N/kg}$. Quel bilan des
+      travaux du poids et de la réaction normale est correct ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $W(\vec P) = m\,h = 4{,}0\ \text{J}$ et $W(\vec N) = 0\ \text{J}$
+        correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-g
+        feedback: >
+          Il manque l'intensité de la pesanteur : le travail du poids vaut
+          $mgh$, pas $mh$. L'oubli de $g$ divise le résultat par environ 10 et
+          lui retire ses unités — $m\,h$ s'exprime en $\text{kg}\cdot
+          \text{m}$, ce qui n'est pas une énergie.
+      - id: B
+        text: >-
+          $W(\vec P) = m\,g\,h = 40\ \text{J}$ et $W(\vec N) = 0\ \text{J}$
+        correct: true
+      - id: C
+        text: >-
+          $W(\vec P) = m\,g\,d = 80\ \text{J}$ et $W(\vec N) = 0\ \text{J}$ :
+          le poids agit sur toute la longueur parcourue
+        correct: false
+        misconception: mc.physics.pc_energie.travail-oublie-cos
+        feedback: >
+          Remplacer $h$ par $d$, c'est oublier le $\cos\theta$ du produit
+          scalaire : $W(\vec P) = P\,d\cos 60^\circ = mgd\cos 60^\circ = mgh$.
+          Seule la DÉNIVELÉE compte, jamais la longueur du chemin — c'est ce
+          qui fait du poids une force conservative.
+      - id: D
+        text: >-
+          $W(\vec P) = 40\ \text{J}$ et $W(\vec N) = N\,d = 68\ \text{J}$ : la
+          réaction du plan soutient le solide pendant toute la glissade
+        correct: false
+        misconception: mc.physics.pc_energie.force-perpendiculaire-travaille
+        feedback: >
+          $\vec N$ est perpendiculaire au plan, donc au déplacement qui se
+          fait le long du plan : $\cos 90^\circ = 0$ et $W(\vec N) = 0$. Sa
+          norme n'y change rien, et l'inclinaison du plan non plus — c'est la
+          perpendicularité seule qui annule le travail.
+    correct_feedback: >
+      $W(\vec P) = mgh = 2{,}0 \times 10 \times 2{,}0 = 40\ \text{J}$ : la
+      dénivelée, jamais la longueur du plan. Et $W(\vec N) = 0$, la réaction
+      normale étant perpendiculaire au déplacement.
+    solution: |
+      **Le poids.** Sa direction fait un angle de $60^\circ$ avec le
+      déplacement le long du plan, donc
+      $$W(\vec P) = P\,d\cos 60^\circ = mg\,d\cos 60^\circ = mg\,h$$
+      puisque $d\cos 60^\circ = d\sin 30^\circ = h$. Numériquement :
+      $$W(\vec P) = 2{,}0 \times 10 \times 2{,}0 = 40\ \text{J}$$
+      **La réaction normale.** Perpendiculaire au plan, donc au déplacement :
+      $$W(\vec N) = N\,d\cos 90^\circ = 0\ \text{J}$$
+      Deux contrôles à garder : $mgh$ contient TOUJOURS $g$, et une force
+      perpendiculaire au déplacement a TOUJOURS un travail nul.
+
+  - id: AE-34
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_energie
+    tags: [energie_mecanique, frottement, bilan_energetique]
+    stem: >
+      Un skieur de masse $m = 60\ \text{kg}$ part du repos et descend une
+      piste de dénivelée $h = 20\ \text{m}$. Il arrive en bas à
+      $v = 15\ \text{m/s}$. On prend $g = 10\ \text{N/kg}$. Quelle énergie les
+      frottements ont-ils dissipée pendant la descente ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $1{,}2\times10^{3}\ \text{J}$ : l'énergie disponible au départ vaut
+          $m\,h = 1200\ \text{J}$, et elle a été entièrement dissipée
+        correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-g
+        feedback: >
+          L'énergie potentielle de pesanteur vaut $mgz$, pas $mz$ : au départ,
+          $E_{pp} = mgh = 60 \times 10 \times 20 = 1{,}2\times10^{4}\
+          \text{J}$, dix fois plus. Sans $g$, le nombre obtenu n'est même pas
+          une énergie.
+      - id: B
+        text: >-
+          $1{,}88\times10^{4}\ \text{J}$ : on additionne l'énergie potentielle
+          du départ et l'énergie cinétique d'arrivée
+        correct: false
+        misconception: mc.physics.pc_energie.signe-travail-poids
+        feedback: >
+          L'énergie cinétique d'arrivée n'est pas une perte : c'est
+          justement la part de l'énergie de départ qui a SURVÉCU. Elle se
+          soustrait, elle ne s'ajoute — sinon la piste aurait fourni plus
+          d'énergie qu'elle n'en contenait.
+      - id: C
+        text: >-
+          Rien n'est dissipé : le frottement échauffe les skis, et cette
+          chaleur est restituée au mouvement, si bien que le bilan est nul
+        correct: false
+        misconception: mc.physics.pc_energie.frottement-restitue-energie
+        feedback: >
+          La chaleur produite part dans la neige et dans l'air : elle ne
+          revient jamais au skieur sous forme de mouvement. Le travail du
+          frottement est toujours résistant, $W(\vec f) \le 0$, donc
+          $\Delta E_m \le 0$. Si rien n'était dissipé, le skieur arriverait à
+          $20\ \text{m/s}$ et non à $15$.
+      - id: D
+        text: >-
+          $5{,}25\times10^{3}\ \text{J}$ : c'est l'énergie potentielle du
+          départ moins l'énergie cinétique d'arrivée
+        correct: true
+    correct_feedback: >
+      $E_{pp}$ au départ vaut $mgh = 1{,}2\times10^{4}\ \text{J}$ ; l'énergie
+      cinétique d'arrivée vaut $\frac12 mv^2 = 6{,}75\times10^{3}\ \text{J}$.
+      La différence, $5{,}25\times10^{3}\ \text{J}$, est passée en chaleur :
+      c'est $|W(\vec f)|$.
+    solution: |
+      Le skieur part du repos, donc $E_c$ initiale nulle. En prenant le bas de
+      la piste comme référence d'altitude :
+      $$E_m(\text{départ}) = mgh = 60 \times 10 \times 20 = 1{,}2\times10^{4}\
+      \text{J}$$
+      $$E_m(\text{arrivée}) = \frac{1}{2}mv^2 = \frac{1}{2}\times 60 \times
+      15^2 = 6{,}75\times10^{3}\ \text{J}$$
+      La variation d'énergie mécanique est égale au travail des forces non
+      conservatives, ici le seul frottement :
+      $$\Delta E_m = W(\vec f) = 6{,}75\times10^{3} - 1{,}2\times10^{4}
+      = -5{,}25\times10^{3}\ \text{J}$$
+      Les frottements ont donc dissipé $5{,}25\times10^{3}\ \text{J}$, soit
+      environ 44 % de l'énergie de départ. Contrôle : sans frottement, le
+      skieur arriverait à $v = \sqrt{2gh} = 20\ \text{m/s}$ ; il arrive à
+      $15\ \text{m/s}$, ce qui confirme une perte.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, et c'était la plus grosse des quatre dérives relevées
+# par scripts/resume-couverture.mjs : SEPT familles siégeaient sous le plancher
+# pendant que le fichier déclarait `floor_met: true`.
+#
+# L'ancien résumé disait vrai à l'écriture : son `scope_note` annonçait
+# franchement ne couvrir que les neuf misconceptions R5/R6/R7 de sa passe, et
+# que « R0-R4 et R8 n'ont aucune couverture formelle ». Une passe ultérieure a
+# déclaré treize familles de plus et tagué les items hérités : le périmètre a
+# plus que doublé, le drapeau est resté. D'où l'écart mesuré —
+# ec-grandeur-vectorielle (1 item), energie-oublie-g (1),
+# force-perpendiculaire-travaille (1), travail-oublie-cos (1),
+# confond-ec-et-em (2), ec-mauvaise-dependance-en-v (2),
+# frottement-restitue-energie (2).
+#
+# Quatre items les y amènent : AE-31 (R1, dépendance en $v^2$ et caractère
+# scalaire), AE-32 (R2, produit scalaire et réaction normale sur un sol
+# horizontal), AE-33 (R2, travail du poids sur un plan incliné : $mgh$, pas
+# $mh$ ni $mgd$), AE-34 (R4, bilan énergétique d'une descente avec frottement).
+# Chacun porte TROIS familles distinctes sur ses trois distracteurs, de sorte
+# que quatre items comblent onze places. R1, R2 et R4 portent désormais 4 items.
+#
+# UNE AUTRE AFFIRMATION de l'ancien résumé était devenue fausse et disparaît :
+# « AE-19/20/21 ne portent aucun tag formel de misconception ». Ils en portent
+# tous depuis la passe de tagage (confusion-v-et-v-carre,
+# em-conservee-malgre-frottement, frottement-restitue-energie,
+# energie-oublie-facteur-demi, signe-travail-poids). Ce qui reste vrai de cette
+# note — le fond ski/traîneau de ces trois items, là où le chapitre R8 rebâti
+# appelle des bilans d'oscillateurs — est conservé plus bas.
+#
+# Le tableau ci-dessous est GÉNÉRÉ contre la convention de la chaîne
+# (web/scripts/lib/couverture-compte.mjs).
 coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item. Les checkpoints ne comptent
+    pas — le modèle apprenant est bâti sur le banc de fin seul.
   per_misconception:
-    mc.physics.pc_energie.epe-force-rappel-traitee-constante: 3   # AE-22, AE-23, AE-24
-    mc.physics.pc_energie.epe-depend-masse-ou-vitesse: 3          # AE-22, AE-23, AE-24
-    mc.physics.pc_energie.epe-confondue-avec-epp: 3               # AE-22, AE-23, AE-24
-    mc.physics.pc_energie.torsion-moment-traite-constant: 3       # AE-25, AE-26, AE-27
-    mc.physics.pc_energie.torsion-ep-depend-inertie-j: 3          # AE-25, AE-26, AE-27
-    mc.physics.pc_energie.torsion-ec-formule-translation: 3       # AE-25, AE-26, AE-27
-    mc.physics.pc_energie.pendule-ralentir-egale-perdre-energie: 3   # AE-28, AE-29, AE-30
-    mc.physics.pc_energie.pendule-hauteur-egale-longueur-fil: 3      # AE-28, AE-29, AE-30
-    mc.physics.pc_energie.pendule-em-maximale-en-bas: 3              # AE-28, AE-29, AE-30
-  total_items: 27   # 21 pre-existing kept (AE-1..4, AE-6..16, AE-19..21) + 9 new (AE-22..AE-30)
-  new_items_this_pass: 9    # AE-22..AE-30
-  removed_items_this_pass: 3   # AE-5, AE-17, AE-18 -- old R5 (TEC-vs-Newton / plan incliné),
-    # dropped entirely per spec-extension.md sec 0.5: "old R5 -- DROP -- TEC vs Newton
-    # (plan incline) -- off-cadre generic comparison". These items tested off-cadre
-    # content (2e loi de Newton vs TEC method-comparison on an inclined plane) that
-    # no longer exists in the lesson after the renumber; no surviving chapter to
-    # retag them onto (their content doesn't map to ressort/torsion/pendule energy),
-    # so removed rather than retagged, per task instruction ("prefer removal if in doubt").
-  retagged_items_this_pass: 3   # AE-19, AE-20, AE-21 : rung R6 -> R8 (old summit
-    # "Pour t'entrainer" renumbered per spec-extension.md sec 0.5; field-only change,
-    # content untouched -- see r8_content_note below)
+    mc.physics.pc_energie.epe-force-rappel-traitee-constante:    { count: 3, items: [AE-22, AE-23, AE-24] }
+    mc.physics.pc_energie.epe-depend-masse-ou-vitesse:           { count: 3, items: [AE-22, AE-23, AE-24] }
+    mc.physics.pc_energie.epe-confondue-avec-epp:                { count: 3, items: [AE-22, AE-23, AE-24] }
+    mc.physics.pc_energie.torsion-moment-traite-constant:        { count: 3, items: [AE-25, AE-26, AE-27] }
+    mc.physics.pc_energie.torsion-ep-depend-inertie-j:           { count: 3, items: [AE-25, AE-26, AE-27] }
+    mc.physics.pc_energie.torsion-ec-formule-translation:        { count: 3, items: [AE-25, AE-26, AE-27] }
+    mc.physics.pc_energie.pendule-ralentir-egale-perdre-energie: { count: 3, items: [AE-28, AE-29, AE-30] }
+    mc.physics.pc_energie.pendule-hauteur-egale-longueur-fil:    { count: 3, items: [AE-28, AE-29, AE-30] }
+    mc.physics.pc_energie.pendule-em-maximale-en-bas:            { count: 4, items: [AE-3, AE-28, AE-29, AE-30] }
+    mc.physics.pc_energie.travail-poids-depend-du-chemin:        { count: 4, items: [AE-1, AE-2, AE-7, AE-8] }
+    mc.physics.pc_energie.frottement-restitue-energie:           { count: 3, items: [AE-9, AE-20, AE-34] }
+    mc.physics.pc_energie.energie-oublie-facteur-demi:           { count: 4, items: [AE-4, AE-10, AE-15, AE-21] }
+    mc.physics.pc_energie.ec-mauvaise-dependance-en-v:           { count: 3, items: [AE-10, AE-11, AE-31] }
+    mc.physics.pc_energie.energie-oublie-masse:                  { count: 5, items: [AE-1, AE-3, AE-4, AE-10, AE-15] }
+    mc.physics.pc_energie.ec-grandeur-vectorielle:               { count: 3, items: [AE-12, AE-31, AE-32] }
+    mc.physics.pc_energie.travail-oublie-cos:                    { count: 3, items: [AE-13, AE-32, AE-33] }
+    mc.physics.pc_energie.force-perpendiculaire-travaille:       { count: 3, items: [AE-14, AE-32, AE-33] }
+    mc.physics.pc_energie.energie-oublie-g:                      { count: 3, items: [AE-16, AE-33, AE-34] }
+    mc.physics.pc_energie.confond-ec-et-em:                      { count: 3, items: [AE-3, AE-6, AE-31] }
+    mc.physics.pc_energie.em-conservee-malgre-frottement:        { count: 4, items: [AE-6, AE-9, AE-19, AE-20] }
+    mc.physics.pc_energie.signe-travail-poids:                   { count: 4, items: [AE-6, AE-16, AE-21, AE-34] }
+    mc.physics.pc_energie.confusion-v-et-v-carre:                { count: 3, items: [AE-4, AE-15, AE-19] }
+  total_items: 31
+  floor: 3
   floor_met: true
-  floor_note: >
-    All 9 misconceptions newly added in this pass sit EXACTLY at the floor
-    (3 items each), by construction: every new item's 3 distractors map to
-    a distinct primary misconception from its chapter's 3-item inventory,
-    rotated across all 3 items of that chapter (R5: epe-*; R6: torsion-*;
-    R7: pendule-*). Zéro slack: reworking or retiring any single R5/R6/R7
-    item would immediately break the floor for whichever misconceptions it
-    carried. Flagged for the editorial gate as thin (not padded, but thin)
-    coverage -- a natural next-pass candidate if any of these 9
-    misconceptions turns out, empirically, to need more diagnostic surface
-    (spec-extension.md sec 7 sets a ceiling of 6 per misconception).
-  scope_note: >
-    This per-misconception ledger covers ONLY the 9 misconceptions
-    introduced by this pass (R5/R6/R7, the new oscillator-energy
-    chapters). The pre-existing R0-R4/R8 items (AE-1..4, AE-6..16,
-    AE-19..21) predate the misconception-id-per-distractor convention
-    entirely -- none of their distractors carry a `misconception` field,
-    and the top-level `misconceptions:` list was empty before this pass.
-    That gap is out of scope for this task (author R5/R6/R7 items + fix
-    the rung retag/removal only) and is reported here rather than left
-    silently implicit: R0-R4 and R8 have zéro formal misconception
-    coverage and would need a separate retrofitting pass to meet the same
-    floor.
-  dual_tag_note: >
-    No dual-tagging was needed within the new R5/R6/R7 set: each of the 9
-    items' 3 distractors maps cleanly to exactly one of its own chapter's
-    3 misconceptions, with no reachability overlap observed between them
-    (no EPE distractor is independently reachable via a TOR or PES wrong
-    model, and vice versa -- the three oscillators are dressed differently
-    enough that cross-skill co-attribution did not arise here). Stem-hygiene
-    check (correct-answer contamination vs. cross-skill co-attribution,
-    per this rôle's standard) passed on all 9 new items: traced by hand,
-    no wrong model reaches the CORRECT choice on any of the 9 stems --
-    zéro correct-answer contamination.
-  dual_tagged_distractors: []
   ramp_coverage:
-    R0: 3    # AE-7, AE-8, AE-9 (unchanged)
-    R1: 3    # AE-10, AE-11, AE-12 (unchanged)
-    R2: 3    # AE-13, AE-14, AE-15 (unchanged)
-    R3: 3    # AE-1, AE-2, AE-16 (unchanged)
-    R4: 3    # AE-3, AE-4, AE-6 (unchanged)
-    R5: 3    # AE-22, AE-23, AE-24 (NEW chapter: ressort, E_pe = 1/2 k x^2)
-    R6: 3    # AE-25, AE-26, AE-27 (NEW chapter: torsion, E_p,torsion = 1/2 C theta^2)
-    R7: 3    # AE-28, AE-29, AE-30 (NEW chapter: pendule pesant, énergie mécanique)
-    R8: 3    # AE-19, AE-20, AE-21 (retagged from old R6; content unchanged -- see r8_content_note)
-    note: >
-      Every rung R0-R8 now has exactly 3 items; the ramp floor (>=3 per
-      rung) is met with no gaps after the renumbering. Sum check: 3x9 = 27
-      = total_items. Old rung R5 (TEC-vs-Newton, plan incline) is gone
-      entirely: 0 items remain tagged with that dropped chapter's content
-      -- the R5 label now belongs exclusively to the new ressort chapter.
-  r8_content_note: >
-    AE-19/20/21 were retagged R6->R8 verbatim (field-only change, per task
-    instructions) and still test the old R6 traineau/skieur generic-TEC-
-    with-friction scenarios, not the oscillator-energy bilans
-    spec-extension.md sec 0.5/sec 6 specifies for the rebuilt R8
-    ("remplacer les exercices ski/plan incline par des bilans énergétiques
-    d'oscillateurs -- ressort, torsion, pendule"). That lesson-content
-    rebuild is content-author's scope, not this item-authoring pass's
-    (task instruction: "Only touch content/pc/aspects-energetiques/items.yaml").
-    Flagged so the gap is visible rather than silently implied by the
-    successful retag: R8 currently has ramp coverage (3 items, floor met)
-    but not yet oscillator-energy-flavored coverage or any formal
-    misconception tagging. Recommended follow-up: once R8's lesson content
-    is rebuilt, retire or replace AE-19/20/21 with items exercising a full
-    spring/torsion/pendulum energy bilan (spec-extension.md sec 7 does not
-    set a distinct misconception set for R8 -- it is an entrainement rung
-    recombining the R5/R6/R7 mechanisms, so its items could reasonably
-    reuse the existing 9 M-EPE/M-TOR/M-PES ids rather than minting new
-    ones).
-  habilete_mix_new_items:
-    # Informal, via each new item's own `tags:` entry (utilisation /
-    # resolution / application_experimentale) -- this file has no
-    # dedicated `habilete:` field, so this is tracked through tags rather
-    # than a new top-level key.
-    utilisation: 4     # AE-23, AE-26, AE-27, AE-29
-    résolution: 3        # AE-22, AE-25, AE-28
-    application_experimentale: 2   # AE-24, AE-30
-    note: >
-      ~44%/33%/22% (utilisation/resolution/application_experimentale)
-      against the cadre's target mix (~50/35/15, spec-extension.md
-      sec 0.7). Reasonably close for 9 items -- application_experimentale
-      is somewhat over target and utilisation somewhat under; flagged for
-      the editorial gate rather than corrected by padding.
+    R0: 3
+    R1: 4
+    R2: 5
+    R3: 3
+    R4: 4
+    R5: 3
+    R6: 3
+    R7: 3
+    R8: 3
+    note: >-
+      Le plancher de barreau (>= 3 items) est tenu partout. R1, R2 et R4 en
+      portent 4 depuis l'ajout de AE-31 à AE-34.
+  historique:
+    removed_items: >-
+      AE-5, AE-17 et AE-18 (ancien R5, « TEC contre 2e loi de Newton sur un
+      plan incliné ») ont été retirés lors de la passe R5/R6/R7 : contenu hors
+      cadre, sans chapitre d'accueil après la renumérotation. Les identifiants
+      ne sont pas réattribués — d'où les trous AE-5, AE-17, AE-18 dans la
+      numérotation.
+    retagged_items: >-
+      AE-19, AE-20 et AE-21 sont passés du barreau R6 au barreau R8 lors de la
+      même passe (changement de champ seul, contenu inchangé).
+  r8_content_note: >-
+    AE-19/20/21 tiennent le barreau R8 avec des scénarios ski/traîneau de TEC
+    avec frottement, là où le R8 rebâti appelle des bilans énergétiques
+    d'OSCILLATEURS (ressort, torsion, pendule) — spec-extension.md §0.5/§6. Ils
+    portent bien, eux, des tags de misconception depuis la passe de tagage ;
+    c'est leur HABILLAGE qui n'a pas suivi la refonte du chapitre. Suite
+    recommandée : une fois le contenu R8 rebâti, les remplacer par des items
+    exerçant un bilan complet d'oscillateur, en réutilisant les ids EPE/torsion
+    /pendule existants plutôt qu'en en créant de nouveaux (R8 recombine les
+    mécanismes de R5-R7, il n'a pas d'inventaire propre).
+  honest_state: >-
+    Les 22 misconceptions déclarées sont couvertes, aucune sous le plancher.
+    Seize y siègent EXACTEMENT (3 items) : la marge est nulle et tout
+    retrait d'item la casse. Le plafond de spec-extension.md §7 (6 items par
+    misconception) n'est atteint nulle part.

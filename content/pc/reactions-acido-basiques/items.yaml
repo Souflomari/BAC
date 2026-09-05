@@ -2247,35 +2247,281 @@ items:
 # distracteur ciblé dans exactement 3 items (un distracteur par misconception,
 # par item), sur les 12 items neufs RAB-28 → RAB-39 (spec-extension.md §6). Tous
 # ces distracteurs portent leur tag `misconception:` (per-distractor complet).
-# L'inventaire de misconceptions ne contient que les 12 ids AB-* des chapitres
-# R8-R11 ; les items antérieurs RAB-1 → RAB-27 (R0-R7/R12) sont pré-cluster et
-# ne portent pas d'id (schéma antérieur), donc hors périmètre du plancher.
+  # ── Trois items ajoutés le 2026-09-05 pour amener au plancher les trois
+  #    dernières familles AB-BASE qui y siégeaient encore en dessous :
+  #    AB-BASE-2 (2 items), AB-BASE-7 (1), AB-BASE-8 (2). Le résumé de
+  #    couverture en fin de fichier annonçait `floor_met: true` en ne comptant
+  #    que les douze ids AB-DIST/TIT/EQU/IND du cluster titrage : la passe qui
+  #    a ensuite déclaré les huit familles AB-BASE et tagué les items hérités
+  #    R0-R7/R12 n'a pas retourné le drapeau. Voir scripts/resume-couverture.mjs.
+  - id: RAB-40
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_reactions_acido_basiques
+    tags: []
+    stem: >
+      Le pH d'une solution aqueuse vaut $4{,}0$ à $25\,^\circ\text{C}$. Un
+      élève en conclut que la concentration en ions oxonium vaut
+      $4{,}0\ \text{mol}\cdot\text{L}^{-1}$. Quelle est la valeur correcte de
+      $[H_3O^+]$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$[H_3O^+] = 10^{-\\text{pH}} = 10^{-4{,}0} = 1{,}0\\times10^{-4}\\ \\text{mol}\\cdot\\text{L}^{-1}$"
+        correct: true
+      - id: B
+        text: >-
+          $4{,}0\ \text{mol}\cdot\text{L}^{-1}$ : l'élève a raison, le pH est
+          une autre écriture de la concentration en ions oxonium
+        correct: false
+        misconception: AB-BASE-2
+        feedback: >
+          Le pH n'est pas une concentration : c'est son logarithme changé de
+          signe. Une concentration de $4{,}0\ \text{mol}\cdot\text{L}^{-1}$ en
+          ions oxonium correspondrait à un pH d'environ $-0{,}6$, une solution
+          d'acide extrêmement concentrée — pas à un pH de $4{,}0$.
+      - id: C
+        text: >-
+          $1{,}0\times10^{4}\ \text{mol}\cdot\text{L}^{-1}$ : on écrit
+          $[H_3O^+] = 10^{\text{pH}}$, le signe moins n'appartenant qu'à la
+          définition du pH
+        correct: false
+        misconception: AB-BASE-2
+        feedback: >
+          Le signe moins ne disparaît pas quand on retourne la relation :
+          $\text{pH} = -\log[H_3O^+]$ s'inverse en
+          $[H_3O^+] = 10^{-\text{pH}}$. Le vérifier par l'absurde coûte deux
+          secondes : $10^{4}\ \text{mol}\cdot\text{L}^{-1}$ est une
+          concentration impossible en solution aqueuse.
+      - id: D
+        text: >-
+          $1{,}0\times10^{-10}\ \text{mol}\cdot\text{L}^{-1}$ : on divise
+          $K_e$ par $10^{-4{,}0}$ pour obtenir la concentration cherchée
+        correct: false
+        misconception: AB-BASE-6
+        feedback: >
+          Ce calcul est juste, mais il donne l'AUTRE concentration :
+          $K_e/[H_3O^+] = [HO^-] = 1{,}0\times10^{-10}\ \text{mol}\cdot
+          \text{L}^{-1}$. Le produit ionique relie les deux ; il ne remplace
+          pas $[H_3O^+] = 10^{-\text{pH}}$.
+    correct_feedback: >
+      $[H_3O^+] = 10^{-\text{pH}} = 10^{-4{,}0} = 1{,}0\times10^{-4}\
+      \text{mol}\cdot\text{L}^{-1}$. Un pH de $4{,}0$ décrit une solution
+      acide diluée, dix mille fois moins concentrée en ions oxonium qu'une
+      solution à $1\ \text{mol}\cdot\text{L}^{-1}$.
+    solution: |
+      La définition $\text{pH} = -\log[H_3O^+]$ s'inverse en appliquant la
+      fonction $10^x$ aux deux membres :
+      $$-\text{pH} = \log[H_3O^+] \quad\Longrightarrow\quad
+      [H_3O^+] = 10^{-\text{pH}}$$
+      Pour $\text{pH} = 4{,}0$ :
+      $$[H_3O^+] = 10^{-4{,}0} = 1{,}0\times10^{-4}\ \text{mol}\cdot
+      \text{L}^{-1}$$
+      Contrôle de vraisemblance : en solution aqueuse, $[H_3O^+]$ reste
+      comprise en pratique entre $10^{-14}$ et $1\ \text{mol}\cdot
+      \text{L}^{-1}$. Toute valeur hors de cet intervalle signale une erreur
+      de manipulation du logarithme.
+
+  - id: RAB-41
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: pc_reactions_acido_basiques
+    tags: []
+    stem: >
+      On mélange de l'acide éthanoïque $CH_3COOH$ ($pK_A = 4{,}8$) et de
+      l'ammoniac $NH_3$ ($pK_A = 9{,}2$ pour le couple $NH_4^+/NH_3$) :
+      $CH_3COOH + NH_3 \rightleftharpoons CH_3COO^- + NH_4^+$. Que vaut la
+      constante d'équilibre $K$, et que peut-on en dire du taux d'avancement
+      final ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$K = 10^{9{,}2-4{,}8} = 10^{4{,}4} \\approx 2{,}5\\times10^{4}$ : $K \\gg 1$, la réaction est quasi totale"
+        correct: true
+      - id: B
+        text: >-
+          $K = 10^{4{,}8-9{,}2} = 10^{-4{,}4}$ : la réaction est au contraire
+          très limitée dans le sens écrit
+        correct: false
+        misconception: AB-BASE-7
+        feedback: >
+          L'ordre des deux $pK_A$ dans l'exposant suit le sens d'écriture :
+          l'acide qui cède le proton est $CH_3COOH$, de $pK_A$ $4{,}8$, donc
+          $K = K_{A}(CH_3COOH)/K_{A}(NH_4^+) = 10^{9{,}2-4{,}8}$. Inverser
+          l'écart, c'est décrire la réaction inverse.
+      - id: C
+        text: >-
+          $K = 10^{-4{,}8} \times 10^{-9{,}2} = 10^{-14}$, en multipliant les
+          deux constantes d'acidité
+        correct: false
+        misconception: AB-BASE-7
+        feedback: >
+          Les deux $K_A$ se DIVISENT — c'est ainsi que le $[H_3O^+]$
+          intermédiaire se simplifie entre les deux demi-équations. Les
+          multiplier donne ici $10^{-14}$, qui est le produit ionique de
+          l'eau : une coïncidence numérique, pas la constante cherchée.
+      - id: D
+        text: >-
+          $K \approx 2{,}5\times10^{4}$, mais le taux d'avancement final reste
+          faible : les deux $pK_A$ sont positifs, donc aucun des deux couples
+          ne réagit beaucoup
+        correct: false
+        misconception: AB-BASE-8
+        feedback: >
+          Le signe des $pK_A$ ne dit rien du taux d'avancement : c'est leur
+          ÉCART qui fixe $K$, et c'est $K$ qui situe $\tau$. Avec
+          $K \approx 2{,}5\times10^{4} \gg 1$, l'équilibre est très déplacé
+          vers la droite et $\tau$ approche $1$.
+    correct_feedback: >
+      $K = K_{A}(CH_3COOH)/K_{A}(NH_4^+) = 10^{pK_A(NH_4^+)-pK_A(CH_3COOH)} =
+      10^{9{,}2-4{,}8} = 10^{4{,}4} \approx 2{,}5\times10^{4}$. Cette valeur
+      très supérieure à $1$ situe l'équilibre presque entièrement du côté des
+      produits : $\tau$ est proche de $1$.
+    solution: |
+      La constante d'une réaction entre deux couples se construit en divisant
+      le $K_A$ de l'acide qui CÈDE le proton par le $K_A$ de l'acide conjugué
+      de la base qui le CAPTE :
+      $$K = \frac{K_A(CH_3COOH)}{K_A(NH_4^+)}
+        = \frac{10^{-4{,}8}}{10^{-9{,}2}} = 10^{9{,}2-4{,}8} = 10^{4{,}4}$$
+      soit $K \approx 2{,}5\times10^{4}$.
+      L'écart des $pK_A$ vaut $4{,}4$ unités : au-delà de $4$, l'équilibre est
+      considéré comme quasi total dans le sens écrit, donc
+      $\tau \rightarrow 1$. C'est l'ÉCART qui décide, jamais le signe des
+      $pK_A$ pris séparément.
+
+  - id: RAB-42
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_reactions_acido_basiques
+    tags: []
+    stem: >
+      Une même réaction acido-basique entre deux couples est réalisée deux
+      fois à $25\,^\circ\text{C}$ : d'abord avec des solutions concentrées,
+      puis avec les mêmes solutions diluées dix fois. Que devient la constante
+      d'équilibre $K$ de la réaction ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est inchangée : $K = K_{A1}/K_{A2}$ ne dépend que des deux couples et de la température"
+        correct: true
+      - id: B
+        text: >-
+          Elle est divisée par dix, comme les concentrations dont elle est
+          construite
+        correct: false
+        misconception: AB-BASE-7
+        feedback: >
+          $K$ ne se construit pas à partir des concentrations apportées mais à
+          partir des deux $K_A$, qui sont eux-mêmes des constantes. Ce sont les
+          concentrations À L'ÉQUILIBRE qui s'ajustent pour que leur
+          combinaison redonne la même valeur de $K$.
+      - id: C
+        text: >-
+          Elle change, puisque le pH mesuré à l'équilibre n'est pas le même
+          dans les deux expériences
+        correct: false
+        misconception: AB-BASE-7
+        feedback: >
+          Le pH final change effectivement — mais $K$, non. C'est justement ce
+          qui en fait une constante : elle vaut $K_{A1}/K_{A2}$ quelles que
+          soient les quantités mises en jeu, et seule la température peut la
+          modifier.
+      - id: D
+        text: >-
+          Elle augmente, car diluer un acide faible le rend plus fort et la
+          réaction va donc plus loin
+        correct: false
+        misconception: AB-BASE-3
+        feedback: >
+          La dilution augmente bien le TAUX D'AVANCEMENT d'un acide faible,
+          mais elle ne change pas sa FORCE : celle-ci est une propriété du
+          couple, lisible dans $K_A$, et donc dans $K$. Force et avancement
+          sont deux choses différentes.
+    correct_feedback: >
+      $K$ est inchangée. Elle vaut $K_{A1}/K_{A2}$ : un rapport de deux
+      constantes du couple, qui ne dépend que de la température. Ce sont les
+      concentrations à l'équilibre — et donc le pH final, et le taux
+      d'avancement — qui changent avec la dilution.
+    solution: |
+      Pour la réaction $A_1H + A_2^- \rightleftharpoons A_1^- + A_2H$ :
+      $$K = \frac{[A_1^-][A_2H]}{[A_1H][A_2^-]} = \frac{K_{A1}}{K_{A2}}$$
+      Les deux $K_A$ sont des constantes d'équilibre du couple, fixées par la
+      température seule. Diluer déplace l'état d'équilibre — les quatre
+      concentrations changent — mais elles changent ENSEMBLE, de façon à ce
+      que leur combinaison garde la même valeur.
+      À retenir : la dilution modifie $\tau$, jamais $K$.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05. La version précédente ouvrait sur « l'inventaire de
+# misconceptions ne contient que les 12 ids AB-* » et concluait « plancher
+# ATTEINT pour l'INTÉGRALITÉ de l'inventaire ». Les deux phrases étaient vraies
+# ensemble le jour où elles ont été écrites. Une passe ultérieure a déclaré les
+# huit familles AB-BASE (R0-R7) et tagué les 81 distracteurs jusque-là muets
+# des items hérités : l'inventaire a doublé, la conclusion est restée. Trois
+# familles siégeaient donc sous le plancher — AB-BASE-2 (2 items), AB-BASE-7
+# (1), AB-BASE-8 (2) — pendant que le fichier se déclarait complet.
 #
-# GATED = misconceptions sondées par les checkpoints requis (checkpoints.yaml).
-# Les cinq checkpoints du sommet R12 (cp-r0-predict + 4 rupture-gates) couvrent,
-# entre leurs primary_misconception et leurs distracteurs, les 12 ids AB-* :
-# toute misconception gatée atteint le plancher → gated_floor_met: true. Aucune
-# n'est sous le plancher, donc aucune divulgation SUMMIT-CONVERSION-RECIPE §6
-# n'est requise. Les checkpoints sont des clones formatifs surfacés inline : ils
-# ne modifient pas le décompte du banc (pas de double comptage).
+# Trois items les y amènent : RAB-40 (R2, inversion de pH ↔ concentration),
+# RAB-41 (R7, construction de $K$ à partir de deux $pK_A$ + lecture de $\tau$),
+# RAB-42 (R7, $K$ ne dépend ni de la dilution ni du pH mesuré). R2 porte
+# désormais 4 items et R7 en porte 5.
+#
+# La porte qui empêche cette dérive de recommencer : scripts/resume-couverture.mjs.
+# Elle ne juge que les affirmations à sens unique — `floor_met` et
+# `total_items` — parce que les tableaux par misconception du corpus suivent
+# six conventions différentes, toutes légitimes. Celui ci-dessous est GÉNÉRÉ
+# contre la convention de la chaîne (web/scripts/lib/couverture-compte.mjs).
 coverage_summary:
-  method: "distracteur-level : chaque misconception = distracteur ciblé dans N items"
-  total_new_items: 12          # RAB-28 → RAB-39
-  floor: 3
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item. Les checkpoints ne comptent
+    pas — le modèle apprenant est bâti sur le banc de fin seul, et les cinq
+    checkpoints du sommet R12 sont des clones formatifs surfacés en ligne.
   per_misconception:
-    AB-DIST-1: { count: 3, items: [RAB-28, RAB-29, RAB-30] }
-    AB-DIST-2: { count: 3, items: [RAB-28, RAB-29, RAB-30] }
+    AB-BASE-1: { count: 5, items: [RAB-1, RAB-2, RAB-15, RAB-18, RAB-20] }
+    AB-BASE-2: { count: 3, items: [RAB-13, RAB-14, RAB-40] }
+    AB-BASE-3: { count: 10, items: [RAB-1, RAB-2, RAB-5, RAB-6, RAB-7, RAB-8, RAB-9, RAB-18, RAB-20, RAB-42] }
+    AB-BASE-4: { count: 3, items: [RAB-3, RAB-4, RAB-17] }
+    AB-BASE-5: { count: 4, items: [RAB-10, RAB-11, RAB-12, RAB-23] }
+    AB-BASE-6: { count: 5, items: [RAB-16, RAB-25, RAB-26, RAB-27, RAB-40] }
+    AB-BASE-7: { count: 3, items: [RAB-22, RAB-41, RAB-42] }
+    AB-BASE-8: { count: 3, items: [RAB-21, RAB-24, RAB-41] }
+    AB-DIST-1: { count: 4, items: [RAB-19, RAB-28, RAB-29, RAB-30] }
+    AB-DIST-2: { count: 6, items: [RAB-18, RAB-19, RAB-20, RAB-28, RAB-29, RAB-30] }
     AB-DIST-3: { count: 3, items: [RAB-28, RAB-29, RAB-30] }
-    AB-TIT-1: { count: 3, items: [RAB-31, RAB-32, RAB-33] }
-    AB-TIT-2: { count: 3, items: [RAB-31, RAB-32, RAB-33] }
-    AB-TIT-3: { count: 3, items: [RAB-31, RAB-32, RAB-33] }
-    AB-EQU-1: { count: 3, items: [RAB-34, RAB-35, RAB-36] }
-    AB-EQU-2: { count: 3, items: [RAB-34, RAB-35, RAB-36] }
-    AB-EQU-3: { count: 3, items: [RAB-34, RAB-35, RAB-36] }
-    AB-IND-1: { count: 3, items: [RAB-37, RAB-38, RAB-39] }
-    AB-IND-2: { count: 3, items: [RAB-37, RAB-38, RAB-39] }
-    AB-IND-3: { count: 3, items: [RAB-37, RAB-38, RAB-39] }
-  gated_misconceptions:        # les 12 ids AB-*, tous sondés par un checkpoint R12
+    AB-TIT-1:  { count: 3, items: [RAB-31, RAB-32, RAB-33] }
+    AB-TIT-2:  { count: 3, items: [RAB-31, RAB-32, RAB-33] }
+    AB-TIT-3:  { count: 3, items: [RAB-31, RAB-32, RAB-33] }
+    AB-EQU-1:  { count: 3, items: [RAB-34, RAB-35, RAB-36] }
+    AB-EQU-2:  { count: 3, items: [RAB-34, RAB-35, RAB-36] }
+    AB-EQU-3:  { count: 3, items: [RAB-34, RAB-35, RAB-36] }
+    AB-IND-1:  { count: 3, items: [RAB-37, RAB-38, RAB-39] }
+    AB-IND-2:  { count: 3, items: [RAB-37, RAB-38, RAB-39] }
+    AB-IND-3:  { count: 3, items: [RAB-37, RAB-38, RAB-39] }
+  total_items: 42
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 3
+    R2: 4
+    R3: 3
+    R4: 3
+    R5: 3
+    R6: 3
+    R7: 5
+    R8: 3
+    R9: 3
+    R10: 3
+    R11: 3
+    R12: 3
+    note: >-
+      Le plancher de barreau (>= 3 items) est tenu partout. R2 en porte 4 et
+      R7 en porte 5 depuis l'ajout de RAB-40, RAB-41 et RAB-42.
+  gated_misconceptions:
+    # Les douze ids du cluster titrage, chacun sondé par un checkpoint du
+    # sommet R12 — un ÉCHO formatif du banc, jamais un substitut : ces
+    # checkpoints ne comptent pas dans le tableau ci-dessus.
     - AB-DIST-1   # cp-r8-distribution
     - AB-DIST-2   # cp-r8-distribution
     - AB-DIST-3   # cp-r8-distribution (primary)
@@ -2290,12 +2536,6 @@ coverage_summary:
     - AB-IND-3    # cp-r11-indicateur
   gated_floor: 3
   gated_floor_met: true
-  floor_met: true
-  note: >
-    Plancher ATTEINT pour l'intégralité de l'inventaire : les 12 misconceptions
-    AB-* (R8-R11) sont chacune le distracteur ciblé dans 3 items (RAB-28 →
-    RAB-39), tous à tags per-distracteur complets. Les cinq checkpoints du
-    sommet R12 (cp-r0-predict, cp-r9-dosage, cp-r10-equivalence,
-    cp-r11-indicateur, cp-r8-distribution) sondent ces mêmes 12 ids : le plancher
-    gaté est donc lui aussi atteint. Aucune misconception sous le plancher → pas
-    de divulgation SUMMIT-CONVERSION-RECIPE §6 requise.
+  honest_state: >-
+    Les 20 misconceptions déclarées sont couvertes, aucune sous le plancher.
+    Aucune divulgation SUMMIT-CONVERSION-RECIPE §6 n'est requise.

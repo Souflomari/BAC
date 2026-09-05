@@ -235,6 +235,21 @@ jobs:
       - name: Cliquet couverture-diagnostique (le moteur doit voir quelque chose)
         run: node scripts/couverture-diagnostique.mjs --porte
 
+      # PORTES RESUME-COUVERTURE (2026-09-05). Le corpus se documente lui-même :
+      # chaque items.yaml se termine par un `coverage_summary` écrit à la main,
+      # lu par les humains qui reprennent la notion — et par rien d'autre. Rien
+      # ne le réexécute, donc il est juste le jour où on l'écrit et faux le
+      # lendemain. Mesuré : QUATRE notions déclaraient `floor_met: true` avec 15
+      # misconceptions sous le plancher, deux d'entre elles en expliquant même
+      # de bonne foi pourquoi leur périmètre se limitait aux ids qu'elles
+      # comptaient — périmètre qu'une passe ultérieure avait doublé sans
+      # retourner le drapeau. Les 15 sont comblées ; la porte tient les deux
+      # affirmations qui n'ont qu'un sens possible (`floor_met`, `total_items`)
+      # dans les DEUX directions, pour qu'une campagne d'items réussie doive
+      # aussi venir retourner le drapeau.
+      - name: Portes resume-couverture (un fichier ne se déclare pas complet à tort)
+        run: node scripts/resume-couverture.mjs --porte
+
       - name: Model-id hygiene gate
         working-directory: .
         run: |

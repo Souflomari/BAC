@@ -1856,6 +1856,26 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.pc_energie.pendule-hauteur-egale-longueur-fil",
       "mc.physics.pc_energie.pendule-ralentir-egale-perdre-energie"
     ],
+    "AE-31": [
+      "mc.physics.pc_energie.confond-ec-et-em",
+      "mc.physics.pc_energie.ec-grandeur-vectorielle",
+      "mc.physics.pc_energie.ec-mauvaise-dependance-en-v"
+    ],
+    "AE-32": [
+      "mc.physics.pc_energie.ec-grandeur-vectorielle",
+      "mc.physics.pc_energie.force-perpendiculaire-travaille",
+      "mc.physics.pc_energie.travail-oublie-cos"
+    ],
+    "AE-33": [
+      "mc.physics.pc_energie.energie-oublie-g",
+      "mc.physics.pc_energie.force-perpendiculaire-travaille",
+      "mc.physics.pc_energie.travail-oublie-cos"
+    ],
+    "AE-34": [
+      "mc.physics.pc_energie.energie-oublie-g",
+      "mc.physics.pc_energie.frottement-restitue-energie",
+      "mc.physics.pc_energie.signe-travail-poids"
+    ],
     "AE-4": [
       "mc.physics.pc_energie.confusion-v-et-v-carre",
       "mc.physics.pc_energie.energie-oublie-facteur-demi",
@@ -2158,6 +2178,16 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.pc_chute_plans.geostationnaire-immobile-absolu",
       "mc.physics.pc_chute_plans.geostationnaire-toute-altitude",
       "mc.physics.pc_chute_plans.kepler3-exposants-inverses"
+    ],
+    "CMP-37": [
+      "mc.physics.pc_chute_plans.descente-plus-courte-que-montee",
+      "mc.physics.pc_chute_plans.masse-influe-en-chute-libre",
+      "mc.physics.pc_chute_plans.signe-et-projection-mal-poses"
+    ],
+    "CMP-38": [
+      "mc.physics.pc_chute_plans.descente-plus-courte-que-montee",
+      "mc.physics.pc_chute_plans.masse-influe-en-chute-libre",
+      "mc.physics.pc_chute_plans.vx-varie-pendant-le-vol"
     ],
     "CMP-4": [
       "mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises"
@@ -3939,6 +3969,18 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "RAB-4": [
       "AB-BASE-4"
     ],
+    "RAB-40": [
+      "AB-BASE-2",
+      "AB-BASE-6"
+    ],
+    "RAB-41": [
+      "AB-BASE-7",
+      "AB-BASE-8"
+    ],
+    "RAB-42": [
+      "AB-BASE-3",
+      "AB-BASE-7"
+    ],
     "RAB-5": [
       "AB-BASE-3"
     ],
@@ -4430,6 +4472,16 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "SO-41": [
       "M-OSC-RES-2"
+    ],
+    "SO-42": [
+      "M-OSC-EQD-1",
+      "M-OSC-PHASE-1",
+      "M-OSC-RAID-1"
+    ],
+    "SO-43": [
+      "M-OSC-EQD-1",
+      "M-OSC-LIBRE-1",
+      "M-OSC-PHASE-1"
     ],
     "SO-5": [
       "M-OSC-EQD-1"
