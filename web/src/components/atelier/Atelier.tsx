@@ -60,10 +60,10 @@ function Rail({ courante, i, termine }: { courante: string; i: number; termine: 
           // `termine` coche la DERNIÈRE compétence : sans lui, l'étape 5
           // restait éternellement « en cours » alors que l'élève venait de
           // répondre juste à la dernière question (audit 2026-08-15).
-          const etat = k < idx || (k === idx && termine) ? "fait" : k === idx ? "ici" : "apres";
+          const etat = k < idx || (k === idx && termine) ? "fait" : k === idx ? "ici" : "apres";
           return (
             <li key={c.id} className="flex items-center gap-2">
-              {/* Les chevrons disparaissent en colonne étroite : le rail y
+              {/* Les chevrons disparaissent en colonne étroite : le rail y
                   passe sur trois lignes et chaque retour à la ligne laissait
                   un chevron orphelin en tête de ligne. */}
               {k > 0 && (
@@ -106,7 +106,7 @@ function Jauge({ valeur, cible, atteint }: { valeur: number; cible: number; atte
     <div
       className={cn(
         "flex items-end justify-between gap-6 rounded-xl border px-5 py-4",
-        atteint ? "border-accent bg-accent-subtle" : "border-subtle bg-surface-container-highest"
+        atteint ? "border-accent bg-accent-subtle" : "border-subtle bg-surface-container-highest"
       )}
     >
       <div>
@@ -116,7 +116,7 @@ function Jauge({ valeur, cible, atteint }: { valeur: number; cible: number; atte
         <p
           className={cn(
             "mt-1 font-display text-display font-semibold tabular-nums leading-none",
-            atteint ? "text-accent" : "text-primary"
+            atteint ? "text-accent" : "text-primary"
           )}
         >
           {v.toFixed(2).replace(".", ",")}
@@ -149,18 +149,18 @@ export function Atelier() {
 
   const ecran: Ecran = ECRANS[i];
   const option = useMemo(
-    () => ecran.options?.find((o) => o.id === choisi) ?? null,
+    () => ecran.options?.find((o) => o.id === choisi) ?? null,
     [ecran, choisi]
   );
 
   const reglageOk =
     ecran.type === "reglage" &&
-    ecran.cible != null &&
-    Math.abs(valeur - ecran.cible) <= (ecran.tolerance ?? 0.001);
+    ecran.cible != null &&
+    Math.abs(valeur - ecran.cible) <= (ecran.tolerance ?? 0.001);
 
-  const gagne = ecran.type === "choix" ? reussi : reglageOk && essaiReglage;
-  const bonneReponse = ecran.options?.find((o) => o.correct)?.label ?? null;
-  const rate = option != null && !option.correct;
+  const gagne = ecran.type === "choix" ? reussi : reglageOk && essaiReglage;
+  const bonneReponse = ecran.options?.find((o) => o.correct)?.label ?? null;
+  const rate = option != null && !option.correct;
 
   function repondre(id: string) {
     const o = ecran.options?.find((x) => x.id === id);
@@ -194,8 +194,8 @@ export function Atelier() {
         suivant();
         return;
       }
-      if (ecran.type !== "choix" || reussi) return;
-      const opts = ecran.options ?? [];
+      if (ecran.type !== "choix" || reussi) return;
+      const opts = ecran.options ?? [];
       let idx = -1;
       const k = e.key.toLowerCase();
       if (k >= "a" && k <= "d") idx = k.charCodeAt(0) - 97;
@@ -214,11 +214,11 @@ export function Atelier() {
     return (
       <div className="mx-auto max-w-page px-gutter py-10 bp-medium:py-14">
         <header className="max-w-reading">
-          {/* L'eyebrow « PROTOTYPE · CHAÎNE DE COMPÉTENCES » est retirée
-              (audit Fable §3.1). Elle s'adressait à nous, pas à l'élève :
-              lui annoncer qu'il entre dans un prototype le prépare à excuser
-              ce qu'il va voir. La page reste non indexée par son metadata ;
-              c'est là que l'information a sa place. */}
+          {/* L’eyebrow « PROTOTYPE · CHAÎNE DE COMPÉTENCES » est retirée
+              (audit Fable §3.1). Elle s’adressait à nous, pas à l’élève :
+              lui annoncer qu’il entre dans un prototype le prépare à excuser
+              ce qu’il va voir. La page reste non indexée par son metadata ;
+              c’est là que l’information a sa place. */}
           <p className="text-caption font-medium uppercase tracking-eyebrow text-accent">
             Mathématiques · 2ème bac
           </p>
@@ -227,7 +227,7 @@ export function Atelier() {
           </h1>
           <p className="mt-3 text-body-lg text-secondary">
             De la pente vue au collège jusqu’au nombre dérivé du bac. Rien à lire
-            d’abord : à chaque écran, tu fais quelque chose.
+            d’abord : à chaque écran, tu fais quelque chose.
           </p>
         </header>
         <div className="mt-10">
@@ -239,14 +239,14 @@ export function Atelier() {
 
   return (
     <div className="mx-auto max-w-atelier px-gutter pb-8 pt-2">
-      {/* Le fil reste en vue : sticky sous le header (56 px), sur la toile,
-          pour que « où j'en suis » ne parte jamais au défilement. */}
+      {/* Le fil reste en vue : sticky sous le header (56 px), sur la toile,
+          pour que « où j’en suis » ne parte jamais au défilement. */}
       <div className="sticky top-14 z-raised -mx-2 bg-surface-base px-2 py-3">
         <Rail courante={ecran.competence} i={i} termine={dernier && gagne} />
       </div>
 
       <div className="mt-6 grid gap-7 bp-expanded:grid-cols-[minmax(0,1fr)_minmax(340px,420px)] bp-expanded:gap-8 bp-large:grid-cols-[minmax(0,1fr)_minmax(400px,480px)] bp-large:gap-12 bp-xl:grid-cols-[minmax(0,1fr)_minmax(440px,540px)] bp-xl:gap-16">
-        {/* ── LA SCÈNE : la figure porte l'idée (R5), et elle reste visible ── */}
+        {/* ── LA SCÈNE : la figure porte l’idée (R5), et elle reste visible ── */}
         <div className="bp-expanded:sticky bp-expanded:top-6 bp-expanded:self-start">
           <div
             className={cn(
@@ -266,10 +266,10 @@ export function Atelier() {
                   fige={ecran.fige}
                   onChange={setValeur}
                   /* Le trait de l'erreur reste tant que l'élève n'a pas trouvé :
-                     c'est LA figure qui lui répond, pas un paragraphe sous les
+                     c’est LA figure qui lui répond, pas un paragraphe sous les
                      boutons. */
-                  erreur={rate ? (option?.montre ?? null) : null}
-                  erreurLabel={rate ? `ta réponse : ${option?.montre}` : undefined}
+                  erreur={rate ? (option?.montre ?? null) : null}
+                  erreurLabel={rate ? `ta réponse : ${option?.montre}` : undefined}
                 />
               )}
               {ecran.figure === "secante" && (
@@ -278,9 +278,9 @@ export function Atelier() {
                   hDepart={ecran.depart?.h}
                   /* Sur un écran de réglage, c'est la pente de (AB) qu'on
                      compare à la cible — la figure la remonte elle-même. */
-                  onPente={ecran.type === "reglage" ? setValeur : undefined}
-                  erreurPente={rate ? (option?.montre ?? null) : null}
-                  erreurLabel={rate ? `ta réponse : ${option?.montre}` : undefined}
+                  onPente={ecran.type === "reglage" ? setValeur : undefined}
+                  erreurPente={rate ? (option?.montre ?? null) : null}
+                  erreurLabel={rate ? `ta réponse : ${option?.montre}` : undefined}
                 />
               )}
             </Apparition>
@@ -290,17 +290,17 @@ export function Atelier() {
           </p>
         </div>
 
-        {/* ── LA CONDUITE : ce qu'on dit, ce qu'on demande, ce qu'on répond ── */}
+        {/* ── LA CONDUITE : ce qu’on dit, ce qu’on demande, ce qu’on répond ── */}
         <div className="min-w-0 bp-expanded:self-center">
           {/* ≤ 2 phrases (R2).
 
-              PAS D'ANIMATION SUR LE CADRAGE NI SUR LA QUESTION (audit Fable
+              PAS D’ANIMATION SUR LE CADRAGE NI SUR LA QUESTION (audit Fable
               §3.10). Ils étaient en fondu échelonné comme le reste, si bien
-              que le bouton d'action — lui non animé — se voyait avant la
-              consigne qui explique quoi en faire. Mesuré : 225 ms, pas les
-              « plusieurs secondes » décrites, mais l'ordre était bien
-              inversé. Le texte d'un exercice ne doit jamais être retenu par
-              une animation ; le mouvement reste aux éléments secondaires. */}
+              que le bouton d’action — lui non animé — se voyait avant la
+              consigne qui explique quoi en faire. Mesuré : 225 ms, pas les
+              « plusieurs secondes » décrites, mais l’ordre était bien
+              inversé. Le texte d’un exercice ne doit jamais être retenu par
+              une animation ; le mouvement reste aux éléments secondaires. */}
           <p className="font-display text-h2 font-semibold leading-tight text-primary">
             {ecran.texte}
           </p>
@@ -308,10 +308,10 @@ export function Atelier() {
             {ecran.question}
           </p>
 
-          {/* l'action (R1) */}
+          {/* l’action (R1) */}
           {ecran.type === "choix" && (
             /* Le groupe est rattaché à SA question : sans ce lien, un lecteur
-               d'écran annonce quatre boutons sans savoir à quoi ils répondent
+               d’écran annonce quatre boutons sans savoir à quoi ils répondent
                (audit 2026-08-15, P2-6). */
             <div
               role="group"
@@ -341,7 +341,7 @@ export function Atelier() {
                       )}
                     >
                       <span className="flex min-w-0 items-center gap-3">
-                        {/* Badge clavier — l'affordance EST le raccourci. */}
+                        {/* Badge clavier — l’affordance EST le raccourci. */}
                         <kbd
                           className={cn(
                             "flex h-6 w-6 shrink-0 items-center justify-center rounded-md border font-mono text-caption font-semibold",
@@ -355,7 +355,7 @@ export function Atelier() {
                         <span className="min-w-0">{o.label}</span>
                       </span>
                       {/* Le verdict ne peut pas tenir dans la seule couleur
-                          (WCAG 1.4.1) : avant, une mauvaise réponse ne se
+                          (WCAG 1.4.1) : avant, une mauvaise réponse ne se
                           traduisait que par un fond très légèrement différent.
                           Un mot et un signe, donc. */}
                       {montrerJuste && (
@@ -380,7 +380,7 @@ export function Atelier() {
             </div>
           )}
 
-          {ecran.type === "reglage" && ecran.cible != null && (
+          {ecran.type === "reglage" && ecran.cible != null && (
             <div className="mt-6">
               <Apparition cle={ecran.id} delai={140} decalage={10}>
                 <Jauge valeur={valeur} cible={ecran.cible} atteint={reglageOk} />
@@ -401,7 +401,7 @@ export function Atelier() {
                 <Apparition cle={`reglage-${valeur}`} decalage={12} className="mt-5">
                   <div role="status" className="rounded-xl border-l-[3px] border-soft bg-surface-container px-5 py-4">
                     <p className="text-body-lg text-primary">
-                      Pas encore : ta pente vaut{" "}
+                      Pas encore : ta pente vaut{" "}
                       <span className="tabular-nums font-semibold">
                         {valeur.toFixed(2).replace(".", ",")}
                       </span>
@@ -416,9 +416,9 @@ export function Atelier() {
             </div>
           )}
 
-          {/* ── la réponse à l'erreur — visée, jamais générique (R3) ──────
-              Elle occupe le panneau, en taille de lecture. Ce n'est pas une
-              note sous les boutons : c'est le moment où on enseigne. */}
+          {/* ── la réponse à l’erreur — visée, jamais générique (R3) ──────
+              Elle occupe le panneau, en taille de lecture. Ce n’est pas une
+              note sous les boutons : c’est le moment où on enseigne. */}
           {rate && option && (
             <Apparition cle={`${ecran.id}-${option.id}-fb`} decalage={16} echelle={0.02} className="mt-6">
               <div
@@ -427,14 +427,14 @@ export function Atelier() {
                 className="overflow-hidden rounded-xl border shadow-elevation-1"
                 style={{ borderColor: "var(--figure-regime-aperiodic)" }}
               >
-                {/* En-tête pleine largeur — le moment « regarde la figure »
-                    a le poids d'un titre, pas d'une note. */}
+                {/* En-tête pleine largeur — le moment « regarde la figure »
+                    a le poids d’un titre, pas d’une note. */}
                 <p
                   className="flex items-center gap-2 px-5 py-2.5 text-caption font-semibold uppercase tracking-eyebrow text-on-accent bp-medium:px-6"
                   style={{ background: "var(--figure-regime-aperiodic)" }}
                 >
-                  <Icon name={option.montre != null ? "arrow-right" : "cross"} size={13} />
-                  {option.montre != null
+                  <Icon name={option.montre != null ? "arrow-right" : "cross"} size={13} />
+                  {option.montre != null
                     ? "Ta réponse est tracée sur la figure"
                     : "Pas encore — regarde pourquoi"}
                 </p>
@@ -442,22 +442,22 @@ export function Atelier() {
                   <p className="text-lead leading-relaxed text-primary">
                     {option.feedback}
                   </p>
-                  {option.montre != null && (
+                  {option.montre != null && (
                     <p className="mt-3 text-body text-secondary">
                       Le trait en pointillés, c’est ta pente. Compare-le au trait
-                      plein : l’écart entre les deux, c’est ton erreur.
+                      plein : l’écart entre les deux, c’est ton erreur.
                     </p>
                   )}
                 </div>
-                {/* La comparaison en MONO — ce que tu as affirmé, ce qu'on
-                    cherche, côte à côte, vérifiable d'un regard. */}
-                {option.montre != null && bonneReponse != null && (
+                {/* La comparaison en MONO — ce que tu as affirmé, ce qu’on
+                    cherche, côte à côte, vérifiable d’un regard. */}
+                {option.montre != null && bonneReponse != null && (
                   <div className="flex items-center justify-between gap-4 border-t border-subtle bg-surface-container-low px-5 py-2.5 font-mono text-body-sm tabular-nums bp-medium:px-6">
                     <span style={{ color: "var(--figure-regime-aperiodic)" }}>
-                      tracée : {String(option.montre).replace(".", ",")}
+                      tracée : {String(option.montre).replace(".", ",")}
                     </span>
                     <span className="text-secondary">
-                      attendue : {bonneReponse}
+                      attendue : {bonneReponse}
                     </span>
                   </div>
                 )}
@@ -465,7 +465,7 @@ export function Atelier() {
             </Apparition>
           )}
 
-          {/* ce qu'on retient — APRÈS la réussite seulement */}
+          {/* ce qu’on retient — APRÈS la réussite seulement */}
           {gagne && (
             <Apparition cle={`${ecran.id}-ok`} decalage={16} echelle={0.02} className="mt-6">
               {ecran.acquis && (
@@ -494,8 +494,8 @@ export function Atelier() {
                   <Icon name="arrow-right" size={16} />
                 </button>
               )}
-              {/* Fin de parcours : une SORTIE. L'audit du 2026-08-15 la
-                  trouvait murée — le texte de fin n'était suivi d'aucune
+              {/* Fin de parcours : une SORTIE. L’audit du 2026-08-15 la
+                  trouvait murée — le texte de fin n’était suivi d’aucune
                   action, sur une page qui ne portait par ailleurs aucun
                   lien. */}
               {dernier && (

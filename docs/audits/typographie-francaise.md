@@ -32,7 +32,13 @@ le même écran.
 | Légendes de **mouvement**, intitulés de partie, sous-titres de carte, titres de dérivation | ~30 | `frenchTypography(…)` au rendu |
 | L'entrée synthétique « S’entraîner » | 2 | écrite en dur dans `MarginRail` |
 
-**Résultat : 69 pages, zéro écart.** La porte est armée en CI.
+**Résultat : 73 pages, zéro écart.** La porte est armée en CI.
+
+**Et une leçon sur la PORTÉE, payée juste après.** La première passe déclarait
+69 pages propres — parce que `/atelier`, `/connexion`, `/options` et une page
+d'épreuve n'étaient pas dans la liste. Elles portaient à elles seules **65
+écarts**. *Une porte ne juge que ce qu'on lui donne : la liste EST la portée*,
+et elle doit être relue comme le reste.
 
 ---
 
@@ -67,7 +73,17 @@ histoire quand la lettre est écrite en entité (`&#x3A9;`). Deux rattrapages �
 la frontière de segment, et la sentinelle d'entité comptée comme fin de mot —
 et les derniers cas tombent.
 
-### 4. Le correctif d'un correctif peut casser plus que le défaut
+### 4. Un caractère invisible ne se tape pas, il s'échappe
+
+Trois fois dans la journée, une insécable fine écrite **littéralement** dans
+un script a été perdue en route : la passe annonçait des changements, le
+fichier gardait son espace ordinaire, et la mesure d'après « ne comprenait
+pas ». La règle est simple et sans exception : **dans un script, un caractère
+invisible s'écrit `\u202f`, jamais au clavier.** Le corollaire vaut pour la
+lecture : on ne vérifie pas une espace à l'œil dans un terminal, on imprime
+son point de code.
+
+### 5. Le correctif d'un correctif peut casser plus que le défaut
 
 Une réécriture large des littéraux de `curriculum.ts` a inséré une insécable
 fine dans une classe utilitaire : `hover:underline` est devenu

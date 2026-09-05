@@ -176,7 +176,8 @@ jobs:
           test -n "$routes"
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
           node scripts/typo-francaise.mjs --porte $routes / /examens \
-            /matieres/pc /matieres/maths /matieres/svt /matieres/philo /commencer
+            /matieres/pc /matieres/maths /matieres/svt /matieres/philo /commencer \
+            /atelier /connexion /options /examens/spc-2023-normale
 
       - name: Model-id hygiene gate
         working-directory: .

@@ -94,7 +94,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
   // dérive avec setInterval — acceptable pour une répétition (pas un
   // instrument de certification, la note est « indicative »).
   useEffect(() => {
-    if (phase !== "encours" || enPause) return;
+    if (phase !== "encours" || enPause) return;
     const t = setInterval(() => setSecondes((s) => s + 1), 1000);
     return () => clearInterval(t);
   }, [phase, enPause]);
@@ -116,10 +116,10 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
     for (let i = 0; i < epreuve.exercices.length; i++) {
       const exo = epreuve.exercices[i];
       const tags = exo.questions.map((q) => ptsDepuisStem(q.stem));
-      const somme = tags.reduce<number>((s, t) => s + (t ?? 0), 0);
+      const somme = tags.reduce<number>((s, t) => s + (t ?? 0), 0);
       const manquants = tags.filter((t) => t == null).length;
-      const reste = Math.max((exo.baremeTotal ?? 0) - somme, 0);
-      const partEgale = manquants > 0 ? reste / manquants : 0;
+      const reste = Math.max((exo.baremeTotal ?? 0) - somme, 0);
+      const partEgale = manquants > 0 ? reste / manquants : 0;
       exo.questions.forEach((q, j) => {
         m.set(`${i}:${q.id}`, tags[j] ?? partEgale);
       });
@@ -130,10 +130,10 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
   const note = useMemo(() => {
     let gagne = 0;
     for (const [cle, v] of Object.entries(verdicts)) {
-      const pts = bareme.get(cle) ?? 0;
-      gagne += v === "juste" ? pts : v === "partiel" ? pts / 2 : 0;
+      const pts = bareme.get(cle) ?? 0;
+      gagne += v === "juste" ? pts : v === "partiel" ? pts / 2 : 0;
     }
-    const sur20 = epreuve.pts > 0 ? (gagne / epreuve.pts) * 20 : 0;
+    const sur20 = epreuve.pts > 0 ? (gagne / epreuve.pts) * 20 : 0;
     const repondu = Object.keys(verdicts).length;
     const totalQ = epreuve.exercices.reduce((s, e) => s + e.questions.length, 0);
     return { gagne, sur20, repondu, totalQ };
@@ -156,26 +156,26 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
         </h2>
         <ul className="mt-4 space-y-2 text-body text-secondary">
           <li>
-            Durée officielle :{" "}
+            Durée officielle :{" "}
             <span className="mono-inline text-primary">
               {epreuve.dureeOfficielleMin / 60} h
             </span>{" "}
             — le chrono affiche le temps écoulé, calmement. Tu peux le mettre
-            en pause : c’est une répétition, pas une surveillance.
+            en pause : c’est une répétition, pas une surveillance.
           </li>
           <li>
             {frenchTypography(
-              "Travaille sur papier, comme le jour J — l'écran sert à lire le sujet."
+              "Travaille sur papier, comme le jour J — l’écran sert à lire le sujet."
             )}
           </li>
           <li>
-            Les corrections n’apparaissent qu’après « Terminer l’épreuve » ;
+            Les corrections n’apparaissent qu’après « Terminer l’épreuve » ;
             tu t’auto-évalues ensuite question par question, au barème.
           </li>
           {!epreuve.complete && (
             <li className="text-primary">
               {frenchTypography(
-                `Épreuve partielle : ${formatNote(epreuve.pts)} pts sur 20 sont disponibles — la note sera ramenée sur 20 par règle de trois, à titre indicatif.`
+                `Épreuve partielle : ${formatNote(epreuve.pts)} pts sur 20 sont disponibles — la note sera ramenée sur 20 par règle de trois, à titre indicatif.`
               )}
             </li>
           )}
@@ -191,8 +191,8 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
 
   return (
     <div>
-      {/* Barre d'épreuve — sticky, discrète. Le chrono est un FAIT en mono,
-          pas une alarme : jamais de rouge, jamais de compte à rebours. */}
+      {/* Barre d’épreuve — sticky, discrète. Le chrono est un FAIT en mono,
+          pas une alarme : jamais de rouge, jamais de compte à rebours. */}
       <div
         data-barre-epreuve
         className={cn(
@@ -200,7 +200,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
           "rounded-lg border border-subtle bg-surface-raised px-4 py-2 shadow-elevation-1"
         )}
       >
-        {enCorrection ? (
+        {enCorrection ? (
           <p className="text-body-sm text-secondary">
             Auto-évaluation —{" "}
             <span className="mono-inline tabular-nums">
@@ -212,7 +212,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
             </span>{" "}
             <span className="text-tertiary">(indicative)</span>
           </p>
-        ) : (
+        ) : (
           <p className="text-body-sm text-secondary" aria-live="off">
             <span data-chrono className="mono-inline tabular-nums">{formatDuree(secondes)}</span>
             {depassement && (
@@ -232,7 +232,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
                 "state-layer focus-ring [--focus-radius:8px]"
               )}
             >
-              {enPause ? "Reprendre" : "Pause"}
+              {enPause ? "Reprendre" : "Pause"}
             </button>
           )}
           {!enCorrection && (
@@ -242,7 +242,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
           )}
           {enCorrection && (
             <p className="text-body-sm text-tertiary">
-              Temps mis :{" "}
+              Temps mis :{" "}
               <span className="mono-inline tabular-nums">
                 {formatDuree(chronoFinal.current)}
               </span>
@@ -257,7 +257,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
         </p>
       )}
 
-      {/* Les exercices, dans l'ordre du sujet réel. */}
+      {/* Les exercices, dans l’ordre du sujet réel. */}
       <ol className="space-y-8" aria-label="Exercices de l'épreuve">
         {epreuve.exercices.map((exo, i) => (
           <li key={i}>
@@ -267,12 +267,12 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
             >
               <header className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b border-subtle bg-surface-container-low px-5 py-3">
                 <h2 className="text-h4 font-semibold text-primary">
-                  {exo.exerciseLabel ?? `Exercice ${i + 1}`}
+                  {exo.exerciseLabel ?? `Exercice ${i + 1}`}
                 </h2>
                 <p className="min-w-0 flex-1 truncate text-body-sm text-secondary" title={exo.titre}>
                   {exo.titre}
                 </p>
-                {exo.baremeTotal != null && (
+                {exo.baremeTotal != null && (
                   <span className="mono-inline shrink-0 text-body-sm text-tertiary">
                     {formatNote(exo.baremeTotal)} pts
                   </span>
@@ -283,7 +283,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
                 {exo.questions.map((q) => {
                   const cle = `${i}:${q.id}`;
                   const verdict = verdicts[cle];
-                  const qPts = bareme.get(cle) ?? 0;
+                  const qPts = bareme.get(cle) ?? 0;
                   return (
                     <div key={q.id} className="border-t border-subtle pt-4 first:border-t-0 first:pt-0">
                       {q.part && (
@@ -293,8 +293,8 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
                       )}
                       <MdBlock>{q.stem}</MdBlock>
 
-                      {/* ATTEMPT-FIRST ABSOLU : le raisonnement n'entre dans
-                          le DOM qu'en phase correction — dom-truth l'asserte. */}
+                      {/* ATTEMPT-FIRST ABSOLU : le raisonnement n’entre dans
+                          le DOM qu’en phase correction — dom-truth l’asserte. */}
                       {enCorrection && (
                         <div className="mt-3 rounded-lg border border-subtle bg-surface-container-low p-4">
                           <p className="mb-2 text-caption font-medium uppercase tracking-eyebrow text-secondary">
@@ -307,7 +307,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
                             className="mt-4 flex flex-wrap items-center gap-2"
                           >
                             <span className="text-body-sm text-secondary">
-                              Ta copie :
+                              Ta copie :
                             </span>
                             {(["juste", "partiel", "faux"] as const).map((v) => (
                               <button
@@ -384,7 +384,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
             </span>{" "}
             — auto-évaluation indicative
             {!epreuve.complete && ", ramenée sur 20 par règle de trois"}. Le
-            vrai gain est dans les questions marquées « Partiel » ou « Faux » :
+            vrai gain est dans les questions marquées « Partiel » ou « Faux » :
             remonte aux notions par les liens de chaque exercice.
           </p>
         </section>

@@ -31,6 +31,10 @@ if (routes.length === 0) {
   console.error("usage: node scripts/typo-francaise.mjs [--porte] <routes…>");
   process.exit(1);
 }
+// Les pages HORS LEÇON comptent autant : /atelier et une épreuve portaient à
+// elles seules 65 écarts que la première passe n'avait pas vus, simplement
+// parce qu'elles n'étaient pas dans la liste. Une porte ne juge que ce qu'on
+// lui donne — la liste EST la portée.
 
 let serveur = null;
 if (AUTONOME) {

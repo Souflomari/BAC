@@ -45,8 +45,8 @@ export function PlanChaine({ onDemarrer }: { onDemarrer: () => void }) {
         </h2>
         <div className="mt-3 rounded-lg border border-subtle bg-surface-container px-5 py-4">
           <p className="text-body text-primary">
-            « Soit f(x) = x². Calculer f′(1), puis donner l’équation de la
-            tangente à la courbe au point d’abscisse 1. »
+            « Soit f(x) = x². Calculer f′(1), puis donner l’équation de la
+            tangente à la courbe au point d’abscisse 1. »
           </p>
           <p className="mt-2 text-caption text-secondary">
             Une question de bac. Pas en récitant une formule — en sachant ce
@@ -130,12 +130,12 @@ export function PlanChaine({ onDemarrer }: { onDemarrer: () => void }) {
                     </span>
                   </div>
                   <p className="mt-1 text-caption text-tertiary">
-                    {n} écran{n > 1 ? "s" : ""}
+                    {n} écran{n > 1 ? "s" : ""}
                     {c.requiert.length > 0 && (
                       <>
-                        {" · s’appuie sur « "}
+                        {" · s’appuie sur « "}
                         {COMPETENCES.find((x) => x.id === c.requiert[0])?.titre}
-                        {" »"}
+                        {" »"}
                       </>
                     )}
                   </p>

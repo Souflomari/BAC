@@ -236,8 +236,8 @@ export function FigurePente({
   // fraction de seconde, une pente qui n'est pas la réponse de l'élève. Le
   // dépassement est aussi interdit par la bible §5. Les deux raisons vont
   // dans le même sens.
-  const p = useApparition(erreur ?? "aucune", { ressort: SPATIAL.standardDefault });
-  const penteFausse = erreur == null ? pente : pente + (erreur - pente) * p;
+  const p = useApparition(erreur ?? "aucune", { ressort: SPATIAL.standardDefault });
+  const penteFausse = erreur == null ? pente : pente + (erreur - pente) * p;
 
   function maj(nx: number, ny: number) {
     const cx = Math.min(5, Math.max(1, Math.round(nx)));
@@ -261,7 +261,7 @@ export function FigurePente({
   // Les graduations suivent la plage réellement affichée : un panneau large
   // en montre plus, au lieu de laisser du repère nu.
   const gradX: number[] = [];
-  for (let k = Math.ceil(xMin); k <= Math.floor(xMax); k++) if (k !== 0) gradX.push(k);
+  for (let k = Math.ceil(xMin); k <= Math.floor(xMax); k++) if (k !== 0) gradX.push(k);
 
   return (
     <figure className="m-0" ref={cadre}>
@@ -287,21 +287,21 @@ export function FigurePente({
         <line x1={px(0)} y1={py(0)} x2={px(bJuste.x)} y2={py(bJuste.y)}
           stroke="var(--figure-accent)" strokeWidth={3} strokeLinecap="round" />
 
-        {/* la droite que DONNERAIT la réponse de l'élève. On ne lui dit pas
-            qu'il a tort : sa pente s'écarte de la bonne, et l'écart se voit
+        {/* la droite que DONNERAIT la réponse de l’élève. On ne lui dit pas
+            qu’il a tort : sa pente s’écarte de la bonne, et l’écart se voit
             se creuser. */}
-        {erreur != null && (
+        {erreur != null && (
           <g className="erreur-tracee">
             <line x1={px(0)} y1={py(0)} x2={px(bFausse.x)} y2={py(bFausse.y)}
               stroke="var(--figure-regime-aperiodic)" strokeWidth={3}
               strokeDasharray="8 6" strokeLinecap="round" />
             <text
-              x={px(bFausse.x) + (fausseSortParLeHaut ? 12 : -8)}
-              y={py(bFausse.y) + (fausseSortParLeHaut ? 22 : -12)}
+              x={px(bFausse.x) + (fausseSortParLeHaut ? 12 : -8)}
+              y={py(bFausse.y) + (fausseSortParLeHaut ? 22 : -12)}
               fontSize={16} fontWeight={700}
-              textAnchor={fausseSortParLeHaut ? "start" : "end"}
+              textAnchor={fausseSortParLeHaut ? "start" : "end"}
               fill="var(--figure-regime-aperiodic)">
-              {erreurLabel ?? `ta pente : ${erreur}`}
+              {erreurLabel ?? `ta pente : ${erreur}`}
             </text>
           </g>
         )}
@@ -309,25 +309,25 @@ export function FigurePente({
         <circle cx={px(0)} cy={py(0)} r={4.5} fill="var(--figure-ink)" />
         <g>
           <circle cx={px(ax)} cy={py(ay)} r={10} fill="var(--figure-accent)" />
-          {/* Sur une droite raide, l'étiquette posée en haut à droite tombe
-              SUR la droite elle-même (défaut vu à l'audit, pente 2). On la
+          {/* Sur une droite raide, l’étiquette posée en haut à droite tombe
+              SUR la droite elle-même (défaut vu à l’audit, pente 2). On la
               passe alors à gauche, du côté vide. */}
           <text
-            x={px(ax) + (apente > 1.2 ? -15 : 15)}
+            x={px(ax) + (apente > 1.2 ? -15 : 15)}
             y={py(ay) - 12}
             fontSize={17} fontWeight={700}
-            textAnchor={apente > 1.2 ? "end" : "start"}
+            textAnchor={apente > 1.2 ? "end" : "start"}
             fill="var(--figure-accent)">B</text>
         </g>
       </svg>
 
       </div>
 
-      {/* LE DOCK (refonte Studio R3) : steppers −/+ readout mono + la
-          formule en pilule — le calcul que l'élève fabrique, écrit en
+      {/* LE DOCK (refonte Studio R3) : steppers −/+ readout mono + la
+          formule en pilule — le calcul que l’élève fabrique, écrit en
           entier, dans la langue du collège. Sur un écran figé la figure
-          ILLUSTRE l'énoncé : steppers gelés, pas cachés — l'élève voit
-          d'où viennent les deux nombres dont on lui parle. */}
+          ILLUSTRE l’énoncé : steppers gelés, pas cachés — l’élève voit
+          d’où viennent les deux nombres dont on lui parle. */}
       <div className="flex flex-wrap items-stretch gap-2 border-t border-subtle bg-surface-container-low px-3 py-3 bp-medium:px-4">
         <Stepper label="on avance de" valeur={bx} min={1} max={5} desactive={fige}
           onChange={(v) => maj(v, by)} teinte="var(--figure-energy-C)" />

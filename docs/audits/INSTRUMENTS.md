@@ -29,7 +29,7 @@
 | `web/scripts/etroit-sweep.mjs` | 70 pages × 3 largeurs de téléphone (320/360/390) : débord horizontal, chapitres dépliés | La lisibilité. Une page peut ne pas déborder ET rester illisible — c'est ce que la sonde de figures a montré |
 | `web/scripts/horsligne-sweep.mjs` | Six scènes de coupure réseau : navigation par chapitre, clic vers une autre leçon, bouton Retour, leçon déjà visitée, réponse à un QCM, retour du réseau. **Ce qui tient tient ; ce qui casse est borné** — voir `docs/audits/hors-ligne.md` | Le réseau qui RAMPE au lieu de mourir (latence + pertes de paquets), et la coupure pendant un enregistrement |
 | `web/scripts/recherche-navigateur.mjs` | Ce que ⌘F trouve : un mot du chapitre ouvert (témoin), un mot qui n'existe QUE dans un chapitre replié, et le texte du MathML masqué de KaTeX. A montré que **10 chapitres sur 11 sont hors d'atteinte de la recherche** — la moitié « ⌘F » de l'arbitrage des chapitres, enfin mesurée | Firefox et Safari (moteurs de recherche différents), et l'interface ⌘F elle-même : on passe par `window.find()`, qui partage la machinerie mais n'est pas l'UI |
-| `web/scripts/typo-francaise.mjs` | La typographie FRANÇAISE dans le texte rendu, chapitres dépliés : apostrophe droite entre deux lettres, espace manquante devant `; : ?`, guillemets mal espacés. Attribue chaque écart au SITE DE RENDU (le chemin des éléments), ce qui dit où corriger. A trouvé ~1 100 écarts hors prose — figures, `\text{}` des formules, titres, libellés du programme. 69 pages, zéro écart aujourd'hui ; `--porte` armée | Le point d'exclamation (factorielle `n!`), les commentaires XML des figures, et le `style` inliné d'une figure (du CSS, pas du français — exclu explicitement) |
+| `web/scripts/typo-francaise.mjs` | La typographie FRANÇAISE dans le texte rendu, chapitres dépliés : apostrophe droite entre deux lettres, espace manquante devant `; : ?`, guillemets mal espacés. Attribue chaque écart au SITE DE RENDU (le chemin des éléments), ce qui dit où corriger. A trouvé ~1 100 écarts hors prose — figures, `\text{}` des formules, titres, libellés du programme. 73 pages (leçons + accueil, examens, matières, atelier, connexion, options), zéro écart aujourd'hui ; `--porte` armée | Le point d'exclamation (factorielle `n!`), les commentaires XML des figures, et le `style` inliné d'une figure (du CSS, pas du français — exclu explicitement) |
 | `web/scripts/impression.mjs` | Ce que l'élève obtient sur le PAPIER : six contrôles en émulation `print`, dans les DEUX thèmes, sur 65 pages — chrome masqué, chapitres dépliés, rien hors colonne, figures dans la page, encre sur papier. A trouvé qu'un élève lisant en thème sombre **imprimait des aplats noirs** (les jetons de figure n'étaient pas remis au clair). `--porte` armée en CI | Le PDF réel (nombre de pages, coupures effectives, rendu des polices), les autres formats de papier, et le COÛT EN ENCRE d'un aplat conforme à l'écran |
 | `web/scripts/copie-maths.mjs` | Ce que l'élève OBTIENT quand il recopie son cours : ⌘A/⌘C pour de vrai, presse-papier lu, comparé à trois états de la page (idéal / livré / témoin d'avant-correctif). A trouvé **138 773 caractères parasites** sur 62 leçons — chaque formule sortait en DOUBLE, le MathML de KaTeX étant masqué à l'œil mais pas à la sélection. `--porte` disponible | Le collage RICHE (`text/html`), donc ce qui arrive dans Word ou Docs quand la mise en forme est gardée. Et la recherche du navigateur (⌘F) |
 | `web/scripts/reseau-malade.mjs` | Le réseau qui RAMPE : 300 ms de latence, ~400 kbit/s, **une requête sur cinq perdue** (tirage à graine, donc rejouable). Cinq scènes + un TÉMOIN sur réseau parfait sans lequel rien n'est concluant. A trouvé qu'un morceau de JS perdu laisse le cours lisible et la page morte **sans un mot** — corrigé par la veille d'hydratation, et la correction est mesurée. A aussi produit **deux conclusions fausses** en cliquant un lien de boîte 0×0, retirées depuis | Le vrai réseau (DNS, TLS, CDN, cache Vercel) : tout est un build local derrière une émulation. Et la reprise d'un enregistrement coupé en vol |
@@ -161,7 +161,20 @@ de la page, parce que c'est physiquement impossible à l'intérieur d'une
 carte de figure. C'est ce témoin qui aurait dû exister d'emblée — il aurait
 épargné une passe entière de faux positifs.
 
-**Et le corollaire du corollaire, payé le même jour sur le balayage réseau :
+**Et deux corollaires de plus, payés le 2026-09-05 :**
+
+> **Une porte ne juge que ce qu'on lui donne : la liste des routes EST la
+> portée.** La porte typographique déclarait 69 pages propres — parce que
+> `/atelier`, `/connexion`, `/options` et les pages d'épreuve n'y étaient pas.
+> Elles portaient 65 écarts à elles seules.
+
+> **Un caractère invisible ne se tape pas, il s'échappe.** Trois fois dans la
+> journée, une insécable fine écrite littéralement dans un script a été perdue
+> en route : la passe annonçait des changements, le fichier gardait son espace
+> ordinaire. Dans un script, `\u202f` ; à la lecture, on imprime le point de
+> code, jamais on ne juge une espace à l'œil dans un terminal.
+
+**Et le corollaire du corollaire, payé le 2026-09-04 sur le balayage réseau :
 une scène de test qui ÉCHOUE doit prouver qu'elle a EU LIEU.** Le premier
 `a[href^="/notions/"]` d'une page de leçon vit dans le panneau replié du
 header — boîte 0×0. `page.click` expirait, un `.catch()` vide avalait

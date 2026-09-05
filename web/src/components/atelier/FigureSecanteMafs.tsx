@@ -74,9 +74,9 @@ export function FigureSecanteMafs({
   // La droite fausse ne surgit pas à sa place : elle PART de la sécante que
   // l'élève a sous les yeux et s'en écarte. On ne lui dit pas que c'est
   // faux — il regarde sa réponse quitter la courbe (R3).
-  const p = useApparition(erreurPente ?? "aucune", { ressort: SPATIAL.standardDefault });
+  const p = useApparition(erreurPente ?? "aucune", { ressort: SPATIAL.standardDefault });
   const penteErreurAnimee =
-    erreurPente == null ? pente : pente + (erreurPente - pente) * p;
+    erreurPente == null ? pente : pente + (erreurPente - pente) * p;
 
   const [largeurPanneau, setLargeurPanneau] = useState(0);
 
@@ -85,7 +85,7 @@ export function FigureSecanteMafs({
   // « 0,17 / 0,08 » donne 2,125 alors qu'on écrit 2,08 à côté — un élève
   // qui contrôle trouve un désaccord et a raison. On ouvre donc la précision
   // quand h devient petit, pour que la division écrite tombe juste.
-  const decimales = h < 0.5 ? 3 : 2;
+  const decimales = h < 0.5 ? 3 : 2;
   // Quand B colle à A, le triangle mesure quelques pixels : y accrocher deux
   // étiquettes les empile sur A et sur B et rend le coin illisible. On les
   // retire — les mêmes nombres restent lus en clair sous la figure, donc on
@@ -116,7 +116,7 @@ export function FigureSecanteMafs({
         vue.setAttribute("role", "application");
         vue.setAttribute(
           "aria-label",
-          "Figure interactive : courbe de f de x égale x au carré, avec le point B déplaçable le long de la courbe."
+          "Figure interactive : courbe de f de x égale x au carré, avec le point B déplaçable le long de la courbe."
         );
       }
       // Le nœud du point porte la classe `mafs-movable-point` ET le tabindex :
@@ -167,9 +167,9 @@ export function FigureSecanteMafs({
   return (
     <figure className="m-0" ref={cadre}>
       <div className="fond-points p-2">
-      {/* Cadrage : B monte jusqu'à (2,6 ; 6,76) au bout de sa course, et les
-          étiquettes de graduation ont besoin d'air en bas — sans cette marge
-          Mafs rognait le « -1 » contre le bord. */}
+      {/* Cadrage : B monte jusqu’à (2,6 ; 6,76) au bout de sa course, et les
+          étiquettes de graduation ont besoin d’air en bas — sans cette marge
+          Mafs rognait le « -1 » contre le bord. */}
       <Mafs
         height={hauteurScene(largeurPanneau)}
         viewBox={{ x: [-0.35, 3.4], y: [-1.2, 8] }}
@@ -177,7 +177,7 @@ export function FigureSecanteMafs({
       >
         <Coordinates.Cartesian />
 
-        {/* la tangente visée — la cible qu'on approche, jamais annoncée */}
+        {/* la tangente visée — la cible qu’on approche, jamais annoncée */}
         <Line.PointSlope
           point={[A_X, f(A_X)]}
           slope={2}
@@ -186,16 +186,16 @@ export function FigureSecanteMafs({
           opacity={0.35}
         />
 
-        {/* la courbe : c'est le TERRAIN, donc à l'encre, pas en couleur —
-            les couleurs sont réservées à ce qu'on mesure dessus. */}
+        {/* la courbe : c’est le TERRAIN, donc à l’encre, pas en couleur —
+            les couleurs sont réservées à ce qu’on mesure dessus. */}
         <Plot.OfX y={f} color={Theme.foreground} />
 
         {/* la sécante */}
         <Line.PointSlope point={[A_X, f(A_X)]} slope={pente} color={Theme.orange} />
 
         {/* Le triangle du taux de variation. MÊMES COULEURS que la figure du
-            collège : ce qu'on avance en bleu, ce qu'on monte en brun. Un
-            élève doit reconnaître le même geste d'une figure à l'autre —
+            collège : ce qu’on avance en bleu, ce qu’on monte en brun. Un
+            élève doit reconnaître le même geste d’une figure à l’autre —
             avant, les deux segments étaient verts et se confondaient avec la
             sécante. */}
         <Line.Segment
@@ -209,9 +209,9 @@ export function FigureSecanteMafs({
           color={Theme.red}
         />
         {/* Les deux côtés sont NOMMÉS, dans les mêmes mots et les mêmes
-            couleurs qu'au collège. C'est là que se joue le transfert : sans
-            ces étiquettes, l'élève voit deux traits ; avec elles, il voit le
-            même geste qu'il a déjà fait sur une droite. */}
+            couleurs qu’au collège. C’est là que se joue le transfert : sans
+            ces étiquettes, l’élève voit deux traits ; avec elles, il voit le
+            même geste qu’il a déjà fait sur une droite. */}
         {triangleLisible && (
           <>
             <MafsText
@@ -235,8 +235,8 @@ export function FigureSecanteMafs({
           </>
         )}
 
-        {/* la droite que l'élève vient d'affirmer */}
-        {erreurPente != null && (
+        {/* la droite que l’élève vient d’affirmer */}
+        {erreurPente != null && (
           <>
             <Line.PointSlope
               point={[A_X, f(A_X)]}
@@ -245,7 +245,7 @@ export function FigureSecanteMafs({
               style="dashed"
               weight={3}
             />
-            {/* L'étiquette se pose SUR la droite, au bord du cadre : posée au
+            {/* L’étiquette se pose SUR la droite, au bord du cadre : posée au
                 milieu elle tombait sur le triangle du taux de variation. On
                 prend le premier des deux bords que la droite rencontre. */}
             <MafsText
@@ -256,22 +256,22 @@ export function FigureSecanteMafs({
               color={Theme.violet}
               size={18}
             >
-              {erreurLabel ?? `pente ${erreurPente}`}
+              {erreurLabel ?? `pente ${erreurPente}`}
             </MafsText>
           </>
         )}
 
         <Point x={A_X} y={f(A_X)} color={Theme.foreground} />
-        {/* A et B sont nommés dans la consigne ET dans les questions : sans
-            étiquette sur la figure, l'élève doit deviner lequel est lequel. */}
+        {/* A et B sont nommés dans la consigne ET dans les questions : sans
+            étiquette sur la figure, l’élève doit deviner lequel est lequel. */}
         <MafsText x={A_X - 0.2} y={f(A_X) - 0.55} color={Theme.foreground} size={19}>
           A
         </MafsText>
-        {/* B s'éloigne de son point quand il colle à A, sinon les deux
+        {/* B s’éloigne de son point quand il colle à A, sinon les deux
             étiquettes se chevauchent au même endroit. */}
         <MafsText
-          x={A_X + h + (triangleLisible ? 0.2 : 0.42)}
-          y={f(A_X + h) + (triangleLisible ? 0.38 : 0.62)}
+          x={A_X + h + (triangleLisible ? 0.2 : 0.42)}
+          y={f(A_X + h) + (triangleLisible ? 0.38 : 0.62)}
           color={Theme.orange}
           size={19}
         >
@@ -281,7 +281,7 @@ export function FigureSecanteMafs({
       </Mafs>
       </div>
 
-      {/* Le dock de lecture — même langage que FigurePente : consigne,
+      {/* Le dock de lecture — même langage que FigurePente : consigne,
           quotient EN ENTIER en mono, la limite dite en une ligne. */}
       <div className="grid gap-1 border-t border-subtle bg-surface-container-low px-4 py-3 bp-medium:px-5">
         <p className="text-body text-secondary">
@@ -289,10 +289,10 @@ export function FigureSecanteMafs({
           glisser vers <span className="font-medium text-primary">A</span>
           {" — "}ou sélectionne-le et utilise les flèches du clavier.
         </p>
-        {/* Le quotient est écrit EN ENTIER, dans la même forme qu'au collège
-            (« pente = 2 / 4 = 0,50 ») : c'est la même opération, sur une
+        {/* Le quotient est écrit EN ENTIER, dans la même forme qu’au collège
+            (« pente = 2 / 4 = 0,50 ») : c’est la même opération, sur une
             courbe. Afficher seulement le résultat cacherait justement ce
-            qu'on veut faire reconnaître. */}
+            qu’on veut faire reconnaître. */}
         <p className="text-body-lg text-primary" role="status">
           pente de (AB) ={" "}
           <span className="font-mono tabular-nums" style={{ color: "var(--figure-regime-pseudo)" }}>
@@ -313,7 +313,7 @@ export function FigureSecanteMafs({
           )}
         </p>
         <p className="text-caption text-tertiary">
-          B ne peut pas atteindre A : en h = 0, la division n’existe plus.
+          B ne peut pas atteindre A : en h = 0, la division n’existe plus.
         </p>
       </div>
       <span className="sr-only">

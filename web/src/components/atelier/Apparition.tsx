@@ -31,7 +31,7 @@ import { pasRessort, ressortAuRepos, SPATIAL, type Ressort } from "@/lib/m3-moti
 
 function reduit() {
   return (
-    typeof window !== "undefined" &&
+    typeof window !== "undefined" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
 }
@@ -79,8 +79,8 @@ export function useApparition(
     }, delai);
 
     return () => {
-      if (minuteur.current != null) clearTimeout(minuteur.current);
-      if (raf.current != null) cancelAnimationFrame(raf.current);
+      if (minuteur.current != null) clearTimeout(minuteur.current);
+      if (raf.current != null) cancelAnimationFrame(raf.current);
       raf.current = null;
     };
   }, [cle, delai, ressort]);
@@ -124,7 +124,7 @@ export function Apparition({
       style={{
         opacity: opacite,
         transform: `translate3d(0, ${y.toFixed(2)}px, 0) scale(${s.toFixed(4)})`,
-        willChange: p === 1 ? undefined : "opacity, transform",
+        willChange: p === 1 ? undefined : "opacity, transform",
       }}
     >
       {children}
