@@ -29,7 +29,7 @@
 | `web/scripts/liens-fichiers.mjs` | LES RENVOIS : tout chemin de fichier cité dans un fichier suivi par git (markdown, YAML, TS, MJS, workflows) mène-t-il quelque part ? Un chemin est résolu depuis la racine, depuis `web/` (la convention d'exécution des scripts) ou depuis le répertoire qui le cite. DEUX ZONES : la zone VIVANTE — orientation, agents, compétences, vision, règles, specs, runbooks, code, contenu, CI — est une PORTE FRANCHE ; la zone d'ARCHIVE — ADR, registres d'audit, CHANGELOG, rapports de reprise, ancrage périmé — nomme délibérément ce qui n'existe plus et n'est que comptée. L'exception vit dans le fichier et NOMME son chemin (`CHEMIN DISPARU:`), comme `RECOUVREMENT ASSUMÉ:`. Mesuré à l'armement : `docs/Product/` ET `docs/product/` coexistaient — VISION.md et DESIGN-BIBLE.md dans le premier, 23 renvois vers le second, dont ceux de `.claude/CLAUDE.md`, du README, du HANDOFF et de NEUF agents. Chaque agent à qui l'on disait « lis la vision d'abord » lisait le vide, et sur la machine de l'owner (Windows, insensible à la casse) les deux répertoires entrent en collision | Si le document CIBLE dit encore ce que le renvoi prétend. Un chemin qui résout peut pointer un texte périmé — c'est le travail des humains et des documents de réconciliation |
 | `web/scripts/ancres-uniques.mjs` | LES ANCRES « § » : deux titres d'une même leçon peuvent-ils partager un `id` ? C'est la promesse d'un lien profond — l'élève copie le lien de la section qu'il lit. Mesuré à l'armement : depuis la pagination, `LessonRenderer` est appelé une fois par SEGMENT et `rehype-slug` remet son compteur d'unicité à zéro à chaque passe ; `maths/suites-numeriques` portait HUIT titres « L'erreur à repérer » avec le même id — sept ancres sur huit renvoyaient à la première. 95 titres au libellé répété existent dans 32 leçons. Corrigé par un compteur PARTAGÉ (`web/src/lib/rehypeSlugPartage.ts`), la première occurrence gardant son id nu pour que les liens déjà partagés survivent. PORTE FRANCHE : 62 leçons, 2 190 titres, 0 doublon | Les ids INTERNES des SVG, dupliqués eux aussi quand une figure est posée plusieurs fois. Vérifié inoffensif deux fois — `MediaDiagram` masque les étapes en réécrivant le markup de chaque figure, jamais par `getElementById`, et aucun identifiant n'est défini DIFFÉREMMENT par deux figures d'une notion tout en étant déréférencé par `url(#…)`. Armer sur « aucun id dupliqué » aurait été rouge sur un fait sans conséquence |
 | `web/scripts/portee-corpus.mjs` | LA PORTÉE d'un mécanisme : sur combien de pages du corpus une fonctionnalité livrée a réellement quelque chose à montrer. Compte, par notion et par matière, les points d'arrêt, figures, figures étagées, mouvements, embarqués, interactives, dérivations, exercices, et les chapitres portant une carte « à retenir ». Mesuré à l'armement (62 notions, 491 chapitres) : points d'arrêt **62/62**, figures **51/62**, exercices **49/62**, « à retenir » **44/62**, mouvements **6/62**, interactives **5/62**, embarqués **4/62**, dérivations **1/62**. La philosophie : 92 chapitres, 4 figures (toutes dans une seule notion), zéro de tout le reste. `--resume` pour les totaux seuls | SI LA PORTÉE EST BONNE. Une dérivation dépliable n'a de sens que là où il y a une dérivation ; une figure absente sur toute une matière est peut-être une dette, peut-être une décision. Le tableau est un fait, le verdict est pédagogique |
-| `web/scripts/portee-hors-lecon.mjs` | LA PORTÉE des surfaces HORS leçon — la seconde moitié de la même question. Compte, par épreuve : morceaux servis, questions, questions portant un raisonnement expert, questions portant une dérivation dépliable, et les renvois visuels de l'énoncé. Mesuré à l'armement : **39 épreuves, 247 morceaux, 1 472 questions — 100 % avec raisonnement, 77 % avec dérivation**, et l'atelier à **1 notion sur 62**. Quatre épreuves concentrent la lacune de dérivation (SPC 2021 R : 0 sur 41). ⚠️ à lancer depuis `web/`. `--resume` pour les totaux seuls | SI 77 % SUFFIT — question pédagogique. Et l'ORPHELINAT d'un renvoi visuel : la colonne « sans description » est un MAJORANT, parce que le corpus emploie cinq conventions de description et que « décrit en ligne » ne se distingue pas de « orphelin » sans juger le sens. Les 16 du premier tour ont été ouverts un par un : aucun défaut |
+| `web/scripts/portee-hors-lecon.mjs` | LA PORTÉE des surfaces HORS leçon — la seconde moitié de la même question. Compte, par épreuve : morceaux servis, questions, questions portant un raisonnement expert, questions dont la correction DÉROULE l'algèbre (par `steps` OU par des blocs `$$…$$`), et les renvois visuels de l'énoncé. Mesuré à l'armement : **39 épreuves, 247 morceaux, 1 472 questions**, 100 % avec raisonnement, **94 % dont la correction déroule l'algèbre** (1 132 par `steps`, 247 par des blocs `$$…$$` seuls), et l'atelier à **1 notion sur 62**. ⚠️ à lancer depuis `web/`. `--resume` pour les totaux seuls | SI L'ALGÈBRE MONTRÉE EST BONNE, et si son contenant est le bon. Et l'ORPHELINAT d'un renvoi visuel : la colonne « sans description » est un MAJORANT, parce que le corpus emploie cinq conventions de description et que « décrit en ligne » ne se distingue pas de « orphelin » sans juger le sens. Les 16 du premier tour ont été ouverts un par un : aucun défaut |
 | `web/scripts/test-attempt-events.mjs` | LE CHEMIN D'ÉCRITURE, côté client : les constructeurs de charge utile, la forme du fil telle que le validateur de l'edge function l'accepte, et — depuis le 2026-09-05 — le chemin de PERTE (échec, réessai unique à 4 s, borne de 20, 401, coupure réseau, visite de chapitre). 20 tests, minuteries simulées. `npm run test-attempt-events` | Le SERVEUR : idempotence de `record-notion-event`, double envoi, écritures concurrentes. Et le TAUX de perte réel, qui dépend du réseau de l'élève — les tests établissent la sémantique, pas la fréquence |
 
 ## Les balayages de corpus (outils, pas portes)
@@ -140,8 +140,8 @@
    sur le corpus dit sur combien de pages il a quelque chose à montrer.**
    La seconde moitié — les surfaces HORS leçon — a été mesurée le même jour
    par `portee-hors-lecon.mjs` (`docs/audits/portee-hors-lecon.md`) : 39
-   épreuves, 1 472 questions, **100 % avec un raisonnement expert, 77 % avec
-   une dérivation dépliable**, et l'atelier à **1 notion sur 62**. Elle a
+   épreuves, 1 472 questions, **100 % avec un raisonnement expert, 94 % dont
+   la correction déroule l'algèbre**, et l'atelier à **1 notion sur 62**. Elle a
    rapporté un résultat NÉGATIF qui valait la peine d'être établi : les
    énoncés portent **212 renvois distincts à une figure** que le produit ne
    rend jamais en image — et les 212 sont servis par une description
@@ -194,6 +194,29 @@ son panneau », nommé le 2026-09-03 et non instrumenté — a été mesuré et
 fermé le lendemain : 9 cas, 4 débordements voulus déclarés
 `data-hors-panneau`, 5 défauts corrigés, porte armée en CI. C'est
 exactement l'usage prévu de cette liste.)*
+
+## Compter le CONTENANT, c'est mesurer une habitude de rédaction
+
+Ajoutée le 2026-09-05, après avoir publié une fausse alerte et l'avoir
+retirée le jour même.
+
+`portee-hors-lecon` comptait les questions d'épreuve portant un tableau
+`steps` — le pas-à-pas déplié — en trouvait 77 %, voyait quatre épreuves de
+rattrapage concentrer le manque (SPC 2021 R : **0 sur 41**) et concluait à une
+lacune de campagne. **Aucune de ces corrections n'avait été ouverte.** Elles
+déroulent l'algèbre entièrement, mais dans le RAISONNEMENT, en blocs `$$…$$`,
+chaque étape portant son « pourquoi ».
+
+Les deux contenants font le même travail, et le comptage refait le prouve : les
+questions SANS `steps` portent **deux fois plus** de blocs `$$…$$` (2,0 contre
+1,0), et 740 des 1 132 « avec steps » n'en ont aucun. Les quatre épreuves
+accusées sont celles qui en déroulent le plus (3,4 à 4,1 blocs par
+raisonnement, le double de la moyenne). Le compte honnête : **94 %**. Et sur
+les 93 questions sans ni l'un ni l'autre, **zéro** demande un calcul sans
+recevoir de mathématiques.
+
+> **Compter la chose, pas la case où elle est rangée.** Et avant de publier un
+> manque : ouvrir un des cas qu'on accuse.
 
 ## Une règle de comptage, apprise deux fois le même jour
 

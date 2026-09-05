@@ -2489,10 +2489,23 @@ la porte en sait plus que celui qui l'écrit.
 ### 11.5 La portée hors leçon, et un résultat négatif qui valait la mesure
 
 `portee-hors-lecon.mjs` ferme la seconde moitié de l'angle mort n° 7 : 39
-épreuves, 247 morceaux, 1 472 questions — **100 % avec un raisonnement
-expert, 77 % avec une dérivation dépliable**, l'atelier à **1 notion sur 62**.
-Les 23 % manquants ne sont pas répartis au hasard : SPC 2021 rattrapage en
-compte **zéro sur 41**. Arbitrage propriétaire posé.
+épreuves, 247 morceaux, 1 472 questions — **100 % avec un raisonnement expert,
+94 % dont la correction déroule l'algèbre**, l'atelier à **1 notion sur 62**.
+
+**Ce chiffre est le second. Le premier était faux, et le récit vaut plus que
+le chiffre.** L'instrument comptait d'abord les questions portant un tableau
+`steps`, en trouvait 77 %, voyait quatre épreuves de rattrapage concentrer le
+manque (SPC 2021 R : **zéro sur 41**) et je l'ai publié comme une lacune de
+campagne — sans avoir ouvert une seule de ces corrections. Elles déroulent
+l'algèbre entièrement, en blocs `$$…$$` dans le raisonnement, chaque étape
+portant son « pourquoi ». Les questions SANS `steps` en portent **deux fois
+plus** que celles qui en ont ; les quatre épreuves accusées sont celles qui en
+déroulent le plus. Sur les 93 questions sans ni l'un ni l'autre, **zéro**
+demande un calcul sans recevoir de mathématiques.
+
+> **Un compteur qui mesure le CONTENANT mesure une habitude de rédaction, pas
+> ce que l'élève reçoit.** Compter la chose, pas la case où elle est rangée —
+> et, avant de publier un manque, ouvrir un des cas qu'on accuse.
 
 Et le résultat qui valait la mesure est négatif. Les énoncés portent **212
 renvois distincts à une figure** que le produit ne rend jamais en image. La

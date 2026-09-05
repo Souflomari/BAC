@@ -133,6 +133,19 @@ notions sur 62, les dérivations dépliables sur **une**.
   transformé en espace. Vérifié au navigateur avant d'être rapporté.
   **Le texte que l'élève lit est `innerText`, jamais une regex sur le
   balisage.**
+- **Une alarme publiée, puis retirée le jour même.** L'instrument de portée
+  hors leçon comptait les questions d'épreuve portant un tableau `steps`, en
+  trouvait 77 %, voyait quatre rattrapages concentrer le manque (SPC 2021 R :
+  zéro sur 41) et l'a publié comme une lacune de campagne — **sans avoir
+  ouvert une seule de ces corrections**. Elles déroulent l'algèbre
+  entièrement, en blocs `$$…$$` dans le raisonnement, chaque étape portant son
+  « pourquoi ». Les questions SANS `steps` en portent deux fois plus que
+  celles qui en ont, et les quatre épreuves accusées sont celles qui en
+  déroulent le plus. Compte honnête : **94 %**, et zéro question demandant un
+  calcul sans recevoir de mathématiques. **Un compteur qui mesure le CONTENANT
+  mesure une habitude de rédaction, pas ce que l'élève reçoit** — c'est la
+  neuvième décision de cet arc, et elle est née d'une erreur, pas d'un défaut
+  du produit.
 - **Un correctif défait par la mesure.** Le pire croisement tracé/étiquette
   du corpus (29 %) a d'abord été « corrigé » en montant l'étiquette de
   28 px : la mesure a montré un recouvrement à 56 % avec le squelette —

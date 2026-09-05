@@ -14,12 +14,24 @@
  *                   du sujet peut se découper entre plusieurs notions)
  *   questions       questions d'épreuve, toutes épreuves confondues
  *   raisonnement    questions portant un `reasoning` non vide
- *   dérivation      questions portant des `steps` (le pas-à-pas déplié)
+ *   algèbre montrée questions dont la correction DÉROULE le calcul — soit
+ *                   par des `steps` (le pas-à-pas déplié), soit par des blocs
+ *                   `$$…$$` dans le raisonnement. LES DEUX COMPTENT, et c'est
+ *                   la correction d'une erreur commise ici même le 2026-09-05 :
+ *                   la première version ne comptait que `steps` et concluait
+ *                   qu'une épreuve à « 0 dérivation sur 41 » avait une lacune.
+ *                   Mesuré ensuite : les questions SANS `steps` portent DEUX
+ *                   fois plus de blocs `$$…$$` que celles qui en ont (2,0
+ *                   contre 1,0), et 740 des 1 132 questions « avec steps »
+ *                   n'ont aucun bloc. Ce sont deux CONTENANTS pour le même
+ *                   contenu ; compter l'un seul mesure une habitude de
+ *                   rédaction, pas ce que l'élève reçoit.
  *   renvois visuels « figure 3 », « le schéma ci-contre »… dans l'énoncé
  *   substitution    ces renvois qui trouvent une DESCRIPTION dans l'entrée
  *
- * CE QU'IL NE DIT PAS. Si 77 % de dérivations est assez. C'est une question
- * pédagogique ; le tableau est le fait.
+ * CE QU'IL NE DIT PAS. Si l'algèbre montrée est BONNE, ni si son contenant
+ * est le bon pour une question donnée. Le tableau est le fait ; le verdict est
+ * pédagogique.
  *
  * ⚠️ À LANCER DEPUIS `web/` — `lib/content.ts` résout la racine du contenu
  * relativement au répertoire courant, et rend une liste VIDE ailleurs (sans
@@ -72,6 +84,9 @@ const lignes = eps.map((e) => {
     q: qs.length,
     raison: qs.filter((q) => (q.reasoning ?? "").trim()).length,
     steps: qs.filter((q) => (q.steps ?? []).length).length,
+    algebre: qs.filter(
+      (q) => (q.steps ?? []).length || /\$\$[\s\S]*?\$\$/.test(q.reasoning ?? "")
+    ).length,
     renvois,
     orphelins,
   };
@@ -81,13 +96,14 @@ const T = (f) => lignes.reduce((s, r) => s + r[f], 0);
 if (!RESUME) {
   console.log(
     "épreuve".padEnd(22) + "pts".padStart(6) + "morc".padStart(6) + "quest".padStart(7) +
-    "raison".padStart(8) + "dériv".padStart(7) + "renvois".padStart(9) + "sans descr.".padStart(13)
+    "raison".padStart(8) + "algèbre".padStart(9) + "(steps)".padStart(9) +
+    "renvois".padStart(9) + "sans descr.".padStart(13)
   );
-  for (const r of [...lignes].sort((a, b) => a.steps / (a.q || 1) - b.steps / (b.q || 1))) {
+  for (const r of [...lignes].sort((a, b) => a.algebre / (a.q || 1) - b.algebre / (b.q || 1))) {
     console.log(
       r.id.padEnd(22) + String(r.pts).padStart(6) + String(r.morceaux).padStart(6) +
-      String(r.q).padStart(7) + String(r.raison).padStart(8) + String(r.steps).padStart(7) +
-      String(r.renvois).padStart(9) + String(r.orphelins).padStart(13)
+      String(r.q).padStart(7) + String(r.raison).padStart(8) + String(r.algebre).padStart(9) +
+      String(r.steps).padStart(9) + String(r.renvois).padStart(9) + String(r.orphelins).padStart(13)
     );
   }
   console.log();
@@ -98,6 +114,8 @@ console.log(`épreuves            ${eps.length}`);
 console.log(`morceaux servis     ${T("morceaux")}`);
 console.log(`questions           ${T("q")}`);
 console.log(`avec raisonnement   ${T("raison")}  (${pct(T("raison"), T("q"))})`);
-console.log(`avec dérivation     ${T("steps")}  (${pct(T("steps"), T("q"))})`);
+console.log(`avec algèbre montrée ${T("algebre")}  (${pct(T("algebre"), T("q"))})`);
+console.log(`   · dont par steps  ${T("steps")}`);
+console.log(`   · dont par $$…$$ seuls  ${T("algebre") - T("steps")}`);
 console.log(`renvois visuels     ${T("renvois")} distincts · ${T("orphelins")} sans bloc de description (majorant — voir DESCR)`);
 console.log(`atelier             1 notion sur ${notions.length} (prototype : maths/dérivées)`);

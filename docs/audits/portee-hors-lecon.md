@@ -21,32 +21,62 @@ node scripts/portee-hors-lecon.mjs --resume     # depuis web/
 | morceaux servis | 247 |
 | questions d'épreuve | **1 472** |
 | avec un raisonnement expert | 1 472 — **100 %** |
-| avec une dérivation dépliable (`steps`) | 1 132 — **77 %** |
+| dont la correction déroule l'algèbre | 1 379 — **94 %** |
 | renvois visuels distincts dans les énoncés | **212** |
 | l'atelier | **1 notion sur 62** (prototype : maths/dérivées) |
 
 Deux faits en ressortent, de nature très différente.
 
-## 1. Le raisonnement est partout, la dérivation ne l'est pas — et pas au hasard
+## 1. Le raisonnement est partout — et l'alarme que j'avais tirée était fausse
 
-Aucune des 1 472 questions n'envoie l'élève sans explication : chacune
-porte un raisonnement expert. En revanche 340 n'ont pas de pas-à-pas
-déplié, et ces 340 ne sont pas réparties uniformément — quatre épreuves
-concentrent l'essentiel :
+Aucune des 1 472 questions n'envoie l'élève sans explication : chacune porte
+un raisonnement expert.
 
-| épreuve | questions | avec dérivation |
-|---|---:|---:|
-| SPC 2021 rattrapage | 41 | **0** |
-| SPC 2024 rattrapage | 35 | **3** |
-| SPC 2023 rattrapage | 34 | **4** |
-| SPC 2022 rattrapage | 40 | 20 |
-| *(médiane du corpus)* | | *~80 %* |
+**La première version de cette page disait autre chose, et se trompait.** Elle
+comptait les questions portant un tableau `steps` — le pas-à-pas déplié — en
+trouvait 1 132 sur 1 472 (77 %), constatait que quatre épreuves de rattrapage
+concentraient le manque (SPC 2021 R : **0 sur 41**) et concluait : « zéro sur
+quarante-et-une, ce n'est pas quarante-et-une décisions d'auteur, c'est une
+lacune de campagne ». C'était une conclusion tirée sans avoir OUVERT une seule
+de ces corrections.
 
-Zéro sur quarante-et-une, ce n'est pas quarante-et-une décisions d'auteur
-prises une par une — c'est une lacune de campagne. **Arbitrage
-propriétaire :** une épreuve entière sans un seul pas-à-pas est-elle
-acceptable, sachant que le raisonnement en prose y est complet ? Le fait
-est ici ; le verdict est pédagogique.
+Ouverte, la première dit ceci :
+
+> **Ce qu'on cherche et pourquoi ce geste.** […] Loi des mailles sur la boucle
+> série, en convention récepteur :
+> $$E = u_R + u_C = R_1\,i + u_C$$
+> À $t = 0^+$, le condensateur est déchargé et sa tension est continue
+> (chapitre 3) : $u_C(0^+) = 0$. Il reste :
+> $$E = R_1\,i(0^+) \quad\Longrightarrow\quad i(0^+) = \frac{E}{R_1} = I_0$$
+
+L'algèbre y est déroulée entièrement — mais dans le RAISONNEMENT, en blocs
+`$$…$$`, chaque étape portant son « pourquoi ». Ce sont deux **contenants**
+pour la même chose. Et la mesure, refaite en comptant les deux, retourne
+complètement le verdict :
+
+| | questions | blocs `$$…$$` par raisonnement | sans le moindre bloc |
+|---|---:|---:|---:|
+| **avec** `steps` | 1 132 | 1,0 | **740** |
+| **sans** `steps` | 340 | **2,0** | 93 |
+
+Les questions sans `steps` portent **deux fois plus** d'algèbre en prose que
+celles qui en ont ; et 740 des 1 132 « avec steps » n'ont aucun bloc — leur
+algèbre est dans le tableau. Les quatre épreuves que j'accusais sont celles
+qui en déroulent le PLUS : SPC 2021 R, 3,4 blocs par raisonnement ; 2024 R,
+4,0 ; 2023 R, 4,1 — le double de la moyenne du corpus.
+
+**Le compte honnête est donc : 1 379 questions sur 1 472 (94 %) déroulent
+l'algèbre**, par l'un ou l'autre moyen. Restent 93 qui n'ont ni tableau ni
+bloc. Ouvertes à leur tour : **trois** ont un énoncé qui demande un calcul, et
+les trois portent 7, 9 et 28 formules EN LIGNE dans leur correction. **Zéro
+question demande un calcul et reçoit une correction sans mathématiques.**
+
+> **La règle qui sort de là. Un compteur qui mesure le CONTENANT mesure une
+> habitude de rédaction, pas ce que l'élève reçoit.** Il faut compter la
+> chose, pas la case où elle est rangée — et, avant de publier un manque,
+> ouvrir un des cas qu'on accuse. L'instrument compte désormais les deux
+> contenants ; sa colonne `(steps)` reste, pour information, à côté de la
+> colonne qui compte.
 
 ## 2. Les 212 renvois à une figure — un résultat NÉGATIF, et il fallait le mesurer
 
