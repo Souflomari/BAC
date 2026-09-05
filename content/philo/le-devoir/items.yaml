@@ -1042,80 +1042,417 @@ items:
       **Le fil à ne pas perdre :** s'appuyer sur ce qui a déjà été construit
       dans les parties I et II.
 
+  # Ajoutés le 2026-09-05 : neuf familles sous le plancher de 3 items du banc,
+  # dont `coincidence-devoir-inclination-jugee-suffisante` sans AUCUN item —
+  # sondée en leçon seulement. Cinq items, quatorze places.
+  - id: DEV-16
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: philo_le_devoir
+    tags: [kant, valeur-morale, imperatif-categorique]
+    stem: >
+      Un commerçant rend la monnaie exacte, à la fois par honnêteté et parce
+      que sa réputation en dépend. Que peut-on dire de la valeur morale de son
+      acte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Qu'elle reste indécidable : la coïncidence du devoir et de l'intérêt empêche de savoir lequel des deux a réellement déterminé l'acte."
+        correct: true
+      - id: B
+        text: "Qu'elle est établie : puisque l'acte est conforme au devoir ET voulu par inclination, la double motivation en garantit d'autant mieux la moralité."
+        correct: false
+        misconception: mc.philo.devoir.coincidence-devoir-inclination-jugee-suffisante
+        feedback: >
+          La coïncidence ne prouve rien — elle empêche justement de conclure.
+          Pour savoir si le devoir a déterminé l'acte, il faudrait le cas où
+          l'inclination le contrarie : c'est là seulement que le motif se
+          révèle. Kant ne dit pas que l'acte est mauvais ; il dit qu'on ne peut
+          rien en tirer.
+      - id: C
+        text: "Qu'elle est nulle, car le test kantien n'a de toute façon aucun fondement rationnel : c'est un formalisme arbitraire."
+        correct: false
+        misconception: mc.philo.devoir.imperatif-categorique-juge-arbitraire
+        feedback: >
+          L'impératif catégorique n'est pas une règle tombée d'ailleurs : c'est
+          la raison qui se donne à elle-même sa loi, en testant si une maxime
+          peut être universalisée sans se détruire. Une maxime qui s'annule
+          quand tous l'adoptent — mentir, par exemple — se réfute elle-même :
+          le critère est logique, non décrété.
+      - id: D
+        text: "Qu'elle dépend de la loi civile : est moral ce que le droit du pays impose au commerçant, et rien d'autre."
+        correct: false
+        misconception: mc.philo.devoir.imperatif-categorique-confondu-heteronomie
+        feedback: >
+          Ce serait de l'hétéronomie : recevoir sa loi d'une autorité extérieure
+          — l'État, la coutume, une révélation. Kant fonde exactement l'inverse,
+          l'AUTONOMIE : la loi morale est celle que la raison de chacun peut
+          reconnaître comme sienne, et c'est pourquoi elle oblige sans qu'aucune
+          sanction ne l'appuie.
+    correct_feedback: >
+      La conformité au devoir est acquise, la valeur morale non. Quand le devoir
+      et l'intérêt commandent la même chose, rien ne permet de dire lequel a
+      décidé. C'est le cas où ils divergent qui révèle le motif — d'où l'exemple
+      kantien du commerçant honnête par calcul.
+    solution: |
+      **Deux niveaux à ne pas confondre.**
+      - *Conforme au devoir* : l'acte correspond à ce que le devoir prescrit.
+      - *Par devoir* : c'est le devoir lui-même qui l'a déterminé.
+
+      **Pourquoi la coïncidence ne tranche pas.** Quand l'honnêteté sert aussi
+      l'intérêt, les deux motifs prédisent le même comportement : l'observation
+      ne les distingue pas. Le motif ne se révèle que là où ils divergent.
+
+      **Ce que Kant ne dit pas.** Que l'acte soit blâmable. Il est parfaitement
+      conforme au devoir — simplement, il ne prouve rien de la moralité de celui
+      qui l'accomplit.
+
+  - id: DEV-17
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: philo_le_devoir
+    tags: [kant, universalisation, inclination]
+    stem: >
+      Comment l'impératif catégorique permet-il de juger la maxime « je peux
+      promettre sans intention de tenir, quand cela m'arrange » ?
+    type: mcq
+    choices:
+      - id: A
+        text: "En l'universalisant : si tous promettaient ainsi, plus personne ne croirait aux promesses, et la maxime se détruirait elle-même."
+        correct: true
+      - id: B
+        text: "En consultant l'inclination : la maxime est mauvaise si elle me répugne, bonne si je la sens spontanément acceptable."
+        correct: false
+        misconception: mc.philo.devoir.devoir-confondu-avec-inclination
+        feedback: >
+          C'est précisément ce que le test écarte. Les inclinations varient d'un
+          individu et d'un moment à l'autre : fonder la morale sur elles la
+          rendrait aussi instable qu'elles. L'universalisation ne demande rien à
+          la sensibilité — elle demande si la maxime tient logiquement quand tous
+          l'adoptent.
+      - id: C
+        text: "En constatant que le test kantien ne juge rien : c'est une formule vide, sans critère réel, qui laisse chacun décider comme il l'entend."
+        correct: false
+        misconception: mc.philo.devoir.imperatif-categorique-juge-arbitraire
+        feedback: >
+          Le test n'est pas vide : il produit une CONTRADICTION vérifiable. La
+          promesse universellement trompeuse détruit l'institution même de la
+          promesse, donc la possibilité de la maxime. Ce n'est pas un jugement de
+          goût, c'est un échec logique — et c'est ce qui distingue Kant d'une
+          simple préférence.
+      - id: D
+        text: "En observant que la plupart des gens tiennent leurs promesses à la fois par devoir et par intérêt, ce qui suffit à établir la valeur de la règle."
+        correct: false
+        misconception: mc.philo.devoir.coincidence-devoir-inclination-jugee-suffisante
+        feedback: >
+          Ce que font la plupart des gens est un fait, non une norme — et la
+          coïncidence du devoir et de l'intérêt ne prouve rien, même chez eux.
+          Le test kantien ne compte pas les comportements : il examine si une
+          maxime peut être voulue comme loi universelle sans se contredire.
+    correct_feedback: >
+      Le test consiste à universaliser la maxime et à vérifier qu'elle survit.
+      Une promesse trompeuse généralisée détruit la confiance qui rend les
+      promesses possibles : la maxime se supprime en se généralisant. La
+      contradiction est logique, pas sentimentale.
+    solution: |
+      **Le test, en deux temps.**
+      1. Formuler la maxime : « quand cela m'arrange, je promets sans tenir ».
+      2. L'universaliser : « tous promettent sans tenir quand cela les
+         arrange ».
+
+      **Le résultat.** Dans ce monde, personne ne croirait plus aux promesses —
+      donc promettre n'aurait plus aucun effet, donc la maxime elle-même
+      deviendrait inapplicable. Elle se détruit en se généralisant.
+
+      **Ce qui fait sa force.** La contradiction est INTERNE à la maxime : elle
+      ne suppose ni Dieu, ni autorité, ni sondage d'opinion. C'est en cela que
+      la raison est autonome — elle se donne sa loi et la vérifie elle-même.
+
+  - id: DEV-18
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: philo_le_devoir
+    tags: [devoir, obligation, sentiment]
+    stem: >
+      Quelqu'un se lève tôt tous les jours parce qu'il sent intérieurement que
+      c'est son devoir. Que peut-on en conclure ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Rien encore : le sentiment d'être obligé accompagne aussi bien un vrai devoir qu'une habitude intériorisée, et il ne suffit pas à les distinguer."
+        correct: true
+      - id: B
+        text: "Qu'il s'agit d'un devoir authentique : sentir qu'on est obligé est la marque la plus sûre d'une obligation morale réelle."
+        correct: false
+        misconception: mc.philo.devoir.sentiment-suffit-a-garantir-devoir-authentique
+        feedback: >
+          Le sentiment d'obligation est un fait psychologique, et il accompagne
+          aussi bien une exigence morale qu'une pression sociale intériorisée ou
+          une simple habitude. Il faut donc l'interroger : la maxime résiste-t-elle
+          à l'universalisation ? La question ne se règle pas par la force de la
+          conviction.
+      - id: C
+        text: "Que s'il ne le faisait pas, il agirait immoralement : ne pas accomplir ce qu'on ressent comme un devoir est nécessairement une faute."
+        correct: false
+        misconception: mc.philo.devoir.absence-valeur-morale-confondue-immoralite
+        feedback: >
+          Deux glissements. D'abord, un sentiment n'établit pas le devoir. Et
+          surtout, l'absence de valeur morale distinctive n'est pas l'immoralité :
+          se lever tard n'est pas condamnable parce que se lever tôt n'est pas
+          méritoire. Le blâme suppose une transgression, pas seulement l'absence
+          de mérite.
+      - id: D
+        text: "Que son acte a une valeur morale certaine, puisqu'il coïncide avec ce qu'il veut faire et avec ce qu'il croit devoir faire."
+        correct: false
+        misconception: mc.philo.devoir.coincidence-devoir-inclination-jugee-suffisante
+        feedback: >
+          La coïncidence entre ce qu'on veut et ce qu'on croit devoir est
+          précisément le cas où l'on ne peut rien conclure : les deux motifs
+          commandent la même chose, donc l'acte ne révèle pas lequel a décidé.
+          Il faudrait le cas où ils s'opposent.
+    correct_feedback: >
+      Le sentiment d'obligation ne prouve pas l'obligation. Il accompagne
+      indifféremment un devoir moral, une habitude prise, une pression sociale
+      intériorisée. C'est pourquoi le devoir demande à être INTERROGÉ, et non
+      seulement ressenti.
+    solution: |
+      **Ce que le sentiment établit.** Qu'un sujet se vit comme obligé. C'est un
+      fait, et un fait important — mais un fait sur lui, pas sur la norme.
+
+      **Pourquoi il ne suffit pas.** Une éducation rigide, une coutume, une
+      peur, produisent le même sentiment qu'une exigence morale. Si le
+      sentiment tranchait, toute conviction ferme deviendrait un devoir, et deux
+      convictions contraires seraient toutes deux des devoirs.
+
+      **Ce qu'il faut ajouter.** L'examen de la maxime : peut-elle être voulue
+      comme loi universelle ? Le sentiment ouvre la question ; il ne la ferme
+      pas.
+
+  - id: DEV-19
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: philo_le_devoir
+    tags: [bergson, morale-close, morale-ouverte, utilitarisme]
+    stem: >
+      Bergson distingue une morale close et une morale ouverte. Sur quoi porte
+      exactement cette distinction ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Sur la SOURCE de l'obligation : la pression d'un groupe qui se conserve, ou l'appel d'une figure exemplaire qui entraîne au-delà du groupe."
+        correct: true
+      - id: B
+        text: "Sur le DESTINATAIRE du devoir : la morale close m'oblige envers moi-même, la morale ouverte envers autrui."
+        correct: false
+        misconception: mc.philo.devoir.morale-close-ouverte-mal-comprise
+        feedback: >
+          Le partage n'est pas celui-là. Les deux morales concernent autrui ; ce
+          qui les sépare est ce qui OBLIGE. La morale close tient à la pression
+          d'une société qui se maintient — ses règles s'arrêtent aux frontières
+          du groupe. La morale ouverte tient à l'appel d'une figure exemplaire,
+          et vise l'humanité entière.
+      - id: C
+        text: "Sur la capacité : ce que je suis capable de faire devient par là même un devoir, et la morale ouverte est celle des plus capables."
+        correct: false
+        misconception: mc.philo.devoir.devoir-liberte-mal-articules
+        feedback: >
+          C'est l'implication kantienne « tu dois, donc tu peux » retournée à
+          l'envers. Elle va du devoir vers la capacité : si une action est
+          exigée, elle doit être possible. Elle ne dit pas que tout ce qui est
+          possible soit exigé — sans quoi la puissance créerait l'obligation.
+      - id: D
+        text: "Sur l'utilité : la morale close maximise le bonheur du groupe, la morale ouverte celui de l'humanité — c'est en cela que l'utilitarisme reproche à Kant d'ignorer le devoir."
+        correct: false
+        misconception: mc.philo.devoir.critique-utilitariste-mal-identifiee
+        feedback: >
+          L'utilitarisme ne nie pas le devoir : il en change le critère, en le
+          plaçant dans les CONSÉQUENCES au lieu du motif. Ce qu'il reproche à
+          Kant est de juger une action indépendamment de ses effets — au risque
+          d'interdire le mensonge qui sauverait une vie. Et cette critique n'a
+          rien à voir avec la distinction bergsonienne.
+    correct_feedback: >
+      La distinction porte sur la SOURCE psychologique de l'obligation :
+      pression sociale d'un groupe qui se conserve d'un côté, aspiration
+      suscitée par une figure exemplaire de l'autre. Le premier ferme aux
+      frontières du groupe, le second appelle au-delà.
+    solution: |
+      **La morale close.** Elle vient de la PRESSION : celle d'une société qui
+      se maintient. Ses obligations sont impersonnelles, quasi instinctives, et
+      s'arrêtent aux frontières du groupe — d'où son nom.
+
+      **La morale ouverte.** Elle vient de l'ASPIRATION : l'appel d'une figure
+      exemplaire — un sage, un héros, un saint — dont l'exemple entraîne plutôt
+      qu'il ne contraint. Elle ne connaît pas de frontière : son destinataire
+      est l'humanité.
+
+      **Ce que la distinction n'est pas.** Une opposition entre devoirs envers
+      soi et devoirs envers autrui, ni une hiérarchie où la morale close serait
+      sans valeur : Bergson lui reconnaît sa fonction — tenir une société
+      ensemble.
+
+  - id: DEV-20
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: philo_le_devoir
+    tags: [kant, liberte, tu-dois-donc-tu-peux]
+    stem: >
+      « Tu dois, donc tu peux. » Que signifie exactement cette formule
+      kantienne ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que l'existence d'une obligation morale suppose la liberté de s'y conformer : on ne peut être obligé à l'impossible."
+        correct: true
+      - id: B
+        text: "Que la capacité fonde le devoir : ce dont je suis capable devient nécessairement une obligation, d'où la responsabilité accrue des plus puissants."
+        correct: false
+        misconception: mc.philo.devoir.devoir-liberte-mal-articules
+        feedback: >
+          L'implication est inversée. Kant va du DEVOIR vers le POUVOIR : si une
+          action m'est moralement exigée, il faut qu'elle me soit possible.
+          L'inverse ferait de toute capacité une obligation — je pourrais courir
+          un marathon, donc je le devrais — ce qui n'a aucun sens moral.
+      - id: C
+        text: "Que le devoir s'oppose à la liberté : obéir à la loi morale, c'est renoncer à faire ce qu'on veut."
+        correct: false
+        misconception: mc.philo.devoir.devoir-liberte-mal-articules
+        feedback: >
+          Chez Kant, c'est exactement le contraire : obéir à une loi qu'on se
+          donne soi-même est la définition même de l'autonomie, donc de la
+          liberté. Ce qui s'oppose à la liberté, c'est de suivre ses inclinations
+          — subies, non choisies — ou une loi reçue du dehors.
+      - id: D
+        text: "Que le devoir vient d'une autorité extérieure qui, en commandant, donne aussi les moyens d'obéir."
+        correct: false
+        misconception: mc.philo.devoir.imperatif-categorique-confondu-heteronomie
+        feedback: >
+          Aucune autorité extérieure n'intervient dans la formule. C'est la
+          raison du sujet qui reconnaît l'obligation, et cette reconnaissance
+          même suppose qu'il soit libre de s'y conformer. Faire intervenir un
+          commandement venu du dehors, c'est retomber dans l'hétéronomie que Kant
+          écarte.
+    correct_feedback: >
+      La formule va du devoir vers la liberté : puisque la loi morale m'oblige,
+      il faut que je sois libre de lui obéir — on n'est jamais obligé à
+      l'impossible. La liberté n'est donc pas prouvée par l'expérience, mais
+      exigée par le fait moral.
+    solution: |
+      **Le sens de l'implication.** Elle part du DEVOIR, qui est un fait de la
+      conscience morale, et remonte à sa CONDITION : la liberté. Si je ne
+      pouvais pas agir autrement, aucun « tu dois » n'aurait de sens.
+
+      **Les deux erreurs symétriques.**
+      - *Inverser* : « je peux, donc je dois » ferait de toute capacité une
+        obligation.
+      - *Opposer* : « le devoir limite ma liberté » confond la liberté avec la
+        licence, et manque que l'autonomie est l'obéissance à sa propre loi.
+
+      **La portée.** La liberté n'est pas ici démontrée théoriquement — Kant
+      soutient qu'on ne peut pas la prouver dans le monde des phénomènes. Elle
+      est POSTULÉE, comme condition de possibilité de l'obligation morale.
+
+  - id: DEV-21
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: philo_le_devoir
+    tags: [bergson, desobeissance, morale-close, morale-ouverte]
+    stem: >
+      Un citoyen refuse d'obéir à une loi de son pays, au nom d'un principe
+      qu'il tient pour valable pour tous les hommes. Comment Bergson décrirait-il
+      ce conflit ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Comme une tension entre deux sources d'obligation : la pression du groupe, qui commande d'obéir, et l'appel d'une exigence qui déborde ce groupe."
+        correct: true
+      - id: B
+        text: "Comme un conflit entre devoirs envers la société et devoirs envers soi-même, la morale close portant sur les seconds et la morale ouverte sur les premiers."
+        correct: false
+        misconception: mc.philo.devoir.morale-close-ouverte-mal-comprise
+        feedback: >
+          Les deux morales concernent également autrui : ce qui les distingue
+          n'est pas le destinataire mais l'ORIGINE de l'obligation — la pression
+          d'un groupe qui se conserve d'un côté, l'aspiration suscitée par une
+          figure exemplaire de l'autre. Et l'attribution proposée est de surcroît
+          inversée.
+      - id: C
+        text: "Comme une simple erreur du citoyen : est moral ce que la loi prescrit, immoral ce qu'elle interdit, et il n'y a pas d'autre critère."
+        correct: false
+        misconception: mc.philo.devoir.legalite-confondue-moralite
+        feedback: >
+          Identifier la moralité à la légalité rend toute critique d'une loi
+          impossible — et rendrait moralement obligatoire n'importe quelle loi,
+          y compris injuste. C'est précisément la possibilité d'un conflit entre
+          les deux qui donne son objet à ce chapitre.
+      - id: D
+        text: "Comme une application de l'utilitarisme, lequel reproche à Kant de nier purement et simplement l'existence du devoir."
+        correct: false
+        misconception: mc.philo.devoir.critique-utilitariste-mal-identifiee
+        feedback: >
+          L'utilitarisme ne nie pas le devoir : il en déplace le critère vers les
+          CONSÉQUENCES au lieu du motif. Sa critique de Kant porte sur le
+          formalisme, non sur l'existence de l'obligation. Et elle n'a aucun
+          rapport avec la distinction bergsonienne, qui est d'ordre
+          psychologique et non normatif.
+    correct_feedback: >
+      Deux sources d'obligation s'opposent. La morale close tient à la pression
+      d'une société qui se conserve : elle commande l'obéissance. La morale
+      ouverte tient à l'appel d'un exemple et vise l'humanité entière : elle peut
+      commander de désobéir.
+    solution: |
+      **Ce que Bergson apporte au cas.** Il ne tranche pas qui a raison : il
+      montre que les deux obligations n'ont pas la même origine, et que c'est
+      pour cela qu'elles peuvent entrer en conflit.
+
+      **La morale close.** Pression du groupe sur ses membres, au service de sa
+      conservation. Elle est efficace, quasi instinctive, et bornée : elle
+      s'arrête où s'arrête le groupe.
+
+      **La morale ouverte.** Appel d'une figure exemplaire, qui entraîne au lieu
+      de contraindre. Elle ne connaît pas de frontière — d'où sa capacité à
+      opposer un principe universel à une loi particulière.
+
+      **Ce que le cas montre.** Que l'obligation la plus large n'est pas
+      toujours celle qui a la force pour elle.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après DEV-16 à DEV-21. Neuf familles sous le plancher,
+# dont `coincidence-devoir-inclination-jugee-suffisante` sans AUCUN item de
+# banc — sondée en leçon seulement, ce qui ne compte pas dans le modèle
+# apprenant. Tableau GÉNÉRÉ contre web/scripts/lib/couverture-compte.mjs,
+# gardé par scripts/resume-couverture.mjs.
 coverage_summary:
-  # Computed by loading this file with js-yaml and tallying every
-  # choices[].misconception value per item — an item counts once per
-  # misconception if ANY of its distractors carries that id (house
-  # convention, matching content/philo/la-liberte/items.yaml and
-  # content/philo/theorie-experience/items.yaml). This is a LEGACY end-bank
-  # (DEV-1..DEV-15 predate per-distractor tagging — task instruction)
-  # retrofitted in this pass: every one of the 45 distractors across the 15
-  # items now carries a real misconception id (no null tags). Per the
-  # recipe's "Honest coverage" judgment call, floor gaps below are reported
-  # truthfully rather than padded.
-  total_items: 15
-  floor: 3
-  floor_met: false
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
   per_misconception:
-    mc.philo.devoir.faux-dilemme-contrainte-devoir-moral: 3
-    mc.philo.devoir.devoir-reduit-a-la-contrainte: 4
-    mc.philo.devoir.sentiment-suffit-a-garantir-devoir-authentique: 2
-    mc.philo.devoir.legalite-confondue-moralite: 4
-    mc.philo.devoir.absence-valeur-morale-confondue-immoralite: 2
-    mc.philo.devoir.critere-consequentialiste-substitue-au-motif: 3
-    mc.philo.devoir.imperatif-categorique-confondu-heteronomie: 2
-    mc.philo.devoir.devoir-confondu-avec-inclination: 2
-    mc.philo.devoir.imperatif-categorique-juge-arbitraire: 1
-    mc.philo.devoir.critique-utilitariste-mal-identifiee: 2
-    mc.philo.devoir.morale-close-ouverte-mal-comprise: 1
-    mc.philo.devoir.devoir-liberte-mal-articules: 1
-    mc.philo.devoir.methode-dissertation-appliquee-mecaniquement: 3
-    mc.philo.devoir.coincidence-devoir-inclination-jugee-suffisante: 0
-  notes: >-
-    Every distractor across the 15 legacy items now carries a real
-    misconception id (no null tags) — the Gap-4 fix this pass exists to make.
-    5 of 14 models clear the ≥3 floor (faux-dilemme-contrainte-devoir-moral,
-    devoir-reduit-a-la-contrainte, legalite-confondue-moralite,
-    critere-consequentialiste-substitue-au-motif,
-    methode-dissertation-appliquee-mecaniquement). NINE do not, and
-    floor_met is reported honestly rather than padded: sentiment-suffit-a-
-    garantir-devoir-authentique (2, DEV-6/DEV-10), absence-valeur-morale-
-    confondue-immoralite (2, DEV-1/DEV-9), imperatif-categorique-confondu-
-    heteronomie (2, DEV-2/DEV-11), devoir-confondu-avec-inclination (2,
-    DEV-2/DEV-11), critique-utilitariste-mal-identifiee (2, DEV-3/DEV-4) are
-    real but thin in the legacy bank; imperatif-categorique-juge-arbitraire
-    (1, DEV-11), morale-close-ouverte-mal-comprise (1, DEV-4) and
-    devoir-liberte-mal-articules (1, DEV-12) are singletons — a follow-up
-    item pass should add 1-2 items each. coincidence-devoir-inclination-
-    jugee-suffisante (0) is a genuinely NEW axis this pass surfaces: it comes
-    from the r-bac Kant text's second example (la conservation de la vie —
-    docs/sujets/philo/le-devoir.md, 2023 rattrapage), a nuance this lesson's
-    R0-R3 body does not walk through directly, so no legacy item exercises
-    it — it is covered by checkpoints.yaml's cp-bac-devoir instead
-    (checkpoints do not count toward this floor, per house convention), and
-    is flagged here as the clearest item-authoring gap for a follow-up pass.
-    Several other under-floor models also receive checkpoint reinforcement
-    in checkpoints.yaml (cp-r1-rupture, cp-r2-devoir-par, cp-r2-autonomie,
-    cp-r3-formalisme, cp-r3-bergson, cp-r3-liberte) so every student meets
-    most of these models at least once in-lesson regardless of the
-    item-bank gap. This pass also consolidated several closely-related
-    distractor phrasings under one broader tag (e.g. all three DEV-3
-    distractors and DEV-4's choice D under critique-utilitariste-mal-
-    identifiee; the R0 "refuse the hypothesis" and "dissolve the tension"
-    distractors across DEV-5/DEV-6/DEV-7 under the single master tag
-    faux-dilemme-contrainte-devoir-moral) rather than minting one narrow tag
-    per phrasing — mirroring la-liberte's own broad "echapper-a-la-liberte"
-    bucket rather than la-liberte's more literal per-phrasing alternative.
-    Length rebalance (recipe's philo addendum): the legacy bank's correct
-    answer was the LONGEST option in 14 of the 15 items (93%) before this
-    pass — close to the campaign's cited ~97% historical tell. Distractors
-    were enriched with additional philosophical substance (an extra
-    justifying clause, a named premise, a conséquence spelled out — never by
-    trimming the correct answer's content) so the correct choice is now
-    longest in only 1/15 (DEV-14; DEV-11 was already not-longest before this
-    pass), shortest in 2/15 (DEV-5, DEV-9), and a middle length in 12/15 —
-    verified programmatically (a throwaway js-yaml length-comparison script,
-    deleted after use), not eyeballed. DEV-14 is a documented, deliberate
-    exception (see its own solution note): the correct problématique must
-    name two concrete cases the tension rests on, which structurally cannot
-    be as short as a one-line reformulation or a biographical question.
+    mc.philo.devoir.faux-dilemme-contrainte-devoir-moral:            { count: 3, items: [DEV-5, DEV-6, DEV-7] }
+    mc.philo.devoir.devoir-reduit-a-la-contrainte:                   { count: 4, items: [DEV-5, DEV-6, DEV-7, DEV-8] }
+    mc.philo.devoir.sentiment-suffit-a-garantir-devoir-authentique:  { count: 3, items: [DEV-6, DEV-10, DEV-18] }
+    mc.philo.devoir.legalite-confondue-moralite:                     { count: 5, items: [DEV-1, DEV-8, DEV-9, DEV-10, DEV-21] }
+    mc.philo.devoir.absence-valeur-morale-confondue-immoralite:      { count: 3, items: [DEV-1, DEV-9, DEV-18] }
+    mc.philo.devoir.critere-consequentialiste-substitue-au-motif:    { count: 3, items: [DEV-1, DEV-2, DEV-9] }
+    mc.philo.devoir.imperatif-categorique-confondu-heteronomie:      { count: 4, items: [DEV-2, DEV-11, DEV-16, DEV-20] }
+    mc.philo.devoir.devoir-confondu-avec-inclination:                { count: 3, items: [DEV-2, DEV-11, DEV-17] }
+    mc.philo.devoir.imperatif-categorique-juge-arbitraire:           { count: 3, items: [DEV-11, DEV-16, DEV-17] }
+    mc.philo.devoir.critique-utilitariste-mal-identifiee:            { count: 4, items: [DEV-3, DEV-4, DEV-19, DEV-21] }
+    mc.philo.devoir.morale-close-ouverte-mal-comprise:               { count: 3, items: [DEV-4, DEV-19, DEV-21] }
+    mc.philo.devoir.devoir-liberte-mal-articules:                    { count: 3, items: [DEV-12, DEV-19, DEV-20] }
+    mc.philo.devoir.methode-dissertation-appliquee-mecaniquement:    { count: 3, items: [DEV-13, DEV-14, DEV-15] }
+    mc.philo.devoir.coincidence-devoir-inclination-jugee-suffisante: { count: 3, items: [DEV-16, DEV-17, DEV-18] }
+  total_items: 21
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 4
+    R2: 5
+    R3: 6
+    R4: 3
+  honest_state: >-
+    Les quatorze misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Dix y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

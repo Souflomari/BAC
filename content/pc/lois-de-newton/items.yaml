@@ -2033,81 +2033,479 @@ items:
 # distractor with the model it reveals (per-distractor gold standard, mirroring
 # checkpoints.yaml). Counts below are honest; no count is padded.
 # ──────────────────────────────────────────────────────────────────────────────
+  # Ajoutés le 2026-09-05 : dix familles sous le plancher de 3 items du banc,
+  # cinq à un item et cinq à deux. Cinq items, quinze places — l'ajustement est
+  # exact, chaque distracteur porte une famille distincte.
+  - id: LDN-28
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.mouvement-absolu
+    stem: >
+      Un passager assis dans un train qui roule à vitesse constante. Est-il en
+      mouvement, et à quelle vitesse ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La question n'a de sens qu'une fois le référentiel précisé : immobile
+          dans le référentiel du train, en mouvement dans celui du quai
+        correct: true
+      - id: B
+        text: >-
+          Il est en mouvement dans l'absolu, puisqu'il se déplace réellement :
+          le référentiel n'est qu'une commodité de description
+        correct: false
+        misconception: mc.physics.pc_lois_newton.mouvement-absolu
+        feedback: >
+          Il n'existe pas de référentiel privilégié. Dire « il se déplace
+          réellement » suppose un point de vue absolu que la physique ne connaît
+          pas : le sol lui-même tourne avec la Terre, qui tourne autour du
+          Soleil. Tout mouvement est relatif à un référentiel, qu'il faut donc
+          nommer avant de répondre.
+      - id: C
+        text: >-
+          Il est immobile, et le restera même si le train freine brutalement,
+          le référentiel du train étant galiléen en toutes circonstances
+        correct: false
+        misconception: mc.physics.pc_lois_newton.referentiel-toujours-galileen
+        feedback: >
+          Un train qui freine est un référentiel ACCÉLÉRÉ, donc non galiléen :
+          les passagers y sont projetés vers l'avant sans qu'aucune interaction
+          ne les pousse. Le principe d'inertie n'y vaut plus, et c'est justement
+          ce qui permet de reconnaître un référentiel non galiléen.
+      - id: D
+        text: >-
+          Sa vitesse vaut $120$, un nombre qui suffit à la décrire entièrement
+        correct: false
+        misconception: mc.physics.pc_lois_newton.vitesse-scalaire
+        feedback: >
+          Il manque deux choses : l'unité, et surtout la DIRECTION. La vitesse
+          est un vecteur — norme, direction, sens. Deux trains de même norme
+          allant l'un vers l'autre n'ont pas la même vitesse, et c'est cette
+          différence qui décide de ce qui va se passer.
+    correct_feedback: >
+      Tout mouvement est relatif : le passager est immobile dans le référentiel
+      du train et en mouvement dans celui du quai. Aucune des deux descriptions
+      n'est plus vraie que l'autre — il faut seulement dire laquelle on adopte.
+    solution: |
+      **La relativité du mouvement.** Décrire un mouvement, c'est toujours le
+      rapporter à un solide de référence. Sans référentiel nommé, « il bouge »
+      n'est ni vrai ni faux : la question est incomplète.
+
+      **Les deux réponses, toutes deux correctes.**
+      - Référentiel du train : le passager est immobile.
+      - Référentiel du quai : il avance à la vitesse du train.
+
+      **Le vecteur vitesse.** Il ne se réduit pas à un nombre : il porte une
+      direction et un sens. C'est ce qui permettra d'écrire $\vec a$ comme sa
+      variation, et de comprendre qu'un mouvement circulaire uniforme est
+      accéléré bien que la norme ne change pas.
+
+  - id: LDN-29
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.frottement-absent-accelere
+    stem: >
+      Un palet glisse en ligne droite à vitesse constante sur une table à
+      coussin d'air, où les frottements sont négligeables. Que se passe-t-il si
+      l'on supprime complètement ce qui reste de frottement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Rien de plus : le palet continue à la même vitesse, en ligne droite,
+          indéfiniment
+        correct: true
+      - id: B
+        text: >-
+          Il accélère : sans frottement pour le retenir, plus rien ne s'oppose à
+          sa progression
+        correct: false
+        misconception: mc.physics.pc_lois_newton.frottement-absent-accelere
+        feedback: >
+          Enlever un frein n'équivaut pas à ajouter un moteur. Accélérer demande
+          une force RÉSULTANTE non nulle dans le sens du mouvement ; il n'y en a
+          aucune. Le principe d'inertie est explicite : sans force résultante, la
+          vitesse — vecteur — reste constante.
+      - id: C
+        text: >-
+          Il accélère, car il faut ajouter au bilan la force du mouvement qui
+          l'anime et que le frottement contrariait
+        correct: false
+        misconception: mc.physics.pc_lois_newton.bilan-forces-incorrect
+        feedback: >
+          Il n'existe pas de « force du mouvement ». Chaque force doit
+          correspondre à une INTERACTION identifiable avec un autre corps : le
+          poids (Terre), la réaction normale (table), le frottement (table).
+          Le mouvement n'est pas un partenaire d'interaction — c'est un état,
+          pas une cause.
+      - id: D
+        text: >-
+          Impossible à dire : le référentiel de la table étant accéléré, donc non
+          galiléen, le principe d'inertie ne s'y applique pas
+        correct: false
+        misconception: mc.physics.pc_lois_newton.referentiel-toujours-galileen
+        feedback: >
+          Une table posée au sol n'est pas accélérée : le référentiel terrestre
+          est considéré comme galiléen pour des expériences de cette durée et de
+          cette échelle. Ce sont les référentiels en accélération — un bus qui
+          freine, un manège qui tourne — qui ne le sont pas.
+    correct_feedback: >
+      Rien ne change : le palet poursuit son mouvement rectiligne uniforme. Le
+      principe d'inertie dit exactement cela — sans force résultante, le vecteur
+      vitesse reste constant. Supprimer une force résistante ne crée pas de force
+      motrice.
+    solution: |
+      **Le bilan des forces.** Poids $\vec P$ (interaction avec la Terre),
+      réaction normale $\vec R_N$ (interaction avec la table). Elles se
+      compensent : $\sum \vec F_{ext} = \vec 0$.
+
+      **Le principe d'inertie.** Dans un référentiel galiléen, si la somme des
+      forces extérieures est nulle, le centre d'inertie est au repos ou en
+      mouvement rectiligne uniforme. Ici : mouvement rectiligne uniforme,
+      indéfiniment.
+
+      **L'intuition à défaire.** Nous vivons entourés de frottements : arrêter
+      demande de ne rien faire, avancer demande un effort. D'où l'idée qu'un
+      mouvement « a besoin » d'une force, et qu'ôter le frein libère une
+      poussée. Ni l'un ni l'autre n'est vrai.
+
+  - id: LDN-30
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.bilan-forces-incorrect
+    stem: >
+      Une caisse est tirée à vitesse constante sur un sol horizontal par une
+      corde horizontale. Quel bilan des forces est correct ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Poids, réaction normale, traction de la corde et frottement : quatre
+          forces, dont la somme est nulle
+        correct: true
+      - id: B
+        text: >-
+          Poids, réaction normale, traction, frottement, plus la force d'inertie
+          qui accompagne le mouvement de la caisse
+        correct: false
+        misconception: mc.physics.pc_lois_newton.bilan-forces-incorrect
+        feedback: >
+          Une force exige une interaction avec un corps identifiable : la Terre,
+          le sol, la corde. Aucune « force d'inertie » n'a de partenaire dans un
+          référentiel galiléen — l'inertie est la PROPRIÉTÉ qu'a un corps de
+          résister au changement de vitesse, pas une force qui s'exercerait sur
+          lui.
+      - id: C
+        text: >-
+          Poids, réaction normale et traction seulement, le poids fournissant la
+          composante horizontale qui freine le mouvement
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-verticale-composante-horizontale
+        feedback: >
+          Sur un sol horizontal, le poids est vertical : sa composante
+          horizontale est nulle, il ne peut donc ni pousser ni freiner
+          latéralement. Ce qui freine, c'est le frottement, force horizontale
+          exercée par le sol et opposée au déplacement — et le bilan ne peut pas
+          s'en passer.
+      - id: D
+        text: >-
+          Le bilan dépend du référentiel : dans celui de la caisse, qui n'est pas
+          galiléen, une force supplémentaire apparaît
+        correct: false
+        misconception: mc.physics.pc_lois_newton.referentiel-toujours-galileen
+        feedback: >
+          La caisse avance à vitesse CONSTANTE : son référentiel est en
+          translation rectiligne uniforme par rapport au sol, donc galiléen lui
+          aussi. Aucune force supplémentaire n'y apparaît. Ce sont les
+          référentiels accélérés qui font surgir des forces sans interaction.
+    correct_feedback: >
+      Quatre forces : le poids (Terre), la réaction normale (sol), la traction
+      (corde) et le frottement (sol). La vitesse étant constante, leur somme est
+      nulle — les verticales se compensent entre elles, les horizontales entre
+      elles.
+    solution: |
+      **La règle de construction d'un bilan.** Une force par INTERACTION, et une
+      seule. On liste les corps en contact ou à distance :
+      - la Terre → le poids $\vec P$, vertical vers le bas ;
+      - le sol → la réaction normale $\vec R_N$, verticale vers le haut, et le
+        frottement $\vec f$, horizontal opposé au mouvement ;
+      - la corde → la traction $\vec T$, horizontale.
+
+      **La condition de vitesse constante.**
+      $$\sum \vec F_{ext} = \vec 0
+      \quad\Longrightarrow\quad R_N = P \ \text{ et } \ T = f$$
+
+      **Ce qu'on n'ajoute jamais.** Une force du mouvement, une force d'inertie,
+      un élan : aucune n'a de partenaire d'interaction dans un référentiel
+      galiléen.
+
+  - id: LDN-31
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.resultante-mal-composee
+    stem: >
+      Un solide de masse $m = 4{,}0\ \text{kg}$ est soumis à deux forces
+      horizontales de sens opposés : $F_1 = 30\ \text{N}$ vers la droite et
+      $F_2 = 10\ \text{N}$ vers la gauche. Que vaut son accélération ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $5{,}0\ \text{m}\cdot\text{s}^{-2}$, dirigée vers la droite comme la
+          résultante des deux forces
+        correct: true
+      - id: B
+        text: >-
+          $10\ \text{m}\cdot\text{s}^{-2}$ vers la droite, en additionnant les
+          deux intensités avant de diviser par la masse
+        correct: false
+        misconception: mc.physics.pc_lois_newton.resultante-mal-composee
+        feedback: >
+          Deux forces de sens OPPOSÉS se retranchent : la résultante vaut
+          $30 - 10 = 20\ \text{N}$, pas $40$. La deuxième loi porte sur la
+          somme VECTORIELLE des forces, et le sens compte autant que
+          l'intensité.
+      - id: C
+        text: >-
+          $5{,}0\ \text{m}\cdot\text{s}^{-2}$, mais la direction ne peut pas être
+          précisée : une accélération est un nombre, pas un vecteur
+        correct: false
+        misconception: mc.physics.pc_lois_newton.vitesse-scalaire
+        feedback: >
+          La valeur est juste, la conclusion non. $\sum \vec F = m\vec a$ est une
+          égalité entre VECTEURS : l'accélération a la même direction et le même
+          sens que la résultante — ici vers la droite. Réduire une grandeur
+          vectorielle à sa norme fait perdre l'essentiel de l'information.
+      - id: D
+        text: >-
+          $20\ \text{m}\cdot\text{s}^{-2}$, car sans frottement mentionné le
+          solide accélère d'autant plus
+        correct: false
+        misconception: mc.physics.pc_lois_newton.frottement-absent-accelere
+        feedback: >
+          L'absence de frottement ne s'ajoute pas au calcul : elle signifie
+          simplement qu'aucune force supplémentaire ne figure au bilan.
+          L'accélération vient de la résultante des forces PRÉSENTES, divisée par
+          la masse — et $20\ \text{N}$ est cette résultante, pas l'accélération.
+    correct_feedback: >
+      $\sum \vec F = 30 - 10 = 20\ \text{N}$ vers la droite, donc
+      $a = 20/4{,}0 = 5{,}0\ \text{m}\cdot\text{s}^{-2}$, dans le même sens. La
+      deuxième loi est vectorielle : le sens de l'accélération est celui de la
+      résultante.
+    solution: |
+      **La résultante.** Les deux forces sont colinéaires et de sens opposés :
+      $$\sum \vec F_{ext} = F_1 - F_2 = 30 - 10 = 20\ \text{N}
+      \ \text{(vers la droite)}$$
+
+      **La deuxième loi.**
+      $$\sum \vec F_{ext} = m\,\vec a
+      \quad\Longrightarrow\quad
+      a = \frac{20}{4{,}0} = 5{,}0\ \text{m}\cdot\text{s}^{-2}$$
+      Le vecteur $\vec a$ a la même direction et le même sens que la résultante.
+
+      **Les deux contrôles à faire systématiquement.** Diviser par la MASSE (en
+      kg), jamais par le poids $mg$ ; et composer les forces vectoriellement,
+      donc en tenant compte des sens.
+
+  - id: LDN-32
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+    stem: >
+      Un objet est lâché sans vitesse initiale et tombe en chute libre pendant
+      $t = 2{,}0\ \text{s}$. On prend $g = 10\ \text{m}\cdot\text{s}^{-2}$. De
+      quelle hauteur est-il tombé ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $40\ \text{m}$ : la chute étant uniformément accélérée, la hauteur
+          vaut $g\,t^{2}$
+        correct: false
+        misconception: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+        feedback: >
+          Le facteur $\frac12$ manque, et il double le résultat.
+          $h = \frac12 g t^{2}$ : la vitesse croît LINÉAIREMENT de $0$ à $gt$,
+          donc sa moyenne vaut $\frac{gt}{2}$, et la distance est cette moyenne
+          multipliée par la durée. C'est le même $\frac12$ que dans l'énergie
+          cinétique, et il vient du même endroit.
+      - id: B
+        text: >-
+          $20\ \text{m}$ : la hauteur vaut $h = \frac{1}{2}g t^{2}
+          = \frac{1}{2}\times 10 \times 2{,}0^{2}$
+        correct: true
+      - id: C
+        text: >-
+          $10\ \text{m}$ : la réaction du sol s'oppose au poids pendant toute la
+          chute et réduit l'accélération de moitié
+        correct: false
+        misconception: mc.physics.pc_lois_newton.role-normale-mal-compris
+        feedback: >
+          Pendant la chute, l'objet n'est en contact avec rien : il n'y a aucune
+          réaction normale. Celle-ci n'apparaît que lorsqu'un support s'oppose à
+          l'enfoncement — donc à l'impact, brutalement. En chute libre, le poids
+          est la seule force, et l'accélération vaut exactement $g$.
+      - id: D
+        text: >-
+          $0\ \text{m}$ : le poids et la force que l'objet exerce en retour sur
+          la Terre se compensent, donc il ne tombe pas
+        correct: false
+        misconception: mc.physics.pc_lois_newton.action-reaction-meme-corps
+        feedback: >
+          Les deux forces d'une paire action-réaction s'exercent sur des corps
+          DIFFÉRENTS : le poids sur l'objet, l'attraction en retour sur la Terre.
+          Elles ne peuvent donc jamais se compenser — se compenser suppose d'agir
+          sur le même corps. Si elles le faisaient, rien ne tomberait jamais.
+    correct_feedback: >
+      $h = \frac{1}{2}g t^{2} = \frac{1}{2} \times 10 \times 4{,}0 =
+      20\ \text{m}$. Le facteur $\frac12$ vient de l'intégration : la vitesse
+      croît linéairement, la distance parcourue est la moyenne de la vitesse
+      multipliée par la durée.
+    solution: |
+      **La mise en équation.** Chute libre : seule force le poids, donc
+      $\vec a = \vec g$. En prenant l'axe vertical descendant, origine au point
+      de lâcher, et $v_0 = 0$ :
+      $$v(t) = g\,t \qquad h(t) = \frac{1}{2}g\,t^{2}$$
+
+      **L'application.**
+      $$h = \frac{1}{2} \times 10 \times (2{,}0)^{2} = 20\ \text{m}$$
+
+      **D'où vient le $\frac{1}{2}$.** La vitesse passe de $0$ à $g t$
+      linéairement : sa moyenne vaut $\frac{gt}{2}$, et la distance est cette
+      moyenne multipliée par la durée. Oublier ce facteur double le résultat.
+
+      **Le bilan pendant la chute.** Une seule force, le poids. Pas de réaction
+      normale (aucun contact), et la force que l'objet exerce sur la Terre
+      s'applique à la TERRE, pas à lui.
+
+  - id: LDN-33
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.mouvement-absolu
+    stem: >
+      Deux voitures roulent côte à côte sur l'autoroute, exactement à la même
+      vitesse. Un conducteur dit : « l'autre voiture est immobile ». A-t-il
+      raison ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Oui dans son référentiel, où l'autre voiture ne se déplace pas ; non
+          dans celui de la route, où les deux avancent
+        correct: true
+      - id: B
+        text: >-
+          Non : les deux voitures roulent réellement, donc elles sont en
+          mouvement, et aucun point de vue ne peut rendre cela faux
+        correct: false
+        misconception: mc.physics.pc_lois_newton.mouvement-absolu
+        feedback: >
+          « Rouler réellement » suppose un référentiel absolu que la physique ne
+          reconnaît pas. Dans le référentiel de la première voiture, la seconde
+          est rigoureusement immobile — sa distance ne varie pas — et cette
+          description est aussi légitime que l'autre. Le mouvement n'est pas une
+          propriété du corps, mais une relation.
+      - id: C
+        text: >-
+          Non : sa voiture ne peut pas servir de référentiel, puisqu'elle est
+          elle-même en mouvement
+        correct: false
+        misconception: mc.physics.pc_lois_newton.referentiel-toujours-galileen
+        feedback: >
+          N'importe quel solide peut servir de référentiel — c'est même le
+          principe. La question n'est pas de savoir s'il bouge (par rapport à
+          quoi ?) mais s'il est GALILÉEN, c'est-à-dire non accéléré. Une voiture
+          à vitesse constante l'est autant que la route.
+      - id: D
+        text: >-
+          Oui, puisque leurs vitesses ont la même valeur : deux vitesses de même
+          norme sont identiques, la direction n'entrant pas en compte
+        correct: false
+        misconception: mc.physics.pc_lois_newton.vitesse-scalaire
+        feedback: >
+          La conclusion est juste, le raisonnement non — et il tomberait en
+          défaut si les deux voitures se croisaient en sens inverse : mêmes
+          normes, vitesses relatives doublées. Une vitesse est un vecteur ; deux
+          vitesses ne sont égales que si la direction et le sens le sont aussi.
+    correct_feedback: >
+      Il a raison dans son référentiel : la distance entre les deux voitures ne
+      varie pas, donc l'autre y est immobile. Dans le référentiel de la route,
+      les deux avancent. Les deux descriptions sont exactes — elles ne se
+      rapportent pas au même solide de référence.
+    solution: |
+      **Le principe.** Un mouvement se décrit toujours par rapport à un
+      référentiel. Changer de référentiel change la description, sans qu'aucune
+      ne soit « la vraie ».
+
+      **Les deux descriptions.**
+      - Référentiel de la première voiture : la seconde est immobile.
+      - Référentiel de la route : les deux avancent à la même vitesse.
+
+      **Le critère qui compte vraiment.** Non pas « ce référentiel bouge-t-il ? »
+      — la question est vide sans second référentiel — mais « est-il
+      GALILÉEN ? », c'est-à-dire non accéléré. Une voiture à vitesse constante
+      l'est ; la même voiture en train de freiner ne l'est plus.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après LDN-28 à LDN-33. Dix familles siégeaient sous le
+# plancher de 3 items du banc : la relativité du mouvement, le référentiel
+# galiléen, le caractère vectoriel de la vitesse, le bilan des forces, l'idée
+# qu'ôter le frottement accélère — et cinq erreurs de calcul ou de lecture des
+# trois lois. Tableau GÉNÉRÉ, gardé par scripts/resume-couverture.mjs.
 coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
+  per_misconception:
+    mc.physics.pc_lois_newton.force-entretient-mouvement:                { count: 6, items: [LDN-1, LDN-7, LDN-8, LDN-9, LDN-13, LDN-25] }
+    mc.physics.pc_lois_newton.impetus-elan-stocke:                       { count: 3, items: [LDN-2, LDN-7, LDN-8] }
+    mc.physics.pc_lois_newton.force-verticale-composante-horizontale:    { count: 3, items: [LDN-2, LDN-8, LDN-30] }
+    mc.physics.pc_lois_newton.force-liee-a-vitesse:                      { count: 3, items: [LDN-1, LDN-3, LDN-14] }
+    mc.physics.pc_lois_newton.masse-inertie-mal-comprise:                { count: 4, items: [LDN-3, LDN-13, LDN-24, LDN-27] }
+    mc.physics.pc_lois_newton.resultante-mal-composee:                   { count: 3, items: [LDN-15, LDN-20, LDN-31] }
+    mc.physics.pc_lois_newton.masse-poids-confondus:                     { count: 3, items: [LDN-5, LDN-21, LDN-27] }
+    mc.physics.pc_lois_newton.chute-depend-masse:                        { count: 3, items: [LDN-5, LDN-21, LDN-22] }
+    mc.physics.pc_lois_newton.erreur-cinematique-uniforme:               { count: 3, items: [LDN-22, LDN-26, LDN-32] }
+    mc.physics.pc_lois_newton.action-reaction-meme-corps:                { count: 3, items: [LDN-4, LDN-17, LDN-32] }
+    mc.physics.pc_lois_newton.action-reaction-inegale-ou-conditionnelle: { count: 3, items: [LDN-4, LDN-16, LDN-17] }
+    mc.physics.pc_lois_newton.mouvement-absolu:                          { count: 3, items: [LDN-10, LDN-28, LDN-33] }
+    mc.physics.pc_lois_newton.referentiel-toujours-galileen:             { count: 5, items: [LDN-11, LDN-28, LDN-29, LDN-30, LDN-33] }
+    mc.physics.pc_lois_newton.vitesse-scalaire:                          { count: 4, items: [LDN-12, LDN-28, LDN-31, LDN-33] }
+    mc.physics.pc_lois_newton.bilan-forces-incorrect:                    { count: 3, items: [LDN-18, LDN-29, LDN-30] }
+    mc.physics.pc_lois_newton.role-normale-mal-compris:                  { count: 3, items: [LDN-19, LDN-23, LDN-32] }
+    mc.physics.pc_lois_newton.projection-plan-incline:                   { count: 3, items: [LDN-6, LDN-23, LDN-24] }
+    mc.physics.pc_lois_newton.frottement-mal-traite:                     { count: 5, items: [LDN-6, LDN-13, LDN-20, LDN-25, LDN-26] }
+    mc.physics.pc_lois_newton.frottement-absent-accelere:                { count: 3, items: [LDN-7, LDN-29, LDN-31] }
+  total_items: 33
   floor: 3
-  # PRIMARY (gated) method — per-distractor confrontation: each of the 81
-  # incorrect distractors counted once, by the misconception it reveals. This
-  # is how many times the bank confronts (gates on) each model.
-  method: "per-distractor (each incorrect distractor counted by the model it reveals)"
-  total_items: 27
-  total_distractors: 81
-  per_misconception_distractors:
-    mc.physics.pc_lois_newton.force-entretient-mouvement: 10       # 1B 1C 7D 8C 9A 9B 9D 13A 25B 25D
-    mc.physics.pc_lois_newton.impetus-elan-stocke: 3               # 2B 7A 8B
-    mc.physics.pc_lois_newton.force-verticale-composante-horizontale: 3  # 2C 2D 8D
-    mc.physics.pc_lois_newton.force-liee-a-vitesse: 5              # 1D 3D 14B 14C 14D
-    mc.physics.pc_lois_newton.masse-inertie-mal-comprise: 6        # 3B 3C 13D 24B 27A 27D
-    mc.physics.pc_lois_newton.resultante-mal-composee: 4           # 15A 15C 15D 20D
-    mc.physics.pc_lois_newton.masse-poids-confondus: 4             # 5A 21A 21D 27C
-    mc.physics.pc_lois_newton.chute-depend-masse: 4                # 5C 5D 21C 22D
-    mc.physics.pc_lois_newton.erreur-cinematique-uniforme: 4       # 22A 22B 26A 26D
-    mc.physics.pc_lois_newton.action-reaction-meme-corps: 3        # 4A 4D 17A
-    mc.physics.pc_lois_newton.action-reaction-inegale-ou-conditionnelle: 6  # 4C 16B 16C 16D 17B 17C
-    mc.physics.pc_lois_newton.mouvement-absolu: 3                  # 10B 10C 10D
-    mc.physics.pc_lois_newton.referentiel-toujours-galileen: 3     # 11A 11B 11C
-    mc.physics.pc_lois_newton.vitesse-scalaire: 3                  # 12B 12C 12D
-    mc.physics.pc_lois_newton.bilan-forces-incorrect: 3            # 18A 18C 18D
-    mc.physics.pc_lois_newton.role-normale-mal-compris: 4          # 19B 19C 19D 23D
-    mc.physics.pc_lois_newton.projection-plan-incline: 5           # 6D 23A 23B 24A 24D
-    mc.physics.pc_lois_newton.frottement-mal-traite: 7            # 6B 6C 13C 20A 20C 25C 26B
-    mc.physics.pc_lois_newton.frottement-absent-accelere: 1        # 7C  (BELOW FLOOR)
-  floor_met: false
-  models_below_floor:
-    - id: mc.physics.pc_lois_newton.frottement-absent-accelere
-      distractor_count: 1      # only LDN-7.C
-      needs: 2                 # +2 distractors (or dedicated items) to reach the >=3 floor
-  # SECONDARY view — item-level, by primary_misconception (one item = one
-  # count), the convention used by the rc-charge / RLC pilots. Dedicated-item
-  # coverage is THINNER than the per-distractor confrontation count above: this
-  # legacy bank spans 19 models over 27 items, so most models are the PRIMARY
-  # focus of only 1-2 items even though each is CONFRONTED (as a distractor)
-  # >=3 times.
-  dedicated_items_per_primary:
-    mc.physics.pc_lois_newton.force-entretient-mouvement: 5        # 1 2 9 13 25
-    mc.physics.pc_lois_newton.impetus-elan-stocke: 2               # 7 8
-    mc.physics.pc_lois_newton.masse-inertie-mal-comprise: 2        # 3 27
-    mc.physics.pc_lois_newton.masse-poids-confondus: 2            # 5 21
-    mc.physics.pc_lois_newton.frottement-mal-traite: 2            # 6 20
-    mc.physics.pc_lois_newton.erreur-cinematique-uniforme: 2      # 22 26
-    mc.physics.pc_lois_newton.projection-plan-incline: 2         # 23 24
-    mc.physics.pc_lois_newton.action-reaction-meme-corps: 2      # 4 17
-    mc.physics.pc_lois_newton.force-liee-a-vitesse: 1            # 14
-    mc.physics.pc_lois_newton.resultante-mal-composee: 1        # 15
-    mc.physics.pc_lois_newton.action-reaction-inegale-ou-conditionnelle: 1  # 16
-    mc.physics.pc_lois_newton.mouvement-absolu: 1              # 10
-    mc.physics.pc_lois_newton.referentiel-toujours-galileen: 1  # 11
-    mc.physics.pc_lois_newton.vitesse-scalaire: 1              # 12
-    mc.physics.pc_lois_newton.bilan-forces-incorrect: 1        # 18
-    mc.physics.pc_lois_newton.role-normale-mal-compris: 1      # 19
-    mc.physics.pc_lois_newton.force-verticale-composante-horizontale: 0
-    mc.physics.pc_lois_newton.chute-depend-masse: 0
-    mc.physics.pc_lois_newton.frottement-absent-accelere: 0
+  floor_met: true
   ramp_coverage:
-    R0: 3   # 7 8 9
-    R1: 3   # 10 11 12
-    R2: 3   # 1 2 13
-    R3: 3   # 3 14 15
-    R4: 3   # 4 16 17
-    R5: 3   # 18 19 20
-    R6: 3   # 5 21 22
-    R7: 3   # 6 23 24
-    R8: 3   # 25 26 27
-  note: >-
-    Honest disclosure (recipe step 6). PER-DISTRACTOR confrontation clears the
-    >=3 floor for 18 of 19 models; the sole gap is frottement-absent-accelere
-    (1 distractor, LDN-7.C). ITEM-LEVEL dedicated coverage is thinner: only
-    force-entretient-mouvement reaches 3 dedicated items. Bringing every model
-    to >=3 DEDICATED items (as the rc-charge pilot did with RC-20 to RC-27) is
-    deferred to a follow-up item-authoring pass; it is NOT faked here. The
-    per-distractor tags added in this pass are additive — no existing stem,
-    feedback, or solution was deleted or weakened.
+    R0: 3
+    R1: 5
+    R2: 4
+    R3: 4
+    R4: 3
+    R5: 4
+    R6: 4
+    R7: 3
+    R8: 3
+  honest_state: >-
+    Les dix-neuf misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Quatorze y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

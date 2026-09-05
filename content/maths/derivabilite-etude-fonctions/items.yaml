@@ -1181,52 +1181,613 @@ items:
 # counted once, by its `primary_misconception`) — the same method used by
 # content/pc/rc-charge/items.yaml, the backfill exemplar this pass follows.
 # ──────────────────────────────────────────────────────────────────────────────
+  # Ajoutés le 2026-09-05 : neuf familles sous le plancher de 3 items du banc,
+  # dont `rolle-taf-hypotheses-mal-identifiees` sans AUCUN item — elle n'était
+  # sondée que par les deux checkpoints du sommet (cp-bac-rolle, cp-bac-taf),
+  # ce qui ne compte pas dans le modèle apprenant. Les trois items qui la
+  # referment sont placés au barreau R6, celui du sommet : c'est là que Rolle et
+  # les accroissements finis apparaissent, via l'extrait de sujet SM 2019 — le
+  # corps de la leçon, lui, admet le théorème du signe de $f'$ sans les
+  # invoquer, choix de portée assumé (note de validation en fin de lesson.md).
+  # Six items, dix-sept places.
+  - id: DERIVFCT-22
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [derivation, operations]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.regle-produit-mal-appliquee
+    stem: >
+      Soit $f(x) = x^{3}\,(2x + 1)$. Que vaut $f'(x)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $3x^{2}(2x+1) + 2x^{3} = 8x^{3} + 3x^{2}$
+        correct: true
+      - id: B
+        text: >-
+          $3x^{2} \times 2 = 6x^{2}$, en dérivant chaque facteur puis en
+          multipliant les résultats
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.regle-produit-mal-appliquee
+        feedback: >
+          La dérivée d'un produit n'est pas le produit des dérivées :
+          $(uv)' = u'v + uv'$, une SOMME de deux termes. Le contrôle en deux
+          secondes : pour $u = v = x$, la règle fautive donnerait $(x^2)' = 1$,
+          alors que la dérivée de $x^2$ vaut $2x$.
+      - id: C
+        text: >-
+          $\dfrac{3x^{2}(2x+1) - 2x^{3}}{(2x+1)^{2}}$
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.regle-quotient-mal-appliquee
+        feedback: >
+          C'est la formule du QUOTIENT appliquée à un produit. Les deux se
+          ressemblent — mêmes termes $u'v$ et $uv'$ — mais le quotient les
+          SOUSTRAIT et divise par $v^2$, le produit les ADDITIONNE sans
+          dénominateur. Ici $f$ est un produit : aucun dénominateur n'a lieu
+          d'apparaître.
+      - id: D
+        text: >-
+          $x^{2}(2x+1) + 2x^{3}$, la dérivée de $x^{3}$ valant $x^{2}$
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.regle-puissance-terme-omis
+        feedback: >
+          Le coefficient $n$ manque : $(x^{n})' = n\,x^{n-1}$, donc
+          $(x^{3})' = 3x^{2}$ et non $x^{2}$. L'exposant descend en facteur ET
+          diminue d'une unité — les deux à la fois, jamais l'un sans l'autre.
+    correct_feedback: >
+      $(uv)' = u'v + uv'$ avec $u = x^{3}$ et $v = 2x+1$ :
+      $f'(x) = 3x^{2}(2x+1) + x^{3}\times 2 = 6x^{3} + 3x^{2} + 2x^{3}
+      = 8x^{3} + 3x^{2}$.
+    solution: |
+      **La règle du produit.**
+      $$(uv)' = u'v + uv'$$
+      Avec $u = x^{3}$, $u' = 3x^{2}$, $v = 2x+1$, $v' = 2$ :
+      $$f'(x) = 3x^{2}(2x+1) + x^{3}\times 2 = 6x^{3} + 3x^{2} + 2x^{3}
+      = 8x^{3} + 3x^{2}$$
+
+      **La vérification qui ne coûte rien.** Développer d'abord :
+      $f(x) = 2x^{4} + x^{3}$, donc $f'(x) = 8x^{3} + 3x^{2}$. Les deux chemins
+      concordent.
+
+      **Les deux formules à ne pas mélanger.**
+      $$(uv)' = u'v + uv' \qquad
+      \left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^{2}}$$
+      Mêmes termes, mais somme contre différence, et un carré au dénominateur
+      d'un seul côté.
+
+  - id: DERIVFCT-23
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [rolle, derivation, operations]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+    stem: >
+      Une question demande de montrer qu'il existe $c \in \,]a\,;b[$ tel que
+      $f''(c) = 0$. À quelle fonction faut-il appliquer le théorème de Rolle, et
+      sous quelles hypothèses ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          À $f'$ : il faut $f'$ continue sur $[a\,;b]$, dérivable sur
+          $]a\,;b[$, et $f'(a) = f'(b)$
+        correct: true
+      - id: B
+        text: >-
+          À $f$ elle-même : il suffit que $f$ soit continue, dérivable, et que
+          $f(a) = f(b)$ — la conclusion portant alors sur $f''$
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+        feedback: >
+          Rolle appliqué à $f$ conclut sur $f'$, jamais sur $f''$ : la
+          conclusion porte toujours sur la dérivée de la fonction à laquelle on
+          l'applique. Pour obtenir $f''(c) = 0$, il faut donc partir de $f'$ —
+          et c'est alors l'égalité $f'(a) = f'(b)$ qu'il faut établir, pas
+          $f(a) = f(b)$.
+      - id: C
+        text: >-
+          À $f'$, mais l'hypothèse à vérifier est $f'(a) = f'(b) = 0$ : Rolle
+          exige que la fonction s'annule aux deux bornes
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+        feedback: >
+          Rolle demande l'ÉGALITÉ des valeurs aux bornes, pas leur nullité :
+          $f'(a) = f'(b)$ suffit, quelle que soit cette valeur commune. Exiger
+          $0$ rendrait le théorème inapplicable dans la plupart des sujets — et
+          la démonstration n'en a nul besoin.
+      - id: D
+        text: >-
+          À $f''$ directement, en vérifiant que $f''$ est continue et que
+          $f''(a) = f''(b)$
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+        feedback: >
+          Appliquer Rolle à $f''$ conclurait sur $f'''$, pas sur $f''$. La règle
+          est constante : on applique le théorème à la fonction dont on veut
+          annuler la DÉRIVÉE. Pour $f''(c) = 0$, on part donc de $f'$.
+    correct_feedback: >
+      Rolle appliqué à une fonction conclut sur SA dérivée. Pour obtenir
+      $f''(c) = 0$, on l'applique donc à $f'$ : continue sur $[a\,;b]$,
+      dérivable sur $]a\,;b[$, et $f'(a) = f'(b)$ — une égalité, pas une
+      nullité.
+    solution: |
+      **L'énoncé de Rolle.** Si $g$ est continue sur $[a\,;b]$, dérivable sur
+      $]a\,;b[$, et si $g(a) = g(b)$, alors il existe $c \in \,]a\,;b[$ tel que
+      $g'(c) = 0$.
+
+      **Le décalage d'un cran.** La conclusion porte sur $g'$. Donc pour
+      conclure sur $f''$, on prend $g = f'$ :
+      $$f' \ \text{continue sur } [a;b], \ \text{dérivable sur } ]a;b[, \
+      f'(a) = f'(b) \ \Longrightarrow \ \exists c, \ f''(c) = 0$$
+
+      **Les deux pièges du sujet.** Se tromper de fonction (partir de $f$ pour
+      conclure sur $f''$) et durcir l'hypothèse (exiger $f'(a) = f'(b) = 0$ au
+      lieu de l'égalité seule).
+
+  - id: DERIVFCT-24
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [extremum, signe, trinome]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.derivee-nulle-suffit-extremum
+    stem: >
+      Soit $f(x) = x^{3}$. On a $f'(0) = 0$. La fonction admet-elle un extremum
+      local en $0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non : $f'(x) = 3x^{2}$ reste positive de part et d'autre de $0$, donc
+          $f$ ne change pas de sens de variation
+        correct: true
+      - id: B
+        text: >-
+          Oui : la dérivée s'annule en $0$, ce qui suffit à caractériser un
+          extremum local
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.derivee-nulle-suffit-extremum
+        feedback: >
+          $f'(a) = 0$ est nécessaire mais pas suffisant : il faut que $f'$ CHANGE
+          DE SIGNE en $a$. Ici $3x^{2} \geqslant 0$ partout : la courbe monte,
+          marque une pause horizontale en $0$, et repart en montant. C'est un
+          point d'inflexion à tangente horizontale, pas un extremum.
+      - id: C
+        text: >-
+          Oui, un minimum : $f'(x) = 3x^{2}$ est un trinôme de racine double
+          $0$, donc négatif avant et positif après
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.trinome-signe-mal-lu
+        feedback: >
+          $3x^{2}$ est du signe de son coefficient dominant, positif, PARTOUT
+          sauf à sa racine où il s'annule. Une racine double ne fait pas changer
+          de signe : le trinôme touche l'axe sans le traverser. C'est justement
+          ce qui distingue ce cas d'un vrai extremum.
+      - id: D
+        text: >-
+          On ne peut pas conclure sans appliquer le théorème de Rolle à $f$ sur
+          un intervalle contenant $0$
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+        feedback: >
+          Rolle sert à établir l'EXISTENCE d'un point où la dérivée s'annule ;
+          ici ce point est déjà connu, et la question porte sur sa NATURE.
+          L'outil pertinent est le tableau de signes de $f'$ — Rolle n'a rien à
+          en dire.
+    correct_feedback: >
+      Non. $f'(x) = 3x^{2}$ s'annule en $0$ mais reste positive de part et
+      d'autre : $f$ est strictement croissante sur $\mathbb{R}$. La tangente est
+      horizontale en $0$ sans que la fonction y change de sens — c'est un point
+      d'inflexion.
+    solution: |
+      **La condition nécessaire.** Si $f$ est dérivable et admet un extremum
+      local en $a$ intérieur à l'intervalle, alors $f'(a) = 0$.
+
+      **Pourquoi elle ne suffit pas.** La réciproque est fausse : $x^{3}$ en est
+      le contre-exemple standard.
+      $$f'(x) = 3x^{2} \geqslant 0 \quad \text{pour tout } x$$
+      La dérivée s'annule sans changer de signe, donc $f$ ne change pas de sens
+      de variation.
+
+      **La condition qui conclut.** $f'$ doit changer de signe en $a$ :
+      $-$ puis $+$ pour un minimum, $+$ puis $-$ pour un maximum.
+
+      **Le piège du trinôme.** Une racine DOUBLE ne fait pas changer de signe —
+      le trinôme touche l'axe et repart du même côté.
+
+  - id: DERIVFCT-25
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [inflexion, concavite, domaine]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.inflexion-ignore-domaine
+    stem: >
+      Soit $f(x) = \dfrac{1}{x}$, définie sur $\mathbb{R}^{*}$. Sa dérivée
+      seconde $f''(x) = \dfrac{2}{x^{3}}$ change de signe en $0$. Peut-on
+      conclure que la courbe admet un point d'inflexion en $0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non : $f$ n'est pas définie en $0$, donc il n'y a aucun point de la
+          courbe à cette abscisse
+        correct: true
+      - id: B
+        text: >-
+          Oui : le changement de signe de $f''$ est toujours la condition
+          suffisante du point d'inflexion, et elle est vérifiée
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.inflexion-ignore-domaine
+        feedback: >
+          Le changement de signe de $f''$ ne suffit pas : encore faut-il qu'il
+          existe un POINT de la courbe à cette abscisse. Ici $x = 0$ est une
+          valeur interdite — la courbe y a une asymptote verticale, pas un point.
+          Un point d'inflexion est un point : il doit d'abord exister.
+      - id: C
+        text: >-
+          Oui, et la valeur interdite se trouve d'ailleurs en annulant le
+          numérateur de $f$, ce qui donne bien $x = 0$
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.domaine-fraction-mal-identifie
+        feedback: >
+          La valeur interdite s'obtient en annulant le DÉNOMINATEUR, pas le
+          numérateur : une fraction n'existe pas quand on divise par zéro,
+          tandis qu'un numérateur nul donne simplement une valeur nulle. Ici le
+          numérateur vaut $1$ et ne s'annule jamais ; c'est $x$, au
+          dénominateur, qui interdit $0$.
+      - id: D
+        text: >-
+          On ne peut pas conclure : $f$ est continue en $0$, donc dérivable, mais
+          la dérivée seconde y est indéterminée
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.continuite-implique-derivabilite
+        feedback: >
+          Double erreur. $f$ n'est pas continue en $0$ — elle n'y est même pas
+          définie. Et la continuité n'entraîne jamais la dérivabilité : $|x|$
+          est continue en $0$ et n'y est pas dérivable, la courbe y formant un
+          point anguleux.
+    correct_feedback: >
+      Non. Un point d'inflexion est un POINT de la courbe, et il n'y a aucun
+      point d'abscisse $0$ : la fonction n'y est pas définie. Le changement de
+      signe de $f''$ n'est utilisable qu'aux abscisses où la courbe existe.
+    solution: |
+      **Les deux conditions d'un point d'inflexion en $a$.**
+      1. $f$ est définie (et deux fois dérivable) en $a$ ;
+      2. $f''$ change de signe en $a$.
+
+      **Ici.** La seconde est vérifiée — $\frac{2}{x^{3}}$ est négative avant
+      $0$, positive après — mais la première ne l'est pas :
+      $D_f = \mathbb{R}^{*}$.
+
+      **Ce que la courbe fait réellement en $0$.** Elle n'y passe pas : la
+      droite $x = 0$ est asymptote verticale. Le changement de concavité se lit
+      entre les deux branches, sans point de raccord.
+
+      **La leçon de méthode.** Le tableau de signes de $f''$ ne se lit jamais
+      seul : il se lit SUR le domaine de définition de $f$.
+
+  - id: DERIVFCT-26
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [domaine, asymptote, derivabilite]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.domaine-fraction-mal-identifie
+    stem: >
+      Soit $g(x) = \dfrac{x - 2}{x + 3}$. Quel est son ensemble de définition, et
+      quelle est l'équation de son asymptote verticale ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $D_g = \mathbb{R}\setminus\{-3\}$, valeur qui annule le dénominateur,
+          et l'asymptote verticale a pour équation $x = -3$
+        correct: true
+      - id: B
+        text: >-
+          $D_g = \mathbb{R}\setminus\{2\}$, et l'asymptote a pour équation
+          $x = 2$ : la valeur interdite annule le numérateur
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.domaine-fraction-mal-identifie
+        feedback: >
+          C'est le DÉNOMINATEUR qui interdit une valeur : diviser par zéro n'a
+          pas de sens, alors qu'un numérateur nul donne simplement $g(x) = 0$.
+          Ici $x = 2$ est au contraire une valeur parfaitement licite — c'est le
+          zéro de la fonction.
+      - id: C
+        text: >-
+          $D_g = \mathbb{R}$ tout entier : une fraction rationnelle est définie
+          partout, et l'asymptote se lit sur la limite en $+\infty$
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.domaine-fraction-mal-identifie
+        feedback: >
+          Une fraction rationnelle n'est jamais définie là où son dénominateur
+          s'annule. Et la limite en $+\infty$ donne une asymptote HORIZONTALE
+          — ici $y = 1$ — qui n'a rien à voir avec l'asymptote verticale que la
+          question demande.
+      - id: D
+        text: >-
+          $D_g = \mathbb{R}\setminus\{-3\}$, et $g$ est continue puis dérivable
+          en $-3$ par prolongement, ce qui supprime l'asymptote
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.continuite-implique-derivabilite
+        feedback: >
+          Aucun prolongement continu n'est possible en $-3$ : la limite y est
+          infinie, pas finie. Et même quand un prolongement par continuité
+          existe, il ne garantit pas la dérivabilité — la continuité n'entraîne
+          jamais la dérivabilité.
+    correct_feedback: >
+      $D_g = \mathbb{R}\setminus\{-3\}$ : le dénominateur $x+3$ s'annule en
+      $-3$. La limite y étant infinie, la droite d'équation $x = -3$ est
+      asymptote verticale. La valeur $x = 2$, elle, annule le numérateur : c'est
+      le zéro de $g$, pas une valeur interdite.
+    solution: |
+      **Le domaine.** Une fraction rationnelle existe partout sauf là où son
+      dénominateur s'annule :
+      $$x + 3 = 0 \iff x = -3
+      \quad\Longrightarrow\quad D_g = \mathbb{R}\setminus\{-3\}$$
+
+      **L'asymptote verticale.** En $-3$, le numérateur tend vers $-5 \neq 0$ et
+      le dénominateur vers $0$ : la limite est infinie. La droite $x = -3$ est
+      donc asymptote verticale.
+
+      **À ne pas confondre.** Le zéro de $g$ est $x = 2$ (numérateur nul), et
+      l'asymptote HORIZONTALE est $y = 1$ (limite à l'infini). Trois valeurs,
+      trois rôles distincts.
+
+  - id: DERIVFCT-27
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [derivabilite, continuite, point_anguleux]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.continuite-implique-derivabilite
+    stem: >
+      La fonction $x \mapsto |x|$ est continue en $0$. Y est-elle dérivable ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non : les taux d'accroissement à gauche et à droite tendent vers $-1$
+          et $+1$, deux limites différentes
+        correct: true
+      - id: B
+        text: >-
+          Oui : une fonction continue en un point y est nécessairement dérivable,
+          la continuité garantissant l'existence de la tangente
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.continuite-implique-derivabilite
+        feedback: >
+          L'implication ne vaut que dans un sens : dérivable $\Rightarrow$
+          continue, jamais l'inverse. $|x|$ en est le contre-exemple le plus
+          court : la courbe est d'un seul tenant — donc continue — mais forme un
+          angle en $0$, où deux demi-tangentes de pentes différentes se
+          rencontrent.
+      - id: C
+        text: >-
+          Non, parce que $|x|$ n'est pas définie en $0$ : c'est une valeur
+          interdite, comme pour une fraction
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.domaine-fraction-mal-identifie
+        feedback: >
+          $|0| = 0$ : la fonction est parfaitement définie en $0$, et sur
+          $\mathbb{R}$ tout entier. Il n'y a pas de dénominateur, donc pas de
+          valeur interdite. La non-dérivabilité vient d'ailleurs : les deux
+          demi-tangentes n'ont pas la même pente.
+      - id: D
+        text: >-
+          Non, car sa dérivée s'annulerait en $0$ sans y changer de signe, ce qui
+          interdit la dérivabilité
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.derivee-nulle-suffit-extremum
+        feedback: >
+          Le critère du changement de signe sert à décider si un point où
+          $f' = 0$ est un extremum ; il ne dit rien de la dérivabilité. Et il ne
+          s'applique pas ici : la dérivée n'existe pas en $0$, donc elle ne peut
+          ni s'annuler ni changer de signe.
+    correct_feedback: >
+      Non. Le taux d'accroissement $\dfrac{|x| - 0}{x - 0}$ vaut $-1$ à gauche et
+      $+1$ à droite : les deux limites diffèrent, donc le nombre dérivé n'existe
+      pas. La courbe forme un point anguleux — continue, mais sans tangente
+      unique.
+    solution: |
+      **Le calcul du taux d'accroissement en $0$.**
+      $$\frac{|x| - |0|}{x - 0} = \frac{|x|}{x}
+      = \begin{cases} +1 & \text{si } x > 0 \\ -1 & \text{si } x < 0\end{cases}$$
+      Les deux limites latérales valent $+1$ et $-1$ : elles diffèrent, donc la
+      limite n'existe pas et $f$ n'est pas dérivable en $0$.
+
+      **Le sens de l'implication.**
+      $$\text{dérivable en } a \ \Longrightarrow \ \text{continue en } a$$
+      La réciproque est fausse, et $|x|$ le montre en une ligne.
+
+      **Ce qu'on voit sur la courbe.** Un POINT ANGULEUX : deux demi-tangentes,
+      de pentes $-1$ et $+1$, se rejoignent sans se prolonger. La continuité dit
+      que le tracé ne se coupe pas ; la dérivabilité dit qu'il est lisse. Ce ne
+      sont pas les mêmes exigences.
+
+  - id: DERIVFCT-28
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [derivation, formulaire]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.regle-quotient-mal-appliquee
+    stem: >
+      Deux formules de dérivation sont proposées ensemble, l'une pour un
+      produit, l'autre pour un quotient. Quelle paire est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $(uv)' = u'v + uv'$ et $\left(\dfrac{u}{v}\right)' =
+          \dfrac{u'v - uv'}{v^{2}}$
+        correct: true
+      - id: B
+        text: >-
+          $(uv)' = u'v'$ et $\left(\dfrac{u}{v}\right)' = \dfrac{u'}{v'}$ :
+          on dérive chaque morceau séparément
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.regle-produit-mal-appliquee
+        feedback: >
+          Dériver « morceau par morceau » est faux dans les deux cas. Le test le
+          plus court : avec $u = v = x$, la première formule donnerait
+          $(x^{2})' = 1$, alors que la bonne réponse est $2x$. La dérivation
+          n'est pas multiplicative — elle est seulement LINÉAIRE, c'est-à-dire
+          compatible avec les sommes et les constantes.
+      - id: C
+        text: >-
+          $(uv)' = u'v + uv'$ et $\left(\dfrac{u}{v}\right)' =
+          \dfrac{u'v + uv'}{v^{2}}$
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.regle-quotient-mal-appliquee
+        feedback: >
+          Le signe du quotient est une SOUSTRACTION. Le contrôle qui le
+          retrouve : avec $u = 1$ et $v = x$, la formule doit redonner
+          $\left(\frac{1}{x}\right)' = -\frac{1}{x^{2}}$. La version avec un
+          plus donnerait $+\frac{1}{x^{2}}$, du mauvais signe pour une fonction
+          décroissante.
+      - id: D
+        text: >-
+          $(uv)' = u'v + uv'$ et $\left(\dfrac{u}{v}\right)' =
+          \dfrac{u'v - uv'}{v}$ : le dénominateur reste $v$
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.regle-puissance-terme-omis
+        feedback: >
+          Le dénominateur est $v^{2}$, et l'exposant n'est pas décoratif : avec
+          $u = 1$, $v = x$, la formule proposée donnerait $-\frac{1}{x}$ au lieu
+          de $-\frac{1}{x^{2}}$. Même contrôle que pour $(x^{n})' = nx^{n-1}$ :
+          un exposant ne se perd jamais en chemin.
+    correct_feedback: >
+      $(uv)' = u'v + uv'$ — une somme, sans dénominateur — et
+      $\left(\dfrac{u}{v}\right)' = \dfrac{u'v - uv'}{v^{2}}$ — une différence,
+      dans cet ordre, avec le carré au dénominateur. Les deux formules partagent
+      leurs termes et diffèrent par tout le reste.
+    solution: |
+      **Les deux formules.**
+      $$(uv)' = u'v + uv' \qquad
+      \left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^{2}}$$
+
+      **Trois contrôles qui les retrouvent sans les apprendre.**
+      - $u = v = x$ : $(x^{2})' = 1\cdot x + x\cdot 1 = 2x$ ✓
+      - $u = 1$, $v = x$ : $\dfrac{0\cdot x - 1\cdot 1}{x^{2}}
+        = -\dfrac{1}{x^{2}}$ ✓ (négatif, comme il se doit pour $1/x$
+        décroissante)
+      - l'ORDRE du numérateur du quotient compte : $u'v$ d'abord, $uv'$ ensuite.
+        L'inverser change le signe du résultat.
+
+  - id: DERIVFCT-29
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [inflexion, rolle, methode]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.inflexion-ignore-domaine
+    stem: >
+      Dans un problème, on vient de montrer que $f''$ s'annule en $c$, et l'on
+      veut conclure que la courbe admet un point d'inflexion d'abscisse $c$.
+      Que faut-il vérifier de plus ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Que $f''$ CHANGE de signe en $c$, et que $f$ est bien définie en $c$ :
+          l'annulation seule ne conclut pas
+        correct: true
+      - id: B
+        text: >-
+          Rien de plus dès que $f''$ change de signe : l'inflexion se lit sur la
+          concavité, même aux abscisses où $f$ n'est pas définie
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.inflexion-ignore-domaine
+        feedback: >
+          Un point d'inflexion est un POINT de la courbe : il lui faut une
+          abscisse où la courbe passe. $x \mapsto 1/x$ a une dérivée seconde qui
+          change de signe en $0$, et aucun point d'inflexion — parce qu'il n'y a
+          aucun point d'abscisse $0$. Le tableau de signes de $f''$ se lit
+          toujours SUR le domaine de $f$.
+      - id: C
+        text: >-
+          Qu'on a bien appliqué le théorème de Rolle à $f$, seul moyen de
+          garantir l'annulation de $f''$
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+        feedback: >
+          Rolle appliqué à $f$ conclut sur $f'$, pas sur $f''$ : pour obtenir
+          l'annulation de $f''$, il faudrait l'appliquer à $f'$. Et de toute
+          façon, l'annulation est ici DÉJÀ acquise — la question porte sur ce
+          qu'il faut y ajouter pour conclure à une inflexion.
+      - id: D
+        text: >-
+          Que $f'(c) = 0$ également, sans quoi la tangente n'est pas horizontale
+          et il n'y a pas d'inflexion
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.criteres-inflexion-extremum-confondus
+        feedback: >
+          C'est le critère de l'EXTREMUM, pas celui de l'inflexion. Un point
+          d'inflexion n'exige aucune tangente horizontale : la courbe de
+          $x \mapsto x^{3} + x$ en possède un en $0$ avec une tangente de pente
+          $1$. Ce qui définit l'inflexion, c'est le changement de CONCAVITÉ.
+    correct_feedback: >
+      Deux vérifications. Que $f''$ change effectivement de SIGNE en $c$ —
+      s'annuler ne suffit pas, $x^{4}$ le montre en $0$. Et que $f$ est définie
+      en $c$ : un point d'inflexion est un point, il lui faut exister.
+    solution: |
+      **Les deux conditions.**
+      1. $f$ est définie (et deux fois dérivable) en $c$ ;
+      2. $f''$ change de signe en $c$.
+
+      **Pourquoi l'annulation ne suffit pas.** $f(x) = x^{4}$ donne
+      $f''(x) = 12x^{2}$, qui s'annule en $0$ sans changer de signe : la courbe
+      reste convexe de part et d'autre. Pas d'inflexion.
+
+      **Pourquoi le domaine compte.** $f(x) = 1/x$ donne $f''(x) = 2/x^{3}$,
+      qui change de signe en $0$ — mais la courbe n'a aucun point d'abscisse
+      $0$ : asymptote verticale, pas inflexion.
+
+      **Ce qu'on ne demande PAS.** Que la tangente soit horizontale : c'est le
+      critère de l'extremum. $x^{3} + x$ a un point d'inflexion en $0$ avec une
+      tangente de pente $1$.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après DERIVFCT-22 à DERIVFCT-29. Neuf familles sous le
+# plancher, dont `rolle-taf-hypotheses-mal-identifiees` sans AUCUN item de banc
+# — elle n'était sondée que par les deux checkpoints du sommet (cp-bac-rolle,
+# cp-bac-taf). Les items qui la referment siègent au barreau R6, celui du
+# sommet : c'est là que Rolle et les accroissements finis apparaissent, via
+# l'extrait de sujet SM 2019. Le corps de la leçon, lui, admet le théorème du
+# signe de $f'$ sans les invoquer — choix de portée assumé, consigné dans la
+# note de validation en fin de lesson.md. Tableau GÉNÉRÉ, gardé par
+# scripts/resume-couverture.mjs.
 coverage_summary:
-  method: "item-level, by primary_misconception (one item = one count)"
-  total_items: 21
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
   per_misconception:
-    mc.math.maths_derivabilite_etude_fonctions.limite-non-comprise-comme-processus: 3   # DERIVFCT-7, DERIVFCT-8, DERIVFCT-9
-    mc.math.maths_derivabilite_etude_fonctions.confond-valeur-et-nombre-derive: 4         # DERIVFCT-1, DERIVFCT-10, DERIVFCT-16, DERIVFCT-20
-    mc.math.maths_derivabilite_etude_fonctions.regle-produit-mal-appliquee: 1              # DERIVFCT-3
-    mc.math.maths_derivabilite_etude_fonctions.regle-quotient-mal-appliquee: 1             # DERIVFCT-11
-    mc.math.maths_derivabilite_etude_fonctions.regle-composee-mal-appliquee: 3             # DERIVFCT-4, DERIVFCT-13, DERIVFCT-14
-    mc.math.maths_derivabilite_etude_fonctions.regle-puissance-terme-omis: 1               # DERIVFCT-12
-    mc.math.maths_derivabilite_etude_fonctions.derivee-nulle-suffit-extremum: 1            # DERIVFCT-5
-    mc.math.maths_derivabilite_etude_fonctions.trinome-signe-mal-lu: 2                     # DERIVFCT-15, DERIVFCT-19
-    mc.math.maths_derivabilite_etude_fonctions.criteres-inflexion-extremum-confondus: 2    # DERIVFCT-6, DERIVFCT-17
-    mc.math.maths_derivabilite_etude_fonctions.inflexion-ignore-domaine: 1                 # DERIVFCT-18
-    mc.math.maths_derivabilite_etude_fonctions.domaine-fraction-mal-identifie: 1           # DERIVFCT-21
-    mc.math.maths_derivabilite_etude_fonctions.continuite-implique-derivabilite: 1         # DERIVFCT-2
-    mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees: 0     # none in this end bank — only in checkpoints.yaml
+    mc.math.maths_derivabilite_etude_fonctions.limite-non-comprise-comme-processus:   { count: 4, items: [DERIVFCT-1, DERIVFCT-7, DERIVFCT-8, DERIVFCT-9] }
+    mc.math.maths_derivabilite_etude_fonctions.confond-valeur-et-nombre-derive:       { count: 6, items: [DERIVFCT-1, DERIVFCT-7, DERIVFCT-9, DERIVFCT-10, DERIVFCT-16, DERIVFCT-20] }
+    mc.math.maths_derivabilite_etude_fonctions.regle-produit-mal-appliquee:           { count: 3, items: [DERIVFCT-3, DERIVFCT-22, DERIVFCT-28] }
+    mc.math.maths_derivabilite_etude_fonctions.regle-quotient-mal-appliquee:          { count: 3, items: [DERIVFCT-11, DERIVFCT-22, DERIVFCT-28] }
+    mc.math.maths_derivabilite_etude_fonctions.regle-composee-mal-appliquee:          { count: 3, items: [DERIVFCT-4, DERIVFCT-13, DERIVFCT-14] }
+    mc.math.maths_derivabilite_etude_fonctions.regle-puissance-terme-omis:            { count: 4, items: [DERIVFCT-1, DERIVFCT-12, DERIVFCT-22, DERIVFCT-28] }
+    mc.math.maths_derivabilite_etude_fonctions.derivee-nulle-suffit-extremum:         { count: 3, items: [DERIVFCT-5, DERIVFCT-24, DERIVFCT-27] }
+    mc.math.maths_derivabilite_etude_fonctions.trinome-signe-mal-lu:                  { count: 3, items: [DERIVFCT-15, DERIVFCT-19, DERIVFCT-24] }
+    mc.math.maths_derivabilite_etude_fonctions.criteres-inflexion-extremum-confondus: { count: 4, items: [DERIVFCT-6, DERIVFCT-17, DERIVFCT-18, DERIVFCT-29] }
+    mc.math.maths_derivabilite_etude_fonctions.inflexion-ignore-domaine:              { count: 3, items: [DERIVFCT-18, DERIVFCT-25, DERIVFCT-29] }
+    mc.math.maths_derivabilite_etude_fonctions.domaine-fraction-mal-identifie:        { count: 4, items: [DERIVFCT-21, DERIVFCT-25, DERIVFCT-26, DERIVFCT-27] }
+    mc.math.maths_derivabilite_etude_fonctions.continuite-implique-derivabilite:      { count: 4, items: [DERIVFCT-2, DERIVFCT-25, DERIVFCT-26, DERIVFCT-27] }
+    mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees:  { count: 3, items: [DERIVFCT-23, DERIVFCT-24, DERIVFCT-29] }
+  total_items: 29
   floor: 3
-  floor_met: false   # 3 des 13 modèles atteignent le plancher (limite-non-comprise, confond-valeur, regle-composee) ; 10 sont sous le plancher, dont un a zéro item dédié
-  notes: >-
-    Backfill du bank legacy (21 items écrits avant le tagging par
-    distracteur) : chaque item reçoit un primary_misconception et chaque
-    distracteur un tag (id réel de l'inventaire — aucun tag null). Le
-    plancher >= 3 n'est honnêtement atteint que pour 3 des 13 modèles :
-    limite-non-comprise-comme-processus (le cluster R0 sur la vitesse
-    instantanée), confond-valeur-et-nombre-derive (récurrent de R1 à R6,
-    chaque fois qu'une question mélange f(a) et f'(a)), et
-    regle-composee-mal-appliquee (les trois items sur la dérivée composée,
-    R3). Les 10 modèles restants sont sous le plancher, principalement parce
-    que le bank legacy ne contient qu'UN SEUL item par règle/notion précise
-    (un item pour la règle du produit, un pour le quotient, un pour la règle
-    de la puissance, un pour l'extremum avec f'=0, un pour la condition de
-    domaine du point d'inflexion, un pour le domaine d'une fraction
-    rationnelle, un pour le point anguleux) — il n'y a tout simplement pas de
-    second item testant la même règle sous un autre angle. Le modèle
-    trinome-signe-mal-lu (2 items) et criteres-inflexion-extremum-confondus
-    (2 items) sont proches du plancher mais n'y arrivent pas non plus,
-    honnêtement. rolle-taf-hypotheses-mal-identifiees a ZÉRO item dans ce
-    bank (Rolle et le théorème des accroissements finis sont hors périmètre
-    du bank historique — introduits seulement par l'exercice de type bac et
-    ses checkpoints) : conservé dans l'inventaire car réellement utilisé par
-    checkpoints.yaml (cp-bac-rolle, cp-bac-taf), signalé ici à zéro en toute
-    honnêteté plutôt que forcé sur un item qui ne le teste pas réellement.
-    Aucun item n'a été inventé pour combler ces manques : une passe d'items
-    dédiée serait nécessaire pour amener regle-produit-mal-appliquee,
-    regle-quotient-mal-appliquee, regle-puissance-terme-omis,
-    derivee-nulle-suffit-extremum, inflexion-ignore-domaine,
-    domaine-fraction-mal-identifie et continuite-implique-derivabilite
-    (chacun à 1 item) au plancher de 3.
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 4
+    R2: 5
+    R3: 3
+    R4: 4
+    R5: 5
+    R6: 5
+  honest_state: >-
+    Les treize misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Sept y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.
