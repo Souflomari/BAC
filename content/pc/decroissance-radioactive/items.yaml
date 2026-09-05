@@ -166,14 +166,14 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Le noyau âgé de 3000 ans, car il a eu plus de temps pour « s'user »."
+        text: "Le noyau âgé de 3000 ans, car il a eu bien plus de temps pour « s'user » depuis sa formation."
         correct: false
         misconception: mc.physics.decroissance_radioactive.noyau-vieillit
         feedback: >
           C'est le modèle de l'ampoule usée : il ne s'applique pas à un
           noyau, qui ne « s'use » pas avec le temps.
       - id: B
-        text: "Le noyau qui vient de se former, car il est encore instable au sens « frais » du terme."
+        text: "Le noyau qui vient de se former, car il est encore instable au sens le plus « frais » du terme."
         correct: false
         misconception: mc.physics.decroissance_radioactive.noyau-fraicheur-instable
         feedback: >
@@ -183,7 +183,7 @@ items:
         text: "Aucun des deux : les deux noyaux ont exactement la même probabilité de se désintégrer dans la seconde qui vient, quel que soit leur âge."
         correct: true
       - id: D
-        text: "Impossible à dire sans connaître la température et la pression auxquelles chaque noyau est soumis."
+        text: "Impossible à dire sans connaître la température et la pression auxquelles chacun de ces deux noyaux se trouve soumis."
         correct: false
         misconception: mc.physics.decroissance_radioactive.lambda-depend-conditions-externes
         feedback: >
@@ -213,10 +213,10 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Non : le caractère sans mémoire de la désintégration radioactive garantit que les noyaux restants ont exactement la même probabilité de se désintégrer par seconde que des noyaux tout juste formés, quel que soit le temps déjà écoulé."
+        text: "Non : le caractère sans mémoire de la désintégration garantit que les noyaux restants ont exactement la même probabilité de se désintégrer par seconde que des noyaux tout juste formés."
         correct: true
       - id: B
-        text: "Oui : les noyaux qui restent après longtemps ont statistiquement « survécu » à la sélection et sont donc devenus plus stables."
+        text: "Oui : les noyaux qui restent après si longtemps ont statistiquement « survécu » à la sélection, et sont donc devenus nettement plus stables que les autres."
         correct: false
         misconception: mc.physics.decroissance_radioactive.noyau-fraicheur-instable
         feedback: >
@@ -224,7 +224,7 @@ items:
           sa probabilité de désintégration par seconde reste identique à
           celle d'un noyau neuf, ni plus ni moins.
       - id: C
-        text: "Non, mais seulement parce que les conditions physiques (température, humidité) du site ont changé au fil du temps, pas à cause d'une propriété du noyau lui-même."
+        text: "Non, mais seulement parce que les conditions physiques du site, température et humidité, ont changé au fil du temps — et non à cause d'une propriété du noyau lui-même."
         correct: false
         misconception: mc.physics.decroissance_radioactive.lambda-depend-conditions-externes
         feedback: >
@@ -314,10 +314,10 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "L'instabilité dépend du rapport N/Z par rapport à la vallée de stabilité, pas du nombre total de nucléons à lui seul — un noyau léger peut être instable si N/Z s'écarte trop de la zone stable."
+        text: "L'instabilité dépend du rapport N/Z par rapport à la vallée de stabilité, et non du nombre total de nucléons — un noyau léger peut donc être instable."
         correct: true
       - id: B
-        text: "C'est impossible : un noyau de seulement 3 nucléons est forcément stable."
+        text: "C'est tout simplement impossible : un noyau qui ne compte que 3 nucléons est forcément stable."
         correct: false
         misconception: mc.physics.decroissance_radioactive.instabilite-necessite-grand-noyau
         feedback: >
@@ -325,7 +325,7 @@ items:
           la règle « petit noyau = forcément stable » ne tient pas. Son
           rapport N/Z = 2 est trop déséquilibré pour sa taille, même minuscule.
       - id: C
-        text: "L'instabilité ne dépend que du nombre de protons Z ; le nombre de neutrons n'a pas d'influence."
+        text: "L'instabilité d'un noyau ne dépend que de son nombre de protons Z ; le nombre de neutrons N n'a strictement aucune influence sur elle."
         correct: false
         misconception: mc.physics.decroissance_radioactive.stabilite-ne-depend-que-de-Z
         feedback: >
@@ -335,7 +335,7 @@ items:
           bien le nombre de neutrons, via le rapport N/Z, qui fait la
           différence.
       - id: D
-        text: "En réalité seul l'uranium 238 est instable ; le tritium, trop léger, est nécessairement stable."
+        text: "En réalité seul l'uranium 238 est instable ; le tritium, bien trop léger pour cela, est nécessairement un noyau stable."
         correct: false
         feedback: >
           Le tritium est un fait expérimental établi : il est bien instable
@@ -367,7 +367,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Puisqu'ils ont le même Z, ils devraient être tous les deux stables ou tous les deux instables — il doit y avoir une erreur dans l'énoncé."
+        text: "Puisqu'ils ont le même Z, ils devraient être tous les deux stables ou tous les deux instables — il doit donc y avoir une erreur quelque part dans l'énoncé."
         correct: false
         misconception: mc.physics.decroissance_radioactive.stabilite-ne-depend-que-de-Z
         feedback: >
@@ -382,14 +382,14 @@ items:
           C'est l'inverse : des isotopes partagent le même Z, pas le même
           N — le nombre de neutrons est justement ce qui varie entre eux.
       - id: C
-        text: "Puisque leur masse A diffère (12 contre 14), ce sont deux éléments chimiques différents, pas des isotopes du même élément."
+        text: "Puisque leur nombre de masse A diffère, 12 contre 14, ce sont deux éléments chimiques différents et non deux isotopes d'un même élément."
         correct: false
         misconception: mc.physics.decroissance_radioactive.element-defini-par-masse
         feedback: >
           L'élément chimique est fixé par Z, pas par A : même Z=6 signifie
           même élément, le carbone, quelle que soit la masse.
       - id: D
-        text: "Ce sont deux isotopes du même élément (le carbone), et leur différence de stabilité montre que Z seul ne détermine pas la stabilité : c'est la position du couple (N, Z) par rapport à la vallée de stabilité qui compte."
+        text: "Ce sont deux isotopes du même élément, le carbone, et leur différence de stabilité montre que Z seul ne détermine rien : c'est la position du couple (N, Z) qui compte."
         correct: true
     correct_feedback: >
       Même Z, stabilités différentes : la preuve que Z seul ne suffit pas —
@@ -722,10 +722,10 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Parce que la dérivée d'une exponentielle reproduit la fonction elle-même à un facteur constant près : c'est la seule famille de fonctions dont la dérivée est proportionnelle à la fonction, exactement ce que demande l'équation. On vérifie ensuite que cette hypothèse satisfait bien l'équation ET la condition initiale $N(0)=N_0$."
+        text: "Parce que la dérivée d'une exponentielle reproduit la fonction à un facteur constant près : c'est la seule famille dont la dérivée lui soit proportionnelle."
         correct: true
       - id: B
-        text: "On pourrait tout aussi bien proposer $N(t)=N_0-\\lambda t$ (une décroissance linéaire), car l'équation dit seulement que $N$ diminue avec le temps."
+        text: "On pourrait tout aussi bien proposer $N(t)=N_0-\\lambda t$, une décroissance linéaire, puisque l'équation dit seulement que $N$ diminue avec le temps."
         correct: false
         misconception: mc.physics.decroissance_radioactive.division-lineaire-demi-vies
         feedback: >
@@ -734,7 +734,7 @@ items:
           instant, pas pour tout $t$. La décroissance radioactive est
           géométrique (proportionnelle à N), pas linéaire.
       - id: C
-        text: "On pourrait proposer $N(t)=N_0e^{-t}$ directement, puisque cette fonction vaut aussi $N_0$ en $t=0$."
+        text: "On pourrait proposer directement $N(t)=N_0e^{-t}$, puisque cette fonction vaut elle aussi $N_0$ à l'instant $t=0$."
         correct: false
         misconception: mc.physics.decroissance_radioactive.oubli-lambda-dans-exponentielle
         feedback: >
@@ -743,7 +743,7 @@ items:
           $-N(t)$, pas $-\lambda N(t)$ — sauf dans le cas particulier
           $\lambda=1$.
       - id: D
-        text: "Le choix de l'exponentielle dépend des conditions extérieures (température, pression) dans lesquelles se trouve l'échantillon."
+        text: "Le choix de l'exponentielle dépend des conditions extérieures, température et pression, dans lesquelles se trouve l'échantillon étudié."
         correct: false
         misconception: mc.physics.decroissance_radioactive.lambda-depend-conditions-externes
         feedback: >
@@ -1201,7 +1201,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Parce que λ est une propriété intrinsèque de l'isotope, indépendante de l'âge du noyau et des conditions extérieures : elle est restée strictement la même pendant tout le temps écoulé, qu'il s'agisse de quelques secondes ou de milliards d'années."
+        text: "Parce que λ est une propriété intrinsèque de l'isotope, indépendante de l'âge du noyau et des conditions extérieures : elle est restée strictement la même tout au long du temps écoulé."
         correct: true
       - id: B
         text: "On ne peut pas vraiment l'utiliser de façon fiable : λ a probablement varié avec les conditions extérieures (température, pression) sur d'aussi longues échelles de temps géologiques."

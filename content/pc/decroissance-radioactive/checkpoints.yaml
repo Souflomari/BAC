@@ -215,9 +215,7 @@ checkpoints:
     choices:
       - id: A
         text: |
-          Parce que seule une exponentielle a une dérivée proportionnelle à
-          elle-même — exactement ce qu'exige l'équation. On vérifie ensuite
-          qu'elle satisfait l'équation ET la condition initiale $N(0) = N_0$.
+          Parce que seule une exponentielle a une dérivée proportionnelle à elle-même — exactement ce qu'exige l'équation. On vérifie ensuite la condition initiale $N(0) = N_0$.
         correct: true
         feedback: |
           Exact. L'équation dit que $\dfrac{dN}{dt}$ est proportionnelle à $N$ :
@@ -227,9 +225,7 @@ checkpoints:
 
       - id: B
         text: |
-          On pourrait aussi bien proposer une décroissance linéaire
-          $N(t) = N_0 - \lambda t$, puisque l'équation dit seulement que $N$
-          diminue.
+          On pourrait aussi bien proposer une décroissance linéaire $N(t) = N_0 - \lambda t$, puisque l'équation dit seulement que $N$ diminue au fil du temps.
         correct: false
         misconception: mc.physics.decroissance_radioactive.division-lineaire-demi-vies
         feedback: |
@@ -240,8 +236,7 @@ checkpoints:
 
       - id: C
         text: |
-          On pourrait écrire directement $N(t) = N_0\,e^{-t}$, qui vaut aussi
-          $N_0$ en $t = 0$.
+          On pourrait écrire directement $N(t) = N_0\,e^{-t}$, puisque cette fonction vaut elle aussi $N_0$ à l'instant $t = 0$.
         correct: false
         misconception: mc.physics.decroissance_radioactive.oubli-lambda-dans-exponentielle
         feedback: |
@@ -252,8 +247,7 @@ checkpoints:
 
       - id: D
         text: |
-          Le choix de l'exponentielle dépend des conditions extérieures
-          (température, pression) de l'échantillon.
+          Le choix de l'exponentielle dépend des conditions extérieures, température et pression, dans lesquelles se trouve l'échantillon.
         correct: false
         misconception: mc.physics.decroissance_radioactive.lambda-depend-conditions-externes
         feedback: |
