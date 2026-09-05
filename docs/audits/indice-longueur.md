@@ -65,11 +65,12 @@ deuxième choix. Sur `TTP-1`, la bonne réponse faisait 270 caractères face à
 
 ## L'état après campagne
 
-| | éligibles | indice | exploitable | écart médian |
-|---|---:|---:|---:|---:|
-| **Corpus entier** | 1 456 | 34 % | **0 %** | 14 car. |
+| | éligibles | indice | exploitable | contre | contre exploitable |
+|---|---:|---:|---:|---:|---:|
+| **Avant** | 1 465 | 38 % | **24 %** | 15 % | **5 %** |
+| **Après les deux campagnes** | 1 458 | 34 % | **0 %** | 12 % | **0 %** |
 
-**Les 62 notions sont à zéro.** Plus un seul item du corpus ne porte une
+**Les 62 notions sont à zéro, dans les deux sens.** Plus un seul item du corpus ne porte une
 avance de longueur visible pour la bonne réponse. Environ **1 100 choix
 réécrits sur 340 items**, en une trentaine de passes.
 
@@ -123,10 +124,12 @@ question sur un auteur, qui n'est pas davantage une problématique — l'a été
 **Quand un instrument et la pédagogie se contredisent, c'est l'instrument qui
 cède.**
 
-**Il ne garde pas l'indice inverse.** La colonne « contre » (clé strictement
-la plus **courte**) est mesurée et affichée — 14 % sur le corpus, jusqu'à 40 %
-sur `pc/reactions-acido-basiques` — mais non armée. Elle s'exploite tout aussi
-bien et mérite sa propre campagne.
+**Il garde aussi l'indice inverse — depuis la seconde campagne.** La colonne
+« contre » (clé strictement la plus **courte**) était d'abord mesurée sans
+être armée : 14 % sur le corpus, jusqu'à 40 % sur `pc/reactions-acido-basiques`.
+Elle s'exploite aussi bien que l'indice direct, et une colonne qui signale sans
+garder finit par ne plus être lue. Elle est désormais dans le cliquet, au même
+titre que l'autre, et scellée à zéro.
 
 ## Le cliquet, et pourquoi ce n'est pas une porte franche
 
@@ -145,19 +148,43 @@ qu'**après** avoir fait baisser l'indice, jamais pour faire taire une hausse.
 **Négatif prouvé :** en rallongeant de 137 caractères une clé déjà réparée, la
 porte passe de « tenu » à « ROMPU », code de sortie 1, et nomme la notion.
 
+**Le rapport ne se prend pas du même côté dans les deux sens.** Pour l'indice
+direct, l'avance se mesure contre la **deuxième** plus longue ; pour l'indice
+inverse, le retard se mesure contre la **clé** — la plus courte. Une clé de 30
+caractères au milieu de trois réponses de 90 saute aux yeux ; 30 caractères
+d'écart entre 300 et 330 ne se voient pas. Prendre le rapport du mauvais côté
+aurait rendu la colonne « contre » aveugle exactement là où elle compte.
+
+## La seconde campagne : l'indice inverse
+
+La première campagne a fermé l'indice direct et laissé l'inverse ouvert, à
+**15 %** du corpus — jusqu'à 52 % sur `pc/aspects-energetiques` et 44 % sur
+`pc/reactions-acido-basiques`. Il est fermé à son tour : **0 sur 1 458 items
+éligibles**, 62 notions.
+
+Le geste est le symétrique du premier, et il a son piège propre : la clé
+courte est presque toujours une **valeur nue** ou un **verdict nu** — « C'est
+l'anode, borne − », « $\sum \vec{F}_{ext} = \vec{0}$ », « Les deux continuent
+à la même vitesse ». On lui rend **sa** justification, celle que les
+distracteurs portent déjà chacun pour leur erreur. Rien n'est ajouté qui
+n'enseigne.
+
+**Le piège :** viser « plus long » au lieu de « milieu du peloton » retourne
+simplement l'indice dans l'autre sens. Sur `AE-26`, une clé allongée est
+devenue la plus longue de son item et le cliquet a refusé le commit — l'indice
+direct était passé de 0 à 1. La cible est la **deuxième plus courte moins
+vingt caractères**, pas le sommet.
+
 ## Ce qui reste
 
-**Rien, sur cette classe.** Le cliquet est scellé à **0/1 456**, ce qui en
-fait désormais une porte franche : la moindre réapparition d'un indice
-exploitable, dans n'importe quelle notion, casse le build.
+**Rien, sur cette classe — dans les deux sens.** Le cliquet est scellé à
+**0 direct + 0 inverse sur 1 458**, ce qui en fait une porte franche : la
+moindre réapparition d'un indice exploitable, dans n'importe quelle notion et
+dans n'importe quel sens, casse le build.
 
-Deux choses restent ouvertes, et elles sont d'une autre nature :
+Une seule chose reste ouverte, et elle est d'une autre nature :
 
-1. **L'indice INVERSE**, la clé strictement la plus courte — 15 % sur le
-   corpus, jusqu'à 52 % sur `pc/aspects-energetiques` et 44 % sur
-   `pc/reactions-acido-basiques`. Il s'exploite tout aussi bien et n'est
-   pas gardé. C'est la prochaine campagne de cette famille.
-2. **La QUALITÉ pédagogique des distracteurs allongés.** Un distracteur
+1. **La QUALITÉ pédagogique des distracteurs allongés.** Un distracteur
    peut être long, parallèle à la clé, et ne correspondre à aucune erreur
    réelle d'élève. Rien ici ne le mesure ; seule une relecture par la voie
    pédagogie le dira, et c'est la limite honnête de cette campagne : elle a

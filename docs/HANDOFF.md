@@ -1192,21 +1192,30 @@ deuxième). Onze notions de SVT à **100 %**. Pire item : 331 caractères contre
 
 **Fait :** ~1 100 choix réécrits sur 340 items. **Les 62 notions sont à zéro.**
 
-**Gardé :** `web/scripts/indice-longueur.mjs --porte`, scellé à 0/1 456. Il a
-commencé sa vie en CLIQUET (une notion en dette ne peut pas s'aggraver, une
-notion neuve naît sous plafond), parce qu'exiger 25 % partout aurait échoué au
-premier commit ; la campagne l'a amené à zéro, ce qui en fait aujourd'hui une
-porte franche.
+**Gardé :** `web/scripts/indice-longueur.mjs --porte`, scellé à
+**0 direct + 0 inverse sur 1 458**. Il a commencé sa vie en CLIQUET (une
+notion en dette ne peut pas s'aggraver, une notion neuve naît sous plafond),
+parce qu'exiger 25 % partout aurait échoué au premier commit ; les deux
+campagnes l'ont amené à zéro, ce qui en fait aujourd'hui une porte franche.
 
 **À lire avant de reprendre :** `docs/audits/indice-longueur.md` — notamment
 les TROIS remèdes et comment choisir entre eux, et les deux cas où
 l'instrument doit céder devant la pédagogie (`BON-19`, où les mauvaises
 réponses sont courtes PARCE QUE c'est ce qui les rend mauvaises).
 
-**Reste ouvert :** l'indice INVERSE (clé strictement la plus COURTE), mesuré
-et affiché — 15 % du corpus, jusqu'à 52 % sur `pc/aspects-energetiques` — mais
-non gardé. Et la valeur diagnostique réelle des distracteurs allongés, que
-rien ici ne mesure : c'est une relecture de la voie pédagogie.
+**Seconde campagne, l'indice INVERSE (clé strictement la plus COURTE) :**
+15 % du corpus au départ, jusqu'à 52 % sur `pc/aspects-energetiques` — fermé
+lui aussi, et désormais dans la même porte. Le geste est symétrique : la clé
+courte est presque toujours une valeur nue ou un verdict nu, à qui l'on rend
+SA justification. Deux points à retenir avant d'y toucher — (1) le rapport se
+prend ici sur la CLÉ, pas sur la deuxième : une clé de 30 caractères au milieu
+de trois réponses de 90 saute aux yeux, 30 caractères d'écart entre 300 et 330
+non ; (2) la cible est le MILIEU du peloton, pas le sommet — une clé allongée
+jusqu'à devenir la plus longue retourne simplement l'indice dans l'autre sens,
+et la porte l'a refusée en direct sur `AE-26`.
+
+**Reste ouvert :** la valeur diagnostique réelle des distracteurs allongés,
+que rien ici ne mesure : c'est une relecture de la voie pédagogie.
 
 ### 9.2 Les accents perdus — un produit qui enseigne l'orthographe qu'il écrit
 
