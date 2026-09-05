@@ -1,0 +1,464 @@
+notion: soi-non-soi
+skill_code: svt_soi_non_soi
+
+# ──────────────────────────────────────────────────────────────────────────────
+# POINTS D'ARRÊT DANS LA LEÇON (campagne de conversion du sommet — SVT)
+#
+# Sondes formatives, posées DANS la leçon — ce n'est pas le banc de fin
+# (items.yaml). Même schéma d'item, mais aucun score, aucune série, aucun
+# décompte. Le retour d'une mauvaise réponse NOMME le modèle faux, il ne se
+# contente pas d'annoncer l'erreur. Le plancher du banc de fin (items.yaml,
+# coverage_summary) n'est PAS modifié par ces points d'arrêt : ils sont
+# affichés en ligne, jamais recomptés.
+#
+# Placement (les identifiants correspondent aux marqueurs [[checkpoint:…]] de
+# lesson.md) :
+#   cp-r0-predict          (DANS le chapitre 1) — porte d'engagement : le
+#                          « prends position » rhétorique devient un vrai
+#                          engagement, avant la révélation.
+#   cp-r1-tolerance        (après le chapitre 2) — la tolérance est APPRISE,
+#                          pas donnée.
+#   cp-r2-specificite      (après le chapitre 3) — la spécificité clé-serrure,
+#                          testée sur les quatre groupes.
+#   cp-r3-cmh-vs-abo       (après le chapitre 4) — deux systèmes de marqueurs
+#                          indépendants, deux portées distinctes.
+#   cp-r4-rhesus           (après le chapitre 5) — anticorps immun contre
+#                          anticorps naturel : la première fois ne dit rien.
+#   cp-r5-soi-modifie      (après le chapitre 6) — une cellule infectée reste
+#                          génétiquement du soi ; c'est son affichage qui change.
+#
+# CHAQUE distracteur porte un identifiant réel de l'inventaire de items.yaml —
+# aucun tag nul ici. Les longueurs d'option sont équilibrées pour que la bonne
+# réponse ne soit jamais la plus longue de façon repérable, et la clé n'est
+# jamais la seule option à ne pas sur-affirmer (voir docs/audits/
+# indice-longueur.md et docs/audits/indice-absolu.md).
+#
+# Garde de périmètre : 2ème Bac SVT/PC — soi et non-soi, antigène et anticorps,
+# spécificité, CMH/HLA, groupes sanguins ABO et Rhésus, formes du non-soi
+# (agents pathogènes, greffons, soi modifié). Aucun mécanisme de la réponse
+# immunitaire (lymphocytes, mémoire, coopération cellulaire) n'est requis ici :
+# c'est la notion voisine, hors périmètre.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | posé DANS le chapitre 1
+  #        Transforme le « prends position » en engagement réel, avant la
+  #        révélation. Sonde tolerance-passive (le modèle par défaut : « un
+  #        tissu humain sain ne peut pas être du non-soi »).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: svt_soi_non_soi
+    tags: [checkpoint, formative, misconception_driven, svt_soi_non_soi, hook_commit]
+    primary_misconception: mc.svt.svt_soi_non_soi.tolerance-passive
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Dans les deux histoires que tu viens de lire — la poche de sang qui peut
+      tuer, le rein du père rejeté par le fils — **engage-toi avant de lire la
+      suite** : que fait exactement le corps du patient ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Il reconnaît des molécules précises qui ne figurent pas dans le répertoire qu'il a appris à tolérer, et il réagit contre elles."
+        correct: true
+        feedback: |
+          Exactement — et c'est ce que toute la leçon va détailler. Le mot
+          important est **reconnaît** : il ne s'agit ni d'une panne, ni d'une
+          réaction vague à « ce qui vient d'ailleurs », mais d'une
+          identification moléculaire précise. Tu verras au chapitre 4 quelles
+          molécules sont en jeu pour la greffe (le CMH) et au chapitre 5
+          lesquelles le sont pour la transfusion (les agglutinogènes ABO).
+
+      - id: B
+        text: "Son système immunitaire se dérègle : la frontière entre le soi et le non-soi est inscrite une fois pour toutes dans les gènes de l'espèce, donc un tissu humain sain ne peut jamais être du non-soi."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.tolerance-passive
+        feedback: |
+          Modèle détecté : croire que la frontière soi/non-soi est donnée
+          d'avance, à l'échelle de l'espèce. Elle se construit au contraire
+          chez CHAQUE individu, pendant la vie embryonnaire (chapitre 2) — et
+          elle est donc différente d'un individu à l'autre. Un rein humain
+          parfaitement sain est du soi pour son propriétaire et du non-soi
+          pour un autre : c'est le point central de cette leçon.
+
+      - id: C
+        text: "Il attaque tout ce qui vient d'un autre organisme, quelle que soit la molécule concernée : c'est l'origine étrangère du greffon et de la poche qui déclenche à elle seule la réaction."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.reconnaissance-non-specifique
+        feedback: |
+          Modèle détecté : remplacer la reconnaissance moléculaire par une
+          réaction à l'étrangeté en général. Si l'origine suffisait, aucune
+          transfusion ne serait jamais possible entre deux personnes — or le
+          sang de groupe O passe chez tout le monde (chapitre 5), et une greffe
+          entre vrais jumeaux ne déclenche aucun rejet (chapitre 4). Ce n'est
+          donc pas l'origine qui compte, mais les molécules exposées.
+
+      - id: D
+        text: "Il compare les groupes sanguins du donneur et du receveur : c'est le même contrôle dans les deux cas, la transfusion comme la greffe de rein."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.systemes-de-marqueurs-confondus
+        feedback: |
+          Modèle détecté : fondre en un seul les différents systèmes de
+          marqueurs du soi. Il y en a plusieurs, indépendants : les groupes
+          sanguins gouvernent bien la transfusion (chapitre 5), mais le rejet
+          d'un organe greffé se joue sur un autre système, le CMH
+          (chapitre 4). Un donneur peut être compatible pour l'un et
+          incompatible pour l'autre.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r1-tolerance | posé APRÈS le chapitre 2
+  #        Porte de rupture : la tolérance du soi est un processus ACTIF, pas
+  #        une absence. Sonde tolerance-passive (les deux formes : « le soi ne
+  #        porte rien à voir » et « c'est écrit dans les gènes »).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-tolerance
+    rung: "R1"
+    habilete: comprehension
+    skill_code: svt_soi_non_soi
+    tags: [checkpoint, formative, misconception_driven, svt_soi_non_soi]
+    primary_misconception: mc.svt.svt_soi_non_soi.tolerance-passive
+    item_source: original
+    lesson_placement: after_R1
+
+    stem: |
+      Pourquoi le système immunitaire d'un individu n'attaque-t-il pas, en
+      permanence, les cellules de son propre organisme ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Parce que les cellules du soi ne portent aucune molécule que les cellules immunitaires soient capables de détecter : il n'y a rien à reconnaître."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.tolerance-passive
+        feedback: |
+          Modèle détecté : expliquer la tolérance par une absence. Les
+          molécules du soi sont parfaitement détectables — c'est bien pour cela
+          qu'un greffon est repéré par le système immunitaire d'un AUTRE
+          individu (chapitre 4). Si elles étaient invisibles, aucun rejet de
+          greffe ne serait possible, et le premier chapitre n'aurait pas
+          d'histoire à raconter.
+
+      - id: B
+        text: "Parce que les cellules immunitaires capables de réagir contre les molécules déjà présentes sont éliminées ou neutralisées pendant la vie embryonnaire, quel que soit le répertoire propre à l'individu."
+        correct: true
+        feedback: |
+          Oui — c'est la **tolérance immunitaire**, et le mot à retenir est
+          qu'elle est APPRISE. Le système immunitaire ne naît pas en sachant ce
+          qui est « moi » : il élimine, tôt, celles de ses propres cellules qui
+          réagiraient contre ce qui est déjà là. C'est aussi pourquoi la
+          frontière soi/non-soi est propre à chaque individu.
+
+      - id: C
+        text: "Parce qu'une cellule immunitaire ne réagit jamais qu'à ce qui provient d'un autre organisme, et que les cellules du soi ne viennent, par définition, d'aucun ailleurs."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.reconnaissance-non-specifique
+        feedback: |
+          Modèle détecté : faire de l'origine, et non des molécules, le
+          critère de la réaction immunitaire. Ce critère tombe dès le
+          chapitre 6 : une cellule infectée ou cancéreuse ne vient d'aucun
+          ailleurs — elle est génétiquement du soi — et peut pourtant être
+          ciblée, parce que ce qu'elle affiche à sa surface a changé.
+
+      - id: D
+        text: "Parce que la liste des molécules tolérables est inscrite dans les gènes de l'espèce humaine, identique chez tous les individus depuis la naissance."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.tolerance-passive
+        feedback: |
+          Modèle détecté : croire la tolérance donnée d'avance et commune à
+          toute l'espèce. Si la liste était la même pour tous, une greffe entre
+          deux inconnus ne poserait aucun problème — or c'est exactement le
+          contraire (chapitre 4 : le CMH est l'un des ensembles de gènes les
+          plus variables du génome humain).
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-specificite | posé APRÈS le chapitre 3
+  #        Porte de rupture : la spécificité clé-serrure, éprouvée sur les
+  #        quatre groupes. Reprend la forme de SNS-2 avec un sérum unique.
+  #        Sonde reconnaissance-non-specifique et antigene-anticorps-confondus.
+  #        (Le tableau ABO n'est donné qu'au chapitre 5 : l'énoncé fournit donc
+  #        lui-même les agglutinogènes, aucun pré-requis n'est smuggle ici.)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-specificite
+    rung: "R2"
+    habilete: application
+    skill_code: svt_soi_non_soi
+    tags: [checkpoint, formative, misconception_driven, svt_soi_non_soi]
+    primary_misconception: mc.svt.svt_soi_non_soi.reconnaissance-non-specifique
+    item_source: original
+    lesson_placement: after_R2
+
+    stem: |
+      Au laboratoire, on dépose une goutte de sérum contenant **uniquement**
+      l'anticorps anti-A dans quatre puits, où l'on ajoute des hématies de
+      quatre donneurs différents. Les hématies du donneur 1 ne portent aucun
+      agglutinogène, celles du donneur 2 portent l'agglutinogène A, celles du
+      donneur 3 portent l'agglutinogène B, celles du donneur 4 portent les
+      deux. Dans quels puits observe-t-on une agglutination ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Dans les quatre puits : le sérum vient d'un autre organisme que les hématies, et cette différence d'origine suffit à provoquer l'agglutination."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.reconnaissance-non-specifique
+        feedback: |
+          Modèle détecté : croire qu'un anticorps se lie à toute hématie venue
+          d'ailleurs. Si c'était vrai, ce test ne servirait à rien — il donnerait
+          le même résultat dans les quatre puits et ne permettrait de distinguer
+          aucun donneur. C'est précisément parce que l'anti-A ne se lie qu'à
+          l'agglutinogène A qu'on peut lire un groupe sanguin dans ce résultat.
+
+      - id: B
+        text: "Dans les puits 2 et 4, qui sont les deux seuls dont les hématies portent l'agglutinogène A, quelle que soit la présence d'autres molécules à leur surface."
+        correct: true
+        feedback: |
+          Exact. L'anticorps anti-A reconnaît une chose et une seule :
+          l'agglutinogène A. Le donneur 4 réagit bien qu'il porte aussi
+          l'agglutinogène B — la présence d'une autre molécule ne masque ni
+          n'empêche la reconnaissance. Les donneurs 1 et 3 ne portent pas
+          d'agglutinogène A : rien, dans ce sérum, ne peut s'y lier.
+
+      - id: C
+        text: "Dans aucun puits : l'agglutination suppose la rencontre de deux molécules identiques, or l'anti-A du sérum et l'agglutinogène A ne sont pas la même molécule."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.antigene-anticorps-confondus
+        feedback: |
+          Modèle détecté : imaginer l'agglutination comme une rencontre entre
+          deux exemplaires d'une même molécule. Ce sont deux entités
+          différentes et **complémentaires** : l'agglutinogène A est la molécule
+          reconnue, portée par l'hématie ; l'anti-A est la molécule qui la
+          reconnaît, présente dans le sérum. La liaison se fait par
+          correspondance de forme — la clé et la serrure ne sont pas jumelles.
+
+      - id: D
+        text: "Dans les puits 1 et 3, les hématies qui ne portent pas l'agglutinogène A : c'est cette absence qui rend le sérum anti-A actif contre elles."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.mauvais-antigene-vise
+        feedback: |
+          Modèle détecté : inverser les deux côtés de la reconnaissance. Un
+          anticorps se lie à ce qui est PRÉSENT, pas à ce qui manque : il n'y a
+          rien à quoi se fixer sur une hématie dépourvue de l'agglutinogène A.
+          Prends l'habitude de poser la question dans ce sens : « quel antigène
+          les hématies portent-elles réellement, et l'anticorps du sérum le
+          reconnaît-il ? »
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r3-cmh-vs-abo | posé APRÈS le chapitre 4
+  #        Porte de rupture : l'exemple travaillé du chapitre 4 rejoué avec
+  #        un scénario neuf (fratrie non jumelle contre inconnu ABO-identique).
+  #        Sonde systemes-de-marqueurs-confondus.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-cmh-vs-abo
+    rung: "R3"
+    habilete: raisonnement
+    skill_code: svt_soi_non_soi
+    tags: [checkpoint, formative, misconception_driven, svt_soi_non_soi]
+    primary_misconception: mc.svt.svt_soi_non_soi.systemes-de-marqueurs-confondus
+    item_source: original
+    lesson_placement: after_R3
+
+    stem: |
+      Une patiente de groupe A+ attend une greffe de rein. Deux donneurs se
+      présentent : sa sœur, de groupe O+ (elles ne sont pas jumelles), et un
+      inconnu de groupe A+, exactement le même groupe sanguin qu'elle. Le
+      typage HLA n'a pas encore été fait. Que peut-on affirmer, à ce stade, sur
+      le risque de rejet ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "L'inconnu est le meilleur donneur, parce qu'un groupe sanguin identique signifie des molécules de surface identiques, donc un greffon reconnu comme du soi."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.systemes-de-marqueurs-confondus
+        feedback: |
+          Modèle détecté : lire la compatibilité d'une greffe dans le groupe
+          sanguin. Les agglutinogènes ABO ne sont qu'un système de marqueurs
+          parmi d'autres, et ils sont portés par les hématies : ils ne disent
+          rien du CMH, qui est l'ensemble de molécules dont dépend le rejet
+          d'un organe. Deux personnes de groupe A+ ont, sauf coïncidence
+          extraordinaire, des CMH différents.
+
+      - id: B
+        text: "Rien de sûr sans le typage HLA, mais la sœur est statistiquement plus prometteuse : elle partage davantage d'allèles du CMH avec la patiente qu'un inconnu."
+        correct: true
+        feedback: |
+          Oui, et les deux moitiés de cette réponse comptent. Le groupe sanguin
+          O+ de la sœur ne la disqualifie pas (il concerne un autre système, et
+          O est d'ailleurs transfusable à tous) ; ce qui la rend prometteuse,
+          c'est l'hérédité du CMH — une fratrie partage en moyenne davantage
+          d'allèles qu'un inconnu. Mais « davantage en moyenne » n'est pas
+          « identique » : seuls les vrais jumeaux le sont, d'où le typage HLA
+          avant toute décision.
+
+      - id: C
+        text: "La sœur est écartée d'office : son groupe O est incompatible avec le groupe A de la patiente, et cette incompatibilité de groupe interdit toujours la greffe."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.systemes-de-marqueurs-confondus
+        feedback: |
+          Modèle détecté : transporter la règle transfusionnelle sur la greffe
+          d'organe. Double erreur ici. D'abord, le sens de la règle ABO est
+          inversé : c'est le receveur A qui possède l'anti-B, et des hématies O
+          ne portant aucun agglutinogène, O passe chez tout le monde. Ensuite
+          et surtout, ce n'est pas ce système-là qui gouverne le rejet d'un
+          rein : c'est le CMH.
+
+      - id: D
+        text: "Les deux donneurs présentent le même risque, car le rejet dépend uniquement de la réaction du receveur, identique quel que soit le greffon reçu."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.reconnaissance-non-specifique
+        feedback: |
+          Modèle détecté : faire du rejet une réaction générale du receveur,
+          détachée de ce que porte le greffon. Le rejet naît d'une comparaison :
+          les molécules de CMH affichées par les cellules du greffon sont
+          confrontées au répertoire toléré du receveur. Change le greffon, tu
+          changes un des deux termes de la comparaison — et donc le risque.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r4-rhesus | posé APRÈS le chapitre 5
+  #        Porte de rupture : anticorps immun contre anticorps naturel. Reprend
+  #        la forme de SNS-6 avec un scénario neuf (une deuxième transfusion).
+  #        Sonde anticorps-immun-vs-naturel.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-rhesus
+    rung: "R4"
+    habilete: raisonnement
+    skill_code: svt_soi_non_soi
+    tags: [checkpoint, formative, misconception_driven, svt_soi_non_soi]
+    primary_misconception: mc.svt.svt_soi_non_soi.anticorps-immun-vs-naturel
+    item_source: original
+    lesson_placement: after_R4
+
+    stem: |
+      Un patient O- reçoit par erreur, lors d'une première transfusion, une
+      poche de sang O+. Aucune réaction n'est observée dans les heures qui
+      suivent. Six mois plus tard, il doit être transfusé de nouveau et l'on
+      envisage une seconde poche O+. Que faut-il en conclure ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "La première transfusion a prouvé sa tolérance à l'antigène D : la seconde poche O+ peut lui être transfusée sans risque particulier."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.anticorps-immun-vs-naturel
+        feedback: |
+          Modèle détecté : lire l'absence de réaction immédiate comme une
+          preuve de tolérance. C'est vrai dans le système ABO, où les
+          agglutinines sont déjà là et réagissent dès la première rencontre —
+          et c'est justement pour cela que le Rhésus se comporte autrement. Le
+          patient était Rh- et n'avait pas d'anti-D : il n'y avait rien pour
+          réagir le premier jour. La production d'anti-D a démarré APRÈS.
+
+      - id: B
+        text: "La première transfusion l'a sensibilisé : son organisme produit désormais l'anticorps anti-D, et une seconde poche O+ déclencherait une agglutination franche."
+        correct: true
+        feedback: |
+          C'est cela. L'anti-D est un anticorps **immun** : il n'existe pas
+          avant la première rencontre avec l'antigène D, et il apparaît dans
+          les semaines qui la suivent. D'où le renversement qui surprend
+          toujours : la première transfusion incompatible est silencieuse, la
+          seconde est dangereuse. Il lui faut du sang Rh-.
+
+      - id: C
+        text: "Le risque est nul dans les deux cas, puisque les deux poches sont de groupe O, le donneur universel, dont les hématies ne portent aucun agglutinogène."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.systemes-de-marqueurs-confondus
+        feedback: |
+          Modèle détecté : traiter le Rhésus comme s'il était couvert par le
+          système ABO. « Donneur universel » ne vaut que pour les
+          agglutinogènes A et B — l'antigène D relève d'un système distinct,
+          qui se surajoute. Une poche O+ ne porte ni A ni B, mais elle porte
+          bien l'antigène D, et c'est lui qui pose problème ici.
+
+      - id: D
+        text: "Le danger viendrait des anticorps apportés par le plasma du donneur O+, qui attaqueraient les hématies Rh- du patient dès la seconde transfusion."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.anticorps-immun-vs-naturel
+        feedback: |
+          Modèle détecté : inverser le producteur de l'anticorps. C'est le
+          RECEVEUR qui fabrique l'anti-D, après avoir rencontré l'antigène D.
+          Et il n'y a de toute façon rien à attaquer chez lui : ses hématies
+          Rh- ne portent pas l'antigène D, donc aucun anti-D ne pourrait s'y
+          fixer.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-5 | id: cp-r5-soi-modifie | posé APRÈS le chapitre 6
+  #        Porte de rupture : la cellule infectée reste génétiquement du soi ;
+  #        c'est son affichage de surface qui change. Sonde
+  #        soi-modifie-devient-etranger.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-soi-modifie
+    rung: "R5"
+    habilete: comprehension
+    skill_code: svt_soi_non_soi
+    tags: [checkpoint, formative, misconception_driven, svt_soi_non_soi]
+    primary_misconception: mc.svt.svt_soi_non_soi.soi-modifie-devient-etranger
+    item_source: original
+    lesson_placement: after_R5
+
+    stem: |
+      Une cellule du foie d'un patient est infectée par un virus. Le système
+      immunitaire de ce même patient finit par la cibler. Comment expliquer
+      qu'il s'en prenne à une cellule qui est pourtant la sienne ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Le virus a remplacé le patrimoine génétique de la cellule par le sien : elle est devenue, génétiquement, une cellule étrangère à l'organisme."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.soi-modifie-devient-etranger
+        feedback: |
+          Modèle détecté : faire sortir la cellule du soi pour justifier
+          qu'elle soit ciblée. Elle reste une cellule hépatique du patient, avec
+          son propre patrimoine génétique — c'est exactement ce qui rend ce cas
+          intéressant. Ce n'est pas son identité qui a changé, c'est ce qu'elle
+          expose à sa surface.
+
+      - id: B
+        text: "Elle affiche à sa surface des molécules d'origine virale, absentes du répertoire que le système immunitaire a appris à tolérer : sa signature ne correspond plus."
+        correct: true
+        feedback: |
+          Oui. C'est la notion de **soi modifié** : génétiquement du soi,
+          moléculairement devenu détectable comme anormal. Ce qui décide de la
+          réaction immunitaire n'est pas l'origine de la cellule, mais la
+          conformité de ce qu'elle affiche, à cet instant, avec le répertoire
+          toléré. Sans ce mécanisme, aucune infection virale ne serait jamais
+          repérée de l'intérieur.
+
+      - id: C
+        text: "Elle a perdu toutes ses molécules de CMH : privée de signature, elle n'est plus reconnaissable comme appartenant au soi et se retrouve traitée comme un intrus."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.soi-modifie-devient-etranger
+        feedback: |
+          Modèle détecté : expliquer la détection par une signature ABSENTE là
+          où elle est en réalité MODIFIÉE. La cellule infectée ne s'efface pas :
+          elle affiche en plus des molécules qui n'y étaient pas, d'origine
+          virale. C'est un ajout repérable, pas un effacement.
+
+      - id: D
+        text: "Toute cellule anormale est détruite dès qu'elle cesse de fonctionner normalement, sans qu'aucune reconnaissance moléculaire ne soit nécessaire."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.reconnaissance-non-specifique
+        feedback: |
+          Modèle détecté : supprimer l'étape de reconnaissance. Le système
+          immunitaire n'a aucun moyen de constater directement qu'une cellule
+          « fonctionne mal » : il ne lit que des molécules de surface. C'est
+          bien parce que la cellule infectée en affiche de nouvelles, précises,
+          qu'elle peut être ciblée.

@@ -10,6 +10,8 @@ Quelques heures plus tard, la zone autour de la griffure est rouge, chaude, lég
 
 **Avant de lire la suite, prends position.** Cette rougeur, cette chaleur, ce gonflement, cette douleur : est-ce que ton organisme est déjà en train de reconnaître spécifiquement la bactérie précise qui a pu s'introduire par cette griffure — un peu comme s'il l'avait déjà identifiée et ciblée ? Ou bien est-ce une réaction plus générale, qui se déclencherait de la même façon quelle que soit la nature exacte de l'intrus, voire même sans intrus du tout ? Engage-toi avant de continuer.
 
+[[checkpoint:cp-r0-predict]]
+
 Quelques jours plus tard, la plaie a cicatrisé. Tu n'as jamais su quelle bactérie précise s'était introduite, ni combien elle était. Ton organisme s'en est occupé sans que tu aies rien à faire de plus.
 
 Et voici la partie la plus intéressante de l'histoire : des mois plus tard, tu te griffes à nouveau, dans des circonstances comparables, avec — on le suppose ici pour la clarté de l'exemple — le même type de bactérie. Cette fois, la réaction locale est plus rapide, et l'infection est jugulée avant même d'avoir eu le temps de s'installer vraiment. Ton organisme n'a pourtant reçu, entre-temps, aucune information nouvelle de ta part.
@@ -62,6 +64,8 @@ Une confusion fréquente à ce stade : penser que la réaction inflammatoire, pa
 
 Si la réaction inflammatoire exigeait la reconnaissance précise d'un microbe donné, l'entorse sans microbe ne devrait produire AUCUN des quatre signes — or elle les produit tous. C'est bien la preuve que le déclencheur est la lésion tissulaire elle-même (via les substances chimiques libérées), pas l'identité de l'agent qui l'a causée.
 
+[[checkpoint:cp-r1-inflammation]]
+
 ---
 
 ## R2 — La phagocytose : comment un phagocyte élimine l'intrus
@@ -111,6 +115,8 @@ Le cliché $\gamma$ montre la fusion avec une vésicule dense (le lysosome, rich
 
 Si un élève range le cliché $\gamma$ (bactérie déjà fragmentée) avant le cliché $\alpha$ (bactérie encore intacte dans sa vésicule), il inverse l'ordre logique : on ne peut pas fragmenter une bactérie avant que les enzymes digestives n'aient eu accès à elle, et ces enzymes n'arrivent qu'après la fusion phagosome-lysosome.
 
+[[checkpoint:cp-r2-phagocytose]]
+
 ---
 
 ## R3 — Les limites de l'immunité innée : pourquoi il faut autre chose
@@ -138,7 +144,9 @@ Ce qu'on vient de décrire aux chapitres 2 et 3 s'appelle l'**immunité innée**
 
 Une confusion fréquente : penser que l'immunité innée est simplement une version « plus faible » ou « moins aboutie » de l'immunité adaptative — comme si les deux systèmes faisaient la même chose, à des degrés différents. Ce n'est pas le cas : ce sont deux LOGIQUES différentes. L'immunité innée sacrifie la précision pour la vitesse (elle réagit tout de suite, mais de la même façon à tout). L'immunité adaptative sacrifie la vitesse (la première fois) pour la précision et la mémoire. Les deux ne sont pas substituables l'une à l'autre : une infection sérieuse mobilise en général les deux, l'une après l'autre, l'innée donnant le temps à l'adaptative de se mettre en place.
 
-C'est cette seconde forme de défense — lente à démarrer, mais précise et capable de mémoire — qu'on construit à partir de maintenant, chapitre par le chapitre.
+C'est cette seconde forme de défense — lente à démarrer, mais précise et capable de mémoire — qu'on construit à partir de maintenant, chapitre par chapitre.
+
+[[checkpoint:cp-r3-innee-adaptative]]
 
 ---
 
@@ -176,6 +184,8 @@ Face à un antigène nouveau, un seul clone de LB (ou un tout petit nombre) port
 ### L'erreur classique à éviter ici
 
 Une confusion fréquente à ce stade : penser que ce sont les lymphocytes B EUX-MÊMES qui détruisent l'intrus, comme si la reconnaissance suffisait à l'élimination. Ce n'est pas le cas : le lymphocyte B sélectionné ne fait, à ce stade, que se multiplier et se différencier. Ce sont les PLASMOCYTES qui en résultent qui sécrètent les anticorps — et ce sont les anticorps (chapitre 6), pas les lymphocytes B, qui interviennent ensuite contre l'antigène. Le lymphocyte B est à l'origine de la réponse, il n'en est pas l'arme finale.
+
+[[checkpoint:cp-r4-selection-clonale]]
 
 ---
 
@@ -223,6 +233,8 @@ Retiens bien un second point, qui prépare directement le chapitre suivant : les
 
 Si les anticorps détruisaient directement les bactéries au contact, on observerait, dans le tube 1 de l'exemple ci-dessus, une DISPARITION progressive des bactéries (elles seraient dissoutes), pas un simple regroupement en amas toujours visibles et comptables. Ce qu'on observe réellement — des amas, pas une disparition — confirme que l'action est un rassemblement/marquage, pas une destruction directe.
 
+[[checkpoint:cp-r5-anticorps]]
+
 ---
 
 ## R6 — La réponse à médiation cellulaire : les LT8 détruisent la cellule infectée elle-même
@@ -265,6 +277,8 @@ Les anticorps, quels qu'ils soient, ne peuvent reconnaître et neutraliser que d
 ### L'erreur classique à éviter ici
 
 Une confusion très fréquente à ce stade : attribuer aux lymphocytes B (ou aux anticorps) la destruction directe d'une cellule infectée, ou, à l'inverse, penser que les lymphocytes T8 produisent des anticorps. Ce sont deux lignées de cellules complètement différentes, avec des rôles qui ne se recouvrent pas : le lymphocyte B (via le plasmocyte) produit des anticorps qui agissent sur des cibles EXTRACELLULAIRES ; le lymphocyte T8 (via le LTc) détruit, par CONTACT DIRECT, des cellules du soi elles-mêmes devenues anormales (infectées ou cancéreuses). Aucun anticorps n'intervient dans la destruction opérée par un LTc — c'est un mécanisme de contact, pas de sécrétion.
+
+[[checkpoint:cp-r6-lt8]]
 
 ---
 
@@ -338,6 +352,8 @@ On peut maintenant répondre entièrement aux deux questions du chapitre 1.
 **Ce que l'organisme met en œuvre face à un intrus nouveau :** d'abord une réaction immédiate et non spécifique (l'immunité innée — inflammation, phagocytose, chapitres 2 et 3), qui contient l'infection le temps qu'une réponse plus lente mais précise se construise (l'immunité adaptative — sélection clonale des LB et des LT8, coordonnée par les LT4, chapitres 5 et 8), laquelle élimine spécifiquement l'intrus via deux voies complémentaires : les anticorps contre ce qui est extracellulaire, les LTc contre les cellules déjà infectées.
 
 **Pourquoi la seconde rencontre est plus rapide :** parce que la première rencontre a laissé derrière elle des lymphocytes B et T mémoire, déjà sélectionnés et nombreux, qui n'ont plus besoin de repartir du hasard d'une sélection initiale — la réponse secondaire qui en résulte est plus rapide et plus intense que la réponse primaire.
+
+[[checkpoint:cp-r8-memoire]]
 
 ---
 

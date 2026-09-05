@@ -14,6 +14,8 @@ Deuxième cas, presque à l'opposé : un père offre l'un de ses reins à son fi
 
 **Avant de lire la suite, prends position.** Dans ces deux cas, qu'est-ce que le corps du patient est en train de faire, très précisément ? Et à ton avis, qu'est-ce qui permet à un organisme de faire la différence entre « ce qui m'appartient » et « ce qui ne m'appartient pas » ? Note mentalement ta réponse — on y reviendra.
 
+[[checkpoint:cp-r0-predict]]
+
 Ces deux histoires n'ont rien d'un hasard médical malheureux : elles illustrent, dans deux contextes différents, un seul et même principe biologique — la distinction entre le **soi** et le **non-soi**. Cette leçon pose les bases de cette distinction : les molécules qui signent l'identité biologique d'un individu (le complexe majeur d'histocompatibilité, les groupes sanguins), ce qu'on appelle le non-soi (agents pathogènes, greffons, cellules du soi modifié), et le vocabulaire — antigène, anticorps — qui permet de nommer précisément ce qui se joue dans ces deux histoires. À la fin, on y reviendra : les deux échecs apparents (la transfusion dangereuse, la greffe rejetée) deviendront la preuve que le système immunitaire fait exactement ce pour quoi il est construit.
 
 ---
@@ -39,6 +41,8 @@ Ce n'est ni un hasard ni un oubli. Au cours du développement embryonnaire, l'or
 ### L'erreur classique à éviter ici
 
 Une confusion fréquente : penser que le non-soi se limite aux microbes (bactéries, virus...). Ce n'est qu'une partie du tableau. Retiens dès maintenant ce principe, qu'on développera en détail au chapitre 6 : **est non-soi tout ce que le système immunitaire d'UN individu donné ne reconnaît pas comme faisant partie de LUI** — ce qui peut inclure des cellules totalement humaines, saines, et même génétiquement proches (un frère, une sœur), dès lors qu'elles ne portent pas exactement les mêmes molécules du soi.
+
+[[checkpoint:cp-r1-tolerance]]
 
 ---
 
@@ -67,6 +71,8 @@ Voici le point le plus important de cette leçon, qu'on va retrouver à chaque c
 ### L'erreur classique à éviter ici
 
 Une confusion fréquente : croire qu'« antigène » désigne uniquement un microbe entier (une bactérie, un virus). En réalité, un agent pathogène porte de nombreux antigènes différents à sa surface, chacun pouvant déclencher sa propre reconnaissance ; et un antigène peut exister indépendamment de tout agent pathogène — c'est le cas des molécules de groupe sanguin (chapitre 5) ou des molécules du CMH (chapitre 4), qui deviennent des antigènes potentiels dès qu'elles changent d'organisme, sans qu'aucun microbe ne soit impliqué.
+
+[[checkpoint:cp-r2-specificite]]
 
 ---
 
@@ -105,6 +111,8 @@ Une confusion fréquente : penser qu'un donneur « compatible » au sens des gro
 ### Vérification rapide
 
 Si le CMH était identique chez tous les êtres humains (aucun polymorphisme), aucune greffe ne serait jamais rejetée pour cause de CMH, puisque tout donneur porterait, par définition, les mêmes molécules que tout receveur. C'est précisément parce que le CMH est extrêmement polymorphe que le rejet de greffe est un problème biologique réel, à gérer activement en médecine.
+
+[[checkpoint:cp-r3-cmh-vs-abo]]
 
 ---
 
@@ -162,6 +170,8 @@ Une confusion fréquente : penser que l'absence de réaction immédiate lors d'u
 
 Relis le tableau de compatibilité ABO : la diagonale (donneur = receveur) est toujours « oui » — un individu peut toujours recevoir son propre groupe, puisqu'il ne porte, par définition, aucune agglutinine contre ses propres agglutinogènes. C'est cohérent avec le principe de tolérance du soi posé au chapitre 2.
 
+[[checkpoint:cp-r4-rhesus]]
+
 ---
 
 ## R5 — Le non-soi : microbes, greffons, et cellules du soi modifié
@@ -191,6 +201,8 @@ Dans les deux cas, le système immunitaire n'a pas « mal fonctionné » : il a 
 ### L'erreur classique à éviter ici
 
 Une dernière confusion, qui résume toute cette leçon : croire que « non-soi » est une catégorie fixe de choses (« les microbes », par exemple). En réalité, non-soi est une **relation** — entre une molécule ou une cellule, et le système immunitaire d'un individu précis, à un moment précis. La même hématie de groupe A est du soi chez son propriétaire, et du non-soi chez un receveur de groupe B. La même cellule est du soi tant qu'elle affiche un profil moléculaire normal, et bascule en soi modifié dès que ce profil change.
+
+[[checkpoint:cp-r5-soi-modifie]]
 
 ---
 

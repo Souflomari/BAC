@@ -1,0 +1,555 @@
+notion: moyens-de-defense
+skill_code: svt_moyens_defense
+
+# ──────────────────────────────────────────────────────────────────────────────
+# POINTS D'ARRÊT DANS LA LEÇON (campagne de conversion du sommet — SVT)
+#
+# Sondes formatives posées DANS la leçon — ce n'est pas le banc de fin
+# (items.yaml). Même schéma d'item, aucun score, aucune série, aucun décompte.
+# Le retour d'une mauvaise réponse NOMME le modèle faux. Le plancher du banc de
+# fin n'est pas modifié : ces sondes sont affichées en ligne, jamais recomptées.
+#
+# Placement (les identifiants correspondent aux marqueurs [[checkpoint:…]]) :
+#   cp-r0-predict        (DANS le chapitre 1) — porte d'engagement sur LA
+#                        question de la leçon : l'inflammation reconnaît-elle ?
+#   cp-r1-inflammation   (après le chapitre 2) — des cellules, oui ; de la
+#                        spécificité, non.
+#   cp-r2-phagocytose    (après le chapitre 3) — le phagocyte ingère sans avoir
+#                        identifié l'espèce, et n'en garde pas mémoire.
+#   cp-r3-innee-adaptative (après le chapitre 4) — le tableau des deux logiques,
+#                        appliqué à une chronologie.
+#   cp-r4-selection-clonale (après le chapitre 5) — pourquoi plusieurs jours.
+#   cp-r5-anticorps      (après le chapitre 6) — marquer n'est pas détruire.
+#   cp-r6-lt8            (après le chapitre 7) — hors de portée des anticorps.
+#   cp-r8-memoire        (après le chapitre 9) — ce qui reste après la première
+#                        rencontre.
+#
+# CHAQUE distracteur porte un identifiant réel de l'inventaire de items.yaml.
+# Aucune erreur nouvelle n'est introduite ici : les points d'arrêt réutilisent
+# les cinq modèles déjà déclarés, pour ne pas créer de misconception sans
+# couverture au banc (voir docs/audits/couverture-diagnostique.md).
+#
+# Garde de périmètre : 2ème Bac SVT/PC — immunité innée (inflammation,
+# phagocytose), immunité adaptative (sélection clonale, anticorps, LT8/LTc,
+# CPA et LT4, mémoire). Les dysfonctionnements (allergie, sida, auto-immunité)
+# relèvent de la notion voisine et n'apparaissent pas ici.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | posé DANS le chapitre 1
+  #        Porte d'engagement. Sonde confond-innee-adaptative — le modèle par
+  #        défaut est « si ça réagit, c'est que ça a reconnu ».
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: svt_moyens_defense
+    tags: [checkpoint, formative, misconception_driven, svt_moyens_defense, hook_commit]
+    primary_misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      La rougeur, la chaleur, le gonflement et la douleur autour de ta
+      griffure, quelques heures après. **Engage-toi avant de lire la suite :**
+      que traduisent ces quatre signes ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Ton organisme a identifié l'espèce bactérienne exacte entrée par la plaie et déclenche la riposte taillée pour elle : sans cette identification, aucun des quatre signes n'apparaîtrait."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
+        feedback: |
+          Modèle détecté : croire que toute réaction immunitaire suppose déjà
+          une reconnaissance précise. Le test qui départage est dans la leçon
+          qui suit : une entorse, sans le moindre microbe, produit exactement
+          les mêmes quatre signes. Une réaction qui se déclenche sans intrus ne
+          peut pas dépendre de l'identification de l'intrus.
+
+      - id: B
+        text: "Une réaction générale, déclenchée par la lésion du tissu lui-même, qui se produit à l'identique quel que soit l'intrus — et même en l'absence de tout microbe."
+        correct: true
+        feedback: |
+          C'est cela, et c'est le pivot de la leçon. Cette réaction s'appelle
+          l'inflammation aiguë ; elle relève de l'immunité **innée** : immédiate
+          et non spécifique. La reconnaissance précise existe bel et bien, mais
+          elle vient plus tard et par un autre système — l'immunité adaptative,
+          à partir du chapitre 5.
+
+      - id: C
+        text: "Une simple dilatation des vaisseaux au niveau de la plaie : aucune cellule immunitaire n'est mobilisée à ce stade, le sang afflue et c'est tout."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.inflammation-reduite-a-un-phenomene-vasculaire
+        feedback: |
+          Modèle détecté : vider l'inflammation de sa dimension cellulaire. La
+          vasodilatation est réelle, mais elle est un moyen, pas la fin : elle
+          permet justement aux phagocytes de quitter le sang et de gagner le
+          tissu lésé (la diapédèse, chapitre 2). Ce qui manque à cette réaction,
+          ce ne sont pas les cellules immunitaires — c'est la spécificité.
+
+      - id: D
+        text: "Ton organisme a reconnu la grande famille de l'intrus (bactérie plutôt que virus) et règle l'intensité de ces quatre signes sur cette famille, sans aller jusqu'à l'espèce."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
+        feedback: |
+          Modèle détecté : la même confusion, sous une forme adoucie — une
+          reconnaissance « approximative » reste une reconnaissance. Or
+          l'inflammation ne trie rien du tout : elle est déclenchée par des
+          substances libérées par les cellules abîmées, pas par ce qui les a
+          abîmées. C'est pourquoi une brûlure et une infection donnent le même
+          tableau.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r1-inflammation | posé APRÈS le chapitre 2
+  #        Porte de rupture symétrique de CP-0 : ce n'est pas parce que
+  #        l'inflammation ne reconnaît rien qu'elle ne mobilise personne.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-inflammation
+    rung: "R1"
+    habilete: comprehension
+    skill_code: svt_moyens_defense
+    tags: [checkpoint, formative, misconception_driven, svt_moyens_defense]
+    primary_misconception: mc.svt.svt_moyens_defense.inflammation-reduite-a-un-phenomene-vasculaire
+    item_source: original
+    lesson_placement: after_R1
+
+    stem: |
+      On vient d'établir que la réaction inflammatoire ne reconnaît pas l'intrus.
+      Faut-il en conclure qu'aucune cellule immunitaire n'y participe ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Non : des phagocytes quittent les vaisseaux par diapédèse et gagnent le tissu lésé. Ce qui manque à l'inflammation, c'est la spécificité, pas les cellules."
+        correct: true
+        feedback: |
+          Exact. Ce sont deux propriétés indépendantes, et c'est tout l'intérêt
+          de cette question : une réaction peut mobiliser massivement des
+          cellules immunitaires sans rien identifier de précis. Les phagocytes
+          arrivent, ingèrent, digèrent — sans savoir à qui ils ont affaire.
+
+      - id: B
+        text: "Oui : sans reconnaissance préalable de l'antigène, aucune cellule immunitaire ne peut être appelée sur place, et tout se réduit à un afflux de sang."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.inflammation-reduite-a-un-phenomene-vasculaire
+        feedback: |
+          Modèle détecté : faire dépendre la venue des cellules immunitaires
+          d'une reconnaissance préalable. L'appel des phagocytes se fait par des
+          substances chimiques libérées par les cellules abîmées et par les
+          cellules sentinelles du tissu — un signal de dégât, pas un signal
+          d'identité. Les cellules viennent d'abord, la reconnaissance précise
+          viendra bien plus tard, et par une autre voie.
+
+      - id: C
+        text: "Oui : les seules cellules immunitaires de l'organisme sont les lymphocytes, or ils n'interviennent jamais dans une inflammation aiguë."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-lb-lt
+        feedback: |
+          Modèle détecté : réduire l'immunité aux lymphocytes. Les phagocytes
+          (granulocytes, macrophages) sont eux aussi des cellules immunitaires,
+          à part entière — ils constituent même l'essentiel de l'effectif
+          mobilisé dans les premières heures. Les lymphocytes, eux, entrent en
+          scène avec l'immunité adaptative.
+
+      - id: D
+        text: "Non, et pour cette raison même l'inflammation est déjà spécifique : la présence de cellules immunitaires sur place suffit à établir qu'un antigène précis a été identifié."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
+        feedback: |
+          Modèle détecté : déduire la spécificité de la présence de cellules
+          immunitaires. Les deux ne vont pas ensemble. Le phagocyte ingère ce
+          qu'il rencontre au niveau de la lésion, quelle que soit son identité —
+          c'est bien une cellule immunitaire, et son action reste non spécifique.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-phagocytose | posé APRÈS le chapitre 3
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-phagocytose
+    rung: "R2"
+    habilete: comprehension
+    skill_code: svt_moyens_defense
+    tags: [checkpoint, formative, misconception_driven, svt_moyens_defense]
+    primary_misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
+    item_source: original
+    lesson_placement: after_R2
+
+    stem: |
+      Un macrophage ingère une bactérie que l'organisme rencontre pour la
+      première fois, puis la digère. Que peut-on affirmer de cette phagocytose ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Elle a exigé, avant toute adhésion, que des anticorps spécifiques de cette bactérie soient déjà présents : aucun phagocyte n'ingère une cible qui ne lui a pas été désignée."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
+        feedback: |
+          Modèle détecté : rendre la phagocytose dépendante d'une reconnaissance
+          spécifique préalable. Face à une bactérie jamais rencontrée, aucun
+          anticorps spécifique n'existe encore — et la phagocytose se produit
+          quand même, dès les premières heures. Le marquage par des anticorps
+          existe bien (chapitre 6), mais il rend la phagocytose plus efficace ;
+          il n'en est pas la condition.
+
+      - id: B
+        text: "Elle se déroule de la même façon quelle que soit l'espèce ingérée, et ne laisse derrière elle aucune trace qui accélérerait une rencontre ultérieure."
+        correct: true
+        feedback: |
+          Oui — les deux moitiés sont vraies et forment la signature de
+          l'immunité innée : non spécifique, et sans mémoire. Adhésion,
+          ingestion, digestion dans le phagolysosome, rejet des débris : la
+          séquence est la même pour toutes les cibles. C'est exactement ce que
+          l'immunité adaptative, elle, ne fait pas.
+
+      - id: C
+        text: "Le macrophage garde le souvenir de cette bactérie précise et la reconnaîtra systématiquement plus vite lors d'une prochaine rencontre : c'est là qu'est logée la mémoire immunitaire."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
+        feedback: |
+          Modèle détecté : prêter à l'immunité innée la mémoire qui appartient à
+          l'immunité adaptative. La mémoire immunitaire est bien réelle (elle
+          est l'objet du chapitre 9), mais elle est portée par des lymphocytes
+          mémoire, pas par les phagocytes. Un macrophage réagit avec la même
+          intensité à la centième rencontre qu'à la première.
+
+      - id: D
+        text: "Le macrophage sécrète, au moment du contact, des anticorps qui dissolvent la paroi de la bactérie avant même qu'elle ne soit ingérée."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.anticorps-detruisent-directement
+        feedback: |
+          Modèle détecté : voir l'anticorps comme une arme qui dissout au
+          contact — et l'attribuer, en prime, à la mauvaise cellule. Les
+          anticorps sont sécrétés par les plasmocytes, issus des lymphocytes B ;
+          et ils ne dissolvent rien : ils neutralisent, agglutinent ou marquent
+          (chapitre 6). La destruction, ici, est le fait des enzymes du
+          phagolysosome.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r3-innee-adaptative | posé APRÈS le chapitre 4
+  #        Le tableau des deux logiques, appliqué à une chronologie.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-innee-adaptative
+    rung: "R3"
+    habilete: application
+    skill_code: svt_moyens_defense
+    tags: [checkpoint, formative, misconception_driven, svt_moyens_defense]
+    primary_misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
+    item_source: original
+    lesson_placement: after_R3
+
+    stem: |
+      Un patient est infecté par une bactérie qu'il n'a jamais rencontrée. On
+      relève, six heures après l'infection, une réaction locale marquée ; les
+      anticorps spécifiques de cette bactérie ne deviennent détectables dans son
+      sang qu'au huitième jour. Comment lire cet écart de délai ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Les deux systèmes sont les mêmes à des intensités différentes : la réaction de la sixième heure est une version faible de celle du huitième jour, encore incomplète."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
+        feedback: |
+          Modèle détecté : voir l'inné comme un adaptatif au rabais. Ce sont
+          deux logiques distinctes, pas deux degrés d'une même chose. L'innée
+          échange la précision contre la vitesse ; l'adaptative échange la
+          vitesse contre la précision et la mémoire. Aucune des deux ne remplace
+          l'autre : une infection sérieuse mobilise les deux, l'une après
+          l'autre.
+
+      - id: B
+        text: "Deux systèmes distincts se succèdent : l'innée réagit tout de suite sans rien identifier, l'adaptative met des jours à sélectionner et multiplier le bon lymphocyte."
+        correct: true
+        feedback: |
+          Oui — et l'ordre n'est pas un hasard. C'est précisément parce que
+          l'immunité innée contient l'infection dès la première heure que
+          l'immunité adaptative dispose des huit jours qu'il lui faut pour se
+          mettre en place. Les deux se relaient plutôt qu'elles ne se
+          concurrencent.
+
+      - id: C
+        text: "La réaction de la sixième heure prouve que des anticorps spécifiques circulaient déjà : ils étaient simplement trop peu nombreux pour être détectés au laboratoire."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
+        feedback: |
+          Modèle détecté : postuler une reconnaissance spécifique invisible pour
+          expliquer une réaction rapide. Contre une bactérie jamais rencontrée,
+          il n'existe au départ aucun anticorps spécifique — c'est justement ce
+          qui définit une première rencontre. La réaction de la sixième heure
+          s'explique sans eux : lésion tissulaire, signaux chimiques, diapédèse.
+
+      - id: D
+        text: "Le délai de huit jours correspond au temps qu'il faut aux lymphocytes T pour transmettre aux lymphocytes B les anticorps qu'ils ont fabriqués."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-lb-lt
+        feedback: |
+          Modèle détecté : intervertir les rôles des deux lignées. Les
+          lymphocytes T ne fabriquent pas d'anticorps et n'en transmettent à
+          personne. Les anticorps sont sécrétés par les plasmocytes, issus des
+          lymphocytes B sélectionnés par l'antigène. Le délai vient de la
+          sélection puis de la multiplication de ces lymphocytes B, pas d'un
+          transfert.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r4-selection-clonale | posé APRÈS le chapitre 5
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-selection-clonale
+    rung: "R4"
+    habilete: raisonnement
+    skill_code: svt_moyens_defense
+    tags: [checkpoint, formative, misconception_driven, svt_moyens_defense]
+    primary_misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
+    item_source: original
+    lesson_placement: after_R4
+
+    stem: |
+      Pourquoi la première réponse adaptative met-elle plusieurs jours à devenir
+      efficace, alors que l'inflammation, elle, démarre en quelques heures ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Parce que l'antigène doit d'abord sélectionner, dans un répertoire déjà là, le lymphocyte rare dont le récepteur lui correspond — puis ce lymphocyte se multiplie et se différencie."
+        correct: true
+        feedback: |
+          Oui : le temps perdu est un temps de **multiplication**, pas
+          d'invention. Le bon lymphocyte existait déjà avant l'infection, mais
+          en très petit nombre ; il faut des jours pour en obtenir un clone
+          assez nombreux, puis des plasmocytes capables de sécréter des
+          anticorps en quantité utile.
+
+      - id: B
+        text: "Parce que l'inflammation est une réponse plus faible, donc plus rapide à mettre en place ; la réponse adaptative est cette même réaction, simplement poussée plus loin."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
+        feedback: |
+          Modèle détecté : ranger les deux immunités sur une même échelle
+          d'intensité. Elles ne diffèrent pas par le degré mais par la logique :
+          l'une réagit sans identifier, l'autre identifie avant d'agir. Le délai
+          de l'adaptative n'est pas le prix d'une puissance supérieure, c'est le
+          prix de la sélection puis de la multiplication d'un clone.
+
+      - id: C
+        text: "Parce que les lymphocytes T doivent d'abord fabriquer les anticorps, puis les transmettre aux lymphocytes B, seuls capables de les libérer dans le sang."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-lb-lt
+        feedback: |
+          Modèle détecté : faire des deux lignées les deux moitiés d'une même
+          chaîne de production. Le lymphocyte B sélectionné se différencie
+          lui-même en plasmocyte et sécrète ses anticorps : aucun transfert
+          depuis un lymphocyte T n'a lieu. Les lymphocytes T ont leurs propres
+          rôles — détruire une cellule infectée (T8), coordonner la réponse (T4).
+
+      - id: D
+        text: "Parce qu'il faut du temps aux anticorps déjà présents dans le sang pour percer, une à une, la paroi de chaque bactérie de la population infectante."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.anticorps-detruisent-directement
+        feedback: |
+          Modèle détecté : voir l'anticorps comme une arme qui perce au contact.
+          Un anticorps neutralise, agglutine ou marque — la destruction revient à
+          un autre acteur, le phagocyte le plus souvent. Et contre un antigène
+          jamais rencontré, aucun anticorps spécifique ne circule au départ :
+          c'est bien leur production qui prend ces jours-là.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-5 | id: cp-r5-anticorps | posé APRÈS le chapitre 6
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-anticorps
+    rung: "R5"
+    habilete: comprehension
+    skill_code: svt_moyens_defense
+    tags: [checkpoint, formative, misconception_driven, svt_moyens_defense]
+    primary_misconception: mc.svt.svt_moyens_defense.anticorps-detruisent-directement
+    item_source: original
+    lesson_placement: after_R5
+
+    stem: |
+      Un anticorps s'est fixé sur l'antigène d'une bactérie circulant dans le
+      sang. Que se passe-t-il, du fait de cette seule liaison ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "La bactérie est immobilisée, agglutinée avec ses semblables et marquée ; sa destruction sera l'affaire d'un phagocyte, qui viendra ingérer le complexe immun."
+        correct: true
+        feedback: |
+          Exactement — l'anticorps agit toujours de façon indirecte. Ses deux
+          sites de fixation lui permettent de relier plusieurs bactéries entre
+          elles (agglutination) et de bloquer leur capacité d'adhésion
+          (neutralisation) ; le complexe immun ainsi formé est ensuite ingéré
+          par un phagocyte. Marquer n'est pas détruire.
+
+      - id: B
+        text: "La paroi de la bactérie est percée par l'anticorps au point de contact, et son contenu se répand : la liaison est à elle seule la mise à mort."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.anticorps-detruisent-directement
+        feedback: |
+          Modèle détecté : l'anticorps-arme, qui tue au contact. Rien dans sa
+          structure ne le permet : c'est une protéine en Y dont les deux
+          extrémités se fixent à un antigène, sans activité destructrice propre.
+          La leçon te donne le test qui le prouve — dans le tube d'agglutination,
+          les bactéries s'amassent, elles ne disparaissent pas.
+
+      - id: C
+        text: "L'anticorps entraîne la bactérie jusque dans une cellule voisine, où il achèvera de la détruire à l'abri, hors de portée du reste du sang."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.portee-des-anticorps-mal-situee
+        feedback: |
+          Modèle détecté : mal situer le terrain d'action des anticorps. Ils
+          agissent dans les liquides de l'organisme, sur ce qui est libre ou
+          extracellulaire — jamais à l'intérieur d'une cellule, où ils ne
+          pénètrent pas. Ce qui se passe à l'intérieur d'une cellule relève
+          d'une tout autre réponse, celle du chapitre 7.
+
+      - id: D
+        text: "Le lymphocyte B qui a produit cet anticorps vient au contact de la bactérie et la détruit lui-même, la liaison ayant servi à le guider jusqu'à elle."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-lb-lt
+        feedback: |
+          Modèle détecté : prêter au lymphocyte B une action par contact direct,
+          qui est celle du lymphocyte T cytotoxique. Le lymphocyte B, devenu
+          plasmocyte, sécrète des anticorps qui partent agir à distance dans le
+          sang ; lui-même ne se déplace pas vers sa cible et ne détruit rien par
+          contact.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-6 | id: cp-r6-lt8 | posé APRÈS le chapitre 7
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-lt8
+    rung: "R6"
+    habilete: raisonnement
+    skill_code: svt_moyens_defense
+    tags: [checkpoint, formative, misconception_driven, svt_moyens_defense]
+    primary_misconception: mc.svt.svt_moyens_defense.portee-des-anticorps-mal-situee
+    item_source: original
+    lesson_placement: after_R6
+
+    stem: |
+      Un virus a pénétré dans une cellule de l'organisme et s'y multiplie sans
+      jamais repasser par le milieu extérieur. Des anticorps spécifiques de ce
+      virus circulent dans le sang. Comment l'organisme peut-il encore agir ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Les anticorps circulants traversent la membrane de la cellule infectée et neutralisent les particules virales à l'intérieur, où elles se multiplient."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.portee-des-anticorps-mal-situee
+        feedback: |
+          Modèle détecté : faire entrer les anticorps là où ils n'ont pas accès.
+          Un anticorps agit sur ce qui est libre ou extracellulaire : une fois le
+          virus entré, il est hors de sa portée. C'est exactement le problème que
+          ce chapitre résout — et il le résout par une autre voie.
+
+      - id: B
+        text: "Un lymphocyte T cytotoxique reconnaît le fragment viral affiché à la surface de la cellule et détruit cette cellule elle-même, par contact direct."
+        correct: true
+        feedback: |
+          Oui — et c'est un choix radical : pour supprimer l'usine, on supprime
+          la cellule. Le lymphocyte T8, sélectionné puis différencié en
+          lymphocyte T cytotoxique, ne s'attaque pas au virus mais à la cellule
+          qui l'héberge, reconnue grâce au fragment viral qu'elle expose. Les
+          anticorps, eux, restent utiles contre les particules encore libres.
+
+      - id: C
+        text: "Aucun anticorps spécifique n'est produit contre un virus de ce type, puisqu'il n'est jamais accessible : l'organisme se repose entièrement sur la phagocytose."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.portee-des-anticorps-mal-situee
+        feedback: |
+          Modèle détecté : conclure de l'inefficacité des anticorps dans un cas à
+          leur absence pure et simple. Ils sont bel et bien produits, et ils
+          servent — sur les particules virales encore libres, avant qu'elles
+          n'infectent d'autres cellules. Ce qui manque, c'est un moyen d'agir sur
+          celles qui sont déjà entrées : c'est le rôle du lymphocyte T8.
+
+      - id: D
+        text: "Le plasmocyte issu du lymphocyte B se déplace jusqu'à la cellule infectée et la détruit par contact, ce qui met fin à la multiplication du virus."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-lb-lt
+        feedback: |
+          Modèle détecté : donner au plasmocyte le mode d'action du lymphocyte T
+          cytotoxique. Le plasmocyte est une usine à anticorps : il sécrète, et
+          ce sont ses anticorps qui voyagent. La destruction d'une cellule par
+          contact direct appartient à la lignée T, pas à la lignée B.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-8 | id: cp-r8-memoire | posé APRÈS le chapitre 9
+  #        Ferme l'arc du chapitre 1 : la seconde griffure.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r8-memoire
+    rung: "R8"
+    habilete: raisonnement
+    skill_code: svt_moyens_defense
+    tags: [checkpoint, formative, misconception_driven, svt_moyens_defense]
+    primary_misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
+    item_source: original
+    lesson_placement: after_R8
+
+    stem: |
+      Retour à la seconde griffure du chapitre 1 : même bactérie, quelques mois
+      plus tard, infection jugulée bien plus vite. Qu'est-ce qui a changé entre
+      les deux rencontres ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Des lymphocytes B et T mémoire, sélectionnés lors de la première rencontre, persistent en grand nombre : l'étape la plus lente est déjà faite."
+        correct: true
+        feedback: |
+          Oui. La première rencontre n'a pas seulement éliminé l'intrus : elle a
+          laissé derrière elle un clone déjà sélectionné et durable. La seconde
+          fois, il n'y a plus à chercher le bon lymphocyte parmi des millions,
+          seulement à le multiplier — d'où une réponse plus rapide, plus intense,
+          et souvent invisible pour la personne.
+
+      - id: B
+        text: "La réaction inflammatoire est devenue plus intense qu'à la première griffure : c'est elle qui conserve le souvenir de l'intrus rencontré."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
+        feedback: |
+          Modèle détecté : loger la mémoire dans l'immunité innée. L'inflammation
+          répond avec la même intensité à chaque rencontre, quelle que soit
+          l'histoire du sujet — c'est même l'un des trois traits qui la
+          distinguent de l'adaptative dans le tableau du chapitre 4. La mémoire
+          est portée par des lymphocytes.
+
+      - id: C
+        text: "Les anticorps produits la première fois atteignent désormais la bactérie jusque dans les cellules où elle aurait pu se réfugier, ce qui accélère l'élimination."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.portee-des-anticorps-mal-situee
+        feedback: |
+          Modèle détecté : élargir le terrain d'action des anticorps avec le
+          temps. Leur portée ne change pas d'une rencontre à l'autre : ils
+          agissent sur ce qui est libre ou extracellulaire, la première fois
+          comme la seconde. Ce qui a changé, c'est la vitesse à laquelle
+          l'organisme peut en produire beaucoup.
+
+      - id: D
+        text: "Les lymphocytes T mémoire sécrètent eux-mêmes les anticorps dès la seconde rencontre, ce qui évite le détour par les lymphocytes B et fait gagner plusieurs jours."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-lb-lt
+        feedback: |
+          Modèle détecté : attribuer la sécrétion d'anticorps à la lignée T. La
+          répartition ne change pas avec la mémoire : les anticorps viennent des
+          plasmocytes, issus des lymphocytes B. Il existe bien des lymphocytes T
+          mémoire, mais ils accélèrent la réponse cellulaire et la coordination,
+          pas la production d'anticorps.
