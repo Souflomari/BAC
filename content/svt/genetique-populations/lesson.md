@@ -10,6 +10,8 @@ Cette maladie ne s'exprime que chez les individus qui portent **deux** exemplair
 
 **Avant de lire la suite, prends position.** À ton avis, dans cette même population, à quel point les porteurs sains (hétérozygotes, invisibles) sont-ils fréquents ? Choisis un ordre de grandeur avant de continuer : à peu près aussi rares que les malades (1 sur 10 000), dix fois plus fréquents (1 sur 1 000), ou bien plus fréquents encore (1 sur 100, 1 sur 50) ?
 
+[[checkpoint:cp-r0-predict]]
+
 Garde ta réponse en tête.
 
 ---
@@ -108,6 +110,8 @@ Le terme $\frac{1}{2}f(B//b)$, c'est exactement la part d'allèle $B$ qui se cac
 
 **Le réflexe à corriger :** si on te donne une fréquence génotypique et qu'on te demande une fréquence allélique (ou l'inverse), ce n'est jamais le même nombre — sauf dans le cas particulier, très rare, où toute la population serait homozygote pour un seul allèle. Vérifie toujours : est-ce qu'on parle d'individus, ou d'exemplaires de gène ?
 
+[[checkpoint:cp-r1-frequences]]
+
 [[figure:comptage-alleles]]
 
 ---
@@ -191,6 +195,8 @@ $$p' = p$$
 
 Remarque bien ce qu'on a supposé en construisant l'échiquier : que les gamètes s'unissent **au hasard**, dans un pool suffisamment grand pour que les proportions $p$ et $q$ restent stables d'un tirage à l'autre. Rien ne garantit encore que la population des escargots vérifie réellement ces conditions. C'est précisément la question du prochain chapitre.
 
+[[checkpoint:cp-r2-hw]]
+
 ---
 
 ## R3 — Les conditions de Hardy-Weinberg : quand le modèle s'applique (et quand il ment)
@@ -226,6 +232,8 @@ L'erreur la plus fréquente à ce stade : appliquer $p^2 + 2pq + q^2 = 1$ à n'i
 ### Vérification rapide
 
 Une population de petite taille, isolée sur une île, montre des fréquences génotypiques qui s'écartent fortement de $p^2$, $2pq$, $q^2$ d'une génération à l'autre, sans qu'aucune maladie ni aucun avantage de survie ne soit en cause, et sans échange d'individus avec l'extérieur. Quelle condition manque le plus probablement ? (Réponse : le grand effectif — c'est la signature de la dérive génétique, détaillée au chapitre 6.)
+
+[[checkpoint:cp-r3-conditions]]
 
 ---
 
@@ -279,6 +287,8 @@ Une idée fausse, et tenace : penser qu'un allèle récessif, rare à l'état ho
 
 L'explication tient dans le calcul qu'on vient de faire : la quasi-totalité des exemplaires de l'allèle $a$ ($99\,\%$ ou plus, dans notre exemple) est cachée dans des porteurs hétérozygotes parfaitement sains — pas dans les rares malades. Ces porteurs se reproduisent tout aussi normalement que n'importe qui, et transmettent leur exemplaire de $a$ exactement comme n'importe quel autre allèle. Rien, dans le simple fait d'être rare à l'état homozygote, ne réduit les chances de transmission de l'allèle — il reste protégé, invisible, indéfiniment, tant qu'aucune sélection ne vient réellement défavoriser ceux qui le portent.
 
+[[checkpoint:cp-r4-porteurs]]
+
 ---
 
 ## R5 — Ce qui fait évoluer les fréquences alléliques
@@ -310,6 +320,8 @@ Dans une population de petit effectif, les proportions réellement transmises d'
 ### Vérification rapide
 
 Une espèce de plantes voit une partie de sa population coloniser une nouvelle île, à partir d'un tout petit nombre de graines fondatrices. Quelques générations plus tard, la fréquence d'un allèle, sur cette île, est très différente de celle de la population d'origine, sans qu'aucune maladie ni avantage de survie n'ait pu être identifié. Quel facteur d'évolution est le plus probablement en cause ? (Réponse : la dérive génétique, favorisée ici par le tout petit effectif fondateur — un cas particulier qu'on appelle parfois « effet fondateur », mais qui reste, dans son mécanisme, une dérive génétique ordinaire.)
+
+[[checkpoint:cp-r5-evolution]]
 
 ---
 

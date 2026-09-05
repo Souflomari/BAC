@@ -1,0 +1,389 @@
+notion: genetique-populations
+skill_code: svt_genetique_pop
+
+# ──────────────────────────────────────────────────────────────────────────────
+# POINTS D'ARRÊT DANS LA LEÇON (campagne de conversion du sommet — SVT)
+#
+# Sondes formatives posées DANS la leçon, pas le banc de fin. Aucun score,
+# aucune série, aucun décompte ; le plancher du banc n'est pas modifié.
+#
+# Placement (identifiants = marqueurs [[checkpoint:…]] de lesson.md) :
+#   cp-r0-predict     (DANS le chapitre 1) — parier sur la fréquence des
+#                     porteurs sains avant que la leçon ne la donne.
+#   cp-r1-frequences  (après le chapitre 2) — allélique n'est pas génotypique.
+#   cp-r2-hw          (après le chapitre 3) — ce que l'échiquier suppose.
+#   cp-r3-conditions  (après le chapitre 4) — quand le modèle ment.
+#   cp-r4-porteurs    (après le chapitre 5) — le récessif ne disparaît pas.
+#   cp-r5-evolution   (après le chapitre 6) — sélection, dérive, migration.
+#
+# CHAQUE distracteur porte un identifiant réel de l'inventaire de items.yaml.
+# Aucune erreur nouvelle n'est déclarée : les sondes réutilisent les quatre
+# modèles existants, pour ne pas rouvrir de dette de couverture.
+#
+# Note d'écriture : pas de commande TeX à contre-oblique dans un choix entre
+# guillemets doubles — les fréquences sont écrites $p$, $q$, $2pq$, $q^2$ ou
+# en toutes lettres, jamais avec une fraction TeX.
+#
+# Garde de périmètre : 2ème Bac SVT/PC — pool génique, fréquences alléliques et
+# génotypiques, modèle de Hardy-Weinberg et ses conditions, calcul de la
+# fréquence des porteurs, facteurs d'évolution des fréquences. La spéciation et
+# la phylogénie relèvent d'autres notions.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: svt_genetique_pop
+    tags: [checkpoint, formative, misconception_driven, svt_genetique_pop, hook_commit]
+    primary_misconception: mc.svt.svt_genetique_pop.allele-recessif-condamne
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Une personne sur 10 000 naît albinos, et l'albinisme n'apparaît que chez
+      les individus portant deux exemplaires de l'allèle. **Engage-toi avant
+      de lire la suite :** à quelle fréquence attends-tu les porteurs sains ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Un peu plus rares que les malades : un allèle qui rend malade est contre-sélectionné, et finit toujours par se raréfier jusqu'à ne plus subsister que chez quelques individus."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.allele-recessif-condamne
+        feedback: |
+          Modèle détecté : croire qu'un allèle récessif désavantagé s'efface de
+          la population. Le calcul du chapitre 5 dira l'inverse, et de façon
+          spectaculaire : la quasi-totalité des exemplaires de l'allèle sont
+          abrités chez des hétérozygotes, invisibles pour la sélection. Un
+          allèle récessif rare est en fait presque intouchable.
+
+      - id: B
+        text: "Environ un individu sur cinquante — soit près de deux cents fois plus fréquents que les malades, alors même qu'aucun d'entre eux ne montre le moindre signe."
+        correct: true
+        feedback: |
+          C'est bien l'ordre de grandeur mesuré, et il surprend presque tout le
+          monde. Le rapport de 200 se déduira d'un seul chiffre observable par
+          le modèle de Hardy-Weinberg : la fréquence des malades vaut $q^2$,
+          celle des porteurs $2pq$, et quand $q$ est petit le second écrase le
+          premier.
+
+      - id: C
+        text: "Exactement un sur 10 000 également, puisque la fréquence de l'allèle dans la population et la fréquence des individus qui le portent désignent la même quantité."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.frequence-allelique-vs-genotypique
+        feedback: |
+          Modèle détecté : confondre la fréquence d'un allèle avec celle d'un
+          génotype. Ce sont deux nombres différents, et tout le chapitre 2 sert
+          à les séparer : un allèle se compte sur l'ensemble des exemplaires du
+          gène présents dans la population, un génotype se compte sur les
+          individus.
+
+      - id: D
+        text: "Un sur cent, la moitié de la fréquence des malades étant portée par des hétérozygotes et l'autre moitié par des homozygotes atteints."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.frequence-allelique-vs-genotypique
+        feedback: |
+          Modèle détecté : répartir les exemplaires de l'allèle à parts égales
+          entre les deux génotypes. La répartition est très déséquilibrée quand
+          l'allèle est rare : sur 10 000 personnes, un seul homozygote porte
+          2 exemplaires, tandis que 200 hétérozygotes en portent 200. C'est ce
+          déséquilibre que le calcul va chiffrer.
+
+  - id: cp-r1-frequences
+    rung: "R1"
+    habilete: application
+    skill_code: svt_genetique_pop
+    tags: [checkpoint, formative, misconception_driven, svt_genetique_pop]
+    primary_misconception: mc.svt.svt_genetique_pop.frequence-allelique-vs-genotypique
+    item_source: original
+    lesson_placement: after_R1
+
+    stem: |
+      Dans une population de 100 escargots, on compte 36 individus $B//B$,
+      48 individus $B//b$ et 16 individus $b//b$. Quelle est la fréquence de
+      l'allèle $B$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "0,36 — c'est la proportion d'individus qui possèdent le génotype $B//B$, donc la proportion de l'allèle $B$ dans cette population."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.frequence-allelique-vs-genotypique
+        feedback: |
+          Modèle détecté : recopier une fréquence génotypique en croyant lire
+          une fréquence allélique. Cette réponse oublie tout l'allèle $B$ caché
+          chez les 48 hétérozygotes — la moitié de leurs exemplaires du gène.
+          Un allèle se compte sur les exemplaires du gène, pas sur les
+          individus.
+
+      - id: B
+        text: "0,60 — en ajoutant à la fréquence des $B//B$ la moitié de celle des hétérozygotes, puisque chaque $B//b$ n'apporte qu'un exemplaire de $B$ sur deux."
+        correct: true
+        feedback: |
+          Oui : $0{,}36 + 0{,}24 = 0{,}60$. La formule $p = f(B//B) + $ la moitié
+          de $f(B//b)$ n'est pas une recette à retenir mais un comptage : sur
+          200 exemplaires du gène, 72 viennent des homozygotes $B//B$ et 48 des
+          hétérozygotes, soit 120 sur 200.
+
+      - id: C
+        text: "0,84 — en ajoutant la fréquence des $B//B$ à celle des $B//b$, puisque ces deux génotypes contiennent l'un et l'autre l'allèle $B$."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.frequence-allelique-vs-genotypique
+        feedback: |
+          Modèle détecté : compter chaque hétérozygote pour un exemplaire
+          entier. Un $B//b$ ne porte qu'un $B$ sur les deux exemplaires du gène
+          qu'il possède : il compte pour une moitié, pas pour un. Le test de
+          cohérence : avec ta valeur, $p + q$ dépasserait 1.
+
+      - id: D
+        text: "0,48 — c'est la fréquence des hétérozygotes, seuls individus chez qui l'allèle $B$ se transmet réellement à la génération suivante."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.frequence-allelique-vs-genotypique
+        feedback: |
+          Modèle détecté : réserver la transmission aux hétérozygotes. Les
+          homozygotes $B//B$ transmettent eux aussi l'allèle $B$ — et même à
+          tous leurs descendants, ce qui en fait la source la plus sûre. La
+          fréquence allélique compte les exemplaires portés par TOUS les
+          individus.
+
+  - id: cp-r2-hw
+    rung: "R2"
+    habilete: comprehension
+    skill_code: svt_genetique_pop
+    tags: [checkpoint, formative, misconception_driven, svt_genetique_pop]
+    primary_misconception: mc.svt.svt_genetique_pop.conditions-hw-mal-maniees
+    item_source: original
+    lesson_placement: after_R2
+
+    stem: |
+      L'échiquier qui produit $p^2 + 2pq + q^2 = 1$ repose sur une hypothèse
+      précise, faite au moment même où on le construit. Laquelle ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Que les gamètes s'unissent au hasard, chacun ayant la même chance de rencontrer n'importe quel autre, quel que soit le génotype dont il provient."
+        correct: true
+        feedback: |
+          Oui — et c'est ce qui fait de l'échiquier un calcul de probabilités
+          plutôt qu'une observation. Écrire que la case $B$-$B$ vaut $p \times p$
+          suppose deux tirages indépendants dans un même pool. Le chapitre 4 va
+          énumérer les conditions qui rendent cette hypothèse acceptable, et
+          celles qui la ruinent.
+
+      - id: B
+        text: "Que l'allèle dominant est plus fréquent que l'allèle récessif, sans quoi les proportions $p^2$ et $q^2$ ne pourraient pas être calculées."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.conditions-hw-mal-maniees
+        feedback: |
+          Modèle détecté : inventer une condition qui n'existe pas. Le modèle ne
+          demande rien à la dominance ni au rang des fréquences : il fonctionne
+          aussi bien avec $q$ supérieur à $p$. Ce qu'il demande, c'est
+          l'indépendance des tirages — donc la panmixie, un grand effectif, et
+          l'absence de migration, de mutation et de sélection.
+
+      - id: C
+        text: "Que la population soit à l'équilibre depuis un grand nombre de générations, l'équilibre ne pouvant s'installer que progressivement."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.conditions-hw-mal-maniees
+        feedback: |
+          Modèle détecté : imaginer une installation lente de l'équilibre. Le
+          résultat remarquable du chapitre 3 est justement qu'il s'établit en
+          UNE génération de panmixie, et se maintient ensuite tant que les
+          conditions tiennent. Ce n'est pas une convergence lente, c'est un
+          régime atteint d'emblée.
+
+      - id: D
+        text: "Que les trois génotypes aient la même fréquence au départ, l'échiquier partant nécessairement d'une population équirépartie."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.frequence-allelique-vs-genotypique
+        feedback: |
+          Modèle détecté : confondre l'équiprobabilité des CASES de l'échiquier
+          avec l'égalité des fréquences génotypiques. Les cases sont pondérées
+          par $p$ et $q$, qui peuvent valoir n'importe quoi. C'est bien pour
+          cela que le résultat s'écrit $p^2$, $2pq$, $q^2$ et non « un quart,
+          une moitié, un quart ».
+
+  - id: cp-r3-conditions
+    rung: "R3"
+    habilete: raisonnement
+    skill_code: svt_genetique_pop
+    tags: [checkpoint, formative, misconception_driven, svt_genetique_pop]
+    primary_misconception: mc.svt.svt_genetique_pop.conditions-hw-mal-maniees
+    item_source: original
+    lesson_placement: after_R3
+
+    stem: |
+      Sur une petite île, une population isolée de quelques dizaines
+      d'individus montre des fréquences génotypiques nettement différentes de
+      celles que prédit $p^2 + 2pq + q^2$. Comment interpréter cet écart ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Comme une réfutation du modèle : puisque la prédiction est démentie, la formule de Hardy-Weinberg est fausse et ne devrait pas être enseignée comme une loi."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.conditions-hw-mal-maniees
+        feedback: |
+          Modèle détecté : traiter un modèle conditionnel comme une loi
+          universelle, puis le rejeter quand il échoue. Hardy-Weinberg annonce
+          lui-même ses conditions ; une population de quelques dizaines
+          d'individus n'en remplit pas la première. L'écart ne réfute pas le
+          modèle — il indique laquelle de ses conditions manque.
+
+      - id: B
+        text: "Comme l'effet attendu du petit effectif : le tirage des gamètes s'écarte du hasard théorique par simple échantillonnage, ce qu'on appelle la dérive génétique."
+        correct: true
+        feedback: |
+          Oui, et c'est ainsi qu'il faut se servir du modèle : comme d'un
+          témoin. Quand l'observation s'écarte de la prédiction, on remonte à
+          celle des conditions qui est violée. Ici l'effectif — dix lancers de
+          pièce peuvent donner sept piles sans que la pièce soit truquée.
+
+      - id: C
+        text: "Comme le signe qu'un allèle récessif est en train de disparaître de cette île, les petites populations éliminant plus vite les allèles désavantagés."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.allele-recessif-condamne
+        feedback: |
+          Modèle détecté : lire toute variation de fréquence comme
+          l'élimination d'un récessif. La dérive n'a pas de direction : dans une
+          petite population, un allèle peut tout aussi bien devenir plus
+          fréquent par pur hasard d'échantillonnage — y compris un allèle
+          désavantagé.
+
+      - id: D
+        text: "Comme une erreur de mesure : les fréquences génotypiques observées se déduisent toujours des fréquences alléliques, l'écart ne peut donc venir que du comptage."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.frequence-allelique-vs-genotypique
+        feedback: |
+          Modèle détecté : croire que les fréquences génotypiques se déduisent
+          mécaniquement des fréquences alléliques. Cette déduction n'est valable
+          que sous les conditions de Hardy-Weinberg. En sens inverse, en
+          revanche, le comptage est toujours licite : des génotypes observés on
+          remonte toujours aux fréquences alléliques.
+
+  - id: cp-r4-porteurs
+    rung: "R4"
+    habilete: raisonnement
+    skill_code: svt_genetique_pop
+    tags: [checkpoint, formative, misconception_driven, svt_genetique_pop]
+    primary_misconception: mc.svt.svt_genetique_pop.allele-recessif-condamne
+    item_source: original
+    lesson_placement: after_R4
+
+    stem: |
+      Pour une maladie récessive touchant 1 individu sur 10 000, on trouve
+      environ 1 porteur sain sur 50. Pourquoi les porteurs sont-ils si
+      nombreux devant les malades ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Parce que la fréquence des malades vaut $q^2$ et celle des porteurs $2pq$ : quand $q$ est petit, élever au carré écrase le premier terme bien plus que le second."
+        correct: true
+        feedback: |
+          Oui. Avec $q = 0{,}01$, on a $q^2 = 0{,}0001$ mais $2pq$ voisin de
+          $0{,}02$ : un rapport de 200. Et cela a une conséquence de fond, celle
+          du paragraphe suivant — la quasi-totalité des exemplaires de l'allèle
+          se trouve chez des porteurs sains, hors d'atteinte de la sélection.
+
+      - id: B
+        text: "Parce que l'allèle récessif est en train de disparaître : les porteurs sont les derniers à en conserver un exemplaire avant son élimination complète de la population."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.allele-recessif-condamne
+        feedback: |
+          Modèle détecté : voir un allèle récessif rare comme un allèle en
+          voie d'extinction. Le calcul dit le contraire : plus l'allèle est
+          rare, plus la part qui se cache chez les hétérozygotes est écrasante,
+          et donc plus il est protégé de la sélection. Un récessif rare est
+          extrêmement difficile à éliminer.
+
+      - id: C
+        text: "Parce que la fréquence des porteurs se lit directement sur $q$, tandis que celle des malades se lit sur $q^2$ : ce sont deux fréquences alléliques différentes."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.frequence-allelique-vs-genotypique
+        feedback: |
+          Modèle détecté : appeler « fréquence allélique » ce qui est une
+          fréquence génotypique. $q$ est la fréquence de l'ALLÈLE ; $q^2$ et
+          $2pq$ sont des fréquences de GÉNOTYPES parmi les individus. La
+          fréquence des porteurs n'est pas $q$ mais $2pq$ — proche de $2q$ quand
+          $q$ est petit, donc environ le double.
+
+      - id: D
+        text: "Parce que la sélection naturelle n'agit que sur les phénotypes, et ne peut donc modifier aucune fréquence allélique dans la population."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.selection-sans-effet-sur-les-frequences
+        feedback: |
+          Modèle détecté : conclure de « la sélection voit les phénotypes » à
+          « la sélection ne change pas les fréquences alléliques ». Elle agit
+          bien sur les phénotypes, mais en éliminant des individus elle
+          soustrait les allèles qu'ils portaient : les fréquences changent, par
+          effet indirect. Ici, elle est simplement très inefficace, parce
+          qu'elle ne voit presque jamais l'allèle.
+
+  - id: cp-r5-evolution
+    rung: "R5"
+    habilete: comprehension
+    skill_code: svt_genetique_pop
+    tags: [checkpoint, formative, misconception_driven, svt_genetique_pop]
+    primary_misconception: mc.svt.svt_genetique_pop.selection-sans-effet-sur-les-frequences
+    item_source: original
+    lesson_placement: after_R5
+
+    stem: |
+      Un papillon existe sous deux formes, claire et sombre. Un changement de
+      milieu rend la forme claire beaucoup plus visible pour les prédateurs.
+      Que devient le pool génique de la population ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Il ne change pas : la prédation retire des individus au phénotype clair, mais les fréquences alléliques restent celles du pool de départ."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.selection-sans-effet-sur-les-frequences
+        feedback: |
+          Modèle détecté : séparer l'action sur les phénotypes de son effet sur
+          les allèles. Un individu éliminé emporte les allèles qu'il portait :
+          il ne se reproduit pas, donc il n'en transmet aucun. Retirer des
+          porteurs de la forme claire fait mécaniquement baisser la fréquence de
+          l'allèle correspondant.
+
+      - id: B
+        text: "La fréquence de l'allèle responsable de la forme claire diminue de génération en génération, parce que ses porteurs se reproduisent moins."
+        correct: true
+        feedback: |
+          Oui — et c'est ce qui fait de la sélection naturelle un facteur
+          d'évolution au sens de cette leçon. Elle ne modifie pas les individus :
+          elle modifie la COMPOSITION du pool génique, en pesant sur qui se
+          reproduit. Hardy-Weinberg décrit ce qui se passe quand rien de tel
+          n'agit ; ici, quelque chose agit.
+
+      - id: C
+        text: "L'allèle de la forme claire disparaît complètement en quelques générations, tout allèle désavantagé étant éliminé sans délai d'une population."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.allele-recessif-condamne
+        feedback: |
+          Modèle détecté : passer de « désavantagé » à « éliminé ». La
+          diminution est réelle mais lente, surtout si l'allèle est récessif :
+          la plus grande part de ses exemplaires reste alors abritée chez des
+          hétérozygotes que le prédateur ne distingue pas. C'est exactement le
+          calcul du chapitre 5.
+
+      - id: D
+        text: "Les fréquences génotypiques cessent de suivre $p^2 + 2pq + q^2$, mais les fréquences alléliques restent stables : seule la répartition entre génotypes se déforme."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.selection-sans-effet-sur-les-frequences
+        feedback: |
+          Modèle détecté : accorder à la sélection un effet sur les génotypes
+          seulement. Les deux niveaux sont touchés : la génération suivante
+          n'est plus construite sur le même pool, puisque des allèles ont
+          disparu avec les individus éliminés. C'est bien $p$ et $q$ qui se
+          déplacent.

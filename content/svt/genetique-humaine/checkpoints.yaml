@@ -1,0 +1,385 @@
+notion: genetique-humaine
+skill_code: svt_genetique_humaine
+
+# ──────────────────────────────────────────────────────────────────────────────
+# POINTS D'ARRÊT DANS LA LEÇON (campagne de conversion du sommet — SVT)
+#
+# Sondes formatives posées DANS la leçon, pas le banc de fin. Aucun score,
+# aucune série, aucun décompte ; le plancher du banc n'est pas modifié.
+#
+# Placement (identifiants = marqueurs [[checkpoint:…]] de lesson.md) :
+#   cp-r0-predict      (DANS le chapitre 1) — hasard statistique, ou asymétrie
+#                      chromosomique ?
+#   cp-r1-caryotype    (après le chapitre 2) — autosomes et gonosomes.
+#   cp-r2-recessif     (après le chapitre 3) — le test de récessivité, et ce
+#                      qu'il ne tranche PAS.
+#   cp-r3-lie-a-l-x    (après le chapitre 4) — les deux tests de localisation.
+#   cp-r4-hemizygotie  (après le chapitre 5) — un seul X, rien pour masquer.
+#   cp-r5-probabilite  (après le chapitre 6) — conditionner sur ce qu'on sait.
+#
+# CHAQUE distracteur porte un identifiant réel de l'inventaire de items.yaml.
+# Aucune erreur nouvelle n'est déclarée : les sondes réutilisent les cinq
+# modèles existants, pour ne pas rouvrir de dette de couverture.
+#
+# Note d'écriture : pas de commande TeX à contre-oblique dans un choix entre
+# guillemets doubles. Les génotypes s'écrivent $X^a Y$ (l'exposant n'a pas
+# besoin de backslash) et les fractions en toutes lettres ou sous la forme
+# $1/6$.
+#
+# Garde de périmètre : 2ème Bac SVT/PC — lecture d'arbre généalogique,
+# autosomes et gonosomes, tests dominant/récessif et autosomal/lié au sexe,
+# hémizygotie, calcul de probabilité conditionnée. Les anomalies
+# chromosomiques (trisomies) relèvent d'un autre chapitre.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: svt_genetique_humaine
+    tags: [checkpoint, formative, misconception_driven, svt_genetique_humaine, hook_commit]
+    primary_misconception: mc.svt.svt_genetique_humaine.hemizygotie-masculine-ignoree
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Le daltonisme touche environ un homme sur douze, et une femme bien plus
+      rarement. **Engage-toi avant de lire la suite :** d'où peut venir un tel
+      écart entre les sexes ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "D'une exposition différente à un facteur du milieu : un trouble de la vision a toujours une cause acquise, et les hommes la rencontreraient plus souvent au cours de leur vie."
+        correct: false
+        misconception: mc.svt.svt_genetique_humaine.dominance-mal-deduite
+        feedback: |
+          Modèle détecté : chercher dans le milieu ce qui vient du génotype. Le
+          daltonisme est présent dès la naissance et se transmet dans les
+          familles selon un schéma régulier — deux traits qu'aucun facteur
+          d'exposition n'expliquerait. La cause est génétique, et l'écart entre
+          les sexes va se déduire du seul caryotype.
+
+      - id: B
+        text: "Du fait que l'homme ne possède qu'un seul chromosome X : un allèle récessif porté par cet X s'exprime chez lui sans qu'aucun second exemplaire ne puisse le masquer."
+        correct: true
+        feedback: |
+          C'est exactement cela, et toute la leçon consiste à l'établir
+          proprement. Une femme doit recevoir l'allèle deux fois pour être
+          daltonienne ; un homme n'a qu'un X, donc une seule occasion — mais
+          aussi aucune protection. Cette situation porte un nom, l'hémizygotie,
+          que tu rencontreras au chapitre 5.
+
+      - id: C
+        text: "Du fait que l'allèle du daltonisme est dominant chez l'homme et récessif chez la femme : c'est cette différence de dominance qui crée l'écart de fréquence."
+        correct: false
+        misconception: mc.svt.svt_genetique_humaine.dominance-mal-deduite
+        feedback: |
+          Modèle détecté : faire dépendre la dominance du sexe de la personne.
+          La dominance est une relation entre DEUX allèles présents ensemble ;
+          elle ne change pas d'un individu à l'autre. Chez l'homme, il n'y a
+          justement pas de second allèle avec lequel entrer en relation — ce
+          n'est pas une dominance différente, c'est une absence de partenaire.
+
+      - id: D
+        text: "Du fait que le gène du daltonisme est porté par le chromosome Y, présent chez les hommes et absent chez les femmes, ce qui explique qu'elles soient rarement atteintes."
+        correct: false
+        misconception: mc.svt.svt_genetique_humaine.autosomes-gonosomes-confondus
+        feedback: |
+          Modèle détecté : loger sur l'Y ce qui est porté par l'X. Un caractère
+          porté par l'Y se transmettrait de père en fils, à TOUS les fils, et
+          aucune femme ne serait jamais atteinte. Or des femmes daltoniennes
+          existent, et un père daltonien n'a pas systématiquement des fils
+          daltoniens : l'Y est exclu par l'observation.
+
+  - id: cp-r1-caryotype
+    rung: "R1"
+    habilete: comprehension
+    skill_code: svt_genetique_humaine
+    tags: [checkpoint, formative, misconception_driven, svt_genetique_humaine]
+    primary_misconception: mc.svt.svt_genetique_humaine.autosomes-gonosomes-confondus
+    item_source: original
+    lesson_placement: after_R1
+
+    stem: |
+      On observe le caryotype d'un homme. Que peut-on en dire, en termes
+      d'autosomes et de gonosomes ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "22 paires d'autosomes et une paire de gonosomes formée de deux chromosomes différents, $X$ et $Y$, ce qui fait bien 46 chromosomes en tout."
+        correct: true
+        feedback: |
+          Oui. La 23ᵉ paire est la seule dont les deux chromosomes puissent être
+          différents, et c'est exactement de là que vient l'asymétrie entre les
+          sexes. Chez la femme, cette même paire est $XX$ — deux exemplaires du
+          même chromosome, donc deux exemplaires de chaque gène qu'il porte.
+
+      - id: B
+        text: "23 paires d'autosomes, auxquelles s'ajoutent les deux gonosomes $X$ et $Y$ : les chromosomes sexuels viennent en supplément des paires ordinaires."
+        correct: false
+        misconception: mc.svt.svt_genetique_humaine.autosomes-gonosomes-confondus
+        feedback: |
+          Modèle détecté : ajouter les gonosomes au lieu de les compter parmi
+          les 23 paires. Le total serait alors de 48 chromosomes. Les gonosomes
+          FORMENT la 23ᵉ paire, ils ne s'y ajoutent pas : 22 paires d'autosomes
+          plus une paire de gonosomes.
+
+      - id: C
+        text: "22 paires d'autosomes et une paire de gonosomes, tous deux présents en deux exemplaires comme n'importe quelle autre paire du caryotype humain."
+        correct: false
+        misconception: mc.svt.svt_genetique_humaine.hemizygotie-masculine-ignoree
+        feedback: |
+          Modèle détecté : traiter $X$ et $Y$ comme deux exemplaires d'un même
+          chromosome. Ils forment une paire au sens de l'appariement, mais ce
+          sont deux chromosomes DIFFÉRENTS, qui ne portent pas les mêmes gènes.
+          L'homme n'a donc qu'un seul exemplaire des gènes portés par l'X —
+          c'est le point sur lequel tout le reste de la leçon va s'appuyer.
+
+      - id: D
+        text: "23 paires en tout, dont les deux dernières sont des gonosomes : l'$X$ et l'$Y$ occupent chacun une paire distincte du caryotype."
+        correct: false
+        misconception: mc.svt.svt_genetique_humaine.autosomes-gonosomes-confondus
+        feedback: |
+          Modèle détecté : donner une paire à chaque gonosome. $X$ et $Y$ ne
+          sont pas deux paires mais les deux membres d'une seule et même paire,
+          la 23ᵉ. Compter deux paires reviendrait à donner 24 paires à l'homme
+          et 23 à la femme.
+
+  - id: cp-r2-recessif
+    rung: "R2"
+    habilete: raisonnement
+    skill_code: svt_genetique_humaine
+    tags: [checkpoint, formative, misconception_driven, svt_genetique_humaine]
+    primary_misconception: mc.svt.svt_genetique_humaine.axes-de-decision-melanges
+    item_source: original
+    lesson_placement: after_R2
+
+    stem: |
+      Dans un arbre généalogique, un couple de parents tous deux sains a une
+      fille atteinte. Que peut-on conclure, et sur quoi faut-il encore
+      suspendre son jugement ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "L'allèle responsable est récessif, et les deux parents sont porteurs sains ; en revanche, rien n'est encore tranché sur sa localisation chromosomique."
+        correct: true
+        feedback: |
+          Oui — et c'est le réflexe le plus rentable de la notion. Si l'allèle
+          était dominant, l'un des parents devrait être atteint pour pouvoir le
+          transmettre : l'observation le contredit. La récessivité est donc
+          acquise. Autosomal ou lié à l'X, c'est une AUTRE question, qui demande
+          les tests du chapitre 4.
+
+      - id: B
+        text: "L'allèle est récessif et porté par un autosome : le fait que les deux parents soient sains suffit à établir en même temps sa nature et sa localisation."
+        correct: false
+        misconception: mc.svt.svt_genetique_humaine.axes-de-decision-melanges
+        feedback: |
+          Modèle détecté : faire trancher deux axes par un seul test. Ce sont
+          deux questions indépendantes. Ici, comme il s'agit d'une FILLE
+          atteinte de père sain, la conclusion autosomale est bien la bonne —
+          mais elle vient du test A du chapitre 4, pas du raisonnement sur les
+          parents sains. Deux questions, deux tests.
+
+      - id: C
+        text: "L'allèle est dominant, puisqu'il finit par s'exprimer chez la fille alors qu'il ne s'exprimait chez aucun des deux parents."
+        correct: false
+        misconception: mc.svt.svt_genetique_humaine.dominance-mal-deduite
+        feedback: |
+          Modèle détecté : lire la dominance dans le fait qu'un caractère
+          apparaît. Le raisonnement est exactement inverse : un allèle dominant
+          s'exprime dès qu'il est présent, donc il ne peut pas traverser une
+          génération en silence. Un caractère qui saute une génération est la
+          signature d'un allèle RÉCESSIF.
+
+      - id: D
+        text: "Rien de certain : deux parents sains peuvent aussi bien porter un allèle dominant sans l'exprimer, si le chromosome qui le porte reste inactif chez eux."
+        correct: false
+        misconception: mc.svt.svt_genetique_humaine.dominance-mal-deduite
+        feedback: |
+          Modèle détecté : invoquer un chromosome « inactif » pour sauver
+          l'hypothèse dominante. Un allèle dominant présent s'exprime — c'est ce
+          que le mot veut dire, et il n'y a pas d'exception à invoquer au
+          programme. Le raisonnement par élimination est donc bien concluant.
+
+  - id: cp-r3-lie-a-l-x
+    rung: "R3"
+    habilete: application
+    skill_code: svt_genetique_humaine
+    tags: [checkpoint, formative, misconception_driven, svt_genetique_humaine]
+    primary_misconception: mc.svt.svt_genetique_humaine.axes-de-decision-melanges
+    item_source: original
+    lesson_placement: after_R3
+
+    stem: |
+      Une maladie récessive. Dans une famille, une fille est atteinte et son
+      père est phénotypiquement sain. Que peut-on en déduire sur la
+      localisation du gène ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Que la transmission récessive liée à l'$X$ est exclue : une fille atteinte devrait avoir reçu l'allèle de son père, or celui-ci n'a qu'un $X$ et serait donc atteint."
+        correct: true
+        feedback: |
+          Exact, et le raisonnement tient en une ligne. Une fille atteinte par
+          un allèle récessif de l'$X$ serait $X^a X^a$ : un $X^a$ de la mère, un
+          $X^a$ du père. Comme le père n'a qu'un seul $X$, le transmettre
+          signifierait être $X^a Y$, donc atteint. Il est sain : l'hypothèse
+          tombe, il reste l'autosomal récessif.
+
+      - id: B
+        text: "Que le gène est nécessairement porté par le chromosome $Y$, puisque c'est le seul gonosome que le père transmet sans exprimer lui-même le caractère."
+        correct: false
+        misconception: mc.svt.svt_genetique_humaine.autosomes-gonosomes-confondus
+        feedback: |
+          Modèle détecté : transmettre l'$Y$ à une fille. Le père ne transmet
+          son $Y$ qu'à ses fils — une fille reçoit toujours son $X$. Un
+          caractère porté par l'$Y$ ne peut donc, par construction, jamais
+          atteindre une fille.
+
+      - id: C
+        text: "Que le gène est lié à l'$X$ : le fait qu'un père sain ait une fille atteinte est précisément la signature d'une transmission par le chromosome $X$."
+        correct: false
+        misconception: mc.svt.svt_genetique_humaine.hemizygotie-masculine-ignoree
+        feedback: |
+          Modèle détecté : oublier que le père n'a qu'un seul $X$. C'est
+          l'inverse : pour une maladie récessive liée à l'$X$, une fille atteinte
+          IMPOSE un père atteint. Un père sain constitue donc une réfutation, pas
+          une signature.
+
+      - id: D
+        text: "Que le gène est autosomal ET que l'allèle est dominant : le même arbre permet de trancher les deux questions d'un seul coup."
+        correct: false
+        misconception: mc.svt.svt_genetique_humaine.axes-de-decision-melanges
+        feedback: |
+          Modèle détecté : mélanger les deux axes de décision. La localisation
+          autosomale est bien la bonne conclusion, mais la récessivité était
+          déjà donnée par l'énoncé — et un allèle dominant contredirait
+          d'ailleurs l'existence de parents sains. Garde les deux questions
+          séparées : nature de l'allèle d'un côté, localisation de l'autre.
+
+  - id: cp-r4-hemizygotie
+    rung: "R4"
+    habilete: raisonnement
+    skill_code: svt_genetique_humaine
+    tags: [checkpoint, formative, misconception_driven, svt_genetique_humaine]
+    primary_misconception: mc.svt.svt_genetique_humaine.hemizygotie-masculine-ignoree
+    item_source: original
+    lesson_placement: after_R4
+
+    stem: |
+      Un homme daltonien épouse une femme non daltonienne et non porteuse.
+      Quelle sera la situation de leurs enfants ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Toutes les filles seront porteuses saines, et aucun fils ne sera daltonien : le père transmet son $X$ à ses filles et son $Y$ à ses fils."
+        correct: true
+        feedback: |
+          Oui, et c'est le résultat contre-intuitif qu'il faut retenir : un père
+          daltonien ne transmet jamais le daltonisme à ses fils. Ses filles, en
+          revanche, reçoivent toutes son $X^a$ — elles seront toutes porteuses,
+          et saines, puisque l'$X$ reçu de la mère porte l'allèle normal.
+
+      - id: B
+        text: "Tous les fils seront daltoniens comme leur père, et toutes les filles saines : le caractère se transmet de père en fils dans la lignée masculine."
+        correct: false
+        misconception: mc.svt.svt_genetique_humaine.autosomes-gonosomes-confondus
+        feedback: |
+          Modèle détecté : appliquer à l'$X$ la règle de transmission de l'$Y$.
+          De père en fils, ce qui passe, c'est l'$Y$ — un fils ne reçoit jamais
+          l'$X$ de son père. Le daltonisme, porté par l'$X$, saute donc
+          systématiquement la lignée père-fils, ce qui est même un bon moyen de
+          reconnaître un caractère lié à l'$X$ dans un arbre.
+
+      - id: C
+        text: "La moitié des fils seront daltoniens, comme dans tout croisement où l'un des parents porte l'allèle en un seul exemplaire et le transmet une fois sur deux."
+        correct: false
+        misconception: mc.svt.svt_genetique_humaine.hemizygotie-masculine-ignoree
+        feedback: |
+          Modèle détecté : traiter le père comme un hétérozygote ordinaire. Il
+          n'a pas deux allèles entre lesquels le hasard trancherait : il a un
+          $X$ portant l'allèle et un $Y$ n'en portant aucun. Le tirage ne porte
+          donc pas sur l'allèle mais sur le SEXE de l'enfant — et un fils, par
+          définition, a reçu l'$Y$.
+
+      - id: D
+        text: "Aucun enfant ne sera concerné : la mère n'étant pas porteuse, l'allèle du père est masqué chez tous les descendants, filles comme garçons."
+        correct: false
+        misconception: mc.svt.svt_genetique_humaine.dominance-mal-deduite
+        feedback: |
+          Modèle détecté : conclure du phénotype sain à l'absence de l'allèle.
+          Les filles seront effectivement saines — mais elles porteront l'$X^a$
+          reçu de leur père, simplement masqué par l'$X$ normal de leur mère.
+          Elles sont porteuses, et pourront transmettre l'allèle à leurs propres
+          fils.
+
+  - id: cp-r5-probabilite
+    rung: "R5"
+    habilete: application
+    skill_code: svt_genetique_humaine
+    tags: [checkpoint, formative, misconception_driven, svt_genetique_humaine]
+    primary_misconception: mc.svt.svt_genetique_humaine.probabilite-non-conditionnee
+    item_source: original
+    lesson_placement: after_R5
+
+    stem: |
+      Maladie autosomale récessive. Deux parents porteurs sains ont un enfant
+      déjà né, phénotypiquement sain. Quelle est la probabilité que cet enfant
+      soit porteur hétérozygote ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Deux chances sur trois, parce qu'on sait déjà qu'il est sain : la case des malades est écartée, et il ne reste que trois cases également possibles."
+        correct: true
+        feedback: |
+          Oui — et c'est le pas de raisonnement le plus délicat de la notion.
+          L'échiquier donne quatre cases équiprobables, dont une malade. Comme
+          l'observation exclut cette case, il faut recalculer les proportions
+          sur les trois qui restent : deux hétérozygotes sur trois. Une
+          information connue change la probabilité.
+
+      - id: B
+        text: "Une chance sur deux, en lisant directement l'échiquier complet : deux des quatre cases sont hétérozygotes, ce qui donne bien la moitié."
+        correct: false
+        misconception: mc.svt.svt_genetique_humaine.probabilite-non-conditionnee
+        feedback: |
+          Modèle détecté : lire l'échiquier sans tenir compte de ce qu'on sait
+          déjà. Une chance sur deux est la probabilité AVANT la naissance,
+          quand les quatre cases sont encore ouvertes. Ici l'enfant est né et il
+          est sain : la case malade est éliminée, et le dénominateur passe de
+          quatre à trois.
+
+      - id: C
+        text: "Une chance sur quatre, la probabilité que se réalise l'une des quatre combinaisons possibles étant la même pour chacune d'entre elles."
+        correct: false
+        misconception: mc.svt.svt_genetique_humaine.probabilite-non-conditionnee
+        feedback: |
+          Modèle détecté : compter une case au lieu d'un phénotype, et ignorer
+          l'information disponible. Le génotype hétérozygote occupe DEUX cases
+          sur quatre, pas une — et l'échiquier complet n'est de toute façon plus
+          le bon cadre, puisqu'on sait l'enfant sain.
+
+      - id: D
+        text: "Une chance sur trois, la case des malades étant écartée et l'enfant sain ayant autant de chances d'être homozygote sain que porteur."
+        correct: false
+        misconception: mc.svt.svt_genetique_humaine.probabilite-non-conditionnee
+        feedback: |
+          Modèle détecté : conditionner correctement, puis oublier que les trois
+          cases restantes ne se répartissent pas également entre les deux
+          génotypes. Sur ces trois cases, une seule est homozygote saine et DEUX
+          sont hétérozygotes. Le rapport est de deux tiers contre un tiers, pas
+          de moitié-moitié.

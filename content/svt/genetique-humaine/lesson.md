@@ -8,6 +8,8 @@ Voici un fait que tu as peut-être déjà remarqué sans jamais te demander pour
 
 **Avant de lire la suite, prends position.** Ce grand déséquilibre entre les sexes te semble-t-il un simple hasard statistique (les hommes seraient, par exemple, plus exposés à un facteur environnemental) — ou soupçonnes-tu qu'il existe une raison structurelle, ancrée dans la façon même dont un homme et une femme héritent différemment de leurs chromosomes ? Choisis une position avant de continuer.
 
+[[checkpoint:cp-r0-predict]]
+
 ---
 
 Ce n'est pas un hasard. Le daltonisme est dû à un gène porté par le chromosome X — et un homme et une femme n'ont pas le même nombre de chromosomes X. C'est cette asymétrie, et rien d'autre, qui explique l'écart. Mais pour comprendre précisément pourquoi, et pour être capable de reconnaître ce type de transmission dans n'importe quelle famille, il faut d'abord se donner un outil que le chapitre précédent ne fournissait pas.
@@ -55,6 +57,8 @@ Une cellule humaine porte 46 chromosomes, organisés en 23 paires. Parmi elles, 
 
 Avant de continuer : peux-tu dire, sans relire, combien de paires de chromosomes sont des autosomes, et combien sont des gonosomes ? (Réponse : 22 et 1 — ce sont ces deux nombres qui structurent toute la suite du raisonnement.)
 
+[[checkpoint:cp-r1-caryotype]]
+
 ---
 
 ## R2 — Récessif ou dominant ? Le test décisif
@@ -92,6 +96,8 @@ Et II-2 (sain) ? Son génotype n'est pas encore déterminé avec certitude à ce
 Une erreur fréquente : penser qu'une maladie rare est forcément récessive, ou qu'une maladie fréquente est forcément dominante. La fréquence dans la population n'a rien à voir avec la dominance — ce sont deux informations indépendantes. Le seul test valable est celui du dessus : regarder si un enfant atteint peut avoir deux parents phénotypiquement sains.
 
 Une deuxième erreur, plus subtile : conclure quoi que ce soit sur l'autosome ou le gonosome à partir de ce seul test. Le test de ce chapitre répond à UNE question (récessif ou dominant), pas à l'autre (autosomal ou lié au sexe) — ce sont deux axes de décision séparés, et il en faut un deuxième, complètement différent, pour trancher le second axe. C'est l'objet du chapitre 4.
+
+[[checkpoint:cp-r2-recessif]]
 
 ---
 
@@ -131,6 +137,8 @@ Le programme mentionne aussi des gènes portés par le chromosome Y — c'est le
 
 L'erreur la plus fréquente à ce stade : chercher à trancher autosomal / lié à l'X en ne regardant que le nombre d'individus atteints, ou en supposant qu'« une maladie qui touche plus les hommes est forcément liée à l'X ». Ce n'est pas un indice suffisant à lui seul dans un arbre précis : les deux tests A et B, eux, sont des déductions logiques certaines, construites directement sur la règle d'origine (qui reçoit quel chromosome), pas des tendances statistiques. Toujours revenir à la règle d'origine plutôt qu'à une impression générale.
 
+[[checkpoint:cp-r3-lie-a-l-x]]
+
 ---
 
 ## R4 — Notation liée à l'X, hémizygotie : pourquoi les hommes sont plus touchés
@@ -168,6 +176,8 @@ L'échiquier de croisement du chapitre précédent s'utilise exactement de la m�
 ### L'erreur classique à éviter ici
 
 Une erreur fréquente : oublier que le père transmet SOIT son X SOIT son Y (jamais les deux) à un enfant donné, et donc traiter à tort le sexe de l'enfant comme une variable indépendante du génotype pour ce gène. Pour un gène lié à l'X, sexe de l'enfant et génotype possible sont **liés** : c'est précisément pour ça que l'échiquier doit faire apparaître les deux informations dans la même case, comme ci-dessus.
+
+[[checkpoint:cp-r4-hemizygotie]]
 
 ---
 
@@ -212,6 +222,8 @@ $$P(\text{III-1 atteint}) = \left(\frac{2}{3} \times \frac{1}{4}\right) + \left(
 ### Vérification rapide
 
 Le résultat $\frac16$ est logiquement plus petit que $\frac14$ (le risque si II-2 était certainement hétérozygote) : c'est cohérent, puisqu'il existe une chance non nulle ($\frac13$) que II-2 ne transmette aucun risque du tout. Une probabilité obtenue par ce type de calcul doit toujours être strictement inférieure au risque du cas le plus défavorable, jamais égale ni supérieure.
+
+[[checkpoint:cp-r5-probabilite]]
 
 ---
 
