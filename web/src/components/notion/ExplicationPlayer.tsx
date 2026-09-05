@@ -128,10 +128,15 @@ export function ExplicationPlayer({
             "state-layer focus-ring [--focus-radius:8px]"
           )}
         >
-          <Icon name="play" size={13} />
-          {interactive
-            ? "J’ai fait ma tentative — voir l’explication pas à pas"
-            : "J’ai fait ma tentative — voir l’explication animée"}
+          <Icon name="play" size={13} className="shrink-0" />
+          {/* `span` à `min-w-0 break-words` : même défaut que le bouton de
+              AttemptFirstExercise — un nœud texte nu est un item flex anonyme
+              qui ne descend pas sous son mot le plus long (2026-09-05). */}
+          <span className="min-w-0 break-words text-left">
+            {interactive
+              ? "J’ai fait ma tentative — voir l’explication pas à pas"
+              : "J’ai fait ma tentative — voir l’explication animée"}
+          </span>
         </button>
         <p className="mt-2 text-caption text-secondary max-w-reading">
           L’explication reprend l’exercice entier, étape par étape. Elle vaut

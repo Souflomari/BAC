@@ -42,6 +42,19 @@ jobs:
     # 39 pages de plus chacune (chacune ouverte en deux clics), et une porte
     # neuve, `formules`, en balaie 101. Le budget de 50 min tient ; il n'a pas
     # besoin d'être relevé, et le relever masquerait de nouveau un blocage.
+    #
+    # RE-MESURÉ le soir du 2026-09-05, run 458 (rouge à la porte zoom, voulu :
+    # les 49 débords étaient encore là) — découpage relevé jusqu'à la coupe :
+    #   install + chromium 50 s · build 110 s · dom-truth 241 s
+    #   figures clair 46 s · figures sombre 46 s
+    #   presse-papier 447 s (729 s la veille au soir avec le collage riche ;
+    #     la porte ne le mesure plus en mode porte)
+    #   impression 349 s · typo 163 s · accents 153 s · zoom 207 s (105 pages,
+    #     320 px)
+    # Cumul à la porte zoom : 30 min 25 s. Les portes suivantes (formules,
+    # cliquets, ancres, données, model-id) coûtaient ~4 min sur le run 451.
+    # Le budget de 50 min tient toujours ; le prochain run VERT donnera le
+    # total de bout en bout.
     timeout-minutes: 50
     defaults:
       run:

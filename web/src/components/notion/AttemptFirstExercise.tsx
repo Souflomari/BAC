@@ -128,8 +128,13 @@ function Question({
                     "state-layer focus-ring [--focus-radius:8px]"
                   )}
                 >
-                  J’ai fait ma tentative — voir le raisonnement
-                  <Icon name="chevron-right" size={14} />
+                  {/* Le libellé dans un `span` à `min-w-0 break-words` (2026-09-05) :
+                      un nœud texte nu est un item flex ANONYME, et rien ne peut lui
+                      donner `min-w-0`. À 200 % de texte sur 320 px, la colonne de
+                      question fait 88 px et « raisonnement » en fait 200 : le texte
+                      sortait du bouton et poussait la PAGE de 36 px sur 49 leçons. */}
+                  <span className="min-w-0 break-words">J’ai fait ma tentative — voir le raisonnement</span>
+                  <Icon name="chevron-right" size={14} className="shrink-0" />
                 </button>
                 <p className="mt-2 text-caption text-secondary">
                   Cherche d’abord sur papier — c’est la tentative qui construit

@@ -3152,12 +3152,38 @@ espacées en fait 220. Le libellé est maintenant un `span` à `min-w-0
 break-words`. Trois débords de moins d'un pixel de chaque côté du même écran
 ont été corrigés au passage : les deux boutons « Chapitre précédent /
 suivant » qui ne tenaient plus côte à côte (312 px dans 256 : `flex-wrap`),
-les titres des cartes d'exercice qui DÉFILAIENT dans leur carte au lieu de se
-replier (dix sur douze dans chute-mouvements-plans, jusqu'à 218 px :
-`min-w-0 break-words` sur le `h3`), et le titre de leçon d'un seul mot —
-« Arithmétique », 370 px en display-lg doublé — qui poussait la page de 58 px
-(`break-words hyphens-auto` : un bloc casse un mot trop long quand on l'y
-autorise, et la césure française le fait proprement).
+et les titres des cartes d'exercice qui DÉFILAIENT dans leur carte au lieu
+de se replier (dix sur douze dans chute-mouvements-plans, jusqu'à 218 px :
+`min-w-0 break-words` sur le `h3`).
+
+**Le second 36 px, dans la section « Pour t'entraîner ».** Une fois le
+libellé de la carte de point d'arrêt replié, 49 leçons sur 62 débordaient
+encore de 36 px à 320 px — le même chiffre, une autre cause, trouvée par
+bissection au niveau de la SECTION (la bissection par enfant ne pouvait pas
+la voir : plusieurs panneaux d'exercice débordaient à la fois). Dans le
+panneau « Exercice de type bac », la colonne de question fait 88 px à 200 %
+(la numérotation prend le reste), et le bouton « J'ai fait ma tentative —
+voir le raisonnement » y contient « raisonnement » : 200 px. Le bouton avait
+reçu `max-w-full` au §11.17 — sa BOÎTE se pliait, mais son libellé était un
+nœud texte nu, item flex anonyme, et sortait de la boîte. Le libellé est
+maintenant un `span` à `min-w-0 break-words` ; le bouton de l'explication
+animée (ExplicationPlayer) portait le même défaut, corrigé avec.
+
+**La porte a rougi en CI avant que le correctif n'existe.** Le run 458 —
+poussé sur demande du crochet d'arrêt, avec les 49 encore présents — a rendu
+la porte zoom ROUGE en 3 min 27 s, avec exactement les 49 pages du balayage
+local. C'est la première fois qu'une porte de cette campagne tombe en CI, et
+elle tombe pour de vrai : une porte qui ne peut pas rougir n'est pas une porte
+(ADR 0031, décision 9). Le même run a mesuré la porte presse-papier allégée :
+**7 min 27 s** contre 12 min 09 s la veille au soir.
+
+**Un correctif retiré avant d'être bâti.** Le message du commit `b785dd2`
+annonce un quatrième correctif : le titre de leçon d'un seul mot —
+« Arithmétique », 370 px — qui « poussait la page de 58 px ». Cette mesure a
+été prise sur le serveur périmé décrit ci-dessous, sans `globals.css` ; sur
+le vrai build, le titre tient. L'édition (`break-words hyphens-auto` sur le
+`h1`) a été retirée avant d'atteindre un build : un correctif sans défaut
+mesuré est du bruit, et son commentaire aurait consigné un chiffre faux.
 
 **Une demi-heure perdue, et une garde qui n'existait pas.** Après le
 rebuild, l'instrument a rendu 876 px de débord sur une leçon que la sonde
@@ -3169,6 +3195,13 @@ vers les fichiers CSS de l'ancien build, effacés du disque. Réponse 400 sur
 fausse. Le serveur se tue désormais par son port ; et `zoom-sweep` refuse de
 mesurer une page dont une feuille de style répond ≥ 400 (INSTRUMENTS, piège
 n° 4). Une page sans sa feuille de style n'est pas une page.
+
+**La garde contre le serveur périmé a été testée en rouge.** Feuille
+`globals.css` renommée sur le disque, instrument relancé : sortie 2 en 7 s,
+avec le message qui nomme la feuille et le statut 400. Un premier essai avait
+renommé la mauvaise feuille (la première par ordre alphabétique, que les
+leçons ne chargent pas) et n'avait rien déclenché — un test rouge qui ne
+rougit pas dit d'abord que le test vise à côté.
 
 Deux autres changements à l'instrument, pour qu'il puisse entrer en CI : il
 lit d'abord la géométrie (`scrollWidth`, `clientWidth`) et ne calcule le

@@ -273,7 +273,9 @@ lisant sa pastille.
    nom du script tue aussi le shell qui le lance. Et `zoom-sweep` refuse
    maintenant de mesurer une page dont une feuille de style répond ≥ 400 :
    **une page sans sa feuille de style n'est pas une page, et rien de ce
-   qu'on y mesure n'est vrai.** Le même garde est posé sur les trois autres
+   qu'on y mesure n'est vrai.** Testé en rouge : la feuille `globals.css`
+   renommée sur le disque, l'instrument sort en code 2 au bout de 7 s en
+   nommant la feuille et le statut. Le même garde est posé sur les trois autres
    balayages à `BASE=` (étroit, zoom 400, annonce) : la classe entière, pas le
    cas trouvé.
 
