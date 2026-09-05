@@ -197,10 +197,10 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Non : la sélection n'élimine que les homozygotes $a//a$, jamais les hétérozygotes $A//a$, où l'allèle reste protégé et se transmet normalement — l'allèle $a$ décline donc très lentement, jamais en quelques générations seulement."
+        text: "Non : la sélection n'élimine que les homozygotes $a//a$, jamais les hétérozygotes $A//a$, chez qui l'allèle reste protégé et se transmet normalement — son déclin est donc très lent."
         correct: true
       - id: B
-        text: "Oui, puisque la sélection élimine cet allèle directement et complètement dès qu'un individu $a//a$ apparaît."
+        text: "Oui, puisque la sélection élimine cet allèle directement et complètement dès qu'un individu $a//a$ apparaît, sans lui laisser la moindre occasion d'être transmis."
         correct: false
         feedback: >
           La sélection naturelle agit sur des GÉNOTYPES (ou des phénotypes),
@@ -210,7 +210,7 @@ items:
           sélection et continue à se transmettre génération après
           génération.
       - id: C
-        text: "Non, car la sélection naturelle ne peut jamais faire baisser la fréquence d'un allèle."
+        text: "Non, car la sélection naturelle ne peut jamais faire baisser la fréquence d'un allèle : elle n'agit que sur les phénotypes, sans aucun effet sur le pool génique."
         correct: false
         feedback: >
           C'est une sur-correction fausse : la sélection contre un génotype
@@ -219,7 +219,7 @@ items:
           que les hétérozygotes protègent la majeure partie du stock de
           l'allèle à chaque génération.
       - id: D
-        text: "Oui, et cette disparition sera d'autant plus rapide que l'allèle est déjà rare."
+        text: "Oui, et cette disparition sera d'autant plus rapide que l'allèle est déjà rare au départ, chaque génération en éliminant une part croissante des copies."
         correct: false
         feedback: >
           C'est l'inverse : plus $q$ est petit, plus la quasi-totalité des
@@ -265,7 +265,7 @@ items:
         text: "L'effectif de la population est trop petit pour que le modèle de Hardy-Weinberg s'applique de façon fiable : les fluctuations d'échantillonnage (dérive génétique) expliquent l'écart."
         correct: true
       - id: B
-        text: "Le calcul $q^2$ est incorrect ; il fallait utiliser $2q$."
+        text: "Le calcul de $q^2$ est incorrect : il fallait utiliser $2q$, puisque chaque individu porte deux allèles à ce locus."
         correct: false
         feedback: >
           $q^2$ EST la formule correcte pour la fréquence génotypique des
@@ -274,7 +274,7 @@ items:
           du modèle (ici, le grand effectif) n'est pas vérifiée dans ce petit
           élevage.
       - id: C
-        text: "C'est impossible : une fois calculée, une fréquence génotypique ne peut jamais différer de la prédiction théorique."
+        text: "C'est impossible : une fois calculée, une fréquence génotypique ne peut jamais différer de la prédiction théorique, qui vaut pour toute population, quelle que soit sa taille."
         correct: false
         feedback: >
           C'est nier la réalité : les populations réelles, en particulier les
@@ -282,7 +282,7 @@ items:
           — c'est justement cet écart, comparé à la prédiction théorique, qui
           sert de diagnostic pour repérer qu'une condition est violée.
       - id: D
-        text: "L'écart prouve qu'une mutation a eu lieu entre les deux générations."
+        text: "L'écart prouve qu'une mutation a eu lieu entre les deux générations, transformant certains allèles et modifiant les proportions attendues."
         correct: false
         feedback: >
           Une mutation isolée ne déplace $p$ et $q$ que d'une quantité
@@ -325,7 +325,7 @@ items:
         text: "Non : l'autofécondation systématique viole la condition de panmixie (union au hasard des gamètes dans tout le pool génique), sur laquelle repose la formule."
         correct: true
       - id: B
-        text: "Oui, la formule s'applique à toute population sexuée, quel que soit son mode de reproduction."
+        text: "Oui, la formule s'applique à toute population sexuée, quel que soit son mode de reproduction, dès lors que les effectifs sont grands."
         correct: false
         feedback: >
           C'est appliquer Hardy-Weinberg sans vérifier ses conditions.
@@ -335,7 +335,7 @@ items:
           contraire : chaque gamète ne peut s'unir qu'avec un gamète du MÊME
           individu — ce n'est plus un tirage au hasard dans le pool commun.
       - id: C
-        text: "Oui, à condition de remplacer $p$ et $q$ par les fréquences génotypiques observées."
+        text: "Oui, à condition de remplacer $p$ et $q$ par les fréquences génotypiques réellement observées dans la population étudiée."
         correct: false
         feedback: >
           Cette réponse confond de nouveau fréquence allélique et fréquence
@@ -344,7 +344,7 @@ items:
           résout pas le vrai problème ici, qui est l'absence de panmixie, pas
           un mauvais choix de variable.
       - id: D
-        text: "Non, car $p$ et $q$ n'existent pas chez les plantes qui s'autofécondent."
+        text: "Non, car $p$ et $q$ n'ont aucun sens chez des plantes qui s'autofécondent : il n'y a plus de pool génique commun à décrire."
         correct: false
         feedback: >
           Les fréquences alléliques $p$ et $q$ existent dans n'importe

@@ -126,10 +126,10 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Oui : une fille atteinte d'une maladie récessive liée à l'X doit recevoir un chromosome X porteur de l'allèle de CHAQUE parent, y compris de son père — qui n'a qu'un seul X à transmettre. Un père sain ne peut transmettre qu'un X porteur de l'allèle normal ; le mode est donc plutôt autosomal."
+        text: "Oui : une fille atteinte d'une maladie récessive liée à l'X devrait recevoir un X porteur de l'allèle de CHAQUE parent, y compris de son père — or un père sain ne peut transmettre qu'un X normal ; le mode est donc plutôt autosomal."
         correct: true
       - id: B
-        text: "Non : le père a pu transmettre l'allèle malade à sa fille sans être lui-même atteint, comme n'importe quel porteur sain hétérozygote."
+        text: "Non : le père a pu transmettre l'allèle malade à sa fille sans être lui-même atteint, comme n'importe quel porteur sain hétérozygote pour le gène en cause."
         correct: false
         feedback: >
           C'est oublier l'hémizygotie masculine (chapitre 5) : un homme n'a qu'un
@@ -139,7 +139,7 @@ items:
           s'exprime directement. Un père phénotypiquement sain a
           nécessairement un X porteur de l'allèle normal, point final.
       - id: C
-        text: "Non, cela confirme au contraire une transmission liée à l'X, puisque les filles héritent souvent d'un chromosome X de leur père."
+        text: "Non, cela confirme au contraire une transmission liée à l'X, puisque les filles héritent toujours d'un chromosome X de leur père et peuvent donc en recevoir l'allèle malade sans qu'il se manifeste chez lui."
         correct: false
         feedback: >
           Le problème n'est pas de savoir SI la fille hérite d'un X de son
@@ -149,7 +149,7 @@ items:
           lui-même n'est pas atteint — ce qui exclut, plutôt que confirme,
           l'hypothèse liée à l'X récessive pour cette fille.
       - id: D
-        text: "On ne peut rien en conclure sans connaître aussi le phénotype de la mère."
+        text: "On ne peut rien en conclure sans connaître aussi le phénotype de la mère, qui détermine à elle seule le mode de transmission de la maladie."
         correct: false
         feedback: >
           Le phénotype de la mère n'est pas nécessaire ici : que la mère
@@ -190,7 +190,7 @@ items:
         text: "Parce qu'il ne possède qu'un seul chromosome X (il est hémizygote pour les gènes de l'X) : il n'a pas de second exemplaire pour masquer un allèle récessif, qui s'exprime donc directement."
         correct: true
       - id: B
-        text: "Parce qu'un homme ne peut de toute façon jamais être atteint d'une maladie liée à l'X."
+        text: "Parce qu'un homme ne peut de toute façon jamais être atteint d'une maladie liée à l'X : ces maladies ne concernent que les femmes, qui possèdent deux chromosomes X."
         correct: false
         feedback: >
           C'est l'inverse de ce que montre la leçon : les hommes sont au
@@ -199,7 +199,7 @@ items:
           précisément parce qu'un seul exemplaire de l'allèle récessif
           suffit à provoquer la maladie chez eux.
       - id: C
-        text: "Parce que l'allèle situé sur son chromosome Y compense automatiquement l'allèle récessif situé sur son X."
+        text: "Parce que l'allèle situé sur son chromosome Y compense automatiquement l'allèle récessif situé sur son X, exactement comme le ferait un second chromosome X."
         correct: false
         feedback: >
           Pour la quasi-totalité des gènes portés par l'X, le chromosome Y
@@ -208,7 +208,7 @@ items:
           que ce soit : c'est justement L'ABSENCE de ce second exemplaire qui
           explique que l'allèle de l'X s'exprime sans être masqué.
       - id: D
-        text: "Parce que chez l'homme, l'allèle récessif devient automatiquement dominant."
+        text: "Parce que chez l'homme l'allèle récessif devient automatiquement dominant dès lors qu'il se trouve seul, sans allèle partenaire capable de le masquer."
         correct: false
         feedback: >
           La dominance est une relation entre deux allèles d'un même gène
@@ -312,7 +312,7 @@ items:
         text: "Les deux fils sont atteints (ils reçoivent le chromosome Y de leur père, donc l'allèle $M$) ; la fille n'est jamais concernée, puisqu'elle ne reçoit pas de chromosome Y."
         correct: true
       - id: B
-        text: "Seule la moitié des fils est atteinte, comme pour un caractère porté par le chromosome X."
+        text: "Seule la moitié des fils est atteinte, comme pour un caractère porté par le chromosome X, l'autre moitié recevant l'allèle sain de leur père."
         correct: false
         feedback: >
           Ce résultat importe à tort le raisonnement de l'X (où une mère
@@ -322,7 +322,7 @@ items:
           il n'existe pas de second Y qui viendrait diluer la transmission
           à $\frac12$.
       - id: C
-        text: "La fille est atteinte, car elle reçoit un chromosome X de son père."
+        text: "La fille est atteinte, car elle reçoit un chromosome X de son père, qui porte lui aussi l'allèle $M$ responsable du caractère étudié."
         correct: false
         feedback: >
           La fille reçoit effectivement un X de son père — mais le
@@ -331,7 +331,7 @@ items:
           X de chacun de ses deux parents) : elle ne peut donc jamais
           hériter d'un allèle qui n'existe que sur le Y.
       - id: D
-        text: "Aucun enfant n'est atteint, car un caractère héréditaire saute toujours une génération."
+        text: "Aucun enfant n'est atteint, car un caractère héréditaire saute toujours une génération avant de réapparaître chez les petits-enfants."
         correct: false
         feedback: >
           Ce « saut de génération » est la signature d'une transmission

@@ -179,6 +179,21 @@ jobs:
             /matieres/pc /matieres/maths /matieres/svt /matieres/philo /commencer \
             /atelier /connexion /options /examens/spc-2023-normale
 
+      # CLIQUET INDICE-LONGUEUR (2026-09-05). `item-stats` disait déjà, en
+      # toutes lettres, que la bonne réponse est la plus longue bien plus
+      # souvent que le hasard ne l'explique — et que le mélange des choix n'y
+      # change rien. Personne n'avait agi. Mesuré : 1 465 items éligibles,
+      # 38 % où la clé est la plus longue, 24 % où l'avance se VOIT (≥ 20
+      # caractères ET ≥ 20 % de la deuxième). Un élève qui coche le plus long
+      # sans lire répondait juste bien au-delà des 25 % du hasard, et le
+      # diagnostic qui pilote tout le produit s'en trouvait faussé.
+      # La SVT entière est repassée à 0 % exploitable ; le cliquet garde le
+      # terrain repris : une notion en dette ne peut plus s'aggraver, une
+      # notion neuve naît sous plafond. Ce n'est pas une porte franche —
+      # exiger 25 % partout échouerait au premier commit et serait désarmé.
+      - name: Cliquet indice-longueur (la clé ne se dénonce pas par sa taille)
+        run: node scripts/indice-longueur.mjs --porte
+
       - name: Model-id hygiene gate
         working-directory: .
         run: |

@@ -15,7 +15,7 @@ items:
         text: "Une immunité active et durable, car c'est l'organisme du vacciné lui-même qui produit sa réponse et conserve des lymphocytes mémoire"
         correct: true
       - id: B
-        text: "Une immunité passive et immédiate, car on injecte directement des anticorps"
+        text: "Une immunité passive et immédiate, car on injecte directement des anticorps prêts à l'emploi, que l'organisme n'a pas eu à fabriquer lui-même"
         correct: false
         feedback: >
           Ça, c'est la sérothérapie, pas la vaccination. Le vaccin n'injecte
@@ -25,7 +25,7 @@ items:
           fabriquer SA propre réponse et SA propre mémoire. D'où une immunité
           ACTIVE, pas passive.
       - id: C
-        text: "Une immunité qui agit dès l'injection, sans délai"
+        text: "Une immunité qui agit dès l'injection, sans le moindre délai, parce que le produit injecté contient déjà tout ce qui protège le vacciné"
         correct: false
         feedback: >
           Non : comme toute réponse primaire, la réponse vaccinale exige
@@ -34,7 +34,7 @@ items:
           quelques semaines. Seule la sérothérapie, qui apporte des anticorps
           déjà tout faits, agit sans délai dès l'injection.
       - id: D
-        text: "Une protection définitive contre toutes les maladies"
+        text: "Une protection définitive contre toutes les maladies, l'organisme vacciné devenant capable de reconnaître n'importe quel agent infectieux"
         correct: false
         feedback: >
           Un vaccin protège contre UN agent précis (celui dont il porte
@@ -68,10 +68,10 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Immédiate mais de courte durée (immunité passive), car le patient reçoit des anticorps déjà fabriqués par un autre organisme, sans sélectionner ni activer lui-même le moindre lymphocyte, et ne constitue donc aucune cellule mémoire"
+        text: "Immédiate mais de courte durée (immunité passive), car le patient reçoit des anticorps déjà fabriqués par un autre organisme, sans activer lui-même le moindre lymphocyte, et ne constitue donc aucune cellule mémoire"
         correct: true
       - id: B
-        text: "Différée mais durable, comme un vaccin"
+        text: "Différée mais durable, comme après un vaccin : les anticorps injectés stimulent les lymphocytes du patient, qui prennent le relais et gardent la mémoire de l'agent infectieux rencontré"
         correct: false
         feedback: >
           C'est l'inverse de la réalité. Les anticorps injectés agissent tout
@@ -81,7 +81,7 @@ items:
           protection s'efface en quelques semaines, contrairement à celle
           d'un vaccin, différée mais durable.
       - id: C
-        text: "Durable, car les anticorps injectés se multiplient dans l'organisme"
+        text: "Durable, car les anticorps injectés se multiplient dans l'organisme du patient au même titre que ses cellules immunitaires, et y restent présents longtemps après l'injection"
         correct: false
         feedback: >
           Les anticorps sont des molécules, pas des cellules vivantes : ils
@@ -89,7 +89,7 @@ items:
           ils sont progressivement reconnus comme étrangers et éliminés,
           d'où une protection brève et non renouvelée.
       - id: D
-        text: "Aucune : injecter des anticorps ne sert à rien"
+        text: "Aucune : injecter des anticorps tout faits ne sert à rien, puisque seule une réponse fabriquée par l'organisme lui-même est capable de le protéger contre un agent infectieux"
         correct: false
         feedback: >
           Au contraire, c'est justement ce qui rend la sérothérapie précieuse
@@ -124,7 +124,7 @@ items:
         text: "La sérothérapie, car elle apporte des anticorps déjà prêts, actifs dès l'injection, sans le délai qu'exigerait une réponse produite par l'organisme lui-même"
         correct: true
       - id: B
-        text: "La vaccination, car elle protège durablement"
+        text: "La vaccination, car elle protège durablement contre le venin et permet à l'organisme de fabriquer lui-même les anticorps dont il a besoin"
         correct: false
         feedback: >
           Une vaccination déclencherait une réponse primaire, qui exige
@@ -134,7 +134,7 @@ items:
           action IMMÉDIATE, donc la sérothérapie, quitte à ce que sa
           protection soit brève.
       - id: C
-        text: "Attendre que l'organisme fabrique lui-même ses anticorps"
+        text: "Attendre que l'organisme fabrique lui-même ses anticorps, une réponse plus solide qu'un apport extérieur et qui laissera en outre une mémoire immunitaire"
         correct: false
         feedback: >
           Attendre reviendrait à laisser s'installer une réponse primaire,
@@ -143,7 +143,7 @@ items:
           (sérothérapie) plutôt que d'attendre que le patient les fabrique
           lui-même.
       - id: D
-        text: "Un vaccin suivi immédiatement d'un rappel"
+        text: "Un vaccin suivi immédiatement d'un rappel, afin d'accélérer la production d'anticorps et d'obtenir une protection en quelques heures"
         correct: false
         feedback: >
           Même enchaînés, un vaccin puis un rappel exigent que l'organisme du
@@ -177,7 +177,7 @@ items:
         text: "Une rupture de la tolérance au soi : un clone de lymphocytes auto-réactifs, qui aurait dû être éliminé ou rester silencieux, s'active et attaque les propres molécules ou cellules de l'organisme"
         correct: true
       - id: B
-        text: "Une réaction exagérée du système immunitaire face à une substance étrangère inoffensive"
+        text: "Une réaction exagérée du système immunitaire face à une substance étrangère et pourtant inoffensive, qui déclenche des symptômes sans qu'aucun agent dangereux ne soit en cause"
         correct: false
         feedback: >
           Ça, c'est une ALLERGIE : une réaction excessive dirigée contre un
@@ -186,7 +186,7 @@ items:
           intrus extérieur : c'est une molécule ou une cellule du soi
           lui-même.
       - id: C
-        text: "Une destruction des lymphocytes T4 par un virus"
+        text: "Une destruction des lymphocytes T4 par un virus, qui prive l'organisme des cellules chargées de coordonner l'ensemble de sa réponse immunitaire adaptative"
         correct: false
         feedback: >
           C'est le mécanisme du SIDA (déficit immunitaire dû au VIH, qui
@@ -195,7 +195,7 @@ items:
           système reste fonctionnel, mais il se trompe de cible en
           s'attaquant au soi.
       - id: D
-        text: "Une incapacité totale à produire des anticorps"
+        text: "Une incapacité totale à produire des anticorps, le système immunitaire restant muet face aux agents infectieux comme face aux molécules du soi"
         correct: false
         feedback: >
           Une maladie auto-immune n'est pas un DÉFICIT de production : le
@@ -230,7 +230,7 @@ items:
         text: "La cible de la réaction : un élément étranger inoffensif pour l'allergie, une molécule du soi pour l'auto-immunité"
         correct: true
       - id: B
-        text: "L'allergie touche les enfants, l'auto-immunité les adultes"
+        text: "L'allergie touche surtout les enfants, tandis que l'auto-immunité se déclare à l'âge adulte"
         correct: false
         feedback: >
           L'âge n'est pas le critère : les deux peuvent survenir à tout âge
@@ -238,7 +238,7 @@ items:
           type 1 enfant). La différence de fond est la NATURE de la cible
           attaquée, pas l'âge du patient.
       - id: C
-        text: "L'allergie est génétique, l'auto-immunité est infectieuse"
+        text: "L'allergie est d'origine génétique, tandis que l'auto-immunité est déclenchée par une infection"
         correct: false
         feedback: >
           Ni l'une ni l'autre n'est « infectieuse » à proprement parler, et
@@ -247,7 +247,7 @@ items:
           réaction : un allergène extérieur pour l'une, une molécule du soi
           pour l'autre.
       - id: D
-        text: "L'allergie détruit les lymphocytes, l'auto-immunité les active"
+        text: "L'allergie détruit les lymphocytes, tandis que l'auto-immunité les active de façon excessive"
         correct: false
         feedback: >
           Aucune des deux ne se résume à cela : l'allergie, comme
@@ -285,7 +285,7 @@ items:
         text: "Il reconnaît spécifiquement le récepteur CD4 porté par les lymphocytes T4, les infecte puis les détruit, désorganisant ainsi la coordination de toute la réponse adaptative"
         correct: true
       - id: B
-        text: "Il détruit directement tous les globules blancs de l'organisme"
+        text: "Il détruit directement tous les globules blancs de l'organisme, qui se retrouve alors sans aucune cellule capable de le défendre"
         correct: false
         feedback: >
           Le VIH ne détruit pas indifféremment tous les globules blancs : il
@@ -295,7 +295,7 @@ items:
           paralyse le reste, pas une destruction généralisée et immédiate de
           toutes les cellules immunitaires.
       - id: C
-        text: "Il empêche uniquement la phagocytose"
+        text: "Il empêche uniquement la phagocytose, première étape de toute réponse immunitaire, ce qui bloque du même coup la réponse adaptative qui devait la suivre"
         correct: false
         feedback: >
           Le problème n'est pas la phagocytose (un mécanisme de l'immunité
@@ -305,7 +305,7 @@ items:
           sont les deux voies de la réponse ADAPTATIVE qui s'effondrent, pas
           la phagocytose.
       - id: D
-        text: "Il fabrique des anticorps contre l'organisme"
+        text: "Il fabrique des anticorps dirigés contre l'organisme lui-même, qui détruisent progressivement les cellules immunitaires du malade"
         correct: false
         feedback: >
           Le VIH ne fabrique aucun anticorps : c'est un virus, pas une

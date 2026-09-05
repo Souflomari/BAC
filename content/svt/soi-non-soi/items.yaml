@@ -17,7 +17,7 @@ items:
         text: "Parce que, dès la vie embryonnaire, les cellules immunitaires capables de réagir contre les molécules déjà présentes dans l'organisme sont éliminées ou neutralisées : c'est la tolérance immunitaire."
         correct: true
       - id: B
-        text: "Parce que les molécules du soi ne portent aucun antigène et sont donc invisibles pour les cellules immunitaires."
+        text: "Parce que les molécules du soi ne portent aucun antigène : dépourvues de tout déterminant reconnaissable, elles échappent à la surveillance des cellules immunitaires, qui n'ont rien à quoi réagir."
         correct: false
         feedback: >
           C'est l'inverse : les molécules du soi (CMH, marqueurs sanguins)
@@ -27,7 +27,7 @@ items:
           pas leur invisibilité qui explique la tolérance, mais un
           apprentissage précoce à ne pas y réagir.
       - id: C
-        text: "Parce que le non-soi n'existe pas encore à la naissance, donc il n'y a rien à distinguer du soi à ce stade."
+        text: "Parce que le non-soi n'existe pas encore à la naissance : aucun agent étranger n'ayant encore été rencontré, le système immunitaire n'a rien à distinguer du soi à ce stade."
         correct: false
         feedback: >
           Le non-soi (agents pathogènes, greffons éventuels) peut se
@@ -36,7 +36,7 @@ items:
           l'élimination précoce des cellules immunitaires qui auraient
           réagi contre le soi lui-même.
       - id: D
-        text: "Parce que le soi et le non-soi sont deux catégories fixées une fois pour toutes, indépendamment de tout apprentissage du système immunitaire."
+        text: "Parce que le soi et le non-soi sont deux catégories fixées une fois pour toutes, inscrites dans le patrimoine génétique, indépendamment de tout apprentissage du système immunitaire."
         correct: false
         feedback: >
           La tolérance montre au contraire que la non-réaction contre le
@@ -76,7 +76,7 @@ items:
         text: "Chaque anticorps reconnaît spécifiquement un antigène précis (ici l'antigène A) : seules les hématies qui portent cet antigène sont agglutinées, quel que soit le groupe d'origine du sérum."
         correct: true
       - id: B
-        text: "Les anticorps se lient à n'importe quelle hématie étrangère au sérum utilisé, sans lien avec un antigène particulier."
+        text: "Les anticorps se lient à n'importe quelle hématie étrangère au sérum utilisé : c'est le caractère étranger de la cellule, et non un antigène particulier qu'elle porterait, qui provoque l'agglutination."
         correct: false
         feedback: >
           Si c'était le cas, les quatre échantillons (O, A, B, AB) auraient
@@ -85,7 +85,7 @@ items:
           AB réagissent, parce que seuls A et AB portent l'antigène A —
           preuve d'une reconnaissance spécifique, pas générale.
       - id: C
-        text: "Antigène et anticorps désignent la même chose ; l'agglutination se produit simplement quand deux « antigènes » identiques se rencontrent."
+        text: "Antigène et anticorps désignent la même chose sous deux noms : l'agglutination se produit simplement quand deux de ces molécules identiques se rencontrent, quel que soit l'échantillon d'hématies testé."
         correct: false
         feedback: >
           Antigène et anticorps sont deux entités différentes et
@@ -93,7 +93,7 @@ items:
           par les hématies), l'anticorps est la molécule qui la reconnaît
           spécifiquement (ici, dans le sérum). Ce ne sont pas des synonymes.
       - id: D
-        text: "L'agglutination dépend uniquement du groupe sanguin d'origine du sérum, indépendamment de l'antigène réellement présent sur les hématies testées."
+        text: "L'agglutination dépend uniquement du groupe sanguin d'origine du sérum : c'est la nature de ce sérum qui décide à elle seule des échantillons qui agglutinent, indépendamment des hématies testées."
         correct: false
         feedback: >
           Le résultat observé dépend précisément de la présence ou de
@@ -129,7 +129,7 @@ items:
         text: "Le frère jumeau monozygote, car il partage un patrimoine génétique identique au patient, donc des molécules de CMH strictement identiques, reconnues comme du soi à 100 %."
         correct: true
       - id: B
-        text: "Le donneur non apparenté, car un groupe sanguin ABO identique garantit à lui seul une compatibilité complète pour la greffe d'organe."
+        text: "Le donneur non apparenté, car un groupe sanguin ABO identique garantit à lui seul une compatibilité complète : dès lors que les hématies appartiennent au même groupe, l'organe greffé ne peut être rejeté."
         correct: false
         feedback: >
           La compatibilité ABO concerne les hématies (transfusions) et ne
@@ -138,7 +138,7 @@ items:
           marqueurs du soi indépendants : un donneur ABO-compatible peut
           très bien avoir un CMH totalement différent de celui du receveur.
       - id: C
-        text: "Les deux donneurs présentent le même risque, puisque le rejet de greffe ne dépend pas des molécules du CMH."
+        text: "Les deux donneurs présentent exactement le même risque, puisque le rejet de greffe ne dépend pas des molécules du CMH mais de la seule qualité de l'intervention chirurgicale et du traitement qui la suit."
         correct: false
         feedback: >
           C'est au contraire le CMH, extrêmement polymorphe et quasiment
@@ -146,7 +146,7 @@ items:
           reconnaissance du greffon comme soi ou non-soi. Les deux donneurs
           ne sont donc pas équivalents.
       - id: D
-        text: "Le frère jumeau, mais uniquement parce que les jumeaux ont automatiquement le même groupe sanguin ABO l'un que l'autre."
+        text: "Le frère jumeau, mais uniquement parce que deux jumeaux ont automatiquement le même groupe sanguin ABO : c'est cette identité ABO, et non le patrimoine génétique dans son ensemble, qui écarte le rejet."
         correct: false
         feedback: >
           Le partage du groupe ABO n'est pas systématique entre jumeaux
@@ -185,7 +185,7 @@ items:
         text: "Non, car son plasma contient l'anticorps anti-A, qui reconnaîtra spécifiquement l'antigène A porté par les hématies du donneur et provoquera une agglutination."
         correct: true
       - id: B
-        text: "Oui, car les hématies du donneur (groupe A) ne portent pas l'antigène B, donc rien ne peut réagir avec le plasma du receveur."
+        text: "Oui, car les hématies du donneur (groupe A) ne portent pas l'antigène B : le receveur étant de groupe B, rien dans le sang reçu ne peut réagir avec son plasma, et la transfusion se déroule sans risque."
         correct: false
         feedback: >
           C'est regarder le mauvais antigène. La réaction ne vient pas de
@@ -193,7 +193,7 @@ items:
           les hématies du donneur portent bel et bien — et que l'anticorps
           anti-A du receveur reconnaît spécifiquement.
       - id: C
-        text: "Oui, car le système ABO ne concerne que les greffes d'organes, pas les transfusions sanguines."
+        text: "Oui, car le système ABO ne concerne que les greffes d'organes : pour une simple transfusion sanguine, seul le volume transfusé importe, et non la correspondance des groupes entre donneur et receveur."
         correct: false
         feedback: >
           C'est l'inverse : le système ABO est précisément le système de
@@ -201,7 +201,7 @@ items:
           sanguines. La compatibilité des greffes d'organes dépend, elle,
           du CMH (chapitre 4) — un système différent.
       - id: D
-        text: "Non, mais uniquement à cause du facteur Rhésus, le système ABO n'étant pas concerné dans ce cas."
+        text: "Non, mais uniquement à cause du facteur Rhésus : c'est lui, et non le système ABO, qui décide de la compatibilité entre un donneur et un receveur lors d'une transfusion de sang total."
         correct: false
         feedback: >
           Le facteur Rhésus n'est pas en cause ici : le problème vient
@@ -239,7 +239,7 @@ items:
         text: "Non : cette première exposition a pu sensibiliser son organisme (production d'anticorps anti-D dans les semaines suivantes), rendant une seconde exposition à du sang Rh+ dangereuse."
         correct: true
       - id: B
-        text: "Oui, car l'absence de réaction immédiate prouve qu'il ne produira jamais d'anticorps anti-D."
+        text: "Oui, car l'absence de réaction lors de cette première transfusion prouve que son organisme tolère l'antigène D et qu'il ne produira donc jamais d'anticorps anti-D, quel que soit le nombre d'expositions."
         correct: false
         feedback: >
           C'est confondre l'absence de réaction immédiate avec une absence
@@ -249,14 +249,14 @@ items:
           l'antigène D, et sa production prend du temps — ce qui explique
           l'absence de réaction visible lors de cette première exposition.
       - id: C
-        text: "Oui, car le système Rhésus ne concerne que les greffes d'organes, pas les transfusions sanguines."
+        text: "Oui, car le système Rhésus ne concerne que les greffes d'organes : lors d'une transfusion, seule la compatibilité ABO est en jeu, et le facteur Rhésus n'y intervient à aucun moment."
         correct: false
         feedback: >
           Le système Rhésus, comme le système ABO, est un système de
           marqueurs des hématies : il concerne directement les transfusions
           sanguines, pas les greffes d'organes (qui dépendent du CMH, chapitre 4).
       - id: D
-        text: "Non, car le sang Rh+ transfusé contient toujours des anticorps qui attaquent directement le receveur."
+        text: "Non, car le sang Rh+ transfusé contient toujours des anticorps anti-D qui attaquent directement les hématies du receveur, dès la première transfusion comme lors de toutes les suivantes."
         correct: false
         feedback: >
           Le risque ne vient pas d'anticorps apportés par le sang du
@@ -295,7 +295,7 @@ items:
         text: "Parce que l'infection ou la transformation cancéreuse modifie les molécules que la cellule présente à sa surface, qui ne correspondent plus à la signature habituelle du soi : on parle de « soi modifié »."
         correct: true
       - id: B
-        text: "Parce qu'une cellule infectée ou cancéreuse devient génétiquement étrangère à l'organisme, donc automatiquement du non-soi au sens strict."
+        text: "Parce qu'une cellule infectée ou cancéreuse devient génétiquement étrangère à l'organisme : son patrimoine n'étant plus celui de l'individu, elle bascule automatiquement dans le non-soi au sens strict."
         correct: false
         feedback: >
           Le patrimoine génétique de la cellule ne change pas de propriétaire
@@ -303,7 +303,7 @@ items:
           change, c'est le profil moléculaire qu'elle affiche à sa surface —
           pas son origine génétique.
       - id: C
-        text: "Parce que le système immunitaire attaque systématiquement toute cellule infectée ou anormale, sans aucune reconnaissance moléculaire précise."
+        text: "Parce que le système immunitaire attaque systématiquement toute cellule infectée ou anormale, sans aucune reconnaissance moléculaire préalable : c'est l'anomalie elle-même qui déclenche la destruction."
         correct: false
         feedback: >
           Cela contredirait le principe de spécificité vu au chapitre 3 : la
@@ -312,7 +312,7 @@ items:
           affichées à la surface de la cellule, pas sur une attaque
           générale et non ciblée.
       - id: D
-        text: "Parce qu'une cellule infectée ou cancéreuse perd entièrement ses molécules de CMH, ce qui la rend invisible et donc automatiquement éliminée."
+        text: "Parce qu'une cellule infectée ou cancéreuse perd entièrement ses molécules de CMH : privée de toute signature de surface, elle n'est plus reconnue comme du soi et se trouve automatiquement éliminée."
         correct: false
         feedback: >
           Ce n'est pas le mécanisme décrit ici : la cellule affiche des

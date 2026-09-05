@@ -20,7 +20,7 @@ items:
           véritables réserves.
         correct: true
       - id: B
-        text: "Parce que l'ATP contient, par molécule, plus d'énergie que le glucose."
+        text: "Parce que l'ATP contient, par molécule, beaucoup plus d'énergie que le glucose : une seule molécule suffit à couvrir les besoins de la cellule pendant un temps considérable."
         correct: false
         feedback: >
           C'est l'inverse : le glucose emmagasine bien plus d'énergie totale
@@ -29,8 +29,9 @@ items:
           parce qu'il en contient plus, c'est parce qu'il circule en continu.
       - id: C
         text: >
-          Parce que la cellule stocke de grandes quantités d'ATP en réserve
-          pour les moments de forte demande.
+          Parce que la cellule stocke de grandes quantités d'ATP en réserve pour les
+          moments de forte demande, exactement comme elle met le glucose de côté sous
+          forme de glycogène.
         correct: false
         feedback: >
           C'est exactement l'erreur à éviter ici : une cellule ne stocke
@@ -40,8 +41,9 @@ items:
           un stock accumulé.
       - id: D
         text: >
-          Parce qu'une molécule d'ATP ne peut être utilisée qu'une seule
-          fois avant d'être définitivement détruite.
+          Parce qu'une molécule d'ATP ne peut être utilisée qu'une seule fois avant
+          d'être définitivement détruite : la cellule doit donc en fabriquer sans cesse
+          de nouvelles à partir de rien.
         correct: false
         feedback: >
           L'ATP n'est pas détruit : son hydrolyse donne de l'ADP + $P_i$, qui
@@ -85,7 +87,7 @@ items:
           $4 - 2 = 2$ ATP.
         correct: true
       - id: B
-        text: "Parce que la glycolyse ne consomme aucun ATP : elle n'en produit."
+        text: "Parce que la glycolyse ne consomme aucun ATP : elle se contente d'en produire, et le compte des 4 ATP formés devrait donc être directement le bilan net de cette étape."
         correct: false
         feedback: >
           C'est l'oubli précis que ce chapitre corrige : les premières réactions
@@ -95,8 +97,9 @@ items:
           il faut compter les deux sens.
       - id: C
         text: >
-          Parce que ces 2 ATP proviennent en réalité de la chaîne
-          respiratoire, présente aussi dans le cytoplasme.
+          Parce que ces 2 ATP proviennent en réalité de la chaîne respiratoire, présente
+          elle aussi dans le cytoplasme, et non de la glycolyse proprement dite, qui en
+          produit bien 4 en tout.
         correct: false
         feedback: >
           La chaîne respiratoire n'est pas dans le cytoplasme : elle est sur
@@ -106,8 +109,9 @@ items:
           dioxygène.
       - id: D
         text: >
-          Parce qu'il faut compter les 2 $NADH,H^+$ produits comme des ATP
-          directement utilisables.
+          Parce qu'il faut compter les 2 $NADH,H^+$ produits comme des ATP directement
+          utilisables : le bilan de 4 les inclut déjà, alors que 2 ATP seulement sont
+          réellement formés.
         correct: false
         feedback: >
           Un $NADH,H^+$ n'est pas de l'ATP : c'est un transporteur
@@ -149,8 +153,9 @@ items:
         correct: true
       - id: B
         text: >
-          2 $CO_2$ au total, car un seul des deux pyruvates issus de la
-          glycolyse est réellement oxydé dans la matrice.
+          2 $CO_2$ au total, car un seul des deux pyruvates issus de la glycolyse est
+          réellement oxydé dans la matrice mitochondriale, l'autre étant recyclé sans
+          perte du moindre carbone.
         correct: false
         feedback: >
           Les deux pyruvates issus d'un même glucose subissent chacun le même
@@ -158,7 +163,7 @@ items:
           puis entre dans un tour du cycle de Krebs. Il faut donc compter les
           deux, pas un seul.
       - id: C
-        text: "6 $CO_2$, mais tous libérés pendant la glycolyse, avant l'entrée dans la mitochondrie."
+        text: "6 $CO_2$, mais tous libérés pendant la glycolyse, avant même l'entrée dans la mitochondrie : le cycle de Krebs ne fait ensuite que transférer des électrons vers les transporteurs."
         correct: false
         feedback: >
           La glycolyse ne libère aucun $CO_2$ (chapitre 3) : elle coupe le glucose en
@@ -167,8 +172,10 @@ items:
           matrice mitochondriale.
       - id: D
         text: >
-          4 $CO_2$, car les deux carbones qui entrent dans le cycle sous
-          forme de groupement acétyle ne sont jamais libérés.
+          4 $CO_2$, car les deux carbones qui entrent dans le cycle sous forme de
+          groupement acétyle ne sont jamais libérés : ils restent incorporés aux
+          molécules du cycle et repassent d'un tour à l'autre sans quitter la
+          mitochondrie.
         correct: false
         feedback: >
           Ce compte oublie les 2 $CO_2$ libérés plus tôt, lors de
@@ -207,7 +214,7 @@ items:
           continuer à fonctionner.
         correct: true
       - id: B
-        text: "Le dioxygène fournit directement les électrons qui alimentent la chaîne respiratoire."
+        text: "Le dioxygène fournit directement les électrons qui alimentent la chaîne respiratoire : sans lui, aucun électron ne circulerait le long des complexes de la membrane interne, et la chaîne s'arrêterait aussitôt."
         correct: false
         feedback: >
           Les électrons proviennent des coenzymes réduits ($NADH,H^+$ et
@@ -216,8 +223,9 @@ items:
           accepteur, jamais comme fournisseur d'électrons.
       - id: C
         text: >
-          Le dioxygène est utilisé directement par l'ATP synthase pour
-          fabriquer les molécules d'ATP.
+          Le dioxygène est utilisé directement par l'ATP synthase, qui s'en sert comme
+          substrat pour assembler l'ADP et le phosphate inorganique en molécules d'ATP
+          utilisables.
         correct: false
         feedback: >
           L'ATP synthase est actionnée par le flux d'ions $H^+$ à travers la
@@ -227,8 +235,9 @@ items:
           continuer à fonctionner.
       - id: D
         text: >
-          Le dioxygène traverse la membrane interne pour rejoindre la
-          matrice, où il réagit directement avec le glucose.
+          Le dioxygène traverse la membrane interne pour rejoindre la matrice, où il
+          réagit directement avec le glucose pour l'oxyder et libérer l'énergie qu'il
+          contient.
         correct: false
         feedback: >
           Le glucose est déjà entièrement dégradé bien avant la chaîne
@@ -268,8 +277,10 @@ items:
         correct: true
       - id: B
         text: >
-          L'air ambiant ne contient jamais assez de dioxygène pour un effort
-          intense, quelle que soit la vitesse de la respiration pulmonaire.
+          L'air ambiant ne contient jamais assez de dioxygène pour soutenir un effort
+          intense, quelle que soit la vitesse de la respiration pulmonaire : la limite
+          se situe dans l'atmosphère elle-même, et non dans le muscle, qui reste
+          parfaitement capable de respirer.
         correct: false
         feedback: >
           Ce n'est pas une question de quantité de dioxygène dans l'air (elle
@@ -278,9 +289,9 @@ items:
           musculaires en pleine action — exactement le point du chapitre 1.
       - id: C
         text: >
-          La fermentation lactique remplace complètement la respiration
-          cellulaire dans toutes les cellules du corps pendant un effort
-          intense.
+          La fermentation lactique remplace complètement la respiration cellulaire dans
+          toutes les cellules du corps pendant un effort intense, y compris celles qui
+          ne participent pas à l'effort musculaire.
         correct: false
         feedback: >
           Seules les fibres musculaires directement sollicitées, dont
@@ -289,9 +300,9 @@ items:
           « toutes les cellules du corps ».
       - id: D
         text: >
-          L'acide lactique est un déchet produit uniquement par des
-          bactéries présentes dans le muscle, pas par les cellules
-          musculaires elles-mêmes.
+          L'acide lactique est un déchet produit uniquement par des bactéries présentes
+          dans le muscle, et non par les cellules musculaires elles-mêmes, dont le
+          métabolisme reste strictement aérobie.
         correct: false
         feedback: >
           C'est l'erreur classique signalée au chapitre 7 : la fermentation lactique
@@ -326,14 +337,13 @@ items:
     choices:
       - id: A
         text: >
-          La fermentation s'arrête après la glycolyse (2 ATP nets, par
-          phosphorylation directe), sans faire appel ni au cycle de Krebs ni
-          à la chaîne respiratoire : l'essentiel de l'énergie chimique du
-          glucose reste alors emmagasiné dans le produit formé (acide
-          lactique ou éthanol), au lieu d'être extrait sous forme d'ATP.
+          La fermentation s'arrête après la glycolyse (2 ATP nets, par phosphorylation
+          directe), sans faire appel au cycle de Krebs ni à la chaîne respiratoire :
+          l'essentiel de l'énergie du glucose reste emmagasiné dans le produit formé,
+          acide lactique ou éthanol.
         correct: true
       - id: B
-        text: "La fermentation détruit une partie du glucose sous forme de chaleur avant même la glycolyse."
+        text: "La fermentation détruit une grande partie du glucose sous forme de chaleur avant même la glycolyse : l'écart des bilans vient de cette perte initiale, et non des étapes qui suivent."
         correct: false
         feedback: >
           La glycolyse elle-même est identique dans les deux voies (chapitre 3) : ce
@@ -341,8 +351,10 @@ items:
           en amont.
       - id: C
         text: >
-          La fermentation utilise le même cycle de Krebs que la respiration,
-          mais avec un rendement deux fois plus faible.
+          La fermentation utilise le même cycle de Krebs que la respiration, mais avec
+          un rendement plus faible à chaque tour, ce qui suffit à expliquer l'écart
+          considérable entre les deux bilans sans qu'il faille invoquer une différence
+          d'étapes.
         correct: false
         feedback: >
           La fermentation n'utilise pas du tout le cycle de Krebs — c'est
@@ -351,8 +363,9 @@ items:
           dioxygène (chapitres 4, 5 et 7).
       - id: D
         text: >
-          La fermentation nécessite davantage d'étapes biochimiques que la
-          respiration, ce qui consomme plus d'ATP au départ.
+          La fermentation nécessite davantage d'étapes biochimiques que la respiration,
+          ce qui consomme plus d'ATP au départ et réduit d'autant le gain net obtenu à
+          la fin du processus.
         correct: false
         feedback: >
           C'est l'inverse : la fermentation est une voie plus COURTE que la

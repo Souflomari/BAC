@@ -77,7 +77,7 @@ items:
         text: "Non : cette réaction, rapide et non spécifique, est une réaction inflammatoire aiguë (immunité innée) ; la sélection clonale des lymphocytes et la production d'anticorps (immunité adaptative) demandent plusieurs jours, pas quelques heures."
         correct: true
       - id: B
-        text: "Oui, car toute réaction de l'organisme contre un agent infectieux implique nécessairement une reconnaissance spécifique par des lymphocytes."
+        text: "Oui, car toute réaction de l'organisme contre un agent infectieux implique nécessairement une reconnaissance spécifique de cet agent par des lymphocytes, quelle que soit la vitesse à laquelle elle apparaît."
         correct: false
         misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
         also_reveals: []
@@ -89,7 +89,7 @@ items:
           reconnaissance spécifique par sélection clonale est un mécanisme
           distinct, plus lent, propre à l'immunité adaptative.
       - id: C
-        text: "Non, mais uniquement parce que l'inflammation ne fait intervenir aucune cellule immunitaire, seulement des vaisseaux sanguins."
+        text: "Non, mais uniquement parce que l'inflammation ne fait intervenir aucune cellule immunitaire : elle se réduit à une dilatation des vaisseaux sanguins de la zone blessée, sans participation des globules blancs."
         correct: false
         misconception: null
         feedback: >
@@ -98,7 +98,7 @@ items:
           tissu lésé par diapédèse. Ce qui manque à l'affirmation de départ,
           c'est la spécificité, pas la présence de cellules immunitaires.
       - id: D
-        text: "Oui, car la rapidité de la réaction (quelques heures) prouve justement qu'elle cible précisément cette bactérie."
+        text: "Oui, car la rapidité de la réaction (quelques heures) prouve justement qu'elle cible précisément cette bactérie : seule une reconnaissance spécifique peut produire un effet aussi net en si peu de temps."
         correct: false
         misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
         also_reveals: []
@@ -140,7 +140,7 @@ items:
         text: "La réaction locale immédiate relève de l'immunité innée, non spécifique de la bactérie ; l'apparition des anticorps une semaine plus tard relève de l'immunité adaptative, spécifique de cette bactérie et plus lente à se mettre en place."
         correct: true
       - id: B
-        text: "Les deux phénomènes relèvent de la même immunité innée, simplement à des vitesses différentes selon la quantité de bactéries présentes."
+        text: "Les deux phénomènes relèvent de la même immunité innée, simplement à des vitesses différentes selon la quantité de bactéries présentes au moment de la blessure et selon l'état général de l'individu."
         correct: false
         misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
         also_reveals: []
@@ -151,7 +151,7 @@ items:
           d'une semaine ne s'explique pas par « plus ou moins de bactéries »,
           mais par la nature different du mécanisme mis en jeu.
       - id: C
-        text: "Les deux phénomènes relèvent de l'immunité adaptative, la rapidité de la réaction locale s'expliquant par une mémoire immunitaire déjà acquise."
+        text: "Les deux phénomènes relèvent de l'immunité adaptative, la rapidité de la réaction locale s'expliquant par une mémoire immunitaire déjà acquise lors d'une rencontre antérieure avec la même bactérie."
         correct: false
         misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
         also_reveals: []
@@ -161,7 +161,7 @@ items:
           réaction rapide et non spécifique observée en quelques heures est le
           signe de l'immunité innée, pas d'une réponse adaptative mémorisée.
       - id: D
-        text: "La réaction locale immédiate est aussi spécifique de la bactérie que le sont les anticorps apparus une semaine plus tard."
+        text: "La réaction locale immédiate est aussi spécifique de la bactérie que le sont les anticorps apparus une semaine plus tard : seul le délai les distingue, et non leur mode de reconnaissance de l'agent."
         correct: false
         misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
         also_reveals: []
@@ -200,7 +200,7 @@ items:
         text: "Le virus est neutralisé et/ou agglutiné à d'autres particules virales, et devient plus facilement reconnaissable par les phagocytes — mais il n'est pas détruit par l'anticorps lui-même."
         correct: true
       - id: B
-        text: "L'anticorps détruit directement le virus au moment de la fixation, comme le ferait une enzyme digestive."
+        text: "L'anticorps détruit directement le virus au moment où il s'y fixe, comme le ferait une enzyme digestive découpant sa cible, et le complexe immun n'est plus qu'un déchet à évacuer."
         correct: false
         misconception: mc.svt.svt_moyens_defense.anticorps-detruisent-directement
         also_reveals: []
@@ -211,7 +211,7 @@ items:
           lieu, vient d'un autre acteur, en général un phagocyte qui élimine
           ensuite le virus neutralisé ou agglutiné.
       - id: C
-        text: "Le complexe immun formé transforme le virus en une cellule infectée que l'anticorps élimine ensuite lui-même."
+        text: "Le complexe immun formé transforme le virus en une cellule infectée, que l'anticorps élimine ensuite lui-même par contact, sans qu'aucune autre cellule immunitaire n'ait à intervenir."
         correct: false
         misconception: null
         feedback: >
@@ -220,7 +220,7 @@ items:
           simplement l'assemblage anticorps-antigène ; il ne modifie pas la
           nature du virus.
       - id: D
-        text: "L'anticorps pénètre à l'intérieur du virus pour le détruire de l'intérieur, comme le ferait un lymphocyte T cytotoxique sur une cellule infectée."
+        text: "L'anticorps pénètre à l'intérieur du virus pour le détruire de l'intérieur, comme le ferait un lymphocyte T cytotoxique sur une cellule infectée par ce même virus."
         correct: false
         misconception: mc.svt.svt_moyens_defense.anticorps-detruisent-directement
         also_reveals: []
@@ -260,7 +260,7 @@ items:
         text: "Non : une fois le virus entré dans la cellule, il est hors de portée des anticorps circulants ; c'est la réponse à médiation cellulaire (lymphocytes T8, puis T cytotoxiques) qui détruit, par contact direct, la cellule infectée elle-même."
         correct: true
       - id: B
-        text: "Oui, car les anticorps peuvent traverser la membrane plasmique pour atteindre un virus déjà installé à l'intérieur d'une cellule."
+        text: "Oui, car les anticorps peuvent traverser la membrane plasmique de la cellule pour atteindre un virus déjà installé à l'intérieur d'elle, et s'y fixer exactement comme ils le font sur un virus circulant dans le sang."
         correct: false
         misconception: mc.svt.svt_moyens_defense.anticorps-detruisent-directement
         also_reveals: []
@@ -270,7 +270,7 @@ items:
           membrane d'une cellule pour atteindre un virus déjà intracellulaire —
           ce virus est, à ce stade, totalement hors de leur portée.
       - id: C
-        text: "Non, car aucun anticorps n'est jamais produit contre ce type de virus."
+        text: "Non, car aucun anticorps n'est jamais produit contre ce type de virus : l'organisme ne dispose contre lui que de la phagocytose, seule capable d'atteindre une cellule infectée."
         correct: false
         misconception: null
         feedback: >
@@ -282,7 +282,7 @@ items:
           d'anticorps, mais leur incapacité à atteindre une cible
           intracellulaire.
       - id: D
-        text: "Oui, mais uniquement si la cellule infectée libère temporairement le virus hors d'elle-même pour permettre la fixation des anticorps."
+        text: "Oui, mais uniquement si la cellule infectée libère temporairement le virus hors d'elle-même, ce qui laisse aux anticorps circulants une fenêtre pour s'y fixer et le neutraliser."
         correct: false
         misconception: mc.svt.svt_moyens_defense.anticorps-detruisent-directement
         also_reveals: []
@@ -380,7 +380,7 @@ items:
         text: "Le lymphocyte T cytotoxique (LTc), issu de la différenciation d'un lymphocyte T8 sélectionné par les fragments viraux affichés à la surface de la cellule infectée."
         correct: true
       - id: B
-        text: "Le lymphocyte B, qui reconnaît directement l'antigène viral affiché par la cellule infectée et la détruit par contact."
+        text: "Le lymphocyte B, qui reconnaît directement l'antigène viral affiché par la cellule infectée et la détruit par contact, sans passer par la production d'anticorps."
         correct: false
         misconception: mc.svt.svt_moyens_defense.confond-lb-lt
         also_reveals: []
@@ -391,7 +391,7 @@ items:
           destruction par contact d'une cellule infectée est le mécanisme
           propre au lymphocyte T8 différencié en LTc, une lignée distincte.
       - id: C
-        text: "Le plasmocyte, qui libère des anticorps directement au contact de la cellule infectée pour la détruire."
+        text: "Le plasmocyte, qui libère ses anticorps directement au contact de la cellule infectée afin de la détruire sur place, à la manière d'une injection ciblée."
         correct: false
         misconception: mc.svt.svt_moyens_defense.confond-lb-lt
         also_reveals: [mc.svt.svt_moyens_defense.anticorps-detruisent-directement]
@@ -403,7 +403,7 @@ items:
           contact direct, propre au lymphocyte T cytotoxique, pas du plasmocyte
           ni des anticorps qu'il sécrète.
       - id: D
-        text: "Le lymphocyte T4 auxiliaire, qui détruit lui-même les cellules infectées après avoir reconnu l'antigène qu'elles présentent."
+        text: "Le lymphocyte T4 auxiliaire, qui détruit lui-même les cellules infectées après avoir reconnu l'antigène qu'elles présentent à leur surface."
         correct: false
         misconception: mc.svt.svt_moyens_defense.confond-lb-lt
         also_reveals: []
