@@ -95,6 +95,7 @@ function loadCurriculum() {
   });
   return {
     CURRICULUM: jiti(path.join(WEB, "src/lib/curriculum.ts")),
+    EXAMENS: jiti(path.join(WEB, "src/lib/examens.ts")),
     listNotions: jiti(path.join(WEB, "src/lib/content.ts")).listNotions,
   };
 }
@@ -875,6 +876,44 @@ try {
     else if (prog.pourcentAffiche) failures += fail("programme: un « % » s'affiche — la couverture doit rester un fait M/N, jamais un score");
     else if (prog.coversDansProgramme > 0) failures += fail(`programme: ${prog.coversDansProgramme} Cover décoratif(s) — les motifs répétés devaient disparaître`);
     else console.log(`  ✓ ${prog.nb} matières, couvertures ${prog.couvertures.join(" · ")} — factuelles, sans %, sans Cover`);
+  }
+
+  // (2026-09-05) UN EN-TÊTE D'EXERCICE DIT CE QU'IL Y A DEDANS.
+  //
+  // Les épreuves se servent en MORCEAUX : un exercice du sujet réparti entre
+  // plusieurs notions donne plusieurs cartes empilées sur la page. Le seul
+  // texte qui distingue ces cartes est le libellé de position. Huit d'entre
+  // eux ne disaient rien — « Exercice 1 — Partie 2 (Chimie) », point — pendant
+  // que leur frère juste au-dessus annonçait « Partie 1 : chromage d'une
+  // plaque d'acier par électrolyse ». Sept des huit venaient de la même
+  // campagne de transcription (réactions acido-basiques) : ce n'est pas une
+  // décision de sujet, c'est une case laissée vide.
+  //
+  // La porte lit la SOURCE (les libellés), pas le DOM : le libellé est le
+  // seul intitulé que la carte possède, et une carte sans intitulé se voit
+  // aussi bien avant le rendu. Ce qu'elle refuse est précis — un libellé qui
+  // s'arrête sur son numéro de section.
+  {
+    console.log(`\n[examens] SWEEP: aucun en-tête d'exercice ne s'arrête sur son numéro de section`);
+    const { listEpreuves } = loadCurriculum().EXAMENS;
+    const muets = [];
+    let libelles = 0;
+    for (const ep of listEpreuves()) {
+      for (const x of ep.exercices) {
+        const l = x.entry.source.exerciseLabel;
+        if (!l) continue;
+        libelles++;
+        if (/^Exercice\s+[IVX0-9]+\b.*?(?:Partie|§)\s*[IVX0-9]+\s*(?:\([^)]*\))?\s*$/i.test(l))
+          muets.push(`${ep.id} · ${x.entry.id} : « ${l} »`);
+      }
+    }
+    checks++;
+    if (muets.length)
+      failures += fail(
+        `${muets.length} en-tête(s) d'exercice sans intitulé — ${muets.slice(0, 3).join(" ; ")} ` +
+          `(la carte n'annonce alors que son numéro, à côté de frères qui nomment leur sujet)`
+      );
+    else console.log(`  ✓ ${libelles} libellés d'exercice, 0 qui s'arrête sur son numéro de section`);
   }
 
   // (2026-09-05) L'ORDRE DU PROGRAMME EST RENDU, PAS SEULEMENT CALCULÉ.
