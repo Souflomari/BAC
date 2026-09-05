@@ -27,6 +27,7 @@
  * Ce n'est PAS une porte tant que la classe n'est pas propre.
  */
 import { chromium } from "playwright-core";
+import { execSync } from "node:child_process";
 import { readdirSync, existsSync } from "node:fs";
 
 const BASE = process.env.BASE ?? "http://127.0.0.1:3495";
@@ -38,8 +39,11 @@ for (const m of readdirSync("../content")) {
     if (existsSync(`${d}/${s}/lesson.md`)) routes.push(`/notions/${m}/${s}`);
   }
 }
+// LES 39 ÉPREUVES, lues là où la liste est vraie (2026-09-05). Une seule
+// figurait ici, et revenait propre parce que l'énoncé n'était pas dans le DOM.
+const examens = execSync("node scripts/routes-examens.mjs", { cwd: process.cwd(), encoding: "utf8" }).trim().split(" ");
 const AUTRES = ["/", "/matieres/maths", "/matieres/pc", "/matieres/svt", "/examens",
-                "/examens/spc-2023-normale", "/commencer", "/atelier"];
+                ...examens, "/commencer", "/atelier"];
 
 const nav = await chromium.launch({
   executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium",
@@ -52,6 +56,14 @@ const dits = [];
 
 for (const route of [...AUTRES, ...routes]) {
   await page.goto(`${BASE}${route}`, { waitUntil: "networkidle", timeout: 120000 });
+  // L'énoncé, puis le corrigé : les deux temps d'une épreuve.
+  const commencer = page.getByRole("button", { name: /Commencer l.épreuve/i });
+  if (await commencer.count()) {
+    await commencer.first().click();
+    await page.waitForSelector("[data-exam-exo]", { timeout: 10000 });
+    const terminer = page.getByRole("button", { name: /Terminer l.épreuve/i });
+    if (await terminer.count()) { await terminer.first().click(); await page.waitForTimeout(250); }
+  }
   await page.evaluate(() => document.querySelectorAll("[data-chapter-section]").forEach((s) => (s.hidden = false)));
   vus++;
   const m = await page.evaluate(() => {

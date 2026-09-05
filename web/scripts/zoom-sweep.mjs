@@ -35,7 +35,14 @@ for (const W of [1280, 360]) {
   const soucis = [];
   for (const r of routes) {
     await p.goto(`${BASE}${r}`, { waitUntil: "networkidle" });
-    const m = await p.evaluate(() => {
+    const m = await p.evaluate(async () => {
+      // LES FONTES D'ABORD (2026-09-05). Sous charge — trois navigateurs et
+      // deux serveurs sur la même machine —, `networkidle` arrive avant que
+      // les fontes du site soient posées, et la mesure se fait avec les
+      // métriques du SUBSTITUT, plus large : 61 débords de 47 à 200 px sur des
+      // pages qui, seules et à froid, mesurent 0. Une largeur qui dépend de
+      // l'instant où on la lit n'est pas une mesure. On attend les fontes.
+      await document.fonts.ready;
       document.querySelectorAll("[data-chapter-section]").forEach((s) => (s.hidden = false));
       // SC 1.4.4 : texte redimensionnable à 200 % sans perte de contenu.
       document.documentElement.style.fontSize = "32px";

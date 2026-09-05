@@ -3010,7 +3010,72 @@ les numéros de chapitre.
 Après : **impression 0 défaut sur 104 pages** (62 leçons + 39 épreuves + 3),
 les deux thèmes.
 
-### 11.16 Deux soupçons re-mesurés, et déjà traités
+### 11.16 L'audit complet — chaque instrument, chaque surface, et ce qu'il a vu
+
+Demandé en fin de journée : « un audit complet ». Le voici, mesuré et non
+raconté. Vingt instruments hors CI ont été inventoriés (`INSTRUMENTS.md`
+en donne la table), puis lancés sur les 62 leçons ET les 39 épreuves — les
+épreuves ouvertes en deux clics, comme les portes CI depuis le §11.13. Les
+portes CI elles-mêmes tournent sur le run 454 au moment où ceci s'écrit ; le
+run 451, sur la même pile d'instruments, était vert en 28 min 35 s.
+
+**Ce qui est propre, et le chiffre qui le dit :**
+
+| instrument | surface | résultat |
+|---|---|---|
+| `contrast-gate` | 80 paires, deux thèmes | tout passe |
+| `regle-atelier` | l'atelier | 0 violation |
+| `slugs-visibles` | 62 leçons | 0 slug visible |
+| `liens-internes` | 72 pages, 108 cibles | 0 morte |
+| `liens-fichiers` | 765 fichiers | 0 renvoi mort en zone vivante |
+| `token-gate` | tout le code composant | une seule syntaxe |
+| `validate-content --strict` | 62 notions | 0 échec |
+| `etroit-sweep` | 108 pages × 320/360/390 px — les 39 épreuves ouvertes en deux clics | 0 débord |
+| `zoom400-sweep` | 70 pages à 400 % (le balayage à 108 pages, épreuves ouvertes, tourne au moment de ce commit — son chiffre suivra) | 0 débord, 0 barre collante, 0 navigation inatteignable |
+| `zoom-sweep` (texte à 200 %) | 67 pages, mesuré SOUS CHARGE | **61 débords** de 47 à 200 px — que trois pages re-mesurées seules et à froid ramènent à **0** : l'instrument lisait la largeur avec les métriques de la fonte de SUBSTITUT, `networkidle` arrivant avant les fontes. Il attend désormais `document.fonts.ready`. Le balayage complet à froid est à refaire avant de dire « zéro » sur 67 pages ; il suivra dans le commit suivant |
+| `pagination-probe` | 60 liens profonds | 60 tenues, 0 rompue |
+| `annonce-sweep` | 106 pages dont les 39 épreuves | 0 région assertive, 0 focus perdu, 0 recul de tabulation |
+| `copie-maths` | 39 épreuves, 29 325 formules | 0 caractère en trop |
+| `impression` | 104 pages, deux thèmes | 0 défaut (après le §11.15) |
+| `formules-rendues` | 101 pages + 71 169 formules à la source | 0 illisible, 0 refusée |
+| `portee-hors-lecon` | 39 épreuves, 1 472 questions | 100 % avec raisonnement, 93 % avec algèbre montrée |
+| `reseau-malade` | 5 scènes sous latence et pertes injectées | toutes tenues (6 requêtes perdues sur 155, par construction) |
+| `cls-sweep` | 70 pages, réseau libre | 0,000 à 0,010 partout sauf **`/examens/<id>` à 0,320** — le décalage du bouton « Commencer » à l'échange de fonte, déjà mesuré et porté à l'arbitrage propriétaire (§8.5) : inchangé |
+| `poids-sweep` | 70 routes, processeur bridé | la page la plus lourde du produit est `/notions/pc/rlc-serie` : 30 280 nœuds, 4,5 s de tâches longues sous bridage ×6, réactive après 3,4 s — un FAIT à garder en tête pour la vidéo et les figures, pas un défaut mesuré contre un seuil |
+
+**Ce qui est connu et reste au propriétaire** — re-mesuré à l'identique, pas
+redécouvert : `horsligne-sweep` (une leçon déjà visitée, cliquée hors ligne,
+donne l'écran du navigateur — `docs/audits/hors-ligne.md` §« résultat qui
+tranche un autre arbitrage ») ; `recherche-navigateur` (⌘F ne trouve pas dans
+un chapitre replié — §10, arbitrage assumé) ; `polices-de-repli` (287 nœuds
+sur 63 pages dessinés par DejaVu Sans : `ᵉ`, `ℤ`, `✓`, l'arabe — même
+inventaire qu'au §« caractères que la police ne dessine pas ») ;
+`portee-corpus` (dérivation dépliable sur 1 leçon sur 62, figures animées sur
+6 — des portées, pas des défauts, et le verdict est pédagogique).
+
+**Ce que l'audit a trouvé de FAUX dans un instrument**, et c'est la seule
+correction : `renvois-visibles` déclarait la leçon RL fautive pour « 1 code
+R » — `R0`. C'était le **résistor** du schéma, `R_0` rendu par KaTeX en spans
+dont l'`innerText` recolle « R0 », et onze étiquettes « R0 » dans
+`rl-schema.svg`. Un code de barreau vit dans la prose ; la sonde lit
+maintenant la prose — le texte des formules et des étiquettes SVG est vidé
+avant la lecture. Vérifié rouge avec un témoin « rung R4 et R7 » injecté en
+prose : la sonde mord encore (1 rung, 2 codes), et la leçon RL est à zéro.
+
+**Les 16 « renvois visuels sans description » de `portee-hors-lecon`** ont été
+lus un par un. Ce sont les faux positifs que l'instrument annonce lui-même
+(« majorant ») : `**Le dispositif (figure 1).**` EST une description que son
+motif rate quand un tableau précède ; « montage schématisé sur la figure 1,
+constitué d'un générateur… » décrit le montage dans la phrase même ; « même
+boucle que la figure 1 de la première expérience » renvoie à une figure
+décrite plus haut dans la même entrée. Aucun des quatre échantillonnés n'est
+un trou. Le chiffre reste un majorant ; il est maintenant lu.
+
+**Trois instruments de plus ouvrent les épreuves** pour que ces zéros
+restent vrais : `etroit-sweep`, `zoom400-sweep`, `annonce-sweep` lisent les
+39 sujets par `routes-examens.mjs` et font les deux clics.
+
+### 11.17 Deux soupçons re-mesurés, et déjà traités
 
 Deux mesures lancées ce jour-là ont retrouvé un terrain déjà couvert, et il
 faut le dire pour que personne ne le refasse une troisième fois.

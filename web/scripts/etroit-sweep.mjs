@@ -21,6 +21,7 @@
  * premier reviendrait à ne regarder qu'un dixième du produit.
  */
 import { chromium } from "playwright-core";
+import { execSync } from "node:child_process";
 import { readdirSync, existsSync } from "node:fs";
 
 const BASE = process.env.BASE ?? "http://localhost:3433";
@@ -37,13 +38,18 @@ for (const m of readdirSync("../content")) {
 
 // Les pages hors leçon : elles n'ont pas de chapitres à déplier, mais elles
 // portent les mêmes risques (tableaux d'épreuves, cartes de matière, en-tête).
+// LES 39 ÉPREUVES, lues là où la liste est vraie (2026-09-05) : une seule
+// figurait ici, et elle revenait propre parce que l'énoncé n'était pas dans
+// le DOM — `EpreuveShell` démarre au « seuil ». Mesuré à la main avant
+// d'entrer ici, ouvertes en deux clics : 39 × 3 largeurs, 0 débord.
+const examens = execSync("node scripts/routes-examens.mjs", { cwd: process.cwd(), encoding: "utf8" }).trim().split(" ");
 const AUTRES = [
   "/",
   "/matieres/maths",
   "/matieres/pc",
   "/matieres/svt",
   "/examens",
-  "/examens/spc-2023-normale",
+  ...examens,
   "/commencer",
   "/atelier",
 ];
@@ -112,6 +118,14 @@ for (const largeur of LARGEURS) {
   let ka = 0;
   for (const r of AUTRES) {
     await page.goto(`${BASE}${r}`, { waitUntil: "domcontentloaded" });
+    // L'énoncé, puis le corrigé : les deux temps d'une épreuve.
+    const commencer = page.getByRole("button", { name: /Commencer l.épreuve/i });
+    if (await commencer.count()) {
+      await commencer.first().click();
+      await page.waitForSelector("[data-exam-exo]", { timeout: 10000 });
+      const terminer = page.getByRole("button", { name: /Terminer l.épreuve/i });
+      if (await terminer.count()) { await terminer.first().click(); await page.waitForTimeout(250); }
+    }
     await page.waitForTimeout(60);
     const m = await mesure();
     if (m.debord > 1) {

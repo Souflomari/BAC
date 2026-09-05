@@ -33,6 +33,15 @@ for (const r of routes) {
   // déplier tout ce qui est repliable : details, boutons « voir »
   await p.evaluate(() => { document.querySelectorAll("details").forEach(d => d.open = true); });
   const m = await p.evaluate(() => {
+    // LES FORMULES NE PORTENT PAS DE CODE DE BARREAU (2026-09-05). KaTeX rend
+    // « R_0 » — un résistor — en spans dont l'innerText recolle « R0 », et la
+    // sonde le comptait comme un code R. Une leçon RL entière était déclarée
+    // fautive pour un résistor. On vide le texte des formules avant de lire.
+    for (const k of document.querySelectorAll(".katex")) k.textContent = " ";
+    // Ni une ÉTIQUETTE DE FIGURE : « R0 » est le résistor du schéma RL
+    // (rl-schema.svg, onze fois), pas un barreau. Un code de barreau vit dans
+    // la prose ; on lit la prose.
+    for (const k of document.querySelectorAll("svg text")) k.textContent = " ";
     const t = document.body.innerText;
     const rungs = t.match(/\brungs?\b/gi) ?? [];
     const codes = t.match(/\bR\d+\b/g) ?? [];
