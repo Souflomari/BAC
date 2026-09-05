@@ -275,8 +275,8 @@ items:
         correct: true
       - id: B
         text: >-
-          Une force aussi intense produit forcément un grand moment, donc la
-          roue accélère fortement.
+          Une force aussi intense produit forcément un grand moment, donc la roue
+          accélère fortement dès qu'on l'applique.
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
         feedback: >
@@ -288,7 +288,7 @@ items:
           « grande force = grand effet de rotation », en oubliant le bras de
           levier.
       - id: C
-        text: "Le moment vaut $F = 500\\ \\text{N}\\cdot\\text{m}$."
+        text: "Le moment vaut $F = 500\\ \\text{N}\\cdot\\text{m}$, puisque c'est l'intensité de la force qui le fixe."
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
         feedback: >
@@ -299,8 +299,8 @@ items:
           vaut $0 \times 500 = 0\ \text{N}\cdot\text{m}$.
       - id: D
         text: >-
-          Il est impossible d'appliquer une force exactement sur l'axe, la
-          question n'a pas de sens.
+          Il est impossible d'appliquer une force exactement sur l'axe de rotation, si
+          bien que la question n'a pas de sens.
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
         feedback: >
@@ -428,8 +428,8 @@ items:
         correct: true
       - id: B
         text: >-
-          Les deux valises contribuent de façon identique, puisqu'elles ont
-          la même masse.
+          Les deux valises contribuent de façon rigoureusement identique, puisqu'elles
+          ont exactement la même masse.
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
         feedback: >
@@ -440,8 +440,8 @@ items:
           erroné : « même masse ⇒ même contribution à $J_\Delta$. »
       - id: C
         text: >-
-          La valise B contribue $5$ fois plus, car elle est $5$ fois plus
-          loin de l'axe.
+          La valise B contribue $5$ fois plus que la valise A, car elle est placée $5$
+          fois plus loin de l'axe.
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
         feedback: >
@@ -452,8 +452,8 @@ items:
           rend la répartition de la masse si déterminante.
       - id: D
         text: >-
-          La valise A contribue plus, car elle est plus proche de l'axe,
-          donc plus « stable ».
+          La valise A contribue davantage, car elle est plus proche de l'axe et donc
+          plus « stable » en rotation.
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
         feedback: >
@@ -501,9 +501,8 @@ items:
         correct: true
       - id: B
         text: >-
-          $v_A = v_B = 4{,}0\ \text{m/s}$, puisque les deux points
-          appartiennent au même disque tournant à $\omega = 4{,}0\
-          \text{rad/s}$.
+          $v_A = v_B = 4{,}0\ \text{m/s}$, puisque les deux points appartiennent au même
+          disque, qui tourne à $\omega = 4{,}0\ \text{rad/s}$.
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable
         feedback: >
@@ -517,7 +516,7 @@ items:
       - id: C
         text: >-
           $v_A = 0{,}10\ \text{m/s}$ et $v_B = 0{,}40\ \text{m/s}$, en lisant
-          directement la distance à l'axe comme une vitesse.
+          directement la distance à l'axe comme si elle était une vitesse.
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable
         feedback: >
@@ -527,8 +526,8 @@ items:
           vitesse angulaire commune, pas se contenter de la distance seule.
       - id: D
         text: >-
-          On ne peut pas comparer $v_A$ et $v_B$ sans connaître le rayon
-          total du disque.
+          On ne peut pas comparer $v_A$ et $v_B$ sans connaître au préalable le rayon
+          total du disque en rotation.
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
         feedback: >
@@ -720,8 +719,8 @@ items:
     choices:
       - id: A
         text: >-
-          C'est la vitesse angulaire initiale des deux roues qui est
-          différente au départ.
+          C'est la vitesse angulaire initiale des deux roues qui n'est pas la même au
+          moment où on les lâche.
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
         feedback: >
@@ -731,8 +730,8 @@ items:
           deux essais.
       - id: B
         text: >-
-          À masse totale égale et geste identique, les deux roues doivent
-          nécessairement réagir de façon identique.
+          À masse totale égale et geste identique, les deux roues doivent nécessairement
+          réagir de la même façon.
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
         feedback: >
@@ -743,16 +742,14 @@ items:
           Modèle erroné : « même masse totale ⇒ même comportement ».
       - id: C
         text: >-
-          C'est la répartition de la masse par rapport à l'axe qui change
-          le comportement : une masse loin de l'axe résiste davantage au
-          changement de rotation qu'une masse proche de l'axe, même à
-          masse totale égale.
+          C'est la répartition de la masse par rapport à l'axe qui change le
+          comportement : une masse loin de l'axe résiste davantage au changement de
+          rotation, même à masse totale égale.
         correct: true
       - id: D
         text: >-
-          C'est le matériau des jetons (bois, métal...) qui change leur
-          résistance à la rotation, indépendamment de leur masse ou de
-          leur position.
+          C'est le matériau des jetons, bois ou métal, qui change leur résistance à la
+          rotation, indépendamment de leur masse comme de leur position sur le disque.
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
         feedback: >
@@ -793,8 +790,8 @@ items:
     choices:
       - id: A
         text: >-
-          Le manège avec les enfants près du centre subit moins de
-          frottement au niveau de l'axe, ce qui le fait tourner plus vite.
+          Le manège où les enfants sont près du centre subit moins de frottement au
+          niveau de l'axe, ce qui le fait tourner plus vite pour une même poussée.
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
         feedback: >
@@ -806,17 +803,15 @@ items:
           mentionnée.
       - id: B
         text: >-
-          La masse totale ne suffit pas à décrire la résistance d'un
-          système à changer sa rotation : ce qui compte, c'est comment
-          cette masse est répartie par rapport à l'axe — une masse proche
-          de l'axe s'oppose moins au changement de rotation qu'une masse
-          éloignée.
+          La masse totale ne suffit pas à décrire la résistance d'un système à changer
+          sa rotation : ce qui compte, c'est la façon dont cette masse est répartie par
+          rapport à l'axe.
         correct: true
       - id: C
         text: >-
-          La poussée exercée par le troisième enfant est en réalité plus
-          forte quand les enfants sont assis près du centre, car il
-          rencontre moins de résistance au bord.
+          La poussée exercée par le troisième enfant est en réalité plus forte quand les
+          enfants sont assis près du centre, car il rencontre alors moins de résistance
+          au bord du manège.
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
         feedback: >
@@ -827,8 +822,9 @@ items:
           embarquée, et non la force, qui explique l'écart.
       - id: D
         text: >-
-          Les enfants assis au bord subissent une force centrifuge qui
-          s'oppose à la poussée, ce qui ralentit la mise en rotation.
+          Les enfants assis au bord subissent une force centrifuge qui s'oppose
+          directement à la poussée, ce qui ralentit d'autant la mise en rotation du
+          manège.
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
         feedback: >
@@ -935,9 +931,8 @@ items:
     choices:
       - id: A
         text: >-
-          Le point $O$ a une vitesse linéaire $v = 5{,}0\ \text{m/s}$,
-          comme tous les points du disque, puisque $\omega$ est la même
-          partout.
+          Le point $O$ a une vitesse linéaire $v = 5{,}0\ \text{m/s}$, comme tous les
+          autres points du disque, puisque $\omega$ y est la même partout.
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable
         feedback: >
@@ -954,8 +949,8 @@ items:
         correct: true
       - id: C
         text: >-
-          Le point $O$ n'a pas de vitesse angulaire, puisqu'il ne se
-          déplace pas.
+          Le point $O$ n'a aucune vitesse angulaire, puisqu'il ne se déplace pas lorsque
+          le disque tourne.
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable
         feedback: >
@@ -966,8 +961,8 @@ items:
           entier, y compris pour le point $O$, même si $O$ ne bouge pas.
       - id: D
         text: >-
-          On ne peut rien dire du point $O$ sans connaître le rayon du
-          disque.
+          On ne peut rien dire du point $O$ sans connaître au préalable le rayon du
+          disque en rotation.
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
         feedback: >
@@ -1009,9 +1004,9 @@ items:
     choices:
       - id: A
         text: >-
-          $\mathcal{M}_\Delta(\vec F) = d \times F = 0{,}25 \times 40 =
-          10\ \text{N}\cdot\text{m}$, car la force est appliquée à
-          $d=0{,}25\ \text{m}$ de l'axe.
+          $\mathcal{M}_\Delta(\vec F) = d \times F = 0{,}25 \times 40 = 10\
+          \text{N}\cdot\text{m}$, puisque la force est appliquée à $d=0{,}25\ \text{m}$
+          de l'axe.
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
         feedback: >
@@ -1024,8 +1019,8 @@ items:
           $d$ du point d'application.
       - id: B
         text: >-
-          Une force appliquée loin de l'axe a toujours un moment non nul,
-          quelle que soit sa direction.
+          Une force appliquée loin de l'axe a toujours un moment non nul, quelle que
+          soit la direction dans laquelle on l'exerce.
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
         feedback: >
@@ -1036,8 +1031,8 @@ items:
           erroné : « loin de l'axe ⇒ moment forcément non nul ».
       - id: C
         text: >-
-          On ne peut pas calculer de moment pour une force qui ne fait pas
-          tourner le solide.
+          On ne peut pas calculer de moment pour une force qui ne fait pas tourner le
+          solide sur lequel elle s'applique.
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
         feedback: >
@@ -1807,10 +1802,9 @@ items:
     choices:
       - id: A
         text: >-
-          Les deux atteignent exactement la même vitesse angulaire :
-          $J_\Delta = \frac12 mR^2$ pour un disque comme pour un cylindre,
-          ne dépend que de la masse et du rayon, jamais de la longueur (ou
-          de l'épaisseur) selon l'axe.
+          Les deux atteignent exactement la même vitesse angulaire : $J_\Delta = \frac12
+          mR^2$ pour un disque comme pour un cylindre, et ne dépend jamais de la
+          longueur selon l'axe.
         correct: true
       - id: B
         text: >-
@@ -1842,8 +1836,8 @@ items:
           rotation.
       - id: D
         text: >-
-          On ne peut pas savoir sans connaître la longueur exacte du
-          rouleau et l'épaisseur exacte de la pièce.
+          On ne peut pas savoir sans connaître la longueur exacte du rouleau et
+          l'épaisseur exacte de la pièce de monnaie.
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
         feedback: >
@@ -1888,7 +1882,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "La roue s'arrête immédiatement, puisque plus rien ne la fait tourner."
+        text: "La roue s'arrête immédiatement, puisque plus rien ne la fait tourner une fois le pédalage interrompu."
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee
         feedback: >
@@ -1900,8 +1894,8 @@ items:
           angulaire reste CONSTANTE, elle ne s'annule pas.
       - id: B
         text: >-
-          La roue ralentit progressivement puis s'arrête, car son moment
-          d'inertie « se consomme » au fil du temps.
+          La roue ralentit progressivement puis finit par s'arrêter d'elle-même, car son
+          moment d'inertie « se consomme » peu à peu au fil du temps.
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee
         feedback: >
@@ -1912,16 +1906,14 @@ items:
           pédalage.
       - id: C
         text: >-
-          La roue continue de tourner indéfiniment à $\omega = 12\
-          \text{rad/s}$ : dès que le moment moteur des pédales disparaît,
-          $\sum \mathcal{M}_\Delta(\vec F_{ext}) = 0$ (l'axe sans
-          frottement a un moment nul), donc $\ddot\theta = 0$ par la
-          relation fondamentale : la vitesse angulaire reste constante.
+          La roue continue de tourner indéfiniment à $\omega = 12\ \text{rad/s}$ : le
+          moment moteur disparu, $\sum \mathcal{M}_\Delta(\vec F_{ext}) = 0$, donc
+          $\ddot\theta = 0$ et la vitesse angulaire reste constante.
         correct: true
       - id: D
         text: >-
-          La roue continue de tourner, mais en accélérant, car plus
-          aucune force ne s'oppose à son mouvement.
+          La roue continue de tourner, mais en accélérant peu à peu, car plus aucune
+          force ne s'oppose désormais à son mouvement.
         correct: false
         misconception: mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee
         feedback: >

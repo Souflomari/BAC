@@ -758,10 +758,10 @@ items:
           distance $\Delta G$ mais de formes différentes n'ont pas la même
           période.
       - id: B
-        text: "Non : pour un pendule pesant, $T_0 = 2\\pi\\sqrt{J_\\Delta/(mgd)}$, où $J_\\Delta$ est le moment d'inertie du solide par rapport à $\\Delta$ et $d=\\Delta G$ ; cette expression ne se réduit à celle du pendule simple que dans le cas particulier d'une masse ponctuelle."
+        text: "Non : pour un pendule pesant, $T_0 = 2\\pi\\sqrt{J_\\Delta/(mgd)}$, où $J_\\Delta$ est le moment d'inertie par rapport à $\\Delta$ et $d=\\Delta G$ ; cette expression ne se réduit à celle du pendule simple que pour une masse ponctuelle."
         correct: true
       - id: C
-        text: "Oui, à condition de remplacer $L$ par le moment d'inertie $J_\\Delta$ directement dans la formule : $T_0 = 2\\pi\\sqrt{J_\\Delta/g}$."
+        text: "Oui, à la seule condition de remplacer $L$ par le moment d'inertie $J_\\Delta$ directement dans la formule, ce qui donne $T_0 = 2\\pi\\sqrt{J_\\Delta/g}$."
         correct: false
         feedback: >
           Ce n'est pas une simple substitution de $L$ par $J_\Delta$ : la
@@ -993,7 +993,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "L'énergie potentielle élastique $E_{pe} = \\frac{1}{2}k\\theta^2$, en remplaçant $x$ par $\\theta$ et $k$ par $g/L$ comme dans l'équation différentielle."
+        text: "L'énergie potentielle élastique $E_{pe} = \\frac{1}{2}k\\theta^2$, en remplaçant $x$ par $\\theta$ et $k$ par $g/L$, comme le suggère l'équation différentielle du mouvement."
         correct: false
         feedback: >
           Cette substitution de variables ($x\to\theta$, $k/m\to g/L$) est
@@ -1002,7 +1002,7 @@ items:
           il n'y a pas de ressort ici, donc pas d'énergie potentielle
           élastique du tout.
       - id: B
-        text: "Aucune énergie potentielle n'intervient ici, seule l'énergie cinétique compte, car le pendule simple n'a pas de ressort."
+        text: "Aucune énergie potentielle n'intervient ici : seule l'énergie cinétique compte, puisque le pendule simple ne comporte aucun ressort."
         correct: false
         feedback: >
           C'est vrai qu'il n'y a pas d'énergie élastique (pas de ressort) —
@@ -1013,7 +1013,7 @@ items:
         text: "L'énergie potentielle de pesanteur, car le rappel du pendule simple vient du poids, pas d'un ressort — il n'y a pas d'énergie potentielle élastique ici."
         correct: true
       - id: D
-        text: "L'énergie potentielle électrique, par analogie avec le condensateur du circuit LC."
+        text: "L'énergie potentielle électrique, par analogie directe avec le condensateur du circuit LC étudié au chapitre précédent."
         correct: false
         feedback: >
           L'analogie avec le circuit LC concerne la forme de l'équation
@@ -1047,7 +1047,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Le régime apériodique, car le mouvement finit par s'arrêter."
+        text: "Le régime apériodique, puisque le mouvement du solide finit malgré tout par s'arrêter complètement."
         correct: false
         feedback: >
           Le régime apériodique se reconnaît à l'absence totale
@@ -1057,7 +1057,7 @@ items:
           observable, même si le mouvement finit lui aussi par s'arrêter au
           bout d'un très grand nombre de cycles.
       - id: B
-        text: "Le régime périodique, car un intervalle de temps régulier subsiste entre les extrêmes."
+        text: "Le régime périodique, puisqu'un intervalle de temps parfaitement régulier subsiste entre deux passages successifs aux extrêmes."
         correct: false
         feedback: >
           La régularité de l'intervalle est un indice, mais le régime
@@ -1065,7 +1065,7 @@ items:
           nul). Ici l'amplitude décroît clairement à chaque cycle : ce
           détail exclut le régime périodique.
       - id: C
-        text: "On ne peut pas identifier de régime sans connaître la valeur exacte de $h$."
+        text: "On ne peut identifier aucun régime sans connaître au préalable la valeur exacte du coefficient de frottement $h$."
         correct: false
         feedback: >
           Le régime se reconnaît sur son comportement observable (intervalle
@@ -1073,7 +1073,7 @@ items:
           $h$ : c'est précisément ce que permet une trace ou une description
           expérimentale, sans avoir besoin de connaître $h$ au préalable.
       - id: D
-        text: "Le régime pseudo-périodique : les oscillations persistent avec un intervalle de temps régulier (la pseudo-période), mais leur amplitude décroît progressivement à cause du frottement."
+        text: "Le régime pseudo-périodique : les oscillations persistent avec un intervalle de temps régulier, la pseudo-période, mais leur amplitude décroît."
         correct: true
     correct_feedback: >
       Deux indices combinés signent le régime pseudo-périodique : un
@@ -1104,10 +1104,10 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$T$ reste voisine de $T_0 = 2\\pi\\sqrt{m/k}$ (peu affectée, pour un amortissement modéré) ; c'est surtout l'amplitude qui décroît de plus en plus vite — jusqu'à ce que, pour un $h$ assez grand, on bascule dans le régime apériodique."
+        text: "$T$ reste voisine de $T_0 = 2\\pi\\sqrt{m/k}$, peu affectée pour un amortissement modéré ; c'est surtout l'amplitude qui décroît de plus en plus vite."
         correct: true
       - id: B
-        text: "$T$ diminue nettement : plus de frottement fait osciller le système plus vite."
+        text: "$T$ diminue nettement : davantage de frottement fait osciller le système plus vite qu'auparavant."
         correct: false
         feedback: >
           C'est le frottement qui gouverne l'amortissement (la vitesse à
@@ -1115,7 +1115,7 @@ items:
           elles-mêmes. Confondre les deux, c'est prendre un frein pour un
           accélérateur.
       - id: C
-        text: "$T$ augmente nettement : plus de frottement freine le mouvement, donc chaque aller-retour prend plus longtemps."
+        text: "$T$ augmente nettement : davantage de frottement freine le mouvement, si bien que chaque aller-retour prend plus de temps."
         correct: false
         feedback: >
           Le frottement dissipe de l'énergie (donc réduit l'amplitude)
@@ -1124,7 +1124,7 @@ items:
           entre deux extrêmes reste voisin de $T_0$, sans s'allonger
           nettement.
       - id: D
-        text: "$T$ devient égale à $2\\pi\\sqrt{h/k}$, une nouvelle formule qui dépend de $h$."
+        text: "$T$ devient égale à $2\\pi\\sqrt{h/k}$, une nouvelle expression qui fait intervenir le coefficient $h$."
         correct: false
         feedback: >
           Aucune formule de ce type n'a été établie dans la leçon : établir
@@ -1159,7 +1159,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Il impose sa propre fréquence au balancier, comme un moteur qui entraîne le mouvement de l'extérieur."
+        text: "Il impose sa propre fréquence au balancier, comme le ferait un moteur qui entraînerait le mouvement depuis l'extérieur du mécanisme."
         correct: false
         feedback: >
           L'entretien ne pilote pas la fréquence : il compense exactement
@@ -1168,10 +1168,10 @@ items:
           moment d'inertie et la raideur de son ressort spiral, pas par le
           dispositif d'entretien.
       - id: B
-        text: "Il ne fixe pas le rythme : le balancier continue d'osciller à sa période propre, déterminée par son moment d'inertie et la raideur de son ressort spiral ; le dispositif compense seulement l'énergie perdue par frottement."
+        text: "Il ne fixe pas le rythme : le balancier oscille à sa période propre, fixée par son moment d'inertie et la raideur de son spiral ; le dispositif ne fait que compenser l'énergie perdue."
         correct: true
       - id: C
-        text: "Sans lui, le balancier oscillerait plus vite ; le dispositif ralentit le mouvement pour le rendre régulier."
+        text: "Sans ce dispositif, le balancier oscillerait bien plus vite ; il ralentit donc le mouvement afin de le rendre parfaitement régulier tout au long de la journée."
         correct: false
         feedback: >
           Le dispositif ne joue pas le rôle d'un frein régulateur : sans
@@ -1180,7 +1180,7 @@ items:
           de l'entretien est de compenser cette perte, pas de contrôler la
           vitesse.
       - id: D
-        text: "Il n'a aucun effet sur les oscillations ; son seul rôle est de faire avancer les aiguilles de la montre."
+        text: "Il n'a aucun effet sur les oscillations du balancier ; son seul rôle est de faire avancer les aiguilles de la montre."
         correct: false
         feedback: >
           C'est l'inverse : sans ce dispositif, les frottements internes
@@ -1519,8 +1519,8 @@ items:
     choices:
       - id: A
         text: >-
-          $E_m$ finit par réaugmenter et l'amplitude repart, car
-          l'oscillateur s'entretient de lui-même.
+          $E_m$ finit par réaugmenter et l'amplitude repart, car l'oscillateur finit par
+          s'entretenir de lui-même.
         correct: false
         misconception: M-OSC-AMO-3
         feedback: >
@@ -1536,8 +1536,8 @@ items:
         correct: true
       - id: C
         text: >-
-          $E_m$ reste constante : le frottement ne change que la période,
-          pas l'énergie.
+          $E_m$ reste rigoureusement constante : le frottement ne change que la période,
+          jamais l'énergie du système.
         correct: false
         misconception: [M-OSC-AMO-1, M-OSC-AMO-3]
         feedback: >
@@ -1547,8 +1547,8 @@ items:
           dissipe continûment en chaleur.
       - id: D
         text: >-
-          $E_m$ décroît, donc on peut en déduire la pseudo-période par une
-          formule $T = f(m, h, k)$.
+          $E_m$ décroît, ce dont on peut déduire la pseudo-période par une formule du
+          type $T = f(m, h, k)$.
         correct: false
         misconception: hors_cadre_probe
         feedback: >
@@ -1591,9 +1591,8 @@ items:
     choices:
       - id: A
         text: >-
-          Les intervalles diminuent nettement d'un cycle à l'autre (de
-          $1{,}21$ à $1{,}18\ \text{s}$), preuve que le frottement raccourcit
-          la période.
+          Les intervalles diminuent nettement d'un cycle à l'autre, de $1{,}21$ à
+          $1{,}18\ \text{s}$, preuve que le frottement raccourcit la période du pendule.
         correct: false
         misconception: M-OSC-AMO-1
         feedback: >
@@ -1609,9 +1608,8 @@ items:
         correct: true
       - id: C
         text: >-
-          Puisque l'amplitude a diminué d'environ $40\%$ (de $40^\circ$ à
-          $25^\circ$), la pseudo-période a dû, elle aussi, diminuer
-          d'environ $40\%$.
+          Puisque l'amplitude a diminué d'environ $40\%$, de $40^\circ$ à $25^\circ$, la
+          pseudo-période a nécessairement diminué elle aussi d'environ $40\%$.
         correct: false
         misconception: M-OSC-AMO-1
         feedback: >
@@ -1799,15 +1797,13 @@ items:
     choices:
       - id: A
         text: >-
-          Non : pour un amortissement faible, la pseudo-période $T$ reste
-          voisine de la période propre $T_0=2\pi\sqrt{L/g}$, quelle que
-          soit la décroissance de l'amplitude ; ce sont deux grandeurs
-          indépendantes.
+          Non : pour un amortissement faible, la pseudo-période $T$ reste voisine de
+          $T_0=2\pi\sqrt{L/g}$, quelle que soit la décroissance de l'amplitude.
         correct: true
       - id: B
         text: >-
-          Oui, car l'amplitude et la pseudo-période sont deux mesures du
-          même phénomène de décroissance.
+          Oui, car l'amplitude et la pseudo-période sont deux mesures d'un seul et même
+          phénomène de décroissance du mouvement.
         correct: false
         misconception: M-OSC-AMO-1
         feedback: >
@@ -1818,8 +1814,8 @@ items:
           $T_0$), pas par le frottement.
       - id: C
         text: >-
-          Oui, mais dans l'autre sens : une amplitude divisée par deux
-          double la pseudo-période.
+          Oui, mais dans l'autre sens : une amplitude divisée par deux entraîne une
+          pseudo-période multipliée par deux.
         correct: false
         misconception: M-OSC-AMO-1
         feedback: >
@@ -1829,8 +1825,8 @@ items:
           soit l'ampleur de la décroissance de l'amplitude.
       - id: D
         text: >-
-          On ne peut rien dire : un pendule qui perd de l'amplitude n'a
-          déjà plus de période définie.
+          On ne peut rien en dire : un pendule qui perd de l'amplitude n'a déjà plus de
+          période clairement définie.
         correct: false
         misconception: M-OSC-AMO-1
         feedback: >
@@ -1904,10 +1900,9 @@ items:
           proche du critique, pas nécessairement le plus amorti des deux.
       - id: D
         text: >-
-          Le réglage 2 est plus proche du régime critique (retour le plus
-          rapide sans oscillation) ; le réglage 1, plus lent bien que non
-          oscillant, correspond à un amortissement plus fort (régime
-          apériodique).
+          Le réglage 2 est plus proche du régime critique, le retour le plus rapide sans
+          oscillation ; le réglage 1, plus lent, correspond à un amortissement plus
+          fort.
         correct: true
     correct_feedback: >
       Parmi les régimes sans oscillation, le retour le plus rapide est
@@ -1938,8 +1933,8 @@ items:
     choices:
       - id: A
         text: >-
-          Elle est vraie : le fil accumule de l'énergie de torsion au fil
-          des cycles, qu'il finira par restituer d'un coup.
+          Elle est vraie : le fil accumule de l'énergie de torsion au fil des cycles
+          successifs, énergie qu'il finira nécessairement par restituer d'un seul coup.
         correct: false
         misconception: M-OSC-AMO-3
         feedback: >
@@ -1950,8 +1945,8 @@ items:
           s'amortit.
       - id: B
         text: >-
-          Elle est vraie, car l'amortissement n'est qu'une pause temporaire
-          avant que le système ne reparte de lui-même.
+          Elle est vraie, car l'amortissement observé n'est qu'une pause temporaire
+          avant que le système ne reparte de lui-même dans un nouveau cycle.
         correct: false
         misconception: M-OSC-AMO-3
         feedback: >
@@ -1961,16 +1956,14 @@ items:
           futur du système livré à lui-même.
       - id: C
         text: >-
-          Elle est fausse : l'énergie du fil est déjà restituée en énergie
-          cinétique à chaque passage par l'équilibre, cycle après cycle —
-          c'est précisément cet échange qui s'amortit ; le fil ne garde
-          aucune réserve cachée à libérer plus tard.
+          Elle est fausse : l'énergie du fil est déjà restituée en énergie cinétique à
+          chaque passage par l'équilibre, cycle après cycle — c'est cet échange qui
+          s'amortit.
         correct: true
       - id: D
         text: >-
-          Elle est fausse, mais seulement parce que le fil a fini par se
-          casser ; en théorie, l'énergie serait bien restituée
-          intégralement.
+          Elle est fausse, mais seulement parce que le fil a fini par se casser ; en
+          théorie, l'énergie serait bien restituée intégralement au système.
         correct: false
         misconception: M-OSC-AMO-3
         feedback: >
@@ -2120,8 +2113,8 @@ items:
     choices:
       - id: A
         text: >-
-          Le résonateur oscille à sa fréquence propre $f_0$, qui a
-          augmenté pour rejoindre celle de l'excitateur.
+          Le résonateur oscille à sa fréquence propre $f_0$, qui a augmenté jusqu'à
+          rejoindre celle imposée par l'excitateur.
         correct: false
         misconception: M-OSC-RES-3
         feedback: >
@@ -2131,7 +2124,8 @@ items:
           la rapprocher de $f_0$.
       - id: B
         text: >-
-          C'est le résonateur qui impose sa fréquence à l'excitateur.
+          C'est le résonateur qui impose sa propre fréquence à l'excitateur, et non
+          l'inverse comme on pourrait le croire.
         correct: false
         misconception: M-OSC-RES-3
         feedback: >
@@ -2147,8 +2141,8 @@ items:
         correct: true
       - id: D
         text: >-
-          Les deux oscillent à des fréquences sans rapport ; la grande
-          amplitude vient de la puissance de l'excitateur.
+          Les deux oscillent à des fréquences sans aucun rapport entre elles ; la grande
+          amplitude vient seulement de la puissance de l'excitateur.
         correct: false
         misconception: [M-OSC-RES-1, M-OSC-RES-3]
         feedback: >
