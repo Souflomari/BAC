@@ -285,6 +285,11 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
   }, [epreuve]);
   const BUDGET_FORMULES = 80;
   const lotSuivant = useCallback((k: number, poids: number[]) => {
+    // Le PREMIER lot d'une phase est une seule question : ce que l'élève voit
+    // d'abord doit arriver le plus tôt possible (mesuré à ×6 : 3,5 s pour un
+    // premier lot plein, ~1 s pour une question). Les lots suivants prennent
+    // le budget.
+    if (k === 0) return Math.min(nbUnites, 1);
     let j = k;
     let acc = 0;
     while (j < nbUnites && (j === k || acc + poids[j] <= BUDGET_FORMULES)) { acc += poids[j]; j++; }
