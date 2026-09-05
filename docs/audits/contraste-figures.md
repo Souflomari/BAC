@@ -167,9 +167,20 @@ l'information ; le mot redevient lisible.
 - **Un texte à moins de 0,5 d'opacité** est traité comme un ornement et n'est
   pas jugé. Angle mort **assumé** : si une information passe un jour par une
   opacité aussi basse, la sonde la manquera.
-- (Plus rien sur le thème sombre : le corpus y a été passé exhaustivement le
-  2026-09-05, **zéro défaut vivant**, et la porte CI tourne dans les deux
-  thèmes.)
+- (Plus rien sur le thème sombre.)
+
+**LA CERTIFICATION, pour mémoire.** Le corpus entier a été repassé au balayage
+INTÉGRAL (`--pixels-tous`, deux à quatre captures par texte, ~4 100 textes)
+dans les DEUX thèmes, sur l'arbre final :
+
+| | contraste / invisible / recouvert | classes informatives | dette owner |
+|---|---:|---:|---:|
+| clair | **0** | 67 | 50 |
+| sombre | **0** | 67 | 52 |
+
+Les 67 sont les deux classes non armées (« barre », « chevauche »), connues et
+documentées ; la dette owner est celle des deux figures `rlc-serie` sous
+arbitrage.
 - **Le modèle seul manque 17 % des cas.** Sur ce corpus : 84 candidats
   trouvés par le modèle, 101 défauts réels trouvés par le balayage intégral
   (`--pixels-tous`, deux captures par texte, ~25 min sur 258 figures). Le
