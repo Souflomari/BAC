@@ -183,3 +183,55 @@ ensuite été restauré et le build refait.
 - **Ce qui est ENVOYÉ.** Les octets montants — enregistrement d'une
   progression, d'une tentative — restent un angle mort déclaré
   (`INSTRUMENTS.md`, point 4).
+
+## Les 16 Mo de vidéo — mesurés, et pourquoi AUCUNE porte ne les garde
+
+Ajouté le 2026-09-05, après avoir écrit deux versions d'une porte et jeté
+les deux.
+
+`public/explications/` pèse **16 Mo** : 58 fichiers, dont trois `full.mp4`
+de 2,0 à 2,7 Mo — tous dans une seule notion, `maths/geometrie-espace`. Un
+seul de ces fichiers tiré sans être demandé coûterait **plus cher qu'une
+séance de révision entière** (1,38 Mo après le correctif de préchargement).
+
+**Le fait, mesuré : zéro octet de vidéo part sans geste.** Chargement de la
+leçon, défilement complet, ouverture du dernier chapitre, ouverture des
+cinq cartes d'exercice — 1 063 ko au total, **0 requête média**.
+
+### Pourquoi la porte a été écrite, puis retirée
+
+L'invariant méritait une porte. Deux versions ont été écrites ; les deux
+étaient **vertes pour la mauvaise raison**, et il a fallu casser le produit
+exprès pour s'en apercevoir.
+
+1. *Charger la leçon et défiler.* Vert. Testé contre un build où
+   `preload="auto"` remplaçait `preload="none"` **et** où la garde de
+   révélation était court-circuitée : **toujours vert**. La raison : une
+   carte de banque s'ouvre FERMÉE. Le contrôle mesurait « la carte est
+   fermée », pas la politique de préchargement.
+2. *Ouvrir les cartes, puis mesurer.* Vert aussi, sur le même build cassé.
+
+Un diagnostic qui comptait les `<video>` du DOM a donné la réponse : après
+avoir ouvert les cinq cartes, il y a **zéro `<video>` et zéro
+`[data-explication-gate]`** — seulement dix boutons « J'ai fait ma
+tentative ». La vidéo dort derrière **trois** portes indépendantes :
+
+1. la carte de banque, fermée par défaut ;
+2. la validation attempt-first (« J'ai fait ma tentative ») ;
+3. la révélation de l'explication elle-même.
+
+Pour atteindre la couche que la porte prétendait garder, il aurait fallu
+trois gestes délibérés de l'élève — et à ce stade il a explicitement
+demandé la correction. **Une porte posée derrière trois portes fermées ne
+peut être que verte** : elle ne certifie rien et se désarmerait toute
+seule le jour où la première change.
+
+> **La règle. Un contrôle qui ne peut pas devenir rouge n'est pas un
+> contrôle.** Le test rouge ne sert pas à confirmer qu'on a raison ; il sert
+> à découvrir ce que le contrôle mesure VRAIMENT. Ici il a montré, deux fois
+> de suite, que ce n'était pas ce qui était écrit dessus.
+
+Ce qui reste, à la place d'une porte : **le fait mesuré ci-dessus**, et la
+politique écrite dans `ExplicationPlayer.tsx` (`preload="none"`, rien de
+monté avant le clic), qui est déjà gardée par la porte attempt-first de
+`dom-truth`.

@@ -195,6 +195,29 @@ fermé le lendemain : 9 cas, 4 débordements voulus déclarés
 `data-hors-panneau`, 5 défauts corrigés, porte armée en CI. C'est
 exactement l'usage prévu de cette liste.)*
 
+## Un contrôle qui ne peut pas devenir rouge n'est pas un contrôle
+
+Ajoutée le 2026-09-05, après avoir écrit deux versions d'une porte et jeté
+les deux (`docs/audits/donnees-et-forfait.md`, dernière section).
+
+L'enjeu était réel : 16 Mo de vidéos d'explication dorment dans `public/`,
+dont trois fichiers de 2 à 2,7 Mo — un seul tiré sans être demandé coûterait
+plus cher qu'une séance entière. Deux versions d'un contrôle « aucune vidéo
+sans geste » ont été écrites. Les deux étaient VERTES sur un build où
+`preload="auto"` remplaçait `preload="none"` ET où la garde de révélation
+était court-circuitée.
+
+Un diagnostic qui comptait les `<video>` du DOM a donné la raison : la vidéo
+dort derrière TROIS portes (carte de banque fermée · validation attempt-first
+· révélation). Le contrôle mesurait la première et croyait mesurer la
+troisième.
+
+> **Le test rouge ne sert pas à confirmer qu'on a raison. Il sert à découvrir
+> ce que le contrôle mesure vraiment.** Une porte posée derrière trois portes
+> fermées ne peut être que verte : elle ne certifie rien et se désarmerait
+> toute seule le jour où la première change. Aucune porte n'a été armée ; le
+> fait mesuré reste, écrit.
+
 ## Compter le CONTENANT, c'est mesurer une habitude de rédaction
 
 Ajoutée le 2026-09-05, après avoir publié une fausse alerte et l'avoir
