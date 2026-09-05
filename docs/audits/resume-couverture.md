@@ -165,21 +165,26 @@ verte en devenant plus exigeante.
 | | |
 |---|---:|
 | misconceptions déclarées ou taguées | **767** |
-| évaluables (≥ 3 items du banc) | **532** |
-| sous le plancher | **235** |
-| … dont sans aucun item de banc | **16** |
-| notions entièrement évaluables | **30** sur 62 |
+| évaluables (≥ 3 items du banc) | 532 → **767** |
+| sous le plancher | 235 → **0** |
+| … dont sans aucun item de banc | 16 → **0** |
+| notions entièrement évaluables | 30 → **62** sur 62 |
 | notions portant un `coverage_summary` | **62** sur 62 |
+
+La seconde colonne est l'état après la campagne du plancher (165 items, 32
+notions closes) qui a suivi immédiatement — voir
+`docs/audits/couverture-diagnostique.md`.
 
 ## Ce que ce document ne dit pas
 
 - **Si les tableaux par-misconception sont justes.** Ils restent de la prose,
   relue par des humains. L'instrument garde deux affirmations, pas le tableau.
-- **Les 235 misconceptions encore sous le plancher.** Elles ne sont pas un
-  mensonge : leurs notions déclarent toutes `floor_met: false` et nomment, dans
-  leur bloc `under_floor`, ce qui manque et combien. C'est de la dette NOMMÉE,
-  pas de la dette masquée — et c'est le sujet de la campagne d'items, pas de
-  cette porte-ci.
+- **Ce qui arrive quand la dette est payée.** Les 235 misconceptions que ce
+  document laissait sous le plancher l'ont été dans les heures qui ont suivi.
+  Les 62 notions déclarant désormais `floor_met: true`, la porte A devient de
+  fait une porte FRANCHE sur tout le corpus : déclarer une misconception sans
+  lui écrire ses trois items fait tomber l'intégration. La porte d'honnêteté a
+  produit la porte de fond.
 - **Si un résumé généré est UTILE.** Il est exact et gardé, ce qui n'est pas la
   même chose qu'éclairant : les notes qui expliquent une décision d'auteur — un
   périmètre volontairement réduit, un item hérité qu'on garde et pourquoi — ne

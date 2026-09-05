@@ -1649,3 +1649,79 @@ chaque notion concernée déclare `floor_met: false` et dit dans son
 pas de cette porte-ci.
 
 Détail complet : `docs/audits/resume-couverture.md`.
+
+### 10.9 Le plancher diagnostique est atteint partout — 62 notions sur 62
+
+La suite directe du §10.8, et le plus gros chantier de contenu de la journée.
+
+**L'état de départ.** Une fois la porte `resume-couverture` armée et le
+périmètre du plancher élargi à l'union du DÉCLARÉ et du TAGUÉ, la mesure
+donnait : 767 misconceptions dans le corpus, **532 évaluables**, 235 sous le
+plancher de 3 items du banc, **30 notions sur 62** entièrement évaluables.
+
+**L'état d'arrivée.** **767 sur 767 évaluables, 0 sous le plancher, 62 notions
+sur 62.** Le moteur de diagnostic voit désormais toutes les erreurs que le
+corpus déclare.
+
+**Le coût.** **165 items** écrits, en neuf lots, chacun vérifié et poussé
+séparément. Le détail par notion vit dans le préambule du `coverage_summary` de
+chaque fichier — réécrit à chaque fois, avec ce qui manquait et pourquoi. Ce
+chiffre est REDÉRIVABLE, et l'a été avant d'être écrit ici — c'est la leçon du
+§10.8 appliquée à son propre récit :
+`git diff f6a8339 -- content | grep -c '^+  - id: '` → 165, zéro retrait.
+
+**Seize familles n'avaient AUCUN item de banc.** Elles n'étaient sondées que par
+un checkpoint de leçon, ce qui ne compte pas : le modèle apprenant est bâti sur
+le banc de fin seul, pour ne pas compter deux fois un item cloné en ligne. Ces
+seize-là étaient invisibles aux deux instruments avant l'élargissement du
+périmètre — elles ne figuraient ni parmi les évaluables, ni parmi les
+sous-plancher. Trois exemples de ce qu'elles couvraient : la conductimétrie et
+le temps de demi-réaction en cinétique, la reconnaissance vide du maître chez
+Hegel, le théorème de Rolle appliqué à $f'$ plutôt qu'à $f$.
+
+**Une porte franche obtenue sans l'écrire.** Les 62 notions déclarant désormais
+`floor_met: true`, la porte A de `resume-couverture` — qui échoue si un fichier
+annonce le plancher atteint alors qu'une misconception est en dessous — vaut
+maintenant sur tout le corpus : **déclarer une misconception sans lui écrire ses
+trois items casse l'intégration.** La porte d'honnêteté a produit la porte de
+fond, sans qu'il ait fallu la spécifier séparément. C'est un engagement réel
+pour la suite : une notion neuve naît désormais sans dette, ou ne passe pas.
+
+**Ce que les portes de forme ont coûté, et appris.** Elles ont mordu **une
+quarantaine de fois** au fil des neuf lots, toujours sur les items neufs, et
+jamais deux fois pour la même raison selon la matière :
+
+- en PHILOSOPHIE, la clé tend à énoncer la thèse ET sa justification — elle
+  devient alors la plus longue, repérable sans être lue. La justification
+  appartient au retour, où elle enseigne ;
+- en MATHÉMATIQUES et en PHYSIQUE, l'inverse : la clé est un résultat numérique
+  de quatre mots au milieu de distracteurs explicatifs. Il faut l'étoffer, pas
+  raccourcir les autres ;
+- la porte de l'ABSOLU mord dans les deux sens, et son remède est ordonné :
+  rendre à un distracteur l'absolu qui EST son erreur, avant de désarmer la
+  clé.
+
+**Trois défauts que j'ai écrits et corrigés avant commit**, notés ici parce
+qu'ils se reproduiront :
+
+1. **Des distracteurs qui disent vrai.** Deux items, dans un premier jet,
+   offraient une seconde réponse défendable — l'un critiquait correctement le
+   raisonnement visé, l'autre se corrigeait lui-même en cours de phrase. Un item
+   à deux réponses défendables ne diagnostique rien.
+2. **Des distracteurs qui donnent la bonne valeur.** Un item de chute libre
+   annonçait la hauteur correcte dans ses trois distracteurs, avec de mauvais
+   raisonnements : l'élève qui cherche un nombre n'avait aucune raison de lire
+   les justifications. Chaque distracteur porte désormais la valeur que SON
+   erreur produit — 40 m pour l'oubli du facteur ½, 0 m pour la paire
+   action-réaction prise pour un équilibre.
+3. **Un mauvais préfixe de misconception.** Seize tags fantômes créés d'un coup
+   parce que la notion déclare `mc.math.sma_suites_numeriques.` et que j'avais
+   écrit `mc.math.maths_...`. La porte `couverture-diagnostique` les aurait
+   arrêtés en intégration. **Vérifier le préfixe exact avant d'écrire** fait
+   désormais partie de la routine.
+
+**Ce qui reste ouvert, et n'est pas de mon ressort.** Les arbitrages du §10.6
+sont inchangés : la SVT n'a toujours ni `bank.yaml` ni `exercises.yaml` (il
+n'existe aucun `docs/sujets/svt/`), douze notions de philo n'ont pas de
+`bank.yaml`, et le champ `correct_feedback` reste renseigné sur 1 451 items
+sans être rendu nulle part.

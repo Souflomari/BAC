@@ -1369,89 +1369,635 @@ items:
       **Solution :**
       $$x(t) = -\cos(3t) + 2\sin(3t)$$
 
+  # Ajoutés le 2026-09-05 : seize familles sous le plancher de 3 items du banc.
+  # Huit items, vingt-quatre places — l'ajustement est exact, chaque distracteur
+  # porte une famille distincte.
+  - id: EQDIFF-22
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_equations_differentielles
+    tags: [resolution, famille_de_solutions]
+    primary_misconception: mc.math.maths_equations_differentielles.solution-fonction-unique
+    stem: >
+      Quelles sont les solutions de l'équation différentielle $y' = 3y$ sur
+      $\mathbb{R}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Les fonctions $x \mapsto C\,e^{3x}$, où $C$ décrit $\mathbb{R}$ : une
+          famille, paramétrée par une constante libre
+        correct: true
+      - id: B
+        text: >-
+          La seule fonction $x \mapsto e^{3x}$ : une équation différentielle a
+          une solution, comme une équation ordinaire
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.solution-fonction-unique
+        feedback: >
+          Une équation différentielle admet une FAMILLE de solutions, paramétrée
+          par une constante. C'est facile à vérifier : $2e^{3x}$ est solution
+          elle aussi, puisque sa dérivée vaut $6e^{3x} = 3\times 2e^{3x}$. Il
+          faut une condition supplémentaire — une condition initiale — pour en
+          choisir une seule.
+      - id: C
+        text: >-
+          Les fonctions $x \mapsto 3x + C$ : il s'agit de chercher une primitive
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.ed-comme-primitive
+        feedback: >
+          $y' = 3y$ n'est pas $y' = 3$. Dans le second cas on cherche une
+          primitive ; dans le premier, la dérivée est proportionnelle à la
+          fonction ELLE-MÊME, ce qui caractérise l'exponentielle. Le contrôle
+          est immédiat : la dérivée de $3x + C$ vaut $3$, pas $3(3x+C)$.
+      - id: D
+        text: >-
+          Les fonctions $x \mapsto 3\,e^{x}$ : le coefficient $3$ se place devant
+          l'exponentielle
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.coefficient-a-mal-identifie
+        feedback: >
+          Le coefficient $a$ va dans l'EXPOSANT, pas devant. Vérification :
+          $(3e^{x})' = 3e^{x}$, alors que l'équation demande
+          $3 \times 3e^{x} = 9e^{x}$. C'est le facteur devant qui est libre — il
+          s'appelle $C$ — et $a$ qui est imposé.
+    correct_feedback: >
+      Les solutions de $y' = ay$ sont les $x \mapsto C\,e^{ax}$, $C$ décrivant
+      $\mathbb{R}$. Ici $a = 3$ : le coefficient va dans l'exposant, et la
+      constante libre devant.
+    solution: |
+      **Le théorème.** Les solutions de $y' = ay$ sur $\mathbb{R}$ sont
+      exactement les fonctions
+      $$x \mapsto C\,e^{ax}, \qquad C \in \mathbb{R}$$
+
+      **Les deux contrôles à faire.**
+      - Le coefficient $a$ est dans l'exposant : $(Ce^{ax})' = aCe^{ax} = a\,y$ ✓
+      - $C$ est libre : c'est une FAMILLE, et il faut une condition initiale pour
+        en isoler un membre.
+
+      **Ce que l'équation n'est pas.** $y' = a$ (recherche de primitive) donne
+      $y = ax + C$ — une droite, pas une exponentielle.
+
+  - id: EQDIFF-23
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: maths_equations_differentielles
+    tags: [nature_de_linconnue, resolution]
+    primary_misconception: mc.math.maths_equations_differentielles.ed-inconnue-nombre
+    stem: >
+      Dans l'équation différentielle $y' = -2y$, que cherche-t-on exactement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Une FONCTION — en fait une famille de fonctions — dont la dérivée vaut
+          $-2$ fois elle-même
+        correct: true
+      - id: B
+        text: >-
+          Un nombre $y$ vérifiant l'égalité, comme dans une équation ordinaire
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.ed-inconnue-nombre
+        feedback: >
+          L'inconnue d'une équation différentielle est une FONCTION : sans cela,
+          l'écriture $y'$ n'aurait aucun sens — un nombre ne se dérive pas.
+          C'est le changement de nature de l'inconnue qui fait toute la
+          difficulté du chapitre.
+      - id: C
+        text: >-
+          L'unique fonction dont la dérivée vaut $-2y$, une équation ayant une
+          solution et une seule
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.solution-fonction-unique
+        feedback: >
+          Il y en a une infinité : toutes les $Ce^{-2x}$. La constante $C$ n'est
+          pas un détail — elle traduit qu'une même loi d'évolution admet autant
+          de trajectoires que de points de départ. Une condition initiale en
+          choisit une.
+      - id: D
+        text: >-
+          Un nombre $x$ tel que $e^{-2x}$ soit égal à sa propre dérivée, ce qui se
+          résout en divisant les deux membres par $-2$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.resolution-exponentielle-lineaire
+        feedback: >
+          On ne résout pas une relation exponentielle en divisant comme une
+          équation linéaire : $e^{u} = k$ se résout par le logarithme, pas par
+          une division. Et l'inconnue n'est de toute façon pas un nombre mais une
+          fonction.
+    correct_feedback: >
+      L'inconnue est une FONCTION. On cherche toutes les fonctions dérivables
+      dont la dérivée vaut $-2$ fois elles-mêmes : ce sont les
+      $x \mapsto Ce^{-2x}$, une par valeur de $C$.
+    solution: |
+      **Le changement de nature.** Dans $2x + 3 = 7$, l'inconnue est un nombre.
+      Dans $y' = -2y$, elle est une fonction — sinon $y'$ n'aurait pas de sens.
+
+      **Ce que l'équation exprime.** Une LOI D'ÉVOLUTION : le taux de variation
+      est proportionnel à la valeur actuelle. C'est le modèle de toute
+      décroissance ou croissance exponentielle.
+
+      **La solution.** $y(x) = Ce^{-2x}$, $C \in \mathbb{R}$. Une infinité de
+      trajectoires, une par point de départ.
+
+  - id: EQDIFF-24
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: maths_equations_differentielles
+    tags: [reconnaissance, resolution]
+    primary_misconception: mc.math.maths_equations_differentielles.ed-comme-primitive
+    stem: >
+      Deux équations : $y' = 5$ et $y' = 5y$. Quelles sont leurs solutions
+      respectives ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $y = 5x + C$ pour la première, $y = C\,e^{5x}$ pour la seconde
+        correct: true
+      - id: B
+        text: >-
+          $y = 5x + C$ pour les deux : dans les deux cas on cherche une primitive
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.ed-comme-primitive
+        feedback: >
+          Seule la première est une recherche de primitive. Dans la seconde, la
+          dérivée dépend de la fonction elle-même — c'est ce qui distingue une
+          équation différentielle d'un simple calcul de primitive, et ce qui fait
+          apparaître l'exponentielle.
+      - id: C
+        text: >-
+          $y = 5x + C$ pour la première, $y = 5\,e^{x}$ pour la seconde
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.coefficient-a-mal-identifie
+        feedback: >
+          Le $5$ appartient à l'exposant : $y = Ce^{5x}$. Vérification :
+          $(5e^{x})' = 5e^{x}$, alors qu'il faudrait $5\times 5e^{x} = 25e^{x}$.
+          Le facteur libre devant l'exponentielle est $C$, pas $a$.
+      - id: D
+        text: >-
+          Une seule fonction dans chaque cas, la constante $C$ n'ayant pas lieu
+          d'apparaître puisque $x$ est un nombre
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.ed-inconnue-nombre
+        feedback: >
+          $x$ est la variable, $y$ la fonction inconnue : ni l'un ni l'autre
+          n'est un nombre à trouver. Et la constante $C$ est indispensable — elle
+          paramètre la famille des solutions, dans les deux équations.
+    correct_feedback: >
+      $y' = 5$ est une recherche de primitive : $y = 5x + C$. $y' = 5y$ lie la
+      dérivée à la fonction : $y = Ce^{5x}$. La différence tient à un seul
+      caractère, et elle change tout.
+    solution: |
+      **Première équation.** $y' = 5$ : on cherche les fonctions de dérivée
+      constante, soit $y = 5x + C$.
+
+      **Seconde équation.** $y' = 5y$ : la dérivée est proportionnelle à la
+      fonction. Seule l'exponentielle a cette propriété :
+      $$y(x) = C\,e^{5x}$$
+
+      **Le réflexe qui les sépare.** Regarder si le membre de droite contient
+      $y$. S'il n'en contient pas, c'est une primitive ; s'il en contient, c'est
+      une équation différentielle.
+
+  - id: EQDIFF-25
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_equations_differentielles
+    tags: [condition_initiale]
+    primary_misconception: mc.math.maths_equations_differentielles.condition-initiale-exposant-sans-a
+    stem: >
+      Trouver la solution de $y' = 2y$ vérifiant $y(3) = 5$.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $y(x) = 5\,e^{2(x-3)}$, le coefficient $a = 2$ multipliant tout le
+          décalage
+        correct: true
+      - id: B
+        text: >-
+          $y(x) = 5\,e^{x-3}$ : on décale l'exposant de $3$, sans autre
+          modification
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.condition-initiale-exposant-sans-a
+        feedback: >
+          Le facteur $a = 2$ doit multiplier tout le décalage :
+          $e^{2(x-3)}$, et non $e^{x-3}$. Le contrôle : la dérivée de $5e^{x-3}$
+          vaut $5e^{x-3}$, alors que l'équation exige le double.
+      - id: C
+        text: >-
+          $y(x) = 5\,e^{2x}$ : on remplace directement $C$ par la valeur $5$
+          donnée par la condition
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.condition-initiale-sans-decalage
+        feedback: >
+          Cette écriture ne vaudrait que si la condition portait sur $x = 0$.
+          Ici $y(3) = 5$ : en reportant, $Ce^{6} = 5$, donc
+          $C = 5e^{-6}$ — et $5e^{-6}e^{2x} = 5e^{2(x-3)}$. Le décalage n'est pas
+          optionnel.
+      - id: D
+        text: >-
+          Il y a une infinité de solutions passant par le point $(3\,;5)$ : la
+          condition ne suffit pas à en choisir une
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.nombre-solutions-condition
+        feedback: >
+          Une condition initiale fixe exactement UNE solution : elle détermine
+          $C$, et $C$ détermine la fonction. Deux solutions distinctes de
+          $y' = ay$ ne se croisent jamais — c'est ce qui rend la modélisation
+          possible.
+    correct_feedback: >
+      $y(x) = Ce^{2x}$ avec $y(3) = Ce^{6} = 5$, donc $C = 5e^{-6}$ et
+      $y(x) = 5e^{2x-6} = 5e^{2(x-3)}$. Le coefficient $a = 2$ multiplie tout le
+      décalage.
+    solution: |
+      **La famille.** $y(x) = Ce^{2x}$.
+
+      **La condition.**
+      $$y(3) = Ce^{6} = 5 \quad\Longrightarrow\quad C = 5e^{-6}$$
+
+      **La solution.**
+      $$y(x) = 5e^{-6}e^{2x} = 5e^{2x - 6} = 5\,e^{2(x-3)}$$
+
+      **La forme à retenir.** Pour $y' = ay$ avec $y(x_0) = y_0$ :
+      $$y(x) = y_0\,e^{a(x - x_0)}$$
+      Le facteur $a$ multiplie le décalage entier.
+
+  - id: EQDIFF-26
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_equations_differentielles
+    tags: [condition_initiale, unicite, comportement]
+    primary_misconception: mc.math.maths_equations_differentielles.nombre-solutions-condition
+    stem: >
+      Combien de solutions de $y' = -y$ passent par le point $(0\,;4)$, et
+      comment se comportent-elles en $+\infty$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Une seule, $y(x) = 4e^{-x}$, qui tend vers $0$ en $+\infty$
+        correct: true
+      - id: B
+        text: >-
+          Une infinité : la condition fixe un point, mais une infinité de courbes
+          y passent
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.nombre-solutions-condition
+        feedback: >
+          Une infinité de courbes passent par ce point, mais une seule est
+          solution de l'équation. La condition $y(0) = 4$ donne $C = 4$, et $C$
+          détermine entièrement la fonction. C'est l'unicité qui rend le modèle
+          prédictif.
+      - id: C
+        text: >-
+          Une seule, $y(x) = 4e^{-x}$, qui tend vers $-\infty$ en $+\infty$
+          puisque $a < 0$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.signe-a-comportement
+        feedback: >
+          $a < 0$ donne une DÉCROISSANCE vers $0$, pas vers $-\infty$ : une
+          exponentielle reste strictement positive. Le signe de $a$ décide du
+          sens — $a > 0$ explosion, $a < 0$ amortissement — jamais du signe de la
+          fonction, qui est celui de $C$.
+      - id: D
+        text: >-
+          Une seule, $y(x) = 4e^{-1}$, obtenue en reportant directement la
+          condition dans l'exposant
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.condition-initiale-exposant-sans-a
+        feedback: >
+          $4e^{-1}$ est une constante, dont la dérivée est nulle : ce n'est pas
+          une solution de $y' = -y$. La condition détermine le facteur $C$
+          devant l'exponentielle, elle n'entre pas dans l'exposant.
+    correct_feedback: >
+      Une seule : $y(0) = C = 4$, donc $y(x) = 4e^{-x}$. Le coefficient $a = -1$
+      étant négatif, la solution décroît vers $0$ en $+\infty$ — elle reste
+      strictement positive, puisque $C > 0$.
+    solution: |
+      **L'unicité.** $y(x) = Ce^{-x}$ et $y(0) = C = 4$ : une seule valeur de
+      $C$, donc une seule solution.
+
+      **Le comportement.**
+      $$a < 0 \Rightarrow \lim_{x \to +\infty} Ce^{ax} = 0
+      \qquad a > 0 \Rightarrow \lim_{x \to +\infty} |Ce^{ax}| = +\infty$$
+
+      **Le signe.** Il est celui de $C$, jamais celui de $a$ : une exponentielle
+      ne change pas de signe.
+
+  - id: EQDIFF-27
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: maths_equations_differentielles
+    tags: [oscillateur, periode, conditions_initiales]
+    primary_misconception: mc.math.maths_equations_differentielles.periode-omega
+    stem: >
+      Pour l'équation $y'' + 9y = 0$ avec $y(0) = 2$ et $y'(0) = 12$, que valent
+      la période des solutions et le coefficient $B$ dans
+      $y = A\cos(\omega x) + B\sin(\omega x)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $T = \dfrac{2\pi}{3}$ et $B = 4$, obtenu en divisant $y'(0)$ par
+          $\omega$
+        correct: true
+      - id: B
+        text: >-
+          $T = 2\pi \times 3 = 6\pi$ et $B = 4$ : la période se multiplie par
+          $\omega$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.periode-omega
+        feedback: >
+          La relation est $T = \dfrac{2\pi}{\omega}$, une DIVISION : plus la
+          pulsation est grande, plus la période est courte. Multiplier
+          inverserait la dépendance — un oscillateur rapide aurait une longue
+          période.
+      - id: C
+        text: >-
+          $T = \dfrac{2\pi}{3}$ et $B = 12$ : $B$ vaut directement $y'(0)$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.oscillateur-B-sans-omega
+        feedback: >
+          En dérivant, $y'(x) = -A\omega\sin(\omega x) + B\omega\cos(\omega x)$,
+          donc $y'(0) = B\omega$. Il faut DIVISER par $\omega$ :
+          $B = 12/3 = 4$. Oublier ce facteur est l'erreur la plus fréquente sur
+          cette équation.
+      - id: D
+        text: >-
+          Les solutions ne sont pas sinusoïdales : $y'' + 9y = 0$ a pour solutions
+          des exponentielles $Ce^{3x}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.signe-second-membre-second-ordre
+        feedback: >
+          Le signe change tout. $y'' + \omega^{2}y = 0$ donne des solutions
+          SINUSOÏDALES ; $y'' - \omega^{2}y = 0$ donne des exponentielles réelles.
+          Ici le signe est $+$ : les solutions oscillent, elles n'explosent pas.
+    correct_feedback: >
+      $\omega^{2} = 9$ donc $\omega = 3$, d'où $T = \dfrac{2\pi}{3}$. Et
+      $y'(0) = B\omega = 12$ donne $B = 4$ — il faut diviser par $\omega$, jamais
+      recopier $y'(0)$.
+    solution: |
+      **La pulsation.** $y'' + 9y = 0$ s'écrit $y'' + \omega^{2}y = 0$ avec
+      $\omega = 3$.
+
+      **La période.**
+      $$T = \frac{2\pi}{\omega} = \frac{2\pi}{3}$$
+
+      **Les constantes.** $y(x) = A\cos(3x) + B\sin(3x)$ donne $y(0) = A = 2$,
+      et $y'(x) = -3A\sin(3x) + 3B\cos(3x)$ donne $y'(0) = 3B = 12$, soit
+      $B = 4$.
+
+      **Le piège de signe.** $y'' - \omega^{2}y = 0$ n'a rien de sinusoïdal : ses
+      solutions sont $Ae^{\omega x} + Be^{-\omega x}$.
+
+  - id: EQDIFF-28
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: maths_equations_differentielles
+    tags: [physique, rc, constante_de_temps]
+    primary_misconception: mc.math.maths_equations_differentielles.tau-inverse
+    stem: >
+      La charge d'un condensateur suit $u(t) = E\left(1 - e^{-t/\tau}\right)$.
+      Que vaut $u$ après une durée très longue, et quelle serait l'écriture pour
+      une DÉCHARGE ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $u \to E$ pour la charge ; la décharge s'écrit $u(t) = E\,e^{-t/\tau}$
+          et tend vers $0$
+        correct: true
+      - id: B
+        text: >-
+          $u \to E$ pour la charge ; la décharge s'écrit
+          $u(t) = E\left(1 - e^{-t/\tau}\right)$ elle aussi, seul le sens du
+          courant changeant
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.charge-decharge-confondues
+        feedback: >
+          Les deux régimes n'ont ni le même palier ni la même forme. La CHARGE
+          part de $0$ et monte vers $E$ : $E(1 - e^{-t/\tau})$. La DÉCHARGE part
+          de $E$ et descend vers $0$ : $E\,e^{-t/\tau}$. Le contrôle en une
+          seconde : que vaut l'expression en $t = 0$ ?
+      - id: C
+        text: >-
+          $u \to E$ pour la charge ; la décharge s'écrit $u(t) = E\,e^{-\tau t}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.tau-inverse
+        feedback: >
+          $\tau$ est au DÉNOMINATEUR de l'exposant : $e^{-t/\tau}$. Le contrôle
+          d'homogénéité tranche — un exposant doit être sans dimension, donc on y
+          divise un temps par un temps. Avec $e^{-\tau t}$, l'exposant serait un
+          temps au carré.
+      - id: D
+        text: >-
+          $u$ tend vers $E$ en oscillant, la période valant $T = 2\pi\tau$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.periode-omega
+        feedback: >
+          Un circuit RC ne produit aucune oscillation : son équation est du
+          PREMIER ordre, et ses solutions sont exponentielles, monotones. Les
+          oscillations et la relation $T = 2\pi/\omega$ appartiennent au second
+          ordre, $y'' + \omega^{2}y = 0$.
+    correct_feedback: >
+      $e^{-t/\tau} \to 0$, donc $u \to E$ : le condensateur se charge jusqu'à la
+      tension du générateur. La décharge est l'expression complémentaire,
+      $u(t) = E\,e^{-t/\tau}$, qui part de $E$ et tend vers $0$.
+    solution: |
+      **La charge.** $u(t) = E(1 - e^{-t/\tau})$ : vaut $0$ en $t = 0$, tend vers
+      $E$.
+
+      **La décharge.** $u(t) = E\,e^{-t/\tau}$ : vaut $E$ en $t = 0$, tend vers
+      $0$.
+
+      **Le contrôle qui les sépare.** Évaluer en $t = 0$ — c'est immédiat et
+      sans ambiguïté.
+
+      **La place de $\tau$.** Toujours au dénominateur de l'exposant, pour que
+      celui-ci soit sans dimension. $\tau = RC$ est le temps caractéristique :
+      après $5\tau$, le régime permanent est atteint à $1\,\%$ près.
+
+  - id: EQDIFF-29
+    rung: "R0"
+    difficulty_level: 3
+    skill_code: maths_equations_differentielles
+    tags: [modelisation, refroidissement]
+    primary_misconception: mc.math.maths_equations_differentielles.modele-sans-ecart
+    stem: >
+      Une tasse de café refroidit dans une pièce à $20\,^\circ\text{C}$ : vite
+      d'abord, puis de plus en plus lentement. Quel modèle rend compte de cette
+      observation ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $T' = -k\,(T - 20)$ : la vitesse est proportionnelle à l'ÉCART
+        correct: true
+      - id: B
+        text: >-
+          $T' = -k$ : la tasse perd un nombre fixe de degrés par minute
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.modele-taux-constant
+        feedback: >
+          Ce modèle prédit un refroidissement linéaire, qui ne ralentit jamais —
+          et qui ferait descendre la tasse sous la température de la pièce, puis
+          indéfiniment. L'observation dit l'inverse : le refroidissement
+          s'atténue à mesure que l'écart se réduit.
+      - id: C
+        text: >-
+          $T' = -k\,T$ : la vitesse est proportionnelle à la température de la
+          tasse
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.modele-sans-ecart
+        feedback: >
+          Ce modèle ferait tendre la température vers $0\,^\circ\text{C}$, et non
+          vers $20$ : il ignore la pièce. Ce qui gouverne le transfert
+          thermique, c'est la DIFFÉRENCE entre les deux températures — quand elle
+          s'annule, le refroidissement cesse.
+      - id: D
+        text: >-
+          $T'' + k^{2}T = 0$ : la température oscille autour de celle de la pièce
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.signe-second-membre-second-ordre
+        feedback: >
+          Rien n'oscille dans un refroidissement : la température décroît
+          continûment vers un palier. Les équations du second ordre en
+          $y'' + \omega^{2}y = 0$ décrivent des oscillateurs — un pendule, un
+          circuit LC — pas un transfert thermique.
+    correct_feedback: >
+      $T' = -k(T - 20)$ : la vitesse est proportionnelle à l'ÉCART avec la
+      pièce. Grand écart au début, refroidissement rapide ; écart qui se réduit,
+      refroidissement qui ralentit ; écart nul, refroidissement arrêté.
+    solution: |
+      **Ce que l'observation impose.** Une vitesse qui décroît avec l'écart, et
+      un palier à $20\,^\circ\text{C}$ jamais franchi.
+
+      **Le modèle.**
+      $$T'(t) = -k\,\bigl(T(t) - 20\bigr), \qquad k > 0$$
+
+      **Sa solution.** En posant $u = T - 20$, on retrouve $u' = -ku$, d'où
+      $$T(t) = 20 + (T_0 - 20)\,e^{-kt}$$
+      qui tend vers $20$ sans jamais l'atteindre — exactement ce que dit
+      l'accroche.
+
+  - id: EQDIFF-30
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_equations_differentielles
+    tags: [physique, constante_de_temps]
+    primary_misconception: mc.math.maths_equations_differentielles.tau-inverse
+    stem: >
+      Dans un circuit RL, l'intensité suit
+      $i(t) = I_0\left(1 - e^{-t/\tau}\right)$ avec $\tau = L/R$. Que devient
+      cette durée caractéristique si l'on double la résistance ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elle est divisée par deux : $\tau = L/R$ décroît quand $R$ augmente, et
+          le régime permanent s'établit plus vite
+        correct: true
+      - id: B
+        text: >-
+          Elle est doublée : $\tau$ figure au numérateur de l'exposant, sous la
+          forme $e^{-\tau t}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.tau-inverse
+        feedback: >
+          $\tau$ est au DÉNOMINATEUR de l'exposant, $e^{-t/\tau}$ — sans quoi
+          l'exposant ne serait pas sans dimension. Et la question porte sur
+          $\tau = L/R$ : doubler $R$ divise $\tau$ par deux, quelle que soit la
+          place qu'on lui donne dans l'écriture.
+      - id: C
+        text: >-
+          Elle est doublée, car l'expression décrit une décharge, dont le palier
+          est nul
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.charge-decharge-confondues
+        feedback: >
+          L'expression donnée vaut $0$ en $t = 0$ et tend vers $I_0$ : c'est un
+          ÉTABLISSEMENT du courant, pas une décharge. Une décharge s'écrirait
+          $I_0\,e^{-t/\tau}$, partant de $I_0$ pour tendre vers $0$. Le contrôle
+          en $t = 0$ tranche à chaque fois.
+      - id: D
+        text: >-
+          Elle ne change pas : $\tau$ n'est qu'un facteur d'échelle, et la période
+          du régime vaut de toute façon $T = 2\pi\tau$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.periode-omega
+        feedback: >
+          Un circuit RL n'oscille pas : son équation est du premier ordre, ses
+          solutions sont exponentielles et monotones. La notion de période — et
+          la relation $T = 2\pi/\omega$ — appartient au second ordre, où
+          apparaissent sinus et cosinus.
+    correct_feedback: >
+      $\tau = L/R$ : doubler $R$ divise $\tau$ par deux. Le régime permanent
+      s'établit donc deux fois plus vite — $5\tau$ suffisent à l'atteindre à
+      $1\,\%$ près, quel que soit le circuit.
+    solution: |
+      **La constante de temps.**
+      $$\tau = \frac{L}{R}$$
+      Elle est inversement proportionnelle à $R$ : doubler la résistance la
+      divise par deux.
+
+      **Sa place dans l'exposant.** Toujours au dénominateur : $e^{-t/\tau}$,
+      pour que l'exposant soit un rapport de deux durées, donc sans dimension.
+
+      **Ce qu'elle mesure.** La rapidité d'établissement du régime permanent :
+      à $t = \tau$, on a parcouru $63\,\%$ du chemin ; à $5\tau$, plus de
+      $99\,\%$.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après EQDIFF-22 à EQDIFF-30. Seize familles siégeaient
+# sous le plancher de 3 items du banc : la nature de l'inconnue et la famille de
+# solutions, la place du coefficient $a$, la condition initiale décalée, la
+# période de l'oscillateur, la constante de temps, et les deux modèles de
+# l'accroche. Tableau GÉNÉRÉ contre web/scripts/lib/couverture-compte.mjs,
+# gardé par scripts/resume-couverture.mjs.
 coverage_summary:
-  total_items: 21
-  # NOTE (§6 honnête) — banque « legacy » rétro-taguée. Les 21 items ont été
-  # rédigés AVANT la discipline du tag par distracteur (misconceptions: [] à
-  # l'origine) : conçus pour la VARIÉTÉ des pièges par item, pas pour la
-  # profondeur ≥3 par modèle. DEUX comptages, aucun gonflé :
-  #   • any_distractor = nb d'items où le modèle apparaît sur ≥1 distracteur
-  #     (occasions de le révéler) ;
-  #   • primary        = nb d'items CONSTRUITS pour cibler ce modèle.
-  counting_convention: any_distractor   # métrique retenue pour le plancher ≥3
-  floor_met: false
-  per_rung: { R0: 3, R1: 3, R2: 3, R3: 3, R4: 3, R5: 3, R6: 3 }
-
-  per_misconception_any_distractor:
-    mc.math.maths_equations_differentielles.palier-recopie-b: 5
-    mc.math.maths_equations_differentielles.oscillateur-A-B-roles: 4
-    mc.math.maths_equations_differentielles.palier-signe: 4
-    mc.math.maths_equations_differentielles.palier-oubli: 4
-    mc.math.maths_equations_differentielles.signe-exposant: 3
-    mc.math.maths_equations_differentielles.omega-vs-omega2: 3
-    mc.math.maths_equations_differentielles.signe-second-membre-second-ordre: 2
-    mc.math.maths_equations_differentielles.oscillateur-B-sans-omega: 2
-    mc.math.maths_equations_differentielles.charge-decharge-confondues: 2
-    mc.math.maths_equations_differentielles.condition-initiale-sans-decalage: 2
-    mc.math.maths_equations_differentielles.resolution-exponentielle-lineaire: 2
-    mc.math.maths_equations_differentielles.modele-taux-constant: 2
-    mc.math.maths_equations_differentielles.modele-sans-ecart: 2
-    mc.math.maths_equations_differentielles.signe-a-comportement: 2
-    mc.math.maths_equations_differentielles.solution-fonction-unique: 1
-    mc.math.maths_equations_differentielles.ed-comme-primitive: 1
-    mc.math.maths_equations_differentielles.coefficient-a-mal-identifie: 1
-    mc.math.maths_equations_differentielles.condition-initiale-exposant-sans-a: 1
-    mc.math.maths_equations_differentielles.nombre-solutions-condition: 1
-    mc.math.maths_equations_differentielles.periode-omega: 1
-    mc.math.maths_equations_differentielles.tau-inverse: 1
-    mc.math.maths_equations_differentielles.ed-inconnue-nombre: 1
-
-  per_misconception_primary:
-    mc.math.maths_equations_differentielles.palier-recopie-b: 3
-    mc.math.maths_equations_differentielles.condition-initiale-sans-decalage: 2
-    mc.math.maths_equations_differentielles.oscillateur-A-B-roles: 2
-    mc.math.maths_equations_differentielles.solution-fonction-unique: 1
-    mc.math.maths_equations_differentielles.signe-exposant: 1
-    mc.math.maths_equations_differentielles.palier-signe: 1
-    mc.math.maths_equations_differentielles.palier-oubli: 1
-    mc.math.maths_equations_differentielles.omega-vs-omega2: 1
-    mc.math.maths_equations_differentielles.oscillateur-B-sans-omega: 1
-    mc.math.maths_equations_differentielles.periode-omega: 1
-    mc.math.maths_equations_differentielles.charge-decharge-confondues: 1
-    mc.math.maths_equations_differentielles.resolution-exponentielle-lineaire: 1
-    mc.math.maths_equations_differentielles.signe-a-comportement: 1
-    mc.math.maths_equations_differentielles.nombre-solutions-condition: 1
-    mc.math.maths_equations_differentielles.modele-taux-constant: 1
-    mc.math.maths_equations_differentielles.modele-sans-ecart: 1
-    mc.math.maths_equations_differentielles.ed-inconnue-nombre: 1
-    # jamais en primary (seulement distracteur secondaire) : ed-comme-primitive,
-    # coefficient-a-mal-identifie, condition-initiale-exposant-sans-a,
-    # signe-second-membre-second-ordre, tau-inverse.
-
-  meets_floor_any_distractor:   # ≥3 items exposent ces 6 modèles
-    - mc.math.maths_equations_differentielles.palier-recopie-b          # 5
-    - mc.math.maths_equations_differentielles.oscillateur-A-B-roles     # 4
-    - mc.math.maths_equations_differentielles.palier-signe             # 4
-    - mc.math.maths_equations_differentielles.palier-oubli             # 4
-    - mc.math.maths_equations_differentielles.signe-exposant           # 3
-    - mc.math.maths_equations_differentielles.omega-vs-omega2          # 3
-
-  under_floor:
-    # <3 items — surfacé honnêtement, PAS gonflé. Les modèles conceptuels
-    # (R0 modèles de refroidissement, définition de l'ED, condition initiale,
-    # nombre de solutions) n'ont pour l'instant qu'1 ou 2 items ; ils demandent
-    # une passe d'items dédiée.
-    count_models_below_floor: 16
-    follow_up: >-
-      Passe d'items à commander (item-author) : porter à ≥3 chacun les modèles
-      conceptuels sous plancher — priorité modele-taux-constant, modele-sans-ecart,
-      condition-initiale-sans-decalage, signe-a-comportement,
-      nombre-solutions-condition, ed-inconnue-nombre (le raisonnement, pas le
-      calcul). Le second ordre général (cas Δ>0 / Δ=0 par l'équation
-      caractéristique) n'est PAS couvert par la banque — voir la SCOPE NOTE
-      d'exercises.yaml : une passe R4-bis de leçon + items est le suivi.
-    checkpoints_note: >-
-      Les checkpoints in-leçon (checkpoints.yaml) surfacent EN PLUS, inline,
-      modele-taux-constant, signe-exposant, palier-recopie-b et
-      condition-initiale-sans-decalage — mais ne sont PAS recomptés dans ce
-      plancher (clones/formatifs, non ajoutés à la banque, cf. RLC/PC/géométrie).
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
+  per_misconception:
+    mc.math.maths_equations_differentielles.solution-fonction-unique:           { count: 3, items: [EQDIFF-1, EQDIFF-22, EQDIFF-23] }
+    mc.math.maths_equations_differentielles.signe-exposant:                     { count: 3, items: [EQDIFF-1, EQDIFF-10, EQDIFF-13] }
+    mc.math.maths_equations_differentielles.ed-comme-primitive:                 { count: 3, items: [EQDIFF-1, EQDIFF-22, EQDIFF-24] }
+    mc.math.maths_equations_differentielles.coefficient-a-mal-identifie:        { count: 3, items: [EQDIFF-10, EQDIFF-22, EQDIFF-24] }
+    mc.math.maths_equations_differentielles.palier-recopie-b:                   { count: 5, items: [EQDIFF-2, EQDIFF-6, EQDIFF-12, EQDIFF-17, EQDIFF-19] }
+    mc.math.maths_equations_differentielles.palier-signe:                       { count: 4, items: [EQDIFF-2, EQDIFF-6, EQDIFF-12, EQDIFF-14] }
+    mc.math.maths_equations_differentielles.palier-oubli:                       { count: 4, items: [EQDIFF-2, EQDIFF-10, EQDIFF-13, EQDIFF-14] }
+    mc.math.maths_equations_differentielles.condition-initiale-sans-decalage:   { count: 3, items: [EQDIFF-3, EQDIFF-14, EQDIFF-25] }
+    mc.math.maths_equations_differentielles.condition-initiale-exposant-sans-a: { count: 3, items: [EQDIFF-3, EQDIFF-25, EQDIFF-26] }
+    mc.math.maths_equations_differentielles.resolution-exponentielle-lineaire:  { count: 3, items: [EQDIFF-3, EQDIFF-20, EQDIFF-23] }
+    mc.math.maths_equations_differentielles.signe-a-comportement:               { count: 3, items: [EQDIFF-11, EQDIFF-19, EQDIFF-26] }
+    mc.math.maths_equations_differentielles.nombre-solutions-condition:         { count: 3, items: [EQDIFF-15, EQDIFF-25, EQDIFF-26] }
+    mc.math.maths_equations_differentielles.omega-vs-omega2:                    { count: 3, items: [EQDIFF-4, EQDIFF-16, EQDIFF-21] }
+    mc.math.maths_equations_differentielles.signe-second-membre-second-ordre:   { count: 4, items: [EQDIFF-4, EQDIFF-18, EQDIFF-27, EQDIFF-29] }
+    mc.math.maths_equations_differentielles.oscillateur-B-sans-omega:           { count: 3, items: [EQDIFF-5, EQDIFF-21, EQDIFF-27] }
+    mc.math.maths_equations_differentielles.oscillateur-A-B-roles:              { count: 4, items: [EQDIFF-4, EQDIFF-5, EQDIFF-18, EQDIFF-21] }
+    mc.math.maths_equations_differentielles.periode-omega:                      { count: 4, items: [EQDIFF-16, EQDIFF-27, EQDIFF-28, EQDIFF-30] }
+    mc.math.maths_equations_differentielles.charge-decharge-confondues:         { count: 4, items: [EQDIFF-6, EQDIFF-17, EQDIFF-28, EQDIFF-30] }
+    mc.math.maths_equations_differentielles.tau-inverse:                        { count: 3, items: [EQDIFF-17, EQDIFF-28, EQDIFF-30] }
+    mc.math.maths_equations_differentielles.modele-taux-constant:               { count: 3, items: [EQDIFF-7, EQDIFF-8, EQDIFF-29] }
+    mc.math.maths_equations_differentielles.modele-sans-ecart:                  { count: 3, items: [EQDIFF-7, EQDIFF-8, EQDIFF-29] }
+    mc.math.maths_equations_differentielles.ed-inconnue-nombre:                 { count: 3, items: [EQDIFF-9, EQDIFF-23, EQDIFF-24] }
+  total_items: 30
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 4
+    R1: 6
+    R2: 3
+    R3: 5
+    R4: 4
+    R5: 5
+    R6: 3
+  honest_state: >-
+    Les vingt-deux misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Quinze y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

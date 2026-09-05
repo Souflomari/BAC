@@ -1192,71 +1192,822 @@ items:
 # `primary_misconception`. The floor is reported honestly below and is NOT met:
 # no follow-up item pass was performed here (that is a separate item-author job).
 # ──────────────────────────────────────────────────────────────────────────────
+  # Ajoutés le 2026-09-05 : seize familles sous le plancher de 3 items du banc,
+  # dont DEUX sans aucun item — `module-argument-vs-parties` et
+  # `algebrique-exponentielle-conversion`, sondées par le seul checkpoint
+  # cp-bac-exponentielle. Les items qui les referment siègent au barreau R6 :
+  # la leçon y annonce explicitement que le sujet national emprunte la forme
+  # exponentielle au chapitre suivant, et son point de bascule est justement là.
+  # Dix items, vingt-huit places.
+  - id: NBCOMPLEX-22
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_complexes_algebrique
+    tags: [forme_algebrique, parties]
+    primary_misconception: mc.math.maths_complexes_algebrique.im-inclut-i
+    stem: >
+      Soit $z = 3 - 5i$. Que valent $\mathrm{Re}(z)$ et $\mathrm{Im}(z)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\mathrm{Re}(z) = 3$ et $\mathrm{Im}(z) = -5$
+        correct: true
+      - id: B
+        text: >-
+          $\mathrm{Re}(z) = 3$ et $\mathrm{Im}(z) = -5i$ : la partie imaginaire
+          comprend le $i$
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.im-inclut-i
+        feedback: >
+          $\mathrm{Im}(z)$ est un nombre RÉEL : c'est le coefficient de $i$, pas
+          le terme entier. Sans cette convention, $\mathrm{Im}(z)$ serait
+          lui-même un complexe et l'écriture $z = a + ib$ perdrait son sens —
+          $a$ et $b$ y sont tous deux réels.
+      - id: C
+        text: >-
+          $\mathrm{Re}(z) = -5$ et $\mathrm{Im}(z) = 3$
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.confond-re-im
+        feedback: >
+          Les deux parties sont échangées. Dans $z = a + ib$, la partie RÉELLE
+          est le terme sans $i$ — ici $3$ — et la partie IMAGINAIRE le
+          coefficient de $i$ — ici $-5$, signe compris.
+      - id: D
+        text: >-
+          $\mathrm{Re}(z)$ et $\mathrm{Im}(z)$ valent respectivement le module et
+          l'argument de $z$
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-argument-vs-parties
+        feedback: >
+          Ce sont deux couples de coordonnées différents. $(\mathrm{Re},
+          \mathrm{Im})$ sont les coordonnées CARTÉSIENNES du point image ;
+          $(r, \theta)$ — module et argument — ses coordonnées POLAIRES. Ici
+          $|z| = \sqrt{34}$, sans rapport avec $3$ ni $-5$.
+    correct_feedback: >
+      $\mathrm{Re}(3-5i) = 3$ et $\mathrm{Im}(3-5i) = -5$. La partie imaginaire
+      est le COEFFICIENT de $i$ — un réel, signe compris — jamais le terme
+      $-5i$ tout entier.
+    solution: |
+      **La convention.** Pour $z = a + ib$ avec $a, b \in \mathbb{R}$ :
+      $$\mathrm{Re}(z) = a \qquad \mathrm{Im}(z) = b$$
+      Les deux sont des RÉELS.
+
+      **Le contrôle.** $z = \mathrm{Re}(z) + i\,\mathrm{Im}(z)$ : ici
+      $3 + i\times(-5) = 3 - 5i$ ✓.
+
+      **À ne pas confondre avec les coordonnées polaires** $(r, \theta)$, qui
+      décrivent le même point autrement.
+
+  - id: NBCOMPLEX-23
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [imaginaire_pur, conjugue]
+    primary_misconception: mc.math.maths_complexes_algebrique.imaginaire-pur-mauvaise-partie
+    stem: >
+      Pour quelles valeurs du réel $m$ le nombre $z = (m-2) + (m+3)i$ est-il un
+      imaginaire pur ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $m = 2$ : il faut annuler la partie RÉELLE, en gardant la partie
+          imaginaire non nulle
+        correct: true
+      - id: B
+        text: >-
+          $m = -3$ : il faut annuler la partie imaginaire
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.imaginaire-pur-mauvaise-partie
+        feedback: >
+          Annuler la partie imaginaire donne un RÉEL, pas un imaginaire pur.
+          Un imaginaire pur est de la forme $ib$ avec $b \neq 0$ : c'est sa
+          partie réelle qui doit s'annuler. Ici $m = -3$ donnerait $z = -5$, un
+          réel.
+      - id: C
+        text: >-
+          Aucune valeur : $z + \bar{z}$ vaut $2bi$, donc $z$ ne peut pas être
+          imaginaire pur
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.conjugue-somme-vs-difference
+        feedback: >
+          Les deux relations sont inversées : $z + \bar{z} = 2a$ (un réel) et
+          $z - \bar{z} = 2ib$. Le critère correct est $z + \bar{z} = 0$ pour un
+          imaginaire pur, et $z - \bar{z} = 0$ pour un réel.
+      - id: D
+        text: >-
+          $m = 2$, ce qui revient à annuler le module de $z$, égal à sa partie
+          réelle
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-argument-vs-parties
+        feedback: >
+          La valeur est juste, la justification non : le module n'est pas la
+          partie réelle. Pour $m = 2$, $z = 5i$ et $|z| = 5 \neq 0$. Annuler le
+          module donnerait $z = 0$, qui n'est pas un imaginaire pur.
+    correct_feedback: >
+      Un imaginaire pur s'écrit $ib$ avec $b \neq 0$ : il faut annuler la partie
+      RÉELLE. Ici $m - 2 = 0$, soit $m = 2$ — et l'on vérifie que la partie
+      imaginaire $m + 3 = 5$ n'est pas nulle.
+    solution: |
+      **La définition.** $z$ est imaginaire pur si $\mathrm{Re}(z) = 0$ et
+      $\mathrm{Im}(z) \neq 0$.
+
+      **La résolution.**
+      $$m - 2 = 0 \iff m = 2$$
+      et pour $m = 2$, $\mathrm{Im}(z) = 5 \neq 0$ ✓.
+
+      **Le critère par le conjugué.**
+      $$z \in i\mathbb{R} \iff z + \bar{z} = 0
+      \qquad z \in \mathbb{R} \iff z - \bar{z} = 0$$
+
+  - id: NBCOMPLEX-24
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [module, forme_exponentielle]
+    primary_misconception: mc.math.maths_complexes_algebrique.module-argument-vs-parties
+    stem: >
+      Soit $z = 1 + i\sqrt{3}$. Que valent son module et son argument, et quelle
+      est sa forme exponentielle ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $|z| = 2$, $\arg(z) = \dfrac{\pi}{3}$, et $z = 2\,e^{i\pi/3}$
+        correct: true
+      - id: B
+        text: >-
+          $|z| = 1$ et $\arg(z) = \sqrt{3}$ : ce sont la partie réelle et la
+          partie imaginaire
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-argument-vs-parties
+        feedback: >
+          Ce sont deux systèmes de coordonnées distincts. $(1, \sqrt{3})$ sont
+          les coordonnées cartésiennes du point image ; le module est sa
+          DISTANCE à l'origine, $\sqrt{1 + 3} = 2$, et l'argument l'ANGLE avec
+          l'axe des réels, ici $\pi/3$.
+      - id: C
+        text: >-
+          $|z| = 2$, $\arg(z) = \dfrac{\pi}{3}$, et $z = 2 + e^{i\pi/3}$
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.algebrique-exponentielle-conversion
+        feedback: >
+          La forme exponentielle est un PRODUIT, pas une somme :
+          $z = r\,e^{i\theta}$. Avec une addition, le module de l'expression ne
+          vaudrait plus $r$ — et pour $\theta = 0$ on obtiendrait $3$ au lieu de
+          $2$.
+      - id: D
+        text: >-
+          $|z| = 1 + \sqrt{3}$, le module étant la somme des deux parties
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-lineaire
+        feedback: >
+          Le module est une distance : il se calcule par le théorème de
+          Pythagore, $|z| = \sqrt{a^{2}+b^{2}}$, jamais par une somme. Ici
+          $\sqrt{1+3} = 2$, tandis que $1 + \sqrt{3} \approx 2{,}73$.
+    correct_feedback: >
+      $|z| = \sqrt{1^{2} + (\sqrt3)^{2}} = 2$ et $\arg(z) = \pi/3$ (car
+      $\cos\theta = 1/2$ et $\sin\theta = \sqrt3/2$), d'où
+      $z = 2\,e^{i\pi/3}$ — un PRODUIT du module par l'exponentielle.
+    solution: |
+      **Le module.**
+      $$|z| = \sqrt{a^{2}+b^{2}} = \sqrt{1 + 3} = 2$$
+
+      **L'argument.** On divise par le module :
+      $$\frac{z}{|z|} = \frac{1}{2} + i\frac{\sqrt3}{2}
+      = \cos\frac{\pi}{3} + i\sin\frac{\pi}{3}$$
+      donc $\arg(z) = \dfrac{\pi}{3}\ [2\pi]$.
+
+      **La forme exponentielle.**
+      $$z = r\,e^{i\theta} = 2\,e^{i\pi/3}$$
+      Un produit, jamais une somme.
+
+  - id: NBCOMPLEX-25
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_complexes_algebrique
+    tags: [produit, quotient]
+    primary_misconception: mc.math.maths_complexes_algebrique.produit-non-developpe
+    stem: >
+      Que vaut $(2 + i)(3 - 2i)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $8 - i$, obtenu en développant les quatre produits puis en remplaçant
+          $i^{2}$ par $-1$
+        correct: true
+      - id: B
+        text: >-
+          $6 - 2i$ : on multiplie les parties réelles entre elles et les parties
+          imaginaires entre elles
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.produit-non-developpe
+        feedback: >
+          Un produit de complexes se DÉVELOPPE, comme un produit de binômes :
+          les quatre termes croisés interviennent. La multiplication terme à
+          terme n'est pas une opération de $\mathbb{C}$ — elle donnerait
+          d'ailleurs un résultat qui dépend de l'écriture choisie.
+      - id: C
+        text: >-
+          $\dfrac{(2+i)(3+2i)}{13}$ : on multiplie par le conjugué du second
+          facteur
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.quotient-conjugue-incomplet
+        feedback: >
+          Multiplier par le conjugué est la technique du QUOTIENT, pas du
+          produit — et elle suppose de diviser aussi le numérateur. Ici il s'agit
+          d'un simple produit : on développe, on remplace $i^{2}$ par $-1$, on
+          regroupe.
+      - id: D
+        text: >-
+          $8 - i$, dont la partie imaginaire vaut $-i$
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.im-inclut-i
+        feedback: >
+          Le résultat est juste, sa lecture non : $\mathrm{Im}(8 - i) = -1$, un
+          réel. La partie imaginaire est le coefficient de $i$, jamais le terme
+          entier.
+    correct_feedback: >
+      $(2+i)(3-2i) = 6 - 4i + 3i - 2i^{2} = 6 - i + 2 = 8 - i$. On développe les
+      quatre produits, puis on remplace $i^{2}$ par $-1$.
+    solution: |
+      **Le développement.**
+      $$(2+i)(3-2i) = 2\times 3 + 2\times(-2i) + i\times 3 + i\times(-2i)$$
+      $$= 6 - 4i + 3i - 2i^{2}$$
+
+      **La substitution $i^{2} = -1$.**
+      $$= 6 - i + 2 = 8 - i$$
+
+      **La règle générale.**
+      $$(a+ib)(c+id) = (ac - bd) + i(ad + bc)$$
+      Les parties se mélangent : c'est justement ce qui fait l'intérêt de
+      $\mathbb{C}$.
+
+  - id: NBCOMPLEX-26
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [puissances_de_i, produit]
+    primary_misconception: mc.math.maths_complexes_algebrique.puissance-i-cycle-errone
+    stem: >
+      Que vaut $i^{2026}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $-1$ : le cycle est de longueur $4$, et $2026 = 4\times 506 + 2$
+        correct: true
+      - id: B
+        text: >-
+          $-1$ également, mais parce que $i^{4} = -1$ et que l'exposant est pair
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.puissance-i-cycle-errone
+        feedback: >
+          $i^{4} = +1$, et c'est ce qui crée un cycle de longueur $4$ :
+          $i, -1, -i, 1$. Avec $i^{4} = -1$, le cycle serait de longueur $8$ et
+          tous les restes changeraient. Le résultat est ici juste par accident.
+      - id: C
+        text: >-
+          $2026\,i$ : on multiplie l'exposant par $i$
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.produit-non-developpe
+        feedback: >
+          Une puissance n'est pas un produit par l'exposant : $i^{n}$ signifie
+          $i$ multiplié par lui-même $n$ fois. Le calcul passe par le cycle des
+          puissances de $i$, jamais par une multiplication de l'exposant.
+      - id: D
+        text: >-
+          $1$, car un carré est toujours positif et $2026$ est pair
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.carre-reel-peut-etre-negatif
+        feedback: >
+          « Un carré est positif » vaut pour les RÉELS, et c'est précisément
+          l'obstacle que $\mathbb{C}$ lève : $i^{2} = -1$. Transporter la règle
+          des réels dans $\mathbb{C}$ fait disparaître la raison d'être du
+          chapitre.
+    correct_feedback: >
+      Les puissances de $i$ tournent en cycle de longueur $4$ : $i^{1}=i$,
+      $i^{2}=-1$, $i^{3}=-i$, $i^{4}=1$. Comme $2026 = 4\times506 + 2$, on a
+      $i^{2026} = i^{2} = -1$.
+    solution: |
+      **Le cycle.**
+      $$i^{1} = i, \quad i^{2} = -1, \quad i^{3} = -i, \quad i^{4} = 1$$
+      puis tout recommence : la période est $4$.
+
+      **La méthode.** Diviser l'exposant par $4$ et lire le reste :
+      $$2026 = 4\times 506 + 2 \quad\Longrightarrow\quad i^{2026} = i^{2} = -1$$
+
+      **Le point qui fonde tout.** $i^{2} = -1$ : dans $\mathbb{C}$, un carré
+      peut être négatif. C'est exactement ce que l'extension apporte.
+
+  - id: NBCOMPLEX-27
+    rung: "R0"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [construction, extension]
+    primary_misconception: mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle
+    stem: >
+      Comment le nombre $i$ est-il introduit, et pourquoi ne peut-on pas écrire
+      $i = \sqrt{-1}$ en appliquant les règles usuelles des racines ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $i$ est POSÉ par définition comme un nombre vérifiant $i^{2} = -1$ ; les
+          règles de $\sqrt{\ }$ ne valent que pour les réels positifs
+        correct: true
+      - id: B
+        text: >-
+          $i$ s'obtient en appliquant la fonction racine à $-1$, comme pour
+          n'importe quel nombre
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle
+        feedback: >
+          La fonction $\sqrt{\ }$ n'est définie que sur $[0\,;+\infty[$, et ses
+          règles y sont valides. Les transporter donne des absurdités :
+          $\sqrt{-1}\times\sqrt{-1} = \sqrt{(-1)(-1)} = \sqrt{1} = 1$, alors
+          que $i^{2} = -1$. C'est pourquoi $i$ est POSÉ, non calculé.
+      - id: C
+        text: >-
+          $i$ est introduit pour résoudre $x^{2} = 2$, que $\mathbb{Q}$ ne
+          résolvait pas
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.extension-equation-mal-appariee
+        feedback: >
+          Chaque extension répond à une équation précise : $x + 1 = 0$ mène à
+          $\mathbb{Z}$, $2x = 1$ à $\mathbb{Q}$, $x^{2} = 2$ à $\mathbb{R}$, et
+          $x^{2} = -1$ à $\mathbb{C}$. C'est la dernière qui introduit $i$.
+      - id: D
+        text: >-
+          $i$ n'est pas nécessaire : un carré peut être négatif dans
+          $\mathbb{R}$, à condition de choisir le bon nombre
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.carre-reel-peut-etre-negatif
+        feedback: >
+          Dans $\mathbb{R}$, $x^{2} \geqslant 0$ pour tout $x$ — c'est une
+          conséquence de la règle des signes, sans exception. C'est précisément
+          ce blocage qui motive la construction de $\mathbb{C}$.
+    correct_feedback: >
+      $i$ est POSÉ : on décide qu'il existe un nombre dont le carré vaut $-1$,
+      et on vérifie que l'ensemble ainsi obtenu se comporte bien. Les règles de
+      la racine carrée, elles, ne valent que sur les réels positifs — les
+      appliquer à $-1$ produit des contradictions.
+    solution: |
+      **La démarche.** On ne CALCULE pas $i$ : on POSE son existence, comme on
+      avait posé celle de $\sqrt{2}$ en sortant de $\mathbb{Q}$, puis on vérifie
+      la cohérence de l'ensemble obtenu.
+
+      **Pourquoi $\sqrt{-1}$ est une écriture piégée.**
+      $$\sqrt{-1}\times\sqrt{-1} \overset{?}{=} \sqrt{(-1)\times(-1)}
+      = \sqrt{1} = 1$$
+      alors que $i^{2} = -1$. La règle
+      $\sqrt{a}\sqrt{b} = \sqrt{ab}$ exige $a, b \geqslant 0$.
+
+      **La chaîne des extensions.** $\mathbb{N} \to \mathbb{Z}$ ($x+1=0$),
+      $\to \mathbb{Q}$ ($2x=1$), $\to \mathbb{R}$ ($x^{2}=2$),
+      $\to \mathbb{C}$ ($x^{2}=-1$).
+
+  - id: NBCOMPLEX-28
+    rung: "R0"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [extension, puissances_de_i]
+    primary_misconception: mc.math.maths_complexes_algebrique.extension-equation-mal-appariee
+    stem: >
+      À quelle équation chaque extension d'ensemble répond-elle ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $x + 1 = 0$ pour $\mathbb{Z}$, $2x = 1$ pour $\mathbb{Q}$,
+          $x^{2} = 2$ pour $\mathbb{R}$, $x^{2} = -1$ pour $\mathbb{C}$
+        correct: true
+      - id: B
+        text: >-
+          $x^{2} = 2$ pour $\mathbb{C}$ et $x^{2} = -1$ pour $\mathbb{R}$ : les
+          deux dernières extensions sont échangées
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.extension-equation-mal-appariee
+        feedback: >
+          $x^{2} = 2$ a des solutions réelles ($\pm\sqrt2$) : c'est le passage de
+          $\mathbb{Q}$ à $\mathbb{R}$. $x^{2} = -1$ n'en a aucune dans
+          $\mathbb{R}$ : c'est elle qui force le passage à $\mathbb{C}$.
+      - id: C
+        text: >-
+          $x^{2} = -1$ pour $\mathbb{R}$, puisqu'un carré de réel peut être
+          négatif dès qu'on choisit un nombre assez grand
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.carre-reel-peut-etre-negatif
+        feedback: >
+          Aucun réel n'a un carré négatif, quelle que soit sa taille : la règle
+          des signes l'interdit. C'est ce blocage qui rend l'extension
+          nécessaire — et le nier ferait disparaître la raison d'être de
+          $\mathbb{C}$.
+      - id: D
+        text: >-
+          $x^{4} = 1$ pour $\mathbb{C}$, puisque $i^{4} = -1$ et que cette
+          équation n'a donc pas de solution réelle
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.puissance-i-cycle-errone
+        feedback: >
+          $i^{4} = +1$, pas $-1$ : le cycle des puissances de $i$ est
+          $i, -1, -i, 1$. Et $x^{4} = 1$ a d'ailleurs deux solutions réelles,
+          $1$ et $-1$ : elle ne motive aucune extension.
+    correct_feedback: >
+      Chaque extension répond à une équation que l'ensemble précédent ne sait
+      pas résoudre : $x+1=0$ mène à $\mathbb{Z}$, $2x=1$ à $\mathbb{Q}$,
+      $x^{2}=2$ à $\mathbb{R}$, et $x^{2}=-1$ à $\mathbb{C}$.
+    solution: |
+      **La chaîne.**
+
+      | équation | insoluble dans | résolue dans |
+      |---|---|---|
+      | $x + 1 = 0$ | $\mathbb{N}$ | $\mathbb{Z}$ |
+      | $2x = 1$ | $\mathbb{Z}$ | $\mathbb{Q}$ |
+      | $x^{2} = 2$ | $\mathbb{Q}$ | $\mathbb{R}$ |
+      | $x^{2} = -1$ | $\mathbb{R}$ | $\mathbb{C}$ |
+
+      **Ce que la chaîne montre.** $\mathbb{C}$ n'est pas une bizarrerie : c'est
+      le quatrième terme d'un mouvement régulier, où chaque ensemble naît d'une
+      équation que le précédent ne sait pas résoudre.
+
+  - id: NBCOMPLEX-29
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [plan_complexe, milieu, distance]
+    primary_misconception: mc.math.maths_complexes_algebrique.milieu-sans-moyenne
+    stem: >
+      Deux points $A$ et $B$ ont pour affixes $z_A = 2 + 3i$ et
+      $z_B = 6 - i$. Que valent l'affixe du milieu $I$ de $[AB]$ et la distance
+      $AB$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $z_I = 4 + i$ et $AB = |z_B - z_A| = \sqrt{32}$
+        correct: true
+      - id: B
+        text: >-
+          $z_I = 8 + 2i$ et $AB = \sqrt{32}$ : le milieu est la somme des deux
+          affixes
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.milieu-sans-moyenne
+        feedback: >
+          Le milieu est la MOYENNE : $z_I = \dfrac{z_A + z_B}{2}$. Oublier la
+          division donne un point deux fois plus loin de l'origine — ici
+          $8 + 2i$, qui n'est même pas sur le segment.
+      - id: C
+        text: >-
+          $z_I = 4 + i$ et $AB = |z_A + z_B| = |8 + 2i|$
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.distance-affixe-brute
+        feedback: >
+          Une distance se lit sur la DIFFÉRENCE des affixes :
+          $AB = |z_B - z_A|$. La somme n'a pas d'interprétation métrique — elle
+          donnerait la même valeur pour deux points symétriques par rapport à
+          l'origine, qui peuvent être arbitrairement éloignés l'un de l'autre.
+      - id: D
+        text: >-
+          $z_I = 4 + i$ et $AB = |4| + |-4| = 8$, le module étant la somme des
+          valeurs absolues des parties
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-lineaire
+        feedback: >
+          Le module se calcule par Pythagore : $|4 - 4i| = \sqrt{16+16}
+          = \sqrt{32} \approx 5{,}66$, et non $8$. Additionner les valeurs
+          absolues reviendrait à mesurer un trajet en escalier au lieu de la
+          ligne droite.
+    correct_feedback: >
+      $z_I = \dfrac{z_A + z_B}{2} = \dfrac{8 + 2i}{2} = 4 + i$, et
+      $AB = |z_B - z_A| = |4 - 4i| = \sqrt{32}$. Le milieu est une moyenne ; la
+      distance, le module d'une DIFFÉRENCE.
+    solution: |
+      **Le milieu.**
+      $$z_I = \frac{z_A + z_B}{2} = \frac{(2+3i)+(6-i)}{2}
+      = \frac{8+2i}{2} = 4 + i$$
+
+      **La distance.**
+      $$AB = |z_B - z_A| = |(6-i)-(2+3i)| = |4 - 4i|
+      = \sqrt{16+16} = \sqrt{32} = 4\sqrt{2}$$
+
+      **Les deux formules à ne pas mélanger.** Le milieu additionne PUIS divise ;
+      la distance soustrait PUIS prend le module.
+
+  - id: NBCOMPLEX-30
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [plan_complexe, conjugue, symetrie]
+    primary_misconception: mc.math.maths_complexes_algebrique.conjugue-mauvais-axe
+    stem: >
+      Quelle transformation géométrique fait passer du point d'affixe $z$ au
+      point d'affixe $\bar{z}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La symétrie par rapport à l'axe des RÉELS
+        correct: true
+      - id: B
+        text: >-
+          La symétrie par rapport à l'axe des IMAGINAIRES
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.conjugue-mauvais-axe
+        feedback: >
+          Conjuguer change le signe de la partie imaginaire et laisse la partie
+          réelle intacte : $\overline{a+ib} = a - ib$. L'abscisse ne bouge pas,
+          l'ordonnée change de signe — c'est la définition d'une symétrie
+          d'axe horizontal, donc l'axe des réels.
+      - id: C
+        text: >-
+          La symétrie par rapport à l'origine, qui revient au même que la
+          symétrie axiale
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.conjugue-mauvais-axe
+        feedback: >
+          La symétrie par rapport à l'origine change les DEUX signes : elle
+          envoie $z$ sur $-z = -a - ib$. Le conjugué n'en change qu'un. Les deux
+          ne coïncident que pour les imaginaires purs.
+      - id: D
+        text: >-
+          Une transformation qui laisse la partie imaginaire inchangée, puisque
+          $\mathrm{Im}(\bar z) = -bi$
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.im-inclut-i
+        feedback: >
+          Deux erreurs. $\mathrm{Im}(\bar z) = -b$, un réel — la partie
+          imaginaire ne contient jamais le $i$. Et elle change bien de signe :
+          c'est tout l'effet de la conjugaison.
+    correct_feedback: >
+      $\overline{a+ib} = a - ib$ : l'abscisse est conservée, l'ordonnée changée
+      de signe. C'est la symétrie d'axe horizontal, c'est-à-dire par rapport à
+      l'axe des RÉELS.
+    solution: |
+      **L'effet du conjugué.**
+      $$z = a + ib \quad\longmapsto\quad \bar{z} = a - ib$$
+      Abscisse inchangée, ordonnée opposée.
+
+      **Les trois transformations voisines.**
+      - $z \mapsto \bar{z}$ : symétrie d'axe les réels.
+      - $z \mapsto -\bar{z}$ : symétrie d'axe les imaginaires.
+      - $z \mapsto -z$ : symétrie par rapport à l'origine.
+
+      **Le contrôle immédiat.** Prendre $z = 2 + 3i$ et regarder où atterrit le
+      point : $\bar z = 2 - 3i$ est bien le symétrique par rapport à l'axe
+      horizontal.
+
+  - id: NBCOMPLEX-31
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_complexes_algebrique
+    tags: [forme_exponentielle, sommet]
+    primary_misconception: mc.math.maths_complexes_algebrique.algebrique-exponentielle-conversion
+    stem: >
+      Un sujet donne $z = 2\,e^{i\pi/6}$ et demande sa forme algébrique. Que
+      vaut-elle ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $z = \sqrt{3} + i$, en développant $2\left(\cos\frac{\pi}{6} +
+          i\sin\frac{\pi}{6}\right)$
+        correct: true
+      - id: B
+        text: >-
+          $z = 2 + \dfrac{\pi}{6}i$ : on lit le module et l'argument comme partie
+          réelle et partie imaginaire
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-argument-vs-parties
+        feedback: >
+          Le module et l'argument sont les coordonnées POLAIRES ; la partie
+          réelle et la partie imaginaire, les coordonnées CARTÉSIENNES. On passe
+          des unes aux autres par $a = r\cos\theta$ et $b = r\sin\theta$, jamais
+          par recopie.
+      - id: C
+        text: >-
+          $z = 2\cos\frac{\pi}{6} + i\sin\frac{\pi}{6} = \sqrt3 + \dfrac{i}{2}$ :
+          le module ne multiplie que la partie réelle
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.algebrique-exponentielle-conversion
+        feedback: >
+          Le module multiplie la parenthèse ENTIÈRE :
+          $r(\cos\theta + i\sin\theta)$. Ne l'appliquer qu'au cosinus donne un
+          nombre dont le module ne vaut plus $2$ — contrôle qui suffit à
+          repérer l'erreur.
+      - id: D
+        text: >-
+          $z = \sqrt{3} + i$, dont la partie imaginaire vaut $i$
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.im-inclut-i
+        feedback: >
+          La forme algébrique est juste, sa lecture non :
+          $\mathrm{Im}(\sqrt3 + i) = 1$, un réel. Le coefficient de $i$ vaut ici
+          $1$, et c'est lui la partie imaginaire.
+    correct_feedback: >
+      $z = 2\left(\cos\frac{\pi}{6} + i\sin\frac{\pi}{6}\right)
+      = 2\left(\frac{\sqrt3}{2} + \frac{i}{2}\right) = \sqrt3 + i$. Le module
+      multiplie la parenthèse entière, cosinus ET sinus.
+    solution: |
+      **La conversion, dans ce sens.**
+      $$r\,e^{i\theta} = r\cos\theta + i\,r\sin\theta$$
+
+      **L'application.**
+      $$z = 2\cos\frac{\pi}{6} + 2i\sin\frac{\pi}{6}
+      = 2\times\frac{\sqrt3}{2} + 2i\times\frac{1}{2} = \sqrt3 + i$$
+
+      **Le contrôle.** $|\sqrt3 + i| = \sqrt{3+1} = 2$ ✓, et
+      $\arg = \pi/6$ puisque $\tan\theta = 1/\sqrt3$ avec les deux
+      coordonnées positives.
+
+      **Dans l'autre sens.** $r = \sqrt{a^{2}+b^{2}}$, puis $\theta$ tel que
+      $\cos\theta = a/r$ et $\sin\theta = b/r$.
+
+  - id: NBCOMPLEX-32
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [definition, imaginaire_pur, plan_complexe]
+    primary_misconception: mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle
+    stem: >
+      Un élève écrit : « $i = \sqrt{-1}$, donc $z = 4 + \sqrt{-9}$ vaut $4+3i$,
+      c'est un imaginaire pur, et son image est le milieu du segment joignant
+      l'origine à $8 + 6i$. » Combien d'affirmations sont fausses ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Deux : l'écriture $\sqrt{-1}$ et la qualification d'imaginaire pur —
+          la remarque sur le milieu, elle, est correcte
+        correct: true
+      - id: B
+        text: >-
+          Une seule : la qualification d'imaginaire pur ; écrire $\sqrt{-1}$ est
+          légitime, la racine s'appliquant à tout nombre
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle
+        feedback: >
+          La fonction $\sqrt{\ }$ n'est définie que sur les réels positifs, et
+          ses règles y sont valides. L'étendre à $-1$ produit
+          $\sqrt{-1}\sqrt{-1} = \sqrt{1} = 1$, en contradiction avec
+          $i^{2} = -1$. On POSE $i$, on ne le calcule pas.
+      - id: C
+        text: >-
+          Une seule : l'écriture $\sqrt{-1}$ ; $4+3i$ est bien un imaginaire pur,
+          puisque sa partie imaginaire n'est pas nulle
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.imaginaire-pur-mauvaise-partie
+        feedback: >
+          Un imaginaire pur a sa partie RÉELLE nulle. Ici $\mathrm{Re}(z) = 4$ :
+          $z$ n'est ni réel ni imaginaire pur. Avoir une partie imaginaire non
+          nulle ne suffit pas — c'est le cas de presque tous les complexes.
+      - id: D
+        text: >-
+          Trois : le milieu du segment joignant $0$ à $8+6i$ vaut $8+6i$
+          lui-même, la division par $2$ étant inutile
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.milieu-sans-moyenne
+        feedback: >
+          Le milieu est la MOYENNE des deux affixes :
+          $\dfrac{0 + (8+6i)}{2} = 4 + 3i$. Sans la division, on retomberait sur
+          l'extrémité du segment — ce qui rendrait la notion de milieu vide de
+          sens.
+    correct_feedback: >
+      Deux erreurs. $\sqrt{-1}$ est une écriture illégitime : $i$ est posé, non
+      calculé. Et $4+3i$ n'est pas un imaginaire pur, sa partie réelle valant
+      $4$. En revanche, $4+3i$ est bien le milieu de $[0\,;8+6i]$ : la moyenne
+      des affixes.
+    solution: |
+      **Affirmation 1 — fausse.** $\sqrt{\ }$ n'est définie que sur
+      $[0\,;+\infty[$ : $\sqrt{-1}$ n'a pas de sens, et l'écrire mène à
+      $\sqrt{-1}\sqrt{-1} = 1 \neq i^{2}$.
+
+      **Affirmation 2 — fausse.** Un imaginaire pur a une partie réelle nulle.
+      $\mathrm{Re}(4+3i) = 4$.
+
+      **Affirmation 3 — vraie.**
+      $$z_I = \frac{0 + (8+6i)}{2} = 4 + 3i$$
+
+      **Ce qui reste valable de l'intuition.** $\sqrt{-9}$ « vaut » $3i$ au sens
+      où $(3i)^{2} = -9$ — mais cela s'écrit ainsi, et non avec un radical.
+
+  - id: NBCOMPLEX-33
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_complexes_algebrique
+    tags: [conjugue, forme_exponentielle, sommet]
+    primary_misconception: mc.math.maths_complexes_algebrique.conjugue-mauvais-axe
+    stem: >
+      Soit $z = 2\,e^{i\pi/3}$. Quelle est la forme exponentielle de $\bar{z}$,
+      et où se situe son image par rapport à celle de $z$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\bar{z} = 2\,e^{-i\pi/3}$, image symétrique de celle de $z$ par
+          rapport à l'axe des réels
+        correct: true
+      - id: B
+        text: >-
+          $\bar{z} = 2\,e^{i\pi/3}$ inchangé, l'image étant symétrique par
+          rapport à l'axe des imaginaires
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.conjugue-mauvais-axe
+        feedback: >
+          Conjuguer conserve le module et change le SIGNE de l'argument :
+          $\overline{re^{i\theta}} = re^{-i\theta}$. Géométriquement, l'abscisse
+          reste, l'ordonnée s'inverse : c'est la symétrie d'axe HORIZONTAL, donc
+          par rapport aux réels.
+      - id: C
+        text: >-
+          $\bar{z} = -2\,e^{i\pi/3}$ : conjuguer revient à changer le signe du
+          module
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.algebrique-exponentielle-conversion
+        feedback: >
+          Un module est une distance : il est toujours positif ou nul, et la
+          conjugaison ne le touche pas. $-2e^{i\pi/3}$ s'écrirait d'ailleurs
+          $2e^{i(\pi/3+\pi)}$ — c'est la symétrie par rapport à l'ORIGINE, pas
+          la conjugaison.
+      - id: D
+        text: >-
+          $\bar{z} = 2\,e^{-i\pi/3}$, et $z + \bar{z}$ vaut $2i\,\mathrm{Im}(z)$
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.conjugue-somme-vs-difference
+        feedback: >
+          La forme exponentielle est juste, la relation non : $z + \bar z =
+          2\,\mathrm{Re}(z)$, un RÉEL, tandis que $z - \bar z =
+          2i\,\mathrm{Im}(z)$. Les deux se retrouvent en une ligne :
+          $(a+ib)+(a-ib) = 2a$.
+    correct_feedback: >
+      $\overline{re^{i\theta}} = re^{-i\theta}$ : le module est conservé,
+      l'argument changé de signe. Ici $\bar z = 2e^{-i\pi/3}$, image symétrique
+      de celle de $z$ par rapport à l'axe des réels.
+    solution: |
+      **La règle.**
+      $$\overline{r\,e^{i\theta}} = r\,e^{-i\theta}$$
+      Module conservé, argument opposé.
+
+      **La vérification par la forme algébrique.**
+      $$z = 2\left(\cos\frac{\pi}{3} + i\sin\frac{\pi}{3}\right) = 1 + i\sqrt3
+      \qquad \bar z = 1 - i\sqrt3 = 2\,e^{-i\pi/3}$$
+
+      **Les deux relations à ne pas échanger.**
+      $$z + \bar z = 2\,\mathrm{Re}(z) \in \mathbb{R}
+      \qquad z - \bar z = 2i\,\mathrm{Im}(z) \in i\mathbb{R}$$
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après NBCOMPLEX-22 à NBCOMPLEX-33. Seize familles
+# siégeaient sous le plancher de 3 items du banc, dont DEUX sans aucun item —
+# `module-argument-vs-parties` et `algebrique-exponentielle-conversion`, que
+# seul le checkpoint cp-bac-exponentielle sondait. Les items qui les referment
+# siègent au barreau R6 : la leçon y annonce elle-même que le sujet national
+# emprunte la forme exponentielle au chapitre suivant, et son point de bascule
+# est justement là. Tableau GÉNÉRÉ contre
+# web/scripts/lib/couverture-compte.mjs, gardé par
+# scripts/resume-couverture.mjs.
 coverage_summary:
-  total_items: 21
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
+  per_misconception:
+    mc.math.maths_complexes_algebrique.im-inclut-i:                         { count: 5, items: [NBCOMPLEX-1, NBCOMPLEX-22, NBCOMPLEX-25, NBCOMPLEX-30, NBCOMPLEX-31] }
+    mc.math.maths_complexes_algebrique.confond-re-im:                       { count: 3, items: [NBCOMPLEX-1, NBCOMPLEX-10, NBCOMPLEX-22] }
+    mc.math.maths_complexes_algebrique.i2-egale-plus-un:                    { count: 4, items: [NBCOMPLEX-2, NBCOMPLEX-4, NBCOMPLEX-16, NBCOMPLEX-20] }
+    mc.math.maths_complexes_algebrique.produit-non-developpe:               { count: 3, items: [NBCOMPLEX-2, NBCOMPLEX-25, NBCOMPLEX-26] }
+    mc.math.maths_complexes_algebrique.conjugue-somme-vs-difference:        { count: 4, items: [NBCOMPLEX-3, NBCOMPLEX-14, NBCOMPLEX-23, NBCOMPLEX-33] }
+    mc.math.maths_complexes_algebrique.quotient-conjugue-incomplet:         { count: 3, items: [NBCOMPLEX-4, NBCOMPLEX-20, NBCOMPLEX-25] }
+    mc.math.maths_complexes_algebrique.module-lineaire:                     { count: 4, items: [NBCOMPLEX-5, NBCOMPLEX-6, NBCOMPLEX-24, NBCOMPLEX-29] }
+    mc.math.maths_complexes_algebrique.module-oubli-racine:                 { count: 4, items: [NBCOMPLEX-5, NBCOMPLEX-6, NBCOMPLEX-16, NBCOMPLEX-21] }
+    mc.math.maths_complexes_algebrique.module-produit-additif:              { count: 3, items: [NBCOMPLEX-15, NBCOMPLEX-16, NBCOMPLEX-19] }
+    mc.math.maths_complexes_algebrique.distance-affixe-brute:               { count: 3, items: [NBCOMPLEX-6, NBCOMPLEX-21, NBCOMPLEX-29] }
+    mc.math.maths_complexes_algebrique.milieu-sans-moyenne:                 { count: 3, items: [NBCOMPLEX-17, NBCOMPLEX-29, NBCOMPLEX-32] }
+    mc.math.maths_complexes_algebrique.conjugue-mauvais-axe:                { count: 3, items: [NBCOMPLEX-18, NBCOMPLEX-30, NBCOMPLEX-33] }
+    mc.math.maths_complexes_algebrique.imaginaire-pur-mauvaise-partie:      { count: 3, items: [NBCOMPLEX-11, NBCOMPLEX-23, NBCOMPLEX-32] }
+    mc.math.maths_complexes_algebrique.puissance-i-cycle-errone:            { count: 3, items: [NBCOMPLEX-13, NBCOMPLEX-26, NBCOMPLEX-28] }
+    mc.math.maths_complexes_algebrique.signe-parties-perdu:                 { count: 6, items: [NBCOMPLEX-1, NBCOMPLEX-2, NBCOMPLEX-10, NBCOMPLEX-11, NBCOMPLEX-12, NBCOMPLEX-17] }
+    mc.math.maths_complexes_algebrique.carre-reel-peut-etre-negatif:        { count: 5, items: [NBCOMPLEX-7, NBCOMPLEX-9, NBCOMPLEX-26, NBCOMPLEX-27, NBCOMPLEX-28] }
+    mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle:         { count: 3, items: [NBCOMPLEX-9, NBCOMPLEX-27, NBCOMPLEX-32] }
+    mc.math.maths_complexes_algebrique.extension-equation-mal-appariee:     { count: 3, items: [NBCOMPLEX-8, NBCOMPLEX-27, NBCOMPLEX-28] }
+    mc.math.maths_complexes_algebrique.module-argument-vs-parties:          { count: 4, items: [NBCOMPLEX-22, NBCOMPLEX-23, NBCOMPLEX-24, NBCOMPLEX-31] }
+    mc.math.maths_complexes_algebrique.algebrique-exponentielle-conversion: { count: 3, items: [NBCOMPLEX-24, NBCOMPLEX-31, NBCOMPLEX-33] }
+  total_items: 33
   floor: 3
-  floor_met: false   # legacy end-bank; see honest_note. No counts padded.
-  method_primary: "item-level, by primary_misconception (one item = one count)"
-  per_misconception_primary:
-    mc.math.maths_complexes_algebrique.im-inclut-i: 1                    # NBCOMPLEX-1
-    mc.math.maths_complexes_algebrique.i2-egale-plus-un: 2               # NBCOMPLEX-2, NBCOMPLEX-16
-    mc.math.maths_complexes_algebrique.conjugue-somme-vs-difference: 2   # NBCOMPLEX-3, NBCOMPLEX-14
-    mc.math.maths_complexes_algebrique.quotient-conjugue-incomplet: 2    # NBCOMPLEX-4, NBCOMPLEX-20
-    mc.math.maths_complexes_algebrique.module-lineaire: 1                # NBCOMPLEX-5
-    mc.math.maths_complexes_algebrique.distance-affixe-brute: 2          # NBCOMPLEX-6, NBCOMPLEX-21
-    mc.math.maths_complexes_algebrique.carre-reel-peut-etre-negatif: 1   # NBCOMPLEX-7
-    mc.math.maths_complexes_algebrique.extension-equation-mal-appariee: 1 # NBCOMPLEX-8
-    mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle: 1    # NBCOMPLEX-9
-    mc.math.maths_complexes_algebrique.confond-re-im: 1                  # NBCOMPLEX-10
-    mc.math.maths_complexes_algebrique.imaginaire-pur-mauvaise-partie: 1 # NBCOMPLEX-11
-    mc.math.maths_complexes_algebrique.signe-parties-perdu: 1            # NBCOMPLEX-12
-    mc.math.maths_complexes_algebrique.puissance-i-cycle-errone: 1       # NBCOMPLEX-13
-    mc.math.maths_complexes_algebrique.module-produit-additif: 2         # NBCOMPLEX-15, NBCOMPLEX-19
-    mc.math.maths_complexes_algebrique.milieu-sans-moyenne: 1            # NBCOMPLEX-17
-    mc.math.maths_complexes_algebrique.conjugue-mauvais-axe: 1           # NBCOMPLEX-18
-    mc.math.maths_complexes_algebrique.module-oubli-racine: 0            # never a primary (distractor-only: 5,6,16,21)
-    mc.math.maths_complexes_algebrique.produit-non-developpe: 0          # never a primary (distractor-only: 2)
-    mc.math.maths_complexes_algebrique.module-argument-vs-parties: 0     # summit/checkpoints layer only
-    mc.math.maths_complexes_algebrique.algebrique-exponentielle-conversion: 0 # summit/checkpoints layer only
-  method_distractor: "item-level, counting every item with >=1 distractor tagged X"
-  per_misconception_distractor:
-    mc.math.maths_complexes_algebrique.signe-parties-perdu: 6            # 1, 2, 10, 11, 12, 17
-    mc.math.maths_complexes_algebrique.i2-egale-plus-un: 4               # 2, 4, 16, 20
-    mc.math.maths_complexes_algebrique.module-oubli-racine: 4            # 5, 6, 16, 21
-    mc.math.maths_complexes_algebrique.module-produit-additif: 3         # 15, 16, 19
-    mc.math.maths_complexes_algebrique.conjugue-somme-vs-difference: 2   # 3, 14
-    mc.math.maths_complexes_algebrique.quotient-conjugue-incomplet: 2    # 4, 20
-    mc.math.maths_complexes_algebrique.module-lineaire: 2                # 5, 6
-    mc.math.maths_complexes_algebrique.distance-affixe-brute: 2          # 6, 21
-    mc.math.maths_complexes_algebrique.confond-re-im: 2                  # 1, 10
-    mc.math.maths_complexes_algebrique.carre-reel-peut-etre-negatif: 2   # 7, 9
-    mc.math.maths_complexes_algebrique.im-inclut-i: 1                    # 1
-    mc.math.maths_complexes_algebrique.produit-non-developpe: 1          # 2
-    mc.math.maths_complexes_algebrique.imaginaire-pur-mauvaise-partie: 1 # 11
-    mc.math.maths_complexes_algebrique.puissance-i-cycle-errone: 1       # 13
-    mc.math.maths_complexes_algebrique.extension-equation-mal-appariee: 1 # 8
-    mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle: 1    # 9
-    mc.math.maths_complexes_algebrique.milieu-sans-moyenne: 1            # 17
-    mc.math.maths_complexes_algebrique.conjugue-mauvais-axe: 1           # 18
-  per_rung:
-    R0: 3   # NBCOMPLEX-7, 8, 9
-    R1: 4   # NBCOMPLEX-1, 10, 11 ... (R1: 1, 10, 11)
-    R2: 3   # NBCOMPLEX-2, 12, 13
-    R3: 3   # NBCOMPLEX-3, 4, 14
-    R4: 3   # NBCOMPLEX-5, 15, 16
-    R5: 3   # NBCOMPLEX-6, 17, 18
-    R6: 3   # NBCOMPLEX-19, 20, 21
-  honest_note: >-
-    FLOOR NOT MET. By strict item-level primary counting, NO misconception
-    reaches 3 (maximum is 2). By distractor-level counting, only 4 reach the
-    floor (signe-parties-perdu 6, i2-egale-plus-un 4, module-oubli-racine 4,
-    module-produit-additif 3). This end bank was built for broad ramp coverage,
-    not per-misconception depth, and it predates BOTH the inventory and the
-    trigonometric/exponential summit. Two models introduced by the verified
-    2019 summit — module-argument-vs-parties and algebrique-exponentielle-
-    conversion — are exercised ONLY by the checkpoint layer (cp-r4-module-
-    parties, cp-bac-exponentielle) and have ZÉRO end-bank items. A follow-up
-    item-author pass is owed to: (a) raise the core algebraic models to >=3 at
-    item level, and (b) add trig/exponential-form items once a teaching rung for
-    that layer exists (see lesson.md validation note (3)). Counts above are real;
-    none were padded.
+  floor_met: true
+  ramp_coverage:
+    R0: 5
+    R1: 6
+    R2: 5
+    R3: 3
+    R4: 4
+    R5: 5
+    R6: 5
+  honest_state: >-
+    Les vingt misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Douze y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

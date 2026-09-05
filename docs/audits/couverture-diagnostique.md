@@ -268,7 +268,8 @@ Deux campagnes d'items ont suivi le même jour, et le nombre de misconceptions
 | après la campagne de tagage | 458 | 293 |
 | après la campagne d'items (3 notions closes) | 517 | 234 |
 | après la réparation des résumés (4 notions closes) | **532** | 219 |
-| après l'extension du périmètre (déclaré ∪ tagué) | **532** | **235** |
+| après l'extension du périmètre (déclaré ∪ tagué) | 532 | 235 |
+| après la campagne du plancher (32 notions closes) | **767** | **0** |
 
 La dernière ligne n'ajoute aucune dette : elle en RÉVÈLE. 16 misconceptions
 sont déclarées dans l'inventaire d'une notion sans qu'aucun item du BANC ne les
@@ -284,6 +285,21 @@ et que le périmètre du fichier a doublé après. C'est le sujet de
 `docs/audits/resume-couverture.md` et de la porte
 `web/scripts/resume-couverture.mjs`, qui partage désormais la convention de
 comptage de CET instrument via `web/scripts/lib/couverture-compte.mjs`.
+
+## Le plancher est atteint partout (2026-09-05)
+
+La campagne a fermé les **32 notions** encore partiellement aveugles, avec
+**165 items** écrits. Le corpus compte désormais **767 misconceptions déclarées
+ou taguées, toutes évaluables** : les 62 notions sur 62 sont entièrement
+couvertes, et le décompte des familles sous le plancher est tombé à **zéro**.
+
+Une conséquence de méthode mérite d'être notée. Les 62 notions déclarant
+maintenant `floor_met: true`, la porte A de `resume-couverture` — qui échoue si
+un fichier annonce le plancher atteint alors qu'une misconception est en
+dessous — devient de fait une **porte franche sur tout le corpus** : déclarer
+une nouvelle misconception sans lui écrire ses trois items casse
+l'intégration. La porte d'honnêteté a produit la porte de fond, sans qu'il ait
+fallu l'écrire séparément.
 
 ## Lancer l'instrument
 

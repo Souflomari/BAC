@@ -1629,55 +1629,702 @@ items:
       **Centre et rayon :** centre $=\dfrac{z_A+z_B}{2}=\dfrac{-1+3}{2}=1$,
       rayon $=\dfrac{AB}{2}=\dfrac{|z_B-z_A|}{2}=\dfrac{4}{2}=2$.
 
+  # Ajoutés le 2026-09-05 : seize familles sous le plancher de 3 items du banc.
+  # Neuf items, vingt-six places — la dernière notion du corpus à combler.
+  - id: NBCOMPLEX2-25
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: maths_complexes_trigo
+    tags: [module, argument, conjugue]
+    primary_misconception: mc.math.maths_complexes_trigo.module-oubli-racine
+    stem: >
+      Soit $z = -1 + i$. Que valent $|z|$ et $\arg(\bar{z})$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $|z| = \sqrt{2}$ et $\arg(\bar z) = -\dfrac{3\pi}{4}\ [2\pi]$
+        correct: true
+      - id: B
+        text: >-
+          $|z| = 2$ et $\arg(\bar z) = -\dfrac{3\pi}{4}$ : le module vaut
+          $a^{2}+b^{2}$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.module-oubli-racine
+        feedback: >
+          La racine finale n'est pas optionnelle : $|z| = \sqrt{a^{2}+b^{2}}$.
+          Sans elle on obtient le CARRÉ du module — ici $2$ au lieu de
+          $\sqrt2 \approx 1{,}41$. Le contrôle géométrique tranche : le point
+          $(-1\,;1)$ est à un peu plus d'une unité de l'origine, pas deux.
+      - id: C
+        text: >-
+          $|z| = \sqrt{2}$ et $\arg(\bar z) = \dfrac{3\pi}{4} + \pi$ : on compose
+          l'opposé et le conjugué
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.arg-conjugue-oppose-compose
+        feedback: >
+          Deux règles distinctes se mélangent :
+          $\arg(\bar z) = -\arg(z)$ et $\arg(-z) = \arg(z) + \pi$. Ici on ne
+          demande que le conjugué : $-\frac{3\pi}{4}$, sans ajout de $\pi$.
+      - id: D
+        text: >-
+          $|z| = \sqrt{2}$ et $\arg(\bar z) = \dfrac{\pi}{4}$, l'argument étant
+          défini modulo $\pi$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.argument-non-2pi-periodique
+        feedback: >
+          L'argument est défini modulo $2\pi$, pas $\pi$ : ajouter $\pi$ envoie
+          le point sur son symétrique par rapport à l'origine, qui est un AUTRE
+          complexe. Modulo $\pi$, on confondrait $z$ et $-z$.
+    correct_feedback: >
+      $|z| = \sqrt{(-1)^{2}+1^{2}} = \sqrt2$, et $\arg(z) = \frac{3\pi}{4}$ (le
+      point est dans le deuxième quadrant), donc $\arg(\bar z) = -\arg(z) =
+      -\frac{3\pi}{4}\ [2\pi]$.
+    solution: |
+      **Le module.**
+      $$|z| = \sqrt{a^{2}+b^{2}} = \sqrt{1+1} = \sqrt2$$
+
+      **L'argument de $z$.** $\cos\theta = -\frac{1}{\sqrt2}$ et
+      $\sin\theta = \frac{1}{\sqrt2}$ : deuxième quadrant, donc
+      $\theta = \frac{3\pi}{4}$.
+
+      **Le conjugué.** $\arg(\bar z) = -\arg(z) = -\frac{3\pi}{4}\ [2\pi]$.
+
+      **Les trois règles à garder distinctes.**
+      $$\arg(\bar z) = -\arg z \qquad \arg(-z) = \arg z + \pi \qquad
+      \text{tout modulo } 2\pi$$
+
+  - id: NBCOMPLEX2-26
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_complexes_trigo
+    tags: [forme_exponentielle, moivre]
+    primary_misconception: mc.math.maths_complexes_trigo.definition-exponentielle-erronee
+    stem: >
+      Que vaut $\left(2\,e^{i\pi/6}\right)^{3}$, et que signifie exactement
+      $e^{i\theta}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $8\,e^{i\pi/2}$, avec $e^{i\theta} = \cos\theta + i\sin\theta$
+        correct: true
+      - id: B
+        text: >-
+          $6\,e^{i\pi/2}$ : le module se multiplie par l'exposant
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.moivre-module-multiplie
+        feedback: >
+          Le module s'ÉLÈVE à la puissance : $|z^{n}| = |z|^{n}$, donc
+          $2^{3} = 8$ et non $2\times 3 = 6$. C'est l'ARGUMENT qui se multiplie
+          par $n$. Les deux opérations sont différentes, et les confondre fausse
+          tous les calculs de racines.
+      - id: C
+        text: >-
+          $8\,e^{i\pi/2}$, avec $e^{i\theta} = \cos\theta - i\sin\theta$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.definition-exponentielle-erronee
+        feedback: >
+          Le signe du sinus est POSITIF : $e^{i\theta} = \cos\theta +
+          i\sin\theta$. Avec un moins, on obtiendrait $e^{-i\theta}$ — donc le
+          conjugué, et une rotation en sens inverse. Le contrôle :
+          $e^{i\pi/2}$ doit valoir $i$, et non $-i$.
+      - id: D
+        text: >-
+          $8\,e^{i\pi/6}$ : seul le module change, l'argument reste inchangé
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.moivre-argument-mal-transforme
+        feedback: >
+          L'argument se MULTIPLIE par $n$ : $\arg(z^{n}) = n\arg(z)$, ici
+          $3\times\frac{\pi}{6} = \frac{\pi}{2}$. Le laisser inchangé
+          reviendrait à dire qu'élever au cube ne fait pas tourner — alors que
+          c'est précisément ce qu'une multiplication complexe fait.
+    correct_feedback: >
+      $\left(re^{i\theta}\right)^{n} = r^{n}e^{in\theta}$ : le module s'élève à
+      la puissance, l'argument se multiplie. Ici $2^{3} = 8$ et
+      $3\times\frac{\pi}{6} = \frac{\pi}{2}$, d'où $8e^{i\pi/2} = 8i$.
+    solution: |
+      **La définition.**
+      $$e^{i\theta} = \cos\theta + i\sin\theta$$
+      Signe PLUS devant le sinus, cosinus en partie réelle.
+
+      **La formule de Moivre, forme exponentielle.**
+      $$\left(r\,e^{i\theta}\right)^{n} = r^{n}\,e^{in\theta}$$
+
+      **L'application.** $r^{n} = 2^{3} = 8$ et
+      $n\theta = 3\times\frac{\pi}{6} = \frac{\pi}{2}$, donc le résultat vaut
+      $8e^{i\pi/2} = 8i$.
+
+  - id: NBCOMPLEX2-27
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_complexes_trigo
+    tags: [forme_exponentielle, conjugue, moivre]
+    primary_misconception: mc.math.maths_complexes_trigo.arg-conjugue-oppose-compose
+    stem: >
+      Soit $z = r\,e^{i\theta}$ avec $r > 0$. Que valent $\bar{z}$ et $-z$ sous
+      forme exponentielle ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\bar z = r\,e^{-i\theta}$ et $-z = r\,e^{i(\theta+\pi)}$ : le module
+          est conservé dans les deux cas
+        correct: true
+      - id: B
+        text: >-
+          $\bar z = r\,e^{i(\theta+\pi)}$ et $-z = r\,e^{-i\theta}$ : les deux
+          transformations sont échangées
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.arg-conjugue-oppose-compose
+        feedback: >
+          Conjuguer, c'est une symétrie par rapport à l'axe des réels : elle
+          OPPOSE l'argument. Prendre l'opposé, c'est une symétrie par rapport à
+          l'origine : elle AJOUTE $\pi$. Le contrôle sur $z = i$ :
+          $\bar z = -i$ et $-z = -i$ coïncident ici, mais essayez avec
+          $z = 1 + i$.
+      - id: C
+        text: >-
+          $\bar z = r\,e^{-i\theta}$ et $-z = -r\,e^{i\theta}$, le module pouvant
+          être négatif
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.definition-exponentielle-erronee
+        feedback: >
+          Un module est une distance : toujours positif. La forme exponentielle
+          exige $r > 0$ ; $-re^{i\theta}$ n'est pas une forme exponentielle, il
+          faut la réécrire en $re^{i(\theta+\pi)}$ pour respecter la convention.
+      - id: D
+        text: >-
+          $\bar z = r\,e^{-i\theta}$ et $-z = r\,e^{i\theta/n}$ : l'argument se
+          divise
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.moivre-argument-mal-transforme
+        feedback: >
+          Aucune division n'intervient ici — et la formule de Moivre MULTIPLIE
+          l'argument par $n$, elle ne le divise pas. La division par $n$
+          n'apparaît que pour les racines $n$-ièmes, où l'on inverse
+          l'opération.
+    correct_feedback: >
+      $\bar z = r\,e^{-i\theta}$ — symétrie par rapport à l'axe des réels, donc
+      argument opposé — et $-z = r\,e^{i(\theta+\pi)}$ — symétrie par rapport à
+      l'origine, donc demi-tour. Le module ne change dans aucun des deux cas.
+    solution: |
+      **Le conjugué.** Symétrie d'axe les réels : le module est conservé,
+      l'argument opposé.
+      $$\bar z = r\,e^{-i\theta}$$
+
+      **L'opposé.** Symétrie par rapport à l'origine, c'est-à-dire rotation d'un
+      demi-tour :
+      $$-z = r\,e^{i(\theta+\pi)}$$
+
+      **Le composé, si l'on veut $-\bar z$.**
+      $$-\bar z = r\,e^{i(\pi - \theta)}$$
+      qui est la symétrie par rapport à l'axe des imaginaires.
+
+  - id: NBCOMPLEX2-28
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: maths_complexes_trigo
+    tags: [equation, racines_niemes]
+    primary_misconception: mc.math.maths_complexes_trigo.equation-complexe-cherche-reels
+    stem: >
+      Combien l'équation $z^{4} = 16$ admet-elle de solutions dans
+      $\mathbb{C}$, et comment sont-elles disposées ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Quatre, de module $2$, régulièrement espacées de $\dfrac{2\pi}{4}$ sur
+          le cercle de rayon $2$
+        correct: true
+      - id: B
+        text: >-
+          Deux, $2$ et $-2$ : ce sont les seules solutions, puisqu'on cherche des
+          nombres dont la puissance quatrième vaut $16$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.equation-complexe-cherche-reels
+        feedback: >
+          $2$ et $-2$ sont les solutions RÉELLES. Dans $\mathbb{C}$, une équation
+          $z^{n} = Z$ admet exactement $n$ solutions : il en manque deux, $2i$ et
+          $-2i$, dont la puissance quatrième vaut bien $16$.
+      - id: C
+        text: >-
+          Quatre, de module $2$, espacées de $\dfrac{\pi}{4}$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.racines-pas-2pi-sur-n
+        feedback: >
+          L'écart entre racines consécutives est $\dfrac{2\pi}{n}$, soit
+          $\dfrac{\pi}{2}$ ici. Avec $\dfrac{\pi}{4}$, les quatre racines ne
+          couvriraient qu'un demi-tour et ne se refermeraient pas — alors qu'elles
+          partagent le cercle en parts égales.
+      - id: D
+        text: >-
+          Quatre, de module $16$, l'argument étant défini modulo $\pi$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.argument-non-2pi-periodique
+        feedback: >
+          Deux erreurs. Le module des racines est $16^{1/4} = 2$, pas $16$. Et
+          l'argument est défini modulo $2\pi$ : c'est en balayant un tour
+          complet, et non un demi-tour, qu'on obtient les quatre racines
+          distinctes.
+    correct_feedback: >
+      Quatre solutions : $2$, $2i$, $-2$, $-2i$. Toutes de module
+      $16^{1/4} = 2$, régulièrement espacées de $\frac{2\pi}{4} = \frac{\pi}{2}$
+      — elles forment un carré inscrit dans le cercle de rayon $2$.
+    solution: |
+      **La méthode.** On écrit $16 = 16\,e^{i\cdot 0}$ et l'on cherche
+      $z = \rho e^{i\varphi}$ :
+      $$\rho^{4} = 16 \Rightarrow \rho = 2 \qquad
+      4\varphi = 0 + 2k\pi \Rightarrow \varphi = \frac{k\pi}{2},
+      \ k \in \{0,1,2,3\}$$
+
+      **Les quatre racines.**
+      $$2, \quad 2i, \quad -2, \quad -2i$$
+
+      **La disposition.** Toutes sur le cercle de rayon $2$, séparées par
+      $\frac{2\pi}{4}$ : elles forment un polygone régulier à $4$ côtés.
+
+  - id: NBCOMPLEX2-29
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: maths_complexes_trigo
+    tags: [similitude, rotation, homothetie]
+    primary_misconception: mc.math.maths_complexes_trigo.similitude-module-argument-roles
+    stem: >
+      La transformation $z \mapsto 3\,e^{i\pi/4}\,z$ agit sur le plan complexe.
+      De quoi est-elle la composée ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          D'une homothétie de rapport $3$ et d'une rotation d'angle
+          $\dfrac{\pi}{4}$, toutes deux de centre l'origine
+        correct: true
+      - id: B
+        text: >-
+          D'une homothétie de rapport $\dfrac{\pi}{4}$ et d'une rotation d'angle
+          $3$ : les deux rôles sont donnés par le complexe $c$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.similitude-module-argument-roles
+        feedback: >
+          Les rôles sont échangés. Dans $z \mapsto cz$, le MODULE de $c$ donne le
+          rapport de l'homothétie, et son ARGUMENT l'angle de la rotation. Un
+          rapport $\pi/4 \approx 0{,}79$ rétrécirait la figure, et un angle de
+          $3$ radians la ferait presque faire demi-tour.
+      - id: C
+        text: >-
+          D'une homothétie de rapport $3\,e^{i\pi/4}$, le complexe $c$ servant
+          directement de rapport
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.homothetie-rapport-complexe
+        feedback: >
+          Le rapport d'une homothétie est un nombre RÉEL : c'est un facteur
+          d'agrandissement, pas une rotation. Quand $c$ n'est pas réel, la
+          transformation n'est pas une simple homothétie — elle en compose une
+          avec une rotation, ce que la forme $re^{i\theta}$ met en évidence.
+      - id: D
+        text: >-
+          D'une rotation seule, d'angle $\dfrac{\pi}{4}$ : le facteur $3$ est un
+          coefficient sans effet géométrique
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.rotation-angle-comme-coefficient
+        feedback: >
+          Le facteur $3$ multiplie toutes les distances à l'origine par trois :
+          c'est une homothétie, et son effet est très visible. Ce qui n'aurait
+          aucun effet serait $c = 1$ — module $1$, argument $0$.
+    correct_feedback: >
+      $z \mapsto cz$ avec $c = re^{i\theta}$ compose une homothétie de rapport
+      $r$ et une rotation d'angle $\theta$, toutes deux centrées à l'origine.
+      Ici : rapport $3$, angle $\frac{\pi}{4}$.
+    solution: |
+      **La décomposition.** Écrire $c$ sous forme exponentielle :
+      $$c = r\,e^{i\theta} \quad\Longrightarrow\quad
+      z \mapsto cz = \underbrace{r}_{\text{homothétie}} \times
+      \underbrace{e^{i\theta}z}_{\text{rotation}}$$
+
+      **Ici.** $r = 3$ (agrandissement d'un facteur trois),
+      $\theta = \frac{\pi}{4}$ (rotation d'un huitième de tour).
+
+      **Les cas particuliers.** $c$ réel positif : homothétie seule.
+      $|c| = 1$ : rotation seule. $c = 1$ : identité.
+
+  - id: NBCOMPLEX2-30
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_complexes_trigo
+    tags: [homothetie, rotation]
+    primary_misconception: mc.math.maths_complexes_trigo.reel-positif-donne-rotation
+    stem: >
+      La transformation $z \mapsto 4z$ est-elle une rotation ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non : $4$ a un argument nul — c'est une homothétie de rapport $4$
+        correct: true
+      - id: B
+        text: >-
+          Oui, d'angle $4$ radians : le coefficient donne directement l'angle
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.rotation-angle-comme-coefficient
+        feedback: >
+          Une rotation d'angle $\theta$ s'écrit $z \mapsto e^{i\theta}z$, jamais
+          $z \mapsto \theta z$. La différence se voit sur les distances : une
+          rotation les conserve, alors que multiplier par $4$ les quadruple.
+      - id: C
+        text: >-
+          Oui, d'angle $\dfrac{\pi}{4}$ : tout complexe non nul induit une
+          rotation
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.reel-positif-donne-rotation
+        feedback: >
+          Un réel strictement positif a un argument NUL : il n'induit aucune
+          rotation. La rotation vient de l'argument de $c$, et $4 = 4e^{i\cdot0}$
+          n'en a pas. Le point $1$ est envoyé sur $4$, sur le même axe — rien n'a
+          tourné.
+      - id: D
+        text: >-
+          Non, c'est une homothétie de rapport $4i$, le rapport pouvant être
+          complexe
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.homothetie-rapport-complexe
+        feedback: >
+          Le rapport d'une homothétie est réel — ici $4$, et non $4i$.
+          Multiplier par $4i$ serait une tout autre transformation :
+          $4i = 4e^{i\pi/2}$, donc une homothétie de rapport $4$ COMPOSÉE avec un
+          quart de tour.
+    correct_feedback: >
+      Non. $4 = 4\,e^{i\cdot 0}$ : module $4$, argument nul. C'est une homothétie
+      de centre l'origine et de rapport $4$ — les distances quadruplent, les
+      directions ne changent pas.
+    solution: |
+      **La lecture.** Écrire le coefficient sous forme exponentielle :
+      $$4 = 4\,e^{i\cdot 0}$$
+      Module $4$ : homothétie de rapport $4$. Argument $0$ : pas de rotation.
+
+      **Le test visuel.** Le point d'affixe $1$ est envoyé sur $4$ — il reste sur
+      le demi-axe réel positif. Une rotation l'aurait déplacé angulairement.
+
+      **Le tableau des cas.**
+
+      | $c$ | transformation |
+      |---|---|
+      | réel $> 0$ | homothétie |
+      | module $1$ | rotation |
+      | réel $< 0$ | homothétie + demi-tour |
+      | quelconque | les deux composées |
+
+  - id: NBCOMPLEX2-31
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: maths_complexes_trigo
+    tags: [ecriture_complexe, rotation, centre]
+    primary_misconception: mc.math.maths_complexes_trigo.ecriture-complexe-oubli-constante
+    stem: >
+      La rotation de centre $A$ d'affixe $a$ et d'angle $\theta$ a pour écriture
+      complexe $z' - a = e^{i\theta}(z - a)$. Quelle est l'expression de $z'$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $z' = e^{i\theta}(z - a) + a$, le terme $+a$ replaçant le centre
+        correct: true
+      - id: B
+        text: >-
+          $z' = e^{i\theta}(z - a)$ : il suffit d'isoler $z'$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.ecriture-complexe-oubli-constante
+        feedback: >
+          Le terme $a$ passe de l'autre côté : $z' = e^{i\theta}(z-a) + a$.
+          L'oublier revient à ramener le centre à l'origine — la transformation
+          obtenue serait une rotation de centre $O$, pas de centre $A$. Le
+          contrôle : $z = a$ doit donner $z' = a$, le centre étant fixe.
+      - id: C
+        text: >-
+          $z' = \theta(z - a) + a$ : l'angle intervient comme coefficient
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.rotation-angle-comme-coefficient
+        feedback: >
+          L'angle intervient par $e^{i\theta}$, jamais comme facteur. Multiplier
+          par $\theta$ changerait les distances au centre — ce qu'une rotation ne
+          fait jamais, puisque $|e^{i\theta}| = 1$.
+      - id: D
+        text: >-
+          $z' = 4e^{i\theta}(z-a) + a$ si l'on veut aussi une homothétie de
+          rapport $4e^{i\theta}$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.homothetie-rapport-complexe
+        feedback: >
+          Le rapport d'une homothétie est réel. L'écriture proposée compose bien
+          une homothétie de rapport $4$ et une rotation d'angle $\theta$, mais le
+          rapport est $4$ — pas $4e^{i\theta}$, qui est le coefficient de la
+          similitude entière.
+    correct_feedback: >
+      $z' = e^{i\theta}(z-a) + a$. Le $+a$ n'est pas un détail : il replace le
+      centre. Le contrôle immédiat — $z = a$ doit donner $z' = a$ — ne fonctionne
+      que si le terme est présent.
+    solution: |
+      **L'isolement.**
+      $$z' - a = e^{i\theta}(z-a) \quad\Longrightarrow\quad
+      z' = e^{i\theta}(z-a) + a$$
+
+      **Ce que le $+a$ fait.** Il compense la translation qu'on avait effectuée
+      pour ramener le centre à l'origine. Trois étapes : translater de $-a$,
+      tourner, retranslater de $+a$.
+
+      **Le contrôle du point fixe.** Un centre de rotation est invariant :
+      $z = a$ doit donner $z' = a$. Avec le $+a$ : $e^{i\theta}\times 0 + a = a$
+      ✓. Sans lui : $0 \neq a$.
+
+  - id: NBCOMPLEX2-32
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_complexes_trigo
+    tags: [lieu_de_points, rotation]
+    primary_misconception: mc.math.maths_complexes_trigo.ensemble-points-locus-confondu
+    stem: >
+      Quel est l'ensemble des points $M$ d'affixe $z$ tels que
+      $|z - 1| = |z + 2i|$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La MÉDIATRICE du segment joignant les points d'affixes $1$ et $-2i$
+        correct: true
+      - id: B
+        text: >-
+          Le CERCLE de centre $1$ et de rayon $|{-2i}| = 2$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.ensemble-points-locus-confondu
+        feedback: >
+          Un cercle correspond à $|z - a| = R$ — une distance CONSTANTE à un
+          point fixe. Ici l'égalité porte sur deux distances à deux points
+          différents : $MA = MB$, ce qui caractérise la médiatrice de $[AB]$.
+      - id: C
+        text: >-
+          Une rotation d'angle $\dfrac{\pi}{2}$, le facteur $i$ indiquant un
+          quart de tour
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.rotation-sens-inverse
+        feedback: >
+          La question porte sur un ENSEMBLE de points, pas sur une
+          transformation. Le $i$ apparaît ici dans l'affixe $-2i$ d'un point du
+          plan, sans aucun rôle de rotation — il désigne le point de coordonnées
+          $(0\,;-2)$.
+      - id: D
+        text: >-
+          L'ensemble vide : il faudrait d'abord isoler $z$ en ajoutant la
+          constante manquante des deux côtés
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.ecriture-complexe-oubli-constante
+        feedback: >
+          Il n'y a rien à isoler : l'égalité de deux modules se LIT
+          géométriquement comme une égalité de distances. Et l'ensemble n'est pas
+          vide — il contient par exemple le milieu de $[AB]$, qui est à égale
+          distance des deux points par construction.
+    correct_feedback: >
+      $|z - 1|$ est la distance de $M$ au point $A$ d'affixe $1$, et
+      $|z + 2i| = |z - (-2i)|$ sa distance au point $B$ d'affixe $-2i$. L'égalité
+      $MA = MB$ caractérise la médiatrice de $[AB]$.
+    solution: |
+      **La traduction géométrique.**
+      $$|z - z_A| = MA$$
+      donc $|z-1| = |z-(-2i)|$ s'écrit $MA = MB$ avec $z_A = 1$ et
+      $z_B = -2i$.
+
+      **Le lieu.** L'ensemble des points équidistants de deux points fixes est
+      la MÉDIATRICE du segment qui les joint.
+
+      **Les trois lieux à ne pas confondre.**
+
+      | condition | lieu |
+      |---|---|
+      | $\lvert z - a\rvert = R$ | cercle de centre $A$, rayon $R$ |
+      | $\lvert z - a\rvert = \lvert z - b\rvert$ | médiatrice de $[AB]$ |
+      | $\arg(z-a) = \theta$ | demi-droite issue de $A$ |
+
+  - id: NBCOMPLEX2-33
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: maths_complexes_trigo
+    tags: [racines_niemes, lieu_de_points]
+    primary_misconception: mc.math.maths_complexes_trigo.racines-module-non-racine
+    stem: >
+      Les solutions de $z^{3} = 27\,e^{i\pi}$ ont quel module, et sur quelle
+      figure se placent-elles ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Module $3$, sur le cercle de rayon $3$ centré à l'origine, aux sommets
+          d'un triangle équilatéral
+        correct: true
+      - id: B
+        text: >-
+          Module $27$, le module du second membre étant conservé par la racine
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.racines-module-non-racine
+        feedback: >
+          $|z^{3}| = |z|^{3}$, donc $|z|^{3} = 27$ et $|z| = 27^{1/3} = 3$. Le
+          module des racines est la racine $n$-ième du module — pas le module
+          lui-même, sans quoi le cube d'une racine vaudrait $27^{3}$.
+      - id: C
+        text: >-
+          Module $3$, mais sur une médiatrice, puisque les trois racines sont
+          équidistantes deux à deux
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.ensemble-points-locus-confondu
+        feedback: >
+          Elles sont équidistantes de l'ORIGINE — toutes de module $3$ — ce qui
+          les place sur un CERCLE. Une médiatrice est le lieu des points
+          équidistants de deux points fixes, ce qui n'est pas la condition ici.
+      - id: D
+        text: >-
+          Module $3$, avec un écart angulaire de $\dfrac{\pi}{3}$ entre racines
+          consécutives
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.racines-pas-2pi-sur-n
+        feedback: >
+          L'écart vaut $\dfrac{2\pi}{n} = \dfrac{2\pi}{3}$. Avec
+          $\dfrac{\pi}{3}$, les trois racines ne couvriraient qu'un tiers du
+          tour ; or elles partagent le cercle ENTIER en parts égales.
+    correct_feedback: >
+      $|z|^{3} = 27$ donne $|z| = 3$ : le module des racines est la racine
+      cubique du module. Les trois solutions sont sur le cercle de rayon $3$,
+      espacées de $\frac{2\pi}{3}$ — les sommets d'un triangle équilatéral.
+    solution: |
+      **Le module.**
+      $$|z|^{3} = 27 \quad\Longrightarrow\quad |z| = 27^{1/3} = 3$$
+
+      **Les arguments.**
+      $$3\varphi = \pi + 2k\pi \quad\Longrightarrow\quad
+      \varphi = \frac{\pi}{3} + \frac{2k\pi}{3}, \quad k \in \{0,1,2\}$$
+
+      **La figure.** Trois points sur le cercle de rayon $3$, séparés par
+      $\frac{2\pi}{3}$ : un triangle équilatéral centré à l'origine.
+
+      **La règle générale.** Les $n$ racines $n$-ièmes d'un complexe de module
+      $R$ ont pour module $R^{1/n}$ et forment un polygone régulier à $n$ côtés.
+
+  - id: NBCOMPLEX2-34
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_complexes_trigo
+    tags: [similitude, module, homothetie]
+    primary_misconception: mc.math.maths_complexes_trigo.reel-positif-donne-rotation
+    stem: >
+      Soit la transformation $z \mapsto c\,z$ avec $c = 5$. Que vaut $|c|$, et
+      quel est l'effet géométrique de cette transformation ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $|c| = 5$, et la transformation est une homothétie de rapport $5$
+          centrée à l'origine, sans aucune rotation
+        correct: true
+      - id: B
+        text: >-
+          $|c| = 25$, le module valant $a^{2}+b^{2}$, et la transformation
+          multiplie donc les distances par $25$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.module-oubli-racine
+        feedback: >
+          La racine finale manque : $|c| = \sqrt{a^{2}+b^{2}} = \sqrt{25} = 5$.
+          Pour un réel, le module est simplement sa valeur absolue — et $|5| = 5$,
+          non $25$. Sans la racine, on obtient systématiquement le CARRÉ du
+          module.
+      - id: C
+        text: >-
+          $|c| = 5$, et la transformation compose une homothétie de rapport $5$
+          avec une rotation : n'importe quel coefficient non nul en induit une
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.reel-positif-donne-rotation
+        feedback: >
+          Un réel strictement positif a un argument NUL : il n'induit aucune
+          rotation. La rotation vient de l'argument de $c$, et $5 = 5e^{i\cdot0}$
+          n'en a pas. Le point d'affixe $1$ est envoyé sur $5$, sur le même
+          demi-axe : rien n'a tourné.
+      - id: D
+        text: >-
+          $|c| = 5$, mais c'est l'ARGUMENT de $c$ qui donne le rapport de
+          l'homothétie et son MODULE qui donne l'angle de rotation
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.similitude-module-argument-roles
+        feedback: >
+          Les deux rôles sont inversés. Dans $z \mapsto cz$ avec
+          $c = re^{i\theta}$ : le module $r$ donne le RAPPORT de l'homothétie,
+          l'argument $\theta$ l'ANGLE de la rotation. Un argument comme rapport
+          d'agrandissement donnerait ici $0$, donc l'écrasement de tout le plan
+          sur un point.
+    correct_feedback: >
+      $|5| = 5$, et $5 = 5\,e^{i\cdot 0}$ : module $5$, argument nul. C'est donc
+      une homothétie pure, de centre l'origine et de rapport $5$ — les distances
+      quintuplent, aucune direction ne change.
+    solution: |
+      **Le module.**
+      $$|c| = \sqrt{a^{2}+b^{2}} = \sqrt{5^{2}+0^{2}} = 5$$
+      Pour un réel, le module est la valeur absolue.
+
+      **La lecture géométrique.** $c = r\,e^{i\theta}$ avec $r = 5$ et
+      $\theta = 0$ :
+      - le MODULE donne le rapport de l'homothétie ;
+      - l'ARGUMENT donne l'angle de la rotation.
+
+      Argument nul, donc pas de rotation.
+
+      **Le contrôle visuel.** $1 \mapsto 5$ : le point reste sur le demi-axe réel
+      positif, cinq fois plus loin.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après NBCOMPLEX2-25 à NBCOMPLEX2-34. Seize familles
+# sous le plancher : le module et son argument, la définition de $e^{i\theta}$,
+# la périodicité $2\pi$, la formule de Moivre, les racines $n$-ièmes, et les
+# cinq façons de mal lire une similitude. C'était la dernière notion du corpus
+# à combler. Tableau GÉNÉRÉ, gardé par scripts/resume-couverture.mjs.
 coverage_summary:
-  total_items: 24
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
+  per_misconception:
+    mc.math.maths_complexes_trigo.mult-par-i-non-rotation:             { count: 3, items: [NBCOMPLEX2-7, NBCOMPLEX2-8, NBCOMPLEX2-9] }
+    mc.math.maths_complexes_trigo.argument-un-seul-signe:              { count: 3, items: [NBCOMPLEX2-1, NBCOMPLEX2-10, NBCOMPLEX2-23] }
+    mc.math.maths_complexes_trigo.module-oubli-racine:                 { count: 3, items: [NBCOMPLEX2-10, NBCOMPLEX2-25, NBCOMPLEX2-34] }
+    mc.math.maths_complexes_trigo.arg-conjugue-oppose-compose:         { count: 3, items: [NBCOMPLEX2-11, NBCOMPLEX2-25, NBCOMPLEX2-27] }
+    mc.math.maths_complexes_trigo.definition-exponentielle-erronee:    { count: 3, items: [NBCOMPLEX2-13, NBCOMPLEX2-26, NBCOMPLEX2-27] }
+    mc.math.maths_complexes_trigo.produit-modules-additionnes:         { count: 3, items: [NBCOMPLEX2-2, NBCOMPLEX2-12, NBCOMPLEX2-14] }
+    mc.math.maths_complexes_trigo.produit-quotient-argument-operation: { count: 3, items: [NBCOMPLEX2-2, NBCOMPLEX2-12, NBCOMPLEX2-14] }
+    mc.math.maths_complexes_trigo.moivre-module-multiplie:             { count: 3, items: [NBCOMPLEX2-3, NBCOMPLEX2-15, NBCOMPLEX2-26] }
+    mc.math.maths_complexes_trigo.moivre-argument-mal-transforme:      { count: 4, items: [NBCOMPLEX2-3, NBCOMPLEX2-15, NBCOMPLEX2-26, NBCOMPLEX2-27] }
+    mc.math.maths_complexes_trigo.argument-non-2pi-periodique:         { count: 3, items: [NBCOMPLEX2-15, NBCOMPLEX2-25, NBCOMPLEX2-28] }
+    mc.math.maths_complexes_trigo.equation-complexe-cherche-reels:     { count: 3, items: [NBCOMPLEX2-4, NBCOMPLEX2-16, NBCOMPLEX2-28] }
+    mc.math.maths_complexes_trigo.racines-nombre-incomplet:            { count: 3, items: [NBCOMPLEX2-4, NBCOMPLEX2-16, NBCOMPLEX2-23] }
+    mc.math.maths_complexes_trigo.racines-pas-2pi-sur-n:               { count: 4, items: [NBCOMPLEX2-4, NBCOMPLEX2-17, NBCOMPLEX2-28, NBCOMPLEX2-33] }
+    mc.math.maths_complexes_trigo.racines-module-non-racine:           { count: 3, items: [NBCOMPLEX2-16, NBCOMPLEX2-23, NBCOMPLEX2-33] }
+    mc.math.maths_complexes_trigo.similitude-module-argument-roles:    { count: 3, items: [NBCOMPLEX2-5, NBCOMPLEX2-29, NBCOMPLEX2-34] }
+    mc.math.maths_complexes_trigo.homothetie-rapport-complexe:         { count: 4, items: [NBCOMPLEX2-5, NBCOMPLEX2-29, NBCOMPLEX2-30, NBCOMPLEX2-31] }
+    mc.math.maths_complexes_trigo.reel-positif-donne-rotation:         { count: 3, items: [NBCOMPLEX2-18, NBCOMPLEX2-30, NBCOMPLEX2-34] }
+    mc.math.maths_complexes_trigo.transformation-centre-oublie:        { count: 3, items: [NBCOMPLEX2-18, NBCOMPLEX2-19, NBCOMPLEX2-22] }
+    mc.math.maths_complexes_trigo.rotation-sens-inverse:               { count: 3, items: [NBCOMPLEX2-19, NBCOMPLEX2-22, NBCOMPLEX2-32] }
+    mc.math.maths_complexes_trigo.rotation-angle-comme-coefficient:    { count: 4, items: [NBCOMPLEX2-19, NBCOMPLEX2-29, NBCOMPLEX2-30, NBCOMPLEX2-31] }
+    mc.math.maths_complexes_trigo.ecriture-complexe-oubli-constante:   { count: 3, items: [NBCOMPLEX2-22, NBCOMPLEX2-31, NBCOMPLEX2-32] }
+    mc.math.maths_complexes_trigo.lecture-w-module-argument:           { count: 3, items: [NBCOMPLEX2-6, NBCOMPLEX2-20, NBCOMPLEX2-21] }
+    mc.math.maths_complexes_trigo.ensemble-points-locus-confondu:      { count: 3, items: [NBCOMPLEX2-24, NBCOMPLEX2-32, NBCOMPLEX2-33] }
+  total_items: 34
   floor: 3
-  floor_met: false   # legacy end-bank rétro-tagué ; comptages réels, aucun gonflé.
-  method_primary: "item-level, par primary_misconception (1 item = 1 compte)"
-  method_distractor: "item-level, tout item avec >=1 distracteur tagué X"
-  per_rung: { R0: 3, R1: 3, R2: 3, R3: 3, R4: 3, R5: 3, R6: 3, R7: 3 }
-
-  per_misconception_distractor:
-    mult-par-i-non-rotation: 3            # items 7, 8, 9        OK (GATED cp-r0-predict)
-    argument-un-seul-signe: 3             # items 1, 10, 23      OK
-    produit-modules-additionnes: 3        # items 2, 12, 14      OK
-    produit-quotient-argument-operation: 3 # items 2, 12, 14     OK
-    racines-nombre-incomplet: 3           # items 4, 16, 23      OK (GATED cp-r4-racines)
-    transformation-centre-oublie: 3       # items 18, 19, 22     OK (GATED cp-r5-ecriture)
-    lecture-w-module-argument: 3          # items 6, 20, 21      OK (GATED cp-r6-lecture-w)
-    moivre-module-multiplie: 2            # items 3, 15
-    moivre-argument-mal-transforme: 2     # items 3, 15
-    equation-complexe-cherche-reels: 2    # items 4, 16
-    racines-pas-2pi-sur-n: 2              # items 4, 17
-    racines-module-non-racine: 2          # items 16, 23
-    rotation-sens-inverse: 2              # items 19, 22
-    module-oubli-racine: 1                # item 10
-    arg-conjugue-oppose-compose: 1        # item 11
-    definition-exponentielle-erronee: 1   # item 13
-    argument-non-2pi-periodique: 1        # item 15
-    similitude-module-argument-roles: 1   # item 5
-    homothetie-rapport-complexe: 1        # item 5
-    reel-positif-donne-rotation: 1        # item 18
-    rotation-angle-comme-coefficient: 1   # item 19
-    ecriture-complexe-oubli-constante: 1  # item 22
-    ensemble-points-locus-confondu: 1     # item 24   SOUS PLANCHER (GATED cp-ensemble-points)
-
-  gated_misconceptions:   # les 5 modèles portés par un checkpoint in-leçon
-    meets_floor: [mult-par-i-non-rotation, racines-nombre-incomplet, transformation-centre-oublie, lecture-w-module-argument]
-    under_floor: [ensemble-points-locus-confondu]   # 1 seul item de banque (NBCOMPLEX2-24)
-
-  honest_note: >-
-    PLANCHER NON ATTEINT globalement. Par comptage distracteur, 7 modèles
-    atteignent >=3 (dont 4 des 5 modèles GATÉS par un checkpoint). Le 5e modèle
-    gaté — ensemble-points-locus-confondu, la rupture « ensemble de points » —
-    n'a qu'UN seul item de banque (NBCOMPLEX2-24) : impossible d'atteindre 3
-    sans inventer d'items. Surfacé honnêtement, non gonflé. Une passe item-author
-    est due : porter à >=3 (a) ensemble-points-locus-confondu (lieux définis par
-    module ou argument d'un rapport de complexes — le cœur des configurations
-    SM), (b) les modèles racines/Moivre secondaires (racines-module-non-racine,
-    racines-pas-2pi-sur-n, moivre-module-multiplie, moivre-argument-mal-transforme)
-    et (c) rotation-sens-inverse. Les checkpoints in-leçon (checkpoints.yaml)
-    surfacent EN PLUS, inline, mult-par-i-non-rotation, racines-nombre-incomplet,
-    transformation-centre-oublie, lecture-w-module-argument et
-    ensemble-points-locus-confondu — mais ne sont PAS recomptés ici
-    (clones/formatifs, cf. RLC/PC/nc-1). Comptages ci-dessus réels ; aucun padding.
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 4
+    R2: 5
+    R3: 4
+    R4: 4
+    R5: 7
+    R6: 4
+    R7: 3
+  honest_state: >-
+    Les vingt-trois misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Dix-neuf y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.
