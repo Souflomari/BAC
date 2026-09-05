@@ -35,8 +35,15 @@
  *                  long) sur les items où l'indice joue. C'est la taille de
  *                  l'indice : 12 caractères ne se voient pas, 120 sautent aux yeux.
  *   • contre     — % des items éligibles où la bonne réponse est strictement la
- *                  plus COURTE. L'indice inverse, tout aussi exploitable ;
+ *                  plus COURTE. L'indice INVERSE, tout aussi exploitable ;
  *                  la philo l'a (la clé y est souvent la formule la plus sèche).
+ *   • c-expl.    — le sous-ensemble VISIBLE de l'indice inverse : la clé est la
+ *                  plus courte ET le retard dépasse ÉCART_MIN caractères et
+ *                  AVANCE_MIN de la clé elle-même. Le rapport se prend ici sur
+ *                  la CLÉ (la plus courte), pas sur la deuxième : une clé de 30
+ *                  caractères au milieu de trois réponses de 90 saute aux yeux,
+ *                  alors que 30 caractères d'écart entre 300 et 330 ne se voient
+ *                  pas. Gardé par le cliquet au même titre que l'indice direct.
  *
  * Deux modes :
  *   node scripts/indice-longueur.mjs            → le rapport complet + le docket
@@ -162,7 +169,12 @@ for (const matiere of matieres) {
       ...charger(path.join(dir, "checkpoints.yaml"), "checkpoints"),
     ];
 
-    const n = { matiere, slug, eligibles: 0, indice: 0, exploit: 0, contre: 0, ecarts: [], pires: [] };
+    const n = {
+      matiere, slug, eligibles: 0,
+      indice: 0, exploit: 0,
+      contre: 0, contreExploit: 0,
+      ecarts: [], pires: [],
+    };
 
     for (const item of items) {
       const choix = item.choices;
@@ -187,6 +199,9 @@ for (const matiere of matieres) {
         n.pires.push({ id: item.id, ecart, cle: max, second, vu });
       } else if (L[iJuste] === min && L.filter((l) => l === min).length === 1) {
         n.contre++;
+        const second = Math.min(...L.filter((_, i) => i !== iJuste));
+        const retard = second - min;
+        if (retard >= ECART_MIN && retard >= min * AVANCE_MIN) n.contreExploit++;
       }
     }
 
@@ -212,6 +227,7 @@ if (SCELLER) {
       eligibles: n.eligibles,
       indice: n.indice,
       exploit: n.exploit,
+      contreExploit: n.contreExploit,
     };
   }
   fs.writeFileSync(BASE, JSON.stringify(base, null, 2) + "\n", "utf-8");
@@ -225,34 +241,38 @@ const totalEligibles = notions.reduce((s, n) => s + n.eligibles, 0);
 const totalIndice = notions.reduce((s, n) => s + n.indice, 0);
 const totalExploit = notions.reduce((s, n) => s + n.exploit, 0);
 const totalContre = notions.reduce((s, n) => s + n.contre, 0);
+const totalContreExploit = notions.reduce((s, n) => s + n.contreExploit, 0);
 const tousEcarts = notions.flatMap((n) => n.ecarts);
 
 if (!PORTE) {
   console.log("");
   console.log("indice-longueur — la bonne réponse se dénonce-t-elle en étant la plus longue ?");
-  console.log("═".repeat(102));
+  console.log("═".repeat(111));
   console.log(
-    `${"notion".padEnd(46)} ${"élig.".padStart(5)} ${"indice".padStart(7)} ${"exploit.".padStart(9)} ${"écart méd.".padStart(10)} ${"contre".padStart(7)}`
+    `${"notion".padEnd(46)} ${"élig.".padStart(5)} ${"indice".padStart(7)} ${"exploit.".padStart(9)} ${"écart méd.".padStart(10)} ${"contre".padStart(7)} ${"c-expl.".padStart(8)}`
   );
-  console.log("─".repeat(102));
+  console.log("─".repeat(111));
 
   const classees = [...notions].sort((a, b) => {
-    const d = pct(b.exploit, b.eligibles) - pct(a.exploit, a.eligibles);
+    const d =
+      pct(b.exploit, b.eligibles) + pct(b.contreExploit, b.eligibles) -
+      (pct(a.exploit, a.eligibles) + pct(a.contreExploit, a.eligibles));
     return d !== 0 ? d : b.eligibles - a.eligibles;
   });
 
   for (const n of classees) {
     const i = pct(n.indice, n.eligibles);
     const e = pct(n.exploit, n.eligibles);
-    const marque = n.eligibles >= MIN_ELIGIBLES && e >= 75 ? " ←" : "";
+    const ce = pct(n.contreExploit, n.eligibles);
+    const marque = n.eligibles >= MIN_ELIGIBLES && Math.max(e, ce) >= 75 ? " ←" : "";
     console.log(
-      `${`${n.matiere}/${n.slug}`.padEnd(46)} ${String(n.eligibles).padStart(5)} ${`${i}%`.padStart(7)} ${`${e}%`.padStart(9)} ${String(mediane(n.ecarts)).padStart(10)} ${`${pct(n.contre, n.eligibles)}%`.padStart(7)}${marque}`
+      `${`${n.matiere}/${n.slug}`.padEnd(46)} ${String(n.eligibles).padStart(5)} ${`${i}%`.padStart(7)} ${`${e}%`.padStart(9)} ${String(mediane(n.ecarts)).padStart(10)} ${`${pct(n.contre, n.eligibles)}%`.padStart(7)} ${`${ce}%`.padStart(8)}${marque}`
     );
   }
 
-  console.log("─".repeat(102));
+  console.log("─".repeat(111));
   console.log(
-    `${"TOTAL".padEnd(46)} ${String(totalEligibles).padStart(5)} ${`${pct(totalIndice, totalEligibles)}%`.padStart(7)} ${`${pct(totalExploit, totalEligibles)}%`.padStart(9)} ${String(mediane(tousEcarts)).padStart(10)} ${`${pct(totalContre, totalEligibles)}%`.padStart(7)}`
+    `${"TOTAL".padEnd(46)} ${String(totalEligibles).padStart(5)} ${`${pct(totalIndice, totalEligibles)}%`.padStart(7)} ${`${pct(totalExploit, totalEligibles)}%`.padStart(9)} ${String(mediane(tousEcarts)).padStart(10)} ${`${pct(totalContre, totalEligibles)}%`.padStart(7)} ${`${pct(totalContreExploit, totalEligibles)}%`.padStart(8)}`
   );
   console.log("");
   console.log(
@@ -294,12 +314,14 @@ for (const n of notions) {
   const ref = base.notions[cle];
 
   if (!ref) {
-    const e = pct(n.exploit, n.eligibles);
-    if (n.eligibles >= MIN_ELIGIBLES && e > PLAFOND_NEUF) {
-      echecs.push(
-        `${cle} — notion NEUVE à ${e} % d'indice exploitable (${n.exploit}/${n.eligibles}), ` +
-          `plafond ${PLAFOND_NEUF} %. Allonger les distracteurs, ou raccourcir la clé.`
-      );
+    for (const [quoi, v] of [["direct", n.exploit], ["inverse", n.contreExploit]]) {
+      const e = pct(v, n.eligibles);
+      if (n.eligibles >= MIN_ELIGIBLES && e > PLAFOND_NEUF) {
+        echecs.push(
+          `${cle} — notion NEUVE à ${e} % d'indice ${quoi} exploitable (${v}/${n.eligibles}), ` +
+            `plafond ${PLAFOND_NEUF} %. Rapprocher les longueurs des choix.`
+        );
+      }
     }
     continue;
   }
@@ -311,8 +333,14 @@ for (const n of notions) {
   // aggraver sa dette absolue est autorisé.
   if (n.exploit > (ref.exploit ?? ref.indice)) {
     echecs.push(
-      `${cle} — l'indice exploitable MONTE : ${ref.exploit ?? ref.indice} → ${n.exploit} items ` +
+      `${cle} — l'indice DIRECT exploitable MONTE : ${ref.exploit ?? ref.indice} → ${n.exploit} items ` +
         `(sur ${n.eligibles} éligibles). Le cliquet ne descend que.`
+    );
+  }
+  if (ref.contreExploit !== undefined && n.contreExploit > ref.contreExploit) {
+    echecs.push(
+      `${cle} — l'indice INVERSE exploitable MONTE : ${ref.contreExploit} → ${n.contreExploit} items ` +
+        `(sur ${n.eligibles} éligibles). La clé la plus COURTE se repère aussi bien que la plus longue.`
     );
   }
 }
@@ -321,7 +349,7 @@ if (PORTE) {
   if (echecs.length > 0) {
     console.error("");
     console.error("indice-longueur : CLIQUET ROMPU");
-    console.error("═".repeat(102));
+    console.error("═".repeat(111));
     for (const e of echecs) console.error(`  ✗ ${e}`);
     console.error("");
     console.error(
@@ -336,8 +364,9 @@ if (PORTE) {
     process.exit(1);
   }
   console.log(
-    `indice-longueur : cliquet tenu — ${notions.length} notions, ${totalExploit}/${totalEligibles} items ` +
-      `(${pct(totalExploit, totalEligibles)} %) portent un indice EXPLOITABLE, aucune notion n'a empiré ✓`
+    `indice-longueur : cliquet tenu — ${notions.length} notions, ` +
+      `${totalExploit} direct + ${totalContreExploit} inverse sur ${totalEligibles} items ` +
+      `portent un indice EXPLOITABLE, aucune notion n'a empiré ✓`
   );
   process.exit(0);
 }
