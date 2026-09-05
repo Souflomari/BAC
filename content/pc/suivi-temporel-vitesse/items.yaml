@@ -53,7 +53,7 @@ items:
           dosage.
         correct: true
       - id: B
-        text: "Pour rendre le changement de couleur à l'équivalence plus facile à repérer."
+        text: "Pour rendre le changement de couleur à l'équivalence plus facile à repérer, la trempe éclaircissant la solution prélevée."
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee
         feedback: >
@@ -62,7 +62,7 @@ items:
           Sans elle, la réaction continuerait pendant le dosage et fausserait
           la mesure de l'avancement à l'instant du prélèvement.
       - id: C
-        text: "Parce qu'un dosage ne peut se faire qu'à froid, quelle que soit la réaction étudiée."
+        text: "Parce qu'un dosage ne peut se faire qu'à froid, quelle que soit la réaction étudiée et quel que soit le réactif titrant employé."
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee
         feedback: >
@@ -71,7 +71,7 @@ items:
           prélevé doit être figé pour représenter fidèlement l'instant du
           prélèvement.
       - id: D
-        text: "Pour éviter que le prélèvement ne réagisse avec l'air ambiant."
+        text: "Pour éviter que le prélèvement ne réagisse avec le dioxygène de l'air ambiant pendant son transfert vers le bécher."
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee
         feedback: >
@@ -105,7 +105,7 @@ items:
         text: "Le suivi manométrique (mesure de pression) ou la mesure du volume de gaz dégagé."
         correct: true
       - id: B
-        text: "La conductimétrie."
+        text: "La conductimétrie, qui suit l'évolution de la conductivité de la solution."
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee
         feedback: >
@@ -113,14 +113,14 @@ items:
           la solution, liée aux ions consommés ou formés — elle ne concerne
           pas directement un gaz dégagé.
       - id: C
-        text: "La spectrophotométrie."
+        text: "La spectrophotométrie, qui suit l'absorbance d'une espèce colorée du mélange."
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee
         feedback: >
           La spectrophotométrie exploite une espèce colorée en solution (loi
           de Beer-Lambert) ; elle ne mesure rien sur un gaz dégagé.
       - id: D
-        text: "Le titrage."
+        text: "Le titrage, qui dose une espèce dans des prélèvements successifs."
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee
         feedback: >
@@ -204,7 +204,7 @@ items:
           $v$ est sensiblement la même dans les deux cas.
         correct: true
       - id: B
-        text: "$v$ est environ deux fois plus grande dans le grand volume."
+        text: "$v$ est environ deux fois plus grande dans le grand volume, tandis que $dx/dt$ y est identique."
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-mal-reliee-a-la-pente
         feedback: >
@@ -212,7 +212,7 @@ items:
           l'échantillon qu'on divise par $V$ dans la définition de $v$ : $v$
           ne double pas.
       - id: C
-        text: "$dx/dt$ est la même dans les deux expériences."
+        text: "$dx/dt$ est la même dans les deux expériences, tout comme la vitesse volumique $v$ qui en découle."
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-mal-reliee-a-la-pente
         feedback: >
@@ -221,7 +221,7 @@ items:
           fois plus de quantité de matière réagit par seconde : $dx/dt$
           n'est pas conservée.
       - id: D
-        text: "$v$ et $dx/dt$ sont tous deux environ deux fois plus grands dans le grand volume."
+        text: "$v$ et $dx/dt$ sont tous deux environ deux fois plus grands dans le grand volume que dans le petit."
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-mal-reliee-a-la-pente
         feedback: >
@@ -254,7 +254,7 @@ items:
         text: "$v(t)$ est maximale au tout début et diminue continûment, en tendant vers zéro quand la réaction s'achève."
         correct: true
       - id: B
-        text: "$v(t)$ reste constante du début à la fin."
+        text: "$v(t)$ reste rigoureusement constante du début à la fin de la transformation étudiée."
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
         feedback: >
@@ -262,14 +262,14 @@ items:
           Or les mesures montrent une courbe qui ralentit nettement : la
           pente diminue au fil du temps.
       - id: C
-        text: "$v(t)$ augmente continûment jusqu'à la fin de la réaction."
+        text: "$v(t)$ augmente continûment jusqu'à la fin de la réaction, où elle atteint son maximum."
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
         feedback: >
           C'est l'inverse de ce qu'on observe : la pente de $x(t)$ diminue
           avec le temps, elle n'augmente pas.
       - id: D
-        text: "$v(t)$ diminue d'abord, puis augmente à nouveau en fin de réaction."
+        text: "$v(t)$ diminue d'abord, puis augmente à nouveau en toute fin de réaction, avant de s'annuler."
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
         feedback: >
@@ -409,7 +409,8 @@ items:
         correct: true
       - id: B
         text: >-
-          Une droite qui croît à rythme constant du début à la fin.
+          Une droite qui croît à rythme rigoureusement constant, du début jusqu'à la fin
+          du suivi.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
         feedback: >-
@@ -418,7 +419,8 @@ items:
           une droite.
       - id: C
         text: >-
-          Une courbe qui décroît d'abord, puis croît en fin de réaction.
+          Une courbe qui décroît d'abord, puis se met à croître de nouveau en fin de
+          réaction.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
         feedback: >-
@@ -426,8 +428,8 @@ items:
           croît de façon monotone dès le début, comme l'énoncé le précise.
       - id: D
         text: >-
-          Une courbe qui croît de plus en plus vite, jusqu'à la fin de la
-          réaction.
+          Une courbe qui croît de plus en plus vite, jusqu'à la toute fin de la réaction
+          suivie.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
         feedback: >-
@@ -462,7 +464,8 @@ items:
         correct: true
       - id: B
         text: >-
-          Une droite qui monte à rythme constant, jusqu'au volume maximal.
+          Une droite qui monte à rythme rigoureusement constant, jusqu'à atteindre le
+          volume maximal de gaz dégagé.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
         feedback: >-
@@ -471,8 +474,8 @@ items:
           droite.
       - id: C
         text: >-
-          Une courbe en dents de scie, qui monte puis redescend plusieurs
-          fois.
+          Une courbe en dents de scie, qui monte puis redescend plusieurs fois avant de
+          se stabiliser.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
         feedback: >-
@@ -480,8 +483,8 @@ items:
           courbe ne peut que croître ou stagner, jamais osciller.
       - id: D
         text: >-
-          Une courbe qui reste nulle un long moment, puis monte brutalement
-          en fin de réaction.
+          Une courbe qui reste nulle un long moment, puis monte brutalement en toute fin
+          de réaction.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
         feedback: >-
@@ -508,15 +511,15 @@ items:
     choices:
       - id: A
         text: >-
-          Parce que la conductimétrie ne renseigne sur l'avancement que si
-          des ions apparaissent ou disparaissent de façon à faire varier la
-          conductivité de manière monotone avec x ; sans espèce ionique
-          concernée, la conductivité ne bouge pas.
+          Parce que la conductimétrie ne renseigne sur l'avancement que si des ions
+          apparaissent ou disparaissent en faisant varier la conductivité de façon
+          monotone avec x ; sans espèce ionique concernée, elle ne bouge pas.
         correct: true
       - id: B
         text: >-
-          Parce que la conductimétrie ne peut mesurer qu'une seule espèce à
-          la fois, contrairement au titrage.
+          Parce que la conductimétrie ne peut mesurer qu'une seule espèce chimique à la
+          fois, contrairement au titrage qui les dose toutes ensemble dans un même
+          prélèvement.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee
         feedback: >-
@@ -525,8 +528,9 @@ items:
           aucune espèce ionique n'est concernée.
       - id: C
         text: >-
-          Parce que la conductimétrie, comme le titrage, est une méthode
-          destructive qui consomme l'échantillon.
+          Parce que la conductimétrie, comme le titrage, est une méthode destructive qui
+          consomme l'échantillon prélevé et interdit donc de suivre un même mélange tout
+          au long de la transformation.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee
         feedback: >-
@@ -534,8 +538,9 @@ items:
           continue et non destructive, contrairement au titrage.
       - id: D
         text: >-
-          Parce que la conductivité mesurée ne dépend jamais de la
-          concentration des ions en solution.
+          Parce que la conductivité mesurée ne dépend jamais de la concentration des
+          ions présents en solution, mais seulement de la nature du solvant et de la
+          température.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee
         feedback: >-
@@ -634,8 +639,8 @@ items:
         correct: true
       - id: B
         text: >-
-          Les produits formés font obstacle physiquement aux réactifs et
-          les empêchent de se rencontrer.
+          Les produits formés font obstacle physiquement aux réactifs et les empêchent
+          progressivement de se rencontrer dans le volume du mélange réactionnel.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-baisse-mauvaise-cause
         feedback: >-
@@ -644,8 +649,8 @@ items:
           les produits, qui raréfie les chocs efficaces.
       - id: C
         text: >-
-          La température du mélange diminue spontanément au cours de la
-          réaction.
+          La température du mélange diminue spontanément au cours de la réaction, ce qui
+          ralentit d'autant les entités réactives.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-baisse-mauvaise-cause
         feedback: >-
@@ -654,8 +659,8 @@ items:
           ralentissement.
       - id: D
         text: >-
-          Le volume du mélange augmente progressivement, diluant les
-          réactifs.
+          Le volume du mélange augmente progressivement au cours de la réaction, ce qui
+          dilue les réactifs et espace leurs rencontres.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-baisse-mauvaise-cause
         feedback: >-
@@ -806,8 +811,8 @@ items:
         correct: true
       - id: B
         text: >-
-          $t_{1/2}$ est identique dans les deux expériences, car $t_{1/2}$
-          ne dépend que de $x_{max}$, jamais de la rapidité de la réaction.
+          $t_{1/2}$ est identique dans les deux expériences, car $t_{1/2}$ ne dépend que
+          de $x_{max}$ et jamais de la rapidité avec laquelle la réaction se déroule.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie
         feedback: >-
@@ -815,8 +820,8 @@ items:
           progresse, pas seulement de la valeur $x_{max}$ visée.
       - id: C
         text: >-
-          $t_{1/2}$ est plus long dans l'expérience 2, car une température
-          plus élevée ralentit les réactions chimiques.
+          $t_{1/2}$ est plus long dans l'expérience 2, car une température plus élevée
+          ralentit les réactions chimiques en dispersant l'énergie des entités.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.facteurs-cinetiques-mal-appliques
         feedback: >-
@@ -825,8 +830,8 @@ items:
           ralentit pas.
       - id: D
         text: >-
-          On ne peut rien dire sans connaître les concentrations initiales
-          exactes des deux expériences.
+          On ne peut rien dire sans connaître les concentrations initiales exactes
+          utilisées dans chacune des deux expériences comparées.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.facteurs-cinetiques-mal-appliques
         feedback: >-
@@ -865,8 +870,8 @@ items:
         correct: true
       - id: B
         text: >-
-          $t_{1/2}$ est plus court dans l'expérience 2, car moins de
-          réactif signifie moins de temps nécessaire pour tout consommer.
+          $t_{1/2}$ est plus court dans l'expérience 2, car une quantité moindre de
+          réactif demande logiquement moins de temps pour être entièrement consommée.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.facteurs-cinetiques-mal-appliques
         feedback: >-
@@ -875,8 +880,8 @@ items:
           donc la vitesse, qui diminue.
       - id: C
         text: >-
-          $t_{1/2}$ ne change pas, car la concentration initiale
-          n'influence que $x_{max}$, jamais la vitesse de la réaction.
+          $t_{1/2}$ ne change pas, car la concentration initiale n'influence que
+          $x_{max}$ et jamais la vitesse à laquelle la réaction progresse.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.facteurs-cinetiques-mal-appliques
         feedback: >-
@@ -885,8 +890,8 @@ items:
           vitesse.
       - id: D
         text: >-
-          On ne peut pas comparer les deux $t_{1/2}$ sans connaître les
-          concentrations exactes en $H^+$.
+          On ne peut pas comparer les deux $t_{1/2}$ sans connaître les concentrations
+          exactes en $H^+$ dans chacune des deux expériences.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.facteurs-cinetiques-mal-appliques
         feedback: >-
@@ -924,9 +929,9 @@ items:
         correct: true
       - id: B
         text: >-
-          $v$ a diminué parce que le temps écoulé est plus grand : $v$
-          diminue automatiquement avec $t$, indépendamment des
-          concentrations.
+          $v$ a diminué parce que le temps écoulé est plus grand : $v$ diminue
+          automatiquement avec $t$, indépendamment des concentrations en présence dans
+          le mélange.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-baisse-mauvaise-cause
         feedback: >-
@@ -935,8 +940,8 @@ items:
           explique la baisse de $v$.
       - id: C
         text: >-
-          $v$ a diminué car le volume du mélange a augmenté entre $t_1$ et
-          $t_2$, diluant les réactifs.
+          $v$ a diminué car le volume du mélange a augmenté entre $t_1$ et $t_2$, ce qui
+          a dilué les réactifs et espacé leurs rencontres.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-baisse-mauvaise-cause
         feedback: >-
@@ -945,8 +950,8 @@ items:
           baisse de concentration.
       - id: D
         text: >-
-          $v$ a diminué car la température du mélange a chuté entre $t_1$
-          et $t_2$.
+          $v$ a diminué car la température du mélange a chuté entre $t_1$ et $t_2$,
+          ralentissant d'autant les entités réactives.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-baisse-mauvaise-cause
         feedback: >-
@@ -984,8 +989,8 @@ items:
         correct: true
       - id: B
         text: >-
-          Oui, car la vitesse d'une réaction chimique suit naturellement
-          des oscillations avant de s'annuler complètement.
+          Oui, car la vitesse d'une réaction chimique suit naturellement des
+          oscillations avant de finir par s'annuler complètement.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
         feedback: >-
@@ -994,8 +999,9 @@ items:
           que décroître.
       - id: C
         text: >-
-          Oui, car à mesure que les produits s'accumulent, ils finissent
-          par accélérer la réaction en fin de parcours.
+          Oui, car à mesure que les produits s'accumulent dans le mélange, ils finissent
+          par accélérer la réaction en toute fin de parcours, jusqu'à une remontée
+          nette.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-baisse-mauvaise-cause
         feedback: >-
@@ -1004,8 +1010,8 @@ items:
           modèle.
       - id: D
         text: >-
-          On ne peut pas savoir sans mesurer : la théorie ne permet aucune
-          prédiction sur ce point.
+          On ne peut pas savoir sans mesurer : la théorie ne permet aucune prédiction
+          sur ce point précis de l'évolution.
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-baisse-mauvaise-cause
         feedback: >-

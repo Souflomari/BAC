@@ -262,7 +262,8 @@ items:
         correct: true
       - id: B
         text: >-
-          Instantanément : dès la fermeture, $u_C$ saute à $E$.
+          Instantanément : dès la fermeture de l'interrupteur, $u_C$ saute à $E$ et
+          n'évolue plus ensuite.
         correct: false
         misconception: mc.physics.pc_rc_charge.uc-saute-instantanement
         feedback: >
@@ -271,8 +272,9 @@ items:
           contraire continûment, sur une durée fixée par $\tau = RC$.
       - id: C
         text: >-
-          En ligne droite, à débit constant, jusqu'à ce que $u_C = E$, puis la
-          charge s'arrête net.
+          En ligne droite, à débit rigoureusement constant, jusqu'à ce que $u_C = E$,
+          instant où la charge s'arrête net et où le courant cesse brutalement de
+          circuler.
         correct: false
         misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
         feedback: >
@@ -282,7 +284,8 @@ items:
           décélère : $u_C(t) = E(1-e^{-t/\tau})$.
       - id: D
         text: >-
-          Elle dépasse $E$, puis redescend et se stabilise à $E$.
+          Elle dépasse $E$, puis redescend et finit par se stabiliser exactement à la
+          valeur $E$.
         correct: false
         misconception: mc.physics.pc_rc_charge.uc-depasse-E
         feedback: >
@@ -369,7 +372,7 @@ items:
           lentement, en se rapprochant de $E$ sans jamais le dépasser.
         correct: true
       - id: B
-        text: "$u_C$ saute instantanément de $0$ à $E$ dès la fermeture."
+        text: "$u_C$ saute instantanément de $0$ à $E$ dès la fermeture de l'interrupteur, puis n'évolue plus."
         correct: false
         misconception: mc.physics.pc_rc_charge.uc-saute-instantanement
         feedback: >
@@ -378,8 +381,8 @@ items:
           progressive, sur une durée bien réelle.
       - id: C
         text: >-
-          $u_C$ monte en ligne droite, à vitesse constante, jusqu'à $E$, puis
-          s'arrête net.
+          $u_C$ monte en ligne droite, à vitesse rigoureusement constante, jusqu'à la
+          valeur $E$, puis s'arrête net sans transition.
         correct: false
         misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
         feedback: >
@@ -387,7 +390,7 @@ items:
           décrit pas ce qu'on observe. La montée décélère continûment, elle ne
           suit pas une droite qui s'arrête brutalement.
       - id: D
-        text: "$u_C$ oscille autour de $E$ avant de s'y stabiliser."
+        text: "$u_C$ oscille plusieurs fois autour de $E$ avant de finir par s'y stabiliser durablement."
         correct: false
         misconception: mc.physics.pc_rc_charge.uc-depasse-E
         feedback: >
@@ -540,8 +543,9 @@ items:
         correct: true
       - id: B
         text: >-
-          Parce qu'un condensateur ne peut jamais atteindre exactement la
-          tension $E$, quel que soit le modèle envisagé.
+          Parce qu'un condensateur ne peut jamais atteindre exactement la tension $E$,
+          quel que soit le modèle envisagé et quelle que soit la durée de la charge
+          qu'on lui accorde.
         correct: false
         misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
         feedback: >
@@ -551,8 +555,9 @@ items:
           à la fois constant et nul).
       - id: C
         text: >-
-          Parce que la résistance $R$ s'oppose totalement au passage du
-          courant dès $t=0$, empêchant toute charge de se déposer.
+          Parce que la résistance $R$ s'oppose totalement au passage du courant dès
+          $t=0$, empêchant la moindre charge de se déposer sur les armatures du
+          condensateur.
         correct: false
         misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
         feedback: >
@@ -560,8 +565,9 @@ items:
           limite le courant, elle ne l'empêche pas totalement de circuler.
       - id: D
         text: >-
-          Parce que la loi des mailles ne s'applique qu'une fois le régime
-          permanent atteint, pas pendant la charge.
+          Parce que la loi des mailles ne s'applique qu'une fois le régime permanent
+          atteint, et non pendant la charge, où les tensions varient encore d'un instant
+          à l'autre sans jamais se compenser exactement.
         correct: false
         misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
         feedback: >
@@ -599,7 +605,7 @@ items:
           disponible pour le pousser ($E-u_C$) se réduit sans cesse.
         correct: true
       - id: B
-        text: "$i$ reste constant, puisque $R$ ne change pas."
+        text: "$i$ reste rigoureusement constant, puisque la résistance $R$ du circuit ne change pas."
         correct: false
         misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
         feedback: >
@@ -608,8 +614,8 @@ items:
           $R$ ne bouge pas.
       - id: C
         text: >-
-          $i$ augmente : plus $u_C$ est grande, plus le condensateur « pousse
-          » fort le courant.
+          $i$ augmente : plus $u_C$ est grande, plus le condensateur « pousse » fort le
+          courant dans le circuit.
         correct: false
         misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
         feedback: >
@@ -618,7 +624,8 @@ items:
           plus cet écart se réduit, donc $i$ diminue.
       - id: D
         text: >-
-          $i$ décroît d'abord, puis remonte vers $E/R$ en fin de charge.
+          $i$ décroît d'abord, puis remonte vers sa valeur initiale $E/R$ en toute fin
+          de charge.
         correct: false
         misconception: mc.physics.pc_rc_charge.uc-depasse-E
         feedback: >
@@ -656,8 +663,8 @@ items:
         correct: true
       - id: B
         text: >-
-          Plus rapide : une résistance plus grande « pousse » plus fort le
-          courant vers le condensateur.
+          Plus rapide : une résistance plus grande « pousse » plus fort le courant vers
+          le condensateur, qui se remplit donc plus vite qu'avec une résistance faible.
         correct: false
         misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
         feedback: >
@@ -666,8 +673,8 @@ items:
           se dépose donc plus lentement, pas plus vite.
       - id: C
         text: >-
-          Inchangée : seule la capacité $C$ fixe la vitesse de charge, $R$
-          n'intervient pas.
+          Inchangée : seule la capacité $C$ fixe la vitesse de charge, la résistance $R$
+          n'intervenant à aucun moment dans ce rythme.
         correct: false
         misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
         feedback: >
@@ -676,8 +683,8 @@ items:
           charge.
       - id: D
         text: >-
-          La vitesse ne change pas, mais la tension finale $u_C(\infty)$
-          double avec $R$.
+          La vitesse de charge ne change pas, mais la tension finale $u_C(\infty)$
+          double elle aussi lorsqu'on double la résistance $R$.
         correct: false
         misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
         feedback: >
@@ -1147,8 +1154,9 @@ items:
         correct: true
       - id: B
         text: >-
-          $u_C(t)$ peut devenir légèrement supérieure à $E$ autour de
-          $t \approx 2\tau$, avant de redescendre se stabiliser à $E$.
+          $u_C(t)$ peut devenir légèrement supérieure à $E$ autour de $t \approx 2\tau$,
+          avant de redescendre lentement et de finir par se stabiliser sur la valeur
+          imposée par le générateur.
         correct: false
         misconception: mc.physics.pc_rc_charge.uc-depasse-E
         feedback: >
@@ -1158,8 +1166,8 @@ items:
           négatif, impossible.
       - id: C
         text: >-
-          $u_C(t)$ atteint exactement $E$ dès $t = \tau$, puis n'évolue
-          plus.
+          $u_C(t)$ atteint exactement $E$ dès l'instant $t = \tau$, puis n'évolue plus
+          du tout par la suite.
         correct: false
         misconception: mc.physics.pc_rc_charge.tau-instant-d-arret
         feedback: >
@@ -1168,8 +1176,8 @@ items:
           $\tau$ n'est pas l'instant où $u_C$ atteint $E$.
       - id: D
         text: >-
-          $u_C(t)$ monte en ligne droite au-delà de $E$ avant de redescendre
-          progressivement s'y stabiliser.
+          $u_C(t)$ monte en ligne droite au-delà de $E$, avant de redescendre
+          progressivement pour s'y stabiliser.
         correct: false
         misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
         feedback: >
@@ -1234,9 +1242,9 @@ items:
           prévue par le modèle : la solution est parfaitement monotone.
       - id: D
         text: >-
-          C'est le signe que le condensateur laisse encore passer un peu de
-          courant en permanence, ce qui fait momentanément grimper $u_C$
-          au-delà de $E$.
+          C'est le signe que le condensateur laisse encore passer un peu de courant en
+          permanence, ce qui fait momentanément grimper $u_C$ au-delà de la valeur $E$
+          affichée.
         correct: false
         misconception: mc.physics.pc_rc_charge.condensateur-conduit-en-permanent
         feedback: >
@@ -1280,9 +1288,9 @@ items:
         correct: true
       - id: B
         text: >-
-          Celle qui dépasse puis oscille avant de se stabiliser : un
-          condensateur en charge dépasse toujours légèrement sa valeur
-          finale, quel que soit le circuit.
+          Celle qui dépasse puis oscille avant de se stabiliser : un condensateur en
+          charge dépasse toujours légèrement sa valeur finale, quel que soit le circuit
+          dans lequel il se trouve.
         correct: false
         misconception: mc.physics.pc_rc_charge.uc-depasse-E
         feedback: >
@@ -1349,9 +1357,8 @@ items:
         correct: true
       - id: B
         text: >-
-          Les deux partent de zéro à $t=0^+$ : $u_C=0$ et $u_R=0$
-          également, puisque rien n'a encore eu le temps de s'établir dans
-          le circuit.
+          Les deux partent de zéro à $t=0^+$ : $u_C=0$ et $u_R=0$ également, puisque
+          rien n'a encore eu le temps de s'établir dans le circuit à cet instant.
         correct: false
         misconception: mc.physics.pc_rc_charge.courant-part-de-zero
         feedback: >
@@ -1372,8 +1379,8 @@ items:
           instantanément.
       - id: D
         text: >-
-          $u_R$ part de zéro, car le condensateur, encore déchargé, empêche
-          tout courant de circuler au tout début.
+          $u_R$ part de zéro, car le condensateur, encore déchargé, empêche tout courant
+          de circuler dans le circuit au tout début de la charge.
         correct: false
         misconception: mc.physics.pc_rc_charge.condensateur-conduit-en-permanent
         feedback: >
@@ -1414,8 +1421,8 @@ items:
         correct: true
       - id: B
         text: >-
-          Oui : $\tau$ est par définition l'instant où $u_C=E$ et où la
-          charge est terminée.
+          Oui : $\tau$ est par définition l'instant précis où $u_C=E$ et où la charge du
+          condensateur se termine.
         correct: false
         misconception: mc.physics.pc_rc_charge.tau-instant-d-arret
         feedback: >
@@ -1424,8 +1431,9 @@ items:
           et n'est « pratiquement » achevée qu'aux alentours de $5\tau$.
       - id: C
         text: >-
-          Non, car en réalité $\tau=R/C$ et non $RC$, donc l'instant en
-          question n'est même pas correctement défini au départ.
+          Non, car en réalité la constante de temps vaut $R/C$ et non $RC$, si bien que
+          l'instant dont parle ici l'élève n'est même pas correctement défini au départ
+          de son raisonnement.
         correct: false
         misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
         feedback: >
@@ -1436,7 +1444,7 @@ items:
       - id: D
         text: >-
           Oui, car dès que le condensateur commence à se charger, il bloque
-          instantanément tout courant.
+          instantanément tout courant dans le circuit.
         correct: false
         misconception: mc.physics.pc_rc_charge.condensateur-conduit-en-permanent
         feedback: >
@@ -1603,8 +1611,8 @@ items:
         correct: true
       - id: B
         text: >-
-          Il n'y a pas d'erreur : un condensateur bloque toujours le
-          courant, y compris à $t=0^+$.
+          Il n'y a pas d'erreur : un condensateur bloque toujours le courant, y compris
+          à $t=0^+$, qu'il soit chargé ou non.
         correct: false
         misconception: mc.physics.pc_rc_charge.condensateur-conduit-en-permanent
         feedback: >
@@ -1614,9 +1622,9 @@ items:
           régime permanent, une fois le condensateur chargé.
       - id: C
         text: >-
-          L'erreur est ailleurs : c'est vrai que $i(0^+)=0$, mais c'est
-          parce que le courant part de zéro comme $u_C$, pas parce que le
-          condensateur bloque.
+          L'erreur est ailleurs : il est vrai que le courant initial $i(0^+)$ est nul,
+          mais c'est parce qu'il part de zéro exactement comme $u_C$, et non parce que
+          le condensateur bloquerait quoi que ce soit.
         correct: false
         misconception: mc.physics.pc_rc_charge.courant-part-de-zero
         feedback: >
