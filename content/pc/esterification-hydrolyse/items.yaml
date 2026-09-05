@@ -147,7 +147,7 @@ items:
         text: "$\\tau_C \\approx \\tau_A \\approx 66{,}7\\,\\%$ : le chauffage accélère l'estérification et l'hydrolyse dans les mêmes proportions, et la réaction est quasi athermique."
         correct: true
       - id: B
-        text: "$\\tau_C > \\tau_A$, car la chaleur apportée favorise la formation des produits."
+        text: "$\\tau_C > \\tau_A$, car la chaleur apportée par le chauffage favorise nettement la formation des produits."
         correct: false
         misconception: mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement
         feedback: >
@@ -158,7 +158,7 @@ items:
           apportée n'avantage pas la formation des produits plus que celle
           des réactifs.
       - id: C
-        text: "$\\tau_C < \\tau_A$, car chauffer favorise toujours la réaction inverse."
+        text: "$\\tau_C < \\tau_A$, car chauffer un mélange favorise toujours la réaction inverse, ici l'hydrolyse."
         correct: false
         misconception: mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement
         feedback: >
@@ -168,7 +168,7 @@ items:
           un sens comme dans l'autre. Le chauffage reste, dans ce cas, un
           levier essentiellement cinétique.
       - id: D
-        text: "Impossible à dire sans connaître précisément la vitesse de chacune des deux réactions, directe et inverse."
+        text: "Impossible à dire sans connaître précisément la vitesse de chacune des deux réactions, l'estérification comme l'hydrolyse."
         correct: false
         misconception: mc.physics.pc_esterification_hydrolyse.cinetique-thermodynamique-confondues
         feedback: >
@@ -624,7 +624,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$-COOH$, le groupe carboxyle."
+        text: "$-COOH$, le groupe carboxyle porté par l'acide carboxylique."
         correct: false
         misconception: mc.physics.pc_esterification_hydrolyse.mauvaise-identification-ester
         feedback: >
@@ -634,14 +634,14 @@ items:
         text: "$-COO-$, le groupe ester, encadré par les deux chaînes carbonées $R$ et $R'$."
         correct: true
       - id: C
-        text: "$-OH$, le groupe hydroxyle."
+        text: "$-OH$, le groupe hydroxyle porté par l'alcool de départ."
         correct: false
         misconception: mc.physics.pc_esterification_hydrolyse.mauvaise-identification-ester
         feedback: >
           C'est le groupe qui caractérise l'alcool, présent dans le réactif
           $R'-OH$, et absent de l'ester formé.
       - id: D
-        text: "$C=O$ seul, le groupe carbonyle."
+        text: "$C=O$ seul, le groupe carbonyle commun à plusieurs familles."
         correct: false
         misconception: mc.physics.pc_esterification_hydrolyse.mauvaise-identification-ester
         feedback: >
@@ -715,21 +715,21 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Parce que la réaction est trop lente pour se terminer, même après plusieurs jours."
+        text: "Parce que la réaction est bien trop lente pour se terminer, même après plusieurs jours d'attente."
         correct: false
         misconception: mc.physics.pc_esterification_hydrolyse.esterification-totale
         feedback: >
           C'est confondre vitesse et position d'équilibre : même accélérée
           par un catalyseur, la réaction s'arrête au même point.
       - id: B
-        text: "Parce qu'il faudrait davantage de catalyseur pour consommer tout l'acide et l'alcool restants."
+        text: "Parce qu'il faudrait davantage de catalyseur acide pour parvenir à consommer tout l'acide et tout l'alcool restants."
         correct: false
         misconception: mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
         feedback: >
           Le catalyseur ne change jamais la quantité finale d'acide et
           d'alcool restants, quelle que soit la quantité utilisée.
       - id: C
-        text: "Parce que l'eau formée empêche physiquement l'acide et l'alcool restants de se rencontrer."
+        text: "Parce que l'eau formée au cours de la réaction empêche physiquement l'acide et l'alcool restants de se rencontrer."
         correct: false
         misconception: mc.physics.pc_esterification_hydrolyse.obstacle-physique-invente
         feedback: >
@@ -813,7 +813,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$\\tau$ double aussi, pour atteindre environ $1{,}33$."
+        text: "$\\tau$ double lui aussi, et atteint donc environ $1{,}33$ à l'équilibre."
         correct: false
         misconception: mc.physics.pc_esterification_hydrolyse.tau-depend-de-n0
         feedback: >
@@ -824,14 +824,14 @@ items:
         text: "$\\tau$ reste inchangé, toujours environ $0{,}667$ ; seule la quantité de matière convertie double en valeur absolue."
         correct: true
       - id: C
-        text: "$\\tau$ diminue de moitié, pour atteindre environ $0{,}33$."
+        text: "$\\tau$ diminue de moitié, et atteint donc environ $0{,}33$ à l'équilibre."
         correct: false
         misconception: mc.physics.pc_esterification_hydrolyse.tau-depend-de-n0
         feedback: >
           Rien dans $K = \dfrac{\tau^2}{(1-\tau)^2}$ ne fait intervenir
           $n_0$ : doubler $n_0$ ne peut donc pas diviser $\tau$ par deux.
       - id: D
-        text: "On ne peut pas savoir sans refaire tout le calcul avec les nouvelles quantités."
+        text: "On ne peut pas le savoir sans refaire entièrement le calcul avec les nouvelles quantités."
         correct: false
         misconception: mc.physics.pc_esterification_hydrolyse.tau-depend-de-n0
         feedback: >
@@ -1098,7 +1098,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Oui, l'élève a raison : retirer le produit qu'on cherche à obtenir ne peut jamais améliorer un rendement, quel que soit le mécanisme."
+        text: "Oui, l'élève a raison : retirer le produit que l'on cherche justement à obtenir ne peut jamais améliorer un rendement, quel que soit le mécanisme invoqué pour l'expliquer."
         correct: false
         misconception: mc.physics.pc_esterification_hydrolyse.confond-k-et-qr
         feedback: >
@@ -1106,7 +1106,7 @@ items:
           donné de la quantité totale récupérée dans le distillat, qui,
           elle, augmente.
       - id: B
-        text: "Non, mais seulement parce que retirer l'ester revient exactement au même que retirer l'eau : les deux gestes n'ont d'effet que sur la vitesse, pas sur le rendement final."
+        text: "Non, mais seulement parce que retirer l'ester revient exactement au même que retirer l'eau : les deux gestes n'ont d'effet que sur la vitesse de la réaction, jamais sur le rendement final obtenu."
         correct: false
         misconception: mc.physics.pc_esterification_hydrolyse.cinetique-thermodynamique-confondues
         feedback: >
@@ -1114,14 +1114,14 @@ items:
           déplace réellement l'équilibre - ce n'est pas un simple effet de
           vitesse comme le catalyseur.
       - id: C
-        text: "Non, mais seulement si on retire aussi une partie de l'eau en même temps ; retirer l'ester seul, sans retirer l'eau, ne change rien à $Q_r$."
+        text: "Non, mais seulement si l'on retire aussi une partie de l'eau au même moment ; retirer l'ester seul, sans toucher à l'eau, ne change rigoureusement rien à la valeur de $Q_r$."
         correct: false
         misconception: mc.physics.pc_esterification_hydrolyse.confond-k-et-qr
         feedback: >
           $Q_r$ dépend du produit $[ester][eau]$ : diminuer $[ester]$ seul
           suffit déjà à faire repasser $Q_r$ sous $K$.
       - id: D
-        text: "Non : retirer l'ester du mélange (par exemple par distillation continue) diminue $[ester]$ dans $Q_r$, donc $Q_{r,i}$ repasse sous $K$ et relance l'estérification, qui reforme de l'ester en continu - la quantité totale d'ester récupérée dans le distillat augmente."
+        text: "Non : retirer l'ester du mélange diminue $[ester]$ dans $Q_r$, donc $Q_{r,i}$ repasse sous $K$ et relance l'estérification, qui reforme de l'ester en continu."
         correct: true
     correct_feedback: >
       Retirer l'ester diminue $[ester]$ dans $Q_r$, donc relance
@@ -1215,7 +1215,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Il est vrai sur les deux points : l'estérification progresse tant qu'on chauffe, et finit nécessairement par consommer tout l'acide si on patiente assez longtemps."
+        text: "Il est vrai sur les deux points : l'estérification progresse tant qu'on chauffe le mélange, et elle finit nécessairement par consommer tout l'acide si l'on patiente assez longtemps."
         correct: false
         misconception: mc.physics.pc_esterification_hydrolyse.esterification-totale
         feedback: >
@@ -1224,7 +1224,7 @@ items:
           apparaissent, ce qui fige la composition à un équilibre bien avant
           l'épuisement de l'acide - quelle que soit la durée de chauffage.
       - id: B
-        text: "Il devient vrai si on ajoute, en plus, davantage de catalyseur acide en cours de route : c'est la combinaison temps + catalyseur qui permettrait d'épuiser l'acide."
+        text: "Il devient vrai si l'on ajoute, en plus du temps, davantage de catalyseur acide en cours de route : c'est la combinaison des deux qui permettrait d'épuiser l'acide de départ."
         correct: false
         misconception: mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
         feedback: >
@@ -1233,10 +1233,10 @@ items:
           durée écoulée : combiner temps et catalyseur ne fait qu'atteindre
           plus vite le même équilibre incomplet.
       - id: C
-        text: "Il est faux sur les deux points : une fois l'équilibre atteint (bien avant quatre heures, en général), prolonger le chauffage ne change plus rien à la composition du mélange - ni l'acide ni l'alcool ne disparaissent jamais complètement, quelle que soit la durée."
+        text: "Il est faux sur les deux points : une fois l'équilibre atteint, prolonger le chauffage ne change plus rien à la composition du mélange, et ni l'acide ni l'alcool ne disparaissent jamais."
         correct: true
       - id: D
-        text: "Il est faux seulement sur le premier point (doubler la durée ne double pas l'ester) ; le second point reste vrai, il faut juste chauffer beaucoup plus longtemps que quelques jours."
+        text: "Il est faux seulement sur le premier point, doubler la durée ne doublant pas l'ester ; le second point reste vrai, il faut simplement chauffer beaucoup plus longtemps que quelques jours."
         correct: false
         misconception: mc.physics.pc_esterification_hydrolyse.esterification-totale
         feedback: >
