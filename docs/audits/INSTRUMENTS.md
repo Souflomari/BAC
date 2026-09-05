@@ -20,6 +20,8 @@
 | `web/scripts/dom-truth.mjs` | Le RENDU, 210 contrôles : styles calculés contre les jetons, anatomie de page, pagination, ancres accentuées, débord à 320 px, taille naturelle des figures, cibles tactiles, tabulation, texte à 200 %, **direction d'écriture (RTL)**, **jargon de rédaction dans le texte rendu**, **reflow à 320 × 256**, **lien d'évitement fonctionnel** | Le corpus ENTIER — il échantillonne quelques leçons témoins. Les balayages ci-dessous font le tour complet |
 | `web/scripts/token-gate.mjs` | Une seule syntaxe de consommation des jetons (pas de `-[var(--…)]`, pas de hex, pas de rupture Tailwind morte) | Si le jeton lui-même est juste — c'est `contrast-gate` |
 | `web/scripts/contrast-gate.mjs` | Les 80 paires de la palette, ratio par ratio, clair ET sombre | Le contraste d'une figure : les couleurs y sont peintes en jetons, mais leur VOISINAGE n'est pas jugé |
+| `web/scripts/accents-manquants.mjs` | Le français DÉSACCENTUÉ dans le texte rendu, chapitres dépliés : 615 formes dont la version sans accent n'est pas un mot français (« theoreme », « egalite », « deja », « etre »). Attribue chaque écart au SITE DE RENDU. A trouvé **128 occurrences sur 65 pages** — libellés d'items et titres d'exercices. Corpus à zéro, `--porte` armée | Les mots dont la forme nue EST du français (« cote », « des », « sur », « croissante ») : hors champ par construction, et c'est ce qui rend la porte tenable. Les fautes d'accord et de conjugaison — « deux choses different » a été trouvé, mais parce que « different » était dans la liste, pas parce qu'un outil sait accorder |
+| `web/scripts/indice-longueur.mjs` | L'INDICE DE LONGUEUR : sur les items QCM, la bonne réponse est-elle la plus longue, et son avance se VOIT-elle (≥ 20 caractères ET ≥ 20 % de la deuxième) ? Longueur comptée sur le RENDU, segments KaTeX ramenés à leur largeur à l'écran. Cliquet, pas porte franche : une notion en dette ne peut plus s'aggraver, une notion neuve naît sous 40 % | La QUALITÉ pédagogique du distracteur allongé. Un distracteur peut être long, parallèle à la clé, et ne correspondre à aucune erreur réelle d'élève — seule une relecture par la voie pédagogie le dira. Et l'indice INVERSE (clé la plus courte), mesuré et affiché, mais non gardé |
 
 ## Les balayages de corpus (outils, pas portes)
 
@@ -44,7 +46,7 @@
 | `web/scripts/slugs-visibles.mjs` | Les noms de DOSSIER (`la-verite`) arrivés sous les yeux d'un élève. Classe désormais vide et gardée dans `dom-truth` | Les slugs d'un seul mot (`autrui`), volontairement hors champ : ce sont aussi des mots français |
 | `web/scripts/katex-identite.mjs` | Que deux builds rendent le MÊME DOM : les 70 routes chargées dans un navigateur, `outerHTML` sérialisé après hydratation et comparé octet par octet | Rien du rendu VISUEL — deux DOM identiques ont forcément la même image, mais l'inverse n'est pas vrai |
 | `web/scripts/hunt.mjs` | Le balayage adversarial de toutes les routes | — |
-| `web/scripts/item-stats.mjs` | Le biais de position des bonnes réponses, avant/après mélange | La QUALITÉ des distracteurs |
+| `web/scripts/item-stats.mjs` | Le biais de position des bonnes réponses, avant/après mélange, **plus l'indice de longueur brut** — que le script signale lui-même comme non réglé par le mélange | La GRAVITÉ de cet indice : `indice-longueur.mjs` la mesure et la garde. Et la qualité des distracteurs |
 | `web/scripts/regle-atelier.mjs` | La règle NORTH-STAR-V2 §4, rendue mécanique | — |
 
 ## Les harnais d'image
