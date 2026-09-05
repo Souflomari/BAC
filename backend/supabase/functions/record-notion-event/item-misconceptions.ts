@@ -3190,6 +3190,45 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.chemistry.pc_evolution_spontanee.critere-inverse",
       "mc.chemistry.pc_evolution_spontanee.oxydoreduction-egale-pile"
     ],
+    "ES-22": [
+      "mc.chemistry.pc_evolution_spontanee.equilibre-egale-arret-total",
+      "mc.chemistry.pc_evolution_spontanee.pas-de-critere-predictif",
+      "mc.chemistry.pc_evolution_spontanee.sens-symetrique"
+    ],
+    "ES-23": [
+      "mc.chemistry.pc_evolution_spontanee.critere-limite-redox",
+      "mc.chemistry.pc_evolution_spontanee.equilibre-egale-arret-total",
+      "mc.chemistry.pc_evolution_spontanee.pas-de-critere-predictif"
+    ],
+    "ES-24": [
+      "mc.chemistry.pc_evolution_spontanee.equilibre-egale-arret-total",
+      "mc.chemistry.pc_evolution_spontanee.sens-symetrique",
+      "mc.chemistry.pc_evolution_spontanee.spontane-egale-instantane"
+    ],
+    "ES-25": [
+      "mc.chemistry.pc_evolution_spontanee.demi-equation-isolee",
+      "mc.chemistry.pc_evolution_spontanee.electrons-non-equilibres",
+      "mc.chemistry.pc_evolution_spontanee.oxydation-reduction-inversees"
+    ],
+    "ES-26": [
+      "mc.chemistry.pc_evolution_spontanee.demi-equation-isolee",
+      "mc.chemistry.pc_evolution_spontanee.electrons-non-equilibres"
+    ],
+    "ES-27": [
+      "mc.chemistry.pc_evolution_spontanee.exposants-oublies",
+      "mc.chemistry.pc_evolution_spontanee.fil-jonction-confondus",
+      "mc.chemistry.pc_evolution_spontanee.solide-dans-qr"
+    ],
+    "ES-28": [
+      "mc.chemistry.pc_evolution_spontanee.exposants-oublies",
+      "mc.chemistry.pc_evolution_spontanee.fil-jonction-confondus",
+      "mc.chemistry.pc_evolution_spontanee.solide-dans-qr"
+    ],
+    "ES-29": [
+      "mc.chemistry.pc_evolution_spontanee.oxydation-reduction-inversees",
+      "mc.chemistry.pc_evolution_spontanee.sens-symetrique",
+      "mc.chemistry.pc_evolution_spontanee.spontane-egale-instantane"
+    ],
     "ES-3": [
       "mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur"
     ],
@@ -5362,8 +5401,48 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "ETA-24": [
       "mc.philo.etat.methode-dissertation-etat-appliquee-mecaniquement"
     ],
+    "ETA-25": [
+      "mc.philo.etat.etat-neutre-arbitre-non-conteste",
+      "mc.philo.etat.legitimite-weber-mal-comprise",
+      "mc.philo.etat.violence-fondatrice-et-suffisante"
+    ],
+    "ETA-26": [
+      "mc.philo.etat.etat-neutre-arbitre-non-conteste",
+      "mc.philo.etat.faux-dilemme-protection-contrainte",
+      "mc.philo.etat.violence-fondatrice-et-suffisante"
+    ],
+    "ETA-27": [
+      "mc.philo.etat.coup-etat-detruit-appareil",
+      "mc.philo.etat.nation-confondue-avec-etat",
+      "mc.philo.etat.violence-fondatrice-et-suffisante"
+    ],
+    "ETA-28": [
+      "mc.philo.etat.etat-de-nature-recit-historique",
+      "mc.philo.etat.rousseau-hobbes-mecanismes-confondus",
+      "mc.philo.etat.souverain-absolu-caprice-arbitraire"
+    ],
+    "ETA-29": [
+      "mc.philo.etat.notions-politiques-fondamentales-non-distinguees",
+      "mc.philo.etat.souverain-absolu-caprice-arbitraire",
+      "mc.philo.etat.volonte-generale-confondue-volonte-de-tous"
+    ],
     "ETA-3": [
       "mc.philo.etat.locke-variante-affaiblie-hobbes"
+    ],
+    "ETA-30": [
+      "mc.philo.etat.etat-neutre-arbitre-non-conteste",
+      "mc.philo.etat.faux-dilemme-protection-contrainte",
+      "mc.philo.etat.volonte-generale-confondue-volonte-de-tous"
+    ],
+    "ETA-31": [
+      "mc.philo.etat.legitimite-weber-mal-comprise",
+      "mc.philo.etat.notions-politiques-fondamentales-non-distinguees",
+      "mc.philo.etat.violence-fondatrice-et-suffisante"
+    ],
+    "ETA-32": [
+      "mc.philo.etat.coup-etat-detruit-appareil",
+      "mc.philo.etat.etat-neutre-arbitre-non-conteste",
+      "mc.philo.etat.nation-confondue-avec-etat"
     ],
     "ETA-4": [
       "mc.philo.etat.rousseau-hobbes-mecanismes-confondus",
@@ -6525,9 +6604,39 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "DRJ-24": [
       "mc.philo.droit_justice.methode-dissertation-mal-appliquee"
     ],
+    "DRJ-25": [
+      "mc.philo.droit_justice.critere-de-validite-mal-identifie",
+      "mc.philo.droit_justice.legalite-legitimite-mutuellement-exclusives",
+      "mc.philo.droit_justice.positivisme-separation-mal-comprise"
+    ],
+    "DRJ-26": [
+      "mc.philo.droit_justice.legitimite-justifie-desobeissance-automatique",
+      "mc.philo.droit_justice.legitimite-reduite-au-pouvoir-de-fait",
+      "mc.philo.droit_justice.positivisme-separation-mal-comprise"
+    ],
+    "DRJ-27": [
+      "mc.philo.droit_justice.critere-justice-mal-identifie",
+      "mc.philo.droit_justice.priorite-principes-rawls-inversee",
+      "mc.philo.droit_justice.voile-ignorance-mecanisme-mal-compris"
+    ],
+    "DRJ-28": [
+      "mc.philo.droit_justice.legalite-legitimite-mutuellement-exclusives",
+      "mc.philo.droit_justice.legitimite-justifie-desobeissance-automatique",
+      "mc.philo.droit_justice.priorite-principes-rawls-inversee"
+    ],
+    "DRJ-29": [
+      "mc.philo.droit_justice.argument-r0-mal-identifie",
+      "mc.philo.droit_justice.dommage-r0-mal-lu",
+      "mc.philo.droit_justice.silence-loi-confondu-vice-procedure"
+    ],
     "DRJ-3": [
       "mc.philo.droit_justice.critere-de-validite-mal-identifie",
       "mc.philo.droit_justice.debat-positivisme-jusnaturalisme-mal-restitue"
+    ],
+    "DRJ-30": [
+      "mc.philo.droit_justice.contredit-fait-etabli-par-texte",
+      "mc.philo.droit_justice.fait-invente-hors-texte",
+      "mc.philo.droit_justice.generalisation-abusive-exemple-ponctuel"
     ],
     "DRJ-4": [
       "mc.philo.droit_justice.commutative-distributive-inversees",

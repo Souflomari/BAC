@@ -1701,87 +1701,519 @@ items:
       pouvoir (force/droit, État de droit) dépassent l'alternative
       protection/négation de la liberté.
 
+  # Ajoutés le 2026-09-05 : onze familles sous le plancher de 3 items du banc,
+  # dont `violence-fondatrice-et-suffisante` sans AUCUN item — sondée en leçon
+  # seulement. Sept items, dix-neuf places.
+  - id: ETA-25
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: philo_l_etat
+    tags: [weber, monopole, legitimite, violence]
+    stem: >
+      Weber définit l'État par le « monopole de la violence physique
+      légitime ». Que faut-il entendre par là ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que l'État est la seule instance dont l'usage de la force soit reconnu comme fondé — non la seule matériellement capable de frapper."
+        correct: true
+      - id: B
+        text: "Que l'État est le seul à disposer des moyens matériels de la force : personne d'autre ne peut physiquement en exercer."
+        correct: false
+        misconception: mc.philo.etat.legitimite-weber-mal-comprise
+        feedback: >
+          Un individu peut parfaitement frapper : la violence privée existe, et
+          l'État ne la rend pas impossible. Ce dont il a le monopole, c'est de la
+          violence RECONNUE comme fondée — la seule dont l'exercice ne soit pas
+          lui-même un délit. Le monopole porte sur la légitimité, pas sur la
+          capacité.
+      - id: C
+        text: "Qu'un État naît toujours par la violence et ne peut se maintenir que par elle, la légitimité n'étant qu'un habillage."
+        correct: false
+        misconception: mc.philo.etat.violence-fondatrice-et-suffisante
+        feedback: >
+          La formule comporte deux affirmations qu'il faut séparer. Beaucoup
+          d'États naissent effectivement d'une conquête ou d'une révolution — ce
+          point se discute historiquement. Mais durer par la seule force est
+          ruineux : aucun pouvoir n'a assez de policiers pour surveiller chacun.
+          C'est justement pourquoi la question de la légitimité se pose.
+      - id: D
+        text: "Que l'État est déjà, dans les faits, l'arbitre neutre des intérêts en présence, ce que sa capacité de contrainte garantit."
+        correct: false
+        misconception: mc.philo.etat.etat-neutre-arbitre-non-conteste
+        feedback: >
+          C'est la présentation que l'État donne de lui-même, et elle est
+          précisément contestée — par Marx, qui y voit l'instrument d'une classe.
+          Weber ne dit rien de la neutralité : il décrit un mode d'exercice du
+          pouvoir, pas une garantie d'impartialité.
+    correct_feedback: >
+      Le monopole porte sur la LÉGITIMITÉ de la force, non sur sa possibilité
+      matérielle. N'importe qui peut frapper ; seul l'État peut le faire sans que
+      cela constitue un délit — parce que son usage de la force est reconnu comme
+      fondé.
+    solution: |
+      **Le mot qui porte tout.** « Légitime ». Sans lui, la définition serait
+      fausse : la violence privée existe partout.
+
+      **Ce que le monopole signifie.** L'État revendique — et obtient — que son
+      usage de la force soit le seul reconnu comme fondé. Toute autre violence
+      est qualifiée de délit.
+
+      **Ce que cela ouvre.** La question de savoir ce qui fonde cette
+      reconnaissance : la tradition, le charisme, ou la règle légale-rationnelle
+      — les trois types wébériens de domination légitime.
+
+  - id: ETA-26
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: philo_l_etat
+    tags: [marx, critiques, accroche]
+    stem: >
+      « Sans policiers, beaucoup de gens profiteraient de l'occasion » / « les
+      gens ne sont pas fondamentalement mauvais, l'État n'est qu'une
+      contrainte ». Que faire de ces deux réponses spontanées ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Ne pas choisir entre elles : chacune saisit un aspect réel, et la question est de comprendre comment un pouvoir peut à la fois protéger et contraindre."
+        correct: true
+      - id: B
+        text: "Trancher pour l'une des deux : ou bien l'État protège, ou bien il n'est qu'une contrainte — il n'y a pas de position intermédiaire."
+        correct: false
+        misconception: mc.philo.etat.faux-dilemme-protection-contrainte
+        feedback: >
+          Le dilemme est mal posé. Protection et contrainte ne s'excluent pas :
+          l'État protège PAR la contrainte, et c'est cette ambivalence même qui
+          fait le problème philosophique. Choisir un camp d'emblée, c'est
+          supprimer la question au lieu de l'instruire.
+      - id: C
+        text: "Les écarter toutes deux, puisque l'État est en réalité un arbitre neutre au-dessus des intérêts particuliers."
+        correct: false
+        misconception: mc.philo.etat.etat-neutre-arbitre-non-conteste
+        feedback: >
+          La neutralité de l'État n'est pas un fait acquis : c'est une
+          PRÉTENTION, que le chapitre 6 soumet à la critique marxiste — l'État y
+          apparaît comme l'instrument de la classe dominante. On ne peut pas s'en
+          servir comme d'un point de départ non discuté.
+      - id: D
+        text: "Conclure que l'État repose entièrement sur la violence, qui l'a fondé et qui seule le maintient."
+        correct: false
+        misconception: mc.philo.etat.violence-fondatrice-et-suffisante
+        feedback: >
+          La seconde moitié de l'affirmation ne tient pas : un pouvoir qui ne
+          durerait que par la force devrait surveiller chacun en permanence,
+          ce qu'aucun État ne peut faire. L'obéissance ordinaire repose sur autre
+          chose — c'est le problème de la légitimité, et il ne se dissout pas dans
+          la violence.
+    correct_feedback: >
+      Les deux réponses saisissent chacune quelque chose de réel : l'État
+      protège, et il contraint. Le problème n'est pas de choisir mais de
+      comprendre comment ces deux aspects tiennent ensemble — c'est ce que les
+      théories du contrat cherchent à établir.
+    solution: |
+      **Le faux dilemme.** Il oppose deux constats qui ne se contredisent pas :
+      l'État protège en contraignant. Supprimer l'un des deux termes ferme la
+      question.
+
+      **Ce que chaque réponse voit.** La première : sans institution capable de
+      sanctionner, les conflits se règlent par la force. La seconde : toute
+      contrainte est un coût, et il faut la justifier.
+
+      **Où le chapitre conduit.** À la question de la LÉGITIMITÉ : qu'est-ce qui
+      distingue un pouvoir obéi d'un pouvoir simplement subi ?
+
+  - id: ETA-27
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: philo_l_etat
+    tags: [etat, nation, gouvernement, coup-etat]
+    stem: >
+      Un coup d'État renverse le gouvernement en place. Qu'advient-il de l'État
+      lui-même ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il subsiste : tribunaux, administration, armée et frontières demeurent — c'est le gouvernement, non l'appareil, qui a changé."
+        correct: true
+      - id: B
+        text: "Il disparaît avec le gouvernement : renverser celui qui gouverne, c'est détruire l'État lui-même."
+        correct: false
+        misconception: mc.philo.etat.coup-etat-detruit-appareil
+        feedback: >
+          C'est justement ce qu'un coup d'État ne fait pas : il s'empare de
+          l'appareil au lieu de le détruire — et il ne vaudrait pas la peine s'il
+          le détruisait. Les impôts continuent d'être levés, les tribunaux de
+          juger. Le gouvernement est temporaire, l'État permanent.
+      - id: C
+        text: "Il subsiste, mais seulement en tant que nation : ces deux mots désignent au fond la même réalité."
+        correct: false
+        misconception: mc.philo.etat.nation-confondue-avec-etat
+        feedback: >
+          La nation est une communauté qui se sent liée par une identité —
+          langue, histoire, mémoire ; l'État est un appareil institutionnel —
+          lois, administration, police. Une nation peut exister sans État
+          (les Kurdes), et un État abriter plusieurs nations. Les confondre rend
+          la moitié des conflits politiques incompréhensibles.
+      - id: D
+        text: "Il ne subsiste que si le nouveau pouvoir s'impose par la violence, seule chose qui fonde et maintienne un État."
+        correct: false
+        misconception: mc.philo.etat.violence-fondatrice-et-suffisante
+        feedback: >
+          Un coup d'État réussi cherche au contraire, très vite, à se faire
+          reconnaître : il organise des élections, invoque la constitution,
+          obtient des reconnaissances internationales. Si la violence suffisait,
+          rien de tout cela n'aurait d'utilité.
+    correct_feedback: >
+      L'État survit au gouvernement. Un coup d'État change ceux qui exercent le
+      pouvoir ; l'appareil — administration, justice, armée, frontières — demeure,
+      et c'est même ce que les auteurs du coup veulent s'approprier.
+    solution: |
+      **Quatre mots, quatre choses.**
+      - *Société* : l'ensemble des individus liés par des rapports.
+      - *État* : l'appareil institutionnel permanent.
+      - *Gouvernement* : ceux qui, temporairement, l'exercent.
+      - *Nation* : une communauté unie par le sentiment d'une identité commune.
+
+      **Ce que le coup d'État révèle.** La distinction gouvernement / État : le
+      premier tombe, le second continue de fonctionner le lendemain matin.
+
+  - id: ETA-28
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: philo_l_etat
+    tags: [hobbes, etat-de-nature, leviathan]
+    stem: >
+      Comment faut-il comprendre l'état de nature hobbesien, et pourquoi Hobbes
+      exige-t-il un souverain quasi absolu ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Comme une hypothèse rationnelle, non un récit ; et le souverain est absolu parce qu'un pouvoir révocable laisserait l'incertitude entière."
+        correct: true
+      - id: B
+        text: "Comme un fait historique établi par l'enquête anthropologique, dont Hobbes tire ensuite ses conclusions."
+        correct: false
+        misconception: mc.philo.etat.etat-de-nature-recit-historique
+        feedback: >
+          Hobbes ne prétend pas décrire un passé : il construit une expérience de
+          pensée — que serait la vie sans pouvoir commun ? — pour faire apparaître
+          ce que l'État apporte. Le traiter comme un fait le rend réfutable par
+          l'archéologie, ce qui manque entièrement sa fonction d'argument.
+      - id: C
+        text: "Comme un fait historique, et le souverain est absolu parce que Hobbes préfère la tyrannie : c'est un goût pour la force."
+        correct: false
+        misconception: mc.philo.etat.souverain-absolu-caprice-arbitraire
+        feedback: >
+          L'absolutisme hobbesien est une CONSÉQUENCE, pas une préférence. Si le
+          souverain pouvait être révoqué dès qu'on le juge mauvais, chacun
+          resterait juge de sa légitimité — et l'on retomberait dans l'incertitude
+          que le contrat devait supprimer. L'argument se discute, mais il est un
+          argument.
+      - id: D
+        text: "Comme chez Rousseau : les sujets transfèrent leurs droits à un souverain séparé d'eux, qui gouverne à leur place."
+        correct: false
+        misconception: mc.philo.etat.rousseau-hobbes-mecanismes-confondus
+        feedback: >
+          Ce schéma est celui de Hobbes, pas de Rousseau. Chez Rousseau, chacun
+          s'aliène à TOUS, donc à personne en particulier : le peuple est le
+          souverain, et l'on n'obéit qu'à une volonté dont on est partie
+          prenante. Le mécanisme est exactement inverse.
+    correct_feedback: >
+      L'état de nature est une hypothèse, pas un récit : il sert à montrer ce que
+      l'État apporte. Et l'absolutisme du souverain est déduit, non préféré — un
+      pouvoir révocable laisserait chacun juge de sa légitimité, donc
+      l'incertitude entière.
+    solution: |
+      **Le statut de l'état de nature.** Une expérience de pensée : ôtez le
+      pouvoir commun, que reste-t-il ? La réponse de Hobbes — défiance
+      généralisée, « guerre de tous contre tous » — n'est pas une observation
+      mais une déduction à partir de l'égalité des hommes et de la rareté.
+
+      **Pourquoi le souverain doit être irrévocable.** Si les sujets pouvaient le
+      destituer quand ils le jugent mauvais, chacun redeviendrait juge — et
+      l'arbitrage que le contrat instituait disparaîtrait.
+
+      **Ce que l'argument coûte.** Un pouvoir sans recours. C'est exactement ce
+      que Locke et Rousseau refuseront, chacun à sa manière.
+
+  - id: ETA-29
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: philo_l_etat
+    tags: [rousseau, volonte-generale, contrat]
+    stem: >
+      Chez Rousseau, en quoi la volonté générale se distingue-t-elle de la
+      volonté de tous ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La volonté de tous additionne les intérêts particuliers ; la volonté générale vise l'intérêt commun, et une majorité peut parfaitement s'en écarter."
+        correct: true
+      - id: B
+        text: "Ce sont deux noms pour la même chose : ce que veut la majorité est, par définition, la volonté générale."
+        correct: false
+        misconception: mc.philo.etat.volonte-generale-confondue-volonte-de-tous
+        feedback: >
+          Si les deux coïncidaient, une majorité ne pourrait jamais se tromper
+          ni opprimer une minorité — or c'est possible, et Rousseau le sait. La
+          volonté générale porte sur l'intérêt COMMUN en tant que tel ; une
+          somme d'intérêts particuliers, même majoritaire, peut n'être qu'une
+          coalition.
+      - id: C
+        text: "La volonté générale est celle d'un souverain distinct du peuple, à qui chacun a transféré ses droits."
+        correct: false
+        misconception: mc.philo.etat.souverain-absolu-caprice-arbitraire
+        feedback: >
+          C'est le schéma de Hobbes, et Rousseau le refuse : chez lui, le
+          souverain EST le peuple. Nul ne transfère ses droits à un tiers ;
+          chacun s'engage envers tous, donc envers personne en particulier, et
+          reste ainsi « aussi libre qu'auparavant ».
+      - id: D
+        text: "La distinction est purement verbale, comme celle entre société, État, gouvernement et nation, qui désignent en pratique la même chose."
+        correct: false
+        misconception: mc.philo.etat.notions-politiques-fondamentales-non-distinguees
+        feedback: >
+          Ces quatre notions désignent des réalités distinctes, et les confondre
+          rend le chapitre inutilisable : le gouvernement peut tomber sans que
+          l'État disparaisse, une nation peut exister sans État. La précision du
+          vocabulaire n'est pas ici une coquetterie — c'est l'outil du
+          raisonnement.
+    correct_feedback: >
+      La volonté de tous est une somme d'intérêts particuliers ; la volonté
+      générale vise l'intérêt commun. Elles peuvent diverger — et c'est ce qui
+      permet de dire qu'une majorité peut se tromper, ce que l'identification
+      des deux rendrait impossible.
+    solution: |
+      **La distinction.**
+      - *Volonté de tous* : la somme des volontés particulières, avec leurs
+        intérêts propres.
+      - *Volonté générale* : ce que veut le corps politique en tant que tel,
+        c'est-à-dire l'intérêt commun.
+
+      **Pourquoi elle est nécessaire.** Sans elle, « la majorité a voulu » et
+      « c'est juste » seraient synonymes, et l'oppression d'une minorité par une
+      coalition majoritaire serait inconcevable.
+
+      **Ce que Rousseau en tire.** Obéir à la loi issue de la volonté générale,
+      c'est obéir à une volonté dont on est partie prenante : l'autonomie, non la
+      soumission.
+
+  - id: ETA-30
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: philo_l_etat
+    tags: [rousseau, contrat, etat-gouvernement]
+    stem: >
+      Un gouvernement issu d'élections adopte une loi qui avantage nettement le
+      groupe qui l'a porté au pouvoir. Comment un lecteur de Rousseau
+      l'apprécie-t-il ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Comme une expression de la volonté de tous et non de la volonté générale : une majorité peut servir un intérêt particulier plutôt que l'intérêt commun."
+        correct: true
+      - id: B
+        text: "Comme une expression de la volonté générale : ayant été votée par la majorité, la loi exprime nécessairement l'intérêt commun."
+        correct: false
+        misconception: mc.philo.etat.volonte-generale-confondue-volonte-de-tous
+        feedback: >
+          Le vote établit une majorité, pas une généralité. Si les deux
+          coïncidaient par définition, le concept de volonté générale n'aurait
+          aucune utilité critique — or Rousseau le forge précisément pour pouvoir
+          dire qu'une décision majoritaire peut manquer l'intérêt commun.
+      - id: C
+        text: "Comme une preuve que l'État est un simple arbitre neutre : puisqu'il applique la procédure, il ne favorise personne."
+        correct: false
+        misconception: mc.philo.etat.etat-neutre-arbitre-non-conteste
+        feedback: >
+          Respecter la procédure ne garantit pas la neutralité du résultat. La
+          critique marxiste, au chapitre 6, porte exactement sur ce point :
+          derrière la forme impartiale, l'État peut servir des intérêts
+          particuliers. La neutralité est une prétention à examiner, pas une
+          donnée.
+      - id: D
+        text: "Comme la preuve qu'il faut choisir : ou l'État protège toujours, ou il n'est qu'une contrainte au service des puissants."
+        correct: false
+        misconception: mc.philo.etat.faux-dilemme-protection-contrainte
+        feedback: >
+          Le cas montre justement qu'il ne faut pas choisir : le même appareil
+          peut protéger dans un domaine et servir un intérêt particulier dans un
+          autre. Le dilemme empêche de décrire ce mélange, qui est la situation
+          ordinaire.
+    correct_feedback: >
+      Une loi votée à la majorité peut exprimer la volonté DE TOUS — la somme des
+      intérêts d'une coalition — sans exprimer la volonté GÉNÉRALE. C'est
+      précisément l'usage critique que Rousseau donne à sa distinction.
+    solution: |
+      **L'outil.** La volonté générale n'est pas un décompte : elle porte sur ce
+      qui est bon pour le corps politique en tant que tel. Une majorité y accède
+      quand chacun vote en pensant l'intérêt commun, pas quand chacun vote son
+      intérêt propre.
+
+      **Le cas présent.** Une loi qui avantage un groupe et que ce groupe a votée
+      relève de la volonté de tous, non de la générale.
+
+      **La portée.** C'est ce qui permet à Rousseau de critiquer une décision
+      démocratiquement adoptée sans renoncer à la démocratie.
+
+  - id: ETA-31
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: philo_l_etat
+    tags: [weber, legitimite, force]
+    stem: >
+      Un pouvoir se maintient depuis dix ans sans rencontrer de résistance
+      notable. Est-il légitime ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La question reste entière : l'absence de résistance mesure un rapport de force, et la légitimité tient à ce qui fait reconnaître le pouvoir comme fondé."
+        correct: true
+      - id: B
+        text: "Oui : la légitimité se confond avec la capacité matérielle à exercer la force, et ce pouvoir la détient manifestement."
+        correct: false
+        misconception: mc.philo.etat.legitimite-weber-mal-comprise
+        feedback: >
+          Weber ne définit pas la légitimité par la capacité de frapper, mais par
+          la RECONNAISSANCE dont l'usage de la force fait l'objet. Il distingue
+          trois fondements possibles de cette reconnaissance — la tradition, le
+          charisme, la règle légale-rationnelle — et aucun ne se réduit à la
+          puissance matérielle.
+      - id: C
+        text: "Oui : un pouvoir qui dure a nécessairement été fondé par la violence, et la violence suffit à le maintenir."
+        correct: false
+        misconception: mc.philo.etat.violence-fondatrice-et-suffisante
+        feedback: >
+          La durée prouve plutôt l'inverse. Surveiller chacun en permanence
+          coûterait plus que tout ce qu'un État peut lever : les pouvoirs qui
+          durent obtiennent une obéissance qui ne demande pas de garde à chaque
+          coin de rue. C'est cette obéissance-là qu'il faut expliquer.
+      - id: D
+        text: "Non : un pouvoir non contesté est nécessairement un gouvernement, non un État, et la question de la légitimité ne le concerne pas."
+        correct: false
+        misconception: mc.philo.etat.notions-politiques-fondamentales-non-distinguees
+        feedback: >
+          La distinction gouvernement / État est réelle, mais elle ne s'applique
+          pas ainsi : elle sépare ceux qui exercent le pouvoir de l'appareil
+          permanent, sans rapport avec le fait d'être contesté. Et la question de
+          la légitimité concerne l'un comme l'autre.
+    correct_feedback: >
+      L'absence de résistance est un fait sur le rapport de force ; la légitimité
+      est autre chose — ce qui fait que l'obéissance est consentie plutôt que
+      subie. Rousseau le dit en une phrase : la force ne fait jamais le droit.
+    solution: |
+      **Ce que la durée établit.** Qu'aucune force n'a réussi à renverser ce
+      pouvoir. C'est une donnée sur les rapports de force.
+
+      **Ce qu'elle n'établit pas.** Que l'obéissance soit consentie. On obéit
+      aussi par peur, par habitude, ou faute de moyens.
+
+      **Le critère wébérien.** La légitimité tient à la RECONNAISSANCE : le
+      pouvoir est-il tenu pour fondé, et à quel titre — tradition, charisme, ou
+      règle légale-rationnelle ? Trois réponses possibles, aucune réductible à
+      la puissance.
+
+  - id: ETA-32
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: philo_l_etat
+    tags: [etat, gouvernement, permanence]
+    stem: >
+      Après une alternance électorale, les mêmes fonctionnaires instruisent les
+      mêmes dossiers dans les mêmes bureaux. Que montre cette continuité ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que l'État est un appareil permanent, distinct de ceux qui l'exercent : le gouvernement change, l'administration demeure."
+        correct: true
+      - id: B
+        text: "Qu'aucun véritable changement de pouvoir n'a eu lieu : un changement réel emporterait l'appareil tout entier avec lui."
+        correct: false
+        misconception: mc.philo.etat.coup-etat-detruit-appareil
+        feedback: >
+          Le changement de pouvoir est réel : ce sont les orientations, les
+          décisions et les responsables politiques qui changent. L'appareil, lui,
+          n'a pas vocation à disparaître — même un coup d'État cherche à s'en
+          emparer plutôt qu'à le détruire, parce que c'est lui qui permet
+          effectivement de gouverner.
+      - id: C
+        text: "Que l'État et la nation sont une seule et même réalité, puisque tous deux survivent aux gouvernements."
+        correct: false
+        misconception: mc.philo.etat.nation-confondue-avec-etat
+        feedback: >
+          Survivre aux gouvernements ne suffit pas à les identifier. L'État est
+          un appareil institutionnel — lois, administration, police ; la nation
+          est une communauté unie par le sentiment d'une histoire commune. Une
+          nation peut exister sans État, un État abriter plusieurs nations.
+      - id: D
+        text: "Que l'État est, de fait, un arbitre neutre : ses agents servent indifféremment tous les gouvernements."
+        correct: false
+        misconception: mc.philo.etat.etat-neutre-arbitre-non-conteste
+        feedback: >
+          La continuité administrative montre la permanence de l'appareil, pas sa
+          neutralité. La critique marxiste porte précisément là : un appareil
+          permanent peut servir durablement les mêmes intérêts, et sa stabilité
+          n'est pas une garantie d'impartialité.
+    correct_feedback: >
+      Le gouvernement est temporaire, l'État permanent. C'est la distinction la
+      plus utile du chapitre : elle explique qu'une alternance change les
+      orientations sans interrompre le fonctionnement des institutions.
+    solution: |
+      **Ce qui change.** Les responsables politiques, les orientations, les
+      priorités — c'est-à-dire le gouvernement.
+
+      **Ce qui demeure.** L'administration, la justice, la police, les
+      frontières, les archives : l'appareil d'État, qui fonctionne sans
+      interruption.
+
+      **Pourquoi c'est important.** Sans cette distinction, on ne peut comprendre
+      ni une alternance, ni un coup d'État — lequel s'empare de l'appareil au lieu
+      de le détruire, parce que c'est lui qui donne le pouvoir réel.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après ETA-25 à ETA-32. Onze familles sous le plancher,
+# dont `violence-fondatrice-et-suffisante` sans AUCUN item de banc — sondée en
+# leçon seulement, ce qui ne compte pas dans le modèle apprenant. Tableau
+# GÉNÉRÉ, gardé par scripts/resume-couverture.mjs.
 coverage_summary:
-  # Computed by loading this file with js-yaml and tallying every
-  # choices[].misconception (+ also_reveals[]) value per item — an item
-  # counts once per misconception if ANY of its distractors carries that id
-  # (house convention, matching content/philo/la-liberte/items.yaml and
-  # content/philo/theorie-experience/items.yaml). Counted PER ITEM, NOT a
-  # raw count of tagged distractors — a first hand-pass would have
-  # overcounted tags that repeat across multiple distractors within the
-  # SAME item (e.g. force-egale-droit tags 3 distractors within ETA-19
-  # alone, but that counts as 1 item, not 3); verified programmatically
-  # with a throwaway js-yaml tally script before writing the numbers below,
-  # the same "verify programmatically, don't hand-count" discipline the
-  # recipe's philo addendum mandates for length, applied here to coverage
-  # arithmetic too.
-  #
-  # This is a LEGACY end-bank (ETA-1..ETA-24 predate per-distractor
-  # tagging — Gap-4 finding, task instruction) retrofitted in this pass:
-  # every one of the 72 distractors across the 24 items now carries a real
-  # misconception id (no null tags), and every item now carries a
-  # `primary_misconception`. Per the recipe's "Honest coverage" judgment
-  # call, floor gaps below are reported truthfully rather than padded.
-  total_items: 24
-  floor: 3
-  floor_met: false
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
   per_misconception:
-    mc.philo.etat.gouvernement-confondu-avec-etat: 3
-    mc.philo.etat.nation-confondue-avec-etat: 2
-    mc.philo.etat.notions-politiques-fondamentales-non-distinguees: 2
-    mc.philo.etat.coup-etat-detruit-appareil: 1
-    mc.philo.etat.auteurs-contrat-social-mal-attribues: 3
-    mc.philo.etat.etat-de-nature-recit-historique: 2
-    mc.philo.etat.souverain-absolu-caprice-arbitraire: 1
-    mc.philo.etat.locke-variante-affaiblie-hobbes: 3
-    mc.philo.etat.volonte-generale-confondue-volonte-de-tous: 1
-    mc.philo.etat.rousseau-hobbes-mecanismes-confondus: 2
-    mc.philo.etat.force-egale-droit: 3
-    mc.philo.etat.legitimite-weber-mal-comprise: 1
-    mc.philo.etat.critiques-etat-non-distinguees: 3
-    mc.philo.etat.etat-neutre-arbitre-non-conteste: 1
-    mc.philo.etat.faux-dilemme-protection-contrainte: 1
-    mc.philo.etat.probleme-legitimite-reduit: 3
-    mc.philo.etat.methode-dissertation-etat-appliquee-mecaniquement: 3
-    mc.philo.etat.violence-fondatrice-et-suffisante: 0
-  notes: >-
-    Every distractor across the 24 legacy items now carries a real
-    misconception id (no null tags) — the Gap-4 fix this pass exists to
-    make. 7 of 18 models clear the ≥3 floor. ELEVEN do not, and floor_met
-    is reported honestly rather than padded: nation-confondue-avec-etat (2,
-    ETA-1/ETA-11), notions-politiques-fondamentales-non-distinguees (2,
-    ETA-1/ETA-10), coup-etat-detruit-appareil (1, ETA-11), etat-de-nature-
-    recit-historique (2, ETA-9/ETA-12), souverain-absolu-caprice-arbitraire
-    (1, ETA-13), volonte-generale-confondue-volonte-de-tous (1, ETA-4),
-    rousseau-hobbes-mecanismes-confondus (2, ETA-4/ETA-17), legitimite-
-    weber-mal-comprise (1, ETA-18), etat-neutre-arbitre-non-conteste (1,
-    ETA-20), faux-dilemme-protection-contrainte (1, ETA-7) are real but
-    thin in the legacy bank — a follow-up item pass should add 1-2 items
-    each. This lesson has a genuinely wider named-concept surface than a
-    typical philo notion (R1 alone distinguishes four concepts pairwise;
-    R6 distinguishes three rival critiques), which spreads a comparably
-    sized 24-item bank thinner per concept than, e.g., la-liberte's smaller
-    5-rung structure — the inventory was already consolidated once
-    (several finer-grained candidate splits, e.g. separating "monopole de
-    la violence physique pris au pied de la lettre" from "légitime
-    confondu avec moralement juste", were merged into single ids since
-    they occupied the same items) to avoid manufacturing thinness by
-    over-fragmenting rather than reporting it honestly.
-    violence-fondatrice-et-suffisante (0) is a genuinely NEW axis this pass
-    surfaces: it comes from the r-bac قولة (2023 session normale —
-    docs/sujets/philo/l-etat.md), which asks whether violence alone founds
-    AND indefinitely sustains state power — a claim sharper than anything
-    R0-R7's body states as a single thesis, so no legacy item exercises it
-    directly. It is covered by checkpoints.yaml's cp-bac-violence instead
-    (checkpoints do not count toward this floor, per house convention), and
-    is flagged here as the clearest item-authoring gap for a follow-up
-    pass. All eleven under-floor models additionally receive checkpoint
-    exposure in checkpoints.yaml (cp-r1-concepts, cp-r2-hobbes, cp-r3-locke,
-    cp-r4-rousseau, cp-r5-force-droit, cp-r6-critiques, cp-r0-predict,
-    cp-bac-violence) so every student meets each model at least once
-    in-lesson regardless of the item-bank gap.
-    Length rebalance (recipe's philo addendum): see the length-check
-    script's output recorded in the task's final report — distractors were
-    enriched with additional substance (never by trimming the correct
-    answer's content) so the correct choice is not systematically the
-    longest option across this bank.
+    mc.philo.etat.gouvernement-confondu-avec-etat:                   { count: 3, items: [ETA-1, ETA-9, ETA-22] }
+    mc.philo.etat.nation-confondue-avec-etat:                        { count: 4, items: [ETA-1, ETA-11, ETA-27, ETA-32] }
+    mc.philo.etat.notions-politiques-fondamentales-non-distinguees:  { count: 4, items: [ETA-1, ETA-10, ETA-29, ETA-31] }
+    mc.philo.etat.coup-etat-detruit-appareil:                        { count: 3, items: [ETA-11, ETA-27, ETA-32] }
+    mc.philo.etat.auteurs-contrat-social-mal-attribues:              { count: 3, items: [ETA-2, ETA-15, ETA-16] }
+    mc.philo.etat.etat-de-nature-recit-historique:                   { count: 3, items: [ETA-9, ETA-12, ETA-28] }
+    mc.philo.etat.souverain-absolu-caprice-arbitraire:               { count: 3, items: [ETA-13, ETA-28, ETA-29] }
+    mc.philo.etat.locke-variante-affaiblie-hobbes:                   { count: 3, items: [ETA-3, ETA-14, ETA-15] }
+    mc.philo.etat.volonte-generale-confondue-volonte-de-tous:        { count: 3, items: [ETA-4, ETA-29, ETA-30] }
+    mc.philo.etat.rousseau-hobbes-mecanismes-confondus:              { count: 3, items: [ETA-4, ETA-17, ETA-28] }
+    mc.philo.etat.force-egale-droit:                                 { count: 3, items: [ETA-5, ETA-18, ETA-19] }
+    mc.philo.etat.legitimite-weber-mal-comprise:                     { count: 3, items: [ETA-18, ETA-25, ETA-31] }
+    mc.philo.etat.critiques-etat-non-distinguees:                    { count: 3, items: [ETA-6, ETA-20, ETA-21] }
+    mc.philo.etat.etat-neutre-arbitre-non-conteste:                  { count: 5, items: [ETA-20, ETA-25, ETA-26, ETA-30, ETA-32] }
+    mc.philo.etat.faux-dilemme-protection-contrainte:                { count: 3, items: [ETA-7, ETA-26, ETA-30] }
+    mc.philo.etat.probleme-legitimite-reduit:                        { count: 3, items: [ETA-7, ETA-8, ETA-9] }
+    mc.philo.etat.methode-dissertation-etat-appliquee-mecaniquement: { count: 3, items: [ETA-22, ETA-23, ETA-24] }
+    mc.philo.etat.violence-fondatrice-et-suffisante:                 { count: 4, items: [ETA-25, ETA-26, ETA-27, ETA-31] }
+  total_items: 32
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 5
+    R2: 4
+    R3: 3
+    R4: 5
+    R5: 5
+    R6: 4
+    R7: 3
+  honest_state: >-
+    Les dix-huit misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Quatorze y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

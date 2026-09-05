@@ -1738,83 +1738,415 @@ items:
       d'ajouter une citation, ni assener la thèse en premier, ni avancer
       l'annonce du plan avant la problématique.
 
+  # Ajoutés le 2026-09-05 : quatorze familles sous le plancher de 3 items du
+  # banc. Six items, dix-huit places — chaque distracteur porte une famille
+  # distincte, l'ajustement est exact.
+  - id: DRJ-25
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: philo_droit_justice
+    tags: [kelsen, positivisme, validite]
+    stem: >
+      Kelsen soutient qu'une loi peut être juridiquement valide et moralement
+      injuste. Que dit-il exactement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que la validité se juge à la production de la norme selon les règles du système, non à son contenu moral — ce qui laisse la critique entière."
+        correct: true
+      - id: B
+        text: "Qu'une loi valide est par là même moralement acceptable, et qu'il n'y a donc pas lieu de la juger au nom d'autre chose que du droit."
+        correct: false
+        misconception: mc.philo.droit_justice.positivisme-separation-mal-comprise
+        feedback: >
+          Kelsen SÉPARE les deux questions, il ne les confond pas. Dire qu'une
+          norme est valide, c'est constater qu'elle a été produite selon les
+          règles du système ; cela ne l'approuve pas. Sa thèse est
+          méthodologique — elle délimite ce que la science du droit peut
+          établir — et laisse la critique morale entièrement libre.
+      - id: C
+        text: "Qu'une norme est valide lorsqu'elle recueille l'approbation de la majorité de l'opinion et produit des conséquences bénéfiques."
+        correct: false
+        misconception: mc.philo.droit_justice.critere-de-validite-mal-identifie
+        feedback: >
+          Ni l'opinion ni les conséquences n'entrent dans le critère kelsénien :
+          une norme est valide si elle a été édictée conformément à une norme
+          supérieure du même système, jusqu'à la norme fondamentale. Une loi
+          impopulaire et nuisible peut être parfaitement valide — c'est
+          précisément ce qui rend la critique nécessaire.
+      - id: D
+        text: "Qu'une loi légitime est nécessairement illégale, légalité et légitimité s'excluant l'une l'autre."
+        correct: false
+        misconception: mc.philo.droit_justice.legalite-legitimite-mutuellement-exclusives
+        feedback: >
+          Les deux notions ne s'excluent pas : l'immense majorité des lois sont à
+          la fois légales et légitimes. Ce que le chapitre établit, c'est
+          seulement qu'elles PEUVENT diverger — ce qui suppose justement qu'elles
+          coïncident d'ordinaire.
+    correct_feedback: >
+      La thèse de Kelsen est méthodologique : la validité juridique se constate
+      (la norme a-t-elle été produite selon les règles ?), la valeur morale se
+      juge — et ce sont deux opérations distinctes. Séparer n'est pas approuver.
+    solution: |
+      **La thèse.** Une norme est valide si elle a été édictée conformément à
+      une norme supérieure du même système. Son contenu moral n'entre pas dans
+      ce test.
+
+      **Ce que la séparation permet.** Précisément la critique : constater
+      qu'une loi est valide et affirmer qu'elle est injuste ne se contredit pas.
+      Les lois raciales de certains régimes étaient valides et monstrueuses.
+
+      **Les deux contresens symétriques.** Croire que Kelsen approuve ce qu'il
+      déclare valide ; croire qu'il interdit tout jugement moral sur le droit.
+
+  - id: DRJ-26
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: philo_droit_justice
+    tags: [legalite, legitimite, desobeissance]
+    stem: >
+      Un citoyen juge une loi illégitime. Que peut-il en conclure quant à son
+      obéissance ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Rien d'immédiat : un jugement personnel d'illégitimité ouvre une discussion publique, il ne vaut pas à lui seul autorisation de désobéir."
+        correct: true
+      - id: B
+        text: "Qu'il peut cesser d'obéir sur-le-champ : dès qu'une loi paraît illégitime à quelqu'un, elle cesse de l'obliger."
+        correct: false
+        misconception: mc.philo.droit_justice.legitimite-justifie-desobeissance-automatique
+        feedback: >
+          Si le sentiment individuel suffisait, chacun serait juge de ce qui
+          l'oblige et le droit cesserait d'exister. La désobéissance civile,
+          quand elle se justifie, s'entoure de conditions exigeantes : gravité de
+          l'injustice, publicité de l'acte, acceptation de la sanction, épuisement
+          des recours légaux.
+      - id: C
+        text: "Que la loi est légitime après tout, puisqu'elle s'applique sans rencontrer de résistance organisée."
+        correct: false
+        misconception: mc.philo.droit_justice.legitimite-reduite-au-pouvoir-de-fait
+        feedback: >
+          L'absence de résistance mesure un rapport de force, pas une
+          légitimité. C'est l'argument que Rousseau réfute : la force ne fonde
+          jamais le droit, et céder à la contrainte est un acte de prudence, non
+          de devoir.
+      - id: D
+        text: "Que la loi, étant illégitime, est nécessairement invalide au sens de Kelsen, et qu'elle n'existe donc pas juridiquement."
+        correct: false
+        misconception: mc.philo.droit_justice.positivisme-separation-mal-comprise
+        feedback: >
+          C'est effacer la séparation que Kelsen établit. Une norme injuste reste
+          valide tant qu'elle a été produite selon les règles du système : c'est
+          même ce qui rend le problème réel — il faut alors la changer par le
+          droit, ou assumer de lui désobéir, mais on ne peut pas la déclarer
+          inexistante.
+    correct_feedback: >
+      Un jugement individuel d'illégitimité ne suffit pas : il ouvre un débat, il
+      ne délie pas. La désobéissance civile s'entoure de conditions — gravité,
+      publicité, acceptation de la sanction — précisément parce que la conviction
+      seule ne peut pas faire office de tribunal.
+    solution: |
+      **Le risque de l'automatisme.** Si l'illégitimité ressentie déliait aussitôt
+      de l'obéissance, chacun deviendrait juge de ce qui l'oblige, et aucune
+      règle commune ne tiendrait.
+
+      **Ce qui reste ouvert.** Contester la loi par les voies du droit, la
+      soumettre au débat public, et — dans les cas extrêmes — la désobéissance
+      civile, qui assume publiquement la sanction pour rendre l'injustice
+      visible.
+
+      **Ce que l'absence de résistance ne prouve pas.** La légitimité. Une loi
+      peut s'appliquer sans opposition et rester injuste : c'est un fait sur le
+      rapport de force, pas sur le droit.
+
+  - id: DRJ-27
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: philo_droit_justice
+    tags: [rawls, voile-ignorance, principes]
+    stem: >
+      Chez Rawls, quel rapport les deux principes de justice entretiennent-ils,
+      et à quoi sert le voile d'ignorance ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'égale liberté prime sur le principe de différence ; le voile sert à choisir les principes sans connaître sa propre place."
+        correct: true
+      - id: B
+        text: "Le principe de différence prime sur l'égale liberté, l'urgence sociale passant avant les libertés formelles."
+        correct: false
+        misconception: mc.philo.droit_justice.priorite-principes-rawls-inversee
+        feedback: >
+          L'ordre est l'inverse, et il est lexical : aucun gain de bien-être ne
+          justifie de rogner les libertés de base. Le principe de différence ne
+          s'applique qu'une fois l'égale liberté garantie — c'est ce qui empêche
+          la théorie de justifier une servitude confortable.
+      - id: C
+        text: "Le voile d'ignorance dissimule les inégalités réelles une fois la société établie, afin que personne ne prenne conscience de sa position."
+        correct: false
+        misconception: mc.philo.droit_justice.voile-ignorance-mecanisme-mal-compris
+        feedback: >
+          Le voile n'est pas un dispositif permanent : c'est une expérience de
+          pensée qui vaut au moment du CHOIX des principes. Une fois choisis, ils
+          s'appliquent dans une société où chacun connaît parfaitement sa
+          position — et c'est justement pour cela qu'ils devaient être choisis
+          en l'ignorant.
+      - id: D
+        text: "Les deux principes distinguent la justice commutative de la justice distributive selon le nombre de personnes impliquées."
+        correct: false
+        misconception: mc.philo.droit_justice.critere-justice-mal-identifie
+        feedback: >
+          Deux confusions. Les principes de Rawls ne recouvrent pas la
+          distinction aristotélicienne. Et celle-ci ne porte pas sur le NOMBRE de
+          personnes mais sur le TYPE de rapport : un échange entre deux parties
+          (commutative) ou une répartition selon les mérites (distributive).
+    correct_feedback: >
+      L'égale liberté prime, de façon lexicale : le principe de différence ne
+      s'applique qu'ensuite. Et le voile d'ignorance ne vaut qu'au moment du
+      choix des principes, dans la position originelle — pas dans la société une
+      fois constituée.
+    solution: |
+      **Les deux principes.**
+      1. *Égale liberté* : chacun a un droit égal au système le plus étendu de
+         libertés de base compatible avec le même système pour tous.
+      2. *Différence* : les inégalités ne sont justes que si elles profitent aux
+         plus défavorisés, et si les positions sont ouvertes à tous.
+
+      **La priorité lexicale.** Le second ne s'applique qu'une fois le premier
+      satisfait : aucun gain matériel n'achète une liberté de base.
+
+      **Le voile.** Il retire aux contractants la connaissance de leur place —
+      classe, talents, conception du bien — pour que les principes choisis ne
+      soient taillés pour personne. Il est levé dès que les principes sont
+      choisis.
+
+  - id: DRJ-28
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: philo_droit_justice
+    tags: [rawls, legalite, legitimite]
+    stem: >
+      Une loi respecte scrupuleusement la procédure de son système juridique
+      mais restreint fortement une liberté de base au nom d'un gain économique
+      collectif. Comment l'apprécier ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est légale, et injuste au sens de Rawls : la priorité de l'égale liberté interdit d'échanger une liberté de base contre un avantage matériel."
+        correct: true
+      - id: B
+        text: "Elle est juste au sens de Rawls, puisque le principe de différence autorise une inégalité qui profite au plus grand nombre."
+        correct: false
+        misconception: mc.philo.droit_justice.priorite-principes-rawls-inversee
+        feedback: >
+          Le principe de différence ne s'applique qu'APRÈS que l'égale liberté
+          est garantie : il ne peut donc jamais servir à la rogner. Sans cette
+          priorité, la théorie autoriserait une prospérité fondée sur la
+          privation de libertés, ce que Rawls écarte explicitement.
+      - id: C
+        text: "Étant légale, elle ne peut pas être illégitime : les deux notions s'excluent, et une loi ne peut relever que de l'une ou de l'autre."
+        correct: false
+        misconception: mc.philo.droit_justice.legalite-legitimite-mutuellement-exclusives
+        feedback: >
+          Loin de s'exclure, les deux notions coïncident le plus souvent : la
+          plupart des lois sont légales ET légitimes. Ce chapitre montre
+          seulement qu'elles PEUVENT diverger — et le cas présent en est un
+          exemple, non une impossibilité logique.
+      - id: D
+        text: "Elle cesse d'obliger dès qu'un citoyen la juge injuste : l'illégitimité ressentie suffit à autoriser la désobéissance."
+        correct: false
+        misconception: mc.philo.droit_justice.legitimite-justifie-desobeissance-automatique
+        feedback: >
+          Le jugement individuel ouvre la contestation, il ne délie pas de
+          l'obéissance. Rawls lui-même encadre strictement la désobéissance
+          civile : injustice grave et manifeste, recours légaux épuisés, acte
+          public, sanction acceptée.
+    correct_feedback: >
+      Légale et injuste : les deux jugements portent sur des plans différents et
+      peuvent parfaitement coexister. La priorité lexicale de l'égale liberté
+      interdit précisément le troc que cette loi opère.
+    solution: |
+      **Deux questions distinctes.** « Cette loi est-elle valide ? » relève de la
+      procédure. « Est-elle juste ? » relève des principes. Rien n'oblige les
+      réponses à coïncider.
+
+      **Le verdict rawlsien.** La priorité lexicale du premier principe interdit
+      d'échanger une liberté de base contre un gain de bien-être, même
+      largement réparti.
+
+      **Ce qui suit pratiquement.** Contester par le droit, faire évoluer la loi ;
+      et, dans les cas extrêmes seulement, la désobéissance civile — encadrée,
+      publique, assumée.
+
+  - id: DRJ-29
+    rung: "R0"
+    difficulty_level: 3
+    skill_code: philo_droit_justice
+    tags: [accroche, lecture-de-texte]
+    stem: >
+      Dans l'affaire de l'usine et de la rivière, le tribunal déboute les
+      plaignants. Sur quoi porte exactement sa décision ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Sur le silence de la loi : nulle règle n'interdisait alors ce rejet — le dommage, lui, n'est pas contesté."
+        correct: true
+      - id: B
+        text: "Sur la réalité du dommage : le tribunal estime que l'eau n'était pas réellement impropre à la consommation."
+        correct: false
+        misconception: mc.philo.droit_justice.dommage-r0-mal-lu
+        feedback: >
+          Le texte est explicite : le dommage est réel et le tribunal ne le
+          conteste pas. C'est ce qui rend le cas philosophiquement intéressant —
+          l'injustice ressentie ne vient pas d'une erreur sur les faits, mais de
+          l'absence de règle applicable.
+      - id: C
+        text: "Sur un vice de procédure : le tribunal a commis une erreur de droit en n'appliquant pas la loi existante."
+        correct: false
+        misconception: mc.philo.droit_justice.silence-loi-confondu-vice-procedure
+        feedback: >
+          Aucune loi n'existait sur ce point précis : ce n'est pas une erreur du
+          tribunal, c'est un SILENCE du droit. La distinction est essentielle —
+          une erreur se corrige par un recours, un silence ne se comble que par
+          une loi nouvelle.
+      - id: D
+        text: "Sur un argument avancé par les juges de Nuremberg, repris ici pour justifier l'acquittement."
+        correct: false
+        misconception: mc.philo.droit_justice.argument-r0-mal-identifie
+        feedback: >
+          L'argument « nous n'avons fait qu'appliquer la loi » fut invoqué à
+          Nuremberg par certains ACCUSÉS, en défense, et non par les juges — qui
+          l'ont au contraire écarté. Attribuer un argument au mauvais camp
+          renverse le sens de l'exemple.
+    correct_feedback: >
+      Le tribunal ne conteste ni le dommage ni sa gravité : il constate qu'aucune
+      règle n'interdisait ce rejet au moment des faits. C'est le silence de la
+      loi, non une erreur de jugement — et c'est ce qui ouvre l'écart entre le
+      légal et le juste.
+    solution: |
+      **Ce que le tribunal admet.** Le dommage : eau non potable, enfants
+      malades. Rien de cela n'est mis en doute.
+
+      **Ce sur quoi il fonde sa décision.** L'absence de règle applicable au
+      moment des faits. Un juge ne peut pas condamner sur le fondement d'une
+      norme qui n'existait pas.
+
+      **Pourquoi ce n'est pas un vice de procédure.** Une erreur de droit se
+      corrige en appel ; un silence de la loi ne se comble que par le
+      législateur. L'exemple sert à montrer que le droit peut être fidèle à
+      lui-même et laisser un sentiment d'injustice entier.
+
+  - id: DRJ-30
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: philo_droit_justice
+    tags: [droit-positif, droit-naturel, lecture-de-texte]
+    stem: >
+      Que peut-on légitimement conclure de l'exemple de l'usine et de la
+      rivière ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Qu'un système juridique peut, sur un point donné, ne rien avoir à dire — sans que ce silence soit une faute du juge."
+        correct: true
+      - id: B
+        text: "Que toute loi finit nécessairement par produire une injustice, et qu'aucun tribunal ne rend jamais de décision juste."
+        correct: false
+        misconception: mc.philo.droit_justice.generalisation-abusive-exemple-ponctuel
+        feedback: >
+          Un cas ne fonde pas une loi générale. L'exemple montre qu'un écart est
+          POSSIBLE entre le légal et le juste ; il ne montre pas que cet écart
+          soit la règle, ni que les tribunaux se trompent d'ordinaire. Une
+          généralisation de cette ampleur demanderait tout autre chose qu'une
+          anecdote.
+      - id: C
+        text: "Qu'une loi existait en réalité, mais que le tribunal l'a jugée trop sévère pour l'appliquer."
+        correct: false
+        misconception: mc.philo.droit_justice.fait-invente-hors-texte
+        feedback: >
+          Le texte ne dit rien de tel : il établit qu'aucune règle n'existait sur
+          ce point. Inventer une loi que le tribunal aurait écartée transforme un
+          silence du droit en une décision discrétionnaire — et fait disparaître
+          le problème que l'exemple sert à poser.
+      - id: D
+        text: "Que l'esclavage n'a jamais été légal nulle part, puisque le droit positif ne peut pas contredire à ce point le droit naturel."
+        correct: false
+        misconception: mc.philo.droit_justice.contredit-fait-etabli-par-texte
+        feedback: >
+          Le cours établit explicitement le contraire : l'esclavage a été légal à
+          certaines époques et dans certains États. C'est même l'exemple le plus
+          fort de l'écart entre droit positif et droit naturel — le nier prive le
+          chapitre de son point d'appui historique.
+    correct_feedback: >
+      L'exemple établit une POSSIBILITÉ — celle d'un écart entre ce qui est légal
+      et ce qui paraît juste — et rien de plus. Il n'autorise ni à généraliser à
+      toute loi, ni à inventer des faits qu'il ne contient pas.
+    solution: |
+      **Ce que l'exemple établit.** Qu'un système juridique peut rester muet là
+      où un dommage est réel, et que le juge, tenu par la loi, ne peut pas y
+      suppléer.
+
+      **Ce qu'il n'établit pas.** Que toute loi soit injuste, que tout tribunal
+      se trompe, ou qu'il faille renoncer au droit. Un exemple ouvre une
+      question ; il ne la tranche pas dans toute sa généralité.
+
+      **La règle de lecture.** Ne rien ajouter au texte, ne rien lui retirer. Les
+      faits qu'il pose — le dommage réel, l'absence de loi, la légalité passée de
+      l'esclavage — sont les prémisses avec lesquelles il faut travailler.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après DRJ-25 à DRJ-30. Quatorze familles siégeaient
+# sous le plancher de 3 items du banc — la thèse méthodologique de Kelsen,
+# l'ordre lexical des principes de Rawls, le rapport légalité/légitimité, et
+# une série de lectures fautives de l'accroche (nier le dommage, inventer une
+# loi, confondre le silence de la loi avec un vice de procédure). Tableau
+# GÉNÉRÉ contre web/scripts/lib/couverture-compte.mjs, gardé par
+# scripts/resume-couverture.mjs.
 coverage_summary:
-  # Computed by loading this file with js-yaml and tallying every
-  # choices[].misconception value per item — an item counts once per
-  # misconception if ANY of its distractors carries that id (house
-  # convention, matching content/philo/la-liberte/theorie-experience/
-  # analyse-de-texte's own items.yaml). This is a LEGACY end-bank
-  # (DRJ-1..DRJ-24 predate per-distractor tagging — Gap-4 finding, task
-  # instruction) retrofitted in this pass: every one of the 72 distractors
-  # across the 24 items now carries a real misconception id (no null
-  # tags), which is stricter than the house default. `primary_misconception`
-  # was also added per item (a second, item-level tagging layer, matching
-  # the convention set by content/pc/rc-charge/items.yaml for legacy
-  # backfills) so both a per-distractor AND a per-item view of the
-  # inventory exist. Per the recipe's "Honest coverage" judgment call,
-  # floor gaps below are reported truthfully rather than padded.
-  total_items: 24
-  floor: 3
-  floor_met: false
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
   per_misconception:
-    mc.philo.droit_justice.faux-dilemme-legalite-justice: 5
-    mc.philo.droit_justice.injustice-ressentie-implique-erreur-juridique: 3
-    mc.philo.droit_justice.paires-notions-confondues-synonymes: 6
-    mc.philo.droit_justice.droit-naturel-mal-defini: 3
-    mc.philo.droit_justice.debat-positivisme-jusnaturalisme-mal-restitue: 3
-    mc.philo.droit_justice.critere-de-validite-mal-identifie: 2
-    mc.philo.droit_justice.positivisme-separation-mal-comprise: 1
-    mc.philo.droit_justice.contredit-fait-etabli-par-texte: 2
-    mc.philo.droit_justice.critere-justice-mal-identifie: 2
-    mc.philo.droit_justice.commutative-distributive-inversees: 3
-    mc.philo.droit_justice.formes-justice-non-distinguees: 3
-    mc.philo.droit_justice.voile-ignorance-mecanisme-mal-compris: 2
-    mc.philo.droit_justice.principe-difference-mal-compris: 3
-    mc.philo.droit_justice.priorite-principes-rawls-inversee: 1
-    mc.philo.droit_justice.legalite-legitimite-mutuellement-exclusives: 1
-    mc.philo.droit_justice.legitimite-justifie-desobeissance-automatique: 1
-    mc.philo.droit_justice.legitimite-reduite-au-pouvoir-de-fait: 2
-    mc.philo.droit_justice.dommage-r0-mal-lu: 2
-    mc.philo.droit_justice.silence-loi-confondu-vice-procedure: 2
-    mc.philo.droit_justice.fait-invente-hors-texte: 2
-    mc.philo.droit_justice.generalisation-abusive-exemple-ponctuel: 2
-    mc.philo.droit_justice.argument-r0-mal-identifie: 2
-    mc.philo.droit_justice.methode-dissertation-mal-appliquee: 3
-  notes: >-
-    Every distractor across the 24 legacy items now carries a real
-    misconception id (no null tags) — the Gap-4 fix this pass exists to
-    make. 9 of 23 models clear the ≥3 floor. FOURTEEN do not, reported
-    honestly rather than padded — mostly R2/R3/R5/R6/R0-comprehension
-    distinctions that are real (each traceable to a specific rung's own
-    "erreur à éviter" box or a specific wrong reading of R0's facts) but
-    thin in this 24-item legacy bank: positivisme-separation-mal-comprise
-    (1, DRJ-15), priorite-principes-rawls-inversee (1, DRJ-19),
-    legalite-legitimite-mutuellement-exclusives (1, DRJ-6),
-    legitimite-justifie-desobeissance-automatique (1, DRJ-20), and eight
-    more at 2/24 — a follow-up item pass should add 1-2 items each,
-    concentrated on R2/R5/R6, the thinnest rungs in this bank. No
-    misconception in this inventory sits at 0 (unlike la-liberte's
-    autrui-limite-par-nature or theorie-experience's critere-scientifique-
-    reduit-a-falsifiabilite): this notion's r-bac سؤال maps directly onto
-    R2/R3/R6, content the lesson already teaches in full, rather than
-    opening a new axis — so no genuinely new misconception was surfaced by
-    the sourced exam text (see exercises.yaml's file-header note on this
-    same point). cp-bac-positivisme in checkpoints.yaml still gives every
-    student a dedicated in-lesson probe immediately before the sourced
-    exercise, reinforcing rather than priming unfamiliar content.
-    Dual-tagging (also_reveals) was not needed in this pass: every
-    distractor's wrong model mapped cleanly onto exactly one inventory tag
-    once the inventory was consolidated to avoid near-duplicate
-    near-singleton ids (an early draft of this inventory had 37 distinct
-    tags with only 5 clearing the floor; consolidating genuinely-related
-    wrong models under shared ids — e.g. folding the R0 "légal=juste" and
-    R6 "légal=légitime" dilemmas into one faux-dilemme-legalite-justice,
-    or folding all three R7 method-diagnosis errors into one
-    methode-dissertation-mal-appliquee — brought this down to 23 tags and
-    9 floor-clearing models, a ratio much closer to theorie-experience's
-    own 16-tags/24-items, 10-clearing précédent than the fragmented first
-    draft).
-    Length rebalance (recipe's philo addendum, mandatory): verified
-    programmatically with a throwaway node+js-yaml script (deleted before
-    this task's completion, per instruction) — see the task's final report
-    for the fresh re-run result.
+    mc.philo.droit_justice.faux-dilemme-legalite-justice:                 { count: 5, items: [DRJ-1, DRJ-6, DRJ-9, DRJ-12, DRJ-20] }
+    mc.philo.droit_justice.injustice-ressentie-implique-erreur-juridique: { count: 3, items: [DRJ-1, DRJ-10, DRJ-21] }
+    mc.philo.droit_justice.paires-notions-confondues-synonymes:           { count: 6, items: [DRJ-1, DRJ-2, DRJ-8, DRJ-9, DRJ-10, DRJ-21] }
+    mc.philo.droit_justice.droit-naturel-mal-defini:                      { count: 3, items: [DRJ-2, DRJ-12, DRJ-13] }
+    mc.philo.droit_justice.debat-positivisme-jusnaturalisme-mal-restitue: { count: 3, items: [DRJ-3, DRJ-14, DRJ-15] }
+    mc.philo.droit_justice.critere-de-validite-mal-identifie:             { count: 3, items: [DRJ-3, DRJ-6, DRJ-25] }
+    mc.philo.droit_justice.positivisme-separation-mal-comprise:           { count: 3, items: [DRJ-15, DRJ-25, DRJ-26] }
+    mc.philo.droit_justice.contredit-fait-etabli-par-texte:               { count: 3, items: [DRJ-12, DRJ-14, DRJ-30] }
+    mc.philo.droit_justice.critere-justice-mal-identifie:                 { count: 3, items: [DRJ-4, DRJ-16, DRJ-27] }
+    mc.philo.droit_justice.commutative-distributive-inversees:            { count: 3, items: [DRJ-4, DRJ-16, DRJ-17] }
+    mc.philo.droit_justice.formes-justice-non-distinguees:                { count: 3, items: [DRJ-4, DRJ-16, DRJ-17] }
+    mc.philo.droit_justice.voile-ignorance-mecanisme-mal-compris:         { count: 3, items: [DRJ-5, DRJ-18, DRJ-27] }
+    mc.philo.droit_justice.principe-difference-mal-compris:               { count: 3, items: [DRJ-5, DRJ-18, DRJ-19] }
+    mc.philo.droit_justice.priorite-principes-rawls-inversee:             { count: 3, items: [DRJ-19, DRJ-27, DRJ-28] }
+    mc.philo.droit_justice.legalite-legitimite-mutuellement-exclusives:   { count: 3, items: [DRJ-6, DRJ-25, DRJ-28] }
+    mc.philo.droit_justice.legitimite-justifie-desobeissance-automatique: { count: 3, items: [DRJ-20, DRJ-26, DRJ-28] }
+    mc.philo.droit_justice.legitimite-reduite-au-pouvoir-de-fait:         { count: 3, items: [DRJ-20, DRJ-21, DRJ-26] }
+    mc.philo.droit_justice.dommage-r0-mal-lu:                             { count: 3, items: [DRJ-7, DRJ-11, DRJ-29] }
+    mc.philo.droit_justice.silence-loi-confondu-vice-procedure:           { count: 3, items: [DRJ-7, DRJ-11, DRJ-29] }
+    mc.philo.droit_justice.fait-invente-hors-texte:                       { count: 3, items: [DRJ-7, DRJ-11, DRJ-30] }
+    mc.philo.droit_justice.generalisation-abusive-exemple-ponctuel:       { count: 3, items: [DRJ-8, DRJ-10, DRJ-30] }
+    mc.philo.droit_justice.argument-r0-mal-identifie:                     { count: 3, items: [DRJ-8, DRJ-9, DRJ-29] }
+    mc.philo.droit_justice.methode-dissertation-mal-appliquee:            { count: 3, items: [DRJ-22, DRJ-23, DRJ-24] }
+  total_items: 30
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 4
+    R1: 3
+    R2: 4
+    R3: 4
+    R4: 3
+    R5: 5
+    R6: 4
+    R7: 3
+  honest_state: >-
+    Les vingt-trois misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Vingt et une y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.
