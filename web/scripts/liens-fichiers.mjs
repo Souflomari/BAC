@@ -20,6 +20,7 @@
  *     brouillons ont été promus.
  *   · `docs/README-docs.md`, l'index de la documentation, pointait
  *     `docs/RULES.md` au lieu de `docs/Rules/RULES.md`.
+ *     CHEMIN DISPARU: docs/RULES.md — cité ici comme l'exemple du défaut.
  *
  * CE QU'IL MESURE. Tout chemin ressemblant à un fichier du dépôt, cité dans
  * un fichier suivi par git (markdown, YAML, TS, MJS, workflows). Un chemin
@@ -72,10 +73,15 @@ const CHEMIN = new RegExp(`(?<![\\w/.@-])((?:${RACINES})/[A-Za-z0-9._\\-/]+\\.[A
  *
  * Même règle que `RECOUVREMENT ASSUMÉ:` pour la sonde de contraste : un
  * document vivant a parfois de bonnes raisons de nommer ce qui n'existe
- * plus — « ceci remplace l'ancien `scripts/machin.py` », « le diagramme X
- * est retiré, ne le ressuscitez pas ». Il l'écrit alors noir sur blanc :
+ * plus — « ceci remplace l'ancien script Python de la lane média », « le
+ * diagramme X est retiré, ne le ressuscitez pas ». Il l'écrit noir sur
+ * blanc :
  *
  *     CHEMIN DISPARU: scripts/gemini_media.py — remplacé par le MCP gemini-image
+ *
+ * (Et cet instrument s'applique à lui-même : les deux chemins d'exemple
+ * ci-dessus portent leur propre marqueur. Une sonde qui s'exempterait
+ * silencieusement serait la première à mentir.)
  *
  * La sonde n'exempte QUE le chemin nommé, et seulement dans ce fichier-là.
  * Un marqueur qui vaudrait pour tout un fichier ferait taire l'instrument
@@ -96,6 +102,9 @@ const ARCHIVE = [
   /^docs\/reestablish-state/,
   // Déclarés périmés par `.claude/CLAUDE.md` lui-même, en attente de fusion.
   /^docs\/grounding\//,
+  // L'archive, littéralement : des documents conservés pour ce qu'ils DISAIENT
+  // à leur date, dont les chemins ont bougé depuis. C'est leur raison d'être.
+  /^docs\/archive\//,
 ];
 const archive = (f) => ARCHIVE.some((r) => r.test(f));
 

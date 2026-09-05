@@ -1976,3 +1976,59 @@ bascule production est le pire endroit où laisser pourrir un chemin.**
 > **La règle que cet arc ajoute.** Un renvoi est une INSTRUCTION. Un renvoi
 > mort est une instruction qu'on croit avoir donnée — et personne ne s'en
 > aperçoit, parce que c'est le lecteur suivant qui paie, en silence.
+
+### 10.14 Le document « où nous en sommes » décrivait encore l'application Flutter
+
+`.claude/CLAUDE.md` désigne `docs/grounding/` comme les documents d'état
+courant — le « où nous en sommes » qu'une session lit pour se situer.
+`architecture.md` s'y ouvrait sur :
+
+> « Le MVP est : **Frontend : Flutter 3.x + Dart**, Riverpod, `go_router`…
+> **Next.js n'apparaît nulle part dans le dépôt.** »
+
+C'était vrai en juin 2026. Depuis la reconstruction (ADR 0016), Next.js EST
+tout le frontend et il ne reste pas une ligne de Flutter dans l'application.
+Le document restait néanmoins la première lecture d'orientation de toute
+session — et il enseignait une pile qui n'existe plus.
+
+**Pourquoi il n'avait pas été repris.** La proposition de réconciliation de
+2026-06 disait, pour cette ligne précisément : « **bloqué sur une décision
+humaine** — ne pas éditer §1/§3 tant que la décision de pile n'est pas
+actée ». La décision A ÉTÉ actée depuis — ADR 0016, et `.claude/CLAUDE.md`
+écrit noir sur blanc « The frontend architecture — RESOLVED ». **Le blocage
+était levé et personne n'était revenu décrocher l'étiquette.**
+
+> **La règle que ça ajoute.** Un blocage consigné doit nommer ce qui le
+> lève. Sinon il survit à sa cause, et le document qu'il protégeait pourrit
+> sous une étiquette « en attente » que plus rien n'attend.
+
+**Ce qui a été fait.** Les deux documents d'architecture de l'ère Flutter —
+`docs/grounding/architecture.md` et son jumeau de la racine, qui disaient la
+même chose périmée à deux endroits — sont archivés tels quels sous
+`docs/archive/architecture-ere-flutter-2026-06.md` et
+`docs/archive/architecture-apercu-ere-flutter.md`. Ce sont des documents d'HISTOIRE, et ils gardent
+leur valeur comme tels. `docs/grounding/architecture.md` est réécrit à
+partir d'une mesure du dépôt : la pile, les routes, la forme d'une notion,
+le schéma tel que les MIGRATIONS le déclarent, la boucle du modèle
+apprenant, et une section « ce que ce document ne dit pas ».
+
+**La discipline qui le distingue de son prédécesseur : chaque chiffre porte
+la commande qui le produit.** 62 notions, 49 migrations numérotées, 25
+tables, 23 fonctions, 6 fonctions edge, 102 fichiers source du site — aucun
+n'est recopié d'un document antérieur ; tous sont re-dérivables en une
+ligne. C'est le remède exact au défaut qui a tué la version précédente, et
+c'est le §10.8 appliqué à un troisième sujet.
+
+**Ce qui reste explicitement NON vérifié**, et le document le dit en gras à
+l'endroit où ça compte : la section « backend » décrit ce que les fichiers
+de migration DÉCLARENT. **La synchro de production reste NON VÉRIFIÉE.**
+`schema-reconciliation.md` et `known-issues.md` restent stales, avec leurs
+propositions en attente — leurs étiquettes, elles, sont exactes.
+
+**Et la porte a mordu son auteur, deux fois.** En publiant le document,
+`liens-fichiers --porte` a échoué : `docs/archive/` n'était pas dans sa zone
+d'archive (un document archivé cite forcément des chemins d'avant), et le
+script lui-même nommait deux chemins d'exemple qui n'existent pas. Les deux
+sont réparés — le second en faisant porter à l'instrument son propre
+marqueur `CHEMIN DISPARU:`. **Une sonde qui s'exempterait silencieusement
+serait la première à mentir.**

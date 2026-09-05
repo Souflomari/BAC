@@ -33,12 +33,21 @@ rather than reaching outside it. Loaded per task by Claude Code.
 ### `docs/grounding/` — *where we are*
 Current-state documents, reconciled against the actual repo:
 - `architecture.md` — what exists today (stack, structure, conventions).
+  **Réconcilié le 2026-09-05** : re-mesuré contre le dépôt, avec la commande
+  qui produit chaque chiffre. La version d'avant décrivait l'application
+  Flutter et vit désormais dans `docs/archive/`.
 - `schema-reconciliation.md` — the database state and migration path.
-- `known-issues.md` — the catalogued, severity-scored issue list.
+  **STALE.**
+- `known-issues.md` — the catalogued, severity-scored issue list. **STALE.**
 
 These are **not write-once.** They are reconciled whenever they drift, and
 always after a dormancy or a major change. When stale, proposed
 reconciliations live in `docs/reestablish-state/` pending review.
+
+Et la leçon que la réconciliation de `architecture.md` a coûtée : **un
+document d'état sans le moyen de le re-mesurer est juste le jour où on
+l'écrit.** Le nouveau porte, à côté de chaque chiffre, la commande qui le
+produit.
 
 ### `docs/decisions/*.md` — *what we decided and why*
 The ADR (Architecture Decision Record) trail. Numbered sequentially,

@@ -38,8 +38,14 @@ Read the right document for the task at hand:
   vision and pending architecture decisions — see "Open decisions" below.]**
 - **`docs/grounding/`** — *where we are.* Current-state documents:
   `architecture.md`, `schema-reconciliation.md`, `known-issues.md`.
-  **[STATUS: stale — reconciliation proposed in
-  `docs/reestablish-state/`, pending human review and merge.]**
+  **[STATUS, 2026-09-05: `architecture.md` RÉCONCILIÉ — re-mesuré contre le
+  dépôt et réécrit ; la version précédente décrivait encore l'application
+  Flutter comme l'état courant et affirmait que « Next.js n'apparaît nulle
+  part dans le dépôt ». Elle est archivée sous `docs/archive/`. Le blocage
+  invoqué par la proposition de 2026-06 (« ne pas toucher au cadrage
+  frontend tant que la décision de pile n'est pas actée ») était levé depuis
+  l'ADR 0016. `schema-reconciliation.md` et `known-issues.md` restent
+  STALES, avec leurs propositions dans `docs/reestablish-state/`.]**
 - **`docs/decisions/*.md`** — *what we decided and why.* The ADR trail.
   Numbered, append-only history. Referenced for context on past
   decisions. **ADR 0025 consolidates the July-2026 sprint's first arc**
