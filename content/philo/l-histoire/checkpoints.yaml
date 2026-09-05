@@ -1,0 +1,501 @@
+notion: l-histoire
+skill_code: philo_l_histoire
+
+# ──────────────────────────────────────────────────────────────────────────────
+# POINTS D'ARRÊT DANS LA LEÇON (campagne de conversion du sommet — philo)
+#
+# Sondes formatives posées DANS la leçon, pas le banc de fin. Aucun score,
+# aucune série, aucun décompte ; le plancher du banc n'est pas modifié.
+#
+# Ce fichier ne convertit PAS le sommet. La leçon garde son chapitre de méthode
+# et son « À toi de continuer » : `exercises.yaml` exigerait une annale
+# nationale, et docs/sujets/philo/l-histoire.md établit qu'aucun sujet
+# scientifique ne porte sur التاريخ — la مجزوءة الوضع البشري n'est examinée,
+# en filière scientifique, que sur الشخص et الغير. C'est un ARBITRAGE DE
+# PÉRIMÈTRE remonté au décideur, encore ouvert. Les points d'arrêt, eux, ne
+# dépendent d'aucune annale.
+#
+# Placement (identifiants = marqueurs [[checkpoint:…]] de lesson.md) :
+#   cp-r0-predict   (DANS le chapitre 1) — le manuel ou la grand-mère.
+#   cp-r1-quatre-mots (après le chapitre 2) — passé, mémoire, histoire,
+#                   Histoire.
+#   cp-r2-hegel     (après le chapitre 3) — la ruse n'annule pas la liberté.
+#   cp-r3-marx      (après le chapitre 4) — le sens du renversement.
+#   cp-r4-aron      (après le chapitre 5) — contingent n'est pas absurde.
+#   cp-r5-bloch     (après le chapitre 6) — pas d'accès direct, donc plus de
+#                   méthode.
+#   cp-r6-ricoeur   (après le chapitre 7) — juste mémoire.
+#   cp-r7-methode   (après le chapitre 8) — ce qu'est une problématique.
+#
+# CHAQUE distracteur porte un identifiant réel de l'inventaire de items.yaml.
+# Aucune erreur nouvelle n'est déclarée.
+#
+# ÉQUILIBRE DES LONGUEURS — non négociable en philo : la clé n'est ni la plus
+# longue ni la plus courte de façon repérable. Vérifié par
+# `node scripts/indice-longueur.mjs --porte`, jamais à l'œil.
+#
+# Garde de périmètre : 2ème Bac — Hegel, Marx, Aron, Bloch, Ricœur, et la
+# méthode de la dissertation. Aucun auteur hors de la leçon n'est convoqué.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: philo_l_histoire
+    tags: [checkpoint, formative, misconception_driven, philo_l_histoire, hook_commit]
+    primary_misconception: mc.philo.histoire.objection-du-chapitre-1-mal-lue
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Le manuel range l'exode rural parmi les étapes nécessaires de la
+      modernisation ; ta grand-mère raconte des choix et des hasards qui
+      auraient pu tourner autrement. **Engage-toi avant de lire la suite :**
+      qui dit vrai ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Le manuel : vu de haut et avec le recul, l'épisode s'inscrit dans un mouvement d'ensemble que rien n'aurait vraiment pu empêcher de se produire."
+        correct: false
+        misconception: mc.philo.histoire.objection-du-chapitre-1-mal-lue
+        feedback: |
+          Modèle détecté : trancher là où l'accroche ouvre. C'est la première
+          des deux réponses d'élèves, et elle bute aussitôt sur un fait
+          embarrassant : certaines familles du même douar, exposées à la même
+          sécheresse, sont restées. Une nécessité d'ensemble qui laisse ces
+          écarts inexpliqués demande, au minimum, à être précisée.
+
+      - id: B
+        text: "Ni l'un ni l'autre à lui seul : l'épisode pose deux questions distinctes — l'Histoire a-t-elle une direction, et peut-on la connaître objectivement ?"
+        correct: true
+        feedback: |
+          Oui, et c'est le geste que la leçon te demande d'apprendre : une
+          accroche ne départage pas, elle fait apparaître un problème. Les deux
+          récits ne se contredisent d'ailleurs pas terme à terme — l'un parle
+          d'un processus d'ensemble, l'autre d'un vécu singulier. Distinguer ces
+          plans est l'objet du chapitre suivant.
+
+      - id: C
+        text: "Ta grand-mère : elle a vécu l'épisode, et un témoignage direct constitue toujours une connaissance plus sûre qu'un récit reconstitué après coup."
+        correct: false
+        misconception: mc.philo.histoire.memoire-histoire-passe-confondus
+        feedback: |
+          Modèle détecté : confondre mémoire et histoire. Un témoignage est un
+          vécu, précieux et subjectif ; l'histoire est un travail critique
+          construit à distance, sur des sources qu'il faut interroger. Le
+          chapitre 2 sépare quatre mots que le langage courant mélange, et cette
+          distinction change toute la question.
+
+      - id: D
+        text: "Ta grand-mère : puisque les choses auraient pu tourner autrement, c'est qu'aucune cause n'était à l'œuvre et que tout, dans cet épisode, tenait au pur hasard."
+        correct: false
+        misconception: mc.philo.histoire.contingence-lue-comme-absurdite
+        feedback: |
+          Modèle détecté : passer de « cela aurait pu être autrement » à
+          « rien n'a de cause ». Ce sont deux affirmations très différentes, et
+          Aron, au chapitre 5, tiendra la première sans jamais la seconde : on
+          peut expliquer causalement un événement sans qu'aucune loi ait garanti
+          d'avance ce résultat plutôt qu'un autre.
+
+  - id: cp-r1-quatre-mots
+    rung: "R1"
+    habilete: application
+    skill_code: philo_l_histoire
+    tags: [checkpoint, formative, misconception_driven, philo_l_histoire]
+    primary_misconception: mc.philo.histoire.memoire-histoire-passe-confondus
+    item_source: original
+    lesson_placement: after_R1
+
+    stem: |
+      Le récit de ta grand-mère, le chapitre du manuel, l'exode lui-même tel
+      qu'il a eu lieu, et le devenir collectif dont il fait partie. À quelles
+      notions ces quatre choses correspondent-elles ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Mémoire, histoire comme discipline, passé, et Histoire comme processus — quatre réalités distinctes que le langage courant recouvre d'un même mot."
+        correct: true
+        feedback: |
+          Oui, et l'ordre importe. Le passé est ce qui a eu lieu, une fois pour
+          toutes. La mémoire en garde une trace vécue. L'histoire construit un
+          récit critique de ce passé. L'Histoire, elle, est le devenir collectif
+          dont ce récit essaie de rendre compte — la carte et le territoire, à
+          ne jamais confondre.
+
+      - id: B
+        text: "Quatre façons de dire la même chose : le passé, une fois raconté, devient de l'histoire, et l'histoire une fois collective devient l'Histoire, sans rupture entre les niveaux."
+        correct: false
+        misconception: mc.philo.histoire.memoire-histoire-passe-confondus
+        feedback: |
+          Modèle détecté : faire des quatre notions les degrés d'une même
+          échelle. Ce ne sont pas des étapes mais des choses de nature
+          différente : un fait, un vécu, un savoir construit, un processus. Le
+          récit du manuel n'est pas l'exode devenu public — c'est une
+          reconstitution, qui peut être fausse.
+
+      - id: C
+        text: "Deux mémoires et deux histoires : le manuel est la mémoire officielle, le récit de ta grand-mère la mémoire privée, et les deux ont exactement la même valeur de preuve."
+        correct: false
+        misconception: mc.philo.histoire.memoire-histoire-passe-confondus
+        feedback: |
+          Modèle détecté : ranger le travail de l'historien du côté de la
+          mémoire. Le manuel n'est pas un souvenir : il résulte, en principe,
+          d'une critique des sources. C'est ce qui le rend contestable
+          autrement qu'un témoignage — on peut lui demander ses sources, ce
+          qu'on ne demande pas à un souvenir.
+
+      - id: D
+        text: "Le témoignage de ta grand-mère n'entre dans aucune de ces catégories : n'ayant pas été vérifié par une méthode critique, il ne relève ni de la mémoire ni de l'histoire."
+        correct: false
+        misconception: mc.philo.histoire.memoire-sacralisee-ou-disqualifiee
+        feedback: |
+          Modèle détecté : disqualifier la mémoire faute de méthode. Un
+          témoignage EST une mémoire, à part entière — c'est même sa définition,
+          et il constitue une source que l'historien interroge. Ne pas être un
+          travail d'historien ne le prive d'aucune valeur ; cela dit seulement
+          ce qu'il est.
+
+  - id: cp-r2-hegel
+    rung: "R2"
+    habilete: comprehension
+    skill_code: philo_l_histoire
+    tags: [checkpoint, formative, misconception_driven, philo_l_histoire]
+    primary_misconception: mc.philo.histoire.ruse-de-la-raison-durcie-en-determinisme
+    item_source: original
+    lesson_placement: after_R2
+
+    stem: |
+      Chez Hegel, comment la Raison se sert-elle des passions humaines pour
+      réaliser la liberté dans l'Histoire ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Les individus poursuivent leurs fins particulières en toute liberté, et cette poursuite produit un résultat d'ensemble qu'aucun d'eux ne visait."
+        correct: true
+        feedback: |
+          Oui — et c'est ce qui rend le mécanisme intéressant plutôt que
+          fataliste. La nécessité, chez Hegel, ne s'exerce pas contre la
+          liberté : elle passe PAR elle. Les passions ne sont pas contraintes,
+          elles sont utilisées — et c'est ce décalage entre l'intention
+          particulière et le résultat général qu'on appelle la ruse.
+
+      - id: B
+        text: "Elle prive les individus de toute initiative : ce sont des marionnettes qui exécutent un plan écrit d'avance, sans jamais rien décider ni pouvoir s'y soustraire."
+        correct: false
+        misconception: mc.philo.histoire.ruse-de-la-raison-durcie-en-determinisme
+        feedback: |
+          Modèle détecté : durcir la ruse de la raison en déterminisme. C'est
+          l'inverse de la thèse : la liberté effective des passions
+          particulières est le moyen même par lequel la nécessité se réalise. Si
+          les individus étaient des marionnettes, il n'y aurait aucune ruse — il
+          suffirait de commander.
+
+      - id: C
+        text: "Elle éclaire les grands hommes, qui comprennent le but de l'Histoire et agissent en toute conscience pour le réaliser au nom de l'humanité."
+        correct: false
+        misconception: mc.philo.histoire.ruse-de-la-raison-durcie-en-determinisme
+        feedback: |
+          Modèle détecté : faire des acteurs historiques des calculateurs
+          conscients. Le mot « ruse » dit précisément le contraire : le
+          résultat d'ensemble échappe à ceux qui le produisent. Un acteur
+          historique poursuit sa gloire ou son intérêt ; ce qu'il réalise en
+          fait, il ne le vise pas.
+
+      - id: D
+        text: "Elle agit par les rapports de production : ce sont les conditions matérielles de l'existence qui déterminent les idées, et non l'inverse."
+        correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
+        feedback: |
+          Modèle détecté : prêter à Hegel la thèse de Marx. C'est exactement la
+          confusion que le chapitre suivant sert à défaire : pour Hegel, ce qui
+          se réalise à travers l'Histoire est une Idée, un Esprit ; Marx lui
+          reproche précisément de placer la cause du côté des idées.
+
+  - id: cp-r3-marx
+    rung: "R3"
+    habilete: comprehension
+    skill_code: philo_l_histoire
+    tags: [checkpoint, formative, misconception_driven, philo_l_histoire]
+    primary_misconception: mc.philo.histoire.infrastructure-superstructure-inversees
+    item_source: original
+    lesson_placement: after_R3
+
+    stem: |
+      En quoi consiste exactement le renversement que Marx opère par rapport à
+      Hegel ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Il place la cause du côté des rapports matériels de production, dont les idées, le droit et les institutions ne sont que la superstructure."
+        correct: true
+        feedback: |
+          Oui — et le mot « renversement » est à prendre au pied de la lettre :
+          la même architecture, retournée. Là où Hegel fait descendre l'Histoire
+          d'une Idée, Marx la fait monter des conditions matérielles. Ce qui
+          fait avancer le processus n'est plus l'Esprit mais la lutte des
+          classes.
+
+      - id: B
+        text: "Il montre que ce sont les idées d'une époque qui déterminent ses rapports de production, l'infrastructure économique découlant de la superstructure idéologique."
+        correct: false
+        misconception: mc.philo.histoire.infrastructure-superstructure-inversees
+        feedback: |
+          Modèle détecté : les deux étages inversés. C'est la thèse que Marx
+          COMBAT, et elle décrit assez bien Hegel. Retiens le sens de la
+          détermination : l'infrastructure économique est en bas et détermine,
+          la superstructure est au-dessus et est déterminée.
+
+      - id: C
+        text: "Il abandonne toute idée de direction dans l'Histoire : après lui, il n'y a plus ni sens ni processus, seulement une succession d'événements sans ordre."
+        correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
+        feedback: |
+          Modèle détecté : prêter à Marx la position d'Aron. Marx, comme Hegel,
+          pense l'Histoire comme un processus orienté, traversé par des étapes
+          — il change la nature du moteur, pas l'idée qu'il y en ait un. C'est
+          Aron, au chapitre 5, qui contestera la nécessité elle-même.
+
+      - id: D
+        text: "Il soutient que rien, dans l'Histoire, ne s'explique par des causes : les rapports de production varient au hasard, et aucune loi ne gouverne leur évolution."
+        correct: false
+        misconception: mc.philo.histoire.contingence-lue-comme-absurdite
+        feedback: |
+          Modèle détecté : confondre matérialisme et hasard. Le matérialisme
+          historique est au contraire une thèse fortement causale : il prétend
+          identifier ce qui détermine l'évolution des sociétés. C'est
+          précisément cette prétention qu'Aron viendra contester.
+
+  - id: cp-r4-aron
+    rung: "R4"
+    habilete: raisonnement
+    skill_code: philo_l_histoire
+    tags: [checkpoint, formative, misconception_driven, philo_l_histoire]
+    primary_misconception: mc.philo.histoire.contingence-lue-comme-absurdite
+    item_source: original
+    lesson_placement: after_R4
+
+    stem: |
+      Aron soutient que l'Histoire est contingente. Que soutient-il
+      exactement, et que ne soutient-il pas ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Il conteste qu'une loi nécessaire unique ait pu garantir d'avance ce résultat, sans jamais nier qu'on puisse expliquer causalement un événement."
+        correct: true
+        feedback: |
+          Exactement, et la nuance est tout l'intérêt de sa position. Expliquer
+          après coup une pluralité de causes, oui ; en déduire à l'avance une
+          issue nécessaire, non. C'est ce qui lui permet de viser Hegel ET Marx
+          d'un même geste, puisque tous deux affirment une nécessité
+          d'ensemble.
+
+      - id: B
+        text: "Il soutient qu'aucun événement historique n'a de cause identifiable, et que tout, dans le devenir des sociétés, relève d'un hasard sur lequel rien ne se dit."
+        correct: false
+        misconception: mc.philo.histoire.contingence-lue-comme-absurdite
+        feedback: |
+          Modèle détecté : lire la contingence comme une absurdité. Ce serait
+          rendre l'histoire, comme discipline, impossible — et Aron était
+          lui-même historien. Contingent veut dire : cela aurait pu être
+          autrement. Pas : cela n'a pas de cause.
+
+      - id: C
+        text: "Il soutient que l'Histoire a un sens, mais que ce sens est spirituel plutôt qu'économique, ce qui le rapproche de Hegel contre Marx."
+        correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
+        feedback: |
+          Modèle détecté : ranger Aron dans le camp de l'un des deux auteurs
+          qu'il critique. Sa position ne consiste pas à préférer un moteur à un
+          autre : elle conteste qu'il y ait un moteur unique. Il vise la
+          nécessité d'ensemble elle-même, quelle que soit sa nature.
+
+      - id: D
+        text: "Il soutient que les individus ne sont jamais que les instruments d'une raison qui les dépasse, et que leurs choix ne pèsent en rien sur le cours des choses."
+        correct: false
+        misconception: mc.philo.histoire.ruse-de-la-raison-durcie-en-determinisme
+        feedback: |
+          Modèle détecté : attribuer à Aron une version durcie de la ruse de la
+          raison. C'est doublement faux : ce n'est ni sa thèse, ni même une
+          lecture correcte de Hegel. Aron défend au contraire la portée réelle
+          des choix et des circonstances, contre les nécessités affirmées.
+
+  - id: cp-r5-bloch
+    rung: "R5"
+    habilete: raisonnement
+    skill_code: philo_l_histoire
+    tags: [checkpoint, formative, misconception_driven, philo_l_histoire]
+    primary_misconception: mc.philo.histoire.objectivite-tout-ou-rien
+    item_source: original
+    lesson_placement: after_R5
+
+    stem: |
+      L'historien n'a jamais accès au passé lui-même, seulement à des traces.
+      Que faut-il en conclure sur l'objectivité de son travail ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Que l'histoire est donc purement subjective : sans accès au passé, chacun peut raconter ce qu'il veut, et aucun récit ne vaut mieux qu'un autre."
+        correct: false
+        misconception: mc.philo.histoire.objectivite-tout-ou-rien
+        feedback: |
+          Modèle détecté : raisonner en tout ou rien sur l'objectivité. C'est
+          manquer exactement le point de Bloch : l'absence d'accès direct impose
+          une méthode PLUS rigoureuse — la critique des sources — pas moins de
+          rigueur. Un récit contredit par les traces reste faux.
+
+      - id: B
+        text: "Que l'objectivité passe par une méthode : interroger les traces, en établir la fiabilité, confronter les sources — c'est cela qui distingue l'histoire du récit libre."
+        correct: true
+        feedback: |
+          Oui. L'objectivité de l'historien n'est pas celle d'un témoin qui
+          verrait tout : c'est celle d'une méthode qui expose ses sources et
+          accepte d'être contredite. Elle ne suppose d'ailleurs pas d'être neutre
+          de tout point de vue — un historien choisit ses questions, et ce choix
+          n'annule pas la rigueur de ses réponses.
+
+      - id: C
+        text: "Que seul le témoignage direct fait autorité : puisque l'historien n'a pas vu, il faut lui préférer celui qui a vécu les événements dont on parle."
+        correct: false
+        misconception: mc.philo.histoire.memoire-histoire-passe-confondus
+        feedback: |
+          Modèle détecté : substituer la mémoire au travail critique. Un
+          témoignage est une source pour l'historien, pas un juge au-dessus de
+          lui : il est partiel, situé, parfois reconstruit après coup. C'est
+          justement pour cela qu'il doit être interrogé plutôt que cru.
+
+      - id: D
+        text: "Que l'historien atteint le passé tel qu'il fut, à condition de rassembler assez de traces pour en reconstituer intégralement le déroulement."
+        correct: false
+        misconception: mc.philo.histoire.objectivite-tout-ou-rien
+        feedback: |
+          Modèle détecté : le tout ou rien, dans son autre sens — l'accès
+          intégral au passé. Aucune quantité de traces ne restitue le passé
+          lui-même : il reste des lacunes, et l'historien travaille avec elles.
+          L'objectivité n'est pas l'exhaustivité.
+
+  - id: cp-r6-ricoeur
+    rung: "R6"
+    habilete: comprehension
+    skill_code: philo_l_histoire
+    tags: [checkpoint, formative, misconception_driven, philo_l_histoire]
+    primary_misconception: mc.philo.histoire.memoire-sacralisee-ou-disqualifiee
+    item_source: original
+    lesson_placement: after_R6
+
+    stem: |
+      Ricœur parle d'une « juste mémoire ». Contre quels deux excès cette
+      exigence se construit-elle ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Contre l'oubli, auquel il ne faut jamais se résoudre car il achève l'injustice ; et contre une mémoire mal maîtrisée, qui peut à son tour diviser."
+        correct: true
+        feedback: |
+          Oui — et c'est ce qui fait de la « juste mémoire » une exigence
+          exigeante, pas un slogan. Se souvenir est un devoir, mais un devoir
+          qui peut mal se remplir : une mémoire entretenue comme une dette
+          collective peut nourrir le ressentiment autant qu'elle répare.
+
+      - id: B
+        text: "Contre l'oubli d'un côté, et contre le travail de l'historien de l'autre, dont la méthode critique menace toujours de dissoudre la mémoire des victimes."
+        correct: false
+        misconception: mc.philo.histoire.memoire-sacralisee-ou-disqualifiee
+        feedback: |
+          Modèle détecté : opposer la mémoire au travail de l'historien. Ricœur
+          fait l'inverse : le travail de l'historien SOUTIENT le devoir de
+          mémoire, en établissant les faits et en corrigeant, au besoin, une
+          mémoire collective devenue trop partiale. Ce sont deux choses
+          différentes, pas deux rivales.
+
+      - id: C
+        text: "Contre l'idée qu'il faudrait tout retenir sans exception, et contre l'idée qu'aucune mémoire ne vaut jamais rien : entre ces deux extrêmes, il ne prend pas position."
+        correct: false
+        misconception: mc.philo.histoire.memoire-sacralisee-ou-disqualifiee
+        feedback: |
+          Modèle détecté : présenter la juste mémoire comme un refus de
+          trancher. Elle est au contraire une exigence positive : ne pas laisser
+          l'oubli achever l'injustice, ET ne pas laisser la mémoire se retourner
+          en arme. Ce n'est pas un point milieu entre deux slogans, c'est une
+          tâche.
+
+      - id: D
+        text: "Contre la mémoire individuelle, toujours trop partiale, et contre la mémoire collective, toujours manipulée : seule l'Histoire comme processus mérite d'être considérée."
+        correct: false
+        misconception: mc.philo.histoire.memoire-histoire-passe-confondus
+        feedback: |
+          Modèle détecté : disqualifier toute mémoire, et confondre au passage
+          l'histoire et l'Histoire. Ricœur ne congédie pas la mémoire : il
+          l'exige, et demande qu'elle soit juste. Et l'Histoire comme processus
+          n'est pas une instance de vérification — c'est ce dont l'histoire
+          essaie de rendre compte.
+
+  - id: cp-r7-methode
+    rung: "R7"
+    habilete: application
+    skill_code: philo_l_histoire
+    tags: [checkpoint, formative, misconception_driven, philo_l_histoire]
+    primary_misconception: mc.philo.histoire.objection-du-chapitre-1-mal-lue
+    item_source: original
+    lesson_placement: after_R7
+
+    stem: |
+      Sur un sujet portant sur le sens de l'Histoire, laquelle de ces
+      formulations constitue une problématique recevable ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "« Si l'Histoire obéit à une direction d'ensemble, que faire des trajectoires qui s'en écartent — et faut-il y renoncer, quel que soit le moteur qu'on lui prête ? »"
+        correct: true
+        feedback: |
+          Oui : une tension est nommée, entre une thèse défendable et un fait
+          qui lui résiste. C'est ce qui donne un travail au devoir — examiner la
+          thèse, mesurer la portée de l'objection, chercher si une position
+          plus fine tient. Une problématique ouvre, elle ne conclut pas.
+
+      - id: B
+        text: "« L'Histoire a-t-elle un sens ? » — le sujet repris tel quel, ce qui garantit toujours de traiter exactement ce qui est demandé, sans jamais s'en écarter."
+        correct: false
+        misconception: mc.philo.histoire.objection-du-chapitre-1-mal-lue
+        feedback: |
+          Modèle détecté : confondre problématiser et recopier. Reprendre le
+          sujet ne fait apparaître aucune difficulté : une problématique doit
+          montrer POURQUOI la question se pose, en opposant deux réponses
+          également défendables.
+
+      - id: C
+        text: "« Nous montrerons que l'Histoire n'a aucun sens, comme l'établissent Aron et Marx en réfutant les illusions de la philosophie hégélienne du devenir. »"
+        correct: false
+        misconception: mc.philo.histoire.auteurs-echanges
+        feedback: |
+          Modèle détecté : annoncer la conclusion, et sur une lecture fausse des
+          auteurs. Marx ne nie pas que l'Histoire ait une direction — il change
+          le moteur. Seul Aron conteste la nécessité elle-même. Une introduction
+          annonce le problème et le chemin, pas la réponse.
+
+      - id: D
+        text: "« Peut-on dire que l'Histoire a un sens, alors que personne ne dispose des archives complètes de toutes les époques passées de l'humanité ? »"
+        correct: false
+        misconception: mc.philo.histoire.objectivite-tout-ou-rien
+        feedback: |
+          Modèle détecté : déplacer la question du sens vers celle de la
+          connaissance, et sur un critère intenable. Ce sont deux problèmes
+          distincts, que la leçon traite dans des chapitres séparés — et exiger
+          des archives complètes reviendrait à rendre toute histoire impossible.

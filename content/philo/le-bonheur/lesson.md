@@ -17,6 +17,8 @@ Tu redoutais ce contrôle depuis des semaines. Le jour du résultat, tu découvr
 
 Prends position avant de continuer. Réponds en une phrase, pour toi-même.
 
+[[checkpoint:cp-r0-predict]]
+
 La plupart des élèves donnent l'une de ces deux réponses :
 
 - « Bien sûr que j'étais heureux à ce moment-là — le bonheur, c'est exactement ça : obtenir ce qu'on désire, et plus on obtient de bonnes choses comme celle-là, plus on est heureux. »
@@ -60,6 +62,8 @@ Si ni la richesse, ni l'honneur, ni le plaisir ne conviennent, que reste-t-il ? 
 
 > **Erreur à éviter :** ne réduis pas la position d'Aristote à « le bonheur, c'est la vertu, et rien d'autre ne compte ». Aristote reconnaît explicitement qu'une vie privée de tout bien extérieur — santé minimale, ressources suffisantes, amis, une cité bien gouvernée — n'est pas pleinement heureuse, même menée avec toute la vertu du monde : la vertu est la part principale et décisive du bonheur, pas la totalité de ses conditions. Ne confonds pas non plus le « plaisir » qu'Aristote écarte comme critère ultime avec l'idée que le sage devrait vivre sans aucun plaisir : l'activité vertueuse s'accompagne, pour Aristote, du plaisir le plus véritable qui soit — mais ce plaisir est une conséquence de l'activité vertueuse, pas son critère de définition.
 
+[[checkpoint:cp-r1-aristote]]
+
 ---
 
 ## R2 — Épicure : le bonheur est plaisir, mais un plaisir qu'il faut apprendre à calculer
@@ -89,6 +93,8 @@ Reviens à la note excellente du chapitre 1. Vouloir, dès le lendemain, une not
 Épicure ne demande donc pas de maximiser la quantité de plaisirs, mais de calculer, avant d'agir : un plaisir immédiat qui entraîne, à terme, une douleur plus grande (l'ivresse suivie d'un mal-être durable, ou la dépense qui ruine et angoisse) doit être évité ; une douleur temporaire qui ouvre sur un plaisir plus grand et plus stable (l'effort d'un traitement médical, l'ascèse d'une préparation exigeante) doit être acceptée. Le critère n'est jamais l'intensité immédiate d'une sensation, mais son effet, une fois ses conséquences pesées, sur la tranquillité durable de toute une vie.
 
 > **Erreur à éviter :** ne confonds pas l'hédonisme d'Épicure avec un encouragement à la jouissance sans limite. C'est même le contraire : Épicure recommande une vie simple, mesurée, presque austère dans les faits (un peu de pain, de l'eau, la compagnie d'amis), précisément parce que c'est cette vie-là, et non la multiplication des plaisirs intenses, qui produit l'ataraxie. Ne confonds pas non plus l'**hédonisme** (le plaisir comme critère et fin ultime du bonheur) avec l'**eudémonisme** d'Aristote (la vertu, l'activité rationnelle, comme constitutive du bonheur) : les deux doctrines répondent à la même question — en quoi consiste le bonheur ? — mais avec des critères radicalement différents, même si Épicure, comme Aristote, en vient à recommander une vie mesurée et réfléchie plutôt qu'une vie de pur excès.
+
+[[checkpoint:cp-r2-epicure]]
 
 ---
 
@@ -120,6 +126,8 @@ Les stoïciens vont plus loin qu'Aristote sur un point précis : pour eux, la ve
 
 > **Point de vigilance :** ne confonds pas la maîtrise stoïcienne de soi avec une passivité résignée ou un renoncement à agir sur le monde. Le stoïcien continue d'agir de toutes ses forces sur ce qui dépend de lui (réviser, travailler, soigner ses relations) — il ne renonce qu'à faire dépendre son bonheur du résultat, qui, lui, échappe en partie à sa maîtrise. Confondre « ne pas désirer ce qui ne dépend pas de nous » avec « ne rien faire » revient à manquer le cœur de la doctrine stoïcienne, qui est une discipline de l'action autant que du désir.
 
+[[checkpoint:cp-r3-stoiciens]]
+
 ---
 
 ## R4 — Kant : le bonheur ne peut pas fonder la morale
@@ -148,6 +156,8 @@ Aristote, Épicure et les stoïciens, malgré leurs désaccords, partagent une s
 **Ce que Kant NE dit PAS, et qu'il faut éviter de lui faire dire :** il ne prétend pas que le bonheur serait sans valeur, ou qu'il faudrait y renoncer. Il dit seulement que le bonheur n'est pas ce qui rend une action moralement bonne. Kant introduit à la place une notion précise : être **digne d'être heureux** — c'est-à-dire mériter le bonheur par sa conduite morale, sans que cela garantisse de l'obtenir réellement. La vertu ne PRODUIT pas mécaniquement le bonheur (un homme vertueux peut souffrir, un homme malhonnête peut prospérer — l'expérience le montre sans détour) ; elle rend seulement celui qui la pratique DIGNE d'être heureux. Kant appelle « souverain bien » l'union, seulement idéale, de la vertu et du bonheur mérité par elle — union que la seule expérience terrestre ne garantit jamais.
 
 > **Erreur à éviter :** ne dis jamais « pour Kant, le bonheur est le but ultime de la morale, à condition de le mériter d'abord par la vertu » — c'est exactement l'inverse de sa position, et une des confusions les plus fréquentes sur cet auteur. Pour Kant, la moralité d'une action ne dépend JAMAIS de sa capacité à produire du bonheur, ni pour soi ni pour les autres : le critère est uniquement l'impératif catégorique (cf. la leçon « Le devoir »). Le bonheur mérité n'est qu'une conséquence espérée, jamais le fondement, de l'action morale.
+
+[[checkpoint:cp-r4-kant]]
 
 ---
 
@@ -195,6 +205,8 @@ Les stoïciens feraient remarquer que la note elle-même ne dépendait plus de t
 Kant ajouterait qu'aucune note, aussi excellente soit-elle, ne dit rien de ta valeur morale — être digne d'être heureux ne se joue pas sur une copie, mais sur la qualité de ta volonté.
 
 Schopenhauer et Freud, enfin, diraient que ce cycle — désir, satisfaction brève, nouveau désir — n'est pas un défaut de caractère qui te serait propre : c'est la structure même du désir humain, ou le prix ordinaire de toute vie vécue parmi d'autres. Les cinq positions ne s'accordent sur presque rien d'autre — mais aucune ne te dirait qu'un plaisir isolé, sans jamais rien construire de plus stable autour de lui, suffit à faire une vie heureuse.
+
+[[checkpoint:cp-r5-accessible]]
 
 ---
 
@@ -244,6 +256,8 @@ Voici, entièrement rédigée, une introduction possible. Note son mouvement : a
 > Les stoïciens font reposer le bonheur sur une distinction précise : certaines choses dépendent entièrement de nous — nos jugements, nos désirs, nos actions propres — et d'autres ne dépendent pas de nous — notre corps, notre réputation, les événements du monde. La souffrance naît systématiquement d'une confusion entre les deux : redouter ou désirer ardemment ce qui échappe à notre prise revient à se rendre malheureux pour rien, puisque aucun effort n'y changera rien. Régler son désir exclusivement sur ce qui dépend de soi produit, à l'inverse, un résultat remarquable : celui qui ne désire jamais que ce qu'il peut obtenir par lui-même obtient, par construction, toujours ce qu'il désire. Ainsi comprise, la maîtrise de soi n'est pas un renoncement passif au monde, mais une discipline active du désir, qui rend le bonheur accessible à quiconque accepte de la pratiquer, indépendamment de sa fortune, de sa santé ou du jugement d'autrui.
 
 **Pourquoi ce paragraphe est construit ainsi :** il ne se contente pas d'affirmer la thèse stoïcienne — il la fait *fonctionner* sur le mécanisme précis de la distinction (ce qui dépend de nous / ce qui n'en dépend pas) et sur sa conséquence logique (désirer seulement ce qu'on peut obtenir), exactement comme la leçon l'a fait. Remarque la dernière phrase : elle prépare déjà, sans le dire explicitement, la question qui ouvrira la partie II — cette indépendance à l'égard de la fortune et de la santé est-elle vraiment totale, ou repose-t-elle sur un minimum de conditions qu'on ne maîtrise pas non plus ?
+
+[[checkpoint:cp-r6-methode]]
 
 ### À toi de continuer
 

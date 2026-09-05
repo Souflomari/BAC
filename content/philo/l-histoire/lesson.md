@@ -19,6 +19,8 @@ Mais ta grand-mère ne raconte pas du tout la même histoire. Pour elle, chaque 
 
 Prends position avant de continuer. Réponds en une phrase, pour toi-même.
 
+[[checkpoint:cp-r0-predict]]
+
 La plupart des élèves donnent l'une de ces deux réponses :
 
 - « Le manuel a raison de parler d'une étape nécessaire : vue de haut, avec le recul, cet exode s'inscrit dans un mouvement plus large — la modernisation, l'urbanisation — qui a touché, à peu près à la même époque, des pays très différents ; les histoires individuelles comme celle de ma grand-mère n'en sont que des illustrations, presque interchangeables. »
@@ -66,6 +68,8 @@ L'**Histoire**, enfin — avec une majuscule, dans l'usage qu'on lui donne ici �
 
 > **Erreur à éviter :** ne confonds jamais « mémoire » et « histoire » comme s'ils étaient deux mots pour une même chose — la mémoire est un vécu, subjectif et partiel, gardé par un individu ou un groupe ; l'histoire, comme discipline, est un travail critique, construit à distance, sur des sources qu'il faut interroger (chapitre 6 y reviendra en détail). Ne confonds pas non plus « histoire » (discipline) et « Histoire » (processus) : la première est un récit qu'on construit ; la seconde est ce dont ce récit essaie de rendre compte — deux choses distinctes, comme la carte et le territoire.
 
+[[checkpoint:cp-r1-quatre-mots]]
+
 ---
 
 ## R2 — Hegel : la ruse de la raison — l'Histoire comme réalisation de la liberté
@@ -99,6 +103,8 @@ Le chapitre 2 a distingué l'histoire comme discipline et l'Histoire comme proce
 **Ce que ce mécanisme permettrait de voir, précisément, dans la situation du chapitre 1 :** Hegel dirait que chaque famille du douar a agi pour des raisons parfaitement particulières et concrètes — la peur de la faim, l'espoir d'une vie meilleure pour ses enfants, une dispute un soir précis — sans qu'aucune d'elles ne se soucie, ni même ne soupçonne, de « faire avancer la modernisation du pays ». Et pourtant, mises bout à bout, ces milliers de décisions privées auraient produit, sans que personne ne l'ait voulu pour lui-même, un mouvement d'ensemble bien réel — l'urbanisation d'un pays — qui dépasse largement l'intention de chaque famille prise isolément.
 
 > **Erreur à éviter :** ne réduis jamais la ruse de la raison à un simple déterminisme où les individus ne seraient que des marionnettes sans liberté réelle — c'est l'inverse : la nécessité, chez Hegel, se réalise PAR la liberté effective des passions particulières, pas en l'annulant. Ne confonds pas non plus la ruse de la raison avec le matérialisme historique que tu vas voir au chapitre 4 : pour Hegel, ce qui se réalise à travers l'Histoire, c'est une Idée, un Esprit, une fin rationnelle et spirituelle (la liberté) ; pour Marx, à l'inverse, ce ne sont pas les idées qui mènent l'Histoire, mais les rapports de production matériels.
+
+[[checkpoint:cp-r2-hegel]]
 
 ---
 
@@ -143,6 +149,8 @@ Homme libre et esclave, patricien et plébéien, seigneur et serf, maître de ju
 
 > **Erreur à éviter — la confusion la plus fréquente sur ce point du programme :** n'attribue jamais le matérialisme historique, ni la formule sur la lutte des classes, à **Hegel** — c'est l'inverse exact : Hegel fait de l'Histoire la réalisation progressive d'une Idée (la liberté de l'Esprit) ; Marx reproche précisément à ce schéma de placer la cause du côté des idées plutôt que du côté des rapports matériels de production. Ne confonds pas non plus le renversement marxiste avec un simple rejet de toute idée de sens ou de direction dans l'Histoire : Marx, comme Hegel, pense l'Histoire comme un processus orienté (vers le dépassement du capitalisme) — ce que le chapitre 5 va justement mettre en question, chez l'un comme chez l'autre.
 
+[[checkpoint:cp-r3-marx]]
+
 ---
 
 ## R4 — Aron : la contingence de l'Histoire et le danger des idéologies du sens
@@ -169,6 +177,8 @@ chapitres 3 et 4 ont présenté deux théories très différentes dans leur cont
 
 > **Erreur à éviter :** ne confonds jamais « l'Histoire est contingente » avec « l'Histoire n'a aucune cause, tout y est purement aléatoire » — Aron ne nie jamais la possibilité d'expliquer causalement un événement historique ; il conteste seulement qu'une loi nécessaire unique aurait pu, à l'avance, garantir ce résultat plutôt qu'un autre. Ne confonds pas non plus la position d'Aron avec celle de Hegel ou de Marx : les deux premiers affirment une nécessité d'ensemble (l'Esprit, les rapports de production) que d'autres facteurs viendraient seulement moduler en détail ; Aron conteste cette nécessité même, au niveau le plus général.
 
+[[checkpoint:cp-r4-aron]]
+
 ---
 
 ## R5 — Marc Bloch : l'objectivité de l'historien — jamais le passé, toujours des traces
@@ -192,6 +202,8 @@ chapitres 3, 4 et 5 ont débattu de savoir si l'Histoire, comme processus, a un 
 **Ce que ce mécanisme permet de voir, précisément, dans la situation du chapitre 1 :** ni le témoignage de ta grand-mère, ni le résumé du manuel, ne donnent un accès direct et complet à ce qui s'est vraiment passé cet hiver-là — l'un comme l'autre reposent sur des traces partielles (un vécu individuel filtré par la mémoire, des statistiques et des archives administratives sélectionnées et interprétées). Ce que ferait un historien rigoureux, au sens de Bloch, ce n'est pas choisir arbitrairement l'un des deux récits contre l'autre : ce serait croiser ce témoignage avec d'autres — d'autres familles du même douar, des archives locales, des données climatiques — pour construire un récit plus solide qu'aucune des deux sources prise isolément, sans jamais prétendre reconstituer le passé dans une totalité parfaite et définitive.
 
 > **Erreur à éviter :** ne confonds jamais « l'historien n'a pas d'accès direct au passé » avec « l'histoire est donc purement subjective, chacun raconte ce qu'il veut » — c'est manquer exactement le point de Bloch : l'absence d'accès direct impose une méthode plus rigoureuse (la critique des sources), pas moins de rigueur. Ne confonds pas non plus le travail de l'historien, qui vise à établir et à vérifier des faits par une méthode critique, avec la mémoire vécue (chapitre 2) : un témoignage personnel, aussi sincère soit-il, n'est pas encore, à lui seul, un travail d'historien.
+
+[[checkpoint:cp-r5-bloch]]
 
 ---
 
@@ -230,6 +242,8 @@ Et Ricœur (chapitre 7), enfin, ajouterait que, quelle que soit la vérité éta
 Cinq regards, un même témoignage — mais aucun ne réduit ce qui s'est joué, dans cet exode, à une explication simple.
 
 > **Erreur à éviter :** ne confonds jamais le devoir de mémoire avec le travail de l'historien lui-même (chapitre 6) — l'un est une exigence morale de ne pas oublier certains passés ; l'autre, une méthode critique de reconstitution des faits, qui peut d'ailleurs corriger ou nuancer une mémoire collective devenue trop partiale. Ne réduis pas non plus le devoir de mémoire à un simple slogan commémoratif sans risque : Ricœur insiste au contraire sur le fait qu'une mémoire mal maîtrisée peut, elle aussi, se retourner en instrument de division — d'où la nécessité d'une « juste mémoire », jamais acquise une fois pour toutes.
+
+[[checkpoint:cp-r6-ricoeur]]
 
 ---
 
@@ -279,6 +293,8 @@ Voici, entièrement rédigée, une introduction possible. Note son mouvement : a
 > Pour Hegel, l'Histoire universelle n'est pas un chaos d'événements juxtaposés au hasard : elle est le processus par lequel la Raison parvient progressivement à la conscience de sa propre liberté, et à sa réalisation dans des institutions concrètes. Ce processus, dit Hegel, ne réclame aucune intervention miraculeuse ni aucun plan explicitement suivi par les hommes eux-mêmes : il se réalise par la ruse de la raison, qui se sert des passions les plus particulières — l'ambition d'un conquérant, l'intérêt d'un homme d'État — comme d'instruments pour accomplir, à leur insu, une fin qui les dépasse. Marx, en un sens, radicalise encore cette idée d'un moteur caché de l'Histoire, tout en la retournant : ce ne sont plus les idées, mais les rapports de production et la lutte des classes qui, nécessairement, poussent une société d'une étape à la suivante, chaque contradiction économique appelant son dépassement par un affrontement de classes. Dans les deux cas, ce qui semble, à l'échelle d'une vie individuelle, une simple succession de choix particuliers et de hasards, s'inscrirait, à l'échelle de l'Histoire entière, dans un mouvement d'ensemble dont la direction ne devrait rien au hasard.
 
 **Pourquoi ce paragraphe est construit ainsi :** il ne se contente pas d'affirmer que l'Histoire a un sens — il *fait fonctionner* le mécanisme précis de Hegel (la ruse de la raison, les passions comme instruments) avant d'y ajouter celui de Marx (les rapports de production, la lutte des classes). Remarque la dernière phrase : elle prépare déjà, sans le dire explicitement, la question qui ouvrira la partie II — cette direction, aussi nécessaire semble-t-elle vue de haut, résiste-t-elle vraiment à l'examen d'un épisode concret ?
+
+[[checkpoint:cp-r7-methode]]
 
 ### À toi de continuer
 
