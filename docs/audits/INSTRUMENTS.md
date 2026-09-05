@@ -28,6 +28,7 @@
 | `web/scripts/donnees-sweep.mjs` | CE QUE LE PRODUIT COÛTE AU FORFAIT : les octets de FIL (`encodedDataLength` — corps compressé + en-têtes, ce que l'opérateur compte), séparés en AVANT le `load` (le prix d'entrée), APRÈS (ce que la page tire seule) et EN DÉFILANT (le préchargement au champ de vision). Quatre passes : pages de liste, leçon, séance type à cache actif, économiseur de données. Mesuré à l'armement : l'accueil tirait **6,5 Mo** de préchargement RSC en défilant, 91 % du transfert, pour 62 leçons dont l'élève en ouvre une ; une séance de révision coûtait 8,72 Mo. Après la politique de préchargement à l'INTENTION (`src/components/ui/Lien.tsx`) : 1,38 Mo, soit 743 séances dans un forfait de 1 Go au lieu de 117. PORTE FRANCHE à DEUX SENS — aucune page de liste ne tire d'octets sans un geste de l'élève, ET le survol doit encore précharger, ET l'économiseur de données doit être honoré (couper tout préchargement passerait le premier contrôle en rendant la navigation plus lente) | Le CDN et le cache de Vercel — tout est mesuré sur un `next start` local ; l'ordre de grandeur est transposable, pas le chiffre à l'octet près. Et ce que l'élève fait VRAIMENT : la séance mesurée est un parcours plausible, pas une statistique d'usage |
 | `web/scripts/liens-fichiers.mjs` | LES RENVOIS : tout chemin de fichier cité dans un fichier suivi par git (markdown, YAML, TS, MJS, workflows) mène-t-il quelque part ? Un chemin est résolu depuis la racine, depuis `web/` (la convention d'exécution des scripts) ou depuis le répertoire qui le cite. DEUX ZONES : la zone VIVANTE — orientation, agents, compétences, vision, règles, specs, runbooks, code, contenu, CI — est une PORTE FRANCHE ; la zone d'ARCHIVE — ADR, registres d'audit, CHANGELOG, rapports de reprise, ancrage périmé — nomme délibérément ce qui n'existe plus et n'est que comptée. L'exception vit dans le fichier et NOMME son chemin (`CHEMIN DISPARU:`), comme `RECOUVREMENT ASSUMÉ:`. Mesuré à l'armement : `docs/Product/` ET `docs/product/` coexistaient — VISION.md et DESIGN-BIBLE.md dans le premier, 23 renvois vers le second, dont ceux de `.claude/CLAUDE.md`, du README, du HANDOFF et de NEUF agents. Chaque agent à qui l'on disait « lis la vision d'abord » lisait le vide, et sur la machine de l'owner (Windows, insensible à la casse) les deux répertoires entrent en collision | Si le document CIBLE dit encore ce que le renvoi prétend. Un chemin qui résout peut pointer un texte périmé — c'est le travail des humains et des documents de réconciliation |
 | `web/scripts/ancres-uniques.mjs` | LES ANCRES « § » : deux titres d'une même leçon peuvent-ils partager un `id` ? C'est la promesse d'un lien profond — l'élève copie le lien de la section qu'il lit. Mesuré à l'armement : depuis la pagination, `LessonRenderer` est appelé une fois par SEGMENT et `rehype-slug` remet son compteur d'unicité à zéro à chaque passe ; `maths/suites-numeriques` portait HUIT titres « L'erreur à repérer » avec le même id — sept ancres sur huit renvoyaient à la première. 95 titres au libellé répété existent dans 32 leçons. Corrigé par un compteur PARTAGÉ (`web/src/lib/rehypeSlugPartage.ts`), la première occurrence gardant son id nu pour que les liens déjà partagés survivent. PORTE FRANCHE : 62 leçons, 2 190 titres, 0 doublon | Les ids INTERNES des SVG, dupliqués eux aussi quand une figure est posée plusieurs fois. Vérifié inoffensif deux fois — `MediaDiagram` masque les étapes en réécrivant le markup de chaque figure, jamais par `getElementById`, et aucun identifiant n'est défini DIFFÉREMMENT par deux figures d'une notion tout en étant déréférencé par `url(#…)`. Armer sur « aucun id dupliqué » aurait été rouge sur un fait sans conséquence |
+| `web/scripts/portee-corpus.mjs` | LA PORTÉE d'un mécanisme : sur combien de pages du corpus une fonctionnalité livrée a réellement quelque chose à montrer. Compte, par notion et par matière, les points d'arrêt, figures, figures étagées, mouvements, embarqués, interactives, dérivations, exercices, et les chapitres portant une carte « à retenir ». Mesuré à l'armement (62 notions, 491 chapitres) : points d'arrêt **62/62**, figures **51/62**, exercices **49/62**, « à retenir » **44/62**, mouvements **6/62**, interactives **5/62**, embarqués **4/62**, dérivations **1/62**. La philosophie : 92 chapitres, 4 figures (toutes dans une seule notion), zéro de tout le reste. `--resume` pour les totaux seuls | SI LA PORTÉE EST BONNE. Une dérivation dépliable n'a de sens que là où il y a une dérivation ; une figure absente sur toute une matière est peut-être une dette, peut-être une décision. Le tableau est un fait, le verdict est pédagogique |
 | `web/scripts/test-attempt-events.mjs` | LE CHEMIN D'ÉCRITURE, côté client : les constructeurs de charge utile, la forme du fil telle que le validateur de l'edge function l'accepte, et — depuis le 2026-09-05 — le chemin de PERTE (échec, réessai unique à 4 s, borne de 20, 401, coupure réseau, visite de chapitre). 20 tests, minuteries simulées. `npm run test-attempt-events` | Le SERVEUR : idempotence de `record-notion-event`, double envoi, écritures concurrentes. Et le TAUX de perte réel, qui dépend du réseau de l'élève — les tests établissent la sémantique, pas la fréquence |
 
 ## Les balayages de corpus (outils, pas portes)
@@ -128,16 +129,17 @@
    repli mesurée est celle de ce conteneur Linux : sur Android ou iOS, ce
    sera une autre. Ce qui est stable, c'est QU'IL Y A repli ; ce qui ne
    l'est pas, c'est de quoi il a l'air.
-7. **Ce qu'une fonctionnalité livrée montre VRAIMENT, corpus en main.**
-   Ouvert le 2026-09-05 par une mesure : la zone « à retenir » (colonne de
-   droite ≥1536 px), livrée et vérifiée par `dom-truth` sur des leçons
-   témoins, ne remplit que **47 % des chapitres** — 0 % de la philosophie,
-   18 % de la SVT. Le mécanisme marche ; il n'a simplement rien à montrer sur
-   un quart du corpus, parce que son repli n'attrape qu'une formule `$$…$$`.
-   Le harnais prouve qu'un mécanisme fonctionne ; **seule une mesure sur le
-   corpus dit sur combien de pages il a quelque chose à montrer.** Aucune
-   autre fonctionnalité n'a été mesurée sous cet angle : ni les points
-   d'arrêt, ni les figures étagées, ni les dérivations dépliables.
+7. **Ce qu'une fonctionnalité livrée montre VRAIMENT, corpus en main —
+   OUVERT ET INSTRUMENTÉ le même jour.** La question est née d'une mesure :
+   la zone « à retenir », livrée et vérifiée par `dom-truth` sur des leçons
+   témoins, ne remplit que **47 % des chapitres** — 0 % de la philosophie.
+   Le mécanisme marche ; il n'a rien à montrer sur un quart du corpus.
+   `portee-corpus.mjs` (ci-dessus) répond désormais pour NEUF mécanismes à la
+   fois. **Le harnais prouve qu'un mécanisme fonctionne ; seule une mesure
+   sur le corpus dit sur combien de pages il a quelque chose à montrer.**
+   Ce qui reste sous ce numéro : la même question pour les surfaces HORS
+   leçon (l'assembleur d'épreuves, l'atelier, le tableau de bord), qu'aucun
+   compteur ne couvre.
 
 8. **La production.** Tout ce document parle d'un build local. La synchro
    de production reste NON VÉRIFIÉE (CLAUDE.md).

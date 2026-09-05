@@ -2203,3 +2203,50 @@ l'exemplaire prévu par la spec).
 > scientifiques. **Le harnais prouve que le mécanisme marche ; seule une
 > mesure sur le corpus dit sur combien de pages il a quelque chose à
 > montrer.**
+
+### 10.19 Le tableau qui manquait : neuf mécanismes, et sur combien de pages
+
+L'angle mort ouvert au §10.18 a été instrumenté le jour même.
+`web/scripts/portee-corpus.mjs` compte, par notion et par matière, ce que
+chaque mécanisme livré a réellement à montrer :
+
+| mécanisme | notions où il apparaît | total |
+|---|---:|---:|
+| points d'arrêt | **62 / 62** | 362 |
+| figures | 51 / 62 | 261 |
+| figures étagées | 51 / 62 | 236 |
+| exercices | 49 / 62 | 98 |
+| carte « à retenir » | 44 / 62 | 229 chapitres sur 491 |
+| mouvements | **6 / 62** | 11 |
+| interactives | **5 / 62** | 5 |
+| embarqués | **4 / 62** | 6 |
+| dérivations dépliables | **1 / 62** | 2 |
+
+**Ce que le tableau montre, et qu'aucun document ne disait.**
+
+*Les points d'arrêt sont la seule chose universelle.* 62 notions sur 62, 4 à
+8 par leçon. C'est le mécanisme qui a été porté partout — et ça se voit.
+
+*La philosophie est un désert visuel.* 92 chapitres, **4 figures en tout**,
+toutes dans une seule notion (`analyse-de-texte`). Onze leçons de philo sur
+douze n'ont pas une seule image, pas un schéma, pas une carte « à retenir ».
+C'est cohérent avec la matière — mais c'est un fait de produit à connaître
+avant de décider qu'« une leçon est une leçon ».
+
+*Les lanes avancées du média D10 sont des exemplaires, pas des couches.*
+Mouvements 6/62, interactives 5/62, embarqués 4/62, dérivations **1/62**.
+`pc/rlc-serie` porte à lui seul 6 des 11 mouvements, 2 des 6 embarqués, les
+2 dérivations et l'unique `retenir.json` : **c'est la notion vitrine, et
+c'est la seule.** L'ADR 0026 l'annonçait ainsi (« 5 mouvements vérifiés,
+3 embarqués curatés ») ; le tableau le rend visible d'un coup d'œil au lieu
+de le laisser dans un texte de juillet.
+
+**Ce que le tableau ne dit PAS, et le script le répète en clair :** si une
+portée est bonne. Une dérivation dépliable n'a de sens que là où il y a une
+dérivation à déplier ; une figure absente de toute une matière est peut-être
+une dette, peut-être une décision. **Le tableau est un fait, le verdict est
+pédagogique** — et il appartient à l'owner.
+
+> **La règle.** « Livré » et « vérifié » ne disent rien de « présent ». Un
+> mécanisme peut être parfaitement testé et n'exister nulle part. Le
+> troisième chiffre — sur combien de pages — n'était compté par personne.
