@@ -3050,6 +3050,7 @@ run 451, sur la même pile d'instruments, était vert en 28 min 35 s.
 | `gel-epreuve` (nouveau) | 39 épreuves, processeur ×6 | 3–15 s de gel au « Commencer », 3–30 s au « Terminer » → révélation progressive, §11.20 |
 | `gel-lecon` (nouveau) | 62 leçons, processeur ×6 | aucune tâche ≥ 1 s ; page réactive 1,9–7,3 s après la navigation, 16 leçons > 5 s, §11.21 |
 | `gel-chapitre` (nouveau) | 62 leçons, processeur ×6 | une tâche de 1,2 s en médiane au changement de chapitre (36 leçons ≥ 1 s) → 0,4 s (2 leçons ≥ 1 s) après correctif, §11.22 |
+| `clic-qcm` (nouveau) | 11 leçons, processeur ×6 | tâche la plus longue du clic 0,18 → 0,16 s de médiane à ×6 (0,36 → 0,23 s sur l'item le plus dense), un gain petit et réel, §11.23 |
 
 **Ce qui est connu et reste au propriétaire** — re-mesuré à l'identique, pas
 redécouvert : `horsligne-sweep` (une leçon déjà visitée, cliquée hors ligne,
@@ -3547,7 +3548,7 @@ re-parsait ses formules au rendu.
 l'événement : le `chapterIndex` des payloads est le même qu'avant, lu plus
 tard. Les consommateurs qui DOIVENT se re-rendre à la flèche — le rail, le
 « Chapitre n / N », la carte « à retenir », `ChapterVisitRecorder` — gardent
-`useChapter()`. tsc, lint et les 20 tests attempt-events : verts ; dom-truth : vert dans la CI sur ce commit exact (run 472, 4 min 05 s ; la re-mesure locale de dom-truth tourne encore au moment d'écrire, avec le seul rouge attendu du garde-fou de fraîcheur — le correctif a été commité pendant son build).
+`useChapter()`. tsc, lint et les 20 tests attempt-events : verts ; dom-truth : vert dans la CI sur ce commit exact (run 472, 4 min 05 s ; en local, 262 vérifications, un seul rouge : le garde-fou de fraîcheur du build, attendu — le correctif a été commité pendant son build).
 
 **LA MESURE, AVANT → APRÈS.** Sur les 62 leçons, même machine, même serveur local, avant → après : le
 chapitre change 1,3 s → 0,5 s après l'appui (médiane ; étendue 0,4–3,4 s →
@@ -3626,16 +3627,84 @@ trié par gel avant décroissant :
 
 **CE QUI RESTE.** Ce qui reste est la mise en page du chapitre démasqué — quelques
 milliers de nœuds de KaTeX qui passent de `display:none` à visibles — 0,3 à
-0,8 s sur les leçons denses à ×6, 1,45 s sur `probabilites-conditionnelles`
-(7 chapitres, donc des chapitres plus longs) et 1,12 s sur
-`systemes-oscillants`. C'est le coût intrinsèque du « tout dans le DOM, un
+0,8 s sur les leçons denses à ×6, 1,45 s sur `probabilites-conditionnelles`,
+dont le chapitre 2 est le plus gros du corpus — 367 lignes, ~250 formules,
+20 lignes de figures et de tableaux, démasqué d'un bloc — et 1,12 s sur
+`systemes-oscillants`, dont chaque chapitre porte ~80 formules. C'est le coût intrinsèque du « tout dans le DOM, un
 chapitre visible » ; le levier relève de l'arbitrage du §8.7 — moins de
 chapitres servis d'un coup, ou un `content-visibility` qui conserverait
 l'état de rendu des chapitres masqués (hypothèse, non mesurée) — pas d'un
 défaut de code. Les 36 leçons qui gelaient plus d'une seconde par un défaut
 de code ne sont plus que deux, par leur poids.
 
+**UN LEVIER MESURÉ, PAS ENCORE PRIS.** `web/scripts/cv-chapitre.mjs` (cinq
+leçons, ×6) : démasquer un chapitre caché par `hidden` (`display:none`) coûte
+0,88 s (`rlc-serie`), 1,40 s (`probabilites-conditionnelles`), 0,37 s
+(`suites-numeriques`), 0,79 s (`systemes-oscillants`), 0,12 s (témoin SVT) la
+première fois — et presque autant à CHAQUE fois (0,58 / 1,27 / 0,36 / 0,60 /
+0,04 s) : `display:none` jette la mise en page. Le même chapitre caché par
+`content-visibility: hidden` : la première fois coûte 0,54 / 0,98 / 0,32 /
+0,58 / 0,05 s (environ −35 %), et TOUTE visite suivante d'un chapitre déjà vu
+**0,017 / 0,020 / 0,021 / 0,012 / 0,006 s** — le navigateur garde l'état de
+rendu. Un élève qui revient au chapitre précédent attendrait 20 ms au lieu de
+600 à 1 300. Ce n'est pas pris dans ce commit : `hidden` est ce que lisent
+l'impression (`.chapter-view { display:block !important }`), le lecteur
+d'écran (contenu retiré de l'arbre dans les deux cas — pas de régression, à
+vérifier), `recherche-navigateur` et les balayages (ils reconnaissent un
+chapitre replié à `hidden`/`display:none`), et `content-visibility` demande un
+repli `@supports` pour les Safari d'avant 2024. Le changement est petit, ses
+points de couplage sont cinq, et il ne se fait qu'avec dom-truth, la porte
+impression, la porte zoom et `recherche-navigateur` rejoués — prochaine étape
+de cette nuit si le temps le permet ; sinon, un fait pour le propriétaire.
+
 **LA MESURE.** `BASE=http://127.0.0.1:3911 CPU=6 node scripts/gel-chapitre.mjs`
 depuis `web/`, machine à froid ; avant et après sur le même serveur local,
 build de HEAD, feuilles de style vérifiées à 200. Un bridage émulé, pas un
 téléphone : les rapports comptent plus que les valeurs.
+
+### 11.23 Le clic de réponse re-parsait l'énoncé — `MathText` mémoïsé
+
+**LE FAIT.** Le profil du §11.22 montrait remark et KaTeX à l'œuvre sur un
+simple changement de chapitre. Le crochet corrigé, il restait la question :
+pourquoi un re-rendu d'item PARSE-t-il ? Parce que `MathText` — le composant
+qui rend l'énoncé, les choix et la solution des QCM et des points d'arrêt —
+n'était pas mémoïsé : à chaque rendu du parent, sa chaîne repassait par
+remark + KaTeX. Or un QCM se re-rend à chaque clic de réponse (état local
+`selectedId`/`answered`) : l'énoncé et les quatre choix étaient re-parsés au
+moment même où l'élève attend son verdict. Même défaut que `MdBlock`
+(§11.20), même remède : `memo`, deux props qui sont des chaînes.
+
+**LA MESURE.** `web/scripts/clic-qcm.mjs` (nouveau) : leçon chargée et calme
+à ×6, on avance jusqu'au premier QCM visible, on clique son premier choix ;
+délai jusqu'au verdict et tâches longues du geste. Sur un échantillon de 11
+leçons (10 denses de maths et de PC, un témoin SVT sans formules), avant →
+après : le clic n'a jamais été un gel — sa tâche la plus longue allait de
+0,15 à 0,36 s à ×6 — mais elle parsait. Après mémoïsation : 0,13 à 0,23 s
+(médiane 0,18 → 0,16 s), le gain croissant avec les formules de l'item
+(`limites-continuite`, 22 formules : 0,36 → 0,23 s ; les items à 5 formules :
+−0,03 à −0,08 s ; le témoin SVT sans formule : rien). Le « délai jusqu'au
+verdict » de la sonde (0,67 s de médiane) est identique avant et après : il
+est fait de l'aller-retour de la sonde elle-même à ×6 (clic Playwright,
+relevés toutes les 25 ms), pas de parsing — il n'y a dans le code aucun délai
+volontaire entre le clic et le verdict, et aucune tâche longue ne le remplit.
+Petit, réel, du même bois que `MdBlock` : le tableau.
+
+| leçon | QCM au chap. | formules de l'item | verdict après : avant → après | tâche la plus longue : avant → après | somme des tâches longues : avant → après |
+|---|---:|---:|---|---|---|
+| `maths/limites-continuite` | 1 | 22 | 1.03 s → 0.87 s | 0.36 s → 0.23 s | 0.49 s → 0.29 s |
+| `maths/suites-numeriques` | 1 | 8 | 0.91 s → 0.95 s | 0.26 s → 0.21 s | 0.32 s → 0.27 s |
+| `maths/calcul-integral` | 1 | 5 | 0.70 s → 0.60 s | 0.26 s → 0.18 s | 0.26 s → 0.18 s |
+| `maths/nombres-complexes-2` | 1 | 5 | 0.64 s → 0.67 s | 0.21 s → 0.17 s | 0.21 s → 0.27 s |
+| `pc/reactions-acido-basiques` | 1 | 3 | 0.78 s → 0.74 s | 0.19 s → 0.15 s | 0.19 s → 0.15 s |
+| `pc/aspects-energetiques` | 1 | 1 | 0.61 s → 0.53 s | 0.18 s → 0.14 s | 0.18 s → 0.14 s |
+| `maths/geometrie-espace` | 1 | 5 | 0.85 s → 0.74 s | 0.18 s → 0.19 s | 0.18 s → 0.19 s |
+| `pc/rlc-serie` | 1 | 1 | 0.65 s → 0.62 s | 0.17 s → 0.16 s | 0.17 s → 0.16 s |
+| `pc/systemes-oscillants` | 1 | 0 | 0.64 s → 0.43 s | 0.16 s → 0.13 s | 0.16 s → 0.13 s |
+| `svt/moyens-de-defense` | 3 | 0 | 0.28 s → 0.31 s | 0.15 s → 0.14 s | 0.15 s → 0.14 s |
+| `pc/chute-mouvements-plans` | 1 | 0 | 0.67 s → 0.76 s | 0.15 s → 0.16 s | 0.15 s → 0.16 s |
+
+**CE QUE ÇA NE MESURE PAS.** Le déployé. La mesure sur la preview Vercel n'a
+pas pu être faite depuis ce conteneur : le relais réseau coupe la connexion
+de Chromium headless (`ERR_CONNECTION_RESET`, trois essais, `ws_closed_mid_exchange` côté relais) alors que `curl` atteint la même page en 0,7 s. Les
+§11.20 à 11.23 sont donc mesurés sur le build local de HEAD, pas sur le
+déployé — à refaire depuis une machine libre (INSTRUMENTS, portée).
