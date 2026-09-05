@@ -128,6 +128,25 @@ jobs:
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
           node scripts/figure-preview.mjs --dark --porte $svgs
 
+      # PORTE PRESSE-PAPIER (2026-09-05). Un élève qui révise RECOPIE : ce
+      # qu'il colle est un rendu du produit au même titre que la page. KaTeX
+      # écrit chaque formule deux fois — un arbre MathML pour les lecteurs
+      # d'écran, un arbre HTML pour l'œil — et le premier, masqué
+      # VISUELLEMENT (clip-path, 1×1 px), reste dans la SÉLECTION. Résultat
+      # mesuré avant correctif : 138 773 caractères parasites sur 62 leçons,
+      # soit une formule doublée partout où il y en a une.
+      #
+      # La porte compare trois copies faites par ⌘A/⌘C pour de vrai : la page
+      # livrée, la page idéale (MathML retiré du rendu) et un TÉMOIN qui rend
+      # la sélection au MathML. Elle ne conclut que si le témoin voit le
+      # défaut — un instrument aveugle ne certifie rien.
+      - name: Porte presse-papier (une formule copiée ne sort qu'une fois)
+        run: |
+          routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)
+          test -n "$routes"
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/copie-maths.mjs --porte $routes
+
       - name: Model-id hygiene gate
         working-directory: .
         run: |

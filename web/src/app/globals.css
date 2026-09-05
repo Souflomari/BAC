@@ -697,6 +697,34 @@ body {
   margin: 4em auto;
 }
 
+/* ── LE PRESSE-PAPIER — chaque formule sortait EN DOUBLE ──────────────────
+   Mesuré le 2026-09-05 : 1 523 formules sur 1 540, sur les deux leçons
+   témoins. Un élève qui recopie « la tension u_C(t) aux bornes » dans ses
+   notes obtenait « la tension 𝑢 𝐶 ( 𝑡 ) u C ​ (t) aux bornes ».
+
+   POURQUOI. KaTeX rend chaque formule DEUX fois : un arbre MathML pour les
+   lecteurs d'écran (`.katex-mathml`) et un arbre HTML pour l'œil
+   (`.katex-html`). Le premier est masqué VISUELLEMENT — `clip-path:
+   inset(50%)`, 1×1 px — mais il reste dans le flux, donc dans la SÉLECTION,
+   donc dans le presse-papier. L'œil ne le voit jamais ; le copier-coller,
+   toujours.
+
+   `user-select: none` retire le MathML de la sélection SANS toucher à
+   l'arbre d'accessibilité : un lecteur d'écran continue de lire la formule
+   comme avant (c'est `aria-hidden` qui gouverne cela, et il n'est pas
+   touché). Ce que l'élève colle devient exactement ce qu'il voit.
+
+   CE QUE ÇA NE CORRIGE PAS, et il faut le savoir : `innerText` continue
+   d'inclure les deux arbres — les balayages qui lisent le texte rendu
+   voient donc encore la formule en double. C'est sans conséquence pour eux
+   (ils cherchent des motifs de rédaction, pas des formules), mais un
+   instrument futur qui compterait des caractères de prose s'y ferait
+   prendre. */
+.katex-mathml {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
 /* KaTeX inline and display math */
 .prose-lesson .katex-display {
   margin: 1.25em 0;
