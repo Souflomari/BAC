@@ -29,6 +29,7 @@
 | `web/scripts/liens-fichiers.mjs` | LES RENVOIS : tout chemin de fichier cité dans un fichier suivi par git (markdown, YAML, TS, MJS, workflows) mène-t-il quelque part ? Un chemin est résolu depuis la racine, depuis `web/` (la convention d'exécution des scripts) ou depuis le répertoire qui le cite. DEUX ZONES : la zone VIVANTE — orientation, agents, compétences, vision, règles, specs, runbooks, code, contenu, CI — est une PORTE FRANCHE ; la zone d'ARCHIVE — ADR, registres d'audit, CHANGELOG, rapports de reprise, ancrage périmé — nomme délibérément ce qui n'existe plus et n'est que comptée. L'exception vit dans le fichier et NOMME son chemin (`CHEMIN DISPARU:`), comme `RECOUVREMENT ASSUMÉ:`. Mesuré à l'armement : `docs/Product/` ET `docs/product/` coexistaient — VISION.md et DESIGN-BIBLE.md dans le premier, 23 renvois vers le second, dont ceux de `.claude/CLAUDE.md`, du README, du HANDOFF et de NEUF agents. Chaque agent à qui l'on disait « lis la vision d'abord » lisait le vide, et sur la machine de l'owner (Windows, insensible à la casse) les deux répertoires entrent en collision | Si le document CIBLE dit encore ce que le renvoi prétend. Un chemin qui résout peut pointer un texte périmé — c'est le travail des humains et des documents de réconciliation |
 | `web/scripts/ancres-uniques.mjs` | LES ANCRES « § » : deux titres d'une même leçon peuvent-ils partager un `id` ? C'est la promesse d'un lien profond — l'élève copie le lien de la section qu'il lit. Mesuré à l'armement : depuis la pagination, `LessonRenderer` est appelé une fois par SEGMENT et `rehype-slug` remet son compteur d'unicité à zéro à chaque passe ; `maths/suites-numeriques` portait HUIT titres « L'erreur à repérer » avec le même id — sept ancres sur huit renvoyaient à la première. 95 titres au libellé répété existent dans 32 leçons. Corrigé par un compteur PARTAGÉ (`web/src/lib/rehypeSlugPartage.ts`), la première occurrence gardant son id nu pour que les liens déjà partagés survivent. PORTE FRANCHE : 62 leçons, 2 190 titres, 0 doublon | Les ids INTERNES des SVG, dupliqués eux aussi quand une figure est posée plusieurs fois. Vérifié inoffensif deux fois — `MediaDiagram` masque les étapes en réécrivant le markup de chaque figure, jamais par `getElementById`, et aucun identifiant n'est défini DIFFÉREMMENT par deux figures d'une notion tout en étant déréférencé par `url(#…)`. Armer sur « aucun id dupliqué » aurait été rouge sur un fait sans conséquence |
 | `web/scripts/portee-corpus.mjs` | LA PORTÉE d'un mécanisme : sur combien de pages du corpus une fonctionnalité livrée a réellement quelque chose à montrer. Compte, par notion et par matière, les points d'arrêt, figures, figures étagées, mouvements, embarqués, interactives, dérivations, exercices, et les chapitres portant une carte « à retenir ». Mesuré à l'armement (62 notions, 491 chapitres) : points d'arrêt **62/62**, figures **51/62**, exercices **49/62**, « à retenir » **44/62**, mouvements **6/62**, interactives **5/62**, embarqués **4/62**, dérivations **1/62**. La philosophie : 92 chapitres, 4 figures (toutes dans une seule notion), zéro de tout le reste. `--resume` pour les totaux seuls | SI LA PORTÉE EST BONNE. Une dérivation dépliable n'a de sens que là où il y a une dérivation ; une figure absente sur toute une matière est peut-être une dette, peut-être une décision. Le tableau est un fait, le verdict est pédagogique |
+| `web/scripts/portee-hors-lecon.mjs` | LA PORTÉE des surfaces HORS leçon — la seconde moitié de la même question. Compte, par épreuve : morceaux servis, questions, questions portant un raisonnement expert, questions portant une dérivation dépliable, et les renvois visuels de l'énoncé. Mesuré à l'armement : **39 épreuves, 247 morceaux, 1 472 questions — 100 % avec raisonnement, 77 % avec dérivation**, et l'atelier à **1 notion sur 62**. Quatre épreuves concentrent la lacune de dérivation (SPC 2021 R : 0 sur 41). ⚠️ à lancer depuis `web/`. `--resume` pour les totaux seuls | SI 77 % SUFFIT — question pédagogique. Et l'ORPHELINAT d'un renvoi visuel : la colonne « sans description » est un MAJORANT, parce que le corpus emploie cinq conventions de description et que « décrit en ligne » ne se distingue pas de « orphelin » sans juger le sens. Les 16 du premier tour ont été ouverts un par un : aucun défaut |
 | `web/scripts/test-attempt-events.mjs` | LE CHEMIN D'ÉCRITURE, côté client : les constructeurs de charge utile, la forme du fil telle que le validateur de l'edge function l'accepte, et — depuis le 2026-09-05 — le chemin de PERTE (échec, réessai unique à 4 s, borne de 20, 401, coupure réseau, visite de chapitre). 20 tests, minuteries simulées. `npm run test-attempt-events` | Le SERVEUR : idempotence de `record-notion-event`, double envoi, écritures concurrentes. Et le TAUX de perte réel, qui dépend du réseau de l'élève — les tests établissent la sémantique, pas la fréquence |
 
 ## Les balayages de corpus (outils, pas portes)
@@ -137,9 +138,22 @@
    `portee-corpus.mjs` (ci-dessus) répond désormais pour NEUF mécanismes à la
    fois. **Le harnais prouve qu'un mécanisme fonctionne ; seule une mesure
    sur le corpus dit sur combien de pages il a quelque chose à montrer.**
-   Ce qui reste sous ce numéro : la même question pour les surfaces HORS
-   leçon (l'assembleur d'épreuves, l'atelier, le tableau de bord), qu'aucun
-   compteur ne couvre.
+   La seconde moitié — les surfaces HORS leçon — a été mesurée le même jour
+   par `portee-hors-lecon.mjs` (`docs/audits/portee-hors-lecon.md`) : 39
+   épreuves, 1 472 questions, **100 % avec un raisonnement expert, 77 % avec
+   une dérivation dépliable**, et l'atelier à **1 notion sur 62**. Elle a
+   rapporté un résultat NÉGATIF qui valait la peine d'être établi : les
+   énoncés portent **212 renvois distincts à une figure** que le produit ne
+   rend jamais en image — et les 212 sont servis par une description
+   textuelle. La conclusion évidente (« un sujet de physique sans ses
+   figures est insoluble ») était fausse.
+   Ce qui reste sous ce numéro : **une porte sur cette classe est
+   volontairement NON armée.** Le corpus emploie cinq conventions pour
+   introduire une description de figure, et distinguer « décrit en ligne »
+   de « orphelin » demande de juger le sens. Les uniformiser coûterait seize
+   modifications de passages déjà corrects pour l'élève — de la turbulence
+   au service du vérificateur. Une porte ne s'arme que sur une classe
+   propre ; celle-ci est propre pour l'élève sans l'être pour la machine.
 
 8. **La production.** Tout ce document parle d'un build local. La synchro
    de production reste NON VÉRIFIÉE (CLAUDE.md).
@@ -268,3 +282,24 @@ exigence de plus que ses aînés : **il doit NOMMER le texte concerné entre
 guillemets français**, et la sonde n'exempte que celui-là. Un marqueur qui
 vaut pour tout un fichier fait taire l'instrument pour l'accident qu'on y
 introduira demain.
+
+## Deux façons de ne rien mesurer sans s'en apercevoir
+
+Ajoutées le 2026-09-05, après les avoir toutes deux commises.
+
+- **`lib/content.ts` résout la racine du contenu depuis le répertoire
+  COURANT.** Lancé ailleurs que dans `web/`, il rend une liste VIDE — sans
+  la moindre erreur. Un compteur a donc annoncé « 0 épreuve » avec le même
+  aplomb que « 39 », deux fois, avant que le motif se voie. **Un script qui
+  charge le contenu se lance depuis `web/`**, et un total de zéro se
+  suspecte avant d'être cru, exactement comme un total absurdement grand.
+- **`innerText` ne rend pas le texte des chapitres masqués.** Sur ce site
+  tous les chapitres d'une leçon sont présents-mais-masqués — l'invariant
+  qui fait marcher ⌘F, l'impression et le hors-ligne. Un balayage de corpus
+  qui lit `innerText` ne juge donc que le chapitre ACTIF. C'est ainsi qu'un
+  « 2ème » caché dans une banque a échappé à une mesure et a été trouvé par
+  la porte, qui dépouille le HTML. La règle de septembre — « le texte que
+  l'élève lit est `innerText`, jamais une regex sur le balisage » — vaut
+  pour JUGER une page à l'écran ; pour BALAYER un corpus paginé, il faut
+  dépouiller le HTML ou visiter chaque chapitre. **Les deux règles ne se
+  contredisent pas : elles répondent à deux questions différentes.**
