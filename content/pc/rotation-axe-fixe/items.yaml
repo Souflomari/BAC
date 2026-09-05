@@ -566,7 +566,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$v = 7{,}0\\ \\text{m/s}$"
+        text: "$v = 7{,}0\\ \\text{m/s}$, par la relation $v = R\\,\\omega$"
         correct: true
       - id: B
         text: "$v = 20\\ \\text{m/s}$, car c'est la valeur de $\\omega$."
@@ -886,7 +886,7 @@ items:
           dériver pour obtenir $\omega$, sans avoir besoin de choisir un
           instant particulier.
       - id: C
-        text: "$\\omega = 3{,}0\\ \\text{rad/s}$"
+        text: "$\\omega = 3{,}0\\ \\text{rad/s}$, constante : c'est le coefficient devant $t$"
         correct: true
       - id: D
         text: >-
@@ -1174,7 +1174,7 @@ items:
           multiplication. C'est exactement l'analogue de $a = F/m$ en
           translation, jamais $a = F\times m$.
       - id: B
-        text: "$\\ddot\\theta = 8{,}0\\ \\text{rad/s}^2$"
+        text: "$\\ddot\\theta = 8{,}0\\ \\text{rad/s}^2$, par $\\ddot\\theta = \\mathcal{M}_\\Delta / J_\\Delta$, la vitesse initiale n'intervenant pas"
         correct: true
       - id: C
         text: >-
@@ -1326,7 +1326,7 @@ items:
           dépend du carré de $v$. Utiliser $\omega$ seule sous-estime
           fortement l'énergie.
       - id: C
-        text: "$E_c = 30\\ \\text{J}$"
+        text: "$E_c = 30\\ \\text{J}$, par $E_c = \\tfrac12 J_\\Delta\\,\\omega^2$, sans la masse"
         correct: true
       - id: D
         text: >-
@@ -1464,7 +1464,7 @@ items:
           facteur $\frac12$ de $E_c=\frac12 J_\Delta \omega^2$ a été
           oublié : cela double le résultat par rapport à la vraie valeur.
       - id: D
-        text: "$E_c = 40\\ \\text{J}$"
+        text: "$E_c = 40\\ \\text{J}$, les deux moments d'inertie s'additionnant avant le calcul"
         correct: true
     correct_feedback: >
       $J_{total} = J_{disque}+J_{masse} = 3{,}0+2{,}0 = 5{,}0\
@@ -1499,9 +1499,9 @@ items:
     choices:
       - id: A
         text: >-
-          $\mathcal{M}_\Delta(\vec P) = -mg\,d\sin\theta \approx -1{,}2
-          \times 9{,}8\times 0{,}40\times \sin 30° \approx -2{,}4\
-          \text{N}\cdot\text{m}$
+          $\mathcal{M}_\Delta(\vec P) = -mg\,d\sin\theta \approx -1{,}2 \times
+          9{,}8\times 0{,}40\times \sin 30° \approx -2{,}4\ \text{N}\cdot\text{m}$, le
+          bras de levier valant $d\sin\theta$
         correct: true
       - id: B
         text: >-
@@ -1762,7 +1762,7 @@ items:
           la masse par rapport à l'axe, via $R^2$. Confondre $J_\Delta$
           avec la masse ignore complètement la géométrie du disque.
       - id: D
-        text: "$\\omega = 40\\ \\text{rad/s}$"
+        text: "$\\omega = 40\\ \\text{rad/s}$, en passant par $\\mathcal{M}_\\Delta = F R$, puis $\\ddot\\theta = \\mathcal{M}_\\Delta/J_\\Delta$ avec $J_\\Delta = \\tfrac12 mR^2$, et enfin $\\omega = \\ddot\\theta\\,t$"
         correct: true
     correct_feedback: >
       $J_\Delta = \frac12 mR^2 = \frac12\times 4{,}0\times 0{,}20^2 =
