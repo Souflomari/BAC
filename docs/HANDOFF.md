@@ -3051,6 +3051,8 @@ run 451, sur la même pile d'instruments, était vert en 28 min 35 s.
 | `gel-lecon` (nouveau) | 62 leçons, processeur ×6 | aucune tâche ≥ 1 s ; page réactive 1,9–7,3 s après la navigation, 16 leçons > 5 s, §11.21 |
 | `gel-chapitre` (nouveau) | 62 leçons, processeur ×6 | une tâche de 1,2 s en médiane au changement de chapitre (36 leçons ≥ 1 s) → 0,4 s (2 leçons ≥ 1 s) après correctif, §11.22 |
 | `clic-qcm` (nouveau) | 11 leçons, processeur ×6 | tâche la plus longue du clic 0,18 → 0,16 s de médiane à ×6 (0,36 → 0,23 s sur l'item le plus dense), un gain petit et réel, §11.23 |
+| `gel-chapitre` retour + `cv-chapitre` | 62 leçons, processeur ×6 | aller sans gain (0,41 → 0,44 s), retour 0,16 → 0,10 s ; dom-truth rouge sous content-visibility → retiré, §11.24 |
+| dom-truth prose-measure, dernier chapitre ouvert (portée étendue) | 3 pages × 2 états | 3 libellés de carte à 743 px (93ch) → `max-w-reading`, §11.25 |
 
 **Ce qui est connu et reste au propriétaire** — re-mesuré à l'identique, pas
 redécouvert : `horsligne-sweep` (une leçon déjà visitée, cliquée hors ligne,
@@ -3654,8 +3656,8 @@ vérifier), `recherche-navigateur` et les balayages (ils reconnaissent un
 chapitre replié à `hidden`/`display:none`), et `content-visibility` demande un
 repli `@supports` pour les Safari d'avant 2024. Le changement est petit, ses
 points de couplage sont cinq, et il ne se fait qu'avec dom-truth, la porte
-impression, la porte zoom et `recherche-navigateur` rejoués — prochaine étape
-de cette nuit si le temps le permet ; sinon, un fait pour le propriétaire.
+impression, la porte zoom et `recherche-navigateur` rejoués — essayé la même nuit,
+mesuré, retiré : §11.24.
 
 **LA MESURE.** `BASE=http://127.0.0.1:3911 CPU=6 node scripts/gel-chapitre.mjs`
 depuis `web/`, machine à froid ; avant et après sur le même serveur local,
@@ -3708,3 +3710,147 @@ pas pu être faite depuis ce conteneur : le relais réseau coupe la connexion
 de Chromium headless (`ERR_CONNECTION_RESET`, trois essais, `ws_closed_mid_exchange` côté relais) alors que `curl` atteint la même page en 0,7 s. Les
 §11.20 à 11.23 sont donc mesurés sur le build local de HEAD, pas sur le
 déployé — à refaire depuis une machine libre (INSTRUMENTS, portée).
+
+### 11.24 Le levier essayé, mesuré, retiré : `content-visibility` sur les chapitres repliés
+
+**CE QUI A ÉTÉ ESSAYÉ.** Le §11.22 avait mesuré le levier sans le prendre.
+Il a été pris à 00:01 (commit 8259ce3) de la façon qui touchait le moins de
+choses : le marqueur d'un chapitre replié — l'attribut `hidden`, que
+`NotionBody` émet, que `ChapterShell` bascule et que **dix-huit instruments**
+lisent — ne changeait pas ; seule sa signification CSS changeait, pour
+`.chapter-view` : `display:block` + `content-visibility:hidden`, repli
+`@supports` vers `display:none`, `content-visibility:visible !important` à
+l'impression. Vérifié avant de mesurer : chapitres repliés à 0 px, actif à
+6 055 px, impression intacte. Puis mesuré — et retiré à 00:21 (fc2b393).
+
+**POURQUOI RETIRÉ, EN DEUX FAITS.** Premier fait : l'ALLER — la première visite d'un chapitre — ne
+gagne rien. Sur les 62 leçons, même build, la règle `display:none` rejouée
+en témoin (`SANS_CV=1`) contre `content-visibility` : tâche la plus longue
+0,41 → 0,44 s de médiane, pire 1,55 → 1,82 s (`geometrie-espace`), 24 → 25
+leçons au-dessus de 0,5 s. Le « −35 % » de la sonde `cv-chapitre` mesurait
+un démasquage brut ; dans le vrai geste — commit React, focus, animation,
+mise en page — il disparaît. Seul le RETOUR (ArrowLeft vers le chapitre
+déjà vu) gagne : tâche la plus longue 0,16 → 0,10 s de médiane, pire 0,55 →
+0,20 s, 20 → 1 leçons au-dessus de 0,2 s — mais ce retour ramène au
+chapitre 1, léger : sous `display:none` il coûtait déjà 0,16 s. Le gain réel
+est un dixième de seconde en médiane, sur un geste qui n'était pas un gel.
+Tableau, trié par retour décroissant :
+
+| leçon | chap. | formules | aller, tâche max : display:none → content-visibility | retour (chapitre déjà vu), tâche max : display:none → content-visibility | retour, chapitre changé après : avant → après |
+|---|---:|---:|---|---|---|
+| `maths/limites-continuite` | 9 | 1051 | 0.74 s → 0.85 s | 0.55 s → 0.20 s | 0.66 s → 0.28 s |
+| `maths/equations-differentielles` | 8 | 783 | 0.77 s → 0.84 s | 0.47 s → 0.16 s | 0.56 s → 0.26 s |
+| `maths/nombres-complexes-1` | 10 | 881 | 0.65 s → 0.59 s | 0.46 s → 0.17 s | 0.55 s → 0.27 s |
+| `maths/suites-numeriques` | 13 | 946 | 0.53 s → 0.53 s | 0.40 s → 0.18 s | 0.49 s → 0.25 s |
+| `maths/calcul-integral` | 11 | 814 | 0.79 s → 0.73 s | 0.39 s → 0.16 s | 0.47 s → 0.23 s |
+| `maths/fonction-exponentielle` | 10 | 868 | 0.35 s → 0.49 s | 0.39 s → 0.12 s | 0.48 s → 0.19 s |
+| `maths/probabilites-conditionnelles` | 7 | 802 | 1.55 s → 1.63 s | 0.36 s → 0.11 s | 0.42 s → 0.17 s |
+| `maths/nombres-complexes-2` | 9 | 816 | 0.86 s → 0.88 s | 0.35 s → 0.16 s | 0.43 s → 0.25 s |
+| `maths/derivabilite-etude-fonctions` | 8 | 1118 | 0.78 s → 0.78 s | 0.35 s → 0.14 s | 0.42 s → 0.23 s |
+| `maths/fonction-logarithme` | 9 | 736 | 0.48 s → 0.50 s | 0.33 s → 0.16 s | 0.39 s → 0.23 s |
+| `pc/rc-charge` | 7 | 677 | 0.76 s → 0.82 s | 0.30 s → 0.10 s | 0.36 s → 0.16 s |
+| `maths/geometrie-espace` | 12 | 1133 | 0.77 s → 1.82 s | 0.28 s → 0.15 s | 0.33 s → 0.18 s |
+| `pc/rlc-serie` | 11 | 641 | 0.96 s → 0.47 s | 0.28 s → 0.16 s | 0.33 s → 0.23 s |
+| `pc/reactions-acido-basiques` | 14 | 1027 | 0.47 s → 0.51 s | 0.28 s → 0.14 s | 0.34 s → 0.20 s |
+| `maths/structures-algebriques` | 11 | 1130 | 0.49 s → 0.58 s | 0.27 s → 0.10 s | 0.33 s → 0.16 s |
+| `maths/arithmetique` | 10 | 872 | 0.55 s → 0.56 s | 0.27 s → 0.15 s | 0.33 s → 0.23 s |
+| `pc/esterification-hydrolyse` | 8 | 327 | 0.46 s → 0.48 s | 0.27 s → 0.12 s | 0.33 s → 0.18 s |
+| `pc/systemes-oscillants` | 10 | 715 | 1.00 s → 1.00 s | 0.24 s → 0.17 s | 0.28 s → 0.23 s |
+| `pc/evolution-spontanee` | 8 | 338 | 0.52 s → 0.54 s | 0.23 s → 0.10 s | 0.27 s → 0.15 s |
+| `pc/chute-mouvements-plans` | 13 | 844 | 0.70 s → 0.61 s | 0.21 s → 0.13 s | 0.24 s → 0.16 s |
+| `pc/ondes-em-modulation` | 8 | 337 | 0.57 s → 0.47 s | 0.20 s → 0.11 s | 0.23 s → 0.14 s |
+| `pc/rotation-axe-fixe` | 9 | 601 | 0.60 s → 0.65 s | 0.20 s → 0.12 s | 0.24 s → 0.17 s |
+| `pc/ondes-mecaniques-periodiques` | 9 | 525 | 0.52 s → 0.55 s | 0.19 s → 0.10 s | 0.23 s → 0.13 s |
+| `pc/etat-equilibre` | 9 | 475 | 0.34 s → 0.40 s | 0.19 s → 0.11 s | 0.23 s → 0.15 s |
+| `pc/atome-mecanique-newton` | 6 | 232 | 0.72 s → 0.73 s | 0.18 s → 0.09 s | 0.21 s → 0.11 s |
+| `pc/aspects-energetiques` | 10 | 823 | 0.49 s → 0.45 s | 0.17 s → 0.14 s | 0.20 s → 0.18 s |
+| `pc/decroissance-radioactive` | 8 | 428 | 0.55 s → 0.47 s | 0.17 s → 0.10 s | 0.21 s → 0.14 s |
+| `pc/piles` | 9 | 369 | 0.32 s → 0.32 s | 0.17 s → 0.10 s | 0.23 s → 0.16 s |
+| `pc/suivi-temporel-vitesse` | 7 | 338 | 0.26 s → 0.21 s | 0.17 s → 0.08 s | 0.21 s → 0.15 s |
+| `maths/denombrement` | 10 | 330 | 0.38 s → 0.37 s | 0.17 s → 0.12 s | 0.21 s → 0.18 s |
+| `philo/analyse-de-texte` | 8 | 0 | 0.23 s → 0.21 s | 0.16 s → 0.07 s | 0.23 s → 0.13 s |
+| `pc/noyaux-masse-energie` | 7 | 253 | 0.51 s → 0.55 s | 0.16 s → 0.11 s | 0.20 s → 0.15 s |
+| `pc/controle-catalyse` | 7 | 203 | 0.69 s → 0.89 s | 0.16 s → 0.10 s | 0.20 s → 0.15 s |
+| `pc/transformations-deux-sens` | 6 | 140 | 0.32 s → 0.31 s | 0.16 s → 0.09 s | 0.20 s → 0.12 s |
+| `philo/la-violence` | 9 | 0 | 0.22 s → 0.21 s | 0.15 s → 0.09 s | 0.20 s → 0.14 s |
+| `pc/dipole-rl` | 7 | 452 | 0.45 s → 0.52 s | 0.15 s → 0.13 s | 0.18 s → 0.18 s |
+| `pc/lois-de-newton` | 10 | 413 | 0.50 s → 0.50 s | 0.15 s → 0.11 s | 0.19 s → 0.14 s |
+| `svt/genetique-populations` | 7 | 321 | 0.69 s → 0.66 s | 0.15 s → 0.09 s | 0.18 s → 0.11 s |
+| `pc/electrolyse` | 8 | 219 | 0.26 s → 0.27 s | 0.14 s → 0.07 s | 0.18 s → 0.11 s |
+| `pc/ondes-mecaniques-progressives` | 7 | 252 | 0.35 s → 0.12 s | 0.14 s → 0.07 s | 0.18 s → 0.11 s |
+| `pc/transformations-lentes-rapides` | 7 | 155 | 0.45 s → 0.42 s | 0.13 s → 0.08 s | 0.17 s → 0.12 s |
+| `philo/l-histoire` | 8 | 0 | 0.15 s → 0.21 s | 0.13 s → 0.07 s | 0.16 s → 0.11 s |
+| `philo/le-droit-la-justice` | 8 | 0 | 0.18 s → 0.16 s | 0.12 s → 0.07 s | 0.16 s → 0.10 s |
+| `philo/theorie-experience` | 8 | 0 | 0.20 s → 0.18 s | 0.12 s → 0.06 s | 0.16 s → 0.10 s |
+| `philo/l-etat` | 8 | 0 | 0.18 s → 0.19 s | 0.12 s → 0.07 s | 0.16 s → 0.11 s |
+| `svt/liberation-energie-matiere-organique` | 9 | 115 | 0.32 s → 0.34 s | 0.12 s → 0.09 s | 0.15 s → 0.11 s |
+| `philo/la-personne` | 8 | 0 | 0.19 s → 0.20 s | 0.12 s → 0.07 s | 0.16 s → 0.11 s |
+| `pc/propagation-onde-lumineuse` | 8 | 326 | 0.14 s → 0.13 s | 0.11 s → 0.07 s | 0.15 s → 0.11 s |
+| `philo/autrui` | 8 | 0 | 0.17 s → 0.18 s | 0.11 s → 0.06 s | 0.15 s → 0.09 s |
+| `philo/la-liberte` | 5 | 0 | 0.20 s → 0.19 s | 0.11 s → 0.11 s | 0.14 s → 0.15 s |
+| `svt/transmission-caracteres` | 7 | 291 | 0.31 s → 0.27 s | 0.11 s → 0.07 s | 0.14 s → 0.12 s |
+| `philo/le-devoir` | 5 | 0 | 0.16 s → 0.17 s | 0.11 s → 0.07 s | 0.14 s → 0.11 s |
+| `philo/la-verite` | 10 | 0 | 0.20 s → 0.18 s | 0.11 s → 0.06 s | 0.14 s → 0.10 s |
+| `philo/le-bonheur` | 7 | 0 | 0.18 s → 0.20 s | 0.10 s → 0.06 s | 0.14 s → 0.09 s |
+| `svt/granitisation-deformation` | 7 | 0 | 0.19 s → 0.23 s | 0.09 s → 0.06 s | 0.13 s → 0.08 s |
+| `svt/soi-non-soi` | 7 | 0 | 0.14 s → 0.17 s | 0.09 s → 0.07 s | 0.12 s → 0.10 s |
+| `svt/genetique-humaine` | 7 | 156 | 0.22 s → 0.23 s | 0.09 s → 0.08 s | 0.12 s → 0.11 s |
+| `svt/moyens-de-defense` | 10 | 20 | 0.19 s → 0.18 s | 0.09 s → 0.06 s | 0.12 s → 0.10 s |
+| `svt/theorie-tectonique-plaques` | 9 | 1 | 0.17 s → 0.18 s | 0.08 s → 0.06 s | 0.11 s → 0.09 s |
+| `svt/chaines-de-montagnes` | 8 | 0 | 0.17 s → 0.18 s | 0.08 s → 0.06 s | 0.12 s → 0.09 s |
+| `svt/dysfonctionnements-immunitaires` | 8 | 0 | 0.19 s → 0.16 s | 0.08 s → 0.06 s | 0.11 s → 0.09 s |
+| `svt/role-enzymes` | 8 | 5 | 0.15 s → 0.14 s | 0.08 s → 0.00 s | 0.10 s → 0.06 s |
+
+**LE SECOND FAIT : LE SOL DES INSTRUMENTS A BOUGÉ.** Sous `display:none`,
+un paragraphe d'un chapitre replié mesure 0 px et n'a aucun rectangle ; sous
+`content-visibility:hidden`, le même paragraphe mesure **743 px et un
+rectangle** — sans être rendu. Vérifié côte à côte sur le même build (les
+trois libellés « Exercice … » du chapitre S'entraîner de `rlc-serie` : 743 /
+1 sous CV, 0 / 0 sous `display:none`). dom-truth est passé rouge sur
+« prose measure ≤ 75ch » (CI run 476, local dt13) en mesurant des
+paragraphes que l'élève ne voit pas. C'était le couplage prédit au §11.22,
+et il ne se limite pas à cette porte : toute mesure de géométrie qui ne
+filtre pas `closest("[hidden]")` changerait de portée d'un coup — vers le
+rouge, ou vers un vert non mesuré. Rejouées sous `content-visibility` sur le build local, pour le
+dossier : dom-truth ROUGE (262 vérifications, 3 rouges — les deux « prose
+measure » ci-dessus et le garde-fou de fraîcheur) ; porte impression verte
+(5 pages) ; porte zoom 320 : verte (0 signalement sur 105 pages) ; `recherche-navigateur` :
+inchangée (10 chapitres masqués sur 11, le mot du chapitre replié introuvable, celui du chapitre ouvert trouvé) ; `annonce-sweep` : verte (0 défaut : aucun focus perdu ni changement de chapitre non annoncé sur 62 pages).
+
+**LA DÉCISION.** Un gain de revisite seul, contre un sol déplacé sous
+dix-huit instruments : retiré la même nuit, HEAD revient à `display:none`.
+Le levier reste ouvert au propriétaire, avec ce qu'il coûterait vraiment :
+non pas 29 lignes de CSS, mais une définition PARTAGÉE de « chapitre
+replié » (un module que les dix-huit instruments importent, qui saurait
+lire `hidden`, `display:none` ET `content-visibility`) — et alors seulement
+le CSS. Le gain à attendre est celui de la colonne « retour » ci-dessus,
+rien de plus : la première visite d'un chapitre coûte sa mise en page, quoi
+qu'on fasse.
+
+**CE QUE L'ESSAI A RAPPORTÉ QUAND MÊME.** Les trois paragraphes de 743 px
+sont réels une fois le chapitre ouvert — un défaut de mesure typographique
+que la porte n'atteignait pas : §11.25.
+
+### 11.25 Trois lignes de 93 caractères que la porte ne pouvait pas voir
+
+**LE FAIT.** Le libellé de provenance d'une carte d'exercice (« Exercice IV
+— II. Décharge d'un condensateur dans une bobine… », 12 px, `text-caption`)
+fait souvent plus de cent caractères et courait sur toute la largeur de la
+carte : **743 px, soit ~93 caractères par ligne**, contre les 75ch (597 px à
+cette taille) que la porte prose-measure de dom-truth exige de tout texte
+courant. Trois cartes sur `rlc-serie`, une sur `rc-charge`. Vérifié chapitre
+ouvert (`?chapitre=11`) : les trois paragraphes mesurent bien 743 px quand
+l'élève les voit.
+
+**POURQUOI LA PORTE NE LE VOYAIT PAS.** Elle mesure la page au chargement,
+où seul le chapitre 1 est rendu ; les autres sont `hidden` — 0 px, aucun
+rectangle — et le chapitre « S'entraîner », qui porte toutes les cartes, est
+le dernier. La porte avait la bonne règle et la mauvaise PORTÉE (ADR 0031 :
+la portée d'un mécanisme se mesure à part). C'est l'essai `content-visibility`
+du §11.24 qui l'a révélé, en rendant mesurable ce qui ne l'était pas.
+
+**CE QUI A ÉTÉ FAIT.** `max-w-reading` (65ch) sur ce paragraphe dans
+`BankCard`. Et la porte mesure désormais chaque page DEUX fois : au
+chargement, puis avec son dernier chapitre ouvert par `?chapitre=N` — en
+vérifiant qu'il l'est. Rouge sur le balisage d'avant (les trois 743 px,
+mesurés par la même logique chapitre ouvert), vert dans la CI sur le balisage corrigé (run 478, dom-truth 4 min 30 s) — la porte mesure désormais 3 pages × 2 états au lieu de 3 × 1.
