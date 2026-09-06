@@ -3250,6 +3250,17 @@ tout ce qui sur-affirme ne laisse qu'UNE réponse debout, et c'est la bonne » �
 et il est à zéro. Les deux chiffres ne se contredisent pas : le mien compte
 une asymétrie, le sien compte une asymétrie EXPLOITABLE.
 
+**Repères de la nuit du 5 au 6 septembre (§11.20–11.25).** §11.20 : les
+épreuves gelaient 10 et 17 s au « Commencer » et au « Terminer » → révélation
+progressive, premier énoncé 1,4 s, premier corrigé 0,8 s. §11.21 : les 62
+leçons au même protocole — pas un gel, un silence d'hydratation de 1,9 à
+7,3 s ; une formule de leçon coûte 1 ms, une formule d'épreuve 16 ms. §11.22 :
+le changement de chapitre, seul vrai gel (1,2 s, 36 leçons ≥ 1 s), causé par
+un crochet qui re-rendait tous les items → 0,4 s, 2 leçons. §11.23 :
+`MathText` mémoïsé. §11.24 : `content-visibility` essayé, mesuré, retiré.
+§11.25 : trois libellés de 93 caractères hors de portée de la porte
+prose-measure → corrigés, portée doublée.
+
 ### 11.20 Le téléphone gelait au « Commencer » et au « Terminer » d'une épreuve
 
 Le §8 avait mesuré une leçon dense qui ignore le doigt 6,7 s sur un

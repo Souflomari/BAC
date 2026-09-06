@@ -187,6 +187,14 @@ exercice de la phase est rendu.
 
 8. **La production.** Tout ce document parle d'un build local. La synchro
    de production reste NON VÉRIFIÉE (CLAUDE.md).
+9. **Le déployé, depuis ce conteneur — CONSTATÉ le 2026-09-06.** La preview
+   Vercel répond à `curl` en 0,7 s, mais le relais réseau de la session coupe
+   Chromium headless (`ERR_CONNECTION_RESET`, trois essais, `ws_closed_mid_
+   exchange` côté relais). Tout ce que les §11.20 à 11.25 du HANDOFF mesurent
+   — gels, changement de chapitre, clic de réponse — l'est sur le build local
+   de HEAD, jamais sur l'artefact déployé. Ce qui se vérifie quand même : le
+   HTML servi (par `curl`), donc les attributs et les classes ; pas la
+   géométrie, pas le temps. À refaire depuis une machine libre.
 
 *(Le point 3 de la version du matin — « le zoom navigateur à 400 %, dans la
 forme stricte de SC 1.4.10 » — a été instrumenté le même jour :
@@ -199,7 +207,10 @@ ses quatre contrôles sont armés dans `dom-truth` sur sept pages témoins.)*
 poids des pages » — a été instrumenté le jour même par `poids-sweep`, et sa
 passe la plus utile n'était dans aucun des trois mots : le PROCESSEUR bridé.
 Une leçon dense se peint en 0,5 s et reste sourde 6,7 s sur un téléphone bon
-marché. Voir `docs/audits/poids-et-reactivite.md`. Ce qui reste sous ce
+marché. Voir `docs/audits/poids-et-reactivite.md` — et HANDOFF §11.21, qui a
+mesuré les 62 leçons au même protocole : ce silence n'est pas un gel (aucune
+tâche ≥ 1 s) mais une hydratation en une dizaine de tâches d'une demi-seconde ;
+le seul gel de la leçon était le changement de chapitre, corrigé (§11.22). Ce qui reste sous ce
 numéro, c'est la consommation de données — une autre question.)*
 
 *(RE-CERTIFIÉE le 2026-09-05, dans les deux thèmes, par un second
