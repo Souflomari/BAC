@@ -3053,6 +3053,7 @@ run 451, sur la même pile d'instruments, était vert en 28 min 35 s.
 | `clic-qcm` (nouveau) | 11 leçons, processeur ×6 | tâche la plus longue du clic 0,18 → 0,16 s de médiane à ×6 (0,36 → 0,23 s sur l'item le plus dense), un gain petit et réel, §11.23 |
 | `gel-chapitre` retour + `cv-chapitre` | 62 leçons, processeur ×6 | aller sans gain (0,41 → 0,44 s), retour 0,16 → 0,10 s ; dom-truth rouge sous content-visibility → retiré, §11.24 |
 | dom-truth prose-measure, dernier chapitre ouvert (portée étendue) | 3 pages × 2 états | 3 libellés de carte à 743 px (93ch) → `max-w-reading`, §11.25 |
+| `js-ventilation` (nouveau) | 4 pages types | 143 ko de pipeline markdown/KaTeX sur ~350 ko de JS par leçon (épreuve 126/285), leçon sans formule comprise — levier owner, §11.26 |
 
 **Ce qui est connu et reste au propriétaire** — re-mesuré à l'identique, pas
 redécouvert : `horsligne-sweep` (une leçon déjà visitée, cliquée hors ligne,
@@ -3259,7 +3260,9 @@ le changement de chapitre, seul vrai gel (1,2 s, 36 leçons ≥ 1 s), causé par
 un crochet qui re-rendait tous les items → 0,4 s, 2 leçons. §11.23 :
 `MathText` mémoïsé. §11.24 : `content-visibility` essayé, mesuré, retiré.
 §11.25 : trois libellés de 93 caractères hors de portée de la porte
-prose-measure → corrigés, portée doublée.
+prose-measure → corrigés, portée doublée. §11.26 : 143 ko de pipeline
+markdown/KaTeX dans le JavaScript de chaque page — le levier « pré-rendre au
+build », pour le propriétaire.
 
 ### 11.20 Le téléphone gelait au « Commencer » et au « Terminer » d'une épreuve
 
@@ -3870,3 +3873,46 @@ mesurés par la même logique chapitre ouvert), vert dans la CI sur le balisage 
 (`curl`, 00:43) porte `max-w-reading` sur les 17 libellés de provenance de
 `rlc-serie` : l'artefact déployé est bien celui-ci. (La géométrie, elle, ne se
 mesure pas d'ici — INSTRUMENTS, point 9.)
+
+### 11.26 Le pipeline markdown/KaTeX voyage avec chaque page — 143 ko sur 350
+
+**LE FAIT.** `web/scripts/js-ventilation.mjs` (nouveau), build local de HEAD,
+390 px : une leçon dense (`rlc-serie`) télécharge 18 scripts, **352 ko de
+JavaScript** (transférés, donc gzip) sur 1 053 ko de page ; une leçon SVT
+sans formule (`moyens-de-defense`) 350 ko sur 827 ; une épreuve 285 ko sur
+654 ; l'accueil 315 ko sur 807. Dans chacune, **les morceaux du pipeline
+markdown/KaTeX côté client font 143 ko (126 sur l'épreuve)** : KaTeX 75 ko,
+remark/micromark 44 ko, deux petits morceaux (17 et 7 ko) — 40 à 44 % du
+JavaScript de la page, sur une leçon qui n'a pas une formule comme sur une
+leçon qui en a 640 : ce sont des morceaux de ROUTE, demandés par le parseur
+dès le HTML (`parser/Low`). Sur l'accueil ils arrivent par le routeur
+(`script/Low`) : le préchargement des 64 liens de leçons et d'épreuves de la
+page — voulu (le préchargement suit l'intention, § données), pas un défaut de
+l'accueil.
+
+**POURQUOI ILS SONT LÀ.** Cinq composants clients rendent du markdown ou du
+KaTeX dans le navigateur : `MathText` (énoncés, choix et solutions des QCM
+et points d'arrêt), `MdBlock` (énoncés, raisonnements et intros des
+exercices), `Derivation`, `RetenirZone`, `KeyFormulaRail` — et l'épreuve
+entière (`EpreuveShell`). La leçon elle-même (`LessonRenderer`) est un
+composant serveur : sa prose et ses formules arrivent en HTML. Le pipeline
+client existe pour ce qui se rend APRÈS un geste — la tentative, la réponse,
+le « Commencer » — ou dans un composant à état.
+
+**CE QUE ÇA COÛTE, ET LE LEVIER.** En octets : 143 ko gzip par leçon,
+~460 ko bruts à analyser et compiler — une part, non isolée, du silence
+d'hydratation du §11.21. En temps : chaque formule rendue par ce pipeline
+coûte ~16 ms à ×6 (§11.20) contre ~1 ms quand elle arrive du serveur en HTML
+(§11.21) — seize fois. Le levier est le même partout : PRÉ-RENDRE au build,
+côté serveur, les blocs que le client rend aujourd'hui — du HTML dans une
+prop, pas dans le DOM, ce qui respecte à la lettre « rien du corrigé dans le
+DOM avant la tentative » (la chaîne markdown, elle, voyage déjà dans la
+page). Pour les leçons : −143 ko et un pipeline de moins à hydrater, contre
+un surcoût de HTML modeste (énoncés de QCM, raisonnements). Pour les
+épreuves : −126 ko de JavaScript et un « Terminer » complet en ~1 s au lieu
+de 7,8 (20 à 30 s sur les rattrapages denses), contre un HTML de sujet qui
+grossirait — 800 formules × ~40 nœuds, quelques centaines de ko gzip — un
+arbitrage octets contre secondes, à mesurer avant de trancher. C'est un
+changement de l'architecture des données d'épreuve et d'item : pas une nuit,
+un chantier. Consigné pour le propriétaire, avec l'instrument qui le
+re-mesurera.
