@@ -3865,3 +3865,8 @@ du §11.24 qui l'a révélé, en rendant mesurable ce qui ne l'était pas.
 chargement, puis avec son dernier chapitre ouvert par `?chapitre=N` — en
 vérifiant qu'il l'est. Rouge sur le balisage d'avant (les trois 743 px,
 mesurés par la même logique chapitre ouvert), vert dans la CI sur le balisage corrigé (run 478, dom-truth 4 min 30 s) — la porte mesure désormais 3 pages × 2 états au lieu de 3 × 1.
+
+**DÉPLOYÉ, PAS SEULEMENT BÂTI.** Le HTML servi par la preview Vercel
+(`curl`, 00:43) porte `max-w-reading` sur les 17 libellés de provenance de
+`rlc-serie` : l'artefact déployé est bien celui-ci. (La géométrie, elle, ne se
+mesure pas d'ici — INSTRUMENTS, point 9.)
