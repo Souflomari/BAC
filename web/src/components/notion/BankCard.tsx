@@ -152,7 +152,13 @@ export function BankCard({
           </div>
 
           {entry.source.exerciseLabel && (
-            <p className="mt-1.5 text-caption text-tertiary">
+            /* `max-w-reading` (2026-09-06, HANDOFF §11.25) : ce libellé de
+               provenance fait souvent plus de 100 caractères en 12 px et
+               courait sur toute la carte — 743 px, soit ~93 caractères par
+               ligne, au-delà de la mesure de 75ch que la porte prose-measure
+               exige de tout texte courant. La porte ne le voyait pas : le
+               chapitre « S'entraîner » est replié au moment du contrôle. */
+            <p className="mt-1.5 max-w-reading text-caption text-tertiary">
               {frenchTypography(entry.source.exerciseLabel)}
             </p>
           )}

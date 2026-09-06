@@ -692,10 +692,15 @@ try {
   // (F2) Prose measure: NO running-text paragraph renders wider than 75ch of
   // its OWN font, on any audited content page. "Running text" = >100 chars
   // (block-box labels like a 4-char eyebrow legitimately fill wide bands).
-  for (const p of [NOTION, "/notions/pc/rc-charge", "/notions/maths/probabilites-conditionnelles"]) {
-    console.log(`\n[${p}] SWEEP: prose measure ≤75ch (running text)`);
-    await page.goto(`${BASE}${p}`, { waitUntil: "networkidle" });
-    const offenders = await page.evaluate(() => {
+  // PORTÉE (2026-09-06, HANDOFF §11.25) : le chapitre 1 est le seul rendu au
+  // chargement ; les autres sont `hidden` (display:none, 0 px de large) et
+  // la mesure ne les voit pas. Le dernier chapitre — « S'entraîner », la
+  // banque d'exercices — porte des libellés longs en 12 px que la porte n'a
+  // jamais mesurés : révélé par l'essai content-visibility (§11.24), qui
+  // rendait mesurable la géométrie des chapitres repliés (743 px sur
+  // rlc-serie et rc-charge). Chaque page est donc mesurée DEUX fois : au
+  // chargement, puis avec son dernier chapitre ouvert par `?chapitre=N`.
+  const PROSE_75CH = () => {
       const out = [];
       for (const el of document.querySelectorAll(".notion-content p, .notion-content li")) {
         // Running text = the element's OWN text runs (direct text nodes +
@@ -719,10 +724,25 @@ try {
         if (w > cap + 1) out.push(`${Math.round(w)}px > ${Math.round(cap)}px (75ch): "${(el.textContent || "").trim().slice(0, 40)}…"`);
       }
       return out;
-    });
+  };
+  for (const p of [NOTION, "/notions/pc/rc-charge", "/notions/maths/probabilites-conditionnelles"]) {
+    console.log(`\n[${p}] SWEEP: prose measure ≤75ch (running text)`);
+    await page.goto(`${BASE}${p}`, { waitUntil: "networkidle" });
+    const offenders = await page.evaluate(PROSE_75CH);
     checks++;
     if (offenders.length) failures += fail(`over-measure running text:\n      ${offenders.join("\n      ")}`);
     else console.log(`  ✓ all running text ≤ 75ch of its own font`);
+    // Le dernier chapitre ouvert — là où vivent les cartes d'exercice.
+    const total = await page.locator("[data-chapter-section]").count();
+    if (total > 1) {
+      await page.goto(`${BASE}${p}?chapitre=${total}`, { waitUntil: "networkidle" });
+      const actif = await page.evaluate(() => document.querySelector('[data-chapter-active="true"]')?.getAttribute("data-chapter-index") ?? null);
+      const offenders2 = await page.evaluate(PROSE_75CH);
+      checks++;
+      if (actif !== String(total - 1)) failures += fail(`dernier chapitre non ouvert par ?chapitre=${total} (actif : ${actif})`);
+      else if (offenders2.length) failures += fail(`over-measure running text, chapitre ${total} ouvert :\n      ${offenders2.join("\n      ")}`);
+      else console.log(`  ✓ all running text ≤ 75ch — chapitre ${total} (le dernier) ouvert`);
+    }
   }
 
   // (F3 + F4) Contrast in BOTH themes, dark reached through the REAL toggle
