@@ -3054,6 +3054,7 @@ run 451, sur la même pile d'instruments, était vert en 28 min 35 s.
 | `gel-chapitre` retour + `cv-chapitre` | 62 leçons, processeur ×6 | aller sans gain (0,41 → 0,44 s), retour 0,16 → 0,10 s ; dom-truth rouge sous content-visibility → retiré, §11.24 |
 | dom-truth prose-measure, dernier chapitre ouvert (portée étendue) | 3 pages × 2 états | 3 libellés de carte à 743 px (93ch) → `max-w-reading`, §11.25 |
 | `js-ventilation` (nouveau) | 4 pages types | 143 ko de pipeline markdown/KaTeX sur ~350 ko de JS par leçon (épreuve 126/285), leçon sans formule comprise — levier owner, §11.26 |
+| `trace-chargement` (nouveau) | 3 leçons, processeur ×6 | le JavaScript fait 50–63 % du fil principal au chargement, l'hydratation React en tête ; compilation 0,3–0,5 s seulement, §11.26 |
 
 **Ce qui est connu et reste au propriétaire** — re-mesuré à l'identique, pas
 redécouvert : `horsligne-sweep` (une leçon déjà visitée, cliquée hors ligne,
@@ -3916,3 +3917,21 @@ arbitrage octets contre secondes, à mesurer avant de trancher. C'est un
 changement de l'architecture des données d'épreuve et d'item : pas une nuit,
 un chantier. Consigné pour le propriétaire, avec l'instrument qui le
 re-mesurera.
+
+**LA PART DU JAVASCRIPT, ISOLÉE.** `web/scripts/trace-chargement.mjs`
+(nouveau) : trace CDP du fil principal pendant le chargement à ×6, jusqu'à
+deux secondes de calme, durées propres par famille d'événements. `rlc-serie` :
+7,9 s de fil principal — **JavaScript 4,2 s (54 %)**, style et mise en page
+1,3 s (17 %), analyse du HTML 0,8 s (10 %), reste 1,5 s. `suites-numeriques` :
+7,1 s — JavaScript 3,5 s (50 %), mise en page 0,9 s, HTML 0,9 s. Le témoin
+sans formule `moyens-de-defense` : 2,4 s — JavaScript 1,5 s (63 %), mise en
+page 0,2 s. Dans le JavaScript, l'analyse et la compilation des morceaux
+(`v8.compile` + `EvaluateScript`) ne font que 0,3 à 0,5 s ; le reste — 2,3 à
+2,7 s de `FunctionCall` et 0,7 à 1,1 s de microtâches sur les leçons denses —
+est l'HYDRATATION de React, proportionnelle aux nœuds. Deux conséquences :
+le levier « pré-rendre » du paragraphe précédent vaut, au chargement, les
+0,3 à 0,5 s de compilation plus la part d'hydratation des cinq composants
+clients (non isolée) ; et le gros du silence reste ce que le §8.7 nomme —
+l'hydratation de quatorze chapitres dont un seul est lu. (La trace ralentit
+ce qu'elle mesure : 10,6 s de mur ici contre 7,3 s sans trace au §11.21 ;
+les proportions valent mieux que les valeurs.)
