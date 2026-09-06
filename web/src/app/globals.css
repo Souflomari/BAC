@@ -153,39 +153,10 @@ h3:hover .heading-anchor,
      The position affordance and prev/next transport are screen-only chrome. */
   .chapter-view {
     display: block !important;
-    /* Et le chapitre replié par `content-visibility` (règle ci-dessous)
-       redevient un contenu ordinaire : le papier n'a pas de chapitres. */
-    content-visibility: visible !important;
   }
   .chapter-position,
   .chapter-transport {
     display: none !important;
-  }
-}
-
-/* ── Chapitre replié : garder l'état de rendu (2026-09-05, HANDOFF §11.24) ──
-   Le marqueur d'un chapitre replié reste l'attribut `hidden` — c'est ce que
-   NotionBody émet, ce que ChapterShell bascule, et ce que dix-huit instruments
-   lisent pour ignorer les chapitres repliés. Ce qui change est ce que `hidden`
-   FAIT ici : `display:none` jette la mise en page du chapitre, et la refaire
-   coûtait 0,4 à 1,4 s à ×6 à CHAQUE démasquage (§11.22, `cv-chapitre`) ;
-   `content-visibility:hidden` saute le contenu — pas de mise en page, pas de
-   peinture, rien dans l'arbre d'accessibilité, rien pour ⌘F : exactement ce
-   que faisait `display:none` — mais GARDE l'état de rendu : revenir à un
-   chapitre déjà vu coûte 6 à 21 ms au lieu de 600 à 1 300, et le premier
-   démasquage ~35 % de moins. Le repli `@supports` rend `display:none` aux
-   navigateurs sans `content-visibility` (Safari avant 18). Marge et
-   remplissage à zéro pour que la boîte vide du chapitre replié ne laisse
-   aucun blanc. */
-.chapter-view[hidden] {
-  display: block;
-  content-visibility: hidden;
-  margin: 0;
-  padding: 0;
-}
-@supports not (content-visibility: hidden) {
-  .chapter-view[hidden] {
-    display: none;
   }
 }
 
