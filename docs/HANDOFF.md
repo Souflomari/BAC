@@ -4063,5 +4063,23 @@ des épreuves et d'une épreuve. La règle est donc complète pour tout ce que
 le serveur rend cliquable ; ce qui apparaît après un geste (menus ouverts,
 choix après réponse) n'a pas besoin d'elle.
 
+**LES DÉLAIS, VÉRIFIÉS.** Sur 3G lente, la ligne « La page se prépare… »
+est attachée avec le HTML (à ~8 s), d'opacité 0 à +0 et à +0,8 s, 1 à +2 s —
+le délai de 1,5 s tient, mouvement réduit compris (le filet global réduit la
+durée du fondu, pas le délai). Les commandes visibles en attente s'estompent
+à 0,38 après la seconde de délai (`cursor: progress`) ; les variantes de
+bureau masquées à 390 px (`display:none`) ne s'animent pas — elles ne sont
+pas là. Après l'hydratation (17,2 s ici), plus une commande `aria-busy`,
+plus de ligne. Sur le déployé (preview Vercel d'ec0ec08, `curl`, 16:58) : 263 boutons servis, 0 actif, la ligne présente — l'artefact déployé porte la règle complète.
+
+**LA PORTE, ARMÉE.** dom-truth lit désormais le HTML SERVI (fetch, pas le
+DOM hydraté) d'une leçon, de l'accueil, de la liste des épreuves et d'une
+épreuve : tout `<button>` que le serveur rend doit porter `disabled`. Rouge
+si un composant client oublie le crochet. Testée dans les deux sens : rouge
+sur le HTML servi par le build 7d3f851 (deux « Ouvrir le bac à sable »
+actifs sur `rlc-serie`), verte sur ec0ec08 — en local et sur la preview
+Vercel (263 boutons, 0 actif, `curl`). Une porte qui peut aller au rouge
+(ADR 0031).
+
 **CE QUE ÇA VÉRIFIE.** dom-truth : 265 vérifications sur ce build, un seul rouge — le garde-fou de fraîcheur (commité pendant la mesure) ; les portes qui cliquent (cartes d'exercice, révélation, transports de figure, changement de chapitre) toutes vertes. Les instruments cliquent avec
 Playwright, qui attend qu'un bouton soit actif : aucun n'a eu à changer.

@@ -199,6 +199,11 @@ exercice de la phase est rendu.
    de HEAD, jamais sur l'artefact déployé. Ce qui se vérifie quand même : le
    HTML servi (par `curl`), donc les attributs et les classes ; pas la
    géométrie, pas le temps. À refaire depuis une machine libre.
+10. **Le RÉSEAU d'un élève — ÉMULÉ depuis le 2026-09-11.** `epreuve-3g` et
+   `lecon-3g` bridant Chromium à 400 kb/s et 400 ms (processeur ×4) ont
+   trouvé les boutons morts avant l'hydratation (HANDOFF §11.27–11.28). Ce
+   qui reste : un vrai réseau mobile — pertes, variations, radio qui
+   s'endort — que `reseau-malade` approche autrement ; et un vrai téléphone.
 
 *(Le point 3 de la version du matin — « le zoom navigateur à 400 %, dans la
 forme stricte de SC 1.4.10 » — a été instrumenté le même jour :

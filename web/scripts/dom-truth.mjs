@@ -687,6 +687,30 @@ try {
     }
   }
 
+  // ══ (2026-09-11, HANDOFF §11.28) Une commande rendue par le serveur est
+  // DÉSACTIVÉE jusqu'à l'hydratation. Sur 3G lente, un bouton visible dont
+  // l'onClick n'existe pas encore ignorait le doigt 10 à 24 s ; la règle est :
+  // tout <button> que le serveur rend porte `disabled` (useHydrated), sauf ce
+  // qui n'a pas besoin de JavaScript. On lit le HTML SERVI (fetch, pas le DOM
+  // hydraté) — c'est ce que voit l'élève avant que React ne prenne la main.
+  // Rouge si un bouton actif apparaît : un composant client qui aurait oublié
+  // le crochet. (Testé rouge sur le HTML de 7d3f851, où « Ouvrir le bac à
+  // sable » n'était pas encore gardé : 2 boutons actifs sur rlc-serie.)
+  for (const p of [NOTION, "/", "/examens", "/examens/sm-2025-normale"]) {
+    console.log(`\n[${p}] SWEEP: HTML servi — aucune commande active avant l'hydratation`);
+    checks++;
+    try {
+      const html = await (await fetch(`${BASE}${p}`)).text();
+      const boutons = html.match(/<button\b[^>]*>/g) ?? [];
+      const actifs = boutons.filter((b) => !/\bdisabled\b/.test(b));
+      if (boutons.length === 0) failures += fail(`aucun <button> dans le HTML servi de ${p} — la page a-t-elle changé de forme ?`);
+      else if (actifs.length) failures += fail(`${actifs.length} bouton(s) actif(s) avant l'hydratation sur ${boutons.length} :\n      ${actifs.slice(0, 3).map((b) => b.replace(/class="[^"]*"/, "").slice(0, 110)).join("\n      ")}`);
+      else console.log(`  ✓ ${boutons.length} boutons servis, tous \`disabled\` jusqu'à l'hydratation`);
+    } catch (e) {
+      failures += fail(`HTML servi illisible pour ${p} : ${String(e).slice(0, 80)}`);
+    }
+  }
+
   // ══ SWEEPS (July-2026 external-audit instruments — class-level, per §13) ══
 
   // (F2) Prose measure: NO running-text paragraph renders wider than 75ch of
