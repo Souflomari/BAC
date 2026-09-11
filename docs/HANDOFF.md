@@ -3314,6 +3314,8 @@ levier `overflow-x: clip` différé.
 d'écran → `aria-live="polite"` `aria-atomic` ; le chrono reste muet.
 §11.41 : toute commande a un nom accessible (WCAG 4.1.2), pages et états
 révélés compris — 0 sans nom ; instrument armé.
+§11.42 : les cibles tactiles passent WCAG 2.5.8 (AA), les manques restants
+sont AAA (44×44), assumés sur un produit de bureau.
 
 ### 11.20 Le téléphone gelait au « Commencer » et au « Terminer » d'une épreuve
 
@@ -4694,6 +4696,19 @@ partout.** Un résultat NÉGATIF qui valait d'être établi : la loupe seule
 évidents, et tous deux portent un `aria-label`. La porte est armée (rouge si
 une commande visible perd son nom) mais hors CI tant que la CI n'a pas de
 runner (§11.37).
+
+### 11.42 Les cibles tactiles passent WCAG 2.5.8 (AA) — mesuré (résultat négatif)
+
+**MESURÉ** (`cibles-tactiles`, 390 px). Au niveau AA (24×24 px), les seules
+commandes sous la taille sont EXEMPTÉES : le lien d'évitement (`sr-only`,
+1×1, masqué jusqu'au focus) et les liens « Revoir la notion — … » du bilan
+d'épreuve (18 px de haut, mais un lien de texte seul dans son propre `<p>`
+— l'exception « cible en ligne » de 2.5.8, et chacun est séparé du suivant
+par tout un exercice). Les radios d'auto-évaluation, candidates évidentes,
+sont `min-h-touch` (≥ 44). Au niveau AAA (44×44), 8 à 67 commandes par page
+restent en dessous — le chrome dense, les liens de programme — un manque
+ASSUMÉ sur un produit calme d'abord pensé pour un bureau ; 2.5.5 est AAA,
+pas une cible du projet. Un résultat négatif de plus, posé.
 
 ### 11.29–11.41 en un coup d'œil, et le déployé
 
