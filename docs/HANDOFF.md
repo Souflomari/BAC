@@ -3057,6 +3057,7 @@ run 451, sur la même pile d'instruments, était vert en 28 min 35 s.
 | `trace-chargement` (nouveau) | 3 leçons, processeur ×6 | le JavaScript fait 50–63 % du fil principal au chargement, l'hydratation React en tête ; compilation 0,3–0,5 s seulement, §11.26 |
 | `epreuve-3g` (nouveau) | 3 épreuves, 3G lente + ×4 | bouton visible à 4–7 s, mort jusqu'à ~17 s (20 appuis) → désactivé et honnête, pipeline différé, §11.27 |
 | `lecon-3g` (nouveau) | 3 leçons, 3G lente + ×4 | « Chapitre suivant » visible à 4–8 s, mort jusqu'à 17–28 s → désactivé et honnête jusqu'à l'hydratation, §11.28 |
+| `veille-hydratation` (nouveau) | 3 pages, 3G lente et 250 kb/s ; morceau d'entrée bloqué | un morceau perdu n'était dit que 8,3 s après la perte, par-dessus la ligne « se prépare… » → écouteur `error` en tête, +0,3 s, une seule voix, filet à 30 s, §11.29 |
 
 **Ce qui est connu et reste au propriétaire** — re-mesuré à l'identique, pas
 redécouvert : `horsligne-sweep` (une leçon déjà visitée, cliquée hors ligne,
@@ -3269,7 +3270,10 @@ build », pour le propriétaire. §11.27 : sur 3G lente, le bouton
 « Commencer l'épreuve » ignorait le doigt dix secondes → désactivé et honnête
 tant que la page se charge, pipeline markdown chargé après l'hydratation. §11.28 : les leçons aussi — « Chapitre
 suivant » mort jusqu'à 28 s → `useHydrated`, commandes désactivées et
-`aria-busy` avant l'hydratation, « La page se prépare… ».
+`aria-busy` avant l'hydratation, « La page se prépare… ». §11.29 : un
+morceau de JavaScript perdu n'était dit que 8,3 s après, par-dessus cette
+ligne → écouteur `error` en tête du document, bandeau à +0,3 s, filet à
+30 s, une seule voix.
 
 ### 11.20 Le téléphone gelait au « Commencer » et au « Terminer » d'une épreuve
 
@@ -4101,9 +4105,76 @@ vide ne soit pas vert. Testée dans les deux sens sur la batterie entière :
 `/atelier`), **0** sur le build d'après. Ce qu'elle ne voit toujours pas :
 ce qui n'est pas prérendu (rien aujourd'hui — les 118 pages couvrent chaque
 patron de route de `src/app`, `_not-found` compris), et ce qu'un geste fait
-apparaître.
+apparaître. Et pourquoi `<button>` suffit comme règle : les 118 pages ne
+servent AUCUN `<input>`, `<select>` ni `<textarea>`, et aucun `role=` de
+commande (seulement `list`, `group`, `img`, `status`) — le formulaire de
+connexion n'existe qu'après l'hydratation. La surface cliquable que le
+serveur rend, c'est des boutons et des liens ; les liens marchent sans
+JavaScript.
 
 **CE QUE ÇA VÉRIFIE.** dom-truth : 265 vérifications sur ce build, un seul rouge — le garde-fou de fraîcheur (commité pendant la mesure) ; les portes qui cliquent (cartes d'exercice, révélation, transports de figure, changement de chapitre) toutes vertes. Les instruments cliquent avec
 Playwright, qui attend qu'un bouton soit actif : aucun n'a eu à changer. La CI
 (run 490) est verte de bout en bout sur ce build, porte comprise : 39 min
 02 s. La règle et ses raisons sont consignées dans l'ADR 0032.
+
+### 11.29 La veille d'hydratation ne voyait un morceau perdu qu'au bout d'un compte à rebours — et parlait en même temps que la ligne « se prépare… »
+
+**LE POINT DE DÉPART.** Le §11.28 a posé la ligne « La page se prépare… » à
+1,5 s. Or depuis le 2026-09-04 (`docs/audits/reseau-malade.md`), un autre
+message vivait au même endroit : le bandeau « La page n'a pas fini de se
+charger… Recharger » de la veille d'hydratation, révélé par un script en
+ligne de `PageShell` si le signal de vie manquait **12 s après la fin du
+HTML** — un seuil choisi quand l'hydratation mesurée plafonnait à 7 s. Le
+§11.28 la mesure à 17–28 s sur 3G lente. Deux questions : le bandeau
+crie-t-il au loup sur un réseau simplement lent ? et un morceau PERDU
+attend-il vraiment douze secondes pour être dit ?
+
+**MESURÉ AVANT** (`veille-hydratation`, 390 × 780, processeur ×4). Sur 3G
+lente (400 kb/s, 400 ms), trois pages : le bandeau n'apparaît **jamais** —
+pas par conception, par chronologie : son compte partait de la fin du HTML
+(10–13 s sur une leçon), l'hydratation arrivait à 18–22 s, l'échéance à
+22–25 s. Marge : 3 à 7 s. À 250 kb/s / 600 ms, le HTML d'une leçon finit à
+~17,5 s et l'hydratation à 34 s : l'échéance à ~29,5 s aurait montré le
+bandeau 4–5 s avant que la page ne réponde — une fausse alerte, avec un
+« Recharger » qui aurait relancé 34 s de chargement. Et sur un morceau
+perdu (le plus gros morceau d'entrée bloqué, 75 ko, perdu à 2,2 s) : le
+bandeau à 10,5 s, **+8,3 s après la perte** — parce qu'il vivait en pied
+de page et n'existait pas tant que le HTML n'était pas arrivé.
+
+**CE QUI A CHANGÉ** (`VeilleHydratation.tsx`, monté depuis le layout).
+Trois temps, tous sans React :
+- un écouteur `error` **en tête du document**, capté sur les `<script>` de
+  `/_next/` — un morceau perdu avant l'hydratation pose la classe
+  `hydratation-perdue` sur `<html>` et révèle le bandeau. Il distingue
+  « perdu » (instantané) de « lent » (rien) ; après `__bacVivant`, il se
+  tait — les composants gèrent leurs propres chargements différés (le
+  pipeline markdown de l'épreuve a son propre message) ;
+- le bandeau **en tête du `<body>`**, pour exister dès les premiers
+  kilo-octets ;
+- le compte à rebours devient un **filet à 30 s** de la fin du HTML, pour
+  la connexion qui pend sans jamais échouer — compté depuis la fin du
+  HTML, il s'ajuste seul à la lenteur du réseau ;
+- **une seule voix** : la classe fait taire la ligne « se prépare… »
+  (`globals.css`), `SignalVivant` retire la classe et referme le bandeau.
+Le signal de vie est monté depuis le layout aussi : l'atelier n'avait ni
+bandeau ni signal (118 pages le portent désormais, contre 117).
+
+**MESURÉ APRÈS.** Morceau perdu : bandeau à **+0,3 s** de la perte (2,5 s
+après la navigation) sur une leçon comme sur une épreuve, la ligne jamais
+montrée, aucune seconde avec les deux. 3G lente : inchangé — bandeau jamais,
+ligne de 4–13 s à l'hydratation (12–22 s). 250 kb/s : bandeau jamais, ligne
+de 5–19 s à l'hydratation (19–34 s). `reseau-malade` (20 % de pertes) :
+cinq scènes, mêmes verdicts qu'avant, le bandeau prévient dans les deux cas
+de page morte. Sur l'épreuve, le plus gros morceau (le pipeline markdown,
+75 ko) se charge APRÈS l'hydratation : l'écouteur l'a ignoré, comme prévu
+— c'est `EpreuveShell` qui parle dans ce cas.
+
+**CE QUE ÇA NE FAIT PAS.** L'écouteur est dans `<head>`, mais Next.js place
+ses propres `<script async>` avant le contenu du layout : 2 ko les séparent.
+Une erreur de chargement demande au moins un aller-retour réseau ; l'analyseur
+a passé ces 2 ko bien avant. Le blocage instantané de l'instrument (pas
+d'aller-retour du tout) est déjà capté ; un cas plus défavorable n'existe
+pas. Et si un jour il existait, le filet à 30 s reste. Le texte du bandeau
+n'a pas changé (« ta connexion est probablement faible ») : vrai dans les
+deux cas qu'il couvre. L'ADR 0032 est amendé : l'attente honnête a un
+troisième temps — quand rien ne viendra, le dire tout de suite.

@@ -22,7 +22,6 @@
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { LienEvitement } from "./LienEvitement";
-import { SignalVivant } from "./SignalVivant";
 import { cn } from "@/lib/utils";
 
 interface PageShellProps {
@@ -132,63 +131,9 @@ export function PageShell({
       <SiteFooter container={container} />
 
 
-      <SignalVivant />
-
-      {/* ── LA VEILLE D'HYDRATATION ──────────────────────────────────────
-          Mesuré le 2026-09-04 (`docs/audits/reseau-malade.md`) : sur un
-          réseau qui rampe, la PERTE D'UN SEUL MORCEAU DE JAVASCRIPT laisse
-          le cours parfaitement lisible — 5 100 caractères, rendus côté
-          serveur — et la page entièrement MORTE. Les flèches ne changent
-          plus de chapitre, les QCM ne s'ouvrent pas, et rien, absolument
-          rien, ne le dit à l'élève. Un élève de terminale en conclut que
-          l'application est cassée, ou qu'il s'y prend mal.
-
-          Aucun composant React ne peut prévenir dans ce cas : dans ce cas,
-          il n'existe pas. D'où ce couple — un bandeau rendu par le SERVEUR,
-          masqué, et un script EN LIGNE dans le document, qui le révèle si le
-          signal de vie n'est pas venu. Douze secondes : la mesure donne
-          ~0,5 s en réseau parfait et jusqu'à 7 s en 3G chargée, donc le
-          seuil ne peut pas se déclencher sur une simple lenteur. Et si
-          l'hydratation finit par arriver, `SignalVivant` referme le
-          bandeau : une fausse alerte se corrige toute seule.
-
-          `<a href="">` recharge la page COURANTE sans une ligne de
-          JavaScript — c'est le seul geste qui puisse marcher ici. */}
-      {/* PIÈGE PAYÉ DANS L'HEURE (2026-09-04) : ce conteneur portait `flex`.
-          `[hidden]` n'est qu'une règle de la feuille par défaut du
-          navigateur — une classe utilitaire qui pose `display: flex` la
-          BAT. Le bandeau restait donc dans le flux, invisible mais bien
-          présent : `dom-truth` a immédiatement attrapé un lien focalisable
-          « Recharger » DANS un `[hidden]` sur les 68 pages, et 243 px de
-          barres collantes qui ne laissaient plus une ligne de prose à
-          320 × 256. Ici, aucune classe de `display` : `hidden` gagne. La
-          mise en page vit dans l'enfant. */}
-      <div
-        id="hydratation-perdue"
-        hidden
-        role="status"
-        className="fixed inset-x-0 bottom-0 z-50 px-gutter pb-6"
-      >
-        <div className="mx-auto w-full max-w-content rounded-xl bg-surface-overlay border border-subtle shadow-elevation-3 px-5 py-4 flex flex-col bp-medium:flex-row bp-medium:items-center gap-3">
-          <p className="flex-1 text-sm text-primary">
-            La page n’a pas fini de se charger : tu peux lire, mais les boutons
-            ne répondront pas. Ta connexion est probablement faible.
-          </p>
-          <a
-            href=""
-            className="shrink-0 rounded-lg px-3 py-2 text-sm font-medium bg-accent text-on-accent"
-          >
-            Recharger
-          </a>
-        </div>
-      </div>
-      <script
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{
-          __html:
-            "setTimeout(function(){if(!window.__bacVivant){var e=document.getElementById('hydratation-perdue');if(e)e.hidden=false;}},12000);",
-        }}
-      />
+      {/* La veille d'hydratation (bandeau « Recharger », signal de vie, filet)
+          vivait ici du 2026-09-04 au 2026-09-11 ; elle est montée depuis le
+          layout désormais — VeilleHydratation.tsx, HANDOFF §11.29. */}
     </div>
   );
 }

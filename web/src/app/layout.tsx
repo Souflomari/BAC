@@ -13,6 +13,8 @@ import { GeistMono } from "geist/font/mono";
 import { ViewTransitions } from "next-view-transitions";
 import { AuthProvider } from "@/lib/auth/provider";
 import { HydrationNotice } from "@/components/ui/HydrationNotice";
+import { SignalVivant } from "@/components/ui/SignalVivant";
+import { BandeauHydratation, FiletHydratation } from "@/components/ui/VeilleHydratation";
 import "./globals.css";
 
 // ── Fonts (editorial pairing — ADR 0023) ──────────────────────────────────────
@@ -92,6 +94,15 @@ const SITE_JSONLD = {
 // le thème ici (audit 2026-08-15) : appliquée après hydratation, elle
 // faisait sauter toute la page d'un cran une fois le JS chargé — sur le
 // réglage même dont dépendent les élèves qui voient mal.
+// La veille d'hydratation, premier temps (docs/audits/reseau-malade.md,
+// HANDOFF §11.29) : un morceau de JavaScript PERDU fait tirer `error` sur son
+// <script> — capté ici, en tête, AVANT que les morceaux ne soient analysés
+// (dix des onze sont dans <head>). Un morceau perdu avant l'hydratation, c'est
+// une page morte à coup sûr : on le dit tout de suite, sans attendre un
+// compte à rebours. Après l'hydratation (`__bacVivant`), les composants
+// gèrent leurs propres chargements différés — on ne dit plus rien ici.
+const VEILLE_BOOT = `addEventListener("error",function(e){var t=e.target;if(window.__bacVivant||!t||t.tagName!=="SCRIPT"||!t.src||t.src.indexOf("/_next/")<0)return;window.__bacPerdu=true;document.documentElement.classList.add("hydratation-perdue");var b=document.getElementById("hydratation-perdue");if(b)b.hidden=false;},true);`;
+
 const THEME_BOOT = `(function(){try{var t=localStorage.getItem("bac-theme");var d=t?t==="dark":matchMedia("(prefers-color-scheme: dark)").matches;if(d)document.documentElement.classList.add("dark");var s=localStorage.getItem("bac-textsize");var m={small:"0.9375",base:"1",large:"1.125"};if(s&&m[s])document.documentElement.style.setProperty("--font-scale",m[s]);}catch(e){}})();`;
 
 // ── Root layout ───────────────────────────────────────────────────────────────
@@ -110,12 +121,18 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${readingSerif.variable} ${GeistSans.variable} ${GeistMono.variable}`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: VEILLE_BOOT }} />
+      </head>
       <body>
         <script dangerouslySetInnerHTML={{ __html: THEME_BOOT }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(SITE_JSONLD) }}
         />
+        {/* La veille d'hydratation : le bandeau en TÊTE du body, pour exister
+            dès les premiers kilo-octets (VeilleHydratation.tsx). */}
+        <BandeauHydratation />
         {/*
           AuthProvider (web/src/lib/auth/provider.tsx) — the ONLY auth wiring
           at the root. A minimal client boundary: it holds mode + user state.
@@ -128,6 +145,8 @@ export default function RootLayout({
         <AuthProvider>{children}</AuthProvider>
         {/* « La page se prépare… » tant que React n'a pas pris la main — HANDOFF §11.28. */}
         <HydrationNotice />
+        <SignalVivant />
+        <FiletHydratation />
       </body>
     </html>
     </ViewTransitions>

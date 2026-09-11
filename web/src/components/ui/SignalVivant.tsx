@@ -5,8 +5,10 @@
  *
  * Ce composant ne rend RIEN. Son montage est un fait : React s'est hydraté,
  * donc les flèches changeront de chapitre et les QCM s'ouvriront. La veille
- * posée dans `PageShell` attend ce fait ; s'il ne vient pas dans les douze
- * secondes, elle révèle un bandeau statique qui prévient l'élève.
+ * (`VeilleHydratation.tsx`, montée depuis le layout) attend ce fait : un
+ * morceau perdu, ou trente secondes de silence après la fin du HTML, révèle
+ * un bandeau statique qui prévient l'élève. Monté depuis le layout, donc sur
+ * TOUTES les pages — l'atelier n'avait ni bandeau ni signal avant.
  *
  * POURQUOI SI PEU DE CODE POUR QUELQUE CHOSE D'AUSSI BÊTE. Mesuré le
  * 2026-09-04 sur un réseau qui rampe (`docs/audits/reseau-malade.md`) : la
@@ -17,8 +19,9 @@
  * « je suis là » quand il l'est ; tout le reste est du HTML et six lignes de
  * script en ligne.
  *
- * Et le signal REFERME le bandeau : si l'hydratation finit par arriver à la
- * quinzième seconde, la fausse alerte disparaît d'elle-même.
+ * Et le signal REFERME le bandeau (et retire la classe qui fait taire la
+ * ligne « se prépare… ») : si l'hydratation finit par arriver, la fausse
+ * alerte disparaît d'elle-même.
  */
 
 import { useEffect } from "react";
@@ -26,6 +29,7 @@ import { useEffect } from "react";
 export function SignalVivant() {
   useEffect(() => {
     (window as unknown as { __bacVivant?: boolean }).__bacVivant = true;
+    document.documentElement.classList.remove("hydratation-perdue");
     const veille = document.getElementById("hydratation-perdue");
     if (veille) veille.hidden = true;
   }, []);

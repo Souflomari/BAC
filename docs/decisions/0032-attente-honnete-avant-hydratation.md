@@ -94,6 +94,10 @@ distinguer « pas encore » de « cassé ».
 - La portée, mesurée à part (ADR 0031) : les 118 pages que `next build`
   prérend servent 12 790 boutons, 0 actif — après que le balayage complet
   a trouvé les cinq que les témoins ne voyaient pas (§11.28).
+- Quand rien ne viendra, le dire tout de suite (§11.29) : un morceau de
+  JavaScript perdu révèle le bandeau « Recharger » 0,3 s après la perte
+  (8,3 s avant), et la ligne « se prépare… » se tait — une seule voix. Sur
+  un réseau simplement lent (400 ou 250 kb/s), le bandeau n'apparaît pas.
 - Ce que ça coûte : une seconde d'apparence inchangée avant l'estompage,
   donc, sur un réseau lent, une seconde pendant laquelle un bouton
   désactivé a l'air actif — l'appui ne fait rien mais ne fait pas de mal,
@@ -101,6 +105,12 @@ distinguer « pas encore » de « cassé ».
 
 ## Retractions and Corrections
 
+- **2026-09-11, plus tard.** La règle a un troisième temps qu'elle ne
+  nommait pas : l'attente honnête suppose que quelque chose vient. Quand
+  un morceau est perdu, rien ne viendra — et « se prépare… » devient un
+  mensonge. La veille d'hydratation (reseau-malade.md, 2026-09-04) le
+  disait déjà, mais 8 à 12 s trop tard et par-dessus la ligne. Les deux
+  mécanismes sont désormais UN : `VeilleHydratation.tsx`, HANDOFF §11.29.
 - **2026-09-11, le soir même.** La première rédaction disait la règle
   « complète pour tout ce que le serveur rend cliquable » sur la foi de
   cinq pages témoins. Le balayage de toutes les pages prérendues a trouvé

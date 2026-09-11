@@ -125,6 +125,23 @@ qu'elle a eu lieu.* Un clic qu'on n'a pas vérifié n'est pas une mesure ; un
 
 ---
 
+## Addendum du 2026-09-11 : la veille change de forme (HANDOFF §11.29)
+
+Le compte à rebours de douze secondes reposait sur « jusqu'à 7 s en 3G
+chargée » ; le §11.28 mesure l'hydratation à 17–28 s sur 3G lente et à 34 s
+à 250 kb/s. Le seuil ne criait pas au loup à 400 kb/s — par chronologie (le
+compte partait de la fin du HTML), pas par conception — et l'aurait fait à
+250 kb/s. Et un morceau PERDU attendait 8,3 s après la perte pour être dit,
+parce que le bandeau vivait en pied de page.
+
+Depuis : un écouteur `error` en tête du document révèle le bandeau à la
+perte (+0,3 s) ; le bandeau vit en tête du `<body>` ; le compte à rebours est
+un filet à 30 s ; le bandeau fait taire la ligne « La page se prépare… »
+(ADR 0032). Tout cela dans `web/src/components/ui/VeilleHydratation.tsx`,
+monté depuis le layout — plus dans `PageShell`. Les cinq scènes de cet
+instrument rendent les mêmes verdicts ; l'instrument
+`veille-hydratation.mjs` mesure les temps.
+
 ## Ce que la mesure ne dit pas
 
 - **Le vrai réseau.** Tout est ici un build local derrière une émulation

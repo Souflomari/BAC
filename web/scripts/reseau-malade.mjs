@@ -159,7 +159,8 @@ dire(tReactif !== null,
   ` · ${comptes.perdues}/${comptes.total} requêtes perdues`);
 if (tReactif === null) {
   // La page est morte : l'élève est-il PRÉVENU ? La veille se déclenche à
-  // 12 s, et les 25 s de la sonde sont déjà passées.
+  // l'erreur du morceau perdu (2026-09-11 ; avant : 12 s après la fin du
+  // HTML), et les 25 s de la sonde sont déjà passées.
   const veille = await page.evaluate(() => {
     const e = document.getElementById("hydratation-perdue");
     return e instanceof HTMLElement && !e.hidden && e.innerText.trim().length > 20;
@@ -195,7 +196,8 @@ if (morceaux.length === 0) {
     return route.continue();
   });
   await p2.goto(`${BASE}${LECON}`, { waitUntil: "domcontentloaded", timeout: 60000 }).catch(() => {});
-  // 14 s : la veille d'hydratation se déclenche à 12 s (PageShell).
+  // 14 s : large — la veille se déclenche à l'ERREUR du morceau, plus au bout
+  // d'un compte à rebours (VeilleHydratation.tsx, 2026-09-11).
   await p2.waitForTimeout(14000);
   const lisible = await p2.evaluate(() => (document.querySelector("main")?.innerText ?? "").trim().length);
   const avant2 = await p2.evaluate(() =>

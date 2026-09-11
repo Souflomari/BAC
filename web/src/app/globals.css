@@ -1458,4 +1458,11 @@ button[aria-busy="true"]:disabled {
 @keyframes hydration-notice-in {
   to { opacity: 1; }
 }
+/* Quand la veille d'hydratation parle (bandeau « Recharger »), la ligne
+   « se prépare… » se tait : deux messages au même endroit se contrediraient.
+   La classe est posée par le script en ligne (layout / PageShell), retirée
+   par SignalVivant. */
+html.hydratation-perdue [data-hydration-notice] {
+  display: none;
+}
 
