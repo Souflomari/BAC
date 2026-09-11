@@ -4787,7 +4787,13 @@ existant. Balayage des 62 dossiers : **3 notions concernées** —
   $f''=4[1+(x-2)e^{-x}]$, $f'''=4e^{-x}(3-x)>0$ sur $[0,1]$ — Rolle sur $f'$ et TAF
   sur $f''$ tous CORRECTS.** Mais Rolle et TAF sont utilisés au sommet sans être
   construits dans la rampe (l'intro l'admet) — lacune de rampe + savoir-faire SM
-  (`derivabilite_rolle_taf`) à confirmer lors d'une passe critiques ultérieure ;
+  (`derivabilite_rolle_taf`) à confirmer lors d'une passe critiques ultérieure.
+  R5 (étude complète de $(x^2-x+1)/(x-1)$ : simplification en $x+1/(x-1)$,
+  asymptote oblique $y=x$, $f'=x(x-2)/(x-1)^2$, extrema $f(0)=-1$/$f(2)=3$,
+  $f''=2/(x-1)^3$) et la section *fonction réciproque* recalculées aussi —
+  correctes. NB : la fonction réciproque, savoir-faire signalé ABSENT de
+  limites-continuite (revue C3), est enseignée ICI — piste de scoping pour
+  l'owner ;
 - `maths/limites-continuite` : items R7 (titres R0–R6) — déjà consigné dans sa
   revue (le re-tag demande un choix pédagogique : fidelity propose R3/R5/R4,
   pedagogy R1/R5/R4 — consensus sur R5 et R4, désaccord sur le troisième) ;
