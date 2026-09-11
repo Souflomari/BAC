@@ -132,7 +132,7 @@ Les choses se compliquent quand $L$ ou $L'$ vaut $+\infty$ ou $-\infty$. Voici l
 
 | $\lim f$ | $\lim g$ | $\lim (f \times g)$ |
 |---|---|---|
-| $L \neq 0$ | $L'$ | $L \times L'$ |
+| $L$ | $L'$ | $L \times L'$ |
 | $L > 0$ | $+\infty$ | $+\infty$ |
 | $L < 0$ | $+\infty$ | $-\infty$ |
 | $+\infty$ | $+\infty$ | $+\infty$ |
@@ -370,7 +370,7 @@ De ces trois résultats, un seul est vraiment "nouveau" et admis : $\lim_{x\to 0
 
 $$\frac{\tan x}{x} = \frac{\sin x}{x} \times \frac{1}{\cos x}$$
 
-Quand $x \to 0$ : $\dfrac{\sin x}{x} \to 1$ (le résultat admis), et $\cos x \to \cos 0 = 1$ par substitution directe ($\cos$ est continue en $0$, chapitre 5), donc $\dfrac{1}{\cos x} \to 1$. Par la règle du produit des limites (chapitre 3, deux limites finies) :
+Quand $x \to 0$ : $\dfrac{\sin x}{x} \to 1$ (le résultat admis), et $\cos x \to \cos 0 = 1$ par substitution directe ($\cos$ est continue en $0$), donc $\dfrac{1}{\cos x} \to 1$. Par la règle du produit des limites (chapitre 3, deux limites finies) :
 
 $$\lim_{x \to 0} \frac{\tan x}{x} = 1 \times 1 = 1$$
 

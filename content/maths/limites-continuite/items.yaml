@@ -1757,8 +1757,9 @@ items:
           $\displaystyle\lim_{x\to 0}\dfrac{\sin x}{x} = 1$ et
           $\displaystyle\lim_{x\to 0}\dfrac{\tan x}{x} = 1$, mais
           $\displaystyle\lim_{x\to 0}\dfrac{1-\cos x}{x^2} = \dfrac{1}{2}$. Le
-          $\frac12$ n'est pas une coquetterie : il vient du développement de
-          $\cos$, où le terme dominant est $\dfrac{x^2}{2}$.
+          $\frac12$ n'est pas une coquetterie : il vient du facteur
+          $\dfrac{1}{1+\cos x}\to\dfrac12$ qu'on obtient en multipliant par la
+          quantité conjuguée (chapitre 7), pas d'une approximation de $\cos$.
       - id: D
         text: >-
           $-3$, car $\sin(3x)$ et $x$ sont de signes contraires au voisinage de
@@ -1817,7 +1818,7 @@ items:
         misconception: mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0
         feedback: >
           La limite de référence exige que l'argument du sinus tende vers $0$ —
-          c'est ce qui rend $\sin u$ équivalent à $u$. Ici $x$ tend vers
+          c'est ce qui fait tendre le rapport $\dfrac{\sin u}{u}$ vers $1$. Ici $x$ tend vers
           $+\infty$ : $\sin x$ ne cesse d'osciller entre $-1$ et $1$ sans se
           rapprocher de $x$, et le motif ne vaut plus rien.
       - id: C
@@ -2051,8 +2052,9 @@ items:
           Le formulaire n'est pas uniforme.
           $\displaystyle\lim_{x\to0}\frac{\sin x}{x} = 1$ et
           $\displaystyle\lim_{x\to0}\frac{\tan x}{x} = 1$, mais
-          $\displaystyle\lim_{x\to0}\frac{1-\cos x}{x^2} = \frac12$ — parce que
-          $1 - \cos x$ se comporte comme $\frac{x^2}{2}$, et non comme $x^2$.
+          $\displaystyle\lim_{x\to0}\frac{1-\cos x}{x^2} = \frac12$ — le $\frac12$
+          vient du facteur $\frac{1}{1+\cos x}\to\frac12$, qu'on fait apparaître
+          en multipliant par la quantité conjuguée (chapitre 7).
       - id: D
         text: >-
           $-2$ : le dénominateur portant $x^2$, il faut ajuster le coefficient
@@ -2087,9 +2089,9 @@ items:
       dénominateur strictement positif. Une réponse positive est donc fausse
       d'avance — et ce contrôle coûte deux secondes.
 
-      **D'où vient le $\frac12$.** De $\cos x \approx 1 - \dfrac{x^2}{2}$ au
-      voisinage de $0$ : $1 - \cos x$ se comporte comme $\dfrac{x^2}{2}$, pas
-      comme $x^2$.
+      **D'où vient le $\frac12$.** On multiplie par la quantité conjuguée $1+\cos x$ :
+      $\dfrac{1-\cos x}{x^2}=\left(\dfrac{\sin x}{x}\right)^2\times\dfrac{1}{1+\cos x}\to 1\times\dfrac12$ (chapitre 7).
+      Le $\frac12$ vient du facteur $\dfrac{1}{1+\cos x}$, pas d'une approximation de $\cos$.
 
   - id: LIMCONT-32
     rung: "R1"
