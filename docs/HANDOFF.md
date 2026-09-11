@@ -4775,8 +4775,14 @@ comme les figures orphelines du §11.43).
 jargon), mais ne vérifiait jamais que la VALEUR `rung` corresponde à un titre
 existant. Balayage des 62 dossiers : **3 notions concernées** —
 
-- `maths/derivabilite-etude-fonctions` : items R6 (titres R0–R5) — **nouveau**,
-  non encore passé aux critiques ;
+- `maths/derivabilite-etude-fonctions` : items R6 (titres R0–R5) — **caractérisé
+  en direct le 2026-09-11** (la passe critiques a échoué sur la limite de session).
+  Le sommet « ### Exercice de type bac » (`lesson.md:507`) existe mais N'EST PAS
+  numéroté ; DERIVFCT-19/20 testent du contenu R4 (signe de $f'$, variation),
+  DERIVFCT-23/29 du contenu R5 (Rolle sur $f'$, point d'inflexion). Même forme que
+  limites-continuite : le re-tag demande la décision « que signifie rung » (relabel
+  du sommet en R6 vs re-tag des items vers R4/R5) — owner/pedagogy. Setup math des
+  items R6 recalculé, correct ($3(x-1)(x-3)=3x^2-12x+9$, etc.) ;
 - `maths/limites-continuite` : items R7 (titres R0–R6) — déjà consigné dans sa
   revue (le re-tag demande un choix pédagogique : fidelity propose R3/R5/R4,
   pedagogy R1/R5/R4 — consensus sur R5 et R4, désaccord sur le troisième) ;
