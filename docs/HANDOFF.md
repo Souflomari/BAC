@@ -3060,6 +3060,7 @@ run 451, sur la même pile d'instruments, était vert en 28 min 35 s.
 | `veille-hydratation` (nouveau) | 3 pages, 3G lente et 250 kb/s ; morceau d'entrée bloqué | un morceau perdu n'était dit que 8,3 s après la perte, par-dessus la ligne « se prépare… » → écouteur `error` en tête, +0,3 s, une seule voix, filet à 30 s, §11.29 |
 | `retour-bfcache` (nouveau) | 3 paires de pages, réseau libre et 3G lente | leçons et épreuves restaurées en 0,1 s par Retour, chapitre conservé ; l'accueil rebâti pendant les 6 s de préchargement de l'action principale — assumé, §11.30 |
 | `memoire` (nouveau) | 62 leçons, 3 leçons × 60 changements, 2 épreuves révélées, VmRSS de 5 pages | tas 7–11 Mo, aucune fuite ; 2 300–66 000 nœuds (97 % repliés, 90 % KaTeX) ; 166–226 Mo par leçon, 296–309 Mo par épreuve corrigée — le levier §8.7 vaut aussi pour la mémoire, §11.31 |
+| `recherche-palette` (nouveau) | 17 requêtes + Échap | « maths » 0, « svt » 0, « 2025 » 0, focus perdu à Échap → 25, 12, 3, focus rendu ; « acide », « nucléaire » restent à 0 (mots-clés = contenu), §11.34 |
 
 **Ce qui est connu et reste au propriétaire** — re-mesuré à l'identique, pas
 redécouvert : `horsligne-sweep` (une leçon déjà visitée, cliquée hors ligne,
@@ -3288,6 +3289,9 @@ introuvable prérendue est servie ; porte armée.
 §11.33 : « Commencer » et « Terminer » laissaient le focus sur `<body>`
 sans annonce → focus sur le premier exercice / le premier corrigé, région
 `status` persistante ; `annonce-sweep` mesure les deux gestes.
+§11.34 : la palette ⌘K ne trouvait ni « maths » ni « svt » ni « 2025 » et
+rendait le focus à `<body>` → alias de matière, groupe Épreuves, retour du
+focus ; `recherche-palette` rouge/vert.
 
 ### 11.20 Le téléphone gelait au « Commencer » et au « Terminer » d'une épreuve
 
@@ -4393,3 +4397,41 @@ sous `[hidden]`, faisait **106 faux « pas de lien d'évitement en tête »**.
 Un élément sans géométrie ne reçoit jamais le focus ; le filtre est le même
 que pour l'ordre de tabulation désormais, et le lien d'évitement redevient
 premier sur les 106 pages.
+
+### 11.34 La palette ⌘K ne trouvait ni « maths » ni « svt » ni « 2025 », et Échap rendait le focus à `<body>`
+
+**MESURÉ AVANT** (`recherche-palette`, requêtes tapées comme un élève les
+tape). « physique » 26 résultats, « philo » 13 — mais **« maths » 0,
+« svt » 0** : « Rien ne correspond — essaie un autre mot. » Les values des
+entrées ne portaient que le nom LONG de la matière (« Mathématiques »,
+« Sciences de la Vie et de la Terre ») ; « physique » marchait par hasard
+(« Physique-Chimie »). **« 2025 » 0, « bac 2025 » 0, « rattrapage » 0** : la
+palette ne connaissait que les notions — pour une épreuve, il fallait
+passer par la liste. Et Échap : **le focus retombait sur `<body>`** (le
+panneau Notions et le menu Affichage, eux, le rendaient au bouton). Accents
+et casse étaient déjà pliés (« derivee » = « dérivée »).
+
+**CE QUI A CHANGÉ** (`CommandPalette`, `PageShell`, `lib/palette-epreuves`).
+Des alias par matière dans les values (« maths math mathematiques », « svt
+biologie geologie bio », « physique chimie pc », « philo philosophie ») ; un
+groupe **Épreuves** de 39 entrées (« Examen national 2025 — session
+normale », la filière à droite), le manifeste calculé côté serveur par
+chaque page — PageShell est aussi rendu par la page client `/connexion` et
+ne peut pas lire le corpus lui-même (`fs`), le build l'a rappelé ; le focus
+rendu à l'élément actif à l'ouverture, à la fermeture seulement (pas à la
+navigation).
+
+**MESURÉ APRÈS.** 108 entrées (69 + 39). « maths » **25**, « svt » **12**,
+« physique » 48, « pc » 48, « bio » 12, « philo » 13 ; « 2025 » **3**,
+« bac 2025 » 3, « rattrapage » 11, « sm 2025 » 1, « spc 2019 » 1,
+« examen » 40 ; Échap → focus sur « Rechercher ⌘K ». L'instrument est
+ROUGE si une matière ou une année ne trouve rien, ou si le focus ne revient
+pas — il l'aurait été sur le build d'avant.
+
+**CE QUI RESTE, ET À QUI.** « acide » → 0 (la leçon s'appelle « Réactions
+acido-basiques »), « nucléaire » → 0 (« Noyaux, masse et énergie »,
+« Décroissance radioactive ») : la recherche est une sous-chaîne stricte
+(choix documenté : le score flou de cmdk classait n'importe quoi), et les
+notions n'ont pas de mots-clés de recherche — leurs `tags` sont des tags
+d'items (checkpoint, formative…). Un champ `motsCles` par notion est du
+contenu, pas du code : lane contenu / propriétaire.

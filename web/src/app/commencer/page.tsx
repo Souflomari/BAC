@@ -17,6 +17,7 @@ function manifestePourHeader() {
 }
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { FiliereChooser } from "@/components/dashboard/FiliereChooser";
+import { manifesteEpreuves } from "@/lib/palette-epreuves";
 
 export const metadata: Metadata = {
   title: "Choisis ta filière",
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
 
 export default function CommencerPage() {
   return (
-    <PageShell notions={manifestePourHeader()} width="content">
+    <PageShell epreuves={manifesteEpreuves()} notions={manifestePourHeader()} width="content">
       <Breadcrumb segments={[{ label: "Accueil", href: "/" }, { label: "Ta filière" }]} />
       <header className="mb-10 max-w-lead">
         <h1 className="font-display text-display font-bold text-primary">

@@ -32,6 +32,7 @@ import { PageShell } from "@/components/ui/PageShell";
 import { SessionCard } from "@/components/dashboard/SessionCard";
 import { NextUp } from "@/components/dashboard/NextUp";
 import { ProgrammeMap } from "@/components/dashboard/ProgrammeMap";
+import { manifesteEpreuves } from "@/lib/palette-epreuves";
 
 export const metadata: Metadata = {
   title: "Ta session",
@@ -41,7 +42,7 @@ export default function HomePage() {
   const notions = listNotions();
 
   return (
-    <PageShell notions={manifestePourHeader()} width="page">
+    <PageShell epreuves={manifesteEpreuves()} notions={manifestePourHeader()} width="page">
       <header className="mb-10 max-w-lead">
         <h1 className="font-display text-display font-bold text-primary">
           Ta session

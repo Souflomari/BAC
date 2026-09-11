@@ -32,6 +32,10 @@ interface PageShellProps {
    *  dans le bundle navigateur). Les pages client le laissent vide : le
    *  header reste fonctionnel, la palette n'offre que les destinations. */
   notions?: { subject: string; slug: string; title: string; readingMinutes?: number }[];
+  /** Les épreuves pour la palette ⌘K — `manifesteEpreuves()` (lib/palette-epreuves),
+      passé par chaque page SERVEUR : PageShell est aussi rendu par la page
+      client /connexion, donc il ne peut pas lire le corpus lui-même (fs). */
+  epreuves?: { id: string; titre: string; filiere: string; filiereLabel: string; year: number; session: string }[];
   /**
    * Width variant for the page spine (header + main + footer together).
    * - "reading"  65ch  — default narrow prose column
@@ -50,6 +54,7 @@ export function PageShell({
   width = "reading",
   className,
   notions = [],
+  epreuves = [],
 }: PageShellProps) {
   const maxWidthClass = {
     reading: "max-w-reading",
@@ -101,7 +106,7 @@ export function PageShell({
           reçoit en props (~62 titres, quelques Ko). */}
       <LienEvitement />
 
-      <SiteHeader container={bandeHeader} notions={notions} />
+      <SiteHeader container={bandeHeader} notions={notions} epreuves={epreuves} />
 
       <main
         id="main-content"

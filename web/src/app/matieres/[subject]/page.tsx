@@ -20,6 +20,7 @@ import { subjectLabel } from "@/lib/subjects";
 import { PageShell } from "@/components/ui/PageShell";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { ChapterList, type UnitView } from "@/components/curriculum/ChapterList";
+import { manifesteEpreuves } from "@/lib/palette-epreuves";
 
 // Toutes les valeurs valides sont connues au build (generateStaticParams) ;
 // une adresse inconnue reçoit alors la page « introuvable » PRÉRENDUE — en-tête,
@@ -85,7 +86,7 @@ export default function SubjectPage({ params }: { params: { subject: string } })
         : `${available}/${total} chapitres disponibles`;
 
   return (
-    <PageShell notions={manifestePourHeader()} width="page">
+    <PageShell epreuves={manifesteEpreuves()} notions={manifestePourHeader()} width="page">
       {/* En-tête matière (Studio, R6 — STUDIO-SPEC §6.1) : le motif de la
           ProgrammeMap agrandi. La bande pleine-largeur grise du squelette
           Day-9 est partie — l'accueil et les matières parlent le même

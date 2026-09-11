@@ -44,7 +44,7 @@ import { FontSizeStepper } from "./FontSizeStepper";
 import { ThemeToggle } from "./ThemeToggle";
 import { FiliereBadge } from "./FiliereBadge";
 import { Icon } from "./Icon";
-import { CommandPalette, type NotionPourPalette } from "./CommandPalette";
+import { CommandPalette, type NotionPourPalette, type EpreuvePourPalette } from "./CommandPalette";
 
 interface SiteHeaderProps {
   className?: string;
@@ -52,6 +52,8 @@ interface SiteHeaderProps {
   container?: string;
   /** Le manifeste des notions, fourni par la coquille serveur (PageShell). */
   notions?: NotionPourPalette[];
+  /** Les épreuves, pour la palette ⌘K (PageShell les fournit, §11.34). */
+  epreuves?: EpreuvePourPalette[];
 }
 
 /** Marque géométrique — l'arc d'oscillation, inchangé depuis le jour 4. */
@@ -434,7 +436,7 @@ function MenuCompact({
   );
 }
 
-export function SiteHeader({ className, container, notions = [] }: SiteHeaderProps) {
+export function SiteHeader({ className, container, notions = [], epreuves = [] }: SiteHeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const { user, mode, signOutMock, signOut } = useAuth();
 
@@ -559,7 +561,7 @@ export function SiteHeader({ className, container, notions = [] }: SiteHeaderPro
         </div>
       </div>
 
-      <CommandPalette notions={notions} />
+      <CommandPalette notions={notions} epreuves={epreuves} />
     </header>
   );
 }

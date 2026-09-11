@@ -14,6 +14,7 @@ import { listNotions } from "@/lib/content";
 import { listEpreuves, getEpreuve, epreuveTitre, filiereLabel } from "@/lib/examens";
 import { frenchTypography } from "@/lib/frenchTypography";
 import { EpreuveShell, type EpreuveData } from "@/components/examens/EpreuveShell";
+import { manifesteEpreuves } from "@/lib/palette-epreuves";
 
 // Toutes les valeurs valides sont connues au build (generateStaticParams) ;
 // une adresse inconnue reçoit alors la page « introuvable » PRÉRENDUE — en-tête,
@@ -83,7 +84,7 @@ export default function EpreuvePage({ params }: { params: { id: string } }) {
   };
 
   return (
-    <PageShell notions={manifestePourHeader()} width="page">
+    <PageShell epreuves={manifesteEpreuves()} notions={manifestePourHeader()} width="page">
       <header className="mb-8">
         <Breadcrumb
           segments={[

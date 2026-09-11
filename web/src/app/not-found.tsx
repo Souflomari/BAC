@@ -10,6 +10,7 @@ import { Link } from "@/components/ui/Lien";
 import { PageShell } from "@/components/ui/PageShell";
 import { listNotions } from "@/lib/content";
 import { cn } from "@/lib/utils";
+import { manifesteEpreuves } from "@/lib/palette-epreuves";
 
 export const metadata: Metadata = {
   title: "Page introuvable",
@@ -26,7 +27,7 @@ export default function NotFound() {
     readingMinutes: n.readingMinutes,
   }));
   return (
-    <PageShell width="reading" notions={notions}>
+    <PageShell epreuves={manifesteEpreuves()} width="reading" notions={notions}>
       {/* La carte standard (audit R6, P1-11) : STUDIO-SPEC §6.3 — mêmes
           cartes que le reste du site, pas du texte nu flottant sur le fond. */}
       <div className="flex flex-col items-center justify-center rounded-xl border border-subtle bg-surface-raised px-8 py-20 text-center shadow-elevation-1">

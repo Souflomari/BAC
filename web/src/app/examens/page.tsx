@@ -13,6 +13,7 @@ import { PageShell } from "@/components/ui/PageShell";
 import { listNotions } from "@/lib/content";
 import { listEpreuves, epreuveTitre, filiereLabel, type Epreuve } from "@/lib/examens";
 import { cn } from "@/lib/utils";
+import { manifesteEpreuves } from "@/lib/palette-epreuves";
 
 export const metadata: Metadata = {
   title: "Examens blancs",
@@ -83,7 +84,7 @@ export default function ExamensPage() {
   ].filter((g) => g.liste.length > 0);
 
   return (
-    <PageShell notions={manifestePourHeader()} width="page">
+    <PageShell epreuves={manifesteEpreuves()} notions={manifestePourHeader()} width="page">
       <header className="mb-10">
         <h1 className="font-display text-h1 bp-medium:text-display font-bold text-primary">
           Examens blancs

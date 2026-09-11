@@ -17,12 +17,12 @@
  * header), jamais seule ; Échap ferme ; aucun état n'est fabriqué.
  */
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 // R4 : le router de next-view-transitions — la navigation depuis la palette
 // fond comme celle des liens, même crossfade, même dégradation (Firefox).
 import { useTransitionRouter } from "next-view-transitions";
 import { Command } from "cmdk";
-import { subjectLabel, notionHref, subjectHref } from "@/lib/subjects";
+import { subjectLabel, subjectLabelCourt, notionHref, subjectHref } from "@/lib/subjects";
 import { sortByProgramme } from "@/lib/curriculum";
 import { Icon } from "./Icon";
 
@@ -33,7 +33,31 @@ export interface NotionPourPalette {
   readingMinutes?: number;
 }
 
+export interface EpreuvePourPalette {
+  id: string;
+  titre: string;
+  /** "SM" | "SPC" | "SExp" — affiché à droite. */
+  filiere: string;
+  filiereLabel: string;
+  year: number;
+  session: string;
+}
+
 const ORDRE_MATIERES = ["maths", "pc", "svt", "philo", "si"];
+
+/**
+ * Ce que l'élève TAPE pour une matière (HANDOFF §11.34) : « maths » et « svt »
+ * donnaient « Rien ne correspond », parce que les values ne portaient que le
+ * nom long (« Mathématiques », « Sciences de la Vie et de la Terre »).
+ */
+const ALIAS_MATIERE: Record<string, string> = {
+  maths: "maths math mathematiques",
+  pc: "physique chimie pc sciences physiques",
+  svt: "svt biologie geologie bio sciences de la vie et de la terre",
+  philo: "philo philosophie",
+  si: "si sciences de l'ingenieur",
+};
+const motsMatiere = (id: string) => `${subjectLabel(id)} ${subjectLabelCourt(id)} ${ALIAS_MATIERE[id] ?? ""}`;
 
 /** Accents pliés, casse pliée — « genetique » trouve « génétique ». */
 function normalise(s: string): string {
@@ -62,28 +86,45 @@ function filtreNet(value: string, search: string): number {
   return 1; // au milieu d'un mot
 }
 
-export function CommandPalette({ notions }: { notions: NotionPourPalette[] }) {
+export function CommandPalette({ notions, epreuves = [] }: { notions: NotionPourPalette[]; epreuves?: EpreuvePourPalette[] }) {
   const [ouverte, setOuverte] = useState(false);
+  // Le focus REVIENT là où il était (HANDOFF §11.34) : Échap rendait le focus à
+  // <body> — le clavier repartait du haut de la page. On retient l'élément
+  // actif à l'ouverture et on le lui rend à la fermeture (pas à la navigation).
+  const ouverteRef = useRef(false);
+  ouverteRef.current = ouverte;
+  const declencheur = useRef<HTMLElement | null>(null);
+  const ouvrir = useCallback(() => {
+    declencheur.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    setOuverte(true);
+  }, []);
+  const changer = useCallback((o: boolean) => {
+    setOuverte(o);
+    if (o) return;
+    const d = declencheur.current;
+    declencheur.current = null;
+    if (d && d.isConnected) window.requestAnimationFrame(() => d.focus());
+  }, []);
   const router = useTransitionRouter();
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
-        setOuverte((o) => !o);
+        if (ouverteRef.current) changer(false);
+        else ouvrir();
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, []);
+  }, [ouvrir, changer]);
 
   // Le bouton du header (rendu dans un autre sous-arbre) ouvre la palette
   // par événement — évite de remonter un setState à travers PageShell.
   useEffect(() => {
-    const ouvre = () => setOuverte(true);
-    window.addEventListener("ouvrir-palette", ouvre);
-    return () => window.removeEventListener("ouvrir-palette", ouvre);
-  }, []);
+    window.addEventListener("ouvrir-palette", ouvrir);
+    return () => window.removeEventListener("ouvrir-palette", ouvrir);
+  }, [ouvrir]);
 
   const va = useCallback(
     (href: string) => {
@@ -106,7 +147,7 @@ export function CommandPalette({ notions }: { notions: NotionPourPalette[] }) {
   return (
     <Command.Dialog
       open={ouverte}
-      onOpenChange={setOuverte}
+      onOpenChange={changer}
       label="Rechercher une notion"
       className="palette-commande"
       filter={filtreNet}
@@ -133,7 +174,7 @@ export function CommandPalette({ notions }: { notions: NotionPourPalette[] }) {
                 la matière — les points étaient un double encodage (audit
                 charge-calme P1-8). */}
             <Command.Item
-              value={`matiere ${subjectLabel(g.id)}`}
+              value={`matiere ${motsMatiere(g.id)}`}
               onSelect={() => va(subjectHref(g.id))}
               className="palette-item"
             >
@@ -145,7 +186,7 @@ export function CommandPalette({ notions }: { notions: NotionPourPalette[] }) {
             {g.notions.map((n) => (
               <Command.Item
                 key={`${n.subject}/${n.slug}`}
-                value={`${n.title} ${subjectLabel(n.subject)}`}
+                value={`${n.title} ${motsMatiere(n.subject)}`}
                 onSelect={() => va(notionHref(n.subject, n.slug))}
                 className="palette-item"
               >
@@ -159,6 +200,23 @@ export function CommandPalette({ notions }: { notions: NotionPourPalette[] }) {
             ))}
           </Command.Group>
         ))}
+        {/* Les épreuves (HANDOFF §11.34) : « 2025 », « bac 2025 », « rattrapage »
+            ne trouvaient rien — la palette ne connaissait que les notions. */}
+        {epreuves.length > 0 && (
+          <Command.Group heading="Épreuves" className="palette-groupe">
+            {epreuves.map((e) => (
+              <Command.Item
+                key={e.id}
+                value={`examen national ${e.year} ${e.session} bac epreuve sujet annales ${e.filiere} ${e.filiereLabel}`}
+                onSelect={() => va(`/examens/${e.id}`)}
+                className="palette-item"
+              >
+                <span className="min-w-0 truncate">{e.titre}</span>
+                <span className="ml-auto shrink-0 font-mono text-caption tabular-nums text-tertiary">{e.filiere}</span>
+              </Command.Item>
+            ))}
+          </Command.Group>
+        )}
         <Command.Group heading="Aller à" className="palette-groupe">
           <Command.Item value="examens blancs epreuves reelles bac chrono" onSelect={() => va("/examens")} className="palette-item">
             <Icon name="arrow-right" size={14} className="shrink-0 text-accent" />
