@@ -4169,12 +4169,57 @@ de page morte. Sur l'épreuve, le plus gros morceau (le pipeline markdown,
 75 ko) se charge APRÈS l'hydratation : l'écouteur l'a ignoré, comme prévu
 — c'est `EpreuveShell` qui parle dans ce cas.
 
-**CE QUE ÇA NE FAIT PAS.** L'écouteur est dans `<head>`, mais Next.js place
-ses propres `<script async>` avant le contenu du layout : 2 ko les séparent.
-Une erreur de chargement demande au moins un aller-retour réseau ; l'analyseur
-a passé ces 2 ko bien avant. Le blocage instantané de l'instrument (pas
-d'aller-retour du tout) est déjà capté ; un cas plus défavorable n'existe
-pas. Et si un jour il existait, le filet à 30 s reste. Le texte du bandeau
-n'a pas changé (« ta connexion est probablement faible ») : vrai dans les
-deux cas qu'il couvre. L'ADR 0032 est amendé : l'attente honnête a un
-troisième temps — quand rien ne viendra, le dire tout de suite.
+**LE TROU, MESURÉ PUIS FERMÉ.** L'écouteur est dans `<head>`, mais Next.js
+place ses propres `<script async>` AVANT le contenu du layout : 2 ko les
+séparent. La première rédaction de ce paragraphe disait « une erreur demande
+un aller-retour réseau, l'analyseur a passé ces 2 ko bien avant ; un cas
+plus défavorable n'existe pas ». Faux, et mesuré faux le soir même : bloqué
+par CDP (`Network.setBlockedURLs`, l'échec INSTANTANÉ d'un filtre ou d'un
+proxy — pas la latence de l'interception Playwright), l'événement `error`
+tire à **0,48 s**, l'écouteur n'existe pas encore, et le bandeau attendait le
+filet : **40,8 s** sur la leçon, 33,2 s sur l'épreuve. Fermé par un second
+détecteur : Resource Timing garde, pour chaque `<script src>` qui a échoué,
+une entrée à 0 octet décodé, 0 encodé, sans statut — un morceau en cache a
+une taille décodée (18 morceaux en cache à la seconde visite : 0 faux
+positif), un morceau en vol n'a pas d'entrée. `__bacPerduVerif`, posée en
+tête, est appelée en tête du body (dès les premiers kilo-octets) et par le
+filet. Mesuré après (l'instant du bandeau pris DANS la page, par
+`MutationObserver` — l'échantillonnage par `evaluate` mentait de 5 s sur une
+page de 318 ko analysée à ×4) : blocage CDP → bandeau à **2,1 · 3,5 ·
+7,7 s** sur la leçon, 4,6 s (×3) sur l'épreuve, pour un échec à 0,5 s ;
+interception Playwright (échec à 2,2 s) → +0,1 à +0,3 s ; 3G lente saine →
+jamais ; deux visites en cache → 0 faux positif.
+
+**POURQUOI PAS PLUS TÔT — ET POURQUOI C'EST LE PLUS TÔT POSSIBLE.** Le
+repère `veille-posee` (`performance.mark`) le montre : l'écouteur est posé
+à **exactement l'arrivée de la seconde feuille de style** (1,7/3,5 s →
+posé à 3,5 s ; 7,0/7,6 → 7,7 ; 2,8/4,5 → 4,5), et le bandeau suit dans la
+même milliseconde. Un script en ligne placé après une feuille de style
+attend qu'elle soit chargée — et Next.js met ses deux feuilles avant tout
+contenu du layout ; sur 3G lente, en concurrence avec ~350 ko de morceaux,
+elles arrivent entre 2 et 8 s. Rien dans le document ne peut donc s'exécuter
+avant (le `THEME_BOOT` en tête du body attendait déjà la même chose). Mais
+rien ne peut non plus se PEINDRE avant : une feuille de style en attente
+bloque le premier rendu. Le bandeau apparaît donc au premier instant où
+quoi que ce soit peut apparaître. Un échec qui survient APRÈS les feuilles
+est dit en 0,1–0,3 s.
+
+**CE QUE COÛTE LE CONSEIL DU BANDEAU.** « Recharger » (`<a href="">`) est
+une navigation ordinaire vers la même adresse — pas un rechargement forcé —
+donc le cache HTTP joue : les morceaux sont `immutable`, le HTML est
+revalidé (`ETag` → 304 en local ; sur Vercel `max-age=0, must-revalidate` +
+`ETag`, même geste). Mesuré, 3G lente ×4, morceau perdu puis réseau revenu,
+appui après la fin du premier chargement : la leçon répond en **4,2 s** pour
+**75 ko** réseau (le seul morceau perdu ; HTML 0 ko, 24 réponses du cache),
+l'épreuve en 2,4 s pour 53 ko — contre 22 s et 620 ko à froid. Appuyer
+PENDANT que le HTML et les morceaux sont encore en vol les annule, et ils ne
+sont pas en cache : 315 ko et 12,8 s mesurés. Le conseil est bon dans les
+deux cas ; il est presque gratuit dans le premier. PIÈGE PAYÉ : la première
+mesure disait 695 ko et 22,8 s, « 0 du cache » — parce que `page.route()`
+de Playwright DÉSACTIVE le cache HTTP. Toute mesure de cache passe par un
+blocage CDP, pas par l'interception (INSTRUMENTS).
+
+Le texte du bandeau n'a pas changé (« ta connexion est probablement
+faible ») : vrai dans les deux cas qu'il couvre. L'ADR 0032 est amendé :
+l'attente honnête a un troisième temps — quand rien ne viendra, le dire tout
+de suite.

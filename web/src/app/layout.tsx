@@ -96,12 +96,26 @@ const SITE_JSONLD = {
 // réglage même dont dépendent les élèves qui voient mal.
 // La veille d'hydratation, premier temps (docs/audits/reseau-malade.md,
 // HANDOFF §11.29) : un morceau de JavaScript PERDU fait tirer `error` sur son
-// <script> — capté ici, en tête, AVANT que les morceaux ne soient analysés
-// (dix des onze sont dans <head>). Un morceau perdu avant l'hydratation, c'est
+// <script> — capté ici, en tête. Un morceau perdu avant l'hydratation, c'est
 // une page morte à coup sûr : on le dit tout de suite, sans attendre un
 // compte à rebours. Après l'hydratation (`__bacVivant`), les composants
 // gèrent leurs propres chargements différés — on ne dit plus rien ici.
-const VEILLE_BOOT = `addEventListener("error",function(e){var t=e.target;if(window.__bacVivant||!t||t.tagName!=="SCRIPT"||!t.src||t.src.indexOf("/_next/")<0)return;window.__bacPerdu=true;document.documentElement.classList.add("hydratation-perdue");var b=document.getElementById("hydratation-perdue");if(b)b.hidden=false;},true);`;
+//
+// DEUX DÉTECTEURS, parce que Next.js place ses <script async> AVANT ce
+// script dans <head> : un échec INSTANTANÉ (filtre, proxy, blocage) tire
+// `error` avant que l'écouteur existe — mesuré sous blocage CDP, l'événement
+// à 0,48 s passait sous l'écouteur et le bandeau attendait le filet à 30 s.
+// D'où `__bacPerduVerif` : Resource Timing garde une entrée à 0 octet et sans
+// statut pour chaque <script src> qui a échoué (un morceau en cache a une
+// taille décodée, un morceau en vol n'a pas d'entrée). Appelée en tête du
+// body (BandeauHydratation) et à la fin (FiletHydratation).
+//
+// ET POURQUOI L'ÉCOUTEUR ARRIVE TARD : un script en ligne placé après une
+// feuille de style attend qu'elle soit chargée. Next.js met ses deux feuilles
+// avant ce script ; sur 3G lente, en concurrence avec ~350 ko de morceaux,
+// elles arrivent entre 2 et 8 s. Le repère `veille-posee` (performance.mark)
+// rend cet instant lisible par l'instrument `veille-hydratation`.
+const VEILLE_BOOT = `(function(){function r(){window.__bacPerdu=true;document.documentElement.classList.add("hydratation-perdue");var b=document.getElementById("hydratation-perdue");if(b)b.hidden=false;}window.__bacPerduVerif=function(){if(window.__bacVivant)return false;if(window.__bacPerdu)return true;try{var ss=document.scripts;for(var i=0;i<ss.length;i++){var u=ss[i].src;if(!u||u.indexOf("/_next/")<0)continue;var es=performance.getEntriesByName(u);for(var j=0;j<es.length;j++){var e=es[j];if(e.decodedBodySize===0&&e.encodedBodySize===0&&!e.responseStatus){r();return true;}}}}catch(x){}return false;};addEventListener("error",function(e){var t=e.target;if(window.__bacVivant||!t||t.tagName!=="SCRIPT"||!t.src||t.src.indexOf("/_next/")<0)return;r();},true);try{performance.mark("veille-posee");}catch(x){}})();`;
 
 const THEME_BOOT = `(function(){try{var t=localStorage.getItem("bac-theme");var d=t?t==="dark":matchMedia("(prefers-color-scheme: dark)").matches;if(d)document.documentElement.classList.add("dark");var s=localStorage.getItem("bac-textsize");var m={small:"0.9375",base:"1",large:"1.125"};if(s&&m[s])document.documentElement.style.setProperty("--font-scale",m[s]);}catch(e){}})();`;
 

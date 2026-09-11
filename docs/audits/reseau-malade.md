@@ -135,8 +135,10 @@ compte partait de la fin du HTML), pas par conception — et l'aurait fait à
 parce que le bandeau vivait en pied de page.
 
 Depuis : un écouteur `error` en tête du document révèle le bandeau à la
-perte (+0,3 s) ; le bandeau vit en tête du `<body>` ; le compte à rebours est
-un filet à 30 s ; le bandeau fait taire la ligne « La page se prépare… »
+perte (+0,1–0,3 s), doublé d'une lecture de Resource Timing pour l'échec
+instantané qui tire avant l'écouteur (le bandeau suit alors les feuilles de
+style, 2–8 s sur 3G lente) ; le bandeau vit en tête du `<body>` ; le compte
+à rebours est un filet à 30 s ; le bandeau fait taire la ligne « La page se prépare… »
 (ADR 0032). Tout cela dans `web/src/components/ui/VeilleHydratation.tsx`,
 monté depuis le layout — plus dans `PageShell`. Les cinq scènes de cet
 instrument rendent les mêmes verdicts ; l'instrument

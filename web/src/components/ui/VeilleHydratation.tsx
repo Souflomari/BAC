@@ -55,12 +55,19 @@ export function BandeauHydratation() {
           Recharger
         </a>
       </div>
+      {/* eslint-disable-next-line react/no-danger */}
+      <script dangerouslySetInnerHTML={{ __html: VERIF }} />
     </div>
   );
 }
 
+// Les deux scripts en ligne appellent `__bacPerduVerif` (posée en tête par
+// layout.tsx) : elle lit Resource Timing, pose la classe et révèle le bandeau
+// si un morceau d'entrée a déjà échoué — le cas de l'échec instantané, passé
+// sous l'écouteur `error` (voir layout.tsx). Le filet ajoute les 30 s.
+const VERIF = "window.__bacPerduVerif&&window.__bacPerduVerif();";
 const FILET =
-  "(function(){function r(){document.documentElement.classList.add('hydratation-perdue');var e=document.getElementById('hydratation-perdue');if(e)e.hidden=false;}if(window.__bacPerdu){r();return;}setTimeout(function(){if(!window.__bacVivant&&!window.__bacPerdu)r();},30000);})();";
+  "(function(){function r(){document.documentElement.classList.add('hydratation-perdue');var e=document.getElementById('hydratation-perdue');if(e)e.hidden=false;}if(window.__bacPerdu||(window.__bacPerduVerif&&window.__bacPerduVerif())){r();return;}setTimeout(function(){if(!window.__bacVivant&&!window.__bacPerdu&&!(window.__bacPerduVerif&&window.__bacPerduVerif()))r();},30000);})();";
 
 export function FiletHydratation() {
   // eslint-disable-next-line react/no-danger

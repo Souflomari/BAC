@@ -95,9 +95,16 @@ distinguer « pas encore » de « cassé ».
   prérend servent 12 790 boutons, 0 actif — après que le balayage complet
   a trouvé les cinq que les témoins ne voyaient pas (§11.28).
 - Quand rien ne viendra, le dire tout de suite (§11.29) : un morceau de
-  JavaScript perdu révèle le bandeau « Recharger » 0,3 s après la perte
-  (8,3 s avant), et la ligne « se prépare… » se tait — une seule voix. Sur
-  un réseau simplement lent (400 ou 250 kb/s), le bandeau n'apparaît pas.
+  JavaScript perdu révèle le bandeau « Recharger » 0,1–0,3 s après la perte
+  (8,3 s avant), et la ligne « se prépare… » se tait — une seule voix. Deux
+  détecteurs, parce qu'un échec instantané tire `error` avant que l'écouteur
+  existe : l'écouteur en tête, et Resource Timing (une entrée à 0 octet sans
+  statut) lue en tête du body — le bandeau suit alors l'arrivée des feuilles
+  de style, le premier instant où quoi que ce soit peut se peindre. Sur un
+  réseau simplement lent (400 ou 250 kb/s), le bandeau n'apparaît pas ; deux
+  visites en cache, 0 faux positif. Et son conseil est presque gratuit :
+  « Recharger » coûte 75 ko et 4,2 s sur 3G lente, le cache HTTP faisant le
+  reste.
 - Ce que ça coûte : une seconde d'apparence inchangée avant l'estompage,
   donc, sur un réseau lent, une seconde pendant laquelle un bouton
   désactivé a l'air actif — l'appui ne fait rien mais ne fait pas de mal,
