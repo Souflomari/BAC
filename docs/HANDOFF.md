@@ -4694,3 +4694,41 @@ partout.** Un résultat NÉGATIF qui valait d'être établi : la loupe seule
 évidents, et tous deux portent un `aria-label`. La porte est armée (rouge si
 une commande visible perd son nom) mais hors CI tant que la CI n'a pas de
 runner (§11.37).
+
+### 11.29–11.41 en un coup d'œil, et le déployé
+
+**LA SOIRÉE DU 2026-09-11**, treize points, tous mesurés avant/après :
+- **§11.29–11.30** la veille d'hydratation (un morceau perdu dit à +0,3 s au
+  lieu de +8,3 s, une seule voix, filet à 30 s ; le bouton Retour restaure
+  leçons et épreuves en 0,1 s) ;
+- **§11.31** la mémoire (7–11 Mo de tas, 0 fuite en 60 changements de
+  chapitre, 166–309 Mo d'empreinte réelle) ;
+- **§11.32** une adresse inconnue servait une page VIDE → `dynamicParams=
+  false`, la page introuvable prérendue, porte armée ; et les 117 pages
+  valides servent tout leur texte sans JavaScript (ratio 1,00) ;
+- **§11.33 · 11.39 · 11.40** l'épreuve au clavier et au lecteur d'écran : le
+  focus posé aux deux gestes et annoncé, l'auto-évaluation ramenée de 144 à
+  48 arrêts de tabulation (roving tabindex + flèches), la note qui monte
+  enfin annoncée (aria-live polie) ;
+- **§11.34** la palette ⌘K trouve « maths », « svt », « 2025 » et rend le
+  focus ;
+- **§11.35** les polices −85 ko par page (latin-ext préchargé pour rien) ;
+- **§11.36** le contraste élevé Windows (boutons sans bord → contour
+  système) ;
+- **§11.38** les troncatures « … » sur téléphone (titres et sous-titres se
+  plient) ;
+- **§11.41** toute commande a un nom accessible (0 sans nom) ;
+- **§11.37** et par-dessus tout : **la CI n'a plus de runner depuis 18:53Z**
+  (cause côté compte), donc chaque point ci-dessus n'est vérifié qu'en
+  LOCAL — build + `dom-truth` (277/0) + `lint`, et la batterie complète
+  rejouée à la main sur 5a43b1b (19/19). Une porte qui ne tourne pas n'est
+  pas verte.
+
+**LE DÉPLOYÉ** (preview Vercel, `curl`, 21:43Z) porte déjà les correctifs
+observables sans navigateur : la page introuvable prérendue sur une adresse
+inconnue (404 avec en-tête et `<h1>`), la règle `forced-colors` dans le CSS,
+le manifeste des épreuves dans la palette, le second détecteur de la veille
+(`__bacPerduVerif`) en tête du document, et quatre fichiers de police au
+lieu de six. Ce que `curl` ne voit pas (le focus, les régions live, le
+clavier) reste vérifié sur le build local, l'artefact déployé n'étant pas
+atteignable en Chromium depuis ce conteneur (INSTRUMENTS, point 9).
