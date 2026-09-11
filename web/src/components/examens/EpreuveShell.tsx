@@ -202,15 +202,30 @@ const ExerciceArticle = memo(function ExerciceArticle({
                       <span className="text-body-sm text-secondary">
                         Ta copie :
                       </span>
-                      {(["juste", "partiel", "faux"] as const).map((v) => (
+                      {/* Motif ARIA « radiogroup » (HANDOFF §11.39) : UN arrêt de
+                          tabulation par groupe — le radio coché, sinon le premier —
+                          et les flèches déplacent le focus ET cochent. Avant : 144
+                          radios tabulables pour 48 questions, flèches inertes. */}
+                      {(["juste", "partiel", "faux"] as const).map((v, j, tous) => (
                         <button
                           key={v}
                           type="button"
                           role="radio"
                           aria-checked={verdict === v}
+                          tabIndex={verdict === v || (!verdict && j === 0) ? 0 : -1}
                           onClick={() =>
                             setVerdicts((prev) => ({ ...prev, [cle]: v }))
                           }
+                          onKeyDown={(e) => {
+                            const pas = e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : e.key === "ArrowLeft" || e.key === "ArrowUp" ? -1 : 0;
+                            if (!pas) return;
+                            e.preventDefault();
+                            const suivant = tous[(j + pas + tous.length) % tous.length];
+                            setVerdicts((prev) => ({ ...prev, [cle]: suivant }));
+                            const groupe = e.currentTarget.parentElement;
+                            const cibles = groupe ? groupe.querySelectorAll<HTMLButtonElement>("[role=radio]") : null;
+                            cibles?.[(j + pas + tous.length) % tous.length]?.focus();
+                          }}
                           className={cn(
                             "min-h-touch rounded-lg border px-3 text-body-sm font-medium",
                             "state-layer focus-ring [--focus-radius:8px]",

@@ -3306,6 +3306,10 @@ sans journal ; quota ou limite de dépense du compte, à vérifier par le
 propriétaire) ; la batterie a été rejouée en local sur HEAD.
 §11.38 : 7 titres de leçon sur 62 en « … » sur l'accueil à 390 px, 24
 sous-titres d'exercice sur 24 dans les épreuves → ils se plient.
+§11.39 : l'auto-évaluation d'un corrigé coûtait 144 arrêts de tabulation de
+radios (motif ARIA absent) → roving tabindex + flèches, 48 ; les 99
+paragraphes focalisables (Chrome 130 + `overflow-x` de prose) mesurés,
+levier `overflow-x: clip` différé.
 
 ### 11.20 Le téléphone gelait au « Commencer » et au « Terminer » d'une épreuve
 
@@ -4609,3 +4613,40 @@ cinquante-cinq autres n'ont pas bougé. Épreuves : **0 sous-titre coupé** à
 se lit en entier sur deux à trois lignes sous « Exercice n ». dom-truth
 277/0 sur ce build ; la batterie CI rejouée en local (§11.37) l'avait été
 sur le commit précédent — la CI, elle, n'a toujours pas de runner.
+
+### 11.39 Dans un corrigé d'épreuve, l'auto-évaluation coûtait 243 arrêts de tabulation ; les radios en faisaient 144 (elles sont maintenant 48)
+
+**MESURÉ** (`radios-clavier`, `tab-corrige` — tabulation d'un bout à l'autre
+d'un corrigé de SM 2025, 48 questions). L'auto-évaluation, « Ta copie :
+Juste / Partiel / Faux », est un `role="radiogroup"` par question. Mais les
+trois boutons étaient **tous les trois dans l'ordre de tabulation** (144
+arrêts) et les flèches n'y faisaient rien — un clavier devait donc appuyer
+sur Tab jusqu'à trois fois par question, sur des dizaines de questions. Le
+motif ARIA `radiogroup` veut l'inverse : **un** arrêt par groupe (le radio
+coché, sinon le premier), et les flèches déplacent le focus ET cochent.
+Total mesuré : **243 arrêts** pour parcourir un corrigé (144 radios, 99
+paragraphes — voir plus bas, 4 liens).
+
+**CE QUI A CHANGÉ** (`EpreuveShell`). Roving tabindex : `tabIndex={0}` sur le
+radio coché (ou le premier si rien n'est coché), `-1` sur les autres ;
+`onKeyDown` sur Flèche haut/bas/gauche/droite déplace le focus dans le
+groupe et coche. Après : **48 arrêts de radio** au lieu de 144, une flèche
+avance d'un cran et coche, Espace coche l'élément focalisé. Rien de visible
+ne change ; c'est le clavier qui passe de « Tab, Tab, Tab » à « Tab, flèche ».
+
+**CE QUI RESTE, MESURÉ ET DIFFÉRÉ.** Les 99 autres arrêts étaient des
+PARAGRAPHES de prose. Depuis Chrome 130, un conteneur qui peut défiler est
+focalisable au clavier (pour qu'on puisse le défiler) ; or `.prose-lesson p`
+porte `overflow-x: auto` (posé le 2026-09-05 pour qu'une formule en ligne
+trop large ne pousse pas la page à 200 % de texte), et une formule KaTeX en
+ligne déborde de ~2 px de sa boîte — donc chaque paragraphe contenant une
+formule devient un conteneur défilant, donc un arrêt de tabulation (99 dans
+un corrigé, ~9 par chapitre de leçon). La correction essayée — déplacer le
+`overflow-x` du paragraphe vers la formule en ligne — a rendu focalisables
+les formules ELLES-MÊMES (même cause, 2 px) et a bougé la mesure de prose de
+`dom-truth` (`over-measure`). Elle est donc RETIRÉE : le levier propre est
+`overflow-x: clip` sur le paragraphe (contient une formule trop large sans
+créer de conteneur défilant), à valider contre la porte zoom qui garde le
+débord à 200 % — un arbitrage à poser posément, pas à trancher à la hâte un
+soir où la CI est déjà à terre (§11.37). Le gain sûr — les radios — est
+livré ; le reste est mesuré et écrit.
