@@ -150,7 +150,13 @@ const ExerciceArticle = memo(function ExerciceArticle({
           <h2 className="min-w-0 break-words text-h4 font-semibold text-primary">
             {exo.exerciseLabel ?? `Exercice ${i + 1}`}
           </h2>
-          <p className="min-w-0 flex-1 truncate text-body-sm text-secondary" title={exo.titre}>
+          {/* Le sous-titre — le SUJET de l'exercice (« Pile fer-zinc : polarité
+              lue sur l'ampèremètre ») — se pliait en « … » sur téléphone :
+              24 sur 24 coupés à 390 px, 155 px visibles sur 654 (HANDOFF
+              §11.38), et `title=` ne sert à rien au doigt. Sur une ligne à
+              lui sous le titre en étroit, dans la ligne en large ; jamais
+              tronqué. */}
+          <p className="min-w-0 basis-full break-words text-body-sm text-secondary bp-medium:basis-auto bp-medium:flex-1">
             {exo.titre}
           </p>
           {exo.baremeTotal != null && (

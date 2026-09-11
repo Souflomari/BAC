@@ -172,7 +172,11 @@ export function ProgrammeMap({ notions }: { notions: NotionMeta[] }) {
                           le pli = texture de tableau de bord ; et 474 px de
                           vide entre titre et durée). Les minutes vivent sur
                           la page matière, où l'élève choisit vraiment. */}
-                      <span className="min-w-0 truncate">{n.title}</span>
+                      {/* Pas de troncature (HANDOFF §11.38) : à 390 px, 7 titres
+                          sur 62 finissaient en « … » (« Nombres complexes — forme
+                          algébriq… »), 12 à 360 px, 19 à 320 px — et le titre est
+                          le SEUL texte de la ligne. Il se plie sur deux lignes. */}
+                      <span className="min-w-0 break-words">{n.title}</span>
                     </Link>
                   </li>
                 ))}

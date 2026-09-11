@@ -69,6 +69,7 @@
 | `web/scripts/recherche-palette.mjs` | La palette ⌘K : ce qu'elle RÉPOND à 17 requêtes tapées comme un élève (matières par leur nom courant, années d'épreuve, accents pliés), et si Échap rend le focus au bouton. ROUGE si une matière ou une année ne trouve rien, ou si le focus ne revient pas (HANDOFF §11.34) | Les mots que les titres ne contiennent pas (« acide », « nucléaire ») — un champ de mots-clés par notion, lane contenu |
 | `web/scripts/polices.mjs` | Les POLICES : fichiers woff2 téléchargés par page (nom, ko), puis les caractères de texte visible par famille / graisse / style, chapitres dépliés — ce que chaque face sert vraiment. A trouvé : 324 ko par page dont 84 ko de latin-ext préchargé pour aucun caractère, Geist Mono 70 ko pour 80 caractères (HANDOFF §11.35) | Quel glyphe est dessiné par quelle police (`CSS.getPlatformFontsForNode`, fait à la main le 2026-09-11 : Source Serif 4 partout, « œ » compris) ; les navigateurs autres que Chromium |
 | `web/scripts/couleurs-forcees.mjs` | Windows CONTRASTE ÉLEVÉ (`forced-colors: active`, émulé) sur l'accueil, une leçon, une épreuve : commandes sans bordure ni contour, cartes sans bordure, le focus après trois tabulations, une capture par page. A trouvé : « Commencer l'épreuve » et 13 boutons d'une leçon rendus en texte nu → contour système (HANDOFF §11.36) | Un vrai Windows et ses thèmes ; les figures SVG (couleurs propres) ; `prefers-contrast: more` |
+| `web/scripts/espacement-texte.mjs` | WCAG 1.4.12, ESPACEMENT DU TEXTE imposé (interligne 1,5, lettres 0,12 em, mots 0,16 em, paragraphes 2 em) sur 7 pages à 390 et 1 280 px : débord du document, texte coupé sous `overflow: hidden` (hors KaTeX, SVG, `sr-only`), texte hors fenêtre. A trouvé : rien ne déborde ; les troncatures « … » de l'accueil et des épreuves, qui coupaient déjà à l'espacement normal (HANDOFF §11.38) | Les infobulles du rail (28 ch) et les figures à transport, coupées par conception ; un vrai outil de lecture (l'extension applique parfois plus) |
 | `web/scripts/cv-chapitre.mjs` | Expérience : coût de démasquer un chapitre caché par `hidden` contre `content-visibility:hidden`, 1re et 2e fois, ×6, cinq leçons. A trouvé : **−35 % la première fois, ×30 à ×100 moins cher à chaque visite suivante** (20 ms au lieu de 600–1 300) — HANDOFF §11.22 ; levier essayé et RETIRÉ le 2026-09-06 (§11.24 : pas de gain à la première visite, et la géométrie des chapitres repliés devenait mesurable — dom-truth rouge) | Le produit lui-même (l'expérience manipule le DOM servi) ; l'impression, le lecteur d'écran et les balayages sous `content-visibility` — à rejouer si le levier est pris |
 | `web/scripts/cls-sweep.mjs` | Le saut de mise en page au chargement, réseau libre puis 3G bridé | Le TEMPS de chargement lui-même (LCP, TTFB) — jamais mesuré sur ce projet |
 | `web/scripts/pagination-probe.mjs` | 11 promesses × 5 leçons : un seul chapitre visible, liens profonds, flèches bornées, ancres, impression dépliée | Ce que l'élève COMPREND de la pagination — aucune mesure ne le dira |
@@ -250,6 +251,22 @@ son panneau », nommé le 2026-09-03 et non instrumenté — a été mesuré et
 fermé le lendemain : 9 cas, 4 débordements voulus déclarés
 `data-hors-panneau`, 5 défauts corrigés, porte armée en CI. C'est
 exactement l'usage prévu de cette liste.)*
+
+### Fermés le 2026-09-11 au soir (HANDOFF §11.29–11.38)
+
+Ce que la liste ci-dessus ne nommait pas encore, et qui est mesuré depuis :
+la **veille d'hydratation** (morceau perdu → bandeau, 0,3 s ; « Recharger »
+coûte 75 ko), le **bouton Retour** (bfcache : leçons restaurées en 0,1 s,
+l'accueil rebâti pendant son préchargement), la **mémoire** (7–11 Mo de tas,
+0 fuite, 166–309 Mo d'empreinte), l'**adresse inconnue** (une page vide
+servie — corrigée, porte armée), le **focus aux gestes de l'épreuve**
+(annonce-sweep étendu), la **palette** (« maths », « svt », les épreuves),
+les **polices** (−85 ko par page), le **contraste élevé Windows** (boutons
+sans bord — corrigés), l'**espacement du texte** (WCAG 1.4.12 — rien ne
+déborde ; les troncatures sorties au passage), et **ce que le serveur sert
+sans JavaScript** (117 pages, ratio 1,00). Ce qui manque toujours : un vrai
+téléphone, un vrai réseau, Firefox et Safari, un vrai Windows — et, depuis
+18:53Z, **la CI elle-même** (§11.37 : plus de runner, cause côté compte).
 
 ## Trois façons dont une porte cesse de mesurer sans jamais rougir
 
@@ -486,6 +503,23 @@ Ajoutées le 2026-09-05, après les avoir toutes deux commises.
   pour JUGER une page à l'écran ; pour BALAYER un corpus paginé, il faut
   dépouiller le HTML ou visiter chaque chapitre. **Les deux règles ne se
   contredisent pas : elles répondent à deux questions différentes.**
+
+## Deux façons de plus, le même soir
+
+*(2026-09-11, HANDOFF §11.29 et §11.33.)* **Échantillonner depuis l'extérieur
+une page occupée.** `page.evaluate` toutes les 500 ms disait « bandeau à
+8,0 s » ; pris DANS la page (`MutationObserver` + `performance.now()`), le
+bandeau était révélé à 2,3 s. Sur une page de 318 ko analysée à processeur
+×4, un `evaluate` attend son tour des secondes : l'échantillon date le
+moment où la sonde a pu regarder, pas le moment de l'événement. Règle : un
+instant se prend dans la page, l'échantillonnage ne sert qu'à la présence.
+**Compter un élément sans regarder s'il existe pour l'utilisateur.** Le
+« premier focusable » d'`annonce-sweep` était le premier `a[href]` du DOM ;
+le jour où le bandeau de la veille est passé en tête du body, son lien
+« Recharger », sous `[hidden]`, a fait 106 faux « pas de lien d'évitement ».
+Un élément sans géométrie ne reçoit jamais le focus ; le filtre est celui de
+l'ordre de tabulation désormais. Règle : une requête DOM qui parle de
+l'utilisateur passe par la géométrie (ou par `checkVisibility()`).
 
 ## Une troisième façon : mesurer un cache avec un outil qui l'éteint
 

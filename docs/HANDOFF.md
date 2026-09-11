@@ -3063,6 +3063,7 @@ run 451, sur la même pile d'instruments, était vert en 28 min 35 s.
 | `recherche-palette` (nouveau) | 17 requêtes + Échap | « maths » 0, « svt » 0, « 2025 » 0, focus perdu à Échap → 25, 12, 3, focus rendu ; « acide », « nucléaire » restent à 0 (mots-clés = contenu), §11.34 |
 | `polices` (nouveau) | 5 pages ; 117 pages pour latin-ext | 6 fichiers, 324 ko par page → 4 fichiers, 239 ko (latin-ext préchargé pour 0 caractère) ; Geist Mono 70 ko pour 80 caractères — levier design, §11.35 |
 | `couleurs-forcees` (nouveau) | accueil, leçon, épreuve, contraste élevé émulé | 3/5 et 13/40 commandes sans aucun bord (« Commencer l'épreuve » en texte nu) → 0 ; focus et cartes tenaient déjà, §11.36 |
+| `espacement-texte` (nouveau) | 7 pages × 390/1 280 px, surcharges WCAG 1.4.12 | aucun débord ; a fait sortir les troncatures « … » de l'accueil (7/62 titres à 390 px) et des épreuves (24/24 sous-titres) → ils se plient, §11.38 |
 
 **Ce qui est connu et reste au propriétaire** — re-mesuré à l'identique, pas
 redécouvert : `horsligne-sweep` (une leçon déjà visitée, cliquée hors ligne,
@@ -3300,6 +3301,11 @@ Geist Mono, 70 ko pour 80 caractères, posé au propriétaire.
 §11.36 : en contraste élevé Windows, « Commencer l'épreuve » et tout
 bouton sans bordure devenaient du texte nu → contour système en `outline`
 sous `@media (forced-colors: active)`.
+§11.37 : la CI n'a plus de runner depuis 18:53Z (runs 494–502 en 3–5 s,
+sans journal ; quota ou limite de dépense du compte, à vérifier par le
+propriétaire) ; la batterie a été rejouée en local sur HEAD.
+§11.38 : 7 titres de leçon sur 62 en « … » sur l'accueil à 390 px, 24
+sous-titres d'exercice sur 24 dans les épreuves → ils se plient.
 
 ### 11.20 Le téléphone gelait au « Commencer » et au « Terminer » d'une épreuve
 
@@ -4517,3 +4523,89 @@ repère (la barre d'accent forcée en couleur système). Le focus reste
 SVG, qui gardent leurs couleurs propres en `forced-colors` (le contraste
 de leurs textes est mesuré aux pixels par ailleurs) ; `prefers-contrast:
 more`, un autre signal, plus rare.
+
+### 11.37 La CI n'a plus de runner depuis 18:53Z : chaque run échoue en 3 à 5 secondes, sans journal — les commits depuis faa8990 ne sont vérifiés qu'en local
+
+**LE FAIT.** Le run 490 (208fb99, 16:59Z) est le dernier vert de bout en
+bout : 39 min 02 s. Les runs 491–493 ont été annulés normalement par le
+run suivant (concurrence sur la branche), après 18 à 27 minutes chacun,
+avec un runner. Puis, **à partir du run 494 (faa8990, 18:53:08Z)**, chaque
+run passe à `failure` **3 à 5 secondes** après sa création : le job n'a
+**aucun runner** (`runner_id: 0`, `runner_name: ""`), **aucune étape**,
+et ses journaux répondent 404. Un `rerun_failed_jobs` du run 502
+(tentative 2, 20:14Z) : pareil, 4 s. Neuf runs de suite (494–502).
+
+**CE QUE CE N'EST PAS.** Le fichier `gates.yml` n'a pas changé depuis
+778c2ee (une note de budget) — et les runs 491–493, créés après, avaient
+un runner. Les commits concernés sont des changements de code et de docs
+ordinaires ; aucun ne touche au workflow. Un job qui n'obtient jamais de
+runner et n'écrit aucun journal, c'est GitHub qui refuse de le démarrer —
+la signature d'un **quota de minutes épuisé ou d'une limite de dépense
+atteinte** sur le compte (dépôt privé : les minutes se comptent ; à ~40
+minutes le run, plusieurs par jour depuis des semaines). Ce document ne
+peut pas le vérifier : c'est dans *Settings → Billing → Actions* du compte,
+que seul le propriétaire voit.
+
+**CE QUI A ÉTÉ VÉRIFIÉ QUAND MÊME.** Chaque commit depuis faa8990 a passé
+en local, sur son propre build : `dom-truth` (273 → 277 vérifications, 0
+rouge à chaque fois), `tsc`, `next lint` sur les fichiers touchés, et
+l'instrument propre à son sujet (veille-hydratation, reseau-malade,
+retour-bfcache, memoire, annonce-sweep, recherche-palette, polices,
+couleurs-forcees). Ce qui n'avait PAS tourné : le reste de la batterie CI
+— tests unitaires, liens, validate-content, K-8, figures (clair et sombre),
+presse-papier, impression, typographie, accents, zoom, formules, les
+quatre cliquets, ancres, données, hygiène des identifiants. Elle a donc été
+**rejouée en local sur HEAD**, étape par étape, à partir des commandes
+mêmes de `gates.yml` (`scratchpad/rejeu-ci.sh`, 19 étapes) : **19 étapes sur 19 vertes**, en 33 minutes (20:17 → 20:50Z) sur
+5a43b1b — tests unitaires, liens, validate-content, K-8, figures clair et
+sombre, presse-papier (717 s), impression (409 s), typographie (177 s),
+accents (174 s), zoom (199 s), formules (146 s), les quatre cliquets, ancres,
+données, hygiène des identifiants. Deux différences avec la CI, à savoir :
+le build de HEAD était déjà là (pas de `npm ci`, pas de `next build` dans
+le rejeu) et `dom-truth` avait tourné à part sur le même build (277/0) ;
+le Chromium est celui du conteneur (`/opt/pw-browsers/chromium`, la
+version 1194 — `playwright-core` en attendait une 1228 absente, première
+tentative rouge en une seconde pour ça, pas pour le produit). Le journal
+par étape est dans `scratchpad/ci-local/`
+
+**CE QU'IL FAUT EN RETENIR.** Une porte qui ne tourne pas n'est pas verte ;
+elle n'est rien. La preuve de ces commits est le rejeu local ci-dessus, et
+elle vaut moins qu'un run CI (une machine, un cache, un opérateur). Dès que
+le compte a de nouveau des minutes, un `rerun` du dernier run suffit — la
+branche n'a pas besoin d'un nouveau commit pour ça.
+
+### 11.38 Sur téléphone, sept titres de leçon sur soixante-deux finissaient en « … » sur l'accueil, et vingt-quatre titres d'exercice sur vingt-quatre dans les épreuves
+
+**COMMENT C'EST SORTI.** En appliquant les surcharges d'espacement de WCAG
+1.4.12 (interligne 1,5, lettres 0,12 em, mots 0,16 em, paragraphes 2 em —
+ce qu'un élève dyslexique impose par une extension) à sept pages, à 390 et
+1 280 px (`espacement-texte`) : aucun débord, aucun texte hors cadre, et
+des « coupés » dont la plupart sont par conception — les liens `sr-only`
+(invisibles exprès), les infobulles du rail des chapitres (28 ch au
+survol), les figures à transport (plus larges que l'écran, on les fait
+glisser). Restaient des titres en `truncate`. Mesurés SANS surcharge, à
+l'espacement normal : sur l'accueil, **7 titres de leçon sur 62 finissent
+en « … » à 390 px**, 12 à 360 px, 19 à 320 px (« Nombres complexes — forme
+algébriq… », « Ondes électromagnétiques — modulat… ») — et le titre est le
+seul texte de la ligne, les minutes ayant été retirées de cette liste.
+Dans les épreuves, le sous-titre d'exercice — le SUJET de l'exercice,
+« Pile fer-zinc : polarité lue sur l'ampèremètre » — était tronqué **24
+fois sur 24** à 390 px (quatre épreuves), 155 px visibles sur 654 pour
+« Fonction exponentielle symétrique : déri… » ; son `title=` ne sert à rien
+au doigt.
+
+**CE QUI A CHANGÉ.** `ProgrammeMap` : `truncate` → `break-words`, le titre
+se plie sur deux lignes. `EpreuveShell` : le sous-titre prend sa propre
+ligne sous « Exercice n » en étroit (`basis-full`), reste dans la ligne en
+large (`bp-medium:flex-1`), et ne se tronque plus nulle part ; `title=`
+retiré. Les autres `truncate` restent — fil d'Ariane (28 ch, le `<h1>`
+juste en dessous porte le titre entier), palette (une liste défilante),
+infobulle du rail.
+
+**MESURÉ APRÈS.** Accueil : **0 titre coupé** à 320, 360, 390, 430, 768 et
+1 280 px ; à 390 px, sept titres tiennent sur deux lignes (42 px), les
+cinquante-cinq autres n'ont pas bougé. Épreuves : **0 sous-titre coupé** à
+320, 390 et 1 280 px sur quatre épreuves ; en étroit le sujet de l'exercice
+se lit en entier sur deux à trois lignes sous « Exercice n ». dom-truth
+277/0 sur ce build ; la batterie CI rejouée en local (§11.37) l'avait été
+sur le commit précédent — la CI, elle, n'a toujours pas de runner.
