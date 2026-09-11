@@ -4345,3 +4345,11 @@ qui contient l'en-tête, un `<h1>` « introuvable » et au moins trois liens —
 dans le HTML SERVI. Rouge sur le build d'avant (0 `<h1>`, 0 `<header>`),
 verte après. Un lien périmé n'est pas un cas rare : c'est ce que l'élève
 tape depuis un cahier.
+
+**ET LE RESTE ?** Même question posée aux 117 pages valides
+(`serveur-vs-client`, texte visible sans JavaScript contre texte visible
+après l'hydratation, `main` compris) : **ratio 1,00 sur les 117** — pas un
+caractère qui n'existe qu'après le JavaScript, l'action principale de
+l'accueil comprise. L'adresse inconnue était le seul trou. Un résultat
+négatif qui valait d'être établi : « tout est rendu par le serveur » était
+une croyance ; c'est maintenant une mesure.
