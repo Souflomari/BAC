@@ -41,6 +41,7 @@
 "use client";
 
 import { useState } from "react";
+import { useHydrated } from "@/lib/useHydrated";
 import type { EmbedDescriptor } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import { frenchTypography } from "@/lib/frenchTypography";
@@ -83,6 +84,8 @@ function EmbedPlaceholder() {
 }
 
 export function EmbedPanel({ embed, className }: EmbedPanelProps) {
+  // Désactivé et `aria-busy` tant que React n'a pas pris la main (§11.28).
+  const hydrated = useHydrated();
   // iframeMounted: only true after the student explicitly clicks to open
   const [iframeMounted, setIframeMounted] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -169,6 +172,8 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
           <button
             type="button"
             onClick={() => setIframeMounted(true)}
+            disabled={!hydrated}
+            aria-busy={!hydrated || undefined}
             className={cn(
               // The one confident primary action of this panel (ADR 0023
               // .btn-primary). The calm opt-in is unchanged — the heavy iframe

@@ -4053,5 +4053,15 @@ le chrome de la page — thème, menu — qui n'attend pas l'hydratation), et la
 ligne « La page se prépare… » y est. Une fois React en place (Playwright,
 réseau libre, réseau calme + 1,5 s) : **0 `aria-busy`, 11 `disabled` sur 264 boutons** — les onze légitimes (« Chapitre précédent » au chapitre 1, les transports de figure à leur première étape) — et la ligne « La page se prépare… » a disparu. Sur le déployé (preview Vercel de 865ef67, `curl`) : 256 boutons `disabled` + `aria-busy` sur 263, la ligne présente — l'artefact servi est bien celui-ci.
 
+**LES SEPT DERNIERS.** Les sept boutons que le HTML servi rendait encore
+actifs après ce correctif étaient le chrome — recherche (deux variantes),
+navigation des notions, affichage, menu compact — et « Ouvrir le bac à sable
+interactif » (`EmbedPanel`). Même règle, même crochet (commits 7d3f851 et
+suivant) : sur le build local, **0 bouton sans `disabled` dans le HTML
+servi** d'une leçon dense, d'une leçon de maths, de l'accueil, de la liste
+des épreuves et d'une épreuve. La règle est donc complète pour tout ce que
+le serveur rend cliquable ; ce qui apparaît après un geste (menus ouverts,
+choix après réponse) n'a pas besoin d'elle.
+
 **CE QUE ÇA VÉRIFIE.** dom-truth : 265 vérifications sur ce build, un seul rouge — le garde-fou de fraîcheur (commité pendant la mesure) ; les portes qui cliquent (cartes d'exercice, révélation, transports de figure, changement de chapitre) toutes vertes. Les instruments cliquent avec
 Playwright, qui attend qu'un bouton soit actif : aucun n'a eu à changer.
