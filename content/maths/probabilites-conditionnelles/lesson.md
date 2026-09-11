@@ -302,7 +302,7 @@ C'est exactement ce que fait la formule : elle multiplie chaque taux $P(B|A_i)$ 
 
 La formule des probabilités totales fonctionne parce que $A$ et $\bar{A}$ forment une **partition** de l'univers : ils couvrent tout ($A \cup \bar{A} = \Omega$), sans se chevaucher ($A \cap \bar{A} = \emptyset$), et leurs probabilités font bien 1 ($P(A) + P(\bar{A}) = 1$). Chaque issue de $\Omega$ est comptée exactement une fois.
 
-Si on utilisait des événements qui ne forment pas une partition — qui se chevauchent, ou qui n'couvrent pas tout $\Omega$ — la formule serait fausse.
+Si on utilisait des événements qui ne forment pas une partition — qui se chevauchent, ou qui ne couvrent pas tout $\Omega$ — la formule serait fausse.
 
 ---
 
@@ -356,10 +356,6 @@ L'erreur la plus fréquente à ce stade : diviser $P(A \cap B)$ par le **mauvais
 
 On divise par $P(B)$ — c'est-à-dire par **la somme de toutes les feuilles où $B$ se produit**. « Sachant $B$ » signifie qu'on restreint l'univers à $B$. Il faut donc rassembler **toutes** les façons dont $B$ peut se produire, pas seulement une seule branche.
 
-#### Pour aller plus loin : joue avec l'arbre interactif (C2)
-
-> **Sandbox GeoGebra (optionnel) :** tu peux explorer ce que fait la lecture inverse en faisant varier $P(A)$, $P(B|A)$ et $P(B|\bar{A})$ dans l'outil interactif associé à cette leçon. Quand tu déplaces le curseur $P(A)$ vers 0 ou vers 1, observe comment $P(A|B)$ évolue — tu verras pourquoi le résultat peut être très éloigné de ce qu'on attend intuitivement.
-
 #### Fermeture de l'arc : le test médical du départ, résolu
 
 Tu te souviens de la question posée tout au début ? Un test positif pour une maladie touchant 1 % de la population. On avait prédit « environ 95 % » — et la vraie réponse était « environ 9 % ».
@@ -391,7 +387,7 @@ $$P(M|T^+) = \frac{P(M \cap T^+)}{P(T^+)} = \frac{0{,}0095}{0{,}1085} \approx 0{
 
 Les 990 **faux positifs** produits par la vaste population saine noient les 95 vrais positifs. C'est l'effet de la **rareté de la maladie** — et c'est exactement ce que $P(B)$ au dénominateur capture : il prend en compte **toutes** les sources de résultats positifs, pas seulement la source qu'on suspecte.
 
-L'erreur intuitive de 95 % était de confondre $P(T^+|M)$ avec $P(M|T^+)$ — la question dans le sens « du test vers la maladie » avec la question dans l'autre sens. C'est l'erreur M1 (transposer le conditionnel), et c'est pour ça qu'elle est si dangereuse dans les raisonnements médicaux et judiciaires.
+L'erreur intuitive de 95 % était de confondre $P(T^+|M)$ avec $P(M|T^+)$ — la question dans le sens « du test vers la maladie » avec la question dans l'autre sens. C'est l'erreur de transposition du conditionnel, et c'est pour ça qu'elle est si dangereuse dans les raisonnements médicaux et judiciaires.
 
 ---
 
@@ -544,7 +540,7 @@ Avant d'écrire « $X$ suit la loi binomiale », vérifie les trois conditions �
 
 Les mots qui signalent la situation dans un énoncé : « on répète l'expérience $n$ fois », « en remettant la boule dans l'urne après chaque tirage », « de façon indépendante ». Et $X$ y est presque toujours défini comme « le nombre de fois où l'événement $A$ se réalise ».
 
-**Le piège, et il est double.** Un tirage **simultané**, ou un tirage **sans remise**, n'est pas une répétition d'épreuves identiques : l'urne change entre les tirages, donc $p$ change, donc l'indépendance tombe. Tirer trois boules d'un coup et compter les rouges ne relève **pas** de la loi binomiale — il faut y revenir au dénombrement et à l'équiprobabilité. C'est exactement l'expérience du début de cette leçon, avec son transfert de boule d'une urne à l'autre : la deuxième probabilité y était conditionnelle, la binomiale n'y a rien à faire.
+**Le piège, et il est double.** Un tirage **simultané**, ou un tirage **sans remise**, n'est pas une répétition d'épreuves identiques : l'urne change entre les tirages, donc $p$ change, donc l'indépendance tombe. Tirer trois boules d'un coup et compter les rouges ne relève **pas** de la loi binomiale — il faut y revenir au dénombrement et à l'équiprobabilité. C'est exactement l'expérience de l'exercice de type bac qui clôt cette leçon, avec son transfert de boule d'une urne à l'autre : la deuxième probabilité y était conditionnelle, la binomiale n'y a rien à faire.
 
 L'erreur inverse coûte autant : appliquer la formule sans jamais dire pourquoi on y a droit. La phrase « comme on remet la boule après chaque tirage, les trois tirages sont indépendants et de même probabilité de succès $p$ » est ce qui transforme un calcul en démonstration.
 

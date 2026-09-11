@@ -1089,8 +1089,11 @@ items:
         correct: false
         misconception: null
         feedback: >
-          Ce résultat ($= P(B|A) - P(B|\bar{A}) = 0{,}3$ ou $0{,}5-0{,}4=0{,}1$)
-          ne correspond à aucune formule probabiliste valide ici.
+          Ce résultat vient de soustraire $P(\bar{A})=0{,}4$ à $P(B|A)=0{,}5$
+          ($0{,}5-0{,}4=0{,}1$) : on retranche un poids de branche à un taux
+          conditionnel, deux grandeurs de natures différentes. Aucune formule
+          des probabilités totales ne fait cela — il faut pondérer, pas
+          soustraire.
     correct_feedback: >
       $P(B)=P(A) \cdot P(B|A)+P(\bar{A}) \cdot P(B|\bar{A}) = 0{,}6 \times
       0{,}5 + 0{,}4 \times 0{,}2 = 0{,}30 + 0{,}08 = 0{,}38$. Le résultat

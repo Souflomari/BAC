@@ -34,13 +34,11 @@
 # mathématiques, mêmes résultats numériques — vérifiés en double) : ce n'est
 # pas une recopie.
 #
-# SCOPE NOTE (divulgation honnête, authoring-side) : la question 3 introduit
-# une variable aléatoire $X = ab$ et sa loi de probabilité — un ingrédient que
-# le corps de la leçon (R1–R5 : formule conditionnelle, arbre pondéré,
-# indépendance/incompatibilité, probabilités totales, lecture inverse) ne
-# couvre pas formellement ; l'exercice le signale déjà lui-même avant de
-# commencer (intro de [[exercise:r-bac]] dans exercises.yaml). Le champ
-# `reasoning` de la question q3a nomme explicitement ce pont, au point d'usage.
+# SCOPE NOTE (authoring-side) : la question 3 mobilise une variable aléatoire
+# $X = ab$ et sa loi de probabilité — désormais ENSEIGNÉES dans le corps de la
+# leçon (sections « Variable aléatoire » et « Loi binomiale », ajoutées après
+# la rédaction initiale de cette note). Le champ `reasoning` de la question q3a
+# renvoie donc à ce contenu, au point d'usage.
 
 notion: maths/probabilites-conditionnelles
 
@@ -132,7 +130,7 @@ entries:
 
           **(0,25 pt)** Montrer que $p(X = 0) = \dfrac{1}{3}$.
         reasoning: |-
-          Nouvel ingrédient ici : une variable aléatoire attache un nombre à chaque issue de l'expérience — une notion que le corps de la leçon n'introduit pas formellement (R1–R5 portent sur des événements, pas sur des variables), mais qui reste l'arbre et le conditionnement, seulement organisés autrement.
+          Nouvel ingrédient ici : une variable aléatoire attache un nombre à chaque issue de l'expérience — une notion introduite dans le corps de la leçon (section « Variable aléatoire »), et qui reste l'arbre et le conditionnement, seulement organisés autrement.
 
           Un produit est nul dès que l'un des deux facteurs l'est. Peut-on avoir $b=0$ ? Une boule « 0 » ne se trouve qu'à l'intérieur de $U_1$ au départ ; elle n'atterrit dans $U_2$ que si c'est justement celle qu'on y a transportée, c'est-à-dire seulement quand $a=0$. Si $a \neq 0$, aucune boule « 0 » n'entre dans $U_2$, donc $b \neq 0$ non plus. L'événement « $X=0$ » se ramène donc entièrement à « $a=0$ », et sa probabilité se lit directement sur $U_1$.
         steps:
