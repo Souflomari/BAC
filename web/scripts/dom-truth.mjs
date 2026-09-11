@@ -696,7 +696,7 @@ try {
   // Rouge si un bouton actif apparaît : un composant client qui aurait oublié
   // le crochet. (Testé rouge sur le HTML de 7d3f851, où « Ouvrir le bac à
   // sable » n'était pas encore gardé : 2 boutons actifs sur rlc-serie.)
-  for (const p of [NOTION, "/", "/examens", "/examens/sm-2025-normale"]) {
+  for (const p of [NOTION, "/", "/examens", "/examens/sm-2025-normale", "/commencer", "/matieres/pc", "/connexion"]) {
     console.log(`\n[${p}] SWEEP: HTML servi — aucune commande active avant l'hydratation`);
     checks++;
     try {
@@ -709,6 +709,45 @@ try {
     } catch (e) {
       failures += fail(`HTML servi illisible pour ${p} : ${String(e).slice(0, 80)}`);
     }
+  }
+
+  // ── Et la PORTÉE (ADR 0031 : la portée d'un mécanisme se mesure à part).
+  // Les sept routes ci-dessus sont des témoins ; le build a prérendu TOUTES
+  // les pages statiques dans .next/server/app — on les lit toutes. Le
+  // 2026-09-11, les témoins étaient verts et le balayage complet a trouvé
+  // le seul bouton actif du site sur /atelier (« Commencer », hors témoins) :
+  // 118 pages, 12 790 boutons, 1 actif — puis 0 une fois PlanChaine gardé.
+  // Rouge si une page prérendue sert une commande active ; rouge aussi si le
+  // build rend moins de 100 pages (62 leçons + 39 épreuves + le reste) — une
+  // porte qui balaie un dossier vide serait verte pour rien.
+  {
+    console.log(`\n[build] SWEEP: HTML prérendu — aucune commande active sur AUCUNE page statique`);
+    checks++;
+    const racine = path.join(WEB, ".next", "server", "app");
+    const pages = [];
+    (function marcher(d) {
+      for (const e of readdirSync(d)) {
+        const f = path.join(d, e);
+        if (statSync(f).isDirectory()) marcher(f);
+        else if (f.endsWith(".html")) pages.push(f);
+      }
+    })(racine);
+    const parPatron = new Map();
+    const fautes = [];
+    let boutonsTotal = 0;
+    for (const f of pages.sort()) {
+      const route = f.slice(racine.length).replace(/\.html$/, "");
+      const boutons = readFileSync(f, "utf8").match(/<button\b[^>]*>/g) ?? [];
+      const actifs = boutons.filter((b) => !/\bdisabled\b/.test(b));
+      boutonsTotal += boutons.length;
+      const patron = route.replace(/^\/(notions|examens|matieres|options\/wide)\/.*/, "/$1/*");
+      const s = parPatron.get(patron) ?? { pages: 0, boutons: 0 };
+      s.pages++; s.boutons += boutons.length; parPatron.set(patron, s);
+      if (actifs.length) fautes.push(`${route} : ${actifs.length} actif(s) — ${actifs[0].replace(/class="[^"]*"/, "").slice(0, 90)}`);
+    }
+    if (pages.length < 100) failures += fail(`${pages.length} pages prérendues seulement (≥ 100 attendues) — le build a-t-il changé de forme ?`);
+    else if (fautes.length) failures += fail(`${fautes.length} page(s) prérendue(s) servent une commande active :\n      ${fautes.slice(0, 5).join("\n      ")}`);
+    else console.log(`  ✓ ${pages.length} pages prérendues · ${boutonsTotal} boutons · aucun actif · ${[...parPatron].map(([p, s]) => `${p} ${s.pages}`).join(" · ")}`);
   }
 
   // ══ SWEEPS (July-2026 external-audit instruments — class-level, per §13) ══

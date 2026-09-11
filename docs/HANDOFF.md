@@ -4081,6 +4081,28 @@ actifs sur `rlc-serie`), verte sur ec0ec08 — en local et sur la preview
 Vercel (263 boutons, 0 actif, `curl`). Une porte qui peut aller au rouge
 (ADR 0031).
 
+**LA PORTÉE, MESURÉE — ET LA PHRASE DE TROP.** Le paragraphe « les sept
+derniers » ci-dessus concluait « la règle est donc complète pour tout ce que
+le serveur rend cliquable » — sur cinq pages témoins. C'était une
+affirmation, pas une mesure (ADR 0031 : la portée d'un mécanisme se mesure
+à part). Mesurée le soir même, en deux temps : `curl` des routes restantes
+(`/commencer` : **4 boutons actifs**, les cartes de filière — `onClick` =
+localStorage + routeur), puis le balayage de TOUT ce que `next build`
+prérend (`.next/server/app/**/*.html`) : **118 pages, 12 790 boutons, 1
+actif** — « Commencer » de `/atelier`, hors témoins lui aussi. Cinq
+boutons actifs sur deux pages que les témoins ne voyaient pas. Même règle,
+même crochet (`FiliereChooser`, `PlanChaine`) ; re-balayage : 118 pages,
+12 790 boutons, **0 actif**. La porte a changé de forme en conséquence :
+sept routes servies par `fetch` (les quatre d'avant + `/commencer`,
+`/matieres/pc`, `/connexion`), PLUS le balayage de toutes les pages
+prérendues, avec un plancher — rouge sous 100 pages, pour qu'un dossier
+vide ne soit pas vert. Testée dans les deux sens sur la batterie entière :
+273 vérifications, **1 rouge** sur le build d'avant le correctif (celle-ci,
+`/atelier`), **0** sur le build d'après. Ce qu'elle ne voit toujours pas :
+ce qui n'est pas prérendu (rien aujourd'hui — les 118 pages couvrent chaque
+patron de route de `src/app`, `_not-found` compris), et ce qu'un geste fait
+apparaître.
+
 **CE QUE ÇA VÉRIFIE.** dom-truth : 265 vérifications sur ce build, un seul rouge — le garde-fou de fraîcheur (commité pendant la mesure) ; les portes qui cliquent (cartes d'exercice, révélation, transports de figure, changement de chapitre) toutes vertes. Les instruments cliquent avec
 Playwright, qui attend qu'un bouton soit actif : aucun n'a eu à changer. La CI
 (run 490) est verte de bout en bout sur ce build, porte comprise : 39 min

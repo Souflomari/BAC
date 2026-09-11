@@ -19,6 +19,7 @@
  */
 
 import { cn } from "@/lib/utils";
+import { useHydrated } from "@/lib/useHydrated";
 import { Icon } from "@/components/ui/Icon";
 import { COMPETENCES, ECRANS } from "@/lib/atelier/derivees";
 
@@ -29,6 +30,9 @@ const NIVEAU_TON: Record<string, string> = {
 };
 
 export function PlanChaine({ onDemarrer }: { onDemarrer: () => void }) {
+  // ADR 0032 : « Commencer » n'existe qu'après l'hydratation — servi actif, il
+  // ignorait le doigt (seul bouton actif du site prérendu, balayage 2026-09-11).
+  const hydrated = useHydrated();
   return (
     // DEUX COLONNES à partir de « large » (M3, 1200 px). La promesse et les
     // prérequis tiennent dans une colonne de lecture — ils sont en prose,
@@ -80,6 +84,8 @@ export function PlanChaine({ onDemarrer }: { onDemarrer: () => void }) {
         <button
           type="button"
           onClick={onDemarrer}
+          disabled={!hydrated}
+          aria-busy={!hydrated || undefined}
           className={cn(
             "mt-9 inline-flex w-fit min-h-touch items-center gap-2 rounded-full px-6 py-3",
             "bg-accent text-on-accent",

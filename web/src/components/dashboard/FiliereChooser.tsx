@@ -15,6 +15,7 @@
 import { useRouter } from "next/navigation";
 import { FILIERES, SUBJECTS, type FiliereId } from "@/lib/curriculum";
 import { useFiliere } from "@/lib/useFiliere";
+import { useHydrated } from "@/lib/useHydrated";
 import { subjectLabel } from "@/lib/subjects";
 import { Icon } from "@/components/ui/Icon";
 import { cn } from "@/lib/utils";
@@ -22,6 +23,9 @@ import { cn } from "@/lib/utils";
 export function FiliereChooser({ redirectOnPick = false }: { redirectOnPick?: boolean }) {
   const { filiere, setFiliere } = useFiliere();
   const router = useRouter();
+  // ADR 0032 : le choix ne vit qu'après l'hydratation (localStorage + routeur) ;
+  // servi actif, le bouton ignorerait le doigt pendant 9–24 s sur 3G lente.
+  const hydrated = useHydrated();
 
   function pick(id: FiliereId) {
     setFiliere(id);
@@ -44,6 +48,8 @@ export function FiliereChooser({ redirectOnPick = false }: { redirectOnPick?: bo
               type="button"
               onClick={() => pick(f.id)}
               aria-pressed={active}
+              disabled={!hydrated}
+              aria-busy={!hydrated || undefined}
               className={cn(
                 "group w-full text-left rounded-xl px-6 py-5",
                 "bg-surface-raised",

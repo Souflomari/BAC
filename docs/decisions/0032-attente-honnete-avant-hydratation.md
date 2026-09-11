@@ -91,6 +91,9 @@ distinguer « pas encore » de « cassé ».
   l'hydratation, zéro `aria-busy` et les onze `disabled` légitimes.
 - Un composant client nouveau qui rend un bouton sans le crochet fait
   passer `dom-truth` au rouge — c'est le but.
+- La portée, mesurée à part (ADR 0031) : les 118 pages que `next build`
+  prérend servent 12 790 boutons, 0 actif — après que le balayage complet
+  a trouvé les cinq que les témoins ne voyaient pas (§11.28).
 - Ce que ça coûte : une seconde d'apparence inchangée avant l'estompage,
   donc, sur un réseau lent, une seconde pendant laquelle un bouton
   désactivé a l'air actif — l'appui ne fait rien mais ne fait pas de mal,
@@ -98,4 +101,10 @@ distinguer « pas encore » de « cassé ».
 
 ## Retractions and Corrections
 
-*(vide)*
+- **2026-09-11, le soir même.** La première rédaction disait la règle
+  « complète pour tout ce que le serveur rend cliquable » sur la foi de
+  cinq pages témoins. Le balayage de toutes les pages prérendues a trouvé
+  cinq boutons actifs sur deux routes hors témoins (`/commencer`,
+  `/atelier`). Corrigés ; la porte lit désormais TOUTES les pages
+  prérendues, avec un plancher de 100 pages. Une affirmation de portée
+  vaut ce que vaut sa mesure — c'est la leçon de l'ADR 0031, réapprise.
