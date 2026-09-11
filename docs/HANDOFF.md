@@ -4082,4 +4082,6 @@ Vercel (263 boutons, 0 actif, `curl`). Une porte qui peut aller au rouge
 (ADR 0031).
 
 **CE QUE ÇA VÉRIFIE.** dom-truth : 265 vérifications sur ce build, un seul rouge — le garde-fou de fraîcheur (commité pendant la mesure) ; les portes qui cliquent (cartes d'exercice, révélation, transports de figure, changement de chapitre) toutes vertes. Les instruments cliquent avec
-Playwright, qui attend qu'un bouton soit actif : aucun n'a eu à changer.
+Playwright, qui attend qu'un bouton soit actif : aucun n'a eu à changer. La CI
+(run 490) est verte de bout en bout sur ce build, porte comprise : 39 min
+02 s. La règle et ses raisons sont consignées dans l'ADR 0032.

@@ -68,7 +68,10 @@ Read the right document for the task at hand:
   link gate; a mechanism's REACH is measured separately from whether it
   works; a gate has two directions when one alone can be gamed; **a gate
   must be able to go RED — a green badge says nothing failed, not that
-  everything was measured**).
+  everything was measured**). **ADR 0032 (2026-09-11) — the honest wait before
+  hydration:** a server-rendered command is `disabled` + `aria-busy` until
+  React takes over (`useHydrated`), the page says so once, calmly, and
+  `dom-truth` reads the SERVED HTML to keep it true.
 - **`docs/HANDOFF.md`** — *start here after the July-2026 sprint.* The
   open-gates list (owner decisions pending), the external-audit triage,
   and the "how not to regress this" invariants — written as the sprint's
