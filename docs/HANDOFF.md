@@ -4710,6 +4710,57 @@ restent en dessous — le chrome dense, les liens de programme — un manque
 ASSUMÉ sur un produit calme d'abord pensé pour un bureau ; 2.5.5 est AAA,
 pas une cible du projet. Un résultat négatif de plus, posé.
 
+### 11.43 Un asset de figure que rien ne place ne se rend à personne — et aucune porte ne le voyait : le sens INVERSE de la porte figures, et l'inventaire des huit orphelines
+
+**MESURÉ, puis CORRIGÉ (porte).** Les deux revues de contenu de la vague 1
+(rlc-serie, limites-continuite) ont trouvé, chacune de son côté, la MÊME classe
+de défaut : une figure présente dans `media/`, qui passe la porte figures
+(clair + sombre) avec son sidecar `.stages.json` — mais qu'AUCUN marqueur
+`[[figure:…]]` ne place dans la leçon. Elle ne se rend à personne.
+`energy-exchange` (rlc-serie) et `cubique-trois-racines` (limites-continuite)
+étaient orphelines par une renumérotation de marche (R6→R7) qui a laissé le
+marqueur derrière.
+
+`validate-content` n'avait qu'une moitié de porte : marqueur→asset est un échec
+DUR (`[[figure:x]]` sans `media/x.svg` → « MISSING, renders nothing »). Le sens
+inverse — asset→marqueur — n'existait pas. C'est exactement le trou de
+l'ADR 0031 : « une porte a deux directions quand une seule peut être
+contournée » ; ici elle n'était même pas contournée, juste jamais regardée. Le
+précédent existait pourtant : un point d'arrêt orphelin est AVERTI depuis
+toujours (« checkpoint never referenced »).
+
+**Le sens inverse, ajouté.** `validate-content` balaie désormais chaque `.svg`
+de `media/` et avertit (⚠, pas échec) si aucun marqueur — de N'IMPORTE quel
+type, dans N'IMPORTE quel fichier texte du dossier (un `[[figure:…]]` vit aussi
+dans exercises.yaml, checkpoints.yaml, derivations.yaml, spec-*.md) — ne le
+place ; le suffixe `.motion` est retiré pour rejoindre `[[motion:slug]]`.
+Avertissement et non échec parce que la classe « asset mort » ci-dessous est
+légitime ; le sens marqueur→asset manquant, lui, reste dur — la porte peut
+toujours virer rouge. Mesuré sur les 62 dossiers : **0 échec, 8 orphelines.**
+
+**L'inventaire des huit, en trois classes** (placer un marqueur ou supprimer
+est du travail de contenu / propriétaire — non appliqué autonomement) :
+
+- **Retirée par spec (asset mort, supprimable) :** `pc/aspects-energetiques ::
+  plan-incline-travaux` — `spec-extension.md` le dit noir sur blanc (« Old
+  plan-incline-travaux.svg is retired with old R5 »). Le fichier a survécu au
+  retrait de son marqueur.
+- **Remplacée par un frère référencé (probablement supprimable) :** `pc/rlc-serie
+  :: loi-mailles-build` (le frère `loi-des-mailles-build.motion` EST placé,
+  `[[motion:…]]`) ; `maths/nombres-complexes-2 :: rotation-complexe` (frère
+  `rotation-homothetie`, à confirmer).
+- **Autorée puis jamais placée (attend son marqueur) :** `pc/rlc-serie ::
+  energy-exchange` et `maths/limites-continuite :: cubique-trois-racines` (les
+  deux connues des revues, staged-incomplètes — cf. aussi l'avertissement
+  « step-N sans sidecar ») ; `maths/geometrie-espace :: explication-bk-2019-n-x1`
+  ; `pc/dipole-rl :: oscillogramme-exercice` ; `pc/rc-charge ::
+  exo-oscillogramme`.
+
+Le cadre CI est déjà à terre (§11.37) : cet ajout est une porte de plus qui
+parle à chaque `validate-content` local, sans jamais bloquer. La certification
+pixel (corpus figures, clair + sombre) reste vraie — ces assets sont valides ;
+ils ne sont simplement pas montrés.
+
 ### 11.29–11.41 en un coup d'œil, et le déployé
 
 **LA SOIRÉE DU 2026-09-11**, treize points, tous mesurés avant/après :

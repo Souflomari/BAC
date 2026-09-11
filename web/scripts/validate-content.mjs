@@ -733,6 +733,41 @@ for (const dir of dirs) {
     }
   }
 
+  // ── Orphan figure ASSETS (warning only) — le SENS INVERSE du contrôle
+  // marqueur→asset plus haut (ADR 0031 : une porte a deux directions, et
+  // celle qui ne va que dans un sens finit contournée). Un SVG de media/ que
+  // AUCUN marqueur ne place ne se rend à personne : soit il attend son
+  // marqueur (figure autorée puis oubliée à une renumérotation de marche),
+  // soit il est mort (retiré avec sa marche, ou remplacé par un frère — p. ex.
+  // une version .motion). Avertissement et non échec, précisément parce que le
+  // second cas est légitime ; le sens marqueur→asset manquant reste, lui, un
+  // échec dur, donc la porte peut toujours virer rouge. Les références sont
+  // collectées dans TOUS les fichiers texte du dossier (pas seulement
+  // lesson.md) : un [[figure:…]] vit aussi dans exercises.yaml,
+  // checkpoints.yaml, derivations.yaml et les spec-*.md.
+  if (fs.existsSync(mediaDir)) {
+    const placedSlugs = new Set();
+    const dirTextFiles = fs
+      .readdirSync(abs)
+      .filter((f) => (/\.(md|ya?ml)$/i.test(f)) && !/^review/i.test(f));
+    for (const tf of dirTextFiles) {
+      let txt = "";
+      try { txt = fs.readFileSync(path.join(abs, tf), "utf8"); } catch { /* skip */ }
+      for (const m of txt.matchAll(/\[\[[a-z]+:([^\]]+)\]\]/g)) placedSlugs.add(m[1]);
+    }
+    for (const f of fs.readdirSync(mediaDir)) {
+      if (!f.endsWith(".svg")) continue;
+      const base = f.slice(0, -4);
+      const cands = [base];
+      if (base.endsWith(".motion")) cands.push(base.slice(0, -".motion".length));
+      if (!cands.some((c) => placedSlugs.has(c))) {
+        console.error(
+          `  ⚠ ${dir}: figure asset media/${f} n'est placée par aucun marqueur — la placer, ou supprimer l'asset mort`,
+        );
+      }
+    }
+  }
+
   // ── Staged figures (LESSON-EXPERIENCE-SPEC §2.7) — a directory-level scan
   // of media/, independent of the [[figure:slug]] markers walked above (a
   // sidecar's contract with its SVG holds whether or not the lesson happens
