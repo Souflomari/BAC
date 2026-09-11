@@ -3062,6 +3062,7 @@ run 451, sur la même pile d'instruments, était vert en 28 min 35 s.
 | `memoire` (nouveau) | 62 leçons, 3 leçons × 60 changements, 2 épreuves révélées, VmRSS de 5 pages | tas 7–11 Mo, aucune fuite ; 2 300–66 000 nœuds (97 % repliés, 90 % KaTeX) ; 166–226 Mo par leçon, 296–309 Mo par épreuve corrigée — le levier §8.7 vaut aussi pour la mémoire, §11.31 |
 | `recherche-palette` (nouveau) | 17 requêtes + Échap | « maths » 0, « svt » 0, « 2025 » 0, focus perdu à Échap → 25, 12, 3, focus rendu ; « acide », « nucléaire » restent à 0 (mots-clés = contenu), §11.34 |
 | `polices` (nouveau) | 5 pages ; 117 pages pour latin-ext | 6 fichiers, 324 ko par page → 4 fichiers, 239 ko (latin-ext préchargé pour 0 caractère) ; Geist Mono 70 ko pour 80 caractères — levier design, §11.35 |
+| `couleurs-forcees` (nouveau) | accueil, leçon, épreuve, contraste élevé émulé | 3/5 et 13/40 commandes sans aucun bord (« Commencer l'épreuve » en texte nu) → 0 ; focus et cartes tenaient déjà, §11.36 |
 
 **Ce qui est connu et reste au propriétaire** — re-mesuré à l'identique, pas
 redécouvert : `horsligne-sweep` (une leçon déjà visitée, cliquée hors ligne,
@@ -3296,6 +3297,9 @@ focus ; `recherche-palette` rouge/vert.
 §11.35 : 324 ko de polices par page dont 84 ko de latin-ext préchargé pour
 aucun caractère (« œ » est dans latin) → `subsets: ["latin"]`, 239 ko ;
 Geist Mono, 70 ko pour 80 caractères, posé au propriétaire.
+§11.36 : en contraste élevé Windows, « Commencer l'épreuve » et tout
+bouton sans bordure devenaient du texte nu → contour système en `outline`
+sous `@media (forced-colors: active)`.
 
 ### 11.20 Le téléphone gelait au « Commencer » et au « Terminer » d'une épreuve
 
@@ -4460,8 +4464,9 @@ des épreuves, `/commencer` n'emploient **aucun** caractère de la plage
 étendue ; sur 74 pages, un seul caractère « étendu » apparaît en serif —
 **« œ », 102 fois** — et il est dans le sous-ensemble LATIN (U+0152–0153 y
 figure explicitement). Reste « ˊ » U+02CA, neuf fois sur deux leçons SVT :
-une coquille de transcription (un prime ou une apostrophe), pas un besoin
-de police. `subsets: ["latin"]` — un mot.
+dans le MathML MASQUÉ de KaTeX (un accent, `<mo>ˊ</mo>`), que la serif ne
+dessine jamais — la première rédaction y voyait une coquille de
+transcription, le dépôt dit KaTeX. `subsets: ["latin"]` — un mot.
 
 **MESURÉ APRÈS.** **Quatre fichiers, 239 ko** sur chaque page (−85 ko,
 −26 %) ; sur une leçon SVT pleine de « œ » et sur une leçon de philo,
@@ -4478,3 +4483,37 @@ première visite pour 80 caractères (le chrono de l'épreuve, « n / N »,
 le même service pour 0 ko ; c'est une décision de typographie (ADR 0030 D2 :
 « sa mono assortie porte tout nombre qui change »), pas de mesure. Le chiffre
 est posé.
+
+### 11.36 Windows « contraste élevé » : « Commencer l'épreuve » et tout bouton sans bordure devenaient du texte nu
+
+**JAMAIS MESURÉ.** En `forced-colors: active` (le mode « contraste élevé » de
+Windows, que Chromium et Edge émulent fidèlement), les couleurs de fond et
+de texte sont remplacées par celles du système, et les ombres portées sont
+supprimées. Sondé (`couleurs-forcees`, `emulateMedia({ forcedColors })`,
+1280 px, captures regardées) : **l'anneau de focus tient** (c'est un
+`outline`, seul le halo en `box-shadow` disparaît — normal), **les cartes
+tiennent** (bordures forcées en CanvasText), les liens sont soulignés et
+bleus. Mais **« Commencer l'épreuve »** — `btn-primary`, un fond accent sans
+bordure — se rendait en **texte gras nu**, au même endroit qu'un libellé ;
+« Notions », « Aa » et les onze entrées du rail des chapitres aussi : 3
+commandes sur 5 sans aucun bord sur l'accueil et l'épreuve, 13 sur 40 sur une
+leçon. Un utilisateur de ce mode ne voit pas de bouton à appuyer.
+
+**LE CORRECTIF**, sept lignes de CSS dans `@media (forced-colors: active)` :
+un `outline: 1px solid ButtonText; outline-offset: -1px` sur `:where(button,
+.btn-primary)` — un contour SYSTÈME, tracé vers l'intérieur pour ne pas
+toucher à la mise en page, dans `:where()` (spécificité nulle) pour que
+l'anneau de focus de 2 px garde le dessus ; `GrayText` pour les boutons
+désactivés. Aucun effet hors de ce mode.
+
+**MESURÉ APRÈS.** 0 commande sans bord sur les trois pages ; « Commencer
+l'épreuve » est une boîte ; le rail des chapitres, onze boîtes — c'est la
+convention de Windows, pas une surcharge ; le chapitre courant garde son
+repère (la barre d'accent forcée en couleur système). Le focus reste
+`outline solid 2px`. dom-truth vert (il mesure en couleurs normales).
+
+**CE QUE ÇA NE MESURE PAS.** Un vrai Windows (ses thèmes « Aquatique »,
+« Désert », « Nuit » changent les couleurs, pas la logique) ; les figures
+SVG, qui gardent leurs couleurs propres en `forced-colors` (le contraste
+de leurs textes est mesuré aux pixels par ailleurs) ; `prefers-contrast:
+more`, un autre signal, plus rare.

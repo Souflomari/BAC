@@ -1455,6 +1455,24 @@ button[aria-busy="true"]:disabled {
   opacity: 0;
   animation: hydration-notice-in 200ms 1500ms forwards;
 }
+
+/* ── Windows « contraste élevé » (forced-colors: active) — HANDOFF §11.36.
+   Les couleurs personnalisées et les ombres sautent ; un bouton sans bordure
+   (« Commencer l'épreuve », Notions, Aa, le rail des chapitres) y devenait du
+   texte nu, mesuré le 2026-09-11. Un contour SYSTÈME, en `outline` négatif
+   pour ne pas toucher à la mise en page ; `:where()` pour que l'anneau de
+   focus (2 px, :focus-visible) garde le dessus. Les liens et les cartes
+   tiennent déjà (soulignement, bordures). */
+@media (forced-colors: active) {
+  :where(button:not(:disabled), .btn-primary) {
+    outline: 1px solid ButtonText;
+    outline-offset: -1px;
+  }
+  :where(button:disabled) {
+    outline: 1px solid GrayText;
+    outline-offset: -1px;
+  }
+}
 @keyframes hydration-notice-in {
   to { opacity: 1; }
 }

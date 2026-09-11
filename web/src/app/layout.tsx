@@ -29,8 +29,8 @@ import "./globals.css";
 // 43 ko en italique) était PRÉCHARGÉ sur chaque page, y compris l'accueil
 // qui n'en emploie aucun caractère ; « œ », le seul caractère « étendu » du
 // corpus (102 fois en serif), est couvert par le sous-ensemble latin. Mesuré
-// sur les 117 pages : reste « ˊ » U+02CA, neuf fois sur deux leçons SVT — une
-// coquille de transcription, pas un besoin de police.
+// sur les 117 pages : reste « ˊ » U+02CA, neuf fois sur deux leçons SVT —
+// dans le MathML masqué de KaTeX (un accent), jamais dessiné par la serif.
 const readingSerif = Source_Serif_4({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
