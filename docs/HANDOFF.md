@@ -3285,6 +3285,9 @@ corrigée) ; 97 % des nœuds dans des chapitres repliés, 90 % de KaTeX.
 §11.32 : une adresse inconnue sous une route dynamique servait un HTML
 vide (page blanche 12 s sur 3G lente) → `dynamicParams = false`, la page
 introuvable prérendue est servie ; porte armée.
+§11.33 : « Commencer » et « Terminer » laissaient le focus sur `<body>`
+sans annonce → focus sur le premier exercice / le premier corrigé, région
+`status` persistante ; `annonce-sweep` mesure les deux gestes.
 
 ### 11.20 Le téléphone gelait au « Commencer » et au « Terminer » d'une épreuve
 
@@ -4353,3 +4356,40 @@ caractère qui n'existe qu'après le JavaScript, l'action principale de
 l'accueil comprise. L'adresse inconnue était le seul trou. Un résultat
 négatif qui valait d'être établi : « tout est rendu par le serveur » était
 une croyance ; c'est maintenant une mesure.
+
+### 11.33 Au clavier et au lecteur d'écran, « Commencer l'épreuve » et « Terminer » laissaient le focus sur `<body>` et n'annonçaient rien
+
+**MESURÉ AVANT** (`focus-epreuve`, sonde ; puis `annonce-sweep` étendu).
+Sur une épreuve, Entrée sur « Commencer l'épreuve » : le bouton disparaît
+avec le seuil, **le focus retombe sur `<body>`**, défilement 0, et aucune
+région live ne dit que le sujet est là (le chrono est bien `aria-live="off"`
+— un chrono qui parle chaque seconde serait pire que tout). Entrée sur
+« Terminer l'épreuve » : pareil — focus sur `<body>`, le corrigé apparaît
+en silence. Un lecteur d'écran repart du haut de la page ; un clavier
+retraverse l'en-tête. Le changement de chapitre d'une leçon avait l'idiome
+depuis l'audit du 2026-08 (`ChapterShell` : le titre reçoit le focus,
+« Chapitre n / N » est poli) ; l'épreuve ne l'avait pas, et `annonce-sweep`
+ne mesurait que le chapitre.
+
+**CE QUI A CHANGÉ** (`EpreuveShell`). Même idiome : dès que le premier lot
+est rendu, le titre du premier exercice (« Exercice 1 », `[data-exam-exo]
+h2`) reçoit le focus après « Commencer », le premier bloc de corrigé
+(`[data-exam-corrige]`) après « Terminer » — `tabIndex = -1`, `focus()`,
+le défilement suit (749 px vers le premier corrigé). Une région
+`role="status"` visuellement masquée, **présente dès le seuil** (une région
+insérée en même temps que son texte n'est pas lue), dit la phase : « Le
+sujet est affiché — le chrono a démarré. » puis « Le corrigé est affiché —
+note chaque question au barème. » Rien de visible ne change.
+
+**MESURÉ APRÈS.** Focus sur `h2 « Exercice 1 »` après Commencer, sur le
+premier corrigé après Terminer ; les deux phrases dans la région `status`.
+`annonce-sweep` mesure désormais les deux gestes sur chaque épreuve (focus
+perdu, aucune annonce) : **39 épreuves, 0 focus perdu, 0 sans annonce** aux deux gestes ; 0 et 0 au
+changement de chapitre sur les 62 leçons, comme avant. PIÈGE DE L'INSTRUMENT,
+payé au passage : `annonce-sweep` prenait pour « premier focusable » le
+premier `a[href]` du DOM sans regarder s'il était visible — depuis que le
+bandeau de la veille (§11.29) est en tête du body, son lien « Recharger »,
+sous `[hidden]`, faisait **106 faux « pas de lien d'évitement en tête »**.
+Un élément sans géométrie ne reçoit jamais le focus ; le filtre est le même
+que pour l'ordre de tabulation désormais, et le lien d'évitement redevient
+premier sur les 106 pages.

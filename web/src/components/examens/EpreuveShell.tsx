@@ -183,7 +183,7 @@ const ExerciceArticle = memo(function ExerciceArticle({
                   </p>
                 )}
                 {enCorrection && k < nbCorrige && (
-                  <div className="mt-3 rounded-lg border border-subtle bg-surface-container-low p-4">
+                  <div data-exam-corrige className="mt-3 rounded-lg border border-subtle bg-surface-container-low p-4">
                     <p className="mb-2 text-caption font-medium uppercase tracking-eyebrow text-secondary">
                       Raisonnement expert
                     </p>
@@ -346,6 +346,40 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
   }, [phase, reveleSujet, reveleCorrige, nbUnites, lotSuivant, poidsSujet, poidsCorrige]);
   const chronoFinal = useRef<number>(0);
 
+  // ── Le focus et l'annonce aux deux gestes (HANDOFF §11.33). « Commencer »
+  // et « Terminer » font DISPARAÎTRE le bouton appuyé : sans ceci, le focus
+  // retombait sur <body> (le lecteur d'écran repart du haut, le clavier
+  // retraverse l'en-tête) et rien ne disait que le sujet, puis le corrigé,
+  // étaient là. Même idiome que le changement de chapitre d'une leçon
+  // (ChapterShell) : le titre du premier exercice / le premier corrigé reçoit
+  // le focus dès que le premier lot est rendu ; une région `status`
+  // persistante — présente dès le seuil, sinon rien n'est lu — dit la phase.
+  const [annonce, setAnnonce] = useState("");
+  const focusFait = useRef<Phase>("seuil");
+  useEffect(() => {
+    if (phase === "seuil" || focusFait.current === phase) return;
+    if (phase === "encours" && reveleSujet < 1) return;
+    if (phase === "correction" && reveleCorrige < 1) return;
+    focusFait.current = phase;
+    const cible = document.querySelector<HTMLElement>(
+      phase === "encours" ? "[data-exam-exo] h2" : "[data-exam-corrige]"
+    );
+    if (cible) {
+      cible.tabIndex = -1;
+      cible.focus({ preventScroll: false });
+    }
+    setAnnonce(
+      phase === "encours"
+        ? "Le sujet est affiché — le chrono a démarré."
+        : "Le corrigé est affiché — note chaque question au barème."
+    );
+  }, [phase, reveleSujet, reveleCorrige]);
+  const statut = (
+    <p role="status" className="sr-only">
+      {annonce}
+    </p>
+  );
+
   // Chrono : écoulé, 1 s, coupé en pause et en correction. L'onglet inactif
   // dérive avec setInterval — acceptable pour une répétition (pas un
   // instrument de certification, la note est « indicative »).
@@ -418,6 +452,9 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
   // ── Phase seuil ──────────────────────────────────────────────────────────
   if (phase === "seuil") {
     return (
+      <>
+        {statut}
+
       <section
         aria-label="Conditions de l'épreuve"
         className="rounded-xl border border-subtle bg-surface-raised p-6 shadow-elevation-1 bp-medium:p-8"
@@ -478,6 +515,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
           </p>
         )}
       </section>
+      </>
     );
   }
 
@@ -494,6 +532,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
       data-sujet-complet={sujetComplet ? "" : undefined}
       data-corrige-complet={corrigeComplet ? "" : undefined}
     >
+      {statut}
       {/* Barre d’épreuve — sticky, discrète. Le chrono est un FAIT en mono,
           pas une alarme : jamais de rouge, jamais de compte à rebours. */}
       <div

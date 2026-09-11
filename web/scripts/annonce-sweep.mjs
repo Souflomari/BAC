@@ -106,7 +106,12 @@ for (const route of ROUTES) {
       // de colonne : le lecteur remonte alors que le doigt descendait
       if (b.top < a.top - 120 && Math.abs(b.left - a.left) < 40) reculs++;
     }
-    const premier = document.querySelector('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])');
+    // Le premier focusable RÉEL : un élément sous `[hidden]` (le bandeau de la
+    // veille d'hydratation, en tête du body depuis le 2026-09-11) n'a pas de
+    // géométrie et ne reçoit jamais le focus — le compter faisait 106 faux
+    // « pas un lien d'évitement » (HANDOFF §11.33). Même filtre que `focusables`.
+    const premier = [...document.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')]
+      .find((e) => { const r = e.getBoundingClientRect(); return (r.width > 0 && r.height > 0) || e.matches(".sr-only, [class*='sr-only']"); }) ?? null;
     return {
       live,
       reculs,
@@ -125,6 +130,29 @@ for (const route of ROUTES) {
     dits.push(`  ${route} : premier focusable « ${m.premierNom} » — pas un lien d'évitement`);
   }
   if (m.reculs > 2) { desordre++; dits.push(`  ${route} : ${m.reculs} reculs francs dans l'ordre de tabulation`); }
+
+  // 4 bis. les deux gestes d'une épreuve (2026-09-11, HANDOFF §11.33) : le
+  // bouton appuyé disparaît — le focus doit être posé sur le contenu qui
+  // apparaît, et une région live doit le dire. Mesuré rouge avant : focus sur
+  // <body> et aucune région renseignée, aux deux gestes.
+  if (route.startsWith("/examens/") && await page.getByRole("button", { name: /commencer/i }).count()) {
+    for (const [nom, marqueur] of [[/commencer/i, "[data-sujet-complet]"], [/terminer/i, "[data-corrige-complet]"]]) {
+      const bouton = page.getByRole("button", { name: nom }).first();
+      if (!(await bouton.count())) continue;
+      await bouton.focus();
+      await page.keyboard.press("Enter");
+      await page.waitForSelector(marqueur, { timeout: 60000 }).catch(() => {});
+      await page.waitForTimeout(300);
+      const g = await page.evaluate(() => ({
+        focusVisible: !!document.activeElement && document.activeElement !== document.body,
+        focus: document.activeElement ? `${document.activeElement.tagName.toLowerCase()} « ${(document.activeElement.textContent || "").trim().slice(0, 30)} »` : "(rien)",
+        liveTexte: [...document.querySelectorAll("[aria-live], [role=status]")].filter((e) => !e.hidden).map((e) => (e.textContent || "").trim()).filter(Boolean).slice(0, 2),
+      }));
+      const geste = nom.source.replace(/\W/g, "");
+      if (!g.focusVisible) { focusPerdu++; dits.push(`  ${route} : après « ${geste} », le focus est sur <body> — le lecteur repart du haut de la page`); }
+      if (!g.liveTexte.length) { sansAnnonce++; dits.push(`  ${route} : après « ${geste} », aucune région live renseignée`); }
+    }
+  }
 
   // 4. le changement de chapitre
   if (m.chapitres > 1) {
