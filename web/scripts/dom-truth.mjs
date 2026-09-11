@@ -711,6 +711,29 @@ try {
     }
   }
 
+  // ── (2026-09-11, HANDOFF §11.32) Une adresse INCONNUE sous une route
+  // dynamique sert la page « introuvable » PRÉRENDUE — en-tête, titre, liens —
+  // pas un HTML vide que seul le JavaScript remplit (Next 14.2 fait ça quand
+  // `dynamicParams` reste vrai : 23 ko de scripts, 0 lien, page blanche 12 s
+  // sur 3G lente, blanche pour toujours sans JavaScript). Testé rouge sur le
+  // build d'avant `dynamicParams = false` (0 <h1>, 0 <header>).
+  for (const p of ["/examens/nexistepas", "/notions/pc/nexistepas", "/matieres/nexistepas", "/options/wide/nexistepas"]) {
+    console.log(`\n[${p}] SWEEP: adresse inconnue — la page introuvable est servie entière`);
+    checks++;
+    try {
+      const rep = await fetch(`${BASE}${p}`);
+      const html = await rep.text();
+      const h1 = (html.match(/<h1\b[^>]*>([^<]*)/) ?? [])[1]?.trim() ?? "";
+      const enTete = /<header\b/.test(html);
+      const liens = (html.match(/<a\s/g) ?? []).length;
+      if (rep.status !== 404) failures += fail(`${p} répond ${rep.status}, pas 404`);
+      else if (!/introuvable/i.test(h1) || !enTete || liens < 3) failures += fail(`${p} : HTML servi sans la page introuvable (h1 « ${h1.slice(0, 40)} », en-tête ${enTete}, ${liens} liens) — dynamicParams ?`);
+      else console.log(`  ✓ 404, « ${h1.slice(0, 40)} », en-tête, ${liens} liens — servis, pas rendus par le client`);
+    } catch (e) {
+      failures += fail(`adresse inconnue illisible pour ${p} : ${String(e).slice(0, 80)}`);
+    }
+  }
+
   // ── Et la PORTÉE (ADR 0031 : la portée d'un mécanisme se mesure à part).
   // Les sept routes ci-dessus sont des témoins ; le build a prérendu TOUTES
   // les pages statiques dans .next/server/app — on les lit toutes. Le

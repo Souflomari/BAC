@@ -18,6 +18,13 @@ import { subjectLabel } from "@/lib/subjects";
 import { NotionPageView } from "@/components/notion/NotionPageView";
 
 // ── Static params ─────────────────────────────────────────────────────────────
+// Toutes les valeurs valides sont connues au build (generateStaticParams) ;
+// une adresse inconnue reçoit alors la page « introuvable » PRÉRENDUE — en-tête,
+// message, liens — au lieu d'un HTML vide que seul le JavaScript remplit
+// (HANDOFF §11.32 : sur 3G lente, un élève au lien périmé regardait une page
+// blanche 10 à 20 s ; sans JavaScript, pour toujours).
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   const notions = listNotions();
   return notions.map((n) => ({

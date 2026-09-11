@@ -3282,6 +3282,9 @@ pendant les 6 s de préchargement de l'action principale — su, assumé.
 §11.31 : la mémoire — 7 à 11 Mo de tas, aucune fuite en 60 changements de
 chapitre, 166–226 Mo de processus de rendu par leçon (296 pour une épreuve
 corrigée) ; 97 % des nœuds dans des chapitres repliés, 90 % de KaTeX.
+§11.32 : une adresse inconnue sous une route dynamique servait un HTML
+vide (page blanche 12 s sur 3G lente) → `dynamicParams = false`, la page
+introuvable prérendue est servie ; porte armée.
 
 ### 11.20 Le téléphone gelait au « Commencer » et au « Terminer » d'une épreuve
 
@@ -4313,3 +4316,32 @@ noté pour que le chiffre existe.
 version d'Android) ; Firefox et Safari ; une séance de deux heures avec des
 réponses, pas seulement des flèches (mais les écouteurs stables après 60
 changements sont le signal qu'on cherchait).
+
+### 11.32 Une adresse inconnue sous /examens, /notions ou /matieres servait une page VIDE que seul le JavaScript remplissait
+
+**TROUVÉ PAR HASARD**, en demandant une épreuve SVT qui n'existe pas
+(§11.31). `/nexistepas` sert la vraie page « introuvable » — 45 ko, en-tête,
+titre, neuf liens. Mais `/examens/nexistepas`, `/notions/pc/nexistepas`,
+`/matieres/nexistepas` servaient **23 ko de scripts et rien d'autre** : 0
+bouton, 0 lien, 0 en-tête, 0 texte — HTTP 404, titre « Page introuvable »
+dans le `<head>`, et un `<body>` vide. Le déployé (preview Vercel) faisait
+pareil. C'est Next 14.2 : une route dynamique dont `dynamicParams` reste
+vrai rend le `notFound()` d'un paramètre inconnu **côté client** ; le
+navigateur télécharge, hydrate, puis dessine la page introuvable. Mesuré :
+texte visible à 0,2 s en réseau libre, à **11,9 s sur 3G lente** — une page
+blanche pendant douze secondes pour l'élève au lien périmé (une épreuve
+renommée, un slug mal copié) ; sans JavaScript, blanche pour toujours.
+
+**LE CORRECTIF**, une ligne par route : `export const dynamicParams = false`
+sur les quatre routes dynamiques — toutes leurs valeurs valides sont
+connues au build (`generateStaticParams` : 62 leçons, 39 épreuves, 5
+matières, 6 variantes). Une adresse inconnue reçoit alors la page
+introuvable PRÉRENDUE : 45 ko, en-tête, `<h1>Page introuvable</h1>`, neuf
+liens, texte visible à **2,4 s sur 3G lente** au lieu de 11,9. Aucune page
+valide ne change (les 118 pages prérendues sont les mêmes).
+
+**LA PORTE.** dom-truth demande quatre adresses inconnues et exige un 404
+qui contient l'en-tête, un `<h1>` « introuvable » et au moins trois liens —
+dans le HTML SERVI. Rouge sur le build d'avant (0 `<h1>`, 0 `<header>`),
+verte après. Un lien périmé n'est pas un cas rare : c'est ce que l'élève
+tape depuis un cahier.

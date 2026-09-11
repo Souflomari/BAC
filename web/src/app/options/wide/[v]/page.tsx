@@ -23,6 +23,13 @@ import type { KeyFormula } from "@/components/notion/KeyFormulaRail";
 
 const VARIANTS: WideOption[] = ["m1", "m2", "m3", "w1", "w2", "w3"];
 
+// Toutes les valeurs valides sont connues au build (generateStaticParams) ;
+// une adresse inconnue reçoit alors la page « introuvable » PRÉRENDUE — en-tête,
+// message, liens — au lieu d'un HTML vide que seul le JavaScript remplit
+// (HANDOFF §11.32 : sur 3G lente, un élève au lien périmé regardait une page
+// blanche 10 à 20 s ; sans JavaScript, pour toujours).
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return VARIANTS.map((v) => ({ v }));
 }
