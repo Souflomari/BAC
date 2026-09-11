@@ -1,3 +1,5 @@
+"use client";
+
 /**
  * TransportButton — the one shared learner-paced transport control.
  *
@@ -18,6 +20,7 @@
  */
 
 import { forwardRef } from "react";
+import { useHydrated } from "@/lib/useHydrated";
 import type { ButtonHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
@@ -43,8 +46,18 @@ export const TRANSPORT_BTN_CLASS = cn(
 export const TransportButton = forwardRef<
   HTMLButtonElement,
   ButtonHTMLAttributes<HTMLButtonElement>
->(function TransportButton({ className, type = "button", ...props }, ref) {
+>(function TransportButton({ className, type = "button", disabled, ...props }, ref) {
+  // Désactivé et `aria-busy` tant que React n'a pas pris la main : le bouton
+  // existe dans le HTML du serveur, son onClick non (HANDOFF §11.28).
+  const hydrated = useHydrated();
   return (
-    <button ref={ref} type={type} className={cn(TRANSPORT_BTN_CLASS, className)} {...props} />
+    <button
+      ref={ref}
+      type={type}
+      className={cn(TRANSPORT_BTN_CLASS, className)}
+      {...props}
+      disabled={disabled || !hydrated}
+      aria-busy={!hydrated || undefined}
+    />
   );
 });

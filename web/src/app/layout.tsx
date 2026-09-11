@@ -12,6 +12,7 @@ import { GeistMono } from "geist/font/mono";
 // courbes vivent dans globals.css et lisent les tokens motion.
 import { ViewTransitions } from "next-view-transitions";
 import { AuthProvider } from "@/lib/auth/provider";
+import { HydrationNotice } from "@/components/ui/HydrationNotice";
 import "./globals.css";
 
 // ── Fonts (editorial pairing — ADR 0023) ──────────────────────────────────────
@@ -125,6 +126,8 @@ export default function RootLayout({
           client provider directly; the boundary starts exactly there.
         */}
         <AuthProvider>{children}</AuthProvider>
+        {/* « La page se prépare… » tant que React n'a pas pris la main — HANDOFF §11.28. */}
+        <HydrationNotice />
       </body>
     </html>
     </ViewTransitions>

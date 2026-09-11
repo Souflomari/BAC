@@ -1431,3 +1431,31 @@ input:-webkit-autofill:active {
 .curseur:focus-visible::-moz-range-thumb {
   box-shadow: 0 0 0 4px var(--focus-halo);
 }
+
+/* ── « La page se prépare… » (HydrationNotice, HANDOFF §11.28) ────────────
+   Rendue par le serveur, invisible 1,5 s : sur un réseau normal, React a pris
+   la main avant et personne ne la voit ; sur 3G lente, elle dit ce qui se
+   passe pendant que les commandes sont encore désactivées. Le filet
+   `prefers-reduced-motion` réduit la durée du fondu, pas le délai. */
+/* Une commande désactivée AVANT l'hydratation (`aria-busy`, HANDOFF §11.28)
+   est désactivée tout de suite — un appui n'a jamais lieu dans le vide — mais
+   garde son apparence normale pendant 1 s : sur un réseau normal React a pris
+   la main avant, et rien ne clignote au chargement ; sur 3G lente, elle
+   s'estompe et le dit (curseur d'attente). */
+button[aria-busy="true"]:disabled {
+  opacity: 1;
+  cursor: progress;
+  animation: commande-en-attente 200ms 1000ms forwards;
+}
+@keyframes commande-en-attente {
+  to { opacity: var(--state-disabled); }
+}
+
+[data-hydration-notice] {
+  opacity: 0;
+  animation: hydration-notice-in 200ms 1500ms forwards;
+}
+@keyframes hydration-notice-in {
+  to { opacity: 1; }
+}
+

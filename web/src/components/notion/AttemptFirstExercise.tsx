@@ -37,6 +37,7 @@ import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
 import { Derivation } from "./Derivation";
 import { useAttemptRecorder } from "./AttemptEvents";
+import { useHydrated } from "@/lib/useHydrated";
 import { frenchTypography } from "@/lib/frenchTypography";
 
 /** Block-level markdown + KaTeX renderer (stems and reasoning are prose).
@@ -82,6 +83,7 @@ function Question({
 }) {
   const [revealed, setRevealed] = useState(false);
   const { recordExerciseReveal } = useAttemptRecorder();
+  const hydrated = useHydrated();
 
   function handleReveal() {
     if (revealed) return;
@@ -118,6 +120,8 @@ function Question({
                 <button
                   type="button"
                   onClick={handleReveal}
+                  disabled={!hydrated}
+                  aria-busy={!hydrated || undefined}
                   className={cn(
                     // `max-w-full text-left` : à 200 % de texte (SC 1.4.4) ce bouton prenait
                     // sa largeur max-content (255 px) dans une colonne de 208 et poussait la

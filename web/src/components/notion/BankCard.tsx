@@ -30,6 +30,7 @@ import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
 import type { NotionBankEntry } from "@/lib/content";
 import { AttemptFirstQuestions, MdBlock } from "./AttemptFirstExercise";
+import { useHydrated } from "@/lib/useHydrated";
 import { useExerciseRevealIds, revealKey } from "@/lib/student-state";
 import { ExplicationPlayer } from "./ExplicationPlayer";
 import type { ExplicationResolue, ExplicationInteractive } from "@/lib/explications";
@@ -74,6 +75,7 @@ export function BankCard({
   interactive?: ExplicationInteractive | null;
 }) {
   const [open, setOpen] = useState(false);
+  const hydrated = useHydrated();
   const revealIds = useExerciseRevealIds();
   // « fait » iff the journal holds a reveal for ANY of this entry's questions.
   // `null` (off / loading / logged-out) → false → nothing fait-related renders.
@@ -108,6 +110,8 @@ export function BankCard({
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
+        disabled={!hydrated}
+        aria-busy={!hydrated || undefined}
         aria-expanded={open}
         aria-controls={bodyId}
         className={cn(

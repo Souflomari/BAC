@@ -43,6 +43,7 @@ import remarkMath from "remark-math";
 import remarkFrenchTypography from "@/lib/remarkFrenchTypography";
 import rehypeKatexHtml from "@/lib/rehypeKatexHtml";
 import { KatexSpan } from "./KatexSpan";
+import { useHydrated } from "@/lib/useHydrated";
 import type { NotionChoice } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import { ResultIcon } from "@/components/ui/Icon";
@@ -137,6 +138,9 @@ export function ChoiceButton({
     state = choice.correct ? "selected-correct" : "selected-incorrect";
   }
 
+  // Avant l'hydratation, le choix est rendu mais son onClick n'existe pas
+  // encore : désactivé + `aria-busy` + curseur d'attente (HANDOFF §11.28).
+  const hydrated = useHydrated();
   const isRevealedCorrect = answered && choice.correct && !isSelected;
   // La justification du bon choix, montrée à qui s'est trompé.
   // Porte le TEXTE (et non un booléen) pour que TypeScript le rétrécisse.
@@ -147,7 +151,8 @@ export function ChoiceButton({
     <li>
       <button
         type="button"
-        disabled={answered}
+        disabled={answered || !hydrated}
+        aria-busy={!hydrated || undefined}
         onClick={() => !answered && onSelect(choice.id)}
         aria-pressed={isSelected}
         aria-describedby={
@@ -183,7 +188,7 @@ export function ChoiceButton({
             "hover:border-soft",
             "active:shadow-elevation-0",
             "active:scale-[0.99]",
-            "cursor-pointer",
+            hydrated ? "cursor-pointer" : "cursor-progress",
           ],
           // Selected & correct
           state === "selected-correct" && [

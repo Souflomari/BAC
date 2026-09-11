@@ -38,6 +38,7 @@ import { cn } from "@/lib/utils";
 import { extractChapterHeadings, type ChapterHeadingInfo } from "@/lib/chapters";
 import { Icon } from "@/components/ui/Icon";
 import { useChapter, ChapterPosition } from "./ChapterShell";
+import { useHydrated } from "@/lib/useHydrated";
 
 interface RailEntry {
   title: string;
@@ -60,6 +61,7 @@ const FALLBACK_ENTRY: ChapterHeadingInfo = { title: "Leçon", shortTitle: "Leço
 export function MarginRail({ lessonMd, hasItems = false, bankCount }: MarginRailProps) {
   const headings = useMemo(() => extractChapterHeadings(lessonMd), [lessonMd]);
   const { current, goTo } = useChapter();
+  const hydrated = useHydrated();
 
   // Nothing to navigate: no headings and no exercises chapter (mirrors the
   // pre-pagination "0 rungs → hide the rail" behavior).
@@ -132,6 +134,8 @@ export function MarginRail({ lessonMd, hasItems = false, bankCount }: MarginRail
               <button
                 type="button"
                 onClick={() => goTo(i)}
+                disabled={!hydrated}
+                aria-busy={!hydrated || undefined}
                 title={entry.title}
                 // Active entry exposed to AT, not only by color (July-2026
                 // audit F3 side-finding: color-swap was the sole signal).
@@ -288,6 +292,7 @@ export function ChapterMenuCompact({
 }: MarginRailProps & { className?: string }) {
   const headings = useMemo(() => extractChapterHeadings(lessonMd), [lessonMd]);
   const { current, total, goTo } = useChapter();
+  const hydrated = useHydrated();
   const detailsRef = useRef<HTMLDetailsElement>(null);
 
   if (headings.length === 0 && !hasItems) return null;
@@ -329,6 +334,8 @@ export function ChapterMenuCompact({
           <li key={i}>
             <button
               type="button"
+              disabled={!hydrated}
+              aria-busy={!hydrated || undefined}
               aria-current={current === i ? "step" : undefined}
               onClick={() => {
                 goTo(i);

@@ -37,6 +37,7 @@
  */
 
 import { useEffect, useRef, useState } from "react";
+import { useHydrated } from "@/lib/useHydrated";
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
 import { TransportButton } from "./TransportButton";
@@ -67,6 +68,7 @@ export function ExplicationPlayer({
   title: string;
 }) {
   const [revealed, setRevealed] = useState(false);
+  const hydrated = useHydrated();
   const [step, setStep] = useState(1);
   const [full, setFull] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
@@ -116,6 +118,8 @@ export function ExplicationPlayer({
         <button
           type="button"
           onClick={() => setRevealed(true)}
+          disabled={!hydrated}
+          aria-busy={!hydrated || undefined}
           className={cn(
             "inline-flex items-center gap-1.5 px-3 py-2 max-w-full",
             "min-h-touch rounded-md",
