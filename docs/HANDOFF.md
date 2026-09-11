@@ -4782,7 +4782,12 @@ existant. Balayage des 62 dossiers : **3 notions concernées** —
   DERIVFCT-23/29 du contenu R5 (Rolle sur $f'$, point d'inflexion). Même forme que
   limites-continuite : le re-tag demande la décision « que signifie rung » (relabel
   du sommet en R6 vs re-tag des items vers R4/R5) — owner/pedagogy. Setup math des
-  items R6 recalculé, correct ($3(x-1)(x-3)=3x^2-12x+9$, etc.) ;
+  items R6 recalculé, correct ($3(x-1)(x-3)=3x^2-12x+9$, etc.). **Sommet r-bac
+  (extrait 2019) recalculé en direct : $f'=4(e^{-x}-1)(1-x)$, $f'(0)=f'(1)=0$,
+  $f''=4[1+(x-2)e^{-x}]$, $f'''=4e^{-x}(3-x)>0$ sur $[0,1]$ — Rolle sur $f'$ et TAF
+  sur $f''$ tous CORRECTS.** Mais Rolle et TAF sont utilisés au sommet sans être
+  construits dans la rampe (l'intro l'admet) — lacune de rampe + savoir-faire SM
+  (`derivabilite_rolle_taf`) à confirmer lors d'une passe critiques ultérieure ;
 - `maths/limites-continuite` : items R7 (titres R0–R6) — déjà consigné dans sa
   revue (le re-tag demande un choix pédagogique : fidelity propose R3/R5/R4,
   pedagogy R1/R5/R4 — consensus sur R5 et R4, désaccord sur le troisième) ;
