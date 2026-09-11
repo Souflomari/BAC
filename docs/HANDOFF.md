@@ -3055,6 +3055,7 @@ run 451, sur la même pile d'instruments, était vert en 28 min 35 s.
 | dom-truth prose-measure, dernier chapitre ouvert (portée étendue) | 3 pages × 2 états | 3 libellés de carte à 743 px (93ch) → `max-w-reading`, §11.25 |
 | `js-ventilation` (nouveau) | 4 pages types | 143 ko de pipeline markdown/KaTeX sur ~350 ko de JS par leçon (épreuve 126/285), leçon sans formule comprise — levier owner, §11.26 |
 | `trace-chargement` (nouveau) | 3 leçons, processeur ×6 | le JavaScript fait 50–63 % du fil principal au chargement, l'hydratation React en tête ; compilation 0,3–0,5 s seulement, §11.26 |
+| `epreuve-3g` (nouveau) | 3 épreuves, 3G lente + ×4 | bouton visible à 4–7 s, mort jusqu'à ~17 s (20 appuis) → désactivé et honnête, pipeline différé, §11.27 |
 
 **Ce qui est connu et reste au propriétaire** — re-mesuré à l'identique, pas
 redécouvert : `horsligne-sweep` (une leçon déjà visitée, cliquée hors ligne,
@@ -3263,7 +3264,9 @@ un crochet qui re-rendait tous les items → 0,4 s, 2 leçons. §11.23 :
 §11.25 : trois libellés de 93 caractères hors de portée de la porte
 prose-measure → corrigés, portée doublée. §11.26 : 143 ko de pipeline
 markdown/KaTeX dans le JavaScript de chaque page — le levier « pré-rendre au
-build », pour le propriétaire.
+build », pour le propriétaire. §11.27 : sur 3G lente, le bouton
+« Commencer l'épreuve » ignorait le doigt dix secondes → désactivé et honnête
+tant que la page se charge, pipeline markdown chargé après l'hydratation.
 
 ### 11.20 Le téléphone gelait au « Commencer » et au « Terminer » d'une épreuve
 
@@ -3935,3 +3938,58 @@ clients (non isolée) ; et le gros du silence reste ce que le §8.7 nomme —
 l'hydratation de quatorze chapitres dont un seul est lu. (La trace ralentit
 ce qu'elle mesure : 10,6 s de mur ici contre 7,3 s sans trace au §11.21 ;
 les proportions valent mieux que les valeurs.)
+
+### 11.27 Sur 3G lente, le bouton « Commencer l'épreuve » ignorait le doigt pendant dix secondes
+
+*(Mesuré et corrigé le 6 septembre ; la session a été interrompue avant le
+commit, repris et re-mesuré le 11 sur le même build de HEAD.)*
+
+**LE FAIT.** `web/scripts/epreuve-3g.mjs` (nouveau) : réseau bridé à 400 kb/s
+et 400 ms de latence, processeur ×4, trois épreuves. Le bouton « Commencer
+l'épreuve » est VISIBLE à 4,1 s (`sexp-2021-normale`), 4,5 s
+(`sm-2025-normale`) et 7,5 s (`spc-2024-rattrapage`) — et **ne répond à rien
+pendant dix à treize secondes** : le premier énoncé arrive à 16,9, 17,3 et
+17,5 s, après 20, 20 et 15 appuis. 677 à 710 ko transférés. Le §8.7 avait
+nommé cette forme de lenteur sur les leçons — « une page qui a l'air prête et
+qui ignore le doigt » — ; la voici sur la page du bac lui-même, et sur le
+premier geste.
+
+**LA CAUSE.** Le bouton est rendu par le serveur ; son `onClick` attend
+l'hydratation ; l'hydratation attend tout le JavaScript de la route — 285 ko
+gzip, dont les 126 ko du pipeline markdown/KaTeX (§11.26) que la page
+n'utilise qu'APRÈS l'appui, pour rendre les énoncés. À 400 kb/s, ces 126 ko
+sont trois secondes de plus avant qu'un bouton déjà visible ne fasse quelque
+chose.
+
+**CE QUI A ÉTÉ FAIT.** Deux choses dans `EpreuveShell`, sans toucher aux
+marqueurs que dix instruments attendent.
+- Le bouton est **désactivé et le dit** tant que le composant n'est pas
+  monté (`pret`, faux au rendu serveur et au premier rendu client, vrai
+  après le montage) : « L'épreuve se charge… » sous le bouton, `aria-busy`.
+  Un bouton désactivé qui le dit n'est pas un bouton mort.
+- Le pipeline markdown/KaTeX (`MdBlock`) n'est plus importé statiquement :
+  il se charge APRÈS l'hydratation (le temps de lire les conditions), et
+  `commencer` l'exige avant de lancer la révélation — « Le sujet se
+  prépare… » si l'élève appuie avant, un message et le bouton qui revient si
+  le réseau tombe entre la page et le module. Les marqueurs
+  `data-sujet-complet` / `data-corrige-complet` restent vrais : la
+  révélation ne commence qu'avec le module présent.
+
+**LA MESURE, AVANT → APRÈS.** Même protocole, mêmes trois épreuves, même build : le bouton est visible à
+3,9–4,5 s et **désactivé, avec « L'épreuve se charge… »**, jusqu'à
+11,4–12,0 s (500 ko reçus), où il devient actif — l'hydratation arrive
+5,5 s plus tôt, délestée des 126 ko du pipeline. Le premier énoncé, pour un
+élève qui appuie à la première seconde possible, ne bouge pas : 16,8–17,5 s
+(le pipeline, chargé après l'hydratation, arrive vers 16,5 s à 400 kb/s ;
+« Le sujet se prépare… » entre-temps). Pour un élève qui lit les conditions
+cinq secondes, il est immédiat. Ce qui a changé n'est pas la vitesse — les
+octets sont les mêmes, 677 à 711 ko — mais l'honnêteté : sept secondes d'un
+bouton qui dit qu'il charge, au lieu de treize secondes d'un bouton mort, et
+un bouton vrai 5,5 s plus tôt. Vérifié sur le déployé (`curl` de la preview,
+16:30) : le HTML servi porte `disabled` et `aria-busy` sur le bouton. Le
+levier suivant est celui du §11.26 — pré-rendre les énoncés pour ne plus
+expédier le pipeline —, pas un réglage de plus ici.
+
+**CE QUE ÇA NE CHANGE PAS, ET CE QUE ÇA VÉRIFIE.** Le premier énoncé, une
+fois le bouton actif et le module là, coûte ce qu'il coûtait (§11.20) : à ×6
+sur trois sujets, premier énoncé 0,8 s (`sm-2025-normale`), 2,4 s (`spc-2024-rattrapage`, 409 formules), 0,8 s (`sexp-2021-normale`) après l'appui, sujet complet 3,4 / 7,0 / 2,8 s, premier corrigé 0,6–0,8 s — dans le bruit d'une mesure unique par rapport au §11.20 pour deux sujets (le troisième, le plus dense, une seconde de plus sur cette seule mesure : à re-mesurer sur les 39 si l'on y revient). La ventilation (`js-ventilation`) montre le mécanisme : les trois morceaux markdown/KaTeX de la page d'épreuve arrivent désormais par le script (`script/Low`, l'import différé) et non plus par le parseur (`parser/Low`, morceaux de route) — mêmes octets, autre moment. dom-truth sur ce build : 265 vérifications, un seul rouge, le garde-fou de fraîcheur du build (commité pendant la mesure) ; le bloc d'épreuve vert — « 10 exercices sans correction pendant l'épreuve ; 10/10 corrigés + auto-notation après », avec le « Terminer » à 100 ms qui avait piégé la première révélation progressive. La CI du commit précédent (run 484) tourne au moment d'écrire ; le run 483 — premier passage complet après la nuit des §11.20–11.26 — était vert en 39 min 24 s.
