@@ -37,7 +37,17 @@ import { Link } from "@/components/ui/Lien";
 import { cn } from "@/lib/utils";
 import { frenchTypography } from "@/lib/frenchTypography";
 import { notionHref } from "@/lib/subjects";
-import { MdBlock } from "@/components/notion/AttemptFirstExercise";
+// Le pipeline markdown/KaTeX (MdBlock, ~126 ko gzip avec KaTeX) n'est PAS
+// importé statiquement (2026-09-06, HANDOFF §11.27). Sur 3G lente (400 kb/s)
+// et processeur ×4, le bouton « Commencer » était visible à 4–7 s et ignorait
+// le doigt jusqu'à ~17 s : son onClick attendait l'hydratation, qui attendait
+// tout le JavaScript de la route — dont ce pipeline, inutile avant l'appui.
+// Il se charge APRÈS l'hydratation (le temps que l'élève lise les conditions)
+// et `commencer` l'exige avant de lancer la révélation : les marqueurs
+// `data-sujet-complet` / `data-corrige-complet` restent vrais.
+type ModuleMd = typeof import("@/components/notion/AttemptFirstExercise");
+type MdComponent = ModuleMd["MdBlock"];
+const chargerMd = () => import("@/components/notion/AttemptFirstExercise");
 
 export interface ExamQuestionData {
   id: string;
@@ -111,12 +121,15 @@ const ExerciceArticle = memo(function ExerciceArticle({
   verdicts,
   setVerdicts,
   bareme,
+  Md,
 }: {
   exo: ExoData;
   i: number;
   nbSujet: number;
   nbCorrige: number;
   enCorrection: boolean;
+  /** Le rendu markdown/KaTeX, chargé à la demande (voir l'en-tête du module). */
+  Md: MdComponent;
   verdicts: Record<string, Verdict>;
   setVerdicts: React.Dispatch<React.SetStateAction<Record<string, Verdict>>>;
   bareme: Map<string, number>;
@@ -147,7 +160,7 @@ const ExerciceArticle = memo(function ExerciceArticle({
           )}
         </header>
         <div className="space-y-5 px-5 py-5">
-          {exo.intro && nbSujet > 0 && <MdBlock>{exo.intro}</MdBlock>}
+          {exo.intro && nbSujet > 0 && <Md>{exo.intro}</Md>}
           {exo.questions.map((q, k) => {
             if (k >= nbSujet) return null;
             const cle = `${i}:${q.id}`;
@@ -160,7 +173,7 @@ const ExerciceArticle = memo(function ExerciceArticle({
                     {q.part}
                   </p>
                 )}
-                <MdBlock>{q.stem}</MdBlock>
+                <Md>{q.stem}</Md>
 
                 {/* ATTEMPT-FIRST ABSOLU : le raisonnement n’entre dans
                     le DOM qu’en phase correction — dom-truth l’asserte. */}
@@ -174,7 +187,7 @@ const ExerciceArticle = memo(function ExerciceArticle({
                     <p className="mb-2 text-caption font-medium uppercase tracking-eyebrow text-secondary">
                       Raisonnement expert
                     </p>
-                    <MdBlock>{q.reasoning}</MdBlock>
+                    <Md>{q.reasoning}</Md>
                     <div
                       role="radiogroup"
                       aria-label={frenchTypography(`Auto-évaluation de la question (${formatNote(qPts)} pt)`)}
@@ -240,6 +253,21 @@ const ExerciceArticle = memo(function ExerciceArticle({
 
 export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
   const [phase, setPhase] = useState<Phase>("seuil");
+  // `pret` : faux au rendu serveur et au premier rendu client, vrai après le
+  // montage. Tant qu'il est faux, le bouton est désactivé et le dit : un
+  // bouton visible qui ignore le doigt est la pire forme de lenteur (§8.7).
+  const [pret, setPret] = useState(false);
+  const [chargement, setChargement] = useState(false);
+  const [erreurChargement, setErreurChargement] = useState(false);
+  const [Md, setMd] = useState<MdComponent | null>(null);
+  const promesseMd = useRef<Promise<ModuleMd> | null>(null);
+  useEffect(() => {
+    setPret(true);
+    // Préchargement du pipeline dès l'hydratation — le temps de lire les
+    // conditions. Si l'élève appuie avant, `commencer` attend la même promesse.
+    promesseMd.current ??= chargerMd();
+    promesseMd.current.then((m) => setMd(() => m.MdBlock)).catch(() => {});
+  }, []);
   const [secondes, setSecondes] = useState(0);
   const [enPause, setEnPause] = useState(false);
   const [verdicts, setVerdicts] = useState<Record<string, Verdict>>({});
@@ -327,11 +355,27 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
     return () => clearInterval(t);
   }, [phase, enPause]);
 
-  const commencer = useCallback(() => {
+  const commencer = useCallback(async () => {
+    if (!Md) {
+      setChargement(true);
+      setErreurChargement(false);
+      try {
+        const m = await (promesseMd.current ??= chargerMd());
+        setMd(() => m.MdBlock);
+      } catch {
+        // Réseau tombé entre la page et le module : on le dit, le bouton
+        // revient, l'élève réessaie — plutôt qu'une page morte sans un mot.
+        promesseMd.current = null;
+        setChargement(false);
+        setErreurChargement(true);
+        return;
+      }
+      setChargement(false);
+    }
     setReveleSujet(0);
     setPhase("encours");
     window.scrollTo({ top: 0 });
-  }, []);
+  }, [Md]);
 
   const terminer = useCallback(() => {
     chronoFinal.current = secondes;
@@ -410,12 +454,33 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
             </li>
           )}
         </ul>
-        <button type="button" onClick={commencer} data-primary-action className="btn-primary mt-8">
+        <button
+          type="button"
+          onClick={commencer}
+          disabled={!pret || chargement}
+          aria-busy={!pret || chargement || undefined}
+          data-primary-action
+          className="btn-primary mt-8"
+        >
           Commencer l’épreuve
         </button>
+        {(!pret || chargement) && (
+          <p className="mt-2 text-caption text-tertiary" role="status">
+            {pret ? "Le sujet se prépare…" : "L’épreuve se charge…"}
+          </p>
+        )}
+        {erreurChargement && (
+          <p className="mt-2 text-caption text-primary" role="alert">
+            Le sujet n’a pas pu se charger — vérifie la connexion et réessaie.
+          </p>
+        )}
       </section>
     );
   }
+
+  // Impossible une fois `commencer` passé (il attend le module) ; TypeScript
+  // ne le sait pas.
+  if (!Md) return null;
 
   const enCorrection = phase === "correction";
   const sujetComplet = reveleSujet >= nbUnites;
@@ -505,6 +570,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
             verdicts={verdicts}
             setVerdicts={setVerdicts}
             bareme={bareme}
+            Md={Md}
           />
         ))}
       </ol>
