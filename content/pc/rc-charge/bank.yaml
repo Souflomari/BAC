@@ -113,9 +113,9 @@
 # raisonnement de la question concernée, PAS corrigées ni simplifiées ici) :
 #   - bk-2018-n-x3b, q1 et q3 : l'association de deux condensateurs en
 #     parallèle (C_eq = C1 + C2, additivité des charges à tension commune)
-#     est une règle du cours sur les condensateurs que les rungs de cette
-#     leçon ne couvrent jamais — R0–R4 étudient un condensateur UNIQUE
-#     soumis à un échelon de tension, jamais une association série/parallèle.
+#     est une règle du cours sur les condensateurs, désormais RAPPELÉE dans la
+#     leçon (section « Deux condensateurs en parallèle », R3) : additivité des
+#     charges à tension commune.
 #     Pontée au point d'usage dans le raisonnement des deux questions.
 #   - bk-2018-n-x3b, contexte général : le montage utilise un générateur
 #     IDÉAL DE COURANT I0 (et non le générateur idéal de tension E de tous
@@ -470,7 +470,7 @@ entries:
         stem: |-
           **(0,5 pt)** Quel est l'intérêt de monter des condensateurs en parallèle ?
         reasoning: |-
-          Question de cours sur les condensateurs, hors des chapitres de cette leçon : chapitres 1 à 5 étudient un condensateur **unique** soumis à un échelon de tension, jamais une association de plusieurs condensateurs. En montant deux condensateurs en parallèle sous la même tension $u_{AB}$, les charges qu'ils portent s'additionnent — la capacité équivalente $C_{eq} = C_1 + C_2$ est donc strictement supérieure à celle de chaque condensateur pris isolément.
+          Question de cours sur les condensateurs, rappelée dans la leçon (section « Deux condensateurs en parallèle ») : en montant deux condensateurs en parallèle sous la même tension $u_{AB}$, les charges qu'ils portent s'additionnent — la capacité équivalente $C_{eq} = C_1 + C_2$ est donc strictement supérieure à celle de chaque condensateur pris isolément.
 
           L'intérêt de l'association en parallèle est d'obtenir, à partir de composants disponibles, une capacité équivalente plus grande que celle de chacun des deux condensateurs pris séparément — donc de stocker davantage de charge sous une même tension.
       - id: q2
@@ -489,10 +489,10 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire la valeur de la capacité $C_2$.
         reasoning: |-
-          Les deux condensateurs $(c_1)$ et $(c_2)$ sont montés en parallèle (figure 1) : pour cette association, les charges s'additionnent à tension commune, $q = q_1 + q_2 = C_1u_{AB} + C_2u_{AB}$, donc les capacités s'additionnent, $C_{eq} = C_1 + C_2$ — un résultat du cours sur les condensateurs, hors des chapitres de cette leçon (qui ne traitent qu'un condensateur unique). On isole $C_2$, avec $C_{eq}$ tout juste lu (question 2) et $C_1$ donné par l'énoncé.
+          Les deux condensateurs $(c_1)$ et $(c_2)$ sont montés en parallèle (figure 1) : pour cette association, les charges s'additionnent à tension commune, $q = q_1 + q_2 = C_1u_{AB} + C_2u_{AB}$, donc les capacités s'additionnent, $C_{eq} = C_1 + C_2$ — un résultat du cours sur les condensateurs, rappelé dans la leçon (section « Deux condensateurs en parallèle »). On isole $C_2$, avec $C_{eq}$ tout juste lu (question 2) et $C_1$ donné par l'énoncé.
         steps:
           - math: 'C_{eq} = C_1 + C_2'
-            note: "Association en parallèle : les capacités s'additionnent (règle du cours, hors chapitres de cette leçon)."
+            note: "Association en parallèle : les capacités s'additionnent (rappelé dans la leçon, section « Deux condensateurs en parallèle »)."
           - math: 'C_2 = C_{eq} - C_1 = 10 - 7{,}5'
             note: "On isole C2, avec Ceq lu a la question 2 et C1 = 7,5 microF donne par l'énoncé."
           - math: '\boxed{C_2 = 2{,}5\ \mu\text{F}}'
@@ -1314,7 +1314,7 @@ entries:
           - **(0,25 pt)** la tension $u_C$ aux bornes du condensateur ;
           - **(0,25 pt)** la tension $u_R$ aux bornes du conducteur ohmique.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Ce n'est pas un calcul : c'est la convention qui gouverne TOUT ce qui suit dans l'exercice (l'équation différentielle de la question 1-3 en dépend directement). Le chapitre 2 de la leçon la pose noir sur blanc : en convention récepteur, la flèche de tension d'un dipôle est orientée dans le MÊME sens que la flèche du courant qui le traverse — le courant « entre » par la borne où la tension est comptée positivement.
+          Ce qu'on cherche et pourquoi ce geste. Ce n'est pas un calcul : c'est la convention qui gouverne TOUT ce qui suit dans l'exercice (l'équation différentielle de la question 1-3 en dépend directement). La convention récepteur, employée dans toute la leçon, oriente la flèche de tension d'un dipôle dans le MÊME sens que la flèche du courant qui le traverse — le courant « entre » par la borne où la tension est comptée positivement.
 
           $C_0$ et $R$ sont deux récepteurs traversés par le même courant $i$, en série sur la même maille. La règle s'applique identiquement aux deux : on flèche $u_C$ et $u_R$ chacune dans le même sens que $i$ le long de la boucle — la flèche $i$ de la figure 1 pointant vers la gauche sur la branche du bas, le courant remonte donc à gauche vers $K$, traverse $C_0$ puis $R$ de gauche à droite sur la branche du haut, et $u_C$ comme $u_R$ se flèchent dans ce même sens, chacune au-dessus de son propre dipôle.
 
@@ -1512,7 +1512,7 @@ entries:
         stem: |-
           **1-1-** (0,5 pt) Recopier, sur la copie de rédaction, le montage de la figure 1, et représenter dessus la tension $u_C(t)$ aux bornes du condensateur, et $u_R(t)$ aux bornes de la sonde thermique, en convension récepteur. *(« convension » tel qu'imprimé — défaut du sujet officiel, sans incidence.)*
         reasoning: |-
-          Exactement le chapitre 2 : dans une boucle série où $C$ et la thermistance $R$ sont traversés par le MÊME courant, la convention récepteur flèche chaque tension dans le même sens que ce courant — pas en alternant d'un dipôle à l'autre, pas en devinant un signe. On flèche donc $u_C$ au-dessus du condensateur et $u_R$ au-dessus de la thermistance, toutes deux orientées dans le sens de circulation du courant imposé par le générateur $E$ à la fermeture de $K$.
+          En convention récepteur : dans une boucle série où $C$ et la thermistance $R$ sont traversés par le MÊME courant, on flèche chaque tension dans le même sens que ce courant — pas en alternant d'un dipôle à l'autre, pas en devinant un signe. On flèche donc $u_C$ au-dessus du condensateur et $u_R$ au-dessus de la thermistance, toutes deux orientées dans le sens de circulation du courant imposé par le générateur $E$ à la fermeture de $K$.
 
           **Le piège nommé de cette question.** Flécher $u_C$ et $u_R$ en sens opposés, par le réflexe de vouloir « faire le tour » de la maille en alternant les signes. $C$ et la thermistance sont en série, traversés par le même courant : les deux flèches suivent la MÊME direction, celle de ce courant.
       - id: q2
