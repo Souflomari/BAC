@@ -3310,6 +3310,8 @@ sous-titres d'exercice sur 24 dans les épreuves → ils se plient.
 radios (motif ARIA absent) → roving tabindex + flèches, 48 ; les 99
 paragraphes focalisables (Chrome 130 + `overflow-x` de prose) mesurés,
 levier `overflow-x: clip` différé.
+§11.40 : la barre d'auto-évaluation changeait en silence pour un lecteur
+d'écran → `aria-live="polite"` `aria-atomic` ; le chrono reste muet.
 
 ### 11.20 Le téléphone gelait au « Commencer » et au « Terminer » d'une épreuve
 
@@ -4650,3 +4652,28 @@ créer de conteneur défilant), à valider contre la porte zoom qui garde le
 débord à 200 % — un arbitrage à poser posément, pas à trancher à la hâte un
 soir où la CI est déjà à terre (§11.37). Le gain sûr — les radios — est
 livré ; le reste est mesuré et écrit.
+
+### 11.40 En s'auto-évaluant, un élève au lecteur d'écran n'entendait ni le nombre de questions notées ni la note qui monte
+
+**MESURÉ** (`score-annonce`). En correction, la barre collante montre
+« Auto-évaluation — 3/48 questions notées · 8,5/20 (indicative) », et elle
+se met à jour à chaque question notée. Mais elle n'était pas une région
+live : un élève au lecteur d'écran, qui note question par question au clavier
+(§11.39), ne l'entendait JAMAIS changer — il gradait à l'aveugle, sans savoir
+où en était son total. Le chrono voisin, lui, est correctement `aria-live=
+"off"` (un compteur qui parle chaque seconde serait invivable).
+
+**CE QUI A CHANGÉ.** La barre en correction devient `aria-live="polite"`
+`aria-atomic="true"` : après chaque note, le lecteur relit la phrase entière
+(« Auto-évaluation — 4/48 questions notées · 8,75/20 indicative »), et
+`polite` attend une pause, donc noter vite ne fait pas bégayer. Rien de
+visible ne change ; le chrono reste muet. Mesuré après : la région relit à
+chaque clic de radio.
+
+**PIÈGE PAYÉ.** La source de `EpreuveShell` emploie l'espace fine insécable
+U+202F autour du `?` de `{enCorrection ?}` (une passe de typographie
+française a couru sur le code lui-même) ; un premier essai d'ancrage sur
+`{enCorrection ?` avec une espace ASCII ne matchait pas, l'édition n'a pas
+pris, et un `{/* commentaire JSX */}` glissé dans une branche de ternaire a
+cassé le build (une branche de ternaire n'accepte qu'UNE expression). Refait
+en n'ajoutant que les deux attributs, la note en commentaire ailleurs.

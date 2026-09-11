@@ -564,7 +564,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
         )}
       >
         {enCorrection ? (
-          <p className="text-body-sm text-secondary">
+          <p className="text-body-sm text-secondary" aria-live="polite" aria-atomic="true">
             Auto-évaluation —{" "}
             <span className="mono-inline tabular-nums">
               {note.repondu}/{note.totalQ}
