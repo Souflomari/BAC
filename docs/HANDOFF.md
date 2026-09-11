@@ -3056,6 +3056,7 @@ run 451, sur la même pile d'instruments, était vert en 28 min 35 s.
 | `js-ventilation` (nouveau) | 4 pages types | 143 ko de pipeline markdown/KaTeX sur ~350 ko de JS par leçon (épreuve 126/285), leçon sans formule comprise — levier owner, §11.26 |
 | `trace-chargement` (nouveau) | 3 leçons, processeur ×6 | le JavaScript fait 50–63 % du fil principal au chargement, l'hydratation React en tête ; compilation 0,3–0,5 s seulement, §11.26 |
 | `epreuve-3g` (nouveau) | 3 épreuves, 3G lente + ×4 | bouton visible à 4–7 s, mort jusqu'à ~17 s (20 appuis) → désactivé et honnête, pipeline différé, §11.27 |
+| `lecon-3g` (nouveau) | 3 leçons, 3G lente + ×4 | « Chapitre suivant » visible à 4–8 s, mort jusqu'à 17–28 s → désactivé et honnête jusqu'à l'hydratation, §11.28 |
 
 **Ce qui est connu et reste au propriétaire** — re-mesuré à l'identique, pas
 redécouvert : `horsligne-sweep` (une leçon déjà visitée, cliquée hors ligne,
@@ -3266,7 +3267,9 @@ prose-measure → corrigés, portée doublée. §11.26 : 143 ko de pipeline
 markdown/KaTeX dans le JavaScript de chaque page — le levier « pré-rendre au
 build », pour le propriétaire. §11.27 : sur 3G lente, le bouton
 « Commencer l'épreuve » ignorait le doigt dix secondes → désactivé et honnête
-tant que la page se charge, pipeline markdown chargé après l'hydratation.
+tant que la page se charge, pipeline markdown chargé après l'hydratation. §11.28 : les leçons aussi — « Chapitre
+suivant » mort jusqu'à 28 s → `useHydrated`, commandes désactivées et
+`aria-busy` avant l'hydratation, « La page se prépare… ».
 
 ### 11.20 Le téléphone gelait au « Commencer » et au « Terminer » d'une épreuve
 
@@ -3992,4 +3995,61 @@ expédier le pipeline —, pas un réglage de plus ici.
 
 **CE QUE ÇA NE CHANGE PAS, ET CE QUE ÇA VÉRIFIE.** Le premier énoncé, une
 fois le bouton actif et le module là, coûte ce qu'il coûtait (§11.20) : à ×6
-sur trois sujets, premier énoncé 0,8 s (`sm-2025-normale`), 2,4 s (`spc-2024-rattrapage`, 409 formules), 0,8 s (`sexp-2021-normale`) après l'appui, sujet complet 3,4 / 7,0 / 2,8 s, premier corrigé 0,6–0,8 s — dans le bruit d'une mesure unique par rapport au §11.20 pour deux sujets (le troisième, le plus dense, une seconde de plus sur cette seule mesure : à re-mesurer sur les 39 si l'on y revient). La ventilation (`js-ventilation`) montre le mécanisme : les trois morceaux markdown/KaTeX de la page d'épreuve arrivent désormais par le script (`script/Low`, l'import différé) et non plus par le parseur (`parser/Low`, morceaux de route) — mêmes octets, autre moment. dom-truth sur ce build : 265 vérifications, un seul rouge, le garde-fou de fraîcheur du build (commité pendant la mesure) ; le bloc d'épreuve vert — « 10 exercices sans correction pendant l'épreuve ; 10/10 corrigés + auto-notation après », avec le « Terminer » à 100 ms qui avait piégé la première révélation progressive. La CI du commit précédent (run 484) tourne au moment d'écrire ; le run 483 — premier passage complet après la nuit des §11.20–11.26 — était vert en 39 min 24 s.
+sur trois sujets, premier énoncé 0,8 s (`sm-2025-normale`), 2,4 s (`spc-2024-rattrapage`, 409 formules), 0,8 s (`sexp-2021-normale`) après l'appui, sujet complet 3,4 / 7,0 / 2,8 s, premier corrigé 0,6–0,8 s — dans le bruit du §11.20. Le plus dense (`spc-2024-rattrapage`) avait donné 2,4 s en mesure unique ; re-mesuré trois fois de suite : 1,29 / 1,23 / 1,14 s au premier énoncé, 4,8 / 4,6 / 4,6 s au sujet complet, 18,1 / 16,7 / 16,2 s au corrigé complet — la première mesure était un démarrage à froid, l'import différé ne coûte rien à l'appui. La ventilation (`js-ventilation`) montre le mécanisme : les trois morceaux markdown/KaTeX de la page d'épreuve arrivent désormais par le script (`script/Low`, l'import différé) et non plus par le parseur (`parser/Low`, morceaux de route) — mêmes octets, autre moment. dom-truth sur ce build : 265 vérifications, un seul rouge, le garde-fou de fraîcheur du build (commité pendant la mesure) ; le bloc d'épreuve vert — « 10 exercices sans correction pendant l'épreuve ; 10/10 corrigés + auto-notation après », avec le « Terminer » à 100 ms qui avait piégé la première révélation progressive. La CI du commit précédent (run 484) tourne au moment d'écrire ; le run 483 — premier passage complet après la nuit des §11.20–11.26 — était vert en 39 min 24 s.
+
+### 11.28 Sur 3G lente, une leçon aussi ignorait le doigt — jusqu'à vingt-quatre secondes
+
+**LE FAIT.** Le pendant du §11.27 côté leçon, mesuré par
+`web/scripts/lecon-3g.mjs` (nouveau ; 400 kb/s, 400 ms, processeur ×4) sur
+trois leçons : le bouton « Chapitre suivant » est visible à 4,0 s
+(`rlc-serie`), 8,0 s (`moyens-de-defense`) et 8,1 s (`la-verite`) — et **ne
+fait rien pendant 24, 9 et 9 secondes** : il réagit à 28,4, 17,3 et 17,6 s,
+après 29, 17 et 16 appuis. 651 à 734 ko transférés ; `DOMContentLoaded` à
+13 à 21 s. Le geste le plus fréquent de la lecture, mort pendant un temps
+que personne n'avait mesuré, sur une page qui a l'air prête (§8.7 : « c'est
+cassé »).
+
+**LA CAUSE.** La même qu'au §11.27, sans le pipeline à différer cette fois :
+tout ce qui est cliquable dans une leçon — transport de chapitre, rail,
+choix de QCM et de point d'arrêt, « J'ai fait ma tentative », ouverture d'une
+carte d'exercice — est rendu par le serveur, et son `onClick` n'existe qu'à
+l'hydratation, au bout de ~350 ko de JavaScript sur un réseau qui en livre
+50 par seconde. La leçon elle-même se LIT dès le HTML (§11.26) ; ce sont ses
+commandes qui mentent.
+
+**CE QUI A ÉTÉ FAIT.** Un crochet, `useHydrated()` (`web/src/lib`,
+`useSyncExternalStore` : faux au rendu serveur et pendant l'hydratation, vrai
+dès que React a pris la main — sans écart d'hydratation), et une règle :
+**une commande qui n'existe qu'après l'hydratation se rend `disabled` +
+`aria-busy` jusque-là.** Posée dans les deux primitives partagées —
+`TransportButton` (chapitres, figures, dérivations, lecteur d'explication) et
+`ChoiceButton` (QCM, points d'arrêt ; curseur d'attente) — et dans les quatre
+boutons qui ne passent pas par elles (révélation d'exercice, porte de
+l'explication, ouverture de carte, les deux listes du rail). Et une ligne,
+`HydrationNotice`, « La page se prépare… », rendue par le serveur en bas de
+l'écran et retirée au premier rendu après l'hydratation — invisible 1,5 s
+par CSS (sur un réseau normal personne ne la voit), `aria-hidden` (les
+commandes portent déjà `aria-busy` ; une région live annoncée à chaque
+chargement serait du bruit), masquée par `<noscript>` pour qui n'a pas de
+JavaScript du tout. L'épreuve garde sa propre attente (§11.27).
+
+**LA MESURE, AVANT → APRÈS.** Même protocole, mêmes trois leçons, même build : le bouton « Chapitre
+suivant » est **désactivé, `aria-busy`, curseur d'attente** — et le HTML le
+dit — jusqu'à ce que React prenne la main : 23,6 s (`rlc-serie`), 17,3 s
+(`moyens-de-defense`), 17,9 s (`la-verite`) ; il répond alors au premier appui
+(`moyens-de-defense` : actif à 17,3 s, chapitre changé à 17,6 s ;
+`rlc-serie` : actif à 23,6 s, chapitre changé à 29,8 s — le changement de
+chapitre d'une leçon dense coûte ~1,5 s à ×4, le reste est l'aller-retour de
+la sonde sur 30 000 nœuds). Les octets sont les mêmes (651 à 735 ko) ; ce qui
+a changé est l'honnêteté : plus un appui dans le vide, un bouton qui dit
+qu'il attend, une ligne qui dit que la page se prépare — et rien de tout
+cela sur un réseau normal, où l'hydratation arrive avant la seconde de délai.
+
+**LE HTML SERVI, ET APRÈS L'HYDRATATION.** Le HTML de `rlc-serie` tel que le serveur le sert, avant tout JavaScript
+(`curl`) : **256 boutons sur 263 portent `disabled`** (les sept autres sont
+le chrome de la page — thème, menu — qui n'attend pas l'hydratation), et la
+ligne « La page se prépare… » y est. Une fois React en place (Playwright,
+réseau libre, réseau calme + 1,5 s) : **0 `aria-busy`, 11 `disabled` sur 264 boutons** — les onze légitimes (« Chapitre précédent » au chapitre 1, les transports de figure à leur première étape) — et la ligne « La page se prépare… » a disparu. Sur le déployé (preview Vercel de 865ef67, `curl`) : 256 boutons `disabled` + `aria-busy` sur 263, la ligne présente — l'artefact servi est bien celui-ci.
+
+**CE QUE ÇA VÉRIFIE.** dom-truth : 265 vérifications sur ce build, un seul rouge — le garde-fou de fraîcheur (commité pendant la mesure) ; les portes qui cliquent (cartes d'exercice, révélation, transports de figure, changement de chapitre) toutes vertes. Les instruments cliquent avec
+Playwright, qui attend qu'un bouton soit actif : aucun n'a eu à changer.
