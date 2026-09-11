@@ -4761,6 +4761,37 @@ parle à chaque `validate-content` local, sans jamais bloquer. La certification
 pixel (corpus figures, clair + sombre) reste vraie — ces assets sont valides ;
 ils ne sont simplement pas montrés.
 
+### 11.44 Un item accroché à un rung que la leçon n'a pas tombe de l'affichage ordonné — la porte rung↔titre, et les trois notions concernées
+
+**MESURÉ, puis CORRIGÉ (porte).** Les deux revues de contenu maths de la vague 1
+(limites-continuite, nombres-complexes-2) ont chacune relevé des items étiquetés
+`rung: "R7"` — avec une nuance : nombres-complexes-2 A un titre `## R7`,
+limites-continuite non. Le champ `rung` d'un item est censé nommer un titre de
+rung réel de `lesson.md` ; un item qui pointe un rung absent tombe de tout
+affichage ordonné par rung (le résidu typique d'une renumérotation de marche,
+comme les figures orphelines du §11.43).
+
+`validate-content` gardait le MOT « rung » hors de la prose visible (porte
+jargon), mais ne vérifiait jamais que la VALEUR `rung` corresponde à un titre
+existant. Balayage des 62 dossiers : **3 notions concernées** —
+
+- `maths/derivabilite-etude-fonctions` : items R6 (titres R0–R5) — **nouveau**,
+  non encore passé aux critiques ;
+- `maths/limites-continuite` : items R7 (titres R0–R6) — déjà consigné dans sa
+  revue (le re-tag demande un choix pédagogique : fidelity propose R3/R5/R4,
+  pedagogy R1/R5/R4 — consensus sur R5 et R4, désaccord sur le troisième) ;
+- `maths/probabilites-conditionnelles` : items R6 ET R7 (titres R0–R5) —
+  **nouveau**.
+
+**Porte ajoutée** (avertissement, non échec) : chaque `rung: R<n>` d'items.yaml
+et de checkpoints.yaml doit nommer un titre `## R<n>` de lesson.md.
+Avertissement parce que le BON rung de rattachement est un choix pédagogique
+(re-tag) que la porte ne peut pas faire — **à passer en échec dur une fois les
+trois notions re-taguées**. Mesuré : 0 échec, 6 avertissements sur 3 notions.
+Comme le §11.43, elle tourne en CI (validate-content --strict, 62 notions) sans
+jamais bloquer, et le sens « valeur qui ne résout pas » complète, pour les
+rungs, ce que la porte marqueur→cible fait déjà pour les figures (ADR 0031).
+
 ### 11.29–11.41 en un coup d'œil, et le déployé
 
 **LA SOIRÉE DU 2026-09-11**, treize points, tous mesurés avant/après :

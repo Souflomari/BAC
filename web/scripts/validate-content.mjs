@@ -733,6 +733,34 @@ for (const dir of dirs) {
     }
   }
 
+  // ── Rung integrity (warning only) — un item/checkpoint `rung: R<n>` doit
+  //    nommer un titre de rung qui EXISTE dans lesson.md (« ## R<n> … »). Un
+  //    item accroché à un rung absent tombe de tout affichage ordonné par rung
+  //    (constat des critiques vague 1, 2026-09-11 : limites-continuite R7,
+  //    derivabilite-etude-fonctions R6, probabilites-conditionnelles R6/R7 —
+  //    souvent le résidu d'une renumérotation de marche). Avertissement et non
+  //    échec parce que le BON rung de rattachement est un choix pédagogique
+  //    (re-tag) que la porte ne peut pas faire ; à passer en échec dur une fois
+  //    le corpus propre.
+  {
+    const headingRungs = new Set(
+      (md.match(/^#{1,6}[ \t]*R(\d+)\b/gm) || []).map((h) => h.match(/R(\d+)/)[1]),
+    );
+    for (const [fname, key] of [["items.yaml", "items"], ["checkpoints.yaml", "checkpoints"]]) {
+      const arr = Array.isArray(yamlDocs[fname]?.[key]) ? yamlDocs[fname][key] : [];
+      const warned = new Set();
+      for (const it of arr) {
+        const mr = typeof it?.rung === "string" ? it.rung.match(/^R(\d+)$/) : null;
+        if (mr && !headingRungs.has(mr[1]) && !warned.has(mr[1])) {
+          warned.add(mr[1]);
+          console.error(
+            `  ⚠ ${dir}: ${fname} accroche des items au rung ${it.rung} mais lesson.md n'a pas de titre « ## ${it.rung} » — re-taguer ou ajouter le rung`,
+          );
+        }
+      }
+    }
+  }
+
   // ── Orphan figure ASSETS (warning only) — le SENS INVERSE du contrôle
   // marqueur→asset plus haut (ADR 0031 : une porte a deux directions, et
   // celle qui ne va que dans un sens finit contournée). Un SVG de media/ que
