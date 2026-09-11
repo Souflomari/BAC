@@ -464,9 +464,12 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
         >
           Commencer l’épreuve
         </button>
-        {(!pret || chargement) && (
+        {/* Avant l'hydratation, c'est la ligne globale « La page se prépare… »
+            (HydrationNotice, §11.28) qui parle ; ici, seulement l'attente du
+            module après l'appui. */}
+        {chargement && (
           <p className="mt-2 text-caption text-tertiary" role="status">
-            {pret ? "Le sujet se prépare…" : "L’épreuve se charge…"}
+            Le sujet se prépare…
           </p>
         )}
         {erreurChargement && (

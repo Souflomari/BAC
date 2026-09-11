@@ -3968,8 +3968,10 @@ chose.
 marqueurs que dix instruments attendent.
 - Le bouton est **désactivé et le dit** tant que le composant n'est pas
   monté (`pret`, faux au rendu serveur et au premier rendu client, vrai
-  après le montage) : « L'épreuve se charge… » sous le bouton, `aria-busy`.
-  Un bouton désactivé qui le dit n'est pas un bouton mort.
+  après le montage), `aria-busy`, et — d'abord — « L'épreuve se charge… » sous
+  le bouton ; depuis le §11.28, c'est la ligne globale « La page se prépare… »
+  qui le dit, et la légende locale ne reste que pour l'attente du module après
+  l'appui. Un bouton désactivé qui le dit n'est pas un bouton mort.
 - Le pipeline markdown/KaTeX (`MdBlock`) n'est plus importé statiquement :
   il se charge APRÈS l'hydratation (le temps de lire les conditions), et
   `commencer` l'exige avant de lancer la révélation — « Le sujet se

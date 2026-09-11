@@ -25,6 +25,7 @@
  */
 
 import { useCallback, useEffect, useState } from "react";
+import { useHydrated } from "@/lib/useHydrated";
 import { Link } from "@/components/ui/Lien";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { cn } from "@/lib/utils";
@@ -64,12 +65,16 @@ function GlyphMark({ className }: { className?: string }) {
 
 /** Le bouton Rechercher — ⌘K affiché, l'affordance clavier est l'invitation. */
 function BoutonRecherche({ compact = false }: { compact?: boolean }) {
+  // Désactivé et `aria-busy` tant que React n'a pas pris la main (§11.28).
+  const hydrated = useHydrated();
   const ouvre = () => window.dispatchEvent(new Event("ouvrir-palette"));
   if (compact) {
     return (
       <button
         type="button"
         onClick={ouvre}
+        disabled={!hydrated}
+        aria-busy={!hydrated || undefined}
         aria-label={frenchTypography("Rechercher une notion")}
         className={cn(
           "inline-flex min-h-touch min-w-touch items-center justify-center rounded-lg",
@@ -86,6 +91,8 @@ function BoutonRecherche({ compact = false }: { compact?: boolean }) {
     <button
       type="button"
       onClick={ouvre}
+      disabled={!hydrated}
+      aria-busy={!hydrated || undefined}
       className={cn(
         "inline-flex h-9 items-center gap-2 rounded-lg border border-subtle bg-surface-container-low px-3",
         "text-body-sm text-tertiary hover:text-secondary hover:border-soft",
@@ -114,6 +121,7 @@ function PanneauNotions({
   sujets: readonly string[];
   notions: NotionPourPalette[];
 }) {
+  const hydrated = useHydrated();
   // La couverture réelle : chapitres du cadre vs chapitres construits.
   // `builtIds` = les notions du manifeste, clés "matière/slug" — la même
   // convention que les ids de chapitre du curriculum.
@@ -125,6 +133,8 @@ function PanneauNotions({
         <DropdownMenu.Trigger asChild>
           <button
             type="button"
+            disabled={!hydrated}
+            aria-busy={!hydrated || undefined}
             className={cn(
               "group inline-flex items-center gap-1 rounded px-2 py-1",
               "text-body-sm font-medium text-secondary hover:text-primary",
@@ -259,11 +269,15 @@ function PanneauNotions({
  * dans un DropdownMenu.Content — éprouvé, sondé en R2).
  */
 function MenuAffichage() {
+  // Désactivé et `aria-busy` tant que React n'a pas pris la main (§11.28).
+  const hydrated = useHydrated();
   return (
     <DropdownMenu.Root modal={false}>
       <DropdownMenu.Trigger asChild>
         <button
           type="button"
+          disabled={!hydrated}
+          aria-busy={!hydrated || undefined}
           aria-label={frenchTypography("Affichage : taille du texte et thème")}
           className={cn(
             "inline-flex min-h-touch min-w-touch items-center justify-center rounded-lg",
@@ -310,12 +324,15 @@ function MenuCompact({
   user: { displayName: string } | null;
   onSignOut: () => void;
 }) {
+  const hydrated = useHydrated();
   return (
     <div className="bp-expanded:hidden">
       <DropdownMenu.Root>
         <DropdownMenu.Trigger asChild>
           <button
             type="button"
+            disabled={!hydrated}
+            aria-busy={!hydrated || undefined}
             aria-label={frenchTypography("Menu et réglages")}
             className={cn(
               "inline-flex min-h-touch min-w-touch items-center justify-center rounded-lg",
