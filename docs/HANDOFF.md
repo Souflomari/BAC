@@ -3061,6 +3061,7 @@ run 451, sur la même pile d'instruments, était vert en 28 min 35 s.
 | `retour-bfcache` (nouveau) | 3 paires de pages, réseau libre et 3G lente | leçons et épreuves restaurées en 0,1 s par Retour, chapitre conservé ; l'accueil rebâti pendant les 6 s de préchargement de l'action principale — assumé, §11.30 |
 | `memoire` (nouveau) | 62 leçons, 3 leçons × 60 changements, 2 épreuves révélées, VmRSS de 5 pages | tas 7–11 Mo, aucune fuite ; 2 300–66 000 nœuds (97 % repliés, 90 % KaTeX) ; 166–226 Mo par leçon, 296–309 Mo par épreuve corrigée — le levier §8.7 vaut aussi pour la mémoire, §11.31 |
 | `recherche-palette` (nouveau) | 17 requêtes + Échap | « maths » 0, « svt » 0, « 2025 » 0, focus perdu à Échap → 25, 12, 3, focus rendu ; « acide », « nucléaire » restent à 0 (mots-clés = contenu), §11.34 |
+| `polices` (nouveau) | 5 pages ; 117 pages pour latin-ext | 6 fichiers, 324 ko par page → 4 fichiers, 239 ko (latin-ext préchargé pour 0 caractère) ; Geist Mono 70 ko pour 80 caractères — levier design, §11.35 |
 
 **Ce qui est connu et reste au propriétaire** — re-mesuré à l'identique, pas
 redécouvert : `horsligne-sweep` (une leçon déjà visitée, cliquée hors ligne,
@@ -3292,6 +3293,9 @@ sans annonce → focus sur le premier exercice / le premier corrigé, région
 §11.34 : la palette ⌘K ne trouvait ni « maths » ni « svt » ni « 2025 » et
 rendait le focus à `<body>` → alias de matière, groupe Épreuves, retour du
 focus ; `recherche-palette` rouge/vert.
+§11.35 : 324 ko de polices par page dont 84 ko de latin-ext préchargé pour
+aucun caractère (« œ » est dans latin) → `subsets: ["latin"]`, 239 ko ;
+Geist Mono, 70 ko pour 80 caractères, posé au propriétaire.
 
 ### 11.20 Le téléphone gelait au « Commencer » et au « Terminer » d'une épreuve
 
@@ -4435,3 +4439,42 @@ acido-basiques »), « nucléaire » → 0 (« Noyaux, masse et énergie »,
 notions n'ont pas de mots-clés de recherche — leurs `tags` sont des tags
 d'items (checkpoint, formative…). Un champ `motsCles` par notion est du
 contenu, pas du code : lane contenu / propriétaire.
+
+### 11.35 Les polices pesaient 324 ko par page, dont 84 ko de sous-ensemble latin-ext préchargé pour aucun caractère
+
+**MESURÉ** (`polices`, Chromium, réseau libre). Chaque page téléchargeait
+**six fichiers de police, 324 ko** — plus que le JavaScript de la liste des
+épreuves (156 ko) ou de `/commencer` (157 ko) : la serif de lecture en deux
+sous-ensembles (latin 50 ko + latin-ext 41 ko) et son italique (50 + 43),
+Geist Sans 68 ko, Geist Mono 70 ko. Sur 3G lente, 6,5 s de téléchargement,
+en concurrence avec les morceaux de JavaScript. Ce que chaque face sert
+vraiment, en caractères de texte visible sur cinq pages (chapitres
+dépliés) : Geist Sans 400 **85 114**, serif 400 **80 180**, serif italique
+9 759, serif 600 6 481, Geist Sans 600/500 ~18 000… et **Geist Mono 400 :
+80 caractères** — le chrono, quelques nombres, « esc » — pour 70 ko.
+
+**LATIN-EXT, POUR RIEN.** `subsets: ["latin", "latin-ext"]` fait
+PRÉCHARGER les deux sous-ensembles sur chaque page. Balayage des 117 pages
+(`latin-ext.mjs`, texte visible, chapitres dépliés) : l'accueil, la liste
+des épreuves, `/commencer` n'emploient **aucun** caractère de la plage
+étendue ; sur 74 pages, un seul caractère « étendu » apparaît en serif —
+**« œ », 102 fois** — et il est dans le sous-ensemble LATIN (U+0152–0153 y
+figure explicitement). Reste « ˊ » U+02CA, neuf fois sur deux leçons SVT :
+une coquille de transcription (un prime ou une apostrophe), pas un besoin
+de police. `subsets: ["latin"]` — un mot.
+
+**MESURÉ APRÈS.** **Quatre fichiers, 239 ko** sur chaque page (−85 ko,
+−26 %) ; sur une leçon SVT pleine de « œ » et sur une leçon de philo,
+`CSS.getPlatformFontsForNode` dit que la prose, l'italique et les « œ » sont
+dessinés par **Source Serif 4** pour tous leurs glyphes — aucun repli
+système. Les faces latin-ext restent déclarées (next/font les émet toutes)
+et se chargeraient à la demande si un caractère l'exigeait ; aucun ne
+l'exige. dom-truth vert (contraste, typographie, polices de repli).
+
+**LE LEVIER QUI RESTE, AU PROPRIÉTAIRE.** Geist Mono : 70 ko sur chaque
+première visite pour 80 caractères (le chrono de l'épreuve, « n / N »,
+« esc », des nombres en `mono-inline`). Une pile système
+(`ui-monospace, Menlo, Consolas`) ou Geist Sans en `tabular-nums` rendraient
+le même service pour 0 ko ; c'est une décision de typographie (ADR 0030 D2 :
+« sa mono assortie porte tout nombre qui change »), pas de mesure. Le chiffre
+est posé.
