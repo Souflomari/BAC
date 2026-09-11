@@ -3059,6 +3059,7 @@ run 451, sur la même pile d'instruments, était vert en 28 min 35 s.
 | `lecon-3g` (nouveau) | 3 leçons, 3G lente + ×4 | « Chapitre suivant » visible à 4–8 s, mort jusqu'à 17–28 s → désactivé et honnête jusqu'à l'hydratation, §11.28 |
 | `veille-hydratation` (nouveau) | 3 pages, 3G lente et 250 kb/s ; morceau d'entrée bloqué | un morceau perdu n'était dit que 8,3 s après la perte, par-dessus la ligne « se prépare… » → écouteur `error` en tête, +0,3 s, une seule voix, filet à 30 s, §11.29 |
 | `retour-bfcache` (nouveau) | 3 paires de pages, réseau libre et 3G lente | leçons et épreuves restaurées en 0,1 s par Retour, chapitre conservé ; l'accueil rebâti pendant les 6 s de préchargement de l'action principale — assumé, §11.30 |
+| `memoire` (nouveau) | 62 leçons, 3 leçons × 60 changements, 2 épreuves révélées, VmRSS de 5 pages | tas 7–11 Mo, aucune fuite ; 2 300–66 000 nœuds (97 % repliés, 90 % KaTeX) ; 166–226 Mo par leçon, 296–309 Mo par épreuve corrigée — le levier §8.7 vaut aussi pour la mémoire, §11.31 |
 
 **Ce qui est connu et reste au propriétaire** — re-mesuré à l'identique, pas
 redécouvert : `horsligne-sweep` (une leçon déjà visitée, cliquée hors ligne,
@@ -3278,6 +3279,9 @@ ligne → écouteur `error` en tête du document + Resource Timing, bandeau à
 « Recharger » coûte 75 ko. §11.30 : le bouton Retour restaure leçons et
 épreuves en 0,1 s, chapitre conservé ; l'accueil est rebâti si on le quitte
 pendant les 6 s de préchargement de l'action principale — su, assumé.
+§11.31 : la mémoire — 7 à 11 Mo de tas, aucune fuite en 60 changements de
+chapitre, 166–226 Mo de processus de rendu par leçon (296 pour une épreuve
+corrigée) ; 97 % des nœuds dans des chapitres repliés, 90 % de KaTeX.
 
 ### 11.20 Le téléphone gelait au « Commencer » et au « Terminer » d'une épreuve
 
@@ -4268,3 +4272,44 @@ Lien) passe par le routeur de Next, pas par le bfcache — c'est le cache du
 routeur, mesuré ailleurs (`reseau-malade`, scène 5). Firefox et Safari ont
 leurs propres règles d'éviction. Et le vrai téléphone, dont le navigateur
 peut décharger l'onglet pour la mémoire.
+
+### 11.31 La mémoire d'une page : 7 à 11 Mo de tas, aucune fuite en soixante changements de chapitre — et 97 % des nœuds dans des chapitres repliés
+
+**LA QUESTION.** Un téléphone à 2 Go tue l'onglet qui grossit ; « deux
+heures à un bureau » veut dire que soixante changements de chapitre ne
+doivent rien laisser derrière eux. Une leçon rend jusqu'à 316 boutons et
+plus de mille formules. Jamais mesuré.
+
+**MESURÉ** (`memoire`, CDP `Performance.getMetrics` après ramasse-miettes,
+390 × 780, réseau libre). Les 62 leçons : tas JavaScript **6,8 à 11 Mo**
+(médiane 8,2), nœuds DOM **2 300 à 65 900** (médiane 16 200 ; les huit plus
+lourdes : `geometrie-espace` 65 893, `reactions-acido-basiques` 63 217,
+`suites-numeriques` 59 675, `chute-mouvements-plans` 51 696…), écouteurs
+415–652. La fuite : `rlc-serie` 10,8 → 11,2 → **10,6 Mo** après 30 puis 60
+changements de chapitre au clavier, nœuds 43 717 → 43 716, écouteurs 611 →
+619 → 619 (huit posés une fois, pas de croissance) ; même profil sur
+`suites-numeriques` et `la-verite`. **Aucune fuite.** Les épreuves, après
+« Commencer » puis « Terminer » : 5 Mo → 8 → **11,4 Mo** (SM 2025 N, 55 539
+nœuds), 5 → 8 → 13,5 Mo (SPC 2024 R, 76 854 nœuds).
+
+**L'EMPREINTE RÉELLE** (VmRSS du processus de rendu, lu dans `/proc` — le
+chiffre qui compte pour un téléphone) : **166 Mo** pour une leçon légère
+(`soi-non-soi`, 1 337 éléments — c'est le socle de Chromium), **222–226 Mo**
+pour les lourdes (30 000–47 000 éléments), **296–309 Mo** pour une épreuve
+corrigée (40 000 éléments). Sur un téléphone à 2 Go, c'est lourd sans être
+mortel ; ce qui pèse, ce n'est pas le JavaScript, c'est le DOM.
+
+**D'OÙ VIENT LE DOM.** Sur `geometrie-espace` : 1 132 formules ; KaTeX fait
+**90 % des éléments** — 59 % pour son HTML, **31 % pour le MathML masqué**
+(gardé exprès : c'est lui que le lecteur d'écran lit et que le collage
+riche emporte, §11.x, `copier-coller.md`). Et **97 % des éléments sont dans
+des chapitres repliés** (`[hidden]`) : le levier « moins de chapitres
+rendus » du §8.7, déjà posé au propriétaire pour la vitesse, diviserait
+aussi la mémoire par dix. Le levier MathML (`output: "html"`) diviserait les
+nœuds par 1,5 au prix de l'accessibilité et du collage — non recommandé,
+noté pour que le chiffre existe.
+
+**CE QUE ÇA NE MESURE PAS.** Un vrai téléphone (le rendu GPU, les tuiles, la
+version d'Android) ; Firefox et Safari ; une séance de deux heures avec des
+réponses, pas seulement des flèches (mais les écouteurs stables après 60
+changements sont le signal qu'on cherchait).
