@@ -3058,6 +3058,7 @@ run 451, sur la même pile d'instruments, était vert en 28 min 35 s.
 | `epreuve-3g` (nouveau) | 3 épreuves, 3G lente + ×4 | bouton visible à 4–7 s, mort jusqu'à ~17 s (20 appuis) → désactivé et honnête, pipeline différé, §11.27 |
 | `lecon-3g` (nouveau) | 3 leçons, 3G lente + ×4 | « Chapitre suivant » visible à 4–8 s, mort jusqu'à 17–28 s → désactivé et honnête jusqu'à l'hydratation, §11.28 |
 | `veille-hydratation` (nouveau) | 3 pages, 3G lente et 250 kb/s ; morceau d'entrée bloqué | un morceau perdu n'était dit que 8,3 s après la perte, par-dessus la ligne « se prépare… » → écouteur `error` en tête, +0,3 s, une seule voix, filet à 30 s, §11.29 |
+| `retour-bfcache` (nouveau) | 3 paires de pages, réseau libre et 3G lente | leçons et épreuves restaurées en 0,1 s par Retour, chapitre conservé ; l'accueil rebâti pendant les 6 s de préchargement de l'action principale — assumé, §11.30 |
 
 **Ce qui est connu et reste au propriétaire** — re-mesuré à l'identique, pas
 redécouvert : `horsligne-sweep` (une leçon déjà visitée, cliquée hors ligne,
@@ -3272,8 +3273,11 @@ tant que la page se charge, pipeline markdown chargé après l'hydratation. §11
 suivant » mort jusqu'à 28 s → `useHydrated`, commandes désactivées et
 `aria-busy` avant l'hydratation, « La page se prépare… ». §11.29 : un
 morceau de JavaScript perdu n'était dit que 8,3 s après, par-dessus cette
-ligne → écouteur `error` en tête du document, bandeau à +0,3 s, filet à
-30 s, une seule voix.
+ligne → écouteur `error` en tête du document + Resource Timing, bandeau à
++0,3 s (ou à l'arrivée des feuilles de style), filet à 30 s, une seule voix ;
+« Recharger » coûte 75 ko. §11.30 : le bouton Retour restaure leçons et
+épreuves en 0,1 s, chapitre conservé ; l'accueil est rebâti si on le quitte
+pendant les 6 s de préchargement de l'action principale — su, assumé.
 
 ### 11.20 Le téléphone gelait au « Commencer » et au « Terminer » d'une épreuve
 
@@ -4223,3 +4227,44 @@ Le texte du bandeau n'a pas changé (« ta connexion est probablement
 faible ») : vrai dans les deux cas qu'il couvre. L'ADR 0032 est amendé :
 l'attente honnête a un troisième temps — quand rien ne viendra, le dire tout
 de suite.
+
+### 11.30 Le bouton Retour : leçons et épreuves reviennent en 0,1 s, dans l'état laissé ; l'accueil est rebâti si on le quitte pendant son préchargement
+
+**LA QUESTION.** Un élève quitte une leçon par une navigation complète —
+adresse tapée, résultat de recherche, « Recharger » de la veille — puis
+revient par Retour. La page revient-elle du cache arrière/avant (bfcache),
+instantanée et au chapitre où il l'a laissée, ou est-elle rebâtie — sur 3G
+lente, 17 à 28 s d'hydratation à refaire ? Jamais mesuré. PIÈGE ÉVITÉ :
+Chromium lancé par Playwright DÉSACTIVE le bfcache
+(`--disable-back-forward-cache`) ; sans retirer ce drapeau, tout est
+« rebâti » et l'instrument ment.
+
+**MESURÉ** (`retour-bfcache`, 390 × 780 ; page A → page B → Retour). Réseau
+libre : leçon (`rlc-serie` → liste des épreuves → Retour) restaurée en
+130 ms, chapitre 1 conservé ; épreuve restaurée en 143 ms ; accueil en
+52 ms. 3G lente ×4 : leçons restaurées en 95–232 ms, chapitre conservé (deux
+leçons, deux fois) ; épreuve en 103 ms ; **l'accueil rebâti, trois fois sur
+trois** — raison Chromium `JavaScriptExecution`, ou
+`NetworkExceedsBufferLimit` quand c'est le favicon qui est en vol. Un séjour
+long ailleurs (35 s, 45 s) ne change rien : le filet à 30 s de la veille, en
+attente, n'évince pas (les minuteurs sont gelés).
+
+**POURQUOI L'ACCUEIL.** Une page quittée avec des requêtes EN VOL n'entre
+pas dans le bfcache, ou en est évincée quand la réponse arrive. Sur 3G lente,
+l'accueil a encore du trafic **6,3 s après l'hydratation** : le préchargement
+de l'action principale (`NextUp`, `prefetch` volontaire — « le seul lien de
+la page dont on sait qu'il sera suivi », `donnees-et-forfait.md`) tire la
+charge RSC de la leçon et ses morceaux, dont les 75 ko du pipeline markdown.
+Une leçon, elle, est calme 0,9 s après l'hydratation ; la liste des épreuves,
+0,3 s. Parti une fois le réseau calme, l'accueil est restauré. C'est donc un
+arbitrage déjà pris qui a une conséquence non écrite : sur un réseau lent,
+revenir à l'accueil dans les six secondes qui suivent son chargement le
+rebâtit — 0,5 s ici, le HTML revalidé et les morceaux en cache. Pas de
+changement : le préchargement de l'action principale vaut plus que ces six
+secondes. Noté pour que personne ne cherche un bug.
+
+**CE QUE ÇA NE MESURE PAS.** Le Retour APRÈS une navigation interne (Lien →
+Lien) passe par le routeur de Next, pas par le bfcache — c'est le cache du
+routeur, mesuré ailleurs (`reseau-malade`, scène 5). Firefox et Safari ont
+leurs propres règles d'éviction. Et le vrai téléphone, dont le navigateur
+peut décharger l'onglet pour la mémoire.
