@@ -3312,6 +3312,8 @@ paragraphes focalisables (Chrome 130 + `overflow-x` de prose) mesurés,
 levier `overflow-x: clip` différé.
 §11.40 : la barre d'auto-évaluation changeait en silence pour un lecteur
 d'écran → `aria-live="polite"` `aria-atomic` ; le chrono reste muet.
+§11.41 : toute commande a un nom accessible (WCAG 4.1.2), pages et états
+révélés compris — 0 sans nom ; instrument armé.
 
 ### 11.20 Le téléphone gelait au « Commencer » et au « Terminer » d'une épreuve
 
@@ -4677,3 +4679,18 @@ française a couru sur le code lui-même) ; un premier essai d'ancrage sur
 pris, et un `{/* commentaire JSX */}` glissé dans une branche de ternaire a
 cassé le build (une branche de ternaire n'accepte qu'UNE expression). Refait
 en n'ajoutant que les deux attributs, la note en commentaire ailleurs.
+
+### 11.41 Toute commande a un nom accessible — mesuré, y compris dans les états révélés (résultat négatif)
+
+**MESURÉ** (`noms-accessibles`, WCAG 4.1.2). Un bouton, un lien, un champ
+dont l'arbre d'accessibilité ne donne aucun nom s'annonce « bouton » tout
+court. Balayage de neuf pages types à 390 et 1 280 px — aria-label,
+aria-labelledby, texte, title, alt d'image, `<title>` de SVG, `<label>`
+associé — puis des états que seul un geste ouvre : une épreuve sujet révélé,
+une épreuve corrigé révélé (les 144 radios, les transports de figure), un
+atelier démarré, les menus de l'en-tête ouverts. **Zéro commande sans nom,
+partout.** Un résultat NÉGATIF qui valait d'être établi : la loupe seule
+(un bouton icône) et le « Aa » du réglage de texte étaient les candidats
+évidents, et tous deux portent un `aria-label`. La porte est armée (rouge si
+une commande visible perd son nom) mais hors CI tant que la CI n'a pas de
+runner (§11.37).
