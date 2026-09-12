@@ -773,20 +773,53 @@ for (const dir of dirs) {
   //    chiffre COLLÉ au R : il ne matche donc pas `R_0` (indice de résistance en
   //    PC), d'où 0 faux positif mesuré sur les 62 notions. Avertissement, non
   //    échec — comme les portes sœurs, à durcir une fois le corpus propre.
+  //    ÉLARGI 2026-09-12 : le motif `\text{…R\d…}` ne voyait QUE le KaTeX. Un
+  //    balayage corpus a trouvé 34 fuites de plus dans de la PROSE rendue, sous
+  //    trois formes qu'il ratait : (a) « chapitre R7 » / « rung R4 » / « leçon R2 »
+  //    en toutes lettres ; (b) un « (R8) » nu DANS le math, hors \text{} ;
+  //    (c) « chapitre chapitre 8 » (mot doublé). La porte suit désormais la CLÉ
+  //    YAML propriétaire de chaque ligne : elle n'avertit que pour un champ
+  //    RENDU (intro/stem/reasoning/note/text/feedback/solution/math…), jamais
+  //    pour une `sourcing.note` ni un `retagged_items` — où l'auteur a le droit
+  //    de parler en barreaux. Sans ce filtre, 13 notes d'auteur criaient au loup.
   {
+    const RENDERED = new Set(["intro", "stem", "reasoning", "note", "text", "feedback",
+      "solution", "correct_feedback", "title", "part", "math"]);
+    // clé propriétaire d'une ligne + sa clé parente (remontée à indentation plus faible)
+    const ownerOf = (lines, idx) => {
+      let key = null, ind = null, parent = null;
+      for (let j = idx; j >= 0; j--) {
+        const m = lines[j].match(/^(\s*)-?\s*([A-Za-z_][A-Za-z0-9_]*):/);
+        if (!m) continue;
+        if (key === null) { key = m[2]; ind = m[1].length; continue; }
+        if (m[1].length < ind) { parent = m[2]; break; }
+      }
+      return [key, parent];
+    };
+    const SHAPES = [
+      /\\text\{[^}]*\bR\d[^}]*\}/g,                       // (historique) code dans un \text{}
+      /(?:[Cc]hapitres?|[Ll]e[çc]ons?|rung|barreau)\s+R\d\b/g, // « chapitre R7 », « rung R4 »
+      /\(R\d\)/g,                                           // « (R8) » nu dans le math
+      /\b(chapitre|leçon)\s+\1\b/gi,                         // mot doublé « chapitre chapitre »
+    ];
     for (const fname of ["bank.yaml", "items.yaml", "exercises.yaml", "checkpoints.yaml"]) {
       const fp = path.join(abs, fname);
       if (!fs.existsSync(fp)) continue;
+      const lines = fs.readFileSync(fp, "utf8").split("\n");
       const hits = new Set();
-      for (const line of fs.readFileSync(fp, "utf8").split("\n")) {
-        if (/^\s*#/.test(line)) continue; // notes d'auteur en commentaire : non rendues
-        const m = line.match(/\\text\{[^}]*\bR\d[^}]*\}/g);
-        if (m) for (const h of m) hits.add(h);
+      for (let i = 0; i < lines.length; i++) {
+        if (/^\s*#/.test(lines[i])) continue; // notes d'auteur en commentaire : non rendues
+        let found = null;
+        for (const re of SHAPES) { re.lastIndex = 0; const m = lines[i].match(re); if (m) { found = m; break; } }
+        if (!found) continue;
+        const [key, parent] = ownerOf(lines, i);
+        if (!RENDERED.has(key) || parent === "sourcing") continue; // champ côté-auteur : non rendu
+        for (const h of found) hits.add(h);
       }
       if (hits.size) {
         const shown = [...hits].slice(0, 4).join(" ; ");
         console.error(
-          `  ⚠ ${dir}: ${fname} — code de barreau « R<n> » dans un \\text{} rendu : ${shown}${hits.size > 4 ? " …" : ""} — l'élève lit « chapitre N », pas « R<n> » ; réécrire`,
+          `  ⚠ ${dir}: ${fname} — code de barreau « R<n> » dans un champ RENDU : ${shown}${hits.size > 4 ? " …" : ""} — l'élève lit « chapitre N », pas « R<n> » ; réécrire`,
         );
       }
     }

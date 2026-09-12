@@ -4881,6 +4881,49 @@ sœurs (§11.43/§11.44), elle tourne en CI (validate-content --strict) sans jam
 bloquer, et complète pour la COUCHE EXERCICES ce que la porte prose fait pour la leçon
 et la porte figures pour les SVG (ADR 0031 : le sens qui manquait finissait contourné).
 
+### 11.47 La porte §11.46 ne voyait qu'un tiers de la fuite — 61 codes de barreau RENDUS, et le recensement des chapitres corrigé
+
+**MESURÉ, CORRIGÉ, PORTE ÉLARGIE.** La porte de §11.46 ne balayait qu'un motif :
+`\text{…R\d…}`, c'est-à-dire un code de barreau **dans du KaTeX**. Un balayage
+corpus (62 notions) a montré qu'elle ratait trois autres formes, toutes RENDUES :
+
+| Forme ratée | Exemple trouvé | Fuites |
+|---|---|---|
+| code nu **hors** `\text{}`, dans le math | `L = f(L) \quad (R8)` | **16** |
+| code en toutes lettres dans la prose | « Formule de l'intégration par parties (**chapitre R7**) » | **34** |
+| mot doublé par une réécriture antérieure | « (**chapitre chapitre** 8 de Suites numériques) » | **11** |
+
+**61 fuites rendues, 12 notions** (nombres-complexes-2 en portait 22,
+fonction-exponentielle 12, probabilites-conditionnelles 5). Toutes réécrites en
+« chapitre N », N **dérivé du fichier** (position du titre `##`), pas d'une
+convention supposée. Corrigé aussi un renvoi mort rendu (« SCOPE NOTE — voir le
+commentaire en tête de cette entrée » : l'élève ne voit pas l'en-tête d'un YAML).
+
+**La porte suit désormais la CLÉ YAML propriétaire de chaque ligne** et n'avertit
+que pour un champ rendu (`intro/stem/reasoning/note/text/feedback/solution/math`…),
+jamais pour une `sourcing.note` ni un `retagged_items` — où l'auteur a le droit de
+parler en barreaux. Sans ce filtre, 13 notes d'auteur criaient au loup. Les
+résistances de PC (`R_0`, `R1` d'un circuit) ne matchent aucune des formes :
+**0 faux positif, 0 avertissement résiduel sur les 62 notions.**
+
+**Le recensement des chapitres était faux, et c'était un piège.** `chapters.ts`
+affirmait « pour 60/61 leçons le `##` coïncide avec la grammaire `R<n>` ;
+probabilites-conditionnelles est **la** seule exception ». Re-mesuré : **56/62**,
+et **six** exceptions — probabilites-conditionnelles (6 titres / 1 barreau),
+structures-algebriques (10/8), nombres-complexes-1 (9/7), suites-numeriques (12/11),
+limites-continuite (8/7), derivabilite-etude-fonctions (7/6). Un titre `##` sans
+préfixe `R<n>` **décale tout ce qui le suit** : dans suites-numeriques, le
+« Suites homographiques » non numéroté rend R9 en chapitre **11**, pas 10.
+
+**Conséquence à ne pas rater** — le raccourci « chapitre N = R(N−1) », employé par
+les revues de contenu ET par les critiques vague 1, n'est valable que pour les 56
+leçons à barreaux purs. Vérifié : dans les six autres, la prose cite déjà le
+numéro **rendu** correct (structures-algebriques « un homomorphisme (chapitre 10) »
+= R7 ; nombres-complexes-1 « chapitre 8 » = R5 géométrie), et un balayage n'a trouvé
+**aucune citation dérivée**. Appliquer le raccourci naïf là-bas **casserait** des
+renvois justes. Le commentaire de `chapters.ts` porte désormais le recensement, les
+six noms, et cet avertissement.
+
 ### 11.29–11.41 en un coup d'œil, et le déployé
 
 **LA SOIRÉE DU 2026-09-11**, treize points, tous mesurés avant/après :

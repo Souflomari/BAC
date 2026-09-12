@@ -331,7 +331,7 @@ entries:
         steps:
           - math: '\dfrac{f(x)}{x} = \dfrac{(x^{2}-x)e^{-x}+x}{x} = \dfrac{x^{2}-x}{x}\,e^{-x} + 1 = (x-1)e^{-x}+1'
             note: "On divise chaque terme de f(x) par x ; x carré moins x sur x se simplifie en x moins 1."
-          - math: '\lim_{x\to-\infty}(x-1) = -\infty \qquad \lim_{x\to-\infty} e^{-x} = \lim_{X\to+\infty} e^{X} = +\infty \quad (X=-x,\ R4)'
+          - math: '\lim_{x\to-\infty}(x-1) = -\infty \qquad \lim_{x\to-\infty} e^{-x} = \lim_{X\to+\infty} e^{X} = +\infty \quad (X=-x,\ \text{chapitre 5 de Fonction exponentielle})'
             note: "x moins 1 part vers moins l'infini ; e puissance moins x, avec X = moins x, redonne directement la première limite du chapitre 5."
           - math: '\lim_{x\to-\infty} (x-1)e^{-x} = -\infty \quad (\text{produit de deux limites infinies, jamais indetermine}) \ \Longrightarrow\ \lim_{x\to-\infty}\dfrac{f(x)}{x} = -\infty'
             note: "Un produit de deux quantités infinies se lit par la règle des signes : négatif fois positif donne moins l'infini, sans indetermination."
@@ -346,7 +346,7 @@ entries:
         steps:
           - math: 'f(x)-x = (x^{2}-x)e^{-x} \quad (\text{déjà établi en question } 1b)'
             note: "Même calcul que la question 1b, reutilise directement."
-          - math: 'e^{-x} > 0 \quad (\forall x \in \mathbb{R}) \quad (R1, \text{ l''exponentielle ne s''annule jamais})'
+          - math: 'e^{-x} > 0 \quad (\forall x \in \mathbb{R}) \quad (\text{chapitre 2 de Fonction exponentielle, l''exponentielle ne s''annule jamais})'
             note: "Le facteur e puissance moins x est toujours strictement positif, quel que soit x réel."
           - math: '\text{multiplier par un facteur strictement positif conserve le signe} \ \Longrightarrow\ f(x)-x \text{ et } x^{2}-x \text{ ont le même signe}'
             note: "Un produit par un nombre strictement positif ne renverse jamais le signe du facteur restant."
@@ -475,7 +475,7 @@ entries:
           - math: 'u = x,\quad u^{\prime}=1,\qquad v^{\prime}=e^{-x},\quad v=-e^{-x}'
             note: "On derive x (ca devient 1) et on primitive e puissance moins x (ca devient moins e puissance moins x)."
           - math: '\int_{0}^{1} x\,e^{-x}\,dx = \bigl[-x\,e^{-x}\bigr]_{0}^{1} - \int_{0}^{1} \bigl(-e^{-x}\bigr)\,dx = \bigl[-x\,e^{-x}\bigr]_{0}^{1} + \int_{0}^{1} e^{-x}\,dx'
-            note: "Formule de l'intégration par parties (chapitre R7) : terme de bord moins l'intégrale de u prime fois v."
+            note: "Formule de l'intégration par parties (chapitre 8 de « Calcul intégral ») : terme de bord moins l'intégrale de u prime fois v."
           - math: '\bigl[-x\,e^{-x}\bigr]_{0}^{1} = -1\times e^{-1} - 0 = -\dfrac{1}{e}'
             note: "En 1 : moins e puissance moins 1. En 0 : le terme s'annule (le facteur x est nul)."
           - math: '\int_{0}^{1} e^{-x}\,dx = \bigl[-e^{-x}\bigr]_{0}^{1} = -e^{-1} - (-1) = 1 - \dfrac{1}{e}'
@@ -506,7 +506,7 @@ entries:
         stem: |-
           **(0,75 pt)** Montrer que $0 \le u_{n} \le 1$ pour tout $n$ de $\mathbb{N}$ *( on pourra utiliser le résultat de la question II)3)b) )*.
         reasoning: |-
-          La suite est définie par récurrence ($u_{n+1}=f(u_n)$) : la propriété à démontrer se prouve donc par récurrence (chapitre chapitre 2 de « Suites numériques », le mécanisme des dominos), pas par un calcul direct.
+          La suite est définie par récurrence ($u_{n+1}=f(u_n)$) : la propriété à démontrer se prouve donc par récurrence (chapitre 2 de « Suites numériques », le mécanisme des dominos), pas par un calcul direct.
 
           Initialisation immédiate : $u_0=\frac12\in[0,1]$.
 
@@ -544,15 +544,15 @@ entries:
         stem: |-
           **(0,75 pt)** En déduire que $(u_{n})$ est convergente et déterminer sa limite.
         reasoning: |-
-          Deux étapes distinctes. D'abord la convergence, garantie SANS connaître la valeur : $(u_n)$ est décroissante (III-2) et minorée par $0$ (III-1) — c'est exactement l'hypothèse du théorème de la limite monotone (chapitre chapitre 8 de « Suites numériques »).
+          Deux étapes distinctes. D'abord la convergence, garantie SANS connaître la valeur : $(u_n)$ est décroissante (III-2) et minorée par $0$ (III-1) — c'est exactement l'hypothèse du théorème de la limite monotone (chapitre 8 de « Suites numériques »).
 
-          Ensuite, trouver la valeur : c'est la méthode du chapitre R8 pour les suites $u_{n+1}=f(u_n)$. $f$ est continue sur $\mathbb{R}$ (somme et produit de fonctions continues), donc si $u_n\to L$, passer à la limite dans $u_{n+1}=f(u_n)$ donne $L=f(L)$ — $L$ est un **point fixe** de $f$. Résous cette équation : $(L^2-L)e^{-L}+L=L$ se simplifie en $(L^2-L)e^{-L}=0$, et comme $e^{-L}$ n'est jamais nul, il reste $L(L-1)=0$, donc $L=0$ ou $L=1$.
+          Ensuite, trouver la valeur : c'est la méthode du chapitre 9 de « Suites numériques » pour les suites $u_{n+1}=f(u_n)$. $f$ est continue sur $\mathbb{R}$ (somme et produit de fonctions continues), donc si $u_n\to L$, passer à la limite dans $u_{n+1}=f(u_n)$ donne $L=f(L)$ — $L$ est un **point fixe** de $f$. Résous cette équation : $(L^2-L)e^{-L}+L=L$ se simplifie en $(L^2-L)e^{-L}=0$, et comme $e^{-L}$ n'est jamais nul, il reste $L(L-1)=0$, donc $L=0$ ou $L=1$.
 
           Pour trancher entre les deux, réutilise la monotonie : la suite décroît à partir de $u_0=\frac12$, donc **tous** ses termes — et leur limite — restent $\le\frac12$. Comme $\frac12<1$, la valeur $L=1$ est impossible : il reste $L=0$.
         steps:
           - math: '(u_{n}) \text{ décroissante (III-2), minorée par } 0 \text{ (III-1)} \ \Longrightarrow\ (u_{n}) \text{ converge vers une limite } L\in[0,1] \quad (\text{théorème de la limite monotone, chapitre 8})'
             note: "Décroissante et minorée : la convergence est garantie sans connaître encore la valeur de la limite."
-          - math: 'f \text{ continue sur } \mathbb{R} \ (\text{somme et produit de fonctions continues}),\ u_{n+1}=f(u_{n}) \ \Longrightarrow\ L = f(L) \quad (R8)'
+          - math: 'f \text{ continue sur } \mathbb{R} \ (\text{somme et produit de fonctions continues}),\ u_{n+1}=f(u_{n}) \ \Longrightarrow\ L = f(L) \quad (\text{chapitre 9 de Suites numériques})'
             note: "On passe a la limite dans la relation de récurrence : la continuité de f permet d'échanger limite et f."
           - math: 'f(L)=L \iff (L^{2}-L)e^{-L}=0 \iff L^{2}-L=0 \iff L(L-1)=0 \iff L=0 \text{ ou } L=1'
             note: "e puissance moins L n'est jamais nul : seul le facteur L(L moins 1) peut s'annuler."

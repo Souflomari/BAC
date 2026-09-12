@@ -3,11 +3,28 @@
  *
  * LESSON-EXPERIENCE-SPEC.md §1 — chapter-heading extraction, shared.
  *
- * A "chapter" is one `## ` heading in lesson.md (§1.1). For 60/61 lessons
- * this coincides exactly with the `## R<n> — Title` rung grammar;
- * `content/maths/probabilites-conditionnelles/lesson.md` is the one census
- * exception with plain (non-rung) `##` headings — it paginates on those
- * as-authored (ledger `docs/audits/fable-day3-ledger.md` §11.11).
+ * A "chapter" is one `## ` heading in lesson.md (§1.1). RE-CENSUSED 2026-09-12:
+ * for 56/62 lessons this coincides exactly with the `## R<n> — Title` rung
+ * grammar, but SIX lessons mix plain (non-rung) `##` headings into the rung
+ * sequence — the previous comment claimed only one, and was wrong:
+ *
+ *   probabilites-conditionnelles  6 headings / 1 rung   (authored on plain
+ *                                                        headings, ledger §11.11)
+ *   structures-algebriques       10 headings / 8 rungs  (plain at ch5, ch8)
+ *   nombres-complexes-1           9 headings / 7 rungs  (plain at ch6, ch7)
+ *   suites-numeriques            12 headings / 11 rungs (plain at ch10)
+ *   limites-continuite            8 headings / 7 rungs  (plain last)
+ *   derivabilite-etude-fonctions  7 headings / 6 rungs  (plain last)
+ *
+ * CONSEQUENCE — the shorthand "chapitre N = R(N−1)", used by the content
+ * reviews and by the wave-1 critics, holds ONLY for the 56 pure-rung lessons.
+ * In the six above, a plain heading SHIFTS every rung after it, so the true
+ * chapter of a rung is `1 + (number of ## headings before it)`. Verified
+ * 2026-09-12: the prose in those lessons already cites the TRUE rendered
+ * number (structures-algebriques « un homomorphisme (chapitre 10) » = R7 ;
+ * nombres-complexes-1 « chapitre 8 » = R5 géométrie), and a corpus sweep found
+ * ZERO drifted citations. Applying the naive shorthand there would BREAK
+ * correct citations — do not "fix" them.
  *
  * This module is the single source BOTH `NotionPageView` (server — needs the
  * real chapter COUNT to size the synthetic "S'entraîner" chapter and the

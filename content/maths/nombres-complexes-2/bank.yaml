@@ -451,7 +451,7 @@ entries:
         stem: |-
           **(0,25 pt)** Montrer que les points $O$, $A$ et $B$ ne sont pas alignés.
         reasoning: |-
-          Chapitre R6 : $O$, $A$, $B$ sont alignés si et seulement si le rapport $\dfrac{b}{a}$ (rapport des affixes de $\vec{OB}$ et $\vec{OA}$) est réel. Ici $a$ et $b$ ont même module ($|m|$) mais des arguments opposés : le rapport se simplifie en une exponentielle pure, d'argument non nul et non égal à $\pi$ — donc pas réel.
+          Chapitre 7 : $O$, $A$, $B$ sont alignés si et seulement si le rapport $\dfrac{b}{a}$ (rapport des affixes de $\vec{OB}$ et $\vec{OA}$) est réel. Ici $a$ et $b$ ont même module ($|m|$) mais des arguments opposés : le rapport se simplifie en une exponentielle pure, d'argument non nul et non égal à $\pi$ — donc pas réel.
         steps:
           - math: '\dfrac{b}{a} = \dfrac{m\,e^{-i\pi/3}}{m\,e^{i\pi/3}} = e^{-i2\pi/3}'
             note: "Rapport des affixes de B et A (chapitre 7) ; m non nul se simplifie (donné)."
@@ -653,7 +653,7 @@ entries:
           - math: '-j = -\left(-\tfrac12+\tfrac{\sqrt3}{2}i\right) = \tfrac12-\tfrac{\sqrt3}{2}i = e^{-i\pi/3}'
             note: "Forme exponentielle de −j : module 1, argument −π/3."
           - math: '\left|\dfrac{p-r}{q-r}\right|=1 \ \text{et}\ \arg\!\left(\dfrac{p-r}{q-r}\right) = -\dfrac{\pi}{3}\ [2\pi] \implies PQR\ \text{équilatéral}'
-            note: "Chapitre R6, sommet R : module 1 et argument ±π/3 caractérisent un triangle équilatéral."
+            note: "Chapitre 7, sommet R : module 1 et argument ±π/3 caractérisent un triangle équilatéral."
 
   # ── bk-2024-n-x3 — 2024 N, Exercice 3 : équation à paramètre α, orthogonalité, lieu géométrique ──
   - id: bk-2024-n-x3
@@ -993,7 +993,7 @@ entries:
           **Une remarque à garder pour la suite.** $k$ est réel non nul et différent de $1$ : rien n'interdit $k < 0$. Une homothétie de rapport négatif est parfaitement licite — elle envoie le point de l'autre côté du centre. Ne l'écarte pas d'un réflexe : la réponse finale de l'exercice est justement $k = -2$.
         steps:
           - math: 'r\!\left(M_2,-\tfrac{\pi}{2}\right) : \ z_3 - z_2 = e^{-i\frac{\pi}{2}}\,(0-z_2), \qquad e^{-i\frac{\pi}{2}} = -i'
-            note: "Chapitre R5 : à droite l'antécédent (le point O), à gauche l'image ; le centre est M2."
+            note: "Chapitre 6 : à droite l'antécédent (le point O), à gauche l'image ; le centre est M2."
           - math: 'z_3 - z_2 = -i\times(-z_2) = i\,z_2 \implies z_3 = (1+i)z_2'
             note: "Les deux signes moins se compensent."
           - math: 'z_3 = (1+i)\times m(1+i) = m(1+i)^2 = m\times 2i = 2im'
@@ -1073,13 +1073,13 @@ entries:
           - math: 'R = \dfrac{z_4-z_2}{z_4-z_1}\times\dfrac{z_3-z_1}{z_3-z_2} = \left.\dfrac{z_4-z_2}{z_4-z_1}\middle/\dfrac{z_3-z_2}{z_3-z_1}\right.'
             note: "Le produit donné est le QUOTIENT de deux rapports du chapitre 7, pris aux sommets M4 et M3."
           - math: '\arg\!\left(\dfrac{z_4-z_2}{z_4-z_1}\right) = \left(\vec{M_4M_1},\vec{M_4M_2}\right), \qquad \arg\!\left(\dfrac{z_3-z_2}{z_3-z_1}\right) = \left(\vec{M_3M_1},\vec{M_3M_2}\right)'
-            note: "Chapitre R6 : chaque rapport porte l'angle sous lequel son sommet voit le segment [M1M2]."
+            note: "Chapitre 7 : chaque rapport porte l'angle sous lequel son sommet voit le segment [M1M2]."
           - math: 'R \in \mathbb{R}^* \iff \arg R = 0\ [\pi] \iff \left(\vec{M_4M_1},\vec{M_4M_2}\right) = \left(\vec{M_3M_1},\vec{M_3M_2}\right)\ [\pi]'
             note: "Un complexe non nul est réel exactement quand son argument vaut 0 modulo pi."
           - math: '\text{Angle inscrit} : \ M_3,\ M_4\ \text{voient}\ [M_1M_2]\ \text{sous le même angle} \iff M_1,M_2,M_3,M_4\ \text{cocycliques ou alignés}'
             note: "Le critère ne donne JAMAIS la cocyclicité seule : le cas aligné doit être écarté à part."
           - math: '\dfrac{z_3-z_1}{z_2-z_1} = \dfrac{m(2i-1)}{m\,i} = 2+i \notin \mathbb{R} \implies M_1,M_2,M_3\ \text{jamais alignés}'
-            note: "Chapitre R6 : rapport non réel = pas d'alignement. Un unique cercle passe donc par M1, M2, M3."
+            note: "Chapitre 7 : rapport non réel = pas d'alignement. Un unique cercle passe donc par M1, M2, M3."
           - math: 'M_4=M_1 \iff k=1\ (\text{exclu}),\quad M_4=M_2 \iff k=1+i,\quad M_4=M_3 \iff k=2i'
             note: "1+i et 2i ne sont pas réels : les quatre points sont deux à deux distincts pour tout k admissible."
           - math: 'R \in \mathbb{R} \iff \mathrm{Im}(R)=0 \iff \dfrac{k+2}{2(k-1)}=0 \iff k+2=0 \iff k=-2'
@@ -1201,9 +1201,9 @@ entries:
           Le rapport qu'on vient de calculer est exactement, au sommet $D$, le rapport du chapitre 7 : $\dfrac{p-d}{q-d} = \dfrac{z_P-z_D}{z_Q-z_D}$. Il vaut $i$, qui est imaginaire pur et de module $1$ : d'après la table du chapitre 7, imaginaire pur signale un angle droit en $D$, et module $1$ signale deux côtés égaux issus de $D$.
         steps:
           - math: '\dfrac{p-d}{q-d}=i\ \text{imaginaire pur (non nul)} \implies \big(\vec{DP},\vec{DQ}\big) = \pm\dfrac{\pi}{2} \implies PDQ\ \text{rectangle en}\ D'
-            note: "Chapitre R6 : rapport imaginaire pur ⟺ angle droit au sommet."
+            note: "Chapitre 7 : rapport imaginaire pur ⟺ angle droit au sommet."
           - math: '\left|\dfrac{p-d}{q-d}\right| = |i| = 1 \implies DP = DQ \implies PDQ\ \text{isocèle en}\ D'
-            note: "Chapitre R6 : module 1 ⟺ triangle isocèle au sommet."
+            note: "Chapitre 7 : module 1 ⟺ triangle isocèle au sommet."
           - math: 'PDQ\ \text{est rectangle et isocèle en}\ D'
             note: "Les deux conclusions combinées."
       - id: q3a
@@ -1277,7 +1277,7 @@ entries:
           Méthode du chapitre 2 : calculer le module, puis identifier l'argument à partir de $\cos\theta=a/r$ et $\sin\theta=b/r$, en vérifiant les deux signes à la fois (le piège classique du chapitre).
         steps:
           - math: '|1-i| = \sqrt{1^2+(-1)^2} = \sqrt2, \qquad \cos\theta=\dfrac{1}{\sqrt2},\ \sin\theta=-\dfrac{1}{\sqrt2} \implies \theta=-\dfrac{\pi}{4}'
-            note: "Chapitre R1 : module puis argument, en vérifiant les deux signes (cos et sin)."
+            note: "Chapitre 2 : module puis argument, en vérifiant les deux signes (cos et sin)."
           - math: '1-i = \sqrt2\,e^{-i\pi/4}'
             note: "Forme exponentielle du premier nombre."
           - math: '|1+\sqrt3\,i| = \sqrt{1^2+(\sqrt3)^2} = 2, \qquad \cos\theta=\dfrac12,\ \sin\theta=\dfrac{\sqrt3}{2} \implies \theta=\dfrac{\pi}{3}'
@@ -1360,10 +1360,10 @@ entries:
         stem: |-
           **(0,5 pt)** Déterminer les entiers $n$ pour lesquels les points $O$, $A_0$ et $A_n$ sont alignés.
         reasoning: |-
-          Chapitre R6 : $O$, $A_0$, $A_n$ sont alignés si et seulement si le rapport $\dfrac{z_{A_n}-z_O}{z_{A_0}-z_O} = \dfrac{u^n}{u^0} = u^n$ est réel. Or $u=(\sqrt6-\sqrt2)e^{i\pi/12}$ (question 1d) a pour module un réel strictement positif, donc $u^n$ (Moivre, chapitre 4) a pour argument $\dfrac{n\pi}{12}$ : il est réel exactement quand cet angle est un multiple de $\pi$.
+          Chapitre 7 : $O$, $A_0$, $A_n$ sont alignés si et seulement si le rapport $\dfrac{z_{A_n}-z_O}{z_{A_0}-z_O} = \dfrac{u^n}{u^0} = u^n$ est réel. Or $u=(\sqrt6-\sqrt2)e^{i\pi/12}$ (question 1d) a pour module un réel strictement positif, donc $u^n$ (Moivre, chapitre 4) a pour argument $\dfrac{n\pi}{12}$ : il est réel exactement quand cet angle est un multiple de $\pi$.
         steps:
           - math: 'O,\,A_0,\,A_n\ \text{alignés} \iff \dfrac{u^n}{u^0}=u^n\in\mathbb{R}'
-            note: "Chapitre R6 : rapport des affixes de OA_n et OA_0, réel ⟺ alignement."
+            note: "Chapitre 7 : rapport des affixes de OA_n et OA_0, réel ⟺ alignement."
           - math: 'u^n = (\sqrt6-\sqrt2)^n\,e^{in\pi/12}\quad(\text{Moivre, chapitre 4})'
             note: "u=(√6−√2)e^{iπ/12} (question 1d) ; module (√6−√2)^n réel positif."
           - math: 'u^n\in\mathbb{R} \iff \dfrac{n\pi}{12} \equiv 0\ [\pi] \iff \dfrac{n}{12}\in\mathbb{Z} \iff n\ \text{multiple de}\ 12'
@@ -1374,16 +1374,16 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que pour tout entier $n$, le triangle $O A_n A_{n+1}$ est rectangle en $A_n$.
         reasoning: |-
-          Chapitre R6, cette fois au sommet $A_n$ : le rapport $\dfrac{z_O - z_{A_n}}{z_{A_{n+1}}-z_{A_n}} = \dfrac{-u^n}{u^{n+1}-u^n}$ se simplifie en factorisant $u^n$ au dénominateur — $u^n$ disparaît, et il ne reste qu'une constante $\dfrac{-1}{u-1}$, **indépendante de $n$**. Reste à voir si cette constante est imaginaire pure ; ça dépend uniquement de $u-1$, et $u-1=(2-\sqrt3)i$ est déjà, par construction de $u$, un imaginaire pur — donc son inverse (et son opposé) l'est aussi.
+          Chapitre 7, cette fois au sommet $A_n$ : le rapport $\dfrac{z_O - z_{A_n}}{z_{A_{n+1}}-z_{A_n}} = \dfrac{-u^n}{u^{n+1}-u^n}$ se simplifie en factorisant $u^n$ au dénominateur — $u^n$ disparaît, et il ne reste qu'une constante $\dfrac{-1}{u-1}$, **indépendante de $n$**. Reste à voir si cette constante est imaginaire pure ; ça dépend uniquement de $u-1$, et $u-1=(2-\sqrt3)i$ est déjà, par construction de $u$, un imaginaire pur — donc son inverse (et son opposé) l'est aussi.
         steps:
           - math: '\dfrac{z_O-z_{A_n}}{z_{A_{n+1}}-z_{A_n}} = \dfrac{0-u^n}{u^{n+1}-u^n} = \dfrac{-u^n}{u^n(u-1)} = \dfrac{-1}{u-1}'
-            note: "Chapitre R6, sommet A_n ; on factorise u^n (u≠0, u^n≠0) au dénominateur, il se simplifie."
+            note: "Chapitre 7, sommet A_n ; on factorise u^n (u≠0, u^n≠0) au dénominateur, il se simplifie."
           - math: 'u-1 = \big[1+(2-\sqrt3)i\big]-1 = (2-\sqrt3)i'
             note: "u−1 est déjà un imaginaire pur, par construction de u = 1+(2−√3)i."
           - math: '\dfrac{-1}{u-1} = \dfrac{-1}{(2-\sqrt3)i} = \dfrac{-1}{2-\sqrt3}\times\dfrac{1}{i} = \dfrac{i}{2-\sqrt3}'
             note: "1/i=−i (chapitre 1) ; le facteur réel −1/(2−√3) ne change pas la nature imaginaire pure."
           - math: '\dfrac{i}{2-\sqrt3}\ \text{est imaginaire pur (non nul), indépendant de } n \implies O A_n A_{n+1}\ \text{rectangle en}\ A_n\ \text{pour tout}\ n'
-            note: "Chapitre R6 : rapport imaginaire pur au sommet A_n ⟺ angle droit en A_n, vrai pour tout n."
+            note: "Chapitre 7 : rapport imaginaire pur au sommet A_n ⟺ angle droit en A_n, vrai pour tout n."
 
 
   # ── bk-2023-r-x2 — 2023 RATTRAPAGE, Exercice 2 : système non linéaire remonté dans ℂ ; cercle unité, cordes, p = bc/a ──
@@ -1672,7 +1672,7 @@ entries:
           **Le piège à éviter.** Traduire « perpendiculaire » par $\arg = \dfrac{\pi}{2}$ et se croire obligé de choisir un signe. L'angle vaut $\pm\dfrac{\pi}{2}$ selon l'orientation, et c'est précisément pour cela qu'on écrit la condition sous la forme insensible au signe « le rapport est imaginaire pur », c'est-à-dire $w = -\overline{w}$. Choisir $+\dfrac{\pi}{2}$ arbitrairement, c'est ajouter une hypothèse que l'énoncé ne donne pas.
         steps:
           - math: '(AQ) \perp (BC) \iff \dfrac{q-a}{c-b}\ \text{imaginaire pur} \iff \dfrac{q-a}{c-b} = -\,\overline{\left(\dfrac{q-a}{c-b}\right)}'
-            note: "Chapitre R6 : rapport imaginaire pur ⟺ directions perpendiculaires ; et imaginaire pur ⟺ opposé de son conjugué (chapitre 1)."
+            note: "Chapitre 7 : rapport imaginaire pur ⟺ directions perpendiculaires ; et imaginaire pur ⟺ opposé de son conjugué (chapitre 1)."
           - math: '\overline{\left(\dfrac{q-a}{c-b}\right)} = \dfrac{q-a}{c-b}\cdot\dfrac{bc}{aq}'
             note: "Même calcul qu'à la question 2-a, avec q à la place de p."
           - math: 'Q \neq A \implies \dfrac{q-a}{c-b} \neq 0 \implies 1 = -\dfrac{bc}{aq} \implies aq = -bc'
@@ -1716,7 +1716,7 @@ entries:
           - math: 'w-\overline{w} = 0 \iff w \in \mathbb{R} \iff w = \pm1 \iff c = a\ (\text{exclu})\ \text{ou}\ c = -a'
             note: "Le cas nul doit être écarté : zéro ne code aucune direction."
           - math: 'a \neq -c \implies \dfrac{p-r}{b} = \dfrac{\text{aff}\left(\vec{RP}\right)}{\text{aff}\left(\vec{OB}\right)}\ \text{imaginaire pur non nul} \implies (PR) \perp (OB)'
-            note: "Chapitre R6 : rapport imaginaire pur non nul ⟹ directions perpendiculaires. Si a = −c alors p = r = −b et la droite (PR) n'existe pas."
+            note: "Chapitre 7 : rapport imaginaire pur non nul ⟹ directions perpendiculaires. Si a = −c alors p = r = −b et la droite (PR) n'existe pas."
 
   # ── bk-2025-n-x2 — 2025 N, Exercice 2 : équation à paramètre α, perpendicularités, cocyclicité ──
   - id: bk-2025-n-x2
@@ -1832,7 +1832,7 @@ entries:
           - math: '\dfrac{h-a}{b-a} = \dfrac{-a^2}{-a^2(\lambda^2+1)} = \dfrac{1}{\lambda^2+1}'
             note: "On réutilise b²−a²=−a²(λ²+1) (question précédente) ; le facteur a² se simplifie."
           - math: '\dfrac{1}{\lambda^2+1}\in\mathbb{R} \implies \dfrac{h-a}{b-a}\in\mathbb{R} \implies H,\,A,\,B\ \text{alignés}'
-            note: "Chapitre R6 : rapport (des affixes de AH et AB) réel ⟺ alignement."
+            note: "Chapitre 7 : rapport (des affixes de AH et AB) réel ⟺ alignement."
       - id: q4a
         part: "Soient $I(m)$ le milieu du segment $[OH]$ et $J(n)$ le milieu du segment $[HB]$"
         stem: |-
@@ -1855,9 +1855,9 @@ entries:
           Même lecture qu'à la question 3a, cette fois sur le rapport $\dfrac{n}{m-a} = \dfrac{\text{aff}(\vec{OJ})}{\text{aff}(\vec{AI})}$ : imaginaire pur, donc les directions $(OJ)$ et $(AI)$ sont perpendiculaires (chapitre 7), et son module $|\lambda|$ donne le rapport des longueurs.
         steps:
           - math: '\dfrac{n}{m-a} = \dfrac{\text{aff}(\vec{OJ})}{\text{aff}(\vec{AI})} = -\lambda i\ \text{imaginaire pur} \implies (OJ)\perp(AI)'
-            note: "Chapitre R6 : rapport imaginaire pur ⟹ directions perpendiculaires."
+            note: "Chapitre 7 : rapport imaginaire pur ⟹ directions perpendiculaires."
           - math: '\left|\dfrac{n}{m-a}\right| = |-\lambda i| = |\lambda| = \dfrac{OJ}{AI} \implies OJ = |\lambda|\,AI'
-            note: "Chapitre R6 : le module donne le rapport des longueurs."
+            note: "Chapitre 7 : le module donne le rapport des longueurs."
       - id: q4c
         stem: |-
           **(0,25 pt)** Soit $K$ le point d'intersection des droites $(OJ)$ et $(AI)$. Montrer que les points $K$, $I$, $H$ et $J$ sont cocycliques.
@@ -1893,7 +1893,7 @@ entries:
           - math: '\dfrac{n-m}{a} = \dfrac{b/2}{a} = \dfrac12\times\dfrac{b}{a} = \dfrac{\lambda}{2}\,i'
             note: "b/a=λi (notation de la partie II)."
           - math: '\dfrac{n-m}{a} = \dfrac{\text{aff}(\vec{IJ})}{\text{aff}(\vec{OA})}\ \text{imaginaire pur (}\lambda\neq0\text{)} \implies (IJ)\perp(OA)'
-            note: "Chapitre R6 : rapport imaginaire pur ⟹ perpendicularité des directions."
+            note: "Chapitre 7 : rapport imaginaire pur ⟹ perpendicularité des directions."
 
   # ── bk-2017-n-x2 — 2017 N, Exercice 2 : équation à paramètre m non nul, rotation de centre Ω, cercle de diamètre [AB], cocyclicité ──
   - id: bk-2017-n-x2
@@ -2007,13 +2007,13 @@ entries:
           Or $\dfrac{i-m}{1-m}=\dfrac{b-m}{a-m}$ est, par le chapitre 7, le rapport qui code l'angle $\big(\vec{MA},\vec{MB}\big)$ : imaginaire pur signifie que cet angle est droit, c'est-à-dire que $M$ voit le segment $[AB]$ sous un angle droit — exactement la caractérisation (Thalès) du cercle $(\Gamma)$ de diamètre $[AB]$.
         steps:
           - math: 'M,M_1,M_2\ \text{alignés} \iff \dfrac{z_2-m}{z_1-m}\in\mathbb{R} \iff i\,\dfrac{m-1}{m-i}\in\mathbb{R}\ (\text{q2-a})'
-            note: "Chapitre R6 : rapport réel = alignement."
+            note: "Chapitre 7 : rapport réel = alignement."
           - math: 'i\,\dfrac{m-1}{m-i}\in\mathbb{R} \iff \dfrac{m-1}{m-i}\in i\mathbb{R} \iff \dfrac{m-i}{m-1}\in i\mathbb{R}'
             note: "Diviser un réel par i donne un imaginaire pur ; l'inverse d'un imaginaire pur non nul reste imaginaire pur."
           - math: '\dfrac{m-i}{m-1} = \dfrac{i-m}{1-m} = \dfrac{b-m}{a-m}\ (\text{affixes de}\ B(i)\ \text{et}\ A(1))'
             note: "Même rapport, numérateur et dénominateur changes de signe ensemble."
           - math: '\dfrac{b-m}{a-m}\in i\mathbb{R} \implies \widehat{\big(\vec{MA},\vec{MB}\big)} = \dfrac{\pi}{2} \implies M\in(\Gamma)\ \text{cercle de diamètre}\ [AB]'
-            note: "Chapitre R6 : rapport imaginaire pur = angle droit ; Thalès : M voit [AB] sous un angle droit ⟹ M sur le cercle de diamètre [AB]."
+            note: "Chapitre 7 : rapport imaginaire pur = angle droit ; Thalès : M voit [AB] sous un angle droit ⟹ M sur le cercle de diamètre [AB]."
       - id: q2c2
         stem: |-
           **(0,75 pt)** Déterminer l'ensemble des points $M$ pour que les points $\Omega$, $M$, $M_1$ et $M_2$ soient cocycliques (remarquer que : $\dfrac{z_1-\omega}{z_2-\omega} = i$)

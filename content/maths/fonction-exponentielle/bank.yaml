@@ -576,13 +576,13 @@ entries:
         steps:
           - math: 'f(x) = 4x\,e^{-x} + 2x^2 - 4x'
             note: "On développe le produit : 4x fois e puissance moins x, plus 4x fois un demi x moins 4x."
-          - math: '\lim_{x\to+\infty} x\,e^{-x} = 0 \quad (\text{inverse de } e^x/x\to+\infty,\ R4)'
+          - math: '\lim_{x\to+\infty} x\,e^{-x} = 0 \quad (\text{inverse de } e^x/x\to+\infty,\ \text{chapitre 5})'
             note: "En plus l'infini, x fois e puissance moins x tend vers 0 : c'est l'inverse de la croissance comparée du chapitre 5."
           - math: '\lim_{x\to+\infty} (2x^2-4x) = +\infty \ \Rightarrow\ \lim_{x\to+\infty} f(x) = +\infty'
             note: "Le polynôme 2x carré moins 4x tend vers plus l'infini ; la somme suit ce terme, pas d'indétermination."
           - math: 'f(x) = 4x\,e^{-x}\left[1 + \frac{(x-2)e^{x}}{2}\right]'
             note: "On factorise par le terme exponentiel pour lever l'indétermination en moins l'infini."
-          - math: '\lim_{x\to-\infty} x\,e^{x} = 0 \quad (\text{corollaire } R4) \ \Rightarrow\ \lim_{x\to-\infty}\left[1+\frac{(x-2)e^x}{2}\right] = 1'
+          - math: '\lim_{x\to-\infty} x\,e^{x} = 0 \quad (\text{corollaire du chapitre 5}) \ \Rightarrow\ \lim_{x\to-\infty}\left[1+\frac{(x-2)e^x}{2}\right] = 1'
             note: "x fois e puissance x tend vers 0 en moins l'infini (corollaire du chapitre 5) : le crochet tend vers 1."
           - math: '\lim_{x\to-\infty} 4x\,e^{-x} = -\infty \ \Rightarrow\ \lim_{x\to-\infty} f(x) = -\infty'
             note: "Produit direct, x vers moins l'infini fois e puissance moins x vers plus l'infini : moins l'infini, multiplié par un facteur qui tend vers 1."
@@ -641,7 +641,7 @@ entries:
             note: "On évalue f en trois demis, en remplaçant x par 3/2 dans la définition de f."
           - math: 'e^{-3/2} = \dfrac{1}{4{,}5} = \dfrac{2}{9} \approx 0{,}222 \ \Rightarrow\ f\!\left(\tfrac32\right) \approx 6(0{,}222-0{,}25) < 0'
             note: "Avec e puissance trois demis égal 4,5 (indication de l'énoncé), e puissance moins trois demis vaut environ 0,222 : f(3/2) est négatif."
-          - math: 'f(2) = 8e^{-2} > 0 \quad (e^{-2}>0 \text{ toujours, } R1)'
+          - math: 'f(2) = 8e^{-2} > 0 \quad (e^{-2}>0 \text{ toujours, chapitre 2})'
             note: "f(2) est strictement positif, car e puissance moins 2 est toujours strictement positif."
           - math: 'f\!\left(\tfrac32\right)<0<f(2) \ \Rightarrow\ \exists!\,\alpha\in\left]\tfrac32,2\right[,\ f(\alpha)=0'
             note: "Changement de signe entre 3/2 et 2, sur un intervalle où f est continue et strictement croissante : existence et unicité de alpha."
@@ -1246,7 +1246,7 @@ entries:
 
           En $+\infty$ : $e^{x-2}\to+\infty$, donc $e^{x-2}-4\to+\infty$ aussi, et leur produit $e^{x-2}(e^{x-2}-4)\to+\infty$ (produit de deux facteurs qui explosent). Ici, pas besoin de factoriser pour lever une indétermination : $-x\to-\infty$ ET $-\dfrac12\,e^{x-2}(e^{x-2}-4)\to-\infty$ — les deux termes de $f$ partent déjà dans la même direction. Une somme de deux quantités qui tendent toutes deux vers $-\infty$ (plus une constante) tend vers $-\infty$, sans qu'il y ait à trancher un $+\infty-\infty$.
         steps:
-          - math: '\lim_{x\to-\infty} e^{x-2} = 0 \quad (R4)'
+          - math: '\lim_{x\to-\infty} e^{x-2} = 0 \quad (\text{chapitre 5})'
             note: "En moins l'infini, e puissance x moins 2 tend vers 0, même limite que e puissance x (chapitre 5), appliquee a l'exposant x moins 2."
           - math: 'e^{x-2}\left(e^{x-2}-4\right) \xrightarrow[x\to-\infty]{} 0\times(-4) = 0'
             note: "Le produit tend vers 0 : un facteur qui s'efface multiplie par un facteur qui tend vers moins 4."
@@ -1269,7 +1269,7 @@ entries:
         steps:
           - math: 'f(x) - \left(-x+\tfrac52\right) = -\tfrac12 e^{x-2}\left(e^{x-2}-4\right)'
             note: "L'écart entre f et la droite (Delta) se réduit au troisième terme de f : les deux premiers coïncident exactement avec (Delta)."
-          - math: '\lim_{x\to-\infty} e^{x-2} = 0 \quad (R4)'
+          - math: '\lim_{x\to-\infty} e^{x-2} = 0 \quad (\text{chapitre 5})'
             note: "En moins l'infini, e puissance x moins 2 tend vers 0."
           - math: '\lim_{x\to-\infty}\left[-\tfrac12 e^{x-2}\left(e^{x-2}-4\right)\right] = -\tfrac12\times0\times(-4) = 0'
             note: "L'écart tend vers 0 : (Delta) est bien asymptote a (C) en moins l'infini."
@@ -1283,9 +1283,9 @@ entries:
 
           $\exp$ étant strictement croissante (chapitre 2), $e^{x-2}<4 \iff x-2<\ln4 \iff x<2+\ln4$. Donc pour $x\le2+\ln4$ : $4-e^{x-2}\ge0$, l'écart est $\ge0$, $(C)$ est au-dessus de $(\Delta)$. Pour $x\ge2+\ln4$ : $4-e^{x-2}\le0$, l'écart est $\le0$, $(C)$ est en dessous de $(\Delta)$. Les deux courbes se touchent exactement en $x=2+\ln4$.
         steps:
-          - math: 'e^{x-2}=4 \iff x-2=\ln4 \iff x=2+\ln4 \quad (R7)'
+          - math: 'e^{x-2}=4 \iff x-2=\ln4 \iff x=2+\ln4 \quad (\text{chapitre 8})'
             note: "Injectivite de exp (chapitre 8) : on passe au logarithme des deux cotes de l'équation."
-          - math: 'f(x)-\left(-x+\tfrac52\right) = -\tfrac12 e^{x-2}\left(e^{x-2}-4\right), \qquad e^{x-2}>0 \quad (R1)'
+          - math: 'f(x)-\left(-x+\tfrac52\right) = -\tfrac12 e^{x-2}\left(e^{x-2}-4\right), \qquad e^{x-2}>0 \quad (\text{chapitre 2})'
             note: "Le facteur e puissance x moins 2 est toujours strictement positif : il ne change jamais le signe de l'écart."
           - math: 'f(x)-\left(-x+\tfrac52\right) \text{ a le signe de } \left(4-e^{x-2}\right)'
             note: "On isole le seul facteur qui varie en signe."
@@ -1315,7 +1315,7 @@ entries:
             note: "On divise f(x) par x, terme a terme."
           - math: 'e^{x-2}\ge8 \ \Rightarrow\ e^{x-2}-4\ge\tfrac12e^{x-2} \ \Rightarrow\ e^{x-2}\left(e^{x-2}-4\right)\ge\tfrac12e^{2x-4}'
             note: "Pour x assez grand, on minore le produit par la moitié du carré du terme exponentiel."
-          - math: '\dfrac{e^{2x-4}}{x} = 2\times\dfrac{e^{X}}{X}\times\dfrac{X}{X+4} \xrightarrow[X=2x-4\to+\infty]{} +\infty \quad (R4)'
+          - math: '\dfrac{e^{2x-4}}{x} = 2\times\dfrac{e^{X}}{X}\times\dfrac{X}{X+4} \xrightarrow[X=2x-4\to+\infty]{} +\infty \quad (\text{chapitre 5})'
             note: "Changement de variable X égal 2x moins 4 : on retrouve directement la croissance comparée du chapitre 5."
           - math: '\dfrac{e^{x-2}(e^{x-2}-4)}{x} \ge \dfrac12\dfrac{e^{2x-4}}{x} \ \Rightarrow\ \dfrac{e^{x-2}(e^{x-2}-4)}{x} \to +\infty'
             note: "Minorée par une quantité qui explose : forcée de suivre."
@@ -1354,7 +1354,7 @@ entries:
 
           On complète avec les limites de la question 1 et la valeur remarquable en $x=2$ : $f(2) = -2+\frac52-\frac12\times1\times(1-4) = \frac12+\frac32 = 2$.
         steps:
-          - math: 'f''(x) = -\left(e^{x-2}-1\right)^2 \le 0,\ \text{nul seulement en } x=2 \quad (R1)'
+          - math: 'f''(x) = -\left(e^{x-2}-1\right)^2 \le 0,\ \text{nul seulement en } x=2 \quad (\text{chapitre 2})'
             note: "f prime est l'oppose d'un carré : toujours négative ou nulle, nulle seulement en un point isole."
           - math: 'f(2) = -2+\tfrac52-\tfrac12\times1\times(1-4) = 2'
             note: "Valeur remarquable au point ou f prime s'annule."
@@ -2062,9 +2062,9 @@ entries:
         steps:
           - math: 'f(x) = (1+u)e^{-u} = u\,e^{-u} + e^{-u} \quad (u = \tfrac1x \to +\infty \text{ quand } x\to0^+)'
             note: "On pose u = 1 sur x pour se ramener a une limite en plus l'infini."
-          - math: '\lim_{u\to+\infty} u\,e^{-u} = 0 \quad (\text{inverse de } e^u/u\to+\infty,\ R4)'
+          - math: '\lim_{u\to+\infty} u\,e^{-u} = 0 \quad (\text{inverse de } e^u/u\to+\infty,\ \text{chapitre 5})'
             note: "Croissance comparee du chapitre 5 : u fois e puissance moins u tend vers 0."
-          - math: '\lim_{u\to+\infty} e^{-u} = 0 \quad (R4)'
+          - math: '\lim_{u\to+\infty} e^{-u} = 0 \quad (\text{chapitre 5})'
             note: "e puissance moins u tend vers 0 quand u tend vers plus l'infini."
           - math: '\lim_{x\to0^+} f(x) = 0+0 = 0 = f(0) \ \Rightarrow\ f \text{ continue à droite en } 0'
             note: "Somme de deux limites nulles : la limite vaut f(0), continuité à droite établie."
@@ -2084,7 +2084,7 @@ entries:
         steps:
           - math: '\frac{f(x)}{x} = \frac{e^{-1/x}}{x} + \frac{e^{-1/x}}{x^2} = u\,e^{-u} + u^2e^{-u} \quad (u=\tfrac1x)'
             note: "On developpe le taux d'accroissement en fonction de u = 1 sur x."
-          - math: 'u^2e^{-u} = \left(u\,e^{-u/2}\right)^2,\qquad u\,e^{-u/2} = \frac{2t}{e^{t}} \ (t=\tfrac u2\to+\infty) \to 0 \quad (R4)'
+          - math: 'u^2e^{-u} = \left(u\,e^{-u/2}\right)^2,\qquad u\,e^{-u/2} = \frac{2t}{e^{t}} \ (t=\tfrac u2\to+\infty) \to 0 \quad (\text{chapitre 5})'
             note: "On écrit u carré e puissance moins u comme un carré pour réutiliser la même croissance comparée."
           - math: '\Rightarrow\ u^2e^{-u} \to 0^2 = 0'
             note: "Le carré d'une quantité qui tend vers 0 tend vers 0."

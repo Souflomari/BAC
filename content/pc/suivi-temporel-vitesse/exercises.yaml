@@ -83,7 +83,7 @@ exercises:
           La vitesse volumique de réaction se définit à partir de l'avancement : $v = \dfrac{1}{V_0}\dfrac{dx}{dt}$. Mais ici on ne mesure pas $x$, on mesure $\sigma$ ; il faut donc exprimer $x$ en fonction de $\sigma$ à l'aide de la relation linéaire donnée, puis dériver. L'inversion de $\sigma = 0{,}25 - 160\,x$ donne $x = \dfrac{0{,}25 - \sigma}{160}$ ; en la dérivant, un signe moins apparaît — c'est normal, car $\sigma$ décroît quand l'avancement $x$ croît.
         steps:
           - math: 'v = \dfrac{1}{V_0}\dfrac{dx}{dt}'
-            note: "Définition de la vitesse volumique de réaction (leçon R2)."
+            note: "Définition de la vitesse volumique de réaction (chapitre 3)."
           - math: '\sigma = 0{,}25 - 160\,x \implies x = \dfrac{0{,}25 - \sigma}{160} \implies \dfrac{dx}{dt} = -\dfrac{1}{160}\dfrac{d\sigma}{dt}'
             note: "On inverse la relation σ(x), puis on dérive (0,25 est une constante)."
           - math: '\boxed{v = \dfrac{1}{V_0}\left(-\dfrac{1}{160}\dfrac{d\sigma}{dt}\right) = -\dfrac{1}{160\,V_0}\dfrac{d\sigma}{dt}}'
