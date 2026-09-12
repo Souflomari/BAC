@@ -113,6 +113,18 @@ test("le barème d'une épreuve ne dépasse jamais 20", () => {
   assert.deepEqual(trop, [], `épreuves au-dessus de 20 points : ${trop.join(", ")}`);
 });
 
+test("une épreuve COMPLÈTE totalise exactement 20", () => {
+  // Le test au-dessus ne pose qu'une borne SUPÉRIEURE, et le seuil de
+  // `complete` est `>= 19,5` : une épreuve à 19,5 ou 19,75 passait donc les
+  // deux, était annoncée complète, et servait de dénominateur à une note que
+  // l'élève lit sur 20 (EpreuveShell « N/20 », examens.ts `ep.pts`). Un point
+  // manquant dans un seul `bareme_total` se serait vu nulle part.
+  // Mesuré le 2026-09-12 : les 38 épreuves complètes font exactement 20.
+  const faux = EPREUVES.filter((e) => e.complete && Math.abs(e.pts - 20) > 1e-9)
+    .map((e) => `${e.id} : ${e.pts}`);
+  assert.deepEqual(faux, [], `épreuves complètes qui ne font pas 20 : ${faux.join(", ")}`);
+});
+
 test("« complète » veut dire ≥ 19,5 points, et rien d'autre", () => {
   for (const e of EPREUVES) assert.equal(e.complete, e.pts >= 19.5, `${e.id} : ${e.pts} pts, complete=${e.complete}`);
 });

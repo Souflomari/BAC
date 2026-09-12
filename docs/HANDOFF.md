@@ -5061,7 +5061,10 @@ node --experimental-strip-types --import <shim-registre> <script-de-balayage>
 ```
 
 (Le commentaire de `scripts/item-stats.mjs` — « Node scripts here can't import
-TS from web/src » — n'est plus vrai depuis Node 22.)
+TS from web/src » — est faux deux fois : `scripts/test-examens.mjs` charge déjà
+`lib/examens.ts` **via `jiti`**, et Node 22 sait le faire nativement. `jiti`
+reste la voie de la maison ; le dépouillement natif est simplement ce qui a
+servi ici, sans dépendance.)
 
 **Ce que ça donne, sur 491 chapitres / 62 notions :**
 
@@ -5128,3 +5131,38 @@ ch3 affiche `φ'(x) = u'(x) × 1/u(x) = a × 1/(ax)`, une étape d'exemple, pas 
 résultat du chapitre. Le vrai correctif n'est pas un meilleur repli : c'est un
 `\boxed{}` par chapitre, ou le sidecar. 27 chapitres sur 491 portent aujourd'hui
 ce signal.
+
+### 11.51 Le barème d'une épreuve complète : 38 sur 38 font exactement 20 — et rien ne l'exigeait
+
+Parti du barème inventé trouvé dans `suites-numeriques` (§11.45) : si un
+`bareme_total` peut être faux, que vaut la note que l'élève lit ?
+
+`bareme_total` n'est pas décoratif. Il est **rendu** (`BankCard.tsx:90`,
+`EpreuveShell.tsx:164` « N pts »), **sommé** en total d'épreuve
+(`examens.ts:243`) et **utilisé pour le reste à attribuer** dans
+l'auto-évaluation (`EpreuveShell.tsx:450`). C'est le dénominateur de la note
+sur 20.
+
+**Mesuré** avec l'assembleur réel (`listEpreuves()`), sur les 39 épreuves
+assemblées :
+
+- **38 épreuves complètes, toutes à exactement 20,00** ;
+- la 39ᵉ (`sm-2020-normale`, 10,5 pts, 3 exercices) est correctement marquée
+  incomplète ;
+- **247 entrées d'épreuve sur 247** portent à la fois `bareme_total` et
+  `duration_min` — aucun trou ;
+- le cumul des durées colle à la durée officielle (240 min SM / 180 SPC)
+  partout sauf sur la seule épreuve incomplète, ce qui est attendu.
+
+**Résultat négatif : cette couche est saine.** Ce qui ne l'était pas, c'est
+qu'elle n'était gardée par rien. `test-examens.mjs` posait bien un plafond
+(« le barème ne dépasse jamais 20 ») et définissait `complete` comme
+`pts >= 19,5` — mais **aucun test n'exigeait qu'une épreuve complète fasse
+20**. Une épreuve à 19,5 ou 19,75 passait donc les 13 tests, s'affichait comme
+complète, et servait de dénominateur à une note sur 20. Un quart de point
+perdu dans un seul `bareme_total` ne se serait vu nulle part.
+
+Assertion ajoutée : « une épreuve COMPLÈTE totalise exactement 20 ».
+**Vérifiée dans les deux sens** (ADR 0031) : en retirant 0,25 pt d'un seul
+`bareme_total` d'arithmetique, elle tombe en nommant la coupable
+(`sm-2019-normale : 19.75`) ; le revert la remet au vert. 14 tests, 14 verts.
