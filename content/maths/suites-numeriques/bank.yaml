@@ -437,7 +437,7 @@ entries:
         stem: |-
           **(0,75 pt)** Montrer que pour tout $n$ de $\mathbb{N}$, $0 < u_n \le \left(\dfrac{1}{2}\right)^{n+1}$ ; puis calculer la limite de la suite $(u_n)$
         reasoning: |-
-          Même mécanisme qu'en bk-2020-n-x1 (question 3a) : on transforme $u_{n+1}\le\dfrac{1}{2}u_n$ (issu de la question 3a, en multipliant le quotient par $u_n>0$) en un encadrement géométrique par récurrence, en empilant l'inégalité à chaque rang. La limite s'obtient ensuite par le théorème des gendarmes (chapitre 7), le majorant géométrique tendant vers 0 (chapitre 6).
+          Même mécanisme que dans le sujet 2020 (question 3a) : on transforme $u_{n+1}\le\dfrac{1}{2}u_n$ (issu de la question 3a, en multipliant le quotient par $u_n>0$) en un encadrement géométrique par récurrence, en empilant l'inégalité à chaque rang. La limite s'obtient ensuite par le théorème des gendarmes (chapitre 7), le majorant géométrique tendant vers 0 (chapitre 6).
         steps:
           - math: 'u_0 = \dfrac{1}{2} = \left(\dfrac{1}{2}\right)^{0+1}'
             note: "Initialisation : égalité au rang 0."
@@ -576,7 +576,7 @@ entries:
 
           **(0,5 pt)** Montrer que $(v_n)$ est une suite géométrique de raison $\dfrac{2}{3}$
         reasoning: |-
-          Même geste qu'en bk-2020-n-x1 et bk-2021-n-x2 : on calcule $v_{n+1}$ en injectant la relation de récurrence de $(u_n)$, puis on fait réapparaître $v_n$ dans le résultat. On exprime séparément $2-u_{n+1}$ et $1-u_{n+1}$ (les deux blocs de la définition de $v_{n+1}$), chacun se simplifiant grâce à la forme $u_{n+1}=\dfrac{4u_n-2}{1+u_n}$.
+          Même geste que dans le sujet 2020 et le sujet 2021 : on calcule $v_{n+1}$ en injectant la relation de récurrence de $(u_n)$, puis on fait réapparaître $v_n$ dans le résultat. On exprime séparément $2-u_{n+1}$ et $1-u_{n+1}$ (les deux blocs de la définition de $v_{n+1}$), chacun se simplifiant grâce à la forme $u_{n+1}=\dfrac{4u_n-2}{1+u_n}$.
         steps:
           - math: '2-u_{n+1} = 2-\dfrac{4u_n-2}{1+u_n} = \dfrac{2(1+u_n)-(4u_n-2)}{1+u_n} = \dfrac{4-2u_n}{1+u_n} = \dfrac{2(2-u_n)}{1+u_n}'
             note: "On calcule 2 moins $u_{n+1}$ en réduisant au même dénominateur."
@@ -590,7 +590,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que $u_n = 1 + \dfrac{1}{1 - \left(\dfrac{2}{3}\right)^{n+1}}$, pour tout entier naturel $n$
         reasoning: |-
-          La formule explicite d'une suite géométrique (chapitre 3) donne $v_n$ directement. Il reste à inverser la définition $v_n=\dfrac{2-u_n}{1-u_n}$ pour isoler $u_n$ — la même manipulation qu'à la fin de bk-2020-n-x1.
+          La formule explicite d'une suite géométrique (chapitre 3) donne $v_n$ directement. Il reste à inverser la définition $v_n=\dfrac{2-u_n}{1-u_n}$ pour isoler $u_n$ — la même manipulation qu'à la fin du sujet 2020.
         steps:
           - math: 'v_0 = \dfrac{2-u_0}{1-u_0} = \dfrac{2-4}{1-4} = \dfrac{-2}{-3} = \dfrac{2}{3}'
             note: "Premier terme de la suite géométrique v."

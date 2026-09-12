@@ -928,7 +928,9 @@ for (const dir of dirs) {
       if (Array.isArray(n)) { for (const x of n) parcours(x, fichier); return; }
       if (!n || typeof n !== "object") return;
       for (const [k, v] of Object.entries(n)) {
-        if (k === "sourcing") continue; // author-facing par contrat
+        // Auteur par contrat — le rendu ne charge aucun de ces sous-arbres.
+        if (k === "sourcing" || k === "coverage_summary" ||
+            k === "contradicts_principle") continue;
         if (typeof v === "string" && RENDU_TXT.has(k)) {
           if (RENVOI.test(v)) fuites.push(`${fichier} → champ « ${k} »`);
         } else parcours(v, fichier);
@@ -939,6 +941,71 @@ for (const dir of dirs) {
       console.error(
         `  ✗ ${dir}: ${f} renvoie l'élève à une note d'auteur (« en tête de fichier ») — ` +
           `c'est un commentaire YAML, il ne peut pas la lire. Dis le fait sur place, ou déplace le renvoi dans \`sourcing\`.`
+      );
+      dirFail++;
+    }
+  }
+
+  // ── §11.67 L'IDENTIFIANT INTERNE dans un champ rendu ────────────────────
+  //    Même famille que la porte ci-dessus, autre objet : au lieu de pointer
+  //    une note invisible, le texte pointe une ENTRÉE ou un ITEM par sa clé
+  //    de fichier — « contrairement aux autres sujets de cette banque
+  //    (bk-2018-n-x1, bk-2019-n-x1, …) », « voir RC-20 ». Ces clés ne sont
+  //    imprimées NULLE PART dans le rendu : l'élève lit une référence qu'il
+  //    ne peut pas résoudre. Le référent visible existe et il est court —
+  //    la session pour une entrée de banque (« le sujet 2019 »), le numéro
+  //    de chapitre pour un barreau.
+  //
+  //    Mesuré le 2026-09-12 : **87 identifiants d'entrée dans 18 notions**
+  //    + 3 identifiants d'item dans 2 notions. Tous réécrits. C'est la même
+  //    leçon qu'en §11.46 et §11.66 : une campagne de nettoyage du texte
+  //    rendu doit énumérer les FAMILLES rendues, pas les fichiers qu'on a en
+  //    tête — celle-ci avait balayé la prose, les sidecars et les légendes,
+  //    jamais les renvois d'une carte de banque vers une autre.
+  //
+  //    Les préfixes d'items sont LUS DANS LA NOTION (les `id:` de la forme
+  //    ABC-12), jamais devinés : une notion ne peut citer que ses propres
+  //    items, et un préfixe inventé ferait crier la porte sur du texte sain.
+  {
+    const RENDU_TXT = new Set(["intro", "stem", "reasoning", "note", "text", "feedback",
+      "solution", "correct_feedback", "title", "part", "math", "caption"]);
+    const prefixes = new Set();
+    const recolte = (n) => {
+      if (Array.isArray(n)) { for (const x of n) recolte(x); return; }
+      if (!n || typeof n !== "object") return;
+      for (const [k, v] of Object.entries(n)) {
+        if (k === "id" && typeof v === "string" && /^[A-Z]{2,5}-\d+$/.test(v)) prefixes.add(v.split("-")[0]);
+        else recolte(v);
+      }
+    };
+    for (const fname of Object.keys(yamlDocs)) recolte(yamlDocs[fname]);
+    const motifs = [/\bbk-\d{4}-[nr]-[a-z0-9]+\b/];
+    if (prefixes.size) motifs.push(new RegExp(`\\b(?:${[...prefixes].join("|")})-\\d+\\b`));
+    const ids = [];
+    const chasse = (n, fichier) => {
+      if (Array.isArray(n)) { for (const x of n) chasse(x, fichier); return; }
+      if (!n || typeof n !== "object") return;
+      for (const [k, v] of Object.entries(n)) {
+        // Sous-arbres AUTEUR par contrat, que le rendu ne charge jamais :
+        // `sourcing` (§11.61), `item_source` (étiquette de fabrication, §11.64),
+        // `coverage_summary` et `contradicts_principle`. Sans cette liste la
+        // porte criait sur 10 `coverage_summary > note` parfaitement légitimes
+        // — un `note` imbriqué dans un sous-arbre auteur reste auteur.
+        if (k === "sourcing" || k === "item_source" ||
+            k === "coverage_summary" || k === "contradicts_principle") continue;
+        if (typeof v === "string" && RENDU_TXT.has(k)) {
+          for (const m of motifs) {
+            const h = v.match(m);
+            if (h) { ids.push(`${fichier} → champ « ${k} » : ${h[0]}`); break; }
+          }
+        } else chasse(v, fichier);
+      }
+    };
+    for (const fname of Object.keys(yamlDocs)) chasse(yamlDocs[fname], fname);
+    for (const f of [...new Set(ids)]) {
+      console.error(
+        `  ✗ ${dir}: ${f} — un identifiant de fichier, que le rendu n'imprime nulle part. ` +
+          `Nomme le référent visible : « le sujet 2019 » pour une entrée de banque, le numéro de chapitre pour un barreau.`
       );
       dirFail++;
     }

@@ -1722,7 +1722,7 @@ entries:
 
           $$\int_1^{\sqrt e}\dfrac{dt}{t^2+e} = \dfrac{1}{\sqrt e}\left[\arctan\left(\dfrac{\sqrt e}{\sqrt e}\right)-\arctan\left(\dfrac{1}{\sqrt e}\right)\right] = \dfrac{1}{\sqrt e}\left(\dfrac{\pi}{4}-\arctan\left(\dfrac{1}{\sqrt e}\right)\right)$$
 
-          (avec $\arctan(1)=\frac\pi4$, même valeur de référence que bk-2024-r-x2). Ce n'est pas encore la forme demandée — elle porte $\arctan\left(\frac1{\sqrt e}\right)$, l'énoncé veut $\arctan(\sqrt e)$. Le pont entre les deux est une identité de complémentarité : pour $u>0$, en posant $\theta=\arctan u\in\left]0,\frac\pi2\right[$, on a $\tan\left(\frac\pi2-\theta\right)=\frac{1}{\tan\theta}=\frac1u$, et $\frac\pi2-\theta$ est bien dans $\left]-\frac\pi2,\frac\pi2\right[$, donc
+          (avec $\arctan(1)=\frac\pi4$, même valeur de référence que le sujet 2024). Ce n'est pas encore la forme demandée — elle porte $\arctan\left(\frac1{\sqrt e}\right)$, l'énoncé veut $\arctan(\sqrt e)$. Le pont entre les deux est une identité de complémentarité : pour $u>0$, en posant $\theta=\arctan u\in\left]0,\frac\pi2\right[$, on a $\tan\left(\frac\pi2-\theta\right)=\frac{1}{\tan\theta}=\frac1u$, et $\frac\pi2-\theta$ est bien dans $\left]-\frac\pi2,\frac\pi2\right[$, donc
 
           $$\arctan\left(\dfrac1u\right) = \dfrac\pi2-\arctan(u) \qquad (u>0)$$
 
@@ -1734,7 +1734,7 @@ entries:
 
           $$\int_0^{1/2} f(x)\,dx = \dfrac{1}{\sqrt e}\left(\arctan(\sqrt e)-\dfrac\pi4\right)$$
         steps:
-          - math: '\left(\arctan x\right)^{\prime} = \dfrac{1}{1+x^{2}} \qquad (\text{fait de référence, même que bk-2024-r-x2})'
+          - math: '\left(\arctan x\right)^{\prime} = \dfrac{1}{1+x^{2}} \qquad (\text{fait de référence, même que le sujet 2024})'
             note: "Primitive de référence du programme SM, reutilisee ici sans redemonstration."
           - math: '\dfrac{d}{dt}\left[\dfrac1{\sqrt e}\arctan\left(\dfrac{t}{\sqrt e}\right)\right] = \dfrac{1}{t^{2}+e}'
             note: "Généralisation par changement d'échelle : on vérifie la dérivée directement (règle de la fonction composée)."
@@ -1865,7 +1865,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que : $(\forall n \in \mathbb{N})\ ;\quad |u_{n+1} - \alpha| \le \dfrac{1}{2}|u_n - \alpha|$
         reasoning: |-
-          On veut majorer $|u_{n+1}-\alpha|=|f(u_n)-f(\alpha)|$ (en utilisant $f(\alpha)=\alpha$, II-2c) par une quantité proportionnelle à $|u_n-\alpha|$. C'est exactement le rôle de l'INÉGALITÉ DES ACCROISSEMENTS FINIS — un corollaire du théorème des accroissements finis (TAF), un outil hors du corps de cette leçon, déjà mobilisé pour un autre sujet de cette même banque (bk-2019-n-x4, questions 3a/3b, où il est introduit de la même façon) : si $f$ est dérivable sur un intervalle $I$ et $|f'|\le k$ sur $I$, alors pour tous $a,b\in I$, $|f(b)-f(a)|\le k|b-a|$.
+          On veut majorer $|u_{n+1}-\alpha|=|f(u_n)-f(\alpha)|$ (en utilisant $f(\alpha)=\alpha$, II-2c) par une quantité proportionnelle à $|u_n-\alpha|$. C'est exactement le rôle de l'INÉGALITÉ DES ACCROISSEMENTS FINIS — un corollaire du théorème des accroissements finis (TAF), un outil hors du corps de cette leçon, déjà mobilisé pour un autre sujet de cette même banque (le sujet 2019, questions 3a/3b, où il est introduit de la même façon) : si $f$ est dérivable sur un intervalle $I$ et $|f'|\le k$ sur $I$, alors pour tous $a,b\in I$, $|f(b)-f(a)|\le k|b-a|$.
 
           $u_n\in\left]0,\frac12\right[$ (question précédente) et $\alpha\in\left]0,\frac12\right[$ (II-2c) : les deux points, et donc tout le segment entre eux, vivent dans $\left[0,\frac12\right]$. Sur cet intervalle, $|f'|<\frac12$ (II-2a) — en particulier $|f'|\le\frac12$. L'inégalité des accroissements finis, appliquée à $f$ entre $u_n$ et $\alpha$ avec $k=\frac12$, donne :
 
@@ -1998,7 +1998,7 @@ entries:
           - math: 'S_n = \dfrac{n}{n+1}\times\dfrac1n\sum_{k=1}^n g\!\left(\dfrac kn\right) \quad (g(x)=x\,f(x))'
             note: "On multiplie et divise par n pour faire apparaître la forme exacte d'une somme de Riemann."
           - math: '\dfrac1n\sum_{k=1}^n h\!\left(\dfrac kn\right) \xrightarrow[n\to+\infty]{} \int_0^1 h(x)\,dx \quad (h \text{ continue sur } [0,1])'
-            note: "Théorème des sommes de Riemann (programme SM), même forme que bk-2024-r-x2 question q1-b."
+            note: "Théorème des sommes de Riemann (programme SM), même forme que le sujet 2024 question q1-b."
           - math: 'g(x)=x\,f(x) \text{ continue sur } [0,1] \ \Rightarrow\ \dfrac1n\sum_{k=1}^n \dfrac kn\,f\!\left(\dfrac kn\right) \xrightarrow[n\to+\infty]{} \int_0^1 x\,f(x)\,dx'
             note: "g est continue comme produit de deux fonctions continues : le théorème s'applique."
           - math: '\dfrac{n}{n+1}\to1 \ \Rightarrow\ S_n \xrightarrow[n\to+\infty]{} \int_0^1 x\,f(x)\,dx'
@@ -2311,7 +2311,7 @@ entries:
 
           $$u_n = 2\left(1 + \frac{1}{v_n}\right)e^{-\frac{1}{v_n}}$$
         reasoning: |-
-          Le théorème des accroissements finis (TAF) ne fait pas partie du corps de cette leçon — c'est un outil de la notion « Dérivabilité et étude des fonctions », mobilisé ici tel quel, en admettant son énoncé (même discipline que pour bk-2019-n-x4 dans cette même banque).
+          Le théorème des accroissements finis (TAF) ne fait pas partie du corps de cette leçon — c'est un outil de la notion « Dérivabilité et étude des fonctions », mobilisé ici tel quel, en admettant son énoncé (même discipline que pour le sujet 2019 dans cette même banque).
 
           $F$ est dérivable sur $[0,+\infty[$ tout entier (question 1 : $F=G(1)-G(x)$ avec $G$ primitive de $f$, donc $F'(x)=-f(x)$), donc a fortiori continue sur $[n,n+2]$ et dérivable sur $]n,n+2[$, pour tout entier naturel $n$. Le TAF garantit alors l'existence d'un réel $v_n\in\,]n,n+2[$ tel que :
 

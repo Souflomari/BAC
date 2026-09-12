@@ -6217,3 +6217,75 @@ banque concernée, **laissé à l'owner, sans porte.** Même arbitrage qu'en
 **Ce qui a été corrigé dans l'en-tête, en revanche, l'est sans arbitrage :**
 il annonçait « treize sujets, 2018 N à 2025 R » pour un fichier qui en porte
 **dix-neuf, de 2010 à 2025**. Un inventaire faux n'est pas une convention.
+
+---
+
+### 11.67 « Contrairement aux autres sujets de cette banque (bk-2018-n-x1, bk-2019-n-x1…) » — 90 clés de fichier adressées à l'élève, la campagne, et la porte
+
+Constat sorti de §11.66. Le texte rendu d'une carte de banque renvoie
+régulièrement à une AUTRE carte — c'est une bonne chose, c'est ce qui fait
+d'une banque un corpus plutôt qu'une pile. Mais il la nommait par sa **clé de
+fichier** :
+
+> « Cette question ne fournit ni figure ni polarité de générateur :
+> contrairement aux autres sujets de cette banque (bk-2018-n-x1,
+> bk-2019-n-x1, bk-2022-n-x1, bk-2023-r-x1), où le schéma ou les bornes
+> $+$/$-$ sont déjà donnés, ici c'est à toi de le construire. »
+
+Ces clés ne sont imprimées **nulle part** dans le rendu. L'élève lit une
+référence qu'il ne peut pas résoudre — et la phrase qui la porte est bonne,
+c'est *seulement* le nom qui est faux.
+
+**Mesure : 87 clés d'entrée dans 18 notions**, plus **3 identifiants d'item**
+(« voir RC-20 », « voir LIB-5 et LIB-6 ») dans 2 autres. Toutes réécrites vers
+le référent visible, selon le style déjà majoritaire dans le corpus (mesuré
+avant de choisir : « session normale » 167 fois, « session de rattrapage » 77,
+« le sujet AAAA » 26) — donc **« le sujet 2019 »**, qualifié par la session
+seulement quand la banque porte les deux sessions de cette année-là.
+
+**Ce que la réécriture mécanique casse, et qu'il faut relire.** La
+substitution jeton par jeton produit du français faux dès qu'un article la
+précède. Les six réparations nécessaires, trouvées en relisant **les 72 lignes
+modifiées une à une** (et non en faisant confiance au script) :
+
+- « qu'en bk-2020-n-x1 » → « qu'en le sujet 2020 » → **« que dans le sujet 2020 »** ;
+- « contrairement à bk-A ou bk-B » → le premier se contracte en « au sujet »,
+  le second restait « ou le sujet » → **« ou au sujet »** ;
+- « bk-2022-n-x4 et bk-2024-n-x5 portent chacune » → le référent devient
+  masculin → **« portent chacun »** ;
+- deux entrées DISTINCTES de la même session (`bk-2010-n-x4b`, `bk-2010-n-x4c`)
+  se réduisaient au même libellé : « (entrées le sujet 2010 et le sujet 2010) »
+  → **« (deux entrées du sujet 2010) »** ;
+- parenthèses imbriquées « (entrée du sujet 2015 (rattrapage)) » → aplaties ;
+- et une faute préexistante révélée au passage, « déjà banquee », jargon **et**
+  faute d'accent dans un champ rendu → « déjà en banque ».
+
+C'est la règle générale de ces campagnes : **un remplacement mécanique sur du
+texte rendu n'est pas fini quand la sonde retombe à zéro ; il est fini quand
+chaque ligne changée a été relue.** Les six défauts ci-dessus auraient tous
+passé une sonde « plus aucun `bk-` » avec succès.
+
+**La porte (§11.67, ÉCHEC).** Un identifiant interne dans un champ rendu. Deux
+familles : `bk-AAAA-[nr]-…`, et `ABC-12` où **`ABC` est lu dans les `id:` de la
+notion elle-même**, jamais deviné — une notion ne peut citer que ses propres
+items, et un préfixe inventé ferait crier la porte sur du texte sain.
+
+**Elle a immédiatement trouvé ce que ma propre sonde avait manqué** : trois
+renvois `VIO-…` dans `philo/la-violence/exercises.yaml`. Ma sonde ne lisait que
+`bank.yaml` pour les clés d'entrée ; la porte lit tous les YAML de la notion.
+Rappel utile que **l'instrument doit être plus large que l'enquête qui l'a
+motivé.**
+
+**Le faux positif qu'il a fallu éteindre, et qui vaut pour deux portes.** À sa
+première exécution la porte a crié sur **dix `coverage_summary > note`** —
+parfaitement légitimes, puisque `coverage_summary` n'est pas chargé par le
+rendu. La récursion descendait dans un sous-arbre auteur et y trouvait une clé
+`note`, qui est rendue *ailleurs*. **Un champ rendu imbriqué dans un sous-arbre
+auteur reste auteur.** La liste des sous-arbres hors champ (`sourcing`,
+`item_source`, `coverage_summary`, `contradicts_principle`) est désormais
+explicite — et le même trou latent a été bouché dans §11.61, où il n'avait
+jamais tiré faute d'occurrence.
+
+Vérifiée rouge ET verte, cinq cas (témoin vert, fichier restauré propre) :
+`bk-2019-n-x4` ROUGE · `ROT-12` (préfixe réel de la notion) ROUGE ·
+`le sujet 2019` VERT · `ZZZ-12` (préfixe étranger) VERT · `le chapitre 4` VERT.
