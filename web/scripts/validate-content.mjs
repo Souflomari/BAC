@@ -977,6 +977,103 @@ for (const dir of dirs) {
     }
   }
 
+  // ── §11.73 un code de barreau R<n> NU dans du texte rendu de YAML ───────
+  //    Les campagnes #18 et #24 ont réécrit 1 086 puis 529 renvois « R<n> »
+  //    vers le numéro de chapitre, dans la prose de lesson.md et dans les
+  //    sidecars de figures. Elles n'ont jamais balayé la prose RENDUE des
+  //    YAML. Mesuré le 2026-09-12 : **25 codes y survivaient**, dont 11 en
+  //    philo et 6 en maths — où « R3 » ne peut rien vouloir dire d'autre
+  //    qu'un barreau. 22 réécrits vers le chapitre, carte position→barreau
+  //    recalculée POUR CHAQUE notion (4 leçons de maths ne sont pas à
+  //    barreaux purs : le chapitre n'y vaut pas n+1).
+  //
+  //    L'EXEMPTION, et c'est tout l'intérêt : en PC, `R1`, `R2`, `R0` sont
+  //    des ÉTIQUETTES DE COMPOSANT — une résistance, pas un barreau. Les 5
+  //    occurrences restantes du corpus sont toutes de ce type et doivent
+  //    rester. La porte les reconnaît au vocabulaire de circuit voisin
+  //    (résistance, bobine, condensateur, maille, nœud, diode, filtre,
+  //    borne, Ohm, C1/L2…, dipôle) dans une fenêtre de 45 caractères.
+  //
+  //    Ce n'est pas une précaution théorique : la substitution globale de la
+  //    campagne #18 a précisément pris le résistor R3 d'un filtre pour le
+  //    barreau R3 et écrit « après C3 et le chapitre 4 » dans une note rendue
+  //    (pc/ondes-em-modulation) — une phrase que l'élève ne peut pas
+  //    comprendre. Restaurée. Une porte sans cette exemption REFERAIT ce
+  //    dégât en le déclarant conforme.
+  {
+    const RENDU_TXT = new Set(["intro", "stem", "reasoning", "note", "text", "feedback",
+      "solution", "correct_feedback", "title", "part", "math", "caption"]);
+    const TOK = /(?<![A-Za-z_\\$])R(\d+)\b(?!\s*[=)]?\s*[\d,])/g;
+    const CIRC = /r[ée]sist|bobine|condensateur|maille|n[oœ]ud|noeud|diode|filtre|borne|Ohm|\b[CL]_?\d\b|dip[oô]le/i;
+    const codes = [];
+    const balaye = (n, fichier) => {
+      if (Array.isArray(n)) { for (const x of n) balaye(x, fichier); return; }
+      if (!n || typeof n !== "object") return;
+      for (const [k, v] of Object.entries(n)) {
+        if (k === "sourcing" || k === "item_source" ||
+            k === "coverage_summary" || k === "contradicts_principle") continue;
+        if (typeof v === "string" && RENDU_TXT.has(k)) {
+          TOK.lastIndex = 0;
+          let m;
+          while ((m = TOK.exec(v))) {
+            const ctx = v.slice(Math.max(0, m.index - 45), m.index + m[0].length + 45);
+            if (!CIRC.test(ctx)) codes.push(`${fichier} → champ « ${k} » : ${m[0]}`);
+          }
+        } else balaye(v, fichier);
+      }
+    };
+    for (const fname of Object.keys(yamlDocs)) balaye(yamlDocs[fname], fname);
+    for (const f of [...new Set(codes)]) {
+      console.error(
+        `  ✗ ${dir}: ${f} — un code de barreau, que le rendu n'imprime nulle part. ` +
+          `L'élève ne voit que des numéros de CHAPITRE (et en PC, vérifie d'abord que ce n'est pas une étiquette de composant).`
+      );
+      dirFail++;
+    }
+  }
+
+  // ── §11.72 le barème qui ne tombe pas sur son propre total ──────────────
+  //    `bareme_total` d'une entrée contre la somme des points imprimés dans
+  //    les `stem` de ses questions. Mesuré le 2026-09-12 : **247 entrées
+  //    vérifiables, 0 écart** — la convention « la somme des questions FAIT le
+  //    total » est tenue partout, donc un écart est un défaut, pas un usage.
+  //
+  //    Le motif tolère « (0 ,5 pt) », avec l'espace avant la virgule : c'est
+  //    une coquille du sujet imprimé que `pc/suivi-temporel-vitesse` conserve
+  //    DÉLIBÉRÉMENT (son `stem` le dit : « barème tel qu'imprimé »). Un premier
+  //    motif strict ne savait pas la lire et annonçait un faux écart de 0,5 —
+  //    la seule « anomalie » de tout le corpus était un défaut de ma sonde.
+  //
+  //    ÉCHEC : le remède est arithmétique, l'un des deux nombres est faux. La
+  //    classe est utile parce qu'elle attrape le geste qui l'introduit —
+  //    ajouter une question maison en lui collant une étiquette de points
+  //    (c'est exactement ce qu'avait fait `systemes-oscillants` q4).
+  {
+    const PTS = /\((\d+(?:\s*[.,]\s*\d+)?)\s*(?:pt|point)s?\b/g;
+    const num = (s) => parseFloat(s.replace(/\s+/g, "").replace(",", "."));
+    for (const [fname, cle] of [["bank.yaml", "entries"], ["exercises.yaml", "exercises"]]) {
+      for (const e of (Array.isArray(yamlDocs[fname]?.[cle]) ? yamlDocs[fname][cle] : [])) {
+        if (e?.bareme_total === undefined || e?.bareme_total === null) continue;
+        const total = num(String(e.bareme_total));
+        if (!isFinite(total)) continue;
+        let somme = 0, n = 0;
+        for (const q of (Array.isArray(e?.questions) ? e.questions : [])) {
+          PTS.lastIndex = 0;
+          let m;
+          while ((m = PTS.exec(String(q?.stem ?? "")))) { somme += num(m[1]); n++; }
+        }
+        if (n === 0) continue;
+        if (Math.abs(somme - total) > 0.001) {
+          console.error(
+            `  ✗ ${dir}: ${fname} → « ${e.id} » déclare bareme_total ${e.bareme_total} mais la somme des ` +
+              `points imprimés dans ses ${n} question(s) fait ${Math.round(somme * 100) / 100} — l'un des deux est faux.`
+          );
+          dirFail++;
+        }
+      }
+    }
+  }
+
   // ── §11.71 `lesson_placement` qui ment sur la position du marqueur ──────
   //    Métadonnée d'AUTEUR (aucun code ne la lit — vérifié par grep sur
   //    web/src et web/scripts), mais c'est un document qui décrit un état qui
