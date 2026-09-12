@@ -5869,3 +5869,68 @@ sur les 62.
 n'est un bon résultat que si on a montré qu'il sait parler ; et un instrument
 qui parle trop est aussi inutile qu'un instrument muet — la différence, c'est
 qu'on s'en aperçoit plus tard.
+
+---
+
+### 11.63 « La rampe redescend » — un critère que 48 notions sur 62 déclenchent, et les 9 cas qui comptent vraiment
+
+Les critiques pédagogie signalent, notion après notion, que la rampe
+« redescend » : un barreau moins difficile que le précédent. Le constat est
+juste à chaque fois. Avant d'ouvrir une campagne dessus, mesuré sur les 62
+notions — **moyenne du `difficulty_level` par barreau, dans l'ordre des
+barreaux**.
+
+| | |
+|---|---:|
+| notions avec ≥ 3 barreaux étiquetés | 62 |
+| notions dont la rampe **redescend au moins une fois** | **48** |
+| redescentes au total | 74 |
+| dont **≤ 0,34** (un seul item d'écart d'un niveau, sur un barreau de 3) | **43** |
+| dont 0,35 – 0,99 | 22 |
+| dont **≥ 1,0 niveau plein** | **9** |
+| **falaises** (saut ≥ 2 niveaux d'un barreau au suivant) | **2** |
+
+**Un critère que 77 % du corpus déclenche ne trie rien.** La plupart des
+barreaux portent exactement 3 items ; une moyenne y bouge de 0,33 dès qu'un
+item change d'un niveau. Quarante-trois des soixante-quatorze redescentes sont
+littéralement cela — du bruit d'échantillonnage, pas une décision de conception.
+Les traiter comme des défauts reviendrait à ouvrir 48 chantiers dont les
+trois quarts ne mesurent rien.
+
+**Ce qui est rare, donc informatif.**
+
+*Les deux seules falaises du corpus* : `maths/denombrement` R6→R7 (2 → 4) et
+`philo/l-histoire` R1→R2 (2 → 4).
+
+*Les neuf redescentes d'au moins un niveau plein* — et **six d'entre elles sont
+en SVT, toutes à la même charnière R3→R4** : `theorie-tectonique-plaques`
+(4 → 2,5), `dysfonctionnements-immunitaires` (3,33 → 2),
+`transmission-caracteres` (4 → 3), `granitisation-deformation` (4 → 3),
+`genetique-populations` (4 → 3), `chaines-de-montagnes` (4 → 3). Les trois
+autres : `philo/la-violence` R5→R6, `philo/l-histoire` R4→R5,
+`maths/denombrement` R5→R6.
+
+**Sur la charnière SVT, une réserve explicite.** J'ai regardé les six chapitres
+R4 : ce sont des sujets substantiellement différents (vaccination, dihybridisme,
+cristallisation, méthode de calcul de Hardy-Weinberg, plis et chevauchements).
+Il n'y a donc **pas** de cause structurelle évidente du type « R4 est par
+construction un barreau plus léger ». Ce qu'on peut dire sans sur-interpréter :
+la position est partagée par six notions d'une même matière, et plusieurs de ces
+moyennes reposent sur **1 à 3 items** — un échantillon où la moyenne est
+fragile. Cela vaut **un regard de `pedagogy-architect` sur la charnière**, pas
+six constats séparés traités chacun comme un défaut de notion.
+
+**Et le seul cas où les deux signaux se superposent : `denombrement`.** Il est
+la seule notion du corpus à enchaîner une redescente franche (R5→R6, 3 → 2) et
+**une falaise juste après** (R6→R7, 2 → 4) — c'est-à-dire le point le plus bas
+de la rampe immédiatement avant son plus grand saut. C'est exactement ce que sa
+critique pédagogie décrivait à la lecture ; la mesure corpus montre en plus que
+**le cas est unique**. Consigné dans sa revue, déféré à `pedagogy-architect`.
+
+**Pourquoi aucune porte.** Le `difficulty_level` est un jugement d'auteur, pas
+une grandeur mesurée ; sa moyenne sur 3 items n'a pas la précision qu'une porte
+supposerait, et une rampe qui redescend peut être un choix délibéré (un barreau
+procédural après un barreau conceptuel). Ce qui est écrit ici est une **carte**,
+pas un seuil — et c'est la même discipline que §11.54 : quand le champ ne
+supporte pas la porte, on mesure et on le dit, plutôt que d'armer un instrument
+qui aurait l'air de garder quelque chose.
