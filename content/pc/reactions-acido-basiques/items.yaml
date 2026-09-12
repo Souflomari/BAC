@@ -2540,7 +2540,16 @@ coverage_summary:
     - AB-IND-1    # cp-r11-indicateur (primary)
     - AB-IND-2    # cp-r11-indicateur
     - AB-IND-3    # cp-r11-indicateur
-  gated_floor: 3
+  # Plancher du CLUSTER, défini ici pour qu'il veuille dire quelque chose :
+  # AU MOINS UNE sonde de checkpoint par misconception du cluster. Ce n'est
+  # PAS le plancher de `floor` ci-dessus (>= 3 items par misconception) :
+  # recompté, neuf des douze ids ne sont sondés qu'une fois (seuls AB-TIT-1,
+  # AB-TIT-2 et AB-EQU-1 le sont deux fois), donc « 3 » était faux sous cette
+  # lecture-là. `resume-couverture.mjs` ignore d'ailleurs délibérément ce
+  # champ — une affirmation qu'aucun instrument ne peut faire échouer n'est
+  # pas une porte (ADR 0031). Avec la définition ci-dessus, elle est vraie
+  # ET recomptable.
+  gated_floor: 1
   gated_floor_met: true
   honest_state: >-
     Les 20 misconceptions déclarées sont couvertes, aucune sous le plancher.

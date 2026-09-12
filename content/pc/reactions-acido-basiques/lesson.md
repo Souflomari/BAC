@@ -207,8 +207,10 @@ $$pK_A = -\log K_A$$
 
 Regarde ce que dit la formule : $K_A$ compare la quantité de produits ($A^-$ et $H_3O^+$) à la quantité de réactif restant ($AH$), une fois l'équilibre atteint.
 
-- $K_A$ **grand** (donc $pK_A$ petit, voire négatif) : à l'équilibre, $A^-$ et $H_3O^+$ dominent largement — l'acide $AH$ a cédé son proton presque entièrement. C'est un acide qui « lâche facilement » son proton : un acide **fort**.
-- $K_A$ **petit** (donc $pK_A$ grand) : à l'équilibre, $AH$ domine encore largement — l'acide a très peu réagi avec l'eau. C'est un acide qui retient son proton : un acide **faible**.
+- $K_A$ **grand** (donc $pK_A$ petit, voire négatif) : à l'équilibre, $A^-$ et $H_3O^+$ dominent largement — l'acide $AH$ a cédé son proton presque entièrement. C'est un acide qui « lâche » son proton plus facilement que celui d'un couple de $K_A$ plus petit : entre deux couples, c'est lui le **plus fort**.
+- $K_A$ **petit** (donc $pK_A$ grand) : à l'équilibre, $AH$ domine encore largement — l'acide a très peu réagi avec l'eau. C'est un acide qui retient davantage son proton : entre deux couples, c'est lui le **moins fort**.
+
+**Attention à ne pas confondre deux mots proches.** « Plus fort » est un **classement entre deux acides** : il se lit sur $K_A$. Être un acide **fort** tout court est autre chose — c'est réagir **quasi totalement** avec l'eau, ce que tu verras au chapitre 7. L'acide éthanoïque a le plus grand $K_A$ des deux couples comparés ci-dessous, et il reste pourtant un acide **faible**.
 
 ### Teste l'idée avant de la croire : « $K_A$ grand veut dire $pK_A$ grand »
 
@@ -684,7 +686,7 @@ Le traitement du choix d'indicateur reste **qualitatif** : on superpose une zone
 - **pH :** $\text{pH} = -\log[H_3O^+]$, donc $[H_3O^+] = 10^{-\text{pH}}$. Le signe moins inverse le sens : $[H_3O^+]$ grand $\Rightarrow$ pH petit.
 - **Brønsted :** acide = donneur de proton, base = accepteur ; couple $AH/A^-$, demi-équation $AH \rightleftharpoons A^- + H^+$. Une réaction acido-basique combine toujours deux couples ; le $H^+$ s'annule dans la somme, comme les électrons en oxydoréduction. L'eau est un ampholyte : base dans $H_3O^+/H_2O$, acide dans $H_2O/HO^-$.
 - **Produit ionique de l'eau :** $K_e = [H_3O^+][HO^-] = 10^{-14}$ à $25\,^\circ\text{C}$ ($pK_e = 14$). Neutre : $\text{pH} = 7$. Acide : $\text{pH} < 7$. Basique : $\text{pH} > 7$.
-- **$K_A$ et $pK_A$ :** pour $AH + H_2O \rightleftharpoons A^- + H_3O^+$, $K_A = \dfrac{[A^-][H_3O^+]}{[AH]}$, $pK_A = -\log K_A$. $K_A$ grand $\Leftrightarrow$ $pK_A$ petit $\Leftrightarrow$ acide fort.
+- **$K_A$ et $pK_A$ :** pour $AH + H_2O \rightleftharpoons A^- + H_3O^+$, $K_A = \dfrac{[A^-][H_3O^+]}{[AH]}$, $pK_A = -\log K_A$. $K_A$ grand $\Leftrightarrow$ $pK_A$ petit $\Leftrightarrow$ acide **plus fort** — un classement entre couples, à ne pas confondre avec « acide fort » au sens absolu (chapitre 7 : réaction quasi totale avec l'eau).
 - **Diagramme de prédominance :** $\dfrac{[A^-]}{[AH]} = 10^{\text{pH} - pK_A}$. $\text{pH} > pK_A$ : $A^-$ prédomine. $\text{pH} < pK_A$ : $AH$ prédomine.
 - **Force ≠ concentration :** la force ($K_A$, $\tau$ face à l'eau) est une propriété du couple ; la concentration $c$ est une quantité dissoute — deux grandeurs indépendantes.
 - **Réaction entre deux couples :** $K = K_{A1}/K_{A2}$, indépendant du pH. $K \gg 1$ : réaction quasi totale ($\tau \approx 1$). $\tau = x_f/x_{max}$.

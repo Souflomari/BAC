@@ -157,7 +157,7 @@ entries:
         stem: |-
           **(0,5 pt)** Écrire l'équation de la réaction entre l'acide benzoïque et l'eau.
         reasoning: |-
-          La mise en solution d'un acide **faible** dans l'eau est une transformation **limitée** : elle s'arrête sur un équilibre, donc on l'écrit avec une **double flèche** $\rightleftharpoons$ (chapitre 8). L'acide $\text{C}_6\text{H}_5\text{COOH}$ cède un proton à l'eau, qui joue le rôle de base (couple $\text{H}_3\text{O}^+/\text{H}_2\text{O}$).
+          La mise en solution d'un acide **faible** dans l'eau est une transformation **limitée** : elle s'arrête sur un équilibre, donc on l'écrit avec une **double flèche** $\rightleftharpoons$ (chapitre 7). L'acide $\text{C}_6\text{H}_5\text{COOH}$ cède un proton à l'eau, qui joue le rôle de base (couple $\text{H}_3\text{O}^+/\text{H}_2\text{O}$).
 
           $$\text{C}_6\text{H}_5\text{COOH}_{(aq)} + \text{H}_2\text{O}_{(l)} \rightleftharpoons \text{C}_6\text{H}_5\text{COO}^-_{(aq)} + \text{H}_3\text{O}^+_{(aq)}$$
       - id: q2
@@ -216,8 +216,8 @@ entries:
         reasoning: |-
           Puisque $K = K_A$, on calcule d'abord $K$ avec l'expression de la question 5 et la valeur de $\tau$, puis on passe au $pK_A = -\log K_A$. La valeur obtenue, proche de $4{,}2$, est la signature de l'acide benzoïque.
         steps:
-          - math: 'K_A = K = \dfrac{C\,\tau^{2}}{1-\tau} = \dfrac{10^{-3} \times (0{,}22)^{2}}{1 - 0{,}22} \approx 6{,}5 \times 10^{-5}'
-            note: "Application numérique avec C = 10^-3 mol/L et tau = 0,22."
+          - math: 'K_A = K = \dfrac{C\,\tau^{2}}{1-\tau} = \dfrac{10^{-3} \times (0{,}225)^{2}}{1 - 0{,}225} \approx 6{,}5 \times 10^{-5}'
+            note: "Application numerique avec C = 10^-3 mol/L et la valeur non arrondie tau = 0,225 ; avec l'arrondi 0,22 on trouverait 6,2.10^-5, et le meme pKA de 4,2."
           - math: 'pK_A = -\log K_A = -\log\left(6{,}5 \times 10^{-5}\right) \approx 4{,}2'
             note: "Valeur attendue pour le couple de l'acide benzoïque."
       - id: q8
@@ -298,7 +298,7 @@ entries:
         stem: |-
           **(0,5 pt)** Écrire l'équation de la réaction de l'ammoniac avec l'eau.
         reasoning: |-
-          Contrairement au dosage (total, flèche simple), la réaction d'une **base faible** avec l'eau est **limitée** : elle s'arrête sur un équilibre, d'où la **double flèche** $\rightleftharpoons$ (chapitre 8). L'ammoniac $\text{NH}_3$ arrache un proton à l'eau, qui joue ici le rôle d'acide (couple $\text{H}_2\text{O}/\text{HO}^-$).
+          Contrairement au dosage (total, flèche simple), la réaction d'une **base faible** avec l'eau est **limitée** : elle s'arrête sur un équilibre, d'où la **double flèche** $\rightleftharpoons$ (chapitre 7). L'ammoniac $\text{NH}_3$ arrache un proton à l'eau, qui joue ici le rôle d'acide (couple $\text{H}_2\text{O}/\text{HO}^-$).
 
           $$\text{NH}_{3(aq)} + \text{H}_2\text{O}_{(l)} \rightleftharpoons \text{NH}_{4(aq)}^+ + \text{HO}^-_{(aq)}$$
       - id: q6
@@ -327,8 +327,8 @@ entries:
         steps:
           - math: 'Q_{r,\text{éq}} = \dfrac{[\text{NH}_4^+]_{eq}\,[\text{HO}^-]_{eq}}{[\text{NH}_3]_{eq}} = \dfrac{(\tau C_b)(\tau C_b)}{C_b(1-\tau)} = \dfrac{C_b\,\tau^{2}}{1-\tau}'
             note: "Concentrations d'équilibre écrites avec tau."
-          - math: 'Q_{r,\text{éq}} = \dfrac{10^{-2} \times \left(4{,}0 \times 10^{-2}\right)^{2}}{1 - 4{,}0 \times 10^{-2}} \approx 1{,}65 \times 10^{-5}'
-            note: "Application numérique : Cb = 10^-2 mol/L et tau = 0,04."
+          - math: 'Q_{r,\text{éq}} = \dfrac{10^{-2} \times \left(3{,}98 \times 10^{-2}\right)^{2}}{1 - 3{,}98 \times 10^{-2}} \approx 1{,}65 \times 10^{-5}'
+            note: "Application numerique : Cb = 10^-2 mol/L et la valeur non arrondie tau = 0,0398 ; l'arrondi 0,040 donnerait 1,67.10^-5."
       - id: q9
         stem: |-
           **(0,5 pt)** En déduire la valeur du $pK_A$ du couple $\text{NH}_4^+/\text{NH}_3$.
@@ -410,7 +410,7 @@ entries:
         stem: |-
           **(0,5 pt)** Écrire l'équation de la réaction de l'acide $\text{AH}$ avec l'eau.
         reasoning: |-
-          Contrairement au dosage (total, flèche simple), la mise en solution d'un acide **faible** est **limitée** : elle s'arrête sur un équilibre, d'où la **double flèche** $\rightleftharpoons$ (chapitre 8). L'acide $\text{AH}$ cède un proton à l'eau, qui joue le rôle de base (couple $\text{H}_3\text{O}^+/\text{H}_2\text{O}$).
+          Contrairement au dosage (total, flèche simple), la mise en solution d'un acide **faible** est **limitée** : elle s'arrête sur un équilibre, d'où la **double flèche** $\rightleftharpoons$ (chapitre 7). L'acide $\text{AH}$ cède un proton à l'eau, qui joue le rôle de base (couple $\text{H}_3\text{O}^+/\text{H}_2\text{O}$).
 
           $$\text{AH}_{(aq)} + \text{H}_2\text{O}_{(l)} \rightleftharpoons \text{A}^-_{(aq)} + \text{H}_3\text{O}^+_{(aq)}$$
       - id: q5
@@ -634,7 +634,7 @@ entries:
 
           $$\text{HCOOH}_{(aq)} + \text{H}_2\text{O}_{(l)} \rightleftharpoons \text{HCOO}^-_{(aq)} + \text{H}_3\text{O}^+_{(aq)}$$
 
-          La **double flèche** est obligatoire ici : la mise en solution d'un acide faible est une transformation **limitée**, qui s'arrête sur un équilibre (chapitre 8). Tu le vérifieras chiffre en main dès la question suivante — il restera environ $96\,\%$ de l'acide sous forme $AH$ intacte.
+          La **double flèche** est obligatoire ici : la mise en solution d'un acide faible est une transformation **limitée**, qui s'arrête sur un équilibre (chapitre 7). Tu le vérifieras chiffre en main dès la question suivante — il restera environ $96\,\%$ de l'acide sous forme $AH$ intacte.
 
           **Le piège.** L'eau est un **ampholyte** (chapitre 2) : elle est base dans le couple $H_3O^+/H_2O$ et acide dans le couple $H_2O/HO^-$. À la question 2, c'est son visage basique $HO^-$ qui attaquait l'acide, et l'eau apparaissait comme **produit** ; ici, c'est l'eau elle-même qui joue la base, et elle est **réactif**. Même molécule, deux rôles, deux équations à ne pas confondre — et deux flèches différentes.
       - id: q6
@@ -941,7 +941,7 @@ entries:
         stem: |-
           **(0,5 pt)** Écrire l'équation de la réaction entre l'acide propanoïque et l'eau.
         reasoning: |-
-          La mise en solution d'un acide **faible** est une transformation **limitée** : elle s'arrête sur un équilibre, donc double flèche $\rightleftharpoons$ (chapitre 8). L'acide $\text{C}_2\text{H}_5\text{COOH}$ cède un proton à l'eau, qui joue ici le rôle de base (couple $\text{H}_3\text{O}^+/\text{H}_2\text{O}$).
+          La mise en solution d'un acide **faible** est une transformation **limitée** : elle s'arrête sur un équilibre, donc double flèche $\rightleftharpoons$ (chapitre 7). L'acide $\text{C}_2\text{H}_5\text{COOH}$ cède un proton à l'eau, qui joue ici le rôle de base (couple $\text{H}_3\text{O}^+/\text{H}_2\text{O}$).
 
           $$\text{C}_2\text{H}_5\text{COOH}_{(aq)} + \text{H}_2\text{O}_{(l)} \rightleftharpoons \text{C}_2\text{H}_5\text{COO}^-_{(aq)} + \text{H}_3\text{O}^+_{(aq)}$$
       - id: q2
@@ -958,7 +958,7 @@ entries:
         stem: |-
           **(0,75 pt)** Exprimer le quotient de réaction $Q_{r,\text{éq}}$ à l'équilibre en fonction de $C_a$ et $[\text{H}_3\text{O}^+_{(aq)}]_{\text{éq}}$. Calculer sa valeur.
         reasoning: |-
-          On écrit les concentrations d'équilibre à partir des concentrations à l'équilibre (chapitre 5) : chaque acide dissocié forme un $\text{C}_2\text{H}_5\text{COO}^-$ et un $\text{H}_3\text{O}^+$ en quantités égales, donc $[\text{C}_2\text{H}_5\text{COO}^-]_{eq} \approx [\text{H}_3\text{O}^+]_{eq}$ ; il reste $[\text{C}_2\text{H}_5\text{COOH}]_{eq} \approx C_a - [\text{H}_3\text{O}^+]_{eq}$ de l'acide non dissocié. On reporte dans le quotient associé à l'équation de la question 1.
+          On reconstitue les concentrations à l'équilibre depuis le pH et $C_a$ (chapitre 5) : chaque acide dissocié forme un $\text{C}_2\text{H}_5\text{COO}^-$ et un $\text{H}_3\text{O}^+$ en quantités égales, donc $[\text{C}_2\text{H}_5\text{COO}^-]_{eq} \approx [\text{H}_3\text{O}^+]_{eq}$ ; il reste $[\text{C}_2\text{H}_5\text{COOH}]_{eq} \approx C_a - [\text{H}_3\text{O}^+]_{eq}$ de l'acide non dissocié. On reporte dans le quotient associé à l'équation de la question 1.
         steps:
           - math: 'Q_{r,\text{éq}} = \dfrac{[\text{C}_2\text{H}_5\text{COO}^-]_{eq}\,[\text{H}_3\text{O}^+_{(aq)}]_{\text{éq}}}{[\text{C}_2\text{H}_5\text{COOH}]_{eq}} = \dfrac{[\text{H}_3\text{O}^+_{(aq)}]_{\text{éq}}^{2}}{C_a - [\text{H}_3\text{O}^+_{(aq)}]_{\text{éq}}}'
             note: "On remplace [C2H5COO-]eq par [H3O+]eq (produits formes a parts égales) et [C2H5COOH]eq par Ca - [H3O+]eq."
@@ -1150,7 +1150,7 @@ entries:
 
           $$\boxed{\text{CH}_3\text{-NH}_{2(aq)} + \text{H}_2\text{O}_{(l)} \rightleftharpoons \text{CH}_3\text{-NH}^+_{3(aq)} + \text{HO}^-_{(aq)}}$$
 
-          **Pourquoi la double flèche.** La méthylamine est une base **faible** : sa réaction avec l'eau est **limitée**, elle s'arrête sur un équilibre (chapitre 8) — c'est justement ce que la question 1-3 va chiffrer.
+          **Pourquoi la double flèche.** La méthylamine est une base **faible** : sa réaction avec l'eau est **limitée**, elle s'arrête sur un équilibre (chapitre 7) — c'est justement ce que la question 1-3 va chiffrer.
 
           **Le piège de cette question.** Ne fais pas produire $\text{H}_3\text{O}^+$ à une base : c'est le réflexe de l'élève qui a trop travaillé les acides. Une base arrache un proton à l'eau, et l'eau appauvrie d'un proton est $\text{HO}^-$ — jamais $\text{H}_3\text{O}^+$. L'eau est un **ampholyte** (chapitre 2) : ici elle est acide, pas base.
       - id: q3
@@ -1559,7 +1559,7 @@ entries:
 
           $$(\text{CH}_3)_3\text{NH}^+_{(aq)}$$
 
-          **Ce que cette espèce fait à l'eau.** $(\text{CH}_3)_3\text{NH}^+$ est un **acide** — l'acide conjugué d'une base faible, donc un acide faible, mais un acide tout de même. Comme tout acide faible mis en solution, il réagit partiellement avec l'eau (chapitre 8, transformation limitée, double flèche) :
+          **Ce que cette espèce fait à l'eau.** $(\text{CH}_3)_3\text{NH}^+$ est un **acide** — l'acide conjugué d'une base faible, donc un acide faible, mais un acide tout de même. Comme tout acide faible mis en solution, il réagit partiellement avec l'eau (chapitre 7, transformation limitée, double flèche) :
 
           $$(\text{CH}_3)_3\text{NH}^+_{(aq)} + \text{H}_2\text{O}_{(l)} \rightleftharpoons (\text{CH}_3)_3\text{N}_{(aq)} + \text{H}_3\text{O}^+_{(aq)}$$
 
@@ -1568,8 +1568,6 @@ entries:
           $$\boxed{\text{Le mélange est acide\,: } \text{pH}_E < 7}$$
 
           **Le piège.** Ce raisonnement est le **miroir exact** de celui du chapitre 10, et transposer sans réfléchir coûte le point. Dans le cours, on dosait un acide faible par une base forte : il ne restait que la **base** conjuguée à l'équivalence, d'où $\text{pH}_E > 7$. Ici on dose une base faible par un acide fort : il ne reste que l'**acide** conjugué, d'où $\text{pH}_E < 7$. Retiens la règle générale plutôt que le cas : *à l'équivalence, c'est le conjugué de l'espèce titrée qui est seul en scène, et c'est lui qui impose le pH.* L'équivalence n'est à $\text{pH} = 7$ que dans le cas particulier acide fort / base forte — jamais comme règle.
-
-          **Contrôle de cohérence — hors-programme, à ne pas écrire sur la copie.** Le chapitre 10 est explicite : aucun calcul fermé du $\text{pH}$ aux points remarquables, on le lit. Mais on peut vérifier que le sujet est cohérent avec lui-même. À l'équivalence, tout l'acide conjugué formé, $n = C_BV_B = 8\cdot10^{-4}\ \text{mol}$, occupe le volume total $V_B + V_{AE} = 40\ \text{mL}$, soit $C = 2\cdot10^{-2}\ \text{mol.L}^{-1}$. Avec $K_A = 10^{-9{,}9} \approx 1{,}26\cdot10^{-10}$ (question 8) et l'approximation usuelle d'un acide faible peu dissocié, $[\text{H}_3\text{O}^+] \approx \sqrt{K_A\,C} = \sqrt{1{,}26\cdot10^{-10} \times 2\cdot10^{-2}} \approx 1{,}59\cdot10^{-6}\ \text{mol.L}^{-1}$, soit $\text{pH} \approx 5{,}80$. L'énoncé annonce $\text{pH}_E = 5{,}8$ : les deux coïncident au centième. Bonne nouvelle pour ta confiance dans les données — mais la réponse attendue reste l'inventaire ci-dessus.
       - id: q6
         stem: |-
           **(0,5 pt)** Parmi les indicateurs colorés cités dans le tableau ci-dessous, indiquer en justifiant celui qui convient le mieux pour ce dosage.
@@ -1878,7 +1876,7 @@ entries:
 
           $$\boxed{R\text{-}NH_{2(aq)} + \text{H}_2\text{O}_{(l)} \rightleftharpoons R\text{-}NH^{+}_{3(aq)} + \text{HO}^-_{(aq)}}$$
 
-          **Pourquoi la double flèche, et pas une flèche simple.** L'énoncé annonce une base **faible** ; sa mise en solution est une transformation **limitée**, qui s'arrête sur un équilibre (chapitre 8). Tu peux le vérifier en deux lignes, avec les seuls chiffres de l'énoncé. Du pH on tire $[\text{H}_3\text{O}^+]$, puis $[\text{HO}^-]$ par le produit ionique de l'eau (chapitre 4) :
+          **Pourquoi la double flèche, et pas une flèche simple.** L'énoncé annonce une base **faible** ; sa mise en solution est une transformation **limitée**, qui s'arrête sur un équilibre (chapitre 7). Tu peux le vérifier en deux lignes, avec les seuls chiffres de l'énoncé. Du pH on tire $[\text{H}_3\text{O}^+]$, puis $[\text{HO}^-]$ par le produit ionique de l'eau (chapitre 4) :
 
           $$[\text{HO}^-]_{eq} = \frac{K_e}{[\text{H}_3\text{O}^+]_{eq}} = 10^{\,\text{pH}-14} = 10^{11{,}88-14} = 10^{-2{,}12} \approx 7{,}6\cdot10^{-3}\ \text{mol.L}^{-1}$$
 
@@ -2051,7 +2049,7 @@ entries:
         stem: |-
           **2-4- (0,75 pt)** Déduire, en calculant $\tau$ le taux d'avancement final de la réaction pour $V_A = 16{,}0\ \text{mL}$, que la transformation associée à la réaction de dosage est totale.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Le taux d'avancement final compare ce qui s'est **réellement** passé à ce qui se serait passé si la réaction avait été totale (chapitre 8) :
+          **Ce qu'on cherche et pourquoi ce geste.** Le taux d'avancement final compare ce qui s'est **réellement** passé à ce qui se serait passé si la réaction avait été totale (chapitre 7) :
 
           $$\tau = \frac{x_f}{x_{max}}$$
 
@@ -2295,7 +2293,7 @@ entries:
 
       Lectures :
       - les deux courbes se croisent à **$50\ \%$** pour **$pH = 4{,}8$** (croisement mesuré à $pH = 4{,}76 \pm 0{,}05$) — valeur qui coïncide avec le $pK_A$ recalculé depuis $pH = 3{,}6$ et $C_A = 4{,}2\cdot10^{-3}$ ;
-      - **à $pH_1 = 4{,}2$, la courbe croissante (base) passe exactement par le trait chiffré $20\ \%$** : $\alpha(CH_3COO^-) = 20\ \%$. *(Cette lecture porte toute la question 1-4-3 : sans elle l'exercice n'est pas exploitable. Elle est vérifiée par Henderson : $10^{4{,}2-4{,}8} = 0{,}251$ donne $\alpha = 0{,}251/1{,}251 = 20{,}1\ \%$.)*
+      - **à $pH_1 = 4{,}2$, la courbe croissante (base) passe exactement par le trait chiffré $20\ \%$** : $\alpha(CH_3COO^-) = 20\ \%$.
 
       Légende : « Figure 1 ».
     questions:
@@ -2307,7 +2305,7 @@ entries:
 
           $$\boxed{CH_3COOH_{(aq)} + H_2O_{(l)} \rightleftharpoons CH_3COO^-_{(aq)} + H_3O^+_{(aq)}}$$
 
-          **Pourquoi la double flèche.** L'acide éthanoïque est un acide **faible** : sa réaction avec l'eau est **limitée**, elle s'arrête sur un équilibre (chapitre 8) — c'est exactement ce que les questions 1-2 et 1-3 vont chiffrer.
+          **Pourquoi la double flèche.** L'acide éthanoïque est un acide **faible** : sa réaction avec l'eau est **limitée**, elle s'arrête sur un équilibre (chapitre 7) — c'est exactement ce que les questions 1-2 et 1-3 vont chiffrer.
 
           **Le piège nommé de cette question.** Ne fais pas de l'eau un simple spectateur qu'on écrirait par réflexe sans rôle : c'est elle qui accepte le proton cédé par l'acide, dans son rôle basique du couple $H_3O^+/H_2O$ — l'eau est un **ampholyte** (chapitre 2), et confondre ce rôle avec son rôle acide (couple $H_2O/HO^-$, mobilisé plus loin dans cet exercice, au §3) fait perdre le point.
       - id: q2

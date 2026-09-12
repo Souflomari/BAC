@@ -144,7 +144,7 @@ exercises:
     intro: |-
       Même cluster de compétences que l'exercice précédent, contexte retourné : ici on dose une **base faible** par un **acide fort**. La courbe $\text{pH} = f(V_a)$ va donc **décroître**, et le pH à l'équivalence sera différent — à toi de reconnaître ce qui change et ce qui reste.
 
-      Un flacon contient une solution aqueuse $S_b$ d'ammoniac $\text{NH}_3$ (couple $\text{NH}_4^+/\text{NH}_3$) de concentration $C_b$ inconnue. On dose un volume $V_b = 20{,}0\ \text{mL}$ de $S_b$ par une solution d'acide chlorhydrique $\left(\text{H}_3\text{O}^+_{(aq)} + \text{Cl}^-_{(aq)}\right)$ de concentration $C_a = 5{,}0 \times 10^{-2}\ \text{mol/L}$. Toutes les mesures sont faites à $25\,^\circ\text{C}$ ($K_e = 10^{-14}$). Sur la courbe $\text{pH} = f(V_a)$ obtenue (décroissante), la méthode des tangentes donne un volume équivalent $V_{aE} = 16{,}0\ \text{mL}$, et l'on lit $\text{pH}_E \approx 5{,}5$ au milieu du saut.
+      Un flacon contient une solution aqueuse $S_b$ d'ammoniac $\text{NH}_3$ (couple $\text{NH}_4^+/\text{NH}_3$) de concentration $C_b$ inconnue. On dose un volume $V_b = 20{,}0\ \text{mL}$ de $S_b$ par une solution d'acide chlorhydrique $\left(\text{H}_3\text{O}^+_{(aq)} + \text{Cl}^-_{(aq)}\right)$ de concentration $C_a = 5{,}0 \times 10^{-2}\ \text{mol/L}$. Toutes les mesures sont faites à $25\,^\circ\text{C}$ ($K_e = 10^{-14}$). Sur la courbe $\text{pH} = f(V_a)$ obtenue (décroissante), la méthode des tangentes donne un volume équivalent $V_{aE} = 16{,}0\ \text{mL}$.
     questions:
       - id: q1
         stem: |-
@@ -170,7 +170,7 @@ exercises:
           À l'équivalence, toute la base $\text{NH}_3$ a été convertie en son acide conjugué $\text{NH}_4^+$. La solution contient alors, comme espèce du couple, un **acide faible** ($\text{NH}_4^+$), qui rend le milieu **acide** : $\text{pH}_E < 7$. C'est cohérent avec la lecture $\text{pH}_E \approx 5{,}5$ et avec l'allure décroissante de la courbe. Attention à ne pas plaquer « équivalence $\Rightarrow \text{pH} = 7$ » : cela n'est vrai que pour un acide fort dosé par une base forte.
       - id: q4
         stem: |-
-          Pour repérer l'équivalence par un indicateur coloré, on dispose de l'hélianthine ($3{,}1$–$4{,}4$), du rouge de méthyle ($4{,}4$–$6{,}2$) et du bleu de bromothymol, BBT ($6{,}0$–$7{,}6$). Lequel choisir ? Justifier.
+          On lit $\text{pH}_E \approx 5{,}5$ au milieu du saut. Pour repérer l'équivalence par un indicateur coloré, on dispose de l'hélianthine ($3{,}1$–$4{,}4$), du rouge de méthyle ($4{,}2$–$6{,}2$) et du bleu de bromothymol, BBT ($6{,}0$–$7{,}6$). Lequel choisir ? Justifier.
         reasoning: |-
           Le critère de choix (chapitre 12) : la zone de virage de l'indicateur doit **encadrer** $\text{pH}_E$, pour que le changement de couleur se produise au voisinage du saut. On teste chaque zone contre $\text{pH}_E \approx 5{,}5$ : l'hélianthine ($3{,}1$–$4{,}4$) ne contient pas $5{,}5$ — écartée ; le BBT ($6{,}0$–$7{,}6$) ne contient pas non plus $5{,}5$ — écarté ; seul le **rouge de méthyle** ($4{,}4$–$6{,}2$) contient $5{,}5$ : c'est lui qu'on retient. Le critère n'est pas « virer à $\text{pH} = 7$ » : chaque indicateur vire dans sa propre zone.
       - id: q5
@@ -181,5 +181,5 @@ exercises:
         steps:
           - math: '\dfrac{[\text{NH}_3]}{[\text{NH}_4^+]} = 1'
             note: "À la demi-équivalence, la moitié de la base a réagi : les deux formes du couple sont à égalité."
-          - math: '\text{pH} = pK_A + \log\dfrac{[\text{NH}_3]}{[\text{NH}_4^+]} = pK_A + \log 1 = pK_A \implies pK_A = 9{,}2'
-            note: "La demi-équivalence donne directement le pKA du couple (ici lu 9,6)."
+          - math: '\log\dfrac{[\text{NH}_3]}{[\text{NH}_4^+]} = \text{pH} - pK_A \implies \log 1 = 0 = \text{pH} - pK_A \implies pK_A = \text{pH} = 9{,}2'
+            note: "La demi-équivalence donne directement le pKA du couple (ici lu 9,2)."
