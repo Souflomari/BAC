@@ -6552,3 +6552,69 @@ ont été ré-appliqués. **Règle : commiter AVANT d'utiliser `git checkout` co
 bouton d'annulation.** C'est la même erreur qu'au §11.45 (suites-numeriques,
 rotation-axe-fixe, etat-equilibre, denombrement) ; elle est désormais écrite
 deux fois, ce qui veut dire qu'elle mérite un réflexe et pas une note.
+
+---
+
+### 11.73 Vingt-trois codes de barreau survivants dans la prose RENDUE des YAML — dont un qui avait dévoré une résistance
+
+Les campagnes #18 et #24 ont réécrit **1 086 puis 529** renvois « R\<n\> » vers
+le numéro de chapitre. Elles ont balayé la prose de `lesson.md` et les sidecars
+de figures. **Elles n'ont jamais regardé la prose rendue des YAML.** Mesure :
+**25 codes y survivaient**, dont 11 en philo et 6 en maths — matières où
+« R3 » ne peut rien désigner d'autre qu'un barreau.
+
+23 réécrits vers le chapitre. La carte position→barreau est recalculée **pour
+chaque notion**, parce que quatre leçons de maths ne sont pas à barreaux purs
+et que le chapitre n'y vaut donc pas $n+1$ ; et les renvois **inter-leçons**
+(`philo/la-violence` cite « L'État » et « Autrui ») sont résolus contre la
+carte de la leçon **cible**, jamais de la leçon hôte — la même erreur que j'ai
+commise deux fois en sondant (§11.70).
+
+**La corruption, et c'est le cœur de ce point.** Les deux critiques de
+`pc/ondes-em-modulation` l'ont trouvée indépendamment : la substitution globale
+de la campagne #18 a pris le **résistor $R_3$** d'un filtre de démodulation pour
+le **barreau R3**, et a écrit, dans une `note` rendue à l'élève :
+
+> « Noeud H, après C3 et **le chapitre 4** : le signal modulant seul, centré sur zéro. »
+
+Le `reasoning` de la même question dit correctement « après $C_3$ et $R_3$ ».
+La phrase rendue est incompréhensible — et c'est le seul pas qui nomme le
+passe-haut. Restaurée.
+
+**Conséquence pour la porte : l'exemption N'EST PAS une précaution théorique.**
+Une porte qui interdirait tout `R<n>` dans du texte rendu **referait ce dégât
+en le déclarant conforme**. Elle reconnaît donc les étiquettes de composant au
+vocabulaire de circuit voisin (résistance, bobine, condensateur, maille, nœud,
+diode, filtre, borne, Ohm, C1/L2…, dipôle) dans une fenêtre de 45 caractères.
+Les 5 occurrences restantes du corpus sont toutes de ce type, et l'exemption
+les classe toutes correctement : **0 faux positif**.
+
+**Et une sentinelle qui cachait une fuite.** Ma première version du motif
+excluait `R<n>` suivi d'une virgule. Elle était là pour éviter d'attraper des
+décimales, et elle masquait un vrai défaut : `philo/l-etat` écrit « le trait
+décisif du gouvernement, **dit R1**, est qu'il change ». En retirant la
+sentinelle, la sonde passe de 25 à 26 occurrences et le corpus d'une fuite
+non vue à zéro. **Une exclusion posée « par prudence », sans cas mesuré qui la
+justifie, ne protège de rien et aveugle sur quelque chose.** Vérifiée rouge sur
+les deux formes (« au R4 ceci », « au R4, avec virgule ») et verte sur
+« la résistance R4 du montage ».
+
+### 11.72 Le barème contre son propre total — 247 entrées, 0 écart
+
+`bareme_total` d'une entrée contre la somme des points imprimés dans les `stem`
+de ses questions. **247 entrées vérifiables, 0 écart** : la convention « la
+somme des questions FAIT le total » est tenue partout, donc un écart est un
+défaut et la porte est un ÉCHEC.
+
+La seule « anomalie » du premier passage était **un défaut de ma sonde** :
+`pc/suivi-temporel-vitesse` écrit « (0 ,5 pt) », avec une espace avant la
+virgule, et le dit — « barème tel qu'imprimé ». Mon motif strict ne savait pas
+la lire et annonçait un écart de 0,5. Le motif tolère désormais cette forme.
+C'est la troisième fois de la session qu'un signalement s'effondre à la
+lecture ; à ce stade la règle n'est plus « vérifier avant d'annoncer » mais
+**« un signalement unique sur un corpus discipliné est une hypothèse sur la
+sonde avant d'être un défaut du contenu »**.
+
+Bénéfice collatéral : la porte confirme le correctif de barème appliqué la
+veille à `pc/systemes-oscillants` — les stems de `r-bac` somment à 0,75,
+exactement ce que cote le relevé vérifié du sujet 2018.

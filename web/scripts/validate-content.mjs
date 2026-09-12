@@ -1003,7 +1003,10 @@ for (const dir of dirs) {
   {
     const RENDU_TXT = new Set(["intro", "stem", "reasoning", "note", "text", "feedback",
       "solution", "correct_feedback", "title", "part", "math", "caption"]);
-    const TOK = /(?<![A-Za-z_\\$])R(\d+)\b(?!\s*[=)]?\s*[\d,])/g;
+    // Pas de sentinelle arrière : une première version excluait « R4 » suivi
+    // d'une virgule et masquait ainsi une vraie fuite (« dit R1, est qu'il
+    // change », philo/l-etat). L'exemption de circuit suffit à la précision.
+    const TOK = /(?<![A-Za-z_\\$])R(\d+)\b/g;
     const CIRC = /r[ée]sist|bobine|condensateur|maille|n[oœ]ud|noeud|diode|filtre|borne|Ohm|\b[CL]_?\d\b|dip[oô]le/i;
     const codes = [];
     const balaye = (n, fichier) => {
