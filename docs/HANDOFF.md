@@ -5274,3 +5274,48 @@ dans une note fait échouer `r-bac.q1.steps[0].note` en nommant l'erreur KaTeX ;
 un quasi-titre injecté sans amorce déclenche le second détecteur ; le revert rend
 les deux silencieuses. `validate-content --strict` : 0 failure sur les 62
 notions.
+
+### 11.53 Le mélange des réponses couvrait les checkpoints ; le témoin qui le prouve ne les voyait pas
+
+Parti d'un constat de la critique pédagogie sur une seule notion (« la bonne
+réponse est en A dans quatre checkpoints sur cinq »), re-mesuré sur le corpus.
+Le biais rédactionnel est massif et général :
+
+| | questions | A | B | C | D |
+|---|---:|---:|---:|---:|---:|
+| banc de fin (`items.yaml`) | 1 612 | **65,0 %** | 14,0 % | 11,4 % | 9,7 % |
+| checkpoints | 362 | **75,0 %** | 18,6 % | 5,8 % | 0,6 % |
+
+Et ce n'est pas une moyenne trompeuse : **douze notions de PC** écrivent la
+bonne réponse en A sur la **totalité** de leurs checkpoints ; dix notions de SVT
+et `philo/analyse-de-texte` (49 questions d'affilée) font de même sur leur banc
+de fin.
+
+**Sur le fond, résultat négatif — et le dépôt avait déjà raison.**
+`lib/shuffle.ts` mélange de façon déterministe, par item, avec une graine
+dérivée de l'identifiant : l'élève ne voit **jamais** l'ordre rédigé. Mieux, le
+fichier documentait déjà le chiffre exact que cette mesure reproduit
+(A 65,0 / 14,0 / 11,4 / 9,7), et `scripts/test-melange.mjs` le re-mesure à
+chaque run — en asservissant aussi le **second témoin** (« le biais rédactionnel
+EXISTE »), sans lequel « plat après mélange » serait vert avec le mélange
+retiré. La discipline des deux sens était déjà là.
+
+**Ce qui manquait est une PORTÉE, pas un mécanisme.** `lireCorpus()` ne lisait
+que `items.yaml`. Les checkpoints passent pourtant par le même mélange
+(`CheckpointItem.tsx:63`) et leur platitude n'était assertée nulle part — ADR
+0031 : *la portée d'un mécanisme se mesure séparément de son fonctionnement.*
+C'est exactement le trou fermé le même jour sur `steps[].note` (§11.52) : une
+porte qui couvre un fichier mais pas son jumeau.
+
+**Témoin étendu** — trois tests de plus (chargement, platitude après mélange, et
+le second témoin du biais rédigé), sur les 360 checkpoints à quatre choix.
+Après mélange : **26,1 / 24,7 / 20,3 / 28,9**, dans la fourchette 18–32 % déjà
+en vigueur. Les deux corpus restent **séparés** pour que le sens des assertions
+existantes sur les items ne bouge pas.
+
+**Vérifié dans les deux sens** (ADR 0031) : en retirant le mélange du lecteur de
+corpus, les *deux* tests de platitude tombent — celui des items et celui des
+checkpoints ; rétabli, 10 tests sur 10 au vert. `tsc --noEmit` : 0 erreur. Les
+chiffres des checkpoints sont consignés dans `shuffle.ts` à côté de ceux des
+items, comme ce fichier l'exige lui-même : un chiffre voyage avec la commande
+qui le produit.
