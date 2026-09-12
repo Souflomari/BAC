@@ -6506,3 +6506,49 @@ qu'il nommait sa leçon cible. Deux fois, le signalement s'est effondré dès qu
 j'ai lu la citation en entier. La règle à retenir pour toute sonde de renvoi :
 **résoudre la CIBLE avant de compter**, parce que dans ce corpus un renvoi sur
 deux traverse les leçons.
+
+---
+
+### 11.71 `lesson_placement` : 30 étiquettes qui mentaient sur la position de leur propre marqueur — et une convention qu'il a fallu MESURER avant de corriger
+
+Classe soulevée par la critique pédagogie de `systemes-oscillants` (quatre
+checkpoints déclaraient `after_R6` / `after_R7` alors que leurs marqueurs sont
+au milieu des sections). Généralisée au corpus.
+
+`lesson_placement` est une métadonnée d'**auteur** : `grep` sur `web/src` et
+`web/scripts` ne trouve **aucun lecteur**. Rien ne casse pour l'élève. Mais
+c'est un document qui décrit un état qui n'est pas — précisément la classe que
+toute cette campagne corrige — et le premier instrument qui voudra s'en servir
+mesurera faux.
+
+**Ce qui rend ce point intéressant, c'est la façon dont le seuil a été
+choisi.** Mon premier jet prenait 75 %, à vue de nez : 24 signalements. C'est
+une convention *décrétée*, donc sans autorité. La convention réelle est dans le
+corpus, et il suffit de la lire — sur les **322** checkpoints placés :
+
+| étiquette | n | médiane de la position dans le chapitre | cas à ≥ 90 % |
+|---|---:|---:|---:|
+| `after_RN` | 255 | **99 %** | 226 |
+| `in_RN` | 67 | **48 %** | 1 |
+
+Les deux usages sont nets et disjoints : `after` veut dire « à la toute fin du
+chapitre », `in` veut dire « au milieu ». Le seuil qui les sépare est **90 %**,
+et il n'est pas de moi — il est écrit dans 322 fichiers. Avec lui, **30
+étiquettes fausses dans 16 notions** (et non 24), toutes corrigées en
+retournant l'étiquette vers ce que le fichier fait réellement.
+
+**Porte §11.71 armée, AVERTISSEMENT.** Pas un échec : rien ne casse, et un
+auteur peut légitimement vouloir poser son marqueur ailleurs — la porte lui dit
+alors de mettre l'étiquette d'accord avec le fichier, jamais l'inverse. Le
+seuil mesuré est écrit dans le commentaire du code, avec sa date et son n, pour
+qu'un futur lecteur sache qu'il est constaté et non inventé.
+
+**Et une erreur d'outillage, la troisième de la session, à ne plus refaire :**
+pour tester la porte j'ai injecté un défaut dans
+`pc/rotation-axe-fixe/checkpoints.yaml` puis fait `git checkout` — ce qui a
+**effacé les deux correctifs non encore commités de ce même fichier**. Le
+contrôle de fin l'a vu (2 signalements là où le corpus en annonçait 0) et ils
+ont été ré-appliqués. **Règle : commiter AVANT d'utiliser `git checkout` comme
+bouton d'annulation.** C'est la même erreur qu'au §11.45 (suites-numeriques,
+rotation-axe-fixe, etat-equilibre, denombrement) ; elle est désormais écrite
+deux fois, ce qui veut dire qu'elle mérite un réflexe et pas une note.

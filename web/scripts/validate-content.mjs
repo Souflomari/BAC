@@ -977,6 +977,49 @@ for (const dir of dirs) {
     }
   }
 
+  // ── §11.71 `lesson_placement` qui ment sur la position du marqueur ──────
+  //    Métadonnée d'AUTEUR (aucun code ne la lit — vérifié par grep sur
+  //    web/src et web/scripts), mais c'est un document qui décrit un état qui
+  //    n'est pas : exactement la classe que toute cette campagne corrige.
+  //
+  //    La convention n'est pas décrétée ici, elle est MESURÉE sur le corpus
+  //    (2026-09-12, 322 checkpoints placés) : `after_RN` a une médiane de
+  //    99 % de la hauteur du chapitre et 226 de ses 255 cas sont à ≥ 90 % ;
+  //    `in_RN` a une médiane de 48 % et un seul cas à ≥ 90 %. Le seuil de
+  //    90 % sépare donc les deux usages tels qu'ils sont réellement écrits.
+  //    30 étiquettes le violaient dans 16 notions ; toutes corrigées.
+  //
+  //    AVERTISSEMENT et non échec : rien ne casse pour l'élève, et un auteur
+  //    peut légitimement vouloir poser un marqueur ailleurs — la porte lui dit
+  //    alors de mettre l'étiquette d'accord avec le fichier, pas l'inverse.
+  {
+    const cps = Array.isArray(yamlDocs["checkpoints.yaml"]?.checkpoints)
+      ? yamlDocs["checkpoints.yaml"].checkpoints : [];
+    if (cps.length) {
+      const hs = [...md.matchAll(/^## (R\d+|R-[a-z]+)\b/gm)].map((m) => [m.index, m[1]]);
+      const bornes = {};
+      hs.forEach(([pos, code], i) => { bornes[code] = [pos, i + 1 < hs.length ? hs[i + 1][0] : md.length]; });
+      for (const cp of cps) {
+        const lp = cp?.lesson_placement, cid = cp?.id;
+        if (typeof lp !== "string" || typeof cid !== "string") continue;
+        const m = lp.match(/^(after|in)_(R\d+|R-[a-z]+)$/);
+        if (!m || !bornes[m[2]]) continue;
+        const mk = md.indexOf(`[[checkpoint:${cid}]]`);
+        if (mk < 0) continue;
+        const [deb, fin] = bornes[m[2]];
+        if (!(deb < mk && mk < fin)) continue;
+        const part = (mk - deb) / (fin - deb);
+        const attendu = part >= 0.90 ? "after" : "in";
+        if (attendu !== m[1]) {
+          console.error(
+            `  ⚠ ${dir}: checkpoints.yaml → « ${cid} » déclare « ${lp} » mais son marqueur est à ` +
+              `${Math.round(part * 100)} % du chapitre ${m[2]} — l'étiquette attendue est « ${attendu}_${m[2]} »`
+          );
+        }
+      }
+    }
+  }
+
   // ── §11.70 « chapitre N et N » — le renvoi qui cite deux fois le même ───
   //    Cinq occurrences trouvées à la main au fil de la campagne :
   //    `chute-mouvements-plans` (« chapitre 2 et 2 », « chapitres 3 et 3 »),
