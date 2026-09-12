@@ -6475,3 +6475,34 @@ vaut plus que le résultat : une sonde qui signale 23 défauts dont 23 faux n'es
 pas une sonde, c'est une hypothèse mal posée.** Vérifier le contexte des
 signalements AVANT d'annoncer un chiffre — ici, lire une seule des 23 citations
 suffisait à voir qu'elle nommait sa leçon cible.
+
+**3. Le risque résiduel des grandes campagnes de conversion, mesuré.** La revue
+de `systemes-oscillants` a trouvé qu'un correctif mécanique du jour avait
+traduit **fidèlement un code PÉRIMÉ** : « l'exercice de R7 » est devenu
+« l'exercice du chapitre 8 », or le chapitre 8 ne contient aucun exercice — le
+code `R7` datait d'avant une renumérotation, et l'exercice vit au chapitre 9.
+La conversion était juste ; c'est sa SOURCE qui était fausse.
+
+Cela pose une question sur les campagnes #18 et #24, qui ont converti **1 086
+puis 529** renvois `R<n>` de la même façon. Combien portaient un code périmé ?
+
+La classe détectable mécaniquement est celle-là même : un renvoi qui nomme un
+OBJET (« l'exercice du chapitre N », « l'exemple travaillé du chapitre N »,
+« la figure du chapitre N ») alors que le chapitre N ne contient pas cet objet.
+Sonde passée sur tout le corpus, texte rendu inclus : **un seul signalement, et
+c'est un faux positif de la sonde** — `pc/electrolyse` cite « l'exemple
+travaillé du chapitre 7 **de la leçon sur les piles** », et `pc/piles`
+chapitre 7 contient bien cet exemple travaillé, avec les mêmes $1080\ \text{C}$.
+
+**Zéro défaut réel dans la classe détectable.** Ce qui ne prouve pas que zéro
+code périmé a été converti — seulement que les conversions périmées n'ont pas
+produit de renvoi vers un objet absent, sauf celle de `systemes-oscillants`,
+trouvée par une critique qui LISAIT le contenu. La détection mécanique s'arrête
+là ; le reste est du travail de lecture.
+
+**Et la même erreur de sonde, deux fois dans la même session** : ici comme pour
+les 23 signalements du point 2, j'ai comparé un renvoi à la leçon HÔTE alors
+qu'il nommait sa leçon cible. Deux fois, le signalement s'est effondré dès que
+j'ai lu la citation en entier. La règle à retenir pour toute sonde de renvoi :
+**résoudre la CIBLE avant de compter**, parce que dans ce corpus un renvoi sur
+deux traverse les leçons.
