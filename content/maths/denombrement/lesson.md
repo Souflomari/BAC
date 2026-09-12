@@ -10,7 +10,7 @@ Avant de lire la suite, prends position : à ton avis, combien de codes à 4 chi
 
 [[checkpoint:cp-r0-predict]]
 
-La tentation, c'est de vouloir lister : 0000, 0001, 0002... et de perdre patience très vite. Il existe pourtant un moyen de connaître le nombre exact de codes sans en écrire un seul, en observant juste la structure du problème : 4 roues, 10 choix indépendants sur chacune. C'est exactement ce que ce chapitre va t'apprendre à faire — compter sans lister. On y reviendra très précisément à la fin de la deuxième étape, et tu verras que la réponse est nettement plus grande que ce que la plupart des gens imaginent.
+La tentation, c'est de vouloir lister : 0000, 0001, 0002... et de perdre patience très vite. Il existe pourtant un moyen de connaître le nombre exact de codes sans en écrire un seul, en observant juste la structure du problème : 4 roues, 10 choix indépendants sur chacune. C'est exactement ce que ce chapitre va t'apprendre à faire — compter sans lister. On y reviendra très précisément au chapitre 3, et tu verras que la réponse est nettement plus grande que ce que la plupart des gens imaginent.
 
 ---
 
@@ -218,7 +218,7 @@ Et puisqu'on connaît déjà $A_n^p = \dfrac{n!}{(n-p)!}$ depuis le chapitre 4, 
 
 $$\binom{n}{p} = \frac{n!}{p! \, (n-p)!}$$
 
-Cette quantité se note $\binom{n}{p}$ ou $C_n^p$ (les deux notations désignent exactement le même nombre — on utilisera les deux dans ce chapitre).
+Cette quantité se note $\binom{n}{p}$ — c'est la notation employée dans tout ce cours. Tu rencontreras aussi $C_n^p$, courante dans les manuels marocains et dans certains sujets, et la forme à plat $C(n,p)$ dans les légendes des figures ci-dessous : **les trois désignent exactement le même nombre**, il faut seulement savoir les reconnaître.
 
 ### Résolvons le comité de 3 parmi 8
 
@@ -316,7 +316,7 @@ Regarde par exemple $\binom{5}{2} = 10$ : c'est bien la somme de $\binom{4}{1}=4
 
 [[figure:triangle-pascal]]
 
-**Une mention utile pour plus tard :** ces mêmes nombres $\binom{n}{p}$ réapparaissent comme coefficients dans le développement de $(a+b)^n$ — le binôme de Newton — mais ce développement fait l'objet d'un autre chapitre ; on ne le traite pas ici.
+**Une mention utile pour plus tard :** ces mêmes nombres $\binom{n}{p}$ réapparaissent comme coefficients dans le développement de $(a+b)^n$ — le binôme de Newton — un résultat classique, hors du programme de cette année : on ne le traite pas ici.
 
 ---
 
@@ -371,7 +371,7 @@ Le chapitre 8 a fait le pont du dénombrement vers les probabilités par l'équi
 - **L'indépendance de deux événements**, $p(A\cap B) = p(A)\times p(B)$, et sa distinction d'avec l'**incompatibilité** ($A\cap B = \varnothing$) — deux notions que le vocabulaire courant confond et que le cours sépare nettement. Elles sont dans « **Probabilités conditionnelles** ».
 - **La variable aléatoire, sa loi et son espérance**, dès qu'un sujet demande « le nombre moyen de… » plutôt que « la probabilité que… ». Même chapitre.
 
-Un exercice de probabilités au bac commence presque toujours par du dénombrement et finit ailleurs. Savoir **d'où vient** chaque geste évite de chercher dans le mauvais chapitre.
+Un exercice de probabilités au bac commence presque toujours par du dénombrement — c'est vrai de presque tous les sujets vérifiés. Où il finit varie : certains restent du comptage de bout en bout, d'autres enchaînent sur des outils d'un autre chapitre. Savoir **d'où vient** chaque geste évite de chercher dans le mauvais chapitre.
 
 ### Exercice de type bac
 

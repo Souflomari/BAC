@@ -42,7 +42,7 @@ exercises:
 
       Une urne contient dix boules : trois boules blanches, trois boules vertes et quatre boules rouges, indiscernables au toucher. On tire au hasard et simultanément trois boules de l'urne.
 
-      Point de méthode qui gouverne tout l'exercice : le mot **« simultanément »** signale un tirage **sans ordre et sans remise** — chaque résultat est un sous-ensemble de 3 boules, et on le compte avec une **combinaison** $\binom{n}{p}$. Comme les boules sont indiscernables au toucher, tous ces tirages sont **équiprobables** : chaque probabilité demandée sera donc un **quotient de dénombrements**, $\dfrac{\text{card}(E)}{\text{card}(\Omega)}$, avec le même dénominateur $\text{card}(\Omega) = \binom{10}{3} = 120$ pour toutes les questions.
+      Point de méthode qui gouverne tout l'exercice : le mot **« simultanément »** signale un tirage **sans ordre et sans remise** — chaque résultat est un sous-ensemble de 3 boules, et on le compte avec une **combinaison** $\binom{n}{p}$. Comme les boules sont indiscernables au toucher, tous ces tirages sont **équiprobables** : chaque probabilité demandée sera donc un **quotient de dénombrements**, $\dfrac{\text{card}(E)}{\text{card}(\Omega)}$, et ce dénominateur $\text{card}(\Omega)$ — le nombre total de tirages possibles — sera le même pour toutes les questions. À toi de le calculer.
 
       On considère les événements :
       - $A$ : « n'obtenir aucune boule rouge » ;
@@ -133,11 +133,11 @@ exercises:
         être un sujet réel. Le sujet réel est r-bac (2022, sourcé). Nombres et
         contexte choisis pour rester exacts, vérifiés à la main.
     intro: |-
-      Même machinerie que le sujet précédent (tirage simultané, combinaisons, probabilité comme quotient de dénombrements), mais on change complètement l'habillage : on ne tire plus des boules dans une urne, on choisit des personnes dans un club. Le but est que tu ne recopies pas le sujet 2022 : tu dois reconnaître que « choisir 3 membres d'un coup » est **exactement** un tirage simultané, et que « fille / garçon » y joue le rôle des couleurs.
+      Même machinerie que le sujet précédent (tirage simultané, combinaisons, probabilité comme quotient de dénombrements), mais on change complètement l'habillage : on ne tire plus des boules dans une urne, on choisit des personnes dans un club. Le but est que tu ne recopies pas le sujet 2022 : à toi de reconnaître, sous l'habillage, quelle machinerie s'applique.
 
       Un club compte huit membres : cinq filles et trois garçons. On choisit au hasard et simultanément trois membres pour former un comité (sans distinction de rôle).
 
-      L'univers a pour cardinal $\text{card}(\Omega) = \binom{8}{3} = 56$ (choisir 3 personnes parmi 8, sans ordre). On considère les événements :
+      L'univers $\Omega$ est l'ensemble des comités possibles — choisir 3 personnes parmi 8, sans ordre. On considère les événements :
       - $A$ : « le comité ne compte aucun garçon » ;
       - $B$ : « le comité est composé de trois filles ou de trois garçons » ;
       - $C$ : « le comité compte exactement un garçon » ;
