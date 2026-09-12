@@ -511,7 +511,7 @@ items:
       droite). Ici, $v(t)=t^2$ n'est ni l'une ni l'autre : c'est une
       parabole, un contour courbe qu'aucune formule de géométrie plane
       classique ne mesure exactement. C'est précisément le problème que ce
-      chapitre va résoudre, à partir du chapitre suivant.
+      chapitre va résoudre, à partir du chapitre 2.
 
   - id: CI-8
     rung: "R0"
@@ -565,13 +565,13 @@ items:
       reliant $(0,0)$ à $(2,4)$ (vérifie-le en $t=1$ : $1<2$). L'aire sous
       la parabole est donc strictement plus petite que l'aire du triangle,
       $4$ — cohérent avec la valeur exacte $\frac83\approx2{,}67$ trouvée
-      au chapitre suivant.
+      au chapitre 2.
     solution: |
       Compare $t^2$ à la droite $y=2t$ (qui relie $(0,0)$ à $(2,4)$) sur
       $[0,2]$ : $2t-t^2 = t(2-t) \geq 0$ pour $t \in [0,2]$, donc $t^2 \leq
       2t$ sur tout l'intervalle. L'aire sous la parabole est donc
       inférieure ou égale à l'aire sous la droite, qui est $4$. La valeur
-      exacte, calculée au chapitre suivant, est $\frac83\approx2{,}67 < 4$.
+      exacte, calculée au chapitre 2, est $\frac83\approx2{,}67 < 4$.
 
   - id: CI-9
     rung: "R0"
@@ -1261,8 +1261,7 @@ items:
       maximum à la borne supérieure, $f(9)=3$. D'où $m=2$ et $M=3$ —
       exactement le même raisonnement que pour $e^x$ au chapitre 6.
     solution: |
-      $f(x)=\sqrt x$ est croissante sur $[4,9]$ (chapitre "Fonction racine
-      carrée" / dérivée $f'(x)=\frac{1}{2\sqrt x}>0$), donc son minimum
+      $f(x)=\sqrt x$ est croissante sur $[4,9]$ (dérivée $f'(x)=\frac{1}{2\sqrt x}>0$), donc son minimum
       est atteint en $x=4$ (la borne inférieure) et son maximum en $x=9$
       (la borne supérieure) : $m=f(4)=2$ et $M=f(9)=3$. On aurait alors
       $2\times5\leq\int_4^9\sqrt x\,\mathrm{d}x\leq3\times5$, soit
@@ -1424,7 +1423,7 @@ items:
       5{,}33$, différente de $f(2)=4$. Pour une fonction convexe comme
       $x^2$, la valeur moyenne intègre le comportement de toute la courbe,
       pas seulement le point central — les deux notions ne coïncident
-      qu'à l'exception des fonctions affines.
+      que pour certaines fonctions particulières, comme les fonctions affines.
     solution: |
       **Calcul de la vraie valeur moyenne :**
       $$\int_0^4 x^2\,\mathrm{d}x = \left[\frac{x^3}{3}\right]_0^4 = \frac{64}{3}$$
@@ -1432,8 +1431,8 @@ items:
 
       **Comparaison :** $f(2)=4 \neq \frac{16}{3}\approx5{,}33$. La valeur
       moyenne n'est pas, en général, la valeur de $f$ au milieu de
-      l'intervalle — c'est une propriété propre aux fonctions affines
-      uniquement (où la courbe EST la droite reliant ses extrémités).
+      l'intervalle — l'égalité vaut, par exemple, pour les fonctions affines
+      (où la courbe EST la droite reliant ses extrémités).
 
   - id: CI-24
     rung: "R7"

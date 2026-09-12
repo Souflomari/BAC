@@ -4809,7 +4809,7 @@ Comme le §11.43, elle tourne en CI (validate-content --strict, 62 notions) sans
 jamais bloquer, et le sens « valeur qui ne résout pas » complète, pour les
 rungs, ce que la porte marqueur→cible fait déjà pour les figures (ADR 0031).
 
-### 11.45 La campagne de correction de contenu vague 1 — douze notions triées, 77 correctifs objectifs, les bloquants consignés
+### 11.45 La campagne de correction de contenu vague 1 — treize notions triées, 84 correctifs objectifs, les bloquants consignés
 
 **EN COURS (une notion à la fois, cadence critiques).** Après les portes
 d'intégrité (§11.43 figures orphelines, §11.44 rung↔titre), la vague-1
@@ -4820,7 +4820,7 @@ vérité de citation, renvoi, hygiène de source ; **différer** aux auteurs
 enseigné, invente une misconception, ou demande une décision de conception. Une
 revue horodatée par notion (`REVIEW-2026-09-1x.md`) consigne l'appliqué ET le déféré.
 
-Douze notions à ce stade :
+Treize notions à ce stade :
 
 | Notion | Objectifs appliqués | Déféré (marquant) |
 |--------|:---:|--------|
@@ -4836,9 +4836,10 @@ Douze notions à ce stade :
 | `svt/genetique-populations` | 3 | contradiction de cadre BLOQUANTE (S1/S2) → content-author |
 | `svt/genetique-humaine` | 11 | **F1/F2 BLOQUANTS** (Test B universel faux ; solution GH-8) ; P2 mis-tag crochet → modèle apprenant |
 | `maths/arithmetique` | 7 | maths **PRISTINE** (2 critiques + recalcul : la seule erreur = 2⁴¹ « 34 chiffres »→13) ; **SEV1 cadre** → research-lead : exclusion « résidus quadratiques » falsifiée par 2 sujets vérifiés (2023 N, 2025 N critère d'Euler), Fermat absent du programme mais dans `bac-reference.md:110` + 9/10 annales, poids bloc 15 % démenti ; **PPCM et ℤ/nℤ jamais enseignés** mais testés → content-author ; habileté 75/25/0 (0 niveau-3, 100 % QCM) ; 9/16 lignes de grille non rupturées ; porte pré-sommet qui spoile le sommet ; dispute couverture Fermat (réellement 1, pas 3) |
+| `maths/calcul-integral` | 7 | maths **PRISTINE** (2 critiques : « aucun constat de calcul ») ; faux universel L363 (« ch.2 suppose f≥0 ») qui **contredit CI-11** ; faux universel CI-23 (μ=f(milieu) « propre aux affines uniquement ») + « à l'exception de » inversé ; renvois morts « chapitre Dérivation » (×5), « Fonction racine carrée », « chapitre suivant » (×5)→ch2 ; 2 légendes. **SEV1 cadre** → research-lead/owner : changement de variable enseigné contre la `limite` (et `bank:487` vs sujet `:1189` se contredisent), **Riemann+TAF dans une notion déclarée SExp** (exclusion SM), aucune filière en champ machine, arctan/longueur d'arc hors-cadre ; **volume de révolution TOTALEMENT absent** (savoir-faire des 2 filières) → content-author ; jargon banque (« hors socle », « SCOPE NOTE », \text dans KaTeX) **déféré avec la portée** ; habileté PC sur checkpoints maths ; sommet = 2/9 savoir-faire, partition d'un exercice |
 
-**77 correctifs objectifs** au total, 0 échec `validate-content --strict` sur les
-douze. Les défauts **bloquants** ne sont jamais réécrits en autonomie — ils
+**84 correctifs objectifs** au total, 0 échec `validate-content --strict` sur les
+treize. Les défauts **bloquants** ne sont jamais réécrits en autonomie — ils
 touchent des règles biologiques enseignées (genetique-humaine F1 : « un père
 atteint lié à l'X ne transmet jamais à ses fils » est faux quand la mère est
 conductrice) ou une décision de conception (genetique-humaine P2 : les

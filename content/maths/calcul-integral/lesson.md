@@ -14,7 +14,7 @@ Mais ici, $v(t)=t^2$ trace une parabole, pas une droite. Aucun découpage en rec
 
 [[checkpoint:cp-r0-predict]]
 
-Le problème est là depuis toujours : on sait calculer une aire quand le contour est fait de droites. On ne sait pas encore quoi faire quand le contour est une courbe. C'est exactement l'outil que cette leçon construit — et on va résoudre cette voiture, avec la valeur exacte, dès le prochain chapitre.
+Le problème est là depuis toujours : on sait calculer une aire quand le contour est fait de droites. On ne sait pas encore quoi faire quand le contour est une courbe. C'est exactement l'outil que cette leçon construit — et on va résoudre cette voiture, avec la valeur exacte, dès le chapitre 2.
 
 ---
 
@@ -34,7 +34,7 @@ On note aussi $F(b)-F(a) = \big[F(x)\big]_a^b$. Le nombre $a$ est la **borne inf
 
 Une objection immédiate : une fonction $f$ a une infinité de primitives (elles diffèrent toutes d'une constante). Si tu choisis une primitive différente, tu risques d'obtenir un résultat différent — et alors la définition ne voudrait rien dire.
 
-Regarde pourquoi ce risque ne se réalise jamais. Soit $G$ une autre primitive de $f$ sur $[a,b]$. Alors $F'=G'=f$, donc $(G-F)'=0$ sur $[a,b]$ : une fonction de dérivée nulle sur un intervalle est constante (chapitre "Dérivation"), donc $G-F$ est égale à une constante $C$ :
+Regarde pourquoi ce risque ne se réalise jamais. Soit $G$ une autre primitive de $f$ sur $[a,b]$. Alors $F'=G'=f$, donc $(G-F)'=0$ sur $[a,b]$ : une fonction de dérivée nulle sur un intervalle est constante (chapitre "Dérivabilité et étude des fonctions"), donc $G-F$ est égale à une constante $C$ :
 
 $$G(x) = F(x) + C \quad \text{pour tout } x \in [a,b]$$
 
@@ -180,7 +180,7 @@ C'est tout l'intérêt de Chasles dans les exercices : elle relie des intégrale
 
 **Propriété.** Si $f$ est continue et $f \geq 0$ sur $[a,b]$ (avec $a \leq b$), alors $\displaystyle\int_a^b f(x)\,\mathrm{d}x \geq 0$.
 
-**Pourquoi c'est vrai :** soit $F$ une primitive de $f$ sur $[a,b]$. Comme $F'=f\geq 0$ sur tout l'intervalle, $F$ est **croissante** sur $[a,b]$ (chapitre "Dérivation" : dérivée positive $\Rightarrow$ fonction croissante). Une fonction croissante vérifie $F(b) \geq F(a)$ dès que $b \geq a$. Donc :
+**Pourquoi c'est vrai :** soit $F$ une primitive de $f$ sur $[a,b]$. Comme $F'=f\geq 0$ sur tout l'intervalle, $F$ est **croissante** sur $[a,b]$ (chapitre "Dérivabilité et étude des fonctions" : dérivée positive $\Rightarrow$ fonction croissante). Une fonction croissante vérifie $F(b) \geq F(a)$ dès que $b \geq a$. Donc :
 
 $$\int_a^b f(x)\,\mathrm{d}x = F(b) - F(a) \geq 0$$
 
@@ -296,7 +296,7 @@ La valeur moyenne de $x^2$ sur $[0,3]$ est $3$. Un rectangle de largeur $3$ et d
 
 ### D'où vient la formule
 
-Toutes les propriétés vues jusqu'ici viennent de la définition et de la linéarité. Celle-ci vient d'ailleurs : de la règle de dérivation d'un produit, que tu connais depuis le chapitre "Dérivation".
+Toutes les propriétés vues jusqu'ici viennent de la définition et de la linéarité. Celle-ci vient d'ailleurs : de la règle de dérivation d'un produit, que tu connais depuis le chapitre "Dérivabilité et étude des fonctions".
 
 Soient $u$ et $v$ deux fonctions dérivables sur $[a,b]$, à dérivées $u'$ et $v'$ continues. La règle du produit donne, pour tout $x \in [a,b]$ :
 
@@ -360,7 +360,7 @@ Les deux exemples tombent sur $1$ — pas par miracle, juste parce que les nombr
 
 ### Le piège : l'intégrale signée n'est pas toujours l'aire
 
-Tout ce qu'on a vu au chapitre 2 suppose $f \geq 0$. Dès que $f$ change de signe sur l'intervalle, $\displaystyle\int_a^b f(x)\,\mathrm{d}x$ n'est **plus** l'aire — les parties où $f<0$ soustraient de la valeur au lieu d'ajouter, alors qu'une aire est toujours positive. La méthode : repérer les intervalles où $f \geq 0$ et ceux où $f \leq 0$ (typiquement en cherchant les racines de $f$), utiliser Chasles (chapitre 4) pour découper, et prendre la valeur absolue de chaque morceau négatif.
+L'interprétation en aire (chapitre 2) suppose $f \geq 0$. Dès que $f$ change de signe sur l'intervalle, $\displaystyle\int_a^b f(x)\,\mathrm{d}x$ n'est **plus** l'aire — les parties où $f<0$ soustraient de la valeur au lieu d'ajouter, alors qu'une aire est toujours positive. La méthode : repérer les intervalles où $f \geq 0$ et ceux où $f \leq 0$ (typiquement en cherchant les racines de $f$), utiliser Chasles (chapitre 4) pour découper, et prendre la valeur absolue de chaque morceau négatif.
 
 ### Exemple travaillé : une courbe qui change de signe
 
