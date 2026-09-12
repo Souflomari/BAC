@@ -845,8 +845,10 @@ items:
       Les quatre axiomes du groupe sont indépendants de la commutativité.
       Le contre-exemple du chapitre 6 le montre : avec $f(x)=x+1$ et $g(x)=2x$,
       $(f\circ g)(0)=1$ alors que $(g\circ f)(0)=2$ — la composition n'est
-      pas commutative ici, bien que ce soit une loi de groupe (associative,
-      avec neutre $id$ et symétriques). Un groupe n'est donc pas toujours
+      pas commutative ici, bien que la composition soit une loi de groupe sur
+      l'ensemble des **bijections** de $\mathbb{R}$ vers $\mathbb{R}$ — auquel
+      $f$ et $g$ appartiennent toutes deux (associative, de neutre $id$, et
+      chaque bijection y a une réciproque). Un groupe n'est donc pas toujours
       commutatif.
 
   - id: SA-16
@@ -1180,13 +1182,17 @@ items:
     correct_feedback: >
       La ligne qui sépare l'anneau du corps (synthèse R6) : $\times$ doit
       être commutative, et TOUT élément non nul doit avoir un symétrique
-      pour $\times$. Rien de plus n'est exigé sur $+$, qui est déjà un
-      groupe commutatif dès la définition de l'anneau.
+      pour $\times$ — ce qui suppose, au passage, que $\times$ ait un neutre
+      $1$ (un anneau unitaire, chapitre 8) : sans neutre, « symétrique »
+      n'aurait pas de sens. Rien de plus n'est exigé sur $+$, qui est déjà
+      un groupe commutatif dès la définition de l'anneau.
     solution: |
       D'après la synthèse du chapitre 9 : un anneau exige $(E,+)$ groupe
       commutatif, $\times$ associative et distributive. Un corps ajoute
       deux conditions supplémentaires sur $\times$ seulement : $\times$
-      commutative, et tout élément non nul inversible pour $\times$. C'est
+      commutative, et tout élément non nul inversible pour $\times$ (sur
+      un anneau unitaire — c'est le neutre $1$ qui donne un sens au mot
+      « inversible »). C'est
       exactement ce qui sépare $(\mathbb{Z},+,\times)$ (anneau) de
       $(\mathbb{Q},+,\times)$ (corps).
 
@@ -1197,8 +1203,7 @@ items:
     skill_code: maths_structures_alg
     tags: [misconception_driven, maths_structures_alg, axiomes_groupe, synthese]
     stem: >
-      On munit $E=\{0,1,2,3,4\}$ de l'addition modulo $5$ (chapitre 10, exercice
-      « à toi de jouer »). Lequel de ces raisonnements vérifie correctement,
+      On munit $E=\{0,1,2,3,4\}$ de l'addition modulo $5$. Lequel de ces raisonnements vérifie correctement,
       sans en sauter aucun, que $(E,+)$ est un groupe commutatif ?
     type: mcq
     choices:
@@ -1371,6 +1376,17 @@ items:
 #   generalisation-hative (new)  : SA-13B, SA-15D, SA-16C, SA-17A, SA-20B = 5
 #   groupe-implique-commutatif (new): SA-15A, SA-17C, SA-22A              = 3
 # All 7 misconceptions clear the ≥3 floor.
+# ⚠ BLOC PÉRIMÉ (constaté revue vague 1, 2026-09-12) — NE PAS S'Y FIER.
+#   Deux raisons, indépendantes : (1) il compte PAR TAG PRIMAIRE, méthode
+#   abandonnée ; le `coverage_summary` publié en pied de fichier compte au
+#   niveau ITEM (un item compte dès qu'un de ses distracteurs porte le
+#   modèle), et c'est lui que la machine lit. (2) Il est antérieur à
+#   SA-25/SA-26 et à la HUITIÈME misconception
+#   (`loi-modulaire-mal-calculee`) : « 7 misconceptions » et « no items
+#   added » sont tous deux faux aujourd'hui. Les chiffres justes, recomptés
+#   depuis les tags bruts par les deux critiques : R1 4, R2 4, total 26,
+#   neutre 9, axiome 3, groupe-anneau 6, clôture 8, assoc-commut 6,
+#   généralisation 7, groupe-implique-commutatif 3, loi-modulaire 3.
 #
 # Re-audit (summit-conversion pass, 2026-07-14) — SA-1..SA-24 re-checked by
 # hand against the seven-misconception inventory above : every distractor

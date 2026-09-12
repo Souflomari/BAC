@@ -72,6 +72,11 @@
 # commutativité, mais aucun rung n'introduit le critère de sous-groupe ni
 # même le mot « sous-groupe » en tant que concept enseigné (grep vérifié :
 # zéro occurrence dans lesson.md hors ces recoupements d'exercices).
+# MISE À JOUR (revue vague 1, 2026-09-12) : CE TROU EST COMBLÉ. lesson.md
+# porte un chapitre entier « Sous-groupe » (le 5e titre ##), avec son
+# critère à trois conditions et l'héritage. Reste vrai, en revanche : ce
+# chapitre n'a PAS de code de barreau, donc aucun item ni checkpoint ne
+# peut s'y rattacher — et le banc de fin n'en contient effectivement aucun.
 # exercises.yaml (r-bac, q3) contourne déjà ce trou en invoquant un
 # « critère du sous-groupe » sans le rattacher à un rung. Le champ
 # `reasoning` de la question q7 de bk-2019-n-x1 évite d'aggraver ce trou :
@@ -124,6 +129,12 @@
 # PART dans lesson.md (grep vérifié : zéro occurrence de « intègre » ou
 # « intégrité ») — R5 (anneau) et R6 (corps) ne l'introduisent pas, alors
 # que c'est un troisième pilier classique du même trio anneau/intègre/corps.
+# MISE À JOUR (revue vague 1, 2026-09-12) : CE TROU EST COMBLÉ — lesson.md
+# porte un chapitre « Anneau intègre » (le 8e titre ##) ; re-grep : 15
+# occurrences de « intègre », 5 de « intégrité ». Le contournement décrit
+# ci-dessous n'est donc plus nécessaire, seulement inoffensif. Comme pour
+# le sous-groupe, ce chapitre n'a pas de code de barreau et ne porte aucun
+# item.
 # Le champ `reasoning` de la question q9 ci-dessous introduit la définition
 # directement (absence de diviseurs de zéro), à l'aide du rappel de tête
 # d'énoncé sur ℤ plutôt que d'un rung — même logique de contournement
@@ -139,7 +150,9 @@
 # (M2(ℝ),+,×) d'« intègre » — rien à emprunter à l'énoncé cette fois. Le
 # champ `reasoning` de q6 reste donc strictement DANS LE CADRE du rung R6 :
 # au lieu de nommer « diviseurs de zéro » ou « anneau intègre » (concepts
-# toujours absents de lesson.md), il prouve directement par l'absurde, en
+# qui, depuis, SONT enseignés — voir la mise à jour de la note 2 ; la
+# preuve ci-dessous reste valable, elle n'est simplement plus contrainte),
+# il prouve directement par l'absurde, en
 # multipliant les deux membres de M(√3,1)×M(-√3,1)=O par l'inverse supposé
 # de M(√3,1) — une manipulation qui ne mobilise que la définition du corps
 # du R6 (tout élément non nul inversible pour ×) et l'associativité, deux
@@ -185,8 +198,11 @@
 # interne échoue à être associative (q3-c : T n'est pas associative sur
 # R×C), puis se révèle associative sur une PARTIE de cet ensemble (q4-c :
 # (G−{(0,0)},T) est un groupe, donc T y est associative). Les deux faits
-# sont parfaitement compatibles, mais lesson.md n'énonce nulle part la
-# dissymétrie qui les réconcilie : le chapitre « Sous-groupe » explique
+# sont parfaitement compatibles. MISE À JOUR (revue vague 1, 2026-09-12) :
+# lesson.md ÉNONCE désormais la dissymétrie qui les réconcilie — le
+# paragraphe « Attention à ce que l'héritage ne dit PAS » du chapitre
+# « Sous-groupe » dit exactement que la réciproque est fausse. Ce qui suit
+# décrit l'état antérieur : le chapitre « Sous-groupe » explique
 # bien qu'une propriété universelle vraie sur E DESCEND sur toute partie
 # de E (c'est l'héritage de l'associativité et de la commutativité), il ne
 # dit pas — parce qu'il n'en a pas l'occasion — que la RÉCIPROQUE est
@@ -1432,10 +1448,12 @@ entries:
         fichier (SCOPE NOTE 3) : q2 mobilise la notion de sous-espace
         vectoriel (chapitre antérieur, jamais enseigné dans lesson.md) ; q6
         (« (E,+,×) n'est pas un corps ») repose sur un critère de type
-        diviseurs de zéro / anneau intègre, jamais nommé dans lesson.md —
-        bridgé directement via la définition du corps du rung R6
-        (multiplication par l'inverse supposé), sans introduire de
-        vocabulaire non enseigné. q1 et q8 relèvent en outre du trou
+        diviseurs de zéro / anneau intègre — bridgé directement via la
+        définition du corps du rung R6 (multiplication par l'inverse
+        supposé). MISE À JOUR (revue vague 1, 2026-09-12) : ce vocabulaire
+        n'est plus « jamais nommé dans lesson.md » — le chapitre 8
+        « Anneau intègre » le définit. Le pont reste valable ; il n'est
+        simplement plus contraint. q1 et q8 relèvent en outre du trou
         « sous-groupe » déjà documenté (SCOPE NOTE 1).
     intro: |-
       **Structures algébriques (examen national, session normale 2023, Sciences Mathématiques).**

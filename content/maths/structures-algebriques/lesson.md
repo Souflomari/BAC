@@ -258,7 +258,7 @@ Mais cette liste, tu n'as pas à la repasser en entier, et c'est tout l'intérê
 - **Le neutre non plus.** $e$ existe dans $E$, mais il peut très bien ne pas appartenir à $H$.
 - **Les symétriques non plus.** Le symétrique de $x$ existe dans $E$, mais il peut sortir de $H$.
 
-**Attention à ce que l'héritage ne dit PAS.** « L'associativité descend de $E$ vers $H$ » est vrai, et c'est tout ce que ça dit. La réciproque est fausse : une loi peut être associative **sur une partie** sans l'être partout. Un sujet d'examen a exactement joué là-dessus — une même loi $T$ y est montrée non associative sur l'ensemble entier à une question, puis associative sur une partie à la question suivante. Ce n'est pas une contradiction : le contre-exemple qui casse l'associativité globale utilise des éléments qui **n'appartiennent pas** à la partie. Quand deux questions voisines semblent se contredire sur une propriété, regarde toujours **où vivent** les éléments du contre-exemple.
+**Attention à ce que l'héritage ne dit PAS.** « L'associativité descend de $E$ vers $H$ » est vrai, et c'est tout ce que ça dit. La réciproque est fausse : une loi peut être associative **sur une partie** sans l'être partout. Un sujet d'examen a exactement joué là-dessus — session de rattrapage 2023, exercice 3 : une même loi $T$ y est montrée non associative sur l'ensemble entier, puis associative sur une partie quelques questions plus loin. Ce n'est pas une contradiction : le contre-exemple qui casse l'associativité globale utilise **au moins un** élément qui n'appartient pas à la partie. Quand deux questions voisines semblent se contredire sur une propriété, regarde toujours **où vivent** les éléments du contre-exemple.
 
 Trois questions au lieu de quatre — et les trois qui restent posent toutes la même question : **est-ce qu'on sort de $H$ ?**
 
@@ -299,7 +299,7 @@ Dans $(\mathbb{R}^*,\times)$, prends $H = \{2^n \ /\ n \in \mathbb{Z}\}$.
 - Stabilité : $2^n \times 2^m = 2^{n+m}$, et $n+m \in \mathbb{Z}$. ✓
 - Symétrique : le symétrique de $2^n$ pour $\times$ est $\dfrac{1}{2^n} = 2^{-n}$, et $-n \in \mathbb{Z}$ — il est encore dans $H$. ✓
 
-$H$ est un sous-groupe de $(\mathbb{R}^*,\times)$. Ce qu'il faut retenir n'est pas le résultat, c'est le geste de la troisième ligne : on écrit le symétrique, on le **transforme** jusqu'à lui faire retrouver la forme qui définit $H$, et c'est cette réécriture qui prouve l'appartenance. Quand $H$ est décrit par une écriture du type $x+y\sqrt3$ ou $x+yi$, cette réécriture passe presque toujours par la multiplication haut et bas par la quantité conjuguée — la même technique de rationalisation que tu connais déjà.
+$H$ est un sous-groupe de $(\mathbb{R}^*,\times)$. Ce qu'il faut retenir n'est pas le résultat, c'est le geste de la troisième ligne : on écrit le symétrique, on le **transforme** jusqu'à lui faire retrouver la forme qui définit $H$, et c'est cette réécriture qui prouve l'appartenance. Quand $H$ est décrit par une écriture du type $x+y\sqrt3$ ou $x+yi$, cette réécriture peut passer par la multiplication haut et bas par la quantité conjuguée — la même technique de rationalisation que tu connais déjà. Ce n'est pas la seule voie (le sujet du chapitre 10 s'en passe), mais c'est celle à laquelle on pense le moins vite.
 
 ### Une vérification qu'on oublie : $H$ est-il bien inclus dans $E$ ?
 
@@ -333,7 +333,7 @@ $$\text{pour tous } x,y \in E, \qquad x \star y = y \star x$$
 
 **Le mécanisme pour le vérifier :** exactement celui du chapitre 3 — la table est symétrique par rapport à sa diagonale principale.
 
-Regarde les deux tables construites au chapitre 4. Celle de $(\mathbb{Z}/4\mathbb{Z}, +)$ est symétrique (déjà vérifié au chapitre 3). Celle du groupe des symétries du rectangle l'est aussi : compare, par exemple, la case $(s_h, r)$, qui contient $s_v$, et sa réflexion $(r, s_h)$, qui contient également $s_v$. Les deux groupes rencontrés jusqu'ici sont donc **abéliens**.
+Regarde les deux tables construites jusqu'ici. Celle de $(\mathbb{Z}/4\mathbb{Z}, +)$, au chapitre 2, est symétrique (déjà vérifié au chapitre 3). Celle du groupe des symétries du rectangle, au chapitre 4, l'est aussi : compare, par exemple, la case $(s_h, r)$, qui contient $s_v$, et sa réflexion $(r, s_h)$, qui contient également $s_v$. Les deux groupes rencontrés jusqu'ici sont donc **abéliens**.
 
 ### Un contre-exemple : la composition n'est pas commutative en général
 
@@ -435,9 +435,9 @@ Dans $(M_2(\mathbb{R}),+,\times)$ :
 
 $$\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \times \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} = O$$
 
-Les deux facteurs sont non nuls — chacun a un coefficient égal à $1$ — et leur produit est la matrice nulle : $(M_2(\mathbb{R}),+,\times)$ n'est pas intègre. Retiens ce fait, il oriente la lecture de tout un sujet : **un ensemble de matrices n'a aucune raison d'être intègre**, alors qu'un ensemble de nombres réels ou complexes, lui, l'est toujours.
+Les deux facteurs sont non nuls — chacun a un coefficient égal à $1$ — et leur produit est la matrice nulle : $(M_2(\mathbb{R}),+,\times)$ n'est pas intègre. Retiens ce fait, il oriente la lecture de tout un sujet : **un ensemble de matrices n'est pas intègre par défaut** — ça se vérifie à chaque fois, et dans les deux sens (la section suivante montre justement comment prouver qu'un anneau de matrices **est** intègre) —, alors qu'un ensemble de nombres réels ou complexes **muni de l'addition et de la multiplication usuelles**, lui, l'est toujours. Cette dernière précision compte : dès qu'on pose une loi exotique, tout est à refaire.
 
-Un mot sur la rédaction : "$M \neq O$" ne se dit pas "on le voit", ça se justifie — en pointant un coefficient non nul, ou une condition donnée par l'énoncé. Et dans un sujet, la question qui précède te tend souvent le couple tout fait ("Vérifier que $M \times N = O$") : ce cadeau est le signal que la question suivante va te demander d'en déduire quelque chose sur l'intégrité, ou sur le fait que la structure n'est pas un corps.
+Un mot sur la rédaction : "$M \neq O$" ne se dit pas "on le voit", ça se justifie — en pointant un coefficient non nul, ou une condition donnée par l'énoncé. Et dans un sujet, il arrive que la question qui précède te tende le couple tout fait ("Vérifier que $M \times N = O$") : ce cadeau est le signal que la question suivante va te demander d'en déduire quelque chose sur l'intégrité, ou sur le fait que la structure n'est pas un corps.
 
 ### Le geste inverse : montrer qu'un anneau est intègre
 
@@ -483,6 +483,7 @@ Attention à ne pas retourner l'implication. Tout corps est intègre — c'est c
 
 **Définition.** Un anneau $(E, +, \times)$ est un **corps** si, de plus :
 
+- $\times$ possède un **élément neutre**, noté $1$ — autrement dit l'anneau est **unitaire** (chapitre 8). Sans ce neutre, « symétrique pour $\times$ » ne voudrait rien dire : un symétrique se définit toujours *par rapport à un neutre* (chapitre 3) ;
 - $\times$ est **commutative** ;
 - **tout élément non nul** de $E$ possède un **symétrique** pour $\times$.
 
@@ -492,7 +493,7 @@ Un corps est donc un anneau où la seconde loi, $\times$, se rapproche presque d
 
 $(\mathbb{Q}, +, \times)$ est déjà un anneau (mêmes vérifications que pour $\mathbb{Z}$ au chapitre 7, héritées des propriétés connues de $+$ et $\times$ sur $\mathbb{Q}$), et $\times$ y est commutative. Reste à vérifier l'exigence supplémentaire : **tout** rationnel non nul a-t-il un symétrique pour $\times$ ?
 
-Prends un rationnel non nul quelconque $\frac{a}{b}$ (avec $a \neq 0$). Son symétrique candidat est $\frac{b}{a}$ — qui est bien un rationnel, puisque $a \neq 0$. Vérifie :
+Prends un rationnel non nul quelconque $\frac{a}{b}$ (avec $b \neq 0$ pour que l'écriture ait un sens, et $a \neq 0$ puisque le rationnel est non nul). Son symétrique candidat est $\frac{b}{a}$ — qui est bien un rationnel, puisque $a \neq 0$. Vérifie :
 
 $$\frac{a}{b} \times \frac{b}{a} = \frac{ab}{ba} = 1$$
 
@@ -511,7 +512,7 @@ C'est exactement la même observation que celle faite à la fin du chapitre 7 po
 | Groupe $(E,\star)$ | loi interne + associative + neutre + symétrique pour **chaque** élément |
 | Groupe commutatif | groupe, et de plus $\star$ commutative |
 | Anneau $(E,+,\times)$ | $(E,+)$ groupe commutatif ; $\times$ associative et distributive par rapport à $+$ |
-| Corps $(E,+,\times)$ | anneau, avec $\times$ commutative et **tout élément non nul** inversible pour $\times$ |
+| Corps $(E,+,\times)$ | anneau, avec $\times$ unitaire (neutre $1$) et commutative, et **tout élément non nul** inversible pour $\times$ |
 
 La ligne qui sépare l'anneau du corps tient en une seule exigence supplémentaire — et c'est elle qui distingue $(\mathbb{Z},+,\times)$ (anneau seulement) de $(\mathbb{Q},+,\times)$ (corps).
 
@@ -523,15 +524,15 @@ La ligne qui sépare l'anneau du corps tient en une seule exigence supplémentai
 
 ## R7 — Isomorphisme et exercices de type bac
 
-Tu as maintenant tout l'outillage du chapitre : reconnaître une loi de composition interne (chapitre 2), tester ses propriétés (chapitre 3), et cocher les axiomes qui font d'un ensemble un groupe, un anneau ou un corps (chapitres 4 à 9). Il reste un dernier geste, celui qui revient presque chaque année à l'examen national des Sciences Mathématiques : montrer que deux structures d'apparence différente — l'une habillée en nombres complexes, l'autre en matrices — sont en réalité la même.
+Tu as maintenant tout l'outillage du chapitre : reconnaître une loi de composition interne (chapitre 2), tester ses propriétés (chapitre 3), et cocher les axiomes qui font d'un ensemble un groupe, un anneau ou un corps (chapitres 4 à 9). Il reste un dernier geste, celui qui revient presque chaque année à l'examen national des Sciences Mathématiques : relier deux structures d'apparence différente — le plus souvent l'une habillée en matrices, l'autre en nombres, réels ou complexes — par une application qui respecte les lois.
 
 ### Un pont entre deux structures : l'isomorphisme
 
-Imagine deux groupes $(E, \star)$ et $(F, \times)$, et une application $\varphi : E \to F$ qui soit à la fois **bijective** (elle apparie un à un les éléments des deux ensembles) et **morphisme** — c'est-à-dire qu'elle respecte les lois :
+Imagine un groupe $(E, \star)$ déjà connu, un ensemble $F$ muni d'une loi interne $\times$ dont tu ne sais encore rien, et une application $\varphi : E \to F$ qui soit à la fois **bijective** (elle apparie un à un les éléments des deux ensembles) et **morphisme** — c'est-à-dire qu'elle respecte les lois :
 
 $$\varphi(x \star y) = \varphi(x) \times \varphi(y)$$
 
-Une telle application s'appelle un **isomorphisme**. Son intérêt est considérable : si $(E, \star)$ est déjà connu comme groupe commutatif, alors $\varphi$ **transporte** toute cette structure sur $(F, \times)$ — commutativité, neutre et symétriques compris. On n'a pas à re-vérifier les quatre axiomes un par un sur $F$ : il suffit d'exhiber l'isomorphisme. C'est exactement la stratégie de la dernière question du sujet qui suit.
+Une telle application s'appelle un **isomorphisme**. Son intérêt est considérable : si $(E, \star)$ est déjà connu comme groupe commutatif, alors $\varphi$ **transporte** toute cette structure sur $(F, \times)$ — commutativité, neutre et symétriques compris. On n'a pas à re-vérifier les quatre axiomes un par un sur $F$ : il suffit d'exhiber l'isomorphisme. Attention à l'ordre, en revanche : pour qu'il y ait quoi que ce soit à transporter, encore faut-il que $\times$ soit **interne** sur $F$. C'est pourquoi, dans un sujet, la question qui précède te fait presque toujours prouver d'abord que $F$ est **stable** pour $\times$. C'est exactement la stratégie de la dernière question du sujet qui suit.
 
 [[checkpoint:cp-r7-morphisme]]
 

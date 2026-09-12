@@ -4809,7 +4809,7 @@ Comme le §11.43, elle tourne en CI (validate-content --strict, 62 notions) sans
 jamais bloquer, et le sens « valeur qui ne résout pas » complète, pour les
 rungs, ce que la porte marqueur→cible fait déjà pour les figures (ADR 0031).
 
-### 11.45 La campagne de correction de contenu vague 1 — seize notions triées, 119 correctifs objectifs, les bloquants consignés
+### 11.45 La campagne de correction de contenu vague 1 — dix-sept notions triées, 141 correctifs objectifs, les bloquants consignés
 
 **EN COURS (une notion à la fois, cadence critiques).** Après les portes
 d'intégrité (§11.43 figures orphelines, §11.44 rung↔titre), la vague-1
@@ -4820,7 +4820,7 @@ vérité de citation, renvoi, hygiène de source ; **différer** aux auteurs
 enseigné, invente une misconception, ou demande une décision de conception. Une
 revue horodatée par notion (`REVIEW-2026-09-1x.md`) consigne l'appliqué ET le déféré.
 
-Treize notions à ce stade :
+Dix-sept notions à ce stade :
 
 | Notion | Objectifs appliqués | Déféré (marquant) |
 |--------|:---:|--------|
@@ -4840,9 +4840,10 @@ Treize notions à ce stade :
 | `maths/suites-numeriques` | 12 | maths **PRISTINE** (2 critiques + recalcul indépendant : réservoir, les 2 récurrences, ε–N, gendarmes, tout le chapitre homographique, les 2 sommets, et le `coverage_summary` recompté deux fois depuis les 114 tags — aucun écart) ; **hypothèse manquante qui fausse la recette** (« $f(I)\subset I$ donc bornée » : il faut $I$ **borné** — $u_{n+1}=u_n^2+1$ sur $[1;+\infty[$ la met en défaut) ; faux universel « le mécanisme ne dépend pas de $a,b,c,d$ » démenti par le **3ᵉ exemple de la leçon** ($\Delta=-3$) ; résultat encadré sans $u_n\neq\beta$ ; « théorème qu'on va démontrer » que le ch.8 refuse ensuite ; **2 réponses imprimées au-dessus de la porte d'essai** (les libellés de partie se rendent hors du gate) ; **barème 4 pts inventé** (le relevé vérifié n'en porte aucun ; les 9 questions somment à 3,75). **SEV1 cadre** → research-lead : notion revendiquée par les DEUX cadres alors que `maths-sexp.yaml:78` exclut les adjacentes — ch.11 + 3 items hors-programme SExp **sans barrière** ; **le chapitre homographique n'a aucun code de barreau** (0 item, 0 checkpoint, 0 figure, invisible au coverage) → content-author ; 400 lignes sans aucun commit ; aucun `habilete` ; 21 % d'application directe contre 40 % |
 | `maths/fonction-exponentielle` | 11 | maths **PRISTINE** (les 31 items, les 2 sommets de bout en bout, les 6 barèmes et les sujets 2019/2020/2025 re-dérivés : aucune faute d'arithmétique ; `coverage_summary` recompté par les DEUX critiques depuis les tags bruts, juste ; 87 citations « chapitre N » sur 88 correctes) ; **33 notes de pas dont le TeX arrivait NU chez l'élève** (`e^{x/2}` rendu accolades comprises — vérifié en rendant la chaîne dans le vrai pipeline) ; **deux fautes dans une même phrase de banque** (« chapitre 2 » pour un résultat que le chapitre 2 DIFFÈRE explicitement, et « croissance stricte » qui ne donne pas la limite) ; liste des outils empruntés fausse **dans les deux sens** (l'IPP ne sert dans aucun des deux exercices ; la bijection et $(f^{-1})'$, qu'ils exigent, sont absentes) ; description de figure qui **durcit** une lecture que le relevé donne hésitante ($g(0{,}5)=1{,}92$, pas $\approx 4$) ; note décrivant $(e^{x/2})^2-1$ pour $(e^{x/2}-1)^2$ ; règle des puissances encadrée sans quantificateur ; « UNE primitive … $+C$ » ; trois commentaires périmés dont un qui affirme le CONTRAIRE de l'état publié. **SEV1 cadre** → research-lead : **aucune filière déclarée** et les fichiers se contredisent (lesson dit SM, checkpoints dit SExp) ; savoir-faire « étudier $a^x$ et $x^\alpha$ » enseigné NULLE PART ; sommet SExp 8,5 pts contre une banque SM 10 pts. Pédagogie : 4 lignes de grille non réclamées, R1/R6/R7 sans commit, **l'intro de r-variation répond à 3 de ses 9 questions**, q5b imprime sa réponse (asset $(C_g)$ manquant), falaise R7→R8, zéro ancrage réel en 471 lignes, niveau 3 à 6 % contre 20 % |
 | `maths/nombres-complexes-1` | 12 | `coverage_summary` recompté INDÉPENDAMMENT par les deux critiques : exact, zéro gonflage ; toute l'arithmétique (33 items, 5 checkpoints, 2 sommets, 7 cartes de banque), les 7 barèmes et la géométrie des figures au pixel — **zéro erreur numérique, aucun barème inventé** ; les deux critiques ont recompté les 9 titres `##` et confirment que la quasi-totalité des « chapitre N » sont JUSTES. Corrigé : **quatre affirmations sur ce que demande l'examen, toutes falsifiées par le relevé de la notion** (« les sujets posent des coefficients complexes » 0/7 ; « revient dans presque tous les sujets » 0/7 ; « le cas le plus courant » 0/7 ; « se trompe une fois sur deux » alors que les racines sont conjuguées 4/4) ; encadré « $z$ imaginaire pur $\iff z=-\bar z$ » **faux sous la définition de la leçon elle-même** ($z=0$) ; titre de leçon inexistant ; **4 citations « chapitre 8 » visant un contenu que le chapitre 8 ne porte pas** ; renvoi interne mort dans un SVG ; « Discriminant complexe » pour un discriminant réel négatif ; **une réponse imprimée au-dessus de la porte d'essai dans les DEUX exercices** (l'intro donnait $a = 1-i\sqrt3$, l'une des racines que q1 demande — le sujet vérifié pose l'équation en q1 et les affixes en q2) ; 2 commentaires périmés. **SEV1 cadre** → research-lead : **brèche d'exclusion** — les chapitres 6–7 (34 % du corps) enseignent le second degré à coefficients COMPLEXES, que `maths-sexp.yaml:305` exclut nommément, dans une notion entièrement SExp ; et le cadre attribue module **ET argument** à ce slug alors que la leçon ne définit jamais l'argument tout en le faisant tester. Pédagogie : 205 lignes sans un seul commit ni item, rampe qui redescend puis saute au sommet, 13 lignes de grille sur 20 non réclamées, la figure d'accroche donne la réponse du checkpoint d'accroche |
+| `maths/structures-algebriques` | 22 | **zéro erreur arithmétique** dans toute la notion (les deux critiques ont recalculé séparément : les tables de ℤ/4ℤ, la table du rectangle re-dérivée depuis les coordonnées — c'est bien le groupe de Klein —, les 26 items, les 5 checkpoints, les deux sommets de bout en bout) ; `coverage_summary` recompté depuis les tags bruts : **exact, ligne par ligne** ; tous les barèmes portés par le relevé ; les ≈150 citations « chapitre N » justes, vérifiées deux fois contre la carte des 10 titres / 8 barreaux. Corrigé : **la définition encadrée du corps était mal formée** (elle exige « un symétrique pour × » sans jamais donner de neutre à × — or « symétrique » est défini *par rapport à un neutre*, et l'anneau n'en donne pas ; la phrase suivante employait déjà `1` sans l'introduire), propagée à **quatre autres endroits dont une légende de figure** — l'hypothèse manquante (« unitaire ») était enseignée au chapitre PRÉCÉDENT ; **l'énoncé central de R7 était circulaire** (« imagine deux groupes $(E,\star)$ et $(F,\times)$ … on n'a pas à re-vérifier les axiomes sur $F$ » : si $F$ est déjà un groupe il n'y a rien à déduire) ; **trois fréquences d'examen démenties par le relevé de la notion** (« l'isomorphisme revient presque chaque année » → 1 sujet sur 10, c'est `homomorphisme` qui est dans 8 ; « presque toujours par la quantité conjuguée » → 1/10, et le sujet que la notion enseigne s'en passe ; « souvent le couple tout fait » → 2/10) ; double faux universel sur l'intégrité (« un ensemble de matrices n'a aucune raison d'être intègre » — 2022 q4-b fait prouver le contraire ; « les réels ou complexes le sont toujours » — seulement **munis des lois usuelles**) ; « loi de groupe » sur toutes les fonctions ℝ→ℝ (faux : les non-bijectives n'ont pas de symétrique) ; **citation morte dans un `stem` rendu** (« exercice « à toi de jouer » » — inexistant) ; **deux tableaux de couverture contradictoires dans le même fichier** ; **cinq notes de cadrage périmées** qui affirmaient encore des trous comblés depuis (« grep vérifié : zéro occurrence de « intègre » » → 15 aujourd'hui). **SEV1 cadre → content-author : un `savoir_faire` n'est JAMAIS enseigné** — « Étudier un homomorphisme (noyau, image) » : zéro occurrence de `homomorphisme`, `noyau`, `surjectif`, `injectif` dans la leçon, contre 8 énoncés sur 10 au relevé (§11.59) ; et **les trois gestes les plus examinés n'ont aucun item** (sous-groupe 8/10, morphisme 9/10, intégrité — les chapitres 5, 8 et 10 sont non testés, et les 3 items « R7 » sont des redites de R2/R3). Pédagogie : « corps » défini commutatif alors que l'examen demande « corps commutatif » comme cible distincte (4 sujets) ; décomptes gonflés par des distracteurs mal étiquetés (9→5, 6→3) ; niveau 3 = 0 ; **les objets travaillés (ℤ/nℤ, symétries du rectangle) apparaissent zéro fois dans les 10 sujets vérifiés**, dont les objets sont des ensembles infinis décrits par une forme — sur lesquels une table est impossible, comme la banque le concède elle-même |
 
-**119 correctifs objectifs** au total, 0 échec `validate-content --strict` sur les
-seize. Les défauts **bloquants** ne sont jamais réécrits en autonomie — ils
+**141 correctifs objectifs** au total, 0 échec `validate-content --strict` sur les
+dix-sept. Les défauts **bloquants** ne sont jamais réécrits en autonomie — ils
 touchent des règles biologiques enseignées (genetique-humaine F1 : « un père
 atteint lié à l'X ne transmet jamais à ses fils » est faux quand la mère est
 conductrice) ou une décision de conception (genetique-humaine P2 : les
@@ -5553,3 +5554,83 @@ propre fichier, donc aucun faux positif.
 **Vérifiée dans les deux sens** (ADR 0031) : un tag non déclaré réinjecté fait
 échouer la notion en nommant l'item, le choix et la valeur ; le revert la remet
 au vert. 0 failure sur les 62 notions.
+
+---
+
+### 11.59 Un `savoir_faire` du cadre qui n'est enseigné nulle part — et la définition mal formée qu'il a fait sortir
+
+Deux constats de la revue `structures-algebriques` (§11.45) méritent leur propre
+entrée : le premier est **le trou de contenu le plus lourd sorti de la campagne
+vague 1**, le second montre ce qu'une revue de fidélité attrape et qu'aucune
+porte mécanique ne verra jamais.
+
+**1. « Étudier un homomorphisme » est au programme et n'est enseigné nulle part.**
+
+`docs/cadre/curriculum/maths-sm.yaml:247` met « homomorphisme de groupes » au
+programme ; `:252` en fait un `savoir_faire` explicite — « Étudier un
+homomorphisme (noyau, image, propriétés) ». Mesuré dans la leçon :
+
+| mot | occurrences dans `lesson.md` |
+|---|:---:|
+| `homomorphisme` | **0** |
+| `noyau` | **0** |
+| `surjectif` / `injectif` | **0** |
+| `isomorphisme` | 9 lignes, au dernier chapitre |
+
+Mesuré dans le relevé de la notion (10 exercices d'examen vérifiés) :
+`homomorphisme` est dans l'énoncé de **huit** ; `isomorphisme` dans **un**
+(2019). Et la déduction qui revient n'est pas la bijection mais l'**image** :
+« $\varphi(A) = B$ ⇒ en déduire que $(B, \ast)$ est un groupe commutatif », sept
+fois. Le théorème correspondant — *un morphisme surjectif sur l'ensemble visé
+transporte la structure* — n'est énoncé dans aucun des cinq fichiers de la
+notion. `bank.yaml:248` a dû l'inventer en ligne pour pouvoir corriger ses
+propres entrées, et le dit.
+
+Conséquence directe, mesurable : les trois chapitres qui portent les gestes les
+plus examinés — sous-groupe (**8/10** au relevé), anneau intègre, isomorphisme —
+**n'ont aucun item**. `items.yaml` (26 items) ne contient pas une seule
+occurrence de `morphisme`, `isomorphisme`, `intègre` ou `diviseur de zéro`. Les
+trois items étiquetés `rung: R7` sont des redites de R2/R3. La cause mécanique
+est connue et déjà consignée (§11.57) : **deux des dix chapitres n'ont pas de
+code de barreau**, et sans code, aucun item ni checkpoint ne peut s'y rattacher.
+Combler le trou de contenu suppose donc *d'abord* de leur donner un barreau.
+
+→ **content-author + pedagogy-architect.** Écrire un chapitre n'est pas une
+correction objective et n'a pas été fait en autonomie.
+
+**2. La définition encadrée du corps était mal formée — et l'hypothèse
+manquante était enseignée au chapitre précédent.**
+
+`lesson.md:484` définissait : *un anneau est un corps si × est commutative et si
+tout élément non nul possède un symétrique pour ×*. Il n'y est jamais exigé que
+× ait un neutre. Or la notion elle-même définit « symétrique » **par rapport à un
+neutre** (`:127`, « Soit $e$ le neutre de ★ »), et affirme explicitement deux
+chapitres plus haut que l'anneau n'en donne pas à × (`:364`, « Rien n'exige, à ce
+stade, que × ait un neutre »). La phrase suivante écrivait alors `1` sans l'avoir
+introduit. La définition ne se refermait pas.
+
+Ce qui rend le cas instructif : **le mot manquant était déjà enseigné**.
+« Unitaire » est défini au chapitre 8 (`:421`), qui *précède* le chapitre du
+corps. Ce n'était pas un trou de programme — juste une hypothèse non reprise.
+Elle s'était propagée à quatre autres endroits, dont **une légende de figure** et
+la solution d'un item.
+
+**Ce que ça dit des portes.** Aucun instrument du dépôt ne pouvait voir ça :
+la notion passe `validate-content --strict`, tous ses nombres sont justes, toutes
+ses citations de chapitre pointent juste, son `coverage_summary` est exact au
+tag près. Une définition circulaire ou incomplète est une propriété du *sens*,
+pas de la forme. C'est exactement ce que les critiques vague 1 achètent, et la
+raison pour laquelle la campagne passe notion par notion au lieu de greper le
+corpus.
+
+**Le même mécanisme, appliqué aux affirmations sur l'examen.** Trois phrases de
+la leçon annonçaient une fréquence que **le relevé de la notion elle-même**
+dément : « l'isomorphisme revient presque chaque année » (1 sujet sur 10),
+« presque toujours par la quantité conjuguée » (1/10 — et le sujet que la notion
+enseigne s'en passe), « souvent, la question qui précède te tend le couple tout
+fait » (2/10). Aucune n'est invérifiable : la source est dans le dépôt, à côté du
+fichier. C'est la même classe que les quatre de `nombres-complexes-1` (§11.45).
+**Une affirmation sur ce que demande l'examen se vérifie contre le relevé, pas
+contre le souvenir** — et quand elle est vraie, on le dit aussi : « le
+sous-groupe revient presque chaque année » est **confirmé, 8/10**, et n'a pas été
+touché.
