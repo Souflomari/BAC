@@ -6337,3 +6337,79 @@ faite plutôt que de noyer la CI sous cinq faux positifs.
 C'est l'ADR 0031 mot pour mot : « **l'ATTEINTE d'un mécanisme se mesure
 séparément de la question de savoir s'il fonctionne.** » §11.62 fonctionne ;
 son atteinte est bornée par sa mécanique, pas par sa portée.
+
+---
+
+### 11.69 Seize items que rien ne peut atteindre, un résumé qui compte deux chapitres inexistants, et une étiquette que la porte ne savait pas lire
+
+Trouvé en triant les AVERTISSEMENTS du validateur — ceux que personne ne
+relit parce qu'ils ne bloquent rien. Trois notions y signalaient depuis
+longtemps des items accrochés à un barreau dont `lesson.md` ne porte aucun
+titre. Mesure complète :
+
+| Notion | Orphelins | `coverage_summary` les compte ? |
+|---|---|---|
+| `maths/derivabilite-etude-fonctions` | R6 : 7 | non |
+| `maths/limites-continuite` | R7 : 3, **R-bac : 1** | non |
+| `maths/probabilites-conditionnelles` | R6 : 3, R7 : 2 | **OUI — R6 et R7** |
+
+**Seize items et checkpoints structurellement inatteignables.** L'accrochage
+au chapitre se fait par le code ; un item qui vise un code sans titre ne peut
+être ni présenté au bon endroit, ni attribué, ni compté dans un dénominateur
+honnête.
+
+**Ce que j'ai cru, et qui était faux.** Les mêmes notions portent des
+avertissements §11.60 — de gros chapitres `##` SANS code (172 lignes / 30,7 %
+pour « Fonction réciproque », 89 et 92 lignes pour « Variable aléatoire » et
+« La loi binomiale »). La conclusion s'impose d'elle-même : le titre a perdu
+son code, les items l'ont gardé, il suffit de le rendre au titre. J'ai même
+mesuré la convention pour m'appuyer dessus — **55 leçons sur 57** codent leur
+chapitre final, et les deux exceptions sont précisément deux des trois notions
+ci-dessus.
+
+Puis j'ai lu les items. **Ils ne parlent pas de ces chapitres.** Les sept
+items R6 de `derivabilite` portent sur le signe de $f'$, les asymptotes, et
+l'annulation de $f''$ — pas sur la fonction réciproque. Les items R6/R7 de
+`probabilites` sont des problèmes de Bayes (test de dépistage, filtre
+anti-spam, deux urnes) — pas des variables aléatoires ni la loi binomiale.
+**Rendre le code au titre aurait rangé des items de Bayes dans un chapitre sur
+les variables aléatoires**, et fait disparaître l'avertissement.
+
+C'est le piège central de ce point, et il vaut pour toute la campagne :
+**la porte qui repasse au vert n'est pas la preuve que le contenu est juste.**
+J'ai vérifié que le correctif mécanique marche — ajouter `R6 — ` et `R7 — `
+aux deux titres de `probabilites` fait tomber les six avertissements de la
+notion à zéro — et c'est exactement pour cela qu'il ne faut pas l'appliquer :
+il achète le vert en déplaçant le défaut là où plus aucun instrument ne
+regarde. **Le vert acheté est pire que le rouge honnête.** Le rattachement de
+ces seize items est une décision éditoriale (à quel chapitre appartiennent-ils
+vraiment ? faut-il un chapitre de synthèse qui n'existe pas encore ?), donc
+elle revient à l'owner. Même arbitrage qu'en §11.54, §11.63, §11.64, §11.65 et
+§11.66.
+
+**Deux améliorations d'instrument, elles, sont objectives et faites.**
+
+*1. L'étiquette que la porte ne savait pas lire.* Le contrôle §11.44 comparait
+`R(\d+)` d'un côté à `R(\d+)` de l'autre. Il existe dans tout le corpus **une**
+étiquette non numérique — `rung: "R-bac"`, sur
+`limites-continuite/checkpoints.yaml:378` — et elle passait **sans un mot** :
+aucun titre ne lui correspond, et aucun avertissement non plus, parce que le
+motif ne savait pas la lire. C'est la forme la plus silencieuse de trou :
+**une porte qui ne sait pas lire une valeur ne dit pas « conforme », elle ne
+dit rien du tout** — et un lecteur pressé lit son silence comme un succès.
+L'étiquette est désormais lue entière des deux côtés ; le checkpoint
+`cp-bac-produit-infini` est visible.
+
+*2. Le résumé qui compte un chapitre inexistant.* Nouveau signal, distinct du
+premier : le précédent dit « des items visent un chapitre absent », celui-ci
+dit que le **document de couverture affirme couvrir ce chapitre**.
+`probabilites-conditionnelles` compte R6 et R7 dans `coverage_summary.per_rung`
+alors qu'aucun titre ne porte ces codes. La porte `resume-couverture` ne le
+voyait pas, et ce n'est pas un défaut de sa part : elle vérifie que les
+compteurs **se recomptent depuis les tags**, pas que les barreaux comptés
+**existent**. Les deux contrôles sont nécessaires ; aucun ne remplace l'autre.
+
+Les deux restent des AVERTISSEMENTS, délibérément : le remède est éditorial,
+et une porte qui vire au rouge sans correctif disponible ne protège rien — elle
+apprend seulement à l'équipe à ignorer le rouge. Vérifiée dans les deux sens :
+2 signalements → 0 après ajout des deux codes → 2 après restauration.

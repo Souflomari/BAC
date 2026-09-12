@@ -792,19 +792,50 @@ for (const dir of dirs) {
   //    (re-tag) que la porte ne peut pas faire ; à passer en échec dur une fois
   //    le corpus propre.
   {
+    // Les titres reconnus, étiquette COMPLÈTE (« R6 », mais aussi « R-bac ») :
+    //    la version antérieure ne capturait que `R(\d+)` des deux côtés, si bien
+    //    qu'une étiquette non numérique — il en existe UNE dans tout le corpus,
+    //    `rung: "R-bac"` sur `limites-continuite/checkpoints.yaml:378` — passait
+    //    sans un mot : pas de titre correspondant, et pas d'avertissement non
+    //    plus, puisque le motif ne savait pas la lire. Une porte qui ne sait pas
+    //    lire une valeur ne dit pas « conforme », elle ne dit RIEN (§11.69).
     const headingRungs = new Set(
-      (md.match(/^#{1,6}[ \t]*R(\d+)\b/gm) || []).map((h) => h.match(/R(\d+)/)[1]),
+      (md.match(/^#{1,6}[ \t]*(R(?:\d+|-[a-z]+))\b/gm) || []).map((h) => h.match(/(R(?:\d+|-[a-z]+))/)[1]),
     );
     for (const [fname, key] of [["items.yaml", "items"], ["checkpoints.yaml", "checkpoints"]]) {
       const arr = Array.isArray(yamlDocs[fname]?.[key]) ? yamlDocs[fname][key] : [];
       const warned = new Set();
       for (const it of arr) {
-        const mr = typeof it?.rung === "string" ? it.rung.match(/^R(\d+)$/) : null;
+        const mr = typeof it?.rung === "string" ? it.rung.match(/^(R(?:\d+|-[a-z]+))$/) : null;
         if (mr && !headingRungs.has(mr[1]) && !warned.has(mr[1])) {
           warned.add(mr[1]);
           console.error(
             `  ⚠ ${dir}: ${fname} accroche des items au rung ${it.rung} mais lesson.md n'a pas de titre « ## ${it.rung} » — re-taguer ou ajouter le rung`,
           );
+        }
+      }
+    }
+    // Le résumé de couverture qui compte un barreau SANS titre. Plus grave que
+    // l'avertissement ci-dessus : celui-là dit « des items visent un chapitre
+    // absent » ; celui-ci dit que le document de couverture AFFIRME couvrir ce
+    // chapitre. `maths/probabilites-conditionnelles` compte ainsi R6 (3 items)
+    // et R7 (2) alors qu'aucun titre ne porte ces codes — le dénominateur de la
+    // couverture inclut deux chapitres qui n'existent pas. La porte
+    // `resume-couverture` ne le voit pas : elle vérifie que les compteurs se
+    // recomptent depuis les tags, pas que les barreaux comptés EXISTENT.
+    // Avertissement et non échec : le remède est éditorial (à quel chapitre ces
+    // items appartiennent-ils ?), pas mécanique — voir §11.69.
+    {
+      const pr = yamlDocs["items.yaml"]?.coverage_summary?.per_rung;
+      if (pr && typeof pr === "object") {
+        for (const r of Object.keys(pr)) {
+          const m = String(r).match(/^(R(?:\d+|-[a-z]+))$/);
+          if (m && !headingRungs.has(m[1])) {
+            console.error(
+              `  ⚠ ${dir}: coverage_summary.per_rung compte ${pr[r]} item(s) au rung ${r}, mais lesson.md n'a aucun titre « ${r} » — ` +
+                `le résumé annonce la couverture d'un chapitre qui n'existe pas`
+            );
+          }
         }
       }
     }
