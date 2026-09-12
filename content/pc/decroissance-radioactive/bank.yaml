@@ -430,7 +430,7 @@ entries:
 
           $$\lambda = \frac{0{,}693}{1{,}19232 \times 10^{7}} = \boxed{5{,}8 \times 10^{-8}\ \text{s}^{-1}}$$
 
-          **Lire ce nombre au lieu de le poser.** $\lambda \approx 5{,}8\times10^{-8}\ \text{s}^{-1}$ signifie qu'à chaque seconde, chaque noyau a environ six chances sur cent millions de se désintégrer. C'est minuscule pour un noyau — et pourtant, sur un échantillon qui en contient $10^{20}$, cela fait des milliards de désintégrations par seconde. C'est exactement ce que l'activité de la question suivante va chiffrer.
+          **Lire ce nombre au lieu de le poser.** $\lambda \approx 5{,}8\times10^{-8}\ \text{s}^{-1}$ signifie qu'à chaque seconde, chaque noyau a environ six chances sur cent millions de se désintégrer. C'est minuscule pour un noyau — et pourtant, sur un échantillon qui en contient $10^{20}$, cela fait des milliers de milliards de désintégrations par seconde (environ $5{,}8\times10^{12}$). C'est exactement ce que l'activité de la question suivante va chiffrer.
 
           **Le piège nommé de cette question.** Répondre $\lambda = \dfrac{\ln 2}{138} = 5{,}0\times10^{-3}$ sans convertir. Le résultat serait en $\text{jour}^{-1}$, pas en $\text{s}^{-1}$ — et l'écart est d'un facteur $86\,400$. L'unité demandée par l'énoncé n'est jamais décorative : quand elle ne correspond pas à celle de la donnée, c'est **l'annonce d'une conversion**.
         steps:
@@ -1058,7 +1058,7 @@ entries:
           - math: 'N_0 = \frac{a_0}{\lambda} = \frac{1{,}08\times10^{-2}}{1{,}084\times10^{-7}}'
             note: "On inverse a = λN (chapitre 5) : le nombre de noyaux se déduit de l'activité et de λ."
           - math: '\boxed{N_0 \approx 1{,}0\times10^{5}\ \text{noyaux}}'
-            note: "Une activité aussi faible (un peu plus d'une désintégration par minute) correspond à un échantillon minuscule, cohérent avec une source implantée localement."
+            note: "Une activité aussi faible (moins d'une désintégration par minute) correspond à un échantillon minuscule, cohérent avec une source implantée localement."
       - id: q4
         stem: |-
           **(0,5 pt)** Déterminer $N_d$ le nombre de noyaux d'iridium 192 désintégrés au bout de deux ans ($\Delta t = 730\ \text{jours}$). Commenter le résultat obtenu.
@@ -1070,7 +1070,7 @@ entries:
           - math: 'N(\Delta t) = N_0 \times 2^{-9{,}86} \approx 0{,}0011\,N_0'
             note: "La propriété N0/2^n du chapitre 5 se généralise à un nombre non entier de demi-vies via cette même forme en puissance de 2."
           - math: '\boxed{N_d = N_0 - N(\Delta t) \approx 0{,}9989\,N_0}'
-            note: "Presque tous les noyaux initiaux ont désintégré : à près de 10 demi-vies écoulées, on dépasse le seuil « moins de 0,1 % restant » signalé au chapitre 5 — la source est pratiquement épuisée au bout de deux ans, ce qui est précisément le sens du « commenter » demandé."
+            note: "Presque tous les noyaux initiaux ont désintégré : à près de 10 demi-vies écoulées, on frôle le seuil « moins de 0,1 % restant » signalé au chapitre 5 (il en reste environ 0,11 %) — la source est pratiquement épuisée au bout de deux ans, ce qui est précisément le sens du « commenter » demandé."
 
   # ── bk-2024-r-x3 — 2024 R, Exercice 3 : famille radioactive du bismuth 212 ──
   - id: bk-2024-r-x3
@@ -1771,11 +1771,11 @@ entries:
 
           $$N_0 = N_U(t) + N_{Pb}(t)$$
 
-          La loi de décroissance (vue au chapitre précédent) donne $N_U(t) = N_0\,e^{-\lambda t}$, donc $N_0 = N_U(t)\,e^{\lambda t}$. On reporte dans le bilan ci-dessus et on divise par $N_U(t)$ :
+          La loi de décroissance (vue au chapitre 4) donne $N_U(t) = N_0\,e^{-\lambda t}$, donc $N_0 = N_U(t)\,e^{\lambda t}$. On reporte dans le bilan ci-dessus et on divise par $N_U(t)$ :
 
           $$N_U(t)\,e^{\lambda t} = N_U(t) + N_{Pb}(t) \implies e^{\lambda t} = 1 + \frac{N_{Pb}(t)}{N_U(t)}$$
 
-          Il ne reste qu'à isoler $t$ par le logarithme népérien, puis à remplacer $\lambda$ par $\dfrac{\ln 2}{t_{1/2}}$ — la relation qui relie demi-vie et constante radioactive, déjà établie au chapitre précédent :
+          Il ne reste qu'à isoler $t$ par le logarithme népérien, puis à remplacer $\lambda$ par $\dfrac{\ln 2}{t_{1/2}}$ — la relation qui relie demi-vie et constante radioactive, déjà établie au chapitre 5 :
 
           $$t = \frac{1}{\lambda}\ln\!\left(1+\frac{N_{Pb}(t)}{N_U(t)}\right) = \frac{t_{1/2}}{\ln 2}\,\ln\!\left(1+\frac{N_{Pb}(t)}{N_U(t)}\right)$$
 
@@ -1786,11 +1786,11 @@ entries:
           En reportant dans l'expression de $t$, on retrouve exactement la formule demandée.
         steps:
           - math: 'N_0 = N_U(t) + N_{Pb}(t) \qquad N_U(t) = N_0\,e^{-\lambda t}'
-            note: "Tout le plomb vient de l'Uranium disparu (hypothèse de l'énoncé) ; loi de décroissance du chapitre précédent."
+            note: "Tout le plomb vient de l'Uranium disparu (hypothèse de l'énoncé) ; loi de décroissance du chapitre 4."
           - math: 'e^{\lambda t} = 1 + \frac{N_{Pb}(t)}{N_U(t)} \implies t = \frac{1}{\lambda}\ln\!\left(1+\frac{N_{Pb}(t)}{N_U(t)}\right)'
             note: "On isole t par le logarithme népérien, après avoir divise le bilan par N_U(t)."
           - math: 't = \frac{t_{1/2}}{\ln 2}\,\ln\!\left(1+\frac{N_{Pb}(t)}{N_U(t)}\right)'
-            note: "On remplace lambda par ln2/t1/2 (relation demi-vie/constante radioactive du chapitre précédent)."
+            note: "On remplace lambda par ln2/t1/2 (relation demi-vie/constante radioactive du chapitre 5)."
           - math: '\frac{N_{Pb}(t)}{N_U(t)} = \frac{m_{Pb}(t)/M(^{206}Pb)}{m_U(t)/M(^{238}U)} = \frac{m_{Pb}(t).M(^{238}U)}{m_U(t).M(^{206}Pb)}'
             note: "Pont mole-masse n=m/M puis N=n.NA (chimie générale) ; NA se simplifie exactement dans le rapport."
           - math: '\boxed{t = \frac{t_{1/2}}{\ln 2}\,.\,\ln\!\left(1 + \frac{m_{Pb}(t).M(^{238}U)}{m_{U}(t).M(^{206}Pb)}\right)}'
@@ -2121,7 +2121,7 @@ entries:
           - math: '\lambda = \frac{37{,}94-37{,}65}{3-0} = \frac{0{,}29}{3} \approx 0{,}09667\ \text{h}^{-1}'
             note: "Pente de la droite ln(N) = ln(N0) - lambda.t, lue entre les deux points donnes du graphe."
           - math: 't_{1/2} = \frac{\ln 2}{\lambda} = \frac{3\ln 2}{0{,}29}'
-            note: "Chapitre R4 : demi-vie à partir de lambda."
+            note: "Chapitre 5 : demi-vie à partir de lambda."
           - math: '\boxed{t_{1/2} \approx 7{,}17\ \text{h}}'
             note: "Réponse C."
 
@@ -2379,7 +2379,7 @@ entries:
           **Le piège nommé de cette question.** Ne pas inverser le rapport : c'est $a_0/a = 165/135 > 1$ qui va dans le logarithme (l'activité a DIMINUÉ depuis la mort, donc le rapport référence-sur-mesure est plus grand que $1$ et le temps sort positif). Écrire $135/165$ donnerait un âge négatif — un signal d'alarme, pas une convention.
         steps:
           - math: 't = \frac{t_{1/2}}{\ln 2}\,\ln\!\left(\frac{a_0}{a}\right) \qquad \frac{a_0}{a} = \frac{165}{135} \approx 1{,}222'
-            note: "Inversion de la loi de décroissance appliquee a l activité (chapitre 5 et 5) ; a0 est l activité du bois RÉCENT."
+            note: "Inversion de la loi de décroissance appliquee a l activité (chapitre 6 et 5) ; a0 est l activité du bois RÉCENT."
           - math: 't = \frac{5570}{0{,}6931}\times\ln(1{,}222) = \frac{5570}{0{,}6931}\times0{,}2007'
             note: "lambda = ln2/t_1/2, avec la demi-vie DONNÉE par l énoncé (5570 ans)."
           - math: '\boxed{t \approx 1612{,}5\ \text{ans} \approx 1613\ \text{ans}}'

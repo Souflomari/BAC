@@ -314,7 +314,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "L'instabilité dépend du rapport N/Z par rapport à la vallée de stabilité, et jamais du nombre total de nucléons — un noyau léger peut donc être instable."
+        text: "L'instabilité dépend de la position du couple (N, Z) par rapport à la vallée de stabilité, pas seulement de la taille du noyau — un noyau léger peut donc être instable."
         correct: true
       - id: B
         text: "C'est tout simplement impossible : un noyau qui ne compte que 3 nucléons est forcément stable."
@@ -420,7 +420,7 @@ items:
         text: '$^{222}_{86}\text{Rn}$ (A diminue de 4, Z diminue de 2).'
         correct: true
       - id: B
-        text: '$^{222}_{90}\text{Rn}$ (A diminue de 4, Z inchangé).'
+        text: '$^{222}_{88}\text{Ra}$ (A diminue de 4, Z inchangé).'
         correct: false
         misconception: mc.physics.decroissance_radioactive.conservation-Z-oubliee
         feedback: >
@@ -1417,7 +1417,10 @@ items:
       $$t=\frac{1}{\lambda}\ln\!\left(\frac{N_0}{N(t)}\right)=\frac{t_{1/2}}{\ln2}\ln(1/0{,}40)\approx\frac{1{,}3\times10^9}{0{,}693}\times0{,}916\approx1{,}72\times10^9\ \text{ans}$$
 
 # ══════════════════════════════════════════════════════════════
-# COVERAGE SUMMARY (26 items total: DECRO-1..26)
+# COVERAGE SUMMARY — ⚠ PÉRIMÉ (2026-07-12) : remplacé par le bloc
+# coverage_summary généré plus bas (31 items, floor_met: true, recompté juste).
+# Conservé pour historique.
+# (26 items total: DECRO-1..26)
 # Updated 2026-07-12 by the R6 summit conversion (+5 items: DECRO-22 in R2 ;
 # DECRO-23..26 in R4).
 # Items per rung: R0=3 R1=3 R2=4 R3=3 R4=7 R5=3 R6=3
@@ -1474,7 +1477,7 @@ items:
   - id: DECRO-27
     rung: "R1"
     difficulty_level: 2
-    skill_code: pc_decroissance_radioactive
+    skill_code: decroissance_radioactive
     tags: []
     primary_misconception: mc.physics.decroissance_radioactive.isotope-confond-isobare
     stem: >
@@ -1547,7 +1550,7 @@ items:
   - id: DECRO-28
     rung: "R1"
     difficulty_level: 3
-    skill_code: pc_decroissance_radioactive
+    skill_code: decroissance_radioactive
     tags: []
     primary_misconception: mc.physics.decroissance_radioactive.instabilite-necessite-grand-noyau
     stem: >
@@ -1621,7 +1624,7 @@ items:
   - id: DECRO-29
     rung: "R1"
     difficulty_level: 3
-    skill_code: pc_decroissance_radioactive
+    skill_code: decroissance_radioactive
     tags: []
     primary_misconception: mc.physics.decroissance_radioactive.instabilite-necessite-grand-noyau
     stem: >
@@ -1687,7 +1690,7 @@ items:
   - id: DECRO-30
     rung: "R2"
     difficulty_level: 3
-    skill_code: pc_decroissance_radioactive
+    skill_code: decroissance_radioactive
     tags: []
     primary_misconception: mc.physics.decroissance_radioactive.gamma-change-Z-comme-beta
     stem: >
@@ -1760,7 +1763,7 @@ items:
   - id: DECRO-31
     rung: "R2"
     difficulty_level: 4
-    skill_code: pc_decroissance_radioactive
+    skill_code: decroissance_radioactive
     tags: []
     primary_misconception: mc.physics.decroissance_radioactive.gamma-change-isotope
     stem: >
