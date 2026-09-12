@@ -49,7 +49,7 @@ Le nom d'un ester se construit en deux morceaux :
 
 **Exemple : l'ester du chapitre 1.** L'acide éthanoïque donne le radical « éthanoate » ; l'éthanol donne le radical « éthyle ». L'ester $CH_3COOC_2H_5$ s'appelle donc **éthanoate d'éthyle**.
 
-**Un deuxième exemple, pour vérifier la règle sur un autre couple.** Reprends l'acide propanoïque $CH_3CH_2COOH$ et le méthanol $CH_3OH$, déjà rencontrés dans le chapitre précédent. L'acide propanoïque donne le radical « propanoate » ; le méthanol donne le radical « méthyle ». L'ester formé,
+**Un deuxième exemple, pour vérifier la règle sur un autre couple.** Reprends l'acide propanoïque $CH_3CH_2COOH$ et le méthanol $CH_3OH$. L'acide propanoïque donne le radical « propanoate » ; le méthanol donne le radical « méthyle ». L'ester formé,
 
 $$CH_3CH_2COOH + CH_3OH \rightleftharpoons CH_3CH_2COOCH_3 + H_2O$$
 
@@ -147,7 +147,7 @@ $$3\tau = 2$$
 
 $$\tau = \frac{2}{3} \approx 0{,}667$$
 
-$\tau \approx 66{,}7\,\%$ : c'est le résultat annoncé au chapitre 1. Dans ce cas particulier de l'estérification simple, environ deux tiers de l'acide (et de l'alcool) se convertissent en ester et en eau - ni plus, ni moins - et ce résultat ne bouge pas si tu changes les quantités initiales, tant que acide et alcool restent en proportions égales.
+$\tau \approx 66{,}7\,\%$ : c'est la réponse à la question « jusqu'où va-t-elle, exactement ? » posée au chapitre 1. Dans ce cas particulier de l'estérification simple, environ deux tiers de l'acide (et de l'alcool) se convertissent en ester et en eau - ni plus, ni moins - et ce résultat ne bouge pas si tu changes les quantités initiales, tant que acide et alcool restent en proportions égales.
 
 [[figure:rendement-esterification]]
 
@@ -167,7 +167,7 @@ Reprends le calcul qu'on vient de faire : $n_0$ a disparu de l'expression de $K$
 
 Tu as vu, dans le chapitre sur les transformations lentes et rapides, que la concentration et la température sont des **facteurs cinétiques** : ils changent la vitesse à laquelle une réaction avance, en changeant la fréquence ou l'énergie des chocs efficaces entre entités réactives. L'estérification simple, laissée à température ambiante et sans rien ajouter, est **lente** : plusieurs jours peuvent être nécessaires pour que le mélange atteigne son état d'équilibre.
 
-Un chimiste dispose de deux leviers, en plus de la concentration déjà connue, pour l'accélérer : le **chauffage** et un **catalyseur acide** (typiquement, quelques gouttes d'acide sulfurique concentré - exactement ce qui était versé dans le ballon du chapitre précédent).
+Un chimiste dispose de deux leviers, en plus de la concentration déjà connue, pour l'accélérer : le **chauffage** et un **catalyseur acide** (typiquement, quelques gouttes d'acide sulfurique concentré - exactement ce qui était versé dans le ballon du chapitre 1).
 
 ### Teste ta prédiction du chapitre 1
 

@@ -39,8 +39,7 @@
 # ni r-variation (acide butanoïque) : couple, lecture graphique de
 # l'équilibre, comparaison catalysée/non catalysée et déplacement par ajout
 # ponctuel de réactif à l'équilibre sont inédits dans le corpus de cette
-# notion. La banque compte donc 2 entrées distinctes (la rail affichera
-# « 2 sujets »).
+# notion.
 #
 # SCOPE NOTE (technique mobilisée au-delà de ce que la leçon montre
 # explicitement pas à pas — pontée au point d'usage dans le raisonnement de
@@ -250,7 +249,7 @@ entries:
         stem: |-
           **(0,5 pt)** Trouver la valeur de $t_{1/2}$, le temps de demi-réaction dans le cas de la transformation chimique correspondant à la courbe $C_2$.
         reasoning: |-
-          le temps de demi-réaction $t_{1/2}$ n'est défini par aucun chapitre de cette leçon — chapitres 2 à 7 portent sur l'écriture, la position et le déplacement de l'équilibre, jamais sur un repère de vitesse comme celui-ci. Sa définition générale, mobilisée ici sans qu'aucun chapitre ne l'introduise : c'est l'instant où l'avancement atteint la moitié de sa valeur à l'équilibre. Ici $x_{eq}=0{,}60$ mol (question précédente), donc $t_{1/2}$ est l'instant où $x=0{,}30$ mol, c'est-à-dire où $n_a = n_0 - 0{,}30 = 0{,}60$ mol. Il reste à repérer, sur la courbe $C_2$, l'instant où elle croise cette valeur — une lecture graphique.
+          Le temps de demi-réaction $t_{1/2}$ n'est défini par aucun chapitre de cette leçon — chapitres 2 à 7 portent sur l'écriture, la position et le déplacement de l'équilibre, jamais sur un repère de vitesse comme celui-ci. Il est défini au chapitre 5 de la notion « Suivi temporel d'une transformation — vitesse de réaction » : c'est l'instant où l'avancement atteint la moitié de sa valeur à l'équilibre. Ici $x_{eq}=0{,}60$ mol (question précédente), donc $t_{1/2}$ est l'instant où $x=0{,}30$ mol, c'est-à-dire où $n_a = n_0 - 0{,}30 = 0{,}60$ mol. Il reste à repérer, sur la courbe $C_2$, l'instant où elle croise cette valeur — une lecture graphique.
         steps:
           - math: 'n_a(t_{1/2}) = n_0 - \frac{x_{eq}}{2} = 0{,}90 - 0{,}30'
             note: "Définition du temps de demi-réaction : l'instant où l'avancement vaut la moitié de x_eq."
@@ -550,8 +549,7 @@ entries:
       - Toutes les mesures ont été faites à $25\ ^\circ\text{C}$ ;
       - Masse molaire de l'acide benzoïque : $M(\text{C}_6\text{H}_5\text{COOH}) = 122\ \text{g.mol}^{-1}$ ;
       - Masse molaire de l'éthanol : $M(\text{C}_2\text{H}_5\text{OH}) = 46\ \text{g.mol}^{-1}$ ;
-      - Masse volumique de l'éthanol pur : $\rho = 0{,}78\ \text{g.mL}^{-1}$
-           ;
+      - Masse volumique de l'éthanol pur : $\rho = 0{,}78\ \text{g.mL}^{-1}$ *(le sujet imprime « $\text{g.L}^{-1}$ » : c'est une coquille d'unité — avec des $\text{g.L}^{-1}$ la masse d'éthanol serait mille fois trop petite et le rendement dépasserait $100\ \%$)* ;
       - Masse molaire du benzoate d'éthyle : $M(\text{C}_6\text{H}_5\text{COOC}_2\text{H}_5) = 150\ \text{g.mol}^{-1}$.
 
       *Le benzoate d'éthyle est caractérisé par le goût des cerises, c'est pourquoi il est utilisé dans l'industrie alimentaire pour donner ce goût aux aliments synthétisés (encadré du sujet officiel).*
@@ -601,7 +599,7 @@ entries:
 
           $$\boxed{r = 0{,}75 = 75{,}00\ \%}$$
 
-          Un rendement rond, cohérent avec un couple acide/alcool tous deux sans empêchement stérique majeur — nettement plus proche des $66{,}7\ \%$ de l'« estérification simple » du chapitre 4 (quantités égales) qu'il ne l'aurait été sans excès d'éthanol, exactement ce que prédit le chapitre 6 : un réactif en excès pousse l'équilibre plus loin que $\tau \approx 2/3$.
+          Un rendement rond, cohérent avec un couple acide/alcool tous deux sans empêchement stérique majeur — nettement au-dessus des $66{,}7\ \%$ de l'« estérification simple » du chapitre 4 (quantités égales), exactement ce que prédit le chapitre 6 : un réactif en excès pousse l'équilibre plus loin que $\tau \approx 2/3$.
 
           **Le piège de cette question.** Prendre l'acide comme réactif limitant par réflexe (« c'est toujours l'acide dans les exercices simples ») sans vérifier le calcul : ici c'est vrai, mais seulement parce que $n(\text{éthanol}) \gg n(\text{acide})$ — un calcul qu'il faut refaire à chaque énoncé, jamais supposer. Deuxième piège : garder l'unité imprimée sans la questionner, alors qu'une masse volumique en g/L (ce que la coquille imprime) donnerait une masse d'éthanol mille fois trop petite et un rendement supérieur à $100\ \%$ — un signal qui doit alerter, jamais être accepté tel quel (voir la correction déclarée dans les données).
         steps:
@@ -710,7 +708,7 @@ entries:
 
       Les courbes (1) et (2) de la figure ci-dessous représentent respectivement l'évolution temporelle de l'avancement de la réaction lors de la première et de la deuxième expérience.
 
-      **Figure A (courbes $x(t)$, mesurée sur les objets vectoriels du PDF natif).** Axe des abscisses $t\,(\text{min})$, gradué de $0$ à $70$ ; axe des ordonnées $x\,(\text{mol})$, gradué $0{,}1$ · $0{,}2$ · $0{,}3$. Deux courbes croissantes partant de l'origine, toutes deux asymptotiques. **La courbe (2)** (supérieure) plafonne à $x \approx 0{,}30\ \text{mol}$ — pratiquement la conversion totale des $n_0 = 0{,}3\ \text{mol}$ engagés — et atteint la moitié de son plateau ($0{,}15\ \text{mol}$) vers $t \approx 2{,}3\ \text{min}$. **La courbe (1)** (inférieure) plafonne à $x \approx 0{,}20\ \text{mol}$ et atteint la moitié de son plateau ($0{,}10\ \text{mol}$) vers $t \approx 8{,}3\ \text{min}$. *(L'étiquetage (1)/(2) est confirmé par chaîne de mesure indépendante de la proximité des cadres imprimés — voir le sourcing de cette entrée.)*
+      **Figure A (courbes $x(t)$, mesurée sur les objets vectoriels du PDF natif).** Axe des abscisses $t\,(\text{min})$, gradué de $0$ à $70$ ; axe des ordonnées $x\,(\text{mol})$, gradué $0{,}1$ · $0{,}2$ · $0{,}3$. Deux courbes croissantes partant de l'origine, toutes deux asymptotiques. **La courbe (2)** (supérieure) plafonne à $x \approx 0{,}30\ \text{mol}$ et passe par $x = 0{,}15\ \text{mol}$ vers $t \approx 2{,}3\ \text{min}$. **La courbe (1)** (inférieure) plafonne à $x \approx 0{,}20\ \text{mol}$ et passe par $x = 0{,}10\ \text{mol}$ vers $t \approx 8{,}3\ \text{min}$. *(L'étiquetage (1)/(2) est confirmé par chaîne de mesure indépendante de la proximité des cadres imprimés — voir le sourcing de cette entrée.)*
     questions:
       - id: q1
         part: "2.1 — Reflux : accélérer sans déplacer"
@@ -1231,7 +1229,7 @@ entries:
 
           *Le document officiel imprime ici « la valeur de **cette vitesse** à cet instant » — mais le mot « vitesse » n'apparaît nulle part ailleurs dans les six pages du sujet français : la consigne est référentiellement cassée telle qu'imprimée. L'original arabe écrit « قيمة السرعة الحجمية v للتفاعل », c'est-à-dire « la valeur de la vitesse **volumique** $v$ **de la réaction** » — trois éléments perdus dans l'édition française. La consigne est rétablie ici, et la réparation est déclarée. (L'édition française de ce sujet est ministérielle : c'est donc un défaut du document officiel, pas un artefact de traduction.)*
         reasoning: |-
-          **La définition (chapitre 4 de « Suivi temporel d'une transformation », cross-list honoré ici).** La vitesse **volumique** de réaction est la dérivée de l'avancement par rapport au temps, **rapportée au volume** du mélange :
+          **La définition (chapitre 3 de « Suivi temporel d'une transformation »).** La vitesse **volumique** de réaction est la dérivée de l'avancement par rapport au temps, **rapportée au volume** du mélange :
 
           $$v = \frac{1}{V}\left(\frac{dx}{dt}\right)_{t=20\ \text{min}}$$
 
