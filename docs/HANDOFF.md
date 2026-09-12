@@ -5125,13 +5125,40 @@ le comportement que le module revendique lui-même (« la zone se tait, ce qui
 reste préférable à lui faire dire une étape intermédiaire »). L'équation-mot des
 enzymes est conservée. `tsc --noEmit` : 0 erreur.
 
-**Reste ouvert, non corrigé :** les 193 replis aveugles ne sont pas tous justes.
+**Reste ouvert, non corrigé :** les replis aveugles ne sont pas tous justes.
 L'échantillon montre du très bon (`P(E) = card(E)/card(Ω)`, `τ = x_f/x_max`,
-`Δm = m_produits − m_réactifs`) et du clairement faux — `maths/fonction-logarithme`
-ch3 affiche `φ'(x) = u'(x) × 1/u(x) = a × 1/(ax)`, une étape d'exemple, pas le
-résultat du chapitre. Le vrai correctif n'est pas un meilleur repli : c'est un
-`\boxed{}` par chapitre, ou le sidecar. 27 chapitres sur 491 portent aujourd'hui
-ce signal.
+`Δm = m_produits − m_réactifs`) et du clairement faux. Le vrai correctif n'est
+pas un meilleur repli : c'est un `\boxed{}` par chapitre, ou le sidecar. 28
+chapitres sur 491 portent aujourd'hui ce signal.
+
+**Les 16 chapitres dont la carte est puisée DANS un exemple travaillé** (mesuré
+en repérant si la formule retenue tombe après un sous-titre « ### Exemple… ») —
+et le constat qui compte : le repli prend le PREMIER bloc `$$` recevable, donc
+s'il atterrit dans l'exemple, c'est qu'**aucun bloc ne le précédait**. Autrement
+dit, ces chapitres **n'énoncent jamais leur résultat en math bloc** — il est en
+puces ou en math inline. C'est cela qu'il faut corriger, pas le repli :
+
+| chapitre | ce que la zone « À RETENIR » affiche |
+|---|---|
+| `maths/calcul-integral` ch9 | `F(0)=0 … F(2) = 8/3-8 = -16/3 …` |
+| `maths/derivabilite-etude-fonctions` ch5 | `f'(x) = 3x^2 - 3` |
+| `maths/fonction-logarithme` ch3 | `φ'(x) = u'(x) × 1/u(x) = a × 1/(ax)` |
+| `maths/structures-algebriques` ch5, ch9 | la définition de F ; `a/b × b/a = 1` |
+| `maths/suites-numeriques` ch2, ch4 | `u_n > 20` ; `u_n ≤ 100` |
+| `pc/chute-mouvements-plans` ch9 | un pas d'Euler chiffré |
+| `pc/etat-equilibre` ch6 | `Q_{r,i} = 1,2×10⁻³ / (0,8×10⁻³ × 2,8…)` |
+| `pc/lois-de-newton` ch6 | `P⃗ + N⃗ + F⃗ + f⃗ = m a⃗_G` *(défendable)* |
+| `pc/ondes-mecaniques-periodiques` ch5 | `λ_air = 340/440 ≈ 0,77` |
+| `pc/piles` ch4 | la notation d'une pile Zn/Cu particulière |
+| `pc/transformations-deux-sens` ch4 | `NH₃ + H₂O ⇌ NH₄⁺ + HO⁻` *(défendable)* |
+| `svt/genetique-humaine` ch7 | une probabilité conditionnelle d'un cas précis |
+| `svt/genetique-populations` ch2, ch7 | `compte(B) = 2×550 + 3…` ; `q = √(1/2500) = 1/50` |
+
+Treize sont clairement des lignes de calcul ; deux ou trois se défendent. **Non
+corrigé délibérément :** choisir la formule-clé d'un chapitre est un acte
+d'auteur, pas une réécriture mécanique — et durcir le repli pour qu'il refuse
+toute formule d'exemple ferait taire aussi les deux ou trois bonnes. →
+content-author.
 
 ### 11.51 Le barème d'une épreuve complète : 38 sur 38 font exactement 20 — et rien ne l'exigeait
 
