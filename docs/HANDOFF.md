@@ -4842,6 +4842,60 @@ presque toujours unique », « ce virus est presque toujours intracellulaire »,
 exploitable pour prioriser, c'est le **nombre de SCOPE NOTES** et la taille de
 la banque.
 
+**CE QUE LA CAMPAGNE A APPRIS, EN UNE PAGE.** Le tableau ci-dessous est une
+référence notion par notion ; il est devenu trop long pour servir d'entrée. Voici
+la forme des résultats après vingt notions.
+
+*Le fond mathématique et physique est sain, et c'est le résultat le plus
+important.* Sur les vingt notions, les critiques ont recalculé indépendamment
+les clés d'items, les barèmes et les blocs de couverture — et n'ont trouvé
+**qu'une seule erreur d'arithmétique** dans tout ce qui a été audité
+(`arithmetique`, « 2⁴¹ a 34 chiffres » → 13). Les `coverage_summary` recomptés
+depuis les tags bruts tombent justes partout où ils ont été vérifiés. Les
+barèmes sont tous portés par un relevé vérifié ; **un seul avait été inventé**
+(`suites-numeriques`, 4 pts contre 3,75 réels). Les citations « chapitre N » —
+plusieurs centaines — sont justes à une poignée près. **Les défauts ne sont pas
+dans les calculs.**
+
+*Ils sont dans ce que le texte AFFIRME.* Six classes reviennent, par ordre de
+rendement :
+
+1. **La note d'auteur qui a vieilli.** Une `SCOPE NOTE` affirme un trou
+   (« grep vérifié : zéro occurrence de X »), la leçon comble le trou, la note
+   reste — et continue de piloter les corrections. Trouvée dans au moins sept
+   notions. Deux fois, la fausseté avait **fui dans un texte rendu à l'élève**,
+   qui s'est vu dire qu'il sortait du programme sur un contenu qu'il venait
+   d'apprendre.
+2. **L'affirmation sur ce que demande l'examen, démentie par le relevé de la
+   notion elle-même.** « Revient presque chaque année », « le cas le plus
+   courant », « presque toujours par la quantité conjuguée » — vérifiables en
+   une minute contre `docs/sujets/`, et fausses une fois sur deux. Les vraies
+   sont à défendre aussi fort : plusieurs ont été **confirmées** et doivent
+   rester (`geometrie-espace` 1/5 vrai, `denombrement` 4/5, `structures-algebriques`
+   8/10 sur le sous-groupe).
+3. **La réponse au-dessus de la porte d'essai.** Trois formes distinctes : le
+   libellé `part` (§11.56, close), l'`intro` qui calcule ce que le premier pas
+   gardé calcule (§11.62, gardée), et le checkpoint d'avant-sommet qui reprend
+   les nombres du sommet (`geometrie-espace`).
+4. **L'hypothèse manquante dans un encadré.** La plus coûteuse à lire, la plus
+   facile à corriger — et celle où il faut le plus se méfier : dans
+   `denombrement`, ajouter l'hypothèse évidente ($p \le n$) aurait **invalidé
+   une étape d'examen** de la banque.
+5. **Le renvoi mort.** Un chapitre, un titre de leçon, un exercice qui n'existe
+   pas ; ou un renvoi vers une note d'auteur que l'élève ne peut pas lire
+   (§11.61, 38 occurrences retirées, porte armée).
+6. **Le contenu enseigné que rien ne teste.** Deux sous-sections de
+   `geometrie-espace`, deux chapitres de `structures-algebriques`, le chapitre
+   homographique de `suites-numeriques` — souvent parce que le titre n'a pas de
+   code de barreau (§11.60, 876 lignes mesurées).
+
+*Et ce qui remonte au-dessus de l'auteur.* Deux familles de déféré reviennent :
+**le cadre a tort** (une `limite` ou une `exclusion` marquée `derived` que les
+sujets vérifiés falsifient — au moins cinq notions, dont `geometrie-espace` sur
+le produit vectoriel et `equations-differentielles` sur le second ordre) ; et
+**un `savoir_faire` n'est enseigné nulle part** (`structures-algebriques` :
+l'homomorphisme, dans 8 énoncés vérifiés sur 10).
+
 Vingt notions à ce stade — les 14 de maths sont toutes passées :
 
 | Notion | Objectifs appliqués | Déféré (marquant) |
