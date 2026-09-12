@@ -6019,3 +6019,50 @@ exceptions légitimes (le modèle partagé). Armer une porte sur un invariant qu
 rien ne viole, et dont les violations plausibles sont des jugements d'auteur,
 ajouterait un instrument qui ne peut que crier à tort. Comme en §11.54 et
 §11.63 : on mesure, on écrit le chiffre, et on dit pourquoi on ne garde pas.
+
+---
+
+### 11.65 Les figures orphelines : 6 sur 268 — et la moitié imprime des réponses
+
+Trouvé en triant `geometrie-espace`, dont la critique pédagogie a repéré un SVG
+qu'aucun marqueur ne pose et dont les légendes déroulent tout le corrigé du
+sommet. Généralisé au corpus.
+
+**268 figures SVG ; 6 qu'aucun marqueur `[[figure:]]` / `[[motion:]]` /
+`[[interactive:]]` ne place.**
+
+*Une correction de méthode, avant les chiffres.* Un premier passage en annonçait
+**20**. Faux : dix d'entre elles sont des `*.motion.svg`, dont le slug de
+marqueur est la base **sans** le suffixe `.motion` — mon extraction gardait le
+suffixe, donc elles ne pouvaient jamais correspondre. Le compte juste est 6.
+
+**Trois des six impriment des réponses d'exercice** — c'est le fait
+décision-relevant :
+
+| Asset | Ce que ses légendes donnent |
+|---|---|
+| `maths/geometrie-espace :: explication-bk-2019-n-x1` | tout le corrigé de r-bac : $\vec n$, $d=1$, $\Omega$, $R=\sqrt5$, $d=\sqrt3$, la nature de l'intersection — et **au-delà** de ce que le sujet 2019 demande |
+| `pc/rc-charge :: exo-oscillogramme` | les légendes portent **les numéros de question** : « … l'asymptote $E = 6$ V **(Q1)** », « $t=\tau=20$ ms **(Q2)** », « $u_C(\tau) \approx 3{,}8$ V **(Q4)** » |
+| `pc/dipole-rl :: oscillogramme-exercice` | la lecture graphique faite : « la tangente coupe l'asymptote en $t=\tau=4$ ms ; $i(\tau)\approx 75{,}8$ mA » |
+
+Les trois autres (`maths/nombres-complexes-2 :: rotation-complexe`,
+`pc/aspects-energetiques :: plan-incline-travaux`,
+`pc/rlc-serie :: loi-mailles-build`) sont des figures d'enseignement ordinaires.
+
+**Aucune fuite aujourd'hui** : sans marqueur, rien ne s'affiche. Le danger est
+qu'il suffit d'**une ligne** — un `[[figure:...]]` posé dans le corps de la
+leçon — pour imprimer un corrigé au-dessus de la porte d'essai. Et deux de ces
+trois assets sont plus tentants que la moyenne à poser, puisqu'ils illustrent
+précisément l'exercice que l'élève est en train de chercher.
+
+**À trancher (owner / diagram-author)** : supprimer les trois, ou les marquer
+explicitement comme matériel d'**après-essai** — auquel cas il faut un endroit
+où « après l'essai » veuille dire quelque chose, ce que le format actuel des
+sidecars ne prévoit pas.
+
+**Pourquoi aucune porte.** Une figure orpheline est une dette d'auteur
+légitime (dessinée, pas encore placée), pas un défaut — et distinguer « ses
+légendes donnent une réponse » de « ses légendes enseignent » est une lecture,
+pas un motif. Ce qui est mécanisable — le compte d'orphelines — est déjà visible
+ici, et le danger réel est consigné asset par asset. Même arbitrage qu'en
+§11.54, §11.63 et §11.64.
