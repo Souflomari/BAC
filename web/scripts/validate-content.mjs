@@ -1197,7 +1197,12 @@ for (const dir of dirs) {
       }
     };
     for (const fname of Object.keys(yamlDocs)) recolte(yamlDocs[fname]);
-    const motifs = [/\bbk-\d{4}-[nr]-[a-z0-9]+\b/];
+    // Un NOM DE FICHIER NU compte aussi : §11.61 n'attrape que le chemin
+    // complet (« content/pc/x/bank.yaml »), et laissait donc passer
+    // « transcrit sous `etat-equilibre.md` » ou « la leçon (…, lesson.md) ».
+    // Mesuré le 2026-09-12 : 2 occurrences dans 2 notions, les deux réécrites.
+    const motifs = [/\bbk-\d{4}-[nr]-[a-z0-9]+\b/,
+      /(?<![/\w.])[a-z0-9]+(?:-[a-z0-9]+)*\.(?:md|ya?ml|json|svg|mjs|tsx?)\b/];
     if (prefixes.size) motifs.push(new RegExp(`\\b(?:${[...prefixes].join("|")})-\\d+\\b`));
     const ids = [];
     const chasse = (n, fichier) => {
@@ -1224,6 +1229,81 @@ for (const dir of dirs) {
       console.error(
         `  ✗ ${dir}: ${f} — un identifiant de fichier, que le rendu n'imprime nulle part. ` +
           `Nomme le référent visible : « le sujet 2019 » pour une entrée de banque, le numéro de chapitre pour un barreau.`
+      );
+      dirFail++;
+    }
+  }
+
+  // ── §11.75 La PROVENANCE DE TRANSCRIPTION dans un champ rendu ──────────
+  //    Troisième membre de la famille §11.61 / §11.67, et le plus large. Les
+  //    deux premières portes attrapent un renvoi vers une note invisible et
+  //    une clé de fichier ; celle-ci attrape la CHAÎNE D'OUTILLAGE qui a
+  //    produit le texte — « mesurée au pixel », « bitmap natif », « re-décrite
+  //    depuis l'image », « par la vérification », « Lecture ferme » — et le
+  //    vocabulaire de filière qui arbitre entre notions : « CROSS-LIST honoré
+  //    ici », « la règle de la maison », « le routage retenu ».
+  //
+  //    Un élève de 2e bac n'a que faire de savoir qu'il existe un scan, une
+  //    résolution native, une chaîne vectorielle et une seconde chaîne au
+  //    pixel qui s'accordent à 0,3 % près. Ce qui l'aide, c'est la LECTURE :
+  //    « la tangente coupe le palier au droit du premier trait vertical ».
+  //    La provenance, elle, a déjà un domicile — le champ `sourcing`, que le
+  //    rendu ne charge jamais — et elle y figure mot pour mot.
+  //
+  //    Mesuré le 2026-09-12 : **125 occurrences dans 18 notions, toutes en
+  //    PC** — l'empreinte exacte de la campagne de transcription des sujets.
+  //    Le cas qui a décidé de la sévérité : transformations-lentes-rapides
+  //    portait, juste sous une réponse encadrée, la consigne d'auteur « à
+  //    confirmer en priorité contre le corrigé officiel ou un re-fetch du
+  //    scan mesuré au pixel ». L'élève lisait une réponse, puis l'ordre de
+  //    aller la vérifier ailleurs.
+  //
+  //    ÉCARTÉ après lecture, et c'est le point de méthode : « coquille » a
+  //    été mesuré (6 occurrences) puis retiré de la sonde. C'est un mot
+  //    français ordinaire qui signale une vraie coquille du sujet officiel —
+  //    utile à qui a la copie sous les yeux, et dans philo/l-etat il porte
+  //    même le fond du propos. Une exclusion ajoutée « par prudence » ne
+  //    protège rien ; une exclusion appuyée sur un cas mesuré, si.
+  {
+    const RENDU_TXT = new Set(["intro", "stem", "reasoning", "note", "text", "feedback",
+      "solution", "correct_feedback", "title", "part", "math", "caption"]);
+    const FILIERE = new RegExp(
+      "\\bau\\s+pixel\\b" +
+      "|\\bau\\s+vectoriel\\b" +
+      "|\\bbitmaps?\\b" +
+      "|\\bimage\\s+native\\b" +
+      "|re-?d[ée]crite?s?\\s+depuis" +
+      "|re-?mesur[ée]e?s?\\s+au\\s+pixel" +
+      "|par\\s+la\\s+v[ée]rification" +
+      "|\\bLectures?\\s+fermes?\\b" +
+      "|\\bre-?fetch\\b" +
+      "|\\bdpi\\b" +
+      "|point\\s+PostScript" +
+      "|g[ée]om[ée]trie\\s+vectorielle" +
+      "|\\bCROSS[-\\s]LIST\\b|\\bcross[-\\s]list[ée]?s?\\b" +
+      "|la\\s+r[èe]gle\\s+de\\s+la\\s+maison" +
+      "|le\\s+routage\\s+retenu",
+      "i");
+    const fuites = [];
+    const chasse = (n, fichier) => {
+      if (Array.isArray(n)) { for (const x of n) chasse(x, fichier); return; }
+      if (!n || typeof n !== "object") return;
+      for (const [k, v] of Object.entries(n)) {
+        // Mêmes sous-arbres AUTEUR qu'en §11.61/§11.67 : la provenance y est
+        // à sa place, c'est même le seul endroit où elle doit vivre.
+        if (k === "sourcing" || k === "item_source" ||
+            k === "coverage_summary" || k === "contradicts_principle") continue;
+        if (typeof v === "string" && RENDU_TXT.has(k)) {
+          const h = v.match(FILIERE);
+          if (h) fuites.push(`${fichier} → champ « ${k} » : « ${h[0]} »`);
+        } else chasse(v, fichier);
+      }
+    };
+    for (const fname of Object.keys(yamlDocs)) chasse(yamlDocs[fname], fname);
+    for (const f of [...new Set(fuites)]) {
+      console.error(
+        `  ✗ ${dir}: ${f} — provenance de transcription ou vocabulaire de filière dans du texte lu par l'élève. ` +
+          `Garde la LECTURE, déplace la provenance vers « sourcing ».`
       );
       dirFail++;
     }
