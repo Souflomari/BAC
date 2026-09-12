@@ -863,7 +863,7 @@ items:
     stem: >
       Un pendule pesant est un solide de forme quelconque (par exemple une
       plaque métallique) qui pivote autour d'un axe fixe $\Delta$ ne passant
-      pas par son centre d'inertie $G$. Sa période propre est-elle donnée par
+      pas par son centre d'inertie $G$. Aux petites oscillations, sa période propre est-elle donnée par
       la même formule $T_0 = 2\pi\sqrt{L/g}$ que celle du pendule simple,
       avec $L$ une longueur caractéristique du solide ?
     type: mcq
@@ -1168,7 +1168,7 @@ items:
       Le pendule simple n'a pas de ressort : sa force de rappel est une
       composante du poids. L'énergie potentielle à utiliser dans
       $E_m = E_c + E_p$ est donc l'énergie potentielle de pesanteur, et non
-      une énergie élastique — comme le précise la leçon (chapitre 6, dernier
+      une énergie élastique — comme le précise la leçon (chapitre 6, avant-dernier
       paragraphe).
 
   - id: SO-19
@@ -1785,7 +1785,7 @@ items:
           et mesurable — c'est exactement ce que ce tableau permet de
           vérifier, colonne par colonne.
     correct_feedback: >
-      Les quatre intervalles mesurés ($1{,}21$ ; $1{,}18$ ;
+      Les trois intervalles mesurés ($1{,}21$ ; $1{,}18$ ;
       $1{,}21\ \text{s}$) restent tous voisins de $T_0=1{,}20\ \text{s}$,
       alors que l'amplitude chute nettement : c'est la signature attendue
       d'un amortissement faible.
@@ -1944,7 +1944,8 @@ items:
     skill_code: pc_systemes_oscillants
     tags: [amortissement, pseudo_periode, pendule_simple, utilisation]
     stem: >
-      Un pendule simple oscille dans l'air (frottement très faible). Un
+      Un pendule simple oscille dans l'air (frottement très faible), aux
+      petites oscillations. Un
       élève, en observant que l'amplitude a nettement diminué après
       quelques minutes, affirme : « Comme l'amplitude a diminué de moitié,
       la pseudo-période a dû, elle aussi, diminuer d'environ moitié. »
@@ -2461,7 +2462,8 @@ items:
     tags: [resonance, excitateur_resonateur, pendule_simple, utilisation]
     stem: >
       Un moteur à vitesse réglable fait vibrer, via un excentrique, le
-      support d'un pendule simple de longueur $L$ fixe. On fait varier la
+      support d'un pendule simple de longueur $L$ fixe, oscillant à petite
+      amplitude. On fait varier la
       vitesse du moteur et on observe l'amplitude du pendule. Lequel des
       deux éléments a une fréquence propre fixe, et lequel a une fréquence
       réglable ?
@@ -2829,8 +2831,10 @@ coverage_summary:
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte — tag simple ou co-marquage $[a, b]$ — une seule fois
     par item. Les checkpoints ne comptent pas : le modèle apprenant est bâti
-    sur le banc de fin seul, et les cinq checkpoints du sommet R8 sont des
-    clones formatifs surfacés en ligne.
+    sur le banc de fin seul. Les cinq checkpoints se répartissent en UNE porte
+    d'engagement originale à l'accroche (cp-r0-predict, in_R0) et QUATRE portes
+    de rupture clonant SO-25, SO-26, SO-34 et SO-35, placées dans R6 et R7 —
+    aucune n'est au sommet R8.
   per_misconception:
     M-OSC-ISO-1:   { count: 4, items: [SO-1, SO-2, SO-11, SO-22] }
     M-OSC-FORM-1:  { count: 8, items: [SO-3, SO-4, SO-10, SO-13, SO-14, SO-16, SO-22, SO-24] }

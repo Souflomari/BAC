@@ -108,7 +108,7 @@ $$\omega_0 = \sqrt{100} = 10\ \text{rad/s}$$
 
 $$T_0 = \frac{2\pi}{10} \approx 0{,}628\ \text{s}$$
 
-Un aller-retour complet dure un peu plus d'un demi-seconde. Si on double la masse ($m=0{,}80\ \text{kg}$) sans changer $k$, $T_0$ devient $2\pi\sqrt{0{,}80/40} = 2\pi\sqrt{0{,}02}\approx 0{,}889\ \text{s}$ : le système est plus lent — plus d'inertie à mettre en mouvement, à raideur égale. Si on double $k$ au lieu de $m$, l'inverse se produit : le ressort plus raide rappelle plus fort, l'aller-retour se fait plus vite.
+Un aller-retour complet dure un peu plus d'une demi-seconde. Si on double la masse ($m=0{,}80\ \text{kg}$) sans changer $k$, $T_0$ devient $2\pi\sqrt{0{,}80/40} = 2\pi\sqrt{0{,}02}\approx 0{,}889\ \text{s}$ : le système est plus lent — plus d'inertie à mettre en mouvement, à raideur égale. Si on double $k$ au lieu de $m$, l'inverse se produit : le ressort plus raide rappelle plus fort, l'aller-retour se fait plus vite.
 
 ---
 
@@ -396,7 +396,7 @@ Regarde ce que fait réellement le frottement : à chaque instant, la force $\ve
 
 ### Peut-on entretenir les oscillations ?
 
-Peut-on compenser cette perte pour entretenir les oscillations ? Oui — mais ce dispositif d'entretien est étudié en détail au chapitre **Oscillations libres dans un circuit RLC** (électricité), où l'on établit l'équation d'un oscillateur entretenu ; le principe (restituer à chaque cycle l'énergie dissipée) y est le même.
+Peut-on compenser cette perte pour entretenir les oscillations ? Oui — mais ce dispositif d'entretien est étudié en détail au chapitre **Oscillations libres dans un circuit RLC série** (électricité), où l'on établit l'équation d'un oscillateur entretenu ; le principe (restituer à chaque cycle l'énergie dissipée) y est le même.
 
 ### Exemple travaillé — reconnaître un régime à l'œil
 
@@ -467,18 +467,18 @@ On a mesuré l'amplitude du résonateur (en unités arbitraires) pour six régla
 
 | $f_{exc}/f_0$ | Amortissement faible | Amortissement fort |
 |---|---|---|
-| 0,5 | 0,3 | 0,6 |
-| 0,8 | 1,2 | 1,7 |
-| 0,95 | 4,5 | 2,5 |
+| 0,5 | 1,3 | 1,3 |
+| 0,8 | 2,6 | 2,2 |
+| 0,9 | 4,3 | 2,8 |
 | 1,0 | 6,5 | 3,0 |
-| 1,1 | 3,0 | 2,6 |
-| 1,5 | 0,4 | 1,0 |
+| 1,2 | 2,1 | 1,7 |
+| 1,5 | 0,8 | 0,7 |
 
 **(i) Où se situe la résonance ?** On cherche la ligne où l'amplitude est maximale — pas une formule. Dans les deux colonnes, c'est $f_{exc}/f_0 = 1{,}0$, c'est-à-dire $f_{exc} = f_0$ : la résonance se produit là, et seulement là.
 
 **(ii) À quel réglage l'amplitude est-elle la plus grande, tout court ?** On compare les deux maxima entre eux : $6{,}5$ (amortissement faible) contre $3{,}0$ (amortissement fort). Le maximum absolu du tableau est atteint pour un amortissement **faible**, à $f_{exc} = f_0$.
 
-**(iii) Quelle colonne donne le pic le plus pointu ?** On ne compare pas les maxima seuls, on regarde comment l'amplitude chute AUTOUR du maximum. Colonne faible : de $6{,}5$ (à $1{,}0$) à $4{,}5$ (à $0{,}95$) et $3{,}0$ (à $1{,}1$) — la chute est rapide, sur un petit écart de fréquence. Colonne forte : de $3{,}0$ (à $1{,}0$) à $2{,}5$ et $2{,}6$ — la chute est beaucoup plus douce, l'amplitude reste élevée même loin du pic. La colonne « amortissement faible » donne donc le pic le plus étroit — la résonance la plus **aiguë** — exactement ce que prévoit le mécanisme du paragraphe précédent.
+**(iii) Quelle colonne donne le pic le plus pointu ?** On ne compare pas les maxima seuls, on regarde comment l'amplitude chute AUTOUR du maximum. Colonne faible : de $6{,}5$ (à $1{,}0$) à $4{,}3$ (à $0{,}9$) et $2{,}1$ (à $1{,}2$) — la chute est rapide, sur un petit écart de fréquence. Colonne forte : de $3{,}0$ (à $1{,}0$) à $2{,}8$ et $1{,}7$ — la chute est beaucoup plus douce. Et remarque ce que font les deux colonnes LOIN du pic : à $0{,}5$ elles donnent la même valeur $1{,}3$. Un frottement plus fort ne donne jamais une amplitude plus GRANDE, à aucune fréquence — il ne fait qu'émousser le pic, exactement comme le dit le paragraphe précédent. La colonne « amortissement faible » donne donc le pic le plus étroit — la résonance la plus **aiguë** — exactement ce que prévoit le mécanisme du paragraphe précédent.
 
 On ne cherche pas une formule d'amplitude — on lit le tableau : l'amplitude culmine là où $f_{exc}$ rejoint $f_0$, et le pic est plus pointu quand l'amortissement est faible.
 
@@ -500,7 +500,8 @@ C'est la même leçon que celle du dictionnaire translation ↔ rotation : la m�
 - Un système oscille selon $\ddot{X} + \omega_0^2 X = 0$ dès qu'une grandeur d'inertie et une grandeur de rappel proportionnelle à l'écart sont en jeu, sans autre force : pendule élastique ($x$, $k/m$), pendule simple ($\theta$, $g/L$), pendule pesant ($\theta$, $mgd/J_\Delta$), pendule de torsion ($\theta$, $C/J$).
 - La solution est $X(t) = X_m\cos(\omega_0 t + \varphi)$ ; $\omega_0$ et $T_0=2\pi/\omega_0$ sont fixés par le système (masse, raideur, longueur...) ; $X_m$ et $\varphi$ sont fixés par les conditions initiales.
 - **Pulsation $\omega_0$ (rad/s) $\neq$ fréquence $f_0$ (Hz)** : $\omega_0 = 2\pi f_0 = 2\pi/T_0$, toujours ce facteur $2\pi$.
-- Pour le pendule simple (et, en pratique, tout pendule aux petites oscillations) : $T_0$ ne dépend ni de la masse, ni de l'amplitude — seulement de $L$ et $g$ (ou de l'équivalent inertie/rappel pour les autres pendules).
+- Pour le pendule **simple** : $T_0$ ne dépend ni de la masse, ni de l'amplitude — seulement de $L$ et $g$.
+- Pour les **autres** pendules, seule l'indépendance à l'**amplitude** est générale (aux petites oscillations). La masse, elle, ne disparaît pas : elle figure dans $T_0=2\pi\sqrt{m/k}$ (pendule élastique), et elle ne se simplifie pas en général dans $T_0=2\pi\sqrt{J_\Delta/(mgd)}$ (pendule pesant). Ne généralise jamais « la masse ne compte pas » depuis le seul pendule simple.
 - Sans frottement, l'énergie mécanique $E_m = E_c + E_p$ voyage entre les deux réservoirs sans se perdre — l'aperçu qualitatif est ici, la démonstration complète et les diagrammes sont au chapitre **Aspects énergétiques**.
 - Avec frottement, $E_m$ décroît toujours (le frottement ne fournit jamais d'énergie, il ne fait que la dissiper) ; selon son intensité, le mouvement suit le régime **pseudo-périodique** ($T \approx T_0$, amplitude décroissante), **critique** (retour le plus rapide, sans oscillation), ou **apériodique** (retour plus lent, sans oscillation) — le retour est le plus rapide exactement au régime critique. Un dispositif d'entretien peut compenser cette perte ; son étude complète appartient au chapitre RLC.
 - Un **résonateur** (fréquence propre $f_0$ fixe) forcé par un **excitateur** (fréquence $f_{exc}$ réglable) oscille, en régime établi, à $f_{exc}$ — avec une amplitude maximale quand $f_{exc} \approx f_0$ (la résonance). Un amortissement faible donne une résonance aiguë (pic haut, étroit) ; un amortissement fort, une résonance floue (pic bas, large).
