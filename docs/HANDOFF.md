@@ -6619,3 +6619,50 @@ sonde avant d'être un défaut du contenu »**.
 Bénéfice collatéral : la porte confirme le correctif de barème appliqué la
 veille à `pc/systemes-oscillants` — les stems de `r-bac` somment à 0,75,
 exactement ce que cote le relevé vérifié du sujet 2018.
+
+---
+
+### 11.74 Deux sondes sur l'artisanat des items : l'une redécouvre un instrument existant, l'autre trouve un signal faible que le mélange ne corrige pas
+
+Les critiques de `systemes-oscillants` et de `lois-de-newton` ont signalé deux
+défauts d'artisanat qui rendraient un QCM jouable sans physique. Mesurés sur
+les **1 612 items à quatre choix** du corpus.
+
+**1. La position de la bonne réponse : 65 % en A — et c'est déjà traité, mieux
+que je ne l'aurais fait.** Le comptage dans l'ordre du fichier donne
+A 65,0 % · B 14,3 % · C 11,4 % · D 9,4 %. Un élève qui coche toujours A aurait
+65 %.
+
+Ce n'est **pas** un défaut : `web/src/lib/shuffle.ts` mélange les choix de
+façon déterministe par item, et `web/scripts/test-melange.mjs` re-mesure la
+chose avec **deux témoins** — que c'est plat après mélange (25,7 / 25,4 / 24,0
+/ 24,9 %) **et que le biais rédactionnel EXISTE toujours**, faute de quoi le
+test serait vert avec le mélange désarmé. Ce second témoin est exactement la
+discipline de l'ADR 0031 ; il était déjà en place.
+
+Mon chiffre indépendant (65,0 %) **reproduit exactement** celui que le test
+consigne, ce qui confirme que sa prémisse est encore vraie aujourd'hui — un
+corroborant utile, pas une découverte. C'est la deuxième fois de la session que
+je re-trouve un instrument existant (§11.65) : **lire `INSTRUMENTS.md` et les
+tests avant de sonder reste le raccourci le moins cher.**
+
+**2. Le distracteur qui s'accuse lui-même — signal faible, mais que le mélange
+ne corrige PAS.** Un distracteur dont le texte décrit sa propre erreur
+(« …, **en oubliant le facteur** $\frac12$ », « …, **en utilisant** $\omega$
+au lieu de $\omega^2$ ») rend la clé repérable sans faire la physique : c'est
+le seul choix qui ne s'accuse de rien. Contrairement au biais de position, **le
+mélange n'y peut rien** — le tell voyage avec le texte.
+
+Mesure : **107 distracteurs sur 4 836 (2,2 %)** contre **19 clés sur 1 612
+(1,2 %)**. L'asymétrie est réelle mais faible, et aucun item du corpus n'a
+*tous* ses distracteurs qui s'accusent pendant que la clé se tait — le motif
+n'est donc jamais décisif à lui seul. Un seul foyer sort du lot :
+`pc/rotation-axe-fixe`, **10,7 %** (8 distracteurs, ROT-16/18/19).
+
+**Pas de porte, et la raison est une distinction, pas une prudence :** dire
+« en oubliant le facteur ½ » est une **bonne** chose dans un `feedback` — c'est
+exactement nommer le modèle faux — et une mauvaise chose dans le `text` d'un
+choix. Un motif ne sait pas lire cette différence d'intention ; il crierait sur
+la moitié des feedbacks du corpus, qui sont précisément ce que la VISION
+demande. La classe est mesurée, le foyer est nommé, l'arbitrage revient à
+l'owner.
