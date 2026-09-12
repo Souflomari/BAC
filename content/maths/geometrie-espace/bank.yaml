@@ -277,7 +277,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que la droite $(\Delta)$ est tangente à la sphère $(S)$ en un point $D$ dont on déterminera les coordonnées
         reasoning: |-
-          Ici on sort légèrement du terrain balisé par la leçon : le chapitre 10 traite la tangence **plan**-sphère (comparer la distance du centre au plan avec le rayon). Le même raisonnement de Pythagore se transpose tel quel à une **droite** : si $H$ est le pied de la perpendiculaire abaissée de $\Omega$ sur $(\Delta)$ et $M$ un point commun à $(\Delta)$ et $(S)$, le triangle $\Omega HM$ est rectangle en $H$, donc $R^2=d(\Omega,(\Delta))^2+HM^2$ — même relation, même conclusion : $d(\Omega,(\Delta))=R$ signale une droite tangente.
+          Tu as déjà ce mécanisme : le chapitre 10 traite l'intersection d'une sphère et d'une **droite**, et le cas de la tangence en fait partie. Reprends-le tel quel : si $H$ est le pied de la perpendiculaire abaissée de $\Omega$ sur $(\Delta)$ et $M$ un point commun à $(\Delta)$ et $(S)$, le triangle $\Omega HM$ est rectangle en $H$, donc $R^2=d(\Omega,(\Delta))^2+HM^2$ — même relation, même conclusion : $d(\Omega,(\Delta))=R$ signale une droite tangente.
 
           On calcule donc $d(\Omega,(\Delta))$ avec la formule du chapitre 9 (distance point-droite, via le produit vectoriel), on la compare à $R$, puis, la tangence confirmée, on trouve $D$ en imposant que $\overrightarrow{\Omega D}$ soit orthogonal à la direction de $(\Delta)$ — c'est la caractérisation même du pied de la perpendiculaire, via le produit scalaire (chapitre 3).
         steps:
@@ -568,12 +568,12 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que la droite $(\Delta)$ est une médiatrice du segment $[AB]$
         reasoning: |-
-          On sort ici légèrement du terrain balisé par le corps de la leçon : ni les chapitres 2 à 10 ne nomment la médiatrice d'un segment dans l'espace. Le mécanisme reste pourtant entièrement construit avec les outils déjà en main. Deux faits suffisent : que $(\Delta)$ passe par le milieu de $[AB]$, et que sa direction est orthogonale à $\overrightarrow{AB}$ (test du chapitre 3). Ensemble, ces deux faits garantissent que tout point $M$ de $(\Delta)$ vérifie $MA=MB$ — la définition même d'une médiatrice.
+          Le chapitre 7 a construit le **plan** médiateur de $[AB]$ — le lieu des points équidistants de $A$ et $B$. Ici l'énoncé demande une **droite** médiatrice : c'est le même critère, appliqué à une droite plutôt qu'à un plan. Deux faits suffisent : que $(\Delta)$ passe par le milieu de $[AB]$, et que sa direction est orthogonale à $\overrightarrow{AB}$ (test du chapitre 3). Ensemble, ces deux faits garantissent que tout point $M$ de $(\Delta)$ vérifie $MA=MB$ — la définition même d'une médiatrice.
 
-          On calcule d'abord le milieu de $[AB]$ (moyenne des coordonnées, comme au chapitre 2) : il tombe exactement sur $H$, déjà identifié comme un point de $(\Delta)$ à la question précédente. Puis on teste l'orthogonalité (chapitre 3) entre $\overrightarrow{AB}$ et la direction $\vec n$ de $(\Delta)$ : le produit scalaire s'annule, donc les deux directions sont perpendiculaires. Une droite qui passe par le milieu d'un segment et dont la direction est orthogonale à ce segment reste à égale distance des deux extrémités en tout point — c'est exactement ce que « médiatrice » signifie.
+          On calcule d'abord le milieu de $[AB]$ (moyenne des coordonnées) : il tombe exactement sur $H$, déjà identifié comme un point de $(\Delta)$ à la question précédente. Puis on teste l'orthogonalité (chapitre 3) entre $\overrightarrow{AB}$ et la direction $\vec n$ de $(\Delta)$ : le produit scalaire s'annule, donc les deux directions sont perpendiculaires. Une droite qui passe par le milieu d'un segment et dont la direction est orthogonale à ce segment reste à égale distance des deux extrémités en tout point — c'est exactement ce que « médiatrice » signifie.
         steps:
           - math: '\text{milieu de}\ [AB] = \left(\dfrac{-1+1}{2},\,\dfrac{0+2}{2},\,\dfrac{-1+(-1)}{2}\right) = (0,\,1,\,-1) = H'
-            note: "Moyenne des coordonnées de A et B (chapitre 2) : le milieu de [AB] est exactement le point H, déjà sur Δ (question précédente)."
+            note: "Moyenne des coordonnées de A et B : le milieu de [AB] est exactement le point H, déjà sur Δ (question précédente)."
           - math: '\overrightarrow{AB} = B-A = (2,\,2,\,0)'
             note: "Coordonnées arrivée moins départ (chapitre 2)."
           - math: '\vec{n}\cdot\overrightarrow{AB} = 2\times2 + (-2)\times2 + 1\times0 = 4-4+0 = 0'

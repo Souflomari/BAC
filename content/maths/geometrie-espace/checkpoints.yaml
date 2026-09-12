@@ -329,12 +329,15 @@ checkpoints:
     skill_code: maths_geometrie_espace
     tags: [checkpoint, formative, misconception_driven, maths_geometrie_espace, sphere, intersection, bac_style]
     primary_misconception: mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur
-    item_source: clone_of_GE-30
+    # item_source : AUCUN. L'étiquette « clone_of_GE-30 » portée ici jusqu'au
+    # 2026-09-12 était fausse — GE-30 emploie d=3, R=5, r=4. Les nombres réels
+    # recopiaient r-bac (R=√5, d=√3), c'est-à-dire les réponses de ses questions
+    # 2 et 3a, servies avant l'essai. Re-numéroté en R=√11, d=√7, r=2.
     lesson_placement: before_bac
 
     stem: |
-      Une sphère $(S)$ a pour centre $\Omega$ et rayon $R=\sqrt{5}$. Un plan
-      $\mathcal P$ vérifie $d(\Omega,\mathcal P)=\sqrt{3}$. Quelle est la nature de
+      Une sphère $(S)$ a pour centre $\Omega$ et rayon $R=\sqrt{11}$. Un plan
+      $\mathcal P$ vérifie $d(\Omega,\mathcal P)=\sqrt{7}$. Quelle est la nature de
       l'intersection de $(S)$ et $\mathcal P$ ?
 
     type: mcq
@@ -342,12 +345,12 @@ checkpoints:
     choices:
       - id: A
         text: |
-          Un cercle de rayon $\sqrt{2}$, puisque $d<R$.
+          Un cercle de rayon $2$, puisque $d<R$.
         correct: true
         feedback: |
-          Exact. On compare d'abord : $\sqrt{3}<\sqrt{5}$, donc $d<R$ et
+          Exact. On compare d'abord : $\sqrt{7}<\sqrt{11}$, donc $d<R$ et
           l'intersection est un cercle. Son rayon vient de Pythagore
-          ($R^2=d^2+r^2$) : $r=\sqrt{R^2-d^2}=\sqrt{5-3}=\sqrt{2}$.
+          ($R^2=d^2+r^2$) : $r=\sqrt{R^2-d^2}=\sqrt{11-7}=2$.
 
       - id: B
         text: |
@@ -356,21 +359,21 @@ checkpoints:
         misconception: mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur
         feedback: |
           Critère inversé : la tangence correspond à $d=R$, pas à $d<R$. Ici
-          $d=\sqrt{3}<R=\sqrt{5}$ : le plan **traverse** la sphère, l'intersection
+          $d=\sqrt{7}<R=\sqrt{11}$ : le plan **traverse** la sphère, l'intersection
           est un cercle (pas un point).
 
       - id: C
         text: |
-          Un cercle de rayon $2$, égal à $R^2-d^2=5-3$.
+          Un cercle de rayon $4$, égal à $R^2-d^2=11-7$.
         correct: false
         misconception: mc.math.maths_geometrie_espace.oubli-racine
         feedback: |
-          $R^2-d^2=2$ est le **carré** du rayon du cercle : la racine finale a été
-          oubliée. Le rayon est $r=\sqrt{R^2-d^2}=\sqrt{2}$, pas $2$.
+          $R^2-d^2=4$ est le **carré** du rayon du cercle : la racine finale a été
+          oubliée. Le rayon est $r=\sqrt{R^2-d^2}=2$, pas $4$.
 
       - id: D
         text: |
-          Un cercle de rayon $\sqrt{8}$, car $\sqrt{R^2+d^2}=\sqrt{5+3}$.
+          Un cercle de rayon $\sqrt{18}$, car $\sqrt{R^2+d^2}=\sqrt{11+7}$.
         correct: false
         misconception: mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur
         feedback: |

@@ -18,7 +18,7 @@ C'est difficile, non ? Et c'est bien le problème. À l'oeil, sur un dessin en p
 
 Ce dont on a besoin, c'est d'un moyen de trancher ce genre de question **avec des nombres**, sans dépendre d'un dessin ni d'une intuition. C'est exactement ce que cette leçon construit : une façon de décrire un point, une droite, un plan de l'espace par des coordonnées, puis de calculer à partir de ces coordonnées des distances, des angles, des aires, des volumes — et de répondre à des questions comme celle du cube avec une certitude totale.
 
-On y revient précisément à la fin de la partie le chapitre 3. Ne cherche pas encore la réponse — on construit l'outil, pièce par pièce, et on revient trancher.
+On y revient précisément à la fin du chapitre 3. Ne cherche pas encore la réponse — on construit l'outil, pièce par pièce, et on revient trancher.
 
 ---
 
@@ -311,7 +311,7 @@ $$\mathcal{E} = \left\{\,M \ ;\ MA = MB\,\right\}$$
 
 **Ce n'est pas une droite.** Dans le plan, le lieu des points équidistants de $A$ et $B$ est la médiatrice du segment $[AB]$ — une droite. Dans l'espace, la même condition définit un **plan**, appelé **plan médiateur** de $[AB]$. C'est la première chose à se dire : on monte d'une dimension, le lieu aussi.
 
-**La démonstration tient en trois lignes**, et elle n'utilise que le chapitre 2 et le chapitre 3. Note $I$ le milieu de $[AB]$. On élève la condition au carré pour éliminer les racines :
+**La démonstration tient en trois lignes**, et elle n'utilise, outre le milieu d'un segment, que le chapitre 2 et le chapitre 3. Note $I$ le milieu de $[AB]$. On élève la condition au carré pour éliminer les racines :
 
 $$MA = MB \iff MA^2 = MB^2 \iff \overrightarrow{MA}^2 - \overrightarrow{MB}^2 = 0$$
 
@@ -456,7 +456,7 @@ $$d\left(A,(BC)\right) = \frac{\|(0,0,-4)\|}{\|\overrightarrow{BC}\|} = \frac{4}
 
 ---
 
-## R9 — La sphère : équation cartésienne et intersection avec un plan
+## R9 — La sphère : équation cartésienne, intersection avec un plan et avec une droite
 
 ### L'équation d'une sphère
 
@@ -464,7 +464,7 @@ Une sphère de centre $\Omega(x_\Omega,y_\Omega,z_\Omega)$ et de rayon $R$ est l
 
 $$(x-x_\Omega)^2+(y-y_\Omega)^2+(z-z_\Omega)^2 = R^2$$
 
-C'est l'équation cartésienne « sous forme centre-rayon ». En développant les carrés, elle prend une forme générale $x^2+y^2+z^2+ax+by+cz+e=0$ — mais alors le centre et le rayon ne se lisent plus directement ; il faut **compléter le carré** pour revenir à la forme centre-rayon.
+C'est l'équation cartésienne « sous forme centre-rayon ». En développant les carrés, elle prend une forme générale $x^2+y^2+z^2+ax+by+cz+e=0$ — mais alors le centre et le rayon ne se lisent plus directement ; il faut **compléter le carré** pour revenir à la forme centre-rayon. Une précision qui a son importance : une équation de cette forme ne décrit une sphère que si, après complétion, le membre de droite est **strictement positif**. S'il est nul on obtient un seul point, s'il est négatif l'ensemble est vide — c'est pourquoi un énoncé prudent parle de « l'ensemble $(S)$ » tant que le calcul n'est pas fait.
 
 **Exemple travaillé — compléter le carré.** Trouver le centre et le rayon de la sphère d'équation $x^2+y^2+z^2-2x+4y-6z+5=0$.
 
@@ -531,7 +531,7 @@ La relation de Pythagore est la même ; c'est la dimension de l'objet qui coupe 
 
 On passe maintenant au format de l'épreuve. D'abord un vrai sujet d'examen national — tu le cherches toi-même, tu t'engages sur une réponse, et le raisonnement expert ne se dévoile qu'ensuite. Puis une variation : mêmes outils, autres nombres, pour vérifier que tu as compris la méthode et pas mémorisé un corrigé.
 
-Un dernier réflexe à verrouiller avant de te lancer : quand un plan rencontre une sphère, on calcule la distance du centre au plan, on la compare au rayon, et **c'est cette comparaison** qui décide de la nature de l'intersection.
+Un dernier réflexe à verrouiller avant de te lancer : quand un plan rencontre une sphère, la nature de l'intersection se décide par un calcul, pas à vue — à toi de retrouver lequel.
 
 [[checkpoint:cp-r9-intersection]]
 
@@ -558,8 +558,13 @@ Mêmes gestes, d'autres nombres — de quoi vérifier que c'est la méthode que 
      mixte / déterminant et volume ; représentation paramétrique et équation
      cartésienne d'une droite et d'un plan ; positions relatives (droite/
      droite, droite/plan, plan/plan) ; distance point-plan et point-droite ;
-     sphère (équation, intersection avec un plan). Conforme au périmètre
-     donné dans le brief de cette leçon.
+     sphère (équation, intersection avec un plan ET avec une droite).
+     MISE À JOUR (revue vague 1, 2026-09-12) : cette liste avait vieilli — elle
+     omettait DEUX sous-sections que la leçon enseigne, le plan médiateur
+     (chapitre 7) et l'intersection sphère-droite (chapitre 10). Toutes deux
+     sont ajoutées ci-dessus. Elles restent, en revanche, sans aucun item ni
+     checkpoint : voir la revue de la notion.
+     Conforme au périmètre donné dans le brief de cette leçon.
      (3) Point d'incertitude réel : selon les éditions du programme marocain
      SM, le "produit vectoriel" et le "produit mixte" ne sont pas toujours
      nommés ainsi dans le cadre officiel (certaines progressions traitent
