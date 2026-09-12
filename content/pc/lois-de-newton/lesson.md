@@ -96,7 +96,7 @@ Le principe couvre aussi le repos, qui est juste le cas particulier $\vec{v}_G =
 
 $$\vec{P} + \vec{N} = \vec{0} \qquad \text{soit} \qquad N = P = mg$$
 
-Les deux forces ont même norme, même direction, et des sens opposés — mais attention, on reviendra au chapitre 5 sur une confusion très fréquente à leur sujet : ce n'est PAS pour cette raison qu'elles forment une paire d'action-réciproque au sens de la troisième loi.
+Les deux forces ont même norme, même direction, et des sens opposés — mais attention, on reviendra au chapitre 5 sur une confusion très fréquente à leur sujet : ce n'est PAS pour autant qu'elles forment une paire d'action-réciproque au sens de la troisième loi.
 
 [[checkpoint:cp-r2-inertie]]
 
@@ -179,7 +179,7 @@ Pour trouver la vraie réciproque de $\vec{N}$ (la force exercée par la table s
 
 $$\vec{N}_{\text{table} \to \text{livre}} \quad \text{a pour réciproque} \quad \vec{N}_{\text{livre} \to \text{table}} = -\vec{N}_{\text{table} \to \text{livre}}$$
 
-Cette force réciproque s'exerce SUR LA TABLE, pas sur le livre — c'est pour ça qu'elle n'apparaît jamais dans le bilan des forces du livre. De même, la réciproque du poids $\vec{P}$ (qui est la force exercée par la Terre sur le livre) est la force que le livre exerce, en retour, sur la Terre — une force minuscule en effet sur un objet aussi massif, mais qui existe bien, par la troisième loi.
+Cette force réciproque s'exerce SUR LA TABLE, pas sur le livre — c'est pour ça qu'elle n'apparaît jamais dans le bilan des forces du livre. De même, la réciproque du poids $\vec{P}$ (qui est la force exercée par la Terre sur le livre) est la force que le livre exerce, en retour, sur la Terre — une force de MÊME NORME que le poids — c'est son EFFET sur un astre aussi massif qui est imperceptible, pas la force elle-même.
 
 [[figure:actions-reciproques-livre-table]]
 

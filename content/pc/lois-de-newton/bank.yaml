@@ -240,10 +240,10 @@ entries:
 
       **Figure 1 (schéma).** Piste avec une portion rectiligne inclinée A'B' (angle $\beta$ avec l'horizontale) sur laquelle glisse le système (représenté par une moto, centre d'inertie $G$), repère $(A, \vec{i})$ le long de la pente ; puis un tremplin circulaire B'C' ; au point C, la vitesse $\vec{V_C}$ fait un angle $\alpha$ avec l'horizontale ($\vec{i_1}$, $\vec{j_1}$), et la trajectoire de saut (en pointillés) retombe au point P sur la zone horizontale $(\pi)$.
 
-      **Figure 2 (courbe).** $V_G\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$ ; droite passant par l'origine (mouvement uniformément accéléré) ; ordonnées graduées $3,\ 6,\ 9$ ; abscisses graduées $0{,}5,\ 1,\ 1{,}5,\ 2$. La droite atteint $V_G \approx 9{,}5\ \text{m.s}^{-1}$ vers $t \approx 2\ \text{s}$ *(lecture d'échelle à confirmer)*.
+      **Figure 2 (courbe).** $V_G\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$ ; droite passant par l'origine (mouvement uniformément accéléré) ; ordonnées graduées $3,\ 6,\ 9$ ; abscisses graduées $0{,}5,\ 1,\ 1{,}5,\ 2$. La droite atteint $V_G \approx 9{,}5\ \text{m.s}^{-1}$ vers $t \approx 2\ \text{s}$.
     questions:
       - id: q1
-        part: "1 — Le modèle, établi et non récité (et ce que « sans frottement » retire du bilan)"
+        part: "1 — Le modèle du mouvement"
         stem: |-
           **1.** (0,5 pt) En appliquant la deuxième loi de Newton, montrer que l'expression de l'accélération $a_G$ du mouvement de $G$ est : $a_G = \dfrac{F}{m} + g\sin\beta$.
         reasoning: |-
@@ -283,11 +283,11 @@ entries:
 
           **Les deux pièges nommés de cette question.** Le premier : **ajouter un terme de frottement au bilan par réflexe**, parce que les deux autres solides de cette banque en portent un. L'énoncé le dit noir sur blanc : « dans tout l'exercice, les frottements sont négligés » — un bilan à quatre forces ici serait faux, pas seulement imprécis. Le second : **écrire $-g\sin\beta$**, en calquant machinalement le signe du sujet 2022 (qui monte), sans revérifier le sens réel du mouvement ici — la descente, confirmée par le signe $+$ du résultat à montrer lui-même.
       - id: q2
-        part: "2 — La pente lue sur une droite qui part de l'origine"
+        part: "2 — L'accélération à partir de la figure 2"
         stem: |-
           **2.** (0,5 pt) La courbe de la figure 2 représente les variations de la vitesse instantanée $V_G$ du centre d'inertie $G$ en fonction du temps. En exploitant cette courbe, trouver la valeur de l'accélération $a_G$.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Le mouvement est uniformément accéléré (question 1 : $a_G$ constante), donc $V_G(t) = a_G\,t$ — une droite par l'origine, puisque le système part **sans vitesse initiale**. Sur un graphe $V_G(t)$, l'accélération se lit comme la **pente**, exactement comme au chapitre 4.
+          **Ce qu'on cherche et pourquoi ce geste.** Le mouvement est uniformément accéléré (question 1 : $a_G$ constante), donc $V_G(t) = a_G\,t$ — une droite par l'origine, puisque le système part **sans vitesse initiale**. Sur un graphe $V_G(t)$, l'accélération se lit comme la **pente** : c'est la définition $a_G = dv_G/dt$ du chapitre 4, appliquée à un graphe.
 
           **Le pont à faire, parce que la leçon ne fait pas ce geste pas à pas.** Le chapitre 4 construit le vecteur accélération comme dérivée de la vitesse ; il ne montre jamais explicitement l'opération « prendre deux points d'une droite $v(t)$ et calculer son coefficient directeur » — la même lacune déjà signalée pour le sujet 2024. Le geste : choisir deux points de la droite qui tombent sur des **intersections du quadrillage**, jamais deux points lus au jugé.
 
@@ -557,7 +557,7 @@ entries:
 
           **Les deux pièges nommés de cette question.** Le premier : **recopier le signe du chapitre 8 sans regarder le sens de l'axe**, et écrire $+g\sin\alpha$. Le contrôle qui tranche : imagine $\vec{F} = \vec{0}$ (plus de force motrice) — l'équation doit alors donner une accélération qui RALENTIT la montée, donc négative selon $\vec{i}$, ce qui n'est vrai que si le terme en $g\sin\alpha$ est **soustrait**. Le second : **oublier le frottement dans le bilan** parce qu'il finira par jouer un rôle numériquement modeste — il doit apparaître dans le bilan des forces au même titre que les autres, avant même de savoir combien il vaut.
       - id: q2
-        part: "1.2.1 — La courbe qu'on ne lit pas comme les autres"
+        part: "1.2.1 — La lecture de la seconde courbe"
         stem: |-
           **1.2.1.** (0,5 pt) En exploitant la courbe de la figure 2, déterminer l'accélération $a_{1x}$ du centre d'inertie $G$.
         reasoning: |-
@@ -608,7 +608,7 @@ entries:
 
           C'est bien la valeur à montrer.
 
-          **Lire ce nombre au lieu de le poser.** La composante motrice utile, $m(a_{1x}+g\sin\alpha) \approx 10{,}0\ \text{N}$, se répartit ainsi : $2{,}0\ \text{N}$ servent à accélérer le solide ($m\,a_{1x}$) et $6{,}0\ \text{N}$ servent seulement à vaincre la pesanteur ($mg\sin\alpha$) ; les $2\ \text{N}$ restants de $F$ compensent exactement le frottement. Rien ne se perd : $F$ se répartit intégralement entre ces trois usages.
+          **Lire ce nombre au lieu de le poser.** La composante motrice utile, $m(a_{1x}+g\sin\alpha) \approx 10{,}0\ \text{N}$, se répartit ainsi : $4{,}0\ \text{N}$ servent à accélérer le solide ($m\,a_{1x} = 2\times 2$) et $6{,}0\ \text{N}$ servent seulement à vaincre la pesanteur ($mg\sin\alpha$) ; les $2\ \text{N}$ restants de $F$ compensent exactement le frottement. Rien ne se perd : $F$ se répartit intégralement entre ces trois usages.
 
           **Les deux pièges nommés de cette question.** Le premier : **oublier de restituer $g\sin\alpha$**, c'est-à-dire écrire $F = m\,a_{1x} + f = 6\ \text{N}$ — une force bien trop faible pour faire monter un solide sur une pente à $17{,}5^\circ$. L'accélération lue à la question précédente est déjà celle qui reste UNE FOIS la pesanteur soustraite (chapitre 8) ; retrouver $F$ oblige à la lui rendre. Le second : **utiliser $\cos\alpha$ au lieu de $\sin\alpha$**, l'erreur inverse de celle guettée au chapitre 8, qui donnerait ici $F \approx 21\ \text{N}$ — une valeur que rien ne permet de retenir comme plausible, contrairement à $12\ \text{N}$ qui recoupe exactement le nombre annoncé par l'énoncé.
       - id: q4
@@ -1264,14 +1264,14 @@ entries:
         stem: |-
           **(0,5 pt)** Déduire la distance $BC$ parcourue par $G$.
         reasoning: |-
-          « Déduire » : la relation vitesse-distance du MRUV (chapitre 7), $v^2 = v_0^2+2\,a_x\,d$, relie directement la vitesse à la distance sans repasser par le temps — utile ici puisqu'on connaît déjà l'accélération et qu'à l'arrêt $v=0$.
+          « Déduire » : la relation vitesse-distance du MRUV, $v^2 = v_0^2+2\,a_x\,d$ (relation de cinématique, que cette leçon n'établit pas), relie directement la vitesse à la distance sans repasser par le temps — utile ici puisqu'on connaît déjà l'accélération et qu'à l'arrêt $v=0$.
 
           $$0 = v_0^2 + 2\,a_x\,BC \implies BC = -\frac{v_0^2}{2\,a_x}$$
 
           Le contrôle qui rassure. On peut aussi retrouver $BC$ par $BC = v_0\,t_c + \frac{1}{2}a_x\,t_c^2$ avec $t_c \approx 8{,}33\ \text{s}$ (question 2.2) : $25\times8{,}33 - \frac{1}{2}\times3\times8{,}33^2 \approx 208{,}3-104{,}2 \approx 104{,}2\ \text{m}$ — les deux méthodes se recoupent.
         steps:
           - math: 'BC = -\frac{v_0^2}{2\,a_x} = -\frac{25^2}{2\times(-3)}'
-            note: "Relation vitesse-distance du MRUV (chapitre 7) : v^2 = v0^2+2.a_x.d, avec v=0 a l'arrêt."
+            note: "Relation vitesse-distance du MRUV (cinematique, non etablie dans cette lecon) : v^2 = v0^2+2.a_x.d, avec v=0 a l'arrêt."
           - math: '\boxed{BC \approx 104{,}17\ \text{m}}'
             note: "Distance parcourue de B a C, vérifiée indépendamment par BC = v0.t_c + 0,5.a_x.t_c^2."
 
@@ -1613,7 +1613,7 @@ entries:
           Le piège nommé de cette question. Écrire $v_B = a_G\,t$ et chercher un temps que l'énoncé ne donne pas : la relation $v^2 = 2\,a\,d$ existe précisément pour court-circuiter le chronomètre quand on connaît la distance — c'est la voie directe ici.
         steps:
           - math: 'v_B^2 = 2\,a_G\,AB'
-            note: "Relation vitesse-distance du MRUV (chapitre 7), départ sans vitesse initiale."
+            note: "Relation vitesse-distance du MRUV (cinematique, non etablie dans cette lecon), depart sans vitesse initiale."
           - math: 'v_B = \sqrt{2\times3{,}03\times80}'
             note: "a_G de la question 1-1, AB = A'B' = 80 m (donnée)."
           - math: '\boxed{v_B \approx 22{,}0\ \text{m.s}^{-1}}'

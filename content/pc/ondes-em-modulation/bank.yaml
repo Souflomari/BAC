@@ -320,7 +320,7 @@ entries:
       **Figure 6 (oscillogramme).** Écran d'oscilloscope quadrillé de **10 divisions en largeur et 8 divisions en hauteur**, avec un axe vertical central et un axe horizontal central. Deux tracés superposés, étiquetés « $u_2(t)$ » (en haut) et « $u_1(t)$ » (en bas) en bordure droite de l'écran :
 
       - $u_1(t)$ — la **porteuse** : oscillation très rapide et très resserrée occupant toute la largeur de l'écran, **centrée sur l'axe horizontal central** et d'amplitude **$1,5$ division** (le faisceau s'étend exactement de $-1{,}5$ à $+1{,}5$ division, soit $3{,}0$ divisions crête à crête). Elle compte environ $3$ oscillations par division, soit une trentaine sur la largeur de l'écran *(comptage exact des oscillations — lecture à confirmer)*.
-      - $u_2(t)$ — la **modulante décalée** : oscillation nettement plus lente et de plus faible amplitude que la porteuse, entièrement située au-dessus de l'axe horizontal central, oscillant **exactement entre les traits $+1$ et $+2$ divisions** (soit $1,0$ division crête à crête, autour d'un niveau moyen de $+1,5$ division). Sa période vaut environ $4$ divisions.
+      - $u_2(t)$ — la **modulante décalée** : oscillation nettement plus lente et de plus faible amplitude que la porteuse, entièrement située au-dessus de l'axe horizontal central, oscillant **exactement entre les traits $+1$ et $+2$ divisions** . Sa période vaut environ $4$ divisions.
     questions:
       - id: q1
         part: "III- Modulation d'amplitude d'un signal : définir et exploiter la courbe"
@@ -922,10 +922,10 @@ entries:
 
       Le signal est une oscillation rapide (porteuse) dont l'amplitude est modulée par une enveloppe lente. **L'enveloppe fait deux périodes complètes et un quart dans le cadre** — et non une seule : de gauche à droite on lit un **maximum au bord gauche ($t \simeq 0$)**, un **minimum vers $t \simeq 0{,}30\ \text{ms}$**, un **maximum vers $t \simeq 0{,}60\ \text{ms}$** (donc au voisinage du milieu du cadre), un **minimum vers $t \simeq 0{,}90\ \text{ms}$**, un **maximum vers $t \simeq 1{,}20\ \text{ms}$**, puis une décroissance jusqu'au bord droit.
 
-      Lectures fermes (mesure au pixel) :
-      - **porteuse** : une oscillation rapide par carreau exactement (13 crêtes relevées sur 12 carreaux consécutifs) → $T = 0{,}05\ \text{ms}$, soit $F = \mathbf{2{,}0\cdot10^{4}\ \text{Hz}} = 20\ \text{kHz}$ ;
-      - **enveloppe** : minima consécutifs distants de **12 carreaux** → $T_{env} = 0{,}60\ \text{ms}$, soit $f = \mathbf{1{,}7\cdot10^{3}\ \text{Hz}}$ environ ($1/0{,}60\ \text{ms} = 1{,}67\ \text{kHz}$) — bien dans le domaine audible, et $F/f = 12 \ge 10$ ;
-      - **amplitudes** : aux maxima d'enveloppe les crêtes culminent à $\approx 9{,}7$ carreaux, soit $U_{max} \simeq \mathbf{1{,}6\ \text{V}}$ ; aux minima d'enveloppe elles atteignent $\approx 2{,}4$ carreaux, soit $U_{min} \simeq \mathbf{0{,}4\ \text{V}}$ — donc **un peu au-dessus de la ligne chiffrée $0{,}33$, sans s'y poser**. D'où $A = \frac{U_{max}+U_{min}}{2} = 1{,}0\ \text{V}$ et $m = \frac{U_{max}-U_{min}}{U_{max}+U_{min}} = \frac{1{,}2}{2{,}0} = 0{,}60 < 1$ : modulation de bonne qualité. *(La lecture concurrente $U_{max}=1{,}65$ / $U_{min}=0{,}33$, c.-à-d. 10 et 2 carreaux pile, est écartée par la mesure : les crêtes tombent à $9{,}7$ et $2{,}4$ carreaux, ce qui ne laisse d'ambiguïté ni sur $A$ ni sur $m$.)*
+      Lectures en carreaux (mesure au pixel) :
+      - **porteuse** : une oscillation rapide par carreau exactement (13 crêtes relevées sur 12 carreaux consécutifs) ;
+      - **enveloppe** : minima consécutifs distants de **12 carreaux** ;
+      - **amplitudes** : aux maxima d'enveloppe les crêtes culminent à $\approx 9{,}7$ carreaux ; aux minima d'enveloppe elles atteignent $\approx 2{,}4$ carreaux — donc **un peu au-dessus de la ligne chiffrée $0{,}33$, sans s'y poser**.
 
       Légende : « Figure 4 » (cartouche en bas à gauche).
     questions:

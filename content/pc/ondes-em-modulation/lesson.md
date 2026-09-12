@@ -92,7 +92,7 @@ Le résultat : une oscillation rapide (à $f_p$) dont l'enveloppe — la courbe 
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* on écrit explicitement $s(t)$ pour une porteuse et un signal donnés, pour voir concrètement à quoi ressemble le résultat de la formule — avant de s'en servir pour vérifier des conditions dans le chapitre suivant.
 
-Prenons une porteuse d'amplitude $U_0 = 6\ \text{V}$ et de fréquence $f_p = 900\ \text{kHz}$ (les valeurs du chapitre 2). Le signal informatif est, pour simplifier, une note pure : $s_m(t) = S_m\cos(2\pi f_{signal} t)$, avec une amplitude $S_m = 3\ \text{V}$ et une fréquence $f_{signal} = 3\ \text{kHz}$ (une fréquence bien audible).
+Prenons une porteuse d'amplitude $U_0 = 6\ \text{V}$ et de fréquence $f_p = 900\ \text{kHz}$ (la fréquence du chapitre 2). Le signal informatif est, pour simplifier, une note pure : $s_m(t) = S_m\cos(2\pi f_{signal} t)$, avec une amplitude $S_m = 3\ \text{V}$ et une fréquence $f_{signal} = 3\ \text{kHz}$ (une fréquence bien audible).
 
 La tension modulée s'écrit alors :
 
@@ -179,7 +179,7 @@ On l'a vu au chapitre 3 : l'information est entièrement portée par l'enveloppe
 Le dispositif qui fait ça s'appelle un **détecteur de crête** (ou détecteur d'enveloppe). Son mécanisme, décrit qualitativement :
 
 - Un premier élément (une diode) ne laisse passer le courant que dans un sens : il ne garde donc que la moitié positive de chaque oscillation rapide, celle qui monte vers les sommets.
-- Un condensateur, placé juste après, se charge très rapidement à chaque nouveau sommet de l'oscillation rapide — presque instantanément, tellement l'oscillation à $f_p$ est rapide devant les temps de charge en jeu. Entre deux sommets, ce condensateur se décharge lentement à travers le reste du circuit, un peu comme le condensateur du chapitre RC qui se décharge progressivement dans une résistance.
+- Un condensateur, placé juste après, se charge très rapidement à chaque nouveau sommet de l'oscillation rapide — presque instantanément, tellement le temps de charge est court devant la période $1/f_p$ de l'oscillation rapide. Entre deux sommets, ce condensateur se décharge lentement à travers le reste du circuit, un peu comme le condensateur du chapitre RC qui se décharge progressivement dans une résistance.
 - Le résultat : la tension aux bornes du condensateur monte en flèche à chaque sommet, puis redescend doucement jusqu'au sommet suivant, qu'elle rattrape. Elle suit ainsi, de près, la courbe des sommets successifs — c'est-à-dire l'enveloppe elle-même, donc $U_0 + s_m(t)$.
 
 Il ne reste plus qu'à retirer la composante continue $U_0$ (un simple filtrage qu'on ne détaille pas ici) pour obtenir $s_m(t)$, le signal informatif, prêt à être amplifié et envoyé dans un haut-parleur.
@@ -256,7 +256,7 @@ Une centaine de picofarads : c'est exactement l'ordre de grandeur des condensate
 
 ### Récapitulatif express
 
-- Une antenne ne rayonne efficacement une onde que si sa taille est de l'ordre de sa longueur d'onde ($\lambda=c/f$) : impossible pour un signal audio (des centaines de km), réalisable pour une porteuse à quelques centaines de kHz-MHz (quelques dizaines à centaines de m).
+- Une antenne ne rayonne efficacement une onde que si sa taille est de l'ordre du QUART de sa longueur d'onde ($\lambda/4$, avec $\lambda=c/f$) : impossible pour un signal audio (des centaines de km), réalisable pour une porteuse à quelques centaines de kHz-MHz (quelques dizaines à centaines de m).
 - Modulation d'amplitude : $s(t) = (U_0+s_m(t))\cos(2\pi f_p t)$ — l'amplitude instantanée porte l'information, la fréquence $f_p$ ne change jamais.
 - Bonne modulation : $f_p \gg f_{signal}$ (enveloppe lisible) et $m = S_m/U_0 < 1$ (pas de surmodulation, enveloppe toujours positive).
 - Démodulation : un détecteur de crête retrace l'enveloppe (charge rapide, décharge lente), et ne fonctionne bien que si la modulation d'origine n'était pas surmodulée.
