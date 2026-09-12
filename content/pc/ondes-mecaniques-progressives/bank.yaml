@@ -726,13 +726,13 @@ entries:
 
       **Figure 1 — le banc à ultrasons.** Un boîtier étiqueté $E$ (l'émetteur) ; une ligne horizontale part de lui et traverse la figure vers la droite, avec une flèche indiquant le sens de propagation. $R_1$, identique, posé sur la ligne, ergot tourné vers la gauche ; $R_2$, identique, en dessous et à droite. Deux pointillés verticaux descendent des positions de $R_1$ et $R_2$ ; entre eux, en bas, une flèche à double pointe cotée $d = 0{,}5\ \text{m}$, tendue exactement entre $R_1$ et $R_2$.
 
-      **Figure 2 — l'oscillogramme, avec son quadrillage.** Deux traces horizontales : la trace supérieure (voie $Y_1$, signal reçu par $R_1$) porte une salve d'encre dense étiquetée $A$ ; la trace inférieure (voie $Y_2$, signal reçu par $R_2$) porte une salve identique, décalée vers la droite, étiquetée $B$. Une flèche à double pointe, au-dessus des deux traces, est étiquetée « $0{,}2\ \text{ms}$ » — *(mesurée au pixel sur le bitmap natif : ses deux pointes tombent sur des lignes de quadrillage distantes de DEUX mailles, donc 1 maille = 0,1 ms, et non 0,2 ms comme l'étiquette pourrait le laisser croire au premier regard).* L'écart entre le début de la salve $A$ et le début de la salve $B$ vaut, mesuré sur ce même quadrillage, exactement 15 mailles.
+      **Figure 2 — l'oscillogramme, avec son quadrillage.** Deux traces horizontales : la trace supérieure (voie $Y_1$, signal reçu par $R_1$) porte une salve d'encre dense étiquetée $A$ ; la trace inférieure (voie $Y_2$, signal reçu par $R_2$) porte une salve identique, décalée vers la droite, étiquetée $B$. Une flèche à double pointe, au-dessus des deux traces, est étiquetée « $0{,}2\ \text{ms}$ » — *(ses deux pointes tombent sur des lignes de quadrillage distantes de DEUX mailles, donc 1 maille = 0,1 ms, et non 0,2 ms comme l'étiquette pourrait le laisser croire au premier regard).* L'écart entre le début de la salve $A$ et le début de la salve $B$ vaut, mesuré sur ce même quadrillage, exactement 15 mailles.
 
       **§ 2 — Détermination de l'épaisseur d'une nappe souterraine de pétrole.** Pour déterminer l'épaisseur $L$ d'une nappe souterraine de pétrole, un ingénieur utilise la sonde d'un appareil d'échographie. La sonde envoie, perpendiculairement à la surface libre de la couche de pétrole, à l'instant $t_0 = 0$, un signal ultrasonore de très courte durée. Une partie du signal se réfléchit sur cette surface, tandis que l'autre partie continue la propagation dans la couche de pétrole pour se réfléchir une deuxième fois sur son fond, et revenir vers la sonde. À l'instant $t_1$, la sonde révèle la raie $P_1$ correspondant à l'onde réfléchie sur la surface libre ; à l'instant $t_2$, elle révèle la raie $P_2$ correspondant à l'onde réfléchie sur le fond de la couche de pétrole (figure 4).
 
       **Figure 3 — la sonde et la nappe.** Un petit carré étiqueté « Sonde », en haut. Une ligne verticale en descend, portant une flèche vers le bas (aller) et une flèche vers le haut (retour). Deux traits horizontaux épais délimitent une bande grisée, la couche de pétrole : le trait supérieur porte l'étiquette « Surface libre », le trait inférieur l'étiquette « Fond ». À droite, une double flèche verticale entre les deux traits, cotée « $L$ ».
 
-      **Figure 4 — le spectre des raies.** Axe vertical fléché, étiqueté « Amplitude des raies » ; axe horizontal fléché, étiqueté **`t(s)`** *(relu au pixel ×8 sur le bitmap natif : un seul glyphe, `s`, ni `m` ni `µ` devant — l'axe est bien en secondes)*. Origine à `0`. Deux raies verticales partant de l'axe des temps : $P_1$, la plus haute, à l'abscisse graduée `1` ; $P_2$, plus basse (environ les deux tiers de la hauteur de $P_1$), à l'abscisse graduée `2,2`.
+      **Figure 4 — le spectre des raies.** Axe vertical fléché, étiqueté « Amplitude des raies » ; axe horizontal fléché, étiqueté **`t(s)`** *(un seul glyphe, `s`, ni `m` ni `µ` devant — l'axe est bien en secondes)*. Origine à `0`. Deux raies verticales partant de l'axe des temps : $P_1$, la plus haute, à l'abscisse graduée `1` ; $P_2$, plus basse (environ les deux tiers de la hauteur de $P_1$), à l'abscisse graduée `2,2`.
 
       **Donnée : la célérité de propagation des ondes ultrasonores dans le pétrole brut est $v = 1{,}3\ \text{km.s}^{-1}$.**
     questions:
@@ -750,11 +750,11 @@ entries:
           **Le piège nommé de cette question.** Lire « 1 maille = 0,2 ms » directement sur l'étiquette de la flèche, sans vérifier combien de mailles elle enjambe réellement. Cette lecture, appliquée aux mêmes 15 mailles, donnerait $\tau = 3{,}0\ \text{ms}$ — le double de la valeur correcte — et fausserait en cascade la célérité de la question suivante.
         steps:
           - math: '1\ \text{maille} = 0{,}1\ \text{ms}'
-            note: "La fleche 0,2 ms enjambe DEUX mailles du quadrillage (lecture au pixel), pas une seule."
+            note: "La fleche 0,2 ms enjambe DEUX mailles du quadrillage, pas une seule."
           - math: '\tau = 15\ \text{mailles} \times 0{,}1\ \text{ms/maille}'
             note: "Écart mesure entre le début de la salve A et le début de la salve B."
           - math: '\boxed{\tau = 1{,}5\ \text{ms} = 1{,}5\times10^{-3}\ \text{s}}'
-            note: "Retard graphique -- deux chaînes de mesure concordantes (couche de texte du sujet + bitmap), aucun corrige officiel n'existe pour ce sujet."
+            note: "Retard graphique ; aucun corrige officiel n'existe pour ce sujet."
       - id: q1-2
         stem: |-
           **(0,5 pt)** **1-2-** Calculer $v_{air}$ la vitesse de propagation des ondes ultrasonores dans l'air.
@@ -790,14 +790,14 @@ entries:
 
           $$\boxed{L = 780\ \text{m}}$$
 
-          **Une remarque d'honnêteté sur l'ordre de grandeur, sans toucher au résultat.** $780\ \text{m}$ est une épaisseur considérable pour une « nappe souterraine » — l'échographie industrielle de ce type mesure d'ordinaire des couches de quelques mètres à quelques dizaines de mètres, avec des écarts temporels en microsecondes ou en millisecondes, pas en secondes. Le calcul, lui, est irréprochable : il applique fidèlement les deux données imprimées ($v = 1{,}3\ \text{km.s}^{-1}$ et l'axe `t(s)`, vérifié au pixel). On consigne l'observation, on ne requalifie pas l'unité de la figure — le scan fait foi.
+          **Une remarque d'honnêteté sur l'ordre de grandeur, sans toucher au résultat.** $780\ \text{m}$ est une épaisseur considérable pour une « nappe souterraine » — l'échographie industrielle de ce type mesure d'ordinaire des couches de quelques mètres à quelques dizaines de mètres, avec des écarts temporels en microsecondes ou en millisecondes, pas en secondes. Le calcul, lui, est irréprochable : il applique fidèlement les deux données imprimées ($v = 1{,}3\ \text{km.s}^{-1}$ et l'axe `t(s)`). On consigne l'observation, on ne requalifie pas l'unité de la figure — le scan fait foi.
         steps:
           - math: 't_2 - t_1 = \frac{2L}{v}'
             note: "P1 et P2 partagent le même trajet aller jusqu'a la surface : l'écart t2-t1 est le temps d'un aller-retour supplémentaire sur 2L, dans la couche de pétrole."
           - math: 'L = \frac{v\,(t_2 - t_1)}{2}'
             note: "On isole L."
           - math: 't_2 - t_1 = 2{,}2 - 1 = 1{,}2\ \text{s}'
-            note: "Lecture graphique sur la figure 4, axe t(s) verifie au pixel."
+            note: "Lecture graphique sur la figure 4, axe t(s)."
           - math: 'L = \frac{1\,300\times1{,}2}{2}'
             note: "Application numérique, v=1,3 km/s = 1300 m/s."
           - math: '\boxed{L = 780\ \text{m}}'
@@ -871,7 +871,7 @@ entries:
 
       Après traitement informatique avec un logiciel convenable, le professeur choisit parmi les photos obtenues, les photos N°8 et N°12 (Figure ci-dessus), pour les étudier et les exploiter.
 
-      **Figure (photos N°8 et N°12, page 3 du sujet, sans numéro — re-décrite et re-mesurée au pixel par la vérification).** Deux panneaux superposés sur quadrillage (les lignes majeures espacées d'environ un demi-mètre à l'échelle de la règle). **Panneau haut, « Photo N°8 »** : la corde, trait horizontal épais, porte un ébranlement en S — une crête PUIS un creux dans le sens de lecture ; la règle blanche (R), rectangle à bord noir posé SOUS la corde à droite, couvre **deux carreaux majeurs** pour son mètre de longueur. **Panneau bas, « Photo N°12 »** : même corde, même règle exactement au même endroit ; l'ébranlement, de forme inchangée, s'est déplacé vers la droite. **Mesure de la vérification : entre les deux photos, l'ébranlement s'est déplacé — sur son bord avant comme sur son bord arrière — d'exactement la longueur de la règle, soit deux carreaux majeurs ($d = 130\ \text{px}$ pour une règle de $131\ \text{px}$).**
+      **Figure (photos N°8 et N°12, sans numéro sur le sujet).** Deux panneaux superposés sur quadrillage (les lignes majeures espacées d'environ un demi-mètre à l'échelle de la règle). **Panneau haut, « Photo N°8 »** : la corde, trait horizontal épais, porte un ébranlement en S — une crête PUIS un creux dans le sens de lecture ; la règle blanche (R), rectangle à bord noir posé SOUS la corde à droite, couvre **deux carreaux majeurs** pour son mètre de longueur. **Panneau bas, « Photo N°12 »** : même corde, même règle exactement au même endroit ; l'ébranlement, de forme inchangée, s'est déplacé vers la droite. **Mesure de la vérification : entre les deux photos, l'ébranlement s'est déplacé — sur son bord avant comme sur son bord arrière — d'exactement la longueur de la règle, soit deux carreaux majeurs ($d = 130\ \text{px}$ pour une règle de $131\ \text{px}$).**
     questions:
       - id: q1
         part: "❖ Ondes (QCM, questions 1 à 3)"

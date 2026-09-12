@@ -2127,7 +2127,7 @@ entries:
 
       **Figure 2 — le montage.** Circuit rectangulaire à trois branches verticales entre un rail supérieur (interrompu) et un rail inférieur (continu). Branche de gauche : le générateur $E$ (cercle traversé par le fil). Au sommet, l'interrupteur $K$ : trois bornes alignées, `1`, `0`, `2` ; les bornes 1 et 2 sont les positions de bascule, la borne 0 est le pivot. Branche du milieu (celle qui descend du pivot de $K$) : le condensateur $C'$, puis, plus bas, le conducteur ohmique $R$. Branche de droite : la bobine $L$ (inductance réglable). *En position 1, le générateur charge $C'$ à travers $R$ ; en position 2, $C'$ se décharge dans la maille $\{C', R, L\}$ — la présence de $R$ dans cette maille de décharge explique le régime pseudo-périodique amorti observé sur la figure 3.*
 
-      **Figure 3 — les oscillations amorties, avec son quadrillage** *(bitmap natif, mesuré au pixel).* Axe des ordonnées $u_{C'}\,(\text{V})$, graduations principales $9$, $6$, $3$, $0$, $-3$, $-6$ ; axe des abscisses $t\,(\text{ms})$, graduations principales $2$, $4$, $6$, $8$. La courbe part de $u_{C'} \approx 12\ \text{V}$ à $t = 0$ (au-dessus de la dernière graduation imprimée) et oscille en s'amortissant : premier maximum suivant à $t \approx 3{,}36\ \text{ms}$ ($u_{C'} \approx +6{,}75\ \text{V}$), passages par zéro et extrema successifs mesurés au pixel, écarts moyens $\approx 3{,}42\ \text{ms}$ entre deux maxima consécutifs.
+      **Figure 3 — les oscillations amorties, avec son quadrillage.** Axe des ordonnées $u_{C'}\,(\text{V})$, graduations principales $9$, $6$, $3$, $0$, $-3$, $-6$ ; axe des abscisses $t\,(\text{ms})$, graduations principales $2$, $4$, $6$, $8$. La courbe part de $u_{C'} \approx 12\ \text{V}$ à $t = 0$ (au-dessus de la dernière graduation imprimée) et oscille en s'amortissant : premier maximum suivant à $t \approx 3{,}36\ \text{ms}$ ($u_{C'} \approx +6{,}75\ \text{V}$), passages par zéro et extrema successifs régulièrement espacés, écarts moyens $\approx 3{,}42\ \text{ms}$ entre deux maxima consécutifs.
 
       **§ 3 — Entretien des oscillations et note émise.** Les élèves ont ajouté au montage RLC' précédent un appareil d'entretien des oscillations, et ils ont relié le circuit à un haut-parleur qui transforme l'onde électrique de fréquence $N_0$ en une onde sonore de même fréquence.
     questions:
@@ -2148,14 +2148,14 @@ entries:
         stem: |-
           **(0,25 pt)** **2-2-** Déterminer graphiquement la valeur de la pseudopériode $T$.
         reasoning: |-
-          **Lecture graphique** (chapitre 7) : la pseudo-période se lit entre deux maxima consécutifs de la courbe amortie. La chaîne de mesure au pixel, sur les extrema successifs de la figure 3, donne un écart moyen $\approx 3{,}42\ \text{ms}$.
+          **Lecture graphique** (chapitre 7) : la pseudo-période se lit entre deux maxima consécutifs de la courbe amortie. Sur les extrema successifs de la figure 3, l'écart moyen est de $\approx 3{,}42\ \text{ms}$.
 
           **Deux contrôles par conséquence, indépendants l'un de l'autre, qui ramènent cette mesure à la valeur ronde $3{,}4\ \text{ms}$.** D'abord, $u_{C'}(0) = 12\ \text{V}$ est un maximum (le circuit part sans courant, $i(0)=0$, donc $du_{C'}/dt(0)=0$, donc $u_{C'}$ y est extrémale) : le maximum suivant tombe donc exactement à $t = T$. Or la question 2-4, plus loin, demande l'énergie « à l'instant $t = 3{,}4\ \text{ms}$ » — précisément là où la mesure place le premier maximum ($3{,}36\ \text{ms}$, à $1{,}1\ \%$ près). Ensuite, la fréquence propre déduite $N_0 = 1/T$ doit désigner UNE note du tableau (question 3-2) : avec $T = 3{,}4\ \text{ms}$, $N_0 = 294\ \text{Hz}$ tombe exactement sur le Ré du tableau, au hertz près.
 
           $$\boxed{T \approx 3{,}4\ \text{ms}}$$
         steps:
           - math: 'T_{mesure} \approx 3{,}42\ \text{ms}'
-            note: "Mesure directe au pixel, écart moyen entre extrema consecutifs de la figure 3."
+            note: "Écart moyen entre extrema consecutifs de la figure 3."
           - math: '\boxed{T \approx 3{,}4\ \text{ms}}'
             note: "Arrondi confirme par deux controles par conséquence : le maximum a t=3,36 ms (question 2-4) et N0=1/T=294 Hz=Re (question 3-2)."
       - id: q2-3
@@ -2268,7 +2268,7 @@ entries:
 
       Le suivi de l'évolution de la tension $u_C$ aux bornes du condensateur en fonction du temps, à l'aide d'un matériel informatique convenable, permet d'obtenir la courbe de la figure 3.
 
-      **Figure 3 (la courbe $u_C(t)$, page 5 du sujet — re-décrite et re-mesurée au pixel par la vérification).** Quadrillage à lignes majeures ; axe vertical « $u_C$ (V) » gradué $9$, $6$, $3$, $0$, $-3$, $-6$ (**1 carreau majeur = 3 V**) ; axe horizontal « t (ms) » avec les étiquettes $9$, $18$, $36$ sous les majeures correspondantes (**1 carreau majeur = 9 ms**). Une **sinusoïde amortie** partant de $u_C(0) = 9{,}0\ \text{V}$ : premier minimum $\approx -7{,}9\ \text{V}$ vers $9\ \text{ms}$, premier maximum $\approx +6{,}4\ \text{V}$ vers $18\ \text{ms}$, puis $\approx -5{,}7\ \text{V}$, et un maximum local $+4{,}5\ \text{V}$ dont le sommet est posé **exactement sur la majeure $t = 36\ \text{ms}$** ; l'amplitude continue de décroître ensuite ($-4{,}1$ ; $+3{,}2$ ; $-3{,}0$ ; $+2{,}2\ \text{V}$). L'écart entre deux maxima (ou deux minima) successifs est constant : **$T \approx 18\ \text{ms}$** — les étiquettes imprimées $9/18/36$ tombent sur le premier minimum, le premier maximum et le deuxième maximum.
+      **Figure 3 (la courbe $u_C(t)$).** Quadrillage à lignes majeures ; axe vertical « $u_C$ (V) » gradué $9$, $6$, $3$, $0$, $-3$, $-6$ (**1 carreau majeur = 3 V**) ; axe horizontal « t (ms) » avec les étiquettes $9$, $18$, $36$ sous les majeures correspondantes (**1 carreau majeur = 9 ms**). Une **sinusoïde amortie** partant de $u_C(0) = 9{,}0\ \text{V}$ : premier minimum $\approx -7{,}9\ \text{V}$ vers $9\ \text{ms}$, premier maximum $\approx +6{,}4\ \text{V}$ vers $18\ \text{ms}$, puis $\approx -5{,}7\ \text{V}$, et un maximum local $+4{,}5\ \text{V}$ dont le sommet est posé **exactement sur la majeure $t = 36\ \text{ms}$** ; l'amplitude continue de décroître ensuite ($-4{,}1$ ; $+3{,}2$ ; $-3{,}0$ ; $+2{,}2\ \text{V}$). L'écart entre deux maxima (ou deux minima) successifs est constant : **$T \approx 18\ \text{ms}$** — les étiquettes imprimées $9/18/36$ tombent sur le premier minimum, le premier maximum et le deuxième maximum.
     questions:
       - id: q2-1
         part: "2 — Oscillations libres dans le circuit RLC"
@@ -2680,7 +2680,7 @@ entries:
         stem: |-
           **4-** (0,5 pt) Calculer l'énergie dissipée par effet joule *(sic — « effet **Joule** », éponyme, prend une majuscule)* entre les instants $t_0 = 0$ et $t_1 = \dfrac{3}{2}T$.
         reasoning: |-
-          **CROSS-LIST honoré ici (« Aspects énergétiques »).** Le bilan d'énergie d'un oscillateur amorti relève aussi de cette autre notion. Il pèse cette seule question, $0{,}5\ \text{pt}$ sur les $2{,}75$ du bloc : la règle de la maison veut qu'un cross-list de ce poids — et orphelin, une seule question — soit honoré dans le raisonnement plutôt que dédoublé en entrée. La démonstration est donc refaite ici en entier.
+          **Un outil emprunté à une autre notion.** Le bilan d'énergie d'un oscillateur amorti relève aussi de « Aspects énergétiques ». La démonstration est refaite ici en entier, pour que cette question se suffise à elle-même.
 
           **Le principe, et il tient en une phrase** (chapitre 2, puis chapitre 4). L'énergie totale du circuit se partage à chaque instant entre le condensateur et la bobine :
 
@@ -3026,7 +3026,7 @@ entries:
       - Bobine d'inductance $L$ et de résistance négligeable ;
       - Interruptur *(sic)* $K$ à double position.
 
-      **Figure 1 — le circuit, re-décrite depuis l'image.** Trois branches horizontales parallèles partageant un **rail vertical à gauche** :
+      **Figure 1 — le circuit.** Trois branches horizontales parallèles partageant un **rail vertical à gauche** :
 
       - **branche du haut** : un **résistor** (rectangle) étiqueté $R$, puis un **générateur** (grand cercle) ; sous le cercle, une **flèche horizontale pointant vers la gauche** étiquetée $E$ — la f.é.m. La branche se poursuit à droite et descend jusqu'au **contact ① (« 1 »)** ;
       - **branche du milieu** : un **condensateur** (deux traits verticaux parallèles) étiqueté $C$ ; elle se termine à droite par un **point pivot** d'où part la **lame de l'interrupteur $K$**, qui bascule vers ① au-dessus ou ② au-dessous ;
@@ -3038,7 +3038,7 @@ entries:
 
       ---
 
-      **Figure 2 — la courbe de l'énergie électrique, re-décrite depuis le tracé et mesurée sur deux chaînes indépendantes** *(elle sert à la question 5 ; la figure n'est pas reproduite ici, ce qui suit est ce qu'elle porte).*
+      **Figure 2 — la courbe de l'énergie électrique** *(elle sert à la question 5 ; la figure n'est pas reproduite ici, ce qui suit est ce qu'elle porte).*
 
       - **axe vertical** étiqueté $E_e$, **sans aucune graduation numérique** — seul un $0$ marque l'origine. C'est voulu, dans les deux éditions du sujet : aucune question ne demande une valeur d'énergie lue sur cette courbe ;
       - **axe horizontal** étiqueté $t\ (\text{s})$, avec les graduations chiffrées $0{,}1 \cdot 0{,}2 \cdot 0{,}3 \cdot 0{,}4$ ; le quadrillage vertical a un pas de $0{,}05\ \text{s}$ (mailles noires, sous-mailles bleues) ;
@@ -3176,7 +3176,7 @@ entries:
 
           $$T = 3 \times 0{,}05 = 0{,}15\ \text{s}$$
 
-          *(C'est la mesure la mieux tenue de ce sujet : deux chaînes de mesure indépendantes — la géométrie vectorielle de l'original et les pixels du bitmap — s'accordent à $0{,}3\ \%$ près sur $0{,}150\ \text{s}$.)*
+         
 
           **Geste 2 — remonter à la période propre**, avec la relation que l'énoncé donne :
 
@@ -3191,7 +3191,7 @@ entries:
           - math: 'T = \frac{T_0}{2} \quad \text{(relation donnée par l''énoncé)}'
             note: "L'énergie oscille deux fois plus vite que la charge, parce qu'elle dépend de q au carré et ne voit pas le signe."
           - math: '\boxed{T_0 = 2T = 0{,}30\ \text{s}}'
-            note: "Période propre du circuit. Deux chaînes de mesure indépendantes donnent T = 0,150 s a 0,3 pour cent près."
+            note: "Période propre du circuit. T = 0,150 s."
       - id: q6
         stem: |-
           **5-2-** (0,5 pt) En déduire la valeur du coefficient d'inductance de la bobine.
