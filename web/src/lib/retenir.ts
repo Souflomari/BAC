@@ -28,10 +28,25 @@
 
 import { extractChapterHeadings, splitChapterBodies, sansLatex } from "./chapters";
 
-/** Une entrée du sidecar `retenir.json`. */
+/**
+ * Une entrée du sidecar `retenir.json`.
+ *
+ * Deux façons de désigner le chapitre visé, et il en fallait deux.
+ * `rung` (« R3 ») est la voie normale — mais elle ne peut RIEN désigner dans
+ * un chapitre dont le titre ne porte pas de préfixe `R<n>` : `chapters.ts`
+ * y laisse `rung` indéfini, et la recherche ci-dessous retombait alors
+ * systématiquement sur `null`. Mesuré le 2026-09-12 : **12 chapitres sur 6
+ * notions** (probabilites-conditionnelles 5, structures-algebriques 2,
+ * nombres-complexes-1 2, suites-numeriques 1, limites-continuite 1,
+ * derivabilite 1) étaient donc à JAMAIS hors de portée d'un sidecar — on
+ * pouvait en écrire un, ces chapitres-là seraient restés muets sans rien dire.
+ * `chapitre` (1-indexé, dans l'ordre rendu) les rend adressables.
+ */
 export interface RetenirEntry {
-  /** Barreau visé, tel qu'authoré dans le titre (« R3 »). */
-  rung: string;
+  /** Barreau visé, tel qu'authoré dans le titre (« R3 »). Absent si `chapitre`. */
+  rung?: string;
+  /** Numéro du chapitre RENDU (1-indexé) — pour un titre sans préfixe `R<n>`. */
+  chapitre?: number;
   /** Source KaTeX de la formule. */
   formula: string;
   /** Note courte, facultative — une phrase, jamais un paragraphe. */
@@ -133,10 +148,15 @@ export function cartesParChapitre(
     const texte = corps[i] ?? "";
     const titre = entete ? entete.shortTitle : "";
 
-    const authoree =
-      entete?.rung && sidecar
-        ? sidecar.find((e) => e.rung === entete.rung) ?? null
-        : null;
+    // Par barreau quand il existe, sinon par numéro de chapitre rendu — c'est
+    // la seule prise sur un titre sans préfixe `R<n>` (voir RetenirEntry).
+    const authoree = sidecar
+      ? sidecar.find(
+          (e) =>
+            (entete?.rung != null && e.rung === entete.rung) ||
+            (e.chapitre != null && e.chapitre === i + 1),
+        ) ?? null
+      : null;
     if (authoree && authoree.formula.trim()) {
       cartes[i] = {
         titre,
@@ -166,10 +186,18 @@ export function parseRetenir(brut: unknown): RetenirEntry[] | null {
   for (const e of brut) {
     if (!e || typeof e !== "object") continue;
     const o = e as Record<string, unknown>;
-    if (typeof o.rung !== "string" || typeof o.formula !== "string") continue;
-    if (!o.rung.trim() || !o.formula.trim()) continue;
+    if (typeof o.formula !== "string" || !o.formula.trim()) continue;
+    const rung = typeof o.rung === "string" && o.rung.trim() ? o.rung.trim() : undefined;
+    const chapitre =
+      typeof o.chapitre === "number" && Number.isInteger(o.chapitre) && o.chapitre >= 1
+        ? o.chapitre
+        : undefined;
+    // Une entrée qui ne désigne RIEN est rejetée : sans cela elle s'appliquerait
+    // au premier chapitre venu.
+    if (!rung && !chapitre) continue;
     out.push({
-      rung: o.rung.trim(),
+      rung,
+      chapitre,
       formula: o.formula,
       note: typeof o.note === "string" && o.note.trim() ? o.note : undefined,
     });

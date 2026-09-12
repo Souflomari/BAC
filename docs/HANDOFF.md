@@ -5456,3 +5456,50 @@ et `pc/decroissance-radioactive` en ont un). C'est un manque d'ASSET, pas de
 rédaction — coder ces figures relève de diagram-author (ADR 0017 : les schémas
 structurels sont codés, jamais générés). **Non corrigé ici : retirer la donnée
 rendrait les questions impossibles.**
+
+### 11.57 Douze chapitres qu'aucun `retenir.json` ne pouvait atteindre — un piège qui n'aurait parlé qu'après coup
+
+Trouvé en triant `nombres-complexes-1`. `retenir.ts` cherchait la carte
+authorée ainsi :
+
+```js
+const authoree = entete?.rung && sidecar ? sidecar.find((e) => e.rung === entete.rung) : null;
+```
+
+`chapters.ts` laisse `rung` **indéfini** pour tout titre `##` sans préfixe
+`R<n>`. Pour ces chapitres-là, la condition tombait donc toujours sur `null` :
+**aucune entrée de sidecar ne pouvait les désigner**, quoi qu'on écrive.
+
+**Douze chapitres, sur les six notions à titres mixtes :**
+`probabilites-conditionnelles` 5, `structures-algebriques` 2,
+`nombres-complexes-1` 2, `suites-numeriques` 1, `limites-continuite` 1,
+`derivabilite-etude-fonctions` 1.
+
+**Ce qui rend le piège méchant, c'est son silence.** Le défaut ne se voit pas
+aujourd'hui : une seule notion du corpus porte un `retenir.json`
+(`pc/rlc-serie`), et sa leçon est à barreaux purs. Il se serait déclaré le jour
+où quelqu'un aurait authoré un sidecar pour l'une des six — sept chapitres sur
+neuf se seraient allumés, deux seraient restés muets **sans rien signaler**, et
+la cause (un préfixe de titre) n'a aucun rapport visible avec le symptôme (une
+carte vide). C'est exactement le genre de défaut que §11.50 annonçait sans le
+nommer : « authoring `retenir.json` fixera 7 chapitres sur 9 et en manquera
+silencieusement deux ».
+
+**Corrigé** : une entrée de sidecar peut désormais viser `rung` (« R3 »)
+**ou** `chapitre` (le numéro RENDU, 1-indexé). Rétro-compatible — les entrées
+existantes ne bougent pas, et `pc/rlc-serie` rend toujours ses 6 cartes
+authorées. Une entrée qui ne désigne **rien** (ni `rung` ni `chapitre`) est
+rejetée par `parseRetenir` : sans ce garde-fou elle se serait appliquée au
+premier chapitre venu.
+
+**Vérifié sur le module réel** : un sidecar visant `R3` atterrit au chapitre 4
+de `nombres-complexes-1` (R3 est le 4ᵉ titre) ; un sidecar visant
+`chapitre: 6` atteint « Résoudre une équation du second degré », le chapitre
+sans préfixe qui était inatteignable ; une entrée sans cible rend `null`.
+`tsc --noEmit` : 0 erreur.
+
+**Rappel de la dépendance** : rien de tout cela ne remplace la décision de
+§11.50 — 265 chapitres se taisent, 193 affichent un repli aveugle, et le vrai
+correctif reste un `\boxed{}` par chapitre ou un sidecar authoré. Cette
+correction-ci ne fait qu'une chose : rendre la seconde option **possible**
+partout.
