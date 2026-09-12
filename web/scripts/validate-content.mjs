@@ -1309,6 +1309,75 @@ for (const dir of dirs) {
     }
   }
 
+  // ── §11.76 Une NOTE D'ÉTAPE qui contredit son propre `math` ─────────────
+  //    `steps[].note` est RENDU (content.ts) : il s'affiche sous la ligne de
+  //    calcul qu'il commente. Quand les deux ne disent pas la même chose, ce
+  //    n'est pas une nuance — c'est un calcul qui produit 9,2 sous-titré
+  //    « ici lu 9,6 ».
+  //
+  //    Le cas fondateur, trouvé le 2026-09-12 par les deux critiques de
+  //    reactions-acido-basiques SÉPARÉMENT : `exercises.yaml` r-variation q5.
+  //    Il vient d'une correction DÉCLARÉE APPLIQUÉE la veille, qui avait
+  //    atteint l'énoncé et le `math` et manqué la note posée dessous. C'est
+  //    ce que cette porte existe pour rattraper : non pas une faute d'auteur,
+  //    mais le dernier mètre d'une passe de correction.
+  //
+  //    LA SÉVÉRITÉ DE LA SONDE A ÉTÉ MESURÉE, pas devinée. Trois versions :
+  //      · « la note nomme un nombre absent du résultat du math » → 55
+  //        signalements, 22 notions, **tous faux** : une note nomme
+  //        légitimement des INTERMÉDIAIRES (« 1 u vaut 931,5 MeV »,
+  //        « racine de 4 vaut 2 »). C'est son métier.
+  //      · « même symbole, deux valeurs » → 9 signalements, **tous faux** :
+  //        « tau << 1 », « chapitre 3 », le 2 de 2π, le 14 de pKe.
+  //      · celle-ci — même symbole, ET la note l'AFFIRME (« = », « vaut »,
+  //        « lu », « trouvé », « donne »), les renvois de chapitre neutralisés
+  //        → 0 sur le corpus, et elle attrape le cas fondateur.
+  //    Les deux premières ne sont pas armées : une porte qui crie 55 fois pour
+  //    rien apprend à être ignorée.
+  {
+    const SYMS = "pK_?A|pK_?[eb]|K_?A|\\\\tau|T_0|I_0|U_0|L_0|Q_r|N_0|C_[ab]";
+    const AFFIRME = /\b(pK ?A|pKe|KA|tau|T0|I0|U0|L0|Qr|N0)\b[^.;]{0,30}?\b(?:=|vaut|lue?|trouvée?|donne)\s+(-?\d{1,6}(?:[.,]\d{1,6})?)/gi;
+    const nombre = (s) => {
+      const m = String(s).replace(/\{,\}/g, ",").replace(/\\,/g, "").match(/-?\d{1,6}(?:[.,]\d{1,6})?/);
+      return m ? parseFloat(m[0].replace(",", ".")) : null;
+    };
+    const ecarts = [];
+    const chasse = (n, fichier) => {
+      if (Array.isArray(n)) { for (const x of n) chasse(x, fichier); return; }
+      if (!n || typeof n !== "object") return;
+      if (typeof n.math === "string" && typeof n.note === "string") {
+        // Les renvois « chapitre N » sont neutralisés : ce sont des numéros
+        // de chapitre, jamais des valeurs (mesuré : 3 faux positifs sans ça).
+        const note = n.note.replace(/chapitres?\s+\d+/gi, "");
+        const poses = new RegExp(`(${SYMS})\\s*(?:\\\\approx|\\\\simeq|=)\\s*\\\\?\\$?\\s*(-?[\\d{,.}\\\\ ]{1,14})`, "g");
+        let m;
+        while ((m = poses.exec(n.math)) !== null) {
+          const sym = m[1].replace(/\\\\/g, "").replace(/_/g, "").toLowerCase();
+          const v1 = nombre(m[2]);
+          if (v1 === null || v1 === 0) continue;
+          AFFIRME.lastIndex = 0;
+          let k;
+          while ((k = AFFIRME.exec(note)) !== null) {
+            if (k[1].replace(/ /g, "").toLowerCase() !== sym) continue;
+            const v2 = nombre(k[2]);
+            if (v2 === null) continue;
+            if (Math.abs(v1 - v2) / Math.abs(v1) > 0.02)
+              ecarts.push(`${fichier} : le calcul pose ${sym} = ${v1}, la note posée dessous dit ${v2}`);
+          }
+        }
+      }
+      for (const v of Object.values(n)) chasse(v, fichier);
+    };
+    for (const fname of Object.keys(yamlDocs)) chasse(yamlDocs[fname], fname);
+    for (const f of [...new Set(ecarts)]) {
+      console.error(
+        `  ✗ ${dir}: ${f} — une note d'étape contredit le calcul qu'elle commente. ` +
+          `Les deux se rendent, l'un sous l'autre.`
+      );
+      dirFail++;
+    }
+  }
+
   // ── Rung integrity, SECOND DIRECTION (warning only) — le miroir de la porte
   //    ci-dessus. Celle-là attrape un item qui vise un rung absent ; elle ne
   //    voit RIEN quand c'est le titre qui a perdu son code. Un « ## » qui
