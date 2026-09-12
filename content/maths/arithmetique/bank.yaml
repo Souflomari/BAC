@@ -238,7 +238,7 @@ entries:
 
       On considère dans $\mathbb{Z}\times\mathbb{Z}$ l'équation $(D) : 7x^3 - 13y = 5$.
 
-      L'exercice mobilise les congruences et leurs puissances (chapitre 3), la coprimalité avec un nombre premier (chapitre 5), et le petit théorème de Fermat — hors-chapitre, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) — pour montrer, par deux calculs contradictoires du même $x^{12}$ modulo $13$, que $(D)$ n'a **aucune solution**.
+      L'exercice mobilise les congruences et leurs puissances (chapitre 3), la coprimalité avec un nombre premier (chapitre 5), et le petit théorème de Fermat — hors-chapitre, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019) — pour montrer, par deux calculs contradictoires du même $x^{12}$ modulo $13$, que $(D)$ n'a **aucune solution**.
     questions:
       - id: q1
         part: "Partie A — $x$ premier avec $13$, puis Fermat"
@@ -259,7 +259,7 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire que : $x^{12} \equiv 1\ [13]$
         reasoning: |-
-          Le petit théorème de Fermat — hors-chapitre, déjà utilisé au sommet de leçon 2019 (rupture-gate cp-r6-fermat) : si $p$ est premier et $p \nmid a$, alors $a^{p-1} \equiv 1 \pmod p$. Ici $p=13$ (premier) et $a=x$, avec $13 \nmid x$ établi à la question précédente. Comme $p-1=12$, le théorème donne directement $x^{12} \equiv 1 \pmod{13}$.
+          Le petit théorème de Fermat — hors-chapitre, déjà utilisé dans l'exercice de fin de leçon (le sujet 2019) : si $p$ est premier et $p \nmid a$, alors $a^{p-1} \equiv 1 \pmod p$. Ici $p=13$ (premier) et $a=x$, avec $13 \nmid x$ établi à la question précédente. Comme $p-1=12$, le théorème donne directement $x^{12} \equiv 1 \pmod{13}$.
         steps:
           - math: 'x^{12} \equiv 1 \pmod{13}'
             note: "Petit théorème de Fermat : p = 13 premier, 13 ne divise pas x (question précédente), donc x puissance douze congru a 1 modulo 13."
@@ -335,7 +335,7 @@ entries:
 
       Soit $n$ un entier naturel strictement supérieur à $1$. On considère dans $\mathbb{N}^2$ l'équation $(E_n) : (x+1)^n - x^n = ny$. Soit $(x,y)$ une solution de l'équation $(E_n)$ dans $\mathbb{N}^2$ et soit $p$ le plus petit diviseur premier de $n$.
 
-      L'exercice enchaîne les congruences et leurs puissances (chapitre 3), la coprimalité et le lemme d'Euclide (chapitres 5 et 7), le petit théorème de Fermat — hors-chapitre, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) — et, dans le cas $n$ impair, une construction de Bézout (chapitre 5) entre $n$ et $p-1$, pour montrer que $(E_n)$ n'admet **jamais** de solution dans $\mathbb{Z}^2$, que $n$ soit pair ou impair.
+      L'exercice enchaîne les congruences et leurs puissances (chapitre 3), la coprimalité et le lemme d'Euclide (chapitres 5 et 7), le petit théorème de Fermat — hors-chapitre, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019) — et, dans le cas $n$ impair, une construction de Bézout (chapitre 5) entre $n$ et $p-1$, pour montrer que $(E_n)$ n'admet **jamais** de solution dans $\mathbb{Z}^2$, que $n$ soit pair ou impair.
     questions:
       - id: q1
         part: "Partie A — $p$ divise $n$ : une congruence, puis une coprimalité"
@@ -374,7 +374,7 @@ entries:
         stem: |-
           **(0,25 pt)** En déduire que : $(x+1)^{p-1} \equiv x^{p-1}\ [p]$
         reasoning: |-
-          Le petit théorème de Fermat — hors-chapitre, déjà mobilisé au sommet de leçon 2019 (rupture-gate cp-r6-fermat) : si $p$ est premier et $p \nmid a$, alors $a^{p-1} \equiv 1 \pmod p$. La question précédente donne $p \nmid x$ et $p \nmid (x+1)$ : le théorème s'applique aux deux.
+          Le petit théorème de Fermat — hors-chapitre, déjà mobilisé dans l'exercice de fin de leçon (le sujet 2019) : si $p$ est premier et $p \nmid a$, alors $a^{p-1} \equiv 1 \pmod p$. La question précédente donne $p \nmid x$ et $p \nmid (x+1)$ : le théorème s'applique aux deux.
 
           D'où $x^{p-1} \equiv 1 \pmod p$ et $(x+1)^{p-1} \equiv 1 \pmod p$. Les deux membres sont congrus au même nombre $1$, donc congrus entre eux : $(x+1)^{p-1} \equiv x^{p-1} \pmod p$.
         steps:
@@ -505,14 +505,14 @@ entries:
 
       Soient $p$ et $q$ deux nombres premiers distincts et $r$ un entier naturel premier avec $p$ et avec $q$.
 
-      L'exercice construit une version « à deux modules » du petit théorème de Fermat — hors-chapitre, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) — en s'appuyant sur le corollaire du théorème de Gauss (chapitre 6), puis l'applique à une équation modulaire concrète, où l'exposant $192$ se révèle être exactement $(p-1)(q-1)$ pour $p=13$ et $q=17$.
+      L'exercice construit une version « à deux modules » du petit théorème de Fermat — hors-chapitre, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019) — en s'appuyant sur le corollaire du théorème de Gauss (chapitre 6), puis l'applique à une équation modulaire concrète, où l'exposant $192$ se révèle être exactement $(p-1)(q-1)$ pour $p=13$ et $q=17$.
     questions:
       - id: q1
         part: "Partie A — Fermat pour $p$, puis pour $q$"
         stem: |-
           **(1 pt)** Montrer que $p$ divise $r^{p-1} - 1$ et que $q$ divise $r^{q-1} - 1$.
         reasoning: |-
-          Le petit théorème de Fermat — hors-chapitre, déjà mobilisé au sommet de leçon 2019 (rupture-gate cp-r6-fermat) : si un nombre premier $\pi$ ne divise pas un entier $a$, alors $a^{\pi-1} \equiv 1 \pmod \pi$, c'est-à-dire $\pi \mid (a^{\pi-1}-1)$.
+          Le petit théorème de Fermat — hors-chapitre, déjà mobilisé dans l'exercice de fin de leçon (le sujet 2019) : si un nombre premier $\pi$ ne divise pas un entier $a$, alors $a^{\pi-1} \equiv 1 \pmod \pi$, c'est-à-dire $\pi \mid (a^{\pi-1}-1)$.
 
           On l'applique une première fois avec $\pi = p$ et $a = r$ : $r$ est premier avec $p$ par hypothèse, donc $p \mid (r^{p-1}-1)$. On l'applique une seconde fois avec $\pi = q$ et $a = r$ : $r$ est aussi premier avec $q$ par hypothèse, donc $q \mid (r^{q-1}-1)$.
         steps:
@@ -609,7 +609,7 @@ entries:
 
       **Partie III :** on considère dans $\mathbb{Z}$ le système à deux équations $(S) : \begin{cases} x^{41} \equiv 4\ [43] \\ x^{47} \equiv 10\ [47] \end{cases}$
 
-      L'exercice enchaîne la résolution complète d'une équation diophantienne (chapitre 8, construite sur Bézout R4 et Gauss R5), le petit théorème de Fermat — hors-chapitre, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) — appliqué deux fois, modulo $43$ puis, sous sa forme $a^p \equiv a\ [p]$, modulo $47$, et enfin une résolution de système de congruences par combinaison directe des deux modules via la relation de Bézout de la Partie I — une technique de type « restes chinois », non nommée et sans chapitre dédié, construite ici entièrement à partir du chapitre 5.
+      L'exercice enchaîne la résolution complète d'une équation diophantienne (chapitre 8, construite sur Bézout (chapitre 5) et Gauss (chapitre 6)), le petit théorème de Fermat — hors-chapitre, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019) — appliqué deux fois, modulo $43$ puis, sous sa forme $a^p \equiv a\ [p]$, modulo $47$, et enfin une résolution de système de congruences par combinaison directe des deux modules via la relation de Bézout de la Partie I — une technique de type « restes chinois », non nommée et sans chapitre dédié, construite ici entièrement à partir du chapitre 5.
     questions:
       - id: q1
         part: "Partie I — Bézout : $47x - 43y = 1$"
@@ -643,7 +643,7 @@ entries:
         reasoning: |-
           Si $43 \mid x$, alors $x^{41} \equiv 0 \pmod{43}$ ; or $(F)$ dit $x^{41} \equiv 4 \pmod{43}$, et $4 \not\equiv 0 \pmod{43}$ (car $0 < 4 < 43$). Contradiction : $43$ ne divise pas $x$. Comme $43$ est premier, son seul diviseur commun possible avec $x$ est alors $1$, donc $\mathrm{PGCD}(43,x)=1$ (chapitre 5).
 
-          C'est ici qu'intervient le **petit théorème de Fermat** — hors-chapitre, déjà mobilisé au sommet de leçon 2019 (rupture-gate cp-r6-fermat) : $p$ premier et $p \nmid a$ entraîne $a^{p-1} \equiv 1 \pmod p$. Avec $p=43$ et $a=x$, cela donne directement $x^{42} \equiv 1 \pmod{43}$.
+          C'est ici qu'intervient le **petit théorème de Fermat** — hors-chapitre, déjà mobilisé dans l'exercice de fin de leçon (le sujet 2019) : $p$ premier et $p \nmid a$ entraîne $a^{p-1} \equiv 1 \pmod p$. Avec $p=43$ et $a=x$, cela donne directement $x^{42} \equiv 1 \pmod{43}$.
         steps:
           - math: '43 \mid x \implies x^{41} \equiv 0 \pmod{43}'
             note: "Hypothèse absurde : si 43 divise x, sa puissance 41-ieme aussi est congrue a 0."
@@ -775,7 +775,7 @@ entries:
 
       Soit $p$ un nombre premier impair. On considère dans $\mathbb{Z}$ l'équation $(E) : x^2 \equiv 2\ [p]$.
 
-      L'exercice combine le petit théorème de Fermat — hors-chapitre, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) —, le lemme d'Euclide (chapitre 7) et le théorème de Gauss (chapitre 6), avec deux outils entièrement extérieurs au corps de la leçon arithmétique : une identité combinatoire sur les coefficients binomiaux $C_p^k$ (fournie par l'énoncé, non démontrée dans la leçon) et la formule de Moivre en forme trigonométrique — un registre qui relève de la notion nombres complexes, pas de l'arithmétique. Les deux sont bridgés au point d'usage dans le raisonnement, jamais supposés acquis.
+      L'exercice combine le petit théorème de Fermat — hors-chapitre, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019) —, le lemme d'Euclide (chapitre 7) et le théorème de Gauss (chapitre 6), avec deux outils entièrement extérieurs au corps de la leçon arithmétique : une identité combinatoire sur les coefficients binomiaux $C_p^k$ (fournie par l'énoncé, non démontrée dans la leçon) et la formule de Moivre en forme trigonométrique — un registre qui relève de la notion nombres complexes, pas de l'arithmétique. Les deux sont bridgés au point d'usage dans le raisonnement, jamais supposés acquis.
     questions:
       - id: q1
         part: "Partie A — Fermat, puis un carré qui se factorise"
@@ -784,7 +784,7 @@ entries:
         reasoning: |-
           $p$ est premier et **impair** (hypothèse de l'énoncé), donc $p \neq 2$ : le seul diviseur premier de $2$ étant $2$ lui-même, $p$ ne divise pas $2$. Comme $p$ est premier, cela donne $\mathrm{PGCD}(p,2)=1$ (chapitre 5).
 
-          C'est ici qu'intervient le **petit théorème de Fermat** — hors-chapitre, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) : $p$ premier et $p \nmid a$ entraîne $a^{p-1} \equiv 1 \pmod p$. Avec $a=2$, cela donne directement $2^{p-1} \equiv 1 \pmod p$.
+          C'est ici qu'intervient le **petit théorème de Fermat** — hors-chapitre, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019) : $p$ premier et $p \nmid a$ entraîne $a^{p-1} \equiv 1 \pmod p$. Avec $a=2$, cela donne directement $2^{p-1} \equiv 1 \pmod p$.
         steps:
           - math: 'p\ \text{premier et impair} \implies p \nmid 2 \implies \mathrm{PGCD}(p,2) = 1'
             note: "p est impair donc différent de 2, seul diviseur premier de 2 : p ne divise pas 2 (chapitre 5)."
@@ -825,7 +825,7 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire que : $2^{\frac{p-1}{2}} \equiv 1\ [p]$ *(On pourra utiliser le théorème de Fermat.)*
         reasoning: |-
-          C'est le **petit théorème de Fermat**, déjà mobilisé au sommet de leçon 2019 (rupture-gate cp-r6-fermat) : $p$ premier et $p \nmid x$ (question précédente) entraîne $x^{p-1} \equiv 1 \pmod p$.
+          C'est le **petit théorème de Fermat**, déjà mobilisé dans l'exercice de fin de leçon (le sujet 2019) : $p$ premier et $p \nmid x$ (question précédente) entraîne $x^{p-1} \equiv 1 \pmod p$.
 
           Or $x^{p-1} = \left(x^2\right)^{\frac{p-1}{2}}$ (l'exposant $\frac{p-1}{2}$ est un entier, car $p$ est impair, donc $p-1$ est pair). Comme $x^2 \equiv 2 \pmod p$ (l'équation $(E)$), la compatibilité des congruences avec les puissances (chapitre 3) donne $\left(x^2\right)^{\frac{p-1}{2}} \equiv 2^{\frac{p-1}{2}} \pmod p$.
 
@@ -1174,14 +1174,14 @@ entries:
 
       Soient $p$ un nombre premier impair et $a$ un entier premier avec $p$.
 
-      L'exercice construit, de A à Z, le **critère d'Euler** — hors-chapitre, dérivé ici uniquement à partir du petit théorème de Fermat (lui-même hors-chapitre, déjà rencontré au sommet de leçon 2019, rupture-gate cp-r6-fermat) et du lemme d'Euclide (chapitre 7) — puis l'applique deux fois, avec $p=11$ à chaque fois : une fois pour garantir, via Bézout (chapitre 5), l'existence d'une solution à une équation diophantienne paramétrée par $n$, une fois pour montrer qu'une équation modulo $11$ n'a aucune solution entière.
+      L'exercice construit, de A à Z, le **critère d'Euler** — hors-chapitre, dérivé ici uniquement à partir du petit théorème de Fermat (lui-même hors-chapitre, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019)) et du lemme d'Euclide (chapitre 7) — puis l'applique deux fois, avec $p=11$ à chaque fois : une fois pour garantir, via Bézout (chapitre 5), l'existence d'une solution à une équation diophantienne paramétrée par $n$, une fois pour montrer qu'une équation modulo $11$ n'a aucune solution entière.
     questions:
       - id: q1
         part: "Partie A — Fermat et un carré qui se factorise"
         stem: |-
           **(0,5 pt)** Montrer que $a^{\frac{p-1}{2}} \equiv 1\ [p]$ ou $a^{\frac{p-1}{2}} \equiv -1\ [p]$.
         reasoning: |-
-          $a$ est premier avec $p$ par hypothèse (chapitre 5), donc le **petit théorème de Fermat** — hors-chapitre, déjà rencontré au sommet de leçon 2019 (rupture-gate cp-r6-fermat) — s'applique : $a^{p-1} \equiv 1 \pmod p$.
+          $a$ est premier avec $p$ par hypothèse (chapitre 5), donc le **petit théorème de Fermat** — hors-chapitre, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019) — s'applique : $a^{p-1} \equiv 1 \pmod p$.
 
           On retrouve ici le même geste qu'à chaque fois qu'une puissance paire cache une différence de carrés : $a^{p-1} - 1 = \left(a^{\frac{p-1}{2}}\right)^2 - 1 = \left(a^{\frac{p-1}{2}}-1\right)\left(a^{\frac{p-1}{2}}+1\right)$ (l'exposant $\frac{p-1}{2}$ est un entier, car $p$ est impair). Comme $p \mid (a^{p-1}-1)$, $p$ divise ce produit. $p$ étant premier, le lemme d'Euclide (chapitre 7) donne $p \mid \left(a^{\frac{p-1}{2}}-1\right)$ ou $p \mid \left(a^{\frac{p-1}{2}}+1\right)$ — c'est-à-dire $a^{\frac{p-1}{2}} \equiv 1 \pmod p$ ou $a^{\frac{p-1}{2}} \equiv -1 \pmod p$.
         steps:

@@ -122,7 +122,7 @@ C'est cet outil, précisément, qui rend les congruences utiles : elles permette
 
 Quel est le reste de la division de $2^{41}$ par 7 ?
 
-**Ce qu'on cherche et pourquoi ce geste :** calculer $2^{41}$ directement est absurde (34 chiffres). On cherche plutôt une périodicité dans les puissances de 2 modulo 7, puis on ramène l'exposant 41 dans cette période grâce à la division euclidienne — exactement l'outil du chapitre 2, réutilisé ici.
+**Ce qu'on cherche et pourquoi ce geste :** calculer $2^{41}$ directement est absurde (13 chiffres). On cherche plutôt une périodicité dans les puissances de 2 modulo 7, puis on ramène l'exposant 41 dans cette période grâce à la division euclidienne — exactement l'outil du chapitre 2, réutilisé ici.
 
 $$2^1 \equiv 2 \pmod{7}, \qquad 2^2 \equiv 4 \pmod{7}, \qquad 2^3 \equiv 1 \pmod{7}$$
 
@@ -462,7 +462,7 @@ Le sujet ci-dessous est un **vrai sujet d'examen national** : Sciences Mathémat
 
 Un sujet d'arithmétique peut, rarement mais réellement, faire un détour par les complexes — typiquement en développant $(1+i)^p$ pour en tirer une congruence sur des coefficients binomiaux. L'outil qui le permet est la **formule de Moivre**, $\left(\cos\theta + i\sin\theta\right)^n = \cos(n\theta) + i\sin(n\theta)$, et la forme exponentielle qui va avec.
 
-Rien de tout cela n'appartient à ce chapitre : ces outils sont établis dans « **Nombres complexes : formes et transformations** ». Si un énoncé d'arithmétique te fait écrire une puissance d'un complexe, tu n'as rien oublié de l'arithmétique — c'est simplement qu'un sujet de bac ne connaît pas les frontières entre chapitres.
+Rien de tout cela n'appartient à ce chapitre : ces outils sont établis dans « **Nombres complexes — forme trigonométrique et applications** ». Si un énoncé d'arithmétique te fait écrire une puissance d'un complexe, tu n'as rien oublié de l'arithmétique — c'est simplement qu'un sujet de bac ne connaît pas les frontières entre chapitres.
 
 [[exercise:r-bac]]
 

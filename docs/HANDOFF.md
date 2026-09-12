@@ -4809,7 +4809,7 @@ Comme le §11.43, elle tourne en CI (validate-content --strict, 62 notions) sans
 jamais bloquer, et le sens « valeur qui ne résout pas » complète, pour les
 rungs, ce que la porte marqueur→cible fait déjà pour les figures (ADR 0031).
 
-### 11.45 La campagne de correction de contenu vague 1 — onze notions triées, 70 correctifs objectifs, les bloquants consignés
+### 11.45 La campagne de correction de contenu vague 1 — douze notions triées, 77 correctifs objectifs, les bloquants consignés
 
 **EN COURS (une notion à la fois, cadence critiques).** Après les portes
 d'intégrité (§11.43 figures orphelines, §11.44 rung↔titre), la vague-1
@@ -4818,9 +4818,9 @@ tri constante : **appliquer seul** les correctifs objectifs — fait recalculabl
 vérité de citation, renvoi, hygiène de source ; **différer** aux auteurs
 (content-author / pedagogy-architect / owner) tout ce qui réécrit du contenu
 enseigné, invente une misconception, ou demande une décision de conception. Une
-`REVIEW-2026-09-11.md` par notion consigne l'appliqué ET le déféré.
+revue horodatée par notion (`REVIEW-2026-09-1x.md`) consigne l'appliqué ET le déféré.
 
-Onze notions à ce stade :
+Douze notions à ce stade :
 
 | Notion | Objectifs appliqués | Déféré (marquant) |
 |--------|:---:|--------|
@@ -4835,9 +4835,10 @@ Onze notions à ce stade :
 | `pc/reactions-acido-basiques` | 10 | champ `chapter:` des 8 misconceptions faux (81 distracteurs mal attribués au modèle apprenant) ; 10⁷ appelé « un million » (×4) ; pKA(NH₄⁺) 9,6→9,2 ; 6 citations dérivées ; **« acide fort » biconditionnelle fausse** (R4 vs R6) → content-author |
 | `svt/genetique-populations` | 3 | contradiction de cadre BLOQUANTE (S1/S2) → content-author |
 | `svt/genetique-humaine` | 11 | **F1/F2 BLOQUANTS** (Test B universel faux ; solution GH-8) ; P2 mis-tag crochet → modèle apprenant |
+| `maths/arithmetique` | 7 | maths **PRISTINE** (2 critiques + recalcul : la seule erreur = 2⁴¹ « 34 chiffres »→13) ; **SEV1 cadre** → research-lead : exclusion « résidus quadratiques » falsifiée par 2 sujets vérifiés (2023 N, 2025 N critère d'Euler), Fermat absent du programme mais dans `bac-reference.md:110` + 9/10 annales, poids bloc 15 % démenti ; **PPCM et ℤ/nℤ jamais enseignés** mais testés → content-author ; habileté 75/25/0 (0 niveau-3, 100 % QCM) ; 9/16 lignes de grille non rupturées ; porte pré-sommet qui spoile le sommet ; dispute couverture Fermat (réellement 1, pas 3) |
 
-**70 correctifs objectifs** au total, 0 échec `validate-content --strict` sur les
-onze. Les défauts **bloquants** ne sont jamais réécrits en autonomie — ils
+**77 correctifs objectifs** au total, 0 échec `validate-content --strict` sur les
+douze. Les défauts **bloquants** ne sont jamais réécrits en autonomie — ils
 touchent des règles biologiques enseignées (genetique-humaine F1 : « un père
 atteint lié à l'X ne transmet jamais à ses fils » est faux quand la mère est
 conductrice) ou une décision de conception (genetique-humaine P2 : les
