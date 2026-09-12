@@ -1706,7 +1706,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que : $\displaystyle\int_0^{\frac{1}{2}} f(x)\,dx = \dfrac{1}{\sqrt{e}}\left(\arctan\left(\sqrt{e}\right) - \dfrac{\pi}{4}\right)$
         reasoning: |-
-          Il reste à calculer $\displaystyle\int_1^{\sqrt e}\dfrac{dt}{t^2+e}$ (I-5a) : c'est une primitive de $\dfrac{1}{t^2+e}$ qu'il faut reconnaître. Cette famille de primitives est bâtie sur la fonction ARCTANGENTE, déjà pontée dans ce dépôt pour un exercice SM voisin — content/maths/calcul-integral/bank.yaml, entrée bk-2024-r-x2, question q1-a, primitive de $\frac{1}{1+x^2}$ sur $[0,1]$ — et on réutilise ICI exactement le même fait de référence, pas un second.
+          Il reste à calculer $\displaystyle\int_1^{\sqrt e}\dfrac{dt}{t^2+e}$ (I-5a) : c'est une primitive de $\dfrac{1}{t^2+e}$ qu'il faut reconnaître. Cette famille de primitives est bâtie sur la fonction ARCTANGENTE, déjà pontée pour un exercice SM voisin — au banc de la leçon « Calcul intégral », sujet de rattrapage 2024, où l'on cherche une primitive de $\frac{1}{1+x^2}$ sur $[0,1]$ — et on réutilise ICI exactement le même fait de référence, pas un second.
 
           $\arctan$ est la fonction réciproque de la restriction de $\tan$ à $\left]-\frac{\pi}{2},\frac{\pi}{2}\right[$ ; par construction elle est dérivable sur $\mathbb{R}$ et
 
@@ -1979,7 +1979,7 @@ entries:
 
           $$S_n = \dfrac{n}{n+1}\times\dfrac1n\sum_{k=1}^n g\!\left(\dfrac kn\right)$$
 
-          (on a multiplié et divisé par $n$). Le facteur $\dfrac1n\sum_{k=1}^n g\!\left(\dfrac kn\right)$ est EXACTEMENT la forme d'une somme de Riemann — le même théorème, sous la même forme exacte, que celui déjà mobilisé pour un sujet SM voisin de cette banque, content/maths/calcul-integral/bank.yaml, entrée bk-2024-r-x2, question q1-b :
+          (on a multiplié et divisé par $n$). Le facteur $\dfrac1n\sum_{k=1}^n g\!\left(\dfrac kn\right)$ est EXACTEMENT la forme d'une somme de Riemann — le même théorème, sous la même forme exacte, que celui déjà mobilisé pour un sujet SM voisin, au banc de la leçon « Calcul intégral » (rattrapage 2024) :
 
           $$\dfrac1n\sum_{k=1}^n h\!\left(\dfrac kn\right) \xrightarrow[n\to+\infty]{} \int_0^1 h(x)\,dx \qquad (h \text{ continue sur } [0,1])$$
 
@@ -2623,7 +2623,7 @@ entries:
 
       Soit $(C_n)$ sa courbe représentative dans un repère orthonormé $(O,\vec{i},\vec{j})$ *(on prend $\|\vec{i}\|=\|\vec{j}\|=1\,cm$)*.
 
-      **Portée de cette carte.** Cette carte reprend la **Partie I** de l'exercice 1 (5,0 pts sur les 12 de l'exercice complet) : l'étude de $f_n$ elle-même — limites, asymptotes, dérivée, variations, tangente, point d'inflexion, tracé, aire. Les **Parties II et III** (7,0 pts, deux suites bâties sur cette même fonction) vivent dans une carte sœur, `bk-2021-n-x1b` de `content/maths/suites-numeriques/bank.yaml`.
+      **Portée de cette carte.** Cette carte reprend la **Partie I** de l'exercice 1 (5,0 pts sur les 12 de l'exercice complet) : l'étude de $f_n$ elle-même — limites, asymptotes, dérivée, variations, tangente, point d'inflexion, tracé, aire. Les **Parties II et III** (7,0 pts, deux suites bâties sur cette même fonction) vivent dans une carte sœur, au banc de la leçon « Suites numériques ».
     questions:
       - id: q1a
         part: "1 — Limite en +infini et asymptote"

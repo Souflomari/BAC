@@ -5767,6 +5767,37 @@ retrait la remet au vert ; (c) **exemption** — le même texte injecté sous
 `sourcing.note` ne déclenche rien, donc la porte ne pousse personne à effacer sa
 traçabilité. 0 failure sur les 62 notions.
 
+**Deuxième passe, même classe, autre vocabulaire (2026-09-12).** Le renvoi
+réparé en `pc/propagation-onde-lumineuse` disait aussi à l'élève que la question
+est « notée pour l'orchestrateur / pedagogy-architect ». Balayage élargi aux
+noms d'agents, aux chemins de dépôt et au vocabulaire de fabrication — **13
+fuites de plus**, toutes corrigées :
+
+- **6 chemins de dépôt rendus** (`content/maths/calcul-integral/bank.yaml`,
+  `entrée bk-2024-r-x2`…) dans `maths/fonction-exponentielle` et
+  `maths/suites-numeriques`. L'élève ne peut ni les ouvrir ni les chercher ;
+  remplacés par le nom de la LEÇON et du sujet, que l'interface lui montre.
+- **4 « laisse l'owner juge » / « arbitrage à l'owner »** (`pc/decroissance-radioactive`,
+  `pc/esterification-hydrolyse` ×2, `pc/rotation-axe-fixe`) — une décision de
+  routage interne, dans un `reasoning`. La phrase qui concerne l'élève
+  (« la démonstration est refaite ici en entier ») est conservée.
+- **3 drapeaux d'auteur** sous une étape de calcul (`pc/ondes-em-modulation` :
+  « drapeau maintenu dans la source », « drapeau d'échelle à confirmer »).
+
+**La porte couvre les deux premiers, PAS le troisième — et c'est délibéré.** Un
+chemin de dépôt et le mot « owner » n'ont aucune lecture correcte dans un champ
+rendu : ils sont en échec. « Drapeau », lui, a des emplois légitimes en
+français ; une porte dessus crierait au loup. Les trois occurrences sont
+corrigées, **la classe reste non gardée, et c'est écrit dans le code** — plutôt
+qu'un motif approximatif qui ferait du bruit jusqu'à ce qu'on l'ignore.
+
+**Confirmation indépendante de l'exemption.** La critique fidélité de
+`denombrement`, qui ne savait rien de ce travail, a vérifié le même point dans
+le code et conclu : « `sourcing` blocks never reach the student » —
+`web/src/lib/content.ts:239-241, 262-263, 619-620`, délibérément non chargé.
+C'est exactement l'hypothèse sur laquelle repose l'exemption de la porte, et
+elle a été mesurée deux fois, séparément.
+
 **Ce que ça rappelle.** Trois campagnes de fuite du même genre ont déjà eu lieu
 — les codes de barreau dans la prose (§11.18), les slugs de fichier (§11.25), le
 jargon de rédaction (§11.26). Celle-ci est la quatrième, et la seule où le texte

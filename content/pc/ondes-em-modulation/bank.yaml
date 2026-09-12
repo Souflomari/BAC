@@ -248,7 +248,7 @@ entries:
           L'enveloppe supérieure de la figure 4 vaut $A(1+m)$ à son maximum et $A(1-m)$ à son minimum — c'est directement la lecture de la forme établie à la question 1, prise à $\cos(2\pi f_s t) = +1$ puis $-1$. Le rapport de ces deux extrema élimine $A$ et ne laisse que $m$, sans qu'il soit nécessaire de connaître $A$ séparément. La qualité se tranche ensuite au seul critère du chapitre 4 : $m < 1$ signe une bonne modulation, $m \geq 1$ une surmodulation.
         steps:
           - math: 'U_{s,\max} = A(1+m) = 3\ \text{V} \qquad U_{s,\min} = A(1-m) = 1\ \text{V}'
-            note: "Lecture des extrema de l'enveloppe sur la figure 4 (drapeau d'échelle a confirmer, conserve)."
+            note: "Lecture des extrema de l'enveloppe sur la figure 4."
           - math: 'm = \frac{U_{s,\max} - U_{s,\min}}{U_{s,\max} + U_{s,\min}} = \frac{3-1}{3+1} = 0{,}5'
             note: "Le rapport des extrema elimine A (chapitre 4) ; il ne reste que m."
           - math: '\boxed{m = 0{,}5 < 1 \implies \text{bonne modulation}}'
@@ -342,7 +342,7 @@ entries:
           - math: 'f_s = \frac{1}{T_s} = \frac{1}{8\times10^{-3}} \approx 125\ \text{Hz}'
             note: "Fréquence de la tension modulante."
           - math: 'F_p \approx 3\ \text{oscillations/div} \times \frac{10\ \text{div}}{20\ \text{ms}} = \frac{30}{20\times10^{-3}} = 1500\ \text{Hz}'
-            note: "Comptage des oscillations de u1 (porteuse) sur l'écran entier (10 div = 20 ms) ; lecture fine, drapeau maintenu dans la source."
+            note: "Comptage des oscillations de u1 (porteuse) sur l'écran entier (10 div = 20 ms) ; lecture fine."
       - id: q2b
         stem: |-
           **(0,5 pt)** Déterminer graphiquement la valeur de $S_m$ et celle de $U_0$.
@@ -566,7 +566,7 @@ entries:
           - math: 'f_s = \frac{1}{T_s} = \frac{1}{5\times10^{-3}} = 200\ \text{Hz}'
             note: "Fréquence du signal modulant."
           - math: 'T_p \approx 0{,}25\ \text{ms}'
-            note: "Période de la porteuse (oscillation rapide), comptage des sommets sur l'ensemble du trace ; lecture fine, drapeau maintenu dans la source."
+            note: "Période de la porteuse (oscillation rapide), comptage des sommets sur l'ensemble du trace ; lecture fine."
           - math: 'f_p = \frac{1}{T_p} = \frac{1}{0{,}25\times10^{-3}} = 4000\ \text{Hz} = 4\ \text{kHz}'
             note: "Fréquence de la porteuse."
           - math: '\boxed{\text{proposition B}: f_p = 4\ \text{kHz}}'

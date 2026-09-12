@@ -655,7 +655,7 @@ entries:
 
       Soit $(C_n)$ sa courbe représentative dans un repère orthonormé $(O,\vec{i},\vec{j})$.
 
-      **Portée de cette carte.** Cette carte reprend les **Parties II et III** de l'exercice 1 (7,0 pts sur les 12 de l'exercice complet) : deux études de suites bâties sur $f_n$. La **Partie I** (5,0 pts, l'étude de $f_n$ elle-même) vit dans une carte sœur, `bk-2021-n-x1` de `content/maths/fonction-exponentielle/bank.yaml`. Cette carte est **autonome** : tout ce dont les questions ci-dessous ont besoin de la Partie I (dérivée de $f_n$, monotonie, limites aux bornes) est redémontré au point d'usage, jamais simplement cité.
+      **Portée de cette carte.** Cette carte reprend les **Parties II et III** de l'exercice 1 (7,0 pts sur les 12 de l'exercice complet) : deux études de suites bâties sur $f_n$. La **Partie I** (5,0 pts, l'étude de $f_n$ elle-même) vit dans une carte sœur, au banc de la leçon « Fonction exponentielle ». Cette carte est **autonome** : tout ce dont les questions ci-dessous ont besoin de la Partie I (dérivée de $f_n$, monotonie, limites aux bornes) est redémontré au point d'usage, jamais simplement cité.
 
       **Partie II.** On considère la suite $(u_n)_{n \ge 0}$ définie par :
 
@@ -700,7 +700,7 @@ entries:
 
           Or $\big|f_0'(x)\big| = \dfrac{2e^x}{(1+e^x)^2}$ (la valeur absolue efface le signe moins de la question précédente) : donc $\big|f_0'(x)\big|\le\dfrac12$ pour tout $x$.
 
-          *(Ce calcul — l'identité $(1+e^x)^2-4e^x=(1-e^x)^2$ — est le même que celui qui sert de point de départ dans la Partie I, carte `bk-2021-n-x1` de `content/maths/fonction-exponentielle/bank.yaml`, où il est établi pour $f_n'$ en général. Il est refait ici en entier, pour le cas particulier $n=0$, pour que cette carte reste autonome.)*
+          *(Ce calcul — l'identité $(1+e^x)^2-4e^x=(1-e^x)^2$ — est le même que celui qui sert de point de départ dans la Partie I, au banc de la leçon « Fonction exponentielle » (même sujet, Partie I), où il est établi pour $f_n'$ en général. Il est refait ici en entier, pour le cas particulier $n=0$, pour que cette carte reste autonome.)*
         steps:
           - math: '(1+e^x)^2-4e^x = 1-2e^x+e^{2x} = (1-e^x)^2 \ge 0 \quad (\forall x\in\mathbb{R})'
             note: "Un carré est toujours positif ou nul."
@@ -713,7 +713,7 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que : $(\forall n \in \mathbb{N})\ ;\quad |u_{n+1} - \alpha| \le \dfrac{1}{2}|u_n - \alpha|$
         reasoning: |-
-          C'est le pas central de toute la Partie II : transformer une borne sur la dérivée (question 1-b) en une borne sur l'écart entre deux termes consécutifs de la suite. L'outil est l'**inégalité des accroissements finis** (corollaire du théorème des accroissements finis, notion « Dérivabilité et étude des fonctions » : si $f$ est dérivable sur un intervalle et $|f'|\le k$ partout sur cet intervalle, alors $|f(b)-f(a)|\le k|b-a|$ pour tous $a,b$ de l'intervalle) — outil hors du corps des chapitres 1 à 12 de cette leçon, déjà mobilisé pour la même construction dans `bk-2025-n-x1` de `content/maths/fonction-exponentielle/bank.yaml`.
+          C'est le pas central de toute la Partie II : transformer une borne sur la dérivée (question 1-b) en une borne sur l'écart entre deux termes consécutifs de la suite. L'outil est l'**inégalité des accroissements finis** (corollaire du théorème des accroissements finis, notion « Dérivabilité et étude des fonctions » : si $f$ est dérivable sur un intervalle et $|f'|\le k$ partout sur cet intervalle, alors $|f(b)-f(a)|\le k|b-a|$ pour tous $a,b$ de l'intervalle) — outil hors du corps des chapitres 1 à 12 de cette leçon, déjà mobilisé pour la même construction au banc de la leçon « Fonction exponentielle » (sujet 2025).
 
           Applique-la à $f_0$ (dérivable sur $\mathbb{R}$, $|f_0'|\le\dfrac12$ partout, question 1-b) entre $a=\alpha$ et $b=u_n$ :
 

@@ -837,7 +837,17 @@ for (const dir of dirs) {
   {
     const RENDU_TXT = new Set(["intro", "stem", "reasoning", "note", "text", "feedback",
       "solution", "correct_feedback", "title", "part", "math", "caption"]);
-    const RENVOI = /(?:SCOPE\s+NOTE|NOTE\s+ÉDITORIALE)\s*\d?\s*(?:,\s*)?(?:voir\s+)?en\s+t[êe]te\s+d[eu]\s+(?:ce\s+)?fichier/i;
+    // Trois motifs, chacun sans lecture correcte pour un élève :
+    //   (a) le renvoi vers une note d'auteur (commentaire YAML, invisible) ;
+    //   (b) un CHEMIN DE DÉPÔT — il ne peut ni l'ouvrir ni le chercher ;
+    //   (c) le mot « owner » — un rôle de fabrication, pas de son vocabulaire.
+    // Mesuré le 2026-09-12 : 25 + 6 + 4 = 35 occurrences, toutes retirées.
+    // NON gardé, faute de pouvoir l'être sans faux positif : « drapeau » (3
+    // notes d'étape de pc/ondes-em-modulation disaient « drapeau maintenu dans
+    // la source »). Le mot a des emplois légitimes ; la porte ne peut pas
+    // distinguer, alors elle se tait plutôt que de crier au loup. Les trois
+    // occurrences sont corrigées, la classe reste non gardée — et c'est dit.
+    const RENVOI = /(?:SCOPE\s+NOTE|NOTE\s+ÉDITORIALE)\s*\d?\s*(?:,\s*)?(?:voir\s+)?en\s+t[êe]te\s+d[eu]\s+(?:ce\s+)?fichier|content\/(?:maths|pc|svt|philo)\/[a-z0-9-]+\/[a-z-]+\.(?:yaml|md)|\bowner\b/i;
     const fuites = [];
     const parcours = (n, fichier) => {
       if (Array.isArray(n)) { for (const x of n) parcours(x, fichier); return; }
