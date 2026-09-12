@@ -977,6 +977,50 @@ for (const dir of dirs) {
     }
   }
 
+  // ── §11.70 « chapitre N et N » — le renvoi qui cite deux fois le même ───
+  //    Cinq occurrences trouvées à la main au fil de la campagne :
+  //    `chute-mouvements-plans` (« chapitre 2 et 2 », « chapitres 3 et 3 »),
+  //    `reactions-acido-basiques` (« chapitre 7 et 7 », « chapitre 3 et 3 »),
+  //    `transformations-deux-sens` (« chapitre 1 et 1 »). Toutes nées de la
+  //    renumérotation barreau→chapitre : deux barreaux distincts mappés sur le
+  //    même numéro, ou un numéro recopié. Le lecteur reçoit un renvoi double
+  //    vers un seul endroit, et perd le second — qui était l'information utile.
+  //
+  //    ÉCHEC, et sans risque de faux positif : citer deux fois le même chapitre
+  //    dans « chapitre A et B » n'a aucune lecture correcte. Le correctif, lui,
+  //    demande de LIRE (quel est le second chapitre ?) — la porte dit qu'il y a
+  //    un défaut, elle ne devine pas le numéro.
+  {
+    const RENDU_TXT = new Set(["intro", "stem", "reasoning", "note", "text", "feedback",
+      "solution", "correct_feedback", "title", "part", "math", "caption"]);
+    const REPET = /chapitres?\s+(\d+)\s+et\s+(\d+)/gi;
+    const doubles = [];
+    const scan = (s, fichier) => {
+      REPET.lastIndex = 0;
+      let m;
+      while ((m = REPET.exec(s))) if (m[1] === m[2]) doubles.push(`${fichier} : « ${m[0]} »`);
+    };
+    const marche = (n, fichier) => {
+      if (Array.isArray(n)) { for (const x of n) marche(x, fichier); return; }
+      if (!n || typeof n !== "object") return;
+      for (const [k, v] of Object.entries(n)) {
+        if (k === "sourcing" || k === "item_source" ||
+            k === "coverage_summary" || k === "contradicts_principle") continue;
+        if (typeof v === "string" && RENDU_TXT.has(k)) scan(v, fichier);
+        else marche(v, fichier);
+      }
+    };
+    for (const fname of Object.keys(yamlDocs)) marche(yamlDocs[fname], fname);
+    scan(md, "lesson.md");
+    for (const f of [...new Set(doubles)]) {
+      console.error(
+        `  ✗ ${dir}: ${f} cite deux fois le MÊME chapitre — le second renvoi est perdu. ` +
+          `Nomme le chapitre réellement visé (séquelle de la renumérotation barreau→chapitre).`
+      );
+      dirFail++;
+    }
+  }
+
   // ── §11.67 L'IDENTIFIANT INTERNE dans un champ rendu ────────────────────
   //    Même famille que la porte ci-dessus, autre objet : au lieu de pointer
   //    une note invisible, le texte pointe une ENTRÉE ou un ITEM par sa clé

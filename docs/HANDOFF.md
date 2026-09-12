@@ -6413,3 +6413,64 @@ Les deux restent des AVERTISSEMENTS, délibérément : le remède est éditorial
 et une porte qui vire au rouge sans correctif disponible ne protège rien — elle
 apprend seulement à l'équipe à ignorer le rouge. Vérifiée dans les deux sens :
 2 signalements → 0 après ajout des deux codes → 2 après restauration.
+
+---
+
+### 11.70 Les renvois de chapitre : « N et N » armé (5 occurrences), et les 63 renvois inter-leçons vérifiés — tous justes
+
+Deux mesures sur la même famille — « le renvoi est une instruction » (ADR 0031)
+— avec deux issues opposées. Les deux méritent d'être écrites, parce que le
+résultat NÉGATIF est aussi utile que l'autre.
+
+**1. « chapitre N et N » — réel, récurrent, désormais gardé.** Cinq
+occurrences, trouvées une à une au fil de la campagne et jamais comme classe :
+`chute-mouvements-plans` (« chapitre 2 et 2 », « chapitres 3 et 3 »),
+`reactions-acido-basiques` (« chapitre 7 et 7 », « chapitre 3 et 3 »),
+`transformations-deux-sens` (« chapitre 1 et 1 »). Toutes sont des séquelles de
+la renumérotation barreau→chapitre : deux barreaux distincts retombés sur le
+même numéro, ou un numéro recopié. Le lecteur reçoit un renvoi double vers un
+seul endroit — **le second renvoi, celui qui portait l'information, a disparu.**
+
+Les trois dernières corrigées en résolvant chaque cible dans le dépôt, jamais
+en devinant :
+- `reactions-acido-basiques` « chapitre 7 et 7 » → **chapitre 8**, dont le titre
+  porte littéralement « constante d'équilibre et taux d'avancement final $\tau$ » :
+  les deux notions citées ($x_f$ et $x_{max}$) y vivent toutes deux, donc **un**
+  numéro, pas deux.
+- `reactions-acido-basiques` « chapitre 3 et 3 » → **chapitres 3 et 4** d'« État
+  d'équilibre » : chapitre 3 = « Chiffrer l'avancement … le taux d'avancement »,
+  chapitre 4 = « Le quotient de réaction $Q_r$ ». Les deux notions nommées dans
+  la parenthèse, dans l'ordre.
+- `transformations-deux-sens` « chapitre 1 et 1 » → **chapitre 1** seul (son R0
+  EST l'accroche estérification : acide éthanoïque + éthanol, l'odeur qui
+  n'évolue plus). Au passage, « la leçon-hôte » — du vocabulaire de fabrication
+  dans un `reasoning` rendu — remplacé par le nom de la leçon, qui suivait déjà.
+
+**Porte armée (ÉCHEC)**, sans risque de faux positif : « chapitre A et B » avec
+A = B n'a aucune lecture correcte. Elle dit qu'il y a un défaut ; elle ne devine
+pas le second numéro — ça demande de lire. Vérifiée rouge sur « chapitres 4 et
+4 », verte sur « chapitres 4 et 5 », témoin vert, fichier restauré.
+
+**2. Les renvois inter-leçons : 63 résolus, 0 faux — et pourquoi il n'y a pas de
+porte.** Une première sonde a signalé **23 citations d'un chapitre inexistant**
+(« chapitre 8 » dans une leçon qui n'en a que 7). Les 23 étaient des **faux
+positifs de ma sonde** : ce sont des renvois vers une AUTRE leçon, qui la
+nomment — « le signal exact du chapitre 8 de « Calcul intégral » », « déjà
+signalé au chapitre 9 de « La vérité » ». Ma sonde les comparait au nombre de
+chapitres de la leçon HÔTE.
+
+Refaite correctement — une carte titre→leçon construite depuis les 62 `# ` de
+`lesson.md` et les slugs, puis chaque « chapitre N de « X » » résolu contre le
+nombre de chapitres de X — le résultat est net : **63 renvois inter-leçons, 0
+hors bornes.** Les six libellés d'abord non résolus (titres tronqués ou
+descriptifs, « État d'équilibre », « Suivi temporel d'une transformation »…)
+résolvent tous par préfixe, et tous dans les bornes.
+
+Pas de porte, pour une raison de coût et non de valeur : `validate-content`
+travaille notion par notion, et ce contrôle exige une carte de TOUT le corpus
+construite avant la boucle. La classe est mesurée propre aujourd'hui ; la sonde
+est décrite ici assez précisément pour être refaite. **Et la leçon de méthode
+vaut plus que le résultat : une sonde qui signale 23 défauts dont 23 faux n'est
+pas une sonde, c'est une hypothèse mal posée.** Vérifier le contexte des
+signalements AVANT d'annoncer un chiffre — ici, lire une seule des 23 citations
+suffisait à voir qu'elle nommait sa leçon cible.
