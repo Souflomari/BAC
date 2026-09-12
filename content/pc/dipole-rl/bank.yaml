@@ -588,7 +588,7 @@ entries:
         stem: |-
           **1.6.** (0,5 pt) On refait la même expérience en ajustant l'inductance de la bobine sur la valeur $L = L_1 = 2L_0$. Choisir parmi les courbes $C_2$, $C_3$ et $C_4$ représentées sur la figure 3, celle qui représente l'évolution de la tension $u_R(t)$ dans le cas où $L = L_1$. Justifier votre réponse.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Deux grandeurs pilotent la courbe $u_R(t)$ : le palier $U_0=\dfrac{ER}{R+r}$ (question 1.4) et la constante de temps $\tau=\dfrac{L_0}{R+r}$ (question 1.5) — exactement les rôles de $I_{max}=E/R$ et $\tau=L/R$ aux chapitre 3 et 3 de la leçon. Le point essentiel, à voir avant de regarder les courbes : $U_0$ ne dépend PAS de $L$, seulement de $E$, $R$ et $r$. Doubler $L$ ne peut donc pas changer le palier — seulement la vitesse à laquelle on l'atteint.
+          **Ce qu'on cherche et pourquoi ce geste.** Deux grandeurs pilotent la courbe $u_R(t)$ : le palier $U_0=\dfrac{ER}{R+r}$ (question 1.4) et la constante de temps $\tau=\dfrac{L_0}{R+r}$ (question 1.5) — exactement les rôles de $I_{max}=E/R$ et $\tau=L/R$ aux chapitres 3 et 4 de la leçon. Le point essentiel, à voir avant de regarder les courbes : $U_0$ ne dépend PAS de $L$, seulement de $E$, $R$ et $r$. Doubler $L$ ne peut donc pas changer le palier — seulement la vitesse à laquelle on l'atteint.
 
           **Ce que le doublement de $L$ change, et ce qu'il ne change pas.**
 
@@ -780,7 +780,7 @@ entries:
         stem: |-
           **(0,5 pt)** **2-2-1.** Vérifier que la valeur de $L$ est : $L = 2\ \text{mH}$.
         reasoning: |-
-          L'équation de la question 2-1 réarrangée est $\dfrac{di}{dt}=-\dfrac{R_1+r}{L}i+\dfrac{E}{L}$ — c'est exactement la relation linéaire entre $\dfrac{di}{dt}$ et $i$ déjà présente au chapitre 3 sous la forme $\dfrac{di}{dt}=-\dfrac{R}{L}\left(i-\dfrac{E}{R}\right)$, mais ici on l'exploite en la lisant directement sur un graphe de $\dfrac{di}{dt}$ en fonction de $i$ plutôt que sur la courbe usuelle $i(t)$ — une lecture graphique que le chapitre 4 ne couvre pas explicitement (voir la scope note de sourcing). En $i=0$, l'ordonnée à l'origine de cette droite vaut $E/L$ : on la lit sur la figure 4, puis on isole $L$.
+          L'équation de la question 2-1 réarrangée est $\dfrac{di}{dt}=-\dfrac{R_1+r}{L}i+\dfrac{E}{L}$ — c'est exactement la relation linéaire entre $\dfrac{di}{dt}$ et $i$ déjà présente au chapitre 3 sous la forme $\dfrac{di}{dt}=-\dfrac{R}{L}\left(i-\dfrac{E}{R}\right)$, mais ici on l'exploite en la lisant directement sur un graphe de $\dfrac{di}{dt}$ en fonction de $i$ plutôt que sur la courbe usuelle $i(t)$ — c'est exactement la troisième lecture vue au chapitre 4. En $i=0$, l'ordonnée à l'origine de cette droite vaut $E/L$ : on la lit sur la figure 4, puis on isole $L$.
         steps:
           - math: '\left.\dfrac{di}{dt}\right|_{i=0} = \dfrac{E}{L}'
             note: "On evalue l'équation de la question 2-1 en i=0 : c'est l'ordonnée à l'origine de la figure 4."
@@ -1082,7 +1082,7 @@ entries:
         steps:
           - math: 'i(0^-) = I_0 = 0{,}1\ \text{A} \quad \text{(régime permanent, question 1-2)}'
             note: "Valeur du courant juste avant l'ouverture de K."
-          - math: 'i(0^+) = i(0^-) \quad \text{(continuité du courant dans une bobine, rung 1)}'
+          - math: 'i(0^+) = i(0^-) \quad \text{(continuité du courant dans une bobine, chapitre 2)}'
             note: "Le courant dans une bobine ne peut pas sauter : même valeur juste après l'ouverture."
           - math: '\boxed{i(0^+) = 0{,}1\ \text{A} = 100\ \text{mA}}'
             note: "Intensité dans la bobine à l'instant t = 0+."
@@ -1262,11 +1262,11 @@ entries:
         stem: |-
           **1-** (0,5 pt) Recopier la figure 1 sur votre copie, et représenter dessus la tension $u_R$ aux bornes du résistor, et la tension $u_b$ aux bornes de la bobine, en convention récepteur.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Ce n'est pas un calcul : c'est la convention qui gouverne TOUT ce qui suit dans l'exercice (l'équation de la question 2-1 en dépend directement). Le chapitre 2 de la leçon la pose noir sur blanc : en convention récepteur, la flèche de tension d'un dipôle est orientée dans le MÊME sens que la flèche du courant qui le traverse — le courant « entre » par la borne où la tension est comptée positivement.
+          Ce qu'on cherche et pourquoi ce geste. Ce n'est pas un calcul : c'est la convention qui gouverne TOUT ce qui suit dans l'exercice (l'équation de la question 2-1 en dépend directement). En convention récepteur — la convention qui donne $u = ri + L\,di/dt$ pour la bobine (chapitre 2) — la flèche de tension d'un dipôle est orientée en sens INVERSE de la flèche du courant qui le traverse — le courant « entre » par la borne où la tension est comptée positivement.
 
-          Le résistor $R$ et la bobine $(b)$ sont deux récepteurs traversés par le même courant $i$ (ils sont en série dans la branche du bas de la figure 1). La règle s'applique donc identiquement aux deux : on flèche $u_R$ et $u_b$ chacune dans le même sens que $i$ le long de la branche du bas — c'est-à-dire les deux flèches pointant dans la MÊME direction l'une que l'autre, chacune au-dessus (ou en dessous) de son propre dipôle.
+          Le résistor $R$ et la bobine $(b)$ sont deux récepteurs traversés par le même courant $i$ (ils sont en série dans la branche du bas de la figure 1). La règle s'applique donc identiquement aux deux : on flèche $u_R$ et $u_b$ chacune en sens inverse de $i$ le long de la branche du bas — c'est-à-dire les deux flèches pointant dans la MÊME direction l'une que l'autre (toutes deux à contre-sens de $i$), chacune au-dessus (ou en dessous) de son propre dipôle.
 
-          Le piège nommé de cette question. Flécher les deux tensions en sens opposés l'un de l'autre — une erreur fréquente quand on croit qu'il faut « faire le tour » de la maille en alternant les sens. Il n'y a rien à alterner : les deux dipôles sont traversés par le MÊME courant $i$, donc les deux flèches suivent la MÊME direction, dictée uniquement par le sens de $i$, jamais par la position du dipôle dans la boucle.
+          Le piège nommé de cette question. Flécher les deux tensions en sens opposés l'un de l'autre — une erreur fréquente quand on croit qu'il faut « faire le tour » de la maille en alternant les sens. Il n'y a rien à alterner : les deux dipôles sont traversés par le MÊME courant $i$, donc les deux flèches suivent la MÊME direction (toutes deux opposées à $i$), dictée uniquement par le sens de $i$, jamais par la position du dipôle dans la boucle.
       - id: q2
         part: "2- Établir l'équation différentielle et lire r, L sur la courbe"
         stem: |-
@@ -1296,7 +1296,7 @@ entries:
 
           Si — et seulement si — $\dfrac{1}{\tau}=\dfrac{R+r}{L}$, le terme en $e^{-t/\tau}$ s'annule exactement entre les deux occurrences, et il reste $\dfrac{R+r}{L}A=\dfrac{E}{L}$, d'où $A=\dfrac{E}{R+r}$.
         steps:
-          - math: '\tau = \frac{L}{R+r} \qquad \text{(coefficient de } i \text{ dans l équation, rung 2)}'
+          - math: '\tau = \frac{L}{R+r} \qquad \text{(coefficient de } i \text{ dans l''équation, chapitre 3)}'
             note: "Identification par substitution : c'est la seule valeur de tau qui annule le terme exponentiel."
           - math: '\boxed{A = \frac{E}{R+r} \qquad \tau = \frac{L}{R+r}}'
             note: "A est la valeur du palier (régime permanent, di/dt=0) ; tau est le temps caractéristique."
@@ -1421,9 +1421,9 @@ entries:
         stem: |-
           **(0,25 pt)** Recopier le schéma de la figure 1, et représenter en convention récepteur la tension $u_R$ aux bornes du conducteur ohmique.
         reasoning: |-
-          La convention récepteur, posée au chapitre 2 de la leçon, dit que la flèche de tension d'un dipôle est orientée dans le MÊME sens que la flèche du courant qui le traverse. Le conducteur ohmique $R$ est traversé, comme la bobine, par le même courant $i$ (ils sont en série) : sur la figure 1 recopiée, on flèche $u_R$ le long du fil, dans le sens de $i$, entre les deux bornes de $R$.
+          La convention récepteur — celle qui donne $u = ri + L\,di/dt$ pour la bobine (chapitre 2) — dit que la flèche de tension d'un dipôle est orientée en sens INVERSE de la flèche du courant qui le traverse. Le conducteur ohmique $R$ est traversé, comme la bobine, par le même courant $i$ (ils sont en série) : sur la figure 1 recopiée, on flèche $u_R$ le long du fil, en sens inverse de $i$, entre les deux bornes de $R$.
 
-          Le piège nommé de cette question. Flécher $u_R$ dans le sens contraire de $i$ — ce serait la convention générateur, réservée au dipôle qui fournit l'énergie (ici, uniquement le générateur $E$). $R$ et la bobine sont deux récepteurs : leurs deux flèches de tension suivent toutes deux le sens de $i$, jamais l'inverse.
+          Le piège nommé de cette question. Flécher $u_R$ dans le même sens que $i$ — ce serait la convention générateur, réservée au dipôle qui fournit l'énergie (ici, uniquement le générateur $E$). $R$ et la bobine sont deux récepteurs : leurs deux flèches de tension pointent toutes deux à contre-sens de $i$, jamais dans son sens.
       - id: q2
         part: "1.2 — L'intensité en régime permanent"
         stem: |-
@@ -1462,7 +1462,7 @@ entries:
         stem: |-
           **(0,5 pt)** La solution de cette équation différentielle est $u_R(t) = R.I_p.e^{-\frac{t}{\tau}}$. Trouver l'expression de $\tau$.
         reasoning: |-
-          Comme au chapitre 4 (méthode de vérification par substitution), on calcule la dérivée de la solution proposée et on reporte dans l'équation de la question précédente pour identifier $\tau$.
+          Comme au chapitre 3 (méthode de vérification par substitution), on calcule la dérivée de la solution proposée et on reporte dans l'équation de la question précédente pour identifier $\tau$.
 
           $$\frac{du_R}{dt} = -\frac{1}{\tau}\,R\,I_p\,e^{-t/\tau} = -\frac{1}{\tau}\,u_R(t)$$
 
@@ -1477,7 +1477,7 @@ entries:
           - math: '\frac{du_R}{dt} = -\frac{1}{\tau}\,u_R(t)'
             note: "Dérivée de la solution proposée."
           - math: '-\frac{1}{\tau} + \frac{R+r}{L} = 0'
-            note: "Identification par substitution dans l'équation de la question 2.1 (chapitre 4)."
+            note: "Identification par substitution dans l'équation de la question 2.1 (chapitre 3)."
           - math: '\boxed{\tau = \frac{L}{R+r}}'
             note: "Même résistance totale R+r qu'au régime permanent (question 1.2)."
       - id: q5
@@ -1933,11 +1933,11 @@ entries:
         reasoning: |-
           La question 1 a donné $\tau = \dfrac{L}{R+r}$ ; il suffit de la lire à l'envers, $L = \tau\,(R+r)$. Tout est disponible : $R + r = 50{,}4\ \Omega$ vient d'être établi (question 3-1), il ne manque que $\tau$ — et $\tau$ se **lit** sur la figure 2.
 
-          **Lire $\tau$ sur un graphe expérimental, c'est le chapitre 4, et il y a trois méthodes équivalentes.**
+          **Lire $\tau$ sur un graphe expérimental, c'est le chapitre 4 : deux méthodes de lecture équivalentes, plus un contrôle par le temps d'établissement.**
 
           1. **La méthode des $63\ \%$** : $\tau$ est l'abscisse du point où la grandeur atteint $63\ \%$ de sa valeur finale. Ici $0{,}632 \times 10{,}00 = 6{,}32\ \text{V}$, atteint à $t = 4{,}00\ \text{ms}$.
           2. **La tangente à l'origine** : elle coupe l'asymptote horizontale à l'abscisse $\tau$ — même valeur.
-          3. **La méthode des $95\ \%$**, pour vérifier : le régime permanent est établi à $\approx 3\tau$ à $5\tau$, ce qui place l'aplatissement vers $12$ à $20\ \text{ms}$ — cohérent avec le plateau atteint vers $25\ \text{ms}$.
+          3. **Le contrôle par le temps d'établissement**, pour vérifier : le régime permanent est pratiquement atteint vers $5\tau$ (écart restant $<1\ \%$), ce qui place l'aplatissement vers $20\ \text{ms}$ — cohérent avec le plateau observé vers $25\ \text{ms}$.
 
           $$\tau = 4{,}00\ \text{ms} = 4{,}00\times10^{-3}\ \text{s}$$
 

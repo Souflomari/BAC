@@ -4809,7 +4809,7 @@ Comme le §11.43, elle tourne en CI (validate-content --strict, 62 notions) sans
 jamais bloquer, et le sens « valeur qui ne résout pas » complète, pour les
 rungs, ce que la porte marqueur→cible fait déjà pour les figures (ADR 0031).
 
-### 11.45 La campagne de correction de contenu vague 1 — sept notions triées, 35 correctifs objectifs, les bloquants biologiques consignés
+### 11.45 La campagne de correction de contenu vague 1 — huit notions triées, 43 correctifs objectifs, les bloquants consignés
 
 **EN COURS (une notion à la fois, cadence critiques).** Après les portes
 d'intégrité (§11.43 figures orphelines, §11.44 rung↔titre), la vague-1
@@ -4829,11 +4829,12 @@ Sept notions à ce stade :
 | `maths/probabilites-conditionnelles` | 7 | — |
 | `maths/derivabilite-etude-fonctions` | 0 (vet direct §11.44) | Rolle/TAF au sommet hors rampe ; items R6 |
 | `pc/rc-charge` | 6 | contradiction de cadre (spec absente) |
+| `pc/dipole-rl` | 8 | **collision de notation R vs R+r** (les deux critiques : fabrique `oubli-resistance-interne`) → refactor de convention ; couverture savoir-faire (u_L(t), sens inverse) ; mis-tag distracteurs |
 | `svt/genetique-populations` | 3 | contradiction de cadre BLOQUANTE (S1/S2) → content-author |
 | `svt/genetique-humaine` | 11 | **F1/F2 BLOQUANTS** (Test B universel faux ; solution GH-8) ; P2 mis-tag crochet → modèle apprenant |
 
-**35 correctifs objectifs** au total, 0 échec `validate-content --strict` sur les
-sept. Les défauts **bloquants** ne sont jamais réécrits en autonomie — ils
+**43 correctifs objectifs** au total, 0 échec `validate-content --strict` sur les
+huit. Les défauts **bloquants** ne sont jamais réécrits en autonomie — ils
 touchent des règles biologiques enseignées (genetique-humaine F1 : « un père
 atteint lié à l'X ne transmet jamais à ses fils » est faux quand la mère est
 conductrice) ou une décision de conception (genetique-humaine P2 : les
