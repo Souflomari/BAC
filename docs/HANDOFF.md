@@ -4809,7 +4809,7 @@ Comme le §11.43, elle tourne en CI (validate-content --strict, 62 notions) sans
 jamais bloquer, et le sens « valeur qui ne résout pas » complète, pour les
 rungs, ce que la porte marqueur→cible fait déjà pour les figures (ADR 0031).
 
-### 11.45 La campagne de correction de contenu vague 1 — vingt-quatre notions triées (MATHS BOUCLÉ), 219 correctifs objectifs, les bloquants consignés
+### 11.45 La campagne de correction de contenu vague 1 — vingt-huit notions triées (MATHS BOUCLÉ), 387 correctifs objectifs, les bloquants consignés
 
 **EN COURS (une notion à la fois, cadence critiques).** Après les portes
 d'intégrité (§11.43 figures orphelines, §11.44 rung↔titre), la vague-1
@@ -4921,7 +4921,15 @@ Vingt notions à ce stade — les 14 de maths sont toutes passées :
 | `maths/denombrement` | 10 | fond propre, dit séparément par les deux critiques : les 27 clés d'items ET leurs 108 distracteurs, les 5 checkpoints, les 2 sommets, les 4 exercices de banque et la trentaine de calculs de la leçon **reproduisent tous** ; les **4 barèmes** tombent exactement sur le relevé ; le `coverage_summary` recompté depuis les tags bruts **par les deux** est exact ; les **16 citations de chapitre** sont justes. Et **aucune fuite d'auteur** dans un champ rendu — vérifié le jour même où cette classe était balayée ailleurs (§11.61). Corrigé : **promesse non tenue sur la notation** (« on utilisera les deux » — `C_n^p` apparaît UNE fois dans toute la notion, dans cette phrase même, contre ~40 `\binom{n}{p}`, et les figures emploient une TROISIÈME forme) ; **renvoi mort** vers un « autre chapitre » pour le binôme de Newton, que le produit n'a pas et que `maths-sexp.yaml:278` exclut nommément ; **l'arithmétique d'un commentaire de distracteur est fausse** — pour justifier 720 il écrit un produit qui vaut 5040, c'est-à-dire la BONNE réponse ; **une légende de figure définit Ω comme l'urne puis le compte comme l'ensemble des tirages**, enseignant exactement la misconception que le banc corrige ; un `reasoning` rendu affirme que l'indépendance n'est définie nulle part alors que le chapitre 9 de la même leçon l'énonce ; renvoi en avant faux deux fois (mauvais système d'étiquettes ET mauvaise position) ; **réponse au-dessus de la porte d'essai dans les DEUX exercices** (l'`intro` imprimait `card(Ω)` = le `steps[0]` gardé de q1) plus l'analogie que la variation existe pour faire trouver. **PIÈGE À NE PAS CORRIGER NAÏVEMENT** : les deux formules encadrées n'ont pas l'hypothèse $p \le n$ que porte la propriété qui en dérive — mais la banque utilise $\binom{1}{2}=0$ comme étape porteuse, donc ajouter la condition rendrait l'examen illégal ; il faut POSER la convention, c'est-à-dire enseigner → content-author. **SEV1 cadre → owner** : la banque enseigne indépendance et loi binomiale, attribuées au chapitre séparé — mais les deux critiques convergent, ce n'est PAS une brèche d'exclusion, c'est la partition que l'examen ne respecte pas (2 sujets vérifiés sur 4 la débordent dans le même exercice numéroté) : GARDER le contenu ; et la filière est un angle mort (CENSUS : SM 0, SExp 8, alors que les deux cadres revendiquent la notion). À NE PAS AFFAIBLIR : « un exercice de probabilités commence presque toujours par du dénombrement » est **confirmé 4/5** ; le principe additif, absent des lignes `programme`, est exigé par **4 sujets vérifiés sur 4** |
 | `maths/geometrie-espace` | 13 | **la notion la mieux vérifiée de la campagne** : les deux critiques ont recalculé séparément les **57 clés d'items** (et l'arithmétique fausse annoncée par chaque distracteur), les **5 barèmes** question par question, et recompté le `coverage_summary` depuis les tags bruts — `total_items`, les 11 `per_rung`, les **30** `per_misconception_any_distractor` et les **26** `per_misconception_primary`, **tous exacts**, les 13 modèles au plancher siégeant bien dans 3 items distincts ; et **les ~200 citations « chapitre N » vérifiées une à une par les deux, toutes justes**. Corrigé : **deux `reasoning` RENDUS disent à l'élève qu'il sort du programme sur du contenu que la leçon lui a enseigné** (« le chapitre 10 traite la tangence plan-sphère » — le chapitre 10 porte une section titrée sur la sphère ∩ DROITE ; « ni les chapitres 2 à 10 ne nomment la médiatrice » — le chapitre 7 porte une section titrée « Le plan médiateur ») ; **réponse au-dessus de la porte d'essai** — le checkpoint d'avant-sommet reprenait EXACTEMENT les nombres de r-bac ($R=\sqrt5$, $d=\sqrt3$), c'est-à-dire les réponses de ses questions 2 et 3a, et la prose juste au-dessus nommait la décision de méthode de q3b : re-numéroté en $\sqrt{11}/\sqrt7/2$ ; **une étiquette `item_source` fausse** qui masquait précisément cela ; le milieu d'un segment attribué au chapitre 2 alors qu'il n'y est pas établi (mais j'ai VÉRIFIÉ les deux autres citations « chapitre 2 » du même lot : elles portent sur la norme et « arrivée moins départ », qui y sont — elles restent) ; équation développée de la sphère sans sa condition de nature ; titre de R9 et note de validation omettant deux sections enseignées. **SEV1 cadre → research-lead, et les deux critiques convergent : LE CADRE A TORT sur le produit vectoriel** — `maths-sexp.yaml` doute que ce soit un objet testé et classe l'affirmation parmi ses plus faibles, alors que **4 des 5 exercices vérifiés ouvrent dessus, toujours en question 1**. En revanche le produit mixte (R4) est vraisemblablement hors SExp et le relevé CORROBORE l'exclusion (0/5, et CENSUS donne SM 0 / SExp 19) → ne pas supprimer sans arbitrage, mais **GE-31 met un outil exclu dans R10, le barreau présenté comme « le format de l'épreuve »**. Pédagogie : deux sous-sections entières (plan médiateur, sphère ∩ droite) enseignées, portant chacune un modèle faux NOMMÉ, sans aucun item ni misconception déclarée ; la variation partage terme constant, corrections {1,4,9} et rayon 3 avec l'exemple travaillé du chapitre ; 3 checkpoints sur 5 clones nombre pour nombre d'items du banc ; 19 des 30 modèles non réclamés |
 
-**219 correctifs objectifs** au total (dont 14 classes sur `pc/systemes-oscillants`,
+**387 correctifs objectifs** au total, dont **106 pour la seule campagne de
+provenance de transcription** (§11.75), qui a touché 18 notions d'un coup.
+Les quatre notions triées le 2026-09-12 ajoutent 53 correctifs :
+`pc/esterification-hydrolyse` 14, `pc/reactions-acido-basiques` 17,
+`pc/rc-charge` 9, `pc/dipole-rl` 13. Sur ces quatre, **neuf constats de
+critiques ont été DÉCLINÉS avec la mesure qui les réfute** — dont trois
+bâtis sur une citation inexacte du fichier, et un (« la bonne réponse est
+en position A six fois de suite ») mesuré sur le FICHIER quand le rendu
+mélange les choix. Le reste du décompte antérieur (dont 14 classes sur `pc/systemes-oscillants`,
 11 sur `pc/chute-mouvements-plans`, 11 sur `pc/lois-de-newton` et 9 sur
 `pc/ondes-em-modulation`,
 la notion la plus lourde du corpus — 211 items, 19 entrées de banque, `part_examen: 27` —
@@ -6666,3 +6674,142 @@ choix. Un motif ne sait pas lire cette différence d'intention ; il crierait sur
 la moitié des feedbacks du corpus, qui sont précisément ce que la VISION
 demande. La classe est mesurée, le foyer est nommé, l'arbitrage revient à
 l'owner.
+
+### 11.75 La provenance de transcription dans 125 champs rendus — et la convergence qui l'a trouvée
+
+La sonde est née d'une **convergence**, pas d'une intuition. J'avais trouvé
+« mesure au pixel » et « Lecture ferme » dans une intro de `dipole-rl` ; le
+critique de pédagogie a trouvé, indépendamment et sur une autre notion,
+« CROSS-LIST honoré ici », « la règle de la maison » et « le routage
+retenu » dans un raisonnement d'estérification. Deux découvertes séparées,
+une seule classe : la campagne de transcription des sujets a laissé sa
+chaîne d'outillage dans le texte que l'élève lit.
+
+**Mesure : 125 occurrences, 18 notions, toutes en PC** — l'empreinte exacte
+de cette campagne. « au pixel » 39, « cross-list » 16, « bitmap natif » 13,
+« par la vérification » 12, « re-décrite depuis l'image » 12, « bitmap
+d'origine » 9, « la règle de la maison » 4, « lectures fermes » 4, « au
+vectoriel » 3.
+
+Un élève de 2ᵉ bac apprenait ainsi qu'il existe un scan, une résolution
+native, une chaîne de mesure vectorielle, une seconde chaîne au pixel, et
+une règle interne d'arbitrage entre notions. Rien ne l'aide, et tout existe
+déjà — mot pour mot — dans `sourcing`, que le rendu ne charge jamais.
+
+Le cas qui a décidé de la sévérité : `transformations-lentes-rapides`
+portait, **juste sous une réponse encadrée**, la consigne d'auteur « à
+confirmer en priorité contre le corrigé officiel ou un re-fetch du scan
+mesuré au pixel ». L'élève lisait une réponse, puis l'ordre d'aller la
+vérifier ailleurs. La lacune est réelle et reste consignée en entier dans
+`sourcing` (« LACUNE DE PRÉCISION SIGNALÉE ») ; le texte rendu dit
+maintenant ce qui est vrai pour l'élève.
+
+**Une exclusion MESURÉE, pas prudente.** « coquille » figurait dans la
+sonde — 6 occurrences — et en a été retirée après lecture : c'est un mot
+français ordinaire qui signale une vraie coquille du sujet officiel, utile
+à qui a la copie sous les yeux, et dans `philo/l-etat` il porte le fond du
+propos. Écartés de même : « deux chaînes » quand il s'agit de chaînes
+CARBONÉES, et les deux voies de raisonnement physiques indépendantes de
+`rlc-serie`. C'est la règle inverse de celle apprise en §11.73 : une
+exclusion ajoutée « par prudence » ne protège rien ; une exclusion appuyée
+sur un cas mesuré, si.
+
+**Porte §11.75 armée — et le corpus a fourni ses deux témoins seul.** Je
+gardais `reactions-acido-basiques` hors de la campagne le temps que deux
+critiques la lisent. La porte a donc crié sur exactement ce répertoire-là
+(8 signalements distincts couvrant 21 occurrences) et sur aucun des 61
+autres. Les 21 corrigées dans le même commit, la porte repasse au vert.
+
+**§11.67 élargie au passage.** En nettoyant acido : « transcrit
+intégralement sous `etat-equilibre.md` » dans une intro. §11.61 n'attrape
+que le CHEMIN COMPLET, jamais un nom de fichier nu. Sonde : 2 occurrences
+dans 2 notions. Rouge/vert vérifiés **au troisième essai**, après deux
+tests invalides pour une raison déjà consignée en §11.47 —
+`validate-content` résout ses répertoires par `path.join(REPO, dir)`, donc
+un chemin en `../` ne résout pas et les deux exécutions échouaient sur
+« no lesson.md », pas sur la porte.
+
+### 11.76 Une note d'étape qui contredit le calcul qu'elle commente
+
+`steps[].note` est rendu : il s'affiche **sous** la ligne de calcul. Quand
+les deux divergent, l'élève lit un calcul qui produit $9{,}2$ sous-titré
+« ici lu 9,6 ». C'est le cas trouvé dans `reactions-acido-basiques` par les
+deux critiques séparément — et il ne vient pas d'une faute d'auteur : il
+vient d'une correction **déclarée appliquée** la veille, qui avait atteint
+l'énoncé et le `math` et manqué la note posée dessous. C'est le dernier
+mètre d'une passe de correction que cette porte surveille.
+
+**Trois versions de la sonde, deux abandonnées avec leur mesure :**
+
+| sonde | signalements | vrais |
+|---|---|---|
+| la note nomme un nombre absent du résultat du `math` | 55 (22 notions) | **0** — une note nomme légitimement des INTERMÉDIAIRES (« 1 u vaut 931,5 MeV », « racine de 4 vaut 2 ») |
+| même symbole, deux valeurs | 9 | **0** — « tau ≪ 1 », « chapitre 3 », le 2 de $2\pi$, le 14 de $pK_e$ |
+| même symbole ET la note l'AFFIRME (« = », « vaut », « lu », « trouvé », « donne »), renvois de chapitre neutralisés | 0 sur le corpus | attrape le cas réel |
+
+Les deux premières ne sont pas armées, et c'est délibéré : une porte qui
+crie 55 fois pour rien apprend à être ignorée.
+
+**Rouge et vert sur l'état HISTORIQUE, mais pas du premier coup.** Le
+premier essai a montré vert avec le défaut réinjecté, et j'ai failli en
+conclure que la porte marchait. Elle marchait ; c'est le témoin qui était
+faux : j'avais réinjecté la NOTE seule, alors qu'une correction antérieure
+du même commit avait déjà réécrit le `math` de cette étape — il ne posait
+donc plus « $pK_A$ = ⟨nombre⟩ » et il n'y avait plus rien à contredire. Une
+sonde temporaire comptant les paires vues (149) a servi à établir que la
+porte s'exécutait bien, avant de chercher plus loin.
+
+### 11.77 Les renvois de chapitre, corpus entier : 5 516 citations, 2 hors bornes, 1 défaut
+
+Le corpus renvoie **beaucoup** au chapitre. C'est une force — c'est elle
+qui fait tenir le décortiquer d'une notion à l'autre — et c'est exactement
+pourquoi un renvoi faux coûte : l'élève qui l'ouvre ne trouve rien et
+conclut qu'il a raté quelque chose.
+
+La porte ne juge que ce qu'elle peut trancher seule : un « chapitre N » NU
+— aucune notion nommée avant lui dans le même champ — dont le numéro
+dépasse le nombre de `## ` de la leçon hôte. Un renvoi nu ne peut désigner
+que la leçon courante ; s'il la dépasse, il ne désigne rien.
+
+Sur 5 516, **deux** dépassaient, **un seul** était un défaut : dans un
+champ `math` de `derivabilite` — qui se rend SEUL, en formule détachée —
+« (théorème de la limite monotone, chapitre 8) », alors que la leçon hôte a
+7 chapitres. La cible est « Suites numériques », dont le 8ᵉ chapitre est
+bien ce théorème ; et le `math` **voisin** écrivait « chapitre 9 de Suites
+numériques ». Le fichier se contredisait à une ligne d'intervalle.
+
+L'autre est un faux positif et donne l'exemption : « … et par "Réactions
+acido-basiques" (chapitre 8, exemple travaillé 2) » — la cible est nommée
+juste avant. D'où la règle : une notion nommée (« … » ou **gras**) AVANT le
+renvoi dans le même champ, et la porte se tait.
+
+**Mesure annexe laissée SANS porte :** 36 « chapitre N » nus vivent dans
+des champs `math`, et c'est presque toujours légitime — un `math` cite le
+chapitre de sa propre leçon, que l'élève lit sans ambiguïté puisqu'il y
+est. Seul le dépassement distingue le défaut du cas normal.
+
+### 11.78 Un total ré-additionné à l'un de ses propres termes — et ce qu'un correctif ÉNUMÉRÉ ne répare pas
+
+Une leçon qui pose « $X = A + B$ » puis écrit plus loin « $X + B$ » dit,
+sous sa propre déclaration, $A + 2B$.
+
+Cas fondateur, trouvé par les **deux** critiques de `dipole-rl`
+séparément : la leçon déclare « $R = R_0 + r$ » au chapitre 3, s'y tient
+partout (y compris dans son exemple chiffré, $R = 50 + 10 = 60\ \Omega$),
+puis écrit « $(R+r)$ » huit fois au chapitre 4. Ce n'était pas cosmétique :
+deux clés de point d'arrêt s'en trouvaient contradictoires — l'une marquait
+FAUX « $I_{max} = E/R$, seule la résistance du conducteur compte », l'autre
+marquait VRAI « $\tau = L/R$ », les deux montrées au même élève à quelques
+minutes d'intervalle.
+
+**La leçon de méthode vaut la porte.** J'ai d'abord corrigé par
+remplacements de chaînes ÉNUMÉRÉS : six sur huit. Les deux dernières
+(« $\tau = L/(R+r)$ », en fin de deux longues lignes) n'ont été trouvées
+que par la sonde, en relisant le fichier entier au lieu de ma propre liste.
+**Un correctif énuméré ne répare que ce qu'on a pensé à lister.**
+
+Sévérité mesurée : version large, 3 signalements dont 2 faux —
+`nombres-complexes-1` déclare « $z = a + bi$ » et emploie ailleurs
+« $z + b$ » (l'écriture complexe de la translation) et « $z_1 + z_2$ », où
+$a$ et $b$ sont des lettres génériques réemployées. Version armée : au
+moins un symbole **indicé** dans la déclaration. 0 sur le corpus.
