@@ -693,10 +693,10 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que pour tout $x \in ]0,+\infty[$ : $f'(x) = \dfrac{2(1 - x + x\ln x)}{x^2}$.
         reasoning: |-
-          On dérive $f(x)=2-\frac2x+(1-\ln x)^2$ terme à terme. $-\frac2x$ se dérive en $\frac{2}{x^2}$. Le carré est une composée : $\left((1-\ln x)^2\right)'=2(1-\ln x)\cdot\left(-\frac1x\right)$, en appliquant $(\ln u)'=\frac{u'}{u}$ à l'intérieur $1-\ln x$ (règle du chapitre 4, ici combinée à la règle de la composée par un carré). On réduit ensuite au même dénominateur $x^2$.
+          On dérive $f(x)=2-\frac2x+(1-\ln x)^2$ terme à terme. $-\frac2x$ se dérive en $\frac{2}{x^2}$. Le carré est une composée : $\left((1-\ln x)^2\right)'=2(1-\ln x)\cdot\left(-\frac1x\right)$, la dérivée de l'intérieur $1-\ln x$ valant $-\frac1x$ (chapitre 2), le tout combiné à la règle de la composée par un carré. On réduit ensuite au même dénominateur $x^2$.
         steps:
           - math: 'f''(x) = \dfrac{2}{x^2} - 2(1-\ln x)\cdot\dfrac1x = \dfrac{2}{x^2}-\dfrac{2(1-\ln x)}{x}'
-            note: "Dérivée de -2/x, et du carré (1-ln x) au carré via (ln u)'=u'/u (chapitre 4)."
+            note: "Dérivée de -2/x, et du carré (1-ln x)^2 : 2(1-ln x) fois -1/x, dérivée de l'intérieur (chapitre 2)."
           - math: 'f''(x) = \dfrac{2-2x(1-\ln x)}{x^2} = \dfrac{2-2x+2x\ln x}{x^2} = \dfrac{2(1-x+x\ln x)}{x^2}'
             note: "Réduction au dénominateur commun x carré, puis facteur 2."
       - id: q6
@@ -903,7 +903,7 @@ entries:
         steps:
           - math: 'f(x) = 2x\ln x - 2x = 2x(\ln x - 1)'
             note: "Mise en facteur de 2x."
-          - math: '\lim_{x\to+\infty}(\ln x - 1) = +\infty \ \text{(R4)}, \quad \lim_{x\to+\infty} 2x = +\infty \implies \lim_{x\to+\infty} f(x) = +\infty'
+          - math: '\lim_{x\to+\infty}(\ln x - 1) = +\infty \ \text{(chapitre 5)}, \quad \lim_{x\to+\infty} 2x = +\infty \implies \lim_{x\to+\infty} f(x) = +\infty'
             note: "Produit de deux facteurs qui tendent vers plus l'infini."
       - id: q3
         stem: |-
@@ -913,7 +913,7 @@ entries:
         steps:
           - math: '\dfrac{f(x)}{x} = \dfrac{2x(\ln x - 1)}{x} = 2\ln x - 2'
             note: "Division par x, x non nul."
-          - math: '\lim_{x\to+\infty} (2\ln x - 2) = +\infty \ \text{(R4)}'
+          - math: '\lim_{x\to+\infty} (2\ln x - 2) = +\infty \ \text{(chapitre 5)}'
             note: "Ln x tend vers plus l'infini."
           - math: '\lim_{x\to+\infty} \dfrac{f(x)}{x} = +\infty \implies (C) \text{ admet une branche parabolique de direction } (O,\vec{j}) \text{ au voisinage de } +\infty'
             note: "Rapport infini : la courbe grossit plus vite que toute droite issue de l'origine, direction verticale."
@@ -926,7 +926,7 @@ entries:
         steps:
           - math: '\dfrac{f(x)}{x} = \dfrac{f(x)-f(0)}{x-0} = 2\ln x - 2 \quad (x>0)'
             note: "Taux d'accroissement en 0, même formule que f(x)/x."
-          - math: '\lim_{x\to0^+} (2\ln x - 2) = -\infty \ \text{(R4)}'
+          - math: '\lim_{x\to0^+} (2\ln x - 2) = -\infty \ \text{(chapitre 5)}'
             note: "Ln x tend vers moins l'infini en 0+."
           - math: '\lim_{x\to0^+} \dfrac{f(x)}{x} = -\infty \implies (C) \text{ admet une demi-tangente verticale au point } (0,0)'
             note: "Taux d'accroissement infini : tangente verticale à l'origine."
@@ -1205,7 +1205,7 @@ entries:
         steps:
           - math: '\lim_{x\to-\infty} e^x = 0, \quad \lim_{x\to-\infty} (-x) = +\infty \implies \lim_{x\to-\infty} (e^x-x) = +\infty'
             note: "Limite de référence de l'exponentielle en moins l'infini (hors socle), plus -x qui domine."
-          - math: '\lim_{x\to-\infty} \ln(e^x-x) = +\infty \quad (\text{R4, argument qui tend vers } +\infty)'
+          - math: '\lim_{x\to-\infty} \ln(e^x-x) = +\infty \quad (\text{chapitre 5, argument qui tend vers } +\infty)'
             note: "Limite de référence du ln en plus l'infini, appliquee a l'argument e^x - x."
           - math: '\lim_{x\to-\infty} (x+1) = -\infty, \quad \lim_{x\to-\infty} \ln(e^x-x) = +\infty \implies \lim_{x\to-\infty} f(x) = -\infty'
             note: "x+1 tend vers moins l'infini, ln(e^x-x) vers plus l'infini : deux termes qui tirent vers moins l'infini, sans indetermination."
@@ -1217,7 +1217,7 @@ entries:
         steps:
           - math: 'x<0 \implies e^x - x = -x\left(1-\dfrac{e^x}{x}\right) = -x\left(1-\dfrac{1}{xe^{-x}}\right)'
             note: "On factorise par -x, strictement positif pour x négatif ; e^x/x = 1/(x e^-x)."
-          - math: '\ln(e^x-x) = \ln(-x) + \ln\left(1-\dfrac{1}{xe^{-x}}\right) \quad (\text{propriété du produit, R2})'
+          - math: '\ln(e^x-x) = \ln(-x) + \ln\left(1-\dfrac{1}{xe^{-x}}\right) \quad (\text{propriété du produit, chapitre 3})'
             note: "Les deux facteurs -x et 1-1/(x e^-x) sont strictement positifs pour x<0."
           - math: 'f(x) = x+1-\ln(e^x-x) = x+1-\ln(-x)-\ln\left(1-\dfrac{1}{xe^{-x}}\right)'
             note: "Substitution directe dans f(x)."
@@ -1229,7 +1229,7 @@ entries:
         steps:
           - math: '\dfrac{f(x)}{x} = 1+\dfrac1x-\dfrac{\ln(-x)}{x}-\dfrac1x\ln\left(1-\dfrac{1}{xe^{-x}}\right) \quad (x<0)'
             note: "On divise par x la forme de la question précédente."
-          - math: 'X=-x\to+\infty,\quad \dfrac{\ln(-x)}{x} = \dfrac{\ln X}{-X} = -\dfrac{\ln X}{X} \to 0 \quad (\text{croissances comparees, R4})'
+          - math: 'X=-x\to+\infty,\quad \dfrac{\ln(-x)}{x} = \dfrac{\ln X}{-X} = -\dfrac{\ln X}{X} \to 0 \quad (\text{croissances comparees, chapitre 5})'
             note: "Même limite de référence que le chapitre 5, avec le changement de variable X=-x."
           - math: 'xe^{-x} = -Xe^{X} \to -\infty \implies \dfrac{1}{xe^{-x}} \to 0 \implies \ln\left(1-\dfrac{1}{xe^{-x}}\right) \to \ln(1) = 0'
             note: "L'exponentielle ecrase X (hors socle) ; continuité de ln en 1 (chapitres 2 et 6)."
@@ -1244,7 +1244,7 @@ entries:
         reasoning: |-
           On dérive $f(x)=x+1-\ln(e^x-x)$ : le terme $\ln(e^x-x)$ est une composée, on applique $(\ln u)'=\dfrac{u'}{u}$ (chapitre 4) avec $u(x)=e^x-x$, $u'(x)=e^x-1$. Il reste à réduire $1-\dfrac{e^x-1}{e^x-x}$ au même dénominateur.
         steps:
-          - math: 'u(x)=e^x-x,\ u''(x)=e^x-1 \implies \big(\ln(e^x-x)\big)'' = \dfrac{e^x-1}{e^x-x} \quad (\text{règle } (\ln u)''=u''/u, \text{ R3})'
+          - math: 'u(x)=e^x-x,\ u''(x)=e^x-1 \implies \big(\ln(e^x-x)\big)'' = \dfrac{e^x-1}{e^x-x} \quad (\text{règle } (\ln u)''=u''/u, \text{ chapitre 4})'
             note: "On derive l'intérieur du ln."
           - math: 'f''(x) = 1-\dfrac{e^x-1}{e^x-x} = \dfrac{(e^x-x)-(e^x-1)}{e^x-x}'
             note: "Dérivée de x+1 moins la dérivée du ln, même dénominateur."
@@ -1299,7 +1299,7 @@ entries:
         steps:
           - math: 'f(x)=x \iff x+1-\ln(e^x-x)=x \iff \ln(e^x-x)=1'
             note: "On isole le terme en ln."
-          - math: '\ln(e^x-x) = 1 = \ln(e) \iff e^x-x=e \quad (\text{injectivite de ln, R1/R6}; \ \ln(e)=1 \text{ par définition, R5})'
+          - math: '\ln(e^x-x) = 1 = \ln(e) \iff e^x-x=e \quad (\text{injectivite de ln, chapitres 2 et 7}; \ \ln(e)=1 \text{ par définition, chapitre 6})'
             note: "Équation resolue par injectivite, comme au chapitre 7."
           - math: 'f(\alpha)=\alpha,\ f(\beta)=\beta \implies e^{\alpha}-\alpha = e \quad \text{et} \quad e^{\beta}-\beta = e'
             note: "Alpha et beta sont les deux solutions données par la question précédente."
@@ -2876,7 +2876,7 @@ entries:
         steps:
           - math: 'g(x) = \frac{\ln(1+x)}{x} = \frac{\ln t}{t}\cdot\frac{t}{t-1} \qquad (t = 1+x,\ t\to+\infty)'
             note: "Changement de variable t = 1+x pour retomber sur la limite de référence ln(t)/t."
-          - math: '\lim_{t\to+\infty}\frac{\ln t}{t} = 0 \ (\text{R4 de cette leçon}), \qquad \lim_{t\to+\infty}\frac{t}{t-1}=1 \ \Longrightarrow\ \lim_{x\to+\infty} g(x) = 0'
+          - math: '\lim_{t\to+\infty}\frac{\ln t}{t} = 0 \ (\text{chapitre 5 de cette leçon}), \qquad \lim_{t\to+\infty}\frac{t}{t-1}=1 \ \Longrightarrow\ \lim_{x\to+\infty} g(x) = 0'
             note: "Limite de référence du chapitre, pas un emprunt : Le chapitre 5 de « Fonction logarithme »."
           - math: '\lim_{x\to+\infty} e^{-x} = 0 \quad (\text{fonction exponentielle})'
             note: "e puissance moins x est l'inverse de e puissance x, qui tend vers plus l'infini."
@@ -3443,11 +3443,11 @@ entries:
 
           $f$ est donc continue à droite en $1$.
 
-          **Le piège nommé de cette question.** Essayer une factorisation ou un développement limité de $\ln x$ au voisinage de $1$, hors programme. Le taux d'accroissement de $\ln$ en $1$ est exactement l'outil du cours (chapitre 4, définition de la dérivée) — inutile de chercher plus loin.
+          **Le piège nommé de cette question.** Essayer une factorisation ou un développement limité de $\ln x$ au voisinage de $1$, hors programme. Le taux d'accroissement de $\ln$ en $1$ vaut $\ln'(1)=1$, puisque la dérivée de $\ln$ est $1/x$ (chapitre 2) — inutile de chercher plus loin.
         steps:
           - math: 'f(x) = \dfrac{\ln x}{(x-1)(x+1)} = \dfrac{\ln x - \ln 1}{x-1} \times \dfrac{1}{x+1}'
             note: "Factorisation du dénominateur, pour faire apparaître un taux d'accroissement."
-          - math: '\lim_{x\to 1} \dfrac{\ln x - \ln 1}{x-1} = \ln''(1) = 1 \quad (\text{R3\,: ln dérivable en 1})'
+          - math: '\lim_{x\to 1} \dfrac{\ln x - \ln 1}{x-1} = \ln''(1) = 1 \quad (\text{chapitre 2\,: dérivée de ln égale } 1/x)'
             note: "Taux d'accroissement de ln en 1, égal a la dérivée de ln en 1."
           - math: '\lim_{x\to 1^+} f(x) = 1 \times \dfrac{1}{1+1} = \dfrac12 = f(1)'
             note: "Produit des deux limites : f continue à droite en 1."
@@ -3474,7 +3474,7 @@ entries:
         steps:
           - math: 'f(x) = \dfrac{\ln x}{x^2-1} = \dfrac{\ln x}{x} \times \dfrac{1}{x-\frac1x}'
             note: "On fait apparaître la limite de référence ln(x)/x en factorisant x au dénominateur."
-          - math: '\lim_{x\to+\infty} \dfrac{\ln x}{x} = 0 \ (\text{R4}), \qquad \lim_{x\to+\infty}\left(x-\dfrac1x\right) = +\infty \implies \lim_{x\to+\infty}\dfrac{1}{x-\frac1x} = 0'
+          - math: '\lim_{x\to+\infty} \dfrac{\ln x}{x} = 0 \ (\text{chapitre 5}), \qquad \lim_{x\to+\infty}\left(x-\dfrac1x\right) = +\infty \implies \lim_{x\to+\infty}\dfrac{1}{x-\frac1x} = 0'
             note: "Deux facteurs, chacun tend vers 0 : produit direct, pas d'indetermination."
           - math: '\lim_{x\to+\infty} f(x) = 0 \implies (C) \text{ admet } y=0 \text{ pour asymptote horizontale en } +\infty'
             note: "Limite finie (0) en plus l'infini : lecture graphique directe."
@@ -3683,7 +3683,7 @@ entries:
         steps:
           - math: 't\ge1 \implies t^3\ge t^2>0 \text{ et } t^2-1\ge0 \implies 0\le\dfrac{t^2-1}{t^3}\le\dfrac{t^2-1}{t^2}'
             note: "Comparaison des integrandes sur [1,x] : même numérateur positif, dénominateur plus grand à gauche."
-          - math: '\int_1^x 0\,dt \le \int_1^x \dfrac{t^2-1}{t^3}\,dt \le \int_1^x \dfrac{t^2-1}{t^2}\,dt \quad (\text{R4 calcul integral, positivite et comparaison, hors socle})'
+          - math: '\int_1^x 0\,dt \le \int_1^x \dfrac{t^2-1}{t^3}\,dt \le \int_1^x \dfrac{t^2-1}{t^2}\,dt \quad (\text{positivité et comparaison des intégrales, chapitre Calcul intégral, hors socle})'
             note: "Intégration de l'encadrement des integrandes sur [1,x], bornes dans l'ordre 1 <= x."
           - math: '\boxed{0 \le I(x) \le J(x)} \quad \forall x\in[1,+\infty['
             note: "I(x) et J(x) sont exactement les deux intégrales encadrees."
