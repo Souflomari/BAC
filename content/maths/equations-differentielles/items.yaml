@@ -754,11 +754,11 @@ items:
         correct: false
         misconception: mc.math.maths_equations_differentielles.coefficient-a-mal-identifie
         feedback: >
-          Ici le coefficient $-4$ a été utilisé comme facteur dans
-          l'exposant... en fait l'inverse : $y'(x)=-4e^x=y(x)$, donc
-          cette fonction vérifie $y'=y$ ($a=1$), pas $y'=-4y$. Le $-4$ a
-          été traité comme une constante multiplicative $C$, alors qu'il
-          doit apparaître dans l'exposant, pas devant $e^x$.
+          Le $-4$ a été placé au mauvais endroit : il est ici une simple
+          constante multiplicative devant $e^x$, alors qu'il doit vivre
+          dans l'exposant. Vérifie : $y'(x)=-4e^x$, qui vaut exactement
+          $y(x)$ — cette fonction est donc solution de $y'=y$ ($a=1$),
+          pas de $y'=-4y$. La bonne forme est $Ce^{-4x}$.
       - id: D
         text: "$y(x) = 2e^{-4x} + 4$"
         correct: false

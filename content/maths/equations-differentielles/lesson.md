@@ -267,7 +267,7 @@ Jusqu'ici, l'équation portait sur $y'$ seule. Voici une équation différente, 
 
 $$y''(x) + \omega^2\,y(x) = 0 \qquad \text{c’est-à-dire} \qquad y''(x) = -\omega^2\,y(x)$$
 
-Cette équation dit : la dérivée seconde de $y$ est proportionnelle à $-y$ elle-même. C'est le signe **moins** qui change tout par rapport à un simple $y''=ky$ ($k>0$, qu'on ne traite pas dans ce chapitre) : ici, quand $y$ est positif, $y''$ est négatif — la courbe se recourbe **vers** l'axe, jamais en s'en éloignant indéfiniment. C'est exactement la signature d'un mouvement qui **oscille**, sans jamais s'échapper vers l'infini.
+Cette équation dit : la dérivée seconde de $y$ est proportionnelle à $-y$ elle-même. C'est le signe **moins** qui change tout par rapport à un simple $y''=ky$ ($k>0$ — on y reviendra à la fin du chapitre, c'est le Cas 1 du discriminant, et ses solutions n'ont rien d'oscillant) : ici, quand $y$ est positif, $y''$ est négatif — la courbe se recourbe **vers** l'axe, jamais en s'en éloignant indéfiniment. C'est exactement la signature d'un mouvement qui **oscille**, sans jamais s'échapper vers l'infini.
 
 ### Vérifier que $\cos(\omega x)$ et $\sin(\omega x)$ sont solutions
 
@@ -367,7 +367,7 @@ $$y(x) = A\,e^{r_1x} + B\,e^{r_2x}, \qquad A,B \in \mathbb{R}$$
 
 $$y(x) = \left(A\,x + B\right)e^{r_0x}, \qquad A,B \in \mathbb{R}$$
 
-*Cas 3 — $\Delta < 0$ : deux racines complexes conjuguées $r = \alpha \pm i\beta$*, avec $\alpha = -\dfrac{b}{2a}$ et $\beta = \dfrac{\sqrt{-\Delta}}{2a}$. Les solutions réelles sont
+*Cas 3 — $\Delta < 0$ : deux racines complexes conjuguées $r = \alpha \pm i\beta$*, avec $\alpha = -\dfrac{b}{2a}$ et $\beta = \dfrac{\sqrt{-\Delta}}{2|a|} > 0$ (on prend $\beta$ positif, comme $\omega$ plus haut ; le signe ne changerait de toute façon rien à l'ensemble des solutions). Les solutions réelles sont
 
 $$y(x) = e^{\alpha x}\left(A\cos(\beta x) + B\sin(\beta x)\right), \qquad A,B \in \mathbb{R}$$
 
@@ -513,9 +513,13 @@ Mêmes gestes, une autre équation — de quoi vérifier que c'est la méthode q
      Pour y''+omega^2 y=0 (R4), la réciproque (toutes les solutions sont de
      cette forme) est ADMISE sans démonstration, cohérent avec le traitement
      "on admet" déjà pratiqué dans `fonction-exponentielle` pour des théorèmes
-     hors-portée du programme — à confirmer que ce choix de scope (pas de
-     Wronskien, pas de résolution de l'équation caractéristique via les
-     complexes) correspond bien à la progression réelle des manuels 2 Bac SM.
+     hors-portée du programme. MISE À JOUR (revue vague 1, 2026-09-12) : la
+     seconde moitié de cette note est PÉRIMÉE — depuis la passe R4-bis du
+     2026-08-27, R4 résout bien l'équation caractéristique, cas Delta<0 (donc
+     via les complexes) compris. Seul le Wronskien reste hors scope. Reste
+     ouvert, en revanche, le desaccord de filiere : cette note dit SM, alors
+     que checkpoints.yaml, exercises.yaml et bank.yaml declarent SExp — et
+     que le seul sujet verifie de la notion est un sujet SExp.
      (3) R5 (applications RC/RL/oscillateur) suppose que les équations
      différentielles physiques (RC u_C'+u_C=E, L i'+Ri=E, L q''+q/C=0) sont
      déjà établies côté physique (cf. `content/pc/rc-charge`,
