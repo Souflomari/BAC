@@ -1447,6 +1447,63 @@ for (const dir of dirs) {
     }
   }
 
+  // ── §11.78 Un TOTAL ré-additionné à l'un de ses propres termes ─────────
+  //    Une leçon qui pose « $X = A + B$ » puis écrit plus loin « $X + B$ »
+  //    dit, sous sa propre déclaration, $A + 2B$. Le lecteur attentif se
+  //    corrige ; celui qui apprend, non.
+  //
+  //    Cas fondateur, trouvé le 2026-09-12 par les DEUX critiques de
+  //    dipole-rl séparément : la leçon déclare « $R = R_0 + r$ » au
+  //    chapitre 3, s'y tient partout (y compris dans son exemple chiffré,
+  //    $R = 50 + 10 = 60\ \Omega$), puis écrit « $(R+r)$ » HUIT fois au
+  //    chapitre 4. Et ce n'était pas cosmétique : deux clés de point d'arrêt
+  //    s'en trouvaient contradictoires — l'une marquait FAUX « $I_{max} =
+  //    E/R$, seule la résistance du conducteur compte », l'autre marquait
+  //    VRAI « $\tau = L/R$ », les deux montrées au même élève.
+  //
+  //    LEÇON DE MÉTHODE qui vaut la porte : j'avais d'abord corrigé par
+  //    remplacements de chaînes ÉNUMÉRÉS — six sur huit. Les deux dernières
+  //    ($\tau = L/(R+r)$, en fin de deux longues lignes) n'ont été trouvées
+  //    que par cette sonde. Un correctif énuméré ne répare que ce qu'on a
+  //    pensé à lister ; seule une sonde sur le fichier entier dit ce qui
+  //    reste.
+  //
+  //    SÉVÉRITÉ MESURÉE. Version large (tous symboles) : 3 signalements,
+  //    2 faux — nombres-complexes-1 déclare « $z = a + bi$ » et emploie
+  //    ailleurs « $z + b$ » (la translation) et « $z_1 + z_2$ », où $a$ et
+  //    $b$ sont des lettres génériques réemployées. Version armée : au moins
+  //    un symbole INDICÉ dans la déclaration — les lettres nues ne portent
+  //    pas d'identité stable dans une leçon de maths. 0 sur le corpus.
+  {
+    const DECL = /\$?\\?([A-Za-z](?:_\{?[A-Za-z0-9]+\}?)?)\s*=\s*([A-Za-z](?:_\{?[A-Za-z0-9]+\}?)?)\s*\+\s*([A-Za-z](?:_\{?[A-Za-z0-9]+\}?)?)\s*\$?/g;
+    const vus = new Set();
+    let d;
+    DECL.lastIndex = 0;
+    while ((d = DECL.exec(md)) !== null) {
+      const [tot, a, b] = [d[1], d[2], d[3]];
+      if (tot === a || tot === b) continue;
+      // Sans indice, ce sont des lettres génériques (a, b, z) qu'une leçon de
+      // maths réemploie légitimement d'un chapitre à l'autre : 2 faux positifs
+      // mesurés sans cette condition, 0 avec.
+      if (!(tot + a + b).includes("_")) continue;
+      for (const terme of [a, b]) {
+        const ech = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const re = new RegExp(`(?<![A-Za-z0-9_\\\\{])${ech(tot)}\\s*\\+\\s*${ech(terme)}(?![A-Za-z0-9_])`, "g");
+        let m;
+        while ((m = re.exec(md.slice(d.index + d[0].length))) !== null) {
+          const cle = `${tot} = ${a} + ${b} → ${m[0]}`;
+          if (vus.has(cle)) continue;
+          vus.add(cle);
+          console.error(
+            `  ✗ ${dir}: lesson.md déclare « ${tot} = ${a} + ${b} » puis écrit « ${m[0]} » — ` +
+              `sous cette déclaration, cela vaut ${a} + 2${terme === a ? a : b}. Un symbole ne peut pas changer de sens en cours de leçon.`
+          );
+          dirFail++;
+        }
+      }
+    }
+  }
+
   // ── Rung integrity, SECOND DIRECTION (warning only) — le miroir de la porte
   //    ci-dessus. Celle-là attrape un item qui vise un rung absent ; elle ne
   //    voit RIEN quand c'est le titre qui a perdu son code. Un « ## » qui

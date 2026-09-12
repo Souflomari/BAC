@@ -230,7 +230,7 @@ C'est une **fonction affine** de $i$. Si l'on porte $\dfrac{di}{dt}$ en ordonné
 - sa **pente** vaut $-\dfrac{R_0 + r}{L}$ — négative, et c'est la signature du phénomène : plus le courant monte, plus il monte lentement. Elle donne **$R_0 + r$** une fois $L$ connue, ou directement $-\dfrac{1}{\tau}$ ;
 - son **intersection avec l'axe des abscisses**, là où $\dfrac{di}{dt} = 0$, donne $i = \dfrac{E}{R_0 + r} = I_{max}$ — le régime permanent, celui où plus rien ne varie.
 
-Deux lectures suffisent donc à identifier complètement le circuit. Et note ce que cette méthode a de mieux que les deux autres : elle donne $L$ et $R_0 + r$ **séparément**, là où les 63 % et la tangente ne donnent que leur quotient $\tau = L/(R+r)$.
+Deux lectures suffisent donc à identifier complètement le circuit. Et note ce que cette méthode a de mieux que les deux autres : elle donne $L$ et $R_0 + r$ **séparément**, là où les 63 % et la tangente ne donnent que leur quotient $\tau = L/(R_0 + r)$.
 
 *Le piège nommé de cette lecture :* prendre la pente pour $\tau$ au lieu de $-\dfrac{1}{\tau}$, ou en perdre le signe. Le contrôle qui tranche : une pente **positive** décrirait un courant qui s'établit de plus en plus vite à mesure qu'il monte — l'inverse exact du mécanisme d'inertie électrique du chapitre 2.
 
@@ -254,7 +254,7 @@ $$i(t) = I_{max}\,e^{-t/\tau'} \qquad\text{avec}\qquad \tau' = \frac{L}{R'}$$
 
 partant de $I_{max}$ — car **le courant dans la bobine est continu** : sa valeur juste après l'ouverture est exactement celle qu'il avait juste avant. C'est le point qui décide de tout, et c'est encore le chapitre 2.
 
-*Le piège nommé :* écrire $i(0^+) = 0$ « puisqu'on a ouvert l'interrupteur ». Non — c'est le courant dans la **branche du générateur** qui s'annule ; celui de la bobine, lui, ne peut pas sauter, et il vaut encore $I_{max}$ à cet instant. Second piège : réutiliser $\tau = L/(R+r)$ de l'établissement. La maille de rupture n'a pas la même résistance totale que celle de l'établissement, donc pas la même constante de temps.
+*Le piège nommé :* écrire $i(0^+) = 0$ « puisqu'on a ouvert l'interrupteur ». Non — c'est le courant dans la **branche du générateur** qui s'annule ; celui de la bobine, lui, ne peut pas sauter, et il vaut encore $I_{max}$ à cet instant. Second piège : réutiliser $\tau = L/(R_0 + r)$ de l'établissement. La maille de rupture n'a pas la même résistance totale que celle de l'établissement, donc pas la même constante de temps.
 
 [[checkpoint:cp-r3-tau]]
 
