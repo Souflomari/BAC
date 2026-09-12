@@ -5319,3 +5319,47 @@ checkpoints ; rétabli, 10 tests sur 10 au vert. `tsc --noEmit` : 0 erreur. Les
 chiffres des checkpoints sont consignés dans `shuffle.ts` à côté de ceux des
 items, comme ce fichier l'exige lui-même : un chiffre voyage avec la commande
 qui le produit.
+
+### 11.54 Le champ `habilete` ne parle la langue d'aucun cadre — pourquoi la porte du ratio ne peut pas être construite
+
+Les critiques vague 1 réclament, notion après notion, une porte sur le ratio
+d'habiletés du cadre (40/40/20 en SM, 50/35/15 en SExp). Mesuré pourquoi elle
+n'existe pas — et ce n'est pas le ratio qui cloche, c'est le champ.
+
+**1. Le champ est quasi absent de la couche qui compte.**
+
+| | portent `habilete` |
+|---|---|
+| items (`items.yaml`) | **36 / 1 612** — 2,2 % |
+| checkpoints | 288 / 362 — 79,6 % |
+
+Or `items.yaml` est précisément la couche sur laquelle le modèle apprenant est
+bâti. Un ratio calculé sur 2,2 % des items ne mesure rien.
+
+**2. Là où il est présent, son vocabulaire n'est celui d'aucun cadre.**
+
+| matière | ce que le cadre définit | ce que le contenu écrit |
+|---|---|---|
+| **maths** | `application_directe` / `application_non_explicite` / `synthese_situations_inhabituelles` | `raisonnement` (41), `utilisation` (32) — **aucun des trois niveaux n'apparaît jamais** |
+| **pc** | `utilisation_ressources` / `application_experimentale` / `resolution_probleme` | `utilisation` (110), `résolution` (27), `application_experimentale` (18) — des **abrégés** des noms du cadre, plus six valeurs étrangères |
+| **svt** | `restitution_connaissances` / `raisonnement_scientifique_communication` | `raisonnement` (36), mais aussi `comprehension` (23) et `application` (16) — **39 occurrences hors taxonomie** |
+| **philo** | *aucun axe d'habiletés* — le cadre dit que ce rôle est tenu par la grille d'évaluation /20 | `raisonnement` (6), `comprehension` (5), `application` (4) |
+
+Les six valeurs étrangères de PC, nommément :
+`controle-catalyse/checkpoints.yaml:128,196,332` (`restitution`, vocabulaire
+SVT) ; `electrolyse:304` et `lois-de-newton:326` (`application`) ;
+`ondes-mecaniques-progressives:324` (`raisonnement`).
+
+**3. Conséquence, et pourquoi ce n'est pas corrigé ici.** Traduire
+`raisonnement` vers l'un des trois niveaux maths n'est pas une réécriture
+mécanique : c'est une décision curriculaire (« raisonnement » recouvre-t-il le
+niveau 2, le niveau 3, ou les deux ?). La porte du ratio suppose donc trois
+décisions du propriétaire, dans cet ordre : (a) une taxonomie par matière,
+alignée sur le cadre ; (b) le champ porté par les items, pas seulement par les
+checkpoints ; (c) alors seulement, une porte qui compare la distribution au
+ratio. Tant que (a) et (b) manquent, toute porte serait verte sans rien mesurer
+— précisément ce que l'ADR 0031 interdit.
+
+**Portée du défaut : nulle côté élève.** `habilete` n'apparaît nulle part dans
+`web/src` — c'est une métadonnée d'auteur, jamais rendue. Le coût est
+d'auditabilité, pas d'affichage.
