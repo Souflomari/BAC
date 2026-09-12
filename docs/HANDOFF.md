@@ -5804,3 +5804,68 @@ elle a été mesurée deux fois, séparément.
 jargon de rédaction (§11.26). Celle-ci est la quatrième, et la seule où le texte
 fuité était un **renvoi** plutôt qu'un mot : c'est ce qui l'a rendue invisible
 aux portes existantes, qui cherchent un vocabulaire, pas une adresse.
+
+---
+
+### 11.62 La réponse au-dessus de la porte d'essai, troisième forme — et la porte qu'il a fallu resserrer trois fois
+
+L'`intro` d'un exercice **se rend hors de la porte d'essai** : dans
+`AttemptFirstExercise`, seuls `reasoning` et `steps` sont gardés. Quand elle
+affirme la valeur que le premier pas gardé calcule, l'élève a la réponse avant
+d'avoir essayé, et l'exercice ne mesure plus rien.
+
+Deux formes de cette classe étaient déjà closes : les **libellés `part`**
+(§11.56, campagne close sur les 240 du corpus) et les fuites de prose trouvées
+**à la lecture**, notion par notion, par les critiques. Celle-ci est la première
+qui se mesure **mécaniquement** : on compare le premier pas gardé au texte de
+l'intro.
+
+**Résultat : 4 fuites, toutes dans `denombrement/bank.yaml`** — `card(Ω)` annoncé
+à 120, 120, 21 et 84, chaque fois le `steps[0]` de la q1 de la carte. Ce sont
+**exactement** les quatre que la critique pédagogie avait trouvées à la lecture
+le même jour. Aucune autre dans le corpus. Corrigées : la quantité est nommée,
+plus calculée.
+
+**Ce qui vaut d'être consigné, c'est le chemin — j'ai failli livrer deux
+instruments faux.**
+
+1. **Une première sonde a annoncé « 0 sur tout le corpus ».** Elle était écrite
+   en Python avec `pathlib.glob("*/*/{exercises,bank}.yaml")` — or `pathlib` ne
+   fait **pas** l'expansion des accolades. Le motif ne correspondait à **aucun
+   fichier**. Le « 0 » ne voulait rien dire, et j'étais sur le point de
+   l'annoncer comme un résultat négatif propre. Ce qui l'a démasqué : la
+   discipline de **toujours prouver qu'une sonde peut mordre** avant de croire
+   son silence — rejouée sur la version de `denombrement` d'avant le correctif
+   du jour, elle a bien nommé les deux fuites connues, donc le « 0 » du corpus
+   devenait suspect.
+2. **La première porte livrait 60 % de faux positifs.** Elle comparait
+   seulement le RÉSULTAT du pas au texte de l'intro : 10 signalements, dont
+   **six faux** — « 1 » était le second membre d'une équation donnée
+   (`47x - 43y = 1`), « 4 » un **numéro de question**, « 10 » un exposant de
+   notation scientifique (`1,0×10⁻¹`), « 0 » l'instant initial. Une porte à ce
+   taux ne sert à rien : elle se fait ignorer, puis désarmer.
+
+**La règle retenue exige que l'intro affirme L'ÉGALITÉ**, pas qu'elle contienne
+un nombre :
+
+- le pas porte **au moins deux `=`** — c'est un calcul, pas une donnée ;
+- son **membre gauche** fait au moins 3 caractères (« A », « x » ne discriminent
+  rien) et se retrouve dans l'intro ;
+- le **résultat suit ce membre gauche de moins de 50 caractères**, à
+  **n'importe laquelle** de ses occurrences — les intros nomment souvent la
+  quantité une première fois sans la calculer, et ne la chiffrent qu'ensuite.
+  (Le premier essai ne regardait que la première occurrence, et manquait `r-bac`
+  pour cette seule raison.)
+
+**Vérifiée dans les trois sens** (ADR 0031) : (a) **rouge** — une des quatre
+fuites réinjectée fait échouer la notion en nommant l'entrée, la quantité et la
+valeur ; (b) **vert** — son retrait la remet au vert ; (c) **non-régression** —
+les six notions qui produisaient un faux positif (`arithmetique`,
+`limites-continuite`, `nombres-complexes-1`, `decroissance-radioactive`,
+`piles`, `systemes-oscillants`) sont **toutes à zéro signalement**. 0 failure
+sur les 62.
+
+**La leçon, et elle vaut au-delà de cette porte.** Un instrument qui se tait
+n'est un bon résultat que si on a montré qu'il sait parler ; et un instrument
+qui parle trop est aussi inutile qu'un instrument muet — la différence, c'est
+qu'on s'en aperçoit plus tard.

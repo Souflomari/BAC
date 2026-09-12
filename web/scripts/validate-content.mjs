@@ -810,6 +810,66 @@ for (const dir of dirs) {
     }
   }
 
+  // ── RÉPONSE AU-DESSUS DE LA PORTE D'ESSAI, troisième forme (ÉCHEC) —
+  //    l'`intro` d'un exercice se rend HORS du gate (AttemptFirstExercise :
+  //    seuls `reasoning` et `steps` sont gardés). Quand elle AFFIRME la valeur
+  //    que le premier pas gardé calcule, l'élève a la réponse avant d'essayer.
+  //
+  //    LA RÈGLE, ET POURQUOI ELLE EST SI ÉTROITE. Une première version ne
+  //    comparait que le RÉSULTAT du pas au texte de l'intro : 10 signalements,
+  //    dont SIX FAUX — « 1 » était le second membre d'une équation donnée,
+  //    « 4 » un numéro de question, « 10 » un exposant de notation
+  //    scientifique, « 0 » l'instant initial. Un taux pareil rend une porte
+  //    inutilisable : on finit par l'ignorer. La règle retenue exige que
+  //    l'intro affirme L'ÉGALITÉ elle-même —
+  //      (a) le pas porte au moins deux « = » (c'est un calcul, pas une donnée) ;
+  //      (b) son membre gauche fait au moins 3 caractères (« A », « x » ne
+  //          discriminent rien) et se retrouve dans l'intro ;
+  //      (c) le résultat suit ce membre gauche de moins de 50 caractères,
+  //          À N'IMPORTE LAQUELLE de ses occurrences (les intros nomment
+  //          souvent la quantité une première fois sans la calculer).
+  //
+  //    Mesuré le 2026-09-12 : 4 fuites, toutes dans `denombrement/bank.yaml`
+  //    (card(Ω) = 120, 120, 21, 84) — exactement les quatre que la critique
+  //    pédagogie avait trouvées à la lecture, aucune autre, aucun faux positif.
+  //    Corrigées. Vérifié que la porte MORD : rejouée sur la version de
+  //    `denombrement/exercises.yaml` antérieure au correctif du jour, elle
+  //    nomme r-bac (120) et r-variation (56).
+  {
+    for (const fname of ["exercises.yaml", "bank.yaml"]) {
+      const doc = yamlDocs[fname];
+      if (!doc) continue;
+      const norm = (s) => s.replace(/\\dfrac/g, "\\frac").replace(/\\left|\\right/g, "").replace(/\s+/g, "");
+      for (const cle of ["exercises", "entries"]) {
+        for (const e of (Array.isArray(doc?.[cle]) ? doc[cle] : [])) {
+          const intro = typeof e?.intro === "string" ? e.intro : "";
+          const q0 = Array.isArray(e?.questions) ? e.questions[0] : null;
+          const m0 = typeof q0?.steps?.[0]?.math === "string" ? q0.steps[0].math : "";
+          if (!intro || !m0 || (m0.match(/=/g) || []).length < 2) continue;
+          const bouts = m0.split("=");
+          const lhs = norm(bouts[0]);
+          const res = bouts[bouts.length - 1].trim();
+          if (lhs.length < 3) continue;
+          if (!/^[\d\s,.]+$/.test(res.replace(/\\,/g, ""))) continue;
+          const ni = norm(intro);
+          const rx = new RegExp(`(?<![\\d])${res.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![\\d])`);
+          let i = ni.indexOf(lhs), trouve = false;
+          while (i >= 0 && !trouve) {
+            if (rx.test(ni.slice(i + lhs.length, i + lhs.length + 50))) trouve = true;
+            i = ni.indexOf(lhs, i + 1);
+          }
+          if (trouve) {
+            console.error(
+              `  ✗ ${dir}: ${fname} → « ${e.id} » : l'intro, rendue HORS de la porte d'essai, affirme que ` +
+                `${bouts[0].trim()} vaut ${res} — c'est le résultat du premier pas GARDÉ. Nomme la quantité sans la calculer.`
+            );
+            dirFail++;
+          }
+        }
+      }
+    }
+  }
+
   // ── Renvoi d'AUTEUR dans un champ RENDU (ÉCHEC) — « voir la SCOPE NOTE en
   //    tête de fichier », servi à l'élève. Les champs listés dans RENDU_TXT
   //    ci-dessous se rendent tous : `reasoning` et `intro` par
