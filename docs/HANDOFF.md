@@ -5957,3 +5957,65 @@ procédural après un barreau conceptuel). Ce qui est écrit ici est une **carte
 pas un seuil — et c'est la même discipline que §11.54 : quand le champ ne
 supporte pas la porte, on mesure et on le dit, plutôt que d'armer un instrument
 qui aurait l'air de garder quelque chose.
+
+---
+
+### 11.64 « Ce checkpoint est un clone d'un item du banc » — une convention de maison, pas un défaut ; mesurée, et deux critiques corrigées
+
+Les critiques vague-1 de `geometrie-espace` et de `denombrement` signalent, comme
+un défaut de notion, que des checkpoints de leçon reprennent **nombre pour
+nombre** un item du banc de fin : « l'item ne diagnostique plus rien chez un
+élève qui a vu le clone en leçon ». Le constat de contamination est juste. Le
+diagnostic — un défaut de ces deux notions — ne l'est pas.
+
+Mesuré sur les 62 notions :
+
+| | |
+|---|---:|
+| checkpoints déclarant `item_source: clone_of_<ITEM>` | **132** |
+| dont **copies verbatim** (énoncé ≥ 0,92 de similarité) | **48** |
+| dont **variations ré-habillées** (même modèle, surface et nombres refaits) | **84** |
+| clones verbatim **non déclarés** | **0** |
+| labels dont l'item cible **n'existe pas** | **0** |
+| labels dont le checkpoint porte **le même modèle primaire** que l'item nommé | **128 / 132** |
+
+**C'est donc une convention de maison, appliquée partout et toujours étiquetée**
+— 24 notions, jamais un clone muet. Et la forme majoritaire (84 sur 132) est
+précisément celle que les critiques recommandent : même modèle d'erreur, énoncé
+entièrement ré-habillé. Deux exemples mesurés aux extrêmes :
+`pc/rotation-axe-fixe :: cp-r1-omega-v` porte `clone_of_ROT-5` avec **0,037** de
+similarité d'énoncé (manège de l'accroche contre disque, ω différent) et le
+**même** modèle ; `maths/fonction-logarithme :: cp-domaine` porte
+`clone_of_LOG-1` avec **1,000** — le même énoncé, mot pour mot.
+
+**Les 4 écarts à l'invariant sont défendables**, vérifiés un par un : le
+checkpoint dérive de l'item mais vise délibérément un modèle **voisin** sur le
+même énoncé (`pc/rc-charge :: cp-r2-asymptote` et `RC-5` posent la même question,
+et se distinguent par la mauvaise réponse retenue comme primaire :
+`uc-depasse-E` contre `charge-a-debit-constant`). Un même énoncé peut porter
+plusieurs modèles ; lequel est « primaire » est un jugement d'auteur.
+
+**Ce qui reste vrai du constat des critiques, et que la convention ne couvre
+pas.** Le champ `item_source` **ne distingue pas** la copie verbatim de la
+variation. Les 48 copies conformes ont un coût réel — l'item du banc, pour cet
+élève-là, mesure un souvenir — et **rien dans les fichiers ne dit où ce coût est
+payé**. Le plancher de couverture exclut correctement les checkpoints du
+*comptage* (`items.yaml` le déclare), mais personne ne peut lister les items
+ainsi neutralisés sans refaire cette mesure.
+
+**Et c'est exactement ce flou qui a laissé passer un label FAUX.**
+`geometrie-espace :: cp-r9-intersection` portait `clone_of_GE-30` alors que ses
+nombres étaient ceux de **r-bac** — c'est-à-dire les réponses du sommet, servies
+avant l'essai (§11.45, corrigé le 2026-09-12). Tant que `clone_of_` recouvre
+deux choses, l'étiquette n'est vérifiable par personne.
+
+**Recommandation, pas correction** : distinguer `copie_of_` (verbatim, assumé)
+de `variation_of_` (ré-habillé), et faire du second le défaut. C'est une
+décision de convention → pedagogy-architect / owner.
+
+**Pourquoi aucune porte.** Les trois invariants mécanisables sont **déjà tenus à
+100 %** (aucun clone muet, aucun item cible manquant) ou tenus à 97 % avec des
+exceptions légitimes (le modèle partagé). Armer une porte sur un invariant que
+rien ne viole, et dont les violations plausibles sont des jugements d'auteur,
+ajouterait un instrument qui ne peut que crier à tort. Comme en §11.54 et
+§11.63 : on mesure, on écrit le chiffre, et on dit pourquoi on ne garde pas.
