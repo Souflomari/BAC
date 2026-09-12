@@ -4,7 +4,7 @@
 
 ## R0 — Accroche : pourquoi le daltonisme touche-t-il tellement plus les hommes ?
 
-Voici un fait que tu as peut-être déjà remarqué sans jamais te demander pourquoi. Le daltonisme (la difficulté à distinguer le rouge et le vert) touche de l'ordre d'un homme sur douze, mais beaucoup moins d'une femme sur deux cents. L'écart n'est pas léger : il est massif, et il est constant, dans toutes les populations humaines étudiées.
+Voici un fait que tu as peut-être déjà remarqué sans jamais te demander pourquoi. Le daltonisme (la difficulté à distinguer le rouge et le vert) touche de l'ordre d'un homme sur douze, mais seulement environ une femme sur deux cents. L'écart n'est pas léger : il est massif, et il est constant, dans toutes les populations humaines étudiées.
 
 **Avant de lire la suite, prends position.** Ce grand déséquilibre entre les sexes te semble-t-il un simple hasard statistique (les hommes seraient, par exemple, plus exposés à un facteur environnemental) — ou soupçonnes-tu qu'il existe une raison structurelle, ancrée dans la façon même dont un homme et une femme héritent différemment de leurs chromosomes ? Choisis une position avant de continuer.
 
@@ -12,7 +12,7 @@ Voici un fait que tu as peut-être déjà remarqué sans jamais te demander pour
 
 ---
 
-Ce n'est pas un hasard. Le daltonisme est dû à un gène porté par le chromosome X — et un homme et une femme n'ont pas le même nombre de chromosomes X. C'est cette asymétrie, et rien d'autre, qui explique l'écart. Mais pour comprendre précisément pourquoi, et pour être capable de reconnaître ce type de transmission dans n'importe quelle famille, il faut d'abord se donner un outil que le chapitre précédent ne fournissait pas.
+Ce n'est pas un hasard. Le daltonisme est dû à un gène porté par le chromosome X — et un homme et une femme n'ont pas le même nombre de chromosomes X. C'est cette asymétrie, et rien d'autre, qui explique l'écart. Mais pour comprendre précisément pourquoi, et pour être capable de reconnaître ce type de transmission dans n'importe quelle famille, il faut d'abord se donner un outil que la leçon précédente ne fournissait pas.
 
 Dans la leçon sur les lois de Mendel, tu croisais des souris ou des pois à volonté : générations P, F1, F2, autant de croisements contrôlés que nécessaire. Chez l'Homme, c'est impossible — on ne provoque pas des naissances pour étudier un caractère. Le seul matériau dont dispose un généticien humain, ce sont les familles réelles, telles qu'elles se sont reproduites naturellement, reconstituées sous forme d'**arbres généalogiques**. Toute la démarche de cette leçon consiste à apprendre à lire ces arbres comme un détective lit des indices : en déduire le mode de transmission d'une maladie (récessif ou dominant, porté par un autosome ou par le chromosome X), puis calculer la probabilité qu'un enfant à venir soit atteint.
 
@@ -24,7 +24,7 @@ Dans la leçon sur les lois de Mendel, tu croisais des souris ou des pois à vol
 
 ### Pourquoi l'arbre généalogique remplace l'échiquier de croisement
 
-Un arbre généalogique (on dit aussi **pedigree**) représente les liens de parenté et les phénotypes observés dans une famille réelle, génération après génération. Contrairement aux croisements P, F1, F2 du chapitre précédent, on ne choisit pas les unions : on part de ce qui existe déjà, et on remonte l'enquête à l'envers — des phénotypes observés vers les génotypes qu'ils impliquent.
+Un arbre généalogique (on dit aussi **pedigree**) représente les liens de parenté et les phénotypes observés dans une famille réelle, génération après génération. Contrairement aux croisements P, F1, F2 de la leçon précédente, on ne choisit pas les unions : on part de ce qui existe déjà, et on remonte l'enquête à l'envers — des phénotypes observés vers les génotypes qu'ils impliquent.
 
 ### Les conventions de lecture
 
@@ -51,7 +51,7 @@ Cette famille illustre une maladie génétique rare et bien documentée : la **d
 
 Une cellule humaine porte 46 chromosomes, organisés en 23 paires. Parmi elles, **22 paires sont des autosomes** : elles sont rigoureusement identiques, en nombre et en nature, chez l'homme et chez la femme. La **23ᵉ paire** est différente : ce sont les **gonosomes** (ou chromosomes sexuels) — une femme porte deux chromosomes X ($X X$), un homme porte un chromosome X et un chromosome Y ($X Y$).
 
-**Pourquoi cette distinction va compter tout au long de la leçon :** un gène porté par un autosome se transmet de la même façon, quel que soit le sexe de l'enfant qui hérite — c'est le cas qu'on a étudié tout le chapitre précédent. Un gène porté par un gonosome (en pratique, presque toujours le chromosome X, le chromosome Y étant beaucoup plus petit et portant très peu de gènes) se transmet, lui, de façon **différente selon le sexe de l'enfant** — parce qu'un fils et une fille n'héritent pas des mêmes chromosomes sexuels de leurs deux parents. On appelle une maladie due à un gène porté par un gonosome une maladie **liée au sexe** (ou **gonosomale**), par opposition à une maladie **autosomale**.
+**Pourquoi cette distinction va compter tout au long de la leçon :** un gène porté par un autosome se transmet de la même façon, quel que soit le sexe de l'enfant qui hérite — c'est le cas qu'on a étudié toute la leçon précédente. Un gène porté par un gonosome (en pratique, presque toujours le chromosome X, le chromosome Y étant beaucoup plus petit et portant très peu de gènes) se transmet, lui, de façon **différente selon le sexe de l'enfant** — parce qu'un fils et une fille n'héritent pas des mêmes chromosomes sexuels de leurs deux parents. On appelle une maladie due à un gène porté par un gonosome une maladie **liée au sexe** (ou **gonosomale**), par opposition à une maladie **autosomale**.
 
 ### Vérification rapide
 
@@ -65,11 +65,11 @@ Avant de continuer : peux-tu dire, sans relire, combien de paires de chromosomes
 
 ### Le mécanisme qui rend ce test possible
 
-Reprends la définition du chapitre précédent : un allèle **dominant** s'exprime dans le phénotype dès qu'il est présent en un seul exemplaire ; un allèle **récessif** ne s'exprime que lorsqu'il est présent en double exemplaire (génotype homozygote). Cette seule différence a une conséquence directe et testable sur un arbre généalogique.
+Reprends la définition de la leçon précédente : un allèle **dominant** s'exprime dans le phénotype dès qu'il est présent en un seul exemplaire ; un allèle **récessif** ne s'exprime que lorsqu'il est présent en double exemplaire (génotype homozygote). Cette seule différence a une conséquence directe et testable sur un arbre généalogique.
 
 **Si l'allèle responsable d'une maladie est dominant**, alors tout individu qui le porte — même un seul exemplaire — est atteint. Autrement dit, un enfant atteint doit nécessairement avoir reçu cet allèle d'un de ses deux parents, et ce parent, portant lui aussi l'allèle dominant, doit lui-même être atteint. (On admet ici, comme le fait le programme, l'hypothèse simplificatrice d'une pénétrance complète et l'absence de mutation nouvelle dans la famille : chaque allèle vient d'un parent qui le porte.) **Une maladie dominante ne saute donc jamais de génération.**
 
-**Si l'allèle est récessif**, un individu hétérozygote (porteur d'un seul exemplaire) reste phénotypiquement sain — l'allèle dominant masque le récessif, exactement comme dans le chapitre précédent. Deux parents peuvent donc être tous les deux hétérozygotes, tous les deux phénotypiquement sains, et transmettre chacun leur exemplaire récessif au même enfant, qui devient alors homozygote et atteint. **Une maladie récessive peut sauter une génération.**
+**Si l'allèle est récessif**, un individu hétérozygote (porteur d'un seul exemplaire) reste phénotypiquement sain — l'allèle dominant masque le récessif, exactement comme dans la leçon précédente. Deux parents peuvent donc être tous les deux hétérozygotes, tous les deux phénotypiquement sains, et transmettre chacun leur exemplaire récessif au même enfant, qui devient alors homozygote et atteint. **Une maladie récessive peut sauter une génération.**
 
 ### Le test
 
@@ -143,14 +143,14 @@ L'erreur la plus fréquente à ce stade : chercher à trancher autosomal / lié 
 
 ### Une notation qui change de forme, et pourquoi
 
-Pour un gène autosomal, on note le génotype avec le double trait `//` du chapitre précédent (par exemple $A//a$), parce que les deux allèles occupent deux chromosomes homologues strictement équivalents. Pour un gène porté par l'X, ce n'est plus le cas : le chromosome Y n'a pas d'équivalent pour la quasi-totalité des gènes de l'X. On adapte donc la notation : on écrit l'allèle porté directement en exposant du chromosome qui le porte.
+Pour un gène autosomal, on note le génotype avec le double trait `//` de la leçon précédente (par exemple $A//a$), parce que les deux allèles occupent deux chromosomes homologues strictement équivalents. Pour un gène porté par l'X, ce n'est plus le cas : le chromosome Y n'a pas d'équivalent pour la quasi-totalité des gènes de l'X. On adapte donc la notation : on écrit l'allèle porté directement en exposant du chromosome qui le porte.
 
 - **Chez la femme** (deux chromosomes X, donc deux allèles réels pour ce gène) : $X^{A}X^{A}$ (saine, homozygote), $X^{A}X^{a}$ (saine, porteuse — hétérozygote), $X^{a}X^{a}$ (atteinte, homozygote).
 - **Chez l'homme** (un seul chromosome X, accompagné d'un Y qui ne porte pas ce gène) : $X^{A}Y$ (sain) ou $X^{a}Y$ (atteint). Deux génotypes possibles seulement, jamais trois.
 
 ### Hémizygotie : la notion qui explique tout
 
-Un homme ne porte qu'**un seul exemplaire** des gènes situés sur l'X — on dit qu'il est **hémizygote** pour ces gènes (littéralement : « à moitié zygote », un seul exemplaire au lieu de deux). Ce n'est pas une exception bizarre : c'est la conséquence directe du fait qu'il n'a qu'un seul chromosome X, sans second exemplaire homologue pour ce gène (le Y, beaucoup plus petit, ne porte pas de version de ce gène).
+Un homme ne porte qu'**un seul exemplaire** des gènes situés sur l'X — on dit qu'il est **hémizygote** pour ces gènes (du grec *hémi-*, « à moitié » : un seul exemplaire du gène, là où les chromosomes homologues en portent normalement une paire). Ce n'est pas une exception bizarre : c'est la conséquence directe du fait qu'il n'a qu'un seul chromosome X, sans second exemplaire homologue pour ce gène (le Y, beaucoup plus petit, ne porte pas de version de ce gène).
 
 **Conséquence mécanique, et c'est la clé de toute la leçon :** un homme ne peut jamais être « porteur sain » d'une maladie récessive liée à l'X. Chez une femme hétérozygote, l'allèle dominant sur le second X masque le récessif — elle est saine tout en portant l'allèle. Chez l'homme, il n'y a pas de second X pour masquer quoi que ce soit : quel que soit l'allèle présent sur son unique X, il s'exprime directement dans le phénotype. $X^{a}Y$ n'a pas de case intermédiaire « porteur sain » : il est atteint, point final.
 
@@ -160,7 +160,7 @@ Reviens à la question du tout début. Pour qu'une **femme** soit atteinte d'une
 
 ### Un échiquier adapté aux chromosomes sexuels
 
-L'échiquier de croisement du chapitre précédent s'utilise exactement de la même façon ici, à condition de traiter le chromosome sexuel comme n'importe quel autre gamète. Reprends la mère porteuse $X^{A}X^{a}$ et le père sain $X^{A}Y$ du chapitre 4 (la famille du daltonisme) :
+L'échiquier de croisement de la leçon précédente s'utilise exactement de la même façon ici, à condition de traiter le chromosome sexuel comme n'importe quel autre gamète. Prends une mère porteuse $X^{A}X^{a}$ et un père sain $X^{A}Y$ :
 
 | | Gamète $X^{A}$ ($\frac12$, père) | Gamète $Y$ ($\frac12$, père) |
 |--|--|--|
@@ -206,7 +206,7 @@ II-2, phénotypiquement sain, a donc $\frac23$ de chances d'être porteur ($A//a
 
 II-2 se marie à II-3, une femme saine non apparentée à la famille, dont on sait par ailleurs (test génétique dans sa propre famille) qu'elle est hétérozygote confirmée : $A//a$. Le couple attend un enfant, III-1. Quelle est la probabilité que III-1 soit atteint de drépanocytose ?
 
-**Ce qu'on cherche ici, et pourquoi ce geste :** on ne connaît pas le génotype de II-2 avec certitude — il faut donc envisager les deux cas possibles pour lui (établis ci-dessus), calculer la probabilité que III-1 soit atteint DANS CHAQUE CAS, puis pondérer chaque résultat par la probabilité de ce cas. C'est la même logique de combinaison de probabilités indépendantes qu'au chapitre précédent, appliquée ici à une incertitude de départ plutôt qu'à un simple croisement.
+**Ce qu'on cherche ici, et pourquoi ce geste :** on ne connaît pas le génotype de II-2 avec certitude — il faut donc envisager les deux cas possibles pour lui (établis ci-dessus), calculer la probabilité que III-1 soit atteint DANS CHAQUE CAS, puis pondérer chaque résultat par la probabilité de ce cas. C'est la même logique de combinaison de probabilités indépendantes qu'à la leçon précédente, appliquée ici à une incertitude de départ plutôt qu'à un simple croisement.
 
 - **Si II-2 est $A//a$** (probabilité $\frac23$) : le croisement est $A//a \times A//a$, qui donne $\frac14$ d'enfants $a//a$ (atteints) — exactement l'échiquier du chapitre 3.
 - **Si II-2 est $A//A$** (probabilité $\frac13$) : le croisement est $A//A \times A//a$ ; ce parent ne transmet que $A$, donc **aucun** enfant ne peut être $a//a$ — probabilité $0$.
@@ -219,7 +219,7 @@ $$P(\text{III-1 atteint}) = \left(\frac{2}{3} \times \frac{1}{4}\right) + \left(
 
 ### Vérification rapide
 
-Le résultat $\frac16$ est logiquement plus petit que $\frac14$ (le risque si II-2 était certainement hétérozygote) : c'est cohérent, puisqu'il existe une chance non nulle ($\frac13$) que II-2 ne transmette aucun risque du tout. Une probabilité obtenue par ce type de calcul doit toujours être strictement inférieure au risque du cas le plus défavorable, jamais égale ni supérieure.
+Le résultat $\frac16$ est logiquement plus petit que $\frac14$ (le risque si II-2 était certainement hétérozygote) : c'est cohérent, puisqu'il existe une chance non nulle ($\frac13$) que II-2 ne transmette aucun risque du tout. Une probabilité obtenue par ce type de calcul ne peut jamais dépasser le risque du cas le plus défavorable ; elle lui est même strictement inférieure dès qu'un cas moins défavorable garde une probabilité non nulle — comme ici.
 
 [[checkpoint:cp-r5-probabilite]]
 
