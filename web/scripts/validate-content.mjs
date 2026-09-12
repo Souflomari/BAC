@@ -1378,6 +1378,75 @@ for (const dir of dirs) {
     }
   }
 
+  // ── §11.77 Un « chapitre N » NU qui dépasse la leçon hôte ───────────────
+  //    Le corpus renvoie beaucoup au chapitre : **5 516 citations mesurées**
+  //    le 2026-09-12, réparties entre renvois internes (« au chapitre 4 ») et
+  //    renvois croisés (« le chapitre 8 de "Suites numériques" »). Cette
+  //    densité est une force — c'est ce qui fait tenir le décortiquer d'une
+  //    notion à l'autre — et c'est exactement pourquoi un renvoi faux coûte :
+  //    l'élève qui l'ouvre ne trouve rien, et conclut qu'il a raté quelque
+  //    chose. ADR 0031 : un renvoi est une instruction.
+  //
+  //    Cette porte ne juge QUE le cas qu'elle peut trancher seule : un
+  //    « chapitre N » NU — aucune notion nommée avant lui dans le même champ —
+  //    dont le numéro dépasse le nombre de « ## » de la leçon hôte. Un renvoi
+  //    nu ne peut désigner que la leçon courante ; s'il la dépasse, il ne
+  //    désigne rien.
+  //
+  //    Sur les 5 516, deux dépassaient. Un seul était un défaut : dans un
+  //    champ `math` de derivabilite — qui se rend SEUL, en formule détachée —
+  //    « (théorème de la limite monotone, chapitre 8) », alors que la leçon
+  //    hôte a 7 chapitres et que la cible est « Suites numériques » (12
+  //    chapitres, dont le 8e est bien ce théorème). Le `math` VOISIN, lui,
+  //    écrivait « chapitre 9 de Suites numériques » : le fichier se
+  //    contredisait à une ligne d'intervalle.
+  //
+  //    L'autre était un faux positif, et il donne l'exemption : « … et par
+  //    "Réactions acido-basiques" (chapitre 8, exemple travaillé 2) » — la
+  //    cible est nommée juste avant, la parenthèse s'y rapporte. D'où la
+  //    règle : si une notion est nommée (« … » ou **gras**) AVANT le renvoi
+  //    dans le même champ, on se tait.
+  {
+    const RENDU_TXT = new Set(["intro", "stem", "reasoning", "note", "text", "feedback",
+      "solution", "correct_feedback", "title", "part", "math", "caption"]);
+    const nbChapitres = (md.match(/^##\s/gm) || []).length;
+    const horsBornes = [];
+    const examiner = (txt, ou) => {
+      const re = /chapitres?\s+(\d+)\b/gi;
+      let m;
+      while ((m = re.exec(txt)) !== null) {
+        const n = parseInt(m[1], 10);
+        if (n <= nbChapitres) continue;
+        // Une notion nommée AVANT ce renvoi, dans le même champ ? Alors le
+        // renvoi lui appartient et cette porte n'a rien à en dire.
+        const avant = txt.slice(0, m.index);
+        if (/[«"][^»"]{4,70}[»"]|\*\*[^*]{4,70}\*\*/.test(avant)) continue;
+        // « chapitre N de <quelque chose> » désigne aussi une autre leçon.
+        if (/^\s+d[eu]\s+\S/.test(txt.slice(m.index + m[0].length))) continue;
+        horsBornes.push(`${ou} : « ${m[0]} » — cette leçon n'a que ${nbChapitres} chapitres`);
+      }
+    };
+    examiner(md, "lesson.md");
+    const chasse = (n, fichier) => {
+      if (Array.isArray(n)) { for (const x of n) chasse(x, fichier); return; }
+      if (!n || typeof n !== "object") return;
+      for (const [k, v] of Object.entries(n)) {
+        if (k === "sourcing" || k === "item_source" ||
+            k === "coverage_summary" || k === "contradicts_principle") continue;
+        if (typeof v === "string" && RENDU_TXT.has(k)) examiner(v, `${fichier} → « ${k} »`);
+        else chasse(v, fichier);
+      }
+    };
+    for (const fname of Object.keys(yamlDocs)) chasse(yamlDocs[fname], fname);
+    for (const f of [...new Set(horsBornes)]) {
+      console.error(
+        `  ✗ ${dir}: ${f} — un renvoi nu ne peut désigner que la leçon courante. ` +
+          `Nomme la notion visée, ou corrige le numéro.`
+      );
+      dirFail++;
+    }
+  }
+
   // ── Rung integrity, SECOND DIRECTION (warning only) — le miroir de la porte
   //    ci-dessus. Celle-là attrape un item qui vise un rung absent ; elle ne
   //    voit RIEN quand c'est le titre qui a perdu son code. Un « ## » qui
