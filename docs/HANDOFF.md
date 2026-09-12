@@ -6076,14 +6076,27 @@ ajouterait un instrument qui ne peut que crier à tort. Comme en §11.54 et
 
 ---
 
-### 11.65 Les figures orphelines : 6 sur 268 — et la moitié imprime des réponses
+### 11.65 Les figures orphelines : la porte existait déjà — ce qu'elle ne dit pas, c'est que trois d'entre elles impriment des réponses
 
 Trouvé en triant `geometrie-espace`, dont la critique pédagogie a repéré un SVG
 qu'aucun marqueur ne pose et dont les légendes déroulent tout le corrigé du
-sommet. Généralisé au corpus.
+sommet.
 
-**268 figures SVG ; 6 qu'aucun marqueur `[[figure:]]` / `[[motion:]]` /
-`[[interactive:]]` ne place.**
+**CORRECTION, ÉCRITE D'ABORD PARCE QUE C'EST MON ERREUR.** J'ai d'abord
+présenté ce balayage comme une mesure inédite, et conclu « aucune porte ».
+**Les deux sont faux.** La porte existe depuis §11.43
+(`validate-content.mjs:1194`, sens inverse de la porte figures), elle est
+documentée dans `docs/audits/INSTRUMENTS.md`, et elle signale **exactement ces
+fichiers à chaque exécution** : « figure asset media/... n'est placée par aucun
+marqueur ». J'aurais eu la liste juste en lisant la sortie du validateur, au
+lieu d'écrire une sonde — dont le premier jet comptait d'ailleurs 20 au lieu de
+6. **Leçon : lire l'inventaire des instruments avant d'affirmer qu'une chose
+n'est pas instrumentée.**
+
+Ce qui reste de neuf, et qui est la partie décision-relevante : **la porte dit
+qu'une figure est orpheline, elle ne dit pas laquelle est DANGEREUSE.**
+
+**268 figures SVG ; 6 orphelines** (le chiffre de la porte).
 
 *Une correction de méthode, avant les chiffres.* Un premier passage en annonçait
 **20**. Faux : dix d'entre elles sont des `*.motion.svg`, dont le slug de
@@ -6114,9 +6127,8 @@ explicitement comme matériel d'**après-essai** — auquel cas il faut un endro
 où « après l'essai » veuille dire quelque chose, ce que le format actuel des
 sidecars ne prévoit pas.
 
-**Pourquoi aucune porte.** Une figure orpheline est une dette d'auteur
-légitime (dessinée, pas encore placée), pas un défaut — et distinguer « ses
-légendes donnent une réponse » de « ses légendes enseignent » est une lecture,
-pas un motif. Ce qui est mécanisable — le compte d'orphelines — est déjà visible
-ici, et le danger réel est consigné asset par asset. Même arbitrage qu'en
-§11.54, §11.63 et §11.64.
+**Pourquoi la porte ne va pas plus loin.** Elle fait déjà ce qu'une porte peut
+faire : nommer les orphelines. Distinguer « ses légendes donnent une réponse »
+de « ses légendes enseignent » est une lecture, pas un motif — c'est pourquoi le
+classement ci-dessus est écrit ici, asset par asset, plutôt que tenté en code.
+Même arbitrage qu'en §11.54, §11.63 et §11.64.
