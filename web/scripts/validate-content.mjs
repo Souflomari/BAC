@@ -852,9 +852,38 @@ for (const dir of dirs) {
       }
       globalThis.__lessonTitles = idx;
     }
+    if (!globalThis.__chapterTitles) {
+      // Les titres de CHAPITRE (## …) sont des cibles légitimes : « le chapitre
+      // « Sous-groupe » » renvoie à l'intérieur d'une leçon, pas à une leçon.
+      const ch = new Set();
+      for (const d of fs.readdirSync(path.join(REPO, "content"))) {
+        const sub = path.join(REPO, "content", d);
+        if (!fs.statSync(sub).isDirectory()) continue;
+        for (const n of fs.readdirSync(sub)) {
+          const lp = path.join(sub, n, "lesson.md");
+          if (!fs.existsSync(lp)) continue;
+          for (const l of fs.readFileSync(lp, "utf8").split("\n")) {
+            if (!l.startsWith("## ")) continue;
+            ch.add(l.slice(3).trim());
+            ch.add(l.slice(3).replace(/^R\d+\s*[-—]\s*/, "").trim());
+          }
+        }
+      }
+      globalThis.__chapterTitles = ch;
+    }
     const norm = (x) => x.normalize("NFD").toLowerCase().replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "");
-    const known = [...globalThis.__lessonTitles.values()].map(norm);
-    const CUE = /(?:chapitres?\s+\d+\s+(?:de|du)|la\s+(?:leçon|notion)|leçon|notion)\s+«\s*([^»]{4,70}?)\s*»/g;
+    const known = [
+      ...[...globalThis.__lessonTitles.values()].map(norm),
+      ...[...globalThis.__chapterTitles].map(norm),
+    ].filter(Boolean);
+    const CUE = /(?:chapitres?(?:\s+\d+)?(?:\s+(?:de|du))?|la\s+(?:leçon|notion)|leçons?|notions?)\s+«\s*([^»]{4,80}?)\s*»/g;
+    // Une citation d'OUVRAGE n'est pas un renvoi vers le corpus : en philo,
+    // « chapitre « De l'identité et de la diversité » » désigne un chapitre de
+    // Locke. Le signe fiable est l'ANNÉE qui précède (« …, 1690, chapitre « … » »).
+    // NE PAS y ajouter un motif d'italique : `\*[^*]{8,}\*` attrape aussi le
+    // **gras** markdown, qui ouvre la plupart des paragraphes de leçon — testé
+    // le 2026-09-12, il rendait la porte aveugle sur tout le corpus.
+    const BIBLIO = /(?:1[4-9]\d{2}|20\d{2})/;
     for (const fname of ["lesson.md", "bank.yaml", "items.yaml", "exercises.yaml", "checkpoints.yaml"]) {
       const fp = path.join(abs, fname);
       if (!fs.existsSync(fp)) continue;
@@ -864,9 +893,10 @@ for (const dir of dirs) {
         CUE.lastIndex = 0;
         let m;
         while ((m = CUE.exec(line)) !== null) {
-          const ref = norm(m[1]);
+          const ref = norm(m[1].replace(/\*/g, ""));
           if (!ref) continue;
           if (known.some((k) => k === ref || k.includes(ref) || ref.includes(k))) continue;
+          if (BIBLIO.test(line.slice(0, m.index))) continue;
           dead.add(m[1]);
         }
       }

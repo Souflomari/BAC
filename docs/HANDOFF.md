@@ -4809,7 +4809,7 @@ Comme le §11.43, elle tourne en CI (validate-content --strict, 62 notions) sans
 jamais bloquer, et le sens « valeur qui ne résout pas » complète, pour les
 rungs, ce que la porte marqueur→cible fait déjà pour les figures (ADR 0031).
 
-### 11.45 La campagne de correction de contenu vague 1 — quinze notions triées, 107 correctifs objectifs, les bloquants consignés
+### 11.45 La campagne de correction de contenu vague 1 — seize notions triées, 119 correctifs objectifs, les bloquants consignés
 
 **EN COURS (une notion à la fois, cadence critiques).** Après les portes
 d'intégrité (§11.43 figures orphelines, §11.44 rung↔titre), la vague-1
@@ -4839,9 +4839,10 @@ Treize notions à ce stade :
 | `maths/calcul-integral` | 7 | maths **PRISTINE** (2 critiques : « aucun constat de calcul ») ; faux universel L363 (« ch.2 suppose f≥0 ») qui **contredit CI-11** ; faux universel CI-23 (μ=f(milieu) « propre aux affines uniquement ») + « à l'exception de » inversé ; renvois morts « chapitre Dérivation » (×5), « Fonction racine carrée », « chapitre suivant » (×5)→ch2 ; 2 légendes. **SEV1 cadre** → research-lead/owner : changement de variable enseigné contre la `limite` (et `bank:487` vs sujet `:1189` se contredisent), **Riemann+TAF dans une notion déclarée SExp** (exclusion SM), aucune filière en champ machine, arctan/longueur d'arc hors-cadre ; **volume de révolution TOTALEMENT absent** (savoir-faire des 2 filières) → content-author ; jargon banque (« hors socle », « SCOPE NOTE », \text dans KaTeX) **déféré avec la portée** ; habileté PC sur checkpoints maths ; sommet = 2/9 savoir-faire, partition d'un exercice |
 | `maths/suites-numeriques` | 12 | maths **PRISTINE** (2 critiques + recalcul indépendant : réservoir, les 2 récurrences, ε–N, gendarmes, tout le chapitre homographique, les 2 sommets, et le `coverage_summary` recompté deux fois depuis les 114 tags — aucun écart) ; **hypothèse manquante qui fausse la recette** (« $f(I)\subset I$ donc bornée » : il faut $I$ **borné** — $u_{n+1}=u_n^2+1$ sur $[1;+\infty[$ la met en défaut) ; faux universel « le mécanisme ne dépend pas de $a,b,c,d$ » démenti par le **3ᵉ exemple de la leçon** ($\Delta=-3$) ; résultat encadré sans $u_n\neq\beta$ ; « théorème qu'on va démontrer » que le ch.8 refuse ensuite ; **2 réponses imprimées au-dessus de la porte d'essai** (les libellés de partie se rendent hors du gate) ; **barème 4 pts inventé** (le relevé vérifié n'en porte aucun ; les 9 questions somment à 3,75). **SEV1 cadre** → research-lead : notion revendiquée par les DEUX cadres alors que `maths-sexp.yaml:78` exclut les adjacentes — ch.11 + 3 items hors-programme SExp **sans barrière** ; **le chapitre homographique n'a aucun code de barreau** (0 item, 0 checkpoint, 0 figure, invisible au coverage) → content-author ; 400 lignes sans aucun commit ; aucun `habilete` ; 21 % d'application directe contre 40 % |
 | `maths/fonction-exponentielle` | 11 | maths **PRISTINE** (les 31 items, les 2 sommets de bout en bout, les 6 barèmes et les sujets 2019/2020/2025 re-dérivés : aucune faute d'arithmétique ; `coverage_summary` recompté par les DEUX critiques depuis les tags bruts, juste ; 87 citations « chapitre N » sur 88 correctes) ; **33 notes de pas dont le TeX arrivait NU chez l'élève** (`e^{x/2}` rendu accolades comprises — vérifié en rendant la chaîne dans le vrai pipeline) ; **deux fautes dans une même phrase de banque** (« chapitre 2 » pour un résultat que le chapitre 2 DIFFÈRE explicitement, et « croissance stricte » qui ne donne pas la limite) ; liste des outils empruntés fausse **dans les deux sens** (l'IPP ne sert dans aucun des deux exercices ; la bijection et $(f^{-1})'$, qu'ils exigent, sont absentes) ; description de figure qui **durcit** une lecture que le relevé donne hésitante ($g(0{,}5)=1{,}92$, pas $\approx 4$) ; note décrivant $(e^{x/2})^2-1$ pour $(e^{x/2}-1)^2$ ; règle des puissances encadrée sans quantificateur ; « UNE primitive … $+C$ » ; trois commentaires périmés dont un qui affirme le CONTRAIRE de l'état publié. **SEV1 cadre** → research-lead : **aucune filière déclarée** et les fichiers se contredisent (lesson dit SM, checkpoints dit SExp) ; savoir-faire « étudier $a^x$ et $x^\alpha$ » enseigné NULLE PART ; sommet SExp 8,5 pts contre une banque SM 10 pts. Pédagogie : 4 lignes de grille non réclamées, R1/R6/R7 sans commit, **l'intro de r-variation répond à 3 de ses 9 questions**, q5b imprime sa réponse (asset $(C_g)$ manquant), falaise R7→R8, zéro ancrage réel en 471 lignes, niveau 3 à 6 % contre 20 % |
+| `maths/nombres-complexes-1` | 12 | `coverage_summary` recompté INDÉPENDAMMENT par les deux critiques : exact, zéro gonflage ; toute l'arithmétique (33 items, 5 checkpoints, 2 sommets, 7 cartes de banque), les 7 barèmes et la géométrie des figures au pixel — **zéro erreur numérique, aucun barème inventé** ; les deux critiques ont recompté les 9 titres `##` et confirment que la quasi-totalité des « chapitre N » sont JUSTES. Corrigé : **quatre affirmations sur ce que demande l'examen, toutes falsifiées par le relevé de la notion** (« les sujets posent des coefficients complexes » 0/7 ; « revient dans presque tous les sujets » 0/7 ; « le cas le plus courant » 0/7 ; « se trompe une fois sur deux » alors que les racines sont conjuguées 4/4) ; encadré « $z$ imaginaire pur $\iff z=-\bar z$ » **faux sous la définition de la leçon elle-même** ($z=0$) ; titre de leçon inexistant ; **4 citations « chapitre 8 » visant un contenu que le chapitre 8 ne porte pas** ; renvoi interne mort dans un SVG ; « Discriminant complexe » pour un discriminant réel négatif ; **une réponse imprimée au-dessus de la porte d'essai dans les DEUX exercices** (l'intro donnait $a = 1-i\sqrt3$, l'une des racines que q1 demande — le sujet vérifié pose l'équation en q1 et les affixes en q2) ; 2 commentaires périmés. **SEV1 cadre** → research-lead : **brèche d'exclusion** — les chapitres 6–7 (34 % du corps) enseignent le second degré à coefficients COMPLEXES, que `maths-sexp.yaml:305` exclut nommément, dans une notion entièrement SExp ; et le cadre attribue module **ET argument** à ce slug alors que la leçon ne définit jamais l'argument tout en le faisant tester. Pédagogie : 205 lignes sans un seul commit ni item, rampe qui redescend puis saute au sommet, 13 lignes de grille sur 20 non réclamées, la figure d'accroche donne la réponse du checkpoint d'accroche |
 
-**107 correctifs objectifs** au total, 0 échec `validate-content --strict` sur les
-quinze. Les défauts **bloquants** ne sont jamais réécrits en autonomie — ils
+**119 correctifs objectifs** au total, 0 échec `validate-content --strict` sur les
+seize. Les défauts **bloquants** ne sont jamais réécrits en autonomie — ils
 touchent des règles biologiques enseignées (genetique-humaine F1 : « un père
 atteint lié à l'X ne transmet jamais à ses fils » est faux quand la mère est
 conductrice) ou une décision de conception (genetique-humaine P2 : les
@@ -5363,3 +5364,50 @@ ratio. Tant que (a) et (b) manquent, toute porte serait verte sans rien mesurer
 **Portée du défaut : nulle côté élève.** `habilete` n'apparaît nulle part dans
 `web/src` — c'est une métadonnée d'auteur, jamais rendue. Le coût est
 d'auditabilité, pas d'affichage.
+
+### 11.55 La porte des renvois morts, troisième élargissement — et une garde qui a failli l'aveugler
+
+`nombres-complexes-1` citait *le chapitre « Nombres complexes : formes et
+transformations »*, un titre qui n'existe pas. La porte de §11.48/§11.52 ne l'a
+pas vu : sa cue exigeait **un numéro** (« chapitre N de »), et le détecteur de
+quasi-titre ne mordait pas non plus (recouvrement 0,29 avec le vrai titre,
+« Nombres complexes — forme trigonométrique et applications »).
+
+**Troisième forme ajoutée** : « chapitre « X » » **sans numéro**. Deux
+précautions ont été nécessaires, et la seconde est la leçon du jour.
+
+**(a) Les titres de CHAPITRE sont des cibles légitimes.** « le chapitre
+« Sous-groupe » » renvoie à l'intérieur d'une leçon, pas à une leçon : sans les
+indexer, la porte criait au loup sur 13 renvois parfaitement justes (dont les
+deux chapitres non numérotés de `nombres-complexes-1` lui-même). Les ~490 titres
+`##` sont donc indexés comme cibles.
+
+**(b) Une citation d'OUVRAGE n'est pas un renvoi.** En philo,
+`la-personne/lesson.md:96` cite *le chapitre « De l'identité et de la
+diversité »* — un chapitre de **Locke**, *Essai philosophique concernant
+l'entendement humain*, 1690. Il fallait une garde. **La première version en
+posait deux : une année, OU un titre en italique `\*[^*]{8,}\*`.** Ce second
+motif attrape aussi le **gras** markdown — `**Ce qu'on cherche ici…**` — qui
+ouvre la plupart des paragraphes de leçon. Résultat : la porte devenait
+**aveugle sur presque tout le corpus**, et le test rouge est passé vert. Pris
+uniquement parce que l'injection de contrôle n'a pas déclenché ce qu'elle aurait
+dû. Garde resserrée à **l'année seule**, avec le motif d'italique explicitement
+proscrit en commentaire.
+
+**Deux renvois morts de plus, trouvés par la cue élargie et corrigés :**
+`pc/transformations-deux-sens` citait « Estérification–hydrolyse » (le vrai
+titre est « Estérification **et** hydrolyse ») et `maths/equations-differentielles`
+citait « Dérivation » — la même leçon fantôme déjà corrigée ailleurs deux fois.
+
+**Vérifiée dans les deux sens** (ADR 0031) : « Dérivation » réinjecté sans
+numéro déclenche la porte en le nommant ; le revert la rend silencieuse ; et la
+citation de Locke reste ignorée. 0 failure, 0 avertissement de renvoi sur les 62
+notions.
+
+**Corrigé aussi, dans `chapters.ts` :** l'exemple « nombres-complexes-1
+« chapitre 8 » = R5 » ne disait pas dans quel FICHIER regarder. Une critique a
+grepé le `lesson.md`, n'y a rien trouvé, et a rapporté l'exemple comme fabriqué.
+Il ne l'est pas — les 18 occurrences sont dans `bank.yaml`, et une seconde
+critique a confirmé indépendamment que chap.8 = R5 — mais un exemple qu'on ne
+peut pas localiser est un exemple qu'on ne peut pas vérifier. Le commentaire
+nomme désormais le fichier.

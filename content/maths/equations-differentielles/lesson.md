@@ -62,7 +62,7 @@ L'égalité $y'=ay$ est vérifiée, quelle que soit la valeur de $C$. Donc **cha
 
 Vérifier qu'une famille de fonctions marche ne dit pas qu'il n'en existe pas d'autres, d'une forme complètement différente, qu'on aurait ratées. Pour résoudre l'équation complètement, il faut montrer l'inverse : que **toute** fonction $y$ qui vérifie $y'=ay$ est nécessairement de la forme $Ce^{ax}$. C'est ce que dit vraiment « résoudre » une équation différentielle — pas « en proposer une qui marche », mais « caractériser l'ensemble complet ».
 
-**Ce qu'on cherche ici, et pourquoi ce geste :** on part d'une fonction $y$ dont on sait seulement qu'elle vérifie $y'=ay$ — on ne sait rien d'autre sur elle. L'outil : fabriquer, à partir de $y$, une nouvelle fonction dont on peut montrer que la dérivée est nulle partout — car une fonction de dérivée nulle sur $\mathbb{R}$ est constante (chapitre « Dérivation »). Le bon candidat est $z(x) = y(x)\,e^{-ax}$ : le facteur $e^{-ax}$ est choisi précisément pour « défaire » le $e^{ax}$ qu'on soupçonne être caché dans $y$.
+**Ce qu'on cherche ici, et pourquoi ce geste :** on part d'une fonction $y$ dont on sait seulement qu'elle vérifie $y'=ay$ — on ne sait rien d'autre sur elle. L'outil : fabriquer, à partir de $y$, une nouvelle fonction dont on peut montrer que la dérivée est nulle partout — car une fonction de dérivée nulle sur $\mathbb{R}$ est constante (chapitre « Dérivabilité et étude des fonctions »). Le bon candidat est $z(x) = y(x)\,e^{-ax}$ : le facteur $e^{-ax}$ est choisi précisément pour « défaire » le $e^{ax}$ qu'on soupçonne être caché dans $y$.
 
 On dérive $z$ comme un produit :
 

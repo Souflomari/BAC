@@ -31,8 +31,9 @@
 # quotient / d'un conjugué) — un registre que le corps de la leçon (R1–R5,
 # socle algébrique/conjugué/module/géométrie du plan complexe) ne couvre pas
 # encore formellement. bk-2021-n-x3 mobilise en plus une **homothétie** de
-# centre O et de rapport réel : une extension directe de l'argument déjà en
-# place au R5 (« coefficient réel ⇒ vecteurs colinéaires »), mais le mot
+# centre O et de rapport réel : une extension de ce que R5 met en
+# place (l'affixe d'un vecteur) — le critère « coefficient réel ⇒ vecteurs
+# colinéaires » n'y est PAS énoncé, mais le mot
 # « homothétie » lui-même n'est pas un terme du corps R1–R5. Le rung R6 le
 # signale déjà pour r-bac (note de validation en pied de lesson.md,
 # checkpoint cp-bac-exponentielle) ; les champs `reasoning` des sept entrées
@@ -480,7 +481,7 @@ entries:
 
   # ── bk-2020-n-x2 — 2020 N, Exercice 2 : discriminant, formes trigonométriques, rotation, alignement O, B, D ──
   - id: bk-2020-n-x2
-    title: "Discriminant complexe, formes trigonométriques et alignement par rotation"
+    title: "Discriminant négatif, formes trigonométriques et alignement par rotation"
     source:
       year: 2020
       session: normale
@@ -563,7 +564,7 @@ entries:
           Même méthode pour les deux : module par $|z|=\sqrt{\text{Re}(z)^2+\text{Im}(z)^2}$ (chapitre 5), argument en lisant $\cos\theta$ et $\sin\theta$ sur la forme algébrique. Pour $b=1+i\sqrt3$ et $c=\sqrt2+i\sqrt2$, les deux paires (partie réelle, partie imaginaire) correspondent à des angles remarquables.
         steps:
           - math: '|b| = \sqrt{1^2+(\sqrt3)^2} = \sqrt4 = 2, \quad \cos\theta_b=\dfrac12,\ \sin\theta_b=\dfrac{\sqrt3}{2} \implies \theta_b=\dfrac{\pi}{3}'
-            note: "Module et argument de b, chapitre 5 : angle remarquable pi sur 3."
+            note: "Module de b, chapitre 5 ; l'argument vient de la forme trigonométrique : angle remarquable pi sur 3."
           - math: 'b = 2\left(\cos\dfrac{\pi}{3}+i\sin\dfrac{\pi}{3}\right)'
             note: "Forme trigonométrique de b."
           - math: '|c| = \sqrt{(\sqrt2)^2+(\sqrt2)^2} = 2, \quad \cos\theta_c=\dfrac{\sqrt2}{2},\ \sin\theta_c=\dfrac{\sqrt2}{2} \implies \theta_c=\dfrac{\pi}{4}'
@@ -716,7 +717,7 @@ entries:
 
           **(0,5 pt)** Montrer que le point $B$ est l'image du point $A$ par une homothétie $h$ de centre $O$ dont on déterminera le rapport.
         reasoning: |-
-          Une homothétie de centre $O$ et de rapport $k$ (réel) transforme un point d'affixe $z$ en un point d'affixe $kz$ — l'extension directe de l'idée de coefficient réel qui rend deux vecteurs colinéaires (chapitre 8), maintenant appliquée depuis le centre lui-même, et au-delà du socle des chapitres 2 à 8 formel. Montrer que $B$ est l'image de $A$ revient donc à écrire $b=ka$ avec $k$ réel, c'est-à-dire $k=\dfrac{b}{a}$, et à vérifier que ce quotient est bien un réel.
+          Une homothétie de centre $O$ et de rapport $k$ (réel) transforme un point d'affixe $z$ en un point d'affixe $kz$ — l'extension directe de l'idée de coefficient réel qui rend deux vecteurs colinéaires (le chapitre 8 donne l'affixe d'un vecteur ; le critère de colinéarité lui-même relève de « Nombres complexes — forme trigonométrique et applications »), maintenant appliquée depuis le centre lui-même, et au-delà du socle des chapitres 2 à 8 formel. Montrer que $B$ est l'image de $A$ revient donc à écrire $b=ka$ avec $k$ réel, c'est-à-dire $k=\dfrac{b}{a}$, et à vérifier que ce quotient est bien un réel.
 
           Le résultat de la question 3, $\bar a\,b=\sqrt3$, donne directement ce quotient : puisque $a\bar a = |a|^2$ et $|a|=1$ (le module de $e^{i\pi/6}$), $\dfrac{b}{a} = \dfrac{b\,\bar a}{a\,\bar a} = \dfrac{\sqrt3}{1} = \sqrt3$ — un réel positif.
         steps:
@@ -932,7 +933,7 @@ entries:
         reasoning: |-
           $A''$ est l'image de $A'$ par $R$ : son affixe est $e^{i\pi/6}a'$. Le module d'une rotation ne change pas : $|A''|=|A'|=|A|=\sqrt6$ (deux rotations successives, même centre $O$, conservent chacune la distance à $O$). L'argument s'obtient en ajoutant $\dfrac{\pi}{6}$ à celui de $A'$ trouvé à la question précédente, $-\dfrac{\pi}{12}$, ce qui donne $\dfrac{\pi}{12}$.
 
-          Pour l'alignement : deux points vus depuis $O$ sont alignés avec $O$ si les vecteurs qui les rejoignent depuis $O$ sont colinéaires, c'est-à-dire si leurs affixes ont le même argument (chapitre 8, étendu ici en langage d'arguments plutôt que de coefficient réel). Or $\arg(b)=\dfrac{\pi}{12}$ (question 3) est exactement l'argument trouvé pour $A''$ : les deux vecteurs pointent dans la même direction depuis $O$.
+          Pour l'alignement : deux points vus depuis $O$ sont alignés avec $O$ si les vecteurs qui les rejoignent depuis $O$ sont colinéaires, c'est-à-dire si leurs affixes ont le même argument (l'argument n'est pas enseigné dans cette leçon : voir « Nombres complexes — forme trigonométrique et applications »). Or $\arg(b)=\dfrac{\pi}{12}$ (question 3) est exactement l'argument trouvé pour $A''$ : les deux vecteurs pointent dans la même direction depuis $O$.
         steps:
           - math: '\left|e^{i\pi/6}\,a''\right| = |a''| = |a| = \sqrt6'
             note: "Deux rotations successives conservent le module : celui du point deux fois tourné vaut le module de a, racine de 6."
@@ -952,7 +953,7 @@ entries:
 
           Le module : une rotation conserve le module, donc $|b'|=|b|=\sqrt6+\sqrt2$ (question 3). Côté droit, $|\overline a|=|a|=\sqrt6$ (chapitre 5 : conjuguer ne change pas le module), donc $\left|\dfrac{3+\sqrt3}{3}\overline a\right| = \dfrac{3+\sqrt3}{3}\sqrt6$ — un calcul qui, développé, redonne $\sqrt6+\sqrt2$.
 
-          L'argument : $\arg(b')=\arg(b)+\dfrac{\pi}{6}$ (rotation d'angle $\pi/6$), avec $\arg(b)=\dfrac{\pi}{12}$ (question 3), donc $\arg(b')=\dfrac{\pi}{4}$. Côté droit, $\arg(\overline a) = -\arg(a) = \dfrac{\pi}{4}$ (chapitre 8 : conjuguer change le signe de l'argument), et le facteur $\dfrac{3+\sqrt3}{3}$ étant réel positif, ne change pas l'argument. Les deux membres ont même module et même argument : ils sont égaux.
+          L'argument : $\arg(b')=\arg(b)+\dfrac{\pi}{6}$ (rotation d'angle $\pi/6$), avec $\arg(b)=\dfrac{\pi}{12}$ (question 3), donc $\arg(b')=\dfrac{\pi}{4}$. Côté droit, $\arg(\overline a) = -\arg(a) = \dfrac{\pi}{4}$ (conjuguer change le signe de l'argument — le chapitre 8 n'en donne que la symétrie axiale ; l'argument est dans « Nombres complexes — forme trigonométrique et applications »), et le facteur $\dfrac{3+\sqrt3}{3}$ étant réel positif, ne change pas l'argument. Les deux membres ont même module et même argument : ils sont égaux.
         steps:
           - math: '|b''| = |b| = \sqrt6+\sqrt2'
             note: "Une rotation conserve le module ; le module de b vaut racine de 6 plus racine de 2 (question 3)."
@@ -961,7 +962,7 @@ entries:
           - math: '\arg(b'') = \arg(b) + \dfrac{\pi}{6} = \dfrac{\pi}{12}+\dfrac{\pi}{6} = \dfrac{\pi}{4}'
             note: "Rotation d'angle pi sur 6 appliquée à B ; l'argument de b vaut pi sur 12 (question 3)."
           - math: '\arg(\overline{a}) = -\arg(a) = \dfrac{\pi}{4}, \quad \dfrac{3+\sqrt3}{3}>0'
-            note: "Conjuguer change le signe de l'argument (chapitre 8) ; le coefficient réel positif ne le change pas."
+            note: "Conjuguer change le signe de l'argument (forme trigonométrique) ; le coefficient réel positif ne le change pas."
           - math: '|b''| = \left|\dfrac{3+\sqrt3}{3}\overline{a}\right| \ \text{et} \ \arg(b'') = \arg\!\left(\dfrac{3+\sqrt3}{3}\overline{a}\right) \implies b'' = \dfrac{3+\sqrt3}{3}\overline{a}'
             note: "Même module et même argument : les deux nombres sont égaux."
       - id: q7
@@ -1083,7 +1084,7 @@ entries:
         reasoning: |-
           La question précédente donne $c=a\left(\dfrac12+\dfrac{\sqrt3}{2}i\right)$, donc $\dfrac{c}{a}=\dfrac12+\dfrac{\sqrt3}{2}i$ (dès que $a\neq0$, ce qui est le cas). C'est exactement le nombre $e^{i\pi/3}$ : module $1$, argument $\dfrac{\pi}{3}$ — un angle remarquable au-delà du socle des chapitres 2 à 8, comme pour $d$ à la question 2)a).
 
-          Deux informations en découlent (chapitre 8 : le quotient de deux affixes-vecteurs porte le rapport des longueurs et l'angle entre elles). Le module $1$ donne $|c|=|a|$, donc $OA=OC$ : le triangle est isocèle en $O$. L'argument $\dfrac{\pi}{3}$ est une mesure de l'angle $\left(\overrightarrow{OA},\overrightarrow{OC}\right)$. Un triangle isocèle dont l'angle au sommet vaut $\dfrac{\pi}{3}$ a nécessairement ses deux autres angles égaux à $\dfrac{\pi-\pi/3}{2}=\dfrac{\pi}{3}$ aussi : les trois angles valent $\dfrac{\pi}{3}$, le triangle est donc équilatéral.
+          Deux informations en découlent (le quotient de deux affixes-vecteurs porte le rapport des longueurs et l'angle entre elles — « Nombres complexes — forme trigonométrique et applications »). Le module $1$ donne $|c|=|a|$, donc $OA=OC$ : le triangle est isocèle en $O$. L'argument $\dfrac{\pi}{3}$ est une mesure de l'angle $\left(\overrightarrow{OA},\overrightarrow{OC}\right)$. Un triangle isocèle dont l'angle au sommet vaut $\dfrac{\pi}{3}$ a nécessairement ses deux autres angles égaux à $\dfrac{\pi-\pi/3}{2}=\dfrac{\pi}{3}$ aussi : les trois angles valent $\dfrac{\pi}{3}$, le triangle est donc équilatéral.
         steps:
           - math: '\dfrac{c}{a} = \dfrac12+\dfrac{\sqrt3}{2}i'
             note: "On divise l'égalité de la question précédente par a (non nul)."

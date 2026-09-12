@@ -21,10 +21,21 @@
  * In the six above, a plain heading SHIFTS every rung after it, so the true
  * chapter of a rung is `1 + (number of ## headings before it)`. Verified
  * 2026-09-12: the prose in those lessons already cites the TRUE rendered
- * number (structures-algebriques « un homomorphisme (chapitre 10) » = R7 ;
- * nombres-complexes-1 « chapitre 8 » = R5 géométrie), and a corpus sweep found
- * ZERO drifted citations. Applying the naive shorthand there would BREAK
+ * number (structures-algebriques « un homomorphisme (chapitre 10) » = R7, in
+ * its lesson.md ; nombres-complexes-1 « chapitre 8 » = R5 géométrie, in its
+ * bank.yaml — 18 occurrences, NONE in that lesson.md), and a corpus sweep
+ * found ZERO drifted citations. Applying the naive shorthand there would BREAK
  * correct citations — do not "fix" them.
+ *
+ * The file is named above on purpose. A wave-1 critic (2026-09-12) grepped
+ * nombres-complexes-1/lesson.md for « chapitre 8 », found none, and reported
+ * this example as fabricated. It is not — but an example you cannot locate is
+ * an example you cannot check, and a comment that invites that conclusion is
+ * doing the opposite of its job. (A second critic independently confirmed
+ * chap.8 = R5 and listed those bank.yaml citations among the correct ones.
+ * Four OTHER « chapitre 8 » citations in that same bank.yaml WERE false —
+ * they pointed at an argument/colinearity criterion R5 does not carry — and
+ * were corrected separately.)
  *
  * This module is the single source BOTH `NotionPageView` (server — needs the
  * real chapter COUNT to size the synthetic "S'entraîner" chapter and the

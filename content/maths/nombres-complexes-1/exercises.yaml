@@ -49,11 +49,9 @@ exercises:
     intro: |-
       **Nombres complexes (examen national, session normale 2019).**
 
-      Le plan complexe est rapporté à un repère orthonormé direct $(O, \vec{u}, \vec{v})$. On considère les points $A$, $B$, $C$ et $D$ d'affixes respectives
+      Le plan complexe est rapporté à un repère orthonormé direct $(O, \vec{u}, \vec{v})$.
 
-      $$a = 1 - i\sqrt{3}, \qquad b = 2 + 2i, \qquad c = \sqrt{3} + i, \qquad d = -2 + 2\sqrt{3}.$$
-
-      L'exercice tisse un fil entre une équation du second degré, une configuration de points alignés, une rotation, et un triangle rectangle isocèle. Point de vigilance : $d = -2 + 2\sqrt{3}$ est un nombre **réel** (sa partie imaginaire est nulle) — ne le lis pas comme un imaginaire pur.
+      L'exercice tisse un fil entre une équation du second degré, une configuration de points alignés, une rotation, et un triangle rectangle isocèle.
     questions:
       - id: q1
         part: "L'équation du second degré dans ℂ"
@@ -77,9 +75,13 @@ exercises:
       - id: q2a
         part: "Configuration : affixes, différences et alignement"
         stem: |-
+          On considère les points $A$, $B$, $C$ et $D$ d'affixes respectives
+
+          $$a = 1 - i\sqrt{3}, \qquad b = 2 + 2i, \qquad c = \sqrt{3} + i, \qquad d = -2 + 2\sqrt{3}.$$
+
           **(0,5 pt)** Vérifier que $a - d = -\sqrt{3}\,(c - d)$.
         reasoning: |-
-          C'est une pure vérification algébrique : on calcule séparément les deux différences d'affixes $a - d$ et $c - d$, puis on montre que la première vaut $-\sqrt{3}$ fois la seconde. Aucune astuce — on remplace par les valeurs et on développe soigneusement, en surveillant les signes, surtout devant $d = -2 + 2\sqrt{3}$ qui est un réel.
+          C'est une pure vérification algébrique : on calcule séparément les deux différences d'affixes $a - d$ et $c - d$, puis on montre que la première vaut $-\sqrt{3}$ fois la seconde. Aucune astuce — on remplace par les valeurs et on développe soigneusement, en surveillant les signes. Le point qui fait trébucher : $d = -2 + 2\sqrt{3}$ est un nombre **réel** — sa partie imaginaire est nulle — et non un imaginaire pur.
         steps:
           - math: 'a - d = (1 - i\sqrt{3}) - (-2 + 2\sqrt{3}) = (3 - 2\sqrt{3}) - i\sqrt{3}'
             note: "On soustrait le réel d = -2 + 2√3 : la partie réelle devient 1 + 2 - 2√3."
@@ -177,9 +179,7 @@ exercises:
     intro: |-
       Même structure profonde que le sujet 2019, habillage et nombres différents — pour t'empêcher de recopier la solution et t'obliger à reconnaître les mêmes gestes.
 
-      Le plan complexe est rapporté à un repère orthonormé direct $(O, \vec{u}, \vec{v})$. On considère les points $A$, $B$, $C$ et $D$ d'affixes respectives
-
-      $$a = -1 + i\sqrt{3}, \qquad b = 4i, \qquad c = -4 + 2i\sqrt{3}, \qquad d = 2.$$
+      Le plan complexe est rapporté à un repère orthonormé direct $(O, \vec{u}, \vec{v})$.
     questions:
       - id: q1
         part: "L'équation du second degré dans ℂ"
@@ -197,6 +197,10 @@ exercises:
       - id: q2
         part: "Différences d'affixes et alignement"
         stem: |-
+          On considère les points $A$, $B$, $C$ et $D$ d'affixes respectives
+
+          $$a = -1 + i\sqrt{3}, \qquad b = 4i, \qquad c = -4 + 2i\sqrt{3}, \qquad d = 2.$$
+
           Vérifier que $a - d = \dfrac{1}{2}(c - d)$, puis en déduire que les points $A$, $C$ et $D$ sont alignés.
         reasoning: |-
           On vérifie que $a - d$ est un multiple **réel** de $c - d$ — ici le coefficient est $\dfrac{1}{2}$, et non $-\sqrt{3}$ comme dans le sujet. Le coefficient étant réel, $\overrightarrow{DA}$ et $\overrightarrow{DC}$ sont colinéaires, donc $A$, $C$ et $D$ sont alignés. Reconnais le même raisonnement sous un habillage différent.

@@ -180,9 +180,9 @@ En repartant de la définition $\overline{a+bi} = a-bi$, on obtient directement 
 
 Deux caractérisations très utiles découlent de ces deux dernières lignes :
 
-$$z \text{ est réel} \iff z = \overline{z} \qquad \qquad z \text{ est imaginaire pur} \iff z = -\overline{z}$$
+$$z \text{ est réel} \iff z = \overline{z} \qquad \qquad z \text{ est imaginaire pur} \iff z = -\overline{z} \text{ et } z \neq 0$$
 
-**Pourquoi c'est vrai :** si $z=\overline{z}$, alors $a+bi = a-bi$. D'après la règle d'égalité du chapitre 2, ça impose $b=-b$, donc $b=0$ — et $z=a$ est bien réel. Réciproquement, si $z$ est réel ($b=0$), alors $\overline{z}=a-0i=a=z$. Le même type de raisonnement, avec les rôles inversés, donne la caractérisation de l'imaginaire pur.
+**Pourquoi c'est vrai :** si $z=\overline{z}$, alors $a+bi = a-bi$. D'après la règle d'égalité du chapitre 2, ça impose $b=-b$, donc $b=0$ — et $z=a$ est bien réel. Réciproquement, si $z$ est réel ($b=0$), alors $\overline{z}=a-0i=a=z$. Le même type de raisonnement, avec les rôles inversés, donne $a=0$ pour la seconde. Attention à la condition $z \neq 0$ : $z=0$ vérifie bien $z=-\overline{z}$, mais la définition du chapitre 2 réserve le nom d'imaginaire pur au cas $b \neq 0$.
 
 ### Exemple travaillé
 
@@ -281,7 +281,7 @@ Rappelle-toi la classification que tu connais depuis la première, pour $az^2+bz
 
 Ce troisième cas était un mur. Dans $\mathbb{C}$, il n'existe plus.
 
-Et les sujets d'examen national vont plus loin encore : ils posent des équations dont **les coefficients eux-mêmes sont complexes** — $az^2+bz+c=0$ avec $a$, $b$, $c$ dans $\mathbb{C}$ et $a \neq 0$. Avant de lire la suite, prends position : quand les coefficients deviennent complexes, faut-il une nouvelle formule, ou celle que tu connais tient-elle encore ?
+On peut aussi rencontrer des équations dont **les coefficients eux-mêmes sont complexes** — $az^2+bz+c=0$ avec $a$, $b$, $c$ dans $\mathbb{C}$ et $a \neq 0$. Avant de lire la suite, prends position : quand les coefficients deviennent complexes, faut-il une nouvelle formule, ou celle que tu connais tient-elle encore ?
 
 ### Le seul point vraiment neuf : une racine carrée de $\Delta$
 
@@ -356,7 +356,7 @@ $$(3+i)^2 = 9+6i+i^2 = 8+6i$$
 
 $$\Delta = (8+6i) - 4(2+2i) = 8+6i-8-8i = -2i$$
 
-Il faut maintenant un $\delta$ tel que $\delta^2 = -2i$. Et c'est ici qu'intervient le seul réflexe vraiment nouveau du chapitre — un petit carré qui revient dans presque tous les sujets, et qui se recalcule en trois secondes avec $i^2=-1$ :
+Il faut maintenant un $\delta$ tel que $\delta^2 = -2i$. Et c'est ici qu'intervient le seul réflexe vraiment nouveau du chapitre — un petit carré qu'il faut savoir reconnaître, et qui se recalcule en trois secondes avec $i^2=-1$ :
 
 $$(1+i)^2 = 1+2i+i^2 = 2i \qquad \qquad (1-i)^2 = 1-2i+i^2 = -2i$$
 
@@ -370,13 +370,13 @@ $$S = \left\{\, 2\ ;\ 1+i \,\right\}$$
 
 **Vérification, toujours possible et toujours rapide :** la somme des deux solutions doit redonner $3+i$ — et $2+(1+i) = 3+i$ ; leur produit doit redonner $2+2i$ — et $2(1+i) = 2+2i$. Les deux contrôles tombent juste. *(Le chapitre suivant explique pourquoi ce contrôle fonctionne, et comment en faire un outil à part entière.)*
 
-**Le piège que cet exemple désamorce :** $2$ et $1+i$ ne sont **pas** conjugués. Dès qu'un coefficient est complexe non réel, les deux solutions n'ont plus aucune raison de l'être — la propriété de l'exemple 1 reposait entièrement sur $\overline a = a$, $\overline b = b$, $\overline c = c$, et cette hypothèse vient de sauter. L'élève qui écrit par réflexe « les deux racines sont conjuguées » se trompe une fois sur deux au bac.
+**Le piège que cet exemple désamorce :** $2$ et $1+i$ ne sont **pas** conjugués. Dès qu'un coefficient est complexe non réel, les deux solutions n'ont plus aucune raison de l'être — la propriété de l'exemple 1 reposait entièrement sur $\overline a = a$, $\overline b = b$, $\overline c = c$, et cette hypothèse vient de sauter. L'élève qui écrit par réflexe « les deux racines sont conjuguées » se trompe dès qu'un des coefficients cesse d'être réel.
 
 ### Trouver le carré parfait, quand il ne saute pas aux yeux
 
 Trois situations, dans l'ordre de fréquence où tu les rencontreras.
 
-**1. L'énoncé te donne le résultat.** « Montrer que le discriminant de $(E)$ est $\Delta = \big(2i(m-1)\big)^2$ » : c'est de loin le cas le plus courant. Le sens du travail est alors **inversé** — tu n'as rien à découvrir, tu as à vérifier. Développe les deux côtés séparément, chacun avec les règles du chapitre 3, et compare les deux expressions obtenues. C'est plus court, c'est plus sûr, et c'est exactement ce que le barème attend. Deviner, ici, c'est perdre du temps et des points.
+**1. L'énoncé te donne le résultat.** « Montrer que le discriminant de $(E)$ est $\Delta = \big(2i(m-1)\big)^2$ » : c'est la forme sous laquelle un énoncé te le donne à vérifier. Le sens du travail est alors **inversé** — tu n'as rien à découvrir, tu as à vérifier. Développe les deux côtés séparément, chacun avec les règles du chapitre 3, et compare les deux expressions obtenues. C'est plus court, c'est plus sûr, et c'est exactement ce que le barème attend. Deviner, ici, c'est perdre du temps et des points.
 
 **2. Le carré est là, caché sous un facteur.** Les discriminants des sujets se factorisent presque toujours en un facteur reconnaissable multiplié par un carré d'expression. Le réflexe : factorise $\Delta$ au maximum, puis traite chaque facteur séparément. La table courte qui débloque l'immense majorité des cas :
 
@@ -546,7 +546,7 @@ Avant de te lancer, un point de bascule que le sujet exige : relier la forme alg
 
 ### Ce que ces exercices empruntent au chapitre suivant
 
-Ce chapitre-ci enseigne le socle **algébrique** : forme algébrique, conjugué, module, géométrie du plan complexe. Un sujet national mobilise presque toujours, en plus, des outils du chapitre **« Nombres complexes : formes et transformations »** — et il vaut mieux le savoir avant de buter dessus que de croire les avoir oubliés :
+Ce chapitre-ci enseigne le socle **algébrique** : forme algébrique, conjugué, module, géométrie du plan complexe. Un sujet national mobilise presque toujours, en plus, des outils du chapitre **« Nombres complexes — forme trigonométrique et applications »** — et il vaut mieux le savoir avant de buter dessus que de croire les avoir oubliés :
 
 - **La forme trigonométrique et la forme exponentielle**, $z = r\,e^{i\theta}$, et le passage dans les deux sens avec la forme algébrique — c'est le point de bascule que l'encadré ci-dessus te fait franchir ;
 - **Les écritures complexes des transformations** : la **rotation** d'angle $\theta$ et de centre l'origine s'écrit $z' = e^{i\theta}z$, la **translation** $z' = z + b$, l'**homothétie** de rapport $k$ et de centre l'origine $z' = k\,z$. Le vocabulaire lui-même — « homothétie », « rotation d'écriture complexe » — appartient à ce chapitre-là ;
