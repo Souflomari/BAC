@@ -5634,3 +5634,68 @@ fichier. C'est la même classe que les quatre de `nombres-complexes-1` (§11.45)
 contre le souvenir** — et quand elle est vraie, on le dit aussi : « le
 sous-groupe revient presque chaque année » est **confirmé, 8/10**, et n'a pas été
 touché.
+
+---
+
+### 11.60 Le second sens de la porte rung↔titre — 8 chapitres d'enseignement que le modèle apprenant ne peut pas voir
+
+La porte d'intégrité des barreaux (`validate-content.mjs`, ajoutée le 2026-09-11)
+attrape **un item qui vise un rung absent** : `rung: R7` alors que `lesson.md`
+n'a pas de titre `R7`. Elle nomme aujourd'hui trois notions
+(`limites-continuite` R7, `derivabilite-etude-fonctions` R6,
+`probabilites-conditionnelles` R6/R7).
+
+Mesuré le 2026-09-12 : **elle ne voyait qu'un sens.** Quand c'est le TITRE qui
+n'a pas de code — et non l'item qui vise à côté —, rien ne signale. Or
+l'accrochage d'un item à un chapitre se fait *par le code de barreau* : un
+chapitre sans code ne peut recevoir **aucun** item ni checkpoint. Son contenu est
+structurellement hors du modèle apprenant, et **invisible au
+`coverage_summary`** — sans qu'aucun compteur ne baisse, puisque le dénominateur
+ne compte que ce qui porte un rung. Le tableau reste vert sur un trou.
+
+Balayage des 62 notions :
+
+| Notion | Chapitre sans barreau | lignes | % du corps |
+|---|---|---:|---:|
+| `maths/derivabilite-etude-fonctions` | Fonction réciproque : la même courbe, lue dans l'autre sens | 172 | **30,7 %** |
+| `maths/nombres-complexes-1` | Résoudre une équation du second degré dans ℂ | 130 | 22,1 % |
+| `maths/nombres-complexes-1` | Somme et produit des racines (Viète) | 74 | 12,6 % |
+| `maths/probabilites-conditionnelles` | Variable aléatoire | 89 | 14,4 % |
+| `maths/probabilites-conditionnelles` | La loi binomiale | 92 | 14,8 % |
+| `maths/structures-algebriques` | Sous-groupe : un groupe caché dans un autre | 97 | 17,6 % |
+| `maths/structures-algebriques` | Anneau intègre | 79 | 14,4 % |
+| `maths/suites-numeriques` | Suites homographiques | 143 | 20,9 % |
+
+**876 lignes d'enseignement, dans 5 notions, qu'aucun item ne peut atteindre** —
+jusqu'à 34,7 % du corps d'une leçon (`nombres-complexes-1`, les deux chapitres
+cumulés) et 32,0 % pour `structures-algebriques`. Les titres purement
+structurels (« Décortiquer », « La rampe », « Pour t'entraîner ») sont exclus du
+compte : ils n'enseignent rien qui doive être testé.
+
+**Ce n'est pas une curiosité de comptage.** Pour `structures-algebriques`, les
+deux chapitres concernés portent *sous-groupe* et *anneau intègre* — et le relevé
+d'annales de la notion donne une question de sous-groupe dans **8 sujets vérifiés
+sur 10** (§11.59). Le geste le plus examiné du chapitre n'a aucun item, et la
+cause est mécanique avant d'être pédagogique. Même forme pour
+`derivabilite-etude-fonctions`, dont le savoir-faire « fonction réciproque »
+était déjà porté au déféré (§11.45) sans qu'on en connaisse la cause.
+
+**Le lien entre les deux sens.** Ce sont deux vues d'une seule cassure. Quand un
+chapitre perd son code *alors que des items le visent encore*, les DEUX portes
+s'allument (vérifié par injection : retirer « R3 — » au titre du PGCD dans
+`arithmetique` fait parler l'ancienne porte sur `items.yaml` et `checkpoints.yaml`
+*et* la nouvelle sur le chapitre). Quand le chapitre n'a jamais eu d'items — les
+huit cas réels ci-dessus — **seule la nouvelle parle**. C'est exactement l'angle
+mort. ADR 0031 : « une porte a deux sens. »
+
+**Avertissement, pas échec**, et délibérément : donner un barreau à un chapitre
+renumérote tous les suivants (le rail affiche « chapitre N », et `chapitre N =
+R(N−1)` ne vaut déjà que pour 56 des 62 leçons — les 6 exceptions sont
+*exactement* ces notions-ci) et déplace le `coverage_summary`. C'est une décision
+de rampe pour `pedagogy-architect`, pas une correction mécanique.
+
+**Vérifiée dans les deux sens** (ADR 0031) : l'injection rouge ci-dessus fait
+parler la porte sur un chapitre qu'elle ignorait ; rendre son code au chapitre
+« Sous-groupe » de `structures-algebriques` fait disparaître l'avertissement, et
+le revert le ramène. 0 failure sur les 62 notions — le corpus reste vert, la
+mesure est désormais visible à chaque exécution.

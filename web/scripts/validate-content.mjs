@@ -810,6 +810,46 @@ for (const dir of dirs) {
     }
   }
 
+  // ── Rung integrity, SECOND DIRECTION (warning only) — le miroir de la porte
+  //    ci-dessus. Celle-là attrape un item qui vise un rung absent ; elle ne
+  //    voit RIEN quand c'est le titre qui a perdu son code. Un « ## » qui
+  //    enseigne sans porter « R<n> » ne peut recevoir AUCUN item ni checkpoint
+  //    (l'accrochage se fait par le code), donc son contenu est structurellement
+  //    hors du modèle apprenant et invisible au coverage_summary — sans qu'aucun
+  //    compteur ne baisse, puisque le dénominateur ne compte que ce qui a un
+  //    rung. ADR 0031 : « une porte a deux sens. »
+  //
+  //    Mesuré le 2026-09-12 sur les 62 notions : 8 chapitres d'enseignement dans
+  //    5 notions, de 74 à 172 lignes chacun — jusqu'à 34,7 % du corps d'une
+  //    leçon (nombres-complexes-1 : le second degré dans ℂ et les relations de
+  //    Viète) ; structures-algebriques 32,0 % (sous-groupe, anneau intègre — les
+  //    deux gestes que le relevé donne dans 8 sujets vérifiés sur 10) ;
+  //    derivabilite 30,7 % (fonction réciproque) ; suites-numeriques 20,9 %
+  //    (homographiques) ; probabilites-conditionnelles 29,2 % (variable
+  //    aléatoire, loi binomiale).
+  //
+  //    Avertissement et non échec : donner un barreau à un chapitre est une
+  //    décision de rampe (elle renumérote tout ce qui suit et déplace le
+  //    coverage), pas une correction mécanique. Les titres purement structurels
+  //    ne comptent pas — ils n'enseignent rien qui doive être testé.
+  {
+    const STRUCTUREL = /^(?:décortiquer|la rampe|pour t'entraîner|s'entraîner|synthèse|récapitulatif)\b/i;
+    const lignes = md.split("\n");
+    const tetes = [];
+    lignes.forEach((l, i) => { if (/^## /.test(l)) tetes.push([i, l.slice(3).trim()]); });
+    for (let k = 0; k < tetes.length; k++) {
+      const [i, titre] = tetes[k];
+      if (/^R\d+\b/.test(titre) || STRUCTUREL.test(titre)) continue;
+      const fin = k + 1 < tetes.length ? tetes[k + 1][0] : lignes.length;
+      const n = fin - i;
+      if (n < 25) continue; // un intertitre court n'est pas un chapitre d'enseignement
+      const part = ((100 * n) / lignes.length).toFixed(1);
+      console.error(
+        `  ⚠ ${dir}: le chapitre « ${titre.slice(0, 60)} » (${n} lignes, ${part} % de la leçon) n'a pas de code de barreau — aucun item ni checkpoint ne peut s'y accrocher, il est invisible au modèle apprenant`,
+      );
+    }
+  }
+
   // ── Rung-code jargon in RENDERED exercise math (warning only) — un « R<n> »
   //    glissé dans un `\text{}` d'un champ rendu de bank/items/exercises/
   //    checkpoints (steps[].math, reasoning, feedback, stem, solution…) se rend
