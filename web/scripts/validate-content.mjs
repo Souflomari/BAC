@@ -761,6 +761,37 @@ for (const dir of dirs) {
     }
   }
 
+  // ── Rung-code jargon in RENDERED exercise math (warning only) — un « R<n> »
+  //    glissé dans un `\text{}` d'un champ rendu de bank/items/exercises/
+  //    checkpoints (steps[].math, reasoning, feedback, stem, solution…) se rend
+  //    LITTÉRALEMENT à l'élève, qui ne voit jamais le code de barreau : le rail
+  //    et chapters.ts affichent « chapitre N » (chapitre N = R(N−1)). C'est la
+  //    même faute que la porte figures (codes de barreau dans le texte peint) et
+  //    la porte prose (le mot « rung »), mais dans la COUCHE EXERCICES — l'angle
+  //    mort exposé par les critiques vague 1 (fonction-logarithme F3 : 12 fuites
+  //    sur 5 notions maths ; dipole-rl F16). Le motif `\text{…R\d…}` exige un
+  //    chiffre COLLÉ au R : il ne matche donc pas `R_0` (indice de résistance en
+  //    PC), d'où 0 faux positif mesuré sur les 62 notions. Avertissement, non
+  //    échec — comme les portes sœurs, à durcir une fois le corpus propre.
+  {
+    for (const fname of ["bank.yaml", "items.yaml", "exercises.yaml", "checkpoints.yaml"]) {
+      const fp = path.join(abs, fname);
+      if (!fs.existsSync(fp)) continue;
+      const hits = new Set();
+      for (const line of fs.readFileSync(fp, "utf8").split("\n")) {
+        if (/^\s*#/.test(line)) continue; // notes d'auteur en commentaire : non rendues
+        const m = line.match(/\\text\{[^}]*\bR\d[^}]*\}/g);
+        if (m) for (const h of m) hits.add(h);
+      }
+      if (hits.size) {
+        const shown = [...hits].slice(0, 4).join(" ; ");
+        console.error(
+          `  ⚠ ${dir}: ${fname} — code de barreau « R<n> » dans un \\text{} rendu : ${shown}${hits.size > 4 ? " …" : ""} — l'élève lit « chapitre N », pas « R<n> » ; réécrire`,
+        );
+      }
+    }
+  }
+
   // ── Orphan figure ASSETS (warning only) — le SENS INVERSE du contrôle
   // marqueur→asset plus haut (ADR 0031 : une porte a deux directions, et
   // celle qui ne va que dans un sens finit contournée). Un SVG de media/ que

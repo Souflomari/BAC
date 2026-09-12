@@ -4848,6 +4848,35 @@ Systémique SVT re-confirmé sur les deux notions SVT : **aucun** `exercises.yam
 `spec.md`, ni `docs/sujets/svt` ; pas de sommet vérifié ; pas de tag `habilete`
 cohérent. Campagne dédiée, pas un correctif de revue.
 
+### 11.46 Le code de barreau « R<n> » fuyait dans le KaTeX RENDU des exercices — 12 fuites sur 5 notions, et la porte élargie à la couche exercices
+
+**MESURÉ, CORRIGÉ, puis PORTE.** Les revues vague-1 de fonction-logarithme (F3, 12
+occurrences) et dipole-rl (F16, 2) ont trouvé, chacune de son côté, la même classe :
+un « R<n> » (code de barreau) glissé dans un `\text{}` d'un champ **rendu** de
+`bank.yaml` (`steps[].math`, `reasoning`…) se peint **littéralement** chez l'élève —
+qui ne voit jamais le code (le rail et `chapters.ts` affichent « chapitre N », avec
+chapitre N = R(N−1)). C'est exactement la faute que la porte figures (§11.15) et la
+porte prose (tâche #26, le mot « rung ») tuent déjà — mais **dans la couche
+exercices, un angle mort** : la porte jargon existante ne balaie que la prose de
+`lesson.md` (`visible`), jamais le math des exercices.
+
+Balayage corpus (`\text{…R\d…}` dans bank/items/exercises/checkpoints) : **12 fuites
+sur 5 notions maths** — suites-numeriques (×4, « théorème des gendarmes/limite
+monotone, R6/R7 »), nombres-complexes-2 (×4, « Moivre, R3 » ; « rung R6 » ×2 ;
+« chapitre 1, R3--R4 »), derivabilite (×2), structures-algebriques (×1),
+fonction-exponentielle (×1). Toutes réécrites en « chapitre <n+1> » (les renvois
+inter-notions — « R4, fonction-exponentielle » — nommés par la notion sans code ; le
+« chapitre 1, R3--R4 » muddled nommé par le concept, « module et conjugué »). PC : **0
+occurrence** — les résistances y sont notées `R_0` (indice), que le motif `\bR\d`
+(chiffre COLLÉ au R) ne matche pas.
+
+**Porte ajoutée** (avertissement, non échec) : chaque `\text{…R\d…}` d'un champ rendu
+de bank/items/exercises/checkpoints est signalé. 0 faux positif mesuré sur les 62
+notions (le motif ignore `R_0`), 0 fuite résiduelle après correction. Comme les portes
+sœurs (§11.43/§11.44), elle tourne en CI (validate-content --strict) sans jamais
+bloquer, et complète pour la COUCHE EXERCICES ce que la porte prose fait pour la leçon
+et la porte figures pour les SVG (ADR 0031 : le sens qui manquait finissait contourné).
+
 ### 11.29–11.41 en un coup d'œil, et le déployé
 
 **LA SOIRÉE DU 2026-09-11**, treize points, tous mesurés avant/après :

@@ -312,7 +312,7 @@ entries:
         steps:
           - math: 'f(x) = \dfrac{x^{2}}{e^{x}} - \dfrac{x}{e^{x}} + x = \dfrac{x^{2}}{e^{x}} - \dfrac{x}{e^{x}} + \dfrac{x\,e^{x}}{e^{x}} = \dfrac{x^{2}-x+x\,e^{x}}{e^{x}}'
             note: "On met x au même dénominateur e a la puissance x que les deux autres termes de la question 1a."
-          - math: '\lim_{x\to-\infty}\left(x^{2}-x\right) = +\infty \qquad \lim_{x\to-\infty} x\,e^{x} = 0 \quad (\text{corollaire du R4, fonction-exponentielle})'
+          - math: '\lim_{x\to-\infty}\left(x^{2}-x\right) = +\infty \qquad \lim_{x\to-\infty} x\,e^{x} = 0 \quad (\text{corollaire de la leçon Fonction exponentielle})'
             note: "x carré moins x part vers plus l'infini (terme dominant x carré) ; x fois e puissance x s'efface en moins l'infini, corollaire direct du chapitre 5."
           - math: '\lim_{x\to-\infty}\left(x^{2}-x+x\,e^{x}\right) = +\infty \qquad \lim_{x\to-\infty} e^{x} = 0^{+}'
             note: "Le numérateur part vers plus l'infini ; le dénominateur s'efface en restant strictement positif."
@@ -550,7 +550,7 @@ entries:
 
           Pour trancher entre les deux, réutilise la monotonie : la suite décroît à partir de $u_0=\frac12$, donc **tous** ses termes — et leur limite — restent $\le\frac12$. Comme $\frac12<1$, la valeur $L=1$ est impossible : il reste $L=0$.
         steps:
-          - math: '(u_{n}) \text{ décroissante (III-2), minorée par } 0 \text{ (III-1)} \ \Longrightarrow\ (u_{n}) \text{ converge vers une limite } L\in[0,1] \quad (\text{théorème de la limite monotone, R7})'
+          - math: '(u_{n}) \text{ décroissante (III-2), minorée par } 0 \text{ (III-1)} \ \Longrightarrow\ (u_{n}) \text{ converge vers une limite } L\in[0,1] \quad (\text{théorème de la limite monotone, chapitre 8})'
             note: "Décroissante et minorée : la convergence est garantie sans connaître encore la valeur de la limite."
           - math: 'f \text{ continue sur } \mathbb{R} \ (\text{somme et produit de fonctions continues}),\ u_{n+1}=f(u_{n}) \ \Longrightarrow\ L = f(L) \quad (R8)'
             note: "On passe a la limite dans la relation de récurrence : la continuité de f permet d'échanger limite et f."

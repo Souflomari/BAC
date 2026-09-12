@@ -1364,7 +1364,7 @@ entries:
         steps:
           - math: 'O,\,A_0,\,A_n\ \text{alignés} \iff \dfrac{u^n}{u^0}=u^n\in\mathbb{R}'
             note: "Chapitre R6 : rapport des affixes de OA_n et OA_0, réel ⟺ alignement."
-          - math: 'u^n = (\sqrt6-\sqrt2)^n\,e^{in\pi/12}\quad(\text{Moivre, R3})'
+          - math: 'u^n = (\sqrt6-\sqrt2)^n\,e^{in\pi/12}\quad(\text{Moivre, chapitre 4})'
             note: "u=(√6−√2)e^{iπ/12} (question 1d) ; module (√6−√2)^n réel positif."
           - math: 'u^n\in\mathbb{R} \iff \dfrac{n\pi}{12} \equiv 0\ [\pi] \iff \dfrac{n}{12}\in\mathbb{Z} \iff n\ \text{multiple de}\ 12'
             note: "Argument multiple de π ; n entier naturel."
@@ -1605,7 +1605,7 @@ entries:
 
           **Le piège à éviter, et une imprécision du sujet officiel.** Le quantificateur imprimé est « $\forall z \in \mathbb{C}$ », mais l'équivalence est **fausse telle quelle en $z = 0$** : $\dfrac{1}{0}$ n'existe pas, donc le membre de droite n'a pas de sens et l'énoncé « $|0| = 1 \iff \ldots$ » non plus. Le domaine correct est $\mathbb{C}^*$ — beaucoup d'éditions de ce sujet l'écrivent d'ailleurs ainsi ; le scan, lui, ne porte pas l'étoile. Rédige avec l'étoile, ou dis en une ligne que $z=0$ est écarté : un correcteur ne pénalise jamais une précision juste. Second piège, plus discret : passer de $|z|^2 = 1$ à $|z| = 1$ sans dire que $|z| \geq 0$. C'est une ligne, et c'est la seule chose qui rend le sens réciproque vrai.
         steps:
-          - math: 'z\overline{z} = |z|^2\quad(\text{chapitre 1, R3--R4})'
+          - math: 'z\overline{z} = |z|^2\quad(\text{module et conjugué})'
             note: "L'identité qui fait le pont entre le module (une longueur) et le conjugué (un objet de calcul)."
           - math: '|z| = 1 \implies z \neq 0\ \text{et}\ z\overline{z} = 1 \implies \overline{z} = \dfrac{1}{z}'
             note: "Sens direct : on divise par z, non nul puisque son module vaut 1."
@@ -2026,11 +2026,11 @@ entries:
 
           Reste un cas dégénéré à exclure : si $M=\Omega$, il n'y a plus que trois points distincts, pas quatre points cocycliques. Or $\Omega=\dfrac{1+i}{2}$ est justement le milieu de $[AB]$, donc un point de la droite $(AB)$ : il faut l'exclure. L'ensemble cherché est donc la droite $(AB)$ privée du point $\Omega$ (et, comme partout dans cette partie, du domaine déjà restreint $m\notin\{0,1,i\}$, deux points déjà situés sur cette droite).
         steps:
-          - math: '\dfrac{z_1-\omega}{z_2-\omega} = i\quad(\text{rotation de la question 1-b, rung R6}) \implies \Omega M_1=\Omega M_2\ \text{et}\ \widehat{M_1\Omega M_2}=\dfrac{\pi}{2}\ \text{pour tout}\ m'
+          - math: '\dfrac{z_1-\omega}{z_2-\omega} = i\quad(\text{rotation de la question 1-b, chapitre 7}) \implies \Omega M_1=\Omega M_2\ \text{et}\ \widehat{M_1\Omega M_2}=\dfrac{\pi}{2}\ \text{pour tout}\ m'
             note: "Ceci vaut pour tout m du domaine : Omega est toujours sur le cercle de diamètre [M1M2] (Thalès)."
           - math: '\dfrac{z_1-m}{z_2-m} = \dfrac{1}{i}\cdot\dfrac{m-i}{m-1} = -i\,\dfrac{m-i}{m-1}'
             note: "Inverse du rapport de la question 2-a."
-          - math: '\dfrac{z_1-m}{z_2-m}\in i\mathbb{R} \iff \dfrac{m-i}{m-1}\in\mathbb{R} \iff M,\,A,\,B\ \text{alignés (rung R6)}'
+          - math: '\dfrac{z_1-m}{z_2-m}\in i\mathbb{R} \iff \dfrac{m-i}{m-1}\in\mathbb{R} \iff M,\,A,\,B\ \text{alignés (chapitre 7)}'
             note: "M voit [M1M2] sous un angle droit exactement quand M, A, B sont alignés."
           - math: 'M=\Omega \implies m=\dfrac{1+i}{2}\ (\text{milieu de}\ [AB],\ \text{sur}\ (AB)) \implies \text{a exclure (seulement 3 points distincts)}'
             note: "Cas degenere a retirer de la droite."

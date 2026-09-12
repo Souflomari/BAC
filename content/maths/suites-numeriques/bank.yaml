@@ -749,7 +749,7 @@ entries:
         steps:
           - math: '\left|\dfrac12\right|<1 \ \Rightarrow\ \lim_{n\to+\infty}\left(\dfrac12\right)^n = 0 \ \Rightarrow\ \lim_{n\to+\infty}\left(\dfrac12\right)^n|\alpha| = 0'
             note: "Suite géométrique de raison entre -1 et 1 (chapitre 6) : elle tend vers 0."
-          - math: '0\le|u_n-\alpha|\le\left(\dfrac12\right)^n|\alpha|,\quad \left(\dfrac12\right)^n|\alpha|\to0 \ \Rightarrow\ |u_n-\alpha|\to0 \quad (\text{théorème des gendarmes, R6})'
+          - math: '0\le|u_n-\alpha|\le\left(\dfrac12\right)^n|\alpha|,\quad \left(\dfrac12\right)^n|\alpha|\to0 \ \Rightarrow\ |u_n-\alpha|\to0 \quad (\text{théorème des gendarmes, chapitre 7})'
             note: "u_n moins alpha est encadre par 0 et une suite qui tend vers 0."
           - math: '\Rightarrow\ \lim_{n\to+\infty} u_n = \alpha'
             note: "Par définition de la limite : (u_n) converge vers alpha."
@@ -837,7 +837,7 @@ entries:
         reasoning: |-
           $(x_n)_{n\ge2}$ est strictement décroissante (question précédente) et minorée par $0$ (question 1-b, $x_n>0$ pour tout $n\ge2$) : les deux hypothèses exactes du théorème de la limite monotone (chapitre 8) sont réunies — décroissante et minorée. La suite converge.
         steps:
-          - math: '(x_n)_{n\ge2} \text{ décroissante} \quad (\text{q2-b}), \qquad x_n>0 \quad (\text{q1-b, minoration}) \ \Rightarrow\ (x_n)_{n\ge2} \text{ converge} \quad (\text{théorème de la limite monotone, R7})'
+          - math: '(x_n)_{n\ge2} \text{ décroissante} \quad (\text{q2-b}), \qquad x_n>0 \quad (\text{q1-b, minoration}) \ \Rightarrow\ (x_n)_{n\ge2} \text{ converge} \quad (\text{théorème de la limite monotone, chapitre 8})'
             note: "Décroissante et minorée : les deux hypothèses du théorème de la limite monotone."
       - id: q3-3a
         part: "Partie III, 3 — Limites de x_n et de n fois x_n"
@@ -874,7 +874,7 @@ entries:
 
           $$\lim_{n\to+\infty} nx_n = \frac{2e^0}{1+e^0} = \frac{2}{2} = 1$$
         steps:
-          - math: '\dfrac1n\to0,\quad \dfrac1n\left(\dfrac{2e}{1+e}\right)\to0 \ \Rightarrow\ x_n\to0 \quad (\text{théorème des gendarmes, R6, question 3-a})'
+          - math: '\dfrac1n\to0,\quad \dfrac1n\left(\dfrac{2e}{1+e}\right)\to0 \ \Rightarrow\ x_n\to0 \quad (\text{théorème des gendarmes, chapitre 7, question 3-a})'
             note: "Les deux bornes de l'encadrement tendent vers 0 : x_n aussi."
           - math: 'nx_n = \dfrac{2e^{x_n}}{1+e^{x_n}} \quad (\text{question 3-a}),\quad x_n\to0 \ \Rightarrow\ e^{x_n}\to e^0=1'
             note: "On reutilise l'égalité de la question 3-a ; continuité de exp en 0."
@@ -905,5 +905,5 @@ entries:
             note: "On élève a la puissance n, qui conserve l'ordre entre deux quantités positives."
           - math: '0<x_2<1 \ \Rightarrow\ \lim_{n\to+\infty} (x_2)^n = 0 \quad (R5)'
             note: "x_2 est une constante entre 0 et 1 : sa puissance n-ieme tend vers 0."
-          - math: '0<(x_n)^n\le(x_2)^n\to0 \ \Rightarrow\ \lim_{n\to+\infty} (x_n)^n = 0 \quad (\text{théorème des gendarmes, R6})'
+          - math: '0<(x_n)^n\le(x_2)^n\to0 \ \Rightarrow\ \lim_{n\to+\infty} (x_n)^n = 0 \quad (\text{théorème des gendarmes, chapitre 7})'
             note: "Encadrement final : conclusion par le théorème des gendarmes."
