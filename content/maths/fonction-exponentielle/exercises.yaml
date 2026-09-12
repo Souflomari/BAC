@@ -68,13 +68,13 @@ exercises:
         steps:
           - math: |-
               \lim_{x \to +\infty} e^{\frac{x}{2}} = +\infty \ \Rightarrow\ \lim_{x \to +\infty}\left(e^{\frac{x}{2}}-1\right)^2 = +\infty
-            note: "En +∞, e^{x/2} → +∞ donc son carré diminué de 1 tend vers +∞."
+            note: "En +∞, $e^{x/2}$ → +∞ donc $(e^{x/2}-1)^2$ tend vers +∞."
           - math: |-
               \lim_{x \to +\infty} f(x) = \lim_{x \to +\infty} x\left(e^{\frac{x}{2}}-1\right)^2 = +\infty
             note: "Produit de deux facteurs tendant vers +∞."
           - math: |-
               \lim_{x \to -\infty} e^{\frac{x}{2}} = 0 \ \Rightarrow\ \left(e^{\frac{x}{2}}-1\right)^2 \to (0-1)^2 = 1
-            note: "En -∞, e^{x/2} → 0 (limite de référence du chapitre 5) : le carré tend vers 1, valeur finie."
+            note: "En -∞, $e^{x/2}$ → 0 (limite de référence du chapitre 5) : le carré tend vers 1, valeur finie."
           - math: |-
               \lim_{x \to -\infty} f(x) = \lim_{x \to -\infty} x \times 1 = -\infty
             note: "x → -∞ multiplié par un facteur → 1 : pas d'indétermination, la limite est -∞."
@@ -102,10 +102,10 @@ exercises:
         steps:
           - math: |-
               f(x) - x = x\left[\left(e^{\frac{x}{2}}-1\right)^2 - 1\right] = x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-2\right)
-            note: "(e^{x/2}-1)^2 - 1 = e^x - 2 e^{x/2} = e^{x/2}(e^{x/2}-2)."
+            note: "$(e^{x/2}-1)^2 - 1 = e^x - 2 e^{x/2} = e^{x/2}(e^{x/2}-2)$."
           - math: |-
               \lim_{x \to -\infty} x\,e^{\frac{x}{2}} = 0 \qquad (\text{croissances comparées},\ X=\tfrac{x}{2})
-            note: "x e^{x/2} = 2X e^X avec X=x/2 → -∞ ; croissances comparées : X e^X → 0."
+            note: "$x e^{x/2} = 2X e^X$ avec $X=x/2$ → -∞ ; croissances comparées : $X e^X$ → 0."
           - math: |-
               f(x) - x = \underbrace{x\,e^{\frac{x}{2}}}_{\to\, 0}\left(e^{\frac{x}{2}}-2\right) \xrightarrow[x \to -\infty]{} 0 \times (-2) = 0
             note: "L'écart f(x)-x tend vers 0 : la droite (Δ):y=x est asymptote à (C) en -∞."
@@ -125,10 +125,10 @@ exercises:
         steps:
           - math: |-
               f(x) - x = x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-2\right), \qquad e^{\frac{x}{2}} > 0
-            note: "Le facteur e^{x/2} est toujours > 0 : le signe ne dépend que de x et de (e^{x/2}-2)."
+            note: "Le facteur $e^{x/2}$ est toujours > 0 : le signe ne dépend que de x et de $(e^{x/2}-2)$."
           - math: |-
               e^{\frac{x}{2}} - 2 = 0 \iff \tfrac{x}{2} = \ln 2 \iff x = 2\ln 2 = \ln 4
-            note: "e^{x/2}-2 > 0 ⟺ x > ln4 (passage au ln, exp strictement croissante)."
+            note: "$e^{x/2}-2 > 0$ ⟺ x > ln4 (passage au ln, exp strictement croissante)."
           - math: |-
               f(x)-x > 0 \text{ sur } ]-\infty,0[\,\cup\,]\ln 4,+\infty[\ ;\quad f(x)-x < 0 \text{ sur } ]0,\ln 4[\ ;\quad f(0)=0,\ f(\ln 4)=\ln 4
             note: "(C) au-dessus de (Δ) sur ]-∞,0[ et ]ln4,+∞[, en dessous sur ]0,ln4[ ; contact en (0,0) et (ln4, ln4)."
@@ -141,7 +141,7 @@ exercises:
         steps:
           - math: |-
               u(x) = x,\quad v(x) = \left(e^{\frac{x}{2}}-1\right)^2,\qquad v'(x) = 2\left(e^{\frac{x}{2}}-1\right)\cdot\tfrac{1}{2}e^{\frac{x}{2}} = e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-1\right)
-            note: "Dérivée de la composée (e^{x/2}-1)^2 : 2(e^{x/2}-1) fois la dérivée de l'intérieur, (1/2)e^{x/2}."
+            note: "Dérivée de la composée $(e^{x/2}-1)^2$ : $2(e^{x/2}-1)$ fois la dérivée de l'intérieur, $(1/2)e^{x/2}$."
           - math: |-
               f'(x) = u'v + uv' = \left(e^{\frac{x}{2}}-1\right)^2 + x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-1\right)
             note: "Règle du produit (uv)'=u'v+uv'."
@@ -155,10 +155,10 @@ exercises:
         steps:
           - math: |-
               e^{\frac{x}{2}} - 1 \text{ a le signe de } x \ \Rightarrow\ x\left(e^{\frac{x}{2}}-1\right) \ge 0 \text{ (nul seulement en } x=0)
-            note: "x et e^{x/2}-1 changent de signe en même temps (en 0) : leur produit est ≥ 0."
+            note: "x et $e^{x/2}-1$ changent de signe en même temps (en 0) : leur produit est ≥ 0."
           - math: |-
               f'(x) = \left(e^{\frac{x}{2}}-1\right)^2 + e^{\frac{x}{2}}\underbrace{\,x\left(e^{\frac{x}{2}}-1\right)\,}_{\ge\, 0} \ge 0
-            note: "Somme d'un carré et de e^{x/2}>0 fois une quantité ≥ 0 : f' ≥ 0, nul seulement en 0. f strictement croissante."
+            note: "Somme d'un carré et de $e^{x/2}>0$ fois une quantité ≥ 0 : f' ≥ 0, nul seulement en 0. f strictement croissante."
       - id: q4c
         stem: |-
           **(0,25 pt)** Dresser le tableau de variations de la fonction $f$ sur $\mathbb{R}$.
@@ -175,18 +175,18 @@ exercises:
         steps:
           - math: |-
               f'(x) = \left(e^{\frac{x}{2}}-1\right)^2 + x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-1\right) = (1+x)e^{x} - (2+x)e^{\frac{x}{2}} + 1
-            note: "On développe : (e^{x/2}-1)^2 = e^x - 2 e^{x/2} + 1 et x e^{x/2}(e^{x/2}-1) = x e^x - x e^{x/2}."
+            note: "On développe : $(e^{x/2}-1)^2 = e^x - 2 e^{x/2} + 1$ et $x e^{x/2}(e^{x/2}-1) = x e^x - x e^{x/2}$."
           - math: |-
               f''(x) = (2+x)e^{x} - \frac{x+4}{2}e^{\frac{x}{2}}
-            note: "Dérivée : ((1+x)e^x)' = (2+x)e^x ; (-(2+x)e^{x/2})' = -((x+4)/2) e^{x/2}."
+            note: "Dérivée : $((1+x)e^x)' = (2+x)e^x$ ; $(-(2+x)e^{x/2})' = -((x+4)/2) e^{x/2}$."
           - math: |-
               f''(x) = \frac{1}{2}e^{\frac{x}{2}}\Big[(2x+4)e^{\frac{x}{2}} - x - 4\Big] = \frac{1}{2}e^{\frac{x}{2}}\,g(x)
-            note: "On factorise (1/2)e^{x/2} ; le crochet est exactement g(x)."
+            note: "On factorise $(1/2)e^{x/2}$ ; le crochet est exactement g(x)."
       - id: q5b
         stem: |-
           **(0,5 pt)** La courbe $(C_g)$ ci-dessous représente la fonction $g$. En la lisant, déterminer le signe de $g(x)$ sur $\mathbb{R}$. *(Remarque : $g(\alpha) = 0$.)*
 
-          **Description de la courbe $(C_g)$ fournie** *(transcrite fidèlement du scan)* : la courbe de $g$ est tracée sur la fenêtre $x \in [-5\,;\,0{,}5]$, $y \in [-2\,;\,4]$. Elle s'annule en **deux** points : en $x = \alpha \approx -4{,}5$ (marqué sur l'axe des abscisses) et en $x = 0$ (l'origine). Elle est **positive sur $]-\infty,\alpha[$** (petite portion visible au bord gauche, d'ordonnée $\approx +0{,}5$ en $x=-5$), **négative sur $]\alpha,0[$** avec un minimum d'ordonnée $\approx -2$ au voisinage de $x=-2$, puis de nouveau **positive sur $]0,+\infty[$** en croissant fortement (elle atteint $\approx +4$ au bord droit du cadre).
+          **Description de la courbe $(C_g)$ fournie** *(transcrite du scan ; lecture d'échelle à confirmer)* : la courbe de $g$ est tracée sur la fenêtre $x \in [-5\,;\,\approx 0{,}5]$, $y \in [-2\,;\,4]$. Elle s'annule en **deux** points : en $x = \alpha \approx -4{,}5$ (marqué sur l'axe des abscisses) et en $x = 0$ (l'origine). Elle est **positive sur $]-\infty,\alpha[$** (petite portion visible au bord gauche, d'ordonnée $\approx +0{,}5$ en $x=-5$), **négative sur $]\alpha,0[$** avec un minimum d'ordonnée $\approx -2$ au voisinage de $x=-2$, puis de nouveau **positive sur $]0,+\infty[$** en croissant fortement (elle atteint $\approx +4$ au bord droit du cadre — le relevé signale l'échelle comme restant à confirmer : $g(0{,}5) \approx 1{,}9$, donc le bord droit tombe un peu au-delà de $0{,}5$).
         reasoning: |-
           On **lit** les deux changements de signe directement sur $(C_g)$, en s'appuyant sur les deux zéros $x=\alpha$ et $x=0$ :
 
@@ -203,7 +203,7 @@ exercises:
         steps:
           - math: |-
               \tfrac{1}{2}e^{\frac{x}{2}} > 0 \ \Rightarrow\ \text{signe de } f''(x) = \text{signe de } g(x)
-            note: "Le facteur (1/2)e^{x/2} est toujours positif : f'' a le signe de g (question 5b)."
+            note: "Le facteur $(1/2)e^{x/2}$ est toujours positif : f'' a le signe de g (question 5b)."
           - math: |-
               f'' > 0 \text{ sur } ]-\infty,\alpha[\,\cup\,]0,+\infty[ \ (\text{convexe})\ ;\quad f'' < 0 \text{ sur } ]\alpha,0[ \ (\text{concave})
             note: "(C) est convexe là où f''>0, concave là où f''<0."
@@ -239,10 +239,10 @@ exercises:
         steps:
           - math: |-
               f(\ln 4) = \ln 4 \ \Rightarrow\ f^{-1}(\ln 4) = \ln 4\ ;\qquad e^{\frac{\ln 4}{2}} = e^{\ln 2} = 2
-            note: "f(ln4)=ln4 (question 3b) ; e^{(ln4)/2} = e^{ln2} = 2."
+            note: "f(ln4)=ln4 (question 3b) ; $e^{(\\ln 4)/2} = e^{\\ln 2} = 2$."
           - math: |-
               f'(\ln 4) = (2-1)^2 + \ln 4\cdot 2\,(2-1) = 1 + 2\ln 4
-            note: "On remplace e^{(ln4)/2}=2 dans f'(x)=(e^{x/2}-1)^2 + x e^{x/2}(e^{x/2}-1)."
+            note: "On remplace $e^{(\\ln 4)/2}=2$ dans $f'(x)=(e^{x/2}-1)^2 + x e^{x/2}(e^{x/2}-1)$."
           - math: |-
               \left(f^{-1}\right)'(\ln 4) = \frac{1}{f'(\ln 4)} = \frac{1}{1 + 2\ln 4}
             note: "Dérivée de la réciproque ; aussi égal à 1/(1+4 ln2) car 2 ln4 = 4 ln2."
@@ -287,7 +287,7 @@ exercises:
             note: "La limite est un point fixe de f, situé dans [0, ln4]."
           - math: |-
               f(\ell) = \ell \iff \ell\,e^{\frac{\ell}{2}}\left(e^{\frac{\ell}{2}}-2\right) = 0 \iff \ell = 0 \ \text{ ou }\ \ell = \ln 4
-            note: "f(x)-x = x e^{x/2}(e^{x/2}-2) ; ses zéros sont 0 et ln4."
+            note: "$f(x)-x = x e^{x/2}(e^{x/2}-2)$ ; ses zéros sont 0 et ln4."
           - math: |-
               (u_n) \text{ décroissante},\ u_0 = 1 < \ln 4 \ \Rightarrow\ \ell < \ln 4 \ \Rightarrow\ \ell = 0
             note: "La suite décroît en partant de 1 < ln4 : la limite ne peut pas être ln4, donc lim u_n = 0."
@@ -334,7 +334,7 @@ exercises:
             note: "En -∞, e^x → 0 : f tend vers -1. Asymptote horizontale y=-1."
           - math: |-
               f(x) = \frac{e^{x}-1}{e^{x}+1} = \frac{1-e^{-x}}{1+e^{-x}} \xrightarrow[x \to +\infty]{} \frac{1-0}{1+0} = 1
-            note: "On divise par e^x ; e^{-x} → 0 en +∞. Asymptote horizontale y=1."
+            note: "On divise par e^x ; $e^{-x}$ → 0 en +∞. Asymptote horizontale y=1."
       - id: q2
         stem: |-
           Étudier la position de la courbe $(C)$ par rapport à ses deux asymptotes $y=1$ et $y=-1$.
@@ -382,7 +382,7 @@ exercises:
         steps:
           - math: |-
               f''(x) = \frac{2e^{x}(e^{x}+1)^2 - 2e^{x}\cdot 2(e^{x}+1)e^{x}}{(e^{x}+1)^4} = \frac{2e^{x}\left(1-e^{x}\right)}{(e^{x}+1)^3}
-            note: "On dérive f' = 2e^x (e^x+1)^{-2} et on factorise (e^x+1) au numérateur."
+            note: "On dérive $f' = 2e^x (e^x+1)^{-2}$ et on factorise (e^x+1) au numérateur."
           - math: |-
               1 - e^{x} > 0 \iff x < 0 \ \Rightarrow\ f'' > 0 \text{ sur } ]-\infty,0[ \ (\text{convexe}),\ f'' < 0 \text{ sur } ]0,+\infty[ \ (\text{concave})
             note: "Le signe de f'' est celui de 1-e^x ; changement de signe en 0."
@@ -403,7 +403,7 @@ exercises:
             note: "f(0)=0 donc la réciproque envoie 0 sur 0."
           - math: |-
               f'(0) = \frac{2e^{0}}{(e^{0}+1)^2} = \frac{2}{4} = \frac{1}{2} \ \Rightarrow\ \left(f^{-1}\right)'(0) = \frac{1}{f'(0)} = 2
-            note: "Dérivée de la réciproque : (f^{-1})'(0) = 1/f'(0) = 2."
+            note: "Dérivée de la réciproque : $(f^{-1})'(0) = 1/f'(0) = 2$."
       - id: q7
         stem: |-
           Soit $(u_n)$ la suite définie par $u_0 = 1$ et $u_{n+1} = f(u_n)$. Montrer que $0 < f(x) < x$ pour tout $x>0$, puis en déduire par récurrence que $0 < u_n \le 1$ pour tout $n$ de $\mathbb{N}$.

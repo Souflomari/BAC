@@ -377,6 +377,7 @@ for (const dir of dirs) {
           const steps = Array.isArray(q?.steps) ? q.steps : [];
           steps.forEach((s, i) => {
             katexField("exercises.yaml", `${exId}.${qid}.steps[${i}].math`, s?.math, true);
+            katexField("exercises.yaml", `${exId}.${qid}.steps[${i}].note`, s?.note);
           });
         }
       }
@@ -571,6 +572,7 @@ for (const dir of dirs) {
           const steps = Array.isArray(q?.steps) ? q.steps : [];
           steps.forEach((s, i) => {
             katexField("bank.yaml", `${eId}.${qid}.steps[${i}].math`, s?.math, true);
+            katexField("bank.yaml", `${eId}.${qid}.steps[${i}].note`, s?.note);
           });
         }
       }
@@ -871,6 +873,43 @@ for (const dir of dirs) {
       if (dead.size) {
         console.error(
           `  ⚠ ${dir}: ${fname} — renvoi vers une leçon INEXISTANTE : ${[...dead].slice(0, 3).map((t) => `« ${t} »`).join(" ; ")}${dead.size > 3 ? " …" : ""} — aucun titre du corpus ne correspond ; corriger le titre cité`,
+        );
+      }
+
+      // Second détecteur : le QUASI-TITRE. Un titre cité sans amorce reconnue
+      // (« domaine « … » », « établie dans « … » », un libellé entre
+      // parenthèses) échappait au contrôle ci-dessus. S'il recouvre fortement
+      // un titre réel sans lui être égal, c'est un renvoi mal orthographié.
+      const mots = (x) =>
+        new Set(
+          x.normalize("NFD").toLowerCase().replace(/[\u0300-\u036f]/g, "")
+            .match(/[a-z0-9]+/g)?.filter((w) => w.length > 2) ?? [],
+        );
+      const CUE2 = /(?:le[çc]on|notion|domaine|sous|dans|voir|chapitres?\s+\d+\s+(?:de|du))\s*$/i;
+      const titresMots = [...globalThis.__lessonTitles.values()].map((t) => [t, mots(t)]);
+      const proches = new Set();
+      for (const line of fs.readFileSync(fp, "utf8").split("\n")) {
+        if (/^\s*#/.test(line)) continue;
+        for (const m of line.matchAll(/«\s*([^»]{6,80}?)\s*»/g)) {
+          const cite = m[1];
+          if (cite.includes("$") || cite.split(/\s+/).length < 3) continue;
+          const ref = norm(cite);
+          if (!ref || known.some((k) => k === ref || k.includes(ref) || ref.includes(k))) continue;
+          const tc = mots(cite);
+          if (!tc.size) continue;
+          let best = 0, cible = "";
+          for (const [t, tk] of titresMots) {
+            const inter = [...tc].filter((w) => tk.has(w)).length;
+            const j = inter / (tc.size + tk.size - inter);
+            if (j > best) { best = j; cible = t; }
+          }
+          const amorce = CUE2.test(line.slice(0, m.index).replace(/[\s*,;(]+$/, ""));
+          if (best >= 0.6 || (best >= 0.5 && amorce)) proches.add(`${cite} → ${cible}`);
+        }
+      }
+      if (proches.size) {
+        console.error(
+          `  ⚠ ${dir}: ${fname} — titre de leçon QUASI correct : ${[...proches].slice(0, 3).map((t) => `« ${t} »`).join(" ; ")}${proches.size > 3 ? " …" : ""} — un renvoi doit nommer le titre EXACT`,
         );
       }
     }

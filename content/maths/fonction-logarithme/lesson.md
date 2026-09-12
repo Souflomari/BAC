@@ -436,7 +436,7 @@ Un sujet de bac ne s'arrête pas aux frontières d'une leçon. Les annales de ce
 
 - **Tout le chapitre « Fonction exponentielle »**, et il revient plus souvent qu'on ne le croit. Un problème peut ouvrir sur une comparaison graphique de $e^x$ et de $x$, utiliser l'identité $\ln(e^x)=x$ pour simplifier une expression, ou s'appuyer sur la limite $x\,e^{-x}\to0$. Ce sont des faits de l'exponentielle, miroirs de ceux d'ici — la symétrie des deux courbes par rapport à la droite $y=x$ n'est pas une jolie image, c'est ce qui fait que chaque résultat de l'un se traduit dans l'autre.
 - **L'intégration par parties**, dès qu'une aire ou une primitive fait intervenir $\ln$ multiplié par autre chose. Elle vit dans « **Calcul intégral** ».
-- **Le théorème des valeurs intermédiaires et la stricte monotonie**, pour toute question du type « montrer qu'il existe un unique réel tel que… ». Ils sont dans « **Limites et continuité** » et « **Dérivabilité et étude de fonctions** » ; ce sont eux, et non le logarithme, qui portent ce genre de question.
+- **Le théorème des valeurs intermédiaires et la stricte monotonie**, pour toute question du type « montrer qu'il existe un unique réel tel que… ». Ils sont dans « **Limites et continuité** » et « **Dérivabilité et étude des fonctions** » ; ce sont eux, et non le logarithme, qui portent ce genre de question.
 
 Aucun de ces outils n'est un manque de ce chapitre : un problème d'analyse en assemble toujours plusieurs. Savoir **d'où vient** chaque geste est la moitié du travail de révision.
 

@@ -4809,7 +4809,7 @@ Comme le §11.43, elle tourne en CI (validate-content --strict, 62 notions) sans
 jamais bloquer, et le sens « valeur qui ne résout pas » complète, pour les
 rungs, ce que la porte marqueur→cible fait déjà pour les figures (ADR 0031).
 
-### 11.45 La campagne de correction de contenu vague 1 — quatorze notions triées, 96 correctifs objectifs, les bloquants consignés
+### 11.45 La campagne de correction de contenu vague 1 — quinze notions triées, 107 correctifs objectifs, les bloquants consignés
 
 **EN COURS (une notion à la fois, cadence critiques).** Après les portes
 d'intégrité (§11.43 figures orphelines, §11.44 rung↔titre), la vague-1
@@ -4838,9 +4838,10 @@ Treize notions à ce stade :
 | `maths/arithmetique` | 7 | maths **PRISTINE** (2 critiques + recalcul : la seule erreur = 2⁴¹ « 34 chiffres »→13) ; **SEV1 cadre** → research-lead : exclusion « résidus quadratiques » falsifiée par 2 sujets vérifiés (2023 N, 2025 N critère d'Euler), Fermat absent du programme mais dans `bac-reference.md:110` + 9/10 annales, poids bloc 15 % démenti ; **PPCM et ℤ/nℤ jamais enseignés** mais testés → content-author ; habileté 75/25/0 (0 niveau-3, 100 % QCM) ; 9/16 lignes de grille non rupturées ; porte pré-sommet qui spoile le sommet ; dispute couverture Fermat (réellement 1, pas 3) |
 | `maths/calcul-integral` | 7 | maths **PRISTINE** (2 critiques : « aucun constat de calcul ») ; faux universel L363 (« ch.2 suppose f≥0 ») qui **contredit CI-11** ; faux universel CI-23 (μ=f(milieu) « propre aux affines uniquement ») + « à l'exception de » inversé ; renvois morts « chapitre Dérivation » (×5), « Fonction racine carrée », « chapitre suivant » (×5)→ch2 ; 2 légendes. **SEV1 cadre** → research-lead/owner : changement de variable enseigné contre la `limite` (et `bank:487` vs sujet `:1189` se contredisent), **Riemann+TAF dans une notion déclarée SExp** (exclusion SM), aucune filière en champ machine, arctan/longueur d'arc hors-cadre ; **volume de révolution TOTALEMENT absent** (savoir-faire des 2 filières) → content-author ; jargon banque (« hors socle », « SCOPE NOTE », \text dans KaTeX) **déféré avec la portée** ; habileté PC sur checkpoints maths ; sommet = 2/9 savoir-faire, partition d'un exercice |
 | `maths/suites-numeriques` | 12 | maths **PRISTINE** (2 critiques + recalcul indépendant : réservoir, les 2 récurrences, ε–N, gendarmes, tout le chapitre homographique, les 2 sommets, et le `coverage_summary` recompté deux fois depuis les 114 tags — aucun écart) ; **hypothèse manquante qui fausse la recette** (« $f(I)\subset I$ donc bornée » : il faut $I$ **borné** — $u_{n+1}=u_n^2+1$ sur $[1;+\infty[$ la met en défaut) ; faux universel « le mécanisme ne dépend pas de $a,b,c,d$ » démenti par le **3ᵉ exemple de la leçon** ($\Delta=-3$) ; résultat encadré sans $u_n\neq\beta$ ; « théorème qu'on va démontrer » que le ch.8 refuse ensuite ; **2 réponses imprimées au-dessus de la porte d'essai** (les libellés de partie se rendent hors du gate) ; **barème 4 pts inventé** (le relevé vérifié n'en porte aucun ; les 9 questions somment à 3,75). **SEV1 cadre** → research-lead : notion revendiquée par les DEUX cadres alors que `maths-sexp.yaml:78` exclut les adjacentes — ch.11 + 3 items hors-programme SExp **sans barrière** ; **le chapitre homographique n'a aucun code de barreau** (0 item, 0 checkpoint, 0 figure, invisible au coverage) → content-author ; 400 lignes sans aucun commit ; aucun `habilete` ; 21 % d'application directe contre 40 % |
+| `maths/fonction-exponentielle` | 11 | maths **PRISTINE** (les 31 items, les 2 sommets de bout en bout, les 6 barèmes et les sujets 2019/2020/2025 re-dérivés : aucune faute d'arithmétique ; `coverage_summary` recompté par les DEUX critiques depuis les tags bruts, juste ; 87 citations « chapitre N » sur 88 correctes) ; **33 notes de pas dont le TeX arrivait NU chez l'élève** (`e^{x/2}` rendu accolades comprises — vérifié en rendant la chaîne dans le vrai pipeline) ; **deux fautes dans une même phrase de banque** (« chapitre 2 » pour un résultat que le chapitre 2 DIFFÈRE explicitement, et « croissance stricte » qui ne donne pas la limite) ; liste des outils empruntés fausse **dans les deux sens** (l'IPP ne sert dans aucun des deux exercices ; la bijection et $(f^{-1})'$, qu'ils exigent, sont absentes) ; description de figure qui **durcit** une lecture que le relevé donne hésitante ($g(0{,}5)=1{,}92$, pas $\approx 4$) ; note décrivant $(e^{x/2})^2-1$ pour $(e^{x/2}-1)^2$ ; règle des puissances encadrée sans quantificateur ; « UNE primitive … $+C$ » ; trois commentaires périmés dont un qui affirme le CONTRAIRE de l'état publié. **SEV1 cadre** → research-lead : **aucune filière déclarée** et les fichiers se contredisent (lesson dit SM, checkpoints dit SExp) ; savoir-faire « étudier $a^x$ et $x^\alpha$ » enseigné NULLE PART ; sommet SExp 8,5 pts contre une banque SM 10 pts. Pédagogie : 4 lignes de grille non réclamées, R1/R6/R7 sans commit, **l'intro de r-variation répond à 3 de ses 9 questions**, q5b imprime sa réponse (asset $(C_g)$ manquant), falaise R7→R8, zéro ancrage réel en 471 lignes, niveau 3 à 6 % contre 20 % |
 
-**96 correctifs objectifs** au total, 0 échec `validate-content --strict` sur les
-quatorze. Les défauts **bloquants** ne sont jamais réécrits en autonomie — ils
+**107 correctifs objectifs** au total, 0 échec `validate-content --strict` sur les
+quinze. Les défauts **bloquants** ne sont jamais réécrits en autonomie — ils
 touchent des règles biologiques enseignées (genetique-humaine F1 : « un père
 atteint lié à l'X ne transmet jamais à ses fils » est faux quand la mère est
 conductrice) ou une décision de conception (genetique-humaine P2 : les
@@ -5166,3 +5167,69 @@ Assertion ajoutée : « une épreuve COMPLÈTE totalise exactement 20 ».
 **Vérifiée dans les deux sens** (ADR 0031) : en retirant 0,25 pt d'un seul
 `bareme_total` d'arithmetique, elle tombe en nommant la coupable
 (`sm-2019-normale : 19.75`) ; le revert la remet au vert. 14 tests, 14 verts.
+
+### 11.52 Le TeX qui arrivait nu chez l'élève, et une porte de §11.48 qui ne voyait qu'un renvoi mort sur six
+
+Deux défauts trouvés en triant `fonction-exponentielle`, tous deux plus larges
+que la notion, tous deux dus à un **trou de porte**.
+
+**(1) La note d'un pas n'était validée nulle part.** `<Note>`
+(`Derivation.tsx:34`) rend par ReactMarkdown + remarkMath : une formule ne
+devient du KaTeX que si elle est délimitée par `$`. Sans délimiteur, elle sort
+**littéralement**. Vérifié en rendant la chaîne dans le vrai pipeline
+(`react-dom/server` + `ReactMarkdown` + `remarkMath`) :
+
+```
+source : (e^{x/2}-1)^2 - 1 = e^x - 2 e^{x/2} = e^{x/2}(e^{x/2}-2).
+rendu  : <p>(e^{x/2}-1)^2 - 1 = e^x - 2 e^{x/2} = e^{x/2}(e^{x/2}-2).</p>
+```
+
+L'élève lit les accolades. Mesuré sur les 4 958 notes du corpus : **90 notes sur
+9 notions** portent de la syntaxe purement TeX (accolades, antislash) hors de
+toute paire `$…$` — `maths/nombres-complexes-2` 22, `fonction-exponentielle` 33,
+`suites-numeriques` 13, `limites-continuite` 7, le reste dispersé. À distinguer
+des **529 notes** en ASCII-math lisible (`n^8`, `u_n`) : là, rien ne casse, et
+c'est le style de la maison — on n'y touche pas.
+
+*Un signalement que j'avais moi-même levé à tort :* 139 notes portent deux `_`
+nus, ce que j'ai d'abord noté comme un risque d'italique markdown. **Faux**, et
+le rendu le prouve : `u_n et v_n convergent vers L_1 et L_2.` ressort identique,
+CommonMark excluant le souligné intra-mot de l'emphase. Aucune correction due.
+
+**Pourquoi c'est passé :** `validate-content` fait valider `steps[i].note` pour
+`derivations.yaml` — mais pour `exercises.yaml` et `bank.yaml` il ne validait que
+`steps[i].math`. La note, qui porte 4 958 chaînes contre quelques dizaines dans
+`derivations.yaml`, était le seul champ rendu jamais contrôlé. **Porte étendue**
+aux deux fichiers. Les 33 notes de `fonction-exponentielle` sont délimitées (le
+contenu mathématique n'est pas touché, seulement les délimiteurs) ; **les 57
+autres, sur 8 notions, restent à faire** — c'est une campagne, pas un oubli.
+
+**(2) La porte « renvoi mort » de §11.48 ne voyait qu'un renvoi mort sur six.**
+Elle exigeait une amorce — « chapitre N de », « la leçon », « la notion ». Or un
+renvoi s'écrit aussi « établie **dans** « … » », « domaine « … » », « **sous**
+« … » », ou en simple libellé entre parenthèses. Re-balayé par **quasi-titre**
+(recouvrement de mots avec un titre réel) : **29 renvois morts subsistaient**,
+dont deux que la campagne §11.48 avait laissés derrière elle.
+
+| cité (mort) | titre réel | × |
+|---|---|---|
+| « dérivabilité et étude **de** fonctions » | **des** fonctions | 23 |
+| « Géométrie **de** l'espace » | Géométrie **dans** l'espace | 2 |
+| « Suivi temporel et vitesse de réaction » | Suivi temporel d'une transformation — vitesse de réaction | 1 |
+| « Ondes électromagnétiques et modulation » | — modulation d'amplitude | 1 |
+| « Chute libre et mouvements dans un plan » | Chute libre et mouvements plans | 1 |
+| « Rotation d'un solide autour d'un axe fixe » | Rotation autour d'un axe fixe | 1 |
+
+Les 29 corrigés (31 remplacements : deux vivaient dans un commentaire d'auteur).
+**Second détecteur ajouté à la porte**, par quasi-titre plutôt que par amorce.
+Seuil calibré sur le corpus : 0,6 de Jaccard seul, ou 0,5 avec une amorce. En
+dessous vivent les citations ordinaires de philo — « chacun sa vérité », « État
+de droit », « Analyse le texte et discute-le. » — toutes à 0,5 sans amorce, et
+qu'il ne faut surtout **pas** signaler : le seuil a été choisi pour les épargner,
+et il les épargne toutes.
+
+**Les deux portes vérifiées dans les deux sens** (ADR 0031) : un `$…$` cassé
+dans une note fait échouer `r-bac.q1.steps[0].note` en nommant l'erreur KaTeX ;
+un quasi-titre injecté sans amorce déclenche le second détecteur ; le revert rend
+les deux silencieuses. `validate-content --strict` : 0 failure sur les 62
+notions.

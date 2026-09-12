@@ -146,7 +146,7 @@ $$e^x := \exp(x)$$
 
 À partir de maintenant, on écrit $e^x$ plutôt que $\exp(x)$ — c'est la même fonction, seule la notation change. Les trois propriétés qu'on vient d'établir se relisent ainsi, sous une forme que tu reconnais déjà comme les règles des puissances :
 
-$$e^{a+b} = e^a \times e^b \qquad\qquad e^{-a} = \frac{1}{e^a} \qquad\qquad \big(e^a\big)^n = e^{na}$$
+$$e^{a+b} = e^a \times e^b \qquad\qquad e^{-a} = \frac{1}{e^a} \qquad\qquad \big(e^a\big)^n = e^{na} \quad (n \in \mathbb{Z})$$
 
 ### Exemple travaillé
 
@@ -360,11 +360,11 @@ Le réflexe, comme toujours pour reconnaître une forme $u'e^u$ : identifier d'a
 
 $$f(x) = u'(x)\,e^{u(x)} \quad \text{avec } u(x)=x^2,\ u'(x)=2x$$
 
-Une primitive de $f$ sur $\mathbb{R}$ est donc :
+Les primitives de $f$ sur $\mathbb{R}$ sont donc :
 
 $$F(x) = e^{x^2} + C$$
 
-**Point de vigilance :** si le facteur devant $e^{u}$ n'est pas exactement $u'$, la reconnaissance directe ne s'applique pas telle quelle. Par exemple, pour une primitive de $x\,e^{x^2}$ (sans le facteur $2$), on écrit $x\,e^{x^2} = \frac12 \times \big(2x\,e^{x^2}\big)$ pour faire apparaître exactement $u'e^u$ à l'intérieur — la primitive devient alors $\frac12 e^{x^2}+C$.
+**Point de vigilance :** si le facteur devant $e^{u}$ n'est pas exactement $u'$, la reconnaissance directe ne s'applique pas telle quelle. Par exemple, pour une primitive de $x\,e^{x^2}$ (sans le facteur $2$), on écrit $x\,e^{x^2} = \frac12 \times \big(2x\,e^{x^2}\big)$ pour faire apparaître exactement $u'e^u$ à l'intérieur — les primitives deviennent alors $\frac12 e^{x^2}+C$.
 
 ---
 
@@ -424,11 +424,12 @@ Dans les deux cas, la consigne est la même : **cherche d'abord, seul, avant de 
 
 ### Ce que ces exercices empruntent à d'autres chapitres
 
-Un sujet de bac ne s'arrête pas aux frontières d'une leçon. Les problèmes ci-dessous, comme la plupart des annales de ce chapitre, mobilisent trois outils que **cette leçon n'enseigne pas** — ils sont établis ailleurs, et c'est là qu'il faut aller les chercher si l'un d'eux te manque. Les voici nommés, pour que tu ne croies pas les avoir oubliés :
+Un sujet de bac ne s'arrête pas aux frontières d'une leçon. Les problèmes ci-dessous, comme la plupart des annales de ce chapitre, mobilisent des outils que **cette leçon n'enseigne pas** — ils sont établis ailleurs, et c'est là qu'il faut aller les chercher si l'un d'eux te manque. Les voici nommés, pour que tu ne croies pas les avoir oubliés :
 
-- **Le point d'inflexion** (l'endroit où la courbe change de concavité, repéré par un changement de signe de $f''$). Il est construit dans « **Dérivabilité et étude de fonctions** », qui lui consacre un chapitre entier et un checkpoint. Cette leçon-ci n'établit la convexité de $\exp$ qu'au chapitre 6, comme un fait, sans donner le critère général.
+- **Le point d'inflexion** (l'endroit où la courbe change de concavité, repéré par un changement de signe de $f''$). Il est construit dans « **Dérivabilité et étude des fonctions** », qui lui consacre un chapitre entier et un checkpoint. Cette leçon-ci n'établit la convexité de $\exp$ qu'au chapitre 6, comme un fait, sans donner le critère général.
 - **L'intégration par parties**, dès qu'un sujet demande une primitive ou une aire du type $\int x\,e^{-x}\,dx$. Elle vit dans « **Calcul intégral** ». Le chapitre 7 d'ici ne donne que les deux primitives immédiates, $e^x$ et $u'e^u$ — utiles, mais insuffisantes dès qu'un facteur polynomial s'invite.
 - **Le théorème de la limite monotone** (une suite décroissante et minorée converge), quand le volet « suites » d'un problème arrive. Il est dans « **Suites numériques** ».
+- **Le théorème de la bijection** et **la dérivée de la réciproque**, $\left(f^{-1}\right)'(y) = \dfrac{1}{f'\!\left(f^{-1}(y)\right)}$ — c'est ce que demandent les deux problèmes ci-dessous, et cette leçon n'admet que l'*existence* d'une réciproque dérivable (chapitre 4), jamais le critère ni la formule. Les deux vivent dans « **Dérivabilité et étude des fonctions** ».
 
 Aucun de ces trois n'est un manque de ce chapitre : ce sont des outils transversaux, et un problème d'analyse en assemble toujours plusieurs. Savoir **d'où vient** chaque geste est la moitié du travail de révision.
 

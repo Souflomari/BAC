@@ -812,7 +812,7 @@ entries:
           - math: 'u_n<\alpha \ \Rightarrow\ u_n\le\alpha \ \Rightarrow\ f(u_n)\le 0 \quad (\text{Partie I, question 5-a})'
             note: "On applique le résultat de la question 5-a de la partie I, valable pour tout x inférieur ou égal à alpha."
           - math: 'u_{n+1} = f(u_n)+u_n \le u_n < \alpha'
-            note: "On ajoute une quantité négative ou nulle à u_n : u_{n+1} reste inférieur à alpha."
+            note: "On ajoute une quantité négative ou nulle à u_n : $u_{n+1}$ reste inférieur à alpha."
       - id: q6b
         stem: |-
           **(0,25 pt)** En déduire que la suite $(u_n)_{n \in \mathbb{N}}$ est décroissante.
@@ -820,7 +820,7 @@ entries:
           $u_{n+1}-u_n = f(u_n)$, directement par définition de la récurrence. Comme $u_n<\alpha$ pour tout $n$ (question précédente), le résultat 5a de la Partie I donne $f(u_n)\le0$, donc $u_{n+1}-u_n\le0$ : la suite $(u_n)$ est décroissante.
         steps:
           - math: 'u_{n+1}-u_n = f(u_n) \le 0 \quad (u_n<\alpha,\ \text{Partie I question 5-a}) \ \Rightarrow\ (u_n) \text{ décroissante}'
-            note: "u_{n+1} moins u_n vaut f(u_n), négatif ou nul : la suite décroît."
+            note: "$u_{n+1}$ moins u_n vaut f(u_n), négatif ou nul : la suite décroît."
       - id: q7a
         part: "Partie II, 2 — Cas 0 ≤ u₀ : minoration et limite"
         stem: |-
@@ -985,7 +985,7 @@ entries:
           En $-\infty$ : $e^{\frac{x}{2}} \to 0$ (limite de référence, chapitre 5), donc $\left(e^{\frac{x}{2}}-1\right)^2 \to (0-1)^2 = 1$ — un facteur fini. Le facteur $x \to -\infty$ l'emporte : le produit tend vers $-\infty$. Ici encore aucune indétermination : un facteur fini non nul multiplié par une quantité qui diverge suit cette dernière.
         steps:
           - math: '\lim_{x \to +\infty} e^{\frac{x}{2}} = +\infty \ \Rightarrow\ \lim_{x \to +\infty}\left(e^{\frac{x}{2}}-1\right)^2 = +\infty'
-            note: "En plus l'infini, e puissance x sur 2 tend vers plus l'infini donc son carré diminué de 1 tend vers plus l'infini."
+            note: "En plus l'infini, e puissance x sur 2 tend vers plus l'infini donc son écart à 1, élevé au carré, tend vers plus l'infini."
           - math: '\lim_{x \to +\infty} f(x) = \lim_{x \to +\infty} x\left(e^{\frac{x}{2}}-1\right)^2 = +\infty'
             note: "Produit de deux facteurs tendant vers plus l'infini."
           - math: '\lim_{x \to -\infty} e^{\frac{x}{2}} = 0 \ \Rightarrow\ \left(e^{\frac{x}{2}}-1\right)^2 \to (0-1)^2 = 1'
@@ -1033,9 +1033,9 @@ entries:
           Donc $(C)$ est au-dessus de $(\Delta)$ sur $]-\infty,0[$ et $]\ln 4,+\infty[$, en dessous sur $]0,\ln 4[$ ; les deux se coupent aux points $(0,0)$ et $(\ln 4,\ln 4)$ (car $f(0)=0$ et $f(\ln 4)=\ln 4$).
         steps:
           - math: 'f(x) - x = x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-2\right), \qquad e^{\frac{x}{2}} > 0'
-            note: "Le facteur e^{x/2} est toujours positif : le signe ne dépend que de x et de (e^{x/2}-2)."
+            note: "Le facteur $e^{x/2}$ est toujours positif : le signe ne dépend que de x et de $(e^{x/2}-2)$."
           - math: 'e^{\frac{x}{2}} - 2 = 0 \iff \tfrac{x}{2} = \ln 2 \iff x = 2\ln 2 = \ln 4'
-            note: "e^{x/2}-2 est positif si et seulement si x est supérieur à ln4 (passage au ln, exp strictement croissante)."
+            note: "$e^{x/2}-2$ est positif si et seulement si x est supérieur à ln4 (passage au ln, exp strictement croissante)."
           - math: 'f(x)-x > 0 \text{ sur } ]-\infty,0[\,\cup\,]\ln 4,+\infty[\ ;\quad f(x)-x < 0 \text{ sur } ]0,\ln 4[\ ;\quad f(0)=0,\ f(\ln 4)=\ln 4'
             note: "(C) au-dessus de (Delta) sur les deux extrémités, en dessous sur l'intervalle intermédiaire ; contact en (0,0) et (ln4, ln4)."
       - id: q4a
@@ -1046,7 +1046,7 @@ entries:
           $f$ est un produit $f=u\,v$ avec $u(x)=x$ et $v(x)=\left(e^{\frac{x}{2}}-1\right)^2$. On dérive $v$ comme une composée : $v'(x) = 2\left(e^{\frac{x}{2}}-1\right)\cdot\frac{1}{2}e^{\frac{x}{2}} = e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-1\right)$ (la dérivée de l'intérieur $e^{\frac{x}{2}}$ vaut $\frac{1}{2}e^{\frac{x}{2}}$, sans condition de signe puisque $e^{u}$ est dérivable partout, chapitre 4). La règle du produit $(uv)'=u'v+uv'$ donne alors directement l'expression demandée.
         steps:
           - math: 'u(x) = x,\quad v(x) = \left(e^{\frac{x}{2}}-1\right)^2,\qquad v''(x) = 2\left(e^{\frac{x}{2}}-1\right)\cdot\tfrac{1}{2}e^{\frac{x}{2}} = e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-1\right)'
-            note: "Dérivée de la composée (e^{x/2}-1) au carré : 2(e^{x/2}-1) fois la dérivée de l'intérieur, un demi e^{x/2}."
+            note: "Dérivée de la composée $(e^{x/2}-1)$ au carré : $2(e^{x/2}-1)$ fois la dérivée de l'intérieur, un demi $e^{x/2}$."
           - math: 'f''(x) = u''v + uv'' = \left(e^{\frac{x}{2}}-1\right)^2 + x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-1\right)'
             note: "Règle du produit (uv)' = u'v + uv'."
       - id: q4b
@@ -1058,9 +1058,9 @@ entries:
           On relit alors $f'(x) = \left(e^{\frac{x}{2}}-1\right)^2 + e^{\frac{x}{2}}\cdot x\left(e^{\frac{x}{2}}-1\right)$ : c'est une somme de deux termes positifs ou nuls — un carré, et $e^{\frac{x}{2}}>0$ multiplié par la quantité $\ge 0$ qu'on vient d'établir. Donc $f'(x)\ge 0$, nul uniquement en $x=0$ : $f$ est strictement croissante sur $\mathbb{R}$.
         steps:
           - math: 'e^{\frac{x}{2}} - 1 \text{ a le signe de } x \ \Rightarrow\ x\left(e^{\frac{x}{2}}-1\right) \ge 0'
-            note: "x et e^{x/2}-1 changent de signe en même temps, en 0 : leur produit est positif ou nul."
+            note: "x et $e^{x/2}-1$ changent de signe en même temps, en 0 : leur produit est positif ou nul."
           - math: 'f''(x) = \left(e^{\frac{x}{2}}-1\right)^2 + e^{\frac{x}{2}}\underbrace{\,x\left(e^{\frac{x}{2}}-1\right)\,}_{\ge\, 0} \ge 0'
-            note: "Somme d'un carré et de e^{x/2} positif fois une quantité positive ou nulle : f prime est positive ou nulle, nulle seulement en 0."
+            note: "Somme d'un carré et de $e^{x/2}$ positif fois une quantité positive ou nulle : f prime est positive ou nulle, nulle seulement en 0."
       - id: q4c
         stem: |-
           **(0,25 pt)** Dresser le tableau de variations de la fonction $f$ sur $\mathbb{R}$.
@@ -1080,9 +1080,9 @@ entries:
           - math: 'f''(x) = \left(e^{\frac{x}{2}}-1\right)^2 + x\,e^{\frac{x}{2}}\left(e^{\frac{x}{2}}-1\right) = (1+x)e^{x} - (2+x)e^{\frac{x}{2}} + 1'
             note: "On développe f prime, établi à la question 4-a."
           - math: 'f^{(2)}(x) = (2+x)e^{x} - \frac{x+4}{2}e^{\frac{x}{2}}'
-            note: "Dérivée terme à terme : ((1+x)e^x)' = (2+x)e^x ; (-(2+x)e^{x/2})' = -((x+4)/2) e^{x/2}."
+            note: "Dérivée terme à terme : $((1+x)e^x)' = (2+x)e^x$ ; $(-(2+x)e^{x/2})' = -((x+4)/2) e^{x/2}$."
           - math: 'f^{(2)}(x) = \frac{1}{2}e^{\frac{x}{2}}\Big[(2x+4)e^{\frac{x}{2}} - x - 4\Big] = \frac{1}{2}e^{\frac{x}{2}}\,g(x)'
-            note: "On factorise un demi e^{x/2} ; le crochet est exactement g(x)."
+            note: "On factorise un demi $e^{x/2}$ ; le crochet est exactement g(x)."
       - id: q5b
         stem: |-
           **(0,5 pt)** La courbe $(C_g)$ ci-dessous représente la fonction $g$. En la lisant, déterminer le signe de $g(x)$ sur $\mathbb{R}$. *(Remarque : $g(\alpha) = 0$.)*
@@ -1103,7 +1103,7 @@ entries:
           $f''$ change de signe en $x=\alpha$ et en $x=0$ : la concavité change en ces deux points, qui sont donc les deux points d'inflexion, d'abscisses $\alpha$ et $0$.
         steps:
           - math: '\tfrac{1}{2}e^{\frac{x}{2}} > 0 \ \Rightarrow\ \text{signe de } f^{(2)}(x) = \text{signe de } g(x)'
-            note: "Le facteur un demi e^{x/2} est toujours positif : f seconde a le signe de g (question 5-b)."
+            note: "Le facteur un demi $e^{x/2}$ est toujours positif : f seconde a le signe de g (question 5-b)."
           - math: 'f^{(2)} > 0 \text{ sur } ]-\infty,\alpha[\,\cup\,]0,+\infty[ \ (\text{convexe})\ ;\quad f^{(2)} < 0 \text{ sur } ]\alpha,0[ \ (\text{concave})'
             note: "(C) est convexe là où f seconde est positive, concave là où elle est négative."
           - math: 'f^{(2)} \text{ change de signe en } x=\alpha \text{ et en } x=0'
@@ -1136,9 +1136,9 @@ entries:
           On calcule $f'(\ln 4)$ en remarquant $e^{\frac{\ln 4}{2}} = e^{\ln 2} = 2$ : $f'(\ln 4) = (2-1)^2 + \ln 4\cdot 2\,(2-1) = 1 + 2\ln 4$. D'où $\left(f^{-1}\right)'(\ln 4) = \dfrac{1}{1+2\ln 4}$.
         steps:
           - math: 'f(\ln 4) = \ln 4 \ \Rightarrow\ f^{-1}(\ln 4) = \ln 4\ ;\qquad e^{\frac{\ln 4}{2}} = e^{\ln 2} = 2'
-            note: "f(ln4)=ln4 (question 3-b) ; e^{(ln4)/2} = e^{ln2} = 2."
+            note: "f(ln4)=ln4 (question 3-b) ; $e^{(\\ln 4)/2} = e^{\\ln 2} = 2$."
           - math: 'f''(\ln 4) = (2-1)^2 + \ln 4\cdot 2\,(2-1) = 1 + 2\ln 4'
-            note: "On remplace e^{(ln4)/2}=2 dans f'(x)=(e^{x/2}-1)^2 + x e^{x/2}(e^{x/2}-1)."
+            note: "On remplace $e^{(\\ln 4)/2}=2$ dans $f'(x)=(e^{x/2}-1)^2 + x e^{x/2}(e^{x/2}-1)$."
           - math: '\left(f^{-1}\right)''(\ln 4) = \frac{1}{f''(\ln 4)} = \frac{1}{1 + 2\ln 4}'
             note: "Dérivée de la réciproque : (f inverse) prime de ln4 vaut 1 sur f prime de ln4."
       - id: q8a
@@ -1177,7 +1177,7 @@ entries:
           - math: '0 \le \ell \le \ln 4\ ;\quad u_{n+1}=f(u_n),\ f \text{ continue} \ \Rightarrow\ \ell = f(\ell)'
             note: "La limite est un point fixe de f, situé dans [0, ln4]."
           - math: 'f(\ell) = \ell \iff \ell\,e^{\frac{\ell}{2}}\left(e^{\frac{\ell}{2}}-2\right) = 0 \iff \ell = 0 \ \text{ ou }\ \ell = \ln 4'
-            note: "f(x)-x = x e^{x/2}(e^{x/2}-2) ; ses zéros sont 0 et ln4."
+            note: "$f(x)-x = x e^{x/2}(e^{x/2}-2)$ ; ses zéros sont 0 et ln4."
           - math: '(u_n) \text{ décroissante},\ u_0 = 1 < \ln 4 \ \Rightarrow\ \ell < \ln 4 \ \Rightarrow\ \ell = 0'
             note: "La suite décroît en partant de 1, inférieur à ln4 : la limite ne peut pas être ln4, donc lim u_n = 0."
 
@@ -1436,7 +1436,7 @@ entries:
         stem: |-
           **(0,75 pt)** Construire dans le même repère $(O,\vec{i}\,,\vec{j})$ la courbe représentative de la fonction $f^{-1}$ *(remarquer que la droite $(\Delta)$ est perpendiculaire à la première bissectrice du repère)*
         reasoning: |-
-          La courbe de $f^{-1}$ est le symétrique de $(C)$ par rapport à la première bissectrice, la droite d'équation $y=x$ (fait général sur les fonctions réciproques, déjà utilisé au chapitre 6 du chapitre pour la courbe de $\exp$ elle-même). Concrètement : chaque point $(x,f(x))$ de $(C)$ a pour symétrique le point $(f(x),x)$ sur la courbe de $f^{-1}$ — par exemple, $A(2,2)$, situé exactement sur la droite $y=x$, est son propre symétrique : il reste un point d'inflexion de la courbe de $f^{-1}$ aussi.
+          La courbe de $f^{-1}$ est le symétrique de $(C)$ par rapport à la première bissectrice, la droite d'équation $y=x$ (fait général sur les fonctions réciproques, déjà utilisé au chapitre 6 de cette leçon pour la courbe de $\exp$ elle-même). Concrètement : chaque point $(x,f(x))$ de $(C)$ a pour symétrique le point $(f(x),x)$ sur la courbe de $f^{-1}$ — par exemple, $A(2,2)$, situé exactement sur la droite $y=x$, est son propre symétrique : il reste un point d'inflexion de la courbe de $f^{-1}$ aussi.
 
           La remarque de l'énoncé est le raccourci utile pour placer l'asymptote : une droite de coefficient directeur $-1$, comme $(\Delta):y=-x+\frac52$, est toujours perpendiculaire à la première bissectrice (produit des coefficients directeurs $-1\times1=-1$) — et une droite perpendiculaire à $y=x$ est sa propre image par la symétrie d'axe $y=x$ (échanger $x$ et $y$ dans $y=-x+\frac52$ redonne $x=-y+\frac52$, soit $y=-x+\frac52$, la même droite). $(\Delta)$ sert donc d'asymptote aux deux courbes : à $(C)$ en $-\infty$ (question 2-a), et par symétrie, à la courbe de $f^{-1}$ en $+\infty$.
 
@@ -1548,7 +1548,7 @@ entries:
         stem: |-
           **(0,5 pt)** Calculer $\displaystyle\lim_{x \to -\infty} f(x)$ puis en déduire $\displaystyle\lim_{x \to +\infty} f(x)$
         reasoning: |-
-          En $-\infty$, chaque brique de $f$ a une limite connue : $e^x\to0$ et $e^{2x}\to0$ (croissance stricte de exp, chapitre 2). Le numérateur tend vers $0$, le dénominateur vers $0+e=e$ — pas d'indétermination, un quotient dont le dénominateur tend vers une limite non nulle se traite terme à terme.
+          En $-\infty$, chaque brique de $f$ a une limite connue : $e^x\to0$ et $e^{2x}\to0$ (limite de référence, chapitre 5). Le numérateur tend vers $0$, le dénominateur vers $0+e=e$ — pas d'indétermination, un quotient dont le dénominateur tend vers une limite non nulle se traite terme à terme.
 
           $$\lim_{x\to-\infty} f(x) = \dfrac{0}{0+e} = 0$$
 
@@ -1559,7 +1559,7 @@ entries:
           (le changement de nom $u=1-x$ ne fait que suivre où va la limite déjà calculée). Les deux limites valent $0$.
         steps:
           - math: '\lim_{x\to-\infty} e^{x} = 0,\quad \lim_{x\to-\infty} e^{2x} = 0 \ \Rightarrow\ \lim_{x\to-\infty} f(x) = \dfrac{0}{e} = 0'
-            note: "e puissance x et e puissance 2x tendent tous deux vers 0 en moins l'infini (chapitre 2) : le dénominateur tend vers e, non nul."
+            note: "e puissance x et e puissance 2x tendent tous deux vers 0 en moins l'infini (chapitre 5) : le dénominateur tend vers e, non nul."
           - math: 'x\to+\infty \ \Rightarrow\ 1-x\to-\infty,\quad f(x)=f(1-x) \quad (\text{I-1a})'
             note: "On reutilise la symétrie plutôt que refaire le calcul : quand x tend vers plus l'infini, 1-x tend vers moins l'infini."
           - math: '\lim_{x\to+\infty} f(x) = \lim_{u\to-\infty} f(u) = 0'
@@ -1880,7 +1880,7 @@ entries:
           - math: '|f(u_n)-f(\alpha)| \le \dfrac12|u_n-\alpha| \quad (\text{inégalité des accroissements finis})'
             note: "Corollaire du théorème des accroissements finis (TAF) : la dérivée majorée par un demi majore l'écart des images."
           - math: 'f(u_n)=u_{n+1},\ f(\alpha)=\alpha \ \Rightarrow\ |u_{n+1}-\alpha| \le \dfrac12|u_n-\alpha|'
-            note: "u_{n+1} est f(u_n) par définition, et f(alpha) vaut alpha (II-2c)."
+            note: "$u_{n+1}$ est f(u_n) par définition, et f(alpha) vaut alpha (II-2c)."
       - id: qII-3c
         stem: |-
           **(0,5 pt)** Montrer par récurrence que : $(\forall n \in \mathbb{N})\ ;\quad |u_n - \alpha| \le \left(\dfrac{1}{2}\right)^{n+1}$

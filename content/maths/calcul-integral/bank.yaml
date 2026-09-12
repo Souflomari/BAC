@@ -50,7 +50,7 @@
 #    inabordable avec le seul corpus actuel. Le raisonnement rappelle
 #    (arctan)' = 1/(1+x^2) et arctan(1) = pi/4 comme primitives de référence
 #    du programme SM. ARBITRAGE OWNER : lacune de corpus, à combler dans la
-#    leçon « Dérivabilité et étude de fonctions » (qui porte déjà la fonction
+#    leçon « Dérivabilité et étude des fonctions » (qui porte déjà la fonction
 #    réciproque) ou dans un chapitre « Primitives » — dossier
 #    content/maths/primitives/ qui n'existe pas encore (déjà signalé par la
 #    NOTE DE VALIDATION en pied de lesson.md, point 2).
@@ -833,14 +833,14 @@ entries:
 
       *Le fil de l'exercice.* La question 1 construit, pour chaque segment $[M_k,M_{k+1}]$, un encadrement de sa longueur — en passant par le **théorème des accroissements finis**, énoncé et appliqué exactement au point où il sert (ce théorème n'appartient pas au socle de cette leçon ; voir SCOPE NOTE en tête de fichier). La question 2 somme ces $n$ encadrements et reconnaît, dans les deux sommes qui en résultent, deux **sommes de Riemann** de la même fonction $h(x)=\sqrt{1+e^{2x}}$ (outil du programme SM, lui aussi hors socle des chapitres 1 à 10 de cette leçon — voir SCOPE NOTE 1 en tête de fichier) — d'où la limite $S_n \to \displaystyle\int_0^1 \sqrt{1+e^{2x}}\,dx$.
 
-      *Aucune figure n'accompagne ce sujet. La carte des domaines : question 1-a mobilise le théorème des accroissements finis (domaine « dérivabilité et étude de fonctions », hors socle) ; le reste — distance entre deux points, encadrement, somme, sommes de Riemann, passage à la limite — relève de ce chapitre et du chapitre « suites numériques ».*
+      *Aucune figure n'accompagne ce sujet. La carte des domaines : question 1-a mobilise le théorème des accroissements finis (domaine « dérivabilité et étude des fonctions », hors socle) ; le reste — distance entre deux points, encadrement, somme, sommes de Riemann, passage à la limite — relève de ce chapitre et du chapitre « suites numériques ».*
     questions:
       - id: q1a
         part: "Question 1 — Le théorème des accroissements finis, applique a e^x"
         stem: |-
           **1- a)** (0,5 pt) Montrer que : $\forall k \in \{0\,;1\,;\ldots\,;(n-1)\}\ \ \exists\, c_k \in\, \left]\dfrac{k}{n}\,;\dfrac{k+1}{n}\right[$ tel que : $e^{\frac{k+1}{n}} - e^{\frac{k}{n}} = \dfrac{1}{n}\,e^{c_k}$
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** L'énoncé demande l'existence d'un point **intermédiaire** $c_k$ reliant une différence de deux valeurs de $e^x$ à une seule valeur de sa dérivée, multipliée par l'écart des abscisses. C'est très exactement la conclusion du **théorème des accroissements finis** — un théorème qui n'appartient pas au socle de cette leçon (domaine « dérivabilité et étude de fonctions »), et qu'il faut donc énoncer avant de l'appliquer.
+          **Ce qu'on cherche et pourquoi ce geste.** L'énoncé demande l'existence d'un point **intermédiaire** $c_k$ reliant une différence de deux valeurs de $e^x$ à une seule valeur de sa dérivée, multipliée par l'écart des abscisses. C'est très exactement la conclusion du **théorème des accroissements finis** — un théorème qui n'appartient pas au socle de cette leçon (domaine « dérivabilité et étude des fonctions »), et qu'il faut donc énoncer avant de l'appliquer.
 
           **Le théorème des accroissements finis (TAF), énoncé ici.** Si $h$ est continue sur $[p,q]$ et dérivable sur $]p,q[$, alors il existe $c \in\, ]p,q[$ tel que $h(q)-h(p) = h'(c)\,(q-p)$.
 
@@ -1104,7 +1104,7 @@ entries:
 
       *Le fil de l'exercice.* La question 1 établit que $F$ est continue, strictement croissante, donc bijective de $[0,1]$ vers $[0,\beta]$ avec $\beta = \displaystyle\int_0^1 e^{t^2}\,dt$. La question 2 construit, à l'aide de la bijection réciproque $F^{-1}$, une somme $S_n$ qui est une somme de Riemann — outil du programme SM, hors socle de cette leçon, voir SCOPE NOTE 1 en tête de fichier — et calcule sa limite $\ell$ par un changement de variable qui repose sur la dérivabilité de $F^{-1}$.
 
-      *Aucune figure n'accompagne ce sujet. Carte des domaines : la construction de $F$ et le calcul final de $\ell$ relèvent de ce chapitre (calcul intégral) ; l'existence de la bijection $F^{-1}$ et sa dérivée relèvent du chapitre « dérivabilité et étude de fonctions » (pontées au point d'usage, hors socle de cette leçon) ; la convergence de $(S_n)$ relève à la fois des sommes de Riemann (calcul intégral, programme SM, hors socle) et du chapitre « suites numériques » ; l'intégrande $e^{t^2}$ est un objet du chapitre « fonction exponentielle ».*
+      *Aucune figure n'accompagne ce sujet. Carte des domaines : la construction de $F$ et le calcul final de $\ell$ relèvent de ce chapitre (calcul intégral) ; l'existence de la bijection $F^{-1}$ et sa dérivée relèvent du chapitre « dérivabilité et étude des fonctions » (pontées au point d'usage, hors socle de cette leçon) ; la convergence de $(S_n)$ relève à la fois des sommes de Riemann (calcul intégral, programme SM, hors socle) et du chapitre « suites numériques » ; l'intégrande $e^{t^2}$ est un objet du chapitre « fonction exponentielle ».*
     questions:
       - id: q1a
         part: "Question 1 — F continue, strictement croissante, bijective"
@@ -1129,7 +1129,7 @@ entries:
         stem: |-
           **1- b)** (0,5 pt) En déduire que $F$ est une bijection de $[0\,;1]$ vers $[0\,;\beta]$ avec $\beta = \displaystyle\int_0^1 e^{t^2}\,dt$
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** « En déduire » : il ne reste rien à calculer, seulement à appliquer le corollaire du théorème des valeurs intermédiaires à ce que la question 1-a vient d'établir — continuité et stricte monotonie, exactement les deux hypothèses de ce corollaire (chapitre « dérivabilité et étude de fonctions », hors socle de ce chapitre).
+          **Ce qu'on cherche et pourquoi ce geste.** « En déduire » : il ne reste rien à calculer, seulement à appliquer le corollaire du théorème des valeurs intermédiaires à ce que la question 1-a vient d'établir — continuité et stricte monotonie, exactement les deux hypothèses de ce corollaire (chapitre « dérivabilité et étude des fonctions », hors socle de ce chapitre).
 
           **Le corollaire du TVI, rappelé ici.** Si $g$ est continue et strictement monotone sur un intervalle $I$, alors $g$ réalise une bijection de $I$ sur l'intervalle image $J=g(I)$, délimité par les valeurs (ou limites) de $g$ aux bornes de $I$, dans l'ordre qui suit son sens de variation.
 
@@ -1141,7 +1141,7 @@ entries:
 
           $$\boxed{F \text{ realise une bijection de } [0,1] \text{ sur } [0,\beta]}$$
 
-          **Le piège nommé de cette question.** Écrire l'intervalle image dans le mauvais ordre par réflexe — ici $F$ croît, donc l'ordre de $[0,1]$ se conserve, mais ce ne serait pas vrai si $F$ décroissait (le pont complet entre sens de variation et ordre des bornes est démontré au chapitre « dérivabilité et étude de fonctions »). Deuxième piège : oublier de justifier séparément la continuité **et** la stricte monotonie — le TVI seul donnerait l'existence d'un antécédent, jamais son unicité.
+          **Le piège nommé de cette question.** Écrire l'intervalle image dans le mauvais ordre par réflexe — ici $F$ croît, donc l'ordre de $[0,1]$ se conserve, mais ce ne serait pas vrai si $F$ décroissait (le pont complet entre sens de variation et ordre des bornes est démontré au chapitre « dérivabilité et étude des fonctions »). Deuxième piège : oublier de justifier séparément la continuité **et** la stricte monotonie — le TVI seul donnerait l'existence d'un antécédent, jamais son unicité.
         steps:
           - math: 'F \text{ continue et strictement croissante sur } [0,1] \quad (\text{question 1-a})'
             note: "Les deux hypothèses du corollaire du TVI, déjà etablies."
@@ -1160,7 +1160,7 @@ entries:
 
           **Le théorème des sommes de Riemann, énoncé ici.** Si $h$ est continue sur $[0,1]$, alors $\dfrac1n\displaystyle\sum_{k=1}^{n} h\!\left(\dfrac{k}{n}\right) \xrightarrow[n\to+\infty]{} \displaystyle\int_0^1 h(u)\,du$.
 
-          **La continuité de $\varphi$, à vérifier avant d'appliquer le théorème.** $F$ est une bijection continue et strictement croissante de $[0,1]$ sur $[0,\beta]$ (question 1-b) : sa réciproque $F^{-1}$ est donc elle-même continue sur $[0,\beta]$ (une bijection continue strictement monotone sur un intervalle a une réciproque continue — chapitre « dérivabilité et étude de fonctions »). $u\mapsto u\beta$ est continue sur $[0,1]$ à valeurs dans $[0,\beta]$, donc par composition $\varphi(u) = F^{-1}(u\beta)$ est continue sur $[0,1]$.
+          **La continuité de $\varphi$, à vérifier avant d'appliquer le théorème.** $F$ est une bijection continue et strictement croissante de $[0,1]$ sur $[0,\beta]$ (question 1-b) : sa réciproque $F^{-1}$ est donc elle-même continue sur $[0,\beta]$ (une bijection continue strictement monotone sur un intervalle a une réciproque continue — chapitre « dérivabilité et étude des fonctions »). $u\mapsto u\beta$ est continue sur $[0,1]$ à valeurs dans $[0,\beta]$, donc par composition $\varphi(u) = F^{-1}(u\beta)$ est continue sur $[0,1]$.
 
           **L'application du théorème.**
 
@@ -1188,7 +1188,7 @@ entries:
 
           *(On pourra effectuer le changement de variable $u = F^{-1}(t)$)*
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** L'indication impose le changement de variable $u=F^{-1}(t)$ dans $\displaystyle\int_0^\beta F^{-1}(t)\,dt$ (question 2-a). Un tel changement de variable n'est légitime que si la fonction qui relie $u$ et $t$ est **dérivable** — ce qui n'est pas immédiat ici, puisque $F^{-1}$ n'a jamais été construite explicitement : c'est exactement le rôle du théorème de la dérivée d'une fonction réciproque (chapitre « dérivabilité et étude de fonctions », hors socle de ce chapitre), qu'il faut énoncer et vérifier avant de s'en servir.
+          **Ce qu'on cherche et pourquoi ce geste.** L'indication impose le changement de variable $u=F^{-1}(t)$ dans $\displaystyle\int_0^\beta F^{-1}(t)\,dt$ (question 2-a). Un tel changement de variable n'est légitime que si la fonction qui relie $u$ et $t$ est **dérivable** — ce qui n'est pas immédiat ici, puisque $F^{-1}$ n'a jamais été construite explicitement : c'est exactement le rôle du théorème de la dérivée d'une fonction réciproque (chapitre « dérivabilité et étude des fonctions », hors socle de ce chapitre), qu'il faut énoncer et vérifier avant de s'en servir.
 
           **Le théorème de la dérivée d'une fonction réciproque, énoncé ici.** Soit $g$ une bijection d'un intervalle $I$ sur $J$, dérivable en un point $a$ de $I$, et $b=g(a)$. Si $g^{\prime}(a)\ne 0$, alors $g^{-1}$ est dérivable en $b$, et $\left(g^{-1}\right)^{\prime}(b) = \dfrac{1}{g^{\prime}(a)}$.
 

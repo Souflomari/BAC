@@ -491,7 +491,7 @@ On ne cherche pas une formule d'amplitude — on lit le tableau : l'amplitude cu
 Le chapitre 6 n'a donné les deux réservoirs d'énergie qu'**en aperçu**. Dès qu'un sujet demande un bilan chiffré, il mobilise deux outils que cette leçon ne construit pas :
 
 - **Le travail d'une force conservative et sa relation à l'énergie potentielle**, $W = -\Delta E_p$ — c'est elle qui permet de chiffrer le travail d'une force de rappel ou d'un couple de torsion entre deux positions, sans intégrer quoi que ce soit. Elle vit dans « **Aspects énergétiques** », avec les expressions $\frac{1}{2}kx^2$ pour le ressort et $\frac{1}{2}C\theta^2$ pour le fil de torsion.
-- **L'énergie cinétique de rotation**, $E_c = \frac{1}{2}J_\Delta\,\dot\theta^{\,2}$, dès qu'il s'agit d'un pendule pesant ou de torsion — l'analogue de $\frac{1}{2}mv^2$ avec le moment d'inertie à la place de la masse. Elle est établie dans « **Rotation d'un solide autour d'un axe fixe** », qui construit aussi $J_\Delta$ lui-même et la relation fondamentale de la dynamique en rotation que ces pendules utilisent pour poser leur équation.
+- **L'énergie cinétique de rotation**, $E_c = \frac{1}{2}J_\Delta\,\dot\theta^{\,2}$, dès qu'il s'agit d'un pendule pesant ou de torsion — l'analogue de $\frac{1}{2}mv^2$ avec le moment d'inertie à la place de la masse. Elle est établie dans « **Rotation autour d'un axe fixe** », qui construit aussi $J_\Delta$ lui-même et la relation fondamentale de la dynamique en rotation que ces pendules utilisent pour poser leur équation.
 
 C'est la même leçon que celle du dictionnaire translation ↔ rotation : la mécanique du mouvement oscillant est une seule machinerie, habillée de plusieurs façons. Savoir **d'où vient** chaque geste est la moitié du travail de révision.
 

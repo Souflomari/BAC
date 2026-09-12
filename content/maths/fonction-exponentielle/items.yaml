@@ -9,8 +9,8 @@ misconceptions:
   # (par défaut le modèle primaire de l'item ; un `misconception` distinct quand
   # le distracteur relève d'un autre modèle — voir secondary_coverage), et
   # (d) rapporte un `coverage_summary` HONNÊTE en pied de fichier. Aucun compte
-  # n'est gonflé ; le plancher (>=3 par modèle) n'est PAS atteint et c'est
-  # disclosé tel quel.
+  # n'est gonflé ; depuis le complément EXP-28…EXP-31, le plancher (>=3 par
+  # modèle) EST atteint — `floor_met: true`, recompté depuis les tags bruts.
   - id: mc.math.maths_fonction_exponentielle.exp-signe-ou-domaine
     label: "e^x pourrait être négatif ou nul, ou ne pas être défini partout"
     description: >-
@@ -1509,13 +1509,16 @@ items:
 # Ce bank etait un LEGACY end-bank (`misconceptions: []`, tags absents). Le
 # backfill ci-dessus a ajoute l'inventaire (13 modeles alignes sur les
 # rupture-gates), un `primary_misconception` par item, et un `misconception`
-# par distracteur. Comptes ci-dessous BY PRIMARY (chaque item compte une fois,
-# vers son modele primaire). Ils sont reels, non gonfles.
+# par distracteur. NOTE (revue vague 1) : les comptes ci-dessous etaient BY
+# PRIMARY, methode ABANDONNEE — la table publiee en pied de fichier compte au
+# niveau ITEM (un item compte des qu'un de ses distracteurs porte le modele),
+# et c'est elle que la machine lit. Sous BY PRIMARY, cinq familles sur treize
+# tomberaient sous le plancher. Ils sont reels, non gonfles.
   # Ajoutés le 2026-09-05 : sept familles siégeaient sous le plancher de 3 items
   # du banc — croissances-comparees-inversees (1), inegalite-reference-erreur
   # (1), puis cinq à 2 items (exp-signe-ou-domaine, bijection-existence-unicite,
   # somme-produit-confondus, limite-exp-moins-infini,
-  # exp-valeur-negative-impossible). Neuf places à combler, trois items de trois
+  # exp-valeur-negative-impossible). Neuf places à combler, quatre items de trois
   # distracteurs : l'ajustement est exact, chaque distracteur porte une famille
   # distincte.
   - id: EXP-28
