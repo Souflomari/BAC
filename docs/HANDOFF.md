@@ -5411,3 +5411,48 @@ Il ne l'est pas — les 18 occurrences sont dans `bank.yaml`, et une seconde
 critique a confirmé indépendamment que chap.8 = R5 — mais un exemple qu'on ne
 peut pas localiser est un exemple qu'on ne peut pas vérifier. Le commentaire
 nomme désormais le fichier.
+
+### 11.56 La réponse au-dessus de la porte d'essai : la classe est fermée côté libellés, et sa dernière racine est un asset manquant
+
+Trois notions d'affilée ont livré le même défaut — une réponse imprimée
+au-dessus de la porte d'essai — alors re-mesuré sur le corpus. Rappel du
+mécanisme : dans `AttemptFirstExercise.tsx`, le libellé `part` **et** l'`intro`
+se rendent HORS du gate ; seuls `reasoning` et `steps` sont gardés.
+
+**Libellés `part` : la classe est close.** Sur les 240 libellés du corpus, **2**
+portent encore un mot de résultat après un « : », et les deux sont des **faux
+positifs** de philo (« un cas de coïncidence puis de divergence » décrit le
+sujet de dissertation ; l'autre est une citation de chapitre). Les seuls vrais —
+« Partie B … : convergence vers 0 » et « Partie C … : divergence vers −∞ » dans
+`suites-numeriques` — sont corrigés (§11.45).
+
+**Intros : une fuite de plus, trouvée et corrigée.**
+`maths/fonction-logarithme`, `r-variation` — l'intro annonçait **trois de ses
+propres réponses** : « $(C)$ passera **en dessous** de $(\Delta)$ » (c'est q6,
+« en déduire la position relative »), « $f$ sera **strictement croissante** »
+(q4, « prouver que $f$ est strictement croissante ») et « la suite sera
+**décroissante** » (q10, « montrer que la suite est décroissante »). Trois
+questions sur onze, dans l'exercice dont tout l'objet est de vérifier que
+l'élève court seul. **Cette notion avait déjà été triée (§11.45, 7 correctifs) :
+la fuite y avait été manquée.** L'intro nomme désormais les trois *dimensions*
+qui basculent sans dire dans quel sens.
+
+**La racine qui reste : un asset manquant.** Deux fuites mesurées ne se
+corrigent PAS en retirant la phrase, parce que la phrase porte la **donnée** :
+
+- `maths/fonction-exponentielle` q5b — la question demande de lire le signe de
+  $g$ sur la courbe, et la description en prose **donne** le signe ;
+- `pc/transformations-lentes-rapides` `r-variation` q5 — la question demande de
+  déterminer $t_{1/2}$, et l'intro dit « elle atteint la moitié de sa valeur
+  finale à $t = 10$ min », c'est-à-dire la lecture déjà faite. (Le jumeau
+  `r-bac` fait bien : il donne les graduations, l'élève lit.)
+
+Dans les deux cas la cause est la même : **le sujet imprimait une figure, le
+corpus n'en a pas**, et la prose qui la remplace ne peut pas décrire la courbe
+sans livrer ce qu'on demande d'y lire. Mesuré : **14 notions décrivent une
+courbe en prose dans leurs exercices, et 12 d'entre elles ne portent AUCUN
+marqueur `[[figure:]]` dans `exercises.yaml`** (seules `pc/aspects-energetiques`
+et `pc/decroissance-radioactive` en ont un). C'est un manque d'ASSET, pas de
+rédaction — coder ces figures relève de diagram-author (ADR 0017 : les schémas
+structurels sont codés, jamais générés). **Non corrigé ici : retirer la donnée
+rendrait les questions impossibles.**
