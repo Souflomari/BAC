@@ -6289,3 +6289,51 @@ jamais tiré faute d'occurrence.
 Vérifiée rouge ET verte, cinq cas (témoin vert, fichier restauré propre) :
 `bk-2019-n-x4` ROUGE · `ROT-12` (préfixe réel de la notion) ROUGE ·
 `le sujet 2019` VERT · `ZZZ-12` (préfixe étranger) VERT · `le chapitre 4` VERT.
+
+---
+
+### 11.68 Pourquoi la porte §11.62 ne regarde QUE le premier pas de la première question — mesuré, et délibérément non élargi
+
+La porte « réponse au-dessus de la porte d'essai » (§11.62) n'inspecte que
+`questions[0].steps[0].math`. Vu de loin c'est un oubli : pourquoi ne pas
+balayer tous les pas de toutes les questions ? J'ai écrit l'élargissement et
+je l'ai **mesuré avant de l'armer**. Il ne sera pas armé.
+
+**Résultat : 5 signalements nouveaux, 5 faux positifs.** Vérifiés un par un,
+pas échantillonnés :
+
+| Entrée | LHS = RHS repéré | Ce que l'intro dit vraiment |
+|---|---|---|
+| `fonction-exponentielle` r-variation | `f(x)` … `1` | l'intro **définit** $f(x)=\frac{e^{x}-1}{e^{x}+1}$ ; le « 1 » est dans la définition, la limite calculée au pas 2 vaut 1 par coïncidence |
+| `derivabilite-etude-fonctions` bk-2018-n-x4 | `g(0)` … `0` | l'intro définit $g(x)=e^{x}-x^{2}+3x-1$ |
+| `fonction-logarithme` bk-2024-n-x4 | `f(x)` … `1` | l'intro définit $u(x)=e^x$ et $v(x)=x$ |
+| `nombres-complexes-2` bk-2023-r-x2 | `\overline{z}` … `1` | énoncé de partie, aucune valeur affirmée |
+| `rotation-axe-fixe` bk-2013-r-x4 | `\theta` … `0` | prose d'introduction sur les horloges |
+
+Le motif commun saute aux yeux : **le membre de droite vaut 0 ou 1 dans les
+cinq cas.** C'est exactement la forme de faux positif déjà rencontrée quand la
+porte a été resserrée trois fois (§11.62) — un « 1 » qui est le second membre
+d'une équation de l'énoncé, un « 0 » qui est l'instant initial. Plus on
+élargit la portée, plus on récolte de ces coïncidences, sans récolter de
+défauts.
+
+**Et le point qui compte vraiment, parce qu'il corrige une intuition fausse :
+élargir la PORTÉE n'élargit pas l'ATTEINTE.** Les six fuites réelles corrigées
+à la main dans `chute-mouvements-plans` (§11.45, sa revue) étaient d'une autre
+FORME : une lecture graphique affirmée en prose — « la courbe atteint un
+palier à $1{,}5\ \text{m.s}^{-1}$ » — alors que la question demande de lire
+cette valeur sur le graphique. Il n'y a **aucune égalité `LHS = … = RHS`**
+dans le pas gardé à laquelle comparer ; le pas dit « on lit le palier ». Le
+mécanisme de la porte — apparier le dernier membre d'une chaîne d'égalités
+avec ce que l'intro affirme — ne peut structurellement pas voir cette forme,
+à n'importe quelle portée.
+
+Donc : la portée étroite de §11.62 **n'est pas une limite à corriger, c'est ce
+qui tient sa précision**. La classe qu'elle ne voit pas (la valeur graphique
+affirmée en prose) reste à la charge de la revue humaine — et c'est écrit ici
+pour qu'un mainteneur qui aurait la même idée que moi trouve la mesure déjà
+faite plutôt que de noyer la CI sous cinq faux positifs.
+
+C'est l'ADR 0031 mot pour mot : « **l'ATTEINTE d'un mécanisme se mesure
+séparément de la question de savoir s'il fonctionne.** » §11.62 fonctionne ;
+son atteinte est bornée par sa mécanique, pas par sa portée.
