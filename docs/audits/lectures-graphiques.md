@@ -24,7 +24,7 @@
 > toutes étaient servies. Le chiffre cité par K-8 et le HANDOFF était faux par
 > défaut, sans que rien ne le signale.
 
-**Chiffres au 2026-09-05 : 152 entrées sur 247**, dont
+**Chiffres au 2026-09-12 : 152 entrées sur 247**, dont
 **152 appartiennent à une épreuve complète** (donc affichée à l'élève en
 mode examen).
 
@@ -69,9 +69,9 @@ Trié par nombre de mentions.
 | 16 | `bk-2012-n-x4` | `pc/dipole-rl` | SPC 2012 normale | 2.5 | oui | **non** |
 | 16 | `bk-2013-r-x4` | `pc/rotation-axe-fixe` | SPC 2013 rattrapage | 5.5 | oui | oui |
 | 16 | `bk-2017-n-x3b` | `pc/dipole-rl` | SPC 2017 normale | 3.25 | oui | oui |
-| 16 | `bk-2024-n-x4` | `pc/dipole-rl` | SPC 2024 normale | 1.5 | oui | **non** |
 | 15 | `bk-2021-n-x5` | `pc/chute-mouvements-plans` | SPC 2021 normale | 2.75 | oui | **non** |
 | 15 | `bk-2024-n-x1` | `pc/suivi-temporel-vitesse` | SPC 2024 normale | 2.25 | oui | **non** |
+| 15 | `bk-2024-n-x4` | `pc/dipole-rl` | SPC 2024 normale | 1.5 | oui | **non** |
 | 14 | `bk-2011-n-x3` | `pc/rc-charge` | SPC 2011 normale | 4.5 | oui | oui |
 | 14 | `bk-2011-r-x2` | `pc/ondes-mecaniques-progressives` | SPC 2011 rattrapage | 2.5 | oui | oui |
 | 14 | `bk-2023-n-x3` | `pc/dipole-rl` | SPC 2023 normale | 1.75 | oui | **non** |
