@@ -958,7 +958,7 @@ entries:
         stem: |-
           **(0,75 pt)** Exprimer le quotient de réaction $Q_{r,\text{éq}}$ à l'équilibre en fonction de $C_a$ et $[\text{H}_3\text{O}^+_{(aq)}]_{\text{éq}}$. Calculer sa valeur.
         reasoning: |-
-          On écrit les concentrations d'équilibre à partir du tableau d'avancement (chapitre 5) : chaque acide dissocié forme un $\text{C}_2\text{H}_5\text{COO}^-$ et un $\text{H}_3\text{O}^+$ en quantités égales, donc $[\text{C}_2\text{H}_5\text{COO}^-]_{eq} \approx [\text{H}_3\text{O}^+]_{eq}$ ; il reste $[\text{C}_2\text{H}_5\text{COOH}]_{eq} \approx C_a - [\text{H}_3\text{O}^+]_{eq}$ de l'acide non dissocié. On reporte dans le quotient associé à l'équation de la question 1.
+          On écrit les concentrations d'équilibre à partir des concentrations à l'équilibre (chapitre 5) : chaque acide dissocié forme un $\text{C}_2\text{H}_5\text{COO}^-$ et un $\text{H}_3\text{O}^+$ en quantités égales, donc $[\text{C}_2\text{H}_5\text{COO}^-]_{eq} \approx [\text{H}_3\text{O}^+]_{eq}$ ; il reste $[\text{C}_2\text{H}_5\text{COOH}]_{eq} \approx C_a - [\text{H}_3\text{O}^+]_{eq}$ de l'acide non dissocié. On reporte dans le quotient associé à l'équation de la question 1.
         steps:
           - math: 'Q_{r,\text{éq}} = \dfrac{[\text{C}_2\text{H}_5\text{COO}^-]_{eq}\,[\text{H}_3\text{O}^+_{(aq)}]_{\text{éq}}}{[\text{C}_2\text{H}_5\text{COOH}]_{eq}} = \dfrac{[\text{H}_3\text{O}^+_{(aq)}]_{\text{éq}}^{2}}{C_a - [\text{H}_3\text{O}^+_{(aq)}]_{\text{éq}}}'
             note: "On remplace [C2H5COO-]eq par [H3O+]eq (produits formes a parts égales) et [C2H5COOH]eq par Ca - [H3O+]eq."
@@ -1214,7 +1214,7 @@ entries:
 
           $$\boxed{\text{CH}_3\text{-NH}_{2(aq)} + \text{H}_3\text{O}^+_{(aq)} \longrightarrow \text{CH}_3\text{-NH}^+_{3(aq)} + \text{H}_2\text{O}_{(l)}}$$
 
-          **Le contrôle qui justifie la flèche simple.** $K = K_A(\text{H}_3\text{O}^+/\text{H}_2\text{O})/K_A(\text{CH}_3\text{-NH}_3^+/\text{CH}_3\text{-NH}_2) = 1/10^{-10{,}7} = 10^{10{,}7} \approx 5\times10^{10}$ (chapitre 8 puis 9) : la réaction est quasi totale, la flèche simple est méritée.
+          **Le contrôle qui justifie la flèche simple.** $K = K_A(\text{H}_3\text{O}^+/\text{H}_2\text{O})/K_A(\text{CH}_3\text{-NH}_3^+/\text{CH}_3\text{-NH}_2) = 1/10^{-10{,}7} = 10^{10{,}7} \approx 5\times10^{10}$ (chapitre 8 puis 10) : la réaction est quasi totale, la flèche simple est méritée.
 
           **Le piège de cette question.** Ce dosage est le **miroir** de celui du cours (chapitre 10-11, qui verse une base forte sur un acide faible et où le pH **monte**) : ici on verse l'acide fort sur une base faible, et le pH **descend** au fil du dosage — cohérent avec la courbe donnée, qui part de $11{,}3$ et décroît.
       - id: q7
@@ -2878,14 +2878,14 @@ entries:
 
           $$\boxed{\text{CH}_3\text{COO}^-\ \text{est l’espèce dominante à pH} = 7}$$
 
-          Pour le chiffrer plutôt que l'affirmer (chapitre 9) : $\log\dfrac{[\text{CH}_3\text{COO}^-]}{[\text{CH}_3\text{COOH}]} = \text{pH} - pK_A = 2{,}2$, soit un rapport $10^{2{,}2} \approx 160$ — la base conjuguée est environ $160$ fois plus abondante que l'acide.
+          Pour le chiffrer plutôt que l'affirmer (chapitre 6) : $\log\dfrac{[\text{CH}_3\text{COO}^-]}{[\text{CH}_3\text{COOH}]} = \text{pH} - pK_A = 2{,}2$, soit un rapport $10^{2{,}2} \approx 160$ — la base conjuguée est environ $160$ fois plus abondante que l'acide.
 
           Le piège nommé de cette question. Comparer le pH à $7$ (la neutralité) au lieu de le comparer au $pK_A$ : la frontière entre les deux formes d'UN couple est son $pK_A$, une propriété du couple — jamais le $7$ de la neutralité de l'eau, qui est une propriété du solvant.
         steps:
           - math: '\text{pH} = 7 > pK_A = 4{,}8 \implies \text{CH}_3\text{COO}^-\ \text{dominant}'
             note: "Diagramme de prédominance (chapitre 6) : au-dessus du pKA, la forme basique domine."
           - math: '\frac{[\text{CH}_3\text{COO}^-]}{[\text{CH}_3\text{COOH}]} = 10^{\,\text{pH}-pK_A} = 10^{2{,}2} \approx 160'
-            note: "Chiffrage (chapitre 9) : la base conjuguée est environ 160 fois plus abondante."
+            note: "Chiffrage (chapitre 6) : la base conjuguée est environ 160 fois plus abondante."
       - id: q1-5
         stem: |-
           **1-5-** (0,75 pt) Trouver, à l'aide de la courbe du dosage, le volume $v_b$ à ajouter pour que : $\dfrac{\left[\text{CH}_3\text{COOH}\right]_{eq}}{\left[\text{CH}_3\text{COO}^-\right]_{eq}} = 1$.

@@ -115,7 +115,7 @@ Dans les deux sens, la même règle : décomposer plutôt que deviner.
 
 ### Construire la réaction de l'eau sur elle-même
 
-Tu as vu au chapitre précédent que l'eau est un ampholyte : elle est base dans le couple $H_3O^+/H_2O$, et acide dans le couple $H_2O/HO^-$. Rien n'empêche alors une molécule d'eau de céder un proton... à une *autre* molécule d'eau. C'est exactement la même construction qu'à l'exemple travaillé du chapitre 2 : on additionne les deux demi-équations et le $H^+$ s'annule.
+Tu as vu au chapitre 2 que l'eau est un ampholyte : elle est base dans le couple $H_3O^+/H_2O$, et acide dans le couple $H_2O/HO^-$. Rien n'empêche alors une molécule d'eau de céder un proton... à une *autre* molécule d'eau. C'est exactement la même construction qu'à l'exemple travaillé du chapitre 2 : on additionne les deux demi-équations et le $H^+$ s'annule.
 
 Une molécule d'eau joue l'acide (elle cède un proton) :
 
@@ -141,7 +141,7 @@ $$K_e = [H_3O^+] \times [HO^-]$$
 
 $$pK_e = 14$$
 
-Que $[H_3O^+]$ et $[HO^-]$ varient énormément d'une solution à l'autre, leur produit, lui, ne bouge pas (à température fixée) : si l'un augmente, l'autre diminue dans les mêmes proportions, pour que le produit reste constant.
+Bien que $[H_3O^+]$ et $[HO^-]$ varient énormément d'une solution à l'autre, leur produit, lui, ne bouge pas (à température fixée) : si l'un augmente, l'autre diminue dans les mêmes proportions, pour que le produit reste constant.
 
 ### Solution neutre, acide, basique : d'où vient la frontière à pH $= 7$
 
@@ -167,7 +167,7 @@ Voici une confusion fréquente, et elle mérite d'être affrontée directement :
 
 Reviens à la mécanique du chapitre précédent. Le pH n'est pas $[H_3O^+]$ lui-même : c'est $-\log[H_3O^+]$, avec ce signe moins qui **inverse** le sens de variation. Une solution très acide a un $[H_3O^+]$ **grand** — mais justement à cause du signe moins, son pH est **petit**. Le nombre « petit » que tu lis sur l'échelle ne signifie donc pas « peu d'acidité » : il signifie « beaucoup de $H_3O^+$ », donc **beaucoup** d'acidité. pH petit et acidité forte vont dans le même sens, pas dans des sens opposés.
 
-Vérifie sur un exemple chiffré : une solution à $\text{pH} = 2$ a $[H_3O^+] = 10^{-2}\ \text{mol/L}$ ; une solution à $\text{pH} = 9$ a $[H_3O^+] = 10^{-9}\ \text{mol/L}$ — un million de fois moins. La solution au pH le plus **petit** est donc bien celle qui contient le **plus** de $H_3O^+$ : c'est elle la plus acide, pas la plus basique.
+Vérifie sur un exemple chiffré : une solution à $\text{pH} = 2$ a $[H_3O^+] = 10^{-2}\ \text{mol/L}$ ; une solution à $\text{pH} = 9$ a $[H_3O^+] = 10^{-9}\ \text{mol/L}$ — dix millions de fois moins. La solution au pH le plus **petit** est donc bien celle qui contient le **plus** de $H_3O^+$ : c'est elle la plus acide, pas la plus basique.
 
 ### Exemple travaillé
 
@@ -635,7 +635,7 @@ Le programme exige que $V_E$ (et $\text{pH}_E$) soient **repérés graphiquement
 
 ### Un indicateur, c'est un couple acide/base de plus
 
-Reviens aux chapitres 6 et 8 : la forme qui prédomine dans une solution impose ce qu'on y observe. Un **indicateur coloré** est lui-même un couple acide/base faible, noté $HIn/In^-$, dont la particularité est que ses deux formes ont des **couleurs différentes** — c'est ce qui le rend utile. Comme pour n'importe quel couple, à un pH donné, c'est la forme qui prédomine qui impose ce qu'on voit.
+Reviens aux chapitres 6 et 9 : la forme qui prédomine dans une solution impose ce qu'on y observe. Un **indicateur coloré** est lui-même un couple acide/base faible, noté $HIn/In^-$, dont la particularité est que ses deux formes ont des **couleurs différentes** — c'est ce qui le rend utile. Comme pour n'importe quel couple, à un pH donné, c'est la forme qui prédomine qui impose ce qu'on voit.
 
 ### La zone de virage
 

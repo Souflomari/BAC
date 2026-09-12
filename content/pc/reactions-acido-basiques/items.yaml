@@ -9,7 +9,7 @@ misconceptions:
   #    portaient aucun id. Leurs 81 distracteurs étaient donc muets pour le
   #    modèle apprenant. Huit familles, tirées des distracteurs eux-mêmes.
   - id: AB-BASE-1
-    chapter: R0
+    chapter: R3
     label: "Échelle de pH lue à l'envers"
     description: >-
       Croit qu'un pH plus GRAND signale une solution plus acide, qu'une
@@ -17,7 +17,7 @@ misconceptions:
       qu'un pH élevé favorise la forme acide d'un couple — alors que
       $\text{pH} = -\log[H_3O^+]$ varie en sens INVERSE de l'acidité.
   - id: AB-BASE-2
-    chapter: R1
+    chapter: R2
     label: "pH et concentration confondus"
     description: >-
       Prend le pH pour la concentration elle-même ($[H_3O^+] = 6{,}0$ pour
@@ -26,7 +26,7 @@ misconceptions:
       -\log[H_3O^+]$ et $[H_3O^+] = 10^{-\text{pH}}$ sont deux écritures
       d'une même bijection.
   - id: AB-BASE-3
-    chapter: R2
+    chapter: R6
     label: "Force d'un acide et concentration confondues"
     description: >-
       Croit qu'à concentration apportée égale deux acides donnent le même pH,
@@ -36,7 +36,7 @@ misconceptions:
       CONCENTRATION la quantité apportée : deux grandeurs indépendantes, dont
       le pH est la conséquence commune.
   - id: AB-BASE-4
-    chapter: R3
+    chapter: R4
     label: "K_A et pK_A mal comparés"
     description: >-
       Compare un $K_A$ à un $pK_A$ comme deux nombres de même nature, croit
@@ -45,7 +45,7 @@ misconceptions:
       l'acide le plus fort a le $K_A$ le plus GRAND, donc le $pK_A$ le plus
       PETIT.
   - id: AB-BASE-5
-    chapter: R4
+    chapter: R1
     label: "Définition de Brønsted mal appliquée"
     description: >-
       Définit l'acide par une propriété sensible (corrosif) ou par la présence
@@ -56,7 +56,7 @@ misconceptions:
       celle qui le capte, et qu'un proton n'existe jamais libre en solution
       aqueuse.
   - id: AB-BASE-6
-    chapter: R5
+    chapter: R3
     label: "Autoprotolyse de l'eau mal comprise"
     description: >-
       Croit que $[H_3O^+]$ et $[HO^-]$ ne peuvent jamais être égales, qu'une
@@ -66,7 +66,7 @@ misconceptions:
       solution aqueuse à $25\,^\circ\text{C}$, et que c'est la COMPARAISON des
       deux concentrations qui décide de la nature acide, neutre ou basique.
   - id: AB-BASE-7
-    chapter: R6
+    chapter: R7
     label: "Constante de réaction mal construite"
     description: >-
       Inverse l'ordre des $pK_A$ dans l'exposant, multiplie les deux $K_A$ au
@@ -251,7 +251,7 @@ items:
           C'est l'inverse du sens de variation du pH. $\text{pH} =
           -\log[H_3O^+]$ : le signe moins fait qu'un $[H_3O^+]$ grand donne un
           pH **petit**. La solution de $\text{pH} = 2$ a $[H_3O^+] =
-          10^{-2}\ \text{mol/L}$, un million de fois plus que celle de
+          10^{-2}\ \text{mol/L}$, dix millions de fois plus que celle de
           $\text{pH} = 9$ ($[H_3O^+] = 10^{-9}\ \text{mol/L}$) : c'est elle la
           plus acide.
       - id: C
@@ -274,13 +274,13 @@ items:
     correct_feedback: >
       $\text{pH} = 2 \Rightarrow [H_3O^+] = 10^{-2}\ \text{mol/L}$ ;
       $\text{pH} = 9 \Rightarrow [H_3O^+] = 10^{-9}\ \text{mol/L}$. La première
-      solution contient un million de fois plus d'ions $H_3O^+$ : elle est la
+      solution contient dix millions de fois plus d'ions $H_3O^+$ : elle est la
       plus acide, malgré son pH « plus petit ».
     solution: |
       $$[H_3O^+]_{(\text{pH}=2)} = 10^{-2}\ \text{mol/L} \qquad [H_3O^+]_{(\text{pH}=9)} = 10^{-9}\ \text{mol/L}$$
 
       Le rapport des deux concentrations vaut $10^{7}$ : la solution de
-      $\text{pH} = 2$ est un million de fois plus concentrée en $H_3O^+$.
+      $\text{pH} = 2$ est dix millions de fois plus concentrée en $H_3O^+$.
       Un pH petit signale une concentration en $H_3O^+$ grande — donc une
       acidité forte — jamais une base.
 
