@@ -210,7 +210,7 @@ Par la méthode des 63 % : à $t = 5\ \text{ms}$, on doit lire $i \approx 0{,}63
 
 Le régime permanent est pratiquement atteint à $t \approx 5\tau = 25\ \text{ms}$.
 
-Vérifie ta compréhension de la constante de temps.
+Vérifie ta compréhension de la constante de temps — le point d'arrêt t'attend à la fin de ce chapitre, après les deux sections qui suivent.
 
 ### Une troisième lecture : la droite $\dfrac{di}{dt} = f(i)$
 
@@ -219,18 +219,18 @@ Les deux méthodes précédentes lisent le temps en abscisse. Un sujet peut te d
 Reprends-la et isole la dérivée :
 
 $$
-L\,\frac{di}{dt} + (R+r)\,i = E
+L\,\frac{di}{dt} + (R_0 + r)\,i = E
 \qquad\Longrightarrow\qquad
-\frac{di}{dt} = \frac{E}{L} - \frac{R+r}{L}\,i
+\frac{di}{dt} = \frac{E}{L} - \frac{R_0 + r}{L}\,i
 $$
 
 C'est une **fonction affine** de $i$. Si l'on porte $\dfrac{di}{dt}$ en ordonnée et $i$ en abscisse, on obtient donc une **droite**, dont les trois éléments remarquables se lisent directement :
 
 - son **ordonnée à l'origine** (en $i = 0$, c'est-à-dire à l'instant de la fermeture) vaut $\dfrac{E}{L}$ — elle donne **$L$** si $E$ est connue ;
-- sa **pente** vaut $-\dfrac{R+r}{L}$ — négative, et c'est la signature du phénomène : plus le courant monte, plus il monte lentement. Elle donne **$R+r$** une fois $L$ connue, ou directement $-\dfrac{1}{\tau}$ ;
-- son **intersection avec l'axe des abscisses**, là où $\dfrac{di}{dt} = 0$, donne $i = \dfrac{E}{R+r} = I_{max}$ — le régime permanent, celui où plus rien ne varie.
+- sa **pente** vaut $-\dfrac{R_0 + r}{L}$ — négative, et c'est la signature du phénomène : plus le courant monte, plus il monte lentement. Elle donne **$R_0 + r$** une fois $L$ connue, ou directement $-\dfrac{1}{\tau}$ ;
+- son **intersection avec l'axe des abscisses**, là où $\dfrac{di}{dt} = 0$, donne $i = \dfrac{E}{R_0 + r} = I_{max}$ — le régime permanent, celui où plus rien ne varie.
 
-Deux lectures suffisent donc à identifier complètement le circuit. Et note ce que cette méthode a de mieux que les deux autres : elle donne $L$ et $R+r$ **séparément**, là où les 63 % et la tangente ne donnent que leur quotient $\tau = L/(R+r)$.
+Deux lectures suffisent donc à identifier complètement le circuit. Et note ce que cette méthode a de mieux que les deux autres : elle donne $L$ et $R_0 + r$ **séparément**, là où les 63 % et la tangente ne donnent que leur quotient $\tau = L/(R+r)$.
 
 *Le piège nommé de cette lecture :* prendre la pente pour $\tau$ au lieu de $-\dfrac{1}{\tau}$, ou en perdre le signe. Le contrôle qui tranche : une pente **positive** décrirait un courant qui s'établit de plus en plus vite à mesure qu'il monte — l'inverse exact du mécanisme d'inertie électrique du chapitre 2.
 
@@ -240,7 +240,7 @@ Tout ce qui précède décrit l'**établissement** : on ferme l'interrupteur, le
 
 **Le fait de départ, c'est celui du chapitre 2.** Une bobine s'oppose aux **variations** du courant qui la traverse. À la fermeture, elle freinait la montée ; à l'ouverture, elle s'oppose à la chute — et cette fois elle a de quoi le faire, puisqu'elle a stocké de l'énergie $E_L = \frac{1}{2}Li^2$ (chapitre 5 ci-après).
 
-**Le problème que cela pose.** Si l'on ouvrait brutalement le circuit, le courant devrait passer de $I_{max}$ à $0$ en un temps quasi nul. La tension aux bornes de la bobine, $u = L\dfrac{di}{dt}$, deviendrait alors **énorme** en valeur absolue — c'est l'étincelle qu'on voit jaillir à l'interrupteur, et c'est ce qui détruit les composants d'un montage réel.
+**Le problème que cela pose.** Si l'on ouvrait brutalement le circuit, le courant devrait passer de $I_{max}$ à $0$ en un temps quasi nul. La tension aux bornes de la bobine, $u = r\,i + L\dfrac{di}{dt}$ — dont le second terme écrase ici le premier — deviendrait alors **énorme** en valeur absolue — c'est l'étincelle qu'on voit jaillir à l'interrupteur, et c'est ce qui détruit les composants d'un montage réel.
 
 **La solution du montage : une voie de secours.** On place donc, en parallèle sur la bobine, un chemin par lequel le courant pourra continuer à circuler pendant qu'il décroît — le plus souvent une **diode dite « de roue libre »**, montée en sens bloquant tant que le générateur alimente, et qui devient passante dès l'ouverture. Parfois c'est simplement un second conducteur ohmique. Le courant ne s'annule alors pas d'un coup : il décroît, dans cette maille de secours, avec sa propre constante de temps.
 

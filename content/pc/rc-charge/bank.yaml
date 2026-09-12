@@ -15,10 +15,10 @@
 # « (x,xx) ») ; conventions KaTeX (block scalars pour la prose, KaTeX brut
 # entre apostrophes simples dans steps[].math, notes sans backslash).
 #
-# NOTE ÉDITORIALE (pour la revue) : neuf entrées, couvrant huit sessions
-# « vérifié » de cette notion, sont désormais banquées : 2018 N (deux
-# sous-parties de l'Exercice III), 2019 N, 2021 N, 2021 R, 2022 N, 2023 R,
-# 2024 R et 2025 N.
+# NOTE ÉDITORIALE (pour la revue) : la banque couvre des sessions « vérifié »
+# de 2010 à 2025, dont 2018 N en deux sous-parties de l'Exercice III. Le compte
+# fait foi dans le fichier — `grep -c '^  - id: bk-'` — et non dans cette note,
+# qui a déjà vieilli une fois (elle annonçait neuf entrées pour treize).
 #
 # ⚑ FLAG DE JUMELAGE — bk-2024-r-x4 (2024 R) face à bk-2021-r-x4 (2021 R).
 # Les deux portent le MÊME intitulé officiel (« Réponse d'un dipôle RC à un
@@ -556,7 +556,7 @@ entries:
         stem: |-
           **(0,5 pt)** En exploitant la courbe de la figure 2, montrer que la capacité du condensateur est : $C = 12\ \mu\text{F}$.
         reasoning: |-
-          Nouvelle lecture graphique, à ponter avec la question précédente : la leçon ne trace jamais $\dfrac{du_C}{dt}$ en fonction de $u_C$ elle-même — ses courbes sont $q(t)$, $u_C(t)$ ou $i(t)$ contre le temps, lues par la tangente à l'origine ou la méthode des $63\ \%$ (chapitre 4). Mais l'équation établie en question 1 EST la droite qu'on regarde ici : $\dfrac{du_c}{dt} = -\dfrac{1}{RC}u_c + \dfrac{E}{RC}$ est affine en $u_c$, de pente $-\dfrac{1}{RC}$ et d'ordonnée à l'origine $\dfrac{E}{RC}$. Deux lectures suffisent : à $u_c = 0$ (ordonnée à l'origine), on lit $\dfrac{E}{RC} = 1000\ \text{V.s}^{-1}$ ; là où la droite coupe l'axe des abscisses ($\dfrac{du_c}{dt}=0$), on lit directement $u_c = E = 12\ \text{V}$ — c'est le régime permanent, retrouvé ici par lecture graphique plutôt que par la limite $t\to\infty$ vue au chapitre 3. Une fois $E$ connu, on combine les deux lectures pour remonter à $RC$, puis à $C$ puisque $R$ est donnée.
+          Nouvelle lecture graphique, et c'est exactement celle montée au chapitre 4 sous le titre « Une troisième lecture : la droite $du_C/dt = f(u_C)$ » — à côté des deux autres, la tangente à l'origine et la méthode des $63\ \%$, qui lisent des courbes contre le temps. L'équation établie en question 1 EST la droite qu'on regarde ici : $\dfrac{du_c}{dt} = -\dfrac{1}{RC}u_c + \dfrac{E}{RC}$ est affine en $u_c$, de pente $-\dfrac{1}{RC}$ et d'ordonnée à l'origine $\dfrac{E}{RC}$. Deux lectures suffisent : à $u_c = 0$ (ordonnée à l'origine), on lit $\dfrac{E}{RC} = 1000\ \text{V.s}^{-1}$ ; là où la droite coupe l'axe des abscisses ($\dfrac{du_c}{dt}=0$), on lit directement $u_c = E = 12\ \text{V}$ — c'est le régime permanent, retrouvé ici par lecture graphique plutôt que par la limite $t\to\infty$ vue au chapitre 3. Une fois $E$ connu, on combine les deux lectures pour remonter à $RC$, puis à $C$ puisque $R$ est donnée.
         steps:
           - math: 'u_c = 0 \implies \frac{du_c}{dt} = \frac{E}{RC} = 1000\ \text{V.s}^{-1}'
             note: "Ordonnée à l'origine de la droite (figure 2) : lecture directe."
@@ -713,7 +713,7 @@ entries:
 
           $$\boxed{C = 1{,}0\times10^{-4}\ \text{F} = 100\ \mu\text{F}}$$
 
-          **Le contrôle qui rassure.** La valeur exigée par l'énoncé tombe pile : la lecture $\tau = 12\ \text{ms}$ était donc juste. Un second recoupement, gratuit, est disponible sur la figure — à $t = \tau$, le courant doit valoir $i(\tau) = I_0\,e^{-1} \approx 50 \times 0{,}37 = 18{,}4\ \text{mA}$, et la courbe passe bien par $(12\ \text{ms}\,;\,\approx 18\ \text{mA})$. Deux lectures indépendantes qui se confirment : c'est le meilleur signal qu'on puisse avoir en copie.
+          **Le contrôle qui rassure.** La valeur exigée par l'énoncé tombe pile : la lecture $\tau = 12\ \text{ms}$ était donc juste. Un second recoupement, gratuit, est disponible sur la figure — à $t = \tau$, le courant doit valoir $i(\tau) = I_0\,e^{-1} \approx 50 \times e^{-1} = 18{,}4\ \text{mA}$, et la courbe passe bien par $(12\ \text{ms}\,;\,\approx 18\ \text{mA})$. Deux lectures indépendantes qui se confirment : c'est le meilleur signal qu'on puisse avoir en copie.
 
           **Le piège de cette question.** Ne cherche pas $\tau$ là où la COURBE semble toucher zéro : elle ne l'atteint jamais, elle s'en approche seulement (il faut environ $5\tau$ pour que ce soit indiscernable). C'est la TANGENTE, la droite en tirets, qui coupe l'axe — et c'est son intersection à elle qu'on lit. Piège jumeau sur l'axe des temps : les traits verticaux valent $6\ \text{ms}$ et ne sont chiffrés qu'un sur deux, le cadre continuant jusqu'à $60\ \text{ms}$ bien au-delà du dernier chiffrage $36$ ; compter les divisions au lieu de lire le chiffrage $12$ mène droit à un $\tau$ faux.
 
@@ -1314,9 +1314,9 @@ entries:
           - **(0,25 pt)** la tension $u_C$ aux bornes du condensateur ;
           - **(0,25 pt)** la tension $u_R$ aux bornes du conducteur ohmique.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Ce n'est pas un calcul : c'est la convention qui gouverne TOUT ce qui suit dans l'exercice (l'équation différentielle de la question 1-3 en dépend directement). La convention récepteur, employée dans toute la leçon, oriente la flèche de tension d'un dipôle dans le MÊME sens que la flèche du courant qui le traverse — le courant « entre » par la borne où la tension est comptée positivement.
+          Ce qu'on cherche et pourquoi ce geste. Ce n'est pas un calcul : c'est la convention qui gouverne TOUT ce qui suit dans l'exercice (l'équation différentielle de la question 1-3 en dépend directement). La convention récepteur, employée dans toute la leçon, oriente la flèche de tension d'un dipôle en SENS INVERSE de la flèche du courant qui le traverse : elle pointe vers la borne par laquelle le courant entre dans le dipôle, celle qui est comptée positivement.
 
-          $C_0$ et $R$ sont deux récepteurs traversés par le même courant $i$, en série sur la même maille. La règle s'applique identiquement aux deux : on flèche $u_C$ et $u_R$ chacune dans le même sens que $i$ le long de la boucle — la flèche $i$ de la figure 1 pointant vers la gauche sur la branche du bas, le courant remonte donc à gauche vers $K$, traverse $C_0$ puis $R$ de gauche à droite sur la branche du haut, et $u_C$ comme $u_R$ se flèchent dans ce même sens, chacune au-dessus de son propre dipôle.
+          $C_0$ et $R$ sont deux récepteurs traversés par le même courant $i$, en série sur la même maille. La règle s'applique identiquement aux deux : on flèche $u_C$ et $u_R$ chacune à contresens de $i$ à travers son propre dipôle — la flèche $i$ de la figure 1 pointant vers la gauche sur la branche du bas, le courant remonte donc à gauche vers $K$, traverse $C_0$ puis $R$ de gauche à droite sur la branche du haut, et $u_C$ comme $u_R$ se flèchent à contresens de ce parcours, chacune au-dessus de son propre dipôle. Les deux dipôles étant traversés par le même courant, les deux flèches de tension pointent dans la même direction l'une que l'autre — celle opposée au sens de circulation.
 
           **Le piège nommé de cette question.** Flécher les deux tensions en sens opposés l'une de l'autre, par le réflexe de vouloir « alterner » en faisant le tour de la maille. Il n'y a rien à alterner : $C_0$ et $R$ sont traversés par le MÊME courant $i$, donc les deux flèches suivent la MÊME direction, dictée uniquement par le sens de $i$.
       - id: q2
@@ -1512,9 +1512,9 @@ entries:
         stem: |-
           **1-1-** (0,5 pt) Recopier, sur la copie de rédaction, le montage de la figure 1, et représenter dessus la tension $u_C(t)$ aux bornes du condensateur, et $u_R(t)$ aux bornes de la sonde thermique, en convension récepteur. *(« convension » tel qu'imprimé — défaut du sujet officiel, sans incidence.)*
         reasoning: |-
-          En convention récepteur : dans une boucle série où $C$ et la thermistance $R$ sont traversés par le MÊME courant, on flèche chaque tension dans le même sens que ce courant — pas en alternant d'un dipôle à l'autre, pas en devinant un signe. On flèche donc $u_C$ au-dessus du condensateur et $u_R$ au-dessus de la thermistance, toutes deux orientées dans le sens de circulation du courant imposé par le générateur $E$ à la fermeture de $K$.
+          En convention récepteur : dans une boucle série où $C$ et la thermistance $R$ sont traversés par le MÊME courant, on flèche chaque tension à contresens de ce courant — la flèche pointe vers la borne par laquelle le courant entre dans le dipôle. Pas en alternant d'un dipôle à l'autre, pas en devinant un signe. On flèche donc $u_C$ au-dessus du condensateur et $u_R$ au-dessus de la thermistance, toutes deux orientées à contresens du courant imposé par le générateur $E$ à la fermeture de $K$.
 
-          **Le piège nommé de cette question.** Flécher $u_C$ et $u_R$ en sens opposés, par le réflexe de vouloir « faire le tour » de la maille en alternant les signes. $C$ et la thermistance sont en série, traversés par le même courant : les deux flèches suivent la MÊME direction, celle de ce courant.
+          **Le piège nommé de cette question.** Flécher $u_C$ et $u_R$ en sens opposés, par le réflexe de vouloir « faire le tour » de la maille en alternant les signes. $C$ et la thermistance sont en série, traversés par le même courant : les deux flèches suivent la MÊME direction — celle opposée au courant, puisque la convention récepteur les oriente toutes deux à contresens.
       - id: q2
         stem: |-
           **1-2-** (0,5 pt) Établir l'équation différentielle vérifiée par $u_C(t)$.
@@ -1881,7 +1881,7 @@ entries:
           - math: '\boxed{R \approx 1{,}8\times10^{5}\ \Omega}'
             note: "Soit environ 182 kOhm -- concordant avec le corrige non officiel."
       - id: q5
-        part: "2-1 — Exprimer t_S (le pont ln — voir la scope note)"
+        part: "2-1 — Exprimer la date t_S"
         stem: |-
           **2-1-** (1 pt) Soit $t_S$ la date à laquelle la tension $u_C$ atteint la valeur limite $U_S$ , exprimer $t_S$ en fonction de $E$, $\tau$ et $U_S$. *(« $U_S$ , exprimer » tel qu'imprimé — espace avant la virgule, défaut typographique du sujet officiel, sans incidence.)*
         reasoning: |-

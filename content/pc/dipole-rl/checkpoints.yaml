@@ -224,13 +224,13 @@ checkpoints:
 
       - id: C
         text: |
-          $I_{max} = E/R$ : seule la résistance $R$ du conducteur ohmique compte, la résistance interne $r$ est négligée.
+          $I_{max} = E/R_0$ : seule la résistance $R_0$ du conducteur ohmique compte, la résistance interne $r$ de la bobine est négligée.
         correct: false
         misconception: mc.physics.pc_dipole_rl.oubli-resistance-interne
         feedback: |
           Modèle détecté : on oublie la résistance interne $r$ de la bobine.
-          La résistance totale du circuit est $R + r$, pas $R$ seul :
-          $I_{max} = E/(R+r)$. Les deux résistances se somment, elles jouent le
+          La résistance totale du circuit est $R = R_0 + r$, pas $R_0$ seul :
+          $I_{max} = E/(R_0 + r)$. Les deux résistances se somment, elles jouent le
           même rôle dans la loi d'Ohm.
 
       - id: D

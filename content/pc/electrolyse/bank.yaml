@@ -81,8 +81,10 @@
 # elle-même** — le suffixe -x1 sans lettre est déjà pris par
 # `bk-2015-n-x1` dans `content/pc/etat-equilibre/bank.yaml` (une pièce
 # différente du même Exercice 1), donc cette entrée porte -x1b
-# (docs/grounding/known-issues.md K-7 bis). La banque compte 6 entrées
-# distinctes en pratique (la rail affichera « 6 sujets »).
+# (docs/grounding/known-issues.md K-7 bis). Le nombre d'entrées — et donc ce
+# que la rail affichera — fait foi dans le fichier lui-même,
+# `grep -c '^  - id: bk-'`, jamais dans cette note : elle annonçait 6 entrées
+# alors que le fichier en porte neuf.
 #
 # SCOPE NOTE (technique mobilisée au-delà de ce que la leçon montre
 # explicitement pas à pas — pontée au point d'usage dans le raisonnement de

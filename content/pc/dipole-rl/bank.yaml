@@ -17,12 +17,14 @@
 # (block scalars pour la prose, KaTeX brut entre apostrophes simples dans
 # steps[].math, notes sans backslash ni accent).
 #
-# NOTE ÉDITORIALE (pour la revue) : six sujets « vérifié » couvrent cette
-# notion — 2020 N (Exercice IV, Partie I), 2021 R (Exercice 4, Partie II),
-# 2022 R (Exercice 3, section 1), 2023 N (Exercice 3, §1), 2024 N
-# (Exercice 4, Partie 2) et 2025 R (Exercice 3, §1). Les trois entrées de
-# session normale sont recensées dans docs/sujets/pc/dipole-rl.md (aucune
-# autre entrée, vérifiée ou non, n'y figure) ; les entrées 2021 R, 2022 R et
+# NOTE ÉDITORIALE (pour la revue) : la banque couvre des sujets « vérifié »
+# de 2012 à 2025 — 2020 N (Exercice IV, Partie I), 2021 R (Exercice 4,
+# Partie II), 2022 R (Exercice 3, section 1), 2023 N (Exercice 3, §1), 2024 N
+# (Exercice 4, Partie 2), 2025 R (Exercice 3, §1), plus 2012 N, 2017 N,
+# 2015 R et 2013 R ajoutés depuis. Le compte fait foi dans le fichier —
+# `grep -c '^  - id: bk-'` — et non dans cette note, qui a déjà vieilli une
+# fois (elle annonçait six sujets pour dix). Une partie des entrées de session
+# normale est recensée dans docs/sujets/pc/dipole-rl.md ; les entrées 2021 R, 2022 R et
 # 2025 R viennent respectivement de docs/sujets/_incoming/pc-spc-2021-r.md,
 # pc-spc-2022-r.md et pc-spc-2025-r.md — sujets complets de leur session de
 # rattrapage, vérifiés par une passe adversariale (2026-08-22 pour 2021 R et
@@ -162,7 +164,7 @@ entries:
 
       **Figure 1 (schéma).** Circuit série orienté par le courant $i$ : générateur $E$ (branche de gauche), conducteur ohmique $R$ (branche du haut), bobine $(L, r)$ (branche de droite, tension $u_L$ à ses bornes), interrupteur $K$ (branche du bas).
 
-      **Figure 2 (courbes).** $(C_1)$ : $i\ (\text{mA})$ en fonction de $t\ (\text{s})$ ; courbe croissante de $0$ vers un palier à $i = 100\ \text{mA}$ (régime permanent) ; axe des abscisses gradué $0{,}01,\ 0{,}02,\ 0{,}03,\ 0{,}04,\ 0{,}05$ ; ordonnées graduées $20,\ 40,\ 60,\ 80,\ 100$. La tangente $(T)$ à l'origine (en pointillés) est tracée, et coupe le palier à $t = 0{,}01\ \text{s}$. $(C_2)$ : $u_L\ (\text{V})$ en fonction de $t\ (\text{s})$ ; courbe décroissante depuis $u_L \approx 9\ \text{V}$ à $t = 0$ vers un palier au voisinage de $u_L \approx 1\ \text{V}$ ; ordonnées graduées $2,\ 4,\ 6,\ 8$ ; abscisses graduées $0{,}01,\ 0{,}02,\ 0{,}03,\ 0{,}04$.
+      **Figure 2 (courbes).** $(C_1)$ : $i\ (\text{mA})$ en fonction de $t\ (\text{s})$ ; courbe croissante de $0$ vers un palier à $i = 100\ \text{mA}$ (régime permanent) ; axe des abscisses gradué $0{,}01,\ 0{,}02,\ 0{,}03,\ 0{,}04,\ 0{,}05$ ; ordonnées graduées $20,\ 40,\ 60,\ 80,\ 100$. La tangente $(T)$ à l'origine (en pointillés) est tracée, et coupe le palier à $t = 0{,}01\ \text{s}$. $(C_2)$ : $u_L\ (\text{V})$ en fonction de $t\ (\text{s})$ ; courbe décroissante depuis sa valeur maximale à $t = 0$ (où $i = 0$) vers un palier au voisinage de $u_L \approx 1\ \text{V}$ ; ordonnées graduées $2,\ 4,\ 6,\ 8$ ; abscisses graduées $0{,}01,\ 0{,}02,\ 0{,}03,\ 0{,}04$.
     questions:
       - id: q1
         part: "Partie I — Établir l'équation différentielle du dipôle RL"
@@ -950,9 +952,9 @@ entries:
 
       **Figure 2 (courbe) :** $u_R\ (\text{V})$ en fonction de $t\ (\text{ms})$, sur quadrillage simple (pas de sous-maille), cadre de **8 divisions en largeur** et **9 divisions en hauteur**. **Abscisse** : $1\ \text{ms}$ par division, un trait sur deux chiffré ($2$ et $4$) ; le cadre va donc de $0$ à $8\ \text{ms}$. **Ordonnée** : les traits chiffrés $2{,}5$ et $5$ sont séparés par **deux** divisions — le pas est donc de **$1{,}25\ \text{V}$ par division** (et non $2{,}5$) ; le haut du cadre vaut $9 \times 1{,}25 = 11{,}25\ \text{V}$.
 
-      Courbe croissante concave partant de l'origine et tendant vers un **palier confondu avec la 8ᵉ ligne horizontale au-dessus de l'axe**, soit $u_R = 8 \times 1{,}25 = \mathbf{10\ \text{V}}$ — ce qui est bien $E$, la bobine étant de résistance négligeable. Le palier est atteint (courbe confondue avec la ligne) à partir de $t \approx 4$–$5\ \text{ms}$.
+      Courbe croissante concave partant de l'origine et tendant vers un **palier confondu avec la 8ᵉ ligne horizontale au-dessus de l'axe**, soit $u_R = 8 \times 1{,}25 = \mathbf{10\ \text{V}}$. Le palier est atteint (courbe confondue avec la ligne) à partir de $t \approx 4$–$5\ \text{ms}$.
 
-      La droite $(T)$, tangente à l'origine, est tracée depuis $(0\,;\,0)$ et **coupe le niveau du palier au droit du premier trait vertical** (sur le scan, le tracé de la tangente est très légèrement trop raide et coupe un peu avant ce trait : c'est bien le trait de graduation qui est la lecture visée). Légende : « Figure 2 ».
+      La droite $(T)$, tangente à l'origine, est tracée depuis $(0\,;\,0)$ et **coupe le niveau du palier au droit du premier trait vertical** (le tracé passe très légèrement à gauche de ce trait). Légende : « Figure 2 ».
     questions:
       - id: q1
         part: "1- Établissement du courant électrique dans le circuit RL"
