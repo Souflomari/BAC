@@ -5503,3 +5503,53 @@ sans préfixe qui était inatteignable ; une entrée sans cible rend `null`.
 correctif reste un `\boxed{}` par chapitre ou un sidecar authoré. Cette
 correction-ci ne fait qu'une chose : rendre la seconde option **possible**
 partout.
+
+### 11.58 Un modèle fantôme dans le modèle apprenant — `hors_cadre_probe`, et la porte qui manquait
+
+Contrôle d'intégrité référentielle jamais fait : **toute valeur de
+`misconception:` désigne-t-elle une misconception DÉCLARÉE dans le même
+fichier ?** Mesuré sur les 62 notions — 767 misconceptions déclarées, 5 614
+références (distracteurs + `primary_misconception`) :
+
+- **zéro déclarée jamais référencée** ;
+- **une seule référence pendante**, sur trois emplacements.
+
+`pc/systemes-oscillants` employait `hors_cadre_probe` comme valeur de
+`misconception:` sur trois distracteurs (`SO-26`, `SO-27`,
+`cp-r6-regimes`). C'est pourtant une **étiquette d'auteur** parfaitement
+légitime — elle vit aussi dans `tags: [...]`, où elle veut dire « cet item
+sonde du hors-cadre ».
+
+**Pourquoi ce n'est pas cosmétique.** `build-learner-inputs.mjs:94` prend la
+valeur telle quelle — `targets.add(tag)` — sans jamais la confronter à la liste
+des `misconceptions:` déclarées (la ligne 164 ne fait qu'*amorcer* les déclarées
+à 0 ; elle n'écarte pas les autres). Le fantôme était donc **compilé dans les
+trois artefacts d'exécution** :
+`backend/supabase/functions/record-notion-event/item-misconceptions.json`, son
+porteur `.ts`, et `web/src/lib/learner-model-data.json`. Vérifié avant
+correction :
+
+```
+pc/systemes-oscillants / SO-26        : ['M-OSC-AMO-2', 'hors_cadre_probe']
+pc/systemes-oscillants / SO-27        : ['M-OSC-AMO-1', 'M-OSC-AMO-3', 'hors_cadre_probe']
+pc/systemes-oscillants / cp-r6-regimes: ['M-OSC-AMO-2', 'hors_cadre_probe']
+```
+
+Un élève cochant l'un de ces distracteurs se voyait donc attribuer un état
+diagnostique **qui n'existe dans aucune grille**. Les trois items portaient déjà
+des cibles déclarées : retirer le fantôme ne laisse aucun distracteur orphelin.
+
+**Corrigé** : les trois `misconception: hors_cadre_probe` retirés (l'étiquette
+d'auteur reste dans `tags:`), artefacts régénérés — 0 occurrence dans les trois.
+
+**PORTE (échec, pas avertissement)** : toute valeur de `misconception:`, sur un
+item comme sur un checkpoint, doit être déclarée dans le `items.yaml` de la
+notion. C'est un **échec** parce que la faute ne s'arrête pas au fichier : elle
+sort dans un artefact d'exécution. Le contrôle est volontairement **par
+fichier** — vérifié d'abord que les ids d'apparence inter-notions de philo
+(`mc.philo.liberte.*` cité dans `l-etat`) sont bel et bien déclarés dans leur
+propre fichier, donc aucun faux positif.
+
+**Vérifiée dans les deux sens** (ADR 0031) : un tag non déclaré réinjecté fait
+échouer la notion en nommant l'item, le choix et la valeur ; le revert la remet
+au vert. 0 failure sur les 62 notions.

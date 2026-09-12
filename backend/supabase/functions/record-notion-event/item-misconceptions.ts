@@ -4888,13 +4888,11 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "M-OSC-AMO-1"
     ],
     "SO-26": [
-      "M-OSC-AMO-2",
-      "hors_cadre_probe"
+      "M-OSC-AMO-2"
     ],
     "SO-27": [
       "M-OSC-AMO-1",
-      "M-OSC-AMO-3",
-      "hors_cadre_probe"
+      "M-OSC-AMO-3"
     ],
     "SO-28": [
       "M-OSC-AMO-1"
@@ -4977,8 +4975,7 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "M-OSC-AMO-1"
     ],
     "cp-r6-regimes": [
-      "M-OSC-AMO-2",
-      "hors_cadre_probe"
+      "M-OSC-AMO-2"
     ],
     "cp-r7-acuite": [
       "M-OSC-RES-2",

@@ -301,6 +301,53 @@ for (const dir of dirs) {
     }
   }
 
+  // ── Un tag de misconception doit être DÉCLARÉ (échec, pas avertissement).
+  //    `build-learner-inputs.mjs` prend la valeur de `misconception:` TELLE
+  //    QUELLE (`targets.add(tag)`) sans la confronter aux `misconceptions:`
+  //    déclarées : une valeur non déclarée entre donc dans l'artefact du modèle
+  //    apprenant (`item-misconceptions.json` + son porteur `.ts`) comme un
+  //    modèle FANTÔME, à côté d'ids réels, et l'élève qui coche ce distracteur
+  //    se voit attribuer un état diagnostique qui n'existe nulle part.
+  //    Trouvé le 2026-09-12 : `hors_cadre_probe` — une étiquette d'AUTEUR
+  //    parfaitement légitime dans `tags:` — employée comme valeur de
+  //    `misconception:` sur trois distracteurs de `pc/systemes-oscillants`, et
+  //    compilée telle quelle dans les trois artefacts.
+  //    C'est un ÉCHEC et non un avertissement parce que la faute ne s'arrête
+  //    pas au fichier : elle sort dans un artefact d'exécution.
+  {
+    const items = yamlDocs["items.yaml"];
+    const declarees = new Set(
+      (Array.isArray(items?.misconceptions) ? items.misconceptions : [])
+        .map((m) => m?.id)
+        .filter((x) => typeof x === "string"),
+    );
+    if (declarees.size) {
+      const liste = (x) => (x == null ? [] : Array.isArray(x) ? x : [x]);
+      for (const [y, cle] of [["items.yaml", "items"], ["checkpoints.yaml", "checkpoints"]]) {
+        const doc = yamlDocs[y];
+        if (!doc) continue;
+        for (const e of Array.isArray(doc[cle]) ? doc[cle] : []) {
+          const id = typeof e?.id === "string" ? e.id : "?";
+          const vus = [
+            ...liste(e?.primary_misconception).map((v) => [v, "primary_misconception"]),
+            ...(Array.isArray(e?.choices) ? e.choices : []).flatMap((c) =>
+              liste(c?.misconception).map((v) => [v, `choix ${c?.id ?? "?"}`]),
+            ),
+          ];
+          for (const [v, ou] of vus) {
+            if (typeof v !== "string" || declarees.has(v)) continue;
+            console.error(
+              `  ✗ ${dir}/${y} → ${id} (${ou}) : misconception « ${v} » NON DÉCLARÉE — ` +
+                `elle serait compilée telle quelle dans le modèle apprenant ; la déclarer, ` +
+                `ou (si c'est une étiquette d'auteur) la laisser dans \`tags:\` seulement`,
+            );
+            dirFail++;
+          }
+        }
+      }
+    }
+  }
+
   // ── Summit-conversion campaign: content checks on the parsed sidecars ──
 
   // items.yaml / checkpoints.yaml share the same item schema — KaTeX in
