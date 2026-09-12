@@ -58,7 +58,7 @@ misconceptions:
   - id: mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique
     label: "« Encadrement / comparaison mal utilisé »"
     description: "L'élève invoque le théorème des gendarmes avec une seule borne, ou avec deux bornes convergeant vers des limites différentes ; ou inverse la conclusion du théorème de comparaison (croit qu'une suite plus grande qu'une suite explosant est majorée)."
-    contradicts_principle: "Les gendarmes exigent un encadrement $u_n\\le w_n\\le v_n$ dont les DEUX bornes convergent vers la MÊME limite. La comparaison : $u_n\\le v_n$ et $v_n\\to+\\infty$ donne $u_n\\ldots$ non — c'est $u_n\\ge v_n$ et $v_n\\to+\\infty$ qui donne $u_n\\to+\\infty$ (la plus grande hérite de l'explosion)."
+    contradicts_principle: "Les gendarmes exigent un encadrement $u_n\\le w_n\\le v_n$ dont les DEUX bornes convergent vers la MÊME limite. Pour la comparaison, c'est $u_n\\ge v_n$ et $v_n\\to+\\infty$ qui donne $u_n\\to+\\infty$ (la plus grande hérite de l'explosion)."
 
   - id: mc.math.sma_suites_numeriques.adjacentes-condition-incomplete
     label: "« L'écart→0 (ou la convergence commune) suffit à l'adjacence »"
@@ -2161,7 +2161,7 @@ items:
   - id: SUITES-34
     rung: "R4"
     difficulty_level: 3
-    skill_code: maths_suites_numeriques
+    skill_code: sma_suites_numeriques
     tags: [monotonie, quotient, bornes]
     primary_misconception: mc.math.sma_suites_numeriques.bornee-implique-monotone
     stem: >
@@ -2235,7 +2235,7 @@ items:
   - id: SUITES-35
     rung: "R4"
     difficulty_level: 3
-    skill_code: maths_suites_numeriques
+    skill_code: sma_suites_numeriques
     tags: [monotonie, quotient, limites]
     primary_misconception: mc.math.sma_suites_numeriques.quotient-monotonie-sans-positivite
     stem: >
@@ -2308,7 +2308,7 @@ items:
   - id: SUITES-36
     rung: "R8"
     difficulty_level: 4
-    skill_code: maths_suites_numeriques
+    skill_code: sma_suites_numeriques
     tags: [recurrence_fonctionnelle, limites, forme_indeterminee]
     primary_misconception: mc.math.sma_suites_numeriques.signe-fx-mauvais-domaine
     stem: >
@@ -2385,7 +2385,7 @@ items:
   - id: SUITES-37
     rung: "R5"
     difficulty_level: 3
-    skill_code: maths_suites_numeriques
+    skill_code: sma_suites_numeriques
     tags: [limite, preuve, intuition]
     primary_misconception: mc.math.sma_suites_numeriques.tendance-implique-limite
     stem: >
@@ -2460,7 +2460,7 @@ items:
   - id: SUITES-38
     rung: "R0"
     difficulty_level: 2
-    skill_code: maths_suites_numeriques
+    skill_code: sma_suites_numeriques
     tags: [intuition, limite, majoration]
     primary_misconception: mc.math.sma_suites_numeriques.tendance-implique-limite
     stem: >

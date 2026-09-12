@@ -33,7 +33,7 @@ $$u_4 = 25, \quad u_5 = 22{,}5, \quad u_6 = 21{,}25, \quad u_7 = 20{,}625, \ldot
 
 Le volume diminue, mais de moins en moins vite, et semble se rapprocher de 20. Est-ce vraiment ce qui se passe ? Continue-t-il à diminuer indéfiniment, aussi lentement soit-il, ou bien se stabilise-t-il **exactement** à une valeur — et si oui, laquelle, et pourquoi celle-là ?
 
-Répondre proprement à cette question demande tous les outils de ce chapitre : montrer qu'une suite ne descend jamais en dessous d'un certain seuil (majorer, minorer), montrer qu'elle est décroissante (monotonie), établir qu'une suite décroissante et minorée est forcément convergente (un théorème qu'on va démontrer et comprendre), et enfin calculer la valeur exacte de la limite. On construit ces outils un par un — et à la fin de cette leçon, on referme complètement la question du réservoir.
+Répondre proprement à cette question demande tous les outils de ce chapitre : montrer qu'une suite ne descend jamais en dessous d'un certain seuil (majorer, minorer), montrer qu'elle est décroissante (monotonie), établir qu'une suite décroissante et minorée est forcément convergente (un théorème qu'on va énoncer et comprendre en profondeur — sa démonstration complète est hors programme), et enfin calculer la valeur exacte de la limite. On construit ces outils un par un — et à la fin de cette leçon, on referme complètement la question du réservoir.
 
 ---
 
@@ -450,7 +450,7 @@ Les deux méthodes — théorème de convergence monotone + point fixe, et formu
 
 Pour une suite $u_{n+1} = f(u_n)$ :
 
-1. Chercher un intervalle $I$ tel que $f(I) \subset I$ et $u_0 \in I$ — ça garantit, par récurrence (chapitre 2), que tous les $u_n \in I$, donc que la suite est bornée dans $I$.
+1. Chercher un intervalle **borné** $I$ tel que $f(I) \subset I$ et $u_0 \in I$ — ça garantit, par récurrence (chapitre 2), que tous les $u_n \in I$, donc que la suite est bornée. Le mot **borné** porte tout le poids : sur $I = [1\,;+\infty[$, la suite $u_{n+1} = u_n^2+1$ vérifie bien $f(I) \subset I$ et $u_0 = 1 \in I$, elle est croissante — et elle tend vers $+\infty$.
 2. Étudier le signe de $f(x)-x$ sur $I$ pour déterminer la monotonie (chapitre 5).
 3. Conclure la convergence par le théorème de la limite monotone (chapitre 8) — bornée + monotone.
 4. Résoudre $L = f(L)$ pour trouver la valeur de la limite (ce chapitre), à condition que $f$ soit continue.
@@ -515,13 +515,13 @@ Le dénominateur a disparu. En posant $v_n = \dfrac{u_n-1}{u_n+1}$, on vient de 
 
 Voilà tout le chapitre en une phrase : quand la relation est homographique, l’auxiliaire qui linéarise n’est pas une **différence**, c’est un **rapport** — le rapport des écarts aux **deux** points fixes.
 
-$$\alpha \neq \beta \ \text{ points fixes} \quad \Longrightarrow \quad v_n = \frac{u_n-\alpha}{u_n-\beta} \ \text{ est géométrique}$$
+$$\alpha \neq \beta \ \text{ points fixes,} \quad u_n \neq \beta \quad \Longrightarrow \quad v_n = \frac{u_n-\alpha}{u_n-\beta} \ \text{ est géométrique}$$
 
 **Si tu veux voir pourquoi ce n’est pas un coup de chance**, le calcul qu’on vient de faire deux fois se refait une fois pour toutes avec les lettres. Comme $\alpha$ est un point fixe, $\alpha(c\alpha+d) = a\alpha+b$, donc $b - d\alpha = c\alpha^2 - a\alpha = -\alpha(a-c\alpha)$, et :
 
 $$u_{n+1}-\alpha = \frac{a u_n + b}{c u_n + d} - \alpha = \frac{(a-c\alpha)u_n + b - d\alpha}{c u_n + d} = \frac{(a-c\alpha)(u_n-\alpha)}{c u_n + d}$$
 
-La même chose avec $\beta$ donne $u_{n+1}-\beta = \dfrac{(a-c\beta)(u_n-\beta)}{c u_n + d}$ — **même dénominateur**, toujours. Le quotient des deux le fait disparaître, et il reste une raison constante, $\dfrac{a-c\alpha}{a-c\beta}$. Le mécanisme est structurel : il ne dépend ni des valeurs de $a,b,c,d$, ni de $u_0$.
+La même chose avec $\beta$ donne $u_{n+1}-\beta = \dfrac{(a-c\beta)(u_n-\beta)}{c u_n + d}$ — **même dénominateur**, toujours. Le quotient des deux le fait disparaître, et il reste une raison constante, $\dfrac{a-c\alpha}{a-c\beta}$. Le mécanisme est structurel : dès que les deux points fixes existent et sont **distincts**, il ne dépend ni de leurs valeurs, ni de $u_0$. Cette condition est exactement ce qui peut manquer, et de deux façons : la racine **double** (traitée plus bas), et le discriminant **négatif** — aucun point fixe réel, donc aucun rapport à former. C'est le cas du troisième exemple cité plus haut, $u_{n+1} = \dfrac{3u_n-1}{u_n+2}$ : son équation $L^2-L+1=0$ a pour discriminant $-3$.
 
 **En pratique, à l’examen, tu n’auras presque jamais à trouver $v_n$ toi-même** : l’énoncé te la donne (« On considère la suite $(v_n)$ définie par $v_n = \ldots$ ») et te demande de montrer qu’elle est géométrique. Savoir d’où elle sort ne sert donc pas à la deviner — ça sert à ne pas la subir. Tu reconnais dans le $v_n$ imposé les deux points fixes, tu sais d’avance que le dénominateur va se simplifier, et si ça ne se simplifie pas, tu sais que c’est une erreur de calcul de ta part, pas une question piégée.
 
@@ -651,13 +651,13 @@ Conclure que deux suites sont adjacentes en vérifiant seulement que l'écart te
 
 ## R10 — Pour t'entraîner sur un vrai sujet de bac
 
-Tu as maintenant tous les outils du chapitre : récurrence, majoration/minoration, monotonie, théorème de la limite monotone, passage à la limite dans une relation $u_{n+1}=f(u_n)$, théorème de comparaison. Il est temps de les enchaîner sur un **vrai sujet d'examen national**, puis sur une **variation inédite** pour vérifier que tu reconnais la structure même quand l'habillage change.
+Tu as maintenant tous les outils du chapitre : récurrence, majoration/minoration, monotonie, théorème de la limite monotone, passage à la limite dans une relation $u_{n+1}=f(u_n)$, théorème de comparaison, suites homographiques, suites adjacentes. Il est temps de les enchaîner sur un **vrai sujet d'examen national**, puis sur une **variation inédite** pour vérifier que tu reconnais la structure même quand l'habillage change.
 
 La règle du jeu — c'est là que se joue le vrai progrès : pour chaque question, cherche sur papier d'abord, engage une réponse, et seulement ensuite ouvre le raisonnement expert pour le comparer au tien.
 
 ### Exercice de type bac (2019, Sciences Mathématiques)
 
-Ce sujet étudie une suite récurrente $u_{n+1}=f(u_n)+u_n$ bâtie sur une fonction exponentielle. Son fil conducteur est frappant : le comportement de la suite bascule complètement selon la position du premier terme $u_0$ — convergence vers 0 dans un cas, divergence vers $-\infty$ dans l'autre. Un réflexe à trancher avant de te lancer — l'erreur classique du point fixe :
+Ce sujet étudie une suite récurrente $u_{n+1}=f(u_n)+u_n$ bâtie sur une fonction exponentielle. Son fil conducteur est frappant : le comportement de la suite bascule complètement selon la position du premier terme $u_0$ — deux régimes opposés, que l'énoncé te fait établir l'un après l'autre. Un réflexe à trancher avant de te lancer — l'erreur classique du point fixe :
 
 [[checkpoint:cp-convergence-pointfixe]]
 

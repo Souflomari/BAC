@@ -4809,7 +4809,7 @@ Comme le §11.43, elle tourne en CI (validate-content --strict, 62 notions) sans
 jamais bloquer, et le sens « valeur qui ne résout pas » complète, pour les
 rungs, ce que la porte marqueur→cible fait déjà pour les figures (ADR 0031).
 
-### 11.45 La campagne de correction de contenu vague 1 — treize notions triées, 84 correctifs objectifs, les bloquants consignés
+### 11.45 La campagne de correction de contenu vague 1 — quatorze notions triées, 96 correctifs objectifs, les bloquants consignés
 
 **EN COURS (une notion à la fois, cadence critiques).** Après les portes
 d'intégrité (§11.43 figures orphelines, §11.44 rung↔titre), la vague-1
@@ -4837,9 +4837,10 @@ Treize notions à ce stade :
 | `svt/genetique-humaine` | 11 | **F1/F2 BLOQUANTS** (Test B universel faux ; solution GH-8) ; P2 mis-tag crochet → modèle apprenant |
 | `maths/arithmetique` | 7 | maths **PRISTINE** (2 critiques + recalcul : la seule erreur = 2⁴¹ « 34 chiffres »→13) ; **SEV1 cadre** → research-lead : exclusion « résidus quadratiques » falsifiée par 2 sujets vérifiés (2023 N, 2025 N critère d'Euler), Fermat absent du programme mais dans `bac-reference.md:110` + 9/10 annales, poids bloc 15 % démenti ; **PPCM et ℤ/nℤ jamais enseignés** mais testés → content-author ; habileté 75/25/0 (0 niveau-3, 100 % QCM) ; 9/16 lignes de grille non rupturées ; porte pré-sommet qui spoile le sommet ; dispute couverture Fermat (réellement 1, pas 3) |
 | `maths/calcul-integral` | 7 | maths **PRISTINE** (2 critiques : « aucun constat de calcul ») ; faux universel L363 (« ch.2 suppose f≥0 ») qui **contredit CI-11** ; faux universel CI-23 (μ=f(milieu) « propre aux affines uniquement ») + « à l'exception de » inversé ; renvois morts « chapitre Dérivation » (×5), « Fonction racine carrée », « chapitre suivant » (×5)→ch2 ; 2 légendes. **SEV1 cadre** → research-lead/owner : changement de variable enseigné contre la `limite` (et `bank:487` vs sujet `:1189` se contredisent), **Riemann+TAF dans une notion déclarée SExp** (exclusion SM), aucune filière en champ machine, arctan/longueur d'arc hors-cadre ; **volume de révolution TOTALEMENT absent** (savoir-faire des 2 filières) → content-author ; jargon banque (« hors socle », « SCOPE NOTE », \text dans KaTeX) **déféré avec la portée** ; habileté PC sur checkpoints maths ; sommet = 2/9 savoir-faire, partition d'un exercice |
+| `maths/suites-numeriques` | 12 | maths **PRISTINE** (2 critiques + recalcul indépendant : réservoir, les 2 récurrences, ε–N, gendarmes, tout le chapitre homographique, les 2 sommets, et le `coverage_summary` recompté deux fois depuis les 114 tags — aucun écart) ; **hypothèse manquante qui fausse la recette** (« $f(I)\subset I$ donc bornée » : il faut $I$ **borné** — $u_{n+1}=u_n^2+1$ sur $[1;+\infty[$ la met en défaut) ; faux universel « le mécanisme ne dépend pas de $a,b,c,d$ » démenti par le **3ᵉ exemple de la leçon** ($\Delta=-3$) ; résultat encadré sans $u_n\neq\beta$ ; « théorème qu'on va démontrer » que le ch.8 refuse ensuite ; **2 réponses imprimées au-dessus de la porte d'essai** (les libellés de partie se rendent hors du gate) ; **barème 4 pts inventé** (le relevé vérifié n'en porte aucun ; les 9 questions somment à 3,75). **SEV1 cadre** → research-lead : notion revendiquée par les DEUX cadres alors que `maths-sexp.yaml:78` exclut les adjacentes — ch.11 + 3 items hors-programme SExp **sans barrière** ; **le chapitre homographique n'a aucun code de barreau** (0 item, 0 checkpoint, 0 figure, invisible au coverage) → content-author ; 400 lignes sans aucun commit ; aucun `habilete` ; 21 % d'application directe contre 40 % |
 
-**84 correctifs objectifs** au total, 0 échec `validate-content --strict` sur les
-treize. Les défauts **bloquants** ne sont jamais réécrits en autonomie — ils
+**96 correctifs objectifs** au total, 0 échec `validate-content --strict` sur les
+quatorze. Les défauts **bloquants** ne sont jamais réécrits en autonomie — ils
 touchent des règles biologiques enseignées (genetique-humaine F1 : « un père
 atteint lié à l'X ne transmet jamais à ses fils » est faux quand la mère est
 conductrice) ou une décision de conception (genetique-humaine P2 : les
@@ -4992,3 +4993,57 @@ le manifeste des épreuves dans la palette, le second détecteur de la veille
 lieu de six. Ce que `curl` ne voit pas (le focus, les régions live, le
 clavier) reste vérifié sur le build local, l'artefact déployé n'étant pas
 atteignable en Chromium depuis ce conteneur (INSTRUMENTS, point 9).
+
+### 11.49 Une notion, deux clés de jointure — six notions contradictoires, et les 68 codes qui ne joignent rien
+
+Parti d'un constat de la revue vague 1 sur `suites-numeriques` (« dérive
+`skill_code` sur les cinq items les plus récents »), re-mesuré sur les 62
+notions. Le constat de départ était **à l'envers**, et le vrai défaut est
+plus large.
+
+**Ce que `skill_code` est.** Une clé de jointure vers la base : les RPC font
+`SELECT lesson INTO v_lesson FROM public.skills WHERE code = p_skill_code`
+(migrations 025/026/028), et l'ADR 0008 exige « verbatim `skills.code` ».
+
+**Défaut 1 — six notions déclaraient DEUX codes à la fois** (51 lignes) :
+`maths/suites-numeriques` (5 items sur 39 en `maths_…`, le reste en `sma_…`)
+et cinq notions de philo où la variante **avec** article doublait la variante
+sans — `philo_l_etat`/`philo_etat`, `philo_l_histoire`/`philo_histoire`,
+`philo_la_violence`/`philo_violence`, `philo_le_bonheur`/`philo_bonheur`,
+`philo_le_devoir`/`philo_devoir`. Au câblage, une moitié de la notion se
+joindrait ailleurs — ou nulle part — en silence.
+
+**L'arbitrage ne se prend pas à la majorité du corpus.** Le corpus penche pour
+`maths_*` (12 notions de maths sur 14), ce qui aurait fait des 5 items déviants
+de `suites-numeriques` les **bons**. C'est faux : le fichier est bâti sur
+`sma_suites_numeriques` — tous ses ids de misconception sont
+`mc.math.sma_suites_numeriques.<label>` (ADR 0011 lie ce préfixe au
+`skill_code`) et 114 tags de distracteurs les visent. Même méthode en philo :
+les ids y sont `mc.philo.etat.`, `mc.philo.violence.` — jamais
+`mc.philo.l_etat.` — donc c'est la variante **sans** article qui est engagée,
+et elle était de surcroît majoritaire dans les cinq cas. **C'est la cohérence
+interne du fichier qui tranche, pas le vote du corpus.**
+
+**Défaut 2, consigné et NON corrigé — les 68 codes ne joignent rien.** Les 108
+`skills.code` réellement semés par les migrations et les 68 `skill_code`
+employés par `content/` ont une intersection **vide**. Pour les suites, la base
+sème `sma_sequences_review`, `sma_sequence_convergence`,
+`sma_adjacent_sequences` ; le contenu dit `sma_suites_numeriques`. Aucune des
+deux valeurs en litige n'existait donc côté base. Rien ne casse **aujourd'hui** :
+`skill_code` est déclaré dans trois interfaces de `web/src/lib/content.ts` et
+**lu nulle part** — l'app Next.js lit des fichiers, elle ne joint pas. C'est
+une dette dormante, à trancher par le propriétaire du schéma quand le câblage
+arrivera (l'en-tête de `items.yaml` le dit déjà : « proposé — à confirmer par
+supabase-architect »). Deux notions emploient en plus un préfixe d'id abrégé qui
+ne se dérive pas de leur `skill_code` (`maths/structures-algebriques` →
+`structures_algebriques` ; `pc/ondes-mecaniques-progressives` → `pc_omp`) :
+divergence de nommage, pas contradiction — laissée telle quelle.
+
+**PORTE** ajoutée à `validate-content` (avertissement) : une notion ne peut
+déclarer qu'un seul `skill_code`. Elle ne contrôle que la contradiction
+interne — sans ambiguïté, et c'est la classe qui vient d'être corrigée. Elle ne
+contrôle pas l'existence du code côté base (le défaut 2 est déféré, pas
+gardé). **Vérifiée dans les deux sens** (ADR 0031 — une porte doit pouvoir
+passer au rouge) : réinjecter un second code dans `suites-numeriques` la
+déclenche, le revert la rend silencieuse. `validate-content --strict` : 0
+failure sur les 62 notions.

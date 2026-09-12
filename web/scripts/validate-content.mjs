@@ -876,6 +876,43 @@ for (const dir of dirs) {
     }
   }
 
+  // ── UNE notion, UN `skill_code` (warning only). `skill_code` est une CLÉ DE
+  //    JOINTURE : les RPC de la base font `SELECT lesson FROM public.skills
+  //    WHERE code = p_skill_code` (migrations 025/026/028), et l'ADR 0008 exige
+  //    « verbatim skills.code ». Une notion qui en déclare DEUX en fait porter
+  //    un aux items et l'autre aux checkpoints — au câblage, la moitié de la
+  //    notion se joint ailleurs, ou nulle part, en silence.
+  //    Mesuré 2026-09-12 : SIX notions en portaient deux à la fois —
+  //    suites-numeriques (5 items sur 39 en `maths_…` contre `sma_…`) et cinq
+  //    notions de philo, où la variante avec article (`philo_le_devoir`)
+  //    doublait la variante sans (`philo_devoir`) : 51 lignes au total.
+  //    L'arbitrage se lit dans le fichier lui-même : les ids de misconception
+  //    (ADR 0011, `mc.<matière>.<code>.<label>`) et les centaines de tags de
+  //    distracteurs qui les visent ne citent JAMAIS qu'une des deux variantes —
+  //    c'est celle-là que la notion a réellement engagée.
+  {
+    const vus = new Map(); // code -> [fichiers]
+    for (const fname of ["items.yaml", "checkpoints.yaml", "exercises.yaml", "bank.yaml"]) {
+      const fp = path.join(abs, fname);
+      if (!fs.existsSync(fp)) continue;
+      for (const line of fs.readFileSync(fp, "utf8").split("\n")) {
+        if (/^\s*#/.test(line)) continue;
+        const m = line.match(/^\s*skill_code:\s*([A-Za-z0-9_]+)/);
+        if (!m) continue;
+        if (!vus.has(m[1])) vus.set(m[1], new Set());
+        vus.get(m[1]).add(fname);
+      }
+    }
+    if (vus.size > 1) {
+      const detail = [...vus.entries()]
+        .map(([c, f]) => `${c} (${[...f].join(", ")})`)
+        .join(" vs ");
+      console.error(
+        `  ⚠ ${dir}: DEUX skill_code dans la même notion — ${detail} — c'est une clé de jointure (ADR 0008) : une seule valeur par notion ; trancher avec le préfixe des ids de misconception`,
+      );
+    }
+  }
+
   // ── Orphan figure ASSETS (warning only) — le SENS INVERSE du contrôle
   // marqueur→asset plus haut (ADR 0031 : une porte a deux directions, et
   // celle qui ne va que dans un sens finit contournée). Un SVG de media/ que
