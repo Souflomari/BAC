@@ -4924,6 +4924,37 @@ numéro **rendu** correct (structures-algebriques « un homomorphisme (chapitre 
 renvois justes. Le commentaire de `chapters.ts` porte désormais le recensement, les
 six noms, et cet avertissement.
 
+### 11.48 Une leçon citée sous trois noms différents — 18 renvois morts vers des leçons inexistantes, et la porte qui le dit
+
+**MESURÉ, CORRIGÉ, PORTE (vérifiée ROUGE).** ADR 0031 pose qu'« un renvoi est une
+instruction ». Un balayage des renvois inter-leçons RENDUS (titre cité entre
+guillemets après « chapitre N de », « la leçon », « la notion ») contre les 62
+titres réels du corpus a trouvé **18 renvois morts sur 9 notions PC** — aucun ne
+correspondait à un titre existant :
+
+| Cité (mort) | Titre réel | × |
+|---|---|---|
+| « Chute libre et mouvements dans un plan » | **Chute libre et mouvements plans** | 3 |
+| « Chute et mouvements sur des plans » | idem | 3 |
+| « Chute verticale et mouvements plans » | idem | 1 |
+| « Réactions acide-base » | **Réactions acido-basiques** | 5 |
+| « Dipôle RC : charge et décharge » | **Dipôle RC — réponse à un échelon de tension** | 1 |
+| « RC : charge d'un condensateur » | idem | 1 |
+| « Ondes mécaniques périodiques » | **Ondes mécaniques progressives périodiques** | 1 |
+| « Rotation d'un solide autour d'un axe fixe » | **Rotation autour d'un axe fixe** | 1 |
+| « Ondes électromagnétiques et modulation d'amplitude » | **Ondes électromagnétiques — modulation d'amplitude** | 1 |
+
+Le défaut marquant : **une même leçon citée sous TROIS noms** (chute-mouvements-plans),
+une autre sous deux (rc-charge). L'élève qui cherche « Chute verticale et mouvements
+plans » ne trouve rien — le corpus ne porte pas ce titre.
+
+**Porte ajoutée** à `validate-content` (avertissement) : tout titre cité après une
+amorce de renvoi doit correspondre à un titre réel, l'inclusion partielle tolérée
+(un titre raccourci reste trouvable) ; les commentaires `#` (notes d'auteur) sont
+ignorés. **Vérifiée dans les deux sens** (ADR 0031 : une porte doit pouvoir passer
+au ROUGE) : un renvoi mort injecté dans lois-de-newton la déclenche, le revert la
+rend verte. **0 avertissement résiduel sur les 62 notions.**
+
 ### 11.29–11.41 en un coup d'œil, et le déployé
 
 **LA SOIRÉE DU 2026-09-11**, treize points, tous mesurés avant/après :

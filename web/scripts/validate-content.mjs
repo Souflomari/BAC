@@ -825,6 +825,57 @@ for (const dir of dirs) {
     }
   }
 
+  // ── Renvoi vers une LEÇON qui n'existe pas (warning only) — ADR 0031 : « un
+  //    renvoi est une instruction ». Un « chapitre 8 de « Chute verticale et
+  //    mouvements plans » » envoie l'élève chercher un titre que le corpus ne
+  //    porte pas — la vraie leçon s'appelle « Chute libre et mouvements plans ».
+  //    Mesuré 2026-09-12 : 18 renvois morts sur 9 notions PC, dont UNE leçon
+  //    citée sous TROIS noms différents (chute-mouvements-plans) et une autre
+  //    sous deux (rc-charge). Le contrôle ne compare que les titres cités entre
+  //    guillemets APRÈS une amorce de renvoi (« chapitre N de », « la leçon »,
+  //    « la notion ») — une citation libre entre guillemets n'est pas touchée —
+  //    et tolère l'inclusion partielle (un titre raccourci reste trouvable).
+  {
+    if (!globalThis.__lessonTitles) {
+      const idx = new Map();
+      for (const d of fs.readdirSync(path.join(REPO, "content"))) {
+        const sub = path.join(REPO, "content", d);
+        if (!fs.statSync(sub).isDirectory()) continue;
+        for (const n of fs.readdirSync(sub)) {
+          const lp = path.join(sub, n, "lesson.md");
+          if (!fs.existsSync(lp)) continue;
+          const first = fs.readFileSync(lp, "utf8").split("\n").find((l) => l.startsWith("# "));
+          if (first) idx.set(`${d}/${n}`, first.slice(2).trim());
+        }
+      }
+      globalThis.__lessonTitles = idx;
+    }
+    const norm = (x) => x.normalize("NFD").toLowerCase().replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "");
+    const known = [...globalThis.__lessonTitles.values()].map(norm);
+    const CUE = /(?:chapitres?\s+\d+\s+(?:de|du)|la\s+(?:leçon|notion)|leçon|notion)\s+«\s*([^»]{4,70}?)\s*»/g;
+    for (const fname of ["lesson.md", "bank.yaml", "items.yaml", "exercises.yaml", "checkpoints.yaml"]) {
+      const fp = path.join(abs, fname);
+      if (!fs.existsSync(fp)) continue;
+      const dead = new Set();
+      for (const line of fs.readFileSync(fp, "utf8").split("\n")) {
+        if (/^\s*#/.test(line)) continue; // note d'auteur en commentaire : non rendue
+        CUE.lastIndex = 0;
+        let m;
+        while ((m = CUE.exec(line)) !== null) {
+          const ref = norm(m[1]);
+          if (!ref) continue;
+          if (known.some((k) => k === ref || k.includes(ref) || ref.includes(k))) continue;
+          dead.add(m[1]);
+        }
+      }
+      if (dead.size) {
+        console.error(
+          `  ⚠ ${dir}: ${fname} — renvoi vers une leçon INEXISTANTE : ${[...dead].slice(0, 3).map((t) => `« ${t} »`).join(" ; ")}${dead.size > 3 ? " …" : ""} — aucun titre du corpus ne correspond ; corriger le titre cité`,
+        );
+      }
+    }
+  }
+
   // ── Orphan figure ASSETS (warning only) — le SENS INVERSE du contrôle
   // marqueur→asset plus haut (ADR 0031 : une porte a deux directions, et
   // celle qui ne va que dans un sens finit contournée). Un SVG de media/ que
