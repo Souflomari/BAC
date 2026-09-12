@@ -660,7 +660,7 @@ entries:
         stem: |-
           **(0,5 pt)** En appliquant le théorème de ROLLE à la fonction $f'$, montrer qu'il existe un réel $x_0$ de l'intervalle $]0,1[$ tel que : $f''(x_0) = 0$
         reasoning: |-
-          Rolle et les accroissements finis ne font pas partie du corps de cette leçon (chapitres 1 à 8) — ce sont des outils de la notion « Dérivabilité et étude des fonctions » ; on les mobilise ici tels quels, en admettant leurs énoncés (voir la SCOPE NOTE en tête de fichier). Pour éviter d'empiler les apostrophes dans les champs de calcul, on y note $f^{(2)}$ et $f^{(3)}$ les dérivées seconde et troisième de $f$ — même objet que $f''$ et $f'''$ dans l'énoncé.
+          Rolle et les accroissements finis ne font pas partie du corps de cette leçon (chapitres 1 à 8) — ce sont des outils de la notion « Dérivabilité et étude des fonctions » ; on les mobilise ici tels quels, en admettant leurs énoncés. Pour éviter d'empiler les apostrophes dans les champs de calcul, on y note $f^{(2)}$ et $f^{(3)}$ les dérivées seconde et troisième de $f$ — même objet que $f''$ et $f'''$ dans l'énoncé.
 
           Le théorème de Rolle s'applique à une fonction continue sur $[a,b]$, dérivable sur $]a,b[$, prenant la même valeur aux deux bornes : il garantit alors un point où la dérivée s'annule. On l'applique ici à $f'$ elle-même (pas à $f$) sur $[0,1]$ : $f'$ est continue sur $[0,1]$ et dérivable sur $]0,1[$ (construite comme $f$, à partir de $e^{-x}$ et d'un polynôme), et $f'(0)=f'(1)=0$ (question 2b) — les deux bornes coïncident. Rolle appliqué à $f'$ garantit donc l'existence d'un réel $x_0\in\,]0,1[$ tel que $(f')'(x_0)=f^{(2)}(x_0)=0$.
         steps:
@@ -801,7 +801,7 @@ entries:
 
           **(0,5 pt)** Montrer par récurrence que : $(\forall n \in \mathbb{N})\ u_n < \alpha$ *(utiliser la question 5-a) de la PARTIE I)*
         reasoning: |-
-          Le théorème de la limite monotone, invoqué plus loin dans cette partie, est un outil de la notion « Suites numériques » (voir la SCOPE NOTE en tête de fichier).
+          Le théorème de la limite monotone, invoqué plus loin dans cette partie, est un outil de la notion « Suites numériques ».
 
           **Initialisation :** $u_0<\alpha$ est l'hypothèse de départ sur la suite.
 
@@ -2331,7 +2331,7 @@ entries:
         stem: |-
           **(0,25 pt)** Montrer que : $\left(\forall n \in \mathbb{N}^{*}\right)\quad 2\left(1+\frac{1}{n}\right)e^{-\frac{1}{n}} \le u_n \le 2\left(1+\frac{1}{n+2}\right)e^{-\frac{1}{n+2}}$
 
-          **Note sur ce symbole (fidèle au scan)** : le quantificateur écrit ici, $\mathbb{N}^{*}$, est celui qu'impose le sens — le membre de gauche, $2\left(1+\frac1n\right)e^{-1/n}$, n'est même pas défini en $n=0$ (division par $n$), donc l'énoncé ne peut viser que $n\ge1$. Sur le document source, ce symbole est **physiquement absent** : à sa place se trouve une image blanche de 2×2 pixels, étirée, sans aucun glyphe dessous (contrairement aux autres symboles cassés de cette partie, qui sont des substitutions de police décodables — voir la NOTE ÉDITORIALE en tête de fichier). $\mathbb{N}^{*}$ n'est donc pas une lecture mais une adjudication par le contexte, déjà signalée comme telle dans le fichier de vérification amont : le trou est comblé ici pour l'élève, jamais silencieusement.
+          **Note sur ce symbole (fidèle au scan)** : le quantificateur écrit ici, $\mathbb{N}^{*}$, est celui qu'impose le sens — le membre de gauche, $2\left(1+\frac1n\right)e^{-1/n}$, n'est même pas défini en $n=0$ (division par $n$), donc l'énoncé ne peut viser que $n\ge1$. Sur le document source, ce symbole est **physiquement absent** : à sa place se trouve une image blanche de 2×2 pixels, étirée, sans aucun glyphe dessous (contrairement aux autres symboles cassés de cette partie, qui sont des substitutions de police décodables). $\mathbb{N}^{*}$ n'est donc pas une lecture mais une adjudication par le contexte, déjà signalée comme telle dans le fichier de vérification amont : le trou est comblé ici pour l'élève, jamais silencieusement.
         reasoning: |-
           $v_n\in\,]n,n+2[$ (question précédente), et $f$ est strictement croissante sur $[0,+\infty[$ tout entier (Partie 1, question 2-b) : la monotonie stricte de $f$ transforme l'encadrement de $v_n$ en encadrement de $f(v_n)$ —
 

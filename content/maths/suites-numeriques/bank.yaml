@@ -318,7 +318,7 @@ entries:
 
           **(0,75 pt)** Montrer que $(v_n)$ est une suite géométrique de raison $\dfrac{2}{5}$
         reasoning: |-
-          On calcule $v_{n+1}$ à partir de la définition et de la relation de récurrence de $(u_n)$, puis on cherche à faire réapparaître $v_n$ dans le résultat — c'est le geste dit « de la suite homographique » (voir SCOPE NOTE en tête de fichier) : une transformation qui ne se limite pas à soustraire le point fixe, contrairement à ce que le chapitre 9 enseigne ($v_n=u_n-L$), mais qui combine numérateur et dénominateur de $u_n$ dans un rapport choisi. On travaille en fraction, en réduisant tout au même dénominateur $2u_n+5$ avant de simplifier.
+          On calcule $v_{n+1}$ à partir de la définition et de la relation de récurrence de $(u_n)$, puis on cherche à faire réapparaître $v_n$ dans le résultat — c'est le geste dit « de la suite homographique » : une transformation qui ne se limite pas à soustraire le point fixe, contrairement à ce que le chapitre 9 enseigne ($v_n=u_n-L$), mais qui combine numérateur et dénominateur de $u_n$ dans un rapport choisi. On travaille en fraction, en réduisant tout au même dénominateur $2u_n+5$ avant de simplifier.
         steps:
           - math: 'v_{n+1} = \dfrac{4u_{n+1}}{2u_{n+1}+3}, \qquad u_{n+1}=\dfrac{2u_n}{2u_n+5}'
             note: "On part de la définition de v à n+1 et on y injecte la relation de récurrence de u."
@@ -576,7 +576,7 @@ entries:
 
           **(0,5 pt)** Montrer que $(v_n)$ est une suite géométrique de raison $\dfrac{2}{3}$
         reasoning: |-
-          Même geste qu'en bk-2020-n-x1 et bk-2021-n-x2 (SCOPE NOTE en tête de fichier) : on calcule $v_{n+1}$ en injectant la relation de récurrence de $(u_n)$, puis on fait réapparaître $v_n$ dans le résultat. On exprime séparément $2-u_{n+1}$ et $1-u_{n+1}$ (les deux blocs de la définition de $v_{n+1}$), chacun se simplifiant grâce à la forme $u_{n+1}=\dfrac{4u_n-2}{1+u_n}$.
+          Même geste qu'en bk-2020-n-x1 et bk-2021-n-x2 : on calcule $v_{n+1}$ en injectant la relation de récurrence de $(u_n)$, puis on fait réapparaître $v_n$ dans le résultat. On exprime séparément $2-u_{n+1}$ et $1-u_{n+1}$ (les deux blocs de la définition de $v_{n+1}$), chacun se simplifiant grâce à la forme $u_{n+1}=\dfrac{4u_n-2}{1+u_n}$.
         steps:
           - math: '2-u_{n+1} = 2-\dfrac{4u_n-2}{1+u_n} = \dfrac{2(1+u_n)-(4u_n-2)}{1+u_n} = \dfrac{4-2u_n}{1+u_n} = \dfrac{2(2-u_n)}{1+u_n}'
             note: "On calcule 2 moins $u_{n+1}$ en réduisant au même dénominateur."

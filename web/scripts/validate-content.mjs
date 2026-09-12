@@ -810,6 +810,55 @@ for (const dir of dirs) {
     }
   }
 
+  // ── Renvoi d'AUTEUR dans un champ RENDU (ÉCHEC) — « voir la SCOPE NOTE en
+  //    tête de fichier », servi à l'élève. Les champs listés dans RENDU_TXT
+  //    ci-dessous se rendent tous : `reasoning` et `intro` par
+  //    AttemptFirstExercise.tsx et EpreuveShell.tsx, `part` comme libellé de
+  //    question, `note` sous chaque étape de calcul. Une SCOPE NOTE, elle, est
+  //    un commentaire YAML : l'élève ne peut PAS la lire. Le renvoi est donc
+  //    mort pour son seul destinataire — ADR 0031, « un renvoi est une
+  //    instruction ».
+  //
+  //    Trouvé le 2026-09-12 en triant `equations-differentielles`, dont un
+  //    `reasoning` disait à l'élève que le chapitre 5 n'enseigne pas ce qu'il
+  //    venait d'y lire PUIS l'envoyait vers la note invisible. Balayage du
+  //    corpus : **25 renvois dans 13 notions** (18 `reasoning`, 3 `intro`,
+  //    2 `note`, 1 `stem`, 1 `part`), tous retirés — la phrase porteuse est
+  //    conservée, seul le pointeur mort tombe.
+  //
+  //    HORS CHAMP, et c'est le cœur de la porte : le sous-arbre `sourcing:`.
+  //    C'est LÀ que ces notes doivent vivre, et elles y sont légitimes — une
+  //    première version de la sonde les comptait avec le reste et annonçait
+  //    92 fuites au lieu de 25.
+  //
+  //    ÉCHEC et non avertissement : contrairement au choix d'un barreau, il
+  //    n'y a rien à arbitrer. Un pointeur que le lecteur ne peut pas suivre
+  //    n'a aucune lecture correcte.
+  {
+    const RENDU_TXT = new Set(["intro", "stem", "reasoning", "note", "text", "feedback",
+      "solution", "correct_feedback", "title", "part", "math", "caption"]);
+    const RENVOI = /(?:SCOPE\s+NOTE|NOTE\s+ÉDITORIALE)\s*\d?\s*(?:,\s*)?(?:voir\s+)?en\s+t[êe]te\s+d[eu]\s+(?:ce\s+)?fichier/i;
+    const fuites = [];
+    const parcours = (n, fichier) => {
+      if (Array.isArray(n)) { for (const x of n) parcours(x, fichier); return; }
+      if (!n || typeof n !== "object") return;
+      for (const [k, v] of Object.entries(n)) {
+        if (k === "sourcing") continue; // author-facing par contrat
+        if (typeof v === "string" && RENDU_TXT.has(k)) {
+          if (RENVOI.test(v)) fuites.push(`${fichier} → champ « ${k} »`);
+        } else parcours(v, fichier);
+      }
+    };
+    for (const fname of Object.keys(yamlDocs)) parcours(yamlDocs[fname], fname);
+    for (const f of [...new Set(fuites)]) {
+      console.error(
+        `  ✗ ${dir}: ${f} renvoie l'élève à une note d'auteur (« en tête de fichier ») — ` +
+          `c'est un commentaire YAML, il ne peut pas la lire. Dis le fait sur place, ou déplace le renvoi dans \`sourcing\`.`
+      );
+      dirFail++;
+    }
+  }
+
   // ── Rung integrity, SECOND DIRECTION (warning only) — le miroir de la porte
   //    ci-dessus. Celle-là attrape un item qui vise un rung absent ; elle ne
   //    voit RIEN quand c'est le titre qui a perdu son code. Un « ## » qui

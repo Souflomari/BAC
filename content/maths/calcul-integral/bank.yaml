@@ -831,7 +831,7 @@ entries:
 
       On considère $x \mapsto e^x$ et sa courbe représentative $(\Gamma)$ dans un repère orthonormé $(O,\vec i,\vec j)$. Pour $n \in \mathbb{N}^{*}$ fixé et $k \in \{0,1,\ldots,n\}$, on place le point $M_k$ de $(\Gamma)$ d'abscisse $\dfrac{k}{n}$ : les $n+1$ points $M_0,\ldots,M_n$ sont régulièrement espacés en abscisse entre $0$ et $1$. On note $S_n = \displaystyle\sum_{k=0}^{n-1} M_kM_{k+1}$ la somme des distances entre points consécutifs.
 
-      *Le fil de l'exercice.* La question 1 construit, pour chaque segment $[M_k,M_{k+1}]$, un encadrement de sa longueur — en passant par le **théorème des accroissements finis**, énoncé et appliqué exactement au point où il sert (ce théorème n'appartient pas au socle de cette leçon ; voir SCOPE NOTE en tête de fichier). La question 2 somme ces $n$ encadrements et reconnaît, dans les deux sommes qui en résultent, deux **sommes de Riemann** de la même fonction $h(x)=\sqrt{1+e^{2x}}$ (outil du programme SM, lui aussi hors socle des chapitres 1 à 10 de cette leçon — voir SCOPE NOTE 1 en tête de fichier) — d'où la limite $S_n \to \displaystyle\int_0^1 \sqrt{1+e^{2x}}\,dx$.
+      *Le fil de l'exercice.* La question 1 construit, pour chaque segment $[M_k,M_{k+1}]$, un encadrement de sa longueur — en passant par le **théorème des accroissements finis**, énoncé et appliqué exactement au point où il sert (ce théorème n'appartient pas au socle de cette leçon). La question 2 somme ces $n$ encadrements et reconnaît, dans les deux sommes qui en résultent, deux **sommes de Riemann** de la même fonction $h(x)=\sqrt{1+e^{2x}}$ (outil du programme SM, lui aussi hors socle des chapitres 1 à 10 de cette leçon) — d'où la limite $S_n \to \displaystyle\int_0^1 \sqrt{1+e^{2x}}\,dx$.
 
       *Aucune figure n'accompagne ce sujet. La carte des domaines : question 1-a mobilise le théorème des accroissements finis (domaine « dérivabilité et étude des fonctions », hors socle) ; le reste — distance entre deux points, encadrement, somme, sommes de Riemann, passage à la limite — relève de ce chapitre et du chapitre « suites numériques ».*
     questions:
@@ -983,7 +983,7 @@ entries:
         stem: |-
           **b)** (0,5 pt) En déduire que : $\displaystyle\lim_{n \to +\infty} S_n = \int_0^1 \sqrt{1 + e^{2x}}\ dx$
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Les deux sommes qui encadrent $S_n$ (question 2-a) ont exactement la forme d'une **somme de Riemann** — un outil du programme SM qui n'appartient pas au socle de cette leçon (voir SCOPE NOTE en tête de fichier), et qu'il faut donc énoncer avant de l'utiliser, comme pour le TAF de la question 1-a.
+          **Ce qu'on cherche et pourquoi ce geste.** Les deux sommes qui encadrent $S_n$ (question 2-a) ont exactement la forme d'une **somme de Riemann** — un outil du programme SM qui n'appartient pas au socle de cette leçon, et qu'il faut donc énoncer avant de l'utiliser, comme pour le TAF de la question 1-a.
 
           **Le théorème des sommes de Riemann, énoncé ici.** Si $h$ est continue sur $[0,1]$, alors :
 
@@ -1102,7 +1102,7 @@ entries:
 
       Soit $F$ la fonction numérique définie sur $[0,1]$ par $F(x) = \displaystyle\int_0^x e^{t^2}\,dt$.
 
-      *Le fil de l'exercice.* La question 1 établit que $F$ est continue, strictement croissante, donc bijective de $[0,1]$ vers $[0,\beta]$ avec $\beta = \displaystyle\int_0^1 e^{t^2}\,dt$. La question 2 construit, à l'aide de la bijection réciproque $F^{-1}$, une somme $S_n$ qui est une somme de Riemann — outil du programme SM, hors socle de cette leçon, voir SCOPE NOTE 1 en tête de fichier — et calcule sa limite $\ell$ par un changement de variable qui repose sur la dérivabilité de $F^{-1}$.
+      *Le fil de l'exercice.* La question 1 établit que $F$ est continue, strictement croissante, donc bijective de $[0,1]$ vers $[0,\beta]$ avec $\beta = \displaystyle\int_0^1 e^{t^2}\,dt$. La question 2 construit, à l'aide de la bijection réciproque $F^{-1}$, une somme $S_n$ qui est une somme de Riemann — outil du programme SM, hors socle de cette leçon — et calcule sa limite $\ell$ par un changement de variable qui repose sur la dérivabilité de $F^{-1}$.
 
       *Aucune figure n'accompagne ce sujet. Carte des domaines : la construction de $F$ et le calcul final de $\ell$ relèvent de ce chapitre (calcul intégral) ; l'existence de la bijection $F^{-1}$ et sa dérivée relèvent du chapitre « dérivabilité et étude des fonctions » (pontées au point d'usage, hors socle de cette leçon) ; la convergence de $(S_n)$ relève à la fois des sommes de Riemann (calcul intégral, programme SM, hors socle) et du chapitre « suites numériques » ; l'intégrande $e^{t^2}$ est un objet du chapitre « fonction exponentielle ».*
     questions:
@@ -1156,7 +1156,7 @@ entries:
 
           **2- a)** (0,5 pt) Montrer que la suite $(S_n)_{n \in \mathbb{N}^{*}}$ est convergente de limite $\ell = \dfrac{1}{\beta}\displaystyle\int_0^{\beta} F^{-1}(t)\,dt$
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** $S_n$ a la forme $\dfrac1n\displaystyle\sum_{k=1}^n \varphi\!\left(\dfrac{k}{n}\right)$, avec $\varphi(u) = F^{-1}(u\beta)$ : c'est une **somme de Riemann** aux points **droits** de la subdivision régulière de $[0,1]$ — outil du programme SM qui n'appartient pas au socle de ce chapitre (voir SCOPE NOTE 1 en tête de fichier), et qu'il faut donc énoncer avant de l'utiliser.
+          **Ce qu'on cherche et pourquoi ce geste.** $S_n$ a la forme $\dfrac1n\displaystyle\sum_{k=1}^n \varphi\!\left(\dfrac{k}{n}\right)$, avec $\varphi(u) = F^{-1}(u\beta)$ : c'est une **somme de Riemann** aux points **droits** de la subdivision régulière de $[0,1]$ — outil du programme SM qui n'appartient pas au socle de ce chapitre, et qu'il faut donc énoncer avant de l'utiliser.
 
           **Le théorème des sommes de Riemann, énoncé ici.** Si $h$ est continue sur $[0,1]$, alors $\dfrac1n\displaystyle\sum_{k=1}^{n} h\!\left(\dfrac{k}{n}\right) \xrightarrow[n\to+\infty]{} \displaystyle\int_0^1 h(u)\,du$.
 

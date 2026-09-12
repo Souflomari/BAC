@@ -5700,3 +5700,75 @@ parler la porte sur un chapitre qu'elle ignorait ; rendre son code au chapitre
 « Sous-groupe » de `structures-algebriques` fait disparaître l'avertissement, et
 le revert le ramène. 0 failure sur les 62 notions — le corpus reste vert, la
 mesure est désormais visible à chaque exécution.
+
+---
+
+### 11.61 « Voir la SCOPE NOTE en tête de fichier » — 25 renvois d'auteur servis à l'élève, dans 13 notions
+
+Trouvé en triant `equations-differentielles` : les DEUX critiques vague-1 ont
+classé le même défaut en tête, chacune de son côté. Le `reasoning` de
+`bk-2022-n-x4` disait à l'élève que le chapitre 5 n'enseigne pas ce qu'il venait
+d'y lire — puis l'envoyait « **voir la SCOPE NOTE en tête de fichier** ».
+
+Une SCOPE NOTE est un commentaire YAML. **L'élève ne peut pas la lire.** Le
+renvoi est mort pour son unique destinataire — ADR 0031, « un renvoi est une
+instruction » — et il est servi dans un champ qui se rend : vérifié dans le
+code, pas supposé (`AttemptFirstExercise.tsx:167`, `EpreuveShell.tsx:196`).
+
+**Balayage du corpus : 25 renvois, 13 notions.**
+
+| champ rendu | occurrences |
+|---|---:|
+| `reasoning` | 18 |
+| `intro` | 3 |
+| `note` (sous une étape de calcul) | 2 |
+| `stem` | 1 |
+| `part` (libellé de question) | 1 |
+
+Réparties sur `maths/calcul-integral` (5), `maths/fonction-exponentielle` (3),
+`maths/suites-numeriques` (2), `pc/chute-mouvements-plans` (2),
+`pc/etat-equilibre` (2), `pc/ondes-mecaniques-periodiques` (2),
+`pc/propagation-onde-lumineuse` (2), `pc/transformations-lentes-rapides` (2),
+et une chacune dans `pc/decroissance-radioactive`, `pc/electrolyse`,
+`pc/esterification-hydrolyse`, `pc/lois-de-newton`, `pc/rc-charge`.
+
+**Tous retirés — la phrase porteuse est conservée, seul le pointeur tombe.** La
+plupart sont des incises (« … *(voir la SCOPE NOTE en tête de fichier)* … ») :
+l'affirmation qui les précède (« ce théorème n'appartient pas au socle de cette
+leçon ») est légitime et utile, c'est le renvoi qui ne l'est pas.
+
+**Deux pièges, tous deux tombés dans avant d'être vus.**
+
+1. **La première sonde a compté 92 fuites au lieu de 25.** Elle ramassait
+   `sourcing.note` avec le reste. Or `sourcing` est **author-facing par
+   contrat** : c'est exactement LÀ que ces notes doivent vivre. Une porte qui
+   les y interdirait pousserait à les supprimer — c'est-à-dire à perdre la
+   traçabilité pour faire taire un instrument. Le sous-arbre `sourcing` est donc
+   hors champ, explicitement, et la porte le vérifie (voir ci-dessous).
+2. **Un retrait automatique a blessé une phrase.** La forme « Voir la SCOPE NOTE
+   en tête de fichier, déjà posée sur bk-2023-r-x2 q1 … » a laissé
+   « …de la dispersion., déjà posée sur… ». Trouvé par un contrôle de
+   ponctuation passé sur *tous* les diffs, pas seulement sur ceux qu'on
+   soupçonne. En le réparant : la même incise disait à l'élève que la question
+   est « **notée pour l'orchestrateur / pedagogy-architect** » — une fuite pire
+   que le renvoi, dans la même phrase. Retirée aussi.
+
+**La porte (ÉCHEC, pas avertissement).** Tout champ rendu — `intro`, `stem`,
+`reasoning`, `note`, `text`, `feedback`, `solution`, `correct_feedback`,
+`title`, `part`, `math`, `caption` — qui contient « SCOPE NOTE / NOTE
+ÉDITORIALE … en tête de fichier » fait échouer la notion, en nommant le fichier
+et le champ. Échec et non avertissement : contrairement au choix d'un barreau
+(§11.60), il n'y a rien à arbitrer — un pointeur que le lecteur ne peut pas
+suivre n'a aucune lecture correcte.
+
+**Vérifiée dans les TROIS sens** (ADR 0031) : (a) rouge — un renvoi réinjecté
+dans un `reasoning` fait échouer la notion en nommant le champ ; (b) vert — son
+retrait la remet au vert ; (c) **exemption** — le même texte injecté sous
+`sourcing.note` ne déclenche rien, donc la porte ne pousse personne à effacer sa
+traçabilité. 0 failure sur les 62 notions.
+
+**Ce que ça rappelle.** Trois campagnes de fuite du même genre ont déjà eu lieu
+— les codes de barreau dans la prose (§11.18), les slugs de fichier (§11.25), le
+jargon de rédaction (§11.26). Celle-ci est la quatrième, et la seule où le texte
+fuité était un **renvoi** plutôt qu'un mot : c'est ce qui l'a rendue invisible
+aux portes existantes, qui cherchent un vocabulaire, pas une adresse.
