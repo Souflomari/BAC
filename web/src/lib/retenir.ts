@@ -72,8 +72,25 @@ function estCalculNu(tex: string): boolean {
   if (/\\begin\{cases\}/.test(tex)) return true;
   // Retire les commandes LaTeX (\times, \frac…) puis regarde s'il reste une
   // lettre : sans lettre, il n'y a pas de relation, seulement un calcul.
-  const sansCommandes = tex.replace(/\\[a-zA-Z]+/g, " ");
-  return !/[a-zA-Zα-ωΑ-Ω]/.test(sansCommandes);
+  //
+  // 2026-09-12 : il faut neutraliser l'ARGUMENT des commandes purement
+  // TEXTUELLES avant ce test, pas seulement leur nom. Sinon une glose en
+  // français fournit les lettres qui font passer un calcul pour une relation,
+  // et c'est exactement l'intention ci-dessus qui tombe :
+  // « 4 - 2 = 2 \text{ ATP nets par molécule de glucose} » était ACCEPTÉ
+  // alors que « 5 \times 4 \times 3 \times 2 \times 1 = 120 » était rejeté.
+  const sansGlose = tex.replace(
+    /\\(?:text|textrm|textbf|textit|mathrm|operatorname)\s*\{[^{}]*\}/g,
+    " ",
+  );
+  const noyau = sansGlose.replace(/\\[a-zA-Z]+/g, " ");
+  // Une lettre hors glose : c'est une relation, on garde.
+  if (/[a-zA-Zα-ωΑ-Ω]/.test(noyau)) return false;
+  // Ni lettre ni chiffre hors glose : ce n'est pas un calcul mais une
+  // ÉQUATION-MOT (« \text{Enzyme} + \text{Substrat} \rightleftharpoons
+  // \text{Complexe} »), qui est une vraie formule en SVT — la rejeter serait
+  // une régression. On ne rejette que s'il reste une arithmétique nue.
+  return /[0-9]/.test(noyau);
 }
 
 function formuleDeRepli(md: string): string | null {

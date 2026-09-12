@@ -5047,3 +5047,84 @@ gardé). **Vérifiée dans les deux sens** (ADR 0031 — une porte doit pouvoir
 passer au rouge) : réinjecter un second code dans `suites-numeriques` la
 déclenche, le revert la rend silencieuse. `validate-content --strict` : 0
 failure sur les 62 notions.
+
+### 11.50 Ce que la zone « à retenir » affiche RÉELLEMENT — 491 chapitres mesurés, et un filtre que la glose française trompait
+
+La zone « à retenir » n'avait jamais été mesurée sur le corpus : on savait
+qu'elle existait, pas ce qu'elle **dit**. Mesuré avec le code qui rend la page
+(`src/lib/retenir.ts` + `src/lib/chapters.ts`), pas avec une réimplémentation —
+Node 22 sait charger le TypeScript tel quel, il ne manquait qu'un crochet de
+résolution pour l'alias `@/` et les imports sans extension :
+
+```
+node --experimental-strip-types --import <shim-registre> <script-de-balayage>
+```
+
+(Le commentaire de `scripts/item-stats.mjs` — « Node scripts here can't import
+TS from web/src » — n'est plus vrai depuis Node 22.)
+
+**Ce que ça donne, sur 491 chapitres / 62 notions :**
+
+| | chapitres | |
+|---|---:|---|
+| carte **authorée** (sidecar `retenir.json`) | 6 | 1 notion sur 62 en porte un |
+| repli sur un `\boxed{}` (signal d'auteur fort) | 27 | |
+| repli **AVEUGLE** (la 1ʳᵉ formule bloc, quelle qu'elle soit) | 193 | |
+| **silence** | 265 | |
+
+Le silence se ventile en deux choses très différentes, et il faut les séparer :
+
+- **111 silences de BORD**, attendus : le 1ᵉʳ chapitre est l'accroche (pas encore
+  de formule) et le dernier est « S'entraîner », à qui le code donne
+  explicitement `null`.
+- **152 silences de CŒUR sur 367 (41 %)** — et là c'est un vrai trou. Mais il
+  n'est pas réparti : **maths 5 %, PC 19 %, SVT 82 %, philo 100 %** (68
+  chapitres de cœur sur 68).
+
+**Le constat pour le propriétaire, et il est de niveau produit :** « à retenir »
+est de fait une fonctionnalité **maths/PC**. Un élève de philo ne la voit
+*jamais*, un élève de SVT presque jamais — non par oubli de rédaction, mais
+parce que le repli ne sait chercher qu'une formule `$$…$$` et que ces leçons-là
+n'en contiennent pas. Ce n'est pas réparable en autonomie : il faut décider si
+une carte « à retenir » de philo est une *phrase* (une thèse, une distinction)
+plutôt qu'une formule, ce qui change la forme de `RetenirEntry` et demande
+121 cartes authorées. Déféré — décision de conception + content-author.
+
+**Ce qui A été corrigé — un défaut du filtre, mesuré et borné.** `estCalculNu`
+rejette une formule « sans lettre », son intention écrite étant : « sans lettre,
+il n'y a pas de relation, seulement un calcul ». Mais il ne retirait que le
+**nom** des commandes LaTeX, pas l'**argument** des commandes textuelles — si
+bien qu'une glose en français fournissait les lettres :
+
+```
+ACCEPTÉ   4 - 2 = 2 \text{ ATP nets par molécule de glucose}
+REJETÉ    5 \times 4 \times 3 \times 2 \times 1 = 120
+```
+
+Les deux sont pourtant le même objet. Le filtre neutralise désormais l'argument
+de `\text|\textrm|\textbf|\textit|\mathrm|\operatorname` avant le test.
+
+**Une régression évitée en mesurant avant de livrer.** La version brutale de ce
+correctif (retirer la glose, puis exiger une lettre) cassait
+`svt/role-enzymes ch3`, dont la formule-clé est une **équation-mot** écrite
+entièrement en `\text{}` : « Enzyme + Substrat ⇌ Complexe enzyme-substrat ».
+Sans lettre *hors* glose, elle serait passée pour un calcul. Règle retenue :
+une lettre hors glose ⟹ relation, on garde ; sinon on ne rejette **que** s'il
+reste un **chiffre** — ni lettre ni chiffre, c'est une équation-mot, et c'est
+une vraie formule en SVT.
+
+Impact re-mesuré avec le module corrigé : **exactement 2 cartes changent**,
+toutes deux de l'arithmétique d'exemple vers le silence
+(`svt/liberation-energie-matiere-organique ch3` : « 4 − 2 = 2 ATP nets » ;
+`svt/transmission-caracteres ch7` : « noir-simple : 49/186 ≈ 0,26 »), ce qui est
+le comportement que le module revendique lui-même (« la zone se tait, ce qui
+reste préférable à lui faire dire une étape intermédiaire »). L'équation-mot des
+enzymes est conservée. `tsc --noEmit` : 0 erreur.
+
+**Reste ouvert, non corrigé :** les 193 replis aveugles ne sont pas tous justes.
+L'échantillon montre du très bon (`P(E) = card(E)/card(Ω)`, `τ = x_f/x_max`,
+`Δm = m_produits − m_réactifs`) et du clairement faux — `maths/fonction-logarithme`
+ch3 affiche `φ'(x) = u'(x) × 1/u(x) = a × 1/(ax)`, une étape d'exemple, pas le
+résultat du chapitre. Le vrai correctif n'est pas un meilleur repli : c'est un
+`\boxed{}` par chapitre, ou le sidecar. 27 chapitres sur 491 portent aujourd'hui
+ce signal.
