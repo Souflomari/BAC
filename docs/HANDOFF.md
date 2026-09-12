@@ -4809,6 +4809,43 @@ Comme le §11.43, elle tourne en CI (validate-content --strict, 62 notions) sans
 jamais bloquer, et le sens « valeur qui ne résout pas » complète, pour les
 rungs, ce que la porte marqueur→cible fait déjà pour les figures (ADR 0031).
 
+### 11.45 La campagne de correction de contenu vague 1 — sept notions triées, 35 correctifs objectifs, les bloquants biologiques consignés
+
+**EN COURS (une notion à la fois, cadence critiques).** Après les portes
+d'intégrité (§11.43 figures orphelines, §11.44 rung↔titre), la vague-1
+(bac-fidelity-critic + pedagogy-critic) est passée notion par notion. Règle de
+tri constante : **appliquer seul** les correctifs objectifs — fait recalculable,
+vérité de citation, renvoi, hygiène de source ; **différer** aux auteurs
+(content-author / pedagogy-architect / owner) tout ce qui réécrit du contenu
+enseigné, invente une misconception, ou demande une décision de conception. Une
+`REVIEW-2026-09-11.md` par notion consigne l'appliqué ET le déféré.
+
+Sept notions à ce stade :
+
+| Notion | Objectifs appliqués | Déféré (marquant) |
+|--------|:---:|--------|
+| `maths/limites-continuite` | 8 | items R7 (re-tag pédagogique) ; savoir-faire fonction réciproque absent |
+| `maths/nombres-complexes-2` | 0 (maths propres) | items R7 (a un titre R7, ≠ limites-continuite) |
+| `maths/probabilites-conditionnelles` | 7 | — |
+| `maths/derivabilite-etude-fonctions` | 0 (vet direct §11.44) | Rolle/TAF au sommet hors rampe ; items R6 |
+| `pc/rc-charge` | 6 | contradiction de cadre (spec absente) |
+| `svt/genetique-populations` | 3 | contradiction de cadre BLOQUANTE (S1/S2) → content-author |
+| `svt/genetique-humaine` | 11 | **F1/F2 BLOQUANTS** (Test B universel faux ; solution GH-8) ; P2 mis-tag crochet → modèle apprenant |
+
+**35 correctifs objectifs** au total, 0 échec `validate-content --strict` sur les
+sept. Les défauts **bloquants** ne sont jamais réécrits en autonomie — ils
+touchent des règles biologiques enseignées (genetique-humaine F1 : « un père
+atteint lié à l'X ne transmet jamais à ses fils » est faux quand la mère est
+conductrice) ou une décision de conception (genetique-humaine P2 : les
+distracteurs de crochet portent des étiquettes de misconception qui **compilent**
+dans le modèle apprenant via `record-notion-event/item-misconceptions.json`, alors
+que le fichier interdit d'en déclarer de nouvelles). Ils sont consignés en tête de
+chaque revue, à charge de l'auteur de contenu du domaine.
+
+Systémique SVT re-confirmé sur les deux notions SVT : **aucun** `exercises.yaml`,
+`spec.md`, ni `docs/sujets/svt` ; pas de sommet vérifié ; pas de tag `habilete`
+cohérent. Campagne dédiée, pas un correctif de revue.
+
 ### 11.29–11.41 en un coup d'œil, et le déployé
 
 **LA SOIRÉE DU 2026-09-11**, treize points, tous mesurés avant/après :
