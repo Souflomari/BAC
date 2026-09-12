@@ -12,7 +12,7 @@
 - **Domaine → sous-domaine → chapitre :** physique → `mecanique` → `applications_dynamique`
 - **Poids examen (sous-domaine) :** `part_examen: 27` — **le sous-domaine le plus lourd de
   toute la physique** (rang 1). Habiletés à viser (ratios U 50 / App. exp. 15 / Résol. 35) :
-  Utilisation 13.5 · Application expérimentale 4.05 · Résolution 3.5→9.45. → item-author :
+  Utilisation 13,5 · Application expérimentale 4,05 · Résolution 9,45. → item-author :
   ce cluster porte une part majeure de l'examen ; viser un fort volume de **résolution de
   problème** (établissement d'équation différentielle, établissement de la 3e loi de Kepler)
   et un mode **application expérimentale** réel (méthode d'Euler sur données, TP chute avec frottement).

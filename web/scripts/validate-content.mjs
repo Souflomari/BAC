@@ -907,7 +907,22 @@ for (const dir of dirs) {
     // la source »). Le mot a des emplois légitimes ; la porte ne peut pas
     // distinguer, alors elle se tait plutôt que de crier au loup. Les trois
     // occurrences sont corrigées, la classe reste non gardée — et c'est dit.
-    const RENVOI = /(?:SCOPE\s+NOTE|NOTE\s+ÉDITORIALE)\s*\d?\s*(?:,\s*)?(?:voir\s+)?en\s+t[êe]te\s+d[eu]\s+(?:ce\s+)?fichier|content\/(?:maths|pc|svt|philo)\/[a-z0-9-]+\/[a-z-]+\.(?:yaml|md)|\bowner\b/i;
+    // Le renvoi est reconnu par le LABEL de la note d'auteur (SCOPE NOTE,
+    // NOTE ÉDITORIALE, NOTE DE PORTÉE, SOURCING GAP) suivi d'un « en tête
+    // de … », et NON par « en-tête » seul : « l'en-tête imprimé sur la
+    // copie » (maths/arithmetique) parle de la feuille d'examen que l'élève
+    // a sous les yeux — c'est de la prose légitime, pas une fuite. La cible
+    // du renvoi est indifférente (fichier, bloc, entrée, carte…) : dans tous
+    // les cas c'est un commentaire YAML, que le rendu ne charge jamais.
+    const RENVOI = new RegExp(
+      "(?:SCOPE\\s+NOTE|NOTE\\s+ÉDITORIALE|NOTE\\s+DE\\s+PORTÉE)\\s*\\d?\\s*(?:,\\s*)?(?:voir\\s+)?" +
+        "en[\\s-]t[êe]te\\s+d[eu]\\s+(?:ce\\s+|cette\\s+|cet\\s+|l['’])?" +
+        "(?:fichier|bloc|entr[ée]e|carte|exercice|section)" +
+        "|\\bSOURCING\\s+GAP\\b" +
+        "|content\\/(?:maths|pc|svt|philo)\\/[a-z0-9-]+\\/[a-z-]+\\.(?:yaml|md)" +
+        "|\\bowner\\b",
+      "i"
+    );
     const fuites = [];
     const parcours = (n, fichier) => {
       if (Array.isArray(n)) { for (const x of n) parcours(x, fichier); return; }

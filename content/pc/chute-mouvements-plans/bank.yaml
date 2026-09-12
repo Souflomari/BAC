@@ -17,8 +17,21 @@
 # scalars pour la prose, KaTeX brut entre apostrophes simples dans
 # steps[].math, notes sans backslash).
 #
-# NOTE ÉDITORIALE (pour la revue) : treize sujets « vérifié » couvrent
-# désormais cette notion, 2018 N à 2025 R — 2018 N, 2019 N, 2020 N, 2021 N
+# NOTE ÉDITORIALE (pour la revue).
+# ── MISE À JOUR (revue vague 1, 2026-09-12) ───────────────────────────────
+# L'inventaire rédigé ci-dessous a VIEILLI et ne décrit plus le fichier :
+# il annonce treize sujets sur 2018-2025, alors que la banque porte
+# aujourd'hui DIX-NEUF entrées couvrant 2010 à 2025. Six entrées plus
+# anciennes ont été ajoutées après coup par la campagne de rattrapage
+# (bk-2012-n-x5, bk-2010-n-x4b, bk-2010-n-x4c, bk-2015-n-x4, bk-2011-n-x4b,
+# bk-2012-r-x4) et placées EN FIN DE FICHIER, pas à leur rang chronologique
+# — c'est la convention de tout le corpus (29 banques sur 31 sont dans ce
+# cas, mesuré le 2026-09-12) et non un oubli propre à cette notion ; le
+# choix d'ordre reste à l'arbitrage de l'owner. Ce qui suit décrit donc la
+# première vague seule, et « sans lacune connue » ne vaut que pour 2018-2025.
+# ──────────────────────────────────────────────────────────────────────────
+# [état au moment de la rédaction] treize sujets « vérifié » couvrent
+# cette notion, 2018 N à 2025 R — 2018 N, 2019 N, 2020 N, 2021 N
 # (première vague) puis 2022 N (Partie 1 « bille » + Partie 2 « satellite »,
 # deux entrées sœurs bk-2022-n-x4 / bk-2022-n-x4b), 2023 N, 2024 N et 2025 N
 # (cinq entrées ajoutées en août 2026 : bk-2022-n-x4, bk-2022-n-x4b,
@@ -83,7 +96,12 @@
 #   - bk-2018-n-x4, q1 : le bilan des forces inclut la poussée d'Archimède
 #     F_a = ρVg (troisième force). Le rung 7 de la leçon n'établit
 #     l'équation différentielle qu'avec un bilan à DEUX forces (poids +
-#     frottement) ; il ne traite jamais Archimède. Voir aussi le rung 9 du
+#     frottement) ; il ne traite jamais Archimède.
+#     MISE À JOUR (revue vague 1, 2026-09-12) : PÉRIMÉ. lesson.md:492-514 porte
+#     une section « Une troisième force… la poussée d'Archimède » qui établit
+#     m dv/dt = mg − F_A − kv et v_ℓ = (mg − F_A)/k. Les `reasoning` rendus qui
+#     reprenaient cette affirmation ont été réalignés. Ce qui reste réellement
+#     neuf dans ces entrées : exprimer V via la masse volumique de la BILLE. Voir aussi le rung 9 du
 #     cours d'électrostatique/hydrostatique le cas échéant — hors périmètre
 #     ici. Le pont (ajout d'une troisième force constante au même schéma de
 #     projection) est fait dans le raisonnement de la question elle-même.
@@ -283,10 +301,10 @@ entries:
         stem: |-
           **(1 pt)** En appliquant la deuxième loi de Newton, montrer que l'équation différentielle vérifiée par la vitesse s'écrit sous la forme : $\dfrac{dv_G}{dt} + \dfrac{1}{\tau}.v_G = A$, en précisant l'expression du temps caractéristique $\tau$ en fonction de $k$ et $m$ et l'expression de la constante $A$ en fonction de $g$, $m$, $\rho$ et $V$.
         reasoning: |-
-          On suit la méthode du chapitre 8 — bilan, deuxième loi, projection — mais avec un bilan à **trois** forces, pas deux : le chapitre ne traite explicitement que poids + frottement, sans poussée d'Archimède. Ici l'énoncé précise que $\vec F_a$ n'est *pas* négligeable, donc on l'ajoute comme troisième force, constante, dirigée vers le haut (donc opposée au sens de l'axe $Oy$, orienté vers le bas comme au chapitre 8). On projette la deuxième loi sur cet axe, on divise par $m$, puis on regroupe : le terme en $v_G$ donne $1/\tau$ — exactement la même identification qu'au chapitre 8, inchangée par l'ajout d'Archimède, puisque seul le frottement dépend de $v_G$. Le terme constant, lui, absorbe désormais *deux* contributions — le poids et Archimède — plutôt qu'une seule ($A=g$ au chapitre 8) : c'est précisément là que la poussée d'Archimède change le résultat par rapport au cours.
+          On suit la méthode du chapitre 8 — bilan, deuxième loi, projection — avec le bilan à **trois** forces que le chapitre 8 établit en toute généralité. Ici l'énoncé précise que $\vec F_a$ n'est *pas* négligeable, donc on l'ajoute comme troisième force, constante, dirigée vers le haut (donc opposée au sens de l'axe $Oy$, orienté vers le bas comme au chapitre 8). On projette la deuxième loi sur cet axe, on divise par $m$, puis on regroupe : le terme en $v_G$ donne $1/\tau$ — exactement la même identification qu'au chapitre 8, inchangée par l'ajout d'Archimède, puisque seul le frottement dépend de $v_G$. Le terme constant, lui, absorbe désormais *deux* contributions — le poids et Archimède — plutôt qu'une seule ($A=g$ au chapitre 8) : c'est précisément là que la poussée d'Archimède change le résultat par rapport au cours.
         steps:
           - math: '\vec P + \vec f + \vec F_a = m\vec a'
-            note: "Deuxième loi de Newton : trois forces cette fois (le chapitre 8 du cours n'en compte que deux)."
+            note: "Deuxième loi de Newton : le bilan à trois forces du chapitre 8, poussée d'Archimède comprise."
           - math: 'm\frac{dv_G}{dt} = mg - k\,v_G - \rho V g'
             note: "Projection sur (O, j) oriente vers le bas : poids +mg, frottement -k v_G, Archimede -rho V g (elle pointe vers le haut, contre le sens de l'axe)."
           - math: '\frac{dv_G}{dt} = \left(g - \frac{\rho V g}{m}\right) - \frac{k}{m}\,v_G'
@@ -476,7 +494,7 @@ entries:
 
       **Figure 1 (schéma).** Axe vertical $(O, \vec{j})$ orienté vers le bas ; la bille (centre $G$) tombe dans le liquide visqueux le long d'une règle graduée ; ordonnée $y$ croissante vers le bas.
 
-      **Figure 2 (courbe).** $v\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$ ; courbe croissante depuis $0$ vers un palier (vitesse limite) au voisinage de $v_\ell \approx 1{,}5\ \text{m.s}^{-1}$ ; ordonnées graduées $0{,}3,\ 0{,}6,\ 0{,}9,\ 1{,}2,\ 1{,}5$ ; abscisses graduées $0{,}15,\ 0{,}3,\ 0{,}45,\ 0{,}6$.
+      **Figure 2 (courbe).** $v\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$ ; courbe croissante depuis $0$ vers un palier (vitesse limite) ; ordonnées graduées $0{,}3,\ 0{,}6,\ 0{,}9,\ 1{,}2,\ 1{,}5$ ; abscisses graduées $0{,}15,\ 0{,}3,\ 0{,}45,\ 0{,}6$.
 
       **Tableau de mesures (pour la méthode d'Euler, pas $\Delta t = 0{,}015\ \text{s}$).**
 
@@ -579,7 +597,7 @@ entries:
         confirme que c'est bien l'énoncé, et non la lecture de l'image, qui
         porte cette incohérence ; les deux (texte et description de la
         photo) sont transcrits fidèlement, sans correction de l'énoncé.
-        SCOPE NOTE (voir l'en-tête du fichier) : la question 3 exige de
+        la question 3 exige de
         décomposer la durée totale du vol en segments et de cumuler des
         distances par des méthodes différentes selon le segment (rung 1
         pour la phase 1, rung 7 pour le régime permanent de la phase 2) —
@@ -599,7 +617,7 @@ entries:
 
       **1) Phase 1 : parachute fermé.** Le parachutiste se laisse tomber de l'hélicoptère sans vitesse initiale à un instant choisi comme origine des dates $t = 0$. La chute se fait durant cette phase avec le parachute fermé. On modélise l'évolution de la vitesse du centre d'inertie G du système (S) durant cette phase par la courbe de la figure 2.
 
-      **Figure 2 (courbe, phase 1).** $v\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$, sur papier quadrillé. Droite croissante passant par l'origine ; elle passe par $(1\ \text{s};10\ \text{m.s}^{-1})$, $(2\ \text{s};20\ \text{m.s}^{-1})$ et $(3\ \text{s};30\ \text{m.s}^{-1})$ : son coefficient directeur vaut $10\ \text{m.s}^{-2}$.
+      **Figure 2 (courbe, phase 1).** $v\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$, sur papier quadrillé. Droite croissante passant par l'origine ; elle passe par $(1\ \text{s};10\ \text{m.s}^{-1})$, $(2\ \text{s};20\ \text{m.s}^{-1})$ et $(3\ \text{s};30\ \text{m.s}^{-1})$.
 
       **2) Phase 2 : parachute ouvert.** Le parachutiste ouvre son parachute après une durée $\Delta t_1 = 4\ \text{s}$ depuis le début de sa chute. On choisit l'instant d'ouverture du parachute comme nouvelle origine des dates pour cette phase. Durant cette phase, le système est soumis à son poids et aux frottements de l'air modélisés par une force de contact $\vec{F} = -\alpha.v^2.\vec{k}$ avec $v$ la vitesse de G et $\alpha$ une constante positive. On modélise l'évolution de la vitesse de G durant cette phase par la courbe de la figure 3.
 
@@ -719,7 +737,7 @@ entries:
         énergétique indépendant : V_0² − V_E² = 2g(y_E − y_A) donne
         y_E − y_A = 0,30 m, exactement ce que rend le calcul direct
         6 t_E − 5 t_E², et cohérent avec la figure 1 où E est au-dessus de
-        C). SCOPE NOTE (voir l'en-tête du fichier) : la question 4 demande
+        C). la question 4 demande
         de RECOMPOSER la norme de la vitesse à une date intermédiaire du
         vol — pontée au point d'usage dans le raisonnement de la question.
     intro: |-
@@ -911,7 +929,7 @@ entries:
         (docs/sujets/pc/chute-mouvements-plans.md, statut « vérifié »).
         Physique re-dérivée et auto-cohérente : k = m/τ = 0,1 kg/s,
         ρ_r = ρ_a(1 − V_ℓ/(gτ)) = 936 kg/m³ (huile de ricin ≈ 960 kg/m³ en
-        table). SCOPE NOTE (voir l'en-tête du fichier) : la question 2 exige
+        table). la question 2 exige
         d'inclure la poussée d'Archimède comme troisième force ET
         d'exprimer le volume de la bille via sa propre masse volumique
         (V = m/ρ_a) pour la substituer dans F_a — un pas supplémentaire par
@@ -938,7 +956,7 @@ entries:
 
       **Figure 1 (schéma).** Une éprouvette verticale sans graduations. L'axe vertical est tracé à gauche de l'éprouvette, à l'extérieur. En haut, une ligne en pointillés horizontale part de la marque $O$ portée sur cet axe et traverse l'éprouvette (elle figure la surface du liquide) ; juste en dessous, la flèche $\vec{k}$ orientée vers le bas. Dans l'éprouvette, un petit cercle étiqueté $G$ est dessiné un peu au-dessous de cette ligne (la bille est figurée déjà immergée), le reste de l'éprouvette étant grisé (liquide). En bas, l'axe se poursuit et se termine par une pointe de flèche orientée vers le bas, étiquetée $z$.
 
-      **Figure 2 (courbe).** $v\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$, sur quadrillage à double graduation. Axe des ordonnées chiffré $0{,}2,\ 0{,}4,\ 0{,}6,\ 0{,}8$ ; axe des abscisses chiffré $0{,}1,\ 0{,}2,\ 0{,}3$ (traits majeurs tous les $0{,}1\ \text{s}$ et $0{,}2\ \text{m.s}^{-1}$ ; le cadre s'étend en réalité jusqu'à $t=1{,}0\ \text{s}$ et $v=1{,}0\ \text{m.s}^{-1}$, mais les traits majeurs au-delà de $0{,}3\ \text{s}$ et $0{,}8\ \text{m.s}^{-1}$ ne sont pas chiffrés). Courbe croissante depuis l'origine, concave, tendant asymptotiquement vers un palier mesuré à $V_\ell = 0{,}880\ \text{m.s}^{-1}$ (deux traits fins au-dessus du repère $0{,}8$). Une droite en pointillés $(T)$, tangente à la courbe à l'origine, coupe le palier à $t = 0{,}100\ \text{s}$, d'où $\tau = 0{,}100\ \text{s}$. Deux zones sont annotées directement sur le graphe, séparées par un trait vertical en pointillés situé exactement à $t = 0{,}50\ \text{s}$ (soit $5\tau$) : « zone1 » sur la portion courbée qui précède, « zone2 » sur le palier qui suit.
+      **Figure 2 (courbe).** $v\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$, sur quadrillage à double graduation. Axe des ordonnées chiffré $0{,}2,\ 0{,}4,\ 0{,}6,\ 0{,}8$ ; axe des abscisses chiffré $0{,}1,\ 0{,}2,\ 0{,}3$ (traits majeurs tous les $0{,}1\ \text{s}$ et $0{,}2\ \text{m.s}^{-1}$ ; le cadre s'étend en réalité jusqu'à $t=1{,}0\ \text{s}$ et $v=1{,}0\ \text{m.s}^{-1}$, mais les traits majeurs au-delà de $0{,}3\ \text{s}$ et $0{,}8\ \text{m.s}^{-1}$ ne sont pas chiffrés). Courbe croissante depuis l'origine, concave, tendant asymptotiquement vers un palier mesuré à $V_\ell = 0{,}880\ \text{m.s}^{-1}$ (deux traits fins au-dessus du repère $0{,}8$). Une droite en pointillés $(T)$, tangente à la courbe à l'origine, coupe le palier à $t = 0{,}100\ \text{s}$. Deux zones sont annotées directement sur le graphe, séparées par un trait vertical en pointillés situé exactement à $t = 0{,}50\ \text{s}$ : « zone1 » sur la portion courbée qui précède, « zone2 » sur le palier qui suit.
     questions:
       - id: q1
         part: "La figure 2 présente deux zones — identifier les régimes"
@@ -952,10 +970,10 @@ entries:
         stem: |-
           **(0,75 pt)** Par application de la deuxième loi de Newton, montrer que l'équation différentielle du mouvement de $G$ s'écrit ainsi : $\dfrac{dv}{dt} + \dfrac{1}{\tau}.v = g\!\left(1 - \dfrac{\rho_r}{\rho_a}\right)$ où $\tau$ est le temps caractéristique du mouvement qu'on exprimera en fonction de $m$ et $k$.
         reasoning: |-
-          On suit la méthode du chapitre 8 — bilan, deuxième loi, projection — avec un bilan à **trois** forces plutôt que deux, exactement le pont déjà fait pour bk-2018-n-x4 : le chapitre 8 ne traite explicitement que poids + frottement, jamais Archimède. Mais il y a ici un pas de plus qu'en 2018 : l'énoncé donne la masse volumique $\rho_a$ **de la bille elle-même**, pas celle du liquide — donc $F_a=\rho_r V g$ contient encore une inconnue, $V$, qu'aucune donnée ne fournit directement. On la fait disparaître en revenant à la définition de la masse volumique de la bille, $m=\rho_a V$ (une relation de base, hors mécanique), qui donne $V=m/\rho_a$. Une fois cette substitution faite, la suite est identique au chapitre 8 : projeter, diviser par $m$, identifier le coefficient de $v$ à $1/\tau$ (inchangé, puisque seul le frottement dépend de $v$) et regrouper les deux termes constants (poids et Archimède) de l'autre côté.
+          On suit la méthode du chapitre 8 — bilan, deuxième loi, projection — avec le bilan à **trois** forces du chapitre 8, poussée d'Archimède comprise. Il y a ici un pas de plus : l'énoncé donne la masse volumique $\rho_a$ **de la bille elle-même**, pas celle du liquide — donc $F_a=\rho_r V g$ contient encore une inconnue, $V$, qu'aucune donnée ne fournit directement. On la fait disparaître en revenant à la définition de la masse volumique de la bille, $m=\rho_a V$ (une relation de base, hors mécanique), qui donne $V=m/\rho_a$. Une fois cette substitution faite, la suite est identique au chapitre 8 : projeter, diviser par $m$, identifier le coefficient de $v$ à $1/\tau$ (inchangé, puisque seul le frottement dépend de $v$) et regrouper les deux termes constants (poids et Archimède) de l'autre côté.
         steps:
           - math: 'm\vec a = \vec P + \vec f + \vec F_a'
-            note: "Deuxième loi de Newton : trois forces (poids, frottement, poussée d'Archimede), même structure qu'au chapitre 8 plus Archimede (comme bk-2018-n-x4 q1)."
+            note: "Deuxième loi de Newton : les trois forces du chapitre 8 — poids, frottement, poussee d'Archimede."
           - math: 'm\frac{dv}{dt} = mg - k\,v - \rho_r V g'
             note: "Projection sur (O,k) oriente vers le bas : poids +mg, frottement -kv, Archimede -rho_r V g (elle pointe vers le haut)."
           - math: 'm = \rho_a V \implies V = \frac{m}{\rho_a}'
@@ -973,7 +991,7 @@ entries:
 
           $$\tau \approx 0{,}100\ \text{s}$$
 
-          Une fois $\tau$ lu, $k$ s'obtient en inversant l'identification $\tau=m/k$ de la question 2 (aucune nouvelle lecture graphique nécessaire) : c'est le même geste qu'à la question 3 de bk-2018-n-x4.
+          Une fois $\tau$ lu, $k$ s'obtient en inversant l'identification $\tau=m/k$ de la question 2 (aucune nouvelle lecture graphique nécessaire) : c'est le même geste qu'au sujet 2018.
         steps:
           - math: 'k = \frac{m}{\tau} = \frac{0{,}010}{0{,}100}'
             note: "On inverse tau = m/k (identification de la question 2), avec m converti en kg (10 g = 0,010 kg) et tau lu au graphe."
@@ -1132,7 +1150,7 @@ entries:
         $|v_\ell|=g\tau\approx 6{,}7\ \text{m.s}^{-1}$ ; Euler :
         $a_{i-1}=-g-v_{i-1}/\tau=5 \Rightarrow v_{i-1}=-10\ \text{m.s}^{-1}$,
         d'où $v_z(t_i)=-10+5\times0{,}066\approx -9{,}67\ \text{m.s}^{-1}$.
-        SCOPE NOTE (voir l'en-tête du fichier) : la question 2-3 (méthode
+        la question 2-3 (méthode
         d'Euler) donne l'accélération $a_{i-1}$ et demande la vitesse
         suivante — il faut donc d'abord inverser l'équation différentielle
         de la question 2-1 pour retrouver $v_{i-1}$ avant d'appliquer la
@@ -1477,21 +1495,21 @@ entries:
 
       **Figure 1 (schéma).** Le schéma occupe la marge droite de la page. À gauche du schéma, une colonne verticale grisée (parois en traits noirs, fond fermé) figure le liquide $(L)$ ; un disque noir plein y représente la bille, étiquetée « (S) » à droite de la colonne, à la hauteur de la bille. À droite de la colonne, un axe vertical orienté vers le bas porte, en haut, l'origine $O$ puis le vecteur $\vec{k}$ (courte flèche pleine orientée vers le bas) juste en dessous ; l'axe se termine en bas par une pointe de flèche étiquetée « z ». Une ligne horizontale en pointillés relie $O$ (sur l'axe) au haut de la colonne de liquide, marquant le niveau où $z = 0$ (position initiale de $G$).
 
-      **Figure 2 (courbe).** $v_z\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$. Axe des ordonnées : traits principaux chiffrés $0{,}2$ et $0{,}4$, origine $0$ — 1 division principale $= 0{,}2\ \text{m.s}^{-1}$, avec un trait bleu à chaque demi-division ($0{,}1$) ; le cadre compte 4 divisions, soit $0{,}8\ \text{m.s}^{-1}$ de haut. Axe des abscisses : traits principaux chiffrés $0{,}1$ et $0{,}2$, origine $0$ — 1 division $= 0{,}1\ \text{s}$, même sous-quadrillage bleu à la demi-division ; le cadre compte 7 divisions, soit $0{,}7\ \text{s}$ de large. Courbe croissante et concave partant de l'origine $(0\,;\,0)$, tendant asymptotiquement vers un palier horizontal qui vient se coucher exactement sur le trait bleu de $v_\ell = 0{,}70\ \text{m.s}^{-1}$ (3,5 divisions au-dessus de l'axe) et le suit jusqu'au bord droit ; le palier est pratiquement atteint dès $t \simeq 0{,}4\ \text{s}$. La droite $(T)$, tracée en pointillés et étiquetée « (T) » à sa gauche, est tangente à la courbe à l'origine : elle part de $(0\,;\,0)$ et coupe l'asymptote exactement au repère $t = 0{,}1\ \text{s}$ — d'où $\tau = 0{,}1000\ \text{s}$.
+      **Figure 2 (courbe).** $v_z\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$. Axe des ordonnées : traits principaux chiffrés $0{,}2$ et $0{,}4$, origine $0$ — 1 division principale $= 0{,}2\ \text{m.s}^{-1}$, avec un trait bleu à chaque demi-division ($0{,}1$) ; le cadre compte 4 divisions, soit $0{,}8\ \text{m.s}^{-1}$ de haut. Axe des abscisses : traits principaux chiffrés $0{,}1$ et $0{,}2$, origine $0$ — 1 division $= 0{,}1\ \text{s}$, même sous-quadrillage bleu à la demi-division ; le cadre compte 7 divisions, soit $0{,}7\ \text{s}$ de large. Courbe croissante et concave partant de l'origine $(0\,;\,0)$, tendant asymptotiquement vers un palier horizontal qui vient se coucher exactement sur le trait bleu de $v_\ell = 0{,}70\ \text{m.s}^{-1}$ (3,5 divisions au-dessus de l'axe) et le suit jusqu'au bord droit ; le palier est pratiquement atteint dès $t \simeq 0{,}4\ \text{s}$. La droite $(T)$, tracée en pointillés et étiquetée « (T) » à sa gauche, est tangente à la courbe à l'origine : elle part de $(0\,;\,0)$ et coupe l'asymptote exactement au repère $t = 0{,}1\ \text{s}$.
     questions:
       - id: q1
         part: "Établir le modèle"
         stem: |-
           **(0,75 pt)** En appliquant la deuxième loi de Newton, montrer que la vitesse $v_z(t)$ de $G$ obéit à l'équation différentielle : $\dfrac{dv_z}{dt} + \dfrac{1}{\tau}v_z = g\left(1-\dfrac{\rho_L}{\rho_B}\right)$ avec $\tau$ le temps caractéristique du mouvement de $(S)$.
         reasoning: |-
-          Même situation que bk-2022-n-x4 q2 : bilan à trois forces (poids, frottement, Archimède — le chapitre 8 n'en traite que deux), et même pas supplémentaire, puisque la masse volumique donnée, $\rho_B$, est celle de la bille et non celle du liquide. On revient à la définition $m_B=\rho_B V_B$ pour exprimer $V_B=m_B/\rho_B$, on substitue dans le terme d'Archimède, puis on suit le chapitre 8 : projeter, diviser par $m_B$, identifier.
+          Bilan à trois forces — poids, frottement, Archimède — comme au chapitre 8, et le même pas supplémentaire qu'au sujet 2022 : puisque la masse volumique donnée, $\rho_B$, est celle de la bille et non celle du liquide. On revient à la définition $m_B=\rho_B V_B$ pour exprimer $V_B=m_B/\rho_B$, on substitue dans le terme d'Archimède, puis on suit le chapitre 8 : projeter, diviser par $m_B$, identifier.
         steps:
           - math: 'm_B\vec a = \vec P + \vec f + \vec F'
-            note: "Deuxième loi : trois forces (poids, frottement, poussée d'Archimede), comme au chapitre 8 plus Archimede (bk-2018-n-x4, bk-2022-n-x4)."
+            note: "Deuxième loi : les trois forces du chapitre 8 — poids, frottement, poussee d'Archimede."
           - math: 'm_B\frac{dv_z}{dt} = m_B g - \mu\,v_z - \rho_L V_B g'
             note: "Projection sur (O,k) oriente vers le bas : poids +m_B g, frottement -mu v_z, Archimede -rho_L V_B g."
           - math: 'm_B = \rho_B V_B \implies V_B = \frac{m_B}{\rho_B}'
-            note: "La bille est homogène : définition de sa propre masse volumique rho_B -- même pont que bk-2022-n-x4 q2, ici avec rho_B au lieu de rho_a."
+            note: "La bille est homogène : définition de sa propre masse volumique rho_B -- même pont qu'au sujet 2022, ici avec rho_B au lieu de rho_a."
           - math: 'm_B\frac{dv_z}{dt} = m_B g\left(1-\frac{\rho_L}{\rho_B}\right) - \mu\,v_z'
             note: "On substitue V_B = m_B/rho_B dans le terme d'Archimede et on regroupe les termes constants."
           - math: '\boxed{\frac{dv_z}{dt} + \frac{1}{\tau}v_z = g\left(1-\frac{\rho_L}{\rho_B}\right)} \qquad \text{avec} \qquad \tau=\frac{m_B}{\mu}'
@@ -1515,7 +1533,7 @@ entries:
         stem: |-
           **(0,5 pt)** Par exploitation de la courbe de la figure 2, déterminer la valeur de l'accélération $a_0$ du mouvement de $G$ à l'instant $t_0 = 0$.
         reasoning: |-
-          À $t=0$, $v_z=0$ : le frottement (qui dépend de $v_z$) est nul, mais la poussée d'Archimède, elle, ne dépend pas de $v_z$ et ne s'annule jamais — donc $a_0$ vaut exactement le terme constant de l'équation différentielle, $g(1-\rho_L/\rho_B)$, qui est aussi, par le même geste qu'au chapitre 8 (annuler l'accélération en régime permanent), égal à $v_\ell/\tau$. On peut donc obtenir $a_0$ sans nouvelle lecture graphique, à partir des deux valeurs déjà lues — exactement la méthode déjà utilisée pour $A$ à la question 3 de bk-2018-n-x4.
+          À $t=0$, $v_z=0$ : le frottement (qui dépend de $v_z$) est nul, mais la poussée d'Archimède, elle, ne dépend pas de $v_z$ et ne s'annule jamais — donc $a_0$ vaut exactement le terme constant de l'équation différentielle, $g(1-\rho_L/\rho_B)$, qui est aussi, par le même geste qu'au chapitre 8 (annuler l'accélération en régime permanent), égal à $v_\ell/\tau$. On peut donc obtenir $a_0$ sans nouvelle lecture graphique, à partir des deux valeurs déjà lues — exactement la méthode déjà utilisée pour $A$ au sujet 2018.
         steps:
           - math: 'a_0 = \left.\frac{dv_z}{dt}\right|_{t=0} = g\left(1-\frac{\rho_L}{\rho_B}\right) = \frac{v_\ell}{\tau}'
             note: "A t=0, v_z=0 : seul le terme constant subsiste ; régime permanent (chapitre 8) donne aussi v_ell/tau pour ce même terme."
@@ -2012,7 +2030,7 @@ entries:
 
           La masse disparaît, comme toujours en chute libre.
 
-          **La projection, avec le repère de la figure 1.** L'axe $y$ est vertical **ascendant**, l'axe $x$ horizontal — c'est très exactement le repère du chapitre 3, pas celui, inversé, d'une autre entrée de cette banque (bk-2024-r-x5b). $\vec g$ pointe vers le bas, donc dans le sens **opposé** à $\vec j$ :
+          **La projection, avec le repère de la figure 1.** L'axe $y$ est vertical **ascendant**, l'axe $x$ horizontal — c'est très exactement le repère du chapitre 3, pas celui, inversé, d'un autre sujet de cette banque. $\vec g$ pointe vers le bas, donc dans le sens **opposé** à $\vec j$ :
 
           $$a_x = 0 \qquad a_y = -g = -10\ \text{m.s}^{-2}$$
 
@@ -2202,7 +2220,7 @@ entries:
       - Rayon de la bille : $r = 6{,}00.10^{-3}\ \text{m}$ ;
       - Masse de la bille : $m = 4{,}10.10^{-3}\ \text{kg}$.
 
-      **Figure 2 (courbe, mesurée au pixel sur l'image native extraite du PDF, jusqu'à 233 dpi).** $v_G\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$. Graduations noires en ordonnée : $0{,}2$, $0{,}4$, $0{,}6$, $0{,}8$, $1$, $1{,}2$, $1{,}4$ (bord du cadre à $1{,}6\ \text{m/s}$). Graduations noires en abscisse : $0$, $0{,}2$, $0{,}4$, $0{,}6$, $0{,}8$, $1$, $1{,}2$ (bord du cadre à $1{,}4\ \text{s}$). Courbe croissante, concave, partant de l'origine et plafonnant à $v_G \approx 1{,}50\ \text{m.s}^{-1}$, valeur atteinte vers $t \approx 1{,}25\ \text{s}$. Droite en tirets, tangente à la courbe à l'origine : elle coupe le niveau du palier $v_G = 1{,}50\ \text{m/s}$ à $t \approx 0{,}20\ \text{s}$.
+      **Figure 2 (courbe, mesurée au pixel sur l'image native extraite du PDF, jusqu'à 233 dpi).** $v_G\ (\text{m.s}^{-1})$ en fonction de $t\ (\text{s})$. Graduations noires en ordonnée : $0{,}2$, $0{,}4$, $0{,}6$, $0{,}8$, $1$, $1{,}2$, $1{,}4$ (bord du cadre à $1{,}6\ \text{m/s}$). Graduations noires en abscisse : $0$, $0{,}2$, $0{,}4$, $0{,}6$, $0{,}8$, $1$, $1{,}2$ (bord du cadre à $1{,}4\ \text{s}$). Courbe croissante, concave, partant de l'origine et plafonnant à un palier horizontal, valeur atteinte vers $t \approx 1{,}25\ \text{s}$. Droite en tirets, tangente à la courbe à l'origine : elle coupe le niveau du palier $v_G = 1{,}50\ \text{m/s}$ à $t \approx 0{,}20\ \text{s}$.
 
       **Tableau imprimé (pour la méthode d'Euler, pas $\Delta t = 0{,}033\ \text{s}$) :**
 
@@ -2425,7 +2443,7 @@ entries:
     intro: |-
       **Mouvement de G dans l'air (examen national, session normale 2010 — Mécanique, 2ᵉ partie, 2,00 points sur les 6,00 de l'exercice complet).**
 
-      *La 1ère partie de cet exercice — le mouvement sur le plan incliné AB — est traitée à part, sous la notion « Les lois de Newton » (entrée bk-2010-n-x4) ; elle réutilise sa valeur $V_B$. Cette partie-ci en est indépendante : $V_C$ est une DONNÉE, pas une valeur calculée depuis la partie 1.*
+      *La 1ère partie de cet exercice — le mouvement sur le plan incliné AB — est traitée à part, sous la notion « Les lois de Newton » ; elle réutilise sa valeur $V_B$. Cette partie-ci en est indépendante : $V_C$ est une DONNÉE, pas une valeur calculée depuis la partie 1.*
 
       Dans la suite de l'exercice, on étudiera le mouvement de $G$ dans le repère terrestre $\mathcal{R}(O, \vec{i}, \vec{j})$, supposé galiléen (figure 1).
 
@@ -2440,7 +2458,7 @@ entries:
         stem: |-
           **2-1-** (0,5 pt) Trouver, à un instant $t$, l'expression $v_x$ de la composante horizontale du vecteur vitesse en fonction de $m$, $V_C$, $f_1$ et $t$.
         reasoning: |-
-          Ce qu'on cherche et pourquoi ce geste. Le chapitre 3 de la leçon décompose un mouvement de projectile en deux axes indépendants, mais toujours SANS force horizontale ($a_x=0$ constant, parce que seul le poids agit). Ici, une force horizontale $\vec{f_1}=-f_1\vec i$ s'ajoute au poids : $a_x$ n'est donc plus nul, mais la MÉTHODE ne change pas — deuxième loi de Newton, projection sur $\vec i$, puis primitivation d'une accélération constante, exactement le geste des chapitre 2 et 2.
+          Ce qu'on cherche et pourquoi ce geste. Le chapitre 3 de la leçon décompose un mouvement de projectile en deux axes indépendants, mais toujours SANS force horizontale ($a_x=0$ constant, parce que seul le poids agit). Ici, une force horizontale $\vec{f_1}=-f_1\vec i$ s'ajoute au poids : $a_x$ n'est donc plus nul, mais la MÉTHODE ne change pas — deuxième loi de Newton, projection sur $\vec i$, puis primitivation d'une accélération constante, exactement le geste des chapitres 2 et 3.
 
           **Le bilan.** Deux forces : le poids $\vec P$ (vertical, aucune composante selon $\vec i$) et $\vec{f_1}=-f_1\vec i$ (horizontal, s'oppose au mouvement puisque $(S)$ avance selon $+\vec i$).
 
@@ -2542,11 +2560,11 @@ entries:
     intro: |-
       **Mouvement vertical de G dans l'eau (examen national, session normale 2010 — Mécanique, 3ᵉ partie, 2,50 points sur les 6,00 de l'exercice complet).**
 
-      *Les deux parties précédentes de cet exercice — le plan incliné puis le mouvement dans l'air — sont traitées à part, sous « Les lois de Newton » (bk-2010-n-x4) et sous « Chute libre et mouvements plans » (bk-2010-n-x4b ci-dessus). Cette partie-ci en est indépendante : elle démarre à l'entrée de $(S)$ dans l'eau, avec une nouvelle origine des temps.*
+      *Les deux parties précédentes de cet exercice — le plan incliné puis le mouvement dans l'air — sont traitées à part, sous « Les lois de Newton » et sous « Chute libre et mouvements plans » (la carte précédente du même sujet). Cette partie-ci en est indépendante : elle démarre à l'entrée de $(S)$ dans l'eau, avec une nouvelle origine des temps.*
 
       **3- Étude du mouvement vertical de G dans l'eau.** Le solide $(S)$ poursuit son mouvement dans l'eau, avec une vitesse verticale $\vec{V}$. Il subit en plus de son poids à *(« à » en trop tel qu'imprimé sur le sujet officiel — coquille sans conséquence)* :
 
-      - une force de frottement fluide modélisée dans le système international d'unités par : $\vec{f} = 140.V^2.\vec{j}$ *(signe lu directement au rendu vectoriel 600 dpi — voir la note éditoriale en tête de ce bloc)* ;
+      - une force de frottement fluide modélisée dans le système international d'unités par : $\vec{f} = 140.V^2.\vec{j}$ ;
       - la poussée d'Archimède $\vec{F_A}$, d'intensité $F_A = 637\ \text{N}$.
 
       On considère l'instant d'entrée de $(S)$ dans l'eau comme nouvelle origine des temps. **Données :** $m = 70\ \text{Kg}$, $g = 9{,}8\ \text{m.s}^{-2}$. **Rappel du repère (figure 1) :** en $O$, $\vec j$ pointe vers le HAUT — c'est cette orientation qui fixe tous les signes ci-dessous, exactement comme le chapitre 8 de la leçon le rappelle : « le signe qu'on trouve dépend toujours de l'axe choisi, jamais d'une règle à mémoriser ».
@@ -2568,7 +2586,7 @@ entries:
         reasoning: |-
           Ce qu'on cherche et pourquoi ce geste. Exactement le chapitre 8 de la leçon — bilan à TROIS forces (poids, frottement, poussée d'Archimède), deuxième loi, projection — mais avec une différence de convention à noter tout de suite : le chapitre 8 choisit un axe orienté VERS LE BAS pour simplifier l'écriture ; ici, le repère de la figure 1 impose $\vec j$ VERS LE HAUT. Le chapitre 8 le dit lui-même : « le signe qu'on trouve dépend toujours de l'axe choisi » — on refait donc la projection avec CET axe-ci, sans réutiliser une formule toute faite.
 
-          **Le bilan**, avec $\vec j$ vers le haut : le poids $\vec P$ pointe vers le bas, donc sa composante est $-mg$ ; la poussée d'Archimède $\vec F_A$ pointe vers le haut (elle s'oppose toujours au poids), composante $+F_A$ ; le frottement $\vec f = 140V^2\vec j$ est DONNÉ selon $+\vec j$ (signe établi par lecture directe, voir la note éditoriale en tête de ce bloc) — cohérent avec le sens physique, puisque $(S)$ descend ($V<0$) et que le frottement doit s'opposer à cette descente, donc pointer vers le haut.
+          **Le bilan**, avec $\vec j$ vers le haut : le poids $\vec P$ pointe vers le bas, donc sa composante est $-mg$ ; la poussée d'Archimède $\vec F_A$ pointe vers le haut (elle s'oppose toujours au poids), composante $+F_A$ ; le frottement $\vec f = 140V^2\vec j$ est DONNÉ selon $+\vec j$ — cohérent avec le sens physique, puisque $(S)$ descend ($V<0$) et que le frottement doit s'opposer à cette descente, donc pointer vers le haut.
 
           **Projection sur $\vec j$ :**
 
@@ -2671,7 +2689,7 @@ entries:
     intro: |-
       **Étude du mouvement d'une balle de golf dans le champ de pesanteur uniforme (examen national, session normale 2015, Exercice 4 — Première partie, 3,00 points sur les 05,5 de l'exercice complet).**
 
-      *La Deuxième partie de cet exercice — l'étude d'un oscillateur horizontal soumis à des frottements fluides — est indépendante de celle-ci et vit sous la notion « Systèmes oscillants » (entrée bk-2015-n-x4b).*
+      *La Deuxième partie de cet exercice — l'étude d'un oscillateur horizontal soumis à des frottements fluides — est indépendante de celle-ci et vit sous la notion « Systèmes oscillants ».*
 
       Un circuit dans le terrain de golf est constitué de trois parties :
       - Partie horizontale $OA$ de longueur $OA = 2{,}2\ \text{m}$ ;
@@ -2824,7 +2842,7 @@ entries:
     intro: |-
       **Mouvement d'un skieur dans le champ de pesanteur uniforme (examen national, session normale 2011 — Mécanique, situation 3, 2,25 points sur les 5,50 de l'exercice complet).**
 
-      *Les deux premières situations de cet exercice — le plan incliné $A'B'$ puis le plan horizontal $B'C'$ avec frottement — sont traitées à part, sous la notion « Les lois de Newton » (entrée bk-2011-n-x4). Cette situation-ci est autoportante : l'angle $\theta$ et les coordonnées du point de chute $P$ suffisent — $v_D$ est l'inconnue à déterminer, pas une valeur héritée de ce qui précède.*
+      *Les deux premières situations de cet exercice — le plan incliné $A'B'$ puis le plan horizontal $B'C'$ avec frottement — sont traitées à part, sous la notion « Les lois de Newton ». Cette situation-ci est autoportante : l'angle $\theta$ et les coordonnées du point de chute $P$ suffisent — $v_D$ est l'inconnue à déterminer, pas une valeur héritée de ce qui précède.*
 
       Le but de cet exercice est d'étudier le mouvement d'un sportif, pratiquant le ski sur des trajectoires de glace diverses. La dernière partie du circuit, $C'D'$, est circulaire ; la trajectoire de $G$ remonte le long de cet arc jusqu'au point $D$, où $G$ quitte la piste. On modélise le sportif et ses accessoires par un solide $(S)$ de masse $m = 65\ \text{Kg}$ *(« Kg » tel qu'imprimé — majuscule au kilogramme, sans incidence)*, et de centre d'inertie $G$. On prendra : $g = 10\ \text{m.s}^{-2}$.
 
@@ -2856,7 +2874,7 @@ entries:
         stem: |-
           **3-2-** (1 pt) Déterminer $v_D$, la vitesse de $G$ au moment où il quitte le point $D$, sachant que les coordonnées de $G$ à l'arrivée en $P$ sont : $x_G = 15\ \text{m}$ et $y_G = -\ 5\ \text{m}$. *(« - 5 m », avec un espace entre le signe moins et le nombre, tel qu'imprimé — défaut typographique du sujet officiel, sans incidence.)*
         reasoning: |-
-          SCOPE NOTE (voir l'en-tête du fichier) : résoudre l'équation de la trajectoire EN LA VITESSE INITIALE, depuis un point de passage connu, n'est modélisé pas à pas nulle part dans la leçon — le geste est refait ici entièrement.
+          résoudre l'équation de la trajectoire EN LA VITESSE INITIALE, depuis un point de passage connu, n'est modélisé pas à pas nulle part dans la leçon — le geste est refait ici entièrement.
 
           Ce qu'on cherche et pourquoi ce geste. $P$ est un point de la trajectoire : ses coordonnées $(x_P = 15\ \text{m}\,;\,y_P = -5\ \text{m})$ VÉRIFIENT l'équation de la question 3-1, dans laquelle $v_D$ est la seule inconnue. On substitue, puis on isole $v_D^2$ :
 

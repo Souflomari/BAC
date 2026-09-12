@@ -138,7 +138,6 @@ Trié par nombre de mentions.
 | 4 | `bk-2023-n-x3` | `pc/rlc-serie` | SPC 2023 normale | 1.5 | oui | **non** |
 | 4 | `bk-2024-n-x1` | `pc/reactions-acido-basiques` | SPC 2024 normale | 4.75 | oui | **non** |
 | 4 | `bk-2024-n-x4` | `pc/rlc-serie` | SPC 2024 normale | 2 | oui | **non** |
-| 3 | `bk-2010-n-x4c` | `pc/chute-mouvements-plans` | SPC 2010 normale | 2.5 | oui | oui |
 | 3 | `bk-2012-r-x3b` | `pc/ondes-em-modulation` | SPC 2012 rattrapage | 2 | oui | oui |
 | 3 | `bk-2017-n-x1c` | `pc/esterification-hydrolyse` | SPC 2017 normale | 2.75 | oui | oui |
 | 3 | `bk-2017-n-x2` | `pc/ondes-mecaniques-periodiques` | SPC 2017 normale | 2.5 | oui | oui |
@@ -147,6 +146,7 @@ Trié par nombre de mentions.
 | 3 | `bk-2024-n-x1` | `pc/rotation-axe-fixe` | SPC 2024 normale | 2.25 | oui | **non** |
 | 3 | `bk-2025-n-x4b` | `pc/systemes-oscillants` | SPC 2025 normale | 2.5 | oui | **non** |
 | 2 | `bk-2010-n-x4` | `pc/lois-de-newton` | SPC 2010 normale | 1.5 | oui | oui |
+| 2 | `bk-2010-n-x4c` | `pc/chute-mouvements-plans` | SPC 2010 normale | 2.5 | oui | oui |
 | 2 | `bk-2011-n-x1b` | `pc/electrolyse` | SPC 2011 normale | 2.5 | oui | oui |
 | 2 | `bk-2011-n-x4` | `pc/lois-de-newton` | SPC 2011 normale | 3.25 | oui | oui |
 | 2 | `bk-2017-n-x4` | `pc/lois-de-newton` | SPC 2017 normale | 3.5 | oui | oui |

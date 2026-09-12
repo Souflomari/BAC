@@ -283,7 +283,7 @@ Regarde d'abord la flèche : $f = \dfrac{v_0^2\sin^2\alpha}{2g}$ augmente avec $
 
 La portée, elle, se comporte différemment, à cause du terme $\sin(2\alpha)$. Regarde ce terme aux deux extrêmes : si $\alpha \to 0^\circ$ (tir presque à plat), $\sin(2\alpha) \to 0$ — la portée est presque nulle, le tir ne quitte quasiment pas le sol. Si $\alpha \to 90^\circ$ (tir presque vertical), $2\alpha \to 180^\circ$, donc $\sin(2\alpha) \to 0$ aussi — la portée est encore presque nulle, cette fois parce que le tir monte tout droit et retombe quasiment sur place. Entre les deux, $\sin(2\alpha)$ atteint sa valeur maximale, $1$, quand $2\alpha = 90^\circ$, c'est-à-dire $\alpha = 45^\circ$.
 
-**La portée est donc maximale pour un angle de lancement de $45^\circ$, à vitesse initiale fixée.** Ni le tir le plus plat, ni le tir le plus vertical, ne donnent la plus grande distance — c'est un compromis entre les deux qui l'emporte.
+**La portée est donc maximale pour un angle de lancement de $45^\circ$ — à vitesse initiale fixée, et à condition que l'arrivée se fasse au même niveau que le départ.** Cette seconde condition compte autant que la première : dès qu'on lance d'une hauteur, ou qu'on retombe sur un plan incliné, l'angle optimal n'est plus $45^\circ$. Ni le tir le plus plat, ni le tir le plus vertical, ne donnent la plus grande distance — c'est un compromis entre les deux qui l'emporte.
 
 ### La symétrie surprenante : deux angles complémentaires, la même portée
 
@@ -491,7 +491,7 @@ On s'arrête là : la loi complète $v(t)$ n'est **pas** demandée, et on ne la 
 
 ### Une troisième force, quand le fluide est dense : la poussée d'Archimède
 
-Le bilan ci-dessus n'a que deux forces, le poids et le frottement. C'est légitime dans l'**air**, où la poussée d'Archimède est négligeable devant le poids. Ce ne l'est plus dès que le fluide est un **liquide** — et un sujet de bac qui fait tomber une bille dans de l'huile ou dans de l'eau ajoute presque toujours une troisième force.
+Le bilan ci-dessus n'a que deux forces, le poids et le frottement. C'est légitime dans l'**air**, où la poussée d'Archimède est négligeable devant le poids. Ce ne l'est plus dès que le fluide est un **liquide** — et un sujet de bac qui fait tomber une bille dans de l'huile ou dans de l'eau ajoute presque toujours une troisième force. *Presque* : l'exercice de synthèse de cette leçon même en est l'exception — la bille y tombe bien dans un liquide visqueux, mais l'énoncé écrit noir sur blanc « on néglige la poussée d'Archimède devant les autres forces », et ne donne ni masse volumique ni volume. C'est la règle à retenir : **c'est l'énoncé qui tranche.** S'il te donne $\rho$ ou $V$, la poussée est attendue dans ton bilan ; s'il te dit de la négliger, tu la négliges.
 
 **Ce qu'elle vaut.** Tout corps plongé dans un fluide subit, de la part de ce fluide, une force verticale dirigée **vers le haut**, de norme égale au poids du fluide déplacé :
 
@@ -606,7 +606,7 @@ $$v^2 = \frac{GM}{r}$$
 
 $$v = \sqrt{\frac{GM}{r}}$$
 
-Regarde ce qui vient de se passer : la masse $m$ du satellite, présente des deux côtés de la première ligne, s'est **simplifiée**. La vitesse orbitale ne dépend **pas** de la masse du satellite : un satellite lourd et un satellite léger, sur la même orbite, ont exactement la même vitesse. Nouvel écho de ce que tu as vu aux chapitres 3 et 3 : la masse disparaissait déjà de la trajectoire d'un projectile en chute libre, pour la même raison de fond — la deuxième loi divise par $m$ des deux côtés dès que la force elle-même est proportionnelle à $m$.
+Regarde ce qui vient de se passer : la masse $m$ du satellite, présente des deux côtés de la première ligne, s'est **simplifiée**. La vitesse orbitale ne dépend **pas** de la masse du satellite : un satellite lourd et un satellite léger, sur la même orbite, ont exactement la même vitesse. Nouvel écho de ce que tu as vu aux chapitres 3 et 4 : la masse disparaissait déjà de la trajectoire d'un projectile en chute libre, pour la même raison de fond — la deuxième loi divise par $m$ des deux côtés dès que la force elle-même est proportionnelle à $m$.
 
 Remarque enfin le sens de la dépendance en $r$ : plus l'orbite est **haute** (grand $r$), plus la vitesse orbitale est **faible**.
 
@@ -636,7 +636,7 @@ $$v = \sqrt{\frac{GM_T}{r}} = \sqrt{\frac{6{,}67\times 10^{-11}\times 5{,}97\tim
 
 $$v \approx \sqrt{5{,}85\times 10^7} \approx 7{,}65\times 10^3\ \text{m/s} \approx 7{,}65\ \text{km/s}$$
 
-Cette valeur, obtenue sans connaître la masse du satellite (elle a disparu de la formule, comme aux chapitres 3 et 3), est cohérente avec la vitesse orbitale réelle de la Station spatiale internationale, en orbite à peu près à cette altitude. Compare enfin cette force avec celle du chapitre 7 : les deux sont centripètes, les deux ne travaillent pas, les deux courbent une trajectoire sans jamais changer la norme de la vitesse — mais l'une est électromagnétique (Lorentz), l'autre gravitationnelle. Même méthode, deux natures de force différentes.
+Cette valeur, obtenue sans connaître la masse du satellite (elle a disparu de la formule, comme aux chapitres 3 et 4), est cohérente avec la vitesse orbitale réelle de la Station spatiale internationale, en orbite à peu près à cette altitude. Compare enfin cette force avec celle du chapitre 7 : les deux sont centripètes, les deux ne travaillent pas, les deux courbent une trajectoire sans jamais changer la norme de la vitesse — mais l'une est électromagnétique (Lorentz), l'autre gravitationnelle. Même méthode, deux natures de force différentes.
 
 ### La limite du cadre
 
