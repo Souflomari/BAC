@@ -113,11 +113,11 @@ exercises:
           Tout revient à reconnaître que le nombre $\dfrac{1}{2}a$ **est** ce facteur $e^{-i\pi/3}$. On écrit les deux sous forme algébrique et on constate qu'ils coïncident. C'est le pont entre forme exponentielle et forme algébrique : $a = 1 - i\sqrt{3}$ a pour module $2$ et pour argument $-\dfrac{\pi}{3}$, donc $\dfrac{1}{2}a$ a pour module $1$ et argument $-\dfrac{\pi}{3}$ — c'est-à-dire exactement $e^{-i\pi/3}$.
         steps:
           - math: 'z'' = e^{i\theta}\,z = e^{-i\pi/3}\,z'
-            note: "La rotation de centre O et d'angle θ = -π/3 : z prime = e^{iθ} z."
+            note: "La rotation de centre O et d'angle θ = -π/3 : z prime = $e^{iθ} z$."
           - math: 'e^{-i\pi/3} = \cos\!\left(-\dfrac{\pi}{3}\right) + i\sin\!\left(-\dfrac{\pi}{3}\right) = \dfrac{1}{2} - \dfrac{\sqrt{3}}{2}\,i'
             note: "Forme algébrique de l'exponentielle : cos(-π/3) = 1/2, sin(-π/3) = -√3/2."
           - math: '\dfrac{1}{2}\,a = \dfrac{1}{2}\,(1 - i\sqrt{3}) = \dfrac{1}{2} - \dfrac{\sqrt{3}}{2}\,i'
-            note: "Forme algébrique de (1/2)a : mêmes parties réelle et imaginaire que e^{-iπ/3}."
+            note: "Forme algébrique de (1/2)a : mêmes parties réelle et imaginaire que $e^{-iπ/3}$."
           - math: '\dfrac{1}{2}\,a = e^{-i\pi/3} \implies z'' = e^{-i\pi/3}\,z = \dfrac{1}{2}\,a\,z'
             note: "Les deux nombres coïncident : la rotation s'écrit bien z prime = (1/2) a z."
       - id: q4a
@@ -215,11 +215,11 @@ exercises:
           La rotation a ici pour angle $\dfrac{2\pi}{3}$ (et non $-\dfrac{\pi}{3}$). On montre que $\dfrac{1}{2}a = e^{i\,2\pi/3}$ en comparant les formes algébriques, sachant que $a = -1 + i\sqrt{3}$ a pour module $2$ et pour argument $\dfrac{2\pi}{3}$.
         steps:
           - math: 'z'' = e^{i\theta}\,z = e^{i\,2\pi/3}\,z'
-            note: "Rotation de centre O et d'angle 2π/3 : z prime = e^{iθ} z."
+            note: "Rotation de centre O et d'angle 2π/3 : z prime = $e^{iθ} z$."
           - math: 'e^{i\,2\pi/3} = \cos\!\left(\dfrac{2\pi}{3}\right) + i\sin\!\left(\dfrac{2\pi}{3}\right) = -\dfrac{1}{2} + \dfrac{\sqrt{3}}{2}\,i'
             note: "cos(2π/3) = -1/2, sin(2π/3) = √3/2."
           - math: '\dfrac{1}{2}\,a = \dfrac{1}{2}\,(-1 + i\sqrt{3}) = -\dfrac{1}{2} + \dfrac{\sqrt{3}}{2}\,i'
-            note: "Même forme algébrique que e^{i2π/3}."
+            note: "Même forme algébrique que $e^{i2π/3}$."
           - math: '\dfrac{1}{2}\,a = e^{i\,2\pi/3} \implies z'' = \dfrac{1}{2}\,a\,z'
             note: "Les deux nombres coïncident : z prime = (1/2) a z."
       - id: q4a

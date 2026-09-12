@@ -402,7 +402,7 @@ entries:
           - math: '0 < u_n \le \dfrac{1}{2} \implies 0 \le 2u_n \le 1 \implies 2 \le 3-2u_n'
             note: "Hypothèse de récurrence : le dénominateur reste au moins égal à 2, donc strictement positif."
           - math: 'u_{n+1} = \dfrac{u_n}{3-2u_n} > 0'
-            note: "Numérateur et dénominateur strictement positifs : u_{n+1} > 0."
+            note: "Numérateur et dénominateur strictement positifs : $u_{n+1} > 0$."
           - math: 'u_{n+1} \le \dfrac{1}{2} \iff u_n \le \dfrac{1}{2}(3-2u_n) \iff u_n \le \dfrac{3}{2}-u_n \iff u_n \le \dfrac{3}{4}'
             note: "On multiplie par le dénominateur positif (3-2u_n) puis on isole u_n."
           - math: 'u_n \le \dfrac{1}{2} < \dfrac{3}{4} \implies u_{n+1} \le \dfrac{1}{2}'
@@ -415,7 +415,7 @@ entries:
           Variante du quotient pour la monotonie (chapitre 5, utile ici car $(u_n)$ est strictement positive d'après la question 2) : plutôt que d'étudier le signe de $u_{n+1}-u_n$, on compare directement $\dfrac{u_{n+1}}{u_n}$ à $\dfrac{1}{2}$.
         steps:
           - math: 'u_n>0 \implies \dfrac{u_{n+1}}{u_n} = \dfrac{1}{3-2u_n}'
-            note: "On divise u_{n+1} par u_n, licite car u_n > 0 (question 2)."
+            note: "On divise $u_{n+1}$ par u_n, licite car u_n > 0 (question 2)."
           - math: '0<u_n\le\dfrac{1}{2} \implies 2\le 3-2u_n'
             note: "On réutilise le contrôle du dénominateur (question 2)."
           - math: '2\le 3-2u_n \implies \dfrac{1}{3-2u_n}\le\dfrac{1}{2}'
@@ -442,7 +442,7 @@ entries:
           - math: 'u_0 = \dfrac{1}{2} = \left(\dfrac{1}{2}\right)^{0+1}'
             note: "Initialisation : égalité au rang 0."
           - math: '0<u_n\le\left(\dfrac{1}{2}\right)^{n+1} \implies u_{n+1}\le\dfrac{1}{2}u_n\le\dfrac{1}{2}\left(\dfrac{1}{2}\right)^{n+1} = \left(\dfrac{1}{2}\right)^{n+2}'
-            note: "Hérédité : on réinjecte l'inégalité u_{n+1} <= (1/2)u_n (question 3a) dans l'hypothèse de récurrence."
+            note: "Hérédité : on réinjecte l'inégalité $u_{n+1} \\le (1/2)u_n$ (question 3a) dans l'hypothèse de récurrence."
           - math: '0 < u_n \le \left(\dfrac{1}{2}\right)^{n+1} \quad \text{pour tout } n \text{ de } \mathbb{N}'
             note: "Par récurrence, l'encadrement géométrique est établi."
           - math: '\left|\dfrac{1}{2}\right|<1 \implies \lim_{n\to+\infty}\left(\dfrac{1}{2}\right)^{n+1} = 0'
@@ -541,7 +541,7 @@ entries:
           - math: '\dfrac{6}{5}\le\dfrac{6}{1+u_n}\le 2 \implies 4-2\le 4-\dfrac{6}{1+u_n}\le 4-\dfrac{6}{5}'
             note: "On soustrait à 4 : l'encadrement s'inverse (fonction décroissante)."
           - math: '2\le u_{n+1}\le\dfrac{14}{5}\le 4'
-            note: "u_{n+1} est bien dans [2;4]. Par récurrence, 2 <= u_n <= 4 pour tout n."
+            note: "$u_{n+1}$ est bien dans [2;4]. Par récurrence, 2 <= u_n <= 4 pour tout n."
       - id: q2a
         part: "Le signe du pas, puis la monotonie"
         stem: |-
@@ -579,9 +579,9 @@ entries:
           Même geste qu'en bk-2020-n-x1 et bk-2021-n-x2 (SCOPE NOTE en tête de fichier) : on calcule $v_{n+1}$ en injectant la relation de récurrence de $(u_n)$, puis on fait réapparaître $v_n$ dans le résultat. On exprime séparément $2-u_{n+1}$ et $1-u_{n+1}$ (les deux blocs de la définition de $v_{n+1}$), chacun se simplifiant grâce à la forme $u_{n+1}=\dfrac{4u_n-2}{1+u_n}$.
         steps:
           - math: '2-u_{n+1} = 2-\dfrac{4u_n-2}{1+u_n} = \dfrac{2(1+u_n)-(4u_n-2)}{1+u_n} = \dfrac{4-2u_n}{1+u_n} = \dfrac{2(2-u_n)}{1+u_n}'
-            note: "On calcule 2 moins u_{n+1} en réduisant au même dénominateur."
+            note: "On calcule 2 moins $u_{n+1}$ en réduisant au même dénominateur."
           - math: '1-u_{n+1} = 1-\dfrac{4u_n-2}{1+u_n} = \dfrac{(1+u_n)-(4u_n-2)}{1+u_n} = \dfrac{3-3u_n}{1+u_n} = \dfrac{3(1-u_n)}{1+u_n}'
-            note: "Même démarche pour 1 moins u_{n+1}."
+            note: "Même démarche pour 1 moins $u_{n+1}$."
           - math: 'v_{n+1} = \dfrac{2-u_{n+1}}{1-u_{n+1}} = \dfrac{\frac{2(2-u_n)}{1+u_n}}{\frac{3(1-u_n)}{1+u_n}} = \dfrac{2(2-u_n)}{3(1-u_n)}'
             note: "Le dénominateur commun 1+u_n se simplifie entre haut et bas du grand quotient."
           - math: 'v_{n+1} = \dfrac{2}{3}\times\dfrac{2-u_n}{1-u_n} = \dfrac{2}{3}v_n'
@@ -726,7 +726,7 @@ entries:
           - math: '\text{avec } a=\alpha,\ b=u_n\ :\ \big|f_0(u_n)-f_0(\alpha)\big|\le\dfrac12|u_n-\alpha|'
             note: "On applique l'inégalité entre alpha et u_n."
           - math: 'f_0(u_n)=u_{n+1},\quad f_0(\alpha)=\alpha \ \Rightarrow\ |u_{n+1}-\alpha|\le\dfrac12|u_n-\alpha|'
-            note: "u_{n+1} est f0 de u_n par définition ; alpha est point fixe de f0 par définition."
+            note: "$u_{n+1}$ est f0 de u_n par définition ; alpha est point fixe de f0 par définition."
       - id: q2-2b
         stem: |-
           **(0,5 pt)** En déduire que : $(\forall n \in \mathbb{N})\ ;\quad |u_n - \alpha| \le \left(\dfrac{1}{2}\right)^{n}|\alpha|$
@@ -818,7 +818,7 @@ entries:
           En $x=x_n$ : $f_{n+1}(x_n) = f_n(x_n)+x_n = 0+x_n = x_n$, puisque $f_n(x_n)=0$ par définition de $x_n$ (question 1-a). Et $x_n>0$ (question 1-b) : donc $f_{n+1}(x_n)=x_n>0$.
         steps:
           - math: 'f_{n+1}(x)-f_n(x) = (n+1)x-nx = x \ \Rightarrow\ f_{n+1}(x) = f_n(x)+x \quad (\forall x\in\mathbb{R})'
-            note: "Le morceau exponentiel de f_n ne dépend pas de n : seul le terme en x change entre f_n et f_{n+1}."
+            note: "Le morceau exponentiel de f_n ne dépend pas de n : seul le terme en x change entre f_n et $f_{n+1}$."
           - math: 'f_{n+1}(x_n) = f_n(x_n)+x_n = 0+x_n = x_n \quad (\text{car } f_n(x_n)=0)'
             note: "On evalue en x_n, ou f_n s'annule par définition."
           - math: 'x_n>0 \quad (\text{question 1-b}) \ \Rightarrow\ f_{n+1}(x_n) = x_n > 0'
@@ -832,7 +832,7 @@ entries:
           C'est vrai pour tout $n\ge2$ : la suite $(x_n)_{n\ge2}$ est donc strictement décroissante.
         steps:
           - math: 'f_{n+1}(x_{n+1}) = 0 \quad (\text{définition de } x_{n+1}), \qquad f_{n+1}(x_n) > 0 \quad (\text{question 2-a})'
-            note: "Deux valeurs de f_{n+1} : en x_{n+1} elle vaut 0, en x_n elle est strictement positive."
+            note: "Deux valeurs de $f_{n+1}$ : en $x_{n+1}$ elle vaut 0, en x_n elle est strictement positive."
           - math: 'f_{n+1}(x_n) > f_{n+1}(x_{n+1}),\ f_{n+1} \text{ strictement croissante} \ \Rightarrow\ x_n > x_{n+1}'
             note: "Une fonction strictement croissante compare les entrées dans le même sens que les sorties."
           - math: '\Rightarrow\ (x_n)_{n\ge2} \text{ strictement décroissante}'

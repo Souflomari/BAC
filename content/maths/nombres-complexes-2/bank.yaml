@@ -272,7 +272,7 @@ entries:
           - math: 'z_1 + z_2 = (1+i)m + (1+i) = (1+i)(m+1) = (1+i)\big(e^{i\theta}+1\big)'
             note: "On factorise la somme par (1+i)."
           - math: 'e^{i\theta}+1 = e^{i\theta/2}\big(e^{i\theta/2}+e^{-i\theta/2}\big) = 2\cos\tfrac{\theta}{2}\,e^{i\theta/2}'
-            note: "Angle moitié : e^{iθ/2}+e^{−iθ/2} = 2cos(θ/2), positif car 0 < θ/2 < π/2."
+            note: "Angle moitié : $e^{iθ/2}+e^{−iθ/2}$ = 2cos(θ/2), positif car 0 < θ/2 < π/2."
           - math: '1+i = \sqrt2\,e^{i\pi/4} \implies z_1+z_2 = 2\sqrt2\,\cos\tfrac{\theta}{2}\; e^{i\left(\frac{\pi}{4}+\frac{\theta}{2}\right)}'
             note: "Produit : modules × modules, arguments + arguments (chapitre 3)."
           - math: '|z_1+z_2| = 2\sqrt2\,\cos\tfrac{\theta}{2}, \qquad \arg(z_1+z_2) = \frac{\pi}{4} + \frac{\theta}{2}\ [2\pi]'
@@ -439,7 +439,7 @@ entries:
           Reste à mettre $m$ lui-même sous forme exponentielle. Même geste qu'au sujet 2019 (r-bac) de cette notion, question 2a : on factorise $1+e^{i\pi/3}$ par l'angle moitié $e^{i\pi/6}$, ce qui fait apparaître $2\cos\dfrac{\pi}{6}$.
         steps:
           - math: 'z_1 = \dfrac{m(1+i\sqrt3)}{2} = m\,e^{i\pi/3}, \qquad z_2 = \dfrac{m(1-i\sqrt3)}{2} = m\,e^{-i\pi/3}'
-            note: "Relecture de la question 1 en forme exponentielle : 1+i√3 = 2e^{iπ/3} et 1−i√3 = 2e^{−iπ/3}."
+            note: "Relecture de la question 1 en forme exponentielle : $1+i√3 = 2e^{iπ/3}$ et $1−i√3 = 2e^{−iπ/3}$."
           - math: 'm = 1+e^{i\pi/3} = 2\cos\!\left(\dfrac{\pi}{6}\right)e^{i\pi/6} = \sqrt3\,e^{i\pi/6}'
             note: "Factorisation par l'angle moitié (même geste qu'au sujet 2019, question 2a) : cos(π/6)=√3/2."
           - math: 'z_1 = \sqrt3\,e^{i\pi/6}\times e^{i\pi/3} = \sqrt3\,e^{i\pi/2} = i\sqrt3'
@@ -470,11 +470,11 @@ entries:
           - math: 'z'' - p = e^{i\pi/2}(z-p) \implies p = \dfrac{z'' - e^{i\pi/2}z}{1-e^{i\pi/2}} = \dfrac{z''-iz}{1-i}'
             note: "Centre d'une rotation d'angle π/2 envoyant M(z) sur M′(z′) (chapitre 6, résolu en p)."
           - math: '\dfrac{1}{1-i} = \dfrac{\sqrt2}{2}\,e^{i\pi/4}'
-            note: "1−i = √2 e^{−iπ/4} (chapitre 2) ; son inverse a pour module √2/2 et pour argument π/4 (chapitre 4)."
+            note: "$1−i = √2\\, e^{−iπ/4}$ (chapitre 2) ; son inverse a pour module √2/2 et pour argument π/4 (chapitre 4)."
           - math: 'P:\ (z,z'')=(0,a) \implies p = a\times\dfrac{\sqrt2}{2}e^{i\pi/4} = m\,e^{i\pi/3}\times\dfrac{\sqrt2}{2}e^{i\pi/4} = m\,\dfrac{\sqrt2}{2}\,e^{i\frac{7\pi}{12}}'
             note: "P envoie O sur A : z=0, z′=a. π/3+π/4=7π/12."
           - math: 'R:\ (z,z'')=(b,0) \implies r = \dfrac{0-ib}{1-i} = -ib\times\dfrac{\sqrt2}{2}e^{i\pi/4} = m\,e^{-i\pi/3}\times\dfrac{\sqrt2}{2}e^{-i\pi/4} = m\,\dfrac{\sqrt2}{2}\,e^{-i\frac{7\pi}{12}}'
-            note: "R envoie B sur O : z=b, z′=0. −i=e^{−iπ/2}, donc −π/2+π/4=−π/4, puis −π/3−π/4=−7π/12."
+            note: "R envoie B sur O : z=b, z′=0. $−i=e^{−iπ/2}$, donc −π/2+π/4=−π/4, puis −π/3−π/4=−7π/12."
       - id: q4b
         stem: |-
           **(0,5 pt)** Montrer que l'affixe de $Q$ est $q = m\sqrt{2}\,\sin\!\left(\dfrac{7\pi}{12}\right)$.
@@ -486,7 +486,7 @@ entries:
           - math: 'q = \dfrac{b-ia}{1-i}'
             note: "Même formule que pour P, R (chapitre 6), appliquée à Q : A → B, donc (z,z′)=(a,b)."
           - math: 'a = m\left(\tfrac12+i\tfrac{\sqrt3}{2}\right),\ b = m\left(\tfrac12-i\tfrac{\sqrt3}{2}\right) \implies b-ia = m\,\dfrac{1+\sqrt3}{2}\,(1-i)'
-            note: "On repasse en forme algébrique (e^{±iπ/3}=½±i√3/2) pour développer b−ia ; le résultat se factorise par (1−i)."
+            note: "On repasse en forme algébrique ($e^{±iπ/3}$ = ½±i√3/2) pour développer b−ia ; le résultat se factorise par (1−i)."
           - math: 'q = \dfrac{m\,\frac{1+\sqrt3}{2}(1-i)}{1-i} = m\,\dfrac{1+\sqrt3}{2}'
             note: "Le facteur (1−i) se simplifie : q est un multiple réel de m."
           - math: '\sqrt2\,\sin\!\left(\dfrac{7\pi}{12}\right) = \sqrt2\,\sin\!\left(\dfrac{\pi}{3}+\dfrac{\pi}{4}\right) = \sqrt2\left(\sin\tfrac{\pi}{3}\cos\tfrac{\pi}{4}+\cos\tfrac{\pi}{3}\sin\tfrac{\pi}{4}\right) = \dfrac{1+\sqrt3}{2}'
@@ -502,7 +502,7 @@ entries:
           Le rapport $\dfrac{r-p}{q}$ (chapitre 7) encode alors, en un seul calcul, les deux faits demandés : son module donne l'égalité des longueurs, son argument donne la perpendicularité.
         steps:
           - math: 'r-p = m\dfrac{\sqrt2}{2}\left(e^{-i\frac{7\pi}{12}}-e^{i\frac{7\pi}{12}}\right) = -i\,m\sqrt2\,\sin\!\left(\dfrac{7\pi}{12}\right)'
-            note: "e^{−iα}−e^{iα} = −2i sin α (chapitre 2, propriétés du conjugué en forme exponentielle)."
+            note: "$e^{−iα}−e^{iα} = −2i \\sin α$ (chapitre 2, propriétés du conjugué en forme exponentielle)."
           - math: '\sqrt2\,\sin\!\left(\dfrac{7\pi}{12}\right) = \dfrac{1+\sqrt3}{2} = \dfrac{q}{m} \implies r-p = -i\,q'
             note: "On réutilise l'identité et la valeur de q établies à la question précédente."
           - math: '\dfrac{r-p}{q} = -i'
@@ -550,7 +550,7 @@ entries:
           $j=e^{i2\pi/3}$ est exactement l'une des racines cubiques de l'unité construites au chapitre 5 ($n=3$, $k=1$) : $j^3$ s'obtient directement par la formule de Moivre (chapitre 4). Pour la somme $1+j+j^2$, le plus direct est de repasser $j$ et $j^2$ en forme algébrique et d'additionner : les parties imaginaires s'annulent deux à deux.
         steps:
           - math: 'j^3 = \left(e^{i2\pi/3}\right)^3 = e^{i2\pi} = 1'
-            note: "Formule de Moivre (chapitre 4) : (e^{iθ})^n=e^{inθ}."
+            note: "Formule de Moivre (chapitre 4) : $(e^{iθ})^n=e^{inθ}$."
           - math: 'j^2 = e^{i4\pi/3} = -\tfrac12-\tfrac{\sqrt3}{2}i'
             note: "Carré de j, en forme algébrique."
           - math: '1+j+j^2 = 1+\left(-\tfrac12+\tfrac{\sqrt3}{2}i\right)+\left(-\tfrac12-\tfrac{\sqrt3}{2}i\right) = 0'
@@ -1150,9 +1150,9 @@ entries:
           Les deux solutions sont $c$ et $a+b$ (question précédente) : $a=i=e^{i\pi/2}$ et $b=e^{i\pi/3}$ sont déjà de module $1$, donc $a+b$ et $c=a-b$ sont une somme et une différence de deux exponentielles de même forme — on factorise chacune par l'angle moyen $\dfrac{\pi/2+\pi/3}{2}=\dfrac{5\pi}{12}$, exactement le même geste que $e^{i\theta}+1=2\cos(\theta/2)e^{i\theta/2}$ (déjà rencontré sur ce chapitre), mais entre deux exponentielles quelconques plutôt qu'avec $1$.
         steps:
           - math: 'a+b = e^{i\pi/2}+e^{i\pi/3} = e^{i\frac{5\pi}{12}}\left(e^{i\frac{\pi}{12}}+e^{-i\frac{\pi}{12}}\right) = 2\cos\tfrac{\pi}{12}\,e^{i\frac{5\pi}{12}}'
-            note: "Angle moyen 5π/12=(π/2+π/3)/2, demi-écart π/12=(π/2−π/3)/2 ; e^{ix}+e^{−ix}=2cos x (chapitre 2)."
+            note: "Angle moyen 5π/12=(π/2+π/3)/2, demi-écart π/12=(π/2−π/3)/2 ; $e^{ix}+e^{−ix}=2\\cos x$ (chapitre 2)."
           - math: 'a-b = e^{i\pi/2}-e^{i\pi/3} = e^{i\frac{5\pi}{12}}\left(e^{i\frac{\pi}{12}}-e^{-i\frac{\pi}{12}}\right) = 2i\sin\tfrac{\pi}{12}\,e^{i\frac{5\pi}{12}} = 2\sin\tfrac{\pi}{12}\,e^{i\left(\frac{5\pi}{12}+\frac{\pi}{2}\right)}'
-            note: "e^{ix}−e^{−ix}=2i sin x ; on absorbe le facteur i=e^{iπ/2} dans l'argument."
+            note: "$e^{ix}−e^{−ix}=2i \\sin x$ ; on absorbe le facteur $i=e^{iπ/2}$ dans l'argument."
           - math: '\cos\tfrac{\pi}{12}=\tfrac{\sqrt6+\sqrt2}{4}>0, \qquad \sin\tfrac{\pi}{12}=\tfrac{\sqrt6-\sqrt2}{4}>0'
             note: "Valeurs usuelles (formules d'addition, acquis de 1ère) ; toutes deux positives, donc les modules ci-dessus le sont bien."
           - math: 'a+b = \dfrac{\sqrt6+\sqrt2}{2}\,e^{i\frac{5\pi}{12}}, \qquad c=a-b=\dfrac{\sqrt6-\sqrt2}{2}\,e^{i\left(\frac{5\pi}{12}+\frac{\pi}{2}\right)}=\dfrac{\sqrt6-\sqrt2}{2}\,e^{i\frac{11\pi}{12}}'
@@ -1169,13 +1169,13 @@ entries:
           Pour $P$ : la rotation d'angle $\dfrac{\pi}{2}$ ($e^{i\pi/2}=i$) transforme $B$ en $A$, donc $z=b$, $z'=a$. Pour $Q$ : la rotation d'angle $-\dfrac{\pi}{2}$ ($e^{-i\pi/2}=-i$) transforme $C$ en $A$, donc $z=c$, $z'=a$. Il reste à simplifier chaque quotient par la méthode du conjugué (chapitre 1).
         steps:
           - math: 'p = \dfrac{a-ib}{1-i}'
-            note: "Centre de la rotation d'angle π/2 (e^{iπ/2}=i) envoyant B(b) sur A(a) : chapitre 6, résolu en p."
+            note: "Centre de la rotation d'angle π/2 ($e^{iπ/2}=i$) envoyant B(b) sur A(a) : chapitre 6, résolu en p."
           - math: 'p = \dfrac{(a-ib)(1+i)}{(1-i)(1+i)} = \dfrac{a+ai-ib+b}{2} = \dfrac{(a+b)+i(a-b)}{2}'
             note: "Méthode du conjugué (chapitre 1) : on multiplie par (1+i)/(1+i), avec (1−i)(1+i)=2."
           - math: '2p = (a+b)+i(a-b) = b+a+(a-b)i'
             note: "Résultat demandé pour p."
           - math: 'q = \dfrac{a-(-i)c}{1-(-i)} = \dfrac{a+ic}{1+i}'
-            note: "Centre de la rotation d'angle −π/2 (e^{−iπ/2}=−i) envoyant C(c) sur A(a) : même formule, chapitre 6."
+            note: "Centre de la rotation d'angle −π/2 ($e^{−iπ/2}=−i$) envoyant C(c) sur A(a) : même formule, chapitre 6."
           - math: 'q = \dfrac{(a+ic)(1-i)}{(1+i)(1-i)} = \dfrac{a-ai+ic+c}{2} = \dfrac{(a+c)+i(c-a)}{2}'
             note: "Méthode du conjugué, avec (1+i)(1−i)=2."
           - math: '2q = (a+c)+i(c-a) = c+a+(c-a)i'
@@ -1334,9 +1334,9 @@ entries:
           - math: '\text{Initialisation\,: } x_0+iy_0 = 1+i\times0 = 1 = u^0'
             note: "n=0 : vrai par les valeurs initiales."
           - math: '(x_n+iy_n)\times u = (x_n+iy_n)\big(1+(2-\sqrt3)i\big) = \big[x_n-(2-\sqrt3)y_n\big] + i\big[(2-\sqrt3)x_n+y_n\big]'
-            note: "On développe le produit ; on reconnaît les formules de x_{n+1} et y_{n+1} dans les deux crochets."
+            note: "On développe le produit ; on reconnaît les formules de $x_{n+1}$ et $y_{n+1}$ dans les deux crochets."
           - math: '(x_n+iy_n)\times u = x_{n+1}+iy_{n+1}'
-            note: "Les deux crochets sont exactement x_{n+1} et y_{n+1} (définition des suites)."
+            note: "Les deux crochets sont exactement $x_{n+1}$ et $y_{n+1}$ (définition des suites)."
           - math: '\text{Hérédité\,: si } x_n+iy_n=u^n,\ \text{alors } x_{n+1}+iy_{n+1} = u^n\times u = u^{n+1}'
             note: "Hypothèse de récurrence injectée dans l'égalité précédente."
           - math: '\forall n\in\mathbb{N},\ x_n+iy_n=u^n'
@@ -1348,9 +1348,9 @@ entries:
           On reprend la seconde écriture de $u$ trouvée à la question 1d, $u=\dfrac{e^{i\pi/12}}{\cos(\pi/12)}$, bien plus commode ici qu'une puissance de $(\sqrt6-\sqrt2)$ : elle donne $u^n$ par la formule de Moivre (chapitre 4) directement en fonction de $\cos\dfrac{n\pi}{12}$ et $\sin\dfrac{n\pi}{12}$, avec $\cos(\pi/12)$ (un réel) au dénominateur. Il suffit ensuite d'identifier avec $x_n+iy_n=u^n$ (question précédente).
         steps:
           - math: 'u^n = \left(\dfrac{e^{i\pi/12}}{\cos(\pi/12)}\right)^{\!n} = \dfrac{e^{in\pi/12}}{\left(\cos(\pi/12)\right)^n}'
-            note: "Formule de Moivre (chapitre 4) appliquée à u = e^{iπ/12}/cos(π/12) (question 1d)."
+            note: "Formule de Moivre (chapitre 4) appliquée à $u = e^{iπ/12}/\\cos(π/12)$ (question 1d)."
           - math: 'u^n = \dfrac{\cos(n\pi/12)+i\sin(n\pi/12)}{\left(\cos(\pi/12)\right)^n}'
-            note: "e^{inπ/12}=cos(nπ/12)+isin(nπ/12) (définition, chapitre 3)."
+            note: "$e^{inπ/12}=\\cos(nπ/12)+i\\sin(nπ/12)$ (définition, chapitre 3)."
           - math: 'x_n+iy_n = u^n = \dfrac{\cos(n\pi/12)}{\left(\cos(\pi/12)\right)^n} + i\,\dfrac{\sin(n\pi/12)}{\left(\cos(\pi/12)\right)^n}'
             note: "On réutilise x_n+iy_n=u^n (question 2a)."
           - math: 'x_n = \dfrac{\cos(n\pi/12)}{\left(\cos(\pi/12)\right)^n}, \qquad y_n = \dfrac{\sin(n\pi/12)}{\left(\cos(\pi/12)\right)^n}'
@@ -1365,7 +1365,7 @@ entries:
           - math: 'O,\,A_0,\,A_n\ \text{alignés} \iff \dfrac{u^n}{u^0}=u^n\in\mathbb{R}'
             note: "Chapitre 7 : rapport des affixes de OA_n et OA_0, réel ⟺ alignement."
           - math: 'u^n = (\sqrt6-\sqrt2)^n\,e^{in\pi/12}\quad(\text{Moivre, chapitre 4})'
-            note: "u=(√6−√2)e^{iπ/12} (question 1d) ; module (√6−√2)^n réel positif."
+            note: "$u=(√6−√2)e^{iπ/12}$ (question 1d) ; module $(√6−√2)^n$ réel positif."
           - math: 'u^n\in\mathbb{R} \iff \dfrac{n\pi}{12} \equiv 0\ [\pi] \iff \dfrac{n}{12}\in\mathbb{Z} \iff n\ \text{multiple de}\ 12'
             note: "Argument multiple de π ; n entier naturel."
           - math: 'O,\,A_0,\,A_n\ \text{alignés} \iff n \in \{0,\,12,\,24,\,36,\ldots\}'
@@ -1767,9 +1767,9 @@ entries:
           On calcule $\Delta_\alpha = b^2-4ac$ directement à partir des coefficients de $(E_\alpha)$, avec $b=-2^\alpha e^{i\alpha}(1+2i)$, $a=1$, $c=i\,2^{2\alpha+1}e^{i2\alpha}$. Le geste qui débloque tout est de reconnaître, dans le résultat, le carré $(1-2i)^2$ — même geste qu'aux autres sujets de cette notion, une fois de plus.
         steps:
           - math: '\Delta_\alpha = \big[2^\alpha e^{i\alpha}(1+2i)\big]^2 - 4\times1\times i\,2^{2\alpha+1}e^{i2\alpha} = 2^{2\alpha}e^{i2\alpha}(1+2i)^2 - 4i\,2^{2\alpha+1}e^{i2\alpha}'
-            note: "Δ_α = b² − 4ac, avec a=1, b=−2^α e^{iα}(1+2i), c=i·2^{2α+1}e^{i2α}."
+            note: "$Δ_α = b² − 4ac$, avec a=1, $b=−2^α e^{iα}(1+2i)$, $c=i·2^{2α+1}e^{i2α}$."
           - math: '\Delta_\alpha = 2^{2\alpha}e^{i2\alpha}\Big[(1+2i)^2 - 4i\times2\Big] = 2^{2\alpha}e^{i2\alpha}\big[(1+2i)^2-8i\big]'
-            note: "On met 2^{2α}e^{i2α} en facteur commun ; 2^{2α+1}=2×2^{2α}."
+            note: "On met $2^{2α}e^{i2α}$ en facteur commun ; $2^{2α+1}=2×2^{2α}$."
           - math: '(1+2i)^2 = 1+4i-4=-3+4i \implies (1+2i)^2-8i = -3-4i'
             note: "Développement de (1+2i)²."
           - math: '(1-2i)^2 = 1-4i-4=-3-4i'
@@ -1783,13 +1783,13 @@ entries:
           $\Delta_\alpha$ est déjà un carré parfait (question précédente) : $\delta = 2^\alpha e^{i\alpha}(1-2i)$ en est une racine. La formule $\dfrac{-b\pm\delta}{2a}$, avec $-b=2^\alpha e^{i\alpha}(1+2i)$, donne les deux racines une fois qu'on factorise chaque numérateur par $2^\alpha e^{i\alpha}$. Il reste à comparer les deux modules pour savoir laquelle est $a$ (la plus petite) et laquelle est $b$.
         steps:
           - math: 'z = \dfrac{2^\alpha e^{i\alpha}(1+2i) \pm 2^\alpha e^{i\alpha}(1-2i)}{2} = 2^\alpha e^{i\alpha}\,\dfrac{(1+2i)\pm(1-2i)}{2}'
-            note: "Formule (−b±δ)/(2a) ; on factorise par 2^α e^{iα}."
+            note: "Formule (−b±δ)/(2a) ; on factorise par $2^α e^{iα}$."
           - math: '\text{signe}+:\ (1+2i)+(1-2i)=2 \implies z=2^\alpha e^{i\alpha}; \qquad \text{signe}-:\ (1+2i)-(1-2i)=4i \implies z = 2^{\alpha+1}\,i\,e^{i\alpha}'
             note: "Les deux racines, avant tri par module."
           - math: '2^{\alpha+1}\,i\,e^{i\alpha} = 2^{\alpha+1}\,e^{i\left(\alpha+\frac{\pi}{2}\right)}'
-            note: "On absorbe i=e^{iπ/2} dans l'argument (règle du produit, chapitre 3)."
+            note: "On absorbe $i=e^{iπ/2}$ dans l'argument (règle du produit, chapitre 3)."
           - math: '\left|2^\alpha e^{i\alpha}\right| = 2^\alpha < 2^{\alpha+1} = \left|2^{\alpha+1}e^{i(\alpha+\pi/2)}\right| \implies a = 2^\alpha e^{i\alpha}, \quad b = 2^{\alpha+1}\,e^{i\left(\alpha+\frac{\pi}{2}\right)}'
-            note: "2^α < 2^{α+1} pour tout α réel : la plus petite en module est a."
+            note: "$2^α < 2^{α+1}$ pour tout α réel : la plus petite en module est a."
       - id: q2
         stem: |-
           **(0,25 pt)** Vérifier que $\dfrac{b}{a}$ est un imaginaire pur.
@@ -1799,7 +1799,7 @@ entries:
           - math: '\dfrac{b}{a} = \dfrac{2^{\alpha+1}\,e^{i(\alpha+\pi/2)}}{2^\alpha\,e^{i\alpha}} = 2\,e^{i\pi/2}'
             note: "Règle du quotient (chapitre 4) : modules divisés, arguments soustraits."
           - math: '2\,e^{i\pi/2} = 2i'
-            note: "e^{iπ/2}=i."
+            note: "$e^{iπ/2}=i$."
           - math: '\dfrac{b}{a} = 2i\ \text{est un imaginaire pur (non nul), et ne dépend même pas de}\ \alpha'
             note: "Résultat constant."
       - id: q3a

@@ -5200,9 +5200,23 @@ CommonMark excluant le souligné intra-mot de l'emphase. Aucune correction due.
 `derivations.yaml` — mais pour `exercises.yaml` et `bank.yaml` il ne validait que
 `steps[i].math`. La note, qui porte 4 958 chaînes contre quelques dizaines dans
 `derivations.yaml`, était le seul champ rendu jamais contrôlé. **Porte étendue**
-aux deux fichiers. Les 33 notes de `fonction-exponentielle` sont délimitées (le
-contenu mathématique n'est pas touché, seulement les délimiteurs) ; **les 57
-autres, sur 8 notions, restent à faire** — c'est une campagne, pas un oubli.
+aux deux fichiers.
+
+**Campagne close le même jour : les 90 notes sont délimitées**, sur les 9
+notions (`nombres-complexes-2` 24, `fonction-exponentielle` 33,
+`suites-numeriques` 13, `limites-continuite` 7, `nombres-complexes-1` 4,
+`arithmetique` 3, `equations-differentielles` 4, `lois-de-newton` 1,
+`rc-charge` 1). Le contenu mathématique n'est pas touché — seuls les
+délimiteurs sont posés, et au plus près : le fragment porteur d'accolades,
+jamais la prose ni les symboles unicode (→, ≥, ×, √) qui se rendent déjà bien.
+
+**La porte neuve a immédiatement attrapé un défaut que je venais d'introduire.**
+En délimitant `e^{±iπ/3}=½±i√3/2`, le `½` est passé du texte — où il se rend
+parfaitement — à l'intérieur d'une formule KaTeX, qui n'a **aucune métrique**
+pour ce caractère : glyphe cassé chez l'élève. La porte a échoué en le nommant
+(`bk-2020-n-x3.q4b.steps[1].note`), et le `½` est ressorti du `$…$`. C'est
+exactement ce pour quoi elle a été étendue, et elle l'a prouvé sur son auteur
+avant tout autre.
 
 **(2) La porte « renvoi mort » de §11.48 ne voyait qu'un renvoi mort sur six.**
 Elle exigeait une amorce — « chapitre N de », « la leçon », « la notion ». Or un

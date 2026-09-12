@@ -1676,7 +1676,7 @@ entries:
           Le piège nommé de cette question. Avancer $v_{i+2}$ avec la MAUVAISE accélération — $a_i = -0{,}57$ (la ligne du dessus) ou $a_{i+2} = -0{,}55$ (la ligne d'arrivée) au lieu de $a_{i+1}$ qu'on vient de calculer : le pas d'Euler part TOUJOURS de l'état courant ($t_{i+1}$) avec l'accélération de CET état. Second piège : oublier que le pas vaut $0{,}4\ \text{s}$ (lu sur la colonne des temps), pas $1\ \text{s}$.
         steps:
           - math: 'a_{i+1} = -\left(10^{-3}\times(21{,}54)^2 + 0{,}1\right)'
-            note: "L'équation différentielle (question 2-1) evaluee avec la vitesse de la MÊME ligne, v_{i+1} = 21,54 m/s."
+            note: "L'équation différentielle (question 2-1) evaluee avec la vitesse de la MÊME ligne, $v_{i+1}$ = 21,54 m/s."
           - math: '\boxed{a_{i+1} \approx -0{,}56\ \text{m.s}^{-2}}'
             note: "Tombe entre -0,57 et -0,55 : la deceleration faiblit avec v (terme en v^2)."
           - math: 'v_{i+2} = v_{i+1} + a_{i+1}\,\Delta t = 21{,}54 - 0{,}564\times0{,}4'

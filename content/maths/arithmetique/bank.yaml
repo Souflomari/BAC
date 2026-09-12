@@ -1343,7 +1343,7 @@ entries:
           - math: 'y \geq 1 \implies y^{p-1} \geq 1'
             note: "y appartient a N*, donc y au moins 1 ; toute puissance de y reste au moins 1."
           - math: 'px = 2017 - y^{p-1} \leq 2016'
-            note: "On isole px dans l'équation, en utilisant y^{p-1} au moins 1."
+            note: "On isole px dans l'équation, en utilisant $y^{p-1}$ au moins 1."
           - math: 'x \geq 1 \implies p \leq px \leq 2016 \implies p < 2017'
             note: "x appartient a N*, donc p est au plus px."
       - id: q2
@@ -1355,7 +1355,7 @@ entries:
           Or $2017$ est premier (admis) : ses seuls diviseurs positifs sont $1$ et $2017$. Comme $5 \leq p < 2017$ (question précédente), $p$ n'est ni $1$ ni $2017$, donc $p \nmid 2017$. Contradiction : $p$ ne divise pas $y$.
         steps:
           - math: 'p \mid y \implies p \mid y^{p-1}'
-            note: "Hypothèse absurde : si p divise y, il divise aussi toute puissance de y, en particulier y^{p-1}."
+            note: "Hypothèse absurde : si p divise y, il divise aussi toute puissance de y, en particulier $y^{p-1}$."
           - math: 'p \mid px \ \text{et}\ p \mid y^{p-1} \implies p \mid (px+y^{p-1}) = 2017'
             note: "p diviserait alors la somme des deux termes de l'équation, soit 2017."
           - math: '2017\ \text{premier},\ 5 \leq p < 2017 \implies p \nmid 2017'
@@ -1375,7 +1375,7 @@ entries:
           - math: 'px \equiv 0 \pmod p \implies y^{p-1} \equiv px + y^{p-1} = 2017 \pmod p'
             note: "On réduit l'équation modulo p : le terme px disparaît."
           - math: '1 \equiv y^{p-1} \equiv 2017 \pmod p \implies p \mid (2017-1) = 2016'
-            note: "Les deux congruences pour y^{p-1} coïncident : p divise donc 2016."
+            note: "Les deux congruences pour $y^{p-1}$ coïncident : p divise donc 2016."
       - id: q4
         stem: |-
           **(0,5 pt)** Montrer que : $p = 7$

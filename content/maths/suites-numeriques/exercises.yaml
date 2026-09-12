@@ -96,7 +96,7 @@ exercises:
           - math: 'g''(x) = -e^{-x} + \dfrac{1}{2}, \qquad g''(x) = 0 \iff e^{-x} = \dfrac{1}{2} \iff x = \ln 2'
             note: "g' négative pour x < ln 2, positive pour x > ln 2 : minimum de g en x = ln 2."
           - math: 'g(\ln 2) = e^{-\ln 2} + \dfrac{1}{2}\ln 2 - \dfrac{3}{4} = \dfrac{1}{2} + \dfrac{1}{2}\times 0{,}69 - \dfrac{3}{4}'
-            note: "e^{-ln 2} = 1/2 ; on prend ln 2 = 0,69 comme indiqué."
+            note: "$e^{-ln 2} = 1/2$ ; on prend ln 2 = 0,69 comme indiqué."
           - math: 'g(\ln 2) = 0{,}5 + 0{,}345 - 0{,}75 = 0{,}095 > 0'
             note: "Le minimum de g est strictement positif, donc g(x) > 0 pour tout réel x."
       - id: q2b
@@ -112,7 +112,7 @@ exercises:
           - math: 'u_{n+1} = f(u_n) + u_n = 4\,u_n\,g(u_n)'
             note: "On applique l'identité f(x)+x = 4x·g(x) avec x = u_n."
           - math: 'u_n \ge 0, \quad g(u_n) > 0, \quad 4 > 0 \ \Longrightarrow\ u_{n+1} = 4\,u_n\,g(u_n) \ge 0'
-            note: "Produit de facteurs ≥ 0 : u_{n+1} ≥ 0. Par récurrence, 0 ≤ u_n pour tout n."
+            note: "Produit de facteurs ≥ 0 : $u_{n+1}$ ≥ 0. Par récurrence, 0 ≤ u_n pour tout n."
       - id: q2c
         stem: |-
           **(0,25 pt)** Montrer que la suite $(u_n)_{n \in \mathbb{N}}$ est convergente.
@@ -132,7 +132,7 @@ exercises:
           $L$ est donc un zéro de $f$. Or $f$ n'a que deux zéros : $0$ et $\alpha$. Il faut trancher entre les deux : comme $(u_n)$ est décroissante avec $u_0 < \alpha$, on a $L \le u_0 < \alpha$, et par ailleurs $L \ge 0$ (question 2c). Donc $L \in [0\,;\,\alpha[$, ce qui exclut $\alpha$ : la seule possibilité est $L = 0$.
         steps:
           - math: 'L = f(L) + L \ \Longrightarrow\ f(L) = 0'
-            note: "Passage à la limite : F(x)=f(x)+x est continue, u_{n+1}=F(u_n) donne L=F(L)."
+            note: "Passage à la limite : F(x)=f(x)+x est continue, $u_{n+1}=F(u_n)$ donne L=F(L)."
           - math: 'f(L) = 0 \ \Longrightarrow\ L = 0 \ \text{ ou } \ L = \alpha'
             note: "f n'admet que deux zéros : 0 et α (Partie I)."
           - math: '0 \le L \le u_0 < \alpha \ \Longrightarrow\ L \ne \alpha \ \Longrightarrow\ L = 0'
@@ -222,7 +222,7 @@ exercises:
           - math: '\sqrt{3} \le \sqrt{2u_n + 3} \le \sqrt{9} = 3'
             note: "La racine carrée est croissante : elle conserve l'encadrement."
           - math: '0 \le \sqrt{3} \le u_{n+1} \le 3'
-            note: "Comme √3 ≥ 0, on a 0 ≤ u_{n+1} ≤ 3. Par récurrence, 0 ≤ u_n ≤ 3 pour tout n."
+            note: "Comme √3 ≥ 0, on a 0 ≤ $u_{n+1}$ ≤ 3. Par récurrence, 0 ≤ u_n ≤ 3 pour tout n."
       - id: q2
         part: "Partie B — Monotonie"
         stem: |-

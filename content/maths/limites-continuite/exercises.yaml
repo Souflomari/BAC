@@ -93,7 +93,7 @@ exercises:
           - math: 'f(x)-x = x\left[\left(e^{x/2}-1\right)^2-1\right]'
             note: "On factorise par x."
           - math: '\left(e^{x/2}-1\right)^2-1 = e^{x}-2e^{x/2}+1-1 = e^{x}-2e^{x/2}'
-            note: "On développe le carré : (u-1)² - 1 = u² - 2u avec u = e^{x/2}, donc u² = e^x."
+            note: "On développe le carré : (u-1)² - 1 = u² - 2u avec $u = e^{x/2}$, donc $u^2 = e^x$."
           - math: 'f(x)-x = x\,e^{x}-2x\,e^{x/2}'
             note: "On distribue le facteur x sur les deux termes."
           - math: '\lim_{x\to-\infty} x\,e^{x} = 0 \qquad\qquad \lim_{x\to-\infty} x\,e^{x/2} = 0'
@@ -114,11 +114,11 @@ exercises:
           **Interprétation en position relative :** $f(x)-x>0$ signifie $f(x)>x$, donc $(C)$ est **au-dessus** de $(\Delta)$ ; $f(x)-x<0$ signifie $(C)$ est **en dessous** de $(\Delta)$ ; $f(x)-x=0$ signifie que les deux courbes se **croisent**.
         steps:
           - math: 'f(x)-x = x\,e^{x}-2x\,e^{x/2} = x\,e^{x/2}\left(e^{x/2}-2\right)'
-            note: "On factorise par e^{x/2} (toujours strictement positif) : e^x = e^{x/2} × e^{x/2}."
+            note: "On factorise par $e^{x/2}$ (toujours strictement positif) : $e^x = e^{x/2} × e^{x/2}$."
           - math: 'e^{x/2}-2 = 0 \iff \dfrac{x}{2} = \ln 2 \iff x = 2\ln 2 = \ln 4'
             note: "Le second facteur s'annule en x = ln 4 (environ 1,39)."
           - math: '\text{signe de } f(x)-x = \text{signe de } x\left(e^{x/2}-2\right) \quad (\text{car } e^{x/2}>0 \text{ toujours})'
-            note: "Le facteur e^{x/2} ne change jamais le signe du produit : il suffit d'étudier le signe de x(e^{x/2}-2)."
+            note: "Le facteur $e^{x/2}$ ne change jamais le signe du produit : il suffit d'étudier le signe de $x(e^{x/2}-2)$."
           - math: '\begin{array}{c|ccccccc} x & -\infty & & 0 & & \ln 4 & & +\infty \\ \hline x & & - & 0 & + & + & + & \\ e^{x/2}-2 & & - & - & - & 0 & + & \\ \hline f(x)-x & & + & 0 & - & 0 & + & \end{array}'
             note: "Tableau de signes : produit des deux facteurs sur chaque intervalle."
           - math: '(C) \text{ au-dessus de } (\Delta) \text{ sur } ]-\infty,0[\, \cup\, ]\ln 4,+\infty[, \quad (C) \text{ en dessous sur } ]0,\ln 4[, \quad \text{et } (C) \text{ croise } (\Delta) \text{ en } x=0 \text{ et } x=\ln 4'
@@ -161,11 +161,11 @@ exercises:
           C'est exactement l'inverse de ce qui se passait pour $f$ à la question 1 du sujet : là-bas, le "facteur fini" apparaissait en $-\infty$ ; ici, il apparaît en $+\infty$. Le comportement est mirroré.
         steps:
           - math: '\lim_{x\to+\infty} e^{-x} = 0 \quad\Longrightarrow\quad \lim_{x\to+\infty}\left(e^{-x}-1\right)^2 = (0-1)^2 = 1'
-            note: "Quand x→+∞, -x→-∞ donc e^{-x}→0 : le second facteur tend vers un nombre FINI non nul, 1."
+            note: "Quand x→+∞, -x→-∞ donc $e^{-x}$→0 : le second facteur tend vers un nombre FINI non nul, 1."
           - math: '\lim_{x\to+\infty} g(x) = \lim_{x\to+\infty} x\left(e^{-x}-1\right)^2 = +\infty'
             note: "x part vers +∞, multiplié par un facteur qui tend vers 1 : pas de forme indéterminée, le produit part vers +∞."
           - math: '\lim_{x\to-\infty} e^{-x} = +\infty \quad\Longrightarrow\quad \lim_{x\to-\infty}\left(e^{-x}-1\right)^2 = +\infty'
-            note: "Quand x→-∞, -x→+∞ donc e^{-x}→+∞ : le second facteur part aussi à l'infini."
+            note: "Quand x→-∞, -x→+∞ donc $e^{-x}$→+∞ : le second facteur part aussi à l'infini."
           - math: '\lim_{x\to-\infty} g(x) = \lim_{x\to-\infty} x\left(e^{-x}-1\right)^2 = -\infty'
             note: "Produit de deux facteurs infinis (x→-∞, l'autre facteur →+∞) : le tableau du produit donne -∞ directement, signe de x conservé."
 
@@ -197,7 +197,7 @@ exercises:
           - math: 'g(x)-x = x\left[\left(e^{-x}-1\right)^2-1\right]'
             note: "On factorise par x, comme pour f."
           - math: '\left(e^{-x}-1\right)^2-1 = e^{-2x}-2e^{-x}+1-1 = e^{-2x}-2e^{-x}'
-            note: "On développe le carré : (u-1)² - 1 = u² - 2u avec u = e^{-x}, donc u² = e^{-2x}."
+            note: "On développe le carré : (u-1)² - 1 = u² - 2u avec $u = e^{-x}$, donc $u^2 = e^{-2x}$."
           - math: 'g(x)-x = x\,e^{-2x}-2x\,e^{-x}'
             note: "On distribue le facteur x."
           - math: '\lim_{x\to+\infty} x\,e^{-2x} = 0 \qquad\qquad \lim_{x\to+\infty} x\,e^{-x} = 0'
@@ -216,7 +216,7 @@ exercises:
           On localise le second zéro : $e^{-x}=2 \iff -x=\ln 2 \iff x=-\ln 2$. Les deux zéros du produit sont donc $x=-\ln 2$ (environ $-0{,}69$) et $x=0$ — cette fois-ci, contrairement au sujet, le zéro "supplémentaire" ($-\ln 2$) est **négatif**, alors qu'il était positif ($\ln 4$) pour $f$ : encore un signe que la structure est mirroée. On construit le tableau de signes sur les trois intervalles délimités par ces deux zéros.
         steps:
           - math: 'g(x)-x = x\,e^{-2x}-2x\,e^{-x} = x\,e^{-x}\left(e^{-x}-2\right)'
-            note: "On factorise par e^{-x} (toujours strictement positif)."
+            note: "On factorise par $e^{-x}$ (toujours strictement positif)."
           - math: 'e^{-x}-2 = 0 \iff -x = \ln 2 \iff x = -\ln 2'
             note: "Le second facteur s'annule en x = -ln 2 (environ -0,69) — négatif, contrairement au ln 4 positif du sujet."
           - math: '\text{signe de } g(x)-x = \text{signe de } x\left(e^{-x}-2\right) \quad (\text{car } e^{-x}>0 \text{ toujours})'

@@ -128,7 +128,7 @@ entries:
           Ce polynôme a pour discriminant $0$ : une **racine double**. C'est précisément ce cas — par opposition à deux racines distinctes ou à des racines complexes, non traités ici — qui impose le facteur $x$ supplémentaire dans la solution générale $(Ax+B)e^{rx}$ : une équation du second ordre réclame **deux** constantes libres, et $Ax+B$ en fournit deux, là où une simple constante $C$ devant $e^{rx}$ n'en fournirait qu'une.
         steps:
           - math: 'r^{2} - 2r + 1 = 0'
-            note: "Équation caractéristique associée à (E) : on cherche r tel que y = e^{rx} soit solution, ce qui transforme (E) en un polynôme en r."
+            note: "Équation caractéristique associée à (E) : on cherche r tel que $y = e^{rx}$ soit solution, ce qui transforme (E) en un polynôme en r."
           - math: '\Delta = (-2)^{2} - 4\times 1\times 1 = 4 - 4 = 0'
             note: "Discriminant nul : le second degré en r admet une racine double."
           - math: 'r = \dfrac{2}{2} = 1 \quad (\text{racine double, issue de } \Delta = 0)'
@@ -147,7 +147,7 @@ entries:
           - math: 'h(x) = (x+1)e^{x} = (1\times x + 1)e^{x}'
             note: "h a la forme (Ax+B)e^x avec A = 1 et B = 1 : c'est donc une solution de (E), d'après la question a)."
           - math: "h'(x) = e^{x} + (x+1)e^{x} = (x+2)e^{x}"
-            note: "Dérivée d'un produit, u(x) = x+1 et v(x) = e^{x} : (uv)' = u'v + uv'."
+            note: "Dérivée d'un produit, u(x) = x+1 et $v(x) = e^{x}$ : (uv)' = u'v + uv'."
           - math: 'h(0) = (0+1)e^{0} = 1'
             note: "Première condition vérifiée : h(0) = 1."
           - math: "h'(0) = (0+2)e^{0} = 2"
