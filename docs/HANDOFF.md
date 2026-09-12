@@ -4820,6 +4820,28 @@ vérité de citation, renvoi, hygiène de source ; **différer** aux auteurs
 enseigné, invente une misconception, ou demande une décision de conception. Une
 revue horodatée par notion (`REVIEW-2026-09-1x.md`) consigne l'appliqué ET le déféré.
 
+**Ce que la vague 1 pourra et ne pourra PAS établir sur le reste du corpus.**
+Mesuré avant d'attaquer les 42 notions restantes : `exercises.yaml` et
+`bank.yaml` existent sur **14/14** notions de maths et **25/25** de PC (banque
+24/25), mais sur **0/11** en SVT, et **0/12** pour la banque en philo — c'est le
+manque déjà établi en §10.6, et il n'a pas bougé. Conséquence pratique, à
+retenir en lançant les paires : **les deux contrôles qui ont produit le plus de
+correctifs objectifs jusqu'ici — le recalcul des barèmes contre le relevé, et la
+vérification des affirmations de fréquence d'examen — ne peuvent tout simplement
+pas tourner en SVT**, faute de relevé (`docs/sujets/svt/` n'existe pas). Pour
+ces onze notions, la critique fidélité se réduit au cadre, à la cohérence
+interne et à la biologie elle-même ; son silence sur les barèmes n'est pas un
+quitus.
+
+**Et un piège de sonde, consigné parce qu'il m'a eu.** J'ai tenté de trier les
+notions restantes par « nombre d'affirmations de fréquence d'examen » dans la
+leçon. Le compte est inutilisable : en SVT et en PC, « presque toujours »
+qualifie presque toujours un **fait scientifique** (« la combinaison de CMH est
+presque toujours unique », « ce virus est presque toujours intracellulaire »,
+« on observe presque toujours 1/4 »), pas une fréquence d'examen. Le signal
+exploitable pour prioriser, c'est le **nombre de SCOPE NOTES** et la taille de
+la banque.
+
 Dix-neuf notions à ce stade :
 
 | Notion | Objectifs appliqués | Déféré (marquant) |
