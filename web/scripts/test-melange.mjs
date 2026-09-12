@@ -45,18 +45,18 @@ const jiti = jitiFactory(fileURLToPath(import.meta.url), {
 });
 const { hashString, seededShuffle, shuffledChoices } = jiti(path.join(WEB, "src/lib/shuffle.ts"));
 
-/** Tous les items à choix du corpus, avec la position de la bonne réponse. */
-function lireCorpus() {
+/** Les questions à choix d'un fichier donné, avec la position de la bonne réponse. */
+function lireCorpus(fichier = "items.yaml", cle = "items") {
   const racine = path.join(WEB, "..", "content");
   const out = [];
   (function walk(d) {
     for (const e of fs.readdirSync(d, { withFileTypes: true })) {
       const p = path.join(d, e.name);
       if (e.isDirectory()) walk(p);
-      else if (e.name === "items.yaml") {
+      else if (e.name === fichier) {
         let doc;
         try { doc = yaml.load(fs.readFileSync(p, "utf8")); } catch { continue; }
-        const items = Array.isArray(doc) ? doc : (doc?.items ?? []);
+        const items = Array.isArray(doc) ? doc : (doc?.[cle] ?? []);
         if (!Array.isArray(items)) continue;
         for (const it of items) {
           if (!it || !Array.isArray(it.choices) || it.choices.length < 2) continue;
@@ -77,6 +77,13 @@ function lireCorpus() {
 
 const CORPUS = lireCorpus();
 const QUATRE = CORPUS.filter((i) => i.n === 4);
+// Les CHECKPOINTS passent par le même mélange (CheckpointItem.tsx:63) mais
+// n'étaient pas dans ce témoin : il ne lisait que `items.yaml`. Le mécanisme
+// marchait, sa PORTÉE n'était pas mesurée (ADR 0031). Mesuré le 2026-09-12 :
+// 362 checkpoints, dont 360 à quatre choix, et un biais rédactionnel ENCORE
+// PLUS FORT que celui du banc de fin — 75,0 % en A contre 65,0 %.
+const CP = lireCorpus("checkpoints.yaml", "checkpoints");
+const CP4 = CP.filter((i) => i.n === 4);
 const part = (liste, cle, pos) => liste.filter((i) => i[cle] === pos).length / liste.length;
 
 test("le corpus est CHARGÉ — un zéro silencieux est un échec", () => {
@@ -91,6 +98,31 @@ test("après mélange, aucune position ne domine ni ne s'efface", () => {
     lignes.push(`${String.fromCharCode(65 + p)} ${(100 * f).toFixed(1)} %`);
     assert.ok(f > 0.18 && f < 0.32, `position ${String.fromCharCode(65 + p)} : ${(100 * f).toFixed(1)} % — ${lignes.join("  ")}`);
   }
+});
+
+test("les CHECKPOINTS sont chargés, eux aussi", () => {
+  assert.ok(CP.length >= 300, `${CP.length} checkpoint(s) — lancé depuis le mauvais répertoire ?`);
+  assert.ok(CP4.length >= 300, `${CP4.length} checkpoint(s) à quatre choix`);
+});
+
+test("checkpoints : après mélange, aucune position ne domine ni ne s'efface", () => {
+  const lignes = [];
+  for (let p = 0; p < 4; p++) {
+    const f = part(CP4, "melange", p);
+    lignes.push(`${String.fromCharCode(65 + p)} ${(100 * f).toFixed(1)} %`);
+    assert.ok(f > 0.18 && f < 0.32, `checkpoints, position ${String.fromCharCode(65 + p)} : ${(100 * f).toFixed(1)} % — ${lignes.join("  ")}`);
+  }
+});
+
+test("checkpoints : le biais rédactionnel EXISTE aussi", () => {
+  // Même second témoin que pour le banc de fin, et il porte plus fort ici :
+  // la bonne réponse est écrite en premier dans 75 % des checkpoints.
+  const a = part(CP4, "ecrit", 0);
+  assert.ok(
+    a > 0.45,
+    `la bonne réponse n'est plus écrite en premier que dans ${(100 * a).toFixed(1)} % des checkpoints : ` +
+      `« plat après mélange » ne prouve plus rien pour eux — relire ce fichier avant de baisser le seuil`
+  );
 });
 
 test("le biais rédactionnel EXISTE — sans quoi le test précédent ne prouve rien", () => {

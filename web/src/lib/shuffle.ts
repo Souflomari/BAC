@@ -39,6 +39,21 @@
  *     the authored bias still EXISTS: without that second witness, "flat
  *     after shuffle" would also be green with the shuffle removed.
  *
+ *     ÉTENDU 2026-09-12 — le témoin ne lisait que `items.yaml`. Les
+ *     CHECKPOINTS passent pourtant par le même mélange
+ *     (CheckpointItem.tsx:63) : le mécanisme marchait, sa PORTÉE n'était pas
+ *     mesurée (ADR 0031 — la portée se mesure séparément du fonctionnement).
+ *     Mesuré sur les 362 checkpoints (360 à quatre choix), et le biais
+ *     rédactionnel y est ENCORE PLUS FORT que sur le banc de fin :
+ *
+ *       as authored   A 75.0%   B 18.6%   C  5.8%   D  0.6%
+ *       after shuffle A 26.1%   B 24.7%   C 20.3%   D 28.9%
+ *
+ *     Douze notions de PC écrivaient la bonne réponse en A sur la TOTALITÉ
+ *     de leurs checkpoints. Rien de cela n'atteint l'élève — mais rien ne le
+ *     surveillait non plus. `test-melange` les couvre désormais, avec les
+ *     deux mêmes témoins.
+ *
  * Pure, dependency-free. No Math.random, no Date.now, no external state.
  *
  * KEEP IN SYNC: web/scripts/item-stats.mjs and web/scripts/dom-truth.mjs each
