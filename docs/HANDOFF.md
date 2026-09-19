@@ -7976,3 +7976,38 @@ géologie le portent déjà.
 — 4,03190 − 4,00151 = 0,03039 u, et 0,03039 × 931,5 = 28,31 MeV, ce qui est
 bien l'énergie de liaison de l'hélium-4 ; `atome-mecanique-newton/spectre-raies`
 — 410, 434, 486, 656 nm sont les quatre raies de Balmer visibles, justes.
+
+---
+
+### 11.95 Deux sondes de plus, deux RÉSULTATS NÉGATIFS — et pourquoi il faut les écrire
+
+Même logique que §11.85 et §11.94 : une sonde qui ne trouve rien coûte cher à
+refaire, et elle est perdue si personne ne dit qu'elle a été passée.
+
+**1. « L'énoncé donne X » — X est-il vraiment dans l'énoncé ?** Motif attendu :
+un raisonnement qui attribue à l'énoncé une donnée que l'énoncé ne porte pas,
+c'est-à-dire un exercice qui se répond avec ce que la LEÇON a donné en se
+faisant passer pour l'examen. Sonde écrite : pour chaque entrée, rassembler
+tous les champs d'énoncé (`stem`, `intro`, `part`, `title`, `text`) de l'entrée
+ENTIÈRE, puis vérifier que chaque jeton mathématique cité après « d'après
+l'énoncé / l'énoncé donne / précise / fournit » y figure.
+
+**77 appels examinés, 14 signalés, 0 défaut** après lecture. Les 14 sont des
+artefacts de sonde, de deux sortes, et ce sont les deux à connaître avant de la
+refaire : (a) **l'énoncé dit la chose EN TOUTES LETTRES plutôt qu'en LaTeX** —
+`rlc-serie` écrit « Sachant que la pseudopériode est approximativement égale à
+la période propre $T_0$ », et le raisonnement la cite comme « $T\approx T_0$ » ;
+la comparaison de jetons ne peut pas les rapprocher ; (b) **la donnée vit dans
+un champ FRÈRE** — une masse molaire donnée dans l'`intro` de l'exercice et
+citée dans le `reasoning` de la question 3. Une première version de la sonde,
+qui prenait pour unité le plus petit dict portant un `stem`, donnait 38 faux
+positifs pour cette seule raison ; passer à l'entrée entière en a supprimé les
+deux tiers. **La portée de la sonde EST la définition de l'énoncé.**
+
+**2. Une légende de sidecar par groupe `step-N` du SVG.** Motif attendu : une
+légende qui ne s'affiche jamais (plus de légendes que d'étapes) ou une étape
+muette (l'inverse). C'est mécanique et sans faux positif possible.
+**235 sidecars examinés, 0 écart.** La couche de mise en scène est
+structurellement saine — ce qui, dit à côté du défaut de §11.93, situe
+exactement le problème : **les figures sont bien CÂBLÉES, ce sont leurs
+nombres qui ne sont relus par rien.**
