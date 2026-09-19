@@ -7145,6 +7145,24 @@ j'ai vérifié ligne à ligne. C'est la liste à traiter en premier :
 - `philo/la-violence` / `cp-r6-gandhi`
 - `philo/le-droit-la-justice` / `cp-r6-rupture`
 
+**LES CINQ SONT TRAITÉS (2026-09-19), et le correctif est le même partout :
+déplacer le marqueur AVANT le bloc qui révèle.** La prose de rupture existait
+déjà dans les cinq cas ; il ne manquait que l'ordre.
+
+Dans `controle-catalyse`, un seul paragraphe portait la définition ET la règle
+d'écriture que le point d'arrêt demande ; il est coupé en deux, la définition
+avant la porte, la règle après.
+
+Dans les quatre notions de philo, le motif était identique et plus net encore :
+un encadré « **Erreur à éviter** » posé juste avant la porte, dont la bonne
+réponse était la paraphrase. L'encadré passe APRÈS — ce qui est d'ailleurs sa
+vraie place : il confirme ce que l'élève vient d'engager, au lieu de le lui
+souffler.
+
+**Mesuré après** : sonde A 13 → 8, sonde B 37 → 32, et l'**intersection tombe
+à 0**. Les signaux restants de chaque sonde prise isolément n'ont pas de second
+avis ; ils restent au jugement, comme dit plus haut.
+
 **Sévérité mesurée** de la porte armée : 2 occurrences sur les 62 notions, toutes deux en SVT.
 `genetique-humaine` écrivait *« peux-tu dire, sans relire, combien de paires
 sont des autosomes, et combien sont des gonosomes ? **(Réponse : 22 et 1 …)** »*

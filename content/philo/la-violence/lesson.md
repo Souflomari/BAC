@@ -109,9 +109,10 @@ Tu as déjà rencontré, dans la leçon « L'État » (chapitre 3), le raisonnem
 
 **Ce que Hobbes dirait de la scène du chapitre 1 :** ce que les quatre voisins ont fait, cette nuit-là, c'est reprendre, l'espace de vingt minutes, ce droit de nature que le contrat social est censé leur avoir fait déposer entre les mains d'une autorité commune — un retour local et passager à la condition même que l'État existe pour empêcher.
 
-> **Erreur à éviter :** ne dis jamais que Hobbes fait l'apologie de la violence ou la juge souhaitable — il la décrit comme un fait structurel de l'absence d'autorité commune, précisément pour justifier la nécessité du Léviathan (« L'État », chapitre 3). Ne confonds pas non plus le « droit de nature » (une liberté de fait, en l'absence de toute loi commune) avec un droit moralement approuvé : Hobbes le constate, il ne le recommande pas.
 
 [[checkpoint:cp-r3-hobbes]]
+
+> **Erreur à éviter :** ne dis jamais que Hobbes fait l'apologie de la violence ou la juge souhaitable — il la décrit comme un fait structurel de l'absence d'autorité commune, précisément pour justifier la nécessité du Léviathan (« L'État », chapitre 3). Ne confonds pas non plus le « droit de nature » (une liberté de fait, en l'absence de toute loi commune) avec un droit moralement approuvé : Hobbes le constate, il ne le recommande pas.
 
 ---
 
@@ -218,9 +219,10 @@ Comparé à la violence révolutionnaire (chapitre 6), le satyagraha refuse de n
 
 **Ce que Gandhi dirait de la scène du chapitre 1 :** si les quatre voisins avaient répondu à l'insécurité de leur quartier par une résistance active mais non-violente — organiser une présence collective visible et continue, documenter et rendre publiques les défaillances répétées de la police, alerter les autorités avec insistance — ils auraient agi avec autant de détermination, sans reproduire sur le voleur le geste même qu'ils lui reprochaient : une atteinte à l'intégrité et à la sécurité d'autrui.
 
-> **Erreur à éviter — la confusion la plus fréquente sur ce point du programme :** ne confonds jamais la non-violence gandhienne avec la passivité, la résignation, ou un simple refus de se défendre. C'est, à l'inverse, une résistance ACTIVE, organisée et publique, qui accepte consciemment la répression pour convaincre — pas une absence de résistance à l'injustice. Confondre les deux, c'est manquer précisément ce qui fait la radicalité du satyagraha : résister sans jamais nier, y compris chez l'adversaire, le statut de personne.
 
 [[checkpoint:cp-r6-gandhi]]
+
+> **Erreur à éviter — la confusion la plus fréquente sur ce point du programme :** ne confonds jamais la non-violence gandhienne avec la passivité, la résignation, ou un simple refus de se défendre. C'est, à l'inverse, une résistance ACTIVE, organisée et publique, qui accepte consciemment la répression pour convaincre — pas une absence de résistance à l'injustice. Confondre les deux, c'est manquer précisément ce qui fait la radicalité du satyagraha : résister sans jamais nier, y compris chez l'adversaire, le statut de personne.
 
 ---
 

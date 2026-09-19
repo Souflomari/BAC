@@ -85,9 +85,11 @@ Changer de réactif fait passer le rendement de $67\,\%$ à $100\,\%$ — et en 
 
 ### Ce qu'est un catalyseur, et ses deux rôles
 
-Un **catalyseur** est une espèce chimique qui **accélère** une réaction sans être consommée : il participe au déroulement de la transformation, mais il en ressort intact, en même quantité et de même nature qu'au départ. On l'écrit au-dessus de la flèche de l'équation, jamais parmi les réactifs ni parmi les produits — puisqu'il n'appartient ni à l'un ni à l'autre camp.
+Un **catalyseur** est une espèce chimique qui **accélère** une réaction sans être consommée : il participe au déroulement de la transformation, mais il en ressort intact, en même quantité et de même nature qu'au départ.
 
 [[checkpoint:cp-r2-catalyseur-bilan]]
+
+Puisqu'il n'appartient ni au camp des réactifs ni à celui des produits, on l'écrit **au-dessus de la flèche** de l'équation — jamais parmi les uns, jamais parmi les autres.
 
 Le programme lui reconnaît deux rôles, qu'il faut savoir nommer :
 

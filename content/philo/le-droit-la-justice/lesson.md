@@ -204,9 +204,10 @@ Rawls ajouterait que des participants placés derrière un voile d'ignorance, ig
 
 Et la distinction légalité/légitimité, enfin, permet de nommer précisément ce que la plupart des élèves ressentaient d'emblée face à ce dossier : une décision parfaitement légale, mais qu'une partie au moins d'entre eux jugeait, malgré tout, illégitime dans son résultat — deux jugements qui, on le voit maintenant, n'ont jamais à coïncider automatiquement.
 
-> **Erreur à éviter :** ne conclus pas de cette leçon qu'« une loi légale ne mérite jamais l'obéissance si elle est illégitime à mes yeux » — la distinction légalité/légitimité sert à ANALYSER pourquoi un décalage est possible, pas à justifier automatiquement la désobéissance individuelle à toute loi qu'on trouve personnellement injuste (question distincte, que tu creuseras dans les sujets d'entraînement ci-dessous).
 
 [[checkpoint:cp-r6-rupture]]
+
+> **Erreur à éviter :** ne conclus pas de cette leçon qu'« une loi légale ne mérite jamais l'obéissance si elle est illégitime à mes yeux » — la distinction légalité/légitimité sert à ANALYSER pourquoi un décalage est possible, pas à justifier automatiquement la désobéissance individuelle à toute loi qu'on trouve personnellement injuste (question distincte, que tu creuseras dans les sujets d'entraînement ci-dessous).
 
 ---
 

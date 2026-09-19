@@ -149,9 +149,10 @@ Bachelard résume cette méfiance envers l'opinion dans une formule restée cél
 
 Renoncer au modèle géocentrique (chapitre 4) n'a pas consisté à accumuler plus d'observations dans le même sens que l'évidence sensible (le Soleil qui « se lève ») — il a fallu rompre avec cette évidence elle-même, la traiter comme un obstacle à dépasser plutôt que comme un point de départ fiable. Et même à l'échelle de la soirée de samedi (chapitre 1) : ta propre certitude immédiate — « je m'en souviens très clairement, donc c'est ainsi que ça s'est passé » — est précisément le genre d'évidence spontanée que Bachelard invite à ne jamais accepter sans l'interroger : la mémoire, elle aussi, reconstruit plus qu'elle n'enregistre fidèlement, et peut constituer, elle-même, un obstacle plutôt qu'un accès direct et sûr au vrai.
 
-> **Erreur à éviter :** ne confonds jamais un obstacle épistémologique (interne, logé dans une habitude de pensée ou une évidence trop vite acceptée) avec un obstacle purement matériel ou pratique (un manque de données, un instrument insuffisant, un manque de temps) : ce dernier peut se résorber en accumulant plus de moyens ; l'obstacle épistémologique, lui, exige une rupture active avec une manière de penser, pas seulement plus de données dans le même sens.
 
 [[checkpoint:cp-r4-rupture]]
+
+> **Erreur à éviter :** ne confonds jamais un obstacle épistémologique (interne, logé dans une habitude de pensée ou une évidence trop vite acceptée) avec un obstacle purement matériel ou pratique (un manque de données, un instrument insuffisant, un manque de temps) : ce dernier peut se résorber en accumulant plus de moyens ; l'obstacle épistémologique, lui, exige une rupture active avec une manière de penser, pas seulement plus de données dans le même sens.
 
 ---
 
