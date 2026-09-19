@@ -719,11 +719,16 @@ coverage_summary:
   floor: 3
   floor_met: true
   ramp_coverage:
+    # Mesuré le 2026-09-19 sur les 62 notions : 51 portent au moins un item
+    # au barreau R0 et 50 au DERNIER barreau. Un zéro ici n'est donc PAS une
+    # fatalité de structure, c'est un état de cette notion — il s'écrit.
+    R0: 0   # l'accroche ne porte aucun item de banc
     R1: 1
     R2: 2
     R3: 2
     R4: 3
     R5: 1
+    R6: 0   # le chapitre « Pour t'entraîner » ne porte aucun item de banc
   honest_state: >-
     Les cinq misconceptions déclarées sont couvertes, aucune sous le
     plancher. Quatre y siègent EXACTEMENT (3 items) : la marge est nulle

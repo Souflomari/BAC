@@ -579,17 +579,21 @@ coverage_summary:
   floor: 3
   floor_met: true
   ramp_coverage:
+    # Mesuré le 2026-09-19 sur les 62 notions : 51 portent au moins un item
+    # au barreau R0 et 50 au DERNIER barreau. Un zéro ici n'est donc PAS une
+    # fatalité de structure, c'est un état de cette notion — il s'écrit.
+    R0: 0   # l'accroche ne porte aucun item de banc
     R1: 1
     R2: 1
     R3: 1
     R4: 2
     # R5 — « Les plaques lithosphériques et leurs frontières » — n'a AUCUN item
     # de banc. Le zéro est ÉCRIT, pas tu : un compte absent n'est pas un compte
-    # neutre. (R0, l'accroche, et R8, « Pour t'entraîner », sont exemptés
-    # par convention : ils ne portent d'item dans aucune notion du corpus.)
+    # neutre.
     R5: 0
     R6: 2
     R7: 1
+    R8: 0   # le chapitre « Pour t'entraîner » ne porte aucun item de banc
   honest_state: >-
     Les quatre misconceptions déclarées sont couvertes, aucune sous le
     plancher. Deux y siègent EXACTEMENT (3 items) : la marge est nulle

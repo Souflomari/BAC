@@ -2335,6 +2335,26 @@ coverage_summary:
   floor: 3
   floor_met: true
   discussion_cluster_weighted: true   # MC-11..MC-14 carry 4 items each, per spec §3/§7
+  ramp_coverage:
+    # ÉCRITE le 2026-09-19. Elle manquait : c'était la SEULE notion des 62 sans
+    # table de barreaux, sous aucun des deux noms en usage dans le dépôt
+    # (`ramp_coverage`, 57 notions ; `per_rung`, 4). Recomptée depuis les tags
+    # `rung:` bruts des 49 items — 3+8+6+7+6+16+3+0 = 49, le total concorde.
+    R0: 3
+    R1: 8
+    R2: 6
+    R3: 7
+    R4: 6
+    # R5 porte à lui seul un tiers du banc : c'est le cluster de la discussion
+    # (MC-11..MC-14), pondéré à dessein — voir `discussion_cluster_weighted`.
+    R5: 16
+    R6: 3
+    # R7 — « À toi, sur deux textes que tu n'as pas encore vus » — ne porte
+    # AUCUN item de banc, et le zéro est écrit plutôt que tu. Ce n'est pas un
+    # trou : le sommet est servi par `exercises.yaml` (r-bac et r-variation,
+    # douze questions ouvertes). Mais un compte absent n'est pas un compte
+    # neutre, et le lecteur de cette table doit voir d'où vient le sommet.
+    R7: 0
   # Recomputed by loading this file with js-yaml and tallying every
   # choices[].misconception (+ also_reveals[]) value per item — not hand-
   # counted. An item counts once per misconception if ANY of its distractors

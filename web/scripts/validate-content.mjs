@@ -91,6 +91,23 @@ import yaml from "js-yaml";
 import fs from "node:fs";
 import path from "node:path";
 
+// ── §11.97 — DETTE DÉCLARÉE : les tables qui comptent un barreau SANS chapitre.
+//    Ces items visent un code de barreau auquel aucun titre de leçon ne répond :
+//    ils sont structurellement inatteignables. Le remède est ÉDITORIAL (à quel
+//    chapitre appartiennent-ils ?) et non mécanique — ajouter « R6 — » au titre
+//    voisin ferait tomber les signalements à zéro en rangeant trois problèmes de
+//    Bayes sous un chapitre « variable aléatoire », et cinq questions de tableau
+//    de signes sous un chapitre « fonction réciproque ». Le vert serait acheté là
+//    où plus aucun instrument ne regarde (§11.69). Mesuré et daté le 2026-09-19.
+//    Retirer une entrée dès que la dette est payée : la porte échoue AUSSI si une
+//    entrée ne correspond plus à rien.
+const DETTE_BARREAU_FANTOME = new Map([
+  ["content/maths/derivabilite-etude-fonctions", ["R6"]],
+  ["content/maths/limites-continuite", ["R7"]],
+  ["content/maths/probabilites-conditionnelles", ["R6", "R7"]],
+]);
+const fantomesVus = new Set();
+
 const REPO = path.resolve(path.dirname(new URL(import.meta.url).pathname), "../..");
 const rawArgv = process.argv.slice(2);
 const strictMode = rawArgv.includes("--strict");
@@ -869,16 +886,82 @@ for (const dir of dirs) {
     // recomptent depuis les tags, pas que les barreaux comptés EXISTENT.
     // Avertissement et non échec : le remède est éditorial (à quel chapitre ces
     // items appartiennent-ils ?), pas mécanique — voir §11.69.
+    //
+    //  ── §11.97 — LA TABLE DE BARREAUX DOIT DÉCRIRE LA LEÇON (ÉCHEC) ────────
+    //
+    //  PORTÉE d'abord, parce que c'est là qu'était le vrai défaut. La version
+    //  précédente de ce bloc ne lisait que `coverage_summary.per_rung`. Mesuré
+    //  le 2026-09-19 : 57 notions sur 62 écrivent cette table sous le nom
+    //  `ramp_coverage`, 4 sous le nom `per_rung`, 1 n'en avait aucune. La porte
+    //  ne regardait donc que 4 notions sur 62 et se taisait sur les 57 autres —
+    //  un vert qui ne disait pas « conforme » mais « pas regardé » (ADR 0031 :
+    //  la PORTÉE d'un mécanisme se mesure séparément de son fonctionnement).
+    //  Les deux noms sont désormais lus.
+    //
+    //  ET ELLE PEUT DEVENIR ROUGE. L'ancienne version n'émettait qu'un ⚠ : elle
+    //  ne pouvait, par construction, rien faire échouer. Trois contrôles
+    //  échouent maintenant pour de bon :
+    //    (a) aucune table, alors que la notion a des items ;
+    //    (b) un chapitre `## R<n>` de la leçon ABSENT de la table — un compte
+    //        absent n'est pas un compte neutre, il rend le trou invisible ;
+    //    (c) un compte déclaré qui ne vaut pas le nombre d'items réellement
+    //        tagués à ce barreau.
+    //
+    //  LE BARREAU FANTÔME (la table compte un barreau sans titre) reste une
+    //  DETTE DÉCLARÉE et non un échec : son remède est éditorial, pas mécanique.
+    //  La dette est nominative, et le ratchet joue DANS LES DEUX SENS — une
+    //  notion hors liste qui se met à déclarer un barreau fantôme échoue, et une
+    //  entrée de la liste qui ne correspond plus à rien échoue aussi, pour qu'on
+    //  vienne la retirer. Sans ce second sens, la liste deviendrait le tapis
+    //  sous lequel glisser les cas neufs.
     {
-      const pr = yamlDocs["items.yaml"]?.coverage_summary?.per_rung;
-      if (pr && typeof pr === "object") {
-        for (const r of Object.keys(pr)) {
-          const m = String(r).match(/^(R(?:\d+|-[a-z]+))$/);
-          if (m && !headingRungs.has(m[1])) {
+      const cs = yamlDocs["items.yaml"]?.coverage_summary;
+      const tbl = cs?.ramp_coverage ?? cs?.per_rung;
+      const items = Array.isArray(yamlDocs["items.yaml"]?.items) ? yamlDocs["items.yaml"].items : [];
+      const reel = new Map();
+      for (const it of items) {
+        const r = typeof it?.rung === "string" ? it.rung.trim() : null;
+        if (r) reel.set(r, (reel.get(r) ?? 0) + 1);
+      }
+      if (items.length && (!tbl || typeof tbl !== "object")) {
+        console.error(
+          `  ✗ ${dir}: coverage_summary n'a ni ramp_coverage ni per_rung — ${items.length} items, aucune table de barreaux`,
+        );
+        dirFail++;
+      } else if (tbl && typeof tbl === "object") {
+        // Cinq notions PC logent une `note:` en prose DANS la table ; ce n'est
+        // pas un barreau. Seules les clés en forme de code de barreau sont lues.
+        const EST_BARREAU = /^R(?:\d+|-[a-z]+)$/;
+        const cles = new Set(Object.keys(tbl).map(String).filter((k) => EST_BARREAU.test(k)));
+        for (const r of headingRungs) {
+          if (!cles.has(r)) {
             console.error(
-              `  ⚠ ${dir}: coverage_summary.per_rung compte ${pr[r]} item(s) au rung ${r}, mais lesson.md n'a aucun titre « ${r} » — ` +
-                `le résumé annonce la couverture d'un chapitre qui n'existe pas`
+              `  ✗ ${dir}: lesson.md a un chapitre « ${r} » que la table de barreaux n'énumère pas ` +
+                `(${reel.get(r) ?? 0} item(s) y sont tagués) — un compte absent n'est pas un compte neutre`,
             );
+            dirFail++;
+          }
+        }
+        for (const [r, n] of Object.entries(tbl)) {
+          if (!EST_BARREAU.test(String(r))) continue;
+          if (!headingRungs.has(String(r))) {
+            if ((DETTE_BARREAU_FANTOME.get(dir) ?? []).includes(String(r))) {
+              fantomesVus.add(`${dir}|${r}`);
+            } else {
+              console.error(
+                `  ✗ ${dir}: la table compte ${n} item(s) au barreau ${r}, mais lesson.md n'a aucun titre « ${r} » — ` +
+                  `le résumé annonce la couverture d'un chapitre qui n'existe pas`,
+              );
+              dirFail++;
+            }
+            continue;
+          }
+          const vrai = reel.get(String(r)) ?? 0;
+          if (Number(n) !== vrai) {
+            console.error(
+              `  ✗ ${dir}: la table dit ${n} item(s) au barreau ${r}, les tags rung: en comptent ${vrai}`,
+            );
+            dirFail++;
           }
         }
       }
@@ -2331,6 +2414,19 @@ for (const dir of dirs) {
     console.log(`✓ ${dir} — math ${display.length}+${inline.length} ok, yaml ok${yamlMath}${media}`);
   }
   failures += dirFail;
+}
+// §11.97, second sens du ratchet : une dette payée doit être RETIRÉE de la liste.
+for (const [d, rungs] of DETTE_BARREAU_FANTOME) {
+  if (!dirs.includes(d)) continue;
+  for (const r of rungs) {
+    if (!fantomesVus.has(`${d}|${r}`)) {
+      console.error(
+        `  ✗ ${d}: la dette déclare un barreau fantôme ${r} qui n'existe plus — ` +
+          `retire-le de DETTE_BARREAU_FANTOME dans ce fichier, sinon la liste devient un tapis`,
+      );
+      failures++;
+    }
+  }
 }
 console.log(`\n━━ validate-content: ${failures} failure(s) across ${dirs.length} dir(s) ━━`);
 process.exit(failures ? 1 : 0);

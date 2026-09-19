@@ -689,6 +689,10 @@ coverage_summary:
     # les 38 ATP ; seul le checkpoint cp-r5-bilan le fait, et ce fichier pose
     # lui-même que les checkpoints ne comptent pas. Le trou existait avant, il
     # était rangé sous une mauvaise étiquette.
+    # Mesuré le 2026-09-19 sur les 62 notions : 51 portent au moins un item
+    # au barreau R0 et 50 au DERNIER barreau. Un zéro ici n'est donc PAS une
+    # fatalité de structure, c'est un état de cette notion — il s'écrit.
+    R0: 0   # l'accroche ne porte aucun item de banc
     R1: 2
     R2: 1
     R3: 1
@@ -696,6 +700,7 @@ coverage_summary:
     R5: 0
     R6: 2
     R7: 1
+    R8: 0   # le chapitre « Pour t'entraîner » ne porte aucun item de banc
   honest_state: >-
     Les cinq misconceptions déclarées sont couvertes, aucune sous le
     plancher. Quatre y siègent EXACTEMENT (3 items) : la marge est nulle
