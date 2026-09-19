@@ -24,7 +24,7 @@
 > toutes étaient servies. Le chiffre cité par K-8 et le HANDOFF était faux par
 > défaut, sans que rien ne le signale.
 
-**Chiffres au 2026-09-12 : 152 entrées sur 247**, dont
+**Chiffres au 2026-09-19 : 152 entrées sur 247**, dont
 **152 appartiennent à une épreuve complète** (donc affichée à l'élève en
 mode examen).
 
@@ -48,13 +48,13 @@ Trié par nombre de mentions.
 |---:|---|---|---|---:|:---:|:---:|
 | 35 | `bk-2024-r-x4b` | `pc/rlc-serie` | SPC 2024 rattrapage | 2 | oui | **non** |
 | 29 | `bk-2022-r-x3` | `pc/dipole-rl` | SPC 2022 rattrapage | 2.25 | oui | **non** |
-| 29 | `bk-2025-r-x3` | `pc/dipole-rl` | SPC 2025 rattrapage | 3.75 | oui | **non** |
+| 27 | `bk-2025-r-x3` | `pc/dipole-rl` | SPC 2025 rattrapage | 3.75 | oui | **non** |
 | 26 | `bk-2015-n-x3` | `pc/rc-charge` | SPC 2015 normale | 2.5 | oui | oui |
 | 23 | `bk-2023-r-x3` | `pc/rc-charge` | SPC 2023 rattrapage | 1.5 | oui | **non** |
 | 23 | `bk-2024-r-x4` | `pc/rc-charge` | SPC 2024 rattrapage | 1.5 | oui | **non** |
-| 21 | `bk-2012-r-x1b` | `pc/suivi-temporel-vitesse` | SPC 2012 rattrapage | 4 | oui | oui |
 | 21 | `bk-2021-r-x1` | `pc/reactions-acido-basiques` | SPC 2021 rattrapage | 5 | oui | **non** |
 | 21 | `bk-2021-r-x4b` | `pc/dipole-rl` | SPC 2021 rattrapage | 2 | oui | **non** |
+| 20 | `bk-2012-r-x1b` | `pc/suivi-temporel-vitesse` | SPC 2012 rattrapage | 4 | oui | oui |
 | 20 | `bk-2013-r-x3b` | `pc/rlc-serie` | SPC 2013 rattrapage | 2.75 | oui | oui |
 | 19 | `bk-2020-n-x4` | `pc/rlc-serie` | SPC 2020 normale | 3.5 | oui | **non** |
 | 19 | `bk-2021-r-x4c` | `pc/rlc-serie` | SPC 2021 rattrapage | 1.5 | oui | **non** |

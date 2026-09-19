@@ -1242,7 +1242,7 @@ for (const dir of dirs) {
     };
     for (const fname of Object.keys(yamlDocs)) recolte(yamlDocs[fname]);
     // Un NOM DE FICHIER NU compte aussi : §11.61 n'attrape que le chemin
-    // complet (« content/pc/x/bank.yaml »), et laissait donc passer
+    // complet — dossier, sous-dossier, puis nom — et laissait donc passer
     // « transcrit sous `etat-equilibre.md` » ou « la leçon (…, lesson.md) ».
     // Mesuré le 2026-09-12 : 2 occurrences dans 2 notions, les deux réécrites.
     const motifs = [/\bbk-\d{4}-[nr]-[a-z0-9]+\b/,

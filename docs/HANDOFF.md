@@ -6940,3 +6940,71 @@ une fois, et la répéter n'ajouterait pas d'information. **La batterie est donc
 rejouée en local avant chaque push** — 90/90 tests, `token-gate`,
 `contrast-gate`, `validate-content --strict` sur 62 dossiers — et aucun commit
 de cette session ne prétend « CI verte ».
+
+### §11.81 — ma « batterie locale » était plus étroite que la CI, et cinq portes étaient rouges
+
+**Le constat, d'abord, parce qu'il porte sur mes propres affirmations.** Depuis
+le début de cette session, chaque message de commit dit « batterie locale »
+et liste : 90 tests unitaires, `token-gate`, `contrast-gate`,
+`validate-content --strict` sur 62 dossiers. En relisant `gates.yml` — ce que
+la CI aurait lancé si elle tournait — j'ai constaté que **six portes sans
+navigateur n'étaient pas dans ma batterie** : `liens-fichiers --porte`,
+`lectures-graphiques --check`, `indice-longueur --porte`,
+`indice-absolu --porte`, `couverture-diagnostique --porte`,
+`resume-couverture --porte`.
+
+Lancées sur HEAD : **cinq sur six ROUGES.** Avec sept jours sans CI, personne
+ne l'avait vu. Elles sont désormais dans la batterie d'avant-push.
+
+**Quatre réparées, dont trois causées par moi.**
+
+1. **`indice-longueur` et `indice-absolu`** — tous deux sur
+   `pc/decroissance-radioactive`, tous deux de mon fait. Mon correctif de
+   vague 1 avait remplacé, dans la clé de DECRO-2, « *et **jamais** du nombre
+   total de nucléons* » par « *pas seulement de la taille du noyau* ». La
+   correction de fond était juste — au-delà de Z=83 tous les noyaux sont
+   instables, donc « jamais » était trop fort — mais elle a **retiré à la clé
+   son seul absolu** (les trois distracteurs en portaient : « forcément »,
+   « strictement aucune », « nécessairement ») et l'a rendue **la plus
+   longue**. Deux indices exploitables d'un coup. Réécrite : « *La stabilité se
+   lit toujours sur la position du couple (N, Z) dans la vallée, jamais sur la
+   seule taille du noyau.* » — 114 caractères au lieu de 165, deux absolus
+   VRAIS, et le distracteur le plus court allongé au registre des autres.
+
+2. **`liens-fichiers`** — de mon fait aussi, et savoureux : le renvoi mort
+   était dans un **commentaire que j'avais écrit** pour la porte §11.67, où
+   j'illustrais le motif par un chemin d'exemple. La porte lisait cette
+   illustration comme une vraie référence. Le commentaire décrit maintenant le
+   motif en mots.
+
+3. **`lectures-graphiques --check`** — l'inventaire K-8 avait dérivé ;
+   régénéré.
+
+**Une laissée ROUGE, délibérément : `couverture-diagnostique`.**
+`pc/systemes-oscillants` passe de 3 à 6 distracteurs sans étiquette. La cause
+est *mon* correctif §11.58 : trois distracteurs portaient
+`misconception: hors_cadre_probe`, un FANTÔME que le modèle apprenant
+compilait comme une vraie misconception. Le retirer était juste. Le compteur
+n'a donc pas empiré — **il a cessé de mentir** : il comptait trois étiquettes
+qui n'en étaient pas.
+
+J'ai rendu l'état explicite (`misconception: null` sur les trois, ce que la
+porte sanctionne, et ce que le `coverage_summary` de la notion déclarait déjà
+en champ d'auteur : « *une sonde de bord, pas une erreur nommée* »). Mais
+**je n'ai pas re-scellé**, pour deux raisons :
+
+- le sceau porte sa propre règle : « *Régénérer UNIQUEMENT après avoir amélioré
+  la couverture — jamais pour faire taire une régression* ». Je n'ai pas
+  amélioré la couverture : le moteur ne sait toujours pas nommer ces trois
+  erreurs ;
+- et je ne peux pas l'améliorer seul. Les trois portent un défaut de
+  **vocabulaire des régimes** (« amorti ; critique ; forcé ») ou une
+  pseudo-période en forme close — aucune des cinq misconceptions déclarées de
+  la notion ne les couvre, et en déclarer une sixième échouerait au plancher
+  de trois items par misconception : je n'en ai que deux.
+
+**Décision du propriétaire**, donc : soit écrire un troisième item pour porter
+une misconception « noms des trois régimes » et l'ajouter au registre, soit
+acter que ces trois distracteurs restent sans étiquette et re-sceller à 6 en
+écrivant pourquoi. Tant que ce n'est pas tranché, la porte reste rouge — et
+c'est bien qu'elle le reste.
