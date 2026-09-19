@@ -351,7 +351,7 @@ items:
     choices:
       - id: A
         text: >
-          L'apport d'O2 aux fibres musculaires ne suit jamais assez vite la demande
+          L'apport d'$O_2$ aux fibres musculaires ne suit jamais assez vite la demande
           énergétique très élevée de l'effort intense ; les cellules musculaires
           basculent alors vers la fermentation lactique pour régénérer rapidement le
           $NAD^+$ nécessaire à la poursuite de la glycolyse.
@@ -378,7 +378,7 @@ items:
         misconception: mc.svt.svt_liberation_energie.fermentation-mal-comprise
         feedback: >
           Seules les fibres musculaires directement sollicitées, dont
-          l'apport en O2 ne suit plus la demande, basculent vers la
+          l'apport en $O_2$ ne suit plus la demande, basculent vers la
           fermentation lactique. Ce n'est pas un basculement généralisé à
           « toutes les cellules du corps ».
       - id: D
@@ -394,13 +394,13 @@ items:
           humaines la réalisent elles-mêmes, ponctuellement, quand l'apport
           en dioxygène ne suit plus la demande.
     correct_feedback: >
-      La fermentation lactique prend le relais quand l'apport en O2 ne peut
+      La fermentation lactique prend le relais quand l'apport en $O_2$ ne peut
       plus suivre la demande d'ATP : elle régénère le $NAD^+$ nécessaire à la
       poursuite de la glycolyse, au prix d'un bilan énergétique bien plus
       faible que la respiration.
     solution: |
       **Ce qui déclenche la fermentation :** la demande d'ATP dépasse ce que
-      l'apport en O2 permet de soutenir par la chaîne respiratoire.
+      l'apport en $O_2$ permet de soutenir par la chaîne respiratoire.
 
       **Ce qu'elle accomplit :** elle régénère le $NAD^+$ consommé par la
       glycolyse, lui permettant de continuer (2 ATP nets par glucose), au
@@ -445,8 +445,9 @@ items:
         feedback: >
           La fermentation n'utilise pas du tout le cycle de Krebs — c'est
           précisément pour cela que son bilan s'arrête à 2 ATP. Le cycle de
-          Krebs et la chaîne respiratoire exigent tous deux la présence de
-          dioxygène (chapitres 4, 5 et 7).
+          Krebs et la chaîne respiratoire sont tous deux à l'arrêt sans
+          dioxygène : la chaîne parce que son accepteur final manque, le cycle
+          parce que ses coenzymes ne sont plus réoxydés (chapitres 4, 5 et 7).
       - id: D
         text: >
           La fermentation nécessite davantage d'étapes biochimiques que la respiration,
@@ -462,8 +463,9 @@ items:
     correct_feedback: >
       L'écart entre 2 ATP et ~36-38 ATP ne vient pas d'un « coût » de la
       fermentation, mais de ce qu'elle n'accède pas aux étapes qui produisent
-      l'essentiel de l'ATP (cycle de Krebs, chaîne respiratoire) — ces étapes
-      exigent toutes deux le dioxygène comme accepteur final des électrons.
+      l'essentiel de l'ATP (cycle de Krebs, chaîne respiratoire) — deux étapes
+      qui ne tournent qu'en présence de dioxygène, celui-ci n'intervenant qu'en
+      bout de chaîne respiratoire, comme accepteur final des électrons.
     solution: |
       **Ce qui manque à la fermentation :** le cycle de Krebs (matrice) et la
       chaîne respiratoire / phosphorylation oxydative (membrane interne),
@@ -477,7 +479,10 @@ items:
   # Motif : quatre des cinq erreurs déclarées étaient sous le plancher de 3
   # items du banc, donc inévaluables. Périmètre : lesson.md, R1 à R6.
   - id: LIB-7
-    rung: "R5"
+    # RE-BARREAUDÉ le 2026-09-19 : portait `rung: "R5"` (chapitre 6, « Bilan
+    # énergétique »). Son énoncé porte sur l'arrêt de la chaîne respiratoire
+    # quand le dioxygène est retiré — le sujet du chapitre 5 (R4).
+    rung: "R4"
     difficulty_level: 3
     skill_code: svt_liberation_energie
     tags: [chaine_respiratoire, atp, role_dioxygene]
@@ -585,14 +590,19 @@ items:
       **Ce que seule la respiration ajoute.** L'oxydation du pyruvate, le cycle
       de Krebs, puis la chaîne respiratoire — d'où l'essentiel des 36 à 38 ATP.
 
-      **Le calcul de l'écart.** $36/2 = 18$ : l'ordre de grandeur observé, une
+      **Le calcul de l'écart.** $36/2 = 18$ à $38/2 = 19$ : le rendement par
+      glucose est de l'ordre de 18 à 19 fois plus faible en fermentation, ce
+      qui rend compte de l'ordre de grandeur mesuré ici ($\times 10$) — une
       consommation de glucose bien plus élevée pour le même service rendu.
 
       **Ce que l'écart n'est pas.** Ni une perte en chaleur avant la glycolyse,
       ni un ATP de moindre qualité.
 
   - id: LIB-9
-    rung: "R2"
+    # RE-BARREAUDÉ le 2026-09-19 : portait `rung: "R2"` (chapitre 3, « La
+    # glycolyse »), qu'aucune de ses quatre options ne mentionne. Son énoncé
+    # porte sur la régénération de l'ATP-monnaie — le sujet du chapitre 2 (R1).
+    rung: "R1"
     difficulty_level: 3
     skill_code: svt_liberation_energie
     tags: [atp, monnaie_energetique, chaine_respiratoire]
@@ -672,11 +682,18 @@ coverage_summary:
   floor: 3
   floor_met: true
   ramp_coverage:
-    R1: 1
-    R2: 2
+    # Recompté le 2026-09-19 après le re-barreaudage de LIB-7 et LIB-9.
+    # CONSÉQUENCE ÉCRITE, non masquée : `R5` tombe à ZÉRO — et R5 est le
+    # chapitre du BILAN CHIFFRÉ, celui qui porte le savoir-faire le plus
+    # quantitatif du cadre. Aucun item du banc ne demande plus de décomposer
+    # les 38 ATP ; seul le checkpoint cp-r5-bilan le fait, et ce fichier pose
+    # lui-même que les checkpoints ne comptent pas. Le trou existait avant, il
+    # était rangé sous une mauvaise étiquette.
+    R1: 2
+    R2: 1
     R3: 1
-    R4: 1
-    R5: 1
+    R4: 2
+    R5: 0
     R6: 2
     R7: 1
   honest_state: >-

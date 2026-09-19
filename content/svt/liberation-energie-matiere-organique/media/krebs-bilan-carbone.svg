@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 600"
      font-family="'IBM Plex Sans', system-ui, sans-serif"
-     aria-label="Bilan carbone du cycle de Krebs, dans la matrice mitochondriale. Les 2 pyruvate à 3 carbones issus de la glycolyse entrent dans la matrice. Chacun est oxydé : il perd un carbone sous forme de CO2 et devient un acétyle à 2 carbones, tandis que 2 NADH,H+ sont chargés — 2 CO2 libérés au total à cette étape. L’acétyle rejoint ensuite un accepteur à 4 carbones pour former transitoirement une molécule à 6 carbones ; le cycle tourne deux fois, libère 4 CO2 de plus, régénère l’accepteur à 4 carbones, et charge 8 NADH,H+, 2 FADH2 et 2 ATP directs. Bilan carbone final : 2 plus 4 égale 6 CO2 — les 6 carbones du glucose de départ sont tous partis sous forme de CO2 : c’est une oxydation complète, contrairement à la fermentation.">
+     aria-label="Bilan carbone du cycle de Krebs, dans la matrice mitochondriale. Les 2 pyruvate à 3 carbones issus de la glycolyse entrent dans la matrice. Chacun est oxydé : il perd un carbone sous forme de CO2 et devient un acétyle à 2 carbones, tandis que 2 NADH,H+ sont chargés — 2 CO2 libérés au total à cette étape. L’acétyle rejoint ensuite un accepteur à 4 carbones pour former transitoirement une molécule à 6 carbones ; le cycle tourne deux fois, libère 4 CO2 de plus, régénère l’accepteur à 4 carbones, et charge 6 NADH,H+, 2 FADH2 et 2 ATP directs, ce qui porte le total de la matrice à 8 NADH,H+. Bilan carbone final : 2 plus 4 égale 6 CO2 — les 6 carbones du glucose de départ sont tous partis sous forme de CO2 : c’est une oxydation complète, contrairement à la fermentation.">
   <title>Le cycle de Krebs : bilan carbone dans la matrice mitochondriale</title>
 
   <!--
@@ -27,7 +27,12 @@
       step-3 : AJOUT — la boucle du cycle (anneau, badge "×2") :
                acétyle + accepteur (4 C) → 6 C → régénère l'accepteur
                (4 C), jeton "4 CO2 (2 tours)", jeton agrégé
-               "8 NADH,H+ + 2 FADH2", jeton "+2 ATP".
+               "6 NADH,H+ + 2 FADH2", jeton "+2 ATP".
+               CORRIGÉ le 2026-09-19 : ce jeton portait « 8 NADH,H+ », qui est
+               le TOTAL de la matrice (2 de l'étape 2 + 6 des deux tours), pas
+               la production du cycle. L'étape 2 ayant déjà émis ses 2, la
+               figure en comptait 10 et le bilan de 38 ATP ne se recomposait
+               plus depuis ses parts (tableau de lesson.md:113-115).
       step-4 : AJOUT — bannière accent de synthèse "2 + 4 = 6 CO2" — la
                SEULE idée que cette figure marque en accent
                (DESIGN-BIBLE §6) : le compte total = oxydation complète.
@@ -136,7 +141,7 @@
     <polygon points="495,300 520,281 600,281 625,300 600,319 520,319"
              fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.5"/>
     <text x="560" y="297" text-anchor="middle" font-size="9" font-weight="700" fill="var(--figure-ink)"
-          >8 <tspan font-style="italic">NADH</tspan>,<tspan font-style="italic">H</tspan><tspan dy="-4" font-size="7">+</tspan></text>
+          >6 <tspan font-style="italic">NADH</tspan>,<tspan font-style="italic">H</tspan><tspan dy="-4" font-size="7">+</tspan></text>
     <text x="560" y="311" text-anchor="middle" font-size="9" font-weight="700" fill="var(--figure-ink)"
           >+ 2 <tspan font-style="italic">FADH</tspan><tspan dy="3" font-size="7">2</tspan></text>
 

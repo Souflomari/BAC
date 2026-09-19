@@ -72,8 +72,7 @@ misconceptions:
       L'élève rend le VIH indifféremment destructeur, ou lui fait attaquer
       l'immunité innée.
     contradicts_principle: >
-      Le VIH reconnaît SPÉCIFIQUEMENT le récepteur CD4, porté par les seuls
-      lymphocytes T4. C'est la perte progressive de cette population — les
+      Le VIH reconnaît SPÉCIFIQUEMENT le récepteur CD4, porté au premier chef par les lymphocytes T4. C'est la perte progressive de cette population — les
       coordinateurs de la réponse adaptative — qui désorganise l'ensemble, non
       une destruction générale ni un blocage de la phagocytose.
 
@@ -381,8 +380,7 @@ items:
         misconception: mc.svt.svt_dysfonctionnements_immunitaires.cible-du-vih-mal-identifiee
         feedback: >
           Le VIH ne détruit pas indifféremment tous les globules blancs : il
-          reconnaît spécifiquement le récepteur CD4, porté par les seuls
-          lymphocytes T4. C'est la perte progressive de cette population
+          reconnaît spécifiquement le récepteur CD4, porté au premier chef par les lymphocytes T4. C'est la perte progressive de cette population
           précise — les coordinateurs de la réponse adaptative — qui
           paralyse le reste, pas une destruction généralisée et immédiate de
           toutes les cellules immunitaires.
@@ -423,10 +421,15 @@ items:
       opportunistes (ou certains cancers), qui deviennent la cause réelle et
       indirecte de la mortalité.
 
-  # ── TROIS ITEMS AJOUTÉS LE 2026-09-05 ──────────────────────────────────────
+  # ── CINQ ITEMS AJOUTÉS LE 2026-09-05 ───────────────────────────────────────
   # Motif : quatre des six erreurs déclarées étaient sous le plancher de 3
-  # items du banc, donc inévaluables. Ces trois items comblent le déficit dans
-  # le périmètre de lesson.md (R1 à R6).
+  # items du banc, donc inévaluables. Ces cinq items comblent ce déficit-là.
+  # CORRIGÉ le 2026-09-19 : la note disait « TROIS items » — il y en a cinq
+  # (DI-7 à DI-11) — et « le périmètre de lesson.md (R1 à R6) », alors que la
+  # leçon va de R0 à R7 et qu'AUCUN des cinq n'est de rang R1. La dette qui
+  # subsiste est à nommer plutôt qu'à refermer par inadvertance : le rang R1
+  # (le mécanisme de l'allergie — IgE, mastocytes, pontage, dégranulation,
+  # histamine) reste à ZÉRO item de banc.
   - id: DI-7
     rung: "R6"
     difficulty_level: 3
@@ -508,8 +511,7 @@ items:
         correct: false
         misconception: mc.svt.svt_dysfonctionnements_immunitaires.cible-du-vih-mal-identifiee
         feedback: >
-          Le VIH reconnaît SPÉCIFIQUEMENT le récepteur CD4, porté par les
-          seuls lymphocytes T4. Sa cible est étroite ; c'est la POSITION de
+          Le VIH reconnaît SPÉCIFIQUEMENT le récepteur CD4, porté au premier chef par les lymphocytes T4. Sa cible est étroite ; c'est la POSITION de
           cette cible dans l'organisation de la réponse — un coordinateur —
           qui rend ses conséquences générales.
       - id: C
@@ -535,8 +537,7 @@ items:
       des LB en plasmocytes et des LT8 en cellules cytotoxiques : leur
       disparition progressive désorganise l'ensemble de la réponse adaptative.
     solution: |
-      **La cible est étroite :** le récepteur CD4, porté par les seuls
-      lymphocytes T4. Le VIH ne détruit ni les hématies, ni les phagocytes, ni
+      **La cible est étroite :** le récepteur CD4, porté au premier chef par les lymphocytes T4. Le VIH ne détruit ni les hématies, ni les phagocytes, ni
       « tous les globules blancs ».
 
       **La conséquence est large :** parce que les LT4 sont des
@@ -637,7 +638,7 @@ items:
         misconception: mc.svt.svt_dysfonctionnements_immunitaires.cible-du-vih-mal-identifiee
         feedback: >
           Le VIH est au contraire très sélectif : il reconnaît le récepteur
-          CD4, porté par les seuls lymphocytes T4. Ce qui distingue le SIDA
+          CD4, porté au premier chef par les lymphocytes T4. Ce qui distingue le SIDA
           des deux autres n'est pas l'étendue de sa cible, mais le fait qu'il
           RETIRE une cellule au système au lieu de le faire réagir à tort.
       - id: D
@@ -746,6 +747,13 @@ coverage_summary:
   floor: 3
   floor_met: true
   ramp_coverage:
+    # R1 est écrit À ZÉRO, pas omis (2026-09-19) : un tableau qui n'énumère que
+    # les barreaux servis rend ses trous invisibles. R1 porte pourtant TOUT le
+    # mécanisme de l'allergie — IgE, fixation sur les mastocytes, pontage,
+    # dégranulation, histamine, choc anaphylactique — et c'est la première
+    # ligne de programme du chapitre. Seul un checkpoint l'interroge, et ce
+    # fichier pose lui-même que les checkpoints ne comptent pas.
+    R1: 0
     R2: 3
     R3: 3
     R4: 1

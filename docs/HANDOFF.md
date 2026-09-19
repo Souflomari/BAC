@@ -4809,7 +4809,7 @@ Comme le §11.43, elle tourne en CI (validate-content --strict, 62 notions) sans
 jamais bloquer, et le sens « valeur qui ne résout pas » complète, pour les
 rungs, ce que la porte marqueur→cible fait déjà pour les figures (ADR 0031).
 
-### 11.45 La campagne de correction de contenu vague 1 — quarante-sept notions triées (PC BOUCLÉ 25/25 ; MATHS BOUCLÉ ; SVT ouverte 3/11), 602 correctifs objectifs, les bloquants consignés
+### 11.45 La campagne de correction de contenu vague 1 — cinquante notions triées (PC BOUCLÉ 25/25 ; MATHS BOUCLÉ ; SVT 6/11), 656 correctifs objectifs, les bloquants consignés
 
 **EN COURS (une notion à la fois, cadence critiques).** Après les portes
 d'intégrité (§11.43 figures orphelines, §11.44 rung↔titre), la vague-1
@@ -7837,3 +7837,80 @@ lectures sont légitimes et ne répondent pas à la même question :
 Les deux ont été faites ici. Confondre les deux, c'est soit croire qu'un
 défaut de feedback n'existe pas, soit croire qu'un texte de script est sous les
 yeux de l'élève.
+
+---
+
+### 11.93 Le trio d'immunologie et le métabolisme — 21 correctifs, et le défaut le plus cher de tout l'arc était dans une FIGURE
+
+**Où en est la campagne : 50 notions sur 62, 656 correctifs objectifs.** SVT à
+6 sur 11 ; restent 5 SVT et les 12 de philo.
+
+**LE DÉFAUT LE PLUS CHER DE L'ARC, et il n'était pas dans un texte.** La figure
+du cycle de Krebs (`liberation-energie`) affichait, sur l'étape « les deux
+tours », le jeton **8 NADH,H⁺**. Un tour charge 3 NADH,H⁺ : deux tours en
+chargent **6**. Le 8 est le TOTAL de la matrice (2 de l'oxydation des pyruvates
++ 6), et c'est exactement ce que le tableau de la leçon écrit — mais l'étape
+précédente de la figure avait DÉJÀ émis ses 2. La figure comptait donc 10
+NADH,H⁺ dans la matrice, soit 12 par glucose au lieu de 10, soit **44 ATP au
+lieu de 38**. Le nombre affiché au sommet de la notion ne se recomposait plus
+depuis ses parts, et rien ne le voyait : ni `validate-content`, ni
+`arithmetique-rendue` (qui lit les chaînes d'égalité du texte, pas les jetons
+d'un SVG), ni `resume-couverture`. **La leçon à en tirer : la porte
+arithmétique s'arrête au bord des figures, et une figure porte des nombres.**
+C'est la première fois de la campagne qu'un défaut de calcul survit dans le
+rendu — les quarante-neuf notions précédentes n'en avaient produit qu'un seul,
+et il était dans du texte.
+
+**Le motif SVT qui se confirme : la leçon enseigne ce que le banc sanctionne.**
+Trois occurrences distinctes dans cet arc seul. (a) `role-enzymes` (§11.88)
+disait le pH « potentiellement réversible » quand le banc tague l'irréversible.
+(b) `liberation-energie` faisait du dioxygène l'accepteur final des électrons
+**du cycle de Krebs** dans deux champs rendus, alors qu'un de ses propres
+checkpoints tague ce modèle comme une misconception nommée. (c)
+`dysfonctionnements-immunitaires` interdit aux IgE de circuler, puis pose en
+donnée d'énoncé des anticorps anti-pollen **dans le sang** — et là c'est la
+leçon qui a tort, le dosage sérique étant le test d'allergie usuel. Les deux
+premières sont corrigées ; la troisième est déférée parce qu'elle demande de
+nuancer un contenu enseigné.
+
+**Le barreau qui ment, deuxième fois de la campagne.** Quatre items sur trois
+notions portaient un `rung` auquel ils n'étaient pas répondables : leur clé
+repose sur un contenu enseigné plus loin. `moyens-de-defense` en avait deux
+(un item sur les anticorps rangé au chapitre de la phagocytose, un item sur le
+LTc rangé au chapitre de la sélection clonale des LB) ; `liberation-energie`
+deux autres. **Dans les deux cas, corriger le barreau VIDE un chapitre** — le
+chapitre de la phagocytose ici, le chapitre du bilan chiffré là — et c'est
+écrit dans `ramp_coverage` avec sa raison, jamais recompté à l'envers. Le trou
+existait avant ; il était rangé sous une mauvaise étiquette, donc invisible.
+
+**Un tableau qui n'énumère que ses barreaux servis cache ses trous.**
+`dysfonctionnements-immunitaires` omettait `R1` au lieu d'écrire `R1: 0` — et
+R1 porte TOUT le mécanisme de l'allergie, première ligne de programme du
+chapitre. Le zéro est maintenant écrit. **Règle : un `ramp_coverage` énumère
+tous les barreaux, y compris à zéro.** C'est le même principe que le
+`floor_met` de §11.88 : un compte absent n'est pas un compte neutre.
+
+**Trois notes d'auteur périmées de plus**, toutes de la famille §11.91 : une
+qui annonçait « TROIS items ajoutés » là où il y en a cinq (et refermait au
+passage une dette qu'elle aurait dû nommer), une qui renvoyait la photosynthèse
+à « une autre notion » qui n'existe pas — le cadre la classe en exclusion —, et
+un commentaire de figure citant une numérotation abandonnée.
+
+**Ce que les six rapports confirment sur le fond.** Les `coverage_summary` des
+trois notions, recomptés distracteur par distracteur **par les deux critiques
+séparément**, sont exacts. Toute l'arithmétique du bilan énergétique se
+recompose (glycolyse, matrice, carbone, conversion, 34/38 ≈ 90 %) — la seule
+rupture était la figure. Les ~90 citations « chapitre N » des trois notions
+résolvent toutes. Aucune brèche d'exclusion. Aucune réponse au-dessus de la
+porte d'essai. **Le fond biologique est juste de bout en bout**, comme le fond
+mathématique et physique l'était : les défauts sont dans ce que le texte
+AFFIRME et dans la façon dont il est rangé, pas dans la science.
+
+**Et un couplage d'étiquettes à ne pas manquer, consigné pour l'auteur.** Dans
+`dysfonctionnements-immunitaires`, deux réétiquetages proposés sont LIÉS : si
+la clause universelle de DI-7 C tombe seule, `vaccin-protection-universelle`
+passe sous le plancher ; elle ne remonte que si DI-10 D est réétiqueté dans le
+MÊME commit. Dans `liberation-energie`, le sens choisi pour le modèle « perte
+thermique avant la glycolyse » décide lui aussi d'un plancher, dans un sens et
+pas dans l'autre. Aucun des deux n'est tranché ici : ce sont des décisions de
+registre, et les trancher au jugé casserait un compte vrai.

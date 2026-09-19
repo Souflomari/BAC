@@ -200,7 +200,7 @@ Si la vaccination ne faisait que « renforcer temporairement » l'organisme sans
 
 ### Une situation où la vaccination arrive trop tard
 
-Imagine une personne mordue par un serpent venimeux, ou blessée profondément sans être à jour de sa vaccination antitétanique. Le danger est immédiat : le venin ou la toxine tétanique peut agir en quelques heures. Vacciner cette personne à cet instant ne servirait à rien d'utile dans l'immédiat : tu sais maintenant qu'une première rencontre avec un antigène (même sous forme de vaccin) demande plusieurs jours avant de produire des anticorps en quantité efficace — bien trop tard pour cette urgence-là.
+Imagine une personne mordue par un serpent venimeux, ou blessée profondément sans être à jour de sa vaccination antitétanique. Le danger est imminent : le venin peut agir en quelques heures, la toxine tétanique en quelques heures. Vacciner cette personne à cet instant ne servirait à rien d'utile dans l'immédiat : tu sais maintenant qu'une première rencontre avec un antigène (même sous forme de vaccin) demande plusieurs jours avant de produire des anticorps en quantité efficace — bien trop tard pour cette urgence-là.
 
 ### Le principe de la sérothérapie
 
@@ -245,7 +245,7 @@ Ces deux outils partagent un même but — protéger contre un agent infectieux 
 | Durée de la protection | Longue (années), grâce aux cellules mémoire | Courte (quelques semaines), aucune mémoire créée |
 | Usage typique | Prévention, à l'avance, avant toute exposition | Urgence, après une exposition déjà survenue ou imminente |
 
-### Vérifier la confusion la plus fréquente : « un vaccin protégerait tout de suite, un sérum durerait longtemps »
+### Vérifier une confusion très fréquente : « un vaccin protégerait tout de suite, un sérum durerait longtemps »
 
 Une confusion très répandue consiste à inverser ces deux propriétés — ou à les mélanger — en imaginant qu'un vaccin protège dès l'injection (comme un sérum), ou qu'un sérum laisse une protection durable (comme un vaccin).
 

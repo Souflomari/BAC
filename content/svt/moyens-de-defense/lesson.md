@@ -90,14 +90,14 @@ Retiens la logique d'ensemble : le phagocyte ne « touche » pas l'intrus pour l
 
 ### Exemple travaillé : lire une série de clichés de microscopie
 
-**Énoncé.** Un microscope électronique a permis de photographier, sur des échantillons différents, quatre instants distincts impliquant un même macrophage (un type de phagocyte) et une bactérie. Voici, dans le désordre, ce que montre chacun des quatre clichés :
+**Énoncé.** Un microscope électronique a permis de photographier quatre instants distincts impliquant un même macrophage (un type de phagocyte) et une bactérie. Voici, dans le désordre, ce que montre chacun des quatre clichés :
 
 - Cliché $\alpha$ : la bactérie est visible, entourée d'une vésicule close à l'intérieur du macrophage ; les enzymes du lysosome ne sont pas encore présentes dans cette vésicule.
 - Cliché $\beta$ : la bactérie est à quelque distance du macrophage, mais on distingue nettement, entre les deux, une traînée de petites molécules qui semble orienter le déplacement du macrophage vers la bactérie.
 - Cliché $\gamma$ : la vésicule contenant la bactérie a fusionné avec une seconde vésicule plus petite et plus dense ; la bactérie apparaît fragmentée, sa structure interne n'est plus intacte.
 - Cliché $\delta$ : la membrane du macrophage est déformée, en train d'envelopper la bactérie, dont une partie seulement est encore à l'extérieur.
 
-Range ces quatre clichés dans l'ordre chronologique du mécanisme, et nomme l'étape qu'illustre chacun.
+Range ces quatre clichés dans l'ordre chronologique du mécanisme, et nomme la ou les étapes qu'illustre chacun (les cinq étapes ne se répartissent pas une par cliché).
 
 **Raisonnement.** Ce qu'on cherche ici : associer chaque observation visuelle à l'une des cinq étapes du mécanisme qu'on vient de détailler, en s'appuyant sur un indice précis de chaque cliché plutôt que sur une impression générale.
 
@@ -125,7 +125,7 @@ Si un élève range le cliché $\gamma$ (bactérie déjà fragmentée) avant le 
 
 Le mécanisme qu'on vient de détailler (inflammation, diapédèse, phagocytose) est déjà capable, à lui seul, de venir à bout de nombreuses infections mineures. Alors pourquoi l'organisme aurait-il besoin d'autre chose ?
 
-Reviens sur ce qu'on a établi au chapitre 2 : la réaction inflammatoire et la phagocytose se déclenchent de la MÊME façon, que l'intrus soit une bactérie A, une bactérie B, ou un virus totalement différent. C'est une force (une réponse immédiate, disponible dès la naissance, pour n'importe quel intrus) mais c'est aussi une limite : cette défense ne s'ajuste pas à l'identité précise de l'intrus, et elle ne s'améliore pas après une première rencontre — elle réagirait exactement de la même intensité la centième fois que la première.
+Reviens sur ce qu'on a établi aux chapitres 2 et 3 : la réaction inflammatoire et la phagocytose se déclenchent de la MÊME façon, que l'intrus soit une bactérie A, une bactérie B, ou un virus totalement différent. C'est une force (une réponse immédiate, disponible dès la naissance, pour n'importe quel intrus) mais c'est aussi une limite : cette défense ne s'ajuste pas à l'identité précise de l'intrus, et elle ne s'améliore pas après une première rencontre — elle réagirait exactement de la même intensité la centième fois que la première.
 
 Or, au chapitre 1, la seconde griffure était traitée plus vite et plus efficacement que la première. Ce gain ne peut PAS venir de l'immunité innée seule, puisque celle-ci, par construction, ne conserve aucune trace d'une rencontre passée.
 
@@ -341,7 +341,7 @@ Lors d'une PREMIÈRE rencontre avec un antigène donné, tout part d'un clone ra
 
 **Raisonnement.** Ce qu'on cherche ici : appliquer le mécanisme de la mémoire immunitaire à un exemple concret, en identifiant ce que la première série d'injections a laissé derrière elle.
 
-La toute première vaccination a mis en jeu, pour la première fois, un clone de LB (et un clone de LT8) rare et spécifique de l'antigène tétanique — d'où la nécessité de plusieurs injections rapprochées, chacune relançant la sélection et l'expansion clonale, pour construire progressivement une population suffisante de plasmocytes ET une population de cellules mémoire durable. Cette première série d'injections a donc laissé, dans l'organisme, des lymphocytes B et T mémoire, spécifiques de l'antigène tétanique, en grand nombre et prêts à agir — même si aucun de ces symptômes n'est visible entre-temps. Des années plus tard, le rappel réintroduit le même antigène : il ne rencontre plus un clone rare et isolé, mais directement cette population de cellules mémoire déjà nombreuse, qui se différencie aussitôt en plasmocytes et en LTc effectifs. D'où une protection relancée en quelques jours seulement, avec une seule injection, alors que la mise en place initiale avait demandé plusieurs semaines.
+La toute première vaccination a mis en jeu, pour la première fois, un clone de LB (et un clone de LT8) rare et spécifique de l'antigène tétanique — d'où la nécessité de plusieurs injections rapprochées, chacune relançant la sélection et l'expansion clonale, pour construire progressivement une population suffisante de plasmocytes ET une population de cellules mémoire durable. Cette première série d'injections a donc laissé, dans l'organisme, des lymphocytes B et T mémoire, spécifiques de l'antigène tétanique, en grand nombre et prêts à agir — même si rien n'en est visible entre-temps. Des années plus tard, le rappel réintroduit le même antigène : il ne rencontre plus un clone rare et isolé, mais directement cette population de cellules mémoire déjà nombreuse, qui se différencie aussitôt en plasmocytes et en LTc effectifs. D'où une protection relancée en quelques jours seulement, avec une seule injection, alors que la mise en place initiale avait demandé plusieurs semaines.
 
 **Réponse :** l'efficacité rapide du rappel s'explique par la présence de lymphocytes B et T mémoire, issus de la première vaccination, immédiatement disponibles en grand nombre — contrairement à la toute première rencontre avec l'antigène, qui devait partir d'un clone rare et le multiplier depuis le début.
 
@@ -386,6 +386,6 @@ Ce qu'on cherche ici, question par question : ne jamais se contenter de décrire
 
 ### À toi de jouer
 
-**Prompt 1.** Un individu reçoit une greffe de peau provenant d'un donneur non apparenté. Quelques jours après la greffe, on observe que les cellules du greffon sont progressivement détruites, non pas par agglutination ni par la formation de complexes immuns visibles dans le sang, mais par un contact direct de certaines cellules immunitaires du receveur avec les cellules du greffon. Quelle réponse (humorale ou cellulaire) est ici principalement en cause ? Identifie la cellule effectrice responsable de cette destruction et explique, à partir du mécanisme de reconnaissance vu dans ce chapitre et dans le chapitre précédent, pourquoi les cellules du greffon sont reconnues comme une cible légitime.
+**Prompt 1.** Un individu reçoit une greffe de peau provenant d'un donneur non apparenté. Quelques jours après la greffe, on observe que les cellules du greffon sont progressivement détruites, non pas par agglutination ni par la formation de complexes immuns visibles dans le sang, mais par un contact direct de certaines cellules immunitaires du receveur avec les cellules du greffon. Quelle réponse (humorale ou cellulaire) est ici principalement en cause ? Identifie la cellule effectrice responsable de cette destruction et explique, à partir du mécanisme de reconnaissance vu au chapitre 7 et de ce que la leçon « Le soi et le non-soi » dit du CMH, pourquoi les cellules du greffon sont reconnues comme une cible légitime.
 
-**Prompt 2.** Un chercheur affirme : « puisque les anticorps circulent dans tout l'organisme via le sang, ils devraient pouvoir, à eux seuls, protéger totalement un individu contre n'importe quel virus, y compris ceux qui infectent rapidement les cellules. » Discute cette affirmation en t'appuyant sur les limites d'action des anticorps établies dans ce chapitre, et explique quelle autre réponse immunitaire devient alors indispensable.
+**Prompt 2.** Un chercheur affirme : « puisque les anticorps circulent dans tout l'organisme via le sang, ils devraient pouvoir, à eux seuls, protéger totalement un individu contre n'importe quel virus, y compris ceux qui infectent rapidement les cellules. » Discute cette affirmation en t'appuyant sur les limites d'action des anticorps établies au chapitre 6, et explique quelle autre réponse immunitaire devient alors indispensable.

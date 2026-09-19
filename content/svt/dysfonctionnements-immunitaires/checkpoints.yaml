@@ -20,7 +20,10 @@ skill_code: svt_dysfonctionnements_immunitaires
 #   cp-r4-vaccination (après le chapitre 5) — un vaccin apporte un antigène.
 #   cp-r5-serotherapie (après le chapitre 6) — un sérum apporte des molécules,
 #                     qui ne se multiplient pas.
-#   cp-r6-deux-courbes (après le chapitre 7) — lire les deux titres d'anticorps.
+#   cp-r6-deux-courbes (DANS le chapitre 7) — lire les deux titres d'anticorps.
+#     (Corrigé le 2026-09-19 : disait « après le chapitre 7 » ; le marqueur est
+#     posé à lesson.md:262, à l'intérieur du chapitre, et `lesson_placement`
+#     dit bien `in_R6`.)
 #
 # CHAQUE distracteur porte un identifiant réel de l'inventaire de items.yaml.
 # Aucune erreur nouvelle n'est déclarée ici : les sondes réutilisent les six
@@ -447,7 +450,7 @@ checkpoints:
         correct: false
         misconception: mc.svt.svt_dysfonctionnements_immunitaires.vaccination-serotherapie-confondues
         feedback: |
-          Modèle détecté : la confusion la plus fréquente de cette leçon, dans
+          Modèle détecté : une confusion très fréquente de cette leçon, dans
           sa forme complète — les deux propriétés inversées d'un coup. Retiens
           la logique plutôt que le tableau : ce qu'on apporte tout fait agit
           immédiatement et s'épuise ; ce que l'organisme doit construire prend
