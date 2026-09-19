@@ -4,9 +4,12 @@ skill_code: philo_analyse_texte
 # Misconception inventory — spec §3 (docs/pipeline/PHILO-ANALYSE-DE-TEXTE-SPEC.md),
 # used AS-IS per the resolved human-gate decision (task instruction, open flag §8.1).
 # Id convention: mc.philo.<notion>.<slug> — matches the house convention observed
-# in content/maths/limites-continuite/items.yaml (mc.math.<notion>.<slug>); no
-# other philo notion is tagged yet (content/philo/la-liberte/items.yaml carries
-# `misconceptions: []`), so this lesson sets the philo precedent.
+# in content/maths/limites-continuite/items.yaml (mc.math.<notion>.<slug>).
+# CORRIGÉ le 2026-09-19 : cette note affirmait qu'aucune autre notion de philo
+# n'était encore taguée, et citait la-liberte comme portant `misconceptions: []`.
+# C'est faux — les DOUZE notions de philo portent un inventaire peuplé, y compris
+# celle donnée en contre-exemple (content/philo/la-liberte/items.yaml:18-19).
+# Cette leçon n'établit aucun précédent : elle suit une convention déjà générale.
 
 misconceptions:
   - id: mc.philo.analyse_texte.paraphrase-est-analyse

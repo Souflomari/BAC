@@ -1163,7 +1163,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Celui qui dit : la pierre qui tombe se croirait libre si elle avait conscience de son mouvement ; l'homme devient libre en connaissant les causes qui le déterminent, non en s'y soustrayant."
+        text: "Celui qui dit : la pierre lancée se croirait libre si elle avait conscience de son mouvement ; l'homme devient libre en connaissant les causes qui le déterminent, non en s'y soustrayant."
         correct: true
       - id: B
         text: "Celui qui dit : Spinoza mesure la liberté à l'absence d'obstacle extérieur, exactement comme il mesure la liberté intérieure — chez lui les deux sont une seule et même chose."
@@ -1171,7 +1171,7 @@ items:
         misconception: mc.philo.liberte.negative-confondue-avec-positive
         feedback: >
           C'est précisément ce que Spinoza sépare. L'absence d'obstacle ne fait
-          pas la liberté : la pierre qui tombe ne rencontre aucun obstacle et
+          pas la liberté : la pierre lancée ne rencontre aucun obstacle et
           n'est pas libre pour autant. Ce qui la distingue de l'homme libre,
           c'est la CONNAISSANCE des causes — une affaire intérieure, sans
           rapport avec l'espace laissé au mouvement.
@@ -1227,14 +1227,14 @@ items:
 # hérité — une passe d'items devrait en ajouter un ou deux chacun ». C'est
 # fait, et `autrui-limite-par-nature`, qui n'avait AUCUN item de banc, est
 # refermée du même geste. Tableau GÉNÉRÉ, gardé par
-# scripts/resume-couverture.mjs.
+# web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
-    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
     mc.philo.liberte.faux-dilemme-libre-arbitre-determinisme:      { count: 4, items: [LIB-5, LIB-6, LIB-7, LIB-10] }
     mc.philo.liberte.libre-arbitre-exige-absence-de-cause:         { count: 6, items: [LIB-1, LIB-4, LIB-5, LIB-10, LIB-11, LIB-12] }

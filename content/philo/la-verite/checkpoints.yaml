@@ -14,11 +14,16 @@
 # addendum), then cross-checked against items.yaml's coverage_summary to
 # prioritize placement on the FIVE under-floor models so every student gets
 # in-lesson exposure regardless of the item-bank gap:
-#   critere-restreint-a-un-domaine-a-tort  — 2/30 in items.yaml, +1 here (cp-r2-rupture)
-#   non-refutee-jugee-douteuse             — 2/30 in items.yaml, +1 here (cp-r7-rupture)
-#   falsifiable-confondu-refutee           — 1/30 in items.yaml, +1 here (cp-r7-rupture, primary)
-#   propagande-mal-caracterisee            — 2/30 in items.yaml, +1 here (cp-r8-rupture)
-#   fallibilisme-confondu-relativisme      — 2/30 in items.yaml, +1 here (cp-r8-rupture, primary)
+# ⚠ RE-MESURÉ le 2026-09-19. Les chiffres ci-dessous décrivaient le banc
+# d'AVANT l'ajout de VERITE-31 à 35 : ils annonçaient cinq familles sous le
+# plancher sur un banc de 30 items. Le banc en compte 35 et AUCUNE de ces cinq
+# familles n'est sous le plancher. Le placement des sondes reste ce qu'il est ;
+# c'est sa JUSTIFICATION qui a vieilli, et elle est corrigée plutôt qu'effacée.
+#   critere-restreint-a-un-domaine-a-tort  — 4/35 in items.yaml (était 2/30), +1 here (cp-r2-rupture)
+#   non-refutee-jugee-douteuse             — 4/35 in items.yaml (était 2/30), +1 here (cp-r7-rupture)
+#   falsifiable-confondu-refutee           — 3/35 in items.yaml (était 1/30), +1 here (cp-r7-rupture, primary)
+#   propagande-mal-caracterisee            — 3/35 in items.yaml (était 2/30), +1 here (cp-r8-rupture)
+#   fallibilisme-confondu-relativisme      — 3/35 in items.yaml (était 2/30), +1 here (cp-r8-rupture, primary)
 #
 # Placement (ids match the [[checkpoint:…]] markers in lesson.md):
 #   cp-r0-predict  (in R0)      — commit-gate. Probes the two named naive
@@ -26,8 +31,13 @@
 #                                 relativisme-chacun-sa-verite) + a third lure.
 #   cp-r1-rupture  (after R1)   — rupture gate: opinion-confondue-verite
 #                                 (primary), reel-confondu-verite (dual).
-#   cp-r2-rupture  (after R2)   — rupture gate: coherence-confondue-
-#                                 correspondance (primary), plus the two
+#   cp-r2-rupture  (after R2)   — rupture gate. CORRIGÉ le 2026-09-19 : cette
+#                                 carte annonçait coherence-confondue-
+#                                 correspondance en primary ; le champ
+#                                 `primary_misconception` de la sonde dit
+#                                 acces-direct-au-reel-sans-interpretation,
+#                                 et aucun de ses distracteurs ne porte
+#                                 coherence-confondue-correspondance. Plus the two
 #                                 THINNEST-adjacent models each get their own
 #                                 distractor: acces-direct-au-reel-sans-
 #                                 interpretation, critere-restreint-a-un-
@@ -443,9 +453,9 @@ checkpoints:
 
   # ════════════════════════════════════════════════════════════════
   # CP-6 | id: cp-r7-rupture | placed AFTER R7
-  #        Probes: falsifiable-confondu-refutee (primary — the THINNEST
-  #        model in items.yaml, 1/30), non-refutee-jugee-douteuse (dual,
-  #        also under-floor)
+  #        Probes: falsifiable-confondu-refutee (primary — 3/35 depuis
+  #        VERITE-31..35 ; c'était le modèle le plus mince, 1/30, quand cette
+  #        sonde a été placée), non-refutee-jugee-douteuse (dual, 4/35)
   # ════════════════════════════════════════════════════════════════
 
   - id: cp-r7-rupture
@@ -507,8 +517,9 @@ checkpoints:
 
   # ════════════════════════════════════════════════════════════════
   # CP-7 | id: cp-r8-rupture | placed AFTER R8, before R9
-  #        Probes: fallibilisme-confondu-relativisme (primary, under-floor),
-  #        propagande-mal-caracterisee (dual, also under-floor)
+  #        Probes: fallibilisme-confondu-relativisme (primary, 3/35 — plus
+  #        sous le plancher depuis VERITE-31..35),
+  #        propagande-mal-caracterisee (dual, 3/35 — idem)
   # ════════════════════════════════════════════════════════════════
 
   - id: cp-r8-rupture

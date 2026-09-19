@@ -3,8 +3,12 @@ skill_code: philo_devoir
 
 # Misconception inventory — summit-conversion campaign (Gap-4 fix: this file
 # previously carried `misconceptions: []`, no tags on any distractor, and a
-# 14/15 "correct = longest option" length-tell — see the Length rebalance
-# note at the end of coverage_summary).
+# 14/15 "correct = longest option" length-tell).
+# CORRIGÉ le 2026-09-19 : ce renvoi pointait « the Length rebalance note at
+# the end of coverage_summary ». Cette note N'EXISTE PAS dans ce fichier
+# (grep « length|longueur|rebalance » sur items.yaml : cette ligne seule).
+# La seule table de longueurs du corpus de la notion est dans checkpoints.yaml,
+# et elle ne couvre que les 8 sondes — la preuve manque pour les 21 items.
 # Id convention: mc.philo.<slug>.<name>, where <slug> is skill_code with the
 # "philo_" prefix stripped (philo_devoir → devoir) — matches the precedent
 # set in content/philo/la-liberte/items.yaml and
@@ -20,8 +24,12 @@ skill_code: philo_devoir
 # r-bac Kant text's second example (la conservation de la vie — docs/sujets/
 # philo/le-devoir.md, 2023 rattrapage), a nuance (duty that coincides with vs.
 # runs against inclination) this lesson's R0-R3 body does not walk through
-# directly — see the coverage_summary note below for the honest floor gap
-# this opens.
+# directly.
+# CORRIGÉ le 2026-09-19 : la suite de cette phrase annonçait « the honest floor
+# gap this opens » dans le coverage_summary. Il n'y a plus de trou : depuis
+# DEV-16..21, cette famille compte 3 items et `floor_met: true`. Ce qui reste
+# vrai — et c'est le constat utile — c'est que le CORPS de la leçon (R0-R3)
+# n'enseigne toujours pas le cas de coïncidence que ces trois items évaluent.
 
 misconceptions:
   - id: mc.philo.devoir.faux-dilemme-contrainte-devoir-moral
@@ -1044,7 +1052,10 @@ items:
 
   # Ajoutés le 2026-09-05 : neuf familles sous le plancher de 3 items du banc,
   # dont `coincidence-devoir-inclination-jugee-suffisante` sans AUCUN item —
-  # sondée en leçon seulement. Cinq items, quatorze places.
+  # sondée en leçon seulement. CORRIGÉ le 2026-09-19 : « Cinq items, quatorze
+  # places » est faux des deux côtés — SIX items suivent (DEV-16 à DEV-21) et
+  # ils occupent DIX-SEPT places au niveau item (3+3+3+3+2+3). Le diagnostic
+  # amont (neuf familles sous le plancher avant l'ajout) est, lui, exact.
   - id: DEV-16
     rung: "R2"
     difficulty_level: 4
@@ -1416,8 +1427,12 @@ items:
       toujours celle qui a la force pour elle.
 
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
-# RÉÉCRIT le 2026-09-05, après DEV-16 à DEV-21. Neuf familles sous le plancher,
-# dont `coincidence-devoir-inclination-jugee-suffisante` sans AUCUN item de
+# RÉÉCRIT le 2026-09-05, après DEV-16 à DEV-21. CORRIGÉ le 2026-09-19 : cette
+# note se déclare POSTÉRIEURE à l'ajout tout en décrivant l'état d'AVANT —
+# elle est contredite par son propre tableau (coincidence = 3 items) et par son
+# propre honest_state (« aucune sous le plancher »). Elle décrivait l'état
+# DEV-1..DEV-15, où neuf familles étaient bien sous le plancher et où
+# `coincidence-devoir-inclination-jugee-suffisante` était sans AUCUN item de
 # banc — sondée en leçon seulement, ce qui ne compte pas dans le modèle
 # apprenant. Tableau GÉNÉRÉ contre web/scripts/lib/couverture-compte.mjs,
 # gardé par scripts/resume-couverture.mjs.

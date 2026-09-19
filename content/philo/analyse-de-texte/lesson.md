@@ -82,7 +82,7 @@ plus fréquente et la plus coûteuse de cette épreuve — on l'appellera, tout 
 long de cette leçon, *le réflexe de paraphrase*.
 
 **Ce que cette leçon construit.** La méthode officielle de l'épreuve
-« texte » comprend quatre moments, chacun noté sur 20 — les mêmes quatre
+« texte » comprend quatre moments, notés ensemble sur 20 — les mêmes quatre
 moments que tu retrouveras, non simulés, à l'examen :
 
 | Capacité | /20 | Ce qu'elle vérifie | Chapitre(s) qui la construit |

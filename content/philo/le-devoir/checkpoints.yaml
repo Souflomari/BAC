@@ -48,20 +48,24 @@
 #   cp-r3-liberte     (after R3's "le devoir suppose la liberté" closing
 #                       paragraph, before R4) — rupture gate: devoir-
 #                                               liberte-mal-articules
-#                                               (primary — an under-floor
-#                                               model in items.yaml, 1/15),
+#                                               (primary — 3/21 in items.yaml ;
+#                                               RE-MESURÉ 2026-09-19, « 1/15,
+#                                               under-floor » décrivait le banc
+#                                               d'avant DEV-16..21),
 #                                               imperatif-categorique-juge-
-#                                               arbitraire (dual, also
-#                                               under-floor, 1/15).
+#                                               arbitraire (dual, 3/21 — idem).
 #   cp-bac-devoir     (before [[exercise:r-bac]]) — rupture gate:
 #                                               coincidence-devoir-
 #                                               inclination-jugee-suffisante
-#                                               — the ONE model in the
-#                                               inventory with ZERO
-#                                               items.yaml coverage (a
-#                                               genuinely untaught nuance,
-#                                               see items.yaml's
-#                                               coverage_summary notes);
+#                                               — 3/21 in items.yaml.
+#                                               RE-MESURÉ 2026-09-19 : « the
+#                                               ONE model with ZERO coverage »
+#                                               a vieilli avec DEV-16..21. Ce
+#                                               qui reste vrai : le CORPS de la
+#                                               leçon ne l'enseigne pas. Le
+#                                               renvoi « items.yaml's
+#                                               coverage_summary notes » est
+#                                               MORT — lire `honest_state` ;
 #                                               primes the misconception
 #                                               right before the Kant text's
 #                                               second example that turns on
@@ -626,16 +630,20 @@ checkpoints:
 # checkpoints.yaml). They exist to give every student, including under-floor
 # and zero-coverage models, in-lesson exposure regardless of the item-bank
 # gap flagged in items.yaml's coverage_summary:
-#   legalite-confondue-moralite             — 4/15 in items.yaml, +1 here (cp-r1-rupture, +1 dual in cp-bac-devoir)
-#   critere-consequentialiste-substitue-au-motif — 3/15 in items.yaml, +2 here (cp-r2-devoir-par, +1 dual in cp-bac-devoir, +1 dual in cp-r3-formalisme)
-#   absence-valeur-morale-confondue-immoralite — 2/15 in items.yaml, +1 here (cp-r2-devoir-par, dual)
-#   imperatif-categorique-confondu-heteronomie — 2/15 in items.yaml, +1 here (cp-r2-autonomie)
-#   devoir-confondu-avec-inclination        — 2/15 in items.yaml, +1 here (cp-r2-autonomie, dual)
-#   critique-utilitariste-mal-identifiee    — 2/15 in items.yaml, +2 here (cp-r3-formalisme, cp-r3-bergson dual)
-#   morale-close-ouverte-mal-comprise       — 1/15 in items.yaml, +1 here (cp-r3-bergson)
-#   imperatif-categorique-juge-arbitraire   — 1/15 in items.yaml, +1 here (cp-r3-liberte, dual)
-#   devoir-liberte-mal-articules            — 1/15 in items.yaml, +1 here (cp-r3-liberte)
-#   coincidence-devoir-inclination-jugee-suffisante — 0/15 in items.yaml, +1 here (cp-bac-devoir)
+# ⚠ RE-MESURÉ le 2026-09-19. Les dix lignes ci-dessous étaient libellées en /15
+# et décrivaient le banc d'AVANT DEV-16..21. Le banc compte 21 items et AUCUNE
+# de ces familles n'est sous le plancher (`floor_met: true`). Le placement des
+# sondes tient ; c'est sa justification chiffrée qui avait vieilli.
+#   legalite-confondue-moralite             — 5/21 in items.yaml (était 4/15), +1 here (cp-r1-rupture, +1 dual in cp-bac-devoir)
+#   critere-consequentialiste-substitue-au-motif — 3/21 in items.yaml (était 3/15), +2 here (cp-r2-devoir-par, +1 dual in cp-bac-devoir, +1 dual in cp-r3-formalisme)
+#   absence-valeur-morale-confondue-immoralite — 3/21 in items.yaml (était 2/15), +1 here (cp-r2-devoir-par, dual)
+#   imperatif-categorique-confondu-heteronomie — 4/21 in items.yaml (était 2/15), +1 here (cp-r2-autonomie)
+#   devoir-confondu-avec-inclination        — 3/21 in items.yaml (était 2/15), +1 here (cp-r2-autonomie, dual)
+#   critique-utilitariste-mal-identifiee    — 4/21 in items.yaml (était 2/15), +2 here (cp-r3-formalisme, cp-r3-bergson dual)
+#   morale-close-ouverte-mal-comprise       — 3/21 in items.yaml (était 1/15), +1 here (cp-r3-bergson)
+#   imperatif-categorique-juge-arbitraire   — 3/21 in items.yaml (était 1/15), +1 here (cp-r3-liberte, dual)
+#   devoir-liberte-mal-articules            — 3/21 in items.yaml (était 1/15), +1 here (cp-r3-liberte)
+#   coincidence-devoir-inclination-jugee-suffisante — 3/21 in items.yaml (était 0/15), +1 here (cp-bac-devoir)
 #
 # LENGTH REBALANCE (recipe's philo addendum, mandatory — cited ~97% historical
 # tell): correct-answer character length vs. the three distractors, per item
@@ -653,8 +661,12 @@ checkpoints:
 # trimmed to engineer this; every distractor above the correct answer's
 # length was enriched with an added clause, named premise, or spelled-out
 # consequence (never a bare word-count filler). Combined with items.yaml
-# (1/15 longest, a documented exception), the notion's full MCQ bank (23
-# items across both files) lands at 1/23 longest overall — a long way from
+# (1/15 longest, a documented exception), the notion's full MCQ bank lands at
+# 1 longest overall. CORRIGÉ le 2026-09-19 : « 23 items across both files »
+# était juste quand le banc en comptait 15 ; il en compte 21, soit 29 avec les
+# 8 sondes. Le ratio doit être REJOUÉ par script sur 29 avant d'être republié —
+# la recette interdit de l'estimer à l'œil, et je ne le remplace donc pas par un
+# chiffre non mesuré — a long way from
 # the campaign's cited ~97% historical tell, and not a monotonic pattern in
 # either direction.
 # ──────────────────────────────────────────────────────────────────────────────
