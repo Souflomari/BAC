@@ -42,6 +42,7 @@ const ETAPES = [
   { nom: "indice-absolu", cmd: ["scripts/indice-absolu.mjs", "--porte"] },
   { nom: "couverture-diagnostique", cmd: ["scripts/couverture-diagnostique.mjs", "--porte"] },
   { nom: "resume-couverture", cmd: ["scripts/resume-couverture.mjs", "--porte"] },
+  { nom: "arithmetique-rendue", cmd: ["scripts/arithmetique-rendue.mjs", "--strict"] },
   // Énumérateur de routes que l'étape dom-truth consomme : sans navigateur,
   // et le lancer attrape un plantage de l'énumérateur avant la CI.
   { nom: "routes-examens", cmd: ["scripts/routes-examens.mjs"] },

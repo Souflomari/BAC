@@ -1112,9 +1112,11 @@ entries:
         reasoning: |-
           **Ce qu'on cherche et pourquoi ce geste.** Deux grandeurs, et elles ne se lisent pas de la même façon : $T_0$ se lit **directement**, $\theta_m$ se **déduit**.
 
-          **$T_0$, entre deux extrema de même nature.** La figure 3 donne $\dot\theta(t)$, pas $\theta(t)$ — mais la période d'une grandeur et de sa dérivée est toujours la même. Les minima consécutifs de la courbe tombent à $t=1$, $3$, $5$ et $7\ \text{s}$  :
+          **$T_0$, entre deux extrema de même nature.** La figure 3 donne $\dot\theta(t)$, pas $\theta(t)$ — mais la période d'une grandeur et de sa dérivée est toujours la même. Les extrémums de la courbe tombent à $t=1$, $3$, $5$ et $7\ \text{s}$ — et ils **alternent** : minimum, maximum, minimum, maximum. Deux extrémums **voisins** sont donc séparés d'une DEMI-période. Pour lire $T_0$, il faut deux extrémums de même nature, c'est-à-dire en sauter un :
 
-          $$T_0 = 3 - 1 = 5 - 3 = 7 - 5 = \boxed{4{,}0\ \text{s}}$$
+          $$T_0 = 5 - 1 = 7 - 3 = \boxed{4{,}0\ \text{s}}$$
+
+          **Le piège de cette lecture.** Soustraire deux extrémums voisins ($3-1=2$) et annoncer $T_0=2{,}0\ \text{s}$ : c'est la demi-période. Le contrôle qui tranche : sur une sinusoïde, entre deux instants séparés d'une période, la courbe doit repartir dans le **même sens** — entre $t=1$ et $t=3$ elle passe d'un creux à une crête, donc ce n'est pas une période.
 
           **$\theta_m$, qui ne se lit pas — il faut passer par la relation entre $\theta$ et $\dot\theta$.** La solution $\theta(t)=\theta_m\cos(2\pi t/T_0)$ dérive en $\dot\theta(t)=-\theta_m\,\dfrac{2\pi}{T_0}\sin(2\pi t/T_0)$ (question 2-1) : l'amplitude de $\dot\theta$ n'est pas $\theta_m$ elle-même, c'est $\theta_m$ **multipliée** par $2\pi/T_0$. Le maximum lu sur la figure 3, $\dot\theta_{max}=0{,}25\ \text{rad.s}^{-1}$ (sommets et creux à $\pm25$ petits carreaux), donne donc :
 
@@ -1128,8 +1130,8 @@ entries:
 
           **Le piège nommé de cette question.** Lire $\theta_m$ directement comme $0{,}25$, l'amplitude de la courbe donnée — en confondant l'amplitude de $\dot\theta$ (en rad/s) avec l'amplitude de $\theta$ (en rad). Ce ne sont pas la même grandeur, et elles ne partagent même pas l'unité : $0{,}25$ n'est pas un angle.
         steps:
-          - math: 'T_0 = 3-1 = 5-3 = 7-5 = 4{,}0\ \text{s}'
-            note: "Écart entre minima consecutifs de theta-point(t), sur la figure 3."
+          - math: 'T_0 = 5-1 = 7-3 = 4{,}0\ \text{s}'
+            note: "Ecart entre deux extremums de MEME nature (deux minima : t=1 et t=5). Deux extremums voisins, eux, ne sont separes que d'une demi-periode."
           - math: '\dot\theta_{max} = \theta_m\,\frac{2\pi}{T_0} \implies \theta_m = \dot\theta_{max}\,\frac{T_0}{2\pi}'
             note: "L'amplitude de theta-point n'est pas theta_m : c'est theta_m fois 2pi/T0 (dérivée, question 2-1)."
           - math: '\theta_m = 0{,}25\times\frac{4{,}0}{2\pi} \approx \boxed{0{,}16\ \text{rad}}'

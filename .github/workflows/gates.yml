@@ -420,6 +420,9 @@ jobs:
       - name: Portes resume-couverture (un fichier ne se déclare pas complet à tort)
         run: node scripts/resume-couverture.mjs --porte
 
+      - name: Porte arithmetique-rendue (les nombres que l'élève LIT tombent juste)
+        run: node scripts/arithmetique-rendue.mjs --strict
+
       # PORTE DONNÉES (2026-09-05). Ce que le produit coûte au FORFAIT de
       # l'élève, qui n'est pas ce que le chronomètre montre. `next/link`
       # précharge par défaut tout lien entré dans le champ de vision, et ce

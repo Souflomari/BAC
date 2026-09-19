@@ -7198,3 +7198,93 @@ juste avant le point d'arrêt qui demande ces deux nombres.
 Les deux sont corrigées — **la question est conservée, la réponse retirée** —
 et la porte est vérifiée rouge (par réinjection) puis verte sur 62 dossiers.
 0 faux positif.
+
+---
+
+### 11.84 Une porte sur les nombres que l'élève LIT — et les cinq fois où elle est restée VERTE sur un défaut injecté
+
+`web/scripts/arithmetique-rendue.mjs`, câblée dans `gates.yml`, dans
+`batterie-locale` et dans `npm run arithmetique-rendue`.
+
+**Ce qu'elle mesure.** Une chaîne « a = b = c » affichée dans une leçon, un
+item, un corrigé ou une entrée de banque est une PROMESSE : les segments valent
+la même chose. La porte coupe chaque chaîne aux `=` / `\approx`, évalue les
+segments entièrement numériques, et compare ceux qu'elle sait lire. Elle est née
+du triage de `pc/noyaux-masse-energie` (§11.45), où une somme fausse n'avait été
+trouvée qu'à la main : **rien ne relisait les nombres.**
+
+**Portée MESURÉE, pas supposée** (ADR 0031 : la portée d'un mécanisme se mesure
+séparément de son bon fonctionnement). Sur les 62 notions :
+
+| | |
+|---|---|
+| chaînes lues | 31 655 |
+| **comparaisons réellement ÉVALUÉES** | **1 342** |
+| paires hors champ (segment à lettre, fraction, racine, indice ; égalité nue ; fragment de ligne) | 42 487 |
+| conversions d'unité écartées (`25 min = 25×60 = 1500 s`) | 325 |
+| fichiers exemptés (ℤ/nℤ, où « 2×3 = 1 » est JUSTE) | 6 |
+
+**Ce qu'elle ne verra jamais, et qu'il ne faut pas croire couvert :** une chaîne
+dont tous les segments sont justes entre eux mais fausse par rapport au monde.
+C'est précisément le défaut qui l'a fait naître — deux masses fausses de 10 MeV
+en sens opposés, dont la somme sortait juste. **Cette porte n'aurait pas trouvé
+son propre motif.** Elle attrape les régressions d'arithmétique, pas les données
+fausses.
+
+#### Les cinq échecs du test rouge — le vrai contenu de cette entrée
+
+ADR 0031 dit qu'**une porte doit pouvoir passer au ROUGE**. Celle-ci est restée
+VERTE sur des défauts injectés exprès **cinq fois de suite**. Chaque échec a
+nommé une cécité que la lecture du code seule n'aurait pas montrée :
+
+1. **`\text{}` n'est pas qu'une unité.** Il porte aussi les indices de variable
+   (`m_{\text{produits}}`, `\Delta m_{\text{réaction}}`). Comptés comme unités,
+   ils faisaient voir « deux unités » dans presque toute chaîne de physique,
+   donc « conversion », donc **chaîne entière écartée en silence**.
+2. **Même piège, deuxième forme** : les symboles chimiques
+   (`m(^{4}_{2}\text{He})`). Corrigé une bonne fois par la règle qui tient :
+   **une unité est un `\text{}` en FIN de segment.**
+3. **Le `^` était refusé** par le filtre de segment numérique — donc toute la
+   notation scientifique, donc presque toute la physique. **+99 comparaisons**
+   rien qu'en l'autorisant.
+4. **Les guillemets de YAML.** Les retirer partout mangeait le prime de la
+   dérivée et transformait `$(-7)'=0$` (juste) en `(-7) = 0` (faux) ; ne pas les
+   retirer rendait illisible tout champ `math: '…'`. Il faut les retirer **à la
+   clé et en fin de ligne seulement**.
+5. **La tolérance se réglait sur le PREMIER nombre de l'expression.** Pour
+   `2\times 7200 = 1{,}44\times10^{4}`, elle lisait « 2 » — un chiffre
+   significatif — donc **60 % de tolérance**, donc une erreur de 7 % passait.
+   La précision qui compte est celle du **résultat affiché**.
+
+Deux formes de maths ont dû être jointes avant lecture, parce qu'un scan ligne à
+ligne n'en voit qu'un fragment : les blocs `$$…$$` **et** les `$…$` simples
+coupés par un retour à la ligne. Le test rouge final couvre quatre formes :
+bloc `$$` en ligne, bloc `$$` multiligne, `$…$` sur deux lignes, champ `math:`
+de YAML sans aucun `$`.
+
+**Trois classes de faux positifs ont été mesurées puis écartées par une règle
+nommée**, jamais par un seuil :
+- le raisonnement par l'absurde (« *les deux ne coïncident que si $5=0$* ») —
+  une **égalité nue** n'est pas un calcul, un calcul a un opérateur ;
+- l'égalité fausse **citée pour être défaite** (« *Tu as sans doute pris
+  $(-1)^{2023} = 1$. Mais 2023 est impair…* ») — la ligne porte sa réfutation ;
+- ℤ/nℤ, exemption **NOMMÉE** sur un seul dossier : si une autre notion passe au
+  modulaire, elle ressortira en rouge au lieu d'être avalée.
+
+#### Ce qu'elle a trouvé
+
+Un défaut réel, dans une notion **déjà triée** par la campagne :
+`pc/systemes-oscillants/bank.yaml` écrivait
+`T_0 = 3-1 = 5-3 = 7-5 = 4{,}0\ \text{s}` — trois différences qui valent toutes
+**2**. L'intro de la même entrée décrit pourtant t = 1, 3, 5, 7 comme les
+**extrémums** de $\dot\theta(t)$, qui alternent creux et crête : deux extrémums
+voisins sont séparés d'une DEMI-période. La réponse encadrée (4,0 s) était
+juste et toute la suite en dépend ($\theta_m = 0{,}16$ rad, $C = 1{,}7\times
+10^{-2}$) ; c'est **le geste de lecture** qui était faux, et il enseignait à
+l'élève de soustraire deux extrémums voisins. Réécrit en
+`T_0 = 5-1 = 7-3`, avec le piège de la demi-période nommé et son contrôle
+(« entre deux instants séparés d'une période, la courbe repart dans le **même
+sens** »).
+
+Accessoirement : `docs/audits/lectures-graphiques.md` était périmé et la
+batterie l'a signalé — régénéré.
