@@ -10,7 +10,9 @@ skill_code: philo_autrui
 # Levinas, R6 Kant — six boxes, most naming TWO distinct confusions each),
 # then adding cross-cutting models the lesson's prose makes central but no
 # box names explicitly (R0's opening "double question", the recurring
-# cross-author mis-attribution/conflation pattern this seven-author notion
+# cross-author mis-attribution/conflation pattern this notion invites (CINQ
+# auteurs — Husserl, Hegel, Sartre, Levinas, Kant ; « seven-author » corrigé le
+# 2026-09-19)
 # invites, R7's method errors). Id convention: mc.philo.<slug>.<name>, where
 # <slug> is skill_code with the "philo_" prefix stripped (philo_autrui →
 # autrui) — matches la-liberte (mc.philo.liberte.*) and analyse-de-texte
@@ -1462,8 +1464,7 @@ items:
     skill_code: philo_autrui
     tags: [methode, application, husserl]
     stem: >
-      Pour le sujet d'entraînement suggéré « Puis-je vraiment connaître
-      autrui ? », quel auteur de la leçon est le plus directement pertinent
+      Pour un sujet du type « Puis-je vraiment connaître autrui ? », quel auteur de la leçon est le plus directement pertinent
       pour construire la thèse initiale, et pourquoi ?
     type: mcq
     choices:
@@ -1787,7 +1788,7 @@ items:
           C'est manquer le concept d'alter ego : autrui n'est pas d'abord un
           objet auquel j'ajouterais ensuite une conscience. Il se donne d'emblée
           comme un autre soi, inaccessible mais visé comme conscience — et cette
-          nuance est ce que le chapitre 1 sert à établir.
+          nuance est ce que le chapitre 2 sert à établir.
     correct_feedback: >
       Deux gestes sont manqués. Problématiser, c'est dégager la tension du sujet,
       pas le répéter. Et annoncer un plan, ce n'est pas aligner deux réponses
@@ -1800,8 +1801,8 @@ items:
       conditions cette limitation est-elle autre chose qu'un obstacle ?
 
       **Ce qu'est un plan.** Trois moments qui avancent : la thèse spontanée, ce
-      qui la met en défaut, puis un déplacement — chez Sartre, l'idée que la
-      liberté d'autrui est ce qui donne à la mienne un monde à partager.
+      qui la met en défaut, puis un déplacement — chez Levinas et Kant, l'idée que
+      le rapport à autrui peut être autre chose qu'un rapport de forces.
 
       **Le défaut le plus fréquent.** Traiter le plan comme un catalogue
       d'opinions au lieu d'une progression.
@@ -1986,7 +1987,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Le visage n'est pas l'apparence physique mais un appel qui m'oblige ; Kant, lui, interdit de traiter autrui SEULEMENT comme un moyen."
+        text: "Le visage n'est pas l'apparence physique mais un appel qui m'oblige ; Kant, lui, interdit de traiter autrui SIMPLEMENT comme un moyen."
         correct: true
       - id: B
         text: "Le visage désigne les traits, l'expression, ce que je peux décrire — et Kant interdit tout usage d'autrui comme moyen."
@@ -2026,7 +2027,8 @@ items:
       antérieure à toute délibération.
 
       **La formule kantienne, exactement.** « Agis de telle sorte que tu traites
-      l'humanité, en ta personne comme en celle d'autrui, toujours en même temps
+      l'humanité, aussi bien dans ta propre personne que dans la personne de tout
+      autre, toujours en même temps
       comme une fin, et jamais SIMPLEMENT comme un moyen. »
 
       **Ce que le mot « simplement » change.** Toute vie sociale suppose qu'on
@@ -2040,14 +2042,14 @@ items:
 # `maitre-satisfait-par-reconnaissance` sans AUCUN item de banc. Neuf items,
 # vingt-six places : Hegel, Husserl, Sartre (regard, honte, conflit), Levinas
 # et la formule kantienne. Tableau GÉNÉRÉ, gardé par
-# scripts/resume-couverture.mjs.
+# web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
-    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
     mc.philo.autrui.gene-sociale-reduction:                  { count: 3, items: [AUT-7, AUT-8, AUT-9] }
     mc.philo.autrui.double-question-reduite:                 { count: 3, items: [AUT-8, AUT-26, AUT-28] }

@@ -8,8 +8,9 @@ skill_code: philo_la_personne
 # philo addendum, by mining the lesson's own "Erreur à éviter" boxes FIRST
 # (R1 individu/personne, R2 Kant, R3 Locke, R4 Hume — "la confusion la plus
 # fréquente sur ce point du programme", R5 personne physique/morale +
-# imputabilité, R6 dépersonnalisation — six boxes, most naming TWO distinct
-# confusions each), then adding cross-cutting models the lesson's prose makes
+# imputabilité, R6 dépersonnalisation — six boxes. RECOMPTÉ le 2026-09-19 :
+# « most naming TWO distinct confusions each » est faux — R1 en nomme 2,
+# R2 1, R3 3, R4 1, R5 2, R6 1, soit TROIS encadrés sur six), then adding cross-cutting models the lesson's prose makes
 # central but no box names explicitly (R0's opening triple question, the
 # recurring cross-author mis-attribution pattern this four-author notion
 # invites — Kant/Locke/Hume criteria answer three DIFFERENT questions and get
@@ -23,7 +24,9 @@ skill_code: philo_la_personne
 # Id convention: mc.philo.<slug>.<name>, where <slug> is skill_code with the
 # "philo_" prefix stripped (philo_la_personne → la_personne) — matches
 # la-liberte (mc.philo.liberte.*) and autrui (mc.philo.autrui.*). Every one
-# of the 72 distractors across the 24 legacy items (PERS-1..PERS-24) now
+# of the 72 distractors across the 24 legacy items (PERS-1..PERS-24 ; le banc
+# en compte 29 depuis le 2026-09-05, soit 87 distracteurs — le contrôle a été
+# refait sur les 87, aucun tag nul) now
 # carries a real misconception id (no null tags) — stricter than house
 # default, matching the task's instruction.
 misconceptions:
@@ -745,7 +748,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "On ne peut rien objecter : Le chapitre 1 est bien la présentation implicite de la thèse de Locke, développée ensuite en détail -- comme si l'accroche d'une leçon philosophique devait toujours, en réalité, être lue comme l'exposé déguisé d'une doctrine déjà choisie d'avance par son auteur."
+        text: "On ne peut rien objecter : le chapitre 1 est bien la présentation implicite de la thèse de Locke, développée ensuite en détail -- comme si l'accroche d'une leçon philosophique devait toujours, en réalité, être lue comme l'exposé déguisé d'une doctrine déjà choisie d'avance par son auteur."
         correct: false
         misconception: mc.philo.la_personne.r0-tension-non-tenue
         feedback: >
@@ -756,7 +759,7 @@ items:
         correct: false
         misconception: mc.philo.la_personne.r0-tension-non-tenue
         feedback: >
-          Ni l'un ni l'autre : Le chapitre 1 ne nomme aucun philosophe et ne tranche
+          Ni l'un ni l'autre : le chapitre 1 ne nomme aucun philosophe et ne tranche
           pas la tension qu'il expose.
       - id: C
         text: "On doit objecter que le chapitre 1 illustre plutôt la thèse de Kant sur la dignité, non celle de Locke sur la mémoire -- puisque le malaise ressenti en lisant le journal proviendrait, selon cette lecture, d'un manquement au respect dû à sa propre personne, pas d'un problème de continuité de conscience."
@@ -1478,7 +1481,7 @@ items:
         misconception: mc.philo.la_personne.methode-dissertation-mal-appliquee
         feedback: >
           Rien, dans la leçon, ne réserve la dignité kantienne à un seul
-          débat : Le chapitre 7 l'emploie pour penser la dépersonnalisation, bien
+          débat : le chapitre 7 l'emploie pour penser la dépersonnalisation, bien
           au-delà de ce cas particulier.
       - id: D
         text: "L'objection à faire est que ce dépassement aurait dû mobiliser exclusivement Hume, puisque lui seul, parmi les auteurs vus, aborde la question du dépassement thèse/antithèse dans une dissertation -- une exigence qu'aucune étape de la méthode présentée au chapitre 8 ne formule pourtant nulle part."
@@ -1501,8 +1504,15 @@ items:
 
   # Ajoutés le 2026-09-05 : huit familles sous le plancher de 3 items du banc,
   # dont `affirmation-de-soi-non-pertinente` sans AUCUN item — sondée en leçon
-  # seulement, ce qui ne compte pas dans le modèle apprenant. Quatre items,
-  # douze places, l'ajustement est exact.
+  # seulement, ce qui ne compte pas dans le modèle apprenant.
+  # CORRIGÉ le 2026-09-19 : « Quatre items, douze places, l'ajustement est
+  # exact » est faux deux fois sur trois. CINQ items suivent (PERS-25 à
+  # PERS-29), soit QUINZE places de distracteur. « Huit familles » et
+  # « douze places » de DÉFICIT sont, eux, exacts — mais quinze places
+  # comblent douze : l'ajustement est SUFFISANT, pas exact. Deux incréments
+  # sont du surplus (individu-identite-personnelle-confondus finit à 4 pour
+  # un déficit de 1 ; depersonnalisation-reduite-a-sentiment, qui n'était pas
+  # sous le plancher, finit à 4).
   - id: PERS-25
     rung: "R2"
     difficulty_level: 4

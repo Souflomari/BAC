@@ -25,18 +25,22 @@ skill_code: philo_etat
 # NEW: it comes from the r-bac قولة (docs/sujets/philo/l-etat.md, 2023 N), an
 # axis (violence comme fondement ET garant SUFFISANT de la persistance du
 # pouvoir) this lesson's R0-R7 body does not teach directly as a single
-# claim — see the coverage_summary note below for the honest floor gap this
-# opens.
+# claim — see the coverage_summary below.
+# CORRIGÉ le 2026-09-19 : ce renvoi promettait « the honest floor gap this
+# opens ». Il n'y a plus de trou (4 items, `floor_met: true`). Ce qui reste
+# vrai, et c'est le fait utile : le CORPS de la leçon n'enseigne pas cet axe.
 #
 # Retrofit note: 18 misconceptions is a deliberately consolidated count —
 # several finer-grained candidate distinctions (e.g. separate tags for
 # "monopole de la violence physique pris au pied de la lettre" vs.
 # "légitime confondu avec moralement juste", both from the same R5
 # paragraph on Weber) were merged into one id where they occupied the same
-# items, to avoid the inventory fragmenting past what a 24-item legacy bank
-# can honestly support — matching the calibration of
+# items, to avoid the inventory fragmenting past what the 24-item legacy bank
+# could honestly support — matching the calibration of
 # content/philo/theorie-experience/items.yaml's own 16-misconception
-# inventory for the same item count.
+# inventory. CORRIGÉ le 2026-09-19 : « for the same item count » est faux des
+# deux côtés — l-etat porte 32 items depuis le 2026-09-05, theorie-experience
+# en porte 29. Les 16 misconceptions, elles, sont exactes.
 
 misconceptions:
   - id: mc.philo.etat.gouvernement-confondu-avec-etat
@@ -1703,7 +1707,10 @@ items:
 
   # Ajoutés le 2026-09-05 : onze familles sous le plancher de 3 items du banc,
   # dont `violence-fondatrice-et-suffisante` sans AUCUN item — sondée en leçon
-  # seulement. Sept items, dix-neuf places.
+  # seulement. CORRIGÉ le 2026-09-19 : « Sept items, dix-neuf places » — HUIT
+  # items suivent (ETA-25 à ETA-32), et « dix-neuf » était le DÉFICIT d'avant
+  # remplissage, pas ce qui a été livré. Le diagnostic amont (onze familles sous
+  # le plancher) est, lui, exact.
   - id: ETA-25
     rung: "R5"
     difficulty_level: 4
@@ -1792,7 +1799,7 @@ items:
         misconception: mc.philo.etat.etat-neutre-arbitre-non-conteste
         feedback: >
           La neutralité de l'État n'est pas un fait acquis : c'est une
-          PRÉTENTION, que le chapitre 6 soumet à la critique marxiste — l'État y
+          PRÉTENTION, que le chapitre 7 soumet à la critique marxiste — l'État y
           apparaît comme l'instrument de la classe dominante. On ne peut pas s'en
           servir comme d'un point de départ non discuté.
       - id: D
@@ -2027,7 +2034,7 @@ items:
         misconception: mc.philo.etat.etat-neutre-arbitre-non-conteste
         feedback: >
           Respecter la procédure ne garantit pas la neutralité du résultat. La
-          critique marxiste, au chapitre 6, porte exactement sur ce point :
+          critique marxiste, au chapitre 7, porte exactement sur ce point :
           derrière la forme impartiale, l'État peut servir des intérêts
           particuliers. La neutralité est une prétention à examiner, pas une
           donnée.
@@ -2171,17 +2178,21 @@ items:
       de le détruire, parce que c'est lui qui donne le pouvoir réel.
 
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
-# RÉÉCRIT le 2026-09-05, après ETA-25 à ETA-32. Onze familles sous le plancher,
-# dont `violence-fondatrice-et-suffisante` sans AUCUN item de banc — sondée en
-# leçon seulement, ce qui ne compte pas dans le modèle apprenant. Tableau
-# GÉNÉRÉ, gardé par scripts/resume-couverture.mjs.
+# RÉÉCRIT le 2026-09-05, après ETA-25 à ETA-32. CORRIGÉ le 2026-09-19 : cette
+# note se déclarait POSTÉRIEURE à l'ajout tout en décrivant l'état d'AVANT —
+# démentie deux lignes plus bas par `floor_met: true` et par `violence-
+# fondatrice-et-suffisante: { count: 4 }`. Elle décrivait l'état ETA-1..ETA-24,
+# où onze familles étaient sous le plancher, dont `violence-fondatrice-et-
+# suffisante` sans AUCUN item de banc — sondée en leçon seulement, ce qui ne
+# compte pas dans le modèle apprenant. Tableau
+# GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
-    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
     mc.philo.etat.gouvernement-confondu-avec-etat:                   { count: 3, items: [ETA-1, ETA-9, ETA-22] }
     mc.philo.etat.nation-confondue-avec-etat:                        { count: 4, items: [ETA-1, ETA-11, ETA-27, ETA-32] }

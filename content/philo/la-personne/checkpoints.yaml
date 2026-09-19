@@ -60,10 +60,12 @@
 #                                  depersonnalisation-reduite-a-sentiment
 #                                  (dual, choices C/D).
 #   cp-bac-affirmation (before [[exercise:r-bac]]) — rupture gate:
-#                                  affirmation-de-soi-non-pertinente — the
-#                                  ONE model in the inventory with ZERO
-#                                  items.yaml coverage (a genuinely new axis,
-#                                  see items.yaml's coverage_summary notes);
+#                                  affirmation-de-soi-non-pertinente — qui
+#                                  était alors le SEUL modèle sans aucun item
+#                                  de banc (il en a 3 depuis le 2026-09-05 :
+#                                  PERS-25, 26, 29). Le renvoi « items.yaml's
+#                                  coverage_summary notes » est MORT : ce champ
+#                                  `notes` n'existe pas — lire `honest_state` ;
 #                                  primes the misconception right before the
 #                                  2015 قولة that turns on exactly this
 #                                  point (refusing objectification as itself
@@ -426,7 +428,7 @@ checkpoints:
       peut être jugée responsable devant un tribunal ; et de toute façon,
       dès qu'un dommage est matériellement causé par quelqu'un, il en est
       responsable, qu'il ait pu comprendre son acte ou non. » Que corrige
-      Le chapitre 6 sur ces deux points ?
+      le chapitre 6 sur ces deux points ?
 
     type: mcq
     choices:
@@ -542,10 +544,10 @@ checkpoints:
 
   # ════════════════════════════════════════════════════════════════
   # CP-7 | id: cp-bac-affirmation | placed BEFORE [[exercise:r-bac]]
-  #        Probes: affirmation-de-soi-non-pertinente -- the ONE model with
-  #        ZERO items.yaml coverage (see items.yaml's coverage_summary
-  #        notes); primes it right before the 2015 قولة that turns on this
-  #        exact point.
+  #        Probes: affirmation-de-soi-non-pertinente — alors le seul modèle
+  #        sans item de banc ; il en a 3 depuis le 2026-09-05. (Le renvoi
+  #        « coverage_summary notes » est mort : lire `honest_state`.)
+  #        Primes it right before the 2015 قولة that turns on this point.
   # ════════════════════════════════════════════════════════════════
 
   - id: cp-bac-affirmation
@@ -581,9 +583,9 @@ checkpoints:
         misconception: mc.philo.la_personne.affirmation-de-soi-non-pertinente
         feedback: |-
           Modèle détecté : faire du refus la condition ABSOLUE de la
-          dignité. Le chapitre 7 l'interdit explicitement, à propos de l'esclavage : la
-          dignité kantienne ne pouvait être retirée par aucune décision
-          humaine, y compris l'impossibilité pratique de résister.
+          dignité. Le chapitre 7 l'interdit, à propos de l'esclavage : il y distingue la
+          dignité, qu'aucune décision humaine ne peut retirer, de sa
+          reconnaissance, qu'une société peut refuser, y compris l'impossibilité pratique de résister.
 
       - id: C
         text: "Le texte confirme exactement la position de l'élève : aucun acte du sujet ne change jamais rien à sa valeur, le refus n'étant qu'un geste sans portée philosophique réelle -- une lecture qui rendrait alors incompréhensible pourquoi le chapitre 7 prend soin de citer des luttes historiques précises, menées par des individus refusant activement d'être traités comme de simples choses."
@@ -619,7 +621,23 @@ checkpoints:
 # (house convention — see rlc-serie/probabilites-conditionnelles/
 # analyse-de-texte/la-liberte/autrui). They exist to give every student
 # in-lesson exposure to the notion's weakest-covered wrong models,
-# regardless of the item-bank gaps flagged in items.yaml's coverage_summary:
+# regardless of the item-bank gaps flagged in items.yaml's coverage_summary.
+#
+# ⚠ RE-MESURÉ le 2026-09-19, et DEUX défauts à la fois.
+# (a) UNITÉ. Les numérateurs ci-dessous sont des DISTRACTEURS, le dénominateur
+#     des ITEMS, et le plancher auquel on les compare est item-level
+#     (items.yaml : « une seule fois par item même si plusieurs le portent »).
+#     Deux systèmes de mesure sous un seul renvoi.
+# (b) PÉRIMÉ. Le dénominateur 24 vaut pour le banc d'avant PERS-25..29 ; il en
+#     compte 29, soit 87 distracteurs. Et AUCUNE des cinq familles étiquetées
+#     « thin » ou « zero-coverage » ne l'est encore : toutes valent 3 items,
+#     comme treize autres, et `floor_met: true`. Les sondes restent
+#     défendables ; c'est leur justification écrite qui avait vieilli.
+#     personne-reduite-a-espece 3 · dignite-fondee-sur-privilege 3 ·
+#     hume-these-mal-comprise 3 · dignite-confondue-avec-reconnaissance-
+#     sociale 3 · affirmation-de-soi-non-pertinente 3 (était bien 0).
+# Les anciens chiffres sont laissés visibles : ce sont eux qui expliquent
+# pourquoi chaque sonde a été posée là.
 #   r0-tension-non-tenue                          — 8/24 in items.yaml, +3 here (cp-r0-predict, ×3 distractors)
 #   personne-reduite-a-espece                     — 1/24 in items.yaml, +1 here (cp-r1-rupture) — thin
 #   individu-personne-synonymes                   — 3/24 in items.yaml, +1 here (cp-r1-rupture)
@@ -635,7 +653,7 @@ checkpoints:
 #   personne-physique-morale-confondues           — 8/24 in items.yaml, +1 here (cp-r5-rupture)
 #   dignite-confondue-avec-reconnaissance-sociale — 1/24 in items.yaml, +1 here (cp-r6-rupture) — thin
 #   depersonnalisation-reduite-a-sentiment        — 6/24 in items.yaml, +2 here (cp-r6-rupture, ×2 distractors)
-#   affirmation-de-soi-non-pertinente             — 0/24 in items.yaml, +3 here (cp-bac-affirmation, ×3 distractors) — the zero-coverage model
+#   affirmation-de-soi-non-pertinente             — 0/24 in items.yaml (→ 3 items depuis PERS-25/26/29), +3 here (cp-bac-affirmation, ×3 distractors)
 #
 # LENGTH REBALANCE (recipe's philo addendum, mandatory — cited ~97% tell):
 # correct-answer character length vs. the three distractors, per item
@@ -665,6 +683,11 @@ checkpoints:
 # not a monotonic "correct = longest" pattern relocated to a different rank.
 # Combined across items.yaml (24 MCQs) + checkpoints.yaml (8 MCQs) = 32 MCQs
 # total: 7/32 (21.9%) longest, 11/32 second, 10/32 third, 4/32 shortest.
+# ⚠ PÉRIMÉ (2026-09-19) : items.yaml porte 29 QCM, soit 37 au total, et
+# l'audit n'a jamais été repassé sur PERS-25..29. Je ne republie PAS un
+# pourcentage corrigé : il faudrait recompter les 37 longueurs au caractère,
+# et l'affirmer sans le faire serait remplacer une erreur par une autre.
+# À rejouer par script avant toute nouvelle revendication.
 # exercises.yaml has no MCQ choices at all (no steps[]/math, no
 # correct/distractor structure, per the addendum's "no steps[]" rule for
 # philo) — the length-check script reports 0 MCQs there, a pass by
