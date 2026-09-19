@@ -137,7 +137,7 @@ $$v = \sqrt{\frac{9{,}0 \times 10^{9} \times (1{,}6 \times 10^{-19})^2}{9{,}1 \t
 
 $$T = \frac{2\pi r}{v} = \frac{2\pi \times 5{,}3 \times 10^{-11}}{2{,}2 \times 10^{6}} \approx 1{,}5 \times 10^{-16}\ \text{s}$$
 
-L'électron, dans ce modèle, tournerait à plus de deux millions de mètres par seconde, en faisant un tour complet en un dixième de milliardième de milliardième de seconde. Une vitesse et une période parfaitement définies, parfaitement stables dans le temps — rien, dans ce calcul, ne dit que $r$ devrait un jour changer. Retiens bien ce point : on y revient au chapitre suivant.
+L'électron, dans ce modèle, tournerait à plus de deux millions de mètres par seconde, en faisant un tour complet en moins d'un millionième de milliardième de seconde. Une vitesse et une période parfaitement définies, parfaitement stables dans le temps — rien, dans ce calcul, ne dit que $r$ devrait un jour changer. Retiens bien ce point : on y revient au chapitre suivant.
 
 Vérifie ta compréhension.
 

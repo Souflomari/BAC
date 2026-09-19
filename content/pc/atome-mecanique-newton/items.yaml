@@ -1420,9 +1420,9 @@ items:
         misconception: null
         feedback: >
           La méthode ($\nu = \Delta E / h$) est correcte, mais l'exposant
-          est faux : $10^{-19} / 10^{-34} = 10^{-19-(-34)} = 10^{15}$, pas
-          $10^{-14}$. Une erreur de signe dans la soustraction des
-          exposants.
+          est faux. Le calcul complet : $(3{,}0/6{,}63)	imes10^{-19-(-34)} =
+             0{,}45	imes10^{15} = 4{,}5	imes10^{14}$ Hz — l'exposant final
+             est $+14$, pas $-14$.
       - id: D
         text: "$\\nu = \\dfrac{\\Delta E}{h} \\approx 4{,}5 \\times 10^{14}\\ \\text{Hz}$"
         correct: true
@@ -1971,7 +1971,7 @@ items:
       - id: D
         text: "Il est faux parce qu'il ignore le rayonnement : une équation qui oublie un phénomène est une équation erronée."
         correct: false
-        misconception: mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie
+        misconception: mc.physics.pc_atome_mecanique_newton.calcul-incomplet-confondu-avec-calcul-faux
         feedback: >
           L'ingrédient manquant est bien identifié, mais le mot « faux » est mal
           employé. Toute modélisation ignore quelque chose ; cela ne rend pas
@@ -2173,6 +2173,19 @@ items:
 
 
 coverage_summary:
+  # RÉSERVE MESURÉE le 2026-09-19 : AMN-27 D portait
+  # `ingredient-manquant-mal-identifie` alors que son propre retour écrit
+  # « L'ingrédient manquant est BIEN identifié, mais le mot "faux" est mal
+  # employé ». Contradiction frontale ; réétiquetée vers
+  # `calcul-incomplet-confondu-avec-calcul-faux`, déjà la primary de l'item.
+  # CONSÉQUENCE ASSUMÉE : `ingredient-manquant-mal-identifie` retombe de 3 à 2
+  # items, sous le plancher. Les comptes ci-dessous n'ont PAS été retouchés
+  # pour masquer ça. Il faut un item de plus, ou retirer la ligne du registre.
+  #
+  # Deux autres étiquettes sont contestées (AMN-24 D, AMN-25 D) mais les DEUX
+  # rapports proposent des familles d'accueil DIFFÉRENTES, et aucune ne décrit
+  # exactement le modèle en jeu. Non réétiquetées : on ne tranche pas entre
+  # deux critiques en inventant une troisième réponse.
   method: "item-level, ANY distractor (un item = un compte, quel que soit le nombre de distracteurs qui portent le modèle)"
   # CONVENTION CHANGÉE le 2026-09-05. La version précédente comptait par
   # primary_misconception, alors que l'instrument de couverture
