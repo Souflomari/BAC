@@ -679,17 +679,30 @@ coverage_summary:
   floor: 3
   floor_met: true
   ramp_coverage:
-    # Recompté le 2026-09-19 après le re-barreaudage de MD-M4-2 et MD-M4-3.
-    # CONSÉQUENCE ÉCRITE, non masquée : la ligne `R2: 1` disparaît — le
-    # chapitre 3 (la phagocytose), qui porte pourtant le mécanisme le plus
-    # détaillé de la leçon (ses cinq étapes, lesson.md:77-85), n'a désormais
-    # AUCUN item de banc. Ce n'est pas une régression : l'item qui y était
-    # rangé n'y était pas répondable. Le trou était réel, il est maintenant
-    # visible.
+    # Recompté le 2026-09-19 après le re-barreaudage de MD-M4-2 et MD-M4-3,
+    # puis complété le même jour : les barreaux à ZÉRO sont ÉCRITS, pas omis.
+    # Convention (§11.93) : R0 (l'accroche, qui n'a jamais d'item par
+    # construction) et le dernier chapitre « Pour t'entraîner » sont les seuls
+    # exemptés ; tout barreau d'enseignement muet doit porter son zéro.
+    #
+    # QUATRE BARREAUX D'ENSEIGNEMENT SANS AUCUN ITEM, et ce sont eux le vrai
+    # état de la notion :
+    #   R1 — la réaction inflammatoire, dont les quatre signes cardinaux sont
+    #        le meilleur « pourquoi c'est vrai » de la leçon ;
+    #   R2 — la phagocytose et ses cinq étapes (l'item qui y était rangé n'y
+    #        était pas répondable : sa clé est au chapitre 6) ;
+    #   R7 — la coopération CPA/LT4, qui n'a NI item NI checkpoint alors que la
+    #        leçon en fait le point de bascule de toute la réponse ;
+    #   R8 — la mémoire immunitaire, qui répond à la SECONDE des deux questions
+    #        d'ouverture, et dont le mot n'apparaît au banc que côté distracteur.
+    R1: 0
+    R2: 0
     R3: 3
     R4: 1
     R5: 2
     R6: 3
+    R7: 0
+    R8: 0
   honest_state_2026_09_19: >-
     Les cinq misconceptions déclarées sont couvertes, aucune sous le
     plancher. Quatre y siègent EXACTEMENT (3 items) : la marge est nulle

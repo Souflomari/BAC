@@ -661,10 +661,22 @@ coverage_summary:
   floor: 3
   floor_met: true
   ramp_coverage:
+    # Les barreaux à ZÉRO sont ÉCRITS, pas omis (2026-09-19, §11.93). R0
+    # (l'accroche) et R7 (« Pour t'entraîner ») sont exemptés par convention ;
+    # tout barreau d'enseignement muet porte son zéro.
+    #
+    # R5 — la concentration en substrat et le PALIER DE SATURATION — n'a AUCUN
+    # item de banc. Le chapitre est pourtant enseigné, mis en scène (figure
+    # étagée) et sa misconception rompue en prose ; mais il ne porte aucune
+    # ligne du registre, et sa seule sonde est un checkpoint, que ce fichier
+    # exclut lui-même du modèle apprenant. C'est aussi le savoir-faire le plus
+    # quantitatif du cadre pour cette notion (lire une courbe vitesse–[substrat]
+    # et une courbe vitesse–[enzyme], et relier chaque forme au site actif).
     R1: 1
     R2: 1
     R3: 3
     R4: 3
+    R5: 0
     R6: 1
   honest_state: >-
     Les six misconceptions déclarées sont couvertes, aucune sous le

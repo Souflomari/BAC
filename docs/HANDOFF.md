@@ -8011,3 +8011,51 @@ muette (l'inverse). C'est mécanique et sans faux positif possible.
 structurellement saine — ce qui, dit à côté du défaut de §11.93, situe
 exactement le problème : **les figures sont bien CÂBLÉES, ce sont leurs
 nombres qui ne sont relus par rien.**
+
+---
+
+### 11.96 Les barreaux muets, comptés sur tout le corpus — et une fiche à moi qui disait vrai sur le mot, faux sur la chose
+
+Application de la règle de §11.93 (« un `ramp_coverage` énumère TOUS les
+barreaux, y compris à zéro ») à l'échelle du dépôt, plutôt que notion par
+notion. Sonde : comparer, pour chaque notion, les titres `## R<n>` de la leçon,
+les `rung:` bruts des items, et les clés du `ramp_coverage`.
+
+**La convention, dite une fois pour toutes.** Deux barreaux sont exemptés,
+parce qu'ils n'ont jamais d'item par construction : **R0** (l'accroche) et le
+**dernier chapitre « Pour t'entraîner »**. Tout AUTRE barreau d'enseignement
+muet doit porter son zéro. Sans cette convention, la sonde signale les 11
+notions SVT et ne trie rien ; avec elle, elle isole les cas réels.
+
+**Trois notions avaient un barreau d'ENSEIGNEMENT muet et tu.** Deux sont
+écrites maintenant :
+
+- **`moyens-de-defense` — quatre barreaux à zéro**, et c'est le vrai état de la
+  notion : R1 (la réaction inflammatoire, dont les quatre signes cardinaux sont
+  le meilleur « pourquoi c'est vrai » du document), R2 (la phagocytose et ses
+  cinq étapes), R7 (la coopération CPA/LT4, qui n'a **ni item ni checkpoint**
+  alors que la leçon en fait le point de bascule), R8 (la mémoire immunitaire,
+  qui répond à la seconde des deux questions d'ouverture).
+- **`role-enzymes` — R5 à zéro** : la concentration en substrat et le palier de
+  saturation, chapitre enseigné, mis en scène, dont la misconception est rompue
+  en prose — et qui ne porte aucune ligne du registre.
+- La troisième (`theorie-tectonique-plaques`, R5) est laissée à la passe en
+  cours sur la géologie, pour ne pas écrire par-dessus une critique qui lit le
+  même fichier.
+
+**Et une fiche de tâche à moi qui disait vrai sur le mot et faux sur la
+chose.** La fiche §11.69 affirmait que `derivabilite-etude-fonctions` et
+`limites-continuite` « n'ont pas de table `per_rung`, donc rien de faux à y
+déclarer ». Exact pour `per_rung` ; trompeur pour ce qui compte : les deux
+portent un `ramp_coverage` qui déclare bel et bien le barreau fantôme (R6 avec
+5 items pour l'une, R7 avec 3 pour l'autre), parce que leur dernier chapitre
+n'a pas de code `R<n>`. **Les tables sont cohérentes avec les tags bruts** — ce
+n'est pas un faux compte, c'est un barreau sans titre. Rien n'a été modifié :
+le correctif évident (coder les deux derniers chapitres) est exactement celui
+que §11.69 interdit d'appliquer mécaniquement, parce que les items orphelins ne
+portent pas sur le sujet de ces chapitres. La fiche est corrigée ; le fond
+reste une décision d'auteur.
+
+> Ce que ça ajoute à §11.91 : **une affirmation peut être littéralement vraie et
+> quand même désinformer.** « Pas de table `per_rung` » était vrai ; ce que le
+> lecteur en tirait — « rien à vérifier ici » — était faux.
