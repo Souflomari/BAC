@@ -100,7 +100,7 @@ Comme tu l'as vu dans le chapitre sur l'état d'équilibre, un solide pur n'entr
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* on veut savoir, avant même de plonger la lame de zinc dans le tube, si la réaction va bien se produire dans le sens observé - sans invoquer une quelconque « réactivité » du zinc à mémoriser.
 
-On plonge la lame de zinc dans une solution de sulfate de cuivre fraîchement préparée, telle que $[Cu^{2+}]_i = 1{,}0\times10^{-1}\ \text{mol/L}$. Avant la réaction, il n'y a pratiquement pas d'ions $Zn^{2+}$ en solution - disons une trace, $[Zn^{2+}]_i \approx 1{,}0\times10^{-6}\ \text{mol/L}$, comme on en trouve dans n'importe quelle verrerie jamais parfaitement propre. On donne, pour cette réaction à cette température, $K \approx 1{,}8\times10^{37}$.
+On plonge la lame de zinc dans une solution de sulfate de cuivre fraîchement préparée, telle que $[Cu^{2+}]_i = 1{,}0\times10^{-1}\ \text{mol/L}$. Avant la réaction, il n'y a pratiquement pas d'ions $Zn^{2+}$ en solution - disons une trace, $[Zn^{2+}]_i \approx 1{,}0\times10^{-6}\ \text{mol/L}$, comme on en trouve dans n'importe quelle verrerie jamais parfaitement propre. On donne, pour cette réaction à cette température, $K \approx 1{,}8\times10^{37}$. (Le sujet d'examen du dernier chapitre en retient $5\times10^{36}$ — une autre température, le même ordre de grandeur, et la même conclusion.)
 
 $$Q_{r,i} = \frac{[Zn^{2+}]_i}{[Cu^{2+}]_i} = \frac{1{,}0\times10^{-6}}{1{,}0\times10^{-1}} = 1{,}0\times10^{-5}$$
 

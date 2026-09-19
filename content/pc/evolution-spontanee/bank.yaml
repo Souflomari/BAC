@@ -86,7 +86,7 @@ entries:
           - math: 'Q_{r,i} = \frac{1{,}0\times10^{-2}}{1{,}0\times10^{-2}} = 1'
             note: "Application numérique : les deux concentrations initiales sont égales."
           - math: 'Q_{r,i} = 1 \ll K = 5\times10^{36}'
-            note: "Qr,i est ecrase par K de 36 ordres de grandeur."
+            note: "Qr,i est écrasé par K de 36 ordres de grandeur."
           - math: '\boxed{Q_{r,i} < K}'
             note: "Sens direct (sens 1 de l'équation) : le zinc s'oxyde, les ions cuivre(II) se réduisent."
       - id: q2
@@ -101,15 +101,15 @@ entries:
         stem: |-
           **(1 pt)** Au cours du fonctionnement de la pile, le circuit est traversé par un courant d'intensité constante $I = 75\ \text{mA}$. Trouver l'expression de la durée maximale de fonctionnement de la pile $\Delta t_{\max}$, en fonction de $[\text{Cu}^{2+}_{(aq)}]_i$, $V$, $\mathcal{F}$ et $I$, puis calculer $\Delta t_{\max}$.
         reasoning: |-
-          Ce calcul de quantité d'électricité relève du chapitre piles plutôt que du critère de spontanéité proprement dit (la leçon note au chapitre 5 que le montage en pile force les électrons à passer par un circuit mesurable — c'est cette quantité totale d'électrons disponibles qu'on chiffre ici). Le courant $I$ constant correspond à un débit d'électrons constant, $Q = I\,\Delta t$. La pile s'arrête de fonctionner dès que l'un des réactifs dissous est épuisé — ici, les deux concentrations initiales sont égales et le zinc solide (électrode) est en large excès dans son compartiment, donc c'est la disparition complète des ions $\text{Cu}^{2+}$ qui limite la durée. Chaque ion $\text{Cu}^{2+}$ réduit consomme $2$ électrons (couple $\text{Cu}^{2+}/\text{Cu}$), donc la quantité d'électricité totale disponible est $Q_{\max} = n(\text{Cu}^{2+})_i \times 2 \times \mathcal{F}$. On égale les deux expressions de $Q$ pour isoler $\Delta t_{\max}$.
+          Le montage en pile force les électrons à passer par un circuit mesurable : c'est cette quantité totale d'électrons disponibles qu'on chiffre ici. Le courant $I$ constant correspond à un débit d'électrons constant, $Q = I\,\Delta t$. La pile s'arrête de fonctionner dès que l'un des réactifs dissous est épuisé — ici, les deux concentrations initiales sont égales et le zinc solide (électrode) est en large excès dans son compartiment, donc c'est la disparition complète des ions $\text{Cu}^{2+}$ qui limite la durée. Chaque ion $\text{Cu}^{2+}$ réduit consomme $2$ électrons (couple $\text{Cu}^{2+}/\text{Cu}$), donc la quantité d'électricité totale disponible est $Q_{\max} = n(\text{Cu}^{2+})_i \times 2 \times \mathcal{F}$. On égale les deux expressions de $Q$ pour isoler $\Delta t_{\max}$.
         steps:
           - math: 'n(\text{Cu}^{2+})_i = [\text{Cu}^{2+}]_i\,V'
             note: "Quantité initiale d'ions cuivre(II) disponibles dans le compartiment cuivre."
           - math: 'Q_{\max} = 2\,n(\text{Cu}^{2+})_i\,\mathcal{F} = 2\,[\text{Cu}^{2+}]_i\,V\,\mathcal{F}'
-            note: "2 électrons echanges par ion Cu2+ réduit (couple Cu2+/Cu)."
+            note: "2 électrons échangés par ion Cu2+ réduit (couple Cu2+/Cu)."
           - math: 'Q_{\max} = I\,\Delta t_{\max}'
-            note: "Le courant constant I debite une quantité d'electricite proportionnelle a la durée."
+            note: "Le courant constant I débite une quantité d'électricité proportionnelle à la durée."
           - math: '\boxed{\Delta t_{\max} = \frac{2\,[\text{Cu}^{2+}]_i\,V\,\mathcal{F}}{I}}'
-            note: "On isole Δt_max en egalant les deux expressions de Q."
+            note: "On isole Δt_max en égalant les deux expressions de Q."
           - math: '\Delta t_{\max} = \frac{2\times 1{,}0\times10^{-2}\times 0{,}200\times 9{,}65\times10^{4}}{75\times10^{-3}} \approx 5{,}1\times10^{3}\ \text{s}'
             note: "Application numérique : [Cu2+]i = 1,0e-2 mol/L, V = 200 mL = 0,200 L, F = 9,65e4 C/mol, I = 75 mA = 75e-3 A. Soit environ 1 h 26 min."
