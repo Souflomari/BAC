@@ -7790,3 +7790,50 @@ une formule de Hume est prêtée à Locke est un DISTRACTEUR, qui est là pour �
 (2) **Les 117 renvois inter-leçons nommés** (« chapitre N de « Titre » »)
 résolvent tous dans les bornes de la leçon citée, et le titre du chapitre visé
 correspond au sujet invoqué partout où c'est jugeable.
+
+---
+
+### 11.92 Vérifier que les corrections ARRIVENT — et ce que la vérification a appris sur l'aperçu Vercel
+
+Discipline de la maison : une correction n'est faite que si elle atteint
+l'élève. Les huit correctifs de prose rendue de l'arc ont donc été relus **dans
+le HTML SERVI**, pas dans le fichier source.
+
+**Premier essai, raté, et il faut le dire :** l'aperçu de branche Vercel
+répond **302 vers `vercel.com/sso-api`** — il est derrière l'authentification
+de l'équipe, donc illisible depuis cette session. L'alias public
+`bac-pink.vercel.app` répond 200 mais sert un build ANTÉRIEUR : on y retrouve
+encore « à la toute fin du chapitre précédent (chapitre 6) » et « Rappelle-toi
+la réaction du chapitre précédent ». **Conclusion honnête : la vérité DÉPLOYÉE
+de cette branche n'est pas vérifiable d'ici.** Ne pas confondre l'alias public
+avec l'aperçu de la branche.
+
+**Second essai, concluant : `npm run build` puis `next start` en local**, et
+lecture du HTML servi sur quatre routes. Toutes les corrections y sont, aucune
+chaîne ancienne n'y survit — vérifié dans les deux couches :
+
+| Route | Corrigé servi | Ancien |
+| --- | --- | --- |
+| `/notions/maths/fonction-exponentielle` | « à la toute fin de la leçon précédente (son chapitre 6) » | absent |
+| `/notions/pc/suivi-temporel-vitesse` | « Rappelle-toi la réaction de la leçon précédente » | absent |
+| `/notions/svt/role-enzymes` | « elle se dénature », « un autre glucide », « pH proche de la neutralité, intestin grêle » | absent |
+| `/notions/svt/soi-non-soi` | « la leçon suivante, « Les moyens de défense… » | absent |
+
+**Et un fait de PORTÉE à retenir pour toutes les vérifications futures, parce
+qu'il m'a d'abord fait conclure à tort.** Le HTML d'une leçon porte ses
+chapitres **deux fois** : 7 sections hors `<script>` (ce que le navigateur
+peint) et 7 autres dans la charge RSC (ce que React reprend à l'hydratation) —
+14 au total sur `soi-non-soi`. Un texte de **retour de checkpoint** (« le sang
+de groupe O- passe chez tout le monde ») n'existe QUE dans la charge RSC, parce
+qu'il ne s'affiche qu'après la réponse de l'élève. Une sonde qui retire les
+`<script>` avant de chercher — comme `renvois-visibles` le fait, à raison, pour
+compter ce qui est LU — **ne voit donc aucun feedback de checkpoint**. Les deux
+lectures sont légitimes et ne répondent pas à la même question :
+
+- *« qu'est-ce que l'élève lit sans rien faire ? »* → HTML hors `<script>` ;
+- *« la correction est-elle partie en production ? »* → charge complète, RSC
+  incluse.
+
+Les deux ont été faites ici. Confondre les deux, c'est soit croire qu'un
+défaut de feedback n'existe pas, soit croire qu'un texte de script est sous les
+yeux de l'élève.

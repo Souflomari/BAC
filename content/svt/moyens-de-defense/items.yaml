@@ -176,7 +176,7 @@ items:
           de la sélection clonale puis de la différenciation de lymphocytes B en
           plasmocytes, un mécanisme propre à l'immunité adaptative. Le délai
           d'une semaine ne s'explique pas par « plus ou moins de bactéries »,
-          mais par la nature différent du mécanisme mis en jeu.
+          mais par la nature différente du mécanisme mis en jeu.
       - id: C
         text: "Les deux phénomènes relèvent de l'immunité adaptative, la rapidité de la réaction locale s'expliquant par une mémoire immunitaire déjà acquise lors d'une rencontre antérieure avec la même bactérie."
         correct: false
@@ -518,7 +518,11 @@ items:
       complexe immun.
 
   - id: MD-M4-2
-    rung: "R4"
+    # RE-BARREAUDÉ le 2026-09-19 : portait `rung: "R4"` (le chapitre 5, la
+    # sélection clonale des LB). Sa bonne réponse A est « Le lymphocyte T
+    # cytotoxique » — le mot « cytotoxique » et le sigle LTc n'apparaissent
+    # pour la première fois qu'à lesson.md:252, dans le chapitre 7 (R6).
+    rung: "R6"
     difficulty_level: 4
     skill_code: svt_moyens_defense
     tags: [misconception_driven, lb_lt, cellule_infectee, anticorps]
@@ -581,7 +585,13 @@ items:
       (lymphocytes T cytotoxiques).
 
   - id: MD-M4-3
-    rung: "R2"
+    # RE-BARREAUDÉ le 2026-09-19 : portait `rung: "R2"` (le chapitre 3, la
+    # phagocytose). Sa bonne réponse A repose sur « la défense contre un virus
+    # circulant en dépend étroitement [des anticorps] » — or les anticorps ne
+    # sont enseignés qu'au chapitre 6 (R5, lesson.md:192) ; avant, ils ne sont
+    # que renvoyés en avant (« on reviendra sur ce point au chapitre 6 »).
+    # L'item n'était pas répondable au sortir de R2.
+    rung: "R5"
     difficulty_level: 3
     skill_code: svt_moyens_defense
     tags: [misconception_driven, immunite_innee, anticorps, portee]
@@ -669,12 +679,27 @@ coverage_summary:
   floor: 3
   floor_met: true
   ramp_coverage:
-    R2: 1
+    # Recompté le 2026-09-19 après le re-barreaudage de MD-M4-2 et MD-M4-3.
+    # CONSÉQUENCE ÉCRITE, non masquée : la ligne `R2: 1` disparaît — le
+    # chapitre 3 (la phagocytose), qui porte pourtant le mécanisme le plus
+    # détaillé de la leçon (ses cinq étapes, lesson.md:77-85), n'a désormais
+    # AUCUN item de banc. Ce n'est pas une régression : l'item qui y était
+    # rangé n'y était pas répondable. Le trou était réel, il est maintenant
+    # visible.
     R3: 3
-    R4: 2
-    R5: 1
-    R6: 2
-  honest_state: >-
+    R4: 1
+    R5: 2
+    R6: 3
+  honest_state_2026_09_19: >-
     Les cinq misconceptions déclarées sont couvertes, aucune sous le
     plancher. Quatre y siègent EXACTEMENT (3 items) : la marge est nulle
     et tout retrait d'item la casse.
+    TROIS TROUS DE RAMPE, mesurés et laissés VISIBLES plutôt que comblés par
+    un rangement : le chapitre 3 (phagocytose) n'a aucun item depuis le
+    re-barreaudage ; le chapitre 8 (CPA et LT4) n'a ni item ni checkpoint,
+    alors qu'il enseigne le rôle coordinateur du LT4 que la leçon présente
+    comme le point de bascule ; et le chapitre 9 (mémoire immunitaire) —
+    qui répond à la SECONDE des deux questions d'ouverture — n'est la bonne
+    réponse d'aucun item du banc, le mot « mémoire » n'y apparaissant que
+    du côté distracteur. Les trois se comblent en écrivant des items, pas en
+    déplaçant des étiquettes.
