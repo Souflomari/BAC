@@ -119,7 +119,7 @@ items:
       $B$. La dénivelée entre $A$ et $B$ vaut $h = 4{,}0\ \text{m}$, mais la
       longueur réelle du chemin suivi (le long de la piste incurvée) vaut
       $s = 6{,}0\ \text{m}$. On prend $g \approx 9{,}8\ \text{m/s}^2$. Que
-      vaut le travail du poids $W(\vec F)$ entre $A$ et $B$ ?
+      vaut le travail du poids $W(\vec P)$ entre $A$ et $B$ ?
     type: mcq
     choices:
       - id: A
@@ -136,14 +136,14 @@ items:
           et l'arrivée, jamais de la longueur ni de la forme du chemin
           parcouru : ici seule la dénivelée $h = 4{,}0\ \text{m}$ compte.
       - id: C
-        text: "$\\approx 3{,}9\\ \\text{J}$ (deux fois moins qu'en chute libre directe, car le chemin est deux fois plus long)"
+        text: "$\\approx 3{,}9\\ \\text{J}$ (deux fois moins qu'en chute libre directe, car la rampe est plus longue que la dénivelée)"
         correct: false
         misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
         feedback: >
           Ce choix suppose qu'un chemin plus long "dilue" le travail du
           poids sur une plus grande distance. C'est l'inverse d'une erreur
           fréquente, mais la même confusion : la longueur du chemin
-          n'intervient pas du tout dans $W(\vec F)$, ni pour l'augmenter ni
+          n'intervient pas du tout dans $W(\vec P)$, ni pour l'augmenter ni
           pour le diminuer. Seule la dénivelée $h$ compte.
       - id: D
         text: "$\\approx 39\\ \\text{J}$"
@@ -151,11 +151,11 @@ items:
         misconception: mc.physics.pc_energie.energie-oublie-masse
         feedback: >
           Ce nombre correspond à $gh$ seul, sans multiplier par la masse
-          $m = 0{,}20\ \text{kg}$. Le travail du poids est $W(\vec F) = mgh$ :
+          $m = 0{,}20\ \text{kg}$. Le travail du poids est $W(\vec P) = mgh$ :
           il manque le facteur $m$, et le résultat n'a d'ailleurs pas les
           bonnes unités pour une énergie sans lui.
     correct_feedback: >
-      $W(\vec F) = mgh = 0{,}20 \times 9{,}8 \times 4{,}0 \approx 7{,}8\ \text{J}$.
+      $W(\vec P) = mgh = 0{,}20 \times 9{,}8 \times 4{,}0 \approx 7{,}8\ \text{J}$.
       Le travail du poids ne dépend que de la dénivelée $h$ entre $A$ et
       $B$ — la longueur réelle du chemin ($6{,}0\ \text{m}$ ici) n'entre
       jamais dans le calcul.
@@ -201,7 +201,7 @@ items:
           chemin, ni de la longueur de ce chemin — seulement de la
           différence d'altitude $z_A - z_B$. Un chemin deux fois plus long
           ne donne pas un travail deux fois plus grand : la formule
-          $W(\vec F) = mg(z_A - z_B)$ ne contient aucune longueur de chemin.
+          $W(\vec P) = mg(z_A - z_B)$ ne contient aucune longueur de chemin.
       - id: C
         text: >-
           Il est plus petit sur la rampe en S, car les virages successifs
@@ -222,7 +222,7 @@ items:
         correct: false
         misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
         feedback: >
-          La formule $W(\vec F) = mg(z_A - z_B)$ ne demande de connaître que
+          La formule $W(\vec P) = mg(z_A - z_B)$ ne demande de connaître que
           les altitudes de départ et d'arrivée, jamais la forme du chemin.
           On peut donc comparer les deux travaux sans rien savoir de plus
           sur la forme des rampes.
@@ -325,7 +325,7 @@ items:
       - id: B
         text: "$7{,}0\\ \\text{m/s}$"
         correct: false
-        misconception: mc.physics.pc_energie.energie-oublie-facteur-demi
+        misconception: mc.physics.pc_energie.confond-ec-et-em
         feedback: >
           Ce résultat vient de $v = \sqrt{2 E_m / m}$, en confondant
           $E_c$ avec $E_m$ tout entière. Il faut d'abord soustraire
@@ -343,7 +343,7 @@ items:
       - id: D
         text: "$\\approx 6{,}9\\ \\text{m/s}$"
         correct: false
-        misconception: mc.physics.pc_energie.confusion-v-et-v-carre
+        misconception: mc.physics.pc_energie.energie-oublie-g
         feedback: >
           Ce résultat vient d'un calcul de $E_{pp}$ sans le facteur $g$
           (soit $E_{pp} = mz$ au lieu de $E_{pp} = mgz$). L'énergie
@@ -980,7 +980,7 @@ items:
       - id: C
         text: "$\\approx 186{,}0\\ \\text{m}$"
         correct: false
-        misconception: mc.physics.pc_energie.confusion-v-et-v-carre
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
         feedback: >
           Ce résultat utilise $mgL$ au lieu de $mgL\sin\alpha$ pour le
           travail du poids : seule la dénivelée $h = L\sin\alpha$ compte,
@@ -2063,22 +2063,36 @@ coverage_summary:
     mc.physics.pc_energie.pendule-ralentir-egale-perdre-energie: { count: 3, items: [AE-28, AE-29, AE-30] }
     mc.physics.pc_energie.pendule-hauteur-egale-longueur-fil:    { count: 3, items: [AE-28, AE-29, AE-30] }
     mc.physics.pc_energie.pendule-em-maximale-en-bas:            { count: 4, items: [AE-3, AE-28, AE-29, AE-30] }
-    mc.physics.pc_energie.travail-poids-depend-du-chemin:        { count: 4, items: [AE-1, AE-2, AE-7, AE-8] }
+    mc.physics.pc_energie.travail-poids-depend-du-chemin:        { count: 5, items: [AE-1, AE-2, AE-7, AE-8, AE-19] }
     mc.physics.pc_energie.frottement-restitue-energie:           { count: 3, items: [AE-9, AE-20, AE-34] }
-    mc.physics.pc_energie.energie-oublie-facteur-demi:           { count: 4, items: [AE-4, AE-10, AE-15, AE-21] }
+    mc.physics.pc_energie.energie-oublie-facteur-demi:           { count: 3, items: [AE-10, AE-15, AE-21] }
     mc.physics.pc_energie.ec-mauvaise-dependance-en-v:           { count: 3, items: [AE-10, AE-11, AE-31] }
     mc.physics.pc_energie.energie-oublie-masse:                  { count: 5, items: [AE-1, AE-3, AE-4, AE-10, AE-15] }
     mc.physics.pc_energie.ec-grandeur-vectorielle:               { count: 3, items: [AE-12, AE-31, AE-32] }
     mc.physics.pc_energie.travail-oublie-cos:                    { count: 3, items: [AE-13, AE-32, AE-33] }
     mc.physics.pc_energie.force-perpendiculaire-travaille:       { count: 3, items: [AE-14, AE-32, AE-33] }
-    mc.physics.pc_energie.energie-oublie-g:                      { count: 3, items: [AE-16, AE-33, AE-34] }
-    mc.physics.pc_energie.confond-ec-et-em:                      { count: 3, items: [AE-3, AE-6, AE-31] }
+    mc.physics.pc_energie.energie-oublie-g:                      { count: 4, items: [AE-4, AE-16, AE-33, AE-34] }
+    mc.physics.pc_energie.confond-ec-et-em:                      { count: 4, items: [AE-3, AE-4, AE-6, AE-31] }
     mc.physics.pc_energie.em-conservee-malgre-frottement:        { count: 4, items: [AE-6, AE-9, AE-19, AE-20] }
     mc.physics.pc_energie.signe-travail-poids:                   { count: 4, items: [AE-6, AE-16, AE-21, AE-34] }
-    mc.physics.pc_energie.confusion-v-et-v-carre:                { count: 3, items: [AE-4, AE-15, AE-19] }
+    mc.physics.pc_energie.confusion-v-et-v-carre:                { count: 1, items: [AE-15] }   # SOUS LE PLANCHER — voir la note
   total_items: 31
   floor: 3
-  floor_met: true
+  floor_met: false
+  honest_state_2026_09_19: >-
+    Le plancher N'EST PAS atteint, et il ne l'a jamais été : il était tenu par
+    trois étiquettes que leur propre retour démentait. AE-4/B disait « en
+    confondant Ec avec Em » (7,0 m/s = racine(2x4,9/0,20) — c'est bien
+    confond-ec-et-em, pas un demi oublié) ; AE-4/D disait « un calcul de Epp
+    sans le facteur g » (6,9 m/s, c'est energie-oublie-g) ; AE-19/C disait
+    « mgL au lieu de mgL.sin(alpha) » (186,0 — c'est
+    travail-poids-depend-du-chemin). Les trois sont réétiquetées d'après leur
+    retour et leur nombre. Conséquence assumée plutôt que maquillée :
+    confusion-v-et-v-carre retombe de 3 à 1 (AE-15/D seul, « en oubliant de
+    prendre la racine carrée »). Il faut DEUX items neufs pour la ramener au
+    plancher — ou décider qu'une étourderie d'exécution n'est pas un modèle
+    physique faux et la retirer du registre. Arbitrage du propriétaire ; on ne
+    remet pas de fausses étiquettes pour reverdir un compte.
   ramp_coverage:
     R0: 3
     R1: 4

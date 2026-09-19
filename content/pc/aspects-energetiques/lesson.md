@@ -244,11 +244,11 @@ Ne raisonne jamais "l'énergie mécanique est toujours conservée" par réflexe 
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* on calcule une vitesse à l'aide du bilan de l'énergie mécanique, en incluant explicitement le terme de frottement — pour bien voir la différence entre "conservée" et "diminue d'exactement $W(\vec{f})$".
 
-Un solide de masse $m = 0{,}50\ \text{kg}$ glisse sur une piste avec frottement, du point $A$ (départ, $v_A = 0$) au point $B$. Entre $A$ et $B$, son altitude diminue de $\Delta z = 1{,}2\ \text{m}$, et le travail des frottements vaut $W(\vec{f}) = -1{,}0\ \text{J}$. Quelle est la vitesse en $B$ ?
+Un solide de masse $m = 0{,}50\ \text{kg}$ glisse sur une piste avec frottement, du point $A$ (départ, $v_A = 0$) au point $B$. Entre $A$ et $B$, son altitude diminue de $h = 1{,}2\ \text{m}$ (donc $\Delta z = z_B - z_A = -1{,}2\ \text{m}$, négatif : on descend), et le travail des frottements vaut $W(\vec{f}) = -1{,}0\ \text{J}$. Quelle est la vitesse en $B$ ?
 
 **Travail du poids** (indépendant du chemin, chapitre 4) :
 
-$$W(\vec{P}) = mg\,\Delta z = 0{,}50 \times 9{,}8 \times 1{,}2 \approx 5{,}88\ \text{J}$$
+$$W(\vec{P}) = -mg\,\Delta z = mg\,h = 0{,}50 \times 9{,}8 \times 1{,}2 \approx 5{,}88\ \text{J}$$
 
 **TEC entre $A$ et $B$ :**
 
@@ -292,7 +292,7 @@ Ce réflexe traite $kx$ comme si c'était la force de **tout** le trajet — com
 
 [[figure:travail-ressort-triangle]]
 
-Reprends l'outil du chapitre précédent : le travail d'une force qui varie avec la position est l'aire sous la courbe $F(x)$. Ici, $F(x) = kx$ est une droite qui part de $(0, 0)$ et arrive à $(x, kx)$ — l'aire sous cette droite est un **triangle**, pas un rectangle.
+Reprends l'outil du chapitre 3 : le travail d'une force qui varie avec la position est l'aire sous la courbe $F(x)$. Ici, $F(x) = kx$ est une droite qui part de $(0, 0)$ et arrive à $(x, kx)$ — l'aire sous cette droite est un **triangle**, pas un rectangle.
 
 $$W = \frac{1}{2} \times \text{base} \times \text{hauteur}$$
 
@@ -444,7 +444,7 @@ $$\Delta E_m = 0$$
 
 ### Exemple travaillé — le disque lâché depuis $\theta_0$
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on reprend le pendule de torsion du chapitre Systèmes oscillants ($J = 4{,}0\times10^{-3}\ \text{kg}\cdot\text{m}^2$, $C = 0{,}16\ \text{N}\cdot\text{m}/\text{rad}$), lâché sans vitesse angulaire depuis $\theta_0 = 0{,}20\ \text{rad}$, et on calcule son énergie — puis on vérifie le résultat par deux chemins différents, pour être sûr qu'ils s'accordent.
+*Ce qu'on cherche ici, et pourquoi ce geste :* on reprend le pendule de torsion, dont Systèmes oscillants a établi la période ; les valeurs numériques ci-dessous sont propres à cet exemple ($J = 4{,}0\times10^{-3}\ \text{kg}\cdot\text{m}^2$, $C = 0{,}16\ \text{N}\cdot\text{m}/\text{rad}$), lâché sans vitesse angulaire depuis $\theta_0 = 0{,}20\ \text{rad}$, et on calcule son énergie — puis on vérifie le résultat par deux chemins différents, pour être sûr qu'ils s'accordent.
 
 Au lâcher, $\dot\theta = 0$ : toute l'énergie est dans le fil.
 
@@ -502,7 +502,7 @@ $$E_m = E_c + E_{pp} = \frac{1}{2}mv^2 + mgz, \qquad z = L(1-\cos\theta)$$
 
 Sans frottement, $\Delta E_m = 0$ (établi ci-dessus). Au point le plus bas ($\theta=0$, $z=0$) : $E_{pp}=0$, toute l'énergie est cinétique, la vitesse y est maximale. Aux écarts extrêmes ($\theta=\pm\theta_m$) : $v=0$, $E_c=0$, toute l'énergie est potentielle. Entre les deux, $E_c$ et $E_{pp}$ s'échangent en permanence — le même va-et-vient qu'entre $E_c$ et $E_{pe}$ pour le ressort (chapitre 6), ou entre $E_c$ et $E_{p,torsion}$ pour la torsion (chapitre 7) — mais cette fois le réservoir de rappel est **gravitationnel**, pas élastique.
 
-Une remarque, pour ne pas la laisser filer : pour de petites oscillations, $1-\cos\theta \approx \frac{1}{2}\theta^2$ (approximation déjà rencontrée au chapitre Systèmes oscillants), donc $E_{pp} \approx \frac{1}{2}(mgL)\theta^2$ — la même forme que $\frac{1}{2}kx^2$, avec $mgL$ qui joue le rôle d'une « raideur » effective. Ce n'est qu'un éclairage : l'expression à retenir reste $E_{pp}=mgz$, exacte à tout angle, pas seulement aux petites oscillations.
+Une remarque, pour ne pas la laisser filer : pour de petites oscillations, $1-\cos\theta \approx \frac{1}{2}\theta^2$ (même régime des petites oscillations que le $\sin\theta \approx \theta$ de Systèmes oscillants, poussé d'un ordre de plus), donc $E_{pp} \approx \frac{1}{2}(mgL)\theta^2$ — la même forme que $\frac{1}{2}kx^2$, avec $mgL$ qui joue le rôle d'une « raideur » effective. Ce n'est qu'un éclairage : l'expression à retenir reste $E_{pp}=mgz$, exacte à tout angle, pas seulement aux petites oscillations.
 
 ### L'erreur à repérer : $E_m$ n'est ni maximale en bas, ni toujours égale à $E_c$
 
