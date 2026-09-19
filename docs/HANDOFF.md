@@ -7401,3 +7401,43 @@ l'outillage : c'est la mesure de sa frontière.
 qu'elles mentent, et rien d'automatique ne le peut à ce jour. **Un
 `floor_met: true` atteste que les étiquettes sont assez nombreuses, jamais
 qu'elles sont justes.**
+
+---
+
+### 11.86 Un cliquet que j'ai ROMPU exprès, et pourquoi il doit le rester
+
+`couverture-diagnostique` compte désormais **deux** ruptures. Elles n'ont pas
+le même statut, et il ne faut pas les re-sceller ensemble.
+
+**1. `pc/aspects-energetiques` — misconceptions ÉVALUABLES : 22 → 21. C'est
+moi, le 2026-09-19, et c'est voulu.** Trois distracteurs portaient une étiquette
+que leur propre `feedback` démentait (§11.45). Réétiquetés d'après ce que leur
+retour décrit — chaque fois confirmé en refaisant le nombre — la famille
+`confusion-v-et-v-carre` retombe de 3 items à 1, sous le plancher.
+
+Le cliquet fait donc exactement son travail : il signale qu'une misconception
+est redevenue inévaluable. **Ce qu'il ne pouvait pas signaler, c'est qu'elle ne
+l'avait jamais vraiment été** — les trois items qui la portaient confrontaient
+autre chose. Le compte était vert parce que les étiquettes mentaient.
+
+Deux sorties possibles, toutes deux pour le propriétaire : écrire deux items
+qui confrontent réellement « prendre $v^2$ pour $v$ », **ou** décider qu'une
+étourderie d'exécution n'est pas un modèle physique faux au sens de la VISION
+et la retirer du registre (les deux critiques penchent pour la seconde ; cinq
+des vingt-deux lignes du registre de cette notion sont de ce type). **Ne pas
+re-sceller la ligne de base sans trancher** : ce serait remettre le vert
+au-dessus du même trou.
+
+**2. `pc/systemes-oscillants` — distracteurs SANS TAG : 3 → 6. Antérieur, et
+déjà connu.** Vérifié en rejouant la porte sur `51eec4c` : la rupture est là
+avant l'arc du 2026-09-19. Les six portent `misconception: null` **de façon
+explicite**, pas par oubli, et leurs retours disent pourquoi : SO-26 D nomme un
+régime « forcé » qui est hors de ce chapitre, SO-27 D réclame une formule
+fermée de pseudo-période que la leçon refuse délibérément de donner. Ce sont
+des imports hors cadre, pas des modèles du registre. L'arbitrage reste celui
+déjà consigné : écrire un item qui porte vraiment une misconception « noms des
+régimes », ou re-sceller à 6 **avec la raison écrite à côté des nulls**.
+
+> La règle qui se dégage de ces deux cas, et qui vaut pour tout cliquet :
+> **une ligne de base n'est un progrès que si ce qu'elle scelle est vrai.**
+> Re-sceller pour reverdir transforme un instrument de mesure en décor.
