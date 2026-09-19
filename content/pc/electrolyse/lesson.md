@@ -118,7 +118,7 @@ Remarque bien ce que cette dernière ligne veut dire : le zinc reste, dans les d
 
 ### Pourquoi un générateur trop faible ne suffit pas
 
-Toute cellule d'électrolyse, même avant qu'on y branche un générateur, contient déjà les ingrédients d'une pile : deux électrodes, un électrolyte, un couple oxydant/réducteur de chaque côté. Elle possède donc, comme n'importe quelle pile, une tendance spontanée à évoluer dans un sens précis - le sens que $Q_{r,i}$ face à $K$ imposerait si on la laissait faire seule -, et une force électromotrice propre, $E$, qui mesure cette tendance (leçon précédente, chapitre 6).
+Dès que les espèces d'un couple oxydant/réducteur sont présentes de chaque côté, une cellule d'électrolyse contient les ingrédients d'une pile : deux électrodes et un électrolyte. (Avec des électrodes inertes, ce sont les produits formés qui constituent ces couples.) Elle possède donc, comme n'importe quelle pile, une tendance spontanée à évoluer dans un sens précis - le sens que $Q_{r,i}$ face à $K$ imposerait si on la laissait faire seule -, et une force électromotrice propre, $E$, qui mesure cette tendance (leçon précédente, chapitre 6).
 
 Le générateur qu'on branche pour forcer le sens *contraire* doit donc surmonter cette tendance naturelle, pas seulement s'y ajouter. Si la tension imposée par le générateur reste inférieure à $E$, la réaction continue d'évoluer, au moins en partie, dans son sens spontané - le générateur ne fait alors que freiner ce sens naturel, sans jamais l'inverser. Il faut que la tension imposée dépasse $E$, en valeur absolue et branchée en opposition au sens spontané, pour que le sens forcé l'emporte réellement.
 
