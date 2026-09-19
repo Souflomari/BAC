@@ -4809,7 +4809,7 @@ Comme le §11.43, elle tourne en CI (validate-content --strict, 62 notions) sans
 jamais bloquer, et le sens « valeur qui ne résout pas » complète, pour les
 rungs, ce que la porte marqueur→cible fait déjà pour les figures (ADR 0031).
 
-### 11.45 La campagne de correction de contenu vague 1 — trente-huit notions triées (MATHS BOUCLÉ ; PC 19/25), 513 correctifs objectifs, les bloquants consignés
+### 11.45 La campagne de correction de contenu vague 1 — quarante notions triées (MATHS BOUCLÉ ; PC 21/25), 539 correctifs objectifs, les bloquants consignés
 
 **EN COURS (une notion à la fois, cadence critiques).** Après les portes
 d'intégrité (§11.43 figures orphelines, §11.44 rung↔titre), la vague-1
@@ -4921,10 +4921,11 @@ Vingt notions à ce stade — les 14 de maths sont toutes passées :
 | `maths/denombrement` | 10 | fond propre, dit séparément par les deux critiques : les 27 clés d'items ET leurs 108 distracteurs, les 5 checkpoints, les 2 sommets, les 4 exercices de banque et la trentaine de calculs de la leçon **reproduisent tous** ; les **4 barèmes** tombent exactement sur le relevé ; le `coverage_summary` recompté depuis les tags bruts **par les deux** est exact ; les **16 citations de chapitre** sont justes. Et **aucune fuite d'auteur** dans un champ rendu — vérifié le jour même où cette classe était balayée ailleurs (§11.61). Corrigé : **promesse non tenue sur la notation** (« on utilisera les deux » — `C_n^p` apparaît UNE fois dans toute la notion, dans cette phrase même, contre ~40 `\binom{n}{p}`, et les figures emploient une TROISIÈME forme) ; **renvoi mort** vers un « autre chapitre » pour le binôme de Newton, que le produit n'a pas et que `maths-sexp.yaml:278` exclut nommément ; **l'arithmétique d'un commentaire de distracteur est fausse** — pour justifier 720 il écrit un produit qui vaut 5040, c'est-à-dire la BONNE réponse ; **une légende de figure définit Ω comme l'urne puis le compte comme l'ensemble des tirages**, enseignant exactement la misconception que le banc corrige ; un `reasoning` rendu affirme que l'indépendance n'est définie nulle part alors que le chapitre 9 de la même leçon l'énonce ; renvoi en avant faux deux fois (mauvais système d'étiquettes ET mauvaise position) ; **réponse au-dessus de la porte d'essai dans les DEUX exercices** (l'`intro` imprimait `card(Ω)` = le `steps[0]` gardé de q1) plus l'analogie que la variation existe pour faire trouver. **PIÈGE À NE PAS CORRIGER NAÏVEMENT** : les deux formules encadrées n'ont pas l'hypothèse $p \le n$ que porte la propriété qui en dérive — mais la banque utilise $\binom{1}{2}=0$ comme étape porteuse, donc ajouter la condition rendrait l'examen illégal ; il faut POSER la convention, c'est-à-dire enseigner → content-author. **SEV1 cadre → owner** : la banque enseigne indépendance et loi binomiale, attribuées au chapitre séparé — mais les deux critiques convergent, ce n'est PAS une brèche d'exclusion, c'est la partition que l'examen ne respecte pas (2 sujets vérifiés sur 4 la débordent dans le même exercice numéroté) : GARDER le contenu ; et la filière est un angle mort (CENSUS : SM 0, SExp 8, alors que les deux cadres revendiquent la notion). À NE PAS AFFAIBLIR : « un exercice de probabilités commence presque toujours par du dénombrement » est **confirmé 4/5** ; le principe additif, absent des lignes `programme`, est exigé par **4 sujets vérifiés sur 4** |
 | `maths/geometrie-espace` | 13 | **la notion la mieux vérifiée de la campagne** : les deux critiques ont recalculé séparément les **57 clés d'items** (et l'arithmétique fausse annoncée par chaque distracteur), les **5 barèmes** question par question, et recompté le `coverage_summary` depuis les tags bruts — `total_items`, les 11 `per_rung`, les **30** `per_misconception_any_distractor` et les **26** `per_misconception_primary`, **tous exacts**, les 13 modèles au plancher siégeant bien dans 3 items distincts ; et **les ~200 citations « chapitre N » vérifiées une à une par les deux, toutes justes**. Corrigé : **deux `reasoning` RENDUS disent à l'élève qu'il sort du programme sur du contenu que la leçon lui a enseigné** (« le chapitre 10 traite la tangence plan-sphère » — le chapitre 10 porte une section titrée sur la sphère ∩ DROITE ; « ni les chapitres 2 à 10 ne nomment la médiatrice » — le chapitre 7 porte une section titrée « Le plan médiateur ») ; **réponse au-dessus de la porte d'essai** — le checkpoint d'avant-sommet reprenait EXACTEMENT les nombres de r-bac ($R=\sqrt5$, $d=\sqrt3$), c'est-à-dire les réponses de ses questions 2 et 3a, et la prose juste au-dessus nommait la décision de méthode de q3b : re-numéroté en $\sqrt{11}/\sqrt7/2$ ; **une étiquette `item_source` fausse** qui masquait précisément cela ; le milieu d'un segment attribué au chapitre 2 alors qu'il n'y est pas établi (mais j'ai VÉRIFIÉ les deux autres citations « chapitre 2 » du même lot : elles portent sur la norme et « arrivée moins départ », qui y sont — elles restent) ; équation développée de la sphère sans sa condition de nature ; titre de R9 et note de validation omettant deux sections enseignées. **SEV1 cadre → research-lead, et les deux critiques convergent : LE CADRE A TORT sur le produit vectoriel** — `maths-sexp.yaml` doute que ce soit un objet testé et classe l'affirmation parmi ses plus faibles, alors que **4 des 5 exercices vérifiés ouvrent dessus, toujours en question 1**. En revanche le produit mixte (R4) est vraisemblablement hors SExp et le relevé CORROBORE l'exclusion (0/5, et CENSUS donne SM 0 / SExp 19) → ne pas supprimer sans arbitrage, mais **GE-31 met un outil exclu dans R10, le barreau présenté comme « le format de l'épreuve »**. Pédagogie : deux sous-sections entières (plan médiateur, sphère ∩ droite) enseignées, portant chacune un modèle faux NOMMÉ, sans aucun item ni misconception déclarée ; la variation partage terme constant, corrections {1,4,9} et rayon 3 avec l'exemple travaillé du chapitre ; 3 checkpoints sur 5 clones nombre pour nombre d'items du banc ; 19 des 30 modèles non réclamés |
 
-**513 correctifs objectifs** au total, dont **106 pour la seule campagne de
+**539 correctifs objectifs** au total, dont **106 pour la seule campagne de
 provenance de transcription** (§11.75), qui a touché 18 notions d'un coup.
-Les deux notions triées le 2026-09-19 ajoutent 55 correctifs :
-`pc/electrolyse` 43 et `pc/noyaux-masse-energie` 12. Deux constats de ce
+Les quatre notions triées le 2026-09-19 ajoutent 81 correctifs :
+`pc/electrolyse` 43, `pc/noyaux-masse-energie` 12,
+`pc/ondes-mecaniques-progressives` 12 et `pc/aspects-energetiques` 14. Deux constats de ce
 lot méritent d'être retenus comme *motifs*, pas comme incidents.
 
 **Électrolyse — une convention d'écriture que la leçon respectait et que les
@@ -4949,6 +4950,29 @@ fabriqué de la variation : **les trois niveaux décalés du même 1 280,3 MeV**
 donc toutes les différences justes et aucun niveau juste. Leçon générale :
 *quand un corpus se donne une règle de construction, cette règle est un
 instrument de mesure — il suffit de la retourner contre lui.*
+
+**Le motif le plus transférable de cet arc : une étiquette de distracteur que
+son propre retour dément.** Trouvé dans DEUX notions le même jour, par des
+critiques différentes. Dans `aspects-energetiques`, trois distracteurs
+portaient une misconception que leur `feedback` décrivait autrement, et
+**c'est sur elles que reposait `floor_met: true`** : réétiquetées d'après leur
+retour (chaque fois confirmé en refaisant le nombre), la famille
+`confusion-v-et-v-carre` retombe de 3 à 1 et le plancher tombe. Dans
+`ondes-mecaniques-progressives`, le même motif (OMP-20 D) est laissé au
+propriétaire parce qu'il casse aussi un plancher. La leçon vaut pour toute la
+suite de la campagne : **un compte de couverture n'est vrai que si chaque
+étiquette l'est**, et le vérifier demande de relire le retour et de refaire le
+nombre, distracteur par distracteur. La porte `couverture-diagnostique` compte
+des étiquettes ; elle ne peut pas savoir qu'elles mentent.
+
+**Deuxième motif de l'arc : une donnée d'énoncé qui n'existe que dans la
+solution.** `ondes-mecaniques-progressives` avait un `part` rendu intitulé
+« Exploitation du **tableau** des rayons du front d'onde » sans aucun tableau
+nulle part : les trois valeurs ne vivaient que dans la `solution` et dans
+`sourcing`, **qui n'est jamais rendu**. Trois questions d'un sujet national
+étaient insolubles, et le contrat « tente d'abord » cassé. Le `sourcing`
+attestait pourtant avoir lu le tableau à la source : perdu à la transcription,
+pas à la lecture.
 Les quatre notions triées le 2026-09-12 ajoutent 53 correctifs :
 `pc/esterification-hydrolyse` 14, `pc/reactions-acido-basiques` 17,
 `pc/rc-charge` 9, `pc/dipole-rl` 13. Sur ces quatre, **neuf constats de
