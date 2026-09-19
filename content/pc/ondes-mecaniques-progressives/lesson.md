@@ -40,6 +40,8 @@ Imagine le milieu comme une longue chaîne de petits éléments, chacun relié �
 
 Chaque élément fait donc la même chose, l'un après l'autre : il s'écarte (il reçoit de l'énergie de son voisin précédent), puis il revient vers sa position de repos (la force de rappel l'y ramène), en transmettant au passage la perturbation — et l'énergie qui l'accompagne — à l'élément suivant. Aucun élément ne voyage jusqu'au bout de la chaîne. Chacun oscille autour de l'endroit où il était déjà. Mais la perturbation, elle, avance d'élément en élément — « de proche en proche » — et avec elle, l'énergie qu'elle transporte.
 
+[[checkpoint:cp-r1-transport]]
+
 C'est exactement ce que fait la « ola » dans un stade : chaque spectateur se lève puis se rassoit à sa place — personne ne fait le tour du stade — et pourtant la vague, elle, fait bien le tour visuellement, en un temps donné. Le déplacement collectif qu'on voit n'est pas le déplacement d'une personne : c'est la transmission, de siège en siège, d'un même mouvement.
 
 Voilà ce qui se cache derrière « transport d'énergie sans transport de matière » : ce n'est pas une formule à retenir, c'est la conséquence directe de la façon dont une perturbation se relaie entre voisins dans un milieu élastique.
@@ -61,7 +63,6 @@ Le bouchon flotte sur un point précis de la surface de l'eau. Quand la perturba
 
 Le bouchon, posé sur cette portion d'eau, suit fidèlement ce mouvement local : il monte et redescend avec elle. Il ne dérive pas, parce que l'eau sous lui ne dérive pas non plus — elle oscille sur place, exactement comme chaque élément de la chaîne. Ce qui a vraiment traversé l'étang jusqu'au bouchon, ce n'est pas de l'eau : c'est la perturbation, relayée de molécule en molécule, portant avec elle l'énergie qu'il a fallu pour faire monter et descendre chaque point rencontré sur son passage.
 
-[[checkpoint:cp-r1-transport]]
 
 ---
 
