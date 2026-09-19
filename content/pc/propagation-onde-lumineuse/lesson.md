@@ -4,7 +4,7 @@
 
 ## R0 — Accroche : la lumière qui traverse ce qui ne devrait rien laisser passer
 
-Reprends l'idée du chapitre précédent : une onde mécanique — une vague sur l'eau, le son dans l'air, la perturbation le long d'une corde — a absolument besoin d'un milieu matériel pour exister. Sans corde, sans eau, sans air, il n'y a rien à déformer, donc rien qui puisse se propager de proche en proche.
+Reprends l'idée de « Ondes mécaniques progressives » : une onde mécanique — une vague sur l'eau, le son dans l'air, la perturbation le long d'une corde — a absolument besoin d'un milieu matériel pour exister. Sans corde, sans eau, sans air, il n'y a rien à déformer, donc rien qui puisse se propager de proche en proche.
 
 Maintenant regarde ce fait, en apparence anodin : la nuit, tu lèves les yeux et tu vois des étoiles. Certaines sont à des centaines, voire des milliers d'années-lumière. Entre elles et toi, il n'y a presque rien : le vide quasi parfait de l'espace. Pas d'air, pas d'eau, pas la moindre corde tendue. Et pourtant, leur lumière arrive jusqu'à ton œil.
 
@@ -197,7 +197,7 @@ C'est une différence faible — de l'ordre de quelques centièmes ou moins — 
 
 ### Pourquoi cette petite différence sépare les couleurs
 
-Rappelle-toi (chapitre réfraction) que la loi de Descartes relie l'angle d'incidence $i_1$ et l'angle de réfraction $r$ à l'indice du milieu traversé : plus l'indice $n$ est grand, plus le rayon réfracté se rapproche de la normale — c'est-à-dire plus il est dévié par rapport à sa direction initiale.
+Rappelle-toi de la classe de première — ce n'est pas un chapitre de cette leçon — que la loi de Descartes relie l'angle d'incidence $i_1$ et l'angle de réfraction $r$ à l'indice du milieu traversé : plus l'indice $n$ est grand, plus le rayon réfracté se rapproche de la normale — c'est-à-dire plus il est dévié par rapport à sa direction initiale.
 
 Puisque $n_{violet} > n_{rouge}$, le violet est réfracté plus près de la normale que le rouge, à la première face du prisme : **le violet est donc dévié plus fortement que le rouge**. Chaque couleur composant la lumière blanche emprunte donc, à l'intérieur du prisme, un chemin très légèrement différent des autres — et cet écart s'accentue encore à la sortie du prisme, à la seconde face. C'est ce qu'on appelle la **dispersion** de la lumière.
 
