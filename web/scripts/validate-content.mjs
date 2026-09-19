@@ -1548,6 +1548,51 @@ for (const dir of dirs) {
     }
   }
 
+  // ── §11.83 La prose IMPRIME la réponse du point d'arrêt qui suit ────────
+  //    Une leçon qui écrit « (Réponse : 22 et 1) » puis pose, deux lignes
+  //    plus bas, le point d'arrêt qui demande exactement ces deux nombres,
+  //    ne mesure rien. L'élève lit, puis reconnaît. TEMPLATE V2 §A veut un
+  //    engagement RÉEL ; ici la porte est franchie d'avance.
+  //
+  //    D'OÙ ELLE VIENT. Les critiques de pédagogie de deux notions PC ont
+  //    signalé, le 2026-09-19 et séparément, la même forme : une porte posée
+  //    APRÈS le paragraphe qui révèle (5 fois sur 6 dans l'une d'elles). J'ai
+  //    cherché la forme mécanisable de ce défaut.
+  //
+  //    LA SONDE LARGE A ÉTÉ ABANDONNÉE, chiffres à l'appui. Version 1 —
+  //    recouvrement des mots de la bonne réponse avec les 420 caractères de
+  //    prose qui précèdent le marqueur : 30 signaux, dont beaucoup de faux,
+  //    les points d'arrêt d'ACCROCHE (`cp-r0-predict`) partageant
+  //    naturellement leur vocabulaire avec le scénario qu'ils font prédire.
+  //    Version 2 — ≥ 8 mots de contenu, ≥ 75 % de recouvrement, hors
+  //    accroche : 13 signaux, mais de SÉVÉRITÉ MÊLÉE. Certains sont un
+  //    contrôle de lecture légitime, ce qui est un jugement pédagogique, pas
+  //    une erreur de fait. Une porte bloquante n'a donc pas lieu d'être, et
+  //    les 13 sont consignés en HANDOFF pour le pedagogy-architect.
+  //
+  //    CE QUI EST ARMÉ est le sous-motif qui ne demande aucun jugement : la
+  //    prose imprime littéralement « (Réponse : … ) » dans les 500 caractères
+  //    qui précèdent un marqueur de point d'arrêt. Aucune lecture n'est
+  //    nécessaire pour trancher : la réponse est écrite.
+  //
+  //    SÉVÉRITÉ MESURÉE sur les 62 notions : 2 occurrences, toutes deux en
+  //    SVT (`genetique-humaine/cp-r1-caryotype`,
+  //    `genetique-populations/cp-r3-conditions`), toutes deux corrigées — la
+  //    question est conservée, la réponse retirée. 0 faux positif.
+  {
+    const REPONSE = /\(\s*R[ée]ponse\s*:[^)]{0,160}\)/i;
+    for (const m of md.matchAll(/\[\[checkpoint:([a-z0-9-]+)\]\]/g)) {
+      const avant = md.slice(Math.max(0, m.index - 500), m.index);
+      const hit = avant.match(REPONSE);
+      if (!hit) continue;
+      console.error(
+        `  ✗ ${dir}: la prose imprime « ${hit[0].slice(0, 70)}… » juste avant ` +
+          `[[checkpoint:${m[1]}]] — le point d'arrêt ne mesure plus rien`
+      );
+      dirFail++;
+    }
+  }
+
   // ── §11.79 Un renvoi de chapitre MALFORMÉ, ou qui a mangé un symbole ────
   //    Deux formes, une seule cause : la campagne de 2026-09 qui a réécrit
   //    les 1 086 renvois « R<n> » en « chapitre N » (tâches #18 et #24).

@@ -231,7 +231,7 @@ L'erreur la plus fréquente à ce stade : appliquer $p^2 + 2pq + q^2 = 1$ à n'i
 
 ### Vérification rapide
 
-Une population de petite taille, isolée sur une île, montre des fréquences génotypiques qui s'écartent fortement de $p^2$, $2pq$, $q^2$ d'une génération à l'autre, sans qu'aucune maladie ni aucun avantage de survie ne soit en cause, et sans échange d'individus avec l'extérieur. Quelle condition manque le plus probablement ? (Réponse : le grand effectif — c'est la signature de la dérive génétique, détaillée au chapitre 6.)
+Une population de petite taille, isolée sur une île, montre des fréquences génotypiques qui s'écartent fortement de $p^2$, $2pq$, $q^2$ d'une génération à l'autre, sans qu'aucune maladie ni aucun avantage de survie ne soit en cause, et sans échange d'individus avec l'extérieur. Quelle condition manque le plus probablement ?
 
 [[checkpoint:cp-r3-conditions]]
 

@@ -55,7 +55,7 @@ Une cellule humaine porte 46 chromosomes, organisés en 23 paires. Parmi elles, 
 
 ### Vérification rapide
 
-Avant de continuer : peux-tu dire, sans relire, combien de paires de chromosomes sont des autosomes, et combien sont des gonosomes ? (Réponse : 22 et 1 — ce sont ces deux nombres qui structurent toute la suite du raisonnement.)
+Avant de continuer : peux-tu dire, sans relire, combien de paires de chromosomes sont des autosomes, et combien sont des gonosomes ? Ces deux nombres structurent toute la suite du raisonnement.
 
 [[checkpoint:cp-r1-caryotype]]
 

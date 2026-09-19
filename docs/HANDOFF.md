@@ -7035,3 +7035,55 @@ Ce qui a été fait : chaque notion a été rendue cohérente **avec elle-même*
 UNE convention pour le corpus — ce qui change ce que trois leçons enseignent,
 et se décide, ne se corrige pas. La mesure ne laisse plus de doute sur le sens
 de la correction.
+
+### §11.83 — la prose imprime la réponse du point d'arrêt qui suit
+
+**D'où vient la porte.** Les critiques de pédagogie de deux notions PC ont
+signalé, le 2026-09-19 et **séparément**, la même forme : une porte
+d'engagement posée APRÈS le paragraphe qui révèle la réponse — cinq fois sur
+six dans `controle-catalyse`, quatre fois sur cinq dans `evolution-spontanee`.
+Un défaut vu deux fois est une classe ; j'ai cherché sa forme mécanisable.
+
+**La sonde large a été ABANDONNÉE, chiffres à l'appui.**
+*Version 1* — recouvrement entre les mots de la bonne réponse et les 420
+caractères de prose précédant le marqueur : **30 signaux**, beaucoup de faux.
+Les points d'arrêt d'ACCROCHE (`cp-r0-predict`) partagent naturellement leur
+vocabulaire avec le scénario qu'ils font prédire : c'est le dispositif, pas un
+défaut.
+*Version 2* — au moins 8 mots de contenu, ≥ 75 % de recouvrement, accroche
+exclue : **13 signaux**, mais de **sévérité mêlée**. Certains sont un contrôle
+de lecture légitime — ce qui est un jugement pédagogique, pas une erreur de
+fait. Une porte bloquante n'a donc pas lieu d'être.
+
+**Les 13, pour le pedagogy-architect** (recouvrement, nb de mots) :
+
+| | notion | point d'arrêt |
+|---|---|---|
+| 1,00 (10) | `pc/controle-catalyse` | `cp-r2-catalyseur-bilan` |
+| 1,00 (9) | `pc/propagation-onde-lumineuse` | `cp-r3-diffraction` |
+| 0,94 (17) | `philo/le-droit-la-justice` | `cp-r6-rupture` |
+| 0,92 (13) | `philo/le-bonheur` | `cp-r4-kant` |
+| 0,88 (8) | `pc/rlc-serie` | `cp-r7-m8` |
+| 0,87 (15) | `philo/la-violence` | `cp-r3-hobbes` |
+| 0,85 (13) | `philo/theorie-experience` | `cp-r1-empirisme-rationalisme` |
+| 0,80 (15) | `philo/la-verite` | `cp-r4-rupture` |
+| 0,78 (9) | `pc/controle-catalyse` | `cp-r2-facteurs-cinetiques` |
+| 0,75 (8) | `pc/propagation-onde-lumineuse` | `cp-r5-dispersion` |
+| 0,75 (16) | `philo/la-violence` | `cp-r6-gandhi` |
+| 0,75 (8) | `svt/genetique-humaine` | `cp-r1-caryotype` |
+| 0,75 (12) | `svt/granitisation-deformation` | `cp-r1-cassant-ductile` |
+
+**Ce qui EST armé** est le sous-motif qui ne demande aucun jugement : la prose
+imprime littéralement « (Réponse : … ) » dans les 500 caractères précédant un
+marqueur de point d'arrêt. Aucune lecture n'est nécessaire pour trancher — la
+réponse est écrite noir sur blanc, puis redemandée.
+
+**Sévérité mesurée** : 2 occurrences sur les 62 notions, toutes deux en SVT.
+`genetique-humaine` écrivait *« peux-tu dire, sans relire, combien de paires
+sont des autosomes, et combien sont des gonosomes ? **(Réponse : 22 et 1 …)** »*
+juste avant le point d'arrêt qui demande ces deux nombres.
+`genetique-populations` posait toute la situation puis concluait
+*« **(Réponse : le grand effectif …)** »* avant le point d'arrêt correspondant.
+Les deux sont corrigées — **la question est conservée, la réponse retirée** —
+et la porte est vérifiée rouge (par réinjection) puis verte sur 62 dossiers.
+0 faux positif.
