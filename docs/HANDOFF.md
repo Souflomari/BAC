@@ -4928,13 +4928,26 @@ Les six notions triées le 2026-09-19 ajoutent 109 correctifs :
 `pc/ondes-mecaniques-progressives` 12, `pc/aspects-energetiques` 14,
 `pc/ondes-mecaniques-periodiques` 16 et `pc/rotation-axe-fixe` 12.
 
-**Le motif de l'étiquette fausse s'est présenté dans QUATRE des six**, et
-`rotation-axe-fixe` en donne la forme la plus nette possible : **le même texte
-de distracteur existe en double dans la notion, avec deux étiquettes
-différentes** (ROT-2 D contre son clone cp-r2 D ; cp-r0 C contre son jumeau
-ROT-7 C). Les deux ne peuvent pas être vraies, et le clone tranche sans qu'il
-faille juger. **C'est la sonde la moins chère de ce motif** : chercher les
-textes de distracteur dupliqués et comparer leurs étiquettes.
+**Le motif de l'étiquette fausse s'est présenté dans QUATRE des six.** Dans
+`rotation-axe-fixe`, les deux critiques le décrivaient comme un **clone
+verbatim** portant l'autre étiquette, et j'ai commencé par les croire : j'ai
+écrit ici que « chercher les textes de distracteur dupliqués » serait la sonde
+la moins chère du motif, et j'ai armé une porte pour ça.
+
+**Les deux se sont révélés faux, et la porte est morte de cette vérification.**
+ROT-2 D et cp-r2 D sont des **paraphrases**, pas des clones (« *sur l'axe de
+rotation, si bien que* » contre « *sur l'axe : * ») ; ROT-7 C et cp-r0 C sont
+deux distracteurs **différents** de la même famille. Mesure de la porte avant de
+la retirer : **48 textes clonés sur 5 920 distracteurs** dans tout le corpus, et
+**zéro conflit** — y compris sur le défaut réinjecté exprès, qu'elle n'a pas vu.
+Troisième sonde tentée aujourd'hui, troisième échec (§11.85).
+
+Les deux réétiquetages restent justes : ils tiennent sur le texte et le retour
+de chaque distracteur pris isolément. C'est **l'argument** que j'avais repris
+qui ne tenait pas. La leçon est celle que la campagne s'était déjà donnée et que
+j'ai laissée passer ici : **un rapport de critique se vérifie sur le fichier,
+y compris quand il est bon partout ailleurs** — et celui-ci l'était, il avait
+recalculé les 25 items sans une erreur.
 
 Deux garde-fous appris en chemin, tous deux appliqués :
 - **quand aucune famille du registre ne porte le modèle que le retour décrit,
