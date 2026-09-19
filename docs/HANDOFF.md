@@ -7312,3 +7312,58 @@ sens** »).
 
 Accessoirement : `docs/audits/lectures-graphiques.md` était périmé et la
 batterie l'a signalé — régénéré.
+
+---
+
+### 11.85 RÉSULTAT NÉGATIF — détecter par mots-clés une étiquette de distracteur fausse ne marche pas
+
+Le motif le plus rentable du 2026-09-19 (§11.45) est **une étiquette
+`misconception:` que le `feedback` du même distracteur dément**. Quatre cas
+réels trouvés en une journée, dans deux notions, dont trois qui tenaient à eux
+seuls un `floor_met: true`. Il valait donc la peine de tenter de le mécaniser.
+**Ça ne marche pas. Consigné ici pour que personne ne le reconstruise.**
+
+**Ce qui a été essayé.** Chaque notion porte un registre `misconceptions:` avec
+`label` + `description` en clair. Pour chaque distracteur étiqueté, on compare
+le vocabulaire de son `feedback` à celui de sa propre famille et à celui de
+toutes les autres, et on signale quand une AUTRE famille colle mieux. Corpus :
+**4 731 distracteurs étiquetés, 4 723 examinés, 62 notions.**
+
+| règle | signalements | vérification ponctuelle |
+|---|---|---|
+| marge ≥ 4 mots | 53 | — |
+| marge ≥ 3 mots | 170 | 2 sur 2 FAUX |
+| recouvrement NUL avec sa propre famille, ≥ 4 avec une autre | 17 | 2 sur 3 FAUX, le 3ᵉ douteux |
+
+**Pourquoi ça échoue, et c'est structurel.** Le `feedback` d'un distracteur doit
+expliquer la **physique JUSTE**. Son vocabulaire recoupe donc mécaniquement la
+description de toutes les familles voisines, qui parlent des mêmes grandeurs.
+Exemple mesuré : `rotation-axe-fixe` ROT-1/D est étiqueté « données invoquées à
+tort » — étiquette **correcte** — et se fait signaler parce que son retour
+explique que la masse n'intervient que dans $J_\Delta$, vocabulaire de la
+famille « répartition de la masse ». Même chose pour SNS-4/D, EE-12/D,
+OMP-13/D. **Dans les trois vérifications, la famille PROPOSÉE était elle-même
+fausse** — l'instrument n'aurait pas seulement fait perdre du temps, il aurait
+poussé à casser des étiquettes justes.
+
+**Le témoin qui tranche.** `ondes-mecaniques-progressives` OMP-20/D est un vrai
+défaut, encore vivant, laissé au propriétaire (§ « Pour le propriétaire » de sa
+revue). Il sert de **témoin positif**. Score mesuré : sa propre famille 1 mot,
+la bonne famille 4 mots, **marge 3**. Il tombe donc sous le seuil de la règle la
+plus permissive testée, et la règle stricte (recouvrement nul) le rate aussi.
+**Une heuristique calibrée pour l'attraper noierait le signal sous 170
+signalements majoritairement faux.**
+
+**Ce qui marche, et qui n'est pas lexical.** Les quatre cas réels ont tous été
+établis de la même façon : **refaire le nombre du distracteur et voir quelle
+erreur le produit.** AE-4/D vaut 6,86 m/s, ce qui s'obtient par $E_{pp}=mz$
+sans $g$ — donc l'étiquette est `energie-oublie-g`, pas « confusion $v$/$v^2$ ».
+C'est une inférence sémantique sur l'arithmétique, pas une comparaison de
+vocabulaire. Aucune porte du dépôt ne sait faire ça aujourd'hui ; les critiques
+de vague 1, si.
+
+**Conséquence à retenir pour la lecture des tableaux de couverture.**
+`couverture-diagnostique` compte des étiquettes. Elle ne peut pas savoir
+qu'elles mentent, et rien d'automatique ne le peut à ce jour. **Un
+`floor_met: true` atteste que les étiquettes sont assez nombreuses, jamais
+qu'elles sont justes.**
