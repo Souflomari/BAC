@@ -190,7 +190,7 @@ entries:
         stem: |-
           **1-2.** (1 pt) Établir l'expression du quotient de réaction à l'équilibre $Q_{r,\text{éq}}$ en fonction de $pK_{A1}$ et $pK_{A2}$, puis calculer sa valeur.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Le quotient de réaction, une fois les concentrations remplacées par leur expression du tableau (question 1-1), se fige à l'équilibre à la constante $K$ de la réaction (chapitre 4-4, État d'équilibre d'un système chimique). Mais ici on nous demande $Q_{r,\text{éq}}$ en fonction de $pK_{A1}$ et $pK_{A2}$ — pas en fonction de concentrations : il faut donc relier la constante de CETTE réaction (entre deux couples acide-base, sans eau dans l'équation écrite) aux deux constantes d'acidité données. C'est exactement le geste du chapitre 8 de « Réactions acido-basiques » : combiner deux couples.
+          **Ce qu'on cherche et pourquoi ce geste.** Le quotient de réaction, une fois les concentrations remplacées par leur expression du tableau (question 1-1), se fige à l'équilibre à la constante $K$ de la réaction (chapitre 5, État d'équilibre d'un système chimique). Mais ici on nous demande $Q_{r,\text{éq}}$ en fonction de $pK_{A1}$ et $pK_{A2}$ — pas en fonction de concentrations : il faut donc relier la constante de CETTE réaction (entre deux couples acide-base, sans eau dans l'équation écrite) aux deux constantes d'acidité données. C'est exactement le geste du chapitre 8 de « Réactions acido-basiques » : combiner deux couples.
 
           D'abord, l'expression brute, directement depuis le tableau (l'eau, solvant, n'apparaît pas dans cette équation-ci, à la différence des réactions d'un acide ou d'une base avec l'eau) :
 
@@ -203,7 +203,7 @@ entries:
           **Le piège nommé de cette question.** Inverser l'ordre de la soustraction et écrire $10^{pK_{A1}-pK_{A2}} = 10^{-4,4}$ — un nombre minuscule, qui prédirait à tort une réaction quasi nulle, alors que l'acide éthanoïque, nettement plus fort que l'ion ammonium, doit au contraire imposer son proton presque totalement. Un $K \ll 1$ ici serait le signal immédiat d'une erreur de signe, pas d'un résultat à accepter tel quel.
         steps:
           - math: 'Q_{r,\text{éq}} = \dfrac{[\text{CH}_3\text{COO}^-]_{eq}\,[\text{NH}_4^+]_{eq}}{[\text{CH}_3\text{COOH}]_{eq}\,[\text{NH}_3]_{eq}}'
-            note: "Quotient associe a l'équation écrite (chapitre 4-4, état d'équilibre) ; l'eau, solvant, n'apparaît pas dans cette équation."
+            note: "Quotient associe a l'équation écrite (chapitre 4, état d'équilibre) ; l'eau, solvant, n'apparaît pas dans cette équation."
           - math: '\text{CH}_3\text{COOH} + \text{H}_2\text{O} \rightleftharpoons \text{CH}_3\text{COO}^- + \text{H}_3\text{O}^+ \quad (K_{A1}) \qquad \text{NH}_3 + \text{H}_3\text{O}^+ \rightleftharpoons \text{NH}_4^+ + \text{H}_2\text{O} \quad \left(\dfrac{1}{K_{A2}}\right)'
             note: "On combine les deux couples (chapitre 8 de la leçon Réactions acido-basiques) : le second couple est écrit a l'envers, d'ou l'inverse de KA2."
           - math: 'Q_{r,\text{éq}} = K = K_{A1}\times\dfrac{1}{K_{A2}} = \dfrac{K_{A1}}{K_{A2}} = 10^{-pK_{A1}}\times10^{pK_{A2}} = 10^{pK_{A2}-pK_{A1}}'
@@ -220,7 +220,7 @@ entries:
 
           **S'assurer que la transformation est totale.** $\tau \approx 0{,}994$ : il ne reste, à l'équilibre, qu'environ $0{,}6\ \%$ des quantités initiales de $\text{CH}_3\text{COOH}$ et de $\text{NH}_3$ — une trace. Selon le critère du chapitre 3 (État d'équilibre) — « $\tau=1$, ou très proche de $1$ : transformation totale » — c'est un $\tau$ très proche de $1$ : la transformation est bien, dans les faits, totale. C'est exactement le cas que le chapitre 5 de cette leçon-ci anticipait sans le chiffrer : une transformation réversible, gouvernée par une double flèche, mais dont le taux d'avancement final est si proche de $1$ qu'on la traite comme totale — au point qu'on l'écrirait souvent, dans la pratique, avec une flèche simple $\rightarrow$, même si en toute rigueur elle reste réversible.
 
-          **Le piège nommé de cette question.** Conclure « $K$ est grand, donc la transformation est totale » sans jamais calculer $\tau$ — un raccourci qualitatif correct dans son verdict (chapitre 8 de « État d'équilibre d'un système chimique » : « $K \gg 1$ : quasi totale »), mais qui ne répond pas à ce que demande la question. Elle demande le nombre : $\tau \approx 0{,}994$, pas $\tau = 1$ exactement — aucune transformation gouvernée par une double flèche n'atteint jamais rigoureusement $1$ (chapitre 2, cette leçon).
+          **Le piège nommé de cette question.** Conclure « $K$ est grand, donc la transformation est totale » sans jamais calculer $\tau$ — un raccourci qualitatif correct dans son verdict, mais qui ne répond pas à ce que demande la question. Elle demande le nombre : $\tau \approx 0{,}994$, pas $\tau = 1$ exactement — aucune transformation gouvernée par une double flèche n'atteint jamais rigoureusement $1$ (chapitre 2, cette leçon).
         steps:
           - math: '\tau = \dfrac{x_f}{x_{max}}, \qquad x_{max} = n_1 = n_2 = 10^{-3}\ \text{mol}'
             note: "Définition du taux d'avancement final (chapitre 3, état d'équilibre) ; les deux réactifs, introduits a égalité et consommes 1 pour 1, s'épuiseraient ensemble."

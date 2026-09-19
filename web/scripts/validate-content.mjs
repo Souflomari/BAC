@@ -1621,13 +1621,16 @@ for (const dir of dirs) {
   {
     const RENDU_TXT = new Set(["intro", "stem", "reasoning", "note", "text", "feedback",
       "solution", "correct_feedback", "title", "part", "math", "caption"]);
-    const MALFORME = /chapitres?\s+\d+\s*\/\s*\d+/i;
+    // La barre oblique ET le tiret : « chapitre 4/4 » comme « chapitre 4-4 ».
+    // Le tiret n'est retenu que si les DEUX nombres sont ÉGAUX — « chapitre
+    // 10-11 » est un intervalle légitime, mesuré une fois dans le corpus.
+    const MALFORME = /chapitres?\s+(\d+)\s*(?:\/\s*\d+|-\s*\1(?!\d))/i;
     const SYMBOLE_MANGE =
       /chapitres?\s+\d+\s*\((?:le\s+|la\s+|un\s+|une\s+)?(?:conducteur|résistance|condensateur|bobine|rhéostat|générateur|interrupteur|ampèremètre|voltmètre)\b/i;
     const trouves = [];
     const examiner = (txt, ou) => {
       if (MALFORME.test(txt)) {
-        trouves.push(`${ou} : renvoi malformé « ${txt.match(MALFORME)[0]} » — un chapitre n'a pas de barre oblique`);
+        trouves.push(`${ou} : renvoi malformé « ${txt.match(MALFORME)[0]} » — un numéro de chapitre ne se double ni par une barre oblique ni par un tiret`);
       }
       if (SYMBOLE_MANGE.test(txt)) {
         trouves.push(`${ou} : « ${txt.match(SYMBOLE_MANGE)[0]} » — un numéro de chapitre tient la place d'un symbole de composant`);

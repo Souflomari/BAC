@@ -1158,26 +1158,26 @@ entries:
         stem: |-
           **1-3- (0,5 pt)** Calculer le taux d'avancement final $\tau$ de cette réaction. Que peut-on déduire ?
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Le taux d'avancement final $\tau = x_f/x_{max}$ n'est pas un outil de cette leçon-ci : sa définition et son usage appartiennent à la notion **État d'équilibre d'un système chimique** (chapitre 2-2 là-bas). On le réutilise ici, comme au chapitre 7 de cette leçon, sur le cas d'une base qui réagit avec l'eau. Chaque méthylamine qui a réagi produit exactement un ion hydroxyde (question 1-2), donc l'avancement final se lit sur $[\text{HO}^-]_{eq}$ ; une conversion **totale** de la base introduite donnerait $[\text{HO}^-]_{max} = C_b$.
+          **Ce qu'on cherche et pourquoi ce geste.** Le taux d'avancement final $\tau = x_f/x_{max}$ n'est pas un outil de cette leçon-ci : sa définition et son usage appartiennent à la notion **État d'équilibre d'un système chimique** (chapitre 3 là-bas). On le réutilise ici, comme au chapitre 7 de cette leçon, sur le cas d'une base qui réagit avec l'eau. Chaque méthylamine qui a réagi produit exactement un ion hydroxyde (question 1-2), donc l'avancement final se lit sur $[\text{HO}^-]_{eq}$ ; une conversion **totale** de la base introduite donnerait $[\text{HO}^-]_{max} = C_b$.
 
           On commence par $[\text{HO}^-]_{eq}$, à partir du pH mesuré, via le produit ionique de l'eau (chapitre 4 de cette leçon) : $[\text{HO}^-]_{eq} = K_e/[\text{H}_3\text{O}^+]_{eq} = 10^{\,\text{pH}-14}$.
         steps:
           - math: '[\text{HO}^-]_{eq} = 10^{\,\text{pH}-14} = 10^{11{,}3-14} = 10^{-2{,}7} \approx 2{,}0\times10^{-3}\ \text{mol.L}^{-1}'
             note: "Produit ionique de l'eau (chapitre 4), applique a la mesure pH = 11,3."
           - math: '\tau = \dfrac{[\text{HO}^-]_{eq}}{C_b} = \dfrac{2{,}0\times10^{-3}}{1{,}0\times10^{-2}}'
-            note: "tau = avancement final / avancement maximal (état d'équilibre d'un système chimique, chapitre 2-2) ; le maximal correspond a [HO-] = Cb."
+            note: "tau = avancement final / avancement maximal (état d'équilibre d'un système chimique, chapitre 3) ; le maximal correspond a [HO-] = Cb."
           - math: '\boxed{\tau \approx 0{,}20 = 20\ \%}'
             note: "Loin de 1 : réaction limitée, la méthylamine est une base faible (chapitre 7) - à peu près un cinquième seulement de la base introduite a réagi."
       - id: q4
         stem: |-
           **1-4- (0,5 pt)** Montrer que le quotient de la réaction $Q_{r,\text{éq}}$ à l'équilibre s'écrit ainsi : $Q_{r,\text{éq}} = \dfrac{C_b\,.\,\tau^2}{1-\tau}$. Calculer sa valeur.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** Écrire un quotient de réaction à l'équilibre en fonction de $\tau$ est, là encore, un geste de la notion **État d'équilibre d'un système chimique** (le quotient de réaction et sa valeur à l'équilibre s'y construisent aux chapitre 4-4) : on écrit les concentrations d'équilibre à partir du tableau d'avancement, comme au chapitre 5 de cette leçon-ci.
+          **Ce qu'on cherche et pourquoi ce geste.** Écrire un quotient de réaction à l'équilibre en fonction de $\tau$ est, là encore, un geste de la notion **État d'équilibre d'un système chimique** (le quotient de réaction et sa valeur à l'équilibre s'y construisent aux chapitres 4 et 5) : on écrit les concentrations d'équilibre à partir du tableau d'avancement, comme au chapitre 5 de cette leçon-ci.
 
           Chaque méthylamine transformée donne un $\text{CH}_3\text{-NH}_3^+$ et un $\text{HO}^-$ en quantités égales (question 1-2), donc $[\text{CH}_3\text{-NH}_3^+]_{eq} = [\text{HO}^-]_{eq} = \tau C_b$ ; il reste $[\text{CH}_3\text{-NH}_2]_{eq} = C_b(1-\tau)$ de base non transformée. On reporte dans le quotient associé à l'équation de la question 1-2.
         steps:
           - math: 'Q_{r,\text{éq}} = \dfrac{[\text{CH}_3\text{-NH}_3^+]_{eq}\,[\text{HO}^-]_{eq}}{[\text{CH}_3\text{-NH}_2]_{eq}} = \dfrac{(\tau C_b)(\tau C_b)}{C_b(1-\tau)}'
-            note: "Concentrations d'équilibre écrites avec tau (état d'équilibre d'un système chimique, chapitre 4-4)."
+            note: "Concentrations d'équilibre écrites avec tau (état d'équilibre d'un système chimique, chapitre 3)."
           - math: '\boxed{Q_{r,\text{éq}} = \dfrac{C_b\,\tau^{2}}{1-\tau}}'
             note: "Le Cb au numérateur se simplifie une fois : c'est l'expression demandee."
           - math: 'Q_{r,\text{éq}} = \dfrac{1{,}0\times10^{-2}\times(0{,}20)^{2}}{1-0{,}20} = \dfrac{1{,}0\times10^{-2}\times0{,}04}{0{,}80}'
@@ -2332,7 +2332,7 @@ entries:
         stem: |-
           **1-3. (0,5 pt)** Déterminer la valeur de $pK_A$ du couple $CH_3COOH_{(aq)}/CH_3COO^-_{(aq)}$.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** $K_A$ est, par définition (chapitre 5 de cette leçon), la constante d'équilibre de la réaction écrite à la question 1-1 — c'est le même objet que la constante $K$ introduite nommément aux chapitre 4-4 de la notion **État d'équilibre d'un système chimique**, appliqué ici spécifiquement au couple $CH_3COOH_{(aq)}/CH_3COO^-_{(aq)}$. Il faut reconstituer les trois concentrations à l'équilibre à partir des deux seules données disponibles : le pH et $C_A$.
+          **Ce qu'on cherche et pourquoi ce geste.** $K_A$ est, par définition (chapitre 5 de cette leçon), la constante d'équilibre de la réaction écrite à la question 1-1 — c'est le même objet que la constante $K$ introduite nommément au chapitre 5 de la notion **État d'équilibre d'un système chimique**, appliqué ici spécifiquement au couple $CH_3COOH_{(aq)}/CH_3COO^-_{(aq)}$. Il faut reconstituer les trois concentrations à l'équilibre à partir des deux seules données disponibles : le pH et $C_A$.
 
           $[H_3O^+]_{eq}$ vient d'être trouvée à la question précédente. Comme l'acide et l'eau produisent $CH_3COO^-$ et $H_3O^+$ en quantités égales (question 1-1), et en négligeant la contribution de l'autoprotolyse de l'eau (hypothèse valable ici, $[H_3O^+]_{eq}$ étant très supérieure à $10^{-7}\ \text{mol.L}^{-1}$) :
 
