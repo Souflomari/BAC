@@ -6901,6 +6901,23 @@ Les deux sens sont vérifiés sur le corpus réel, sans rien injecter : le sens
 52 + 44 qui n'en produisent aucun. ADR 0031 : une porte a deux sens dès qu'un
 seul se laisse contourner.
 
+**Et la même erreur, commise en réparant l'erreur.** En armant ce second sens
+j'avais corrigé UNE des deux occurrences de la condition : `exercises.yaml`.
+Le jumeau exact vivait vingt lignes plus bas, pour `bank.yaml`. Je ne l'ai
+trouvé qu'en relisant le fichier de portes lui-même **à la recherche de la
+forme** — un contrôle qu'un drapeau d'adhésion peut éteindre — au lieu de ma
+propre liste de correctifs. C'est le §11.78 mot pour mot : *un correctif
+énuméré ne répare que ce qu'on a pensé à lister.* Deuxième fois que cette
+leçon se paye dans cette campagne.
+
+Côté banque, la sévérité mesurée est **0** : les 247 entrées du corpus sont
+`sourced`. Cette porte-là ne cache donc rien aujourd'hui — elle est armée pour
+que la banque ne puisse pas devenir muette demain comme les exercices
+l'étaient hier. N'ayant aucun cas vivant, elle a été vérifiée **rouge par
+injection** (un `status: sourced` basculé en `unsourced` sur `pc/rlc-serie` →
+le ⚠ sort, nommant `bk-2019-n-x3`) puis **verte** après restauration. Une
+porte qu'on n'a pas vue échouer n'est pas une porte.
+
 ### §11.72 bis — la panne de CI dure depuis une semaine (re-mesurée le 2026-09-19)
 
 Le §11.72 consignait une panne du runner GitHub commencée le 2026-09-12 :

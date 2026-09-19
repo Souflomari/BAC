@@ -626,6 +626,23 @@ for (const dir of dirs) {
             const msg = `${dir}/bank.yaml: ${eId} required_for_done=true but status="${sourcing.status}" (not sourced)`;
             if (strictMode) { console.error(`  ✗ ${msg}`); dirFail++; }
             else { console.error(`  ⚠ ${msg}`); }
+          } else if (sourcing.status !== "sourced" && sourcing.status !== "not-applicable") {
+            // §11.80, second exemplaire — le JUMEAU de la porte d'exercises.yaml.
+            //   En armant le second sens côté exercices, j'avais réparé UNE des
+            //   deux occurrences de la même condition. C'est exactement la leçon
+            //   du §11.78 qui se répète : un correctif énuméré ne répare que ce
+            //   qu'on a pensé à lister. Trouvée en relisant le fichier de portes
+            //   lui-même, à la recherche de la MÊME FORME (un contrôle qu'un
+            //   drapeau d'adhésion peut éteindre).
+            //
+            //   SÉVÉRITÉ MESURÉE : les 247 entrées de banque du corpus sont
+            //   `sourced`. Cette porte-ci ne cache donc rien AUJOURD'HUI — elle
+            //   est armée pour que la banque ne puisse pas devenir muette demain
+            //   comme les exercices l'étaient hier. 0 signalement, 0 faux.
+            console.error(
+              `  ⚠ ${dir}/bank.yaml: ${eId} status="${sourcing.status}" (non sourcé) — ` +
+                `non bloquant par choix (required_for_done=${sourcing.required_for_done}), mais non mesuré`
+            );
           }
         }
 
