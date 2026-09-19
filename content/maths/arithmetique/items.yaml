@@ -1580,7 +1580,7 @@ items:
       soit premier : les deux notions sont indépendantes.
 
   # Ajoutés le 2026-09-05 : huit familles sous le plancher de 3 items du banc,
-  # dont `fermat-condition-ou-exposant` sans AUCUN item — elle n'était sondée
+  # dont `fermat-condition-ou-exposant` sans AUCUN item AVANT cet ajout — elle n'était sondée
   # que par un checkpoint, ce qui ne compte pas dans le modèle apprenant.
   # Quatre items, douze places : trois sur le petit théorème de Fermat et les
   # équations diophantiennes, un sur divisibilité et primalité.
@@ -1949,14 +1949,14 @@ items:
 # Les quatre autres pièges des équations diophantiennes (mise à l'échelle du
 # couple de Bézout, croisement des coefficients, unicité supposée, réduction
 # d'une puissance) et les trois de la divisibilité sont refermés du même geste.
-# Tableau GÉNÉRÉ, gardé par scripts/resume-couverture.mjs.
+# Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
-    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
     mc.math.maths_arithmetique.premier-vs-premiers-entre-eux:     { count: 6, items: [AR-4, AR-7, AR-16, AR-17, AR-19, AR-27] }
     mc.math.maths_arithmetique.pgcd-vs-ppcm:                      { count: 3, items: [AR-3, AR-14, AR-21] }

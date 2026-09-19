@@ -2396,6 +2396,80 @@ for (const dir of dirs) {
     }
   }
 
+  //
+  //  ── §11.99 — LA NOTE QUI DÉCRIT UN DÉPÔT QUI N'EXISTE PLUS (ÉCHEC) ──────
+  //
+  //  Deux défauts mesurés le 2026-09-19 sur TOUT le corpus, pas sur une matière.
+  //
+  //  (a) LE CHEMIN QUI NE SE RÉSOUT PAS. Quarante fichiers citaient leur propre
+  //      porte par « scripts/resume-couverture.mjs ». Ce chemin n'existe pas —
+  //      le fichier est sous `web/`. Le dépôt a un vrai répertoire `scripts/` à
+  //      la racine, donc le chemin n'était pas une abréviation : il était faux.
+  //      ADR 0031 : un renvoi est une instruction. Tout chemin `…/*.mjs` cité
+  //      dans un commentaire doit désigner un fichier qui existe.
+  //
+  //  (b) LA COUVERTURE NULLE AFFIRMÉE AU PRÉSENT. Onze notes, dans NEUF notions
+  //      et TROIS matières, affirmaient au présent qu'une misconception donnée
+  //      n'avait « AUCUN item de banc » — alors que le tableau du même fichier,
+  //      quelques lignes plus bas, lui en compte trois ou quatre. Ces notes
+  //      décrivaient l'état d'avant la passe d'élargissement du 2026-09-05 et
+  //      n'avaient jamais été redatées. Ce sont elles qui JUSTIFIENT le placement
+  //      des sondes : un auteur qui les lit place sa prochaine sonde sur un trou
+  //      qui n'existe plus.
+  //
+  //      L'échappatoire est VOLONTAIRE et étroite : la ligne passe si elle porte
+  //      une marque de temps ou de rectification (« AVANT », « alors », « était »,
+  //      « à l'époque », « RE-MESURÉ », « CORRIGÉ », « → »). Le but n'est pas
+  //      d'effacer l'ancien chiffre — c'est lui qui explique pourquoi la sonde
+  //      est là — mais d'obliger à le DATER.
+  {
+    const VIDE = /(sans AUCUNE? item|ZERO items\.yaml coverage|zero[- ]coverage)/i;
+    const DATÉ = /AVANT|alors|était|étaient|siégeai|à l'époque|RE-MESURÉ|CORRIGÉ|→|legacy|depuis/i;
+    const cs = yamlDocs["items.yaml"]?.coverage_summary;
+    const pm = cs?.per_misconception;
+    const compte = new Map();
+    if (pm && typeof pm === "object") {
+      for (const [id, v] of Object.entries(pm)) {
+        const n = typeof v === "number" ? v : typeof v?.count === "number" ? v.count : null;
+        if (n !== null) compte.set(String(id), n);
+      }
+    }
+    for (const fname of ["items.yaml", "checkpoints.yaml", "exercises.yaml"]) {
+      let brut = null;
+      try { brut = fs.readFileSync(path.join(abs, fname), "utf8"); } catch { continue; }
+      brut.split("\n").forEach((ligne, i) => {
+        if (!ligne.trimStart().startsWith("#")) return;
+        // (a) tout chemin de script cité doit exister
+        for (const m of ligne.matchAll(/(?:^|[\s`(])((?:web\/)?scripts\/[\w./-]+\.mjs)/g)) {
+          const rel = m[1];
+          //  Résolution depuis la RACINE, sans repli sur `web/` : le dépôt a un vrai
+          //  répertoire `scripts/` à la racine, donc « scripts/X.mjs » n'est pas une
+          //  abréviation de « web/scripts/X.mjs » — c'est un autre chemin, qui est faux.
+          //  Tolérer le repli rendrait la porte incapable de voir le défaut qu'elle vise.
+          if (!fs.existsSync(path.join(REPO, rel))) {
+            console.error(
+              `  ✗ ${dir}: ${fname}:${i + 1} cite « ${rel} », qui n'existe pas — un renvoi est une instruction`,
+            );
+            dirFail++;
+          }
+        }
+        // (b) une couverture nulle affirmée au présent, contre le tableau du fichier
+        if (!VIDE.test(ligne) || DATÉ.test(ligne)) return;
+        for (const [id, n] of compte) {
+          if (n <= 0) continue;
+          const court = id.split(".").pop();
+          if (!ligne.includes(id) && !ligne.includes(court)) continue;
+          console.error(
+            `  ✗ ${dir}: ${fname}:${i + 1} affirme au présent que « ${court} » n'a aucun item de banc — ` +
+              `le coverage_summary du même corpus lui en compte ${n}. Date la note (« AVANT cet ajout », ` +
+              `« était », « → ») plutôt que d'effacer l'ancien chiffre`,
+          );
+          dirFail++;
+        }
+      });
+    }
+  }
+
   // Authoring-leak check — prose only (comments stripped, valid markers already removed).
   const rendered = proseLines.join("\n").replace(/<!--[\s\S]*?-->/g, "");
   if (LEXICON.test(rendered) && !/[Àà] [Ss]ourcer|SLOT|AMÉLIORATION|TODO|FIXME/.test(rendered)) {

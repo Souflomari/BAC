@@ -1182,7 +1182,7 @@ items:
 # content/pc/rc-charge/items.yaml, the backfill exemplar this pass follows.
 # ──────────────────────────────────────────────────────────────────────────────
   # Ajoutés le 2026-09-05 : neuf familles sous le plancher de 3 items du banc,
-  # dont `rolle-taf-hypotheses-mal-identifiees` sans AUCUN item — elle n'était
+  # dont `rolle-taf-hypotheses-mal-identifiees` sans AUCUN item AVANT cet ajout — elle n'était
   # sondée que par les deux checkpoints du sommet (cp-bac-rolle, cp-bac-taf),
   # ce qui ne compte pas dans le modèle apprenant. Les trois items qui la
   # referment sont placés au barreau R6, celui du sommet : c'est là que Rolle et
@@ -1759,21 +1759,21 @@ items:
 
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après DERIVFCT-22 à DERIVFCT-29. Neuf familles sous le
-# plancher, dont `rolle-taf-hypotheses-mal-identifiees` sans AUCUN item de banc
+# plancher AVANT ces ajouts, dont `rolle-taf-hypotheses-mal-identifiees` qui n'en avait alors AUCUN de banc
 # — elle n'était sondée que par les deux checkpoints du sommet (cp-bac-rolle,
 # cp-bac-taf). Les items qui la referment siègent au barreau R6, celui du
 # sommet : c'est là que Rolle et les accroissements finis apparaissent, via
 # l'extrait de sujet SM 2019. Le corps de la leçon, lui, admet le théorème du
 # signe de $f'$ sans les invoquer — choix de portée assumé, consigné dans la
 # note de validation en fin de lesson.md. Tableau GÉNÉRÉ, gardé par
-# scripts/resume-couverture.mjs.
+# web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
-    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
     mc.math.maths_derivabilite_etude_fonctions.limite-non-comprise-comme-processus:   { count: 4, items: [DERIVFCT-1, DERIVFCT-7, DERIVFCT-8, DERIVFCT-9] }
     mc.math.maths_derivabilite_etude_fonctions.confond-valeur-et-nombre-derive:       { count: 6, items: [DERIVFCT-1, DERIVFCT-7, DERIVFCT-9, DERIVFCT-10, DERIVFCT-16, DERIVFCT-20] }

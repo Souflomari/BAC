@@ -2255,7 +2255,7 @@ items:
   #    couverture en fin de fichier annonçait `floor_met: true` en ne comptant
   #    que les douze ids AB-DIST/TIT/EQU/IND du cluster titrage : la passe qui
   #    a ensuite déclaré les huit familles AB-BASE et tagué les items hérités
-  #    R0-R7/R12 n'a pas retourné le drapeau. Voir scripts/resume-couverture.mjs.
+  #    R0-R7/R12 n'a pas retourné le drapeau. Voir web/scripts/resume-couverture.mjs.
   - id: RAB-40
     rung: "R2"
     difficulty_level: 2
@@ -2472,7 +2472,7 @@ items:
 # RAB-42 (R7, $K$ ne dépend ni de la dilution ni du pH mesuré). R2 porte
 # désormais 4 items et R7 en porte 5.
 #
-# La porte qui empêche cette dérive de recommencer : scripts/resume-couverture.mjs.
+# La porte qui empêche cette dérive de recommencer : web/scripts/resume-couverture.mjs.
 # Elle ne juge que les affirmations à sens unique — `floor_met` et
 # `total_items` — parce que les tableaux par misconception du corpus suivent
 # six conventions différentes, toutes légitimes. Celui ci-dessous est GÉNÉRÉ

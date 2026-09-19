@@ -1201,16 +1201,16 @@ items:
 
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après TDS-16 à TDS-19. Cinq familles siégeaient sous
-# le plancher, dont `reversible-jamais-quasi-totale` sans AUCUN item de banc —
+# le plancher AVANT ces ajouts, dont `reversible-jamais-quasi-totale` qui n'en avait alors AUCUN de banc —
 # elle n'était sondée que par un checkpoint, ce qui ne compte pas dans le
-# modèle apprenant. Tableau GÉNÉRÉ, gardé par scripts/resume-couverture.mjs.
+# modèle apprenant. Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
-    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
     mc.physics.pc_transformations_deux_sens.vitesse-implique-avancement:           { count: 3, items: [TDS-8, TDS-16, TDS-17] }
     mc.physics.pc_transformations_deux_sens.conclusion-refusee-a-tort:             { count: 6, items: [TDS-2, TDS-4, TDS-9, TDS-10, TDS-12, TDS-13] }

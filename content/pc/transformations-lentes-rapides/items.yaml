@@ -1134,9 +1134,9 @@ items:
 # by the r-bac sujet + checkpoints.yaml; the legacy end bank predates them and
 # carries ZERO items for them — an honest 0, flagged for the same follow-up pass.
 # ------------------------------------------------------------------------------
-  # Ajoutés le 2026-09-05 : douze familles sous le plancher de 3 items du banc,
-  # dont TROIS sans aucun item — conductance-nombre-d-ions, t-demi-mauvaise-def
-  # et vitesse-pente-mauvaise, sondées en leçon seulement. Huit items,
+  # Ajoutés le 2026-09-05 : douze familles étaient sous le plancher de 3 items
+  # AVANT ces ajouts, dont TROIS qui n'en avaient alors aucun — conductance-nombre-d-ions,
+  # t-demi-mauvaise-def et vitesse-pente-mauvaise, sondées en leçon seulement. Huit items,
   # vingt-deux places.
   - id: TLR-19
     rung: "R1"
@@ -1809,14 +1809,14 @@ items:
 # `vitesse-pente-mauvaise`, sondées en leçon seulement, ce qui ne compte pas
 # dans le modèle apprenant. Tableau GÉNÉRÉ contre
 # web/scripts/lib/couverture-compte.mjs, gardé par
-# scripts/resume-couverture.mjs.
+# web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
-    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
     mc.physics.pc_transformations_lentes_rapides.famille-fixe-vitesse:                { count: 3, items: [TLR-1, TLR-7, TLR-8] }
     mc.physics.pc_transformations_lentes_rapides.rapide-lente-absolu:                 { count: 4, items: [TLR-1, TLR-7, TLR-9, TLR-10] }

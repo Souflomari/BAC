@@ -2047,14 +2047,14 @@ items:
 # peut évaluer. Sous cette convention, deux familles seulement restaient sous
 # le plancher : `cinematique-angulaire-derivees-confondues` et
 # `moment-inertie-additivite-erronee`, à 2 items chacune. ROT-25 les vise
-# ensemble. Tableau GÉNÉRÉ, gardé par scripts/resume-couverture.mjs.
+# ensemble. Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
-    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
     mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise:                   { count: 6, items: [ROT-3, ROT-4, ROT-7, ROT-8, ROT-22, ROT-23] }
     mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier:                 { count: 4, items: [ROT-1, ROT-2, ROT-12, ROT-22] }

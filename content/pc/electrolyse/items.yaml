@@ -1459,14 +1459,14 @@ items:
 # restait `sens-courant-electrons` (1 item) et `bilan-matiere-electrodes` (2).
 # ELECTROLYSE-23 et 24 les referment, avec des énoncés distincts et non des
 # clones mémorisables des items existants. Tableau GÉNÉRÉ, gardé par
-# scripts/resume-couverture.mjs.
+# web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
-    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
     mc.physics.pc_electrolyse.sens-force-vs-spontane:              { count: 4, items: [ELECTROLYSE-7, ELECTROLYSE-8, ELECTROLYSE-9, ELECTROLYSE-20] }
     mc.physics.pc_electrolyse.polarite-comme-pile:                 { count: 5, items: [ELECTROLYSE-1, ELECTROLYSE-2, ELECTROLYSE-11, ELECTROLYSE-21, ELECTROLYSE-24] }

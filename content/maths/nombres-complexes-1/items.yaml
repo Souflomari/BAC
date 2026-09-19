@@ -1198,7 +1198,7 @@ items:
 # `floor_met: true`, recompté depuis les tags bruts par les deux critiques.
 # ──────────────────────────────────────────────────────────────────────────────
   # Ajoutés le 2026-09-05 : seize familles sous le plancher de 3 items du banc,
-  # dont DEUX sans aucun item — `module-argument-vs-parties` et
+  # dont DEUX sans aucun item AVANT cet ajout — `module-argument-vs-parties` et
   # `algebrique-exponentielle-conversion`, sondées par le seul checkpoint
   # cp-bac-exponentielle. Les items qui les referment siègent au barreau R6 :
   # la leçon y annonce explicitement que le sujet national emprunte la forme
@@ -1988,14 +1988,14 @@ items:
 # emprunte la forme exponentielle au chapitre suivant, et son point de bascule
 # est justement là. Tableau GÉNÉRÉ contre
 # web/scripts/lib/couverture-compte.mjs, gardé par
-# scripts/resume-couverture.mjs.
+# web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
-    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
     mc.math.maths_complexes_algebrique.im-inclut-i:                         { count: 5, items: [NBCOMPLEX-1, NBCOMPLEX-22, NBCOMPLEX-25, NBCOMPLEX-30, NBCOMPLEX-31] }
     mc.math.maths_complexes_algebrique.confond-re-im:                       { count: 3, items: [NBCOMPLEX-1, NBCOMPLEX-10, NBCOMPLEX-22] }

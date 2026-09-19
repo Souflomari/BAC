@@ -1051,7 +1051,7 @@ items:
       dans les parties I et II.
 
   # Ajoutés le 2026-09-05 : neuf familles sous le plancher de 3 items du banc,
-  # dont `coincidence-devoir-inclination-jugee-suffisante` sans AUCUN item —
+  # dont `coincidence-devoir-inclination-jugee-suffisante` sans AUCUN item AVANT cet ajout —
   # sondée en leçon seulement. CORRIGÉ le 2026-09-19 : « Cinq items, quatorze
   # places » est faux des deux côtés — SIX items suivent (DEV-16 à DEV-21) et
   # ils occupent DIX-SEPT places au niveau item (3+3+3+3+2+3). Le diagnostic
@@ -1435,14 +1435,14 @@ items:
 # `coincidence-devoir-inclination-jugee-suffisante` était sans AUCUN item de
 # banc — sondée en leçon seulement, ce qui ne compte pas dans le modèle
 # apprenant. Tableau GÉNÉRÉ contre web/scripts/lib/couverture-compte.mjs,
-# gardé par scripts/resume-couverture.mjs.
+# gardé par web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
-    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
     mc.philo.devoir.faux-dilemme-contrainte-devoir-moral:            { count: 3, items: [DEV-5, DEV-6, DEV-7] }
     mc.philo.devoir.devoir-reduit-a-la-contrainte:                   { count: 4, items: [DEV-5, DEV-6, DEV-7, DEV-8] }

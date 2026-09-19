@@ -1835,14 +1835,14 @@ items:
 # plancher : le vocabulaire du noyau (isotopes contre isobares, élément défini
 # par Z et non par la masse, stabilité gouvernée par N/Z et non par la taille
 # ni par Z seul) et les trois façons de prêter au rayonnement gamma un effet
-# qu'il n'a pas. Tableau GÉNÉRÉ, gardé par scripts/resume-couverture.mjs.
+# qu'il n'a pas. Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
-    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
     mc.physics.decroissance_radioactive.isotope-confond-neutrons-protons:   { count: 3, items: [DECRO-1, DECRO-10, DECRO-27] }
     mc.physics.decroissance_radioactive.isotope-confond-isobare:            { count: 3, items: [DECRO-1, DECRO-27, DECRO-29] }

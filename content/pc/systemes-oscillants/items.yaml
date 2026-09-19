@@ -2652,7 +2652,7 @@ items:
   #    couverture en fin de fichier annonçait `floor_met: true` en ne comptant
   #    que les six ids AMO/RES du cluster amortissement-résonance, décrits comme
   #    « le seul inventaire tagué de la notion » — ce qui avait cessé d'être
-  #    vrai. Voir scripts/resume-couverture.mjs, qui garde désormais l'écart
+  #    vrai. Voir web/scripts/resume-couverture.mjs, qui garde désormais l'écart
   #    entre ce qu'un fichier affirme et ce qu'il contient.
   - id: SO-42
     rung: "R2"
@@ -2827,7 +2827,7 @@ items:
 #   • les décomptes AMO/RES eux-mêmes, qui excluaient ces trois items.
 # Le tableau ci-dessous est désormais GÉNÉRÉ contre la convention de la chaîne
 # (web/scripts/lib/couverture-compte.mjs) et gardé par
-# scripts/resume-couverture.mjs.
+# web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses

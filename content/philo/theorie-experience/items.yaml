@@ -1464,7 +1464,7 @@ items:
       établi, sans effacer leur tension par un relativisme facile.
 
   # Ajoutés le 2026-09-05 : six familles sous le plancher de 3 items du banc,
-  # dont `critere-scientifique-reduit-a-falsifiabilite` sans AUCUN item —
+  # dont `critere-scientifique-reduit-a-falsifiabilite` sans AUCUN item AVANT cet ajout —
   # sondée en leçon seulement. Quatre items, douze places.
   - id: THEXP-25
     rung: "R4"
@@ -1780,15 +1780,15 @@ items:
 
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après THEXP-25 à THEXP-29. Six familles sous le
-# plancher, dont `critere-scientifique-reduit-a-falsifiabilite` sans AUCUN item
-# de banc. Tableau GÉNÉRÉ, gardé par scripts/resume-couverture.mjs.
+# plancher AVANT ces ajouts, dont `critere-scientifique-reduit-a-falsifiabilite` qui n'en avait alors AUCUN
+# de banc. Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
-    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
     mc.philo.theorie_experience.faux-dilemme-confirmation-rejet:              { count: 3, items: [THEXP-2, THEXP-7, THEXP-8] }
     mc.philo.theorie_experience.empirisme-rationalisme-non-distingues:        { count: 4, items: [THEXP-1, THEXP-9, THEXP-10, THEXP-11] }

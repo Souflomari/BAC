@@ -1250,7 +1250,7 @@ items:
 # spanning the ramp, before this notion's end bank can claim floor_met: true.
 # ──────────────────────────────────────────────────────────────────────────────
   # Ajoutés le 2026-09-05 : onze familles sous le plancher de 3 items du banc,
-  # dont `equilibre-egale-arret-total` sans AUCUN item — sondée en leçon
+  # dont `equilibre-egale-arret-total` sans AUCUN item AVANT cet ajout — sondée en leçon
   # seulement. Sept items, vingt et une places : l'ajustement est exact.
   - id: ES-22
     rung: "R2"
@@ -1803,19 +1803,19 @@ items:
       à la cathode.
 
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
-# RÉÉCRIT le 2026-09-05, après ES-22 à ES-29. Onze familles sous le plancher,
-# dont `equilibre-egale-arret-total` sans AUCUN item de banc. Les huit items
+# RÉÉCRIT le 2026-09-05, après ES-22 à ES-29. Onze familles étaient sous le plancher
+# AVANT ces ajouts, dont `equilibre-egale-arret-total` qui n'en avait alors AUCUN. Les huit items
 # couvrent les trois registres de la notion : le critère d'évolution et son
 # universalité, le vocabulaire de l'oxydoréduction et l'équilibrage des
 # demi-équations, l'écriture de $Q_r$ et le montage de la pile. Tableau GÉNÉRÉ,
-# gardé par scripts/resume-couverture.mjs.
+# gardé par web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
-    web/scripts/lib/couverture-compte.mjs, gardé par scripts/resume-couverture.mjs.
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
     mc.chemistry.pc_evolution_spontanee.critere-inverse:               { count: 5, items: [ES-1, ES-2, ES-17, ES-19, ES-21] }
     mc.chemistry.pc_evolution_spontanee.confond-qr-et-k:               { count: 6, items: [ES-1, ES-2, ES-8, ES-17, ES-18, ES-19] }
