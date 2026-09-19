@@ -248,6 +248,21 @@ jobs:
       # livrée, la page idéale (MathML retiré du rendu) et un TÉMOIN qui rend
       # la sélection au MathML. Elle ne conclut que si le témoin voit le
       # défaut — un instrument aveugle ne certifie rien.
+      # §11.98 — LE LIEN INTERNE QUI NE MÈNE NULLE PART.
+      # L'instrument existait depuis le début et n'était pas en CI : il pouvait
+      # donc pourrir sans que personne le sache. Il a été relancé le 2026-09-19
+      # et sa PORTÉE corrigée dans le même geste — il balayait 10 routes fixes
+      # + les 62 notions = 72 pages, et AUCUNE épreuve. Son « 0 lien mort » ne
+      # portait que sur le versant leçon. Il visite maintenant 111 pages, les
+      # 39 épreuves comprises, énumérées par la même source que les portes
+      # impression et presse-papier — une épreuve neuve y entre toute seule.
+      # Vérifié rouge (une cible 404 injectée → exit 1, la cible et la page qui
+      # la cite sont nommées) puis vert (111 pages, 108 cibles, 0 morte).
+      - name: Porte liens internes (aucun <a href> du site ne mène à un 404)
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/liens-internes.mjs
+
       - name: Porte presse-papier (une formule copiée ne sort qu'une fois)
         run: |
           routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)

@@ -8161,3 +8161,44 @@ prose DANS la table de barreaux ; la porte ne lit que les clés en forme de code
 de barreau. Et `philo/analyse-de-texte` était la seule notion des 62 sans
 aucune table, sous aucun des deux noms — elle en a une maintenant, recomptée
 depuis les tags bruts (3+8+6+7+6+16+3+0 = 49).
+
+---
+
+### 11.98 Le lien interne qui ne mène nulle part — un instrument qui ne regardait que la moitié du site
+
+`liens-internes.mjs` existait depuis le début et **n'était pas en CI** : il pouvait
+donc pourrir sans que personne le sache. Il a été relancé le 2026-09-19, et la
+première tentative a échoué platement — il cherche son serveur sur le port 3497
+par défaut, le serveur local tournait sur 3911. `BASE=…` suffit.
+
+**Et là, le vrai constat, qui n'est pas celui que je cherchais.** Sa liste de
+pages est écrite en dur : 10 routes fixes + les 62 notions énumérées depuis
+`content/` = **72 pages**. Et **aucune page d'épreuve**. Son « 0 lien mort »
+portait donc sur le seul versant leçon, en laissant de côté les 39 épreuves —
+la moitié la plus dense en liens du site. Encore un vert qui ne disait pas
+« conforme » mais « pas regardé » (ADR 0031, et §11.97 deux fiches plus haut :
+la PORTÉE se mesure séparément du fonctionnement).
+
+Les routes d'épreuve sont maintenant énumérées par `routes-examens.mjs`, la même
+source que les portes impression et presse-papier — une épreuve neuve entre donc
+dans le balayage sans qu'on ait à y penser. Et si cette source rend une liste
+vide, l'instrument **s'arrête en erreur** au lieu de mesurer 72 pages en
+silence : une portée amputée ne doit pas pouvoir se lire comme un succès.
+
+Portée avant : 72 pages. Après : **111**. Verdict : inchangé — **108 cibles
+distinctes, 0 morte**. Les épreuves n'ajoutent aucune cible neuve, elles pointent
+le même jeu de destinations. Le verdict était donc déjà juste ; ce qui a changé,
+c'est qu'il veut maintenant dire quelque chose.
+
+**Armé en CI.** L'instrument a reçu le motif autonome d'`impression.mjs` et de
+`dom-truth` — sans `BASE`, il lève son propre `next start` sur un port dérivé du
+PID et le tue en sortant. C'est ce qui lui permet d'entrer dans `gates.yml`, où
+aucun serveur partagé ne tourne. Vérifié rouge (une cible 404 injectée : exit 1,
+la cible ET la page qui la cite sont nommées) puis vert (111 pages, 0 morte),
+et le chemin CI — mode autonome, sans `BASE` — testé pour de vrai.
+
+> **Le piège de méthode, répété de §11.97 parce qu'il vient de me coûter une
+> reprise :** les essais rouges se restaurent depuis une COPIE
+> (`cp fichier /tmp/sauvegarde`), jamais par `git checkout --` tant que le
+> travail n'est pas committé. Le dernier `checkout` de la série précédente avait
+> effacé la porte que je venais d'écrire.

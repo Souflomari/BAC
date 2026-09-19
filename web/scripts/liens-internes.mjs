@@ -33,7 +33,12 @@ import { fileURLToPath } from "node:url";
 
 const WEB = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const CONTENU = path.resolve(WEB, "..", "content");
-const BASE = process.env.BASE ?? "http://127.0.0.1:3497";
+// Motif d'impression.mjs et de dom-truth, mot pour mot : si BASE n'est pas
+// fourni, l'instrument lève son PROPRE serveur et le tue en sortant. C'est
+// ce qui lui permet d'entrer en CI, où aucun serveur partagé ne tourne.
+const PORT = Number(process.env.PORT_LIENS ?? 3700 + (process.pid % 200));
+const AUTONOME = !process.env.BASE;
+const BASE = process.env.BASE ?? `http://127.0.0.1:${PORT}`;
 
 const pages = [
   "/", "/examens", "/atelier", "/commencer", "/connexion",
@@ -46,6 +51,46 @@ for (const s of fs.readdirSync(CONTENU)) {
     if (fs.statSync(path.join(d, n)).isDirectory()) pages.push(`/notions/${s}/${n}`);
   }
 }
+
+// ── PORTÉE, corrigée le 2026-09-19 ────────────────────────────────────────────
+// Cet instrument balayait 10 routes fixes + les 62 notions = 72 pages, et
+// AUCUNE page d'épreuve. Son « 0 lien mort » ne portait donc que sur le versant
+// leçon : la moitié la plus dense en liens du site — les épreuves et leurs
+// corrigés — n'était pas regardée du tout. Un vert qui ne dit pas « conforme »
+// mais « pas regardé » (ADR 0031 : la PORTÉE se mesure séparément du
+// fonctionnement). Les routes d'épreuve sont désormais énumérées par la même
+// source que les portes impression et presse-papier, pour qu'une épreuve neuve
+// entre dans le balayage sans qu'on ait à y penser.
+{
+  const { execFileSync } = await import("node:child_process");
+  const brut = execFileSync(process.execPath, [path.join(WEB, "scripts", "routes-examens.mjs")], {
+    encoding: "utf8",
+  });
+  const examens = brut.split(/\s+/).filter((r) => r.startsWith("/examens/"));
+  if (!examens.length) {
+    console.error("liens-internes : routes-examens.mjs n'a rendu aucune route — portée incomplète, j'arrête");
+    process.exit(2);
+  }
+  pages.push(...examens);
+}
+
+let serveur = null;
+if (AUTONOME) {
+  const { spawn } = await import("node:child_process");
+  serveur = spawn("npx", ["next", "start", "-p", String(PORT)], { cwd: WEB, stdio: "ignore", detached: true });
+  const debut = Date.now();
+  let pret = false;
+  while (Date.now() - debut < 60000) {
+    try { if ((await fetch(`${BASE}/`)).ok) { pret = true; break; } } catch { /* pas encore */ }
+    await new Promise((r) => setTimeout(r, 500));
+  }
+  if (!pret) {
+    console.error("✗ serveur absent — aucun lien n'est vérifié");
+    try { process.kill(-serveur.pid); } catch {}
+    process.exit(1);
+  }
+}
+const arreter = () => { if (serveur?.pid) { try { process.kill(-serveur.pid); } catch {} } };
 
 const nav = await chromium.launch({
   executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium",
@@ -86,6 +131,7 @@ for (const [href, citants] of cibles) {
   console.log(`✗ HTTP ${String(st).padStart(3)}  ${href}   cité par ${citants.join(", ")}`);
 }
 await nav.close();
+arreter();
 
 console.log(
   morts === 0
