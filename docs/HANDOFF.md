@@ -7362,6 +7362,40 @@ C'est une inférence sémantique sur l'arithmétique, pas une comparaison de
 vocabulaire. Aucune porte du dépôt ne sait faire ça aujourd'hui ; les critiques
 de vague 1, si.
 
+#### Le second motif ne se mécanise pas non plus
+
+Même tentative sur l'autre motif du jour — **une donnée d'énoncé qui n'existe
+que dans la `solution`** (§11.45). Règle essayée : une question dont le `stem`
+ou le `part` **rendu** invoque un support DÉFINI (« **le** tableau », « **la**
+figure », « **le** document ») alors que l'`intro` de l'entrée n'en rend aucun.
+Mesuré sur **345 entrées** de banque et de sommet :
+
+| règle | signalements | verdict |
+|---|---|---|
+| le support nommé manque à l'intro | 71 | ~40 sont des « tableau d'**avancement** », que l'élève CONSTRUIT |
+| idem, hors tableaux construits | 54 | le gros est un désaccord de VOCABULAIRE (« le graphe » pour une « courbe » décrite) |
+| l'intro ne rend AUCUN support | 11 | **11 vérifiés à la main : 0 vrai positif** |
+
+Les onze sont tous légitimes, et pour une raison qui vaut d'être écrite : **la
+langue de l'examen emploie « le schéma », « le tableau », « la courbe » pour des
+objets que l'élève PRODUIT ou qui sont définis mathématiquement** — « représenter
+le schéma conventionnel de la pile », « déduire le tableau de variations »,
+« l'aire délimitée par la courbe $(\mathcal{C}_u)$ », « situer le radium sur la
+courbe d'Aston ». Un cas (`propagation-onde-lumineuse` r-bac q6) décrit même le
+graphe dans son propre stem.
+
+Le vrai défaut trouvé à la main (`bk-2024-n-x2`) était détectable — son intro ne
+rendait aucun tableau — mais il est **noyé sous une classe de faux positifs
+qu'aucune règle lexicale ne sépare**, parce que la distinction est
+« donné » contre « à produire », et elle est sémantique.
+
+**Bilan des deux sondes : les deux motifs les plus rentables de la journée sont
+hors de portée d'une porte automatique.** Ils demandent de refaire un calcul ou
+de comprendre ce qu'une question demande. C'est exactement le partage que le
+dépôt entretient déjà entre les PORTES (mécaniques, binaires, dans la CI) et les
+CRITIQUES de vague 1 (lecture, jugement, sur commande). Ce n'est pas un échec de
+l'outillage : c'est la mesure de sa frontière.
+
 **Conséquence à retenir pour la lecture des tableaux de couverture.**
 `couverture-diagnostique` compte des étiquettes. Elle ne peut pas savoir
 qu'elles mentent, et rien d'automatique ne le peut à ce jour. **Un
