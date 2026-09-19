@@ -7009,6 +7009,28 @@ acter que ces trois distracteurs restent sans étiquette et re-sceller à 6 en
 écrivant pourquoi. Tant que ce n'est pas tranché, la porte reste rouge — et
 c'est bien qu'elle le reste.
 
+**Et pour que ça ne recommence pas : `npm run batterie`.**
+`web/scripts/batterie-locale.mjs` lance les dix contrôles de `gates.yml` qui
+ne demandent pas de navigateur, et affiche les quatre dernières lignes de
+chaque échec.
+
+Mais l'essentiel n'est pas la liste — c'est qu'elle **ne peut plus prendre du
+retard en silence**. Le script relit `.github/workflows/gates.yml`, extrait
+chaque `node scripts/…` que la CI lance, et échoue s'il en trouve un qu'il
+n'exécute pas et qui n'est pas déclaré dans `HORS_CHAMP` avec sa raison
+(navigateur ou build requis). C'est exactement la dérive qui a laissé cinq
+portes rouges pendant une semaine.
+
+Le garde-fou a servi **immédiatement** : à sa première exécution il a signalé
+`routes-examens.mjs`, une dixième porte que je ne lançais pas non plus.
+
+Et il est tombé, lui aussi, dans le piège du §11.47 : il passait à
+`validate-content` des chemins en `../content/…`, que `path.join(REPO, dir)`
+ne résout pas — l'outil échouait alors sur « pas de `lesson.md` », pas sur le
+contenu. Troisième fois que ce piège se paye dans cette campagne ; le
+commentaire est désormais dans le script, à l'endroit exact où on le
+rencontre.
+
 ### §11.82 — la convention $t_{1/2}$ : la MAJORITÉ a tort (mesure close)
 
 Le 2026-09-12 j'avais recensé la divergence sans la trancher : **25 sites du
