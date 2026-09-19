@@ -7932,3 +7932,47 @@ MÊME commit. Dans `liberation-energie`, le sens choisi pour le modèle « perte
 thermique avant la glycolyse » décide lui aussi d'un plancher, dans un sens et
 pas dans l'autre. Aucun des deux n'est tranché ici : ce sont des décisions de
 registre, et les trancher au jugé casserait un compte vrai.
+
+---
+
+### 11.94 RÉSULTAT NÉGATIF — « un nombre qui n'est que dans la figure » n'est pas la classe ; le défaut de Krebs était autre chose
+
+Après §11.93, la tentation était de transformer le défaut du cycle de Krebs en
+campagne : chercher partout les nombres qui vivent dans une figure et pas dans
+le texte. **Mesuré, puis abandonné — et il faut dire pourquoi, sinon quelqu'un
+le refera.**
+
+**Premier compte, inutilisable, et le piège qui l'explique.** Sur les 62
+notions : 4 060 nombres lus dans des `<text>` de SVG, des `aria-label` et des
+`caption` de sidecar ; 435 absents du texte de leur notion. Presque tous
+étaient des **artefacts d'entités HTML** : `&#8747;` (∫), `&#8722;` (−),
+`&#215;` (×), `&#183;` (·), `&#8230;` (…) — ma sonde lisait les chiffres à
+l'intérieur du codage du caractère. Leçon de sonde : **dépouiller `&#\d+;` et
+`&[a-z]+;` avant de chercher un nombre dans du balisage.**
+
+**Second compte, propre, et c'est un résultat négatif.** Entités retirées,
+restreint à PC et SVT, et limité aux nombres porteurs (au moins deux chiffres
+significatifs) : **58 figures** portent un nombre absent du texte de leur
+notion. Lues, elles sont **légitimes dans leur immense majorité** — ce sont des
+graduations d'axe, des coordonnées, des valeurs qui n'existent QUE
+graphiquement parce que la figure est le document. Une figure a le droit de
+porter ses propres nombres ; c'est même son travail.
+
+**Donc la classe n'est pas « absent du texte ». Elle est « contredit la
+décomposition du texte ».** Le jeton « 8 NADH,H⁺ » du cycle de Krebs était
+présent dans le texte — c'est le TOTAL de la matrice — mais posé sur l'étape
+qui n'en produit que 6, après une étape qui avait déjà émis les 2 autres. Aucun
+test d'appartenance ne l'aurait vu : il fallait **refaire l'addition en suivant
+l'ordre des étapes de la figure**. C'est un contrôle sémantique, pas lexical,
+et il n'est pas mécanisable à bon compte.
+
+**Ce qui reste, et qui est actionnable :** dans la commande d'une critique
+fidélité, exiger explicitement la comparaison des nombres des SVG et de leurs
+sidecars à ceux de la leçon — c'est comme ça que le défaut a été trouvé, par un
+œil à qui on avait dit où regarder, pas par une porte. Les commandes de l'arc
+géologie le portent déjà.
+
+**Contrôles faits en passant, et tenus** : `noyaux-masse-energie/defaut-masse`
+— 4,03190 − 4,00151 = 0,03039 u, et 0,03039 × 931,5 = 28,31 MeV, ce qui est
+bien l'énergie de liaison de l'hélium-4 ; `atome-mecanique-newton/spectre-raies`
+— 410, 434, 486, 656 nm sont les quatre raies de Balmer visibles, justes.
