@@ -16,14 +16,14 @@
 # KaTeX brut entre apostrophes simples dans steps[].math, notes de steps
 # sans backslash ni accent).
 #
-# NOTE ÉDITORIALE (pour la revue) : docs/sujets/pc/rotation-axe-fixe.md ne
-# recense QUE deux entrées dédiées, toutes deux « vérifié » — 2011
-# rattrapage (Exercice Mécanique, 1ère situation) et 2024 normale (Exercice
-# 5, Partie 2) — soit la totalité du corpus vérifié actuellement recensé
-# pour cette notion (aucune autre entrée, vérifiée ou non, n'y figure ; le
-# thème y est signalé « rare » dans l'épreuve PC-SPC — absent de toutes les
-# sessions normales relevées 2008 → 2021). Les deux entrées sont converties
-# ici, une pour une.
+# NOTE ÉDITORIALE (recomptée le 2026-09-19) : ce fichier porte TROIS entrées
+# dédiées, toutes « vérifié » — bk-2011-r-x1 (2011 rattrapage, Exercice
+# Mécanique, 1ère situation), bk-2024-n-x1 (2024 normale, Exercice 5,
+# Partie 2) et bk-2013-r-x4 (2013 rattrapage, Mécanique, 5,50 pt, ajoutée le
+# 2026-09-04). Le décompte « QUE deux entrées » qui figurait ici datait
+# d'avant cet ajout, et il avait essaimé dans un champ RENDU de lesson.md
+# (« la seule occurrence nationale dédiée »), corrigé le même jour. Le thème
+# reste signalé « rare » dans l'épreuve PC-SPC.
 #
 # RECOUPEMENT AVEC LE SOMMET DE LEÇON (bk-2011-r-x1) : ce sujet EST le même
 # que le sommet r-bac de exercises.yaml (marqueur [[exercise:r-bac]] à R7
@@ -235,7 +235,7 @@ entries:
         reasoning: |-
           On dérive deux fois l'équation horaire $\theta(t) = 20\,t^2$ : $\dot\theta = 40\,t$, puis $\ddot\theta = 40\ \text{rad}\cdot\text{s}^{-2}$ — une accélération angulaire constante.
 
-          Le câble est inextensible et ne glisse pas sur le cylindre — exactement comme le fil de l'exemple du manège (chapitre 2) : un point de sa surface, à la distance $r$ de l'axe, se déplace comme la charge $(C)$ qu'il tire. Sa vitesse vaut donc $r$ fois la vitesse angulaire du cylindre (chapitre 2, $v = d\,\omega$), et son accélération tangentielle vaut $r$ fois l'accélération angulaire (chapitre 5, $a_{tan} = d\,\ddot\theta$) — c'est aussi, par le lien rigide du câble, l'accélération $a_G$ de $G$. D'où $a_G = r\,\ddot\theta$.
+          Le câble est inextensible et ne glisse pas sur le cylindre : un point de sa surface, à la distance $r$ de l'axe, se déplace comme la charge $(C)$ qu'il tire. Sa vitesse vaut donc $r$ fois la vitesse angulaire du cylindre (chapitre 2, $v = d\,\omega$), et son accélération tangentielle vaut $r$ fois l'accélération angulaire (chapitre 5, $a_{tan} = d\,\ddot\theta$) — c'est aussi, par le lien rigide du câble, l'accélération $a_G$ de $G$. D'où $a_G = r\,\ddot\theta$.
         steps:
           - math: '\theta(t) = 20\,t^2 \implies \dot\theta = 40\,t \implies \ddot\theta = 40\ \text{rad}\cdot\text{s}^{-2}'
             note: "On derive deux fois l'équation horaire : accélération angulaire constante."
@@ -271,7 +271,7 @@ entries:
 
           Calculer la valeur de $\mathcal{M}$.
         reasoning: |-
-          On isole la charge $(C)$, en translation le long de la pente. Trois forces s'exercent sur elle : son poids $m\vec g$, la réaction normale du plan (perpendiculaire à la pente, sans effet sur le mouvement le long de la pente), et la tension $\vec T$ du câble qui la tire vers le haut. Comme la pente fait un angle $\alpha$ avec l'horizontale, le poids se projette sur l'axe de la pente en une composante $mg\sin\alpha$ qui s'oppose à la montée — une décomposition du poids sur un plan incliné qui n'est pas un outil de ce chapitre (elle vient du chapitre sur la chute et les mouvements sur plan incliné), reprise ici telle quelle. La deuxième loi de Newton, projetée sur l'axe $(O,\vec i)$ orienté vers le haut de la pente, donne une première équation reliant $a_G$ et $T$.
+          On isole la charge $(C)$, en translation le long de la pente. Trois forces s'exercent sur elle : son poids $m\vec g$, la réaction normale du plan (perpendiculaire à la pente, sans effet sur le mouvement le long de la pente), et la tension $\vec T$ du câble qui la tire vers le haut. Comme la pente fait un angle $\alpha$ avec l'horizontale, le poids se projette sur l'axe de la pente en une composante $mg\sin\alpha$ qui s'oppose à la montée — une décomposition du poids sur un plan incliné qui n'est pas un outil de ce chapitre (elle vient de « Les lois de Newton », au chapitre du solide sur un plan incliné), reprise ici telle quelle. La deuxième loi de Newton, projetée sur l'axe $(O,\vec i)$ orienté vers le haut de la pente, donne une première équation reliant $a_G$ et $T$.
 
           On isole ensuite le cylindre $(\mathcal{S})$, en rotation autour de $(\Delta)$. Deux moments agissent : le moment moteur $\mathcal{M}$, qui entraîne la rotation dans le sens positif marqué sur la figure, et le moment de la tension du câble (la même tension, par la troisième loi de Newton), qui s'exerce tangentiellement à la distance $r$ de l'axe et s'oppose à la rotation — exactement le même montage que la poulie de la grue (chapitres 3 et 5). La relation fondamentale de la dynamique de rotation (chapitre 5) donne une deuxième équation, reliant l'accélération angulaire du cylindre à cette même tension.
 

@@ -302,7 +302,7 @@ items:
           Il est impossible d'appliquer une force exactement sur l'axe de rotation, si
           bien que la question n'a pas de sens.
         correct: false
-        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
         feedback: >
           C'est physiquement tout à fait possible (une force peut s'exercer
           sur l'axe lui-même, par exemple par frottement dans un palier). Le
@@ -387,7 +387,7 @@ items:
           masses et de leurs distances à l'axe — pas de la nature du
           matériau en tant que telle.
     correct_feedback: >
-      $J_1 = \tfrac{1}{12}mL^2 = \tfrac{1}{12}\times 4{,}0\times 4{,}0
+      $J_1 = \tfrac{1}{12}mL^2 = \tfrac{1}{12}\times 4{,}0\times 2{,}0^2
       \approx 1{,}33\ \text{kg}\cdot\text{m}^2$. $J_2 = 2 \times 2{,}0 \times
       1{,}0^2 = 4{,}0\ \text{kg}\cdot\text{m}^2$ (chaque masse ponctuelle est
       à $d = L/2 = 1{,}0\ \text{m}$ de l'axe). $J_2/J_1 = 3{,}0$ : même masse
@@ -554,7 +554,7 @@ items:
       d'un point à l'autre, proportionnellement à sa distance à l'axe.
 
   - id: ROT-6
-    rung: "R4"
+    rung: "R1"
     difficulty_level: 3
     skill_code: pc_rotation_axe_fixe
     tags: [vitesse_angulaire, vitesse_lineaire]
@@ -683,7 +683,7 @@ items:
       à l'axe qui détermine la résistance du système au changement de
       rotation. Une masse proche de l'axe s'oppose moins à la mise en
       rotation qu'une masse éloignée : l'essai 1 atteint donc une vitesse
-      angulaire plus grande. Ce sera formalisé au chapitre suivant avec le
+      angulaire plus grande. Ce sera formalisé au chapitre 4 avec le
       moment d'inertie $J_\Delta$.
     solution: |
       Les deux essais partagent tout, sauf un détail : où sont assis les
@@ -2070,10 +2070,10 @@ coverage_summary:
   floor_met: true
   ramp_coverage:
     R0: 3
-    R1: 3
+    R1: 4   # ROT-6 rapatrié de R4 le 2026-09-19 : son énoncé est un pur v = R.omega
     R2: 3
     R3: 4
-    R4: 3
+    R4: 2   # conséquence ASSUMÉE : le barreau de la relation fondamentale, coeur du chapitre, ne porte plus que deux items (ROT-14, ROT-15)
     R5: 3
     R6: 3
     R7: 3

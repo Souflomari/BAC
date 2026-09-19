@@ -4,7 +4,7 @@
 
 ## R0 — Accroche : la corde qui n'arrête plus de vibrer
 
-Reprends l'image du chapitre précédent : une corde tendue, un vibreur fixé à une extrémité. Mais cette fois, au lieu de donner un seul aller-retour bref à la source, on laisse le vibreur osciller sans s'arrêter — il monte, redescend, remonte, toujours avec exactement le même mouvement, encore et encore, à intervalles de temps réguliers.
+Reprends l'image de la leçon précédente : une corde tendue, un vibreur fixé à une extrémité. Mais cette fois, au lieu de donner un seul aller-retour bref à la source, on laisse le vibreur osciller sans s'arrêter — il monte, redescend, remonte, toujours avec exactement le même mouvement, encore et encore, à intervalles de temps réguliers.
 
 Deux façons de regarder cette corde, maintenant.
 
@@ -26,7 +26,7 @@ Ce n'est donc pas une coïncidence. Il y a bien deux répétitions dans une onde
 
 ### Le cas particulier où la source se répète
 
-Une **onde progressive périodique** est le cas particulier, étudié au chapitre précédent, d'une onde progressive — une perturbation qui se propage de proche en proche dans un milieu de propagation, sans transport de matière, avec transport d'énergie — où la perturbation créée par la source est elle-même **périodique** : la source refait, à l'identique, le même mouvement, à intervalles de temps égaux.
+Une **onde progressive périodique** est le cas particulier, étudié dans la leçon précédente, d'une onde progressive — une perturbation qui se propage de proche en proche dans un milieu de propagation, sans transport de matière, avec transport d'énergie — où la perturbation créée par la source est elle-même **périodique** : la source refait, à l'identique, le même mouvement, à intervalles de temps égaux.
 
 On note $T$ cet intervalle de temps, la **période** de la source : si $y_S(t)$ est l'élongation de la source à l'instant $t$, dire que la source est périodique de période $T$ signifie, très précisément :
 
@@ -36,9 +36,9 @@ Le vibreur qui monte-descend sans s'arrêter, dans l'accroche, est un exemple im
 
 ### Chaque point du milieu hérite exactement de la période de la source
 
-On sait déjà, depuis le chapitre précédent, comment un point $M$ du milieu, situé à la distance $d$ de la source $S$, se comporte : il **rejoue**, avec un retard $\tau = d/c$, le mouvement que $S$ a fait un peu plus tôt.
+On sait déjà, depuis la leçon précédente, comment un point $M$ du milieu, situé à la distance $d$ de la source $S$, se comporte : il **rejoue**, avec un retard $\tau = d/c$, le mouvement que $S$ a fait un peu plus tôt.
 
-*(On reprend ici la définition de la célérité vue au chapitre précédent — la vitesse à laquelle la perturbation avance dans le milieu. On la note $c$ dans ce chapitre, conformément à l'usage pour les ondes périodiques ; c'est exactement la même grandeur que celle notée $v$ précédemment.)*
+*(On reprend ici la définition de la célérité vue dans la leçon précédente — la vitesse à laquelle la perturbation avance dans le milieu. On la note $c$ dans ce chapitre, conformément à l'usage pour les ondes périodiques ; c'est exactement la même grandeur que celle notée $v$ précédemment.)*
 
 $$y_M(t) = y_S(t - \tau), \qquad \tau = \frac{d}{c}$$
 
@@ -183,7 +183,7 @@ $M$ vibre donc sinusoïdalement, à la même fréquence que $S$, avec la même a
 
 ### Le déphasage : le retard, mesuré en angle
 
-Ce terme, $\Delta\varphi = \dfrac{2\pi \tau}{T}$, s'appelle le **déphasage** entre $S$ et $M$ : c'est le même retard $\tau$ qu'avant, mais exprimé non plus en secondes, en fraction d'un tour complet ($2\pi$ radians, un cycle entier). Un retard d'une période entière correspond ainsi à un déphasage de $2\pi$ ; un retard d'une demi-période correspond à un déphasage de $\pi$.
+Ce terme, $\Delta\varphi = \dfrac{2\pi \tau}{T}$, s'appelle le **déphasage** entre $S$ et $M$ : c'est le même retard $\tau$ qu'avant, mais exprimé non plus en secondes, mais en fraction d'un tour complet ($2\pi$ radians, un cycle entier). Un retard d'une période entière correspond ainsi à un déphasage de $2\pi$ ; un retard d'une demi-période correspond à un déphasage de $\pi$.
 
 On peut réécrire ce déphasage en fonction de la distance $d$, en remplaçant $\tau = d/c$ et $T = \lambda/c$ :
 
@@ -220,9 +220,9 @@ Comparons avec deux autres distances, sur cette même corde. À $d = 1{,}5\ \tex
 
 ### Le son, un exemple concret d'onde mécanique progressive périodique
 
-Le son est une **onde mécanique** : comme toute onde mécanique (chapitre précédent), il a besoin d'un milieu de propagation matériel — il ne se propage pas dans le vide. C'est aussi une onde **longitudinale** : il se propage par des compressions et des dilatations successives de l'air, dans la même direction que celle où le son avance.
+Le son est une **onde mécanique** : comme toute onde mécanique (leçon précédente), il a besoin d'un milieu de propagation matériel — il ne se propage pas dans le vide. C'est aussi une onde **longitudinale** : il se propage par des compressions et des dilatations successives de l'air, dans la même direction que celle où le son avance.
 
-*Rappel du critère, parce qu'un sujet d'examen le demande dans les deux sens.* « Longitudinale » et « transversale » ne se retiennent pas comme deux étiquettes : elles se **décident** en comparant deux directions — celle selon laquelle la perturbation déplace les points du milieu, et celle selon laquelle l'onde avance. Parallèles, l'onde est longitudinale ; perpendiculaires, elle est **transversale**. Le critère complet, avec ses deux exemples fondateurs — le ressort qu'on comprime (longitudinale) et la corde qu'on pince (transversale) —, est posé au chapitre 3 du chapitre précédent, « Ondes mécaniques progressives ». Le son est le cas longitudinal ; les vagues à la surface de l'eau et l'onde le long d'une corde sont les cas transversaux, et une question de bac peut demander l'un comme l'autre.
+*Rappel du critère, parce qu'un sujet d'examen le demande dans les deux sens.* « Longitudinale » et « transversale » ne se retiennent pas comme deux étiquettes : elles se **décident** en comparant deux directions — celle selon laquelle la perturbation déplace les points du milieu, et celle selon laquelle l'onde avance. Parallèles, l'onde est longitudinale ; perpendiculaires, elle est **transversale**. Le critère complet, avec ses deux exemples fondateurs — le ressort qu'on comprime (longitudinale) et la corde qu'on pince (transversale) —, est posé au chapitre 3 de la leçon précédente, « Ondes mécaniques progressives ». Le son est le cas longitudinal ; les vagues à la surface de l'eau et l'onde le long d'une corde sont les cas transversaux, et une question de bac peut demander l'un comme l'autre.
 
 Quand la source du son vibre périodiquement — une corde de guitare pincée, un diapason frappé, des cordes vocales qui vibrent pour tenir une note — le son qu'elle produit est une onde progressive périodique, exactement comme la corde des chapitres précédents : tout ce qui a été établi aux chapitres 2, 3 et 4 s'applique, avec la même mécanique de proche en proche.
 
@@ -259,6 +259,8 @@ Le son garderait exactement la même hauteur perçue (même $f$) dans les deux m
 Reprends le son ou les ultrasons installés au chapitre précédent : une onde progressive périodique, de fréquence $f$ et de longueur d'onde $\lambda = c/f$ (chapitres 3 et 5), qui se propage dans l'air. On la fait maintenant arriver sur un obstacle percé d'une ouverture — une fente, de largeur réglable $a$ — placée sur son trajet.
 
 Prends position avant de lire la suite. Imagine une fente très large, qu'on rétrécit ensuite peu à peu, presque jusqu'à la fermer complètement. Derrière la fente, la zone où l'onde se fait sentir devient-elle, à ton avis, de plus en plus fine et concentrée — comme un jet d'eau qu'on force à travers un trou de plus en plus petit — ou au contraire de plus en plus large et étalée ?
+
+[[checkpoint:cp-r5-diffraction]]
 
 L'expérience tranche, et elle va à l'encontre de l'intuition du jet d'eau. Tant que la fente reste large devant $\lambda$, l'onde continue presque tout droit derrière elle : une zone étroite, dans le prolongement direct de la fente, comme en optique géométrique. Mais à mesure qu'on rétrécit la fente, jusqu'à ce que sa largeur $a$ devienne du même ordre que $\lambda$, ou plus petite, l'onde cesse d'aller tout droit : elle s'étale derrière la fente, sur un domaine angulaire de plus en plus large, comme si la fente elle-même s'était transformée en une nouvelle source rayonnant tout autour d'elle. Ce contournement de l'obstacle, cet étalement, porte un nom : c'est la **diffraction**.
 
@@ -298,7 +300,7 @@ On envoie des ultrasons de fréquence $f = 40\ \text{kHz}$ dans l'air, où $c \a
 
 $$\lambda = \frac{c}{f} = \frac{340}{40\,000} \approx 8{,}5\times10^{-3}\ \text{m} = 8{,}5\ \text{mm}$$
 
-Une fente de largeur $a = 5\ \text{mm}$ est du même ordre de grandeur que $\lambda$, et même légèrement inférieure : la diffraction est notable, l'onde s'étale nettement derrière la fente. Une porte de largeur $a = 0{,}8\ \text{m}$, en revanche, est très grande devant $\lambda$ ($a \gg \lambda$) : l'onde la traverse presque tout droit, sans étalement perceptible.
+Une fente de largeur $a = 5\ \text{mm}$ est du même ordre de grandeur que $\lambda$, et même nettement inférieure : la diffraction est notable, l'onde s'étale nettement derrière la fente. Une porte de largeur $a = 0{,}8\ \text{m}$, en revanche, est très grande devant $\lambda$ ($a \gg \lambda$) : l'onde la traverse presque tout droit, sans étalement perceptible.
 
 Dans les deux cas, après la fente ou la porte, l'onde garde $f = 40\ \text{kHz}$, $\lambda \approx 8{,}5\ \text{mm}$ et $c \approx 340\ \text{m/s}$ — inchangés : seule la géométrie de propagation diffère entre les deux situations.
 
@@ -306,7 +308,6 @@ Dans les deux cas, après la fente ou la porte, l'onde garde $f = 40\ \text{kHz}
 
 La diffraction de la **lumière**, et la relation quantitative qui en donne la demi-largeur angulaire, $\theta = \lambda/a$, ne sont pas traitées ici : elles appartiennent à la leçon sur l'onde lumineuse (« Propagation d'une onde lumineuse »). Ce qu'on vient d'établir — la condition $a \lesssim \lambda$, les caractéristiques conservées, le montage — vaut pour les ondes mécaniques ; le prolongement quantitatif et le cas de la lumière se trouvent ailleurs.
 
-[[checkpoint:cp-r5-diffraction]]
 
 ---
 
@@ -314,7 +315,9 @@ La diffraction de la **lumière**, et la relation quantitative qui en donne la d
 
 ### La nuance qu'on n'avait pas encore posée
 
-On avait affirmé, aux chapitres chapitres 2 et 5 : c'est le milieu qui fixe la célérité $c$, la source qui fixe la fréquence $f$. Prends position avant de lire la suite : dans un même milieu, deux ondes de fréquences différentes voyagent-elles nécessairement à la même vitesse $c$, puisque « c'est le milieu qui fixe $c$ » ? Ou peut-on imaginer un milieu où la vitesse dépend aussi de la fréquence de l'onde qui le traverse ?
+On avait affirmé, aux chapitres 2 et 5 : c'est le milieu qui fixe la célérité $c$, la source qui fixe la fréquence $f$. Prends position avant de lire la suite : dans un même milieu, deux ondes de fréquences différentes voyagent-elles nécessairement à la même vitesse $c$, puisque « c'est le milieu qui fixe $c$ » ? Ou peut-on imaginer un milieu où la vitesse dépend aussi de la fréquence de l'onde qui le traverse ?
+
+[[checkpoint:cp-r6-dispersif]]
 
 Ce qu'on avait dit reste vrai — c'est bien le milieu, jamais la source, qui fixe $c$ — mais il manquait une précision : *pour une fréquence donnée*. Dans certains milieux, la célérité n'est pas la même pour toutes les fréquences. Un tel milieu s'appelle **dispersif**. C'est un raffinement de l'affirmation des chapitres 2 et 5, pas une contradiction : le milieu fixe toujours $c$ ; seulement, dans un milieu dispersif, il fixe une valeur de $c$ différente pour chaque fréquence.
 
@@ -354,7 +357,6 @@ $c_1 \neq c_2$ : la célérité dépend ici de la fréquence — ce milieu est *
 
 Conséquence, pour un signal qui contiendrait à la fois $f_1$ et $f_2$ : dans le premier milieu, ses deux composantes avancent ensemble, à la même vitesse — le signal garde sa forme en se propageant. Dans le second, elles se désynchronisent en avançant — le signal se déforme au fur et à mesure de sa propagation.
 
-[[checkpoint:cp-r6-dispersif]]
 
 ---
 

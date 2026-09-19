@@ -36,7 +36,7 @@ Un solide en rotation autour d'un axe fixe $\Delta$ (le manège autour de son ax
 
 C'est pour cette raison qu'un seul nombre suffit à décrire l'état de rotation de tout le solide, quelle que soit sa taille ou sa forme : l'angle $\theta(t)$ dont une ligne de référence attachée au solide (par exemple, un rayon peint sur le manège) a tourné par rapport à une direction fixe du référentiel. On l'appelle l'**abscisse angulaire**, mesurée en radians. On choisit un sens de rotation positif (le sens trigonométrique, par convention) une fois pour toutes, et $\theta$ est compté positivement dans ce sens.
 
-Exactement comme la position $x(t)$ d'un point suffisait à décrire toute une translation (chapitre précédent), $\theta(t)$ suffit ici à décrire toute la rotation — à condition que le solide soit rigide et que l'axe soit fixe.
+Exactement comme la position $x(t)$ d'un point suffisait à décrire toute une translation (leçon « Les lois de Newton »), $\theta(t)$ suffit ici à décrire toute la rotation — à condition que le solide soit rigide et que l'axe soit fixe.
 
 ### Vitesse angulaire et accélération angulaire
 
@@ -166,6 +166,8 @@ $$E_c = \sum_i \frac{1}{2}m_i\,d_i^2\,\omega^2 = \frac{1}{2}\left(\sum_i m_i\,d_
 On définit alors le moment d'inertie du solide entier par rapport à $\Delta$ comme cette somme :
 
 $$J_\Delta = \sum_i m_i\,d_i^2$$
+
+Un produit d'une masse par le carré d'une distance : le moment d'inertie se mesure donc en **kilogramme-mètre carré** ($\text{kg}\cdot\text{m}^2$).
 
 Cette additivité a une conséquence pratique immédiate : le moment d'inertie d'un système composé de plusieurs parties (un disque et deux enfants assis dessus, par exemple) est la **somme** des moments d'inertie de chaque partie par rapport au même axe $\Delta$ — à condition, bien sûr, de calculer chaque contribution par rapport au même axe.
 
@@ -402,7 +404,7 @@ $$T_0 = 2\pi\sqrt{\frac{J_\Delta}{mg\,d}} = 2\pi\sqrt{\frac{0{,}60}{5{,}88}} = 2
 
 Un aller-retour complet dure environ deux secondes, pour cette tige suspendue par un bout et lâchée avec un petit angle.
 
-**Et pour un angle qui n'est pas petit ?** À titre de comparaison, calculons l'accélération angulaire instantanée, avec l'équation exacte (pas l'approximation), pour un lâcher à $\theta = 10^\circ \approx 0{,}175\ \text{rad}$ (où $\sin 10^\circ \approx 0{,}174$) :
+**Le signe du moment de rappel, vérifié sur un cas.** Calculons l'accélération angulaire instantanée avec l'équation exacte (pas l'approximation), pour un lâcher à $\theta = 10^\circ \approx 0{,}175\ \text{rad}$ (où $\sin 10^\circ \approx 0{,}174$) :
 
 $$\ddot\theta = -\frac{mg\,d\sin\theta}{J_\Delta} = -\frac{5{,}88\times 0{,}174}{0{,}60} \approx -1{,}7\ \text{rad/s}^2$$
 
@@ -418,7 +420,7 @@ Le signe négatif confirme que le moment du poids ramène toujours la tige vers 
 
 Un sujet de rotation fait rarement tourner un solide dans le vide. Il l'accroche à un fil qui passe sur une poulie, le pose sur un plan incliné, ou lui demande un bilan d'énergie. Deux outils reviennent alors, que **cette leçon n'enseigne pas** :
 
-- **La décomposition du poids sur un plan incliné** — la composante $mg\sin\alpha$ le long de la pente, $mg\cos\alpha$ perpendiculairement. Elle est établie dans « **Les lois de Newton** », au chapitre consacré au solide sur un plan incliné, et reprise dans « **Chute libre et mouvements plans** ». Un exercice de rotation la mobilise dès qu'un objet en translation tire le solide tournant.
+- **La décomposition du poids sur un plan incliné** — la composante $mg\sin\alpha$ le long de la pente, $mg\cos\alpha$ perpendiculairement. Elle est établie dans « **Les lois de Newton** », au chapitre consacré au solide sur un plan incliné. Un exercice de rotation la mobilise dès qu'un objet en translation tire le solide tournant.
 - **Le travail d'une force et le théorème de l'énergie cinétique**, dans « **Aspects énergétiques** ». Ce chapitre-ci donne l'énergie cinétique de rotation $E_c = \frac{1}{2}J_\Delta\,\dot\theta^{\,2}$ (chapitre 6), mais pas la machinerie du travail qui la fait varier.
 
 Ce ne sont pas des manques : un exercice de mécanique assemble presque toujours translation et rotation, cinématique et énergie. Savoir **d'où vient** chaque geste évite de croire qu'on a oublié une formule de ce chapitre.
@@ -435,7 +437,7 @@ Ce ne sont pas des manques : un exercice de mécanique assemble presque toujours
 
 ### Exercice de type bac
 
-À toi. L'exercice qui suit est la transcription fidèle d'un sujet officiel : la 1ère situation de l'exercice « Mécanique » de la session rattrapage 2011 (« Étude dynamique d'une grue »), la seule occurrence nationale dédiée trouvée pour cette notion. Cherche sur papier d'abord, engage une réponse à chaque question, puis seulement ouvre le raisonnement expert et compare-le au tien.
+À toi. L'exercice qui suit est la transcription fidèle d'un sujet officiel : la 1ère situation de l'exercice « Mécanique » de la session rattrapage 2011 (« Étude dynamique d'une grue »). Deux autres sujets nationaux portant cette notion t'attendent dans le chapitre « S'entraîner » : 2024 session normale et 2013 rattrapage. Cherche sur papier d'abord, engage une réponse à chaque question, puis seulement ouvre le raisonnement expert et compare-le au tien.
 
 [[exercise:r-bac]]
 
