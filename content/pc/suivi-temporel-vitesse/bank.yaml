@@ -172,7 +172,7 @@ entries:
         stem: |-
           **(0,25 pt)** Définir le temps de demi-réaction $t_{1/2}$.
         reasoning: |-
-          C'est la définition du chapitre 5 : $t_{1/2}$ est l'instant où l'avancement atteint la moitié de sa valeur finale, $x(t_{1/2}) = \dfrac{x_f}{2}$. La définition porte sur la courbe d'avancement $x(t)$ elle-même, pas sur une fraction de la durée totale d'observation — et comme $x(t)$ ne fait que croître, de $0$ à $x_f$, sans jamais redescendre, elle traverse cette valeur une fois et une seule : $t_{1/2}$ est donc parfaitement défini.
+          C'est la définition du chapitre 5 : $t_{1/2}$ est l'instant où l'avancement atteint la moitié de sa valeur finale. Cette réaction étant totale, sa valeur finale est l'avancement final $x_f$ calculé à la question précédente, d'où $x(t_{1/2}) = \dfrac{x_f}{2}$. La définition porte sur la courbe d'avancement $x(t)$ elle-même, pas sur une fraction de la durée totale d'observation — et comme $x(t)$ ne fait que croître, de $0$ à $x_f$, sans jamais redescendre, elle traverse cette valeur une fois et une seule : $t_{1/2}$ est donc parfaitement défini.
       - id: q3
         stem: |-
           **(0,5 pt)** À l'aide de l'expression $\sigma = f(x)$ et de la courbe de la figure 1, déterminer la valeur de $t_{1/2}$.
@@ -428,7 +428,7 @@ entries:
         reasoning: |-
           **Ce qu'on cherche et pourquoi ce geste.** L'hydrolyse d'un ester est la réaction **inverse** de l'estérification (chapitre 3 de la notion **Estérification et hydrolyse**) : $R-COO-R' + H_2O \rightleftharpoons R-COOH + R'-OH$. Ici, la réaction se produit en présence d'ions hydroxyde $HO^-$ — c'est une **hydrolyse basique**, une variante que ni cette leçon-ci (« Suivi temporel d'une transformation ») ni « Estérification et hydrolyse » ne construisent nommément. On la reconstruit à partir de ce que ces deux leçons établissent séparément.
 
-          L'éthanoate d'éthyle, $CH_3-COO-CH_2-CH_3$, est l'ester (le seul réactif portant le groupe $-COO-$ entre deux chaînes carbonées, chapitre 2) : son hydrolyse donnerait, en milieu neutre, l'acide éthanoïque et l'éthanol (chapitre 3). Mais ici, l'ion $HO^-$, base **forte**, neutralise l'acide carboxylique dès qu'il se forme — il le retire donc en permanence de l'équilibre d'hydrolyse, exactement le principe de déplacement d'équilibre par élimination d'un produit établi au chapitre 6 (là-bas, appliqué à retirer l'eau ou l'ester pour pousser l'**estérification** ; ici, c'est l'acide qui est retiré, ce qui pousse l'**hydrolyse**, la réaction inverse). L'équilibre est ainsi tiré jusqu'à sa fin : la réaction devient **totale**, flèche simple — cohérence avec l'énoncé, qui la donne explicitement comme telle.
+          L'éthanoate d'éthyle, $CH_3-COO-CH_2-CH_3$, est l'ester (le seul réactif portant le groupe $-COO-$ entre deux chaînes carbonées — notion sœur « **Estérification et hydrolyse** ») : son hydrolyse donnerait, en milieu neutre, l'acide éthanoïque et l'éthanol (notion sœur « **Estérification et hydrolyse** »). Mais ici, l'ion $HO^-$, base **forte**, neutralise l'acide carboxylique dès qu'il se forme — il le retire donc en permanence de l'équilibre d'hydrolyse, exactement le principe de déplacement d'équilibre par élimination d'un produit établi dans la notion sœur « **Estérification et hydrolyse** » (là-bas, appliqué à retirer l'eau ou l'ester pour pousser l'**estérification** ; ici, c'est l'acide qui est retiré, ce qui pousse l'**hydrolyse**, la réaction inverse). L'équilibre est ainsi tiré jusqu'à sa fin : la réaction devient **totale**, flèche simple — cohérence avec l'énoncé, qui la donne explicitement comme telle.
 
           $$\boxed{CH_3-COO-CH_2-CH_3 + HO^-_{(aq)} \longrightarrow CH_3-COO^-_{(aq)} + CH_3-CH_2-OH}$$
 
@@ -448,7 +448,7 @@ entries:
         stem: |-
           **3-3. (0,5 pt)** Déterminer graphiquement $t_{1/2}$ le temps de demi-réaction.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** La méthode du chapitre 5 : repérer $x_{max}$, calculer sa moitié, lire sur la courbe l'abscisse où cette moitié est atteinte — $t_{1/2}$ se lit toujours à $x_f/2$, **jamais** à la moitié de la durée totale représentée sur le graphe (un piège d'autant plus tentant ici que le cadre s'arrête pile à $t=8\ \text{min}$, dont la moitié, $4\ \text{min}$, coïncide numériquement avec la bonne réponse — par coïncidence de ce cadre précis, pas par définition).
+          **Ce qu'on cherche et pourquoi ce geste.** La méthode du chapitre 5 : repérer $x_{max}$, calculer sa moitié, lire sur la courbe l'abscisse où cette moitié est atteinte — $t_{1/2}$ se lit toujours à $x_{max}/2$, **jamais** à la moitié de la durée totale représentée sur le graphe (un piège d'autant plus tentant ici que le cadre s'arrête pile à $t=8\ \text{min}$, dont la moitié, $4\ \text{min}$, coïncide numériquement avec la bonne réponse — par coïncidence de ce cadre précis, pas par définition).
 
           **Trouver $x_{max}$ : quel réactif est limitant ?** $n_{01}(\text{ester}) = 0{,}8\ \text{mmol}$ contre $n_0(HO^-) = 1{,}0\ \text{mmol}$ : c'est l'éthanoate d'éthyle qui est en défaut. La réaction étant totale (énoncé), l'ester limitant est intégralement consommé à l'avancement final :
 

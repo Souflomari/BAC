@@ -4809,7 +4809,7 @@ Comme le §11.43, elle tourne en CI (validate-content --strict, 62 notions) sans
 jamais bloquer, et le sens « valeur qui ne résout pas » complète, pour les
 rungs, ce que la porte marqueur→cible fait déjà pour les figures (ADR 0031).
 
-### 11.45 La campagne de correction de contenu vague 1 — vingt-neuf notions triées (MATHS BOUCLÉ ; PC 10/25), 398 correctifs objectifs, les bloquants consignés
+### 11.45 La campagne de correction de contenu vague 1 — trente notions triées (MATHS BOUCLÉ ; PC 11/25), 403 correctifs objectifs, les bloquants consignés
 
 **EN COURS (une notion à la fois, cadence critiques).** Après les portes
 d'intégrité (§11.43 figures orphelines, §11.44 rung↔titre), la vague-1
@@ -4921,7 +4921,7 @@ Vingt notions à ce stade — les 14 de maths sont toutes passées :
 | `maths/denombrement` | 10 | fond propre, dit séparément par les deux critiques : les 27 clés d'items ET leurs 108 distracteurs, les 5 checkpoints, les 2 sommets, les 4 exercices de banque et la trentaine de calculs de la leçon **reproduisent tous** ; les **4 barèmes** tombent exactement sur le relevé ; le `coverage_summary` recompté depuis les tags bruts **par les deux** est exact ; les **16 citations de chapitre** sont justes. Et **aucune fuite d'auteur** dans un champ rendu — vérifié le jour même où cette classe était balayée ailleurs (§11.61). Corrigé : **promesse non tenue sur la notation** (« on utilisera les deux » — `C_n^p` apparaît UNE fois dans toute la notion, dans cette phrase même, contre ~40 `\binom{n}{p}`, et les figures emploient une TROISIÈME forme) ; **renvoi mort** vers un « autre chapitre » pour le binôme de Newton, que le produit n'a pas et que `maths-sexp.yaml:278` exclut nommément ; **l'arithmétique d'un commentaire de distracteur est fausse** — pour justifier 720 il écrit un produit qui vaut 5040, c'est-à-dire la BONNE réponse ; **une légende de figure définit Ω comme l'urne puis le compte comme l'ensemble des tirages**, enseignant exactement la misconception que le banc corrige ; un `reasoning` rendu affirme que l'indépendance n'est définie nulle part alors que le chapitre 9 de la même leçon l'énonce ; renvoi en avant faux deux fois (mauvais système d'étiquettes ET mauvaise position) ; **réponse au-dessus de la porte d'essai dans les DEUX exercices** (l'`intro` imprimait `card(Ω)` = le `steps[0]` gardé de q1) plus l'analogie que la variation existe pour faire trouver. **PIÈGE À NE PAS CORRIGER NAÏVEMENT** : les deux formules encadrées n'ont pas l'hypothèse $p \le n$ que porte la propriété qui en dérive — mais la banque utilise $\binom{1}{2}=0$ comme étape porteuse, donc ajouter la condition rendrait l'examen illégal ; il faut POSER la convention, c'est-à-dire enseigner → content-author. **SEV1 cadre → owner** : la banque enseigne indépendance et loi binomiale, attribuées au chapitre séparé — mais les deux critiques convergent, ce n'est PAS une brèche d'exclusion, c'est la partition que l'examen ne respecte pas (2 sujets vérifiés sur 4 la débordent dans le même exercice numéroté) : GARDER le contenu ; et la filière est un angle mort (CENSUS : SM 0, SExp 8, alors que les deux cadres revendiquent la notion). À NE PAS AFFAIBLIR : « un exercice de probabilités commence presque toujours par du dénombrement » est **confirmé 4/5** ; le principe additif, absent des lignes `programme`, est exigé par **4 sujets vérifiés sur 4** |
 | `maths/geometrie-espace` | 13 | **la notion la mieux vérifiée de la campagne** : les deux critiques ont recalculé séparément les **57 clés d'items** (et l'arithmétique fausse annoncée par chaque distracteur), les **5 barèmes** question par question, et recompté le `coverage_summary` depuis les tags bruts — `total_items`, les 11 `per_rung`, les **30** `per_misconception_any_distractor` et les **26** `per_misconception_primary`, **tous exacts**, les 13 modèles au plancher siégeant bien dans 3 items distincts ; et **les ~200 citations « chapitre N » vérifiées une à une par les deux, toutes justes**. Corrigé : **deux `reasoning` RENDUS disent à l'élève qu'il sort du programme sur du contenu que la leçon lui a enseigné** (« le chapitre 10 traite la tangence plan-sphère » — le chapitre 10 porte une section titrée sur la sphère ∩ DROITE ; « ni les chapitres 2 à 10 ne nomment la médiatrice » — le chapitre 7 porte une section titrée « Le plan médiateur ») ; **réponse au-dessus de la porte d'essai** — le checkpoint d'avant-sommet reprenait EXACTEMENT les nombres de r-bac ($R=\sqrt5$, $d=\sqrt3$), c'est-à-dire les réponses de ses questions 2 et 3a, et la prose juste au-dessus nommait la décision de méthode de q3b : re-numéroté en $\sqrt{11}/\sqrt7/2$ ; **une étiquette `item_source` fausse** qui masquait précisément cela ; le milieu d'un segment attribué au chapitre 2 alors qu'il n'y est pas établi (mais j'ai VÉRIFIÉ les deux autres citations « chapitre 2 » du même lot : elles portent sur la norme et « arrivée moins départ », qui y sont — elles restent) ; équation développée de la sphère sans sa condition de nature ; titre de R9 et note de validation omettant deux sections enseignées. **SEV1 cadre → research-lead, et les deux critiques convergent : LE CADRE A TORT sur le produit vectoriel** — `maths-sexp.yaml` doute que ce soit un objet testé et classe l'affirmation parmi ses plus faibles, alors que **4 des 5 exercices vérifiés ouvrent dessus, toujours en question 1**. En revanche le produit mixte (R4) est vraisemblablement hors SExp et le relevé CORROBORE l'exclusion (0/5, et CENSUS donne SM 0 / SExp 19) → ne pas supprimer sans arbitrage, mais **GE-31 met un outil exclu dans R10, le barreau présenté comme « le format de l'épreuve »**. Pédagogie : deux sous-sections entières (plan médiateur, sphère ∩ droite) enseignées, portant chacune un modèle faux NOMMÉ, sans aucun item ni misconception déclarée ; la variation partage terme constant, corrections {1,4,9} et rayon 3 avec l'exemple travaillé du chapitre ; 3 checkpoints sur 5 clones nombre pour nombre d'items du banc ; 19 des 30 modèles non réclamés |
 
-**398 correctifs objectifs** au total, dont **106 pour la seule campagne de
+**403 correctifs objectifs** au total, dont **106 pour la seule campagne de
 provenance de transcription** (§11.75), qui a touché 18 notions d'un coup.
 Les quatre notions triées le 2026-09-12 ajoutent 53 correctifs :
 `pc/esterification-hydrolyse` 14, `pc/reactions-acido-basiques` 17,
@@ -6847,3 +6847,29 @@ rendus et ne sont pas examinés.
 elle *ne pouvait pas* devenir rouge. C'est exactement le piège qu'ADR 0031
 nomme — **une porte doit pouvoir passer au rouge** — et seul le test rouge l'a
 révélé. Une porte qu'on n'a pas vue échouer n'est pas une porte.
+
+### §11.77 bis — la PORTÉE de la porte « chapitre N », mesurée
+
+`§11.77` n'attrape qu'un numéro de chapitre **hors bornes**. Le 2026-09-12,
+`pc/suivi-temporel-vitesse/bank.yaml:431` a montré l'autre moitié du défaut :
+trois renvois **dans les bornes** — « chapitre 2 » pour le groupe $-COO-$ de
+l'ester, « chapitre 3 » pour les produits de l'hydrolyse, « chapitre 6 » pour
+le déplacement d'équilibre — dans une leçon de cinétique à six chapitres qui
+n'enseigne aucune de ces trois choses. Elles appartiennent à la notion sœur
+« Estérification et hydrolyse ». La porte est restée verte tout du long.
+
+**Deux tentatives de fermer le trou, toutes deux abandonnées, chiffrées.**
+(1) *Un mot de la citation doit apparaître dans le chapitre cité* : **562
+signaux**, écrasante majorité de faux — une prose dense en mathématiques n'a
+presque aucun mot appariable, donc toute citation entourée de formules est
+signalée. (2) *Le mot doit être absent de la leçon hôte entière* : encore
+**plus de 150 signaux**, et les mots « absents » sont de la prose ordinaire
+(« affirmer », « rapport », « inverse », « tranches »).
+
+Le signal réel était **sémantique** — de la chimie des esters citée dans une
+leçon de cinétique — et il ne se sépare pas lexicalement de la variation
+d'écriture normale. **Rien n'a été armé.** Ce qui est acquis est une mesure,
+pas une porte : un renvoi dans les bornes mais vers la mauvaise leçon n'est
+pas détectable par les moyens essayés ici, et reste au jugement. C'est écrit
+ici précisément pour qu'un badge vert sur §11.77 ne soit pas lu comme « les
+renvois de chapitre sont vérifiés » (ADR 0031 : la PORTÉE se mesure à part).
