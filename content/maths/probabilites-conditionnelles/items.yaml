@@ -1651,8 +1651,23 @@ coverage_summary:
     R3: 9
     R4: 3
     R5: 3
-    R6: 1
-    R7: 2
+    # ATTENTION, mesuré le 2026-09-19 (§11.69) : cette leçon ne porte que SIX
+    # titres `## `, donc six chapitres, donc les barreaux atteignables vont de
+    # R0 à R5. Les trois items ci-dessous visent R6 et R7 — des barreaux SANS
+    # chapitre. Ils sont structurellement inatteignables : ni présentés au bon
+    # endroit, ni attribués. Ils restent comptés ici pour que le total de 27
+    # reste vrai, et l'anomalie est DÉCLARÉE plutôt que corrigée à la main.
+    #
+    # Le correctif mécanique — ajouter « R6 — » et « R7 — » aux titres
+    # « Variable aléatoire » et « La loi binomiale » — fait tomber les six
+    # avertissements du validateur à zéro. IL NE FAUT PAS L'APPLIQUER : ces
+    # trois items sont des problèmes de Bayes (PC-M1-3, PC-M8-2, PC-M8-3), pas
+    # des questions de variable aléatoire ni de loi binomiale. Le vert serait
+    # acheté en rangeant des items de Bayes sous un chapitre qui parle d'autre
+    # chose, là où plus aucun instrument ne regarde. Leur rattachement est une
+    # décision éditoriale : owner.
+    R6: 1   # PC-M1-3 — INATTEIGNABLE (pas de 7e chapitre)
+    R7: 2   # PC-M8-2, PC-M8-3 — INATTEIGNABLES (pas de 8e chapitre)
   per_misconception:
     mc.math.sma_prob_conditionnelle.transpose-conditionnel: 6          # PC-M1-1, PC-M1-2, PC-M1-3 (R5/R7 canonical family) + PC-M1-4, PC-M1-5, PC-M1-6 (R0 accroche, lighter — ceiling of 6 per spec §5 "do not exceed 6")
     mc.math.sma_prob_conditionnelle.conditionnelle-egale-intersection: 3  # PC-M2-1, PC-M2-2, PC-M2-3 (also appears as a secondary, non-counted distractor on PC-M1-4/5/6 and PC-M8-2 — see dual/secondary notes)
