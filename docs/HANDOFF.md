@@ -6873,3 +6873,53 @@ pas une porte : un renvoi dans les bornes mais vers la mauvaise leçon n'est
 pas détectable par les moyens essayés ici, et reste au jugement. C'est écrit
 ici précisément pour qu'un badge vert sur §11.77 ne soit pas lu comme « les
 renvois de chapitre sont vérifiés » (ADR 0031 : la PORTÉE se mesure à part).
+
+### §11.80 — le second sens de la porte de sourçage (une porte qui s'éteignait elle-même)
+
+Jusqu'au 2026-09-12, `validate-content.mjs` ne signalait un exercice non sourcé
+**que** si `sourcing.required_for_done === true`. Autrement dit : le drapeau qui
+déclare « cet exercice n'est pas bloquant » **éteignait aussi la seule voix** qui
+disait qu'il n'est pas sourcé. Un badge vert ne voulait donc pas dire « tout est
+sourcé », il voulait dire « rien n'a été mesuré ».
+
+Trouvé sur `pc/rlc-serie` (r8-bac, `status: unsourced` + `required_for_done:
+false`). Deux notions seulement portent la combinaison, l'autre étant
+`pc/atome-mecanique-newton` (r-bac).
+
+**Ce qui a été armé, et ce qui ne l'a pas été.** `required_for_done: false` peut
+être une décision délibérée du propriétaire — un exercice volontairement non
+bloquant. On la respecte : le nouveau signalement est un **⚠ qui n'échoue
+jamais**, même en `--strict`. Ce qui n'est plus permis, c'est le silence.
+
+**Sévérité mesurée** sur les 62 notions : 52 `sourced`, 44 `not-applicable`,
+2 `unsourced`. `not-applicable` est le statut NORMAL des 44 variations
+fabriquées — une variation n'est pas censée venir d'une annale — donc elle est
+**exemptée**. Restent exactement les 2 vrais non-sourcés, et **zéro faux**.
+
+Les deux sens sont vérifiés sur le corpus réel, sans rien injecter : le sens
+« ça parle » par les 2 signalements vivants, le sens « ça se tait » par les
+52 + 44 qui n'en produisent aucun. ADR 0031 : une porte a deux sens dès qu'un
+seul se laisse contourner.
+
+### §11.72 bis — la panne de CI dure depuis une semaine (re-mesurée le 2026-09-19)
+
+Le §11.72 consignait une panne du runner GitHub commencée le 2026-09-12 :
+chaque run de `gates.yml` échoue en 3-5 s, sans runner, sans journal. **Elle
+n'est pas résorbée.** Re-mesuré aujourd'hui sur les trois pushes de la
+session — runs 579, 580 et 581 de `gates.yml` :
+
+| run | poussé | terminé | durée | conclusion |
+|---|---|---|---|---|
+| 579 | 10:17:15Z | 10:17:18Z | 3 s | `failure` |
+| 580 | 10:23:21Z | 10:23:24Z | 3 s | `failure` |
+| 581 | 10:30:53Z | 10:30:56Z | 3 s | `failure` |
+
+Même signature qu'il y a une semaine. Le dernier run vert reste le 490, du
+2026-09-12 à 16:59Z. **Sept jours sans CI.** Le seul contrôle qui tourne
+réellement sur la PR #2 est le déploiement Vercel.
+
+Rien n'a été commenté de plus sur la PR : la cause racine y est déjà consignée
+une fois, et la répéter n'ajouterait pas d'information. **La batterie est donc
+rejouée en local avant chaque push** — 90/90 tests, `token-gate`,
+`contrast-gate`, `validate-content --strict` sur 62 dossiers — et aucun commit
+de cette session ne prétend « CI verte ».

@@ -410,6 +410,33 @@ for (const dir of dirs) {
             const msg = `${dir}/exercises.yaml: ${exId} required_for_done=true but status="${sourcing.status}" (not sourced)`;
             if (strictMode) { console.error(`  ✗ ${msg}`); dirFail++; }
             else { console.error(`  ⚠ ${msg}`); }
+          } else if (sourcing.status !== "sourced" && sourcing.status !== "not-applicable") {
+            // §11.80 Le SECOND SENS de la porte de sourçage.
+            //   Jusqu'ici, un exercice non sourcé n'était signalé QUE si
+            //   `required_for_done: true`. Autrement dit, le drapeau qui déclare
+            //   « cet exercice n'est pas bloquant » ÉTEIGNAIT aussi la seule voix
+            //   qui disait qu'il n'est pas sourcé. Un badge vert ne voulait donc
+            //   pas dire « tout est sourcé », mais « rien n'a été mesuré ».
+            //
+            //   Trouvé le 2026-09-12 sur pc/rlc-serie (r8-bac) ; deux notions
+            //   seulement portent la combinaison, l'autre étant
+            //   pc/atome-mecanique-newton (r-bac).
+            //
+            //   `required_for_done: false` peut être une décision délibérée du
+            //   propriétaire — un exercice non bloquant. On la respecte : ceci
+            //   n'échoue JAMAIS, même en --strict. Mais le silence, lui, n'est
+            //   plus une option. ADR 0031 : une porte a deux sens quand un seul
+            //   se laisse contourner.
+            //
+            //   SÉVÉRITÉ MESURÉE sur les 62 notions : 52 `sourced`,
+            //   44 `not-applicable`, 2 `unsourced`. `not-applicable` est le
+            //   statut NORMAL des 44 variations fabriquées — une variation
+            //   n'est pas censée venir d'une annale, donc elle est EXEMPTÉE.
+            //   Restent exactement les 2 vrais non-sourcés, et zéro faux.
+            console.error(
+              `  ⚠ ${dir}/exercises.yaml: ${exId} status="${sourcing.status}" (non sourcé) — ` +
+                `non bloquant par choix (required_for_done=${sourcing.required_for_done}), mais non mesuré`
+            );
           }
         }
 
