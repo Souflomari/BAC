@@ -104,9 +104,9 @@ checkpoints:
     lesson_placement: after_R1
 
     stem: |
-      L'allèle $G$ (pelage gris) domine l'allèle $b$ (pelage blanc). On dispose
-      de trois souris : la première de génotype $G//G$, la deuxième $G//b$, la
-      troisième $b//b$. Que peut-on affirmer ?
+      L'allèle $G$ (pelage gris) domine l'allèle $g$ (pelage blanc). On dispose
+      de trois souris : la première de génotype $G//G$, la deuxième $G//g$, la
+      troisième $g//g$. Que peut-on affirmer ?
 
     type: mcq
 
@@ -116,7 +116,7 @@ checkpoints:
         correct: true
         feedback: |
           Exactement, et les deux moitiés sont utiles. Un phénotype dominant ne
-          détermine pas le génotype : gris peut vouloir dire $G//G$ ou $G//b$ —
+          détermine pas le génotype : gris peut vouloir dire $G//G$ ou $G//g$ —
           c'est tout le problème que le test-cross viendra résoudre. Un
           phénotype récessif, lui, ne laisse aucune ambiguïté : il exige les
           deux allèles récessifs.
@@ -127,7 +127,7 @@ checkpoints:
         misconception: mc.svt.svt_transmission_caracteres.dominance-mal-appliquee
         feedback: |
           Modèle détecté : traiter l'hétérozygote comme un mélange. Dominer
-          signifie s'exprimer seul : chez $G//b$, seul l'allèle $G$ se voit, et
+          signifie s'exprimer seul : chez $G//g$, seul l'allèle $G$ se voit, et
           la souris est aussi grise que la $G//G$. C'est justement ce qui rend
           les deux indiscernables à l'œil.
 
@@ -142,12 +142,12 @@ checkpoints:
           Trois génotypes, deux phénotypes seulement.
 
       - id: D
-        text: "La troisième est blanche parce que son allèle récessif $b$, présent en double, parvient à masquer l'allèle dominant $G$ qu'elle porte également."
+        text: "La troisième est blanche parce que son allèle récessif $g$, présent en double, parvient à masquer l'allèle dominant $G$ qu'elle porte également."
         correct: false
         misconception: mc.svt.svt_transmission_caracteres.dominance-mal-appliquee
         feedback: |
           Modèle détecté : inverser le sens du masquage, et prêter à la souris
-          un allèle qu'elle n'a pas. $b//b$ signifie deux allèles $b$ et aucun
+          un allèle qu'elle n'a pas. $g//g$ signifie deux allèles $g$ et aucun
           $G$ : il n'y a rien à masquer. Le récessif ne s'exprime que lorsque le
           dominant est absent — c'est sa définition.
 
@@ -217,7 +217,7 @@ checkpoints:
     lesson_placement: after_R3
 
     stem: |
-      Dans le croisement $G//b \times G//b$, d'où vient exactement la fraction
+      Dans le croisement $G//g \times G//g$, d'où vient exactement la fraction
       $1/4$ de descendants blancs ?
 
     type: mcq
@@ -234,12 +234,12 @@ checkpoints:
           réunies SIMULTANÉMENT se multiplient : un demi fois un demi.
 
       - id: B
-        text: "Du produit des deux transmissions indépendantes : une chance sur deux de recevoir $b$ du père, une chance sur deux de le recevoir de la mère."
+        text: "Du produit des deux transmissions indépendantes : une chance sur deux de recevoir $g$ du père, une chance sur deux de le recevoir de la mère."
         correct: true
         feedback: |
           Oui. Chaque parent hétérozygote fabrique deux sortes de gamètes en
           proportions égales, et les deux fécondations sont indépendantes. Il
-          faut $b$ des deux côtés à la fois pour être blanc : un demi fois un
+          faut $g$ des deux côtés à la fois pour être blanc : un demi fois un
           demi. L'échiquier ne fait que dessiner ce produit.
 
       - id: C
@@ -249,7 +249,7 @@ checkpoints:
         feedback: |
           Modèle détecté : reporter la proportion de la descendance sur les
           gamètes. Un hétérozygote produit exactement deux sortes de gamètes, en
-          parts égales : la moitié $G$, la moitié $b$. Le quart n'apparaît qu'à
+          parts égales : la moitié $G$, la moitié $g$. Le quart n'apparaît qu'à
           la fécondation, quand les deux moitiés se rencontrent.
 
       - id: D
@@ -331,22 +331,22 @@ checkpoints:
     lesson_placement: after_R5
 
     stem: |
-      Pour savoir si une souris grise est $G//G$ ou $G//b$, pourquoi la
-      croise-t-on avec une souris blanche $b//b$, et non avec une autre souris
+      Pour savoir si une souris grise est $G//G$ ou $G//g$, pourquoi la
+      croise-t-on avec une souris blanche $g//g$, et non avec une autre souris
       grise ?
 
     type: mcq
 
     choices:
       - id: A
-        text: "Parce que le testeur blanc ne peut transmettre que $b$ : le phénotype de chaque descendant révèle donc directement l'allèle reçu du parent testé."
+        text: "Parce que le testeur blanc ne peut transmettre que $g$ : le phénotype de chaque descendant révèle donc directement l'allèle reçu du parent testé."
         correct: true
         feedback: |
           Exactement — c'est tout le principe. Le testeur homozygote récessif
           n'apporte aucune information, et c'est sa qualité : il laisse le
           phénotype des descendants dépendre du seul parent inconnu. Une
           descendance entièrement grise indique $G//G$ ; l'apparition de blancs
-          signe $G//b$.
+          signe $G//g$.
 
       - id: B
         text: "Parce qu'un testeur doit toujours porter le phénotype dominant pour que le croisement soit informatif, et une souris grise ferait donc aussi bien l'affaire."
@@ -355,7 +355,7 @@ checkpoints:
         feedback: |
           Modèle détecté : inverser l'exigence sur le testeur. C'est l'inverse
           qui est vrai : un testeur gris pourrait transmettre $G$, et ce $G$
-          masquerait le $b$ éventuellement reçu de l'autre parent. Tous les
+          masquerait le $g$ éventuellement reçu de l'autre parent. Tous les
           descendants seraient gris quel que soit le génotype testé — le
           croisement n'apprendrait rien.
 
@@ -365,7 +365,7 @@ checkpoints:
         misconception: mc.svt.svt_transmission_caracteres.test-cross-mal-compris
         feedback: |
           Modèle détecté : prêter un allèle caché à un homozygote récessif. Un
-          phénotype récessif exige les deux allèles récessifs : $b//b$ ne porte
+          phénotype récessif exige les deux allèles récessifs : $g//g$ ne porte
           aucun $G$, et ne peut donc rien cacher. C'est précisément cette
           transparence qui en fait un bon testeur.
 
@@ -377,4 +377,4 @@ checkpoints:
           Modèle détecté : plaquer le rapport de la F2 sur un test-cross. Si le
           rapport était le même dans les deux cas, le test ne distinguerait
           rien. Il donne au contraire deux résultats bien séparés : 100 % gris
-          si le parent est $G//G$, moitié-moitié s'il est $G//b$.
+          si le parent est $G//G$, moitié-moitié s'il est $G//g$.

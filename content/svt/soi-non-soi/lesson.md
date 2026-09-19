@@ -54,7 +54,7 @@ Pour décrire précisément comment un organisme détecte le non-soi, il faut de
 
 Un **antigène** est une molécule — protéine, glycoprotéine, molécule portée à la surface d'une cellule ou libre dans un liquide biologique — capable d'être reconnue spécifiquement par le système immunitaire, et de déclencher une réaction s'il la considère étrangère. Un antigène n'est pas nécessairement dangereux en lui-même : la seule propriété qui compte ici est d'être reconnaissable.
 
-Un **anticorps** est une protéine produite par l'organisme, capable de se lier spécifiquement à un antigène donné (et, en général, à lui seul). La production des anticorps — quand, comment, par quelles cellules — est le sujet du chapitre suivant ; ici, il suffit de savoir qu'ils existent et qu'ils agissent par reconnaissance spécifique.
+Un **anticorps** est une protéine produite par l'organisme, capable de se lier spécifiquement à un antigène donné (et, en général, à lui seul). La production des anticorps — quand, comment, par quelles cellules — est le sujet de la leçon suivante, « Les moyens de défense de l'organisme » ; ici, il suffit de savoir qu'ils existent et qu'ils agissent par reconnaissance spécifique.
 
 ### Le principe clé-serrure : la spécificité
 
@@ -196,7 +196,7 @@ La **transfusion dangereuse** (premier cas du chapitre 1) s'explique entièremen
 
 La **greffe rejetée** (deuxième cas du chapitre 1) s'explique par le chapitre 4 : même si le donneur est un proche (un père), son CMH diffère presque toujours de celui du receveur (seuls les vrais jumeaux partagent un CMH identique). Le système immunitaire du fils détecte les molécules de CMH du greffon comme non-soi, et réagit contre l'organe — non pas par erreur, mais parce que c'est exactement le rôle de la distinction soi/non-soi que de détecter tout ce qui ne correspond pas au répertoire tolérable de l'individu.
 
-Dans les deux cas, le système immunitaire n'a pas « mal fonctionné » : il a fait, avec une précision remarquable, exactement ce pour quoi il est construit — distinguer le soi du non-soi. Comprendre ce mécanisme de reconnaissance en détail (comment les cellules immunitaires, une fois le non-soi détecté, organisent concrètement leur réponse) sera l'objet du chapitre suivant.
+Dans les deux cas, le système immunitaire n'a pas « mal fonctionné » : il a fait, avec une précision remarquable, exactement ce pour quoi il est construit — distinguer le soi du non-soi. Comprendre ce mécanisme de reconnaissance en détail (comment les cellules immunitaires, une fois le non-soi détecté, organisent concrètement leur réponse) sera l'objet de la leçon suivante, « Les moyens de défense de l'organisme ».
 
 ### L'erreur classique à éviter ici
 

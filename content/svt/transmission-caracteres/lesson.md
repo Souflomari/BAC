@@ -220,7 +220,7 @@ Ce rapport n'a rien d'arbitraire : c'est le **produit** des deux rapports monohy
 
 ### L'erreur classique à éviter ici
 
-L'erreur la plus fréquente : **additionner** au lieu de **multiplier** les deux probabilités indépendantes. Un élève qui écrit $\frac{1}{4} + \frac{1}{4} = \frac{1}{2}$ pour la classe « noir, ailes vestigiales » a commis exactement l'erreur inverse de celle du chapitre 4 — combiner deux caractères indépendants demande une multiplication, jamais une addition, parce qu'on cherche la probabilité que les DEUX événements se réalisent ensemble.
+L'erreur la plus fréquente : **additionner** au lieu de **multiplier** les deux probabilités indépendantes. Un élève qui écrit $\frac{1}{4} + \frac{1}{4} = \frac{1}{2}$ pour la classe « noir, ailes vestigiales » a commis exactement le même oubli qu'au chapitre 4, sous un autre déguisement : la multiplication n'a pas été faite — combiner deux caractères indépendants la demande, jamais une addition, parce qu'on cherche la probabilité que les DEUX événements se réalisent ensemble.
 
 Une deuxième précision, importante pour rester dans le cadre de cette leçon : le raisonnement entier repose sur la condition « gènes indépendants » (portés par des paires de chromosomes différentes). Si les deux gènes étaient portés par la **même** paire de chromosomes, leur transmission serait liée et le rapport $9:3:3:1$ ne se vérifierait plus — ce cas de figure (les gènes liés) sort du programme de cette leçon.
 

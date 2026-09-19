@@ -392,7 +392,15 @@ items:
       - id: C
         text: "$1$ moins $\\frac{1}{16}$, soit $\\frac{15}{16}$ : il suffit de retirer du total la seule classe doublement récessive, la combinaison demandée occupant tout le reste de l'échiquier."
         correct: false
-        misconception: mc.svt.svt_transmission_caracteres.probabilites-combinees-mal-calculees
+        # RÉÉTIQUETÉ le 2026-09-19. Portait `probabilites-combinees-mal-calculees`,
+        # dont le registre dit « l'élève additionne 1/4 + 1/4, ou mélange une
+        # fraction de génotype avec une fraction de gamète ». Refaire le calcul de
+        # C : 1 − 1/16 ne fait ni l'un ni l'autre — il prend le complément d'une
+        # classe de l'échiquier pour une autre classe. C'est mot pour mot la fin
+        # de la description de `rapport-de-croisement-mal-attribue` (« classe
+        # dominante confondue avec la classe récessive »), et le retour de C ne
+        # parle lui-même que de classes.
+        misconception: mc.svt.svt_transmission_caracteres.rapport-de-croisement-mal-attribue
         feedback: >
           Le complément de la classe doublement récessive regroupe TROIS
           classes différentes : gris-longues, gris-vestigiales et
@@ -566,7 +574,7 @@ coverage_summary:
   per_misconception:
     mc.svt.svt_transmission_caracteres.genotype-phenotype-confondus:         { count: 4, items: [TC-1, TC-3, TC-5, TC-8] }
     mc.svt.svt_transmission_caracteres.dominance-mal-appliquee:              { count: 3, items: [TC-1, TC-2, TC-6] }
-    mc.svt.svt_transmission_caracteres.rapport-de-croisement-mal-attribue:   { count: 3, items: [TC-2, TC-3, TC-4] }
+    mc.svt.svt_transmission_caracteres.rapport-de-croisement-mal-attribue:   { count: 4, items: [TC-2, TC-3, TC-4, TC-6] }
     mc.svt.svt_transmission_caracteres.probabilites-combinees-mal-calculees: { count: 3, items: [TC-4, TC-6, TC-7] }
     mc.svt.svt_transmission_caracteres.test-cross-mal-compris:               { count: 3, items: [TC-5, TC-7, TC-8] }
   total_items: 8
@@ -578,7 +586,24 @@ coverage_summary:
     R3: 1
     R4: 2
     R5: 3
-  honest_state: >-
+  honest_state_2026_09_19: >-
     Les cinq misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Quatre y siègent EXACTEMENT (3 items) : la marge est nulle
-    et tout retrait d'item la casse.
+    plancher. Trois y siègent EXACTEMENT (3 items) : la marge est nulle et
+    tout retrait d'item la casse.
+    RÉSERVE — CINQ ÉTIQUETTES CONTESTÉES, NON TRANCHÉES ICI. La passe
+    fidélité n'a jamais tourné sur cette notion (l'agent s'est arrêté sur la
+    limite de session) : il n'y a donc PAS d'intersection entre deux
+    rapports, et un seul rapport ne suffit pas à déplacer une étiquette
+    quand la conséquence est un plancher. Les cinq, à arbitrer ensemble :
+    TC-6 B (« 1 », le possible pris pour le certain) et TC-7 B (« certitude
+    absolue », une conclusion probable prise pour une preuve) portent
+    `probabilites-combinees-mal-calculees` sans rien additionner ni mélanger
+    — si les deux bougent, la famille tombe à UN item (TC-4) ; TC-8 D et
+    cp-r3-disjonction D portent `genotype-phenotype-confondus` alors que
+    leur propre retour concède que l'élève n'a rien confondu ; TC-6 D porte
+    `dominance-mal-appliquee` pour un modèle (« le dominant est présent chez
+    TOUTE la descendance ») que la description de la famille ne couvre pas.
+    Le registre n'a AUCUNE famille pour « une conclusion probable prise pour
+    une preuve » ni pour « répondre au résultat quand on demande son
+    origine » : ces deux modèles sont réels et bac-productifs, et c'est une
+    décision d'auteur que de les ouvrir. Voir REVIEW-2026-09-19.md.

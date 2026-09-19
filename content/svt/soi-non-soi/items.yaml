@@ -257,10 +257,12 @@ items:
         correct: false
         misconception: mc.svt.svt_soi_non_soi.systemes-de-marqueurs-confondus
         feedback: >
-          Le partage du groupe ABO n'est pas systématique entre jumeaux
-          monozygotes pour la conclusion recherchée ici : ce qui rend le
-          risque de rejet quasi nul, c'est l'identité de leur CMH (issue d'un
-          patrimoine génétique identique), pas leur groupe sanguin.
+          Deux jumeaux monozygotes ont bien le même groupe ABO — la prémisse
+          est juste, c'est le lien de cause à effet qui ne tient pas. Si
+          l'identité ABO suffisait à écarter le rejet, n'importe quel inconnu
+          de même groupe ferait un aussi bon donneur : la leçon vient de
+          montrer le contraire. Ce qui rend le risque quasi nul, c'est
+          l'identité de leur CMH, issue d'un patrimoine génétique identique.
     correct_feedback: >
       Le CMH, et non le groupe sanguin ABO, gouverne le risque de rejet d'un
       greffon d'organe. Les vrais jumeaux, génétiquement identiques,
@@ -356,7 +358,7 @@ items:
         feedback: >
           C'est confondre l'absence de réaction immédiate avec une absence
           définitive de risque. Contrairement aux agglutinines du système
-          ABO (présentes dès la naissance), l'anticorps anti-D est un
+          ABO (présentes dès les premiers mois de la vie), l'anticorps anti-D est un
           anticorps « immun » : il n'apparaît qu'après une exposition à
           l'antigène D, et sa production prend du temps — ce qui explique
           l'absence de réaction visible lors de cette première exposition.
@@ -461,9 +463,14 @@ items:
   # 7 SOUS LE PLANCHER de 3 items du banc — donc inévaluables par le modèle
   # apprenant, quoi que fasse l'élève. Les six items ci-dessous sont écrits
   # pour combler exactement ce déficit, en restant dans le périmètre de
-  # lesson.md (chapitres R1 à R5) : aucune notion nouvelle, aucun auteur, aucun
-  # fait qui ne soit déjà enseigné plus haut. Après ajout, les sept
-  # misconceptions de la notion atteignent le plancher.
+  # lesson.md (chapitres R1 à R5) : aucune notion nouvelle, aucun auteur.
+  # RÉSERVE MESURÉE le 2026-09-19 : la note disait aussi « aucun fait qui ne
+  # soit déjà enseigné plus haut ». Grep refait sur la notion — c'est faux.
+  # SNS-12 introduit l'autogreffe et le grand brûlé, qui n'apparaissent nulle
+  # part dans lesson.md. La biologie de SNS-12 est juste et l'item reste ;
+  # c'est la NOTE qui était périmée. Deux issues pour l'auteur : introduire
+  # l'autogreffe en R5 (elle en est le contre-exemple implicite), ou assumer
+  # ce fait comme le seul apport du banc.
   - id: SNS-7
     rung: "R1"
     difficulty_level: 2
@@ -731,7 +738,15 @@ items:
       - id: C
         text: "La seconde transfusion a été mal appariée sur le système ABO, ce qui suffit à expliquer l'agglutination observée ; le facteur Rhésus n'intervient pas dans ce contraste entre les deux épisodes."
         correct: false
-        misconception: mc.svt.svt_soi_non_soi.mauvais-antigene-vise
+        # RÉÉTIQUETÉ le 2026-09-19. Portait `mauvais-antigene-vise`, dont le
+        # registre dit « on vérifie l'antigène du RECEVEUR au lieu de celui que
+        # porte le sang du DONNEUR » : l'élève qui coche C n'inverse rien, il
+        # rabat le Rhésus sur l'ABO. Le même raisonnement est déjà étiqueté
+        # `systemes-de-marqueurs-confondus` dans checkpoints.yaml (cp-r4-rhesus,
+        # choix C, « les deux poches sont de groupe O, le donneur universel »).
+        # Deux fichiers de la même notion ne peuvent pas nommer deux modèles
+        # différents pour la même erreur.
+        misconception: mc.svt.svt_soi_non_soi.systemes-de-marqueurs-confondus
         feedback: >
           L'énoncé précise que les deux transfusions sont de groupe O, comme
           la receveuse : l'appariement ABO est correct dans les deux cas.
@@ -848,20 +863,31 @@ coverage_summary:
     mc.svt.svt_soi_non_soi.tolerance-passive:               { count: 3, items: [SNS-1, SNS-7, SNS-9] }
     mc.svt.svt_soi_non_soi.reconnaissance-non-specifique:   { count: 5, items: [SNS-2, SNS-6, SNS-7, SNS-8, SNS-12] }
     mc.svt.svt_soi_non_soi.antigene-anticorps-confondus:    { count: 3, items: [SNS-2, SNS-8, SNS-9] }
-    mc.svt.svt_soi_non_soi.systemes-de-marqueurs-confondus: { count: 3, items: [SNS-3, SNS-4, SNS-5] }
-    mc.svt.svt_soi_non_soi.mauvais-antigene-vise:           { count: 3, items: [SNS-4, SNS-10, SNS-11] }
+    mc.svt.svt_soi_non_soi.systemes-de-marqueurs-confondus: { count: 4, items: [SNS-3, SNS-4, SNS-5, SNS-11] }
+    mc.svt.svt_soi_non_soi.mauvais-antigene-vise:           { count: 2, items: [SNS-4, SNS-10] }   # SOUS LE PLANCHER depuis le réétiquetage de SNS-11 C
     mc.svt.svt_soi_non_soi.anticorps-immun-vs-naturel:      { count: 3, items: [SNS-5, SNS-10, SNS-11] }
     mc.svt.svt_soi_non_soi.soi-modifie-devient-etranger:    { count: 3, items: [SNS-6, SNS-9, SNS-12] }
   total_items: 12
   floor: 3
-  floor_met: true
+  floor_met: false
+  under_covered:
+    - mc.svt.svt_soi_non_soi.mauvais-antigene-vise   # 2 items (2026-09-19)
   ramp_coverage:
     R1: 2
     R2: 2
     R3: 2
     R4: 4
     R5: 2
-  honest_state: >-
-    Les sept misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Six y siègent EXACTEMENT (3 items) : la marge est nulle
-    et tout retrait d'item la casse.
+  honest_state_2026_09_19: >-
+    SIX misconceptions sur sept atteignent le plancher ; la septième,
+    `mauvais-antigene-vise`, en a DEUX depuis que SNS-11 C a été rendu à la
+    famille que la notion elle-même emploie pour ce raisonnement. Le compte
+    dit 2, le drapeau dit `false` : rien n'a été recompté à l'envers pour
+    refermer l'écart. Il se comble en écrivant un item qui force vraiment
+    l'inversion donneur/receveur — un cas où l'élève doit décider quel côté
+    porte l'antigène et quel côté porte l'anticorps, sans que l'énoncé le
+    lui dise. DEUX ÉTIQUETTES CONTESTÉES ET NON TRANCHÉES ICI : SNS-9 D
+    (le critique propose une famille qui n'existe pas au registre — « le
+    statut d'antigène serait absolu » ; on DÉCLARE au lieu d'inventer) et
+    SNS-10 C, qui doit être arbitré en même temps que cp-r2-specificite D,
+    porteur du même raisonnement sous la même étiquette.

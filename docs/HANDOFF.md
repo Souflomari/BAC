@@ -4809,7 +4809,7 @@ Comme le §11.43, elle tourne en CI (validate-content --strict, 62 notions) sans
 jamais bloquer, et le sens « valeur qui ne résout pas » complète, pour les
 rungs, ce que la porte marqueur→cible fait déjà pour les figures (ADR 0031).
 
-### 11.45 La campagne de correction de contenu vague 1 — quarante-quatre notions triées (PC BOUCLÉ 25/25 ; MATHS BOUCLÉ), 578 correctifs objectifs, les bloquants consignés
+### 11.45 La campagne de correction de contenu vague 1 — quarante-sept notions triées (PC BOUCLÉ 25/25 ; MATHS BOUCLÉ ; SVT ouverte 3/11), 602 correctifs objectifs, les bloquants consignés
 
 **EN COURS (une notion à la fois, cadence critiques).** Après les portes
 d'intégrité (§11.43 figures orphelines, §11.44 rung↔titre), la vague-1
@@ -7436,10 +7436,19 @@ qu'elles sont justes.**
 
 ---
 
-### 11.86 Un cliquet que j'ai ROMPU exprès, et pourquoi il doit le rester
+### 11.86 Les cliquets que j'ai ROMPUS exprès, et pourquoi ils doivent le rester
 
-`couverture-diagnostique` compte désormais **deux** ruptures. Elles n'ont pas
+`couverture-diagnostique` compte désormais **quatre** ruptures. Elles n'ont pas
 le même statut, et il ne faut pas les re-sceller ensemble.
+
+> **Mise à jour du 2026-09-19 (fin d'arc).** Cette section en annonçait deux ;
+> la porte en affiche quatre. Les deux ajoutées sont miennes, du même jour, et
+> de la même famille que la première : un réétiquetage qui rend à un
+> distracteur la misconception que son propre retour décrit, et qui fait
+> retomber une famille sous le plancher. Elles sont décrites en 3 et 4
+> ci-dessous. Laisser la section dire « deux » pendant que la porte en dit
+> quatre aurait été exactement la faute que §11.88 raconte : un document qui
+> affirme un état que le dépôt ne porte pas.
 
 **1. `pc/aspects-energetiques` — misconceptions ÉVALUABLES : 22 → 21. C'est
 moi, le 2026-09-19, et c'est voulu.** Trois distracteurs portaient une étiquette
@@ -7470,9 +7479,33 @@ des imports hors cadre, pas des modèles du registre. L'arbitrage reste celui
 déjà consigné : écrire un item qui porte vraiment une misconception « noms des
 régimes », ou re-sceller à 6 **avec la raison écrite à côté des nulls**.
 
-> La règle qui se dégage de ces deux cas, et qui vaut pour tout cliquet :
+**3. `pc/atome-mecanique-newton` — misconceptions ÉVALUABLES : 19 → 18. C'est
+moi, le 2026-09-19, et c'est voulu.** AMN-27 D portait
+`ingredient-manquant-mal-identifie` alors que son propre retour écrit
+« L'ingrédient manquant est BIEN identifié, mais le mot "faux" est mal
+employé » — contradiction frontale. Rendu à
+`calcul-incomplet-confondu-avec-calcul-faux`, déjà la `primary` de l'item. La
+famille retombe à 2. Le résumé de couverture dit maintenant 2, `floor_met`
+dit `false`, et la famille est nommée dans `under_covered` — il a fallu un
+second passage pour ça, voir §11.88. Sortie : écrire l'item qui manque, ou
+retirer la ligne du registre.
+
+**4. `svt/soi-non-soi` — misconceptions ÉVALUABLES : 7 → 6. C'est moi, le
+2026-09-19, et c'est voulu.** SNS-11 C portait `mauvais-antigene-vise` (« on
+vérifie l'antigène du RECEVEUR au lieu de celui du DONNEUR ») pour un élève qui
+n'inverse rien : il rabat le Rhésus sur l'ABO. Le `checkpoints.yaml` de la même
+notion étiquette déjà ce raisonnement `systemes-de-marqueurs-confondus`. Rendu
+à cette famille ; `mauvais-antigene-vise` retombe à 2 (SNS-4, SNS-10). Sortie :
+écrire un item qui force vraiment l'inversion donneur/receveur — un cas où
+l'élève doit décider quel côté porte l'antigène et quel côté porte l'anticorps,
+sans que l'énoncé le lui dise.
+
+> La règle qui se dégage de ces quatre cas, et qui vaut pour tout cliquet :
 > **une ligne de base n'est un progrès que si ce qu'elle scelle est vrai.**
 > Re-sceller pour reverdir transforme un instrument de mesure en décor.
+> Corollaire découvert à la dure le même jour : **le cliquet ne dit pas
+> qu'une famille ÉTAIT évaluable — il dit qu'elle comptait trois étiquettes.**
+> Trois de ces quatre ruptures révèlent une couverture qui n'a jamais existé.
 
 ---
 
@@ -7507,3 +7540,113 @@ C'est §11.84 retournée contre moi : **une porte dont on ne lit pas le verdict 
 contrôle rien.** Depuis, la sortie va dans un fichier et c'est le **code de
 sortie** qui est testé avant tout commit — visible dans les commandes des
 derniers commits de l'arc.
+
+---
+
+### 11.88 La SVT ouverte : trois notions triées, et une TROISIÈME faute de ma part — j'avais gaté sur la mauvaise porte
+
+**Où en est la campagne.** Maths et PC sont bouclés. La SVT s'ouvre avec
+`soi-non-soi`, `role-enzymes` et `transmission-caracteres` — **47 notions sur
+62, 602 correctifs objectifs** (24 dans cet arc : 4 renvois nus qualifiés
+dans `transformations-deux-sens`, 1 résumé de couverture rendu honnête dans
+`atome-mecanique-newton`, 10 + 6 + 3 sur les trois notions SVT). Il reste 8 notions SVT et 12 philo.
+
+**Ce que la SVT change au protocole, mesuré avant d'attaquer.** Pas de
+`docs/sujets/svt/`, pas d'`exercises.yaml`, pas de `bank.yaml` sur aucune des
+onze notions. Les deux contrôles les plus productifs du corpus maths/PC — le
+recalcul des barèmes contre le relevé et la vérification des affirmations de
+fréquence d'examen — ne peuvent tout simplement pas tourner. Les trois notions
+triées ne portent d'ailleurs **aucune** affirmation de fréquence, ce qui est la
+bonne décision : on ne peut pas sourcer ce qu'on n'a pas. Le rendement se
+déplace vers trois classes : le **renvoi qui désigne le mauvais endroit**, le
+**faux universel démenti par la leçon elle-même**, et la **note d'auteur
+périmée**. Les trois notions en ont donné 18 correctifs.
+
+**Le motif le plus productif de la SVT, et il est nouveau : le renvoi
+« chapitre suivant » qui désigne en fait la LEÇON suivante.** `soi-non-soi` le
+fait deux fois, dans deux champs rendus. Le premier est dans le chapitre 3 et
+annonce que la production des anticorps « est le sujet du chapitre suivant » —
+le chapitre 4 est « Le CMH », qui n'en dit rien ; c'est la leçon voisine. Le
+second, dans le chapitre 6, envoie l'élève au chapitre 7, qui est « Pour
+t'entraîner ». Le corpus a pourtant une convention pour ça et l'emploie
+ailleurs (« la leçon précédente », trois occurrences vérifiées). **Le reste des
+citations de chapitre de la notion — une quarantaine — est juste**, ce qui rend
+ces deux-là des anomalies isolées, pas un décalage systématique.
+
+**Le second faux universel, et il se démentait tout seul à deux chapitres
+d'écart.** Deux retours de `soi-non-soi` disaient à l'élève que « le sang de
+groupe O passe chez tout le monde » / « O est d'ailleurs transfusable à tous »
+— le second à propos d'une donneuse **O+**, que la leçon interdit nommément
+(`lesson.md:163`). Et le chapitre 5 de la même notion présente ce raisonnement
+comme un **modèle faux NOMMÉ** (`cp-r4-rhesus` C, étiqueté
+`systemes-de-marqueurs-confondus`). L'élève lisait donc au chapitre 4 ce qu'on
+lui reprocherait au chapitre 5.
+
+**RÉSULTAT NÉGATIF — la citation de chapitre HORS BORNE n'existe pas.** Sonde
+écrite et passée sur les 62 leçons : 20 citations `chapitre N` dépassent le
+nombre de titres `## ` de leur propre leçon ; après résolution du nom de leçon
+cité dans la phrase, **il en reste zéro**. La classe est vide, et une porte qui
+la garderait serait verte sans rien mesurer. Deux pièges consignés parce qu'ils
+m'ont eu tous les deux : (a) j'ai d'abord filtré sur une ligne **tronquée à 160
+caractères**, ce qui a produit trois faux positifs dont le nom de leçon vivait
+au-delà de la troncature ; (b) chercher le nom de la leçon cible seulement
+APRÈS le numéro en rate autant qu'il en trouve (« dans « La vérité »
+(chapitre 9) » le nom précède). Un résolveur qui se trompe dans les deux sens
+ne peut pas garder une porte.
+
+**Ce que la sonde a quand même trouvé, et qui est réel.** `transformations-deux-sens`
+n'a que **5 chapitres**, et sa banque cite quatre fois « chapitre 5 » en
+voulant dire le chapitre 5 d'« Estérification et hydrolyse » — dont le test
+« flacon A contre flacon B », mot qui apparaît **zéro fois** dans la leçon
+hôte. L'élève était envoyé vers « Pour t'entraîner ». Les quatre renvois sont
+désormais qualifiés. La classe plus large — « renvoi nu dans un fichier qui
+mêle plusieurs leçons » — a été mesurée puis **abandonnée comme porte** : 51
+fichiers, plusieurs milliers d'occurrences, aucun discriminant. Le renvoi nu
+est la forme NORMALE de l'auto-référence.
+
+**MA TROISIÈME FAUTE DE L'ARC, et c'est §11.87 qui se répète d'un cran.** Au
+commit précédent j'avais réétiqueté AMN-27 D dans `atome-mecanique-newton`,
+fait retomber une famille de 3 à 2 items, et **écrit** la conséquence dans un
+commentaire — en ajoutant fièrement « les comptes ci-dessous n'ont PAS été
+retouchés pour masquer ça ». J'ai gaté le commit sur `validate-content` et sur
+`arithmetique-rendue`, tous deux verts. Je n'ai pas lancé
+`resume-couverture`, qui était **ROUGE** : `floor_met: true` avec une famille à
+2. J'avais donc poussé un résumé de couverture qui ment, en croyant faire le
+contraire.
+
+La leçon n'est pas « lancer plus de portes », c'est plus précis :
+**laisser un compte périmé n'est pas de l'honnêteté, c'est la même faute sous
+un autre nom.** « Je n'ai pas retouché les chiffres » sonne comme une vertu et
+décrit un fichier qui affirme un état faux. La forme honnête est celle que
+`aspects-energetiques` avait déjà : le compte dit la vérité (2),
+`floor_met` dit `false`, la famille est nommée dans `under_covered`, et un
+`honest_state` daté dit ce qu'il faut écrire pour combler. C'est maintenant
+appliqué à `atome-mecanique-newton` et à `soi-non-soi`, et la porte est verte
+sur les 62 notions.
+
+**Corollaire opératoire, à tenir :** *tout commit qui touche une étiquette
+`misconception:` gate aussi sur `resume-couverture`.* Le réétiquetage est
+exactement le geste qui déplace un compte, et `validate-content` ne le voit
+pas.
+
+**Un réétiquetage appliqué avec sa conséquence, un déclaré.** Dans
+`soi-non-soi`, SNS-11 C portait `mauvais-antigene-vise` (« on vérifie
+l'antigène du RECEVEUR au lieu de celui du DONNEUR ») pour un élève qui
+n'inverse rien : il rabat le Rhésus sur l'ABO. Le **même** raisonnement est
+déjà étiqueté `systemes-de-marqueurs-confondus` dans le `checkpoints.yaml` de
+la même notion. Deux fichiers d'une même notion ne peuvent pas nommer deux
+modèles pour une seule erreur : c'est la preuve interne la plus forte
+disponible, et elle se vérifie seule. Appliqué ; la famille tombe à 2 et c'est
+écrit partout. En revanche SNS-9 D est **déclaré, pas déplacé** : la famille
+que le critique propose (« le statut d'antigène serait absolu ») n'existe pas
+au registre, et on ne tranche pas en inventant une troisième réponse.
+
+**Et une notion à re-passer, dite comme telle.** Sur
+`transmission-caracteres`, la passe fidélité s'est arrêtée sur la limite de
+session avant d'émettre son rapport. Il n'y a donc **pas d'intersection entre
+deux rapports** — et cinq étiquettes contestées, dont quatre feraient tomber
+une famille sous le plancher, sont restées **non tranchées**, déclarées dans
+un `honest_state` daté et dans la revue. Seule celle qui ne franchit aucun
+plancher et dont le registre porte déjà la bonne famille (TC-6 C, `15/16`, une
+classe de l'échiquier prise pour une autre) a été appliquée. Un rapport unique
+ne suffit pas quand la conséquence est un plancher.

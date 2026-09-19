@@ -33,7 +33,7 @@ skill_code: svt_soi_non_soi
 # jamais la seule option à ne pas sur-affirmer (voir docs/audits/
 # indice-longueur.md et docs/audits/indice-absolu.md).
 #
-# Garde de périmètre : 2ème Bac SVT/PC — soi et non-soi, antigène et anticorps,
+# Garde de périmètre : 2ème Bac, filière SVT — soi et non-soi, antigène et anticorps,
 # spécificité, CMH/HLA, groupes sanguins ABO et Rhésus, formes du non-soi
 # (agents pathogènes, greffons, soi modifié). Aucun mécanisme de la réponse
 # immunitaire (lymphocytes, mémoire, coopération cellulaire) n'est requis ici :
@@ -97,7 +97,7 @@ checkpoints:
           Modèle détecté : remplacer la reconnaissance moléculaire par une
           réaction à l'étrangeté en général. Si l'origine suffisait, aucune
           transfusion ne serait jamais possible entre deux personnes — or le
-          sang de groupe O passe chez tout le monde (chapitre 5), et une greffe
+          sang de groupe O- passe chez tout le monde (chapitre 5), et une greffe
           entre vrais jumeaux ne déclenche aucun rejet (chapitre 4). Ce n'est
           donc pas l'origine qui compte, mais les molécules exposées.
 
@@ -297,8 +297,8 @@ checkpoints:
         correct: true
         feedback: |
           Oui, et les deux moitiés de cette réponse comptent. Le groupe sanguin
-          O+ de la sœur ne la disqualifie pas (il concerne un autre système, et
-          O est d'ailleurs transfusable à tous) ; ce qui la rend prometteuse,
+          O+ de la sœur ne la disqualifie pas (il concerne un autre système ;
+          et au sens ABO, O ne porte aucun agglutinogène) ; ce qui la rend prometteuse,
           c'est l'hérédité du CMH — une fratrie partage en moyenne davantage
           d'allèles qu'un inconnu. Mais « davantage en moyenne » n'est pas
           « identique » : seuls les vrais jumeaux le sont, d'où le typage HLA
@@ -330,7 +330,7 @@ checkpoints:
   # ════════════════════════════════════════════════════════════════
   # CP-4 | id: cp-r4-rhesus | posé APRÈS le chapitre 5
   #        Porte de rupture : anticorps immun contre anticorps naturel. Reprend
-  #        la forme de SNS-6 avec un scénario neuf (une deuxième transfusion).
+  #        la forme de SNS-5 avec un scénario neuf (une deuxième transfusion).
   #        Sonde anticorps-immun-vs-naturel.
   # ════════════════════════════════════════════════════════════════
 

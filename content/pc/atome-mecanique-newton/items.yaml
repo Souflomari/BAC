@@ -2179,8 +2179,14 @@ coverage_summary:
   # employé ». Contradiction frontale ; réétiquetée vers
   # `calcul-incomplet-confondu-avec-calcul-faux`, déjà la primary de l'item.
   # CONSÉQUENCE ASSUMÉE : `ingredient-manquant-mal-identifie` retombe de 3 à 2
-  # items, sous le plancher. Les comptes ci-dessous n'ont PAS été retouchés
-  # pour masquer ça. Il faut un item de plus, ou retirer la ligne du registre.
+  # items, sous le plancher. Le compte ci-dessous DIT 2, `floor_met` dit
+  # `false`, et la famille est listée dans `under_covered` — c'est la seule
+  # forme honnête. (Correction du 2026-09-19, même journée : la première
+  # version de cette réserve disait « les comptes n'ont PAS été retouchés »
+  # et laissait 3 et `floor_met: true` en place. Laisser un compte périmé
+  # n'est pas de l'honnêteté, c'est la même faute sous un autre nom : la
+  # porte `resume-couverture` est passée ROUGE et elle avait raison.)
+  # Il faut un item de plus, ou retirer la ligne du registre.
   #
   # Deux autres étiquettes sont contestées (AMN-24 D, AMN-25 D) mais les DEUX
   # rapports proposent des familles d'accueil DIFFÉRENTES, et aucune ne décrit
@@ -2206,7 +2212,7 @@ coverage_summary:
     mc.physics.pc_atome_mecanique_newton.energie-atome-continue-non-quantifiee: 3
     mc.physics.pc_atome_mecanique_newton.force-electrostatique-mal-identifiee: 3
     mc.physics.pc_atome_mecanique_newton.formule-orbite-non-adaptee-Z: 3
-    mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie: 3
+    mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie: 2   # SOUS LE PLANCHER — voir la réserve en tête de ce bloc
     mc.physics.pc_atome_mecanique_newton.mecanisme-arret-effondrement-mal-compris: 3
     mc.physics.pc_atome_mecanique_newton.norme-acceleration-mcu-non-constante: 3
     mc.physics.pc_atome_mecanique_newton.rapport-forces-dependrait-de-r: 3
@@ -2229,8 +2235,15 @@ coverage_summary:
     mc.physics.pc_atome_mecanique_newton.rapport-forces-dependrait-de-r: 1
     mc.physics.pc_atome_mecanique_newton.trajectoire-elliptique-supposee-necessaire: 1
   floor: 3
-  floor_met: true
-  under_covered: []   # aucun : les 19 modèles déclarés atteignent le plancher
+  floor_met: false
+  under_covered:
+    - mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie   # 2 items depuis le réétiquetage d'AMN-27 D (2026-09-19)
+  honest_state_2026_09_19: >
+    18 des 19 modèles déclarés atteignent le plancher de 3 items. Le
+    dix-neuvième — `ingredient-manquant-mal-identifie` — en a 2 depuis que
+    AMN-27 D a été rendu à la famille que son propre retour décrit. Rien
+    n'a été recompté à l'envers pour refermer l'écart : il se comble en
+    écrivant un item, pas en changeant un nombre.
   untagged_distractors: 4   # « misconception: null » assumés (glissement d'arithmétique, sans modèle stable)
   ramp_coverage:
     R0: 3
