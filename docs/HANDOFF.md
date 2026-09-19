@@ -8021,11 +8021,23 @@ barreaux, y compris à zéro ») à l'échelle du dépôt, plutôt que notion pa
 notion. Sonde : comparer, pour chaque notion, les titres `## R<n>` de la leçon,
 les `rung:` bruts des items, et les clés du `ramp_coverage`.
 
-**La convention, dite une fois pour toutes.** Deux barreaux sont exemptés,
-parce qu'ils n'ont jamais d'item par construction : **R0** (l'accroche) et le
-**dernier chapitre « Pour t'entraîner »**. Tout AUTRE barreau d'enseignement
-muet doit porter son zéro. Sans cette convention, la sonde signale les 11
-notions SVT et ne trie rien ; avec elle, elle isole les cas réels.
+**⚠ RÉTRACTÉ LE MÊME JOUR — §11.97.** Ce paragraphe posait « une convention,
+dite une fois pour toutes » : R0 et le dernier chapitre « Pour t'entraîner »
+seraient exemptés « parce qu'ils n'ont jamais d'item par construction ». **La
+justification est fausse, et elle était mesurable en une commande.** Sur les 62
+notions, **51 portent au moins un item à R0 et 50 au dernier barreau**. Loin
+d'être vides par construction, ces deux barreaux sont servis dans la grande
+majorité du corpus — ce qui rend leur zéro, quand il arrive, d'autant plus
+informatif. La « convention » n'était pas une convention : c'était une règle
+inventée pour faire taire une sonde qui gênait, et elle m'a fait classer « faux
+positif » un constat JUSTE de deux critiques. Les onze notions SVT portent
+désormais leurs deux comptes. Voir §11.97 pour la porte qui rend le cas
+impossible à réintroduire.
+
+> La leçon, et elle est plus large que ce paragraphe : **quand une sonde
+> signale onze cas d'un coup, la tentation est d'inventer l'exemption qui les
+> fait tomber.** Le réflexe juste est l'inverse — MESURER la prémisse de
+> l'exemption avant de l'écrire. Ici, une boucle de trois lignes suffisait.
 
 **Trois notions avaient un barreau d'ENSEIGNEMENT muet et tu.** Deux sont
 écrites maintenant :
@@ -8059,3 +8071,93 @@ reste une décision d'auteur.
 > Ce que ça ajoute à §11.91 : **une affirmation peut être littéralement vraie et
 > quand même désinformer.** « Pas de table `per_rung` » était vrai ; ce que le
 > lecteur en tirait — « rien à vérifier ici » — était faux.
+
+---
+
+### 11.97 La table de barreaux qui ne décrivait pas sa leçon — et la porte qui ne regardait que 4 notions sur 62
+
+Cette fiche commence par une rétractation, parce que le défaut est le mien.
+§11.96 avait posé « une convention, dite une fois pour toutes » : R0 et le
+dernier chapitre « Pour t'entraîner » seraient exemptés d'un `ramp_coverage`
+« parce qu'ils n'ont jamais d'item par construction ». Deux critiques de la
+vague 1 avaient signalé l'omission sur deux notions de géologie ; j'ai écrit,
+dans deux revues datées, que leur constat était un **faux positif**.
+
+La prémisse était fausse et se mesurait en trois lignes :
+
+```
+for f in content/*/*/items.yaml; do d=$(dirname $f);
+  L=$(grep "^## R" $d/lesson.md | tail -1 | grep -o "R[0-9]*" | head -1);
+  grep -q 'rung: "R0"' $f && echo R0; grep -q "rung: \"$L\"" $f && echo LAST;
+done | sort | uniq -c        # → 51 R0, 50 LAST, sur 62 notions
+```
+
+**51 notions sur 62 portent au moins un item à R0, et 50 au dernier barreau.**
+Ces deux barreaux sont servis dans la grande majorité du corpus. Leur zéro,
+quand il arrive, n'est donc pas une fatalité de structure : c'est un état de la
+notion, et c'est exactement ce qu'une table doit montrer.
+
+> **La leçon, plus large que le cas.** Quand une sonde signale onze cas d'un
+> coup, la tentation est d'inventer l'exemption qui les fait tomber — ça
+> ressemble à du tri, ça se raconte comme du discernement. Le réflexe juste est
+> l'inverse : **mesurer la prémisse de l'exemption avant de l'écrire.** C'est la
+> même faute que §11.88 sous une autre forme — là je laissais un compte périmé,
+> ici j'invente la règle qui rend le compte inutile.
+
+**Ce que la sonde a trouvé une fois écrite correctement.** Elle a dû être
+réécrite trois fois, et chaque réécriture a retiré des faux positifs qui
+étaient les miens, pas ceux du corpus :
+
+1. premier jet — comptait les `rung: "Rn"` **présents dans les commentaires
+   YAML** (mes propres notes « RE-BARREAUDÉ : portait `rung: "R2"` » se
+   comptaient comme des items). Deux notions déclarées « comptes faux » à tort ;
+2. deuxième jet — ne lisait pas les valeurs suivies d'un `# commentaire`, et ne
+   reconnaissait que les titres `## R<n>`, pas les `### R<n>`. Quatre notions
+   déclarées fausses à tort ;
+3. troisième jet — ne cherchait que la clé `ramp_coverage`. Or **57 notions
+   écrivent cette table sous ce nom, 4 sous le nom `per_rung`**. Quatre notions
+   déclarées « sans table » alors qu'elles en ont une.
+
+État réel, après les trois corrections : **15 notions sur 62**, en trois
+familles nettes — 11 SVT qui omettaient R0 et leur dernier barreau (les deux
+vrais zéros), 3 qui déclarent un barreau sans titre, 1 sans aucune table.
+
+**La porte existait déjà, et elle ne servait à rien.** `validate-content`
+portait depuis le 2026-09-19 un contrôle du barreau fantôme. Il lisait
+`coverage_summary.per_rung` — donc **4 notions sur 62**, et se taisait sur les
+57 autres. Et il n'émettait qu'un `⚠` : il ne pouvait, par construction, rien
+faire échouer. Son vert ne disait pas « conforme », il disait « pas regardé ».
+C'est ADR 0031 dans les deux sens à la fois : la PORTÉE d'un mécanisme se
+mesure séparément de son fonctionnement, et une porte qui ne peut pas devenir
+rouge n'est pas une porte.
+
+**Ce qui est armé maintenant.** Les deux noms de clé sont lus. Trois choses
+font ÉCHOUER : aucune table alors que la notion a des items ; un chapitre
+`## R<n>` absent de la table ; un compte déclaré qui ne vaut pas le nombre
+d'items réellement tagués à ce barreau.
+
+Le barreau fantôme reste une **dette déclarée**, nominative et datée, parce que
+son remède est éditorial et non mécanique : coder le titre voisin ferait tomber
+les signalements à zéro en rangeant trois problèmes de Bayes sous un chapitre
+« variable aléatoire » et cinq questions de tableau de signes sous un chapitre
+« fonction réciproque » (§11.69). **Le ratchet joue dans les deux sens** : une
+notion hors liste qui déclare un barreau fantôme échoue, et une entrée de la
+liste qui ne correspond plus à rien échoue aussi, pour qu'on vienne la retirer.
+Sans ce second sens, la liste serait le tapis sous lequel glisser les cas neufs.
+
+Quatre essais rouges, puis vert : barreau retiré de la table → rouge ; compte
+faussé → rouge ; barreau fantôme hors dette → rouge ; entrée de dette périmée →
+rouge. Restauré : 0 échec sur 62.
+
+**Piège de méthode, à ne pas refaire.** Les essais rouges ont été joués avec
+`git checkout --` pour restaurer — sur du travail NON COMMITTÉ. Le dernier
+`checkout` a effacé la porte elle-même et les deux comptes que je venais
+d'écrire. Rien n'a été perdu définitivement (tout a été refait), mais la règle
+est simple : **committer avant de jouer un essai rouge**, ou restaurer depuis
+une copie, jamais depuis l'index.
+
+**Trouvé en passant, sans le chercher :** cinq notions PC logent une `note:` en
+prose DANS la table de barreaux ; la porte ne lit que les clés en forme de code
+de barreau. Et `philo/analyse-de-texte` était la seule notion des 62 sans
+aucune table, sous aucun des deux noms — elle en a une maintenant, recomptée
+depuis les tags bruts (3+8+6+7+6+16+3+0 = 49).
