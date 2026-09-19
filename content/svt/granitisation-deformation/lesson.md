@@ -12,7 +12,7 @@ Voici le problème. Cette roche a de gros cristaux bien formés, visibles sans l
 
 [[checkpoint:cp-r0-predict]]
 
-Ce n'est pas une devinette gratuite. Répondre correctement demande de comprendre tout un enchaînement : ce qui arrive à une roche enfouie de plus en plus profondément dans une chaîne de collision — la même chaîne de collision que tu as étudiée au chapitre précédent, avec son épaississement crustal et ses roches métamorphiques. Deux questions vont porter cette leçon de bout en bout :
+Ce n'est pas une devinette gratuite. Répondre correctement demande de comprendre tout un enchaînement : ce qui arrive à une roche enfouie de plus en plus profondément dans une chaîne de collision — la même chaîne de collision que tu as étudiée dans la leçon précédente, avec son épaississement crustal et ses roches métamorphiques. Deux questions vont porter cette leçon de bout en bout :
 
 **Pourquoi la même compression plie la roche à un endroit et la casse net à un autre ?**
 

@@ -10,7 +10,7 @@ $$CH_3COOH + C_2H_5OH \rightleftharpoons CH_3COOC_2H_5 + H_2O$$
 
 Et il a buté sur deux murs. Le premier : c'est **lent** — plusieurs jours à température ambiante pour atteindre l'état final. Le second, plus frustrant encore : c'est **limité** — même en attendant indéfiniment, il ne convertit qu'environ deux tiers de son acide en ester ($\tau \approx 2/3$), parce que la réaction inverse, l'hydrolyse, ronge une partie de ce qu'il produit. La double flèche de l'équation dit exactement ça : tout seul, ça n'ira jamais jusqu'au bout.
 
-Le chapitre précédent lui a donné des leviers pour déplacer cet équilibre sans le résoudre (verser un réactif en excès, éliminer l'eau au fur et à mesure). Ce chapitre-ci en ouvre un tout autre, plus radical : **et si on remplaçait carrément l'un des ingrédients par un cousin plus réactif ?**
+La leçon précédente lui a donné des leviers pour déplacer cet équilibre sans le résoudre (verser un réactif en excès, éliminer l'eau au fur et à mesure). Ce chapitre-ci en ouvre un tout autre, plus radical : **et si on remplaçait carrément l'un des ingrédients par un cousin plus réactif ?**
 
 Voici l'idée qu'on va tester. Au lieu de partir de l'acide éthanoïque, on part de son **anhydride** — une molécule de la même famille, mais bien plus mordante. Avant de lire la suite, prends position. En remplaçant l'acide par son anhydride, à ton avis :
 

@@ -544,7 +544,7 @@ Avant de te lancer, un point de bascule que le sujet exige : relier la forme alg
 
 [[checkpoint:cp-bac-exponentielle]]
 
-### Ce que ces exercices empruntent au chapitre suivant
+### Ce que ces exercices empruntent à la leçon suivante
 
 Ce chapitre-ci enseigne le socle **algébrique** : forme algébrique, conjugué, module, géométrie du plan complexe. Un sujet national mobilise presque toujours, en plus, des outils du chapitre **« Nombres complexes — forme trigonométrique et applications »** — et il vaut mieux le savoir avant de buter dessus que de croire les avoir oubliés :
 

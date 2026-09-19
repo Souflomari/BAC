@@ -4,7 +4,7 @@
 
 ## R0 — Accroche : défaire ce que ln a fait
 
-Rappelle-toi ce qu'on a établi à la toute fin du chapitre précédent (chapitre 6) : $\ln$ réalise une bijection de $]0,+\infty[$ vers $\mathbb{R}$ tout entier. Concrètement, ça veut dire : pour **tout** réel $k$, l'équation $\ln(x) = k$ admet une unique solution $x \in\, ]0,+\infty[$.
+Rappelle-toi ce qu'on a établi à la toute fin de la leçon précédente (son chapitre 6) : $\ln$ réalise une bijection de $]0,+\infty[$ vers $\mathbb{R}$ tout entier. Concrètement, ça veut dire : pour **tout** réel $k$, l'équation $\ln(x) = k$ admet une unique solution $x \in\, ]0,+\infty[$.
 
 C'est un résultat puissant — existence et unicité, jamais deux solutions, jamais aucune. Mais regarde bien ce qu'il ne te donne pas : il ne te dit pas **qui** est ce $x$. Pour $k=1$, tu as déjà résolu le problème en donnant un nom à la solution : $x=e$. Mais pour $k=2$ ? Pour $k=-3$ ? Pour $k=100$ ? Tu sais que la solution existe, et qu'elle est unique — mais tu n'as, pour l'instant, aucun moyen de l'écrire autrement que « le nombre dont le logarithme vaut $k$ ».
 

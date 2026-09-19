@@ -4,7 +4,7 @@
 
 ## R0 — Accroche : la teinte qui apparaît, minute après minute
 
-Rappelle-toi la réaction du chapitre précédent : les ions peroxodisulfate $S_2O_8^{2-}$ et les ions iodure $I^-$ réagissent lentement pour donner des ions sulfate et du diiode $I_2$ — une espèce qui colore la solution d'une teinte jaune-brune de plus en plus marquée. Tu as utilisé cette teinte pour UNE SEULE chose : chronométrer la durée totale de la transformation. 40 minutes à température ambiante, 6 minutes à $50\,^\circ\text{C}$. Un chronomètre, un nombre, un point final.
+Rappelle-toi la réaction de la leçon précédente : les ions peroxodisulfate $S_2O_8^{2-}$ et les ions iodure $I^-$ réagissent lentement pour donner des ions sulfate et du diiode $I_2$ — une espèce qui colore la solution d'une teinte jaune-brune de plus en plus marquée. Tu as utilisé cette teinte pour UNE SEULE chose : chronométrer la durée totale de la transformation. 40 minutes à température ambiante, 6 minutes à $50\,^\circ\text{C}$. Un chronomètre, un nombre, un point final.
 
 Mais si, au lieu d'attendre la fin, tu mesurais l'intensité de cette teinte minute après minute, dès l'instant où tu mélanges les réactifs — et que tu portais chaque mesure sur un graphique, avec le temps en abscisse et la quantité de diiode formé en ordonnée ?
 
@@ -14,9 +14,9 @@ Avant de lire la suite, prends position, en une phrase : à quoi ressemblerait c
 
 [[figure:prediction-avancement]]
 
-Voici ce qu'on observe réellement, si on prend une mesure toutes les minutes : la courbe ne monte JAMAIS à rythme constant. Elle grimpe vite dès les premières minutes, puis ralentit sans cesse, et devient quasiment horizontale largement avant la « fin » que tu chronométrais dans le chapitre précédent. Si tu avais prédit une droite, l'écart avec cette observation est justement ce qu'on va comprendre. Si tu avais deviné le ralentissement, la vraie question commence maintenant : comment transformer cette courbe en un nombre précis — une vitesse, à un instant donné, exprimée dans une unité — plutôt qu'une impression visuelle de « ça ralentit » ?
+Voici ce qu'on observe réellement, si on prend une mesure toutes les minutes : la courbe ne monte JAMAIS à rythme constant. Elle grimpe vite dès les premières minutes, puis ralentit sans cesse, et devient quasiment horizontale largement avant la « fin » que tu chronométrais dans la leçon précédente. Si tu avais prédit une droite, l'écart avec cette observation est justement ce qu'on va comprendre. Si tu avais deviné le ralentissement, la vraie question commence maintenant : comment transformer cette courbe en un nombre précis — une vitesse, à un instant donné, exprimée dans une unité — plutôt qu'une impression visuelle de « ça ralentit » ?
 
-C'est exactement la promesse du chapitre précédent : mesurer une grandeur physique liée à l'avancement de la réaction, minute après minute, pour en tirer une vitesse chiffrée. C'est l'objet de cette leçon : comment suivre une transformation dans le temps, comment construire et lire sa courbe d'avancement $x(t)$, comment en extraire une vitesse volumique de réaction à n'importe quel instant, et comment repérer un repère de durée particulier, le temps de demi-réaction.
+C'est exactement la promesse de la leçon précédente : mesurer une grandeur physique liée à l'avancement de la réaction, minute après minute, pour en tirer une vitesse chiffrée. C'est l'objet de cette leçon : comment suivre une transformation dans le temps, comment construire et lire sa courbe d'avancement $x(t)$, comment en extraire une vitesse volumique de réaction à n'importe quel instant, et comment repérer un repère de durée particulier, le temps de demi-réaction.
 
 ---
 

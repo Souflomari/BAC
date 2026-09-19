@@ -20,7 +20,7 @@ La réponse mesurée dans ce genre de population est saisissante : **environ 1 p
 
 Comment un seul chiffre observable — la fréquence des malades, 1 sur 10 000 — permet-il de calculer un chiffre qu'on n'observe jamais directement — la fréquence des porteurs, 1 sur 50 ? Ce n'est pas une estimation approximative ni une moyenne nationale mémorisée : c'est un calcul, qui repose sur un raisonnement précis, applicable à n'importe quelle maladie récessive et n'importe quelle population.
 
-C'est exactement l'outil que cette leçon construit, pièce par pièce : passer d'un individu (ce que tu savais déjà faire depuis les deux chapitres précédents) à une **population entière**, en donnant un sens précis et calculable à des mots comme « fréquence d'un allèle ». À la fin, on referme cette question, et le 1 sur 50 n'aura plus rien de mystérieux.
+C'est exactement l'outil que cette leçon construit, pièce par pièce : passer d'un individu (ce que tu savais déjà faire depuis les deux leçons précédentes) à une **population entière**, en donnant un sens précis et calculable à des mots comme « fréquence d'un allèle ». À la fin, on referme cette question, et le 1 sur 50 n'aura plus rien de mystérieux.
 
 ---
 

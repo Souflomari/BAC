@@ -1208,6 +1208,55 @@ for (const dir of dirs) {
     }
   }
 
+  // ── §11.89 Le renvoi RELATIF qui sort de la leçon ───────────────────────
+  //    « chapitre précédent » écrit DANS le premier chapitre, ou « chapitre
+  //    suivant » écrit DANS le dernier : le référent n'existe pas. Dans les
+  //    douze cas trouvés au balayage du 2026-09-19, l'auteur voulait toujours
+  //    dire la LEÇON voisine — mais l'élève lit « chapitre » contre le rail de
+  //    la leçon courante, qui affiche « Chapitre n / N ». Deux d'entre eux
+  //    étaient la PREMIÈRE phrase que l'élève lit (`fonction-exponentielle`,
+  //    `suivi-temporel-vitesse`), un autre un TITRE de section
+  //    (`nombres-complexes-1`). Le corpus a déjà la formule juste et l'emploie
+  //    ailleurs : « la leçon précédente / suivante ».
+  //
+  //    ÉCHEC, et sans risque de faux positif possible : la porte ne juge pas le
+  //    SENS du renvoi, seulement l'existence de sa cible. Un chapitre 0, ou un
+  //    chapitre N+1, n'a aucune lecture correcte.
+  //
+  //    PORTÉE : `lesson.md` seul. Les sidecars n'ont pas de position dans la
+  //    leçon, donc « chapitre suivant » y est déjà ambigu pour une autre
+  //    raison — c'est une autre porte, non armée.
+  {
+    const lignes = md.split("\n");
+    let dansComm = false, chap = 0;
+    const titres = lignes.filter((l) => l.startsWith("## ")).length;
+    const REL = /chapitres?\s+(suivant|pr[ée]c[ée]dent)/gi;
+    lignes.forEach((l, i) => {
+      // les blocs <!-- … --> de lesson.md sont des notes d'auteur : hors portée
+      if (l.includes("<!--")) dansComm = true;
+      const finComm = l.includes("-->");
+      if (l.startsWith("## ")) chap++;
+      if (!dansComm) {
+        REL.lastIndex = 0;
+        let m;
+        while ((m = REL.exec(l))) {
+          const vers = m[1].toLowerCase().startsWith("suiv") ? chap + 1 : chap - 1;
+          if (vers < 1 || vers > titres) {
+            console.error(
+              `  ✗ ${dir}: lesson.md:${i + 1} « ${m[0]} » est écrit dans le chapitre ` +
+                `${chap}/${titres} — il vise le chapitre ${vers}, qui n'existe pas. ` +
+                `Si c'est la LEÇON voisine qui est visée, écris-le : « la leçon ` +
+                `précédente » / « la leçon suivante » (l'élève lit « chapitre » ` +
+                `contre le rail « Chapitre n / N » de la leçon courante).`
+            );
+            dirFail++;
+          }
+        }
+      }
+      if (finComm) dansComm = false;
+    });
+  }
+
   // ── §11.67 L'IDENTIFIANT INTERNE dans un champ rendu ────────────────────
   //    Même famille que la porte ci-dessus, autre objet : au lieu de pointer
   //    une note invisible, le texte pointe une ENTRÉE ou un ITEM par sa clé

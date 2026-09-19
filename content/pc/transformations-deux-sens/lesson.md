@@ -134,8 +134,8 @@ $$NH_3 + H_2O \rightleftharpoons NH_4^+ + HO^-$$
 - Une transformation est **totale** quand, une fois que plus rien ne change, au moins un réactif de départ est devenu indétectable (le réactif limitant a réellement disparu) - flèche simple $\rightarrow$.
 - Une transformation est **limitée (non totale)** quand chaque réactif de départ reste détectable indéfiniment, aux côtés des produits formés - double flèche $\rightleftharpoons$. « Limitée » ne veut pas dire « rien ne s'est passé » : une quantité réelle de produit s'est bel et bien formée.
 - La double flèche ne dit rien sur la vitesse de la réaction : rapide/lente et totale/limitée sont deux questions indépendantes.
-- Pour une transformation non totale, le sens qui domine au départ dépend de la composition initiale du mélange - pas d'une propriété fixe de la réaction. Ce même critère sera rendu précis, par le calcul, dans le chapitre suivant.
-- Enfin, « pouvoir se produire dans les deux sens » ne dit pas encore *jusqu'où* : une transformation réversible peut être nettement limitée, ou au contraire presque totale (il ne reste alors qu'une trace infime de réactifs). Ce degré se quantifiera au chapitre suivant - et les réactions qu'on traite comme presque totales, on les écrit alors souvent avec une flèche simple $\rightarrow$, même si en toute rigueur elles restent réversibles.
+- Pour une transformation non totale, le sens qui domine au départ dépend de la composition initiale du mélange - pas d'une propriété fixe de la réaction. Ce même critère sera rendu précis, par le calcul, dans la leçon suivante.
+- Enfin, « pouvoir se produire dans les deux sens » ne dit pas encore *jusqu'où* : une transformation réversible peut être nettement limitée, ou au contraire presque totale (il ne reste alors qu'une trace infime de réactifs). Ce degré se quantifiera dans la leçon suivante - et les réactions qu'on traite comme presque totales, on les écrit alors souvent avec une flèche simple $\rightarrow$, même si en toute rigueur elles restent réversibles.
 
 [[figure:avancement-limite]]
 

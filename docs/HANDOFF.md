@@ -7650,3 +7650,68 @@ un `honest_state` daté et dans la revue. Seule celle qui ne franchit aucun
 plancher et dont le registre porte déjà la bonne famille (TC-6 C, `15/16`, une
 classe de l'échiquier prise pour une autre) a été appliquée. Un rapport unique
 ne suffit pas quand la conséquence est un plancher.
+
+---
+
+### 11.89 Le renvoi relatif qui sort de la leçon — douze sites, une porte qui ne peut pas se tromper
+
+**Trouvé en SVT, vrai partout.** `soi-non-soi` écrivait deux fois « le chapitre
+suivant » pour désigner la **leçon** suivante (§11.88). En balayant le motif sur
+les 62 leçons : **202 renvois relatifs**, dont **13 dont la cible ne peut pas
+exister** — un « chapitre précédent » écrit dans le chapitre 1, ou un
+« chapitre suivant » écrit dans le dernier. Douze sont dans de la prose rendue,
+un seul dans un bloc de notes d'auteur.
+
+**Pourquoi ça compte plus que ça n'en a l'air.** L'élève ne lit pas
+« chapitre » comme un mot vague : la page lui affiche « Chapitre n / N » et un
+rail numéroté. Un « chapitre précédent » dans le chapitre 1 l'envoie donc vers
+rien. Et les trois sites les plus coûteux sont exactement ceux qu'on ne voudrait
+pas rater :
+
+- **`fonction-exponentielle/lesson.md:7`** — la PREMIÈRE phrase de la leçon :
+  « Rappelle-toi ce qu'on a établi à la toute fin du chapitre précédent
+  (chapitre 6) ». Le chapitre 6 de CETTE leçon ne parle pas de la bijection de
+  $\ln$ ; c'est le chapitre 6 de la leçon précédente.
+- **`suivi-temporel-vitesse/lesson.md:7`** — également la première phrase, et
+  la notion en porte **trois** occurrences.
+- **`nombres-complexes-1/lesson.md:547`** — un **titre de section** :
+  « Ce que ces exercices empruntent au chapitre suivant ».
+
+Les douze sont réécrits en « la leçon précédente / suivante » — la formule que
+le corpus emploie déjà ailleurs, et qui était donc disponible.
+
+**La porte (§11.89, dans `validate-content`).** Elle ne juge pas le SENS du
+renvoi : elle vérifie seulement que sa cible existe. Un chapitre 0, ou un
+chapitre N+1, n'a **aucune lecture correcte** — le faux positif est impossible
+par construction, ce qui est ce qui la rend armable d'un coup sur tout le
+corpus. Portée : `lesson.md` seul, blocs `<!-- … -->` exclus (notes d'auteur).
+Les sidecars n'ont pas de position dans la leçon : « chapitre suivant » y est
+ambigu pour une autre raison, et c'est une autre porte, **non armée** — dit ici
+pour que le vert de celle-ci ne soit pas lu plus large qu'il n'est.
+
+**Vérifiée ROUGE dans les DEUX directions**, puis remise au vert :
+réinjection d'un « chapitre précédent » dans le chapitre 1 de
+`granitisation-deformation` (ROUGE), et d'un « chapitre suivant » ajouté après
+le dernier titre de `fonction-logarithme` (ROUGE). Ce second test vaut double :
+il tombe **après** le gros bloc de notes d'auteur de ce fichier, et prouve donc
+que l'exclusion des commentaires se **referme** — une exclusion qui ne se
+referme pas est exactement ce qui rend une porte verte en silence (§11.84).
+
+**Deux notes d'auteur fausses, trouvées par la même passe.** Le balayage des
+affirmations de trou (« zéro occurrence », « n'apparaît nulle part »,
+« grep vérifié ») donne 65 lignes, dont l'écrasante majorité sont de la prose
+légitime (« la masse n'apparaît pas dans cette équation »). Deux étaient de
+vraies notes d'auteur devenues fausses :
+
+- **`systemes-oscillants/bank.yaml:81`** affirmait que la forme énergétique de
+  la rotation « n'apparaît nulle part ici ». `lesson.md:494` l'écrit et la
+  nomme. Ce qui reste vrai — et c'est la seule formulation défendable — est
+  que la leçon la NOMME et dit où la chercher, sans la construire.
+- **`nombres-complexes-2/bank.yaml:134`** affirmait que « birapport »
+  « n'apparaît pas dans le reasoning rendu ». Juste pour `reasoning` (zéro),
+  **faux pour ce que l'élève lit** : trois occurrences dans des champs `note:`,
+  qui sont rendus au même titre. La note servait de justification à « aucun
+  objet nouveau à retenir » — elle justifiait donc à côté.
+
+Les deux notes de `structures-algebriques` que §11.45 avait signalées portent
+bien, elles, leur MISE À JOUR datée : re-grep refait, elles disent vrai.

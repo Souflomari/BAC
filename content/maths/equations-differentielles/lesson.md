@@ -34,7 +34,7 @@ $$T'(t) = -k\big(T(t)-20\big)$$
 
 où $k>0$ est une constante qui dépend du café, de la tasse, de l'air ambiant. Une équation où la **dérivée** d'une fonction s'exprime à partir de la fonction elle-même — pas à partir de $t$ directement — s'appelle une **équation différentielle**.
 
-Tu as déjà croisé une fonction dont la dérivée s'exprime à partir d'elle-même : $\exp$, avec $(e^x)'=e^x$ (chapitre précédent). Ce chapitre généralise cette idée : quelles fonctions vérifient $y'=ay$, ou des variantes un peu plus riches comme $y'=ay+b$, ou même une équation sur la dérivée **seconde** ? Et surtout : comment être sûr d'avoir trouvé **toutes** les solutions, pas seulement une qui a l'air de marcher ?
+Tu as déjà croisé une fonction dont la dérivée s'exprime à partir d'elle-même : $\exp$, avec $(e^x)'=e^x$ (leçon précédente). Ce chapitre généralise cette idée : quelles fonctions vérifient $y'=ay$, ou des variantes un peu plus riches comme $y'=ay+b$, ou même une équation sur la dérivée **seconde** ? Et surtout : comment être sûr d'avoir trouvé **toutes** les solutions, pas seulement une qui a l'air de marcher ?
 
 À la fin de cette leçon, tu sauras écrire l'expression exacte de $T(t)$ pour la tasse de café — et vérifier qu'elle redonne bien les valeurs du tableau ci-dessus. Garde cette question en tête ; on la referme au chapitre 4.
 

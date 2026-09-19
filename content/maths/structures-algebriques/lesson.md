@@ -8,7 +8,7 @@ Il est 9h. Dans 5 heures, quelle heure sera-t-il ?
 
 Réponse immédiate : 14h, bien sûr, $9+5=14$. Mais regarde une horloge à cadran, avec 12 graduations numérotées de $0$ à $11$ : personne ne dit "il est 14h" — on dit "il est 2h". L'horloge a bouclé : une fois qu'on dépasse $11$, on repart de $0$.
 
-Sur cette horloge, "ajouter 5 heures à 9h" donne 2h, parce que $9+5=14$ et que $14$ divisé par $12$ laisse un reste de $2$. Autrement dit, on ne calcule pas $9+5$ dans $\mathbb{Z}$ tout court : on calcule $9+5$, puis on ne garde que le reste modulo $12$. Tu connais déjà cette idée — c'est la congruence, du chapitre précédent.
+Sur cette horloge, "ajouter 5 heures à 9h" donne 2h, parce que $9+5=14$ et que $14$ divisé par $12$ laisse un reste de $2$. Autrement dit, on ne calcule pas $9+5$ dans $\mathbb{Z}$ tout court : on calcule $9+5$, puis on ne garde que le reste modulo $12$. Tu connais déjà cette idée — c'est la congruence, de la leçon précédente.
 
 Baptisons cette opération d'horloge $\oplus$ : $9 \oplus 5 = 2$. Avant de lire la suite, prends position sur $\oplus$ — engage-toi vraiment, une réponse pour chacune de ces questions :
 
