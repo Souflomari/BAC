@@ -241,7 +241,7 @@ La prédiction et la réalité sont à l'envers. Voilà pourquoi cette question 
 
 [[motion:amortissement-energie]]
 
-Et si on change $L$ ou $C$ (avec $R$ fixée), c'est la **période** des oscillations qui change — pas l'amortissement. C'est $L$ et $C$ qui fixent le rythme. $R$ ne fait que contrôler à quelle vitesse les oscillations disparaissent.
+Et si on change $L$ ou $C$ (avec $R$ fixée), c'est la **période** des oscillations qui change. C'est $L$ et $C$ qui fixent le rythme. $R$ ne fait que contrôler à quelle vitesse les oscillations disparaissent.
 
 R est le frein. Rien d'autre.
 

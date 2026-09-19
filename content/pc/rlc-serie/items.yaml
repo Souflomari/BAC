@@ -494,7 +494,7 @@ items:
         text: "$T_0 = 2\\pi\\sqrt{LC} \\approx 6{,}28\\,\\text{ms}$"
         correct: true
       - id: B
-        text: "$T_0 = 2\\pi\\sqrt{RC} = 2\\pi\\sqrt{50 \\times 10^{-5}} \\approx 14\\,\\text{ms}$"
+        text: "$T_0 = 2\\pi\\sqrt{RC} = 2\\pi\\sqrt{50 \\times 10^{-5}} \\approx 140\\,\\text{ms}$"
         correct: false
         misconception: mc.physics.rlc_serie.T0-depend-de-R
         also_reveals: []
@@ -506,7 +506,7 @@ items:
         also_reveals: []
         feedback: "$RC = 5 \\times 10^{-4}\\,\\text{s}$ est la constante de temps du circuit RC, pas la période d'oscillation. $T_0 = 2\\pi\\sqrt{LC} \\approx 6{,}28\\,\\text{ms}$."
       - id: D
-        text: "$T_0 = 2\\pi\\sqrt{RLC} \\approx 22\\,\\text{ms}$"
+        text: "$T_0 = 2\\pi\\sqrt{RLC} \\approx 44\\,\\text{ms}$"
         correct: false
         misconception: mc.physics.rlc_serie.T0-depend-de-R
         also_reveals: [mc.physics.rlc_serie.plus-de-R-oscille-plus-vite]
@@ -515,7 +515,7 @@ items:
     solution: |
       $\sqrt{LC} = \sqrt{0{,}1 \times 10 \times 10^{-6}} = \sqrt{10^{-6}} = 10^{-3}\,\text{s}$.
       $T_0 = 2\pi \times 10^{-3} \approx 6{,}28 \times 10^{-3}\,\text{s} = 6{,}28\,\text{ms}$.
-      Vérification dimensionnelle : $[LC] = \text{H} \cdot \text{F} = \Omega\cdot\text{s} \cdot \text{A/V}
+      Vérification dimensionnelle : $[LC] = \text{H} \cdot \text{F} = \Omega\cdot\text{s} \cdot \frac{\text{A}\cdot\text{s}}{\text{V}}
       = \text{s}^2$ → $\sqrt{LC}$ est bien un temps.
 
   - id: RLC-M4-3
@@ -672,7 +672,7 @@ items:
         also_reveals: []
         feedback: "La pseudo-période $T$ n'est pas rigoureusement égale à $T_0$ ; la formule $T \\approx T_0$ est une approximation valable pour faible amortissement. L'écart de $0{,}1\\,\\text{ms}$ est physiquement attendu."
       - id: C
-        text: "On devrait avoir $T_{mes} = 2\\pi\\sqrt{RC} \\approx 14\\,\\text{ms}$ car R entre dans la pseudo-période."
+        text: "On devrait avoir $T_{mes} = 2\\pi\\sqrt{RC} \\approx 109\\,\\text{ms}$ car R entre dans la pseudo-période."
         correct: false
         misconception: mc.physics.rlc_serie.T0-depend-de-R
         also_reveals: [mc.physics.rlc_serie.pseudo-periode-egale-periode-propre]
@@ -1179,7 +1179,7 @@ items:
         text: '$T_0 = 2\pi\sqrt{LC} = 2\pi\sqrt{40 \times 10^{-3} \times 10 \times 10^{-6}} \approx 3{,}97 \times 10^{-3}\,\text{s} \approx 4{,}0\,\text{ms}$'
         correct: true
       - id: B
-        text: "$T_0 = 2\\pi\\sqrt{RC} = 2\\pi\\sqrt{5 \\times 10^{-5}} \\approx 1{,}4\\,\\text{ms}$, la période propre étant fixée par $R$ et $C$."
+        text: "$T_0 = 2\\pi\\sqrt{RC} = 2\\pi\\sqrt{5 \\times 10^{-5}} \\approx 44\\,\\text{ms}$, la période propre étant fixée par $R$ et $C$."
         correct: false
         misconception: mc.physics.rlc_serie.T0-depend-de-R
         also_reveals: []

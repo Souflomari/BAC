@@ -1504,6 +1504,62 @@ for (const dir of dirs) {
     }
   }
 
+  // ── §11.79 Un renvoi de chapitre MALFORMÉ, ou qui a mangé un symbole ────
+  //    Deux formes, une seule cause : la campagne de 2026-09 qui a réécrit
+  //    les 1 086 renvois « R<n> » en « chapitre N » (tâches #18 et #24).
+  //    Elle a réécrit ce qu'il ne fallait pas.
+  //
+  //    FORME A — « chapitre 4/4 ». Un renvoi de chapitre ne porte JAMAIS de
+  //    barre oblique. Aucun usage légitime ne peut produire cette forme.
+  //
+  //    FORME B — un SYMBOLE avalé : « deux résistances ici, chapitre 1
+  //    (conducteur ohmique ajustable) et r ». Le symbole du composant était
+  //    $R_0$ ; la campagne a lu « R0 » comme un code de barreau et l'a
+  //    remplacé par un numéro de chapitre. L'élève lit une phrase où un
+  //    numéro de chapitre tient la place d'une résistance.
+  //
+  //    POURQUOI UNE PORTE, ET PAS UN CORRECTIF DE PLUS. C'est la DEUXIÈME
+  //    fois. Le 2026-09-11 j'ai corrigé « (chapitre 5/5) » dans
+  //    reactions-acido-basiques/exercises.yaml:180 — et je n'ai rien armé.
+  //    Le 2026-09-12 la même forme est revenue trois fois dans
+  //    rlc-serie/bank.yaml (858, 892, 1886), plus la forme B en 1468. Un
+  //    défaut vu deux fois n'est pas un accident : c'est une classe.
+  //
+  //    SÉVÉRITÉ MESURÉE sur le corpus entier (62 notions), après correctifs :
+  //    forme A, 0 ; forme B, 0. Le seul reste est une CITATION de la forme A
+  //    dans un fichier REVIEW-*.md, qui documente le défaut — les fichiers
+  //    de revue ne sont pas rendus et ne sont pas examinés ici.
+  {
+    const RENDU_TXT = new Set(["intro", "stem", "reasoning", "note", "text", "feedback",
+      "solution", "correct_feedback", "title", "part", "math", "caption"]);
+    const MALFORME = /chapitres?\s+\d+\s*\/\s*\d+/i;
+    const SYMBOLE_MANGE =
+      /chapitres?\s+\d+\s*\((?:le\s+|la\s+|un\s+|une\s+)?(?:conducteur|résistance|condensateur|bobine|rhéostat|générateur|interrupteur|ampèremètre|voltmètre)\b/i;
+    const trouves = [];
+    const examiner = (txt, ou) => {
+      if (MALFORME.test(txt)) {
+        trouves.push(`${ou} : renvoi malformé « ${txt.match(MALFORME)[0]} » — un chapitre n'a pas de barre oblique`);
+      }
+      if (SYMBOLE_MANGE.test(txt)) {
+        trouves.push(`${ou} : « ${txt.match(SYMBOLE_MANGE)[0]} » — un numéro de chapitre tient la place d'un symbole de composant`);
+      }
+    };
+    examiner(md, "lesson.md");
+    const chasse = (n, fichier) => {
+      if (Array.isArray(n)) { for (const x of n) chasse(x, fichier); return; }
+      if (!n || typeof n !== "object") return;
+      for (const [k, v] of Object.entries(n)) {
+        if (typeof v === "string" && RENDU_TXT.has(k)) examiner(v, `${fichier} → « ${k} »`);
+        else chasse(v, fichier);
+      }
+    };
+    for (const fname of Object.keys(yamlDocs)) chasse(yamlDocs[fname], fname);
+    for (const f of [...new Set(trouves)]) {
+      console.error(`  ✗ ${dir}: ${f}`);
+      dirFail++;
+    }
+  }
+
   // ── Rung integrity, SECOND DIRECTION (warning only) — le miroir de la porte
   //    ci-dessus. Celle-là attrape un item qui vise un rung absent ; elle ne
   //    voit RIEN quand c'est le titre qui a perdu son code. Un « ## » qui

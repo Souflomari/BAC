@@ -844,7 +844,7 @@ entries:
           Même mécanisme qu'au chapitre 3, écrit directement en $u_C$ comme à la question 1 du sujet 2019 ci-dessus. Ici la résistance négligée n'est pas un conducteur ohmique séparé — ce montage n'en a pas — c'est la résistance propre $r$ de la bobine elle-même, que l'énoncé demande explicitement de négliger dans ce premier cas : $R \approx 0$ au sens du chapitre 2. La loi des mailles donne $u_C + u_L = 0$, puis on exprime le courant à partir de $u_C$ ($i = C\frac{du_C}{dt}$, la relation $i = \frac{dq}{dt}$ du chapitre 2 réécrite avec $q = Cu_C$), et $u_L$ suit.
         steps:
           - math: 'u_C + u_L = 0'
-            note: "Loi des mailles, cas idéal (chapitre 2) : ici c'est la résistance propre de la bobine qu'on néglige, il n'y a pas de conducteur ohmique séparé dans ce montage."
+            note: "Loi des mailles, cas idéal (chapitre 3) : ici c'est la résistance propre de la bobine qu'on néglige, il n'y a pas de conducteur ohmique séparé dans ce montage."
           - math: 'i = \frac{dq}{dt} = C\frac{du_C}{dt}'
             note: "Courant exprime directement en u_C (q = C u_C), même geste qu'a la question 1 du sujet 2019 ci-dessus."
           - math: 'u_L = L\frac{di}{dt} = LC\frac{d^2u_C}{dt^2}'
@@ -855,7 +855,7 @@ entries:
         stem: |-
           **(0,5 pt)** Choisir, parmi les courbes $(C_1)$, $(C_2)$ et $(C_3)$ de la figure 3, la courbe qui représente l'évolution de la tension $u_C(t)$. Justifier votre réponse.
         reasoning: |-
-          Deux critères, comme à la question 2a du sujet 2019 ci-dessus. D'abord le régime : l'équation de la question précédente ne contient aucun terme d'amortissement — c'est le cas idéal du chapitre 4/4, amplitude **constante**, jamais amortie. La courbe $(C_3)$, qui décroît, est donc exclue d'emblée. Ensuite l'amplitude : le condensateur a été chargé totalement avant la bascule de $K$, donc $u_C(0)$ doit valoir $U_0 = E$, la tension du palier de charge établie dans la section 1 du même sujet (réponse RC, transcrite sous « Dipôle RC — réponse à un échelon de tension ».md) — soit $12\ \text{V}$. $(C_2)$, malgré une amplitude constante, plafonne à $10\ \text{V}$ : elle est donc elle aussi exclue. Seule $(C_1)$ satisfait les deux critères à la fois.
+          Deux critères, comme à la question 2a du sujet 2019 ci-dessus. D'abord le régime : l'équation de la question précédente ne contient aucun terme d'amortissement — c'est le cas idéal du chapitre 4, amplitude **constante**, jamais amortie. La courbe $(C_3)$, qui décroît, est donc exclue d'emblée. Ensuite l'amplitude : le condensateur a été chargé totalement avant la bascule de $K$, donc $u_C(0)$ doit valoir $U_0 = E$, la tension du palier de charge établie dans la section 1 du même sujet (réponse RC, transcrite sous « Dipôle RC — réponse à un échelon de tension ».md) — soit $12\ \text{V}$. $(C_2)$, malgré une amplitude constante, plafonne à $10\ \text{V}$ : elle est donc elle aussi exclue. Seule $(C_1)$ satisfait les deux critères à la fois.
 
           La courbe **$(C_1)$** représente $u_C(t)$ : amplitude constante (cohérent avec l'équation idéale) et amplitude $12\ \text{V}$ (cohérent avec $U_0 = E$).
       - id: q3
@@ -889,7 +889,7 @@ entries:
         stem: |-
           **(0,5 pt)** Écrire l'expression de l'énergie totale $E_t$ du circuit en fonction de $C$, $u_C(t)$, $L$ et $i(t)$.
         reasoning: |-
-          C'est directement la formule du chapitre 2 : l'énergie totale, à un instant donné, est la somme de ce qui est stocké dans le condensateur et de ce qui est stocké dans la bobine — quel que soit le régime. Ce qui change dans ce deuxième cas, ce n'est pas la formule (toujours vraie instant par instant), c'est que cette somme n'est **plus constante** au fil du temps : la résistance $r$, non négligeable ici, la fait décroître (chapitre 4/4).
+          C'est directement la formule du chapitre 2 : l'énergie totale, à un instant donné, est la somme de ce qui est stocké dans le condensateur et de ce qui est stocké dans la bobine — quel que soit le régime. Ce qui change dans ce deuxième cas, ce n'est pas la formule (toujours vraie instant par instant), c'est que cette somme n'est **plus constante** au fil du temps : la résistance $r$, non négligeable ici, la fait décroître (chapitre 4).
         steps:
           - math: '\boxed{E_t = \frac{1}{2}C\,u_C(t)^2 + \frac{1}{2}L\,i(t)^2}'
             note: "Somme des deux énergies stockees à l'instant t (chapitre 2), valable dans les deux cas ; seule la constance de cette somme diffère entre le cas idéal et le cas amorti."
@@ -1150,7 +1150,7 @@ entries:
           Même mécanisme qu'à la question 1 du sujet 2022 ci-dessus, et qu'au chapitre 3 : circuit LC pur (la figure 3 ne montre aucun conducteur ohmique dans la boucle, et la bobine $(b)$ n'est pas dite résistive ici). Loi des mailles $u_C + u_L = 0$, puis $u_C = \frac{q}{C}$ et $i = \frac{dq}{dt} = C\frac{du_C}{dt}$ (chapitre 2) pour aboutir à $u_L = LC\frac{d^2u_C}{dt^2}$.
         steps:
           - math: 'u_C + u_L = 0'
-            note: "Loi des mailles, cas idéal (chapitre 2) : aucun conducteur ohmique dans la boucle (figure 3)."
+            note: "Loi des mailles, cas idéal (chapitre 3) : aucun conducteur ohmique dans la boucle (figure 3)."
           - math: 'i = C\frac{du_C}{dt} \qquad u_L = L\frac{di}{dt} = LC\frac{d^2u_C}{dt^2}'
             note: "Même substitution qu'a la question 1 du sujet 2022 ci-dessus."
           - math: '\boxed{\frac{d^2u_C}{dt^2} + \frac{1}{LC}\,u_C = 0}'
@@ -1465,7 +1465,7 @@ entries:
           Même méthode qu'à la question 1b du sujet 2020 ci-dessus (chapitre 6, généralisé) : deux résistances en série, le conducteur ohmique $R_0$ (l'énoncé fixe $R=R_0$ pour cette courbe) et la résistance propre $r$ de la bobine, qu'on additionne au même endroit de la loi des mailles puisqu'elles jouent le même rôle physique.
         steps:
           - math: 'u_C + u_R + u_{bobine} = 0 \qquad \text{avec} \qquad u_{bobine} = L\frac{di}{dt} + r\,i'
-            note: "Loi des mailles (chapitre 6) ; deux résistances ici, chapitre 1 (conducteur ohmique ajustable) et r (résistance propre de la bobine), comme a la question 1b du sujet 2020 ci-dessus."
+            note: "Loi des mailles (chapitre 6) ; deux résistances ici, $R_0$ (le conducteur ohmique ajustable) et $r$ (résistance propre de la bobine), comme a la question 1b du sujet 2020 ci-dessus."
           - math: 'u_C + (R_0+r)\,i + L\frac{di}{dt} = 0'
             note: "On regroupe les deux termes resistifs."
           - math: 'i = C\frac{du_C}{dt} \implies u_C + (R_0+r)C\frac{du_C}{dt} + LC\frac{d^2u_C}{dt^2} = 0'
@@ -1883,7 +1883,7 @@ entries:
         stem: |-
           **(0,5 pt)** Calculer $|E_{th}|$, l'énergie dissipée par effet Joule dans le circuit entre les instants $t = 0$ et $t = t_A$.
         reasoning: |-
-          $t=0$ et $t_A$ sont tous deux des extrema de $u_C$ (le maximum initial et le deuxième maximum) : le courant y est nul dans les deux cas (chapitre 2), donc l'énergie totale y est purement électrique. L'énergie dissipée est la différence — chapitre 4/4, $r$ ne fait que dissiper, jamais restituer, cohérent avec le signe négatif trouvé à la question 3. $u_C(0) = U_0 = 10\ \text{V}$ (donné) et $u_C(t_A) = 7\ \text{V}$ (touche le pointillé, lu sur la figure 3) ; $C_0 = 1\ \mu\text{F}$ vient de la Partie 1 du même sujet (charge par générateur de courant, transcrite sous « Dipôle RC — réponse à un échelon de tension ».md) — un pont entre les deux parties du même exercice.
+          $t=0$ et $t_A$ sont tous deux des extrema de $u_C$ (le maximum initial et le deuxième maximum) : le courant y est nul dans les deux cas (chapitre 2), donc l'énergie totale y est purement électrique. L'énergie dissipée est la différence — chapitre 4, $r$ ne fait que dissiper, jamais restituer, cohérent avec le signe négatif trouvé à la question 3. $u_C(0) = U_0 = 10\ \text{V}$ (donné) et $u_C(t_A) = 7\ \text{V}$ (touche le pointillé, lu sur la figure 3) ; $C_0 = 1\ \mu\text{F}$ vient de la Partie 1 du même sujet (charge par générateur de courant, transcrite sous « Dipôle RC — réponse à un échelon de tension ».md) — un pont entre les deux parties du même exercice.
         steps:
           - math: 'E_{th} = E_T(0) - E_T(t_A) = \frac{1}{2}C_0\,u_C(0)^2 - \frac{1}{2}C_0\,u_C(t_A)^2'
             note: "i=0 en t=0 et en tA (deux extrema de u_C) : toute l'énergie y est électrique."
@@ -1997,7 +1997,7 @@ entries:
           - math: 'u_C + u_b = 0'
             note: "Loi des mailles : une seule maille, deux dipoles (pas de resistor ni de générateur, figure 3)."
           - math: 'u_C = \frac{q}{C} \qquad u_b = r\,\frac{dq}{dt} + L\,\frac{d^2q}{dt^2}'
-            note: "u_C du chapitre 3 ; u_b = r i + L di/dt (chapitre 2), avec i = dq/dt."
+            note: "u_C = q/C et u_L = L di/dt viennent du chapitre 3 ; ici la bobine a en plus sa résistance propre r, d'où u_b = r i + L di/dt. Avec i = dq/dt."
           - math: '\boxed{L\,\frac{d^2q}{dt^2} + r\,\frac{dq}{dt} + \frac{q}{C} = 0}'
             note: "Équation du chapitre 6, avec r a la place de R : seule résistance de cette maille, celle interne de la bobine."
       - id: q2
