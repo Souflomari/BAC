@@ -24,7 +24,7 @@ On ne répond pas tout de suite. On construit la réponse, preuve après preuve 
 
 ## R1 — Plier ou casser : ce que décide la profondeur
 
-Tu as vu, au chapitre précédent, que le raccourcissement de la croûte dans une chaîne de collision produit deux types de structures : des plis, où la roche se courbe sans se rompre, et des failles inverses ou des chevauchements, où la roche casse net le long d'un plan incliné. On a appelé ça, respectivement, une déformation **ductile** et une déformation **cassante**.
+Tu as vu, dans la leçon précédente, que le raccourcissement de la croûte dans une chaîne de collision produit deux types de structures : des plis, où la roche se courbe sans se rompre, et des failles inverses ou des chevauchements, où la roche casse net le long d'un plan incliné. On appelle ça, respectivement, une déformation **ductile** et une déformation **cassante**.
 
 Voici la question qu'on n'a pas encore posée : pourquoi la même compression horizontale produit-elle tantôt un pli, tantôt une faille ? Qu'est-ce qui décide, à un endroit donné de la chaîne, laquelle des deux options la roche va choisir ?
 
@@ -67,7 +67,7 @@ Retiens ce principe : ce n'est jamais la roche, seule, qui « est » ductile ou 
 
 ## R2 — Le métamorphisme régional : une série de faciès qui mesure la profondeur
 
-Tu sais déjà, depuis le chapitre précédent, qu'une roche enfouie profondément recristallise à l'état solide, sans fondre : c'est le métamorphisme. Mais on peut aller plus loin, et c'est l'objet de ce chapitre : la nature précise de cette recristallisation dépend, de façon continue et prévisible, de la profondeur atteinte.
+Tu sais déjà, depuis la leçon précédente, qu'une roche enfouie profondément recristallise à l'état solide, sans fondre : c'est le métamorphisme. Mais on peut aller plus loin, et c'est l'objet de ce chapitre : la nature précise de cette recristallisation dépend, de façon continue et prévisible, de la profondeur atteinte.
 
 ### Une même roche de départ, plusieurs destins selon la profondeur
 
@@ -76,13 +76,13 @@ Imagine une pélite — une roche sédimentaire argileuse, déposée à l'origin
 - À quelques kilomètres de profondeur, à peine transformée, elle garde un aspect encore proche de la roche argileuse d'origine.
 - Vers une dizaine de kilomètres, elle devient un **schiste** : les minéraux se sont recristallisés en petits grains de mica orientés tous dans la même direction, ce qui donne à la roche un aspect feuilleté, qui se débite en fines plaques.
 - Vers une vingtaine de kilomètres, elle devient un **gneiss** : les grains sont plus gros, et les minéraux clairs (quartz, feldspath) se séparent des minéraux sombres (mica, amphibole) en bandes alternées bien visibles — un aspect rubané, très différent du feuilletage fin du schiste.
-- Au-delà d'une vingtaine de kilomètres, en s'approchant des conditions extrêmes qu'on va détailler au chapitre suivant, elle devient une **migmatite** : une roche mixte, où des zones encore parfaitement solides voisinent avec des zones qui, elles, ont commencé à fondre.
+- Au-delà de vingt-cinq kilomètres, en s'approchant des conditions extrêmes qu'on va détailler au chapitre suivant, elle devient une **migmatite** : une roche mixte, où des zones encore parfaitement solides voisinent avec des zones qui, elles, ont commencé à fondre.
 
 ### Pourquoi cette succession n'est pas un hasard
 
 Chaque assemblage minéral n'est stable que dans une fenêtre précise de pression et de température. Un mica donné, une association précise de minéraux, ne peuvent exister que dans certaines conditions physiques — en dehors de cette fenêtre, ils se réorganisent en un autre assemblage, stable dans les nouvelles conditions. C'est pour ça qu'on parle de **faciès métamorphique** : chaque faciès (schiste, gneiss, migmatite) est la signature minérale d'un intervalle de pression et de température précis, et donc, indirectement, d'un intervalle de profondeur précis.
 
-Le raisonnement se retourne alors naturellement : face à un échantillon de roche métamorphique inconnu, il suffit d'identifier son assemblage minéral pour remonter, avec une bonne précision, à la profondeur approximative à laquelle cette roche a été enfouie. Un géologue qui trouve un gneiss lit, dans les minéraux eux-mêmes, une information sur une profondeur passée — exactement comme on a lu, au chapitre précédent, l'histoire d'une collision dans la position des ophiolites et des chevauchements.
+Le raisonnement se retourne alors naturellement : face à un échantillon de roche métamorphique inconnu, il suffit d'identifier son assemblage minéral pour remonter, avec une bonne précision, à la profondeur approximative à laquelle cette roche a été enfouie. Un géologue qui trouve un gneiss lit, dans les minéraux eux-mêmes, une information sur une profondeur passée — exactement comme on a lu, dans la leçon précédente, l'histoire d'une collision dans la position des ophiolites et des chevauchements.
 
 [[figure:facies-jauge-profondeur]]
 
@@ -115,7 +115,7 @@ On a laissé la migmatite en suspens à la fin du chapitre précédent — une r
 
 Toute roche possède un **solidus** : une température (qui dépend aussi de la pression) en dessous de laquelle elle reste entièrement solide, quelle que soit la profondeur. Tant que la température locale reste sous ce seuil, la roche continue simplement à se métamorphiser, comme au chapitre précédent — elle change de minéraux, mais reste solide de bout en bout.
 
-Le problème, c'est que ce seuil est élevé. Pour une roche « sèche », sans eau piégée dans ses minéraux, le solidus se situe à une température que la croûte continentale, même très épaissie par une collision, atteint rarement, même à sa base. C'est là qu'intervient un facteur déjà rencontré au chapitre précédent, à propos de la subduction : la présence d'eau.
+Le problème, c'est que ce seuil est élevé. Pour une roche « sèche », sans eau piégée dans ses minéraux, le solidus se situe à une température que la croûte continentale, même très épaissie par une collision, atteint rarement, même à sa base. C'est là qu'intervient un facteur déjà rencontré dans la leçon précédente, à propos de la subduction : la présence d'eau.
 
 De nombreux minéraux qui composent les gneiss (certains micas, en particulier) retiennent de l'eau dans leur structure cristalline. Or l'eau a, ici aussi, un effet précis : elle abaisse nettement la température à laquelle la roche commence à fondre — exactement le même principe que celui qui déclenchait la fusion partielle du manteau au-dessus d'une plaque en subduction, mais appliqué cette fois à une roche continentale déjà métamorphisée, à très grande profondeur au cœur d'une chaîne de collision. Avec de l'eau disponible, le solidus peut s'abaisser jusque vers 650 à 700 °C environ — une température que la base d'une croûte épaissie par collision, à 25-30 kilomètres de profondeur ou plus, peut réellement atteindre.
 
@@ -149,7 +149,7 @@ Un magma riche en silice, comme celui produit par anatexie de roches continental
 
 C'est cette cristallisation extrêmement lente qui explique l'aspect si particulier du granite : des cristaux de plusieurs millimètres, parfois plus d'un centimètre, de quartz, de feldspath et de mica, tous visibles à l'œil nu. On appelle cet aspect la **texture grenue** (ou phanéritique) : chaque grain a eu le temps de croître, tranquillement, pendant que le magma perdait sa chaleur au compte-gouttes, isolé par des kilomètres de roche encaissante qui freinent toute perte de chaleur rapide.
 
-Compare avec ce qui se passe à la surface. Une lave qui s'épanche à l'air libre, ou au contact de l'eau, perd sa chaleur en quelques heures ou quelques jours — un temps dérisoire face aux dizaines de milliers d'années nécessaires en profondeur. Les cristaux n'ont tout simplement pas le temps de croître : la roche qui en résulte a un grain fin, invisible à l'œil nu, parfois même vitreux si le refroidissement est vraiment brutal. C'est exactement ce que tu as vu avec l'andésite des volcans de subduction, au chapitre précédent : une roche à grain fin, née d'un refroidissement rapide en surface.
+Compare avec ce qui se passe à la surface. Une lave qui s'épanche à l'air libre, ou au contact de l'eau, perd sa chaleur en quelques heures ou quelques jours — un temps dérisoire face aux dizaines de milliers d'années nécessaires en profondeur. Les cristaux n'ont tout simplement pas le temps de croître : la roche qui en résulte a un grain fin, invisible à l'œil nu, parfois même vitreux si le refroidissement est vraiment brutal. C'est exactement ce que tu as vu avec l'andésite des volcans de subduction, dans la leçon précédente : une roche à grain fin, née d'un refroidissement rapide en surface.
 
 [[figure:granite-texture-grenue]]
 
@@ -171,9 +171,9 @@ Il reste une question, posée dès le chapitre 1 : si le granite cristallise à 
 
 ### Le granite, une roche du cœur de la chaîne
 
-Rassemblons ce qu'on sait. Une collision épaissit la croûte continentale (chapitre précédent), ce qui enfouit certaines de ses roches à de grandes profondeurs. Assez profond, ces roches se métamorphisent en schiste, puis en gneiss (chapitre 3). Encore plus profond, sous l'effet conjugué de l'enfouissement et de la présence d'eau, elles franchissent leur solidus et fondent partiellement par anatexie (chapitre 4), produisant un magma qui cristallise lentement sur place en un granite à texture grenue (chapitre 5). Le granite occupe ainsi, typiquement, les niveaux les plus profonds d'une chaîne de collision — sa véritable racine, la partie la plus enfouie de tout l'édifice.
+Rassemblons ce qu'on sait. Une collision épaissit la croûte continentale (leçon précédente), ce qui enfouit certaines de ses roches à de grandes profondeurs. Assez profond, ces roches se métamorphisent en schiste, puis en gneiss (chapitre 3). Encore plus profond, sous l'effet conjugué de l'enfouissement et de la présence d'eau, elles franchissent leur solidus et fondent partiellement par anatexie (chapitre 4), produisant un magma qui cristallise lentement sur place en un granite à texture grenue (chapitre 5). Le granite occupe ainsi, typiquement, les niveaux les plus profonds d'une chaîne de collision — sa véritable racine, la partie la plus enfouie de tout l'édifice.
 
-### Le même mécanisme qu'au chapitre précédent, mais poussé plus loin
+### Le même mécanisme que dans la leçon précédente, mais poussé plus loin
 
 Pour que ce granite soit visible aujourd'hui, à la surface, il faut le même mécanisme d'**exhumation** que celui qui ramène un gneiss vers le jour : le soulèvement tectonique qui continue de pousser la croûte épaissie vers le haut, combiné à l'érosion qui décape, année après année, tout ce qui recouvre ces roches profondes.
 
