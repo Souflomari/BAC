@@ -4,7 +4,7 @@
 
 ## R0 — Accroche : la lumière qui traverse ce qui ne devrait rien laisser passer
 
-Reprends l'idée de « Ondes mécaniques progressives » : une onde mécanique — une vague sur l'eau, le son dans l'air, la perturbation le long d'une corde — a absolument besoin d'un milieu matériel pour exister. Sans corde, sans eau, sans air, il n'y a rien à déformer, donc rien qui puisse se propager de proche en proche.
+Reprends l'idée de la leçon précédente : une onde mécanique — une vague sur l'eau, le son dans l'air, la perturbation le long d'une corde — a absolument besoin d'un milieu matériel pour exister. Sans corde, sans eau, sans air, il n'y a rien à déformer, donc rien qui puisse se propager de proche en proche.
 
 Maintenant regarde ce fait, en apparence anodin : la nuit, tu lèves les yeux et tu vois des étoiles. Certaines sont à des centaines, voire des milliers d'années-lumière. Entre elles et toi, il n'y a presque rien : le vide quasi parfait de l'espace. Pas d'air, pas d'eau, pas la moindre corde tendue. Et pourtant, leur lumière arrive jusqu'à ton œil.
 
