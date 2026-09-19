@@ -50,7 +50,9 @@ $$E \approx 1{,}4924\times10^{-10}\ \text{J}$$
 
 On convertit ce résultat en électronvolts, en divisant par $1{,}6022\times10^{-19}\ \text{J}$ (l'énergie que vaut $1\ \text{eV}$) :
 
-$$\frac{1{,}4924\times10^{-10}}{1{,}6022\times10^{-19}} \approx 9{,}315\times10^{8}\ \text{eV}$$
+$$\frac{1{,}4924\times10^{-10}}{1{,}6022\times10^{-19}} \approx 9{,}315\times10^{8}\ \text{eV} = 931{,}5\ \text{MeV}$$
+
+Lis bien ce que chaque grandeur désigne : $931{,}5\ \text{MeV}$ est une **énergie**, celle que vaut $1\ \text{u}$ de masse. L'équivalence s'écrit donc côté masse en divisant par $c^2$ :
 
 $$\boxed{1\ \text{u} \approx 931{,}5\ \text{MeV}/c^2}$$
 
@@ -175,15 +177,15 @@ Vérifie ta compréhension.
 
 ### La méthode générale
 
-Pour une réaction nucléaire (fission ou fusion), on procède exactement comme pour un seul noyau au chapitre 3, mais en comparant la masse totale des réactifs à la masse totale des produits :
+Pour une réaction nucléaire (fission ou fusion), on compare la masse totale des réactifs à la masse totale des produits. **Attention : ce n'est pas le même $\Delta m$ qu'au chapitre 3.** Là, le défaut de masse se lisait « constituants moins noyau » et restait toujours positif ; ici on lit « après moins avant », et c'est le signe qui porte l'information. Pour ne pas confondre les deux, on note cette grandeur $\Delta m_{\text{réaction}}$ :
 
-$$\Delta m = m_{\text{produits}} - m_{\text{réactifs}}$$
+$$\Delta m_{\text{réaction}} = m_{\text{produits}} - m_{\text{réactifs}}$$
 
-Si $\Delta m < 0$ — les produits pèsent moins lourd que les réactifs, c'est le cas pour la fission et la fusion étudiées ici — de l'énergie est **libérée**, et sa valeur absolue vaut :
+Si $\Delta m_{\text{réaction}} < 0$ — les produits pèsent moins lourd que les réactifs, c'est le cas pour la fission et la fusion étudiées ici — de l'énergie est **libérée**, et sa valeur absolue vaut :
 
-$$|E| = |\Delta m|\,c^2$$
+$$|E| = |\Delta m_{\text{réaction}}|\,c^2$$
 
-Si, à l'inverse, $\Delta m > 0$, la réaction ne peut pas se produire spontanément : il faudrait au contraire lui **fournir** cette énergie pour qu'elle ait lieu.
+Si, à l'inverse, $\Delta m_{\text{réaction}} > 0$, la réaction ne peut pas se produire spontanément : il faudrait au contraire lui **fournir** cette énergie pour qu'elle ait lieu.
 
 ### Exemple — la fission de l'uranium 235
 
@@ -201,11 +203,11 @@ $$m_{\text{réactifs}} = m(\text{n}) + m(^{235}_{92}\text{U}) = 1{,}00867 + 234{
 
 $$m_{\text{produits}} = m(^{141}_{56}\text{Ba}) + m(^{92}_{36}\text{Kr}) + 3\,m(\text{n}) = 140{,}88367 + 91{,}90639 + 3\times1{,}00867 = 235{,}81607\ \text{u}$$
 
-$$\Delta m = 235{,}81607 - 236{,}00209 = -0{,}18602\ \text{u}$$
+$$\Delta m_{\text{réaction}} = 235{,}81607 - 236{,}00209 = -0{,}18602\ \text{u}$$
 
 $$E = 0{,}18602 \times 931{,}5 \approx 173{,}3\ \text{MeV}$$
 
-Cette fission unique libère environ 173 MeV — déjà 6 fois l'énergie de liaison entière de l'hélium 4 (chapitre 3), obtenue en une seule cassure d'un seul noyau. Multiplié par le nombre gigantesque de noyaux d'uranium présents dans un réacteur (de l'ordre de $10^{23}$ à $10^{25}$), cette énergie par réaction devient la puissance électrique d'une centrale entière.
+Cette fission unique libère environ 173 MeV — déjà 6 fois l'énergie de liaison entière de l'hélium 4 (chapitre 3), obtenue en une seule cassure d'un seul noyau. Multiplié par le nombre de noyaux que contient un seul kilogramme d'uranium — $\frac{1000}{235}\times 6{,}02\times10^{23} \approx 2{,}6\times10^{24}$ noyaux —, cette énergie par réaction devient la puissance électrique d'une centrale entière.
 
 ### Exemple — la fusion deutérium-tritium
 
@@ -219,17 +221,17 @@ $$m_{\text{réactifs}} = 2{,}01355 + 3{,}01550 = 5{,}02905\ \text{u}$$
 
 $$m_{\text{produits}} = 4{,}00151 + 1{,}00867 = 5{,}01018\ \text{u}$$
 
-$$\Delta m = 5{,}01018 - 5{,}02905 = -0{,}01887\ \text{u}$$
+$$\Delta m_{\text{réaction}} = 5{,}01018 - 5{,}02905 = -0{,}01887\ \text{u}$$
 
 $$E = 0{,}01887 \times 931{,}5 \approx 17{,}6\ \text{MeV}$$
 
-Une seule réaction de fusion, entre seulement 2 noyaux légers, libère 17,6 MeV — presque autant d'un coup que les 173 MeV de la fission de l'uranium, mais à partir d'une masse de départ des centaines de fois plus petite. C'est ce rapport énergie-libérée sur masse-consommée exceptionnellement élevé qui rend la fusion si attirante comme source d'énergie.
+Une seule réaction de fusion, entre seulement 2 noyaux légers, libère 17,6 MeV — environ dix fois moins d'un coup que les 173 MeV de la fission de l'uranium, mais à partir d'une masse de départ près de cinquante fois plus petite. C'est ce rapport énergie-libérée sur masse-consommée exceptionnellement élevé qui rend la fusion si attirante comme source d'énergie.
 
 ### Ordres de grandeur : pourquoi le nucléaire domine à ce point le chimique
 
 Compare maintenant ces chiffres à une réaction chimique ordinaire. Une réaction de combustion typique libère, par molécule qui réagit, une énergie de l'ordre de quelques électronvolts seulement — un ordre de grandeur qu'on obtient en divisant une énergie molaire de combustion usuelle (quelques centaines de kilojoules par mole) par le nombre d'Avogadro : de l'ordre de $4\ \text{eV}$ par molécule, par exemple.
 
-Compare : $4\ \text{eV}$ pour une réaction chimique, contre $17{,}6\times10^6\ \text{eV}$ pour la fusion deutérium-tritium, ou $173\times10^6\ \text{eV}$ pour la fission de l'uranium 235. Le rapport est de l'ordre de $10^7$ à $10^8$ : une seule réaction nucléaire libère, par événement, entre dix millions et cent millions de fois plus d'énergie qu'une seule réaction chimique. C'est tout l'écart rencontré à l'accroche entre les quelques milliers d'années d'un Soleil chimique et ses 4,6 milliards d'années réels — et ce n'est pas une coïncidence : c'est exactement ce facteur qui comble l'écart.
+Compare : $4\ \text{eV}$ pour une réaction chimique, contre $17{,}6\times10^6\ \text{eV}$ pour la fusion deutérium-tritium, ou $173\times10^6\ \text{eV}$ pour la fission de l'uranium 235. Le rapport est de l'ordre de $10^6$ à $10^7$ : une seule réaction nucléaire libère, par événement, de quelques millions à quelques dizaines de millions de fois plus d'énergie qu'une seule réaction chimique. C'est tout l'écart rencontré à l'accroche entre les quelques milliers d'années d'un Soleil chimique et ses 4,6 milliards d'années réels — et ce n'est pas une coïncidence : c'est ce même écart d'échelle qui comble la différence.
 
 [[figure:nucleaire-vs-chimique]]
 

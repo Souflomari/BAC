@@ -345,7 +345,7 @@ items:
         correct: false
         misconception: mc.physics.pc_electrolyse.faraday-calcul-unites
         feedback: >
-          Cette masse - plusieurs millions de tonnes d'argent - doit
+          Cette masse - plus de six mille tonnes d'argent - doit
           alerter immédiatement : c'est physiquement absurde pour un
           courant de $0{,}40\ \text{A}$ pendant 25 minutes. L'erreur vient
           d'avoir multiplié $Q$ par $F$ au lieu de diviser :
@@ -391,7 +391,7 @@ items:
         text: "$\\approx 0{,}20\\ \\text{g}$"
         correct: true
       - id: B
-        text: "$\\approx 0{,}40\\ \\text{g}$"
+        text: "$\\approx 0{,}39\\ \\text{g}$"
         correct: false
         misconception: mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique
         feedback: >
@@ -489,7 +489,7 @@ items:
       le sens : la réduction $Zn^{2+}+2\,e^-\rightleftharpoons Zn$ se
       produit sur la lame de zinc, qui grossit au lieu de se dissoudre.
     solution: |
-      Le générateur force le sens $Cu+Zn^{2+}\rightleftharpoons Cu^{2+}+Zn$,
+      Le générateur force le sens $Cu+Zn^{2+}\rightarrow Cu^{2+}+Zn$,
       l'inverse du sens spontané de la pile. Sur la lame de zinc, cela
       impose la réduction $Zn^{2+}+2\,e^-\rightleftharpoons Zn$ : un dépôt
       de zinc métallique s'y forme.
@@ -1090,7 +1090,7 @@ items:
         correct: false
         misconception: mc.physics.pc_electrolyse.faraday-calcul-unites
         feedback: >
-          Cette masse, plusieurs millions de tonnes, doit alerter
+          Cette masse, deux mille tonnes, doit alerter
           immédiatement : l'erreur vient d'avoir multiplié $Q$ par $F$ au
           lieu de diviser ($n(e^-) = Q/F$).
     correct_feedback: >
@@ -1310,8 +1310,8 @@ items:
     primary_misconception: mc.physics.pc_electrolyse.bilan-matiere-electrodes
     stem: >
       On électrolyse de l'eau acidulée. À la cathode se dégage du dihydrogène
-      selon $2\,H^+ + 2\,e^- \rightarrow H_2$, à l'anode du dioxygène selon
-      $2\,H_2O \rightarrow O_2 + 4\,H^+ + 4\,e^-$. On recueille
+      selon $2\,H^+ + 2\,e^- \rightleftharpoons H_2$, à l'anode du dioxygène selon
+      $2\,H_2O \rightleftharpoons O_2 + 4\,H^+ + 4\,e^-$. On recueille
       $30\ \text{mL}$ de dihydrogène. Quel volume de dioxygène recueille-t-on
       dans les mêmes conditions, et dans quel sens les électrons circulent-ils
       dans le fil qui relie l'anode au générateur ?
@@ -1439,7 +1439,7 @@ items:
     solution: |
       **Ce qui bouge réellement.** Dans un fil métallique, seuls les électrons
       se déplacent. La borne $-$ du générateur les pousse vers la cathode, où
-      la réduction les consomme : $Ox + n\,e^- \rightarrow Red$.
+      la réduction les consomme : $Ox + n\,e^- \rightleftharpoons Red$.
 
       **Ce qu'on appelle courant.** La convention date d'avant la découverte de
       l'électron : le courant est compté comme un déplacement de charges

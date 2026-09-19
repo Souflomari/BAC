@@ -247,7 +247,7 @@ checkpoints:
 
     stem: |
       Dans une cellule d'électrolyse, on observe à l'une des électrodes un
-      dégagement de dichlore selon $2\,Cl^- \rightarrow Cl_2 + 2\,e^-$. Comment
+      dégagement de dichlore selon $2\,Cl^- \rightleftharpoons Cl_2 + 2\,e^-$. Comment
       se nomme cette électrode, et à quelle borne du générateur est-elle reliée ?
 
     type: mcq
@@ -312,7 +312,7 @@ checkpoints:
       Lors de l'électrolyse d'une solution de sulfate de cuivre(II) avec des
       électrodes inertes, un courant constant $I = 0{,}25\ \text{A}$ circule
       pendant $\Delta t = 40\ \text{min}$. La réduction
-      $Cu^{2+} + 2\,e^- \rightarrow Cu$ se produit à la cathode. On donne
+      $Cu^{2+} + 2\,e^- \rightleftharpoons Cu$ se produit à la cathode. On donne
       $F \approx 9{,}65\times10^{4}\ \text{C.mol}^{-1}$ et
       $M(Cu) = 63{,}5\ \text{g.mol}^{-1}$. Quelle masse de cuivre se dépose ?
 
@@ -325,16 +325,16 @@ checkpoints:
         feedback: |
           Exact. $Q = I\,\Delta t = 0{,}25 \times 2400 = 600\ \text{C}$, donc
           $n(e^-) = Q/F \approx 6{,}22\times10^{-3}\ \text{mol}$. Comme
-          $Cu^{2+} + 2\,e^- \rightarrow Cu$ échange 2 électrons par atome,
+          $Cu^{2+} + 2\,e^- \rightleftharpoons Cu$ échange 2 électrons par atome,
           $n(Cu) = n(e^-)/2$, d'où $m(Cu) \approx 0{,}20\ \text{g}$.
 
       - id: B
-        text: "$\\approx 0{,}40\\ \\text{g}$"
+        text: "$\\approx 0{,}39\\ \\text{g}$"
         correct: false
         misconception: mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique
         feedback: |
           Tu as oublié de diviser par 2. La demi-équation
-          $Cu^{2+} + 2\,e^- \rightarrow Cu$ dit que chaque atome de cuivre déposé
+          $Cu^{2+} + 2\,e^- \rightleftharpoons Cu$ dit que chaque atome de cuivre déposé
           consomme **deux** électrons : $n(Cu) = n(e^-)/2$, pas $n(e^-)$.
 
       - id: C

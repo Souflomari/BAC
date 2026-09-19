@@ -47,7 +47,7 @@ exercises:
       - $E = 1{,}955372\times10^{5}\ \text{MeV}$ : le **noyau** $^{210}_{84}\text{Po}$ ;
       - $E = 1{,}955318\times10^{5}\ \text{MeV}$ : les **produits de désintégration** $^{A}_{Z}\text{Pb} + \ ^{4}_{2}\text{He}$.
 
-      Plus un niveau est bas, plus le système correspondant est lié (moins riche en énergie). L'écart entre le sommet (nucléons séparés) et le niveau du noyau est son énergie de liaison ; l'écart entre le noyau et ses produits est l'énergie libérée par la désintégration.
+      Plus un niveau est bas, plus le système correspondant est lié (moins riche en énergie).
     questions:
       - id: q1
         part: "Partie A — Écrire l'équation de la désintégration"
@@ -116,9 +116,9 @@ exercises:
 
       **Diagramme d'énergie** (trois niveaux, en MeV, du plus haut au plus bas) :
 
-      - $E = 2{,}109500\times10^{5}\ \text{MeV}$ : les nucléons **séparés**, soit $138\ \text{neutrons} + 88\ \text{protons}$ ;
-      - $E = 2{,}092180\times10^{5}\ \text{MeV}$ : le **noyau** $^{226}_{88}\text{Ra}$ ;
-      - $E = 2{,}092131\times10^{5}\ \text{MeV}$ : les **produits** $^{A}_{Z}\text{Rn} + \ ^{4}_{2}\text{He}$.
+      - $E = 2{,}122303\times10^{5}\ \text{MeV}$ : les nucléons **séparés**, soit $138\ \text{neutrons} + 88\ \text{protons}$ ;
+      - $E = 2{,}104983\times10^{5}\ \text{MeV}$ : le **noyau** $^{226}_{88}\text{Ra}$ ;
+      - $E = 2{,}104934\times10^{5}\ \text{MeV}$ : les **produits** $^{A}_{Z}\text{Rn} + \ ^{4}_{2}\text{He}$.
     questions:
       - id: q1
         stem: |-
@@ -142,7 +142,7 @@ exercises:
         steps:
           - math: 'E_{lib} = E(^{226}_{88}\text{Ra}) - E(^{222}_{86}\text{Rn} + \ ^{4}_{2}\text{He})'
             note: "Écart entre le niveau du noyau et le niveau des produits."
-          - math: 'E_{lib} = 2{,}092180\times10^{5} - 2{,}092131\times10^{5} = 0{,}000049\times10^{5}'
+          - math: 'E_{lib} = 2{,}104983\times10^{5} - 2{,}104934\times10^{5} = 0{,}000049\times10^{5}'
             note: "On lit les deux niveaux sur le diagramme."
           - math: 'E_{lib} = 4{,}9\ \text{MeV}'
             note: "La désintégration libère 4,9 MeV par noyau."
@@ -150,9 +150,9 @@ exercises:
         stem: |-
           Calculer le défaut de masse $\Delta m$ du noyau de radium 226 (en $\text{u}$ puis en $\text{kg}$), puis son énergie de liaison **par nucléon** $E_l/A$. Situer le radium sur la courbe d'Aston par rapport à un noyau de masse intermédiaire ($E_l/A \approx 8{,}8\ \text{MeV/nucléon}$).
         reasoning: |-
-          L'énergie de liaison du radium se lit comme l'écart entre le sommet (nucléons séparés) et le niveau du noyau, exactement comme au chapitre 3 ; on en tire $\Delta m$ par $\Delta m = E_l/c^2$, en divisant par $931{,}5\ \text{MeV}/\text{u}$, puis on convertit en kilogrammes. La nouveauté par rapport au sujet, c'est la dernière étape : diviser $E_l$ par le nombre de nucléons $A$ pour obtenir $E_l/A$, la seule grandeur qui permet de comparer honnêtement la solidité de noyaux de tailles différentes (chapitre 4). Un noyau lourd comme le radium se situe sur la partie **descendante** de la courbe d'Aston : son $E_l/A$ est plus petit que celui des noyaux de masse intermédiaire (autour du fer), ce qui explique qu'il soit instable et se désintègre.
+          L'énergie de liaison du radium se lit comme l'écart entre le sommet (nucléons séparés) et le niveau du noyau, exactement comme au chapitre 3 ; on en tire $\Delta m$ par $\Delta m = E_l/c^2$, en divisant par $931{,}5\ \text{MeV}/\text{u}$, puis on convertit en kilogrammes. La nouveauté par rapport au sujet, c'est la dernière étape : diviser $E_l$ par le nombre de nucléons $A$ pour obtenir $E_l/A$, la seule grandeur qui permet de comparer honnêtement la solidité de noyaux de tailles différentes (chapitre 4). Un noyau lourd comme le radium se situe sur la partie **descendante** de la courbe d'Aston : son $E_l/A$ est plus petit que celui des noyaux de masse intermédiaire (autour du fer), ce qui explique qu'une transformation vers des noyaux mieux liés puisse libérer de l'énergie. (Ce qui décide de l'instabilité elle-même, c'est le rapport $N/Z$, vu au chapitre précédent.)
         steps:
-          - math: 'E_l(\text{Ra}) = 2{,}109500\times10^{5} - 2{,}092180\times10^{5} = 1732{,}0\ \text{MeV}'
+          - math: 'E_l(\text{Ra}) = 2{,}122303\times10^{5} - 2{,}104983\times10^{5} = 1732{,}0\ \text{MeV}'
             note: "Écart entre le sommet (nucléons séparés) et le niveau du noyau."
           - math: '\Delta m = \frac{1732{,}0}{931{,}5}\ \text{u} \approx 1{,}859\ \text{u} \approx 1{,}859 \times 1{,}66\times10^{-27} \approx 3{,}09\times10^{-27}\ \text{kg}'
             note: "On passe des MeV aux u via le facteur 931,5, puis des u aux kg via 1,66×10⁻²⁷ kg."

@@ -47,7 +47,7 @@ exercises:
         stem: |-
           **(0,5 pt)** Parmi les deux électrodes $A$ et $B$, préciser laquelle est l'anode. Justifier la réponse.
         reasoning: |-
-          L'anode est, par définition, l'électrode siège de l'**oxydation** — dans une pile comme dans une électrolyse (chapitre 2). Il faut donc repérer où se produit l'oxydation. Deux transformations sont observées : le dégagement de diiode, qui correspond à l'oxydation des ions iodure $2\,I^- \rightarrow I_2 + 2\,e^-$, et le dépôt de zinc, qui correspond à la réduction des ions zinc $Zn^{2+} + 2\,e^- \rightarrow Zn$. L'anode est donc l'électrode où se dégage le diiode.
+          L'anode est, par définition, l'électrode siège de l'**oxydation** — dans une pile comme dans une électrolyse (chapitre 2). Il faut donc repérer où se produit l'oxydation. Deux transformations sont observées : le dégagement de diiode, qui correspond à l'oxydation des ions iodure $2\,I^- \rightleftharpoons I_2 + 2\,e^-$, et le dépôt de zinc, qui correspond à la réduction des ions zinc $Zn^{2+} + 2\,e^- \rightleftharpoons Zn$. L'anode est donc l'électrode où se dégage le diiode.
 
           Reste à dire si c'est $A$ ou $B$. En électrolyse, c'est le générateur qui impose la polarité (chapitre 3) : sa borne $+$ tire les électrons hors de l'électrode qu'elle alimente, ce qui y force une oxydation. L'électrode reliée à la borne $+$ est donc l'anode. Ici, l'**électrode B** est reliée à la borne $+$ : c'est elle l'anode — et c'est bien là que le diiode se dégage. L'électrode $A$, reliée à la borne $-$, est la cathode, où le zinc se dépose.
       - id: q2
@@ -58,9 +58,9 @@ exercises:
 
           Pour l'équation bilan, on additionne les deux demi-équations en équilibrant les électrons. Chacune échange exactement $2\,e^-$ : ils s'éliminent directement dans la somme, sans avoir à multiplier l'une ou l'autre demi-équation.
         steps:
-          - math: '2\,I^-_{(aq)} \rightarrow I_{2(g)} + 2\,e^-'
+          - math: '2\,I^-_{(aq)} \rightleftharpoons I_{2(g)} + 2\,e^-'
             note: "À l'anode B (borne +) : oxydation des ions iodure, dégagement de diiode."
-          - math: 'Zn^{2+}_{(aq)} + 2\,e^- \rightarrow Zn_{(s)}'
+          - math: 'Zn^{2+}_{(aq)} + 2\,e^- \rightleftharpoons Zn_{(s)}'
             note: "À la cathode A (borne −) : réduction des ions zinc, dépôt de zinc."
           - math: 'Zn^{2+}_{(aq)} + 2\,I^-_{(aq)} \rightarrow Zn_{(s)} + I_{2(g)}'
             note: "Équation bilan : on additionne, les 2 électrons de chaque côté s'éliminent."
@@ -69,7 +69,7 @@ exercises:
         stem: |-
           **(0,75 pt)** Pendant la durée $\Delta t$ de l'électrolyse, un courant d'intensité constante $I = 0{,}5\ \text{A}$ circule dans le circuit ; il se forme un dépôt de zinc de masse $m = 1{,}6\ \text{g}$. Déterminer $\Delta t$ en minutes.
         reasoning: |-
-          On remonte de la masse déposée jusqu'à la durée, en parcourant à l'envers la chaîne de la loi de Faraday (chapitre 5). La masse de zinc donne la quantité de matière de zinc ; la demi-équation $Zn^{2+} + 2\,e^- \rightarrow Zn$ dit que chaque atome de zinc déposé a mobilisé **deux** électrons, d'où la quantité de matière d'électrons ; la constante de Faraday convertit ces électrons en quantité d'électricité $Q$ ; enfin $Q = I\,\Delta t$, à intensité constante, livre la durée. On termine par la conversion en minutes demandée.
+          On remonte de la masse déposée jusqu'à la durée, en parcourant à l'envers la chaîne de la loi de Faraday (chapitre 5). La masse de zinc donne la quantité de matière de zinc ; la demi-équation $Zn^{2+} + 2\,e^- \rightleftharpoons Zn$ dit que chaque atome de zinc déposé a mobilisé **deux** électrons, d'où la quantité de matière d'électrons ; la constante de Faraday convertit ces électrons en quantité d'électricité $Q$ ; enfin $Q = I\,\Delta t$, à intensité constante, livre la durée. On termine par la conversion en minutes demandée.
 
           Le facteur $2$ est ici décisif : l'oublier reviendrait à diviser par deux le nombre d'électrons, donc la durée.
         steps:
@@ -112,7 +112,7 @@ exercises:
         stem: |-
           Identifier l'anode et la cathode de cette cellule : préciser, pour chacune, la borne du générateur à laquelle elle est reliée et la transformation (oxydation ou réduction) qui s'y produit.
         reasoning: |-
-          On part de l'observation, comme dans le sujet. Le dépôt de cuivre métallique correspond à la réduction $Cu^{2+} + 2\,e^- \rightarrow Cu$ : c'est donc la **cathode**, et l'énoncé précise qu'elle est reliée à la borne $-$ (le générateur y pousse les électrons, ce qui force la réduction — chapitre 3). Le gaz jaune-vert est du dichlore : il vient de l'oxydation des ions chlorure $2\,Cl^- \rightarrow Cl_2 + 2\,e^-$, c'est donc l'**anode**, reliée à la borne $+$ (le générateur y arrache les électrons).
+          On part de l'observation, comme dans le sujet. Le dépôt de cuivre métallique correspond à la réduction $Cu^{2+} + 2\,e^- \rightleftharpoons Cu$ : c'est donc la **cathode**, et l'énoncé précise qu'elle est reliée à la borne $-$ (le générateur y pousse les électrons, ce qui force la réduction — chapitre 3). Le gaz jaune-vert est du dichlore : il vient de l'oxydation des ions chlorure $2\,Cl^- \rightleftharpoons Cl_2 + 2\,e^-$, c'est donc l'**anode**, reliée à la borne $+$ (le générateur y arrache les électrons).
 
           Le point à ne pas manquer : comme dans toute électrolyse, l'anode est ici la borne $+$ et la cathode la borne $-$ — l'inverse d'une pile.
       - id: q2
@@ -121,9 +121,9 @@ exercises:
         reasoning: |-
           On écrit chaque demi-équation dans le sens imposé par le générateur, à partir des deux couples fournis, puis on somme en équilibrant les électrons. La cathode réduit les ions cuivre ; l'anode oxyde les ions chlorure. Chaque demi-équation échange $2\,e^-$, donc les électrons s'éliminent directement dans la somme.
         steps:
-          - math: 'Cu^{2+}_{(aq)} + 2\,e^- \rightarrow Cu_{(s)}'
+          - math: 'Cu^{2+}_{(aq)} + 2\,e^- \rightleftharpoons Cu_{(s)}'
             note: "Cathode (borne −) : réduction, dépôt de cuivre."
-          - math: '2\,Cl^-_{(aq)} \rightarrow Cl_{2(g)} + 2\,e^-'
+          - math: '2\,Cl^-_{(aq)} \rightleftharpoons Cl_{2(g)} + 2\,e^-'
             note: "Anode (borne +) : oxydation, dégagement de dichlore."
           - math: 'Cu^{2+}_{(aq)} + 2\,Cl^-_{(aq)} \rightarrow Cu_{(s)} + Cl_{2(g)}'
             note: "Bilan : 2 électrons échangés de chaque côté, ils s'éliminent."
@@ -132,7 +132,7 @@ exercises:
         stem: |-
           Le courant $I = 1{,}5\ \text{A}$ est maintenu pendant $\Delta t = 30\ \text{min}$. Calculer la masse de cuivre déposée sur la cathode.
         reasoning: |-
-          Ici on va dans le sens direct de la loi de Faraday (à l'inverse du sujet, qui partait de la masse pour trouver la durée) : durée et intensité donnent la quantité d'électricité, la constante de Faraday la convertit en électrons, la stœchiométrie de $Cu^{2+} + 2\,e^- \rightarrow Cu$ (deux électrons par atome) donne la quantité de cuivre, et la masse molaire finit le travail. On n'oublie pas de convertir les minutes en secondes avant tout calcul de charge.
+          Ici on va dans le sens direct de la loi de Faraday (à l'inverse du sujet, qui partait de la masse pour trouver la durée) : durée et intensité donnent la quantité d'électricité, la constante de Faraday la convertit en électrons, la stœchiométrie de $Cu^{2+} + 2\,e^- \rightleftharpoons Cu$ (deux électrons par atome) donne la quantité de cuivre, et la masse molaire finit le travail. On n'oublie pas de convertir les minutes en secondes avant tout calcul de charge.
         steps:
           - math: '\Delta t = 30\times 60 = 1800\ \text{s}'
             note: "Conversion en secondes avant tout calcul de charge."
