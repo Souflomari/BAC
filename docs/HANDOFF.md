@@ -4809,7 +4809,7 @@ Comme le §11.43, elle tourne en CI (validate-content --strict, 62 notions) sans
 jamais bloquer, et le sens « valeur qui ne résout pas » complète, pour les
 rungs, ce que la porte marqueur→cible fait déjà pour les figures (ADR 0031).
 
-### 11.45 La campagne de correction de contenu vague 1 — cinquante notions triées (PC BOUCLÉ 25/25 ; MATHS BOUCLÉ ; SVT 6/11), 656 correctifs objectifs, les bloquants consignés
+### 11.45 La campagne de correction de contenu vague 1 — quarante-sept notions triées (MATHS 14/14 ; PC 25/25 ; SVT 8/11 ; PHILO 0/12), 656 correctifs objectifs, les bloquants consignés
 
 **EN COURS (une notion à la fois, cadence critiques).** Après les portes
 d'intégrité (§11.43 figures orphelines, §11.44 rung↔titre), la vague-1
@@ -7842,8 +7842,26 @@ yeux de l'élève.
 
 ### 11.93 Le trio d'immunologie et le métabolisme — 21 correctifs, et le défaut le plus cher de tout l'arc était dans une FIGURE
 
-**Où en est la campagne : 50 notions sur 62, 656 correctifs objectifs.** SVT à
-6 sur 11 ; restent 5 SVT et les 12 de philo.
+**Où en est la campagne : 47 notions sur 62, 656 correctifs objectifs.**
+MATHS 14/14, PC 25/25, **SVT 8/11**, PHILO 0/12 — restent trois notions SVT
+(`chaines-de-montagnes`, `granitisation-deformation`,
+`theorie-tectonique-plaques`) et les douze de philo.
+
+> **Le compte, et la commande qui le produit** — parce que le tour de cet arc a
+> été de corriger cinq notes d'auteur qui recopiaient un état périmé (§11.91),
+> et que ce paragraphe-ci ne va pas faire la même chose. Les revues datées se
+> comptent avec :
+> ```
+> ls -d content/*/*/ | while read d; do ls "$d"REVIEW-*.md >/dev/null 2>&1 && echo "$d"; done | wc -l
+> ```
+> **44 notions portent une revue datée.** Les trois qui manquent pour arriver à
+> 47 sont triées mais sans revue, parce qu'elles n'avaient RIEN à déférer —
+> `derivabilite-etude-fonctions` (traitée directement en §11.44),
+> `nombres-complexes-2` et une troisième en PC. Une revue absente ne vaut donc
+> pas « non triée » ; c'est le tableau ci-dessous qui fait foi, pas le compte
+> de fichiers. (Correction du 2026-09-19, même journée : ce paragraphe a
+> d'abord annoncé « 50 notions » et « SVT 6/11 ». Les deux étaient faux, faute
+> d'avoir compté avant d'écrire.)
 
 **LE DÉFAUT LE PLUS CHER DE L'ARC, et il n'était pas dans un texte.** La figure
 du cycle de Krebs (`liberation-energie`) affichait, sur l'étape « les deux
