@@ -167,7 +167,7 @@ Si la lithosphère et la croûte étaient réellement la même chose, alors tout
 
 La lithosphère terrestre n'est pas une coquille continue : elle est fracturée en une douzaine de grandes plaques rigides (plaque africaine, plaque eurasiatique, plaque pacifique, plaque nord-américaine, plaque sud-américaine, plaque indo-australienne, plaque antarctique, et d'autres plus petites), qui se déplacent les unes par rapport aux autres à des vitesses de l'ordre de quelques centimètres par an. Chaque plaque se comporte comme un bloc rigide en son sein — les déformations et les phénomènes intéressants se concentrent presque exclusivement à ses frontières.
 
-Il existe trois grandes familles de frontières de plaques, selon la façon dont les plaques voisines bougent l'une par rapport à l'autre.
+Il existe trois grandes familles de frontières de plaques, selon la façon dont les plaques voisines bougent l'une par rapport à l'autre — la convergence se déclinant elle-même en deux cas, ce qui fait quatre types de frontières en tout.
 
 ### Divergence : les dorsales, où le plancher s'accroît
 
@@ -181,7 +181,7 @@ Le raisonnement mécanique est simple : c'est la densité, acquise avec l'âge p
 
 ### Convergence en collision : quand aucune des deux plaques ne peut plonger
 
-Si les deux plaques qui convergent portent, toutes les deux, de la croûte continentale (parce que l'océan qui les séparait a fini par disparaître entièrement dans une subduction), le scénario change. La croûte continentale est trop peu dense pour s'enfoncer dans le manteau — elle « flotte » (au sens de sa légèreté relative, pas au sens de l'asthénosphère liquide) trop haut pour être avalée. Aucune des deux plaques ne peut donc plonger sous l'autre.
+Si les deux plaques qui convergent portent, toutes les deux, de la croûte continentale (parce que l'océan qui les séparait a fini par disparaître entièrement dans une subduction), le scénario change. La croûte continentale est trop peu dense pour s'enfoncer dans le manteau — elle « flotte » (au sens de sa légèreté relative, pas au sens d'un flotteur posé sur un liquide) trop haut pour être avalée. Aucune des deux plaques ne peut donc plonger sous l'autre.
 
 Que se passe-t-il alors ? Les deux masses continentales, poussées l'une contre l'autre, se compriment, se plissent et s'épaississent — sans pouvoir disparaître en profondeur. C'est ce qu'on appelle une **collision**, et elle produit les plus hautes chaînes de montagnes de la planète. L'exemple le plus spectaculaire est la chaîne de l'Himalaya, née de la collision, toujours en cours aujourd'hui, entre la plaque indienne et la plaque eurasiatique.
 
@@ -288,4 +288,4 @@ Ce qu'on cherche ici : reconnaître, dans un jeu de données concret, la signatu
 
 **Prompt 1.** Sur une carte, une zone de frontière de plaques présente les caractéristiques suivantes : une fosse océanique profonde, une chaîne de volcans actifs alignés à quelques centaines de kilomètres de la fosse (côté continental), et une forte activité sismique concentrée le long d'une bande inclinée qui plonge sous le continent. De quel type de frontière de plaques s'agit-il ? Justifie en identifiant le mécanisme physique à l'œuvre, et explique pourquoi une chaîne de montagnes de collision (comme l'Himalaya) ne présenterait pas ce même volcanisme.
 
-**Prompt 2.** Deux stations GPS sont installées, l'une sur la plaque africaine, l'autre sur la plaque sud-américaine, de part et d'autre de la dorsale médio-atlantique. Sur vingt ans, la distance entre les deux stations augmente régulièrement d'environ 4 centimètres par an. Explique, en remontant jusqu'au moteur ultime de ce mouvement, pourquoi cette distance augmente, et pourquoi elle n'a aucune raison de s'arrêter spontanément dans un avenir proche.
+**Prompt 2.** Deux stations GPS sont installées, l'une sur la plaque africaine, l'autre sur la plaque sud-américaine, de part et d'autre de la dorsale médio-atlantique. Sur vingt ans, la distance entre les deux stations augmente régulièrement d'environ 2 centimètres par an. Explique, en remontant jusqu'au moteur ultime de ce mouvement, pourquoi cette distance augmente, et pourquoi elle n'a aucune raison de s'arrêter spontanément dans un avenir proche.

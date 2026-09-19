@@ -504,7 +504,7 @@ items:
     tags: [gps, convection, preuves_modernes, moteur]
     stem: >
       Des mesures GPS montrent que l'Amérique du Sud et l'Afrique s'écartent
-      d'environ $3\ \text{cm}$ par an. Que mesure-t-on exactement, et que
+      d'environ $2\ \text{cm}$ par an. Que mesure-t-on exactement, et que
       peut-on en conclure sur le moteur du mouvement ?
     type: mcq
     choices:
@@ -561,7 +561,7 @@ items:
 # fichier — et une dette qu'aucun document ne nomme est une dette qu'on ne paie
 # jamais. Le tableau est GÉNÉRÉ contre la convention de la chaîne
 # (web/scripts/lib/couverture-compte.mjs) et gardé par
-# scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
+# web/scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
 # `total_items` cesse de correspondre au contenu du fichier — dans les DEUX
 # directions, donc combler le plancher oblige aussi à venir retourner le drapeau.
 coverage_summary:
@@ -583,9 +583,19 @@ coverage_summary:
     R2: 1
     R3: 1
     R4: 2
+    # R5 — « Les plaques lithosphériques et leurs frontières » — n'a AUCUN item
+    # de banc. Le zéro est ÉCRIT, pas tu : un compte absent n'est pas un compte
+    # neutre. (R0, l'accroche, et R8, « Pour t'entraîner », sont exemptés
+    # par convention : ils ne portent d'item dans aucune notion du corpus.)
+    R5: 0
     R6: 2
     R7: 1
   honest_state: >-
     Les quatre misconceptions déclarées sont couvertes, aucune sous le
     plancher. Deux y siègent EXACTEMENT (3 items) : la marge est nulle
-    et tout retrait d'item la casse.
+    et tout retrait d'item la casse. TROU CONNU, écrit le 2026-09-19 :
+    le barreau R5 — les quatre types de frontières, et le geste « identifier
+    une frontière à partir de ses manifestations » — n'est évalué par aucun
+    item du banc. La sonde cp-r5 ne rattrape rien : la méthode ci-dessus
+    pose que les checkpoints ne comptent pas. La porte ne peut pas le voir,
+    elle ne lit que `floor_met` et `total_items`.
