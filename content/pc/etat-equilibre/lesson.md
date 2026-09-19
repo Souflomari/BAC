@@ -24,7 +24,7 @@ C'est tout l'objet de cette leçon : comprendre ce que veut vraiment dire un ét
 
 ## R1 — Le mécanisme : un équilibre qui n'est pas un arrêt
 
-Reprends le mélange $Fe^{3+}/SCN^-$ de l'accroche, à l'instant précis où sa couleur cesse de changer. Deux explications sont a priori possibles : soit la réaction s'est réellement arrêtée (plus aucune transformation ne se produit), soit quelque chose d'autre se joue. L'ajout de $SCN^-$ supplémentaire vient de trancher : la couleur est répartie, donc la réaction n'était pas terminée. Il faut un modèle qui explique à la fois pourquoi la couleur peut rester rigoureusement stable pendant des heures, ET pourquoi le système reste capable de réagir davantage dès qu'on le perturbe.
+Reprends le mélange $Fe^{3+}/SCN^-$ de l'accroche, à l'instant précis où sa couleur cesse de changer. Deux explications sont a priori possibles : soit la réaction s'est réellement arrêtée (plus aucune transformation ne se produit), soit quelque chose d'autre se joue. L'ajout de $SCN^-$ supplémentaire vient de trancher : la couleur est repartie, donc la réaction n'était pas terminée. Il faut un modèle qui explique à la fois pourquoi la couleur peut rester rigoureusement stable pendant des heures, ET pourquoi le système reste capable de réagir davantage dès qu'on le perturbe.
 
 ### Deux réactions, pas une
 
@@ -129,7 +129,7 @@ $$Q_r = \frac{[C]^c[D]^d}{[A]^a[B]^b}$$
 
 *Pourquoi cette construction précisément :* un rapport produits sur réactifs mesure directement où en est la réaction - un $Q_r$ petit signifie qu'il y a encore beaucoup de réactifs et peu de produits (la réaction a peu avancé) ; un $Q_r$ grand signifie l'inverse (la réaction a beaucoup avancé). Les exposants ne sont pas décoratifs : ils reprennent exactement les coefficients de l'équation, parce que c'est cette équation-là, et aucune autre pondération, qui relie la consommation des réactifs à la formation des produits.
 
-Une précision importante : si l'un des participants à la réaction est le solvant (l'eau, en large excès) ou un solide pur, sa concentration ne varie pratiquement pas au cours de la réaction - elle n'apparaît donc pas dans $Q_r$. On ne garde que les espèces dissoutes dont la concentration varie réellement avec l'avancement. Comme $K_e$ pour l'eau, $Q_r$ est une grandeur sans unité, par convention (chaque concentration, en mol/L, est rapportée à une concentration de référence égale à $1\ \text{mol/L}$).
+Une précision importante : si l'un des participants à la réaction est le solvant (l'eau, en large excès) ou un solide pur, sa concentration ne varie pratiquement pas au cours de la réaction - elle n'apparaît donc pas dans $Q_r$. On ne garde que les espèces dissoutes dont la concentration varie réellement avec l'avancement. $Q_r$ est une grandeur sans unité, par convention (chaque concentration, en mol/L, est rapportée à une concentration de référence égale à $1\ \text{mol/L}$).
 
 ### L'expression de $Q_r$ pour notre réaction
 
@@ -143,7 +143,7 @@ $$Q_r = \frac{[FeSCN^{2+}]}{[Fe^{3+}][SCN^-]}$$
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* on veut comprendre, avant de calculer quoi que ce soit, pourquoi $Q_r$ ne peut qu'augmenter au cours de notre transformation - et pas se comporter n'importe comment.
 
-Reprends le mécanisme du chapitre précédent : tant que la réaction directe l'emporte sur la réaction inverse, $[FeSCN^{2+}]$ (le numérateur de $Q_r$) augmente, tandis que $[Fe^{3+}]$ et $[SCN^-]$ (le dénominateur) diminuent tous les deux. Un numérateur qui grandit divisé par un dénominateur qui rétrécit : $Q_r$ ne peut qu'augmenter. C'est la même mécanique de fond que la diminution de la vitesse $v(t)$ vue dans le chapitre sur le suivi temporel - ici appliquée non pas à une vitesse, mais au rapport produits/réactifs lui-même.
+Reprends le mécanisme du chapitre 2 : tant que la réaction directe l'emporte sur la réaction inverse, $[FeSCN^{2+}]$ (le numérateur de $Q_r$) augmente, tandis que $[Fe^{3+}]$ et $[SCN^-]$ (le dénominateur) diminuent tous les deux. Un numérateur qui grandit divisé par un dénominateur qui rétrécit : $Q_r$ ne peut qu'augmenter. C'est la même mécanique de fond que la diminution de la vitesse $v(t)$ vue dans le chapitre sur le suivi temporel - ici appliquée non pas à une vitesse, mais au rapport produits/réactifs lui-même.
 
 ### Exemple travaillé : $Q_r$ minute après minute
 
@@ -245,7 +245,7 @@ $Q_{r,i} \approx 5{,}4\times10^2$, très inférieur à $K = 1875$ : le critère 
 
 ## R6 — Diluer, changer l'état initial : l'effet sur $\tau$ (à $K$ constante)
 
-$K$ ne bouge jamais, à température fixée - tu viens de le vérifier au chapitre 5. Mais $\tau$, lui, peut changer si l'on change l'état initial du système. La dilution en est l'exemple le plus direct : que se passe-t-il si l'on ajoute de l'eau à un mélange, sans rien changer d'autre ?
+$K$ ne bouge jamais, à température fixée - tu l'as vérifié au chapitre 5. Mais $\tau$, lui, peut changer si l'on change l'état initial du système. La dilution en est l'exemple le plus direct : que se passe-t-il si l'on ajoute de l'eau à un mélange, sans rien changer d'autre ?
 
 ### Ce qui se passe, immédiatement, en diluant
 
@@ -294,7 +294,7 @@ $\tau'' \approx 0{,}23$, nettement plus petit que $\tau_1 = 0{,}60$ avant diluti
 
 ### Exercice de type bac
 
-Ce qui suit est un vrai sujet d'examen national — **2015, session normale**. Il ne porte pas sur le mélange $Fe^{3+}/SCN^-$ de la leçon, mais sur un autre système à l'équilibre : un acide faible (l'acide benzoïque) dans l'eau. C'est voulu — le jour J, on te demande d'appliquer les mêmes outils (taux d'avancement final $\tau$, quotient de réaction à l'équilibre $Q_{r,eq}$, constante $K$) à une situation que tu n'as jamais vue. Pour chaque question : cherche sur papier d'abord, engage une réponse, puis seulement ouvre le raisonnement expert et compare-le au tien.
+Ce qui suit est un vrai sujet d'examen national — **2015, session normale**. Il ne porte pas sur le mélange $Fe^{3+}/SCN^-$ de la leçon, mais sur un autre système à l'équilibre : un acide faible (l'acide benzoïque) dans l'eau. C'est voulu — le jour J, on te demande d'appliquer les mêmes outils (taux d'avancement final $\tau$, quotient de réaction à l'équilibre $Q_{r,eq}$, constante $K$ — que ce sujet applique à un couple acide/base, où elle prend le nom de constante d'acidité $K_A$) à une situation que tu n'as jamais vue. Pour chaque question : cherche sur papier d'abord, engage une réponse, puis seulement ouvre le raisonnement expert et compare-le au tien.
 
 [[exercise:r-bac]]
 

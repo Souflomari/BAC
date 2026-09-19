@@ -252,11 +252,12 @@ checkpoints:
     choices:
       - id: A
         text: |
-          l'instant où l'avancement $x$ atteint la moitié de sa valeur finale $x_{max}$.
+          l'instant où l'avancement $x$ atteint la moitié de sa valeur finale $x_f$.
         correct: true
         feedback: |
           Exact. $t_{1/2}$ se définit par l'**avancement** : $x(t_{1/2}) =
-          x_{max}/2$. On calcule $x_{max}/2$, on en déduit la grandeur mesurée
+          x_f/2$, où $x_f$ est l'avancement du palier. Ici la réaction est
+          totale, donc $x_f = x_{max}$ : on calcule $x_{max}/2$, on en déduit la grandeur mesurée
           ($G$, $\sigma$…) correspondante, puis on lit l'abscisse sur la courbe.
       - id: B
         text: |

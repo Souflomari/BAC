@@ -28,7 +28,7 @@ On dit qu'une transformation est **lente** quand son évolution s'étale sur une
 
 ### Pourquoi ce critère est pratique, et non une propriété figée de la réaction
 
-Remarque bien ceci : la frontière « rapide / lente » ne décrit pas une propriété physique absolue, gravée dans la nature de la réaction — elle décrit le rapport entre la durée de la transformation et nos moyens usuels d'observation. Une réaction qui paraît instantanée à l'oeil nu peut, avec un instrument de mesure plus rapide, se révéler s'étaler sur quelques millisecondes parfaitement mesurables. Ce critère sert surtout à une décision pratique : comment étudier la transformation ? Une transformation rapide ne se laisse observer qu'APRÈS coup — on ne voit que l'état final, tout est déjà joué. Une transformation lente, elle, peut être SUIVIE pendant qu'elle se déroule : on peut prélever, mesurer, tracer son évolution minute par minute — ce sera précisément l'objet du chapitre suivant.
+Remarque bien ceci : la frontière « rapide / lente » ne décrit pas une propriété physique absolue, gravée dans la nature de la réaction — elle décrit le rapport entre la durée de la transformation et nos moyens usuels d'observation. Une réaction qui paraît instantanée à l'oeil nu peut, avec un instrument de mesure plus rapide, se révéler s'étaler sur quelques millisecondes parfaitement mesurables. Ce critère sert surtout à une décision pratique : comment étudier la transformation ? Une transformation rapide ne se laisse observer qu'APRÈS coup — on ne voit que l'état final, tout est déjà joué. Une transformation lente, elle, peut être SUIVIE pendant qu'elle se déroule : on peut prélever, mesurer, tracer son évolution minute par minute — ce sera précisément l'objet de la notion « Suivi temporel d'une transformation — vitesse de réaction ».
 
 ### Quelques repères
 
@@ -151,7 +151,7 @@ Augmenter la température, c'est augmenter l'agitation thermique des entités �
 
 Ces deux effets s'additionnent, ce qui explique pourquoi l'effet de la température est souvent particulièrement marqué : une élévation même modeste de température peut accélérer nettement une transformation, alors qu'elle ne change presque rien à la concentration des espèces en présence.
 
-Dans le prochain chapitre, tu apprendras à SUIVRE une transformation comme celle-ci minute par minute — à mesurer une grandeur physique liée à son avancement pour construire une courbe, et en tirer une vitesse de réaction chiffrée. Ici, il suffisait de comprendre *pourquoi* cette vitesse change ; la mesurer précisément attendra.
+Dans la notion « Suivi temporel d'une transformation — vitesse de réaction », tu apprendras à SUIVRE une transformation comme celle-ci minute par minute — à mesurer une grandeur physique liée à son avancement pour construire une courbe, et en tirer une vitesse de réaction chiffrée. Ici, il suffisait de comprendre *pourquoi* cette vitesse change ; la mesurer précisément attendra.
 
 ---
 
