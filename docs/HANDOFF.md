@@ -7113,7 +7113,39 @@ imprime littéralement « (Réponse : … ) » dans les 500 caractères précéd
 marqueur de point d'arrêt. Aucune lecture n'est nécessaire pour trancher — la
 réponse est écrite noir sur blanc, puis redemandée.
 
-**Sévérité mesurée** : 2 occurrences sur les 62 notions, toutes deux en SVT.
+**MESURE CLOSE, 2026-09-19 — pourquoi le reste ne se mécanise pas.** Après
+que les critiques ont trouvé ce défaut À LA MAIN dans QUATRE notions
+(`controle-catalyse` 5 portes sur 6, `evolution-spontanee` 4 sur 5, `piles`
+3 sur 5, `transformations-deux-sens` 1), j'ai essayé **quatre** conceptions de
+sonde :
+
+| # | conception | signaux | verdict |
+|---|---|---|---|
+| 1 | sacs de mots, fenêtre 420 car. | 30 | beaucoup de faux (les accroches prédisent, donc partagent le vocabulaire du scénario) |
+| 2 | idem, ≥ 8 mots de contenu, accroche exclue | 13 | sévérité mêlée |
+| 3 | fenêtre portée à 1 500 car. | 35 | **n'attrape toujours aucune des 3 de `piles`** |
+| 4 | phrase de 5 mots reprise MOT POUR MOT | 37 | idem |
+
+**Aucune ne voit les cas de `piles`, et la raison est structurelle** : la bonne
+réponse de `cp-r3-anode-cathode` est « *C'est la cathode, borne $+$* » — **deux
+mots de contenu**. `lesson.md:119` écrit « *c'est la cathode, la borne $+$* »
+vingt-deux lignes plus haut. Un écho de deux mots dans une prose qui traite
+justement de la cathode est **indiscernable d'une répétition thématique
+normale**. Le critique l'a trouvé en COMPRENANT, pas en appariant. Aucun seuil
+ne sépare les deux cas, et en baisser un ramène les faux positifs des accroches.
+
+**Ce qui est acquis quand même** : l'INTERSECTION des conceptions 2 et 4 —
+deux appariements indépendants qui tombent d'accord — donne **5 signaux de
+haute confiance**, dont celui que le critique avait trouvé à la main et que
+j'ai vérifié ligne à ligne. C'est la liste à traiter en premier :
+
+- `pc/controle-catalyse` / `cp-r2-catalyseur-bilan` *(confirmé à la main)*
+- `philo/la-verite` / `cp-r4-rupture`
+- `philo/la-violence` / `cp-r3-hobbes`
+- `philo/la-violence` / `cp-r6-gandhi`
+- `philo/le-droit-la-justice` / `cp-r6-rupture`
+
+**Sévérité mesurée** de la porte armée : 2 occurrences sur les 62 notions, toutes deux en SVT.
 `genetique-humaine` écrivait *« peux-tu dire, sans relire, combien de paires
 sont des autosomes, et combien sont des gonosomes ? **(Réponse : 22 et 1 …)** »*
 juste avant le point d'arrêt qui demande ces deux nombres.
