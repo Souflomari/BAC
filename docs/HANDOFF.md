@@ -7715,3 +7715,28 @@ vraies notes d'auteur devenues fausses :
 
 Les deux notes de `structures-algebriques` que §11.45 avait signalées portent
 bien, elles, leur MISE À JOUR datée : re-grep refait, elles disent vrai.
+
+---
+
+### 11.90 Une garde de périmètre revendiquait une filière que le cadre déclare non extraite — les onze notions SVT
+
+Trouvé sur `soi-non-soi` (§11.88), puis compté : **les onze `checkpoints.yaml`
+de la SVT** ouvrent sur « Garde de périmètre : 2ème Bac **SVT/PC** ». Or
+`docs/cadre/curriculum/svt.yaml` porte un bloc `variante_pc` dont le statut est
+« **DISTINCTE — non extraite** » : la SVT en filière Sciences Physiques a un
+cadre séparé (élément AlloSchool distinct), un coefficient différent et un
+programme allégé, et « nécessitera sa propre passe si l'app ouvre la filière
+PC ». Rien dans le dépôt ne permet donc d'affirmer que ce périmètre vaut pour
+PC.
+
+Deux revues de septembre l'avaient déjà signalé notion par notion
+(`genetique-humaine` F13, `genetique-populations` S5) sans que la classe soit
+traitée. Les onze sont maintenant restreintes à « 2ème Bac, filière SVT », avec
+la raison écrite **dans le fichier** — pas seulement ici : une garde de
+périmètre est lue par l'auteur suivant au moment où il écrit, et c'est là qu'il
+faut que la raison soit.
+
+C'est un défaut d'auteur, pas un défaut rendu : aucun élève ne lit ces lignes.
+Mais c'est exactement le genre d'affirmation qui pilote des décisions de
+contenu — « on peut / on ne peut pas mettre ça, c'est dans le périmètre » —, et
+une affirmation de périmètre fausse coûte le travail qu'elle autorise à tort.
