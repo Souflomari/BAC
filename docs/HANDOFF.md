@@ -7740,3 +7740,53 @@ C'est un défaut d'auteur, pas un défaut rendu : aucun élève ne lit ces ligne
 Mais c'est exactement le genre d'affirmation qui pilote des décisions de
 contenu — « on peut / on ne peut pas mettre ça, c'est dans le périmètre » —, et
 une affirmation de périmètre fausse coûte le travail qu'elle autorise à tort.
+
+---
+
+### 11.91 La note d'auteur qui INVENTORIE le corpus — cinq notes que le corpus a dépassées
+
+Sous-classe de la note périmée (§11.45 §1), et la plus mécanique de toutes :
+une note d'auteur qui **énumère l'état du corpus** (« quatre autres notions PC
+restent sans banque — A, B, C, D »). Elle est datée du jour où elle est écrite
+et fausse dès le commit suivant. Cinq trouvées, toutes fausses :
+
+| Fichier | Ce que la note affirmait | Mesuré le 2026-09-19 |
+| --- | --- | --- |
+| `pc/transformations-deux-sens/bank.yaml` | 4 notions PC + 1 maths sans banque | **1 PC, 0 maths** |
+| `pc/controle-catalyse/bank.yaml` | 4 notions PC + 1 maths sans banque | idem |
+| `pc/lois-de-newton/bank.yaml` | 6 notions sans banque | idem |
+| `pc/transformations-lentes-rapides/bank.yaml` | 4 notions PC + 1 maths | idem |
+| `pc/propagation-onde-lumineuse/bank.yaml` | « TROIS entrées », « la moins couverte du corpus PC » | **5 entrées, exactement à la médiane** |
+
+**L'état vrai, et la commande qui le produit** — parce qu'un chiffre recopié
+se périme et qu'une commande, non (ADR 0031) :
+
+```
+for d in content/*/*/; do [ -f "$d/bank.yaml" ] || echo "${d#content/}"; done
+grep -c "^  - id: bk-" content/pc/*/bank.yaml
+```
+
+24 notions sur 62 sans `bank.yaml` — **1 en PC** (`atome-mecanique-newton`),
+les 12 de philo, les 11 de SVT. 13 sans `exercises.yaml` — 2 en philo
+(`l-histoire`, `le-bonheur`) et les 11 de SVT. Distribution PC des entrées de
+banque : de 0 à 19, médiane 5.
+
+**La règle qui en sort, et elle vaut pour toute la documentation du dépôt :**
+*une note d'auteur ne recopie pas un état, elle porte la commande qui le
+mesure.* Les cinq notes portent désormais leur commande. Ce n'est pas
+cosmétique : ces listes servent à décider où travailler ensuite — quatre
+d'entre elles envoyaient encore le prochain auteur écrire une banque qui
+existe déjà.
+
+**Deux résultats négatifs de la même passe, consignés pour ne pas les
+refaire.** (1) **Les attributions de philosophes en philo sont saines.** Sonde
+sur les 12 notions, 2 700 mentions d'auteurs : 59 citations apparaissent près
+de deux noms ou plus, mais toutes sont des artefacts de proximité. Les sept
+plus risquées vérifiées à la main — « pierre qui vole » (Spinoza), « faisceau
+de perceptions » (Hume), « forensique » (Locke), « animal politique »
+(Aristote), « L'impulsion du seul appétit est esclavage » et « le plus fort
+n'est jamais assez fort » (Rousseau) — **toutes justes**. Le seul endroit où
+une formule de Hume est prêtée à Locke est un DISTRACTEUR, qui est là pour ça.
+(2) **Les 117 renvois inter-leçons nommés** (« chapitre N de « Titre » »)
+résolvent tous dans les bornes de la leçon citée, et le titre du chapitre visé
+correspond au sujet invoqué partout où c'est jugeable.

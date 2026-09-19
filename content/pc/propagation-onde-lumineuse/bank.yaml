@@ -20,8 +20,13 @@
 # banque de cette notion — le fichier n'existait pas avant son commit (la
 # notion n'avait que items/checkpoints/exercises + lesson). Elle a depuis été
 # rejointe par bk-2025-r-x2, puis par bk-2021-n-x2 (ajoutée 2026-08-27), ce
-# qui porte la banque à TROIS entrées ; la notion reste l'une des moins
-# couvertes du corpus PC. L'ordre du fichier est chronologique (année, puis
+# qui porte la banque à TROIS entrées ; la notion restait alors l'une des
+# moins couvertes du corpus PC.
+# MISE À JOUR (revue vague 1, 2026-09-19) : recompté — la banque en porte
+# CINQ, et la notion n'est plus parmi les moins couvertes. Distribution PC
+# mesurée ce jour : de 0 (`atome-mecanique-newton`) à 19
+# (`chute-mouvements-plans`), médiane 5 ; cette notion est exactement à la
+# médiane. La commande : grep -c "^  - id: bk-" content/pc/*/bank.yaml L'ordre du fichier est chronologique (année, puis
 # normale avant rattrapage) : bk-2021-n-x2 (2021, normale) vient donc EN
 # PREMIER, suivie de bk-2023-r-x2 (2023, rattrapage) puis bk-2025-r-x2 (2025,
 # rattrapage). Il n'y a pour l'instant aucune autre entrée de session
@@ -644,7 +649,12 @@ entries:
   #    comparant DEUX largeurs de tache de diffraction ──
   #
   # NOTE ÉDITORIALE — DEUXIÈME ENTRÉE DE CETTE BANQUE, qui n'en comptait
-  # qu'une. La notion reste la moins couverte du corpus PC ; elle double ici.
+  # qu'une : elle double ici.
+  # MISE À JOUR (2026-09-19) : la phrase « la notion reste la moins couverte
+  # du corpus PC » était vraie à l'écriture et ne l'est plus — la banque en
+  # porte cinq, et `atome-mecanique-newton` en porte zéro. Retirée plutôt que
+  # re-chiffrée : un classement se périme à chaque ajout, un compte se
+  # recompte (voir la note en tête de fichier).
   #
   # NOTE ÉDITORIALE — FLAG DE JUMELAGE (bk-2025-r-x2 face à bk-2023-r-x2). Les
   # deux sont des exercices de diffraction de session de rattrapage, et les

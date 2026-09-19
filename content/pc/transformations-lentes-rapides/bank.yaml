@@ -26,7 +26,18 @@
 # energetiques, atome-mecanique-newton, controle-catalyse,
 # transformations-deux-sens — plus une en maths, derivabilite-etude-
 # fonctions ; l'état est consigné tel quel : la page « S'entraîner » de ces
-# notions n'affiche rien plutôt que d'afficher du remplissage.
+# notions n'affiche rien plutôt que d'afficher du remplissage.#
+# MISE À JOUR (revue vague 1, 2026-09-19) : la liste de notions « sans
+# banque » ci-dessus est PÉRIMÉE — recomptée sur le dépôt, elle est fausse.
+# État vrai au 2026-09-19, en PC : une seule notion sans `bank.yaml`,
+# `atome-mecanique-newton` ; aucune en maths. À l'échelle du corpus, 24
+# notions sur 62 n'ont pas de banque (1 PC + les 12 de philo + les 11 de
+# SVT) et 13 n'ont pas d'`exercises.yaml` (2 philo + les 11 de SVT).
+# La commande qui produit ces chiffres, à relancer plutôt qu'à recopier :
+#   for d in content/*/*/; do [ -f "$d/bank.yaml" ] || echo "${d#content/}"; done
+# Le principe, lui, n'a pas bougé : la page « S'entraîner » d'une notion sans
+# banque n'affiche rien plutôt que du remplissage.
+
 #
 # FLAG DE RECOUPEMENT AVEC LE SOMMET (r-bac, exercises.yaml). bk-2010-n-x1
 # et le sommet r-bac de cette même leçon (marqueur [[exercise:r-bac]] à R5,
