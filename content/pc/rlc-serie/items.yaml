@@ -159,7 +159,8 @@ items:
         also_reveals: []
         feedback: "R ne fournit jamais d'énergie : la puissance dissipée par R est $P = Ri^2 \\geq 0$, toujours positive, donc toujours perdue en chaleur."
       - id: C
-        text: "Oui. Une plus grande résistance augmente la fréquence des oscillations, qui semblent alors plus nombreuses sur la même durée d'observation."
+        text: "Oui. Une plus grande résistance augmente la fréquence des oscillations, qui semblent alors plus nombreuses sur la même durée d'observation.
+        Amortir un circuit reviendrait donc à l'accélérer."
         correct: false
         misconception: mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
         also_reveals: []
@@ -810,7 +811,8 @@ items:
         also_reveals: [mc.physics.rlc_serie.pseudo-periode-egale-periode-propre]
         feedback: "Le cosinus simple ne satisfait pas l'ODE amortie (il laisse un reste $R\\dot{q} \\neq 0$). Il n'est valable que pour $R = 0$."
       - id: C
-        text: "Il est partiellement correct : la forme sinusoïdale est juste, mais l'amplitude $Q_{max}$ doit être remplacée par une exponentielle décroissante du temps."
+        text: "Il est partiellement correct : la forme sinusoïdale est juste, mais l'amplitude $Q_{max}$ doit être remplacée par une exponentielle décroissante du temps.
+        Un régime libre non amorti garderait donc lui aussi une amplitude variable."
         correct: false
         misconception: mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
         also_reveals: []
@@ -855,7 +857,8 @@ items:
         also_reveals: []
         feedback: "Les formules sont interverties. L'énergie électrique est stockée dans le condensateur ($E_C = \\frac{1}{2}Cu_C^2$) ; l'énergie magnétique est stockée dans la bobine ($E_L = \\frac{1}{2}Li^2$)."
       - id: C
-        text: "Les deux énergies sont maximales exactement au même instant du cycle, puisque le condensateur et la bobine se chargent ensemble."
+        text: "Les deux énergies sont maximales exactement au même instant du cycle, puisque le condensateur et la bobine se chargent ensemble.
+        L'énergie totale du circuit oscillerait donc entre zéro et un maximum."
         correct: false
         misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
         also_reveals: []
@@ -979,7 +982,8 @@ items:
         text: "Il compense l'énergie dissipée par effet Joule ; les oscillations se font à la période propre $T_0 = 2\\pi\\sqrt{LC}$."
         correct: true
       - id: B
-        text: "Il impose sa propre fréquence au circuit (régime forcé) : la période dépend du générateur."
+        text: "Il impose sa propre fréquence au circuit (régime forcé) : la période dépend du générateur.
+        Modifier $L$ ou $C$ ne changerait donc rien à la période observée."
         correct: false
         misconception: mc.physics.rlc_serie.entretien-est-regime-force
         also_reveals: []
@@ -1082,7 +1086,8 @@ items:
         also_reveals: [mc.physics.rlc_serie.T0-depend-de-R]
         feedback: "Cette formule est inventée. Avec $k = R$, l'ODE réduite est $L\\ddot{q} + q/C = 0$, dont la solution a la période $T_0 = 2\\pi\\sqrt{LC}$. Aucun facteur correctif."
       - id: D
-        text: "Oui. Pour que les oscillations soient entretenues, il faut $k > R$, ce qui amplifie la fréquence."
+        text: "Oui. Pour que les oscillations soient entretenues, il faut $k > R$, ce qui amplifie la fréquence.
+        Un montage d'entretien modifierait donc la période propre du circuit."
         correct: false
         misconception: mc.physics.rlc_serie.entretien-est-regime-force
         also_reveals: [mc.physics.rlc_serie.plus-de-R-oscille-plus-vite]
@@ -1188,7 +1193,8 @@ items:
           pas la période d'oscillation du circuit RLC.
           La période propre s'écrit $T_0 = 2\pi\sqrt{LC}$ : R n'y figure pas.
       - id: C
-        text: "$T_0 = 2\\pi\\sqrt{L/C} = 2\\pi\\sqrt{4000} \\approx 396\\,\\text{s}$, en formant le rapport de $L$ sur $C$ plutôt que leur produit."
+        text: "$T_0 = 2\\pi\\sqrt{L/C} = 2\\pi\\sqrt{4000} \\approx 396\\,\\text{s}$, en formant le rapport de $L$ sur $C$ plutôt que leur produit.
+        La période propre s'exprimerait donc en racine de henry par farad."
         correct: false
         misconception: mc.physics.rlc_serie.T0-depend-de-R
         also_reveals: []
@@ -1343,6 +1349,7 @@ items:
           (b) $T_0 = 2\pi\sqrt{LC} \approx 9{,}9\,\text{ms}$.
           (c) On ne peut pas vérifier ni donner $q(t)$ sous forme close :
           il faut d'abord établir que le régime est périodique.
+          Un oscillateur non amorti n'aurait donc aucune solution analytique connue, et il faudrait se contenter d'une résolution numérique pas à pas.
         correct: false
         misconception: mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
         also_reveals: []
@@ -1706,6 +1713,7 @@ items:
       - id: D
         text: |
           (a) $E_0 = 4{,}0 \times 10^{-4}\,\text{J}$. (b) L'énergie perdue par $R$ finit par se retrouver stockée définitivement dans la bobine, sous forme magnétique, sans jamais revenir vers le condensateur ; l'amplitude de $u_C$ décroît donc tandis que celle du courant se maintient. (c) $k = R = 25\,\Omega$ ; $T_0 \approx 7{,}9\,\text{ms}$.
+          Le circuit conserverait donc son énergie totale malgré l'amortissement, la bobine jouant le rôle d'un réservoir définitif.
         correct: false
         misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
         also_reveals: []
@@ -1810,7 +1818,8 @@ items:
         text: "(a) $T = t_2 - t_1 = 6{,}0\\,\\text{ms} \\approx T_0 = 5{,}96\\,\\text{ms}$ (écart $\\approx$ 0,7 %, cohérent avec un faible amortissement). (b) $E_{C,1} = 3{,}75\\times10^{-5}\\,\\text{J}$, $E_{C,2} = 1{,}35\\times10^{-5}\\,\\text{J}$ ; la différence ($2{,}4\\times10^{-5}\\,\\text{J}$) a été dissipée par effet Joule dans $R$ entre $t_1$ et $t_2$."
         correct: true
       - id: B
-        text: "(a) $T$ doit être exactement égal à $T_0 = 5{,}96\\,\\text{ms}$ ; la valeur mesurée ($6{,}0\\,\\text{ms}$) est une simple erreur d'expérience qu'il faut corriger avant toute exploitation. (b) $E_{C,1} = 3{,}75\\times10^{-5}\\,\\text{J}$ et $E_{C,2} = 1{,}35\\times10^{-5}\\,\\text{J}$, sans autre commentaire."
+        text: "(a) $T$ doit être exactement égal à $T_0 = 5{,}96\\,\\text{ms}$ ; la valeur mesurée ($6{,}0\\,\\text{ms}$) est une simple erreur d'expérience qu'il faut corriger avant toute exploitation. (b) $E_{C,1} = 3{,}75\\times10^{-5}\\,\\text{J}$ et $E_{C,2} = 1{,}35\\times10^{-5}\\,\\text{J}$, sans autre commentaire.
+        L'amortissement n'aurait donc aucun effet sur la pseudo-période mesurée."
         correct: false
         misconception: mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
         also_reveals: []
