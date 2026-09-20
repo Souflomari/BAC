@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 137 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 138 entrées.
 > **Un propriétaire qui revient lit d'abord
 > `docs/audits/DECISIONS-EN-ATTENTE.md`** — la liste, en une page, de ce qui
 > attend un arbitrage et de ce que coûte chaque attente. Rien n'y est en train
@@ -11041,4 +11041,49 @@ lance à la main, et son en-tête dit quand.
 mesurées ici ne sont **pas** celles d'un élève marocain. La production reste
 hors de portée et humainement gardée. Tout ce qui demande un compte connecté
 aussi.
+
+## §11.138 — Zéro en-tête de sécurité sur cinq, et un total qui ne comptait pas tout
+
+Première chose mesurée grâce au §11.137, qui venait d'ouvrir l'artefact
+déployé : **sur cinq en-têtes de sécurité attendus, ZÉRO était servi.** Vercel
+pose `strict-transport-security` de lui-même ; tout le reste manquait, parce
+que `next.config.mjs` n'avait pas de `headers()` du tout. C'est une classe que
+le build local ne pouvait pas révéler — un en-tête absent ne rend rien de
+visible, ne casse aucun contrôle, et ne se lit que sur la réponse servie.
+
+**Quatre sont posés, le cinquième ne l'est pas, et les deux décisions sont
+écrites.** `X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN`
+(le site CADRE des iframes PhET ; il n'a jamais besoin d'être cadré, lui),
+`Referrer-Policy: strict-origin-when-cross-origin`, et `Permissions-Policy`
+refusant caméra, micro et position à tout le monde, iframes tierces comprises.
+Aucun ne change ce que la page rend. **`Content-Security-Policy` est laissé à
+l'owner** (`DECISIONS-EN-ATTENTE` §11) : posée à l'aveugle, elle casse la page
+en silence chez l'élève, et rien en local ne le verrait.
+
+**La porte lit la RÉPONSE, jamais la configuration**, et c'est tout l'intérêt :
+`headers()` peut être juste et l'en-tête absent — une clé mal orthographiée, un
+`source` qui ne filtre pas la route, une option de sortie qui les supprime tous.
+Lire le fichier répondrait « c'est écrit », pas « c'est servi ». L'essai rouge
+casse donc `.next/routes-manifest.json`, le manifeste BÂTI, et non la config :
+Next compile les en-têtes à la construction, si bien que modifier la config
+sans reconstruire ne change rien à ce qui est servi — **précisément l'écart que
+ce contrôle surveille**. Verdict : ROUGE sur les deux routes, fichier restauré
+octet pour octet. Il n'est pas dans la suite rejouable, et la raison est écrite
+à côté du contrôle : `dom-truth` prend six minutes et `essai-rouge` la lance
+deux fois.
+
+**Et le total de `dom-truth` ne comptait pas mes deux contrôles.** Après les
+avoir ajoutés, le chiffre de tête était toujours « 277 checks » : `checks++`
+est **opt-in** dans ce fichier — 97 sites l'appellent, chacun devant y penser.
+Deux contrôles tournaient, capables d'échouer, et le nombre affiché n'avait pas
+bougé. Corrigé (279), et la leçon est écrite sur place : **un total auquel
+chaque contrôle doit s'inscrire est un PLANCHER, pas une somme.** L'erreur va
+dans le sens sûr — on sous-compte — mais un chiffre de tête qui n'inclut pas
+tout ce qui a tourné est exactement le genre de chiffre qu'on cite ensuite sans
+y penser.
+
+**Au passage, le poids servi, mesuré chez l'hébergeur :** une page de leçon
+pèse **2,95 Mo de HTML brut, 254 ko une fois comprimée** (facteur 11,6). Le
+chiffre brut est celui que `curl -I` annonce, et ce n'est pas celui que l'élève
+télécharge — les deux méritaient d'être dans la même phrase.
 

@@ -4409,6 +4409,70 @@ try {
     await opage.close();
   }
 
+  // ── SWEEP: les en-têtes de sécurité, sur la RÉPONSE SERVIE (§11.138) ───────
+  //    Mesuré le 2026-09-20 sur l'artefact déployé : sur cinq en-têtes
+  //    attendus, ZÉRO était servi (Vercel pose `strict-transport-security` de
+  //    lui-même ; tout le reste manquait). Quatre sont désormais posés dans
+  //    `next.config.mjs`.
+  //
+  //    LE CONTRÔLE PORTE SUR LA RÉPONSE, PAS SUR LA CONFIGURATION, et c'est
+  //    tout l'intérêt : `headers()` peut être juste et l'en-tête absent — une
+  //    clé mal orthographiée, un `source` qui ne filtre pas la route, un
+  //    `output: export` qui les supprime tous. Lire le fichier de config
+  //    répondrait « c'est écrit », pas « c'est servi ».
+  //
+  //    `Content-Security-Policy` n'est PAS exigé ici : il n'est pas posé, et
+  //    délibérément (arbitrage owner, `DECISIONS-EN-ATTENTE` §11). Exiger un
+  //    en-tête qu'on a choisi de ne pas poser rendrait la porte rouge en
+  //    permanence.
+  //
+  //    ESSAI ROUGE, fait à la main le 2026-09-20 et PAS dans la suite
+  //    rejouable — avec sa raison, parce qu'un essai qu'on ne peut pas
+  //    rejouer est un souvenir (ADR 0034) et qu'il faut alors dire pourquoi :
+  //    `dom-truth` prend six minutes, et `essai-rouge` la lance DEUX fois
+  //    (pré-contrôle puis arbre cassé) ; l'ajouter aux 47 essais rendrait la
+  //    suite inutilisable. La commande exacte, à rejouer telle quelle :
+  //
+  //      node scripts/essai-rouge.mjs \
+  //        --fichier .next/routes-manifest.json \
+  //        --de '{"key":"X-Frame-Options","value":"SAMEORIGIN"},' --vers '' \
+  //        --porte "node scripts/dom-truth.mjs"
+  //
+  //    Verdict obtenu : ROUGE sur les deux routes (« x-frame-options=ABSENT »),
+  //    fichier restauré octet pour octet. On casse le MANIFESTE BÂTI et non
+  //    `next.config.mjs`, parce que Next compile les en-têtes à la
+  //    construction : modifier la config sans reconstruire ne change rien à ce
+  //    qui est servi — et c'est précisément l'écart que ce contrôle surveille.
+  {
+    console.log(`\n[hdr] SWEEP: les en-têtes de sécurité sont-ils SERVIS ?`);
+    const ATTENDUS = {
+      "x-content-type-options": "nosniff",
+      "x-frame-options": "SAMEORIGIN",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "permissions-policy": "camera=(), microphone=(), geolocation=()",
+    };
+    for (const route of ["/", "/notions/pc/rlc-serie"]) {
+      const rep = await fetch(`${BASE}${route}`, { redirect: "manual" });
+      const manquants = [];
+      for (const [cle, val] of Object.entries(ATTENDUS)) {
+        const vu = rep.headers.get(cle);
+        if (vu !== val) manquants.push(`${cle}=${vu === null ? "ABSENT" : `« ${vu} »`}`);
+      }
+      if (manquants.length) {
+        checks++;
+        failures += fail(`${route} : en-tête(s) de sécurité non servi(s) — ${manquants.join(", ")}`);
+      } else {
+        //  `checks++` est OPT-IN dans ce fichier : le total imprimé ne compte
+        //  que les sites qui pensent à l'incrémenter. Mon premier jet l'avait
+        //  oublié — deux contrôles tournaient, capables d'échouer, et le
+        //  chiffre de tête n'avait pas bougé. Un total auquel chaque contrôle
+        //  doit s'inscrire est un PLANCHER, pas une somme.
+        checks++;
+        console.log(`  ✓ ${route} : les 4 en-têtes de sécurité sont servis`);
+      }
+    }
+  }
+
   // ── SWEEP: token source parity — every CSS custom property resolves to its
   //    tokens.ts value, in BOTH themes. The single-source guarantee, asserted
   //    against the rendered DOM (not the source files). Reads getPropertyValue

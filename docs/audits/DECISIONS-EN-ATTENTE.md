@@ -216,6 +216,31 @@ Ce qui manquait était un endroit où les compter — c'est maintenant
 
 ---
 
+## 11. La politique de sécurité du contenu (CSP) n'est pas posée
+
+Mesuré le 2026-09-20 sur l'artefact déployé : sur cinq en-têtes de sécurité
+attendus, **zéro** était servi. Vercel pose `strict-transport-security` de
+lui-même ; tout le reste manquait, parce que rien n'était configuré.
+
+**Quatre sont posés depuis (§11.138)** — `X-Content-Type-Options`,
+`X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy` — vérifiés sur la
+réponse servie, avec une porte dans `dom-truth`. Ils ne changent rien à ce que
+la page rend.
+
+**Le cinquième, `Content-Security-Policy`, ne l'est pas, et c'est délibéré.**
+Une CSP juste demande de connaître chaque origine de script, de style et de
+cadre du produit : les scripts en ligne de Next, KaTeX, les iframes PhET,
+Supabase. Posée à l'aveugle, elle casse la page **en silence chez l'élève**, et
+aucun contrôle local ne le verrait — il n'y a pas de CSP à vérifier tant qu'on
+ne l'a pas écrite.
+
+**Décision attendue :** la poser (et alors la construire en mode
+`Content-Security-Policy-Report-Only` d'abord, pour lire ce qu'elle casserait
+avant de l'imposer), ou écrire qu'on s'en passe. Sans arbitrage, le produit
+reste sans la seule protection qui limite les dégâts d'un script injecté.
+
+---
+
 ## Ce que cette page n'est pas
 
 Ce n'est pas la liste des défauts du produit : ceux qui étaient objectifs ont

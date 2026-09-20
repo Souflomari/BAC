@@ -17,8 +17,43 @@ function buildSha() {
   }
 }
 
+// ── En-têtes de sécurité (§11.138) ──────────────────────────────────────────
+// Mesuré le 2026-09-20 sur l'artefact déployé : sur cinq en-têtes attendus,
+// ZÉRO était servi. Vercel pose `strict-transport-security` de lui-même ; tout
+// le reste manquait, parce que rien n'était configuré ici.
+//
+// Les quatre ci-dessous sont le sous-ensemble SANS ARBITRAGE : ils ne changent
+// rien à ce que la page rend, et chacun ferme une classe d'attaque connue.
+//   • nosniff — le navigateur cesse de deviner un type MIME et d'exécuter comme
+//     script ce qui est servi comme texte.
+//   • SAMEORIGIN — la page ne peut plus être encadrée par un tiers, donc plus
+//     être recouverte d'un faux bouton (clickjacking). Le site CADRE des
+//     iframes (PhET) ; il n'a jamais besoin d'être cadré, lui.
+//   • Referrer-Policy — l'adresse complète d'une leçon ne part plus vers un
+//     tiers ; l'origine seule suffit. C'est déjà le défaut de Chrome, pas de
+//     Safari ni des vieux Android.
+//   • Permissions-Policy — caméra, micro et position ne servent nulle part
+//     dans le produit, ni dans les simulations embarquées. On les refuse à
+//     tout le monde, y compris aux iframes tierces.
+//
+// CE QUI N'EST PAS POSÉ ICI, et c'est délibéré : `Content-Security-Policy`.
+// Une CSP juste demande de connaître chaque origine de script, de style et de
+// cadre du produit (Next inline, KaTeX, PhET, Supabase) ; posée à l'aveugle
+// elle casse la page en silence chez l'élève, et aucun contrôle local ne le
+// verrait puisqu'il n'y a pas de CSP à vérifier. C'est un arbitrage de
+// propriétaire, chiffré dans `DECISIONS-EN-ATTENTE` §11.
+const EN_TETES_SECURITE = [
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "X-Frame-Options", value: "SAMEORIGIN" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+];
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async headers() {
+    return [{ source: "/:path*", headers: EN_TETES_SECURITE }];
+  },
   env: {
     NEXT_PUBLIC_BUILD_SHA: buildSha(),
     NEXT_PUBLIC_BUILD_DATE: new Date().toISOString().slice(0, 10),
