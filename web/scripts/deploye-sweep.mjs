@@ -30,7 +30,9 @@
  *     et pas seulement dans le dépôt ;
  *   • LE PARCOURS d'un élève sur un téléphone de 390px : accueil → l'action du
  *     jour → la leçon → répondre à un item. Un produit peut avoir quatre pages
- *     saines et une couture morte entre deux.
+ *     saines et une couture morte entre deux ;
+ *   • LE PARCOURS D'ÉPREUVE : l'index → un vrai sujet → « Commencer » →
+ *     « Terminer » → le corrigé et son auto-évaluation.
  *
  * CE QU'IL NE VOIT PAS — à mesurer, pas à taire :
  *   - le temps et la géométrie passent par le relais : les millisecondes
@@ -162,6 +164,62 @@ for (const route of ["/", "/notions/pc/rlc-serie", "/commencer", "/notions/philo
   } catch (e) {
     dit(false, `parcours interrompu — ${String(e.message).split("\n")[0].slice(0, 90)}`);
   } finally { await tel.close(); }
+}
+
+//  6. LE PARCOURS D'ÉPREUVE (§11.144) — l'autre moitié du produit, et la plus
+//     haute en enjeu : l'élève s'assoit devant un vrai sujet tombé.
+//     ORDRE DES MESURES : les commandes de réponse n'existent QU'APRÈS
+//     « Terminer ». Le sujet se compose sur papier ; le produit sert le
+//     corrigé et l'élève s'y auto-évalue. Les compter avant, c'est mesurer
+//     une absence qui est le dessin.
+{
+  const ep = await b.newPage({ viewport: { width: 390, height: 844 } });
+  const ennuis = [];
+  ep.on("pageerror", (e) => ennuis.push(String(e.message).slice(0, 80)));
+  ep.on("response", (r) => { if (r.status() >= 400 && !r.url().includes("favicon")) ennuis.push(`HTTP ${r.status()} ${r.url().replace(BASE, "").slice(0, 50)}`); });
+  try {
+    await ep.goto(BASE + "/examens", { waitUntil: "networkidle", timeout: 40000 });
+    const href = await ep.$eval("a[href^='/examens/']", (a) => a.getAttribute("href")).catch(() => null);
+    if (!href) dit(false, "épreuve — l'index ne liste aucune épreuve");
+    else {
+      await Promise.all([
+        ep.waitForURL((u) => u.pathname.startsWith("/examens/") && u.pathname.length > 10, { timeout: 20000 }),
+        ep.click(`a[href='${href}']`),
+      ]);
+      await ep.waitForLoadState("networkidle", { timeout: 40000 });
+      dit(true, `épreuve — ${href} ouverte`);
+      const t0 = (await ep.innerText("body")).length;
+      const dep = await ep.$("button:has-text('Commencer'), [role=button]:has-text('Commencer')");
+      if (!dep) dit(false, "épreuve — aucun bouton « Commencer »");
+      else {
+        const bb = await dep.boundingBox();
+        dit(!!bb && bb.height >= 44, `épreuve — cible tactile de « Commencer » : ${bb ? Math.round(bb.height) : "?"}px`);
+        await dep.click();
+        await ep.waitForTimeout(1500);
+        const t1 = (await ep.innerText("body")).length;
+        dit(t1 > t0, `épreuve — « Commencer » révèle ${t1 - t0} caractères de sujet`);
+        const fin = await ep.$("button:has-text('Terminer'), [role=button]:has-text('Terminer')");
+        if (!fin) dit(false, "épreuve — aucun bouton « Terminer »");
+        else {
+          await fin.click();
+          await ep.waitForTimeout(2500);
+          const t2 = (await ep.innerText("body")).length;
+          dit(t2 > t1, `épreuve — « Terminer » révèle ${t2 - t1} caractères de corrigé`);
+          const radios = await ep.$$("input[type=radio], [role=radio]");
+          dit(radios.length > 0, `épreuve — ${radios.length} commandes d'auto-évaluation dans le corrigé`);
+          //  §11.40 : le focus ne doit pas retomber sur <body> quand le
+          //  bouton disparaît.
+          const cible = await ep.evaluate(() => document.activeElement?.tagName ?? "null");
+          dit(cible !== "BODY" && cible !== "null", `épreuve — focus après « Terminer » : ${cible} (pas <body>)`);
+        }
+      }
+      const deb = await ep.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      dit(deb <= 0, `épreuve — débordement horizontal : ${deb}px`);
+      dit(ennuis.length === 0, `épreuve — ${ennuis.length} erreur(s) de page ou réponse ≥400`);
+    }
+  } catch (e) {
+    dit(false, `épreuve — parcours interrompu : ${String(e.message).split("\n")[0].slice(0, 90)}`);
+  } finally { await ep.close(); }
 }
 
 await b.close();

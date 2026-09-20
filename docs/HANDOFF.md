@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 143 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 144 entrées.
 > **Un propriétaire qui revient lit d'abord
 > `docs/audits/DECISIONS-EN-ATTENTE.md`** — la liste, en une page, de ce qui
 > attend un arbitrage et de ce que coûte chaque attente. Rien n'y est en train
@@ -11299,4 +11299,29 @@ crédible.
 
 Le parcours rejoint `deploye-sweep` : il se rejoue d'une commande, et il dit
 sur quel commit il l'a mesuré.
+
+## §11.144 — Et le parcours d'ÉPREUVE, l'autre moitié du produit
+
+Après le parcours de leçon (§11.143), celui qui compte le plus : **l'élève
+s'assoit devant un vrai sujet tombé.** Mesuré sur l'artefact déployé, téléphone
+390 px, `/examens` → `spc-2025-normale` :
+
+- « Commencer » est offert avec une cible de **48 px** ;
+- il révèle **22 675 caractères** de sujet ;
+- « Terminer » révèle **29 180 caractères** de corrigé ;
+- **105 commandes d'auto-évaluation** dans ce corrigé ;
+- le focus après « Terminer » atterrit sur un `DIV`, **pas sur `<body>`** —
+  le correctif du §11.40 tient en ligne ;
+- **0 px** de débordement, **0 erreur**, **0 réponse ≥ 400**.
+
+**Une mesure prise au mauvais moment, et c'est le dessin qui l'explique.** Mon
+premier passage comptait les commandes de réponse AVANT « Terminer » et en
+trouvait **zéro**. Ce n'est pas un défaut : le sujet se compose **sur papier**,
+le produit sert ensuite le corrigé, et l'élève s'y auto-évalue — les 105
+commandes n'existent qu'après. Compter avant, c'était mesurer une absence qui
+EST le dessin. L'ordre des mesures est désormais écrit dans le script, à côté
+du compte.
+
+Les deux parcours rejoignent `deploye-sweep` : onze contrôles, une commande,
+et le commit mesuré annoncé en tête.
 
