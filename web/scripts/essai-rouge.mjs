@@ -27,7 +27,7 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { execSync } from "node:child_process";
+import { spawnSync } from "node:child_process";
 
 const A = process.argv.slice(2);
 const opt = (n, d) => { const i = A.indexOf(`--${n}`); return i === -1 ? d : A[i + 1]; };
@@ -37,6 +37,14 @@ const de = opt("de");
 const vers = opt("vers");
 const porte = opt("porte");
 const attendu = opt("attendu", "rouge");
+//  TROISIÈME VERDICT (§11.106). Toutes les portes ne font pas échouer la
+//  construction : certaines AVERTISSENT délibérément — §11.71 le dit en toutes
+//  lettres (« rien ne casse pour l'élève »). Mesurer une telle porte au code de
+//  sortie la déclare aveugle, ce qu'elle n'est pas. `--attendu avertissement`
+//  exige donc deux choses à la fois : la porte reste VERTE, et son avertissement
+//  APPARAÎT — vérifié contre `--motif`. Un avertissement supposé n'est pas une
+//  propriété ; un avertissement vu en est une.
+const motif = opt("motif");
 
 if (!fichier || de === undefined || vers === undefined || !porte) {
   console.error("usage: --fichier <chemin> --de <texte> --vers <texte> --porte <commande> [--attendu rouge|vert]");
@@ -77,12 +85,15 @@ for (const sig of ["SIGINT", "SIGTERM", "SIGHUP"]) {
 //  pour le détecter ailleurs. La règle en sort renforcée : un essai rouge ne
 //  prouve rien tant qu'on n'a pas établi que la porte était VERTE juste avant,
 //  sur l'arbre intact, avec cette commande-là et depuis ce répertoire-là.
+//
+//  SECOND DÉFAUT DU MÊME OUTIL, trouvé le même jour (§11.106). `execSync` ne
+//  rend QUE stdout quand la commande réussit : sur un passage VERT, tout ce que
+//  la porte a écrit sur stderr était perdu. Une porte qui AVERTIT sans faire
+//  échouer — §11.71 le fait exprès — était donc invisible ici, et l'essai la
+//  déclarait aveugle. `spawnSync` rend les deux flux dans les deux cas.
 function lancePorte() {
-  try {
-    return { rouge: false, sortie: execSync(porte, { cwd: process.cwd(), encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }) };
-  } catch (e) {
-    return { rouge: true, sortie: `${e.stdout ?? ""}${e.stderr ?? ""}` };
-  }
+  const r = spawnSync(porte, { cwd: process.cwd(), encoding: "utf8", shell: true });
+  return { rouge: r.status !== 0, sortie: `${r.stdout ?? ""}${r.stderr ?? ""}` };
 }
 
 const avant = lancePorte();
@@ -114,14 +125,22 @@ try {
   const lignes = sortie.split("\n").filter((l) => /✗|ROMPU|failure|échec|erreur/i.test(l));
   for (const l of lignes.slice(0, 6)) console.log(`   ${l.trim()}`);
 
-  const ok = attendu === "rouge" ? rouge : !rouge;
+  const vu = motif ? new RegExp(motif).test(sortie) : false;
+  const ok =
+    attendu === "rouge" ? rouge
+    : attendu === "avertissement" ? (!rouge && vu)
+    : !rouge;
   //  Le verdict dit ce qui a été ÉTABLI, pas seulement ce qui s'est passé :
   //  un essai `--attendu vert` qui passe n'établit pas que la porte voit
   //  quelque chose — il établit qu'elle ne crie pas à tort.
   console.log(ok
     ? (attendu === "rouge"
         ? `✓ la porte est passée ROUGE, comme attendu — elle VOIT ce défaut`
+        : attendu === "avertissement"
+        ? `⚠ la porte a AVERTI sans faire échouer, comme attendu — elle voit, et le dit sans bloquer`
         : `✓ la porte est restée VERTE, comme attendu — pas de faux positif sur ce changement`)
+    : attendu === "avertissement" && !rouge
+    ? `✗ la porte est restée VERTE et N'A PAS AVERTI — elle est AVEUGLE au défaut introduit`
     : `✗ la porte est restée ${rouge ? "ROUGE" : "VERTE"} : elle est AVEUGLE au défaut introduit`);
   code = ok ? 0 : 1;
 } finally {

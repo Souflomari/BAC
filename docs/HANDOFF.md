@@ -8892,3 +8892,83 @@ deux portes qui fonctionnaient.
 
 C'est la contrepartie exacte de §11.104 : là, un ✓ mentait ; ici, un ✗ ment
 aussi. **Le verdict d'un essai rouge est une mesure, pas un oracle.**
+
+---
+
+## §11.106 — « Porte vérifiée rouge » devient une commande, pas une phrase
+
+### Le problème de fond
+
+Jusqu'ici, **« porte vérifiée rouge » était une phrase dans un document.** Une
+phrase ne se relance pas. Six mois plus tard, personne ne sait si la porte crie
+encore — et §11.104 a montré que trois de ces phrases étaient fausses le jour
+même où elles ont été écrites.
+
+**Une propriété qu'on ne peut pas remesurer n'est pas une propriété : c'est un
+souvenir.**
+
+`web/scripts/essais-rouges.mjs` + `essais-rouges.manifeste.json` transforment
+chaque essai rouge en commande. La CI peut maintenant poser la question
+qu'aucune porte ne pose sur elle-même : **est-ce que mes portes peuvent encore
+devenir rouges ?**
+
+```
+━━ essais rouges : 12 porte(s) — chacune peut-elle encore crier ? ━━
+  ✓ ROUGE   §11.99 (a)   un chemin …/*.mjs cité qui ne résout pas depuis la racine
+  ✓ ROUGE   §11.99 (b)   une couverture nulle affirmée au PRÉSENT
+  ✓ ROUGE   §11.100 (a)  un renvoi de chapitre sans article
+  ✓ ROUGE   §11.100 (b)  une capitale en milieu de phrase
+  ✓ ROUGE   §11.100 (c)  une minuscule en ouverture de phrase
+  ✓ ROUGE   §11.100 (d)  un renvoi de chapitre SUJET sans article
+  ✓ ROUGE   §11.70       un renvoi qui cite deux fois le même chapitre
+  ✓ ROUGE   §11.77       un « chapitre N » NU qui dépasse la leçon hôte
+  ✓ ROUGE   §11.89       un renvoi RELATIF qui sort de la leçon
+  ✓ ROUGE   §11.73       un code de barreau R<n> NU dans du texte rendu de YAML
+  ⚠ AVERTI  §11.71       un `lesson_placement` qui ment sur la position du marqueur
+  ✓ ROUGE   §11.72       un barème qui ne tombe pas sur son propre total
+━━ les 12 portes crient encore ━━
+```
+
+### Les quatre verdicts, et pourquoi il en faut quatre
+
+- **✓ ROUGE** — la porte fait échouer. Elle voit.
+- **⚠ AVERTI** — la porte reste verte ET son avertissement APPARAÎT. C'est un
+  verdict à part entière, pas un demi-échec : §11.71 avertit **par dessein**
+  (« rien ne casse pour l'élève, et un auteur peut légitimement vouloir poser un
+  marqueur ailleurs »). La mesurer au code de sortie la déclarerait aveugle à
+  tort. **Un avertissement supposé n'est pas une propriété ; un avertissement vu
+  en est une.**
+- **✗ VERTE** — **AMBIGU.** La porte est aveugle, OU l'essai est mal construit.
+  Sur les six premiers essais, la moitié des ✗ venait de l'essai (§11.105).
+- **· MUET** — le motif `de` n'existe plus dans le fichier. Rien n'a été cassé,
+  donc **rien n'a été mesuré.** Ce n'est pas un succès : c'est un essai à
+  réparer, et sans ce verdict il se confondrait avec un vert.
+
+### Le second défaut de `essai-rouge`, trouvé le même jour
+
+`execSync` ne rend **que stdout** quand la commande réussit. Sur un passage
+VERT, tout ce que la porte écrivait sur **stderr était perdu** — et les
+avertissements y vont. §11.71 avertissait correctement ; l'outil ne le voyait
+pas et la déclarait aveugle.
+
+C'est le même défaut que §11.104 sous un autre angle : **l'outil ne voyait pas
+ce qu'il prétendait mesurer.** Une fois par le code de sortie, une fois par le
+flux. Passé à `spawnSync`, qui rend les deux flux dans les deux cas.
+
+Et il a fallu, pour le trouver, refuser la première conclusion : j'ai d'abord
+cru la porte morte parce que ses titres `## R<n>` auraient été réécrits par la
+campagne #18. **Mesuré : les 62 notions ont toujours leurs titres `## R<n>`.**
+L'hypothèse était fausse ; c'est la mesure, pas le raisonnement, qui a désigné
+le vrai coupable.
+
+### Ce que ça change pour la suite
+
+Une porte neuve n'est plus « armée et vérifiée » : elle est **armée et inscrite
+au manifeste**. Le coût est de six lignes de JSON, et il achète la seule chose
+qui manquait — que la vérification survive à celui qui l'a faite.
+
+Un essai devenu MUET parce que le corpus a bougé se répare en une ligne. Un
+essai qui passe VERTE se diagnostique avant qu'on « répare » une porte qui
+marche.
+
+**Batterie locale : 15 portes.**

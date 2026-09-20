@@ -1,0 +1,105 @@
+{
+  "_pourquoi": "Chaque entrée est un ESSAI ROUGE rendu REJOUABLE. Jusqu'ici, « porte vérifiée rouge » était une phrase dans un document : invérifiable six mois plus tard, et fausse pour trois d'entre elles (§11.104). Ici c'est une commande. `de` doit exister tel quel dans `fichier` ; si le texte du corpus bouge, l'essai sort en code 2 (« rien à casser, donc rien de mesuré ») et se répare en une ligne.",
+  "essais": [
+    {
+      "id": "§11.99 (a)",
+      "quoi": "un chemin …/*.mjs cité qui ne résout pas depuis la racine",
+      "notion": "content/maths/arithmetique",
+      "fichier": "../content/maths/arithmetique/items.yaml",
+      "de": "web/scripts/resume-couverture.mjs",
+      "vers": "web/scripts/porte-qui-nexiste-pas.mjs"
+    },
+    {
+      "id": "§11.99 (b)",
+      "quoi": "une couverture nulle affirmée au PRÉSENT contre le tableau du même fichier",
+      "notion": "content/maths/arithmetique",
+      "fichier": "../content/maths/arithmetique/items.yaml",
+      "de": "dont `fermat-condition-ou-exposant` sans AUCUN item AVANT cet ajout — elle n'était sondée",
+      "vers": "dont `fermat-condition-ou-exposant` sans AUCUN item de banc, sondée"
+    },
+    {
+      "id": "§11.100 (a)",
+      "quoi": "un renvoi de chapitre sans article (« de chapitre 3 »)",
+      "notion": "content/maths/limites-continuite",
+      "fichier": "../content/maths/limites-continuite/lesson.md",
+      "de": "Le tableau du chapitre 1 montrait",
+      "vers": "Le tableau de chapitre 1 montrait"
+    },
+    {
+      "id": "§11.100 (b)",
+      "quoi": "une capitale en milieu de phrase (« : Le chapitre 3 »)",
+      "notion": "content/maths/limites-continuite",
+      "fichier": "../content/maths/limites-continuite/lesson.md",
+      "de": "approche : par valeurs inférieures",
+      "vers": "approche : Le chapitre 1 et par valeurs inférieures"
+    },
+    {
+      "id": "§11.100 (c)",
+      "quoi": "une minuscule en ouverture de phrase (« chapitres 3 et 4 ont… »)",
+      "notion": "content/maths/limites-continuite",
+      "fichier": "../content/maths/limites-continuite/lesson.md",
+      "de": "**Le tableau du chapitre 1 avait raison**",
+      "vers": "chapitres 1 et 2 avaient raison",
+      "note": "CETTE PORTE ÉTAIT AVEUGLE jusqu'au 2026-09-20 (§11.105) : son ancre \\n\\n était mangée par l'aplatissement du pli. C'est l'essai qui l'a révélé."
+    },
+    {
+      "id": "§11.100 (d)",
+      "quoi": "un renvoi de chapitre SUJET sans article (« — chapitres 2 à 7 portent »)",
+      "notion": "content/maths/limites-continuite",
+      "fichier": "../content/maths/limites-continuite/lesson.md",
+      "de": "C'est un point important",
+      "vers": "— chapitres 1 et 2 montrent que c'est un point important"
+    },
+    {
+      "id": "§11.70",
+      "quoi": "un renvoi qui cite deux fois le même chapitre (« chapitre 2 et 2 »)",
+      "notion": "content/pc/rc-charge",
+      "fichier": "../content/pc/rc-charge/lesson.md",
+      "de": "Maintenant tu fermes l'interrupteur.",
+      "vers": "Maintenant tu fermes l'interrupteur (chapitre 2 et 2)."
+    },
+    {
+      "id": "§11.77",
+      "quoi": "un « chapitre N » NU qui dépasse le nombre de chapitres de la leçon hôte",
+      "notion": "content/pc/rc-charge",
+      "fichier": "../content/pc/rc-charge/lesson.md",
+      "de": "Imagine le montage le plus simple du monde.",
+      "vers": "Imagine le montage le plus simple du monde, revu au chapitre 99."
+    },
+    {
+      "id": "§11.89",
+      "quoi": "un renvoi RELATIF qui sort de la leçon (« chapitre précédent » dans le chapitre 1)",
+      "notion": "content/pc/rc-charge",
+      "fichier": "../content/pc/rc-charge/lesson.md",
+      "de": "Un générateur qui délivre une tension constante $E$",
+      "vers": "Comme au chapitre précédent, un générateur qui délivre une tension constante $E$"
+    },
+    {
+      "id": "§11.73",
+      "quoi": "un code de barreau R<n> NU dans du texte rendu de YAML",
+      "notion": "content/pc/rc-charge",
+      "fichier": "../content/pc/rc-charge/items.yaml",
+      "de": "    stem: >",
+      "vers": "    stem: >-\n      Comme on l'a vu en R3 —"
+    },
+    {
+      "id": "§11.71",
+      "quoi": "un `lesson_placement` qui ment sur la position du marqueur",
+      "notion": "content/pc/rc-charge",
+      "fichier": "../content/pc/rc-charge/checkpoints.yaml",
+      "de": "lesson_placement: after_R3",
+      "vers": "lesson_placement: in_R3",
+      "attendu": "avertissement",
+      "motif": "déclare « in_R3 » mais son marqueur est à",
+      "note": "AVERTISSEMENT PAR DESSEIN, pas porte : son en-tête le dit (« rien ne casse pour l'élève, et un auteur peut légitimement vouloir poser un marqueur ailleurs »). La mesurer au code de sortie la déclarerait aveugle à tort. On exige donc qu'elle reste verte ET que son avertissement apparaisse."
+    },
+    {
+      "id": "§11.72",
+      "quoi": "un barème qui ne tombe pas sur son propre total",
+      "notion": "content/pc/aspects-energetiques",
+      "fichier": "../content/pc/aspects-energetiques/bank.yaml",
+      "de": "    bareme_total: 2.0",
+      "vers": "    bareme_total: 7.0"
+    }
+  ]
+}

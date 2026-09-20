@@ -283,6 +283,9 @@ jobs:
       - name: Porte des portes (aucune porte de validate-content ne scanne le vide)
         run: node scripts/portee-portes.mjs
 
+      - name: Essais rouges (chaque porte armée peut-elle encore devenir ROUGE ?)
+        run: node scripts/essais-rouges.mjs
+
       - name: Porte presse-papier (une formule copiée ne sort qu'une fois)
         run: |
           routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)

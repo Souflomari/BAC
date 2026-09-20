@@ -53,6 +53,11 @@ const ETAPES = [
   // Sans navigateur, et c'est le seul contrôle qui puisse dire qu'un ✓ ne
   // vaut rien — il a donc sa place ici plus qu'ailleurs.
   { nom: "portee-portes", cmd: ["scripts/portee-portes.mjs"] },
+  // La suite d'essais rouges (ADR 0034) : elle casse une occurrence, mesure, et
+  // restaure. Sans navigateur, et c'est le seul contrôle qui réponde à « mes
+  // portes peuvent-elles encore crier ? » — la question qu'aucune porte ne pose
+  // sur elle-même.
+  { nom: "essais-rouges", cmd: ["scripts/essais-rouges.mjs"] },
 ];
 
 // Hors champ ASSUMÉ : navigateur ou build requis. Leur absence est un choix.
