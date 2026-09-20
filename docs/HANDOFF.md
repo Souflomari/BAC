@@ -8202,3 +8202,97 @@ et le chemin CI — mode autonome, sans `BASE` — testé pour de vrai.
 > (`cp fichier /tmp/sauvegarde`), jamais par `git checkout --` tant que le
 > travail n'est pas committé. Le dernier `checkout` de la série précédente avait
 > effacé la porte que je venais d'écrire.
+
+---
+
+## §11.99 — La note d'auteur qui décrit un dépôt qui n'existe plus
+
+**Ce qui a été mesuré le 2026-09-19, sur TOUT le corpus, pas sur une matière.**
+Le commit précédent avait cadré ce défaut comme « philo ». Il ne l'est pas : il
+est dans **trois matières** et il a deux formes.
+
+**Forme (a) — le chemin qui ne se résout pas.** Quarante-sept fichiers citaient
+leur propre porte par `scripts/resume-couverture.mjs` ou
+`scripts/indice-longueur.mjs`. Ces chemins **n'existent pas** — les fichiers
+sont sous `web/`. Et ce n'était pas une abréviation : le dépôt a un VRAI
+répertoire `scripts/` à la racine, donc le chemin désignait autre chose, qui
+n'était pas là. ADR 0031 : *un renvoi est une instruction*.
+
+**Forme (b) — la couverture nulle affirmée au présent.** Quatorze notes, dans
+onze notions, affirmaient au présent qu'une misconception n'avait « AUCUN item
+de banc », alors que le tableau du **même fichier**, quelques lignes plus bas,
+lui en comptait trois ou plus. Elles décrivaient l'état d'avant la passe
+d'élargissement du 2026-09-05 et n'avaient jamais été redatées.
+
+Ce n'est pas cosmétique : **ces notes sont ce qui JUSTIFIE le placement des
+sondes.** Un auteur qui les lit pose sa prochaine sonde sur un trou refermé
+depuis. Le placement reste souvent bon ; son motif écrit, non.
+
+**La porte** (`validate-content.mjs`, dans la boucle par notion) fait deux
+choses : tout chemin `…/*.mjs` cité dans un commentaire doit désigner un
+fichier existant, **résolu depuis la racine, SANS repli sur `web/`** — tolérer
+le repli rendrait la porte aveugle au défaut qu'elle vise ; et une couverture
+nulle affirmée au présent contre le `coverage_summary` du même corpus échoue.
+
+**L'échappatoire est volontairement étroite** : la ligne passe si elle porte une
+marque de temps ou de rectification (`AVANT`, `alors`, `était`, `à l'époque`,
+`RE-MESURÉ`, `CORRIGÉ`, `→`, `depuis`). Le but n'est **pas** d'effacer l'ancien
+chiffre — c'est lui qui explique pourquoi la sonde est là — mais d'obliger à le
+**dater**.
+
+**Rouge vérifié** dans les deux directions (chemin cassé ; couverture nulle
+réaffirmée au présent), puis vert : 0 échec sur 62.
+
+### Le fait à retenir, et il porte sur moi
+
+**La passe manuelle qui a précédé la porte était INCOMPLÈTE.** J'avais corrigé
+quarante fichiers et écrit que le défaut était traité. Une fois armée, la porte
+a trouvé **dix citations de plus** — sept de `resume-couverture`, trois
+d'`indice-longueur` — dans des fichiers que je croyais faits.
+
+Ce n'est pas un argument pour « mieux sonder ». C'est l'argument pour que **la
+porte, et non la passe, soit ce qui établit le compte**. Une passe dit ce que
+j'ai fait ; une porte dit ce qui reste.
+
+---
+
+## §11.100 — La casse laissée par « R\<n\> → chapitre N »
+
+**Vingt et une occurrences, treize fichiers, trois matières** (maths, pc,
+philo), **toutes en champs RENDUS à l'élève**. La passe de §11.18, qui a réécrit
+1 086 renvois de barreau en numéros de chapitre, a substitué le texte **sans
+relire la phrase autour** :
+
+```
+« Que répondre, à la lumière de chapitre 2 ? »      ← l'article est parti avec le code
+« …au seul fait divers : Le chapitre 1 annonce »    ← capitale restée en milieu de phrase
+« l'erreur à éviter de Le chapitre 5 le précise »   ← substitution brute
+```
+
+**Pourquoi personne ne les avait vues.** Le motif **traverse un pli YAML** :
+entre « de » et « chapitre » il y a un retour à la ligne et douze espaces. Toute
+sonde ligne-à-ligne rend zéro. La porte aplatit le pli (`\n\s+` → espace) avant
+de chercher, et ne lit que les champs rendus (commentaires retirés).
+
+### Deux fois de suite, la porte a battu la passe qui la précédait
+
+Ma sonde écrivait `chapitre\s+\d` sans le `s` du pluriel. Elle a manqué
+« dans **chapitres** 1 et 3 » (`philo/le-bonheur/lesson.md`), que la porte a
+trouvé seule, immédiatement après avoir été armée. C'est le même enseignement
+qu'en §11.99, deux commits plus tôt, sur un autre défaut : **la portée d'une
+sonde définit la portée de son verdict, et une sonde écrite par la même main que
+la correction hérite des angles morts de cette main.**
+
+### RÉTRACTATION DE MÉTHODE — le piège consigné deux fois, et repris une troisième
+
+J'ai de nouveau détruit du travail non committé avec `git checkout --` pour
+défaire un essai rouge. Ce piège est écrit en **§11.97**, puis **répété en
+§11.98 parce qu'il venait déjà de me coûter une reprise**. Deux notes n'ont rien
+empêché.
+
+**La règle cesse donc d'être une note.** Avant tout essai rouge : *soit* le
+travail est committé, *soit* le fichier est copié hors de l'arbre. Un essai
+rouge ne se défait jamais depuis l'index tant qu'il reste de l'inédit autour.
+Si la règle est reprise une quatrième fois, ce n'est pas la note qu'il faut
+réécrire — c'est l'essai rouge qu'il faut outiller (un script qui copie,
+casse, mesure et restaure depuis la copie).

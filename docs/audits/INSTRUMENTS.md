@@ -534,3 +534,43 @@ produit. Bloqué par CDP (`Network.setBlockedURLs`), qui laisse le cache en
 place : 75 ko et 4,2 s. Règle : une mesure qui touche au cache HTTP n'emploie
 jamais `page.route()` ; et un chiffre de cache à zéro se vérifie contre les
 en-têtes (`curl -I`) avant d'être cru.
+
+---
+
+## `web/scripts/essai-rouge.mjs` — casser une porte sans perdre de travail
+
+**Ce qu'il mesure.** Qu'une porte devient bien ROUGE quand on introduit le
+défaut qu'elle prétend voir. ADR 0031 : *une porte qui ne peut pas devenir
+rouge ne dit pas que tout va bien — elle dit que rien n'a été mesuré.*
+
+**Pourquoi il existe.** La façon évidente de défaire la casse,
+`git checkout -- fichier`, **détruit tout ce qui n'est pas committé dans ce
+fichier**. Le piège est consigné en HANDOFF §11.97, répété en §11.98, et repris
+une **troisième** fois en §11.100. Trois notes n'ont rien empêché ; l'outil est
+la réponse à la troisième.
+
+Il copie **hors de l'arbre de travail** (`os.tmpdir()`), casse **une seule**
+occurrence (un essai doit isoler un défaut, sinon on ne sait pas lequel la porte
+a vu), lance la porte, puis restaure **depuis la copie** — via `finally`, un
+`process.on("exit")` et les signaux, donc aussi quand la porte plante ou qu'on
+interrompt au clavier. Il vérifie enfin que le fichier est revenu **octet pour
+octet** et sort en 3 si ce n'est pas le cas.
+
+```
+node scripts/essai-rouge.mjs \
+  --fichier ../content/philo/la-violence/items.yaml \
+  --de ": le chapitre 1" --vers ": Le chapitre 1" \
+  --porte "node scripts/validate-content.mjs --strict content/philo/la-violence"
+```
+
+Sortie **0** si la porte est devenue rouge (l'essai réussit quand la porte
+échoue), **1** si elle est restée verte — *elle est aveugle au défaut*, **2** si
+le motif ne se trouvait pas (rien cassé, donc rien mesuré), **3** si la
+restauration est incomplète. `--attendu vert` inverse le sens.
+
+**Vérifié le 2026-09-20**, trois épreuves :
+1. §11.100 (capitale en milieu de phrase) → ROUGE, restauré octet pour octet ;
+2. §11.99 (chemin de porte cassé) → ROUGE, restauré octet pour octet ;
+3. **l'épreuve qui compte** — une sentinelle non committée déposée dans le
+   fichier **SURVIT** à l'essai rouge, là où `git checkout --` la **détruit**.
+   Le contraste a été rejoué dans les deux sens.
