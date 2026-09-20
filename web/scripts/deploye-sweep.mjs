@@ -27,7 +27,10 @@
  *   • l'adresse inconnue (§11.67) : elle doit servir un vrai « introuvable »,
  *     pas une page vide que seul le JavaScript remplit ;
  *   • un TÉMOIN de correctif, pour vérifier qu'un correctif est bien EN LIGNE
- *     et pas seulement dans le dépôt.
+ *     et pas seulement dans le dépôt ;
+ *   • LE PARCOURS d'un élève sur un téléphone de 390px : accueil → l'action du
+ *     jour → la leçon → répondre à un item. Un produit peut avoir quatre pages
+ *     saines et une couture morte entre deux.
  *
  * CE QU'IL NE VOIT PAS — à mesurer, pas à taire :
  *   - le temps et la géométrie passent par le relais : les millisecondes
@@ -110,6 +113,55 @@ for (const route of ["/", "/notions/pc/rlc-serie", "/commencer", "/notions/philo
     const vu = (await hote.innerText()).includes("Pourquoi cette réponse est la bonne");
     console.log(`  ${vu ? "✓" : "·"} témoin §11.133 — le repli « Pourquoi cette réponse est la bonne » ${vu ? "EST EN LIGNE" : "n'est pas encore déployé (normal si le commit en ligne le précède)"}`);
   }
+}
+
+//  5. LE PARCOURS D'UN ÉLÈVE, bout en bout, sur un téléphone (§11.143).
+//     Les contrôles ci-dessus regardent des pages une par une. Celui-ci suit
+//     le chemin : accueil → l'action du jour → la leçon → répondre. Un produit
+//     peut avoir quatre pages saines et une couture morte entre deux.
+{
+  const tel = await b.newPage({ viewport: { width: 390, height: 844 } });
+  const ennuis = [];
+  tel.on("pageerror", (e) => ennuis.push(String(e.message).slice(0, 80)));
+  tel.on("response", (r) => { if (r.status() >= 400 && !r.url().includes("favicon")) ennuis.push(`HTTP ${r.status()} ${r.url().replace(BASE, "").slice(0, 50)}`); });
+  try {
+    await tel.goto(BASE + "/", { waitUntil: "networkidle", timeout: 40000 });
+    //  PIÈGE MESURÉ : attendre `networkidle` APRÈS le clic ne prouve rien —
+    //  la condition est déjà satisfaite, la promesse revient avant que la
+    //  navigation ait commencé, et on lit encore l'ancienne adresse. Mon
+    //  premier jet a conclu que « Commencer la session » ne menait nulle part.
+    //  Il faut attendre l'ADRESSE.
+    await Promise.all([
+      tel.waitForURL(/\/notions\//, { timeout: 20000 }),
+      tel.click("section[aria-label='La session du jour'] a[href^='/notions/']"),
+    ]);
+    await tel.waitForLoadState("networkidle", { timeout: 40000 });
+    dit(true, `parcours — « Commencer la session » mène à ${tel.url().replace(BASE, "")}`);
+
+    for (const d of await tel.$$("details:not([open]) > summary")) { try { await d.click({ timeout: 500 }); } catch {} }
+    await tel.waitForTimeout(400);
+    const items = await tel.$$("[data-item-id]");
+    dit(items.length > 0, `parcours — ${items.length} items atteignables sur la leçon`);
+    if (items.length) {
+      const h = items[0];
+      const avant = (await h.innerText()).length;
+      const btn = await h.$("ul[role=list] button, ul[role=list] [role=button]");
+      if (!btn) dit(false, "parcours — l'item n'offre aucun choix cliquable");
+      else {
+        await btn.click();
+        await tel.waitForTimeout(700);
+        const apres = (await h.innerText()).length;
+        const bb = await btn.boundingBox();
+        dit(apres > avant, `parcours — répondre ajoute ${apres - avant} caractères de retour`);
+        dit(!!bb && bb.height >= 44, `parcours — cible tactile du choix : ${bb ? Math.round(bb.height) : "?"}px`);
+      }
+    }
+    const deb = await tel.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    dit(deb <= 0, `parcours — débordement horizontal : ${deb}px`);
+    dit(ennuis.length === 0, `parcours — ${ennuis.length} erreur(s) de page ou réponse ≥400${ennuis.length ? " : " + [...new Set(ennuis)].slice(0, 3).join(" · ") : ""}`);
+  } catch (e) {
+    dit(false, `parcours interrompu — ${String(e.message).split("\n")[0].slice(0, 90)}`);
+  } finally { await tel.close(); }
 }
 
 await b.close();

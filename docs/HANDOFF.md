@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 142 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 143 entrées.
 > **Un propriétaire qui revient lit d'abord
 > `docs/audits/DECISIONS-EN-ATTENTE.md`** — la liste, en une page, de ce qui
 > attend un arbitrage et de ce que coûte chaque attente. Rien n'y est en train
@@ -11261,4 +11261,42 @@ qu'une porte doit pouvoir devenir rouge. Celle-ci manquait, et son absence a
 laissé passer une faute à moi, dans le fichier qui décide de toutes les autres.
 La règle vaut aussi pour la plomberie : **le fichier qui liste les contrôles
 est lui-même un artefact qu'il faut contrôler.**
+
+## §11.143 — Le parcours d'un élève, bout en bout, sur l'artefact déployé
+
+Tous les contrôles du produit regardent des pages **une par une**. Un produit
+peut avoir quatre pages saines et une couture morte entre deux — et c'est la
+couture que l'élève traverse. Personne n'avait suivi le chemin.
+
+Suivi aujourd'hui, sur un téléphone de **390 × 844** et sur l'artefact
+DÉPLOYÉ : accueil → « Commencer la session » → la leçon → ouvrir les chapitres
+→ répondre à un item.
+
+- « Commencer la session » mène à `/notions/maths/limites-continuite` ;
+- **28 items** sont atteignables après ouverture des chapitres ;
+- répondre ajoute **348 caractères** de retour à l'écran — l'élève reçoit
+  quelque chose, pas un silence ;
+- la cible tactile d'un choix mesure **122 px** de haut (le plancher d'usage
+  est 44) ;
+- **0 px** de débordement horizontal ;
+- **0 erreur de page, 0 réponse ≥ 400** sur tout le parcours.
+
+**Zéro rupture.** Le chemin que suit un élève marocain sur son téléphone,
+depuis l'adresse servie par l'hébergeur, tient de bout en bout.
+
+**Et la première version de ce parcours accusait le produit à tort — la
+sixième fois de la journée.** Elle concluait que « Commencer la session » ne
+menait nulle part. Le lien était juste (`/notions/maths/limites-continuite`),
+visible à 390 comme à 1280, et le point central de sa boîte reçoit bien le
+clic. Le défaut était dans l'attente : j'attendais `networkidle` APRÈS le clic.
+Cette condition était **déjà satisfaite**, la promesse revenait avant que la
+navigation ait commencé, et je relisais l'ancienne adresse. Il faut attendre
+l'ADRESSE, pas le réseau. C'est écrit dans le script, à l'endroit du piège.
+
+Sans cette vérification, j'aurais consigné que **l'action principale du produit
+est morte sur téléphone** — une alarme fausse, alarmante, et parfaitement
+crédible.
+
+Le parcours rejoint `deploye-sweep` : il se rejoue d'une commande, et il dit
+sur quel commit il l'a mesuré.
 
