@@ -272,7 +272,8 @@ items:
           température fixée) : c'est $Q_r$ seul qui évolue, en se rapprochant
           progressivement de $K$. $K$ est une constante - c'est même son nom.
       - id: D
-        text: "Qr est une constante fixée une fois pour toutes par la réaction, alors que K varie selon l'instant précis auquel on choisit de l'évaluer."
+        text: "Qr est une constante fixée une fois pour toutes par la réaction, alors que K varie selon l'instant précis auquel on choisit de l'évaluer.
+        Un tableau d'avancement donnerait donc toujours la même valeur de $Q_r$."
         correct: false
         misconception: mc.physics.pc_etat_equilibre.confond-qr-et-k
         feedback: >
@@ -375,7 +376,8 @@ items:
           jamais $K$. C'est $Q_r$, calculé avec les nouvelles concentrations
           diluées, qui s'écarte momentanément de $K$.
       - id: C
-        text: "Qr et K ont tous les deux changé dans les mêmes proportions, si bien que le système se retrouve toujours à l'équilibre juste après la dilution."
+        text: "Qr et K ont tous les deux changé dans les mêmes proportions, si bien que le système se retrouve toujours à l'équilibre juste après la dilution.
+        Une dilution ne déplacerait donc jamais un équilibre."
         correct: false
         misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
         feedback: >
@@ -743,6 +745,7 @@ items:
         text: >-
           $\tau$ ne peut jamais dépasser la valeur $0{,}60$ trouvée dans la
           leçon pour cette réaction.
+          Le taux d'avancement final serait donc une propriété de la réaction seule.
         correct: false
         misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
         feedback: >
@@ -773,6 +776,7 @@ items:
         text: >-
           Observer si une grandeur macroscopique (couleur, pH...) cesse de
           varier : si elle se stabilise, la transformation est totale.
+          Aucun équilibre chimique ne pourrait donc être observé au laboratoire.
         correct: false
         misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
         feedback: >
@@ -893,6 +897,7 @@ items:
         text: >-
           Elle doit apparaître au dénominateur, avec un exposant égal à son
           coefficient stoechiométrique, comme n'importe quel réactif.
+          Diluer un mélange aqueux changerait donc la valeur de $K$.
         correct: false
         misconception: mc.physics.pc_etat_equilibre.qr-construction-erronee
         feedback: >
@@ -946,6 +951,7 @@ items:
         text: >-
           Parce que le volume du mélange diminue au cours de la réaction, ce qui fait
           mécaniquement grimper toutes les concentrations en présence dans le milieu.
+          Une estérification en solution se ferait donc dans un volume qui se réduit.
         correct: false
         misconception: mc.physics.pc_etat_equilibre.qr-croit-par-nature
         feedback: >
@@ -999,6 +1005,7 @@ items:
         text: >-
           $K_1 = K_2$ nécessairement, puisque la constante d'équilibre $K$ ne dépend
           jamais de rien d'autre que de l'équation de la réaction elle-même.
+          Chauffer un mélange ne changerait donc pas sa constante d'équilibre.
         correct: false
         misconception: mc.physics.pc_etat_equilibre.k-independant-temperature
         feedback: >
@@ -1136,6 +1143,7 @@ items:
           Le système va immédiatement évoluer dans le sens direct, car l'égalité
           $Q_{r,i}=K$ est justement la condition qui déclenche le départ de la réaction
           directe.
+          Un système déjà à l'équilibre se remettrait donc à évoluer.
         correct: false
         misconception: mc.physics.pc_etat_equilibre.critere-evolution-errone
         feedback: >
@@ -1210,6 +1218,7 @@ items:
           Diluer fait bien baisser $Q_r$ sous K, donc le système évolue
           dans le sens direct ; mais cela n'a aucun effet sur $\tau$,
           puisque seul K détermine $\tau$.
+          Deux mélanges de compositions différentes auraient donc le même taux final.
         correct: false
         misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
         feedback: >
@@ -1248,6 +1257,7 @@ items:
           Diluer fait toujours diminuer $\tau$, quelle que soit la
           réaction, car ajouter de l'eau dilue nécessairement le produit
           davantage que les réactifs.
+          Le sens du déplacement ne dépendrait donc pas des coefficients de l'équation.
         correct: false
         misconception: mc.physics.pc_etat_equilibre.dilution-effet-universel
         feedback: >
@@ -1360,7 +1370,8 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$\\tau = 1{,}6\\times10^{-3}/1{,}20\\times10^{-2} \\approx 0{,}13$ : transformation très peu avancée."
+        text: "$\\tau = 1{,}6\\times10^{-3}/1{,}20\\times10^{-2} \\approx 0{,}13$ : transformation très peu avancée.
+        Le taux d'avancement se calculerait donc sans passer par l'avancement maximal."
         correct: false
         misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
         feedback: >
