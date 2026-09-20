@@ -8422,3 +8422,92 @@ de 50 %, et une dette propre repérée au passage —
 `svt/dysfonctionnements-immunitaires` porte un indice INVERSE de 27 %, antérieur
 à cette passe. Le corriger demande de rallonger la CLÉ, opération inverse de
 celle-ci : à ne pas mélanger dans le même geste.
+
+---
+
+## §11.102 — Cent onze erreurs que le produit sait nommer et ne compte pas
+
+**Trouvé en lançant `batterie-locale.mjs`** — la batterie complète, ce que je
+n'avais pas fait de la journée. Elle a signalé sa propre dérive (deux étapes de
+`gates.yml` non déclarées, les miennes), trois renvois morts (les miens aussi,
+des espace-réservés dans du texte d'illustration), et le cliquet
+`couverture-diagnostique` rompu sur quatre notions.
+
+### Le fait
+
+**111 distracteurs du corpus ne portent aucun `misconception:`.**
+Répartition : `maths/probabilites-conditionnelles` 34 · `maths/denombrement` 26 ·
+`pc/rlc-serie` 23 · `maths/limites-continuite` 17 · `pc/atome-mecanique-newton` 4 ·
+`maths/fonction-logarithme` 4 · `pc/systemes-oscillants` 3.
+
+**Les 111 portent un RETOUR ÉCRIT qui NOMME l'erreur.** Cent onze sur cent onze.
+Ce n'est pas un corpus bâclé : l'auteur savait exactement ce que chaque
+distracteur représente, et l'a écrit en français dans le même fichier —
+
+> « Ce choix retourne $P(M)=0{,}01$, la prévalence de la maladie, sans tenir
+> compte du résultat du test. »
+> « Ce choix calcule $P(A \cap B) \times P(B)$, un produit au lieu d'un
+> quotient. On divise, on ne multiplie pas. »
+> « Ce choix retourne la moyenne $(0{,}4+0{,}5)/2$, qui n'a pas de sens
+> probabiliste ici. »
+
+**L'élève reçoit donc une bonne explication, et le modèle d'apprenant ne voit
+rien passer.** C'est précisément ce que VISION promet et que le tag manquant
+annule : le produit sait pourquoi l'élève s'est trompé, et ne le retient pas.
+
+### Pourquoi le tag manque : l'inventaire, pas la négligence
+
+Classification automatique des 111 par leur retour — 33 tombent dans six motifs
+cohérents, 78 restent à lire :
+
+| | |
+|---|---|
+| 12 | rend une valeur de l'énoncé au lieu de calculer |
+| 10 | opération arithmétique sans sens probabiliste (différence, moyenne) |
+| 6 | additionne au lieu de composer |
+| 2 | bonne opération, mauvais sens (× au lieu de ÷) |
+| 2 | oublie de pondérer |
+| 1 | refus de calculer (« fifty-fifty ») |
+
+Sur `probabilites-conditionnelles`, dont les huit familles déclarées portent
+toutes sur la structure conditionnelle (transposition, intersection,
+indépendance, arbre, pondération), **aucune ne décrit « rendre une valeur de
+l'énoncé »** — qui vaut à elle seule douze distracteurs, bien au-dessus du
+plancher de trois. Ce n'est pas un tag oublié : c'est une **famille jamais
+déclarée**.
+
+### Ce que je n'ai pas fait, et pourquoi
+
+**Je n'ai pas tagué les 111.** Deux raisons, et la seconde est la vraie.
+
+1. Peu des familles déclarées correspondent réellement. Sur `fonction-logarithme`,
+   les quatre distracteurs sans tag sont des leurres de LECTURE sur un texte
+   historique (« on ne peut rien conclure sans $L(2)$ », « la table donne
+   directement le produit ») : aucune des sept familles — toutes des règles de
+   calcul — ne les décrit.
+2. **Déclarer une famille, c'est définir une étiquette que le produit montrera à
+   un élève.** C'est de la surface produit, pas de la mécanique. Même arbitrage
+   qu'en §11.69 : le correctif mécanique est disponible et c'est exactement pour
+   cela qu'il ne faut pas l'appliquer seul.
+
+**Corrigé quand même, parce que là c'était mécanique** (§11.101 bis) : les trois
+distracteurs de `cp-r0-predict` sur `pc/systemes-oscillants`. Une note d'en-tête
+justifiait leur `null` en affirmant que l'inventaire de la notion est
+« entièrement M-OSC-AMO-* / M-OSC-RES-* ». Mesuré : faux. `M-OSC-LIBRE-1` existe,
+sept autres distracteurs le portent, et sa `description` décrit mot pour mot ces
+trois modèles. La porte d'engagement de l'accroche — le seul endroit où l'élève
+se prononce avant la révélation — ne produisait aucun signal.
+
+**Laissés sans tag délibérément** sur la même notion : SO-26/D, cp-r6-regimes/D
+et SO-27/D. Ce sont des **leurres de frontière** — ils tentent l'élève avec ce
+que le programme exclut (une pseudo-période fermée $T=f(m,h,k)$, un régime
+« forcé » importé du chapitre suivant). Aucune des treize familles ne les
+décrit, et les forcer dans « ordre des régimes inversé » aurait fait taire le
+cliquet en rangeant le défaut hors de portée.
+
+### La sortie
+
+Pour le propriétaire, et dans cet ordre : lire les 78 restants, décider quelles
+familles manquent à l'inventaire de chaque notion, les déclarer, puis taguer.
+Tout tag posé sans famille qui le décrive vraiment est un diagnostic sans
+libellé — le défaut que la porte nomme déjà.
