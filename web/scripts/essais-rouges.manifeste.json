@@ -297,6 +297,24 @@
       "de": "\"theoreme\",",
       "vers": "",
       "note": "Le fichier a DEUX producteurs — le script Python et la campagne, qui y ajoute à la main les formes corrigées. Son en-tête n'en nommait qu'un et interdisait l'autre : un `--exporter` nu aurait effacé 192 formes (846 committées contre 654 produites). L'export FUSIONNE désormais, et cette porte garde le sens qui reste : rien de connu du script ne doit manquer à la liste."
+    },
+    {
+      "id": "§11.128a",
+      "quoi": "une migration récente perd son bloc de vérification — elle peut désormais sembler réussir en ne faisant silencieusement rien",
+      "porte": "node scripts/portes-migrations.mjs --porte",
+      "fichier": "../backend/supabase/migrations/048_user_events_and_notion_progress.sql",
+      "de": "DO $verify$",
+      "vers": "-- bloc retire pour l essai",
+      "note": "PIÈGE payé ici : PostgreSQL accepte le dollar-quoting NOMMÉ. Une première version de la porte cherchait `DO $$` et déclarait 49 migrations sur 50 sans bloc — une catastrophe imaginaire. Et le premier essai remplaçait `$verify$` par un autre tag entre dollars, que le motif reconnaissait encore : l'essai était mal bâti, pas la porte."
+    },
+    {
+      "id": "§11.128b",
+      "quoi": "une table est créée sans que RLS soit activée dans le même fichier — entre la création et le rattrapage, elle est lisible par tous",
+      "porte": "node scripts/portes-migrations.mjs --porte",
+      "fichier": "../backend/supabase/migrations/049_user_notion_misconception_states.sql",
+      "de": "ENABLE ROW LEVEL SECURITY",
+      "vers": "ENABLE ROW LEVEL SECURITYX",
+      "note": "Cet essai a révélé une LÂCHETÉ de la porte : sans frontière finale, `ENABLE ROW LEVEL SECURITY_xxx` passait. `\\b` ajouté. L'essai était mal bâti ET la porte était lâche — les deux corrigés."
     }
   ]
 }

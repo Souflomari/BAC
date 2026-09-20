@@ -58,6 +58,12 @@ const ETAPES = [
   { nom: "modele-a-jour", cmd: ["scripts/build-learner-inputs.mjs", "--verifie"] },
   { nom: "rampe-bac", cmd: ["scripts/rampe-bac.mjs", "--porte"] },
   { nom: "rampe-entree", cmd: ["scripts/rampe-entree.mjs", "--porte"] },
+  //  §11.128 : les deux non-négociables de sûreté PRODUCTION qui se vérifient
+  //  statiquement — bloc de vérification assertant une cardinalité, et RLS
+  //  activée dans la migration qui CRÉE la table. Ils sont énoncés dans
+  //  `.claude/CLAUDE.md` comme « toujours en vigueur », dérivés d'incidents
+  //  réels (046, 040, 047), et rien ne les mesurait.
+  { nom: "portes-migrations", cmd: ["scripts/portes-migrations.mjs", "--porte"] },
   { nom: "couverture-diagnostique", cmd: ["scripts/couverture-diagnostique.mjs", "--porte"] },
   { nom: "resume-couverture", cmd: ["scripts/resume-couverture.mjs", "--porte"] },
   { nom: "arithmetique-rendue", cmd: ["scripts/arithmetique-rendue.mjs", "--strict"] },

@@ -476,6 +476,15 @@ jobs:
       - name: Cliquet rampe-entree (la marche d'entrée d'une notion ne disparaît pas)
         run: node scripts/rampe-entree.mjs --porte
 
+      # §11.128 — LES NON-NÉGOCIABLES DE SÛRETÉ PRODUCTION, MESURÉS. CLAUDE.md
+      # les énonce « toujours en vigueur » et les dérive d'incidents réels : un
+      # bloc de vérification qui asserte la CARDINALITÉ de l'état final (leçon
+      # de 046 — une migration qui semble réussir en ne faisant silencieusement
+      # rien), et RLS activée dans la migration qui CRÉE la table (leçons 040 et
+      # 047). Les deux tiennent ; rien ne les mesurait.
+      - name: Non-négociables migrations (bloc de vérification + RLS à la création)
+        run: node scripts/portes-migrations.mjs --porte
+
       # CLIQUET COUVERTURE-DIAGNOSTIQUE (2026-09-05). Le seul fil qui relie
       # « l'élève se trompe » à « le produit sait quoi lui proposer ensuite »
       # est un champ : `misconception:` sur un distracteur. 1 017 distracteurs

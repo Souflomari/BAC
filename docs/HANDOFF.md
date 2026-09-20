@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 127 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 128 entrées.
 > **Un propriétaire qui revient lit d'abord
 > `docs/audits/DECISIONS-EN-ATTENTE.md`** — la liste, en une page, de ce qui
 > attend un arbitrage et de ce que coûte chaque attente. Rien n'y est en train
@@ -24,7 +24,7 @@
 >   deux sha au lieu de deux rendus, un serveur périmé qui imitait une
 >   régression. Lire avant de croire une mesure catastrophique.
 > - **§11.106** — « porte vérifiée rouge » n'est plus une phrase mais une
->   commande : `node scripts/essais-rouges.mjs`, **34** essais rejoués à chaque
+>   commande : `node scripts/essais-rouges.mjs`, **36** essais rejoués à chaque
 >   passage.
 > - **§11.117 / §11.118** — l'état de la MESURE : la CI n'a pas assigné un seul
 >   runner de la journée (aucune porte n'a tourné en CI depuis le 19 au soir —
@@ -10455,3 +10455,63 @@ citées par leur RACINE (`[[figure:limite-trou]]`), sans extension, et les
 sidecars `.stages.json` / `.interactive.json` / `.motion.json` sont chargés par
 convention à partir de cette même racine. Exiger le nom de fichier complet
 déclarait orphelin tout ce qui fonctionne.
+
+---
+
+## §11.128 — Les non-négociables de sûreté production, mesurés pour la première fois
+
+**2026-09-20.** `.claude/CLAUDE.md` énonce une liste de non-négociables
+« toujours en vigueur », dérivés d'incidents réels et nommant les migrations
+coupables. Deux d'entre eux se vérifient STATIQUEMENT, sur le texte des
+migrations :
+
+> « Toute migration embarque un bloc de vérification qui asserte la
+> **CARDINALITÉ** de l'état final, pas seulement la structure. Une migration qui
+> semble réussir en ne faisant silencieusement rien est le mode de défaillance
+> que cela empêche. (Leçon : migration 046.) »
+
+> « **RLS activée dans la migration qui CRÉE la table.** (Leçons : 040, 047.) »
+
+**Rien ne les mesurait.** Ils sont écrits en tête du fichier que chaque session
+lit, ils viennent d'incidents payés, et aucune porte ne les touchait.
+
+### Les deux TIENNENT
+
+| règle | fenêtre | résultat |
+|---|---|---|
+| bloc de vérification avec cardinalité | migrations ≥ 046 | **6 / 6** |
+| RLS dans la migration créatrice | migrations ≥ 002 qui créent une table | **7 / 7** |
+
+Le seul trou historique — les sept tables de curriculum de `001_initial_schema`
+— a été comblé par une migration dédiée dont le nom le dit :
+`040_enable_rls_curriculum_tables.sql`. C'est la leçon citée, et elle a été
+apprise.
+
+**Les fenêtres ne sont pas des seuils de confort : ce sont des dates.** Les
+migrations sont une histoire append-only — « ne jamais modifier une migration
+déjà passée en production » — donc exiger un bloc de vérification sur `001`
+serait exiger une faute. Les deux seuils disent seulement à partir d'où chaque
+règle existait.
+
+`portes-migrations.mjs` est armé (batterie + CI, 22 portes locales) avec ses
+deux essais rouges **§11.128a/b**. La suite passe à **36**.
+
+### Le quinzième banc faussé — et celui-là aurait fait peur
+
+La première version de la porte cherchait `DO $$` et a déclaré **49 migrations
+sur 50 sans bloc de vérification**. Un non-négociable de sûreté production
+violé à 98 % : le genre de chiffre qu'on publie en urgence.
+
+Il était entièrement faux. **PostgreSQL accepte le dollar-quoting NOMMÉ** —
+`048` ouvre par `DO $verify$` et ferme par `END $verify$`. Le motif accepte
+désormais `$[a-z_]*$`.
+
+Deuxième couche : le premier essai rouge remplaçait `$verify$` par un autre
+tag entre dollars… que le motif corrigé reconnaissait encore. L'essai est
+revenu **AVEUGLE**, et ADR 0034 §2 dit qu'un essai rouge qui échoue est
+AMBIGU — la porte, ou l'essai. C'était l'essai. Mais le diagnostic du second
+essai, lui, a trouvé une **vraie lâcheté** : sans frontière finale,
+`ENABLE ROW LEVEL SECURITY_n_importe_quoi` passait la porte. `\b` ajouté.
+
+**L'essai était mal bâti ET la porte était lâche. Les deux corrigés** — c'est
+exactement pourquoi le verdict « aveugle » se diagnostique au lieu de se croire.
