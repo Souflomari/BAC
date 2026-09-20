@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 121 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 122 entrées.
 > Une session fraîche qui veut l'ÉTAT COURANT plutôt que l'histoire lit, dans
 > cet ordre :
 >
@@ -19,7 +19,7 @@
 >   deux sha au lieu de deux rendus, un serveur périmé qui imitait une
 >   régression. Lire avant de croire une mesure catastrophique.
 > - **§11.106** — « porte vérifiée rouge » n'est plus une phrase mais une
->   commande : `node scripts/essais-rouges.mjs`, **29** essais rejoués à chaque
+>   commande : `node scripts/essais-rouges.mjs`, **30** essais rejoués à chaque
 >   passage.
 > - **§11.117 / §11.118** — l'état de la MESURE : la CI n'a pas assigné un seul
 >   runner de la journée (aucune porte n'a tourné en CI depuis le 19 au soir —
@@ -10120,3 +10120,78 @@ et pas une proposition de QCM ; en SVT, « la première réponse adaptative » e
 de l'immunologie. Une porte sur ce motif aurait coûté dix-huit corrections
 fausses pour aucune vraie. Elle n'a pas été posée, et la raison est écrite
 dans le code à côté du motif qui, lui, l'a été.
+
+---
+
+## §11.122 — La garde contre la dérive avait dérivé dans sa propre portée
+
+**2026-09-20.** §11.81 est l'entrée la plus coûteuse de ce journal : pendant une
+semaine sans CI, « batterie locale » a été écrit dans chaque message de commit
+alors que quatre contrôles seulement tournaient, et cinq des huit portes sans
+navigateur étaient rouges. La leçon retenue n'était pas « lancer ces huit-là »
+mais « **la liste DÉRIVE** » — d'où la garde du bas de `batterie-locale.mjs`,
+qui se compare à `gates.yml` et signale toute porte que la CI lance et qu'elle
+ignore.
+
+**Cette garde voyait 28 des 36 scripts que la CI lance réellement.**
+
+Elle cherchait `node` suivi d'un chemin sous `scripts/`. Or la CI en atteint
+huit autrement, par deux mécanismes qu'aucun grep du YAML ne révèle :
+
+- **`npm run <nom>`** — la vraie commande vit dans `package.json`. Sept scripts
+  passent par là : `dom-truth` et les six suites `test-*`.
+- **le crochet `prebuild`** — npm le déclenche **tout seul** avant `npm run
+  build`. Rien ne l'écrit nulle part. C'est ainsi que
+  `generate-tokens.mjs --check` tourne à chaque construction.
+
+Une porte ajoutée à la CI sous forme `npm run …` pouvait donc manquer à cette
+batterie sans que rien ne crie. C'est exactement la dérive de §11.81 — dans la
+garde même qui la surveille. Motif ADR 0031 : **un mécanisme et sa PORTÉE sont
+deux choses**, et celui-ci fonctionnait parfaitement sur les 28 qu'il voyait.
+
+### Ce que le trou cachait vraiment
+
+Un seul des huit était un vrai manque : **`generate-tokens.mjs --check`**, le
+contrôle de la source unique du design — `tokens.ts` engendre les variables
+CSS, et ceci vérifie qu'elles n'ont pas divergé. La CI le lance à chaque
+construction ; la batterie locale ne le lançait pas. « Tout est vert » en local
+pouvait donc précéder un rouge en CI, ce que cette batterie existe précisément
+pour empêcher.
+
+Les sept autres étaient couverts **en substance** : `dom-truth` est déclaré
+hors champ (navigateur requis), et les six suites `test-*` sont lancées en bloc
+par le `node --test` du haut du fichier. Elles sont désormais nommées, pour que
+la couverture soit lisible et non déduite.
+
+### `--garde`, et pourquoi il a fallu l'ajouter pour prouver quoi que ce soit
+
+Le premier essai rouge a **échoué au pré-contrôle** : la batterie entière est
+déjà rouge sur l'arbre intact, à cause de `couverture-diagnostique` (trois
+réductions honnêtes documentées). Un essai rouge ne prouve rien sur une
+commande déjà rouge pour une autre raison — c'est §11.104 mot pour mot, et le
+pré-contrôle ajouté ce matin a fait son travail au lieu de me laisser écrire un
+✓ ROUGE sans valeur.
+
+D'où `node scripts/batterie-locale.mjs --garde`, qui ne lance que le contrôle
+de dérive. La propriété est maintenant re-mesurable à part — ADR 0034 §5 : une
+propriété qu'on ne peut pas re-mesurer est un souvenir. Essai rouge
+**§11.122** ; la suite passe à **30**, la batterie de 20 à **21 portes**, et sa
+couverture déclarée de 20 à **27**.
+
+### Et la garde a attrapé mon erreur en moins d'une minute
+
+En écrivant le commentaire qui explique tout ce qui précède, j'ai cité un chemin
+d'exemple inexistant. `liens-fichiers --porte` est passée rouge — « un renvoi
+mort dans un document VIVANT est une instruction qu'on croit avoir donnée » —
+et `essais-rouges` a aussitôt signalé que l'essai §11.29 ne mesurait plus rien,
+sa porte étant déjà rouge. Deux portes, dont une méta, sur une faute de prose
+dans un commentaire. C'est le meilleur argument pour le reste de ce journal.
+
+### Onzième fois de la journée
+
+Trois tentatives successives pour dresser l'inventaire « qu'est-ce qui tourne
+vraiment », trois résultats faux, pour trois raisons différentes : le grep
+`node`-seulement, puis l'indirection `npm run`, puis le crochet de cycle de vie
+de npm que personne n'écrit. **L'inventaire de ce qui tourne est lui-même
+difficile à calculer** — et c'est précisément pourquoi il devait être outillé
+plutôt que relu.

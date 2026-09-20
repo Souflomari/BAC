@@ -33,6 +33,13 @@ const REPO = join(WEB, "..");
 // Les contrôles sans navigateur, dans l'ordre où gates.yml les lance.
 const ETAPES = [
   { nom: "tests unitaires", cmd: null },                      // traité à part
+  //  §11.122 : la CI le lance à CHAQUE construction, via le crochet `prebuild`
+  //  de npm — jamais écrit nulle part, donc invisible à la garde ci-dessous
+  //  jusqu'à aujourd'hui. C'est le contrôle de la source unique du design :
+  //  `tokens.ts` génère les variables CSS, et ceci vérifie qu'elles n'ont pas
+  //  divergé. Sans lui, « tout est vert » en local pouvait précéder un rouge en
+  //  CI — exactement ce que cette batterie existe pour empêcher.
+  { nom: "generate-tokens", cmd: ["scripts/generate-tokens.mjs", "--check"] },
   { nom: "liens-fichiers", cmd: ["scripts/liens-fichiers.mjs", "--porte"] },
   { nom: "validate-content", cmd: null },                     // traité à part
   { nom: "lectures-graphiques", cmd: ["scripts/lectures-graphiques.mjs", "--check"] },
@@ -102,10 +109,18 @@ function lance(label, bin, args, cwd) {
   }
 }
 
-console.log("\n━━ batterie locale (les contrôles de gates.yml qui ne demandent pas de navigateur) ━━\n");
+//  --garde : ne lancer QUE le contrôle de dérive du bas de ce fichier.
+//  Il existe pour que cette garde soit MESURABLE à part. Lancée dans la
+//  batterie entière, elle est noyée par les portes de contenu — et un essai
+//  rouge ne peut rien prouver sur une commande déjà rouge pour une autre
+//  raison (§11.104). Une propriété qu'on ne peut pas re-mesurer est un
+//  souvenir (ADR 0034 §5).
+const GARDE_SEULE = process.argv.includes("--garde");
+
+if (!GARDE_SEULE) console.log("\n━━ batterie locale (les contrôles de gates.yml qui ne demandent pas de navigateur) ━━\n");
 let rouges = 0;
 
-if (!lance("tests unitaires", "node",
+if (!GARDE_SEULE && !lance("tests unitaires", "node",
   ["--test", ...readdirSync(join(WEB, "scripts")).filter((f) => /^test-.*\.mjs$/.test(f)).map((f) => `scripts/${f}`)],
   WEB)) rouges++;
 
@@ -113,23 +128,44 @@ if (!lance("tests unitaires", "node",
 // dossiers par `path.join(REPO, dir)`. Un chemin en `../content/…` ne résout
 // donc PAS, et l'outil échoue sur « pas de lesson.md » — pas sur le contenu.
 // On le lance depuis la racine, avec des chemins relatifs au dépôt.
-if (!lance("validate-content (62)", "node",
+if (!GARDE_SEULE && !lance("validate-content (62)", "node",
   ["web/scripts/validate-content.mjs", ...dossiersNotions(), "--strict"],
   REPO)) rouges++;
 
-for (const e of ETAPES) {
+for (const e of GARDE_SEULE ? [] : ETAPES) {
   if (!e.cmd) continue;
   if (!lance(e.nom, "node", e.cmd, WEB)) rouges++;
 }
 
 // ── Le garde-fou : cette liste est-elle encore à jour ? ──
 const yml = readFileSync(join(REPO, ".github/workflows/gates.yml"), "utf8");
+//  PIÈGE MESURÉ (§11.122). La première version de cette garde ne cherchait que
+//  les appels DIRECTS — la forme « node » suivie d'un chemin sous `scripts/`.
+//  Or la CI atteint HUIT scripts autrement :
+//    • par `npm run <nom>`, dont la vraie commande vit dans package.json
+//      (`npm run dom-truth`, les six suites `npm run test-*`) ;
+//    • par le crochet `prebuild`, que npm déclenche SEUL avant `npm run build`
+//      et que rien n'écrit donc dans le YAML (`generate-tokens --check`).
+//  La garde voyait 28 des 36 scripts réellement lancés. Une porte ajoutée à la
+//  CI sous forme `npm run …` pouvait donc manquer à cette batterie sans que
+//  rien ne crie — c'est la dérive de §11.81, dans la garde même qui la
+//  surveille. Un mécanisme et sa PORTÉE sont deux choses (ADR 0031).
+const scriptsNpm = JSON.parse(readFileSync(join(WEB, "package.json"), "utf8")).scripts ?? {};
+const depuisCmd = (cmd) => [...String(cmd ?? "").matchAll(/scripts\/([a-z0-9-]+\.mjs)/g)].map((m) => m[1]);
 const lancesParCI = new Set(
   [...yml.matchAll(/node\s+scripts\/([a-z0-9-]+\.mjs)/g)].map((m) => m[1])
 );
+for (const [, nom] of yml.matchAll(/npm run ([a-z0-9:-]+)/g)) {
+  for (const f of depuisCmd(scriptsNpm[nom])) lancesParCI.add(f);
+  //  npm lance `prebuild` de lui-même avant `build` : personne ne l'écrit.
+  if (nom === "build") for (const f of depuisCmd(scriptsNpm.prebuild)) lancesParCI.add(f);
+}
 const couverts = new Set(ETAPES.filter((e) => e.cmd).map((e) => e.cmd[0].replace("scripts/", "")));
 // Lancés plus haut, hors de la boucle ETAPES : ils ont besoin d'arguments calculés.
 couverts.add("validate-content.mjs");
+//  Les six suites `test-*.mjs` sont lancées en bloc par le `node --test` du
+//  haut de ce fichier : couvertes en substance, jamais nommées dans ETAPES.
+for (const f of readdirSync(join(WEB, "scripts"))) if (/^test-.*\.mjs$/.test(f)) couverts.add(f);
 const oublis = [...lancesParCI].filter((f) => !couverts.has(f) && !HORS_CHAMP.has(f)).sort();
 
 console.log();
@@ -145,6 +181,6 @@ if (oublis.length) {
   console.log(`  ✓ la liste couvre gates.yml (${couverts.size} portes + ${HORS_CHAMP.size} hors champ assumés)`);
 }
 
-console.log(rouges ? `\n━━ ${rouges} contrôle(s) ROUGE(s) — ne pas pousser en prétendant le contraire ━━\n`
+if (!GARDE_SEULE) console.log(rouges ? `\n━━ ${rouges} contrôle(s) ROUGE(s) — ne pas pousser en prétendant le contraire ━━\n`
                    : "\n━━ tout est vert ━━\n");
 process.exit(rouges ? 1 : 0);

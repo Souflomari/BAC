@@ -252,6 +252,15 @@
       "de": "Même erreur que « seule la réaction directe continue », dans l'autre",
       "vers": "Même erreur que le choix précédent, dans l'autre",
       "note": "Le renvoi par RANG (« la première réponse ») n'est délibérément PAS gardé : 18 signalements sur le corpus, zéro vrai — en philosophie c'est la première réponse DU TEXTE. 18 corrections fausses pour 0 vraie (ADR 0034 §9)."
+    },
+    {
+      "id": "§11.122",
+      "quoi": "une porte que la CI atteint par `npm run` (ou par le crochet prebuild) disparaît de la batterie locale — dérive invisible jusqu'ici",
+      "porte": "node scripts/batterie-locale.mjs --garde",
+      "fichier": "scripts/batterie-locale.mjs",
+      "de": "  { nom: \"generate-tokens\", cmd: [\"scripts/generate-tokens.mjs\", \"--check\"] },",
+      "vers": "",
+      "note": "La garde ne lisait que les appels directs sous `node` : elle voyait 28 des 36 scripts réellement lancés. `--garde` existe pour qu'elle soit mesurable à part — un essai rouge ne prouve rien sur une commande déjà rouge pour une autre raison (§11.104)."
     }
   ]
 }
