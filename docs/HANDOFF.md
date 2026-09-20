@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 113 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 118 entrées.
 > Une session fraîche qui veut l'ÉTAT COURANT plutôt que l'histoire lit, dans
 > cet ordre :
 >
@@ -19,8 +19,12 @@
 >   deux sha au lieu de deux rendus, un serveur périmé qui imitait une
 >   régression. Lire avant de croire une mesure catastrophique.
 > - **§11.106** — « porte vérifiée rouge » n'est plus une phrase mais une
->   commande : `node scripts/essais-rouges.mjs`, 21 essais rejoués à chaque
+>   commande : `node scripts/essais-rouges.mjs`, **25** essais rejoués à chaque
 >   passage.
+> - **§11.117 / §11.118** — l'état de la MESURE : la CI n'a pas assigné un seul
+>   runner de la journée (aucune porte n'a tourné en CI depuis le 19 au soir —
+>   ne jamais lire un badge vert comme une preuve), et la dernière porte armée
+>   garde une promesse textuelle du spec que rien ne gardait.
 > - **§11.102 / §11.107 / §11.108** — l'état du CONTENU : quelles familles de
 >   misconceptions manquent à l'inventaire, et ce qu'un élève peut obtenir sur
 >   le banc sans rien savoir (31,9 % contre 25 % au hasard, l'absolu portant
@@ -9786,3 +9790,110 @@ fois.** Elles passent en local sur le même arbre, mais « passe en local » et
 « passe en CI » ne sont pas la même affirmation, et il n'y a aucune raison de
 les confondre ici — c'est précisément la faute que §11.81 a payée pendant une
 semaine.
+
+---
+
+## §11.118 — « La même question jamais deux fois » : la promesse tenait, rien ne la gardait
+
+**2026-09-20.** `LESSON-EXPERIENCE-SPEC §1.1` écrit une promesse à l'élève en
+toutes lettres — « pour que la même question n'apparaisse jamais deux fois » —
+et la tient par un champ : un point d'arrêt qui reprend un item de chapitre
+déclare `item_source: clone_of_<id>`, et `ItemsSection` retire alors cet id du
+chapitre.
+
+**Le mécanisme fonctionne. Mesuré : 132 clones dans le corpus, 132 déclarés
+correctement, zéro clone nu, zéro id pendant.** C'est un bon résultat, et ce
+n'est pas le sujet de cette entrée.
+
+Le sujet est que **rien ne garantissait qu'il en reste ainsi**. Un auteur qui
+ajoute un point d'arrêt en recopiant l'énoncé d'un item, et qui oublie la ligne
+`item_source:`, ne casse aucun test — il fait simplement voir deux fois la même
+question à l'élève, dans la même leçon. C'est exactement le cas ADR 0031 : **la
+PORTÉE d'un mécanisme se mesure à part de son fonctionnement.** Celui-ci
+fonctionnait ; personne ne mesurait s'il atteignait encore tout le corpus.
+
+`enonces-jumeaux.mjs` l'arme dans **deux directions**, parce qu'une seule se
+contourne :
+
+- **le clone NU** — un énoncé de point d'arrêt identique à celui d'un item du
+  même dossier, sans `item_source: clone_of_<cet id>`. L'item reste au
+  chapitre. Franche, 0 aujourd'hui.
+- **la déclaration PENDANTE** — `clone_of_X` où X n'existe pas dans
+  `items.yaml`. Rien n'est retiré, et la ligne donne l'illusion inverse : une
+  coquille dans l'id désarme l'exclusion en silence. Franche, 0 aujourd'hui.
+
+Sans la seconde, on passe la première en écrivant `item_source: clone_of_`
+n'importe quoi. Sans la première, on la passe en effaçant la ligne.
+
+Plus un **cliquet séparé** (ADR 0034 §3 : un seuil se pose sur une MESURE,
+jamais sur un cliquet) sur les énoncés jumeaux entre items : **1 intra-notion,
+1 inter-notion** au 2026-09-20. Les deux sont des arbitrages éditoriaux, pas
+des défauts mécaniques, et sont consignés pour le propriétaire dans
+`docs/audits/enonces-jumeaux-2026-09-20.md`. Le cliquet dit seulement qu'ils
+ne peuvent pas augmenter.
+
+Les trois sens sont prouvés rejouables — essais rouges **§11.118a/b/c**, chacun
+précédé du pré-contrôle VERT sur l'arbre intact (ADR 0034 §1). La suite passe
+de 22 à **25**, la batterie locale de 18 à **19 portes**.
+
+### Le constat de fond, pour le propriétaire
+
+`maths/probabilites-conditionnelles` pose **deux fois la même question**, au
+caractère près, à deux endroits de la même leçon (`PC-M4-1` et `PC-M5-1`). Ce
+n'est pas une étourderie : le `spec.md` de la notion prescrit le **même énoncé
+canonique** à M4 et à M5 (lignes 116 et 127), et les auteurs l'ont exécuté
+fidèlement. Un seul des deux items suffit d'ailleurs à distinguer les deux
+misconceptions — les deux offrent $0$ *et* $0{,}9$.
+
+Aucune évaluation n'est en danger (les deux misconceptions sont à 7 et 6 items,
+plancher 3), mais **supprimer** l'un des deux ferait passer sa section à 2
+items. L'arbitrage est donc : réécrire un énoncé, et amender le `spec.md`
+d'abord — sinon la prochaine régénération ramènera le doublon.
+
+### Le banc avant le produit — septième fois de la journée
+
+Trois faux constats successifs, tous de ma sonde, aucun du corpus :
+
+1. **Un « choix jumeau » dans `maths/calcul-integral:CI-31`** — ma
+   normalisation minusculait l'intérieur des `$…$`. En maths la casse EST la
+   sémantique : « Dériver $F$ … $F'=f$ » et « Dériver $f$ … $f'=F$ » sont deux
+   questions opposées, et `toLowerCase()` les déclarait identiques. Zéro choix
+   jumeau dans le corpus une fois la casse préservée.
+2. **Quatre « tags orphelins » dans `pc/systemes-oscillants`** — la forme
+   `misconception: [a, b]` est **sanctionnée**, normalisée par `choiceTags`, et
+   couverte par des tests unitaires. Ma sonde joignait la liste par une virgule
+   et comparait la chaîne obtenue. Zéro tag orphelin.
+3. **111 « déclarations mortes » sur 132** — et c'est le plus instructif, parce
+   que la porte fautive était la mienne, écrite dix minutes plus tôt. Elle
+   exigeait que l'énoncé du point d'arrêt soit **identique** à celui de l'item
+   déclaré. Or `clone_of_X` veut dire « dérivé de X », pas « recopié de X » : un
+   clone REFORMULÉ reste un clone et doit retirer X. La porte répondait
+   **exactement à une question plus étroite que son en-tête ne le laissait
+   lire** — ADR 0033, le troisième cas, celui où il n'y a rien à réparer dans le
+   mécanisme. Restreinte au seul id pendant, elle mesure ce qu'elle annonce.
+
+Un quatrième garde-fou a failli être posé sur du bruit : les « quasi-jumeaux »
+à ≤ 2 caractères d'écart donnaient **432 signalements**, presque tous des
+options numériques (`$5$` contre `$6$`) — c'est-à-dire exactement ce à quoi
+ressemble un bon QCM numérique. Mesure sans signal, écartée sans porte (ADR
+0034 §9 : une alarme qui sonne dès qu'on travaille est une alarme morte).
+
+**S'y ajoute un cliquet posé avec du jeu** : `inter: 2` alors que la mesure
+disait 1 — un cran de mou, donc un cliquet qui n'aurait rien vu du premier
+doublon ajouté. Corrigé à 1 avant l'armement. C'est la forme miniature de ce
+qu'ADR 0034 §3 interdit.
+
+### Deux hypothèses vérifiées, et réfutées
+
+- **9 identifiants d'items sont dupliqués entre notions** (`LIB-1`…`LIB-9`
+  vivent dans `svt/liberation-energie-matiere-organique` **et** dans
+  `philo/la-liberte`). C'est la classe de défaut qui a déjà mordu une fois —
+  les 42 `entry_id` de banque, dont `bk-2018-n-x1` dans quatre banques, qui
+  allumaient « fait » sur des exercices jamais ouverts. **Vérifié : aucun
+  consommateur ne lit `item_id` seul aujourd'hui.** Le journal porte toujours
+  `notion_id`, `revealKey()` compose les deux, et `targetsFromItems()` est
+  appelée notion par notion. Rien à corriger — mais la collision existe, et la
+  prochaine lecture non composée la réveillera.
+- **21 points d'arrêt reprennent l'énoncé d'un item au caractère près.** Ce
+  n'est pas un doublon : ce sont les clones déclarés, et `ItemsSection` retire
+  bien l'item. Le mécanisme, vérifié contre le corpus pour la première fois.

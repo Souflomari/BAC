@@ -441,6 +441,17 @@ jobs:
       - name: Porte d'engagement (l'élève parie dans l'accroche, le produit retient)
         run: node scripts/porte-engagement.mjs --porte
 
+      # « pour que la même question n'apparaisse jamais deux fois » —
+      # LESSON-EXPERIENCE-SPEC §1.1, mot pour mot. Le mécanisme existe
+      # (`item_source: clone_of_<id>` retire l'item du chapitre) et les 132
+      # clones du corpus le déclarent ; rien ne gardait qu'il en reste ainsi.
+      # Deux directions, parce qu'une seule se contourne : le clone NU (énoncé
+      # recopié, rien de déclaré) et la déclaration PENDANTE (un id qui
+      # n'existe pas, donc rien de retiré). Les deux à 0 ; les trois essais
+      # rouges §11.118a/b/c les prouvent rejouables.
+      - name: Énoncés jumeaux (la même question jamais deux fois dans une leçon)
+        run: node scripts/enonces-jumeaux.mjs --porte
+
       - name: Artefacts du modèle apprenant à jour (plancher et carte item→misconception)
         run: node scripts/build-learner-inputs.mjs --verifie
 

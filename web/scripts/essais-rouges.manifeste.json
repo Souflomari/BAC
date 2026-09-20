@@ -189,6 +189,33 @@
       "de": "      status: sourced",
       "vers": "      status: unsourced",
       "note": "Le sens INVERSE — ajouter un sommet sourcé — n'est pas gardé, et c'est voulu : c'est le travail qu'on souhaite, pas une régression à empêcher."
+    },
+    {
+      "id": "§11.118a",
+      "quoi": "un point d'arrêt recopie l'énoncé d'un item sans le déclarer — l'item reste au chapitre, l'élève voit deux fois la même question",
+      "porte": "node scripts/enonces-jumeaux.mjs --porte",
+      "fichier": "../content/pc/rlc-serie/checkpoints.yaml",
+      "de": "    item_source: clone_of_RLC-M1-1",
+      "vers": "    item_source: new",
+      "note": "La promesse est textuelle dans LESSON-EXPERIENCE-SPEC §1.1 (« pour que la même question n'apparaisse jamais deux fois ») ; rien ne la gardait."
+    },
+    {
+      "id": "§11.118b",
+      "quoi": "une déclaration `clone_of_X` dont l'id est PENDANT — ItemsSection ne retire rien, et la ligne donne l'illusion inverse",
+      "porte": "node scripts/enonces-jumeaux.mjs --porte",
+      "fichier": "../content/pc/rlc-serie/checkpoints.yaml",
+      "de": "clone_of_RLC-M4-1",
+      "vers": "clone_of_RLC-M4-999",
+      "note": "La SECONDE direction (ADR 0031) : sans elle, la porte 118a se passe en écrivant n'importe quel `clone_of_`."
+    },
+    {
+      "id": "§11.118c",
+      "quoi": "deux items de la MÊME notion posent le même énoncé — le cliquet intra recule de 1 à 2",
+      "porte": "node scripts/enonces-jumeaux.mjs --porte",
+      "fichier": "../content/maths/arithmetique/items.yaml",
+      "de": "      Quel est le reste de la division de $2^{2023}$ par $3$ ?",
+      "vers": "      Dans la division euclidienne de $250$ par $7$, quel est le reste ?",
+      "note": "Cliquet, pas porte franche : le corpus en porte 1 intra + 1 inter au 2026-09-20, consignés pour le propriétaire (spec-level). Le cliquet dit seulement qu'ils ne peuvent pas AUGMENTER."
     }
   ]
 }
