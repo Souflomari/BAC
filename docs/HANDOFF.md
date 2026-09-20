@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 136 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 137 entrées.
 > **Un propriétaire qui revient lit d'abord
 > `docs/audits/DECISIONS-EN-ATTENTE.md`** — la liste, en une page, de ce qui
 > attend un arbitrage et de ce que coûte chaque attente. Rien n'y est en train
@@ -10981,4 +10981,64 @@ jamais existé. Remplacé par un ancrage sur le VERBE D'USAGE (« sert X »,
 implémente quelle étiquette : cette correspondance demande de lire le type
 cognitif décrit (« Résolution », « Utilisation »), donc un jugement d'auteur.
 Et il ne juge pas si l'item livré fait ce que l'étiquette décrivait.
+
+## §11.137 — « Le relais coupe Chromium » : un diagnostic recopié pendant deux semaines
+
+`INSTRUMENTS.md`, « ce que RIEN ne mesure encore », point 9, depuis le
+2026-09-06 : « la preview Vercel répond à `curl` en 0,7 s, mais le relais
+réseau de la session coupe Chromium headless (`ERR_CONNECTION_RESET`). […]
+**À refaire depuis une machine libre.** » Tout ce que les §11.20 à 11.25
+mesurent l'était donc sur le build local, jamais sur l'artefact servi.
+
+**Il n'a pas fallu d'autre machine, et le relais ne coupait rien.** Il
+re-termine TLS avec son propre CA — c'est écrit dans son README — et Chromium
+ne le connaissait pas. L'erreur mesurée aujourd'hui est
+`ERR_CERT_AUTHORITY_INVALID`, **pas** `ERR_CONNECTION_RESET` : une défiance,
+pas une coupure. Le magasin NSS de l'image date du 22 août ; le CA de la
+session est écrit à chaque démarrage, à 14 h 23 aujourd'hui. Personne n'a
+jamais ajouté le second au premier.
+
+`certutil` n'est pas installé, donc `deploye-sweep` **épingle la clé publique**
+du CA lu sur le disque (`--ignore-certificate-errors-spki-list`, recalculée à
+chaque passage) : Chromium accepte exactement cette autorité-là et refuse
+toutes les autres. Ce n'est pas `--ignore-certificate-errors`, qui accepterait
+n'importe qui — la consigne du relais, « ne jamais désactiver la vérification
+TLS », tient.
+
+**Ce que l'artefact déployé a répondu, mesuré pour la première fois :**
+
+- **Le commit EN LIGNE est lisible** — `data-build-sha` sur le pied de page,
+  posé par `next.config.mjs` depuis `VERCEL_GIT_COMMIT_SHA`. La preview servait
+  `bb9af56`, c'est-à-dire un commit de cette session, poussé vingt-cinq minutes
+  plus tôt : **la branche est déployée en continu**. L'instrument le dit à
+  chaque passage, parce qu'un chiffre mesuré sur un autre commit n'est pas un
+  chiffre sur le nôtre.
+- **L'attente honnête avant hydratation (ADR 0032) TIENT EN LIGNE** : 5, 263,
+  9 et 270 commandes servies sur quatre pages, **0 active** dans les quatre
+  cas. Jusqu'ici cette propriété n'était vérifiée que sur le build local.
+- **L'adresse inconnue sert un vrai « introuvable »** : HTTP 404 et 381
+  caractères de texte sans JavaScript, là où le défaut du §11.67 servait une
+  page vide.
+- **Le correctif du §11.133 est EN LIGNE**, pas seulement commis : sur la
+  preview, l'élève qui répond juste à `ATX-M01-1` lit « Pourquoi cette réponse
+  est la bonne ». Une heure séparait le correctif de sa vérification chez
+  l'hébergeur.
+
+**La leçon n'est pas technique.** Le diagnostic de 2026-09-06 était plausible,
+écrit de bonne foi, et il a été RECOPIÉ d'une session à l'autre sans être
+rejoué. Il disait « coupé » là où il fallait lire « pas de confiance », et ces
+deux mots ne mènent pas au même geste. **Un angle mort noté est un angle mort
+qui cesse d'être regardé** : c'est la même famille que `wide-measure` (§11.130),
+qui demandait par écrit d'être rejoué et ne l'a pas été pendant deux mois.
+
+**PAS EN CI, et c'est un choix.** L'instrument demande le réseau, un CA propre
+à la session, et il mesure un artefact dont le commit varie : une porte
+là-dessus serait rouge chaque fois que le déploiement a du retard sur `git
+push` — donc un rouge qu'on apprendrait à ignorer. Il est catalogué, il se
+lance à la main, et son en-tête dit quand.
+
+**PORTÉE.** Le temps et la géométrie passent par le relais : les millisecondes
+mesurées ici ne sont **pas** celles d'un élève marocain. La production reste
+hors de portée et humainement gardée. Tout ce qui demande un compte connecté
+aussi.
 
