@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 138 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 139 entrées.
 > **Un propriétaire qui revient lit d'abord
 > `docs/audits/DECISIONS-EN-ATTENTE.md`** — la liste, en une page, de ce qui
 > attend un arbitrage et de ce que coûte chaque attente. Rien n'y est en train
@@ -11086,4 +11086,55 @@ y penser.
 pèse **2,95 Mo de HTML brut, 254 ko une fois comprimée** (facteur 11,6). Le
 chiffre brut est celui que `curl -I` annonce, et ce n'est pas celui que l'élève
 télécharge — les deux méritaient d'être dans la même phrase.
+
+## §11.139 — Ce que l'artefact déployé a répondu de PROPRE, et deux fois où j'ai mal lu
+
+Suite du §11.137, qui venait d'ouvrir l'artefact servi. Tout ce qui suit est
+mesuré sur `bac-pink.vercel.app`, pas sur un build local.
+
+**Propre, et vérifié :**
+
+- **Le partage.** Un élève qui colle un lien de leçon dans WhatsApp reçoit un
+  vrai aperçu : `og:title` porte le titre de la notion, `og:description` la
+  matière, la durée de lecture et la promesse, `og:url` l'adresse canonique,
+  et **`og:image` pointe sur `/og.png` qui répond 200 avec 86 ko d'image**. La
+  panne classique — une carte de partage qui montre une image morte — n'existe
+  pas ici.
+- **Les icônes.** `/icon.svg` et `/apple-icon.png` répondent 200.
+- **L'adresse inconnue** sert un vrai « introuvable » : HTTP 404 et 381
+  caractères de texte sans JavaScript (§11.67 tient en ligne).
+- **Le « noindex » annoncé est IMPLÉMENTÉ.** `layout.tsx` écrit en commentaire
+  « robots stays noindex: private during build » et le pose
+  (`robots: { index: false, follow: false }`) ; la page servie porte bien
+  `<meta name="robots" content="noindex, nofollow">`. Une intention écrite ET
+  tenue.
+
+**Deux fois, dans la même demi-heure, j'ai conclu trop vite — et les deux
+fois, c'est la vérification qui m'a arrêté.**
+
+1. *« Aucune identité sur la page déployée. »* J'avais cherché
+   `<meta ... build|commit|version|sha ...>`. Le tampon existe depuis le jour 8,
+   il s'appelle `data-build-sha` et vit sur le pied de page, pas dans une
+   `<meta>`. **Je cherchais la bonne chose sous la mauvaise forme.**
+2. *« Ce déploiement est indexable. »* J'avais regardé l'en-tête
+   `x-robots-tag` (absent) et `robots.txt` (404), et j'allais l'écrire. Le
+   troisième mécanisme — la balise `<meta name="robots">` — dit `noindex,
+   nofollow`, et c'est celui que Google honore. **Deux mécanismes sur trois
+   mesurés, et une conclusion tirée comme si c'étaient les trois.** J'étais à
+   une phrase d'annoncer au propriétaire qu'une branche de travail était
+   exposée aux moteurs de recherche. Elle ne l'est pas.
+
+**Ce qui reste, et qui n'est PAS un défaut aujourd'hui :** il n'y a ni
+`robots.txt` ni `sitemap.xml`. Tant que le site est `noindex` par choix, un
+sitemap serait une contradiction — il invite précisément ce qu'on refuse. Les
+deux deviennent du travail **le jour où l'indexation s'ouvre**, en même temps
+que le domaine de production, que `layout.tsx` signale déjà comme un arbitrage
+de propriétaire (`metadataBase` pointe sur le domaine de preview, avec la note
+« swap when a production domain is decided »). Je ne les ajoute donc pas.
+
+**Fait mesuré, sans jugement :** `bac-pink.vercel.app` sert le sommet de la
+branche de travail et se redéploie quelques minutes après chaque `git push` —
+`bb9af56` à 19 h 56, `d1e2919` à 20 h 15. C'est cohérent avec un flux de
+preview ; c'est écrit ici parce qu'un déploiement continu d'une branche non
+relue est le genre de chose qu'on préfère savoir que découvrir.
 
