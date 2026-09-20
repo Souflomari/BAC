@@ -274,6 +274,18 @@ jobs:
           npm run mouvement-reduit
           node scripts/mouvement-reduit.mjs --essai-rouge
 
+      # PORTE CALCULS NUMÉRIQUES (2026-09-20, §11.158). Une erreur de calcul
+      # dans un corrigé est le pire défaut possible : l'élève qui refait le
+      # calcul et trouve autre chose conclut que c'est LUI qui se trompe. Sur
+      # 21 938 expressions contenant un « = », 543 sont entièrement numériques
+      # donc calculables sans rien interpréter ; les 11 écarts trouvés sont TOUS
+      # expliqués par trois familles structurelles (arithmétique modulaire,
+      # erreur citée pour être réfutée, raisonnement par l'absurde) — un tuteur
+      # qui confronte les misconceptions et qui démontre contient des égalités
+      # fausses EXPRÈS. Le cliquet ne porte donc que sur les écarts INEXPLIQUÉS.
+      - name: "Calculs numériques du corpus (cliquet 0 inexpliqué)"
+        run: npm run calculs-numeriques
+
       # PORTE FIGURES (2026-09-04). figure-preview mesure sept classes de
       # défaut sur les 258 SVG statiques ; CINQ sont armées, et seulement
       # parce qu'elles sont propres dans les DEUX thèmes :

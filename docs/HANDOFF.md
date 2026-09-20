@@ -12051,3 +12051,68 @@ ce qui est précisément le piège que cet axe existe pour éviter.
 *(Au passage, la largeur reste AFFICHÉE, non armée : elle documente que les
 moteurs ne crénent pas pareil — « f(1) » mesure 33 px dans Chromium et Firefox,
 26 px dans WebKit, pour 0,5 % d'écart sur le total à 1280 px.)*
+
+## §11.158 — Le calcul lui-même : 543 égalités vérifiées, et trois familles d'égalités fausses EXPRÈS
+
+Une erreur de calcul dans un corrigé est le pire défaut que ce produit puisse
+avoir : l'élève qui refait le calcul et trouve autre chose conclut que c'est
+**lui** qui se trompe. Rien ne vérifiait cela — tous les contrôles de contenu
+portent sur la forme (étiquettes, renvois, couverture), aucun sur le nombre.
+
+`calculs-numeriques.mjs` ne peut vérifier qu'une part étroite, et c'est assumé :
+sur **21 938** expressions contenant un « = », **543 sont entièrement
+numériques** (2,5 %) — pas une lettre, donc calculables sans rien interpréter.
+Vérifier `v_B^2 = v_A^2 + 2ad` demanderait de comprendre la physique. Tout ce
+qui n'est pas entièrement compris est **jeté, jamais deviné** : la traduction
+LaTeX → expression n'accepte au bout que chiffres, opérateurs et parenthèses.
+
+### L'essai rouge a trouvé que le balayage manquait un tiers du corpus
+
+Premier jet : 13 936 expressions, 335 numériques, 0 écart inexpliqué. Content de
+moi. Puis l'essai rouge — rendre fausse une égalité d'une leçon — **n'a pas
+crié**.
+
+La suite le dit elle-même : AMBIGU, la porte est aveugle OU l'essai est mal
+construit. C'était la porte, et la cause est jolie : l'égalité mutée est en math
+**AFFICHÉE**, `$$26^3 = 17\,576$$`. Un seul motif `\$\$?…\$\$?` apparie les
+dollars de gauche à droite sans distinguer `$…$` de `$$…$$` : il capturait
+« n=26 », puis le **texte** entre deux dollars orphelins, et laissait
+l'expression affichée de côté. **Or les calculs travaillés s'écrivent en math
+affichée — c'est précisément la famille qui manquait.**
+
+Deux passes, blocs `$$…$$` d'abord puis masqués :
+
+```
+  avant : 13 936 expressions · 335 numériques
+  après : 21 938 expressions · 543 numériques   (+57 % et +62 %)
+```
+
+### Trois familles d'égalités fausses, toutes volontaires
+
+Le balayage réparé a trouvé **11 écarts**. Tous s'expliquent, et les trois
+familles disent quelque chose du produit :
+
+1. **L'arithmétique modulaire.** « $2\times2=0$ » est VRAI dans Z/4Z — et c'est
+   le cœur du chapitre : $2$ n'a pas de symétrique, donc $(\mathbb{Z}/4\mathbb{Z},
+   \times)$ n'est pas un groupe.
+2. **L'erreur citée pour être réfutée.** Un retour de distracteur écrit « Tu as
+   sans doute pris $(-1)^{2023} = 1$. Mais $2023$ est impair… ». La fausse
+   égalité est là exprès.
+3. **Le raisonnement par l'absurde.** « L'égalité des cotes exigerait $0=5$ »,
+   « on démontrerait que $-1=1$ », « donc $0 = 1$. Absurde. »
+
+**Un tuteur qui confronte les misconceptions et qui démontre contient des
+égalités fausses par construction.** Une porte arithmétique naïve se battrait
+contre la pédagogie même du produit. D'où un classement plutôt qu'un verdict, et
+un cliquet sur les seuls écarts **inexpliqués** : 0 aujourd'hui.
+
+### Armé, avec sa faiblesse écrite
+
+En CI et dans la batterie locale (pur Node, une seconde). Essai rouge §11.158
+dans la suite rejouable : les 51 portes crient.
+
+**La faiblesse** : une vraie erreur qui tomberait à moins de 240 caractères d'un
+mot comme « erreur », « absurde » ou « tu as » serait classée et absorbée. C'est
+un filet à grosses mailles, pas une preuve. Et il ne voit rien des 97,5 %
+d'expressions qui portent une lettre, ni des unités, ni des chiffres
+significatifs.

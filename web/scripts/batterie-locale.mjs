@@ -83,6 +83,9 @@ const ETAPES = [
   // Sans navigateur, et c'est le seul contrôle qui puisse dire qu'un ✓ ne
   // vaut rien — il a donc sa place ici plus qu'ailleurs.
   { nom: "portee-portes", cmd: ["scripts/portee-portes.mjs"] },
+  // Les égalités entièrement numériques du corpus : pur Node, une seconde, et
+  // le seul contrôle qui touche au CALCUL plutôt qu'à la forme (§11.158).
+  { nom: "calculs-numeriques", cmd: ["scripts/calculs-numeriques.mjs", "--porte"] },
   // La suite d'essais rouges (ADR 0034) : elle casse une occurrence, mesure, et
   // restaure. Sans navigateur, et c'est le seul contrôle qui réponde à « mes
   // portes peuvent-elles encore crier ? » — la question qu'aucune porte ne pose
