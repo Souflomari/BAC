@@ -648,3 +648,13 @@ caractère visible l'était. Détail et classement : HANDOFF §11.101.
 
 Tolérance du sens brut : au-dessus de 25 % ET au-delà de 12 points de hausse.
 Vérifiée ROUGE à 39 et 13 points, VERTE à 7.
+
+**En CI depuis le 2026-09-20.** `portee-portes.mjs` tourne à chaque poussée,
+sous le nom « Porte des portes ». Il est bon marché (une exécution de
+`validate-content` sous couverture V8) et il garde la classe de défaut qu'aucune
+autre porte ne peut voir : une porte dont le scan ne tourne sur rien.
+
+`essai-rouge.mjs` reste **hors CI**, et délibérément : il demande une mutation
+écrite à la main pour chaque porte, donc il ne peut pas être automatisé sur
+l'ensemble. Il s'emploie au moment où l'on arme une porte, ou quand on soupçonne
+qu'une porte verte ne regarde plus rien.

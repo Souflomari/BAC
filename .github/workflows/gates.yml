@@ -263,6 +263,26 @@ jobs:
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
           node scripts/liens-internes.mjs
 
+      # ── La porte qui garde les autres portes (ADR 0033) ──────────────────
+      # Une porte verte peut ne rien garantir : son scan ne tourne peut-être sur
+      # RIEN — un champ que plus aucun fichier ne porte, un glob qui ne résout
+      # plus, une extension renommée. Elle imprime le même ✓ qu'une porte qui a
+      # tout balayé. Cet instrument lance validate-content sous couverture V8 et
+      # distingue une branche d'échec inerte — normale quand rien n'échoue — d'un
+      # scan MORT, par la largeur de la région à compteur zéro.
+      #
+      # Il ne remplace PAS `essai-rouge.mjs`, qui, lui, trouve la porte dont le
+      # scan tourne mais dont le motif ne reconnaît plus le défaut. Ce second cas
+      # demande une mutation écrite à la main par porte, donc il reste hors CI.
+      # Aucun des deux ne suffit seul.
+      #
+      # Vérifié ROUGE en tuant deux portes différentes (un nom de fichier
+      # inexistant dans leur boucle), sur les bons numéros de ligne ; vérifié
+      # VERT quand un motif est rendu introuvable, à juste titre — le scan
+      # s'exécute encore. État au 2026-09-20 : 73 points d'échec, 0 porte morte.
+      - name: Porte des portes (aucune porte de validate-content ne scanne le vide)
+        run: node scripts/portee-portes.mjs
+
       - name: Porte presse-papier (une formule copiée ne sort qu'une fois)
         run: |
           routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)
