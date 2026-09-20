@@ -574,3 +574,65 @@ restauration est incomplète. `--attendu vert` inverse le sens.
 3. **l'épreuve qui compte** — une sentinelle non committée déposée dans le
    fichier **SURVIT** à l'essai rouge, là où `git checkout --` la **détruit**.
    Le contraste a été rejoué dans les deux sens.
+
+---
+
+## `web/scripts/portee-portes.mjs` — ce qu'une porte VERTE a réellement regardé
+
+**Ce qu'il mesure.** Une porte peut être verte pour deux raisons opposées :
+le corpus est propre, ou **son scan ne tourne sur rien** — un champ que plus
+aucun fichier ne porte, un glob qui ne résout plus, une extension renommée.
+Les deux impriment le même `✓`. ADR 0031 : *un badge vert dit que rien n'a
+échoué, pas que tout a été mesuré.*
+
+Il lance la porte sous couverture V8 (`NODE_V8_COVERAGE`), puis, pour chaque
+point d'échec du script, examine la région à compteur zéro qui l'entoure.
+
+```
+node scripts/portee-portes.mjs            # défaut : validate-content sur les 62 notions
+node scripts/portee-portes.mjs --script scripts/autre-porte.mjs --seuil 30
+```
+
+**État au 2026-09-20 :** 73 points d'échec, **0 porte morte**. 39 de portée
+> 62, 34 de portée ≤ 62 — et les 34 ont été confrontées une à une à leur
+dénominateur : 38 `bank.yaml` → portée 38 · 49 `exercises.yaml` → 49 ·
+52 exercices `sourced` → 52 · 10 SVG à bloc `<style>` → 10 · 5 figures
+interactives → 5 · 32 bindings → 32 · 1 seul `settleTarget` → 1 · 11 marqueurs
+`[[motion:]]` réels → 11 · 4 entrées de dette → 4. **Chaque portée égale sa
+population.**
+
+### Deux pièges, tous deux vécus le jour où l'instrument a été écrit
+
+**1. Une portée basse n'est pas un défaut.** Une porte qui ne concerne que les
+figures interactives a une portée de 5 parce qu'il n'y a que 5 figures
+interactives. Les deux « écarts » que j'ai cru trouver au premier passage
+étaient des erreurs de **ma sonde** — un glob `.control.json` là où les
+fichiers sont `.interactive.json`, et un marqueur `[[motion:]]` compté alors
+qu'il est dans un commentaire HTML. **Vérifie le dénominateur avant d'accuser
+la porte.**
+
+**2. La première version de l'instrument était elle-même aveugle.** Elle
+remontait jusqu'à la première plage englobante de compteur > 0 et appelait ça
+la portée. Quand le scan d'une porte ne tourne pas, cette remontée continue
+jusqu'à la boucle `for (const dir of dirs)`, qui tourne 62 fois : l'instrument
+annonçait donc **62** pour une porte qui ne regardait **rien**. Découvert en la
+tuant exprès avec `essai-rouge.mjs` — l'instrument est resté vert. Corrigé : le
+discriminant est la LARGEUR de la région à zéro. Une branche d'échec inerte ne
+contient que son `console.error` et son `dirFail++` ; un scan mort laisse une
+région bien plus large, qui contient encore une boucle, une lecture de fichier
+ou un test d'expression.
+
+### La limite, et pourquoi les deux instruments sont complémentaires
+
+**`portee-portes` ne voit pas une porte dont le scan tourne mais dont le motif
+ne reconnaît plus rien.** Vérifié : un `RegExp` rendu introuvable laisse
+l'instrument vert, à juste titre — le scan s'exécute. C'est indiscernable d'un
+corpus propre sans casser quelque chose exprès.
+
+| | trouve | coût |
+|---|---|---|
+| `portee-portes.mjs` | la porte dont le **scan ne tourne pas** | automatique, tout le corpus, une commande |
+| `essai-rouge.mjs` | la porte dont le scan tourne mais qui **ne reconnaît pas le défaut** | une mutation écrite à la main par porte |
+
+**Aucun des deux ne suffit seul.** Le premier est le balayage bon marché ; le
+second est la preuve, porte par porte.

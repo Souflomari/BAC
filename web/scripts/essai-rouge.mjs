@@ -89,8 +89,13 @@ try {
   for (const l of lignes.slice(0, 6)) console.log(`   ${l.trim()}`);
 
   const ok = attendu === "rouge" ? rouge : !rouge;
+  //  Le verdict dit ce qui a été ÉTABLI, pas seulement ce qui s'est passé :
+  //  un essai `--attendu vert` qui passe n'établit pas que la porte voit
+  //  quelque chose — il établit qu'elle ne crie pas à tort.
   console.log(ok
-    ? `✓ la porte est passée ${rouge ? "ROUGE" : "VERTE"}, comme attendu — elle VOIT ce défaut`
+    ? (attendu === "rouge"
+        ? `✓ la porte est passée ROUGE, comme attendu — elle VOIT ce défaut`
+        : `✓ la porte est restée VERTE, comme attendu — pas de faux positif sur ce changement`)
     : `✗ la porte est restée ${rouge ? "ROUGE" : "VERTE"} : elle est AVEUGLE au défaut introduit`);
   code = ok ? 0 : 1;
 } finally {
