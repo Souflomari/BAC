@@ -65,6 +65,38 @@ for (const sig of ["SIGINT", "SIGTERM", "SIGHUP"]) {
   process.on(sig, () => { restaurer(); process.exit(130); });
 }
 
+//  LE PRÉ-CONTRÔLE, ET POURQUOI IL A FALLU L'AJOUTER (§11.104, 2026-09-20).
+//  `execSync` ne distingue pas « la porte a tourné et a échoué » de « la
+//  commande n'a jamais tourné ». Lancé depuis `web/scripts/` au lieu de
+//  `web/`, un `node scripts/<une-porte>.mjs` sort en ERR_MODULE_NOT_FOUND — code non
+//  nul — et cet outil annonçait fièrement « ✓ passée ROUGE, elle VOIT ce
+//  défaut ». Trois essais rouges ont été déclarés ce jour-là sur des portes
+//  qui n'avaient pas tourné une seule fois.
+//
+//  C'est le cas MORT d'ADR 0033, tombé à l'intérieur de l'instrument écrit
+//  pour le détecter ailleurs. La règle en sort renforcée : un essai rouge ne
+//  prouve rien tant qu'on n'a pas établi que la porte était VERTE juste avant,
+//  sur l'arbre intact, avec cette commande-là et depuis ce répertoire-là.
+function lancePorte() {
+  try {
+    return { rouge: false, sortie: execSync(porte, { cwd: process.cwd(), encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }) };
+  } catch (e) {
+    return { rouge: true, sortie: `${e.stdout ?? ""}${e.stderr ?? ""}` };
+  }
+}
+
+const avant = lancePorte();
+if (avant.rouge) {
+  console.error(`✗ la porte est DÉJÀ rouge (ou n'a pas tourné) sur l'arbre INTACT — rien n'est mesuré.`);
+  console.error(`  commande : ${porte}`);
+  console.error(`  répertoire : ${process.cwd()}`);
+  for (const l of avant.sortie.trim().split("\n").slice(0, 5)) console.error(`  ${l}`);
+  console.error(`  Si c'est un ERR_MODULE_NOT_FOUND, la commande n'a jamais tourné : relance`);
+  console.error(`  depuis le répertoire où ses chemins résolvent (souvent web/).`);
+  process.exit(4);
+}
+console.log(`· pré-contrôle : la porte est VERTE sur l'arbre intact — l'essai peut mesurer quelque chose`);
+
 let code = 2;
 try {
   const n = original.split(de).length - 1;
@@ -78,14 +110,8 @@ try {
   fs.writeFileSync(abs, original.slice(0, i) + vers + original.slice(i + de.length));
   console.log(`· ${fichier} : 1 occurrence cassée sur ${n} — « ${de.slice(0, 60)} » → « ${vers.slice(0, 60)} »`);
 
-  let sortie = "", rouge = false;
-  try {
-    sortie = execSync(porte, { cwd: process.cwd(), encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
-  } catch (e) {
-    rouge = true;
-    sortie = `${e.stdout ?? ""}${e.stderr ?? ""}`;
-  }
-  const lignes = sortie.split("\n").filter((l) => /✗|failure|échec|ERREUR/i.test(l));
+  const { rouge, sortie } = lancePorte();
+  const lignes = sortie.split("\n").filter((l) => /✗|ROMPU|failure|échec|erreur/i.test(l));
   for (const l of lignes.slice(0, 6)) console.log(`   ${l.trim()}`);
 
   const ok = attendu === "rouge" ? rouge : !rouge;

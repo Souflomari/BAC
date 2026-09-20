@@ -8649,15 +8649,29 @@ cliquet ne bouge pas quand celui-ci empire. **C'est le troisième cas d'ADR 0033
 
 - **Le NOMBRE** d'items où le tell tire ne remonte pas. Sans ce sens, un auteur
   ajoute dix refus de plus à fiabilité constante : le corpus empire, la porte
-  reste verte. *Essai rouge : un distracteur ordinaire de `svt/genetique-humaine`
-  réécrit en « On ne peut pas conclure sans refaire le croisement » → ROUGE.*
-- **La FIABILITÉ** de l'élimination ne remonte pas. Sans ce sens, on rend chaque
-  refus plus systématiquement faux à nombre constant. *Essai rouge : le seul
-  refus VRAI de `maths/suites-numeriques` réécrit pour n'en plus être un → 50 %
-  → 100 % → ROUGE.*
+  reste verte. *Essai rouge : un distracteur de `svt/genetique-humaine` GH-1 —
+  item qui ne contenait AUCUN refus — réécrit en « On ne peut pas conclure sans
+  refaire le caryotype » → ROUGE.*
+- **Le nombre de fois où le refus est VRAI ne descend pas.** Les deux seuls items
+  du corpus où « on ne peut pas conclure » est la bonne réponse sont ce qui
+  empêche le corpus d'enseigner que le refus est toujours faux ; les perdre est
+  la régression à empêcher. *Essai rouge : le refus vrai de
+  `maths/suites-numeriques` SUITES-2 réécrit pour n'en plus être un → ROUGE.*
+- **La fiabilité ne remonte pas** là où elle a encore de la marge (`tranche ≥ 4`
+  et référence < 100 %).
 
-Les deux essais faits avec `essai-rouge.mjs`, restauration octet pour octet
-vérifiée.
+**RECTIFICATION, et elle porte sur ce paragraphe.** La première version de
+§11.103 annonçait ces essais rouges comme faits. **Ils ne l'étaient pas :**
+`essai-rouge.mjs` lançait la commande depuis le répertoire courant, et lancée
+depuis `web/scripts/` au lieu de `web/`, `node scripts/indice-refus.mjs` sortait
+en `ERR_MODULE_NOT_FOUND` — code non nul — que l'outil lisait comme « la porte
+est passée rouge ». **Les deux essais ont été refaits correctement (§11.104) :
+les deux sens d'origine étaient FAUX.** Le sens NOMBRE cassait le mauvais item
+(celui-ci contenait déjà un refus, donc le tell cessait de tirer au lieu de
+tirer plus). Le sens FIABILITÉ était **structurellement inerte** : sa garde
+`tranche ≥ 4` ne laissait passer que les dix-neuf notions déjà à 100 %, donc au
+plafond, donc incapables de monter. Il a été remplacé par le comptage direct
+ci-dessus, qui n'a ni seuil ni bruit, et qui passe l'essai.
 
 ### Ce qui reste, et pourquoi je ne l'ai pas fait
 
@@ -8680,3 +8694,137 @@ Deux routes, et elles ne coûtent pas la même chose :
 **Le cliquet tient la dette en place en attendant.** Elle ne peut plus grossir
 dans aucun des deux sens.
 
+
+---
+
+## §11.104 — L'essai rouge qui ne lançait pas la porte, et l'élève rusé
+
+### Le défaut, et où il était
+
+`essai-rouge.mjs` existe pour une seule raison : établir qu'une porte peut
+devenir ROUGE, parce qu'une porte qui ne le peut pas ne garde rien (ADR 0031).
+Il cassait le fichier, lançait la commande, et lisait un code de sortie non nul
+comme « la porte a vu le défaut ».
+
+**`execSync` ne distingue pas « la porte a tourné et a échoué » de « la commande
+n'a jamais tourné ».** Lancé depuis `web/scripts/` au lieu de `web/`, un
+`node scripts/indice-refus.mjs --porte` sort en `ERR_MODULE_NOT_FOUND` — code
+non nul. L'outil annonçait alors, en toutes lettres :
+
+> ✓ la porte est passée ROUGE, comme attendu — elle VOIT ce défaut
+
+**Trois essais rouges ont été déclarés ce jour-là sur des portes qui n'avaient
+pas tourné une seule fois**, et §11.103 a été écrit, committé et poussé sur
+cette base.
+
+C'est le cas **MORT** d'ADR 0033 — le balayage tourne sur rien — tombé à
+l'intérieur de l'outil écrit pour le détecter ailleurs. Et il se lit aussi comme
+le pendant exact de §11.101 : *un badge vert dit que rien n'a échoué, pas que
+tout a été mesuré.* Ici, un ✓ ROUGE disait que la porte avait vu, alors qu'elle
+n'avait pas regardé.
+
+### Le correctif : un pré-contrôle, pas une note
+
+`essai-rouge.mjs` lance désormais la porte **une fois sur l'arbre intact, avant
+de rien casser**, et exige qu'elle soit VERTE. Sinon il sort en code 4 avec le
+répertoire courant et la commande à l'écran, et ne casse rien :
+
+> ✗ la porte est DÉJÀ rouge (ou n'a pas tourné) sur l'arbre INTACT — rien n'est mesuré.
+
+**La règle qui en sort, et qui vaut au-delà de cet outil : un essai rouge ne
+prouve rien tant qu'on n'a pas établi que la porte était VERTE juste avant, sur
+l'arbre intact, avec cette commande-là et depuis ce répertoire-là.** Le vert
+d'avant fait partie de la mesure, il n'en est pas le décor.
+
+### Ce que les essais refaits ont trouvé
+
+Les deux sens du cliquet `indice-refus` étaient **faux**, chacun à sa manière :
+
+- **Sens NOMBRE — mauvais item.** Le distracteur choisi vivait dans un item qui
+  contenait DÉJÀ un refus. Le convertir en faisait deux : le tell exige
+  l'unicité, donc il cessait de tirer. La tranche DESCENDAIT. Refait sur
+  `svt/genetique-humaine` GH-1, item sans aucun refus → ROUGE pour de bon.
+- **Sens FIABILITÉ — structurellement inerte.** Sa garde `tranche ≥ 4` ne
+  laissait passer que les dix-neuf notions déjà à 100 %, c'est-à-dire au
+  PLAFOND. La fiabilité ne pouvait pas monter ; le sens ne pouvait pas crier.
+  Remplacé par un comptage direct — **le nombre d'items où le refus est VRAI ne
+  descend pas** — qui n'a ni seuil ni bruit, et qui passe l'essai.
+
+**Une garde anti-bruit peut rendre une porte inerte sans que rien ne le
+signale.** Un seuil se justifie sur une MESURE (un pourcentage sur petit
+effectif est du bruit) ; sur un CLIQUET, qui compare une notion à son propre
+passé, il n'y a pas de bruit à filtrer — il y a un changement, ou il n'y en a
+pas. Le seuil n'y protégeait de rien et y cachait tout.
+
+### L'élève rusé : l'union des ficelles, enfin mesurée
+
+Trois instruments mesurent chacun UN tell et rapportent leur tranche. **Personne
+n'avait mesuré leur UNION** — or un élève n'applique pas une ficelle, il les
+applique toutes.
+
+`web/scripts/eleve-ruse.mjs` applique la stratégie complète, fixée d'avance :
+barrer le refus, barrer l'absolu, barrer l'écho du tronc, cocher le plus long.
+L'espérance est calculée exactement, jamais simulée.
+
+| | |
+|---|---:|
+| items à clé unique, ≥3 choix | 1 974 |
+| au hasard | 25,0 % |
+| **avec les quatre ficelles** | **36,4 %** |
+| témoin (cocher le plus court) | 14,4 % |
+
+**Onze points gagnés sans rien savoir. Sur 20, c'est 2,3 points qui
+n'appartiennent pas à l'élève.**
+
+**Le hasard n'est pas une convention, c'est un calcul.** La stratégie ne lit
+jamais `correct` : elle arrête un ensemble de finalistes F à partir des seuls
+textes, puis tire dedans. Si la clé était tirée au sort parmi les n choix,
+l'espérance vaudrait exactement 1/n. L'écart mesuré est donc un écart à une
+référence démontrée, pas supposée.
+
+**Ce que le témoin contrôle, et ce qu'il ne contrôle pas.** Cocher le plus court
+tombe à 14,4 %, symétriquement : la mesure capte bien une direction, pas un
+artefact. Mais le témoin n'inverse que l'étape de LONGUEUR. Pour les trois
+éliminations, la garantie est ailleurs — chacune a son instrument, sa tranche et
+son cliquet vérifié rouge.
+
+### Pourquoi c'est plus grave qu'une question de note
+
+Le moteur lit les réponses comme des indices de maîtrise. **Une bonne réponse
+obtenue à la ficelle est un faux positif versé au modèle d'apprenant :** le
+produit croit une misconception levée alors qu'elle est intacte, et cesse de la
+travailler. Le tell ne coûte pas quelques points sur un score — il aveugle
+l'instrument qui est la raison d'être du produit.
+
+Les notions les plus exploitables : `svt/granitisation-deformation` 60 %,
+`svt/chaines-de-montagnes` 58,8 %, `svt/liberation-energie-matiere-organique`
+55,9 %, `pc/suivi-temporel-vitesse` 54,3 %, `pc/decroissance-radioactive` 54,2 %.
+
+### La quatrième porte, et ce qu'elle apporte VRAIMENT
+
+`eleve-ruse.mjs --porte` recouvre largement les trois autres. Son apport propre
+a donc été **mesuré, pas supposé** — le même protocole qu'ADR 0033 impose :
+
+Une seule casse, échange d'un mot de longueur identique dans un distracteur de
+`pc/piles` (`cathode` → `daniell`, un mot du tronc), qui n'ajoute ni longueur,
+ni absolu, ni refus — rien qu'un écho du tronc :
+
+- `eleve-ruse --porte` → **ROUGE** (`pc/piles` 31 % → 32,8 %) ;
+- `indice-longueur`, `indice-absolu` et `indice-refus`, sur la même casse →
+  **VERTES**, avec pré-contrôle vert des deux côtés.
+
+**Le CLANG n'a pas d'instrument à lui, donc pas de cliquet ; c'est exactement ce
+trou que la porte d'union bouche.** Le reste est du recouvrement, assumé et
+écrit comme tel dans l'en-tête du fichier.
+
+### Le clang, et pourquoi il n'a pas son propre instrument
+
+Mesuré : le choix qui reprend un mot de six lettres ou plus du tronc est la
+bonne réponse **14 % du temps sur 266 items**, contre 25 % au hasard. **Le tell
+classique des manuels est INVERSÉ sur ce corpus.** Le barrer rapporte, mais peu
+— 86 % de fiabilité d'élimination contre 99 % pour le refus — et le correctif
+d'auteur n'est pas clair (l'écho d'un terme du tronc dans un distracteur est
+souvent ce qui le rend plausible). Il est donc mesuré et gardé par la porte
+d'union, sans instrument dédié. C'est un choix, pas un oubli.
+
+**Batterie locale : 14 portes.**

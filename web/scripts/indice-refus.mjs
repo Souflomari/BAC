@@ -303,8 +303,30 @@ for (const n of notions) {
     );
   }
 
-  // Sens 2 — la FIABILITÉ de l'élimination ne remonte pas.
-  if (n.tranche >= MIN_TRANCHE && fiab(n) > r.fiabilite) {
+  // Sens 2 — le nombre de fois où le refus est VRAI ne descend pas.
+  //
+  // PREMIÈRE VERSION, ET POURQUOI ELLE ÉTAIT INERTE (§11.104). Ce sens
+  // surveillait d'abord la FIABILITÉ, sous garde `tranche >= MIN_TRANCHE`.
+  // Or aucune notion à quatre items qui tirent ou plus n'a de refus vrai : les
+  // dix-neuf sont déjà à 100 %, c'est-à-dire au PLAFOND. La fiabilité ne
+  // pouvait donc pas monter, et le sens ne pouvait pas devenir rouge. Une
+  // porte qui ne peut pas crier ne garde rien (ADR 0031) — et celle-ci a
+  // échoué à son propre essai rouge, ce qui est exactement à quoi sert un
+  // essai rouge.
+  //
+  // Le comptage direct n'a ni seuil ni bruit : les deux seuls items du corpus
+  // où « on ne peut pas conclure » est la bonne réponse sont ce qui empêche le
+  // corpus d'enseigner que le refus est toujours faux. Les perdre est la
+  // régression à empêcher, et elle se compte.
+  if (n.cle < r.cle) {
+    casses.push(
+      `${cle} — ${r.cle} → ${n.cle} item(s) où le refus est la BONNE réponse. ` +
+        `Ce sont eux qui empêchent le corpus d'enseigner que refuser est toujours faux.`
+    );
+  }
+
+  // Sens 3 — la fiabilité ne remonte pas là où elle a encore de la marge.
+  if (n.tranche >= MIN_TRANCHE && r.fiabilite < 100 && fiab(n) > r.fiabilite) {
     casses.push(
       `${cle} — élimination fiable à ${r.fiabilite} % → ${fiab(n)} % (${n.tranche - n.cle}/${n.tranche}). ` +
         `Barrer le choix qui ne s'engage pas devient PLUS payant qu'avant.`
