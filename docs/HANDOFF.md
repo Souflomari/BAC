@@ -10440,6 +10440,32 @@ comparer.
 personne n'a écrit pourquoi. `also_reveals` est propre ; `habilete` attend un
 arbitrage.
 
+### Un TROISIÈME champ que rien ne lit — et le piège qu'il arme
+
+**`items[].tags` n'a aucun consommateur dans `web/src`.** Il est renseigné sur
+les 1 612 items et porte **1 027 étiquettes distinctes** — maths en compte 360
+pour 454 items, philo 343 pour 366. Ce n'est pas un vocabulaire, c'est de
+l'annotation libre, et c'est parfaitement cohérent avec le seul endroit qui en
+parle : un commentaire de `validate-content` le décrit comme « une étiquette
+d'AUTEUR parfaitement légitime ».
+
+Ce n'est donc pas un défaut aujourd'hui. **Mais il arme un piège pour le jour
+où quelqu'un s'en servira** : **trente et un concepts portent deux
+orthographes**, tiret contre souligné —
+
+| | |
+|---|---|
+| `application_experimentale` (4 notions) | `application-experimentale` (1) |
+| `lecture_graphique` | `lecture-graphique` |
+| `forme_indeterminee` (2) | `forme-indeterminee` (1) |
+| `contrat_social`, `droit_naturel`, `imperatif_categorique`… | leurs jumeaux à tiret |
+
+Le premier filtre écrit sur `tags:` en manquera silencieusement une partie.
+**Aucune porte n'est posée** : trente et une alertes pour zéro dommage actuel,
+c'est exactement le bruit qu'ADR 0034 §9 interdit d'armer. Ce qui est posé, à
+la place, c'est cette note — pour que le piège soit connu avant d'être marché
+dessus, et non après.
+
 ### Le corpus média est référencé à 99,8 %
 
 Mesuré au passage : **521 fichiers sous `content/*/*/media/`, un seul jamais
