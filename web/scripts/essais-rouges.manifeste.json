@@ -315,6 +315,15 @@
       "de": "ENABLE ROW LEVEL SECURITY",
       "vers": "ENABLE ROW LEVEL SECURITYX",
       "note": "Cet essai a révélé une LÂCHETÉ de la porte : sans frontière finale, `ENABLE ROW LEVEL SECURITY_xxx` passait. `\\b` ajouté. L'essai était mal bâti ET la porte était lâche — les deux corrigés."
+    },
+    {
+      "id": "§11.129",
+      "quoi": "une notion perd sa figure MANIPULABLE — l'élève retombe à regarder une image là où il pouvait agir",
+      "porte": "node scripts/media-manipulable.mjs --porte",
+      "fichier": "../content/maths/limites-continuite/media/asymptotes.interactive.json",
+      "de": "{",
+      "vers": "{\"_casse_pour_l_essai\"",
+      "note": "Cliquet à une seule direction : 9/62 au 2026-09-20. CET ESSAI EST REVENU AVEUGLE À SA PREMIÈRE ÉCRITURE, et il avait raison : la porte comptait les NOMS DE FICHIERS, donc un `.interactive.json` au JSON cassé — mort au rendu — comptait encore comme manipulable. Elle PARSE désormais. Le sens inverse (en ajouter) n'est pas gardé : c'est le travail qu'on souhaite."
     }
   ]
 }

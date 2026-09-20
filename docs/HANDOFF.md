@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 128 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 129 entrées.
 > **Un propriétaire qui revient lit d'abord
 > `docs/audits/DECISIONS-EN-ATTENTE.md`** — la liste, en une page, de ce qui
 > attend un arbitrage et de ce que coûte chaque attente. Rien n'y est en train
@@ -24,7 +24,7 @@
 >   deux sha au lieu de deux rendus, un serveur périmé qui imitait une
 >   régression. Lire avant de croire une mesure catastrophique.
 > - **§11.106** — « porte vérifiée rouge » n'est plus une phrase mais une
->   commande : `node scripts/essais-rouges.mjs`, **36** essais rejoués à chaque
+>   commande : `node scripts/essais-rouges.mjs`, **37** essais rejoués à chaque
 >   passage.
 > - **§11.117 / §11.118** — l'état de la MESURE : la CI n'a pas assigné un seul
 >   runner de la journée (aucune porte n'a tourné en CI depuis le 19 au soir —
@@ -10538,3 +10538,70 @@ essai, lui, a trouvé une **vraie lâcheté** : sans frontière finale,
 
 **L'essai était mal bâti ET la porte était lâche. Les deux corrigés** — c'est
 exactement pourquoi le verdict « aveugle » se diagnostique au lieu de se croire.
+
+---
+
+## §11.129 — L'élève peut-il TOUCHER la figure, ou seulement la voir ?
+
+**2026-09-20.** La VISION ne décrit pas « bien enseigné » de la même façon pour
+chaque matière, et la différence qu'elle pose est une différence
+d'**INTERACTION**, pas de style :
+
+- **maths** — la couche conceptuelle « demande des interactives
+  **manipulables** (glisser le point, prédire la tangente, la regarder se
+  mettre à jour) » ;
+- **physique-chimie** — « c'est là que les simulations interactives paient le
+  plus » ;
+- **SVT** — « la pensée SVT est visuelle, donc elle a besoin de vraies
+  interactions de **construction de schéma (dessiner, étiqueter)**, **PAS
+  d'images affichées.** »
+
+`INTERACTIVE-FIGURE-SPEC` encode par ailleurs une demande explicite du
+propriétaire (2026-07-07) : « plus de visualisations interactives ».
+
+**Rien ne mesurait où on en est.**
+
+| matière | notions | SVG statiques | étagées | manipulables | notions avec du manipulable |
+|---|---|---|---|---|---|
+| maths | 14 | 72 | 72 | 5 | **5/14** |
+| pc | 25 | 134 | 125 | 6 | **4/25** |
+| philo | 12 | 2 | 1 | 0 | 0/12 |
+| **svt** | **11** | **49** | **37** | **0** | **0/11** |
+
+**Neuf notions sur soixante-deux** portent quelque chose que l'élève peut
+manipuler. Trois étages, et ils ne valent pas la même chose : une image, une
+révélation pas à pas (l'élève avance, mais ne manipule rien), une manipulation
+continue.
+
+### SVT : exactement la forme que sa propre ligne de la VISION exclut
+
+Quarante-neuf SVG statiques, trente-sept étagées, **zéro manipulable** — c'est
+« des images affichées », et sa ligne dit `PAS d'images affichées`. C'est le
+**cinquième axe indépendant** à isoler les onze notions SVT, après le sommet
+(§11.114), les leçons muettes (§11.37), l'entrée (§11.119) et l'anatomie
+(§11.120). Et c'est le plus tranchant des cinq, parce que la VISION nomme SVT
+en propre au lieu de poser une règle générale qu'on applique ensuite.
+
+À noter aussi, pour être juste : la ligne SVT de la VISION dit que son épreuve
+est « largement du **raisonnement scientifique** — un argument travaillé montré
+en entier, **puis estompé** ». Un argument ne peut pas être estompé vers rien :
+il faut quelque chose d'ATTAQUABLE à la fin. SVT n'a aucun `exercises.yaml`
+(§11.120). Les deux constats sont le même trou, vu par deux phrases différentes
+du même paragraphe.
+
+**Cliquet à une seule direction**, armé à 9 : on empêche d'en perdre, on
+n'exige pas d'en gagner — produire une figure manipulable est un travail
+d'auteur, pas un correctif. Essai rouge **§11.129** ; la suite passe à **37**,
+la batterie locale à **23 portes**.
+
+### Seizième banc faussé — la porte comptait des noms de fichiers
+
+Le premier essai rouge est revenu **AVEUGLE**, et il avait raison. La porte
+comptait les `.interactive.json` **par leur nom** : un fichier au JSON cassé —
+donc mort au rendu, donc une image pour l'élève — comptait encore comme
+manipulable. Elle **parse** désormais.
+
+C'est la deuxième fois aujourd'hui qu'un essai rouge accuse une porte que je
+venais d'écrire (après §11.124a, la porte sous un `process.exit`), et la
+troisième fois qu'il refuse de valider quelque chose que j'aurais consigné.
+**Un essai rouge ne sert à rien s'il ne peut pas contredire celui qui l'écrit.**

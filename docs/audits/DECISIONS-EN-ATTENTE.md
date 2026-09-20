@@ -43,6 +43,15 @@ Quatre mesures indépendantes isolent le même sous-ensemble :
 | items de niveau 1 | **0 sur 102** | 8,5 – 9,0 % |
 | sommet de bac sourcé | **0 / 11** | 47 / 51 |
 | source d'exercices | **0 / 11** | 49 / 51 |
+| figures **manipulables** | **0 / 11** | 9 / 51 |
+
+La dernière ligne est la plus tranchante, parce que la VISION nomme SVT en
+propre : « la pensée SVT est visuelle, donc elle a besoin de vraies interactions
+de construction de schéma (dessiner, étiqueter), **PAS d'images affichées** ».
+SVT a 49 SVG statiques et 37 étagées — exactement des images affichées. Et sa
+même ligne dit que l'épreuve SVT est « un argument travaillé montré en entier,
+**puis estompé** » : on ne peut pas estomper vers rien, et SVT n'a aucun
+`exercises.yaml`.
 
 Deux de ces axes ne dépendent d'aucune étiquette d'auteur. Le zéro sur cent
 deux ne s'explique pas par une convention d'échelle : les trois autres matières
