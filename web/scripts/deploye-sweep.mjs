@@ -255,6 +255,47 @@ for (const route of ["/", "/notions/pc/rlc-serie", "/commencer", "/notions/philo
   } finally { await ep.close(); }
 }
 
+//  8. LA CONFRONTATION D'UNE MISCONCEPTION (§11.147) — la promesse centrale.
+//     Répondre JUSTE est vérifié plus haut. Ce qui fait le tuteur, c'est ce
+//     que lit celui qui se TROMPE : l'erreur nommée, sa cause expliquée, et
+//     la bonne façon de regarder montrée. Témoin : `LIMCONT-7`, distracteur
+//     « 2,1 » (celui qui prend une valeur du tableau pour la limite).
+//
+//     LE DISTRACTEUR SE RECONNAÎT À SON TEXTE, JAMAIS À SA LETTRE : les choix
+//     sont mélangés au rendu (`lib/shuffle.ts`), et ce témoin le montre — le
+//     choix écrit « D » dans le YAML se rend en position A. C'est le §11.121
+//     vu en ligne.
+//
+//     ET ON CHERCHE SANS APOSTROPHE : le produit applique la typographie
+//     française, donc le corpus écrit « n'est » et l'écran rend « n’est ».
+//     Chercher la forme du FICHIER dans le RENDU, c'est chercher la bonne
+//     chose sous la mauvaise forme (ADR 0036 §1).
+{
+  const mc = await b.newPage({ viewport: { width: 390, height: 844 } });
+  try {
+    await mc.goto(BASE + "/notions/maths/limites-continuite", { waitUntil: "networkidle", timeout: 45000 });
+    const h = await mc.$('[data-item-id="LIMCONT-7"]');
+    if (!h) dit(false, "misconception — l'item témoin LIMCONT-7 est absent de la page");
+    else {
+      const choix = await h.$$("ul[role=list] button, ul[role=list] [role=button]");
+      const textes = [];
+      for (const c of choix) textes.push((await c.innerText()).replace(/\s+/g, " ").trim());
+      const i = textes.findIndex((t) => /2\s*,\s*1/.test(t.replace(/[{}]/g, "")));
+      if (i < 0) dit(false, "misconception — le distracteur témoin n'est pas reconnaissable à son texte");
+      else {
+        await choix[i].click();
+        await mc.waitForTimeout(900);
+        const txt = (await h.innerText()).replace(/\s+/g, " ");
+        dit(/une des valeurs du tableau/.test(txt), `misconception — le retour du distracteur cliqué (position ${String.fromCharCode(65 + i)}) est à l'écran`);
+        dit(/pas tout à fait|incorrect|Ce n.est pas|réessay/i.test(txt), "misconception — la carte signale une réponse fausse");
+        dit(/TENDANCE|tendance/.test(txt), "misconception — le retour montre la BONNE façon de regarder, pas seulement l'erreur");
+      }
+    }
+  } catch (e) {
+    dit(false, `misconception — interrompu : ${String(e.message).split("\n")[0].slice(0, 80)}`);
+  } finally { await mc.close(); }
+}
+
 //  7. LE THÈME (§11.146) — la préférence du système, la commande, et le FLASH.
 //     Le carnet du jour 8 notait cette famille comme NON re-vérifiée : « le
 //     second réfuteur (sombre / pas-de-flash) est mort sur une limite de

@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 146 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 147 entrées.
 > **Un propriétaire qui revient lit d'abord
 > `docs/audits/DECISIONS-EN-ATTENTE.md`** — la liste, en une page, de ce qui
 > attend un arbitrage et de ce que coûte chaque attente. Rien n'y est en train
@@ -11397,4 +11397,39 @@ fois, et les trois premières ont divergé.
 PLUSIEURS FOIS avant d'être cru.** Une porte instable est pire qu'une porte
 absente — l'absente ne dit rien, l'instable enseigne à ignorer le rouge. Trois
 passages consécutifs à zéro échec, maintenant, sur le même artefact.
+
+## §11.147 — Ce que lit l'élève qui se TROMPE, vérifié en ligne
+
+Les parcours des §11.143–144 vérifient qu'on peut répondre. Mais répondre juste
+n'est pas la promesse : **ce qui fait le tuteur, c'est ce que lit celui qui se
+trompe.** La VISION demande que chaque distracteur porte une misconception et
+qu'elle soit CONFRONTÉE. Jamais vérifié de bout en bout.
+
+Témoin : `LIMCONT-7`, distracteur « 2,1 » — l'élève qui prend une valeur du
+tableau pour la limite. Cliqué sur l'artefact déployé, sur un téléphone. Ce
+qu'il lit, mot pour mot :
+
+> **incorrect** — 2,1 n'est qu'une des valeurs du tableau, obtenue pour
+> $x = 1{,}1$ — pas la valeur limite. Il faut regarder la **TENDANCE** de toute
+> la colonne (2,1, puis 2,01, puis 2,001…)
+
+L'erreur est **nommée**, sa **cause** est donnée (« obtenue pour x = 1,1 »), et
+la **bonne façon de regarder** est montrée. C'est la promesse tenue, sur
+l'adresse que sert l'hébergeur.
+
+**Et le témoin montre le §11.121 en action.** Le choix écrit « D » dans le YAML
+se rend en **position A** : `lib/shuffle.ts` mélange les propositions, et la
+lettre affichée n'a rien à voir avec l'identifiant d'auteur. C'est la
+démonstration vivante de pourquoi un renvoi « choix B » dans une prose est faux
+à l'écran — la règle armée ce matin, vue en ligne cet après-midi.
+
+**Neuvième erreur de banc du jour, et de la même famille que les huit autres.**
+Ma première assertion cherchait « n'est qu'une des valeurs » — la forme du
+FICHIER. L'écran rend « n’est », parce que le produit applique la typographie
+française. La chaîne authored ne se trouve pas dans le rendu, et pour une
+raison qui est une qualité du produit. Le contrôle cherche désormais un
+fragment sans apostrophe.
+
+Le témoin rejoint `deploye-sweep` : deux passages consécutifs, trois contrôles
+verts.
 
