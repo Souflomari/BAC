@@ -288,6 +288,15 @@
       "de": "      status: not-applicable\n      note: >-\n        Variation construite exprès (anti-mémorisation)",
       "vers": "      status: not-applicable\n      note_retiree_pour_l_essai: >-\n        Variation construite exprès (anti-mémorisation)",
       "note": "L'ancre porte `status:` ET le début de la note : `note:` seul apparaît des dizaines de fois dans le fichier. Cliquet à 2 (philo/la-verite, philo/le-devoir)."
+    },
+    {
+      "id": "§11.125",
+      "quoi": "la liste de mots que la porte accents LIT perd une forme que la réparation CONNAÎT — la sonde devient plus étroite que le correcteur",
+      "porte": "python3 ../scripts/accents-francais.py --verifier scripts/accents.mots.json",
+      "fichier": "scripts/accents.mots.json",
+      "de": "\"theoreme\",",
+      "vers": "",
+      "note": "Le fichier a DEUX producteurs — le script Python et la campagne, qui y ajoute à la main les formes corrigées. Son en-tête n'en nommait qu'un et interdisait l'autre : un `--exporter` nu aurait effacé 192 formes (846 committées contre 654 produites). L'export FUSIONNE désormais, et cette porte garde le sens qui reste : rien de connu du script ne doit manquer à la liste."
     }
   ]
 }

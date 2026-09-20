@@ -360,6 +360,15 @@ jobs:
       # La sonde et le script de réparation lisent la MÊME liste de mots
       # (web/scripts/accents.mots.json), pour qu'une sonde plus étroite que la
       # réparation ne puisse pas déclarer propre ce qu'elle ne sait pas voir.
+      # §11.125 — LA LISTE QUE LA PORTE LIT COUVRE-T-ELLE CE QUE LA RÉPARATION
+      # CONNAÎT ? `accents.mots.json` a DEUX producteurs : le script Python et
+      # la campagne, qui y ajoute à la main les formes qu'elle a corrigées. Son
+      # en-tête n'en nommait qu'un et interdisait l'autre — un `--exporter` nu
+      # aurait effacé 192 formes gagnées, en silence. L'export fusionne
+      # désormais ; ceci vérifie qu'aucune forme connue du script ne manque.
+      - name: Liste accents à jour (la sonde lit ce que la réparation connaît)
+        run: python3 ../scripts/accents-francais.py --verifier scripts/accents.mots.json
+
       - name: Porte accents (le français du produit s'écrit accentué)
         run: |
           routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)

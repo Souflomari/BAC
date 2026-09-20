@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 124 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 126 entrées.
 > Une session fraîche qui veut l'ÉTAT COURANT plutôt que l'histoire lit, dans
 > cet ordre :
 >
@@ -19,7 +19,7 @@
 >   deux sha au lieu de deux rendus, un serveur périmé qui imitait une
 >   régression. Lire avant de croire une mesure catastrophique.
 > - **§11.106** — « porte vérifiée rouge » n'est plus une phrase mais une
->   commande : `node scripts/essais-rouges.mjs`, **33** essais rejoués à chaque
+>   commande : `node scripts/essais-rouges.mjs`, **34** essais rejoués à chaque
 >   passage.
 > - **§11.117 / §11.118** — l'état de la MESURE : la CI n'a pas assigné un seul
 >   runner de la journée (aucune porte n'a tourné en CI depuis le 19 au soir —
@@ -10294,3 +10294,101 @@ de mesurer sur une commande déjà rouge) et §11.121 (il a prouvé les deux for
 du renvoi faux).
 
 La suite passe de 31 à **33**.
+
+---
+
+## §11.126 — La batterie CI rejouée en entier, en local, sur HEAD — et ce qu'elle a trouvé
+
+**2026-09-20.** La CI n'a pas assigné un seul runner de la journée (§11.117).
+Trente-trois commits ont été poussés sans qu'aucune porte de `gates.yml` ne
+s'exécute. Les vingt-et-une portes sans navigateur passaient en local à chaque
+unité, mais « passe en local sur les portes sans navigateur » et « la CI est
+verte » sont deux affirmations différentes, et la seconde n'a jamais été vraie
+aujourd'hui.
+
+Construction propre (`rm -rf .next && npm run build`), puis les portes à
+navigateur, sur **HEAD 5d6283d** :
+
+| porte | résultat |
+|---|---|
+| `dom-truth` | **277 contrôles, 0 échec ✓** |
+| `figure-preview` clair · sombre | 257 SVG, **✓ · ✓** |
+| `formules-rendues` | 72 178 formules à la source, **101/101 pages ✓** |
+| `ancres-uniques` | ✓ |
+| `donnees-sweep` | ✓ |
+| `typo-francaise` | ✓ |
+| `accents-manquants` | **✗ ROUGE — 1 mot** |
+
+### Le seul rouge, et il était réel depuis hier
+
+`pc/etat-equilibre`, prose de leçon : « la couleur est **repartie** ». Le mot
+est entré hier, dans `5e7d950`. `accents-manquants` est une porte de CI — elle
+aurait dû crier hier soir. Elle n'a pas pu : le runner ne s'assignait déjà plus.
+**C'est le coût de la panne, rendu concret** : une porte rouge pendant
+vingt-quatre heures sans que personne puisse le savoir.
+
+Sauf que la porte avait tort. « Repartie » est du français correct — participe
+passé de *repartir*, « la couleur est repartie » (elle a recommencé). C'est
+*répartie*, de *répartir*, qui porte l'accent, et ce n'est pas le sens ici. La
+sonde viole donc sa propre règle d'admission, écrite dans son en-tête :
+« **uniquement des mots dont la forme SANS accent n'existe pas en français** »,
+avec une liste d'exclusions explicite (« cote », « des », « sur », « ou »).
+Retirée.
+
+### Ce que ce rouge a fait découvrir : un fichier à deux mains, et un seul nom
+
+`accents.mots.json` porte en tête : « *Généré par
+scripts/accents-francais.py --exporter. Ne pas éditer à la main : éditer le
+script, puis réexporter.* »
+
+Mesuré : **le fichier committé portait 846 formes, le script en produit 654.**
+Cent quatre-vingt-douze formes ne venaient pas du script — et zéro dans
+l'autre sens. Elles viennent du SECOND producteur, que l'en-tête ne nomme pas :
+`accents-campagne.mjs` dit dans son propre en-tête que « les formes
+effectivement corrigées sont ensuite ajoutées à `accents.mots.json` pour que la
+porte garde le terrain repris ». Une étape manuelle, documentée, légitime.
+
+**Les deux consignes se détruisaient l'une l'autre.** Suivre l'en-tête du JSON
+— et `docs/audits/accents-francais.md` imprime la commande telle quelle —
+aurait effacé 192 mots durement gagnés, rendant la porte plus aveugle par une
+régénération de routine, en silence. C'est ADR 0034 §10 en acte : *un fichier
+généré et committé est une affirmation datée* ; ici deux mains l'écrivaient et
+une seule était déclarée.
+
+Trois correctifs :
+
+1. **L'export FUSIONNE** au lieu d'écraser. Vérifié idempotent : une seconde
+   régénération ne change plus un octet.
+2. **L'en-tête dit la vérité** — deux producteurs, et comment retirer une forme
+   volontairement.
+3. **`--verifier` armé** (batterie + CI) : aucune forme connue du script ne peut
+   manquer à la liste. C'est le sens qui reste après la fusion — une sonde plus
+   étroite que la réparation déclare propre ce qu'elle ne sait pas voir, et
+   l'en-tête de `accents-manquants` raconte déjà cette panne-là (« le premier
+   essai ne connaissait que 130 formes quand la réparation en connaissait
+   600 »). Essai rouge **§11.125** ; la suite passe à **34**.
+
+Après correctif : `accents-manquants` **vert sur 104 pages**.
+
+### Le douzième banc faussé de la journée, et la porte qui l'a attrapé
+
+La première tentative de construction a échoué sans que je le voie : j'ai lu un
+journal de build laissé par une session précédente, et conclu « BUILD EXIT: 0 ».
+`dom-truth` a alors rendu **1 échec sur 277** — le tampon de build : « stamp
+c8b0e6d ≠ HEAD 5d6283d, 26 fichiers changés depuis ». Il avait raison :
+`.next/BUILD_ID` datait de 16:23, une heure et demie plus tôt.
+
+C'est exactement la porte §11.110, sur exactement le défaut qu'elle a été écrite
+pour attraper, contre exactement la personne qui l'a écrite. Sans elle, j'aurais
+consigné « 277/277 sur HEAD » en mesurant un build d'il y a deux heures.
+
+### Note d'environnement, pour la prochaine session
+
+Le Chromium du conteneur est la build **1194** ; `playwright-core` 1.61.1 en
+réclame **1228**. Sans rien, toutes les portes à navigateur meurent sur
+« executable doesn't exist ». La parade tient en une variable, déjà lue par les
+scripts :
+
+```
+export PW_CHROMIUM_PATH=/opt/pw-browsers/chromium-1194/chrome-linux/chrome
+```

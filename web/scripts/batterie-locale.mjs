@@ -40,6 +40,10 @@ const ETAPES = [
   //  divergé. Sans lui, « tout est vert » en local pouvait précéder un rouge en
   //  CI — exactement ce que cette batterie existe pour empêcher.
   { nom: "generate-tokens", cmd: ["scripts/generate-tokens.mjs", "--check"] },
+  //  §11.125 : la liste de mots que la porte accents LIT doit couvrir ce que le
+  //  script de réparation CONNAÎT. Une sonde plus étroite que la réparation
+  //  déclare propre ce qu'elle ne sait pas voir. En python3, comme sa source.
+  { nom: "accents (liste)", cmd: null },
   { nom: "liens-fichiers", cmd: ["scripts/liens-fichiers.mjs", "--porte"] },
   { nom: "validate-content", cmd: null },                     // traité à part
   { nom: "lectures-graphiques", cmd: ["scripts/lectures-graphiques.mjs", "--check"] },
@@ -128,6 +132,10 @@ if (!GARDE_SEULE && !lance("tests unitaires", "node",
 // dossiers par `path.join(REPO, dir)`. Un chemin en `../content/…` ne résout
 // donc PAS, et l'outil échoue sur « pas de lesson.md » — pas sur le contenu.
 // On le lance depuis la racine, avec des chemins relatifs au dépôt.
+if (!GARDE_SEULE && !lance("accents (liste)", "python3",
+  ["scripts/accents-francais.py", "--verifier", "web/scripts/accents.mots.json"],
+  REPO)) rouges++;
+
 if (!GARDE_SEULE && !lance("validate-content (62)", "node",
   ["web/scripts/validate-content.mjs", ...dossiersNotions(), "--strict"],
   REPO)) rouges++;

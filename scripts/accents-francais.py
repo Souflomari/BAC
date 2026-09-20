@@ -605,18 +605,92 @@ def exporter_liste(chemin: str) -> None:
     # « partir », qui apparaissent dans les règles « a → à »). La sonde criait
     # alors sur du français parfaitement écrit, sur onze leçons. Un motif dit
     # ce qu'il CHERCHE et ce qui l'ENTOURE ; seul le premier est une faute.
-    formes = sorted(set(SUR) | AMBIGUS | {f for _, _, fs in CONTEXTUEL for f in fs})
+    formes = set(SUR) | AMBIGUS | {f for _, _, fs in CONTEXTUEL for f in fs}
+
+    # ── L'EXPORT FUSIONNE, IL NE REMPLACE PAS (§11.125, 2026-09-20) ─────────
+    # Ce fichier a DEUX producteurs, et son ancien en-tête n'en nommait qu'un.
+    # Le second est la campagne : `web/scripts/accents-campagne.mjs` dit, dans
+    # son propre en-tête, que « les formes effectivement corrigées sont ensuite
+    # ajoutées à accents.mots.json pour que la porte garde le terrain repris ».
+    # C'est une étape MANUELLE, décrite en prose, et parfaitement légitime.
+    #
+    # Résultat mesuré le 2026-09-20 : le fichier committé portait 846 formes,
+    # ce script en produisait 654. Les 192 autres venaient de la campagne — et
+    # un `--exporter` nu, la commande que docs/audits/accents-francais.md
+    # imprime telle quelle, les aurait TOUTES effacées. La porte serait
+    # devenue plus aveugle de 192 mots, en silence, par une régénération de
+    # routine. Un fichier généré et committé est une affirmation datée
+    # (ADR 0034 §10) ; ici deux mains l'écrivaient et une seule était déclarée.
+    #
+    # D'où la fusion : on conserve ce que la campagne a gagné, on ajoute ce que
+    # le script connaît, et on dit à l'écran ce qui vient d'où.
+    anciennes, reprises = set(), 0
+    try:
+        with open(chemin, encoding="utf-8") as fh:
+            anciennes = set(json.load(fh).get("formes", []))
+        reprises = len(anciennes - formes)
+    except (FileNotFoundError, ValueError):
+        pass
+    fusionnees = sorted(formes | anciennes)
+
     with open(chemin, "w", encoding="utf-8") as fh:
         json.dump({
-            "_lisezMoi": "Généré par scripts/accents-francais.py --exporter. "
-                         "Ne pas éditer à la main : éditer le script, puis réexporter.",
-            "formes": formes,
+            "_lisezMoi": "DEUX producteurs. (1) scripts/accents-francais.py --exporter, "
+                         "qui FUSIONNE et n'écrase jamais. (2) la campagne "
+                         "web/scripts/accents-campagne.mjs, dont les formes corrigées sont "
+                         "ajoutées ici à la main pour que la porte garde le terrain repris. "
+                         "Retirer une forme se fait donc ICI, et volontairement : une forme "
+                         "dont la version SANS accent est un mot français correct n'a rien à "
+                         "faire dans cette liste (voir « repartie », §11.125).",
+            "formes": fusionnees,
         }, fh, ensure_ascii=False, indent=1)
         fh.write("\n")
-    print(f"{len(formes)} formes exportées → {chemin}")
+    print(f"{len(fusionnees)} formes → {chemin}"
+          f"  ({len(formes)} du script, {reprises} reprises du fichier existant)")
+
+
+def verifier_liste(chemin: str) -> int:
+    """La liste committée est-elle À JOUR avec ce script ? (§11.125)
+
+    Depuis que l'export FUSIONNE, une réexportation ne peut plus rien perdre.
+    Il reste un sens à garder : un mot ajouté ICI, dans le Python, et jamais
+    réexporté — la sonde ne le connaîtrait pas, et la porte serait plus étroite
+    que la réparation. C'est exactement le défaut que l'en-tête de
+    `accents-manquants.mjs` raconte : « le premier essai de cette sonde ne
+    connaissait que 130 formes quand la réparation en connaissait 600 ».
+
+    Le contrôle est donc simple et sans ambiguïté : réexporter ne doit RIEN
+    changer. Vert = les deux mains écrivent la même liste.
+    """
+    import json
+    formes = set(SUR) | AMBIGUS | {f for _, _, fs in CONTEXTUEL for f in fs}
+    try:
+        with open(chemin, encoding="utf-8") as fh:
+            committees = set(json.load(fh).get("formes", []))
+    except (FileNotFoundError, ValueError) as e:
+        print(f"✗ {chemin} illisible : {e}")
+        return 1
+    manquantes = sorted(formes - committees)
+    if manquantes:
+        print(f"━━ accents : {len(manquantes)} forme(s) connue(s) du script et ABSENTE(S) de la liste ━━")
+        for f in manquantes[:20]:
+            print(f"   • {f}")
+        if len(manquantes) > 20:
+            print(f"   … +{len(manquantes) - 20}")
+        print("\n   La sonde lit la liste ; ce qui n'y est pas, elle ne le voit pas.")
+        print(f"   Réexporter : python3 scripts/accents-francais.py --exporter {chemin}")
+        print("   (l'export FUSIONNE : il n'effacera pas les formes gagnées par la campagne.)")
+        return 1
+    print(f"accents : la liste committée couvre les {len(formes)} formes du script "
+          f"(+ {len(committees - formes)} reprises de la campagne) ✓")
+    return 0
 
 
 def main():
+    if "--verifier" in sys.argv:
+        i = sys.argv.index("--verifier")
+        cible = sys.argv[i + 1:i + 2]
+        sys.exit(verifier_liste(cible[0] if cible else "web/scripts/accents.mots.json"))
     if "--exporter" in sys.argv:
         cible = [a for a in sys.argv[1:] if not a.startswith("--")]
         exporter_liste(cible[0] if cible else "web/scripts/accents.mots.json")
