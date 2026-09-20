@@ -8,6 +8,11 @@
 > est par document).
 >
 > **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 127 entrées.
+> **Un propriétaire qui revient lit d'abord
+> `docs/audits/DECISIONS-EN-ATTENTE.md`** — la liste, en une page, de ce qui
+> attend un arbitrage et de ce que coûte chaque attente. Rien n'y est en train
+> de se dégrader : chaque ligne porte un cliquet qui empêche l'état d'empirer.
+>
 > Une session fraîche qui veut l'ÉTAT COURANT plutôt que l'histoire lit, dans
 > cet ordre :
 >
