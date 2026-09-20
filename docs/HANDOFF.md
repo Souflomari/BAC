@@ -10359,7 +10359,12 @@ navigateur, sur **HEAD 5d6283d** :
 | `ancres-uniques` | ✓ |
 | `donnees-sweep` | ✓ |
 | `typo-francaise` | ✓ |
-| `accents-manquants` | **✗ ROUGE — 1 mot** |
+| `copie-maths` | 101 pages, ✓ |
+| `impression` | 105 pages × 2 thèmes, ✓ |
+| `accents-manquants` | **✗ ROUGE — 1 mot** (corrigé, puis ✓ sur 104 pages) |
+
+**Toutes vertes après le correctif.** C'est la première fois de la journée que
+la batterie entière — portes à navigateur comprises — a tourné sur HEAD.
 
 ### Le seul rouge, et il était réel depuis hier
 
@@ -10434,3 +10439,19 @@ comparer.
 **La règle qui en sort :** un champ que rien ne lit n'est un défaut que si
 personne n'a écrit pourquoi. `also_reveals` est propre ; `habilete` attend un
 arbitrage.
+
+### Le corpus média est référencé à 99,8 %
+
+Mesuré au passage : **521 fichiers sous `content/*/*/media/`, un seul jamais
+cité par sa racine dans sa propre notion** — `pc/rlc-serie/media/loi-mailles-build.svg`
+(14 ko, 2026-09-05). Son suffixe `-build` suggère un artefact de travail ; il
+n'est **pas supprimé**, parce que rien ne dit s'il sert de source à autre chose
+et qu'un fichier de 14 ko ne vaut pas une suppression à l'aveugle.
+
+**Quatorzième banc faussé, et le plus instructif de la série.** La première
+mesure annonçait **471 orphelins sur 521** — 90 % du corpus média. Un chiffre
+pareil ne décrit jamais un produit, il décrit une sonde : les figures sont
+citées par leur RACINE (`[[figure:limite-trou]]`), sans extension, et les
+sidecars `.stages.json` / `.interactive.json` / `.motion.json` sont chargés par
+convention à partir de cette même racine. Exiger le nom de fichier complet
+déclarait orphelin tout ce qui fonctionne.
