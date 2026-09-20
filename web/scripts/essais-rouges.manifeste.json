@@ -432,6 +432,15 @@
       "de": "rung: \"R0\"",
       "vers": "rung: \"R1\"",
       "note": "L'INVERSE exact du §11.140, mesuré dans la même boucle et sur le même relevé de titres : deux directions d'une seule relation. PREMIER JET AVEUGLE, et l'essai avait tort — il déplaçait un item d'un barreau qui en portait trois, donc le barreau restait peuplé. Il faut un barreau à UN SEUL item pour le vider d'un seul remplacement ; `svt/chaines-de-montagnes` R0 est le seul du corpus. Cliquet à 13, dont DOUZE en SVT."
+    },
+    {
+      "id": "§11.142",
+      "quoi": "gates.yml cesse d'être du YAML valide — GitHub refuse le workflow, AUCUNE porte ne tourne, et la garde continue d'y lire des lignes au motif",
+      "porte": "node scripts/batterie-locale.mjs --garde",
+      "fichier": "../.github/workflows/gates.yml",
+      "de": "- name: \"Traçabilité spec→item (cliquet : une spec neuve nomme un item qui existe)\"",
+      "vers": "- name: Traçabilité spec→item (cliquet : une spec neuve nomme un item qui existe)",
+      "note": "Le défaut EXACT commis le 2026-09-20 : un « : » non cité dans un nom d'étape. Il a vécu six commits sans que rien ne le dise, parce que la CI n'avait plus de runner depuis la veille — le seul lecteur qui aurait protesté était absent. L'essai remet la citation à l'envers ; la garde doit crier."
     }
   ]
 }

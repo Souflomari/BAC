@@ -503,7 +503,7 @@ jobs:
       - name: Dette de manipulation (une prescription d'embed est livrée ou remplacée PAR ÉCRIT)
         run: node scripts/dette-manipulable.mjs --porte
 
-      - name: Traçabilité spec→item (cliquet : une spec neuve nomme un item qui existe)
+      - name: "Traçabilité spec→item (cliquet : une spec neuve nomme un item qui existe)"
         run: node scripts/tracabilite-spec.mjs --porte
 
       # CLIQUET COUVERTURE-DIAGNOSTIQUE (2026-09-05). Le seul fil qui relie

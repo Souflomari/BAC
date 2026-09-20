@@ -22,6 +22,7 @@
  *   node scripts/batterie-locale.mjs
  */
 import { execFileSync } from "node:child_process";
+import yaml from "js-yaml";
 import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -160,6 +161,32 @@ for (const e of GARDE_SEULE ? [] : ETAPES) {
 
 // ── Le garde-fou : cette liste est-elle encore à jour ? ──
 const yml = readFileSync(join(REPO, ".github/workflows/gates.yml"), "utf8");
+
+//  ── gates.yml EST-IL SEULEMENT DU YAML ? (§11.142) ────────────────────────
+//  Tout ce qui suit lit ce fichier au MOTIF — `node scripts/…`, `npm run …`.
+//  Un motif se moque de la validité : il trouve ses lignes dans un fichier que
+//  GitHub refuserait de charger, et la garde annonce « 33 portes » d'un
+//  workflow mort. C'est arrivé le 2026-09-20 : un nom d'étape contenant
+//  « : » non cité (« cliquet : une spec… ») a rendu le fichier illisible
+//  pendant SIX commits. Rien ne l'a dit, parce que la CI n'avait plus de
+//  runner depuis la veille — le seul lecteur qui aurait protesté était absent.
+//
+//  Le contrôle est donc en TÊTE de la garde, et il s'arrête là : une liste
+//  extraite d'un fichier invalide ne vaut rien, et la comparer serait donner
+//  du crédit à un relevé faux.
+try {
+  const doc = yaml.load(yml);
+  const etapes = Object.values(doc?.jobs ?? {}).reduce((n, j) => n + (j?.steps?.length ?? 0), 0);
+  if (!etapes) throw new Error("aucune étape — la structure attendue (jobs.*.steps) n'est pas là");
+  //  Toujours imprimé, même en mode garde seule : un contrôle qui peut passer
+  //  au rouge doit dire aussi quand il passe au vert (ADR 0034).
+  console.log(`  ✓ gates.yml est du YAML valide (${etapes} étapes)`);
+} catch (e) {
+  console.error("\n━━ gates.yml N'EST PAS DU YAML VALIDE ━━");
+  console.error(`   ${String(e.message).split("\n")[0]}`);
+  console.error("\n   GitHub refusera de charger ce workflow : AUCUNE porte ne tournera,\n   et le motif ci-dessous continuerait d'y lire des lignes comme si de rien\n   n'était. Un nom d'étape contenant « : » doit être entre guillemets.\n");
+  process.exit(1);
+}
 //  PIÈGE MESURÉ (§11.122). La première version de cette garde ne cherchait que
 //  les appels DIRECTS — la forme « node » suivie d'un chemin sous `scripts/`.
 //  Or la CI atteint HUIT scripts autrement :

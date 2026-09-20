@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 141 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 142 entrées.
 > **Un propriétaire qui revient lit d'abord
 > `docs/audits/DECISIONS-EN-ATTENTE.md`** — la liste, en une page, de ce qui
 > attend un arbitrage et de ce que coûte chaque attente. Rien n'y est en train
@@ -11220,4 +11220,45 @@ dépend d'aucun effectif.
 item d'un barreau qui en portait trois, donc le barreau restait peuplé. Vider
 un barreau d'un seul remplacement demande un barreau à UN SEUL item —
 `svt/chaines-de-montagnes` R0 est le seul du corpus. Refait, il est ROUGE.
+
+## §11.142 — J'ai cassé le workflow, et personne n'était là pour le dire
+
+En vérifiant que `gates.yml` parse — un réflexe, puisque je l'avais modifié
+quatre fois dans la journée — il ne parsait pas. **Depuis six commits.**
+
+La cause est d'une banalité totale : un nom d'étape que j'avais écrit
+
+    - name: Traçabilité spec→item (cliquet : une spec neuve nomme un item qui existe)
+
+Un `: ` dans un scalaire non cité rend le YAML invalide. GitHub aurait refusé
+de charger le workflow : **aucune porte n'aurait tourné**, et le message
+d'erreur serait arrivé au premier run après le retour du runner, six commits
+plus loin, sans lien évident avec sa cause.
+
+**Deux choses expliquent que ça ait duré, et aucune n'est le YAML.**
+
+1. **La CI n'a plus de runner depuis la veille** (§11.117). Le seul lecteur qui
+   aurait protesté était absent. Une panne d'infrastructure ne fait pas que
+   suspendre les contrôles : elle **retire le filet qui attrape les fautes
+   qu'on fait pendant la panne**. C'est le coût caché d'une CI muette, et il
+   se paie sur les modifications qu'on apporte pendant ce temps-là.
+2. **La garde anti-dérive lit `gates.yml` au MOTIF** (`node scripts/…`,
+   `npm run …`). Un motif se moque de la validité : il a trouvé ses lignes
+   dans un fichier mort et annoncé tranquillement « la liste couvre gates.yml
+   (33 portes) ». **Un instrument qui lit un fichier par expression régulière
+   ne peut pas dire que le fichier est invalide** — et il donnera toujours
+   l'impression contraire, puisqu'il répond quelque chose.
+
+**Le contrôle est armé en TÊTE de la garde** : `gates.yml` est-il du YAML, et
+la structure attendue (`jobs.*.steps`) est-elle là ? Il s'arrête net si non —
+comparer une liste extraite d'un relevé faux serait lui donner du crédit. Il
+imprime aussi son verdict quand il est vert, y compris en mode garde seule :
+un contrôle qui peut passer au rouge doit dire quand il passe au vert (ADR
+0034). Essai rouge §11.142, avec le défaut exact, remis à l'envers.
+
+**Ce que ça dit de la journée.** J'ai armé sept portes aujourd'hui en écrivant
+qu'une porte doit pouvoir devenir rouge. Celle-ci manquait, et son absence a
+laissé passer une faute à moi, dans le fichier qui décide de toutes les autres.
+La règle vaut aussi pour la plomberie : **le fichier qui liste les contrôles
+est lui-même un artefact qu'il faut contrôler.**
 
