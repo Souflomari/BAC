@@ -173,6 +173,23 @@ déjà). Les deux cercles voisins du propriétaire, eux, sont fermés : l'accuei
 
 ---
 
+## 9. 1 629 explications écrites et sans emploi
+
+Le corpus porte `correct_feedback` sur 1 678 items des 62 notions —
+l'explication de la bonne réponse. Aucun composant ne le lisait (§11.133).
+Le repli posé aujourd'hui l'affiche **là où la carte était muette** : les 49
+items de `philo/analyse-de-texte`, qui n'avaient ni `solution`, ni feedback sur
+le choix correct. Les **1 629 autres** portent une `solution`, qui gagne — leur
+`correct_feedback` reste donc inaffiché.
+
+**Décision attendue :** montrer les deux (la solution complète ET la phrase
+courte qui dit pourquoi), n'en garder qu'un, ou laisser ainsi. C'est une
+question de dessin pédagogique — un agent ne doit pas trancher ce qu'un élève
+lit après avoir répondu juste. Le code est prêt dans les trois cas ; ce qui
+manque est l'arbitrage.
+
+---
+
 ## Ce que cette page n'est pas
 
 Ce n'est pas la liste des défauts du produit : ceux qui étaient objectifs ont

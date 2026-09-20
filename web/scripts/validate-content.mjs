@@ -2662,6 +2662,38 @@ for (const dir of dirs) {
             } else vus.set(cle, c?.id);
           }
         }
+
+        //  ── §11.133 — LA CARTE MUETTE POUR QUI RÉPOND JUSTE ────────────────
+        //
+        //  `McqItem` n'affiche l'explication que si l'item porte `solution`
+        //  ou (depuis le 2026-09-20) `correct_feedback` ; `ChoiceButton` ne
+        //  révèle le feedback du BON choix que sur `revealCorrectFeedback`,
+        //  passé par `CheckpointItem` — parce qu'un point d'arrêt n'a jamais
+        //  de `solution` — et pas par `McqItem`. Un item qui n'a aucun des
+        //  trois tombe entre les branches : l'élève répond juste et ne lit
+        //  qu'une ligne de résultat.
+        //
+        //  C'est arrivé : 49 items de `philo/analyse-de-texte` portaient un
+        //  `correct_feedback` qu'AUCUN composant ne lisait (le champ est écrit
+        //  sur 1 678 items, les 62 notions, et n'apparaissait nulle part dans
+        //  `web/src`). Mesuré après le repli : 0 item muet sur 1 612.
+        //
+        //  La porte vise l'UNION des trois, pas `solution` seule : exiger
+        //  `solution` aurait condamné un dessin légitime — les 49 expliquent
+        //  la bonne réponse autrement, pas moins bien.
+        if (fname === "items.yaml" && choix.length) {
+          const sol = String(it?.solution ?? "").trim();
+          const cf = String(it?.correct_feedback ?? "").trim();
+          const fbBon = choix.some((c) => c?.correct && String(c?.feedback ?? "").trim());
+          if (!sol && !cf && !fbBon) {
+            console.error(
+              `  ✗ ${dir}: ${fname} — ${it?.id} ne dit RIEN à l'élève qui répond juste : ` +
+              `ni \`solution\`, ni \`correct_feedback\`, ni feedback sur le choix correct. ` +
+              `Il ne verra que la ligne « Correct ».`,
+            );
+            dirFail++;
+          }
+        }
       }
     }
   }

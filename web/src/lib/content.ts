@@ -104,6 +104,15 @@ export interface NotionItem {
   type: "mcq" | string;
   choices?: NotionChoice[];
   solution?: string;
+  /**
+   * L'explication de la BONNE réponse quand l'item n'a pas de `solution`
+   * complète. Le champ est écrit dans le corpus depuis l'origine (1 678 items,
+   * les 62 notions) et n'était lu par AUCUN composant : 49 items de
+   * `philo/analyse-de-texte` n'avaient donc rien à montrer à l'élève qui
+   * répondait juste — ni `solution`, ni feedback sur le choix correct, ni
+   * ceci. Voir HANDOFF §11.133.
+   */
+  correct_feedback?: string;
 }
 
 export interface MisconceptionEntry {

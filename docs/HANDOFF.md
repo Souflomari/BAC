@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 132 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 133 entrées.
 > **Un propriétaire qui revient lit d'abord
 > `docs/audits/DECISIONS-EN-ATTENTE.md`** — la liste, en une page, de ce qui
 > attend un arbitrage et de ce que coûte chaque attente. Rien n'y est en train
@@ -10790,4 +10790,53 @@ Deux directions, parce qu'une seule se laisse contourner (ADR 0031).
 Les deux vérifiées ROUGE sur `svt/soi-non-soi` (essais §11.132a/b), restaurées
 octet pour octet. **42 essais rouges, tous verts. validate-content : 0 échec
 sur 62 notions.**
+
+## §11.133 — Un champ écrit sur 1 678 items, lu par aucun composant
+
+Le corpus porte `correct_feedback` sur **1 678 items, dans les 62 notions** :
+l'explication de la BONNE réponse, écrite par l'auteur. `grep` sur tout
+`web/src` : **zéro occurrence**. Aucun composant ne le lit. Il voyage jusqu'au
+navigateur — il est dans la charge sérialisée des pages construites — et n'est
+jamais affiché.
+
+**Pour 1 629 items, la perte est invisible** : ils portent aussi une
+`solution`, que `McqItem` révèle sous « Voir la solution complète ». **Pour 49,
+elle ne l'est pas.** Les 49 items de `philo/analyse-de-texte` — la leçon de
+méthode qui apprend à analyser un texte — n'ont pas de `solution`, et leur
+choix correct ne porte pas non plus de `feedback` propre (49 sur 49, vérifié).
+L'élève qui répondait JUSTE voyait la ligne « Correct », et rien d'autre.
+
+**Le dessin était cohérent partout ailleurs, et c'est pour ça que le trou
+tenait.** Un point d'arrêt n'a jamais de `solution` : `CheckpointItem` passe
+donc `revealCorrectFeedback` à `ChoiceButton`, avec ce commentaire déjà en
+place — « sans ceci, l'élève qui se trompe verrait la bonne réponse surlignée
+sans jamais lire pourquoi elle est bonne ». `McqItem` ne le passe pas, parce
+qu'il compte sur `solution`. Les 49 tombaient exactement entre les deux
+branches : pas de `solution`, pas de révélation, et un troisième canal que
+personne ne lisait. **Quelqu'un avait déjà résolu ce problème une fois, pour
+l'autre composant.**
+
+**Le correctif est un REPLI, pas un changement de dessin.** `McqItem` affiche
+`item.solution ?? item.correct_feedback`, avec l'intitulé « Pourquoi cette
+réponse est la bonne » quand il s'agit du second. Il ne peut rien retirer ni
+déplacer : il ne s'ouvre que là où la carte était muette. Vérifié dans un
+navigateur, sur la page servie d'une construction faite de HEAD :
+`ATX-M01-1` révèle désormais **166 caractères** d'explication après une
+réponse (absents avant la réponse, comme il se doit), et
+`maths/limites-continuite` continue d'afficher « Voir la solution complète »
+avec ses 289 caractères — **le chemin existant est inchangé**.
+
+**La porte (§11.133) vise l'UNION des trois canaux, jamais `solution` seule.**
+Exiger `solution` aurait condamné un dessin légitime : les 49 expliquent la
+bonne réponse autrement, pas moins bien. Après repli : **0 item muet sur
+1 612**. Essai rouge vérifié — et **MUET au premier jet**, parce que je l'avais
+écrit avec `correct_feedback: >` là où le corpus écrit `|-`. Un essai muet
+n'est pas un verdict sur la porte : c'est un défaut de l'essai (quatrième
+verdict, ADR 0034). Corrigé, il est ROUGE.
+
+**Ce qui reste au propriétaire :** sur les 1 629 items qui ont les DEUX, faut-il
+montrer aussi le `correct_feedback` à côté de la `solution`, ou l'un rend-il
+l'autre superflu ? C'est une question de dessin pédagogique, pas de code —
+elle est portée en `DECISIONS-EN-ATTENTE` §9. Tant qu'elle n'est pas tranchée,
+1 629 explications écrites restent sans emploi.
 

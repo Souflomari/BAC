@@ -369,6 +369,15 @@
       "de": "        feedback: >\n          La tolérance montre au contraire que la non-réaction contre le\n          soi résulte d'un processus actif (l'élimination des cellules\n          immunitaires auto-réactives pendant la vie embryonnaire), pas\n          d'une catégorie figée dès le départ.",
       "vers": "        feedback: >\n          Le non-soi (agents pathogènes, greffons éventuels) peut se\n          présenter à tout âge, y compris très tôt après la naissance. La\n          tolérance ne repose pas sur l'absence de non-soi, mais sur\n          l'élimination précoce des cellules immunitaires qui auraient\n          réagi contre le soi lui-même.",
       "note": "Le sens sans lequel un copier-coller entre deux distracteurs passerait : le champ serait bel et bien REMPLI. Mesuré à l'armement : 0 doublon sur 7 894 retours."
+    },
+    {
+      "id": "§11.133",
+      "quoi": "un item ne dit RIEN à l'élève qui répond juste — ni solution, ni correct_feedback, ni feedback sur le bon choix",
+      "porte": "node scripts/validate-content.mjs --strict content/philo/analyse-de-texte",
+      "fichier": "../content/philo/analyse-de-texte/items.yaml",
+      "de": "    correct_feedback: |-\n      La copie B ne redit pas le contenu de la phrase : elle identifie ce que",
+      "vers": "    note_interne: |-\n      La copie B ne redit pas le contenu de la phrase : elle identifie ce que",
+      "note": "Le champ `correct_feedback` était écrit sur 1 678 items des 62 notions et lu par AUCUN composant : 49 items de cette notion n'avaient donc rien à montrer. La porte vise l'UNION des trois canaux, jamais `solution` seule — exiger `solution` aurait condamné un dessin légitime. (Premier jet MUET : l'essai écrivait `correct_feedback: >` alors que le corpus use de `|-`. Un essai muet n'est pas un verdict sur la porte — c'est un défaut de l'essai, quatrième verdict d'ADR 0034.)"
     }
   ]
 }

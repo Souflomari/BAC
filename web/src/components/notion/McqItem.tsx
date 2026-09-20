@@ -81,6 +81,10 @@ export function McqItem({ item, index }: McqItemProps) {
   const selectedChoice = choices.find((c) => c.id === selectedId);
   const isCorrect = selectedChoice?.correct ?? false;
 
+  //  Ce qui explique la BONNE réponse : la solution complète si elle existe,
+  //  sinon le `correct_feedback` écrit par l'auteur (§11.133).
+  const explication = item.solution ?? item.correct_feedback;
+
   const itemId = `${baseId}-item-${item.id}`;
 
   return (
@@ -167,8 +171,18 @@ export function McqItem({ item, index }: McqItemProps) {
       {/* Summary feedback after answering — DESIGN-BIBLE §7: immediate feedback */}
       <ResultRow answered={answered} isCorrect={isCorrect} />
 
-      {/* Solution — shown after answering, when available */}
-      {answered && item.solution && (
+      {/* Solution — shown after answering, when available.
+
+          REPLI SUR `correct_feedback` (§11.133). Un item sans `solution` ne
+          montrait RIEN à l'élève qui répondait juste : `ChoiceButton` ne révèle
+          le feedback du bon choix que si `revealCorrectFeedback` est passé — ce
+          que fait `CheckpointItem`, parce qu'un point d'arrêt n'a jamais de
+          `solution`, et pas `McqItem`, qui compte sur elle. Les 49 items de
+          `philo/analyse-de-texte` tombaient entre les deux : pas de `solution`,
+          pas de feedback sur le choix correct, et un `correct_feedback` écrit
+          par l'auteur que personne ne lisait. Le repli n'enlève rien à
+          personne — il ne s'ouvre que là où la carte était muette. */}
+      {answered && explication && (
         <details className="mt-4">
           <summary
             className={cn(
@@ -187,7 +201,7 @@ export function McqItem({ item, index }: McqItemProps) {
               "focus-ring [--focus-radius:8px]"
             )}
           >
-            Voir la solution complète
+            {item.solution ? "Voir la solution complète" : "Pourquoi cette réponse est la bonne"}
           </summary>
           <div
             className={cn(
@@ -204,7 +218,7 @@ export function McqItem({ item, index }: McqItemProps) {
               "overflow-x-auto"
             )}
           >
-            <MathText>{item.solution}</MathText>
+            <MathText>{explication}</MathText>
           </div>
         </details>
       )}
