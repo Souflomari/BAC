@@ -12216,3 +12216,46 @@ doit crier (§11.160 dans la suite rejouable).
 
 C'est la forme la plus utile qu'un audit puisse prendre : **ne pas réparer ce
 qui n'est pas cassé, et garder la condition qui le maintient ainsi.**
+
+## §11.161 — L'épreuve jusqu'au corrigé, dans les trois moteurs
+
+§11.151 ouvrait les pages ; il ne les UTILISAIT pas. Or la surface la plus
+lourde du produit est celle où l'on clique : « Terminer » rend le corrigé côté
+client, des centaines de formules d'un coup (§11.52). Charger la page ne prouve
+rien de ce moment-là.
+
+**Mesuré, identique au caractère près dans les trois moteurs :**
+
+| | chromium | firefox | webkit |
+|---|---|---|---|
+| caractères de sujet (« Commencer ») | 22 779 | 22 779 | 22 779 |
+| caractères de corrigé (« Terminer ») | 28 551 | 28 551 | 28 551 |
+| formules dans le corrigé | 489 | 489 | 489 |
+| commandes d'auto-évaluation | 111 | 111 | 111 |
+| durée de « Terminer » | 2,61 s | 2,65 s | 2,60 s |
+
+### Le compte que j'allais armer était celui de la mise en page
+
+Premier jet : je comptais `document.body.innerText`. Verdict : **DIVERGENCE**,
+22 675 / 21 712 / 22 203 sur le sujet, 4 % d'écart — j'avais trouvé une
+différence entre moteurs sur la page d'épreuve.
+
+Sauf que `innerText` est *défini* comme le texte **tel que rendu** : il porte
+les retours à la ligne que chaque moteur décide. `textContent`, lui, est le
+texte du DOM, indépendant de la mise en page. Mesuré côte à côte :
+
+```
+  chromium  innerText=23459  textContent=125517
+  firefox   innerText=22496  textContent=125517
+  webkit    innerText=22989  textContent=125517
+```
+
+**125 517 dans les trois, au caractère près.** Le contenu est rigoureusement
+identique ; c'est ma mesure qui regardait la typographie. L'axe armé est donc
+`textContent` ; `innerText` reste affiché, pour ce qu'il est.
+
+C'est la même leçon que §11.157 (où j'allais armer une largeur cumulée qui ne
+bouge pas quand les polices disparaissent) et que §11.151 (où les 5 px de WebKit
+étaient la barre de défilement) : **avant d'armer une mesure, vérifier qu'elle
+mesure la chose et pas le banc.** Trois passages verts, et les deux essais
+rouges du comparateur crient toujours.

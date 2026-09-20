@@ -143,7 +143,8 @@ const vecteur = () => {
 };
 
 const MOTEURS = [["chromium", chromium], ["firefox", firefox], ["webkit", webkit]];
-const releve = {}; // page → moteur → vecteur
+const releve = {};
+const epreuves = {}; // page → moteur → vecteur
 
 for (const [nom, type] of MOTEURS) {
   const args = nom === "chromium" ? [] : undefined;
@@ -170,6 +171,48 @@ for (const [nom, type] of MOTEURS) {
     }
     page.off("pageerror", onErr);
   }
+  //  L'ÉPREUVE, JUSQU'AU CORRIGÉ — la surface la plus lourde du produit, et la
+  //  seule dont l'INTERACTION n'avait jamais quitté Chromium : « Terminer »
+  //  rend le corrigé côté client, des centaines de formules d'un coup (§11.52).
+  //  Charger la page ne prouve rien de ce moment-là.
+  try {
+    const ep = await ctx.newPage();
+    await ep.goto(BASE + "/examens/spc-2025-normale", { waitUntil: "domcontentloaded", timeout: 40000 });
+    try { await ep.waitForFunction(() => window.__bacVivant === true, { timeout: 30000 }); } catch {}
+    //  DEUX COMPTES DE TEXTE, ET UN SEUL EST COMPARABLE.
+    //  `innerText` est défini comme le texte TEL QUE RENDU : il porte les
+    //  retours à la ligne de la mise en page, donc il diffère d'un moteur à
+    //  l'autre — mesuré 23 459 / 22 496 / 22 989 sur le même sujet, soit 4 %.
+    //  `textContent` est le texte du DOM, indépendant de la mise en page :
+    //  mesuré **125 517 dans les trois, au caractère près**. C'est donc lui
+    //  qu'on arme ; l'autre est affiché pour ce qu'il est.
+    //  J'allais armer `innerText` : il aurait crié 4 % d'écart sur un produit
+    //  dont le contenu est rigoureusement identique.
+    const lire = () => ep.evaluate(() => ({
+      car: document.body.textContent.length,
+      carRendu: document.body.innerText.length,
+      katex: document.querySelectorAll(".katex").length,
+      commandes: document.querySelectorAll("button, [role=button], input").length,
+    }));
+    const avant = await lire();
+    const commencer = ep.getByRole("button", { name: /commencer/i }).first();
+    if (await commencer.count()) { await commencer.click({ timeout: 15000 }).catch(() => {}); await ep.waitForTimeout(1800); }
+    const sujet = await lire();
+    const terminer = ep.getByRole("button", { name: /terminer/i }).first();
+    const t0 = Date.now();
+    if (await terminer.count()) { await terminer.click({ timeout: 20000 }).catch(() => {}); await ep.waitForTimeout(2500); }
+    const corrige = await lire();
+    epreuves[nom] = {
+      sujetCar: sujet.car - avant.car,
+      corrigeCar: corrige.car - sujet.car,
+      sujetRendu: sujet.carRendu - avant.carRendu,
+      katexCorrige: corrige.katex,
+      commandesCorrige: corrige.commandes,
+      msTerminer: Date.now() - t0,
+    };
+    await ep.close();
+  } catch (e) { epreuves[nom] = { echec: String(e).slice(0, 60) }; }
+
   await b.close();
   console.log(`  · ${nom} mesuré`);
 }
@@ -215,6 +258,23 @@ for (const p of PAGES) {
   for (const [m] of echecs) divergences.push({ page: p.nom, cle: "CHARGEMENT", vals: `${m} : ${r[m].echec}` });
   console.log();
 }
+
+//  L'ÉPREUVE : mêmes règles que le reste — ce qui DOIT être identique l'est,
+//  ce qui dépend de la machine est affiché sans être armé. Le temps de
+//  « Terminer » varie d'un moteur à l'autre et d'un passage à l'autre : il
+//  est montré, jamais gardé.
+console.log("  épreuve — /examens/spc-2025-normale, jusqu'au corrigé\n");
+const AXES_EPREUVE = [["sujetCar", true], ["corrigeCar", true], ["katexCorrige", true], ["commandesCorrige", true], ["sujetRendu", false], ["msTerminer", false]];
+const okEp = MOTEURS.filter(([m]) => epreuves[m] && !epreuves[m].echec).map(([m]) => m);
+for (const [cle, arme] of AXES_EPREUVE) {
+  const vals = okEp.map((m) => `${m.slice(0, 2)}=${epreuves[m][cle]}`);
+  const distincts = new Set(okEp.map((m) => String(epreuves[m][cle])));
+  const marque = distincts.size > 1 ? (arme ? " ‹‹ DIVERGENCE" : " ·écart toléré") : "";
+  console.log(`     ${cle.padEnd(16)} ${vals.join("  ")}${marque}`);
+  if (distincts.size > 1 && arme) divergences.push({ page: "épreuve", cle, vals: vals.join(" ") });
+}
+for (const [m] of MOTEURS) if (epreuves[m]?.echec) divergences.push({ page: "épreuve", cle: "CHARGEMENT", vals: `${m} : ${epreuves[m].echec}` });
+console.log();
 
 if (!divergences.length) console.log("  aucune divergence sur les classes armées.\n");
 else {
