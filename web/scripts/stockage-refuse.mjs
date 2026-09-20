@@ -51,6 +51,18 @@ for (let i = 0; i < 60; i++) {
 }
 if (!vivant) { console.error("stockage-refuse : `next start` n'a pas répondu."); process.exit(1); }
 
+//  TROIS CAS, et ils ne lèvent pas au même endroit :
+//   · refusé — l'ACCÈS lève (navigation privée, données bloquées) ;
+//   · plein  — seule l'ÉCRITURE lève (`QuotaExceededError`), la lecture marche.
+//  Le second était nommé comme non mesuré à la fin de §11.154 ; le laisser
+//  écrit sans le fermer aurait été une dette de plus.
+const QUOTA = () => {
+  try {
+    const vrai = window.localStorage;
+    vrai.setItem = () => { throw new DOMException("Quota dépassé.", "QuotaExceededError"); };
+  } catch {}
+};
+
 const REFUS = () => {
   const lever = () => { throw new DOMException("Le stockage est refusé par les réglages du navigateur.", "SecurityError"); };
   for (const cle of ["localStorage", "sessionStorage"]) {
@@ -65,10 +77,12 @@ const dit = (ok, txt, detail = "") => {
   if (!ok) echecs++;
 };
 
-for (const refuse of [false, true]) {
-  console.log(`\n━━ stockage ${refuse ? "REFUSÉ (navigation privée / données bloquées)" : "autorisé (témoin)"} ━━\n`);
+for (const cas of ["temoin", "refuse", "plein"]) {
+  const refuse = cas === "refuse";
+  console.log(`\n━━ stockage ${cas === "temoin" ? "autorisé (témoin)" : refuse ? "REFUSÉ (navigation privée / données bloquées)" : "PLEIN (quota dépassé : l'écriture lève, la lecture marche)"} ━━\n`);
   const ctx = await nav.newContext({ viewport: { width: 390, height: 844 } });
   if (refuse) await ctx.addInitScript(REFUS);
+  if (cas === "plein") await ctx.addInitScript(QUOTA);
   const page = await ctx.newPage();
   if (ESSAI_ROUGE) await page.route("**/_next/static/chunks/**", (r) => r.abort());
   const erreurs = [];
@@ -80,7 +94,10 @@ for (const refuse of [false, true]) {
   await page.goto(BASE + "/", { waitUntil: "domcontentloaded", timeout: 40000 });
   const leve = await page.evaluate(() => { try { void window.localStorage; return false; } catch { return true; } });
   if (refuse) dit(leve, "le refus de stockage est EFFECTIF (l'accès lève)");
-  else dit(!leve, "témoin : le stockage répond normalement");
+  else if (cas === "plein") {
+    const ecritureLeve = await page.evaluate(() => { try { localStorage.setItem("x", "1"); return false; } catch { return true; } });
+    dit(!leve && ecritureLeve, "le quota dépassé est EFFECTIF (lecture OK, écriture lève)");
+  } else dit(!leve, "témoin : le stockage répond normalement");
 
   //  1. L'accueil se rend-il, et le JavaScript prend-il la main ?
   await page.goto(BASE + "/", { waitUntil: "domcontentloaded", timeout: 40000 });
@@ -120,6 +137,35 @@ for (const refuse of [false, true]) {
     }
   }
   dit(repondu > 50, "leçon — répondre produit un retour", `${repondu} caractères de plus`);
+
+  //  2 bis. LES DEUX COMMANDES QUI ÉCRIVENT. C'est là que le stockage PLEIN se
+  //  distingue du stockage refusé : l'élève clique, l'écriture échoue, et la
+  //  question est de savoir si le réglage s'applique quand même pour la session.
+  //  Les deux composants posent l'effet APRÈS le `try` — c'est ce qu'on vérifie.
+  //  À 390 px, les deux commandes vivent DERRIÈRE « Menu et réglages » — c'est
+  //  le dessin (§11.146), et un banc qui clique sans ouvrir le menu mesure une
+  //  absence qu'il a fabriquée. Le TÉMOIN l'a dit, encore : les deux contrôles
+  //  tombaient dans les TROIS colonnes.
+  const menu = page.getByRole("button", { name: /Menu et réglages/i }).first();
+  if (await menu.count()) { await menu.click({ timeout: 8000 }).catch(() => {}); await page.waitForTimeout(400); }
+
+  const avantThème = await page.evaluate(() => document.documentElement.classList.contains("dark"));
+  const bascule = page.locator("[data-theme-toggle]").first();
+  if (await bascule.count()) {
+    await bascule.click({ timeout: 8000 }).catch(() => {});
+    await page.waitForTimeout(400);
+  }
+  const apresThème = await page.evaluate(() => document.documentElement.classList.contains("dark"));
+  dit(avantThème !== apresThème, "la bascule de thème agit malgré tout");
+
+  const avantTaille = await page.evaluate(() => document.documentElement.style.getPropertyValue("--font-scale"));
+  const plus = page.getByRole("button", { name: "Agrandir la taille du texte" }).first();
+  if (await plus.count()) {
+    await plus.click({ timeout: 8000 }).catch(() => {});
+    await page.waitForTimeout(400);
+  }
+  const apresTaille = await page.evaluate(() => document.documentElement.style.getPropertyValue("--font-scale"));
+  dit(avantTaille !== apresTaille, "l'agrandissement du texte agit malgré tout", `${avantTaille || "∅"} → ${apresTaille || "∅"}`);
 
   //  3. Une épreuve, jusqu'au corrigé.
   await page.goto(BASE + "/examens/spc-2025-normale", { waitUntil: "domcontentloaded", timeout: 40000 });

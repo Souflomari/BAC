@@ -11975,3 +11975,39 @@ MotionDiagram restées. Trois passages verts identiques.
 CHARGEMENT. Une animation déclenchée par un clic — le pas à pas de MotionStage —
 n'est pas parcourue ; `dom-truth` en garde l'instantanéité sur une figure
 témoin, et cette portée-là reste à un.
+
+## §11.156 — Le stockage PLEIN, et les deux commandes qui écrivent
+
+§11.154 se terminait sur une dette écrite : « le stockage PLEIN (quota dépassé)
+est un autre cas — il lève à l'écriture seulement, et sous un autre code. Il
+n'est pas mesuré. » Le laisser écrit sans le fermer aurait fait une dette de
+plus ; il est fermé.
+
+**Trois cas maintenant, et ils ne lèvent pas au même endroit :**
+
+| | l'accès lève | l'écriture lève |
+|---|---|---|
+| témoin | non | non |
+| refusé (navigation privée) | **oui** | oui |
+| plein (`QuotaExceededError`) | non | **oui** |
+
+Et deux contrôles de plus, qui sont précisément ceux que le cas « plein »
+distingue du cas « refusé » : **basculer le thème** et **agrandir le texte**.
+Là, l'élève clique, l'écriture échoue, et la question est de savoir si le
+réglage s'applique quand même pour la session.
+
+**Il s'applique.** `ThemeToggle` et `FontSizeStepper` posent tous deux leur
+effet APRÈS le `try` : `--font-scale` passe de ∅ à 1.125 et la classe `dark`
+bascule, dans les trois cas. C'est le bon ordre, et il est maintenant gardé.
+
+### Le témoin a reparlé
+
+Premier jet des deux nouveaux contrôles : rouges dans les **trois** colonnes.
+À 390 px, la bascule de thème et le pas de taille vivent derrière « Menu et
+réglages » (§11.146) — un banc qui clique sans ouvrir le menu mesure une absence
+qu'il a lui-même fabriquée. C'est la troisième fois de la journée que le témoin
+attrape l'instrument avant que l'instrument n'accuse le produit ; c'est
+exactement ce à quoi sert un témoin.
+
+Essai rouge rejoué avec les trois cas : 15 échecs sous JavaScript bloqué.
+Trois passages verts identiques.
