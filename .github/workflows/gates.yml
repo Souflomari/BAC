@@ -194,6 +194,25 @@ jobs:
             || { echo "::warning::dom-truth cold-boot retry 1"; npm run dom-truth; } \
             || { echo "::warning::dom-truth cold-boot retry 2"; npm run dom-truth; }
 
+      # PORTE PRÉFÉRENCES APRÈS SECOURS (2026-09-20, §11.149). Le thème et la
+      # taille du texte vivent sur <html>, posés avant la peinture par un script
+      # en ligne. Quand l'hydratation échoue — un désaccord, une exception —,
+      # React refait un rendu client complet, réapplique les attributs déclarés
+      # du layout, et les DEUX préférences disparaissent sans que rien ne le
+      # dise. L'élève ne voit pas d'erreur : la page repasse simplement en clair
+      # et le texte agrandi redevient petit.
+      #
+      # DEUX SENS, dans la même étape, parce qu'un vert seul ne prouve rien ici :
+      # la porte tourne d'abord normalement (elle doit être VERTE), puis en
+      # `--essai-rouge`, garde neutralisée dans le bundle servi (elle doit
+      # CRIER). Une porte qui reste verte les deux fois est aveugle, et le
+      # second passage est le seul à pouvoir le dire (ADR 0034).
+      - name: "Préférences après un rendu de secours (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run preferences-secours
+          node scripts/preferences-secours.mjs --essai-rouge
+
       # PORTE FIGURES (2026-09-04). figure-preview mesure sept classes de
       # défaut sur les 258 SVG statiques ; CINQ sont armées, et seulement
       # parce qu'elles sont propres dans les DEUX thèmes :

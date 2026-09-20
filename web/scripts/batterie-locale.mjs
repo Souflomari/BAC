@@ -99,6 +99,11 @@ const HORS_CHAMP = new Set([
   // il lui faut donc un build ET Playwright. Hors champ pour la même raison que
   // dom-truth, et non par oubli.
   "liens-internes.mjs",
+  // preferences-secours lève son propre `next start` et pilote un navigateur
+  // pour provoquer un vrai rendu de secours : build ET Playwright. Hors champ
+  // ici, armée en CI (§11.149). Son rouge se rejoue à la demande :
+  // `node scripts/preferences-secours.mjs --essai-rouge`.
+  "preferences-secours.mjs",
 ]);
 
 function dossiersNotions() {

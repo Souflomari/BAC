@@ -14,6 +14,7 @@ import { ViewTransitions } from "next-view-transitions";
 import { AuthProvider } from "@/lib/auth/provider";
 import { HydrationNotice } from "@/components/ui/HydrationNotice";
 import { SignalVivant } from "@/components/ui/SignalVivant";
+import { GardePreferences } from "@/components/ui/GardePreferences";
 import { BandeauHydratation, FiletHydratation } from "@/components/ui/VeilleHydratation";
 import "./globals.css";
 
@@ -146,6 +147,10 @@ export default function RootLayout({
       </head>
       <body>
         <script dangerouslySetInnerHTML={{ __html: THEME_BOOT }} />
+        {/* Réaffirme thème + taille de texte après un rendu client de
+            secours, qui réapplique les attributs de <html> et efface les
+            deux (GardePreferences.tsx, HANDOFF §11.149). */}
+        <GardePreferences />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(SITE_JSONLD) }}

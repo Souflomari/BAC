@@ -11433,3 +11433,170 @@ fragment sans apostrophe.
 Le témoin rejoint `deploye-sweep` : deux passages consécutifs, trois contrôles
 verts.
 
+
+## §11.148 — La page qui s'interrompt parlait anglais
+
+`src/app/` portait `not-found.tsx` et **rien d'autre**. Aucune frontière
+d'erreur. Toute exception non rattrapée côté client remplaçait donc la page par
+le repli intégré de Next :
+
+> *Application error: a client-side exception has occurred (see the browser
+> console for more information).*
+
+En anglais, sur un produit français destiné à des élèves marocains, et en
+renvoyant à la console du navigateur — ce qui ne veut rien dire pour un élève
+de terminale.
+
+**La phrase a été LUE en ligne**, par le balayage clavier de `deploye-sweep`,
+qui s'est arrêté dessus au lieu du lien d'évitement :
+
+```
+  ✗ clavier — premier arrêt = lien d'évitement (« Application error: a client-si »)
+```
+
+**Et elle ne s'est PAS reproduite.** Trois balayages complets de l'artefact
+déployé, après coup, sur le même commit : `✓ clavier — premier arrêt = lien
+d'évitement (« Aller au contenu »)`, 0 échec les trois fois. Il faut donc dire
+les deux choses, et ne pas laisser la première tenir lieu de diagnostic :
+
+- **Ce qui est établi** : la page d'accueil déployée a rendu, une fois, le repli
+  anglais de Next. Une exception cliente non rattrapée y arrive donc bel et
+  bien, et le produit n'avait RIEN à opposer.
+- **Ce qui ne l'est pas** : sa cause. L'hypothèse la plus économique est un
+  morceau de JavaScript perdu en vol — le relais de ce conteneur rend des 502
+  transitoires sur des ressources parfaitement saines, mesuré le jour même sur
+  une police —, ce qui fait échouer l'hydratation, bascule la racine en rendu
+  client, et casse tout si le morceau manquant est nécessaire. C'est une
+  hypothèse, elle n'est pas rejouée, et elle est écrite comme telle (ADR 0036
+  §7 : un diagnostic non rejoué est une rumeur).
+
+**La frontière d'erreur, elle, ne dépend pas de ce diagnostic.** Qu'une
+exception vienne d'un morceau perdu, d'un défaut de code ou d'un navigateur
+exotique, ce qu'un élève lit alors ne doit pas être une phrase anglaise qui le
+renvoie à la console.
+
+**Deux frontières écrites**, dans la voix du produit (celle de
+`VeilleHydratation` : calme, à la deuxième personne, une action possible) :
+
+- `src/app/error.tsx` — « Cette page s'est interrompue », « Réessayer »,
+  « Recharger la page », « Revenir à l'accueil ». Le cartouche reprend
+  exactement le balisage de `not-found.tsx`, classes comprises.
+- `src/app/global-error.tsx` — le dernier filet, qui rend son propre `<html>` :
+  styles EN LIGNE uniquement, avec un bloc `prefers-color-scheme`, parce qu'à
+  cet étage la feuille de style du site peut ne pas s'être appliquée.
+
+**Deux pièges payés en les vérifiant**, tous deux écrits dans la route d'essai
+avant de la supprimer :
+
+1. Un dossier commençant par `_` est **privé** pour le routeur de Next : il ne
+   devient pas une route. J'ai obtenu une 404 en croyant éprouver la frontière.
+2. Une page qui lève **à chaque rendu** casse la CONSTRUCTION, puisqu'elle est
+   pré-rendue. Pour éprouver la frontière CLIENT, il faut ne lever que dans le
+   navigateur.
+
+Vérifié dans les deux thèmes à 390 px : titre français, message rassurant,
+« Réessayer » à 48 px, 0 px de débordement, plus aucune phrase anglaise. La
+route d'essai a été supprimée et le build refait sans elle.
+
+## §11.149 — Un désaccord d'hydratation éteint le thème et rapetisse le texte
+
+C'est §11.148 qui l'a montré, et ce n'était pas ce que je cherchais. En
+comparant la classe de `<html>` avant et après hydratation sur la route
+d'essai, en contexte sombre :
+
+```
+  /                        après hydratation : class="… dark"   fond=rgb(17, 16, 15)
+  /essai-erreur-temporaire après hydratation : class="…"        fond=rgb(247, 247, 244)
+```
+
+La page d'erreur perdait le thème. En cherchant pourquoi, le fait s'est avéré
+**bien plus large que la page d'erreur** — et il n'a rien à voir avec les
+erreurs.
+
+**Le mécanisme.** Les deux réglages d'affichage vivent sur `<html>` : la classe
+`.dark` et la variable `--font-scale`. Les deux sont posés avant la peinture par
+le script en ligne `THEME_BOOT` du layout, et **par personne d'autre** :
+`ThemeToggle` et `FontSizeStepper` ne font que LIRE l'état au montage, puis
+l'écrire quand l'élève clique. Or `<html>` est rendu par React, et le serveur le
+rend toujours SANS la classe et SANS la variable. Tant que l'hydratation
+réussit, React n'y touche pas. Dès qu'elle échoue, React abandonne le HTML du
+serveur, refait un rendu client complet, et réapplique les attributs de `<html>`
+tels que le layout les déclare. Les deux préférences tombent.
+
+**Mesuré** (thème sombre émulé, `bac-textsize=large`) :
+
+| route                              | `dark` | `--font-scale` |
+|---|---|---|
+| `/` (hydratation normale)          | oui    | 1.125 |
+| route à **désaccord** d'hydratation | NON   | (vide) |
+| route qui lève (`error.tsx`)       | NON    | (vide) |
+
+La ligne du milieu est celle qui compte : **un désaccord d'hydratation
+n'affiche aucune erreur.** La page marche. Elle repasse simplement en clair, et
+le texte agrandi redevient petit — le réglage même dont dépendent les élèves qui
+voient mal, perdu sans que rien ne le dise.
+
+**Le correctif** : `web/src/components/ui/GardePreferences.tsx`, monté en tête
+du `<body>`. Il ne rend rien. Au montage — donc aussi après un rendu de secours,
+puisque tout l'arbre remonte — il relit la source de vérité (localStorage, à
+défaut la préférence système pour le thème) et remet la classe et la variable si
+le DOM en a divergé. Il n'écrit jamais dans localStorage : il n'est pas un choix
+de l'élève, seulement la mémoire de ce que l'élève a déjà choisi. Il est monté
+AVANT l'en-tête pour que son effet parte avant ceux de `ThemeToggle` et
+`FontSizeStepper`, qui lisent le DOM au montage — leurs icônes ne mentent donc
+pas.
+
+**La porte** : `web/scripts/preferences-secours.mjs`, en CI. Elle provoque le
+vrai chemin **sans aucune route d'essai dans le produit** — elle intercepte le
+HTML servi d'une vraie page et y change un texte que React compare à sa charge
+RSC.
+
+Rouge et vert par la même commande :
+
+```
+node scripts/preferences-secours.mjs https://bac-pink.vercel.app   → ROUGE (les deux axes)
+node scripts/preferences-secours.mjs                               → VERTE
+node scripts/preferences-secours.mjs --essai-rouge                 → doit CRIER
+```
+
+**Quatre bancs d'essai payés en l'écrivant, et ils disent tous la même chose :**
+
+1. **La porte est revenue MUETTE à son premier passage** — et elle avait
+   raison. Elle n'écoutait que la console et l'anglais (« did not match the
+   server-rendered HTML »), alors qu'un build de PRODUCTION — le seul qu'elle
+   mesure — LÈVE le désaccord, minifié et sans texte : « Minified React error
+   #418 ». Sans le verdict MUET, elle serait sortie **verte sans avoir rien
+   mesuré**. C'est l'ADR 0034 qui gagne sa place : une porte doit pouvoir dire
+   « je n'ai rien éprouvé ».
+2. **Mon second témoin était muet lui aussi.** Un observateur de mutations posé
+   sur `document.documentElement` depuis un script d'initialisation annonçait
+   « 0 réécriture de class » sur une page où la classe changeait cinq fois : à
+   cet instant `<html>` n'existe pas encore, `observe(null)` lève, et personne
+   ne lit cette erreur. Un témoin muet affiché à côté d'un verdict vert est pire
+   que pas de témoin.
+3. **Le premier essai rouge criait par la mauvaise branche.** Il neutralisait
+   les deux clés de stockage et mettait le système en clair : la porte criait,
+   mais par le TÉMOIN — le sabotage cassait aussi le chargement normal. Vert
+   sur rouge, en ayant prouvé autre chose que ce qu'il annonce : une porte
+   exacte sur une question voisine (ADR 0033). Le sabotage retenu est minimal —
+   une seule clé renommée, système en sombre — et le mode `--essai-rouge` exige
+   désormais que le témoin soit resté intact, faute de quoi il sort
+   « INCONCLUANT ».
+4. **Un serveur de cinq heures répondait encore.** Mes `kill` tuaient
+   l'enveloppeur `npm`, pas le serveur : trois `next-server` orphelins
+   traînaient, et l'un d'eux servait un build d'avant sur le port que je croyais
+   frais. Une route pourtant présente dans le manifeste et sur le disque
+   revenait 404, et j'ai commencé à chercher un middleware fautif. La mesure
+   accusait le produit d'un défaut qui était le mien. La porte lève et tue
+   maintenant son propre serveur **par son groupe** (`-pid`), et toute mesure
+   contre un serveur local commence par prouver que c'est le bon build qui
+   répond.
+
+Stabilité (ADR 0036 §9) : trois passages verts identiques, trois essais rouges
+identiques, puis trois passages verts de plus après suppression des routes
+d'essai et reconstruction.
+
+**Ce qui n'est PAS armé, et c'est écrit plutôt que taire** : la porte ne mesure
+qu'une page et un seul déclencheur de secours. Elle ne dit pas combien de
+désaccords d'hydratation le produit porte réellement — seulement ce qui arrive
+quand il y en a un.

@@ -255,6 +255,65 @@ for (const route of ["/", "/notions/pc/rlc-serie", "/commencer", "/notions/philo
   } finally { await ep.close(); }
 }
 
+//  9. LE CLAVIER SEUL (§11.148) — du premier Tab à une réponse.
+//     Le clavier des ÉPREUVES est mesuré depuis §11.39–40 ; celui des LEÇONS
+//     ne l'était pas. Un élève qui n'utilise pas la souris doit pouvoir
+//     atteindre l'action du jour, ouvrir la leçon, atteindre un choix et
+//     répondre.
+{
+  const kb = await b.newPage({ viewport: { width: 1280, height: 900 } });
+  try {
+    await kb.goto(BASE + "/", { waitUntil: "networkidle", timeout: 40000 });
+    await kb.evaluate(() => document.body.focus());
+    let premier = null, versLecon = -1;
+    for (let i = 1; i <= 25; i++) {
+      await kb.keyboard.press("Tab");
+      const d = await kb.evaluate(() => ({
+        txt: (document.activeElement?.getAttribute("aria-label") || document.activeElement?.innerText || "").replace(/\s+/g, " ").trim().slice(0, 30),
+        href: document.activeElement?.getAttribute("href") ?? "",
+      }));
+      if (i === 1) premier = d.txt;
+      if (d.href.startsWith("/notions/")) { versLecon = i; break; }
+    }
+    //  WCAG 2.4.1 : le lien d'évitement doit être le PREMIER arrêt.
+    dit(/Aller au contenu|Passer au contenu|skip/i.test(premier ?? ""), `clavier — premier arrêt = lien d'évitement (« ${premier} »)`);
+    dit(versLecon > 0 && versLecon <= 12, `clavier — l'action du jour est atteinte en ${versLecon > 0 ? versLecon : ">25"} tabulations`);
+    //  WCAG 2.4.7 : l'anneau de focus doit être visible.
+    const anneau = await kb.evaluate(() => {
+      const cs = getComputedStyle(document.activeElement);
+      return { style: cs.outlineStyle, largeur: parseFloat(cs.outlineWidth) || 0 };
+    });
+    dit(anneau.style !== "none" && anneau.largeur >= 1, `clavier — anneau de focus visible (${anneau.style} ${anneau.largeur}px)`);
+    if (versLecon > 0) {
+      await Promise.all([kb.waitForURL(/\/notions\//, { timeout: 20000 }), kb.keyboard.press("Enter")]);
+      await kb.waitForLoadState("networkidle", { timeout: 40000 });
+      dit(true, `clavier — Entrée navigue vers ${kb.url().replace(BASE, "")}`);
+      //  Atteindre un CHOIX, pas seulement « quelque chose dans l'item » :
+      //  le paragraphe d'énoncé est défilant, donc focalisable — et il DOIT
+      //  l'être, sinon on ne peut pas le faire défiler au clavier. Mon
+      //  premier jet s'est arrêté sur lui et a conclu que « Entrée ne
+      //  répond pas ».
+      let n = 0, atteint = false;
+      for (let i = 0; i < 160; i++) {
+        await kb.keyboard.press("Tab"); n++;
+        atteint = await kb.evaluate(() => !!document.activeElement?.closest("[data-item-id]") && !!document.activeElement?.closest("ul[role=list]"));
+        if (atteint) break;
+      }
+      dit(atteint, `clavier — un CHOIX est atteint après ${n} tabulations`);
+      if (atteint) {
+        const h = await kb.evaluateHandle(() => document.activeElement.closest("[data-item-id]"));
+        const avant = (await h.evaluate((e) => e.innerText)).length;
+        await kb.keyboard.press("Enter");
+        await kb.waitForTimeout(800);
+        const apres = (await h.evaluate((e) => e.innerText)).length;
+        dit(apres > avant, `clavier — Entrée répond : +${apres - avant} caractères de retour`);
+      }
+    }
+  } catch (e) {
+    dit(false, `clavier — interrompu : ${String(e.message).split("\n")[0].slice(0, 80)}`);
+  } finally { await kb.close(); }
+}
+
 //  8. LA CONFRONTATION D'UNE MISCONCEPTION (§11.147) — la promesse centrale.
 //     Répondre JUSTE est vérifié plus haut. Ce qui fait le tuteur, c'est ce
 //     que lit celui qui se TROMPE : l'erreur nommée, sa cause expliquée, et
