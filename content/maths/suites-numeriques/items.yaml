@@ -414,7 +414,8 @@ items:
         text: "Non : $(u_n)$ et $(v_n)$ ne convergent même pas — elles tendent toutes les deux vers $+\\infty$ — donc elles ne peuvent pas être adjacentes malgré un écart qui tend vers 0."
         correct: true
       - id: C
-        text: "Oui, car $(u_n)$ est croissante et $(v_n)$ est décroissante, ce qui suffit à établir l'adjacence dès lors que leur écart tend vers zéro."
+        text: "Oui, car $(u_n)$ est croissante et $(v_n)$ est décroissante, ce qui suffit à établir l'adjacence dès lors que leur écart tend vers zéro.
+        L'ordre relatif des deux suites n'entrerait donc pas dans la définition."
         correct: false
         misconception: mc.math.sma_suites_numeriques.adjacentes-condition-incomplete
         feedback: >
@@ -661,7 +662,8 @@ items:
           sur une initialisation absente, mais sur la façon dont l'hérédité
           elle-même est formulée — un raisonnement circulaire.
       - id: C
-        text: "Il faudrait vérifier l'hérédité séparément pour chaque valeur de $n$, et non une fois pour toutes, faute de quoi la démonstration laisse des rangs non couverts."
+        text: "Il faudrait vérifier l'hérédité séparément pour chaque valeur de $n$, et non une fois pour toutes, faute de quoi la démonstration laisse des rangs non couverts.
+        Une récurrence exigerait donc une infinité de vérifications distinctes."
         correct: false
         misconception: mc.math.sma_suites_numeriques.recurrence-etape-manquante
         feedback: >
@@ -960,7 +962,8 @@ items:
           » ne dit rien sur le fait que 10 soit LE plus petit majorant — il
           pourrait très bien y avoir un majorant plus serré, ou pas.
       - id: C
-        text: "C'est incorrect : $10$ ne peut pas être un majorant de cette suite, car un majorant doit toujours être atteint par au moins un terme de la suite qu'il majore."
+        text: "C'est incorrect : $10$ ne peut pas être un majorant de cette suite, car un majorant doit toujours être atteint par au moins un terme de la suite qu'il majore.
+        Une suite strictement croissante et bornée n'aurait donc aucun majorant."
         correct: false
         misconception: mc.math.sma_suites_numeriques.majorant-atteint-ou-limite
         feedback: >
@@ -1031,7 +1034,8 @@ items:
           dépasser. La monotonie et la majoration sont deux propriétés
           indépendantes qu'il faut établir séparément.
       - id: D
-        text: "Non, car il faudrait calculer une infinité de termes pour en être sûr, ce qui est impossible — la propriété ne peut donc jamais être démontrée pour tout $n$."
+        text: "Non, car il faudrait calculer une infinité de termes pour en être sûr, ce qui est impossible — la propriété ne peut donc jamais être démontrée pour tout $n$.
+        Aucun énoncé portant sur tous les rangs ne serait donc démontrable."
         correct: false
         misconception: mc.math.sma_suites_numeriques.preuve-par-termes-calcules
         feedback: >
@@ -1093,7 +1097,8 @@ items:
         text: "La conclusion n'est pas justifiée : observer une tendance sur quelques termes n'est pas une preuve pour tous les rangs. Il faut étudier le signe de $u_{n+1}-u_n$ de façon générale, valable pour tout $n$."
         correct: true
       - id: D
-        text: "La conclusion n'est pas justifiée, car il faudrait au contraire commencer par vérifier que la suite est bornée avant de pouvoir parler de sa monotonie sur l'ensemble des rangs."
+        text: "La conclusion n'est pas justifiée, car il faudrait au contraire commencer par vérifier que la suite est bornée avant de pouvoir parler de sa monotonie sur l'ensemble des rangs.
+        Le sens de variation dépendrait donc de l'existence d'une borne."
         correct: false
         misconception: mc.math.sma_suites_numeriques.preuve-par-termes-calcules
         feedback: >
@@ -1150,7 +1155,8 @@ items:
           géométrique de raison $0{,}5$, et pourtant elle est croissante,
           pas décroissante.
       - id: D
-        text: "L'affirmation n'est pas justifiée, car un quotient ne peut jamais servir à étudier la monotonie d'une suite ; seule la différence $u_{n+1}-u_n$ le permet réellement."
+        text: "L'affirmation n'est pas justifiée, car un quotient ne peut jamais servir à étudier la monotonie d'une suite ; seule la différence $u_{n+1}-u_n$ le permet réellement.
+        Une suite à termes strictement positifs ne s'étudierait donc que par différence."
         correct: false
         misconception: mc.math.sma_suites_numeriques.quotient-monotonie-sans-positivite
         feedback: >
@@ -1207,7 +1213,8 @@ items:
           l'intervalle $x>20$ (d'après le chapitre 2), pas $x<20$. Sur $x>20$, c'est
           l'inverse : $f(x)-x<0$, donc la suite est décroissante.
       - id: C
-        text: "Non, car la méthode consistant à étudier $f(x)-x$ ne s'applique jamais aux suites récurrentes de la forme $u_{n+1}=f(u_n)$ ; seule la différence $u_{n+1}-u_n$ calculée directement est valable."
+        text: "Non, car la méthode consistant à étudier $f(x)-x$ ne s'applique jamais aux suites récurrentes de la forme $u_{n+1}=f(u_n)$ ; seule la différence $u_{n+1}-u_n$ calculée directement est valable.
+        Le point fixe serait donc sans rapport avec le sens de variation."
         correct: false
         misconception: mc.math.sma_suites_numeriques.signe-fx-mauvais-domaine
         feedback: >
@@ -1261,7 +1268,8 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "L'affirmation est correcte : une forme $+\\infty+(-\\infty)$ n'a jamais de limite déterminable, quel que soit l'exemple choisi et quelles que soient les suites en jeu."
+        text: "L'affirmation est correcte : une forme $+\\infty+(-\\infty)$ n'a jamais de limite déterminable, quel que soit l'exemple choisi et quelles que soient les suites en jeu.
+        Aucune indétermination ne pourrait donc être levée par un calcul."
         correct: false
         misconception: mc.math.sma_suites_numeriques.forme-indeterminee-mal-geree
         feedback: >
@@ -1399,7 +1407,8 @@ items:
           de comparaison, avec seulement $u_n\geq v_n$ et $v_n\to+\infty$,
           suffit déjà à conclure directement que $u_n\to+\infty$.
       - id: D
-        text: "La conclusion est correcte, car une suite plus grande qu'une suite qui tend vers $+\\infty$ finit toujours par se stabiliser à une valeur finie."
+        text: "La conclusion est correcte, car une suite plus grande qu'une suite qui tend vers $+\\infty$ finit toujours par se stabiliser à une valeur finie.
+        Le théorème de comparaison conclurait donc à la convergence, jamais à la divergence."
         correct: false
         misconception: mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique
         feedback: >
@@ -1463,7 +1472,8 @@ items:
           La vraie condition manquante ici est l'absence d'une deuxième
           borne (une minoration) qui convergerait aussi vers 0.
       - id: D
-        text: "La conclusion est correcte, car toute suite majorée par une suite convergente est automatiquement convergente, et vers la même limite que celle qui la majore."
+        text: "La conclusion est correcte, car toute suite majorée par une suite convergente est automatiquement convergente, et vers la même limite que celle qui la majore.
+        Une suite majorée mais oscillante convergerait donc elle aussi."
         correct: false
         misconception: mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique
         feedback: >
@@ -1581,7 +1591,8 @@ items:
           tightness du minorant ne détermine pas la valeur de la limite par
           principe.
       - id: C
-        text: "C'est incorrect : une suite décroissante et minorée ne converge pas forcément, il faudrait en plus qu'elle soit majorée pour que le théorème s'applique."
+        text: "C'est incorrect : une suite décroissante et minorée ne converge pas forcément, il faudrait en plus qu'elle soit majorée pour que le théorème s'applique.
+        Le théorème de la limite monotone exigerait donc les deux bornes à la fois."
         correct: false
         misconception: mc.math.sma_suites_numeriques.monotone-hypothese-partielle
         feedback: >
@@ -1642,7 +1653,8 @@ items:
           se stabiliser — elle ne converge pas du tout. Bornée ne suffit
           jamais à garantir la convergence, sans la monotonie.
       - id: D
-        text: "Non, car il faudrait d'abord démontrer que la suite est arithmétique ou géométrique avant de pouvoir utiliser le moindre théorème de convergence à son sujet."
+        text: "Non, car il faudrait d'abord démontrer que la suite est arithmétique ou géométrique avant de pouvoir utiliser le moindre théorème de convergence à son sujet.
+        Aucune suite définie par récurrence ne serait donc justiciable d'un théorème."
         correct: false
         misconception: mc.math.sma_suites_numeriques.monotone-hypothese-partielle
         feedback: >
@@ -1707,7 +1719,8 @@ items:
           fait de croire que trouver un point fixe suffit à prouver la
           convergence.
       - id: D
-        text: "C'est correct, car dès qu'une fonction $f$ admet un point fixe, la suite définie par $u_{n+1}=f(u_n)$ converge automatiquement vers ce point fixe, quelle que soit la fonction considérée."
+        text: "C'est correct, car dès qu'une fonction $f$ admet un point fixe, la suite définie par $u_{n+1}=f(u_n)$ converge automatiquement vers ce point fixe, quelle que soit la fonction considérée.
+        Le choix du premier terme n'aurait donc aucune influence sur la limite."
         correct: false
         misconception: mc.math.sma_suites_numeriques.point-fixe-prouve-convergence
         feedback: >
@@ -1778,7 +1791,8 @@ items:
           Poser $v_n=u_n+10$ ne ferait PAS apparaître de raison constante en
           poursuivant le calcul.
       - id: D
-        text: "L'erreur est que la suite $(v_n)$ ne peut pas être géométrique ici, puisque la suite $(u_n)$ dont elle est issue n'est elle-même ni arithmétique ni géométrique."
+        text: "L'erreur est que la suite $(v_n)$ ne peut pas être géométrique ici, puisque la suite $(u_n)$ dont elle est issue n'est elle-même ni arithmétique ni géométrique.
+        Une suite auxiliaire hériterait donc toujours de la nature de sa suite source."
         correct: false
         misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
         feedback: >
@@ -1825,7 +1839,8 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Oui : l'écart tend vers $0$ et les deux suites convergent vers la même limite, ce qui est exactement ce que demande la définition des suites adjacentes."
+        text: "Oui : l'écart tend vers $0$ et les deux suites convergent vers la même limite, ce qui est exactement ce que demande la définition des suites adjacentes.
+        La monotonie des deux suites serait donc superflue dans la définition."
         correct: false
         misconception: mc.math.sma_suites_numeriques.adjacentes-condition-incomplete
         feedback: >
@@ -1910,7 +1925,8 @@ items:
           rang — pas besoin de calculer tous les termes pour en tirer un
           encadrement de $L$, seulement pour en connaître la valeur exacte.
       - id: D
-        text: "C'est correct, car pour deux suites adjacentes la quantité $(u_n+v_n)/2$ est constante et vaut exactement $L$ à chaque rang, ce qui donne la limite d'un coup."
+        text: "C'est correct, car pour deux suites adjacentes la quantité $(u_n+v_n)/2$ est constante et vaut exactement $L$ à chaque rang, ce qui donne la limite d'un coup.
+        La moyenne des deux suites serait donc stationnaire dès le premier rang."
         correct: false
         misconception: mc.math.sma_suites_numeriques.adjacentes-condition-incomplete
         feedback: >
@@ -2108,7 +2124,8 @@ items:
           — c'est ce terme qui DISPARAÎT, pas celui qui domine. Il ne reste
           donc que la constante $15$.
       - id: D
-        text: "La suite n'a pas de limite unique, car deux méthodes différentes (théorème de la limite monotone et formule explicite) donneraient a priori deux résultats potentiellement différents."
+        text: "La suite n'a pas de limite unique, car deux méthodes différentes (théorème de la limite monotone et formule explicite) donneraient a priori deux résultats potentiellement différents.
+        Une même suite pourrait donc admettre deux limites selon la méthode employée."
         correct: false
         misconception: mc.math.sma_suites_numeriques.monotone-hypothese-partielle
         feedback: >

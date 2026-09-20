@@ -8375,3 +8375,50 @@ familles sont à marge nulle, et certains distracteurs sont porteurs uniques :
 les allonger est permis, les remplacer casse le plancher).
 
 Le cliquet empêche désormais que ça EMPIRE. Il ne répare rien.
+
+### Suite immédiate — la dette est payée, le 2026-09-20
+
+Seize notions étaient au-dessus de 50 %. **Il n'en reste aucune.**
+
+| | avant | après |
+|---|---|---|
+| notions > 50 % | **16** | **0** |
+| notions au-dessus du hasard (25 %) | 42 | 31 |
+| taux brut du corpus | 34 % | 26 % |
+| pire notion | 79 % | 50 % |
+| médiane PC | 45 % | 36 % |
+| médiane SVT | 50 % | 33 % |
+| indice EXPLOITABLE | 0/1804 | 0/1804 |
+
+**203 distracteurs rallongés, aucune clé raccourcie.** Chaque ajout pousse le
+modèle faux jusqu'à une conséquence elle-même fausse — « un catalyseur, en
+accélérant la réaction, changerait donc son sens », « une récurrence exigerait
+donc une infinité de vérifications distinctes », « la superstructure
+déterminerait donc l'infrastructure ». Un distracteur qui déroule sa propre
+conséquence est un meilleur diagnostic ; le tell disparaît par surcroît.
+
+**Trois règles de méthode, vérifiées et à garder :**
+
+1. **Ne rallonger QUE le distracteur deuxième plus long**, celui qui talonne la
+   clé. Les deux autres restent en dessous d'elle, donc elle ne peut pas devenir
+   la plus COURTE. Contrôlé sur les douze notions traitées : l'indice INVERSE
+   est inchangé partout (0→0, 11→11, 19→19, 25→25, 27→27, 12→12). Rallonger les
+   trois distracteurs, ou le plus court, produirait le défaut miroir.
+2. **S'arrêter à 15 caractères d'avance.** En dessous, la clé mène de 0 à 12 %
+   de sa longueur : imperceptible. Égaliser ferait descendre un chiffre sans
+   rien changer pour l'élève, et c'est le bruit contre lequel l'en-tête de
+   l'instrument met en garde. `pc/suivi-temporel-vitesse` reste donc à 50 %,
+   avec un écart médian de 12 caractères, et c'est dit plutôt que maquillé.
+3. **Localiser le choix par son identifiant, jamais par son texte.** Le pli YAML
+   casse tout appariement littéral, et YAML dé-échappe les antislashs, si bien
+   que le texte ANALYSÉ porte `\ll` là où le fichier BRUT porte `\\ll`. Deux
+   passes ont échoué sur assertion — sans rien écrire, l'appariement étant
+   tout-ou-rien — avant que l'outil relise le texte complet depuis le YAML
+   analysé et construise son motif avec `\s+` entre les mots et un ou deux
+   antislashs partout.
+
+**Ce qui reste :** trente et une notions au-dessus du hasard, aucune au-dessus
+de 50 %, et une dette propre repérée au passage —
+`svt/dysfonctionnements-immunitaires` porte un indice INVERSE de 27 %, antérieur
+à cette passe. Le corriger demande de rallonger la CLÉ, opération inverse de
+celle-ci : à ne pas mélanger dans le même geste.
