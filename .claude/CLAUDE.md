@@ -72,7 +72,7 @@ Read the right document for the task at hand:
   hydration:** a server-rendered command is `disabled` + `aria-busy` until
   React takes over (`useHydrated`), the page says so once, calmly, and
   `dom-truth` reads the SERVED HTML to keep it true.
-- ****ADR 0033 (2026-09-20) — la porte exacte sur une
+  **ADR 0033 (2026-09-20) — la porte exacte sur une
   AUTRE question :** une porte verte peut ne rien garantir de trois façons —
   elle ne scanne rien (morte), son motif ne reconnaît plus le défaut
   (aveugle), ou **elle répond exactement à une question plus étroite que son
@@ -82,7 +82,7 @@ Read the right document for the task at hand:
   MARGE le prouve.* Deux instruments complémentaires (`portee-portes`,
   `essai-rouge`), et la règle « quand une règle est reprise trois fois, c'est
   le geste qu'il faut outiller, pas la note qu'il faut réécrire ».
-- `docs/HANDOFF.md`** — *start here after the July-2026 sprint.* The
+- **`docs/HANDOFF.md`** — *start here after the July-2026 sprint.* The
   open-gates list (owner decisions pending), the external-audit triage,
   and the "how not to regress this" invariants — written as the sprint's
   last act for the next maintainer.
