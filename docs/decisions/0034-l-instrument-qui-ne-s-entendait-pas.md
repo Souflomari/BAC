@@ -99,8 +99,8 @@ donne.**
 
 Trois instruments mesuraient chacun UNE ficelle de QCM et rapportaient leur
 tranche. **Personne n'avait mesuré leur union** — alors qu'un élève ne choisit
-pas une ficelle, il les applique toutes. Mesuré : **36,4 % contre 25 % au
-hasard**, onze points gagnés sans rien savoir.
+pas une ficelle, il les applique toutes. Mesuré : **31,9 % contre 25 % au
+hasard**, sept points gagnés sans rien savoir.
 
 Et l'apport propre d'une porte d'union se mesure aussi : une seule casse
 (l'écho d'un mot du tronc, à longueur identique) la fait crier pendant que les

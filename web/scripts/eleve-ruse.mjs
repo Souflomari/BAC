@@ -104,6 +104,29 @@ const motsUtiles = (s) => {
 /** La longueur telle que l'élève la voit : le texte rendu, formules comprises. */
 const longueur = (c) => String(c?.text ?? "").length;
 
+/**
+ * LE SEUIL DE VISIBILITÉ, et pourquoi il a fallu l'ajouter (§11.107).
+ *
+ * La première version de ce script cochait « le plus long » au CARACTÈRE PRÈS.
+ * Un élève ne compte pas les caractères : il regarde. `indice-longueur` le sait
+ * depuis toujours et n'appelle « exploitable » qu'un écart d'au moins 20
+ * caractères ET d'au moins 20 % — parce que « +20 sur 400 ne se remarquent
+ * pas ».
+ *
+ * Les deux instruments se contredisaient donc sur ce qu'un élève SAIT FAIRE, et
+ * l'écart n'était pas mince : sur `pc/lois-de-newton`, la clé est strictement
+ * la plus longue 22 fois sur 38 (58 %) — mais `indice-longueur` y compte 0 %
+ * d'indice exploitable, parce qu'aucun de ces écarts ne se voit.
+ *
+ * Ce script adopte donc le MÊME critère. Quand l'écart ne se voit pas, l'élève
+ * ne tranche pas : il tire parmi les survivants. Le chiffre qui en sort est plus
+ * petit et il est le bon — les deux instruments répondent enfin à la même
+ * question.
+ */
+const ECART_MIN = 20;
+const AVANCE_MIN = 0.2;
+const seVoit = (premier, second) => premier - second >= ECART_MIN && premier - second >= second * AVANCE_MIN;
+
 // ── la stratégie ──
 
 /**
@@ -132,10 +155,20 @@ function esperance(item, iJuste, sens) {
     }
   }
 
-  // Cocher : le plus long (sens +1) ou le plus court (témoin −1).
+  // Cocher : le plus long (sens +1) ou le plus court (témoin −1) — mais
+  // SEULEMENT si l'écart se voit. Sinon l'élève n'a aucun signal et tire parmi
+  // les survivants.
   const tailles = vivants.map((i) => longueur(item.choices[i]));
-  const extreme = sens === 1 ? Math.max(...tailles) : Math.min(...tailles);
-  const finalistes = vivants.filter((i) => longueur(item.choices[i]) === extreme);
+  const tri = [...tailles].sort((a, b) => (sens === 1 ? b - a : a - b));
+  const extreme = tri[0];
+  const suivant = tri.find((t) => t !== extreme);
+  const tranche =
+    suivant === undefined
+      ? false
+      : sens === 1
+        ? seVoit(extreme, suivant)
+        : seVoit(suivant, extreme);
+  const finalistes = tranche ? vivants.filter((i) => longueur(item.choices[i]) === extreme) : vivants;
   return finalistes.includes(iJuste) ? 1 / finalistes.length : 0;
 }
 
@@ -219,19 +252,24 @@ if (ETAPES) {
   };
   console.log("── chaque ficelle SEULE (puis « cocher le plus long ») ──");
   console.log(`  ${"au hasard".padEnd(40)} ${pc(T.hasard, T.items)}`);
-  seule("le plus long, sans rien barrer", (it, j) => {
-    const t = it.choices.map(longueur);
-    const m = Math.max(...t);
-    const f = t.map((x, i) => (x === m ? i : -1)).filter((i) => i >= 0);
+  //  Ces sous-mesures emploient EXACTEMENT le même seuil de visibilité que la
+  //  mesure principale. Un instrument dont le tableau contredit son propre
+  //  total ne mesure rien de sûr — c'est le défaut qui a rendu ce seuil
+  //  nécessaire (§11.107), il n'est pas question de le rejouer à l'intérieur.
+  const cocheLePlusLong = (it, j, vivants) => {
+    const t = [...vivants.map((i) => longueur(it.choices[i]))].sort((a, b) => b - a);
+    const suivant = t.find((x) => x !== t[0]);
+    const f = suivant !== undefined && seVoit(t[0], suivant)
+      ? vivants.filter((i) => longueur(it.choices[i]) === t[0])
+      : vivants;
     return f.includes(j) ? 1 / f.length : 0;
-  });
+  };
+  seule("le plus long, sans rien barrer", (it, j) => cocheLePlusLong(it, j, it.choices.map((_, i) => i)));
   seule("+ barrer le refus", (it, j) => {
     let v = it.choices.map((_, i) => i);
     const r = v.filter((i) => !refuse(it.choices[i].text));
     if (r.length >= 1 && r.length < v.length) v = r;
-    const m = Math.max(...v.map((i) => longueur(it.choices[i])));
-    const f = v.filter((i) => longueur(it.choices[i]) === m);
-    return f.includes(j) ? 1 / f.length : 0;
+    return cocheLePlusLong(it, j, v);
   });
   console.log(`  ${"+ barrer l'absolu + le clang (total)".padEnd(40)} ${pc(T.ruse, T.items)}`);
   console.log();

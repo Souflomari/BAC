@@ -8770,11 +8770,17 @@ L'espérance est calculée exactement, jamais simulée.
 |---|---:|
 | items à clé unique, ≥3 choix | 1 974 |
 | au hasard | 25,0 % |
-| **avec les quatre ficelles** | **36,4 %** |
-| témoin (cocher le plus court) | 14,4 % |
+| **avec les quatre ficelles** | **31,9 %** |
+| témoin (cocher le plus court) | 21,5 % |
 
-**Onze points gagnés sans rien savoir. Sur 20, c'est 2,3 points qui
-n'appartiennent pas à l'élève.**
+**Sept points gagnés sans rien savoir. Sur 20, c'est 1,4 point qui n'appartient
+pas à l'élève.**
+
+**CES CHIFFRES ONT ÉTÉ CORRIGÉS À LA BAISSE — voir §11.107.** La première
+version de `eleve-ruse` cochait « le plus long » au CARACTÈRE PRÈS et annonçait
+36,4 %. Un élève ne compte pas les caractères : il regarde. Le seuil de
+visibilité de `indice-longueur` (≥ 20 caractères ET ≥ 20 %) a été adopté, et le
+chiffre est tombé à 31,9 %. Il est plus petit et il est le bon.
 
 **Le hasard n'est pas une convention, c'est un calcul.** La stratégie ne lit
 jamais `correct` : elle arrête un ensemble de finalistes F à partir des seuls
@@ -8796,9 +8802,9 @@ produit croit une misconception levée alors qu'elle est intacte, et cesse de la
 travailler. Le tell ne coûte pas quelques points sur un score — il aveugle
 l'instrument qui est la raison d'être du produit.
 
-Les notions les plus exploitables : `svt/granitisation-deformation` 60 %,
-`svt/chaines-de-montagnes` 58,8 %, `svt/liberation-energie-matiere-organique`
-55,9 %, `pc/suivi-temporel-vitesse` 54,3 %, `pc/decroissance-radioactive` 54,2 %.
+Les notions les plus exploitables, sur la base corrigée :
+`maths/structures-algebriques` 48 %, `philo/l-histoire` 44 %, `philo/l-etat`
+44 %, `svt/chaines-de-montagnes` 41 %, `pc/atome-mecanique-newton` 38 %.
 
 ### La quatrième porte, et ce qu'elle apporte VRAIMENT
 
@@ -8972,3 +8978,83 @@ essai qui passe VERTE se diagnostique avant qu'on « répare » une porte qui
 marche.
 
 **Batterie locale : 15 portes.**
+
+---
+
+## §11.107 — Deux instruments qui se contredisaient sur ce qu'un élève sait faire
+
+### Le désaccord
+
+`eleve-ruse` cochait « le plus long » **au caractère près**. `indice-longueur`
+n'appelle « exploitable » qu'un écart d'au moins **20 caractères ET 20 %**,
+parce que — c'est écrit dans son en-tête depuis le premier jour — *« +20 sur 400
+ne se remarquent pas »*.
+
+Les deux répondaient donc à des questions différentes sur la même chose, et
+l'écart n'était pas mince. Sur `pc/lois-de-newton` :
+
+- la clé est **strictement la plus longue 22 fois sur 38 (58 %)** ;
+- `indice-longueur` y compte **0 % d'indice exploitable**.
+
+Les deux sont exacts. Le premier décrit un élève qui compte les caractères ; le
+second, un élève qui regarde. **Le second est celui qui existe.**
+
+### La correction, et ce qu'elle renverse
+
+`eleve-ruse` adopte le seuil de `indice-longueur` : quand l'écart ne se voit
+pas, l'élève ne tranche pas — il tire parmi les survivants.
+
+| | avant | après |
+|---|---:|---:|
+| à la ficelle | 36,4 % | **31,9 %** |
+| témoin (le plus court) | 14,4 % | 21,5 % |
+| **« le plus long », seul** | **28,8 %** | **23,2 %** |
+
+**La dernière ligne renverse ce que j'avais conclu une heure plus tôt.** Sur la
+base au caractère près, la longueur paraissait la ficelle dominante
+(`pc/lois-de-newton` +35 points, `chute-mouvements-plans` +33). Sur la base
+visible, **cocher le plus long fait descendre SOUS le hasard — 23,2 %.**
+
+Ce n'est pas un détail de calibrage : **c'est la campagne §11.84 qui a marché.**
+Elle a rallongé 203 distracteurs, et le choix visiblement le plus long est
+désormais plus souvent un distracteur que la clé. L'élève qui applique la
+ficelle classique se trompe davantage qu'en tirant au sort.
+
+J'ai failli écrire l'inverse — « la campagne a optimisé la métrique, pas la
+propriété ». C'était faux, et ça l'était parce que mon instrument neuf
+contredisait l'ancien sans que je l'aie remarqué.
+
+### Ce qui reste, et c'est net
+
+Une fois la longueur remise à sa place, la ventilation par notion désigne un
+seul coupable :
+
+| notion | hasard | +longueur | +refus | +absolu | +clang | ce qui porte |
+|---|---:|---:|---:|---:|---:|---|
+| `maths/structures-algebriques` | 25 % | 31 % | 33 % | 45 % | 48 % | **absolu +12** |
+| `philo/l-histoire` | 25 % | 23 % | 23 % | 43 % | 44 % | **absolu +19** |
+| `philo/l-etat` | 25 % | 26 % | 26 % | 41 % | 44 % | **absolu +16** |
+| `svt/chaines-de-montagnes` | 25 % | 24 % | 24 % | 33 % | 41 % | absolu +9, clang +8 |
+| `pc/transformations-lentes-rapides` | 25 % | 17 % | 17 % | 37 % | 36 % | **absolu +21** |
+| `philo/le-devoir` | 25 % | 16 % | 16 % | 36 % | 36 % | **absolu +20** |
+
+**L'ABSOLU porte tout ce qui reste.** Barrer ce qui sur-affirme vaut de +9 à
++21 points selon la notion ; la longueur ne vaut plus rien, et le refus presque
+rien au SCORE (il est une élimination très fiable — 99 % — mais éliminer un
+choix sur quatre ne rapporte que quelques points).
+
+### La leçon, et elle est générale
+
+**Deux instruments qui mesurent le même objet doivent s'accorder sur le modèle
+d'agent.** Ici, l'un supposait un élève qui compte, l'autre un élève qui
+regarde. Tant qu'ils ne se parlaient pas, chacun avait raison tout seul — et
+leur désaccord ne se voyait nulle part, parce qu'aucun tableau ne les met côte
+à côte.
+
+Le corollaire mesuré plus tôt dans la journée — *« un pourcentage au-dessus du
+hasard ne prouve pas qu'il y ait quelque chose à exploiter ; c'est la MARGE qui
+le prouve »* — était juste, et c'est lui que `eleve-ruse` avait oublié.
+
+**La prochaine campagne est donc l'ABSOLU, pas la longueur.** Et elle a déjà son
+instrument (`indice-absolu`), son cliquet, et maintenant sa cible chiffrée
+notion par notion.
