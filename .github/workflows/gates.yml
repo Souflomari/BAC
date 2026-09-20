@@ -227,6 +227,22 @@ jobs:
           npm run desaccords-hydratation
           node scripts/desaccords-hydratation.mjs --essai-rouge
 
+      # PORTE MARGE D'ÉTIQUETTE (2026-09-20, §11.152). Les figures déclarent
+      # `font-family="'IBM Plex Sans', system-ui, sans-serif"` et IBM Plex Sans
+      # n'est chargée NULLE PART — ni dans l'image, ni par l'application. Chaque
+      # appareil retombe donc sur SA police, et une étiquette réglée au pixel
+      # près contre la substitution d'un seul moteur est un pari sur la police
+      # d'un inconnu : mesuré, +17 % de largeur sur la même chaîne entre deux
+      # moteurs, ce qui coupait « V (mL) » dans Firefox sur quatre figures.
+      # La porte mesure la MARGE de chaque étiquette en % de sa propre largeur —
+      # une grandeur indépendante du navigateur — et tient le compte sous 15 %.
+      # Cliquet à 30 sur 4 108 textes. Second passage : l'essai rouge.
+      - name: "Marge des étiquettes de figure (cliquet 30, puis essai rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run marge-etiquettes
+          node scripts/marge-etiquettes.mjs --essai-rouge
+
       # PORTE FIGURES (2026-09-04). figure-preview mesure sept classes de
       # défaut sur les 258 SVG statiques ; CINQ sont armées, et seulement
       # parce qu'elles sont propres dans les DEUX thèmes :

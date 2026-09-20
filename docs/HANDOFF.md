@@ -11732,3 +11732,98 @@ clavier, ni le lecteur d'écran ne sont rejoués dans les trois moteurs. Et
 l'instrument est **hors CI délibérément** : deux moteurs à télécharger et une
 installation apt pour WebKit — le coût est écrit à côté de ce qu'il garde,
 plutôt que laissé à deviner (ADR 0036 §8).
+
+## §11.152 — Les figures réglées contre une police que personne ne charge
+
+§11.151 venait d'ouvrir Firefox et WebKit. La première chose à y rejouer était
+celle qui dépend le plus de la fonte : **le corpus de figures**, 257 SVG réglés
+étiquette par étiquette contre les métriques de texte de Chromium. Un texte hors
+du `viewBox` est COUPÉ à l'affichage — l'élève lit « vitess » au lieu de
+« vitesse », ou perd une unité.
+
+**Mesuré : 5 figures ne débordent que dans Firefox.** Quatre portent la même
+étiquette d'axe.
+
+### Ce qui s'est passé quand j'ai ouvert le cas
+
+```
+  chromium : « V (mL) »  largeur 37,2u  bord droit 651,2  cadre 654   → 2,8u de marge
+  firefox  : « V (mL) »  largeur 43,4u  bord droit 655,9  cadre 654   → dehors
+```
+
+Firefox dessine la même chaîne **17 % plus large**. Et la raison n'est pas
+Gecko : les figures déclarent
+
+```
+font-family="'IBM Plex Sans', system-ui, sans-serif"
+```
+
+et **IBM Plex Sans n'est chargée nulle part** — ni dans ce conteneur, ni par
+l'application, dont le layout ne charge que Geist et la serif de lecture. Chaque
+moteur, sur chaque appareil, retombe donc sur une police différente : celle du
+système de l'élève. **Le défaut n'est pas « Firefox ». Le défaut est une
+étiquette réglée au pixel près contre la substitution d'un seul moteur** — un
+pari sur la police d'un inconnu.
+
+### La grandeur qui décide
+
+Ce n'est pas le nom du navigateur, c'est la **marge en pourcentage de la largeur
+du texte**. 8 % de marge veut dire qu'une police 8 % plus large coupe
+l'étiquette. `marge-etiquettes.mjs` la mesure sur les 4 108 textes du corpus, en
+tenant compte de l'ancre (un texte ancré à gauche grandit à droite ; centré, des
+deux côtés).
+
+**34 étiquettes sous 15 %**, dont deux déjà hors cadre à la marge d'un pixel
+près. `V (mL)` était à 7,5 %.
+
+### Corrigé, et vérifié
+
+Les quatre `V (mL)` passent de x=614 à x=604 — 12,8u de marge au lieu de 2,8,
+soit 34 % de la largeur. Le voisin le plus proche est une graduation « 25 » à
+douze unités plus bas, sur une autre ligne de base : aucun contact.
+
+```
+  avant : chromium 0 · firefox 5 · webkit 0
+  après : chromium 0 · firefox 1 · webkit 0
+```
+
+Le survivant est `loi-mailles-build.svg`, la dette owner déjà consignée (son
+étiquette « uC » est à **−10,6 %**, la pire du corpus). Il reste tel quel : cette
+figure attend un arbitrage, et la corriger au passage effacerait la question.
+
+`figure-preview` sur les quatre figures modifiées rapporte les deux mêmes
+signalements « barre » qu'AVANT la modification — vérifié en le relançant sur la
+version d'origine tirée de `git show`, pas en le supposant. La classe « barre »
+n'est pas armée, et ces deux-là ne sont pas de moi.
+
+### Le piège, encore le même
+
+Premier jet de la sonde à trois moteurs : `getBBox()` brut, marge 0,5 px, et le
+bord HAUT contrôlé en plus. Verdict : « 3 figures débordent dans les trois
+moteurs » — alors que la CI annonce 0 sur le même corpus. Ce n'était pas une
+découverte, c'était un **désaccord d'instrument**, et c'est le mien qui avait
+tort :
+
+- `getBBox()` rend la boîte dans le repère PROPRE de l'élément ; un texte dans un
+  `<g transform="…">` est alors comparé à un cadre qui n'est pas le sien (sept
+  figures du corpus portent un transform et du texte) ;
+- la porte armée tolère 1 px, pas 0,5 ;
+- la porte armée ne contrôle pas le bord haut.
+
+`boiteRacine` a été repris **mot pour mot** de `figure-preview.mjs`. Chromium
+est alors retombé à 0, d'accord avec la CI — et c'est cet accord qui rend les 5
+de Firefox croyables. **Comparer deux moteurs n'a de sens que si la question
+posée est identique, y compris identique à celle que la CI garde.**
+
+### Armé
+
+`marge-etiquettes` est en CI (elle ne demande que Chromium), cliquet à 30, suivie
+de son essai rouge — une étiquette collée au bord injectée dans une figure, que
+la sonde doit voir, et elle seule. `figures-trois-moteurs` reste hors CI, comme
+`trois-moteurs`, pour la même raison écrite au même endroit.
+
+**Ce que la porte ne dit pas** : le seuil de 15 % vient d'un écart mesuré entre
+deux moteurs de ce conteneur, pas d'un inventaire des polices des téléphones
+marocains. Et elle ne dit pas si une étiquette coupée serait GRAVE — « V (mL) »
+amputé de sa parenthèse se devine ; un chiffre, non. Les 30 restantes sont donc
+un fait posé pour le propriétaire, pas une dette que j'ai décidé seul de solder.

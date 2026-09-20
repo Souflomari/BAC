@@ -115,6 +115,12 @@ const HORS_CHAMP = new Set([
   // laissé à deviner (§11.151). Les commandes d'installation sont dans son
   // en-tête ; son rouge se rejoue par `--essai-rouge`.
   "trois-moteurs.mjs",
+  // marge-etiquettes ne demande que Chromium — il est donc en CI, contrairement
+  // à trois-moteurs. Hors champ ICI seulement parce que la batterie locale
+  // tourne sans navigateur (§11.152).
+  "marge-etiquettes.mjs",
+  // figures-trois-moteurs : même raison que trois-moteurs (firefox + webkit).
+  "figures-trois-moteurs.mjs",
 ]);
 
 function dossiersNotions() {
