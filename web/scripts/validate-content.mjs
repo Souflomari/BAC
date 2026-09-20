@@ -2497,7 +2497,19 @@ for (const dir of dirs) {
       //  de paragraphe — « chapitres 3 et 4 ont présenté… ». Les deux premières
       //  formes cherchaient une capitale de trop ; celle-ci est une capitale qui
       //  manque, et aucune des deux ne pouvait la voir.
-      [/(?:^|\n\n)\s*chapitres?\s+\d/g, "une minuscule en ouverture de phrase (« chapitres 3 et 4 ont… » au lieu de « Les chapitres 3 et 4 »)"],
+      //
+      //  ELLE ÉTAIT ARMÉE ET AVEUGLE (§11.105, 2026-09-20). Son ancre est
+      //  `\n\n` — une ouverture de paragraphe. Or la ligne juste en dessous
+      //  APLATIT le texte avec `/\n\s+/g` avant de chercher, et `\n` est un
+      //  caractère d'espacement : l'aplatissement mangeait donc l'ancre même du
+      //  motif. Prouvé : « ligne.\n\nchapitres 3 et 4 » donne 1 occurrence sur
+      //  le texte brut et 0 sur le texte aplati. La forme trouvée par une
+      //  critique a été gardée par une porte qui ne pouvait pas la voir.
+      //
+      //  D'où le drapeau `brut` : les deux premières formes TRAVERSENT un pli et
+      //  ont besoin du texte aplati ; celle-ci ancre sur une fin de ligne et a
+      //  besoin du texte intact. Aucun texte unique ne convient aux deux.
+      [/(?:^|\n\n)[ \t]*chapitres?\s+\d/g, "une minuscule en ouverture de phrase (« chapitres 3 et 4 ont… » au lieu de « Les chapitres 3 et 4 »)", "brut"],
       //  RESSERRÉE après un FAUX POSITIF de ma propre porte : « (développer,
       //  regrouper — chapitres 3 et 4) » est un renvoi nu entre parenthèses, et
       //  c'est du français correct. L'article ne manque que lorsque le groupe est
@@ -2513,9 +2525,9 @@ for (const dir of dirs) {
       //  puis on aplatit le pli pour rendre le motif coupé de nouveau visible.
       const prose = brut.split("\n").filter((l) => !l.trimStart().startsWith("#")).join("\n");
       const plat = prose.replace(/\n\s+/g, " ");
-      for (const [rx, quoi] of PLIS) {
+      for (const [rx, quoi, source] of PLIS) {
         rx.lastIndex = 0;
-        for (const m of plat.matchAll(rx)) {
+        for (const m of (source === "brut" ? prose : plat).matchAll(rx)) {
           console.error(
             `  ✗ ${dir}: ${fname} porte ${quoi} — « ${m[0].trim()} » ; séquelle de la passe R<n>→chapitre, en champ RENDU`,
           );

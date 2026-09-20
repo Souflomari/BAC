@@ -8828,3 +8828,67 @@ souvent ce qui le rend plausible). Il est donc mesuré et gardé par la porte
 d'union, sans instrument dédié. C'est un choix, pas un oubli.
 
 **Batterie locale : 14 portes.**
+
+---
+
+## §11.105 — Le ré-audit : six essais rouges refaits, une porte armée et aveugle
+
+Le défaut de `essai-rouge.mjs` (§11.104) rendait suspect **tout essai rouge
+passé par cet outil**. Les portes armées les 19 et 20 septembre ont donc été
+repassées une à une, avec le pré-contrôle en place.
+
+| porte | verdict |
+|---|---|
+| §11.99 (a) — un chemin `…/*.mjs` qui ne résout pas | ROUGE ✓ |
+| §11.99 (b) — couverture nulle affirmée au présent | ROUGE ✓ |
+| §11.100 (a) — renvoi de chapitre sans article | ROUGE ✓ |
+| §11.100 (b) — capitale en milieu de phrase | ROUGE ✓ |
+| **§11.100 (c) — minuscule en ouverture de phrase** | **AVEUGLE → réparée → ROUGE ✓** |
+| §11.100 (d) — renvoi SUJET sans article | ROUGE ✓ |
+
+### La porte aveugle, et pourquoi elle l'était
+
+Son motif est `/(?:^|\n\n)\s*chapitres?\s+\d/g` : il ancre sur une **ouverture
+de paragraphe**. Mais la ligne juste au-dessus aplatit le texte avec
+`/\n\s+/g` — et `\n` est un caractère d'espacement. **L'aplatissement mangeait
+l'ancre même du motif.** Prouvé en trois lignes :
+
+```
+"ligne un.\n\nchapitres 3 et 4 ont présenté."
+  sur le texte brut   → 1 occurrence
+  sur le texte aplati → 0
+```
+
+L'aplatissement avait sa raison (§11.100) : les deux premières formes
+TRAVERSENT un pli YAML, et sans lui elles ne voient rien. La troisième, elle, a
+besoin du texte intact. **Aucun texte unique ne convient aux deux**, et écrire
+les trois motifs contre la même chaîne était le bug.
+
+Réparé par un drapeau de source : chaque motif déclare s'il lit le texte aplati
+ou le texte brut. Re-mesuré ensuite sur les 62 notions : **le corpus est propre
+sur cette forme.** La porte ne gardait rien, mais rien ne se cachait derrière —
+elle garde maintenant pour de bon.
+
+Ironie utile à consigner : la troisième forme est celle que §11.100 décrit comme
+« trouvée par une critique et NON par les deux premières ». Elle a été trouvée à
+la main, puis confiée à une porte qui ne pouvait pas la voir.
+
+### La leçon de méthode : un essai rouge qui échoue est AMBIGU
+
+**Deux de mes six essais ont échoué parce que L'ESSAI était mal construit, pas
+parce que la porte était aveugle :**
+
+- §11.100 (a), premier jet : j'ai cassé « du chapitre » → « de chapitre » sur
+  une occurrence suivie de « précédent », pas d'un chiffre. Le motif exige
+  `chapitres?\s+\d`. Rien à voir.
+- §11.99 (b), premier jet : j'ai retiré « AVANT » d'une ligne où subsistait
+  « n'était » — et `était` est dans la liste d'échappement datée. La ligne
+  restait donc, à juste titre, tolérée.
+
+**Un ✗ ne dit pas « la porte est aveugle ». Il dit « l'un des deux est faux, la
+porte ou l'essai ».** Il faut diagnostiquer avant de conclure — et sur six
+essais, la moitié des ✗ venait de moi. Sans ce réflexe, j'aurais « réparé »
+deux portes qui fonctionnaient.
+
+C'est la contrepartie exacte de §11.104 : là, un ✓ mentait ; ici, un ✗ ment
+aussi. **Le verdict d'un essai rouge est une mesure, pas un oracle.**
