@@ -118,6 +118,55 @@ conséquence de la construction. **Un écart à une référence démontrée vaut
 autrement qu'un écart à une référence supposée** — et quand on peut s'arranger
 pour que la référence soit démontrable, il faut le faire.
 
+### 9. Une alerte qui se déclenche quand on travaille est une alerte morte
+
+*(Décision ajoutée en fin de journée : le cas s'est présenté TROIS fois après la
+rédaction des huit premières.)*
+
+- Le tampon de build de `dom-truth` comparait deux sha : un commit de
+  documentation le faisait rougir sans qu'un pixel change (§11.110).
+- Le contrôle de propreté d'`essais-rouges` interrogeait `git status` : un
+  fichier porteur de modifications VOULUES et non committées lui faisait
+  annoncer « la restauration a échoué » sur un essai parfaitement restauré
+  (§11.112) — dans un outil écrit deux heures plus tôt.
+- `cibles-tactiles` signalait le lien d'évitement en `sr-only` sur CHAQUE page,
+  un faux positif par construction (§11.111).
+
+**Le correctif est le même à chaque fois : faire dire à l'instrument SUR QUOI il
+se prononce, pas seulement OUI ou NON.** Le tampon nomme les fichiers qui ont
+changé ; la suite compare les octets d'avant et d'après plutôt que l'état vis-à-
+vis de git ; l'exemption tactile reconnaît la TECHNIQUE (`clip` sur un élément
+de 1×1) et non le libellé.
+
+Le coût d'une fausse alerte n'est pas les trente secondes qu'elle prend. C'est
+qu'elle enseigne à ne plus lire — et une porte qu'on ne lit plus ne garde rien,
+exactement comme une porte qui ne peut pas crier.
+
+**Corollaire, qui va dans l'autre sens.** Une fausse alerte NOMMÉE reste
+préférable à un silence non prouvé. `dom-truth` refuse toujours de valider un
+build dont un fichier de `web/scripts/` a bougé, alors que presque rien de ce
+répertoire n'entre dans le build — parce que `generate-tokens.mjs` y entre, et
+qu'exclure le répertoire en bloc échangerait une alerte lisible contre un
+silence. **Sur une porte de déploiement, le doute se dit ; il ne se tait pas.**
+
+### 10. Un fichier généré et committé est une affirmation datée
+
+`build-learner-inputs.mjs` porte en majuscules, depuis toujours, « REGENERATE
+WHENEVER items.yaml or checkpoints.yaml CHANGE ». C'est l'endroit le plus
+visible possible pour une instruction. **Les trois artefacts avaient dérivé
+quand même** — et l'un d'eux déclarait une misconception évaluable (3 items)
+quand le corpus n'en avait plus qu'un (§11.113).
+
+ADR 0031 : un renvoi est une instruction. **Une instruction de RÉGÉNÉRATION n'en
+est pas moins une, et comme les autres elle ne vaut que si quelque chose la
+vérifie.** Tout fichier généré puis committé affirme quelque chose sur sa
+source ; sans porte qui recompare, c'est une affirmation datée du jour où on l'a
+écrite.
+
+La porte ne se contente pas de dire « ça diffère » : elle nomme le pire écart et
+signale s'il FRANCHIT un seuil de décision — ici le plancher de trois, qui
+sépare « le produit peut remédier » de « le produit n'a rien pour remédier ».
+
 ## Conséquences
 
 - Coût : six lignes de JSON par porte armée, et une exécution de plus dans la
@@ -127,7 +176,9 @@ pour que la référence soit démontrable, il faut le faire.
   (`indice-refus` second sens), une confirmée AVERTISSEMENT par dessein
   (§11.71).**
 - `indice-refus` et `eleve-ruse` entrent dans `gates.yml` et dans
-  `batterie-locale`.
+  `batterie-locale`. En fin de journée s'y ajoutent `porte-engagement`,
+  `build-learner-inputs --verifie` et le troisième sens d'`indice-absolu` :
+  **17 portes, 21 essais rouges inscrits.**
 
 ## Rétractations et corrections
 
