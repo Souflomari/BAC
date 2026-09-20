@@ -169,9 +169,18 @@
     has ZERO end-bank coverage — report `floor_met: false` for it honestly,
     give it a dedicated checkpoint (checkpoints don't count toward the
     floor tally, but they give every student in-lesson exposure regardless),
-    and flag it explicitly in `coverage_summary.notes` as the clearest
+    and flag it explicitly in `coverage_summary.honest_state` as the clearest
     follow-up item-authoring target rather than silently absorbing it into
     an unrelated tag to avoid an uncomfortable zero.
+
+    > **Corrigé le 2026-09-20 — c'était la CAUSE RACINE d'un défaut corpus-wide.**
+    > Cette ligne disait `coverage_summary.notes`. **Cette clé n'existe pas.**
+    > Le schéma pratiqué est `method`, `per_misconception`, `total_items`,
+    > `floor`, `floor_met`, `ramp_coverage`, `honest_state` — et c'est
+    > `honest_state` qui porte cette déclaration. Des auteurs ont suivi la
+    > recette à la lettre et ont donc écrit des renvois vers une clé morte ;
+    > il a fallu les réparer notion par notion (HANDOFF §11.99). Réparer le
+    > corpus sans réparer la recette n'aurait garanti que la récidive.
 
 ## Les deux moitiés sont SÉPARABLES (2026-09-05)
 

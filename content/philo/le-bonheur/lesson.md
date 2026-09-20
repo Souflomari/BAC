@@ -215,7 +215,7 @@ Schopenhauer et Freud, enfin, diraient que ce cycle — désir, satisfaction br�
 
 ### Étape 1 — Analyser les termes du sujet
 
-- **« Le bonheur »** : rappelle-toi qu'on ne peut pas supposer une seule définition acquise — Aristote (l'activité vertueuse d'une vie entière), Épicure (le plaisir stable, l'ataraxie), les stoïciens (la maîtrise du désir) en proposent des versions distinctes (chapitres 2 et 4). Le sujet ne précise pas laquelle retenir : c'est à la copie de le faire apparaître.
+- **« Le bonheur »** : rappelle-toi qu'on ne peut pas supposer une seule définition acquise — Aristote (l'activité vertueuse d'une vie entière), Épicure (le plaisir stable, l'ataraxie), les stoïciens (la maîtrise du désir) en proposent des versions distinctes (chapitres 2 à 4). Le sujet ne précise pas laquelle retenir : c'est à la copie de le faire apparaître.
 - **« Dépend de nous »** : reprends précisément la distinction stoïcienne (chapitre 4) — ce qui dépend de nous (nos jugements, nos désirs, nos actions propres) et ce qui ne dépend pas de nous (les circonstances extérieures, le jugement d'autrui, le hasard). Le sujet demande si le bonheur, entendu dans ses différentes versions, appartient à la première catégorie ou à la seconde.
 - **« Dépend-il »** est une question fermée, mais une bonne dissertation ne répond jamais simplement « oui » ou « non » : elle montre en quel sens précis la réponse spontanée est vraie, où elle rencontre ses limites, et ce qu'il faut ajouter pour répondre pleinement.
 

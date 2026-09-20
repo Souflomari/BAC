@@ -154,7 +154,7 @@ Homme libre et esclave, patricien et plébéien, seigneur et serf, maître de ju
 
 ### Une remise en question qui vise Hegel ET Marx à la fois
 
-chapitres 3 et 4 ont présenté deux théories très différentes dans leur contenu (l'Esprit chez Hegel, les rapports de production chez Marx), mais qui partagent un même geste : affirmer que l'Histoire suit un sens nécessaire, une direction déterminée par avance. Raymond Aron (XXe siècle, philosophe et sociologue français, *Introduction à la philosophie de l'histoire*, 1938 ; *L'Opium des intellectuels*, 1955) conteste précisément ce geste commun, chez l'un comme chez l'autre.
+Les chapitres 3 et 4 ont présenté deux théories très différentes dans leur contenu (l'Esprit chez Hegel, les rapports de production chez Marx), mais qui partagent un même geste : affirmer que l'Histoire suit un sens nécessaire, une direction déterminée par avance. Raymond Aron (XXe siècle, philosophe et sociologue français, *Introduction à la philosophie de l'histoire*, 1938 ; *L'Opium des intellectuels*, 1955) conteste précisément ce geste commun, chez l'un comme chez l'autre.
 
 ### Le mécanisme de la critique : la pluralité des causes contre la nécessité unique
 
@@ -182,7 +182,7 @@ chapitres 3 et 4 ont présenté deux théories très différentes dans leur cont
 
 ### Une question distincte : pas le sens de l'Histoire, mais sa connaissance
 
-chapitres 3, 4 et 5 ont débattu de savoir si l'Histoire, comme processus, a un sens nécessaire. Reste une question différente, que le chapitre 2 avait déjà annoncée : le travail de l'historien — la discipline qui reconstruit un récit du passé à partir de traces — peut-il seulement prétendre à l'OBJECTIVITÉ ? Marc Bloch (historien français, XXe siècle, *Apologie pour l'histoire ou métier d'historien*, ouvrage inachevé, publié à titre posthume en 1949 — Bloch, résistant, est fusillé par l'occupant en juin 1944 avant d'avoir pu l'achever) propose la réflexion la plus rigoureuse du programme sur cette question.
+Les chapitres 3, 4 et 5 ont débattu de savoir si l'Histoire, comme processus, a un sens nécessaire. Reste une question différente, que le chapitre 2 avait déjà annoncée : le travail de l'historien — la discipline qui reconstruit un récit du passé à partir de traces — peut-il seulement prétendre à l'OBJECTIVITÉ ? Marc Bloch (historien français, XXe siècle, *Apologie pour l'histoire ou métier d'historien*, ouvrage inachevé, publié à titre posthume en 1949 — Bloch, résistant, est fusillé par l'occupant en juin 1944 avant d'avoir pu l'achever) propose la réflexion la plus rigoureuse du programme sur cette question.
 
 ### Le mécanisme précis : jamais le passé lui-même, toujours des traces
 

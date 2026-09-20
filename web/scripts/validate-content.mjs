@@ -2491,6 +2491,20 @@ for (const dir of dirs) {
     const PLIS = [
       [/(?:^|[^\w'’])(?:de|à|dans)\s+chapitres?\s+\d/gi, "un renvoi de chapitre sans article (« de chapitre 3 » au lieu de « du chapitre 3 »)"],
       [/[:,;]\s+Le\s+chapitre\s+\d/g, "une capitale en milieu de phrase (« : Le chapitre 3 » au lieu de « : le chapitre 3 »)"],
+      //  TROISIÈME FORME, trouvée le 2026-09-20 par une critique et NON par les
+      //  deux premières : le symétrique exact. Là où l'ancien code `R3` ouvrait
+      //  légitimement une phrase, la substitution a laissé une MINUSCULE en tête
+      //  de paragraphe — « chapitres 3 et 4 ont présenté… ». Les deux premières
+      //  formes cherchaient une capitale de trop ; celle-ci est une capitale qui
+      //  manque, et aucune des deux ne pouvait la voir.
+      [/(?:^|\n\n)\s*chapitres?\s+\d/g, "une minuscule en ouverture de phrase (« chapitres 3 et 4 ont… » au lieu de « Les chapitres 3 et 4 »)"],
+      //  RESSERRÉE après un FAUX POSITIF de ma propre porte : « (développer,
+      //  regrouper — chapitres 3 et 4) » est un renvoi nu entre parenthèses, et
+      //  c'est du français correct. L'article ne manque que lorsque le groupe est
+      //  SUJET du verbe qui suit — « chapitres 2 à 7 portent sur… ». D'où
+      //  l'exigence d'un verbe conjugué derrière : la porte ne doit pas coûter
+      //  plus de corrections fausses qu'elle n'en trouve de vraies.
+      [/(?:--|—)\s+chapitres?\s+\d+\s+(?:à|et)\s+\d+\s+\w*(?:ent|ont)\b/g, "un renvoi de chapitre SUJET sans article (« -- chapitres 2 à 7 portent » au lieu de « -- les chapitres 2 à 7 portent »)"],
     ];
     for (const fname of ["items.yaml", "checkpoints.yaml", "exercises.yaml", "bank.yaml", "lesson.md"]) {
       let brut = null;
