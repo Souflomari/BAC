@@ -12011,3 +12011,43 @@ exactement ce à quoi sert un témoin.
 
 Essai rouge rejoué avec les trois cas : 15 échecs sous JavaScript bloqué.
 Trois passages verts identiques.
+
+## §11.157 — J'allais armer deux mesures qui ne mesurent rien
+
+Le comparateur à trois moteurs (§11.151) comptait les formules : 1 051 dans les
+trois, 0 erreur. C'est rassurant et c'est insuffisant — **une formule rendue
+dans une police de SECOURS compte quand même pour une.** Si le woff2 de KaTeX ne
+charge pas dans un moteur, le compte reste 1 051 et les mathématiques sont
+dessinées par un Times de repli.
+
+J'ai donc ajouté deux axes, et j'ai voulu les éprouver avant de les armer, en
+bloquant réellement les polices (`route("**/*KaTeX*", abort)`) :
+
+```
+  polices servies  : 1051 formules · largeur cumulée 4138px · 20 familles déclarées, 2 chargées
+  polices BLOQUÉES : 1051 formules · largeur cumulée 4178px · 20 familles déclarées, 0 chargées
+```
+
+**Les deux axes que j'allais armer ne voient rien :**
+
+- la **largeur cumulée** des `.katex` bouge de **+1,0 %** quand les polices
+  disparaissent — noyée dans le bruit de mise en page, qui vaut **7 %** entre
+  moteurs à 390 px par la seule largeur de la barre de défilement ;
+- le nombre de familles **déclarées** reste 20 dans les deux cas.
+
+Seul le nombre de familles réellement **chargées** bouge : 2 → 0. C'est le seul
+des trois qui est armé.
+
+Sans cette vérification j'aurais posé un seuil de 5 % sur la largeur — il aurait
+crié sur la barre de défilement de WebKit (faux rouge) et serait resté muet
+quand les polices manquent (vrai vert creux). **Mesurer le rouge AVANT de
+choisir le seuil**, au lieu de choisir un seuil et de croire au vert qu'il rend.
+
+Son essai rouge est à part (`--essai-rouge-katex`) : les polices KaTeX sont
+refusées au seul WebKit, et le comparateur doit signaler `katexChargees` sur la
+page à formules **et rien d'autre** — le compte de formules, lui, ne bouge pas,
+ce qui est précisément le piège que cet axe existe pour éviter.
+
+*(Au passage, la largeur reste AFFICHÉE, non armée : elle documente que les
+moteurs ne crénent pas pareil — « f(1) » mesure 33 px dans Chromium et Firefox,
+26 px dans WebKit, pour 0,5 % d'écart sur le total à 1280 px.)*

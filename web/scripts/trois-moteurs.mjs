@@ -60,6 +60,11 @@ const PORTE = process.argv.includes("--porte");
 //  qu'au §11.149 : un sabotage doit toucher ce qu'on mesure, pas ce que le
 //  produit sait réparer.
 const ESSAI_ROUGE = process.argv.includes("--essai-rouge");
+//  SECOND ESSAI ROUGE, pour l'axe KaTeX : les polices de KaTeX sont refusées au
+//  seul WebKit. Les formules restent au même NOMBRE — c'est tout l'intérêt —
+//  mais aucune n'est plus dessinée par la bonne police, et `katexChargees`
+//  tombe à 0 là et nulle part ailleurs.
+const ESSAI_ROUGE_KATEX = process.argv.includes("--essai-rouge-katex");
 const PORT = Number(process.env.PORT_MOTEURS ?? 4300 + (process.pid % 80));
 const BASE = `http://127.0.0.1:${PORT}`;
 
@@ -102,6 +107,23 @@ const vecteur = () => {
     debordement: Math.max(0, d.documentElement.scrollWidth - d.documentElement.clientWidth),
     katex: d.querySelectorAll(".katex").length,
     katexErreurs: d.querySelectorAll(".katex-error").length,
+    //  COMPTER LES FORMULES NE SUFFIT PAS, et c'était un trou de cet instrument
+    //  même : une formule rendue dans une police de SECOURS — parce que le
+    //  woff2 de KaTeX n'a pas chargé dans ce moteur — compte quand même pour
+    //  une. Le compte serait identique et le rendu faux.
+    //
+    //  J'ALLAIS ARMER DEUX MESURES QUI NE MESURENT RIEN. Éprouvées d'abord, en
+    //  bloquant réellement les polices KaTeX (`route("**/*KaTeX*", abort)`) :
+    //    · la largeur cumulée des `.katex` passe de 4 138 à 4 178 px — **+1,0 %**,
+    //      noyé dans le bruit de mise en page (le même chiffre varie de 7 % entre
+    //      moteurs à 390 px, par la seule largeur de barre de défilement) ;
+    //    · le nombre de familles DÉCLARÉES reste 20 dans les deux cas.
+    //  Seul le nombre de familles réellement CHARGÉES bouge : 2 → 0. C'est donc
+    //  la seule des trois qui est armée. Mesurer le rouge AVANT de choisir le
+    //  seuil, plutôt que deviner un seuil et croire au vert.
+    katexLargeur: Math.round([...d.querySelectorAll(".katex")].reduce((a, e) => a + e.getBoundingClientRect().width, 0)),
+    katexPolices: [...document.fonts].filter((f) => f.family.includes("KaTeX")).length,
+    katexChargees: [...document.fonts].filter((f) => f.family.includes("KaTeX") && f.status === "loaded").length,
     sombre: d.documentElement.classList.contains("dark"),
     boutons: [...d.querySelectorAll("button")].filter((b) => vis(b) && !b.disabled).length,
     liens: [...d.querySelectorAll("a[href]")].filter(vis).length,
@@ -132,6 +154,7 @@ for (const [nom, type] of MOTEURS) {
   const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, colorScheme: "dark" });
   const page = await ctx.newPage();
   if (ESSAI_ROUGE && nom === "webkit") await page.route("**/_next/static/chunks/**", (r) => r.abort());
+  if (ESSAI_ROUGE_KATEX && nom === "webkit") await page.route("**/*KaTeX*", (r) => r.abort());
   for (const p of PAGES) {
     const erreurs = [];
     const onErr = (e) => erreurs.push(String(e).slice(0, 80));
@@ -165,8 +188,13 @@ arreter();
 //  légitimement d'un moteur à l'autre ; `boutons` compte la visibilité, qui
 //  dépend du défilement. Ils sont AFFICHÉS — un écart énorme se verra — mais ne
 //  font pas rougir la porte.
-const ARMES = ["hydratee", "katex", "katexErreurs", "repliesVisibles", "sombre", "erreurs", "titres", "liens"];
-const AFFICHES = ["hydratee", "erreurs", "katex", "katexErreurs", "sombre", "repliesVisibles", "titres", "liens", "boutons", "barreDefilement", "debordement", "largeurMain", "hauteurDoc"];
+const ARMES = ["hydratee", "katex", "katexErreurs", "repliesVisibles", "sombre", "erreurs", "titres", "liens", "katexChargees"];
+//  NI `katexLargeur` NI `katexPolices` ne sont armées, et c'est mesuré, pas
+//  supposé — voir le commentaire du vecteur. Elles restent AFFICHÉES : un écart
+//  énorme se verrait, et la largeur documente au passage que les moteurs ne
+//  crénent pas pareil (« f(1) » : 33 px contre 26 px en WebKit, pour 0,5 %
+//  d'écart sur le total à 1280 px et 7 % à 390 px, par la barre de défilement).
+const AFFICHES = ["hydratee", "erreurs", "katex", "katexErreurs", "katexChargees", "katexPolices", "katexLargeur", "sombre", "repliesVisibles", "titres", "liens", "boutons", "barreDefilement", "debordement", "largeurMain", "hauteurDoc"];
 
 console.log(`\n━━ le produit dans les trois moteurs — 390×844, thème système sombre ━━\n`);
 const divergences = [];
@@ -182,6 +210,7 @@ for (const p of PAGES) {
     const marque = distincts.size > 1 ? (ARMES.includes(cle) ? " ‹‹ DIVERGENCE" : " ·écart toléré") : "";
     console.log(`     ${cle.padEnd(16)} ${vals.join("  ")}${marque}`);
     if (distincts.size > 1 && ARMES.includes(cle)) divergences.push({ page: p.nom, cle, vals: vals.join(" ") });
+
   }
   for (const [m] of echecs) divergences.push({ page: p.nom, cle: "CHARGEMENT", vals: `${m} : ${r[m].echec}` });
   console.log();
@@ -192,6 +221,20 @@ else {
   console.log("━━ DIVERGENCES ENTRE MOTEURS ━━");
   for (const d of divergences) console.log(`   ✗ ${d.page} · ${d.cle} : ${d.vals}`);
   console.log();
+}
+
+if (ESSAI_ROUGE_KATEX) {
+  const surKatex = divergences.filter((d) => d.cle === "katexChargees");
+  const avecFormules = PAGES.filter((p) => (releve[p.nom]?.chromium?.katex ?? 0) > 0).length;
+  if (surKatex.length === avecFormules && avecFormules > 0 && divergences.every((d) => d.cle === "katexChargees")) {
+    console.log("━━ ESSAI ROUGE KaTeX : le comparateur a vu les polices manquantes ✓ ━━");
+    console.log(`   ${surKatex.length}/${avecFormules} page(s) à formules signalées, et le COMPTE de formules n'a pas bougé —`);
+    console.log("   ce qui est précisément le piège que cet axe existe pour éviter.\n");
+    process.exit(0);
+  }
+  console.error("━━ ESSAI ROUGE KaTeX : le relevé ne correspond pas ━━");
+  console.error(`   katexChargees signalé sur ${surKatex.length}/${avecFormules} · autres classes : ${[...new Set(divergences.filter((d) => d.cle !== "katexChargees").map((d) => d.cle))].join(", ") || "aucune"}\n`);
+  process.exit(1);
 }
 
 if (ESSAI_ROUGE) {
