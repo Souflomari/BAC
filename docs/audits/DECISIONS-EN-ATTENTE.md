@@ -190,6 +190,32 @@ manque est l'arbitrage.
 
 ---
 
+## 10. Six manipulables dus à l'élève
+
+`.claude/CLAUDE.md`, décision ouverte n°4, pose une ligne dure : un asset
+généré ne remplace pas un manipulable là où la pédagogie exige la
+manipulation. Six fois, une figure figée a pris la place d'un
+`[[embed:slug]]` prescrit — et **les six fois, la substitution a été écrite**,
+en tête du SVG, en nommant ce qui est perdu : « curseurs m,k → ici, DEUX
+masses fixes » ; « curseur Δt → ici, DEUX tailles de pas fixes » ; « au lieu
+d'un curseur de rayon continu, TROIS rayons fixes ». Rien n'a été maquillé.
+Ce qui manquait était un endroit où les compter — c'est maintenant
+`docs/audits/dette-manipulable-2026-09-20.md`, et une porte tient le nombre.
+
+**Décision attendue :** les rendre, ou les accepter comme définitifs.
+
+- *Les rendre* : six embeds à câbler, plus le cadrage que chaque descripteur
+  existant montre — `boundary`, `boundary_guard_details`,
+  `param_manipulation_guide`, `pedagogy_wiring`, attribution CC-BY. Les quatre
+  descripteurs déjà en place donnent la mesure exacte du coût : ils sont longs,
+  et c'est ce qui les rend sûrs.
+- *Les accepter* : réponse également légitime — les figures sont bonnes,
+  chacune sert l'item nommé, la dégradation est écrite. Mais il faut alors le
+  dire dans les specs, qui continuent de prescrire un embed ; sinon la
+  prescription reste une promesse ouverte.
+
+---
+
 ## Ce que cette page n'est pas
 
 Ce n'est pas la liste des défauts du produit : ceux qui étaient objectifs ont

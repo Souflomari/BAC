@@ -69,6 +69,7 @@ const ETAPES = [
   { nom: "media-manipulable", cmd: ["scripts/media-manipulable.mjs", "--porte"] },
   { nom: "constantes-physiques", cmd: ["scripts/constantes-physiques.mjs", "--porte"] },
   { nom: "champs-morts", cmd: ["scripts/champs-morts.mjs", "--porte"] },
+  { nom: "dette-manipulable", cmd: ["scripts/dette-manipulable.mjs", "--porte"] },
   { nom: "couverture-diagnostique", cmd: ["scripts/couverture-diagnostique.mjs", "--porte"] },
   { nom: "resume-couverture", cmd: ["scripts/resume-couverture.mjs", "--porte"] },
   { nom: "arithmetique-rendue", cmd: ["scripts/arithmetique-rendue.mjs", "--strict"] },

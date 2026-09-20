@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 134 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 135 entrées.
 > **Un propriétaire qui revient lit d'abord
 > `docs/audits/DECISIONS-EN-ATTENTE.md`** — la liste, en une page, de ce qui
 > attend un arbitrage et de ce que coûte chaque attente. Rien n'y est en train
@@ -10884,4 +10884,57 @@ SOUS-MOT sur tout le code réuni. Un champ nommé `note` est réputé lu dès qu
 commentaire contient ce mot. L'erreur va dans le sens sûr — elle SOUS-déclare
 les morts — mais elle est réelle. Et un champ lu par du code sans être RENDU à
 l'écran lui échappe entièrement.
+
+## §11.135 — Six dettes honnêtes, et aucun endroit où les compter
+
+`.claude/CLAUDE.md`, décision ouverte n°4, pose une ligne dure : **un asset
+généré ne remplace pas un manipulable là où la pédagogie exige la
+manipulation**. Une spec qui prescrit `[[embed:slug]]` demande une chose que
+l'élève TOUCHE — un curseur qu'il pousse, une masse qu'il change, un rayon
+qu'il balaie. Une figure figée montre le résultat de ce geste ; elle ne le
+rend pas. Rien ne mesurait cette ligne.
+
+**Ce que la mesure a trouvé est à l'honneur des auteurs.** Six figures ont pris
+la place d'un embed prescrit, et **les six fois la substitution est ÉCRITE**,
+en tête du SVG, en nommant précisément ce qui est perdu : « curseurs m,k →
+ici, DEUX masses fixes tracées côte à côte » ; « curseur Δt → ici, DEUX tailles
+de pas fixes tracées contre la courbe vraie » ; « au lieu d'un curseur de rayon
+continu, TROIS rayons fixes ». La discipline d'état honnête (ADR 0025) a tenu
+au point exact de la substitution. **Zéro promesse tombée sans un mot.**
+
+**Ce qui manquait n'était pas l'honnêteté, c'était le REGISTRE.** Chaque dette
+vivait dans l'en-tête d'un fichier que seul celui qui l'ouvre lira.
+`media-manipulable` (§11.129) compte les `.interactive.json` — il ne savait
+rien de ces six-là. Aucun document du dépôt ne les réunissait ; une recherche
+sur leurs noms ne ramène que trois audits sans rapport. C'est l'ADR 0031 une
+fois de plus, dans sa forme la plus douce : **une dette qu'aucun registre ne
+nomme est invisible, même quand chaque ligne est honnête.** Le registre est
+maintenant `docs/audits/dette-manipulable-2026-09-20.md`, et deux sens le
+tiennent.
+
+**Prescription et livraison sont deux ensembles DISJOINTS**, et c'est le fait le
+plus étrange de la mesure. 4 prescriptions dans les specs — les 4 substituées.
+4 manipulables livrés — **aucun des 4 n'avait été prescrit**. Le descripteur de
+`projectile-sandbox` le dit lui-même : « Aucun spec.md pédagogique distinct
+n'existe pour cette leçon […] ce callout est ajouté directement par l'agent
+`interactive-author` sur instruction de la tâche confiée ». Ce qui a été
+demandé n'a pas été fait ; ce qui a été fait n'avait pas été demandé. Les deux
+moitiés sont défendables une par une ; ensemble elles disent qu'il n'y a pas de
+canal entre la spec et le média.
+
+**Deux erreurs de banc, toutes deux dans ma mesure.** Un motif sur une seule
+ligne manquait une substitution sur trois — « figure figée (STATIQUE) qui
+remplace \n l'embed manipulable » passe à la ligne entre les deux mots. Et
+j'avais posé le cliquet à 7 avant de compter : il y en a 6. Le chiffre écrit
+d'avance est un chiffre inventé.
+
+**PORTÉE.** L'instrument lit des PRESCRIPTIONS, pas des besoins : une pédagogie
+qui exige la manipulation sans qu'aucune spec ne l'ait écrite lui est
+invisible — et les onze notions de SVT n'ont ni spec de ce genre, ni embed, ni
+figure manipulable (§11.119, §11.129). Il ne juge pas non plus si le
+manipulable livré manipule la bonne grandeur.
+
+**Porte d'owner (`DECISIONS-EN-ATTENTE` §10) :** rendre les six, ou les accepter
+comme définitifs — et le dire alors dans les specs, qui continuent de prescrire
+un embed.
 
