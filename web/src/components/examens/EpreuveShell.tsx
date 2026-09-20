@@ -259,7 +259,15 @@ const ExerciceArticle = memo(function ExerciceArticle({
                 href={notionHref(exo.subject, exo.notionSlug)}
                 className={cn(
                   "font-medium text-accent underline-offset-2 hover:underline",
-                  "focus-ring rounded [--focus-radius:4px]"
+                  "focus-ring rounded [--focus-radius:4px]",
+                  //  CIBLE TACTILE (§11.111). Mesuré à 284×18 : sous le plancher
+                  //  AA de 24×24 (WCAG 2.5.8). L'exception « cible en ligne dans
+                  //  une phrase » ne s'applique PAS — ce lien est le seul contenu
+                  //  de son paragraphe, donc une commande de navigation à part
+                  //  entière, pas un mot souligné au fil du texte.
+                  //  `inline-block` + `py-1.5` porte la hauteur de frappe à 30 px
+                  //  sans toucher à la taille du texte.
+                  "inline-block py-1.5"
                 )}
               >
                 Revoir la notion — {exo.notionTitle} →

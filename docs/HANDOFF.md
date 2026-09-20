@@ -9284,3 +9284,106 @@ rien mesuré. Ici, un instrument criait « rouge » sur une différence sans
 conséquence. **Dans les deux cas le verdict était juste par accident et faux par
 construction** — et dans les deux cas le correctif est le même : faire dire à
 l'instrument SUR QUOI il se prononce, et non seulement OUI ou NON.
+
+---
+
+## §11.111 — Une vraie cible trop petite, un faux positif, et un faux effondrement
+
+Trois choses trouvées en lançant `cibles-tactiles` — un instrument hors champ de
+la batterie locale, donc jamais relancé depuis son écriture. Les trois sont de
+nature différente, et c'est tout l'intérêt.
+
+### 1. Le défaut réel : trois liens à 18 px
+
+Sur l'épreuve corrigée :
+
+```
+a 284×18 « Revoir la notion — Fonct »
+a 220×18 « Revoir la notion — Arith »
+a 286×18 « Revoir la notion — Struc »
+```
+
+**18 px de haut, sous le plancher AA de 24×24 (WCAG 2.5.8.)** L'exception
+« cible EN LIGNE dans une phrase » ne s'applique pas : dans `EpreuveShell.tsx`
+ce lien est le **seul contenu de son `<p>`**, donc une commande de navigation à
+part entière, pas un mot souligné au fil du texte. C'est aussi le geste que
+l'élève fait juste après avoir vu sa note — le moment où on ne veut pas qu'il
+rate sa cible.
+
+Corrigé par `inline-block py-1.5` : hauteur de frappe 30 px, taille du texte
+inchangée. Re-mesuré : **0 cible sous 24×24 sur les quatre pages.**
+
+### 2. Le faux positif : le lien d'évitement
+
+`a 1×1 « Aller au contenu »`, sur **chaque** page. C'est le lien d'évitement en
+`sr-only`, qui reprend sa taille au focus. Il n'est jamais une cible de
+POINTEUR dans cet état — nul ne vise un pixel qu'on ne voit pas — et `dom-truth`
+vérifie par ailleurs qu'il fonctionne.
+
+Exempté, **par la technique et non par le libellé** : un élément de 1×1 ou moins
+portant `clip: rect(...)` ou `clip-path: inset(50%)`. Vérifié contre le code
+réel — Tailwind compile `sr-only` en `clip: rect(0,0,0,0)` — et non supposé.
+
+Contrôle interne de l'exemption : **les comptes AAA n'ont pas bougé** (67, 10,
+8). L'instrument voit toujours les mêmes éléments ; seule la classification AA a
+changé. Sans ce contrôle, j'aurais pu l'avoir rendu aveugle sans le savoir.
+
+### 3. Le faux effondrement — et c'est le plus instructif
+
+Après le correctif, la page d'épreuve a cessé de s'hydrater : **React #423,
+zéro bouton**, alors que le HTML servi en contenait six. Le seul changement de
+`web/src` depuis le dernier build qui marchait était mon `inline-block py-1.5`
+— un nom de classe, qui ne peut rien casser. J'ai quand même cherché comment.
+
+**La cause n'était pas dans le produit.**
+
+```
+REQ FAILED  /_next/static/chunks/app/examens/%5Bid%5D/page-1194944526548c79.js
+ERROR       ChunkLoadError: Loading chunk 382 failed
+```
+
+Le morceau réclamé était `page-1194944526548c79.js` ; celui sur le disque,
+`page-b8257295a74e681f.js`. **`next start` lit le manifeste du build AU
+DÉMARRAGE et le garde en mémoire.** J'avais reconstruit pendant qu'il tournait.
+Il servait donc un HTML d'avant, réclamant des morceaux que la reconstruction
+avait remplacés.
+
+Un serveur périmé **ne se voit pas** : il répond 200 à tout, son HTML est
+parfait, et seule une page dont un morceau a été remplacé s'effondre. C'est
+exactement pour cela que ça ressemble à une régression.
+
+Serveur relancé, re-mesuré : **hydratation en 187 ms, 7 boutons, 0 erreur.**
+
+### Le garde, plutôt que la note
+
+`web/scripts/serveur-frais.mjs` : il prend les morceaux de ROUTE que le HTML
+servi réclame et demande au serveur s'ils existent. **À lancer avant tout
+balayage navigateur.**
+
+**Première version aveugle, et c'est consigné dans le fichier.** Elle prenait le
+DERNIER morceau cité, croyant que c'était celui de la route : c'est
+`webpack-*.js`, un morceau PARTAGÉ qui survit précisément aux reconstructions
+qu'il faut détecter. **Le garde écrit contre le piège tombait dedans à sa
+première ligne.** Corrigé : tous les morceaux sous `/chunks/app/`, les partagés
+écartés nommément.
+
+Essai rouge : un morceau de route retiré du disque →
+
+```
+✗ /examens/sm-2025-normale  1/2 morceau(x) introuvables : page-b8257295a74e681f.js → 400
+━━ SERVEUR PÉRIMÉ — 1 route(s) sur 6 ━━
+```
+
+restauré → vert. Il détecte donc exactement la panne du jour.
+
+### Ce que la journée aura répété quatre fois
+
+L'essai rouge qui ne lançait pas la porte (§11.104). Les deux essais mal
+construits (§11.105). La sonde qui mesurait son propre lexique (§11.109). Le
+tampon qui comparait deux sha au lieu de deux rendus (§11.110). Et maintenant le
+serveur périmé qui imite une régression.
+
+> **Quand une mesure annonce une catastrophe, vérifier le banc avant le
+> produit.** Ce n'est pas du scepticisme : c'est que le banc a beaucoup plus de
+> pièces mobiles que le défaut qu'on cherche, et qu'aucune d'elles ne se
+> déclare quand elle lâche.
