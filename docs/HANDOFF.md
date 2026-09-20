@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 123 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 124 entrées.
 > Une session fraîche qui veut l'ÉTAT COURANT plutôt que l'histoire lit, dans
 > cet ordre :
 >
@@ -19,7 +19,7 @@
 >   deux sha au lieu de deux rendus, un serveur périmé qui imitait une
 >   régression. Lire avant de croire une mesure catastrophique.
 > - **§11.106** — « porte vérifiée rouge » n'est plus une phrase mais une
->   commande : `node scripts/essais-rouges.mjs`, **31** essais rejoués à chaque
+>   commande : `node scripts/essais-rouges.mjs`, **33** essais rejoués à chaque
 >   passage.
 > - **§11.117 / §11.118** — l'état de la MESURE : la CI n'a pas assigné un seul
 >   runner de la journée (aucune porte n'a tourné en CI depuis le 19 au soir —
@@ -10238,3 +10238,59 @@ y sont, avec les pièges mesurés et les commandes qui produisent les chiffres.
 Un fichier qu'aucun index ne nomme emporte tout cela avec lui : le savoir existe
 toujours, il est simplement devenu inatteignable. `wide-measure.mjs` demandait
 quelque chose, par écrit, depuis des semaines. Personne ne l'a lu.
+
+---
+
+## §11.124 — Le dernier barreau de la rampe, cité depuis l'armement et jamais mesuré
+
+**2026-09-20.** L'en-tête de `rampe-bac.mjs` cite la VISION mot pour mot depuis
+le jour de son armement : la rampe va « …to actual past-bac questions, **to
+fresh variations on those bac questions so nothing can be memorized** ». Puis,
+deux lignes plus bas : « Les deux derniers barreaux sont la promesse entière ».
+
+**Elle ne mesurait que le premier des deux.**
+
+La variation fraîche est pourtant encodée dans le corpus, et proprement : un
+exercice dont l'identifiant la nomme (`r-variation`), un
+`sourcing.status: not-applicable` — elle n'EST pas un sujet réel, et le
+prétendre serait un mensonge — et une note qui dit ce qui a été varié et
+pourquoi. Celle de `limites-continuite` explique la branche parabolique et
+l'asymptote échangées d'infini par rapport au sujet réel, avec les zéros
+vérifiés à la main.
+
+### Ce que la mesure donne, et c'est une bonne nouvelle
+
+**49 notions sur 62 portent une variation fraîche, et ZÉRO notion à sommet
+sourcé n'en manque.** La promesse tient partout où le sommet existe — 47 sur
+47 — et deux notions portent même déjà leur variation sans que le sommet soit
+encore sourcé (`pc/rlc-serie`, `pc/atome-mecanique-newton`). Les 13 absences
+sont exactement les 13 de §11.114 : les onze SVT, plus `philo/l-histoire` et
+`philo/le-bonheur`. **Aucun trou nouveau.**
+
+Deux sens de plus sont armés dans `rampe-bac` :
+
+- **LA VARIATION MANQUANTE (franche)** — un sommet sourcé doit être suivi d'une
+  variation. 0 violation. Sans ce barreau, le sommet est mémorisable, ce qui est
+  exactement ce que la phrase de la VISION interdit.
+- **LA VARIATION MUETTE (cliquet, 2)** — une variation sans note de conception
+  est une affirmation sans raison : rien ne distingue une vraie variation
+  anti-mémorisation d'un exercice posé là. 47 des 49 portent une note
+  substantielle ; **`philo/la-verite` et `philo/le-devoir` n'en portent
+  aucune** — pour le propriétaire, deux notes à écrire, pas deux exercices.
+
+### L'essai rouge a contredit celui qui l'écrivait
+
+Le premier essai §11.124a est revenu **« AVEUGLE »**, et il avait raison. Le
+bloc `if (PORTE)` de `rampe-bac` sort par `process.exit` ; mes deux sens neufs,
+écrits plus bas dans le fichier, **ne tournaient jamais sous `--porte`**. La
+porte était verte parce qu'elle ne regardait pas — le cas exact d'ADR 0033, la
+porte exacte sur une autre question, ici réduit à une question de
+*flot de contrôle*.
+
+Sans le pré-contrôle vert et le verdict « aveugle » de la suite, j'aurais
+consigné deux sens armés qui ne se seraient jamais exécutés en CI. C'est le
+troisième service que `essai-rouge` rend aujourd'hui, après §11.122 (il a refusé
+de mesurer sur une commande déjà rouge) et §11.121 (il a prouvé les deux formes
+du renvoi faux).
+
+La suite passe de 31 à **33**.

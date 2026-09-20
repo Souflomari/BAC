@@ -270,6 +270,24 @@
       "de": "| `web/scripts/wide-measure.mjs` |",
       "vers": "| `web/scripts/wide-measure-renomme-pour-l-essai.mjs` |",
       "note": "Le SENS INVERSE de §11.122 : celui-là demande « la CI lance-t-elle une porte que j'ignore ? », celui-ci « existe-t-il un script que personne ne lance et qu'aucun catalogue ne nomme ? ». Quatre étaient dans ce cas, dont wide-measure.mjs, dont l'en-tête demandait d'être rejoué."
+    },
+    {
+      "id": "§11.124a",
+      "quoi": "une notion mène jusqu'à un vrai sujet de bac puis s'arrête — plus de variation fraîche derrière, donc un sommet mémorisable",
+      "porte": "node scripts/rampe-bac.mjs --porte",
+      "fichier": "../content/maths/arithmetique/exercises.yaml",
+      "de": "  - id: r-variation",
+      "vers": "  - id: r-second-sujet",
+      "note": "CET ESSAI A D'ABORD RENVOYÉ « AVEUGLE », et il avait raison : le bloc --porte de rampe-bac sort par process.exit avant la fin du fichier, et les deux sens neufs, écrits plus bas, ne tournaient jamais sous --porte. Déplacés dans le bloc. Un essai rouge ne sert à rien s'il ne peut pas contredire celui qui l'écrit."
+    },
+    {
+      "id": "§11.124b",
+      "quoi": "une variation fraîche perd sa note de conception — l'affirmation « anti-mémorisation » reste, sa raison disparaît",
+      "porte": "node scripts/rampe-bac.mjs --porte",
+      "fichier": "../content/maths/arithmetique/exercises.yaml",
+      "de": "      status: not-applicable\n      note: >-\n        Variation construite exprès (anti-mémorisation)",
+      "vers": "      status: not-applicable\n      note_retiree_pour_l_essai: >-\n        Variation construite exprès (anti-mémorisation)",
+      "note": "L'ancre porte `status:` ET le début de la note : `note:` seul apparaît des dizaines de fois dans le fichier. Cliquet à 2 (philo/la-verite, philo/le-devoir)."
     }
   ]
 }
