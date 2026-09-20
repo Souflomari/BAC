@@ -261,6 +261,15 @@
       "de": "  { nom: \"generate-tokens\", cmd: [\"scripts/generate-tokens.mjs\", \"--check\"] },",
       "vers": "",
       "note": "La garde ne lisait que les appels directs sous `node` : elle voyait 28 des 36 scripts réellement lancés. `--garde` existe pour qu'elle soit mesurable à part — un essai rouge ne prouve rien sur une commande déjà rouge pour une autre raison (§11.104)."
+    },
+    {
+      "id": "§11.123",
+      "quoi": "un instrument que personne ne lance sort du catalogue — donc devient introuvable",
+      "porte": "node scripts/batterie-locale.mjs --garde",
+      "fichier": "../docs/audits/INSTRUMENTS.md",
+      "de": "| `web/scripts/wide-measure.mjs` |",
+      "vers": "| `web/scripts/wide-measure-renomme-pour-l-essai.mjs` |",
+      "note": "Le SENS INVERSE de §11.122 : celui-là demande « la CI lance-t-elle une porte que j'ignore ? », celui-ci « existe-t-il un script que personne ne lance et qu'aucun catalogue ne nomme ? ». Quatre étaient dans ce cas, dont wide-measure.mjs, dont l'en-tête demandait d'être rejoué."
     }
   ]
 }

@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 122 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 123 entrées.
 > Une session fraîche qui veut l'ÉTAT COURANT plutôt que l'histoire lit, dans
 > cet ordre :
 >
@@ -19,7 +19,7 @@
 >   deux sha au lieu de deux rendus, un serveur périmé qui imitait une
 >   régression. Lire avant de croire une mesure catastrophique.
 > - **§11.106** — « porte vérifiée rouge » n'est plus une phrase mais une
->   commande : `node scripts/essais-rouges.mjs`, **30** essais rejoués à chaque
+>   commande : `node scripts/essais-rouges.mjs`, **31** essais rejoués à chaque
 >   passage.
 > - **§11.117 / §11.118** — l'état de la MESURE : la CI n'a pas assigné un seul
 >   runner de la journée (aucune porte n'a tourné en CI depuis le 19 au soir —
@@ -10195,3 +10195,46 @@ vraiment », trois résultats faux, pour trois raisons différentes : le grep
 de npm que personne n'écrit. **L'inventaire de ce qui tourne est lui-même
 difficile à calculer** — et c'est précisément pourquoi il devait être outillé
 plutôt que relu.
+
+---
+
+## §11.123 — Le sens inverse : quatre instruments qu'aucun catalogue ne nommait
+
+**2026-09-20.** La garde de §11.122 demande « la CI lance-t-elle une porte que
+la batterie ignore ? ». Elle ne demande pas l'inverse — « **existe-t-il un
+script que personne ne lance et qu'aucun catalogue ne nomme ?** » — et les deux
+questions n'ont pas la même réponse.
+
+Quatre scripts étaient dans ce cas sur 87 :
+
+- **`wide-measure.mjs`** — la mesure du VIDE à 1920 px, la classe d'écran du
+  propriétaire. **Son en-tête demande explicitement d'être REJOUÉ** après les
+  arbitrages, pour produire la ligne « après » du même tableau. Il ne figurait
+  dans aucun catalogue : personne ne pouvait le savoir, et personne ne l'a
+  rejoué. C'est le cas qui justifie à lui seul ce paragraphe.
+- **`score-annonce.mjs`** — la région live de la barre « X/Y notées · N/20 » en
+  correction d'épreuve (§11.40).
+- **`tab-corrige.mjs`** — l'ordre de tabulation complet d'un corrigé, celui qui
+  a trouvé les 243 arrêts pour 48 questions (§11.39).
+- **`codemod-tokens.mjs`** — un codemod, pas un instrument ; sa campagne est
+  passée, il reste pour la prochaine famille d'alias.
+
+Les quatre sont catalogués, avec leur colonne « ne dit RIEN de ». Et le second
+sens est armé dans la même garde : **aucun `.mjs` de `web/scripts/` ne peut
+désormais être à la fois non lancé, non testé, non déclaré hors champ et absent
+d'`INSTRUMENTS.md`.** 87 scripts, 81 catalogués, 0 orphelin. Essai rouge
+**§11.123** ; la suite passe à **31**.
+
+Les deux sens ensemble disent quelque chose ; chacun seul laisse une porte de
+sortie — celui de §11.122 laisse proliférer les scripts introuvables, celui-ci
+laisse la batterie prendre du retard sur la CI. C'est la règle d'ADR 0031 :
+**une porte a deux directions quand une seule se contourne.**
+
+### Un script introuvable est un script mort
+
+C'est la vraie leçon, et elle est plus large que ces quatre-là. Ce dépôt tient
+son savoir dans des en-têtes de fichiers — les meilleurs commentaires du projet
+y sont, avec les pièges mesurés et les commandes qui produisent les chiffres.
+Un fichier qu'aucun index ne nomme emporte tout cela avec lui : le savoir existe
+toujours, il est simplement devenu inatteignable. `wide-measure.mjs` demandait
+quelque chose, par écrit, depuis des semaines. Personne ne l'a lu.

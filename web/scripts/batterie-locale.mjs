@@ -168,6 +168,40 @@ couverts.add("validate-content.mjs");
 for (const f of readdirSync(join(WEB, "scripts"))) if (/^test-.*\.mjs$/.test(f)) couverts.add(f);
 const oublis = [...lancesParCI].filter((f) => !couverts.has(f) && !HORS_CHAMP.has(f)).sort();
 
+//  ── SECOND SENS (§11.123) : l'inverse exact du précédent ──
+//
+//  La garde ci-dessus demande « la CI lance-t-elle une porte que j'ignore ? ».
+//  Elle ne demande pas « existe-t-il un script que PERSONNE ne lance et que
+//  AUCUN catalogue ne nomme ? ». Quatre étaient dans ce cas au 2026-09-20,
+//  dont `wide-measure.mjs`, dont l'en-tête demande explicitement d'être
+//  REJOUÉ après les arbitrages du propriétaire — introuvable, donc jamais
+//  rejoué. Un script qu'aucun catalogue ne nomme est un script que personne
+//  ne retrouve.
+//
+//  Les deux sens ensemble disent quelque chose ; chacun seul laisse une porte
+//  de sortie (ADR 0031).
+const tousScripts = readdirSync(join(WEB, "scripts")).filter((f) => f.endsWith(".mjs"));
+const catalogue = new Set(
+  [...readFileSync(join(REPO, "docs/audits/INSTRUMENTS.md"), "utf8")
+    .matchAll(/web\/scripts\/([a-z0-9-]+\.mjs)/g)].map((m) => m[1])
+);
+const orphelins = tousScripts.filter(
+  (f) => !/^test-.*\.mjs$/.test(f) && !lancesParCI.has(f) && !couverts.has(f) &&
+         !HORS_CHAMP.has(f) && !catalogue.has(f)
+).sort();
+
+console.log();
+if (orphelins.length) {
+  console.log("━━ DES INSTRUMENTS QUE PERSONNE NE LANCE ET QU'AUCUN CATALOGUE NE NOMME ━━");
+  for (const f of orphelins) console.log(`     • ${f}`);
+  console.log("   Les ajouter à docs/audits/INSTRUMENTS.md (avec leur colonne « ne dit RIEN de »),");
+  console.log("   ou à ETAPES / HORS_CHAMP s'ils doivent tourner. Un script introuvable est un");
+  console.log("   script mort — et `wide-measure.mjs` demandait dans son en-tête d'être rejoué.");
+  rouges++;
+} else {
+  console.log(`  ✓ aucun instrument orphelin (${tousScripts.length} scripts, ${catalogue.size} catalogués)`);
+}
+
 console.log();
 if (oublis.length) {
   console.log("━━ LA BATTERIE A PRIS DU RETARD SUR LA CI ━━");
