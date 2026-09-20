@@ -85,6 +85,19 @@ Read the right document for the task at hand:
   agrégat doit pouvoir être lancée SEULE ; **douze fois en un jour la mesure
   était fausse avant le produit** — vérifier le BANC avant le produit ; et la
   décision de NE PAS armer s'écrit à côté du motif voisin.
+  **ADR 0036 (2026-09-20) — la bonne chose, cherchée sous une seule de ses
+  formes :** une chose n'est prouvée ABSENTE que si l'on a énuméré ses FORMES
+  — sept fois dans la journée « il n'y a rien » était faux (`data-build-sha`
+  cherché en `<meta>`, `noindex` cherché en en-tête, `### R<n>` cherché en
+  `##`) ; un filtre anti-bruit bâti sur ce qui EXISTE DÉJÀ est structurellement
+  aveugle à ce qui manque entièrement ; **une porte qui se cite elle-même se
+  disculpe** ; un total opt-in est un plancher, pas une somme ; prescription et
+  livraison se mesurent SÉPARÉMENT (4 manipulables prescrits, 4 livrés, aucun
+  en commun) ; **une dette honnête reste invisible tant qu'aucun registre ne la
+  nomme** ; un diagnostic non rejoué est une rumeur (« le relais coupe
+  Chromium » : deux semaines d'angle mort pour un CA auquel on ne faisait pas
+  confiance) ; et ce qu'on choisit de NE PAS armer s'écrit à côté de ce qu'on
+  arme.
   **ADR 0032 (2026-09-11) — the honest wait before
   hydration:** a server-rendered command is `disabled` + `aria-busy` until
   React takes over (`useHydrated`), the page says so once, calmly, and
