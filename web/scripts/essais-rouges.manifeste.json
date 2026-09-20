@@ -180,6 +180,15 @@
       "de": "\"mc.physics.pc_energie.confusion-v-et-v-carre\": 1",
       "vers": "\"mc.physics.pc_energie.confusion-v-et-v-carre\": 3",
       "note": "La casse reproduit EXACTEMENT l'état trouvé le 2026-09-20 : l'artefact disait 3 (plancher atteint, donc évaluable) pendant que le corpus était tombé à 1. C'est l'écart qui change ce que l'élève voit — le modèle propose une remédiation que le banc ne peut plus évaluer."
+    },
+    {
+      "id": "§11.114",
+      "quoi": "une rampe qui atteignait un sujet de bac SOURCÉ redescend",
+      "porte": "node scripts/rampe-bac.mjs --porte",
+      "fichier": "../content/maths/suites-numeriques/exercises.yaml",
+      "de": "      status: sourced",
+      "vers": "      status: unsourced",
+      "note": "Le sens INVERSE — ajouter un sommet sourcé — n'est pas gardé, et c'est voulu : c'est le travail qu'on souhaite, pas une régression à empêcher."
     }
   ]
 }

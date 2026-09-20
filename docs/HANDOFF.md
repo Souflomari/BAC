@@ -9578,3 +9578,67 @@ quand même.
 
 > **Un fichier généré et committé est une affirmation sur le corpus.** Tant que
 > rien ne la revérifie, c'est une affirmation datée du jour où on l'a écrite.
+
+---
+
+## §11.114 — La rampe s'arrête un barreau avant l'épreuve, pour toute une matière
+
+Après une journée sur les instruments, j'ai repris **ce que la VISION promet**
+et cherché lesquelles de ses six promesses sont MESURÉES. Cinq relèvent du
+jugement ou ont été couvertes aujourd'hui. Une est mécanique et ne l'était pas :
+
+> « from easy, fully-scaffolded problems… **to actual past-bac questions, to
+> fresh variations on those bac questions so nothing can be memorized** »
+
+**Mesuré : 47 rampes sur 62 atteignent un sujet de bac SOURCÉ.**
+
+| maths | pc | philo | **svt** |
+|---|---|---|---|
+| 14/14 | 23/25 | 10/12 | **0/11** |
+
+Détail et arbitrages dans **`docs/audits/rampe-bac-2026-09-20.md`**.
+
+### Ce qui est nouveau pour la liste des portes ouvertes
+
+`pc/rlc-serie` figure déjà au §0 (« NOT DONE until the owner's real national
+sujets arrive — Do not fake it »). **`pc/atome-mecanique-newton` est dans
+exactement le même état et n'y figurait pas.** Même nature, même gravité,
+aucune action agent possible : Template v2 §C rend la case incochable sans le
+vrai sujet.
+
+### Ce que j'ai failli écrire, et pourquoi c'était faux
+
+« Onze notions de SVT sans exercices » invite à conclure « la SVT n'a pas de
+partie entraînement ». **Vérifié : faux.** Les treize notions concernées portent
+un chapitre « Pour t'entraîner » en prose, et il est sérieux — exercice
+travaillé, énoncé complet, raisonnement à voix haute qui pose les conditions,
+élimine et vérifie, puis des prompts « À toi de jouer ».
+
+**Ce qui manque est plus précis, et double :**
+
+1. **L'exercice n'est pas ATTAQUABLE** — pas de pas gardés, pas
+   d'auto-évaluation, pas de trace. L'élève LIT une correction au lieu de
+   TENTER une épreuve, et la VISION distingue exactement ces deux choses
+   (« Worked examples are not printed solutions »).
+2. **Le sujet n'est pas RÉEL** — l'exercice travaillé est fabriqué, plausible,
+   bien fait, mais ce n'est pas un sujet tombé.
+
+La rampe s'arrête donc **un barreau avant l'épreuve**, et c'est un constat
+beaucoup plus utile que « il manque des exercices ».
+
+### Philo est une irrégularité, SVT est un état du projet
+
+`l-histoire` et `le-bonheur` sont **2 sur 12** — les dix autres notions de philo
+ont leur fichier. La dissertation se structure aussi bien que le reste : c'est
+donc un trou à combler avec l'outillage en place.
+
+SVT est **0 sur 11**. Une matière entière sans un seul exercice structuré n'est
+pas un oubli ; la question au propriétaire n'est pas « pourquoi ces onze-là »
+mais **« la SVT a-t-elle jamais été outillée ? »**
+
+### Le cliquet, à un seul sens
+
+`rampe-bac.mjs --porte`, scellé à 47/62 (**18 portes**, 22 essais rouges).
+**Une rampe qui atteignait un sujet réel ne peut plus cesser de l'atteindre.**
+Le sens inverse n'est pas gardé, et c'est voulu : ajouter un sommet sourcé est
+le travail qu'on souhaite, pas une régression à empêcher.

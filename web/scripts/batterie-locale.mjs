@@ -44,6 +44,7 @@ const ETAPES = [
   { nom: "eleve-ruse", cmd: ["scripts/eleve-ruse.mjs", "--porte"] },
   { nom: "porte-engagement", cmd: ["scripts/porte-engagement.mjs", "--porte"] },
   { nom: "modele-a-jour", cmd: ["scripts/build-learner-inputs.mjs", "--verifie"] },
+  { nom: "rampe-bac", cmd: ["scripts/rampe-bac.mjs", "--porte"] },
   { nom: "couverture-diagnostique", cmd: ["scripts/couverture-diagnostique.mjs", "--porte"] },
   { nom: "resume-couverture", cmd: ["scripts/resume-couverture.mjs", "--porte"] },
   { nom: "arithmetique-rendue", cmd: ["scripts/arithmetique-rendue.mjs", "--strict"] },

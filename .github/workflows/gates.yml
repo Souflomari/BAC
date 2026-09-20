@@ -444,6 +444,9 @@ jobs:
       - name: Artefacts du modèle apprenant à jour (plancher et carte item→misconception)
         run: node scripts/build-learner-inputs.mjs --verifie
 
+      - name: Cliquet rampe-bac (une rampe qui atteignait un sujet réel ne redescend pas)
+        run: node scripts/rampe-bac.mjs --porte
+
       # CLIQUET COUVERTURE-DIAGNOSTIQUE (2026-09-05). Le seul fil qui relie
       # « l'élève se trompe » à « le produit sait quoi lui proposer ensuite »
       # est un champ : `misconception:` sur un distracteur. 1 017 distracteurs
