@@ -70,6 +70,21 @@ if (!pin) console.log("· pas de CA de relais lisible — lancement sans épingl
 
 const HEAD = (() => { try { return execSync("git rev-parse --short HEAD").toString().trim(); } catch { return "?"; } })();
 
+//  ── LE RELAIS N'EST PAS LE PRODUIT ────────────────────────────────────────
+//  Ce conteneur sort par un relais, et sous charge il rend des 502 qui n'ont
+//  RIEN à voir avec l'artefact déployé : mesuré le 2026-09-20 sur une police
+//  (`…723e11e5.p.woff2`) signalée 502 pendant un balayage, puis servie 200
+//  cinq fois sur cinq à la main, en 71 ko. Une porte qui compte ce 502 comme
+//  un défaut du produit crie au loup — et un rouge qui crie au loup est un
+//  rouge qu'on apprend à ignorer.
+//  On re-demande donc chaque adresse fautive, une fois, avant d'accuser.
+async function confirmerEchec(url) {
+  try {
+    const r = await fetch(url, { redirect: "follow" });
+    return r.status >= 400;   // toujours en échec → c'est le produit
+  } catch { return false; }   // injoignable à la re-demande → on n'accuse pas
+}
+
 const b = await chromium.launch({ executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium", args });
 const p = await b.newPage({ viewport: { width: 1280, height: 900 } });
 let echecs = 0;
@@ -79,7 +94,17 @@ console.log(`\n━━ l'artefact DÉPLOYÉ — ${BASE} ━━\n`);
 
 //  1. Quel commit est en ligne ?
 await p.goto(BASE + "/", { waitUntil: "domcontentloaded", timeout: 30000 });
-const sha = await p.evaluate(() => document.querySelector("[data-build-sha]")?.getAttribute("data-build-sha") ?? null);
+//  Le tampon se lit dans le HTML SERVI, pas dans le DOM rendu. Avec le rendu
+//  en flux, `domcontentloaded` peut arriver AVANT le pied de page : lu depuis
+//  le DOM, le tampon manquait un passage sur deux et la sonde annonçait
+//  « impossible de savoir ce qui est en ligne » sur un artefact parfaitement
+//  sain. Le texte servi, lui, ne court pas.
+const sha = await (async () => {
+  try {
+    const html = await (await fetch(BASE + "/")).text();
+    return (html.match(/data-build-sha="([^"]+)"/) ?? [])[1] ?? null;
+  } catch { return null; }
+})();
 if (!sha) { dit(false, "aucun `data-build-sha` servi — impossible de savoir CE QUI est en ligne"); }
 else if (sha === HEAD) dit(true, `commit déployé ${sha} — c'est HEAD`);
 else console.log(`  · commit déployé ${sha} — HEAD local est ${HEAD}. Tout ce qui suit décrit ${sha}, pas HEAD.`);
@@ -125,7 +150,8 @@ for (const route of ["/", "/notions/pc/rlc-serie", "/commencer", "/notions/philo
   const tel = await b.newPage({ viewport: { width: 390, height: 844 } });
   const ennuis = [];
   tel.on("pageerror", (e) => ennuis.push(String(e.message).slice(0, 80)));
-  tel.on("response", (r) => { if (r.status() >= 400 && !r.url().includes("favicon")) ennuis.push(`HTTP ${r.status()} ${r.url().replace(BASE, "").slice(0, 50)}`); });
+  const suspects = [];
+  tel.on("response", (r) => { if (r.status() >= 400 && !r.url().includes("favicon")) suspects.push(r.url()); });
   try {
     await tel.goto(BASE + "/", { waitUntil: "networkidle", timeout: 40000 });
     //  PIÈGE MESURÉ : attendre `networkidle` APRÈS le clic ne prouve rien —
@@ -160,7 +186,10 @@ for (const route of ["/", "/notions/pc/rlc-serie", "/commencer", "/notions/philo
     }
     const deb = await tel.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     dit(deb <= 0, `parcours — débordement horizontal : ${deb}px`);
-    dit(ennuis.length === 0, `parcours — ${ennuis.length} erreur(s) de page ou réponse ≥400${ennuis.length ? " : " + [...new Set(ennuis)].slice(0, 3).join(" · ") : ""}`);
+    const confirmes = [];
+    for (const u of [...new Set(suspects)]) if (await confirmerEchec(u)) confirmes.push(u.replace(BASE, "").slice(0, 50));
+    const tot = ennuis.length + confirmes.length;
+    dit(tot === 0, `parcours — ${tot} erreur(s) confirmée(s)${suspects.length ? ` (${new Set(suspects).size} réponse(s) ≥400 vue(s), ${confirmes.length} encore en échec à la re-demande)` : ""}${tot ? " : " + [...ennuis, ...confirmes].slice(0, 3).join(" · ") : ""}`);
   } catch (e) {
     dit(false, `parcours interrompu — ${String(e.message).split("\n")[0].slice(0, 90)}`);
   } finally { await tel.close(); }
@@ -176,7 +205,8 @@ for (const route of ["/", "/notions/pc/rlc-serie", "/commencer", "/notions/philo
   const ep = await b.newPage({ viewport: { width: 390, height: 844 } });
   const ennuis = [];
   ep.on("pageerror", (e) => ennuis.push(String(e.message).slice(0, 80)));
-  ep.on("response", (r) => { if (r.status() >= 400 && !r.url().includes("favicon")) ennuis.push(`HTTP ${r.status()} ${r.url().replace(BASE, "").slice(0, 50)}`); });
+  const suspectsEp = [];
+  ep.on("response", (r) => { if (r.status() >= 400 && !r.url().includes("favicon")) suspectsEp.push(r.url()); });
   try {
     await ep.goto(BASE + "/examens", { waitUntil: "networkidle", timeout: 40000 });
     const href = await ep.$eval("a[href^='/examens/']", (a) => a.getAttribute("href")).catch(() => null);
@@ -215,11 +245,74 @@ for (const route of ["/", "/notions/pc/rlc-serie", "/commencer", "/notions/philo
       }
       const deb = await ep.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       dit(deb <= 0, `épreuve — débordement horizontal : ${deb}px`);
-      dit(ennuis.length === 0, `épreuve — ${ennuis.length} erreur(s) de page ou réponse ≥400`);
+      const confEp = [];
+      for (const u of [...new Set(suspectsEp)]) if (await confirmerEchec(u)) confEp.push(u.replace(BASE, "").slice(0, 50));
+      const totEp = ennuis.length + confEp.length;
+      dit(totEp === 0, `épreuve — ${totEp} erreur(s) confirmée(s)${suspectsEp.length ? ` (${new Set(suspectsEp).size} vue(s), ${confEp.length} confirmée(s))` : ""}${totEp ? " : " + [...ennuis, ...confEp].slice(0, 3).join(" · ") : ""}`);
     }
   } catch (e) {
     dit(false, `épreuve — parcours interrompu : ${String(e.message).split("\n")[0].slice(0, 90)}`);
   } finally { await ep.close(); }
+}
+
+//  7. LE THÈME (§11.146) — la préférence du système, la commande, et le FLASH.
+//     Le carnet du jour 8 notait cette famille comme NON re-vérifiée : « le
+//     second réfuteur (sombre / pas-de-flash) est mort sur une limite de
+//     session avant de rapporter ». Elle l'est ici, sur l'artefact servi.
+{
+  for (const scheme of ["dark", "light"]) {
+    const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, colorScheme: scheme });
+    const pg = await ctx.newPage();
+    //  Un flash, c'est une IMAGE de la mauvaise couleur : on relève la teinte
+    //  à chaque rafraîchissement, et on ne garde que les CHANGEMENTS.
+    //  PIÈGE MESURÉ : la couleur vit sur `body`, pas sur `documentElement`,
+    //  dont le fond vaut `rgba(0, 0, 0, 0)` — une chaîne TRUTHY, donc un
+    //  `a || b` ne bascule jamais. Premier jet : « une seule teinte,
+    //  rgba(0,0,0,0) », c'est-à-dire rien du tout.
+    await pg.addInitScript(() => {
+      window.__t = [];
+      const opaque = (c) => c && !/rgba\(0, 0, 0, 0\)|transparent/.test(c);
+      const lire = () => {
+        try {
+          const bd = document.body && getComputedStyle(document.body).backgroundColor;
+          const ht = getComputedStyle(document.documentElement).backgroundColor;
+          const c = opaque(bd) ? bd : opaque(ht) ? ht : "aucune";
+          if (!window.__t.length || window.__t[window.__t.length - 1] !== c) window.__t.push(c);
+        } catch {}
+        if (performance.now() < 4000) requestAnimationFrame(lire);
+      };
+      requestAnimationFrame(lire);
+    });
+    await pg.goto(BASE + "/", { waitUntil: "networkidle", timeout: 40000 });
+    await pg.waitForTimeout(1200);
+    const teintes = (await pg.evaluate(() => window.__t ?? [])).filter((c) => c !== "aucune");
+    const attendu = scheme === "dark" ? /^rgb\((1?[0-9]|[0-4][0-9]), /  : /^rgb\(2[0-5][0-9], /;
+    dit(teintes.length === 1, `thème — système ${scheme} : ${teintes.length} teinte(s) peinte(s)${teintes.length ? ` (${teintes.join(" → ")})` : ""}${teintes.length === 1 ? ", aucun flash" : ""}`);
+    dit(teintes.length > 0 && attendu.test(teintes[teintes.length - 1]), `thème — système ${scheme} : la teinte finale suit la préférence du système`);
+    await ctx.close();
+  }
+  //  La commande de thème est-elle ATTEIGNABLE sur un téléphone ? Elle est
+  //  masquée sous 1280px dans l'en-tête, et vit derrière « Menu et réglages ».
+  const tp = await b.newPage({ viewport: { width: 390, height: 844 } });
+  await tp.goto(BASE + "/", { waitUntil: "networkidle", timeout: 40000 });
+  let via = 0;
+  try {
+    const menu = await tp.$("header button[aria-label*='Menu']");
+    if (menu) {
+      await menu.click({ timeout: 3000 });
+      //  Attendre que la commande PARAISSE, pas un délai fixe : un délai
+      //  rendait ce contrôle instable d'un passage à l'autre (mesuré deux
+      //  fois de suite, deux verdicts opposés).
+      await tp.waitForFunction(() => [...document.querySelectorAll("button,[role=button],a,label")]
+        .some((e) => /th[eè]me|sombre|clair/i.test((e.getAttribute("aria-label") ?? "") + " " + e.innerText)
+                  && !!(e.offsetWidth || e.offsetHeight)), { timeout: 6000 }).catch(() => {});
+    }
+    via = await tp.evaluate(() => [...document.querySelectorAll("button,[role=button],a,label")]
+      .filter((e) => /th[eè]me|sombre|clair/i.test((e.getAttribute("aria-label") ?? "") + " " + e.innerText))
+      .filter((e) => !!(e.offsetWidth || e.offsetHeight)).length);
+  } catch {}
+  dit(via > 0, `thème — ${via} commande(s) atteignable(s) à 390px via « Menu et réglages »`);
+  await tp.close();
 }
 
 await b.close();

@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 145 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 146 entrées.
 > **Un propriétaire qui revient lit d'abord
 > `docs/audits/DECISIONS-EN-ATTENTE.md`** — la liste, en une page, de ce qui
 > attend un arbitrage et de ce que coûte chaque attente. Rien n'y est en train
@@ -11356,4 +11356,45 @@ sa portée ; un document devrait afficher la sienne. Celui-ci s'appelait
 « Décisions en attente » et contenait « les décisions en attente que j'ai
 trouvées aujourd'hui » — deux choses différentes, et la seconde est honnête
 seulement si elle est écrite.
+
+## §11.146 — Le thème, vérifié en ligne ; et trois instabilités dans mon propre instrument
+
+Le carnet du jour 8 porte un aveu : *« le second réfuteur (sombre / pas-de-flash
+/ tête / mesure) est mort sur une limite de session avant de rapporter […]
+aucun agent indépendant n'a re-vérifié ces affirmations-là »*. Elles le sont
+maintenant, sur l'artefact SERVI.
+
+- **La préférence du système est suivie.** Système sombre → fond
+  `rgb(17, 16, 15)` ; système clair → `rgb(247, 247, 244)`. Un téléphone en
+  mode nuit reçoit la leçon en sombre sans rien demander.
+- **Aucun flash.** La teinte est relevée à chaque rafraîchissement depuis le
+  tout début du document : **une seule teinte peinte** dans chaque cas, pas de
+  bascule en cours de route.
+- **La commande de thème est atteignable sur un téléphone.** Elle est masquée
+  sous 1280 px dans l'en-tête — et j'ai bien failli en faire un défaut, avant
+  de trouver qu'elle vit derrière « Menu et réglages ». Deux chemins existent
+  donc à 390 px : le réglage du système, et le menu.
+
+**Et trois instabilités, toutes dans l'instrument que je venais d'écrire.** Un
+balayage neuf qui passe une fois ne prouve rien ; celui-ci a été lancé cinq
+fois, et les trois premières ont divergé.
+
+1. **Le relais n'est pas le produit.** Une police signalée `HTTP 502` pendant
+   un passage — puis servie **200 cinq fois sur cinq**, 71 ko, à la main. Le
+   conteneur sort par un relais qui rend des 502 sous charge. Une porte qui
+   compte ce 502 comme un défaut du produit **crie au loup**. Chaque adresse
+   fautive est désormais re-demandée une fois avant d'accuser.
+2. **Un délai fixe n'est pas une attente.** La commande de thème était
+   cherchée 500 ms après l'ouverture du menu : deux passages consécutifs, deux
+   verdicts opposés. On attend maintenant qu'elle PARAISSE.
+3. **Le DOM court, le texte servi non.** Le tampon de commit était lu dans le
+   DOM après `domcontentloaded` ; avec le rendu en flux, le pied de page peut
+   arriver après. Un passage sur deux annonçait « impossible de savoir ce qui
+   est en ligne » sur un artefact parfaitement sain. Il se lit désormais dans
+   le **HTML servi**.
+
+**La règle, et elle n'était pas dans l'ADR 0036 : un instrument neuf se lance
+PLUSIEURS FOIS avant d'être cru.** Une porte instable est pire qu'une porte
+absente — l'absente ne dit rien, l'instable enseigne à ignorer le rouge. Trois
+passages consécutifs à zéro échec, maintenant, sur le même artefact.
 
