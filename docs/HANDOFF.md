@@ -11827,3 +11827,32 @@ deux moteurs de ce conteneur, pas d'un inventaire des polices des téléphones
 marocains. Et elle ne dit pas si une étiquette coupée serait GRAVE — « V (mL) »
 amputé de sa parenthèse se devine ; un chiffre, non. Les 30 restantes sont donc
 un fait posé pour le propriétaire, pas une dette que j'ai décidé seul de solder.
+
+## §11.153 — Les trois polices candidates, mesurées
+
+Suite directe de §11.152, et la question qu'il laissait ouverte : si la police
+déclarée n'est chargée nulle part, laquelle FAUDRAIT-il ?
+
+Mesuré sur les 4 108 textes du corpus, même sonde, même tolérance, Chromium :
+
+| | figures hors cadre | étiquettes sous 15 % de marge | largeur totale |
+|---|---|---|---|
+| aujourd'hui (repli système) | 0 | **30** | 374 083 u |
+| Geist (la police du site) | 0 | **6** | −15,3 % |
+| IBM Plex Sans (la bible) | 0 | **4** | −16,0 % |
+
+Les deux alternatives sont meilleures que l'état actuel **sur les deux
+colonnes**, et surtout elles rendent les largeurs déterministes : les mêmes sur
+tous les appareils, au lieu d'une par police système. Le corpus a manifestement
+été composé contre des métriques plus étroites que le repli qu'il obtient.
+
+Geist ne coûte rien (déjà servie) et se pose en une règle CSS — une règle CSS
+l'emporte sur l'attribut de présentation d'un SVG, donc les 242 fichiers ne
+seraient pas touchés. IBM Plex Sans coûte 22,6 ko (sous-ensemble latin 400) et
+c'est ce que la DESIGN-BIBLE §3 demande nommément, pour une raison écrite dans
+`layout.tsx` : « unambiguous 1/l/I/0 for a maths product ».
+
+**Je n'ai rien changé.** Changer le caractère de 242 figures est une décision
+d'identité visuelle ; ajouter une police est une décision de poids sur un
+produit destiné à des forfaits serrés. Les trois chiffres sont mesurés, le choix
+ne l'est pas — il est posé en `DECISIONS-EN-ATTENTE §13`.

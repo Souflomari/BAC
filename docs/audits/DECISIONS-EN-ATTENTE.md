@@ -269,6 +269,64 @@ deux cas : cliquets posés au niveau mesuré, qui ne peuvent que descendre.
 
 ---
 
+## 13. Les figures sont le seul texte du produit dans une police inconnue
+
+**Le fait.** 242 des 257 figures déclarent
+`font-family="'IBM Plex Sans', system-ui, sans-serif"`. **IBM Plex Sans n'est
+chargée nulle part** : ni par l'application (le layout charge Source Serif 4,
+Geist Sans et Geist Mono), ni dans l'image de ce conteneur. Le texte des figures
+retombe donc sur `system-ui` — **la police du téléphone de l'élève**. C'est le
+seul texte du produit qui ne soit pas dans une police que le site contrôle : la
+prose, l'interface et les formules sont servies, les étiquettes de figure sont
+tirées au sort.
+
+La DESIGN-BIBLE §3 demande pourtant IBM Plex Sans nommément, et le commentaire
+au-dessus des imports de `layout.tsx` dit la raison : « unambiguous 1/l/I/0 for
+a maths product ». Sur un produit où une étiquette peut dire `l` ou `1`, ce
+n'est pas un détail de goût.
+
+**Ce que ça coûte aujourd'hui.** §11.152 l'a montré par l'exemple : Firefox
+dessine `V (mL)` 17 % plus large que Chromium, et l'étiquette sortait du cadre
+sur quatre figures. Corrigé — mais la cause reste : chaque appareil a sa propre
+police, donc ses propres largeurs.
+
+**Les trois options, MESURÉES sur les 4 108 textes du corpus** (Chromium, même
+sonde, même tolérance) :
+
+| | figures hors cadre | étiquettes sous 15 % de marge | largeur totale du texte |
+|---|---|---|---|
+| **aujourd'hui** (repli système) | 0 | **30** | 374 083 u |
+| **Geist** (la police du site) | 0 | **6** | −15,3 % |
+| **IBM Plex Sans** (la bible) | 0 | **4** | −16,0 % |
+
+Les deux alternatives sont **meilleures que l'état actuel sur les deux
+colonnes**, et elles rendent les largeurs DÉTERMINISTES — les mêmes sur tous les
+appareils. Le corpus a visiblement été composé contre des métriques plus
+étroites que le repli qu'il obtient.
+
+**Ce que chacune demande :**
+
+- **Geist** — une règle CSS, zéro octet de plus (la police est déjà servie) :
+  `.figure svg text { font-family: var(--font-ui), system-ui, sans-serif }`.
+  Une règle CSS l'emporte sur l'attribut de présentation des SVG, donc les 242
+  fichiers n'ont pas à être touchés. Coût : les figures changent de caractère,
+  et le produit s'écarte de la bible.
+- **IBM Plex Sans** — la même règle, plus la police servie : **22,6 ko** pour le
+  sous-ensemble latin 400 (`@fontsource/ibm-plex-sans`), à comparer aux 240 ko
+  de polices déjà servis par page (§11.35). Coût : un fichier de plus sur le
+  chemin critique ; gain : la bible est respectée, et c'est la meilleure des
+  trois sur la marge.
+- **Ne rien faire** — les 30 étiquettes serrées restent à la merci de la police
+  de chaque appareil. Le cliquet `marge-etiquettes` empêche au moins que le
+  nombre augmente.
+
+**Pourquoi ce n'est pas à un agent de trancher.** Changer le caractère de 242
+figures est une décision d'identité visuelle, et ajouter une police est une
+décision de poids sur un produit destiné à des forfaits mobiles serrés. Les
+trois chiffres sont mesurés ; le choix ne l'est pas.
+
+---
+
 ## La PORTÉE de cette page, mesurée
 
 **Cette page ne recense pas toutes les décisions de propriétaire du dépôt.**
