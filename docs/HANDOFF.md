@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 140 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 141 entrées.
 > **Un propriétaire qui revient lit d'abord
 > `docs/audits/DECISIONS-EN-ATTENTE.md`** — la liste, en une page, de ce qui
 > attend un arbitrage et de ce que coûte chaque attente. Rien n'y est en train
@@ -11174,4 +11174,50 @@ ceux que personne ne relit parce qu'ils ne bloquent rien ». Un second sens de
 reste lisible et ne peut plus grandir en silence. Franche impossible — c'est
 une porte d'owner ouverte, et un rouge permanent est un rouge qu'on apprend à
 ignorer. Essai rouge §11.140.
+
+## §11.141 — Le barreau qu'on lit et qu'on ne peut pas gravir
+
+L'inverse exact du §11.140. Celui-ci demandait : un item vise-t-il un chapitre
+qui existe ? Celui-là demande : **un chapitre a-t-il un item ?** Mesuré dans la
+même boucle, sur le même relevé de titres — deux directions d'une seule
+relation, jamais deux lectures qui pourraient diverger.
+
+**13 barreaux portent un chapitre et aucun item ni point d'arrêt.** La
+répartition ne se discute pas :
+
+| matière | notions touchées | barreaux sans item |
+|---|---|---|
+| maths | 0 / 14 | 0 |
+| pc | 0 / 25 | 0 |
+| philo | 1 / 12 | 1 (`analyse-de-texte` R7) |
+| **svt** | **11 / 11** | **12** |
+
+**Et le barreau manquant est presque toujours le DERNIER** — R6, R7, R8, R9 :
+le sommet, celui où l'élève devrait affronter l'épreuve. L'élève SVT lit le
+dernier chapitre de chaque notion et n'a rien à y tenter.
+
+**C'est le CINQUIÈME axe indépendant qui isole exactement les 11 mêmes
+notions** : §11.114 (aucun sommet sourcé, 0/11), §11.119 (aucune marche
+d'entrée, 0 item de niveau 1 sur 102), les leçons muettes (11 des 13 sans point
+d'arrêt), §11.129 (aucune figure manipulable, 0/11), et celui-ci. Cinq mesures
+qui ne partagent ni motif, ni fichier, ni définition, et qui désignent le même
+sous-ensemble. **Ce n'est plus une coïncidence à vérifier, c'est un standard de
+fabrication** — et il se tranche au niveau du propriétaire (porte ouverte
+§11.119).
+
+**Une mesure écartée en chemin, et c'est le banc qui l'a écartée.** J'avais
+d'abord cherché les INVERSIONS de difficulté : un barreau plus facile que le
+précédent. Dix trouvées, dont sept en SVT, six exactement à R3→R4 — un motif
+tentant. Puis j'ai regardé les effectifs : **en SVT, un barreau porte un ou
+deux items.** Une « moyenne » sur un item est cet item. `4,0 → 2,5` veut dire
+« un item noté 4, puis deux notés 3 et 2 ». Il n'y a pas de distribution, donc
+pas d'inversion à mesurer. **La mesure a été jetée, pas publiée** — elle aurait
+donné un tableau de sept lignes qui n'aurait rien voulu dire. Ce qu'elle a
+laissé derrière elle est ce §11.141 : une propriété binaire par barreau, qui ne
+dépend d'aucun effectif.
+
+**Essai rouge AVEUGLE au premier jet**, et l'essai avait tort : il déplaçait un
+item d'un barreau qui en portait trois, donc le barreau restait peuplé. Vider
+un barreau d'un seul remplacement demande un barreau à UN SEUL item —
+`svt/chaines-de-montagnes` R0 est le seul du corpus. Refait, il est ROUGE.
 

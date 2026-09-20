@@ -5,6 +5,8 @@
  * Deux paires, même espèce : une référence qu'on ne peut pas suivre.
  *   SENS 1 — l'étiquette de conception d'une spec et l'item qui l'implémente.
  *   SENS 2 — le barreau qu'un item vise et le chapitre qui devrait le porter.
+ *   SENS 3 — l'INVERSE exact : le chapitre qui existe et qu'aucun item ne vise.
+ *             Un barreau que l'élève lit et ne peut pas s'entraîner dessus.
  *
  * CE QUE C'EST, ET CE QUE CE N'EST PAS. Les specs de notion désignent les
  * items qu'elles prescrivent par une étiquette de conception :
@@ -55,6 +57,16 @@ const CLIQUET = 20;
 //  n'a pas bougé depuis qu'elle a été consignée. C'est une PORTE D'OWNER
 //  ouverte (rattachement éditorial), donc un cliquet et non une porte franche.
 const CLIQUET_BARREAUX = 16;
+//  SENS 3 — mesuré au 2026-09-20 : 13 barreaux portent un chapitre et aucun
+//  item ni point d'arrêt. **Douze des treize sont en SVT**, et ils touchent
+//  les 11 notions sur 11 ; maths 0/14, pc 0/25, philo 1/12. Le barreau manquant
+//  est presque toujours le DERNIER (R6 à R9) — le sommet, celui où l'élève
+//  devrait affronter l'épreuve. C'est le CINQUIÈME axe indépendant qui isole
+//  le même sous-ensemble (§11.114 le sommet sourcé 0/11, §11.119 la marche
+//  d'entrée 0/102, les leçons muettes 11/13, §11.129 la figure manipulable
+//  0/11). Cliquet, parce que c'est le standard de fabrication SVT qui est en
+//  cause et que cela se tranche au niveau du propriétaire.
+const CLIQUET_SANS_ITEM = 13;
 
 const CITATION = /(?:[Ss]ert|[Ss]ervent|[Ii]tems?|[Cc]onfronte|[Cc]ouvre|[Vv]ise)\s+(?:directement\s+)?(?:les\s+)?([A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+)/g;
 //  Ce qui ressemble à un identifiant d'item sans en être un.
@@ -102,6 +114,12 @@ for (const m of fs.readdirSync(CONTENU).filter((n) => !n.startsWith(".")).sort()
   }
 }
 
+//  ── SENS 3 : le chapitre existe, aucun item ne le vise (§11.141) ──────────
+//  Mesuré dans la MÊME boucle que le sens 2, donc sur exactement le même
+//  relevé de titres : deux directions d'une seule relation, jamais deux
+//  lectures qui pourraient diverger.
+const chapitresSansItem = [];
+
 //  ── SENS 2 : le barreau visé par un item n'a pas de chapitre (§11.69) ──────
 //  L'accrochage au chapitre se fait par le code : un item qui vise un code sans
 //  titre ne peut être ni présenté au bon endroit, ni compté dans un
@@ -124,6 +142,7 @@ for (const m of fs.readdirSync(CONTENU).filter((n) => !n.startsWith(".")).sort()
     const md = fs.readFileSync(f, "utf-8");
     const titres = new Set([...md.matchAll(/^#{1,6}[ \t]*(R(?:\d+|-[a-z]+))\b/gm)].map((x) => x[1]));
     if (!titres.size) continue;
+    const vises = new Set();
     for (const fn of ["items.yaml", "checkpoints.yaml"]) {
       const p = path.join(dir, fn);
       if (!fs.existsSync(p)) continue;
@@ -131,10 +150,15 @@ for (const m of fs.readdirSync(CONTENU).filter((n) => !n.startsWith(".")).sort()
       try { y = yaml.load(fs.readFileSync(p, "utf-8")); } catch { continue; }
       for (const it of y?.items ?? y?.checkpoints ?? []) {
         const r = String(it?.rung ?? "").trim();
+        if (r) vises.add(r);
         if (r && /^R(\d+|-[a-z]+)$/.test(r) && !titres.has(r)) {
           barreauxOrphelins.push({ notion: `${m}/${s}`, id: it?.id, rung: r });
         }
       }
+    }
+    //  Le sens 3, sur le même relevé.
+    for (const t of [...titres].filter((x) => /^R\d+$/.test(x)).sort((a, b) => +a.slice(1) - +b.slice(1))) {
+      if (!vises.has(t)) chapitresSansItem.push({ notion: `${m}/${s}`, rung: t });
     }
   }
 }
@@ -146,13 +170,19 @@ if (PORTE) {
     console.error("\n   Un item qui vise un code sans titre ne peut être ni présenté au bon\n   endroit, ni compté dans un dénominateur honnête (§11.69).\n");
     process.exit(1);
   }
+  if (chapitresSansItem.length > CLIQUET_SANS_ITEM) {
+    console.error(`━━ CLIQUET « BARREAU QU'ON NE PEUT PAS S'ENTRAÎNER » : ${CLIQUET_SANS_ITEM} → ${chapitresSansItem.length} ━━`);
+    for (const c of chapitresSansItem) console.error(`   ${c.notion} — le chapitre ${c.rung} existe, aucun item ni point d'arrêt ne le vise`);
+    console.error("\n   L'élève lit le barreau et ne peut rien y tenter. La VISION promet une\n   rampe qu'on GRAVIT, pas une qu'on lit.\n");
+    process.exit(1);
+  }
   if (orphelines.length > CLIQUET) {
     console.error(`━━ CLIQUET « ÉTIQUETTE SANS ITEM » : ${CLIQUET} → ${orphelines.length} ━━`);
     for (const o of orphelines) console.error(`   ${o.notion} (${o.ou}) — « ${o.etiquette} » n'existe sous aucune forme`);
     console.error("\n   Une spec neuve doit nommer un item qui EXISTE : sinon personne ne peut\n   vérifier que le média ou la figure sert bien ce qu'elle annonce.\n   (Les 20 en dette sont un héritage, pas un trou de contenu : les barreaux\n   visés sont couverts — voir l'en-tête et §11.136.)\n");
     process.exit(1);
   }
-  console.log(`tracabilite-spec : cliquets tenus — ${orphelines.length}/${CLIQUET} étiquettes sans item, ${barreauxOrphelins.length}/${CLIQUET_BARREAUX} items sans chapitre ✓`);
+  console.log(`tracabilite-spec : cliquets tenus — ${orphelines.length}/${CLIQUET} étiquettes sans item, ${barreauxOrphelins.length}/${CLIQUET_BARREAUX} items sans chapitre, ${chapitresSansItem.length}/${CLIQUET_SANS_ITEM} chapitres sans item ✓`);
   process.exit(0);
 }
 
@@ -171,4 +201,6 @@ for (const [n, l] of parNotion) {
 }
 console.log(`\n  ── SENS 2 : items visant un barreau sans chapitre ── ${barreauxOrphelins.length}`);
 for (const o of barreauxOrphelins) console.log(`     ✗ ${o.notion}:${o.id} → ${o.rung}`);
-console.log(`\n  LA PÉDAGOGIE EST LIVRÉE : les barreaux visés sont couverts. Ce compte\n  mesure la TRAÇABILITÉ — pouvoir remonter d'une figure à l'item qu'elle\n  sert — pas un trou de contenu.\n`);
+console.log(`\n  ── SENS 3 : chapitres qu'aucun item ne vise ── ${chapitresSansItem.length}`);
+for (const c of chapitresSansItem) console.log(`     ✗ ${c.notion} — ${c.rung}`);
+console.log(`\n  SUR LE SENS 1 SEULEMENT : la pédagogie est livrée. Les barreaux que les\n  étiquettes visaient sont couverts — ce compte-là mesure la TRAÇABILITÉ,\n  pouvoir remonter d'une figure à l'item qu'elle sert, pas un trou de contenu.\n  LE SENS 3 EST D'UNE AUTRE NATURE : un chapitre qu'aucun item ne vise est un\n  barreau que l'élève lit sans pouvoir rien y tenter. Ne pas lire la phrase\n  ci-dessus comme si elle couvrait les trois sens.\n`);

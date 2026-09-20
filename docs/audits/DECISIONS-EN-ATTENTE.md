@@ -239,6 +239,34 @@ ne l'a pas écrite.
 avant de l'imposer), ou écrire qu'on s'en passe. Sans arbitrage, le produit
 reste sans la seule protection qui limite les dégâts d'un script injecté.
 
+
+---
+
+## 12. SVT : cinquième axe, même sous-ensemble
+
+Une cinquième mesure indépendante isole exactement les 11 mêmes notions
+(§11.141) : **12 barreaux portent un chapitre et aucun item** — 11 notions sur
+11 en SVT, contre 0/14 en maths, 0/25 en PC, 1/12 en philo. Et le barreau
+manquant est presque toujours le DERNIER (R6–R9) : le sommet, celui où l'élève
+devrait affronter l'épreuve. **L'élève SVT lit le dernier chapitre de chaque
+notion et n'a rien à y tenter.**
+
+Les cinq axes, qui ne partagent ni motif, ni fichier, ni définition :
+
+| Axe | SVT | Reste du corpus |
+|---|---|---|
+| Sommet de rampe sourcé (§11.114) | 0 / 11 | 47 / 51 |
+| Marche d'entrée, items de niveau 1 (§11.119) | 0 / 102 items | 8,5 – 9,0 % |
+| Leçons sans point d'arrêt | 11 des 13 | 2 |
+| Figure manipulable (§11.129) | 0 / 11 | 9 / 51 |
+| Barreau sans item (§11.141) | 11 / 11 notions | 1 / 51 |
+
+**Décision attendue :** ce n'est pas un défaut par notion à corriger une par
+une — c'est un **standard de fabrication différent**, et seul le propriétaire
+peut dire si les 11 notions SVT doivent être portées au standard des 51 autres,
+ou si SVT est délibérément un genre à part. Les instruments sont armés dans les
+deux cas : cliquets posés au niveau mesuré, qui ne peuvent que descendre.
+
 ---
 
 ## Ce que cette page n'est pas
