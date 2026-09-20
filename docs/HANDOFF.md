@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 131 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 132 entrées.
 > **Un propriétaire qui revient lit d'abord
 > `docs/audits/DECISIONS-EN-ATTENTE.md`** — la liste, en une page, de ce qui
 > attend un arbitrage et de ce que coûte chaque attente. Rien n'y est en train
@@ -10756,4 +10756,38 @@ distingue la célérité du coefficient d'un trinôme. Restent aussi hors champ
 les constantes trop rares ou trop homonymes (masses du proton/neutron, F, k,
 G) et — l'angle mort qui demeure entier — une masse ou une longueur fausse
 contre le réel.
+
+## §11.132 — Le distracteur qui ne répond rien
+
+L'élève choisit une proposition fausse. C'est LE moment de la leçon : la
+VISION demande que chaque distracteur porte une misconception et qu'elle soit
+CONFRONTÉE. Un distracteur sans `feedback` rend un silence — l'élève apprend
+qu'il a tort, jamais pourquoi. Rien ne vérifiait cette présence :
+`validate-content` passait déjà `choices[].feedback` au contrôle KaTeX et au
+contrôle du texte rendu, donc au contenu du champ — **jamais à son
+existence**. Un champ absent n'a pas de contenu à vérifier ; il sortait du
+balayage par le haut.
+
+**Mesuré sur tout le corpus : 7 894 retours lus, 1 974 items à choix,
+5 920 distracteurs sur 5 920 portent un retour.** La classe est vide, la porte
+est franche, sans cliquet ni dette.
+
+**Le piège, et il aurait été gros.** La première mesure annonçait « 1 612
+retours vides » — un cinquième du corpus. Ventilés, les 1 612 sont **tous sur
+la BONNE réponse**, et c'est le dessin voulu : la bonne réponse s'explique
+dans `solution`, que le composant affiche à part (362 en portent un quand même,
+ce qui est permis). Une porte qui n'aurait pas séparé `correct: true` de
+`correct: false` aurait ouvert une campagne de 1 612 corrections dont **aucune**
+n'est un défaut. C'est le même geste qu'au §11.130 et au §11.131 : la mesure
+brute annonce une catastrophe, le banc l'explique.
+
+**SECOND SENS — le même retour sur deux choix.** L'élève qui prend D lit alors
+l'explication écrite pour C. Mesuré : 0 sur 7 894. Sans ce sens, un
+copier-coller entre deux distracteurs passerait sans bruit, puisque le champ
+serait bel et bien REMPLI — la présence seule ne dit rien de la pertinence.
+Deux directions, parce qu'une seule se laisse contourner (ADR 0031).
+
+Les deux vérifiées ROUGE sur `svt/soi-non-soi` (essais §11.132a/b), restaurées
+octet pour octet. **42 essais rouges, tous verts. validate-content : 0 échec
+sur 62 notions.**
 

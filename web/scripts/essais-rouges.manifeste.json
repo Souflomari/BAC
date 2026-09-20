@@ -351,6 +351,24 @@
       "de": "4\\cdot10^{8}\\ \\text{m.s}^{-1}",
       "vers": "9\\cdot10^{8}\\ \\text{m.s}^{-1}",
       "note": "Le sens qui empêche l'exemption de devenir une porte dérobée. Trois passages écrivent EXPRÈS une vitesse supraluminique pour nommer le piège ; s'ils étaient exemptés par FICHIER, toute faute future dans ces trois fichiers passerait en silence. Ils le sont par (fichier, valeur), et cet essai le prouve."
+    },
+    {
+      "id": "§11.132a",
+      "quoi": "un distracteur perd son retour — l'élève qui le choisit apprend qu'il a tort, jamais pourquoi",
+      "porte": "node scripts/validate-content.mjs --strict content/svt/soi-non-soi",
+      "fichier": "../content/svt/soi-non-soi/items.yaml",
+      "de": "        feedback: >\n          La tolérance montre au contraire que la non-réaction contre le\n          soi résulte d'un processus actif (l'élimination des cellules\n          immunitaires auto-réactives pendant la vie embryonnaire), pas\n          d'une catégorie figée dès le départ.",
+      "vers": "        note_interne: rien",
+      "note": "Porte franche : 5 920 distracteurs sur 5 920 portent un retour au 2026-09-20. La porte ne regarde QUE `correct: false` — les 1 612 champs vides du corpus sont tous sur la BONNE réponse, qui s'explique dans `solution` ; les compter aurait produit 1 612 signalements dont aucun n'est un défaut."
+    },
+    {
+      "id": "§11.132b",
+      "quoi": "deux choix d'un même item reçoivent le MÊME retour — celui qui prend D lit l'explication écrite pour C",
+      "porte": "node scripts/validate-content.mjs --strict content/svt/soi-non-soi",
+      "fichier": "../content/svt/soi-non-soi/items.yaml",
+      "de": "        feedback: >\n          La tolérance montre au contraire que la non-réaction contre le\n          soi résulte d'un processus actif (l'élimination des cellules\n          immunitaires auto-réactives pendant la vie embryonnaire), pas\n          d'une catégorie figée dès le départ.",
+      "vers": "        feedback: >\n          Le non-soi (agents pathogènes, greffons éventuels) peut se\n          présenter à tout âge, y compris très tôt après la naissance. La\n          tolérance ne repose pas sur l'absence de non-soi, mais sur\n          l'élimination précoce des cellules immunitaires qui auraient\n          réagi contre le soi lui-même.",
+      "note": "Le sens sans lequel un copier-coller entre deux distracteurs passerait : le champ serait bel et bien REMPLI. Mesuré à l'armement : 0 doublon sur 7 894 retours."
     }
   ]
 }

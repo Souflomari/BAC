@@ -2609,6 +2609,61 @@ for (const dir of dirs) {
         }
       }
     }
+
+    //  ── §11.132 — LE DISTRACTEUR QUI NE RÉPOND RIEN ────────────────────────
+    //
+    //  L'élève choisit une proposition fausse. C'est LE moment de la leçon :
+    //  la VISION demande que chaque distracteur porte une misconception et
+    //  qu'elle soit CONFRONTÉE. Un distracteur sans `feedback` rend un
+    //  silence — l'élève apprend qu'il a tort, jamais pourquoi.
+    //
+    //  Mesuré au 2026-09-20 sur tout le corpus : 7 894 retours lus sur 1 974
+    //  items à choix. **5 920 distracteurs sur 5 920 portent un retour.** La
+    //  classe est VIDE : cette porte est franche, sans cliquet ni dette.
+    //
+    //  LES 1 612 CHAMPS VIDES SONT TOUS SUR LA BONNE RÉPONSE, et c'est le
+    //  dessin voulu : la bonne réponse s'explique dans `solution`, que le
+    //  composant affiche à part. 362 en portent un quand même. La porte ne
+    //  regarde donc QUE `correct: false` — l'avoir oublié aurait produit
+    //  1 612 signalements dont aucun n'est un défaut.
+    //
+    //  SECOND SENS — deux choix d'un même item avec le MÊME retour, au mot
+    //  près. L'élève qui prend B lit alors l'explication écrite pour C. Mesuré :
+    //  0 sur tout le corpus. Sans ce sens, un copier-coller entre deux
+    //  distracteurs passerait, puisque le champ serait bel et bien rempli.
+    for (const fname of ["items.yaml", "checkpoints.yaml"]) {
+      let doc = null;
+      try { doc = yaml.load(fs.readFileSync(path.join(abs, fname), "utf8")); } catch { continue; }
+      const liste = Array.isArray(doc) ? doc : (doc?.items ?? doc?.checkpoints ?? []);
+      if (!Array.isArray(liste)) continue;
+      for (const it of liste) {
+        const choix = Array.isArray(it?.choices) ? it.choices : [];
+        if (choix.length < 2) continue;
+        const vus = new Map();
+        for (const c of choix) {
+          if (!c || typeof c !== "object") continue;
+          const retour = String(c.feedback ?? "").replace(/\s+/g, " ").trim();
+          if (!c.correct && !retour) {
+            console.error(
+              `  ✗ ${dir}: ${fname} — ${it?.id}/${c?.id} est un distracteur SANS retour. ` +
+              `L'élève qui le choisit apprend qu'il a tort, jamais pourquoi : ` +
+              `c'est le moment où la misconception devait être confrontée.`,
+            );
+            dirFail++;
+          }
+          if (retour) {
+            const cle = retour.toLowerCase();
+            if (vus.has(cle)) {
+              console.error(
+                `  ✗ ${dir}: ${fname} — ${it?.id} donne le MÊME retour à ${vus.get(cle)} et ${c?.id}. ` +
+                `L'un des deux élèves lit une explication écrite pour l'autre choix.`,
+              );
+              dirFail++;
+            } else vus.set(cle, c?.id);
+          }
+        }
+      }
+    }
   }
 
   // Authoring-leak check — prose only (comments stripped, valid markers already removed).
