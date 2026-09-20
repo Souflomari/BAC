@@ -68,7 +68,15 @@ Read the right document for the task at hand:
   link gate; a mechanism's REACH is measured separately from whether it
   works; a gate has two directions when one alone can be gamed; **a gate
   must be able to go RED — a green badge says nothing failed, not that
-  everything was measured**). **ADR 0032 (2026-09-11) — the honest wait before
+  everything was measured**). **ADR 0034 (2026-09-20) — the instrument that could not
+  hear itself:** a red test proves nothing without the green that preceded it,
+  in that directory with that command; a failing red test is AMBIGUOUS (gate
+  blind, or test wrong — half of ours were the test); an anti-noise threshold
+  belongs on a MEASURE, never on a ratchet, where it silently makes the gate
+  inert; a gate has four honest verdicts (RED / WARNING-seen / GREEN-ambiguous /
+  MUTE); red tests live in a re-runnable suite, because a property that cannot
+  be re-measured is a memory; a pattern and its preprocessing are one thing.
+  **ADR 0032 (2026-09-11) — the honest wait before
   hydration:** a server-rendered command is `disabled` + `aria-busy` until
   React takes over (`useHydrated`), the page says so once, calmly, and
   `dom-truth` reads the SERVED HTML to keep it true.
