@@ -2470,6 +2470,47 @@ for (const dir of dirs) {
     }
   }
 
+  //
+  //  ── §11.100 — LA CASSE LAISSÉE PAR « R<n> → chapitre N » (ÉCHEC) ─────────
+  //
+  //  La passe qui a réécrit 1 086 renvois `R<n>` en numéros de chapitre a
+  //  substitué le texte SANS relire la phrase autour. Deux séquelles, mesurées
+  //  le 2026-09-20 sur TOUT le corpus — 20 occurrences, 13 fichiers, TROIS
+  //  matières (maths, pc, philo), toutes en champs RENDUS à l'élève :
+  //
+  //    « à la lumière de chapitre 2 ? »        (l'article a disparu avec `R1`)
+  //    « ...au seul fait divers : Le chapitre 1 annonce »   (capitale en
+  //                                            milieu de phrase, là où
+  //                                            l'ancien `R0` ouvrait)
+  //
+  //  Pourquoi un grep ne les voyait pas : le motif TRAVERSE un pli YAML. Entre
+  //  « de » et « chapitre » il y a un retour à la ligne et douze espaces. Toute
+  //  sonde ligne-à-ligne rend zéro — et c'est ce qui les a laissées passer. La
+  //  porte aplatit donc le pli (`\s+`) avant de chercher.
+  {
+    const PLIS = [
+      [/(?:^|[^\w'’])(?:de|à|dans)\s+chapitres?\s+\d/gi, "un renvoi de chapitre sans article (« de chapitre 3 » au lieu de « du chapitre 3 »)"],
+      [/[:,;]\s+Le\s+chapitre\s+\d/g, "une capitale en milieu de phrase (« : Le chapitre 3 » au lieu de « : le chapitre 3 »)"],
+    ];
+    for (const fname of ["items.yaml", "checkpoints.yaml", "exercises.yaml", "bank.yaml", "lesson.md"]) {
+      let brut = null;
+      try { brut = fs.readFileSync(path.join(abs, fname), "utf8"); } catch { continue; }
+      //  champs RENDUS seulement : on retire les commentaires YAML pleine ligne,
+      //  puis on aplatit le pli pour rendre le motif coupé de nouveau visible.
+      const prose = brut.split("\n").filter((l) => !l.trimStart().startsWith("#")).join("\n");
+      const plat = prose.replace(/\n\s+/g, " ");
+      for (const [rx, quoi] of PLIS) {
+        rx.lastIndex = 0;
+        for (const m of plat.matchAll(rx)) {
+          console.error(
+            `  ✗ ${dir}: ${fname} porte ${quoi} — « ${m[0].trim()} » ; séquelle de la passe R<n>→chapitre, en champ RENDU`,
+          );
+          dirFail++;
+        }
+      }
+    }
+  }
+
   // Authoring-leak check — prose only (comments stripped, valid markers already removed).
   const rendered = proseLines.join("\n").replace(/<!--[\s\S]*?-->/g, "");
   if (LEXICON.test(rendered) && !/[Àà] [Ss]ourcer|SLOT|AMÉLIORATION|TODO|FIXME/.test(rendered)) {

@@ -170,7 +170,7 @@ Aristote lui-même tranche sur ce point : il définit l'homme comme un « animal
 
 ### Schopenhauer : le désir comme manque perpétuel
 
-Schopenhauer (XIXe siècle, *Le Monde comme volonté et comme représentation*) pousse plus loin une inquiétude déjà présente dans chapitres 1 et 3 : et si le bonheur, entendu comme satisfaction stable et durable, était structurellement inaccessible — non par malchance, mais par la nature même du désir humain ?
+Schopenhauer (XIXe siècle, *Le Monde comme volonté et comme représentation*) pousse plus loin une inquiétude déjà présente dans les chapitres 1 et 3 : et si le bonheur, entendu comme satisfaction stable et durable, était structurellement inaccessible — non par malchance, mais par la nature même du désir humain ?
 
 **Le mécanisme qu'il décrit :** tout désir naît d'un manque, et tout manque est une forme de souffrance. Quand le désir est enfin satisfait, la souffrance du manque cesse — mais ce qui suit n'est pas un plaisir positif et durable : c'est, très vite, l'ennui, puis un nouveau manque, donc un nouveau désir, puis une nouvelle souffrance. Schopenhauer décrit l'existence humaine comme oscillant, sans repos durable possible, entre la douleur du manque et l'ennui de la satisfaction — un mouvement de pendule qui ne s'arrête jamais sur un point d'équilibre stable.
 
