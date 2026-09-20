@@ -11911,3 +11911,67 @@ les avait déjà payés.
 **Ce que la porte ne dit pas** : le stockage PLEIN (quota dépassé) est un autre
 cas — il lève à l'écriture seulement, et sous un autre code. Il n'est pas
 mesuré.
+
+## §11.155 — « Réduire les animations » : le mécanisme marchait, sa portée n'était pas mesurée
+
+`prefers-reduced-motion` n'est pas un confort. Il est demandé par les élèves
+sujets aux migraines vestibulaires, au mal des transports et aux troubles de
+l'attention — exactement la population qu'une révision de trois heures met le
+plus à l'épreuve.
+
+Le mécanisme existait, et il est bien fait : `globals.css` écrase les durées de
+transition à 0,01 ms sous ce réglage, `MotionDiagram` révèle toutes ses étapes
+d'un coup, `MotionStage` supprime ses tweens. Et `dom-truth` le vérifie — **sur
+une figure, dans une leçon.** C'est la preuve que le mécanisme FONCTIONNE. Ce
+n'est pas la mesure de ce qu'il ATTEINT : un mécanisme et sa portée sont deux
+choses (ADR 0031), et le corpus n'avait jamais été balayé sous ce réglage.
+
+**Mesuré sur les 66 pages, dans les deux réglages :**
+
+```
+  no-preference   66 pages · 0 animation vivante · 22 182 transitions > 50 ms
+  reduce          66 pages · 0 animation vivante ·      0 transition  > 50 ms
+```
+
+Le témoin est la moitié de la mesure : sans ces 22 182, le zéro ne prouverait
+rien — il dirait seulement que la sonde ne voit aucun mouvement. La porte exige
+donc explicitement que le réglage normal en montre.
+
+### Le second sens, et la faute qu'il m'a values
+
+Premier jet : j'ai contrôlé que la barre de transport disparaît sous « reduce »,
+et déclaré **ROUGE six notions**. Elles respectaient leur contrat à la lettre.
+
+**Il y a deux voies de mouvement, et leurs contrats sont OPPOSÉS — les deux à
+juste titre :**
+
+- **MotionDiagram** (des `<g id="step-N">` dans un SVG ordinaire) : *« under
+  reduced-motion all steps are visible at once; there is nothing to step
+  through »* → tout révélé, barre RETIRÉE.
+- **MotionStage** (la voie `.motion.json`, jouée par GSAP) : *« every advance
+  SEEKS instantly to the target settle point (zero animation). Controls still
+  advance; the student still drives the reveal »* → barre GARDÉE. La retirer
+  priverait l'élève du contenu, puisque c'est lui qui le déroule.
+
+J'avais appliqué le contrat du premier aux commandes du second : une porte
+exacte, sur une autre question (ADR 0033). La voie se lit dans le **dépôt** — un
+`*.motion.json` signe MotionStage — et non dans le DOM, où les deux se
+ressemblent.
+
+Corrigé, les deux contrats tiennent :
+
+```
+  45 pages MotionDiagram : 251 barres → 0, 0 étape cachée
+   6 pages MotionStage   :  11 barres gardées, l'élève déroule sans animation
+```
+
+### Armé
+
+En CI, avec son essai rouge : la seconde passe n'émule plus `reduce`, et la
+porte doit crier sur ses deux sens — 66 pages qui bougent encore et les barres
+MotionDiagram restées. Trois passages verts identiques.
+
+**Ce que la porte ne dit pas** : elle ne mesure que ce qui est visible au
+CHARGEMENT. Une animation déclenchée par un clic — le pas à pas de MotionStage —
+n'est pas parcourue ; `dom-truth` en garde l'instantanéité sur une figure
+témoin, et cette portée-là reste à un.

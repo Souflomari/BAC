@@ -258,6 +258,22 @@ jobs:
           npm run stockage-refuse
           node scripts/stockage-refuse.mjs --essai-rouge
 
+      # PORTE « RÉDUIRE LES ANIMATIONS » (2026-09-20, §11.155). Le mécanisme
+      # existait et dom-truth le vérifiait — sur UNE figure, dans UNE leçon.
+      # C'est la preuve qu'il fonctionne, pas la mesure de ce qu'il ATTEINT
+      # (ADR 0031). Cette porte balaie les 66 pages dans les DEUX réglages :
+      # 22 182 transitions en réglage normal, 0 sous « reduce ». Le témoin est
+      # obligatoire — si le réglage normal ne montrait aucun mouvement, le zéro
+      # ne prouverait rien. Second sens : les deux voies de mouvement ont des
+      # contrats OPPOSÉS et justes (MotionDiagram retire sa barre, MotionStage
+      # la garde parce que l'élève déroule lui-même), et la voie se lit dans le
+      # dépôt (`*.motion.json`), pas dans le DOM. Puis l'essai rouge.
+      - name: "Réduire les animations (66 pages, deux sens, puis essai rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run mouvement-reduit
+          node scripts/mouvement-reduit.mjs --essai-rouge
+
       # PORTE FIGURES (2026-09-04). figure-preview mesure sept classes de
       # défaut sur les 258 SVG statiques ; CINQ sont armées, et seulement
       # parce qu'elles sont propres dans les DEUX thèmes :

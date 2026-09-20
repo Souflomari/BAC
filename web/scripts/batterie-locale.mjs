@@ -124,6 +124,9 @@ const HORS_CHAMP = new Set([
   // stockage-refuse lève son propre `next start` et pilote un navigateur : build
   // ET Playwright. Hors champ ici, armée en CI (§11.154).
   "stockage-refuse.mjs",
+  // mouvement-reduit : build + navigateur, 66 pages × 2 réglages. Hors champ
+  // ici, armée en CI (§11.155).
+  "mouvement-reduit.mjs",
 ]);
 
 function dossiersNotions() {
