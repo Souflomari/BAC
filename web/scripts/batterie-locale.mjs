@@ -46,6 +46,7 @@ const ETAPES = [
   { nom: "enonces-jumeaux", cmd: ["scripts/enonces-jumeaux.mjs", "--porte"] },
   { nom: "modele-a-jour", cmd: ["scripts/build-learner-inputs.mjs", "--verifie"] },
   { nom: "rampe-bac", cmd: ["scripts/rampe-bac.mjs", "--porte"] },
+  { nom: "rampe-entree", cmd: ["scripts/rampe-entree.mjs", "--porte"] },
   { nom: "couverture-diagnostique", cmd: ["scripts/couverture-diagnostique.mjs", "--porte"] },
   { nom: "resume-couverture", cmd: ["scripts/resume-couverture.mjs", "--porte"] },
   { nom: "arithmetique-rendue", cmd: ["scripts/arithmetique-rendue.mjs", "--strict"] },

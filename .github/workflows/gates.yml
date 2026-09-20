@@ -458,6 +458,15 @@ jobs:
       - name: Cliquet rampe-bac (une rampe qui atteignait un sujet réel ne redescend pas)
         run: node scripts/rampe-bac.mjs --porte
 
+      # L'AUTRE BOUT DE LA MÊME RAMPE. rampe-bac mesure le sommet ; celui-ci
+      # mesure l'entrée — par où un élève EN DIFFICULTÉ commence, ce que la
+      # VISION promet en propre. Deux cliquets à une seule direction : les
+      # notions sans aucun item de niveau 1 au premier barreau (12) et celles
+      # dont la pente est < 1 cran (4). On empêche la régression, on n'exige
+      # pas la réparation : réparer est un travail éditorial (§11.119).
+      - name: Cliquet rampe-entree (la marche d'entrée d'une notion ne disparaît pas)
+        run: node scripts/rampe-entree.mjs --porte
+
       # CLIQUET COUVERTURE-DIAGNOSTIQUE (2026-09-05). Le seul fil qui relie
       # « l'élève se trompe » à « le produit sait quoi lui proposer ensuite »
       # est un champ : `misconception:` sur un distracteur. 1 017 distracteurs

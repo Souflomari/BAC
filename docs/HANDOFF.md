@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 118 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 119 entrées.
 > Une session fraîche qui veut l'ÉTAT COURANT plutôt que l'histoire lit, dans
 > cet ordre :
 >
@@ -19,7 +19,7 @@
 >   deux sha au lieu de deux rendus, un serveur périmé qui imitait une
 >   régression. Lire avant de croire une mesure catastrophique.
 > - **§11.106** — « porte vérifiée rouge » n'est plus une phrase mais une
->   commande : `node scripts/essais-rouges.mjs`, **25** essais rejoués à chaque
+>   commande : `node scripts/essais-rouges.mjs`, **27** essais rejoués à chaque
 >   passage.
 > - **§11.117 / §11.118** — l'état de la MESURE : la CI n'a pas assigné un seul
 >   runner de la journée (aucune porte n'a tourné en CI depuis le 19 au soir —
@@ -9897,3 +9897,77 @@ qu'ADR 0034 §3 interdit.
 - **21 points d'arrêt reprennent l'énoncé d'un item au caractère près.** Ce
   n'est pas un doublon : ce sont les clones déclarés, et `ItemsSection` retire
   bien l'item. Le mécanisme, vérifié contre le corpus pour la première fois.
+
+---
+
+## §11.119 — L'autre bout de la rampe : par où un élève en difficulté entre
+
+**2026-09-20.** `rampe-bac.mjs` (§11.114) mesure le SOMMET d'une notion — mène-t-elle
+à un vrai sujet de bac. Personne ne mesurait l'entrée. C'est pourtant l'entrée
+que la VISION promet en propre : « un tuteur patient qui prend un élève **en
+difficulté** ». Une notion dont le premier barreau démarre déjà haut n'a pas de
+marche d'entrée — l'élève qui en a le plus besoin se cogne au premier item.
+
+| matière | notions | items / notion | barreaux | 1er barreau | pente | items de niveau 1 |
+|---|---|---|---|---|---|---|
+| maths | 14 | 32,4 | 8,6 | 1,33 | +2,70 | 41 / 454 — 9,0 % |
+| pc | 25 | 27,6 | 7,6 | 1,19 | +2,87 | 62 / 690 — 9,0 % |
+| philo | 12 | 30,5 | 7,6 | 1,18 | +2,81 | 31 / 366 — 8,5 % |
+| **svt** | **11** | **9,3** | **5,2** | **2,62** | **+1,09** | **0 / 102 — 0,0 %** |
+
+**Zéro sur cent deux.** L'objection évidente — `difficulty_level` est une
+étiquette d'auteur, qu'aucun document de `docs/design/` ne définit, et des
+auteurs SVT calibrant « 3 = normal » produiraient mécaniquement une moyenne
+plus haute — tient pour la MOYENNE et tombe sur le ZÉRO : les trois autres
+matières atterrissent *indépendamment* entre 8,5 % et 9,0 %, et une convention
+d'échelle expliquerait un écart, pas une absence complète. Deux des quatre axes
+ne dépendent d'ailleurs d'**aucune** étiquette : un tiers des items par notion,
+deux tiers des barreaux.
+
+### Ce qui rend le constat difficile à écarter
+
+**Trois mesures conçues séparément isolent le même sous-ensemble :**
+
+1. **Le sommet** (§11.114) — la rampe atteint un sujet de bac sourcé dans
+   47/62 notions. SVT : **0/11**.
+2. **Les points d'arrêt** (§11.37) — 13 leçons sans aucun point d'arrêt.
+   **11 des 13 en SVT.**
+3. **L'entrée** (ici) — 12 notions sans marche basse. **11 des 12 en SVT.**
+
+Une notion SVT n'a donc, en moyenne : pas de marche d'entrée, un tiers du
+volume, une rampe deux fois moins pentue, pas de point d'arrêt, pas de sommet
+sourcé. **Ce ne sont pas onze défauts — c'est un standard de fabrication qui
+n'a pas été appliqué à une matière**, et cela se tranche au niveau du
+propriétaire (`docs/audits/rampe-entree-2026-09-20.md`).
+
+### L'exception hors SVT
+
+`philo/analyse-de-texte` est la seule notion non-SVT dans les deux listes, et
+la plus plate du corpus entier : **pente +0,00 sur sept barreaux** (2,0 · 2,6 ·
+2,0 · 2,9 · 3,0 · 2,7 · 2,0). Elle finit exactement où elle commence. Lecture
+indulgente : l'analyse de texte est une méthode, chaque barreau travaillant un
+geste différent plutôt qu'un geste plus dur. Si c'est l'intention, elle mérite
+d'être écrite — aucun lecteur du fichier ne peut la deviner.
+
+### Ce qui est armé, et ce qui ne l'est pas
+
+Deux cliquets à une seule direction, sur le modèle de `rampe-bac` : les notions
+sans marche d'entrée ne peuvent pas dépasser **12**, les rampes plates **4**. Le
+second sens existe parce que le premier se satisfait d'UN item de niveau 1 posé
+en tête d'une notion par ailleurs plate. Essais rouges **§11.119a/b** — suite
+25 → **27**, batterie locale 19 → **20 portes**.
+
+**Aucune porte n'exige qu'une notion SVT rattrape les autres.** Ce serait onze
+portes rouges le jour de leur pose, et une porte rouge en permanence n'est plus
+une porte : c'est du bruit qu'on apprend à ignorer.
+
+### Le cliquet posé depuis la mesure, et non depuis l'attente
+
+J'avais écrit `sansMarche: 11` — le nombre que j'attendais, les onze SVT. La
+mesure en donne **12** : `philo/analyse-de-texte` en fait partie. Un cliquet à
+11 aurait été *sous* l'état réel… et donc rouge dès sa pose, ce qui se voit ;
+l'inverse — un cliquet posé à 13 « pour avoir de la marge » — n'aurait rien vu
+de la treizième notion à perdre sa marche. C'est la même faute qu'une heure
+plus tôt (`inter: 2` pour une mesure à 1, §11.118), et la règle qui en sort est
+simple : **un cliquet se lit dans la sortie de l'instrument, jamais dans le
+souvenir de ce qu'on croit avoir compté.**

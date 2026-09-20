@@ -216,6 +216,24 @@
       "de": "      Quel est le reste de la division de $2^{2023}$ par $3$ ?",
       "vers": "      Dans la division euclidienne de $250$ par $7$, quel est le reste ?",
       "note": "Cliquet, pas porte franche : le corpus en porte 1 intra + 1 inter au 2026-09-20, consignés pour le propriétaire (spec-level). Le cliquet dit seulement qu'ils ne peuvent pas AUGMENTER."
+    },
+    {
+      "id": "§11.119a",
+      "quoi": "la seule marche basse d'une notion disparaît — plus aucun item de niveau 1 au premier barreau",
+      "porte": "node scripts/rampe-entree.mjs --porte",
+      "fichier": "../content/maths/limites-continuite/items.yaml",
+      "de": "  - id: LIMCONT-7\n    rung: \"R0\"\n    difficulty_level: 1",
+      "vers": "  - id: LIMCONT-7\n    rung: \"R0\"\n    difficulty_level: 3",
+      "note": "L'ancre porte l'id ET le barreau : `difficulty_level: 1` seul apparaît des dizaines de fois dans le fichier, et casser la mauvaise occurrence est le piège de §11.112."
+    },
+    {
+      "id": "§11.119b",
+      "quoi": "le sommet d'une rampe redescend au niveau de son entrée — la notion ne monte plus",
+      "porte": "node scripts/rampe-entree.mjs --porte",
+      "fichier": "../content/svt/role-enzymes/items.yaml",
+      "de": "  - id: RE-6\n    rung: \"R6\"\n    difficulty_level: 4",
+      "vers": "  - id: RE-6\n    rung: \"R6\"\n    difficulty_level: 1",
+      "note": "Le SECOND sens : le premier cliquet se satisfait d'UN item de niveau 1 posé en tête d'une notion par ailleurs plate."
     }
   ]
 }
