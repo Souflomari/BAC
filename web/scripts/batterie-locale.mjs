@@ -109,6 +109,12 @@ const HORS_CHAMP = new Set([
   // (§11.150). Son rouge se rejoue : `--essai-rouge` fabrique un désaccord sur
   // la seule page d'accueil et exige que le balayage la signale, elle seule.
   "desaccords-hydratation.mjs",
+  // trois-moteurs demande DEUX moteurs absents de l'image (firefox, webkit) et,
+  // pour WebKit, des paquets système installés par apt. Hors champ ici ET hors
+  // CI — ce choix est écrit dans INSTRUMENTS avec ce qu'il coûte, plutôt que
+  // laissé à deviner (§11.151). Les commandes d'installation sont dans son
+  // en-tête ; son rouge se rejoue par `--essai-rouge`.
+  "trois-moteurs.mjs",
 ]);
 
 function dossiersNotions() {

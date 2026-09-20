@@ -11645,3 +11645,90 @@ le verrait pas. Et il mesure un `next start` local, pas l'artefact déployé.
 En CI, cliquet à 0, suivi de l'essai rouge dans la même étape : une porte dont
 le rouge est rejoué à chaque passage ne peut pas devenir inerte sans qu'on le
 sache.
+
+## §11.151 — Le produit ouvert, pour la première fois, ailleurs que dans Chromium
+
+Tout ce que ce dépôt a mesuré l'a été dans un seul moteur. Les 279 contrôles de
+`dom-truth`, les 258 figures certifiées aux pixels, le zoom à 400 %, les
+balayages téléphone, les campagnes de contraste : **Chromium, toujours**. Un
+élève qui ouvre le site sur l'iPhone d'un grand frère lit du WebKit ; sur un
+Firefox Android, du Gecko. Ni l'un ni l'autre n'avait jamais été ouvert.
+
+Ce n'est pas un raffinement. Le produit repose sur cinq endroits où les moteurs
+divergent historiquement : **KaTeX**, les colonnes en `ch`,
+**`content-visibility`** pour les chapitres repliés (§11.56), l'en-tête collant,
+et le **script de thème avant peinture**.
+
+Les deux moteurs ne sont pas dans l'image. Ils s'installent :
+
+```
+PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=0 PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers \
+  npx playwright@1.61.1 install firefox webkit
+PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers npx playwright@1.61.1 install-deps webkit
+```
+
+WebKit **refuse de démarrer** sans la seconde commande (gstreamer, enchant,
+woff2, x264…) ; Firefox démarre sans rien de plus. Obtenus : Firefox 151,
+WebKit 26.5.
+
+### Ce que ça dit
+
+`trois-moteurs.mjs` compare un vecteur de faits objectifs sur 5 pages × 3
+moteurs, à 390×844, thème système sombre. **Aucune divergence sur les huit
+classes armées**, trois passages identiques :
+
+| | chromium | firefox | webkit |
+|---|---|---|---|
+| formules KaTeX (leçon de maths) | 1 051 | 1 051 | 1 051 |
+| erreurs de formule | 0 | 0 | 0 |
+| thème avant peinture appliqué | oui | oui | oui |
+| chapitres repliés qui peignent | 0 | 0 | 0 |
+| exceptions | 0 | 0 | 0 |
+| titres / liens | identiques | identiques | identiques |
+
+C'est une **parité**, pas une correction : une valeur identique partout ne dit
+pas qu'elle est bonne, seulement qu'elle est la même. Les deux énoncés sont
+vrais et il faut les garder séparés (ADR 0031).
+
+### Les 5 px de WebKit : la barre, pas le produit
+
+WebKit affichait 380 px de colonne principale là où les deux autres affichent
+390, et 5 px de défilement horizontal sur les leçons là où les autres affichent
+0. **Avant d'appeler ça un défaut Safari, je l'ai ouvert** :
+
+```
+  chromium : innerWidth=390 · clientWidth=390 · scrollWidth=390 · barre=0px
+  webkit   : innerWidth=390 · clientWidth=380 · scrollWidth=385 · barre=10px
+```
+
+Le WebKit de Playwright sous Linux peint une barre de défilement **classique**
+de 10 px, qui retire 10 px au viewport de mise en page. Les seuls éléments qui
+dépassent cette largeur — un SVG de figure à 656 px — la dépassent dans les
+**trois** moteurs, à l'intérieur d'un conteneur qui défile : c'est le dessin
+voulu. Les 5 px sont la barre. L'instrument mesure et AFFICHE désormais la
+largeur de cette barre, juste au-dessus des deux lignes qu'elle explique, pour
+que personne ne les relise comme un défaut.
+
+**Et ce que ce banc ne peut pas dire** : ce que fait Safari sur un vrai iPhone,
+dont la barre est en surimpression et ne prend aucune largeur. Le WebKit de
+Linux est le même moteur dans un autre portage — pas le même navigateur.
+
+### L'essai rouge a rapporté un fait de plus
+
+Priver WebKit de ses morceaux de JavaScript doit faire diverger `hydratee` —
+c'est le but. Il a aussi fait diverger `liens`, de **+1 sur les cinq pages**.
+Vérifié en le lisant plutôt qu'en le supposant : le lien supplémentaire est
+« **Recharger** », et il est le **premier du document**. C'est la veille
+d'hydratation de §11.29, qui fonctionne donc aussi dans WebKit, et qui place sa
+sortie de secours là où un élève au clavier la trouve d'abord.
+
+L'essai rouge ATTEND désormais ce +1 au lieu de l'exclure : s'il disparaissait,
+la veille aurait cessé de marcher dans ce moteur, et l'essai le dirait.
+
+### Ce qui reste
+
+Cinq pages, un seul gabarit, un seul thème. Ni les figures aux pixels, ni le
+clavier, ni le lecteur d'écran ne sont rejoués dans les trois moteurs. Et
+l'instrument est **hors CI délibérément** : deux moteurs à télécharger et une
+installation apt pour WebKit — le coût est écrit à côté de ce qu'il garde,
+plutôt que laissé à deviner (ADR 0036 §8).
