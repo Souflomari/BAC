@@ -2443,8 +2443,8 @@ for (const dir of dirs) {
         for (const m of ligne.matchAll(/(?:^|[\s`(])((?:web\/)?scripts\/[\w./-]+\.mjs)/g)) {
           const rel = m[1];
           //  Résolution depuis la RACINE, sans repli sur `web/` : le dépôt a un vrai
-          //  répertoire `scripts/` à la racine, donc « scripts/X.mjs » n'est pas une
-          //  abréviation de « web/scripts/X.mjs » — c'est un autre chemin, qui est faux.
+          //  répertoire `scripts/` à la racine, donc « scripts/<nom> » n'est pas une
+          //  abréviation de « web/scripts/<nom> » — c'est un autre chemin, qui est faux.
           //  Tolérer le repli rendrait la porte incapable de voir le défaut qu'elle vise.
           if (!fs.existsSync(path.join(REPO, rel))) {
             console.error(

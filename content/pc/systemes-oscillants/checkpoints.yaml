@@ -32,14 +32,32 @@ skill_code: pc_systemes_oscillants
 #   (M-OSC-* ; SO-26/D and SO-35/D keep their boundary/dual tags). No end-bank
 #   tally is adjusted — inline surfacing does not double-count.
 #
-# cp-r0-predict is an ORIGINAL commit item (not in the end bank). Its distractors
-# are the lesson's R0 naive models (retour-et-arrêt / fuite / arrêt avant
-# l'équilibre). These are MECHANISM-level predictions that PREDATE the notion's
-# amortissement/résonance misconception inventory (which is entirely M-OSC-AMO-*
-# / M-OSC-RES-*, from R6/R7) — so they carry `misconception: null` and are
-# surfaced by their model-naming feedback, exactly as the RLC/rc-charge
-# cp-r0-predict exemplars do for their untagged mechanism lures. Honest, not a
-# faked tag.
+# cp-r0-predict is an ORIGINAL commit item (not in the end bank). Its three
+# distractors are the lesson's R0 naive models (retour-et-arrêt / fuite / arrêt
+# avant l'équilibre), et ils portent `misconception: M-OSC-LIBRE-1`.
+#
+# CORRIGÉ le 2026-09-20 — la note précédente les laissait à `null` en affirmant
+# que l'inventaire de la notion est « entirely M-OSC-AMO-* / M-OSC-RES-*, from
+# R6/R7 ». MESURÉ : c'est faux. M-OSC-LIBRE-1 existe, sept autres distracteurs
+# le portent, et sa propre `description` décrit MOT POUR MOT ces trois modèles —
+# « arrête le mobile à l'équilibre (« c'est là que le ressort ne tire plus »),
+# le fait s'immobiliser avant d'y arriver, ou lui fait perdre (voire gagner) de
+# l'amplitude ». Son `contradicts_principle` est exactement le retour du
+# distracteur B : « à l'équilibre la FORCE est nulle, pas la VITESSE ».
+#
+# Le précédent invoqué ne tenait pas non plus : rc-charge/cp-r0 tague 3 de ses 3
+# distracteurs, rlc-serie 1 de 2. Conséquence réelle, pas formelle : la porte
+# d'engagement de l'accroche — le seul endroit où l'élève se prononce AVANT la
+# révélation — ne produisait aucun signal diagnostique.
+#
+# RESTENT SANS TAG, et délibérément : SO-26/D, cp-r6-regimes/D (« amorti ;
+# critique ; forcé ») et SO-27/D (une pseudo-période fermée T = f(m,h,k)). Ce ne
+# sont pas des modèles conceptuels mais des LEURRES DE FRONTIÈRE — ils tentent
+# l'élève avec ce que le programme exclut, et aucune des treize familles
+# déclarées ne les décrit. Les forcer dans M-OSC-AMO-2 (« ordre des régimes
+# inversé ») achèterait un vert en rangeant le défaut là où plus personne ne le
+# regarde. La note précédente affirmait d'ailleurs que « SO-26/D garde son tag
+# de frontière » : il n'en a aucun.
 #
 # Boundary guard (spec-extension.md §0.5 / §2 / §3): résonance stays QUALITATIVE
 # — no forced-regime ODE, no closed-form A(ω), no facteur de qualité. Amortissement
@@ -92,7 +110,7 @@ checkpoints:
           Il revient à l'équilibre et s'y arrête définitivement : c'est là que le
           ressort n'exerce plus aucune force.
         correct: false
-        misconception: null
+        misconception: M-OSC-LIBRE-1
         feedback: |
           Modèle détecté : on confond « force nulle » et « vitesse nulle ». À
           l'équilibre, le ressort ne pousse plus, c'est vrai — mais le chariot y
@@ -105,7 +123,7 @@ checkpoints:
           Il revient à l'équilibre, le dépasse, puis continue indéfiniment dans le
           même sens en s'éloignant de plus en plus.
         correct: false
-        misconception: null
+        misconception: M-OSC-LIBRE-1
         feedback: |
           Modèle détecté : le mouvement « s'échappe ». Impossible : dès que le
           chariot dépasse l'équilibre, le ressort change de côté (comprimé au lieu
@@ -118,7 +136,7 @@ checkpoints:
           Il ralentit et s'arrête avant même d'atteindre l'équilibre, car le
           ressort perd de sa force en se détendant.
         correct: false
-        misconception: null
+        misconception: M-OSC-LIBRE-1
         feedback: |
           Modèle détecté : « moins de force ⇒ arrêt ». C'est l'inverse : à mesure
           que le chariot s'approche de l'équilibre, la force de rappel diminue,

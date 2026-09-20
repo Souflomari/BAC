@@ -46,6 +46,11 @@ const ETAPES = [
   // Énumérateur de routes que l'étape dom-truth consomme : sans navigateur,
   // et le lancer attrape un plantage de l'énumérateur avant la CI.
   { nom: "routes-examens", cmd: ["scripts/routes-examens.mjs"] },
+  // La porte des portes (ADR 0033) : elle lance validate-content sous
+  // couverture V8 et signale toute porte dont le SCAN ne tourne sur rien.
+  // Sans navigateur, et c'est le seul contrôle qui puisse dire qu'un ✓ ne
+  // vaut rien — il a donc sa place ici plus qu'ailleurs.
+  { nom: "portee-portes", cmd: ["scripts/portee-portes.mjs"] },
 ];
 
 // Hors champ ASSUMÉ : navigateur ou build requis. Leur absence est un choix.
@@ -53,6 +58,10 @@ const HORS_CHAMP = new Set([
   "dom-truth.mjs", "figure-preview.mjs", "copie-maths.mjs", "impression.mjs",
   "zoom-sweep.mjs", "formules-rendues.mjs", "ancres-uniques.mjs",
   "donnees-sweep.mjs", "typo-francaise.mjs", "accents-manquants.mjs",
+  // liens-internes démarre `next start` et pilote un navigateur sur 111 pages :
+  // il lui faut donc un build ET Playwright. Hors champ pour la même raison que
+  // dom-truth, et non par oubli.
+  "liens-internes.mjs",
 ]);
 
 function dossiersNotions() {

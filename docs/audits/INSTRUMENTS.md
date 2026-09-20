@@ -590,7 +590,7 @@ point d'échec du script, examine la région à compteur zéro qui l'entoure.
 
 ```
 node scripts/portee-portes.mjs            # défaut : validate-content sur les 62 notions
-node scripts/portee-portes.mjs --script scripts/autre-porte.mjs --seuil 30
+node scripts/portee-portes.mjs --script scripts/<une-autre-porte> --seuil 30
 ```
 
 **État au 2026-09-20 :** 73 points d'échec, **0 porte morte**. 39 de portée
