@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 135 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 136 entrées.
 > **Un propriétaire qui revient lit d'abord
 > `docs/audits/DECISIONS-EN-ATTENTE.md`** — la liste, en une page, de ce qui
 > attend un arbitrage et de ce que coûte chaque attente. Rien n'y est en train
@@ -10937,4 +10937,48 @@ manipulable livré manipule la bonne grandeur.
 **Porte d'owner (`DECISIONS-EN-ATTENTE` §10) :** rendre les six, ou les accepter
 comme définitifs — et le dire alors dans les specs, qui continuent de prescrire
 un embed.
+
+## §11.136 — L'étiquette de conception et l'item qui l'implémente
+
+Troisième écart prescription/livraison de la journée, après les manipulables
+(§11.135). Les specs de notion désignent les items qu'elles prescrivent par une
+étiquette : « **Item AE-R5-1** *(Résolution — the derivation / the ½)* ». Vingt
+de ces étiquettes, dans quatre notions de physique, ne correspondent à AUCUN
+identifiant du corpus.
+
+**LA PÉDAGOGIE EST LIVRÉE, et il faut le dire avant le compte**, sinon vingt se
+lit comme un trou de contenu. `aspects-energetiques` porte exactement 3 items
+en R5, 3 en R6, 3 en R7 — les neuf que la spec appelait `AE-R5-1 … AE-R7-3`.
+`systemes-oscillants` en porte 14 en R6 et 10 en R7 là où la spec en demandait
+3 et 3. Les barreaux visés sont couverts partout. **L'élève ne perd rien.**
+L'auteur a simplement écrit les items sous un schéma plat (`AE-7`, `SO-12`,
+`CMP-3`, `OMPP-5`) quand la spec les avait nommés par barreau.
+
+**Ce qui manque est la TRAÇABILITÉ.** Un lecteur qui veut vérifier qu'une
+figure « sert CH-FR-3 » ne peut pas remonter à l'item : l'identifiant n'existe
+sous aucune forme. La vérification est *impossible*, pas fausse — et c'est
+exactement ce qui m'est arrivé en voulant contrôler les trois substitutions de
+manipulables du §11.135.
+
+**UN CLIQUET, PAS UNE PORTE FRANCHE, et c'est délibéré.** Vingt étiquettes sont
+dans cet état ; une porte franche serait ROUGE en permanence, et un rouge
+permanent est un rouge qu'on apprend à ignorer — le projet l'écrit déjà d'une
+autre porte (`DECISIONS-EN-ATTENTE` §7). Le cliquet à 20 empêche seulement la
+dérive de GRANDIR : une spec neuve doit nommer un item qui existe. La dette
+héritée reste lisible, datée, et ne bloque personne.
+
+**Le banc, encore, et l'erreur était instructive.** Ma première mesure ne
+trouvait que 22 étiquettes suspectes en exigeant que le PRÉFIXE cité existe
+déjà dans la notion — ce qui rendait l'instrument **structurellement incapable
+de voir une famille entière jamais créée**. `CH-FR-3` était invisible parce
+qu'aucun item ne commence par `CH` : précisément le cas qui compte. Un filtre
+qui demande à la famille d'exister déjà ne verra jamais la famille qui n'a
+jamais existé. Remplacé par un ancrage sur le VERBE D'USAGE (« sert X »,
+« Item X »), qui ne présume rien du corpus.
+
+**PORTÉE.** Seules les citations portant un verbe d'usage sont lues — une
+étiquette posée sans verbe échappe. L'instrument ne dit pas QUEL item
+implémente quelle étiquette : cette correspondance demande de lire le type
+cognitif décrit (« Résolution », « Utilisation »), donc un jugement d'auteur.
+Et il ne juge pas si l'item livré fait ce que l'étiquette décrivait.
 
