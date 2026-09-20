@@ -8554,3 +8554,129 @@ quatre familles recommandées sont portées par huit à douze distracteurs chacu
 le plancher est franchi dès le premier passage — **à condition de déclarer ET
 taguer dans le même geste**. Déclarer sans taguer laisse la porte rouge ; taguer
 sans déclarer est le diagnostic sans libellé.
+
+---
+
+## §11.103 — Le troisième tell : le choix qui refuse de conclure n'est jamais vrai
+
+**Sept candidats passés au même protocole**, sur les 1 974 items du corpus à
+clé unique. Un tell « tire » quand il désigne EXACTEMENT UN choix ; on compte
+alors combien de fois ce choix est la clé, contre le hasard pondéré par le
+nombre de choix de chaque item.
+
+| tell | tire | clé | hasard | marge |
+|---|---:|---:|---:|---:|
+| **un seul choix REFUSE de s'engager** | **221** | **4 %** | 25 % | **−21 pts** |
+| un seul choix porte une formule | 122 | 57 % | 25 % | +31 pts |
+| un seul choix n'en porte PAS | 168 | 5 % | 25 % | −20 pts |
+| le clang (un mot ≥6 du tronc reparaît) | 266 | 14 % | 25 % | −11 pts |
+| un seul choix nie | 535 | 28 % | 25 % | +3 pts |
+| trois choix commencent pareil, un diffère | 418 | 27 % | 25 % | +2 pts |
+| un seul choix est au pluriel | 176 | 28 % | 25 % | +3 pts |
+
+Les trois derniers sont du bruit (±4 à ±7 points à 95 %). Les quatre premiers
+ne le sont pas — et **ils disent tous la même chose dans des mots différents.**
+
+### Ce que la notation cachait
+
+« Un seul choix porte une formule → c'est la clé 57 % du temps » ressemble à un
+tell typographique. Ce n'en est pas un. Le signe que l'élève repère n'est pas le
+symbole : c'est l'**engagement**. Un choix qui répond $v^2/r$ s'engage. Un choix
+qui répond « impossible à savoir sans refaire le calcul » ne s'engage pas. La
+notation n'était qu'un PROXY, et un proxy bruité ; mesuré directement, le refus
+est beaucoup plus net.
+
+### Le fait, mesuré au motif ANCRÉ
+
+**Dans 150 items, exactement un choix refuse de conclure. Il est la bonne
+réponse DEUX fois.** 99 % de fiabilité d'élimination, contre 25 % au hasard. Un
+élève qui n'a rien révisé et qui barre ce choix sans le lire a raison 99 fois
+sur 100, et passe de 25 % à 33 % sur ces items-là.
+
+**Dix-neuf notions** (≥4 items qui tirent) ne l'ont JAMAIS mis en bonne réponse.
+`pc/reactions-acido-basiques` 13 fois sur 13. `pc/rotation-axe-fixe` 11 sur 11.
+`pc/aspects-energetiques` 10 sur 10.
+
+Les deux exceptions de tout le corpus, et ce sont de bons items :
+`maths/suites-numeriques` SUITES-2 (« être bornée n'a aucun lien direct avec le
+sens de variation ») et `pc/evolution-spontanee` cp-r0-predict (« il faut
+comparer le $Q_{r,i}$ de ce nouveau mélange à… »).
+
+### Ce que ce N'EST PAS
+
+**Ce n'est pas un corpus bâclé.** 143 des 148 distracteurs de refus portent un
+`misconception:` — 97 %. « Croire qu'il manque une donnée » est traité comme la
+vraie erreur d'élève qu'elle est.
+
+**Le défaut n'est donc pas qu'ils existent. C'est qu'ils ne sont jamais vrais.**
+Savoir reconnaître qu'on ne peut pas conclure est une compétence évaluée au bac
+— forme indéterminée en analyse, données insuffisantes en physique. Un corpus où
+le refus est faux 148 fois sur 150 enseigne, sans le vouloir, l'exact contraire :
+*quand tu ne sais pas, ne choisis jamais « je ne peux pas conclure ».*
+
+### Le motif ancré — et l'erreur qu'il a corrigée chez moi
+
+Le premier motif écrit n'était pas ancré. Il comptait AR-19 comme un refus :
+
+> « Non : $\mathrm{PGCD}(4,6)=2 \neq 1$, donc on ne peut pas conclure —
+> contre-exemple : $12$ »
+
+Ce choix contient le mot à mot du refus et n'en est pas un : il **tranche**, le
+prouve, et donne un contre-exemple. Un élève ne peut pas le barrer à vue.
+**L'en-tête du fichier décrivait déjà cette exclusion ; le code ne la faisait
+pas** — et l'instrument comptait ainsi à son crédit le seul cas de
+`maths/arithmetique` où « le refus est la clé ». La note disait vrai de
+l'intention et faux du code : exactement le défaut que les portes de §11.99
+traquent ailleurs, retrouvé chez moi dans l'heure.
+
+Ancrer le motif au DÉBUT de la proposition (après retrait d'une amorce courte
+— « Rien : », « Non, ») a resserré la mesure de 221 items / 97 % à **150 items /
+99 %** : moins de portée, plus de vérité.
+
+### Ce que `indice-absolu` voyait déjà — mesuré, pas supposé
+
+Sa liste contient « impossible » et « aucun ». Sur les 221 items du motif large,
+il en tire **91 (41 %)** ; **130 lui sont invisibles**. Et même sur les 91, il
+répond à une autre question — « un seul choix sur-affirme-t-il ? » — dont le
+cliquet ne bouge pas quand celui-ci empire. **C'est le troisième cas d'ADR 0033
+(« exacte sur une autre question »), et il n'y a rien à réparer dans
+`indice-absolu` : il fait son travail. Il n'a simplement jamais fait celui-ci.**
+
+### La porte, deux sens, les deux vérifiés ROUGE
+
+`web/scripts/indice-refus.mjs --porte`, dans `gates.yml` et dans
+`batterie-locale` (13 portes). Un seul sens se contourne (ADR 0031) :
+
+- **Le NOMBRE** d'items où le tell tire ne remonte pas. Sans ce sens, un auteur
+  ajoute dix refus de plus à fiabilité constante : le corpus empire, la porte
+  reste verte. *Essai rouge : un distracteur ordinaire de `svt/genetique-humaine`
+  réécrit en « On ne peut pas conclure sans refaire le croisement » → ROUGE.*
+- **La FIABILITÉ** de l'élimination ne remonte pas. Sans ce sens, on rend chaque
+  refus plus systématiquement faux à nombre constant. *Essai rouge : le seul
+  refus VRAI de `maths/suites-numeriques` réécrit pour n'en plus être un → 50 %
+  → 100 % → ROUGE.*
+
+Les deux essais faits avec `essai-rouge.mjs`, restauration octet pour octet
+vérifiée.
+
+### Ce qui reste, et pourquoi je ne l'ai pas fait
+
+**La campagne est du CONTENU, et d'un genre que la campagne de longueur n'était
+pas.** Rallonger un distracteur préserve ce qu'il teste. Remplacer « on ne peut
+pas conclure » par une réponse engagée CHANGE la misconception évaluée — et
+143 des 148 portent déjà un tag, donc chaque remplacement défait un diagnostic
+existant.
+
+Deux routes, et elles ne coûtent pas la même chose :
+
+1. **Rendre le refus vrai quelques fois.** Écrire des items réellement
+   sous-déterminés, où « on ne peut pas conclure » EST la réponse. C'est la
+   route qui répare l'apprentissage plutôt que de masquer le tell — et c'est de
+   l'écriture d'items neufs.
+2. **Réduire le recours au refus.** Remplacer une part des 148 par des erreurs
+   engagées. Moins cher, mais chaque remplacement retire une misconception de
+   l'inventaire : à arbitrer contre le plancher de trois.
+
+**Le cliquet tient la dette en place en attendant.** Elle ne peut plus grossir
+dans aucun des deux sens.
+
