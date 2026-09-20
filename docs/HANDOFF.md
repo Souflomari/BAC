@@ -12167,3 +12167,52 @@ retiré **seulement si le fichier commence par lui**. Le balayage est passé de
 boîtes de figures et §11.158 pour les calculs) : *quand une mesure paraît
 propre, vérifier d'abord qu'elle a REGARDÉ.* Et le seul outil qui l'a dit à
 chaque fois, c'est l'essai rouge — pas la relecture.
+
+## §11.160 — La portée de la leçon des trois masques : quatre portes en dépendaient sans le dire
+
+§11.158 et §11.159 ont trouvé la même faute deux fois : un appariement de `$`
+qui avale la prose. La question suivante n'est pas « où l'ai-je encore faite »
+mais **qui d'autre en dépend**. Quatre portes DÉJÀ ARMÉES retirent les maths
+avant de lire le texte, toutes avec le même motif :
+
+```
+  validate-content · eleve-ruse · accents-campagne · dom-truth
+      .replace(/\$[^$]*\$/g, " ")
+```
+
+Ce motif apparie de gauche à droite. Tant que chaque champ a un nombre **pair**
+de `$`, il retire exactement les formules. Un seul dollar orphelin, et il avale
+tout le texte jusqu'au suivant : les quatre portes **cessent silencieusement de
+lire ce passage, en restant vertes**.
+
+### Ce que j'ai failli conclure, et ce que la mesure a dit
+
+Premier relevé, sur les fichiers : **1 326 lignes, dans 87 fichiers**, portent un
+nombre impair de `$`. J'étais prêt à écrire que quatre portes armées étaient
+aveugles sur une partie du corpus, et à les réparer toutes les quatre.
+
+La mesure juste n'est pas celle du FICHIER, c'est celle du CHAMP — parce que
+c'est le champ que ces portes reçoivent :
+
+```
+  212 fichiers YAML · 73 611 champs de texte · 0 champ impair
+```
+
+Les 1 326 lignes sont des formules **pliées** dans un bloc YAML : le fichier est
+impair ligne à ligne, le champ ne l'est pas, et YAML le rejoint avant que la
+porte ne le voie. **Les quatre portes ne sont pas aveugles.** Le refactor que
+j'allais faire aurait été du bruit — et il aurait pu casser le seul cas qui
+marche, puisque dans un champ la formule pliée EXIGE que le motif franchisse le
+saut de ligne (la parade des fichiers markdown, « ne jamais apparier au-delà
+d'une ligne », est ici exactement le mauvais geste).
+
+### Ce qui restait vrai quand même
+
+La propriété tient **aujourd'hui**, et rien ne la tenait. Un seul champ mal
+écrit, un jour, et quatre portes se taisent sans que personne ne le sache.
+`dollars-apparies.mjs` la tient désormais : cliquet à 0, en CI et dans la
+batterie, avec son essai rouge — un `$` orphelin injecté dans un champ, la porte
+doit crier (§11.160 dans la suite rejouable).
+
+C'est la forme la plus utile qu'un audit puisse prendre : **ne pas réparer ce
+qui n'est pas cassé, et garder la condition qui le maintient ainsi.**

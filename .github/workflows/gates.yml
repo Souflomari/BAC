@@ -298,6 +298,17 @@ jobs:
       - name: "Prose jumelle entre leçons (deux cliquets)"
         run: npm run prose-jumelle
 
+      # PORTE « DOLLARS APPARIÉS » (2026-09-20, §11.160). Quatre portes déjà
+      # armées — validate-content, eleve-ruse, accents-campagne, dom-truth —
+      # retirent les maths avec `/\$[^$]*\$/g` avant de lire le texte. Ce motif
+      # apparie de gauche à droite : tant que chaque champ a un nombre PAIR de
+      # « $ », il retire exactement les formules ; un seul dollar orphelin et il
+      # avale tout le passage suivant, si bien que les quatre portes cessent
+      # silencieusement de le lire — en restant VERTES. Mesuré : 73 611 champs,
+      # 0 impair. La propriété tient ; rien ne la tenait. Cliquet à 0.
+      - name: "Dollars appariés dans les champs de contenu (cliquet 0)"
+        run: npm run dollars-apparies
+
       # PORTE FIGURES (2026-09-04). figure-preview mesure sept classes de
       # défaut sur les 258 SVG statiques ; CINQ sont armées, et seulement
       # parce qu'elles sont propres dans les DEUX thèmes :

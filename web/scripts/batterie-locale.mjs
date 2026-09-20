@@ -88,6 +88,9 @@ const ETAPES = [
   { nom: "calculs-numeriques", cmd: ["scripts/calculs-numeriques.mjs", "--porte"] },
   // Deux leçons qui écrivent la même prose : pur Node, quelques secondes.
   { nom: "prose-jumelle", cmd: ["scripts/prose-jumelle.mjs", "--porte"] },
+  // La dépendance CACHÉE de quatre portes armées : un « $ » orphelin dans un
+  // champ leur fait avaler le passage suivant, en restant vertes (§11.160).
+  { nom: "dollars-apparies", cmd: ["scripts/dollars-apparies.mjs", "--porte"] },
   // La suite d'essais rouges (ADR 0034) : elle casse une occurrence, mesure, et
   // restaure. Sans navigateur, et c'est le seul contrôle qui réponde à « mes
   // portes peuvent-elles encore crier ? » — la question qu'aucune porte ne pose
