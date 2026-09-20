@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 139 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 140 entrées.
 > **Un propriétaire qui revient lit d'abord
 > `docs/audits/DECISIONS-EN-ATTENTE.md`** — la liste, en une page, de ce qui
 > attend un arbitrage et de ce que coûte chaque attente. Rien n'y est en train
@@ -11137,4 +11137,41 @@ branche de travail et se redéploie quelques minutes après chaque `git push` �
 `bb9af56` à 19 h 56, `d1e2919` à 20 h 15. C'est cohérent avec un flux de
 preview ; c'est écrit ici parce qu'un déploiement continu d'une branche non
 relue est le genre de chose qu'on préfère savoir que découvrir.
+
+## §11.140 — L'anatomie d'une leçon, re-mesurée : §11.69 confirmé au nombre près
+
+Contrôle de l'anatomie que la VISION décrit, sur les 62 leçons :
+
+- **La numérotation des barreaux n'a AUCUN trou** : 62 leçons sur 62, la suite
+  des codes `R<n>` est contiguë du premier au dernier. Une rampe dont il
+  manquerait un barreau n'existe pas dans ce corpus.
+- **61 leçons sur 62 nomment leur R0 « Accroche »**. La 62ᵉ,
+  `maths/probabilites-conditionnelles`, écrit « Le déclencheur : une question
+  qui va te surprendre » — un synonyme, pas un manque. Aucune correction : on
+  ne renomme pas le chapitre de quelqu'un pour uniformiser un mot.
+- **16 items visent un barreau sans chapitre** — et ce sont **exactement** les
+  16 du §11.69, notion par notion et barreau par barreau : `derivabilite-
+  etude-fonctions` R6×7, `limites-continuite` R7×3 + R-bac×1,
+  `probabilites-conditionnelles` R6×3 + R7×2. **La classe n'a pas bougé depuis
+  qu'elle a été consignée.** Une re-mesure indépendante qui retrouve le même
+  nombre EST un résultat : la porte d'owner §11.69 est toujours exactement ce
+  qu'elle dit être, ni plus ni moins.
+
+**Sauf que ma première mesure annonçait 39, et 23 étaient faux.** Mon motif
+n'acceptait que `## R<n>`. `probabilites-conditionnelles` range ses barreaux en
+`### R1 … ### R5` **sous un `## Décortiquer`** — une anatomie parfaitement
+légitime, et invisible à un motif qui présume le niveau de titre. J'allais
+écrire que la classe avait plus que doublé. Le validateur, lui, lisait déjà
+`^#{1,6}` : **il avait raison et c'est mon banc qui avait tort**, pour la
+quatrième fois de la journée et toujours de la même façon — la bonne chose
+cherchée sous une seule de ses formes.
+
+**Ce qui change quand même : le cliquet.** `validate-content` signalait la
+classe en AVERTISSEMENT, et une fois par BARREAU (5 lignes pour 16 items). Or
+§11.69 a été trouvé, je cite, « en triant les AVERTISSEMENTS du validateur —
+ceux que personne ne relit parce qu'ils ne bloquent rien ». Un second sens de
+`tracabilite-spec` compte désormais les ITEMS et **bloque à 16** : la dette
+reste lisible et ne peut plus grandir en silence. Franche impossible — c'est
+une porte d'owner ouverte, et un rouge permanent est un rouge qu'on apprend à
+ignorer. Essai rouge §11.140.
 

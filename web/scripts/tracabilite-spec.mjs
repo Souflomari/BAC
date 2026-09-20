@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 /**
- * tracabilite-spec — de l'étiquette de conception à l'item qui l'implémente.
+ * tracabilite-spec — les renvois de STRUCTURE qui ne résolvent pas.
+ *
+ * Deux paires, même espèce : une référence qu'on ne peut pas suivre.
+ *   SENS 1 — l'étiquette de conception d'une spec et l'item qui l'implémente.
+ *   SENS 2 — le barreau qu'un item vise et le chapitre qui devrait le porter.
  *
  * CE QUE C'EST, ET CE QUE CE N'EST PAS. Les specs de notion désignent les
  * items qu'elles prescrivent par une étiquette de conception :
@@ -46,6 +50,11 @@ const CONTENU = path.resolve(ICI, "..", "..", "content");
 const PORTE = process.argv.includes("--porte");
 //  Mesuré au 2026-09-20 sur 4 notions de physique. Il ne doit que DESCENDRE.
 const CLIQUET = 20;
+//  SENS 2 — mesuré au 2026-09-20, et c'est exactement le compte du §11.69,
+//  retrouvé notion par notion et barreau par barreau : 7 + 4 + 5. La classe
+//  n'a pas bougé depuis qu'elle a été consignée. C'est une PORTE D'OWNER
+//  ouverte (rattachement éditorial), donc un cliquet et non une porte franche.
+const CLIQUET_BARREAUX = 16;
 
 const CITATION = /(?:[Ss]ert|[Ss]ervent|[Ii]tems?|[Cc]onfronte|[Cc]ouvre|[Vv]ise)\s+(?:directement\s+)?(?:les\s+)?([A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+)/g;
 //  Ce qui ressemble à un identifiant d'item sans en être un.
@@ -93,14 +102,57 @@ for (const m of fs.readdirSync(CONTENU).filter((n) => !n.startsWith(".")).sort()
   }
 }
 
+//  ── SENS 2 : le barreau visé par un item n'a pas de chapitre (§11.69) ──────
+//  L'accrochage au chapitre se fait par le code : un item qui vise un code sans
+//  titre ne peut être ni présenté au bon endroit, ni compté dans un
+//  dénominateur honnête. `validate-content` le signale déjà — mais en
+//  AVERTISSEMENT, et une fois par barreau, pas par item. §11.69 a été trouvé en
+//  triant ces avertissements « que personne ne relit parce qu'ils ne bloquent
+//  rien ». Le cliquet compte les ITEMS, et il bloque.
+//
+//  LES TITRES SE LISENT À TOUT NIVEAU. Une notion range ses barreaux en `###`
+//  sous un `##` « Décortiquer » : un motif qui n'accepte que `##` déclare 23
+//  faux orphelins sur cette seule notion — mesuré, en écrivant ce sens.
+const barreauxOrphelins = [];
+for (const m of fs.readdirSync(CONTENU).filter((n) => !n.startsWith(".")).sort()) {
+  const dm = path.join(CONTENU, m);
+  if (!fs.statSync(dm).isDirectory()) continue;
+  for (const s of fs.readdirSync(dm).filter((n) => !n.startsWith(".")).sort()) {
+    const dir = path.join(dm, s);
+    const f = path.join(dir, "lesson.md");
+    if (!fs.existsSync(f)) continue;
+    const md = fs.readFileSync(f, "utf-8");
+    const titres = new Set([...md.matchAll(/^#{1,6}[ \t]*(R(?:\d+|-[a-z]+))\b/gm)].map((x) => x[1]));
+    if (!titres.size) continue;
+    for (const fn of ["items.yaml", "checkpoints.yaml"]) {
+      const p = path.join(dir, fn);
+      if (!fs.existsSync(p)) continue;
+      let y;
+      try { y = yaml.load(fs.readFileSync(p, "utf-8")); } catch { continue; }
+      for (const it of y?.items ?? y?.checkpoints ?? []) {
+        const r = String(it?.rung ?? "").trim();
+        if (r && /^R(\d+|-[a-z]+)$/.test(r) && !titres.has(r)) {
+          barreauxOrphelins.push({ notion: `${m}/${s}`, id: it?.id, rung: r });
+        }
+      }
+    }
+  }
+}
+
 if (PORTE) {
+  if (barreauxOrphelins.length > CLIQUET_BARREAUX) {
+    console.error(`━━ CLIQUET « BARREAU SANS CHAPITRE » : ${CLIQUET_BARREAUX} → ${barreauxOrphelins.length} ━━`);
+    for (const o of barreauxOrphelins) console.error(`   ${o.notion}:${o.id} vise ${o.rung}, que lesson.md ne porte à aucun niveau de titre`);
+    console.error("\n   Un item qui vise un code sans titre ne peut être ni présenté au bon\n   endroit, ni compté dans un dénominateur honnête (§11.69).\n");
+    process.exit(1);
+  }
   if (orphelines.length > CLIQUET) {
     console.error(`━━ CLIQUET « ÉTIQUETTE SANS ITEM » : ${CLIQUET} → ${orphelines.length} ━━`);
     for (const o of orphelines) console.error(`   ${o.notion} (${o.ou}) — « ${o.etiquette} » n'existe sous aucune forme`);
     console.error("\n   Une spec neuve doit nommer un item qui EXISTE : sinon personne ne peut\n   vérifier que le média ou la figure sert bien ce qu'elle annonce.\n   (Les 20 en dette sont un héritage, pas un trou de contenu : les barreaux\n   visés sont couverts — voir l'en-tête et §11.136.)\n");
     process.exit(1);
   }
-  console.log(`tracabilite-spec : cliquet tenu — ${citees} étiquettes citées, ${orphelines.length}/${CLIQUET} sans item (dette héritée, pédagogie couverte) ✓`);
+  console.log(`tracabilite-spec : cliquets tenus — ${orphelines.length}/${CLIQUET} étiquettes sans item, ${barreauxOrphelins.length}/${CLIQUET_BARREAUX} items sans chapitre ✓`);
   process.exit(0);
 }
 
@@ -117,4 +169,6 @@ for (const [n, l] of parNotion) {
   const b = couverture.get(n);
   if (b) console.log(`      barreaux réellement couverts : ${[...b.entries()].sort().map(([k, v]) => `${k}×${v}`).join(" ")}`);
 }
+console.log(`\n  ── SENS 2 : items visant un barreau sans chapitre ── ${barreauxOrphelins.length}`);
+for (const o of barreauxOrphelins) console.log(`     ✗ ${o.notion}:${o.id} → ${o.rung}`);
 console.log(`\n  LA PÉDAGOGIE EST LIVRÉE : les barreaux visés sont couverts. Ce compte\n  mesure la TRAÇABILITÉ — pouvoir remonter d'une figure à l'item qu'elle\n  sert — pas un trou de contenu.\n`);
