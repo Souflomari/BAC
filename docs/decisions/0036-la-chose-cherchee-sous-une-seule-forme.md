@@ -138,6 +138,30 @@ et les items sans chapitre (16) — parce que **un rouge permanent est un rouge
 qu'on apprend à ignorer**, et que les deux classes sont des portes d'owner
 ouvertes, pas des défauts à corriger seul.
 
+### 9. Un instrument neuf se lance PLUSIEURS FOIS avant d'être cru
+
+Ajouté le même jour, après l'écriture de `deploye-sweep` (§11.146). Le balayage
+passait au premier essai. Les trois suivants ont divergé, et les trois causes
+étaient dans l'instrument :
+
+- **Le relais n'est pas le produit.** Une police signalée `HTTP 502` pendant un
+  passage, puis servie **200 cinq fois sur cinq** à la main : le conteneur sort
+  par un relais qui rend des 502 sous charge. Toute sonde qui traverse un
+  intermédiaire doit **re-demander** avant d'accuser — sinon elle impute au
+  produit ce qui appartient au chemin.
+- **Un délai fixe n'est pas une attente.** Chercher un élément 500 ms après un
+  clic donne deux verdicts opposés sur deux passages. On attend que la chose
+  PARAISSE.
+- **Le DOM court, le texte servi non.** Un tampon lu dans le DOM après
+  `domcontentloaded` manquait un passage sur deux, parce que le rendu en flux
+  livre le pied de page plus tard. Ce qui est SERVI ne court pas.
+
+**Une porte instable est pire qu'une porte absente** : l'absente ne dit rien,
+l'instable enseigne à ignorer le rouge — et c'est le seul dommage dont on ne
+revient pas, puisqu'il porte sur toutes les autres portes. Le seuil retenu :
+**trois passages consécutifs au même verdict** avant de cataloguer un
+instrument neuf.
+
 ## Ce que cet arc a réparé pour l'élève
 
 Une seule chose, et elle valait la journée : **49 items ne disaient rien à

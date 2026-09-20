@@ -97,7 +97,9 @@ Read the right document for the task at hand:
   nomme** ; un diagnostic non rejoué est une rumeur (« le relais coupe
   Chromium » : deux semaines d'angle mort pour un CA auquel on ne faisait pas
   confiance) ; et ce qu'on choisit de NE PAS armer s'écrit à côté de ce qu'on
-  arme.
+  arme ; et **un instrument neuf se lance plusieurs fois avant d'être cru** —
+  une porte instable est pire qu'une porte absente, car elle enseigne à ignorer
+  le rouge de toutes les autres.
   **ADR 0032 (2026-09-11) — the honest wait before
   hydration:** a server-rendered command is `disabled` + `aria-busy` until
   React takes over (`useHydrated`), the page says so once, calmly, and
