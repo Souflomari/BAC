@@ -10297,6 +10297,43 @@ La suite passe de 31 à **33**.
 
 ---
 
+## §11.125 — Un fichier généré à deux mains, et un seul nom dans son en-tête
+
+`accents.mots.json` porte en tête : « *Généré par
+scripts/accents-francais.py --exporter. Ne pas éditer à la main : éditer le
+script, puis réexporter.* »
+
+Mesuré : **le fichier committé portait 846 formes, le script en produit 654.**
+Cent quatre-vingt-douze formes ne venaient pas du script — et zéro dans
+l'autre sens. Elles viennent du SECOND producteur, que l'en-tête ne nomme pas :
+`accents-campagne.mjs` dit dans son propre en-tête que « les formes
+effectivement corrigées sont ensuite ajoutées à `accents.mots.json` pour que la
+porte garde le terrain repris ». Une étape manuelle, documentée, légitime.
+
+**Les deux consignes se détruisaient l'une l'autre.** Suivre l'en-tête du JSON
+— et `docs/audits/accents-francais.md` imprime la commande telle quelle —
+aurait effacé 192 mots durement gagnés, rendant la porte plus aveugle par une
+régénération de routine, en silence. C'est ADR 0034 §10 en acte : *un fichier
+généré et committé est une affirmation datée* ; ici deux mains l'écrivaient et
+une seule était déclarée.
+
+Trois correctifs :
+
+1. **L'export FUSIONNE** au lieu d'écraser. Vérifié idempotent : une seconde
+   régénération ne change plus un octet.
+2. **L'en-tête dit la vérité** — deux producteurs, et comment retirer une forme
+   volontairement.
+3. **`--verifier` armé** (batterie + CI) : aucune forme connue du script ne peut
+   manquer à la liste. C'est le sens qui reste après la fusion — une sonde plus
+   étroite que la réparation déclare propre ce qu'elle ne sait pas voir, et
+   l'en-tête de `accents-manquants` raconte déjà cette panne-là (« le premier
+   essai ne connaissait que 130 formes quand la réparation en connaissait
+   600 »). Essai rouge **§11.125** ; la suite passe à **34**.
+
+Après correctif : `accents-manquants` **vert sur 104 pages**.
+
+---
+
 ## §11.126 — La batterie CI rejouée en entier, en local, sur HEAD — et ce qu'elle a trouvé
 
 **2026-09-20.** La CI n'a pas assigné un seul runner de la journée (§11.117).
@@ -10334,41 +10371,6 @@ sonde viole donc sa propre règle d'admission, écrite dans son en-tête :
 « **uniquement des mots dont la forme SANS accent n'existe pas en français** »,
 avec une liste d'exclusions explicite (« cote », « des », « sur », « ou »).
 Retirée.
-
-### Ce que ce rouge a fait découvrir : un fichier à deux mains, et un seul nom
-
-`accents.mots.json` porte en tête : « *Généré par
-scripts/accents-francais.py --exporter. Ne pas éditer à la main : éditer le
-script, puis réexporter.* »
-
-Mesuré : **le fichier committé portait 846 formes, le script en produit 654.**
-Cent quatre-vingt-douze formes ne venaient pas du script — et zéro dans
-l'autre sens. Elles viennent du SECOND producteur, que l'en-tête ne nomme pas :
-`accents-campagne.mjs` dit dans son propre en-tête que « les formes
-effectivement corrigées sont ensuite ajoutées à `accents.mots.json` pour que la
-porte garde le terrain repris ». Une étape manuelle, documentée, légitime.
-
-**Les deux consignes se détruisaient l'une l'autre.** Suivre l'en-tête du JSON
-— et `docs/audits/accents-francais.md` imprime la commande telle quelle —
-aurait effacé 192 mots durement gagnés, rendant la porte plus aveugle par une
-régénération de routine, en silence. C'est ADR 0034 §10 en acte : *un fichier
-généré et committé est une affirmation datée* ; ici deux mains l'écrivaient et
-une seule était déclarée.
-
-Trois correctifs :
-
-1. **L'export FUSIONNE** au lieu d'écraser. Vérifié idempotent : une seconde
-   régénération ne change plus un octet.
-2. **L'en-tête dit la vérité** — deux producteurs, et comment retirer une forme
-   volontairement.
-3. **`--verifier` armé** (batterie + CI) : aucune forme connue du script ne peut
-   manquer à la liste. C'est le sens qui reste après la fusion — une sonde plus
-   étroite que la réparation déclare propre ce qu'elle ne sait pas voir, et
-   l'en-tête de `accents-manquants` raconte déjà cette panne-là (« le premier
-   essai ne connaissait que 130 formes quand la réparation en connaissait
-   600 »). Essai rouge **§11.125** ; la suite passe à **34**.
-
-Après correctif : `accents-manquants` **vert sur 104 pages**.
 
 ### Le douzième banc faussé de la journée, et la porte qui l'a attrapé
 
