@@ -101,7 +101,7 @@ items:
         text: "Non - la coexistence durable d'acide, d'alcool, d'ester et d'eau signale une transformation non totale (limitée) ; attendre plus longtemps ne fera pas disparaître le reste d'acide et d'alcool."
         correct: true
       - id: B
-        text: "Oui - toute réaction chimique finit toujours par consommer entièrement ses réactifs si on lui laisse assez de temps ; ici, quelques jours n'ont simplement pas suffi."
+        text: "Oui - toute réaction chimique finit toujours par consommer entièrement ses réactifs si on lui laisse assez de temps ; ici, quelques jours n'ont simplement pas suffi ; en laissant le ballon quelques semaines de plus, on n'y retrouverait plus aucune trace d'acide."
         correct: false
         misconception: mc.physics.pc_transformations_deux_sens.reaction-toujours-totale
         feedback: >
@@ -231,7 +231,7 @@ items:
           transformation, jamais sur sa vitesse. De nombreuses réactions
           non totales s'installent au contraire très rapidement.
       - id: C
-        text: "Elle est vraie, mais seulement pour les réactions organiques comme l'estérification, où la lenteur est la règle et justifie à elle seule cette écriture particulière."
+        text: "Elle est vraie, mais seulement pour les réactions organiques comme l'estérification, où la lenteur est la règle et justifie à elle seule cette écriture particulière. Pour une réaction minérale rapide, la double flèche n'aurait donc aucune raison d'être employée."
         correct: false
         misconception: mc.physics.pc_transformations_deux_sens.double-fleche-signifie-lente
         feedback: >
@@ -282,7 +282,7 @@ items:
         text: "Non - une transformation totale peut tout à fait être lente (la rouille, par exemple), et une transformation limitée peut être quasi instantanée : la vitesse et le caractère total ou limité sont deux propriétés indépendantes."
         correct: true
       - id: B
-        text: "Si, cette règle est toujours vraie : c'est justement ce qui distingue les deux notations, la flèche simple étant réservée aux réactions rapides et la double flèche aux réactions lentes et progressives."
+        text: "Si, cette règle est toujours vraie : c'est justement ce qui distingue les deux notations, la flèche simple étant réservée aux réactions rapides et la double flèche aux réactions lentes et progressives. Il suffirait donc de chronométrer une transformation pour savoir laquelle des deux notations lui revient."
         correct: false
         misconception: mc.physics.pc_transformations_deux_sens.double-fleche-signifie-lente
         feedback: >
@@ -341,7 +341,7 @@ items:
         text: "Elle est fausse : une quantité notable d'ester et d'eau se forme réellement ; « non totale » ne veut jamais dire « nulle » — la transformation s'arrête avant la disparition complète de l'acide et de l'alcool."
         correct: true
       - id: B
-        text: "Elle est vraie : une transformation non totale, par définition, ne produit aucun changement observable dans le mélange, et le test ne devrait révéler que les réactifs du départ."
+        text: "Elle est vraie : une transformation non totale, par définition, ne produit aucun changement observable dans le mélange, et le test ne devrait révéler que les réactifs du départ. Si un ester est malgré tout détecté, c'est que le protocole a été mal suivi quelque part."
         correct: false
         misconception: mc.physics.pc_transformations_deux_sens.limitee-rien-ne-se-passe
         feedback: >
@@ -411,7 +411,7 @@ items:
           lieu - elle s'est seulement arrêtée avant la disparition complète
           du $NH_3$.
       - id: C
-        text: "C'est faux, mais uniquement parce que $NH_3$ est une base forte qui réagit toujours complètement avec l'eau : la fraction non transformée provient nécessairement d'une erreur de mesure."
+        text: "C'est faux, mais uniquement parce que $NH_3$ est une base forte qui réagit toujours complètement avec l'eau : la fraction non transformée provient nécessairement d'une erreur de mesure. Un dosage refait avec soin donnerait donc une transformation complète de l'ammoniac."
         correct: false
         misconception: mc.physics.pc_transformations_deux_sens.reaction-toujours-totale
         feedback: >
@@ -457,7 +457,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Oui - c'est vrai pour toute réaction chimique : il suffit d'attendre assez longtemps pour que les réactifs finissent par disparaître entièrement."
+        text: "Oui - c'est vrai pour toute réaction chimique : il suffit d'attendre assez longtemps pour que les réactifs finissent par disparaître entièrement. Aucun mélange ne peut donc se stabiliser durablement avec des réactifs encore présents."
         correct: false
         misconception: mc.physics.pc_transformations_deux_sens.reaction-toujours-totale
         feedback: >
@@ -503,7 +503,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Il est valide : plus une réaction est lente, plus elle a de chances d'être totale, car elle dispose de davantage de temps pour consommer ses réactifs."
+        text: "Il est valide : plus une réaction est lente, plus elle a de chances d'être totale, car elle dispose de davantage de temps pour consommer ses réactifs. Une réaction instantanée serait au contraire condamnée à rester très incomplète."
         correct: false
         misconception: mc.physics.pc_transformations_deux_sens.vitesse-implique-avancement
         feedback: >
@@ -563,7 +563,7 @@ items:
           Chauffer davantage changerait la vitesse d'installation de l'état
           stabilisé, pas le fait qu'une odeur d'ester s'est déjà développée.
       - id: C
-        text: "On ne peut rien dire sans mesurer précisément les quantités en présence : la seule détection d'acide et d'alcool ne permet aucune conclusion sur la transformation."
+        text: "On ne peut rien dire sans mesurer précisément les quantités en présence : la seule détection d'acide et d'alcool ne permet aucune conclusion sur la transformation. Tant que chaque espèce n'a pas été dosée, la question reste entièrement ouverte."
         correct: false
         misconception: mc.physics.pc_transformations_deux_sens.conclusion-refusee-a-tort
         feedback: >
@@ -601,7 +601,7 @@ items:
         text: "Elle est peu probable : le test donnant exactement le même résultat à deux heures d'intervalle, le mélange a déjà atteint son état stabilisé - attendre une semaine de plus ne changera rien à la présence d'acide et d'alcool."
         correct: true
       - id: B
-        text: "Elle est probable : plus on attend, plus la quantité de réactifs restants diminue, jusqu'à disparaître complètement ; deux heures sont une durée bien trop courte pour une transformation de ce type."
+        text: "Elle est probable : plus on attend, plus la quantité de réactifs restants diminue, jusqu'à disparaître complètement ; deux heures sont une durée bien trop courte pour une transformation de ce type ; un dosage refait le lendemain montrerait forcément une quantité d'acide plus faible."
         correct: false
         misconception: mc.physics.pc_transformations_deux_sens.reaction-toujours-totale
         feedback: >
@@ -658,7 +658,7 @@ items:
         text: "Elle est fausse : même minoritaire face aux réactifs restants, la quantité d'ester détectée prouve qu'une transformation réelle a eu lieu ; cette comparaison ne définit ni le caractère totale ou limité, ni le fait que la réaction se soit produite."
         correct: true
       - id: C
-        text: "Elle est correcte, à moins que l'ester formé ne dépasse la moitié de la quantité initiale d'acide : c'est ce seuil, et lui seul, qui décide si la transformation compte réellement pour quelque chose dans le bilan."
+        text: "Elle est correcte, à moins que l'ester formé ne dépasse la moitié de la quantité initiale d'acide : c'est ce seuil, et lui seul, qui décide si la transformation compte réellement pour quelque chose dans le bilan. En dessous de ce seuil, il faudrait parler d'une simple ébauche de réaction."
         correct: false
         misconception: mc.physics.pc_transformations_deux_sens.limitee-rien-ne-se-passe
         feedback: >
@@ -715,7 +715,7 @@ items:
         text: "Elle est fausse : ce n'est jamais la simple présence d'ester et d'eau qui compte, mais la quantité relative de chaque couple - ici l'acide et l'alcool sont largement majoritaires, donc le sens direct devrait au contraire dominer au départ."
         correct: true
       - id: D
-        text: "On ne peut rien prédire : puisque les deux sens coexistent toujours en même temps dans ce type de transformation, aucun des deux ne peut dominer l'autre, même au tout début, quelles que soient les quantités introduites."
+        text: "On ne peut rien prédire : puisque les deux sens coexistent toujours en même temps dans ce type de transformation, aucun des deux ne peut dominer l'autre, même au tout début, quelles que soient les quantités introduites. Le sens d'évolution ne se déciderait qu'une fois l'équilibre atteint, jamais avant."
         correct: false
         misconception: mc.physics.pc_transformations_deux_sens.equilibre-coexistence-signifie-arret
         feedback: >
@@ -746,7 +746,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Le sens direct va dominer, car $NH_4Cl$ est le solide qu'on vient d'ajouter au mélange, et c'est toujours l'espèce introduite en dernier qui impose le sens de la réaction dans le milieu."
+        text: "Le sens direct va dominer, car $NH_4Cl$ est le solide qu'on vient d'ajouter au mélange, et c'est toujours l'espèce introduite en dernier qui impose le sens de la réaction dans le milieu. L'ordre d'ajout suffirait donc à prédire l'évolution, sans regarder les quantités déjà présentes."
         correct: false
         misconception: mc.physics.pc_transformations_deux_sens.presence-produit-determine-sens
         feedback: >
@@ -804,7 +804,7 @@ items:
           « Limitée » ne veut pas dire « rien ne se passe » : le test
           détecte bel et bien du propanoate de méthyle et de l'eau formés.
       - id: C
-        text: "C'est vrai, dans le sens où l'ester formé n'est pas un vrai produit tant que la réaction n'est pas totale : il faut attendre la disparition des réactifs pour parler véritablement de produit formé."
+        text: "C'est vrai, dans le sens où l'ester formé n'est pas un vrai produit tant que la réaction n'est pas totale : il faut attendre la disparition des réactifs pour parler véritablement de produit formé. Avant cela, l'ester détecté ne serait qu'un intermédiaire de passage, sans existence propre."
         correct: false
         misconception: mc.physics.pc_transformations_deux_sens.limitee-rien-ne-se-passe
         feedback: >
@@ -1093,7 +1093,7 @@ items:
       - id: D
         text: >-
           Rien ne le détermine à l'avance : une fois les quatre espèces
-          présentes, le système est à l'équilibre et n'évolue plus
+          présentes, le système est à l'équilibre et n'évolue plus, quelles que soient les proportions dans lesquelles on les a versées
         correct: false
         misconception: mc.physics.pc_transformations_deux_sens.equilibre-coexistence-signifie-arret
         feedback: >
