@@ -9695,3 +9695,45 @@ après.
 
 Ce qui est consigné ici, c'est donc la MESURE — reproductible, datée, faite sur
 le rendu — et la raison de s'en tenir là.
+
+---
+
+## §11.116 — Les 6 % d'épreuves « sans algèbre déroulée » ne sont pas une dette
+
+`portee-hors-lecon` rapporte depuis son armement : **1 372 questions sur 1 472
+(93 %) ont une correction qui DÉROULE l'algèbre** — par `steps` ou par des blocs
+`$$…$$`. Le chiffre se lisait volontiers comme une dette de 100 questions.
+
+**Ce n'en est pas une, et c'est maintenant mesuré.** Sur les 100 sans algèbre
+déroulée, **une seule** a un énoncé qui demande un calcul (motif : *calculer,
+déterminer la valeur, exprimer, en déduire la valeur, montrer que … =, établir
+l'expression, évaluer*). Les 99 autres sont des questions qualitatives —
+justifier, interpréter, conclure — où dérouler une algèbre serait un contresens.
+
+Et **la centième n'en est pas une non plus.** `maths/fonction-logarithme` q4a :
+
+> « Montrer que pour tout entier $n$ non nul, il existe un unique réel
+> $x_n \in\,]1;e[$ tel que $f_n(x_n)=1$. »
+
+Une existence-unicité ne se démontre pas en calculant. Sa correction dit
+exactement ce qu'il faut :
+
+> « *Il existe un unique* : deux affirmations, deux outils, et il faut fournir
+> les deux. L'existence vient du théorème des valeurs intermédiaires, l'unicité
+> de la stricte monotonie. **Un candidat qui n'en invoque qu'un perd la moitié
+> du barème** — c'est le schéma de démonstration le plus rentable de tout le
+> programme d'analyse, et il se rédige toujours pareil. »
+
+Puis les trois hypothèses vérifiées une par une. C'est le « expert reasoning out
+loud » de la VISION dans sa forme la plus pure, et de l'algèbre déroulée y
+serait une faute.
+
+### Pourquoi le consigner alors qu'il n'y a rien à faire
+
+Parce qu'un chiffre qui RESSEMBLE à une dette en devient une : quelqu'un la
+rouvrira, la mesurera, et refera ce travail. **Un « 93 % » non expliqué coûte
+une journée à chaque lecteur qui le prend au sérieux.**
+
+Le complément honnête tient en une ligne : *les 7 % restants sont les questions
+qualitatives, plus une existence-unicité — et aucune ne doit dérouler
+d'algèbre.*
