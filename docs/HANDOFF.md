@@ -10496,6 +10496,29 @@ règle existait.
 `portes-migrations.mjs` est armé (batterie + CI, 22 portes locales) avec ses
 deux essais rouges **§11.128a/b**. La suite passe à **36**.
 
+### Un troisième non-négociable vérifié — et délibérément NON gardé
+
+« **Ne jamais modifier une migration déjà passée en production** — les
+migrations sont une histoire append-only. » Git peut répondre exactement :
+combien de commits ont touché chaque fichier après celui qui l'a créé ?
+
+**Quatre migrations sur cinquante ont plus d'un commit, et les quatre sont
+légitimes.** `034_exam_papers_pc.sql` en a neuf — tous du **même jour**
+(2026-05-12), nommés « Phase 3.4 Batch 1 » à « Batch 9 » puis « COMPLETE » :
+c'est une rédaction par lots, pas une retouche. `048`, `049` et `050` en ont
+deux, et le second dit ce qu'il fait : « *promote migrations 048-050
+(**byte-identical** to reviewed drafts)* ».
+
+**Aucune porte n'est posée dessus**, et c'est un choix. Un contrôle « aucun
+commit ne modifie une migration existante » crierait sur la rédaction par lots
+de `034`, qui est exactement le travail qu'on veut — dix-huit corrections
+fausses pour aucune vraie, la forme de bruit qu'ADR 0034 §9 interdit d'armer.
+
+**La limite honnête :** git dit qu'aucun fichier n'a bougé après sa finition ; il
+ne dit pas lesquels ont RÉELLEMENT tourné en production. CLAUDE.md rappelle que
+la synchronisation production est **NON VÉRIFIÉE** après une longue dormance —
+et cette vérification-là demande une session supervisée, pas un script.
+
 ### Le quinzième banc faussé — et celui-là aurait fait peur
 
 La première version de la porte cherchait `DO $$` et a déclaré **49 migrations
