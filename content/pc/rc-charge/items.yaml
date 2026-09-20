@@ -568,6 +568,7 @@ items:
           Parce que la loi des mailles ne s'applique qu'une fois le régime permanent
           atteint, et non pendant la charge, où les tensions varient encore d'un instant
           à l'autre sans jamais se compenser exactement.
+          Une maille ne serait donc vérifiable qu'en régime permanent.
         correct: false
         misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
         feedback: >
@@ -616,6 +617,7 @@ items:
         text: >-
           $i$ augmente : plus $u_C$ est grande, plus le condensateur « pousse » fort le
           courant dans le circuit.
+          Le courant serait donc maximal quand le condensateur est plein.
         correct: false
         misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
         feedback: >
@@ -665,6 +667,7 @@ items:
         text: >-
           Plus rapide : une résistance plus grande « pousse » plus fort le courant vers
           le condensateur, qui se remplit donc plus vite qu'avec une résistance faible.
+          Augmenter $R$ raccourcirait donc la durée de charge.
         correct: false
         misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
         feedback: >
@@ -811,6 +814,7 @@ items:
           $\tau \approx 2{,}8\ \text{ms}$, en cherchant l'instant où $u_C$
           atteint la moitié de $E$, comme pour une demi-vie en décroissance
           radioactive.
+          La constante de temps se lirait donc à mi-hauteur, comme un $t_{1/2}$.
         correct: false
         misconception: mc.physics.pc_rc_charge.tau-instant-d-arret
         feedback: >
@@ -929,6 +933,7 @@ items:
         text: >-
           La constante de temps de la décharge est différente de celle de la
           charge, car il n'y a plus de générateur.
+          Un même dipôle $RC$ aurait donc deux constantes de temps selon le sens.
         correct: false
         misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
         feedback: >
@@ -1102,6 +1107,7 @@ items:
         text: >-
           Seule la moitié de l'énergie initiale est dissipée, l'autre moitié
           restant dans le condensateur.
+          La moitié de l'énergie resterait donc stockée une fois la décharge finie.
         correct: false
         misconception: mc.physics.pc_rc_charge.energie-lineaire-en-u
         feedback: >
@@ -1157,6 +1163,7 @@ items:
           $u_C(t)$ peut devenir légèrement supérieure à $E$ autour de $t \approx 2\tau$,
           avant de redescendre lentement et de finir par se stabiliser sur la valeur
           imposée par le générateur.
+          La tension dépasserait donc celle du générateur qui la lui impose.
         correct: false
         misconception: mc.physics.pc_rc_charge.uc-depasse-E
         feedback: >
@@ -1245,6 +1252,7 @@ items:
           C'est le signe que le condensateur laisse encore passer un peu de courant en
           permanence, ce qui fait momentanément grimper $u_C$ au-delà de la valeur $E$
           affichée.
+          Un condensateur en régime permanent laisserait donc passer un courant.
         correct: false
         misconception: mc.physics.pc_rc_charge.condensateur-conduit-en-permanent
         feedback: >
@@ -1359,6 +1367,7 @@ items:
         text: >-
           Les deux partent de zéro à $t=0^+$ : $u_C=0$ et $u_R=0$ également, puisque
           rien n'a encore eu le temps de s'établir dans le circuit à cet instant.
+          La loi des mailles donnerait donc $E = 0$ à l'instant initial.
         correct: false
         misconception: mc.physics.pc_rc_charge.courant-part-de-zero
         feedback: >
@@ -1434,6 +1443,7 @@ items:
           Non, car en réalité la constante de temps vaut $R/C$ et non $RC$, si bien que
           l'instant dont parle ici l'élève n'est même pas correctement défini au départ
           de son raisonnement.
+          La constante de temps s'exprimerait donc en ohms par farad.
         correct: false
         misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
         feedback: >
@@ -1509,6 +1519,7 @@ items:
           Il est faux : à $99\,\%$ de $E$, la tension est déjà en train de
           redescendre après un léger dépassement, donc cet instant ne
           correspond à rien de précis.
+          La charge d'un condensateur passerait donc par un maximum avant $E$.
         correct: false
         misconception: mc.physics.pc_rc_charge.uc-depasse-E
         feedback: >
@@ -1625,6 +1636,7 @@ items:
           L'erreur est ailleurs : il est vrai que le courant initial $i(0^+)$ est nul,
           mais c'est parce qu'il part de zéro exactement comme $u_C$, et non parce que
           le condensateur bloquerait quoi que ce soit.
+          Le courant et la tension partiraient donc tous deux de zéro ensemble.
         correct: false
         misconception: mc.physics.pc_rc_charge.courant-part-de-zero
         feedback: >
