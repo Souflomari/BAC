@@ -146,6 +146,33 @@ permanent** — et un rouge permanent est un rouge qu'on apprend à ignorer.
 
 ---
 
+## 8. Le jeu W (la colonne de droite à 1920 px) n'a jamais été choisi — et le vide s'est élargi de 115 px
+
+En juillet, le carnet du jour 8 recommandait **W3 maintenant (rail de formules
+clés), W1 en second profond**. Aucun des deux n'a été pris. La ligne APRÈS,
+mesurée le 2026-09-20 (`fable-day3-ledger` §9 bis, §11.130), montre que
+l'attente a un coût chiffrable : à droite de la prose, **528 px en juillet,
+643 px aujourd'hui**. La colonne entière a glissé à gauche et s'est élargie —
+ce qui est bon — mais rien n'a été posé à droite, donc le vide a suivi le
+glissement.
+
+**Ce que ça coûte vraiment, mesuré et non estimé.** Juillet annonçait W3
+« cheap to make real (one authored formula per rung) ». `KeyFormulaRail.tsx`
+existe et fonctionne ; la seule donnée qui l'alimente est une constante
+`KEY_FORMULAS` écrite à la main dans `web/src/app/options/wide/[v]/page.tsx`,
+pour une notion. Aucun champ `key_formulas` nulle part dans `content/`. **Le
+composant est bâti, le canal d'auteur ne l'est pas** : c'est un champ template
+v2 plus 62 notions de contenu — la même forme de travail que W1, pas une plus
+petite.
+
+**Décision attendue :** W3, W1, les deux en couches, ou aucun (et alors dire
+que 643 px à droite est la composition voulue, ce qui est une réponse
+légitime — le §4 du carnet a une clause « équilibré » que le 404 satisfait
+déjà). Les deux cercles voisins du propriétaire, eux, sont fermés : l'accueil
+(691 → 1760 px de plan utile) et la bande (choix M1, flancs symétriques).
+
+---
+
 ## Ce que cette page n'est pas
 
 Ce n'est pas la liste des défauts du produit : ceux qui étaient objectifs ont

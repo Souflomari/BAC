@@ -534,7 +534,11 @@ original should be archived, re-attach it (intended path:
 docs/audits/owner-wide-viewport-annotations.png).
 
 **The BEFORE numbers at 1920 (both themes identical;
-`web/shots/day8-wide/measurements.json` + before-shots):**
+`web/shots/day8-wide/report/measurements.json` + before-shots):**
+*(Path corrected 2026-09-20: the citation named
+`shots/day8-wide/measurements.json`, which `.gitignore` drops — `report/` is
+the one exception. A reader cloning the repo found nothing there. The July
+numbers themselves survived untouched in `report/`.)*
 
 | Region (owner's circle) | Measured |
 |---|---|
@@ -544,6 +548,71 @@ docs/audits/owner-wide-viewport-annotations.png).
 | Right of content / of prose | **422px / 528px** |
 | Home at 1920 | main = **691px wide** (max-w-content); **614px dead gutter per side**; the page reads as a ribbon |
 | 404 at 1920 | centered utility block; voids symmetric (acceptable under §4's balanced clause — held, not dead; no fix needed) |
+
+### 9 bis. The AFTER row — measured 2026-09-20
+
+`wide-measure.mjs` has carried this request in its own header since July —
+*"Throwaway after the batch? NO — kept: re-run after the owner's picks to
+produce the AFTER row of the same table."* Nobody read it: the script was in
+no catalogue (§11.123). Re-run today on a build made from HEAD, same page
+(`/notions/pc/rlc-serie`), same 1920×1000 viewport, same selectors. **Both
+themes identical again, in both runs.** Evidence:
+`web/shots/day8-wide/report/measurements-apres.json` + `after-*-1920-light.png`.
+
+| Region (owner's circle) | July (BEFORE) | 2026-09-20 (AFTER) |
+|---|---|---|
+| Band occupancy | title block 1076×209 in a 1920×306 plane = **38.3%** | title block 921×221 in a 1920×318 plane = **33.3%** — and **46.0%** once the M1 cover (352×220) is counted as the content it is |
+| Band flank voids | **422px each side** | **276px left / 276px right** — symmetric. The raw `bandVoidRightPx` reads 724px; that is the instrument, not the page (below) |
+| Left gutter | 390px to container; rail at 422px | **218px** to container; rail at **276px** |
+| Right of content / of prose | **422px / 528px** | **580px / 643px** — the one number that moved the wrong way |
+| Home at 1920 | main **691px** wide; **614px dead gutter per side**; "reads as a ribbon" | main **1760px** wide; **80px** gutter per side; session card 1645px |
+| 404 at 1920 | symmetric, no fix needed | unchanged |
+
+**Two of the four circles are closed, one is open and now measurably wider,
+one was never a defect.**
+
+- **Home — closed, and it is the biggest move of the two months.** The ribbon
+  is gone: the content plane went 691px → 1760px (+155%) and the dead gutter
+  614px → 80px (−87%). This was the owner's loudest circle.
+- **The band — closed by the M1 pick.** M1 (cover-in-band) was recommended in
+  July and shipped on 2026-09-04. The band's right region now carries the
+  notion's own cover, the flanks are symmetric at 276px, and occupancy rose
+  38.3% → 46.0%. The title block itself got *narrower* (1076 → 921px), which
+  is the point: it stopped being the only thing in a 1920px plane.
+- **Right of prose — OPEN, and 115px wider than in July (528 → 643px).** The
+  whole column moved left (gutter 390 → 218, rail 422 → 276, prose 768 → 587)
+  and the prose itself got wider (624 → 690px), but nothing was put on the
+  right, so the void grew with the shift. **Set W was never picked.** This is
+  not drift — it is the July recommendation still waiting.
+- **What "picking W3" actually costs, measured today rather than estimated.**
+  July called W3 "cheap to make real (one authored formula per rung)".
+  Half-true, and the half that is false is the expensive half:
+  `KeyFormulaRail.tsx` **exists and works**, but the only data feeding it is a
+  hardcoded `KEY_FORMULAS` constant in `web/src/app/options/wide/[v]/page.tsx`,
+  for one notion. `grep` over `content/` finds no `key_formulas` field
+  anywhere: **the component is built, the authoring channel is not.** Picking
+  W3 is a template-v2 field plus 62 notions of authored content — the same
+  shape of work as W1, not a smaller one.
+
+**Instrument amendment (the ADR 0033 species, again).** `bandVoidRightPx`
+answers exactly one question — *distance from the title block's right edge to
+the band's right edge* — and its name invites a wider reading. In July that
+distance **was** void. Since M1 shipped, the same untouched formula calls an
+occupied region "void" and reports 724px. Nothing in the gate broke; the page
+moved underneath it. The July key is kept verbatim so the two rows stay
+comparable, and three keys were added to say what it can no longer say:
+`cover` (the box actually painted), `bandFreeRightPx` (band edge minus the
+rightmost of title *or* cover), `bandOccupancyWithCoverPct`. Had the script
+simply been re-run and the number read off, this ledger would now claim the
+band regressed from 422px of void to 724px — the exact opposite of what the
+page does.
+
+**A second defect in the same instrument:** built to produce a comparison, it
+wrote its output to `before-*.png` / `measurements.json` unconditionally, so
+every re-run destroyed the term it was to be compared against. The July
+evidence survived by accident — `report/` is the single exception to the
+folder's `.gitignore`, and the tracked copy lives there. The after-pass now
+takes `--apres` and writes `after-*` / `measurements-apres.json`.
 
 **Option sets (live at `/options/wide/m1..m3, w1..w3`; stitched
 comparisons both themes in `web/shots/day8-wide/report/`):** built as

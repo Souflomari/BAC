@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 129 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 130 entrées.
 > **Un propriétaire qui revient lit d'abord
 > `docs/audits/DECISIONS-EN-ATTENTE.md`** — la liste, en une page, de ce qui
 > attend un arbitrage et de ce que coûte chaque attente. Rien n'y est en train
@@ -10631,3 +10631,63 @@ C'est la deuxième fois aujourd'hui qu'un essai rouge accuse une porte que je
 venais d'écrire (après §11.124a, la porte sous un `process.exit`), et la
 troisième fois qu'il refuse de valider quelque chose que j'aurais consigné.
 **Un essai rouge ne sert à rien s'il ne peut pas contredire celui qui l'écrit.**
+
+## §11.130 — La ligne APRÈS qu'un instrument réclamait depuis juillet
+
+`web/scripts/wide-measure.mjs` porte cette phrase dans son propre en-tête
+depuis le jour 8 : « *Throwaway after the batch? NO — kept: re-run after the
+owner's picks to produce the AFTER row of the same table.* » Personne ne l'a
+lue pendant deux mois, et §11.123 a dit pourquoi : le script n'était dans
+aucun catalogue. Un instrument que rien ne nomme est mort, et il emporte ce
+que son en-tête savait. Relancé aujourd'hui sur une construction faite de
+HEAD, même page, même 1920×1000, mêmes sélecteurs, **les deux thèmes
+identiques dans les deux passes**. La ligne APRÈS est au `fable-day3-ledger`
+§9 bis ; ce qui suit est ce qu'elle apprend.
+
+**Deux cercles de l'owner sur quatre sont fermés.** L'accueil ne se lit plus
+comme un ruban : le plan de contenu passe de **691 px à 1760 px** (+155 %) et
+la gouttière morte de **614 px à 80 px** (−87 %). La bande est complétée par
+la couverture de la notion (le choix M1, posé en production le 2026-09-04) :
+flancs **symétriques à 276 px**, occupation **38,3 % → 46,0 %**. Le bloc-titre
+a d'ailleurs *rétréci* (1076 → 921 px) — c'est le but : il a cessé d'être seul
+dans un plan de 1920 px.
+
+**Un cercle est OUVERT, et il s'est élargi de 115 px.** À droite de la prose :
+**528 px en juillet, 643 px aujourd'hui**. La colonne entière a glissé à
+gauche (gouttière 390 → 218, rail 422 → 276, prose 768 → 587) et la prose
+s'est élargie (624 → 690), mais rien n'a été posé à droite : le vide a suivi
+le glissement. **Le jeu W n'a jamais été choisi.** Ce n'est pas une dérive,
+c'est la recommandation de juillet qui attend encore.
+
+**Ce que « choisir W3 » coûte vraiment — mesuré aujourd'hui, pas estimé.**
+Juillet l'annonçait « cheap to make real (one authored formula per rung) ».
+À moitié vrai, et la moitié fausse est la moitié chère : `KeyFormulaRail.tsx`
+**existe et fonctionne**, mais la seule donnée qui l'alimente est une constante
+`KEY_FORMULAS` écrite à la main dans `web/src/app/options/wide/[v]/page.tsx`,
+pour une notion. Aucun champ `key_formulas` nulle part dans `content/` : **le
+composant est bâti, le canal d'auteur ne l'est pas.** C'est un champ template
+v2 plus 62 notions de contenu — la même forme de travail que W1, pas une plus
+petite. Porte d'owner, chiffrée.
+
+**Le banc avant le produit, 17ᵉ fois.** `bandVoidRightPx` répond exactement à
+*une* question — la distance entre la droite du bloc-titre et la droite de la
+bande — et son nom en laisse lire une plus large. En juillet cette distance
+**était** du vide. Depuis M1, la formule inchangée appelle « vide » une région
+occupée et annonce **724 px**. Rien n'est cassé dans la porte : c'est la page
+qui a bougé dessous. Espèce ADR 0033, troisième cas. La clé de juillet est
+gardée telle quelle — c'est elle qui rend les deux lignes comparables — et
+trois clés disent ce qu'elle ne sait plus dire : `cover` (la boîte réellement
+peinte : 352×220 à gauche de 1644), `bandFreeRightPx` (**276 px**, symétrique
+du flanc gauche), `bandOccupancyWithCoverPct`. **Sans cette vérification, ce
+carnet affirmerait aujourd'hui que la bande a régressé de 422 px de vide à
+724 px — l'exact contraire de ce que fait la page.**
+
+**Et un second défaut dans le même instrument :** bâti pour produire une
+comparaison, il écrivait sous `before-*.png` / `measurements.json` sans
+condition — chaque relance détruisait le terme auquel se comparer. Les
+chiffres de juillet ont survécu par accident : `report/` est la seule
+exception au `.gitignore` du dossier, et la copie suivie y est. La passe
+d'après prend désormais `--apres`. Au passage, le carnet citait
+`shots/day8-wide/measurements.json`, chemin que `.gitignore` efface : un
+lecteur qui clone ne trouvait rien. Corrigé vers `report/`.
+
