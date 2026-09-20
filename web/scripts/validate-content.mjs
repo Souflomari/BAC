@@ -2570,7 +2570,24 @@ for (const dir of dirs) {
   //  et la banque présentent des questions de bac, dont les items ne sont pas
   //  permutés ; y interdire « choix B » serait faux.
   {
+    //  DEUXIÈME FORME, trouvée en cherchant ce que la première laissait passer :
+    //  le renvoi POSITIONNEL sans lettre. « Même erreur que le choix précédent »
+    //  est exactement aussi faux — après mélange, le choix qui précède n'est pas
+    //  celui que l'auteur visait. Deux occurrences, même idiome que la forme à
+    //  lettre, dans deux notions de physique. Corrigées de la même façon.
+    //
+    //  CE QUI N'EST PAS GARDÉ, et c'est une décision mesurée : le renvoi par
+    //  RANG (« la première réponse », « la dernière proposition »). Cherché sur
+    //  tout le corpus : 18 signalements, ZÉRO vrai. En philosophie « la première
+    //  réponse » désigne la première réponse DU TEXTE — la thèse spontanée que
+    //  la leçon va mettre en tension — et non une proposition de QCM. Une porte
+    //  sur ce motif coûterait 18 corrections fausses pour 0 vraie (ADR 0034 §9).
+    //
+    //  « les propositions SUIVANTES » dans un énoncé n'est pas visé non plus :
+    //  il désigne la liste affichée en dessous, ce qui reste vrai dans n'importe
+    //  quel ordre.
     const LETTRE = /(?:[Cc]hoix|[Rr][ée]ponses?|[Pp]roposition|[Oo]ption|[Aa]ffirmation)\s+(?:«\s*)?\(?([A-E])\)?(?![A-Za-zà-ÿÀ-Ÿ'’])/g;
+    const VOISIN = /(?:[Cc]hoix|[Rr][ée]ponse|[Pp]roposition|[Oo]ption|[Aa]ffirmation)s?\s+pr[ée]c[ée]dent(?:e|s|es)?\b/g;
     for (const fname of ["items.yaml", "checkpoints.yaml"]) {
       let brut = null;
       try { brut = fs.readFileSync(path.join(abs, fname), "utf8"); } catch { continue; }
@@ -2580,14 +2597,16 @@ for (const dir of dirs) {
         .replace(/\n\s+/g, " ")
         .replace(/\$\$[\s\S]*?\$\$/g, " ")
         .replace(/\$[^$]*\$/g, " ");
-      LETTRE.lastIndex = 0;
-      for (const m of plat.matchAll(LETTRE)) {
-        console.error(
-          `  ✗ ${dir}: ${fname} désigne un choix par sa lettre — « ${m[0].trim()} ». ` +
-          `Les propositions sont MÉLANGÉES au rendu (lib/shuffle.ts) : cette lettre est fausse à l'écran. ` +
-          `Nommer le CONTENU du choix, pas sa position.`,
-        );
-        dirFail++;
+      for (const [rx, comment] of [[LETTRE, "par sa lettre"], [VOISIN, "par sa position"]]) {
+        rx.lastIndex = 0;
+        for (const m of plat.matchAll(rx)) {
+          console.error(
+            `  ✗ ${dir}: ${fname} désigne un choix ${comment} — « ${m[0].trim()} ». ` +
+            `Les propositions sont MÉLANGÉES au rendu (lib/shuffle.ts) : ce renvoi est faux à l'écran. ` +
+            `Nommer le CONTENU du choix, pas sa position.`,
+          );
+          dirFail++;
+        }
       }
     }
   }

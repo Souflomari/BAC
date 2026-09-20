@@ -19,7 +19,7 @@
 >   deux sha au lieu de deux rendus, un serveur périmé qui imitait une
 >   régression. Lire avant de croire une mesure catastrophique.
 > - **§11.106** — « porte vérifiée rouge » n'est plus une phrase mais une
->   commande : `node scripts/essais-rouges.mjs`, **28** essais rejoués à chaque
+>   commande : `node scripts/essais-rouges.mjs`, **29** essais rejoués à chaque
 >   passage.
 > - **§11.117 / §11.118** — l'état de la MESURE : la CI n'a pas assigné un seul
 >   runner de la journée (aucune porte n'a tourné en CI depuis le 19 au soir —
@@ -10095,3 +10095,28 @@ serait faux.
 **Huitième et neuvième fois de la journée que la mesure est fausse avant le
 produit** — 41 puis 201 signalements, pour 7 vrais. La règle tient : quand une
 mesure annonce une catastrophe, vérifier le BANC avant le produit.
+
+### La classe n'était pas close : deux renvois de plus, sans lettre
+
+En cherchant ce que la porte laissait passer — sa propre colonne « ne dit rien
+de » nommait les renvois sans lettre — deux occurrences de plus sont apparues,
+du même idiome exactement :
+
+- `pc/etat-equilibre` `EE-1`, retour D : « Même erreur que **le choix
+  précédent** »
+- `pc/systemes-oscillants` `SO-1`, retour C : idem
+
+« Précédent » est une position, et après mélange le choix qui précède n'est pas
+celui que l'auteur visait. Les deux sont corrigés en nommant le contenu, la
+porte couvre désormais les deux formes, et l'essai rouge **§11.121 bis** le
+prouve. La suite passe à **29**.
+
+**Et une troisième forme a été cherchée puis ÉCARTÉE, ce qui est le vrai
+résultat de ce paragraphe :** le renvoi par RANG — « la première réponse »,
+« la dernière proposition ». Mesuré sur tout le corpus : **18 signalements,
+zéro vrai.** En philosophie, « la première réponse » désigne la première
+réponse *du texte* — la thèse spontanée que la leçon met ensuite en tension —
+et pas une proposition de QCM ; en SVT, « la première réponse adaptative » est
+de l'immunologie. Une porte sur ce motif aurait coûté dix-huit corrections
+fausses pour aucune vraie. Elle n'a pas été posée, et la raison est écrite
+dans le code à côté du motif qui, lui, l'a été.
