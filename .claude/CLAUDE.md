@@ -76,6 +76,15 @@ Read the right document for the task at hand:
   inert; a gate has four honest verdicts (RED / WARNING-seen / GREEN-ambiguous /
   MUTE); red tests live in a re-runnable suite, because a property that cannot
   be re-measured is a memory; a pattern and its preprocessing are one thing.
+  **ADR 0035 (2026-09-20) — ce qui tourne vraiment, et qui le sait :**
+  l'inventaire de ce qui s'exécute se CALCULE, il ne se lit pas (`npm run` et le
+  crochet `prebuild` échappent à tout grep) ; un fichier généré doit nommer
+  TOUTES les mains qui l'écrivent, et fusionner plutôt qu'écraser ; une porte
+  écrite après un `process.exit` n'existe pas ; un instrument qu'aucun catalogue
+  ne nomme est mort, avec le savoir de son en-tête ; une porte prise dans un
+  agrégat doit pouvoir être lancée SEULE ; **douze fois en un jour la mesure
+  était fausse avant le produit** — vérifier le BANC avant le produit ; et la
+  décision de NE PAS armer s'écrit à côté du motif voisin.
   **ADR 0032 (2026-09-11) — the honest wait before
   hydration:** a server-rendered command is `disabled` + `aria-busy` until
   React takes over (`useHydrated`), the page says so once, calmly, and
