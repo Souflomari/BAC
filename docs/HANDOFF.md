@@ -8511,3 +8511,46 @@ Pour le propriétaire, et dans cet ordre : lire les 78 restants, décider quelle
 familles manquent à l'inventaire de chaque notion, les déclarer, puis taguer.
 Tout tag posé sans famille qui le décrive vraiment est un diagnostic sans
 libellé — le défaut que la porte nomme déjà.
+
+### 11.102 bis — les 78 restants, lus
+
+Les six notions ont été relues item par item le même jour. La classification
+complète est dans **`docs/audits/distracteurs-sans-tag-2026-09-20.md`** ; voici
+ce qu'elle change.
+
+**La question n'est pas « quel tag poser » mais « quelle cause produit ce
+`null` ».** Deux causes très différentes donnent le même trou, et elles
+n'appellent pas le même geste :
+
+- **(A) tag oublié** — une famille déclarée décrit exactement l'erreur. Geste
+  mécanique.
+- **(B) famille manquante** — l'erreur est réelle, récurrente, bien décrite par
+  son retour, et l'inventaire ne la nomme nulle part. Geste de produit.
+
+**Ne jamais résoudre un (B) par un (A).** Forcer le distracteur dans la famille
+la moins éloignée fait taire l'instrument en rangeant le défaut là où plus
+personne ne le regarde — c'est le « vert acheté » de §11.69, exactement le geste
+que j'ai refusé sur `systemes-oscillants`.
+
+| notion | sans tag | diagnostic |
+|---|---:|---|
+| `pc/rlc-serie` | 23 | **majoritairement (A)** — cinq correspondances nettes contre les neuf familles déclarées (`T0-depend-de-R`, `confusion-roles-C-L-stockage`, `energie-consommee-non-conservee`, `cas-amorti-solution-sinusoidale-fermee`, `entretien-est-regime-force`). Un candidat (B) : « $R$ n'a aucun effet » — la famille existante décrit un effet MAL ORIENTÉ, pas un effet NIÉ. |
+| `maths/denombrement` | 26 | **(B), le trou le plus net du corpus** — deux familles manquent : « produit incomplet : un facteur oublié » (~11) et « propriétés du coefficient binomial mal appliquées » (~8). **L'inventaire ne mentionne pas une seule fois le coefficient binomial**, alors que huit distracteurs portent sur la symétrie, Pascal et $\binom{9}{0}$. |
+| `maths/probabilites-conditionnelles` | 34 | **(B)** — « rend une valeur de l'énoncé » (12) et « opération arithmétique sans sens probabiliste » (~10). Déjà exposé ci-dessus. |
+| `maths/limites-continuite` | 17 | **mixte** — plusieurs (A) probables, mais trois familles manquent d'un genre inattendu : « erreur de factorisation » (3), « une table numérique prouve / ne prouve pas » (2), et **« recopie le résultat d'un autre exemple » (2)** — une erreur de MÉTHODE DE TRAVAIL, pas de concept. Cette dernière est un arbitrage de produit avant d'être un arbitrage de contenu. |
+| `maths/fonction-logarithme` | 4 | **ni (A) ni (B) : à laisser, et à écrire.** Quatre leurres de LECTURE sur un texte historique ; déclarer une famille pour deux items serait disproportionné, les forcer dans une règle de calcul serait faux. |
+| `pc/systemes-oscillants` | 3 | **déjà tranché** — leurres de frontière, `null` délibéré, raison écrite en tête du fichier. |
+
+**Ce qui a changé de forme entre §11.102 et ici.** Le premier passage concluait
+« une famille manque à `probabilites-conditionnelles` ». La relecture complète
+dit autre chose : **quatre familles manquent, réparties sur trois notions, et une
+notion sur six n'a besoin de rien** — son `null` est correct et doit seulement
+être expliqué dans le fichier. Un `null` expliqué et un `null` oublié sont deux
+objets différents ; seul le second est un défaut.
+
+**Le plancher bouge dans le bon sens.** Toute famille déclarée naît à zéro item,
+donc `floor_met` passe à `false` tant que trois items ne la portent pas. Les
+quatre familles recommandées sont portées par huit à douze distracteurs chacune :
+le plancher est franchi dès le premier passage — **à condition de déclarer ET
+taguer dans le même geste**. Déclarer sans taguer laisse la porte rouge ; taguer
+sans déclarer est le diagnostic sans libellé.
