@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 144 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 145 entrées.
 > **Un propriétaire qui revient lit d'abord
 > `docs/audits/DECISIONS-EN-ATTENTE.md`** — la liste, en une page, de ce qui
 > attend un arbitrage et de ce que coûte chaque attente. Rien n'y est en train
@@ -11324,4 +11324,36 @@ du compte.
 
 Les deux parcours rejoignent `deploye-sweep` : onze contrôles, une commande,
 et le commit mesuré annoncé en tête.
+
+## §11.145 — L'index des décisions promettait plus qu'il ne contenait
+
+J'ai créé `docs/audits/DECISIONS-EN-ATTENTE.md` ce matin parce qu'il n'y avait
+nulle part où voir, d'un coup d'œil, ce qui attend un arbitrage — c'est la
+leçon du §11.135 (« une dette qu'aucun registre ne nomme est invisible »).
+L'après-midi, j'ai appliqué la même question **à ce registre-là**.
+
+**Mesure : 30 documents d'audit sur 50 portent au moins un signal
+d'arbitrage** (« décision attendue », « arbitrage owner », « à trancher »,
+« owner call »). L'index en citait un. Il ne recense pas les décisions du
+dépôt : il recense **celles qu'une passe a levées et écrites dedans** — et son
+titre, pris seul, promet davantage.
+
+**Ce que je n'ai PAS fait, et c'est le point.** Je n'ai pas versé les 30 dans
+l'index. Beaucoup de ces signaux sont **clos** : le choix M1 a été pris et posé
+en production le 2026-09-04, des campagnes entières ont été menées depuis.
+Trier ce qui tient de ce qui est levé demande de relire chaque document contre
+l'état actuel — **c'est un travail de propriétaire, pas une mesure**, et une
+liste de 30 lignes dont on ne sait pas lesquelles sont mortes vaut moins que
+pas de liste : elle donne l'apparence de l'exhaustivité.
+
+Ce que j'ai fait : **écrire la portée réelle de la page dans la page**, avec le
+tableau des 30 documents et leur nombre de signaux. Il dit **où chercher**, pas
+ce qui reste. Un signal n'est pas une décision ouverte — c'est un endroit où
+quelqu'un a écrit qu'il en fallait une.
+
+**C'est l'ADR 0031 retourné contre mon propre travail.** Un instrument affiche
+sa portée ; un document devrait afficher la sienne. Celui-ci s'appelait
+« Décisions en attente » et contenait « les décisions en attente que j'ai
+trouvées aujourd'hui » — deux choses différentes, et la seconde est honnête
+seulement si elle est écrite.
 

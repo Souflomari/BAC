@@ -269,6 +269,59 @@ deux cas : cliquets posés au niveau mesuré, qui ne peuvent que descendre.
 
 ---
 
+## La PORTÉE de cette page, mesurée
+
+**Cette page ne recense pas toutes les décisions de propriétaire du dépôt.**
+Elle recense celles qu'une passe a levées et écrites ici — et son titre, pris
+seul, promet davantage. La mesure : **30 documents d'audit sur 50 portent au
+moins un signal d'arbitrage** (« décision attendue », « arbitrage owner »,
+« à trancher », « owner call »), et la plupart ne sont pas cités ici.
+
+Beaucoup de ces signaux sont **clos** : le choix M1 a été pris et posé en
+production le 2026-09-04, des campagnes entières ont été menées depuis. Trier
+ce qui tient de ce qui est levé demande de relire chaque document contre l'état
+actuel — c'est un travail de propriétaire, pas une mesure. Ce tableau existe
+pour qu'il soit FAISABLE : il dit où chercher, pas ce qui reste.
+
+| Document d'audit | signaux d'arbitrage |
+|---|---|
+| `fable-day3-ledger.md` | 57 |
+| `remediation-campaign-2026-07.md` | 49 |
+| `ux-bac-readiness-closure-2026-07.md` | 19 |
+| `completion-evaluation-2026-07.md` | 19 |
+| `lesson-completeness-docket.md` | 12 |
+| `drapeaux-non-leves.md` | 8 |
+| `contraste-figures.md` | 7 |
+| `ux-bac-readiness-evaluation-2026-07.md` | 5 |
+| `fable-ui-content-audit.md` | 5 |
+| `content-correctness-docket-2026-07.md` | 5 |
+| `chevauchements-figures.md` | 5 |
+| `d95-content-audit.md` | 4 |
+| `k8-remesure-2017-2019.md` | 3 |
+| `hunt-flags-2026-07.md` | 3 |
+| `gisement-arabophone.md` | 3 |
+| `traces-barrant-etiquettes.md` | 2 |
+| `indice-absolu.md` | 2 |
+| `format-a-choix.md` | 2 |
+| `fable-day2-notes.md` | 2 |
+| `codes-de-barreau-fuites.md` | 2 |
+| `b4-items-coverage-ledger.md` | 2 |
+| `reseau-malade.md` | 1 |
+| `recherche-navigateur.md` | 1 |
+| `rampe-bac-2026-09-20.md` | 1 |
+| `polices-de-repli.md` | 1 |
+| `poids-et-reactivite.md` | 1 |
+| `interactivity-candidates-2026-07.md` | 1 |
+| `figure-stage-depth-audit.md` | 1 |
+| `envoi-des-reponses.md` | 1 |
+| `copier-coller.md` | 1 |
+
+*(Compté par motif sur `docs/audits/*.md`, `DECISIONS-EN-ATTENTE.md` et
+`INSTRUMENTS.md` exclus. Un signal n'est pas une décision ouverte : c'est un
+endroit où quelqu'un a écrit qu'il en fallait une.)*
+
+---
+
 ## Ce que cette page n'est pas
 
 Ce n'est pas la liste des défauts du produit : ceux qui étaient objectifs ont
