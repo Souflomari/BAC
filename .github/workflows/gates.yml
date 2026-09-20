@@ -497,6 +497,9 @@ jobs:
       - name: Constantes physiques (juste contre le monde, pas seulement entre segments)
         run: node scripts/constantes-physiques.mjs --porte
 
+      - name: Champs morts (un champ écrit dans le corpus que aucun code ne lit)
+        run: node scripts/champs-morts.mjs --porte
+
       # CLIQUET COUVERTURE-DIAGNOSTIQUE (2026-09-05). Le seul fil qui relie
       # « l'élève se trompe » à « le produit sait quoi lui proposer ensuite »
       # est un champ : `misconception:` sur un distracteur. 1 017 distracteurs

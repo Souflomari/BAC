@@ -378,6 +378,15 @@
       "de": "    correct_feedback: |-\n      La copie B ne redit pas le contenu de la phrase : elle identifie ce que",
       "vers": "    note_interne: |-\n      La copie B ne redit pas le contenu de la phrase : elle identifie ce que",
       "note": "Le champ `correct_feedback` était écrit sur 1 678 items des 62 notions et lu par AUCUN composant : 49 items de cette notion n'avaient donc rien à montrer. La porte vise l'UNION des trois canaux, jamais `solution` seule — exiger `solution` aurait condamné un dessin légitime. (Premier jet MUET : l'essai écrivait `correct_feedback: >` alors que le corpus use de `|-`. Un essai muet n'est pas un verdict sur la porte — c'est un défaut de l'essai, quatrième verdict d'ADR 0034.)"
+    },
+    {
+      "id": "§11.134",
+      "quoi": "un canal NEUF apparaît dans le corpus et aucun code ne le lit — il voyagera jusqu'au navigateur sans jamais s'afficher",
+      "porte": "node scripts/champs-morts.mjs --porte",
+      "fichier": "../content/svt/soi-non-soi/items.yaml",
+      "de": "notion: soi-non-soi",
+      "vers": "notion: soi-non-soi\nessai_rouge_canal_inedit:\n  - inedit: 1\n  - inedit: 2\n  - inedit: 3\n  - inedit: 4\n  - inedit: 5",
+      "note": "PREMIER JET AVEUGLE, et l'essai avait tort : il renommait `misconception:` en une clé inédite, mais le harnais casse UNE occurrence par dessein (« un essai rouge doit isoler UN défaut ») — une seule, contre un seuil documenté de cinq. Verdict AMBIGU tranché du côté de l'essai (ADR 0034). Le second jet injecte cinq occurrences en une seule édition. Le seuil de cinq n'est pas une mollesse : en dessous on attrape la coquille d'un auteur, pas un canal."
     }
   ]
 }

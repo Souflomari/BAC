@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 133 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 134 entrées.
 > **Un propriétaire qui revient lit d'abord
 > `docs/audits/DECISIONS-EN-ATTENTE.md`** — la liste, en une page, de ce qui
 > attend un arbitrage et de ce que coûte chaque attente. Rien n'y est en train
@@ -10839,4 +10839,49 @@ montrer aussi le `correct_feedback` à côté de la `solution`, ou l'un rend-il
 l'autre superflu ? C'est une question de dessin pédagogique, pas de code —
 elle est portée en `DECISIONS-EN-ATTENTE` §9. Tant qu'elle n'est pas tranchée,
 1 629 explications écrites restent sans emploi.
+
+## §11.134 — Comparer ce que le corpus ÉCRIT à ce que le code LIT
+
+`correct_feedback` a tenu toute la vie du corpus (§11.133) parce que **rien ne
+comparait les deux listes** : les noms de champ écrits dans `content/`, et les
+noms de champ que le code nomme. Une note dans un carnet n'empêche pas la
+deuxième occurrence ; c'est le geste qu'il fallait outiller (ADR 0033).
+
+**L'inventaire complet, fait une fois** : 876 noms de champ distincts dans le
+corpus YAML, dont **73 vus au moins cinq fois**. Comparés à tout le code du
+dépôt — `web/src`, `web/scripts`, `scripts` —, snake_case ou camelCase :
+**0 champ mort**. `correct_feedback` était le seul, et il est réparé. Quatre
+noms restent sans lecteur et c'est juste : ce sont des ANNOTATIONS D'AUTEUR
+(`honest_state`, `honest_state_2026_09_19`, `attributes_to`,
+`gated_misconceptions`), écrites pour l'humain qui relit. Elles sont permises
+NOMMÉMENT, chacune avec sa raison — jamais par motif : « tout ce qui commence
+par `honest_` » se serait offert à n'importe quel champ futur.
+
+**Le premier balayage accusait quatorze champs, et treize à tort.** Il ne
+lisait que `web/src` — donc `lesson_placement` (362), `habilete` (324),
+`also_reveals` (246), `ramp_coverage`, `coverage_summary`… tous LUS, mais par
+les instruments de `web/scripts`, pas par l'interface. Un champ consommé par
+une porte n'est pas un champ mort. Élargir le champ de lecture a ramené la
+liste de 14 à 4.
+
+**Et la porte se disculpait elle-même.** Son en-tête cite `correct_feedback`
+pour expliquer pourquoi elle existe. Comme elle lit tout `web/scripts`, la
+citation suffisait à déclarer le champ « lu » : **elle se rendait aveugle au
+défaut même qui l'a fait naître**, et à tout champ qu'elle nommerait un jour.
+Elle s'exclut désormais de sa propre lecture. Une porte ne doit pas pouvoir se
+disculper en parlant d'elle-même.
+
+**L'essai rouge, AVEUGLE au premier jet, et l'essai avait tort.** Il renommait
+`misconception:` en une clé inédite — mais le harnais casse UNE occurrence par
+dessein (« un essai rouge doit isoler UN défaut »), et une seule occurrence
+tombe sous le seuil documenté de cinq. Verdict AMBIGU, tranché du côté de
+l'essai (ADR 0034) : le second jet injecte cinq occurrences en une seule
+édition, et la porte crie. Le seuil de cinq n'est pas une mollesse — en
+dessous, on attrape la coquille d'un auteur et non un canal.
+
+**PORTÉE, affichée à chaque passage :** la correspondance est un simple
+SOUS-MOT sur tout le code réuni. Un champ nommé `note` est réputé lu dès qu'un
+commentaire contient ce mot. L'erreur va dans le sens sûr — elle SOUS-déclare
+les morts — mais elle est réelle. Et un champ lu par du code sans être RENDU à
+l'écran lui échappe entièrement.
 
