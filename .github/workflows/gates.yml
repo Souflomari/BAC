@@ -441,6 +441,9 @@ jobs:
       - name: Porte d'engagement (l'élève parie dans l'accroche, le produit retient)
         run: node scripts/porte-engagement.mjs --porte
 
+      - name: Artefacts du modèle apprenant à jour (plancher et carte item→misconception)
+        run: node scripts/build-learner-inputs.mjs --verifie
+
       # CLIQUET COUVERTURE-DIAGNOSTIQUE (2026-09-05). Le seul fil qui relie
       # « l'élève se trompe » à « le produit sait quoi lui proposer ensuite »
       # est un champ : `misconception:` sur un distracteur. 1 017 distracteurs

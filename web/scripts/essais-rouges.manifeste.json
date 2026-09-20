@@ -171,6 +171,15 @@
       "de": "        # produisait qu'un demi-signal.\n        misconception: mc.physics.rlc_serie.resistance-entretient-oscillations",
       "vers": "        # produisait qu'un demi-signal.\n        misconception: null",
       "note": "Exactement l'état d'avant le 2026-09-20 : le choix « sans résistance, rien ne peut changer » portait un null explicite mais SANS raison écrite, alors que la famille M1 le décrit mot pour mot.\n\nL'ANCRE EST LONGUE À DESSEIN. Premier jet : `de` valait la seule ligne `misconception: mc…resistance-entretient-oscillations`, qui apparaît TROIS fois dans ce fichier — la casse tombait sur un autre point d'arrêt et la porte d'engagement restait, à juste titre, verte. Troisième fois de la journée que l'essai vise le mauvais exemplaire (§11.105, §11.103 a). L'ancre inclut donc la dernière ligne du commentaire, qui n'existe qu'ici."
+    },
+    {
+      "id": "§11.113",
+      "quoi": "un artefact du modèle apprenant dérive du corpus, plancher FRANCHI",
+      "porte": "node scripts/build-learner-inputs.mjs --verifie",
+      "fichier": "src/lib/learner-model-data.json",
+      "de": "\"mc.physics.pc_energie.confusion-v-et-v-carre\": 1",
+      "vers": "\"mc.physics.pc_energie.confusion-v-et-v-carre\": 3",
+      "note": "La casse reproduit EXACTEMENT l'état trouvé le 2026-09-20 : l'artefact disait 3 (plancher atteint, donc évaluable) pendant que le corpus était tombé à 1. C'est l'écart qui change ce que l'élève voit — le modèle propose une remédiation que le banc ne peut plus évaluer."
     }
   ]
 }

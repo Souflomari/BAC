@@ -9472,3 +9472,76 @@ posée — et non l'état du fichier par rapport à git, qui en est une autre.
 > deux heures plus tôt.
 
 **20 essais rouges inscrits, tous vérifiés.**
+
+---
+
+## §11.113 — Le modèle apprenant lisait des comptes périmés
+
+### La question, posée après coup
+
+Une journée passée à s'assurer que les signaux sont PRODUITS appelle la question
+symétrique : **quelque chose les CONSOMME-t-il ?**
+
+Oui, et la chaîne est complète. `learner-model.ts` lit `misconceptionId` (null
+quand le choix n'est pas tagué — d'où le prix des muets), compte les
+`exhibitionCount`, teste `floorMet`, et le premier prédicat de `NextUp` est
+`misconception-active`. La remédiation que voit l'élève descend directement des
+tags posés dans `items.yaml`.
+
+### Le défaut
+
+`floorMet` lit une **FloorMap** — `{ notion : { misconception : nombre d'items } }`
+— générée par `build-learner-inputs.mjs` dans trois artefacts committés :
+
+- `web/src/lib/learner-model-data.json` (le plancher par misconception),
+- `backend/…/record-notion-event/item-misconceptions.{json,ts}` (la carte
+  item→misconception de la fonction edge).
+
+L'en-tête du générateur dit, depuis toujours :
+
+> REGENERATE WHENEVER items.yaml or checkpoints.yaml CHANGE
+
+**C'était une instruction adressée à un humain, que rien n'appliquait, et le
+script n'était pas en CI.** Régénéré ce soir : **les trois artefacts ont bougé.**
+
+### Ce que la dérive coûtait
+
+Le pire écart n'est pas cosmétique :
+
+| | artefact | corpus |
+|---|---:|---:|
+| `pc_energie.confusion-v-et-v-carre` | **3** | **1** |
+| `pc_atome_mecanique_newton.ingredient-manquant-mal-identifie` | **3** | **2** |
+
+Trois, c'est le plancher. **Le produit croyait ces deux familles évaluables alors
+que le banc n'a plus de quoi les évaluer** — il pouvait donc proposer à un élève
+une remédiation sans matière. D'autres comptes avaient dérivé dans l'autre sens
+(3→4, 4→5, 12→13) : moins grave, mais tout aussi faux.
+
+**D'où venait la dérive ?** Des trois réductions honnêtes consignées comme
+ruptures assumées du cliquet `couverture-diagnostique` — `pc/aspects-energetiques`
+22→21, `pc/atome-mecanique-newton` 19→18, `svt/soi-non-soi` 7→6 — où un
+distracteur mal étiqueté a été rendu à sa vraie famille. Le corpus a été corrigé
+et **les artefacts dérivés ne l'ont pas suivi.**
+
+### La porte
+
+`node scripts/build-learner-inputs.mjs --verifie` : il recalcule en mémoire et
+compare aux fichiers committés. En cas d'écart il ne dit pas « ça diffère » — il
+**nomme le pire**, et signale en toutes lettres si le plancher de trois est
+FRANCHI, parce que c'est cet écart-là qui change ce que l'élève voit.
+
+Dans `gates.yml` et `batterie-locale` (**17 portes**), essai rouge inscrit
+(**21 essais**). La casse de l'essai reproduit exactement l'état trouvé :
+l'artefact à 3 pendant que le corpus est à 1.
+
+### La leçon, qui n'est pas neuve mais qui est chère
+
+ADR 0031 dit qu'**un renvoi est une instruction**. Une instruction de
+RÉGÉNÉRATION n'en est pas moins une, et comme les autres elle ne vaut que si
+quelque chose la vérifie. Celle-ci était écrite en majuscules dans l'en-tête du
+fichier qui la porte — l'endroit le plus visible possible — et elle a dérivé
+quand même.
+
+> **Un fichier généré et committé est une affirmation sur le corpus.** Tant que
+> rien ne la revérifie, c'est une affirmation datée du jour où on l'a écrite.

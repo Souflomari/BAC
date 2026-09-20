@@ -2093,8 +2093,8 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.pc_energie.signe-travail-poids"
     ],
     "AE-19": [
-      "mc.physics.pc_energie.confusion-v-et-v-carre",
-      "mc.physics.pc_energie.em-conservee-malgre-frottement"
+      "mc.physics.pc_energie.em-conservee-malgre-frottement",
+      "mc.physics.pc_energie.travail-poids-depend-du-chemin"
     ],
     "AE-2": [
       "mc.physics.pc_energie.travail-poids-depend-du-chemin"
@@ -2178,8 +2178,8 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.pc_energie.signe-travail-poids"
     ],
     "AE-4": [
-      "mc.physics.pc_energie.confusion-v-et-v-carre",
-      "mc.physics.pc_energie.energie-oublie-facteur-demi",
+      "mc.physics.pc_energie.confond-ec-et-em",
+      "mc.physics.pc_energie.energie-oublie-g",
       "mc.physics.pc_energie.energie-oublie-masse"
     ],
     "AE-6": [
@@ -2294,8 +2294,7 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "AMN-27": [
       "mc.physics.pc_atome_mecanique_newton.calcul-incomplet-confondu-avec-calcul-faux",
-      "mc.physics.pc_atome_mecanique_newton.calcul-mecanique-suffit-a-expliquer-stabilite",
-      "mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie"
+      "mc.physics.pc_atome_mecanique_newton.calcul-mecanique-suffit-a-expliquer-stabilite"
     ],
     "AMN-28": [
       "mc.physics.pc_atome_mecanique_newton.confond-cause-et-consequence-effondrement",
@@ -4625,7 +4624,8 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.rlc_serie.pseudo-periode-egale-periode-propre"
     ],
     "cp-r0-predict": [
-      "mc.physics.rlc_serie.energie-consommee-non-conservee"
+      "mc.physics.rlc_serie.energie-consommee-non-conservee",
+      "mc.physics.rlc_serie.resistance-entretient-oscillations"
     ],
     "cp-r2-m4": [
       "mc.physics.rlc_serie.T0-depend-de-R"
@@ -4682,6 +4682,7 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones"
     ],
     "ROT-2": [
+      "mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort",
       "mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier"
     ],
     "ROT-20": [
@@ -4734,7 +4735,6 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "cp-r0-predict": [
       "mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort",
-      "mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier",
       "mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise"
     ],
     "cp-r1-omega-v": [
@@ -4970,7 +4970,9 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "SO-9": [
       "M-OSC-RAID-1"
     ],
-    "cp-r0-predict": [],
+    "cp-r0-predict": [
+      "M-OSC-LIBRE-1"
+    ],
     "cp-r6-pseudo-periode": [
       "M-OSC-AMO-1"
     ],
@@ -7641,7 +7643,7 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "SNS-11": [
       "mc.svt.svt_soi_non_soi.anticorps-immun-vs-naturel",
-      "mc.svt.svt_soi_non_soi.mauvais-antigene-vise"
+      "mc.svt.svt_soi_non_soi.systemes-de-marqueurs-confondus"
     ],
     "SNS-12": [
       "mc.svt.svt_soi_non_soi.reconnaissance-non-specifique",
@@ -7790,7 +7792,8 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "TC-6": [
       "mc.svt.svt_transmission_caracteres.dominance-mal-appliquee",
-      "mc.svt.svt_transmission_caracteres.probabilites-combinees-mal-calculees"
+      "mc.svt.svt_transmission_caracteres.probabilites-combinees-mal-calculees",
+      "mc.svt.svt_transmission_caracteres.rapport-de-croisement-mal-attribue"
     ],
     "TC-7": [
       "mc.svt.svt_transmission_caracteres.probabilites-combinees-mal-calculees",
