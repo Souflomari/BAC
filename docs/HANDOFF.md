@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 126 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 127 entrées.
 > Une session fraîche qui veut l'ÉTAT COURANT plutôt que l'histoire lit, dans
 > cet ordre :
 >
@@ -10394,3 +10394,38 @@ scripts :
 ```
 export PW_CHROMIUM_PATH=/opt/pw-browsers/chromium-1194/chrome-linux/chrome
 ```
+
+---
+
+## §11.127 — Ce qui a été mesuré et trouvé PROPRE
+
+**2026-09-20.** Un journal qui ne consigne que les défauts fait re-mesurer
+indéfiniment les mêmes choses. Voici ce qui a été vérifié aujourd'hui et tenait,
+avec de quoi le refaire. Chaque ligne est un travail que la prochaine session
+n'a pas à recommencer — et, si elle le recommence, un chiffre auquel se
+comparer.
+
+| propriété | mesure | verdict |
+|---|---|---|
+| **Tags de misconception** | 5 847 tags posés sur des choix, sur `items.yaml` ET `checkpoints.yaml`, `misconception` + `also_reveals` + `primary_misconception` | **0 orphelin**, 0 déclaration en double, sur 767 misconceptions déclarées |
+| **Solutions contre leur clé** | 295 clés essentiellement numériques : la valeur de la clé apparaît-elle dans la solution ou le retour ? | **0 contradiction.** Les 2 signalements étaient des arrondis corrects (`≈ 0,48` pour un calcul à `0,483`) |
+| **Clones de point d'arrêt** | 132 `item_source: clone_of_<id>` | **132 conformes**, 0 clone nu, 0 id pendant (§11.118) |
+| **Forme des points d'arrêt** | 362 entrées | **toutes plates** — aucune enveloppe `items: [...]` imbriquée, donc aucun angle mort pour la porte fantôme qui lit `e.choices` |
+| **Ids d'items dupliqués** | 9 collisions entre `svt/liberation-energie-matiere-organique` et `philo/la-liberte` (`LIB-1`…`LIB-9`) | **inoffensives** : aucun consommateur ne lit `item_id` seul — le journal porte toujours `notion_id`, `revealKey()` compose les deux, `targetsFromItems()` est appelée notion par notion |
+| **Choix jumeaux** | 6 448 choix, casse des maths préservée | **0** |
+| **Rendu, sur HEAD** | `dom-truth` | **277 contrôles, 0 échec** (§11.126) |
+| **Retour espacé** | les trois sources de `NextUp` (`misconception-active`, `reprise`, `revision`) | **les trois couvertes** par `test-learner-model`. Le seuil de 21 jours est une réduction v1 **déclarée** dans le spec ET dans le code — « PAS une courbe d'oubli prétendue » — pas un oubli |
+
+### Deux champs authorés que rien ne lit — et ce n'est pas le même cas
+
+- **`also_reveals`** (27 choix) : **délibérément** non consulté, et
+  `build-learner-inputs.mjs` l'écrit dans son en-tête — « *the `also_reveals`
+  field is deliberately NOT consulted here* ». C'est une annotation d'auteur,
+  pas une entrée du modèle. Rien à faire, et surtout pas de porte.
+- **`habilete`** (36 items, tous dans `pc/rlc-serie`) : aucun consommateur nulle
+  part, et **aucune décision écrite** pour l'expliquer. La différence est là —
+  l'un est un choix consigné, l'autre est un silence. C'est §11.120.
+
+**La règle qui en sort :** un champ que rien ne lit n'est un défaut que si
+personne n'a écrit pourquoi. `also_reveals` est propre ; `habilete` attend un
+arbitrage.
