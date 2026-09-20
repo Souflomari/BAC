@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 130 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 131 entrées.
 > **Un propriétaire qui revient lit d'abord
 > `docs/audits/DECISIONS-EN-ATTENTE.md`** — la liste, en une page, de ce qui
 > attend un arbitrage et de ce que coûte chaque attente. Rien n'y est en train
@@ -10690,4 +10690,70 @@ exception au `.gitignore` du dossier, et la copie suivie y est. La passe
 d'après prend désormais `--apres`. Au passage, le carnet citait
 `shots/day8-wide/measurements.json`, chemin que `.gitignore` efface : un
 lecteur qui clone ne trouvait rien. Corrigé vers `report/`.
+
+## §11.131 — La valeur juste entre ses segments, et fausse contre le monde
+
+`arithmetique-rendue` relit les chaînes « a = b = c » et vérifie que les
+segments s'accordent ENTRE EUX. Son en-tête nomme lui-même, depuis sa
+naissance, ce qu'elle ne peut pas voir, et demande que ce soit **mesuré plutôt
+que passé sous silence** (ADR 0031) : « une chaîne dont TOUS les segments sont justes entre eux
+mais fausse par rapport au monde ». Une célérité de la lumière écrite
+$3{,}00\times10^{7}$ passe sa porte sans un murmure, et toute l'arithmétique
+qui en découle sera impeccable. C'est le deuxième en-tête de la journée qui
+demandait quelque chose par écrit (l'autre : §11.130).
+
+**Le résultat : le corpus est propre sur les deux sens.** 92 déclarations de
+constante lues avec leur unité, **0 fausse** — c : 3,00×10⁸ (×16) et 2,9979×10⁸
+(×1) ; g : 9,8 (×38) et 10 (×29), les deux légitimes, 10 étant la
+simplification admise au bac ; N_A : 6,02×10²³ ; h : 6,63×10⁻³⁴ ;
+e : 1,6×10⁻¹⁹ (×6). 1 116 vitesses en m·s⁻¹ lues, **0 au-dessus de c** hors
+trois passages qui en écrivent une EXPRÈS pour nommer le piège.
+
+**Le banc avant le produit, quatre fois dans une seule porte** — et c'est la
+part instructive.
+
+1. *Le symbole seul est inutilisable.* Première sonde : chercher `c =`, `g =`,
+   `h =`. Retour : 278 occurrences de `k`, 236 de `R`, 215 de `c`… toutes en
+   maths. Le coefficient `c` d'un trinôme, le rayon `R` d'une sphère, le pas
+   `h` d'un taux d'accroissement. **L'unité, et non le symbole, est ce qui
+   fait d'une lettre une constante physique.**
+2. *Mon propre affichage mentait.* La sonde annonçait `h = 0.0` et
+   `e = 0.0` — j'allais consigner « deux constantes nulles dans le corpus ».
+   C'était `round(1.6e-19, 6)`, qui vaut 0,0. Les lectures étaient justes ;
+   l'affichage les écrasait. Trouvé avant publication, pas après.
+3. *Une borne écrite à l'exacte valeur juste accuse le nombre juste.*
+   « 6{,}02 » × 10²³ se lit en virgule flottante 6.019999999999999e23,
+   strictement INFÉRIEUR à 6.02e23. La porte a donc déclaré faux le seul N_A du
+   corpus, qui est correct. **Une tolérance n'est pas de la mollesse : c'est
+   reconnaître que le nombre lu et le nombre écrit ne sont pas le même objet.**
+4. *`\text{m}` nu est un mètre, pas une vitesse.* Quinze vitesses
+   « supraluminiques » au premier passage ; douze étaient des distances —
+   7,8×10¹¹ m, le rayon de l'orbite de Jupiter. Les trois vraies sont de la
+   **pédagogie voulue** : « Le piège de cette question… écrire
+   $V = n \times c = 4{,}5\times10^{8}$ ; ce résultat est physiquement
+   interdit », et un distracteur `correct: false` étiqueté
+   `mc…indice-vitesse-erronee`. Exactement ce que la VISION demande.
+
+**L'exemption est (fichier, VALEUR), jamais (fichier), et surtout jamais un
+motif.** Un motif sur « piège » ou « impossible » serait une porte dérobée
+qu'une faute future s'offrirait en recopiant un mot. Les trois passages sont
+nommés un par un avec leur raison, visibles dans le diff. **L'essai §11.131c
+existe pour ça** : il pose une valeur supraluminique NEUVE dans un fichier
+DÉJÀ exempté, et la porte crie. Sans lui, « exempté » aurait pu vouloir dire
+« impuni ».
+
+**Et la porte a été attrapée par une autre en naissant.** La suite d'essais
+rouges est revenue avec deux échecs de PRÉ-CONTRÔLE sur §11.122/123 : la garde
+anti-dérive voyait `constantes-physiques.mjs` comme un instrument orphelin —
+lancé par personne, nommé par aucun catalogue. Elle avait raison, je ne l'avais
+pas encore inscrit. La garde écrite hier a arrêté le script écrit aujourd'hui.
+Batterie, CI et INSTRUMENTS mis à jour : 30 portes, 90 scripts, 85 catalogués,
+0 orphelin. **40 essais rouges, tous verts.**
+
+**PORTÉE, affichée à chaque passage :** 551 couples « symbole = nombre » sans
+unité collée restent HORS CHAMP, et c'est la majorité. Sans l'unité, rien ne
+distingue la célérité du coefficient d'un trinôme. Restent aussi hors champ
+les constantes trop rares ou trop homonymes (masses du proton/neutron, F, k,
+G) et — l'angle mort qui demeure entier — une masse ou une longueur fausse
+contre le réel.
 

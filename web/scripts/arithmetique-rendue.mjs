@@ -15,7 +15,12 @@
  *     c'est la majorité du corpus, et c'est assumé ;
  *   - une chaîne dont TOUS les segments sont justes entre eux mais fausse
  *     par rapport au monde (deux masses fausses qui se compensent — le défaut
- *     même qui a motivé cette porte) ;
+ *     même qui a motivé cette porte). **Partiellement repris depuis le
+ *     2026-09-20 par `constantes-physiques.mjs`** (§11.131), qui lit les
+ *     quelques grandeurs dont la valeur n'est pas affaire d'accord interne
+ *     mais de fait physique : c, g, N_A, h, e, R, et toute vitesse dépassant
+ *     c. Le reste de cet angle mort — une masse ou une longueur fausse contre
+ *     le réel — n'est toujours lu par rien ;
  *   - les maths à cheval sur deux lignes (le $ ouvrant est ailleurs).
  * Elle affiche donc sa PORTÉE à chaque passage : combien de comparaisons elle
  * a réellement faites, combien elle a laissées hors champ.

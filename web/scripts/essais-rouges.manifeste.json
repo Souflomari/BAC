@@ -324,6 +324,33 @@
       "de": "{",
       "vers": "{\"_casse_pour_l_essai\"",
       "note": "Cliquet à une seule direction : 9/62 au 2026-09-20. CET ESSAI EST REVENU AVEUGLE À SA PREMIÈRE ÉCRITURE, et il avait raison : la porte comptait les NOMS DE FICHIERS, donc un `.interactive.json` au JSON cassé — mort au rendu — comptait encore comme manipulable. Elle PARSE désormais. Le sens inverse (en ajouter) n'est pas gardé : c'est le travail qu'on souhaite."
+    },
+    {
+      "id": "§11.131a",
+      "quoi": "une constante physique déclarée FAUSSE — la pesanteur passe de 9,8 à 8,9 m/s²",
+      "porte": "node scripts/constantes-physiques.mjs --porte",
+      "fichier": "../content/pc/aspects-energetiques/lesson.md",
+      "de": "g\\approx9{,}8\\ \\text{m/s}^2",
+      "vers": "g\\approx8{,}9\\ \\text{m/s}^2",
+      "note": "L'angle mort que `arithmetique-rendue` DÉCLARE dans son propre en-tête : une chaîne juste entre ses segments et fausse contre le monde. Toute l'arithmétique qui suivrait un g à 8,9 serait impeccable."
+    },
+    {
+      "id": "§11.131b",
+      "quoi": "une vitesse supérieure à c AFFIRMÉE (5,0×10⁸ m/s) dans une leçon qui ne la dénonce pas",
+      "porte": "node scripts/constantes-physiques.mjs --porte",
+      "fichier": "../content/pc/aspects-energetiques/lesson.md",
+      "de": "g\\approx9{,}8\\ \\text{m/s}^2",
+      "vers": "v = 5{,}0\\times10^{8}\\ \\text{m/s}",
+      "note": "Aucun arrondi n'excuse une vitesse supraluminique. Le fichier n'est dans aucune exemption : la porte doit la voir sans discussion."
+    },
+    {
+      "id": "§11.131c",
+      "quoi": "l'exemption est-elle (fichier, valeur) ou couvre-t-elle tout le fichier ? Une NOUVELLE valeur supraluminique dans un fichier DÉJÀ exempté",
+      "porte": "node scripts/constantes-physiques.mjs --porte",
+      "fichier": "../content/pc/propagation-onde-lumineuse/bank.yaml",
+      "de": "4\\cdot10^{8}\\ \\text{m.s}^{-1}",
+      "vers": "9\\cdot10^{8}\\ \\text{m.s}^{-1}",
+      "note": "Le sens qui empêche l'exemption de devenir une porte dérobée. Trois passages écrivent EXPRÈS une vitesse supraluminique pour nommer le piège ; s'ils étaient exemptés par FICHIER, toute faute future dans ces trois fichiers passerait en silence. Ils le sont par (fichier, valeur), et cet essai le prouve."
     }
   ]
 }

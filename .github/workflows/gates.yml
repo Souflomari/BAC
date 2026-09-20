@@ -494,6 +494,9 @@ jobs:
       - name: Cliquet media-manipulable (une figure manipulable ne redevient pas une image)
         run: node scripts/media-manipulable.mjs --porte
 
+      - name: Constantes physiques (juste contre le monde, pas seulement entre segments)
+        run: node scripts/constantes-physiques.mjs --porte
+
       # CLIQUET COUVERTURE-DIAGNOSTIQUE (2026-09-05). Le seul fil qui relie
       # « l'élève se trompe » à « le produit sait quoi lui proposer ensuite »
       # est un champ : `misconception:` sur un distracteur. 1 017 distracteurs

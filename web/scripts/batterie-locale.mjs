@@ -67,6 +67,7 @@ const ETAPES = [
   //  §11.129 : la VISION demande des figures MANIPULABLES, et le nomme par
   //  matière. 9 notions sur 62 en portent ; le cliquet empêche d'en perdre.
   { nom: "media-manipulable", cmd: ["scripts/media-manipulable.mjs", "--porte"] },
+  { nom: "constantes-physiques", cmd: ["scripts/constantes-physiques.mjs", "--porte"] },
   { nom: "couverture-diagnostique", cmd: ["scripts/couverture-diagnostique.mjs", "--porte"] },
   { nom: "resume-couverture", cmd: ["scripts/resume-couverture.mjs", "--porte"] },
   { nom: "arithmetique-rendue", cmd: ["scripts/arithmetique-rendue.mjs", "--strict"] },
