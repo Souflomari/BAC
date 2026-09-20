@@ -9132,3 +9132,69 @@ conservation, une condition nécessaire, une exclusion). Une clé a le droit de
 dire « jamais » quand c'est vrai.
 
 **Le cliquet tient les trois sens.** L'écart ne peut plus se creuser en silence.
+
+---
+
+## §11.109 — Une sonde qui a échoué, et ce que son échec apprend
+
+§11.108 laisse au propriétaire une question : **l'absolu d'un distracteur EST-il
+son erreur, ou n'est-ce qu'un ornement ?** Le geste diffère du tout au tout —
+adoucir un absolu constitutif rend le distracteur VRAI, adoucir un ornement ne
+coûte rien.
+
+J'ai voulu la mécaniser par un proxy : *le RETOUR de ce distracteur nomme-t-il
+la sur-généralisation ?* (`sur-généralis`, `contre-exemple`, `pas toujours`,
+`abusif`, `catégorique`, `exception`…). Verdict de la sonde sur 333 distracteurs
+absolus de 11 notions : **5 % essentiels, 95 % ornementaux.**
+
+**Ce chiffre est FAUX, et il faut lire pourquoi.**
+
+### Ce que la sonde a réellement mesuré
+
+Elle a mesuré mon lexique, pas le corpus. Les exemples le disent seuls :
+
+> `philo/la-liberte` LIB-1 — « Nous ne sommes **jamais** libres : la liberté est
+> une pure illusion, puisque tout événement a une cause. »
+> *retour :* « Ce choix confond le déterminisme spinoziste avec une négation
+> totale de la liberté. »
+
+L'absolu est ici **constitutif** : c'est exactement l'erreur philosophique
+testée. Mais le retour ne dit pas « sur-généralisation » — il nomme Spinoza et
+la confusion. En philosophie, une erreur d'absolu se DÉCRIT par la doctrine
+qu'elle déforme, pas par le mot « généralisation ».
+
+Ma sonde exigeait un vocabulaire de méthodologie du QCM dans un corpus qui
+parle la langue de sa discipline. **Elle ne pouvait pas trouver autre chose que
+ce qu'elle a trouvé.**
+
+### Pourquoi c'est consigné plutôt que jeté
+
+C'est la troisième fois de la journée que le défaut est dans la MESURE et non
+dans l'objet — après l'essai rouge qui ne lançait pas la porte (§11.104) et les
+deux essais mal construits (§11.105). Le motif commun est net et vaut d'être
+nommé :
+
+> **Quand un instrument neuf rend un verdict extrême — 95 %, 0 %, « tout est
+> cassé », « tout est propre » — la première hypothèse à tester est qu'il se
+> mesure lui-même.**
+
+Un corpus rédigé par des auteurs compétents ne produit pas 95 % d'ornements. Le
+chiffre était trop propre pour être vrai, et c'est ce qui a fait ouvrir les
+exemples.
+
+### Ce qu'il reste au propriétaire, honnêtement
+
+**La classification essentiel/ornemental demande un lecteur, pas une regex.**
+Elle se fait notion par notion, et le critère est simple à énoncer :
+*si j'enlève l'absolu, le distracteur devient-il vrai ?* Si oui, l'absolu est
+l'erreur et doit rester. Si non, il est gratuit et se retire sans rien coûter.
+
+Et une piste que la sonde ratée a quand même dégagée : **en philosophie,
+l'absolu est probablement constitutif presque partout.** Si c'est le cas, la
+réparation de `philo/la-liberte` (clés 33 %, distracteurs 60 %) ne passe pas par
+les distracteurs — elle passe par les CLÉS. Une thèse philosophique vraie peut
+être universelle (« nul n'est tenu à l'impossible », « une loi qu'on se donne
+soi-même n'est jamais une servitude ») ; si aucune bonne réponse du corpus ne
+l'énonce ainsi, c'est une timidité de rédaction, et c'est elle qui crée l'écart.
+
+**Rien n'a été modifié dans le contenu sur la foi de cette sonde.**
