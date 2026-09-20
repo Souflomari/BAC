@@ -104,6 +104,11 @@ const HORS_CHAMP = new Set([
   // ici, armée en CI (§11.149). Son rouge se rejoue à la demande :
   // `node scripts/preferences-secours.mjs --essai-rouge`.
   "preferences-secours.mjs",
+  // desaccords-hydratation lève son propre `next start` et charge les 118
+  // routes prérendues : build ET Playwright. Hors champ ici, armée en CI
+  // (§11.150). Son rouge se rejoue : `--essai-rouge` fabrique un désaccord sur
+  // la seule page d'accueil et exige que le balayage la signale, elle seule.
+  "desaccords-hydratation.mjs",
 ]);
 
 function dossiersNotions() {

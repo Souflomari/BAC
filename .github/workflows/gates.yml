@@ -213,6 +213,20 @@ jobs:
           npm run preferences-secours
           node scripts/preferences-secours.mjs --essai-rouge
 
+      # PORTE DÉSACCORDS D'HYDRATATION (2026-09-20, §11.150). La porte
+      # précédente garde ce qu'un désaccord COÛTE ; celle-ci compte ceux que le
+      # produit porte vraiment — deux questions distinctes, et un vert sur la
+      # première ne répond pas à la seconde. Un désaccord n'affiche aucune
+      # erreur : la page est simplement rendue DEUX fois, et les réglages
+      # d'affichage posés sur <html> tombent avec le premier rendu. Cliquet à 0
+      # sur les 118 routes prérendues, ~60 s. Le second passage fabrique un
+      # désaccord et exige que le balayage le voie — sans quoi le 0 ne vaut rien.
+      - name: "Désaccords d'hydratation (cliquet 0, puis essai rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run desaccords-hydratation
+          node scripts/desaccords-hydratation.mjs --essai-rouge
+
       # PORTE FIGURES (2026-09-04). figure-preview mesure sept classes de
       # défaut sur les 258 SVG statiques ; CINQ sont armées, et seulement
       # parce qu'elles sont propres dans les DEUX thèmes :

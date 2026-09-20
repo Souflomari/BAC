@@ -11600,3 +11600,48 @@ d'essai et reconstruction.
 qu'une page et un seul déclencheur de secours. Elle ne dit pas combien de
 désaccords d'hydratation le produit porte réellement — seulement ce qui arrive
 quand il y en a un.
+
+## §11.150 — Combien de pages désaccordent vraiment : 0 sur 118, et la preuve que le zéro compte
+
+§11.149 garde ce qu'un désaccord d'hydratation **coûte**. Il ne dit rien du
+nombre de désaccords que le produit **porte** — et son en-tête le dit, plutôt
+que de laisser un vert répondre à une question qu'il ne pose pas (ADR 0036 §5).
+Voici la seconde question, mesurée.
+
+`web/scripts/desaccords-hydratation.mjs` charge les **118 routes prérendues**
+du build, une par une, et écoute les trois codes du secours : #418
+(l'hydratation a échoué), #423 (la racine bascule en rendu client), #425 (le
+texte ne correspond pas). Sur `pageerror` autant que sur la console — un build
+de production ne rédige pas ces messages, il les lève minifiés, et c'est
+exactement ce qui avait rendu la porte soeur MUETTE à son premier passage.
+
+**Résultat : 0 désaccord sur 118 routes**, trois passages identiques.
+
+**Et le zéro a été gagné avant d'être cru.** Un « 0 » sorti d'un instrument
+neuf ne vaut rien tant qu'on ne l'a pas vu reconnaître un cas positif :
+`--essai-rouge` fabrique un désaccord sur la seule page d'accueil — en changeant
+un texte du HTML servi, que React compare à sa charge RSC — et exige que le
+balayage signale `/` **et elle seule**. S'il ne signale rien, il est aveugle ;
+s'il signale tout, il crie au loup. Il signale `/ → #425 #418 #423`.
+
+**Deuxième forme, gardée dans la même boucle.** Une page qui ne s'hydrate
+JAMAIS est pire qu'une page qui désaccorde, et un balayage qui ne cherche que
+des désaccords la laisserait passer en vert. Le balayage attend donc le drapeau
+que le produit pose lui-même (`__bacVivant`, `SignalVivant.tsx`) et compte
+« JAMAIS HYDRATÉE » comme un défaut à part entière (ADR 0036 §1 : énumérer les
+FORMES avant de conclure à l'absence).
+
+**Il attend l'événement, pas la montre.** Première version : 1 800 ms fixes par
+route. C'est la faute que la journée avait déjà payée deux fois — un délai fixe
+sur la commande de thème avait rendu deux verdicts opposés. En attendant le
+drapeau, le balayage est passé de ~4 min à **61 s** pour tout le site, et il ne
+mesure plus l'absence d'une erreur qui n'a pas encore eu lieu.
+
+**Portée, écrite plutôt que sous-entendue** : les routes dynamiques non
+prérendues n'y sont pas, ni aucun état atteint par un clic. Une page peut
+s'hydrater proprement puis désaccorder après une interaction — ce balayage ne
+le verrait pas. Et il mesure un `next start` local, pas l'artefact déployé.
+
+En CI, cliquet à 0, suivi de l'essai rouge dans la même étape : une porte dont
+le rouge est rejoué à chaque passage ne peut pas devenir inerte sans qu'on le
+sache.
