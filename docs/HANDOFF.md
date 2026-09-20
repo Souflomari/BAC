@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 120 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 121 entrées.
 > Une session fraîche qui veut l'ÉTAT COURANT plutôt que l'histoire lit, dans
 > cet ordre :
 >
@@ -19,7 +19,7 @@
 >   deux sha au lieu de deux rendus, un serveur périmé qui imitait une
 >   régression. Lire avant de croire une mesure catastrophique.
 > - **§11.106** — « porte vérifiée rouge » n'est plus une phrase mais une
->   commande : `node scripts/essais-rouges.mjs`, **27** essais rejoués à chaque
+>   commande : `node scripts/essais-rouges.mjs`, **28** essais rejoués à chaque
 >   passage.
 > - **§11.117 / §11.118** — l'état de la MESURE : la CI n'a pas assigné un seul
 >   runner de la journée (aucune porte n'a tourné en CI depuis le 19 au soir —
@@ -10040,3 +10040,58 @@ pourquoi le tableau ci-dessus se lit mal : il décrit une dispersion sans
 référence à laquelle la comparer. Écrire cette référence — ne serait-ce qu'une
 ligne dans LESSON-EXPERIENCE-SPEC — rendrait chacun de ses zéros lisible comme
 une dette ou comme un choix.
+
+---
+
+## §11.121 — Sept renvois à un choix par sa lettre, dans un QCM qui mélange ses propositions
+
+**2026-09-20.** `lib/shuffle.ts` existe pour une raison mesurée : dans l'ordre
+du fichier, la bonne réponse est en A **65 %** du temps (§ test-melange). Le
+module tire donc un ordre déterministe par item, et `McqItem` le dit dans son
+en-tête — **la lettre A/B/C/D affichée vient de la POSITION dans le tableau
+déjà mélangé.** L'identifiant écrit dans le YAML n'est pas la lettre que
+l'élève voit ; il ne coïncide qu'une fois sur quatre, par hasard.
+
+Sept textes rendus désignaient malgré tout un choix par sa lettre :
+
+| notion | champ | ce que l'élève lisait |
+|---|---|---|
+| `maths/arithmetique` | `AR-29` solution | « les vérifications des choix B et C » |
+| `maths/probabilites-conditionnelles` | `PC-M5-1` solution | « La valeur 0,9 (choix B) dépasserait » |
+| `pc/electrolyse` | `ELECTROLYSE-4` solution | « (choix B) » et « (choix C) » |
+| `pc/etat-equilibre` | `cp-r1-dynamique` retour D | « Même erreur que le choix A » |
+| `philo/le-bonheur` | `BON-23` solution | « (choix B) » et « (choix C) » |
+
+Ce n'est pas du jargon de rédaction — la classe de §11.24/§11.26 — c'est un
+**renvoi faux** : il envoie l'élève lire une proposition qui n'est presque
+jamais celle qu'il désigne. Le cas le plus net est `cp-r1-dynamique`, dont le
+retour s'affiche *quand l'élève a choisi D* et le renvoie vers « le choix A » :
+les deux lettres sont fausses à l'écran.
+
+**Les sept sont corrigés** en nommant le CONTENU au lieu de la position —
+« la valeur 0,9 », « seule la réaction directe continue », « les deux autres
+répartitions proposées ». La classe est vide, et la porte est donc **FRANCHE**,
+posée dans `validate-content` (§11.121) plutôt que dans un vingt-et-unième
+instrument. Essai rouge **§11.121** ; la suite passe de 27 à **28**.
+
+**PORTÉE, écrite dans la porte elle-même :** `items.yaml` et
+`checkpoints.yaml` seulement. Ce sont les deux seuls fichiers dont les
+propositions passent par le mélange. Les exercices et la banque présentent des
+questions de bac dont les items ne sont pas permutés — y interdire « choix B »
+serait faux.
+
+### Deux pièges, tous deux payés en écrivant la porte
+
+- **Le drapeau `i` plus le `\b` ASCII de JavaScript.** `/(?:réponse)\s+([A-E])\b/gi`
+  lit « la réponse **d**épend » comme « réponse D » : `i` fait matcher le `d`
+  minuscule, et JavaScript voit une frontière de mot entre `d` et `é`, qui
+  n'est pas ASCII. Première mesure : **41 signalements, presque tous faux.**
+- **Les maths non retirées.** Une seconde version cherchait aussi la forme
+  « (X) » nue : `P(E)`, `\text{card}(E)` et leurs semblables ont donné
+  **201 signalements**. Un motif et son prétraitement sont une seule chose
+  (ADR 0034 §6) — et la forme « (X) » nue a été abandonnée, parce qu'elle
+  n'est pas séparable de la notation d'ensemble.
+
+**Huitième et neuvième fois de la journée que la mesure est fausse avant le
+produit** — 41 puis 201 signalements, pour 7 vrais. La règle tient : quand une
+mesure annonce une catastrophe, vérifier le BANC avant le produit.

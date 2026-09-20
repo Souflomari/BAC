@@ -2537,6 +2537,61 @@ for (const dir of dirs) {
     }
   }
 
+  //  ── §11.121 — LE RENVOI À UN CHOIX PAR SA LETTRE ─────────────────────────
+  //
+  //  Les propositions d'un QCM sont MÉLANGÉES au rendu : `lib/shuffle.ts`,
+  //  appelé par `McqItem` et `CheckpointItem`, tire un ordre déterministe par
+  //  item, et la lettre A/B/C/D affichée vient de la POSITION dans le tableau
+  //  déjà mélangé (McqItem, en-tête). L'identifiant écrit dans le YAML n'est
+  //  donc PAS la lettre que l'élève voit — il ne coïncide qu'une fois sur
+  //  quatre, par hasard.
+  //
+  //  Conséquence : toute prose rendue qui désigne un choix par sa lettre est
+  //  FAUSSE à l'écran. « La valeur 0,9 (choix B) dépasserait P(B) » envoie
+  //  l'élève lire une proposition qui n'est presque jamais celle-là. Ce n'est
+  //  pas du jargon — c'est un renvoi faux.
+  //
+  //  Mesuré le 2026-09-20 : 7 occurrences, 5 notions, 4 matières. Toutes
+  //  corrigées en nommant le CONTENU au lieu de la lettre (« la valeur 0,9 »,
+  //  « seule la réaction directe continue »). La classe est donc vide, et
+  //  cette porte est FRANCHE.
+  //
+  //  DEUX PIÈGES, tous deux payés en les écrivant :
+  //   • le drapeau `i` rend `[A-E]` insensible à la casse, et le `\b` de
+  //     JavaScript est ASCII : « la réponse dépend » se lit alors « réponse D »
+  //     (le `d` minuscule suivi d'un `é` non-ASCII). D'où la casse explicite
+  //     sur le mot-clé et l'interdiction d'une lettre suivie d'une lettre.
+  //   • sans retirer les maths d'abord, `P(E)` et `\text{card}(E)` déclenchent
+  //     par centaines. Un motif et son prétraitement sont une seule chose
+  //     (ADR 0034 §6).
+  //
+  //  PORTÉE : `items.yaml` et `checkpoints.yaml` seulement — ce sont les deux
+  //  seuls fichiers dont les propositions passent par le mélange. Les exercices
+  //  et la banque présentent des questions de bac, dont les items ne sont pas
+  //  permutés ; y interdire « choix B » serait faux.
+  {
+    const LETTRE = /(?:[Cc]hoix|[Rr][ée]ponses?|[Pp]roposition|[Oo]ption|[Aa]ffirmation)\s+(?:«\s*)?\(?([A-E])\)?(?![A-Za-zà-ÿÀ-Ÿ'’])/g;
+    for (const fname of ["items.yaml", "checkpoints.yaml"]) {
+      let brut = null;
+      try { brut = fs.readFileSync(path.join(abs, fname), "utf8"); } catch { continue; }
+      const prose = brut.split("\n").filter((l) => !l.trimStart().startsWith("#")).join("\n");
+      //  aplati (le renvoi traverse un pli YAML) PUIS démathé (voir le 2e piège).
+      const plat = prose
+        .replace(/\n\s+/g, " ")
+        .replace(/\$\$[\s\S]*?\$\$/g, " ")
+        .replace(/\$[^$]*\$/g, " ");
+      LETTRE.lastIndex = 0;
+      for (const m of plat.matchAll(LETTRE)) {
+        console.error(
+          `  ✗ ${dir}: ${fname} désigne un choix par sa lettre — « ${m[0].trim()} ». ` +
+          `Les propositions sont MÉLANGÉES au rendu (lib/shuffle.ts) : cette lettre est fausse à l'écran. ` +
+          `Nommer le CONTENU du choix, pas sa position.`,
+        );
+        dirFail++;
+      }
+    }
+  }
+
   // Authoring-leak check — prose only (comments stripped, valid markers already removed).
   const rendered = proseLines.join("\n").replace(/<!--[\s\S]*?-->/g, "");
   if (LEXICON.test(rendered) && !/[Àà] [Ss]ourcer|SLOT|AMÉLIORATION|TODO|FIXME/.test(rendered)) {
