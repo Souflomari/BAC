@@ -1,316 +1,564 @@
 {
   "_lisezMoi": "Ligne de base du cliquet indice-absolu. Ces nombres ne doivent que DESCENDRE. Régénérer avec `node scripts/indice-absolu.mjs --sceller` UNIQUEMENT après avoir fait baisser l'indice — jamais pour faire taire une hausse.",
-  "_scelleLe": "2026-09-05",
+  "_scelleLe": "2026-09-20",
   "notions": {
     "maths/arithmetique": {
-      "eligibles": 32,
+      "eligibles": 37,
       "exploit": 0,
-      "invExploit": 1
+      "invExploit": 1,
+      "cleAbs": 3,
+      "cleTotal": 37,
+      "distAbs": 17,
+      "distTotal": 111
     },
     "maths/calcul-integral": {
-      "eligibles": 35,
+      "eligibles": 39,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 2,
+      "cleTotal": 39,
+      "distAbs": 10,
+      "distTotal": 117
     },
     "maths/denombrement": {
       "eligibles": 32,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 0,
+      "cleTotal": 32,
+      "distAbs": 0,
+      "distTotal": 96
     },
     "maths/derivabilite-etude-fonctions": {
-      "eligibles": 26,
+      "eligibles": 34,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 1,
+      "cleTotal": 34,
+      "distAbs": 13,
+      "distTotal": 102
     },
     "maths/equations-differentielles": {
-      "eligibles": 26,
+      "eligibles": 35,
       "exploit": 0,
-      "invExploit": 1
+      "invExploit": 1,
+      "cleAbs": 1,
+      "cleTotal": 35,
+      "distAbs": 1,
+      "distTotal": 105
     },
     "maths/fonction-exponentielle": {
-      "eligibles": 33,
+      "eligibles": 37,
       "exploit": 0,
-      "invExploit": 3
+      "invExploit": 3,
+      "cleAbs": 4,
+      "cleTotal": 37,
+      "distAbs": 5,
+      "distTotal": 111
     },
     "maths/fonction-logarithme": {
       "eligibles": 30,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 1,
+      "cleTotal": 30,
+      "distAbs": 7,
+      "distTotal": 90
     },
     "maths/geometrie-espace": {
-      "eligibles": 38,
+      "eligibles": 62,
       "exploit": 0,
-      "invExploit": 1
+      "invExploit": 1,
+      "cleAbs": 3,
+      "cleTotal": 62,
+      "distAbs": 12,
+      "distTotal": 186
     },
     "maths/limites-continuite": {
-      "eligibles": 32,
+      "eligibles": 38,
       "exploit": 0,
-      "invExploit": 2
+      "invExploit": 2,
+      "cleAbs": 3,
+      "cleTotal": 38,
+      "distAbs": 20,
+      "distTotal": 114
     },
     "maths/nombres-complexes-1": {
-      "eligibles": 26,
+      "eligibles": 38,
       "exploit": 0,
-      "invExploit": 1
+      "invExploit": 1,
+      "cleAbs": 1,
+      "cleTotal": 38,
+      "distAbs": 5,
+      "distTotal": 114
     },
     "maths/nombres-complexes-2": {
-      "eligibles": 29,
+      "eligibles": 39,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 1,
+      "cleTotal": 39,
+      "distAbs": 1,
+      "distTotal": 117
     },
     "maths/probabilites-conditionnelles": {
       "eligibles": 32,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 0,
+      "cleTotal": 32,
+      "distAbs": 3,
+      "distTotal": 96
     },
     "maths/structures-algebriques": {
-      "eligibles": 29,
+      "eligibles": 31,
       "exploit": 0,
-      "invExploit": 1
+      "invExploit": 1,
+      "cleAbs": 2,
+      "cleTotal": 31,
+      "distAbs": 22,
+      "distTotal": 93
     },
     "maths/suites-numeriques": {
-      "eligibles": 38,
+      "eligibles": 43,
       "exploit": 0,
-      "invExploit": 2
+      "invExploit": 2,
+      "cleAbs": 14,
+      "cleTotal": 43,
+      "distAbs": 50,
+      "distTotal": 129
     },
     "pc/aspects-energetiques": {
-      "eligibles": 31,
+      "eligibles": 35,
       "exploit": 0,
-      "invExploit": 2
+      "invExploit": 2,
+      "cleAbs": 2,
+      "cleTotal": 35,
+      "distAbs": 12,
+      "distTotal": 105
     },
     "pc/atome-mecanique-newton": {
-      "eligibles": 23,
+      "eligibles": 35,
       "exploit": 0,
-      "invExploit": 2
+      "invExploit": 2,
+      "cleAbs": 4,
+      "cleTotal": 35,
+      "distAbs": 17,
+      "distTotal": 105
     },
     "pc/chute-mouvements-plans": {
-      "eligibles": 41,
+      "eligibles": 43,
       "exploit": 0,
-      "invExploit": 3
+      "invExploit": 3,
+      "cleAbs": 10,
+      "cleTotal": 43,
+      "distAbs": 31,
+      "distTotal": 129
     },
     "pc/controle-catalyse": {
-      "eligibles": 24,
+      "eligibles": 30,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 5,
+      "cleTotal": 30,
+      "distAbs": 23,
+      "distTotal": 90
     },
     "pc/decroissance-radioactive": {
-      "eligibles": 31,
+      "eligibles": 36,
       "exploit": 0,
-      "invExploit": 1
+      "invExploit": 1,
+      "cleAbs": 5,
+      "cleTotal": 36,
+      "distAbs": 12,
+      "distTotal": 108
     },
     "pc/dipole-rl": {
       "eligibles": 28,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 0,
+      "cleTotal": 28,
+      "distAbs": 10,
+      "distTotal": 84
     },
     "pc/electrolyse": {
-      "eligibles": 27,
+      "eligibles": 29,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 1,
+      "cleTotal": 29,
+      "distAbs": 13,
+      "distTotal": 87
     },
     "pc/esterification-hydrolyse": {
-      "eligibles": 31,
+      "eligibles": 33,
       "exploit": 0,
-      "invExploit": 2
+      "invExploit": 2,
+      "cleAbs": 5,
+      "cleTotal": 33,
+      "distAbs": 13,
+      "distTotal": 99
     },
     "pc/etat-equilibre": {
-      "eligibles": 30,
-      "exploit": 0,
-      "invExploit": 1
-    },
-    "pc/evolution-spontanee": {
-      "eligibles": 26,
-      "exploit": 0,
-      "invExploit": 0
-    },
-    "pc/lois-de-newton": {
       "eligibles": 32,
       "exploit": 0,
-      "invExploit": 5
+      "invExploit": 1,
+      "cleAbs": 9,
+      "cleTotal": 32,
+      "distAbs": 34,
+      "distTotal": 96
+    },
+    "pc/evolution-spontanee": {
+      "eligibles": 34,
+      "exploit": 0,
+      "invExploit": 0,
+      "cleAbs": 10,
+      "cleTotal": 34,
+      "distAbs": 40,
+      "distTotal": 102
+    },
+    "pc/lois-de-newton": {
+      "eligibles": 38,
+      "exploit": 0,
+      "invExploit": 5,
+      "cleAbs": 9,
+      "cleTotal": 38,
+      "distAbs": 17,
+      "distTotal": 114
     },
     "pc/noyaux-masse-energie": {
       "eligibles": 23,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 2,
+      "cleTotal": 23,
+      "distAbs": 13,
+      "distTotal": 69
     },
     "pc/ondes-em-modulation": {
       "eligibles": 29,
       "exploit": 0,
-      "invExploit": 1
+      "invExploit": 1,
+      "cleAbs": 2,
+      "cleTotal": 29,
+      "distAbs": 15,
+      "distTotal": 87
     },
     "pc/ondes-mecaniques-periodiques": {
-      "eligibles": 28,
+      "eligibles": 29,
       "exploit": 0,
-      "invExploit": 4
+      "invExploit": 4,
+      "cleAbs": 6,
+      "cleTotal": 29,
+      "distAbs": 11,
+      "distTotal": 87
     },
     "pc/ondes-mecaniques-progressives": {
-      "eligibles": 23,
+      "eligibles": 26,
       "exploit": 0,
-      "invExploit": 2
+      "invExploit": 2,
+      "cleAbs": 3,
+      "cleTotal": 26,
+      "distAbs": 13,
+      "distTotal": 78
     },
     "pc/piles": {
       "eligibles": 29,
       "exploit": 0,
-      "invExploit": 3
+      "invExploit": 2,
+      "cleAbs": 6,
+      "cleTotal": 29,
+      "distAbs": 27,
+      "distTotal": 87
     },
     "pc/propagation-onde-lumineuse": {
       "eligibles": 27,
       "exploit": 0,
-      "invExploit": 2
+      "invExploit": 2,
+      "cleAbs": 6,
+      "cleTotal": 27,
+      "distAbs": 26,
+      "distTotal": 81
     },
     "pc/rc-charge": {
       "eligibles": 32,
       "exploit": 0,
-      "invExploit": 5
+      "invExploit": 5,
+      "cleAbs": 7,
+      "cleTotal": 32,
+      "distAbs": 9,
+      "distTotal": 96
     },
     "pc/reactions-acido-basiques": {
-      "eligibles": 44,
+      "eligibles": 47,
       "exploit": 0,
-      "invExploit": 1
+      "invExploit": 1,
+      "cleAbs": 3,
+      "cleTotal": 47,
+      "distAbs": 43,
+      "distTotal": 141
     },
     "pc/rlc-serie": {
       "eligibles": 41,
       "exploit": 0,
-      "invExploit": 1
+      "invExploit": 1,
+      "cleAbs": 1,
+      "cleTotal": 41,
+      "distAbs": 20,
+      "distTotal": 122
     },
     "pc/rotation-axe-fixe": {
-      "eligibles": 30,
+      "eligibles": 31,
       "exploit": 0,
-      "invExploit": 2
+      "invExploit": 2,
+      "cleAbs": 3,
+      "cleTotal": 31,
+      "distAbs": 18,
+      "distTotal": 93
     },
     "pc/suivi-temporel-vitesse": {
       "eligibles": 23,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 1,
+      "cleTotal": 23,
+      "distAbs": 8,
+      "distTotal": 69
     },
     "pc/systemes-oscillants": {
-      "eligibles": 46,
+      "eligibles": 48,
       "exploit": 0,
-      "invExploit": 1
+      "invExploit": 1,
+      "cleAbs": 3,
+      "cleTotal": 48,
+      "distAbs": 27,
+      "distTotal": 144
     },
     "pc/transformations-deux-sens": {
-      "eligibles": 20,
+      "eligibles": 24,
       "exploit": 0,
-      "invExploit": 2
+      "invExploit": 2,
+      "cleAbs": 8,
+      "cleTotal": 24,
+      "distAbs": 30,
+      "distTotal": 72
     },
     "pc/transformations-lentes-rapides": {
-      "eligibles": 23,
+      "eligibles": 33,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 1,
+      "cleTotal": 33,
+      "distAbs": 22,
+      "distTotal": 99
     },
     "philo/analyse-de-texte": {
       "eligibles": 55,
       "exploit": 0,
-      "invExploit": 3
+      "invExploit": 3,
+      "cleAbs": 8,
+      "cleTotal": 55,
+      "distAbs": 54,
+      "distTotal": 164
     },
     "philo/autrui": {
-      "eligibles": 30,
+      "eligibles": 39,
       "exploit": 0,
-      "invExploit": 4
+      "invExploit": 4,
+      "cleAbs": 15,
+      "cleTotal": 39,
+      "distAbs": 39,
+      "distTotal": 117
     },
     "philo/l-etat": {
-      "eligibles": 32,
+      "eligibles": 40,
       "exploit": 0,
-      "invExploit": 1
+      "invExploit": 1,
+      "cleAbs": 11,
+      "cleTotal": 40,
+      "distAbs": 51,
+      "distTotal": 120
     },
     "philo/l-histoire": {
-      "eligibles": 24,
+      "eligibles": 33,
       "exploit": 0,
-      "invExploit": 1
+      "invExploit": 1,
+      "cleAbs": 10,
+      "cleTotal": 33,
+      "distAbs": 41,
+      "distTotal": 99
     },
     "philo/la-liberte": {
-      "eligibles": 21,
+      "eligibles": 24,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 8,
+      "cleTotal": 24,
+      "distAbs": 43,
+      "distTotal": 72
     },
     "philo/la-personne": {
-      "eligibles": 32,
+      "eligibles": 37,
       "exploit": 0,
-      "invExploit": 1
+      "invExploit": 1,
+      "cleAbs": 16,
+      "cleTotal": 37,
+      "distAbs": 55,
+      "distTotal": 111
     },
     "philo/la-verite": {
-      "eligibles": 38,
+      "eligibles": 43,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 25,
+      "cleTotal": 43,
+      "distAbs": 65,
+      "distTotal": 129
     },
     "philo/la-violence": {
-      "eligibles": 35,
+      "eligibles": 50,
       "exploit": 0,
-      "invExploit": 1
+      "invExploit": 1,
+      "cleAbs": 13,
+      "cleTotal": 50,
+      "distAbs": 59,
+      "distTotal": 150
     },
     "philo/le-bonheur": {
-      "eligibles": 21,
+      "eligibles": 30,
       "exploit": 0,
-      "invExploit": 2
+      "invExploit": 1,
+      "cleAbs": 11,
+      "cleTotal": 30,
+      "distAbs": 25,
+      "distTotal": 90
     },
     "philo/le-devoir": {
-      "eligibles": 23,
+      "eligibles": 29,
       "exploit": 0,
-      "invExploit": 1
+      "invExploit": 1,
+      "cleAbs": 11,
+      "cleTotal": 29,
+      "distAbs": 38,
+      "distTotal": 87
     },
     "philo/le-droit-la-justice": {
-      "eligibles": 32,
+      "eligibles": 38,
       "exploit": 0,
-      "invExploit": 2
+      "invExploit": 2,
+      "cleAbs": 12,
+      "cleTotal": 38,
+      "distAbs": 40,
+      "distTotal": 114
     },
     "philo/theorie-experience": {
-      "eligibles": 32,
+      "eligibles": 37,
       "exploit": 0,
-      "invExploit": 1
+      "invExploit": 1,
+      "cleAbs": 26,
+      "cleTotal": 37,
+      "distAbs": 62,
+      "distTotal": 111
     },
     "svt/chaines-de-montagnes": {
-      "eligibles": 6,
+      "eligibles": 17,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 0,
+      "cleTotal": 17,
+      "distAbs": 13,
+      "distTotal": 51
     },
     "svt/dysfonctionnements-immunitaires": {
-      "eligibles": 6,
+      "eligibles": 18,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 2,
+      "cleTotal": 18,
+      "distAbs": 19,
+      "distTotal": 54
     },
     "svt/genetique-humaine": {
-      "eligibles": 6,
+      "eligibles": 15,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 6,
+      "cleTotal": 15,
+      "distAbs": 16,
+      "distTotal": 45
     },
     "svt/genetique-populations": {
-      "eligibles": 6,
+      "eligibles": 14,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 3,
+      "cleTotal": 14,
+      "distAbs": 11,
+      "distTotal": 42
     },
     "svt/granitisation-deformation": {
-      "eligibles": 5,
+      "eligibles": 15,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 0,
+      "cleTotal": 15,
+      "distAbs": 10,
+      "distTotal": 45
     },
     "svt/liberation-energie-matiere-organique": {
-      "eligibles": 6,
+      "eligibles": 17,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 1,
+      "cleTotal": 17,
+      "distAbs": 10,
+      "distTotal": 51
     },
     "svt/moyens-de-defense": {
-      "eligibles": 6,
+      "eligibles": 17,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 3,
+      "cleTotal": 17,
+      "distAbs": 16,
+      "distTotal": 51
     },
     "svt/role-enzymes": {
-      "eligibles": 6,
+      "eligibles": 16,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 3,
+      "cleTotal": 16,
+      "distAbs": 14,
+      "distTotal": 48
     },
     "svt/soi-non-soi": {
-      "eligibles": 6,
+      "eligibles": 18,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 5,
+      "cleTotal": 18,
+      "distAbs": 27,
+      "distTotal": 54
     },
     "svt/theorie-tectonique-plaques": {
-      "eligibles": 6,
+      "eligibles": 16,
       "exploit": 0,
-      "invExploit": 1
+      "invExploit": 0,
+      "cleAbs": 3,
+      "cleTotal": 16,
+      "distAbs": 9,
+      "distTotal": 48
     },
     "svt/transmission-caracteres": {
-      "eligibles": 5,
+      "eligibles": 14,
       "exploit": 0,
-      "invExploit": 0
+      "invExploit": 0,
+      "cleAbs": 0,
+      "cleTotal": 14,
+      "distAbs": 10,
+      "distTotal": 42
     }
   }
 }

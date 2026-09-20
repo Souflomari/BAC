@@ -100,6 +100,16 @@
       "fichier": "../content/pc/aspects-energetiques/bank.yaml",
       "de": "    bareme_total: 2.0",
       "vers": "    bareme_total: 7.0"
+    },
+    {
+      "id": "§11.108",
+      "quoi": "l'ÉCART de sur-affirmation entre clés et distracteurs se creuse",
+      "porte": "node scripts/indice-absolu.mjs --porte",
+      "notion": "content/svt/genetique-humaine",
+      "fichier": "../content/svt/genetique-humaine/items.yaml",
+      "de": "L'allèle est dominant, puisqu'il a bien fini par s'exprimer chez l'enfant.",
+      "vers": "L'allèle est dominant : un allèle qui s'exprime chez l'enfant est toujours dominant.",
+      "note": "La casse vise un item qui porte DÉJÀ deux absolus : les deux premiers sens d'indice-absolu exigent l'unicité et restent donc muets. Vérifié — la sortie ne contient QUE la ligne ÉCART. C'est la démonstration que ce troisième sens garde quelque chose que les deux autres laissent passer (ADR 0034, décision 7)."
     }
   ]
 }

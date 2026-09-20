@@ -9058,3 +9058,77 @@ le prouve »* — était juste, et c'est lui que `eleve-ruse` avait oublié.
 **La prochaine campagne est donc l'ABSOLU, pas la longueur.** Et elle a déjà son
 instrument (`indice-absolu`), son cliquet, et maintenant sa cible chiffrée
 notion par notion.
+
+---
+
+## §11.108 — L'écart de sur-affirmation : la cause, pas le symptôme
+
+§11.107 a désigné la cible : une fois la longueur remise à sa place, **c'est
+l'ABSOLU qui porte tout ce qu'un élève peut gagner sans rien savoir** (+9 à +21
+points selon la notion). Restait à mesurer le défaut lui-même plutôt que sa
+trace.
+
+### La mesure, en une ligne
+
+**Un distracteur sur-affirme 1,4 fois plus souvent qu'une clé** — 24 % contre
+17 % sur 5 920 distracteurs et 1 974 clés. Et la moyenne cache tout :
+
+| notion | clés | distracteurs | écart |
+|---|---:|---:|---:|
+| `philo/la-liberte` | 33 % | 60 % | **+27** |
+| `svt/chaines-de-montagnes` | **0 %** | 25 % | +25 |
+| `pc/reactions-acido-basiques` | 6 % | 30 % | +24 |
+| `svt/transmission-caracteres` | **0 %** | 24 % | +24 |
+| `svt/granitisation-deformation` | **0 %** | 22 % | +22 |
+| `pc/transformations-lentes-rapides` | 3 % | 22 % | +19 |
+| `maths/structures-algebriques` | 6 % | 24 % | +18 |
+
+**Les trois notions à 0 % sont les plus graves** : la clé n'y sur-affirme
+JAMAIS. Un élève qui barre tout ce qui dit « toujours », « jamais »,
+« uniquement », « aucun » n'y élimine jamais la bonne réponse — la règle des
+manuels de stratégie y marche parfaitement.
+
+### Pourquoi `indice-absolu` ne le voyait pas
+
+Ses deux sens comptent des **items** où le marqueur DÉSIGNE un choix unique.
+L'écart compte des **choix**, et ne connaît pas l'unicité. La différence n'est
+pas théorique — **c'est un chemin de contournement** :
+
+> Ajouter un absolu à un distracteur d'un item qui en porte DÉJÀ un fait
+> TOMBER les deux tranches : l'item cesse d'être compté, parce que le marqueur
+> ne désigne plus personne. **Les deux chiffres baissent pendant que le corpus
+> empire.**
+
+Troisième sens ajouté, et **sa valeur propre est démontrée, pas plaidée**
+(ADR 0034, décision 7) : la casse d'essai vise `svt/genetique-humaine` GH-2, un
+item qui porte déjà deux absolus. Résultat — une seule plainte, et c'est
+l'ÉCART. Les deux premiers sens restent muets sur exactement la même casse.
+
+### Deux choses que j'ai failli laisser passer
+
+**Le seuil que je venais d'interdire.** La première version du sens portait une
+marge de « +2 points ». C'est précisément la faute qu'ADR 0034 §3 nomme — un
+seuil anti-bruit sur un CLIQUET, qui ne protège de rien et cache tout. Retirée.
+Ce qui subsiste : la comparaison de **ratios exacts** (pour qu'un arrondi ne
+fasse pas crier la porte tout seul) et un garde de **portée** — ≥ 20
+distracteurs, qui n'est pas un seuil de bruit mais le refus de juger une notion
+de quatre choix.
+
+**Un écart NÉGATIF veut dire quelque chose.** Sur `svt/genetique-humaine`, ce
+sont les CLÉS qui sur-affirment le plus (40 % contre 38 %) : y barrer les
+absolus élimine la bonne réponse. Le message affichait « +-4 » ; il affiche
+maintenant le signe, parce que « +-4 » ne se lit pas et qu'un lecteur pressé y
+verrait un défaut là où le biais joue à l'envers.
+
+### Ce que ça laisse au propriétaire
+
+La campagne est du CONTENU et se refuse d'elle-même à la mécanique : rendre un
+distracteur moins absolu, c'est le rendre moins faux, donc changer ce qu'il
+teste. **Mais la cible est désormais chiffrée notion par notion, et le sens du
+geste est clair :** dans les trois notions à 0 %, ce n'est pas aux distracteurs
+qu'il faut toucher d'abord — c'est qu'aucune bonne réponse n'y affirme
+fermement quoi que ce soit, alors que le programme en contient (une loi de
+conservation, une condition nécessaire, une exclusion). Une clé a le droit de
+dire « jamais » quand c'est vrai.
+
+**Le cliquet tient les trois sens.** L'écart ne peut plus se creuser en silence.

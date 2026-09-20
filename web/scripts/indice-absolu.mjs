@@ -133,7 +133,7 @@ for (const matiere of matieres) {
       ...charger(path.join(dir, "checkpoints.yaml"), "checkpoints"),
     ];
 
-    const n = { matiere, slug, eligibles: 0, tranche: 0, exploit: 0, invTranche: 0, invExploit: 0, cas: [] };
+    const n = { matiere, slug, eligibles: 0, tranche: 0, exploit: 0, invTranche: 0, invExploit: 0, cleAbs: 0, cleTotal: 0, distAbs: 0, distTotal: 0, cas: [] };
 
     for (const item of items) {
       const choix = item.choices;
@@ -143,6 +143,18 @@ for (const matiere of matieres) {
 
       n.eligibles++;
       const porte = choix.map((c) => ABSOLU.test(String(c?.text ?? "")));
+
+      //  L'ÉCART, ajouté le 2026-09-20 (§11.108). Les deux mesures ci-dessous
+      //  comptent des ITEMS où le marqueur DÉSIGNE un choix unique. Elles ne
+      //  disent rien de la CAUSE, qui est plus simple et plus profonde : un
+      //  distracteur sur-affirme 1,4 fois plus souvent qu'une clé. C'est cet
+      //  écart-là qu'un élève exploite, et il survit à la disparition de
+      //  l'unicité — il suffit que DEUX choix sur-affirment pour que les deux
+      //  tranches cessent de compter, alors que le biais, lui, reste entier.
+      porte.forEach((a, i) => {
+        if (i === iJuste) { n.cleTotal++; if (a) n.cleAbs++; }
+        else { n.distTotal++; if (a) n.distAbs++; }
+      });
       const sans = porte.map((p, i) => (p ? -1 : i)).filter((i) => i >= 0);
       const avec = porte.map((p, i) => (p ? i : -1)).filter((i) => i >= 0);
 
@@ -167,6 +179,11 @@ for (const matiere of matieres) {
 }
 
 const pct = (a, b) => (b > 0 ? Math.round((a / b) * 100) : 0);
+//  Un écart NÉGATIF existe et veut dire quelque chose : sur
+//  `svt/genetique-humaine`, ce sont les CLÉS qui sur-affirment le plus (40 %
+//  contre 38 %), et barrer les absolus y élimine la bonne réponse. Le signe se
+//  lit donc, et « +-4 » ne se lit pas.
+const signe = (x) => (x >= 0 ? `+${x}` : `${x}`);
 
 // ── mode --sceller ──
 
@@ -184,6 +201,10 @@ if (SCELLER) {
       eligibles: n.eligibles,
       exploit: n.exploit,
       invExploit: n.invExploit,
+      //  Les COMPTES, pas le pourcentage arrondi : deux entiers se comparent
+      //  exactement, un pourcentage arrondi bouge d'un point sans qu'il se soit
+      //  rien passé.
+      cleAbs: n.cleAbs, cleTotal: n.cleTotal, distAbs: n.distAbs, distTotal: n.distTotal,
     };
   }
   fs.writeFileSync(BASE, JSON.stringify(base, null, 2) + "\n", "utf-8");
@@ -274,6 +295,43 @@ for (const n of notions) {
       `${cle} — indice DIRECT : ${ref.exploit} → ${n.exploit} item(s) où barrer les absolus désigne la clé.`
     );
   }
+  //  TROISIÈME SENS — L'ÉCART (§11.108, 2026-09-20).
+  //
+  //  CE QU'IL ATTRAPE QUE LES DEUX AUTRES LAISSENT PASSER, et c'est mesuré :
+  //  les deux sens ci-dessus ne comptent un item que si le marqueur DÉSIGNE un
+  //  choix unique. Ajouter un absolu à un distracteur d'un item qui en compte
+  //  déjà un fait donc TOMBER les deux tranches — l'item cesse d'être compté —
+  //  pendant que le biais, lui, grossit. Un auteur peut ainsi faire descendre
+  //  les deux chiffres en aggravant le corpus.
+  //
+  //  L'écart, lui, ne connaît pas l'unicité : il compte des CHOIX. « Un
+  //  distracteur sur-affirme-t-il plus souvent qu'une clé ? » Mesuré sur le
+  //  corpus : 24 % contre 17 %, soit 1,4 fois plus — et jusqu'à +27 points sur
+  //  `philo/la-liberte`.
+  //
+  //  PAS DE TOLÉRANCE, et c'est voulu (ADR 0034, décision 3) : sur un cliquet,
+  //  qui compare une notion à son propre passé, il n'y a pas de bruit à
+  //  filtrer — il y a un changement, ou il n'y en a pas. Une première version
+  //  de ce sens portait une marge de « +2 points » ; c'était rejouer à
+  //  l'intérieur la faute que l'ADR venait de nommer. Ce qui subsiste est la
+  //  comparaison de RATIOS exacts, pour qu'un arrondi ne fasse pas crier une
+  //  porte tout seul, et un garde de PORTÉE (≥ 20 distracteurs) — qui n'est pas
+  //  un seuil anti-bruit mais le refus de juger une notion de quatre choix.
+  if (ref.distTotal !== undefined && n.distTotal >= 20) {
+    const r = (a, b) => (b > 0 ? a / b : 0);
+    const ecartNow = r(n.distAbs, n.distTotal) - r(n.cleAbs, n.cleTotal);
+    const ecartRef = r(ref.distAbs, ref.distTotal) - r(ref.cleAbs, ref.cleTotal);
+    const ecart = pct(n.distAbs, n.distTotal) - pct(n.cleAbs, n.cleTotal);
+    const refEcart = pct(ref.distAbs, ref.distTotal) - pct(ref.cleAbs, ref.cleTotal);
+    if (ecartNow > ecartRef + 1e-9) {
+      echecs.push(
+        `${cle} — ÉCART de sur-affirmation : ${signe(refEcart)} → ${signe(ecart)} points ` +
+          `(clés ${pct(n.cleAbs, n.cleTotal)} %, distracteurs ${pct(n.distAbs, n.distTotal)} %). ` +
+          `Barrer ce qui sur-affirme épargne la clé plus souvent qu'avant.`
+      );
+    }
+  }
+
   if (n.invExploit > (ref.invExploit ?? 0)) {
     echecs.push(
       `${cle} — indice INVERSE : ${ref.invExploit ?? 0} → ${n.invExploit} item(s) où la clé est le seul choix qui sur-affirme.`
