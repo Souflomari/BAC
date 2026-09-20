@@ -1,5 +1,38 @@
 # HANDOFF — the July-2026 sprint, closed (2026-07-03 · addendum 07-06)
 
+> ## ÉTIQUETTE DE STATUT — 2026-09-20
+>
+> **Le titre et les §0 à §5 de ce fichier datent de juillet 2026 et restent le
+> compte rendu FIDÈLE de ce sprint-là.** Ils n'ont pas été réécrits : un compte
+> rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
+> est par document).
+>
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 113 entrées.
+> Une session fraîche qui veut l'ÉTAT COURANT plutôt que l'histoire lit, dans
+> cet ordre :
+>
+> - **§11.113** — les artefacts du modèle apprenant avaient dérivé du corpus ;
+>   deux misconceptions étaient déclarées évaluables alors que le banc ne les
+>   évaluait plus. **Le défaut PRODUIT le plus sérieux trouvé récemment.**
+> - **§11.104 / §11.110 / §11.111** — trois façons dont un INSTRUMENT a menti :
+>   un essai rouge qui ne lançait pas la porte, un tampon de build qui comparait
+>   deux sha au lieu de deux rendus, un serveur périmé qui imitait une
+>   régression. Lire avant de croire une mesure catastrophique.
+> - **§11.106** — « porte vérifiée rouge » n'est plus une phrase mais une
+>   commande : `node scripts/essais-rouges.mjs`, 21 essais rejoués à chaque
+>   passage.
+> - **§11.102 / §11.107 / §11.108** — l'état du CONTENU : quelles familles de
+>   misconceptions manquent à l'inventaire, et ce qu'un élève peut obtenir sur
+>   le banc sans rien savoir (31,9 % contre 25 % au hasard, l'absolu portant
+>   désormais tout le reste).
+>
+> **Les décisions transverses de septembre** sont consolidées dans
+> `docs/decisions/0033-la-porte-exacte-sur-une-autre-question.md` et
+> `docs/decisions/0034-l-instrument-qui-ne-s-entendait-pas.md`.
+>
+> **Le §0 ci-dessous (portes ouvertes) n'a PAS été révisé** : ce sont des
+> décisions de propriétaire, et aucune n'a été tranchée par une session agent.
+
 > **07-06 :** the Fable sessions are over. Read §0 (gates, incl. 7bis),
 > then **§5 — the post-Fable addendum** (D9→D12 state, the three-leg QA,
 > the model-swap rule, and the first work order:
