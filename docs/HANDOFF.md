@@ -8296,3 +8296,82 @@ rouge ne se défait jamais depuis l'index tant qu'il reste de l'inédit autour.
 Si la règle est reprise une quatrième fois, ce n'est pas la note qu'il faut
 réécrire — c'est l'essai rouge qu'il faut outiller (un script qui copie,
 casse, mesure et restaure depuis la copie).
+
+---
+
+## §11.101 — La porte de longueur mesurait la VISIBILITÉ du défaut, pas le défaut
+
+**Le fait, mesuré le 2026-09-20** (`node web/scripts/indice-longueur.mjs`) :
+
+> **42 des 62 notions ont un taux brut d'indice de longueur supérieur au hasard.
+> Seize dépassent 50 %.** Le hasard vaut 25 % à quatre choix.
+
+| matière | médiane | max | notions > 50 % |
+|---|---|---|---|
+| philo | 16 % | 61 % | 2 |
+| maths | 23 % | 57 % | 1 |
+| **pc** | **45 %** | **79 %** | **9** |
+| **svt** | **50 %** | **67 %** | **4** |
+
+Pire notion : `pc/transformations-deux-sens`, **19 items sur 24**. Puis
+`pc/suivi-temporel-vitesse` 17/22, `svt/granitisation-deformation` 10/15,
+`pc/ondes-mecaniques-progressives` 16/25.
+
+Un élève qui coche systématiquement la réponse la plus longue a raison plus
+d'une fois sur deux dans seize notions. L'item ne mesure alors plus ce qu'il
+prétend mesurer — **et c'est le diagnostic qui en découle qui porte tout le
+reste du produit.**
+
+### Et la porte était VERTE. Légitimement.
+
+`indice-longueur --porte` compte l'indice **EXPLOITABLE** : la clé est la plus
+longue **ET** l'avance dépasse 20 caractères **ET** 20 % du second choix.
+Corpus entier : **0 sur 1804.** La porte disait vrai. Elle répondait simplement
+à une autre question que celle qu'on croyait lui poser.
+
+C'est ADR 0031 dans sa forme la plus pure : *un badge vert dit que rien n'a
+échoué, pas que tout a été mesuré.* Et le piège est plus fin que d'habitude —
+la porte n'était ni morte (§11.100) ni aveugle : elle était **exacte sur une
+question plus étroite**, et son en-tête laissait lire la plus large. Plusieurs
+notions portent, en commentaire d'auteur, « ÉQUILIBRE DES LONGUEURS — vérifié
+par `indice-longueur --porte` ». C'est vrai du cliquet. C'est faux du défaut.
+
+### La seconde direction, armée
+
+ADR 0031 : *une porte a deux sens quand un seul se contourne.* Le cliquet garde
+désormais **aussi le taux BRUT** par notion — la part des items où la clé est
+strictement la plus longue, quelle que soit la marge.
+
+**Tolérance : ne crie qu'au-dessus de 25 % ET au-delà de 12 points de hausse.**
+En dessous, le bruit d'échantillon d'une notion de quinze items dépasse le
+signal, et une porte qui crie pour du bruit finit désarmée.
+
+**Vérifiée dans les trois états** : dérive de 39 points → ROUGE ; dérive de 13
+points (juste au-dessus de la tolérance) → ROUGE ; dérive de 7 points (en
+dessous) → VERTE, sans faux positif.
+
+### Deux choses que cette mesure corrige sur moi
+
+**1. Le cadrage « philo » était un artefact de qui a regardé.** Ce sont les
+critiques de `l-histoire` et `le-bonheur` qui ont levé le lièvre, et j'aurais
+volontiers écrit « les deux notions non sourcées n'ont jamais reçu la passe de
+rééquilibrage ». C'est vrai — et ce n'est pas le problème. Elles sont 5ᵉ et
+11ᵉ du classement. **Le défaut est corpus-wide et dominé par PC et SVT**, que
+personne n'avait regardées sous cet angle. *Quand un constat arrive par un
+échantillon, mesurer le corpus avant d'en écrire la portée.*
+
+**2. La ligne de base était périmée d'un facteur deux.** Elle scellait 1 458
+items éligibles ; le corpus en porte 1 804. Des notions SVT y figuraient à
+« 100 % » sur **cinq** items — un chiffre sans contenu. Re-scellée le
+2026-09-20, sans perte de dette : l'indice exploitable valait 0 avant comme
+après.
+
+### Ce qui n'est PAS fait, et pourquoi
+
+Les seize notions ne sont pas réparées. Le remède prescrit par l'instrument est
+d'**allonger les distracteurs**, jamais de raccourcir la clé — c'est un travail
+d'auteur, item par item, avec des couplages de plancher à respecter (plusieurs
+familles sont à marge nulle, et certains distracteurs sont porteurs uniques :
+les allonger est permis, les remplacer casse le plancher).
+
+Le cliquet empêche désormais que ça EMPIRE. Il ne répare rien.

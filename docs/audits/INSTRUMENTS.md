@@ -636,3 +636,15 @@ corpus propre sans casser quelque chose exprès.
 
 **Aucun des deux ne suffit seul.** Le premier est le balayage bon marché ; le
 second est la preuve, porte par porte.
+
+### `indice-longueur.mjs` — seconde direction (2026-09-20)
+
+Le cliquet gardait l'indice **EXPLOITABLE** (avance > 20 caractères ET > 20 %).
+Il garde désormais **aussi le taux BRUT** par notion. Les deux sens sont
+nécessaires : le corpus affiche **0/1804 exploitable** — vert, et vrai — pour
+**42 notions sur 62 au-dessus du hasard et 16 au-dessus de 50 %** en taux brut.
+Un seul des deux sens laissait lire « le défaut est traité » là où seul son
+caractère visible l'était. Détail et classement : HANDOFF §11.101.
+
+Tolérance du sens brut : au-dessus de 25 % ET au-delà de 12 points de hausse.
+Vérifiée ROUGE à 39 et 13 points, VERTE à 7.

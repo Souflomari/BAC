@@ -227,6 +227,11 @@ if (SCELLER) {
       eligibles: n.eligibles,
       indice: n.indice,
       exploit: n.exploit,
+      //  Le TAUX BRUT, scellé depuis le 2026-09-20. Le cliquet historique ne
+      //  gardait que l'indice EXPLOITABLE ; une notion pouvait donc dériver de
+      //  0 % à 55 % de clés-les-plus-longues sans qu'aucune avance ne franchisse
+      //  le seuil de visibilité, et la porte restait verte. C'est arrivé.
+      tauxBrut: n.eligibles ? Math.round((100 * n.indice) / n.eligibles) : 0,
       contreExploit: n.contreExploit,
     };
   }
@@ -331,6 +336,30 @@ for (const n of notions) {
   // réparé un seul item. Un ratio se trompe en récompensant le volume ; un
   // compte, non. La contrepartie assumée : agrandir une notion sans jamais
   // aggraver sa dette absolue est autorisé.
+  //  ── SECONDE DIRECTION (ADR 0031 : une porte a deux sens quand un seul se
+  //  contourne). Le sens « exploitable » ci-dessous compte les avances VISIBLES.
+  //  Celui-ci compte le BIAIS : la part des items où la clé est strictement la
+  //  plus longue, quelle que soit la marge. Mesuré le 2026-09-20, l'écart entre
+  //  les deux sens est massif — l-histoire 55 % et le-bonheur 61 % de taux brut
+  //  pour 0 % d'exploitable. Un élève qui coche la plus longue a raison plus
+  //  d'une fois sur deux dans ces notions, et le premier sens ne le voit pas.
+  //
+  //  TOLÉRANCE : on ne signale qu'au-dessus du hasard (25 % à quatre choix) ET
+  //  au-delà de 12 points de hausse. En dessous, le bruit d'échantillon d'une
+  //  notion de quinze items dépasserait le signal — et une porte qui crie pour
+  //  du bruit finit désarmée.
+  if (ref.tauxBrut !== undefined) {
+    const tauxBrut = n.eligibles ? Math.round((100 * n.indice) / n.eligibles) : 0;
+    if (tauxBrut > 25 && tauxBrut - ref.tauxBrut > 12) {
+      casses.push(
+        `${cle} — le BIAIS de longueur MONTE : ${ref.tauxBrut} % → ${tauxBrut} % de clés ` +
+          `strictement les plus longues (${n.indice}/${n.eligibles}). Aucune avance n'est encore ` +
+          `« exploitable », et c'est précisément le point : ce sens-là mesure le biais, pas sa visibilité. ` +
+          `Rallonge les DISTRACTEURS — ne raccourcis jamais la clé.`,
+      );
+    }
+  }
+
   if (n.exploit > (ref.exploit ?? ref.indice)) {
     echecs.push(
       `${cle} — l'indice DIRECT exploitable MONTE : ${ref.exploit ?? ref.indice} → ${n.exploit} items ` +
