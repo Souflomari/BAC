@@ -42,6 +42,7 @@ const ETAPES = [
   { nom: "indice-absolu", cmd: ["scripts/indice-absolu.mjs", "--porte"] },
   { nom: "indice-refus", cmd: ["scripts/indice-refus.mjs", "--porte"] },
   { nom: "eleve-ruse", cmd: ["scripts/eleve-ruse.mjs", "--porte"] },
+  { nom: "porte-engagement", cmd: ["scripts/porte-engagement.mjs", "--porte"] },
   { nom: "couverture-diagnostique", cmd: ["scripts/couverture-diagnostique.mjs", "--porte"] },
   { nom: "resume-couverture", cmd: ["scripts/resume-couverture.mjs", "--porte"] },
   { nom: "arithmetique-rendue", cmd: ["scripts/arithmetique-rendue.mjs", "--strict"] },

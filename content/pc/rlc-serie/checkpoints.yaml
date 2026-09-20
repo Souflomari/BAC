@@ -376,7 +376,12 @@ checkpoints:
       - id: C
         text: "Elle reste constante à $U_0$ : sans résistance, rien ne peut changer."
         correct: false
-        misconception: null
+        # ÉTIQUETÉ le 2026-09-20 (§11.112). Le `null` était explicite mais aucune
+        # raison n'était écrite, et la famille M1 décrit ce choix mot pour mot :
+        # « supprimer R stopperait tout ». Or c'est la PORTE D'ENGAGEMENT — le
+        # seul endroit où l'élève se prononce avant la révélation — et elle ne
+        # produisait qu'un demi-signal.
+        misconception: mc.physics.rlc_serie.resistance-entretient-oscillations
         feedback: |
           Le circuit est fermé : le condensateur chargé impose une tension aux
           bornes de la bobine, donc un courant s'établit — la charge NE PEUT PAS

@@ -9387,3 +9387,88 @@ serveur périmé qui imite une régression.
 > produit.** Ce n'est pas du scepticisme : c'est que le banc a beaucoup plus de
 > pièces mobiles que le défaut qu'on cherche, et qu'aucune d'elles ne se
 > déclare quand elle lâche.
+
+---
+
+## §11.112 — La porte d'engagement : l'élève parie, le produit retient-il ?
+
+### La question, et pourquoi elle est de la VISION
+
+L'anatomie de la notion place, dans l'accroche, un point d'arrêt où l'élève **se
+prononce avant la révélation**. C'est le seul endroit du parcours où il parie —
+et un pari dit ce qu'il croit bien mieux qu'une réponse donnée après
+l'explication.
+
+Si les distracteurs de ce point d'arrêt ne portent pas de `misconception:`,
+l'élève s'engage et **le produit ne retient rien**. La porte la plus informative
+de la leçon devient une formalité.
+
+**Personne ne posait cette question.** `couverture-diagnostique` compte les
+distracteurs muets sur tout le corpus ; un point d'arrêt d'accroche muet s'y
+noie parmi des milliers de choix. Il y a soixante-deux portes d'engagement dans
+le produit entier — une par notion — et aucune ne peut se permettre d'être
+muette.
+
+### Mesuré : 61/62, et le 62ᵉ était à moitié muet
+
+`pc/rlc-serie`, `cp-r0-predict`, choix C :
+
+> « Elle reste constante à $U_0$ : **sans résistance, rien ne peut changer.** »
+> `misconception: null`
+
+Le `null` était **explicite** — donc une décision — mais **aucune raison n'était
+écrite** nulle part dans le fichier. Et la famille M1 de la même notion le décrit
+mot pour mot :
+
+> `resistance-entretient-oscillations` — *« L'élève croit que R est l'élément
+> actif qui alimente ou maintient les oscillations ; **supprimer R stopperait
+> tout** »*
+
+C'est la deuxième clause de la description, à la virgule près. Même arbitrage
+qu'en §11.101 bis : le cas (A) de §11.102, une famille déclarée qui décrit
+exactement l'erreur, donc un geste mécanique. Étiqueté, raison écrite à
+l'endroit du changement. **62/62.**
+
+### Ce que la première version de la mesure a failli faire dire
+
+Elle cherchait le point d'arrêt **placé dans R0** et déclarait
+`pc/reactions-acido-basiques` dépourvue de porte d'engagement. **Faux.** Cette
+notion place délibérément la sienne au SOMMET, avant l'exercice de type bac, et
+son fichier le dit en toutes lettres — « COMMIT gate », « placed IN R12, BEFORE
+r-bac ».
+
+**La porte d'engagement est un RÔLE, pas une position.** Le corpus l'exprime par
+une convention d'identifiant (`cp-r0-…`) ; sa place dans la leçon est un choix
+d'auteur, et celui-ci est réfléchi : faire parier l'élève juste avant le
+problème de bac plutôt qu'avant l'accroche. L'instrument mesure désormais le
+rôle.
+
+### La porte, armée et rouge-testée
+
+`web/scripts/porte-engagement.mjs --porte`, dans `gates.yml` et
+`batterie-locale` (**16 portes**). Franche, pas cliquet : soixante-deux items
+dans tout le produit, aucun ne peut être muet.
+
+**L'essai rouge a visé le mauvais exemplaire — pour la troisième fois de la
+journée.** Ma première ancre était la ligne `misconception: mc…resistance-
+entretient-oscillations`, qui apparaît **trois fois** dans ce fichier : la casse
+tombait sur un autre point d'arrêt et la porte d'engagement restait, à juste
+titre, verte. L'ancre inclut maintenant la dernière ligne du commentaire, qui
+n'existe qu'à cet endroit.
+
+### Et un faux positif dans la suite elle-même
+
+Le contrôle de propreté d'`essais-rouges` interrogeait `git status` pour vérifier
+qu'un essai avait bien restauré son fichier. Or un fichier peut porter des
+modifications **voulues** et non encore committées — c'était le cas le jour
+même, en pleine campagne. La suite annonçait alors « la restauration a échoué »
+sur un essai parfaitement restauré.
+
+Corrigé : elle compare les **octets d'avant et d'après**, ce qui est la question
+posée — et non l'état du fichier par rapport à git, qui en est une autre.
+
+> Une alerte qui se déclenche chaque fois qu'on travaille est une alerte qu'on
+> apprend à ignorer. C'est la même leçon qu'au §11.110, dans un outil écrit
+> deux heures plus tôt.
+
+**20 essais rouges inscrits, tous vérifiés.**

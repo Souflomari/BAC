@@ -36,6 +36,11 @@ const ICI = path.dirname(new URL(import.meta.url).pathname);
 const WEB = path.resolve(ICI, "..");
 const filtre = process.argv.slice(2).find((a) => !a.startsWith("--"));
 
+/** Le contenu exact du fichier, ou null s'il est illisible. */
+function lireOctets(p) {
+  try { return fs.readFileSync(p, "utf-8"); } catch { return null; }
+}
+
 const { essais } = JSON.parse(fs.readFileSync(path.join(ICI, "essais-rouges.manifeste.json"), "utf-8"));
 const liste = filtre ? essais.filter((e) => e.id.includes(filtre) || e.quoi.includes(filtre)) : essais;
 
@@ -43,6 +48,8 @@ console.log(`\n━━ essais rouges : ${liste.length} porte(s) — chacune peut-
 
 let echecs = 0, muets = 0;
 for (const e of liste) {
+  const abs = path.resolve(WEB, e.fichier);
+  const avant = lireOctets(abs);
   const r = spawnSync(
     "node",
     [
@@ -72,12 +79,22 @@ for (const e of liste) {
       console.log(`           ${l.trim()}`);
     }
   }
-  //  Un essai restauré laisse l'arbre intact ; on le vérifie plutôt que de le
-  //  supposer, parce que c'est exactement le genre de supposition qui coûte
-  //  une journée de travail (§11.97, §11.98, §11.100).
-  const sale = spawnSync("git", ["status", "--porcelain", "--", path.resolve(WEB, e.fichier)], { cwd: WEB, encoding: "utf-8" }).stdout.trim();
-  if (sale) {
-    console.error(`           ⚠ ${e.fichier} est MODIFIÉ après l'essai — la restauration a échoué`);
+  //  Un essai restauré laisse le fichier INTACT ; on le vérifie plutôt que de
+  //  le supposer, parce que c'est le genre de supposition qui coûte une journée
+  //  de travail (§11.97, §11.98, §11.100).
+  //
+  //  PREMIÈRE VERSION, ET SON FAUX POSITIF (§11.112) : elle interrogeait
+  //  `git status`. Or un fichier peut porter des modifications VOULUES et non
+  //  encore committées — c'était le cas le jour même, en pleine campagne de
+  //  contenu — et la suite annonçait alors « la restauration a échoué » sur un
+  //  essai parfaitement restauré. Une alerte qui se déclenche chaque fois qu'on
+  //  travaille est une alerte qu'on apprend à ignorer (§11.110).
+  //
+  //  On compare donc les OCTETS d'avant et d'après, ce qui est la question
+  //  posée — et non l'état du fichier par rapport à git, qui est une autre.
+  const apres = lireOctets(abs);
+  if (avant !== null && apres !== avant) {
+    console.error(`           ⚠ ${e.fichier} diffère de son état d'AVANT l'essai — la restauration a échoué`);
     echecs++;
   }
 }
