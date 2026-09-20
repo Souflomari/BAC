@@ -7,7 +7,7 @@
 > rendu daté ne se met pas à jour, il se date (ADR 0031 — l'étiquette de statut
 > est par document).
 >
-> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 119 entrées.
+> **Ce qui s'est passé depuis vit au §11**, qui compte aujourd'hui 120 entrées.
 > Une session fraîche qui veut l'ÉTAT COURANT plutôt que l'histoire lit, dans
 > cet ordre :
 >
@@ -9971,3 +9971,72 @@ de la treizième notion à perdre sa marche. C'est la même faute qu'une heure
 plus tôt (`inter: 2` pour une mesure à 1, §11.118), et la règle qui en sort est
 simple : **un cliquet se lit dans la sortie de l'instrument, jamais dans le
 souvenir de ce qu'on croit avoir compté.**
+
+---
+
+## §11.120 — La chaîne du mélange cognitif s'arrête à la notion pilote
+
+**2026-09-20.** Il existe dans ce dépôt une chaîne complète et écrite entre le
+Cadre de Référence officiel et l'écriture d'un item :
+
+1. `research-lead` extrait les ratios d'habiletés par sous-domaine →
+   `docs/cadre/curriculum/*.yaml`, champ `habiletes.*.part_examen`, **sourcés
+   page 19** du Cadre (pc/électricité : utilisation 10,5 · application
+   expérimentale 3,15 · résolution 7,35).
+2. `pedagogy-architect` a pour consigne écrite, ligne 25 de son agent, de les
+   citer dans le spec — *« This makes downstream item-authoring match the
+   exam's cognitive mix and gives the bac-fidelity critic a numeric target. »*
+3. `item-author` écrit les items selon ce mélange.
+4. `bac-fidelity-critic` vérifie contre la cible numérique.
+
+Le champ qui porte cette information sur un item est `habilete`.
+
+**Il est renseigné sur 36 items du corpus. Les 36 sont dans `pc/rlc-serie`, où
+il l'est à 36/36. Les 61 autres notions : zéro.**
+
+La conséquence n'est pas que le mélange cognitif du produit soit mauvais :
+c'est qu'il est **incalculable** sur 97,8 % des items. `bac-fidelity-critic`
+n'a en pratique aucune cible numérique à confronter — il juge à la lecture,
+ce que son propre agent présente comme le second choix. Motif ADR 0031 : le
+mécanisme fonctionne là où il a été posé, sa PORTÉE est de 1 sur 62.
+
+Ce n'est pas un défaut à corriger en silence — c'est un arbitrage à prendre :
+étiqueter les 1 576 items restants, ou retirer la consigne et écrire que le
+mélange cognitif se juge à la lecture. Le troisième terme — laisser tel quel —
+est le choix actuel, mais il n'a jamais été *pris* : il a été subi.
+
+### L'inventaire dont ce constat est sorti
+
+|  | maths | pc | philo | svt | total |
+|---|---|---|---|---|---|
+| `lesson.md` / `items.yaml` / `checkpoints.yaml` | 14 | 25 | 12 | 11 | **62/62** |
+| `exercises.yaml` | 14 | 25 | 10 | **0** | 49/62 |
+| `bank.yaml` | 14 | 24 | **0** | **0** | 38/62 |
+| `media/` | 14 | 25 | **1** | 11 | 51/62 |
+| `derivations.yaml` · `retenir.json` | 0 | 1 | 0 | 0 | **1/62** |
+| `spec.md` | 1 | 1 | 0 | 0 | **2/62** |
+
+Trois artefacts sont universels ; tous les autres sont inégalement répartis, et
+le dépôt parle pourtant partout de « la notion » comme d'une chose unique. Pour
+`retenir.json` la dispersion est **sans conséquence** — le module a un repli
+documenté et l'état vide est assumé (§10.18). Pour `habilete`, il n'y a pas de
+repli.
+
+**Treize notions n'ont aucune source d'exercices** (ni `exercises.yaml` ni
+`bank.yaml`) : les onze SVT — déjà couvertes par §11.119, même écart de
+standard vu par un quatrième axe — plus **`philo/l-histoire` et
+`philo/le-bonheur`**, qui sont nouvelles : leurs dix sœurs en ont toutes un.
+Trou isolé, donc à combler plutôt qu'à arbitrer.
+
+### `anatomie-notion.mjs` n'est PAS une porte, et ne le deviendra pas
+
+Rien de ce qui précède n'est une régression à empêcher : ce sont des faits de
+fabrication. Un cliquet dessus produirait des rouges permanents — du bruit
+qu'on apprend à ignorer (ADR 0034 §9). La batterie reste à 20 portes ; ceci
+s'ajoute aux instruments de mesure, pas aux gardes.
+
+**Et le dépôt ne définit nulle part l'anatomie MINIMALE d'une notion.** C'est
+pourquoi le tableau ci-dessus se lit mal : il décrit une dispersion sans
+référence à laquelle la comparer. Écrire cette référence — ne serait-ce qu'une
+ligne dans LESSON-EXPERIENCE-SPEC — rendrait chacun de ses zéros lisible comme
+une dette ou comme un choix.
