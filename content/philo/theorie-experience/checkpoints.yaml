@@ -603,17 +603,28 @@ checkpoints:
 #
 # These 8 items do NOT alter the end-bank coverage floor in items.yaml (house
 # convention — see la-liberte/analyse-de-texte's checkpoints.yaml). They
-# exist to give every student, including the 6 under-floor models, in-lesson
-# exposure regardless of the item-bank gap flagged in items.yaml's
-# coverage_summary (counts below are PER-ITEM, matching the house tally
-# convention — verified programmatically, see items.yaml's own note on the
-# distractor-count-vs-item-count bug this pass caught and fixed):
-#   rationalisme-rejette-observation       — 1/24 in items.yaml, +1 here (cp-r1-empirisme-rationalisme)
-#   fallibilisme-confondu-relativisme      — 1/24 in items.yaml, +2 here (cp-r6-fallibilisme)
-#   probleme-philosophique-reduit          — 1/24 in items.yaml, +1 here (cp-r0-predict)
-#   necessite-causale-percue               — 2/24 in items.yaml, +1 here (cp-r2-induction)
-#   evidence-spontanee-fiable              — 1/24 in items.yaml, +1 here (cp-r6-fallibilisme)
-#   critere-scientifique-reduit-a-falsifiabilite — 0/24 in items.yaml, +3 here (cp-bac-coherentisme)
+# exist to give every student, including the 6 models THEN under the floor,
+# in-lesson exposure regardless of the item-bank gap items.yaml's
+# coverage_summary flagged AT THE TIME.
+#
+# RE-MESURÉ le 2026-09-20, depuis les étiquettes `misconception:` brutes,
+# au niveau ITEM. Les dénominateurs « /24 » sont MORTS : la passe du
+# 2026-09-05 (THEXP-25 à THEXP-29) a porté le banc à 29 items. AUCUNE des
+# six familles n'est encore sous le plancher ; `floor_met: true` dit vrai.
+# L'ancien chiffre reste parce qu'il explique le placement de chaque sonde.
+#
+# DEUX RENVOIS MORTS retirés d'ici : (1) `coverage_summary` n'a PAS de clé
+# `note`/`notes` — ses clés sont method, per_misconception, total_items,
+# floor, floor_met, ramp_coverage, honest_state ; le champ à lire est
+# `honest_state`. (2) items.yaml ne porte AUCUNE note sur un « bug
+# distracteurs-vs-items » : son `method` énonce la convention sans jamais
+# mentionner de bug corrigé. Ce renvoi n'avait pas de cible.
+#   rationalisme-rejette-observation       — 1/24 ALORS → 4 items AUJOURD'HUI, +1 here (cp-r1-empirisme-rationalisme)
+#   fallibilisme-confondu-relativisme      — 1/24 ALORS → 4, +2 here (cp-r6-fallibilisme)
+#   probleme-philosophique-reduit          — 1/24 ALORS → 3, +1 here (cp-r0-predict)
+#   necessite-causale-percue               — 2/24 ALORS → 3, +1 here (cp-r2-induction)
+#   evidence-spontanee-fiable              — 1/24 ALORS → 4, +1 here (cp-r6-fallibilisme)
+#   critere-scientifique-reduit-a-falsifiabilite — 0/24 ALORS → 3, +3 here (cp-bac-coherentisme)
 #
 # LENGTH REBALANCE (recipe's philo addendum, mandatory — cited ~97% historical
 # tell): correct-answer character length vs. the three distractors, per item
