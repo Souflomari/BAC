@@ -250,8 +250,10 @@ portes qui cassent l'intégration sont dans `.github/workflows/gates.yml`.
 - **Ce qui est BON.** Il décrit une structure, pas une qualité. La qualité
   pédagogique se juge contre `docs/product/VISION.md` ; la qualité visuelle
   contre `docs/product/DESIGN-BIBLE.md`.
-- **Ce qui reste à faire.** `docs/HANDOFF.md` §0 et §10.6 tiennent les
-  décisions ouvertes ; `docs/grounding/known-issues.md` tient le reste.
+- **Ce qui reste à faire.** `docs/audits/DECISIONS-EN-ATTENTE.md` tient, en
+  une page, ce qui demande un arbitrage du propriétaire et ce que chaque
+  attente coûte ; `docs/HANDOFF.md` §0 et §10.6 gardent les décisions ouvertes
+  de leur époque ; `docs/grounding/known-issues.md` tient le reste.
 
 ---
 

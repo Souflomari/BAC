@@ -26,6 +26,8 @@
 > l'anatomie d'une notion, le parcours, le diagnostic — mais dire lesquels
 > sont clos est un jugement pédagogique, pas une mesure. `docs/HANDOFF.md`
 > tient l'état réel du produit.
+>
+> **Addendum du 2026-09-20.** Deux fiches ont été RE-MESURÉES contre le dépôt d'aujourd'hui et portent chacune leur bloc daté : **C-2** (SVT sans interactivité — le diagnostic tient et devient chiffré, 0 figure manipulable sur 11 notions ; les preuves d'origine, widgets hérités et migrations de leçons, sont périmées par la reconstruction ADR 0016) et **C-3** (raisonnement expérimental en PC — la CAUSE est morte avec le schéma de leçon v2 ; le mode est aujourd'hui représenté sur 40 items, mais sa SUFFISANCE reste incalculable, §11.120). Les autres fiches n'ont pas été retouchées : leur âge est leur étiquette.
 
 The dislike list's bullets, each reconciled against what the audit
 actually found. Every entry carries: the symptom as stated, the cause
@@ -208,6 +210,36 @@ reuse `punnett_square` plus the maths widgets for probability
 need *new* drawing-and-labelling widgets; PhET / similar libraries
 have no equivalent.
 
+
+> **RE-MESURÉ LE 2026-09-20 (§11.129).** Le DIAGNOSTIC tient et il est
+> désormais CHIFFRÉ ; les PREUVES ci-dessus sont périmées.
+>
+> **Ce qui est périmé :** « trois widgets hérités », « mig 037 », « 25 skills ».
+> Le frontend a été reconstruit (ADR 0016) et le contenu vit maintenant dans
+> `content/<matière>/<notion>/`. Ni les widgets hérités ni les migrations de
+> leçons ne décrivent l'état courant.
+>
+> **Ce qui tient, et pour la première fois avec un nombre :**
+>
+> | matière | SVG statiques | étagées | **manipulables** | notions avec du manipulable |
+> |---|---|---|---|---|
+> | maths | 72 | 72 | 5 | 5/14 |
+> | pc | 134 | 125 | 6 | 4/25 |
+> | **svt** | **49** | **37** | **0** | **0/11** |
+>
+> SVT porte exactement ce que sa ligne de la VISION exclut — « des images
+> affichées » — et zéro interaction de construction de schéma. La phrase
+> « No diagram-construction interactions (drawing / labelling) » reste vraie
+> mot pour mot, quatre mois et une reconstruction plus tard.
+>
+> **Mesurable désormais :** `node web/scripts/media-manipulable.mjs`. Un cliquet
+> à une seule direction empêche d'en perdre ; il n'en exige aucune de plus.
+>
+> **Et un axe que cette fiche ne voyait pas :** la même ligne de la VISION dit
+> que l'épreuve SVT est « un argument travaillé montré en entier, PUIS
+> ESTOMPÉ ». On n'estompe pas vers rien — et SVT n'a **aucun `exercises.yaml`**
+> (§11.120). C'est le même trou, vu par l'autre phrase du même paragraphe.
+
 ### C-3. PC misses experimental-reasoning content
 **Source.** Not explicit in the dislike list; surfaced by
 `pedagogy-auditor`'s PC profile and the audit confirms.
@@ -224,6 +256,34 @@ new block kind is needed.
 **Severity.** sev-2.
 **Fix shape.** Define a new lesson block kind for experimental-reasoning
 material; render in long-lesson screen; backfill chapter-by-chapter.
+
+
+> **RE-MESURÉ LE 2026-09-20 (§11.129).** Cette fiche est **partiellement
+> dépassée**, et sa CAUSE l'est entièrement.
+>
+> **La cause est morte :** « pas de type de bloc `document_experimental` dans
+> les leçons v2 », « écran long-lesson », « étendre le schéma v2 ». Le schéma de
+> leçon v2 n'existe plus (ADR 0016).
+>
+> **Ce que le corpus porte aujourd'hui**, mesuré sur les 690 items de PC :
+> **40 items** étiquetés pour le raisonnement expérimental —
+> `document_experimental` (13), `application_experimentale` (13),
+> `application-experimentale` (7), `lecture-graphique` (6), `TP-aspirine` (1).
+> Le mode n'est donc **plus absent** : il est représenté, au niveau de l'item
+> et non d'un bloc de leçon.
+>
+> **Ce qui reste ouvert, et que ce chiffre ne tranche PAS :** 40 sur 690, est-ce
+> assez ? La VISION dit que l'épreuve le teste ; le Cadre de Référence porte les
+> ratios d'habiletés qui donneraient la cible — et le champ `habilete` qui les
+> porterait est renseigné sur 36 items du corpus entier, tous dans une seule
+> notion (§11.120). **La question « le mélange cognitif est-il juste ? » est
+> incalculable**, et c'est elle qui fermerait cette fiche.
+>
+> À noter au passage : `application_experimentale` et `application-experimentale`
+> désignent le même concept avec deux orthographes. Trente et un couples de ce
+> genre existent dans le corpus ; rien ne lit `tags:` aujourd'hui, donc rien
+> n'en souffre — mais le premier filtre écrit dessus en manquera une partie
+> (§11.127).
 
 ---
 
