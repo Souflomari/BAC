@@ -12116,3 +12116,54 @@ mot comme « erreur », « absurde » ou « tu as » serait classée et absorbé
 un filet à grosses mailles, pas une preuve. Et il ne voit rien des 97,5 %
 d'expressions qui portent une lettre, ni des unités, ni des chiffres
 significatifs.
+
+## §11.159 — Deux leçons écrivent-elles la même prose ? Et trois masques qui mangeaient le corpus
+
+§11.118 garde les **énoncés d'items** jumeaux. La prose des leçons n'avait
+jamais été comparée à elle-même — et c'est là que le copier-coller se loge le
+plus facilement : 62 leçons écrites en vagues, un gabarit commun, un paragraphe
+qui « marchait bien » ailleurs. Un élève qui lit deux notions et retrouve le
+même paragraphe apprend que le produit récite au lieu d'expliquer.
+
+**Mesuré sur 281 932 mots et 1 891 paires : recouvrement maximum 4,4 %, plus
+long passage propre à deux leçons 41 mots.** Aucune leçon n'est la copie d'une
+autre.
+
+### Le critère qui tranche est la DIFFUSION, pas le chapitre
+
+Premier jet : j'exemptais tout passage porté par un chapitre de méthode, parce
+que le gabarit de dissertation (81 mots) se répète à dessein. L'essai rouge —
+un paragraphe de 87 mots recopié d'une leçon dans une autre — est resté
+**VERT** : je l'avais collé juste sous « Pour t'entraîner ». **Une amnistie de
+chapitre est un trou où un copier-coller se cache.**
+
+La règle juste ne regarde pas le chapitre mais la diffusion : un gabarit se
+répète dans BEAUCOUP de leçons (la méthode est dans les douze de philosophie) ;
+un copier-coller n'existe que dans DEUX. Trois leçons ou plus : gabarit.
+Exactement deux : à lire.
+
+### Trois masques successifs mangeaient le corpus
+
+C'est la partie qui vaut d'être lue, parce que c'est la même faute trois fois,
+et que la troisième était invisible depuis le début de la journée.
+
+1. `\$\$?[^$]*\$\$?` apparie les dollars **de gauche à droite sur tout le
+   fichier** : un `$` esseulé et tout est masqué jusqu'au suivant.
+2. L'affichée non ancrée confond deux maths en ligne collées (`$a$$b$`) avec un
+   `$$`, et le masque repart de travers.
+3. **Et la vraie coupable** : `^---[\s\S]*?^---` pour retirer le front-matter.
+   Les leçons emploient `---` comme SÉPARATEUR de chapitre — `suites-numeriques`
+   en a six — et le fichier **ne commence pas** par du front-matter : il
+   commence par un titre. Le motif masquait donc les lignes **3 à 38**, dont le
+   paragraphe que l'essai rouge venait d'y copier. L'essai restait vert parce
+   que le texte « copié » n'existait plus dans sa leçon d'origine.
+
+Correctifs : masquage **ligne par ligne** pour les maths (une boucle borne les
+dégâts à une ligne ; une expression régulière propage l'erreur), et front-matter
+retiré **seulement si le fichier commence par lui**. Le balayage est passé de
+265 543 à **281 932 mots** — 16 473 mots de prose qui étaient invisibles.
+
+**La leçon, pour la troisième fois de la journée** (après §11.152 pour les
+boîtes de figures et §11.158 pour les calculs) : *quand une mesure paraît
+propre, vérifier d'abord qu'elle a REGARDÉ.* Et le seul outil qui l'a dit à
+chaque fois, c'est l'essai rouge — pas la relecture.

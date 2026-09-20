@@ -286,6 +286,18 @@ jobs:
       - name: "Calculs numériques du corpus (cliquet 0 inexpliqué)"
         run: npm run calculs-numeriques
 
+      # PORTE PROSE JUMELLE (2026-09-20, §11.159). §11.118 garde les ÉNONCÉS
+      # d'items jumeaux ; la prose des leçons n'avait jamais été comparée à
+      # elle-même. Un élève qui lit deux notions et retrouve le même paragraphe
+      # apprend que le produit récite au lieu d'expliquer. Deux cliquets :
+      # recouvrement maximum (4,4 % mesuré, seuil 8 %) et plus long passage
+      # présent dans DEUX leçons seulement (41 mots mesurés, seuil 60). Ce
+      # second critère est la clé : un gabarit se répète dans BEAUCOUP de leçons
+      # (la méthode de dissertation est dans les douze de philosophie), un
+      # copier-coller n'existe que dans deux.
+      - name: "Prose jumelle entre leçons (deux cliquets)"
+        run: npm run prose-jumelle
+
       # PORTE FIGURES (2026-09-04). figure-preview mesure sept classes de
       # défaut sur les 258 SVG statiques ; CINQ sont armées, et seulement
       # parce qu'elles sont propres dans les DEUX thèmes :
