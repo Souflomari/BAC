@@ -121,6 +121,9 @@ const HORS_CHAMP = new Set([
   "marge-etiquettes.mjs",
   // figures-trois-moteurs : même raison que trois-moteurs (firefox + webkit).
   "figures-trois-moteurs.mjs",
+  // stockage-refuse lève son propre `next start` et pilote un navigateur : build
+  // ET Playwright. Hors champ ici, armée en CI (§11.154).
+  "stockage-refuse.mjs",
 ]);
 
 function dossiersNotions() {

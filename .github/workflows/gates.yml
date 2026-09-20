@@ -243,6 +243,21 @@ jobs:
           npm run marge-etiquettes
           node scripts/marge-etiquettes.mjs --essai-rouge
 
+      # PORTE STOCKAGE REFUSÉ (2026-09-20, §11.154). Navigation privée,
+      # « bloquer les données de site », appareil d'école verrouillé : dans tous
+      # ces cas `localStorage` ne rend pas null, il LÈVE — et il lève à l'ACCÈS,
+      # pas seulement à l'écriture. Une lecture non protégée dans un rendu n'est
+      # donc pas une préférence perdue, c'est une leçon perdue. La porte parcourt
+      # accueil → leçon → répondre → épreuve avec le stockage qui lève, et le
+      # compare à un TÉMOIN sans sabotage. Elle vérifie d'abord que le refus est
+      # EFFECTIF : une colonne « refusé » qui n'a rien refusé rendrait un vert
+      # vide. Second passage : l'essai rouge (JavaScript bloqué → elle doit crier).
+      - name: "Stockage refusé (parcours complet, puis essai rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run stockage-refuse
+          node scripts/stockage-refuse.mjs --essai-rouge
+
       # PORTE FIGURES (2026-09-04). figure-preview mesure sept classes de
       # défaut sur les 258 SVG statiques ; CINQ sont armées, et seulement
       # parce qu'elles sont propres dans les DEUX thèmes :

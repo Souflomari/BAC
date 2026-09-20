@@ -11856,3 +11856,58 @@ c'est ce que la DESIGN-BIBLE §3 demande nommément, pour une raison écrite dan
 d'identité visuelle ; ajouter une police est une décision de poids sur un
 produit destiné à des forfaits serrés. Les trois chiffres sont mesurés, le choix
 ne l'est pas — il est posé en `DECISIONS-EN-ATTENTE §13`.
+
+## §11.154 — L'élève dont le navigateur refuse le stockage
+
+Navigation privée, « bloquer les cookies et données de site », appareil d'école
+verrouillé, navigateur d'opérateur. Dans tous ces cas, `localStorage` ne rend
+pas `null` : **il lève** — et il lève à l'ACCÈS, pas seulement à l'écriture.
+Lire `window.localStorage` suffit à déclencher une `SecurityError`. Une lecture
+non protégée dans un rendu React n'est donc pas une préférence perdue, c'est une
+page morte.
+
+Le produit y touche à cinq endroits (`layout.tsx`, `ThemeToggle`,
+`FontSizeStepper`, `useFiliere`, `GardePreferences`), pour quatre valeurs qui
+sont toutes des préférences — jamais de l'état d'apprentissage (ADR 0025
+§2.11). La question n'est donc pas « l'élève perd-il ses réglages » : oui, et
+c'est le comportement voulu. La question est **la leçon reste-t-elle lisible et
+répondable**.
+
+**Mesuré : oui, à l'identique du témoin.**
+
+| | témoin | stockage refusé |
+|---|---|---|
+| le JavaScript prend la main | ✓ | ✓ |
+| items atteignables sur la leçon | 28 | 28 |
+| retour après une réponse | 348 car. | 348 car. |
+| sujet révélé par « Commencer » | 23 459 car. | 23 459 car. |
+| frontière d'erreur déclenchée | non | non |
+| exceptions non rattrapées | 0 | 0 |
+
+Trois passages identiques.
+
+### Deux gardes sur le banc lui-même
+
+**Le sabotage a-t-il pris ?** Le banc le demande à la page (`try { void
+localStorage } catch`). Sans ce contrôle, une colonne « refusé » qui n'aurait
+rien refusé rendrait un vert parfaitement vide — la porte MUETTE de l'ADR 0034
+sous un autre nom.
+
+**Les détecteurs détectent-ils ?** `--essai-rouge` bloque les morceaux de
+JavaScript : le banc rapporte alors 6 échecs. Un banc qui ne sait pas échouer ne
+sait rien dire.
+
+### Et le témoin qui tombe
+
+Premier jet : deux contrôles rouges — « répondre produit un retour » et « le
+chapitre suivant s'ouvre » — **dans les DEUX colonnes**, témoin compris. C'est
+le témoin qui a parlé : un banc dont le contrôle échoue ne mesure pas le
+produit. J'avais inventé des sélecteurs (`input[type=radio]`,
+`button[data-choix]`) qui n'existent nulle part, et surtout les chapitres sont
+des `<details>` repliés — il faut les OUVRIR avant de chercher un item, sinon on
+mesure une absence qui est le dessin. Sélecteurs repris de `deploye-sweep`, qui
+les avait déjà payés.
+
+**Ce que la porte ne dit pas** : le stockage PLEIN (quota dépassé) est un autre
+cas — il lève à l'écriture seulement, et sous un autre code. Il n'est pas
+mesuré.
