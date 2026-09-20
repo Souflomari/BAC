@@ -9737,3 +9737,52 @@ une journée à chaque lecteur qui le prend au sérieux.**
 Le complément honnête tient en une ligne : *les 7 % restants sont les questions
 qualitatives, plus une existence-unicité — et aucune ne doit dérouler
 d'algèbre.*
+
+---
+
+## §11.117 — La CI n'a pas tourné une seule fois de la journée
+
+Re-mesuré à **17:00Z le 2026-09-20**, sur le dernier commit poussé :
+
+```
+gates   status completed · conclusion failure
+        started 16:59:59Z · completed 17:00:01Z   (2 secondes)
+        logs → HTTP 404
+```
+
+**Deux secondes et aucun journal : c'est la signature exacte de §11.72** — le
+job n'a jamais reçu de runner, donc il n'y a pas de journal à télécharger. La
+panne dure depuis 18:53Z le 2026-09-19 et n'a pas bougé. Rien dans le dépôt ne
+l'explique ; la cause probable reste un quota de minutes ou une limite de
+dépense du compte, qui se règle hors du dépôt.
+
+**Un commentaire a déjà été laissé sur la PR #2 pour cette cause racine. Je n'en
+laisse pas un second** — répéter un diagnostic déjà écrit n'ajoute rien et use
+le fil.
+
+### Le caveat à ne pas oublier
+
+**Les six portes ajoutées à `gates.yml` aujourd'hui n'y ont JAMAIS tourné** —
+`indice-refus`, `eleve-ruse`, `porte-engagement`,
+`build-learner-inputs --verifie`, `rampe-bac`, `essais-rouges`. Elles sont
+câblées, scellées, et vérifiées **en local uniquement**.
+
+Ce qui est établi, c'est ceci et rien de plus :
+
+```
+━━ batterie locale ━━   18 portes
+  17 vertes
+   1 ROUGE — couverture-diagnostique, sur ses TROIS ruptures documentées
+             (aspects-energetiques 22→21, atome-mecanique-newton 19→18,
+              soi-non-soi 7→6), toutes des réductions honnêtes où un
+              distracteur mal étiqueté a été rendu à sa vraie famille
+  ✓ la liste couvre gates.yml (18 portes + 11 hors champ assumés)
+
+━━ essais rouges ━━     22 portes crient encore
+```
+
+**Le jour où le runner revient, ces six portes s'exécuteront pour la première
+fois.** Elles passent en local sur le même arbre, mais « passe en local » et
+« passe en CI » ne sont pas la même affirmation, et il n'y a aucune raison de
+les confondre ici — c'est précisément la faute que §11.81 a payée pendant une
+semaine.
