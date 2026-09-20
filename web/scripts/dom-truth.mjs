@@ -2510,8 +2510,33 @@ try {
     const sha = stamp?.sha ?? "";
     if (!stamp || !/^([0-9a-f]{7,}|inconnu)$/.test(sha))
       failures += fail(`stamp missing or malformed: ${JSON.stringify(stamp)}`);
-    else if (headSha && sha !== headSha && sha !== "inconnu")
-      failures += fail(`stamp ${sha} ≠ HEAD ${headSha} — the .next build is stale, rebuild before verifying`);
+    else if (headSha && sha !== headSha && sha !== "inconnu") {
+      //  LE TAMPON RÉPOND À LA MAUVAISE QUESTION quand on le lit ainsi (§11.110).
+      //  « Le build est-il à HEAD ? » n'est pas ce qui compte : ce qui compte est
+      //  « le build est-il à jour POUR CE QU'IL REND ? ». Un commit de
+      //  documentation fait diverger les deux sha sans changer un pixel, et la
+      //  porte rougit alors pour rien — c'est ainsi qu'on apprend à ignorer un
+      //  message de vérité de déploiement, ce qui est exactement le contraire du
+      //  but.
+      //
+      //  On regarde donc CE QUI A CHANGÉ entre le tampon et HEAD. Si tout est
+      //  sous `docs/` ou `.claude/`, le rendu est prouvé identique et la porte
+      //  passe EN LE DISANT. Sinon elle échoue, et elle NOMME les chemins —
+      //  bien plus utile que deux sha.
+      let horsDoc = null;
+      try {
+        horsDoc = execSync(`git diff --name-only ${sha}..HEAD`, { encoding: "utf8" })
+          .split("\n").map((l) => l.trim()).filter(Boolean)
+          .filter((f) => !f.startsWith("docs/") && !f.startsWith(".claude/"));
+      } catch { /* sha inconnu de ce clone (shallow, ou build d'ailleurs) */ }
+
+      if (horsDoc === null)
+        failures += fail(`stamp ${sha} ≠ HEAD ${headSha} — and ${sha} is unknown to this clone, so staleness cannot be ruled out`);
+      else if (horsDoc.length)
+        failures += fail(`stamp ${sha} ≠ HEAD ${headSha} — the .next build is stale: ${horsDoc.length} file(s) outside docs/ changed since (${horsDoc.slice(0, 3).join(", ")}${horsDoc.length > 3 ? ", …" : ""}). Rebuild before verifying`);
+      else
+        console.log(`  ✓ stamp ${sha} (${stamp.date}) — behind HEAD ${headSha}, but every change since is under docs/ or .claude/: the render is provably unchanged`);
+    }
     else console.log(`  ✓ stamp ${sha} (${stamp.date})${headSha ? ` == HEAD ${headSha}` : " (format only, no git)"}`);
     // Et il ne doit RIEN rendre à l'écran.
     checks++;

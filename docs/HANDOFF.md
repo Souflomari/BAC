@@ -9207,3 +9207,80 @@ soi-même n'est jamais une servitude ») ; si aucune bonne réponse du corpus ne
 l'énonce ainsi, c'est une timidité de rédaction, et c'est elle qui crée l'écart.
 
 **Rien n'a été modifié dans le contenu sur la foi de cette sonde.**
+
+---
+
+## §11.110 — Le tampon de build répondait à la mauvaise question
+
+### Ce qui s'est passé
+
+En relançant `dom-truth` ce soir sur un build frais : **277 contrôles, 1 échec**.
+L'échec n'était pas un défaut du produit —
+
+> ✗ stamp 786663c ≠ HEAD f5d8bd1 — the .next build is stale, rebuild before verifying
+
+La porte compare le sha du tampon affiché en pied de page au `HEAD` du clone,
+et son commentaire l'assume : *« la boucle standard est build → verify →
+commit, donc l'égalité tient »*. Sauf qu'entre le build et la vérification,
+j'avais committé de la documentation. Deux sha différents, zéro pixel changé.
+
+### Pourquoi ce n'est pas un détail
+
+**Une porte de vérité de déploiement qui rougit pour de la documentation apprend
+à être ignorée.** C'est le mécanisme d'usure le plus banal et le plus coûteux :
+le message devient du bruit, et le jour où il dit vrai — un build réellement
+périmé, deux incidents l'ont déjà prouvé — plus personne ne le lit.
+
+Le tampon répondait à « le build est-il à HEAD ? ». **La question qui compte est
+« le build est-il à jour POUR CE QU'IL REND ? »**
+
+### Le correctif
+
+Quand les deux sha diffèrent, la porte regarde maintenant CE QUI A CHANGÉ entre
+eux :
+
+- tout sous `docs/` ou `.claude/` → **elle passe, en le disant** : « behind HEAD,
+  but every change since is under docs/: the render is provably unchanged » ;
+- sinon → **elle échoue et NOMME les fichiers**, ce qui vaut infiniment mieux que
+  deux sha à rapprocher à la main ;
+- sha inconnu du clone (superficiel, build venu d'ailleurs) → **elle échoue**,
+  parce qu'on ne peut alors rien prouver.
+
+### Ce que je n'ai PAS exclu, et pourquoi
+
+`web/scripts/` est de l'outillage : presque rien de ce qui s'y trouve n'entre
+dans le build. Il aurait été tentant de l'exclure aussi — et **c'était le piège**.
+`web/scripts/generate-tokens.mjs` produit les variables CSS que le build
+consomme. Exclure le répertoire en bloc échangerait une fausse alerte contre un
+FAUX SILENCE, ce qui est bien pire sur une porte de déploiement.
+
+Résultat mesuré à l'instant : la porte **reste rouge**, et le fichier qu'elle
+nomme est `web/scripts/essais-rouges.manifeste.json` — un manifeste d'essais qui
+ne peut évidemment pas changer un pixel. La règle conservatrice ne sait pas les
+distinguer, et c'est très bien :
+
+> **Une fausse alerte NOMMÉE vaut mieux qu'un silence non prouvé.** La première
+> coûte trente secondes de lecture ; la seconde coûte un incident.
+
+**Vérifié, message en main :**
+
+> ✗ stamp 786663c ≠ HEAD 63787c9 — the .next build is stale: 1 file(s) outside
+> docs/ changed since (`web/scripts/essais-rouges.manifeste.json`). Rebuild
+> before verifying
+
+Trente secondes pour lire le nom et conclure. Contre deux sha à rapprocher à la
+main, c'est le jour et la nuit.
+
+**Et le reste du balayage est propre :** 277 contrôles, **un seul ✗**, celui-ci.
+Les 276 autres — jetons calculés, anatomie de page, pagination, ancres
+accentuées, débord à 320 px, cibles tactiles, tabulation, texte à 200 %, RTL,
+reflow, lien d'évitement, et le HTML servi sans commande active avant
+l'hydratation sur les 118 pages prérendues — passent tous.
+
+### La règle générale
+
+C'est le pendant exact de §11.104. Là, un instrument criait « rouge » sans avoir
+rien mesuré. Ici, un instrument criait « rouge » sur une différence sans
+conséquence. **Dans les deux cas le verdict était juste par accident et faux par
+construction** — et dans les deux cas le correctif est le même : faire dire à
+l'instrument SUR QUOI il se prononce, et non seulement OUI ou NON.
