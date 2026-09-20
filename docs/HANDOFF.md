@@ -9642,3 +9642,56 @@ mais **« la SVT a-t-elle jamais été outillée ? »**
 **Une rampe qui atteignait un sujet réel ne peut plus cesser de l'atteindre.**
 Le sens inverse n'est pas gardé, et c'est voulu : ajouter un sommet sourcé est
 le travail qu'on souhaite, pas une régression à empêcher.
+
+---
+
+## §11.115 — Le cœur d'apprentissage est calme : vérifié, et délibérément NON gardé
+
+VISION, « Engagement — aligned, not addictive » :
+
+> **Where engagement is forbidden:** Inside the learning beat. While
+> understanding a concept or working a problem, nothing competes for attention.
+
+Le code l'affirme en trois endroits — `McqItem` (« No engagement theater (no
+confetti, no XP, no streak display) »), `ChoiceButton` (« no score, no tally, no
+celebration »), `BankCard` (« no timers, no scores, no completion %, no
+celebration »).
+
+**Mais une affirmation en commentaire n'est pas une vérification.** Mesuré sur
+la page RENDUE, tous les chapitres dépliés (`pc/rc-charge`,
+`maths/suites-numeriques`, `svt/soi-non-soi`) :
+
+| | rc-charge | suites | soi-non-soi |
+|---|---:|---:|---:|
+| pourcentages affichés | 0 | 0 | 0 |
+| minuteurs | 0 | 0 | 0 |
+| séries / flammes / streak | 0 | 0 | 0 |
+| **animations en boucle infinie** | **0** | **0** | **0** |
+| « n / N » | 2 | 2 | 1 |
+
+Les « n / N » sont l'orientation dans la leçon (« Chapitre 3 / 7 »), que la
+VISION **demande** — « the student never gets lost ». Aucune théâtralité
+d'engagement dans le cœur, ni en code ni au rendu.
+
+### Pourquoi je n'en fais PAS une porte
+
+C'est la question intéressante, après une journée à en armer huit.
+
+**La frontière est un jugement, pas un motif.** « Étape 3 / 7 » dans
+l'`ExplicationPlayer` est de l'orientation ; « 73 % du chapitre » serait de la
+théâtralité. Les deux sont un nombre et une barre. Une porte naïve crierait sur
+la première — et deviendrait l'alarme qui se déclenche quand on travaille,
+c'est-à-dire l'alarme morte d'ADR 0034 §9.
+
+**Ce rôle a déjà son titulaire :** `calm-load-critic`, l'adversaire explicite de
+`visual-design-critic` dans la vague 2. Il lit, il juge, il pousse vers MOINS.
+C'est un lecteur qu'il faut ici, pas une regex — exactement la conclusion de
+§11.109, et il vaut mieux l'appliquer une fois avant de se tromper qu'une fois
+après.
+
+> **Savoir quand ne PAS armer une porte fait partie de la discipline des
+> portes.** Une porte de plus sur une frontière de jugement ne protège rien et
+> use l'attention qui protège les autres.
+
+Ce qui est consigné ici, c'est donc la MESURE — reproductible, datée, faite sur
+le rendu — et la raison de s'en tenir là.
