@@ -110,6 +110,58 @@
       "de": "L'allèle est dominant, puisqu'il a bien fini par s'exprimer chez l'enfant.",
       "vers": "L'allèle est dominant : un allèle qui s'exprime chez l'enfant est toujours dominant.",
       "note": "La casse vise un item qui porte DÉJÀ deux absolus : les deux premiers sens d'indice-absolu exigent l'unicité et restent donc muets. Vérifié — la sortie ne contient QUE la ligne ÉCART. C'est la démonstration que ce troisième sens garde quelque chose que les deux autres laissent passer (ADR 0034, décision 7)."
+    },
+    {
+      "id": "§11.103 (a)",
+      "quoi": "un distracteur ordinaire devient un REFUS (le nombre d'items qui tirent monte)",
+      "porte": "node scripts/indice-refus.mjs --porte",
+      "fichier": "../content/svt/genetique-humaine/items.yaml",
+      "de": "11 paires d'autosomes et 12 paires de gonosomes.",
+      "vers": "On ne peut pas conclure sans refaire le caryotype.",
+      "note": "L'item visé ne contenait AUCUN refus : le convertir en crée un unique, donc le tell se met à tirer. Un item qui en portait déjà un aurait fait DESCENDRE la tranche — c'est la faute du premier essai (§11.105)."
+    },
+    {
+      "id": "§11.103 (b)",
+      "quoi": "le seul refus VRAI d'une notion cesse d'en être un",
+      "porte": "node scripts/indice-refus.mjs --porte",
+      "fichier": "../content/maths/suites-numeriques/items.yaml",
+      "de": "text: \"On ne peut rien conclure sur la monotonie : être bornée",
+      "vers": "text: \"Être bornée ne renseigne en rien sur la monotonie : être bornée",
+      "note": "Les deux seuls items du corpus où « on ne peut pas conclure » est la bonne réponse sont ce qui empêche le corpus d'enseigner que refuser est toujours faux. Les perdre est la régression à empêcher."
+    },
+    {
+      "id": "§11.104",
+      "quoi": "l'union des ficelles rapporte plus qu'hier (le CLANG, que rien d'autre ne garde)",
+      "porte": "node scripts/eleve-ruse.mjs --porte",
+      "fichier": "../content/pc/piles/items.yaml",
+      "de": "C'est la cathode, borne -.",
+      "vers": "C'est la daniell, borne -.",
+      "note": "Échange d'un mot de LONGUEUR IDENTIQUE contre un mot du tronc : n'ajoute ni longueur, ni absolu, ni refus — rien qu'un écho. Vérifié : indice-longueur, indice-absolu et indice-refus restent VERTS sur exactement cette casse."
+    },
+    {
+      "id": "§11.39",
+      "quoi": "un `total_items` de coverage_summary qui ne correspond plus au fichier",
+      "porte": "node scripts/resume-couverture.mjs --porte",
+      "fichier": "../content/svt/genetique-humaine/items.yaml",
+      "de": "  total_items: 9",
+      "vers": "  total_items: 41"
+    },
+    {
+      "id": "§11.29",
+      "quoi": "un chemin de fichier cité en zone VIVANTE qui ne mène nulle part",
+      "porte": "node scripts/liens-fichiers.mjs --porte",
+      "fichier": "../docs/audits/INSTRUMENTS.md",
+      "de": "| `web/scripts/validate-content.mjs` |",
+      "vers": "| `web/scripts/valide-le-contenu-qui-nexiste-pas.mjs` |"
+    },
+    {
+      "id": "§11.84",
+      "quoi": "la clé devient VISIBLEMENT la plus longue (≥ 20 caractères ET ≥ 20 %)",
+      "porte": "node scripts/indice-longueur.mjs --porte",
+      "fichier": "../content/svt/genetique-humaine/items.yaml",
+      "de": "écarte une localisation sur le chromosome Y.\"",
+      "vers": "écarte une localisation sur le chromosome Y, ce que confirme par ailleurs l'examen attentif de l'arbre généalogique fourni dans l'énoncé de cet exercice.\"",
+      "note": "GH-8 choisi parce que sa clé DÉPASSE déjà la deuxième de 2 caractères — un écart invisible, donc non exploitable. La rallonger le rend VISIBLE. C'est exactement la frontière que garde indice-longueur, et que eleve-ruse partage depuis §11.107."
     }
   ]
 }

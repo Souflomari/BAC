@@ -8969,6 +8969,15 @@ le vrai coupable.
 
 ### Ce que ça change pour la suite
 
+**MISE À JOUR le même jour : la suite est passée de 12 à 19 essais.** Les six
+portes de `validate-content` et `indice-absolu` couvraient bien leurs classes,
+mais les CLIQUETS du corpus n'avaient aucun essai inscrit — `indice-refus` (deux
+sens), `eleve-ruse`, `indice-longueur`, `resume-couverture`, `liens-fichiers`.
+Ils en ont un chacun, tous vérifiés ROUGE. L'essai `indice-longueur` vise GH-8,
+dont la clé dépasse déjà la deuxième de DEUX caractères — un écart invisible,
+donc non exploitable ; la rallonger le rend VISIBLE, et c'est exactement la
+frontière que garde l'instrument.
+
 Une porte neuve n'est plus « armée et vérifiée » : elle est **armée et inscrite
 au manifeste**. Le coût est de six lignes de JSON, et il achète la seule chose
 qui manquait — que la vérification survive à celui qui l'a faite.
