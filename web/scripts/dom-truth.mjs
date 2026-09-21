@@ -2911,6 +2911,7 @@ try {
       isMobile: true,
     });
     const petits = [];
+    const sousPlancherProjet = [];
     let nCibles = 0;
     for (const r of ["/notions/pc/rlc-serie", "/notions/maths/suites-numeriques", "/", "/examens"]) {
       await tp.goto(`${BASE}${r}`, { waitUntil: "networkidle" });
@@ -2918,6 +2919,7 @@ try {
         document.querySelectorAll("[data-chapter-section]").forEach((s) => (s.hidden = false));
         const out = [];
         let n = 0;
+        const sous48 = [];
         for (const el of document.querySelectorAll("a[href], button, [role='button'], summary")) {
           const q = el.getBoundingClientRect();
           if (!q.width || !q.height) continue;
@@ -2933,16 +2935,41 @@ try {
           if (min < 24) {
             out.push(`${Math.round(q.width)}×${Math.round(q.height)} « ${(el.textContent || el.getAttribute("aria-label") || "").trim().slice(0, 28)} »`);
           }
+          // MESURE, pas porte — §11.179. Le seuil ARMÉ est 24 px : c'est le
+          // critère AA de WCAG 2.2 (SC 2.5.8), et il tient. Mais le dépôt
+          // s'est écrit un plancher PLUS HAUT — COMPONENT-STATES.md §24 :
+          // « Floor: ≥48px touch target height on all interactive elements »,
+          // et TOKENS.md définit `--touch-target: 48px`. Personne ne l'avait
+          // jamais mesuré, et un « ✓ toutes ≥ 24px » se lit facilement comme
+          // « le plancher du dépôt tient ». On compte donc l'écart à voix
+          // haute, sans rougir : l'arbitrage entre corriger le produit et
+          // corriger la règle appartient au propriétaire (DECISIONS §15).
+          if (min < 48) {
+            sous48.push(`${Math.round(q.width)}×${Math.round(q.height)}${el.closest("header") ? " [en-tête]" : ""} « ${(el.textContent || el.getAttribute("aria-label") || "").trim().replace(/\s+/g, " ").slice(0, 26)} »`);
+          }
         }
-        return { n, out };
+        return { n, out, sous48 };
       });
       nCibles += m.n;
       for (const x of m.out) petits.push(`${r} ${x}`);
+      for (const x of m.sous48) sousPlancherProjet.push(`${r} ${x}`);
     }
     await tp.close();
     checks++;
     if (petits.length) failures += fail(`cibles tactiles sous 24px : ${petits.slice(0, 6).join(", ")}`);
-    else console.log(`  ✓ ${nCibles} cibles à 360 px, toutes ≥ 24px`);
+    else console.log(`  ✓ ${nCibles} cibles à 360 px, toutes ≥ 24px (critère ARMÉ : WCAG 2.2 AA)`);
+    // La mesure du plancher que le dépôt s'est donné — dite, jamais armée.
+    if (sousPlancherProjet.length) {
+      const entete = sousPlancherProjet.filter((x) => x.includes("[en-tête]")).length;
+      console.log(
+        `  · MESURE — ${sousPlancherProjet.length}/${nCibles} cibles sous le plancher PROJET de 48 px ` +
+          `(COMPONENT-STATES §24, TOKENS --touch-target), dont ${entete} dans l'en-tête. ` +
+          `Non armé : DECISIONS §15 (corriger le produit, ou la règle ?)`,
+      );
+      for (const x of sousPlancherProjet.slice(0, 4)) console.log(`      ${x}`);
+    } else {
+      console.log(`  · MESURE — toutes les cibles atteignent aussi le plancher PROJET de 48 px`);
+    }
   }
 
   // ── Le clavier seul : parcourir la page sans souris ──────────────────────

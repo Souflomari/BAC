@@ -13624,3 +13624,47 @@ notions fermerait le piège pour de bon. Ce n'est pas un geste d'agent : un id
 d'item peut déjà figurer dans des événements stockés, et le renommer orphelinerait
 cet historique. La porte empêche que ça empire ; la décision de nettoyer est
 une décision de contenu et de données.
+
+## §11.179 — Le plancher que le dépôt s'est donné, jamais mesuré : 86 cibles sur 622 en dessous
+
+**PARTI DE L'EN-TÊTE, ARRIVÉ AILLEURS.** L'en-tête a été mesuré à six largeurs
+(320 → 1920) sur quatre routes : **57 px de haut partout, 0 débord, 0
+chevauchement, identique sur les quatre**. Rien à redire sur sa structure. Mais
+quatre de ses commandes tombent sous 44 px de hauteur, et `BAC` — le retour à
+l'accueil — fait **80×33 à TOUTES les largeurs**, téléphone compris.
+
+**LE FAUX POSITIF QU'IL FALLAIT ÉCARTER D'ABORD.** §11.88 avait déjà exempté un
+faux positif de cette famille : une petite boîte visuelle avec une zone de clic
+ÉLARGIE. Vérifié par `elementFromPoint`, en s'éloignant du centre jusqu'à sortir
+de l'élément — la zone qui reçoit vraiment le doigt vaut **78×32**, c'est-à-dire
+la boîte elle-même. Aucune extension. Le défaut est réel (ADR 0038, 1ʳᵉ loi :
+mesurer l'EFFET, pas la déclaration).
+
+**PUIS LE CADRAGE A CHANGÉ DEUX FOIS.** Ce n'est pas un défaut d'en-tête :
+élargi aux huit routes, le compte est de **86 cibles sur 622 (13,8 %)** sous le
+plancher, dont **8 seulement dans l'en-tête**. Le reste est du contenu — les
+titres de leçon à 286×33, un « Ouvrir dans un nouvel onglet » à 200×26. Toutes
+échouent sur la HAUTEUR seule ; toutes sont larges.
+
+**ET LA PORTE N'EST PAS AVEUGLE — elle est EXACTE SUR UNE AUTRE QUESTION.**
+`dom-truth` contrôle **24 px**, le critère AA de WCAG 2.2 (SC 2.5.8), et il
+tient : 622 sur 622. Le plancher que le dépôt s'est écrit est ailleurs :
+`COMPONENT-STATES.md` §24 dit « **Floor:** ≥48px touch target height on **all**
+interactive elements », §365–366 le répète pour « All buttons and links », et
+`TOKENS.md` scelle `--touch-target: 48px`. Trois endroits, jamais mesurés.
+C'est le troisième cas d'ADR 0033, et le plus dur à voir : il n'y a **rien à
+réparer dans la porte**. Son « ✓ toutes ≥ 24px » était vrai ; c'est le lecteur
+qui complétait avec la règle de la maison.
+
+**CE QUI A ÉTÉ FAIT, ET CE QUI NE L'A PAS ÉTÉ.** Une MESURE, pas une porte :
+`dom-truth` imprime désormais `· MESURE — 86/622 cibles sous le plancher PROJET
+de 48 px, dont 8 dans l'en-tête`, sans rougir. Le seuil armé reste 24 px. Un
+seuil appartient à une mesure, jamais à un cliquet (ADR 0034) — et rougir ici
+bloquerait la CI sur un arbitrage que seul le propriétaire peut rendre.
+
+**POURQUOI JE N'AI PAS CORRIGÉ.** Remonter `BAC` à 48 px dans un en-tête haut
+de 56 px agrandit son `state-layer` — le fond de survol — de 33 à 48 px : un
+changement VISIBLE du mot-symbole. Et remonter les titres de leçon ajoute
+~210 px à une liste de 14 notions. Ce sont des pages réglées à la main. Les
+deux lectures (le produit a tort / la règle a tort) sont défendables et
+chiffrées en DECISIONS §15 ; le choix ne se mesure pas.

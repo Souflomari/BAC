@@ -424,6 +424,51 @@ iOS 16.4 chez les élèves visés n'est toujours pas mesurable depuis le dépôt
 
 ---
 
+## 15. Le plancher de 48 px que le dépôt s'est donné n'est pas tenu par 86 cibles sur 622
+
+**Le fait.** `COMPONENT-STATES.md` §24 l'écrit sans réserve : « **Floor:** ≥48px
+touch target height on **all** interactive elements », répété en §365–366 (« All
+buttons and links; use `min-h-[48px]` ») et scellé dans `TOKENS.md`
+(`--touch-target: 48px`). Mesuré pour la première fois le 2026-09-21, à 360 px,
+sur les routes de `dom-truth` : **86 cibles sur 622 (13,8 %) sont en dessous**,
+dont **8 dans l'en-tête**.
+
+Toutes échouent sur la HAUTEUR seule — elles sont larges :
+
+```
+en-tête   80×33   « BAC » (le retour à l'accueil, sur TOUTES les pages)
+en-tête  131×25   « Mathématiques »        en-tête  47×29   « Accueil »
+contenu  286×33   « Suites numériques » et les autres titres de leçon
+contenu  200×26   « Ouvrir dans un nouvel onglet »
+```
+
+**Ce que la porte armée dit, et ce qu'elle ne dit pas.** `dom-truth` vérifie
+**24 px** — le critère AA de WCAG 2.2 (SC 2.5.8), et il tient : 622 sur 622. Ce
+n'est pas une porte aveugle, c'est une porte exacte sur une question **plus
+étroite que le plancher du dépôt** (ADR 0033). Son « ✓ toutes ≥ 24px » se lisait
+volontiers comme « la règle de la maison tient ». Depuis le 2026-09-21 elle
+imprime l'écart à voix haute, sans rougir.
+
+**Les deux lectures, et leur coût :**
+
+- **Le produit a tort** — remonter les 86 cibles à 48 px. C'est la lecture
+  littérale de la règle. Coût : un titre de leçon passe de 33 à 48 px, donc
+  **une liste de 14 notions gagne ~210 px** ; et dans un en-tête haut de 56 px,
+  le mot-symbole `BAC` verrait son `state-layer` (le fond de survol) passer de
+  33 à 48 px. Ce sont des pages que le propriétaire a réglées à la main.
+- **La règle a tort** — la réécrire pour dire ce qui était voulu : 48 px pour
+  les BOUTONS et les commandes autonomes, 24 px (WCAG 2.2 AA) pour les liens
+  d'une liste ou d'une phrase, qui est exactement l'exception que la norme
+  prévoit. Coût : le plancher écrit faiblit, et ça doit être un choix assumé,
+  pas une retouche discrète.
+
+**Pourquoi ce n'est pas à un agent de trancher.** Les deux options sont
+défendables et l'une d'elles change le rythme visuel de toutes les listes du
+produit. Le chiffre est mesuré et rejouable (`npm run dom-truth`, ligne
+« MESURE ») ; le choix ne se mesure pas.
+
+---
+
 ## La PORTÉE de cette page, mesurée
 
 **Cette page ne recense pas toutes les décisions de propriétaire du dépôt.**
