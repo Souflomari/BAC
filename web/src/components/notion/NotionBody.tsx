@@ -180,7 +180,7 @@ const FIGURE_ARIA_LABELS: Record<string, string> = {
   "niveaux-energie":     "Niveaux d'énergie quantifiés de l'atome d'hydrogène : E_n = −13,6/n² eV, limite d'ionisation E = 0, transitions d'absorption et d'émission avec ΔE = h·ν",
   "spectre-raies":       "Spectre continu et spectre de raies : la lumière blanche donne une bande continue, l'atome n'émet que des raies discrètes (série de Balmer : 410, 434, 486, 656 nm)",
   "table-groupe":        "Table de Cayley du groupe (Z/4Z, +) : la ligne et la colonne du neutre 0 en évidence, et la lecture du symétrique (1 + 3 = 0 donc 3 est le symétrique de 1)",
-  "suite-escalier":      "Construction en escalier de la suite récurrente u_{n+1} = f(u_n) : un point de départ u0 que l'on peut faire glisser sur l'axe, et l'escalier qui se reconstruit en direct en convergeant toujours vers le même point fixe ℓ",
+  "suite-escalier":      "Construction en escalier de la suite récurrente u(n+1) = f(u_n) : un point de départ u0 que l'on peut faire glisser sur l'axe, et l'escalier qui se reconstruit en direct en convergeant toujours vers le même point fixe ℓ",
   "convergence-limite":  "Convergence d'une suite : les points (n, u_n) entrent dans la bande ]ℓ−ε, ℓ+ε[ à partir du rang N et n'en sortent plus",
   "aire-sous-courbe":    "L'intégrale comme aire : la région entre la courbe v(t) = t² et l'axe des abscisses, avec une borne b que l'on peut faire glisser pour voir l'aire ∫ t² dt se recalculer en direct, jusqu'à retrouver 8/3 en b = 2",
   "aire-entre-courbes":  "Aire entre deux courbes : la lentille entre f(x) = x et g(x) = x² sur [0, 1], d'aire ∫ (f − g) = 1/6 unité d'aire",

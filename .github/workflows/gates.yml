@@ -474,6 +474,25 @@ jobs:
             /matieres/pc /matieres/maths /matieres/svt /matieres/philo /commencer \
             /atelier /connexion /options/wide/m1
 
+      # PORTE LaTeX NU (2026-09-21, §11.166). Sur une page de maths, l'élève
+      # lisait « Partie II — Le plan complexe $(O;\vec{u},\vec{v})$ : $a=1+i$ » —
+      # dollars et contre-obliques compris. 150 formules affichées telles quelles
+      # sur 26 pages, depuis deux sites de rendu : le sur-titre de partie était
+      # écrit en texte nu. Et la porte typographie ne le voyait pas, parce qu'un
+      # SECOND défaut le masquait (§11.165) : la règle française posait une fine
+      # devant le « ; » de la formule, ce que cette porte-là exigeait justement.
+      # Deux axes : ce que l'élève LIT, et ce qu'un lecteur d'écran ÉPELLERAIT.
+      - name: Porte LaTeX nu
+        run: |
+          routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)
+          test -n "$routes"
+          examens=$(node scripts/routes-examens.mjs)
+          test -n "$examens"
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/latex-nu.mjs --porte $routes $examens / /examens \
+            /matieres/pc /matieres/maths /matieres/svt /matieres/philo /commencer \
+            /atelier /connexion
+
       # PORTE ACCENTS (2026-09-05). Le corpus contenait, à côté d'une prose
       # soignée, des passages entiers écrits sans le moindre accent —
       # « egalite verifiee », « L'eleve croit que la recurrence d'Euler resout

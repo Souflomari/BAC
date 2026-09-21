@@ -637,6 +637,46 @@ compile pas, et **aucune suspension à tort sur les 57 essais du manifeste**.
 
 ---
 
+## `web/scripts/latex-nu.mjs` — le LaTeX affiché tel quel, et celui qu'on fait dire tout haut
+
+**Ce qu'il mesure.** Deux façons pour un élève de rencontrer du LaTeX qui
+n'aurait jamais dû lui parvenir.
+
+**Axe 1 — il le LIT.** Une paire de `$` dont le contenu porte une marque de
+commande (`\`, `^`, `_`, `{`, `}`), dans un nœud de texte **hors de toute
+formule rendue**. Le filtre sur la marque est délibéré : « 30 $ » n'est pas du
+LaTeX.
+
+**Axe 2 — il l'ENTEND.** La même chose dans un `aria-label`, un `alt`, un
+`title`, le titre du document ou la méta-description — là où **aucun moteur ne
+rendra jamais rien**, et où un lecteur d'écran épelle « u tiret bas accolade
+ouvrante n plus un ». Cet axe accepte aussi une séquence `\commande` nue et un
+`^{`/`_{`, qui n'ont besoin d'aucun dollar pour être illisibles à voix haute.
+Les attributs sont lus sur **tout le document**, pas seulement `<main>` : le
+masthead et le pied de page se font annoncer aussi.
+
+**Pourquoi il existe (§11.166).** Sur une page de maths, l'élève lisait
+« `Partie II — Le plan complexe $(O;\vec{u},\vec{v})$ : $a=1+i$` » — dollars et
+contre-obliques compris. **150 formules brutes sur 26 pages** (7 leçons sur 62,
+19 épreuves sur 39), depuis exactement deux sites de rendu. Et la porte
+typographie ne le voyait pas : un **second** défaut le masquait (§11.165), la
+règle française posant une fine devant le `;` de la formule — ce que cette
+porte-là exigeait justement. Corriger le premier a révélé le second. Sans
+instrument dédié, rien ne garde la propriété une fois les deux réparés.
+
+**Ce qu'il ne dit pas.** Il ne juge pas la NOTATION parlée. La carte des
+descriptions de figures écrit `u_n`, `E_n`, `n²` ; un lecteur d'écran dit « u
+tiret bas n », ce qui est imparfait mais c'est la convention de la maison sur
+des dizaines d'entrées, et la changer est une décision éditoriale. Seules les
+accolades LaTeX, étrangères à cette convention, sont refusées.
+
+**État au 2026-09-21** : `--porte` armée, verte sur **110 pages** (62 leçons +
+39 épreuves ouvertes *et* corrigées + 9 pages hors leçon), 0 sur les deux axes.
+Hors de la batterie locale pour la même raison que `typo-francaise` : il lui
+faut un build et un navigateur.
+
+---
+
 ## `web/scripts/portee-portes.mjs` — ce qu'une porte VERTE a réellement regardé
 
 **Ce qu'il mesure.** Une porte peut être verte pour deux raisons opposées :

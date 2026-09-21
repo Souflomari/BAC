@@ -12660,3 +12660,78 @@ chaque ligne : `1.`, `1)` (CommonMark accepte les deux), `-`, `*`, `+`, `>`,
 mesure APRÈS. Celui-ci en a introduit un autre, visible seulement sur une
 leçon sur 62, et seulement parce que la mesure d'après regardait aussi les
 erreurs de script.
+
+---
+
+## §11.167 — La porte `latex-nu`, et la seule description de figure écrite en LaTeX
+
+**2026-09-21.** §11.166 a été corrigé, mais rien ne le gardait. Une propriété
+réparée sans instrument est une propriété qui attend de revenir — et celle-ci
+était doublement fragile, puisqu'elle avait déjà su se cacher derrière un
+autre défaut.
+
+`web/scripts/latex-nu.mjs` la tient, sur **deux axes**, parce qu'un élève peut
+rencontrer du LaTeX de deux façons.
+
+**Axe 1 — il le LIT.** Une paire de `$` dont le contenu porte une marque de
+commande (`\`, `^`, `_`, `{`, `}`), dans un nœud de texte hors de toute formule
+rendue. Le filtre sur la marque est délibéré : « 30 $ » n'est pas du LaTeX, et
+une paire de dollars sans rien de mathématique dedans ne prouve rien.
+
+**Axe 2 — il l'ENTEND.** La même chose dans un `aria-label`, un `alt`, un
+`title`, le titre du document ou la méta-description — **là où aucun moteur ne
+rendra jamais rien**. Cet axe accepte en plus une `\commande` nue et un
+`^{`/`_{`, qui n'ont besoin d'aucun dollar pour être illisibles à voix haute.
+Les attributs sont lus sur **tout le document**, pas seulement `<main>` : le
+masthead et le pied de page se font annoncer aussi.
+
+### Ce que l'axe 2 a trouvé en s'ouvrant
+
+**Deux attributs, sur une seule leçon**, et tous deux la même chaîne :
+
+```
+  FIGURE  aria-label  « …suite récurrente u_{n+1} = f(u_n) : un point de départ… »
+  DIV     aria-label  « Contrôles : …u_{n+1} = f(u_n)… »
+```
+
+Elle vient de la carte des descriptions de figures (`NotionBody.tsx`), et les
+accolades LaTeX y sont **une anomalie isolée** : les dizaines d'entrées
+voisines écrivent `E_n = −13,6/n²`, `√(R² − d²)`, `(n, u_n)`. La figure même
+écrit `u(n+1) = f(u_n)` dans son propre `<title>` SVG. Corrigée pour rejoindre
+sa voisine — pas réinventée.
+
+**Ce que l'instrument ne dit PAS, et c'est écrit dans son en-tête :** il ne
+juge pas la notation parlée. `u_n` se fait dire « u tiret bas n », ce qui est
+imparfait ; c'est la convention de la maison sur des dizaines d'entrées, et en
+changer est une décision éditoriale, pas un correctif. Seules les accolades
+LaTeX sont refusées.
+
+### État, et les deux essais rouges
+
+Verte sur **110 pages** — 62 leçons, 39 épreuves ouvertes *et* corrigées,
+9 pages hors leçon —, **0 sur les deux axes**. Ajoutée à `gates.yml`
+(54 étapes) et déclarée hors champ de la batterie locale pour la même raison
+que `typo-francaise` : build et navigateur requis.
+
+Les deux essais rouges coûtent une reconstruction chacun ; ils ne sont pas dans
+la suite pour cette raison, mais ce sont des commandes, pas des notes :
+
+```bash
+# Axe « entendu » — 2 attributs criés sur suites-numeriques
+cd web && node scripts/essai-rouge.mjs \
+  --fichier src/components/notion/NotionBody.tsx \
+  --de '"suite-escalier":      "Construction en escalier de la suite récurrente u(n+1)' \
+  --vers '"suite-escalier":      "Construction en escalier de la suite récurrente u_{n+1}' \
+  --porte "npm run build && node scripts/latex-nu.mjs --porte /notions/maths/suites-numeriques"
+
+# Axe « lu » — 11 et 15 formules brutes, chiffre pour chiffre le tableau d'avant
+cd web && node scripts/essai-rouge.mjs \
+  --fichier src/components/examens/EpreuveShell.tsx \
+  --de '<Md inline>{q.part}</Md>' --vers '{q.part}' \
+  --porte "npm run build && node scripts/latex-nu.mjs --porte /examens/sm-2024-normale /examens/sm-2023-normale"
+# puis reconstruire : le `.next` laissé sur place est celui de la sabotage.
+```
+
+Les deux ont été joués, construction aboutie dans les deux cas (0
+« Failed to compile »), et les comptes rendus par la porte sont exactement ceux
+de la mesure d'avant correctif.

@@ -106,6 +106,10 @@ const HORS_CHAMP = new Set([
   "dom-truth.mjs", "figure-preview.mjs", "copie-maths.mjs", "impression.mjs",
   "zoom-sweep.mjs", "formules-rendues.mjs", "ancres-uniques.mjs",
   "donnees-sweep.mjs", "typo-francaise.mjs", "accents-manquants.mjs",
+  // latex-nu : même famille que typo-francaise — il lance `next start` et lit le
+  // DOM rendu de 110 pages, épreuves ouvertes comprises. Hors champ pour la
+  // même raison, pas par oubli (§11.167).
+  "latex-nu.mjs",
   // liens-internes démarre `next start` et pilote un navigateur sur 111 pages :
   // il lui faut donc un build ET Playwright. Hors champ pour la même raison que
   // dom-truth, et non par oubli.
