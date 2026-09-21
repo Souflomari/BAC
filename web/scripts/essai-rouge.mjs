@@ -125,15 +125,62 @@ try {
   const lignes = sortie.split("\n").filter((l) => /✗|ROMPU|failure|échec|erreur/i.test(l));
   for (const l of lignes.slice(0, 6)) console.log(`   ${l.trim()}`);
 
+  //  TROISIÈME DÉFAUT DU MÊME OUTIL (§11.164, 2026-09-21). Le pré-contrôle
+  //  établit que la commande TOURNE sur l'arbre intact. Il n'établit pas
+  //  qu'elle tourne encore une fois le fichier cassé — et une sabotage peut
+  //  empêcher la commande d'ARRIVER jusqu'à la porte.
+  //
+  //  Le cas vécu : casser `FIN_APOSTROPHE.test(gauche.value) &&` en `false &&`
+  //  rend la branche inatteignable ; TypeScript cesse de réduire
+  //  `gauche.value` à `string` ; `npm run build` échoue sur « Type error » ;
+  //  la porte ne tourne JAMAIS. Code de sortie non nul → cet outil annonçait
+  //  « ✓ passée ROUGE, elle VOIT ce défaut ». Le rouge venait de `tsc`.
+  //
+  //  C'est le cas MORT d'ADR 0033 une seconde fois, déplacé d'un cran : non
+  //  plus « la commande n'a jamais tourné » (le pré-contrôle l'attrape) mais
+  //  « la sabotage a cassé autre chose que ce qu'on mesure ».
+  //
+  //  Une sabotage qui empêche la compilation n'est pas un essai rouge, c'est
+  //  une panne. Les marqueurs ci-dessous sont ceux d'une chaîne d'outils qui
+  //  s'arrête AVANT la porte — jamais ceux d'une porte qui crie.
+  const PANNE = [
+    /Failed to compile/,
+    /^Type error:/m,
+    /ERR_MODULE_NOT_FOUND/,
+    /Cannot find module/,
+    /build worker exited with code/,
+    /^SyntaxError:/m,
+    //  `tsc` en direct n'écrit NI « Failed to compile » NI « Type error: » —
+    //  ces deux-là sont la mise en forme de Next. Lui écrit
+    //  « fichier(126,26): error TS18048: … ». Le premier jet de cette liste
+    //  ne le reconnaissait pas, et l'essai qui devait prouver le détecteur
+    //  est reparti « ✓ ROUGE » : le détecteur d'angle mort avait le sien.
+    //  Mesuré, pas supposé — la sabotage a été rejouée à la main pour lire
+    //  le texte exact avant d'écrire le motif.
+    /\berror TS\d+:/,
+  ];
+  const panne = PANNE.find((m) => m.test(sortie));
+  if (rouge && panne) {
+    console.error(`✗ AMBIGU : la commande est tombée AVANT d'atteindre la porte.`);
+    console.error(`  marqueur : ${panne}`);
+    console.error(`  La sabotage a cassé la chaîne d'outils (compilation, résolution de module),`);
+    console.error(`  pas le comportement que la porte mesure. Le code de sortie vient de là,`);
+    console.error(`  pas d'un défaut vu. Réécris la sabotage pour qu'elle COMPILE : sur du code`);
+    console.error(`  typé, viser une VALEUR (une constante réécrite) plutôt qu'une CONDITION`);
+    console.error(`  — une condition mise à \`false\` supprime aussi le rétrécissement de type.`);
+  }
+
   const vu = motif ? new RegExp(motif).test(sortie) : false;
-  const ok =
-    attendu === "rouge" ? rouge
+  const ok = panne && rouge ? false
+    : attendu === "rouge" ? rouge
     : attendu === "avertissement" ? (!rouge && vu)
     : !rouge;
   //  Le verdict dit ce qui a été ÉTABLI, pas seulement ce qui s'est passé :
   //  un essai `--attendu vert` qui passe n'établit pas que la porte voit
   //  quelque chose — il établit qu'elle ne crie pas à tort.
-  console.log(ok
+  console.log(panne && rouge
+    ? `✗ verdict SUSPENDU — voir ci-dessus`
+    : ok
     ? (attendu === "rouge"
         ? `✓ la porte est passée ROUGE, comme attendu — elle VOIT ce défaut`
         : attendu === "avertissement"

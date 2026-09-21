@@ -83,7 +83,7 @@
 | `web/scripts/horsligne-sweep.mjs` | Six scènes de coupure réseau : navigation par chapitre, clic vers une autre leçon, bouton Retour, leçon déjà visitée, réponse à un QCM, retour du réseau. **Ce qui tient tient ; ce qui casse est borné** — voir `docs/audits/hors-ligne.md` | Le réseau qui RAMPE au lieu de mourir (latence + pertes de paquets), et la coupure pendant un enregistrement |
 | `web/scripts/polices-de-repli.mjs` | Quels caractères ne sont PAS dessinés par la police du site, et par quoi ils le sont — via `CSS.getPlatformFontsForNode` (protocole DevTools), qui rend les fontes RÉELLEMENT utilisées et le compte de glyphes. Produit l'INVENTAIRE des caractères à couvrir : `ᵉ` (66), l'arabe (~500), les symboles mathématiques écrits en Unicode (~120) | Si le repli se VOIT — l'instrument localise, la capture tranche. Et la fonte de repli MESURÉE est celle de ce conteneur Linux : sur un téléphone ce sera Roboto/Noto ou San Francisco |
 | `web/scripts/recherche-navigateur.mjs` | Ce que ⌘F trouve : un mot du chapitre ouvert (témoin), un mot qui n'existe QUE dans un chapitre replié, et le texte du MathML masqué de KaTeX. A montré que **10 chapitres sur 11 sont hors d'atteinte de la recherche** — la moitié « ⌘F » de l'arbitrage des chapitres, enfin mesurée | Firefox et Safari (moteurs de recherche différents), et l'interface ⌘F elle-même : on passe par `window.find()`, qui partage la machinerie mais n'est pas l'UI |
-| `web/scripts/typo-francaise.mjs` | La typographie FRANÇAISE dans le texte rendu, chapitres dépliés : apostrophe droite entre deux lettres, espace manquante devant `; : ?`, guillemets mal espacés. Attribue chaque écart au SITE DE RENDU (le chemin des éléments), ce qui dit où corriger. A trouvé ~1 100 écarts hors prose — figures, `\text{}` des formules, titres, libellés du programme. 73 pages (leçons + accueil, examens, matières, atelier, connexion, options), zéro écart aujourd'hui ; `--porte` armée | Le point d'exclamation (factorielle `n!`), les commentaires XML des figures, et le `style` inliné d'une figure (du CSS, pas du français — exclu explicitement) |
+| `web/scripts/typo-francaise.mjs` | La typographie FRANÇAISE dans le texte rendu, chapitres dépliés : apostrophe droite entre deux lettres, espace manquante devant `; : ?`, guillemets mal espacés. Attribue chaque écart au SITE DE RENDU (le chemin des éléments), ce qui dit où corriger. A trouvé ~1 100 écarts hors prose — figures, `\text{}` des formules, titres, libellés du programme. **Unité de mesure : le BLOC, depuis le 2026-09-21 (§11.164).** Elle lisait chaque NŒUD DE TEXTE séparément et annonçait 0 alors que 152 apostrophes droites étaient lisibles sur 50 des 71 pages : « l'**amylase** » pose l'apostrophe en fin de nœud, la lettre suivante dans le nœud d'à côté. Elle partageait l'angle mort du plugin qu'elle surveille. Trois frontières cassent la chaîne : le bloc, un nœud sauté (code, MathML), et chaque formule KaTeX (îlot). 110 pages (62 leçons + 39 épreuves ouvertes et corrigées + accueil, examens, matières, atelier, connexion), zéro écart aujourd'hui ; `--porte` armée, essai rouge de la porte en HANDOFF §11.164 | Le point d'exclamation (factorielle `n!`), les commentaires XML des figures, et le `style` inliné d'une figure (du CSS, pas du français — exclu explicitement) |
 | `web/scripts/impression.mjs` | Ce que l'élève obtient sur le PAPIER : six contrôles en émulation `print`, dans les DEUX thèmes, sur 65 pages — chrome masqué, chapitres dépliés, rien hors colonne, figures dans la page, encre sur papier. A trouvé qu'un élève lisant en thème sombre **imprimait des aplats noirs** (les jetons de figure n'étaient pas remis au clair). `--porte` armée en CI | Le PDF réel (nombre de pages, coupures effectives, rendu des polices), les autres formats de papier, et le COÛT EN ENCRE d'un aplat conforme à l'écran |
 | `web/scripts/copie-maths.mjs` | Ce que l'élève OBTIENT quand il recopie son cours : ⌘A/⌘C pour de vrai, presse-papier lu, comparé à trois états de la page (idéal / livré / témoin d'avant-correctif). A trouvé **138 773 caractères parasites** sur 62 leçons — chaque formule sortait en DOUBLE, le MathML de KaTeX étant masqué à l'œil mais pas à la sélection. `--porte` disponible — et en mode porte le collage RICHE n'est pas mesuré : c'est une mesure (taille, masquage en ligne), pas un critère, et elle coûtait 4 à 5,5 s par page dense (28 à 37 Mo de HTML à sérialiser) — un tiers des 12 min de la porte en CI (2026-09-05). Le raccourci `getSelection().toString()` a été ESSAYÉ et écarté : il ignore `user-select: none` et rend le témoin égal au réel — il mesurerait autre chose que le presse-papier | Le collage RICHE (`text/html`), donc ce qui arrive dans Word ou Docs quand la mise en forme est gardée. Et la recherche du navigateur (⌘F) |
 | `web/scripts/reseau-malade.mjs` | Le réseau qui RAMPE : 300 ms de latence, ~400 kbit/s, **une requête sur cinq perdue** (tirage à graine, donc rejouable). Cinq scènes + un TÉMOIN sur réseau parfait sans lequel rien n'est concluant. A trouvé qu'un morceau de JS perdu laisse le cours lisible et la page morte **sans un mot** — corrigé par la veille d'hydratation, et la correction est mesurée. A aussi produit **deux conclusions fausses** en cliquant un lien de boîte 0×0, retirées depuis | Le vrai réseau (DNS, TLS, CDN, cache Vercel) : tout est un build local derrière une émulation. Et la reprise d'un enregistrement coupé en vol |
@@ -615,6 +615,25 @@ restauration est incomplète. `--attendu vert` inverse le sens.
 3. **l'épreuve qui compte** — une sentinelle non committée déposée dans le
    fichier **SURVIT** à l'essai rouge, là où `git checkout --` la **détruit**.
    Le contraste a été rejoué dans les deux sens.
+
+**Quatrième verdict : AMBIGU (2026-09-21, §11.164).** Le pré-contrôle établit
+que la commande TOURNE sur l'arbre intact ; il n'établit pas qu'elle tourne
+encore **une fois le fichier cassé**. Cas vécu : casser une CONDITION en
+`false &&` rend la branche inatteignable, TypeScript cesse de rétrécir le type,
+la construction échoue — et la porte ne tourne jamais. Code de sortie non nul,
+et l'outil annonçait « ✓ passée ROUGE ». Le rouge venait de `tsc`.
+
+Il suspend donc son verdict quand la sortie porte la marque d'une chaîne
+d'outils tombée AVANT la porte — `Failed to compile`, `Type error:`,
+`error TS####:`, `Cannot find module`, `ERR_MODULE_NOT_FOUND`, `SyntaxError:`,
+`build worker exited` — et dit comment réécrire la sabotage : **viser une
+VALEUR, pas une CONDITION**.
+
+Le détecteur avait son propre angle mort : son premier jet ne connaissait que
+les deux formulations de *Next* et ne reconnaissait pas `tsc` en direct. Le
+motif a été écrit **après** avoir rejoué la sabotage à la main pour lire le
+texte exact. Prouvé dans les deux sens : ✗ AMBIGU sur la sabotage qui ne
+compile pas, et **aucune suspension à tort sur les 57 essais du manifeste**.
 
 ---
 

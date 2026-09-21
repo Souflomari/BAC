@@ -12364,3 +12364,155 @@ Sans build, elle garde la source et **le dit** au lieu de ne rien garder.
 Playwright ne fournit que des moteurs récents. La conséquence (page blanche) est
 déduite des tables de support ; ce qui est observé, c'est le marqueur dans le
 paquet livré.
+
+---
+
+## §11.164 — Le motif qui ne pouvait pas voir la couture, et la porte qui partageait son aveuglement
+
+**2026-09-21.** Le corpus écrit :
+
+```markdown
+Ta salive contient une molécule, l'**amylase salivaire**, qui découpe…
+```
+
+mdast en fait **trois nœuds** : le texte qui se termine par `…molécule, l'`, le
+`strong`, puis la suite. L'apostrophe est le **dernier caractère de son nœud** ;
+la lettre qui la suit vit dans le nœud d'à côté. La règle (a) de
+`frenchTypography` exige une lettre *après* l'apostrophe **dans la même
+chaîne** — elle ne pouvait structurellement pas la voir.
+
+L'élève lisait donc « l'amylase » en apostrophe droite au milieu d'une page qui,
+partout ailleurs, en porte une courbe.
+
+### Le chiffre, et la porte qui annonçait zéro
+
+Mesuré sur le texte **rendu**, chapitres dépliés, 71 routes :
+
+```
+  vu par la porte typo-francaise ....... 0
+  lisible par un élève ................. 152, sur 50 des 71 pages
+```
+
+`typo-francaise.mjs` appliquait son motif **nœud de texte par nœud de texte** —
+exactement le geste du plugin qu'elle est censée surveiller. Verte, elle
+répondait honnêtement à une question **plus étroite que son en-tête** : « existe-t-il
+une apostrophe droite *à l'intérieur d'un seul nœud de texte* ? ». C'est le
+troisième cas d'ADR 0033, celui où il n'y a rien à réparer dans la porte — et
+c'est la 2ᵉ loi d'ADR 0037 en miroir : **un motif borné à une unité plus petite
+que celle où vit le défaut**.
+
+Les deux angles morts n'en faisaient qu'un. Une porte construite sur le même
+découpage que le mécanisme qu'elle garde ne peut pas le prendre en défaut.
+
+### Deux correctifs, le même geste
+
+**Le plugin.** `remarkFrenchTypography` recolle désormais les **frères inline**.
+Pour chaque parent, il regarde chaque couple (enfant *i*, enfant *i+1*) et
+traite l'apostrophe posée sur la couture, dans les deux sens (`l'**mot**` et
+`**l**'mot`). `inlineCode` et `inlineMath` sont **exclus** : `l'` devant `$x$`
+n'est pas une élision française, et la règle (a) les laisse déjà tranquilles.
+La passe ne franchit jamais un bloc — `visit` ne donne que des frères, et deux
+paragraphes ne sont pas frères inline.
+
+**La porte.** `typo-francaise.mjs` mesure désormais au **BLOC**, pas au nœud.
+Trois frontières cassent la chaîne, chacune pour une raison nommée :
+
+| frontière | pourquoi |
+|---|---|
+| le bloc change | deux paragraphes ne se lisent pas d'affilée |
+| un nœud est sauté (code, MathML, `style`) | `l'` suivi de `<code>` n'est pas une élision — le plugin ne la convertit pas non plus |
+| une formule KaTeX | chaque nœud y reste son propre îlot : `\{x : x>0\}` recollé ferait crier la règle de ponctuation haute sur du LaTeX rendu |
+
+**Après : 152 → 0.** La porte est verte sur **110 pages**, les 39 épreuves
+ouvertes *et* corrigées comprises, **sans un seul faux positif** — la crainte
+que l'unité plus large fasse crier les formules était la bonne question, et
+l'îlot KaTeX y répond.
+
+### L'essai rouge qui a crié pour la mauvaise raison
+
+Premier essai : casser `FIN_APOSTROPHE.test(gauche.value) &&` en `false &&`,
+reconstruire, relancer la porte. Verdict : **« la porte est passée ROUGE »**.
+
+C'était faux. `false &&` rend la branche inatteignable, TypeScript cesse de
+réduire `gauche.value` à `string`, **la construction échoue** — et la porte
+n'a jamais tourné. Le code de sortie non nul venait de `tsc`, pas d'une
+apostrophe.
+
+C'est ADR 0034 mot pour mot : *un essai rouge est AMBIGU tant qu'on n'a pas
+montré que le rouge vient du défaut.* Ce qui l'a démasqué : avoir ensuite
+demandé à la porte ses **chiffres**, et trouvé un `.next` sans `BUILD_ID`.
+
+Refait avec une sabotage qui **compile** — la passe de couture réécrit une
+apostrophe droite au lieu de la courbe :
+
+```
+  construction ..................... aboutie (0 « Failed to compile »)
+  /notions/maths/arithmetique ...... 1 apostrophe droite
+  /notions/maths/calcul-integral ... 5
+  /notions/maths/denombrement ...... 2
+  /notions/maths/equations-diff .... 3
+  /notions/maths/fonction-exp ...... 2
+  /notions/maths/geometrie-espace .. 2
+```
+
+Chiffre pour chiffre le tableau d'AVANT correctif. La porte reproduit le compte
+du lecteur.
+
+**Règle tirée de là, et elle est neuve :** une sabotage qui empêche la
+compilation n'est pas un essai rouge, c'est une panne. Un essai rouge sur du
+code typé doit **rester compilable** ; sinon il mesure le compilateur.
+
+### La règle n'a pas été écrite — elle a été outillée
+
+ADR 0033 pose que *quand une règle est reprise trois fois, c'est le geste qu'il
+faut outiller, pas la note qu'il faut réécrire*. Celle-ci était la troisième
+version du même défaut dans le même outil : §11.104 (« la commande n'a jamais
+tourné »), §11.106 (« stderr perdu sur un passage vert »), et maintenant « la
+sabotage a cassé autre chose que ce qu'on mesure ».
+
+`essai-rouge.mjs` inspecte donc la sortie de la course sabotée et **suspend son
+verdict** quand elle porte la marque d'une chaîne d'outils tombée AVANT la
+porte : `Failed to compile`, `Type error:`, `error TS####:`, `Cannot find
+module`, `ERR_MODULE_NOT_FOUND`, `SyntaxError:`, `build worker exited`. Il ne
+dit alors ni ROUGE ni VERT — il dit **AMBIGU**, et explique comment réécrire la
+sabotage (viser une VALEUR, pas une CONDITION : une condition mise à `false`
+supprime aussi le rétrécissement de type).
+
+**Le détecteur avait son propre angle mort, et il a fallu le mesurer.** Premier
+jet : les motifs `Failed to compile` et `Type error:`, tous deux de la mise en
+forme de *Next*. Rejoué contre `tsc` en direct, il n'a rien vu — `tsc` écrit
+`fichier(126,26): error TS18048: …`. La sabotage a été refaite à la main pour
+**lire le texte exact** avant d'écrire le motif. Prouvé dans les deux sens :
+
+```
+  sabotage qui ne compile pas → ✗ AMBIGU, verdict SUSPENDU  (rc 1)
+  les 57 essais du manifeste  → ✓ ROUGE, tous               (aucune suspension à tort)
+```
+
+### Ce qui garde la propriété
+
+Six tests de couture s'ajoutent à `test-typographie` (**16/16**), et trois
+essais rouges les prouvent — branche gauche, branche droite, exclusion du code
+et des maths — au manifeste `§11.164 (a)(b)(c)` : **57 essais, tous crient**.
+
+L'essai rouge de la PORTE, lui, coûte deux constructions ; il n'entre pas dans
+la suite pour cette raison, mais il est une commande, pas une note :
+
+```bash
+cd web && routes=$(cd .. && ls -d content/*/*/ \
+  | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort | head -20 | tr '\n' ' ')
+node scripts/essai-rouge.mjs \
+  --fichier src/lib/remarkFrenchTypography.ts \
+  --de 'gauche.value = gauche.value.slice(0, -1) + APOSTROPHE_TYPO;' \
+  --vers 'gauche.value = gauche.value.slice(0, -1) + "'"'"'";' \
+  --porte "npm run build && node scripts/typo-francaise.mjs --porte $routes"
+# puis reconstruire : le `.next` laissé sur place est celui de la sabotage.
+```
+
+### Ce que cela ne dit pas
+
+Les 152 étaient dans la **prose markdown**. Les champs rendus en texte nu — les
+en-têtes d'exercice des épreuves, les étiquettes de figure SVG — ne passent pas
+par un plugin remark ; ils étaient déjà propres (mesurés : 0 sur les 39
+épreuves), mais rien n'empêche la prochaine écriture d'y poser une apostrophe
+droite. C'est la porte, désormais au bloc, qui les tient.
