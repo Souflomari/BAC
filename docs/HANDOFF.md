@@ -12259,3 +12259,46 @@ bouge pas quand les polices disparaissent) et que §11.151 (où les 5 px de WebK
 étaient la barre de défilement) : **avant d'armer une mesure, vérifier qu'elle
 mesure la chose et pas le banc.** Trois passages verts, et les deux essais
 rouges du comparateur crient toujours.
+
+## §11.162 — Les correctifs du jour, vérifiés sur l'artefact DÉPLOYÉ
+
+Un correctif commis n'est pas un correctif livré. L'aperçu déployé porte
+maintenant `014a80b`, l'un des commits de cette session, ce qui permet de
+rejouer sur l'artefact en ligne les mesures qui étaient ROUGES le matin même.
+
+**La garde des préférences (§11.149).** La même commande, sur la même base, à
+quelques heures d'intervalle :
+
+```
+  le matin   node scripts/preferences-secours.mjs https://bac-pink.vercel.app
+             → ROUGE : sombre=false, --font-scale="" après un rendu de secours
+  le soir    même commande
+             → VERTE : sombre=true, --font-scale="1.125", secours bien provoqué
+                       (5 réécritures de la classe de <html>)
+```
+
+C'est la vérification la plus forte disponible ici : ce n'est ni un test local
+ni une relecture, c'est le produit servi.
+
+**Les en-têtes de sécurité.** Zéro sur cinq étaient servis ce matin ; les cinq
+le sont :
+
+```
+  x-frame-options            SAMEORIGIN
+  x-content-type-options     nosniff
+  referrer-policy            strict-origin-when-cross-origin
+  permissions-policy         camera=(), microphone=(), geolocation=()
+  strict-transport-security  max-age=63072000; includeSubDomains; preload
+```
+
+(Le dernier vient de l'hébergeur, les quatre autres de `next.config.mjs`.)
+
+**Le balayage complet : 0 échec sur 23 contrôles**, y compris le témoin §11.133
+(« Pourquoi cette réponse est la bonne » est en ligne), le parcours téléphone,
+le parcours d'épreuve jusqu'au corrigé, le clavier, la confrontation de
+misconception et le thème dans les deux schémas.
+
+**Ce que ça ne dit pas** : l'aperçu est à `014a80b` et HEAD local à `46a00cb` —
+tout ce qui a été mesuré décrit `014a80b`. L'instrument l'annonce en première
+ligne plutôt que de laisser croire qu'il parle de HEAD. Et la PRODUCTION reste
+hors de portée, humainement gardée (CLAUDE.md).
