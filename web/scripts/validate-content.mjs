@@ -108,6 +108,45 @@ const DETTE_BARREAU_FANTOME = new Map([
 ]);
 const fantomesVus = new Set();
 
+/**
+ * §11.178 — deux NOTIONS différentes qui donnent le même `id` d'item.
+ *
+ * Mesuré le 2026-09-21 : `LIB-1` à `LIB-9` existent DEUX fois dans le corpus,
+ * une fois dans `svt/liberation-energie-matiere-organique` et une fois dans
+ * `philo/la-liberte`. Le préfixe vient du slug de la notion, et les deux
+ * commencent par « li ». Les énoncés n'ont rien à voir : l'ATP d'un côté,
+ * Spinoza de l'autre.
+ *
+ * CE N'EST PAS UN DÉFAUT AUJOURD'HUI, et il faut le dire avant d'armer :
+ * tout ce qui consomme un id le fait par PAIRE (notion, item). La table
+ * `user_answer_events` porte `notion_id` à chaque ligne, `notion_progress`
+ * a pour clé `(user_id, notion_id)`, et `build-learner-inputs` construit un
+ * `perNotionItemMap`. Une page ne rend qu'une notion à la fois. Rien ne
+ * confond les deux `LIB-1`.
+ *
+ * C'EST UN PIÈGE POUR LE PROCHAIN AUTEUR — la forme exacte de §11.172. Le
+ * jour où quelqu'un écrit un cache global « items déjà vus », une file de
+ * révision inter-notions ou un export à plat indexé sur le seul id, les deux
+ * questions fusionnent en silence : répondre à l'une marquera l'autre.
+ *
+ * La porte ne demande donc PAS zéro collision — elle demande qu'aucune
+ * NOUVELLE n'apparaisse. Et elle a son second sens : une collision réparée
+ * doit être retirée d'ici, sinon la liste devient un tapis.
+ */
+const COLLISIONS_ID_CONNUES = new Map([
+  ["LIB-1", ["content/philo/la-liberte", "content/svt/liberation-energie-matiere-organique"]],
+  ["LIB-2", ["content/philo/la-liberte", "content/svt/liberation-energie-matiere-organique"]],
+  ["LIB-3", ["content/philo/la-liberte", "content/svt/liberation-energie-matiere-organique"]],
+  ["LIB-4", ["content/philo/la-liberte", "content/svt/liberation-energie-matiere-organique"]],
+  ["LIB-5", ["content/philo/la-liberte", "content/svt/liberation-energie-matiere-organique"]],
+  ["LIB-6", ["content/philo/la-liberte", "content/svt/liberation-energie-matiere-organique"]],
+  ["LIB-7", ["content/philo/la-liberte", "content/svt/liberation-energie-matiere-organique"]],
+  ["LIB-8", ["content/philo/la-liberte", "content/svt/liberation-energie-matiere-organique"]],
+  ["LIB-9", ["content/philo/la-liberte", "content/svt/liberation-energie-matiere-organique"]],
+]);
+/** id d'item → répertoires qui le portent (rempli pendant la boucle). */
+const idsParNotion = new Map();
+
 const REPO = path.resolve(path.dirname(new URL(import.meta.url).pathname), "../..");
 const rawArgv = process.argv.slice(2);
 const strictMode = rawArgv.includes("--strict");
@@ -333,6 +372,28 @@ for (const dir of dirs) {
   //    pas au fichier : elle sort dans un artefact d'exécution.
   {
     const items = yamlDocs["items.yaml"];
+    // §11.178 : on note qui porte quel id, pour le contrôle de corpus en fin
+    // de course.
+    //
+    // UNIQUEMENT `items.yaml`, et l'exclusion est MESURÉE, pas supposée. Les
+    // ids de CHECKPOINT suivent une convention délibérée — `cp-<barreau>-<sujet>` —
+    // et se répètent exprès d'une notion à l'autre : `cp-r0-predict` existe
+    // dans les 62 notions, `cp-r1-rupture` dans 6, `cp-r2-rupture` dans 4.
+    // Un id présent 62 fois sur 62 n'est pas une collision, c'est un nom de
+    // rôle. Les compter aurait noyé les 9 vraies collisions sous 10 fausses,
+    // et la porte aurait été désarmée le lendemain.
+    //
+    // Les ids d'ITEM, eux, dérivent du slug de la notion et sont censés être
+    // uniques : c'est là qu'une collision est un accident.
+    {
+      const doc = yamlDocs["items.yaml"];
+      for (const it of (Array.isArray(doc?.items) ? doc.items : [])) {
+        const id = it?.id;
+        if (typeof id !== "string" || !id) continue;
+        if (!idsParNotion.has(id)) idsParNotion.set(id, new Set());
+        idsParNotion.get(id).add(dir);
+      }
+    }
     const declarees = new Set(
       (Array.isArray(items?.misconceptions) ? items.misconceptions : [])
         .map((m) => m?.id)
@@ -2730,5 +2791,45 @@ for (const [d, rungs] of DETTE_BARREAU_FANTOME) {
     }
   }
 }
+// ── §11.178 : un id d'item porté par DEUX notions ────────────────────────
+// Ce contrôle n'a de sens que sur le corpus ENTIER : lancé sur un
+// sous-ensemble, il ne peut pas voir une collision dont l'autre moitié est
+// hors de sa liste. Il le DIT plutôt que de se taire — un vert qui n'a rien
+// mesuré est le pire des verts (ADR 0034).
+{
+  const corpusEntier = dirs.length >= 60;
+  const vues = new Set();
+  let nouvelles = 0;
+  for (const [id, repertoires] of idsParNotion) {
+    if (repertoires.size < 2) continue;
+    const liste = [...repertoires].sort();
+    const connue = COLLISIONS_ID_CONNUES.get(id);
+    if (connue && connue.length === liste.length && connue.every((d, i) => d === liste[i])) {
+      vues.add(id);
+      continue;
+    }
+    console.error(`  ✗ id d'item « ${id} » porté par ${liste.length} notions : ${liste.join(", ")}`);
+    console.error("      §11.178 — latent tant que tout consomme la PAIRE (notion, item), piège dès qu'un");
+    console.error("      consommateur indexe sur le seul id. Renomme, ou déclare-le dans COLLISIONS_ID_CONNUES.");
+    nouvelles++;
+  }
+  failures += nouvelles;
+
+  if (corpusEntier) {
+    // Second sens : une collision réparée doit sortir de la liste.
+    for (const id of COLLISIONS_ID_CONNUES.keys()) {
+      if (!vues.has(id)) {
+        console.error(`  ✗ COLLISIONS_ID_CONNUES déclare « ${id} », qui ne collisionne plus — retire-le, sinon la liste devient un tapis`);
+        failures++;
+      }
+    }
+    if (nouvelles === 0) {
+      console.log(`✓ ids d'items — aucune collision nouvelle entre notions (${COLLISIONS_ID_CONNUES.size} connue(s), §11.178)`);
+    }
+  } else {
+    console.log(`· ids d'items : MUET — ${dirs.length} répertoire(s) seulement, le contrôle de corpus demande les 62 (§11.178)`);
+  }
+}
+
 console.log(`\n━━ validate-content: ${failures} failure(s) across ${dirs.length} dir(s) ━━`);
 process.exit(failures ? 1 : 0);

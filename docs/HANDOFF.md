@@ -13564,3 +13564,63 @@ question qu'on n'a pas posée.
 refait la carte en quelques secondes, sans navigateur. Une propriété qu'on ne
 peut pas re-mesurer est un souvenir (ADR 0034) : ce tableau vieillira, la
 commande non.
+
+## §11.178 — Deux notions, le même identifiant d'item : latent aujourd'hui, piège demain
+
+**LE FAIT.** `LIB-1` à `LIB-9` existent **deux fois** dans le corpus — dans
+`svt/liberation-energie-matiere-organique` et dans `philo/la-liberte`. Le
+préfixe dérive du slug de la notion, et les deux commencent par « li ». Les
+énoncés n'ont rien à voir : l'ATP comme monnaie énergétique d'un côté, Spinoza
+et le déterminisme de l'autre.
+
+**CE N'EST PAS UN DÉFAUT AUJOURD'HUI, et il fallait le vérifier avant d'écrire
+quoi que ce soit d'alarmant.** Tout ce qui consomme un id le fait par PAIRE :
+
+```
+user_answer_events   → notion_id NOT NULL sur chaque ligne (migration 048)
+notion_progress      → PRIMARY KEY (user_id, notion_id)
+build-learner-inputs → perNotionItemMap, construit par notion
+la page               → ne rend qu'une notion à la fois
+```
+
+Rien ne confond les deux `LIB-1`. Aucune donnée d'élève n'est en jeu, et il n'y
+a rien à réparer dans le produit.
+
+**C'EST UN PIÈGE POUR LE PROCHAIN AUTEUR** — la forme exacte de §11.172 (« la
+première définition gagne, partout »). Le jour où quelqu'un écrit un cache
+global « items déjà vus », une file de révision inter-notions, ou un export à
+plat indexé sur le seul id, les deux questions fusionnent **en silence** :
+répondre à l'ATP marquera Spinoza comme vu.
+
+**LA PORTE NE DEMANDE PAS ZÉRO — elle demande qu'aucune NOUVELLE n'apparaisse.**
+Les 9 sont déclarées dans `COLLISIONS_ID_CONNUES` (validate-content), avec leur
+raison. Second sens armé : une collision réparée doit sortir de la liste, sinon
+la liste devient un tapis. Les deux sens sont éprouvés :
+
+```
+ROUGE 1  un 10ᵉ id dupliqué (RLC-M1-1 → AE-1)  → ✗ « AE-1 » porté par 2 notions
+ROUGE 2  une collision déclarée qui n'existe plus → ✗ « FANTOME-X » ne collisionne plus
+VERT     l'arbre intact                           → ✓ 9 connue(s), 0 failure sur 62 dirs
+```
+
+**L'EXCLUSION DES CHECKPOINTS EST MESURÉE, PAS SUPPOSÉE — et elle a failli me
+coûter la porte.** Le premier jet comptait aussi `checkpoints.yaml` et
+annonçait **19 collisions**, dont `cp-r0-predict` **dans les 62 notions sur
+62**. Ce n'est pas une collision : c'est une CONVENTION de nommage,
+`cp-<barreau>-<sujet>`, délibérément répétée d'une notion à l'autre
+(`cp-r1-rupture` dans 6, `cp-r2-rupture` dans 4). Un id présent 62 fois sur 62
+n'est pas un accident, c'est un nom de rôle. Les compter aurait noyé les 9
+vraies collisions sous 10 fausses, et la porte aurait été désarmée le
+lendemain — le seuil à ne pas franchir d'ADR 0034.
+
+**ET LE CONTRÔLE SE TAIT QUAND IL NE PEUT PAS MESURER.** Il n'a de sens que sur
+le corpus entier : lancé sur un sous-ensemble, il ne peut pas voir une
+collision dont l'autre moitié est hors de sa liste. Il imprime alors
+`MUET — N répertoire(s) seulement` plutôt que le vert qu'il n'a pas gagné.
+Quatre verdicts honnêtes, pas deux (ADR 0034).
+
+**CE QUI RESTE AU PROPRIÉTAIRE.** Renommer `LIB-1..9` dans l'une des deux
+notions fermerait le piège pour de bon. Ce n'est pas un geste d'agent : un id
+d'item peut déjà figurer dans des événements stockés, et le renommer orphelinerait
+cet historique. La porte empêche que ça empire ; la décision de nettoyer est
+une décision de contenu et de données.
