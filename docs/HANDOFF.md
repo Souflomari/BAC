@@ -12832,3 +12832,31 @@ d'après :
     note exactement 20/20 ...... 39   (avant : 37)
     écarts ..................... 0    (avant : 2)
 ```
+
+### Un troisième axe, trouvé en relisant le deuxième
+
+Le contrôle « une copie parfaite vaut 20/20 » a un angle mort, et c'est sa
+propre formule qui le crée : la note est ramenée sur 20 par règle de trois,
+`distribué / ep.pts × 20`. Un barème d'exercice transcrit **trop lourd** —
+3,25 devenu 6,25 — donne une épreuve de 23 points où une copie parfaite vaut
+toujours **20,00/20**. Le 20/20 ne peut pas voir une épreuve trop lourde.
+
+Troisième axe, donc : **aucune épreuve ne déclare plus de 20 points**. Ce n'est
+pas un seuil de confort, c'est la règle du concours. Mesuré : 38 épreuves à
+20,00 exactement, une partielle à 10,5 (`sm-2020-normale`, annoncée comme
+telle), **aucune au-dessus**.
+
+**Et il a fallu l'ISOLER pour pouvoir le dire.** La sabotage évidente — gonfler
+le seul `bareme_total` — fait crier l'axe 1 en même temps : impossible alors de
+savoir si le rouge vient du plafond. Refaite en gonflant le total **et**
+l'étiquette d'une question du même montant, pour que la fermeture tienne :
+
+```
+  1 écart(s) :
+    ✗ spc-2010-normale — l'épreuve déclare 23 points, et le bac se note sur 20.
+```
+
+Un seul signalement, et c'est le bon : la fermeture est restée verte, le 20/20
+aussi. L'axe voit ce que les deux autres ne peuvent pas voir. (Sabotage à deux
+endroits, donc hors du manifeste, qui n'en casse qu'un ; jouée à la main avec
+sauvegarde hors de l'arbre, fichier restauré octet pour octet.)

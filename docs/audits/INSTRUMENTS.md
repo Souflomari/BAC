@@ -664,6 +664,14 @@ oublier une étiquette, ou en compter une de trop (un « (2 points) » écrit en
 prose). Le contrôle par exercice voit les deux ; le 20/20 seul ne verrait que
 la première.
 
+**Et un TROISIÈME axe : le plafond.** Aucune épreuve ne déclare plus de
+20 points. C'est l'angle mort de l'axe 2, créé par sa propre formule : la note
+est ramenée sur 20 par règle de trois, donc un barème transcrit trop lourd
+(une épreuve de 23 points) rend **quand même** 20,00/20 à une copie parfaite.
+Isolé par une sabotage qui gonfle le total ET l'étiquette du même montant, pour
+que la fermeture tienne : un seul signalement sort, le plafond. Les deux autres
+axes restent verts — ils ne peuvent pas voir ça.
+
 **État au 2026-09-21** : `--porte` armée, verte sur **39 épreuves,
 247 exercices, 1 472 questions**. Arithmétique pure — ni build, ni navigateur —
 donc DANS la batterie locale, contrairement à `typo-francaise` et `latex-nu`.

@@ -26,6 +26,14 @@
  *      lecture a deux façons de se tromper, et celle-ci les voit toutes deux.
  *   2. PAR ÉPREUVE — une copie tout juste fait exactement 20,00/20.
  *
+ *   3. LE PLAFOND — aucune épreuve ne déclare plus de 20 points. C'est un
+ *      ANGLE MORT DE LA RÈGLE 2, trouvé en la relisant : la note est ramenée
+ *      sur 20 par règle de trois (`distribué / ep.pts × 20`), donc un barème
+ *      transcrit à 22 points donnerait quand même 20,00/20 à une copie
+ *      parfaite. Le 20/20 ne peut pas voir une épreuve trop lourde ; seul un
+ *      plafond le peut. Au bac, une épreuve est notée sur 20 — ce n'est pas
+ *      un seuil de confort, c'est la règle du concours.
+ *
  * ELLE IMPORTE LA RÈGLE DU PRODUIT, elle ne la recopie pas. `ptsDepuisStem`
  * vit dans `src/lib/bareme.ts` précisément pour ça : une porte qui recopierait
  * le motif vérifierait sa propre copie — verte, honnête, et répondant à une
@@ -86,6 +94,13 @@ for (const ep of epreuves) {
         `${qs.length} question(s), ${sansEtiquette} sans étiquette, somme des étiquettes ${r3(somme)}`
       );
     }
+  }
+  if (ep.pts > 20 + EPS) {
+    ecarts.push(
+      `  ✗ ${ep.id} — l'épreuve déclare ${r3(ep.pts)} points, et le bac se note sur 20.\n` +
+      `      La règle de trois ramènerait quand même une copie parfaite à 20,00 : ce contrôle\n` +
+      `      est le seul qui puisse voir un barème d'exercice transcrit trop lourd.`
+    );
   }
   const sur20 = ep.pts > 0 ? (distribueTotal / ep.pts) * 20 : 0;
   if (Math.abs(sur20 - 20) > EPS) {
