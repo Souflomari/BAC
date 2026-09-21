@@ -13418,14 +13418,17 @@ réponse du serveur. **L'écart de TTFB entre 5 ms (accueil) et 210 ms (leçon)
 reste entier** et grandit avec le document : c'est un fait pour le
 propriétaire, pas quelque chose que cette passe a corrigé.
 
-**LA PORTE, ROUGE ET VERTE.** `source-en-double.mjs` cherche dans le document
-servi une ligne de titre BRUTE du `lesson.md` — avec son code de barreau
-`R<n> — `, que le rendu retire toujours. La trouver, c'est trouver la SOURCE,
-jamais l'affiché : la sonde ne peut pas confondre les deux.
+**LA PORTE, ROUGE ET VERTE — mais pas du premier coup.** La première sonde
+cherchait une ligne de titre brute et annonçait « 62 leçons, 0 occurrence ».
+**Elle était aveugle** ; §11.176 raconte comment et la répare. La sonde qui
+tient est celle des MARQUEURS DE LIGNE (`[[exercise:…]]`, `[[checkpoint:…]]`,
+`[[figure:…]]`, `[[motion:…]]`, `[[derivation:…]]`) : syntaxe de source pure,
+consommée par le découpeur, jamais rendue, qu'aucune transformation
+typographique ne touche.
 
-- **vert** : 62 leçons, 0 occurrence, sur le build d'après ;
-- **rouge** : le document capturé AVANT le correctif en porte exactement **2**,
-  toutes deux dans la charge RSC. Rejoué à la main aujourd'hui.
+- **vert** : 62 leçons, 0 marqueur (commentaires XML des figures exemptés) ;
+- **rouge** : le document capturé AVANT le correctif porte **exactement le
+  double** des marqueurs de sa source — 30 pour 15, soit 2,0 copies. Rejoué.
 
 **PAS D'ENTRÉE AU MANIFESTE DES ESSAIS ROUGES, et pourquoi.** La sabotage
 naturelle serait de rendre `lessonMd` à `MarginRail` — mais c'est un `.tsx`, et
@@ -13441,3 +13444,76 @@ sabotage `.tsx` atteindrait la porte et l'essai deviendrait honnête.
 après le correctif : arbre de composants, props, et 536 blocs KaTeX déjà rendus
 re-sérialisés (215 ko). Les réduire demande de déplacer des frontières client —
 une décision d'architecture, pas un correctif.
+
+
+## §11.176 — La porte était verte parce qu'elle ne savait chercher qu'une seule forme
+
+**LE FAIT, et il est à moi.** La porte de §11.175 venait d'être armée et
+annonçait « 62 leçons, 0 occurrence ». En inspectant la charge RSC pour une
+tout autre raison, le texte qu'elle jure absent était là, sous les yeux :
+
+```
+"R0 — Accroche\u202f: le réservoir qui ne se vide jamais…"
+```
+
+La sonde cherchait les 36 premiers caractères du titre tels qu'ils sont ÉCRITS
+dans le `lesson.md` : `R0 — Accroche : le réservoir qui ne `. Le produit, lui,
+sérialise le titre APRÈS typographie française — espace fine insécable devant
+les deux-points — et l'écrit en plus sous sa forme ÉCHAPPÉE (`\u202f`, six
+caractères, pas le caractère). Une seule espace de différence, et la sonde
+tombait à côté dès qu'un titre portait une ponctuation haute.
+
+**Rendue robuste aux formes** (chaque espace de la source acceptant l'espace
+ordinaire, l'insécable, la fine, et leurs écritures échappées), la même sonde
+trouvait **53 leçons sur 62** là où elle avait dit 0.
+
+**MAIS CES 53 N'ÉTAIENT PAS LE DÉFAUT VISÉ** — et s'arrêter au premier chiffre
+rouge aurait été aussi faux que s'arrêter au vert. Ce que la sonde élargie
+attrapait, c'est `react-markdown` : il passe un `node` (le sous-arbre hast) à
+chaque composant, et ce sous-arbre porte le texte du titre. **63 props `node`,
+31 739 o — 0,8 % du document.** Autre cause, autre ordre de grandeur, et un
+correctif qui toucherait le rendu de tout le contenu. Rien à voir avec les
+2 × 49 ko de `lesson.md` que §11.175 a retirés.
+
+**LA SONDE QUI TIENT.** Il fallait une empreinte que SEULE une copie de la
+source puisse porter. Les marqueurs de ligne le sont : le découpeur les
+consomme, ils n'atteignent jamais le DOM, aucun `node` hast ne les porte, et
+aucune règle typographique ne mord sur `[[…]]`. Le compte est sans appel :
+
+```
+                      source   document AVANT   document APRÈS
+[[exercise:              2            4               0
+[[checkpoint:            5           10               0
+[[figure:                7           14               0
+[[motion:                1            2               0
+                              → exactement 2,0 copies
+```
+
+**ET ELLE A CRIÉ UNE FOIS DE TROP, ce qui valait la peine.** Deux leçons
+signalaient 2 marqueurs — `[[motion:…]]`, avec une ellipse littérale. Pas une
+copie : l'en-tête XML de `paquet-qui-se-deforme.svg`, qui RACONTE l'histoire de
+la figure (« remplace l'ancien `[[motion:…]]` par une figure statique »). Le
+SVG est inliné, donc son commentaire part avec — invisible, jamais rendu,
+parfaitement légitime. Exemption écrite à côté du motif, sous les deux formes
+(commentaire nu dans le DOM, échappé dans la charge RSC) ; `typo-francaise`
+porte déjà la même, pour la même raison.
+
+**CE QUE ÇA AJOUTE AUX LOIS EXISTANTES.** ADR 0036 dit déjà qu'une chose n'est
+prouvée absente que si l'on a énuméré ses FORMES. Le cas d'aujourd'hui en
+donne la version la plus coûteuse : **ce n'est pas la chose cherchée qui
+change de forme, c'est le PRODUIT qui la transforme avant de l'écrire.** La
+sonde lisait le fichier ; la page écrit le fichier passé par la typographie.
+Entre les deux, une espace — assez pour qu'une porte neuve certifie le
+contraire de la vérité, une heure après avoir été armée et éprouvée rouge.
+
+Corollaire opératoire : **une porte qui compare du TEXTE à du texte rendu doit
+justifier, à côté de son motif, pourquoi les deux côtés sont dans la même
+forme.** Quand on ne peut pas le justifier, on change d'empreinte — on cherche
+ce que le rendu ne peut pas produire, jamais ce qu'il pourrait réécrire.
+
+**ET L'ESSAI ROUGE AVAIT CERTIFIÉ L'AVEUGLEMENT.** Le premier essai fabriquait
+un document malade en y copiant la sonde *littérale* — donc il éprouvait la
+forme que la porte savait déjà voir. Il criait, et ne prouvait rien. Un essai
+rouge doit porter la forme que le PRODUIT écrit, pas celle que la porte
+cherche ; sinon il mesure l'accord de la porte avec elle-même. C'est la même
+famille que « une porte qui se cite elle-même se disculpe » (ADR 0036).

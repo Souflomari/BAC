@@ -912,14 +912,28 @@ frontière client y repart **en plus** du DOM déjà rendu. `MarginRail` et
 tirer qu'une liste de titres : deux frontières, deux copies, 2 × 49 026 o sur
 `suites-numeriques` (§11.175).
 
-La sonde cherche une ligne de titre **brute** du `lesson.md`, code de barreau
-`R<n> — ` compris. Le rendu retire toujours ce code : le trouver dans le
-document servi, c'est donc avoir trouvé la SOURCE, jamais l'affiché — la sonde
-ne peut pas confondre les deux.
+**Sa première sonde était AVEUGLE, et elle a annoncé 0 sur 62 — lire §11.176
+avant de faire confiance à une porte neuve.** Elle cherchait un titre tel
+qu'il est ÉCRIT ; le produit sérialise le titre après typographie française
+(`Accroche\u202f:`), et sous forme échappée. Une espace d'écart, et la porte
+certifiait le contraire de la vérité.
 
-- **vert** : 62 leçons, 0 occurrence ;
-- **rouge** : le document capturé avant le correctif en porte exactement 2 ;
-- `--essai-rouge` intégré : muet sur un document sain, criant sur un porteur.
+La sonde qui tient cherche les **marqueurs de ligne** (`[[exercise:…]]`,
+`[[checkpoint:…]]`, `[[figure:…]]`, `[[motion:…]]`, `[[derivation:…]]`) : de la
+syntaxe de SOURCE pure, que le découpeur consomme, qui n'atteint jamais le
+DOM, qu'aucun `node` hast ne porte et qu'aucune règle typographique ne touche.
+Les trouver, c'est avoir trouvé une copie du `lesson.md` — et rien d'autre.
+
+- **vert** : 62 leçons, 0 marqueur ;
+- **rouge** : le document d'avant le correctif porte exactement le DOUBLE des
+  marqueurs de sa source (30 pour 15) — 2,0 copies, une par frontière client ;
+- `--essai-rouge` intégré : muet sur un document où le marqueur a été consommé,
+  criant sur un document qui recopie la source.
+
+**Exemption écrite à côté du motif :** les commentaires XML des figures. Deux
+leçons criaient pour un `[[motion:…]]` cité dans l'en-tête d'un SVG inliné, qui
+raconte l'histoire de la figure — invisible, jamais rendu, légitime.
+`typo-francaise` porte déjà la même exemption.
 
 Pas d'entrée au manifeste des essais rouges, et la raison est écrite en
 §11.175 : la sabotage naturelle est un `.tsx`, la porte lit du HTML servi, et

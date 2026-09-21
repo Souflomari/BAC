@@ -39,13 +39,60 @@ const PORTE = args.includes("--porte");
 const ESSAI = args.includes("--essai-rouge");
 const CONTENU = path.resolve("../content");
 
-/** La 1re ligne `## ` du lesson.md, telle qu'elle est ÉCRITE (code de barreau compris). */
-function sondeDe(md) {
-  const ligne = md.split("\n").find((l) => l.startsWith("## "));
-  if (!ligne) return null;
-  const brut = ligne.slice(3).trim();
-  // assez long pour être unique, assez court pour survivre à l'échappement
-  return brut.length >= 24 ? brut.slice(0, 36) : null;
+/**
+ * LA SONDE : les MARQUEURS de ligne, pas le texte des titres.
+ *
+ * Premier jet, et son défaut — gardé écrit parce qu'il a rendu cette porte
+ * VERTE À TORT pendant une heure. La sonde cherchait les 36 premiers
+ * caractères du premier titre `## `. Or le texte que le produit sérialise
+ * n'est pas celui du fichier : la typographie française est passée dessus.
+ * `Accroche : le réservoir` devient `Accroche\u202f: le réservoir` — espace
+ * fine insécable, écrite en plus sous sa forme ÉCHAPPÉE (six caractères).
+ * La sonde littérale ne trouvait rien dès qu'un titre portait une ponctuation
+ * haute, et annonçait « 62 leçons, 0 occurrence ». Rendue robuste aux formes,
+ * la même sonde en trouvait **53 sur 62**.
+ *
+ * Mais ces 53 n'étaient PAS le défaut visé : c'est `react-markdown` qui passe
+ * un `node` (le sous-arbre hast) à chaque composant, et ce sous-arbre porte le
+ * texte du titre. 63 props `node` pour 31 739 o — 0,8 % du document. Une autre
+ * cause, un autre ordre de grandeur, et un correctif qui toucherait le rendu.
+ *
+ * D'où la sonde finale, qui ne peut confondre ni l'une ni l'autre : les
+ * MARQUEURS DE LIGNE (`[[exercise:…]]`, `[[checkpoint:…]]`, `[[figure:…]]`,
+ * `[[motion:…]]`, `[[derivation:…]]`). Ils sont de la syntaxe de SOURCE pure :
+ * le découpeur les consomme, ils n'atteignent jamais le DOM, aucun `node`
+ * hast ne les porte, et aucune transformation typographique ne les touche.
+ * Les trouver dans le document servi, c'est avoir trouvé une copie du
+ * `lesson.md` — et rien d'autre.
+ *
+ * Mesuré sur `suites-numeriques` : la source porte 2/5/7/1 marqueurs ; le
+ * document d'AVANT le correctif en portait exactement le DOUBLE (4/10/14/2),
+ * une copie par frontière client ; celui d'APRÈS, zéro.
+ */
+const MARQUEURS = /\[\[(?:exercise|checkpoint|figure|motion|derivation):/g;
+
+/**
+ * EXEMPTION, écrite à côté du motif : les COMMENTAIRES XML des figures.
+ *
+ * Deux leçons criaient pour 2 marqueurs — `[[motion:…]]`, avec une ellipse
+ * littérale. Ce n'était pas une copie du `lesson.md` : c'est l'en-tête d'un
+ * SVG (`paquet-qui-se-deforme.svg`) qui RACONTE l'historique de la figure
+ * (« remplace l'ancien [[motion:…]] par une figure statique »). Le SVG est
+ * inliné dans la page, donc le commentaire part avec — invisible pour
+ * l'élève, jamais rendu, et parfaitement légitime.
+ *
+ * `typo-francaise` porte déjà la même exemption pour la même raison. On
+ * retire donc les commentaires avant de compter, sous leurs DEUX formes :
+ * telle quelle dans le DOM, et échappée (`\u003c!--`) dans la charge RSC.
+ */
+function sansCommentaires(html) {
+  return html
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/\\u003c!--[\s\S]*?--\\u003e/g, "");
+}
+
+function compteSource(md) {
+  return (md.match(MARQUEURS) || []).length;
 }
 
 function lecons() {
@@ -62,21 +109,21 @@ function lecons() {
 }
 
 if (ESSAI) {
-  // Le détecteur, mis à l'épreuve : un document qui PORTE le défaut doit crier.
-  const { md } = lecons()[0];
-  const sonde = sondeDe(fs.readFileSync(md, "utf8"));
-  const sain = `<html><body><p>du texte rendu</p><script>self.__next_f.push([1,"rien"])</script></body></html>`;
-  const malade = `<html><body><p>du texte rendu</p><script>self.__next_f.push([1,"${sonde.replace(/"/g, '\\"')}"])</script></body></html>`;
-  const vuSain = sain.includes(sonde);
-  const vuMalade = malade.includes(sonde);
-  console.log(`essai rouge — sonde ${JSON.stringify(sonde)}`);
-  console.log(`  document SAIN   : ${vuSain ? "DÉTECTÉ (faux positif !)" : "rien — correct"}`);
-  console.log(`  document MALADE : ${vuMalade ? "DÉTECTÉ — le détecteur crie" : "RIEN — LE DÉTECTEUR EST AVEUGLE"}`);
-  if (vuSain || !vuMalade) {
+  // Le détecteur, mis à l'épreuve. Le document MALADE porte un marqueur de
+  // source ; le SAIN porte le même texte RENDU (le marqueur consommé, donc
+  // absent). Un détecteur qui crierait sur les deux ne mesurerait rien.
+  const sain = `<html><body><p>Un exercice suit.</p><section data-exercise="r-variation">…</section></body></html>`;
+  const malade = `<html><body><p>Un exercice suit.</p><script>self.__next_f.push([1,"[[exercise:r-variation]]"])</script></body></html>`;
+  const vuSain = (sain.match(MARQUEURS) || []).length;
+  const vuMalade = (malade.match(MARQUEURS) || []).length;
+  console.log("essai rouge — sonde : les marqueurs de ligne du lesson.md");
+  console.log(`  document SAIN   (marqueur consommé) : ${vuSain} → ${vuSain === 0 ? "rien, correct" : "FAUX POSITIF"}`);
+  console.log(`  document MALADE (source recopiée)   : ${vuMalade} → ${vuMalade > 0 ? "le détecteur crie" : "LE DÉTECTEUR EST AVEUGLE"}`);
+  if (vuSain > 0 || vuMalade === 0) {
     console.error("\nESSAI ROUGE ÉCHOUÉ : le détecteur ne distingue pas les deux documents.");
     process.exit(1);
   }
-  console.log("\nessai rouge OK : muet sur le sain, il crie sur le malade.");
+  console.log("\nessai rouge OK : muet sur le rendu, il crie sur la source.");
   process.exit(0);
 }
 
@@ -88,22 +135,23 @@ const cibles = routes.length
 let fautives = 0;
 let sansSonde = 0;
 for (const { route, md } of cibles) {
-  const sonde = sondeDe(fs.readFileSync(md, "utf8"));
-  if (!sonde) { sansSonde++; continue; }
+  const attendus = compteSource(fs.readFileSync(md, "utf8"));
+  if (attendus === 0) { sansSonde++; continue; }
   const res = await fetch(BASE + route);
-  const html = await res.text();
-  const n = html.split(sonde).length - 1;
+  const html = sansCommentaires(await res.text());
+  const n = (html.match(MARQUEURS) || []).length;
   if (n > 0) {
     fautives++;
-    console.log(`  ✗ ${route} — la source du lesson.md apparaît ${n} fois dans le document servi`);
-    console.log(`      sonde : ${JSON.stringify(sonde)}`);
+    const copies = (n / attendus).toFixed(1);
+    console.log(`  ✗ ${route} — ${n} marqueur(s) de source dans le document servi`);
+    console.log(`      la source en porte ${attendus} : soit ~${copies} copie(s) du lesson.md dans la page`);
   }
 }
 
 const vues = cibles.length - sansSonde;
 if (fautives === 0) {
-  console.log(`source-en-double : ${vues} leçon(s) — la source du lesson.md ne repart dans aucun document ✓`);
-  if (sansSonde) console.log(`  (${sansSonde} sans titre \`## \` exploitable — hors portée, dit à voix haute)`);
+  console.log(`source-en-double : ${vues} leçon(s) — aucun marqueur de source dans les documents servis ✓`);
+  if (sansSonde) console.log(`  (${sansSonde} leçon(s) sans aucun marqueur — hors portée, dit à voix haute)`);
   process.exit(0);
 }
 console.error(`\nsource-en-double : ${fautives} leçon(s) renvoient leur markdown source dans la page.`);
