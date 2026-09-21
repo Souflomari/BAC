@@ -310,7 +310,8 @@ sans bord — corrigés), l'**espacement du texte** (WCAG 1.4.12 — rien ne
 déborde ; les troncatures sorties au passage), et **ce que le serveur sert
 sans JavaScript** (117 pages, ratio 1,00). Ce qui manque toujours : un vrai
 téléphone, un vrai réseau, Firefox et Safari, un vrai Windows — et, depuis
-18:53Z, **la CI elle-même** (§11.37 : plus de runner, cause côté compte).
+le 2026-09-11 à 18:53Z, **la CI elle-même** (§11.37 : plus de runner,
+cause côté compte ; 230 runs sans vert au 2026-09-21).
 
 ## Trois façons dont une porte cesse de mesurer sans jamais rougir
 

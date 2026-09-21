@@ -3343,7 +3343,7 @@ Geist Mono, 70 ko pour 80 caractères, posé au propriétaire.
 §11.36 : en contraste élevé Windows, « Commencer l'épreuve » et tout
 bouton sans bordure devenaient du texte nu → contour système en `outline`
 sous `@media (forced-colors: active)`.
-§11.37 : la CI n'a plus de runner depuis 18:53Z (runs 494–502 en 3–5 s,
+§11.37 : la CI n'a plus de runner depuis le 2026-09-11 à 18:53Z (runs 494–723 en quelques s,
 sans journal ; quota ou limite de dépense du compte, à vérifier par le
 propriétaire) ; la batterie a été rejouée en local sur HEAD.
 §11.38 : 7 titres de leçon sur 62 en « … » sur l'accueil à 390 px, 24
@@ -4576,7 +4576,7 @@ SVG, qui gardent leurs couleurs propres en `forced-colors` (le contraste
 de leurs textes est mesuré aux pixels par ailleurs) ; `prefers-contrast:
 more`, un autre signal, plus rare.
 
-### 11.37 La CI n'a plus de runner depuis 18:53Z : chaque run échoue en 3 à 5 secondes, sans journal — les commits depuis faa8990 ne sont vérifiés qu'en local
+### 11.37 La CI n'a plus de runner depuis le 2026-09-11 à 18:53Z : chaque run échoue en quelques secondes, sans journal — les commits depuis faa8990 ne sont vérifiés qu'en local
 
 **LE FAIT.** Le run 490 (208fb99, 16:59Z) est le dernier vert de bout en
 bout : 39 min 02 s. Les runs 491–493 ont été annulés normalement par le
@@ -4586,6 +4586,43 @@ run passe à `failure` **3 à 5 secondes** après sa création : le job n'a
 **aucun runner** (`runner_id: 0`, `runner_name: ""`), **aucune étape**,
 et ses journaux répondent 404. Un `rerun_failed_jobs` du run 502
 (tentative 2, 20:14Z) : pareil, 4 s. Neuf runs de suite (494–502).
+
+**RE-MESURÉ LE 2026-09-21 À 04:31Z — LA PANNE A DIX JOURS, PAS UNE SOIRÉE.**
+Le chiffre « neuf runs » était vrai le soir où il a été écrit ; il a vieilli de
+deux ordres de grandeur. Énumération des 200 derniers runs de `gates.yml` par
+l'API (`actions_list`, pages 1 à 3, puis durée = `updated_at − run_started_at`) :
+
+```
+dernier vert      run 490 · 208fb993 · 2026-09-11T16:59:42Z · 2 342 s (39 min)
+début de panne    run 494 · faa8990a · 2026-09-11T18:53:08Z ·    31 s
+dernier mesuré    run 723 · 551755b  · 2026-09-21T04:31:23Z ·     4 s
+                  → 230 runs consécutifs (494→723), 9 j 9 h, aucun vert
+                  → 199 des 200 derniers durent moins de 30 s
+```
+
+Le seul run de la fenêtre à dépasser 30 s (**run 537**, 38 s) a été ouvert
+individuellement : `runner_id: 0` lui aussi. Il n'y a donc **aucun rouge réel
+caché sous la panne** — pas une seule porte n'a eu l'occasion de rougir depuis
+le 2026-09-11.
+
+**Le re-run de la période a été fait** : `rerun_failed_jobs` sur le run 723 le
+2026-09-21 à 04:31Z → tentative 2, 4 s, `runner_id: 0`, sortie de check vide
+(`title`, `summary`, `text` tous vides). Rien n'a changé.
+
+**Pas de troisième commentaire sur la PR #2.** Deux y sont déjà (2026-08-28 et
+2026-09-11T21:53Z), et le second décrit exactement cette panne — même run 494,
+même cause compte, même re-run. Répéter un diagnostic écrit n'ajoute rien.
+
+**PAS DE PORTE SUR L'HORODATAGE NU — et la condition qui en mériterait une.**
+Quatre horodatages sans date viennent d'être corrigés à la main ; le réflexe
+serait d'outiller le geste (ADR 0033). Mesure d'abord : sur les 239 `.md` de
+`docs/`, **25 horodatages UTC en tout, dont 4 réellement orphelins** de date —
+et un motif naïf `\d{1,2}:\d{2}Z` se trompe une fois sur deux, en mordant
+l'intérieur des datetimes ISO (`…T16:59:42Z` → `59:42Z`). Quatre cas vrais pour
+autant de faux : une porte ici enseignerait à ignorer le rouge (ADR 0036).
+**Ce qui en mériterait une :** que la population dépasse ~20 orphelins réels, ou
+qu'un horodatage nu reparaisse dans un document *destiné à l'élève* plutôt que
+dans le journal de bord — là, le coût d'un faux positif redevient payable.
 
 **CE QUE CE N'EST PAS.** Le fichier `gates.yml` n'a pas changé depuis
 778c2ee (une note de budget) — et les runs 491–493, créés après, avaient
@@ -5198,7 +5235,8 @@ rend verte. **0 avertissement résiduel sur les 62 notions.**
 - **§11.38** les troncatures « … » sur téléphone (titres et sous-titres se
   plient) ;
 - **§11.41** toute commande a un nom accessible (0 sans nom) ;
-- **§11.37** et par-dessus tout : **la CI n'a plus de runner depuis 18:53Z**
+- **§11.37** et par-dessus tout : **la CI n'a plus de runner depuis le
+  2026-09-11 à 18:53Z**
   (cause côté compte), donc chaque point ci-dessus n'est vérifié qu'en
   LOCAL — build + `dom-truth` (277/0) + `lint`, et la batterie complète
   rejouée à la main sur 5a43b1b (19/19). Une porte qui ne tourne pas n'est
@@ -9761,7 +9799,8 @@ gates   status completed · conclusion failure
 
 **Deux secondes et aucun journal : c'est la signature exacte de §11.72** — le
 job n'a jamais reçu de runner, donc il n'y a pas de journal à télécharger. La
-panne dure depuis 18:53Z le 2026-09-19 et n'a pas bougé. Rien dans le dépôt ne
+panne dure depuis 18:53Z le 2026-09-11 (date re-mesurée le 2026-09-21,
+§11.37 : le 09-19 écrit ici était faux) et n'a pas bougé. Rien dans le dépôt ne
 l'explique ; la cause probable reste un quota de minutes ou une limite de
 dépense du compte, qui se règle hors du dépôt.
 
