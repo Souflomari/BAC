@@ -12516,3 +12516,147 @@ en-têtes d'exercice des épreuves, les étiquettes de figure SVG — ne passent
 par un plugin remark ; ils étaient déjà propres (mesurés : 0 sur les 39
 épreuves), mais rien n'empêche la prochaine écriture d'y poser une apostrophe
 droite. C'est la porte, désormais au bloc, qui les tient.
+
+---
+
+## §11.165 — La règle française appliquée au LaTeX : la commande `\;` coupée en deux
+
+**2026-09-21.** L'en-tête de `frenchTypography.ts` affirmait ceci, noir sur
+blanc :
+
+> *Code and math never reach here — `remarkFrenchTypography` visits mdast
+> `text` nodes only, and `inlineCode`/`code`/`inlineMath`/`math` are separate
+> node types.*
+
+C'est vrai du **greffon**. C'est faux de la **fonction** : une soixantaine
+d'endroits du produit l'appellent directement sur une chaîne BRUTE — titres
+d'exercice, légendes de figure, libellés de partie, `aria-label`, intitulés de
+l'assembleur d'épreuves —, et ces chaînes-là portent leur LaTeX avec elles,
+encore entre `$`.
+
+### Ce que la règle (c) en faisait
+
+Mesuré sur le rendu des 101 pages (62 leçons + 39 épreuves ouvertes et
+corrigées), en lisant l'annotation TeX que KaTeX conserve sous chaque
+formule — c'est-à-dire **ce que le moteur a réellement reçu** :
+
+```
+  espaces insécables DANS du LaTeX ......... 24, sur 10 pages
+  avertissements KaTeX à la construction ... 24  « No character metrics for ' ' »
+```
+
+Le caractère est U+202F, l'espace fine insécable. KaTeX n'a pas de métrique
+pour lui et le disait **à chaque construction depuis des mois**.
+
+**Et ce n'est pas cosmétique.** `\;` est une COMMANDE d'espacement LaTeX. La
+règle glissait sa fine **entre la contre-oblique et le point-virgule** :
+
+```
+  écrit   : 0{,}3\;\ 0{,}6\;\ 0{,}9\;\ 1{,}2\ \text{m.s}^{-1}
+  compilé : 0{,}3\<fine>;\ 0{,}6\<fine>;\ …
+```
+
+La commande n'existe plus. Idem pour les repères — `(O\,;\,\vec{i},\vec{j})`,
+`(E')\;: z^2 - (1-i)(1+m)z = 0` — c'est-à-dire exactement la notation qu'une
+copie de bac doit écrire juste.
+
+### Le correctif
+
+La fonction ne peut pas se fier à son appelant : elle **segmente elle-même**.
+`segmentsProse` découpe la chaîne en alternant prose et maths (`$…$`, `$$…$$`,
+`\$` échappé respecté), et les quatre règles ne tournent que sur la prose. Un
+`$` non apparié laisse tout le reste en prose — conservateur, c'est le
+comportement d'avant. Un chemin rapide (`!s.includes("$")`) laisse la majorité
+des chaînes au même coût qu'avant.
+
+**Après : 24 → 0**, et **0 avertissement KaTeX** à la construction. 53 578
+formules rendues sur les 101 pages, **0 en erreur**.
+
+### La porte a deux directions, maintenant
+
+`typo-francaise` cherchait une espace **manquante** dans la prose. Elle cherche
+désormais aussi l'espace **en trop** — une insécable posée dans une formule.
+Une seule direction se triche : appliquer la règle partout rend la première
+verte et **fabrique** la seconde. C'est littéralement ce qui était arrivé.
+
+Éprouvée dans les deux sens, par une sabotage qui **compile** (§11.164 avait
+montré ce que coûte l'autre genre) : construction aboutie, puis
+`1, 1, 2, 1, 2, 3` insécables sur les six premières pages touchées. La porte
+reproduit le compte.
+
+---
+
+## §11.166 — 150 formules LaTeX affichées telles quelles, et ce qui les cachait
+
+**2026-09-21.** En réparant §11.165, la porte typographie est passée **rouge
+sur trois pages** — alors que le correctif n'avait fait que *cesser* d'abîmer
+des formules. L'examen de ces trois signalements a ouvert ceci :
+
+```
+  Partie II — Le plan complexe $(O;\vec{u},\vec{v})$ : $a=1+i$, $b=(1+i)m$
+```
+
+Ce n'est pas un extrait de fichier. **C'est ce que l'élève lit**, sur
+`/notions/maths/nombres-complexes-2` — dollars, contre-obliques et accolades
+compris. Zéro formule KaTeX dans ce paragraphe.
+
+### Ce que la porte cachait, et pourquoi
+
+Le sur-titre de partie (`part`) était rendu en **texte nu**. La porte ne le
+voyait pas, parce que la règle (c) y insérait une fine devant le `;` de
+`$(O;\vec{u}…)$` — et une fine devant une ponctuation haute, c'est exactement
+ce que la porte exige. **Le défaut de §11.165 rendait la porte verte sur le
+défaut de §11.166.** Ôter le premier a révélé le second : c'est le seul
+moment de la journée où un correctif a rendu une porte rouge en ne cassant
+rien.
+
+### L'étendue
+
+```
+  LEÇONS   :  26 formules brutes sur  7/62 pages
+  ÉPREUVES : 124 formules brutes sur 19/39 pages
+  TOTAL    : 150, depuis EXACTEMENT DEUX sites de rendu
+```
+
+`EpreuveShell` (`{q.part}`) et `AttemptFirstExercise` (`{frenchTypography(part)}`).
+
+### Le correctif, et les deux pièges qu'il a fallu mesurer
+
+`MdBlock` reçoit un mode `inline` : un `<span>` au lieu d'un `<div>`, et `p`
+rendu en fragment — parce qu'un `<div>` ou un `<p>` imbriqué dans le `<p>` du
+libellé est de l'HTML invalide. Le pipeline reste **chargé à la demande** :
+`EpreuveShell` reçoit `Md` comme avant (HANDOFF §11.27), aucun octet de KaTeX
+n'entre dans le paquet initial de l'épreuve.
+
+**Piège 1 — la casse.** Le style sur-titre est en `uppercase`, et
+`text-transform` s'applique aussi aux glyphes de KaTeX : `$(E_\alpha)\;: z^2$`
+s'affichait avec un `Z` capital, c'est-à-dire **une autre variable**.
+`[&_.katex]:normal-case` l'annule.
+
+**Piège 2 — l'hydratation, et il a fallu le MESURER.** Le premier correctif a
+fait apparaître **10 erreurs React #418 sur `pc/reactions-acido-basiques`** —
+zéro avant. Le corpus y écrit `part: "1. Solution aqueuse d'acide
+propanoïque"`, et `1.` en tête de ligne **est** une liste ordonnée en
+CommonMark. Un `<ol>` dans le `<p>` du libellé : le navigateur referme le `<p>`
+en analysant, l'arbre client cesse de ressembler à l'arbre servi.
+
+Rendre `ol`/`li` en fragments n'aurait pas suffi — l'analyseur a déjà mangé le
+« 1. », et le libellé aurait perdu son numéro. `echappeBloc` (dans
+`src/lib/markdownEnLigne.ts`, pur et testé) échappe donc le marqueur en tête de
+chaque ligne : `1.`, `1)` (CommonMark accepte les deux), `-`, `*`, `+`, `>`,
+`#`.
+
+### Mesure finale, sur les 101 pages
+
+```
+  LaTeX affiché BRUT .................. 0    (avant : 150, sur 26 pages)
+  formules en erreur .................. 0
+  sur-titres encore en CAPITALES ...... 0
+  erreurs d'hydratation ............... 0    (après le 1er correctif : 10)
+  porte typo-francaise ................ verte sur 110 pages
+```
+
+**La leçon, et elle est la même que celle de la journée :** un correctif se
+mesure APRÈS. Celui-ci en a introduit un autre, visible seulement sur une
+leçon sur 62, et seulement parce que la mesure d'après regardait aussi les
+erreurs de script.

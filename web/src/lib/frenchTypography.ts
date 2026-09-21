@@ -148,7 +148,53 @@ const NOMBRE_UNITE = new RegExp(
   "gu",
 );
 
-export function frenchTypography(s: string): string {
+/**
+ * Découpe une chaîne en segments PROSE et segments MATHS (`$…$`, `$$…$$`).
+ *
+ * POURQUOI (2026-09-21, §11.165). L'en-tête de ce fichier affirmait que « code
+ * and math never reach here — `remarkFrenchTypography` visits mdast `text`
+ * nodes only ». C'est vrai du GREFFON. Ce n'est pas vrai de la FONCTION : une
+ * soixantaine d'endroits du produit l'appellent directement sur une chaîne
+ * BRUTE — titres d'exercice, légendes, libellés d'épreuve, `aria-label` —, et
+ * ces chaînes-là portent leur LaTeX avec elles, encore entre `$`.
+ *
+ * Ce que la règle (c) en faisait, mesuré sur le rendu des 101 pages :
+ * **24 espaces fines insécables injectées DANS des formules**, sur 10 pages.
+ * KaTeX n'a pas de métrique pour U+202F et le disait à chaque construction
+ * (24 avertissements « No character metrics for ' ' »). Et ce n'est pas
+ * cosmétique : `\;` est une COMMANDE d'espacement LaTeX, et la règle glissait
+ * la fine ENTRE la contre-oblique et le point-virgule — `0{,}3\;\ 0{,}6` devenu
+ * `0{,}3\<fine>;\ 0{,}6`. La commande n'existe plus.
+ *
+ * La fonction ne peut donc pas se fier à son appelant : elle segmente
+ * elle-même, et ne transforme que la prose. Un `$` non apparié laisse tout le
+ * reste en prose — conservateur, c'est le comportement d'avant.
+ */
+function segmentsProse(s: string): { texte: string; maths: boolean }[] {
+  const out: { texte: string; maths: boolean }[] = [];
+  let i = 0;
+  let debut = 0;
+  while (i < s.length) {
+    if (s[i] === "\\") { i += 2; continue; } // `\$` échappé
+    if (s[i] !== "$") { i++; continue; }
+    const delim = s[i + 1] === "$" ? "$$" : "$";
+    let j = i + delim.length;
+    while (j < s.length) {
+      if (s[j] === "\\") { j += 2; continue; }
+      if (s.startsWith(delim, j)) break;
+      j++;
+    }
+    if (j >= s.length) break; // délimiteur non apparié : le reste est de la prose
+    out.push({ texte: s.slice(debut, i), maths: false });
+    out.push({ texte: s.slice(i, j + delim.length), maths: true });
+    i = debut = j + delim.length;
+  }
+  out.push({ texte: s.slice(debut), maths: false });
+  return out;
+}
+
+/** Les quatre règles, appliquées à un segment de PROSE seulement. */
+function regles(s: string): string {
   let out = s;
 
   // (a) straight apostrophe → typographic apostrophe, between letters only.
@@ -170,6 +216,15 @@ export function frenchTypography(s: string): string {
   out = out.replace(NOMBRE_UNITE, `$1${NBSP}$2`);
 
   return out;
+}
+
+export function frenchTypography(s: string): string {
+  // Chemin rapide : l'immense majorité des chaînes ne portent aucune formule,
+  // et la segmentation ne doit rien coûter à celles-là.
+  if (!s.includes("$")) return regles(s);
+  return segmentsProse(s)
+    .map((seg) => (seg.maths ? seg.texte : regles(seg.texte)))
+    .join("");
 }
 
 export default frenchTypography;

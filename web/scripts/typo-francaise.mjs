@@ -65,7 +65,7 @@ const nav = await chromium.launch({
 });
 const page = await (await nav.newContext({ viewport: { width: 1280, height: 900 } })).newPage();
 
-const total = { haute: 0, guillemets: 0, apostrophe: 0 };
+const total = { haute: 0, guillemets: 0, apostrophe: 0, dansLatex: 0 };
 const exemples = [];
 const parSite = {};
 
@@ -109,6 +109,34 @@ for (const route of routes) {
     for (const g of racine.querySelectorAll("[hidden]")) g.removeAttribute("hidden");
 
     const NNBSP = "\u202F", NBSP = "\u00A0";
+
+    // ── LE SENS INVERSE : L'ESPACE QUI NE DOIT PAS Y ÊTRE (§11.165) ────
+    // Les trois mesures ci-dessous cherchent une espace MANQUANTE dans la
+    // prose. Celle-ci cherche l'espace EN TROP — une insécable posée dans
+    // une formule, où elle n'a rien à faire.
+    //
+    // Une porte à deux directions, parce qu'une seule se triche : appliquer
+    // la règle partout rend la première verte et fabrique la seconde. C'est
+    // exactement ce qui était arrivé — `frenchTypography` est appelée sur
+    // des chaînes BRUTES à une soixantaine d'endroits (titres d'exercice,
+    // légendes, `aria-label`), LaTeX compris, et la règle de ponctuation
+    // haute glissait sa fine DANS les formules : 24 sur 10 pages, dont des
+    // `\;` coupés entre la contre-oblique et le point-virgule — la commande
+    // d'espacement LaTeX cesse alors d'exister.
+    //
+    // L'annotation TeX de KaTeX porte la source de la formule TELLE QU'ELLE
+    // A ÉTÉ COMPILÉE : c'est le seul endroit où l'on voit ce que le moteur a
+    // réellement reçu, et non ce que le fichier contenait.
+    let dansLatex = 0;
+    const exLatex = [];
+    for (const a of racine.querySelectorAll('annotation[encoding="application/x-tex"]')) {
+      const t = a.textContent || "";
+      const k = (t.match(new RegExp(`[${NNBSP}${NBSP}]`, "gu")) || []).length;
+      if (!k) continue;
+      dansLatex += k;
+      if (exLatex.length < 2) exLatex.push(t.slice(0, 60).replace(new RegExp(NNBSP, "g"), "<fine>").replace(new RegExp(NBSP, "g"), "<insec>"));
+    }
+
     const RE_APO = /\p{L}'\p{L}/gu;
     // Une lettre, un chiffre, une parenthèse ou un guillemet fermant ; une
     // espace ORDINAIRE facultative ; puis ; : ?. L'insécable fine, elle, ne
@@ -199,20 +227,23 @@ for (const route of routes) {
       lot.texte += n.nodeValue || "";
     }
     vider();
-    return { ...compte, sites, ex };
+    return { ...compte, dansLatex, exLatex, sites, ex };
   });
   if (!r) { console.log(`  · ${route} — pas de <main>, page ignorée`); continue; }
-  const n = r.haute + r.guillemets + r.apostrophe;
+  const n = r.haute + r.guillemets + r.apostrophe + r.dansLatex;
   total.haute += r.haute; total.guillemets += r.guillemets; total.apostrophe += r.apostrophe;
+  total.dansLatex += r.dansLatex;
+  for (const e of r.exLatex) if (exemples.length < 8) exemples.push(`${route} — DANS UNE FORMULE : ${e}`);
   for (const [k, v] of Object.entries(r.sites)) parSite[k] = (parSite[k] || 0) + v;
   for (const e of r.ex) if (exemples.length < 6) exemples.push(`${route} — ${e}`);
   console.log(
     `  ${n === 0 ? "✓" : "✗"} ${route} — ${r.haute} ponctuation haute, ` +
-    `${r.guillemets} guillemet(s), ${r.apostrophe} apostrophe(s) droite(s)`
+    `${r.guillemets} guillemet(s), ${r.apostrophe} apostrophe(s) droite(s), ` +
+    `${r.dansLatex} insécable(s) DANS du LaTeX`
   );
 }
 
-const n = total.haute + total.guillemets + total.apostrophe;
+const n = total.haute + total.guillemets + total.apostrophe + total.dansLatex;
 // `routes.length` compterait les routes DEMANDÉES ; une route morte n'a pas été
 // mesurée, et l'annoncer comme tenue serait exactement le mensonge que le
 // garde-fou ci-dessus est là pour empêcher.
@@ -220,9 +251,11 @@ const mesurees = routes.length - (process.exitCode === 1 ? 1 : 0);
 console.log(
   n === 0 && process.exitCode !== 1
     ? `\nLa typographie française tient sur ${mesurees} page(s) : aucune apostrophe droite, ` +
-      `aucune espace manquante devant une ponctuation haute.`
+      `aucune espace manquante devant une ponctuation haute, ` +
+      `aucune insécable injectée dans une formule.`
     : `\n${n} écart(s) : ${total.haute} espace(s) manquante(s) devant une ponctuation haute, ` +
-      `${total.guillemets} guillemet(s) mal espacé(s), ${total.apostrophe} apostrophe(s) droite(s).`
+      `${total.guillemets} guillemet(s) mal espacé(s), ${total.apostrophe} apostrophe(s) droite(s), ` +
+      `${total.dansLatex} insécable(s) injectée(s) DANS du LaTeX.`
 );
 if (n > 0) {
   console.log("\n  Par site de rendu :");

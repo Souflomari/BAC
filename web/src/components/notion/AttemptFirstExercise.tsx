@@ -34,11 +34,11 @@ import rehypeDirectionRtl from "@/lib/rehypeDirectionRtl";
 import { KatexSpan } from "./KatexSpan";
 import type { NotionExercise, ExerciseQuestion, DerivationStep } from "@/lib/content";
 import { cn } from "@/lib/utils";
+import { echappeBloc } from "@/lib/markdownEnLigne";
 import { Icon } from "@/components/ui/Icon";
 import { Derivation } from "./Derivation";
 import { useAttemptRecorder } from "./AttemptEvents";
 import { useHydrated } from "@/lib/useHydrated";
-import { frenchTypography } from "@/lib/frenchTypography";
 
 /** Block-level markdown + KaTeX renderer (stems and reasoning are prose).
  *  Exported so the bank card's intro renders identically (BANK-SPEC §3).
@@ -47,19 +47,51 @@ import { frenchTypography } from "@/lib/frenchTypography";
  *  rendu du parent — dans l'épreuve, à chaque seconde du chrono, pour chaque
  *  énoncé de la page. Les props sont deux chaînes : si elles n'ont pas changé,
  *  rien à refaire. */
-export const MdBlock = memo(function MdBlock({ children, className }: { children: string; className?: string }) {
+export const MdBlock = memo(function MdBlock({
+  children,
+  className,
+  inline = false,
+}: {
+  children: string;
+  className?: string;
+  /**
+   * Rendu EN LIGNE, pour un libellé qui vit déjà dans un `<p>` — le
+   * sur-titre de partie d'un exercice, par exemple.
+   *
+   * POURQUOI IL EXISTE (2026-09-21, §11.166). Ce libellé était rendu en
+   * TEXTE NU. Mesuré sur le produit rendu : **150 formules LaTeX affichées
+   * telles quelles** — `$(O;\vec{u},\vec{v})$`, dollars et contre-obliques
+   * compris — sur 26 pages (7 leçons, 19 épreuves), depuis exactement deux
+   * endroits. Sur une page de maths, l'élève lisait la source.
+   *
+   * Deux détails qui ne s'inventent pas :
+   *   · le wrapper est un `<span>`, et `p` est rendu en fragment : un `<div>`
+   *     ou un `<p>` imbriqué dans le `<p>` du libellé casse l'HTML, et React
+   *     le paie en erreur d'hydratation ;
+   *   · `[&_.katex]:normal-case` annule le `uppercase` du style sur-titre —
+   *     sans lui, `$(E_\alpha)\;:\ z^2 - 2iz$` s'affiche avec un `Z`
+   *     capital, c'est-à-dire une AUTRE variable.
+   */
+  inline?: boolean;
+}) {
+  const contenu = (
+    <ReactMarkdown
+      remarkPlugins={[remarkMath, remarkGfm, remarkFrenchTypography]}
+      rehypePlugins={[
+        [rehypeKatexHtml, { strict: false, trust: false }],
+        rehypeDirectionRtl,
+      ]}
+      components={inline ? { p: ({ children }) => <>{children}</>, span: KatexSpan } : { span: KatexSpan }}
+    >
+      {inline ? echappeBloc(children) : children}
+    </ReactMarkdown>
+  );
+  if (inline) {
+    return <span className={cn("[&_.katex]:normal-case", className)}>{contenu}</span>;
+  }
   return (
     <div className={cn("prose-lesson max-w-none [&_.katex-display]:my-3", className)}>
-      <ReactMarkdown
-        remarkPlugins={[remarkMath, remarkGfm, remarkFrenchTypography]}
-        rehypePlugins={[
-          [rehypeKatexHtml, { strict: false, trust: false }],
-          rehypeDirectionRtl,
-        ]}
-        components={{ span: KatexSpan }}
-      >
-        {children}
-      </ReactMarkdown>
+      {contenu}
     </div>
   );
 });
@@ -99,7 +131,7 @@ function Question({
     <>
       {part && (
         <p className="mt-8 mb-2 text-caption font-medium uppercase tracking-eyebrow text-secondary">
-          {frenchTypography(part)}
+          <MdBlock inline>{part}</MdBlock>
         </p>
       )}
       <div className="py-5 border-b border-subtle last:border-b-0">

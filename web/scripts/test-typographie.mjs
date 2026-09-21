@@ -168,3 +168,87 @@ test("(couture) la passe reste idempotente", async () => {
   assert.equal(une, "l’amylase et l’eau");
   assert.equal(await noeuds(une), une);
 });
+
+// ── LES MATHS NE SONT PAS DE LA PROSE (2026-09-21, §11.165) ───────────────
+//
+// L'en-tête du fichier affirmait que les maths n'arrivent jamais jusqu'ici,
+// parce que le GREFFON ne visite que des nœuds `text`. Vrai du greffon ; faux
+// de la fonction, qu'une soixantaine d'endroits appellent sur une chaîne brute
+// (titres d'exercice, légendes, libellés d'épreuve, `aria-label`) — LaTeX
+// compris. Mesuré sur le rendu : 24 espaces fines injectées dans des formules,
+// sur 10 pages, dont des `\;` coupés en deux.
+const NNBSP_ = " ";
+
+test("(maths) la ponctuation haute DANS une formule n'est pas espacée", () => {
+  assert.equal(f("le repère $(O;\\vec{i},\\vec{j})$ est direct"),
+    "le repère $(O;\\vec{i},\\vec{j})$ est direct");
+  assert.equal(f("$(E')\;: y'' = 0$"), "$(E')\;: y'' = 0$");
+});
+
+test("(maths) la commande d'espacement \; reste intacte", () => {
+  // Le cas qui a fait ouvrir ce fil : la fine glissée ENTRE `\` et `;`.
+  const dedans = "$0{,}3\;\\ 0{,}6\;\\ 0{,}9$";
+  assert.equal(f(dedans), dedans);
+  assert.ok(!f(dedans).includes(NNBSP_));
+});
+
+test("(maths) la prose AUTOUR de la formule est toujours traitée", () => {
+  assert.equal(f("Exercice 2 : le repère $(O;\\vec{i})$ ; conclure"),
+    `Exercice 2${NNBSP_}: le repère $(O;\\vec{i})$${NNBSP_}; conclure`);
+  assert.equal(f("l'aire de $S$ vaut 3 L"), "l’aire de $S$ vaut 3 L");
+});
+
+test("(maths) un $ non apparié laisse tout le reste en prose", () => {
+  // Conservateur, et c'est le comportement d'avant la segmentation.
+  assert.equal(f("le prix est 30 $ pour 2 : c'est cher"),
+    `le prix est 30 $ pour 2${NNBSP_}: c’est cher`);
+});
+
+test("(maths) les maths en bloc ($$) sont protégées aussi", () => {
+  assert.equal(f("avant $$x : y$$ après : fin"), `avant $$x : y$$ après${NNBSP_}: fin`);
+});
+
+test("(maths) la segmentation reste idempotente", () => {
+  const src = "Exercice 3 : $f'(x)\;: x>0$ et l'unité 5 mA ; voilà";
+  const une = f(src);
+  assert.equal(f(une), une);
+  assert.ok(!une.slice(une.indexOf("$"), une.lastIndexOf("$")).includes(NNBSP_));
+});
+
+// ── LE MARQUEUR DE BLOC DANS UN LIBELLÉ EN LIGNE (§11.166) ────────────────
+//
+// Mesuré, pas supposé : rendre le sur-titre de partie dans le moteur markdown
+// a fait apparaître 10 erreurs d'hydratation React (#418) sur
+// `pc/reactions-acido-basiques`, zéro avant. Le corpus y écrit
+// `part: "1. Solution aqueuse d'acide propanoïque"` — et `1.` en tête de ligne
+// EST une liste ordonnée. Un `<ol>` dans le `<p>` du libellé est de l'HTML
+// invalide ; le navigateur referme le `<p>`, et l'arbre client cesse de
+// ressembler à l'arbre servi.
+const { echappeBloc } = jiti(path.join(WEB, "src/lib/markdownEnLigne.ts"));
+
+test("(en ligne) « 1. » et « 1) » en tête cessent d'ouvrir une liste", () => {
+  assert.equal(echappeBloc("1. Solution aqueuse d'acide propanoïque"),
+    "1\\. Solution aqueuse d'acide propanoïque");
+  assert.equal(echappeBloc("1) Dosage de l'acide carboxylique"),
+    "1\\) Dosage de l'acide carboxylique");
+});
+
+test("(en ligne) puce, citation et titre sont échappés aussi", () => {
+  for (const [src, att] of [["- a", "\\- a"], ["* a", "\\* a"], ["+ a", "\\+ a"],
+                            ["> a", "\\> a"], ["# a", "\\# a"]])
+    assert.equal(echappeBloc(src), att);
+});
+
+test("(en ligne) un marqueur AILLEURS que en tête est laissé seul", () => {
+  assert.equal(echappeBloc("Partie 1. suite"), "Partie 1. suite");
+  assert.equal(echappeBloc("a - b"), "a - b");
+});
+
+test("(en ligne) chaque ligne est traitée, pas seulement la première", () => {
+  assert.equal(echappeBloc("titre\n- puce"), "titre\n\\- puce");
+});
+
+test("(en ligne) une formule n'est pas touchée", () => {
+  assert.equal(echappeBloc("$(E_\\alpha)\;: z^2 - 2iz = 0$"),
+    "$(E_\\alpha)\;: z^2 - 2iz = 0$");
+});

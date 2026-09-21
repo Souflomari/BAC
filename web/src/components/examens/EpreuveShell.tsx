@@ -176,7 +176,7 @@ const ExerciceArticle = memo(function ExerciceArticle({
               <div key={q.id} className="border-t border-subtle pt-4 first:border-t-0 first:pt-0">
                 {q.part && (
                   <p className="mb-1 text-caption font-medium uppercase tracking-eyebrow text-tertiary">
-                    {q.part}
+                    <Md inline>{q.part}</Md>
                   </p>
                 )}
                 <Md>{q.stem}</Md>

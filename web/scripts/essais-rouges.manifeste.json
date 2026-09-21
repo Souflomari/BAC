@@ -504,6 +504,24 @@
       "de": "  \"linkReference\",",
       "vers": "  \"linkReference\",\n  \"inlineCode\",\n  \"inlineMath\",",
       "porte": "node --test scripts/test-typographie.mjs"
+    },
+    {
+      "id": "§11.165",
+      "quoi": "la typographie française ré-appliquée DANS le LaTeX — l'espace fine devant « ; » coupe la commande \\; en deux",
+      "notion": "web/src/lib",
+      "fichier": "src/lib/frenchTypography.ts",
+      "de": "if (!s.includes(\"$\")) return regles(s);",
+      "vers": "if (!s.includes(\"\\uFFFF\")) return regles(s);",
+      "porte": "node --test scripts/test-typographie.mjs"
+    },
+    {
+      "id": "§11.166",
+      "quoi": "un « 1. » en tête de sur-titre rouvre une liste ordonnée dans un <p> — HTML invalide, hydratation rompue",
+      "notion": "web/src/lib",
+      "fichier": "src/lib/markdownEnLigne.ts",
+      "de": ".replace(/^([ \\t]*)(\\d{1,9})([.)])/gm, \"$1$2\\\\$3\")",
+      "vers": ".replace(/^([ \\t]*)(\\d{1,9})([.)])/gm, \"$1$2$3\")",
+      "porte": "node --test scripts/test-typographie.mjs"
     }
   ]
 }
