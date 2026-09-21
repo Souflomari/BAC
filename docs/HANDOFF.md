@@ -12860,3 +12860,105 @@ Un seul signalement, et c'est le bon : la fermeture est restée verte, le 20/20
 aussi. L'axe voit ce que les deux autres ne peuvent pas voir. (Sabotage à deux
 endroits, donc hors du manifeste, qui n'en casse qu'un ; jouée à la main avec
 sauvegarde hors de l'arbre, fichier restauré octet pour octet.)
+
+---
+
+## §11.169 — La table des échelles héritait d'`Object.prototype`
+
+**2026-09-21.** Le produit ne stocke que **deux** choses dans le navigateur :
+`bac-theme` et `bac-textsize`. Aucun progrès, aucune réponse — ce qui réduit
+beaucoup la surface. Restait à savoir ce que ces deux valeurs font quand elles
+sont **hostiles** plutôt qu'absentes : le script d'avant peinture les lit, et
+un jet à cet endroit coûte une page blanche.
+
+Treize valeurs pour la taille, sept pour le thème, chacune dans un contexte
+neuf. Le thème tient sans faille — `t === "dark"` ou rien. La taille, elle :
+
+```
+  bac-textsize = "toString"        → --font-scale: function toString() { [native code] }
+  bac-textsize = "constructor"     → --font-scale: function Object() { [native code] }
+  bac-textsize = "__proto__"       → --font-scale: [object Object]
+  bac-textsize = "valueOf"         → --font-scale: function valueOf() { [native code] }
+  bac-textsize = "hasOwnProperty"  → --font-scale: function hasOwnProperty() { … }
+```
+
+La table `{small:"0.9375", base:"1", large:"1.125"}` est un **littéral d'objet**,
+donc elle hérite d'`Object.prototype`. `m["toString"]` n'est pas `undefined` :
+c'est une **fonction**, donc vraie, donc le garde-fou `if (s && m[s])` la laisse
+passer. Du texte venu du stockage local entrait dans une propriété CSS.
+
+Les dix autres valeurs — `""`, `"999"`, `"LARGE"`, `"large "`, `"large\0"`,
+100 000 caractères, du JSON — sont toutes refusées proprement.
+
+### Ce que cela cassait : rien, et c'est écrit tel quel
+
+```
+  sans préférence   --font-scale (vide)      hauteur 5 556 px   17,68px×21911  20,57px×6253 …
+  « large »         --font-scale 1.125       hauteur 6 174 px   19,89px×21911  23,14px×6253 …
+  « toString »      --font-scale function…   hauteur 5 556 px   17,68px×21911  20,57px×6253 …
+
+  « toString » rend-il la même page que SANS préférence ? OUI
+```
+
+42 890 éléments, distribution des tailles **identique au caractère près**,
+0 erreur de script. CSS juge la valeur invalide et la jette ; les usages de
+`var(--font-scale, …)` retombent sur leur repli.
+
+C'est donc un défaut **LATENT**. Il est corrigé parce qu'il est faux, pas parce
+qu'il casse — et la note le dit, plutôt que de laisser croire à un incident.
+Le jour où une règle CSS lirait `--font-scale` sans repli, c'est le stockage
+local qui choisirait la taille de police d'un élève.
+
+### Le correctif, aux deux endroits qui lisent la table
+
+`Object.prototype.hasOwnProperty.call(m, s)` — dans le script d'avant peinture
+(`layout.tsx`) **et** dans `GardePreferences.tsx`. `FontSizeStepper` comparait
+déjà à trois littéraux et n'a jamais eu le défaut.
+
+### L'axe, et pourquoi il est large
+
+`preferences-secours` gagne un second axe : **quelle que soit la valeur
+stockée, `--font-scale` est vide ou un nombre.** Pas « n'est pas `toString` » —
+une porte écrite contre les cinq clés connues serait aveugle à la sixième.
+
+Éprouvé rouge **des deux côtés**, ce qui n'allait pas de soi :
+
+```
+  garde retirée de layout.tsx (avant peinture) → 5 clés ✗
+  garde retirée de GardePreferences.tsx (React) → 5 clés ✗
+```
+
+Le second essai est celui qui compte : sans lui, l'axe aurait pu ne surveiller
+que le chemin d'avant peinture pendant que le chemin React restait libre. Les
+deux constructions ont abouti (0 « Failed to compile »), donc les deux rouges
+sont des verdicts de porte, pas des pannes (§11.164).
+
+```bash
+# les deux essais, à la demande — une reconstruction chacun
+cd web && node scripts/essai-rouge.mjs --fichier src/app/layout.tsx \
+  --de 'if(s&&Object.prototype.hasOwnProperty.call(m,s))' --vers 'if(s&&m[s])' \
+  --porte "npm run build && node scripts/preferences-secours.mjs"
+cd web && node scripts/essai-rouge.mjs --fichier src/components/ui/GardePreferences.tsx \
+  --de 's && Object.prototype.hasOwnProperty.call(ECHELLES, s) ? ECHELLES[s] : undefined;' \
+  --vers 's ? ECHELLES[s] : undefined;' \
+  --porte "npm run build && node scripts/preferences-secours.mjs"
+```
+
+### Au passage : l'intégrité des items, mesurée et propre
+
+Même balayage, sur 1 647 items des 62 notions :
+
+```
+  items sans réponse juste ........ 0
+  items avec DEUX réponses justes . 0
+  items à un seul choix ........... 0
+  choix vides ..................... 0
+  choix en double ................. 0
+```
+
+**La première passe en annonçait un** — `maths/calcul-integral:CI-31`. Elle
+comparait les choix **en minuscules**. Or les deux choix étaient
+« Dériver $F$… » et « Dériver $f$… » : dans un corpus de maths, `F` et `f` sont
+une primitive et sa dérivée, c'est-à-dire exactement ce que l'item teste.
+**La normalisation effaçait la distinction mesurée.** Encore l'unité de mesure,
+sous un autre déguisement.

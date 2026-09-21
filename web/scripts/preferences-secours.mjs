@@ -194,6 +194,49 @@ async function mesure({ injecter, saboter = false }) {
 
 console.log(`\n━━ les préférences survivent-elles à un rendu de secours ? — ${BASE} ━━\n`);
 
+//  ── SECOND AXE : UNE PRÉFÉRENCE HOSTILE (§11.169, 2026-09-21) ────────────
+//  La table des échelles est un LITTÉRAL D'OBJET, donc elle hérite
+//  d'`Object.prototype`. `m["toString"]` y est une FONCTION — vraie —, et
+//  `--font-scale` recevait « function toString() { [native code] } ». Cinq
+//  clés donnaient ce résultat : toString, constructor, __proto__, valueOf,
+//  hasOwnProperty.
+//
+//  CE QUE CELA CASSAIT, MESURÉ : rien. La valeur est invalide, CSS la jette,
+//  et la page rend au pixel près comme sans préférence — 42 890 éléments,
+//  distribution des tailles identique, 0 erreur de script. Le défaut est
+//  LATENT : il est corrigé parce qu'il est faux, pas parce qu'il casse.
+//  Cet axe existe pour qu'il le reste — le jour où une règle CSS lirait
+//  `--font-scale` sans repli, du texte venu du stockage local choisirait la
+//  taille de police d'un élève.
+//
+//  Le contrôle est volontairement LARGE : quelle que soit la valeur stockée,
+//  `--font-scale` est soit vide, soit un nombre. Pas « n'est pas toString ».
+const CLES_HOSTILES = ["toString", "constructor", "__proto__", "valueOf", "hasOwnProperty"];
+const NOMBRE = /^\s*\d+(?:\.\d+)?\s*$/;
+
+async function mesureHostile(valeur) {
+  const ctx = await nav.newContext({ viewport: { width: 1280, height: 900 } });
+  const page = await ctx.newPage();
+  const erreurs = [];
+  page.on("pageerror", (e) => erreurs.push(String(e).slice(0, 60)));
+  await page.addInitScript((v) => { try { localStorage.setItem("bac-textsize", v); } catch {} }, valeur);
+  await page.goto(BASE + ROUTE, { waitUntil: "domcontentloaded", timeout: 30000 });
+  try { await page.waitForFunction(() => window.__bacVivant === true, { timeout: 20000 }); } catch { /* pas de marqueur */ }
+  const echelle = await page.evaluate(() =>
+    getComputedStyle(document.documentElement).getPropertyValue("--font-scale").trim());
+  await ctx.close();
+  return { echelle, erreurs: erreurs.length };
+}
+
+const hostiles = [];
+for (const v of CLES_HOSTILES) {
+  const r = await mesureHostile(v);
+  const propre = r.echelle === "" || NOMBRE.test(r.echelle);
+  console.log(`  HOSTILE bac-textsize=${JSON.stringify(v).padEnd(18)} --font-scale="${r.echelle.slice(0, 34)}"  ${propre ? "✓" : "✗"}`);
+  if (!propre || r.erreurs) hostiles.push(`${v} → "${r.echelle.slice(0, 40)}"${r.erreurs ? ` (+${r.erreurs} erreur(s))` : ""}`);
+}
+console.log();
+
 const temoin = await mesure({ injecter: false });
 console.log(`  TÉMOIN  (hydratation normale)  sombre=${temoin.sombre}  --font-scale="${temoin.echelle}"`);
 const essai = await mesure({ injecter: true, saboter: ESSAI_ROUGE });
@@ -204,6 +247,15 @@ await nav.close();
 arreter();
 
 let code = 0;
+if (hostiles.length > 0) {
+  console.error("━━ ROUGE : une clé héritée écrit dans --font-scale ━━");
+  for (const h of hostiles) console.error(`   • ${h}`);
+  console.error("\n   La table des échelles est un littéral d'objet : `m[s]` y trouve aussi");
+  console.error("   `toString`, `constructor`, `__proto__`… Filtrer avec");
+  console.error("   `Object.prototype.hasOwnProperty.call(m, s)`, dans le script d'avant");
+  console.error("   peinture (layout.tsx) ET dans GardePreferences.tsx.\n");
+  code = 1;
+}
 if (!temoin.sombre || temoin.echelle !== ECHELLE_ATTENDUE) {
   console.error("━━ TÉMOIN ROUGE ━━");
   console.error("   Une hydratation NORMALE perd déjà une préférence. Rien de ce qui suit");

@@ -70,7 +70,11 @@ export function GardePreferences() {
     }
     try {
       const s = localStorage.getItem(CLE_TAILLE);
-      const echelle = s ? ECHELLES[s] : undefined;
+      //  `ECHELLES[s]` seul trouverait aussi `toString` ou `constructor`, qui
+      //  vivent sur `Object.prototype` (§11.169) — la garde écrirait alors la
+      //  représentation d'une FONCTION dans `--font-scale`.
+      const echelle =
+        s && Object.prototype.hasOwnProperty.call(ECHELLES, s) ? ECHELLES[s] : undefined;
       if (echelle && html.style.getPropertyValue("--font-scale") !== echelle) {
         html.style.setProperty("--font-scale", echelle);
       }

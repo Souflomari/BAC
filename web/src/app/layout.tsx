@@ -124,7 +124,18 @@ const SITE_JSONLD = {
 // rend cet instant lisible par l'instrument `veille-hydratation`.
 const VEILLE_BOOT = `(function(){function r(){window.__bacPerdu=true;document.documentElement.classList.add("hydratation-perdue");var b=document.getElementById("hydratation-perdue");if(b)b.hidden=false;}window.__bacPerduVerif=function(){if(window.__bacVivant)return false;if(window.__bacPerdu)return true;try{var ss=document.scripts;for(var i=0;i<ss.length;i++){var u=ss[i].src;if(!u||u.indexOf("/_next/")<0)continue;var es=performance.getEntriesByName(u);for(var j=0;j<es.length;j++){var e=es[j];if(e.decodedBodySize===0&&e.encodedBodySize===0&&!e.responseStatus){r();return true;}}}}catch(x){}return false;};addEventListener("error",function(e){var t=e.target;if(window.__bacVivant||!t||t.tagName!=="SCRIPT"||!t.src||t.src.indexOf("/_next/")<0)return;r();},true);try{performance.mark("veille-posee");}catch(x){}})();`;
 
-const THEME_BOOT = `(function(){try{var t=localStorage.getItem("bac-theme");var d=t?t==="dark":matchMedia("(prefers-color-scheme: dark)").matches;if(d)document.documentElement.classList.add("dark");var s=localStorage.getItem("bac-textsize");var m={small:"0.9375",base:"1",large:"1.125"};if(s&&m[s])document.documentElement.style.setProperty("--font-scale",m[s]);}catch(e){}})();`;
+// LA TABLE EST UN OBJET, DONC ELLE HÉRITE (2026-09-21, §11.169). `m[s]` sur un
+// littéral d'objet trouve aussi les clés d'`Object.prototype` : avec
+// `bac-textsize = "toString"`, `m[s]` vaut une FONCTION — vraie —, et
+// `--font-scale` reçoit « function toString() { [native code] } ». Mesuré sur
+// cinq clés (`toString`, `constructor`, `__proto__`, `valueOf`,
+// `hasOwnProperty`). CONSÉQUENCE VISIBLE AUJOURD'HUI : aucune — la valeur est
+// invalide, CSS la jette, et la page rend au pixel près comme sans préférence
+// (42 890 éléments, distribution des tailles identique, 0 erreur de script).
+// C'est donc un défaut LATENT, corrigé parce qu'il est faux, pas parce qu'il
+// casse : le jour où une règle CSS lirait `--font-scale` sans repli, du texte
+// venu du stockage local choisirait une taille de police.
+const THEME_BOOT = `(function(){try{var t=localStorage.getItem("bac-theme");var d=t?t==="dark":matchMedia("(prefers-color-scheme: dark)").matches;if(d)document.documentElement.classList.add("dark");var s=localStorage.getItem("bac-textsize");var m={small:"0.9375",base:"1",large:"1.125"};if(s&&Object.prototype.hasOwnProperty.call(m,s))document.documentElement.style.setProperty("--font-scale",m[s]);}catch(e){}})();`;
 
 // ── Root layout ───────────────────────────────────────────────────────────────
 export default function RootLayout({
