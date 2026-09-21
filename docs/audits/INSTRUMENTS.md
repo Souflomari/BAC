@@ -637,6 +637,42 @@ compile pas, et **aucune suspension à tort sur les 57 essais du manifeste**.
 
 ---
 
+## `web/scripts/bareme-ferme.mjs` — une copie parfaite vaut 20/20
+
+**Ce qu'il mesure.** Deux choses, et la seconde rattrape l'erreur symétrique de
+la première :
+
+1. **Par exercice** — la somme des barèmes de ses questions vaut exactement son
+   barème annoncé.
+2. **Par épreuve** — une copie tout juste vaut exactement 20,00/20.
+
+**Pourquoi il existe (§11.168).** Le geste tient en une phrase : ouvrir les
+39 épreuves, marquer TOUTES les questions « juste », lire la note. Personne ne
+l'avait fait. **Deux épreuves sur 39 refusaient le 20/20 à une copie
+parfaite** — `spc-2021-rattrapage` à 19,25 et `spc-2010-normale` à 19,75. La
+règle de lecture ne retenait que la PREMIÈRE étiquette d'un énoncé groupé
+(« a) (0,25 pt) … b) (0,25 pt) … ») : la question valait 1 point, le produit en
+comptait 0,25, et le reste n'allait nulle part.
+
+**Il importe la règle du produit, il ne la recopie pas.** `ptsDepuisStem` vit
+dans `web/src/lib/bareme.ts` précisément pour ça — une porte qui recopie le
+motif vérifie sa propre copie (ADR 0033). Les épreuves sont lues par
+`listEpreuves()`, la même fonction que la page.
+
+**Pourquoi DEUX directions.** La règle de lecture a deux façons de se tromper :
+oublier une étiquette, ou en compter une de trop (un « (2 points) » écrit en
+prose). Le contrôle par exercice voit les deux ; le 20/20 seul ne verrait que
+la première.
+
+**État au 2026-09-21** : `--porte` armée, verte sur **39 épreuves,
+247 exercices, 1 472 questions**. Arithmétique pure — ni build, ni navigateur —
+donc DANS la batterie locale, contrairement à `typo-francaise` et `latex-nu`.
+Deux essais rouges au manifeste : `§11.168 (a)` (la règle revenue à la première
+étiquette → 19,25 et 19,75) et `(b)` (une étiquette du corpus faussée →
+20,5/20).
+
+---
+
 ## `web/scripts/latex-nu.mjs` — le LaTeX affiché tel quel, et celui qu'on fait dire tout haut
 
 **Ce qu'il mesure.** Deux façons pour un élève de rencontrer du LaTeX qui

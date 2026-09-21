@@ -12735,3 +12735,100 @@ cd web && node scripts/essai-rouge.mjs \
 Les deux ont été joués, construction aboutie dans les deux cas (0
 « Failed to compile »), et les comptes rendus par la porte sont exactement ceux
 de la mesure d'avant correctif.
+
+---
+
+## §11.168 — Une copie parfaite valait 19,25/20
+
+**2026-09-21.** Le geste tient en une phrase : ouvrir les 39 épreuves, marquer
+**toutes** les questions « juste », lire la note affichée. Personne ne l'avait
+fait.
+
+```
+  39 épreuves · tout marqué JUSTE
+    note exactement 20/20 ...... 37
+    écarts ..................... 2
+
+    spc-2021-rattrapage → 19,25 / 20   (41 questions)
+    spc-2010-normale    → 19,75 / 20   (32 questions)
+```
+
+Un élève qui a **tout bon** lisait qu'il n'avait pas tout bon. Pour un produit
+qui prétend préparer un examen, c'est la pire espèce de défaut : il ment sur le
+seul chiffre auquel l'élève tient.
+
+### La cause était dans le produit, pas dans le corpus
+
+`ptsDepuisStem` lisait la **première** étiquette de l'énoncé — `stem.match(…)`,
+au singulier. Or un énoncé de bac groupe souvent plusieurs sous-questions
+notées séparément :
+
+```
+  Recopier le numéro de la question et répondre par vrai ou faux.
+  **a)** (0,25 pt) L'onde sonore est une onde électromagnétique.
+  **b)** (0,25 pt) L'onde sonore est une onde longitudinale.
+  **c)** (0,25 pt) …        **d)** (0,25 pt) …
+```
+
+La question vaut **1 point** ; le produit en comptait **0,25**. Les 0,75
+manquants n'allaient nulle part : quand toutes les questions d'un exercice
+portent une étiquette, le reste n'est réparti sur personne, et il disparaît.
+
+**Le corpus, lui, était juste.** Vérification faite : les deux énoncés
+concernés correspondent au sujet réel (quatre vrai/faux à 0,25 pt ; deux
+tensions à représenter à 0,25 pt chacune).
+
+### Ce qui rend le diagnostic sûr
+
+Deux questions **dans tout le corpus** portent plus d'une étiquette :
+
+```
+  spc-2021-rattrapage · q1 : première=0,25  somme=1
+  spc-2010-normale    · q1 : première=0,25  somme=0,5
+```
+
+Et ce sont exactement celles des deux épreuves fautives. Avec la règle « somme
+des étiquettes », **les 39 épreuves ferment à 20,00**. Une hypothèse qui
+explique tous les cas et n'en crée aucun.
+
+### Le correctif, et où il vit
+
+La règle est sortie de `EpreuveShell.tsx` pour `src/lib/bareme.ts`. **Ce
+déménagement est la moitié du travail** : une porte qui recopierait le motif
+vérifierait sa propre copie — verte, honnête, et répondant à une AUTRE question
+(ADR 0033). `bareme-ferme.mjs` **importe** `ptsDepuisStem`, et lit les épreuves
+par `listEpreuves()`, la même fonction que la page.
+
+### La porte, et ses deux directions
+
+1. **Par exercice** — la somme des barèmes de ses questions vaut exactement son
+   barème annoncé.
+2. **Par épreuve** — une copie tout juste vaut exactement 20,00/20.
+
+Le premier contrôle est ce qui rattrape l'erreur **symétrique** : un motif trop
+gourmand qui compterait « (2 points) » écrit en prose. La règle de lecture a
+deux façons de se tromper ; une seule direction ne verrait que l'une.
+
+```
+  39 épreuves · 247 exercices · 1 472 questions — le barème se referme partout.
+```
+
+Arithmétique pure sur les données : ni build, ni navigateur. Elle entre donc
+dans la **batterie locale** et dans `gates.yml` (55 étapes).
+
+### Éprouvée rouge dans les deux sens, et vérifiée dans le navigateur
+
+```
+  règle revenue à « première étiquette » → 2 épreuves rouges, 19,25 et 19,75
+  étiquette du corpus 0,25 → 0,75 ........ → 1 épreuve rouge, 20,5 / 20
+```
+
+Les deux sont au manifeste (`§11.168 (a)` et `(b)`, 61 essais). Et la mesure
+qui avait ouvert le fil a été rejouée **dans le navigateur**, sur le build
+d'après :
+
+```
+  39 épreuves · tout marqué JUSTE
+    note exactement 20/20 ...... 39   (avant : 37)
+    écarts ..................... 0    (avant : 2)
+```

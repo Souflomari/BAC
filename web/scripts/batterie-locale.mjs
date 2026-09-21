@@ -94,6 +94,12 @@ const ETAPES = [
   // Sans build, elle garde la SOURCE et le dit : un lookbehind dans `src/` tue
   // le morceau à l'analyse sur un iPhone resté en iOS 15 (§11.163).
   { nom: "syntaxe-vieux-moteurs", cmd: ["scripts/syntaxe-vieux-moteurs.mjs", "--porte"] },
+  // Une copie parfaite vaut 20/20 — le seul chiffre auquel l'élève tient. Deux
+  // épreuves sur 39 le refusaient (19,25 et 19,75) parce que la règle de
+  // lecture du barème ne retenait que la PREMIÈRE étiquette d'un énoncé
+  // groupé (§11.168). Arithmétique pure sur les données : ni build, ni
+  // navigateur.
+  { nom: "bareme-ferme", cmd: ["scripts/bareme-ferme.mjs", "--porte"] },
   // La suite d'essais rouges (ADR 0034) : elle casse une occurrence, mesure, et
   // restaure. Sans navigateur, et c'est le seul contrôle qui réponde à « mes
   // portes peuvent-elles encore crier ? » — la question qu'aucune porte ne pose

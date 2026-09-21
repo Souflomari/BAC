@@ -522,6 +522,24 @@
       "de": ".replace(/^([ \\t]*)(\\d{1,9})([.)])/gm, \"$1$2\\\\$3\")",
       "vers": ".replace(/^([ \\t]*)(\\d{1,9})([.)])/gm, \"$1$2$3\")",
       "porte": "node --test scripts/test-typographie.mjs"
+    },
+    {
+      "id": "§11.168 (a)",
+      "quoi": "la règle de barème ne lit que la PREMIÈRE étiquette d'un énoncé groupé — une copie parfaite vaut 19,25/20",
+      "notion": "web/src/lib",
+      "fichier": "src/lib/bareme.ts",
+      "de": "return trouvees.reduce((s, m) => s + parseFloat(m[1].replace(\",\", \".\")), 0);",
+      "vers": "return parseFloat(trouvees[0][1].replace(\",\", \".\"));",
+      "porte": "node scripts/bareme-ferme.mjs --porte"
+    },
+    {
+      "id": "§11.168 (b)",
+      "quoi": "une étiquette de points faussée dans le corpus — l'exercice distribue plus que son barème annoncé",
+      "notion": "content/pc/rc-charge",
+      "fichier": "../content/pc/rc-charge/bank.yaml",
+      "de": "- **(0,25 pt)** la tension $u_C$ aux bornes du condensateur ;",
+      "vers": "- **(0,75 pt)** la tension $u_C$ aux bornes du condensateur ;",
+      "porte": "node scripts/bareme-ferme.mjs --porte"
     }
   ]
 }

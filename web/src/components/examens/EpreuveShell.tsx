@@ -36,6 +36,7 @@ import { memo, useCallback, useEffect, useMemo, useRef, useState, useTransition 
 import { Link } from "@/components/ui/Lien";
 import { cn } from "@/lib/utils";
 import { frenchTypography } from "@/lib/frenchTypography";
+import { ptsDepuisStem } from "@/lib/bareme";
 import { notionHref } from "@/lib/subjects";
 // Le pipeline markdown/KaTeX (MdBlock, ~126 ko gzip avec KaTeX) n'est PAS
 // importé statiquement (2026-09-06, HANDOFF §11.27). Sur 3G lente (400 kb/s)
@@ -88,13 +89,6 @@ function formatDuree(totalSec: number): string {
   if (h > 0) return `${h} h ${String(m).padStart(2, "0")} min`;
   if (m > 0) return `${m} min ${String(s).padStart(2, "0")}`;
   return `${s} s`;
-}
-
-/** Barème d'une question : le tag transcrit « (x,xx pt) » sinon null. */
-function ptsDepuisStem(stem: string): number | null {
-  const m = stem.match(/\((\d+(?:[.,]\d+)?)\s*(?:pt|pts|point)/i);
-  if (!m) return null;
-  return parseFloat(m[1].replace(",", "."));
 }
 
 function formatNote(n: number): string {
