@@ -13019,3 +13019,63 @@ pas recopié — et exige que le nombre relu soit exactement la valeur comptée.
 Essai rouge : le formateur ramené à deux décimales fait crier la porte
 **518 fois**, chiffre pour chiffre la mesure d'ouverture. Au manifeste
 (`§11.170`, 62 essais).
+
+---
+
+## §11.171 — Le point décimal anglais : 4 candidats, 3 délibérés, et pourquoi la porte ne sera PAS armée
+
+**2026-09-21.** Un corpus français écrit `0{,}5` dans ses formules : la virgule
+protégée par des accolades, sinon KaTeX la traite en séparateur et l'espace
+mal. Un `0.5` s'y lit en anglais. Balayage des **81 575 formules** du corpus
+(`$…$` et `$$…$$`) :
+
+```
+  « . » = signe MULTIPLIÉ devant 10^ (convention française) ...  13
+  « \times 10^ » (l'autre écriture de la même chose) .......... 1 571
+  « . » = POINT DÉCIMAL anglais ...............................    4
+```
+
+### Les quatre, un par un — et c'est là que ça devient intéressant
+
+**Trois sont une fidélité DÉLIBÉRÉE.** `maths/fonction-logarithme` porte, en
+toutes lettres dans sa note de provenance :
+
+> *notation « 4.5 » à point décimal conservée telle [quelle]*
+
+Le sujet officiel imprime « 4.5 ». Le corpus le garde, comme il garde
+« dimentionnelle » ailleurs — la transcription est fidèle jusqu'aux défauts
+d'impression, et c'est une décision écrite, pas un oubli.
+
+**Un seul était une incohérence d'auteur** : `pc/rlc-serie`, dans un champ
+`solution` où les trois nombres voisins de la MÊME formule s'écrivent
+`6{,}32`, `3{,}97`, `4{,}0` — et un seul `10^{-3.5}`. Corrigé en
+`10^{-3{,}5}`, ce qui l'aligne sur ses voisins immédiats, pas sur une règle
+importée.
+
+### La conclusion est de ne PAS armer de porte
+
+Une porte « aucun point décimal dans une formule » serait **rouge sur la
+fidélité**. Elle pousserait le prochain auteur à corriger le sujet officiel
+pour faire taire l'outil — c'est-à-dire à dégrader le corpus pour satisfaire
+un contrôle. Le rapport 3 délibérés / 1 réel dit que le gisement est vide et
+que le bruit dépasserait le signal.
+
+C'est le pendant d'ADR 0031 : *une porte qui ne peut pas devenir rouge ne
+mesure rien* — mais une porte qui devient rouge sur ce qu'on veut garder
+mesure **contre** le produit. Le fait est consigné ; l'instrument ne l'est pas.
+
+### Deux autres balayages du même passage, tous deux propres
+
+**Intégrité du catalogue d'épreuves** — 39 épreuves, 62 notions :
+
+```
+  id ≠ filière/année/session ...... 0
+  notion citée qui n'existe pas ... 0
+  titre d'exercice vide ........... 0
+  durée officielle hors bornes .... 0   (180 min ×29, 240 min ×10)
+```
+
+**Fait pour l'owner, pas un défaut** : la puissance de dix s'écrit
+`\times 10^{…}` **1 571 fois** et `.10^{…}` **13 fois**. Les deux sont du
+français correct ; la seconde est résiduelle à 0,8 %. Normaliser les treize est
+une décision de notation, pas un correctif — elle n'a pas été prise ici.
