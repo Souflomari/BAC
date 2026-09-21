@@ -13140,5 +13140,26 @@ différemment d'une figure à l'autre, et la porte ne dit rien, parce que
 personne ne les déréférence. Une porte large aurait crié 49 fois pour rien ;
 celle-ci se tait 49 fois et crie une fois.
 
+### L'unité, corrigée une heure après l'avoir écrite
+
+La première version groupait par **notion** : deux figures d'une même leçon.
+C'était l'erreur de la journée, refaite — l'unité de mesure plus petite que
+celle où vit le défaut. **Une page d'épreuve inline les figures de plusieurs
+notions** : deux notions qui ne partagent jamais une page de leçon se
+retrouvent côte à côte dans un sujet de bac, et la collision y est exactement
+aussi silencieuse.
+
+L'unité est donc le **corpus**. Plus strict que nécessaire — deux notions qui
+ne se croiseront jamais pourraient diverger sans dommage — mais cela évite de
+modéliser quelles pages réunissent quelles figures, modèle qui se périmerait au
+premier changement de l'assembleur d'épreuves. Mesuré **avant** de trancher :
+0 collision inter-notions aujourd'hui, donc la règle stricte ne coûte rien et
+ne demande aucune exemption.
+
+Un second essai rouge garde ce que l'élargissement a acheté : renommer un
+dégradé d'`electrolyse` en `ce-arrow` (défini par `transformations-lentes-
+rapides`) fait crier la porte. La version « par notion » serait restée verte.
+
 Node pur — ni build ni navigateur — donc dans la batterie locale, et
-`gates.yml` passe à 56 étapes. Au manifeste : `§11.172` (63 essais).
+`gates.yml` passe à 56 étapes. Au manifeste : `§11.172` et `§11.172 (b)`
+(64 essais).

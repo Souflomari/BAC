@@ -29,10 +29,24 @@
  * ni différence de pixels sur la figure qu'on vient de toucher. C'est un piège
  * posé pour le prochain auteur, pas un défaut d'aujourd'hui.
  *
- * TROIS CONDITIONS, toutes nécessaires : même id, dans deux fichiers d'une
- * même notion (donc d'une même page), définitions DIFFÉRENTES, et l'id
- * déréférencé par `url(#…)` ou `href="#…"` quelque part. Deux sur trois ne
- * font pas rouge.
+ * TROIS CONDITIONS, toutes nécessaires : même id, défini par deux figures,
+ * définitions DIFFÉRENTES, et l'id déréférencé par `url(#…)` ou `href="#…"`.
+ * Deux sur trois ne font pas rouge.
+ *
+ * ── L'UNITÉ, ET POURQUOI ELLE N'EST PAS « LA NOTION » ─────────────────────
+ * La première version groupait par NOTION : deux figures d'une même leçon.
+ * C'était trop étroit, et l'erreur est celle de la journée — l'unité de mesure
+ * plus petite que celle où vit le défaut. **Une page d'ÉPREUVE inline les
+ * figures de plusieurs notions à la fois** : deux notions qui n'ont jamais
+ * partagé une page de leçon se retrouvent côte à côte dans un sujet de bac, et
+ * la collision d'identifiants y est exactement aussi silencieuse.
+ *
+ * L'unité est donc le CORPUS. C'est plus strict que nécessaire — deux notions
+ * qui ne se croiseront jamais pourraient diverger sans dommage —, mais cela
+ * évite de modéliser quelles pages peuvent réunir quelles figures, et c'est
+ * un modèle qui se périmerait au premier assembleur d'épreuves modifié.
+ * Mesuré avant de trancher : **0 collision inter-notions aujourd'hui**, donc
+ * la règle stricte ne coûte rien et ne demande aucune exemption.
  *
  *   node scripts/figures-id-divergents.mjs [--porte]
  */
@@ -68,6 +82,11 @@ function definition(svg, id) {
 let notions = 0, fichiers = 0, idsVus = 0;
 const ecarts = [];
 
+//  UN SEUL registre pour tout le corpus (voir l'en-tête : l'unité n'est pas la
+//  notion, parce qu'une épreuve réunit les figures de plusieurs notions).
+const defs = new Map();      // id → (chemin de figure → définition normalisée)
+const references = new Set(); // ids déréférencés par n'importe quelle figure
+
 for (const matiere of fs.readdirSync(CONTENU)) {
   const dm = path.join(CONTENU, matiere);
   if (!fs.statSync(dm).isDirectory()) continue;
@@ -77,10 +96,6 @@ for (const matiere of fs.readdirSync(CONTENU)) {
     const media = path.join(dn, "media");
     if (!fs.existsSync(media)) continue;
     notions++;
-    //  Par notion : id → { fichier → définition }, et l'ensemble des id
-    //  déréférencés par n'importe quelle figure de la notion.
-    const defs = new Map();
-    const references = new Set();
     for (const f of fs.readdirSync(media)) {
       if (!f.endsWith(".svg")) continue;
       fichiers++;
@@ -91,30 +106,34 @@ for (const matiere of fs.readdirSync(CONTENU)) {
         const id = m[1];
         idsVus++;
         if (!defs.has(id)) defs.set(id, new Map());
-        defs.get(id).set(f, definition(svg, id));
+        defs.get(id).set(`${matiere}/${notion}/${f}`, definition(svg, id));
       }
     }
-    for (const [id, parFichier] of defs) {
-      if (parFichier.size < 2) continue;              // une seule figure le définit
-      if (!references.has(id)) continue;              // personne ne s'en sert
-      const distinctes = new Set([...parFichier.values()]);
-      if (distinctes.size < 2) continue;              // définitions identiques : inoffensif
-      ecarts.push(
-        `  ✗ ${matiere}/${notion} · #${id} — ${parFichier.size} figures le définissent, ` +
-        `${distinctes.size} définitions DIFFÉRENTES, et il est déréférencé\n` +
-        [...parFichier.keys()].map((f) => `        · ${f}`).join("\n")
-      );
-    }
   }
+}
+
+for (const [id, parFigure] of defs) {
+  if (parFigure.size < 2) continue;             // une seule figure le définit
+  if (!references.has(id)) continue;            // personne ne s'en sert
+  const distinctes = new Set([...parFigure.values()]);
+  if (distinctes.size < 2) continue;            // définitions identiques : inoffensif
+  const lesNotions = [...new Set([...parFigure.keys()].map((k) => k.split("/").slice(0, 2).join("/")))];
+  ecarts.push(
+    `  ✗ #${id} — ${parFigure.size} figures le définissent, ${distinctes.size} définitions ` +
+    `DIFFÉRENTES, et il est déréférencé\n` +
+    `      notion(s) : ${lesNotions.join(", ")}${lesNotions.length > 1 ? "   ← elles se croisent sur une page d'épreuve" : ""}\n` +
+    [...parFigure.keys()].map((f) => `        · ${f}`).join("\n")
+  );
 }
 
 console.log(`\n${notions} notions · ${fichiers} figures · ${idsVus} identifiants lus`);
 if (ecarts.length === 0) {
   console.log(
-    `\nAucun identifiant n'est défini de DEUX façons dans une même leçon tout en étant\n` +
-    `déréférencé. Les doublons qui restent (les groupes « step-N », les dégradés posés\n` +
-    `plusieurs fois) sont identiques à l'octet près : la première définition gagne, et\n` +
-    `elle dit la même chose que les autres.`
+    `\nAucun identifiant déréférencé n'est défini de DEUX façons DANS TOUT LE CORPUS.\n` +
+    `Les doublons qui restent (les groupes « step-N », les dégradés posés plusieurs fois)\n` +
+    `sont identiques à l'octet près : la première définition gagne, et elle dit la même\n` +
+    `chose que les autres. L'unité est le corpus et non la notion, parce qu'une page\n` +
+    `d'épreuve réunit les figures de plusieurs notions.`
   );
 } else {
   console.log(`\n${ecarts.length} écart(s) :\n`);
