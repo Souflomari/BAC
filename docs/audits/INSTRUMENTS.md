@@ -637,6 +637,40 @@ compile pas, et **aucune suspension à tort sur les 57 essais du manifeste**.
 
 ---
 
+## `web/scripts/figures-id-divergents.mjs` — la première définition gagne, partout
+
+**Ce qu'il mesure.** Une seule condition, et c'est tout le sujet : **même
+identifiant, défini DIFFÉREMMENT par deux figures d'une même leçon, et
+déréférencé** par `url(#…)` ou `href="#…"`. Deux sur trois ne font pas rouge.
+
+**Pourquoi si étroit.** Les figures sont inlinées : leurs identifiants internes
+se retrouvent tous dans le même document et s'y répètent — mesuré sur les
+62 leçons rendues, **189 `#step-1`**, plus quelques dégradés et états. C'est
+sans effet : `MediaDiagram` masque les étapes en réécrivant le markup de chaque
+figure, `StagedFigure` interroge son propre `svgRoot`, jamais le document.
+`ancres-uniques` avait tranché : une porte sur « aucun id dupliqué » serait
+**rouge sur un fait inoffensif et finirait désarmée**. C'est juste — et cette
+porte-ci ne le fait pas.
+
+**Le danger qu'elle garde.** En SVG, `url(#id)` se résout dans TOUT le
+document, pas dans la figure : deux définitions du même id, c'est la PREMIÈRE
+qui gagne, partout. Tant qu'elles sont identiques, personne ne voit rien — état
+vérifié aujourd'hui : les deux `liquid-grad` d'`electrolyse` sont identiques à
+l'octet près, et les quatre `r-body-grad` de `rlc-serie` viennent du même
+fichier posé quatre fois. Le jour où quelqu'un modifie UNE des deux, la figure
+éditée continue de peindre avec l'ancienne, **et rien ne le dit** : ni erreur,
+ni avertissement, ni différence de pixels sur la figure qu'on vient de toucher.
+C'est un piège pour le prochain auteur, pas un défaut d'aujourd'hui.
+
+**État au 2026-09-21** : `--porte` armée, verte sur **51 notions, 267 figures,
+1 078 identifiants**. Node pur — ni build ni navigateur —, donc dans la
+batterie locale. Éprouvée **dans les deux sens** : rouge quand un des deux
+`liquid-grad` est modifié ; et muette sur les doublons inoffensifs, ce que le
+corpus exerce **49 fois** (49 notions sur 51 définissent un `step-N`
+différemment d'une figure à l'autre).
+
+---
+
 ## `web/scripts/bareme-ferme.mjs` — une copie parfaite vaut 20/20
 
 **Ce qu'il mesure.** Deux choses, et la seconde rattrape l'erreur symétrique de

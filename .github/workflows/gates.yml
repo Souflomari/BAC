@@ -490,6 +490,17 @@ jobs:
       # Arithmétique pure : ni build, ni navigateur. Elle importe la règle du
       # produit (src/lib/bareme.ts) au lieu de la recopier — une porte qui
       # recopie vérifie sa propre copie (ADR 0033).
+      # PORTE IDENTIFIANTS DE FIGURES (2026-09-21, §11.172). En SVG, « url(#id) »
+      # se résout dans TOUT le document, pas dans la figure : deux définitions du
+      # même id sur une page, et c'est la PREMIÈRE qui gagne, partout. Tant
+      # qu'elles sont identiques, personne ne voit rien — c'est l'état
+      # d'aujourd'hui. Le jour où quelqu'un modifie UNE des deux, la figure
+      # éditée continue de peindre avec l'ancienne, sans erreur ni avertissement.
+      # La porte ne crie QUE sur cette condition, pas sur les doublons
+      # inoffensifs que 49 notions sur 51 portent déjà.
+      - name: Porte identifiants de figures
+        run: node scripts/figures-id-divergents.mjs --porte
+
       - name: Porte barème fermé
         run: node scripts/bareme-ferme.mjs --porte
 

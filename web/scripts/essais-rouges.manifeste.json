@@ -549,6 +549,15 @@
       "de": "const arrondi = Math.round(n * 1000) / 1000;",
       "vers": "const arrondi = Math.round(n * 100) / 100;",
       "porte": "node scripts/bareme-ferme.mjs --porte"
+    },
+    {
+      "id": "§11.172",
+      "quoi": "deux figures d'une même leçon définissent le même id DIFFÉREMMENT, et il est déréférencé — la seconde définition est ignorée sans un mot",
+      "notion": "content/pc/electrolyse",
+      "fichier": "../content/pc/electrolyse/media/electrolyse-eau-cellule.svg",
+      "de": "<stop offset=\"0%\"   stop-color=\"var(--figure-surface)\"/>\n      <stop offset=\"100%\" stop-color=\"var(--figure-grid)\"/>\n    </linearGradient>",
+      "vers": "<stop offset=\"0%\"   stop-color=\"var(--figure-accent)\"/>\n      <stop offset=\"100%\" stop-color=\"var(--figure-grid)\"/>\n    </linearGradient>",
+      "porte": "node scripts/figures-id-divergents.mjs --porte"
     }
   ]
 }

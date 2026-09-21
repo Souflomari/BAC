@@ -13079,3 +13079,66 @@ mesure **contre** le produit. Le fait est consigné ; l'instrument ne l'est pas.
 `\times 10^{…}` **1 571 fois** et `.10^{…}` **13 fois**. Les deux sont du
 français correct ; la seconde est résiduelle à 0,8 %. Normaliser les treize est
 une décision de notation, pas un correctif — elle n'a pas été prise ici.
+
+---
+
+## §11.172 — La première définition gagne, partout — et le piège posé pour le prochain auteur
+
+**2026-09-21.** Balayage HTML des 110 pages rendues, chapitres dépliés :
+
+```
+  imbrications interdites (<div> dans <p>, <a> dans <a>, …) ...... 0
+  identifiants DUPLIQUÉS ...................................... 75, sur 50 pages
+      189 × #step-1      5 × #step-2      3 × #r-body-grad
+        2 × #step-3      1 × #liquid-grad, #circuit-state-0…2, #annot-0…2, …
+```
+
+Les figures sont **inlinées** : leurs identifiants internes se retrouvent tous
+dans le même document. `ancres-uniques` l'avait déjà écrit, et avait tranché —
+armer une porte sur « aucun id dupliqué » serait **rouge sur un fait inoffensif
+et finirait désarmée**. Vérifié une fois de plus, au niveau RENDU cette fois :
+`MediaDiagram` masque les étapes en réécrivant le markup de chaque figure,
+`StagedFigure` interroge son propre `svgRoot` — jamais le document.
+
+### Ce que ce balayage ajoute : la condition qui blesse
+
+```
+  DUPLIQUÉS **ET** DÉRÉFÉRENCÉS ... 2
+    /notions/pc/electrolyse  #liquid-grad  ×2
+    /notions/pc/rlc-serie    #r-body-grad  ×4
+```
+
+En SVG, `url(#id)` se résout dans **tout le document**, pas dans la figure. Deux
+définitions du même id : c'est la **première** qui gagne, partout.
+
+Les deux définitions de `liquid-grad` ont été lues côte à côte : **identiques à
+l'octet près**. Les quatre `r-body-grad` viennent du même fichier posé quatre
+fois. Donc **rien de visible aujourd'hui**.
+
+Mais le jour où quelqu'un change la couleur du liquide dans **une** des deux
+cellules d'électrolyse, la figure qu'il vient d'éditer continue de peindre avec
+l'ancienne définition — sans erreur, sans avertissement, et sans différence de
+pixels sur la figure touchée. C'est un piège posé pour le prochain auteur.
+
+### La porte, et pourquoi elle est étroite exprès
+
+`figures-id-divergents.mjs` exige les **trois** conditions à la fois : même id,
+dans deux figures d'une même notion, définitions **différentes**, et
+déréférencé. C'est mot pour mot la condition que la note d'`ancres-uniques`
+nommait comme dangereuse — le raisonnement était tenu, il lui manquait
+l'outillage (ADR 0033 : *quand une règle est reprise, c'est le geste qu'il faut
+outiller*). Le renvoi a été posé dans les deux sens.
+
+```
+  51 notions · 267 figures · 1 078 identifiants lus — verte.
+```
+
+**Éprouvée dans les deux sens, et le second n'est pas théorique.** Rouge quand
+un des deux `liquid-grad` est modifié. Et muette sur l'inoffensif — ce que le
+corpus exerce **49 fois** : 49 notions sur 51 définissent un `step-N`
+différemment d'une figure à l'autre, et la porte ne dit rien, parce que
+personne ne les déréférence. Une porte large aurait crié 49 fois pour rien ;
+celle-ci se tait 49 fois et crie une fois.
+
+Node pur — ni build ni navigateur — donc dans la batterie locale, et
+`gates.yml` passe à 56 étapes. Au manifeste : `§11.172` (63 essais).

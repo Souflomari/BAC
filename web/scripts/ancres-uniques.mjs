@@ -24,6 +24,16 @@
  * par `url(#…)`. Armer une porte sur « aucun id dupliqué » aurait donc été
  * rouge sur un fait inoffensif — et aurait fini désarmée.
  *
+ * CE RAISONNEMENT EST TENU, ET IL EST DÉSORMAIS OUTILLÉ (2026-09-21, §11.172).
+ * La conclusion « pas de porte large » laissait le DANGER sans garde : le jour
+ * où quelqu'un modifie une seule des deux définitions identiques, la figure
+ * éditée continue de peindre avec l'ancienne, sans un mot. La condition
+ * nommée ci-dessus — même id, définitions DIFFÉRENTES, et déréférencé — est
+ * exactement celle que garde `figures-id-divergents.mjs`. Elle est verte
+ * aujourd'hui, et elle reste muette sur les doublons inoffensifs : 49 notions
+ * sur 51 définissent un `step-N` différemment d'une figure à l'autre, et la
+ * porte ne dit rien, parce que personne ne les déréférence.
+ *
  *   node scripts/ancres-uniques.mjs [routes…]           → le rapport
  *   node scripts/ancres-uniques.mjs --porte [routes…]   → la porte (CI)
  *

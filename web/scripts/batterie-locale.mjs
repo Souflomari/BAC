@@ -100,6 +100,11 @@ const ETAPES = [
   // groupé (§11.168). Arithmétique pure sur les données : ni build, ni
   // navigateur.
   { nom: "bareme-ferme", cmd: ["scripts/bareme-ferme.mjs", "--porte"] },
+  // En SVG, « url(#id) » se résout dans TOUT le document : deux figures d'une
+  // même page qui définissent le même id DIFFÉREMMENT, et la seconde est
+  // ignorée sans un mot (§11.172). La porte ne crie que sur cette condition-là
+  // — pas sur les doublons inoffensifs, que 49 notions portent.
+  { nom: "figures-id-divergents", cmd: ["scripts/figures-id-divergents.mjs", "--porte"] },
   // La suite d'essais rouges (ADR 0034) : elle casse une occurrence, mesure, et
   // restaure. Sans navigateur, et c'est le seul contrôle qui réponde à « mes
   // portes peuvent-elles encore crier ? » — la question qu'aucune porte ne pose
