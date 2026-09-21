@@ -36,7 +36,7 @@ import { memo, useCallback, useEffect, useMemo, useRef, useState, useTransition 
 import { Link } from "@/components/ui/Lien";
 import { cn } from "@/lib/utils";
 import { frenchTypography } from "@/lib/frenchTypography";
-import { ptsDepuisStem } from "@/lib/bareme";
+import { ptsDepuisStem, formatPoints } from "@/lib/bareme";
 import { notionHref } from "@/lib/subjects";
 // Le pipeline markdown/KaTeX (MdBlock, ~126 ko gzip avec KaTeX) n'est PAS
 // importé statiquement (2026-09-06, HANDOFF §11.27). Sur 3G lente (400 kb/s)
@@ -155,7 +155,7 @@ const ExerciceArticle = memo(function ExerciceArticle({
           </p>
           {exo.baremeTotal != null && (
             <span className="mono-inline shrink-0 text-body-sm text-tertiary">
-              {formatNote(exo.baremeTotal)} pts
+              {formatPoints(exo.baremeTotal)} pts
             </span>
           )}
         </header>
@@ -190,7 +190,7 @@ const ExerciceArticle = memo(function ExerciceArticle({
                     <Md>{q.reasoning}</Md>
                     <div
                       role="radiogroup"
-                      aria-label={frenchTypography(`Auto-évaluation de la question (${formatNote(qPts)} pt)`)}
+                      aria-label={frenchTypography(`Auto-évaluation de la question (${formatPoints(qPts)} pt)`)}
                       className="mt-4 flex flex-wrap items-center gap-2"
                     >
                       <span className="text-body-sm text-secondary">
@@ -230,9 +230,9 @@ const ExerciceArticle = memo(function ExerciceArticle({
                           )}
                         >
                           {v === "juste"
-                            ? `Juste · ${formatNote(qPts)} pt`
+                            ? `Juste · ${formatPoints(qPts)} pt`
                             : v === "partiel"
-                              ? `Partiel · ${formatNote(qPts / 2)}`
+                              ? `Partiel · ${formatPoints(qPts / 2)}`
                               : "Faux · 0"}
                         </button>
                       ))}
@@ -509,7 +509,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
           {!epreuve.complete && (
             <li className="text-primary">
               {frenchTypography(
-                `Épreuve partielle : ${formatNote(epreuve.pts)} pts sur 20 sont disponibles — la note sera ramenée sur 20 par règle de trois, à titre indicatif.`
+                `Épreuve partielle : ${formatPoints(epreuve.pts)} pts sur 20 sont disponibles — la note sera ramenée sur 20 par règle de trois, à titre indicatif.`
               )}
             </li>
           )}
@@ -658,7 +658,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
           </h2>
           <p className="mt-2 text-body text-secondary">
             {frenchTypography(
-              `${formatNote(note.gagne)} pts sur les ${formatNote(epreuve.pts)} disponibles, soit`
+              `${formatPoints(note.gagne)} pts sur les ${formatPoints(epreuve.pts)} disponibles, soit`
             )}{" "}
             <span className="mono-inline font-medium text-primary">
               {formatNote(note.sur20)} / 20

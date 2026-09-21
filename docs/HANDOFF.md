@@ -12962,3 +12962,60 @@ comparait les choix **en minuscules**. Or les deux choix étaient
 une primitive et sa dérivée, c'est-à-dire exactement ce que l'item teste.
 **La normalisation effaçait la distinction mesurée.** Encore l'unité de mesure,
 sous un autre déguisement.
+
+---
+
+## §11.170 — « Partiel · 0,13 » pour 0,125 compté, sur 518 questions
+
+**2026-09-21.** Suite directe de §11.168. Le barème ferme désormais à 20/20,
+mais une question restait : **ce qui est écrit sur le bouton vaut-il ce qui
+sera compté ?**
+
+L'auto-évaluation propose trois verdicts, et « Partiel » vaut la **moitié** du
+barème. Or la moitié d'un quart de point est un **huitième**, et l'affichage
+arrondissait tout à deux décimales :
+
+```
+  0,25 pt → bouton « Partiel · 0,13 », valeur comptée 0,125   × 297 questions
+  0,75 pt → bouton « Partiel · 0,38 », valeur comptée 0,375   × 219
+  1,25 pt → bouton « Partiel · 0,63 », valeur comptée 0,625   ×   2
+
+  518 questions sur 1 472 — 35 % du corpus d'épreuves.
+```
+
+**Le total, lui, était juste** : l'arrondi ne touchait que l'étiquette. Mais un
+élève qui additionne ses points à la main ne retombe alors jamais sur sa propre
+note — et additionner son barème est très exactement ce qu'on fait devant une
+copie corrigée. Le produit lui donnait un chiffre à l'écran et un autre dans le
+calcul.
+
+### Deux formats, parce qu'il y a deux choses
+
+`formatPoints` (dans `src/lib/bareme.ts`) écrit un **nombre de points** tel
+qu'il est : trois décimales suffisent, puisque les barèmes du bac se comptent en
+quarts de point et que la moitié d'un quart est un huitième. Les zéros inutiles
+tombent — « 2 » reste « 2 ».
+
+`formatNote` garde ses deux décimales pour la **note sur 20** : c'est une note,
+pas un barème, et elle est explicitement « indicative ».
+
+Six sites d'affichage basculent (barème d'exercice, `aria-label` de la
+question, les trois boutons, le récapitulatif « X pts sur les Y disponibles ») ;
+les deux affichages du `/20` ne bougent pas.
+
+### Vérifié dans le navigateur
+
+```
+  Juste   · 0,25 pt | 0,5 pt | 0,75 pt | 1 pt
+  Partiel · 0,125   | 0,25   | 0,375   | 0,5
+```
+
+Avant : « Partiel · 0,13 » et « 0,38 ».
+
+### Quatrième axe de la porte
+
+`bareme-ferme` relit chaque étiquette avec le formateur **du produit** — importé,
+pas recopié — et exige que le nombre relu soit exactement la valeur comptée.
+Essai rouge : le formateur ramené à deux décimales fait crier la porte
+**518 fois**, chiffre pour chiffre la mesure d'ouverture. Au manifeste
+(`§11.170`, 62 essais).

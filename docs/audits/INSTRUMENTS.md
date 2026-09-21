@@ -664,6 +664,14 @@ oublier une étiquette, ou en compter une de trop (un « (2 points) » écrit en
 prose). Le contrôle par exercice voit les deux ; le 20/20 seul ne verrait que
 la première.
 
+**Un QUATRIÈME axe : l'étiquette affichée (§11.170).** Le nombre de points écrit
+sur un bouton vaut-il celui qui sera compté ? « Partiel » vaut la moitié du
+barème, et la moitié d'un quart de point est un huitième : l'affichage arrondi à
+deux décimales écrivait « 0,13 » pour 0,125 — **518 questions sur 1 472**. Le
+total restait juste ; c'est l'élève qui additionne à la main qui ne retombait
+jamais dessus. La porte relit l'étiquette avec le formateur DU PRODUIT
+(`formatPoints`, importé) et exige l'égalité exacte.
+
 **Et un TROISIÈME axe : le plafond.** Aucune épreuve ne déclare plus de
 20 points. C'est l'angle mort de l'axe 2, créé par sa propre formule : la note
 est ramenée sur 20 par règle de trois, donc un barème transcrit trop lourd

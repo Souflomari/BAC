@@ -540,6 +540,15 @@
       "de": "- **(0,25 pt)** la tension $u_C$ aux bornes du condensateur ;",
       "vers": "- **(0,75 pt)** la tension $u_C$ aux bornes du condensateur ;",
       "porte": "node scripts/bareme-ferme.mjs --porte"
+    },
+    {
+      "id": "§11.170",
+      "quoi": "l'étiquette « Partiel » arrondie à deux décimales — « 0,13 » affiché pour 0,125 compté, sur 518 questions",
+      "notion": "web/src/lib",
+      "fichier": "src/lib/bareme.ts",
+      "de": "const arrondi = Math.round(n * 1000) / 1000;",
+      "vers": "const arrondi = Math.round(n * 100) / 100;",
+      "porte": "node scripts/bareme-ferme.mjs --porte"
     }
   ]
 }

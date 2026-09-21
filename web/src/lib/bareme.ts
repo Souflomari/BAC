@@ -45,3 +45,32 @@ export function ptsDepuisStem(stem: string): number | null {
 }
 
 export default ptsDepuisStem;
+
+/**
+ * Un NOMBRE DE POINTS, écrit exactement.
+ *
+ * POURQUOI IL EST SÉPARÉ DE LA NOTE (§11.170, 2026-09-21). L'épreuve affichait
+ * tout avec un seul format, arrondi à deux décimales. Or l'auto-évaluation
+ * propose « Partiel », qui vaut la MOITIÉ du barème — et la moitié d'un quart
+ * de point est un huitième :
+ *
+ *     0,25 pt → étiquette « Partiel · 0,13 », valeur employée 0,125
+ *     0,75 pt → étiquette « Partiel · 0,38 », valeur employée 0,375
+ *     1,25 pt → étiquette « Partiel · 0,63 », valeur employée 0,625
+ *
+ * **518 questions sur 1 472** portaient une étiquette fausse. Le total, lui,
+ * était juste : l'arrondi ne touchait que l'affichage. Mais un élève qui
+ * additionne ses points à la main ne retombe alors jamais sur sa propre note,
+ * et c'est très exactement le geste qu'un élève fait avec un barème.
+ *
+ * Trois décimales suffisent : les barèmes du bac se comptent en quarts de
+ * point, et la moitié d'un quart est un huitième — 0,125 s'écrit en trois
+ * décimales, toujours. Les zéros inutiles sont retirés, « 2 » reste « 2 ».
+ *
+ * La NOTE sur 20, elle, garde ses deux décimales : c'est une note, pas un
+ * barème, et elle est explicitement « indicative ».
+ */
+export function formatPoints(n: number): string {
+  const arrondi = Math.round(n * 1000) / 1000;
+  return String(arrondi).replace(".", ",");
+}

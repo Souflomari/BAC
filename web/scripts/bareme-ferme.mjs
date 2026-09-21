@@ -26,6 +26,14 @@
  *      lecture a deux façons de se tromper, et celle-ci les voit toutes deux.
  *   2. PAR ÉPREUVE — une copie tout juste fait exactement 20,00/20.
  *
+ *   4. L'ÉTIQUETTE AFFICHÉE — le nombre de points écrit sur un bouton est
+ *      EXACTEMENT celui qui sera compté. « Partiel » vaut la moitié du barème,
+ *      et la moitié d'un quart de point est un huitième : l'affichage arrondi
+ *      à deux décimales écrivait « 0,13 » pour 0,125. **518 questions sur
+ *      1 472** portaient une étiquette fausse (§11.170). Le total restait
+ *      juste — mais un élève qui additionne ses points à la main ne retombait
+ *      jamais sur sa propre note, et c'est le geste qu'on fait avec un barème.
+ *
  *   3. LE PLAFOND — aucune épreuve ne déclare plus de 20 points. C'est un
  *      ANGLE MORT DE LA RÈGLE 2, trouvé en la relisant : la note est ramenée
  *      sur 20 par règle de trois (`distribué / ep.pts × 20`), donc un barème
@@ -55,7 +63,7 @@ const jiti = jitiFactory(fileURLToPath(import.meta.url), {
   alias: { "@": path.join(WEB, "src") },
 });
 const { listEpreuves } = jiti(path.join(WEB, "src/lib/examens.ts"));
-const { ptsDepuisStem } = jiti(path.join(WEB, "src/lib/bareme.ts"));
+const { ptsDepuisStem, formatPoints } = jiti(path.join(WEB, "src/lib/bareme.ts"));
 
 const porte = process.argv.includes("--porte");
 // Les barèmes de bac se comptent en quarts de point : une tolérance au
@@ -87,6 +95,20 @@ for (const ep of epreuves) {
     // parts égales entre les questions qui n'en ont pas.
     const distribue = somme + (sansEtiquette > 0 ? Math.max(annonce - somme, 0) : 0);
     distribueTotal += distribue;
+    // Axe 4 : ce qui est ÉCRIT sur le bouton vaut ce qui sera COMPTÉ. On relit
+    // l'étiquette produite par le formateur DU PRODUIT — importé, pas recopié.
+    for (let j = 0; j < qs.length; j++) {
+      const p = tags[j] ?? (sansEtiquette > 0 ? Math.max(annonce - somme, 0) / sansEtiquette : 0);
+      for (const [quoi, valeur] of [["Juste", p], ["Partiel", p / 2]]) {
+        const relu = parseFloat(String(formatPoints(valeur)).replace(",", "."));
+        if (Math.abs(relu - valeur) > 1e-9) {
+          ecarts.push(
+            `  ✗ ${ep.id} · exercice ${i + 1} · question ${qs[j].id}\n` +
+            `      le bouton « ${quoi} » afficherait ${formatPoints(valeur)} pour une valeur comptée de ${valeur}`
+          );
+        }
+      }
+    }
     if (Math.abs(distribue - annonce) > EPS) {
       ecarts.push(
         `  ✗ ${ep.id} · exercice ${i + 1} « ${String(x.exerciseLabel || x.subject || "").slice(0, 40)} »\n` +
