@@ -100,6 +100,19 @@ Read the right document for the task at hand:
   arme ; et **un instrument neuf se lance plusieurs fois avant d'être cru** —
   une porte instable est pire qu'une porte absente, car elle enseigne à ignorer
   le rouge de toutes les autres.
+  **ADR 0038 (2026-09-21) — la règle présente et sans effet :** un correctif de
+  style ou de configuration se vérifie sur son EFFET mesuré, jamais sur la
+  présence de la déclaration (`max-width` posé sur une boîte `display:inline`
+  était là et ne faisait rien) ; **un défaut peut rendre une porte VERTE sur un
+  autre défaut** — un correctif qui fait rougir une porte sans rien casser est
+  un signal, pas du bruit ; une sabotage qui n'atteint pas la porte n'est pas un
+  essai rouge (quatrième verdict AMBIGU, outillé dans `essai-rouge`) ; **ne pas
+  armer est un résultat, à condition de nommer la condition qui mériterait une
+  porte** — d'où une porte étroite née du refus d'une porte large ; l'unité d'un
+  motif s'écrit à côté du motif, et se justifie par ce qui peut se retrouver
+  ENSEMBLE ; et le geste de vérification le plus utile est le plus bête — faire
+  ce que ferait l'élève jusqu'au bout et lire le chiffre (deux épreuves sur 39
+  refusaient le 20/20 à une copie parfaite).
   **ADR 0032 (2026-09-11) — the honest wait before
   hydration:** a server-rendered command is `disabled` + `aria-busy` until
   React takes over (`useHydrated`), the page says so once, calmly, and
