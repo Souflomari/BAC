@@ -57,7 +57,7 @@
  */
 
 const APOSTROPHE_STRAIGHT = "'"; // '
-const APOSTROPHE_TYPO = "’"; // ’
+export const APOSTROPHE_TYPO = "’"; // ’
 const NNBSP = " "; // NARROW NO-BREAK SPACE
 const NBSP = " "; // NO-BREAK SPACE
 

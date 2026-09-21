@@ -116,35 +116,89 @@ for (const route of routes) {
     const RE_HAUTE = new RegExp(`[\\p{L}\\d)»][ ${NBSP}]?[;:?](?!\\d)`, "gu");
     const RE_GUILL = new RegExp(`«[^${NNBSP}${NBSP}]|[^${NNBSP}${NBSP}]»`, "gu");
 
+    // ── L'UNITÉ DE MESURE (2026-09-21, §11.164) ────────────────────────
+    // Cette sonde lisait chaque NŒUD DE TEXTE séparément. Un nœud de texte
+    // n'est pas une phrase : « l'**amylase** » en fait trois (le texte
+    // « …molécule, l' », le `strong`, la suite), et l'apostrophe se retrouve
+    // en DERNIER caractère de son nœud, la lettre qui la suit dans le nœud
+    // d'à côté. Le motif ne pouvait pas la voir. Mesuré le 2026-09-21 :
+    // 0 vue par cette porte, **152 lisibles par un élève sur 50 pages** —
+    // une porte verte qui répondait honnêtement à une question plus étroite
+    // que son en-tête (ADR 0033), avec le MÊME angle mort que le plugin
+    // qu'elle est censée surveiller (ADR 0037, 2e loi : borner le motif à
+    // l'unité où vit le défaut).
+    //
+    // L'unité est donc désormais le BLOC : on recolle les nœuds de texte
+    // successifs qui partagent le même bloc, et on mesure la chaîne entière.
+    // Trois frontières cassent la chaîne, et chacune pour une raison :
+    //   · le bloc change — deux paragraphes ne se lisent pas d'affilée ;
+    //   · un nœud est SAUTÉ (code, MathML, style) — `l'` suivi de `<code>`
+    //     n'est pas une élision, et le plugin ne la convertit pas non plus ;
+    //   · le nœud est dans une formule KaTeX — chaque nœud y reste son
+    //     propre îlot, sinon « \{x : x>0\} » recollé ferait crier la règle
+    //     de ponctuation haute sur du LaTeX rendu.
+    const BLOCS = new Set(["P","DIV","LI","UL","OL","TABLE","TR","TD","TH","SECTION","ARTICLE",
+      "H1","H2","H3","H4","H5","H6","BLOCKQUOTE","FIGCAPTION","HEADER","FOOTER","NAV","ASIDE",
+      "BUTTON","LABEL","DL","DT","DD","SUMMARY","DETAILS","FORM","MAIN","FIGURE"]);
+    const unite = (el) => {
+      const k = el.closest(".katex");
+      if (k) return null; // îlot : l'appelant utilisera le nœud lui-même
+      let e = el;
+      while (e && e !== racine && !BLOCS.has(e.tagName)) e = e.parentElement;
+      return e || racine;
+    };
+    const chemin = (el) => {
+      let e = el, c = [];
+      while (e && e !== racine && c.length < 3) {
+        c.push(e.tagName.toLowerCase() +
+          (typeof e.className === "string" && e.className ? "." + e.className.split(/\s+/)[0] : ""));
+        e = e.parentElement;
+      }
+      return c.join(" < ");
+    };
+
     const compte = { haute: 0, guillemets: 0, apostrophe: 0 };
     const sites = {};
     const ex = [];
+    // Un lot en cours d'assemblage : { texte, cle, el }.
+    let lot = null;
+    const vider = () => {
+      if (!lot) return;
+      const t = lot.texte;
+      const a = (t.match(RE_APO) || []).length;
+      const h = (t.match(RE_HAUTE) || []).length;
+      const g = (t.match(RE_GUILL) || []).length;
+      if (a || h || g) {
+        compte.apostrophe += a; compte.haute += h; compte.guillemets += g;
+        sites[lot.cle] = (sites[lot.cle] || 0) + a + h + g;
+        if (ex.length < 2) ex.push(`${lot.cle} :: ${t.trim().slice(0, 60)}`);
+      }
+      lot = null;
+    };
+
     const w = document.createTreeWalker(racine, NodeFilter.SHOW_TEXT);
     let n;
     while ((n = w.nextNode())) {
+      const parent = n.parentElement;
       // Le MathML de KaTeX double chaque formule, et le code n'est pas du
       // français. Le `\text{…}` d'une formule, LUI, en est — on le garde.
       // `style` et `script` sont des NŒUDS DE TEXTE dans le DOM : le CSS d'une
       // figure inlinée (« .f-edge { stroke: … } ») ressemble à du français mal
       // ponctué et faisait crier la sonde sur cinq leçons. Ce n'est pas de la
       // langue, c'est du code.
-      if (n.parentElement?.closest(".katex-mathml, code, pre, style, script")) continue;
-      const t = n.nodeValue || "";
-      const a = (t.match(RE_APO) || []).length;
-      const h = (t.match(RE_HAUTE) || []).length;
-      const g = (t.match(RE_GUILL) || []).length;
-      if (!a && !h && !g) continue;
-      compte.apostrophe += a; compte.haute += h; compte.guillemets += g;
-      let e = n.parentElement, chemin = [];
-      while (e && e !== racine && chemin.length < 3) {
-        chemin.push(e.tagName.toLowerCase() +
-          (typeof e.className === "string" && e.className ? "." + e.className.split(/\s+/)[0] : ""));
-        e = e.parentElement;
+      if (!parent || parent.closest(".katex-mathml, code, pre, style, script")) { vider(); continue; }
+      const u = unite(parent);
+      if (u === null) { // îlot KaTeX : le nœud est à lui seul son unité
+        vider();
+        lot = { texte: n.nodeValue || "", cle: chemin(parent), el: parent };
+        vider();
+        continue;
       }
-      const cle = chemin.join(" < ");
-      sites[cle] = (sites[cle] || 0) + a + h + g;
-      if (ex.length < 2) ex.push(`${cle} :: ${t.trim().slice(0, 60)}`);
+      if (lot && lot.el !== u) vider();
+      if (!lot) lot = { texte: "", cle: chemin(parent), el: u };
+      lot.texte += n.nodeValue || "";
     }
+    vider();
     return { ...compte, sites, ex };
   });
   if (!r) { console.log(`  · ${route} — pas de <main>, page ignorée`); continue; }

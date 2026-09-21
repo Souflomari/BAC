@@ -99,3 +99,72 @@ test("la fonction est idempotente", () => {
     assert.equal(f(une), une, `non idempotent sur « ${c} »`);
   }
 });
+
+// ── LA COUTURE (2026-09-21, §11.164) ──────────────────────────────────────
+//
+// Les tests ci-dessus mesurent la fonction PURE, qui reçoit une chaîne. Le
+// défaut que cette section garde ne vit pas dans une chaîne : il vit entre
+// DEUX. Le corpus écrit « une molécule, l'**amylase salivaire**, qui », et
+// mdast en fait trois nœuds ; l'apostrophe ferme le premier, la lettre qui la
+// suit ouvre le second. La règle (a) exige une lettre après l'apostrophe dans
+// la MÊME chaîne — elle ne pouvait structurellement pas la voir.
+//
+// Mesuré le 2026-09-21 sur le texte rendu, chapitres dépliés : 152 apostrophes
+// droites lisibles sur 50 des 71 pages, dont ZÉRO vue par la porte
+// `typo-francaise` — qui appliquait son motif nœud par nœud, du même geste que
+// le plugin. Le plugin et sa porte partageaient l'angle mort ; la porte
+// répondait honnêtement à une question plus étroite que son en-tête (ADR 0033).
+//
+// Ces tests sont le filet FIN : ils tournent en une seconde, sans navigateur
+// et sans construction, et ils tombent dès que la passe de couture disparaît.
+const { default: remarkFrenchTypography } = jiti(path.join(WEB, "src/lib/remarkFrenchTypography.ts"));
+
+/** Rend le markdown en la suite de ses nœuds terminaux, pour lire la couture. */
+async function noeuds(md) {
+  const { unified } = await import("unified");
+  const { default: remarkParse } = await import("remark-parse");
+  const { default: remarkMath } = await import("remark-math");
+  const { visit } = await import("unist-util-visit");
+  const traite = unified().use(remarkParse).use(remarkMath);
+  const arbre = traite.use(remarkFrenchTypography).runSync(traite.parse(md));
+  let out = "";
+  visit(arbre, (n) => {
+    if (typeof n.value === "string" && ["text", "inlineCode", "inlineMath"].includes(n.type)) out += n.value;
+  });
+  return out;
+}
+
+test("(couture) l'apostrophe qui précède du GRAS devient typographique", async () => {
+  assert.equal(await noeuds("une molécule, l'**amylase salivaire**, qui"),
+    "une molécule, l’amylase salivaire, qui");
+});
+
+test("(couture) idem devant de l'ITALIQUE et devant un LIEN", async () => {
+  assert.equal(await noeuds("l'*enzyme* agit"), "l’enzyme agit");
+  assert.equal(await noeuds("l'[amylase](/a) agit"), "l’amylase agit");
+});
+
+test("(couture) l'apostrophe qui SUIT du gras devient typographique", async () => {
+  assert.equal(await noeuds("**l**'amylase agit"), "l’amylase agit");
+});
+
+test("(couture) devant du CODE ou des MATHS, elle reste droite", async () => {
+  // Ce n'est pas une élision française : c'est une apostrophe devant du code
+  // ou du LaTeX. La règle (a) la laisse tranquille pour la même raison, et la
+  // passe de couture doit s'aligner sur elle plutôt que sur l'apparence.
+  assert.equal(await noeuds("l'`code` suit"), "l'code suit");
+  assert.equal(await noeuds("l'$x$ suit"), "l'x suit");
+});
+
+test("(couture) elle ne franchit jamais un bloc", async () => {
+  // Deux paragraphes ne sont pas frères inline : « mot' » en fin de l'un et
+  // « Autre » au début du suivant ne forment pas une élision.
+  assert.equal(await noeuds("fin de phrase'\n\nAutre paragraphe"),
+    "fin de phrase'Autre paragraphe");
+});
+
+test("(couture) la passe reste idempotente", async () => {
+  const une = await noeuds("l'**amylase** et l'*eau*");
+  assert.equal(une, "l’amylase et l’eau");
+  assert.equal(await noeuds(une), une);
+});
