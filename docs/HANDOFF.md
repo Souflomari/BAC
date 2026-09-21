@@ -13410,6 +13410,25 @@ titres qu'on sérialise désormais à la place. Sur les 62 leçons
 (2 134 316 o de `lesson.md` en tout), l'ordre de grandeur est **~4 Mo de HTML
 brut** retirés du corpus.
 
+**CONFIRMÉ SUR L'ARTEFACT DÉPLOYÉ, pas seulement en local** (2026-09-21,
+`bac-pink.vercel.app`, commit en ligne `979f2c3`) — la discipline de la vérité
+déployée vaut aussi pour un gain, pas seulement pour un défaut :
+
+```
+                                   local (next start)   DÉPLOYÉ (Vercel)
+maths/suites-numeriques  brut          3 824 459           3 824 701
+svt/moyens-de-defense    brut            611 737             611 979
+marqueurs de source                            0                   0
+```
+
+L'écart de 242 octets est l'identifiant de build. Les deux pages déployées
+pèsent bien le poids d'APRÈS (3,82 Mo et 0,61 Mo), pas celui d'avant (3,92 Mo
+et 0,71 Mo). **Le gzip, lui, diffère** — 305 702 contre 281 847 en local :
+Vercel ne compresse pas avec les mêmes réglages que `next start`. C'est dit
+plutôt que tu : les pourcentages du tableau ci-dessus sont des mesures
+LOCALES, avant/après, sur le même compresseur ; la baisse est réelle sur les
+deux bancs, sa taille exacte dépend du banc.
+
 **CE QUE LE CORRECTIF NE FAIT PAS — dit avant qu'on le lise de travers.** Le
 TTFB ne bouge PAS : 201 → 210 ms sur `suites-numeriques`, dans le bruit. Il est
 dominé par la compression de 3,8 Mo, pas par les 98 ko retirés. Le gain est en
