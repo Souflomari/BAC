@@ -13268,3 +13268,76 @@ lignes, et cela ne dépend pas de la formule.
 
 Les portes de l'épreuve re-passent vertes : barème fermé (20,00/20 sur 39),
 LaTeX nu 0 sur 39, typographie 0.
+
+## §11.174 — Un manifeste de build n'est pas le graphe de modules : la route épreuve chargeait le morceau interdit sans le déclarer
+
+**LE POINT DE DÉPART.** §11.163 et DECISIONS §14 disent que le paquet servi
+contient un regex lookbehind, que WebKit refuse avant Safari 16.4 — donc page
+blanche sur un iPhone resté en iOS 15. Rejoué sur le build à HEAD, parce qu'un
+diagnostic non rejoué est une rumeur (ADR 0036) :
+
+```
+$ grep -rlE '\(\?<[=!]' web/.next/static --include='*.js'
+web/.next/static/chunks/504-df951b40e87dd68b.js      1 occurrence, 152 ko
+```
+
+**Un seul lookbehind reste** dans tout le JavaScript servi — la correction de
+`frenchTypography.ts` (§11.163) a bien retiré l'autre. Celui-ci est l'autolien
+e-mail de `mdast-util-gfm-autolink-literal`, pour 0 adresse nue dans le corpus.
+
+**LE DÉFAUT DE MESURE — le mien, pas celui du produit.** La question suivante
+était : *quelles pages chargent ce morceau ?* Le manifeste de build répond
+proprement, et faussement :
+
+```
+$ routes du manifeste chargeant 504 : 2 / 14
+    /notions/[subject]/[slug]        <-- leçon
+    /options/wide/[v]
+  (pas /examens/[id])
+```
+
+J'ai failli écrire « les épreuves sont épargnées, le plancher ne couvre que la
+leçon ». **C'est faux.** Le manifeste liste les morceaux **initiaux** d'une
+route ; un `import()` paresseux n'y figure pas. Le morceau de la route épreuve
+contient bien `r.e(504)` :
+
+```
+$ grep -rlE '\.e\(504\)' web/.next/static --include='*.js'
+web/.next/static/chunks/app/examens/[id]/page-55acbd1f86f406a5.js
+```
+
+**CE QUE LE NAVIGATEUR DIT, SUR LE BUILD SERVI.** Deux sources se
+contredisaient ; la troisième tranche. Sonde réseau sur `next start`, morceaux
+demandés :
+
+| page | 504 au chargement | après « Commencer » |
+|---|---|---|
+| `/notions/maths/suites-numeriques` | **oui** (initial) | — |
+| `/examens/sexp-2018-normale` | **oui** (préchargé) | oui |
+
+L'épreuve le demande **dès le chargement**, pas au clic : `EpreuveShell.tsx`
+(287–291) précharge `chargerMd()` dans un `useEffect` de montage — c'est
+l'optimisation de §11.60, qui rend le clic instantané. Elle avance aussi, sans
+le vouloir, le moment où un vieux WebKit rencontre le morceau qu'il refuse.
+
+**CE QUE ÇA CHANGE POUR §14.** Le plancher Safari 16.4 couvre **toute la
+surface d'apprentissage** — leçons *et* épreuves — et pas la seule leçon. La
+décision reste au propriétaire (recomposer le greffon touche le rendu de tout
+le contenu) ; ce qui change, c'est que le bénéfice doit s'estimer sur les deux.
+
+**LA LEÇON, RÉUTILISABLE.** *Un manifeste de build n'est pas le graphe de
+modules.* C'est la forme « chercher la bonne chose sous une seule de ses
+formes » d'ADR 0036, appliquée aux morceaux : l'absence d'un morceau dans le
+manifeste d'une route ne prouve pas que la route ne le charge pas. Deux formes
+au moins : le morceau **initial** (manifeste) et l'import **paresseux**
+(`\.e\(<id>\)` dans les autres morceaux). Et quand deux lectures statiques se
+contredisent, c'est la page servie qui a le dernier mot — la discipline de la
+vérité rendue, encore.
+
+**PAS DE PORTE ICI, et la condition qui en mériterait une.** Armer « aucun
+lookbehind dans le paquet » ferait rougir la CI sur un fait déjà consigné, que
+seul le propriétaire peut lever : la porte serait rouge en permanence, donc
+ignorée — exactement ce qu'ADR 0034 appelle un cliquet inerte. **Ce qui en
+mériterait une :** le jour où la décision de §14 est prise et le greffon
+recomposé, alors la porte devient un cliquet utile — elle empêche le
+lookbehind de revenir par une dépendance transitive.

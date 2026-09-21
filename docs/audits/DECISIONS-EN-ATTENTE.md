@@ -375,6 +375,53 @@ l'exécution touche le rendu de tout le contenu ; et l'ampleur du bénéfice
 dépend d'une donnée que le dépôt n'a pas — la part d'iPhone anciens chez les
 élèves visés.
 
+### Re-mesuré le 2026-09-21 : le lookbehind est toujours là, et la PORTÉE est plus large que « la leçon »
+
+Un diagnostic non rejoué est une rumeur (ADR 0036) : refait sur le paquet
+construit à HEAD, pas sur la mémoire de la passe précédente.
+
+**Il reste exactement un lookbehind dans tout le JavaScript servi** — la
+correction de `frenchTypography.ts` (§11.163) a bien retiré l'autre :
+
+```
+$ grep -rlE '\(\?<[=!]' .next/static --include='*.js'
+.next/static/chunks/504-df951b40e87dd68b.js     (1 occurrence, 152 ko)
+
+/(?<=^|\s|\p{P}|\p{S})([-.\w+]+)@([-\w]+(?:\.[-\w]+)+)/gu
+```
+
+C'est l'autolien **e-mail** de `mdast-util-gfm-autolink-literal`. Le corpus en
+compte toujours 0. Rien n'a changé : §14 tient.
+
+**Ce qui est neuf, c'est la portée — et elle a failli être mal écrite.** Le
+manifeste de build dit que **2 routes sur 14** chargent le morceau 504
+(`/notions/[subject]/[slug]`, `/options/wide/[v]`), et **pas** `/examens/[id]`.
+Lu seul, il conclut « les épreuves sont épargnées ». **C'est faux.** Le
+morceau de la route épreuve contient `r.e(504)` : un import *dynamique*, que le
+manifeste ne liste pas. Vérifié dans le navigateur, sur le build servi :
+
+| page | morceau 504 demandé au chargement | après « Commencer » |
+|---|---|---|
+| `/notions/maths/suites-numeriques` | **oui** (morceau initial) | — |
+| `/examens/sexp-2018-normale` | **oui** (préchargé) | oui |
+
+L'épreuve le demande **dès le chargement**, pas au clic : `EpreuveShell.tsx`
+(287–291) précharge `chargerMd()` dans un `useEffect` de montage — c'est
+l'optimisation de §11.60, qui rend le clic instantané. Conséquence pour §14 :
+le plancher Safari 16.4 couvre **toute la surface d'apprentissage**, leçons
+*et* épreuves. L'estimation du bénéfice doit se faire sur les deux.
+
+**La leçon de méthode, réutilisable :** *un manifeste de build n'est pas le
+graphe de modules.* Il liste les morceaux initiaux d'une route ; un `import()`
+paresseux y est invisible. Pour savoir ce qu'une page charge vraiment, il faut
+soit chercher `\.e\(<id>\)` dans les autres morceaux, soit — mieux — le
+demander au navigateur sur le build servi. Ici les deux sources se
+contredisaient, et c'est le navigateur qui avait raison.
+
+**Ce qui ne change pas :** la décision reste au propriétaire. Recomposer le
+greffon touche le rendu de tout le contenu, et la part d'iPhone d'avant
+iOS 16.4 chez les élèves visés n'est toujours pas mesurable depuis le dépôt.
+
 ---
 
 ## La PORTÉE de cette page, mesurée
