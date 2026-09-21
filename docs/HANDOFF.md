@@ -13341,3 +13341,103 @@ ignorée — exactement ce qu'ADR 0034 appelle un cliquet inerte. **Ce qui en
 mériterait une :** le jour où la décision de §14 est prise et le greffon
 recomposé, alors la porte devient un cliquet utile — elle empêche le
 lookbehind de revenir par une dépendance transitive.
+
+## §11.175 — La leçon partait deux fois : 3,89 Mo de HTML pour 105 ko de texte, et la moitié n'est pas le DOM
+
+**L'ANGLE MORT OUVERT.** La colonne « ne mesure pas » de `cls-sweep` portait
+depuis le 2026-09-04 une seule ligne jamais reprise : « Le TEMPS de chargement
+lui-même (LCP, TTFB) — jamais mesuré sur ce projet ». Toute la journée lente
+avait mesuré ce qui BOUGE (CLS), ce qui reste MORT (§11.60/61), ce qui est
+TÉLÉCHARGÉ (donnees-sweep) — jamais quand le contenu arrive.
+`temps-de-chargement.mjs` le fait : TTFB, FCP, LCP, et l'élément du LCP,
+réseau libre puis 3G lent, trois passages par route avec l'étendue.
+
+**CE QUE LA PREMIÈRE PASSE A TROUVÉ — pas le temps, le POIDS.** Le LCP était
+sain partout (FCP = LCP sur les huit routes : le plus gros élément peint au
+premier coup de pinceau, ce qu'on attend d'un rendu serveur). C'est une autre
+colonne qui a sauté aux yeux — le TTFB, vingt fois plus grand sur une leçon :
+
+```
+route                             TTFB médian   HTML brut
+/                                       5 ms      111 810 o
+/examens                                4 ms      124 025 o
+/examens/sexp-2018-normale              4 ms      103 712 o
+/notions/svt/moyens-de-defense         20 ms      705 769 o
+/notions/pc/rlc-serie                 151 ms    2 948 468 o
+/notions/maths/suites-numeriques      201 ms    3 922 081 o
+```
+
+**3,89 Mo de HTML pour une leçon.** Décomposé (sur le document capturé) :
+
+```
+charge RSC (self.__next_f.push)   2 086 178 o   53,7 %
+KaTeX visuel                        447 017 o   11,5 %
+MathML caché                        247 679 o    6,4 %
+SVG en ligne (figures)               67 529 o    1,7 %
+texte lisible (balises retirées)    104 749 o    2,7 %
+                                    → 37 octets de document pour 1 de texte
+```
+
+**LA MOITIÉ DU DOCUMENT N'EST PAS LE DOM.** La charge RSC est ce que l'App
+Router sérialise dans la page pour hydrater les composants CLIENT — donc tout
+ce qu'on passe en prop à une frontière client y part **en plus** du DOM déjà
+rendu. En triant les 359 fragments par empreinte, deux étaient **identiques au
+bit près, 49 026 o chacun** : le `lesson.md` entier, envoyé deux fois.
+
+**LA CAUSE, NOMMÉE.** `MarginRail` et `ChapterMenuCompact` (tous deux
+`"use client"`) recevaient `lessonMd`. Ce qu'ils en faisaient :
+`extractChapterHeadings(lessonMd)` — et rien d'autre. Deux frontières client,
+donc deux copies de la leçon sur le fil, pour en tirer une liste de titres.
+`NotionBody`, qui reçoit le même `lessonMd`, est un composant SERVEUR : sa
+copie ne coûte rien.
+
+**LE CORRECTIF.** `extractChapterHeadings` est appelée UNE fois, sur le
+serveur, dans `NotionPageView` ; le tableau de titres est passé aux deux
+surfaces. La fonction reste la source unique — les deux surfaces ne peuvent
+toujours pas diverger, elles lisent littéralement le même tableau.
+
+**MESURÉ, avant → après :**
+
+| leçon | brut | gzip (ce que l'élève télécharge) |
+|---|---|---|
+| `maths/suites-numeriques` | 3 922 081 → 3 824 459 o (**−2,5 %**) | 312 657 → 281 847 o (**−9,9 %**) |
+| `pc/rlc-serie` | 2 948 468 → 2 889 100 o (−2,0 %) | 327 291 → 317 416 o (−3,0 %) |
+| `svt/moyens-de-defense` | 705 769 → 611 737 o (−13,3 %) | 140 355 → 111 757 o (**−20,4 %**) |
+
+L'économie brute vaut `2 × (lesson.md − titres)` — vérifié : 97 622 o mesurés
+contre 98 052 prédits sur `suites-numeriques`, l'écart étant le tableau de
+titres qu'on sérialise désormais à la place. Sur les 62 leçons
+(2 134 316 o de `lesson.md` en tout), l'ordre de grandeur est **~4 Mo de HTML
+brut** retirés du corpus.
+
+**CE QUE LE CORRECTIF NE FAIT PAS — dit avant qu'on le lise de travers.** Le
+TTFB ne bouge PAS : 201 → 210 ms sur `suites-numeriques`, dans le bruit. Il est
+dominé par la compression de 3,8 Mo, pas par les 98 ko retirés. Le gain est en
+octets téléchargés et en DOM à analyser sur le téléphone, pas en temps de
+réponse du serveur. **L'écart de TTFB entre 5 ms (accueil) et 210 ms (leçon)
+reste entier** et grandit avec le document : c'est un fait pour le
+propriétaire, pas quelque chose que cette passe a corrigé.
+
+**LA PORTE, ROUGE ET VERTE.** `source-en-double.mjs` cherche dans le document
+servi une ligne de titre BRUTE du `lesson.md` — avec son code de barreau
+`R<n> — `, que le rendu retire toujours. La trouver, c'est trouver la SOURCE,
+jamais l'affiché : la sonde ne peut pas confondre les deux.
+
+- **vert** : 62 leçons, 0 occurrence, sur le build d'après ;
+- **rouge** : le document capturé AVANT le correctif en porte exactement **2**,
+  toutes deux dans la charge RSC. Rejoué à la main aujourd'hui.
+
+**PAS D'ENTRÉE AU MANIFESTE DES ESSAIS ROUGES, et pourquoi.** La sabotage
+naturelle serait de rendre `lessonMd` à `MarginRail` — mais c'est un `.tsx`, et
+la porte lit du HTML SERVI : sans reconstruction, la sabotage n'atteindrait
+jamais la porte, et l'essai mesurerait une panne au lieu d'un aveuglement
+(ADR 0038, 3ᵉ loi). Le détecteur a donc son propre `--essai-rouge` intégré
+(muet sur un document sain, criant sur un document porteur), et le rouge du
+PLOMBAGE est consigné ici, mesuré. **Ce qui mériterait l'entrée au manifeste :**
+que la suite d'essais rouges sache reconstruire avant de mesurer — alors la
+sabotage `.tsx` atteindrait la porte et l'essai deviendrait honnête.
+
+**CE QUI RESTE OUVERT (owner).** Les 1,87 Mo de charge RSC qui subsistent
+après le correctif : arbre de composants, props, et 536 blocs KaTeX déjà rendus
+re-sérialisés (215 ko). Les réduire demande de déplacer des frontières client —
+une décision d'architecture, pas un correctif.

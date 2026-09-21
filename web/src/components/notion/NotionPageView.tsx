@@ -24,7 +24,7 @@ import { notFound } from "next/navigation";
 import { loadNotion, listNotions } from "@/lib/content";
 import { nextInParcours } from "@/lib/curriculum";
 import type { NotionItem } from "@/lib/content";
-import { realChapterCount } from "@/lib/chapters";
+import { realChapterCount, extractChapterHeadings } from "@/lib/chapters";
 import { cartesParChapitre } from "@/lib/retenir";
 import { PageShell } from "@/components/ui/PageShell";
 import { NotionBody } from "@/components/notion/NotionBody";
@@ -186,6 +186,14 @@ export function NotionPageView({
   // — but ONLY when the notion has a bank.yaml. Every other notion's chapter
   // count is exactly the real chapters, unchanged. `totalChapters` is what
   // ChapterShell uses to size keyboard/URL clamping and the "Chapitre n / N".
+  // Les titres de chapitre, extraits UNE FOIS ici — côté serveur.
+  //
+  // MarginRail et ChapterMenuCompact sont des composants client, et n'ont
+  // jamais eu besoin que de cette liste. Tant qu'on leur passait `lessonMd`,
+  // la leçon entière partait deux fois dans la charge RSC du document, en
+  // plus du DOM déjà rendu (§11.175). Un seul appel, un seul tableau, passé
+  // aux deux : elles restent d'accord par construction, comme avant.
+  const chapterHeadings = lessonMd ? extractChapterHeadings(lessonMd) : [];
   const realChapters = lessonMd ? realChapterCount(lessonMd) : 0;
   const realChapterCountClamped = Math.max(1, realChapters);
   // A non-null bank (bank.yaml present, even with zero entries) gets the
@@ -339,7 +347,7 @@ export function NotionPageView({
         <div className="notion-page-grid">
           {lessonMd ? (
             <MarginRail
-              lessonMd={lessonMd}
+              headings={chapterHeadings}
               hasItems={hasBank}
               bankCount={hasBank ? bank!.entries.length : undefined}
             />
@@ -361,7 +369,7 @@ export function NotionPageView({
                 positionneur d'avant. */}
             {lessonMd ? (
               <ChapterMenuCompact
-                lessonMd={lessonMd}
+                headings={chapterHeadings}
                 hasItems={hasBank}
                 bankCount={hasBank ? bank!.entries.length : undefined}
                 className="mb-6 bp-medium:hidden"

@@ -504,6 +504,17 @@ jobs:
       - name: Porte barème fermé
         run: node scripts/bareme-ferme.mjs --porte
 
+      # §11.175 — la moitié d'un document de leçon (53,7 %) est la charge RSC,
+      # ce que l'App Router sérialise pour hydrater les composants CLIENT.
+      # Tout ce qui passe en prop à une frontière client y repart en double du
+      # DOM déjà rendu. `MarginRail` et `ChapterMenuCompact` recevaient la
+      # leçon ENTIÈRE pour n'en tirer qu'une liste de titres : 2 × 49 ko sur
+      # `suites-numeriques`. La sonde cherche une ligne de titre BRUTE (avec
+      # son code de barreau `R<n> — `, que le rendu retire toujours) : la
+      # trouver dans le document, c'est trouver la SOURCE, pas l'affiché.
+      - name: Porte source de leçon en double
+        run: node scripts/source-en-double.mjs --porte
+
       - name: Porte LaTeX nu
         run: |
           routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)

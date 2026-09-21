@@ -33,9 +33,9 @@
 
 "use client";
 
-import { useMemo, useRef } from "react";
+import { useRef } from "react";
 import { cn } from "@/lib/utils";
-import { extractChapterHeadings, type ChapterHeadingInfo } from "@/lib/chapters";
+import { type ChapterHeadingInfo } from "@/lib/chapters";
 import { Icon } from "@/components/ui/Icon";
 import { useChapter, ChapterPosition } from "./ChapterShell";
 import { useHydrated } from "@/lib/useHydrated";
@@ -48,8 +48,20 @@ interface RailEntry {
 }
 
 interface MarginRailProps {
-  /** Raw lesson markdown — used to extract chapter headings */
-  lessonMd: string;
+  /**
+   * Les titres de chapitre, DÉJÀ extraits — pas le markdown de la leçon.
+   *
+   * Ces deux composants sont des composants CLIENT : tout ce qu'on leur passe
+   * est sérialisé dans la charge RSC du document, en plus du DOM rendu. Tant
+   * qu'ils recevaient `lessonMd`, la leçon entière (49 ko sur
+   * `suites-numeriques`) partait DEUX fois sur le fil — une par frontière
+   * client — pour n'en tirer qu'une liste de titres. §11.175.
+   *
+   * `extractChapterHeadings` reste la source unique : elle est simplement
+   * appelée une fois, sur le serveur, par NotionPageView, qui passe le même
+   * tableau aux deux surfaces — elles ne peuvent donc toujours pas diverger.
+   */
+  headings: ChapterHeadingInfo[];
   /** Whether a synthetic final "S'entraîner" chapter follows (bank.yaml exists). */
   hasItems?: boolean;
   /** Bank entry count — renders « N sujets » on the practice entry (BANK-SPEC §1). */
@@ -58,8 +70,7 @@ interface MarginRailProps {
 
 const FALLBACK_ENTRY: ChapterHeadingInfo = { title: "Leçon", shortTitle: "Leçon" };
 
-export function MarginRail({ lessonMd, hasItems = false, bankCount }: MarginRailProps) {
-  const headings = useMemo(() => extractChapterHeadings(lessonMd), [lessonMd]);
+export function MarginRail({ headings, hasItems = false, bankCount }: MarginRailProps) {
   const { current, goTo } = useChapter();
   const hydrated = useHydrated();
 
@@ -70,10 +81,11 @@ export function MarginRail({ lessonMd, hasItems = false, bankCount }: MarginRail
   // Real chapters (never empty — the "Leçon" fallback keeps this array's
   // length equal to lib/chapters.ts's `realChapterCount`, which also clamps
   // to min 1, so the synthetic entry below always lands at the right index).
-  // A FRESH array, never `headings` itself: `headings` is useMemo-cached
-  // keyed on `lessonMd`, so mutating it in place (e.g. via .push) would leak
-  // an extra "S'entraîner" entry onto the SAME cached array on every
-  // subsequent render while lessonMd is unchanged.
+  // A FRESH array, never `headings` itself: `headings` is now a PROP, donc le
+  // même objet d'un rendu à l'autre — et le MÊME tableau que reçoit
+  // ChapterMenuCompact. Le muter en place (via .push) ferait fuir une entrée
+  // « S'entraîner » en trop sur les deux surfaces à la fois. Le danger n'a pas
+  // disparu avec le useMemo : il a doublé.
   const realEntries: RailEntry[] = headings.length > 0 ? headings : [FALLBACK_ENTRY];
   // A FRESH practice entry per render (never a module-level constant mutated in
   // place): the honest count is derived from `bankCount` at call time.
@@ -285,12 +297,11 @@ export function MarginRail({ lessonMd, hasItems = false, bankCount }: MarginRail
 // devient le déclencheur, la liste est CELLE du rail (mêmes props, même
 // construction d'entrées — les deux surfaces ne peuvent pas diverger).
 export function ChapterMenuCompact({
-  lessonMd,
+  headings,
   hasItems = false,
   bankCount,
   className,
 }: MarginRailProps & { className?: string }) {
-  const headings = useMemo(() => extractChapterHeadings(lessonMd), [lessonMd]);
   const { current, total, goTo } = useChapter();
   const hydrated = useHydrated();
   const detailsRef = useRef<HTMLDetailsElement>(null);

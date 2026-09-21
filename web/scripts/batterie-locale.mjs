@@ -130,6 +130,18 @@ const HORS_CHAMP = new Set([
   // ici, armée en CI (§11.149). Son rouge se rejoue à la demande :
   // `node scripts/preferences-secours.mjs --essai-rouge`.
   "preferences-secours.mjs",
+  // source-en-double lit le HTML SERVI des 62 leçons pour y chercher la source
+  // du lesson.md : il lui faut donc un build et un `next start`. Hors champ
+  // ici pour la même raison que dom-truth — ARMÉE en CI (§11.175). Son rouge
+  // se rejoue à la demande : `node scripts/source-en-double.mjs --essai-rouge`.
+  "source-en-double.mjs",
+  // temps-de-chargement mesure TTFB/FCP/LCP au navigateur, réseau bridé, trois
+  // passages par route : build, Playwright, et des millisecondes qui sont
+  // celles de CETTE machine. Ce n'est PAS une porte et ce n'en sera pas une —
+  // un seuil en ms sur une machine partagée rougirait au hasard, et une porte
+  // instable apprend à ignorer le rouge des autres (ADR 0036). Instrument de
+  // mesure, lancé à la main (§11.175).
+  "temps-de-chargement.mjs",
   // desaccords-hydratation lève son propre `next start` et charge les 118
   // routes prérendues : build ET Playwright. Hors champ ici, armée en CI
   // (§11.150). Son rouge se rejoue : `--essai-rouge` fabrique un désaccord sur

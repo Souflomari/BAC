@@ -109,7 +109,7 @@
 | `web/scripts/noms-accessibles.mjs` | WCAG 4.1.2 : toute commande visible a-t-elle un NOM accessible (aria-label/labelledby, texte, title, alt, title de SVG, label associé), sur 9 pages × 390/1 280 px. ROUGE si une commande n'a aucun nom. A trouvé : 0, pages et états révélés compris (HANDOFF §11.41) | Les états dynamiques sont balayés à la main (`noms-dynamiques`, scratchpad) ; la QUALITÉ du nom (« Rechercher » vs un libellé creux), qu'aucune machine ne juge |
 | `web/scripts/cibles-tactiles.mjs` | WCAG 2.5.8 (AA, 24×24) et 2.5.5 (AAA, 44×44) : taille des commandes à 390 px, y compris les radios d'un corrigé. A trouvé : AA tenu (seules des cibles exemptées sous 24×24) ; l'AAA a des manques assumés (HANDOFF §11.42) | L'exception d'espacement calculée finement (l'instrument liste sous-24, le jugement inline/espacement est à la main) ; un vrai doigt sur un vrai écran |
 | `web/scripts/cv-chapitre.mjs` | Expérience : coût de démasquer un chapitre caché par `hidden` contre `content-visibility:hidden`, 1re et 2e fois, ×6, cinq leçons. A trouvé : **−35 % la première fois, ×30 à ×100 moins cher à chaque visite suivante** (20 ms au lieu de 600–1 300) — HANDOFF §11.22 ; levier essayé et RETIRÉ le 2026-09-06 (§11.24 : pas de gain à la première visite, et la géométrie des chapitres repliés devenait mesurable — dom-truth rouge) | Le produit lui-même (l'expérience manipule le DOM servi) ; l'impression, le lecteur d'écran et les balayages sous `content-visibility` — à rejouer si le levier est pris |
-| `web/scripts/cls-sweep.mjs` | Le saut de mise en page au chargement, réseau libre puis 3G bridé | Le TEMPS de chargement lui-même (LCP, TTFB) — jamais mesuré sur ce projet |
+| `web/scripts/cls-sweep.mjs` | Le saut de mise en page au chargement, réseau libre puis 3G bridé | ~~Le TEMPS de chargement lui-même (LCP, TTFB)~~ — **FERMÉ le 2026-09-21** par `temps-de-chargement.mjs` (§11.175). Ce qui reste : les millisecondes d'un VRAI appareil sur un VRAI réseau |
 | `web/scripts/pagination-probe.mjs` | 11 promesses × 5 leçons : un seul chapitre visible, liens profonds, flèches bornées, ancres, impression dépliée | Ce que l'élève COMPREND de la pagination — aucune mesure ne le dira |
 | `web/scripts/poids-sweep.mjs` | Trois passes : (A) le document seul sur les 70 routes, (B) LCP/TTFB/poids ventilé par type, réseau libre puis 3G, (C) **processeur bridé ×1/×4/×6 — blocage total et temps au bout duquel un APPUI change enfin de chapitre** | Le réseau RÉEL (DNS, TLS, CDN, cache Vercel) : tout est un build local. Et la consommation de données d'un forfait — l'accueil tire ~920 ko de préchargement RSC, après la peinture donc hors chronomètre |
 | `web/scripts/renvois-visibles.mjs` | Le jargon de rédaction que l'élève voit VRAIMENT (`innerText`, chapitres dépliés) : codes de barreau `R<n>` et mot « rung ». C'est lui qui a montré que la campagne de juillet, déclarée close, laissait 529 codes dans les sidecars **Masque le texte des formules et des étiquettes SVG avant de lire** (2026-09-05) : KaTeX rend `R_0` en spans dont l'innerText recolle « R0 », et le schéma RL porte onze étiquettes « R0 » — un résistor, pas un barreau. La leçon dipole-rl était déclarée fautive pour un résistor. Vérifié rouge avec un témoin « rung R4 et R7 » injecté en prose. | La JUSTESSE d'un renvoi : « chapitre 3 » peut être visible et faux. C'est ce qui est arrivé — voir `renvois-barreaux.py` |
@@ -877,3 +877,50 @@ autre porte ne peut voir : une porte dont le scan ne tourne sur rien.
 écrite à la main pour chaque porte, donc il ne peut pas être automatisé sur
 l'ensemble. Il s'emploie au moment où l'on arme une porte, ou quand on soupçonne
 qu'une porte verte ne regarde plus rien.
+
+
+## `web/scripts/temps-de-chargement.mjs` — quand le contenu arrive, et ce qu'on attend
+
+Le dernier angle mort nommé dans la colonne « ne mesure pas » de `cls-sweep` :
+TTFB, FCP, LCP, et **l'élément du LCP**, réseau libre puis 3G lent (400 kb/s,
+400 ms — les mêmes conditions que `cls-sweep`, pour que les deux se lisent
+ensemble). Trois passages par route, **médiane et étendue** : une mesure de
+temps sans son étendue ne permet pas de distinguer un défaut d'un bruit
+(ADR 0036).
+
+La colonne actionnable est l'élément : un chiffre de LCP dit qu'on attend,
+seul l'élément dit CE QU'on attend. Résultat de la première passe
+(2026-09-21) : **FCP = LCP sur les huit routes** — le plus gros élément peint
+au premier coup de pinceau, ce qu'on attend d'un rendu serveur. Rien à
+corriger de ce côté. C'est la colonne TTFB qui a parlé : 5 ms sur l'accueil,
+**201 ms sur une leçon** — et le coupable n'était pas le temps mais le POIDS
+(3,89 Mo de HTML, §11.175).
+
+**Ce n'est PAS une porte, et ça n'en sera pas une** : un seuil en
+millisecondes sur une machine partagée rougirait au hasard, et une porte
+instable apprend à ignorer le rouge de toutes les autres (ADR 0036). Les
+valeurs absolues sont celles de ce conteneur ; ce qui survit au changement de
+machine, c'est le CLASSEMENT entre pages et l'identité de l'élément LCP.
+
+## `web/scripts/source-en-double.mjs` — la leçon ne doit pas repartir dans la page
+
+**PORTE, armée en CI (57ᵉ étape).** La moitié d'un document de leçon (53,7 %)
+n'est pas le DOM rendu : c'est la charge RSC, ce que l'App Router sérialise
+pour hydrater les composants CLIENT. Tout ce qu'on passe en prop à une
+frontière client y repart **en plus** du DOM déjà rendu. `MarginRail` et
+`ChapterMenuCompact` recevaient `lessonMd` — la leçon entière — pour n'en
+tirer qu'une liste de titres : deux frontières, deux copies, 2 × 49 026 o sur
+`suites-numeriques` (§11.175).
+
+La sonde cherche une ligne de titre **brute** du `lesson.md`, code de barreau
+`R<n> — ` compris. Le rendu retire toujours ce code : le trouver dans le
+document servi, c'est donc avoir trouvé la SOURCE, jamais l'affiché — la sonde
+ne peut pas confondre les deux.
+
+- **vert** : 62 leçons, 0 occurrence ;
+- **rouge** : le document capturé avant le correctif en porte exactement 2 ;
+- `--essai-rouge` intégré : muet sur un document sain, criant sur un porteur.
+
+Pas d'entrée au manifeste des essais rouges, et la raison est écrite en
+§11.175 : la sabotage naturelle est un `.tsx`, la porte lit du HTML servi, et
+sans reconstruction la sabotage n'atteindrait jamais la porte (ADR 0038, 3ᵉ loi).
