@@ -637,6 +637,38 @@ compile pas, et **aucune suspension à tort sur les 57 essais du manifeste**.
 
 ---
 
+## Dernier passage complet des instruments HORS CI — 2026-09-21
+
+Un instrument hors CI ne dit pas tout seul **quand** il a été vrai pour la
+dernière fois. Ce tableau le dit. Rejoué sur `HEAD` du jour, build propre,
+serveur local.
+
+| instrument | verdict |
+|---|---|
+| `dom-truth` | 279 contrôles, 0 échec |
+| `typo-francaise` | 110 pages — 0 sur les quatre axes |
+| `latex-nu` | 110 pages — 0 lu brut, 0 entendu en LaTeX |
+| `ancres-uniques` | 62 leçons, 2 189 titres, 0 ancre dupliquée |
+| `accents-manquants` | 64 pages — 0 mot désaccentué |
+| `formules-rendues` | 101 pages — toutes les formules se rendent |
+| `copie-maths` | 4 pages, 2 746 formules, 0 caractère parasite au collage |
+| `impression` | encre noire sur papier blanc, thème sombre compris |
+| `liens-internes` | 111 pages, 108 cibles, 0 morte |
+| `donnees-sweep` | passe |
+| `zoom-sweep` | 1280 px : 0 · **360 px avec texte à 200 % : 10** — formules d'énoncé qui dépassent, classe connue et acceptée (§11.38). Le onzième signalement était neuf et a été corrigé le jour même (§11.173) |
+
+**Batterie locale** : tout vert sauf `couverture-diagnostique`, rouge
+**délibérément** — c'est la décision owner en attente (111 distracteurs sans
+tag, §11.102). **64 essais rouges, tous crient.** Garde anti-dérive : 108
+scripts, 103 catalogués, 39 portes + 19 hors champ assumés, `gates.yml` valide
+à 56 étapes.
+
+**La CI GitHub, elle, n'a toujours pas de runner** : chaque exécution échoue en
+3–5 s sans journal depuis la veille (§11.37). Tout ce qui précède a été mesuré
+EN LOCAL ; personne ne doit lire « CI verte » dans cette page.
+
+---
+
 ## `web/scripts/figures-id-divergents.mjs` — la première définition gagne, partout
 
 **Ce qu'il mesure.** Une seule condition, et c'est tout le sujet : **même
