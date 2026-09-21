@@ -327,6 +327,56 @@ trois chiffres sont mesurés ; le choix ne l'est pas.
 
 ---
 
+## 14. Le produit exige Safari 16.4 à cause d'une dépendance qui ne sert à rien ici
+
+**Le fait.** Le paquet livré contient un **regex lookbehind**. WebKit ne le
+connaît qu'à partir de **Safari 16.4 (mars 2023)**. Avant, ce n'est pas une
+dégradation : le morceau est refusé **à l'analyse**, et la page reste blanche.
+Sur Android le moteur se met à jour tout seul ; sur iPhone il est soudé au
+système — un 6s, un 7, un SE de première génération sont bloqués en iOS 15.
+C'est le téléphone d'occasion d'un lycéen.
+
+**Une des deux sources est corrigée** : `frenchTypography.ts` construisait
+`(?<=\p{L})'(?=\p{L})` pour l'apostrophe française ; la lettre de gauche est
+désormais capturée et réécrite, comportement identique (§11.163).
+
+**L'autre est une dépendance** : `mdast-util-gfm-autolink-literal`, tirée par
+`remark-gfm`. Elle transforme une URL ou une adresse e-mail NUE en lien.
+
+**Ce que le corpus en fait, mesuré :**
+
+| | |
+|---|---|
+| URL nues dans le contenu | **0** |
+| adresses e-mail nues | **0** |
+| tableaux GFM | **113** |
+| barré `~~x~~` | 1 |
+| notes de bas de page, listes de tâches | 0 |
+
+**L'extension fautive ne sert donc à rien ici — et c'est elle qui fixe le
+plancher.** Mais `remark-gfm` ne se retire pas : 113 tableaux en dépendent.
+
+**Les options, et ce qu'elles coûtent :**
+
+- **Recomposer le greffon** — remplacer `remark-gfm` par les seules extensions
+  utilisées (tableau + barré, via `micromark-extension-gfm-table` /
+  `mdast-util-gfm-table` et leurs équivalents « strikethrough »). Gain : le
+  plancher retombe à **Safari 13.1 (2020)**. Coût : quatre dépendances
+  explicites à la place d'une, et un pipeline markdown à re-vérifier sur les
+  113 tableaux et les 62 leçons. **C'est une décision d'architecture, pas un
+  correctif** : elle n'a pas été prise ici.
+- **Ne rien faire** — le produit reste inaccessible aux iPhone d'avant
+  iOS 16.4. La part d'élèves concernés n'est pas mesurable depuis ce dépôt.
+- **Transpiler plus bas** — inutile : aucun compilateur ne sait réécrire un
+  lookbehind, la sémantique n'a pas d'équivalent local.
+
+**Pourquoi ce n'est pas à un agent de trancher.** Le gain est réel mais
+l'exécution touche le rendu de tout le contenu ; et l'ampleur du bénéfice
+dépend d'une donnée que le dépôt n'a pas — la part d'iPhone anciens chez les
+élèves visés.
+
+---
+
 ## La PORTÉE de cette page, mesurée
 
 **Cette page ne recense pas toutes les décisions de propriétaire du dépôt.**

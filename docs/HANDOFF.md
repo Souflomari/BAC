@@ -12302,3 +12302,65 @@ misconception et le thème dans les deux schémas.
 tout ce qui a été mesuré décrit `014a80b`. L'instrument l'annonce en première
 ligne plutôt que de laisser croire qu'il parle de HEAD. Et la PRODUCTION reste
 hors de portée, humainement gardée (CLAUDE.md).
+
+## §11.163 — L'iPhone resté en iOS 15 : une page blanche, pour un lookbehind
+
+Sur Android, le moteur du navigateur se met à jour tout seul. **Sur iPhone, il
+est soudé au système** : un 6s, un 7, un SE de première génération sont bloqués
+en iOS 15 et ne verront jamais Safari 16.4. C'est exactement le téléphone
+d'occasion d'un lycéen.
+
+Et une syntaxe inconnue n'y « dégrade » pas. Elle lève une **SyntaxError** : le
+morceau entier meurt, la page reste blanche, et la veille d'hydratation propose
+de recharger — ce qui ne changera rien. Rien ne mesurait cela, et le dépôt n'a
+pas de `browserslist` : la valeur par défaut ne retient que des navigateurs de
+moins de deux ans.
+
+**Le plancher du produit, mesuré dans le paquet livré :**
+
+```
+  ?. et ??                Safari 13.1 · Chrome 80   (2020)
+  .at( · structuredClone  Safari 15.4 · Chrome 92/98  (API, TypeError ciblée)
+  regex lookbehind        Safari 16.4 · mars 2023   ← le plancher réel
+```
+
+### Deux sources, une corrigée
+
+**1. Le produit lui-même.** `src/lib/frenchTypography.ts` construisait
+`(?<=\p{L})'(?=\p{L})` pour remplacer l'apostrophe droite par l'apostrophe
+typographique — la règle qui rend « l'élève » en « l’élève ». Elle s'exécute au
+chargement du module.
+
+Corrigé : la lettre de gauche est **capturée** puis réécrite (`$1’`) au lieu
+d'être regardée derrière. Le lookahead, lui, est universel. Vérifié identique
+sur sept chaînes, apostrophes en chaîne comprises (« l'a'b »), et les 10 tests
+de `test-typographie` passent.
+
+**2. Une dépendance.** `mdast-util-gfm-autolink-literal`, tirée par
+`remark-gfm`, porte le sien dans un **littéral** — donc refusé à l'analyse. Elle
+sert à transformer une URL nue en lien. Ce que le corpus en fait :
+
+```
+  URL nues .............. 0        tableaux GFM ........... 113
+  e-mails nus ........... 0        notes, listes de tâches .. 0
+```
+
+**L'extension qui fixe le plancher ne sert à rien ici** — mais `remark-gfm` ne
+se retire pas, 113 tableaux en dépendent. Recomposer le greffon avec les seules
+extensions utilisées ferait retomber le plancher à Safari 13.1 ; c'est une
+décision d'architecture, posée en `DECISIONS-EN-ATTENTE §14`, pas prise ici.
+
+### La porte, et ce qu'elle a fait d'abord
+
+`syntaxe-vieux-moteurs.mjs` inventorie dix marqueurs dans le paquet et refuse
+tout lookbehind dans `src/`. Au premier passage, elle a accusé **le fichier
+qu'elle venait de faire corriger** : le commentaire qui explique le correctif
+cite le motif d'avant. Une porte qui punit la documentation apprend à ne plus
+documenter (ADR 0036 §3) — elle retire donc les commentaires avant de chercher.
+
+Sans build, elle garde la source et **le dit** au lieu de ne rien garder.
+
+**Ce qu'elle ne prouve pas** : aucun vieux moteur n'a été exécuté ici —
+Playwright ne fournit que des moteurs récents. La conséquence (page blanche) est
+déduite des tables de support ; ce qui est observé, c'est le marqueur dans le
+paquet livré.

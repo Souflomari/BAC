@@ -91,6 +91,9 @@ const ETAPES = [
   // La dépendance CACHÉE de quatre portes armées : un « $ » orphelin dans un
   // champ leur fait avaler le passage suivant, en restant vertes (§11.160).
   { nom: "dollars-apparies", cmd: ["scripts/dollars-apparies.mjs", "--porte"] },
+  // Sans build, elle garde la SOURCE et le dit : un lookbehind dans `src/` tue
+  // le morceau à l'analyse sur un iPhone resté en iOS 15 (§11.163).
+  { nom: "syntaxe-vieux-moteurs", cmd: ["scripts/syntaxe-vieux-moteurs.mjs", "--porte"] },
   // La suite d'essais rouges (ADR 0034) : elle casse une occurrence, mesure, et
   // restaure. Sans navigateur, et c'est le seul contrôle qui réponde à « mes
   // portes peuvent-elles encore crier ? » — la question qu'aucune porte ne pose

@@ -69,11 +69,22 @@ const SPACE_CLASS = `[ \\t${NBSP}${NNBSP}]`;
 /**
  * Match a straight apostrophe that is flanked on both sides by a letter.
  * `\p{L}` (any Unicode letter) is used so accented French letters count.
- * Lookbehind/lookahead keep the surrounding letters out of the match so
- * only the apostrophe is replaced.
+ *
+ * SANS LOOKBEHIND, ET C'EST LE SUJET (§11.163). La version précédente
+ * s'écrivait `(?<=\p{L})'(?=\p{L})`. Le lookbehind n'existe dans WebKit
+ * qu'à partir de **Safari 16.4 (mars 2023)** : sur un iPhone resté en iOS 15
+ * — un 6s, un 7, un SE de première génération, c'est-à-dire exactement le
+ * téléphone d'occasion d'un lycéen —, construire cette expression LÈVE, au
+ * chargement du module, et le morceau entier meurt avec elle.
+ *
+ * La lettre de gauche est donc CAPTURÉE puis réécrite (`$1’`) au lieu d'être
+ * regardée derrière. Le lookahead, lui, est universel. Comportement
+ * identique, y compris sur les apostrophes en chaîne (« l'a'b ») : le groupe
+ * ne consomme que la lettre de gauche, qui n'est jamais celle dont la
+ * prochaine paire a besoin.
  */
 const APOSTROPHE_BETWEEN_LETTERS = new RegExp(
-  `(?<=\\p{L})${APOSTROPHE_STRAIGHT}(?=\\p{L})`,
+  `(\\p{L})${APOSTROPHE_STRAIGHT}(?=\\p{L})`,
   "gu",
 );
 
@@ -141,7 +152,7 @@ export function frenchTypography(s: string): string {
   let out = s;
 
   // (a) straight apostrophe → typographic apostrophe, between letters only.
-  out = out.replace(APOSTROPHE_BETWEEN_LETTERS, APOSTROPHE_TYPO);
+  out = out.replace(APOSTROPHE_BETWEEN_LETTERS, `$1${APOSTROPHE_TYPO}`);
 
   // (b) straight double-quote pair → guillemets, BEFORE the spacing pass so
   // the guillemets it produces receive their narrow no-break spaces below.

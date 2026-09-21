@@ -468,6 +468,15 @@
       "de": "text: \"Le cadenas Y, car il a plus de roues (4 contre 3)\"",
       "vers": "text: \"$Le cadenas Y, car il a plus de roues (4 contre 3)\"",
       "porte": "node scripts/dollars-apparies.mjs --porte"
+    },
+    {
+      "id": "§11.163",
+      "quoi": "un lookbehind réintroduit dans le code du produit — mort à l'analyse sur iOS 15",
+      "notion": "web/src/lib",
+      "fichier": "src/lib/frenchTypography.ts",
+      "de": "`(\\\\p{L})${APOSTROPHE_STRAIGHT}(?=\\\\p{L})`",
+      "vers": "`(?<=\\\\p{L})${APOSTROPHE_STRAIGHT}(?=\\\\p{L})`",
+      "porte": "node scripts/syntaxe-vieux-moteurs.mjs --porte"
     }
   ]
 }

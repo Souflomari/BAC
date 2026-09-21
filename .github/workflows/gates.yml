@@ -309,6 +309,17 @@ jobs:
       - name: "Dollars appariés dans les champs de contenu (cliquet 0)"
         run: npm run dollars-apparies
 
+      # PORTE « VIEUX MOTEURS » (2026-09-21, §11.163). Sur Android le moteur se
+      # met à jour seul ; sur iPhone il est soudé au système — un 6s, un 7, un
+      # SE restent en iOS 15 et ne verront jamais Safari 16.4. Une syntaxe
+      # inconnue n'y dégrade pas : elle lève une SyntaxError, le morceau meurt,
+      # et l'élève voit une page blanche que « Recharger » ne répare pas. Le
+      # regex lookbehind est exactement ce cas (Safari 16.4, mars 2023). Deux
+      # cliquets : 0 dans `src/` (corrigé ce jour dans frenchTypography) et 1
+      # dans le paquet (mdast-util-gfm-autolink-literal, décision owner §14).
+      - name: "Syntaxe livrée pour vieux moteurs (2 cliquets)"
+        run: npm run syntaxe-vieux-moteurs
+
       # PORTE FIGURES (2026-09-04). figure-preview mesure sept classes de
       # défaut sur les 258 SVG statiques ; CINQ sont armées, et seulement
       # parce qu'elles sont propres dans les DEUX thèmes :
