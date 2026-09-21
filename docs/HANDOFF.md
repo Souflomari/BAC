@@ -13163,3 +13163,69 @@ rapides`) fait crier la porte. La version « par notion » serait restée verte.
 Node pur — ni build ni navigateur — donc dans la batterie locale, et
 `gates.yml` passe à 56 étapes. Au manifeste : `§11.172` et `§11.172 (b)`
 (64 essais).
+
+---
+
+## §11.173 — Le style appliqué et sans effet : `.katex` est `display: inline`
+
+**2026-09-21.** Re-passage des instruments hors CI sur HEAD. Onze d'entre eux
+tiennent ; `zoom-sweep` rapporte **11 signalements à 360 px avec le texte à
+200 %**, tous sur des épreuves SPC, tous « carte coupée ».
+
+### Attribuer avant de corriger
+
+```
+  page                      débordement DANS le sur-titre   AILLEURS
+  spc-2025-normale                     7                       113
+  spc-2025-rattrapage                  0                       308
+  spc-2023-normale                     0                       496
+  … (7 autres)                         0                    161–561
+```
+
+**Dix sur dix débordaient déjà ailleurs** — des centaines d'éléments par page,
+les formules des énoncés à 360 px avec le texte doublé. Classe connue, acceptée
+(§11.38 : « laisser plier »).
+
+**Un seul signalement était le mien.** Rendre le sur-titre de partie par le
+moteur (§11.166) a remplacé un `$…$` en TEXTE — qui se replie comme de la
+prose — par une formule KaTeX, qui est un bloc **insécable**. Elle dépassait la
+carte de 24 px, et la carte est en `overflow-hidden` : la fin du libellé était
+coupée.
+
+### Le correctif, et la mesure qui l'a démenti la première fois
+
+La formule **seule** devient défilable, pas le paragraphe : un paragraphe
+défilant serait un arrêt de tabulation de plus, et l'épreuve a déjà payé ce
+prix (§11.39, 243 arrêts pour 48 questions).
+
+Premier jet : `max-w-full` + `overflow-x-auto` sur `.katex`. Re-mesuré :
+**toujours 2 éléments coupés, rien n'avait bougé**. La raison, lue dans le
+style calculé plutôt que devinée :
+
+```
+  .katex  display: inline   max-width: 100%   overflow-x: auto
+```
+
+**KaTeX rend `.katex` en `display: inline`, et une boîte en ligne ignore
+`max-width` comme `overflow`.** Le style était bien là — il se lisait dans le
+calculé — et il ne faisait rien. Une porte qui aurait demandé « la règle
+est-elle présente ? » l'aurait déclarée verte. Il fallait `inline-block`.
+
+### Après
+
+```
+  coupés à 360 px / texte 200 %  ..... 0   (avant : 2)
+  coupés à 1280 px / texte 100 % ..... 0
+  zoom-sweep ......................... 10 signalements (avant : 11)
+```
+
+**Et le correctif ne coûte rien en hauteur**, ce qui n'allait pas de soi : un
+`inline-block` défilant peut prendre une ligne à lui seul. Comparé dans la
+MÊME page, en forçant `.katex` en `inline` puis en le relâchant — hauteur du
+plus grand sur-titre **503 px dans les deux cas**, somme des treize sur-titres
+**3 204 px dans les deux cas**. Le sur-titre de 503 px à 360 px avec le texte
+doublé n'est pas nouveau : c'est un libellé long qui se replie sur dix-neuf
+lignes, et cela ne dépend pas de la formule.
+
+Les portes de l'épreuve re-passent vertes : barème fermé (20,00/20 sur 39),
+LaTeX nu 0 sur 39, typographie 0.

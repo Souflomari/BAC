@@ -87,7 +87,26 @@ export const MdBlock = memo(function MdBlock({
     </ReactMarkdown>
   );
   if (inline) {
-    return <span className={cn("[&_.katex]:normal-case", className)}>{contenu}</span>;
+    //  UNE FORMULE NE SE COUPE PAS EN DEUX (§11.173). Rendre le sur-titre par
+    //  le moteur (§11.166) a remplacé un `$…$` en texte — qui se replie comme
+    //  de la prose — par une formule KaTeX, qui est un bloc en ligne
+    //  INSÉCABLE. À 360 px avec le texte à 200 %, elle dépassait la carte de
+    //  24 px, et la carte est en `overflow-hidden` : la fin du libellé était
+    //  simplement coupée. La formule seule devient donc défilable, pas le
+    //  paragraphe — un paragraphe défilant deviendrait un arrêt de tabulation
+    //  de plus, et l'épreuve en a déjà payé le prix (§11.39).
+    //
+    //  `inline-block` EST LA CLÉ, et elle a coûté une mesure pour rien : posé
+    //  d'abord sans elle, `max-width` et `overflow` n'ont RIEN fait, parce que
+    //  KaTeX rend `.katex` en `display: inline` — et une boîte en ligne ignore
+    //  l'un comme l'autre. Le style était appliqué (il se lisait dans le
+    //  calculé) et sans effet : une porte qui aurait regardé « la règle est-elle
+    //  là ? » l'aurait déclarée verte.
+    return (
+      <span className={cn("[&_.katex]:normal-case [&_.katex]:inline-block [&_.katex]:max-w-full [&_.katex]:overflow-x-auto [&_.katex]:align-bottom", className)}>
+        {contenu}
+      </span>
+    );
   }
   return (
     <div className={cn("prose-lesson max-w-none [&_.katex-display]:my-3", className)}>
