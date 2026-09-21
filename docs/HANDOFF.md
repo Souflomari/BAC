@@ -13517,3 +13517,50 @@ forme que la porte savait déjà voir. Il criait, et ne prouvait rien. Un essai
 rouge doit porter la forme que le PRODUIT écrit, pas celle que la porte
 cherche ; sinon il mesure l'accord de la porte avec elle-même. C'est la même
 famille que « une porte qui se cite elle-même se disculpe » (ADR 0036).
+## §11.177 — La carte du poids : de 77 ko à 389 ko par leçon, et un `fetch` qui décompresse dans le dos
+
+**LA QUESTION QUE PERSONNE NE POSAIT.** §11.175 a montré qu'une leçon pèse
+lourd. Laquelle pèse le plus ? Personne ne l'avait mesuré — `donnees-sweep`
+compte ce qu'une SESSION télécharge, jamais ce que chaque leçon coûte
+séparément. Pour un produit destiné à des forfaits mobiles serrés, c'est la
+question de terrain.
+
+**LA CARTE**, les 62 leçons, ce que l'élève télécharge réellement :
+
+```
+la plus lourde   /notions/pc/chute-mouvements-plans       3,99 Mo brut   389 ko gzip
+                 /notions/pc/reactions-acido-basiques     4,45 Mo        375 ko
+                 /notions/pc/rlc-serie                    2,89 Mo        317 ko
+                 /notions/maths/geometrie-espace          4,68 Mo        317 ko
+médiane                                                                  139 ko
+la plus légère   /notions/svt/soi-non-soi                 0,42 Mo         77 ko
+corpus entier                                           100,59 Mo      10,35 Mo
+```
+
+**UN FACTEUR 5 ENTRE LA PLUS LÉGÈRE ET LA PLUS LOURDE — et ce n'est l'erreur
+d'aucune page.** La composition est la même partout : charge RSC **50 à 57 %**
+sur toutes, lourdes comme légères. Ce qui varie est la densité de FORMULES —
+0 sur `soi-non-soi`, 845 sur `chute-mouvements-plans`, 1 150 sur
+`geometrie-espace`. Le poids d'une leçon, c'est son nombre de formules KaTeX,
+doublé par la charge RSC. Il n'y a donc rien à « corriger » leçon par leçon :
+le levier restant est architectural (déplacer des frontières client), et il
+appartient au propriétaire.
+
+**LE PIÈGE, ET IL A MENTI AVANT D'ÊTRE VU.** Le premier jet du balayage
+annonçait `100,59 Mo brut, 100,59 Mo gzip` — identiques à l'octet près sur les
+62 leçons. Le `fetch` de Node **décompresse tout seul** : demander
+`Accept-Encoding: gzip` puis lire `arrayBuffer()` rend les octets
+DÉCOMPRESSÉS. La mesure était fausse d'un facteur 10, et elle avait l'air
+propre. Seul `curl` rapporte ce qui est vraiment passé sur le fil
+(`%{size_download}`), et le mode refuse désormais de tourner sans lui plutôt
+que d'imprimer un chiffre qui n'est pas celui qu'il annonce.
+
+C'est la treizième fois de la journée qu'une mesure est fausse avant le
+produit (ADR 0035 : *vérifier le BANC avant le produit*). La forme est
+toujours la même — l'outil rend obligeamment une valeur plausible pour une
+question qu'on n'a pas posée.
+
+**REJOUABLE, pas recopié.** `node scripts/temps-de-chargement.mjs --corpus`
+refait la carte en quelques secondes, sans navigateur. Une propriété qu'on ne
+peut pas re-mesurer est un souvenir (ADR 0034) : ce tableau vieillira, la
+commande non.

@@ -902,6 +902,15 @@ instable apprend à ignorer le rouge de toutes les autres (ADR 0036). Les
 valeurs absolues sont celles de ce conteneur ; ce qui survit au changement de
 machine, c'est le CLASSEMENT entre pages et l'identité de l'élément LCP.
 
+**Second mode, `--corpus`** (§11.177) : le POIDS des 62 leçons, sans
+navigateur, trié par ce que l'élève télécharge. De **77 ko à 389 ko** gzip,
+médiane 139 ko, corpus 10,35 Mo — un facteur 5, qui suit la densité de
+formules et non une erreur de page (charge RSC 50–57 % partout). Piège inscrit
+dans le code : le `fetch` de Node décompresse tout seul, donc le premier jet
+annonçait gzip == brut ; le mode passe par `curl %{size_download}` et refuse de
+tourner sans lui plutôt que d'imprimer un chiffre qui n'est pas celui qu'il
+annonce.
+
 ## `web/scripts/source-en-double.mjs` — la leçon ne doit pas repartir dans la page
 
 **PORTE, armée en CI (57ᵉ étape).** La moitié d'un document de leçon (53,7 %)
