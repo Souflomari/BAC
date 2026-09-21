@@ -113,6 +113,22 @@ Read the right document for the task at hand:
   ENSEMBLE ; et le geste de vérification le plus utile est le plus bête — faire
   ce que ferait l'élève jusqu'au bout et lire le chiffre (deux épreuves sur 39
   refusaient le 20/20 à une copie parfaite).
+  **ADR 0039 (2026-09-21) — la forme que le produit écrit :** un manifeste de
+  build n'est pas le graphe de modules (un `import()` paresseux y est
+  invisible) ; **ce n'est pas la chose cherchée qui change de forme, c'est le
+  PRODUIT qui la réécrit avant de l'écrire** — une porte qui compare du texte à
+  du texte RENDU doit justifier que les deux côtés sont dans la même forme, ou
+  changer d'empreinte pour ce que le rendu ne peut pas produire ; un essai
+  rouge doit porter la forme que le PRODUIT écrit, pas celle que la porte
+  cherche ; **le premier chiffre rouge n'est pas plus fiable que le vert qu'il
+  remplace** (53 trouvées, aucune n'était le défaut visé) ; une UNITÉ mal
+  choisie noie le signal sous la convention (`cp-r0-predict` dans 62 notions
+  sur 62 est un nom de rôle, pas une collision) ; un défaut LATENT se gate sans
+  s'alarmer et sans se corriger en douce ; **quand un dépôt s'écrit un seuil
+  plus exigeant que la norme, il faut mesurer les DEUX** — le normatif s'arme,
+  le maison s'imprime à côté sans rougir ; et deux valeurs qui devraient
+  différer et sont égales à l'octet près sont un défaut de mesure, pas un
+  résultat.
   **ADR 0032 (2026-09-11) — the honest wait before
   hydration:** a server-rendered command is `disabled` + `aria-busy` until
   React takes over (`useHydrated`), the page says so once, calmly, and
