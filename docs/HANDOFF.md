@@ -14057,3 +14057,34 @@ les gates qui ne trouvaient pas Chromium (l'image porte la build 1194,
 > invisible à l'œil, sur dix pages, pour l'élève qui grossit le texte sur un
 > petit téléphone. **La porte savait déjà quoi faire : elle imprimait la loi
 > et le correctif sous son propre rouge.**
+
+**CONFIRMÉ SUR L'ARTEFACT DÉPLOYÉ.** La mesure de `zoom-sweep` rejouée à
+l'identique (320 px, `fontSize = 32px`, épreuve ouverte en deux clics) contre
+`bac-pink.vercel.app`, build servi **`6272c67`** — les dix épreuves qui étaient
+coupées : **0 carte coupée sur 10**. Le navigateur atteint le déployé par
+l'épingle SPKI du relais, calculée depuis le CA sur disque comme le fait
+`deploye-sweep` (pas `--ignore-certificate-errors`, qui accepterait n'importe
+quoi).
+
+**UN RÉSULTAT NÉGATIF DU MÊME BALAYAGE, pour qu'il ne soit pas ré-enquêté.**
+`espacement-texte` signale « coupés 4 » et « coupés 10 » sur les étiquettes du
+rail de chapitres (`button.group > span.absolute`). Mesuré : **9 sur 10 sont
+tronquées même en usage NORMAL**, une étiquette de 433 px dans une boîte de
+224 px. Ce n'est pas un défaut :
+
+- `text-overflow: ellipsis` est **calculé** — la troncature est VISIBLE, pas
+  silencieuse (vérifié sur le style calculé, pas sur la classe `truncate` :
+  ADR 0038) ;
+- le `span` est `aria-hidden="true"` et le **nom accessible du bouton porte le
+  titre ENTIER** — un lecteur d'écran ne perd rien ;
+- le plafond est délibéré et commenté dans `MarginRail` (« Cap the tooltip at a
+  reasonable width for long titles »).
+
+C'est pour cela que l'instrument imprime le chiffre sans rougir : il distingue
+« coupé » de « sort du cadre », et seul le second est un défaut.
+
+**ÉTAT DU BALAYAGE COMPLET (2026-09-22).** 16 portes CI au navigateur + une
+vingtaine d'instruments locaux, lancés à la main : **toutes vertes** après le
+correctif. Les seuls rouges rencontrés étaient un vrai défaut (celui-ci), un
+rouge délibéré (`couverture-diagnostique`, arbitrage propriétaire), deux
+erreurs d'usage de ma part (arguments manquants) et trois bancs bougés.
