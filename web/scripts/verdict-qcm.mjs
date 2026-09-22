@@ -73,6 +73,7 @@ const positionCorrecte = (item) =>
 
 // ── la donnée : id d'item → position attendue de la bonne réponse ──
 const attendu = new Map();
+const clonesEnLigne = new Set();
 const routesCorpus = [];
 for (const m of fs.readdirSync(CONTENT)) {
   for (const n of fs.readdirSync(path.join(CONTENT, m))) {
@@ -87,6 +88,21 @@ for (const m of fs.readdirSync(CONTENT)) {
       //  fausses contradictions, sur un produit correct. La collision était
       //  dite « latente aujourd'hui, piège demain » — c'est demain.
       attendu.set(`/notions/${m}/${n}::${it.id}`, { pos: positionCorrecte(it), n: (it.choices ?? []).length });
+    }
+    //  LES CLONES. Un item dont un point d'arrêt se déclare `clone_of_<id>`
+    //  est SURFACÉ EN LIGNE dans la leçon et volontairement retiré de la
+    //  banque de fin (`ItemsSection`), pour que l'élève ne revoie pas la même
+    //  question deux fois. Ce n'est PAS un item non rendu : c'est un item
+    //  rendu ailleurs. Le tag est une PROVENANCE, pas une copie — deux points
+    //  d'arrêt peuvent citer la même source avec des énoncés différents
+    //  (`EQDIFF-10`, deux fois dans equations-differentielles).
+    const fcp = path.join(CONTENT, m, n, "checkpoints.yaml");
+    if (fs.existsSync(fcp)) {
+      for (const c of yaml.load(fs.readFileSync(fcp, "utf8")).checkpoints ?? []) {
+        if (typeof c.item_source === "string" && c.item_source.startsWith("clone_of_")) {
+          clonesEnLigne.add(`/notions/${m}/${n}::${c.item_source.slice("clone_of_".length)}`);
+        }
+      }
     }
   }
 }
@@ -189,14 +205,28 @@ for (const route of routes) {
 }
 await nav.close();
 
-//  LA PORTÉE, dite à voix haute. Un total d'items « couverts » qui ne dit pas
-//  combien sont restés hors d'atteinte est un plancher déguisé en somme
-//  (ADR 0036). Les non-vus sont les items qu'aucune page de leçon ne rend —
-//  points d'arrêt, items de banque, chapitres non montés — pas des échecs.
-const jamaisVus = [...attendu.keys()].filter((k) => !vus.has(k));
+//  LA PORTÉE EST UNE PROPRIÉTÉ, PAS UN CHIFFRE. Un item absent de la banque de
+//  fin doit être absent POUR UNE RAISON : il est surfacé en ligne comme point
+//  d'arrêt (`clone_of_<id>`). On vérifie les DEUX SENS — tout absent est un
+//  clone, tout clone est absent. Un total qui tait ses absents est un plancher
+//  déguisé en somme (ADR 0036) ; un total qui les nomme sans les expliquer est
+//  une rumeur.
+const parcourues = new Set(routes);
+const concernes = [...attendu.keys()].filter((k) => parcourues.has(k.split("::")[0]));
+const absents = concernes.filter((k) => !vus.has(k));
+const inexpliques = absents.filter((k) => !clonesEnLigne.has(k));
+const clonesPresents = [...clonesEnLigne].filter((k) => parcourues.has(k.split("::")[0]) && vus.has(k));
 console.log(`\nverdict-qcm : ${mesures} réponse(s) mesurée(s) sur ${routes.length} leçon(s)`);
-console.log(`  items connus ${attendu.size} · rendus et répondus ${vus.size} · jamais rendus ${jamaisVus.length}`);
-if (jamaisVus.length) console.log(`  (échantillon non rendu : ${jamaisVus.slice(0, 3).map((k) => k.split("::")[1]).join(", ")}…)`);
+console.log(`  items de ces leçons ${concernes.length} · répondus ${vus.size} · hors banque de fin ${absents.length}`);
+console.log(`  dont surfacés en POINT D'ARRÊT (clone_of_…) : ${absents.length - inexpliques.length}/${absents.length}`);
+if (inexpliques.length) {
+  console.error(`  ⚠ ${inexpliques.length} item(s) absents SANS raison connue : ${inexpliques.slice(0, 5).map((k) => k.split("::")[1]).join(", ")}`);
+  sansVerdict.push(`${inexpliques.length} item(s) hors banque de fin et non clonés`);
+}
+if (clonesPresents.length) {
+  console.error(`  ⚠ ${clonesPresents.length} clone(s) pourtant RENDU(S) dans la banque de fin : ${clonesPresents.slice(0, 5).map((k) => k.split("::")[1]).join(", ")}`);
+  sansVerdict.push(`${clonesPresents.length} clone(s) posé(s) deux fois sous les yeux de l'élève`);
+}
 if (fautes.length) { console.error(`\n${fautes.length} VERDICT(S) QUI CONTREDISENT LA DONNÉE :`); for (const f of fautes) console.error(`  ✗ ${f}`); }
 if (sansVerdict.length) { console.error(`\n${sansVerdict.length} item(s) muet(s) ou incomplet(s) :`); for (const s of sansVerdict.slice(0, 10)) console.error(`  ⚠ ${s}`); }
 if (mesures === 0) { console.error("MUET : aucune réponse mesurée — rien n'a été vérifié."); process.exit(1); }

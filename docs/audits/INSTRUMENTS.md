@@ -1075,9 +1075,12 @@ réécrivent la chaîne avant de l'écrire (ADR 0039).
 - **vert** : 1 481 réponses sur les 62 leçons — chaque bonne réponse dite
   bonne, chaque distracteur dit faux, et **toutes** montrent une explication
   dépliable ;
-- **portée dite à voix haute** : 1 612 items connus, 1 481 rendus et répondus,
-  **131 jamais rendus** par une page de leçon (`AR-3`, `AR-12`, `AR-18`…). Un
-  total qui tait les non-vus est un plancher déguisé en somme (ADR 0036) ;
+- **portée VÉRIFIÉE, dans les deux sens** : 1 612 items, 1 481 répondus,
+  131 hors de la banque de fin — et **131/131** sont là parce qu'un point
+  d'arrêt les surface en ligne (`item_source: clone_of_<id>`), donc aucun
+  contenu mort. La porte exige les deux sens : tout absent est un clone, tout
+  clone est absent. (Première rédaction : « 131 jamais rendus » — faux, j'avais
+  cherché les clones dans `items.yaml` au lieu de `checkpoints.yaml`.) ;
 - `--essai-rouge` JOUÉ, pas décrit : il décale de **−1** la position attendue,
   ce qui fait tomber la cible « juste » sur un distracteur ET la cible
   « distracteur » sur la vraie bonne réponse — les DEUX sens crient (4/4 sur

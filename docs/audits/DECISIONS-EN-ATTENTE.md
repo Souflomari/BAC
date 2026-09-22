@@ -541,9 +541,12 @@ entier ? Les deux lectures :
   au-dessus des 50 : il faudrait relever la limite, ce que le fichier
   déconseille explicitement, ou découper le job.
 
-**CHIFFRE UTILE POUR TRANCHER :** 131 items sur 1 612 ne sont rendus par AUCUNE
-page de leçon (`AR-3`, `AR-12`, `AR-18`…). Ni six ni soixante-deux leçons ne les
-couvrent — c'est une question de placement de contenu, pas de budget CI.
+**CHIFFRE UTILE POUR TRANCHER :** 131 items sur 1 612 ne sont pas dans la banque
+de fin — non parce qu'ils manquent, mais parce qu'un point d'arrêt les surface
+EN LIGNE (`item_source: clone_of_<id>`). La porte le vérifie désormais dans les
+deux sens, 131/131. Ni six ni soixante-deux leçons ne les répondent en tant
+qu'items de banque, et c'est normal ; ce n'est donc pas un argument dans cet
+arbitrage.
 
 ---
 

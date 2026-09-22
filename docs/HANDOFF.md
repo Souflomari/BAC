@@ -14117,13 +14117,31 @@ et une sonde qui compare du rendu à de la source répond à une autre question
 
 ```
 1 481 réponse(s) mesurée(s) sur 62 leçon(s)
-  items connus 1612 · rendus et répondus 1481 · jamais rendus 131
+  items de ces leçons 1612 · répondus 1481 · hors banque de fin 131
+  dont surfacés en POINT D'ARRÊT (clone_of_…) : 131/131
 VERT — chaque bonne réponse est dite bonne, chaque distracteur est dit faux,
        et tous montrent une explication.
 ```
 
-Les 131 non rendus sont dits à voix haute (`AR-3`, `AR-12`, `AR-18`…) : un total
-qui tait ce qu'il n'a pas vu est un plancher déguisé en somme (ADR 0036).
+**CORRECTION DU MÊME JOUR — j'avais d'abord écrit « 131 jamais rendus », et
+c'était faux.** Ces 131 items ne sont pas du contenu mort : chacun est
+**surfacé en ligne comme point d'arrêt** et retiré de la banque de fin par
+`ItemsSection`, pour que l'élève ne revoie pas la même question deux fois.
+Le lien est explicite dans `checkpoints.yaml` : `item_source: clone_of_<id>`.
+J'avais cherché ces clones dans `items.yaml` — le mauvais fichier — trouvé
+zéro, et conclu au contenu mort.
+
+La vérification est maintenant une PROPRIÉTÉ, pas un chiffre : tout item
+absent de la banque de fin doit être un clone, et tout clone doit être absent.
+**131/131 dans les deux sens.** Le compte des clones est de 132 pour 131 items
+distincts — `EQDIFF-10` est cité par deux points d'arrêt, et c'est légitime :
+`item_source` est une PROVENANCE, pas une copie ; les deux portent des énoncés,
+des habiletés et des placements différents ($y' + 3y = 0$ contre la
+vérification par substitution de $y' = -4y$).
+
+> Un chiffre qu'on ne sait pas expliquer n'est pas une mesure, c'est une
+> rumeur — même quand il est exact. « 131 » était juste ; « jamais rendus »
+> était faux, et c'est la moitié qui comptait.
 
 **LA DONNÉE, vérifiée à part et d'abord :** 1 612 items, **tous** avec une
 explication (`solution` ou `correct_feedback`) ; 1 612 choix sans feedback,
