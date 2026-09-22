@@ -7,9 +7,12 @@
  *   node scripts/radios-clavier.mjs   (⚠️ depuis web/, serveur sur :3911)
  */
 import { chromium } from "playwright-core";
-const nav = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium" });
+// Même défaut qu'avant (:3911, la convention écrite dans l'en-tête) —
+// BASE permet en plus de viser un serveur déjà debout.
+const BASE = process.env.BASE ?? "http://127.0.0.1:3911";
+const nav = await chromium.launch({ executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium" });
 const p = await nav.newPage({ viewport: { width: 1280, height: 900 } });
-await p.goto("http://127.0.0.1:3911/examens/sm-2025-normale", { waitUntil: "load" }); await p.waitForFunction(() => !!window.__bacVivant);
+await p.goto(BASE + "/examens/sm-2025-normale", { waitUntil: "load" }); await p.waitForFunction(() => !!window.__bacVivant);
 await p.getByRole("button", { name: /commencer/i }).first().click(); await p.waitForSelector("[data-sujet-complet]", { timeout: 60000 });
 await p.getByRole("button", { name: /terminer/i }).first().click(); await p.waitForSelector("[data-corrige-complet]", { timeout: 60000 });
 const ou = () => p.evaluate(() => { const a = document.activeElement; if (!a || a === document.body) return "body"; return `${a.tagName.toLowerCase()}[${a.getAttribute("role") || ""}${a.getAttribute("aria-checked") != null ? " checked=" + a.getAttribute("aria-checked") : ""}] « ${(a.textContent || a.getAttribute("aria-label") || "").trim().slice(0, 22)} »`; });

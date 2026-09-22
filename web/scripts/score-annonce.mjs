@@ -7,9 +7,12 @@
  */
 // En correction, noter une question fait-il changer une région live polie ?
 import { chromium } from "playwright-core";
-const nav = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium" });
+// Même défaut qu'avant (:3911, la convention écrite dans l'en-tête) —
+// BASE permet en plus de viser un serveur déjà debout.
+const BASE = process.env.BASE ?? "http://127.0.0.1:3911";
+const nav = await chromium.launch({ executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium" });
 const p = await nav.newPage({ viewport: { width: 1280, height: 900 } });
-await p.goto("http://127.0.0.1:3911/examens/sm-2025-normale", { waitUntil: "load" }); await p.waitForFunction(() => !!window.__bacVivant);
+await p.goto(BASE + "/examens/sm-2025-normale", { waitUntil: "load" }); await p.waitForFunction(() => !!window.__bacVivant);
 await p.getByRole("button", { name: /commencer/i }).first().click(); await p.waitForSelector("[data-sujet-complet]", { timeout: 60000 });
 await p.getByRole("button", { name: /terminer/i }).first().click(); await p.waitForSelector("[data-corrige-complet]", { timeout: 60000 });
 const bar = await p.evaluate(() => { const b = document.querySelector("[data-barre-epreuve] p"); return { live: b?.getAttribute("aria-live"), atomic: b?.getAttribute("aria-atomic"), txt: b?.textContent.replace(/\s+/g, " ").trim() }; });

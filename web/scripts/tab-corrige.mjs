@@ -6,9 +6,12 @@
  *   node scripts/tab-corrige.mjs   (⚠️ depuis web/, serveur sur :3911)
  */
 import { chromium } from "playwright-core";
-const nav = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium" });
+// Même défaut qu'avant (:3911, la convention écrite dans l'en-tête) —
+// BASE permet en plus de viser un serveur déjà debout.
+const BASE = process.env.BASE ?? "http://127.0.0.1:3911";
+const nav = await chromium.launch({ executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium" });
 const p = await nav.newPage({ viewport: { width: Number(process.env.W ?? 1280), height: 900 } });
-await p.goto("http://127.0.0.1:3911/examens/sm-2025-normale", { waitUntil: "load" }); await p.waitForFunction(() => !!window.__bacVivant);
+await p.goto(BASE + "/examens/sm-2025-normale", { waitUntil: "load" }); await p.waitForFunction(() => !!window.__bacVivant);
 await p.getByRole("button", { name: /commencer/i }).first().click(); await p.waitForSelector("[data-sujet-complet]", { timeout: 60000 });
 await p.getByRole("button", { name: /terminer/i }).first().click(); await p.waitForSelector("[data-corrige-complet]", { timeout: 60000 });
 await p.evaluate(() => { const g = document.querySelector("[data-exam-exo]"); const b = document.createElement("button"); b.id = "amorce"; g.parentElement.insertBefore(b, g); b.focus(); });

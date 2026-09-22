@@ -13929,3 +13929,62 @@ du propriétaire n'est pas une décision de mesure.
 > Une porte locale a fait le travail que la CI ne pouvait pas faire — mais
 > seulement parce que je l'ai lancée. **Le correctif que je croyais prouvé
 > tenait sur une grille dont la case manquante était la seule qui comptait.**
+
+---
+
+## §11.182 — Un instrument catalogué qui ne pouvait pas démarrer, et trois que rien ne pouvait déplacer
+
+**TROUVÉ EN BALAYANT LES INSTRUMENTS LOCAUX**, pendant que la CI dort depuis
+le 2026-09-11. `renvois-visibles` — le compteur détaillé du jargon d'autorat
+visible à l'écran, celui dont l'en-tête dit « cet outil reste le compteur
+détaillé » — échouait à la première page, à chaque lancement :
+
+```
+page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:3495/notions/maths/arithmetique
+```
+
+Il visait un port **en dur** que rien ne documente, que rien ne lève et qu'aucune
+convention du dépôt n'utilise. Pas de `BASE`, pas de serveur propre. Un
+instrument catalogué, cité dans INSTRUMENTS, et **inexécutable**. Comme
+`source-en-double` (§11.180), mais pire : celle-là au moins aurait rougi en CI.
+
+**LA MESURE DE LA CLASSE**, sonde corrigée (le premier jet retirait les
+commentaires avec `//` et mangeait les URL `http://` — aveugle à ce qu'il
+cherchait, pour la troisième fois de la journée) :
+
+| instrument | port en dur | conséquence |
+|---|---|---|
+| `renvois-visibles` | :3495 | **ne démarre pas** — rien ne l'écoute jamais |
+| `radios-clavier`, `score-annonce`, `tab-corrige` | :3911 | marchent par CONVENTION (l'en-tête le dit), mais rien ne peut les déplacer |
+| `recherche-navigateur` | :3494 | lève son propre serveur — sain |
+
+**CE QUI A ÉTÉ FAIT.** `renvois-visibles` lève son propre `next start` (tué par
+son GROUPE), honore `BASE` et `PW_CHROMIUM_PATH`. Les trois autres gardent
+exactement leur défaut `:3911` et gagnent `BASE`. Résultat, pour la première
+fois : **62/62 leçons LUES, 0 « rung », 0 code R**. L'état inscrit dans son
+en-tête était « 529 → 1 », le survivant étant le résistor `R0` du schéma RL ;
+il est à zéro.
+
+**DEUX DÉFAUTS DE PLUS, TROUVÉS EN LE RÉPARANT.**
+
+1. *Il attendait `networkidle`* — 500 ms de silence réseau qui n'arrivaient
+   jamais : 30 s par page × 62, l'instrument dépassait 30 min et rendait
+   `exit 124` sans un chiffre. Il attend maintenant `load` puis
+   `window.__bacVivant`, comme tout le reste du dépôt.
+2. *Son zéro était AMBIGU.* Il annonçait « 0 leçon(s) » — c'est-à-dire zéro
+   leçon FAUTIVE — et le même zéro sortait d'un balayage de 62 pages propres
+   et d'un balayage qui n'avait rien ouvert. Il imprime désormais
+   `62/62 leçons LUES` et sort en erreur si ce compte est nul : VERT et MUET
+   ne se confondent plus (ADR 0034).
+
+**ET J'AI CASSÉ LES TROIS AUTRES EN LES RÉPARANT.** Mon remplacement en bloc
+de l'URL a aussi frappé la ligne que je venais d'écrire, produisant
+`const BASE = process.env.BASE ?? BASE + "";` — **syntaxe valide, plantage
+garanti à l'exécution**. `node --check` est passé sur les trois. Rattrapé en
+les LANÇANT, pas en les vérifiant.
+
+> `node --check` dit qu'un fichier se parse, pas qu'il tourne. **Trois fois
+> aujourd'hui un texte de remplacement a frappé le texte que je venais
+> d'écrire** — la garde qui lisait son propre commentaire, l'assertion qui
+> butait sur le mien, et ce défaut-ci. Le seul remède qui a marché à chaque
+> fois : lancer la chose.
