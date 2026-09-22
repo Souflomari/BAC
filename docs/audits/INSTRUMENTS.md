@@ -1012,6 +1012,12 @@ seules les colonnes épreuves et panneau la faisaient rougir. La condition la
 plus directe des trois était désarmée sans que rien ne le dise. Le compteur
 compte désormais **par groupe** — une unité fausse noie le signal (ADR 0039).
 
+**Pas d'entrée au manifeste des essais rouges**, pour la raison exacte de
+`source-en-double` : `essai-rouge.mjs` casse UN motif dans un fichier SOURCE,
+et cette porte lit un DOM rendu — sans reconstruction, la sabotage n'atteindrait
+jamais la porte (ADR 0038, 3ᵉ loi). Son rouge se rejoue par son `--essai-rouge`
+intégré, qui sabote ce qui est à portée : ce que la porte croit savoir.
+
 **Autonome.** Sans `BASE`, elle lève son propre `next start` et le tue par son
 groupe de processus. Sans cela une porte n'est pas armable en CI, où rien
 n'écoute d'avance — le défaut exact que `source-en-double` portait en silence
@@ -1096,6 +1102,11 @@ pas de repli `<details>` — il révèle le feedback de la ligne correcte
 (`revealCorrectFeedback`) ; on exige le verdict, pas le dépliant.
 Corpus : **1 481 réponses d'item + 362 de point d'arrêt**, toutes justes ;
 essai rouge **72/72** sur les deux surfaces.
+
+**Pas d'entrée au manifeste des essais rouges**, même raison : la sabotage
+naturelle serait un `.tsx` ou un `.yaml`, et la porte mesure un DOM rendu après
+build. Son `--essai-rouge` intégré décale l'attente de −1 et exige que les deux
+surfaces crient dans les deux sens — 72/72 sur l'essai.
 
 **DEUX DÉFAUTS DE SONDE trouvés en l'écrivant, tous deux du même genre.**
 
