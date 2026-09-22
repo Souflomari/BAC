@@ -80,6 +80,13 @@ export function CheckpointItem({ item }: CheckpointItemProps) {
 
   return (
     <div
+      // Identifie le point d'arrêt (checkpoints.yaml) dans le DOM, comme
+      // `data-item-id` le fait pour McqItem. AJOUTÉ le 2026-09-22 (§11.185) :
+      // sans lui, les 132 points d'arrêt du corpus — la PREMIÈRE chose qu'un
+      // élève rencontre dans une leçon, avant la banque de fin — n'étaient
+      // identifiables par aucun instrument, donc leur verdict n'était vérifié
+      // nulle part. Ne sert ni au style ni à l'état.
+      data-checkpoint-id={item.id}
       className={cn(
         "rounded-xl",
         // Neutral raised surface — NOT an accent wash (ADR 0023 converge): the

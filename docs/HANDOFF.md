@@ -14176,3 +14176,46 @@ de mesure.
 > semaines. Ce n'est pas la découverte qui manquait — c'est que **personne
 > n'avait converti la note en instrument**. Une note dit ce qu'il faudrait
 > faire ; seule une porte le fait.
+
+---
+
+## §11.185 — Ce que l'élève rencontre EN PREMIER n'était identifiable par rien
+
+**LA SUITE IMMÉDIATE DE §11.184.** La porte `verdict-qcm` vérifiait les items de
+la banque de fin. Mais un élève ne commence pas par la banque de fin : il
+descend la leçon et rencontre des **points d'arrêt** — les sondes formatives
+placées dans le fil du cours, celles qui nomment le modèle erroné plutôt que de
+dire « faux ». Il y en a **362 dans le corpus**, et aucune n'était vérifiée.
+
+**POURQUOI PERSONNE NE POUVAIT LES VÉRIFIER.** `McqItem` porte `data-item-id`
+dans le DOM — posé pour que `dom-truth` croise l'ordre mélangé avec le disque.
+`CheckpointItem`, qui partage pourtant le MÊME mélange
+(`shuffledChoices(choices, id)`) et la MÊME ligne de verdict (`ResultRow`), n'en
+portait aucun. La surface la plus précoce du produit était donc muette pour
+tout instrument : non pas « vérifiée verte », mais **non adressable**.
+
+**CE QUI A ÉTÉ FAIT.** `CheckpointItem` porte désormais `data-checkpoint-id`,
+exactement comme son jumeau — une ligne, aucun effet de style ni d'état. La
+porte couvre les deux surfaces, avec une exception ÉCRITE : un point d'arrêt n'a
+jamais de `solution`, donc pas de repli `<details>` ; il révèle à la place le
+feedback de la ligne correcte (`revealCorrectFeedback`, §11.133). On exige donc
+le verdict, pas le dépliant.
+
+**MESURÉ SUR LE CORPUS :**
+
+```
+1 481 réponse(s) d'item + 362 de POINT D'ARRÊT, sur 62 leçon(s)
+  items de ces leçons 1612 · répondus 1481 · hors banque de fin 131
+  dont surfacés en POINT D'ARRÊT (clone_of_…) : 131/131
+VERT
+```
+
+**Essai rouge sur les deux surfaces : 72 contradictions sur 72 réponses** — la
+position attendue décalée de −1 fait crier les items ET les points d'arrêt, dans
+les deux sens.
+
+> Un attribut manquant dans le DOM n'est pas un défaut visible : la page est
+> parfaite, l'élève ne voit rien. C'est un défaut d'OBSERVABILITÉ, et il se paie
+> plus tard — pendant des semaines, la surface la plus précoce du produit ne
+> pouvait être ni vérifiée ni démentie. **Rendre une chose mesurable est un
+> travail en soi, pas un préalable gratuit.**

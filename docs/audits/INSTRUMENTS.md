@@ -1086,6 +1086,17 @@ réécrivent la chaîne avant de l'écrire (ADR 0039).
   « distracteur » sur la vraie bonne réponse — les DEUX sens crient (4/4 sur
   l'essai). Un décalage de +1 n'aurait éprouvé qu'une moitié de la porte.
 
+**ELLE COUVRE LES DEUX SURFACES DEPUIS §11.185.** Les items de la banque de fin
+ET les **points d'arrêt** — les sondes formatives dans le fil de la leçon, ce
+que l'élève rencontre EN PREMIER. Ceux-ci n'étaient adressables par aucun
+instrument : `McqItem` portait `data-item-id`, `CheckpointItem` ne portait rien,
+alors qu'ils partagent le mélange et la ligne de verdict. `data-checkpoint-id`
+a été ajouté. Exception écrite : un point d'arrêt n'a jamais de `solution`, donc
+pas de repli `<details>` — il révèle le feedback de la ligne correcte
+(`revealCorrectFeedback`) ; on exige le verdict, pas le dépliant.
+Corpus : **1 481 réponses d'item + 362 de point d'arrêt**, toutes justes ;
+essai rouge **72/72** sur les deux surfaces.
+
 **DEUX DÉFAUTS DE SONDE trouvés en l'écrivant, tous deux du même genre.**
 
 1. *Le premier `role="status"` n'était pas le verdict.* `ChoiceButton` en pose

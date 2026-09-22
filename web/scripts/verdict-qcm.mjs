@@ -74,6 +74,7 @@ const positionCorrecte = (item) =>
 // ── la donnée : id d'item → position attendue de la bonne réponse ──
 const attendu = new Map();
 const clonesEnLigne = new Set();
+const arrets = new Map();
 const routesCorpus = [];
 for (const m of fs.readdirSync(CONTENT)) {
   for (const n of fs.readdirSync(path.join(CONTENT, m))) {
@@ -102,6 +103,15 @@ for (const m of fs.readdirSync(CONTENT)) {
         if (typeof c.item_source === "string" && c.item_source.startsWith("clone_of_")) {
           clonesEnLigne.add(`/notions/${m}/${n}::${c.item_source.slice("clone_of_".length)}`);
         }
+        //  LES POINTS D'ARRÊT AUSSI (§11.185). Ils partagent le mélange
+        //  (`shuffledChoices(choices, id)`) et la ligne de verdict (`ResultRow`)
+        //  avec McqItem — mais ils sont ce que l'élève rencontre EN PREMIER,
+        //  dans le fil de la leçon, avant toute banque de fin. Ils n'étaient
+        //  identifiables par aucun instrument jusqu'à ce que `CheckpointItem`
+        //  porte `data-checkpoint-id`.
+        if (Array.isArray(c.choices) && c.choices.length > 1) {
+          arrets.set(`/notions/${m}/${n}::${c.id}`, { pos: positionCorrecte(c), n: c.choices.length });
+        }
       }
     }
   }
@@ -120,6 +130,7 @@ if (ESSAI) {
   //  bonne réponse : les DEUX directions doivent crier. Un essai rouge qui
   //  n'éprouve qu'une moitié de la porte laisse l'autre moitié non éprouvée.
   for (const [id, v] of attendu) if (v.n > 1) attendu.set(id, { ...v, pos: (v.pos + v.n - 1) % v.n });
+  for (const [id, v] of arrets) if (v.n > 1) arrets.set(id, { ...v, pos: (v.pos + v.n - 1) % v.n });
   console.log("ESSAI ROUGE — position attendue décalée de −1 pour chaque item.");
   console.log("  La porte doit signaler DES DEUX CÔTÉS : « dit FAUX » sur la bonne, « dit JUSTE » sur le distracteur.\n");
 }
@@ -150,6 +161,7 @@ const page = await nav.newPage({ viewport: { width: 1280, height: 900 } });
 
 let mesures = 0, fautes = [], sansVerdict = [];
 const vus = new Set();
+let mesuresCp = 0;
 for (const route of routes) {
   await page.goto(BASE + route, { waitUntil: "load", timeout: 90000 });
   await page.waitForFunction(() => !!window.__bacVivant, null, { timeout: 40000 }).catch(() => {});
@@ -202,6 +214,40 @@ for (const route of routes) {
     if (viserJuste && !ditJuste) fautes.push(`${route}:${id} — position ${cible} est la BONNE réponse, le produit dit FAUX`);
     if (!viserJuste && !ditFaux) fautes.push(`${route}:${id} — position ${cible} est un DISTRACTEUR, le produit dit JUSTE`);
   }
+
+  //  ── LES POINTS D'ARRÊT DE LA MÊME PAGE ──
+  //  Même contrat, une exception écrite : un point d'arrêt n'a jamais de
+  //  `solution`, donc pas de repli `<details>`. Il révèle à la place le
+  //  feedback de la ligne correcte (`revealCorrectFeedback`, §11.133). On
+  //  exige donc le verdict, pas le dépliant.
+  const idsCp = await page.evaluate(() =>
+    [...document.querySelectorAll("[data-checkpoint-id]")].map((e) => e.getAttribute("data-checkpoint-id")));
+  const cpConnus = idsCp.filter((i) => arrets.has(`${route}::${i}`));
+  for (const [j, id] of cpConnus.entries()) {
+    const att = arrets.get(`${route}::${id}`);
+    const viserJuste = j % 2 === 0;
+    const cible = viserJuste ? att.pos : (att.pos + 1) % att.n;
+    const r = await page.evaluate(({ id, cible }) => {
+      const hote = document.querySelector(`[data-checkpoint-id="${id}"]`);
+      if (!hote) return { err: "point d'arrêt absent" };
+      const boutons = [...hote.querySelectorAll("button")].filter((b) => b.getAttribute("aria-pressed") !== null);
+      if (boutons.length <= cible) return { err: `seulement ${boutons.length} choix` };
+      boutons[cible].click();
+      return { ok: true };
+    }, { id, cible });
+    if (r.err) { sansVerdict.push(`${route}:${id} — ${r.err}`); continue; }
+    await page.waitForTimeout(400);
+    const verdict = await page.evaluate((id) => {
+      const hote = document.querySelector(`[data-checkpoint-id="${id}"]`);
+      return [...(hote?.querySelectorAll('[role="status"]') ?? [])].map((e) => (e.textContent || "").trim()).filter(Boolean).join(" | ");
+    }, id);
+    mesuresCp++;
+    const ditJuste = /Bonne réponse/.test(verdict);
+    const ditFaux = /incorrecte/.test(verdict);
+    if (!ditJuste && !ditFaux) { sansVerdict.push(`${route}:${id} — point d'arrêt sans verdict après réponse`); continue; }
+    if (viserJuste && !ditJuste) fautes.push(`${route}:${id} (point d'arrêt) — position ${cible} est la BONNE réponse, le produit dit FAUX`);
+    if (!viserJuste && !ditFaux) fautes.push(`${route}:${id} (point d'arrêt) — position ${cible} est un DISTRACTEUR, le produit dit JUSTE`);
+  }
 }
 await nav.close();
 
@@ -216,7 +262,7 @@ const concernes = [...attendu.keys()].filter((k) => parcourues.has(k.split("::")
 const absents = concernes.filter((k) => !vus.has(k));
 const inexpliques = absents.filter((k) => !clonesEnLigne.has(k));
 const clonesPresents = [...clonesEnLigne].filter((k) => parcourues.has(k.split("::")[0]) && vus.has(k));
-console.log(`\nverdict-qcm : ${mesures} réponse(s) mesurée(s) sur ${routes.length} leçon(s)`);
+console.log(`\nverdict-qcm : ${mesures} réponse(s) d\u2019item + ${mesuresCp} de POINT D\u2019ARRÊT, sur ${routes.length} leçon(s)`);
 console.log(`  items de ces leçons ${concernes.length} · répondus ${vus.size} · hors banque de fin ${absents.length}`);
 console.log(`  dont surfacés en POINT D'ARRÊT (clone_of_…) : ${absents.length - inexpliques.length}/${absents.length}`);
 if (inexpliques.length) {
@@ -229,11 +275,11 @@ if (clonesPresents.length) {
 }
 if (fautes.length) { console.error(`\n${fautes.length} VERDICT(S) QUI CONTREDISENT LA DONNÉE :`); for (const f of fautes) console.error(`  ✗ ${f}`); }
 if (sansVerdict.length) { console.error(`\n${sansVerdict.length} item(s) muet(s) ou incomplet(s) :`); for (const s of sansVerdict.slice(0, 10)) console.error(`  ⚠ ${s}`); }
-if (mesures === 0) { console.error("MUET : aucune réponse mesurée — rien n'a été vérifié."); process.exit(1); }
+if (mesures + mesuresCp === 0) { console.error("MUET : aucune réponse mesurée — rien n'a été vérifié."); process.exit(1); }
 if (ESSAI) {
   const crie = fautes.length > 0;
   console.log(crie
-    ? `\nessai rouge OK : ${fautes.length} contradiction(s) signalée(s) sur ${mesures} réponse(s) — la porte sait rougir.`
+    ? `\nessai rouge OK : ${fautes.length} contradiction(s) signalée(s) sur ${mesures + mesuresCp} réponse(s) — la porte sait rougir.`
     : "\nESSAI ROUGE RATÉ : attente faussée et la porte est restée VERTE — elle ne mesure pas ce qu'elle dit.");
   process.exit(crie ? 0 : 1);
 }
