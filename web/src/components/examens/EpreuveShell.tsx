@@ -261,7 +261,18 @@ const ExerciceArticle = memo(function ExerciceArticle({
                   //  entière, pas un mot souligné au fil du texte.
                   //  `inline-block` + `py-1.5` porte la hauteur de frappe à 30 px
                   //  sans toucher à la taille du texte.
-                  "inline-block py-1.5"
+                  //
+                  //  `max-w-full break-words` (2026-09-22, §11.183) : une boîte
+                  //  `inline-block` se dimensionne sur son CONTENU et ne descend
+                  //  jamais sous lui. À 320 px et 200 % de texte, ce lien mesurait
+                  //  263 px dans une carte qui en offre ~213 : il sortait de 50 px
+                  //  et l'`overflow-hidden` de la carte le COUPAIT — perte de
+                  //  contenu, WCAG 1.4.4, sur 10 épreuves SPC (les exercices de
+                  //  modulation, dont le titre de notion est le plus long).
+                  //  `max-w-full` borne la boîte ; `break-words` laisse
+                  //  « électromagnétiques » se couper plutôt que de déborder seul.
+                  //  La hauteur de frappe de 30 px n'est pas touchée.
+                  "inline-block max-w-full break-words py-1.5"
                 )}
               >
                 Revoir la notion — {exo.notionTitle} →

@@ -13988,3 +13988,72 @@ les LANÇANT, pas en les vérifiant.
 > d'écrire** — la garde qui lisait son propre commentaire, l'assertion qui
 > butait sur le mien, et ce défaut-ci. Le seul remède qui a marché à chaque
 > fois : lancer la chose.
+
+---
+
+## §11.183 — J'ai fait le travail de la CI à la main, et il y avait un vrai défaut dedans
+
+**POURQUOI.** La CI ne tourne plus depuis le 2026-09-11 (aucun runner ne prend
+les jobs ; diagnostic et remède facturation déjà commentés deux fois sur la
+PR). Seize portes AU NAVIGATEUR sont armées dans `gates.yml` : elles n'ont donc
+pas tourné depuis onze jours, et aucun de mes commits n'a été gardé par elles.
+Je les ai lancées à la main, avec **les commandes et les arguments exacts de
+`gates.yml`** — listes de routes et d'épreuves comprises, calculées comme la CI
+les calcule (62 leçons, 39 épreuves, 257 SVG).
+
+**QUINZE VERTES. UNE ROUGE, et elle avait raison.**
+
+```
+zoom-sweep --porte --largeurs=320
+  === 320px, texte à 200 % — 10 signalement(s) sur 105 pages
+  ✗ /examens/spc-2025-normale     COUPÉ article.overflow-hidden.rounded-xl (+49px)
+  ✗ /examens/spc-2025-rattrapage  COUPÉ article.overflow-hidden.rounded-xl (+49px)
+  … 8 autres, TOUTES des épreuves SPC, TOUTES l'exercice de modulation
+```
+
+**LE COUPABLE, nommé.** En rejouant la mesure de la porte à l'identique
+(`fontSize = 32px` sur `<html>`, l'épreuve ouverte en DEUX clics), l'élément le
+plus profond qui sort du cadre est le renvoi de fin d'exercice :
+
+```
++50px hors cadre · largeur 263px · a.font-medium text-accent …
+      « Revoir la notion — Ondes électromagnétiques — modulation d’a… »
+```
+
+La carte offre ~213 px à 320 px de large ; le lien en réclame 263. Il est en
+`inline-block`, donc **sa boîte se dimensionne sur son contenu et ne descend
+jamais sous lui** — et l'`overflow-hidden` de la carte le coupe. Perte de
+contenu au sens de WCAG 1.4.4, sur les dix épreuves dont le titre de notion est
+le plus long. La porte imprime elle-même la loi : « un item flex ou une piste de
+grille ne descend pas sous la largeur min-content de son contenu ;
+`overflow-wrap` n'y change rien → `max-w-full` sur un bouton inline-flex ».
+
+**LE CORRECTIF** est celui que la porte prescrit : `max-w-full break-words` sur
+le lien. `max-w-full` borne la boîte (elle est `inline-block`, pas `inline` —
+ADR 0038 rappelle qu'un `max-width` sur une boîte `inline` est là et ne fait
+rien) ; `break-words` laisse « électromagnétiques » se couper plutôt que de
+déborder seul. La hauteur de frappe de 30 px (§11.111) n'est pas touchée.
+
+**MESURÉ APRÈS, par la porte qui avait trouvé le défaut :**
+
+| porte | avant | après |
+|---|---|---|
+| `zoom-sweep --largeurs=320` | **10 / 105 pages** | **0 / 105** |
+| `etroit-sweep` | 0 | 0 |
+| `cibles-tactiles` | 0 | 0 |
+| `impression`, `figure-preview` | — | 0 |
+| `copie-maths` | — | 101 pages, 53 901 formules, 0 caractère parasite |
+
+**DEUX FAUSSES ROUGES, et elles sont de moi.** `impression` et `copie-maths`
+sont d'abord sorties en erreur : j'avais tué le serveur pendant qu'elles
+tournaient, pour reconstruire. Relancées sur un serveur frais, les deux sont
+vertes. Troisième fois aujourd'hui qu'une mesure sous charge ou sur un banc
+bougé donne un verdict faux — après la capture d'écran sans feuille de style et
+les gates qui ne trouvaient pas Chromium (l'image porte la build 1194,
+`playwright-core` en réclame 1228 : seules les portes qui passent un
+`executablePath` explicite démarrent ici).
+
+> Onze jours sans CI, et il y avait exactement un défaut produit dans le lot —
+> invisible à l'œil, sur dix pages, pour l'élève qui grossit le texte sur un
+> petit téléphone. **La porte savait déjà quoi faire : elle imprimait la loi
+> et le correctif sous son propre rouge.**
