@@ -3,8 +3,9 @@ import "mafs/core.css";
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/ui/SiteHeader";
 import { LienEvitement } from "@/components/ui/LienEvitement";
-import { listNotions } from "@/lib/content";
 import { Atelier } from "@/components/atelier/Atelier";
+import { manifesteEpreuves } from "@/lib/palette-epreuves";
+import { manifestePourHeader } from "@/lib/palette-notions";
 
 export const metadata: Metadata = {
   title: "Atelier — les dérivées, de la pente au nombre dérivé",
@@ -37,8 +38,14 @@ export default function AtelierPage() {
           le header garde la bande `page` sur TOUTES les routes, le
           wordmark ne saute jamais. Seul le <main> de l'atelier prend la
           bande large. */}
+      {/* Les DEUX manifestes, comme partout ailleurs : sans `epreuves`, la
+          palette ⌘K de cette page ne trouvait rien à « 2025 » ni à
+          « rattrapage » — le défaut que §11.34 avait corrigé sur le reste
+          du site survivait ici, parce que cette page monte SiteHeader
+          elle-même au lieu de passer par PageShell. */}
       <SiteHeader
-        notions={listNotions().map((n) => ({ subject: n.subject, slug: n.slug, title: n.title, readingMinutes: n.readingMinutes }))}
+        notions={manifestePourHeader()}
+        epreuves={manifesteEpreuves()}
       />
       <main id="main-content" tabIndex={-1}>
         <Atelier />

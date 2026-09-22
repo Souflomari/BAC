@@ -10,10 +10,10 @@
 import type { Metadata } from "next";
 import { Link } from "@/components/ui/Lien";
 import { PageShell } from "@/components/ui/PageShell";
-import { listNotions } from "@/lib/content";
 import { listEpreuves, epreuveTitre, filiereLabel, type Epreuve } from "@/lib/examens";
 import { cn } from "@/lib/utils";
 import { manifesteEpreuves } from "@/lib/palette-epreuves";
+import { manifestePourHeader } from "@/lib/palette-notions";
 
 export const metadata: Metadata = {
   title: "Examens blancs",
@@ -21,15 +21,6 @@ export const metadata: Metadata = {
     "Les épreuves du bac national, reconstituées depuis les sujets réels — chronométrées, corrigées, auto-évaluées au barème.",
   alternates: { canonical: "/examens" },
 };
-
-function manifestePourHeader() {
-  return listNotions().map((n) => ({
-    subject: n.subject,
-    slug: n.slug,
-    title: n.title,
-    readingMinutes: n.readingMinutes,
-  }));
-}
 
 function CarteEpreuve({ ep }: { ep: Epreuve }) {
   return (

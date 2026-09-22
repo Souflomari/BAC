@@ -43,6 +43,7 @@ import { Breadcrumb as SharedBreadcrumb } from "@/components/ui/Breadcrumb";
 import { MarginNotes, type MarginNote } from "./MarginNotes";
 import { KeyFormulaRail, type KeyFormula } from "./KeyFormulaRail";
 import { manifesteEpreuves } from "@/lib/palette-epreuves";
+import { manifestePourHeader } from "@/lib/palette-notions";
 
 export { subjectLabel };
 
@@ -241,7 +242,7 @@ export function NotionPageView({
   );
 
   return (
-    <PageShell epreuves={manifesteEpreuves()} notions={listNotions().map((n) => ({ subject: n.subject, slug: n.slug, title: n.title, readingMinutes: n.readingMinutes }))} width={wideOption === "w2" ? "notionWide" : "notion"}>
+    <PageShell epreuves={manifesteEpreuves()} notions={manifestePourHeader()} width={wideOption === "w2" ? "notionWide" : "notion"}>
       {/* Skip-to-content for keyboard users (DESIGN-BIBLE §9) */}
       <a
         href="#lesson-content"

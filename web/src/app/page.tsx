@@ -23,16 +23,13 @@
 import type { Metadata } from "next";
 import { listNotions } from "@/lib/content";
 
-/** Le manifeste léger pour le header (panneau Notions + palette ⌘K). */
-function manifestePourHeader() {
-  return listNotions().map((n) => ({ subject: n.subject, slug: n.slug, title: n.title, readingMinutes: n.readingMinutes }));
-}
 import { Link } from "@/components/ui/Lien";
 import { PageShell } from "@/components/ui/PageShell";
 import { SessionCard } from "@/components/dashboard/SessionCard";
 import { NextUp } from "@/components/dashboard/NextUp";
 import { ProgrammeMap } from "@/components/dashboard/ProgrammeMap";
 import { manifesteEpreuves } from "@/lib/palette-epreuves";
+import { manifestePourHeader } from "@/lib/palette-notions";
 
 export const metadata: Metadata = {
   title: "Ta session",

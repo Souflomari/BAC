@@ -9,15 +9,11 @@
 
 import type { Metadata } from "next";
 import { PageShell } from "@/components/ui/PageShell";
-import { listNotions } from "@/lib/content";
 
-/** Le manifeste léger pour le header (panneau Notions + palette ⌘K). */
-function manifestePourHeader() {
-  return listNotions().map((n) => ({ subject: n.subject, slug: n.slug, title: n.title, readingMinutes: n.readingMinutes }));
-}
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { FiliereChooser } from "@/components/dashboard/FiliereChooser";
 import { manifesteEpreuves } from "@/lib/palette-epreuves";
+import { manifestePourHeader } from "@/lib/palette-notions";
 
 export const metadata: Metadata = {
   title: "Choisis ta filière",

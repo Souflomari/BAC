@@ -10,11 +10,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageShell } from "@/components/ui/PageShell";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
-import { listNotions } from "@/lib/content";
 import { listEpreuves, getEpreuve, epreuveTitre, filiereLabel } from "@/lib/examens";
 import { frenchTypography } from "@/lib/frenchTypography";
 import { EpreuveShell, type EpreuveData } from "@/components/examens/EpreuveShell";
 import { manifesteEpreuves } from "@/lib/palette-epreuves";
+import { manifestePourHeader } from "@/lib/palette-notions";
 
 // Toutes les valeurs valides sont connues au build (generateStaticParams) ;
 // une adresse inconnue reçoit alors la page « introuvable » PRÉRENDUE — en-tête,
@@ -34,15 +34,6 @@ export function generateMetadata({ params }: { params: { id: string } }): Metada
     title: `${epreuveTitre(ep)} · ${filiereLabel(ep.filiere)}`,
     alternates: { canonical: `/examens/${params.id}` },
   };
-}
-
-function manifestePourHeader() {
-  return listNotions().map((n) => ({
-    subject: n.subject,
-    slug: n.slug,
-    title: n.title,
-    readingMinutes: n.readingMinutes,
-  }));
 }
 
 export default function EpreuvePage({ params }: { params: { id: string } }) {

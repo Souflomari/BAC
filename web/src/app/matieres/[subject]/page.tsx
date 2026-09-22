@@ -11,16 +11,13 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { listNotions } from "@/lib/content";
 
-/** Le manifeste léger pour le header (panneau Notions + palette ⌘K). */
-function manifestePourHeader() {
-  return listNotions().map((n) => ({ subject: n.subject, slug: n.slug, title: n.title, readingMinutes: n.readingMinutes }));
-}
 import { getSubject, subjectChapterCount, subjectAvailableCount, SUBJECTS, type SubjectId } from "@/lib/curriculum";
 import { subjectLabel } from "@/lib/subjects";
 import { PageShell } from "@/components/ui/PageShell";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { ChapterList, type UnitView } from "@/components/curriculum/ChapterList";
 import { manifesteEpreuves } from "@/lib/palette-epreuves";
+import { manifestePourHeader } from "@/lib/palette-notions";
 
 // Toutes les valeurs valides sont connues au build (generateStaticParams) ;
 // une adresse inconnue reçoit alors la page « introuvable » PRÉRENDUE — en-tête,
