@@ -511,6 +511,42 @@ qu'on y pense.
 
 ---
 
+## 17. Le verdict des QCM : six leçons en CI, ou les soixante-deux ?
+
+**LE FAIT.** `verdict-qcm` (§11.184) vérifie ce que personne ne vérifiait : après
+une réponse, le produit dit-il « juste » à une bonne réponse et « faux » à un
+distracteur ? Sur le corpus entier — **62 leçons, 1 481 réponses** — il est VERT,
+et toutes les cartes montrent leur explication.
+
+**LE COÛT, mesuré.** Six leçons (une par famille de contenu) : **73 s**. Les
+62 leçons : **~13 min**. Le budget du workflow est de **50 min** ; les runs verts
+relevés tiennent en ~38 min, et le fichier dit que le relever « masquerait de
+nouveau un blocage ».
+
+**CE QUI EST ARMÉ AUJOURD'HUI :** les six leçons, deux passages (vert puis essai
+rouge), ~2,5 min — bien dans la marge. C'est un choix d'ingénierie assumé, pas
+une mesure : un défaut de cette classe serait SYSTÉMIQUE (le mélange, le
+composant de verdict, le repli d'explication), et six leçons couvrant les quatre
+matières l'attrapent.
+
+**CE QUI RESTE AU PROPRIÉTAIRE.** Faut-il payer ~13 min de CI pour le corpus
+entier ? Les deux lectures :
+
+- *Six suffisent.* Le défaut redouté est structurel, pas par-item ; le corpus
+  entier se relance à la main avant une mise en production, et il est VERT
+  aujourd'hui. On garde 11 min de marge.
+- *Tout le corpus.* Un item peut être cassé SEUL — une donnée mal formée, un
+  `choices` vide, un `correct` absent qu'aucune porte de contenu n'attrape. Six
+  leçons ne le verraient pas. Le budget passerait de ~40 à ~53 min, donc
+  au-dessus des 50 : il faudrait relever la limite, ce que le fichier
+  déconseille explicitement, ou découper le job.
+
+**CHIFFRE UTILE POUR TRANCHER :** 131 items sur 1 612 ne sont rendus par AUCUNE
+page de leçon (`AR-3`, `AR-12`, `AR-18`…). Ni six ni soixante-deux leçons ne les
+couvrent — c'est une question de placement de contenu, pas de budget CI.
+
+---
+
 ## La PORTÉE de cette page, mesurée
 
 **Cette page ne recense pas toutes les décisions de propriétaire du dépôt.**

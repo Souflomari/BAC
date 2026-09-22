@@ -1047,3 +1047,53 @@ montre jamais. Une sonde qui faisait cela a rendu des débords de +298 à
 +368 px sur 5 à 7 leçons, stables avec et sans la règle — un chiffre
 rassurant qui ne correspondait à rien, là où `etroit-sweep` en trouve zéro sur
 le même arbre.
+
+---
+
+## `web/scripts/verdict-qcm.mjs` — l'élève qui répond JUSTE est-il dit juste ?
+
+**PORTE, armée en CI (59ᵉ étape) sur six leçons ; corpus entier à la main.**
+Elle lève la note que `dom-truth` portait depuis longtemps sans que personne
+l'atteigne :
+
+> `TODO(post-answer states): the solution <summary> and correctness rows only`
+> `exist after answering an item — battery v2 should drive one interaction.`
+
+Personne ne vérifiait l'état **après réponse**. C'est le pire défaut possible
+pour ce produit : un élève à qui l'on dit « faux » alors qu'il a juste
+n'apprend pas — il perd confiance dans le seul juge qu'il a.
+
+**Comment elle mesure, sans jamais comparer du texte rendu.** Les choix sont
+mélangés par `lib/shuffle.ts` (graine = `item.id`). L'instrument rejoue le
+MÊME mélange — la copie conforme d'`item-stats.mjs`, celle que `dom-truth`
+croise déjà — pour savoir à quelle **position** la bonne réponse atterrit. Il
+clique cette position et exige « Bonne réponse. » ; il clique un distracteur
+et exige « Réponse incorrecte ». Comparer du texte rendu à du texte source
+serait répondre à une autre question : typographie française et KaTeX
+réécrivent la chaîne avant de l'écrire (ADR 0039).
+
+- **vert** : 1 481 réponses sur les 62 leçons — chaque bonne réponse dite
+  bonne, chaque distracteur dit faux, et **toutes** montrent une explication
+  dépliable ;
+- **portée dite à voix haute** : 1 612 items connus, 1 481 rendus et répondus,
+  **131 jamais rendus** par une page de leçon (`AR-3`, `AR-12`, `AR-18`…). Un
+  total qui tait les non-vus est un plancher déguisé en somme (ADR 0036) ;
+- `--essai-rouge` JOUÉ, pas décrit : il décale de **−1** la position attendue,
+  ce qui fait tomber la cible « juste » sur un distracteur ET la cible
+  « distracteur » sur la vraie bonne réponse — les DEUX sens crient (4/4 sur
+  l'essai). Un décalage de +1 n'aurait éprouvé qu'une moitié de la porte.
+
+**DEUX DÉFAUTS DE SONDE trouvés en l'écrivant, tous deux du même genre.**
+
+1. *Le premier `role="status"` n'était pas le verdict.* `ChoiceButton` en pose
+   un par choix, EN PLUS de la ligne de verdict : `querySelector` rendait un
+   conteneur vide et l'item passait pour muet. Elle lit maintenant **tous** les
+   `role="status"` de l'item.
+2. *La clé `id` seule est ambiguë.* Neuf ids sont partagés par deux notions
+   (`LIB-1..9`, philo/la-liberte et svt/liberation-energie-…, §11.178). Keyée
+   sur l'id nu, la carte gardait l'item SVT et mesurait la leçon de philo
+   contre la mauvaise attente : **quatre fausses contradictions sur un produit
+   correct**. La clé est désormais `notion::id`. §11.178 disait de cette
+   collision « latente aujourd'hui, piège demain » — c'est le premier
+   instrument qui a essayé d'identifier un item par son id, et il est tombé
+   dedans le jour même.

@@ -140,6 +140,11 @@ const HORS_CHAMP = new Set([
   // champ ici pour la même raison que dom-truth — ARMÉE en CI (§11.180). Son
   // rouge se rejoue : `node scripts/header-manifestes.mjs --essai-rouge`.
   "header-manifestes.mjs",
+  // verdict-qcm répond à des QCM dans un navigateur sur des leçons construites :
+  // build ET Playwright. Hors champ ici pour la même raison que dom-truth —
+  // ARMÉE en CI sur six leçons (§11.184). Son rouge se rejoue :
+  // `node scripts/verdict-qcm.mjs --essai-rouge <routes…>`.
+  "verdict-qcm.mjs",
   // temps-de-chargement mesure TTFB/FCP/LCP au navigateur, réseau bridé, trois
   // passages par route : build, Playwright, et des millisecondes qui sont
   // celles de CETTE machine. Ce n'est PAS une porte et ce n'en sera pas une —

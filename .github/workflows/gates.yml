@@ -536,6 +536,39 @@ jobs:
           npm run header-manifestes
           node scripts/header-manifestes.mjs --essai-rouge
 
+      # PORTE VERDICT QCM (2026-09-22, §11.184). `dom-truth` portait depuis
+      # longtemps une note qu'aucun instrument n'avait levée :
+      #   TODO(post-answer states): the solution <summary> and correctness rows
+      #   only exist after answering an item — battery v2 should drive one
+      #   interaction.
+      # Personne ne vérifiait donc l'état APRÈS RÉPONSE. C'est le pire défaut
+      # possible pour ce produit : un élève à qui l'on dit « faux » alors qu'il
+      # a juste n'apprend pas — il perd confiance dans le seul juge qu'il a.
+      #
+      # La porte rejoue le MÊME mélange déterministe que le produit
+      # (`lib/shuffle.ts`, graine = id de l'item) pour savoir à quelle POSITION
+      # la bonne réponse atterrit, clique cette position et exige
+      # « Bonne réponse. », puis clique un distracteur et exige l'inverse.
+      # Aucune comparaison de texte rendu : la typographie et KaTeX le
+      # réécrivent (ADR 0039).
+      #
+      # SIX LEÇONS en CI, une par famille de contenu — 73 s mesurées, pour un
+      # budget de 50 min dont ~38 sont pris. Le corpus ENTIER (62 leçons,
+      # 1 481 réponses, ~13 min) se lance à la main ; l'arbitrage « tout le
+      # corpus en CI ? » est en DECISIONS §17, parce que dépenser le budget du
+      # propriétaire n'est pas une décision de mesure.
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` qui décale de −1 la position
+      # attendue — la cible « juste » tombe alors sur un distracteur ET la
+      # cible « distracteur » sur la vraie bonne réponse, donc les DEUX sens
+      # doivent crier. Une porte verte les deux fois est aveugle (ADR 0034).
+      - name: "Verdict des QCM (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          lecons="/notions/maths/suites-numeriques /notions/pc/rlc-serie /notions/philo/la-liberte /notions/svt/liberation-energie-matiere-organique /notions/maths/nombres-complexes-1 /notions/pc/ondes-mecaniques-progressives"
+          node scripts/verdict-qcm.mjs --porte $lecons
+          node scripts/verdict-qcm.mjs --essai-rouge $lecons
+
       - name: Porte LaTeX nu
         run: |
           routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)

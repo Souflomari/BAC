@@ -14088,3 +14088,73 @@ vingtaine d'instruments locaux, lancés à la main : **toutes vertes** après le
 correctif. Les seuls rouges rencontrés étaient un vrai défaut (celui-ci), un
 rouge délibéré (`couverture-diagnostique`, arbitrage propriétaire), deux
 erreurs d'usage de ma part (arguments manquants) et trois bancs bougés.
+
+---
+
+## §11.184 — Personne ne vérifiait qu'une bonne réponse est dite bonne
+
+**LE TROU ÉTAIT ÉCRIT DANS LE DÉPÔT, et personne ne l'avait levé.** `dom-truth`
+porte depuis longtemps cette note, au milieu de ses 279 vérifications :
+
+> `TODO(post-answer states): the solution <summary> and correctness rows only`
+> `exist after answering an item — battery v2 should drive one interaction.`
+
+Aucun instrument ne pilotait donc l'état **après réponse**. `clic-qcm` clique
+bien un choix — mais il mesure le TEMPS, et clique toujours le premier. Pour un
+produit dont la raison d'être est de corriger un élève, c'est le pire angle mort
+possible : un élève à qui l'on dit « faux » alors qu'il a juste n'apprend pas,
+il perd confiance dans le seul juge qu'il a.
+
+**CE QUE J'AI CONSTRUIT.** `verdict-qcm.mjs` rejoue le mélange déterministe du
+produit (`lib/shuffle.ts`, graine = `item.id`) pour savoir à quelle POSITION la
+bonne réponse atterrit, clique cette position et exige « Bonne réponse. », puis
+clique un distracteur et exige l'inverse. **Jamais de comparaison de texte
+rendu** : typographie française et KaTeX réécrivent la chaîne avant de l'écrire,
+et une sonde qui compare du rendu à de la source répond à une autre question
+(ADR 0039).
+
+**LE RÉSULTAT : VERT, et il vaut quelque chose.**
+
+```
+1 481 réponse(s) mesurée(s) sur 62 leçon(s)
+  items connus 1612 · rendus et répondus 1481 · jamais rendus 131
+VERT — chaque bonne réponse est dite bonne, chaque distracteur est dit faux,
+       et tous montrent une explication.
+```
+
+Les 131 non rendus sont dits à voix haute (`AR-3`, `AR-12`, `AR-18`…) : un total
+qui tait ce qu'il n'a pas vu est un plancher déguisé en somme (ADR 0036).
+
+**LA DONNÉE, vérifiée à part et d'abord :** 1 612 items, **tous** avec une
+explication (`solution` ou `correct_feedback`) ; 1 612 choix sans feedback,
+et ce sont **exactement** les bonnes réponses (0 distracteur muet) ; **0** item
+dont le nombre de bonnes réponses diffère de 1. La symétrie parfaite dit que le
+repli de §11.133 couvre tout le corpus.
+
+**DEUX DÉFAUTS DE SONDE, et le second est le plus instructif du jour.**
+
+1. *Le premier `role="status"` n'était pas le verdict.* `ChoiceButton` en pose un
+   par choix EN PLUS de la ligne de verdict : `querySelector` rendait un
+   conteneur vide, et deux items sur quatre passaient pour « muets ». Corrigé en
+   lisant TOUS les `role="status"` de l'item.
+2. *La clé `id` seule est ambiguë — et c'est §11.178 qui se réalise.* Premier
+   passage sur le corpus : **4 contradictions**, toutes dans `philo/la-liberte`,
+   sur `LIB-3`, `LIB-4`, `LIB-6`, `LIB-7`. Ce ne sont pas des défauts produit :
+   ces ids sont partagés avec `svt/liberation-energie-matiere-organique`, ma
+   carte gardait l'item SVT, et la leçon de philo était mesurée contre la
+   mauvaise attente. §11.178 appelait ces neuf collisions « latentes
+   aujourd'hui, piège demain ». **Le premier instrument à vouloir identifier un
+   item par son id est tombé dedans le jour même.** Clé désormais `notion::id` ;
+   les items connus passent de 1 603 à 1 612 — les neuf que la collision
+   écrasait.
+
+**ARMÉE EN CI SUR SIX LEÇONS** (73 s mesurées, deux passages ≈ 2,5 min, budget
+50 min dont ~38 pris). Le corpus entier (~13 min) se lance à la main ; l'arbitrage
+« tout le corpus en CI ? » est en DECISIONS §17, avec les deux lectures et les
+chiffres, parce que dépenser le budget CI du propriétaire n'est pas une décision
+de mesure.
+
+> Le trou était ÉCRIT, dans un fichier que tout le monde lit, depuis des
+> semaines. Ce n'est pas la découverte qui manquait — c'est que **personne
+> n'avait converti la note en instrument**. Une note dit ce qu'il faudrait
+> faire ; seule une porte le fait.
