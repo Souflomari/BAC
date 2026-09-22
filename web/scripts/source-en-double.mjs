@@ -33,10 +33,40 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const BASE = process.env.BASE ?? "http://localhost:3111";
 const args = process.argv.slice(2);
 const PORTE = args.includes("--porte");
 const ESSAI = args.includes("--essai-rouge");
+
+// SANS BASE EXPLICITE, LA PORTE LÈVE SON PROPRE SERVEUR (corrigé le
+// 2026-09-22). Le premier jet prenait `http://localhost:3111` par défaut et
+// supposait qu'un serveur y écoutait déjà : vrai sur ma machine, faux en CI,
+// où l'étape ne démarre rien. `fetch` aurait rejeté, la porte serait tombée
+// sur une erreur de CONNEXION — un rouge d'infrastructure déguisé en verdict
+// produit. Le défaut est resté invisible parce qu'aucun runner n'a tourné
+// depuis le 2026-09-11 : une porte armée qui n'a jamais été lancée n'est
+// pas une porte vérifiée. Tué par le GROUPE (`-pid`), sinon un serveur
+// orphelin sert un build périmé (serveur-frais.mjs, §11.111).
+const PORT = Number(process.env.PORT_DOUBLE ?? 3700 + (process.pid % 90));
+const BASE = process.env.BASE ?? `http://127.0.0.1:${PORT}`;
+let serveur = null;
+if (!process.env.BASE && !ESSAI) {
+  const { spawn } = await import("node:child_process");
+  serveur = spawn("npx", ["next", "start", "-p", String(PORT)], {
+    cwd: new URL("..", import.meta.url).pathname, stdio: "ignore", detached: true,
+  });
+  let vivant = false;
+  for (let i = 0; i < 60; i++) {
+    try { await fetch(BASE + "/"); vivant = true; break; } catch { await new Promise((r) => setTimeout(r, 1000)); }
+  }
+  if (!vivant) {
+    console.error("source-en-double : `next start` n'a pas répondu. Build absent ?");
+    try { process.kill(-serveur.pid); } catch {}
+    process.exit(1);
+  }
+}
+const arreter = () => { if (serveur?.pid) { try { process.kill(-serveur.pid); } catch {} } };
+process.on("exit", arreter);
+process.on("SIGINT", () => { arreter(); process.exit(130); });
 const CONTENU = path.resolve("../content");
 
 /**

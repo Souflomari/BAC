@@ -13687,3 +13687,138 @@ changement VISIBLE du mot-symbole. Et remonter les titres de leçon ajoute
 ~210 px à une liste de 14 notions. Ce sont des pages réglées à la main. Les
 deux lectures (le produit a tort / la règle a tort) sont défendables et
 chiffrées en DECISIONS §15 ; le choix ne se mesure pas.
+
+---
+
+## §11.180 — Deux pages offraient une commande qui ne menait nulle part, et huit copies d'un même fait le cachaient
+
+**CE QUE J'AI CHERCHÉ.** Le poids RSC d'une leçon (§11.175) a été divisé en
+retirant `lessonMd` de deux frontières clientes. La suite logique : **existe-t-il
+d'autres props inutiles qui traversent une frontière client ?** Un composant
+`"use client"` qui n'a besoin de rien de client est un défaut OBJECTIF, pas un
+arbitrage d'architecture.
+
+**LA RÉPONSE EST NON, ET LE PREMIER BALAYAGE DISAIT OUI.** Ma sonde cherchait
+`useState|useEffect|onClick|window|…` et désignait trois coupables :
+`ProgrammeMap`, `SessionCard`, `FiliereBadge`. Les trois sont légitimes — elles
+appellent `useFiliere()`, `useStudentState()`, Radix. **Le motif ne connaissait
+pas les crochets personnalisés.** Un filtre bâti sur les formes qu'on a déjà
+vues est aveugle aux autres (ADR 0036). Avec `use[A-Z]\w*\(`, les 45 frontières
+clientes justifient toutes leur existence : il n'y avait rien à gagner là.
+
+**CE QUE J'AI TROUVÉ À LA PLACE.** En suivant la prop `notions` que chaque page
+passe au header, la même expression apparaît **huit fois** :
+
+```
+listNotions().map((n) => ({ subject, slug, title, readingMinutes }))
+```
+
+cinq fois comme une `manifestePourHeader()` locale, trois fois en ligne
+(`/atelier`, `not-found`, `NotionPageView`). Un fait, huit sources. Et la
+conséquence n'est pas esthétique : **la neuvième page héritait du silence.**
+
+| page | notions | épreuves | panneau |
+|---|---|---|---|
+| les 8 autres types | 62 | 39 | 4 colonnes |
+| **/connexion** | **0** | **0** | **0 — panneau vide de 720 px** |
+| **/atelier** | 62 | **0** | 4 colonnes |
+
+`PanneauNotions` renvoie `null` pour chaque matière dont la liste est vide.
+Manifeste vide ⇒ panneau **ouvert sur rien**. Et la palette ⌘K de /connexion
+n'offrait que ses trois raccourcis fixes. Sur la page où un élève perdu atterrit
+le plus volontiers, chaque commande du header était un cul-de-sac. `not-found`,
+qui compte infiniment moins, les servait toutes les deux — avec un commentaire
+fier : « le contraire du cul-de-sac ».
+
+**POURQUOI PERSONNE NE L'AVAIT VU.** Ce n'était pas un oubli : /connexion était
+un composant CLIENT (elle lit `useAuth()`), donc elle ne *pouvait pas* appeler
+des manifestes qui lisent le corpus sur disque. L'en-tête de `palette-epreuves.ts`
+énonçait la contrainte depuis le début — « il est aussi rendu par la page client
+/connexion ». La contrainte était écrite ; **son coût à l'écran ne l'était pas.**
+Une contrainte documentée se lit comme une explication et cesse d'être une
+question.
+
+**CE QUI A ÉTÉ FAIT.**
+
+1. `lib/palette-notions.ts` — une source, sœur de `palette-epreuves.ts`. Les
+   huit copies la citent ; cinq imports morts de `listNotions` sont partis.
+2. `/connexion` scindée : coquille SERVEUR (`page.tsx`) + formulaire CLIENT
+   (`FormulaireConnexion.tsx`), le JSX déplacé à l'octet près. C'est le
+   découpage que l'en-tête du fichier réclamait lui-même (« a follow-up pass »).
+   Bonus du même geste : la page exporte enfin une `metadata` — interdite à côté
+   de `"use client"` — donc un `<title>` propre au lieu du défaut du site.
+3. `/atelier` reçoit `epreuves` : elle monte `SiteHeader` en direct, la seconde
+   prop n'avait jamais suivi.
+4. **Porte `header-manifestes.mjs`** (58ᵉ étape). Elle ÉNUMÈRE les types de page
+   depuis `src/app` plutôt que de lire une liste écrite à la main — un type NEUF
+   hors table la fait rougir au lieu d'être sauté. Puis elle fait ce que ferait
+   l'élève : ⌘K, clic sur « Notions », et elle compte.
+
+**LE ROUGE A ÉTÉ MESURÉ, PAS DÉDUIT.** Les deux défauts remis dans la source et
+**reconstruits** : `/connexion` 0/0/0, `/atelier` 0 épreuve, les huit autres
+verts, exit 1. Un sabotage qui n'atteint pas la porte n'est pas un essai rouge
+(ADR 0038) — ici il traverse le build, comme le vrai défaut l'avait fait.
+
+**ET LA PORTE ELLE-MÊME AVAIT UN DÉFAUT DE MESURE.** Premier jet :
+`notions = total − épreuves`. La palette porte aussi un groupe fixe « Aller à »
+de trois raccourcis, présent **même quand le manifeste est vide** : /connexion
+cassée annonçait « 3 notions » au lieu de 0. La plus directe des trois
+conditions était désarmée, sans rien dire. Le compteur compte désormais par
+groupe. Une unité fausse noie le signal (ADR 0039) — et c'est la **douzième**
+fois dans cette campagne que la mesure était fausse avant le produit.
+
+**UNE PORTE ARMÉE QUI N'AVAIT JAMAIS PU TOURNER.** En câblant la nouvelle, j'ai
+vérifié comment sa voisine obtenait son serveur — et `source-en-double`
+(§11.175, 57ᵉ étape) prenait `localhost:3111` par défaut en *supposant* qu'un
+serveur y écoutait. Vrai sur cette machine, faux en CI, où son étape ne démarre
+rien : `fetch` aurait rejeté et la porte serait tombée sur une erreur de
+connexion — un rouge d'infrastructure déguisé en verdict produit. Invisible
+parce qu'**aucun runner n'a tourné depuis le 2026-09-11**. Les deux portes
+lèvent maintenant leur propre `next start`, et `source-en-double` a tourné pour
+de vrai : 62 leçons, 0 marqueur.
+
+> **Une porte armée qui n'a jamais été lancée n'est pas une porte vérifiée.**
+> C'est une intention. Tant que la CI dort, chaque porte ajoutée doit être
+> lancée exactement comme la CI la lancerait — sinon on empile des intentions
+> en les comptant comme des garanties.
+
+**PUIS J'AI COMMIS LA MÊME FAUTE, UNE HEURE APRÈS L'AVOIR ÉCRITE.** La porte
+neuve lançait Chromium sur `/opt/pw-browsers/chromium` — le chemin de CE
+conteneur. La CI installe le SIEN et en passe le chemin par `PW_CHROMIUM_PATH`.
+Armée telle quelle, elle serait tombée sur un exécutable absent : le défaut
+exact que je venais de corriger chez sa voisine, sous une autre forme. Mesuré
+sur les 59 instruments au navigateur du dépôt :
+
+| avant le correctif | honore `PW_CHROMIUM_PATH` | ne l'honore pas |
+|---|---|---|
+| **armé en CI** | 17 | **1 — la mienne** |
+| local seulement | 28 | 13 |
+
+(59 instruments au navigateur ; après correctif, 18 et 0. Comptés par la garde
+elle-même, commentaires retirés — le premier chiffre que j'avais écrit ici,
+« 20 / 1 / 24 / 14 », venait d'un relevé à l'œil sur une sonde plus grossière
+et était faux dans trois cases sur quatre. Treizième fois que la mesure
+précède le produit dans l'erreur.)
+
+Les treize locaux n'ont pas le défaut : un chemin en dur y est *correct*.
+Le défaut n'existe qu'à l'intersection « armé en CI » × « chemin en dur » —
+et cette intersection ne contenait qu'une case, la neuve.
+
+**D'OÙ UNE TROISIÈME GARDE, parce qu'une règle reprise trois fois demande un
+outil, pas une note (ADR 0033).** `batterie-locale` demandait « la liste est-
+elle à jour ? » dans les deux sens. Elle demande maintenant une troisième
+chose : **cette porte peut-elle seulement DÉMARRER là où elle est armée ?**
+
+**ET CETTE GARDE ÉTAIT AVEUGLE À SON PREMIER JET.** Sa sonde cherchait
+`PW_CHROMIUM_PATH` dans le fichier entier. Mon essai rouge a retiré la variable
+de l'APPEL en laissant au-dessus le commentaire qui la nomme — **la garde est
+restée muette**. Elle certifiait sur la présence de la *déclaration*, pas sur
+l'*effet* : ADR 0038, première loi, dans la garde écrite pour l'appliquer. Elle
+retire désormais commentaires et chaînes avant de chercher, et elle crie sur
+cette version-là du défaut, la plus difficile.
+
+> Trois fois dans la même heure, l'instrument était faux avant le produit : la
+> porte qui ne pouvait pas tourner, le compteur qui soustrayait des raccourcis,
+> la garde qui lisait ses propres commentaires. **Aucune des trois ne se serait
+> vue sans un essai rouge** — et la troisième ne s'est vue que parce que l'essai
+> rouge portait la forme la plus gênante, pas la plus commode.

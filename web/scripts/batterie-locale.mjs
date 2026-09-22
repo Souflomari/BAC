@@ -135,6 +135,11 @@ const HORS_CHAMP = new Set([
   // ici pour la même raison que dom-truth — ARMÉE en CI (§11.175). Son rouge
   // se rejoue à la demande : `node scripts/source-en-double.mjs --essai-rouge`.
   "source-en-double.mjs",
+  // header-manifestes pilote un navigateur sur les 10 TYPES de page et fait ce
+  // que ferait l'élève (⌘K, clic sur « Notions ») : build ET Playwright. Hors
+  // champ ici pour la même raison que dom-truth — ARMÉE en CI (§11.180). Son
+  // rouge se rejoue : `node scripts/header-manifestes.mjs --essai-rouge`.
+  "header-manifestes.mjs",
   // temps-de-chargement mesure TTFB/FCP/LCP au navigateur, réseau bridé, trois
   // passages par route : build, Playwright, et des millisecondes qui sont
   // celles de CETTE machine. Ce n'est PAS une porte et ce n'en sera pas une —
@@ -327,6 +332,52 @@ if (oublis.length) {
   rouges++;
 } else {
   console.log(`  ✓ la liste couvre gates.yml (${couverts.size} portes + ${HORS_CHAMP.size} hors champ assumés)`);
+}
+
+//  ── TROISIÈME SENS (§11.180) : la porte peut-elle seulement TOURNER là-bas ? ──
+//
+//  Les deux gardes ci-dessus demandent si la liste est à jour. Aucune ne
+//  demande si un script ARMÉ EN CI est capable de s'exécuter sur un runner.
+//  Les instruments au navigateur se lancent ici sur `/opt/pw-browsers/chromium`,
+//  un chemin de CE conteneur ; la CI, elle, installe son propre Chromium et en
+//  passe le chemin par `PW_CHROMIUM_PATH`. Une porte armée qui ignore cette
+//  variable tombe là-bas sur un exécutable absent : un rouge d'INFRASTRUCTURE
+//  qui se lit comme un verdict produit.
+//
+//  Écrite le jour où j'ai commis exactement ça — une heure après avoir écrit
+//  qu'« une porte armée qui n'a jamais été lancée n'est pas une porte
+//  vérifiée ». Sur 59 instruments au navigateur, un seul avait le défaut, et
+//  c'était le neuf. La règle ne suffit pas : il faut l'outiller (ADR 0033).
+//  LA SONDE LIT LE CODE, PAS LES COMMENTAIRES. Premier jet : `src.includes(
+//  "PW_CHROMIUM_PATH")` sur le fichier entier. Mon essai rouge a retiré la
+//  variable de l'APPEL en laissant le commentaire qui la nomme juste au-dessus
+//  — la garde est restée muette. Une règle se vérifie sur son EFFET, jamais sur
+//  la présence de la déclaration (ADR 0038, 1ʳᵉ loi) : le commentaire EST la
+//  déclaration. On retire donc commentaires et chaînes avant de chercher.
+const sansCommentaires = (src) =>
+  src.replace(/\/\*[\s\S]*?\*\//g, " ").replace(/(^|[^:])\/\/[^\n]*/g, "$1 ");
+const sansOverride = [...lancesParCI].filter((f) => {
+  const chemin = join(WEB, "scripts", f);
+  if (!existsSync(chemin)) return false;
+  const code = sansCommentaires(readFileSync(chemin, "utf8"));
+  //  La variable peut être lue ailleurs qu'à l'appel (`const exe = process.env
+  //  .PW_CHROMIUM_PATH || …`) : on exige qu'elle soit dans le CODE, pas sur la
+  //  même ligne que `executablePath` — un motif plus étroit que la réalité
+  //  rendrait la garde aveugle aux formes légitimes.
+  return /chromium\.launch/.test(code) && !code.includes("PW_CHROMIUM_PATH");
+}).sort();
+
+console.log();
+if (sansOverride.length) {
+  console.log("━━ DES PORTES ARMÉES EN CI QUI NE POURRAIENT PAS Y DÉMARRER ━━");
+  for (const f of sansOverride) console.log(`     • ${f}`);
+  console.log("   Elles lancent Chromium sur un chemin en dur et ignorent PW_CHROMIUM_PATH,");
+  console.log("   que gates.yml exporte. Sur un runner, l'exécutable n'est pas là : la porte");
+  console.log("   échoue sur la CONNEXION au navigateur, pas sur le produit.");
+  console.log("   Correctif : `process.env.PW_CHROMIUM_PATH || \"/opt/pw-browsers/chromium\"`.");
+  rouges++;
+} else {
+  console.log("  ✓ chaque porte au navigateur armée en CI honore PW_CHROMIUM_PATH");
 }
 
 if (!GARDE_SEULE) console.log(rouges ? `\n━━ ${rouges} contrôle(s) ROUGE(s) — ne pas pousser en prétendant le contraire ━━\n`

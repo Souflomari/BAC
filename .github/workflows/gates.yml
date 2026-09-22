@@ -515,6 +515,27 @@ jobs:
       - name: Porte source de leçon en double
         run: node scripts/source-en-double.mjs --porte
 
+      # PORTE MANIFESTES DU HEADER (2026-09-22, §11.180). Le header offre deux
+      # commandes alimentées par des manifestes calculés côté SERVEUR : le
+      # panneau « Notions » et la palette ⌘K. Quand une page oublie de les
+      # passer, RIEN ne casse et rien ne le dit — le panneau s'ouvre sur 720 px
+      # de vide et ⌘K ne trouve aucune notion. C'est arrivé sur /connexion (ni
+      # notions ni épreuves : la page était un composant CLIENT, elle ne POUVAIT
+      # pas appeler des manifestes serveur) et sur /atelier (notions sans
+      # épreuves). La porte énumère les types de page depuis `src/app` au lieu
+      # de lire une liste écrite à la main : un type NEUF hors table la fait
+      # rougir plutôt que d'être sauté en silence.
+      #
+      # DEUX PASSAGES, comme la porte préférences : vert d'abord, puis
+      # `--essai-rouge` qui retire ce que la porte compte et exige des zéros.
+      # Une porte verte les deux fois est aveugle, et seul le second passage
+      # peut le dire (ADR 0034).
+      - name: "Manifestes du header (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run header-manifestes
+          node scripts/header-manifestes.mjs --essai-rouge
+
       - name: Porte LaTeX nu
         run: |
           routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)

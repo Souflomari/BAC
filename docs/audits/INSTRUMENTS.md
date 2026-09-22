@@ -947,3 +947,72 @@ raconte l'histoire de la figure — invisible, jamais rendu, légitime.
 Pas d'entrée au manifeste des essais rouges, et la raison est écrite en
 §11.175 : la sabotage naturelle est un `.tsx`, la porte lit du HTML servi, et
 sans reconstruction la sabotage n'atteindrait jamais la porte (ADR 0038, 3ᵉ loi).
+
+**Elle n'était pas armable, et personne ne pouvait le voir (corrigé le
+2026-09-22).** Son premier jet prenait `http://localhost:3111` par défaut et
+*supposait* qu'un serveur y écoutait déjà — vrai sur la machine où elle a été
+écrite, faux en CI, où son étape ne démarre rien. `fetch` aurait rejeté et la
+porte serait tombée sur une erreur de CONNEXION : un rouge d'infrastructure
+déguisé en verdict produit. Le défaut est resté invisible parce qu'**aucun
+runner n'a tourné depuis le 2026-09-11** : une porte armée qui n'a jamais été
+lancée n'est pas une porte vérifiée. Elle lève désormais son propre
+`next start`, comme `preferences-secours`, et a tourné pour de bon —
+62 leçons, 0 marqueur.
+
+---
+
+## `web/scripts/header-manifestes.mjs` — le header offre-t-il ce qu'il MONTRE ?
+
+**PORTE, armée en CI (58ᵉ étape).** Le header porte deux commandes alimentées
+par des manifestes calculés **côté serveur** et passés en props : le panneau
+« Notions » et la palette ⌘K (notions + épreuves). Quand une page oublie de
+les passer, rien ne casse et **rien ne le dit** — `PanneauNotions` renvoie
+`null` pour chaque matière dont la liste est vide, donc le bouton ouvre un
+panneau de 720 px sur du vide, et la palette s'ouvre sur une liste sans
+notions. Une commande offerte qui ne mène nulle part.
+
+C'était le cas de deux pages, et aucune porte ne le voyait :
+
+- **/connexion** — ni notions ni épreuves. La page était un composant CLIENT
+  (elle lit `useAuth()`), donc elle ne *pouvait pas* appeler des manifestes
+  qui lisent le corpus sur disque. L'en-tête de `palette-epreuves.ts` nommait
+  déjà la contrainte ; personne n'avait mesuré ce qu'elle coûtait à l'écran.
+  Corrigé en séparant la coquille SERVEUR (`page.tsx`) du formulaire CLIENT
+  (`FormulaireConnexion.tsx`) — le découpage que l'en-tête du fichier appelait
+  lui-même « a follow-up pass ». Bonus du même geste : la page peut enfin
+  exporter une `metadata`, interdite à côté de `"use client"`.
+- **/atelier** — notions mais pas d'épreuves : « 2025 » et « rattrapage » ne
+  trouvaient rien, exactement le défaut que §11.34 avait corrigé partout
+  ailleurs. Cette page monte `SiteHeader` elle-même au lieu de passer par
+  `PageShell`, et la seconde prop n'a jamais suivi.
+
+**Ce qu'elle mesure, et comment.** Elle **énumère** les types de page depuis
+`src/app/**/page.tsx` — elle ne lit pas une liste écrite à la main. Un type de
+page NEUF sans URL concrète dans sa table la fait ROUGIR au lieu d'être sauté
+en silence : c'est la direction qui l'empêche d'être contournée en ajoutant
+une route. Puis, sur chaque URL, elle fait **ce que ferait l'élève** — ⌘K,
+puis clic sur « Notions » — et compte ce qui s'affiche. Pas de lecture de
+source, pas d'inspection de props.
+
+- **vert** : 10 types de page sur 10 (les 9 `page.tsx` + le 404), chacun à
+  62 notions, 4 matières, 39 épreuves, 3 raccourcis, 4 colonnes ;
+- **rouge, mesuré pour de vrai** : les deux défauts historiques remis dans la
+  source, **reconstruction comprise** — `/connexion` tombe à 0/0/0 et
+  `/atelier` à 0 épreuve, les huit autres restent verts, exit 1. Le rouge
+  nomme donc les deux pages fautives et elles seules ;
+- `--essai-rouge` intégré, deux directions : sabotage au niveau mesuré (tout
+  doit tomber à zéro — sinon l'instrument ne voit pas ce qu'il compte), et
+  retrait d'une page de la table (elle doit crier).
+
+**Un défaut de MESURE trouvé en route, et gardé écrit.** Premier jet :
+`notions = total des items − épreuves`. Mais la palette porte aussi un groupe
+fixe « Aller à » de trois raccourcis, présent **même quand le manifeste est
+vide** : `/connexion` cassée annonçait donc « 3 notions » au lieu de 0, et
+seules les colonnes épreuves et panneau la faisaient rougir. La condition la
+plus directe des trois était désarmée sans que rien ne le dise. Le compteur
+compte désormais **par groupe** — une unité fausse noie le signal (ADR 0039).
+
+**Autonome.** Sans `BASE`, elle lève son propre `next start` et le tue par son
+groupe de processus. Sans cela une porte n'est pas armable en CI, où rien
+n'écoute d'avance — le défaut exact que `source-en-double` portait en silence
+(voir la note de sa section).
