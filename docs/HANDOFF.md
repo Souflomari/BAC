@@ -13822,3 +13822,42 @@ cette version-là du défaut, la plus difficile.
 > la garde qui lisait ses propres commentaires. **Aucune des trois ne se serait
 > vue sans un essai rouge** — et la troisième ne s'est vue que parce que l'essai
 > rouge portait la forme la plus gênante, pas la plus commode.
+
+**CONFIRMÉ SUR L'ARTEFACT DÉPLOYÉ** (bac-pink.vercel.app, commit `d9dc1849`,
+déployé à 00:55 UTC). La discipline de la vérité déployée vaut pour un gain
+comme pour un défaut :
+
+| document déployé | notions | épreuves | `<title>` |
+|---|---|---|---|
+| `/connexion` | **62/62** | **39/39** | `Se connecter · BAC` |
+| `/atelier` | **62/62** | **39/39** | `Atelier — … · BAC` |
+
+Les deux manifestes sont bien dans le document SERVI par Vercel, pas seulement
+dans le build local — et le `<title>` propre à /connexion prouve que la
+`metadata` que la scission a rendue possible est réellement rendue. Vérifié
+aussi en local par les instruments existants : `recherche-palette` VERT
+(108 entrées = 62 + 4 + 39 + 3, l'arithmétique se referme), `noms-accessibles`
+0 commande sans nom accessible, `dom-truth` 279/279.
+
+**DEUX PISTES FERMÉES PAR LA MESURE, et il faut le dire aussi.** Après le gain
+de §11.175 j'ai cherché s'il restait une prop inutile traversant une frontière
+client. Réponse : **non**, et le chemin compte.
+
+1. *Les 45 frontières clientes se justifient toutes.* Le premier balayage en
+   désignait trois (`ProgrammeMap`, `SessionCard`, `FiliereBadge`) — mon motif
+   ne connaissait pas les crochets PERSONNALISÉS (`useFiliere`,
+   `useStudentState`). Corrigé en `use[A-Z]\w*\(` : zéro.
+2. *La charge RSC restante n'est pas du gaspillage.* Mesurée sur
+   `suites-numeriques` : 2 005 372 o sur 3 824 462 (52,4 %), et ses plus
+   grosses lignes sont du KaTeX **déjà rendu**. Mais `LessonRenderer` est un
+   composant SERVEUR : cette charge est la DESCRIPTION DE L'ARBRE que l'App
+   Router doit sérialiser pour hydrater et naviguer. Elle est inhérente au
+   modèle, pas une prop en trop. Le cas `MarginRail` était différent — il
+   transportait la SOURCE markdown, absente du DOM.
+3. *Le JS n'est pas une trouvaille neuve.* `js-ventilation` redonne 144 ko de
+   pipeline markdown/KaTeX sur toutes les routes, accueil compris, en priorité
+   **Low** (préchargement). C'est le chiffre déjà inscrit en §11.26 (« 143 ko …
+   levier owner »), re-mesuré à l'identique — pas une découverte.
+
+> Un résultat négatif qui a coûté trois mesures vaut d'être écrit : sans lui,
+> le prochain qui regarde ces 52 % y verra un gaspillage et ira le « corriger ».
