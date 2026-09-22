@@ -1016,3 +1016,34 @@ compte désormais **par groupe** — une unité fausse noie le signal (ADR 0039)
 groupe de processus. Sans cela une porte n'est pas armable en CI, où rien
 n'écoute d'avance — le défaut exact que `source-en-double` portait en silence
 (voir la note de sa section).
+
+---
+
+## `web/scripts/etroit-sweep.mjs` — la porte locale qui a rattrapé ce qu'aucune autre ne voyait
+
+**PAS ARMÉE EN CI** (0 occurrence dans `gates.yml`) — et c'est l'objet de
+DECISIONS §16. Elle mesure 108 pages × 320/360/390 px, chapitres dépliés et
+les 39 épreuves ouvertes, sur un fait binaire du document :
+`scrollWidth > innerWidth`. Référence inscrite : **0 débord**.
+
+**Le 2026-09-22 elle a fait seule le travail de toute la batterie.** Un
+correctif d'ergonomie clavier — retirer `.prose-lesson p { overflow-x: auto }`,
+qui coûte 99 arrêts de tabulation fantômes sur un corrigé (§11.39) — avait été
+« prouvé » sûr par quatre mesures convergentes sur 7 970 puis 7 730
+paragraphes. `etroit-sweep` l'a fait passer de **0 à 185 débords**, et le
+contrôle sur l'arbre revenu en arrière a rendu **0 sur 108 × 3**. La règle
+n'est pas inerte : elle contient le MathML caché de KaTeX (`mrow`, `mo`,
+3 px hors cadre). Correctif annulé, histoire complète en §11.181.
+
+**Ce qu'aucune autre porte ne voyait :** `dom-truth` mesure le débord à 1 536
+et 1 920 px, `zoom-sweep` mesure texte doublé, le build ne mesure rien de
+géométrique. La condition gardée ici — **téléphone × texte normal** — est
+celle dans laquelle l'élève visé lit, et elle n'était gardée que par un
+instrument que personne ne lance automatiquement.
+
+**Piège pour qui voudrait la doubler d'une sonde maison :** forcer
+`details.open = true` sur tout le document FABRIQUE un état que le produit ne
+montre jamais. Une sonde qui faisait cela a rendu des débords de +298 à
++368 px sur 5 à 7 leçons, stables avec et sans la règle — un chiffre
+rassurant qui ne correspondait à rien, là où `etroit-sweep` en trouve zéro sur
+le même arbre.

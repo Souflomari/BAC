@@ -469,6 +469,48 @@ produit. Le chiffre est mesuré et rejouable (`npm run dom-truth`, ligne
 
 ---
 
+## 16. La porte qui garde la largeur d'un téléphone n'est pas armée en CI
+
+**LE FAIT.** `etroit-sweep` mesure le corpus entier — 108 pages × 320/360/390 px,
+chapitres dépliés, les 39 épreuves ouvertes en deux clics — sur un fait binaire
+du document : `scrollWidth > innerWidth`. Sa référence inscrite est **0 débord**.
+Elle n'apparaît **nulle part dans `.github/workflows/gates.yml`** : elle ne
+tourne que si quelqu'un la lance à la main.
+
+**POURQUOI ÇA COMPTE MAINTENANT.** Le 2026-09-22 elle a rattrapé une régression
+que j'avais introduite et « prouvée » sûre par quatre mesures convergentes
+(§11.181) : retirer `.prose-lesson p { overflow-x: auto }` faisait passer le
+corpus de **0 à 185 débords** à la largeur d'un téléphone. Aucune autre porte ne
+l'a vue — ni `dom-truth` (qui mesure le débord à 1 536 et 1 920 px), ni
+`zoom-sweep` (texte doublé), ni le build. La condition qu'elle garde est la
+condition PAR DÉFAUT du public visé : un élève marocain qui lit sur un
+téléphone, à taille de texte normale.
+
+**LE COÛT, mesuré.** Le budget du workflow est de **50 min** ; les runs verts
+relevés tiennent en ~38 min, et les notes du fichier disent explicitement que
+relever le budget « masquerait de nouveau un blocage ». Trois largeurs
+coûteraient l'essentiel de la marge restante. Une seule largeur — **320 px**,
+où la régression se voyait aussi (les trois largeurs la montraient) — en
+coûterait environ le tiers, dans l'ordre de grandeur de `zoom-sweep` à 320 px
+(207 s relevés).
+
+**LES DEUX LECTURES.**
+
+- *Armer à 320 px seulement.* La classe de défaut est attrapée, le budget tient.
+  On perd la détection d'un défaut qui n'apparaîtrait qu'à 360 ou 390 px — cas
+  qui n'a jamais été observé, les trois largeurs ayant toujours bougé ensemble.
+- *Laisser locale.* Le budget reste intact et la porte garde ses trois largeurs
+  pour l'audit à la main. On accepte qu'une régression de cette classe ne soit
+  vue que si quelqu'un pense à la lancer — ce qui, ce jour-là, a tenu à un
+  balayage d'instruments locaux fait par curiosité, pas par procédure.
+
+**CE QUI N'EST PAS EN QUESTION :** la porte elle-même. Elle est juste, sa
+référence est inscrite, et elle a fait exactement son travail. La question est
+de savoir si le propriétaire veut payer ~3 min de CI pour qu'elle le fasse sans
+qu'on y pense.
+
+---
+
 ## La PORTÉE de cette page, mesurée
 
 **Cette page ne recense pas toutes les décisions de propriétaire du dépôt.**

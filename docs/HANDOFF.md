@@ -13861,3 +13861,71 @@ client. Réponse : **non**, et le chemin compte.
 
 > Un résultat négatif qui a coûté trois mesures vaut d'être écrit : sans lui,
 > le prochain qui regarde ces 52 % y verra un gaspillage et ira le « corriger ».
+
+---
+
+## §11.181 — J'ai « prouvé » qu'une règle était inerte, et une porte locale m'a rattrapé
+
+**CE QUE J'AI CRU TROUVER.** `tab-corrige` mesure depuis §11.39 que le corrigé
+d'une épreuve coûte **99 arrêts de tabulation sur des paragraphes** : Chrome
+rend focalisable tout conteneur à débordement défilable, et
+`.prose-lesson p { overflow-x: auto }` en fait un de chaque paragraphe. Les
+99 affichent `585/585` — `scrollWidth == clientWidth`, rien à faire défiler.
+Un élève au clavier payait 99 Tab pour traverser un corrigé. §11.39 avait
+mesuré le fait et DIFFÉRÉ le levier. J'ai voulu le lever.
+
+**LA GRILLE QUE J'AI CONSTRUITE, et elle avait l'air complète.** Texte ×2
+partout, règle neutralisée pour le contrefactuel :
+
+| largeur | pages | paragraphes | plus larges que leur boîte |
+|---|---|---|---|
+| 320 px | 63 (corrigé compris) | 7 970 | 0 |
+| 768 px | 62 | 7 730 | 0 |
+| 1 280 px | 62 | 7 730 | 0 |
+
+Et sans la règle, aucune formule ne dépassait la colonne à 768 ni 1 280 px —
+là où la règle téléphone (`max-width: 600px`) ne s'applique pas. J'ai retiré
+la règle, avec la preuve écrite à sa place. `tab-corrige` est passé de
+**156 arrêts à 52** (99 paragraphes et 5 spans en moins, les 48 radios et
+4 liens intacts), et aucun élément réellement défilant n'avait perdu le
+clavier.
+
+**CE QUI ÉTAIT FAUX.** `etroit-sweep` — 108 pages × 320/360/390 px, référence
+inscrite « **0 débord** » — est passé à **185 débords**. Re-mesuré ensuite sur
+l'arbre revenu en arrière, seul, serveur frais : **0 sur 108 × 3**. La règle
+n'est pas inerte ; elle contient le MathML caché de KaTeX (`mrow`, `mo`,
+3 px hors cadre) qui, sans elle, pousse le document. **Le levier de §11.39
+était différé à raison. Correctif annulé.**
+
+**LES TROIS ERREURS DE MESURE, parce que c'est là qu'est la leçon.**
+
+1. **La cellule manquante était la cellule PAR DÉFAUT.** Ma grille testait
+   téléphone × texte ×2, et bureau × texte ×1. Elle ne testait **jamais
+   téléphone × texte normal** — l'état dans lequel l'élève marocain lit,
+   c'est-à-dire le seul qui comptait. Une grille à trois cases pleines
+   ressemble à une preuve ; il manquait la quatrième.
+2. **Ma sonde FABRIQUAIT un état que le produit ne montre jamais.** Elle
+   forçait `details.open = true` sur tout le document. Elle a alors rendu des
+   débords de +298 à +368 px sur 5 à 7 leçons, identiques avec et sans la
+   règle — un chiffre qui m'a rassuré parce qu'il ne bougeait pas, et qui ne
+   correspondait à rien : `etroit-sweep` en trouve **zéro** sur le même arbre.
+   Mesurer un état inventé donne une réponse à une autre question (ADR 0033).
+3. **J'ai mesuré sous charge.** Une capture d'écran prise pendant que la
+   batterie tournait a rendu la page **sans aucune feuille de style** — et
+   sur une page non stylée, « 0 paragraphe focalisé » est vrai pour la
+   mauvaise raison. Le CSS était intact (commentaires 126/126, 50 règles
+   `prose-lesson` dans la feuille construite) ; c'était le banc.
+
+**CE QUE ÇA DIT DE L'OUTILLAGE, et c'est le vrai résultat.** La porte qui m'a
+rattrapé, `etroit-sweep`, **n'est pas armée en CI** (0 occurrence dans
+`gates.yml`). Elle garde pourtant la condition par défaut du public visé : le
+corpus entier à la largeur d'un téléphone. Sans elle, ce correctif partait —
+et la CI, même vivante, ne l'aurait pas vu. Le budget CI est de 50 min pour
+des runs à ~38 ; trois largeurs coûteraient l'essentiel de la marge, une seule
+(320 px, où le défaut se voyait aussi) en coûterait le tiers. Arbitrage
+inscrit en DECISIONS §16 plutôt que pris tout seul : dépenser le budget CI
+du propriétaire n'est pas une décision de mesure.
+
+> Une porte locale a fait le travail que la CI ne pouvait pas faire — mais
+> seulement parce que je l'ai lancée. **Le correctif que je croyais prouvé
+> tenait sur une grille dont la case manquante était la seule qui comptait.**
