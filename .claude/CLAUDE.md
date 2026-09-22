@@ -129,6 +129,26 @@ Read the right document for the task at hand:
   le maison s'imprime à côté sans rougir ; et deux valeurs qui devraient
   différer et sont égales à l'octet près sont un défaut de mesure, pas un
   résultat.
+  **ADR 0040 (2026-09-22) — la case manquante de la grille :** la case qu'une
+  grille de mesure oublie est presque toujours la case PAR DÉFAUT — trois cases
+  pleines ressemblent à une preuve, et c'est la quatrième qui décidait (un
+  correctif « prouvé » sûr sur 15 700 paragraphes a fait passer le corpus de 0 à
+  185 débords) ; une sonde qui FABRIQUE un état que le produit ne montre jamais
+  répond fidèlement à une autre question, ce qui est pire qu'un faux chiffre
+  parce que c'est un chiffre cohérent ; **un verdict obtenu pendant qu'autre
+  chose tourne n'est pas un verdict** (page non stylée, serveur tué, Chromium
+  absent — trois fois le même jour) ; `node --check` prouve qu'un fichier se
+  PARSE, pas qu'il TOURNE, et après une réécriture automatique il faut LANCER la
+  chose ; **un identifiant non unique fait mentir l'instrument, pas le produit**
+  — une collision d'ids est une dette d'OBSERVABILITÉ qui se paie au premier
+  outil qui nomme les choses, d'où la clé `notion::id` ; **rendre une chose
+  mesurable est un travail, pas un préalable gratuit** — 362 points d'arrêt, ce
+  qu'un élève rencontre EN PREMIER, n'étaient adressables par aucun instrument
+  faute d'un attribut ; un chiffre qu'on ne sait pas EXPLIQUER est une rumeur
+  même quand il est exact (« 131 jamais rendus » : le nombre juste, le mot
+  faux) ; et quand la CI est morte, son travail devient manuel — le lancer avec
+  les COMMANDES ET ARGUMENTS EXACTS du workflow, ce qui a trouvé dix épreuves
+  dont le contenu était coupé à 200 % de texte.
   **ADR 0032 (2026-09-11) — the honest wait before
   hydration:** a server-rendered command is `disabled` + `aria-busy` until
   React takes over (`useHydrated`), the page says so once, calmly, and
