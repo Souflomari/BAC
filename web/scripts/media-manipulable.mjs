@@ -53,6 +53,9 @@ const PORTE = process.argv.includes("--porte");
 //  Relevé à 10 le 2026-09-23 : maths/geometrie-espace porte la scène 3D
 //  « sphère, plan, droite » (ADR 0041). Un cliquet qu'on ne resserre pas quand
 //  la mesure gagne laisse perdre ce gain en silence (ADR 0034).
+//  (La troisième scène, la particule dans le champ magnétique, §11.190, ne le
+//  bouge pas : ce cliquet compte des NOTIONS, et pc/chute-mouvements-plans en
+//  portait déjà une.)
 const CLIQUET = 10;
 
 const RE_EMBED = /\[\[(?:embed|geogebra|desmos|falstad|phet)[:\]]/gi;

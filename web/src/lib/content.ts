@@ -195,6 +195,12 @@ export interface Scene3DChoix {
 export interface Scene3DPari {
   question: string;
   revele_apres_h?: number;
+  /**
+   * Scènes à COURSE (la particule dans le champ) : le verdict attend que cette
+   * fraction de la course ait été parcourue — 0,25 pour voir de quel côté la
+   * trajectoire part, 1 pour un tour ou une traversée complète.
+   */
+  revele_apres_course?: number;
   choix: Scene3DChoix[];
 }
 

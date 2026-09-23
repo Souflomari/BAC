@@ -154,6 +154,11 @@ const HORS_CHAMP = new Set([
   // pixels lus au navigateur après build — ARMÉE en CI (§11.189). Son rouge se
   // rejoue : `node scripts/scene-sphere.mjs --essai-rouge`.
   "scene-sphere.mjs",
+  // scene-lorentz, même raison : la troisième scène 3D (la particule dans le
+  // champ magnétique) se juge sur son rendu WebGL et sur une course lancée en
+  // temps réel ; la CI la rejoue vert puis rouge :
+  // `node scripts/scene-lorentz.mjs --essai-rouge`.
+  "scene-lorentz.mjs",
   // temps-de-chargement mesure TTFB/FCP/LCP au navigateur, réseau bridé, trois
   // passages par route : build, Playwright, et des millisecondes qui sont
   // celles de CETTE machine. Ce n'est PAS une porte et ce n'en sera pas une —

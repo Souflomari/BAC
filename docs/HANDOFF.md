@@ -14560,3 +14560,70 @@ manipulation, à payer en 2D.
 > Un rouge qu'on garde « délibérément » coûte plus que le défaut qu'il signale :
 > onze jours de batterie rouge, c'est onze jours où un NOUVEAU rouge se serait
 > fondu dans l'ancien. La dette était petite — quatre items.
+
+## §11.190 — Avant le pari, rien ne répond ; et une troisième scène, la particule dans le champ magnétique
+
+**CE QUI A ÉTÉ TROUVÉ, EN RELISANT LES SCÈNES — PAS PAR LES PORTES.** Le pari
+est le cœur des scènes (ADR 0041 §6) : l'élève s'engage AVANT toute preuve.
+Les portes vérifiaient que le temps et les contrôles n'existaient pas avant le
+pari. Elles ne regardaient pas le reste, et le reste répondait :
+
+- **l'orbite**, étapes 2 et 3 — la fiche des trois conditions affichait
+  « Une orbite dans le plan de l'équateur ✗ … Pas géostationnaire : vu du sol,
+  le satellite ne reste pas au-dessus de P » à côté de la question « le
+  satellite va-t-il rester au-dessus de P ? » ;
+- **la sphère**, étape 2 — les deux points d'intersection étaient DESSINÉS et
+  la case « deux points » COCHÉE avant la question « la droite et la sphère ont
+  en commun… » ; étape 4, « aucun point commun » coché ; et la description lue
+  au lecteur d'écran donnait le rayon que l'étape 1 demandait de parier.
+
+**LA RÈGLE, élargie :** tout ce qui dépend de l'ISSUE — le dessin qui la
+montre, la fiche qui la coche, le verdict qui la dit, la phrase qui la
+décrit — attend la révélation. Ce qui reste visible est l'ÉNONCÉ : la scène
+telle que l'étape la pose. `usePari` prend maintenant `{ attend, montre }` : ce
+que « la scène a montré » veut dire est propre à chaque scène (des heures
+simulées, une fraction de course, rien). **Chaque porte a une famille
+`avant-pari`** : orbite 44 mesures / 11 familles (essai rouge 7/7), sphère 34 /
+11 (8/8) — dont, pour la sphère, **zéro pixel d'accent** avant le pari et
+**1 069** après : la moitié qui prouve que la première n'est pas un canvas
+vide.
+
+> Une porte qui vérifie « rien ne s'ouvre » vérifie ce qui s'OUVRE. Ce qui
+> était déjà ouvert — une fiche toujours affichée, un dessin toujours tracé —
+> passait sous elle. La question juste était « qu'est-ce qui, à l'écran, dit
+> la réponse ? », et elle se pose à l'écran, pas au code.
+
+**LA TROISIÈME SCÈNE : une particule chargée dans un champ magnétique**
+(`pc/chute-mouvements-plans`, R6 ; ADR 0041, addendum du soir). Posée juste
+après la règle du sens de la force, avant les deux « conséquences » — la
+vitesse constante, le cercle — que ses étapes font découvrir. Le champ est
+dessiné en flèches qui traversent un anneau posé dans le plan du mouvement :
+d'en haut, ce sont les ⊗ et ⊙ du manuel ; de biais, ce qu'ils veulent dire.
+Cinq étapes à pari : le côté (le signe de q), la vitesse (elle ne change pas),
+le rayon (B double, R de moitié, l'ancien cercle en pointillé), le couloir de
+l'exemple travaillé (R ≈ 5,7 cm, θ ≈ 21°, puis le demi-tour quand R < ℓ), et
+deux inversions à la fois. Une scène à COURSE : on lance la particule (3 ns de
+vol par seconde), le verdict attend la fraction de course annoncée.
+
+**Quatre choses vues à l'écran, qu'aucun calcul n'aurait montrées :**
+156 flèches de champ illisibles (maillage à 2 cm, 36 glyphes) ; le ⊗ qui se
+lisait ⊙ (la tête d'une flèche qui s'éloigne dessinait un disque sous la
+croix — tête sans fond) ; la flèche F qui traversait le centre vers lequel
+elle pointe à 5 mT (longueur(F)/R croît comme B² — le champ est borné à
+3,0 mT plutôt que la flèche plafonnée, qui mentirait à son plafond) ; la
+flèche v qui sortait du canvas en fin de course (la course s'arrête 2,2 cm
+avant le bord). Et une vue retirée : « par la tranche » ne montrait qu'une
+ligne et des étiquettes empilées.
+
+**SA PORTE, `scene-lorentz` : 45 mesures, 12 familles, VERT deux fois de
+suite ; essai rouge 9/9.** Le cœur est dans les pixels : le CÔTÉ où la
+trajectoire s'infléchit, lu sur l'image pour les quatre couples charge × sens
+du champ (±98 px, ±58 px), et le cercle dessiné deux fois plus petit quand B
+double (rapport 0,51). La porte LANCE la particule et attend la course : c'est
+le produit qui avance, pas un curseur qu'on pousse. L'essai rouge prend la
+misconception de la leçon — un rayon qui croîtrait avec B, le côté de v ∧ B
+sans le signe de q.
+
+**CE QUI RESTE OUVERT.** Les paris ne sont toujours pas ÉCRITS dans le modèle
+de l'élève (ils portent leurs misconceptions, prêts) ; aucun téléphone réel
+n'a été mesuré ; la vue de biais n'est mesurée par aucun pixel.

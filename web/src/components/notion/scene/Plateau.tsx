@@ -96,16 +96,32 @@ export function Plateau({
   );
 }
 
-/** Une étiquette HTML posée sur la scène, placée par le rendu à chaque image. */
-export function Etiquette({ refEl, texte }: { refEl: React.RefObject<HTMLSpanElement>; texte: string }) {
+/**
+ * Une étiquette HTML posée sur la scène, placée par le rendu à chaque image.
+ * `texte` pour une lettre (N, P, S…) ; `children` pour une notation qui passe
+ * par KaTeX (un vecteur, $\vec F$) — la même écriture que la leçon.
+ */
+export function Etiquette({
+  refEl,
+  texte,
+  nom,
+  children,
+}: {
+  refEl: React.RefObject<HTMLSpanElement>;
+  texte?: string;
+  /** un nom stable pour les portes, qui lisent l'étiquette sans deviner son rendu KaTeX */
+  nom?: string;
+  children?: React.ReactNode;
+}) {
   return (
     <span
       ref={refEl}
+      data-etiquette={nom ?? texte}
       aria-hidden="true"
-      className="pointer-events-none absolute left-0 top-0 text-caption font-semibold text-primary"
+      className="pointer-events-none absolute left-0 top-0 whitespace-nowrap text-caption font-semibold text-primary"
       style={{ visibility: "hidden" }}
     >
-      {texte}
+      {children ?? texte}
     </span>
   );
 }

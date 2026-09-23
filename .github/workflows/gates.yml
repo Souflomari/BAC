@@ -87,7 +87,15 @@ jobs:
     # Le vrai remède à la LATENCE, s'il en faut un : découper le job en deux ou
     # trois jobs parallèles (le build partagé en artefact) — écrit en §11.188,
     # pas fait ici.
-    timeout-minutes: 80
+    #
+    # RELEVÉ À 90 MIN le 2026-09-23 (§11.190). L'estimation de ~63 min était
+    # encore une estimation : le run 746 — le PREMIER entièrement vert depuis le
+    # run 490, 62 étapes sur 62 — a pris 67 min 50 s (les deux scènes 3D :
+    # 5 min 00 s et 4 min 01 s, vert puis rouge). La troisième scène lance sa
+    # particule et attend ses courses en temps réel, deux passages : ~6 min
+    # mesurées en local (plus lent que le runner). ~74 min attendues : sous 80,
+    # mais sans la marge d'un runner lent. 90 la rend.
+    timeout-minutes: 90
     defaults:
       run:
         working-directory: web
@@ -638,6 +646,26 @@ jobs:
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
           npm run scene-sphere
           node scripts/scene-sphere.mjs --essai-rouge
+
+      # PORTE SCÈNE 3D « UNE PARTICULE CHARGÉE DANS UN CHAMP MAGNÉTIQUE »
+      # (2026-09-23, §11.190, ADR 0041). La troisième scène (pc/chute-mouvements-
+      # plans, R6), sur les mêmes pièces. Elle LANCE la particule et attend la
+      # course en temps réel (2 ns de vol par seconde) : les nombres (R, F, la
+      # déviation de l'exemple travaillé, le demi-tour quand R < ℓ) recalculés
+      # par une SECONDE implémentation ; le CÔTÉ où la trajectoire s'infléchit,
+      # lu dans les PIXELS pour les quatre couples charge × sens du champ ; le
+      # cercle dessiné deux fois plus petit quand B double ; la vitesse lue
+      # constante pendant la course. Et, comme les deux autres depuis §11.190 :
+      # AVANT LE PARI, RIEN NE RÉPOND.
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — dont la misconception même
+      # de la leçon (un rayon qui croîtrait avec B ; le côté de v ∧ B sans le
+      # signe de q) : les neuf familles doivent crier.
+      - name: "Scène 3D du champ magnétique (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-lorentz
+          node scripts/scene-lorentz.mjs --essai-rouge
 
       - name: Porte LaTeX nu
         run: |

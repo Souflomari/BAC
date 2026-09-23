@@ -187,6 +187,13 @@ function fautesScene3d(desc) {
       // verdict n'arriverait jamais, et l'étape resterait fermée pour toujours.
       if (!def.temps && (p?.revele_apres_h ?? 0) > 0)
         fautes.push(`${ou} : revele_apres_h = ${p.revele_apres_h} dans une scène sans temps — le pari ne serait jamais révélé`);
+      // Une scène à COURSE (une particule qu'on lance) attend une FRACTION de sa
+      // course, dans ]0, 1] ; une scène sans course n'a rien à attendre.
+      if (p?.revele_apres_course !== undefined) {
+        if (!def.course) fautes.push(`${ou} : revele_apres_course dans une scène sans course — le pari ne serait jamais révélé`);
+        else if (!(typeof p.revele_apres_course === "number" && p.revele_apres_course > 0 && p.revele_apres_course <= 1))
+          fautes.push(`${ou} : revele_apres_course = ${JSON.stringify(p.revele_apres_course)} hors de ]0, 1]`);
+      }
       const ch = Array.isArray(p?.choix) ? p.choix : [];
       if (ch.length < 2 || ch.length > 4) fautes.push(`${ou} : un pari propose 2 à 4 choix (${ch.length})`);
       const justes = ch.filter((c) => c?.juste === true).length;

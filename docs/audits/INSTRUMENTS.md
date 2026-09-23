@@ -1197,6 +1197,14 @@ clavier sont gardés, pas le geste) ; l'impression (le panneau est `print:hidden
     node scripts/scene-orbite.mjs --porte        (lève son propre next start)
     node scripts/scene-orbite.mjs --essai-rouge
 
+**AJOUT DU 2026-09-23 (§11.190) — une famille de plus, `avant-pari`.** La
+fiche des trois conditions — ses coches et son verdict — EST la réponse des
+paris 1 à 3 : la porte exige qu'elle soit absente avant le pari, absente
+pendant que le temps tourne vers la révélation (étape 2 : encore absente à
+12 h pour une révélation à 24 h), présente après. Les étapes 2 et 3
+affichaient « ✗ … pas géostationnaire » à côté de la question « reste-t-il
+au-dessus de P ? ». **44 mesures, 11 familles ; essai rouge 7/7.**
+
 ## `web/scripts/scene-sphere.mjs` — la scène « sphère, plan, droite » dit-elle VRAI ?
 
 **PORTE, armée en CI (vert puis rouge), §11.189, ADR 0041.** La deuxième scène
@@ -1244,3 +1252,61 @@ téléphone ; le glisser au doigt ; l'impression (panneau `print:hidden`).
 
     node scripts/scene-sphere.mjs --porte        (lève son propre next start)
     node scripts/scene-sphere.mjs --essai-rouge
+
+**AJOUT DU 2026-09-23 (§11.190) — une famille de plus, `avant-pari`.** Avant
+le pari, RIEN ne répond : zéro pixel d'accent (l'intersection n'est pas
+dessinée), aucune fiche des trois cas, une description qui décrit l'énoncé
+sans l'issue ; le pari posé, les trois apparaissent. Trouvé en relisant la
+scène, pas par la porte : l'étape 2 montrait ses deux points et cochait
+« deux points » à côté de la question. **34 mesures, 11 familles ; essai
+rouge 8/8.**
+
+## `web/scripts/scene-lorentz.mjs` — la particule dans le champ magnétique dit-elle VRAI ?
+
+**PORTE, armée en CI (vert puis rouge), §11.190, ADR 0041.** La troisième
+scène 3D de première partie (pc/chute-mouvements-plans, R6), sur les mêmes
+pièces communes. Même principe : le rendu RÉEL, WebGL par SwiftShader — et
+une chose de plus : la porte LANCE la particule et attend la course en temps
+réel (3 ns de vol par seconde). C'est le produit qui avance, pas un curseur
+qu'on pousse.
+
+**Ce qu'elle mesure :**
+
+- **rien avant le clic** — `window.__THREE__` indéfini tant que la scène est
+  fermée ;
+- **les nombres**, par une SECONDE implémentation aux constantes de la leçon
+  (|q| = 1,6 × 10⁻¹⁹ C, m = 9,1 × 10⁻³¹ kg) : R et F sur cinq couples (B, v₀) ;
+  la déviation sin θ = ℓ / R au couloir sur quatre, dont un demi-tour ;
+  l'exemple travaillé tel quel (**R ≈ 5,7 cm, θ ≈ 21°**) ; à 3,0 mT, R < ℓ :
+  « demi-tour », pas un angle ;
+- **les pixels, le cœur** — le CÔTÉ où la trajectoire s'infléchit, lu sur
+  l'image pour les QUATRE couples charge × sens du champ : la tache d'accent
+  d'un tour complet se décale du point d'entrée vers le côté de F = q v ∧ B
+  (électron ⊗ : **98 px vers le bas** ; positon ⊗ : **98 px vers le haut** ;
+  positon ⊙ : **57 px vers le bas** ; électron ⊙ : **58 px vers le haut**) ; et
+  le cercle DESSINÉ à 3,0 mT fait **109 px** contre **212 px** à 1,5 mT —
+  rapport **0,51** ;
+- **la vitesse**, lue PENDANT la course à 10, 35, 60 et 85 % du tour : la même
+  à chaque fois, l'angle entre F et v à **90°**, F constante ;
+- **les paris** — rien ne s'ouvre avant l'engagement ; le verdict attend la
+  fraction de course annoncée (muet à un huitième de tour, dit au quart) ;
+- **avant le pari, rien ne répond** — ni fiche, ni étiquette de F (la flèche
+  est cachée avec elle), ni issue dans la description ;
+- **les étapes** — chacune pose son état (lu dans le descripteur, pas recopié)
+  et n'ouvre que son contrôle ; aucun LaTeX brut dans le panneau ouvert ;
+- clavier (deux flèches → B + 0,2 mT), fond = `--figure-surface` en clair ET
+  en sombre, état honnête sans WebGL (la course révèle quand même le pari),
+  aucune erreur console.
+
+Mesuré le 2026-09-23 : **45 mesures, 12 familles, VERT** au premier passage,
+et de nouveau au second (un instrument neuf se lance plusieurs fois avant
+d'être cru, ADR 0036) ; `--essai-rouge` — dont la misconception même de la
+leçon, un rayon qui CROÎTRAIT avec B, et le côté pris sur v ∧ B sans le signe
+de q : **9/9 familles crient**.
+
+**NE DIT RIEN DE :** si les étapes enseignent ; la fluidité sur un vrai
+téléphone ; le glisser au doigt ; l'impression (panneau `print:hidden`) ; la
+vue de biais (seule la vue du manuel est mesurée en pixels).
+
+    node scripts/scene-lorentz.mjs --porte        (lève son propre next start)
+    node scripts/scene-lorentz.mjs --essai-rouge

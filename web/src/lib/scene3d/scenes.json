@@ -87,5 +87,64 @@
       "hm",
       "corde"
     ]
+  },
+  "particule-champ-magnetique": {
+    "temps": false,
+    "course": true,
+    "controles": [
+      "particule",
+      "champ",
+      "sens",
+      "vitesse",
+      "region"
+    ],
+    "etat": [
+      "particule",
+      "B_mT",
+      "sens",
+      "v0",
+      "region",
+      "trace_B_mT",
+      "vue"
+    ],
+    "bornes": {
+      "B_mT": [
+        0.5,
+        3
+      ],
+      "v0": [
+        0.5,
+        2
+      ],
+      "trace_B_mT": [
+        0.5,
+        3
+      ]
+    },
+    "valeurs": {
+      "particule": [
+        "electron",
+        "positon"
+      ],
+      "sens": [
+        "entrant",
+        "sortant"
+      ],
+      "region": [
+        "couloir",
+        "partout"
+      ],
+      "vue": [
+        "manuel",
+        "biais"
+      ]
+    },
+    "lectures": [
+      "v",
+      "F",
+      "angle",
+      "R",
+      "theta"
+    ]
   }
 }

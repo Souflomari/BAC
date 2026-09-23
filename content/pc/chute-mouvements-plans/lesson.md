@@ -330,6 +330,10 @@ $$F = |q|\,v\,B$$
 
 Pour trouver le sens de $\vec{v}\wedge\vec{B}$, sers-toi de ta main droite : pointe les doigts dans le sens de $\vec{v}$, puis referme-les vers $\vec{B}$ en balayant le plus petit angle entre les deux ; le pouce tendu donne alors le sens de $\vec{v}\wedge\vec{B}$. La force $\vec{F} = q\,\vec{v}\wedge\vec{B}$ pointe dans **ce** sens si la charge est positive ($q > 0$), et dans le sens **opposé** si la charge est négative ($q < 0$). C'est le seul endroit où le signe de la charge intervient : il décide de quel côté la trajectoire va se courber.
 
+Avant de lire la suite, mets cette règle à l'épreuve — et devine ce qu'elle entraîne. Dans la scène qui suit, le champ est vraiment perpendiculaire au plan du mouvement : la vue « comme le manuel » le montre en ⊗ et ⊙, la vue de biais montre ce que ces symboles veulent dire. À chaque étape, tu paries d'abord, puis tu lances la particule.
+
+[[embed:champ-magnetique]]
+
 ### Première conséquence : la norme de la vitesse ne change pas
 
 Voici le point qui rend ce mouvement complètement différent de celui du projectile. Décompose l'accélération dans la base de Freinet, comme au chapitre des lois de Newton — une composante tangentielle (le long de la vitesse) et une composante normale (perpendiculaire, tournée vers l'intérieur de la courbe, où $R$ désigne le rayon de courbure) :

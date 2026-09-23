@@ -187,6 +187,44 @@ avant l'engagement. Un premier rouge de pixels était vrai : les surfaces
 translucides, dessinées après le cercle d'intersection, le noyaient (71 px de
 trait visibles) ; l'ordre de rendu corrigé en fait 1 069. Essai rouge 7/7.
 
+## Addendum du 2026-09-23 (soir) — la troisième scène, et une règle que §6 n'écrivait pas
+
+**La troisième scène : une particule chargée dans un champ magnétique**
+(`pc/chute-mouvements-plans`, R6, `[[embed:champ-magnetique]]`), posée juste
+après la règle du sens de la force, avant les deux « conséquences » qu'elle
+fait découvrir. Critère du §1 : la force de Lorentz est un PRODUIT VECTORIEL ;
+v, B et F sont deux à deux perpendiculaires, et la figure plane doit coder la
+troisième direction par ⊗ et ⊙. Ici le champ est dessiné en flèches qui
+TRAVERSENT un anneau posé dans le plan du mouvement : vues d'en haut (« comme
+la figure du manuel »), elles SONT les ⊗ et ⊙ du manuel ; vues de biais, elles
+montrent ce que ces symboles ont toujours voulu dire. Cinq étapes : le côté
+(le signe de q), la vitesse (elle ne change pas), le rayon (B double, R de
+moitié, l'ancien cercle en pointillé), le couloir de l'exemple travaillé
+(R ≈ 5,7 cm, θ ≈ 21°, puis le demi-tour quand R < ℓ), et le libre (deux
+inversions). Une scène à COURSE : on lance la particule, et le pari attend la
+fraction de course que l'étape annonce (`revele_apres_course`).
+
+**Deux décisions d'honnêteté, prises en regardant l'image.** Les flèches v et
+F ont des longueurs proportionnelles à leurs normes ; or longueur(F) / R
+croît comme B², et à 5 mT la flèche F traversait le centre vers lequel elle
+pointe. Le champ s'arrête donc à 3,0 mT, où elle reste dans le cercle — on a
+borné le réglage plutôt que plafonné la flèche, parce qu'une flèche plafonnée
+mentirait à son plafond. Et la tête d'une flèche de champ qui s'éloigne de
+l'œil est dessinée SANS fond : avec son disque, le ⊗ se lisait ⊙, le contraire
+de ce qu'il dit.
+
+**La règle que §6 n'écrivait pas : avant le pari, RIEN ne répond.** §6 disait
+« tant que l'élève n'a pas parié, ni le temps ni le contrôle n'existent ». Ce
+n'était pas assez : dans l'orbite, la fiche des trois conditions affichait
+« ✗ … pas géostationnaire » à côté de la question « reste-t-il au-dessus de
+P ? » (étapes 2 et 3) ; dans la sphère, l'étape 2 dessinait ses deux points et
+cochait « deux points » avant le pari, et la description lue au lecteur
+d'écran donnait le rayon du cercle. Désormais, tout ce qui dépend de l'ISSUE —
+le dessin qui la montre, la fiche qui la coche, le verdict qui la dit, la
+phrase qui la décrit — attend la révélation. Ce qui reste visible, c'est
+l'énoncé : la scène telle que l'étape la pose. Les trois portes ont une
+famille `avant-pari`, et son essai rouge.
+
 ## Retractions and Corrections
 
 - **2026-09-23 — la « deuxième scène » annoncée n'était pas la bonne
@@ -196,3 +234,8 @@ trait visibles) ; l'ordre de rendu corrigé en fait 1 069. Essai rouge 7/7.
   PLAN, et une scène 3D y ajouterait du relief sans rien ajouter à l'idée.
   Elle reste une dette de manipulation, à payer par un manipulable 2D. La
   deuxième scène livrée est la sphère (addendum ci-dessus).
+- **2026-09-23 — §6 était trop étroit.** « Rien avant l'engagement » ne
+  couvrait que le temps et les contrôles ; les fiches, les verdicts, les
+  intersections dessinées et les descriptions répondaient au pari avant qu'il
+  soit posé, dans les deux premières scènes. Corrigé et gardé par les portes
+  (addendum du soir) ; la règle est élargie à tout ce qui dépend de l'issue.
