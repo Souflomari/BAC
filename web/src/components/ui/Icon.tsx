@@ -49,6 +49,7 @@ export type IconName =
   | "check"
   | "cross"
   | "play"
+  | "pause"
   | "arrow-right"
   | "external-link"
   | "interactive"
@@ -80,6 +81,11 @@ const GLYPHS: Record<IconName, Glyph> = {
   // play — solid right-pointing triangle (orig 14-box filled "M3 2l9 5-9 5V2z",
   // re-drawn faithfully centered on the 24 grid).
   play: { kind: "fill", d: "M6 4 L20 12 L6 20 Z" },
+
+  // pause — deux barres pleines, le jumeau de `play` (même boîte, même
+  // encre pleine). Ajouté pour la scène 3D (ADR 0041) : le temps s'y lance et
+  // s'y arrête à la main, jamais tout seul.
+  pause: { kind: "fill", d: ["M6.5 4.5 H10 V19.5 H6.5 Z", "M14 4.5 H17.5 V19.5 H14 Z"] },
 
   // arrow-right — shaft + head (orig 14-box "M3 7h8M8 4l3 3-3 3" sw1.5 → 24-box).
   // The home-card "Ouvrir" direction cue.
@@ -227,6 +233,7 @@ type NamedIconProps = Omit<IconProps, "name">;
 export const CheckIcon = (p: NamedIconProps) => <Icon name="check" {...p} />;
 export const CrossIcon = (p: NamedIconProps) => <Icon name="cross" {...p} />;
 export const PlayIcon = (p: NamedIconProps) => <Icon name="play" {...p} />;
+export const PauseIcon = (p: NamedIconProps) => <Icon name="pause" {...p} />;
 export const ArrowRightIcon = (p: NamedIconProps) => <Icon name="arrow-right" {...p} />;
 export const ExternalLinkIcon = (p: NamedIconProps) => <Icon name="external-link" {...p} />;
 export const InteractiveIcon = (p: NamedIconProps) => <Icon name="interactive" {...p} />;

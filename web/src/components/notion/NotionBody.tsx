@@ -61,7 +61,7 @@
  */
 
 import type { ReactNode } from "react";
-import type { EmbedDescriptor, CheckpointItem as CheckpointItemType, NotionExercise, NotionDerivation, MediaStagesSpec, InteractiveFigureConfigSpec, NotionItem } from "@/lib/content";
+import type { EmbedDescriptor, Scene3DDescriptor, CheckpointItem as CheckpointItemType, NotionExercise, NotionDerivation, MediaStagesSpec, InteractiveFigureConfigSpec, NotionItem } from "@/lib/content";
 import type { MotionSpec } from "@/lib/motion-spec";
 import { minutesForText } from "@/lib/chapters";
 import { frenchTypography } from "@/lib/frenchTypography";
@@ -72,6 +72,7 @@ import { MotionDiagram } from "./MotionDiagram";
 import { MotionStage } from "./MotionStage";
 import { StagedFigure } from "./StagedFigure";
 import { EmbedPanel } from "./EmbedPanel";
+import { Scene3DPanel } from "./Scene3DPanel";
 import { CheckpointItem } from "./CheckpointItem";
 import { AttemptFirstExercise } from "./AttemptFirstExercise";
 import { Derivation } from "./Derivation";
@@ -527,6 +528,8 @@ interface NotionBodyProps {
   mediaInteractive: Record<string, InteractiveFigureConfigSpec>;
   /** Map of slug → EmbedDescriptor for every media/*.json file. */
   mediaEmbeds: Record<string, EmbedDescriptor>;
+  /** Scènes 3D de première partie (ADR 0041), par slug de marqueur `[[embed:]]`. */
+  mediaScenes?: Record<string, Scene3DDescriptor>;
   /** Checkpoint items keyed by id. */
   checkpoints: Record<string, CheckpointItemType>;
   /**
@@ -569,6 +572,7 @@ export function NotionBody({
   mediaStages,
   mediaInteractive,
   mediaEmbeds,
+  mediaScenes = {},
   checkpoints,
   itemsByRung,
   hasTrailingChapter,
@@ -700,6 +704,10 @@ export function NotionBody({
 
     // ── Embed ──────────────────────────────────────────────────────────
     if (seg.kind === "embed") {
+      // Une scène 3D de première partie prend le marqueur avant l'iframe :
+      // même promesse pédagogique (un manipulable), autre moteur (ADR 0041).
+      const scene = mediaScenes[seg.slug];
+      if (scene) return <Scene3DPanel key={key} scene={scene} />;
       const embed = mediaEmbeds[seg.slug] ?? null;
       // EmbedPanel handles null gracefully (shows placeholder)
       return (

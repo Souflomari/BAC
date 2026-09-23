@@ -32,6 +32,7 @@
     "source-en-double": "node scripts/source-en-double.mjs",
     "header-manifestes": "node scripts/header-manifestes.mjs",
     "verdict-qcm": "node scripts/verdict-qcm.mjs",
+    "scene-orbite": "node scripts/scene-orbite.mjs --porte",
     "test-session": "node --test scripts/test-session.mjs",
     "test-examens": "node --test scripts/test-examens.mjs",
     "test-melange": "node --test scripts/test-melange.mjs",
@@ -63,13 +64,15 @@
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.0",
     "remark-math": "^6.0.0",
-    "tailwind-merge": "^2.5.4"
+    "tailwind-merge": "^2.5.4",
+    "three": "0.186.0"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^22.9.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
+    "@types/three": "0.186.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.1",
     "eslint-config-next": "14.2.x",

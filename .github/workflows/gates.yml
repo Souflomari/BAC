@@ -569,6 +569,33 @@ jobs:
           node scripts/verdict-qcm.mjs --porte $lecons
           node scripts/verdict-qcm.mjs --essai-rouge $lecons
 
+      # PORTE SCÈNE 3D (2026-09-23, §11.187, ADR 0041). La première scène 3D de
+      # première partie — l'orbite géostationnaire, pc/chute-mouvements-plans
+      # R10 — promet quatre choses, et une scène 3D peut les trahir sans qu'aucune
+      # autre porte le voie : un canvas n'a ni texte ni DOM à lire.
+      #   1. three.js ne se charge pas avec la leçon (`window.__THREE__` indéfini
+      #      avant l'ouverture) — un manifeste de build ne voit pas un import()
+      #      paresseux (ADR 0039) ;
+      #   2. les nombres affichés sont justes, recalculés par une SECONDE
+      #      implémentation de Kepler aux constantes de la leçon, et une seule
+      #      position du curseur coche « T = 24 h » (CH-KEP-3) ;
+      #   3. les PIXELS disent la physique : géostationnaire vu du sol → images
+      #      identiques à 0, 6 et 18 h ; hors du bon rayon, ou dans le référentiel
+      #      géocentrique → elles diffèrent et la tache d'accent se déplace ;
+      #   4. chaque étape n'ouvre que son contrôle et pose l'état qu'elle annonce.
+      # WebGL tourne sur SwiftShader (aucune carte graphique sur le runner). Si
+      # WebGL manque, la porte sort MUET — en échec, jamais en vert (ADR 0034).
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` qui retourne l'attente de
+      # chaque famille (G faussé de 3 %, identiques ↔ différentes, three.js
+      # exigé avant le clic, contrôles d'une autre étape) : les quatre familles
+      # doivent crier.
+      - name: "Scène 3D de l'orbite (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-orbite
+          node scripts/scene-orbite.mjs --essai-rouge
+
       - name: Porte LaTeX nu
         run: |
           routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)

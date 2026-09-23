@@ -143,6 +143,7 @@ export function NotionPageView({
     retenir,
     mediaInteractive,
     mediaEmbeds,
+    mediaScenes,
   } = notion;
 
   // Inline-items model (LESSON-EXPERIENCE-SPEC §1.1): group every diagnostic
@@ -177,7 +178,8 @@ export function NotionPageView({
     !!itemsData ||
     Object.keys(mediaSvgs).length > 0 ||
     Object.keys(motionSvgs).length > 0 ||
-    Object.keys(mediaEmbeds).length > 0;
+    Object.keys(mediaEmbeds).length > 0 ||
+    Object.keys(mediaScenes).length > 0;
 
   // ── Pagination (LESSON-EXPERIENCE-SPEC §1 + BANK-SPEC §1) ─────────────────
   // `realChapters` = the lesson's own `## ` chapters (lib/chapters.ts — the
@@ -394,6 +396,7 @@ export function NotionPageView({
                 mediaStages={mediaStages}
                 mediaInteractive={mediaInteractive}
                 mediaEmbeds={mediaEmbeds}
+                mediaScenes={mediaScenes}
                 checkpoints={checkpoints}
                 itemsByRung={itemsByRung}
                 hasTrailingChapter={hasBank}

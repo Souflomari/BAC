@@ -149,6 +149,19 @@ Read the right document for the task at hand:
   faux) ; et quand la CI est morte, son travail devient manuel — le lancer avec
   les COMMANDES ET ARGUMENTS EXACTS du workflow, ce qui a trouvé dix épreuves
   dont le contenu était coupé à 200 % de texte.
+  **ADR 0041 (2026-09-23) — scènes 3D de première partie :** la 3D n'entre
+  que si l'idée est SPATIALE (un plan, un sens, un référentiel), jamais pour le
+  relief ; three.js (MIT, version épinglée) se charge au CLIC seulement, prouvé
+  à l'exécution par `window.__THREE__` ; la pédagogie (étapes, consignes,
+  contrôle ouvert, état posé) vit dans le descripteur `"tool": "scene3d"`, la
+  physique et le rendu dans `web/src/lib/scene3d/` ; la précision d'affichage
+  est un choix pédagogique (à 0,1 h, douze rayons « géostationnaires » — la
+  misconception même) ; **chaque étape commence par un PARI** — ni temps ni
+  contrôle avant l'engagement, et quand le temps révèle, la scène répond avant
+  le texte ; une scène collante ne masque jamais un contrôle focalisé
+  (WCAG 2.4.11) ; et une scène ne part qu'avec une porte qui lit ses PIXELS
+  dans les deux sens (`scene-orbite`). Première scène : l'orbite
+  géostationnaire, qui solde une substitution de la dette de manipulation.
   **ADR 0032 (2026-09-11) — the honest wait before
   hydration:** a server-rendered command is `disabled` + `aria-busy` until
   React takes over (`useHydrated`), the page says so once, calmly, and

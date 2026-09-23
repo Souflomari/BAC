@@ -1122,3 +1122,77 @@ surfaces crient dans les deux sens — 72/72 sur l'essai.
    collision « latente aujourd'hui, piège demain » — c'est le premier
    instrument qui a essayé d'identifier un item par son id, et il est tombé
    dedans le jour même.
+
+## `web/scripts/scene-orbite.mjs` — la scène 3D de l'orbite dit-elle VRAI ?
+
+**PORTE, armée en CI (vert puis rouge), §11.187, ADR 0041.** La première scène
+3D de première partie (pc/chute-mouvements-plans, R10) est un `<canvas>` : ni
+texte ni DOM à lire. Aucune des portes existantes ne pouvait voir ce qu'elle
+dessine — une scène qui montrerait un satellite géostationnaire en train de
+dériver passerait toutes les autres au vert.
+
+**Ce qu'elle mesure, au navigateur (WebGL par SwiftShader, sans carte
+graphique), sur le rendu réel d'un `next start` :**
+
+- **rien avant le clic** — `window.__THREE__` indéfini tant que la scène est
+  fermée, `186` après. Le manifeste de build ne peut pas le dire : un import
+  paresseux y est invisible (ADR 0039) ;
+- **les nombres** — pour six rayons (7 000 à 60 000 km), période, altitude,
+  vitesse et T²/r³ affichés, recalculés par une SECONDE implémentation de la 3e
+  loi aux constantes de la leçon (et non en important `kepler.ts`, qui se
+  donnerait raison) ; « T = 24 h » n'est cochée qu'à **42 230 km**, jamais à
+  ±10 km ;
+- **les pixels, dans les deux sens** — géostationnaire vu du sol : **0,003 %**
+  et **0,004 %** de pixels changés entre 0 h, 6 h et 18 h (immobile) ; à
+  26 000 km : **0,59 %**, tache d'accent déplacée de **350 px** en 6 h ; au bon
+  rayon mais dans le référentiel géocentrique : **0,76 %**, **326 px** — le même
+  satellite bouge (CH-KEP-2) ;
+- **les paris** — rien ne s'ouvre avant l'engagement (ni temps ni contrôle) ;
+  un pari FAUX n'est dit « Réponse incorrecte » qu'une fois la scène avancée à
+  6 h ; un pari juste est dit « Bonne réponse. » à 24 h (le 8 complet) ; à
+  l'étape 4 les vitesses sont absentes avant le pari, affichées tout de suite
+  après ;
+- **les étapes** — chacune pose l'état annoncé, n'ouvre que son contrôle une
+  fois le pari révélé, et le verdict suit (plan incliné → non ; sens contraire
+  → non ; référentiel → v_sol = 0) ;
+- **CH-KEP-1** — à l'étape libre, T²/r³ affiché identique sur six rayons, T/r
+  distinct sur quatre rayons éloignés ;
+- **sans WebGL** — un second navigateur, WebGL coupé : état « sans-webgl »,
+  message visible, et la période lue reste juste ;
+- le temps ne coule que lancé et tient à la pause ; une course lancée à
+  23,5 h s'arrête SEULE à 24 h ; trois flèches → +30 km ;
+  le fond du canvas égale `--figure-surface` en clair ET en sombre ; aucune
+  erreur console.
+
+Mesuré le 2026-09-23, après révision par les critiques : **37 mesures,
+10 familles, VERT** ; `--essai-rouge` (G faussé de 3 %, identiques ↔
+différentes, three.js exigé avant le clic, contrôles d'une autre étape,
+verdicts de pari inversés, scène exigée sans WebGL) : **6/6 familles
+crient**. Quatre verdicts : si WebGL manque au banc, sortie **MUET** (code 3),
+jamais verte.
+
+**Pas d'entrée au manifeste des essais rouges**, même raison que
+`header-manifestes` et `verdict-qcm` : la sabotage naturelle serait un `.ts`,
+et la porte mesure un rendu APRÈS build. Son `--essai-rouge` intégré sabote ce
+qui est à sa portée — ce qu'elle croit savoir.
+
+**QUATRE DÉFAUTS DE SONDE, tous à moi** (les deux derniers au passage
+d'après révision : T/r jugé sur des rayons à 10 km d'écart, que trois chiffres
+significatifs ne séparent pas ; le test clavier parti du maximum du curseur).
+Les deux premiers :
+1. *Le fond lu au pixel (3, 3)* tombait dans l'arrondi du conteneur
+   (`overflow: hidden`) et lisait le fond de la PAGE (245,245,242) au lieu du
+   canvas : la sonde mesurait autre chose que ce qu'elle nommait. Elle lit la
+   couleur DOMINANTE du canvas.
+2. *Un délai fixe de 1,2 s* pour « le temps a avancé » mesurait la lenteur du
+   banc : sous rendu logiciel, une image prend ~130 ms. Elle attend que le
+   temps AVANCE, sans supposer une horloge.
+
+**NE DIT RIEN DE :** si les étapes ENSEIGNENT (c'est le travail des critiques
+pédagogiques et de l'élève) ; la fluidité sur un vrai téléphone (le banc rend en
+logiciel, ~7,5 images/s) ; le glisser au doigt (les vues prédéfinies et le
+clavier sont gardés, pas le geste) ; l'impression (le panneau est `print:hidden`
+— c'est la porte impression qui lit le papier).
+
+    node scripts/scene-orbite.mjs --porte        (lève son propre next start)
+    node scripts/scene-orbite.mjs --essai-rouge

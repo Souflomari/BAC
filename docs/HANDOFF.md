@@ -14261,3 +14261,173 @@ marqueur. Le local et la CI rendent désormais le même verdict.
 > Une porte qui consulte l'état local de la machine répond à « est-ce vrai
 > ICI ? », pas à « est-ce vrai dans le dépôt ? ». Le vert local était exact
 > et faux à la fois — exactement la question plus étroite d'ADR 0033.
+
+## §11.187 — Une scène 3D de première partie : l'orbite géostationnaire, et la porte qui lit ses pixels
+
+**LA DEMANDE.** Le propriétaire : « construire quelque chose avec three.js, de
+plus visuel, qui pousse le produit au niveau suivant ». La règle du dépôt
+(VISION, DESIGN-BIBLE §0/§6) interdit la 3D pour le spectacle ; il fallait donc
+un concept où la 3D EST la compréhension. Décision et critère : ADR 0041.
+
+**LE CHOIX DE LA CIBLE — une dette écrite, pas une idée neuve.**
+`dette-manipulable` listait six manipulables prescrits et remplacés par une
+figure figée. `orbites-gravite` (pc/chute-mouvements-plans, R10) écrivait :
+« au lieu d'un curseur de rayon continu, TROIS rayons fixes ». Et deux des trois
+conditions géostationnaires sont spatiales (le plan, le sens), la troisième
+misconception (CH-KEP-2, « immobile dans l'absolu ») se casse en changeant de
+référentiel. Trois raisons que la 3D serve l'idée — pas une de décor.
+
+**CE QUI EST LIVRÉ.**
+
+- `web/src/lib/scene3d/kepler.ts` — la physique, SANS three.js : 3e loi de
+  Kepler aux constantes de la LEÇON (G = 6,67×10⁻¹¹, M_T = 5,97×10²⁴ kg,
+  R_T = 6,37×10⁶ m, T_Terre = 24 h), mouvement ANALYTIQUE (la position à t ne
+  dépend que de t : même réglage, même image — c'est ce qui rend la porte
+  possible). r_geo = 42 227 km, h = 35 857 km, v = 3,07 km/s — l'exemple
+  travaillé de la leçon, retrouvé.
+- `web/src/lib/scene3d/orbite-geostationnaire.ts` — le rendu, chargé au clic :
+  Terre unie + graticule, équateur, point P et sa verticale, axe et sens de
+  rotation, orbite pointillée (la langue de la figure figée), trace et
+  satellite en accent. Couleurs lues sur les jetons, lumière attachée à la
+  caméra (un « Soleil » aurait fait défiler le terminateur dans le référentiel
+  terrestre : du bruit là où seul un satellite fautif doit bouger).
+- `web/src/components/notion/Scene3DPanel.tsx` — le panneau : opt-in fermé,
+  cinq étapes (une seule altitude ? → le plan → le sens → immobile par rapport
+  à quoi ? → à toi), un contrôle neuf par étape, les trois conditions en texte
+  + glyphe, un verdict, les lectures (T, h, v, v par rapport au sol, T²/r³).
+- `content/…/media/orbites-gravite.json` — le descripteur `"tool": "scene3d"` :
+  toute la pédagogie (consignes, contrôles, états) vit dans le contenu.
+- Chaîne : `content.ts` (type + chargeur `mediaScenes`), `NotionBody`
+  (le marqueur `[[embed:]]` prend la scène avant l'iframe), `validate-content`
+  (échec DUR sur scène/contrôle/état inconnus ou hors bornes, contrôle jamais
+  ouvert), `dette-manipulable` (livrée seulement si enregistrée ; cliquet
+  6 → 5), `lesson.md` (le marqueur après la figure figée, qui devient le
+  prélude et la version papier), l'en-tête du SVG réécrit.
+
+**LE DÉFAUT PÉDAGOGIQUE TROUVÉ EN CONSTRUISANT — la précision est un choix.**
+Première version : T affichée à 0,1 h près, condition cochée quand l'affichage
+dit « 24,0 h ». Énuméré sur la grille du curseur : **douze positions**
+(42 170 → 42 280 km) cochaient « T = 24 h ». La scène aurait montré une PLAGE de
+rayons géostationnaires — exactement CH-KEP-3 (« n'importe quelle altitude
+convient »), la misconception qu'elle est là pour casser, et la consigne de
+l'étape 1 demande précisément « un seul, ou toute une plage ? ». À 0,01 h près
+et au pas de 10 km : **une seule position, 42 230 km**. La case et le nombre ne
+se contredisent jamais, et la réponse à la question posée est juste.
+
+**CE QUE LA SCÈNE MONTRE, VÉRIFIÉ CONTRE LE CALCUL.**
+- 26 000 km, vu du sol : T = 11,60 h, dérive +385°/jour vers l'est — la trace
+  fait une demi-orbite en 12 h.
+- 42 230 km, vu du sol : immobile, v_sol = 0,00 km/s, v = 3,07 km/s.
+- Incliné de 30° à T = 24 h, vu du sol : **la figure en 8** (l'analemme d'une
+  orbite géosynchrone inclinée) — ±30° de latitude, ±4,1° de longitude (calcul :
+  0,48 R_T à ce rayon, conforme au rendu), v_sol = 1,59 km/s.
+- Sens contraire : v_sol = 6,14 km/s = 2v ; vu du pôle à 6 h, Terre et
+  satellite ont tourné de 90° chacun en sens opposés — 180° d'écart.
+
+**LA PORTE `scene-orbite`** (CI, vert puis rouge ; catalogue : INSTRUMENTS.md).
+31 mesures, 9 familles, VERT ; essai rouge 5/5 familles qui crient. Le cœur :
+les PIXELS dans les deux sens — géostationnaire vu du sol **0,003 %** de pixels
+changés entre 0, 6 et 18 h ; hors du bon rayon **0,59 %** et 350 px de
+déplacement ; même satellite vu du centre de la Terre **0,76 %** et 326 px. Et
+three.js prouvé absent avant le clic (`window.__THREE__`), présent après.
+
+**TROIS DÉFAUTS DE MESURE, tous à moi, tous rattrapés en rejouant.**
+1. `validate-content` lancé depuis `web/` : « no lesson.md » — mon premier
+   essai rouge n'avait jamais atteint la porte (ADR 0038 : verdict AMBIGU, pas
+   rouge). Rejoué depuis la racine : vert, puis 4 fautes attrapées sur 4.
+2. Le fond du canvas lu au pixel (3, 3) : l'arrondi du conteneur montrait le
+   fond de la PAGE. Sonde corrigée : couleur dominante.
+3. « Le temps avance » jugé après un délai fixe : sous rendu logiciel, ~130 ms
+   par image. Sonde corrigée : attendre que le temps AVANCE.
+
+**UN DÉFAUT PRODUIT trouvé par la mesure de performance.** Sous rendu logiciel
+(~7,5 images/s), le plafond de pas de temps à 0,1 s ralentissait la simulation
+de 25 % : l'annonce « 1 h de simulation par seconde » devenait fausse sur un
+appareil lent. Plafond porté à 0,25 s. (Coût JS mesuré : 6 ms par mise à jour ;
+la lenteur est le rendu logiciel, pas le code.)
+
+**MISE EN PAGE, décidée sur captures (clair, sombre, 360 px).** Canevas CARRÉ
+(la caméra cadre une sphère : l'orbite peut s'incliner jusqu'au pôle ; un 4:3
+réduisait la Terre à 45 px) ; au téléphone, les réglages suivent IMMÉDIATEMENT
+la scène et les vues passent après (le curseur reste sous l'image qu'il
+change) ; sur grand écran, deux colonnes.
+
+**LE CHANGEMENT DE POIDS.** three.js : un morceau à part, ≈ 239 Ko brut,
+64 Ko gzip, chargé par AUCUNE route à l'initial — payé seulement par l'élève
+qui ouvre la scène.
+
+**LES DEUX CRITIQUES, sur le rendu réel (captures), et ce qui a changé.**
+Commandées en parallèle (RULES §5 : producteur → critique → révision) :
+`pedagogy-critic` et `calm-load-critic`, l'adversaire désigné de la bible.
+
+*Pédagogie — reprises :*
+- **aucun engagement nulle part** : cinq consignes, cinq questions, zéro pari.
+  Chaque étape commence désormais par un PARI (même grammaire que les points
+  d'arrêt) ; ni le temps ni le contrôle n'existent avant ; aux étapes où le
+  temps révèle, le verdict attend que la SCÈNE ait montré (6 h ; 24 h pour le
+  8) ;
+- **CH-KEP-1 revendiqué, jamais confronté** : un T²/r³ constant ne fait pas
+  casser T/r. L'étape libre parie sur « lequel restera le même ? » puis montre
+  T/r et T³/r² qui BOUGENT à côté de T²/r³ qui ne bouge pas ;
+- **placée après la réponse** : la scène suivait « Arrête-toi » et « Immobile
+  par rapport à quoi ? », qui répondaient déjà à ses étapes 1 et 4. Elle vient
+  maintenant juste après la liste des trois conditions ; les figures figées
+  suivent la prose qu'elles illustrent ;
+- **« jusqu'à ce qu'il s'y arrête »** nourrissait CH-KEP-2 (« immobile »),
+  la misconception que l'étape 4 casse : « cesse de dériver et reste à la
+  verticale de P » ;
+- l'étape 2 fait parler le mauvais modèle (« beaucoup s'arrêtent à la
+  première condition ») ; l'étape 3 n'affirme plus le résultat avant qu'on le
+  voie ; la spec ne prescrit plus PhET mais la scène.
+
+*Calme — reprises :*
+- **l'accent dépensé six fois** (numéro d'étape, bouton, trois curseurs,
+  coches, satellite) → deux : l'action (« Lancer le temps ») et le satellite ;
+- **cinq lectures dès l'étape 1** (T²/r³ et les vitesses sont les sujets des
+  étapes 5 et 4) → chaque étape déclare SES lectures, affichées après le pari ;
+- **un même fait deux fois** (30° dans le curseur ET dans la condition) → le
+  détail d'une condition ne s'écrit que si aucun contrôle visible ne le montre ;
+- **graticule hérissé** (12 arcs sur 67 px) → 3 grands cercles + 2 parallèles ;
+- **la Terre presque blanche** : mesurée, 240 pour un jeton à 221 (facteur
+  ≈ 1,2 dans les deux thèmes) → intensités divisées par 1,2, mesurées de
+  nouveau : 223 / 221 en clair, 58 / 57 en sombre ;
+- **l'orbite plus forte que le satellite en sombre** → demi-opacité ;
+- **une course sans fin** → une pression court une rotation terrestre (24 h).
+
+*Non repris, et pourquoi :* le fond blanc du canvas — c'est `--figure-surface`,
+le fond de TOUTES les figures SVG de la leçon ; la scène garde la langue des
+figures (le conteneur prend désormais le même jeton, plus de saut de ton au
+chargement). Supprimer la figure `orbite-geostationnaire` — elle reste pour le
+papier et l'absence de WebGL, désormais séparée de la scène par la prose.
+
+**UN DÉFAUT D'ERGONOMIE trouvé en regardant le téléphone APRÈS les critiques.**
+Pari révélé, le curseur de rayon tombait à ~750 px sous la scène. La scène est
+maintenant COLLANTE à toutes les largeurs (4:3 au téléphone, carrée sur grand
+écran) — et chaque contrôle porte un `scroll-margin-top` pour qu'un focus
+clavier ne se range jamais sous elle (WCAG 2.2 — 2.4.11). Vérifié en donnant
+le focus : téléphone, scène 56–302 px, curseur à 533 ; grand écran, côte à
+côte.
+
+**UN ROUGE DE `dom-truth` APRÈS LES CRITIQUES — le langage des jetons.** Pour
+le fond du canvas et les curseurs neutres, j'avais écrit
+`bg-[var(--figure-surface)]` et `accent-[var(--color-text-secondary)]` : des
+`var()` ARBITRAIRES, que la porte des jetons (`token-gate`, lancée par
+`dom-truth`) refuse — le code des composants ne parle que par alias nommés.
+Les alias existaient déjà (la famille `figure` du thème) : `bg-figure-surface`
+et `accent-figure-ink-soft`. Rouge rattrapé en local, 279/279 ensuite.
+
+**LA PORTE, après révision : 37 mesures, 10 familles, VERT ; essai rouge
+6/6.** Nouvelles familles : `paris` (rien avant l'engagement ; un pari FAUX
+n'est dit faux qu'à 6 h ; un pari juste dit juste à 24 h) et la butée de
+course (lancé à 23,5 h, s'arrête seul à 86 400 s). Deux défauts de sonde de
+plus, à moi : T/r jugé sur des rayons à 10 km d'écart (trois chiffres
+significatifs ne les séparent pas — jugé désormais sur quatre rayons
+éloignés) ; le test clavier parti du maximum du curseur (60 000 km, où une
+flèche ne peut rien).
+
+**CE QUI RESTE OUVERT.** La deuxième scène (cuve à ondes, ADR 0041) ; la
+fluidité sur un vrai téléphone d'entrée de gamme, jamais mesurée ; le glisser
+au doigt, non gardé ; les paris ne sont pas encore ÉCRITS dans le modèle de
+l'élève (ils portent leurs misconceptions dans le descripteur, prêts pour le
+jour où ils le seront).
+

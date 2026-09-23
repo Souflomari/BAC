@@ -26,7 +26,8 @@
  *
  * DEUX SENS :
  *   1. FRANC — une prescription `[[embed:slug]]` dans une spec doit être soit
- *      LIVRÉE (un descripteur `media/slug.json` avec une `url`), soit
+ *      LIVRÉE (un descripteur `media/slug.json` avec une `url`, ou une scène
+ *      3D `"tool": "scene3d"` enregistrée dans `scenes.json`), soit
  *      SUBSTITUÉE PAR ÉCRIT (un `media/slug.svg` dont l'en-tête dit qu'il
  *      remplace l'embed). Ni l'un ni l'autre = une promesse pédagogique
  *      tombée sans un mot.
@@ -48,8 +49,18 @@ import path from "node:path";
 const ICI = path.dirname(new URL(import.meta.url).pathname);
 const CONTENU = path.resolve(ICI, "..", "..", "content");
 const PORTE = process.argv.includes("--porte");
-//  Mesuré au 2026-09-20. Monter ce nombre, c'est reconnaître une dette de plus.
-const CLIQUET_SUBSTITUTIONS = 6;
+//  Mesuré au 2026-09-20 : 6. Descendu à 5 le 2026-09-23 — orbites-gravite est
+//  livré en scène 3D (ADR 0041). Un cliquet qu'on ne redescend pas quand une
+//  dette est payée laisse une place libre à la suivante, en silence (ADR 0034).
+//  Monter ce nombre, c'est reconnaître une dette de plus.
+const CLIQUET_SUBSTITUTIONS = 5;
+
+//  Les scènes 3D de première partie ENREGISTRÉES dans le code. Un descripteur
+//  `"tool": "scene3d"` ne compte pour livré que si sa scène y figure : un
+//  descripteur qui nommerait une scène inexistante promettrait sans livrer.
+const SCENES = JSON.parse(
+  fs.readFileSync(path.resolve(ICI, "..", "src", "lib", "scene3d", "scenes.json"), "utf-8")
+);
 
 const MARQUE = /\[\[embed:([a-z0-9-]+)\]\]/g;
 //  Le « remplace » et le « [[embed: » sont souvent séparés par un retour à la
@@ -76,13 +87,18 @@ for (const [cle, dir] of notions) {
   const media = path.join(dir, "media");
   const fichiersMedia = fs.existsSync(media) ? fs.readdirSync(media) : [];
 
-  //  Livrés : un descripteur avec une url.
+  //  Livrés : un descripteur avec une url (iframe tierce), ou une scène 3D de
+  //  première partie dont la scène est enregistrée dans le code.
   const desc = new Set();
   for (const f of fichiersMedia) {
     if (!f.endsWith(".json") || /\.(motion|stages|interactive)\.json$/.test(f)) continue;
     try {
       const j = JSON.parse(fs.readFileSync(path.join(media, f), "utf-8"));
-      if (typeof j?.url === "string") { desc.add(f.slice(0, -5)); livres.push({ notion: cle, slug: f.slice(0, -5) }); }
+      const scene = j?.tool === "scene3d" && typeof j?.scene === "string" && Object.hasOwn(SCENES, j.scene);
+      if (typeof j?.url === "string" || scene) {
+        desc.add(f.slice(0, -5));
+        livres.push({ notion: cle, slug: f.slice(0, -5), moteur: scene ? `scène 3D ${j.scene}` : "iframe" });
+      }
     } catch { /* JSON cassé : l'affaire d'une autre porte */ }
   }
 
@@ -137,7 +153,7 @@ if (PORTE) {
 console.log("\n━━ ce que le produit doit encore à l'élève qui manipule ━━\n");
 console.log(`  prescriptions [[embed:]] dans les specs ... ${prescrits.length}`);
 console.log(`  manipulables LIVRÉS ...................... ${livres.length}`);
-for (const l of livres) console.log(`     ✓ ${l.notion}/${l.slug}`);
+for (const l of livres) console.log(`     ✓ ${l.notion}/${l.slug}  (${l.moteur})`);
 console.log(`\n  SUBSTITUTIONS ÉCRITES (la dette) ......... ${substitues.length}`);
 for (const s of substitues) {
   console.log(`     · ${s.notion}/${s.slug}`);

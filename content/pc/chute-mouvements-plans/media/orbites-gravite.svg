@@ -3,13 +3,19 @@
      aria-label="Trois orbites circulaires de rayons différents autour de la Terre, avec leurs périodes calculées par la 3e loi de Kepler : seule l’orbite de rayon géostationnaire donne une période de 24 heures, les deux autres donnent des périodes différentes.">
   <title>Balayer le rayon — une seule orbite donne T = 24 h</title>
   <!--
-    orbites-gravite.svg — figure figée (STATIQUE) qui remplace l'embed
-    [[embed:orbites-gravite]] (PhET "Gravity and Orbits") pour cette passe
-    de couverture : au lieu d'un curseur de rayon continu, TROIS rayons
-    fixes, avec leurs périodes calculées par la 3e loi de R10. STAGED
-    (schéma à geste d'enseignement : balayage puis mise en évidence du
-    seul rayon qui convient). Sert CH-KEP-3 ("n'importe quelle altitude
-    peut être géostationnaire").
+    orbites-gravite.svg — figure figée (STATIQUE), compagne de la scène
+    manipulable [[embed:orbites-gravite]]. Jusqu'au 2026-09-23 elle en
+    tenait lieu (la spec prescrivait PhET "Gravity and Orbits", jamais
+    livré) : TROIS rayons fixes au lieu d'un curseur de rayon continu. La
+    scène 3D de première partie (ADR 0041) livre désormais le curseur
+    continu, le plan, le sens et le référentiel, et elle vient AVANT, juste
+    après la liste des trois conditions : l'élève découvre en pariant, la
+    prose explique ensuite. Cette figure illustre cette explication, à la
+    fin de « Arrête-toi » — STAGED (balayage de trois rayons, puis mise en
+    évidence du seul qui convient) — et c'est elle qui couvre l'impression
+    et l'absence de WebGL, où le canvas n'existe pas. Sert CH-KEP-3
+    ("n'importe quelle altitude peut être géostationnaire"), avec leurs
+    périodes calculées par la 3e loi de R10.
 
     Rayons choisis en proportion du rayon géostationnaire r_geo (R10) :
     r₁ = 0,5·r_geo, r₂ = r_geo, r₃ = 1,5·r_geo — pixels 70/140/210

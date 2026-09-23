@@ -1,0 +1,110 @@
+{
+  "slug": "orbites-gravite",
+  "tool": "scene3d",
+  "scene": "orbite-geostationnaire",
+  "title_fr": "Le satellite géostationnaire, en trois dimensions",
+  "caption_fr": "Trois conditions, cinq étapes : à chaque fois tu paries d'abord, puis tu regardes. Mêmes constantes que la leçon : G, M_T, R_T, et T_Terre = 24 h.",
+  "etapes": [
+    {
+      "id": "rayon",
+      "titre": "Une seule altitude ?",
+      "consigne": "Le satellite part à la verticale du point P de l'équateur, à 26 000 km du centre de la Terre, sur une orbite équatoriale parcourue dans le même sens qu'elle. On le regarde depuis le sol.",
+      "pari": {
+        "question": "Quand tu lanceras le temps, vu du sol, ce satellite va…",
+        "revele_apres_h": 6,
+        "choix": [
+          { "id": "reste", "texte": "rester au-dessus de P", "juste": false, "misconception": "mc.physics.pc_chute_plans.geostationnaire-toute-altitude", "retour": "Non. À 26 000 km, sa période n'est que de 11,6 h : il boucle son tour plus vite que la Terre ne tourne. Vu du sol, il prend de l'avance, vers l'est — c'est la trace que tu viens de voir." },
+          { "id": "ouest", "texte": "dériver vers l'ouest", "juste": false, "retour": "Non. Il dériverait vers l'ouest s'il tournait MOINS vite que la Terre, sur une orbite plus haute que la bonne. Ici T = 11,6 h : il va plus vite qu'elle, et prend de l'avance vers l'est." },
+          { "id": "est", "texte": "dériver vers l'est", "juste": true, "retour": "Oui. À 26 000 km, sa période n'est que de 11,6 h : il boucle son tour plus vite que la Terre ne tourne, et prend de l'avance vers l'est." }
+        ]
+      },
+      "suite": "Règle maintenant le rayon jusqu'à ce que le satellite cesse de dériver et reste à la verticale de P. Un seul rayon convient-il, ou toute une plage ?",
+      "controles": ["rayon"],
+      "lectures": ["altitude"],
+      "etat": { "rayon_km": 26000, "inclinaison_deg": 0, "sens": "direct", "referentiel": "terrestre", "vue": "biais" }
+    },
+    {
+      "id": "plan",
+      "titre": "Le plan de l'orbite",
+      "consigne": "Beaucoup s'arrêtent à la première condition : une période de 24 h, donc géostationnaire. Vérifions. Le rayon est réglé sur la valeur que tu viens de trouver, mais l'orbite est inclinée de 30° sur l'équateur.",
+      "pari": {
+        "question": "Période de 24 h, orbite inclinée de 30° : vu du sol, le satellite va…",
+        "revele_apres_h": 24,
+        "choix": [
+          { "id": "huit", "texte": "monter vers le nord et redescendre vers le sud de P", "juste": true, "retour": "Oui. Il fait bien un tour en 24 h, mais sur une orbite qui passe au-dessus puis au-dessous de l'équateur : vu du sol, il monte vers le nord, redescend vers le sud, et dessine un 8 autour de P." },
+          { "id": "reste", "texte": "rester au-dessus de P", "juste": false, "misconception": "mc.physics.pc_chute_plans.geostationnaire-toute-altitude", "retour": "Non. Il fait bien un tour en 24 h, mais son orbite passe au-dessus puis au-dessous de l'équateur : vu du sol, il monte vers le nord, redescend vers le sud, et dessine un 8 autour de P. La période ne suffit pas." },
+          { "id": "est", "texte": "dériver vers l'est", "juste": false, "retour": "Non : avec une période de 24 h, il ne prend ni avance ni retard sur la Terre. Ce qui change, c'est qu'il sort du plan de l'équateur — vu du sol, il monte et descend, et dessine un 8 autour de P." }
+        ]
+      },
+      "suite": "Essaie d'autres inclinaisons, jusqu'à 90° — une orbite polaire. Une seule garde le satellite au-dessus de P.",
+      "controles": ["inclinaison"],
+      "etat": { "rayon_km": "geo", "inclinaison_deg": 30, "sens": "direct", "referentiel": "terrestre", "vue": "cote" }
+    },
+    {
+      "id": "sens",
+      "titre": "Le sens de rotation",
+      "consigne": "Orbite équatoriale, T = 24 h — mais le satellite tourne cette fois en sens contraire de la Terre. On change de point de vue le temps de voir la Terre tourner : la flèche au-dessus du pôle Nord montre son sens. On revient au sol juste après.",
+      "pari": {
+        "question": "En tournant en sens contraire, le satellite suit-il encore la verticale de P ?",
+        "revele_apres_h": 6,
+        "choix": [
+          { "id": "oui", "texte": "oui : sa période est toujours de 24 h", "juste": false, "misconception": "mc.physics.pc_chute_plans.geostationnaire-toute-altitude", "retour": "Non : la période seule ne suffit pas. La Terre tourne vers l'est, lui vers l'ouest ; en 6 h, chacun a fait un quart de tour, en sens opposés — les voilà écartés d'un demi-tour." },
+          { "id": "non", "texte": "non : il s'en écarte", "juste": true, "retour": "Oui. La Terre tourne vers l'est, lui vers l'ouest ; en 6 h, chacun a fait un quart de tour, en sens opposés — les voilà écartés d'un demi-tour. Vu du sol, il ferait le tour du ciel deux fois par jour." }
+        ]
+      },
+      "suite": "Remets-le dans le même sens que la Terre et relance : il suit de nouveau la verticale de P.",
+      "controles": ["sens"],
+      "etat": { "rayon_km": "geo", "inclinaison_deg": 0, "sens": "retrograde", "referentiel": "geocentrique", "vue": "dessus" }
+    },
+    {
+      "id": "referentiel",
+      "titre": "Immobile par rapport à quoi ?",
+      "consigne": "Les trois conditions sont réunies : vu du sol, le satellite reste au-dessus de P. Mais bouge-t-il vraiment ?",
+      "pari": {
+        "question": "Dans le référentiel géocentrique, la vitesse de ce satellite vaut…",
+        "revele_apres_h": 0,
+        "choix": [
+          { "id": "zero", "texte": "zéro : il est immobile", "juste": false, "misconception": "mc.physics.pc_chute_plans.geostationnaire-immobile-absolu", "retour": "Non. Il n'est immobile que par rapport au sol. Dans le référentiel géocentrique, il parcourt un cercle de 42 230 km de rayon en 24 h : 3,07 km/s." },
+          { "id": "sol", "texte": "environ 0,46 km/s, comme le sol à l'équateur", "juste": false, "misconception": "mc.physics.pc_chute_plans.geostationnaire-immobile-absolu", "retour": "Non : il a la même vitesse ANGULAIRE que le sol, pas la même vitesse. Sur un cercle 6,6 fois plus grand, parcouru dans le même temps, il va 6,6 fois plus vite : 3,07 km/s." },
+          { "id": "trois", "texte": "environ 3 km/s", "juste": true, "retour": "Oui : 3,07 km/s dans le référentiel géocentrique, et 0 par rapport au sol. « Immobile » ne veut rien dire tant qu'on n'a pas dit par rapport à quoi." }
+        ]
+      },
+      "suite": "Lance le temps et passe d'un référentiel à l'autre : le même satellite est immobile dans l'un, et file sur son orbite dans l'autre.",
+      "controles": ["referentiel"],
+      "lectures": ["v-geo", "v-sol"],
+      "etat": { "rayon_km": "geo", "inclinaison_deg": 0, "sens": "direct", "referentiel": "terrestre", "vue": "biais" }
+    },
+    {
+      "id": "libre",
+      "titre": "À toi",
+      "consigne": "Tous les réglages sont ouverts. Pars d'une orbite quelconque et retrouve un satellite géostationnaire.",
+      "pari": {
+        "question": "Avant de toucher au rayon : lequel de ces trois rapports restera le même, quel que soit le rayon ?",
+        "revele_apres_h": 0,
+        "choix": [
+          { "id": "t-r", "texte": "$T/r$", "juste": false, "misconception": "mc.physics.pc_chute_plans.kepler3-exposants-inverses", "retour": "Non : change le rayon et regarde la ligne $T/r$ — elle bouge. Quand $r$ double, $T$ est multiplié par $2^{1{,}5} \\approx 2{,}8$, pas par 2." },
+          { "id": "t2-r3", "texte": "$T^2/r^3$", "juste": true, "retour": "Oui : c'est la 3e loi de Kepler. Change le rayon : $T$ et $r$ bougent tous les deux, $T^2/r^3$ reste fixe — il ne dépend que de la masse de la Terre, $4\\pi^2/GM_T$." },
+          { "id": "t3-r2", "texte": "$T^3/r^2$", "juste": false, "misconception": "mc.physics.pc_chute_plans.kepler3-exposants-inverses", "retour": "Non : les exposants sont inversés. Change le rayon : $T^3/r^2$ bouge, $T^2/r^3$ reste fixe. Le carré est sur la période, le cube sur le rayon — repars de l'établissement si tu doutes." }
+        ]
+      },
+      "suite": "Change le rayon et garde un œil sur les trois rapports : un seul ne bouge pas.",
+      "controles": ["rayon", "inclinaison", "sens", "referentiel"],
+      "lectures": ["altitude", "v-geo", "v-sol", "rapports"]
+    }
+  ],
+  "boundary": "Orbites CIRCULAIRES uniquement, comme le cadre du programme (spec-extension §R10 : « tout calcul reste circulaire ») : aucune ellipse, aucune excentricité, aucun bilan énergétique. Terre sphérique, rotation uniforme de période 24 h (convention de la leçon), satellite ponctuel.",
+  "fit_caveat": "Le satellite et le point P ne sont pas à l'échelle (ils seraient invisibles) ; la Terre et les orbites, elles, le sont l'une par rapport à l'autre. Le curseur de rayon avance par pas de 10 km : l'élève qui calcule r = 42 226 km avec les constantes de la leçon trouve 42 230 km sur la grille, seul rayon qui affiche T = 24,00 h. La trace est calculée pour les réglages ACTUELS, comme si le satellite les avait toujours eus.",
+  "fallback_note": "Sans WebGL, le panneau le dit et garde les paris, les réglages et les calculs ; la figure figée orbites-gravite, juste après dans la leçon, montre les trois rayons. À l'impression, le panneau disparaît et les figures figées restent.",
+  "pedagogy_wiring": {
+    "misconceptions": [
+      "mc.physics.pc_chute_plans.geostationnaire-toute-altitude",
+      "mc.physics.pc_chute_plans.geostationnaire-immobile-absolu",
+      "mc.physics.pc_chute_plans.kepler3-exposants-inverses"
+    ],
+    "spec_codes": ["CH-KEP-3", "CH-KEP-2", "CH-KEP-1"],
+    "why_3d": "Deux des trois conditions sont spatiales (le plan, le sens) ; CH-KEP-2 se casse en changeant de référentiel sous les yeux de l'élève. La manipulation enseigne, pas le relief.",
+    "predict_then_reveal": "Chaque étape demande un pari AVANT toute preuve ; pour les étapes où le temps révèle, le verdict n'apparaît qu'après que la scène l'a montré (revele_apres_h), et le contrôle de l'étape s'ouvre ensuite."
+  },
+  "spec_ref": "content/pc/chute-mouvements-plans/spec-extension.md",
+  "adr_ref": "docs/decisions/0041-scenes-3d-de-premiere-partie.md"
+}

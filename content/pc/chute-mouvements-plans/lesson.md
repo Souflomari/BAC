@@ -686,19 +686,23 @@ Un satellite est **géostationnaire** lorsqu'il paraît immobile pour un observa
 2. son orbite est dans le **plan équatorial** ;
 3. il tourne dans le **même sens** que la rotation de la Terre.
 
+Trois conditions — vraiment trois ? Une période de 24 h ne suffirait-elle pas ? Avant de lire la suite, mets-les à l'épreuve une par une : dans la scène qui suit, tu paries d'abord, puis tu regardes.
+
+[[embed:orbites-gravite]]
+
 ### Arrête-toi — n'importe quelle altitude convient-elle ?
 
 Si la seule condition qui comptait était « une période de $24\ \text{h}$ », est-ce que n'importe quelle altitude pourrait convenir ? Teste avec la 3e loi : à un astre donné ($M_T$ fixé), $T^2/r^3 = 4\pi^2/GM_T$ relie $T$ et $r$ de façon **biunivoque** — se donner $T=24\ \text{h}$ détermine une seule valeur de $r$, pas une plage de valeurs possibles. Choisir une autre altitude changerait $T$, et le satellite ne resterait plus synchronisé avec la rotation du sol : il dériverait, lentement, d'ouest en est ou d'est en ouest selon le cas. Il n'existe donc qu'**une seule altitude** géostationnaire possible autour d'un astre donné :
 
 $$r = \left(\frac{GM_T\,T^2}{4\pi^2}\right)^{1/3}$$
 
+[[figure:orbites-gravite]]
+
 ### Immobile par rapport à quoi ?
 
 Une dernière précision, qui trompe souvent : dire qu'un satellite géostationnaire est « immobile » ne veut pas dire qu'il ne bouge pas du tout. Dans le référentiel **géocentrique**, il parcourt bel et bien un cercle, à sa vitesse orbitale $v=\sqrt{GM_T/r}$ — de l'ordre de $3\ \text{km/s}$ à cette altitude, une vitesse loin d'être nulle. Il n'est immobile que **par rapport au sol**, parce qu'il tourne autour de la Terre exactement à la même vitesse angulaire que la Terre tourne sur elle-même : vu depuis un point fixe de l'équateur, il reste donc toujours à la verticale du même point.
 
 [[figure:orbite-geostationnaire]]
-
-[[figure:orbites-gravite]]
 
 ### Exemple travaillé : le rayon de l'orbite géostationnaire
 

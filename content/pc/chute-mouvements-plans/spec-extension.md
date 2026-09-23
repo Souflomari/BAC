@@ -349,9 +349,13 @@ Boucler : le satellite bouge (dans le géocentrique) mais reste au-dessus du mê
 - `[[figure:orbite-geostationnaire]]` — **type: structural-diagram · tool: svg+katex.**
   Terre + orbite équatoriale, satellite au-dessus d'un point fixe du sol, flèches de rotation
   (même sens, même $\omega$). Structure exacte.
-- `[[embed:orbites-gravite]]` — **type: manipulable · tool: geogebra/desmos/falstad/phet.**
-  Embarquer la simulation PhET « Gravity and Orbits » (ne pas la reconstruire) : varier le rayon
-  et observer la période changer → il n'existe qu'un rayon donnant $T=24\ \text{h}$ (sert CH-KEP-3).
+- `[[embed:orbites-gravite]]` — **type: manipulable · tool: scene3d (première partie, ADR 0041).**
+  *Prescrit à l'origine : la simulation PhET « Gravity and Orbits » ; jamais livrée, puis remplacée
+  le 2026-09-23 par une scène three.js de première partie — l'amendement d'ADR 0017 ferme la porte
+  aux nouveaux embeds tiers.* Cinq étapes à pari préalable : varier le rayon et voir qu'un seul donne
+  $T=24\ \text{h}$ (CH-KEP-3) ; incliner l'orbite (plan) ; inverser le sens ; changer de référentiel
+  (CH-KEP-2) ; puis étape libre où $T/r$ et $T^3/r^2$ bougent pendant que $T^2/r^3$ reste fixe
+  (CH-KEP-1). Placée juste après la liste des trois conditions : l'élève découvre, la prose explique.
 
 **HORS-CADRE (citer la limite / task).** **Orbites elliptiques quantitatives = HORS-CADRE** :
 les 3 lois s'énoncent, mais tout calcul (période, rayon, vitesse) reste **circulaire** (cadre

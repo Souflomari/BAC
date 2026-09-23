@@ -148,6 +148,72 @@ const COLLISIONS_ID_CONNUES = new Map([
 const idsParNotion = new Map();
 
 const REPO = path.resolve(path.dirname(new URL(import.meta.url).pathname), "../..");
+
+// ── Scènes 3D de première partie (ADR 0041) ─────────────────────────────────
+// Un descripteur `"tool": "scene3d"` n'a pas d'url : il nomme une scène du
+// code et porte ses ÉTAPES (consignes, contrôles ouverts, état posé). Tout ce
+// qui ne se vérifie pas ici tombe en silence au rendu — un contrôle inconnu
+// n'apparaît pas, un état hors bornes est clampé par le navigateur — d'où un
+// échec DUR, pas un avertissement.
+const SCENES_3D = JSON.parse(fs.readFileSync(path.join(REPO, "web/src/lib/scene3d/scenes.json"), "utf8"));
+const ETAT_3D_VALEURS = {
+  sens: ["direct", "retrograde"],
+  referentiel: ["geocentrique", "terrestre"],
+  vue: ["biais", "dessus", "cote"],
+};
+function fautesScene3d(desc) {
+  const fautes = [];
+  const def = SCENES_3D[desc.scene];
+  if (!def) return [`scène "${desc.scene}" inconnue (absente de web/src/lib/scene3d/scenes.json)`];
+  if (!Array.isArray(desc.etapes) || desc.etapes.length === 0) return ["aucune étape"];
+  const vus = new Set();
+  const ouverts = new Set();
+  desc.etapes.forEach((e, i) => {
+    const ou = `étape ${i + 1}${e?.id ? ` (${e.id})` : ""}`;
+    for (const champ of ["id", "titre", "consigne"])
+      if (typeof e?.[champ] !== "string" || !e[champ].trim()) fautes.push(`${ou} : « ${champ} » manquant`);
+    if (vus.has(e?.id)) fautes.push(`${ou} : id en double`);
+    vus.add(e?.id);
+    if (!Array.isArray(e?.controles) || e.controles.length === 0) fautes.push(`${ou} : aucun contrôle ouvert`);
+    for (const c of e?.controles ?? []) {
+      if (!def.controles.includes(c)) fautes.push(`${ou} : contrôle "${c}" inconnu de la scène`);
+      ouverts.add(c);
+    }
+    if (i === 0 && !e?.etat) fautes.push(`${ou} : la première étape doit poser un état`);
+    for (const l of e?.lectures ?? [])
+      if (!(def.lectures ?? []).includes(l)) fautes.push(`${ou} : lecture "${l}" inconnue de la scène`);
+    if (e?.suite !== undefined && (typeof e.suite !== "string" || !e.suite.trim())) fautes.push(`${ou} : « suite » vide`);
+    if (e?.pari !== undefined) {
+      const p = e.pari;
+      if (typeof p?.question !== "string" || !p.question.trim()) fautes.push(`${ou} : pari sans question`);
+      if (p?.revele_apres_h !== undefined && !(typeof p.revele_apres_h === "number" && p.revele_apres_h >= 0 && p.revele_apres_h <= 48))
+        fautes.push(`${ou} : revele_apres_h hors de [0, 48]`);
+      const ch = Array.isArray(p?.choix) ? p.choix : [];
+      if (ch.length < 2 || ch.length > 4) fautes.push(`${ou} : un pari propose 2 à 4 choix (${ch.length})`);
+      const justes = ch.filter((c) => c?.juste === true).length;
+      if (justes !== 1) fautes.push(`${ou} : un pari a exactement UN choix juste (${justes})`);
+      const ids = new Set();
+      for (const c of ch) {
+        if (typeof c?.id !== "string" || !c.id || ids.has(c.id)) fautes.push(`${ou} : choix sans id, ou id en double`);
+        ids.add(c?.id);
+        if (typeof c?.texte !== "string" || !c.texte.trim()) fautes.push(`${ou} : choix « ${c?.id} » sans texte`);
+        if (typeof c?.retour !== "string" || !c.retour.trim()) fautes.push(`${ou} : choix « ${c?.id} » sans retour — un pari sans « pourquoi » ne corrige rien`);
+      }
+    }
+    for (const [k, v] of Object.entries(e?.etat ?? {})) {
+      if (!def.etat.includes(k)) { fautes.push(`${ou} : état "${k}" inconnu de la scène`); continue; }
+      const bornes = def.bornes?.[k];
+      if (k === "rayon_km" && v === "geo") continue;
+      if (bornes && !(typeof v === "number" && v >= bornes[0] && v <= bornes[1]))
+        fautes.push(`${ou} : ${k} = ${JSON.stringify(v)} hors de [${bornes.join(", ")}]`);
+      if (ETAT_3D_VALEURS[k] && !ETAT_3D_VALEURS[k].includes(v))
+        fautes.push(`${ou} : ${k} = ${JSON.stringify(v)} (attendu : ${ETAT_3D_VALEURS[k].join(" | ")})`);
+    }
+  });
+  for (const c of def.controles)
+    if (!ouverts.has(c)) fautes.push(`le contrôle "${c}" n'est ouvert par aucune étape — il n'existera jamais dans le DOM`);
+  return fautes;
+}
 const rawArgv = process.argv.slice(2);
 const strictMode = rawArgv.includes("--strict");
 const dirs = rawArgv.filter((a) => a !== "--strict");
@@ -824,7 +890,9 @@ for (const dir of dirs) {
       if (fs.existsSync(j)) {
         try {
           const desc = JSON.parse(fs.readFileSync(j, "utf8"));
-          if (!desc.url && !desc.url_base) console.error(`  ⚠ ${dir}: [[embed:${slug}]] has no url — shows the "à venir" placeholder`);
+          if (desc.tool === "scene3d") {
+            for (const f of fautesScene3d(desc)) { console.error(`  ✗ ${dir}: media/${slug}.json (scène 3D) — ${f}`); dirFail++; }
+          } else if (!desc.url && !desc.url_base) console.error(`  ⚠ ${dir}: [[embed:${slug}]] has no url — shows the "à venir" placeholder`);
         } catch (err) { console.error(`  ✗ ${dir}: media/${slug}.json invalid JSON → ${err.message.split("\n")[0]}`); dirFail++; }
       } else {
         console.error(`  ⚠ ${dir}: [[embed:${slug}]] has no media/${slug}.json — shows the "à venir" placeholder`);

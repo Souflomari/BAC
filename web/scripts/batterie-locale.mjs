@@ -145,6 +145,11 @@ const HORS_CHAMP = new Set([
   // ARMÉE en CI sur six leçons (§11.184). Son rouge se rejoue :
   // `node scripts/verdict-qcm.mjs --essai-rouge <routes…>`.
   "verdict-qcm.mjs",
+  // scene-orbite ouvre la scène 3D dans un Chromium qui dessine en WebGL
+  // (SwiftShader) et compare des PIXELS : build ET Playwright. Hors champ ici
+  // pour la même raison que dom-truth — ARMÉE en CI (§11.187). Son rouge se
+  // rejoue : `node scripts/scene-orbite.mjs --essai-rouge`.
+  "scene-orbite.mjs",
   // temps-de-chargement mesure TTFB/FCP/LCP au navigateur, réseau bridé, trois
   // passages par route : build, Playwright, et des millisecondes qui sont
   // celles de CETTE machine. Ce n'est PAS une porte et ce n'en sera pas une —

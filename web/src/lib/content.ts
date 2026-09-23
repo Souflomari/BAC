@@ -152,6 +152,77 @@ export interface EmbedDescriptor {
 }
 
 /**
+ * Scène 3D de première partie (ADR 0041) — un descripteur `media/<slug>.json`
+ * dont `tool` vaut "scene3d". Le marqueur reste `[[embed:<slug>]]` : pour la
+ * leçon c'est un manipulable comme un autre ; seul le moteur change (three.js,
+ * chargé au clic, au lieu d'une iframe tierce).
+ *
+ * Tout ce qui est PÉDAGOGIQUE vit ici, dans le contenu : les étapes, leurs
+ * consignes, l'état posé à l'entrée de chacune, le contrôle qu'elle ouvre.
+ * Tout ce qui est CALCUL vit dans le code (`web/src/lib/scene3d/`).
+ */
+export type Scene3DControle = "rayon" | "inclinaison" | "sens" | "referentiel";
+
+export interface Scene3DEtat {
+  /** un rayon en km, ou "geo" : le rayon géostationnaire calculé par le code */
+  rayon_km?: number | "geo";
+  inclinaison_deg?: number;
+  sens?: "direct" | "retrograde";
+  referentiel?: "geocentrique" | "terrestre";
+  vue?: "biais" | "dessus" | "cote";
+}
+
+/** Les lectures chiffrées qu'une étape affiche (les autres sont absentes). */
+export type Scene3DLecture = "altitude" | "periode" | "v-geo" | "v-sol" | "rapports";
+
+export interface Scene3DChoix {
+  id: string;
+  /** le texte du choix (KaTeX en ligne permis : `$T^2/r^3$`) */
+  texte: string;
+  juste: boolean;
+  /** pourquoi — montré une fois le pari révélé */
+  retour: string;
+  misconception?: string | string[];
+}
+
+/**
+ * Le PARI de l'étape : l'élève s'engage AVANT toute preuve (VISION, physique :
+ * « confront the wrong model »). Tant qu'il n'a pas parié, ni le temps ni le
+ * contrôle de l'étape n'existent dans le DOM. `revele_apres_h` > 0 : le
+ * verdict et le retour n'apparaissent qu'après ce nombre d'heures simulées —
+ * c'est la SCÈNE qui répond d'abord, le texte ensuite.
+ */
+export interface Scene3DPari {
+  question: string;
+  revele_apres_h?: number;
+  choix: Scene3DChoix[];
+}
+
+export interface Scene3DEtape {
+  id: string;
+  titre: string;
+  consigne: string;
+  pari?: Scene3DPari;
+  /** la tâche suivante, montrée une fois le pari révélé */
+  suite?: string;
+  /** les contrôles que l'étape OUVRE ; les autres sont absents du DOM */
+  controles: Scene3DControle[];
+  /** les lectures que l'étape affiche une fois le pari révélé ; aucune par défaut */
+  lectures?: Scene3DLecture[];
+  /** l'état posé en entrant dans l'étape (annoncé par la consigne) ; absent = on garde l'état courant */
+  etat?: Scene3DEtat;
+}
+
+export interface Scene3DDescriptor {
+  slug: string;
+  /** la scène enregistrée dans `web/src/lib/scene3d/scenes.json` */
+  scene: string;
+  title?: string;
+  caption?: string;
+  etapes: Scene3DEtape[];
+}
+
+/**
  * A single checkpoint item (from checkpoints.yaml).
  * Shares the same MCQ structure as NotionItem but is formative-only:
  * no score, no streak, no tally. Lives inside the lesson body.
@@ -366,6 +437,8 @@ export interface NotionContent {
    * Used by the inline [[embed:slug]] markers.
    */
   mediaEmbeds: Record<string, EmbedDescriptor>;
+  /** Scènes 3D de première partie, par slug de marqueur `[[embed:]]` (ADR 0041). */
+  mediaScenes: Record<string, Scene3DDescriptor>;
   /**
    * Parsed embed.json at the notion root, or null if absent.
    * Legacy field — prefer mediaEmbeds for inline markers.
@@ -743,6 +816,7 @@ export function loadNotion(id: string): NotionContent | null {
   const mediaStages: Record<string, MediaStagesSpec> = {};
   const mediaInteractive: Record<string, InteractiveFigureConfigSpec> = {};
   const mediaEmbeds: Record<string, EmbedDescriptor> = {};
+  const mediaScenes: Record<string, Scene3DDescriptor> = {};
   const mediaDir = path.join(dir, "media");
   if (dirExists(mediaDir)) {
     const files = safeReadDir(mediaDir);
@@ -924,10 +998,26 @@ export function loadNotion(id: string): NotionContent | null {
       if (!raw) continue;
       try {
         const parsed = JSON.parse(raw);
+        const slug_key = file.replace(/\.json$/, "");
+
+        // Scène 3D de première partie : pas d'url, une scène et des étapes.
+        // Forme minimale exigée ici (never throw) ; `validate-content` juge
+        // le reste, en échec dur.
+        if (parsed && parsed.tool === "scene3d") {
+          if (typeof parsed.scene !== "string" || !Array.isArray(parsed.etapes) || parsed.etapes.length === 0) continue;
+          mediaScenes[slug_key] = {
+            slug: slug_key,
+            scene: parsed.scene,
+            title: parsed.title_fr ?? parsed.title ?? undefined,
+            caption: parsed.caption_fr ?? parsed.caption ?? undefined,
+            etapes: parsed.etapes,
+          };
+          continue;
+        }
+
         // Require at least a url field — malformed/missing → skip, never throw
         if (!parsed || typeof parsed.url !== "string") continue;
 
-        const slug_key = file.replace(/\.json$/, "");
         mediaEmbeds[slug_key] = {
           type: parsed.tool ?? parsed.type ?? "custom",
           url: parsed.url,
@@ -976,5 +1066,5 @@ export function loadNotion(id: string): NotionContent | null {
   };
   const renderedLessonMd = stripLeadingTitle(stripAuthoringComments(lessonMd));
 
-  return { meta, lessonMd: renderedLessonMd, itemsData, checkpoints, exercises, bank, derivations, mediaSvgs, motionSvgs, motionSpecs, mediaStages, retenir, mediaInteractive, mediaEmbeds, embed };
+  return { meta, lessonMd: renderedLessonMd, itemsData, checkpoints, exercises, bank, derivations, mediaSvgs, motionSvgs, motionSpecs, mediaStages, retenir, mediaInteractive, mediaEmbeds, mediaScenes, embed };
 }
