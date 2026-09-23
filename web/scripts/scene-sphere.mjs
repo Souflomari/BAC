@@ -20,6 +20,11 @@
  *      distance donne deux points, pas un cercle.
  *   4. LES PARIS — rien ne s'ouvre avant l'engagement ; ici pas de temps, le
  *      verdict tombe au choix (un pari faux est dit faux, un juste est dit juste).
+ *   4 bis. AVANT LE PARI, RIEN NE RÉPOND (§11.190) — ni l'intersection dessinée
+ *      (zéro pixel d'accent), ni la fiche des trois cas (sa case cochée EST la
+ *      réponse), ni la description lue au lecteur d'écran. Trouvé en relisant
+ *      la scène, pas par la porte : l'étape 2 montrait ses deux points et
+ *      cochait « deux points » avant que l'élève ait parié.
  *   5. LES ÉTAPES — chacune pose son état et n'ouvre que son contrôle.
  *   6. AUCUN LaTeX BRUT dans le panneau ouvert — une consigne `$d$` rendue en
  *      texte s'affichait telle quelle (trouvé en regardant la scène) ; la porte
@@ -150,6 +155,10 @@ const suivant = () => panneau.getByRole("button", { name: "Étape suivante" }).c
 const vue = (nom) => panneau.getByRole("button", { name: nom }).first().click().then(deuxImages);
 const capture = async () => (await panneau.locator("canvas").screenshot()).toString("base64");
 const latexBrut = async () => (await panneau.evaluate((el) => el.innerText)).match(/\$|\\(sqrt|mathcal|frac|text)\b/g) ?? [];
+const fiches = () => panneau.locator("[data-fiche]").count();
+const descriptionCanvas = async () => (await panneau.locator("canvas").getAttribute("aria-label").catch(() => "")) ?? "";
+/** La description ne doit rien dire de l'issue avant le pari. */
+const ISSUE_DITE = /intersection|point commun|points communs|touche la sphère/;
 
 const accent = await page.evaluate(() => {
   const c = document.createElement("canvas"); c.width = c.height = 1; const x = c.getContext("2d");
@@ -171,11 +180,27 @@ async function accentDe(b64) {
   }, { b64, accent });
 }
 
+/**
+ * 4 bis. AVANT LE PARI, RIEN NE RÉPOND — zéro pixel d'accent (l'intersection
+ * n'est pas dessinée), aucune fiche des trois cas, et une description qui
+ * décrit l'ÉNONCÉ (sphère, plan ou droite, distance) sans dire l'issue.
+ * Puis, le pari posé, l'issue apparaît : c'est la moitié qui prouve que la
+ * première n'est pas un canvas vide ou une fiche perdue.
+ */
+async function avantPari(ou) {
+  const f = await fiches(), desc = await descriptionCanvas();
+  const px = rendu ? (await accentDe(await capture())).n : 0;
+  const muet = f === 0 && px === 0 && !ISSUE_DITE.test(desc) && desc.length > 0;
+  noter("avant-pari", ESSAI ? !muet : muet,
+    `${ou}, avant le pari : fiche ${f ? "AFFICHÉE" : "absente"}, ${px} px d'accent, description « ${desc.slice(0, 110)}${desc.length > 110 ? "…" : ""} »`);
+}
+
 // ── 4. Étape 1 : le pari d'abord ──
 {
   const avant = { pari: await attr("data-pari"), ctl: await controles(), lec: await panneau.locator("[data-lectures]").count() };
   const ok = avant.pari === "attente" && avant.ctl === "" && avant.lec === 0;
   noter("paris", ESSAI ? !ok : ok, `étape 1 avant le pari : phase « ${avant.pari} », contrôles [${avant.ctl}], lectures ${avant.lec ? "PRÉSENTES" : "absentes"}`);
+  await avantPari("étape 1 (le plan à mi-rayon)");
   // Un pari FAUX : la misconception de la leçon, √(R² + d²).
   await parier(pariDe("plan").choix.findIndex((c) => c.id === "plus"));
   const apres = { pari: await attr("data-pari"), res: await resultat(), ctl: await controles(), d: await lecture("d") };
@@ -183,6 +208,12 @@ async function accentDe(b64) {
   noter("paris", ESSAI ? !okF : okF, `pari faux (√(R² + d²)) : phase « ${apres.pari} », verdict « ${apres.res} », contrôles [${apres.ctl}], d « ${apres.d} »`);
   const brut1 = (await latexBrut()).length;
   noter("latex", ESSAI ? brut1 > 0 : brut1 === 0, `étape 1 révélée : ${brut1} fragment(s) de LaTeX brut`);
+  {
+    const f = await fiches(), desc = await descriptionCanvas();
+    const px = rendu ? (await accentDe(await capture())).n : 1;
+    const dit = f === 1 && px > 0 && ISSUE_DITE.test(desc);
+    noter("avant-pari", ESSAI ? !dit : dit, `étape 1, pari posé : fiche ${f ? "affichée" : "ABSENTE"}, ${px} px d'accent, la description dit l'issue : ${ISSUE_DITE.test(desc) ? "oui" : "NON"}`);
+  }
 }
 
 // ── 3. Les pixels (étape 1 : le plan, R = 3) ──
@@ -208,6 +239,7 @@ await suivant(); // → droite
 {
   const e = { ctl: await controles(), objet: await attr("data-objet"), k: await attr("data-k"), pari: await attr("data-pari") };
   noter("etapes", e.pari === "attente" && e.ctl === "" && e.objet === "droite" && e.k === "0.5", `étape 2 : phase « ${e.pari} », contrôles [${e.ctl}], objet ${e.objet}, k = ${e.k}`);
+  await avantPari("étape 2 (la droite)");
   await parier(indexJuste("droite"));
   const ctl = await controles();
   const hmTxt = await lecture("hm"), corde = await lecture("corde");
@@ -235,6 +267,7 @@ await suivant(); // → rayon
 }
 
 await suivant(); // → libre
+await avantPari("étape 4 (d = 3,5 > R)");
 await parier(indexJuste("libre"));
 noter("etapes", (await controles()) === "objet,position,rayon", `étape 4 : ouvre [${await controles()}]`);
 
@@ -327,7 +360,7 @@ if (!rendu) {
   process.exit(3);
 }
 if (ESSAI) {
-  const visees = ["avant-clic", "nombres", "pixels", "etapes", "paris", "latex", "sans-webgl"];
+  const visees = ["avant-clic", "nombres", "pixels", "etapes", "paris", "avant-pari", "latex", "sans-webgl"];
   const crient = visees.filter((f) => resultats.some((r) => r.famille === f && !r.ok));
   console.log(`\n  familles sabotées qui crient : ${crient.length}/${visees.length} (${crient.join(", ")})`);
   if (crient.length !== visees.length) {

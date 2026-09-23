@@ -4,10 +4,17 @@
  * usePari — le PARI d'une étape (ADR 0041 §6).
  *
  *   aucun   : l'étape n'a pas de pari — tout est ouvert ;
- *   attente : l'élève n'a pas parié — ni le temps ni le contrôle n'existent ;
+ *   attente : l'élève n'a pas parié — ni le temps ni le contrôle n'existent,
+ *             et RIEN de ce qui dépend de l'issue n'est montré (§11.190) ;
  *   note    : il a parié ; le temps est ouvert, le verdict attend que la
- *             SCÈNE ait montré la réponse (`revele_apres_h` heures simulées) ;
+ *             SCÈNE ait montré la réponse ;
  *   revele  : verdict, « pourquoi », puis contrôle et lectures de l'étape.
+ *
+ * Ce que « la scène a montré » veut dire est propre à chaque scène : des heures
+ * simulées pour l'orbite (`revele_apres_h`), une fraction de la course pour la
+ * particule dans le champ (`revele_apres_course`), rien pour une scène sans
+ * temps. Le panneau le calcule et le passe ici : `attend` (ce pari attend-il
+ * la scène ?) et `montre` (la scène l'a-t-elle montré ?).
  *
  * La révélation est COLLANTE : une fois montrée, remettre le temps à zéro ne
  * la cache pas. `reinitialiser` est appelé par le panneau en changeant
@@ -19,14 +26,13 @@ import type { NotionChoice, Scene3DPari } from "@/lib/content";
 
 export type PhasePari = "aucun" | "attente" | "note" | "revele";
 
-export function usePari(pari: Scene3DPari | undefined, tempsSimule: number) {
+export function usePari(pari: Scene3DPari | undefined, { attend, montre }: { attend: boolean; montre: boolean }) {
   const [choixId, setChoixId] = useState<string | null>(null);
   const [revele, setRevele] = useState(false);
-  const seuil = (pari?.revele_apres_h ?? 0) * 3600;
 
   useEffect(() => {
-    if (pari && choixId !== null && !revele && tempsSimule >= seuil) setRevele(true);
-  }, [pari, choixId, revele, tempsSimule, seuil]);
+    if (pari && choixId !== null && !revele && montre) setRevele(true);
+  }, [pari, choixId, revele, montre]);
 
   const choixNotion: NotionChoice[] = useMemo(
     () =>
@@ -45,9 +51,9 @@ export function usePari(pari: Scene3DPari | undefined, tempsSimule: number) {
   const choisir = useCallback(
     (id: string) => {
       setChoixId(id);
-      if ((pari?.revele_apres_h ?? 0) === 0) setRevele(true);
+      if (!attend) setRevele(true);
     },
-    [pari]
+    [attend]
   );
   const reinitialiser = useCallback(() => {
     setChoixId(null);
@@ -63,7 +69,7 @@ export function usePari(pari: Scene3DPari | undefined, tempsSimule: number) {
     reinitialiser,
     /** le temps (s'il existe) s'ouvre dès le pari */
     tempsOuvert: phase !== "attente",
-    /** le contrôle, la suite et les lectures de l'étape, une fois révélé */
+    /** le contrôle, la suite, les lectures ET l'issue de l'étape, une fois révélé */
     etapeOuverte: phase === "aucun" || phase === "revele",
   };
 }

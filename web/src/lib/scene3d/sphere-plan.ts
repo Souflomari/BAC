@@ -45,7 +45,9 @@ export interface Projection {
 }
 
 export interface SceneSphere {
-  mettreAJour(etat: EtatSphere): void;
+  /** `issue` : l'intersection (et le triangle SHM) est-elle montrée ? Pas avant
+   *  le pari — elle EST la réponse (§11.190). */
+  mettreAJour(etat: EtatSphere, issue: boolean): void;
   orienter(azimut: number, elevation: number): void;
   redimensionner(largeur: number, hauteur: number): void;
   relireCouleurs(): void;
@@ -174,6 +176,7 @@ export function creerSceneSphere(canvas: HTMLCanvasElement, hote: HTMLElement): 
   let largeurCss = 480;
   let hauteurCss = 480;
   let dernier: EtatSphere | null = null;
+  let issueMontree = true;
   // M : sur le cercle, du côté de la caméra (le triangle se lit de face).
   let angleM = 0;
   const posM = new Vector3();
@@ -191,7 +194,8 @@ export function creerSceneSphere(canvas: HTMLCanvasElement, hote: HTMLElement): 
     angleM = a - 0.9; // un peu à droite de la direction de la caméra
   }
 
-  function mettreAJour(e: EtatSphere) {
+  function mettreAJour(e: EtatSphere, issue: boolean) {
+    issueMontree = issue;
     const R = e.R;
     const d = distance(e);
     const c = cas(e);
@@ -212,16 +216,16 @@ export function creerSceneSphere(canvas: HTMLCanvasElement, hote: HTMLElement): 
     segSH.material.dashSize = 0.18;
     segSH.material.gapSize = 0.12;
 
-    cercleInter.visible = estPlan && c === "secant";
+    cercleInter.visible = issue && estPlan && c === "secant";
     if (cercleInter.visible) remplacerPositions(cercleInter, cercle(r, 160, (u) => [Math.cos(u), 0, -Math.sin(u)]).map((v, i) => (i % 3 === 1 ? yScene : v)));
-    pointTangent.visible = c === "tangent";
+    pointTangent.visible = issue && c === "tangent";
     pointTangent.position.set(0, yScene, 0);
-    pointA.visible = pointB.visible = !estPlan && c === "secant";
+    pointA.visible = pointB.visible = issue && !estPlan && c === "secant";
     pointA.position.copy(vs(r, 0, e.k));
     pointB.position.copy(vs(-r, 0, e.k));
 
     // Le triangle SHM : M sur le cercle (plan) ou l'un des deux points (droite).
-    mVisible = c === "secant";
+    mVisible = issue && c === "secant";
     if (mVisible) {
       if (estPlan) posM.set(r * Math.cos(angleM), yScene, -r * Math.sin(angleM));
       else posM.copy(pointA.position);
@@ -254,7 +258,7 @@ export function creerSceneSphere(canvas: HTMLCanvasElement, hote: HTMLElement): 
       azimut = a;
       elevation = Math.max(-80, Math.min(88, e));
       placerCamera();
-      if (dernier) mettreAJour(dernier);
+      if (dernier) mettreAJour(dernier, issueMontree);
     },
     redimensionner,
     relireCouleurs() {

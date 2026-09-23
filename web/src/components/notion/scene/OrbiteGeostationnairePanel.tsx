@@ -105,7 +105,9 @@ export function OrbiteGeostationnairePanel({ scene, className }: { scene: Scene3
   const etiquetteN = useRef<HTMLSpanElement>(null);
   const etiquetteP = useRef<HTMLSpanElement>(null);
 
-  const pari = usePari(etape.pari, etat.temps);
+  // Le verdict attend que la scène ait montré : `revele_apres_h` heures simulées.
+  const seuilPari = (etape.pari?.revele_apres_h ?? 0) * 3600;
+  const pari = usePari(etape.pari, { attend: seuilPari > 0, montre: etat.temps >= seuilPari });
   const ouvre = (c: string) => pari.etapeOuverte && etape.controles.includes(c);
 
   // ── Rendu : à chaque changement d'état, et seulement alors ──
@@ -484,26 +486,32 @@ export function OrbiteGeostationnairePanel({ scene, className }: { scene: Scene3
 
           {/* Les trois conditions, et le verdict. Le détail d'une condition
               n'est écrit que si aucun contrôle visible ne le montre déjà
-              (critique calme : un même fait deux fois dans le même regard). */}
-          <div className="rounded-lg border border-subtle px-4 py-3">
-            <p className="mb-2 text-caption font-medium text-secondary">Les trois conditions</p>
-            <ul className="flex flex-col gap-1.5 text-body-sm">
-              {conditionLigne(cond.periode, "Une période de 24 h", <>— ici <span data-lecture="periode">{K.formatHeures(T)}</span></>)}
-              {conditionLigne(
-                cond.plan,
-                "Une orbite dans le plan de l’équateur",
-                ouvre("inclinaison") ? null : `— ici inclinée de ${K.formatDegres(etat.inclinaison)}`
-              )}
-              {conditionLigne(
-                cond.sens,
-                "Le même sens de rotation que la Terre",
-                ouvre("sens") ? null : `— ici ${etat.sens === 1 ? "vers l’est" : "vers l’ouest"}`
-              )}
-            </ul>
-            <p className="mt-2 text-body-sm font-medium text-primary" aria-live="polite" aria-atomic="true" data-verdict>
-              {frenchTypography(verdict)}
-            </p>
-          </div>
+              (critique calme : un même fait deux fois dans le même regard).
+              JAMAIS avant la révélation du pari : les coches et le verdict
+              SONT la réponse — « période 24 h ✓, plan ✗ … pas géostationnaire »
+              répondait aux étapes 2 et 3 avant que l'élève ait parié
+              (§11.190). La scène répond d'abord, le texte ensuite. */}
+          {pari.etapeOuverte && (
+            <div className="rounded-lg border border-subtle px-4 py-3" data-conditions>
+              <p className="mb-2 text-caption font-medium text-secondary">Les trois conditions</p>
+              <ul className="flex flex-col gap-1.5 text-body-sm">
+                {conditionLigne(cond.periode, "Une période de 24 h", <>— ici <span data-lecture="periode">{K.formatHeures(T)}</span></>)}
+                {conditionLigne(
+                  cond.plan,
+                  "Une orbite dans le plan de l’équateur",
+                  ouvre("inclinaison") ? null : `— ici inclinée de ${K.formatDegres(etat.inclinaison)}`
+                )}
+                {conditionLigne(
+                  cond.sens,
+                  "Le même sens de rotation que la Terre",
+                  ouvre("sens") ? null : `— ici ${etat.sens === 1 ? "vers l’est" : "vers l’ouest"}`
+                )}
+              </ul>
+              <p className="mt-2 text-body-sm font-medium text-primary" aria-live="polite" aria-atomic="true" data-verdict>
+                {frenchTypography(verdict)}
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Au téléphone, les vues viennent APRÈS les réglages. */}

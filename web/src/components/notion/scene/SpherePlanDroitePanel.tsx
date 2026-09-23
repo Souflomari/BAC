@@ -83,15 +83,19 @@ export function SpherePlanDroitePanel({ scene, className }: { scene: Scene3DDesc
   const etiquetteM = useRef<HTMLSpanElement>(null);
 
   // Pas de temps dans cette scène : les paris se révèlent au choix.
-  const pari = usePari(etape.pari, 0);
+  const pari = usePari(etape.pari, { attend: false, montre: true });
   const ouvre = (c: string) => pari.etapeOuverte && etape.controles.includes(c);
+  // L'ISSUE — l'intersection dessinée, la case cochée des trois cas, la phrase
+  // qui la décrit — est la réponse du pari : rien de tout cela avant qu'il soit
+  // révélé (§11.190). Le plan, la sphère et la distance d, eux, sont l'énoncé.
+  const issue = pari.etapeOuverte;
 
   const renduRef = useRef<SceneSphere | null>(null);
   const dessiner = useCallback(() => {
     const s = renduRef.current;
     if (!s) return;
     s.orienter(angles.azimut, angles.elevation);
-    s.mettreAJour(etat);
+    s.mettreAJour(etat, issue);
     s.rendre();
     const { S, H, M } = s.etiquettes();
     poser(etiquetteS.current, S, "-130%");
@@ -99,7 +103,7 @@ export function SpherePlanDroitePanel({ scene, className }: { scene: Scene3DDesc
     // au même endroit et leurs étiquettes s'écrasaient l'une sur l'autre.
     poser(etiquetteH.current, H, "30%");
     poser(etiquetteM.current, M ?? { x: 0, y: 0, visible: false }, "-130%");
-  }, [etat, angles]);
+  }, [etat, angles, issue]);
 
   const rendu = useSceneRendu<SceneSphere>(() => import("@/lib/scene3d/sphere-plan").then((m) => m.creerSceneSphere), dessiner);
   renduRef.current = rendu.renduRef.current;
@@ -142,16 +146,18 @@ export function SpherePlanDroitePanel({ scene, className }: { scene: Scene3DDesc
   const description = useMemo(
     () =>
       `Scène en trois dimensions : une sphère de centre S et de rayon ${G.nombre(etat.R)}, ` +
-      (estPlan ? `coupée par un plan horizontal` : `et une droite horizontale`) +
-      ` à la distance ${G.nombre(d)} de son centre. ` +
-      (c === "vide"
-        ? "Ils n'ont aucun point commun."
-        : c === "tangent"
-          ? `${estPlan ? "Le plan" : "La droite"} touche la sphère en un seul point, H.`
-          : estPlan
-            ? `Leur intersection est un cercle de centre H et de rayon ${rac.exacte ?? rac.approx.replace("≈", "environ")}.`
-            : `Ils ont deux points communs, à ${rac.exacte ?? rac.approx.replace("≈", "environ")} de H.`),
-    [etat.R, estPlan, d, c, rac.exacte, rac.approx]
+      (estPlan ? `et un plan horizontal` : `et une droite horizontale`) +
+      ` à la distance ${G.nombre(d)} de son centre.` +
+      (!issue
+        ? ""
+        : c === "vide"
+          ? " Ils n'ont aucun point commun."
+          : c === "tangent"
+            ? ` ${estPlan ? "Le plan" : "La droite"} touche la sphère en un seul point, H.`
+            : estPlan
+              ? ` Leur intersection est un cercle de centre H et de rayon ${rac.exacte ?? rac.approx.replace("≈", "environ")}.`
+              : ` Ils ont deux points communs, à ${rac.exacte ?? rac.approx.replace("≈", "environ")} de H.`),
+    [etat.R, estPlan, d, c, rac.exacte, rac.approx, issue]
   );
 
   if (rendu.panneau === "ferme") {
@@ -307,24 +313,28 @@ export function SpherePlanDroitePanel({ scene, className }: { scene: Scene3DDesc
           )}
 
           {/* La fiche : les équations, la distance, et les trois cas de la leçon —
-              le cas courant porte une coche ET la graisse (§9 : jamais la couleur seule). */}
-          <div className="rounded-lg border border-subtle px-4 py-3" data-fiche>
-            <div className="flex flex-col gap-1 text-body-sm text-primary">
-              <MathText>{`$(S) : x^2 + y^2 + (z-2)^2 = ${R2.replace(",", "{,}")}$`}</MathText>
-              <MathText>{equationObjet}</MathText>
+              le cas courant porte une coche ET la graisse (§9 : jamais la couleur seule).
+              Après la révélation seulement : la case cochée est la réponse du pari
+              (§11.190). */}
+          {issue && (
+            <div className="rounded-lg border border-subtle px-4 py-3" data-fiche>
+              <div className="flex flex-col gap-1 text-body-sm text-primary">
+                <MathText>{`$(S) : x^2 + y^2 + (z-2)^2 = ${R2.replace(",", "{,}")}$`}</MathText>
+                <MathText>{equationObjet}</MathText>
+              </div>
+              <p className="mb-1.5 mt-3 text-caption font-medium text-secondary">Trois cas</p>
+              <ul className="flex flex-col gap-1.5 text-body-sm">
+                {casListe.map(([k, texte]) => (
+                  <li key={k} className="flex items-start gap-2" data-cas-ligne={k} aria-current={k === c ? "true" : undefined}>
+                    <span className="mt-0.5 w-4 shrink-0 text-primary">{k === c ? <CheckIcon size={16} title="cas actuel" /> : null}</span>
+                    <span className={cn("min-w-0 break-words", k === c ? "font-medium text-primary" : "text-secondary")}>
+                      <MathText>{texte}</MathText>
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <p className="mb-1.5 mt-3 text-caption font-medium text-secondary">Trois cas</p>
-            <ul className="flex flex-col gap-1.5 text-body-sm">
-              {casListe.map(([k, texte]) => (
-                <li key={k} className="flex items-start gap-2" data-cas-ligne={k} aria-current={k === c ? "true" : undefined}>
-                  <span className="mt-0.5 w-4 shrink-0 text-primary">{k === c ? <CheckIcon size={16} title="cas actuel" /> : null}</span>
-                  <span className={cn("min-w-0 break-words", k === c ? "font-medium text-primary" : "text-secondary")}>
-                    <MathText>{texte}</MathText>
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          )}
         </div>
 
         <VuesBloc vues={VUES} vue={vue} onVue={choisirVue} visibilite="flex bp-expanded:hidden" />

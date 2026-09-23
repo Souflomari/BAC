@@ -34,6 +34,12 @@
  *      contrôle (les autres sont ABSENTS du DOM), pose l'état qu'annonce sa
  *      consigne, et le verdict suit : plan incliné → non ; sens contraire →
  *      non, et vitesse par rapport au sol = 2 v ; référentiel → v_sol = 0.
+ *   4 bis. AVANT LA RÉVÉLATION, RIEN NE RÉPOND (§11.190). La fiche des trois
+ *      conditions — ses coches et son verdict « pas géostationnaire » — EST la
+ *      réponse des paris 1 à 3 : absente avant le pari, absente pendant que le
+ *      temps tourne vers la révélation, présente après. Trouvé en relisant la
+ *      scène : les étapes 2 et 3 affichaient « ✗ … pas géostationnaire » à côté
+ *      de la question « le satellite reste-t-il au-dessus de P ? ».
  *   5. SANS WEBGL, L'ÉTAT EST HONNÊTE. Un second navigateur, WebGL coupé : la
  *      scène le dit (« sans-webgl », message visible) et garde le curseur et
  *      les lectures justes — l'élève sans 3D ne perd pas la physique.
@@ -184,6 +190,14 @@ const capture = async () => (await panneau.locator("canvas").screenshot()).toStr
 const attr = (n) => panneau.getAttribute(n);
 const lanceTempsPresent = async () => (await panneau.getByRole("button", { name: "Lancer le temps" }).count()) > 0;
 const resultat = async () => ((await panneau.locator("[data-pari-bloc] [role=status]").last().textContent().catch(() => "")) ?? "").trim();
+/** La fiche des trois conditions (coches + verdict) : combien dans le DOM. */
+const fiche = async () => (await panneau.locator("[data-conditions]").count()) + (await panneau.locator("[data-verdict]").count());
+/** 4 bis : `attendu` = la fiche doit-elle être là ? */
+async function ficheAttendue(ou, attendu) {
+  const n = await fiche();
+  const ok = attendu ? n === 2 : n === 0;
+  noter("avant-pari", ESSAI ? !ok : ok, `${ou} : fiche des trois conditions ${n ? "AFFICHÉE" : "absente"} (attendue ${attendu ? "affichée" : "absente"})`);
+}
 
 // Les paris — lus dans le DESCRIPTEUR (le contenu), dans l'ordre auteur que le
 // panneau garde : la porte sait où est le choix juste sans lire le texte rendu.
@@ -240,8 +254,10 @@ const suivant = () => panneau.getByRole("button", { name: "Étape suivante" }).c
   const avant = { pari: await attr("data-pari"), temps: await lanceTempsPresent(), ctl: await controles() };
   const ok = avant.pari === "attente" && !avant.temps && avant.ctl === "";
   noter("paris", ESSAI ? !ok : ok, `étape 1 avant le pari : phase « ${avant.pari} », « Lancer le temps » ${avant.temps ? "PRÉSENT" : "absent"}, contrôles [${avant.ctl}]`);
+  await ficheAttendue("étape 1, avant le pari", false);
   // Un pari FAUX (rester au-dessus de P) : le verdict attend que la scène ait montré.
   await parier(etapeDesc("rayon").pari.choix.findIndex((c) => c.id === "reste"));
+  await ficheAttendue("étape 1, pari posé, avant 6 h", false);
   const note = { pari: await attr("data-pari"), temps: await lanceTempsPresent(), res: await resultat(), ctl: await controles() };
   const okNote = note.pari === "note" && note.temps && note.res === "" && note.ctl === "";
   noter("paris", okNote, `après le pari, avant 6 h : phase « ${note.pari} », temps ${note.temps ? "ouvert" : "FERMÉ"}, verdict « ${note.res || "(aucun)"} », contrôles [${note.ctl}]`);
@@ -249,6 +265,7 @@ const suivant = () => panneau.getByRole("button", { name: "Étape suivante" }).c
   const rev = { pari: await attr("data-pari"), res: await resultat(), ctl: await controles(), alt: await lecture("altitude") };
   const okRev = rev.pari === "revele" && (ESSAI ? /Bonne/.test(rev.res) : /incorrecte/.test(rev.res)) && rev.ctl === "rayon" && rev.alt !== "";
   noter("paris", ESSAI ? !okRev : okRev, `à 6 h : phase « ${rev.pari} », verdict « ${rev.res} » (pari faux), contrôles [${rev.ctl}], altitude « ${rev.alt} »`);
+  await ficheAttendue("étape 1, révélée à 6 h", true);
 }
 
 // ── 3. Les pixels (étape 1, pari révélé : le rayon est ouvert) ──
@@ -278,8 +295,12 @@ await suivant(); // → 2 (plan)
   const e = { ctl: await controles(), r: await attr("data-rayon-m"), i: await attr("data-inclinaison"), t: await attr("data-temps-s"), pari: await attr("data-pari") };
   noter("etapes", e.pari === "attente" && e.ctl === "" && e.r === "42230000" && e.i === "30" && e.t === "0",
     `étape 2 : phase « ${e.pari} », contrôles [${e.ctl}], r = ${e.r} m, inclinaison ${e.i}°, t = ${e.t} s`);
+  await ficheAttendue("étape 2 (plan incliné), avant le pari", false);
   await parier(indexJuste("plan"));
+  await temps(12);
+  await ficheAttendue("étape 2, pari posé, à 12 h (révélation à 24 h)", false);
   await temps(24);
+  await ficheAttendue("étape 2, révélée à 24 h", true);
   const res = await resultat();
   noter("paris", ESSAI ? !/Bonne/.test(res) : /Bonne/.test(res), `étape 2, pari juste révélé à 24 h : « ${res} »`);
   const ctl = await controles();
@@ -293,6 +314,7 @@ await suivant(); // → 3 (sens)
 {
   const e = { ref: await attr("data-referentiel"), sens: await attr("data-sens"), geo: await attr("data-geostationnaire") };
   noter("etapes", e.ref === "geocentrique" && e.sens === "retrograde" && e.geo === "non", `étape 3 : référentiel ${e.ref}, sens ${e.sens}, géostationnaire ${e.geo}`);
+  await ficheAttendue("étape 3 (sens contraire), avant le pari", false);
   await parier(indexJuste("sens"));
   await temps(6);
   const ctl = await controles();
@@ -482,7 +504,7 @@ if (!rendu) {
 }
 if (ESSAI) {
   // Chaque famille dont on a retourné l'attente doit avoir crié.
-  const visees = ["avant-clic", "nombres", "pixels", "etapes", "paris", "sans-webgl"];
+  const visees = ["avant-clic", "nombres", "pixels", "etapes", "paris", "avant-pari", "sans-webgl"];
   const crient = visees.filter((f) => resultats.some((r) => r.famille === f && !r.ok));
   console.log(`\n  familles sabotées qui crient : ${crient.length}/${visees.length} (${crient.join(", ")})`);
   if (crient.length !== visees.length) {
