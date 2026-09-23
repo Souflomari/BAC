@@ -13281,6 +13281,12 @@ $ grep -rlE '\(\?<[=!]' web/.next/static --include='*.js'
 web/.next/static/chunks/504-df951b40e87dd68b.js      1 occurrence, 152 ko
 ```
 
+CHEMIN DISPARU: web/.next/static/chunks/504-df951b40e87dd68b.js — sortie de
+commande recopiée : un morceau de build au nom haché, régénéré à chaque build et
+jamais versionné (git l'ignore). Il ne résout nulle part après un clone, et
+c'est normal ; le nombre `504` et son contenu suffisent à le retrouver dans un
+build neuf (`grep -rlE '\(\?<[=!]' web/.next/static`).
+
 **Un seul lookbehind reste** dans tout le JavaScript servi — la correction de
 `frenchTypography.ts` (§11.163) a bien retiré l'autre. Celui-ci est l'autolien
 e-mail de `mdast-util-gfm-autolink-literal`, pour 0 adresse nue dans le corpus.
@@ -14219,3 +14225,39 @@ les deux sens.
 > plus tard — pendant des semaines, la surface la plus précoce du produit ne
 > pouvait être ni vérifiée ni démentie. **Rendre une chose mesurable est un
 > travail en soi, pas un préalable gratuit.**
+
+## §11.186 — La CI est revenue, et son premier verdict démentait un vert local
+
+**LE CONTEXTE.** Le dépôt est passé public le 2026-09-23 : les minutes GitHub
+Actions ne sont plus comptées, un vrai runner a repris la porte après douze
+jours sans. Premier passage réel : étapes 1 à 7 vertes (dont les tests
+unitaires), **étape 8 ROUGE** — `liens-fichiers` :
+
+```
+━━ porte liens-fichiers : ROMPUE ━━
+   docs/HANDOFF.md cite web/.next/static/chunks/504-df951b40e87dd68b.js — qui n'existe pas.
+```
+
+**POURQUOI C'ÉTAIT VERT EN LOCAL.** Le résolveur acceptait tout chemin qui
+existe SUR LE DISQUE — y compris ce que git ignore. §11.174 recopiait une
+sortie de `grep` nommant un morceau de build haché ; mon `.next` local le
+contenait, donc le renvoi « résolvait ». La CI lance la porte AVANT le build :
+rien ne résout. Même dépôt, deux verdicts, selon l'état de la machine. Mesuré
+sur tout le dépôt : **un seul** renvoi résolvait uniquement par le disque, et
+c'était celui-là.
+
+**CE QUI A ÉTÉ FAIT.**
+
+- La porte : un fichier **ignoré par git** ne résout plus rien
+  (`git check-ignore`), puisqu'un clone ne l'aura jamais (ADR 0031). Le repli
+  sur le disque reste pour un fichier neuf pas encore ajouté.
+- Le renvoi : marqué `CHEMIN DISPARU:` à côté de la sortie recopiée — la
+  sortie est une citation, on ne la réécrit pas.
+
+**LES DEUX SENS.** Avec `.next` présent : ROUGE après le correctif de la
+porte (comme en CI), VERT après le marqueur. Sans `.next` : VERT avec le
+marqueur. Le local et la CI rendent désormais le même verdict.
+
+> Une porte qui consulte l'état local de la machine répond à « est-ce vrai
+> ICI ? », pas à « est-ce vrai dans le dépôt ? ». Le vert local était exact
+> et faux à la fois — exactement la question plus étroite d'ADR 0033.

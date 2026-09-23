@@ -108,9 +108,31 @@ const ARCHIVE = [
 ];
 const archive = (f) => ARCHIVE.some((r) => r.test(f));
 
+/**
+ * UN FICHIER IGNORÉ PAR GIT NE RÉSOUT RIEN.
+ *
+ * Le repli sur le disque sert au travail en cours (un fichier créé, pas encore
+ * ajouté). Mais il laissait aussi résoudre un chemin vers ce que git IGNORE —
+ * `web/.next/`, un build local : le 2026-09-23, HANDOFF §11.174 citait un
+ * morceau de build au nom haché. En local, `.next` existait : porte VERTE. En
+ * CI, la porte tourne AVANT le build : porte ROUGE, au premier passage d'un
+ * runner après douze jours sans. Le même dépôt donnait deux verdicts selon
+ * l'état de la machine — et le vert était le faux. Un renvoi doit survivre à
+ * un clone (ADR 0031) ; un fichier ignoré n'y survit jamais.
+ */
+function ignoreParGit(c) {
+  try {
+    execFileSync("git", ["check-ignore", "-q", c], { cwd: REPO, stdio: "ignore" });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 function resout(p, f) {
   const candidats = [p, path.posix.join("web", p), path.posix.join(path.dirname(f), p)];
-  return candidats.some((c) => existe.has(path.posix.normalize(c)) || fs.existsSync(path.join(REPO, c)));
+  if (candidats.some((c) => existe.has(path.posix.normalize(c)))) return true;
+  return candidats.some((c) => fs.existsSync(path.join(REPO, c)) && !ignoreParGit(c));
 }
 
 const morts = { vivant: [], archive: [] };
