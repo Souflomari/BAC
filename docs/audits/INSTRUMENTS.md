@@ -1282,13 +1282,21 @@ qu'on pousse.
 - **les pixels, le cœur** — le CÔTÉ où la trajectoire s'infléchit, lu sur
   l'image pour les QUATRE couples charge × sens du champ : la tache d'accent
   d'un tour complet se décale du point d'entrée vers le côté de F = q v ∧ B
-  (électron ⊗ : **91 px vers le bas** ; positon ⊗ : **92 px vers le haut** ;
+  (électron ⊗ : **90 px vers le bas** ; positon ⊗ : **91 px vers le haut** ;
   positon ⊙ : **54 px vers le bas** ; électron ⊙ : **55 px vers le haut**) ; et
   le cercle DESSINÉ à 3,0 mT fait **100 px** contre **196 px** à 1,5 mT —
-  rapport **0,51**. (Chiffres du 2026-09-23 au soir, après la marge laissée à
-  la légende au téléphone, qui a réduit l'échelle d'environ 7 % : ±98 / ±58 px
-  et 109 / 212 px avant. Le rapport, lui, n'a pas bougé — c'est lui qui est
-  mesuré, pas l'échelle.) ;
+  rapport **0,51**. (Chiffres de la nuit du 2026-09-23, glyphes agrandis
+  (§11.192) : leurs anneaux recouvrent un peu plus de trajectoire, ±1 px. Au
+  soir, après la marge laissée à la légende au téléphone, qui a réduit
+  l'échelle d'environ 7 % : 91 / 92 px ; ±98 / ±58 px et 109 / 212 px avant.
+  Le rapport, lui, n'a pas bougé — c'est lui qui est mesuré, pas l'échelle.) ;
+- **le glyphe** (§11.192) — vu comme la figure du manuel, le champ ENTRANT se
+  lit ⊗ (une croix dans l'anneau) et le SORTANT ⊙ (un point), lus À L'ÉCHELLE
+  DE L'ÉCRAN : le produit pose deux repères invisibles (le centre d'un glyphe
+  et le bord de son anneau), la sonde mesure en fractions du rayon R —
+  l'anneau (24 angles), les bras sur les diagonales entre 0,45 R et 0,65 R, le
+  plein du disque central ρ ≤ 0,2 R. À 1280/×1 : ⊗ = bras **95 %**, plein
+  **0 %** ; ⊙ = bras **0 %**, plein **100 %** (seuils 75/50 et 35/80 %) ;
 - **la vitesse**, lue PENDANT la course à 10, 35, 60 et 85 % du tour : la même
   à chaque fois, l'angle entre F et v à **90°**, F constante ;
 - **les paris** — rien ne s'ouvre avant l'engagement ; le verdict attend la

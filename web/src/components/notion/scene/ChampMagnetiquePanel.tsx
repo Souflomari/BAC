@@ -99,6 +99,8 @@ export function ChampMagnetiquePanel({ scene, className }: { scene: Scene3DDescr
   const etiquetteProduit = useRef<HTMLSpanElement>(null);
   const etiquetteC = useRef<HTMLSpanElement>(null);
   const etiquetteTheta = useRef<HTMLSpanElement>(null);
+  const repereGlyphe = useRef<HTMLSpanElement>(null);
+  const repereGlypheBord = useRef<HTMLSpanElement>(null);
 
   // ── Le pari : il attend que la particule ait parcouru la fraction de course
   //    annoncée par l'étape ──
@@ -124,10 +126,12 @@ export function ChampMagnetiquePanel({ scene, className }: { scene: Scene3DDescr
     // Les ancres sont déjà AU-DELÀ des pointes (le rendu les calcule) : on centre.
     poser(etiquetteV.current, e.v);
     poser(etiquetteF.current, e.F);
-    poser(etiquetteB.current, e.B, "-100%");
+    poser(etiquetteB.current, e.B);
     poser(etiquetteProduit.current, e.produit);
     poser(etiquetteC.current, e.C, "30%");
     poser(etiquetteTheta.current, e.theta);
+    poser(repereGlyphe.current, e.glyphe);
+    poser(repereGlypheBord.current, e.glypheBord);
   }, [etat, angles, forceMontree, issue, montrerRayon, montrerDeviation]);
 
   const rendu = useSceneRendu<SceneLorentz>(
@@ -297,6 +301,11 @@ export function ChampMagnetiquePanel({ scene, className }: { scene: Scene3DDescr
             <MathText>{"$\\vec v_0 \\wedge \\vec B$"}</MathText>
           </Etiquette>
           <Etiquette refEl={etiquetteC} texte="C" />
+          {/* Deux repères SANS texte, au centre d'un glyphe de champ et sur son
+              anneau : l'élève ne voit rien ; la porte y lit, à l'échelle de
+              l'écran, si le glyphe dit ⊗ ou ⊙. */}
+          <Etiquette refEl={repereGlyphe} nom="glyphe" texte="" />
+          <Etiquette refEl={repereGlypheBord} nom="glyphe-bord" texte="" />
           <Etiquette refEl={etiquetteTheta} nom="theta">
             <MathText>{"$\\theta$"}</MathText>
           </Etiquette>

@@ -244,6 +244,33 @@ le produit pour chaque angle θ, étiquettes comprises. Cadrer le contenu
 courant ferait bouger la caméra à chaque cran de θ ; cadrer le pire cas
 laissait la moitié du canvas vide.
 
+## Addendum du 2026-09-23 (nuit, suite) — une leçon, plusieurs scènes ; une sonde à l'échelle de l'écran
+
+**Une porte ne nomme que SA scène.** Le §8 dit qu'une scène ne part qu'avec une
+porte qui lit son rendu ; il ne disait pas comment la porte TROUVE la scène. Les
+quatre portes cherchaient le chapitre par `[data-scene]` — la première scène
+venue. Juste tant qu'une leçon n'en portait qu'une ; faux dès que la troisième
+scène est entrée dans la leçon de l'orbite (`pc/chute-mouvements-plans`) : la
+porte de l'orbite a ouvert le chapitre du champ magnétique et échoué (run 747).
+Règle : une porte de scène trouve son panneau, son chapitre et ses jetons par
+`[data-scene="<nom>"]`, jamais par l'attribut seul.
+
+**Une sonde qui lit un détail de dessin se règle sur l'ÉCHELLE de la scène,
+pas sur le pixel.** La porte du champ magnétique lit maintenant le glyphe du
+champ (⊗ entrant, ⊙ sortant). Sa première version cherchait l'anneau et les
+bras au pixel près : rouge sur un produit juste, parce qu'à 6 px de rayon la
+tête du ⊙ débordait sur la bande des bras et que la croix, décalée d'un pixel
+par la perspective, passait entre les échantillons. Le produit pose désormais
+deux repères invisibles (le centre du glyphe, le bord de son anneau) ; la
+sonde mesure en fractions du rayon. Elle a été lancée à quatre tailles d'écran
+avant d'être crue.
+
+**Et le téléphone a demandé un glyphe plus grand.** À 390 px, l'anneau faisait
+8 px de diamètre, et dans les coins la perspective poussait la croix hors du
+centre (on lisait ⊘). Anneau porté de 0,22 à 0,34 cm, le point du ⊙ ramené à
+un tiers du rayon — un ⊙ de manuel, plus une cible. L'étiquette de B, qui se
+posait à 0,6 cm d'un glyphe, se pose ENTRE deux glyphes.
+
 ## Retractions and Corrections
 
 - **2026-09-23 — la « deuxième scène » annoncée n'était pas la bonne

@@ -133,14 +133,20 @@ const resultats = []; // { famille, ok, detail }
 const noter = (famille, ok, detail) => resultats.push({ famille, ok: !!ok, detail });
 
 // ── Aller à la scène : le chapitre se lit dans le DOM, il ne se recopie pas ──
+// Par SON sélecteur, jamais par « la première scène » : depuis §11.190, la même
+// leçon porte aussi la particule dans le champ magnétique (chapitre 7). Un
+// `[data-scene]` générique trouvait CELLE-LÀ, la porte partait au chapitre 7
+// et attendait un panneau d'orbite invisible — le run 747 est tombé ainsi,
+// en 35 s, sur une porte verte en local quelques heures plus tôt : la leçon avait changé
+// sous elle. Toutes les portes de scène ont été resserrées le même jour.
 await page.goto(BASE + LECON, { waitUntil: "load", timeout: 60000 });
 await page.waitForFunction(() => !!window.__bacVivant, null, { timeout: 40000 }).catch(() => {});
 const chapitre = await page.evaluate(() => {
-  const s = document.querySelector("[data-scene]")?.closest("[data-chapter-section]");
+  const s = document.querySelector('[data-scene="orbite-geostationnaire"]')?.closest("[data-chapter-section]");
   return s ? parseInt(s.getAttribute("data-chapter-index") ?? "-1", 10) + 1 : 0;
 });
 if (!chapitre) {
-  console.error("scene-orbite : aucune scène [data-scene] dans la leçon — rien à mesurer (MUET).");
+  console.error("scene-orbite : aucune scène orbite-geostationnaire dans la leçon — rien à mesurer (MUET).");
   await nav.close();
   process.exit(3);
 }
@@ -150,7 +156,7 @@ const panneau = page.locator('[data-scene="orbite-geostationnaire"]');
 await panneau.scrollIntoViewIfNeeded();
 
 // ── 1. Rien avant le clic ──
-const nbPanneaux = await page.locator("[data-scene]").count();
+const nbPanneaux = await page.locator('[data-scene="orbite-geostationnaire"]').count();
 const etatInitial = await panneau.getAttribute("data-scene-etat");
 const threeAvant = await page.evaluate(() => window.__THREE__ ?? null);
 const canvasAvant = await panneau.locator("canvas").count();
@@ -159,7 +165,7 @@ noter("avant-clic", ESSAI ? threeAvant !== null : threeAvant === null, `window._
 noter("avant-clic", canvasAvant === 0, `${canvasAvant} canvas avant le clic`);
 
 await page.waitForFunction(
-  () => { const b = [...document.querySelectorAll("[data-scene] button")].find((x) => x.textContent?.includes("Ouvrir la scène 3D")); return b && !b.disabled; },
+  () => { const b = [...document.querySelectorAll('[data-scene="orbite-geostationnaire"] button')].find((x) => x.textContent?.includes("Ouvrir la scène 3D")); return b && !b.disabled; },
   null, { timeout: 40000 }
 ).catch(() => {});
 await panneau.getByRole("button", { name: "Ouvrir la scène 3D" }).click();
@@ -214,7 +220,7 @@ const parier = async (i) => {
 const accent = await page.evaluate(() => {
   const c = document.createElement("canvas"); c.width = c.height = 1;
   const x = c.getContext("2d");
-  x.fillStyle = getComputedStyle(document.querySelector("[data-scene]")).getPropertyValue("--figure-accent").trim();
+  x.fillStyle = getComputedStyle(document.querySelector('[data-scene="orbite-geostationnaire"]')).getPropertyValue("--figure-accent").trim();
   x.fillRect(0, 0, 1, 1);
   return [...x.getImageData(0, 0, 1, 1).data].slice(0, 3);
 });
@@ -396,7 +402,7 @@ await panneau.getByRole("button", { name: "Lancer le temps" }).click();
 // On attend que le temps AVANCE, sans supposer une vitesse d'horloge : sous
 // rendu logiciel (SwiftShader, la CI), une image prend ~130 ms — un délai fixe
 // mesurait la lenteur du banc, pas le produit (premier passage de cette porte).
-await page.waitForFunction(() => Number(document.querySelector("[data-scene]")?.getAttribute("data-temps-s")) > 0, null, { timeout: 15000 }).catch(() => {});
+await page.waitForFunction(() => Number(document.querySelector('[data-scene="orbite-geostationnaire"]')?.getAttribute("data-temps-s")) > 0, null, { timeout: 15000 }).catch(() => {});
 const tLance = Number(await attr("data-temps-s"));
 await panneau.getByRole("button", { name: "Pause" }).click();
 await deuxImages();
@@ -409,7 +415,7 @@ await panneau.getByRole("button", { name: "Lancer le temps" }).click();
 // le clic, l'ancien bouton existe encore — attendre le seul bouton répondrait
 // avant que la course ait commencé.
 await page.waitForFunction(() => {
-  const sc = document.querySelector("[data-scene]");
+  const sc = document.querySelector('[data-scene="orbite-geostationnaire"]');
   const b = [...(sc?.querySelectorAll("button") ?? [])].some((x) => /Lancer le temps/.test(x.textContent ?? ""));
   return Number(sc?.getAttribute("data-temps-s")) >= 86400 && b;
 }, null, { timeout: 30000 }).catch(() => {});
@@ -434,7 +440,7 @@ if (rendu) {
   }, await capture());
   const jeton = () => page.evaluate(() => {
     const c = document.createElement("canvas"); c.width = c.height = 1; const x = c.getContext("2d");
-    x.fillStyle = getComputedStyle(document.querySelector("[data-scene]")).getPropertyValue("--figure-surface").trim();
+    x.fillStyle = getComputedStyle(document.querySelector('[data-scene="orbite-geostationnaire"]')).getPropertyValue("--figure-surface").trim();
     x.fillRect(0, 0, 1, 1); return [...x.getImageData(0, 0, 1, 1).data].slice(0, 3);
   });
   const proche = (u, v) => u.every((k, i) => Math.abs(k - v[i]) <= 6);
@@ -466,7 +472,7 @@ await nav.close();
   const q = p2.locator('[data-scene="orbite-geostationnaire"]');
   await q.scrollIntoViewIfNeeded();
   await p2.waitForFunction(
-    () => { const b = [...document.querySelectorAll("[data-scene] button")].find((x) => x.textContent?.includes("Ouvrir la scène 3D")); return b && !b.disabled; },
+    () => { const b = [...document.querySelectorAll('[data-scene="orbite-geostationnaire"] button')].find((x) => x.textContent?.includes("Ouvrir la scène 3D")); return b && !b.disabled; },
     null, { timeout: 40000 }
   ).catch(() => {});
   await q.getByRole("button", { name: "Ouvrir la scène 3D" }).click();

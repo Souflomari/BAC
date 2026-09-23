@@ -86,7 +86,13 @@ export interface SceneLorentz {
   redimensionner(largeur: number, hauteur: number): void;
   relireCouleurs(): void;
   rendre(): void;
-  etiquettes(): { v: Projection; F: Projection; B: Projection; produit: Projection; C: Projection; theta: Projection };
+  /** `glyphe` : le centre d'un glyphe de champ (l'anneau en (0,5 ; 1) du maillage),
+   *  et `glypheBord` le point de son anneau à droite — pour qu'une porte lise, à
+   *  la bonne échelle, s'il dit ⊗ ou ⊙. Rien ne les montre à l'élève. */
+  etiquettes(): {
+    v: Projection; F: Projection; B: Projection; produit: Projection; C: Projection; theta: Projection;
+    glyphe: Projection; glypheBord: Projection;
+  };
   detruire(): void;
 }
 
@@ -94,8 +100,13 @@ export interface SceneLorentz {
 const XC = (CADRE.xMin + CADRE.xMax) / 2;
 /** Demi-longueur d'une flèche de champ (cm). */
 const H = 0.7;
-/** Rayon de l'anneau qu'une flèche de champ traverse dans le plan (cm). */
-const ANNEAU = 0.22;
+/**
+ * Rayon de l'anneau qu'une flèche de champ traverse dans le plan (cm). 0,22 au
+ * départ : 5 px au téléphone, où la croix et le point ne se distinguaient plus
+ * — ni pour l'œil, ni pour la porte qui lit le glyphe (§11.191). ⊗ ou ⊙, c'est
+ * LA donnée de la première étape : elle doit se lire d'un coup d'œil.
+ */
+const ANNEAU = 0.34;
 /** Échelles des vecteurs : longueur (cm) par unité — linéaires, donc honnêtes. */
 const CM_PAR_V = 1.3; // par 10⁷ m/s
 // longueur(F) / R = 0,35 × 1,6 B² / 5,6875 ≤ 0,89 sur toute la grille (B ≤ 3 mT) :
@@ -185,7 +196,7 @@ export function creerSceneLorentz(canvas: HTMLCanvasElement, hote: HTMLElement):
   // rien montrer — avec un fond, son disque apparaissait au centre de la croix
   // et le ⊗ se lisait ⊙, le contraire de ce qu'il dit (vu à l'écran).
   const matTetes = new MeshBasicMaterial();
-  const geomTete = new ConeGeometry(0.1, 0.26, 14, 1, true);
+  const geomTete = new ConeGeometry(0.11, 0.34, 16, 1, true);
   let champCle = "";
 
   function construireChamp(region: Region, sens: SensChamp) {
@@ -211,11 +222,11 @@ export function creerSceneLorentz(canvas: HTMLCanvasElement, hote: HTMLElement):
     // L'empennage : champ entrant, il est EN HAUT, vers l'œil — une croix
     // franche dans l'anneau (⊗). Champ sortant, il est en bas, sous la tête —
     // plus petit qu'elle, pour qu'elle le recouvre (⊙).
-    const e = (bz < 0 ? 0.17 : 0.085) / Math.SQRT2;
+    const e = (bz < 0 ? 0.26 : 0.08) / Math.SQRT2;
     for (const x of xs) {
       for (const y of ys) {
         // le corps : de l'empennage (−bz·H) à la base de la tête
-        segments.push(...vp(x, y, -bz * H).toArray(), ...vp(x, y, bz * (H - 0.24)).toArray());
+        segments.push(...vp(x, y, -bz * H).toArray(), ...vp(x, y, bz * (H - 0.3)).toArray());
         // l'empennage : une croix
         segments.push(...vp(x - e, y - e, -bz * H).toArray(), ...vp(x + e, y + e, -bz * H).toArray());
         segments.push(...vp(x - e, y + e, -bz * H).toArray(), ...vp(x + e, y - e, -bz * H).toArray());
@@ -230,7 +241,7 @@ export function creerSceneLorentz(canvas: HTMLCanvasElement, hote: HTMLElement):
             ...vp(x + ANNEAU * Math.cos(a1), y + ANNEAU * Math.sin(a1)).toArray()
           );
         }
-        matrices.push(new Matrix4().compose(vp(x, y, bz * (H - 0.13)), q, new Vector3(1, 1, 1)));
+        matrices.push(new Matrix4().compose(vp(x, y, bz * (H - 0.17)), q, new Vector3(1, 1, 1)));
       }
     }
     const g = new LineSegmentsGeometry();
@@ -480,16 +491,22 @@ export function creerSceneLorentz(canvas: HTMLCanvasElement, hote: HTMLElement):
     },
     etiquettes() {
       const e = derniere?.etat;
-      // L'étiquette de B se pose sur la flèche du coin haut-droit du champ.
-      const xB = e?.region === "couloir" ? 1.5 : 6.5;
+      // L'étiquette de B : champ partout, ENTRE les deux glyphes du coin
+      // haut-droit ; couloir, juste à sa droite. Jamais sur un anneau — posée à
+      // 0,6 cm d'un glyphe, elle recouvrait le sien dès que l'anneau a grandi.
+      const xB = e?.region === "couloir" ? 2.5 : 5.5;
       const bz = e ? composanteChamp(e.sens) : 1;
       return {
         v: projeter(etiqV, vueV),
         F: projeter(etiqF, vueF),
-        B: projeter(vp(xB + 0.6, 5, bz * H), true),
+        B: projeter(vp(xB, 5, bz * H), true),
         produit: projeter(etiqProduit, vueProduit),
         C: projeter(posC, vueC),
         theta: projeter(posTheta, vueTheta),
+        // Un glyphe PROCHE de l'axe de la caméra : loin du centre, la
+        // perspective décale l'empennage (0,7 cm plus haut) de l'anneau.
+        glyphe: projeter(vp(0.5, 1), true),
+        glypheBord: projeter(vp(0.5 + ANNEAU, 1), true),
       };
     },
     detruire() {

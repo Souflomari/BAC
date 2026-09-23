@@ -15,6 +15,9 @@
  *      (électron, 1,0 × 10⁷ m/s, 1,0 mT, couloir de 2,0 cm) doit s'afficher tel
  *      quel : R ≈ 5,7 cm, θ ≈ 21° ; et un champ assez fort pour que R < ℓ doit
  *      dire « demi-tour », pas un angle.
+ *   3 bis. LE GLYPHE — vu comme la figure du manuel, le champ entrant se lit ⊗
+ *      (une croix dans l'anneau), le sortant ⊙ (un point) ; lu à l'échelle de
+ *      l'écran, entre deux repères que le produit pose (voir glypheLu).
  *   3. LES PIXELS, le cœur — le CÔTÉ où la trajectoire s'infléchit, lu sur
  *      l'image pour les quatre couples (électron/positon × entrant/sortant) :
  *      la tache d'accent (la trajectoire d'un tour) se décale du point
@@ -151,7 +154,7 @@ await panneau.scrollIntoViewIfNeeded();
 const threeAvant = await page.evaluate(() => window.__THREE__ ?? null);
 noter("avant-clic", (await panneau.getAttribute("data-scene-etat")) === "ferme" && (await panneau.locator("canvas").count()) === 0, "scène fermée, aucun canvas");
 noter("avant-clic", ESSAI ? threeAvant !== null : threeAvant === null, `window.__THREE__ avant le clic : ${threeAvant ?? "indéfini"}`);
-await page.waitForFunction(() => { const b = [...document.querySelectorAll("[data-scene] button")].find((x) => x.textContent?.includes("Ouvrir la scène 3D")); return b && !b.disabled; }, null, { timeout: 40000 }).catch(() => {});
+await page.waitForFunction(() => { const b = [...document.querySelectorAll('[data-scene="particule-champ-magnetique"] button')].find((x) => x.textContent?.includes("Ouvrir la scène 3D")); return b && !b.disabled; }, null, { timeout: 40000 }).catch(() => {});
 await panneau.getByRole("button", { name: "Ouvrir la scène 3D" }).click();
 await page.waitForSelector('[data-scene-etat="prete"], [data-scene-etat="sans-webgl"], [data-scene-etat="erreur"]', { timeout: 40000 }).catch(() => {});
 const etatOuvert = await panneau.getAttribute("data-scene-etat");
@@ -207,7 +210,12 @@ async function lancerJusqua(ns) {
 
 const accent = await page.evaluate(() => {
   const c = document.createElement("canvas"); c.width = c.height = 1; const x = c.getContext("2d");
-  x.fillStyle = getComputedStyle(document.querySelector("[data-scene]")).getPropertyValue("--figure-accent").trim();
+  x.fillStyle = getComputedStyle(document.querySelector('[data-scene="particule-champ-magnetique"]')).getPropertyValue("--figure-accent").trim();
+  x.fillRect(0, 0, 1, 1); return [...x.getImageData(0, 0, 1, 1).data].slice(0, 3);
+});
+const encreDouce = await page.evaluate(() => {
+  const c = document.createElement("canvas"); c.width = c.height = 1; const x = c.getContext("2d");
+  x.fillStyle = getComputedStyle(document.querySelector('[data-scene="particule-champ-magnetique"]')).getPropertyValue("--figure-ink-soft").trim();
   x.fillRect(0, 0, 1, 1); return [...x.getImageData(0, 0, 1, 1).data].slice(0, 3);
 });
 /** La tache d'accent (particule + trajectoire) : combien, son centre, sa hauteur. */
@@ -224,6 +232,82 @@ async function accentDe(b64) {
     return { n, x: n ? sx / n : NaN, y: n ? sy / n : NaN, hauteur: n ? ymax - ymin : 0 };
   }, { b64, accent });
 }
+
+/**
+ * 3 bis. LE GLYPHE DIT CE QU'IL VEUT DIRE. Vu comme la figure du manuel, une
+ * flèche de champ ENTRANT montre son empennage (une croix dans l'anneau : ⊗),
+ * une flèche SORTANT sa pointe (un point : ⊙). Le produit pose deux repères
+ * invisibles : le centre d'un glyphe et le bord de son anneau — la sonde lit
+ * donc À L'ÉCHELLE DE L'ÉCRAN, en fractions du rayon R, jamais en pixels :
+ *   - l'anneau : sur le cercle de rayon R (24 angles), un trait ?
+ *   - les bras : sur les deux diagonales, de 0,45 R à 0,65 R, un trait à ±0,2 R
+ *     (la perspective décale l'empennage, 0,7 cm au-dessus de l'anneau, d'un
+ *     pixel ou deux — la tolérance suit l'échelle) ;
+ *   - le plein : la part du disque central (ρ ≤ 0,2 R) couverte d'encre opaque.
+ * ⊗ : anneau ≥ 75 %, bras ≥ 75 %, plein ≤ 50 %. ⊙ : anneau ≥ 75 %, plein ≥
+ * 80 %, bras ≤ 35 %. Les deux ne peuvent pas être vrais ensemble.
+ *
+ * Mesuré avant d'être cru (§11.191) : à 1280/×1 par cette porte, deux fois ;
+ * à 768/×1, 390/×2 et 390/×3 par la même fonction lancée à la main — ⊗ : bras
+ * 95-100 %, plein 0-24 % ; ⊙ : bras 0-10 %, plein 92-100 %. La PREMIÈRE sonde (le rayon lu sur l'image, des bras cherchés au
+ * pixel près) était ROUGE sur un produit juste : à 6 px de rayon, la tête du ⊙
+ * débordait sur sa bande, et la croix du ⊗, décalée d'un pixel, passait entre
+ * ses échantillons. C'était la sonde (ADR 0034). Trouvé à l'écran, avant : la
+ * tête d'une flèche entrante dessinait un disque, et le ⊗ se lisait ⊙.
+ */
+async function glypheLu() {
+  const b64 = await capture();
+  const pos = await panneau.evaluate((el) => {
+    const c = el.querySelector("canvas").getBoundingClientRect();
+    const centre = (sel) => { const r = el.querySelector(sel).getBoundingClientRect(); return [r.left + r.width / 2 - c.left, r.top + r.height / 2 - c.top]; };
+    const [x, y] = centre('[data-etiquette="glyphe"]');
+    const [bx, by] = centre('[data-etiquette="glyphe-bord"]');
+    return { x, y, bx, by, dpr: devicePixelRatio };
+  });
+  return labo.evaluate(async ({ b64, pos, encreDouce }) => {
+    const img = await createImageBitmap(await (await fetch(`data:image/png;base64,${b64}`)).blob());
+    const c = new OffscreenCanvas(img.width, img.height); const x = c.getContext("2d"); x.drawImage(img, 0, 0);
+    const d = x.getImageData(0, 0, img.width, img.height).data;
+    const k = pos.dpr, cx = pos.x * k, cy = pos.y * k;
+    const R = Math.hypot(pos.bx - pos.x, pos.by - pos.y) * k;
+    const px = (u, v) => { const i = (Math.round(v) * img.width + Math.round(u)) * 4; return [d[i], d[i + 1], d[i + 2]]; };
+    // le fond : la couleur la plus fréquente autour du glyphe
+    const compte = new Map(), P = Math.ceil(1.6 * R);
+    for (let v = -P; v <= P; v++) for (let u = -P; u <= P; u++) { const q = px(cx + u, cy + v).join(","); compte.set(q, (compte.get(q) ?? 0) + 1); }
+    const fond = [...compte.entries()].sort((a, b) => b[1] - a[1])[0][0].split(",").map(Number);
+    const ecart = (p) => Math.abs(p[0] - fond[0]) + Math.abs(p[1] - fond[1]) + Math.abs(p[2] - fond[2]);
+    const trace = (p) => ecart(p) > 45;
+    let anneau = 0;
+    for (let i = 0; i < 24; i++) {
+      const a = (i * Math.PI) / 12, ux = Math.cos(a), uy = Math.sin(a), tol = Math.max(1, 0.12 * R);
+      let vu = false;
+      for (let t = -tol; t <= tol && !vu; t += 0.5) vu = trace(px(cx + (R + t) * ux, cy + (R + t) * uy));
+      if (vu) anneau++;
+    }
+    let bras = 0, total = 0;
+    for (const [dx, dy] of [[1, 1], [1, -1], [-1, 1], [-1, -1]]) {
+      const ux = dx / Math.SQRT2, uy = dy / Math.SQRT2;
+      for (let r = 0.45 * R; r <= 0.65 * R; r += 0.5) {
+        total++;
+        let vu = false;
+        for (let t = -0.2 * R; t <= 0.2 * R && !vu; t += 0.5) vu = trace(px(cx + r * ux - t * uy, cy + r * uy + t * ux));
+        if (vu) bras++;
+      }
+    }
+    const opaque = 0.7 * ecart(encreDouce);
+    let pleins = 0, n = 0;
+    const rc = 0.2 * R, m = Math.ceil(rc);
+    for (let v = -m; v <= m; v++) for (let u = -m; u <= m; u++) {
+      if (u * u + v * v > rc * rc) continue;
+      n++; if (ecart(px(cx + u, cy + v)) > opaque) pleins++;
+    }
+    return { R: Math.round(R * 10) / 10, anneau: anneau / 24, bras: total ? bras / total : 0, plein: n ? pleins / n : 0 };
+  }, { b64, pos, encreDouce });
+}
+const croix = (g) => g.anneau >= 0.75 && g.bras >= 0.75 && g.plein <= 0.5;
+const point = (g) => g.anneau >= 0.75 && g.plein >= 0.8 && g.bras <= 0.35;
+const pc = (x) => `${Math.round(x * 100)} %`;
+const glypheDit = (g) => `${croix(g) ? "⊗" : point(g) ? "⊙" : "ni ⊗ ni ⊙"} (anneau ${pc(g.anneau)}, bras ${pc(g.bras)}, plein ${pc(g.plein)})`;
 
 /** 6. Avant le pari : ni fiche, ni flèche F, ni issue dans la description. */
 async function avantPari(ou) {
@@ -380,6 +464,15 @@ await suivant();
   await page.waitForFunction((sc) => document.querySelector(`[data-scene="${sc}"]`)?.getAttribute("data-course-finie") === "oui", SCENE, { timeout: 60000 }).catch(() => {});
 
   if (rendu) {
+    // 3 bis. Le glyphe, vu comme la figure du manuel, particule au départ.
+    await panneau.getByRole("button", { name: /départ/i }).first().click(); await deuxImages();
+    const sortant = await glypheLu();
+    await panneau.getByLabel(/Entrant/).check(); await deuxImages();
+    const entrant = await glypheLu();
+    await panneau.getByLabel(/Sortant/).check(); await deuxImages();
+    const ok = croix(entrant) && point(sortant);
+    noter("glyphe", ESSAI ? !ok : ok,
+      `vu comme le manuel (anneau de ${entrant.R} px) : champ entrant → ${glypheDit(entrant)} ; sortant → ${glypheDit(sortant)}`);
     // Les deux couples restants, champ SORTANT (3,0 mT, v₀ = 1,0 : un tour en 4 s).
     await champ(3);
     for (const particule of ["positon", "electron"]) {
@@ -434,7 +527,7 @@ if (rendu) {
   }, await capture());
   const jeton = () => page.evaluate(() => {
     const c = document.createElement("canvas"); c.width = c.height = 1; const x = c.getContext("2d");
-    x.fillStyle = getComputedStyle(document.querySelector("[data-scene]")).getPropertyValue("--figure-surface").trim();
+    x.fillStyle = getComputedStyle(document.querySelector('[data-scene="particule-champ-magnetique"]')).getPropertyValue("--figure-surface").trim();
     x.fillRect(0, 0, 1, 1); return [...x.getImageData(0, 0, 1, 1).data].slice(0, 3);
   });
   const pres = (u, v) => u.every((k, i) => Math.abs(k - v[i]) <= 6);
@@ -456,7 +549,7 @@ await nav.close();
   await p2.waitForFunction(() => !!window.__bacVivant, null, { timeout: 40000 }).catch(() => {});
   const q = p2.locator(`[data-scene="${SCENE}"]`);
   await q.scrollIntoViewIfNeeded();
-  await p2.waitForFunction(() => { const b = [...document.querySelectorAll("[data-scene] button")].find((x) => x.textContent?.includes("Ouvrir la scène 3D")); return b && !b.disabled; }, null, { timeout: 40000 }).catch(() => {});
+  await p2.waitForFunction(() => { const b = [...document.querySelectorAll('[data-scene="particule-champ-magnetique"] button')].find((x) => x.textContent?.includes("Ouvrir la scène 3D")); return b && !b.disabled; }, null, { timeout: 40000 }).catch(() => {});
   await q.getByRole("button", { name: "Ouvrir la scène 3D" }).click();
   await p2.waitForSelector('[data-scene-etat="prete"], [data-scene-etat="sans-webgl"], [data-scene-etat="erreur"]', { timeout: 40000 }).catch(() => {});
   const etat2 = await q.getAttribute("data-scene-etat");
@@ -479,7 +572,7 @@ if (!rendu) {
   process.exit(3);
 }
 if (ESSAI) {
-  const visees = ["avant-clic", "nombres", "pixels", "vitesse", "etapes", "paris", "avant-pari", "latex", "sans-webgl"];
+  const visees = ["avant-clic", "nombres", "pixels", "glyphe", "vitesse", "etapes", "paris", "avant-pari", "latex", "sans-webgl"];
   const crient = visees.filter((f) => resultats.some((r) => r.famille === f && !r.ok));
   console.log(`\n  familles sabotées qui crient : ${crient.length}/${visees.length} (${crient.join(", ")})`);
   if (crient.length !== visees.length) {

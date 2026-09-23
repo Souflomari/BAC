@@ -95,6 +95,11 @@ jobs:
     # particule et attend ses courses en temps réel, deux passages : ~6 min
     # mesurées en local (plus lent que le runner). ~74 min attendues : sous 80,
     # mais sans la marge d'un runner lent. 90 la rend.
+    #
+    # LES SCÈNES SORTIES DE CE JOB (§11.192). Avec la quatrième scène, l'addition
+    # approchait 85 min : les quatre portes de scène 3D tournent maintenant dans
+    # le job `scenes`, en parallèle. Ce job-ci redescend vers ~60 min ; le
+    # plafond de 90 reste jusqu'à ce qu'un run le mesure.
     timeout-minutes: 90
     defaults:
       run:
@@ -601,88 +606,8 @@ jobs:
           node scripts/verdict-qcm.mjs --porte $lecons
           node scripts/verdict-qcm.mjs --essai-rouge $lecons
 
-      # PORTE SCÈNE 3D (2026-09-23, §11.187, ADR 0041). La première scène 3D de
-      # première partie — l'orbite géostationnaire, pc/chute-mouvements-plans
-      # R10 — promet quatre choses, et une scène 3D peut les trahir sans qu'aucune
-      # autre porte le voie : un canvas n'a ni texte ni DOM à lire.
-      #   1. three.js ne se charge pas avec la leçon (`window.__THREE__` indéfini
-      #      avant l'ouverture) — un manifeste de build ne voit pas un import()
-      #      paresseux (ADR 0039) ;
-      #   2. les nombres affichés sont justes, recalculés par une SECONDE
-      #      implémentation de Kepler aux constantes de la leçon, et une seule
-      #      position du curseur coche « T = 24 h » (CH-KEP-3) ;
-      #   3. les PIXELS disent la physique : géostationnaire vu du sol → images
-      #      identiques à 0, 6 et 18 h ; hors du bon rayon, ou dans le référentiel
-      #      géocentrique → elles diffèrent et la tache d'accent se déplace ;
-      #   4. chaque étape n'ouvre que son contrôle et pose l'état qu'elle annonce.
-      # WebGL tourne sur SwiftShader (aucune carte graphique sur le runner). Si
-      # WebGL manque, la porte sort MUET — en échec, jamais en vert (ADR 0034).
-      #
-      # DEUX PASSAGES : vert, puis `--essai-rouge` qui retourne l'attente de
-      # chaque famille (G faussé de 3 %, identiques ↔ différentes, three.js
-      # exigé avant le clic, contrôles d'une autre étape) : les quatre familles
-      # doivent crier.
-      - name: "Scène 3D de l'orbite (vert puis rouge)"
-        run: |
-          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
-          npm run scene-orbite
-          node scripts/scene-orbite.mjs --essai-rouge
-
-      # PORTE SCÈNE 3D « SPHÈRE, PLAN, DROITE » (2026-09-23, §11.189, ADR 0041).
-      # La deuxième scène (maths/geometrie-espace, R9), bâtie sur les mêmes
-      # pièces que l'orbite. Mêmes quatre promesses, vérifiées sur le rendu :
-      # rien avant le clic ; les nombres (d, r = √(R² − d²), la corde) recalculés
-      # par une SECONDE implémentation — l'exemple travaillé z = 0 → √5 affiché
-      # tel quel, la tangence exacte sur la grille de 0,1 ; les PIXELS d'accent
-      # (cercle / point / rien ; le cercle vu de dessus rétrécit quand d croît ;
-      # une droite à la même distance donne deux points, pas un cercle) ; les
-      # paris et les étapes. Plus : aucun LaTeX brut dans le panneau OUVERT (la
-      # porte LaTeX nu ne lit que la scène fermée).
-      #
-      # DEUX PASSAGES : vert, puis `--essai-rouge` — dont la misconception même
-      # de la leçon, r recalculé avec R² + d² : les sept familles doivent crier.
-      - name: "Scène 3D de la sphère (vert puis rouge)"
-        run: |
-          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
-          npm run scene-sphere
-          node scripts/scene-sphere.mjs --essai-rouge
-
-      # PORTE SCÈNE 3D « UNE PARTICULE CHARGÉE DANS UN CHAMP MAGNÉTIQUE »
-      # (2026-09-23, §11.190, ADR 0041). La troisième scène (pc/chute-mouvements-
-      # plans, R6), sur les mêmes pièces. Elle LANCE la particule et attend la
-      # course en temps réel (2 ns de vol par seconde) : les nombres (R, F, la
-      # déviation de l'exemple travaillé, le demi-tour quand R < ℓ) recalculés
-      # par une SECONDE implémentation ; le CÔTÉ où la trajectoire s'infléchit,
-      # lu dans les PIXELS pour les quatre couples charge × sens du champ ; le
-      # cercle dessiné deux fois plus petit quand B double ; la vitesse lue
-      # constante pendant la course. Et, comme les deux autres depuis §11.190 :
-      # AVANT LE PARI, RIEN NE RÉPOND.
-      #
-      # DEUX PASSAGES : vert, puis `--essai-rouge` — dont la misconception même
-      # de la leçon (un rayon qui croîtrait avec B ; le côté de v ∧ B sans le
-      # signe de q) : les neuf familles doivent crier.
-      - name: "Scène 3D du champ magnétique (vert puis rouge)"
-        run: |
-          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
-          npm run scene-lorentz
-          node scripts/scene-lorentz.mjs --essai-rouge
-
-      # PORTE SCÈNE 3D « LE PRODUIT VECTORIEL » (2026-09-23, §11.191, ADR 0041).
-      # La quatrième scène (maths/geometrie-espace, R3). Les nombres (u ∧ v, sa
-      # norme, les aires, les deux produits scalaires nuls) recalculés par une
-      # SECONDE implémentation de la formule de la leçon sur une grille
-      # (θ, ‖v‖, φ, ordre) ; l'exemple travaillé AB ∧ AC = (0 ; 0 ; 4) tel quel ;
-      # les PIXELS de la flèche du produit, vue de côté — elle monte pour u ∧ v,
-      # descend pour v ∧ u, mesure moitié moins à 30° qu'à 90°, disparaît à 0°.
-      # Et avant le pari, rien ne répond.
-      #
-      # DEUX PASSAGES : vert, puis `--essai-rouge` (l'ordre des facteurs
-      # ignoré) : les huit familles doivent crier.
-      - name: "Scène 3D du produit vectoriel (vert puis rouge)"
-        run: |
-          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
-          npm run scene-vectoriel
-          node scripts/scene-vectoriel.mjs --essai-rouge
+      # LES QUATRE PORTES DE SCÈNE 3D sont dans le job `scenes`, plus bas, qui
+      # tourne EN PARALLÈLE de celui-ci (§11.192).
 
       - name: Porte LaTeX nu
         run: |
@@ -928,3 +853,142 @@ jobs:
             exit 1
           fi
           echo "clean"
+
+  # LES SCÈNES 3D, DANS LEUR PROPRE JOB (2026-09-23, §11.192). Quatre portes de
+  # scène, vert puis rouge, rendues par SwiftShader : la troisième lance sa
+  # particule et attend ses courses en TEMPS RÉEL (mesuré en local : ~9 min par
+  # passage, deux passages). Ajoutées au job `gates`, elles le portaient vers
+  # ~85 min — sous le plafond de 90, sans la marge d'un runner lent (le run 746,
+  # 62 étapes vertes, a pris 67 min 50 s avec DEUX scènes). Le remède écrit en
+  # §11.188 était de découper le job, build partagé en artefact ; ce découpage-ci
+  # est le plus petit : les scènes ne lisent que le `.next` qu'elles bâtissent
+  # elles-mêmes (chaque porte lève son propre `next start`), elles ne dépendent
+  # d'aucune autre étape, et aucune autre étape ne dépend d'elles. Le build est
+  # donc refait ici plutôt que transmis — deux à trois minutes de runner contre
+  # un artefact de `.next` à téléverser et à restaurer. Les deux jobs partent
+  # ensemble ; le mur est celui du plus long.
+  scenes:
+    runs-on: ubuntu-latest
+    # Quatre scènes vert puis rouge + install + build : ~35 min attendues. 60
+    # garde la marge d'un runner lent et attrape encore un vrai blocage.
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      # next/font/google fetches fonts at build time; the cache gives the
+      # loader a fallback when the runner's fetch to Google flakes (the
+      # "Cannot read properties of null (reading '1')" build failure) and
+      # speeds up rebuilds.
+      - name: Cache Next.js build cache
+        uses: actions/cache@v4
+        with:
+          path: web/.next/cache
+          key: nextjs-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}-${{ github.sha }}
+          restore-keys: |
+            nextjs-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}-
+
+      # web/ pins playwright-core; install the matching Chromium build and
+      # hand its path to the scene gates via PW_CHROMIUM_PATH.
+      - name: Install Chromium for the scene gates
+        run: npx playwright@1.61.1 install --with-deps chromium
+
+      # One retry: the next/font Google fetch is the known transient here.
+      - name: Build
+        run: npm run build || { echo "::warning::build retry (next/font fetch flake)"; npm run build; }
+
+      # PORTE SCÈNE 3D (2026-09-23, §11.187, ADR 0041). La première scène 3D de
+      # première partie — l'orbite géostationnaire, pc/chute-mouvements-plans
+      # R10 — promet quatre choses, et une scène 3D peut les trahir sans qu'aucune
+      # autre porte le voie : un canvas n'a ni texte ni DOM à lire.
+      #   1. three.js ne se charge pas avec la leçon (`window.__THREE__` indéfini
+      #      avant l'ouverture) — un manifeste de build ne voit pas un import()
+      #      paresseux (ADR 0039) ;
+      #   2. les nombres affichés sont justes, recalculés par une SECONDE
+      #      implémentation de Kepler aux constantes de la leçon, et une seule
+      #      position du curseur coche « T = 24 h » (CH-KEP-3) ;
+      #   3. les PIXELS disent la physique : géostationnaire vu du sol → images
+      #      identiques à 0, 6 et 18 h ; hors du bon rayon, ou dans le référentiel
+      #      géocentrique → elles diffèrent et la tache d'accent se déplace ;
+      #   4. chaque étape n'ouvre que son contrôle et pose l'état qu'elle annonce.
+      # WebGL tourne sur SwiftShader (aucune carte graphique sur le runner). Si
+      # WebGL manque, la porte sort MUET — en échec, jamais en vert (ADR 0034).
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` qui retourne l'attente de
+      # chaque famille (G faussé de 3 %, identiques ↔ différentes, three.js
+      # exigé avant le clic, contrôles d'une autre étape) : les quatre familles
+      # doivent crier.
+      - name: "Scène 3D de l'orbite (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-orbite
+          node scripts/scene-orbite.mjs --essai-rouge
+
+      # PORTE SCÈNE 3D « SPHÈRE, PLAN, DROITE » (2026-09-23, §11.189, ADR 0041).
+      # La deuxième scène (maths/geometrie-espace, R9), bâtie sur les mêmes
+      # pièces que l'orbite. Mêmes quatre promesses, vérifiées sur le rendu :
+      # rien avant le clic ; les nombres (d, r = √(R² − d²), la corde) recalculés
+      # par une SECONDE implémentation — l'exemple travaillé z = 0 → √5 affiché
+      # tel quel, la tangence exacte sur la grille de 0,1 ; les PIXELS d'accent
+      # (cercle / point / rien ; le cercle vu de dessus rétrécit quand d croît ;
+      # une droite à la même distance donne deux points, pas un cercle) ; les
+      # paris et les étapes. Plus : aucun LaTeX brut dans le panneau OUVERT (la
+      # porte LaTeX nu ne lit que la scène fermée).
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — dont la misconception même
+      # de la leçon, r recalculé avec R² + d² : les sept familles doivent crier.
+      - name: "Scène 3D de la sphère (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-sphere
+          node scripts/scene-sphere.mjs --essai-rouge
+
+      # PORTE SCÈNE 3D « UNE PARTICULE CHARGÉE DANS UN CHAMP MAGNÉTIQUE »
+      # (2026-09-23, §11.190, ADR 0041). La troisième scène (pc/chute-mouvements-
+      # plans, R6), sur les mêmes pièces. Elle LANCE la particule et attend la
+      # course en temps réel (2 ns de vol par seconde) : les nombres (R, F, la
+      # déviation de l'exemple travaillé, le demi-tour quand R < ℓ) recalculés
+      # par une SECONDE implémentation ; le CÔTÉ où la trajectoire s'infléchit,
+      # lu dans les PIXELS pour les quatre couples charge × sens du champ ; le
+      # cercle dessiné deux fois plus petit quand B double ; la vitesse lue
+      # constante pendant la course. Et, comme les deux autres depuis §11.190 :
+      # AVANT LE PARI, RIEN NE RÉPOND. Depuis §11.192, le GLYPHE du champ : vu
+      # comme le manuel, l'entrant se lit ⊗ et le sortant ⊙ — lu à l'échelle
+      # de l'écran, entre deux repères que le produit pose.
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — dont la misconception même
+      # de la leçon (un rayon qui croîtrait avec B ; le côté de v ∧ B sans le
+      # signe de q) : les dix familles doivent crier.
+      - name: "Scène 3D du champ magnétique (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-lorentz
+          node scripts/scene-lorentz.mjs --essai-rouge
+
+      # PORTE SCÈNE 3D « LE PRODUIT VECTORIEL » (2026-09-23, §11.191, ADR 0041).
+      # La quatrième scène (maths/geometrie-espace, R3). Les nombres (u ∧ v, sa
+      # norme, les aires, les deux produits scalaires nuls) recalculés par une
+      # SECONDE implémentation de la formule de la leçon sur une grille
+      # (θ, ‖v‖, φ, ordre) ; l'exemple travaillé AB ∧ AC = (0 ; 0 ; 4) tel quel ;
+      # les PIXELS de la flèche du produit, vue de côté — elle monte pour u ∧ v,
+      # descend pour v ∧ u, mesure moitié moins à 30° qu'à 90°, disparaît à 0°.
+      # Et avant le pari, rien ne répond.
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` (l'ordre des facteurs
+      # ignoré) : les huit familles doivent crier.
+      - name: "Scène 3D du produit vectoriel (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-vectoriel
+          node scripts/scene-vectoriel.mjs --essai-rouge

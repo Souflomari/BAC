@@ -126,7 +126,7 @@ await panneau.scrollIntoViewIfNeeded();
 const threeAvant = await page.evaluate(() => window.__THREE__ ?? null);
 noter("avant-clic", (await panneau.getAttribute("data-scene-etat")) === "ferme" && (await panneau.locator("canvas").count()) === 0, "scène fermée, aucun canvas");
 noter("avant-clic", ESSAI ? threeAvant !== null : threeAvant === null, `window.__THREE__ avant le clic : ${threeAvant ?? "indéfini"}`);
-await page.waitForFunction(() => { const b = [...document.querySelectorAll("[data-scene] button")].find((x) => x.textContent?.includes("Ouvrir la scène 3D")); return b && !b.disabled; }, null, { timeout: 40000 }).catch(() => {});
+await page.waitForFunction(() => { const b = [...document.querySelectorAll('[data-scene="sphere-plan-droite"] button')].find((x) => x.textContent?.includes("Ouvrir la scène 3D")); return b && !b.disabled; }, null, { timeout: 40000 }).catch(() => {});
 await panneau.getByRole("button", { name: "Ouvrir la scène 3D" }).click();
 await page.waitForSelector('[data-scene-etat="prete"], [data-scene-etat="sans-webgl"], [data-scene-etat="erreur"]', { timeout: 40000 }).catch(() => {});
 const etatOuvert = await panneau.getAttribute("data-scene-etat");
@@ -162,7 +162,7 @@ const ISSUE_DITE = /intersection|point commun|points communs|touche la sphère/;
 
 const accent = await page.evaluate(() => {
   const c = document.createElement("canvas"); c.width = c.height = 1; const x = c.getContext("2d");
-  x.fillStyle = getComputedStyle(document.querySelector("[data-scene]")).getPropertyValue("--figure-accent").trim();
+  x.fillStyle = getComputedStyle(document.querySelector('[data-scene="sphere-plan-droite"]')).getPropertyValue("--figure-accent").trim();
   x.fillRect(0, 0, 1, 1); return [...x.getImageData(0, 0, 1, 1).data].slice(0, 3);
 });
 /** Pixels d'accent (l'intersection) : combien, et leur étendue horizontale. */
@@ -313,7 +313,7 @@ if (rendu) {
   }, await capture());
   const jeton = () => page.evaluate(() => {
     const c = document.createElement("canvas"); c.width = c.height = 1; const x = c.getContext("2d");
-    x.fillStyle = getComputedStyle(document.querySelector("[data-scene]")).getPropertyValue("--figure-surface").trim();
+    x.fillStyle = getComputedStyle(document.querySelector('[data-scene="sphere-plan-droite"]')).getPropertyValue("--figure-surface").trim();
     x.fillRect(0, 0, 1, 1); return [...x.getImageData(0, 0, 1, 1).data].slice(0, 3);
   });
   const pres = (u, v) => u.every((kk, i) => Math.abs(kk - v[i]) <= 6);
@@ -335,7 +335,7 @@ await nav.close();
   await p2.waitForFunction(() => !!window.__bacVivant, null, { timeout: 40000 }).catch(() => {});
   const q = p2.locator('[data-scene="sphere-plan-droite"]');
   await q.scrollIntoViewIfNeeded();
-  await p2.waitForFunction(() => { const b = [...document.querySelectorAll("[data-scene] button")].find((x) => x.textContent?.includes("Ouvrir la scène 3D")); return b && !b.disabled; }, null, { timeout: 40000 }).catch(() => {});
+  await p2.waitForFunction(() => { const b = [...document.querySelectorAll('[data-scene="sphere-plan-droite"] button')].find((x) => x.textContent?.includes("Ouvrir la scène 3D")); return b && !b.disabled; }, null, { timeout: 40000 }).catch(() => {});
   await q.getByRole("button", { name: "Ouvrir la scène 3D" }).click();
   await p2.waitForSelector('[data-scene-etat="prete"], [data-scene-etat="sans-webgl"], [data-scene-etat="erreur"]', { timeout: 40000 }).catch(() => {});
   const etat2 = await q.getAttribute("data-scene-etat");

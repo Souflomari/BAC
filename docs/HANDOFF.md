@@ -14672,3 +14672,59 @@ nombre, espaces normalisées.
 > PAS — ce sont des choix de dessin, écrits à côté du code qui les porte, et
 > rien n'empêcherait une régression. Une porte « le glyphe du champ entrant
 > est une croix » serait possible ; elle n'est pas écrite.
+
+## §11.192 — Une porte qui se trompait de scène, et un glyphe lu à l'échelle de l'écran
+
+**LE RUN 747 ÉTAIT ROUGE, ET LE PRODUIT ÉTAIT JUSTE.** La porte de l'orbite
+(`scene-orbite`) cherchait son chapitre par `[data-scene]` — la première scène
+venue. Tant que chaque leçon n'en portait qu'une, c'était la même chose. La
+troisième scène (§11.190) est entrée dans `pc/chute-mouvements-plans`, au
+chapitre 7 — et l'orbite est dans la même leçon : la porte de l'orbite a
+ouvert le chapitre du champ magnétique, attendu son panneau, et échoué sur
+`element is not visible` en 35 secondes. Les quatre portes de scène trouvent
+maintenant leur panneau par SON nom (`[data-scene="<nom>"]`), partout — 8
+sélecteurs génériques dans l'orbite (plus son message MUET), 4 dans chacune
+des trois autres. La
+règle, écrite dans l'ADR 0041 : une leçon peut porter plusieurs scènes ; une
+porte ne nomme que la sienne.
+
+**LE GLYPHE DU CHAMP, GARDÉ.** §11.191 écrivait : « une porte “le glyphe du
+champ entrant est une croix” serait possible ; elle n'est pas écrite ». Elle
+l'est (`scene-lorentz`, famille `glyphe`) — et sa première version était
+ROUGE sur un produit juste. Regardé au pixel (agrandi ×12, avant de rien
+toucher) : à 1280 px, le ⊗ et le ⊙ se lisaient bien ; c'est la sonde qui ne
+les séparait pas. L'anneau faisait 6 px de rayon ; la tête du ⊙ débordait
+sur la bande où la sonde cherchait les bras de la croix, et la croix du ⊗,
+décalée d'un pixel par la perspective, passait entre ses échantillons
+(ADR 0034 : un rouge est ambigu tant qu'on n'a pas regardé lequel a tort).
+
+La sonde lit maintenant À L'ÉCHELLE DE L'ÉCRAN : le produit pose deux repères
+invisibles (le centre d'un glyphe, le bord de son anneau), et tout se mesure en
+fractions du rayon — l'anneau, les bras sur les diagonales, le plein du centre.
+Lancée deux fois par la porte à 1280/×1, et à la main à 768/×1, 390/×2 et
+390/×3 : ⊗ — bras 95-100 %, plein 0-24 % ; ⊙ — bras 0-10 %, plein 92-100 %,
+pour des seuils à 75/50 et 35/80 %.
+
+**LES SCÈNES DANS LEUR PROPRE JOB CI.** Mesurée en local, la porte du champ
+magnétique prend ~9 min PAR PASSAGE (elle attend ses courses en temps réel),
+deux passages. Avec la quatrième scène, le job `gates` approchait 85 min pour
+un plafond de 90 — sans la marge d'un runner lent (le run 746 : 67 min 50 s
+avec deux scènes). Le découpage que §11.188 écrivait sans le faire est fait,
+dans sa forme la plus petite : un job `scenes`, parallèle, qui refait son
+propre build (2-3 min) et lance les quatre portes vert puis rouge. Rien ne
+dépend des scènes et les scènes ne dépendent de rien : c'est la seule coupe
+sans plomberie d'artefact. Attendu : `gates` ~60 min, `scenes` ~35 min ; le
+prochain run le dira.
+
+**CE QUE LE TÉLÉPHONE A DEMANDÉ AU GLYPHE.** Regardé à 390 px (×2) : l'anneau
+faisait 8 px de diamètre, et dans les coins la perspective poussait la croix
+hors du centre — on lisait ⊘. L'anneau passe de 0,22 à 0,34 cm (12 px au
+téléphone), la croix garde ses proportions, et le point du ⊙ est ramené à un
+tiers du rayon (0,11 cm) : un ⊙ de manuel, plus une cible. L'étiquette de B,
+posée à 0,6 cm d'un glyphe, recouvrait le sien dès que l'anneau a grandi : elle
+se pose maintenant ENTRE deux glyphes (champ partout), ou à droite du couloir.
+Les chiffres de pixels de la porte bougent d'un pixel (90 / 91 / 54 / 55 px) —
+les anneaux recouvrent un peu plus de trajectoire ; le rapport des cercles
+reste 0,51. Porte rejouée : VERT, 46 mesures, 13 familles, deux fois ; essai
+rouge : 10/10 familles crient.
+
