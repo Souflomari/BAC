@@ -327,7 +327,9 @@ export function creerSceneLorentz(canvas: HTMLCanvasElement, hote: HTMLElement):
       camera.updateMatrixWorld();
       return COINS.every((c) => {
         const p = c.clone().project(camera);
-        return Math.abs(p.x) <= 0.93 && Math.abs(p.y) <= 0.93 && p.z < 1;
+        // Plus de marge en hauteur : la légende du plateau occupe le coin haut
+        // (vu au téléphone, en 4:3, où la hauteur est la dimension qui limite).
+        return Math.abs(p.x) <= 0.93 && Math.abs(p.y) <= 0.86 && p.z < 1;
       });
     };
     let lo = 5;

@@ -151,6 +151,10 @@ $$\vec{u}\wedge\vec{v} = \left(yz'-zy',\ zx'-xz',\ xy'-yx'\right)$$
 
 Chaque composante s'obtient en « cachant » une des trois coordonnées (celle du même nom que la composante qu'on calcule) et en croisant les deux autres en diagonale, avec un signe. Vérifie sur un cas que tu connais déjà : $\vec{i}(1,0,0)$ et $\vec{j}(0,1,0)$ donnent $\vec{i}\wedge\vec{j} = (0\times0-0\times1,\ 0\times0-1\times0,\ 1\times1-0\times0) = (0,0,1) = \vec{k}$ — exactement la relation que tu utilises déjà sans la nommer quand tu orientes un repère.
 
+Avant de démontrer ce que ce vecteur a de remarquable, regarde-le. La scène qui suit part de deux vecteurs du plan horizontal — ceux du tétraèdre de l'exemple travaillé, plus bas — et fabrique leur produit vectoriel. À chaque étape, tu paries d'abord, puis tu vois ; et tu peux tourner autour, ce qu'aucune figure plane ne permet.
+
+[[embed:produit-vectoriel]]
+
 ### Pourquoi ce vecteur est orthogonal à $\vec{u}$ et à $\vec{v}$
 
 On peut le vérifier directement avec le produit scalaire du chapitre 3 : calcule $\vec{u}\cdot(\vec{u}\wedge\vec{v})$.

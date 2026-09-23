@@ -159,6 +159,10 @@ const HORS_CHAMP = new Set([
   // temps réel ; la CI la rejoue vert puis rouge :
   // `node scripts/scene-lorentz.mjs --essai-rouge`.
   "scene-lorentz.mjs",
+  // scene-vectoriel, même raison : la quatrième scène 3D (le produit
+  // vectoriel) se juge sur son rendu WebGL ; la CI la rejoue vert puis rouge :
+  // `node scripts/scene-vectoriel.mjs --essai-rouge`.
+  "scene-vectoriel.mjs",
   // temps-de-chargement mesure TTFB/FCP/LCP au navigateur, réseau bridé, trois
   // passages par route : build, Playwright, et des millisecondes qui sont
   // celles de CETTE machine. Ce n'est PAS une porte et ce n'en sera pas une —

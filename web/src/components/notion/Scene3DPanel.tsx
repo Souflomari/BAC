@@ -15,11 +15,13 @@ import type { Scene3DDescriptor } from "@/lib/content";
 import { ChampMagnetiquePanel } from "./scene/ChampMagnetiquePanel";
 import { OrbiteGeostationnairePanel } from "./scene/OrbiteGeostationnairePanel";
 import { SpherePlanDroitePanel } from "./scene/SpherePlanDroitePanel";
+import { VectorielPanel } from "./scene/VectorielPanel";
 
 const PANNEAUX: Record<string, React.ComponentType<{ scene: Scene3DDescriptor; className?: string }>> = {
   "orbite-geostationnaire": OrbiteGeostationnairePanel,
   "sphere-plan-droite": SpherePlanDroitePanel,
   "particule-champ-magnetique": ChampMagnetiquePanel,
+  "produit-vectoriel": VectorielPanel,
 };
 
 export function Scene3DPanel({ scene, className }: { scene: Scene3DDescriptor; className?: string }) {

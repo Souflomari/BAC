@@ -225,6 +225,25 @@ phrase qui la décrit — attend la révélation. Ce qui reste visible, c'est
 l'énoncé : la scène telle que l'étape la pose. Les trois portes ont une
 famille `avant-pari`, et son essai rouge.
 
+## Addendum du 2026-09-23 (nuit) — la quatrième scène : le produit vectoriel
+
+`maths/geometrie-espace`, R3, `[[embed:produit-vectoriel]]`, posée juste après
+la définition par les coordonnées, avant les deux démonstrations qu'elle fait
+découvrir (orthogonalité, norme = aire). Critère du §1 : le produit
+vectoriel fabrique une direction qui SORT du plan des deux facteurs, et le
+registre de la notion nomme l'erreur que la figure plane entretient
+(`perspective-fiable` : se fier au dessin pour juger un angle droit). La
+dernière étape la provoque exprès — un plan incliné de 50°, où le produit ne
+« paraît » plus perpendiculaire à v — et la fait tomber en tournant autour.
+Cinq étapes à pari, six misconceptions déclarées de la notion visées, les
+nombres du tétraèdre de l'exemple travaillé (AB ∧ AC = (0 ; 0 ; 4)).
+
+Un choix de cadrage, pris en regardant l'image : la caméra cadre tout ce que
+la scène PEUT montrer pour la norme, l'inclinaison et l'ordre courants — v et
+le produit pour chaque angle θ, étiquettes comprises. Cadrer le contenu
+courant ferait bouger la caméra à chaque cran de θ ; cadrer le pire cas
+laissait la moitié du canvas vide.
+
 ## Retractions and Corrections
 
 - **2026-09-23 — la « deuxième scène » annoncée n'était pas la bonne

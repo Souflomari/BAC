@@ -146,5 +146,52 @@
       "R",
       "theta"
     ]
+  },
+  "produit-vectoriel": {
+    "temps": false,
+    "controles": [
+      "angle",
+      "longueur",
+      "inclinaison",
+      "ordre"
+    ],
+    "etat": [
+      "theta_deg",
+      "v_norme",
+      "phi_deg",
+      "ordre",
+      "vue"
+    ],
+    "bornes": {
+      "theta_deg": [
+        0,
+        180
+      ],
+      "v_norme": [
+        0.5,
+        3
+      ],
+      "phi_deg": [
+        0,
+        90
+      ]
+    },
+    "valeurs": {
+      "ordre": [
+        "uv",
+        "vu"
+      ],
+      "vue": [
+        "biais",
+        "dessus",
+        "cote"
+      ]
+    },
+    "lectures": [
+      "coordonnees",
+      "norme",
+      "aire",
+      "orthogonalite"
+    ]
   }
 }

@@ -1282,10 +1282,13 @@ qu'on pousse.
 - **les pixels, le cœur** — le CÔTÉ où la trajectoire s'infléchit, lu sur
   l'image pour les QUATRE couples charge × sens du champ : la tache d'accent
   d'un tour complet se décale du point d'entrée vers le côté de F = q v ∧ B
-  (électron ⊗ : **98 px vers le bas** ; positon ⊗ : **98 px vers le haut** ;
-  positon ⊙ : **57 px vers le bas** ; électron ⊙ : **58 px vers le haut**) ; et
-  le cercle DESSINÉ à 3,0 mT fait **109 px** contre **212 px** à 1,5 mT —
-  rapport **0,51** ;
+  (électron ⊗ : **91 px vers le bas** ; positon ⊗ : **92 px vers le haut** ;
+  positon ⊙ : **54 px vers le bas** ; électron ⊙ : **55 px vers le haut**) ; et
+  le cercle DESSINÉ à 3,0 mT fait **100 px** contre **196 px** à 1,5 mT —
+  rapport **0,51**. (Chiffres du 2026-09-23 au soir, après la marge laissée à
+  la légende au téléphone, qui a réduit l'échelle d'environ 7 % : ±98 / ±58 px
+  et 109 / 212 px avant. Le rapport, lui, n'a pas bougé — c'est lui qui est
+  mesuré, pas l'échelle.) ;
 - **la vitesse**, lue PENDANT la course à 10, 35, 60 et 85 % du tour : la même
   à chaque fois, l'angle entre F et v à **90°**, F constante ;
 - **les paris** — rien ne s'ouvre avant l'engagement ; le verdict attend la
@@ -1310,3 +1313,46 @@ vue de biais (seule la vue du manuel est mesurée en pixels).
 
     node scripts/scene-lorentz.mjs --porte        (lève son propre next start)
     node scripts/scene-lorentz.mjs --essai-rouge
+
+## `web/scripts/scene-vectoriel.mjs` — la scène du produit vectoriel dit-elle VRAI ?
+
+**PORTE, armée en CI (vert puis rouge), §11.191, ADR 0041.** La quatrième
+scène 3D de première partie (maths/geometrie-espace, R3), sur les pièces
+communes. Le rendu RÉEL, WebGL par SwiftShader.
+
+**Ce qu'elle mesure :**
+
+- **rien avant le clic** ;
+- **les nombres**, par une SECONDE implémentation — la formule de la leçon,
+  composante par composante — sur sept réglages (θ, ‖v‖, φ, ordre) : les
+  coordonnées de u ∧ v, sa norme, l'aire du parallélogramme, et les deux
+  produits scalaires u·(u ∧ v) et v·(u ∧ v), lus **0** à chaque fois ; le
+  plan incliné de 50° compris (**≈ (0 ; −3,06 ; 2,57)**) ; l'exemple
+  travaillé tel quel, **AB ∧ AC = (0 ; 0 ; 4)**, aire(ABC) = 2 ; à 150°, la
+  norme 2 et le triangle 1 ;
+- **les pixels** — la flèche du produit, seule chose en accent pur : vue de
+  côté, **237 px à 90°, 115 px à 30°** (rapport 0,49 — sin 30° = ½), **0 px
+  à 0°** ; u ∧ v centré **au-dessus** de v ∧ u (238 contre 313 px) ;
+- **les paris** et **avant le pari, rien ne répond** — zéro pixel d'accent,
+  aucune fiche, une description sans l'issue, aux cinq étapes ; puis la
+  flèche (368 px) et la fiche ;
+- **les étapes**, aucun LaTeX brut dans le panneau ouvert, clavier (deux
+  flèches → θ + 10°), fond en clair ET en sombre, état honnête sans WebGL
+  (AB ∧ AC lu reste (0 ; 0 ; 4)), aucune erreur console.
+
+Mesuré le 2026-09-23 : **38 mesures, 11 familles, VERT** ; `--essai-rouge`
+— l'ordre des facteurs ignoré (v ∧ u pris pour u ∧ v) : **8/8 familles
+crient**.
+
+**LE PREMIER PASSAGE ÉTAIT ROUGE, ET C'ÉTAIT LA SONDE.** Deux manquements,
+deux affichages justes : « (0 ; 0 ; 4) » cherché avec des espaces simples,
+affiché avec les espaces fines insécables de la typographie française. La
+porte lit désormais le nombre, espaces normalisées — la typographie a sa
+propre porte. Un rouge au premier passage est AMBIGU (ADR 0034) : ici, le
+test avait tort, pas le produit.
+
+**NE DIT RIEN DE :** si les étapes enseignent ; la vue de biais et la vue de
+dessus (seule la vue de côté est mesurée en pixels) ; un vrai téléphone.
+
+    node scripts/scene-vectoriel.mjs --porte        (lève son propre next start)
+    node scripts/scene-vectoriel.mjs --essai-rouge

@@ -14627,3 +14627,48 @@ sans le signe de q.
 **CE QUI RESTE OUVERT.** Les paris ne sont toujours pas ÉCRITS dans le modèle
 de l'élève (ils portent leurs misconceptions, prêts) ; aucun téléphone réel
 n'a été mesuré ; la vue de biais n'est mesurée par aucun pixel.
+
+## §11.191 — La quatrième scène : le produit vectoriel, et un rouge qui venait de la sonde
+
+**LA SCÈNE** (`maths/geometrie-espace`, R3 ; ADR 0041, addendum de la nuit).
+Posée après la définition par les coordonnées, avant les démonstrations
+qu'elle fait découvrir. Cinq étapes à pari, sur les vecteurs du tétraèdre de
+l'exemple travaillé : la direction (AB ∧ AC = (0 ; 0 ; 4) — et non la somme
+(2 ; 2 ; 0), qui est DANS le plan), l'ordre (AC ∧ AB est l'opposé), l'aire
+(à 150°, le triangle vaut 1, pas la norme 2), les vecteurs colinéaires (le
+nul — et non 4, qui est le produit SCALAIRE), et la perspective : un plan
+incliné de 50° où le produit ne « paraît » plus perpendiculaire à v, et l'est
+— `v·(u ∧ v) = 0` à l'écran, l'angle droit visible de côté. Six
+misconceptions déclarées de la notion visées par les paris. Comme les trois
+autres depuis §11.190 : avant le pari, ni flèche, ni parallélogramme, ni fiche.
+
+**CE QUE L'IMAGE A DEMANDÉ.** Le premier cadrage réservait la place du pire
+cas (‖v‖ = 3, les deux ordres) : la scène occupait un quart du canvas. La
+caméra cadre maintenant tout ce que la scène PEUT montrer pour ‖v‖, φ et
+l'ordre courants, étiquettes comprises — elle ne bouge pas quand v tourne.
+Vu de dessus, le produit se réduit à un point sur A : son étiquette se tait
+au lieu de s'empiler sur celle de A.
+
+**Une retouche à la scène du champ magnétique (§11.190), vue au téléphone :**
+en 4:3, la légende du coin chevauchait le bord haut du cadre ; la caméra
+laisse maintenant plus de marge en hauteur. L'échelle a baissé d'environ 7 %,
+et avec elle les chiffres de la porte (±91 / ±55 px au lieu de ±98 / ±58) ;
+le rapport des cercles, qui est ce qu'on mesure, reste 0,51. Porte rejouée :
+VERT, 45/45.
+
+**SA PORTE, `scene-vectoriel` : 38 mesures, 11 familles, VERT deux fois ;
+essai rouge 8/8.** Le premier passage était ROUGE de deux manquements — et les deux
+affichages étaient justes : la porte cherchait « (0 ; 0 ; 4) » avec des
+espaces simples, le produit l'écrit avec les espaces fines insécables de la
+typographie française. C'était la sonde (ADR 0034 : un rouge est ambigu tant
+qu'on n'a pas regardé lequel des deux a tort) ; elle lit maintenant le
+nombre, espaces normalisées.
+
+> Quatre scènes, et la même leçon chaque fois : la chose la plus utile à faire
+> d'une scène est de la REGARDER — le ⊗ qui se lisait ⊙, la flèche qui
+> traversait le centre, le canvas aux trois quarts vide, la fiche qui
+> répondait avant le pari. Aucune porte ne les avait vus. La dernière est
+> désormais gardée (la famille `avant-pari`) ; les trois autres ne le sont
+> PAS — ce sont des choix de dessin, écrits à côté du code qui les porte, et
+> rien n'empêcherait une régression. Une porte « le glyphe du champ entrant
+> est une croix » serait possible ; elle n'est pas écrite.
