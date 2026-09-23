@@ -1196,3 +1196,51 @@ clavier sont gardés, pas le geste) ; l'impression (le panneau est `print:hidden
 
     node scripts/scene-orbite.mjs --porte        (lève son propre next start)
     node scripts/scene-orbite.mjs --essai-rouge
+
+## `web/scripts/scene-sphere.mjs` — la scène « sphère, plan, droite » dit-elle VRAI ?
+
+**PORTE, armée en CI (vert puis rouge), §11.189, ADR 0041.** La deuxième scène
+3D de première partie (maths/geometrie-espace, R9), bâtie sur les mêmes pièces
+communes que l'orbite (`components/notion/scene/`). Même principe que
+`scene-orbite` : le rendu RÉEL, au navigateur, WebGL par SwiftShader.
+
+**Ce qu'elle mesure :**
+
+- **rien avant le clic** — `window.__THREE__` indéfini tant que la scène est
+  fermée ;
+- **les nombres**, par une SECONDE implémentation (pas d'import de
+  `sphere.ts`) — neuf réglages (z, R) : d, r = √(R² − d²), le cas et la case
+  cochée des « trois cas » ; l'exemple travaillé de la leçon (z = 0, R = 3)
+  affiché tel quel, « √5 ≈ 2,24 » ; la tangence EXACTE sur la grille de 0,1
+  (z = 5 : tangent ; 5,1 : vide ; 4,9 : sécant ; R = 1,9 / 2 / 2,1 pour z = 0) ;
+- **les pixels d'accent, dans les deux sens** — sécant **1 069 px**, tangent
+  **52 px**, vide **0 px** ; vu de dessus, largeur du cercle **249 > 169 >
+  79 px** pour d = 0 ; 2 ; 2,8 (≈ proportionnelle à r = 3 ; √5 ; 1,08) ; à la
+  même distance, droite **102 px** (deux points) contre plan **1 069 px**
+  (un cercle) ;
+- **les paris** — rien ne s'ouvre avant l'engagement ; le pari FAUX de la
+  misconception de la leçon (√(R² + d²)) est dit « Réponse incorrecte », le
+  juste « Bonne réponse. » (pas de temps ici : au choix) ;
+- **les étapes** — chacune pose son état et n'ouvre que son contrôle ;
+- **aucun LaTeX brut dans le panneau OUVERT** — la porte LaTeX nu ne lit que
+  la scène fermée ;
+- clavier (deux flèches → z + 0,2), fond = `--figure-surface` en clair ET en
+  sombre, état honnête sans WebGL (le rayon lu reste √5 à z = 0), aucune
+  erreur console.
+
+Mesuré le 2026-09-23 : **30 mesures, 10 familles, VERT** ; `--essai-rouge` —
+dont r recalculé avec **R² + d²**, la misconception même de la leçon :
+**7/7 familles crient**.
+
+**LE PREMIER PASSAGE ÉTAIT ROUGE, ET À RAISON — un défaut PRODUIT.** 71 pixels
+d'accent seulement pour un cercle bien visible, zéro vu de dessus : la sphère
+et le plan, translucides, étaient dessinés APRÈS le cercle et se fondaient
+par-dessus lui. L'accent — l'intersection, la seule idée de la scène — était
+voilé par ce qu'il intersecte. Corrigé par l'ordre de dessin (marques en
+dernier, couleur pure), mesuré de nouveau : 1 069 px.
+
+**NE DIT RIEN DE :** si les étapes enseignent ; la fluidité sur un vrai
+téléphone ; le glisser au doigt ; l'impression (panneau `print:hidden`).
+
+    node scripts/scene-sphere.mjs --porte        (lève son propre next start)
+    node scripts/scene-sphere.mjs --essai-rouge

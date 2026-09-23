@@ -161,19 +161,19 @@ export interface EmbedDescriptor {
  * consignes, l'état posé à l'entrée de chacune, le contrôle qu'elle ouvre.
  * Tout ce qui est CALCUL vit dans le code (`web/src/lib/scene3d/`).
  */
-export type Scene3DControle = "rayon" | "inclinaison" | "sens" | "referentiel";
+/**
+ * Les contrôles, les clés d'état et les lectures sont PROPRES À CHAQUE SCÈNE :
+ * ils sont typés ici comme des chaînes, et validés contre le registre
+ * `web/src/lib/scene3d/scenes.json` par `validate-content` (échec dur). Chaque
+ * panneau resserre ensuite ses propres clés.
+ */
+export type Scene3DControle = string;
 
-export interface Scene3DEtat {
-  /** un rayon en km, ou "geo" : le rayon géostationnaire calculé par le code */
-  rayon_km?: number | "geo";
-  inclinaison_deg?: number;
-  sens?: "direct" | "retrograde";
-  referentiel?: "geocentrique" | "terrestre";
-  vue?: "biais" | "dessus" | "cote";
-}
+/** L'état posé à l'entrée d'une étape — clés propres à la scène. */
+export type Scene3DEtat = Record<string, number | string | undefined>;
 
-/** Les lectures chiffrées qu'une étape affiche (les autres sont absentes). */
-export type Scene3DLecture = "altitude" | "periode" | "v-geo" | "v-sol" | "rapports";
+/** Les lectures chiffrées qu'une étape affiche (les autres sont absentes) — propres à la scène. */
+export type Scene3DLecture = string;
 
 export interface Scene3DChoix {
   id: string;

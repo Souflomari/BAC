@@ -486,6 +486,10 @@ Soit une sphère de centre $\Omega$ et de rayon $R$, et un plan $\mathcal P$. No
 
 $$R^2 = d^2 + HM^2$$
 
+Avant de lire la suite, trouve-la toi-même. Dans la scène qui suit, la sphère de l'exemple travaillé et un plan que tu fais glisser — puis une droite, à la même distance. À chaque étape, tu paries d'abord, puis tu regardes.
+
+[[embed:sphere-plan]]
+
 Trois cas, selon la comparaison de $d$ et $R$ :
 
 - $d>R$ : l'équation $HM^2=R^2-d^2<0$ n'a pas de solution — **aucun point commun**.

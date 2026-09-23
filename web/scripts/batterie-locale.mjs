@@ -150,6 +150,10 @@ const HORS_CHAMP = new Set([
   // pour la même raison que dom-truth — ARMÉE en CI (§11.187). Son rouge se
   // rejoue : `node scripts/scene-orbite.mjs --essai-rouge`.
   "scene-orbite.mjs",
+  // scene-sphere, même raison que scene-orbite : la deuxième scène 3D, ses
+  // pixels lus au navigateur après build — ARMÉE en CI (§11.189). Son rouge se
+  // rejoue : `node scripts/scene-sphere.mjs --essai-rouge`.
+  "scene-sphere.mjs",
   // temps-de-chargement mesure TTFB/FCP/LCP au navigateur, réseau bridé, trois
   // passages par route : build, Playwright, et des millisecondes qui sont
   // celles de CETTE machine. Ce n'est PAS une porte et ce n'en sera pas une —

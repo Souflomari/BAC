@@ -29,7 +29,6 @@
  */
 import {
   AmbientLight,
-  Color,
   ConeGeometry,
   DirectionalLight,
   Group,
@@ -43,9 +42,8 @@ import {
   Vector3,
   WebGLRenderer,
 } from "three";
-import { Line2 } from "three/addons/lines/Line2.js";
-import { LineGeometry } from "three/addons/lines/LineGeometry.js";
-import { LineMaterial } from "three/addons/lines/LineMaterial.js";
+import { couleur, lireJetons, melange, type RGB } from "./palette";
+import { cercle, remplacerPositions, trait, type Line2 } from "./traits";
 import {
   angleTerre,
   periode,
@@ -76,38 +74,6 @@ export interface SceneOrbite {
   detruire(): void;
 }
 
-// ── Couleurs ────────────────────────────────────────────────────────────────
-
-type RGB = [number, number, number];
-
-/**
- * Résout N'IMPORTE QUELLE couleur CSS en sRGB 8 bits en la peignant sur un
- * canvas 1×1 : hex, rgb(), hsl(), oklch(), color-mix()… Un jeton qui changerait
- * de syntaxe demain ne casserait pas la scène.
- */
-function resoudre(hote: HTMLElement, variable: string, secours: RGB): RGB {
-  const valeur = getComputedStyle(hote).getPropertyValue(variable).trim();
-  if (!valeur) return secours;
-  const c = document.createElement("canvas");
-  c.width = c.height = 1;
-  const ctx = c.getContext("2d", { willReadFrequently: true });
-  if (!ctx) return secours;
-  ctx.fillStyle = `rgb(${secours.join(",")})`;
-  ctx.fillStyle = valeur;
-  ctx.fillRect(0, 0, 1, 1);
-  const d = ctx.getImageData(0, 0, 1, 1).data;
-  return [d[0], d[1], d[2]];
-}
-
-/** Mélange en sRGB (comme le ferait un color-mix du CSS). */
-function melange(a: RGB, b: RGB, t: number): RGB {
-  return [0, 1, 2].map((k) => Math.round(a[k] + (b[k] - a[k]) * t)) as RGB;
-}
-
-function couleur(rgb: RGB): Color {
-  return new Color().setRGB(rgb[0] / 255, rgb[1] / 255, rgb[2] / 255, SRGBColorSpace);
-}
-
 interface Palette {
   surface: RGB;
   encre: RGB;
@@ -118,10 +84,7 @@ interface Palette {
 }
 
 function lirePalette(hote: HTMLElement): Palette {
-  const surface = resoudre(hote, "--figure-surface", [255, 255, 255]);
-  const encre = resoudre(hote, "--figure-ink", [29, 26, 20]);
-  const encreDouce = resoudre(hote, "--figure-ink-soft", [85, 82, 74]);
-  const accent = resoudre(hote, "--figure-accent", [0, 116, 106]);
+  const { surface, encre, encreDouce, accent } = lireJetons(hote);
   // La Terre : la surface teintée d'encre douce — présente, jamais criarde.
   const terre = melange(surface, encreDouce, 0.2);
   // Le graticule : un cran d'encre au-dessus de la Terre, dans les deux thèmes.
@@ -134,34 +97,6 @@ function lirePalette(hote: HTMLElement): Palette {
 /** Physique (m, z au Nord) → scène (rayons terrestres, Y au Nord). */
 function versScene(p: Vec3, cible = new Vector3()): Vector3 {
   return cible.set(p.x / R_TERRE, p.z / R_TERRE, -p.y / R_TERRE);
-}
-
-function cercle(rayon: number, n: number, point: (a: number) => [number, number, number]): number[] {
-  const out: number[] = [];
-  for (let k = 0; k <= n; k++) out.push(...point((2 * Math.PI * k) / n).map((v) => v * rayon));
-  return out;
-}
-
-function trait(positions: number[], largeur: number, options: Partial<{ pointille: boolean; opacite: number }> = {}) {
-  const g = new LineGeometry();
-  g.setPositions(positions);
-  const m = new LineMaterial({
-    linewidth: largeur,
-    dashed: options.pointille ?? false,
-    transparent: options.opacite !== undefined,
-    opacity: options.opacite ?? 1,
-  });
-  const l = new Line2(g, m);
-  l.computeLineDistances();
-  return l;
-}
-
-function remplacerPositions(l: Line2, positions: number[]) {
-  l.geometry.dispose();
-  const g = new LineGeometry();
-  g.setPositions(positions);
-  l.geometry = g;
-  l.computeLineDistances();
 }
 
 // ── La scène ────────────────────────────────────────────────────────────────

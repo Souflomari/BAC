@@ -29,6 +29,63 @@
       "v-geo",
       "v-sol",
       "rapports"
+    ],
+    "temps": true,
+    "valeurs": {
+      "sens": [
+        "direct",
+        "retrograde"
+      ],
+      "referentiel": [
+        "geocentrique",
+        "terrestre"
+      ],
+      "vue": [
+        "biais",
+        "dessus",
+        "cote"
+      ]
+    }
+  },
+  "sphere-plan-droite": {
+    "temps": false,
+    "controles": [
+      "position",
+      "objet",
+      "rayon"
+    ],
+    "etat": [
+      "objet",
+      "k",
+      "R",
+      "vue"
+    ],
+    "bornes": {
+      "k": [
+        -2,
+        6
+      ],
+      "R": [
+        1,
+        4
+      ]
+    },
+    "valeurs": {
+      "objet": [
+        "plan",
+        "droite"
+      ],
+      "vue": [
+        "biais",
+        "face",
+        "dessus"
+      ]
+    },
+    "lectures": [
+      "d",
+      "r",
+      "hm",
+      "corde"
     ]
   }
 }

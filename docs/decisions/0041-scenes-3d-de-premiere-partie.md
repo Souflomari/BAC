@@ -154,6 +154,45 @@ chaque famille doit crier. Si WebGL manque au banc, la porte sort **MUET**, en
 - **Le glisser au doigt** n'est pas gardé par la porte (les vues prédéfinies
   et le clavier le sont).
 
+## Addendum du 2026-09-23 — la deuxième scène, et ce qui est devenu commun
+
+**La deuxième scène est la sphère coupée par un plan, puis par une droite**
+(`maths/geometrie-espace`, R9, `[[embed:sphere-plan]]`). Elle passe le critère
+du §1 sans discussion : l'intersection d'une sphère et d'un plan est un CERCLE
+que toute figure plane dessine en ellipse, et le point clé du chapitre — la
+dimension de l'objet qui coupe décide de la forme du résultat — se VOIT en
+passant du plan à la droite à distance égale du centre. Quatre étapes, un pari
+chacune (§6), sans temps simulé : le verdict est immédiat, `validate-content`
+interdit désormais `revele_apres_h > 0` sur une scène sans temps. Curseurs au
+pas de 0,1, pour que le cas tangent $d = R$ soit atteint EXACTEMENT et que la
+scène ne montre jamais un « presque tangent » qu'elle appellerait tangent (§5).
+
+**Ce qui est devenu commun.** Deux scènes ont fait voir ce qui n'appartenait
+pas à l'orbite : l'ouverture au clic, le cycle de vie du rendu (import
+paresseux, contexte WebGL perdu, thème, redimensionnement, destruction), le
+pari, les vues prédéfinies, le transport entre étapes, le plateau collant et
+sa marge de focus (§7). Tout cela vit dans `web/src/components/notion/scene/`
+(`useSceneRendu`, `usePari`, `SceneOptIn`, `PariBloc`, `VuesBloc`,
+`TransportEtapes`, `Plateau`) ; chaque scène garde SON panneau — ses contrôles,
+ses lectures, ses conditions — et `Scene3DPanel` n'est plus qu'un aiguillage.
+Côté rendu, la palette lue dans les jetons et les traits à largeur constante
+(`palette.ts`, `traits.ts`) sont partagés. Les attributs `data-*` que lit la
+porte de l'orbite n'ont pas bougé : sa porte est repassée VERTE (37/37) sur le
+panneau reconstruit, ce qui est la seule preuve qu'un refactor n'a rien changé.
+
+**Sa porte** (`scene-sphere`, §8) : 30 mesures en 10 familles, dont les nombres
+recalculés par une seconde implémentation, les trois cas (sécant, tangent,
+extérieur) lus dans le texte ET dans les pixels, et le pari qui ne dit rien
+avant l'engagement. Un premier rouge de pixels était vrai : les surfaces
+translucides, dessinées après le cercle d'intersection, le noyaient (71 px de
+trait visibles) ; l'ordre de rendu corrigé en fait 1 069. Essai rouge 7/7.
+
 ## Retractions and Corrections
 
-*(néant pour l'instant)*
+- **2026-09-23 — la « deuxième scène » annoncée n'était pas la bonne
+  candidate.** « Ce que cet ADR ne tranche pas » nommait la cuve à ondes de
+  `pc/ondes-mecaniques-periodiques`. Relue contre le §1 du même ADR, elle n'y
+  passe pas : la diffraction par une fente, dans une cuve, est un phénomène
+  PLAN, et une scène 3D y ajouterait du relief sans rien ajouter à l'idée.
+  Elle reste une dette de manipulation, à payer par un manipulable 2D. La
+  deuxième scène livrée est la sphère (addendum ci-dessus).

@@ -51,7 +51,15 @@ const ICI = path.dirname(new URL(import.meta.url).pathname);
 const CONTENU = path.resolve(ICI, "..", "..", "content");
 const PORTE = process.argv.includes("--porte");
 //  Mesuré au 2026-09-20 sur 4 notions de physique. Il ne doit que DESCENDRE.
-const CLIQUET = 20;
+//  20 → 19 le 2026-09-23 (§11.189). La prescription `[[embed:orbites-gravite]]`
+//  de pc/chute-mouvements-plans a été réécrite pour la scène 3D qui la livre
+//  (ADR 0041) : « (sert CH-KEP-3) » est devenu « (CH-KEP-3) », sans verbe
+//  d'usage, donc hors du compte. Ce n'est PAS une étiquette résolue : c'est la
+//  traçabilité qui a changé de lieu — le descripteur de la scène nomme les
+//  misconceptions par leur id (`pedagogy_wiring`). Le cliquet laissé à 20
+//  offrait une place libre, et l'essai rouge §11.136 l'a trouvée au premier
+//  passage complet de la CI : la sabotage (+1) retombait pile sur la limite.
+const CLIQUET = 19;
 //  SENS 2 — mesuré au 2026-09-20, et c'est exactement le compte du §11.69,
 //  retrouvé notion par notion et barreau par barreau : 7 + 4 + 5. La classe
 //  n'a pas bougé depuis qu'elle a été consignée. C'est une PORTE D'OWNER

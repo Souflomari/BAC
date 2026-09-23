@@ -156,11 +156,6 @@ const REPO = path.resolve(path.dirname(new URL(import.meta.url).pathname), "../.
 // n'apparaît pas, un état hors bornes est clampé par le navigateur — d'où un
 // échec DUR, pas un avertissement.
 const SCENES_3D = JSON.parse(fs.readFileSync(path.join(REPO, "web/src/lib/scene3d/scenes.json"), "utf8"));
-const ETAT_3D_VALEURS = {
-  sens: ["direct", "retrograde"],
-  referentiel: ["geocentrique", "terrestre"],
-  vue: ["biais", "dessus", "cote"],
-};
 function fautesScene3d(desc) {
   const fautes = [];
   const def = SCENES_3D[desc.scene];
@@ -188,6 +183,10 @@ function fautesScene3d(desc) {
       if (typeof p?.question !== "string" || !p.question.trim()) fautes.push(`${ou} : pari sans question`);
       if (p?.revele_apres_h !== undefined && !(typeof p.revele_apres_h === "number" && p.revele_apres_h >= 0 && p.revele_apres_h <= 48))
         fautes.push(`${ou} : revele_apres_h hors de [0, 48]`);
+      // Une scène SANS temps ne peut pas attendre que le temps révèle : le
+      // verdict n'arriverait jamais, et l'étape resterait fermée pour toujours.
+      if (!def.temps && (p?.revele_apres_h ?? 0) > 0)
+        fautes.push(`${ou} : revele_apres_h = ${p.revele_apres_h} dans une scène sans temps — le pari ne serait jamais révélé`);
       const ch = Array.isArray(p?.choix) ? p.choix : [];
       if (ch.length < 2 || ch.length > 4) fautes.push(`${ou} : un pari propose 2 à 4 choix (${ch.length})`);
       const justes = ch.filter((c) => c?.juste === true).length;
@@ -206,8 +205,10 @@ function fautesScene3d(desc) {
       if (k === "rayon_km" && v === "geo") continue;
       if (bornes && !(typeof v === "number" && v >= bornes[0] && v <= bornes[1]))
         fautes.push(`${ou} : ${k} = ${JSON.stringify(v)} hors de [${bornes.join(", ")}]`);
-      if (ETAT_3D_VALEURS[k] && !ETAT_3D_VALEURS[k].includes(v))
-        fautes.push(`${ou} : ${k} = ${JSON.stringify(v)} (attendu : ${ETAT_3D_VALEURS[k].join(" | ")})`);
+      // Les valeurs permises sont PROPRES À LA SCÈNE (registre, `valeurs`).
+      const permises = def.valeurs?.[k];
+      if (permises && !permises.includes(v))
+        fautes.push(`${ou} : ${k} = ${JSON.stringify(v)} (attendu : ${permises.join(" | ")})`);
     }
   });
   for (const c of def.controles)

@@ -50,7 +50,10 @@ const REPO = path.join(ICI, "..", "..");
 const PORTE = process.argv.includes("--porte");
 
 //  Mesuré au 2026-09-20 : 5 (maths) + 4 (pc) + 0 (philo) + 0 (svt).
-const CLIQUET = 9;
+//  Relevé à 10 le 2026-09-23 : maths/geometrie-espace porte la scène 3D
+//  « sphère, plan, droite » (ADR 0041). Un cliquet qu'on ne resserre pas quand
+//  la mesure gagne laisse perdre ce gain en silence (ADR 0034).
+const CLIQUET = 10;
 
 const RE_EMBED = /\[\[(?:embed|geogebra|desmos|falstad|phet)[:\]]/gi;
 const parMat = new Map();
