@@ -14431,3 +14431,38 @@ au doigt, non gardé ; les paris ne sont pas encore ÉCRITS dans le modèle de
 l'élève (ils portent leurs misconceptions dans le descripteur, prêts pour le
 jour où ils le seront).
 
+## §11.188 — Le premier run complet depuis douze jours : 36 étapes vertes, puis coupé par le budget
+
+**CE QUI S'EST PASSÉ.** Le run 744 (après §11.186) a repris la porte entière
+sur un vrai runner, pour la première fois depuis le run 490 du 2026-09-11.
+**36 étapes sur 36 VERTES** — dont trois portes qui n'avaient JAMAIS tourné en
+CI : `source-en-double`, `header-manifestes`, `verdict-qcm`. Puis le job a été
+tué à **50 min pile**, au milieu de la porte accents ; 24 étapes n'ont pas été
+lancées. Conclusion GitHub : « cancelled ».
+
+**CE N'ÉTAIT PAS UN BLOCAGE.** Le mot « cancelled » a deux causes dans ce
+workflow (§ en tête de `gates.yml`) ; on vérifie les ÉTAPES avant de conclure.
+Aucune n'a traîné — chacune a fini son travail. Ce qui a changé, c'est le
+travail lui-même : les portes armées entre le 11 et le 22 septembre ne
+pouvaient être chronométrées par aucun runner. Relevé sur le run 744 : stockage
+refusé 7 min 32 s, réduire les animations 5 min 30 s, désaccords d'hydratation
+2 min 08 s, verdict QCM 2 min 54 s — environ 18 min de plus que le run 490.
+Le commentaire « budget de 50 min dont ~38 sont pris » dans la porte
+verdict-qcm était une estimation LOCALE ; le premier chiffre réel la dément.
+
+**CE QUI A ÉTÉ FAIT.** `timeout-minutes` 50 → 80, avec le relevé et le
+raisonnement écrits à côté : ~63 min estimées de bout en bout (dont la scène 3D,
+§11.187), une marge pour un runner lent, un vrai blocage toujours attrapé. Le
+dépôt étant public, les minutes ne coûtent rien au propriétaire ; s'il redevient
+privé, le budget redevient une décision du propriétaire.
+
+**CE QUI N'EST PAS FAIT, ET POURQUOI.** Une heure de CI, c'est une heure avant
+de savoir. Le remède à la latence serait de découper le job en deux ou trois
+jobs parallèles, le build passé en artefact : ~30 min de mur au lieu de ~63.
+C'est un chantier (58 étapes, un `defaults.working-directory`, des portes qui
+lèvent chacune leur `next start` sur le même `.next`), avec son propre risque ;
+pas une retouche à glisser dans ce commit.
+
+> Une estimation de budget faite sans le banc réel est une rumeur de plus : elle
+> a tenu douze jours parce que RIEN ne pouvait la démentir. Le premier runner
+> revenu l'a démentie au premier passage.
