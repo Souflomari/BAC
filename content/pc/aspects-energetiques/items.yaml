@@ -2016,6 +2016,133 @@ items:
       skieur arriverait à $v = \sqrt{2gh} = 20\ \text{m/s}$ ; il arrive à
       $15\ \text{m/s}$, ce qui confirme une perte.
 
+  # ── AE-35 et AE-36 (2026-09-23) — la racine carrée oubliée, dans les deux
+  # oscillateurs où l'élève remonte à une vitesse. Écrits pour ramener
+  # `confusion-v-et-v-carre` au plancher après le réétiquetage honnête du
+  # 2026-09-19 (AE-4 D, AE-19 C). Chaque distracteur porte une famille
+  # DISTINCTE, et chacun sort d'un calcul que l'on peut refaire : le nombre
+  # du distracteur est exactement celui que produit l'erreur nommée.
+  - id: AE-35
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [pendule_pesant, energie_mecanique, vitesse]
+    stem: >
+      Un pendule simple de longueur $L = 2{,}0\ \text{m}$ est lâché sans
+      vitesse initiale depuis un écart $\theta_0 = 60^\circ$ avec la verticale.
+      Les frottements sont négligés et on prend $g = 10\ \text{N/kg}$. Quelle
+      est la vitesse de la masse quand elle passe par la position la plus
+      basse ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$20\\ \\text{m/s}$"
+        correct: false
+        misconception: mc.physics.pc_energie.confusion-v-et-v-carre
+        feedback: >
+          $2gz = 20$ est le CARRÉ de la vitesse : il s'exprime en
+          $\text{m}^2/\text{s}^2$, pas en $\text{m/s}$. Il reste à prendre la
+          racine, $v = \sqrt{20} \approx 4{,}5\ \text{m/s}$. Contrôle de bon
+          sens : $20\ \text{m/s}$, c'est $72\ \text{km/h}$ pour une masse
+          tombée d'un mètre.
+      - id: B
+        text: "$6{,}3\\ \\text{m/s}$"
+        correct: false
+        misconception: mc.physics.pc_energie.pendule-hauteur-egale-longueur-fil
+        feedback: >
+          Ce nombre vient de $v^2 = 2gL$, comme si la masse descendait de toute
+          la longueur du fil. Elle ne descend que de la différence d'altitude
+          entre l'écart $\theta_0$ et la verticale :
+          $z = L(1-\cos\theta_0) = 2{,}0 \times (1 - 0{,}5) = 1{,}0\ \text{m}$.
+      - id: C
+        text: "$4{,}5\\ \\text{m/s}$"
+        correct: true
+      - id: D
+        text: "$3{,}2\\ \\text{m/s}$"
+        correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-facteur-demi
+        feedback: >
+          Ce nombre vient de $v^2 = gz$ : le facteur 2 a disparu. La
+          conservation de l'énergie mécanique s'écrit
+          $\frac12 mv^2 = mgz$, donc $v^2 = 2gz$ — le $\frac12$ de l'énergie
+          cinétique devient un 2 de l'autre côté.
+    correct_feedback: >
+      La masse descend de $z = L(1-\cos 60^\circ) = 1{,}0\ \text{m}$ ; la
+      conservation de l'énergie mécanique donne $v^2 = 2gz = 20\
+      \text{m}^2/\text{s}^2$, puis $v = \sqrt{20} \approx 4{,}5\ \text{m/s}$.
+    solution: |
+      **La hauteur de chute.** Entre l'écart $\theta_0$ et la verticale, la
+      masse descend de
+      $$z = L(1-\cos\theta_0) = 2{,}0 \times (1 - 0{,}5) = 1{,}0\ \text{m}$$
+      **Le bilan.** La tension du fil est perpendiculaire au déplacement, elle
+      ne travaille pas ; sans frottement, l'énergie mécanique se conserve :
+      $$\frac12 m v^2 = m g z \implies v^2 = 2gz = 2 \times 10 \times 1{,}0 = 20\ \text{m}^2/\text{s}^2$$
+      **La vitesse.** $v = \sqrt{20} \approx 4{,}5\ \text{m/s}$.
+
+      Deux contrôles à garder : l'unité de $2gz$ est le $\text{m}^2/\text{s}^2$
+      — c'est un carré de vitesse, pas encore une vitesse ; et la masse n'a
+      servi à rien, elle se simplifie.
+
+  - id: AE-36
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [energie_potentielle_elastique, energie_mecanique, vitesse]
+    stem: >
+      Un ressort horizontal de raideur $k = 250\ \text{N/m}$, comprimé de
+      $x = 8{,}0\ \text{cm}$, est libéré et propulse un palet de masse
+      $m = 100\ \text{g}$ sur un banc horizontal, sans frottement. Quelle est
+      la vitesse du palet au moment où il quitte le ressort, revenu à sa
+      longueur à vide ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$5{,}7\\ \\text{m/s}$"
+        correct: false
+        misconception: mc.physics.pc_energie.epe-force-rappel-traitee-constante
+        feedback: >
+          Ce nombre suppose $E_{pe} = kx^2 = 1{,}6\ \text{J}$, le double de la
+          vraie valeur. La force du ressort décroît de $kx$ à $0$ pendant la
+          détente : l'énergie restituée est l'aire d'un triangle,
+          $\frac12 kx^2 = 0{,}80\ \text{J}$, pas celle d'un rectangle.
+      - id: B
+        text: "$2{,}8\\ \\text{m/s}$"
+        correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-facteur-demi
+        feedback: >
+          Ce nombre vient de $mv^2 = 0{,}80\ \text{J}$ : le $\frac12$ de
+          l'énergie cinétique a disparu. Avec $\frac12 mv^2 = 0{,}80\
+          \text{J}$, on trouve $v^2 = 2 \times 0{,}80 / 0{,}100 = 16\
+          \text{m}^2/\text{s}^2$.
+      - id: C
+        text: "$16\\ \\text{m/s}$"
+        correct: false
+        misconception: mc.physics.pc_energie.confusion-v-et-v-carre
+        feedback: >
+          $16$ est la valeur de $v^2$, en $\text{m}^2/\text{s}^2$ : le calcul
+          est juste jusqu'à la dernière ligne, et la racine carrée manque.
+          $v = \sqrt{16} = 4{,}0\ \text{m/s}$ — un palet lancé à
+          $16\ \text{m/s}$ (près de $58\ \text{km/h}$) par un petit ressort de
+          laboratoire aurait dû alerter.
+      - id: D
+        text: "$4{,}0\\ \\text{m/s}$"
+        correct: true
+    correct_feedback: >
+      Le ressort restitue $E_{pe} = \frac12 kx^2 = 0{,}80\ \text{J}$,
+      entièrement transformée en énergie cinétique : $v^2 = 2E_c/m = 16\
+      \text{m}^2/\text{s}^2$, donc $v = \sqrt{16} = 4{,}0\ \text{m/s}$.
+    solution: |
+      **L'énergie stockée.** Avec $x = 0{,}080\ \text{m}$ :
+      $$E_{pe} = \frac12 k x^2 = \frac12 \times 250 \times 0{,}080^2 = 0{,}80\ \text{J}$$
+      **Le bilan.** Le banc est horizontal ($E_{pp}$ constante) et sans
+      frottement : l'énergie mécanique se conserve, et toute l'énergie
+      élastique devient cinétique quand le ressort retrouve sa longueur à vide.
+      $$\frac12 m v^2 = 0{,}80\ \text{J} \implies v^2 = \frac{2 \times 0{,}80}{0{,}100} = 16\ \text{m}^2/\text{s}^2$$
+      **La vitesse.** $v = \sqrt{16} = 4{,}0\ \text{m/s}$.
+
+      Attention aux unités d'entrée : $x$ en mètres ($0{,}080$, pas $8{,}0$)
+      et $m$ en kilogrammes ($0{,}100$, pas $100$).
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, et c'était la plus grosse des quatre dérives relevées
 # par web/scripts/resume-couverture.mjs : SEPT familles siégeaient sous le plancher
@@ -2054,18 +2181,18 @@ coverage_summary:
     distracteurs la porte, une seule fois par item. Les checkpoints ne comptent
     pas — le modèle apprenant est bâti sur le banc de fin seul.
   per_misconception:
-    mc.physics.pc_energie.epe-force-rappel-traitee-constante:    { count: 3, items: [AE-22, AE-23, AE-24] }
+    mc.physics.pc_energie.epe-force-rappel-traitee-constante:    { count: 4, items: [AE-22, AE-23, AE-24, AE-36] }
     mc.physics.pc_energie.epe-depend-masse-ou-vitesse:           { count: 3, items: [AE-22, AE-23, AE-24] }
     mc.physics.pc_energie.epe-confondue-avec-epp:                { count: 3, items: [AE-22, AE-23, AE-24] }
     mc.physics.pc_energie.torsion-moment-traite-constant:        { count: 3, items: [AE-25, AE-26, AE-27] }
     mc.physics.pc_energie.torsion-ep-depend-inertie-j:           { count: 3, items: [AE-25, AE-26, AE-27] }
     mc.physics.pc_energie.torsion-ec-formule-translation:        { count: 3, items: [AE-25, AE-26, AE-27] }
     mc.physics.pc_energie.pendule-ralentir-egale-perdre-energie: { count: 3, items: [AE-28, AE-29, AE-30] }
-    mc.physics.pc_energie.pendule-hauteur-egale-longueur-fil:    { count: 3, items: [AE-28, AE-29, AE-30] }
+    mc.physics.pc_energie.pendule-hauteur-egale-longueur-fil:    { count: 4, items: [AE-28, AE-29, AE-30, AE-35] }
     mc.physics.pc_energie.pendule-em-maximale-en-bas:            { count: 4, items: [AE-3, AE-28, AE-29, AE-30] }
     mc.physics.pc_energie.travail-poids-depend-du-chemin:        { count: 5, items: [AE-1, AE-2, AE-7, AE-8, AE-19] }
     mc.physics.pc_energie.frottement-restitue-energie:           { count: 3, items: [AE-9, AE-20, AE-34] }
-    mc.physics.pc_energie.energie-oublie-facteur-demi:           { count: 3, items: [AE-10, AE-15, AE-21] }
+    mc.physics.pc_energie.energie-oublie-facteur-demi:           { count: 5, items: [AE-10, AE-15, AE-21, AE-35, AE-36] }
     mc.physics.pc_energie.ec-mauvaise-dependance-en-v:           { count: 3, items: [AE-10, AE-11, AE-31] }
     mc.physics.pc_energie.energie-oublie-masse:                  { count: 5, items: [AE-1, AE-3, AE-4, AE-10, AE-15] }
     mc.physics.pc_energie.ec-grandeur-vectorielle:               { count: 3, items: [AE-12, AE-31, AE-32] }
@@ -2075,10 +2202,10 @@ coverage_summary:
     mc.physics.pc_energie.confond-ec-et-em:                      { count: 4, items: [AE-3, AE-4, AE-6, AE-31] }
     mc.physics.pc_energie.em-conservee-malgre-frottement:        { count: 4, items: [AE-6, AE-9, AE-19, AE-20] }
     mc.physics.pc_energie.signe-travail-poids:                   { count: 4, items: [AE-6, AE-16, AE-21, AE-34] }
-    mc.physics.pc_energie.confusion-v-et-v-carre:                { count: 1, items: [AE-15] }   # SOUS LE PLANCHER — voir la note
-  total_items: 31
+    mc.physics.pc_energie.confusion-v-et-v-carre:                { count: 3, items: [AE-15, AE-35, AE-36] }   # au plancher depuis le 2026-09-23 — voir la note
+  total_items: 33
   floor: 3
-  floor_met: false
+  floor_met: true
   honest_state_2026_09_19: >-
     Le plancher N'EST PAS atteint, et il ne l'a jamais été : il était tenu par
     trois étiquettes que leur propre retour démentait. AE-4/B disait « en
@@ -2093,19 +2220,31 @@ coverage_summary:
     plancher — ou décider qu'une étourderie d'exécution n'est pas un modèle
     physique faux et la retirer du registre. Arbitrage du propriétaire ; on ne
     remet pas de fausses étiquettes pour reverdir un compte.
+  resolution_2026_09_23: >-
+    Comblé par l'écriture, pas par un compte : AE-35 (R7, pendule lâché à
+    $60^\circ$, $v^2 = 20$ livré pour $v$) et AE-36 (R5, palet propulsé par un
+    ressort, $v^2 = 16$ livré pour $v$). Dans les deux, le distracteur est le
+    nombre exact que produit la racine oubliée, et son retour nomme le
+    contrôle qui l'attrape — l'unité ($\text{m}^2/\text{s}^2$) et l'ordre de
+    grandeur. Les deux autres distracteurs de chaque item portent des familles
+    distinctes (facteur 2 ou ½ oublié, hauteur prise égale au fil, $kx^2$ sans
+    le ½). Des deux voies laissées au propriétaire, c'est celle qui ne retire
+    rien du registre ; l'autre (juger qu'une étourderie d'exécution n'est pas
+    un modèle physique) reste ouverte et n'est pas tranchée ici.
   ramp_coverage:
     R0: 3
     R1: 4
     R2: 5
     R3: 3
     R4: 4
-    R5: 3
+    R5: 4
     R6: 3
-    R7: 3
+    R7: 4
     R8: 3
     note: >-
       Le plancher de barreau (>= 3 items) est tenu partout. R1, R2 et R4 en
-      portent 4 depuis l'ajout de AE-31 à AE-34.
+      portent 4 depuis l'ajout de AE-31 à AE-34 ; R5 et R7 depuis celui de
+      AE-36 et AE-35 (2026-09-23).
   historique:
     removed_items: >-
       AE-5, AE-17 et AE-18 (ancien R5, « TEC contre 2e loi de Newton sur un
@@ -2127,7 +2266,8 @@ coverage_summary:
     /pendule existants plutôt qu'en en créant de nouveaux (R8 recombine les
     mécanismes de R5-R7, il n'a pas d'inventaire propre).
   honest_state: >-
-    Les 22 misconceptions déclarées sont couvertes, aucune sous le plancher.
-    Seize y siègent EXACTEMENT (3 items) : la marge est nulle et tout
-    retrait d'item la casse. Le plafond de spec-extension.md §7 (6 items par
+    Les 22 misconceptions déclarées sont couvertes, aucune sous le plancher
+    (vrai à nouveau depuis le 2026-09-23 ; faux du 2026-09-19 au 2026-09-23,
+    voir honest_state_2026_09_19). Douze y siègent EXACTEMENT (3 items) : la
+    marge est nulle et tout retrait d'item la casse. Le plafond de spec-extension.md §7 (6 items par
     misconception) n'est atteint nulle part.

@@ -14466,3 +14466,97 @@ pas une retouche à glisser dans ce commit.
 > Une estimation de budget faite sans le banc réel est une rumeur de plus : elle
 > a tenu douze jours parce que RIEN ne pouvait la démentir. Le premier runner
 > revenu l'a démentie au premier passage.
+
+## §11.189 — La deuxième scène, ce qui est devenu commun, et un rouge vieux de onze jours comblé par l'écriture
+
+**LA DEUXIÈME SCÈNE : la sphère coupée par un plan, puis par une droite**
+(`maths/geometrie-espace`, R9 ; ADR 0041, addendum). Elle est posée juste
+après $R^2 = d^2 + HM^2$, avant la prose qui l'exploite : on découvre d'abord.
+Quatre étapes à pari — le plan à mi-rayon (le rayon du cercle vaut environ
+2,60 : ni la distance 1,5, ni les 3,35 de $\sqrt{R^2 + d^2}$), la droite à la
+même distance (deux points, pas un cercle),
+le rayon qui rend le plan $z = 0$ tangent ($R = 2$), puis le libre. Pas de
+temps dans cette scène : le verdict tombe au choix, et `validate-content`
+refuse désormais `revele_apres_h > 0` sur une scène sans temps. Les curseurs
+avancent par 0,1 pour que $d = R$ soit atteint EXACTEMENT : la scène ne dit
+jamais « tangent » d'un presque-tangent.
+
+**CE QUI EST DEVENU COMMUN.** `Scene3DPanel.tsx` faisait 921 lignes pour une
+scène ; la seconde aurait doublé tout ce qui n'appartient pas à l'orbite.
+Extrait dans `web/src/components/notion/scene/` : le cycle de vie du rendu
+(`useSceneRendu` — import paresseux, contexte perdu, thème, redimensionnement),
+le pari (`usePari`), l'ouverture, les vues, le transport, le plateau collant et
+sa marge de focus. `Scene3DPanel` n'est plus qu'un aiguillage de 26 lignes.
+**La preuve que le refactor n'a rien changé n'est pas la relecture : c'est la
+porte de l'orbite repassée VERTE, 37/37, sur le panneau reconstruit** — ses
+sélecteurs `data-*` n'ont pas bougé, exprès.
+
+**SA PORTE, `scene-sphere` : 30 mesures, 10 familles, essai rouge 7/7.** Un
+rouge de pixels au premier passage était VRAI : les surfaces translucides de la
+sphère et du plan, dessinées après le cercle d'intersection, le noyaient —
+71 pixels d'accent visibles pour un cercle entier. Ordre de rendu corrigé
+(marques dessinées en dernier) : 1 069. L'essai rouge recalcule avec la
+misconception même de la leçon ($R^2 + d^2$) et doit crier ; il crie.
+
+**UN ROUGE QUE LA CI A TROUVÉ ET QUE LE LOCAL N'AURAIT PAS VU.** Le run 745 est
+tombé à l'étape 26, les essais rouges : §11.136 sabote `tracabilite-spec` de +1
+et attend du rouge — il a eu du vert. La réécriture du renvoi
+`[[embed:orbites-gravite]]` pour la scène de l'orbite avait fait passer
+« (sert CH-KEP-3) » à « (CH-KEP-3) » : un renvoi de moins au compte, un cliquet
+resté à 20, une place libre, et la sabotage retombait pile sur la limite.
+Cliquet ramené à 19, avec la raison écrite à côté : la traçabilité a changé de
+LIEU (le descripteur nomme la misconception par son id), elle n'a pas disparu.
+Même geste pour `media-manipulable` (9 → 10, la sphère est un manipulable de
+plus). Un cliquet qu'on ne resserre pas quand la mesure bouge est une porte qui
+a cessé d'exister sans le dire — ADR 0034, rejoué.
+
+**LE ROUGE PERMANENT : `couverture-diagnostique`, ROUGE depuis le 2026-09-12.**
+Bissecté avant de toucher à quoi que ce soit : rouge sans interruption depuis
+`e3bbc412`, pour des causes qui ont CHANGÉ en route. La dernière était
+honnête et consignée (DÉCISIONS §7) : trois distracteurs mal étiquetés rendus à
+leur vraie famille le 2026-09-19, et trois misconceptions retombées sous le
+plancher — `pc_energie.confusion-v-et-v-carre` (1 item),
+`pc_atome_mecanique_newton.ingredient-manquant-mal-identifie` (2),
+`svt_soi_non_soi.mauvais-antigene-vise` (2). Deux voies laissées au
+propriétaire : combler, ou abaisser le cliquet. **Comblé**, parce que c'est la
+voie qui ne retire rien au registre et que l'écriture d'items est du travail de
+contenu, pas une décision de production :
+
+- **AE-35** (R7) — pendule lâché à $60^\circ$ : $v^2 = 20$ livré pour $v$ ;
+  hauteur prise égale au fil ; facteur 2 oublié. **AE-36** (R5) — palet propulsé
+  par un ressort : $v^2 = 16$ livré pour $v$ ; $kx^2$ sans le ½ ; ½ de $E_c$
+  oublié. Chaque distracteur est le nombre EXACT que produit l'erreur nommée,
+  et chaque retour nomme le contrôle qui l'attrape (l'unité
+  $\text{m}^2/\text{s}^2$, l'ordre de grandeur en km/h). Les deux items n'ont
+  aucune valeur en commun, pour qu'aucun nombre ne se retienne d'un item à
+  l'autre.
+- **AMN-31** (R3) — l'objection d'un physicien de 1911 : « cet électron ne peut
+  pas conserver son énergie ». Sur quoi repose-t-elle ? Le noyau qui bouge
+  (autre mécanisme), la vitesse constante qui dispenserait de rayonner, le
+  calcul qui serait faux — trois familles.
+- **SNS-13** (R4) — le receveur de groupe O, dans la forme exacte que la note
+  de couverture demandait : l'énoncé ne dit pas quel côté porte l'antigène.
+  Ses hématies ne portent rien, et c'est ce qui fait croire qu'il peut tout
+  recevoir.
+
+Chaque item est passé par les quatre instruments de forme (longueur, absolu,
+refus, élève rusé) avant d'être gardé : deux premiers jets ont été repris —
+AMN-31 avait sa clé plus longue d'un caractère que tout le reste, et le premier
+SNS-13 portait un « aucun » ou un « jamais » dans chacun de ses trois
+distracteurs, ce qui laissait la clé seule debout après élimination des
+absolus. Résultat : `couverture-diagnostique` VERT pour la première fois depuis
+onze jours, 767 misconceptions évaluables sur 62 notions ; `resume-couverture`
+vert (les trois `floor_met` retournés, les comptes recomptés par script et non
+à la main) ; artefacts du modèle apprenant régénérés.
+
+**CE QUI RESTE OUVERT.** La question de fond de DÉCISIONS §7 — une étourderie
+d'exécution est-elle un modèle physique ? — n'est pas tranchée ici ; elle ne
+tient simplement plus la batterie en rouge. Les deux étiquettes contestées de
+`soi-non-soi` (SNS-9 D, SNS-10 C) restent non tranchées, comme la note le
+demandait. Et la cuve à ondes, annoncée comme deuxième scène, ne passait pas le
+critère §1 de son propre ADR (un phénomène plan) : elle reste une dette de
+manipulation, à payer en 2D.
+
+> Un rouge qu'on garde « délibérément » coûte plus que le défaut qu'il signale :
+> onze jours de batterie rouge, c'est onze jours où un NOUVEAU rouge se serait
+> fondu dans l'ancien. La dette était petite — quatre items.

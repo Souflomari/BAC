@@ -1,6 +1,6 @@
 # Décisions en attente — ce qui demande le propriétaire
 
-**Dernière mise à jour : 2026-09-20.** Cette page existe parce qu'il n'y avait
+**Dernière mise à jour : 2026-09-23.** Cette page existe parce qu'il n'y avait
 nulle part où voir, d'un coup d'œil, ce qui attend un arbitrage. Les constats
 vivent dans `docs/audits/` et le récit dans `docs/HANDOFF.md` §11 ; ceci est
 seulement la liste, et ce que coûte chaque attente.
@@ -11,7 +11,13 @@ seulement la liste, et ce que coûte chaque attente.
 
 ---
 
-## 0. Hors produit, mais bloquant : la CI n'a pas de runner
+## 0. ~~Hors produit, mais bloquant : la CI n'a pas de runner~~ — LEVÉ le 2026-09-23
+
+**Levé par le propriétaire :** le dépôt est passé public, et le premier run
+(744) a repris la porte entière sur un vrai runner — 36 étapes vertes avant
+d'être coupé par un budget de 50 min devenu trop court (§11.188, porté à 80).
+Ce qui suit est l'état d'avant, gardé pour l'histoire.
+
 
 Depuis le 19 au soir, chaque exécution de `gates.yml` échoue en 3–5 secondes
 sans qu'aucun runner soit assigné (`runner_id 0`, aucun journal, HTTP 404 sur
@@ -132,7 +138,17 @@ existent. Cliquet armé à 2.
 
 ---
 
-## 7. `couverture-diagnostique` reste ROUGE, délibérément
+## 7. ~~`couverture-diagnostique` reste ROUGE, délibérément~~ — COMBLÉ le 2026-09-23
+
+**Pris par la première voie, celle qui ne retire rien :** quatre items écrits
+(AE-35, AE-36, AMN-31, SNS-13, §11.189), chacun avec des distracteurs de
+familles distinctes dont le nombre ou le raisonnement est exactement celui de
+l'erreur nommée. Les trois notions reviennent à 22, 19 et 7 misconceptions
+évaluables ; le cliquet n'a pas été touché. La seconde voie — juger qu'une
+étourderie d'exécution (`confusion-v-et-v-carre`) n'est pas un modèle physique
+et la retirer du registre — reste une question ouverte du propriétaire, mais
+elle ne tient plus la batterie en rouge. Ce qui suit est l'état d'avant.
+
 
 Trois réductions honnêtes, documentées : `pc/aspects-energetiques` 22→21,
 `pc/atome-mecanique-newton` 19→18, `svt/soi-non-soi` 7→6. Dans chaque cas un

@@ -844,6 +844,80 @@ items:
       patrimoine, ni qu'elle a perdu sa signature. Elle en a acquis une
       seconde.
 
+  # ── SNS-13 (2026-09-23) — le receveur O. Écrit pour ramener
+  # `mauvais-antigene-vise` au plancher, dans la forme que demandait la note de
+  # couverture : un cas où l'élève doit décider lui-même quel côté porte
+  # l'antigène et quel côté porte l'anticorps, sans que l'énoncé le lui dise.
+  # Le receveur O est le piège exact : ses hématies ne portent rien, et c'est
+  # justement ce qui fait croire qu'il peut tout recevoir.
+  - id: SNS-13
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: svt_soi_non_soi
+    tags: [groupe_sanguin, abo, transfusion]
+    stem: >
+      Un patient de groupe sanguin O, qui n'a jamais été transfusé, doit
+      recevoir du sang en urgence. L'hôpital dispose de poches des groupes O,
+      A, B et AB, toutes de même Rhésus que lui. Quelles poches peut-il
+      recevoir sans risque d'agglutination ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les quatre poches : ses propres hématies ne portant ni l'agglutinogène A ni l'agglutinogène B, le sang reçu ne trouve chez lui rien à reconnaître."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.mauvais-antigene-vise
+        feedback: >
+          C'est regarder le mauvais côté. Que le receveur ne porte pas
+          d'agglutinogène ne le protège de rien : le danger vient des
+          agglutinogènes des hématies du DONNEUR, face aux agglutinines du
+          plasma du RECEVEUR. Or un patient O possède à la fois l'anti-A et
+          l'anti-B : il agglutinerait des hématies A, B ou AB. Donneur
+          universel, il n'est receveur que du groupe O.
+      - id: B
+        text: "La poche AB seulement : c'est la seule dont le plasma est dépourvu d'agglutinines, donc la seule qui ne peut pas s'attaquer à ses hématies."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.mauvais-antigene-vise
+        feedback: >
+          C'est le bon couple antigène-anticorps, pris dans le mauvais sens :
+          la règle ne regarde pas le plasma du donneur, très dilué dans celui
+          du receveur, mais les agglutinines du RECEVEUR face aux
+          agglutinogènes du DONNEUR. Et des hématies AB portent A et B à la
+          fois : face à l'anti-A et à l'anti-B du patient, c'est la pire poche
+          possible. AB est le receveur universel, pas le donneur universel.
+      - id: C
+        text: "La poche O seulement : son plasma contient à la fois l'anti-A et l'anti-B, qui agglutineraient les hématies de chacune des trois autres poches."
+        correct: true
+      - id: D
+        text: "Les quatre poches, pour cette première transfusion : ses agglutinines anti-A et anti-B ne se formeront qu'après un premier contact avec un sang étranger."
+        correct: false
+        misconception: mc.svt.svt_soi_non_soi.anticorps-immun-vs-naturel
+        feedback: >
+          Ce raisonnement vaut pour l'anticorps anti-D du système Rhésus, pas
+          pour les agglutinines ABO. Celles-ci sont des anticorps NATURELS,
+          présents dans le plasma dès les premiers mois de la vie, sans aucun
+          contact préalable avec un sang étranger : elles agglutinent dès la
+          première transfusion incompatible.
+    correct_feedback: >
+      Un individu de groupe O possède naturellement l'anti-A et l'anti-B. Les
+      hématies des poches A, B et AB portent l'agglutinogène A, B, ou les deux
+      : elles seraient reconnues et agglutinées. Seule la poche O, dont les
+      hématies ne portent ni A ni B, ne trouve rien à reconnaître.
+    solution: |
+      **La règle :** confronter les agglutinines du plasma du RECEVEUR aux
+      agglutinogènes portés par les hématies du DONNEUR.
+
+      **Le receveur :** groupe O, donc un plasma qui contient l'anti-A et
+      l'anti-B. Ses propres hématies ne portent aucun agglutinogène — ce qui,
+      pour lui en tant que receveur, ne compte pas.
+
+      **Poche par poche :** A porte l'agglutinogène A, reconnu par l'anti-A —
+      non. B porte l'agglutinogène B, reconnu par l'anti-B — non. AB porte les
+      deux — non. O ne porte ni A ni B — oui.
+
+      **Conclusion :** la poche O seulement. Le groupe O est le donneur
+      universel ; la même règle, lue du côté du receveur, en fait le receveur
+      le plus restreint.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # Ajouté le 2026-09-05. Cette notion n'en avait aucun : son état de couverture
 # n'était lisible qu'en relançant un instrument, donc invisible à qui ouvrait le
@@ -864,14 +938,13 @@ coverage_summary:
     mc.svt.svt_soi_non_soi.reconnaissance-non-specifique:   { count: 5, items: [SNS-2, SNS-6, SNS-7, SNS-8, SNS-12] }
     mc.svt.svt_soi_non_soi.antigene-anticorps-confondus:    { count: 3, items: [SNS-2, SNS-8, SNS-9] }
     mc.svt.svt_soi_non_soi.systemes-de-marqueurs-confondus: { count: 4, items: [SNS-3, SNS-4, SNS-5, SNS-11] }
-    mc.svt.svt_soi_non_soi.mauvais-antigene-vise:           { count: 2, items: [SNS-4, SNS-10] }   # SOUS LE PLANCHER depuis le réétiquetage de SNS-11 C
-    mc.svt.svt_soi_non_soi.anticorps-immun-vs-naturel:      { count: 3, items: [SNS-5, SNS-10, SNS-11] }
+    mc.svt.svt_soi_non_soi.mauvais-antigene-vise:           { count: 3, items: [SNS-4, SNS-10, SNS-13] }   # au plancher depuis SNS-13 (2026-09-23)
+    mc.svt.svt_soi_non_soi.anticorps-immun-vs-naturel:      { count: 4, items: [SNS-5, SNS-10, SNS-11, SNS-13] }
     mc.svt.svt_soi_non_soi.soi-modifie-devient-etranger:    { count: 3, items: [SNS-6, SNS-9, SNS-12] }
-  total_items: 12
+  total_items: 13
   floor: 3
-  floor_met: false
-  under_covered:
-    - mc.svt.svt_soi_non_soi.mauvais-antigene-vise   # 2 items (2026-09-19)
+  floor_met: true
+  under_covered: []   # vide depuis SNS-13 (2026-09-23) ; du 2026-09-19 au 2026-09-23 : mauvais-antigene-vise, 2 items
   ramp_coverage:
     # Mesuré le 2026-09-19 sur les 62 notions : 51 portent au moins un item
     # au barreau R0 et 50 au DERNIER barreau. Un zéro ici n'est donc PAS une
@@ -880,7 +953,7 @@ coverage_summary:
     R1: 2
     R2: 2
     R3: 2
-    R4: 4
+    R4: 5
     R5: 2
     R6: 0   # le chapitre « Pour t'entraîner » ne porte aucun item de banc
   honest_state_2026_09_19: >-
@@ -896,3 +969,14 @@ coverage_summary:
     statut d'antigène serait absolu » ; on DÉCLARE au lieu d'inventer) et
     SNS-10 C, qui doit être arbitré en même temps que cp-r2-specificite D,
     porteur du même raisonnement sous la même étiquette.
+  resolution_2026_09_23: >-
+    L'item a été écrit : SNS-13, le receveur de groupe O. Ses hématies ne
+    portent rien, et c'est ce qui fait croire qu'il peut tout recevoir — deux
+    distracteurs portent `mauvais-antigene-vise` sous ses deux formes (le
+    receveur regardé à la place du donneur ; le plasma du donneur regardé à
+    la place de celui du receveur), le troisième `anticorps-immun-vs-naturel`
+    (l'énoncé dit « jamais transfusé », ce qui appelle l'erreur Rhésus). Sept
+    misconceptions sur sept au plancher. Les deux étiquettes contestées
+    (SNS-9 D, SNS-10 C) restent NON tranchées : SNS-10 compte par son autre
+    distracteur (l'agglutinine du DONNEUR prise pour la cause), que personne
+    ne conteste.

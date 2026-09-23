@@ -10,7 +10,9 @@ skill_code: pc_atome_mecanique_newton
 # `coverage_summary` at the end of this file for honest counts: this is a
 # short, single-arc conceptual chapter, not a computation-heavy one, so its
 # 18 items span mostly-distinct facets rather than repeating a handful of
-# models 3+ times each — only 1 of 19 misconceptions meets the ≥3 floor.
+# models 3+ times each — only 1 of 19 misconceptions met the ≥3 floor at
+# backfill time. (Since then: AMN-19…30 on 2026-09-05, AMN-31 on 2026-09-23 —
+# 19 of 19 at the floor; the counts live in `coverage_summary`.)
 misconceptions:
   - id: mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative
     label: >-
@@ -2172,6 +2174,79 @@ items:
       lumière rouge, parfaitement plausible pour une transition atomique.
 
 
+  # ── AMN-31 (2026-09-23) — l'objection de 1911. Écrit pour ramener
+  # `ingredient-manquant-mal-identifie` au plancher après le réétiquetage
+  # d'AMN-27 D. AMN-9 et AMN-26 demandent « quel élément manque » ; celui-ci
+  # part de l'OBJECTION et demande sur quoi elle repose, avec trois
+  # distracteurs de trois familles distinctes : le noyau qui bouge (autre
+  # mécanisme), la vitesse constante qui dispenserait de rayonner, le calcul
+  # qui serait faux.
+  - id: AMN-31
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: pc_atome_mecanique_newton
+    tags: [limites_mecanique_newton, rayonnement, paradoxe, plancher]
+    primary_misconception: mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie
+    stem: >
+      Le calcul du chapitre 3 donne à l'électron une orbite circulaire
+      parfaitement stable. Un physicien de 1911 objecte pourtant : « cet
+      électron ne peut pas conserver son énergie ». Sur quoi repose son
+      objection ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le noyau n'est pas immobile : attiré par l'électron, il se déplace à son tour, et l'orbite calculée avec un noyau supposé fixe cesse d'être valable."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie
+        feedback: >
+          Le mouvement du noyau existe, mais il ne fait perdre aucune énergie.
+          Le noyau est environ $1\,800$ fois plus massif que l'électron : le
+          prendre en compte déplace à peine le centre de l'orbite, et deux
+          charges qui tournent autour de leur centre commun forment encore un
+          système stable, comme la Terre et la Lune. L'énergie ne s'en va
+          qu'à travers le RAYONNEMENT d'une charge accélérée.
+      - id: B
+        text: "L'électron est une charge accélérée en permanence vers le noyau : il rayonne une onde électromagnétique, et cette énergie est prise sur son orbite."
+        correct: true
+      - id: C
+        text: "L'objection ne tient pas : la vitesse de l'électron étant constante, son accélération est nulle, et une charge qui n'accélère pas ne rayonne rien."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.mcu-implique-acceleration-nulle
+        feedback: >
+          Une vitesse de norme constante n'est pas un vecteur vitesse constant :
+          sa direction tourne sans cesse. Le mouvement circulaire uniforme a
+          donc une accélération centripète $a_N = v^2/r$ jamais nulle — et
+          c'est justement elle qui fait rayonner l'électron.
+      - id: D
+        text: "Le calcul du chapitre 3 contient une erreur : appliquée sans faute, la deuxième loi de Newton donne une orbite dont le rayon diminue peu à peu."
+        correct: false
+        misconception: mc.physics.pc_atome_mecanique_newton.calcul-incomplet-confondu-avec-calcul-faux
+        feedback: >
+          Le calcul est juste : pour une orbite de rayon fixe, la deuxième loi
+          de Newton donne bien la vitesse et la période trouvées au chapitre 3,
+          et rien dans la mécanique seule ne fait diminuer le rayon. Ce qui
+          manque est un ingrédient venu d'ailleurs — l'électromagnétisme —, pas
+          une correction de calcul.
+    correct_feedback: >
+      Toute charge électrique accélérée rayonne de l'énergie. L'électron en
+      orbite, même à vitesse de norme constante, a une accélération centripète
+      permanente : il rayonne sans cesse, perd de l'énergie, et spirale vers le
+      noyau. L'objection vient de l'électromagnétisme, pas de la mécanique.
+    solution: |
+      **Ce que la mécanique établit** (chapitre 3) : une orbite de rayon $r$
+      fixe est possible, avec une vitesse et une période parfaitement
+      déterminées. Le calcul est juste.
+
+      **Ce que l'électromagnétisme ajoute :** toute charge accélérée rayonne
+      une onde électromagnétique — c'est le principe de l'antenne émettrice.
+      Or l'électron a une accélération centripète $a_N = v^2/r$ qui n'est
+      jamais nulle, même quand la norme de sa vitesse est constante.
+
+      **La conséquence.** L'énergie rayonnée est prise sur l'énergie de
+      l'orbite : l'électron ne peut pas garder un rayon constant, il spirale
+      vers le noyau. C'est cet ingrédient, extérieur à la mécanique de Newton,
+      qui fonde l'objection.
+
 coverage_summary:
   # RÉSERVE MESURÉE le 2026-09-19 : AMN-27 D portait
   # `ingredient-manquant-mal-identifie` alors que son propre retour écrit
@@ -2187,6 +2262,8 @@ coverage_summary:
   # n'est pas de l'honnêteté, c'est la même faute sous un autre nom : la
   # porte `resume-couverture` est passée ROUGE et elle avait raison.)
   # Il faut un item de plus, ou retirer la ligne du registre.
+  # → RÉSOLU le 2026-09-23 par un item de plus : AMN-31 (l'objection de 1911,
+  # trois distracteurs de trois familles distinctes). Le registre est intact.
   #
   # Deux autres étiquettes sont contestées (AMN-24 D, AMN-25 D) mais les DEUX
   # rapports proposent des familles d'accueil DIFFÉRENTES, et aucune ne décrit
@@ -2198,11 +2275,11 @@ coverage_summary:
   # (web/scripts/couverture-diagnostique.mjs) — celui qui garde le plancher en
   # CI — compte tout distracteur tagué. Deux conventions donnaient deux
   # chiffres pour la même banque ; on retient celle de la porte.
-  total_items: 30
+  total_items: 31
   per_misconception:
     mc.physics.pc_atome_mecanique_newton.gravitation-consideree-significative: 6
-    mc.physics.pc_atome_mecanique_newton.calcul-incomplet-confondu-avec-calcul-faux: 4
-    mc.physics.pc_atome_mecanique_newton.mcu-implique-acceleration-nulle: 4
+    mc.physics.pc_atome_mecanique_newton.calcul-incomplet-confondu-avec-calcul-faux: 5
+    mc.physics.pc_atome_mecanique_newton.mcu-implique-acceleration-nulle: 5
     mc.physics.pc_atome_mecanique_newton.mecanique-jugee-inapplicable-aux-charges: 4
     mc.physics.pc_atome_mecanique_newton.calcul-mecanique-suffit-a-expliquer-stabilite: 3
     mc.physics.pc_atome_mecanique_newton.confond-cause-et-consequence-effondrement: 3
@@ -2212,7 +2289,7 @@ coverage_summary:
     mc.physics.pc_atome_mecanique_newton.energie-atome-continue-non-quantifiee: 3
     mc.physics.pc_atome_mecanique_newton.force-electrostatique-mal-identifiee: 3
     mc.physics.pc_atome_mecanique_newton.formule-orbite-non-adaptee-Z: 3
-    mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie: 2   # SOUS LE PLANCHER — voir la réserve en tête de ce bloc
+    mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie: 3   # au plancher depuis AMN-31 (2026-09-23) — voir la réserve en tête de ce bloc
     mc.physics.pc_atome_mecanique_newton.mecanisme-arret-effondrement-mal-compris: 3
     mc.physics.pc_atome_mecanique_newton.norme-acceleration-mcu-non-constante: 3
     mc.physics.pc_atome_mecanique_newton.rapport-forces-dependrait-de-r: 3
@@ -2228,28 +2305,35 @@ coverage_summary:
     mc.physics.pc_atome_mecanique_newton.calcul-mecanique-suffit-a-expliquer-stabilite: 2
     mc.physics.pc_atome_mecanique_newton.energie-atome-continue-non-quantifiee: 2
     mc.physics.pc_atome_mecanique_newton.formule-orbite-non-adaptee-Z: 2
-    mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie: 2
+    mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie: 3
     mc.physics.pc_atome_mecanique_newton.vitesse-orbitale-dependance-r-mal-comprise: 2
     mc.physics.pc_atome_mecanique_newton.mecanisme-arret-effondrement-mal-compris: 1
     mc.physics.pc_atome_mecanique_newton.norme-acceleration-mcu-non-constante: 1
     mc.physics.pc_atome_mecanique_newton.rapport-forces-dependrait-de-r: 1
     mc.physics.pc_atome_mecanique_newton.trajectoire-elliptique-supposee-necessaire: 1
   floor: 3
-  floor_met: false
-  under_covered:
-    - mc.physics.pc_atome_mecanique_newton.ingredient-manquant-mal-identifie   # 2 items depuis le réétiquetage d'AMN-27 D (2026-09-19)
+  floor_met: true
+  under_covered: []   # vide depuis AMN-31 (2026-09-23) ; du 2026-09-19 au 2026-09-23 : ingredient-manquant-mal-identifie, 2 items
   honest_state_2026_09_19: >
     18 des 19 modèles déclarés atteignent le plancher de 3 items. Le
     dix-neuvième — `ingredient-manquant-mal-identifie` — en a 2 depuis que
     AMN-27 D a été rendu à la famille que son propre retour décrit. Rien
     n'a été recompté à l'envers pour refermer l'écart : il se comble en
     écrivant un item, pas en changeant un nombre.
+  resolution_2026_09_23: >
+    L'item a été écrit : AMN-31 part de l'objection d'un physicien de 1911
+    (« cet électron ne peut pas conserver son énergie ») et demande sur quoi
+    elle repose. Le noyau qui se déplace porte `ingredient-manquant-mal-
+    identifie` ; la vitesse constante qui dispenserait de rayonner porte
+    `mcu-implique-acceleration-nulle` ; le calcul qui serait faux porte
+    `calcul-incomplet-confondu-avec-calcul-faux`. 19 modèles sur 19 au
+    plancher.
   untagged_distractors: 4   # « misconception: null » assumés (glissement d'arithmétique, sans modèle stable)
   ramp_coverage:
     R0: 3
     R1: 6
     R2: 6
-    R3: 6
+    R3: 7
     R4: 5
     R5: 4
   note: >
