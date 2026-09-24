@@ -141,7 +141,7 @@ function lectureText(m: number): RecomputeResult {
   const vlim = vlimOf(m);
   return {
     kind: "text",
-    value: `m = ${formatFr(m)} kg (k inchangé) → τ = m/k = ${formatFr(tau)} s ; v_lim = mg/k = ${formatFr(vlim)} m/s`,
+    value: `m = ${formatFr(m)} kg (k inchangé) → τ = m/k = ${formatFr(tau)} s ; v_lim = mg/k = ${formatFr(vlim)} m/s`,
   };
 }
 

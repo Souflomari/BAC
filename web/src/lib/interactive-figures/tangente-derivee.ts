@@ -103,7 +103,7 @@ function labelAPos(t: number): RecomputeResult {
 }
 
 function labelAText(t: number): RecomputeResult {
-  return { kind: "text", value: `A(${formatFr(t)} ; ${formatFr(f(t))})` };
+  return { kind: "text", value: `A(${formatFr(t)} ; ${formatFr(f(t))})` };
 }
 
 function repereDash(t: number): RecomputeResult {
@@ -136,7 +136,7 @@ function tangentPath(t: number): RecomputeResult {
 }
 
 function equationLabel(t: number): RecomputeResult {
-  return { kind: "text", value: `T : d = ${formatFr(fPrime(t))}t − ${formatFr(f(t))}` };
+  return { kind: "text", value: `T : d = ${formatFr(fPrime(t))}t − ${formatFr(f(t))}` };
 }
 
 function slopeLabel(t: number): RecomputeResult {

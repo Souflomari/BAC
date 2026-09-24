@@ -207,7 +207,7 @@ function phValeur(V: number): RecomputeResult {
  * 'équivalence' at the pH≈7 point"): the ONLY place a qualitative word can
  * appear, and only exactly at V_E/2 and V_E. */
 function verdict(V: number): RecomputeResult {
-  if (Math.abs(V - VE_HALF) < EPS) return { kind: "text", value: " — demi-équivalence : pH = pKA" };
+  if (Math.abs(V - VE_HALF) < EPS) return { kind: "text", value: " — demi-équivalence : pH = pKA" };
   if (Math.abs(V - VE) < EPS) return { kind: "text", value: " — équivalence" };
   return { kind: "text", value: "" };
 }

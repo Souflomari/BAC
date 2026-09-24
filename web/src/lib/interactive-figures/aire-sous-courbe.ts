@@ -92,7 +92,7 @@ function boundLabelText(b: number): RecomputeResult {
 }
 
 function formuleBorne(b: number): RecomputeResult {
-  return { kind: "text", value: `sur [0 ; ${formatFr(b)}]` };
+  return { kind: "text", value: `sur [0 ; ${formatFr(b)}]` };
 }
 
 function formuleValeur(b: number): RecomputeResult {

@@ -72,7 +72,7 @@ function formuleN(n: number): RecomputeResult {
   const count = Math.round(n);
   return {
     kind: "text",
-    value: `ici, n = ${count} : ${count} racines espacées de 2π/${count}`,
+    value: `ici, n = ${count} : ${count} racines espacées de 2π/${count}`,
   };
 }
 
