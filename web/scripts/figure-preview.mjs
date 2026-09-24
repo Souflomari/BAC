@@ -71,17 +71,68 @@ const CLASSES_ARMEES = new Set([
 ]);
 const fichiers = args.filter((a) => !a.startsWith("--"));
 
-if (fichiers.length === 0) {
-  console.error("usage: node scripts/figure-preview.mjs [--dark] <chemin-svg>…");
+if (fichiers.length === 0 && !args.includes("--jetons")) {
+  console.error("usage: node scripts/figure-preview.mjs [--dark] <chemin-svg>…  |  [--dark] --jetons");
   process.exit(1);
 }
 
-// Les jetons du thème demandé, depuis la source générée.
+// Les jetons du thème demandé, depuis la source générée — composés COMME LE
+// NAVIGATEUR LES COMPOSE : la base `:root`, puis, en sombre, les surcharges du
+// bloc `.dark` (et lui seul).
+//
+// PIÈGE PAYÉ N°3 (2026-09-24) — pendant dix-neuf jours, le mode sombre de
+// cette porte a mesuré le thème CLAIR. On prenait le texte de `.dark` jusqu'à
+// la FIN du fichier ; depuis le 2026-09-05 (087440e2, « le papier n'a pas de
+// thème »), la fin du fichier est un bloc `@media print` qui redéclare TOUS
+// les jetons clairs sous `:root.dark`. Collectés dans l'ordre, les clairs
+// venaient en dernier et gagnaient : les PNG « -sombre » étaient identiques
+// à l'octet près aux PNG clairs, et la porte « contraste — thème sombre » de
+// la CI mesurait le clair une seconde fois, verte. Vu le jour où une figure
+// neuve a été regardée dans les deux thèmes (ADR 0039 : deux valeurs qui
+// devraient différer et sont égales à l'octet près sont un défaut de mesure).
 const css = readFileSync(path.join(WEB, "src/app/tokens.generated.css"), "utf8");
-const bloc = sombre ? css.slice(css.indexOf(".dark")) : css.slice(0, css.indexOf(".dark"));
+const debutSombre = css.indexOf(".dark {");
+const finSombre = debutSombre < 0 ? -1 : css.indexOf("}", debutSombre);
+if (debutSombre < 0 || finSombre < 0) {
+  console.error("  ✗ INSTRUMENT MUET : bloc `.dark { … }` introuvable dans tokens.generated.css — aucun thème ne peut être composé honnêtement");
+  process.exit(2);
+}
+const blocClair = css.slice(0, debutSombre);
+const blocSombre = css.slice(debutSombre, finSombre + 1);
+const bloc = sombre ? blocClair + blocSombre : blocClair;
 // [A-Za-z0-9-] et non [a-z0-9-] — voir PIÈGE PAYÉ en tête de fichier.
-const jetons = [...bloc.matchAll(/(--(?:figure|color)-[A-Za-z0-9-]+):\s*([^;]+);/g)];
+const RE_JETON = /(--(?:figure|color)-[A-Za-z0-9-]+):\s*([^;]+);/g;
+const jetons = [...bloc.matchAll(RE_JETON)];
+// Même nom déclaré deux fois dans le même bloc : le DERNIER gagne, comme en CSS.
 const declarations = jetons.map(([, k, v]) => `  ${k}: ${v.trim()};`).join("\n");
+// L'instrument prouve qu'il a changé de thème avant de parler du thème : en
+// sombre, la surface des figures DOIT différer de la claire. Sinon on sort
+// MUET, en échec — jamais un vert sur le mauvais thème.
+{
+  const valeur = (texte, nom) => {
+    let v = null;
+    for (const [, k, x] of texte.matchAll(RE_JETON)) if (k === nom) v = x.trim();
+    return v;
+  };
+  const surfaceClaire = valeur(blocClair, "--figure-surface");
+  const surfaceDemandee = valeur(bloc, "--figure-surface");
+  if (!surfaceClaire || !surfaceDemandee) {
+    console.error("  ✗ INSTRUMENT MUET : --figure-surface introuvable dans les jetons composés");
+    process.exit(2);
+  }
+  if (sombre && surfaceDemandee === surfaceClaire) {
+    console.error(`  ✗ INSTRUMENT MUET : thème sombre demandé, mais --figure-surface vaut ${surfaceDemandee}, comme en clair — la porte mesurerait le clair une seconde fois`);
+    process.exit(2);
+  }
+  // `--jetons` : la composition et ce contrôle SEULS, sans navigateur — c'est
+  // la forme sous laquelle les essais rouges §11.195 le rejouent (la CI les
+  // lance sans Chromium). Le contrôle est le MÊME code que celui qui précède
+  // toute capture : le rejouer seul, c'est rejouer celui de la porte.
+  if (args.includes("--jetons")) {
+    console.log(`jetons du thème ${sombre ? "sombre" : "clair"} : --figure-surface = ${surfaceDemandee} (clair : ${surfaceClaire}), ${jetons.length} déclarations`);
+    process.exit(0);
+  }
+}
 
 /**
  * PIÈGE PAYÉ N°2 (2026-09-03) — l'instrument rendait des carrés de 26 px.

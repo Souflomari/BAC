@@ -567,6 +567,28 @@
       "de": "<linearGradient id=\"liquid-grad\"",
       "vers": "<linearGradient id=\"ce-arrow\"",
       "porte": "node scripts/figures-id-divergents.mjs --porte"
+    },
+    {
+      "id": "§11.195 (a)",
+      "quoi": "le mode sombre de la porte figures retombe sur l'ancien découpage des jetons — il mesure le thème CLAIR une seconde fois, vert",
+      "notion": "web/scripts",
+      "fichier": "scripts/figure-preview.mjs",
+      "de": "const bloc = sombre ? blocClair + blocSombre : blocClair;",
+      "vers": "const bloc = sombre ? css.slice(css.indexOf(\".dark\")) : blocClair;",
+      "porte": "node scripts/figure-preview.mjs --dark --jetons",
+      "motif": "INSTRUMENT MUET",
+      "note": "C'EST LE DÉFAUT RÉEL, pas un défaut inventé : du 2026-09-05 au 2026-09-24, la porte « contraste — thème sombre » de la CI prenait le texte de `.dark` jusqu'à la fin du fichier, où le bloc `@media print` redéclare les jetons clairs — les PNG « -sombre » étaient identiques à l'octet près aux clairs. Vu en regardant une figure neuve dans les deux thèmes."
+    },
+    {
+      "id": "§11.195 (b)",
+      "quoi": "le bloc `.dark` des jetons perd la surface des figures — le thème sombre composé a la surface du clair",
+      "notion": "web/src/app",
+      "fichier": "src/app/tokens.generated.css",
+      "de": "  --figure-surface: #1A1917;\n",
+      "vers": "",
+      "porte": "node scripts/figure-preview.mjs --dark --jetons",
+      "motif": "INSTRUMENT MUET",
+      "note": "Le sens PRODUIT du même contrôle : une refonte du thème qui oublie de surcharger la surface en sombre. La porte ne doit pas rendre un vert sur des figures rendues en clair sous un nom sombre."
     }
   ]
 }
