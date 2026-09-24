@@ -15169,3 +15169,58 @@ même du chapitre, et seul un sens de variation mesuré aux quatre crans l'a vu.
 Une mesure relative sature : la porte exige la croissance JUSQU'À saturation,
 et une variation franche — et l'essai de sabotage « bandes de 2 cm » prouve que
 ce relâchement ne l'a pas rendue aveugle au défaut qu'il a trouvé.
+
+## §11.198 — La vague 2 de la cuve : une scène qui ÉCLAIRAIT (WCAG 2.3.1), et une batterie locale aveugle aux fichiers neufs
+
+**CE QUE LES TROIS CRITIQUES ONT VU** (calme, visuel, ergonomie — sur les
+captures à 1 280, 390 et en sombre ; elles convergent) :
+
+1. **La scène éclairait.** Au ralenti ×5, une onde de 40 Hz inverse chaque point
+   de l'eau huit fois par seconde, sur plus de la moitié d'un champ visuel de
+   10° : le motif de rayures que nomme le critère WCAG 2.3.1 (niveau A). La
+   critique l'a soupçonné sans le mesurer ; la porte le MESURE maintenant
+   (famille `eclairs`, sur les pixels du produit, image par image) : contraste
+   plein, **63 %** d'une fenêtre de 10° éclairait plus de 3 fois par seconde.
+   Pendant qu'une onde rapide défile, l'eau est dessinée sous la définition de
+   l'éclair ; l'image arrêtée reprend son contraste en 450 ms ; le mouvement
+   réduit du système est honoré (la cuve calcule sans animer, famille
+   `sans-mouvement`), et « Image finale » est offert à tous.
+2. **L'œil allait au mauvais côté.** L'amont (l'onde incidente et son reflet,
+   une grille stationnaire qui n'enseigne rien) était peint à l'encre pleine ;
+   l'eau et les instruments avaient presque la même valeur ; le sombre faisait
+   de la cuve une grille lumineuse. Plafonds d'encre par côté et par thème,
+   liseré de fond sous chaque trait d'instrument, la règle-source en encre
+   douce (elle se lisait comme la paroi), le profil en points sans ligne (la
+   ligne affirmait une continuité que la mesure n'a pas).
+3. **Le geste que l'étape demande quinze fois coûtait un voyage.** Le bouton de
+   course était à 550–960 px du curseur ; il est au-dessus des réglages, les
+   notes descendent sous les lectures ; Entrée sur un réglage relance.
+   Après le verdict, ni la référence à 40 Hz ni le balayage ne rejouent. La
+   pause ne détruit plus le balayage (le temps écoulé vit dans des refs). Le
+   curseur du récepteur montre l'angle balayé, et il est désactivé pendant le
+   balayage (il affichait un nombre qui montait sous une poignée immobile).
+   Une mesure ne survit plus sur une eau plate. Le repos et la fin de course
+   s'annoncent au lecteur d'écran. La légende de la cuve ne change plus
+   pendant qu'on regarde (le ralenti réel de l'appareil est dit une fois, à
+   l'arrêt). La note d'idéalisation est repliée, toujours dans la page.
+4. Communs, au passage : la mesure de 65 caractères posée sur le paragraphe
+   serif lui-même (sur le conteneur sans-serif, `ch` en laissait passer
+   77–85) ; un état de survol sur la poignée des curseurs.
+
+**Ce qui n'est PAS appliqué, et pourquoi** (des pièces COMMUNES aux sept
+scènes, donc des décisions de système, pas de la cuve) : le verdict marqué
+trois fois (carte, retour, « voir le détail ci-dessus ») ; deux retours
+dépliés d'un coup sur un pari faux ; la `suite` dans la colonne étroite ;
+l'icône décorative de la carte fermée. Écrits ici pour qu'une passe sur les
+pièces communes les reprenne ensemble.
+
+**LA PORTE `scene-cuve` : VERTE, 70 mesures, 22 familles ; essai rouge 19/19 ;
+sept sabotages du produit, chacun pris par SA famille** (INSTRUMENTS).
+
+**ET UNE LEÇON SUR LA BATTERIE LOCALE.** Le run 754 est tombé rouge sur `liens-
+fichiers` : la spec neuve de la cuve citait un fichier de décisions à la
+racine de `docs/`, qui n'existe pas (il vit sous `docs/audits/`). La batterie locale était verte sur le même arbre — parce que la porte lit
+`git ls-files`, et que la spec n'était pas encore ajoutée quand la batterie a
+tourné. Plusieurs portes lisent ce que git suit ; un fichier neuf non ajouté
+leur est invisible. La batterie rougit désormais d'elle-même quand un fichier
+non ignoré n'est pas suivi : « `git add` avant la batterie ».

@@ -257,6 +257,26 @@ const GARDE_SEULE = process.argv.includes("--garde");
 if (!GARDE_SEULE) console.log("\n━━ batterie locale (les contrôles de gates.yml qui ne demandent pas de navigateur) ━━\n");
 let rouges = 0;
 
+//  LES FICHIERS QUE GIT NE SUIT PAS ENCORE (2026-09-24, run 754). Plusieurs
+//  portes lisent `git ls-files` (liens-fichiers, entre autres) : un fichier NEUF
+//  non ajouté leur est invisible. La batterie était verte en local, la CI rouge
+//  sur le même arbre — la spec de la cuve, neuve, citait un chemin mort, et
+//  personne ne l'avait lue avant la poussée. Un fichier non suivi et non ignoré
+//  au moment de la batterie est soit hors du commit (qu'on le range), soit dans
+//  le commit sans avoir été mesuré : les deux se disent AVANT de pousser.
+if (!GARDE_SEULE) {
+  const nonSuivis = execFileSync("git", ["ls-files", "--others", "--exclude-standard"], { cwd: REPO, encoding: "utf-8" })
+    .split("\n")
+    .filter(Boolean);
+  if (nonSuivis.length) {
+    console.log(`  fichiers non suivis        ✗ ROUGE`);
+    for (const f of nonSuivis.slice(0, 8)) console.log(`      ${f}`);
+    if (nonSuivis.length > 8) console.log(`      … et ${nonSuivis.length - 8} autre(s)`);
+    console.log("      Les portes qui lisent `git ls-files` ne les voient pas : `git add` avant la batterie.");
+    rouges++;
+  } else console.log(`  fichiers non suivis        ✓`);
+}
+
 if (!GARDE_SEULE && !lance("tests unitaires", "node",
   ["--test", ...readdirSync(join(WEB, "scripts")).filter((f) => /^test-.*\.mjs$/.test(f)).map((f) => `scripts/${f}`)],
   WEB)) rouges++;

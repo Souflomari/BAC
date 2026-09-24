@@ -1437,6 +1437,20 @@ input:-webkit-autofill:active {
 .curseur:focus-visible::-moz-range-thumb {
   box-shadow: 0 0 0 4px var(--focus-halo);
 }
+/* Le survol : la poignée qu'on tient dans quatre étapes sur cinq était la
+   dernière commande sans état de survol (revue ergonomie de la cuve, vague 2).
+   Un halo plus étroit que celui du focus : les deux se distinguent. */
+.curseur:hover:not(:disabled)::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px var(--focus-halo);
+}
+.curseur:hover:not(:disabled)::-moz-range-thumb {
+  box-shadow: 0 0 0 3px var(--focus-halo);
+}
+/* Un curseur que la scène pilote elle-même (le récepteur pendant son balayage). */
+.curseur:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
 .curseur-neutre {
   --curseur-poignee: var(--figure-ink-soft);
 }

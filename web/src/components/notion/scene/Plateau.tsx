@@ -132,7 +132,8 @@ export function Etiquette({
       aria-hidden="true"
       className={cn(
         "pointer-events-none absolute left-0 top-0 whitespace-nowrap text-caption font-semibold text-primary",
-        fond && "rounded-sm bg-figure-surface px-1"
+        // une pastille : un peu d'air vertical, et une graisse moyenne — la pastille assure déjà le contraste
+        fond && "rounded-sm bg-figure-surface px-1.5 py-0.5 font-medium"
       )}
       style={{ visibility: "hidden" }}
     >

@@ -150,11 +150,21 @@ async function regler(cle, v) {
   await deuxImages();
 }
 const choisirF = async (f) => { await panneau.locator(`[data-controle="frequence"] input[value="${f}"]`).check(); await deuxImages(); };
-/** Une course entière (et son balayage, s'il y en a un) ; la durée est celle du produit, ralenti compris. */
-async function courir() {
+/**
+ * Une course entière (et son balayage, s'il y en a un) ; la durée est celle du
+ * produit, ralenti compris. `pendant`, s'il est donné, tourne quand la cuve est
+ * pleine (t ≥ 0,9 s de cuve), la course encore en marche.
+ */
+async function courir(pendant) {
   await panneau.locator("[data-lancer]").click();
+  if (pendant) {
+    await page.waitForFunction((sc) => parseFloat(document.querySelector(`[data-scene="${sc}"]`)?.getAttribute("data-t") ?? "0") >= 0.9, SCENE, { timeout: 60000 }).catch(() => {});
+    await pendant();
+  }
   await page.waitForFunction((sc) => document.querySelector(`[data-scene="${sc}"]`)?.getAttribute("data-course-finie") === "oui", SCENE, { timeout: 90000 }).catch(() => {});
   await deuxImages();
+  // le fondu du pâle au contraste d'étude (450 ms) : on lit l'image d'étude, pas le fondu
+  await page.waitForTimeout(600);
   const f = parseFloat((await attr("data-facteur-temps")) ?? "1");
   if (f < 0.95) avertissements.push(`facteur de temps ${f} : la machine n'a pas suivi le ralenti ×5`);
 }
@@ -245,6 +255,74 @@ async function agitationRelative(dx, dy) {
   const ici = await lireImage(b64, carre(h.x + dx * k, yc - dy * k));
   const axe = await lireImage(b64, carre(h.x + dx * k, yc));
   return axe.contraste > 0 ? { rapport: ici.contraste / axe.contraste, ici: ici.contraste, axe: axe.contraste } : null;
+}
+
+/**
+ * LES ÉCLAIRS (WCAG 2.3.1, niveau A ; revue ergonomie de la vague 2). Pendant
+ * une seconde, la porte lit le canvas DU PRODUIT à chaque image et compte, en
+ * chaque point, les variations opposées de luminance relative d'au moins 0,10
+ * dont la plus sombre est sous 0,80 — la définition du critère. Un point qui
+ * « éclaire » plus de trois fois dans la seconde compte ; le verdict est la
+ * plus grande part de points qui éclairent dans une fenêtre de 341 × 256 px
+ * CSS (le champ visuel de 10° du critère), qui doit rester sous 25 %.
+ *
+ * La porte ne lit ni `pale`, ni un réglage : elle lit des pixels qui bougent.
+ * Née du constat qu'au ralenti ×5, une onde de 40 Hz inversait chaque point
+ * huit fois par seconde, sur plus de la moitié d'un champ de 10°.
+ */
+async function eclairs(dureeMs = 1000, cible = panneau) {
+  return cible.evaluate(async (el, duree) => {
+    const cv = el.querySelector("canvas");
+    const dpr = cv.width / cv.clientWidth;
+    const pas = 3;
+    const W = Math.floor(cv.width / pas), H = Math.floor(cv.height / pas);
+    const tmp = document.createElement("canvas");
+    tmp.width = W;
+    tmp.height = H;
+    const g = tmp.getContext("2d", { willReadFrequently: true });
+    const n = W * H;
+    const lut = new Float32Array(256);
+    for (let v = 0; v < 256; v++) { const x = v / 255; lut[v] = x <= 0.03928 ? x / 12.92 : ((x + 0.055) / 1.055) ** 2.4; }
+    const ext = new Float32Array(n).fill(-1), sens = new Int8Array(n), changes = new Uint16Array(n);
+    let images = 0;
+    const t0 = performance.now();
+    while (performance.now() - t0 < duree) {
+      await new Promise((r) => requestAnimationFrame(r));
+      g.drawImage(cv, 0, 0, W, H);
+      const d = g.getImageData(0, 0, W, H).data;
+      for (let k = 0; k < n; k++) {
+        const i = 4 * k;
+        const L = 0.2126 * lut[d[i]] + 0.7152 * lut[d[i + 1]] + 0.0722 * lut[d[i + 2]];
+        const e = ext[k];
+        if (e < 0) { ext[k] = L; continue; }
+        const dl = L - e;
+        if (Math.abs(dl) >= 0.1 && Math.min(L, e) < 0.8 && Math.sign(dl) !== sens[k]) {
+          changes[k]++;
+          sens[k] = Math.sign(dl);
+          ext[k] = L;
+        } else if ((sens[k] > 0 && L > e) || (sens[k] < 0 && L < e)) ext[k] = L;
+      }
+      images++;
+    }
+    const secondes = (performance.now() - t0) / 1000;
+    // un point éclaire s'il fait plus de trois ÉCLAIRS (paires de variations) par seconde
+    const eclaire = new Uint8Array(n);
+    let maxParS = 0;
+    for (let k = 0; k < n; k++) {
+      const parS = Math.floor(changes[k] / 2) / secondes;
+      if (parS > maxParS) maxParS = parS;
+      if (parS > 3) eclaire[k] = 1;
+    }
+    // la pire fenêtre de 341 × 256 px CSS (bornée au canvas ; son aire, elle, reste pleine)
+    const fw = Math.round((341 * dpr) / pas), fh = Math.round((256 * dpr) / pas);
+    const I = new Uint32Array((W + 1) * (H + 1));
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) I[(y + 1) * (W + 1) + x + 1] = eclaire[y * W + x] + I[y * (W + 1) + x + 1] + I[(y + 1) * (W + 1) + x] - I[y * (W + 1) + x];
+    const somme = (x0, y0, x1, y1) => I[y1 * (W + 1) + x1] - I[y0 * (W + 1) + x1] - I[y1 * (W + 1) + x0] + I[y0 * (W + 1) + x0];
+    let pire = 0;
+    const lx = Math.min(fw, W), ly = Math.min(fh, H);
+    for (let y = 0; y + ly <= H; y += 2) for (let x = 0; x + lx <= W; x += 2) pire = Math.max(pire, somme(x, y, x + lx, y + ly));
+    return { images, fraction: pire / (fw * fh), maxParS: Math.round(maxParS * 10) / 10 };
+  }, dureeMs);
 }
 
 /** 5. Avant le pari : l'eau plate, aucun accent, aucune lecture, aucun bouton de course. */
@@ -378,7 +456,11 @@ await parier(indexDe("ouverture-large", "etalee"));
 {
   const ph = await attr("data-pari");
   noter("paris", ESSAI ? ph !== "note" : ph === "note", `étape 1, pari posé : phase « ${ph} » — la cuve répond d'abord`);
-  await courir();
+  await courir(async () => {
+    const r = await eclairs(1000);
+    const ok = r.images >= 20 && r.fraction < 0.25;
+    noter("eclairs", ESSAI ? !ok : ok, `40 Hz au ralenti ×5, cuve pleine : ${Math.round(r.fraction * 100)} % d'une fenêtre de 10° éclaire plus de 3 fois par seconde (au plus ${r.maxParS} éclairs/s en un point ; ${r.images} images lues ; attendu < 25 %, WCAG 2.3.1)`);
+  });
   const res = await resultat();
   noter("paris", ESSAI ? !/incorrecte/.test(res) : /incorrecte/.test(res), `étape 1, verdict après la course : « ${res} »`);
   await nombresEnonce("étape 1 révélée");
@@ -413,6 +495,7 @@ await parier(indexJuste("meme-fente-autre-onde"));
   const refVue = (await attr("data-phase")) === "reference";
   await page.waitForFunction((sc) => document.querySelector(`[data-scene="${sc}"]`)?.getAttribute("data-course-finie") === "oui", SCENE, { timeout: 90000 }).catch(() => {});
   await deuxImages();
+  await page.waitForTimeout(600);
   noter("etapes", refVue, `étape 2 : la course joue d'abord la référence à 40 Hz ${refVue ? "(vue)" : "(ABSENTE)"}`);
   const res = await resultat();
   noter("paris", ESSAI ? !/Bonne/.test(res) : /Bonne/.test(res), `étape 2, pari juste : « ${res} »`);
@@ -549,6 +632,37 @@ if (pret) {
 noter("console", erreurs.length === 0, erreurs.length ? erreurs.slice(0, 3).join(" | ") : "aucune erreur");
 await nav.close();
 
+// ── Sans mouvement (prefers-reduced-motion, WCAG 2.3.3) : la cuve CALCULE sans
+//    animer — pendant le calcul, l'eau reste plate (aucun éclair), puis l'image
+//    finale arrive. Une page neuve, un navigateur neuf, qui demande moins de
+//    mouvement. ──
+{
+  const nav2 = await lancer();
+  try {
+    const ctx2 = await nav2.newContext({ viewport: { width: 1280, height: 900 }, deviceScaleFactor: 1, reducedMotion: "reduce" });
+    const p2 = await ctx2.newPage();
+    await p2.bringToFront();
+    await p2.goto(URL_SCENE, { waitUntil: "load", timeout: 60000 });
+    await p2.waitForFunction(() => !!window.__bacVivant, null, { timeout: 40000 }).catch(() => {});
+    const q = p2.locator(`[data-scene="${SCENE}"]`);
+    await q.scrollIntoViewIfNeeded();
+    await p2.waitForFunction(([sc, lib]) => { const b = [...document.querySelectorAll(`[data-scene="${sc}"] button`)].find((x) => x.textContent?.includes(lib)); return b && !b.disabled; }, [SCENE, OUVRIR], { timeout: 40000 }).catch(() => {});
+    await q.getByRole("button", { name: OUVRIR }).click();
+    await p2.waitForSelector(`[data-scene="${SCENE}"][data-scene-etat="prete"]`, { timeout: 40000 }).catch(() => {});
+    await q.locator("[data-pari-choix] li button").first().click();
+    await q.locator("[data-lancer]").click();
+    await p2.waitForTimeout(150);
+    const legende = (await q.locator("[role=group][aria-label='La course de la cuve'] p").first().textContent().catch(() => "")) ?? "";
+    const r = await eclairs(1000, q);
+    await p2.waitForFunction((sc) => document.querySelector(`[data-scene="${sc}"]`)?.getAttribute("data-course-finie") === "oui", SCENE, { timeout: 60000 }).catch(() => {});
+    const t = parseFloat((await q.getAttribute("data-t")) ?? "0");
+    const ok = /sans animation/.test(legende) && r.maxParS === 0 && t >= 2.0;
+    noter("sans-mouvement", ESSAI ? !ok : ok, `mouvement réduit demandé : « ${legende.trim().slice(0, 60)} » ; pendant le calcul, ${r.maxParS} éclair/s au plus en un point (${r.images} images) ; course finie à t = ${t} s`);
+  } finally {
+    await nav2.close();
+  }
+}
+
 // ── Ergonomie : le clavier et le téléphone, sur le rendu (famille commune) ──
 await ergonomie({ lancer: () => lancer(), url: URL_SCENE, scene: SCENE, noter, essai: ESSAI, ouvrir: OUVRIR });
 
@@ -558,7 +672,7 @@ for (const r of resultats) console.log(`  ${r.ok ? "·" : "✘"} [${r.famille}] 
 for (const a of avertissements) console.log(`  ⚠ [performance] ${a}`);
 if (!pret) { console.error("\nMUET — la cuve n'a pas pu dessiner ici : la porte ne peut rien dire des pixels."); process.exit(3); }
 if (ESSAI) {
-  const visees = ["avant-clic", "pas-de-3d", "nombres", "va-tout-droit", "zone-d-ombre", "grille-exacte", "mesure-pas-echo", "profil-construit", "une-seule-ouverture", "etapes", "paris", "avant-pari", "frontiere", "latex", "fuite-inter-etapes", "etiquettes", "ergonomie"];
+  const visees = ["avant-clic", "pas-de-3d", "eclairs", "sans-mouvement", "nombres", "va-tout-droit", "zone-d-ombre", "grille-exacte", "mesure-pas-echo", "profil-construit", "une-seule-ouverture", "etapes", "paris", "avant-pari", "frontiere", "latex", "fuite-inter-etapes", "etiquettes", "ergonomie"];
   const crient = visees.filter((f) => resultats.some((r) => r.famille === f && !r.ok));
   console.log(`\n  familles sabotées qui crient : ${crient.length}/${visees.length} (${crient.join(", ")})`);
   const muettes = visees.filter((f) => !crient.includes(f));

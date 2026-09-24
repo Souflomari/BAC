@@ -5,7 +5,7 @@ numérique calculé en direct dans le navigateur, vu de dessus — pour le chapi
 R5 « La diffraction des ondes mécaniques », 2ème Bac PC/SM.
 **Statut :** spec pédagogique, **construite le 2026-09-24** sur les réponses par
 défaut aux questions du §13 (écrites, avec les écarts de la construction, dans
-`docs/DECISIONS.md` §21) — chacune reste réversible par le propriétaire.
+`docs/audits/DECISIONS-EN-ATTENTE.md` §21) — chacune reste réversible par le propriétaire.
 **Date :** 2026-09-24. **Auteur :** pedagogy-architect.
 **Correction (2026-09-24, construction) :** la spec renvoyait la dispersion au
 « chapitre 8 » ; c'est le chapitre 7 (R6 — chapitre 1 = R0, REVIEW-2026-09-19).

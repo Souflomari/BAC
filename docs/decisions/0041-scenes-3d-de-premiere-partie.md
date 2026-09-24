@@ -505,6 +505,25 @@ passe de 2,02 à 2,00 cm (0,01 % de l'autre côté). Règle : **quand un produit
 montre un instant d'un phénomène périodique, l'instant fait partie de ce qu'il
 affirme** — la porte lisait des mesures justes sur une image qui ne l'était pas.
 
+**8. Une onde rapide au ralenti est un motif d'ÉCLAIRS — et cela se mesure.**
+La revue ergonomie de la vague 2 l'a vu sans le mesurer : au ralenti ×5, une
+onde de 40 Hz inverse chaque point de l'eau huit fois par seconde, et la
+grille couvre plus de la moitié d'un champ visuel de 10° — le motif de rayures
+que le critère WCAG 2.3.1 (niveau A) nomme. Mesuré ensuite sur le canvas du
+produit, contraste plein : **63 %** d'une fenêtre de 10° éclairait plus de trois
+fois par seconde. Pendant qu'une onde de plus de trois inversions par seconde
+DÉFILE, l'eau est maintenant dessinée sous la définition même de l'éclair
+(chaque couleur au-dessus de 0,80 de luminance sur fond clair, à moins de 0,08
+du fond sur fond sombre) ; l'image arrêtée reprend son contraste d'étude en
+450 ms ; et si le système demande moins de mouvement, la cuve CALCULE sans
+animer, puis montre l'image finale (bouton « Image finale » pour tous). Deux
+familles de porte, `eclairs` (qui lit les pixels du produit image par image
+et compte les paires de variations, comme le critère) et `sans-mouvement` ; un
+sabotage du produit (le pâle retiré) les fait rougir. Règle : **une scène qui
+anime un phénomène périodique rapide doit être jugée contre le critère des
+éclairs, sur ses pixels** — une porte de nombres n'y voit rien, et la revue qui
+l'a trouvé ne mesurait pas.
+
 ## Retractions and Corrections
 
 - **2026-09-23 — la « deuxième scène » annoncée n'était pas la bonne

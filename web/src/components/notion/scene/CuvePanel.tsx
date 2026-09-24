@@ -68,6 +68,32 @@ function appliquer(e: Scene3DEtat | undefined, courant: EtatCuve): EtatCuve {
 
 const REPERES = ["a-debut", "a-fin", "lambda-debut", "lambda-fin", "ouverture-haut", "ouverture-bas", "sonde", "recepteur", "arc-centre", "arc-0", "arc--60", "arc-60", "regle"] as const;
 
+/** Les directions essayées pour les pastilles de l'énoncé : vers l'onde qui arrive d'abord. */
+const GAUCHE: readonly (readonly [number, number])[] = [
+  [-1, 0],
+  [-1, -1],
+  [-1, 1],
+  [0, -1],
+  [0, 1],
+  [1, -1],
+  [1, 1],
+  [1, 0],
+];
+
+/** Le système demande-t-il moins de mouvement ? (lu au montage, et suivi) */
+function useMouvementReduit() {
+  const [reduit, setReduit] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia?.("(prefers-reduced-motion: reduce)");
+    if (!mq) return;
+    setReduit(mq.matches);
+    const suivre = () => setReduit(mq.matches);
+    mq.addEventListener?.("change", suivre);
+    return () => mq.removeEventListener?.("change", suivre);
+  }, []);
+  return reduit;
+}
+
 const ETAT_DE_BASE: EtatCuve = { aCm: 4.0, f: 40, chemin: "aucun", sondeCm: -4.0, recepteurDeg: 0, reference: false };
 /** La durée du balayage scripté du récepteur, en secondes d'ÉCRAN (spec §6). */
 const BALAYAGE_S = 2.0;
@@ -89,6 +115,20 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
   const [angleBalaye, setAngleBalaye] = useState<number | null>(null);
   const [visites, setVisites] = useState<number[]>([]);
   const courseRef = useRef<K.Course | null>(null);
+  // Calculer sans animer : sur demande (« Image finale »), ou d'office si le
+  // système demande moins de mouvement (WCAG 2.3.3 ; revue ergonomie, vague 2).
+  const [rapide, setRapide] = useState(false);
+  const rapideRef = useRef(false);
+  const mouvementReduit = useMouvementReduit();
+  // le temps écoulé du balayage et de l'effacement : dans des refs, pour qu'une
+  // PAUSE les retrouve (des variables locales à l'effet repartaient de zéro, et
+  // la reprise sautait d'un coup à 60°)
+  const balayageRef = useRef(0);
+  const effacementRef = useRef(0);
+  // ce que la cuve dit d'elle-même au lecteur d'écran : repos, course, fin
+  const [annonce, setAnnonce] = useState("");
+  const etatRef = useRef<EtatCuve>(etat);
+  const phaseRef = useRef<Phase>(phase);
 
   const idTitre = useId();
   const idConsigne = useId();
@@ -104,7 +144,11 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
 
   const lambdaCm = K.lambda(etat.f);
   const cle = `${etat.aCm}|${etat.f}`;
-  const releveCourant = releve && releve.cle === cle ? releve : null;
+  // Un relevé ne vaut que pour une course FINIE de ce réglage : revenir au même
+  // réglage sur une eau plate ne ressuscite pas ses mesures (revue ergonomie).
+  const releveCourant = releve && releve.cle === cle && (phase === "finie" || phase === "balayage") ? releve : null;
+  etatRef.current = etat;
+  phaseRef.current = phase;
 
   // ── Le pari : il attend la course entière (et le balayage, à l'étape 4) ──
   const fraction = etape.pari?.revele_apres_course ?? 0;
@@ -112,6 +156,11 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
   const ouvre = (c: string) => pari.etapeOuverte && etape.controles.includes(c);
   const lectures = pari.etapeOuverte ? etape.lectures ?? [] : [];
   const engage = pari.phase !== "attente";
+  // Après le verdict, relancer sert à EXPLORER : ni la référence à 40 Hz de
+  // l'étape 2, ni le balayage de l'étape 4 ne rejouent (ils coûtaient, à chaque
+  // relance, 9 s de rappel déjà vu, ou le récepteur que l'élève tenait).
+  const reveleRef = useRef(false);
+  reveleRef.current = pari.phase === "revele";
 
   // ── Ce que la course a mesuré, relu à l'instrument de l'étape ──
   const lamDevant = releveCourant ? K.lambdaMesuree(releveCourant, -8.5, -1.0) : NaN;
@@ -134,8 +183,11 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
       if (!Number.isFinite(l0) || !Number.isFinite(l1)) return null;
       return { devant: [-1.0 - l0, -1.0] as [number, number], derriere: [2.0, 2.0 + l1] as [number, number] };
     })();
+    const calcule = phase === "reference" || phase === "mesure";
     s.mettreAJour({
-      champ: courseRef.current && phase !== "repos" && phase !== "effacement" ? courseRef.current.ch : null,
+      // sans animation, l'eau reste plate pendant le calcul ; la référence figée
+      // se montre pendant l'effacement (elle n'a pas été vue autrement)
+      champ: courseRef.current && phase !== "repos" && (phase !== "effacement" || rapide) && !(rapide && calcule) ? courseRef.current.ch : null,
       aCm: etat.aCm,
       lambdaCm,
       chemin: etat.chemin,
@@ -145,14 +197,21 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
       ombre: etat.chemin !== "arc",
       reglesMesurees: pari.etapeOuverte ? regles : null,
       profil: engage ? profil : [],
+      pale: enLecture && !rapide && calcule && (phase === "reference" ? 40 : etat.f) * K.RALENTI > 3,
     });
     s.rendre();
     const p = s.reperes();
     const cache = { x: 0, y: 0, visible: false };
+    // Les pastilles « a = … » et « λ = … » : à gauche des crochets (sur le côté
+    // de l'onde qui arrive, pas sur le couloir que l'étape regarde) ; absentes au
+    // téléphone et à l'étape du flotteur, où les valeurs sont déjà dans la
+    // consigne et les lectures, et où elles couvraient l'image (revues visuelle
+    // et calme, vague 2).
+    const sansPastilles = etat.chemin === "axe" || s.cadre().largeur < 480;
     disposer(
       [
-        { el: refs.a.current, p: p["etiquette-a"] ?? cache },
-        { el: refs.lambda.current, p: p["etiquette-lambda"] ?? cache },
+        { el: refs.a.current, p: sansPastilles ? cache : p["etiquette-a"] ?? cache, directions: GAUCHE },
+        { el: refs.lambda.current, p: sansPastilles ? cache : p["etiquette-lambda"] ?? cache, directions: GAUCHE },
         { el: refs.regleDevant.current, p: p["regle-devant"] ?? cache, surAncre: false },
         { el: refs.regleDerriere.current, p: p["regle-derriere"] ?? cache, surAncre: false },
       ],
@@ -161,7 +220,7 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
     );
     for (const n of REPERES) poser(repRefs.current[n].current, p[n] ?? cache);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [etat, lambdaCm, phase, engage, pari.etapeOuverte, releveCourant, angleLu, visites, tCuve]);
+  }, [etat, lambdaCm, phase, engage, pari.etapeOuverte, releveCourant, angleLu, visites, tCuve, rapide, enLecture]);
 
   const rendu = useSceneRendu<RenduCuve>(() => import("@/lib/scene2d/cuve-rendu").then((m) => m.creerRenduCuve), dessiner, {
     surPerte: () => setEnLecture(false),
@@ -172,7 +231,8 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
   }, [dessiner]);
 
   // ── Changer de réglage : l'eau redevient plate, la course repart de zéro ──
-  const reinitialiser = useCallback(() => {
+  const reinitialiser = useCallback((annoncer = true) => {
+    if (annoncer && phaseRef.current !== "repos") setAnnonce("L’eau est remise au repos : relance la règle pour mesurer.");
     setEnLecture(false);
     courseRef.current = null;
     setPhase("repos");
@@ -188,22 +248,22 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
       setEtat((c) => appliquer(e.etat, c));
       setReleve(null);
       setVisites([]);
-      reinitialiser();
+      reinitialiser(false);
     },
     [etapes, pari, indexEtape, reinitialiser]
   );
 
   // ── La course ──
-  const etatRef = useRef(etat);
-  etatRef.current = etat;
-  const phaseRef = useRef(phase);
-  phaseRef.current = phase;
-
-  const demarrer = () => {
+  const demarrer = (sansAnimation = mouvementReduit) => {
     const e = etatRef.current;
     setVisites([]);
     setAngleBalaye(null);
-    if (e.reference) {
+    rapideRef.current = sansAnimation;
+    setRapide(sansAnimation);
+    balayageRef.current = 0;
+    effacementRef.current = 0;
+    setAnnonce(sansAnimation ? "Calcul de la cuve, sans animation." : "La règle bat.");
+    if (e.reference && !reveleRef.current) {
       courseRef.current = new K.Course(e.aCm, 40, K.DUREE_REFERENCE);
       setPhase("reference");
     } else {
@@ -226,15 +286,18 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
     // « ×0,52 » quand la cuve avançait à 6 % (vu par la porte, 2026-09-24).
     let cuveFenetre = 0;
     let murFenetre = 0;
-    let debutEffacement = 0;
-    let debutBalayage = 0;
     const image = (maintenant: number) => {
       const dtReel = avant === null ? 0 : (maintenant - avant) / 1000;
       const dt = Math.min(0.1, dtReel);
       avant = maintenant;
       const ph = phaseRef.current;
       const c = courseRef.current;
-      if ((ph === "reference" || ph === "mesure") && c) {
+      if ((ph === "reference" || ph === "mesure") && c && rapideRef.current) {
+        // sans animation : calculer vite, sans dessiner l'eau (ni éclair, ni saccade)
+        const t0 = performance.now();
+        while (!c.finie && performance.now() - t0 < 40) c.avancer(1);
+        setTCuve(c.t);
+      } else if ((ph === "reference" || ph === "mesure") && c) {
         reste += (K.RALENTI * dt) / DT;
         const voulus = Math.floor(reste);
         reste -= voulus;
@@ -256,32 +319,39 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
           cuveFenetre = 0;
         }
         setTCuve(c.t);
-        if (c.finie) {
-          if (ph === "reference") {
-            debutEffacement = maintenant;
-            setPhase("effacement");
+      }
+      if ((ph === "reference" || ph === "mesure") && c?.finie) {
+        if (ph === "reference") {
+          effacementRef.current = 0;
+          setPhase("effacement");
+        } else {
+          const r = c.releve();
+          setReleve({ ...r, cle: `${c.aCm}|${c.f}` });
+          if (etatRef.current.chemin === "arc" && etape.pari?.revele_apres_course && !reveleRef.current) {
+            balayageRef.current = 0;
+            setPhase("balayage");
           } else {
-            const r = c.releve();
-            setReleve({ ...r, cle: `${c.aCm}|${c.f}` });
-            if (etatRef.current.chemin === "arc" && etape.pari?.revele_apres_course) {
-              debutBalayage = maintenant;
-              setPhase("balayage");
-            } else {
-              setPhase("finie");
-              setEnLecture(false);
-              return;
-            }
+            // après le verdict, pas de balayage : l'angle que l'élève tient reste, et compte
+            if (etatRef.current.chemin === "arc") setVisites([etatRef.current.recepteurDeg]);
+            setPhase("finie");
+            setEnLecture(false);
+            setAnnonce(`Course terminée : image arrêtée à t = ${K.nombre(c.t, 2)} s de cuve.`);
+            return;
           }
         }
       } else if (ph === "effacement") {
-        if (maintenant - debutEffacement >= EFFACEMENT_S * 1000) {
+        effacementRef.current += dtReel * 1000;
+        // sans animation, la référence figée reste plus longtemps : c'est la seule fois qu'on la voit
+        if (effacementRef.current >= (rapideRef.current ? 1500 : EFFACEMENT_S * 1000)) {
           const e = etatRef.current;
           courseRef.current = new K.Course(e.aCm, e.f, K.DUREE);
           setTCuve(0);
           setPhase("mesure");
+          setAnnonce("L’ancien réglage est effacé ; la règle bat au nouveau.");
         }
       } else if (ph === "balayage") {
-        const k = Math.min(1, (maintenant - debutBalayage) / (BALAYAGE_S * 1000));
+        balayageRef.current += dtReel * 1000;
+        const k = Math.min(1, balayageRef.current / (BALAYAGE_S * 1000));
         const angle = Math.round((k * K.RECEPTEUR_MAX) / K.RECEPTEUR_PAS) * K.RECEPTEUR_PAS;
         setAngleBalaye(angle);
         setVisites((v) => (v.includes(angle) ? v : [...v, angle]));
@@ -290,6 +360,7 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
           setAngleBalaye(null);
           setEtat((e) => ({ ...e, recepteurDeg: K.RECEPTEUR_MAX }));
           setEnLecture(false);
+          setAnnonce("Course terminée : le récepteur a parcouru l’arc, du centre jusqu’au bout.");
           return;
         }
       }
@@ -327,7 +398,7 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
   const ligneLecture = (cleL: string, terme: React.ReactNode, valeur: string) => (
     <div key={cleL} className="flex min-w-0 flex-wrap items-baseline justify-between gap-x-3 border-b border-subtle pb-1.5">
       <dt className="text-secondary">{terme}</dt>
-      <dd className="tabular-nums text-primary" data-lecture={cleL}>
+      <dd className="ml-auto text-right tabular-nums text-primary" data-lecture={cleL}>
         {frenchTypography(valeur)}
       </dd>
     </div>
@@ -335,6 +406,8 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
   const aMesurer = "relance la cuve pour mesurer";
   // le ralenti RÉEL, arrondi : « ×5 (×5 sur cet appareil) » ne dirait rien
   const ralentiReel = Math.round(5 / Math.max(0.05, facteur));
+  // le réglage courant fait-il défiler des rides RAPIDES (plus de 3 inversions par seconde) ?
+  const rapidesADessiner = (etat.reference && pari.phase !== "revele") || etat.f * K.RALENTI > 3;
   const finie = phase === "finie";
   const libelleLancer = enLecture ? "Pause" : phase === "finie" ? "Relancer" : phase === "repos" ? "Lancer la règle" : "Reprendre";
 
@@ -375,7 +448,7 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
           canvasRef={rendu.canvasRef}
           panneau={rendu.panneau}
           description={`Cuve à ondes vue de dessus : une règle vibrante à gauche, à ${K.nombre(etat.f, 0)} Hz (rides de ${K.cm(lambdaCm)}), une paroi percée d’une ouverture de ${K.cm(etat.aCm)}.${phase === "repos" ? " L’eau est immobile." : ""}`}
-          legende={`Cuve à ondes · ralenti ×5${ralentiReel > 5 && phase !== "repos" ? ` (×${ralentiReel} sur cet appareil)` : ""}`}
+          legende="Cuve à ondes · ralenti ×5"
           messageSansWebgl="Ce navigateur n’affiche pas la cuve (dessin indisponible). Les paris et les réglages restent."
           onRelancer={rendu.relancer}
           format="paysage"
@@ -405,6 +478,12 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
             />
           )}
 
+          {pari.etapeOuverte && etape.suite && (
+            <p className="min-w-0 break-words font-display text-body-lg text-primary" data-suite>
+              <MathText>{etape.suite}</MathText>
+            </p>
+          )}
+
           {pari.tempsOuvert && (
             <div className="flex flex-col gap-2" role="group" aria-label="La course de la cuve">
               <div className="flex flex-wrap items-center gap-2">
@@ -421,33 +500,44 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
                   {enLecture ? <PauseIcon size={14} /> : <PlayIcon size={14} />}
                   {libelleLancer}
                 </button>
-                <button type="button" className={TRANSPORT_BTN_CLASS} onClick={reinitialiser} aria-label="Remettre l’eau au repos">
+                {enLecture && !rapide && (phase === "reference" || phase === "mesure") && (
+                  <button
+                    type="button"
+                    className={TRANSPORT_BTN_CLASS}
+                    data-image-finale
+                    onClick={() => {
+                      rapideRef.current = true;
+                      setRapide(true);
+                    }}
+                  >
+                    <span>Image finale</span>
+                  </button>
+                )}
+                <button type="button" className={TRANSPORT_BTN_CLASS} onClick={() => reinitialiser()} aria-label="Remettre l’eau au repos">
                   <Icon name="reset" size={13} />
                   <span>Repos</span>
                 </button>
               </div>
               <p className="text-caption text-secondary">
                 {frenchTypography(
-                  `Au ralenti ×5 : une seconde à l’écran montre 0,20 s de cuve. Temps de cuve : t = ${K.nombre(tCuve, 2)} s${phase === "reference" ? " — d’abord l’ancien réglage, 40 Hz" : ""}.`
+                  rapide && enLecture
+                    ? `Calcul sans animation : t = ${K.nombre(tCuve, 1)} s de cuve.`
+                    : `Au ralenti ×5 : une seconde à l’écran montre 0,20 s de cuve ; une course dure 2,0 s de cuve, une dizaine de secondes à l’écran. Temps de cuve : t = ${K.nombre(tCuve, enLecture ? 1 : 2)} s${phase === "reference" ? " — d’abord l’ancien réglage, 40 Hz" : ""}.`
                 )}
               </p>
-              <p className="text-caption text-secondary">
-                {frenchTypography("Cuve idéalisée : ici toutes les fréquences avancent à la même célérité ; dans une vraie cuve, elle dépend un peu de la longueur d’onde — c’est le chapitre 7. Derrière la paroi, les bords absorbent l’onde, comme les berges inclinées d’une vraie cuve ; devant, ils sont rigides, et la règle va de l’un à l’autre.")}
-              </p>
-              {finie && (
-                <p className="text-caption text-secondary" data-fin-course>
-                  {frenchTypography(`Image arrêtée à t = ${K.nombre(tCuve, 2)} s de cuve, à l’instant où les rides devant la paroi sont les plus nettes ; la règle continuerait à battre, la cuve n’en montre pas la suite.`)}
-                </p>
-              )}
             </div>
           )}
 
-          {pari.etapeOuverte && etape.suite && (
-            <p className="min-w-0 break-words font-display text-body-lg text-primary" data-suite>
-              <MathText>{etape.suite}</MathText>
-            </p>
-          )}
-
+          <div
+            className="flex flex-col gap-5"
+            onKeyDown={(ev) => {
+              // Entrée sur un réglage relance la cuve : le geste que l'étape demande quinze fois
+              if (ev.key === "Enter" && (ev.target as HTMLElement).tagName === "INPUT" && pari.tempsOuvert && !enLecture) {
+                ev.preventDefault();
+                demarrer();
+              }
+            }}
+          >
           {ouvre("fente") && (
             <label className="flex flex-col gap-1" data-controle="fente">
               <span className="text-body-sm text-secondary">
@@ -501,19 +591,22 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
             <label className="flex flex-col gap-1" data-controle="recepteur">
               <span className="text-body-sm text-secondary">
                 {frenchTypography("Le récepteur, sur l’arc :")} <span className="tabular-nums text-primary">{`${angleLu}°`}</span>
+                {phase === "balayage" && <span className="text-secondary">{frenchTypography(" — la cuve le promène")}</span>}
               </span>
               <input
                 type="range"
                 min={-K.RECEPTEUR_MAX}
                 max={K.RECEPTEUR_MAX}
                 step={K.RECEPTEUR_PAS}
-                value={etat.recepteurDeg}
+                value={angleLu}
+                disabled={phase === "balayage"}
                 onChange={(e) => regler({ recepteurDeg: borne(Math.round(parseFloat(e.target.value)), -K.RECEPTEUR_MAX, K.RECEPTEUR_MAX) })}
-                aria-valuetext={`récepteur à ${etat.recepteurDeg} degrés`}
+                aria-valuetext={`récepteur à ${angleLu} degrés`}
                 className={CURSEUR}
               />
             </label>
           )}
+          </div>
 
           {lectures.length > 0 && (
             <dl className="flex flex-col gap-2 text-body-sm" data-lectures>
@@ -526,6 +619,35 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
                   <MathText>{"$\\lambda$ mesurée sur l'eau"}</MathText>,
                   releveCourant && Number.isFinite(lamDevant) && Number.isFinite(lamDerriere) ? `avant : ${K.deuxCS(lamDevant)} cm · après : ${K.deuxCS(lamDerriere)} cm` : aMesurer
                 )}
+
+          {/* Les notes, APRÈS les lectures : entre la commande et le réglage
+              qu'elle sert, cinq paragraphes éloignaient le bouton du curseur
+              que l'étape fait déplacer quinze fois (revue ergonomie, vague 2). */}
+          {pari.tempsOuvert && (
+            <div className="flex flex-col gap-2" data-notes>
+              {rapidesADessiner && (
+                <p className="text-caption text-secondary" data-pale>
+                  {frenchTypography("À cette fréquence, l’eau en mouvement est dessinée pâle — des rayures qui défilent vite fatiguent l’œil ; l’image arrêtée reprend son contraste.")}
+                </p>
+              )}
+              {finie && (
+                <p className="text-caption text-secondary" data-fin-course>
+                  {frenchTypography(
+                    `Image arrêtée à t = ${K.nombre(tCuve, 2)} s de cuve, à l’instant où les rides devant la paroi sont les plus nettes ; la règle continuerait à battre, la cuve n’en montre pas la suite.${ralentiReel > 5 ? ` Sur cet appareil, la course a tourné au ralenti ×${ralentiReel}.` : ""}`
+                  )}
+                </p>
+              )}
+              {pari.etapeOuverte && etape.controles.length > 0 && (
+                <p className="text-caption text-secondary">{frenchTypography("Entrée, sur un réglage, relance la cuve. Changer l’ouverture ou le battement remet l’eau au repos.")}</p>
+              )}
+              <details className="text-caption text-secondary">
+                <summary className="cursor-pointer select-none">{frenchTypography("Cuve idéalisée : ce que cette cuve simplifie")}</summary>
+                <p className="mt-1">
+                  {frenchTypography("Ici toutes les fréquences avancent à la même célérité ; dans une vraie cuve, elle dépend un peu de la longueur d’onde — c’est le chapitre 7. Derrière la paroi, les bords absorbent l’onde, comme les berges inclinées d’une vraie cuve ; devant, ils sont rigides, et la règle va de l’un à l’autre. De chaque côté de la paroi, l’image est à l’échelle de la ride la plus forte de ce côté : elle montre la forme de l’onde, pas son énergie.")}
+                </p>
+              </details>
+            </div>
+          )}
               {lectures.includes("periode-sonde") && ligneLecture("periode-sonde", "Crêtes par seconde, au flotteur", releveCourant && Number.isFinite(fSonde) ? `${K.deuxCS(fSonde)} Hz` : aMesurer)}
               {lectures.includes("amplitude") &&
                 ligneLecture(
@@ -540,6 +662,9 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
         </div>
       </div>
 
+      <p className="sr-only" role="status" aria-live="polite" data-annonce>
+        {annonce}
+      </p>
       <TransportEtapes index={indexEtape} total={etapes.length} onAller={allerA} idConsigne={idConsigne} />
     </section>
   );

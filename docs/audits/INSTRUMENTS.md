@@ -1572,6 +1572,15 @@ RÉEL, Canvas 2D, des courses de 2,0 s de cuve (10 s d'écran).
   exactement deux morceaux de mur, séparés de a × (px/cm) à 2 px ;
   `profil-construit` : le profil se trace sous le balayage (0 point au début,
   13 à la fin) ;
+- **`eclairs`** (WCAG 2.3.1, vague 2) — pendant une seconde de course à 40 Hz,
+  la porte lit le canvas DU PRODUIT à chaque image et compte, en chaque point,
+  les paires de variations de luminance relative ≥ 0,10 dont la plus sombre est
+  sous 0,80 ; la part de points qui éclairent plus de 3 fois par seconde, dans
+  la pire fenêtre de 341 × 256 px CSS, doit rester sous 25 %. Au vert : 0 %.
+  Sabotage « pâle retiré » : **63 %**, 11,7 éclairs/s en un point — rouge ;
+- **`sans-mouvement`** — un navigateur neuf qui demande moins de mouvement :
+  la légende dit « Calcul sans animation », aucun éclair pendant le calcul,
+  l'image finale arrive (t ≥ 2,0 s). Sabotage « demande ignorée » : rouge ;
 - **les paris, les étapes, avant le pari rien ne répond** (eau PLATE — 0 pixel
   agité au-dessus de l'axe —, ni accent, ni lecture, ni bouton de course) ; le
   verdict attend la course entière, référence à 40 Hz comprise (étape 2) et
@@ -1583,9 +1592,16 @@ RÉEL, Canvas 2D, des courses de 2,0 s de cuve (10 s d'écran).
   les étiquettes ni chevauchées ni hors du cadre ; fond clair ET sombre ;
   aucune erreur console ; la famille `ergonomie`.
 
-**Au 2026-09-24 (nuit) : VERTE, 68 mesures, 20 familles** (banc calme) ;
-**essai rouge : les 17 familles visées crient** (le premier essai en trouvait
-16 : `avant-clic` ne retournait pas son attente — corrigé), avec un AVERTISSEMENT honnête : sur ce conteneur, le calcul suit
+**Au 2026-09-24 (nuit), après la vague 2 : VERTE, 70 mesures, 22 familles**
+(banc calme) ; **essai rouge : les 19 familles visées crient** (le premier
+essai en trouvait 16 sur 17 : `avant-clic` ne retournait pas son attente —
+corrigé). **Sept sabotages du PRODUIT, un build chacun, chacun pris par SA
+famille et par elle seule** : λ « mesurée » = c/f → `mesure-pas-echo` ; les
+limites de l'ombre avant le pari → `avant-pari` ; une seconde ouverture dessinée
+→ `une-seule-ouverture` ; l'exposition unique en racine (le défaut réel du
+premier passage) → `va-tout-droit` ; des bandes de 2 cm (le défaut réel du
+deuxième) → `nombres` (I9 : 26 · 75 · 93 · 74) ; le pâle retiré → `eclairs` ;
+la demande de mouvement réduit ignorée → `sans-mouvement`, avec un AVERTISSEMENT honnête : sur ce conteneur, le calcul suit
 le ralenti à 0,8–0,9 — la porte le dit, le produit aussi (« ralenti ×5 (×6 sur
 cet appareil) »).
 
