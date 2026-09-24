@@ -138,3 +138,73 @@ exercises:
             note: "L'intégrale restante est 2K : (x+2)e^x est exactement g(x), déjà intégré en Partie A."
           - math: 'L = (9e - 4) - (4e - 2) = 5e - 2'
             note: "Terme de bord (9e − 4) moins 2K (4e − 2) = 5e − 2."
+
+  # ── r-volume — a fresh volume-of-revolution twin (NOT a real sujet) ─────
+  # Built on the PATTERN of a verified national sujet (2023, session de
+  # rattrapage, Sciences Mathématiques, Exercice 1 Partie III question 2c —
+  # same bac phrase, same ‖i⃗‖=1cm device, same procédé: a root inside f so
+  # f² integrates by a single IPP). That sujet itself needs a DOUBLE IPP
+  # (SM-only, past the SExp limite — spec-extension.md §1.4 B3), so it is
+  # cited as precedent, not shipped verbatim (filière arbitration pending,
+  # REVIEW S1.2/S1.3). This variation stays at single-IPP level: f(x)=√(x ln x)
+  # on [1,e], question 1 proving the IPP identity that question 2 reuses for
+  # the volume — same anti-memorisation machinery as r-bac/r-variation,
+  # applied to the volume savoir-faire taught in R9.
+  - id: r-volume
+    title: "Une question de volume, comme au bac"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite sur le PATRON d'une question nationale vérifiée :
+        2023, session de rattrapage, Sciences Mathématiques, Exercice 1 Partie
+        III question 2c (docs/sujets/_incoming/maths-sm-2023-r.md:122) — même
+        phrase, même dispositif d'unité, même procédé (une racine dans f pour
+        que f² se traite par IPP). Le sujet 2023 lui-même demande une DOUBLE
+        IPP : il est SM et reste hors de cette variation (limite SExp, B3).
+        Sa reprise verbatim comme item « sourced » attend l'arbitrage de
+        filière (REVIEW S1.2/S1.3, spec-extension.md §10 Q3).
+    intro: |-
+      On considère la fonction $f$ définie sur $[1,e]$ par $f(x) = \sqrt{x\ln x}$, et $(C)$ sa courbe dans un repère **orthonormé** $(O;\vec i,\vec j)$.
+    questions:
+      - id: q1
+        part: "Question 1 — Une intégration par parties"
+        stem: |-
+          À l'aide d'une intégration par parties, montrer que $\displaystyle\int_1^e t\ln t\,\mathrm{d}t = \dfrac{e^2+1}{4}$.
+        reasoning: |-
+          L'intégrande $t\ln t$ est un produit : c'est le signal de l'intégration par parties (chapitre 8). Reste à choisir quel facteur dériver et lequel primitiver.
+
+          Le bon choix est $u=\ln t$, pas $v'=\ln t$ : dériver $\ln t$ donne $\dfrac1t$, un facteur **plus simple** — alors que le **primitiver** est plus difficile et n'aurait rien simplifié. Avec $v'=t$, une primitive immédiate est $v=\dfrac{t^2}{2}$.
+        steps:
+          - math: 'u = \ln t,\quad u^{\prime} = \frac{1}{t},\qquad v^{\prime} = t,\quad v = \frac{t^2}{2}'
+            note: "On dérive ln t (il se simplifie en 1/t) et on primitive t (immédiat) — poser v' = ln t rendrait l'intégrale suivante pire, pas meilleure."
+          - math: '\int_1^e t\ln t\,\mathrm{d}t = \left[\frac{t^2}{2}\ln t\right]_1^e - \int_1^e \frac{t}{2}\,\mathrm{d}t'
+            note: "Formule de l'IPP : terme de bord moins l'intégrale du produit dérivé-primitivé."
+          - math: '\left[\frac{t^2}{2}\ln t\right]_1^e = \frac{e^2}{2}\ln e - \frac{1}{2}\ln 1 = \frac{e^2}{2}'
+            note: "En e : ln e = 1. En 1 : ln 1 = 0, le terme au bord inférieur s'annule."
+          - math: '\int_1^e \frac{t}{2}\,\mathrm{d}t = \left[\frac{t^2}{4}\right]_1^e = \frac{e^2}{4}-\frac14'
+            note: "Le facteur t restant se primitive directement en t²/4."
+          - math: '\int_1^e t\ln t\,\mathrm{d}t = \frac{e^2}{2} - \left(\frac{e^2}{4}-\frac14\right) = \frac{e^2+1}{4}'
+            note: "On recombine les deux morceaux : e²/2 − e²/4 = e²/4, plus 1/4."
+      - id: q2
+        part: "Question 2 — Le volume, en cm³"
+        stem: |-
+          Calculer, en $\text{cm}^3$, le volume du solide engendré par la rotation d'un tour complet autour de l'axe des abscisses de la portion de la courbe $(C)$ relative à l'intervalle $[1,e]$. (On prendra $\|\vec i\| = 1\ \text{cm}$.)
+        reasoning: |-
+          Le premier geste n'est pas de calculer : c'est de **traduire la phrase**. « Un tour complet autour de l'axe des abscisses » donne directement $V=\pi\displaystyle\int_1^e f(x)^2\,\mathrm{d}x$ — aucune autre formule n'est en jeu.
+
+          Le deuxième geste est de **regarder $f^2$ avant de paniquer** devant la racine : $f(x)^2 = x\ln x$, et sur $[1,e]$, $x\geq1$ donc $\ln x\geq0$, donc $x\ln x\geq0$ — $f$ est bien définie et l'hypothèse $f\geq0$ de la formule est vérifiée. Or $x\ln x$, c'est **exactement** l'intégrande de la question précédente : rien à recalculer.
+
+          Le troisième geste est de **ne pas oublier l'unité**. Ici $\|\vec i\|=1$ cm, donc $1$ u.v. $=1$ cm³ et le nombre ne bouge pas — mais avec $\|\vec i\|=2$ cm, il aurait fallu multiplier par $2^3=8$.
+
+          Retiens le montage, pas les nombres : une racine dans $f$, une intégration par parties préparée juste avant — c'est la construction standard d'une question de volume au bac.
+        steps:
+          - math: 'f(x)^2 = x\ln x'
+            note: "Sur [1,e], x ln x ≥ 0 (car x≥1 donne ln x≥0) : f est bien définie et positive, l'hypothèse de la formule est vérifiée."
+          - math: 'V = \pi\int_1^e \big(f(x)\big)^2\,\mathrm{d}x = \pi\int_1^e x\ln x\,\mathrm{d}x'
+            note: "« Un tour complet autour de l'axe des abscisses » se traduit directement par cette formule."
+          - math: 'V = \pi\times\frac{e^2+1}{4} = \frac{\pi(e^2+1)}{4}\ \text{u.v.}'
+            note: "On réutilise l'intégrale de la question 1 — sans la recalculer."
+          - math: '\|\vec i\| = 1\ \text{cm} \Rightarrow 1\ \text{u.v.} = 1^3\ \text{cm}^3 = 1\ \text{cm}^3'
+            note: "Repère orthonormé, unité 1 cm : la conversion ne change pas le nombre."
+          - math: 'V = \frac{\pi(e^2+1)}{4}\ \text{cm}^3 \approx 6{,}59\ \text{cm}^3'
+            note: "Avec un repère où l'unité vaudrait 2 cm, ce même volume vaudrait 8 fois plus : 2π(e²+1) cm³."

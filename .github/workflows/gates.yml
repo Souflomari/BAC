@@ -606,8 +606,8 @@ jobs:
           node scripts/verdict-qcm.mjs --porte $lecons
           node scripts/verdict-qcm.mjs --essai-rouge $lecons
 
-      # LES QUATRE PORTES DE SCÈNE 3D sont dans le job `scenes`, plus bas, qui
-      # tourne EN PARALLÈLE de celui-ci (§11.192).
+      # LES CINQ PORTES DE SCÈNE 3D sont dans le job `scenes`, plus bas, qui
+      # tourne EN PARALLÈLE de celui-ci (§11.192, §11.193).
 
       - name: Porte LaTeX nu
         run: |
@@ -854,8 +854,9 @@ jobs:
           fi
           echo "clean"
 
-  # LES SCÈNES 3D, DANS LEUR PROPRE JOB (2026-09-23, §11.192). Quatre portes de
-  # scène, vert puis rouge, rendues par SwiftShader : la troisième lance sa
+  # LES SCÈNES 3D, DANS LEUR PROPRE JOB (2026-09-23, §11.192 ; cinq depuis
+  # §11.193). Cinq portes de scène, vert puis rouge, rendues par SwiftShader :
+  # celle du champ magnétique lance sa
   # particule et attend ses courses en TEMPS RÉEL (mesuré en local : ~9 min par
   # passage, deux passages). Ajoutées au job `gates`, elles le portaient vers
   # ~85 min — sous le plafond de 90, sans la marge d'un runner lent (le run 746,
@@ -865,11 +866,14 @@ jobs:
   # elles-mêmes (chaque porte lève son propre `next start`), elles ne dépendent
   # d'aucune autre étape, et aucune autre étape ne dépend d'elles. Le build est
   # donc refait ici plutôt que transmis — deux à trois minutes de runner contre
-  # un artefact de `.next` à téléverser et à restaurer. Les deux jobs partent
-  # ensemble ; le mur est celui du plus long.
+  # un artefact de `.next` à téléverser et à restaurer. Les jobs partent
+  # ensemble ; le mur est celui du plus long. Mesuré au run 748 (quatre
+  # scènes) : `scenes` 34 min 12 s, dont 18 min 12 s pour le champ magnétique ;
+  # `gates` 51 min 34 s.
   scenes:
     runs-on: ubuntu-latest
-    # Quatre scènes vert puis rouge + install + build : ~35 min attendues. 60
+    # Cinq scènes vert puis rouge + install + build : ~40 min attendues (34 au
+    # run 748 avec quatre ; la cinquième, ~2 min 30 par passage en local). 60
     # garde la marge d'un runner lent et attrape encore un vrai blocage.
     timeout-minutes: 60
     defaults:
@@ -992,3 +996,77 @@ jobs:
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
           npm run scene-vectoriel
           node scripts/scene-vectoriel.mjs --essai-rouge
+
+      # PORTE SCÈNE 3D « LE SOLIDE DE RÉVOLUTION » (2026-09-24, §11.193, ADR 0041).
+      # La cinquième scène (maths/calcul-integral, R9 — le volume de révolution,
+      # savoir-faire des deux filières jusque-là absent du corpus). Les volumes
+      # des trois fonctions recalculés par une SECONDE voie (Simpson sur f², et
+      # non la primitive du produit), la coupe et la conversion 1 u.v. = k³ cm³ ;
+      # les PIXELS dans les deux sens : vue le long de l'axe, la coupe est un
+      # disque PLEIN et un cercle, du rayon que le produit dit ; de biais, une
+      # ellipse ; chaque tranche empilée a le rayon de f en son milieu. Et la
+      # FRONTIÈRE SExp : les tranches s'affichent, elles ne s'additionnent
+      # jamais (aucun Σ, aucune « somme », le volume lu ne dépend pas de n).
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — dont la misconception même
+      # de la leçon, le rayon non élevé au carré : les neuf familles doivent crier.
+      - name: "Scène 3D du solide de révolution (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-revolution
+          node scripts/scene-revolution.mjs --essai-rouge
+
+  # LA LARGEUR D'UN TÉLÉPHONE, EN CI (DÉCISIONS §16, levée par son prémisse).
+  # `etroit-sweep` mesure le corpus entier — les leçons chapitres dépliés, les
+  # épreuves ouvertes en deux clics, les pages de matière — à 320, 360 et 390 px,
+  # sur un fait binaire du document : `scrollWidth > innerWidth`. Référence
+  # inscrite : 0 débord. Le 2026-09-22 elle a rattrapé une régression que rien
+  # d'autre n'avait vue (0 → 185 débords, §11.181). Elle ne tournait qu'à la
+  # main, parce que le job unique avait un budget de 50 min et que trois
+  # largeurs en auraient mangé la marge. Les deux raisons sont tombées : le
+  # dépôt est public (les minutes ne coûtent rien au propriétaire), et un job
+  # PARALLÈLE n'allonge pas le mur. Son propre build, son propre `next start`.
+  # Mesurée en local le 2026-09-24 : 108 pages × 3 largeurs, 0 débord, 6 min
+  # 02 s ; son essai rouge (un bloc de 2 000 px posé dans quatre pages avant la
+  # mesure) : 4 débords sur 4, la porte sait rougir.
+  telephone:
+    runs-on: ubuntu-latest
+    # install + build + balayage + essai rouge : ~15 min attendues.
+    timeout-minutes: 40
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Cache Next.js build cache
+        uses: actions/cache@v4
+        with:
+          path: web/.next/cache
+          key: nextjs-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}-${{ github.sha }}
+          restore-keys: |
+            nextjs-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}-
+
+      - name: Install Chromium for the phone-width sweep
+        run: npx playwright@1.61.1 install --with-deps chromium
+
+      # One retry: the next/font Google fetch is the known transient here.
+      - name: Build
+        run: npm run build || { echo "::warning::build retry (next/font fetch flake)"; npm run build; }
+
+      - name: "Porte téléphone (320, 360, 390 px : aucun débord horizontal)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npx next start -p 3433 > /tmp/next-etroit.log 2>&1 &
+          for i in $(seq 1 60); do curl -sf -o /dev/null http://localhost:3433/ && break; sleep 1; done
+          node scripts/etroit-sweep.mjs
+          node scripts/etroit-sweep.mjs --essai-rouge

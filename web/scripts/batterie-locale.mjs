@@ -163,6 +163,10 @@ const HORS_CHAMP = new Set([
   // vectoriel) se juge sur son rendu WebGL ; la CI la rejoue vert puis rouge :
   // `node scripts/scene-vectoriel.mjs --essai-rouge`.
   "scene-vectoriel.mjs",
+  // scene-revolution, même raison : la cinquième scène 3D (le solide de
+  // révolution, maths/calcul-integral R9), WebGL et deux passages en CI (job
+  // `scenes`) ; `node scripts/scene-revolution.mjs --essai-rouge`.
+  "scene-revolution.mjs",
   // temps-de-chargement mesure TTFB/FCP/LCP au navigateur, réseau bridé, trois
   // passages par route : build, Playwright, et des millisecondes qui sont
   // celles de CETTE machine. Ce n'est PAS une porte et ce n'en sera pas une —

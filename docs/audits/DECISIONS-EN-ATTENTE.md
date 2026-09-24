@@ -1,6 +1,6 @@
 # Décisions en attente — ce qui demande le propriétaire
 
-**Dernière mise à jour : 2026-09-23.** Cette page existe parce qu'il n'y avait
+**Dernière mise à jour : 2026-09-24** (§16 levée par son prémisse ; §18 neuve). Cette page existe parce qu'il n'y avait
 nulle part où voir, d'un coup d'œil, ce qui attend un arbitrage. Les constats
 vivent dans `docs/audits/` et le récit dans `docs/HANDOFF.md` §11 ; ceci est
 seulement la liste, et ce que coûte chaque attente.
@@ -485,7 +485,18 @@ produit. Le chiffre est mesuré et rejouable (`npm run dom-truth`, ligne
 
 ---
 
-## 16. La porte qui garde la largeur d'un téléphone n'est pas armée en CI
+## 16. ~~La porte qui garde la largeur d'un téléphone n'est pas armée en CI~~ — ARMÉE le 2026-09-24
+
+> **LEVÉE PAR SON PRÉMISSE, pas par un arbitrage** (§11.193). La seule objection
+> écrite ci-dessous est le COÛT : un job unique de 50 min, où trois largeurs
+> mangeaient la marge. Les deux faits ont changé : le dépôt est public (les
+> minutes ne coûtent rien au propriétaire, §0) et les portes lourdes tournent
+> désormais dans des jobs PARALLÈLES (§11.192), où une porte de plus n'allonge
+> pas le mur. `etroit-sweep` est armée dans son propre job, `telephone`, à ses
+> TROIS largeurs, avec un essai rouge neuf. Mesurée avant d'être armée : 0
+> débord sur 108 × 3, 6 min 02 s ; l'essai rouge rend 4 débords sur 4. Si le
+> dépôt redevient privé, la question du coût redevient celle du propriétaire.
+
 
 **LE FAIT.** `etroit-sweep` mesure le corpus entier — 108 pages × 320/360/390 px,
 chapitres dépliés, les 39 épreuves ouvertes en deux clics — sur un fait binaire
@@ -563,6 +574,41 @@ EN LIGNE (`item_source: clone_of_<id>`). La porte le vérifie désormais dans le
 deux sens, 131/131. Ni six ni soixante-deux leçons ne les répondent en tant
 qu'items de banque, et c'est normal ; ce n'est donc pas un argument dans cet
 arbitrage.
+
+
+---
+
+## 18. Le volume de révolution : quatre questions de périmètre, et une de filière
+
+**LE FAIT.** Le barreau R9 de `maths/calcul-integral` (le volume d'un solide de
+révolution, §11.193) comble le plus gros trou de couverture de la notion — un
+savoir-faire des DEUX filières, jusque-là absent. Son architecte a tranché ce
+qu'il pouvait tirer du cadre et d'un sujet vérifié (2023, rattrapage, SM), et
+laissé le reste au propriétaire (`content/maths/calcul-integral/spec-extension.md`
+§10). Rien de livré ne préjuge de ces réponses :
+
+- **Rotation autour de (Oy) ?** Hors barreau. Aucun cadre ne nomme d'axe ; le
+  seul sujet vérifié dit « autour de l'axe des abscisses » ; le cas (Oy) demande
+  une fonction réciproque (SM seulement) ou la méthode des tubes (hors
+  programme). Si les manuels l'énoncent : un paragraphe et trois items.
+- **Volume entre deux courbes (π∫(f² − g²)) ?** Hors barreau : dans les deux
+  cadres, « entre courbes » qualifie l'AIRE. À confirmer contre les manuels.
+- **La notion est-elle SExp, SM, ou les deux ?** (REVIEW S1.2/S1.3.) C'est ce
+  qui décide si la question nationale 2023 — SM, DOUBLE intégration par parties
+  — entre telle quelle au sommet. Aujourd'hui le sommet porte une variation à
+  une seule IPP (`r-volume`, sourcée « not-applicable »).
+- **L'aparté « sommes de Riemann » pour SM ?** Différé exprès : les tranches de
+  la scène en seraient l'application naturelle, mais ajouter un élément SM-seul
+  à une notion dont la filière est en arbitrage aggraverait le défaut signalé.
+- **Tout en QCM ?** La revue de fidélité le rappelle : l'examen de maths ne
+  contient aucun QCM, et les treize items neufs en sont (le banc de la notion
+  entier l'est déjà, REVIEW fid-S5.21-23). L'exercice `r-volume` est rédigé ;
+  faut-il sortir CI-49/CI-50 du banc pour en faire des questions rédigées ?
+
+**CE QUI N'EST PAS EN QUESTION :** les nombres (re-dérivés par deux critiques
+indépendants), la frontière SExp (aucune somme, gardée par la porte de la
+scène), et la décision de créer `conversion-unites-volume` à côté de
+`conversion-unites-aire` plutôt que de l'élargir.
 
 ---
 

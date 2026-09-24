@@ -127,6 +127,69 @@ misconceptions:
       unité sur chaque axe, alors $1$ u.a. $=k^2$ cm² — le facteur s'applique aux
       DEUX dimensions de l'aire.
 
+  # ── Rung « volume d'un solide de révolution » (spec-extension.md, R9/R10) ──
+  # 5 misconceptions neuves, copiées telles quelles depuis spec-extension.md §5.
+  - id: mc.math.maths_calcul_integral.volume-oubli-du-carre
+    label: "Volume de révolution : le rayon n'est pas élevé au carré"
+    description: >-
+      L'élève écrit $V=\pi\int_a^b f(x)\,\mathrm{d}x$ : il a retenu le $\pi$ et
+      l'intégrale, mais traite la tranche comme si son aire était proportionnelle
+      au rayon $f(x)$, et non à son carré. Il transporte l'aire sous la courbe
+      (une somme de longueurs) dans une question de volume, en lui collant un
+      $\pi$ devant.
+    contradicts_principle: >-
+      La tranche perpendiculaire à $(Ox)$ à l'abscisse $x$ est un DISQUE de rayon
+      $f(x)$ : son aire vaut $\pi f(x)^2$, pas $\pi f(x)$. Doubler $f$ QUADRUPLE
+      la tranche. D'où $V=\pi\int_a^b \big(f(x)\big)^2\,\mathrm{d}x$.
+  - id: mc.math.maths_calcul_integral.volume-circonference-vs-disque
+    label: "Volume de révolution : la circonférence prise pour le disque (ou « un tour complet = ×2π »)"
+    description: >-
+      L'élève écrit $V=2\pi\int_a^b f(x)\,\mathrm{d}x$, par l'une de deux routes
+      qui donnent toujours le même nombre : soit il prend la CIRCONFÉRENCE
+      $2\pi r$ du cercle pour l'aire du disque, soit il raisonne « un tour complet
+      vaut $2\pi$ radians, donc le volume est l'aire de la région multipliée par
+      $2\pi$ ».
+    contradicts_principle: >-
+      La tranche est un disque PLEIN : ce qui s'accumule est son AIRE $\pi f(x)^2$,
+      pas son périmètre $2\pi f(x)$ (un périmètre est une longueur). Et l'angle de
+      rotation ne se multiplie pas à l'aire : les points de la région sont à des
+      distances différentes de l'axe, donc ils ne balaient pas tous la même chose.
+  - id: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+    label: "Volume de révolution : l'intégrale rendue telle quelle, sans le facteur π"
+    description: >-
+      L'élève calcule $\int_a^b \big(f(x)\big)^2\,\mathrm{d}x$ et annonce ce
+      nombre comme le volume. Modèle sous-jacent : « pour l'aire, l'intégrale
+      DONNAIT la réponse ; pour le volume, ce doit être pareil » — l'intégrale est
+      prise pour la réponse elle-même, sans facteur géométrique.
+    contradicts_principle: >-
+      L'intégrale accumule l'AIRE DES TRANCHES, et l'aire d'une tranche de rayon
+      $f(x)$ vaut $\pi f(x)^2$ : le $\pi$ fait partie de la grandeur accumulée, il
+      n'est pas un ornement. $V=\pi\int_a^b \big(f(x)\big)^2\,\mathrm{d}x$, jamais
+      $\int_a^b \big(f(x)\big)^2\,\mathrm{d}x$ seule.
+  - id: mc.math.maths_calcul_integral.volume-carre-mal-place
+    label: "Volume de révolution : le carré posé sur l'intégrale au lieu de la fonction"
+    description: >-
+      L'élève écrit $V=\pi\left(\int_a^b f(x)\,\mathrm{d}x\right)^2$ : il sait
+      qu'un carré intervient, mais il l'applique au RÉSULTAT de l'intégration au
+      lieu de la fonction sous le signe intégral. C'est la linéarité étendue au
+      produit ($\int f\cdot f = \int f \cdot \int f$), appliquée au carré.
+    contradicts_principle: >-
+      $\left(\int_a^b f\right)^2 \neq \int_a^b f^2$ : l'intégrale n'est pas
+      multiplicative (chapitre 3). Le carré porte sur la FONCTION, parce qu'il
+      vient du rayon de la tranche : on carre d'abord $f(x)$, on intègre ensuite.
+  - id: mc.math.maths_calcul_integral.conversion-unites-volume
+    label: "Conversion u.v. → cm³ avec le facteur de l'aire (k²) au lieu du cube (k³)"
+    description: >-
+      Pour convertir un volume exprimé en unités de volume, l'élève multiplie par
+      le carré de l'échelle (le facteur qu'il a appris pour les AIRES), ou par
+      l'échelle seule, ou ne convertit pas du tout. Il compte deux directions là
+      où il y en a trois. Voir aussi `conversion-unites-aire` pour le cas 2D.
+    contradicts_principle: >-
+      $1$ u.v. est le volume du CUBE bâti sur l'unité : dans un repère orthonormé
+      d'unité $k$ cm, $1$ u.v. $=k^3$ cm³ (et $1$ u.a. $=k^2$ cm²). Une longueur se
+      convertit avec $k$, une aire avec $k^2$, un volume avec $k^3$ — le facteur
+      compte les DIRECTIONS.
+
 items:
 
   - id: CI-1
@@ -1681,7 +1744,7 @@ items:
       longueurs.
 
   - id: CI-28
-    rung: "R9"
+    rung: "R10"
     difficulty_level: 5
     skill_code: maths_calcul_integral
     tags: [synthese, chasles, integration_par_parties, aires]
@@ -1744,7 +1807,7 @@ items:
       $$\text{aire} = (e^2-3)+e^2 = 2e^2-3\ \text{u.a.}$$
 
   - id: CI-29
-    rung: "R9"
+    rung: "R10"
     difficulty_level: 4
     skill_code: maths_calcul_integral
     tags: [synthese, comparaison, valeur_moyenne]
@@ -1804,7 +1867,7 @@ items:
       sur $g$.
 
   - id: CI-30
-    rung: "R9"
+    rung: "R10"
     difficulty_level: 4
     skill_code: maths_calcul_integral
     tags: [synthese, integration_par_parties, valeur_moyenne]
@@ -2116,8 +2179,791 @@ items:
       conversion d'aire qui ne fait apparaître l'échelle qu'une seule fois est
       fausse avant même le calcul.
 
+  # ── Rung R9/R10 : le volume d'un solide de révolution ──────────────────────
+  # Ajoutés le 2026-09-23, depuis spec-extension.md §7.2, ramp CI-35→CI-50 ;
+  # révisés le 2026-09-24 après critique bac-fidélité/pédagogie : CI-35, CI-40
+  # et CI-45 RETIRÉS (ids non réutilisés — recall d'une graine de scène, borne
+  # de conversion non montrée par la réponse, doublon de cadrage avec CI-37) ;
+  # CI-44 re-semée (translatée de CI-39) ; CI-50 perd un choix. 13 items
+  # restants, CI-36→CI-50 (les ids retirés ne sont pas recyclés).
+  # `habilete` porte le triplet MATHS (application_directe / _non_explicite /
+  # synthese, spec §1.3), pas le triplet Physique-Chimie des checkpoints
+  # voisins (fid-S5.20). CI-47 est le tronc identique du futur
+  # cp-volume-unite (checkpoints.yaml, item_source: clone_of_CI-47) — ne pas
+  # toucher son stem ni ses choix.
+  - id: CI-36
+    rung: "R9"
+    habilete: application_directe
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, calcul_direct]
+    primary_misconception: mc.math.maths_calcul_integral.volume-oubli-du-carre
+    stem: >
+      La courbe de $f(x)=x$ sur $[0,1]$ tourne d'un tour complet autour de
+      l'axe des abscisses. Que vaut le volume du solide engendré, en unités
+      de volume ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{\\pi}{2}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-oubli-du-carre
+        feedback: >
+          Modèle détecté : le rayon non élevé au carré. Ce calcul donne
+          $\pi\int_0^1 x\,\mathrm{d}x$ — le rayon $f(x)=x$, pas son carré.
+          La tranche a pour aire $\pi f(x)^2=\pi x^2$, pas $\pi f(x)$.
+      - id: B
+        text: "$\\dfrac{\\pi}{3}$"
+        correct: true
+      - id: C
+        text: "$\\dfrac{1}{3}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+        feedback: >
+          Modèle détecté : l'intégrale rendue telle quelle, sans le $\pi$.
+          $\int_0^1 x^2\,\mathrm{d}x=\frac13$ est bien l'intégrale à poser,
+          mais ce qui s'accumule est l'aire de la tranche, $\pi
+          f(x)^2=\pi x^2$ : le $\pi$ est dans la grandeur accumulée, il
+          reste donc devant l'intégrale.
+      - id: D
+        text: "$\\dfrac{\\pi}{4}$"
+        correct: false
+        misconception: [mc.math.maths_calcul_integral.volume-carre-mal-place, mc.math.maths_calcul_integral.linearite-abusive]
+        feedback: >
+          Double modèle détecté : le carré posé sur l'intégrale au lieu de
+          la fonction. Ce calcul vaut $\pi\left(\int_0^1 x\,\mathrm{d}x
+          \right)^2=\pi\times\left(\frac12\right)^2$ — mais $\left(\int
+          f\right)^2\neq\int f^2$ (chapitre 3) : le carré doit porter sur
+          $f(x)$ avant l'intégration, pas sur le résultat.
+    correct_feedback: >
+      $V=\pi\int_0^1 x^2\,\mathrm{d}x=\pi\left[\dfrac{x^3}{3}\right]_0^1=
+      \dfrac{\pi}{3}$ u.v. — le cas le plus simple : la fonction identité,
+      élevée au carré, reste immédiate à intégrer.
+    solution: |
+      **Le rayon.** $f(x)=x$, donc la tranche à l'abscisse $x$ a pour aire
+      $\pi f(x)^2=\pi x^2$.
+
+      $$V=\pi\int_0^1 x^2\,\mathrm{d}x = \pi\left[\frac{x^3}{3}\right]_0^1 = \frac{\pi}{3}\ \text{u.v.}$$
+
+  - id: CI-37
+    rung: "R9"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, abstrait]
+    primary_misconception: mc.math.maths_calcul_integral.volume-oubli-du-carre
+    stem: >
+      On sait que $f$ est continue et positive sur $[1,4]$, avec
+      $\displaystyle\int_1^4 f(x)\,\mathrm{d}x = 3$ et $\displaystyle\int_1^4
+      \big(f(x)\big)^2\,\mathrm{d}x = 5$. La courbe de $f$ sur $[1,4]$ tourne
+      d'un tour complet autour de l'axe des abscisses. Que vaut le volume du
+      solide engendré, en unités de volume ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$3\\pi$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-oubli-du-carre
+        feedback: >
+          Modèle détecté : le rayon non élevé au carré. $3\pi=\pi
+          \int_1^4 f(x)\,\mathrm{d}x$ utilise $\int f$, pas $\int f^2$ — ce
+          nombre mesurerait une aire multipliée par $\pi$, pas un volume.
+      - id: B
+        text: "$9\\pi$"
+        correct: false
+        misconception: [mc.math.maths_calcul_integral.volume-carre-mal-place, mc.math.maths_calcul_integral.linearite-abusive]
+        feedback: >
+          Double modèle détecté : le carré posé sur l'intégrale au lieu de
+          la fonction. $9\pi=\pi\times3^2=\pi\left(\int_1^4 f(x)\,
+          \mathrm{d}x\right)^2$ — mais $\left(\int f\right)^2\neq\int f^2$
+          (chapitre 3) : ici $9\neq5$, la preuve qu'on ne passe pas de
+          l'un à l'autre en élevant au carré après coup.
+      - id: C
+        text: "$5\\pi$"
+        correct: true
+      - id: D
+        text: "$5$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+        feedback: >
+          Modèle détecté : l'intégrale rendue telle quelle, sans le $\pi$.
+          $\int_1^4 \big(f(x)\big)^2\,\mathrm{d}x=5$ est bien l'intégrale à
+          poser, mais ce qui s'accumule est l'aire de la tranche,
+          $\pi\big(f(x)\big)^2$ : le $\pi$ est dans la grandeur accumulée,
+          il reste donc devant l'intégrale.
+    correct_feedback: >
+      Aucun calcul de $f$ n'est nécessaire : la formule $V=\pi\int_a^b
+      f(x)^2\,\mathrm{d}x$ ne demande que $\int f^2$, donné ici
+      directement : $V=\pi\times5=5\pi$ u.v.
+    solution: |
+      La formule $V=\pi\int_a^b f(x)^2\,\mathrm{d}x$ ne demande que
+      $\int f^2$ — jamais $f$ elle-même :
+
+      $$V=\pi\int_1^4 \big(f(x)\big)^2\,\mathrm{d}x = \pi\times5 = 5\pi\ \text{u.v.}$$
+
+      Aucun calcul de $f$ n'était nécessaire ; c'est tout l'intérêt du
+      cadrage abstrait.
+
+  - id: CI-38
+    rung: "R9"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, tranche, aire_disque]
+    primary_misconception: mc.math.maths_calcul_integral.volume-circonference-vs-disque
+    stem: >
+      La courbe d'une fonction $f$, continue et positive, tourne d'un tour
+      complet autour de l'axe des abscisses. À l'abscisse $x$, on lit
+      $f(x)=1{,}5$. Quelle est l'aire de la tranche (le disque) obtenue en
+      coupant le solide par un plan perpendiculaire à l'axe en ce point ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$3\\pi$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-circonference-vs-disque
+        feedback: >
+          Modèle détecté : la circonférence prise pour le disque.
+          $2\pi\times1{,}5=3\pi$ est le PÉRIMÈTRE du cercle de rayon
+          $1{,}5$ — une longueur. La tranche est un disque PLEIN : c'est
+          son aire qui s'accumule le long de l'axe, pas son tour.
+      - id: B
+        text: "$2{,}25\\pi$"
+        correct: true
+      - id: C
+        text: "$1{,}5\\pi$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-oubli-du-carre
+        feedback: >
+          Modèle détecté : le rayon non élevé au carré. $\pi\times1{,}5$
+          traite l'aire comme si elle était proportionnelle au rayon.
+          L'aire d'un disque est $\pi r^2$ : passe le rayon de $1{,}5$ à
+          $3$, et l'aire ne double pas, elle quadruple.
+      - id: D
+        text: "$2{,}25$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+        feedback: >
+          Modèle détecté : la grandeur rendue telle quelle, sans le $\pi$.
+          $1{,}5^2=2{,}25$ est bien le carré à calculer, mais l'aire d'un
+          disque a besoin du facteur $\pi$ : $2{,}25$ est l'aire du carré
+          de côté $1{,}5$ ; le facteur $\pi$ est ce qui distingue le carré
+          du disque.
+    correct_feedback: >
+      La tranche est un disque plein de rayon $1{,}5$ : son aire vaut
+      $\pi\times1{,}5^2=2{,}25\pi$. C'est cette aire, et non le rayon ni le
+      périmètre, qui s'accumule le long de l'axe pour donner le volume.
+    solution: |
+      **La tranche est un disque, pas un cercle.** À rayon $f(x)=1{,}5$, son
+      aire est
+
+      $$\pi\times1{,}5^2 = 2{,}25\pi$$
+
+      — à distinguer du périmètre $2\pi\times1{,}5=3\pi$ (une longueur) et
+      du rayon simplement multiplié par $\pi$, $1{,}5\pi$ (le carré
+      oublié).
+
+  - id: CI-39
+    rung: "R9"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, critique_raisonnement]
+    primary_misconception: mc.math.maths_calcul_integral.volume-circonference-vs-disque
+    stem: >
+      Un élève affirme : « La courbe de $f(x)=x$ sur $[1,3]$ tourne d'un tour
+      complet autour de l'axe des abscisses ; un tour complet valant $2\pi$,
+      le volume engendré est $2\pi$ fois l'aire sous la courbe, c'est-à-dire
+      $2\pi\times4=8\pi$. » Quel est le volume réellement engendré, en
+      unités de volume ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$4\\pi$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-oubli-du-carre
+        feedback: >
+          Modèle détecté : le rayon non élevé au carré. $4\pi=\pi\int_1^3
+          x\,\mathrm{d}x$ utilise le rayon $f(x)=x$ sans le mettre au
+          carré.
+      - id: B
+        text: "$\\dfrac{26\\pi}{3}$"
+        correct: true
+      - id: C
+        text: "$8\\pi$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-circonference-vs-disque
+        feedback: >
+          C'est exactement le calcul de l'élève, et son modèle est faux :
+          un tour complet ne multiplie pas l'aire par $2\pi$. Les points
+          de la région ne sont pas tous à la même distance de l'axe —
+          celui de hauteur $1$ décrit un cercle de rayon $1$, celui de
+          hauteur $2$ un cercle deux fois plus grand : un seul facteur ne
+          peut pas convenir à tous.
+      - id: D
+        text: "$\\dfrac{26}{3}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+        feedback: >
+          Modèle détecté : l'intégrale rendue telle quelle, sans le $\pi$.
+          $\int_1^3 x^2\,\mathrm{d}x=\frac{26}{3}$ est bien l'intégrale à
+          poser, mais ce qui s'accumule est l'aire de la tranche, $\pi
+          f(x)^2=\pi x^2$ : le $\pi$ est dans la grandeur accumulée, il
+          reste donc devant l'intégrale.
+    correct_feedback: >
+      La tranche à l'abscisse $x$ est un disque d'aire $\pi x^2$, pas
+      $2\pi$ fois l'aire de la région. $V=\pi\int_1^3 x^2\,\mathrm{d}x=
+      \pi\left[\dfrac{x^3}{3}\right]_1^3=\pi\left(9-\dfrac13\right)=
+      \dfrac{26\pi}{3}$ u.v.
+    solution: |
+      **Ce que dit l'élève :** un tour complet ferait $V=2\pi\times
+      \text{aire}$. **Ce qui est vrai :** la tranche à l'abscisse $x$ est
+      un disque d'aire $\pi x^2$, pas $2\pi$ fois l'aire de la région.
+
+      $$V=\pi\int_1^3 x^2\,\mathrm{d}x = \pi\left[\frac{x^3}{3}\right]_1^3 = \pi\left(9-\frac13\right) = \frac{26\pi}{3}\ \text{u.v.}$$
+
+      L'aire sous la courbe vaut $\int_1^3 x\,\mathrm{d}x=4$ ;
+      $2\pi\times4=8\pi$ n'est qu'une coïncidence de façade, pas le bon
+      calcul.
+
+  - id: CI-41
+    rung: "R9"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, cone, verification]
+    primary_misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+    stem: >
+      On considère la droite d'équation $f(x)=\dfrac{x}{3}$ sur $[0,6]$. En
+      tournant d'un tour complet autour de l'axe des abscisses, elle engendre
+      un cône de rayon $r=f(6)=2$ et de hauteur $h=6$. Que vaut le volume de
+      ce cône, calculé comme une intégrale ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$6\\pi$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-oubli-du-carre
+        feedback: >
+          Modèle détecté : le rayon non élevé au carré. $6\pi=\pi
+          \int_0^6 \frac{x}{3}\,\mathrm{d}x$ utilise le rayon $f(x)=
+          \frac{x}{3}$ sans le mettre au carré — et la vérification par la
+          formule du collège le confirme faux : $\frac{\pi r^2h}{3}=
+          \frac{\pi\times4\times6}{3}=8\pi$, pas $6\pi$.
+      - id: B
+        text: "$8\\pi$"
+        correct: true
+      - id: C
+        text: "$8$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+        feedback: >
+          Modèle détecté : l'intégrale rendue telle quelle, sans le $\pi$.
+          $\int_0^6 \left(\frac{x}{3}\right)^2\mathrm{d}x=8$ est bien
+          l'intégrale à poser, mais ce qui s'accumule est l'aire de la
+          tranche, $\pi f(x)^2$ : le $\pi$ est dans la grandeur accumulée,
+          il reste donc devant l'intégrale.
+      - id: D
+        text: "$12\\pi$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-circonference-vs-disque
+        feedback: >
+          Modèle détecté : la circonférence prise pour le disque.
+          $12\pi=2\pi\int_0^6 \frac{x}{3}\,\mathrm{d}x$ double l'aire au
+          lieu de la faire dépendre du carré du rayon — la formule du
+          cône, $\frac{\pi r^2h}{3}=8\pi$, ne redonne jamais $12\pi$.
+    correct_feedback: >
+      $V=\pi\int_0^6 \left(\dfrac{x}{3}\right)^2\mathrm{d}x=\pi\int_0^6
+      \dfrac{x^2}{9}\,\mathrm{d}x=\dfrac{\pi}{9}\left[\dfrac{x^3}{3}
+      \right]_0^6=\dfrac{\pi}{9}\times72=8\pi$ u.v. Vérification par la
+      formule du collège : $\dfrac{\pi r^2h}{3}=\dfrac{\pi\times2^2\times
+      6}{3}=8\pi$. Identique.
+    solution: |
+      **Mise en place.** $f(x)=\frac{x}{3}$ sur $[0,6]$ engendre un cône de
+      rayon $r=f(6)=2$ et de hauteur $h=6$.
+
+      $$V=\pi\int_0^6 \left(\frac{x}{3}\right)^2\mathrm{d}x = \frac{\pi}{9}\left[\frac{x^3}{3}\right]_0^6 = \frac{\pi}{9}\times72 = 8\pi\ \text{u.v.}$$
+
+      **Vérification.** $\dfrac{\pi r^2h}{3}=\dfrac{\pi\times4\times6}{3}=8\pi$.
+      Identique.
+
+  - id: CI-42
+    rung: "R9"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, calcul_direct]
+    primary_misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+    stem: >
+      Soit $f(x)=x^2$ sur $[0,1]$. Sa courbe tourne d'un tour complet autour
+      de l'axe des abscisses. Que vaut le volume du solide engendré, en
+      unités de volume ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{1}{5}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+        feedback: >
+          Modèle détecté : l'intégrale rendue telle quelle, sans le $\pi$.
+          $\int_0^1 (x^2)^2\,\mathrm{d}x=\int_0^1 x^4\,\mathrm{d}x=\frac15$
+          est bien l'intégrale à poser, mais ce qui s'accumule est l'aire
+          de la tranche, $\pi\big(f(x)\big)^2=\pi x^4$ : le $\pi$ est dans
+          la grandeur accumulée, il reste donc devant l'intégrale.
+      - id: B
+        text: "$\\dfrac{2\\pi}{3}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-circonference-vs-disque
+        feedback: >
+          Modèle détecté : la circonférence prise pour le disque.
+          $\frac{2\pi}{3}=2\pi\int_0^1 x^2\,\mathrm{d}x$ double l'aire au
+          lieu de mettre le rayon $f(x)=x^2$ au carré.
+      - id: C
+        text: "$\\dfrac{\\pi}{3}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-oubli-du-carre
+        feedback: >
+          Modèle détecté : le rayon non élevé au carré. $\frac{\pi}{3}=
+          \pi\int_0^1 x^2\,\mathrm{d}x$ utilise le rayon $f(x)=x^2$
+          directement, sans l'élever lui-même au carré — or la tranche a
+          pour rayon $f(x)$, donc pour aire $\pi\big(f(x)\big)^2=\pi x^4$.
+      - id: D
+        text: "$\\dfrac{\\pi}{5}$"
+        correct: true
+    correct_feedback: >
+      Le rayon de la tranche est $f(x)=x^2$, donc son aire est
+      $\pi\big(f(x)\big)^2=\pi x^4$. $V=\pi\int_0^1 x^4\,\mathrm{d}x=
+      \pi\left[\dfrac{x^5}{5}\right]_0^1=\dfrac{\pi}{5}$ u.v.
+    solution: |
+      **Le rayon est $f(x)=x^2$**, donc son carré vaut $x^4$ :
+
+      $$V=\pi\int_0^1 x^4\,\mathrm{d}x = \pi\left[\frac{x^5}{5}\right]_0^1 = \frac{\pi}{5}\ \text{u.v.}$$
+
+  - id: CI-43
+    rung: "R9"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, exponentielle]
+    primary_misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+    stem: >
+      Soit $f(x)=e^{-x}$ sur $\left[0,\ln 2\right]$. Sa courbe tourne d'un
+      tour complet autour de l'axe des abscisses. Que vaut le volume du
+      solide engendré, en unités de volume ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{\\pi}{2}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-oubli-du-carre
+        feedback: >
+          Modèle détecté : le rayon non élevé au carré. $\frac{\pi}{2}=
+          \pi\int_0^{\ln 2} e^{-x}\,\mathrm{d}x$ utilise le rayon
+          $f(x)=e^{-x}$ sans le mettre au carré, alors que la tranche a
+          pour aire $\pi\big(f(x)\big)^2=\pi e^{-2x}$.
+      - id: B
+        text: "$\\dfrac{3\\pi}{8}$"
+        correct: true
+      - id: C
+        text: "$\\dfrac{\\pi}{4}$"
+        correct: false
+        misconception: [mc.math.maths_calcul_integral.volume-carre-mal-place, mc.math.maths_calcul_integral.linearite-abusive]
+        feedback: >
+          Double modèle détecté : le carré posé sur l'intégrale au lieu de
+          la fonction. $\frac{\pi}{4}=\pi\left(\int_0^{\ln 2} e^{-x}\,
+          \mathrm{d}x\right)^2=\pi\times\left(\frac12\right)^2$ — mais
+          $\left(\int f\right)^2\neq\int f^2$ (chapitre 3) : le carré doit
+          porter sur $f(x)=e^{-x}$ avant l'intégration.
+      - id: D
+        text: "$\\dfrac{3}{8}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+        feedback: >
+          Modèle détecté : l'intégrale rendue telle quelle, sans le $\pi$.
+          $\int_0^{\ln 2} e^{-2x}\,\mathrm{d}x=\frac38$ est bien
+          l'intégrale à poser, mais ce qui s'accumule est l'aire de la
+          tranche, $\pi f(x)^2$ : le $\pi$ est dans la grandeur accumulée,
+          il reste donc devant l'intégrale.
+    correct_feedback: >
+      $f(x)^2=e^{-2x}$ s'intègre immédiatement : $\int_0^{\ln 2} e^{-2x}\,
+      \mathrm{d}x=\left[-\dfrac12 e^{-2x}\right]_0^{\ln 2}=-\dfrac18+
+      \dfrac12=\dfrac38$. D'où $V=\dfrac{3\pi}{8}$ u.v.
+    solution: |
+      $$f(x)^2 = e^{-2x}, \qquad \int_0^{\ln 2} e^{-2x}\,\mathrm{d}x = \left[-\frac12 e^{-2x}\right]_0^{\ln 2} = -\frac18+\frac12 = \frac38$$
+
+      $$V = \pi\times\frac38 = \frac{3\pi}{8}\ \text{u.v.}$$
+
+  - id: CI-44
+    rung: "R9"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, carre_mal_place]
+    primary_misconception: [mc.math.maths_calcul_integral.volume-carre-mal-place, mc.math.maths_calcul_integral.linearite-abusive]
+    stem: >
+      Pour calculer le volume engendré par la rotation d'un tour complet
+      autour de l'axe des abscisses de la courbe de $f(x)=x+2$ sur $[0,1]$,
+      un élève écrit $V=\pi\left(\displaystyle\int_0^1 (x+2)\,\mathrm{d}x
+      \right)^2$. Quel est le volume réellement engendré, en unités de
+      volume ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{25\\pi}{4}$"
+        correct: false
+        misconception: [mc.math.maths_calcul_integral.volume-carre-mal-place, mc.math.maths_calcul_integral.linearite-abusive]
+        feedback: >
+          C'est exactement le calcul de l'élève, et son modèle est faux.
+          $\int_0^1 (x+2)\,\mathrm{d}x=\frac52$, donc son expression vaut
+          $\pi\times\left(\frac52\right)^2=\frac{25\pi}{4}$ — mais
+          $\left(\int f\right)^2\neq\int f^2$ (chapitre 3) : le carré doit
+          porter sur $f(x)=x+2$ AVANT l'intégration, pas sur le résultat
+          $\frac52$.
+      - id: B
+        text: "$\\dfrac{5\\pi}{2}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-oubli-du-carre
+        feedback: >
+          Modèle détecté : le rayon non élevé au carré. $\frac{5\pi}{2}=
+          \pi\int_0^1 (x+2)\,\mathrm{d}x$ utilise le rayon $f(x)=x+2$ sans
+          le mettre au carré.
+      - id: C
+        text: "$\\dfrac{19\\pi}{3}$"
+        correct: true
+      - id: D
+        text: "$\\dfrac{19}{3}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+        feedback: >
+          Modèle détecté : l'intégrale rendue telle quelle, sans le $\pi$.
+          $\int_0^1 (x+2)^2\,\mathrm{d}x=\frac{19}{3}$ est bien l'intégrale
+          à poser, mais ce qui s'accumule est l'aire de la tranche,
+          $\pi\big(f(x)\big)^2$ : le $\pi$ est dans la grandeur accumulée,
+          il reste donc devant l'intégrale.
+    correct_feedback: >
+      Le carré doit porter sur la fonction, pas sur l'intégrale :
+      $\big(f(x)\big)^2=(x+2)^2=x^2+4x+4$, et $\int_0^1 (x^2+4x+4)\,
+      \mathrm{d}x=\left[\dfrac{x^3}{3}+2x^2+4x\right]_0^1=\dfrac13+2+4=
+      \dfrac{19}{3}$. D'où $V=\dfrac{19\pi}{3}$ u.v.
+    solution: |
+      **Le carré doit porter sur la fonction, avant l'intégration :**
+
+      $$\big(f(x)\big)^2=(x+2)^2=x^2+4x+4$$
+      $$V=\pi\int_0^1 (x^2+4x+4)\,\mathrm{d}x = \pi\left[\frac{x^3}{3}+2x^2+4x\right]_0^1 = \pi\left(\frac13+2+4\right) = \frac{19\pi}{3}\ \text{u.v.}$$
+
+      **Ce que fait l'élève :** $\int_0^1(x+2)\,\mathrm{d}x=\frac52$, puis
+      $\pi\times\left(\frac52\right)^2=\frac{25\pi}{4}$ — le carré
+      appliqué au résultat, pas à la fonction. Contre-exemple général sur
+      $[0,1]$ : $\int x=\frac12$ donne $\left(\int x\right)^2=\frac14$,
+      alors que $\int x^2=\frac13\neq\frac14$.
+
+  - id: CI-46
+    rung: "R9"
+    habilete: application_directe
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, unites_volume]
+    primary_misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+    stem: >
+      Dans un repère orthonormé où l'unité vaut $2\ \text{cm}$ sur chaque
+      axe, un volume de révolution vaut $5$ unités de volume. Quel est ce
+      volume en $\text{cm}^3$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$20\\ \\text{cm}^3$, en multipliant par $2^2$, comme pour une aire"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: >
+          Modèle détecté : le facteur de l'AIRE ($k^2$) appliqué à un
+          volume. $1$ u.v. n'est pas un carré mais un CUBE bâti sur
+          l'unité : il faut compter trois directions, pas deux.
+      - id: B
+        text: "$10\\ \\text{cm}^3$, en multipliant par l'échelle $2$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: >
+          Modèle détecté : le facteur d'une LONGUEUR ($k$) appliqué à un
+          volume. Multiplier une seule fois par l'échelle convertirait une
+          longueur ; un volume est un produit de TROIS longueurs.
+      - id: C
+        text: "$40\\ \\text{cm}^3$, l'unité de volume valant $2^3=8\\ \\text{cm}^3$"
+        correct: true
+      - id: D
+        text: "$5\\ \\text{cm}^3$, le nombre restant inchangé d'une unité à l'autre"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: >
+          Modèle détecté : aucune conversion appliquée. u.v. et cm³ ne
+          coïncident que lorsque l'unité du repère vaut $1$ cm ; ici elle
+          vaut $2$ cm, donc le nombre change bel et bien.
+    correct_feedback: >
+      $1$ u.v. est le volume du cube bâti sur l'unité : $1$ u.v.
+      $=2^3=8\ \text{cm}^3$. D'où $5$ u.v. $=5\times8=40\ \text{cm}^3$.
+    solution: |
+      $$1\ \text{u.v.} = 2^3 = 8\ \text{cm}^3$$
+      $$5\ \text{u.v.} = 5\times8 = 40\ \text{cm}^3$$
+
+  - id: CI-47
+    rung: "R9"
+    habilete: application_directe
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, unites_volume]
+    primary_misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+    stem: >
+      Dans un repère orthonormé où l'unité vaut $3\ \text{cm}$ sur chaque
+      axe, un volume de révolution vaut $2\pi$ unités de volume. Quel est ce
+      volume en $\text{cm}^3$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$6\\pi\\ \\text{cm}^3$, en multipliant par l'échelle $3$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: >
+          Modèle détecté : le facteur d'une LONGUEUR ($k$) appliqué à un
+          volume. Un volume est un produit de trois longueurs ;
+          multiplier une seule fois par l'échelle ne convertirait qu'une
+          longueur.
+      - id: B
+        text: "$54\\pi\\ \\text{cm}^3$, l'unité de volume valant $3^3=27\\ \\text{cm}^3$"
+        correct: true
+      - id: C
+        text: "$18\\pi\\ \\text{cm}^3$, en multipliant par $3^2$, comme pour une aire"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: >
+          Modèle détecté : le facteur de l'AIRE ($k^2$) appliqué à un
+          volume. $1$ u.v. est le volume d'un CUBE, pas l'aire d'un
+          carré : il faut le cube de l'échelle, pas son carré.
+      - id: D
+        text: "$2\\pi\\ \\text{cm}^3$, le nombre restant inchangé d'une unité à l'autre"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: >
+          Modèle détecté : aucune conversion appliquée. u.v. et cm³ ne
+          coïncident que lorsque l'unité du repère vaut $1$ cm ; ici elle
+          vaut $3$ cm, donc le nombre change bel et bien.
+    correct_feedback: >
+      $1$ u.v. $=3^3=27\ \text{cm}^3$. D'où $2\pi$ u.v.
+      $=2\pi\times27=54\pi\ \text{cm}^3$.
+    solution: |
+      $$1\ \text{u.v.} = 3^3 = 27\ \text{cm}^3$$
+      $$2\pi\ \text{u.v.} = 2\pi\times27 = 54\pi\ \text{cm}^3$$
+
+  - id: CI-48
+    rung: "R9"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, unites_volume, comparaison]
+    primary_misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+    stem: >
+      Un solide de révolution a un volume de $3$ unités de volume. Dans un
+      repère orthonormé où $\|\vec i\,\|=1\ \text{cm}$, puis dans un repère
+      orthonormé où $\|\vec i\,\|=2\ \text{cm}$, ce volume vaut
+      respectivement, en $\text{cm}^3$ :
+    type: mcq
+    choices:
+      - id: A
+        text: "$3$ et $12$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: >
+          Le premier repère ($k=1$) est correct : $1$ u.v. $=1^3=1\
+          \text{cm}^3$, le nombre ne change pas. Mais le second ($k=2$)
+          applique le facteur de l'AIRE, $2^2=4$, au lieu du CUBE $2^3=8$ :
+          $3\times4=12$ compte deux directions là où il y en a trois.
+      - id: B
+        text: "$3$ et $6$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: >
+          Le premier repère ($k=1$) est correct. Mais le second ($k=2$)
+          applique le facteur d'une LONGUEUR, $2$, au lieu du CUBE $2^3=8$ :
+          une seule direction sur les trois qui composent un volume.
+      - id: C
+        text: "$3$ et $24$"
+        correct: true
+      - id: D
+        text: "$3$ et $3$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: >
+          Le premier repère ($k=1$) est correct. Mais le second ($k=2$)
+          n'applique AUCUNE conversion : c'est justement parce que le bac
+          écrit souvent $\|\vec i\,\|=1$ cm — où u.v. et cm³ coïncident —
+          que cette conversion est facile à oublier le jour où l'unité
+          change.
+    correct_feedback: >
+      Avec $k=1$ : $1$ u.v. $=1^3=1\ \text{cm}^3$, donc $3$ u.v.
+      $=3\ \text{cm}^3$ — le nombre ne bouge pas, et c'est bien pour ça que
+      la conversion passe inaperçue au bac. Avec $k=2$ : $1$ u.v.
+      $=2^3=8\ \text{cm}^3$, donc $3$ u.v. $=24\ \text{cm}^3$.
+    solution: |
+      **Avec $k=1$ :** $1$ u.v. $=1^3=1\ \text{cm}^3$, donc $3$ u.v.
+      $=3\ \text{cm}^3$ — le nombre ne bouge pas.
+
+      **Avec $k=2$ :** $1$ u.v. $=2^3=8\ \text{cm}^3$, donc $3$ u.v.
+      $=24\ \text{cm}^3$.
+
+      C'est parce que le bac écrit presque toujours $\|\vec i\,\|=1$ cm
+      que cette conversion ne s'exerce jamais — jusqu'au jour où l'énoncé
+      change d'unité.
+
+  # CI-49 — synthèse R10 : la donnée (une IPP déjà résolue, ∫ln x = e²+1) fixe
+  # ∫f² directement, sans passer par le choix « f au carré ou pas ». Un
+  # élève « oubli-du-carre » n'a donc, dans cette graine précise, aucune
+  # valeur DISTINCTE à produire (il devrait intégrer √(ln x), non fourni) —
+  # taguer ce distracteur aurait exigé un nombre non dérivable des données ou
+  # aurait fait coïncider deux modèles. Gardé : `sans-pi` et deux variantes
+  # de `conversion-unites-volume` (k² et ×1), qui restent honnêtement
+  # calculables sur cette graine. Décision d'auteur, pas une case du tableau
+  # §7.2 laissée vide par erreur — voir le rapport de livraison.
+  - id: CI-49
+    rung: "R10"
+    habilete: synthese
+    difficulty_level: 5
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, synthese, integration_par_parties, unites_volume]
+    primary_misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+    stem: >
+      Soit $f$ la fonction définie sur $\left[1,e^2\right]$ par
+      $f(x)=\sqrt{\ln x}$. On donne $\displaystyle\int_1^{e^2} \ln x\,
+      \mathrm{d}x = e^2+1$. Dans un repère orthonormé où $\|\vec
+      i\,\|=2\ \text{cm}$, quel est, en $\text{cm}^3$, le volume du solide
+      engendré par la rotation d'un tour complet autour de l'axe des
+      abscisses de la portion de courbe de $f$ relative à $\left[1,e^2
+      \right]$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$4\\pi(e^2+1)\\ \\text{cm}^3$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: >
+          Le volume en u.v. est correct, $\pi(e^2+1)$, mais la conversion
+          applique le facteur de l'AIRE, $2^2=4$, au lieu du CUBE $2^3=8$ :
+          deux directions comptées sur trois.
+      - id: B
+        text: "$8(e^2+1)\\ \\text{cm}^3$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+        feedback: >
+          Modèle détecté : l'intégrale rendue telle quelle, sans le $\pi$.
+          $f(x)^2=\ln x$, donc $\int_1^{e^2}\big(f(x)\big)^2\,
+          \mathrm{d}x=e^2+1$ — mais il manque le $\pi$ avant de convertir :
+          $8(e^2+1)$ oublie la moitié du travail de la rotation.
+      - id: C
+        text: "$8\\pi(e^2+1)\\ \\text{cm}^3$"
+        correct: true
+      - id: D
+        text: "$\\pi(e^2+1)\\ \\text{cm}^3$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: >
+          Le volume en u.v. est correct, $\pi(e^2+1)$, mais aucune
+          conversion n'a été appliquée : ici $\|\vec i\,\|=2$ cm, pas $1$
+          cm, donc $1$ u.v. $=2^3=8\ \text{cm}^3$, pas $1\ \text{cm}^3$.
+    correct_feedback: >
+      $f(x)^2=\big(\sqrt{\ln x}\big)^2=\ln x$ : le carré supprime la
+      racine, et l'intégrale voulue est exactement celle qui est donnée.
+      $V=\pi\int_1^{e^2}\ln x\,\mathrm{d}x=\pi(e^2+1)$ u.v. Avec $\|\vec
+      i\,\|=2$ cm, $1$ u.v. $=2^3=8\ \text{cm}^3$, donc
+      $V=8\pi(e^2+1)\ \text{cm}^3$.
+    solution: |
+      **Le carré fait disparaître la racine :** $f(x)^2=\ln x$, et
+      l'intégrale voulue est exactement celle qui est donnée :
+
+      $$V = \pi\int_1^{e^2}\ln x\,\mathrm{d}x = \pi(e^2+1)\ \text{u.v.}$$
+
+      **La conversion** ($\|\vec i\,\|=2$ cm) : $1$ u.v. $=2^3=8\
+      \text{cm}^3$, donc
+
+      $$V = 8\pi(e^2+1)\ \text{cm}^3$$
+
+  - id: CI-50
+    rung: "R10"
+    habilete: synthese
+    difficulty_level: 5
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, synthese, integration_par_parties, carre_mal_place]
+    primary_misconception: [mc.math.maths_calcul_integral.volume-carre-mal-place, mc.math.maths_calcul_integral.linearite-abusive]
+    stem: >
+      Soit $f$ la fonction définie sur $[1,e]$ par $f(x)=\sqrt{x\ln x}$. On
+      donne $\displaystyle\int_1^e t\ln t\,\mathrm{d}t = \dfrac{e^2+1}{4}$.
+      Quel est le volume, en unités de volume, du solide engendré par la
+      rotation d'un tour complet autour de l'axe des abscisses de la
+      portion de courbe de $f$ relative à $[1,e]$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{\\pi(e^2+1)^2}{16}$"
+        correct: false
+        misconception: [mc.math.maths_calcul_integral.volume-carre-mal-place, mc.math.maths_calcul_integral.linearite-abusive]
+        feedback: >
+          Modèle détecté : le carré posé sur l'intégrale au lieu de la
+          fonction. Ce choix reprend la valeur donnée comme si elle était
+          $\int_1^e f(x)\,\mathrm{d}x$, puis l'élève au carré — mais
+          $f(x)^2=x\ln x$ est déjà le résultat du carré : l'intégrale
+          donnée EST $\int_1^e f^2$, elle n'a pas besoin d'être élevée au
+          carré une seconde fois.
+      - id: B
+        text: "$\\dfrac{e^2+1}{4}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+        feedback: >
+          Modèle détecté : l'intégrale rendue telle quelle, sans le $\pi$.
+          $f(x)^2=x\ln x$, donc $\int_1^e \big(f(x)\big)^2\,\mathrm{d}x=
+          \frac{e^2+1}{4}$ est la bonne intégrale, mais il manque le $\pi$
+          qui en fait un volume.
+      - id: C
+        text: "$\\dfrac{\\pi(e^2+1)}{4}$"
+        correct: true
+    correct_feedback: >
+      $f(x)^2=\big(\sqrt{x\ln x}\big)^2=x\ln x$ : le carré supprime la
+      racine, et l'intégrale voulue, $\int_1^e x\ln x\,\mathrm{d}x$, est
+      exactement celle qui est donnée (avec $t$ renommée $x$). $V=
+      \pi\times\dfrac{e^2+1}{4}=\dfrac{\pi(e^2+1)}{4}$ u.v. — le montage
+      standard d'une question de volume au bac : une racine dans $f$, une
+      IPP qui vient d'être préparée.
+    solution: |
+      **Le carré fait disparaître la racine :** $f(x)^2=x\ln x$, et
+      l'intégrale voulue, $\int_1^e x\ln x\,\mathrm{d}x$, est exactement
+      celle qui est donnée (avec $t$ renommée $x$) :
+
+      $$V = \pi\int_1^e \big(f(x)\big)^2\,\mathrm{d}x = \pi\times\frac{e^2+1}{4} = \frac{\pi(e^2+1)}{4}\ \text{u.v.}$$
+
+      Le montage est celui du bac (§8.1/§8.4) : une racine dans $f$ pour
+      que $f^2$ soit une intégrale déjà rencontrée.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
-# RÉÉCRIT le 2026-09-05. L'ancien déclarait `floor_met: false` et demandait
+# RÉÉCRIT le 2026-09-05 (CI-31→CI-34), le 2026-09-23 pour le rung « volume
+# d'un solide de révolution » (CI-35→CI-50, spec-extension.md §7.2), puis
+# RÉVISÉ le 2026-09-24 après critique bac-fidélité/pédagogie :
+#   - CI-35, CI-40, CI-45 RETIRÉS (ids non réutilisés) : CI-35 ne faisait que
+#     rejouer la graine de la scène/de l'exemple travaillé (rappel, pas
+#     diagnostic) ; CI-40 avait un distracteur `×8` qui affirmait un déficit
+#     de conversion d'unité que la réponse ne montre pas ; CI-45 doublait le
+#     cadrage de CI-37. Le rung était aussi sur-pondéré face au cadre (16
+#     items pour une demi-ligne de savoir-faire).
+#   - CI-44 re-semée : `f(x)=x+2` sur `[0,1]` (clé `19π/3`), remplaçant
+#     `f(x)=x+1` sur `[0,2]` — translatée de CI-39 (`f=x` sur `[1,3]`), même
+#     solide, même clé `26π/3` que CI-39 avant la correction.
+#   - CI-50 perd son choix `circonference` : `2π∫f²` n'est pas le modèle
+#     enregistré (`volume-circonference-vs-disque` est `2π∫f`, jamais
+#     `2π∫f²`) ; l'item passe à 3 choix.
+#   - CI-38/CI-41 : `habilete` échangées (CI-38 → application_directe,
+#     CI-41 → application_non_explicite).
+#   - Les feedbacks « ∫f² sans π » qui prétendaient que `∫f²` seule « mesure
+#     l'aire des tranches accumulées » sont corrigés (CI-36/CI-37/CI-39/
+#     CI-41/CI-42/CI-43, plus CI-44 re-semée et CI-49/CI-50 déjà exacts) :
+#     l'aire d'une tranche est `πf(x)²`, le `π` fait partie de la grandeur
+#     accumulée — `∫f²` est la bonne intégrale à poser, pas déjà une aire.
+# Le rung tombe à 13 items (R9: 11, R10: 5) sur cinq misconceptions, toutes
+# encore au-dessus du plancher mais avec moins de marge qu'avant la coupe.
+# L'ancien commentaire (2026-09-05) déclarait `floor_met: false` et demandait
 # nommément la suite : « écrire au moins 3 items sur primitive-vs-derivee —
 # vérifier une primitive en DÉRIVANT, le sens intégrer/dériver, $F' = h$ contre
 # $h' = F$ ». C'est exactement ce que fait CI-31, et CI-32 y ajoute le piège de
@@ -2135,7 +2981,7 @@ coverage_summary:
   per_misconception:
     mc.math.maths_calcul_integral.primitive-vs-derivee:            { count: 3, items: [CI-11, CI-31, CI-32] }
     mc.math.maths_calcul_integral.constante-et-bornes:             { count: 5, items: [CI-1, CI-10, CI-13, CI-15, CI-17] }
-    mc.math.maths_calcul_integral.linearite-abusive:               { count: 3, items: [CI-2, CI-12, CI-32] }
+    mc.math.maths_calcul_integral.linearite-abusive:               { count: 8, items: [CI-2, CI-12, CI-32, CI-36, CI-37, CI-43, CI-44, CI-50] }
     mc.math.maths_calcul_integral.chasles-mal-appliquee:           { count: 3, items: [CI-14, CI-16, CI-32] }
     mc.math.maths_calcul_integral.integrale-signee-vs-aire:        { count: 5, items: [CI-6, CI-11, CI-17, CI-26, CI-28] }
     mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe:      { count: 3, items: [CI-5, CI-24, CI-25] }
@@ -2144,7 +2990,12 @@ coverage_summary:
     mc.math.maths_calcul_integral.hypothese-non-verifiee:          { count: 8, items: [CI-3, CI-11, CI-12, CI-17, CI-18, CI-21, CI-23, CI-29] }
     mc.math.maths_calcul_integral.aire-naive-geometrique:          { count: 3, items: [CI-7, CI-8, CI-9] }
     mc.math.maths_calcul_integral.conversion-unites-aire:          { count: 3, items: [CI-27, CI-33, CI-34] }
-  total_items: 34
+    mc.math.maths_calcul_integral.volume-oubli-du-carre:           { count: 8, items: [CI-36, CI-37, CI-38, CI-39, CI-41, CI-42, CI-43, CI-44] }
+    mc.math.maths_calcul_integral.volume-circonference-vs-disque:  { count: 4, items: [CI-38, CI-39, CI-41, CI-42] }
+    mc.math.maths_calcul_integral.volume-integrale-sans-pi:        { count: 10, items: [CI-36, CI-37, CI-38, CI-39, CI-41, CI-42, CI-43, CI-44, CI-49, CI-50] }
+    mc.math.maths_calcul_integral.volume-carre-mal-place:          { count: 5, items: [CI-36, CI-37, CI-43, CI-44, CI-50] }
+    mc.math.maths_calcul_integral.conversion-unites-volume:        { count: 4, items: [CI-46, CI-47, CI-48, CI-49] }
+  total_items: 47
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2157,7 +3008,8 @@ coverage_summary:
     R6: 3
     R7: 3
     R8: 5
-    R9: 3
+    R9: 11
+    R10: 5
   note_tagage_par_distracteur: >-
     Ce banc est antérieur au marquage par distracteur. La passe de conversion du
     sommet a posé un `primary_misconception` sur les 30 items d'origine, puis
@@ -2166,9 +3018,21 @@ coverage_summary:
     Le marquage par distracteur du RESTE des items de calcul — et des
     distracteurs hétérogènes de l'accroche CI-7/8/9, dont les raisons d'erreur
     ne se ramènent pas toutes à un modèle unique — reste une passe à faire. Les
-    items ajoutés depuis (CI-31 à CI-34) portent, eux, un tag sur chaque
-    distracteur.
+    items ajoutés depuis (CI-31 à CI-34, puis CI-36 à CI-50 pour le rung
+    volume — CI-35/CI-40/CI-45 retirés le 2026-09-24) portent, eux, un tag sur
+    chaque distracteur.
   honest_state: >-
-    Les onze misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Six y siègent EXACTEMENT (3 items) : la marge est nulle
-    et tout retrait d'item la casse.
+    Seize misconceptions déclarées (onze historiques + cinq du rung volume),
+    toutes couvertes, aucune sous le plancher. Cinq y siègent EXACTEMENT
+    (3 items) — `primitive-vs-derivee`, `chasles-mal-appliquee`,
+    `ipp-mauvais-choix-ou-signe`, `aire-naive-geometrique`,
+    `conversion-unites-aire` — la marge y est nulle et tout retrait d'item la
+    casse. Les cinq misconceptions du rung volume gardent une marge réelle
+    après la coupe du 2026-09-24 (de 4 à 10 items chacune) ; les deux plus
+    tendues sont désormais `conversion-unites-volume` et
+    `volume-circonference-vs-disque`, à 4 items chacune — une seule marge
+    d'item au-dessus du plancher, à surveiller si une future passe retire
+    encore un item du rung. `linearite-abusive` reste au-dessus du plancher
+    exact (8
+    items, dual-tag ADR 0009 sur `π(∫f)²` : CI-36, CI-37, CI-43, CI-44,
+    CI-50) mais avec une marge réduite par le retrait de CI-45.

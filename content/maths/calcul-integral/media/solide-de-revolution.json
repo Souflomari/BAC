@@ -1,0 +1,256 @@
+{
+  "slug": "solide-de-revolution",
+  "tool": "scene3d",
+  "scene": "solide-revolution",
+  "title_fr": "Le solide de révolution, en trois dimensions",
+  "caption_fr": "Une région plane qui tourne, et le solide qu'elle engendre. Cinq étapes : à chaque fois tu paries d'abord, puis tu vois. Les fonctions sont celles des exemples travaillés.",
+  "etapes": [
+    {
+      "id": "balayage",
+      "titre": "La région tourne",
+      "consigne": "La région sous la courbe de $f(x)=\\sqrt{x}$ sur $[0\\,;4]$ : son aire vaut $\\displaystyle\\int_0^4\\sqrt{x}\\,\\mathrm{d}x = \\left[\\frac{2}{3}x\\sqrt{x}\\right]_0^4 = \\frac{16}{3}$ u.a. On la fait tourner d'un tour complet autour de l'axe des abscisses.",
+      "pari": {
+        "question": "Un tour complet, c'est $2\\pi$ radians. Le volume engendré vaut donc…",
+        "choix": [
+          {
+            "id": "2pi_aire",
+            "texte": "$2\\pi$ fois l'aire de la région, soit $\\dfrac{32\\pi}{3}$ u.v. : chaque point fait un tour de $2\\pi$",
+            "juste": false,
+            "misconception": "mc.math.maths_calcul_integral.volume-circonference-vs-disque",
+            "retour": "Les points de la région ne sont pas tous à la même distance de l'axe : celui qui est à la hauteur $1$ décrit un cercle de rayon $1$, celui qui est à la hauteur $2$ un cercle deux fois plus grand. Multiplier toute l'aire par un seul facteur revient à supposer qu'ils balaient tous la même chose. Tourne le balayage et regarde les bords."
+          },
+          {
+            "id": "pi_f2",
+            "texte": "$\\pi\\displaystyle\\int_0^4 x\\,\\mathrm{d}x = 8\\pi$ u.v. : chaque tranche balaie un disque de rayon $f(x)$",
+            "juste": true,
+            "retour": "Oui. Ce qui s'accumule le long de $[0\\,;4]$, ce n'est pas une longueur mais l'aire d'un disque : $\\pi f(x)^2$. L'étape suivante regarde ce disque de face."
+          },
+          {
+            "id": "aire_inchangee",
+            "texte": "l'aire elle-même, $\\dfrac{16}{3}$ u.v. : tourner ne crée pas de matière",
+            "juste": false,
+            "misconception": "mc.math.maths_calcul_integral.volume-integrale-sans-pi",
+            "retour": "Tourner ne crée pas de matière, mais ce n'est plus la même grandeur : $\\dfrac{16}{3}$ mesure une surface (u.a.), $8\\pi$ mesure un volume (u.v.). Une aire ne peut pas être la réponse à une question de volume."
+          }
+        ]
+      },
+      "suite": "Fais varier l'angle de $0°$ à $360°$ : à $180°$ tu as la moitié du solide, à $360°$ le solide entier. L'aire de la région, elle, ne bouge pas.",
+      "controles": [
+        "balayage"
+      ],
+      "lectures": [
+        "aire_region",
+        "volume"
+      ],
+      "etat": {
+        "fonction": "racine",
+        "balayage_deg": 0,
+        "x_tranche": 2.25,
+        "n_tranches": 1,
+        "unite_cm": 1,
+        "vue": "biais"
+      }
+    },
+    {
+      "id": "tranche",
+      "titre": "La coupe est un disque",
+      "consigne": "On coupe le solide par un plan perpendiculaire à l'axe, à l'abscisse $x = 2{,}25$. Le rayon de la coupe vaut $f(2{,}25)=\\sqrt{2{,}25}=1{,}5$. La scène regarde le long de l'axe : la coupe se verra en vraie grandeur.",
+      "pari": {
+        "question": "L'aire de cette coupe vaut…",
+        "choix": [
+          {
+            "id": "disque",
+            "texte": "$\\pi\\times 1{,}5^2 = 2{,}25\\pi$, l'aire du disque",
+            "juste": true,
+            "retour": "Oui : $\\pi r^2$ avec $r=f(x)$. Et remarque la conséquence : passe le rayon de $1{,}5$ à $3$ et l'aire ne double pas, elle quadruple."
+          },
+          {
+            "id": "circonference",
+            "texte": "$2\\pi\\times 1{,}5 = 3\\pi$, le tour du cercle",
+            "juste": false,
+            "misconception": "mc.math.maths_calcul_integral.volume-circonference-vs-disque",
+            "retour": "$2\\pi r$ est le périmètre — une longueur, pas une aire. La coupe n'est pas un cercle, c'est un disque plein : le segment qui va de l'axe au bord appartient tout entier à la région, donc il balaie tout l'intérieur."
+          },
+          {
+            "id": "rayon_seul",
+            "texte": "$\\pi\\times 1{,}5 = 1{,}5\\pi$, le rayon fois $\\pi$",
+            "juste": false,
+            "misconception": "mc.math.maths_calcul_integral.volume-oubli-du-carre",
+            "retour": "C'est l'erreur la plus fréquente du chapitre : le rayon n'est pas élevé au carré. L'aire d'un disque est $\\pi r^2$. Déplace la coupe et regarde son aire : elle suit le carré de $f(x)$, pas $f(x)$."
+          }
+        ]
+      },
+      "suite": "Déplace la coupe le long de l'axe : le rayon $f(x)$ suit la courbe, et l'aire de la coupe suit son carré.",
+      "controles": [
+        "tranche"
+      ],
+      "lectures": [
+        "rayon",
+        "aire_tranche"
+      ],
+      "etat": {
+        "fonction": "racine",
+        "balayage_deg": 360,
+        "x_tranche": 2.25,
+        "n_tranches": 1,
+        "unite_cm": 1,
+        "vue": "face"
+      }
+    },
+    {
+      "id": "tranches",
+      "titre": "Empiler les tranches",
+      "consigne": "On reconstitue le solide avec des tranches de plus en plus minces, empilées le long de $[0\\,;4]$.",
+      "pari": {
+        "question": "La quantité qu'on accumule d'un bout à l'autre de l'intervalle, c'est…",
+        "choix": [
+          {
+            "id": "rayon",
+            "texte": "le rayon de chaque tranche, $f(x)$ — d'où $V=\\pi\\displaystyle\\int_0^4 f(x)\\,\\mathrm{d}x$",
+            "juste": false,
+            "misconception": "mc.math.maths_calcul_integral.volume-oubli-du-carre",
+            "retour": "Un rayon est une longueur : en empilant des longueurs, on n'obtient pas un volume. Ce qui a une épaisseur et une aire, c'est la tranche."
+          },
+          {
+            "id": "aire_tranche",
+            "texte": "l'aire de chaque tranche, $\\pi f(x)^2$ — d'où $V=\\pi\\displaystyle\\int_0^4 f(x)^2\\,\\mathrm{d}x$",
+            "juste": true,
+            "retour": "Oui. L'intégrale accumule l'aire de la tranche, tranche après tranche : c'est ce qui fait apparaître $f^2$ et le $\\pi$."
+          },
+          {
+            "id": "perimetre",
+            "texte": "le tour de chaque tranche, $2\\pi f(x)$ — d'où $V=2\\pi\\displaystyle\\int_0^4 f(x)\\,\\mathrm{d}x$",
+            "juste": false,
+            "misconception": "mc.math.maths_calcul_integral.volume-circonference-vs-disque",
+            "retour": "Le tour de la tranche décrit sa peau, pas son contenu. Le solide est plein : ce sont les disques qu'on empile, pas les cercles."
+          }
+        ]
+      },
+      "suite": "Augmente le nombre de tranches : elles remplissent le solide de plus en plus près. Le volume lu, lui, ne bouge pas : c'est la valeur exacte de l'intégrale, pas un calcul fait sur les tranches affichées.",
+      "controles": [
+        "tranches"
+      ],
+      "lectures": [
+        "rayon",
+        "aire_tranche",
+        "volume"
+      ],
+      "etat": {
+        "fonction": "racine",
+        "balayage_deg": 360,
+        "x_tranche": 2.25,
+        "n_tranches": 1,
+        "unite_cm": 1,
+        "vue": "biais"
+      }
+    },
+    {
+      "id": "fonction",
+      "titre": "Le cône, pour vérifier",
+      "consigne": "On change de fonction : la droite $f(x)=\\dfrac{2}{3}x$ sur $[0\\,;3]$. En tournant, elle engendre un cône de rayon $2$ et de hauteur $3$ — un solide dont tu connais le volume depuis le collège.",
+      "pari": {
+        "question": "L'intégrale $\\pi\\displaystyle\\int_0^3 f(x)^2\\,\\mathrm{d}x$ va-t-elle retrouver le volume du cône ? Elle vaut…",
+        "choix": [
+          {
+            "id": "trois_pi",
+            "texte": "$3\\pi$ u.v.",
+            "juste": false,
+            "misconception": "mc.math.maths_calcul_integral.volume-oubli-du-carre",
+            "retour": "$3\\pi$, c'est $\\pi\\displaystyle\\int_0^3 f(x)\\,\\mathrm{d}x$ — le rayon, pas son carré. Et le cône y perdrait : $\\dfrac{\\pi r^2h}{3}$ vaut bien $4\\pi$."
+          },
+          {
+            "id": "neuf_pi",
+            "texte": "$9\\pi$ u.v.",
+            "juste": false,
+            "misconception": "mc.math.maths_calcul_integral.volume-carre-mal-place",
+            "retour": "$9\\pi = \\pi\\left(\\displaystyle\\int_0^3 f\\right)^2 = \\pi\\times 3^2$ : le carré a été posé sur l'intégrale au lieu de la fonction. $\\left(\\int f\\right)^2 \\neq \\int f^2$ — c'est la linéarité étendue au produit, refusée au chapitre 3."
+          },
+          {
+            "id": "quatre_pi",
+            "texte": "$4\\pi$ u.v.",
+            "juste": true,
+            "retour": "$\\pi\\displaystyle\\int_0^3 \\frac49 x^2\\,\\mathrm{d}x = \\pi\\cdot\\frac49\\cdot 9 = 4\\pi$, et $\\dfrac{\\pi r^2h}{3} = \\dfrac{\\pi\\cdot 4\\cdot 3}{3} = 4\\pi$. La formule du cône n'est plus à retenir : c'est une intégrale qu'on sait refaire."
+          }
+        ]
+      },
+      "suite": "Passe d'une fonction à l'autre : la racine donne un bol, la droite un cône, et $\\sqrt{\\ln x}$ le solide de l'exemple travaillé 3.",
+      "controles": [
+        "fonction"
+      ],
+      "lectures": [
+        "volume",
+        "verification_cone"
+      ],
+      "etat": {
+        "fonction": "cone",
+        "balayage_deg": 360,
+        "x_tranche": 2.25,
+        "n_tranches": 1,
+        "unite_cm": 1,
+        "vue": "biais"
+      }
+    },
+    {
+      "id": "unite",
+      "titre": "Des unités de volume aux cm³",
+      "consigne": "Le repère est orthonormé et l'unité vaut $2$ cm sur chaque axe. Le solide de l'étape 1 mesure $8\\pi$ u.v.",
+      "pari": {
+        "question": "En $\\text{cm}^3$, cela fait…",
+        "choix": [
+          {
+            "id": "carre",
+            "texte": "$32\\pi\\ \\text{cm}^3$ : l'unité de volume vaut $2^2 = 4\\ \\text{cm}^3$, comme pour une aire",
+            "juste": false,
+            "misconception": "mc.math.maths_calcul_integral.conversion-unites-volume",
+            "retour": "$2^2$ est le facteur d'une aire — tu as compté deux directions sur trois. Regarde le cube posé à côté du solide : il a une profondeur en plus."
+          },
+          {
+            "id": "echelle",
+            "texte": "$16\\pi\\ \\text{cm}^3$ : l'unité de volume vaut $2\\ \\text{cm}^3$, l'échelle du repère",
+            "juste": false,
+            "misconception": "mc.math.maths_calcul_integral.conversion-unites-volume",
+            "retour": "$2$ est le facteur d'une longueur. Longueur $\\to k$, aire $\\to k^2$, volume $\\to k^3$ : le facteur compte les directions."
+          },
+          {
+            "id": "cube",
+            "texte": "$64\\pi\\ \\text{cm}^3$ : l'unité de volume est le cube de côté $2$ cm, soit $8\\ \\text{cm}^3$",
+            "juste": true,
+            "retour": "Oui : trois directions, donc $2^3 = 8$. $8\\pi \\times 8 = 64\\pi \\approx 201\\ \\text{cm}^3$."
+          }
+        ]
+      },
+      "suite": "Fais varier l'unité de $1$ à $3$ cm : à $1$ cm le nombre ne change pas du tout — c'est le cas du sujet de bac, et c'est pour ça que cette conversion ne s'apprend jamais toute seule.",
+      "controles": [
+        "unite"
+      ],
+      "lectures": [
+        "volume",
+        "volume_cm3"
+      ],
+      "etat": {
+        "fonction": "racine",
+        "balayage_deg": 360,
+        "x_tranche": 2.25,
+        "n_tranches": 1,
+        "unite_cm": 2,
+        "vue": "biais"
+      }
+    }
+  ],
+  "boundary": "Cadre de la leçon (R9) : rotation d'un tour complet autour de l'axe des abscisses, d'une région sous une courbe y = f(x) avec f continue et positive, en repère orthonormé ; V = π∫ f(x)² dx en u.v. ; conversion 1 u.v. = k³ cm³. Pas de rotation autour de (Oy), pas de méthode des tubes, pas de volume entre deux courbes, pas de théorème de Guldin, aucune somme de Riemann (limite SExp) : les tranches s'affichent, elles ne s'additionnent jamais.",
+  "fit_caveat": "Le solide et la coupe sont à la vraie grandeur de la fonction choisie. Le curseur de coupe avance par pas de 0,25 et reste dans l'intervalle de la fonction courante ; le balayage par pas de 15°, pour que 180° et 360° soient atteints exactement. La caméra ne recadre qu'au changement de fonction, jamais pendant le balayage. La lecture du volume est la valeur EXACTE de l'intégrale : elle ne dépend jamais du nombre de tranches affichées (limite SExp : les tranches sont une image, jamais une somme).",
+  "fallback_note": "Sans WebGL, le panneau le dit et garde les paris, les réglages et les calculs ; la figure de la tranche, plus bas dans la leçon, en montre l'essentiel. À l'impression, le panneau disparaît et les figures figées restent.",
+  "pedagogy_wiring": {
+    "misconceptions": [
+      "mc.math.maths_calcul_integral.volume-oubli-du-carre",
+      "mc.math.maths_calcul_integral.volume-circonference-vs-disque",
+      "mc.math.maths_calcul_integral.volume-integrale-sans-pi",
+      "mc.math.maths_calcul_integral.volume-carre-mal-place",
+      "mc.math.maths_calcul_integral.conversion-unites-volume"
+    ],
+    "why_3d": "Une région PLANE qui tourne engendre un SOLIDE : le passage du plan à l'espace est le concept. La coupe perpendiculaire à l'axe est un disque, et toute figure plane le dessine en ellipse — vue le long de (Ox), elle redevient un vrai cercle et son rayon f(x) se lit au bon endroit. Le balayage lui-même est une rotation dans la troisième dimension : un demi-tour, un tour complet, et « l'aire fois 2π » tombe sous les yeux.",
+    "predict_then_reveal": "Chaque étape demande un pari AVANT toute preuve ; le solide coupé et son disque, les tranches, le cube unité, la fiche de lectures et le verdict n'apparaissent qu'une fois le pari posé (ADR 0041 §6 et son addendum du soir)."
+  },
+  "spec_ref": "content/maths/calcul-integral/spec-extension.md §9 (la scène), §5 (les misconceptions visées), §3.2 (la frontière SExp : aucune somme).",
+  "adr_ref": "docs/decisions/0041-scenes-3d-de-premiere-partie.md"
+}

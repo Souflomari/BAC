@@ -263,13 +263,48 @@ tête du ⊙ débordait sur la bande des bras et que la croix, décalée d'un pi
 par la perspective, passait entre les échantillons. Le produit pose désormais
 deux repères invisibles (le centre du glyphe, le bord de son anneau) ; la
 sonde mesure en fractions du rayon. Elle a été lancée à quatre tailles d'écran
-avant d'être crue.
+avant d'être crue, et deux défauts du PRODUIT — le disque qui faisait lire ⊙
+pour ⊗, le glyphe dessiné pour le champ opposé — la font rougir, elle seule.
 
 **Et le téléphone a demandé un glyphe plus grand.** À 390 px, l'anneau faisait
 8 px de diamètre, et dans les coins la perspective poussait la croix hors du
 centre (on lisait ⊘). Anneau porté de 0,22 à 0,34 cm, le point du ⊙ ramené à
 un tiers du rayon — un ⊙ de manuel, plus une cible. L'étiquette de B, qui se
 posait à 0,6 cm d'un glyphe, se pose ENTRE deux glyphes.
+
+## Addendum du 2026-09-24 — la cinquième scène : le solide de révolution, et une scène qui borne le programme
+
+`maths/calcul-integral`, R9, `[[embed:solide-de-revolution]]` — le volume
+d'un solide de révolution, savoir-faire explicite des deux filières que le
+corpus ne portait pas du tout (`REVIEW-2026-09-12` S2.6). Critère du §1 : la
+misconception centrale est SPATIALE — prendre la coupe pour un CERCLE (sa
+circonférence, 2πf(x), à la place de son aire), ou multiplier l'aire de la
+région par 2π parce qu'« un tour complet, c'est 2π »
+(`volume-circonference-vs-disque`), là où chaque point du segment balaie son
+propre cercle et la coupe est un DISQUE PLEIN. Une figure plane le dit ; il faut regarder la coupe
+LE LONG DE L'AXE pour le voir, puis de biais pour comprendre pourquoi on la
+dessine en ellipse. Cinq étapes à pari (le balayage, la coupe, les tranches,
+le cône, l'unité de volume), sur les trois fonctions des exemples travaillés ;
+les volumes (8π, 4π, π) sont CALCULÉS par une primitive de f² et recalculés
+par la porte par une autre voie (Simpson).
+
+**Une scène peut borner le programme, et la porte le garde.** Le cadre SExp
+exclut les sommes de Riemann comme construction de l'intégrale. Les tranches
+empilées sont donc une IMAGE : aucune somme n'est calculée ni affichée, le
+module de géométrie n'a pas de fonction pour ça, et la lecture du volume est
+la valeur exacte de l'intégrale, identique pour 1, 12 ou 40 tranches. La
+porte le mesure dans les deux sens (aucun « Σ / somme / total » dans le
+panneau ; le volume lu invariant ET égal au vrai). Une frontière de programme
+qui n'est tenue que par la retenue de l'auteur se perd à la première
+retouche ; tenue par une porte, elle rougit.
+
+**La teinte se lit dans la couleur, pas dans l'écart au fond.** La première
+sonde « rien d'accentué avant le pari » classait comme teinté d'accent tout
+pixel dont l'écart au fond allait vers l'accent. Sur un fond clair, l'accent
+est sombre — et n'importe quel gris plus sombre s'y projette : 78 366 pixels
+« teintés » sur un solide gris. La sonde lit maintenant la CHROMINANCE (la
+couleur moins son gris). Règle pour les portes à venir : une couleur qui porte
+un sens se reconnaît à sa teinte, jamais à sa luminance seule.
 
 ## Retractions and Corrections
 

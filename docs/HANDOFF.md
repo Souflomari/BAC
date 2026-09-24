@@ -14728,3 +14728,100 @@ les anneaux recouvrent un peu plus de trajectoire ; le rapport des cercles
 reste 0,51. Porte rejouée : VERT, 46 mesures, 13 familles, deux fois ; essai
 rouge : 10/10 familles crient.
 
+**DEUX ESSAIS ROUGES DU PRODUIT, pas seulement de la porte.** L'essai rouge
+retourne les attentes ; il ne prouve pas que la sonde voit un DÉFAUT réel
+(ADR 0038). Deux défauts posés dans `champ-magnetique.ts`, chacun rebâti et
+passé à la porte entière, puis retiré :
+- le défaut historique — la tête de flèche avec un fond (`ConeGeometry(…,
+  false)`), dont le disque faisait lire ⊙ pour ⊗ : ROUGE, 1 manquement sur 46,
+  la famille `glyphe` seule (« champ entrant → ni ⊗ ni ⊙ », plein 100 %) ;
+- le glyphe dessiné pour le champ OPPOSÉ (`bz = −composanteChamp(sens)` dans
+  la construction du maillage, la physique inchangée) : ROUGE, 1 sur 46, la
+  famille `glyphe` seule — l'entrant n'est plus une croix, le sortant se lit ⊗.
+Aucune autre famille n'a bougé : chaque défaut n'a atteint que la porte qui le
+garde.
+
+
+## §11.193 — Le volume de révolution : le plus gros trou de calcul intégral comblé, et une cinquième scène
+
+**LE TROU.** `REVIEW-2026-09-12` S2.6 : le volume d'un solide de révolution est
+un savoir-faire explicite des DEUX filières (`maths-sexp.yaml:175,179` ;
+`maths-sm.yaml:184,188`) et il était TOTALEMENT absent du corpus — « plus gros
+trou de couverture, non signalé ». Un sujet national le pose tel quel (2023,
+rattrapage, SM, Ex. 1 III 2c : « Calculer, en cm³, le volume du solide
+engendré par la rotation d'un tour complet autour de l'axe des abscisses… »).
+
+**LA CHAÎNE DE PRODUCTION, telle que RULES §5 la décrit.** Une spec
+d'extension (`content/maths/calcul-integral/spec-extension.md`, par
+l'architecte pédagogique : frontière, cinq misconceptions, rampe, items,
+scène), puis trois auteurs en parallèle — la prose (R9, checkpoint, exercice
+de sommet), les items (CI-35 → CI-50), les deux figures — et la scène.
+
+**CE QUI EST LIVRÉ.** Un barreau neuf, `## R9 — Faire tourner la région : le
+volume d'un solide de révolution` (l'entraînement devient R10 ; CI-28/29/30
+retagués) : le pont depuis les aires et le tour de potier, la scène, le
+mécanisme (la coupe est un disque PLEIN parce que chaque point du segment
+balaie son propre cercle ; l'épaisseur d'une tranche ; l'intégrale qui
+accumulait des hauteurs et rendait une aire accumule maintenant des aires et
+rend un volume), deux points d'arrêt (`cp-volume-disque`, sur une fonction que
+la leçon n'a PAS travaillée ; `cp-volume-unite`, clone de CI-47), la table des
+quatre formules fausses avec une rupture par ligne, trois exemples travaillés
+(√x → 8π ; le cône r = 2, h = 3 → 4π = πr²h/3, puis le cas général ; √(ln x)
+→ π, en réutilisant le chapitre 8), l'unité de volume (le cube, k³), le
+réflexe de bac. Cinq misconceptions neuves, treize items (CI-36 → CI-50 sans
+CI-40 ni CI-45 ; CI-35, CI-40 et CI-45 retirés à la revue), un exercice de
+sommet (`r-volume`), deux figures à trois temps, et la scène.
+
+**LA CINQUIÈME SCÈNE, `solide-revolution`.** La région sous la courbe tourne
+(curseur 0 → 360°, le volume balayé suit l'angle) ; la coupe, vue LE LONG DE
+L'AXE, est un disque plein — de biais, une ellipse ; les tranches s'empilent
+(1 → 40) sans qu'aucune somme ne s'écrive — la limite SExp (pas de sommes de
+Riemann comme construction) est tenue par construction ET par la porte ; le
+cône retrouve πr²h/3 ; le cube unité apparaît pour la conversion. Cinq paris,
+chaque mauvais choix relié à une misconception déclarée.
+
+**SA PORTE, `scene-revolution` : 48 mesures, 12 familles, VERT deux fois ;
+essai rouge 9/9.** Le premier passage était ROUGE six fois — et c'était la
+sonde : elle jugeait « teinté d'accent » un pixel dont l'écart au fond allait
+vers l'accent, et sur fond clair tout gris plus sombre s'y projette (l'accent
+est sombre) : 78 366 px « teintés » avant le pari, sur un solide gris. La
+teinte se lit maintenant dans la chrominance. Puis le premier essai rouge
+rendait 8/9 : la famille `frontiere` retournait son attente ET le volume
+attendu, deux retournements qui s'annulaient. Deux fois le banc avant le
+produit (ADR 0035).
+
+**LA REVUE, ET CE QU'ELLE A CHANGÉ.** Deux critiques indépendants sur la
+livraison (fidélité au bac, pédagogie). Aucun hors-programme, tous les nombres
+justes — et des défauts réels, corrigés :
+- sept retours d'items disaient « ∫f² mesure l'aire des tranches accumulées »
+  — faux (la tranche vaut πf², et π∫f² EST le volume), au moment même où ils
+  corrigeaient l'erreur ;
+- CI-39 (f = x sur [1 ; 3]) et CI-44 (f = x + 1 sur [0 ; 2]) étaient le MÊME
+  solide, translaté, même clé 26π/3 : CI-44 est passé sur x + 2 sur [0 ; 1] ;
+- le point d'arrêt reposait sur la graine que la scène et l'exemple 1 venaient
+  de résoudre — un rappel, pas une rupture : il porte maintenant sur x² ;
+- seize items pour une demi-ligne de savoir-faire : treize ; deux distracteurs
+  portaient une misconception que la réponse ne montre pas (CI-40 « ×8 »,
+  CI-50 « 2π∫f² ») — l'un est parti avec son item, l'autre avec son choix ;
+- les exemples travaillés étaient des calculs muets : une ligne de décision
+  entre chaque bloc ; deux lignes de la table n'étaient que nommées (le carré
+  oublié, le π oublié) : chacune a sa rupture, dont le contrôle dimensionnel ;
+- le repère orthonormé était justifié par la mauvaise raison (la coupe reste un
+  disque dans un repère orthogonal ; ce qui casse, c'est le CUBE unité).
+Les questions de périmètre qui restent (l'axe (Oy) ? les volumes entre deux
+courbes ? la notion est-elle SExp, SM, ou les deux — ce qui décide si le sujet
+2023 SM entre tel quel au sommet ? l'aparté Riemann pour SM ?) sont au
+propriétaire : `spec-extension.md` §10, DÉCISIONS §18.
+
+**LE RUN 748 A RÉPONDU À §11.192.** Vert, les deux jobs : `gates` 51 min
+34 s, `scenes` 34 min 12 s — dont 18 min 12 s pour les deux passages du champ
+magnétique, ce que la mesure locale annonçait (~9 min chacun). La cinquième
+scène ajoute ~2 min 30 par passage : `scenes` est attendu vers 40 min, sous un
+plafond de 60.
+
+**ET LA PORTE DU TÉLÉPHONE, ARMÉE.** `etroit-sweep` (108 pages × 320/360/390,
+0 débord) ne tournait qu'à la main, faute de budget (DÉCISIONS §16). Le dépôt
+public et les jobs parallèles ont retiré ce coût : elle tourne dans son propre
+job, `telephone`, avec un essai rouge neuf (un bloc de 2 000 px posé dans
+quatre pages avant la mesure : 4 débords sur 4). Mesurée en local : 0 débord,
+6 min 02 s — et de nouveau 0 avec la leçon neuve (6 min 06 s).

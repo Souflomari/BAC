@@ -79,7 +79,7 @@
 | Instrument | Mesure | Ne dit RIEN de |
 |---|---|---|
 | `web/scripts/figure-preview.mjs` | Une figure hors du site, **sept classes** : texte hors CADRE, texte hors de SON PANNEAU, chevauchements d'étiquettes, tracés qui barrent du texte, aplats restés clairs en thème sombre, **contraste d'un texte contre ce qui est vraiment peint derrière lui**, **texte effacé par une étape ultérieure**. Le contraste est jugé en deux temps — le modèle de peinture propose, un ÉTAGE PIXEL dispose (capture, retrait du texte, recapture, couleur médiane du fond). `--pixels-tous` passe TOUS les textes du corpus au crible des pixels (~25 min) ; `--porte` arme les deux classes propres (cadre, panneau) et tourne en CI | La GRAVITÉ d'une collision en thème sombre (contraste non rejugé). Le HALO (`paint-order`) : l'étage pixel le retire avec le texte et juge quand même sur la teinte — aucune figure ne s'en sert aujourd'hui. Un texte sous 0,5 d'opacité, traité comme un ornement. Les trois classes non armées restent informatives — 7 chevauchements, 85 tracés, 2 aplats, tous documentés |
-| `web/scripts/etroit-sweep.mjs` | 70 pages × 3 largeurs de téléphone (320/360/390) : débord horizontal, chapitres dépliés **Ouvre les 39 épreuves** (2026-09-05) : la liste se lit par `routes-examens.mjs`, et chaque sujet est ouvert en deux clics — « Commencer », puis « Terminer » — sans lesquels l'instrument mesurait le masthead et déclarait la page propre. | La lisibilité. Une page peut ne pas déborder ET rester illisible — c'est ce que la sonde de figures a montré |
+| `web/scripts/etroit-sweep.mjs` | 108 pages (62 leçons, 46 autres — compté le 2026-09-24 ; 70 à l'origine) × 3 largeurs de téléphone (320/360/390) : débord horizontal, chapitres dépliés ; **armée en CI** (job `telephone`, §11.193) **Ouvre les 39 épreuves** (2026-09-05) : la liste se lit par `routes-examens.mjs`, et chaque sujet est ouvert en deux clics — « Commencer », puis « Terminer » — sans lesquels l'instrument mesurait le masthead et déclarait la page propre. | La lisibilité. Une page peut ne pas déborder ET rester illisible — c'est ce que la sonde de figures a montré |
 | `web/scripts/horsligne-sweep.mjs` | Six scènes de coupure réseau : navigation par chapitre, clic vers une autre leçon, bouton Retour, leçon déjà visitée, réponse à un QCM, retour du réseau. **Ce qui tient tient ; ce qui casse est borné** — voir `docs/audits/hors-ligne.md` | Le réseau qui RAMPE au lieu de mourir (latence + pertes de paquets), et la coupure pendant un enregistrement |
 | `web/scripts/polices-de-repli.mjs` | Quels caractères ne sont PAS dessinés par la police du site, et par quoi ils le sont — via `CSS.getPlatformFontsForNode` (protocole DevTools), qui rend les fontes RÉELLEMENT utilisées et le compte de glyphes. Produit l'INVENTAIRE des caractères à couvrir : `ᵉ` (66), l'arabe (~500), les symboles mathématiques écrits en Unicode (~120) | Si le repli se VOIT — l'instrument localise, la capture tranche. Et la fonte de repli MESURÉE est celle de ce conteneur Linux : sur un téléphone ce sera Roboto/Noto ou San Francisco |
 | `web/scripts/recherche-navigateur.mjs` | Ce que ⌘F trouve : un mot du chapitre ouvert (témoin), un mot qui n'existe QUE dans un chapitre replié, et le texte du MathML masqué de KaTeX. A montré que **10 chapitres sur 11 sont hors d'atteinte de la recherche** — la moitié « ⌘F » de l'arbitrage des chapitres, enfin mesurée | Firefox et Safari (moteurs de recherche différents), et l'interface ⌘F elle-même : on passe par `window.find()`, qui partage la machinerie mais n'est pas l'UI |
@@ -1027,10 +1027,16 @@ n'écoute d'avance — le défaut exact que `source-en-double` portait en silenc
 
 ## `web/scripts/etroit-sweep.mjs` — la porte locale qui a rattrapé ce qu'aucune autre ne voyait
 
-**PAS ARMÉE EN CI** (0 occurrence dans `gates.yml`) — et c'est l'objet de
-DECISIONS §16. Elle mesure 108 pages × 320/360/390 px, chapitres dépliés et
-les 39 épreuves ouvertes, sur un fait binaire du document :
-`scrollWidth > innerWidth`. Référence inscrite : **0 débord**.
+**ARMÉE EN CI depuis §11.193 (2026-09-24), dans le job parallèle `telephone`**
+— DECISIONS §16 était suspendue à son coût (un job unique de 50 min) ; le dépôt
+public et un job parallèle ont retiré ce coût, seule objection écrite. Elle
+mesure 108 pages × 320/360/390 px, chapitres dépliés et les 39 épreuves
+ouvertes, sur un fait binaire du document : `scrollWidth > innerWidth`.
+Référence inscrite : **0 débord**. Mesurée le 2026-09-24 : **0 débord, 6 min
+02 s** en local. **Son essai rouge** (`--essai-rouge`, neuf) pose un bloc de
+2 000 px dans trois leçons et l'accueil AVANT la mesure, à 320 px : **4
+débords sur 4**, la porte sait rougir — un défaut posé dans le DOM, qui atteint
+la mesure elle-même (ADR 0038), pas une attente retournée.
 
 **Le 2026-09-22 elle a fait seule le travail de toute la batterie.** Un
 correctif d'ergonomie clavier — retirer `.prose-lesson p { overflow-x: auto }`,
@@ -1296,7 +1302,10 @@ qu'on pousse.
   et le bord de son anneau), la sonde mesure en fractions du rayon R —
   l'anneau (24 angles), les bras sur les diagonales entre 0,45 R et 0,65 R, le
   plein du disque central ρ ≤ 0,2 R. À 1280/×1 : ⊗ = bras **95 %**, plein
-  **0 %** ; ⊙ = bras **0 %**, plein **100 %** (seuils 75/50 et 35/80 %) ;
+  **0 %** ; ⊙ = bras **0 %**, plein **100 %** (seuils 75/50 et 35/80 %).
+  Deux défauts du PRODUIT la font rougir, elle seule (§11.192) : la tête de
+  flèche avec un fond (⊗ lu « ni ⊗ ni ⊙ », plein 100 %), et le glyphe dessiné
+  pour le champ opposé (le sortant se lit ⊗) ;
 - **la vitesse**, lue PENDANT la course à 10, 35, 60 et 85 % du tour : la même
   à chaque fois, l'angle entre F et v à **90°**, F constante ;
 - **les paris** — rien ne s'ouvre avant l'engagement ; le verdict attend la
@@ -1313,7 +1322,9 @@ Mesuré le 2026-09-23 : **45 mesures, 12 familles, VERT** au premier passage,
 et de nouveau au second (un instrument neuf se lance plusieurs fois avant
 d'être cru, ADR 0036) ; `--essai-rouge` — dont la misconception même de la
 leçon, un rayon qui CROÎTRAIT avec B, et le côté pris sur v ∧ B sans le signe
-de q : **9/9 familles crient**.
+de q : **9/9 familles crient**. Avec la famille `glyphe` (§11.192) : **46
+mesures, 13 familles, VERT deux fois ; 10/10 familles crient**. Durée mesurée
+en local : **9 min 20 s par passage** (elle attend ses courses en temps réel).
 
 **NE DIT RIEN DE :** si les étapes enseignent ; la fluidité sur un vrai
 téléphone ; le glisser au doigt ; l'impression (panneau `print:hidden`) ; la
@@ -1364,3 +1375,57 @@ dessus (seule la vue de côté est mesurée en pixels) ; un vrai téléphone.
 
     node scripts/scene-vectoriel.mjs --porte        (lève son propre next start)
     node scripts/scene-vectoriel.mjs --essai-rouge
+
+## `web/scripts/scene-revolution.mjs` — la scène du solide de révolution dit-elle VRAI ?
+
+**PORTE, armée en CI (job `scenes`, vert puis rouge), §11.193, ADR 0041.** La
+cinquième scène 3D de première partie (maths/calcul-integral, R9 — le volume
+de révolution, savoir-faire des deux filières absent du corpus jusque-là), sur
+les pièces communes. Le rendu RÉEL, WebGL par SwiftShader.
+
+**Ce qu'elle mesure :**
+
+- **rien avant le clic** — `window.__THREE__` indéfini tant que la scène est
+  fermée ;
+- **les nombres**, par une SECONDE voie — Simpson sur f², jamais la primitive
+  du produit : V = **8π** (√x sur [0 ; 4]), **4π** (le cône), **π** (√(ln x)
+  sur [1 ; e]) ; le volume balayé à 180° (la moitié) ; le rayon et l'aire de la
+  coupe à x = 0,5 / 1 / 2,25 / 3 / 4 ; πr²h/3 du cône ; 1 u.v. = k³ cm³ pour
+  k = 1, 2, 3 ; l'aire de la région, 16/3 ;
+- **les pixels, dans les deux sens** — vue LE LONG DE L'AXE, la coupe est un
+  cercle (largeur = hauteur à 3 px près) et un DISQUE PLEIN (ses pixels teintés
+  remplissent π R² : **100 à 102 %**), du rayon que le produit dit à la même
+  profondeur (deux repères invisibles, le centre et le haut du bord : 75,0 px
+  contre 74,5 ; 186,5 contre 185,6) ; vue de BIAIS, la même coupe est une
+  ellipse (130 × 273 px). Le balayage fait grandir le dessin (0°, 90°, 180°,
+  360°). Vue de côté, quatre tranches ont les hauteurs de f en leur milieu :
+  rapports **0,38 / 0,65 / 0,85 / 1,00** pour 0,38 / 0,65 / 0,85 / 1,00
+  attendus. (« f double, l'aire quadruple » se juge sur les NOMBRES : deux
+  coupes ne sont pas à la même distance de l'œil, la perspective grossit la
+  plus proche.) ;
+- **la frontière SExp** (spec §3.2, B1) — les tranches s'affichent, elles ne
+  s'additionnent jamais : aucun « Σ / somme / total » dans le panneau pour
+  n = 1, 12, 40, et le volume lu identique pour les trois ;
+- **les paris, les étapes, avant le pari rien ne répond** (ni fiche, ni
+  lectures, ni pixel d'accent pur ou teinté, ni cube, ni issue dans la
+  description) ; aucun LaTeX brut ; clavier (deux flèches → unité 1 → 3 cm) ;
+  fond clair ET sombre ; état honnête sans WebGL ; aucune erreur console.
+
+Mesuré le 2026-09-24 : **48 mesures, 12 familles, VERT** ; `--essai-rouge` —
+dont la misconception même de la leçon, le rayon non élevé au carré
+(V = π ∫ f) : **9/9 familles crient**.
+
+**LE PREMIER PASSAGE ÉTAIT ROUGE — SIX FOIS, ET C'ÉTAIT LA SONDE.** Elle jugeait
+« teinté d'accent » un pixel dont l'écart au fond allait vers l'accent ; sur
+fond clair, n'importe quel gris plus sombre s'y projette (l'accent est sombre) :
+le solide gris de l'énoncé comptait 78 366 px « teintés » avant le pari. La
+teinte se lit maintenant dans la CHROMINANCE (la couleur moins son gris). Et le
+premier essai rouge rendait 8/9 : la famille `frontiere` retournait son
+attente ET le volume attendu — deux retournements qui s'annulaient.
+
+**NE DIT RIEN DE :** si les étapes enseignent ; un vrai téléphone ; le glisser
+au doigt ; l'impression (panneau `print:hidden`) ; les fonctions `cone` et
+`log` en pixels (seule `racine` est mesurée à l'image).
+
+    node scripts/scene-revolution.mjs --porte        (lève son propre next start)
+    node scripts/scene-revolution.mjs --essai-rouge

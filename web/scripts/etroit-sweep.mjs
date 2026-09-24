@@ -25,7 +25,13 @@ import { execSync } from "node:child_process";
 import { readdirSync, existsSync } from "node:fs";
 
 const BASE = process.env.BASE ?? "http://localhost:3433";
-const LARGEURS = (process.env.LARGEURS ?? "320,360,390").split(",").map(Number);
+// L'ESSAI ROUGE (2026-09-24, §11.193 — la porte entre en CI, elle doit savoir
+// rougir). Sur trois leçons et l'accueil, à 320 px, un bloc de 2 000 px est
+// posé dans la page AVANT la mesure : chaque page doit alors déborder, et la
+// porte le dire. Un défaut posé dans le DOM atteint la mesure elle-même — ce
+// n'est pas une attente retournée (ADR 0038).
+const ESSAI = process.argv.includes("--essai-rouge");
+const LARGEURS = ESSAI ? [320] : (process.env.LARGEURS ?? "320,360,390").split(",").map(Number);
 
 const lecons = [];
 for (const m of readdirSync("../content")) {
@@ -43,7 +49,7 @@ for (const m of readdirSync("../content")) {
 // le DOM — `EpreuveShell` démarre au « seuil ». Mesuré à la main avant
 // d'entrer ici, ouvertes en deux clics : 39 × 3 largeurs, 0 débord.
 const examens = execSync("node scripts/routes-examens.mjs", { cwd: process.cwd(), encoding: "utf8" }).trim().split(" ");
-const AUTRES = [
+const AUTRES = ESSAI ? ["/"] : [
   "/",
   "/matieres/maths",
   "/matieres/pc",
@@ -53,6 +59,7 @@ const AUTRES = [
   "/commencer",
   "/atelier",
 ];
+if (ESSAI) lecons.splice(3);
 
 const navigateur = await chromium.launch({
   executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium",
@@ -71,7 +78,13 @@ page.on("response", (rep) => {
 });
 
 const mesure = () =>
-  page.evaluate(() => {
+  page.evaluate((essai) => {
+    if (essai) {
+      const bloc = document.createElement("div");
+      bloc.setAttribute("data-essai-rouge", "");
+      bloc.style.cssText = "width:2000px;height:1px";
+      document.body.appendChild(bloc);
+    }
     // Déplier tout : le shell ne pose `hidden` que lors de ses effets, et on
     // ne le re-déclenche pas ici — la mesure reste stable.
     document.querySelectorAll("[data-chapter-section]").forEach((s) => (s.hidden = false));
@@ -106,7 +119,7 @@ const mesure = () =>
       if (trouves.length >= 4) break;
     }
     return { debord, coupables: trouves.map((t) => t.info) };
-  });
+  }, ESSAI);
 
 let fautes = 0;
 const rapport = [];
@@ -150,4 +163,13 @@ for (const largeur of LARGEURS) {
 }
 await navigateur.close();
 console.log(`\n${lecons.length + AUTRES.length} pages × ${LARGEURS.length} largeurs — ${fautes} débord(s)`);
+if (ESSAI) {
+  const attendu = (lecons.length + AUTRES.length) * LARGEURS.length;
+  if (fautes === attendu) {
+    console.log(`ESSAI ROUGE — ✔ le bloc posé fait déborder les ${attendu} pages, et la porte le dit.`);
+    process.exit(0);
+  }
+  console.error(`ESSAI ROUGE — ✘ ${attendu - fautes} page(s) sur ${attendu} ont gardé leur débord pour elles : la porte ne sait pas rougir.`);
+  process.exit(1);
+}
 process.exit(fautes ? 1 : 0);

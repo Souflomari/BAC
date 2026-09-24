@@ -416,9 +416,169 @@ Pour l'exemple précédent, l'aire réelle serait $\dfrac16 \times 4 = \dfrac23\
 
 ---
 
-## R9 — Pour t'entraîner : les questions de type bac
+## R9 — Faire tourner la région : le volume d'un solide de révolution
 
-Deux exercices, maintenant, à chercher **sans solution imprimée sous les yeux**. D'abord un **sujet d'examen national authentique** (2022), puis une **variation inédite** qui rejoue les mêmes gestes avec d'autres nombres — pour vérifier que tu reconnais la structure quand l'habillage change. La règle du jeu, c'est là que se joue le vrai progrès : pour chaque question, cherche sur papier, engage une réponse, et **seulement ensuite** ouvre le raisonnement expert pour le comparer au tien.
+Au chapitre 9, tu as mesuré une région : son aire, en u.a., puis en cm². Fais-la maintenant tourner d'un tour complet autour de l'axe des abscisses : elle ne balaie plus une surface, elle engendre un **solide** — et ce solide a un volume que la même intégrale sait calculer. Pense au profil d'un verre, ou d'un vase, tourné sur un tour de potier : le tour de potier, c'est cette rotation-là. Et la question qu'on se pose alors est concrète — combien de liquide ce vase peut-il contenir ? C'est très exactement la question que pose le bac :
+
+> « Calculer, en cm³, le volume du solide engendré par la rotation d'un tour complet autour de l'axe des abscisses de la portion de la courbe $(C)$ relative à l'intervalle $[a,b]$. (On prendra $\|\vec i\| = 1$ cm) »
+
+Avant d'aller plus loin, mets ta première intuition à l'épreuve : dans la scène qui suit, cinq étapes, et à chaque fois un pari avant que la scène ne réponde.
+
+[[embed:solide-de-revolution]]
+
+### Le mécanisme
+
+**Le geste.** La région sous la courbe, sur $[a,b]$, tourne d'un tour complet autour de $(Ox)$. Elle ne balaie plus une surface : elle **engendre un solide**.
+
+**Où couper.** On coupe le solide par un plan perpendiculaire à l'axe, à l'abscisse $x$. C'est le découpage qui rend la coupe simple — parce que l'axe de rotation la traverse au centre.
+
+**La coupe est un disque, pas un cercle.** Le segment vertical qui va de $(x,0)$ à $(x,f(x))$ appartient entièrement à la région. Chacun de ses points, à la hauteur $y$, décrit un cercle de rayon $y$ ; le segment tout entier balaie donc tous les cercles de rayon $0$ à $f(x)$ : un disque **plein** de rayon $f(x)$. (Pour $f(x)=\sqrt{x}$, à l'abscisse $2{,}25$ : un disque de rayon $1{,}5$.)
+
+**L'aire de cette tranche.** Un disque de rayon $f(x)$ a pour aire $\pi f(x)^2$ (ici $\pi\times 1{,}5^2 = 2{,}25\pi$). C'est le point où tout se joue : **le rayon est au carré** — doubler $f$ ne double pas la tranche, il la **quadruple**.
+
+[[figure:volume-revolution-tranche]]
+
+**On accumule le long de $[a,b]$.** Prends une tranche très fine, d'épaisseur $\mathrm{d}x$, autour de l'abscisse $x$ : son volume vaut à peu près l'aire de sa face, $\pi f(x)^2$, fois cette épaisseur. L'intégrale accumule exactement ces aires de tranche, tout le long de $[a,b]$ — au chapitre 2, elle accumulait des hauteurs et rendait une aire ; ici, elle accumule des aires et rend un volume : la même machine, un cran plus haut en dimension. D'où :
+
+$$\boxed{V = \pi\int_a^b \big(f(x)\big)^2\,\mathrm{d}x} \quad \text{(en unités de volume, u.v.)}$$
+
+**Ce qu'on admet, et dans quel registre.** Comme au chapitre 2 pour l'aire (« on admet, comme pour toute fonction continue positive, le fait suivant… »), on admet ici que l'accumulation des aires de tranches est donnée par cette intégrale. Même registre, même honnêteté : on dit qu'on l'admet, on ne le déguise pas en démonstration.
+
+**Les hypothèses, énoncées, pas sous-entendues.** $f$ continue et **positive** sur $[a,b]$ : le carré rend $f(x)^2$ automatiquement positif, donc, contrairement à l'aire au chapitre 9, il n'y a jamais besoin de découper selon le signe de $f$ à l'intérieur de cette intégrale. Et le repère est **orthonormé** : c'est ce qui garantit que l'unité de volume est un cube, donc que $1$ u.v. $= k^3$ cm³.
+
+[[checkpoint:cp-volume-disque]]
+
+### L'erreur à repérer
+
+Reprenons $f(x)=\sqrt{x}$ sur $[0,4]$. Quelle est son aire ? Une primitive de $\sqrt{x}$ est $x\mapsto \dfrac23 x\sqrt{x}$ — vérifie-le en la dérivant. D'où :
+
+$$\int_0^4 \sqrt{x}\,\mathrm{d}x = \left[\frac{2}{3}x\sqrt{x}\right]_0^4 = \frac{2}{3}\times4\times2 = \frac{16}{3}\ \text{u.a.}$$
+
+Voici, sur cette unique fonction, cinq calculs qu'un élève pourrait écrire pour le volume — un seul est le bon :
+
+| Ce qu'on écrit | Ce que ça vaut | Le modèle qui tourne derrière |
+|---|---|---|
+| $V = \pi\displaystyle\int_0^4 x\,\mathrm{d}x = 8\pi \approx 25{,}13$ | **correct** | la tranche est un **disque** d'aire $\pi f(x)^2$ |
+| $\pi\displaystyle\int_0^4 \sqrt{x}\,\mathrm{d}x = \dfrac{16\pi}{3} \approx 16{,}76$ | faux | le rayon n'est pas élevé au carré |
+| $2\pi\displaystyle\int_0^4 \sqrt{x}\,\mathrm{d}x = \dfrac{32\pi}{3} \approx 33{,}51$ | faux | « un tour complet vaut $2\pi$, donc on multiplie l'aire par $2\pi$ » — on prend la **circonférence** pour le disque |
+| $\displaystyle\int_0^4 x\,\mathrm{d}x = 8$ | faux | « l'intégrale donne directement le volume, comme elle donnait l'aire » |
+| $\pi\left(\displaystyle\int_0^4 \sqrt{x}\,\mathrm{d}x\right)^2 = \dfrac{256\pi}{9} \approx 89{,}36$ | faux | le carré posé sur **l'intégrale** au lieu de la **fonction** |
+
+La ligne du rayon non élevé au carré casse sur le chiffre lui-même : à $x=1$ le rayon vaut $1$, à $x=4$ il vaut $2$ — il a doublé. $\pi\displaystyle\int f$ traite alors la tranche comme si son aire avait doublé aussi, alors que la géométrie dit qu'elle a quadruplé : $\pi\times1^2$ contre $\pi\times2^2$. Et le contrôle dimensionnel confirme l'erreur : $\pi\displaystyle\int f$ accumule des longueurs, il rend une aire — jamais un volume.
+
+La ligne du $2\pi$ casse sur une raison géométrique, pas sur l'autorité d'un calcul : les points de la région ne sont pas tous à la même distance de l'axe — celui qui est à la hauteur $1$ décrit un cercle de rayon $1$, celui qui est à la hauteur $2$ un cercle deux fois plus grand. Multiplier toute l'aire par un seul facteur revient à supposer qu'ils balaient tous la même chose.
+
+La ligne sans $\pi$ casse sur les unités elles-mêmes : $\frac{16}{3}$ u.a. mesure une **surface**, $8\pi$ u.v. mesure un **volume** — une aire ne répond jamais à une question de volume, même quand le nombre paraît raisonnable. Et $\displaystyle\int f^2$ toute seule, sans le $\pi$, empilerait des **carrés** de côté $f(x)$, pas des disques : ce n'est même pas l'aire de la bonne tranche.
+
+La ligne du carré posé sur l'intégrale casse sur un contre-exemple d'une ligne. Prends $f(x)=x$ sur $[0,1]$ : $\displaystyle\int_0^1 f(x)\,\mathrm{d}x = \frac12$, donc $\left(\displaystyle\int_0^1 f(x)\,\mathrm{d}x\right)^2 = \frac14$ — alors que $\displaystyle\int_0^1 f(x)^2\,\mathrm{d}x = \frac13$. Deux nombres différents : le carré ne peut donc pas se poser sur l'intégrale, il doit se poser sur la fonction, avant d'intégrer. La linéarité (chapitre 3) ne dit rien du produit de deux fonctions — encore moins du carré d'une intégrale.
+
+### Exemple travaillé 1
+
+**Ce qu'on cherche et pourquoi ce geste :** calculer le volume engendré par $f(x)=\sqrt{x}$ sur $[0,4]$. Le carré n'est pas une corvée, c'est une **chance** — il fait disparaître la racine : $(\sqrt{x})^2 = x$, un polynôme. Chaque fois qu'un énoncé de bac met une racine dans $f$ pour une question de volume, c'est presque toujours pour que $f^2$ redevienne simple — c'est le montage standard de ce type de question.
+
+$$V = \pi\int_0^4 \big(\sqrt{x}\big)^2\,\mathrm{d}x$$
+
+La racine a disparu : c'est le carré qui l'a effacée, il reste un polynôme.
+
+$$= \pi\int_0^4 x\,\mathrm{d}x$$
+
+$$= \pi\left[\frac{x^2}{2}\right]_0^4$$
+
+$$= \pi\left(\frac{16}{2}-0\right)$$
+
+$$\boxed{V = 8\pi\ \text{u.v.} \approx 25{,}13\ \text{u.v.}}$$
+
+Le solide est un paraboloïde — le bol qu'on obtient en faisant tourner une parabole couchée.
+
+### Exemple travaillé 2
+
+**Ce qu'on cherche et pourquoi ce geste :** on prend une figure dont on connaît **déjà** le volume depuis le collège, et on vérifie que l'outil neuf redonne la vieille formule. Si ça ne collait pas, c'est l'outil qui serait faux.
+
+La droite $f(x) = \dfrac23 x$ sur $[0,3]$ engendre un **cône** de rayon $r=2$ (la valeur de $f$ en $3$) et de hauteur $h=3$.
+
+$$V = \pi\int_0^3 \left(\frac{2}{3}x\right)^2\mathrm{d}x$$
+
+$$= \pi\int_0^3 \frac{4}{9}x^2\,\mathrm{d}x$$
+
+On sort la constante $\frac49$ de l'intégrale (linéarité, chapitre 3) plutôt que de la laisser mêlée à $x^2$ : il ne reste plus qu'à primitiver $x^2$ seul.
+
+$$= \pi\cdot\frac{4}{9}\left[\frac{x^3}{3}\right]_0^3$$
+
+$$= \pi\cdot\frac{4}{9}\cdot\frac{27}{3}$$
+
+$$= \pi\cdot\frac{4}{9}\cdot 9$$
+
+$$\boxed{V = 4\pi\ \text{u.v.}}$$
+
+**La vérification :** la formule du cône donne $\dfrac{\pi r^2 h}{3} = \dfrac{\pi\times 2^2\times 3}{3} = 4\pi$. **Identique.**
+
+**Le cas général, en trois lignes** — la preuve que la coïncidence n'en est pas une — avec $f(x) = \dfrac{r}{h}x$ sur $[0,h]$ :
+
+$$\pi\int_0^h \frac{r^2}{h^2}x^2\,\mathrm{d}x = \pi\frac{r^2}{h^2}\left[\frac{x^3}{3}\right]_0^h$$
+
+$$= \pi\frac{r^2}{h^2}\cdot\frac{h^3}{3}$$
+
+$$= \frac{\pi r^2 h}{3}$$
+
+La formule du cône n'est plus une formule à retenir : c'est une intégrale qu'on sait refaire.
+
+### Exemple travaillé 3
+
+**Ce qu'on cherche et pourquoi ce geste :** sur $[1,e]$, $\ln x \geq 0$, donc $f(x)=\sqrt{\ln x}$ est bien définie et positive. Le carré donne $f(x)^2 = \ln x$ — et cette intégrale-là, **on l'a déjà calculée au chapitre 8** (exemple travaillé 2 de l'intégration par parties). Le réflexe d'expert n'est pas de recalculer : c'est de **reconnaître** et de réutiliser.
+
+$$V = \pi\int_1^e \big(\sqrt{\ln x}\big)^2\,\mathrm{d}x$$
+
+$$= \pi\int_1^e \ln(x)\,\mathrm{d}x$$
+
+On reconnaît ici l'intégrale du chapitre 8 : pas besoin de refaire l'intégration par parties, la valeur $1$ est déjà acquise.
+
+$$= \pi \times 1$$
+
+$$\boxed{V = \pi\ \text{u.v.} \approx 3{,}14\ \text{u.v.}}$$
+
+*(Rappel du chapitre 8, sans refaire l'intégration par parties : $\int_1^e \ln x\,\mathrm{d}x = \big[x\ln x\big]_1^e - \int_1^e 1\,\mathrm{d}x = e-(e-1) = 1$.)*
+
+### Les unités de volume, et la conversion en cm³
+
+**Le mécanisme, en une image :** $1$ u.a. est l'aire du **carré** bâti sur l'unité des deux axes. $1$ u.v. est le volume du **cube** bâti sur l'unité — trois longueurs, pas deux.
+
+[[figure:unite-de-volume-cube]]
+
+Dans un repère **orthonormé** où l'unité vaut $k$ cm sur chaque axe :
+
+$$1\ \text{u.a.} = k^2\ \text{cm}^2 \qquad\text{et}\qquad \boxed{1\ \text{u.v.} = k^3\ \text{cm}^3}$$
+
+Avec $k=2$ cm : $1$ u.v. $= 2\times2\times2 = 8$ cm³, donc l'exemple 1 vaut
+
+$$V = 8\pi\ \text{u.v.}$$
+
+On multiplie par le facteur du cube, $k^3=8$, maintenant que $V$ est connu en u.v. — jamais avant, jamais en cours de route.
+
+$$= 8\pi \times 8\ \text{cm}^3$$
+
+$$= 64\pi\ \text{cm}^3 \approx 201{,}1\ \text{cm}^3$$
+
+**L'erreur à repérer :** multiplier par $k^2=4$ (le facteur de l'**aire**) et annoncer $32\pi\ \text{cm}^3$. C'est l'erreur d'un élève qui a **bien** appris la règle de l'aire et l'a transportée d'un cran trop court. Le réflexe qui protège, et qu'il faut nommer : une longueur se convertit avec $k$, une aire avec $k^2$, un volume avec $k^3$ — compte les directions.
+
+[[checkpoint:cp-volume-unite]]
+
+**Et pourquoi cette conversion ne s'apprend jamais toute seule :** le bac écrit très souvent « on prendra $\|\vec i\| = 1$ cm ». Alors $1$ u.v. $=1$ cm³ et **le nombre ne change pas** — la conversion est invisible, donc jamais exercée. Le jour où l'énoncé écrit $2$ cm, l'élève qui n'a jamais vu le cube multiplie par $4$.
+
+**Pourquoi on ne convertit jamais en cours de route :** l'intégrale rend **toujours** des u.v. ; la conversion vient à la toute fin. Même règle qu'au chapitre 9 pour les u.a.
+
+### Le réflexe de bac — traduire la phrase
+
+Le bac ne demande jamais « calcule $\pi\int f^2$ ». Il écrit la phrase que tu as lue en ouvrant ce chapitre :
+
+> « Calculer, en cm³, le volume du solide engendré par la rotation d'un tour complet autour de l'axe des abscisses de la portion de la courbe $(C)$ relative à l'intervalle $[a,b]$. (On prendra $\|\vec i\| = 1$ cm) »
+
+Trois mots à repérer, et la traduction est automatique : **« un tour complet »** → le disque est entier ; **« autour de l'axe des abscisses »** → $V = \pi\displaystyle\int_a^b f(x)^2\,\mathrm{d}x$ ; **« en cm³ »** → il y aura une conversion à la toute fin, $1$ u.v. $=k^3$ cm³.
+
+---
+
+## R10 — Pour t'entraîner : les questions de type bac
+
+Trois exercices, maintenant, à chercher **sans solution imprimée sous les yeux**. D'abord un **sujet d'examen national authentique** (2022), puis une **variation inédite** qui rejoue les mêmes gestes avec d'autres nombres — pour vérifier que tu reconnais la structure quand l'habillage change — et enfin une question de **volume de révolution**, dans le registre exact du bac. La règle du jeu, c'est là que se joue le vrai progrès : pour chaque question, cherche sur papier, engage une réponse, et **seulement ensuite** ouvre le raisonnement expert pour le comparer au tien.
 
 ### Exercice de type bac (2022)
 
@@ -431,6 +591,12 @@ Le sujet ci-dessous enchaîne les deux gestes du chapitre les plus fréquents à
 Même machinerie, autres nombres : une fonction $(x+2)e^x$ au lieu de $(x+1)e^x$, l'intervalle $[0,1]$ au lieu de $[-1,0]$, et un carré $(x+2)^2 e^x$ à intégrer par parties. À toi de reconnaître que « vérifier la primitive, puis une IPP qui réutilise l'intégrale » s'applique exactement pareil.
 
 [[exercise:r-variation]]
+
+### Un volume de révolution, pour finir
+
+Une troisième question, toujours dans le registre du bac, sur l'intervalle $[1,e]$. Cherche les deux questions sur papier, engage une réponse, et seulement ensuite ouvre le raisonnement expert pour le comparer au tien.
+
+[[exercise:r-volume]]
 
 <!-- NOTE DE VALIDATION (relecture humaine) — points ouverts, non résolus par
      cet auteur :
@@ -457,4 +623,24 @@ Même machinerie, autres nombres : une fonction $(x+2)e^x$ au lieu de $(x+1)e^x$
      R4, R6, R7, R8 ; R3 (Chasles) et R5 (inégalité de la moyenne) ne sont
      pas couverts par un item dédié — laissé à la discrétion de la relecture
      pédagogique, le format 4-6 items du brief étant déjà atteint.
+
+     NOTE AJOUTÉE (extension R9 — volume d'un solide de révolution, spec-
+     extension.md) :
+     (5) [CORRIGÉ] R9 utilise, pour la première fois dans cette leçon, la
+     primitive de $\sqrt{x}$ (exemple travaillé 1, et le calcul d'aire de
+     « L'erreur à repérer »). Le rung N'INVOQUE PAS la règle générale
+     $x^r \to x^{r+1}/(r+1)$ pour $r$ rationnel (potentiellement hors de la
+     limite SExp sur les fonctions puissances) : la primitive $x\mapsto
+     \frac23 x\sqrt{x}$ est donnée directement dans le texte, et l'élève est
+     invité à la vérifier en la dérivant — exactement le même geste que pour
+     toute primitive candidate ailleurs dans cette leçon (chapitre 2,
+     chapitre 8). Aucun nouveau prérequis n'est donc introduit ; signalé
+     pour la relecture par prudence, comme le point (2).
+     (6) items.yaml, checkpoints.yaml et le descripteur de scène
+     `media/solide-de-revolution.json` sont produits par d'autres auteurs en
+     parallèle sur la base du même spec-extension.md ; les marqueurs
+     `[[figure:volume-revolution-tranche]]`, `[[figure:unite-de-volume-cube]]`,
+     `[[embed:solide-de-revolution]]` et `[[checkpoint:cp-volume-disque]]`
+     posés dans R9 attendent ces livrables pour résoudre (validate-content les
+     signalera comme non résolus tant qu'ils ne sont pas livrés).
 -->

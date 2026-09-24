@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     role="img"
+     aria-label="Trois constructions bâties sur la même longueur k, côte à côte : un segment de longueur k ; un carré de côté k, dont l’aire vaut k au carré ; un cube d’arête k, dont le volume vaut k au cube. Avec k égal à 2 centimètres, l’aire vaut 4 centimètres carrés et le volume 8 centimètres cubes.">
+  <title>L’unité de volume — du segment au carré, puis au cube</title>
+  <!--
+    unite-de-volume-cube.svg — figure STAGED (3 étapes), rung R9
+    (C-VOL-3, spec-extension.md §6 + §4.4). Montre, CÔTE À CÔTE (exigence
+    du callout), les trois briques construites sur LA MÊME longueur k :
+    le segment, le carré (1 u.a. = k² cm²) et le cube (1 u.v. = k³ cm³),
+    avec k = 2 cm chiffré à chaque étape (4 cm² / 8 cm³) — la chaîne que
+    la leçon nomme "compte les directions" (§4.4) : une longueur se
+    convertit avec k, une aire avec k², un volume avec k³.
+
+    Pas d'axes (Ox)/(Oy) : ce n'est pas un graphe de fonction mais une
+    construction géométrique posée sur un fond neutre — même choix que
+    geometrie-espace/media/cube-diagonales.svg et
+    parallelepipede-volume.svg (aucun axe dans ces deux figures), à
+    l'intérieur du même bandeau titre + panneau que le reste de cette
+    leçon.
+
+    Géométrie (calculée, pas devinée) : k_px = 110, ligne de base commune
+    y = 280 pour les trois constructions (elles semblent posées sur la
+    même ligne — le même k, répété).
+      Segment  : (100,280)-(210,280).
+      Carré (élévation, vraie grandeur sur les deux côtés) : coins
+        (270,280) (380,280) (380,170) (270,170) — côté 110 = k_px.
+      Cube (perspective cavalière, MÊME convention que
+        cube-diagonales.svg : arête horizontale à 0° vraie grandeur,
+        arête de profondeur à 45° réduite de moitié, arête verticale à
+        0° vraie grandeur) :
+          A(450,280) B(560,280) C(599,241) D(489,241) [caché]
+          E(450,170) F(560,170) G(599,131) H(489,131)
+        vecteur de profondeur = (k_px×0,5×cos45°, −k_px×0,5×sin45°) ≈ (39,−39).
+        Sommet caché D (calcul de convexité identique à
+        cube-diagonales.svg : seul sommet appartenant aux 3 faces
+        cachées bas/arrière/gauche) — ses 3 arêtes (AD, DC, DH) en
+        pointillé, les 9 autres visibles.
+
+    Rôle des couleurs :
+      segment, ses repères d'extrémité, l'étiquette k qui l'accompagne,
+        et TOUTES les étiquettes k / k² / k³ (sur le carré, sur le
+        cube, et dans les deux lignes de lecture sous chaque forme)  : --figure-accent
+        (le foyer — c'est la longueur qu'on convertit, répétée à
+        chaque étape ; même principe que les bornes/labels accent des
+        figures sœurs de cette leçon)
+      arêtes du carré et du cube                                     : --figure-ink
+        (la FORME elle-même — même partage que cube-diagonales.svg,
+        où les arêtes sont ink et seule la mesure est accent)
+      remplissage du carré                                           : --figure-accent,
+        fill-opacity faible (1 u.a., la surface qu'on mesure)
+      cube                                                            : non rempli
+        (fil de fer, même convention que cube-diagonales.svg)
+      arêtes cachées du cube                                         : --figure-ink-soft,
+        pointillé
+
+    Mise en étapes (LESSON-EXPERIENCE-SPEC §2.5) — la construction
+    progressive exacte du §4.4 de la leçon (segment -> carré -> cube,
+    chaque étape ajoutant une dimension) :
+      step-1 : le segment unité, longueur k, k = 2 cm.
+      step-2 : le carré unité, aire k², = 4 cm².
+      step-3 : le cube unité, volume k³, = 8 cm³.
+    Les trois restent visibles ENSEMBLE à l'étape 3 (côte à côte, comme
+    l'exige le callout C-VOL-3) — StagedFigure atténue seulement les
+    étapes précédentes (opacité 0,55 en mode interactif), il ne les
+    retire jamais ; à l'impression et en mouvement réduit, les trois
+    sont montrées à pleine opacité, strictement comparables.
+
+    Les captions sont portées par unite-de-volume-cube.stages.json —
+    aucun texte de légende baké ici (même convention que les figures
+    existantes de cette leçon).
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    L’unité de volume — du segment au carré, puis au cube
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="40" y="32" width="590" height="350" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — le segment unité, longueur k
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <line x1="100" y1="274" x2="100" y2="286" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <line x1="210" y1="274" x2="210" y2="286" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <line x1="100" y1="280" x2="210" y2="280" stroke="var(--figure-accent)" stroke-width="2.2"/>
+    <text x="155" y="264" text-anchor="middle" font-size="14" font-style="italic"
+          fill="var(--figure-accent)">k</text>
+
+    <text x="155" y="308" text-anchor="middle" font-size="12"
+          fill="var(--figure-accent)"><tspan>longueur → </tspan><tspan
+          font-style="italic">k</tspan></text>
+    <text x="155" y="328" text-anchor="middle" font-size="12"
+          fill="var(--figure-accent)"><tspan font-style="italic">k</tspan><tspan> = 2 cm</tspan></text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — le carré unité, côté k, aire k²
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <rect x="270" y="170" width="110" height="110"
+          fill="var(--figure-accent)" fill-opacity="0.12"
+          stroke="var(--figure-ink)" stroke-width="2"/>
+
+    <text x="325" y="155" text-anchor="middle" font-size="14" font-style="italic"
+          fill="var(--figure-accent)">k</text>
+    <text x="258" y="229" text-anchor="end" font-size="14" font-style="italic"
+          fill="var(--figure-accent)">k</text>
+
+    <text x="325" y="308" text-anchor="middle" font-size="12"
+          fill="var(--figure-accent)"><tspan>aire → </tspan><tspan
+          font-style="italic">k²</tspan></text>
+    <text x="325" y="328" text-anchor="middle" font-size="12"
+          fill="var(--figure-accent)"><tspan>aire = </tspan><tspan
+          font-style="italic">k²</tspan><tspan> = 4 cm²</tspan></text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — le cube unité, arête k, volume k³
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Arêtes cachées, touchant D (calcul de convexité, cf. commentaire de tête) -->
+    <line x1="450" y1="280" x2="489" y2="241" stroke="var(--figure-ink-soft)" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <line x1="489" y1="241" x2="599" y2="241" stroke="var(--figure-ink-soft)" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <line x1="489" y1="241" x2="489" y2="131" stroke="var(--figure-ink-soft)" stroke-width="1.5" stroke-dasharray="5 4"/>
+
+    <!-- Arêtes visibles -->
+    <line x1="450" y1="280" x2="560" y2="280" stroke="var(--figure-ink)" stroke-width="2"/>
+    <line x1="560" y1="280" x2="599" y2="241" stroke="var(--figure-ink)" stroke-width="2"/>
+    <line x1="450" y1="170" x2="560" y2="170" stroke="var(--figure-ink)" stroke-width="2"/>
+    <line x1="560" y1="170" x2="599" y2="131" stroke="var(--figure-ink)" stroke-width="2"/>
+    <line x1="599" y1="131" x2="489" y2="131" stroke="var(--figure-ink)" stroke-width="2"/>
+    <line x1="489" y1="131" x2="450" y2="170" stroke="var(--figure-ink)" stroke-width="2"/>
+    <line x1="450" y1="280" x2="450" y2="170" stroke="var(--figure-ink)" stroke-width="2"/>
+    <line x1="560" y1="280" x2="560" y2="170" stroke="var(--figure-ink)" stroke-width="2"/>
+    <line x1="599" y1="241" x2="599" y2="131" stroke="var(--figure-ink)" stroke-width="2"/>
+
+    <text x="436" y="229" text-anchor="end" font-size="14" font-style="italic"
+          fill="var(--figure-accent)">k</text>
+
+    <text x="525" y="308" text-anchor="middle" font-size="12"
+          fill="var(--figure-accent)"><tspan>volume → </tspan><tspan
+          font-style="italic">k³</tspan></text>
+    <text x="525" y="328" text-anchor="middle" font-size="12"
+          fill="var(--figure-accent)"><tspan>volume = </tspan><tspan
+          font-style="italic">k³</tspan><tspan> = 8 cm³</tspan></text>
+  </g><!-- /step-3 -->
+
+</svg>

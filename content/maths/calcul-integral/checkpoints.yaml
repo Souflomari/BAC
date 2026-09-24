@@ -35,6 +35,25 @@ skill_code: maths_calcul_integral
 #                                      the signed integral is NOT the area:
 #                                      split first, then take absolute values.
 #                                      Probes integrale-signee-vs-aire.
+#   cp-volume-disque  (in R9)         — rupture gate: LE CARRÉ DU RAYON DE LA
+#                                      TRANCHE. The cross-section perpendicular
+#                                      to (Ox) is a DISC of area πf(x)², not a
+#                                      circle of perimeter 2πf(x), and the bare
+#                                      integral is not the volume (missing π).
+#                                      Re-seeded on f(x)=x² on [0,2] (revision
+#                                      pass, post bac-fidelity/pedagogy critics)
+#                                      so it checks TRANSFER, not recall of the
+#                                      f=√x/[0,4] seed the scene and Exemple 1
+#                                      already answered — item_source: original
+#                                      (CI-35, its former clone target, has
+#                                      since been deleted from items.yaml).
+#                                      Probes volume-oubli-du-carre.
+#   cp-volume-unite   (in R9)         — rupture gate: CONVERSION u.v. -> cm³
+#                                      AVEC LE FACTEUR DE L'AIRE (k²) AU LIEU
+#                                      DU CUBE (k³). Stem/choices copied
+#                                      verbatim from CI-47. Probes
+#                                      conversion-unites-volume (clone of
+#                                      CI-47 — item-author, same wave).
 #
 # EVERY distractor carries a named misconception id from this notion's inventory
 # (items.yaml). Option lengths are balanced so the correct choice is never the
@@ -44,8 +63,11 @@ skill_code: maths_calcul_integral
 # d'une fonction continue comme F(b)−F(a), interprétation en aire (f≥0),
 # linéarité, relation de Chasles, positivité / comparaison, inégalité et valeur
 # moyennes, intégration par parties, aire d'un domaine (signe, entre deux
-# courbes), unités d'aire. Pas de sommes de Riemann formelles, pas de
-# changement de variable, pas d'intégrale généralisée.
+# courbes), unités d'aire, volume d'un solide de révolution (rotation d'un
+# tour complet autour de (Ox) d'une région où f≥0, repère orthonormé), unités
+# de volume. Pas de sommes de Riemann formelles, pas de changement de
+# variable, pas d'intégrale généralisée, pas de rotation autour de (Oy), pas
+# de volume entre deux courbes, pas de théorème de Pappus-Guldin.
 # ──────────────────────────────────────────────────────────────────────────────
 
 checkpoints:
@@ -375,3 +397,142 @@ checkpoints:
           Changer le signe global traite tout l'intervalle comme s'il était sous
           l'axe — faux, puisque $f \geq 0$ sur $[2,3]$. Modèle erroné : un signe
           global au lieu d'un découpage selon le signe de $f$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-5 | id: cp-volume-disque | placed IN R9
+  #        Rupture gate: LE CARRÉ DU RAYON DE LA TRANCHE. The slice
+  #        perpendicular to (Ox) is a DISC of area πf(x)², not a circle
+  #        (2πf(x), the perimeter) and the bare integral is not the
+  #        volume (it is missing the π). Seeded on f(x)=x² on [0,2] —
+  #        deliberately NOT the f=√x/[0,4] seed of Exemple 1 and the
+  #        scene's default view, so the checkpoint checks TRANSFER of
+  #        the model, not recall of a seed already answered elsewhere.
+  #        item_source: original (its former clone target, CI-35, has
+  #        been deleted from items.yaml in the same revision wave).
+  #        Probes volume-oubli-du-carre.
+  #
+  #        habilete uses the MATHS triplet (application_directe /
+  #        application_non_explicite / synthese, spec-extension.md §1.3),
+  #        NOT the PC triplet (raisonnement / utilisation) this file's
+  #        other five checkpoints carry — that mismatch is fid-S5.20,
+  #        flagged and still open for those five, out of scope here.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-volume-disque
+    rung: "R9"
+    habilete: application_directe
+    skill_code: maths_calcul_integral
+    tags: [checkpoint, formative, misconception_driven, maths_calcul_integral, volume_revolution]
+    primary_misconception: mc.math.maths_calcul_integral.volume-oubli-du-carre
+    item_source: original
+    lesson_placement: in_R9
+
+    stem: |
+      La courbe de $f(x)=x^2$ sur $[0,\,2]$ tourne d'un tour complet autour
+      de l'axe des abscisses. Quel calcul donne le volume du solide
+      engendré, en unités de volume ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$\\pi\\int_0^2 x^4\\,\\mathrm{d}x$, car la tranche à l'abscisse $x$ est un disque d'aire $\\pi f(x)^2$."
+        correct: true
+        feedback: |
+          Exact. $(x^2)^2 = x^4$. $V = \pi\left[\dfrac{x^5}{5}\right]_0^2 =
+          \dfrac{32\pi}{5}$ u.v.
+
+      - id: B
+        text: "$\\pi\\int_0^2 x^2\\,\\mathrm{d}x$, car le rayon de la tranche à l'abscisse $x$ vaut $f(x)$."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-oubli-du-carre
+        feedback: |
+          Modèle détecté : **le rayon non élevé au carré**. La tranche n'est
+          pas un segment, c'est un **disque** de rayon $f(x)$ : son aire vaut
+          $\pi f(x)^2$, pas $\pi f(x)$. Vérifie dans la scène, vue le long de
+          l'axe : de $x = 1$ à $x = 4$, le rayon double et l'aire de la coupe
+          est multipliée par quatre.
+
+      - id: C
+        text: "$2\\pi\\int_0^2 x^2\\,\\mathrm{d}x$, car un tour complet fait $2\\pi$ radians."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-circonference-vs-disque
+        feedback: |
+          Modèle détecté : **la circonférence à la place du disque** (ou « un
+          tour complet vaut $2\pi$, donc on multiplie l'aire par $2\pi$ »).
+          $2\pi f(x)$ est le **périmètre** du cercle — une longueur. Et les
+          points de la région ne sont pas tous à la même distance de l'axe :
+          ils ne balaient pas tous le même cercle.
+
+      - id: D
+        text: "$\\int_0^2 x^4\\,\\mathrm{d}x$, car l'intégrale donne directement la grandeur cherchée."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+        feedback: |
+          Modèle détecté : **l'intégrale prise pour la réponse**. C'était vrai
+          pour l'aire ; ici ce qui s'accumule est l'aire d'une tranche, et
+          l'aire d'un disque de rayon $f(x)$ vaut $\pi f(x)^2$ — le $\pi$ fait
+          partie de la grandeur, pas de la décoration.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-6 | id: cp-volume-unite | placed IN R9
+  #        Rupture gate: CONVERSION u.v. -> cm³ AVEC LE FACTEUR DE
+  #        L'AIRE (k²) AU LIEU DU CUBE (k³). Tronc, quatre choix et tags
+  #        copiés VERBATIM de CI-47 (items.yaml) — item_source
+  #        clone_of_CI-47. Probes conversion-unites-volume.
+  #
+  #        habilete uses the MATHS triplet (application_directe), same
+  #        note as CP-5 above (fid-S5.20 concerns the other five only).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-volume-unite
+    rung: "R9"
+    habilete: application_directe
+    skill_code: maths_calcul_integral
+    tags: [checkpoint, formative, misconception_driven, maths_calcul_integral, volume_revolution, unites_volume]
+    primary_misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+    item_source: clone_of_CI-47
+    lesson_placement: in_R9
+
+    stem: |
+      Dans un repère orthonormé où l'unité vaut $3\ \text{cm}$ sur chaque
+      axe, un volume de révolution vaut $2\pi$ unités de volume. Quel est ce
+      volume en $\text{cm}^3$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$6\\pi\\ \\text{cm}^3$, en multipliant par l'échelle $3$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: |
+          Modèle détecté : le facteur d'une **longueur** ($k$) appliqué à un
+          volume. Une longueur se convertit avec $k$ ; un volume, produit de
+          trois longueurs, se convertit avec $k^3$ — ici $3^3=27$, pas $3$.
+
+      - id: B
+        text: "$54\\pi\\ \\text{cm}^3$, l'unité de volume valant $3^3=27\\ \\text{cm}^3$"
+        correct: true
+        feedback: |
+          Exact. $1$ u.v. $=3^3=27\ \text{cm}^3$, donc $2\pi$ u.v.
+          $=2\pi\times27=54\pi\ \text{cm}^3$.
+
+      - id: C
+        text: "$18\\pi\\ \\text{cm}^3$, en multipliant par $3^2$, comme pour une aire"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: |
+          Modèle détecté : le facteur de l'**aire** ($k^2$) appliqué à un
+          volume — deux directions comptées sur trois. $1$ u.v. est le volume
+          d'un **cube**, pas l'aire d'un carré : il faut $3^3=27$, pas $3^2=9$.
+
+      - id: D
+        text: "$2\\pi\\ \\text{cm}^3$, le nombre restant inchangé d'une unité à l'autre"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: |
+          Modèle détecté : « **le nombre ne change pas** » — aucune
+          conversion appliquée. Ce raccourci n'est vrai que lorsque l'unité
+          du repère vaut $1$ cm ; ici elle vaut $3$ cm, donc le nombre change
+          bel et bien : il faut multiplier par $27$.
