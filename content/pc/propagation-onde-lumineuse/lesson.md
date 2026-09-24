@@ -86,6 +86,10 @@ Vérifions la cohérence : $2{,}26\times10^8\ \text{m/s} < 3\times10^8\ \text{m/
 
 ## R3 — La diffraction de la lumière
 
+Avant de lire ce chapitre, va le chercher. Ci-dessous, un banc d'optique vu en coupe : un laser, une plaque percée d'une fente fine, et un écran sur lequel on peut poser une règle graduée. Tu as déjà vu, dans la cuve à ondes, ce qu'une ouverture étroite fait à des rides sur l'eau. Ici, c'est de la lumière, et on va **mesurer** : la largeur de la fente en millimètres, celle de la tache en centimètres, la distance à l'écran en mètres. Tu paries d'abord, le banc répond ensuite.
+
+[[embed:banc-de-diffraction]]
+
 ### Le phénomène, et sa condition
 
 Quand une onde rencontre une ouverture ou un obstacle, l'optique géométrique naïve prédit qu'elle continue tout droit, sans dévier — comme un rayon lumineux qu'on trace à la règle. C'est ce qui se passe la plupart du temps : la lumière qui passe par une porte ouverte, une fenêtre, l'objectif d'un appareil photo, semble bien se propager en ligne droite.
@@ -99,6 +103,8 @@ Pour la lumière visible, $\lambda$ vaut seulement quelques centaines de nanomè
 Quand la condition de diffraction est vérifiée, le faisceau lumineux, au lieu de rester ponctuel, s'étale sur un écart angulaire $\theta$ (en radians, valable pour les petits angles), donné par :
 
 $$\theta = \frac{\lambda}{a}$$
+
+Lis bien ce que $\theta$ désigne, parce que tous les sujets le dessinent de la même façon et qu'une moitié oubliée coûte un facteur deux : $\theta$ va de l'**axe** — le prolongement direct du faisceau — jusqu'au **bord** de la tache centrale, jamais d'un bord à l'autre. C'est une **demi**-largeur angulaire. C'est exactement l'angle que le banc ci-dessus fait apparaître à la sortie de la fente, et c'est pour cela que la tache entière, sur l'écran, mesurera deux fois ce que cet angle découpe.
 
 où $\lambda$ est la longueur d'onde de la lumière et $a$ la largeur de la fente (ou le diamètre du fil). Cette formule dit quelque chose d'intuitif une fois qu'on la regarde : plus l'ouverture $a$ est petite comparée à $\lambda$, plus l'écart angulaire $\theta$ est grand — l'onde s'étale d'autant plus qu'elle est forcée de passer par une ouverture étroite. À l'inverse, une ouverture $a$ beaucoup plus grande que $\lambda$ donne un $\theta$ minuscule, imperceptible : c'est le régime de l'optique géométrique, où l'onde semble se propager en ligne droite.
 
@@ -124,11 +130,13 @@ $$\frac{L}{2} = D \times \theta = 2 \times 3\times10^{-3} = 6\times10^{-3}\ \tex
 
 $$L \approx 1{,}2\times10^{-2}\ \text{m} = 1{,}2\ \text{cm}$$
 
+Et voici le contrôle que tu viens de faire au banc, celui qui rend le résultat vérifiable au lieu de le croire. Multiplie la largeur de la fente par la largeur de la tache : $0{,}200 \times 1{,}20 = 0{,}240$ (en millimètres fois centimètres). Recommence avec une fente de $0{,}100\ \text{mm}$, qui donne $2{,}40\ \text{cm}$ : $0{,}100 \times 2{,}40 = 0{,}240$. Avec $0{,}060\ \text{mm}$, qui donne $4{,}00\ \text{cm}$ : $0{,}060 \times 4{,}00 = 0{,}240$. Le produit ne bouge pas, parce qu'il vaut $2\lambda D$ — deux grandeurs qu'on n'a pas touchées. Un produit constant, c'est la signature d'une proportionnalité **inverse**, et c'est ce que « $a$ au dénominateur » veut dire quand on le mesure.
+
 Une fente de $0{,}2\ \text{mm}$ — invisible à l'œil nu ou presque — produit donc, à seulement deux mètres, une tache lumineuse large de plus d'un centimètre. C'est cet étalement, disproportionné par rapport à la taille de la fente, qui trahit la nature ondulatoire de la lumière.
 
 ### Arrête-toi — plus l'ouverture est grande, MOINS on diffracte, pas l'inverse
 
-Une confusion fréquente consiste à croire qu'il faut une ouverture large pour bien observer un phénomène, comme si « plus grand » voulait toujours dire « plus visible ». C'est l'inverse ici. Reprends la formule $\theta = \lambda/a$ : $a$ est au dénominateur. Une fente plus large donne un $\theta$ plus petit, donc une diffraction moins marquée, jusqu'à devenir totalement indétectable pour les ouvertures de la vie courante. La diffraction se manifeste précisément quand l'ouverture est petite, comparable à $\lambda$ — jamais quand elle est grande.
+Une confusion fréquente consiste à croire qu'il faut une ouverture large pour bien observer un phénomène, comme si « plus grand » voulait toujours dire « plus visible ». C'est l'inverse ici. Reprends la formule $\theta = \lambda/a$ : $a$ est au dénominateur. Une fente plus large donne un $\theta$ plus petit, donc une diffraction moins marquée, jusqu'à devenir totalement indétectable pour les ouvertures de la vie courante. La diffraction se manifeste précisément quand l'ouverture est petite, comparable à $\lambda$ — jamais quand elle est grande. Chiffre-le une fois, et tu ne l'oublieras plus. Avec le même laser ($\lambda = 600\ \text{nm}$) et le même écran à $D = 2{,}0\ \text{m}$, une fente de $1{,}0\ \text{mm}$ — l'épaisseur d'une mine de crayon — donne déjà une tache de $2{,}4\ \text{mm}$ seulement. Et une porte de $80\ \text{cm}$ donnerait $L = 2\lambda D/a = 3{,}0\times10^{-6}\ \text{m}$, soit **3,0 micromètres** : vingt-sept fois plus fin qu'un cheveu, donc rigoureusement invisible. La diffraction n'a pas disparu par une porte ; elle est là, et elle est trop petite pour qu'un œil la rencontre.
 
 [[checkpoint:cp-r3-diffraction]]
 
@@ -239,7 +247,8 @@ Un dernier point, souvent oublié : envoie un faisceau laser (monochromatique) s
 
 - La lumière est une onde électromagnétique : elle se propage aussi bien dans le vide (à la vitesse $c \approx 3\times10^8\ \text{m/s}$) que dans un milieu matériel transparent, contrairement à une onde mécanique.
 - Dans un milieu d'indice $n = c/v$, la lumière est ralentie ($v \leq c$), donc $n \geq 1$ toujours.
-- La diffraction de la lumière par une fente fine ou un fil de largeur $a$ n'est observable que si $a$ est du même ordre de grandeur que $\lambda$ ; l'écart angulaire obtenu vaut $\theta = \lambda/a$.
+- La diffraction de la lumière par une fente ou un fil de largeur $a$ n'est observable que si $a$ est du même ordre de grandeur que $\lambda$ ; le **demi**-écart angulaire vaut $\theta = \lambda/a$ (en radians), et sur un écran placé à la distance $D$ la tache centrale mesure $L = 2\lambda D/a$. Retiens les trois sens : $L$ **grandit** quand la fente rétrécit, quand la longueur d'onde s'allonge, et quand l'écran recule.
+- $\theta$ ne dépend **jamais** de $D$ : reculer l'écran n'ouvre pas l'éventail, il l'intercepte plus loin. C'est $L$, et $L$ seule, qui dépend de $D$ — d'où la droite $L = f(D)$ passant par l'origine, dont la pente $p = 2\lambda/a$ donne $\lambda$. Et un **fil** diffracte comme une **fente de même largeur** : c'est ce qui permet de mesurer le diamètre d'un cheveu avec une règle graduée en centimètres.
 - Chaque couleur correspond à une longueur d'onde dans le vide $\lambda_0$ (violet : courte, $\approx 400\ \text{nm}$ ; rouge : longue, $\approx 700\ \text{nm}$) ; une lumière monochromatique n'a qu'une seule $\lambda_0$, une lumière polychromatique (comme la lumière blanche) en mélange plusieurs. La fréquence $\nu$ est invariante : c'est elle, pas $\lambda$, qui fixe la couleur perçue.
 - L'indice $n$ d'un milieu dépend légèrement de la couleur (plus grand pour le violet que pour le rouge) : c'est ce qui permet à un prisme de disperser la lumière blanche en un spectre.
 

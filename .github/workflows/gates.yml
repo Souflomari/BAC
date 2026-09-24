@@ -178,7 +178,12 @@ jobs:
       # 1 − e^(−λΔt) et non λΔt — (1 − p)^32 = 0,5 à 10⁻¹² près. Un biais de
       # 1 % sur p décale la survie à une demi-vie de 0,24 écart-type sur 1 024
       # noyaux : aucun comptage ne le verrait.
-      - name: Tests unitaires (apprenant · session · typographie · écriture · épreuves · mélange · noyaux)
+      #
+      # test-diffraction garde le modèle du « banc de diffraction » : les 28
+      # largeurs de la table de la spec à trois chiffres (la précision qui rend
+      # VRAI à l'écran a × L = 0,240), les 17 positions de l'écran, et le fil
+      # qui diffracte comme la fente de 0,080 mm AU BIT PRÈS (une seule fonction).
+      - name: Tests unitaires (apprenant · session · typographie · écriture · épreuves · mélange · noyaux · diffraction)
         run: |
           npm run test-learner-model
           npm run test-attempt-events
@@ -187,6 +192,7 @@ jobs:
           npm run test-examens
           npm run test-melange
           npm run test-noyaux
+          npm run test-diffraction
 
       # PORTE LIENS (2026-09-05). Ce projet se pilote par ses documents :
       # `.claude/CLAUDE.md` envoie vers la vision, la vision vers les règles,
@@ -1158,6 +1164,30 @@ jobs:
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
           npm run scene-noyaux
           node scripts/scene-noyaux.mjs --essai-rouge
+
+      # PORTE « LE BANC DE DIFFRACTION » (2026-09-24, HANDOFF §11.204). Le
+      # quatrième manipulable PLAN (pc/propagation-onde-lumineuse, en tête de
+      # R3), sans temps ni course : la révélation pose le réglage que le pari
+      # interrogeait. ANALYTIQUE : la porte refait L = 2λD/a, θ, la pente, λ
+      # déduite et le diamètre du cheveu par égalité de chaîne (les 28
+      # combinaisons, les 17 positions de l'écran), et lit les PIXELS dans les
+      # deux sens — la tache contre la règle (échelle LUE sur les graduations),
+      # l'éventail fixe quand l'écran recule, l'exagération ×10 constante, la
+      # fente-symbole identique aux sept pièces, les creux voisins et leur
+      # éclat, le graphe par l'origine. La relation elle-même est un état qui
+      # fuit : « λ/a » n'existe pas avant S2, ni « 2λD » avant S3. Et, depuis
+      # la vague 2 : la révélation DIT le réglage qu'elle pose, le curseur ne
+      # parle qu'une fois par cran, les lectures ne nomment que ce qui est à
+      # l'écran, la pièce cochée se voit sans le pointeur, le graphe tient au
+      # téléphone — et aucune étiquette sans fond n'est posée sur de l'encre.
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — les vingt-sept familles
+      # visées doivent crier, et chaque forme de la frontière être vue.
+      - name: "Le banc de diffraction (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-diffraction
+          node scripts/scene-diffraction.mjs --essai-rouge
 
       # PORTE « FIGURES MANIPULABLES » (2026-09-24, HANDOFF §11.199). Chaque
       # `.interactive.json` du corpus — l'inventaire est lu dans content/, pas

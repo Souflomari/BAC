@@ -206,7 +206,9 @@ function fautesScene3d(desc) {
         if (typeof c?.retour !== "string" || !c.retour.trim()) fautes.push(`${ou} : choix « ${c?.id} » sans retour — un pari sans « pourquoi » ne corrige rien`);
       }
     }
-    for (const [k, v] of Object.entries(e?.etat ?? {})) {
+    // `etat_revele` : l'état que pose la révélation — mêmes clés, mêmes bornes, mêmes valeurs
+    if (e?.etat_revele !== undefined && !e?.pari) fautes.push(`${ou} : etat_revele sans pari — rien ne le révélerait`);
+    for (const [k, v] of [...Object.entries(e?.etat ?? {}), ...Object.entries(e?.etat_revele ?? {})]) {
       if (!def.etat.includes(k)) { fautes.push(`${ou} : état "${k}" inconnu de la scène`); continue; }
       const bornes = def.bornes?.[k];
       if (k === "rayon_km" && v === "geo") continue;

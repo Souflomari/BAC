@@ -15717,3 +15717,155 @@ contrôles, 0 échec ; batterie locale verte, sur l'arbre poussé.
 choix faux affichés après la révélation ; le rang de l'étape dit trois fois ; le
 plancher de cible (44 px dans la porte, 48 dans la bible) ; des raccourcis
 clavier ; la puce de récapitulatif de R6 ; la figure du Pu-238 pour `r-bac` q2.1.
+
+## §11.204 — Le banc de diffraction : une relation construite en trois paris, une formule qui fuyait par son TEXTE, et une étiquette posée sur des chiffres
+
+**LA SCÈNE.** Le dixième manipulable de première partie, le quatrième PLAN :
+`pc/propagation-onde-lumineuse`, en tête de R3 (`[[embed:banc-de-diffraction]]`).
+Un banc d'optique vu en coupe — un laser, une plaque percée d'une fente (ou un
+cheveu tendu à sa place), un écran avec sa règle — et, à l'étape 3, la feuille
+quadrillée du sujet national 2021, L en fonction de D. Deux échelles DÉCLARÉES :
+les distances le long du banc, les largeurs en travers dix fois plus grandes
+(« Largeurs ×10 · angles exagérés », écrit sur la scène) ; la fente est un
+SYMBOLE de largeur constante (à l'échelle, 0,060 mm ferait un dixième de pixel).
+Cinq étapes à pari, une relation construite en trois temps : S1 installe a (une
+fente deux fois plus fine), S2 ajoute λ (la même fente, un laser rouge), S3 ajoute
+D (l'écran qui recule — on mesure une longueur d'onde avec une règle), S4 le
+cheveu (un fil diffracte comme une fente de même largeur : d = 80 µm), S5 tout
+s'ouvre et λ/a se compare à L/(2D). Elle ne solde aucune dette écrite (DÉCISIONS
+§25) : `media-manipulable` 15 → 16. Spec : `content/pc/propagation-onde-lumineuse/spec-scene-diffraction.md`
+(rangée d'abord sous `docs/pipeline/propositions/`, elle a rejoint la notion dans
+ce commit), avec, en tête, ce que la construction et la vague 2 y ont changé.
+
+**Ce qui l'accompagne.** Le huitième modèle du chapitre,
+`figure-ombre-geometrique` (« la figure est l'ombre portée de l'objet ») — POL-23
+à 26, dont un tableau de mesures (application expérimentale : 0 % avant) ; les
+clés rééquilibrées pour les cliquets de ficelles (une clé ni la plus longue ni la
+plus courte ; l'absolu « aucun » retiré de la seule clé qui le portait) ; les
+retouches de prose de R3 (θ dit DEMI-écart angulaire) ; les artefacts du modèle
+apprenant régénérés ; et une clé neuve du descripteur, `etat_revele` — la
+révélation POSE le réglage que le pari interrogeait, pour que la règle réponde
+avant le texte (`validate-content` : mêmes clés et bornes que `etat`, jamais sans
+pari).
+
+**UNE RÈGLE NEUVE : le texte même de la relation est un état qui fuit** (ADR 0041,
+addendum de la nuit). Une étape qui ne fait varier que a ne peut pas écrire
+« θ = λ/a » : l'élève lirait dans le retour de S1 la réponse du pari de S2. La
+porte (`formule-graduee`) cherche « λ/a » et « 2λD » sous toutes leurs formes —
+texte, fraction KaTeX, annotation TeX — avant et après chaque révélation.
+
+**LA PORTE (`scene-diffraction`) : VERTE deux fois, 102 mesures, 29 familles,
+40 s ; essai rouge 27/27, et les 82 FORMES de la frontière injectées une à une,
+toutes vues.** La scène est analytique : la porte refait chaque nombre avec les
+constantes de la spec écrites chez elle (28 combinaisons, 17 positions de
+l'écran, a × L = 0,240 sur les valeurs AFFICHÉES, le cheveu égal à la fente de
+0,080 mm à la chaîne près) ; elle lit l'échelle en travers sur les graduations de
+la règle, la tache sur la bande de l'écran d'un creux à l'autre, l'éventail sur
+l'encre d'accent — les repères du produit ne disent que OÙ regarder.
+`test-diffraction` (armé en CI avec les tests unitaires) garde le modèle. Premier
+passage : six rouges — des noms qui se chevauchaient au téléphone (le produit : le
+laser se nomme sous son boîtier, le cheveu en haut à gauche) et une tache de 3,4 px
+dont les bords ne se lisent pas au pixel (la porte : `tache-et-regle` ne juge que
+les taches d'au moins 8 px ; leurs nombres restent gardés, et c'est écrit).
+
+**LA CAMPAGNE DE SABOTAGES DU PRODUIT : 22 posés, 21 attrapés par la famille
+nommée, 1 par une autre — et ce un-là a appris quelque chose.** Même protocole
+qu'au §11.203 : arbre à part, défaut posé dans le PRODUIT, build, porte, défaut
+retiré, arbre comparé à son cliché à l'octet (IDENTIQUE), porte propre VERTE à la
+fin. Les défauts : le facteur 2 oublié (L = λD/a), la tache peinte proportionnelle
+à a, sans λ, sans D, θ = a/λ, l'exagération recadrée à chaque fente, θ en degrés,
+la fente dessinée à l'échelle, la règle décalée d'un demi-pas, la droite qui ne
+passe pas par l'origine, les creux voisins déplacés, la réponse dessinée avant le
+pari, la tache à la couleur du laser, la relation entière dans le retour de S1,
+« frange » dans une suite, le laser ouvert dès S1, le cheveu RECOPIÉ (3,00 cm en
+dur) au lieu de la même fonction, `three` importé, l'axe L logarithmique,
+l'éclaircissement déclaré supprimé, la révélation qui ne pose pas le réglage, et
+`lambda-en-S3` — la lecture « longueur d'onde », une DONNÉE, ajoutée à l'étape où
+λ est l'INCONNUE. Celui-là, `fuite-inter-etapes` l'a laissé passer : elle ne
+regardait qu'AVANT le pari, où aucune lecture n'existe encore ; c'est `avant-pari`
+qui l'a pris, par la description lue (« un laser de 600 nm »). **La portée d'une
+famille se mesure aussi par PHASE de l'étape** (ADR 0031) : elle regarde
+maintenant après la révélation (λ ne s'y lit que DÉDUITE de la pente), et le
+sabotage, reposé sur le produit final, la fait rougir.
+
+**LA VAGUE 2 (calme, dessin, ergonomie), sur les captures à 1 280 et 390 px —
+chaque affirmation rejouée sur les captures ou le code avant d'être appliquée.**
+Appliqué :
+- *la tache à l'encre, à toutes les phases* : repeinte à l'accent à la révélation,
+  elle faisait cinq taches d'accent (la centrale et quatre voisines dont la scène
+  n'affirme rien) pour une seule longueur à lire ;
+- *L écrit sur la scène* (« L = 2,40 cm », comme « D = 2,00 m » sur la cote) : au
+  téléphone, à l'étape libre, la lecture de L était à des centaines de pixels des
+  pièces de fente, sous une scène collante qui, elle, reste sous les yeux ; et à
+  cette étape les lectures PRÉCÈDENT les quatre groupes de réglages ;
+- *les lectures qui nomment ce qui est à l'écran* : à S5, cinq au lieu de huit — ni
+  « bords » ni « rapport » (restes de S1 et S3), la pente seulement quand la droite
+  est dessinée, L/(2D) juste sous θ ; la suite dit « L/(2D) ne bouge pas » ;
+- *le texte coupé* : la consigne de S1 ouvre sur les nombres (la leçon présente le
+  banc juste au-dessus ; le symbole de fente est dans la légende et l'encadré) ; le
+  retour de S1 s'arrête à θ ; celui de S3 garde la conversion de a en mètres, sans
+  la substitution en fractions empilées que la colonne cassait sur trois lignes ;
+- *le graphe au téléphone* : le plateau passe CARRÉ aussi au téléphone quand le
+  graphe est là (`carre-partout`, et `MARGE_FOCUS_CARRE` : une marge de 75vw aurait
+  rangé la commande focalisée sous une scène de 100vw) — l'axe de L passe de 68 à
+  105 px ; les fins tracés seulement s'ils tiennent dans les DEUX sens (un seul
+  sens faisait un panneau rayé) ;
+- *le dessin* : la règle chiffrée tous les deux centimètres (treize nombres à
+  1 280 px), le texte du dessin de 11 à 12 px (la taille des légendes), les traits
+  forts du graphe à 3,6:1 (2,91:1 à l'opacité 0,6), le titre « D (cm) » SOUS la
+  rangée des nombres (il tombait sous « 200 »), l'axe optique, la cote et le
+  crochet de départ comptés comme obstacles des étiquettes, « L » toujours au-dessus
+  de l'axe et « départ » toujours dessous ;
+- *le lecteur d'écran* : la révélation DIT le réglage qu'elle pose (« La scène pose
+  la fente de 0,100 mm : la tache centrale mesure 2,40 cm. ») ; le curseur de D ne
+  parle qu'une fois par cran (L dans son `aria-valuetext`, plus rien dans la région
+  vivante) ;
+- *la pièce cochée porte une surface* (`.ligne-radio:has(input:checked)`, pièce
+  COMMUNE aux dix scènes) : seule la ligne SURVOLÉE en portait une, le survol se
+  lisait comme la sélection.
+
+Non appliqué, et pourquoi (DÉCISIONS §25, 13 à 20) : le verdict dit quatre fois
+(`PariBloc`, commun, et « Bonne réponse. » est la région vivante que lisent les dix
+portes) ; la colonne de 330 px à 1 280 px (`GRILLE_SCENE`, commune) ; un bouton
+« revenir au réglage de l'énoncé » ; les rayons à l'accent adouci (≈ 2,3:1, sous le
+plancher) ; la bande de l'écran élargie ; la grille de 8 pt ; `justify-between`.
+
+**L'instrument d'abord, le produit ensuite.** Cinq mesures neuves, lancées D'ABORD
+sur le build d'avant : ROUGE, 9 manquements, chacun le défaut vu par la critique —
+la région vivante muette à la révélation ; l'étiquette du crochet sans sa valeur ;
+le voile de la pièce cochée à 0 comme les six autres ; le curseur qui dit « D =
+1,20 m » pendant que la région vivante répète « Écran à 1,20 m… » ; « D (cm) » posé
+sur 28 pixels d'encre, à 1 280 px (S3, S5) et à 390 px ; trois lectures sans objet
+à S5 ; l'axe L de 68 px au téléphone. **La mesure qui n'existait pas : une étiquette
+SANS FOND posée sur le dessin.** Les portes comparaient les étiquettes entre elles
+et à la légende, jamais au canvas SOUS une étiquette transparente — c'est ce qui
+laissait « D (cm) » sur les chiffres (`etiquettes`, désormais, pour toute étiquette
+à fond transparent).
+
+**UNE CORRECTION QUI FAISAIT ROUGIR UNE AUTRE PORTE, SANS RIEN CASSER (ADR 0038).**
+Le graphe des noyaux posait ses traits forts à la même opacité, 0,6 — et son
+commentaire disait « à ~3:1 » : calculé, 2,91:1, sous le plancher qu'il citait.
+Portés à 0,7 (3,6:1), leur écart au fond passe de 104 à 121 — et l'ancienne porte
+des noyaux, lancée sur le produit corrigé, rougit `quadrillage` et
+`axes-lineaires` : son seuil de 120 rangeait les traits forts du côté de la COURBE
+(écart 229). Le seuil est nommé (`SEUIL_COURBE`) et remis au milieu, à 170 — 50
+de marge de part et d'autre au lieu de 16. `scene-noyaux` VERTE (119 mesures) et
+essai rouge 26/26 sur le produit corrigé.
+
+**VÉRIFIÉ, sur le build final, rien d'autre en marche :** `scene-diffraction`
+VERTE deux fois (102 mesures, 29 familles), essai rouge 27/27 et les 82 formes
+vues ; `scene-noyaux` VERTE, essai rouge 26/26 ; `scene-ergonomie` VERTE sur les
+DIX scènes (92 mesures — le banc ajouté à son lanceur) ; `test-diffraction` 7/7 ;
+`dom-truth` 280 contrôles, 0 échec ; `verdict-qcm` de la notion VERT (22 réponses
+d'item, 5 de point d'arrêt) ; `etroit-sweep` : 108 pages × 3 largeurs, 0 débord ;
+batterie locale verte, sur l'arbre poussé — au premier passage, ROUGE deux fois pour
+UNE cause : la spec, rangée dans le dossier de la notion, nommait la cuve à ondes par
+son marqueur `[[embed:…]]`, que `dette-manipulable` lit comme une prescription faite à
+CETTE notion (une « promesse tombée sans un mot ») ; et `essais-rouges`, dont deux
+essais partent d'une porte verte, les voyait donc « ne pas crier ». La spec nomme
+maintenant la scène sans son marqueur.
+
+**RESTENT AU PROPRIÉTAIRE** (DÉCISIONS §25) : la validation des `limites` et
+`exclusions` citées par la spec (`source: derived`) ; le critère λ/a > 10⁻³ (un
+corrigé, pas le cadre) ; le nom de la couleur de 600 nm ; et, communs aux dix
+scènes, le verdict dit quatre fois et la colonne de 330 px à 1 280 px.

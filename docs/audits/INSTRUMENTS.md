@@ -1778,7 +1778,11 @@ sans un module du produit.
 - **les PIXELS de la loi** — des traits lus colonne par colonne, sans repère du
   produit pour la mesure : `quadrillage` (fin à 4 j, fort à 8, cadre à 10 à
   l'étape 1 ; fins à 4, 12, 20, 28 et forts à 8, 16, 24 à 32 j ; contrastes
-  fins < forts < courbe ; présent AVANT le pari) ; `axes-lineaires` (forts
+  fins < forts < courbe ; présent AVANT le pari — le quadrillage et la courbe
+  séparés par `SEUIL_COURBE`, 170 d'écart au fond : à 120, les forts portés de
+  2,91:1 à 3,6:1 le 2026-09-24 (écart 121) passaient DU CÔTÉ de la courbe, et
+  l'ancienne porte, lancée sur le produit corrigé, rougissait `quadrillage` et
+  `axes-lineaires` sans défaut — HANDOFF §11.204) ; `axes-lineaires` (forts
   équidistants à 1,5 px, les deux axes — chaque trait est posé au milieu d'un
   pixel, deux intervalles diffèrent d'1 px EXACTEMENT, 107 et 108 ; « ≤ 1 »
   passait par l'arrondi flottant et a rougi à la vague 2, §11.203) ; `courbe-juste` (décroissante, convexe
@@ -1845,6 +1849,76 @@ l'impression (panneau `print:hidden`).
 
     node scripts/scene-noyaux.mjs --porte        (lève son propre next start)
     node scripts/scene-noyaux.mjs --essai-rouge
+
+## `web/scripts/scene-diffraction.mjs` — la tache sur l'écran mesure-t-elle ce que la règle dit ?
+
+**Porte du « banc de diffraction »** (pc/propagation-onde-lumineuse, en tête de R3 ;
+spec `content/pc/propagation-onde-lumineuse/spec-scene-diffraction.md` §11 ; HANDOFF
+§11.204). Le quatrième manipulable PLAN, sans temps ni course. `next start` +
+Chromium, le panneau trouvé par `[data-scene="banc-de-diffraction"]`.
+
+**La scène est ANALYTIQUE : la porte refait chaque nombre**, depuis les constantes de
+la spec écrites dans la porte (jamais le module du produit) : L = 2λD/a, θ et L/(2D)
+aux **28** combinaisons (7 fentes × 4 lasers, à 2,00 m) par égalité de chaîne ; les
+**17** positions de l'écran (L, la pente 2,00×10⁻², λ = 600 nm) ; a × L = 0,240 sur
+les valeurs AFFICHÉES ; a/λ entier ; d = 80,0 µm ; le cheveu qui donne, aux quatre
+lasers, la chaîne exacte de la fente de 0,080 mm (N9) ; les bornes des contrôles.
+
+**Les PIXELS, dans les deux sens, jamais au pixel absolu :** l'échelle en travers est
+LUE sur les graduations fortes de la règle (`regle-graduee` : équidistantes à 1 px,
+une fine entre deux fortes, l'axe sur une forte) ; `tache-et-regle` — la bande de
+l'écran, lue d'un creux à l'autre, mesure L × (pas de la règle) à 2 px (taches d'au
+moins 8 px) ; `plus-etroite-plus-large` — trois balayages, trois sens (a, λ, D) ;
+`eventail-fixe` — l'écartement des rayons à 0,39 m de la fente, le même quand l'écran
+recule de 0,8 à 2,0 m, et la tache proportionnelle à la distance ; `exageration-
+constante` — les rayons s'ouvrent de 10 × θ (lu sur les pixels, à 1,2 px), et le
+facteur écrit sur la légende est 10 ; `fente-symbole` — la fente dessinée identique
+aux sept pièces ; `secondaires` — le second creux à L de l'axe, et la tache voisine
+visible (≥ 15 % du centre) ; `graphe-droite` — les cinq points alignés PAR L'ORIGINE,
+à pas égaux (axes linéaires) ; `palette` — aucun pixel teinté hors de l'accent (la
+tache ne prend jamais la couleur du laser).
+
+**Et le reste de l'appareillage :** `avant-pari` (ni accent — en chrominance —, ni
+lecture, ni rayon, ni crochet, ni point, ni réglage ; la description lue ne dit pas la
+réponse) ; `etapes` (l'état posé ; la révélation POSE le réglage interrogé) ; `paris` ;
+**`formule-graduee`** — la relation elle-même est un état qui fuit : « λ/a » (toutes
+ses formes, annotations TeX de KaTeX comprises) n'existe pas avant S2, ni « 2λD » avant
+S3, et existe APRÈS ; `fuite-inter-etapes` (la table de la spec réécrite dans la porte ;
+la longueur d'onde — l'inconnue — n'est affichée nulle part à S3 avant le pari, et ne
+s'y lit après que DÉDUITE de la pente) ; `frontiere` — 82 FORMES, chacune avec sa
+sonde ; `latex` ; `etiquettes` et `cadre` (1 280 px et 390 px, les cinq étapes — et
+aucune étiquette SANS FOND posée sur de l'encre du dessin) ; `immobile` ; `theme` ;
+`console` ; la famille `ergonomie`. **Depuis la vague 2 :** `annonce` (la révélation
+dit le réglage qu'elle pose ; le curseur de D ne parle qu'une fois par cran, L dans son
+`aria-valuetext`) ; `lectures` (L écrit sur la scène ; à S5, aucune lecture sans objet à
+l'écran, θ et L/(2D) côte à côte, la pente seulement avec la droite) ; `coche` (la
+pièce cochée porte un voile que les autres n'ont pas, pointeur ailleurs) ;
+`graphe-lisible` (au téléphone, l'axe L de 0 à 4,0 cm fait au moins 100 px, et la scène
+carrée ne range aucune commande sous elle).
+
+**Au 2026-09-24, après la vague 2 : VERTE deux fois, 102 mesures, 29 familles, 40 s ;
+essai rouge : les 27 familles visées crient, et chaque forme injectée est vue.** Les
+mesures de la vague 2 ont été lancées D'ABORD sur le build d'avant : ROUGE, 9
+manquements, chacun le défaut que la critique avait vu (la région vivante muette, L
+sans sa valeur, la pièce cochée à 0 comme les six autres, le curseur qui parle deux
+fois, « D (cm) » sur 28 pixels d'encre à trois endroits, trois lectures sans objet,
+l'axe L de 68 px au téléphone). Premier passage : six
+rouges, tous vrais ou tous du banc — des noms qui se chevauchaient au téléphone (le
+produit), et une tache de 3,4 px dont les bords ne se lisent pas au pixel (la porte,
+restreinte aux taches d'au moins 8 px, et c'est écrit). **Un défaut vu en écrivant la
+campagne, avant de la lancer** : `secondaires` ne lisait que la place des creux ; le
+sabotage « éclaircissement supprimé » les laisse en place — la famille exige aussi que
+la tache voisine se voie. **La campagne de sabotages du PRODUIT (22 défauts, arbre à
+part, HANDOFF §11.204) : 21 attrapés par la famille nommée, 1 par une autre** —
+`lambda-en-S3` (la lecture « longueur d'onde », une DONNÉE, ajoutée à l'étape où λ est
+l'inconnue) : `fuite-inter-etapes` ne regardait qu'avant le pari, où aucune lecture
+n'existe ; `avant-pari` l'attrapait par la description lue. La famille regarde
+maintenant aussi après la révélation, et le sabotage reposé sur le produit final la
+fait rougir. Arbre IDENTIQUE à son cliché après la campagne, porte propre VERTE.
+
+**NE DIT RIEN DE :** la justesse physique du profil hors de ses zéros (un choix de
+RENDU, déclaré) ; un lecteur d'écran réel ; les tailles de taches sous 8 px (leurs
+nombres, si).
 
 ## `web/scripts/figures-manipulables.mjs` — chaque figure manipulable fait-elle, au rendu, ce que son module dit ?
 
@@ -1995,11 +2069,12 @@ ROUGE sur le produit d'avant (15 manquements, 6 scènes sur 9) :**
 
 **Lancée SEULE** par `web/scripts/scene-ergonomie.mjs` (`npm run
 scene-ergonomie`, ou `BASE=… node scripts/scene-ergonomie.mjs corde noyaux`) : la
-famille sur les neuf scènes, avec les arguments de chaque porte. Ce
+famille sur les dix scènes, avec les arguments de chaque porte. Ce
 lanceur ne remplace aucune porte — chacune garde sa famille en CI ; il sert au
-correctif COMMUN de l'appareillage, qu'il faudrait sinon vérifier en lançant neuf
+correctif COMMUN de l'appareillage, qu'il faudrait sinon vérifier en lançant dix
 portes (ADR 0035). Au 2026-09-24 : ROUGE sur le produit d'avant (15), VERT après
-(9 scènes, 84 mesures).
+(9 scènes, 84 mesures) ; le banc de diffraction ajouté le même soir, sans course :
+VERT, 10 scènes, 92 mesures.
 
 **NE DIT RIEN DE :** l'ordre de tabulation sur grand écran (les vues passent
 avant le pari — connu, laissé) ; un lecteur d'écran réel ; les régions live.

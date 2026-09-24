@@ -55,9 +55,12 @@ export function Plateau({
    * une sphère) ; « paysage » : 3:2 partout (la cuve à ondes, 24 × 16 cm, vue
    * de dessus — un carré y perdrait un tiers de l'écran) ; « paysage-haut » :
    * 3:2 sur grand écran, 4:3 au téléphone (la corde : la corde ET un film
-   * empilés — à 3:2 et 390 px, le film n'avait plus que 46 px).
+   * empilés — à 3:2 et 390 px, le film n'avait plus que 46 px) ;
+   * « carre-partout » : carré aussi au téléphone (le banc de diffraction ET son
+   * graphe empilés : en 4:3, le tracé n'avait que 61 px) — la colonne prend
+   * alors `MARGE_FOCUS_CARRE`.
    */
-  format?: "carre" | "paysage" | "paysage-haut";
+  format?: "carre" | "carre-partout" | "paysage" | "paysage-haut";
   /** les étiquettes HTML posées sur la scène (N, P, H…) */
   children?: React.ReactNode;
 }) {
@@ -68,7 +71,7 @@ export function Plateau({
         className={cn(
           "relative w-full overflow-hidden rounded-xl",
           "bg-figure-surface shadow-elevation-1",
-          format === "paysage" ? "aspect-[3/2]" : format === "paysage-haut" ? "aspect-[4/3] bp-expanded:aspect-[3/2]" : "aspect-[4/3] bp-expanded:aspect-square"
+          format === "paysage" ? "aspect-[3/2]" : format === "paysage-haut" ? "aspect-[4/3] bp-expanded:aspect-[3/2]" : format === "carre-partout" ? "aspect-square" : "aspect-[4/3] bp-expanded:aspect-square"
         )}
       >
         <canvas

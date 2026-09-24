@@ -193,6 +193,11 @@ const HORS_CHAMP = new Set([
   // dizaines de tirages ; deux passages en CI (job `scene-champ`) ;
   // `node scripts/scene-noyaux.mjs --essai-rouge`.
   "scene-noyaux.mjs",
+  // scene-diffraction, même raison : le banc de diffraction
+  // (pc/propagation-onde-lumineuse R3), le quatrième manipulable PLAN — les
+  // nombres de L = 2λD/a refaits, la tache lue contre la règle ; deux passages
+  // en CI (job `scene-champ`) ; `node scripts/scene-diffraction.mjs --essai-rouge`.
+  "scene-diffraction.mjs",
   // scene-ergonomie lance SEULE, sur les neuf scènes, la famille « ergonomie »
   // que chaque porte de scène lance déjà à sa fin (ADR 0035 : une porte prise
   // dans un agrégat doit pouvoir être lancée seule) : build ET navigateur. Pas

@@ -1379,6 +1379,15 @@ input:-webkit-autofill:active {
   outline: none;
   box-shadow: none;
 }
+/* La pièce EN PLACE porte une surface ; le survol, un voile plus léger. Sans
+   elle, la ligne cochée n'était qu'un rond natif de 13 px et la seule ligne
+   remplie était celle sous le pointeur : le survol se lisait comme la sélection
+   (vague 2 du banc de diffraction — sept fentes, quatre lasers). Le voile du
+   survol (0,06) reste sous celui du coché (0,10) : la règle l'emporte sur
+   `.state-layer:hover` par sa spécificité. */
+.ligne-radio:has(input:checked)::after {
+  opacity: var(--state-pressed);
+}
 
 /* ── Curseur de réglage (.curseur) ──────────────────────────────────────────
    Audit Fable §3.9 : les `input[type=range]` natifs mesuraient 16 px de haut

@@ -15,6 +15,7 @@ import type { Scene3DDescriptor } from "@/lib/content";
 import { ChampMagnetiquePanel } from "./scene/ChampMagnetiquePanel";
 import { CordePanel } from "./scene/CordePanel";
 import { CuvePanel } from "./scene/CuvePanel";
+import { DiffractionPanel } from "./scene/DiffractionPanel";
 import { ManegePanel } from "./scene/ManegePanel";
 import { NoyauxPanel } from "./scene/NoyauxPanel";
 import { OrbiteGeostationnairePanel } from "./scene/OrbiteGeostationnairePanel";
@@ -40,6 +41,9 @@ const PANNEAUX: Record<string, React.ComponentType<{ scene: Scene3DDescriptor; c
   // grille de noyaux qui tirent leur désintégration au sort — DEUX voies de
   // calcul, la loi et le tirage (spec-scene-noyaux).
   "courbe-et-noyaux": NoyauxPanel,
+  // Le quatrième : un banc d'optique, sans temps ni course — la révélation pose
+  // le réglage que le pari interrogeait, et la règle répond.
+  "banc-de-diffraction": DiffractionPanel,
 };
 
 export function Scene3DPanel({ scene, className }: { scene: Scene3DDescriptor; className?: string }) {

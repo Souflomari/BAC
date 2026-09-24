@@ -1,22 +1,77 @@
 # spec — manipulable 2D `banc-de-diffraction` (PC · `propagation-onde-lumineuse`, R3)
 
-**Statut : PROPOSITION, non validée.** Écrite le 2026-09-24 par pedagogy-architect.
-**Rangée ici, et non dans `content/pc/propagation-onde-lumineuse/`, tant qu'elle
-n'est pas adoptée** (`docs/audits/DECISIONS-EN-ATTENTE.md` §19 : dans le dossier
-d'une notion, `dette-manipulable` lit toute spec comme une PRESCRIPTION faite à
-l'élève). À l'adoption, elle y retourne sous `spec-scene-diffraction.md`, dans le
-commit qui livre la scène.
+**Statut : LIVRÉE (2026-09-24, HANDOFF §11.204)** ; les réponses par défaut du §13 ont
+été appliquées, chacune reste réversible. Écrite le 2026-09-24 par pedagogy-architect,
+rangée d'abord sous `docs/pipeline/propositions/` tant qu'elle n'était pas construite
+(DÉCISIONS §19 : dans le dossier d'une notion, `dette-manipulable` lit toute spec comme
+une PRESCRIPTION), elle a rejoint le dossier de la notion dans le commit qui livre la
+scène. Les chemins qu'elle nommait existent : le descripteur
+`content/pc/propagation-onde-lumineuse/media/banc-de-diffraction.json`, le modèle
+`web/src/lib/scene2d/diffraction-modele.ts` (et son test unitaire
+`web/scripts/test-diffraction.mjs`), le rendu `web/src/lib/scene2d/diffraction-rendu.ts`,
+le panneau `web/src/components/notion/scene/DiffractionPanel.tsx`, la porte
+`web/scripts/scene-diffraction.mjs`.
 
-Chemins que cette proposition commande et qui n'existent pas encore (la porte
-`liens-fichiers` les dispense un par un ; à effacer quand ils existeront) :
+**Ce que la construction a changé à cette spec, écrit ici plutôt que corrigé en douce :**
+- **Un nombre du §7.1 était faux.** Le retour de `image-de-la-fente` disait qu'une tache
+  « image de la fente » de $0{,}100$ mm serait « un dix-millième » de ce que la règle
+  affiche : $0{,}100$ mm contre $24$ mm, c'est **deux cent quarante fois moins**. Corrigé
+  dans le descripteur.
+- **La révélation POSE le réglage que le pari interrogeait** — une clé neuve du
+  descripteur, `etat_revele` (validée par `validate-content` : mêmes clés, mêmes bornes,
+  jamais sans pari). Sans elle, le retour de S1 (« lis la règle : 2,40 cm ») aurait
+  parlé d'un réglage que l'écran ne montrait pas encore.
+- **La règle est graduée au demi-centimètre, pas au millimètre** (§5.7 disait « 10 fines
+  par cm ») : à 390 px un millimètre vaut ~1,5 px — le §15.3 l'avait prévu. Chiffrée tous
+  les deux centimètres (vague 2 : au centimètre, treize nombres à 1 280 px).
+- **Les lectures n'existent qu'après le pari**, comme dans les neuf autres scènes : les
+  valeurs de départ que le §7 voulait « visibles avant » sont dans la consigne. Et la
+  lecture `distance` n'est pas doublée quand le curseur, qui porte déjà la valeur, est là.
+- **Les fins du graphe ne sont tracés que s'ils restent à 5 px l'un de l'autre** : au
+  téléphone, 22 traits dans 90 px faisaient un code-barres. À l'étape 3, le plateau passe
+  au CARRÉ sur grand écran, et le graphe prend 55 % de la hauteur.
+- **Les rayons de bord s'arrêtent à la face de la bande de l'écran** : ils y arrivent aux
+  bords de la tache, et la bande reste lisible — c'est là que la porte mesure les bords.
+- **Le quatrième point du `fit_caveat` rendu ne dit pas « ±1 mm »** (la frontière §9.15
+  l'interdit) : « on lit la règle au millimètre près ».
+- **Les noms posés sur la scène** : le laser se nomme sous son boîtier, le cheveu en haut à
+  gauche de l'axe (au premier passage, « laser » chevauchait « fente » au téléphone, et
+  « cheveu » l'arc de θ).
+- **Le §2.1, point 4, nomme la cuve à ondes sans son marqueur** : dans le dossier d'une
+  notion, `dette-manipulable` lit tout `[[embed:…]]` d'une spec comme une prescription
+  faite à CETTE notion — la cuve y devenait une promesse tombée (batterie, au moment de
+  livrer).
+- **La porte** : `tache-et-regle` ne juge que les taches d'au moins 8 px (à $1{,}000$ mm et
+  $450$ nm, la tache fait 3,4 px — ses bords ne se lisent pas au pixel ; ses nombres sont
+  gardés par N1, son sens par `plus-etroite-plus-large`) ; `secondaires` exige aussi que la
+  tache voisine SE VOIE (≥ 15 % du centre) — sans quoi le sabotage 20 (l'éclaircissement
+  supprimé) passait ; `eclairs` et `sans-mouvement` deviennent une seule famille,
+  `immobile` (rien ne bouge au repos : la scène n'a ni temps ni course).
 
-    CHEMIN À CRÉER: content/pc/propagation-onde-lumineuse/media/banc-de-diffraction.json — le descripteur
-    CHEMIN À CRÉER: web/src/lib/scene2d/diffraction-modele.ts — le modèle (aucun rendu)
-    CHEMIN À CRÉER: web/src/lib/scene2d/diffraction-rendu.ts — le rendu Canvas 2D
-    CHEMIN À CRÉER: web/src/components/notion/scene/DiffractionPanel.tsx — le panneau
-    CHEMIN À CRÉER: web/scripts/scene-diffraction.mjs — la porte
-    CHEMIN À CRÉER: web/scripts/test-diffraction.mjs — le test unitaire du modèle
-    CHEMIN À CRÉER: content/pc/propagation-onde-lumineuse/spec-scene-diffraction.md — cette spec, à l'adoption
+**Ce que la vague 2 (calme, dessin, ergonomie — HANDOFF §11.204) a changé ensuite :**
+- **La tache reste à l'encre, à toutes les phases.** Le §6 la voulait à l'accent après la
+  révélation : c'étaient cinq taches d'accent (la centrale et quatre voisines dont la scène
+  n'affirme rien) en plus des rayons, de l'arc et du crochet. L'accent marque ce qui
+  RÉPOND — l'éventail, θ, le crochet L, les points du graphe.
+- **L porte sa valeur sur la scène** (« L = 2,40 cm », comme « D = 2,00 m » sur la cote) :
+  la scène collante reste sous les yeux quand on règle, la liste des lectures non.
+- **La consigne de S1 ouvre sur les nombres** ; l'avertissement du symbole de fente vit
+  dans la légende et l'encadré, la présentation du banc dans la leçon, juste au-dessus.
+  Le retour juste de S1 s'arrête à θ (la phrase de la fenêtre était une troisième idée) ;
+  celui de S3 garde la conversion $a = 6{,}0\times10^{-5}$ m, sans la substitution en
+  fractions empilées (la lecture « longueur d'onde déduite » donne le résultat).
+- **S5 : cinq lectures, pas huit** — ni « bords » ni « rapport » (restes de S1 et S3), la
+  pente seulement quand la droite est à l'écran, $L/(2D)$ juste sous θ ; et la suite dit
+  « $L/(2D)$ ne bouge pas » (la lecture qui existe), non plus « $L/D$ ». À l'étape libre,
+  les lectures PRÉCÈDENT les quatre groupes de réglages.
+- **Le plateau est carré aussi au téléphone quand le graphe est là** (`carre-partout`, et
+  la marge du focus qui suit : `MARGE_FOCUS_CARRE`) : en 4:3, l'axe de L tenait en ~70 px.
+- **La règle est chiffrée tous les deux centimètres** tant qu'un centimètre fait moins de
+  28 px (13 nombres à 1 280 px) ; le texte du dessin passe de 11 à 12 px ; les traits forts
+  du graphe à 3,6:1 (2,9:1 à l'opacité 0,6) ; le titre « D (cm) » sous la rangée des
+  nombres, où il tombait sous « 200 ».
+- **La révélation dit le réglage qu'elle pose** au lecteur d'écran ; le curseur de D ne
+  parle qu'une fois par cran (L dans son `aria-valuetext`).
 
 **Ce que ce document est.** Le cadrage pédagogique complet d'un manipulable PLAN
 de première partie (ADR 0041, `"tool": "scene2d"`, mêmes pièces que la cuve, la
@@ -83,7 +138,7 @@ chacune.
    **absent des 22 items**, tandis que les 5 points d'arrêt sont **tous**
    `utilisation`. Application expérimentale mesurée : **0 %**.
 4. **Elle ne double pas la cuve à ondes.** `pc/ondes-mecaniques-periodiques` R5
-   porte déjà `[[embed:cuve-a-ondes]]`, qui traite la diffraction **mécanique**,
+   porte déjà la scène `cuve-a-ondes`, qui traite la diffraction **mécanique**,
    **qualitative** : la condition $a \lesssim \lambda$, ce que l'onde conserve
    ($f$, $\lambda$, $c$), le récepteur sur un arc. Son `boundary` l'écrit :
    « **aucune relation quantitative de diffraction (ni $\theta$, ni

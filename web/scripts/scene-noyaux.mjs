@@ -292,10 +292,18 @@ const horsTraits = (g, ts) => ts.map((t) => {
   const k = Math.round(t / 4) * 4;
   return k > 0 && Math.abs(t - k) * g.pxJ < 2.5 ? k + ((t >= k ? 1 : -1) * 2.5) / g.pxJ : t;
 });
+/**
+ * Ce qui sépare, en écart au fond, le QUADRILLAGE (majeurs ≈ 121, fins ≈ 52)
+ * de la COURBE (≈ 229). 120 jusqu'au 2026-09-24 : les majeurs étaient alors à
+ * 104, et à 2,91:1 — sous le plancher de 3:1 que leur commentaire citait. Portés
+ * à 3,6:1 (≈ 121), ils passaient DU CÔTÉ de la courbe : le seuil est remis au
+ * milieu de l'écart, à 50 de part et d'autre, au lieu de 16.
+ */
+const SEUIL_COURBE = 170;
 async function lireCourbe(g, ts) {
   const out = [];
   for (const t of ts) {
-    const pl = (await traits("colonne", X(g, t), g.yTop + 3, g.y1 - 3)).filter((p) => p.pic > 120);
+    const pl = (await traits("colonne", X(g, t), g.yTop + 3, g.y1 - 3)).filter((p) => p.pic > SEUIL_COURBE);
     if (!pl.length) { out.push(NaN); continue; }
     const p = pl.reduce((a, b) => (b.pic > a.pic ? b : a));
     out.push((g.y1 - p.centre) / g.pxU);
@@ -545,7 +553,7 @@ let pxJ32 = NaN;
   const g = await cadreGraphe(10);
   if (!g) juger("quadrillage", false, "étape 1 : cadre du graphe illisible aux pixels");
   else {
-    const internes = g.rangee.slice(1, -1).filter((p) => p.pic < 120);
+    const internes = g.rangee.slice(1, -1).filter((p) => p.pic < SEUIL_COURBE);
     const attendus = [[4, "fin"], [8, "majeur"]];
     const fautes = [];
     for (const [t, genre] of attendus) {
@@ -556,8 +564,8 @@ let pxJ32 = NaN;
     if (internes.length !== attendus.length) fautes.push(`${internes.length} traits verticaux dans le cadre (attendu ${attendus.length} : 4 j fin, 8 j majeur)`);
     // la colonne : les horizontaux à chaque demi-unité, les entiers plus appuyés, et la courbe plus contrastée que tout
     const col = g.colonne.slice(1, -1);
-    const courbe = col.filter((p) => p.pic >= 120);
-    const grilleV = col.filter((p) => p.pic < 120);
+    const courbe = col.filter((p) => p.pic >= SEUIL_COURBE);
+    const grilleV = col.filter((p) => p.pic < SEUIL_COURBE);
     for (let k = 1; k <= 9; k++) {
       const v = k / 2;
       const p = grilleV.find((q) => Math.abs(q.centre - Y(g, v)) <= 1);
@@ -766,7 +774,7 @@ await etatPose("ce-que-compte-le-detecteur");
   // le quadrillage à 32 jours, sans curseur ni repère : fins et majeurs à leur place
   const g = await cadreGraphe(32);
   if (g) {
-    const internes = g.rangee.slice(1, -1).filter((p) => p.pic < 120);
+    const internes = g.rangee.slice(1, -1).filter((p) => p.pic < SEUIL_COURBE);
     const fautes = [];
     for (const t of [4, 8, 12, 16, 20, 24, 28]) if (!internes.some((q) => Math.abs(q.centre - X(g, t)) <= 1)) fautes.push(`aucun trait à ${t} j`);
     if (internes.length !== 7) fautes.push(`${internes.length} traits verticaux (attendu 7)`);
@@ -774,7 +782,7 @@ await etatPose("ce-que-compte-le-detecteur");
     if (!(Math.min(...maj.map((p) => p.pic)) > Math.max(...fin.map((p) => p.pic)))) fautes.push("les majeurs ne sont pas plus appuyés que les fins");
     juger("quadrillage", fautes.length === 0, `étape 4, avant le pari, 32 jours : ${fautes.length ? fautes.join(" ; ") : "fins à 4, 12, 20, 28 j ; majeurs à 8, 16, 24 ; cadre à 32"}`);
     // les AXES LINÉAIRES : les majeurs verticaux équidistants à 1 px, et les horizontaux aussi
-    const majeursX = g.rangee.slice(1, -1).filter((p) => p.pic < 120 && p.pic > 40);
+    const majeursX = g.rangee.slice(1, -1).filter((p) => p.pic < SEUIL_COURBE && p.pic > 40);
     const pos = [8, 16, 24].map((t) => majeursX.find((q) => Math.abs(q.centre - X(g, t)) <= 1.5)?.centre ?? NaN);
     const pasX = [pos[0] - g.x0, pos[1] - pos[0], pos[2] - pos[1], g.x1 - pos[2]];
     // Tolérance 1,5 px, et pourquoi : le produit pose chaque trait au milieu
@@ -784,7 +792,7 @@ await etatPose("ce-que-compte-le-detecteur");
     // passait avant par chance. Une échelle logarithmique les écarte de dizaines de px.
     juger("axes-lineaires", pasX.every(Number.isFinite) && Math.max(...pasX) - Math.min(...pasX) <= 1.5, `étape 4 : intervalles des majeurs du temps ${pasX.map((p) => virgule(p, 2)).join(" · ")} px (équidistants à 1,5 px — un pixel de pose, plus l'arrondi)`);
     {
-      const col = g.colonne.slice(1, -1).filter((p) => p.pic < 120 && p.pic > 40);
+      const col = g.colonne.slice(1, -1).filter((p) => p.pic < SEUIL_COURBE && p.pic > 40);
       const ys = [1, 2, 3, 4].map((v) => col.find((q) => Math.abs(q.centre - Y(g, v)) <= 1.5)?.centre ?? NaN);
       const pasY = [g.y1 - ys[0], ys[0] - ys[1], ys[1] - ys[2], ys[2] - ys[3], ys[3] - g.yTop];
       juger("axes-lineaires", pasY.every(Number.isFinite) && Math.max(...pasY) - Math.min(...pasY) <= 1.5, `étape 4 : intervalles des majeurs verticaux ${pasY.map((p) => virgule(p, 2)).join(" · ")} px (équidistants à 1,5 px — une échelle logarithmique les écarterait)`);

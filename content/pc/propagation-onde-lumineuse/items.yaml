@@ -29,6 +29,10 @@ misconceptions:
     label: "« Erreurs sur la dispersion : un prisme disperserait aussi la lumière monochromatique, le rouge serait le plus dévié, ou n ne dépendrait pas de la couleur »"
     description: "L'élève croit qu'un prisme crée des couleurs à partir d'une lumière monochromatique, que le rouge est le plus dévié, ou que l'indice n est le même pour toutes les couleurs."
     contradicts_principle: "Un prisme ne fait que dévier différemment des couleurs déjà présentes : il ne disperse que de la lumière polychromatique. Comme n dépend de la couleur (n_violet > n_rouge), le violet est le plus dévié (et le plus lent : v = c/n). Sans mélange initial, rien à séparer."
+  - id: mc.physics.pc_propagation_onde_lumineuse.figure-ombre-geometrique
+    label: "« La figure observée sur l'écran est l'ombre portée de l'objet » — la tache reproduit la fente (ou le fil), tout au plus un peu floutée"
+    description: "L'élève garde le modèle de l'optique géométrique pour l'ÉCRAN, même après avoir accepté la condition de diffraction et la formule. Trois formes. Forme A : la tache centrale est l'IMAGE de l'ouverture, donc elle rétrécit quand la fente rétrécit (au lieu de s'élargir). Forme B : la largeur observée est celle de l'objet PLUS un étalement qui s'y ajoute — d'où une droite L = f(D) qui ne partirait pas de l'origine, ou une tache qui ne pourrait jamais être plus fine que la fente. Forme C : un OBSTACLE (fil, cheveu) ne peut que projeter une ombre ; seule une OUVERTURE diffracterait. Ce modèle répond CORRECTEMENT à toute question de condition (a comparable à λ) et à toute application numérique de θ = λ/a : il ne se révèle qu'en demandant à quoi la figure RESSEMBLE, ce que devient un obstacle, ou d'où part la droite L = f(D)."
+    contradicts_principle: "Derrière une ouverture ou un obstacle de dimension a comparable à λ, l'écran ne reçoit pas l'image de l'objet mais une figure de diffraction dont la largeur est gouvernée par l'ÉTALEMENT : L = 2λD/a, sans aucun terme en a qui s'y ajouterait. La tache centrale est donc d'autant plus LARGE que l'objet est FIN, elle est sans commune mesure avec lui (à 0,060 mm, 2,0 m et 600 nm, elle est 667 fois plus large), et la droite L = f(D) passe par l'origine. Un fil diffracte comme une fente de même largeur : c'est ce qui permet de mesurer le diamètre d'un cheveu à la règle."
 
 items:
   - id: POL-1
@@ -1395,6 +1399,279 @@ items:
       quelques centimètres donne $\theta = \lambda/a$ négligeable : c'est le
       régime de l'optique géométrique, où la lumière semble aller tout droit.
 
+  - id: POL-23
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.figure-ombre-geometrique
+    stem: >
+      Un laser de longueur d'onde $\lambda = 600\ \text{nm}$ éclaire une
+      fente fine de largeur $a = 0{,}060\ \text{mm}$ ; un écran est placé à
+      $D = 2{,}0\ \text{m}$. On mesure à la règle la largeur de la tache
+      centrale. Que vaut-elle, et que faut-il en conclure sur ce qui arrive
+      sur l'écran ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $L = 0{,}060\ \text{mm}$ : l'écran reçoit l'image de la fente, à
+          peine floutée sur les bords — la tache a donc la largeur de
+          l'ouverture elle-même.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.figure-ombre-geometrique
+        feedback: >
+          La mesure donne en réalité $4{,}0$ cm, soit près de sept cents
+          fois la largeur de la fente ; ce que l'écran reçoit n'est pas une
+          image de l'ouverture mais la figure de l'étalement, d'autant plus
+          large que l'ouverture est fine.
+      - id: B
+        text: >-
+          $L = 2\lambda D/a = 4{,}0\ \text{cm}$, environ **670 fois** la
+          largeur de la fente : c'est l'étalement qui fixe la taille de la
+          tache.
+        correct: true
+      - id: C
+        text: >-
+          $L = 4{,}0\ \text{cm} + 0{,}060\ \text{mm}$ : c'est la largeur de
+          la fente à laquelle s'ajoute l'étalement de part et d'autre de la
+          tache.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.figure-ombre-geometrique
+        feedback: >
+          Il n'existe pas de terme en $a$ qui s'ajoute : $L = 2\lambda D/a$
+          et rien d'autre. Le « supplément » proposé vaudrait
+          $0{,}0060$ cm, un millième de ce qu'on mesure — invisible, et
+          absent de la formule.
+      - id: D
+        text: >-
+          $L = \lambda D/a = 2{,}0\ \text{cm}$ : la tache est vue depuis la
+          fente sous l'angle entier $\theta = \lambda/a$, dans les deux
+          sens.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
+        feedback: >
+          $\theta$ est la **demi**-largeur angulaire, de l'axe jusqu'au
+          bord de la tache : $D\theta$ donne donc $L/2$, pas $L$. La tache
+          entière mesure le double, $4{,}0$ cm.
+    correct_feedback: >
+      $\theta = \lambda/a = 1{,}0\times10^{-2}\ \text{rad}$, donc
+      $L = 2D\theta = 4{,}0\ \text{cm}$ — environ 670 fois la largeur de la
+      fente. L'écran ne reçoit jamais une image de l'ouverture : c'est
+      l'étalement, pas la forme de l'objet, qui gouverne la tache.
+    solution: |
+      $\theta = \lambda/a = 6{,}00\times10^{-7}/6{,}0\times10^{-5} =
+      1{,}0\times10^{-2}$ rad ; $L/2 = D\theta = 2{,}0\times10^{-2}$ m ;
+      d'où $L = 4{,}0\times10^{-2}$ m $= 4{,}0$ cm. Le rapport à la fente
+      vaut $40\ \text{mm}/0{,}060\ \text{mm} \approx 670$ : une figure de
+      diffraction n'est jamais l'ombre portée de l'objet.
+
+  - id: POL-24
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.figure-ombre-geometrique
+    stem: >
+      On éclaire une fente de largeur $a$ avec un laser, puis on retire la
+      plaque et on tend exactement à sa place un fil fin (un cheveu) de
+      diamètre $d = a$, sans rien changer d'autre. Que voit-on sur l'écran ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Une figure de diffraction, mais **plus large** qu'avec la fente :
+          un obstacle gêne davantage le passage de la lumière qu'une
+          ouverture de même taille.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
+        feedback: >
+          À $d = a$, la relation $L = 2\lambda D/a$ ne distingue pas
+          obstacle et ouverture : elle donne exactement la même largeur. Et
+          le sens invoqué est inversé — c'est l'objet le plus **fin** qui
+          donne la tache la plus **large**, jamais l'inverse.
+      - id: B
+        text: >-
+          L'ombre du fil : un simple trait sombre et net sur le faisceau,
+          sans étalement — un obstacle arrête la lumière, il ne la disperse
+          pas comme une ouverture.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.figure-ombre-geometrique
+        feedback: >
+          La lumière qui passe à côté d'un obstacle fin s'étale exactement
+          comme celle qui passe au travers d'une ouverture fine : c'est ce
+          qui permet de mesurer le diamètre d'un cheveu par diffraction, un
+          calcul que les sujets demandent régulièrement.
+      - id: C
+        text: >-
+          La **même** figure de diffraction, avec la **même** largeur de
+          tache centrale : un fil fin diffracte comme une fente de même
+          largeur.
+        correct: true
+      - id: D
+        text: >-
+          Rien de particulier : un cheveu est plus de cent fois plus large
+          que la longueur d'onde, donc bien trop gros pour produire une
+          diffraction visible.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille
+        feedback: >
+          « Du même ordre de grandeur » n'exige pas un rapport voisin de 1 :
+          à $d = 0{,}08$ mm, la tache centrale mesure encore plusieurs
+          centimètres à deux mètres de l'écran — largement observable, pas
+          absente.
+    correct_feedback: >
+      La relation de diffraction ne distingue pas l'ouverture de
+      l'obstacle : elle ne retient que la dimension transverse au faisceau.
+      Avec $d = a$, $\theta = \lambda/d = \lambda/a$ et $L = 2\lambda D/d$
+      restent inchangés — un fil diffracte exactement comme une fente de
+      même largeur.
+    solution: |
+      La relation de diffraction ne distingue pas l'ouverture de
+      l'obstacle : elle ne retient que la **dimension** $a$ transverse au
+      faisceau. Avec $d = a$, $\theta = \lambda/d = \lambda/a$ et
+      $L = 2\lambda D/d$ est inchangée. C'est ce qui rend possible la
+      mesure d'un diamètre de cheveu avec une règle graduée en centimètres.
+
+  - id: POL-25
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.figure-ombre-geometrique
+    stem: >
+      Avec un laser de longueur d'onde $\lambda$ et une fente de largeur
+      $a = 0{,}10\ \text{mm}$, on mesure la largeur $L$ de la tache
+      centrale pour plusieurs positions de l'écran. On porte les points sur
+      un graphe $L = f(D)$. Quelle allure a ce graphe, et pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Une courbe qui monte de plus en plus vite : en s'éloignant de la
+          fente, la lumière dispose de plus d'espace pour s'étaler, donc
+          l'écart angulaire $\theta$ augmente avec $D$.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
+        feedback: >
+          $\theta = \lambda/a$ ne contient pas $D$ : l'angle est fixé une
+          fois pour toutes à la sortie de la fente. Reculer l'écran ne
+          l'ouvre pas davantage, cela l'intercepte plus loin — d'où une
+          croissance proportionnelle, donc une droite, pas une courbe qui
+          accélère.
+      - id: B
+        text: >-
+          Une droite horizontale : puisque l'écart angulaire
+          $\theta = \lambda/a$ ne dépend pas de $D$, la largeur de la tache
+          sur l'écran n'en dépend pas non plus.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
+        feedback: >
+          La prémisse est juste et la conclusion ne suit pas : un angle
+          constant intercepté à une distance deux fois plus grande découpe
+          une longueur deux fois plus grande. $L = 2D\theta$ croît bel et
+          bien avec $D$, même si $\theta$, lui, reste fixe.
+      - id: C
+        text: >-
+          Une droite qui coupe l'axe des ordonnées à
+          $L = a = 0{,}10\ \text{mm}$ : à distance nulle, la tache a déjà
+          la largeur de la fente, et l'étalement s'y ajoute ensuite.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.figure-ombre-geometrique
+        feedback: >
+          La relation $L = 2\lambda D/a$ ne contient aucun terme additif en
+          $a$ : l'ordonnée à l'origine est nulle. Le « supplément » proposé
+          vaudrait $0{,}010$ cm — un centième de la plus petite mesure
+          typique, invisible sur n'importe quel graphe.
+      - id: D
+        text: >-
+          Une droite passant par l'origine, car $L = 2\lambda D/a$ est de
+          la forme $L = p\,D$ ; sa pente $p = 2\lambda/a$ permet justement
+          de remonter à $\lambda$.
+        correct: true
+    correct_feedback: >
+      $L = 2\lambda D/a$ est proportionnelle à $D$ à $\lambda$ et $a$
+      fixés : le graphe est une droite par l'origine, de pente
+      $p = 2\lambda/a$, d'où $\lambda = p\,a/2$.
+    solution: |
+      $L = 2\lambda D/a$, donc $L$ est proportionnelle à $D$ à $\lambda$ et
+      $a$ fixés : droite par l'origine, de pente $p = 2\lambda/a$. On en
+      tire $\lambda = p\,a/2$ — c'est exactement l'exploitation demandée
+      par le sujet national de 2021.
+
+  - id: POL-26
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
+    stem: |
+      On éclaire une fente de largeur $a = 0{,}060\ \text{mm}$ avec un
+      laser de longueur d'onde inconnue, et on mesure la largeur $L$ de la
+      tache centrale pour cinq positions de l'écran. **Déterminer
+      $\lambda$.**
+
+      | $D$ (cm) | 50 | 75 | 100 | 125 | 150 |
+      |---|---|---|---|---|---|
+      | $L$ (cm) | 1,00 | 1,50 | 2,00 | 2,50 | 3,00 |
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\lambda = 600\ \text{nm}$ : les cinq mesures donnent toutes
+          $L/D = 2{,}00\times10^{-2}$, la pente d'une droite $L = pD$ qui
+          vaut $p = 2\lambda/a$, d'où $\lambda = p\,a/2$.
+        correct: true
+      - id: B
+        text: >-
+          $\lambda = 1\,200\ \text{nm}$ : la pente du graphe $L = f(D)$
+          vaut $\lambda/a$, donc $\lambda$ s'obtient en multipliant la
+          pente par $a$, sans facteur supplémentaire.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
+        feedback: >
+          La pente de $L = f(D)$ vaut $2\lambda/a$, pas $\lambda/a$, parce
+          que $\theta$ est la demi-largeur angulaire et que $L$ en compte
+          le double. $1\,200$ nm est d'ailleurs hors du spectre visible, ce
+          qui aurait dû alerter pour un laser qu'on voit à l'œil nu.
+      - id: C
+        text: >-
+          $\lambda = 2{,}00\ \text{cm}$ : c'est directement la largeur de
+          la tache mesurée à $D = 100\ \text{cm}$, lue telle quelle dans le
+          tableau.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
+        feedback: >
+          Le tableau donne des largeurs de tache, pas des longueurs
+          d'onde : $2$ cm est cinquante mille fois trop grand pour une
+          lumière visible. Ce qu'on tire des mesures, c'est une pente,
+          qu'il faut ensuite relier à $\lambda$ par $a$ — deux étapes, pas
+          une lecture directe.
+      - id: D
+        text: >-
+          $\lambda = 6{,}0\ \text{mm}$ : la relation $p = 2\lambda/a$
+          s'inverse en divisant $2a$ par la pente $p$ mesurée sur le
+          graphe.
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
+        feedback: >
+          L'inversion correcte est $\lambda = p\,a/2$ — on multiplie la
+          pente par $a$, on ne divise pas $2a$ par elle. Diviser donne
+          $6{,}0$ mm, une longueur d'onde de micro-ondes : l'ordre de
+          grandeur suffit à écarter cette piste.
+    correct_feedback: >
+      Les cinq rapports $L/D$ valent tous $2{,}00\times10^{-2}$ : les
+      points sont alignés sur une droite par l'origine, de pente
+      $p = 2\lambda/a$, d'où $\lambda = p\,a/2 = 600\ \text{nm}$ — une
+      valeur bien dans le visible.
+    solution: |
+      Les cinq rapports $L/D$ valent tous $2{,}00\times10^{-2}$ (par
+      exemple $3{,}00/150 = 2{,}00\times10^{-2}$) : les points sont alignés
+      sur une droite passant par l'origine, de pente $p = 2\lambda/a$. D'où
+      $\lambda = \dfrac{p\,a}{2} = \dfrac{2{,}00\times10^{-2}\times
+      6{,}0\times10^{-5}}{2} = 6{,}0\times10^{-7}$ m $= 600$ nm. Contrôle :
+      $600$ nm est bien une longueur d'onde du visible.
+
 # ──────────────────────────────────────────────────────────────────────────────
 # COVERAGE SUMMARY (backfilled in the summit-conversion campaign)
 #
@@ -1405,39 +1682,69 @@ items:
 # item (POL-22) to close the diffraction-condition model to the ≥3 floor.
 # Counts are ITEM-LEVEL (each item counted once, by its `primary_misconception`).
 # ──────────────────────────────────────────────────────────────────────────────
+#
+# ──────────────────────────────────────────────────────────────────────────────
+# COVERAGE SUMMARY UPDATE (banc-de-diffraction misconception pass)
+#
+# Adds an eighth model, figure-ombre-geometrique (the écran is read with the
+# geometric-optics model: the spot is the object's image/shadow, not the
+# spreading figure), per pc-propagation-onde-lumineuse-scene-diffraction
+# proposition §8.2. Three new items (POL-23, POL-24, POL-25) bring it to the
+# ≥3 floor with zero margin, as the proposition itself flags. A fourth item
+# (POL-26) exercises the measurement-table reading gesture (§8.4, "exploiter
+# des mesures pour vérifier θ = λ/a") and is tagged diffraction-formule-theta.
+# Total items: 22 → 26.
+# ──────────────────────────────────────────────────────────────────────────────
 coverage_summary:
   method: "item-level, by primary_misconception (one item = one count)"
-  total_items: 22
+  total_items: 26
   per_misconception:
     mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee: 3         # POL-8, POL-9, POL-11
     mc.physics.pc_propagation_onde_lumineuse.son-lumiere-memes-proprietes: 3 # POL-1, POL-7, POL-10
     mc.physics.pc_propagation_onde_lumineuse.indice-vitesse-erronee: 3       # POL-2, POL-12, POL-13
     mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille: 3 # POL-3, POL-21, POL-22
-    mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta: 3    # POL-4, POL-14, POL-19
+    mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta: 4    # POL-4, POL-14, POL-19, POL-26
     mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu: 3  # POL-5, POL-15, POL-16
     mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme: 4            # POL-6, POL-17, POL-18, POL-20
+    mc.physics.pc_propagation_onde_lumineuse.figure-ombre-geometrique: 3     # POL-23, POL-24, POL-25 (zero margin)
   floor: 3
   floor_met: true
   ramp_coverage:
     R0: 3   # POL-7, POL-8, POL-9
     R1: 3   # POL-1, POL-10, POL-11
     R2: 3   # POL-2, POL-12, POL-13
-    R3: 4   # POL-3, POL-4, POL-14, POL-22
+    R3: 6   # POL-3, POL-4, POL-14, POL-22, POL-23, POL-24
     R4: 3   # POL-5, POL-15, POL-16
     R5: 3   # POL-6, POL-17, POL-18
-    R6: 3   # POL-19, POL-20, POL-21
+    R6: 5   # POL-19, POL-20, POL-21, POL-25, POL-26
   note: >
-    Floor met for all seven models without padding: six models already had ≥3
-    primaries across POL-1…POL-21; only the diffraction-condition model needed
-    one fresh item (POL-22, R3) to reach 3. Per-distractor `misconception:` tags
-    were added to every wrong choice of POL-1…POL-21 (additive only — no stem,
-    feedback, or solution was deleted or weakened). A few items carry mixed
-    distractor tags where a wrong choice voices a neighbouring model (e.g.
-    POL-1 C = son-lumiere-memes-proprietes, POL-7 C/D = lumiere-onde-em-niee,
-    POL-19 B/D = lambda-nu-changement-milieu, POL-21 C/D =
-    diffraction-formule-theta): these are diagnostic metadata layered onto the
-    item-level primary counts and do not change the method or counts above. The
-    R0/R1 model lumiere-onde-em-niee intentionally bundles two faces of the same
-    accroche confusion — « la lumière a besoin d'un support (éther) » and « la
-    lumière est instantanée » — since the R0 hook confronts both with the single
-    idea that light is a finite-speed electromagnetic wave needing no medium.
+    Floor met for all eight models without padding. The seven pre-existing
+    models were already at or above the floor (see the POL-1…POL-22 history
+    below); the eighth model, figure-ombre-geometrique, needed three fresh
+    items (POL-23, POL-24, POL-25) to reach 3 — zero margin, exactly as the
+    banc-de-diffraction proposition §8.3 predicts. POL-26 is a measurement-
+    table reading item (§8.4) tagged diffraction-formule-theta, bringing that
+    model to 4. Matching the proposition's own accounting: R3 rises from 4 to
+    6, R6 from 3 to 5. Within the four new items, several distractors voice a
+    neighbouring model in the same item (POL-23 D and POL-25 A/B →
+    diffraction-formule-theta; POL-24 A → diffraction-formule-theta, POL-24 D
+    → diffraction-condition-taille) — ordinary per-distractor tagging, not a
+    shared multi-id attribution on a single distractor, so it does not change
+    the item-level primary counts above. Cross-skill contamination check: none
+    of the four new stems leak a changement-de-milieu, dispersion, or
+    interference cue (the R2/R4/R5 misconceptions), matching the frontière of
+    §9 of the proposition; none use "Babinet", "écrans complémentaires",
+    "frange", "interférence", degrees for θ, or "indice" (refractive index).
+    Historical note (POL-1…POL-22 pass): six of the original seven models
+    already had ≥3 primaries across POL-1…POL-21; only diffraction-condition-
+    taille needed one fresh item (POL-22, R3) to reach 3. Per-distractor
+    `misconception:` tags were added additively to every wrong choice of
+    POL-1…POL-21 (no stem, feedback, or solution was deleted or weakened). A
+    few of those items carry mixed distractor tags where a wrong choice voices
+    a neighbouring model (e.g. POL-1 C = son-lumiere-memes-proprietes, POL-7
+    C/D = lumiere-onde-em-niee, POL-19 B/D = lambda-nu-changement-milieu,
+    POL-21 C/D = diffraction-formule-theta). The R0/R1 model
+    lumiere-onde-em-niee intentionally bundles two faces of the same accroche
+    confusion — « la lumière a besoin d'un support (éther) » and « la lumière
+    est instantanée » — since the R0 hook confronts both with the single idea
+    that light is a finite-speed electromagnetic wave needing no medium.

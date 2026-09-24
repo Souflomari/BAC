@@ -44,6 +44,16 @@ export const MARGE_FOCUS = [
 // et Tab le rangeait sous le header — vague 2 de la corde.)
 
 /**
+ * La même marge pour une scène CARRÉE au téléphone (`format="carre-partout"` :
+ * le banc de diffraction quand il montre son graphe) — elle fait 100vw de haut,
+ * et une marge de 75vw rangeait sous elle le contrôle focalisé (vague 2 du banc).
+ */
+export const MARGE_FOCUS_CARRE = [
+  "[&_:is(button,input,summary,a)]:scroll-mt-[calc(3.5rem+100vw+1rem)]",
+  "bp-expanded:[&_:is(button,input,summary,a)]:scroll-mt-24",
+].join(" ");
+
+/**
  * La mise en page d'un panneau : la scène, puis la colonne des réglages — une
  * grille, sur deux colonnes à partir de `bp-expanded`. Une seule définition
  * pour les huit panneaux, et un attribut (`data-scene-grille`) par lequel les

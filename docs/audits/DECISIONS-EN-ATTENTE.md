@@ -1142,3 +1142,90 @@ clavier pour relancer. **Et deux affirmations de l'ergonomie, REJOUÉES avant
 toute correction** (le `<summary>` des encadrés à ~18 px de haut dans les neuf
 scènes ; le focus laissé hors de l'écran quand une course révèle le verdict) —
 leur verdict est au §11.203.
+
+## 25. Le banc de diffraction : douze questions tranchées par défaut, un huitième modèle ouvert, et les écarts de la construction
+
+**LE FAIT.** Le dixième manipulable de première partie — le quatrième PLAN — est
+livré dans `pc/propagation-onde-lumineuse`, en tête de R3 (§11.204) : un banc
+d'optique vu en coupe, un laser, une fente (ou un cheveu), un écran et sa règle, et
+le graphe L = f(D) du sujet national 2021. **Il ne solde aucune dette écrite** ; il
+se justifie par un trou MESURÉ (spec §0, §2.1) : la seule figure de diffraction du
+corpus ne porte aucun nombre et exagère son angle d'un facteur 54 sans le dire ;
+`exercises.yaml` donne la lecture que sa propre question réclame ; application
+expérimentale 0 %. La spec (`spec-scene-diffraction.md` §13) laissait douze
+questions ; même lecture du mandat qu'aux §20, §21, §23, §24.
+
+**CE QUI A ÉTÉ TRANCHÉ PAR DÉFAUT :**
+
+1. **Cette notion plutôt que `lois-de-newton`** (27 % du poids contre 11 %) : le trou
+   de la diffraction est un INSTRUMENT manquant sur un contenu dense, celui de Newton
+   un contenu manquant, qu'un manipulable ne referme pas. Réversible : Newton reste
+   la candidate suivante.
+2. **Le huitième modèle `figure-ombre-geometrique` est OUVERT** (« la figure est
+   l'ombre portée de l'objet ») : POL-23, 24, 25 (plancher, marge nulle) et POL-26,
+   un tableau de mesures (application expérimentale). C'est le seul modèle du
+   chapitre qui coche la bonne réponse partout dans le corpus d'avant.
+   **Pour revenir en arrière** : amender la `description` de
+   `diffraction-condition-taille`, ré-étiqueter trois items et trois choix de paris.
+3. **La tache ne prend jamais la couleur du laser** : les jetons, l'accent pour la
+   réponse ; la couleur se lit dans un nombre. La porte le garde (`palette`).
+4. **L'exagération ×10, déclarée et constante** — mesurée par la porte comme un
+   invariant (`exageration-constante`).
+5. **Pas de sixième étape « montage plongé dans un liquide »** (sujet 2025 R) : elle
+   appartient à R4. Préparée par la spec, non construite.
+6. **Le critère λ/a > 10⁻³ n'est pas introduit** : il vient d'un corrigé (2012 R), ni
+   du cadre ni de la leçon. **À vérifier à la source** : s'il est attendu des
+   élèves, la leçon d'abord, la scène ensuite. La frontière de la porte l'interdit.
+7. **L'item « proposer un montage » (POL-27) n'est pas écrit** — une dette voisine, pas
+   celle de cette scène.
+8. **θ est dit « DEMI-écart angulaire »** partout, et la leçon le dit maintenant (§4.2
+   de la spec, posé).
+9. **Le dossier `scene3d/` n'est toujours pas renommé.**
+10. **La scène ouvre le chapitre R3**, et sa consigne nomme fente, écran et tache
+    centrale avant la prose ; `cp-r3-diffraction` n'a pas bougé d'un caractère.
+11. **Cinq étapes, S2 (la couleur) gardée** : la seule qui fait varier λ à a fixée.
+12. **La règle « la relation est un état qui fuit » est gravée** (ADR 0041, addendum
+    de la nuit) : un retour ne contient que les facteurs que son étape a fait varier.
+
+**LES ÉCARTS DE LA CONSTRUCTION** sont écrits en tête de la spec (neuf, dont un
+nombre faux du §7.1 : « un dix-millième » pour 1/240). **Restent au propriétaire :**
+la validation des `limites`/`exclusions` du cadre que la spec cite (elles sont
+`source: derived`) ; le 44 contre 48 px de la porte ergonomie (§24) ; le choix de
+nommer la couleur de 600 nm (la leçon ne le fait pas, la scène non plus).
+
+**LA VAGUE 2 — CE QUI N'A PAS ÉTÉ APPLIQUÉ, et pourquoi** (le détail appliqué est en
+tête de la spec et au §11.204) :
+
+13. **Le verdict dit quatre fois** (choix teinté, « ✓ correct », bloc teinté, puis
+    « Bonne réponse. » et son filet au-dessus de la suite — critique du calme). C'est
+    `PariBloc`, commun aux dix scènes, et « Bonne réponse. » est la région vivante
+    que lit le lecteur d'écran — les dix portes la lisent. **À trancher une fois
+    pour toutes les scènes** : le rendre `sr-only` (l'annonce reste, le filet
+    disparaît) est le geste le plus court.
+14. **La colonne de 330 px à 1 280 px** (critique de l'ergonomie : le retour en
+    maths dans un couloir de ~35 caractères, la cellule gauche vide sous la scène
+    collante). C'est `GRILLE_SCENE` (3fr/2fr), commune aux dix panneaux : la changer
+    rejoue les étiquettes des dix portes à 1 280 px. **Proposé** : ~1fr/1fr à partir
+    de `bp-expanded`, ou une bande plus large pour les scènes ; à mesurer avant (la
+    capture de la critique était recadrée à 824 px).
+15. **Un bouton « revenir au réglage de l'énoncé »** : non — un contrôle de plus par
+    étape, contre la règle « un contrôle neuf par étape » (ADR 0041) ; « Précédent »
+    puis « Suivant » repose déjà l'état de l'étape.
+16. **Les rayons et l'arc à l'accent adouci (α 0,55)** pour hiérarchiser l'accent
+    (critique du dessin) : non — à 0,55, l'éventail tombe à ~2,3:1 sur la surface,
+    sous le plancher des objets graphiques, et c'est la géométrie même de S3.
+    L'accent a été rendu autrement : la tache ne le porte plus.
+17. **La bande de l'écran de 12 à 18 px** (critique du dessin : « le sujet est la
+    marque la plus discrète ») : non — la hiérarchie est rendue par la règle
+    chiffrée tous les 2 cm (13 → 7 nombres) et par L écrit sur la scène ; et la
+    porte lit l'éventail 2 px devant la face de la bande (`e.x − 12 − 2`) : la
+    changer, c'est changer cette lecture dans le même geste.
+18. **Les espacements du dessin sur la grille de 8 pt** (30 / 18 / 26 / 36…) : non,
+    hors du titre du graphe (marge basse 42) — rien ne s'aligne sur les pastilles du
+    DOM de toute façon.
+19. **`justify-between` dans les lectures** (jusqu'à ~200 px entre le terme et sa
+    valeur) : le motif est celui des dix panneaux ; à trancher avec le §14.
+20. **Les autres traits sous 3:1 du corpus plan** — l'axe de repos de la corde (0,55),
+    le bord de la cuve (0,5), la verticale du curseur des noyaux (0,5) — ne sont pas
+    des traits qu'on LIT comme le quadrillage : non examinés ici, nommés pour qu'ils
+    le soient.

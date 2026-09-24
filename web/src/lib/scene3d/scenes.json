@@ -504,5 +504,71 @@
         "32"
       ]
     }
+  },
+  "banc-de-diffraction": {
+    "temps": false,
+    "dimension": "2d",
+    "controles": [
+      "fente",
+      "couleur",
+      "distance",
+      "objet"
+    ],
+    "etat": [
+      "a_mm",
+      "lambda_nm",
+      "D_m",
+      "objet",
+      "vue",
+      "reference"
+    ],
+    "bornes": {
+      "D_m": [
+        0.4,
+        2.0
+      ]
+    },
+    "valeurs": {
+      "a_mm": [
+        "0.060",
+        "0.080",
+        "0.100",
+        "0.150",
+        "0.200",
+        "0.300",
+        "1.000"
+      ],
+      "lambda_nm": [
+        "450",
+        "532",
+        "600",
+        "650"
+      ],
+      "objet": [
+        "fente",
+        "cheveu"
+      ],
+      "vue": [
+        "banc",
+        "banc-et-graphe"
+      ],
+      "reference": [
+        "aucune",
+        "depart"
+      ]
+    },
+    "lectures": [
+      "largeur-fente",
+      "longueur-onde",
+      "distance",
+      "largeur-tache",
+      "bords",
+      "ecart-angulaire",
+      "rapport",
+      "pente",
+      "lambda-deduite",
+      "diametre-deduit",
+      "theta-mesure"
+    ]
   }
 }

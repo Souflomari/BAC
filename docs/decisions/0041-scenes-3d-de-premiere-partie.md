@@ -625,6 +625,48 @@ l'énoncé d'un exercice est FIGÉE à l'étape d'énoncé que déclare son
 commentaires d'auteur du SVG. Un bouton « Suivant » dans un énoncé donne la
 réponse avant la tentative.
 
+## Addendum de la nuit du 2026-09-24 — le banc de diffraction : une révélation qui pose un réglage, et une relation qui fuit par son texte
+
+Le dixième manipulable, quatrième PLAN : `banc-de-diffraction`, en tête de R3 de
+`pc/propagation-onde-lumineuse` (HANDOFF §11.204). Sans temps ni course. Deux
+pièces neuves, écrites ici parce qu'elles valent pour les scènes suivantes.
+
+**1. `etat_revele` : la révélation pose le réglage que le pari interrogeait.** Dans
+une scène sans temps, le verdict est immédiat — et jusqu'ici la scène, elle, ne
+bougeait pas : le pari « une fente deux fois plus fine, la tache mesurera… » aurait
+reçu son verdict pendant que la règle montrait encore l'ancienne tache. La clé
+`etat_revele` d'une étape s'applique UNE fois à la révélation (et de nouveau quand on
+revient à une étape déjà révélée) : c'est la scène qui répond, sur la règle, avant le
+texte. `validate-content` la contrôle comme `etat` (mêmes clés, mêmes bornes) et la
+refuse sans pari.
+
+**2. La relation est un ÉTAT qui fuit — la quatrième forme de la fuite**, après
+l'affichage (§6), le réglage ouvert (`fuite-inter-etapes`) et la donnée
+(`miroir-inerte` de la corde). Quand une scène construit une relation à plusieurs
+facteurs (L = 2λD/a : a, puis λ, puis D), **le retour d'une étape ne contient que les
+facteurs que cette étape a fait varier** : écrire la relation entière au retour de S1
+donnerait les paris de S2 et de S3. La porte le lit dans le `textContent` — les
+annotations TeX de KaTeX comprises, parce que c'est la forme que le produit ÉCRIT
+(ADR 0039) — dans les deux sens : absent avant, présent après (`formule-graduee`).
+
+Et deux leçons de construction : un nom posé sur la scène qui ne tient nulle part
+près de son objet va dans la LÉGENDE (la courbe et les noyaux, même nuit) ; et un
+instrument qui lit une tache au pixel se déclare aveugle sous une taille (8 px) plutôt
+que de rendre un verdict sur ce qu'il ne résout pas.
+
+**3. Ce que la vague 2 du banc ajoute à l'appareillage.** Une étiquette SANS FOND ne
+se pose jamais sur de l'encre : les portes vérifiaient les étiquettes entre elles, et
+contre la légende — pas contre le DESSIN sous une étiquette transparente ; « D (cm) »
+recouvrait 28 pixels de « 200 » (mesure neuve de `etiquettes`, rouge sur le build
+d'avant). Une révélation qui CHANGE un réglage le DIT (la région vivante), et un
+curseur ne parle qu'une fois par cran (la valeur qui dépend de lui dans son
+`aria-valuetext`, rien dans la région vivante). La valeur qu'on règle et la valeur
+qu'on lit vont ENSEMBLE sur la scène collante (« L = 2,40 cm » comme « D = 2,00 m ») :
+la liste des lectures défile, la scène non. Une ligne radio COCHÉE porte une surface
+(`.ligne-radio:has(input:checked)`) : le survol ne se lit plus comme la sélection. Et
+« environ 3:1 » écrit à côté d'un trait n'est pas une mesure : 0,6 d'encre douce
+donnait 2,91:1 dans le graphe des noyaux comme dans celui du banc (0,7 : 3,6:1).
+
 ## Retractions and Corrections
 
 - **2026-09-23 — la « deuxième scène » annoncée n'était pas la bonne

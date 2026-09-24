@@ -71,7 +71,11 @@ const PORTE = process.argv.includes("--porte");
 //  Relevé à 15 le même jour, même commit que la scène : pc/decroissance-
 //  radioactive porte la courbe et les noyaux. Elle ne solde, elle non plus,
 //  aucune dette écrite (DÉCISIONS §24) — `dette-manipulable` ne bouge pas.
-const CLIQUET = 15;
+//  Relevé à 16 le même jour, même commit que la scène : pc/propagation-onde-
+//  lumineuse porte le banc de diffraction. Aucune dette écrite non plus : le
+//  trou qu'il ferme est MESURÉ (la seule figure de diffraction du corpus, sans
+//  un nombre, exagérait son angle d'un facteur 54 sans le dire — spec §2.1).
+const CLIQUET = 16;
 
 const RE_EMBED = /\[\[(?:embed|geogebra|desmos|falstad|phet)[:\]]/gi;
 const parMat = new Map();

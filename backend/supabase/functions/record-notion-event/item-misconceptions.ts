@@ -4270,6 +4270,22 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "POL-22": [
       "mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille"
     ],
+    "POL-23": [
+      "mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta",
+      "mc.physics.pc_propagation_onde_lumineuse.figure-ombre-geometrique"
+    ],
+    "POL-24": [
+      "mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille",
+      "mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta",
+      "mc.physics.pc_propagation_onde_lumineuse.figure-ombre-geometrique"
+    ],
+    "POL-25": [
+      "mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta",
+      "mc.physics.pc_propagation_onde_lumineuse.figure-ombre-geometrique"
+    ],
+    "POL-26": [
+      "mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta"
+    ],
     "POL-3": [
       "mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille"
     ],

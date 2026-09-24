@@ -147,11 +147,14 @@ export function creerRenduNoyaux(canvas: HTMLCanvasElement, hote: HTMLElement): 
     //    les majeurs, les majeurs plus légers que la courbe (spec §5.2) ──
     // les fins : à mi-chemin de deux majeurs (4 j, 0,5 unité), jamais sur un majeur
     // (le pas vertical et le pas horizontal ne partagent pas le même k : deux boucles)
-    // Poids (vague 2) : les FORTS à ~3:1 sur la surface — WCAG 1.4.11, un
-    // graphique nécessaire à la lecture ; ce sont eux qu'on compte (« deux gros
-    // carreaux »). La critique du calme voulait le murmure de 1,98:1 ; la norme
-    // l'emporte sur le goût maison (ADR 0039). Les fins restent en dessous, la
-    // courbe (≈16:1) loin au-dessus.
+    // Poids (vague 2) : les FORTS au-dessus de 3:1 sur la surface — WCAG 1.4.11,
+    // un graphique nécessaire à la lecture ; ce sont eux qu'on compte (« deux
+    // gros carreaux »). La critique du calme voulait le murmure de 1,98:1 ; la
+    // norme l'emporte sur le goût maison (ADR 0039). Les fins restent en dessous,
+    // la courbe (≈16:1) loin au-dessus.
+    // L'« environ 3:1 » était 2,91:1 à 0,6 (#55524A sur #FFFFFF, calculé) —
+    // SOUS le plancher qu'il citait ; 0,7 donne 3,6:1 (vague 2 du banc de
+    // diffraction, qui a trouvé le même 0,6 dans son propre graphe).
     c.strokeStyle = css(jetons.encreDouce, 0.3);
     c.lineWidth = 1;
     c.beginPath();
@@ -167,7 +170,7 @@ export function creerRenduNoyaux(canvas: HTMLCanvasElement, hote: HTMLElement): 
     }
     c.stroke();
     // les majeurs : tous les 8 j et tous les 1 unité
-    c.strokeStyle = css(jetons.encreDouce, 0.6);
+    c.strokeStyle = css(jetons.encreDouce, 0.7);
     c.beginPath();
     for (let t = 8; t <= e.fenetre + 1e-9; t += 8) {
       const x = net(X(t));

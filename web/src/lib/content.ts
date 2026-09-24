@@ -217,6 +217,13 @@ export interface Scene3DEtape {
   lectures?: Scene3DLecture[];
   /** l'état posé en entrant dans l'étape (annoncé par la consigne) ; absent = on garde l'état courant */
   etat?: Scene3DEtat;
+  /**
+   * L'état que la RÉVÉLATION pose, une fois : le réglage que le pari
+   * interrogeait (« une fente deux fois plus fine… ») — c'est la scène qui
+   * montre la réponse avant le texte (banc de diffraction). Absent : la
+   * révélation ne change aucun réglage.
+   */
+  etat_revele?: Scene3DEtat;
 }
 
 export interface Scene3DDescriptor {
