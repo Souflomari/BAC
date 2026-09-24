@@ -2400,6 +2400,13 @@ for (const dir of dirs) {
       if (badCaption) {
         console.error(`  ✗ ${dir}: media/${file} has a non-string or empty stage caption`); dirFail++;
       }
+      // « enonce » (2026-09-24) : l'étape que montre l'énoncé d'un exercice.
+      // Le chargeur IGNORE en silence une valeur hors de [1, n − 1] et montre
+      // alors la figure ENTIÈRE — lecture comprise : c'est ici qu'on l'arrête.
+      if (parsed.enonce !== undefined && !(Number.isInteger(parsed.enonce) && parsed.enonce >= 1 && parsed.enonce < stages.length)) {
+        console.error(`  ✗ ${dir}: media/${file} enonce=${JSON.stringify(parsed.enonce)} doit être un entier dans [1, ${stages.length - 1}] (l'étape que montre l'énoncé d'un exercice)`);
+        dirFail++;
+      }
       stgN++;
     }
 

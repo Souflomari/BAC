@@ -435,5 +435,74 @@
       "vitesse-M",
       "mesure-v"
     ]
+  },
+  "courbe-et-noyaux": {
+    "controles": [
+      "instant",
+      "depart",
+      "population",
+      "grandeur",
+      "isotope"
+    ],
+    "etat": [
+      "t_demi_j",
+      "instant_j",
+      "depart_j",
+      "population_n",
+      "grandeur",
+      "support",
+      "fenetre_j"
+    ],
+    "bornes": {
+      "instant_j": [
+        0,
+        10
+      ],
+      "depart_j": [
+        0,
+        24
+      ]
+    },
+    "lectures": [
+      "instant",
+      "noyaux",
+      "activite",
+      "depart",
+      "restants-depart",
+      "duree-de-moitie",
+      "demi-vie",
+      "lambda",
+      "tau",
+      "population",
+      "restants-comptes",
+      "tirages-precedents",
+      "ecart-a-la-loi"
+    ],
+    "temps": false,
+    "course": true,
+    "dimension": "2d",
+    "valeurs": {
+      "t_demi_j": [
+        "8",
+        "4"
+      ],
+      "population_n": [
+        "64",
+        "256",
+        "1024"
+      ],
+      "grandeur": [
+        "noyaux",
+        "activite"
+      ],
+      "support": [
+        "courbe",
+        "grille"
+      ],
+      "fenetre_j": [
+        "10",
+        "32"
+      ]
+    }
   }
 }

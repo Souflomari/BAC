@@ -279,6 +279,14 @@ export interface StagedFigureStageSpec {
 export interface MediaStagesSpec {
   slug: string;
   stages: StagedFigureStageSpec[];
+  /**
+   * L'étape que montre l'ÉNONCÉ d'un exercice qui place cette figure
+   * (`[[figure:slug]]` dans `intro`) : les groupes au-delà n'existent pas dans
+   * le DOM. Une figure dont la dernière étape est la lecture (la construction
+   * de t½) ne doit pas donner, dans l'énoncé, la réponse de la question qui la
+   * suit (2026-09-24, pc/decroissance-radioactive). Absent : la figure entière.
+   */
+  enonce?: number;
 }
 
 /**
@@ -896,7 +904,12 @@ export function loadNotion(id: string): NotionContent | null {
           continue;
         }
         const stageSlug = file.replace(/\.stages\.json$/, "");
-        mediaStages[stageSlug] = { slug: p.slug, stages };
+        const enonce = (parsed as { enonce?: unknown }).enonce;
+        mediaStages[stageSlug] = {
+          slug: p.slug,
+          stages,
+          ...(typeof enonce === "number" && Number.isInteger(enonce) && enonce >= 1 && enonce < stages.length ? { enonce } : {}),
+        };
       } catch (err) {
         console.warn(
           `loadNotion(${id}): media/${file} invalid JSON — skipped (${(err as Error).message})`

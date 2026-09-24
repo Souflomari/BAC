@@ -1,0 +1,296 @@
+{
+  "slug": "courbe-et-noyaux",
+  "tool": "scene2d",
+  "type": "manipulable",
+  "scene": "courbe-et-noyaux",
+  "title_fr": "La courbe et les noyaux",
+  "caption_fr": "Une courbe de décroissance sur le quadrillage du bac, que tu lis toi-même, et une grille de noyaux qui tirent leur désintégration au sort sous tes yeux. À chaque étape, tu paries d'abord.",
+  "etapes": [
+    {
+      "id": "ou-lire-la-demi-vie",
+      "titre": "Où se lit la demi-vie",
+      "consigne": "Un échantillon d'iode 131, préparé à l'instant zéro : $4{,}0\\times10^{14}$ noyaux radioactifs. Un appareil a enregistré pendant dix jours le nombre de noyaux qui n'ont **pas encore** désintégré ; voici sa courbe, sur son quadrillage. En abscisse, le temps en jours : un gros trait tous les huit jours. En ordonnée, le nombre de noyaux : un gros trait tous les $10^{14}$, et le départ est sur le quatrième. On appelle **demi-vie** la durée au bout de laquelle il n'en reste plus que la moitié.",
+      "pari": {
+        "question": "Pour lire cette demi-vie sur la courbe, il faut…",
+        "choix": [
+          {
+            "id": "ordonnee-moitie",
+            "texte": "repérer sur l'axe vertical la moitié du départ, rejoindre la courbe à l'horizontale, puis redescendre sur l'axe des temps",
+            "juste": true,
+            "retour": "Oui — c'est le geste exact que demandent les sujets : « déterminer graphiquement la demi-vie ». Trois mouvements, dans cet ordre. **Un :** l'ordonnée moitié — le départ est sur le **quatrième** gros trait, sa moitié sur le **deuxième**. On part de l'axe **vertical**, pas de la courbe. **Deux :** on rejoint la courbe à l'horizontale. **Trois :** on redescend à la verticale, et on tombe **pile sur un gros trait** : $8{,}0$ jours. La demi-vie est une **abscisse** qu'on obtient en partant d'une **ordonnée**."
+          },
+          {
+            "id": "zero-de-la-courbe",
+            "texte": "chercher l'instant où la courbe touche l'axe des temps — là où l'échantillon a fini de se désintégrer — et en prendre la moitié",
+            "juste": false,
+            "misconception": "mc.physics.decroissance_radioactive.demi-vie-egale-duree-de-vie-totale",
+            "retour": "Promène le curseur jusqu'au bout de l'enregistrement : à dix jours, il reste encore $1{,}68\\times10^{14}$ noyaux, bien au-dessus de l'axe. La courbe ne le touche **nulle part** : chaque jour, ce qui reste est **divisé** par quelque chose, jamais **diminué** d'une quantité fixe — et une division ne donne jamais zéro. Il n'existe pas d'instant « où c'est fini », donc pas de moitié à en prendre."
+          },
+          {
+            "id": "moitie-du-temps",
+            "texte": "prendre la moitié de la durée enregistrée : l'appareil a tourné dix jours, la demi-vie est donc de cinq jours",
+            "juste": false,
+            "misconception": "mc.physics.decroissance_radioactive.demi-vie-egale-duree-de-vie-totale",
+            "retour": "Pose le curseur à cinq jours : $2{,}59\\times10^{14}$ noyaux, alors que la moitié est à $2{,}0\\times10^{14}$ — la courbe est encore au-dessus. Et vérifie le raisonnement lui-même : arrêté à six jours, l'appareil donnerait trois jours ; à vingt jours, dix. La demi-vie changerait avec la durée du branchement — or c'est une propriété de l'iode 131, pas de l'appareil. La moitié dont il s'agit est une moitié de **noyaux**, pas de durée."
+          },
+          {
+            "id": "tangente",
+            "texte": "tracer la tangente à la courbe au départ, et lire où elle coupe l'axe des temps",
+            "juste": false,
+            "misconception": "mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda",
+            "retour": "Cette construction existe, elle est juste, et elle donne **autre chose** : la tangente au départ coupe l'axe à $\\tau = 11{,}5$ jours, la **constante de temps**. La demi-vie vaut $8{,}0$ jours. Deux durées sur la même courbe, et pas la même : $t_{1/2} = \\tau \\ln 2 \\approx 0{,}693\\,\\tau$. Retiens surtout d'où part chacune : la demi-vie part de l'**ordonnée moitié**, $\\tau$ part de la **courbe**."
+          }
+        ]
+      },
+      "suite": "Refais le geste sur le quadrillage, sans le curseur. **Un :** le départ est sur le quatrième gros trait ; descends de deux gros carreaux : $2{,}0\\times10^{14}$, la moitié. **Deux :** suis ce trait vers la droite jusqu'à la courbe. **Trois :** descends tout droit, sur le gros trait marqué $8$. Le croisement est exact : c'est ainsi que les figures d'examen sont dessinées. Puis promène le curseur : à $4{,}0$ jours, il reste $2{,}83\\times10^{14}$ — pas $3{,}0\\times10^{14}$. La courbe n'est pas une droite : une demi-vie ne se lit jamais au jugé.",
+      "controles": [
+        "instant"
+      ],
+      "lectures": [
+        "noyaux",
+        "demi-vie"
+      ],
+      "etat": {
+        "t_demi_j": "8",
+        "support": "courbe",
+        "fenetre_j": "10",
+        "grandeur": "noyaux",
+        "instant_j": 0,
+        "depart_j": 0
+      }
+    },
+    {
+      "id": "et-si-on-part-plus-tard",
+      "titre": "Et si on ne part pas du début",
+      "consigne": "Même échantillon, même courbe — mais l'enregistrement va maintenant jusqu'à trente-deux jours. On se place à $t_1 = 16$ jours : il reste $1{,}0\\times10^{14}$ noyaux, le **quart** du départ — seize jours font deux demi-vies. On oublie tout ce qui précède et on repart de là, comme d'un nouveau départ.",
+      "pari": {
+        "question": "Pour que ces survivants soient à leur tour réduits de moitié — de $1{,}0\\times10^{14}$ à $5{,}0\\times10^{13}$ — il faudra…",
+        "choix": [
+          {
+            "id": "six-jours",
+            "texte": "environ $6$ jours : il part maintenant quatre fois moins de noyaux par jour qu'au départ, et à ce rythme, en perdre $5{,}0\\times10^{13}$ prend environ six jours",
+            "juste": false,
+            "misconception": "mc.physics.decroissance_radioactive.division-lineaire-demi-vies",
+            "retour": "Ton calcul est juste, ton hypothèse ne l'est pas. Le rythme actuel est bien $\\lambda N = 0{,}0866 \\times 1{,}0\\times10^{14} = 8{,}7\\times10^{12}$ noyaux par jour, et $5{,}0\\times10^{13} / 8{,}7\\times10^{12} = 5{,}8$ jours. Mais ce rythme **ne reste pas constant** : il baisse à mesure qu'il reste moins de noyaux. Et ta méthode rend $5{,}8$ jours où que tu poses le départ — elle ignore justement ce qui change. La vraie durée est $8{,}0$ jours."
+          },
+          {
+            "id": "moins-car-uses",
+            "texte": "moins de huit jours : ces noyaux ont seize jours de plus que ceux du départ, ils sont plus près de leur fin",
+            "juste": false,
+            "misconception": "mc.physics.decroissance_radioactive.noyau-vieillit",
+            "retour": "Regarde la largeur du crochet : $8{,}0$ jours, comme celui qu'on aurait posé à l'instant zéro. Déplace le départ — $0$, $7$, $19$ jours : toujours $8{,}0$. Si les noyaux « vieillissaient », cette largeur rétrécirait à mesure qu'on avance ; elle ne bouge pas. Un noyau n'a pas de pièces qui s'usent : il ne sait pas depuis combien de temps il existe, et l'horloge de la demi-vie repart à zéro à chaque instant où tu la regardes."
+          },
+          {
+            "id": "huit-jours",
+            "texte": "exactement $8{,}0$ jours, comme la première fois",
+            "juste": true,
+            "retour": "Oui. Regarde ce qui change et ce qui ne change pas — tout le chapitre en une image. **Ce qui change** : la hauteur du crochet, qui partait de $4{,}0\\times10^{14}$ et part maintenant de $1{,}0\\times10^{14}$. **Ce qui ne change pas** : sa **largeur**, $8{,}0$ jours. La demi-vie n'est pas « le temps que met le début de l'échantillon à partir » : c'est le temps que met **n'importe quelle** population de ces noyaux à être divisée par deux."
+          },
+          {
+            "id": "plus-car-robustes",
+            "texte": "plus de huit jours : les noyaux les plus fragiles sont partis les premiers, il ne reste que les plus solides",
+            "juste": false,
+            "misconception": "mc.physics.decroissance_radioactive.noyau-fraicheur-instable",
+            "retour": "C'est un raisonnement de tri, et il suppose que les noyaux **diffèrent entre eux** : des fragiles, des solides. Ils ne diffèrent pas. Ce sont $1{,}0\\times10^{14}$ noyaux d'iode 131 identiques entre eux, et identiques à ceux du départ : même $\\lambda$, même chance par jour. Rien à trier, donc rien à épuiser — et la largeur du crochet le dit : $8{,}0$ jours, à chacune des vingt-cinq positions."
+          }
+        ]
+      },
+      "suite": "Fais glisser l'instant de départ, de zéro à vingt-quatre jours, et regarde deux choses. La **hauteur** du crochet s'effondre : $4{,}0\\times10^{14}$, puis $2{,}0$, puis $1{,}0$, puis $5{,}0\\times10^{13}$. Sa **largeur** ne bouge jamais : $8{,}0$ jours, vingt-cinq fois sur vingt-cinq — exactement un gros carreau du quadrillage, où qu'on le pose. C'est « sans mémoire » traduit en une durée qu'on mesure : la demi-vie de l'iode 131 est la même au premier jour et trois semaines plus tard.",
+      "controles": [
+        "depart"
+      ],
+      "lectures": [
+        "restants-depart",
+        "duree-de-moitie",
+        "demi-vie"
+      ],
+      "etat": {
+        "t_demi_j": "8",
+        "support": "courbe",
+        "fenetre_j": "32",
+        "grandeur": "noyaux",
+        "instant_j": 0,
+        "depart_j": 16
+      }
+    },
+    {
+      "id": "la-loi-est-une-loi-de-population",
+      "titre": "Soixante-quatre noyaux",
+      "consigne": "On change d'échelle, et **c'est tout ce qui change**. Jusqu'ici l'échantillon comptait $4{,}0\\times10^{14}$ noyaux — bien trop pour les dessiner. En voici soixante-quatre, un par case. La règle est la même pour chacun : à chaque instant, la même chance de se désintégrer, quels que soient son âge et ce qu'ont fait ses voisins. Une case qui se vide est un noyau qui vient de se désintégrer — il reste là, mais ce n'est plus de l'iode 131. La course couvre deux demi-vies, seize jours.",
+      "pari": {
+        "question": "Au bout de $8{,}0$ jours — une demi-vie — il restera…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "exactement-32",
+            "texte": "exactement $32$ cases pleines : la loi dit qu'il en reste la moitié",
+            "juste": false,
+            "misconception": "mc.physics.decroissance_radioactive.loi-population-vs-noyau",
+            "retour": "Compte les cases qui restent : le nombre n'est presque jamais $32$. Relance : tu obtiendras encore autre chose, et jamais les mêmes cases vidées. La loi ne **commande** à aucun noyau — aucun ne « sait » qu'il doit partir pour que le compte tombe juste. Elle dit ce que fait une **foule**, et soixante-quatre, c'est une toute petite foule. Monte à 1024 avec le contrôle qui vient de s'ouvrir : l'écart à la loi devient difficile à voir, sans jamais devenir nul."
+          },
+          {
+            "id": "autour-de-32",
+            "texte": "un nombre **voisin** de $32$, et différent à chaque fois qu'on relance",
+            "juste": true,
+            "retour": "Oui, et c'est le cœur du chapitre : deux affirmations qui semblent s'exclure et qui sont vraies ensemble. **Aucun** noyau n'est prévisible — on ne sait dire ni lequel partira, ni quand — et **la population**, elle, suit une loi assez régulière pour qu'on calcule avec. Le pont entre les deux, c'est le **nombre**. Relance, et lis la ligne des tirages précédents : des nombres différents, tous dans le même voisinage."
+          },
+          {
+            "id": "n-importe-quoi",
+            "texte": "n'importe quel nombre entre $0$ et $64$ : puisque chaque noyau tire au sort, aucun résultat n'est plus attendu qu'un autre",
+            "juste": false,
+            "misconception": "mc.physics.decroissance_radioactive.loi-population-vs-noyau",
+            "retour": "Relance cinq fois et lis la ligne des tirages précédents : cinq nombres, tous dans le même voisinage — tu ne verras ni $5$, ni $60$. Le hasard d'un individu n'interdit pas la régularité d'une foule : il la **produit**. Chacun des soixante-quatre joue sa chance de son côté, et le total retombe toujours près de la moitié. Ce resserrement est d'autant plus net que les noyaux sont nombreux — essaie 1024."
+          }
+        ]
+      },
+      "suite": "Trois observations, aucun calcul. **Une :** relance trois fois à soixante-quatre — trois nombres différents, jamais les mêmes cases, tous voisins de $32$ : le hasard est réel, et il est **encadré**. **Deux :** passe à 256, puis à 1024, en relançant, et surveille l'écart à la loi : à 64 il saute aux yeux, à 1024 il faut le chercher. **Trois :** l'échantillon des deux premières étapes contient des centaines de milliers de milliards de noyaux ; l'écart y est invisible — voilà pourquoi sa courbe était lisse.",
+      "controles": [
+        "population"
+      ],
+      "lectures": [
+        "population",
+        "restants-comptes",
+        "noyaux",
+        "ecart-a-la-loi",
+        "tirages-precedents"
+      ],
+      "etat": {
+        "t_demi_j": "8",
+        "support": "grille",
+        "fenetre_j": "32",
+        "grandeur": "noyaux",
+        "population_n": "64",
+        "instant_j": 0,
+        "depart_j": 0
+      }
+    },
+    {
+      "id": "ce-que-compte-le-detecteur",
+      "titre": "Ce qu'un détecteur compte vraiment",
+      "consigne": "Retour à l'échantillon réel, et une question d'appareil. Un détecteur ne compte pas les noyaux : il compte les **désintégrations**, une par une, et affiche combien il en compte **par seconde** — l'**activité**, notée $A$, en becquerels. Sur cet échantillon, il affiche $A_0 \\approx 4{,}0\\times10^{8}\\ \\text{Bq}$ à l'instant zéro. Un bouton va te laisser changer ce que porte l'axe vertical — le nombre de noyaux ou l'activité ; le quadrillage, lui, ne change pas.",
+      "pari": {
+        "question": "Sur la courbe de l'**activité**, la demi-vie se lira…",
+        "choix": [
+          {
+            "id": "au-meme-endroit",
+            "texte": "au même endroit, $8{,}0$ jours — mais l'axe portera d'autres nombres : $4\\times10^{8}$, $2\\times10^{8}$, $1\\times10^{8}$ becquerels",
+            "juste": true,
+            "retour": "Oui — et c'est pour cela que les sujets donnent presque toujours une courbe d'**activité**. La raison tient en une ligne : $A = \\lambda N$, avec $\\lambda$ **constante**. Multiplier toute une courbe par un nombre fixe ne déplace **aucun** instant : quand $N$ est divisé par deux, $A$ l'est au même moment. Refais la construction sur le nouvel axe : le départ est toujours sur le quatrième gros trait, sa moitié sur le deuxième. Mais note le facteur : $4{,}0\\times10^{14}$ noyaux donnent $4{,}0\\times10^{8}$ becquerels — **un million de fois moins**."
+          },
+          {
+            "id": "pas-lisible",
+            "texte": "nulle part : la demi-vie se définit sur un nombre de **noyaux**, elle n'a pas de sens sur une activité",
+            "juste": false,
+            "misconception": "mc.physics.decroissance_radioactive.confond-activite-nombre-noyaux",
+            "retour": "Bascule l'axe et compare : le tracé a **exactement** la même forme, et la demi-vie s'y lit au même endroit. Elle n'est pas attachée à une grandeur particulière, mais à une **division par deux** : $A$ est proportionnelle à $N$, donc ce qui divise $N$ par deux divise $A$ par deux, au même instant. Ce que ta réponse touche juste, c'est que $A$ et $N$ **ne sont pas la même chose** — mais elles sont proportionnelles, et c'est ce qui sauve la lecture."
+          },
+          {
+            "id": "meme-courbe",
+            "texte": "au même endroit, et avec les **mêmes nombres** : $4{,}0\\times10^{14}$ becquerels au départ, puisque l'activité compte les noyaux",
+            "juste": false,
+            "misconception": "mc.physics.decroissance_radioactive.confond-activite-nombre-noyaux",
+            "retour": "Lis les deux axes l'un après l'autre : $4\\times10^{14}$ noyaux d'un côté, $4\\times10^{8}$ becquerels de l'autre. Un becquerel, c'est **une désintégration par seconde** — pas un noyau. Sur cet échantillon, environ quatre cents millions de noyaux partent chaque seconde, sur quatre cents mille milliards présents : le rapport est $\\lambda = 1{,}00\\times10^{-6}\\ \\text{s}^{-1}$. L'instant de la demi-vie, lui, est bien le même — c'est la seule chose que les deux courbes partagent."
+          }
+        ]
+      },
+      "suite": "Bascule d'une grandeur à l'autre en regardant **l'axe**, pas la courbe : le tracé ne bouge pas, ce sont les nombres qui changent — $10^{14}$ noyaux par gros trait d'un côté, $10^{8}$ becquerels de l'autre. C'est le réflexe qui sauve la question à l'examen : avant de lire un graphe, lis ce qu'il y a sur les **deux** axes. Deux sujets nationaux demandent exactement ce geste sur une courbe d'activité — 2021, le plutonium ; 2022, l'iode 131.",
+      "controles": [
+        "grandeur"
+      ],
+      "lectures": [
+        "noyaux",
+        "activite",
+        "demi-vie",
+        "lambda"
+      ],
+      "etat": {
+        "t_demi_j": "8",
+        "support": "courbe",
+        "fenetre_j": "32",
+        "grandeur": "noyaux",
+        "instant_j": 0,
+        "depart_j": 0
+      }
+    },
+    {
+      "id": "libre",
+      "titre": "Un autre isotope, et tout s'ouvre",
+      "consigne": "Tout s'ouvre, et un second échantillon apparaît : **même** nombre de noyaux au départ, $4{,}0\\times10^{14}$, **même** appareil — mais un autre isotope, dont la constante radioactive $\\lambda$ est **deux fois plus grande** : chacun de ses noyaux a deux fois plus de chances de se désintégrer par jour.",
+      "pari": {
+        "question": "Sa demi-vie sera…",
+        "choix": [
+          {
+            "id": "deux-fois-plus-grande",
+            "texte": "deux fois plus grande, $16$ jours : $\\lambda$ double, donc la demi-vie double",
+            "juste": false,
+            "misconception": "mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda",
+            "retour": "Prends le sens physique avant la formule : $\\lambda$ est une **chance de partir par jour**. Doubler cette chance, c'est vider l'échantillon **plus vite**, donc atteindre la moitié **plus tôt**. Ta réponse dit l'inverse. La formule le confirme, et c'est la place de $\\lambda$ qui décide : $t_{1/2} = \\ln 2 / \\lambda$ — $\\lambda$ est au **dénominateur**. Deux fois plus grande en bas, deux fois plus petit en haut : $4{,}0$ jours."
+          },
+          {
+            "id": "deux-fois-plus-petite",
+            "texte": "deux fois plus petite, $4{,}0$ jours",
+            "juste": true,
+            "retour": "Oui. Mets les trois nombres côte à côte, c'est le récapitulatif du chapitre : $\\lambda = 0{,}173\\ \\text{j}^{-1}$ au lieu de $0{,}0866$ ; $t_{1/2} = 4{,}0$ jours au lieu de $8{,}0$ ; $\\tau = 1/\\lambda = 5{,}77$ jours au lieu de $11{,}5$. Et une remarque qui tombe souvent à l'examen : $1/\\lambda$ et la demi-vie ne sont **pas** la même durée — il y a le facteur $\\ln 2 \\approx 0{,}693$ entre les deux. Une seule relation : $t_{1/2} = \\ln 2/\\lambda = \\tau \\ln 2$."
+          },
+          {
+            "id": "inchangee",
+            "texte": "inchangée, $8{,}0$ jours : $\\lambda$ règle la vitesse de départ, la demi-vie est une autre propriété, indépendante",
+            "juste": false,
+            "misconception": "mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda",
+            "retour": "Elles ne sont pas indépendantes : elles disent la **même** chose deux fois, dans deux unités. $\\lambda$ se mesure en $\\text{j}^{-1}$, $t_{1/2}$ en jours — l'une est l'inverse de l'autre, au facteur $\\ln 2$ près. Bascule d'un échantillon à l'autre : la courbe du second plonge deux fois plus vite, et elle coupe l'ordonnée moitié à $4{,}0$ jours. Un seul nombre caractérise un isotope ; on peut l'écrire en $\\lambda$, en $t_{1/2}$ ou en $\\tau$, jamais indépendamment."
+          }
+        ]
+      },
+      "suite": "Quatre manœuvres. **Une :** choisis l'échantillon rapide et promène le crochet : $4{,}0$ jours à chacune des vingt-cinq positions. **Deux :** bascule sur l'activité : $8{,}0\\times10^{8}$ becquerels au départ, deux fois plus pour le **même** nombre de noyaux — $A_0 = \\lambda N_0$, et c'est $\\lambda$ qui a doublé. **Trois :** passe à la grille, à 1024, sur l'isotope rapide : seize jours font maintenant **quatre** demi-vies, et il reste environ 64 cases. **Quatre :** relance trois fois, et regarde ce petit nombre bouger.",
+      "controles": [
+        "isotope",
+        "instant",
+        "depart",
+        "population",
+        "grandeur"
+      ],
+      "lectures": [
+        "noyaux",
+        "activite",
+        "restants-depart",
+        "duree-de-moitie",
+        "demi-vie",
+        "lambda",
+        "tau",
+        "population",
+        "restants-comptes",
+        "tirages-precedents",
+        "ecart-a-la-loi"
+      ],
+      "etat": {
+        "t_demi_j": "8",
+        "support": "courbe",
+        "fenetre_j": "32",
+        "grandeur": "noyaux",
+        "population_n": "256",
+        "instant_j": 0,
+        "depart_j": 0
+      }
+    }
+  ],
+  "boundary": "Cadre (transformations_nucleaires → decroissance_radioactive, 2ème Bac PC/SM) : la loi de décroissance et sa courbe, exploitées ; la demi-vie, la constante de temps et leurs relations avec $\\lambda$ ; l'activité $A = \\lambda N$ et le becquerel ; le caractère aléatoire de la désintégration d'un noyau et le comportement régulier d'une population. Hors de la scène : toute résolution de l'équation différentielle, toute filiation, toute énergie (défaut de masse, MeV), toute datation (R5, après la scène), toute échelle logarithmique, et toute statistique chiffrée — la fluctuation se montre, elle ne se chiffre jamais.",
+  "boundary_guard_details": "La porte scene-noyaux refuse dans le panneau ouvert, une sonde par FORME (spec §9) : « Euler », « dN/dt », « résoudre l'équation », « filiation », « chaîne de désintégration », « équilibre séculaire », « noyau fils », « défaut de masse », « énergie de liaison », « MeV », « fission », « fusion », « datation », « dater », « datant », « âge de », « carbone 14 », « section efficace », « quark », « ln(N », « semi-log », « logarithmique », « linéarisation », « √ », « \\sqrt », « racine carrée », « écart-type », « écart typ », « σ », « \\sigma », « dispersion », « binomial », « Poisson », « loi normale », « espérance », « variance », « intervalle de confiance », « p = », « 1 - e^ », « e^{-λΔt} », « tirage de Bernoulli », « seed ». Aucun pourcentage de $N/N_0$ n'est affiché.",
+  "fit_caveat": "1. La courbe n'est pas une mesure : c'est la loi tracée, calculée en forme fermée à partir de $N_0 = 4{,}0\\times10^{14}$ et $t_{1/2} = 8{,}0$ jours. Sur un vrai enregistrement, chaque point est obtenu avec un détecteur et porte une incertitude de comptage : les points sont un peu dispersés. Ce que la scène enseigne, c'est la lecture — quelle ordonnée, quel report, quel axe. 2. La grille montre un échantillon impossible : aucun échantillon réel ne contient 64, 256 ou 1024 noyaux. Un microgramme d'iode 131 en contient environ $4{,}6\\times10^{15}$ — c'est pourquoi sa courbe, elle, paraît lisse. La petite population est un choix : à ces effectifs l'écart à la loi se voit, aux effectifs réels il ne se voit plus. 3. Le temps de la grille est accéléré, et c'est écrit : un jour d'échantillon vaut un quart de seconde à l'écran, la course de seize jours dure quatre secondes.",
+  "param_manipulation_guide": "Le curseur de l'instant va de $0$ à $10$ jours par demi-jour (vingt et une positions, toutes distinctes à trois chiffres) ; le départ du crochet, de $0$ à $24$ jours par jour (vingt-cinq positions, $8{,}0$ jours de large à chacune, $4{,}0$ sur le second isotope). Repères exacts de l'iode 131 : $4{,}00\\times10^{14}$ à $0$, $2{,}83\\times10^{14}$ à $4{,}0$ j, $2{,}00\\times10^{14}$ à $8{,}0$ j, $1{,}00\\times10^{14}$ à $16$ j, $5{,}00\\times10^{13}$ à $24$ j. Grille : 64, 256 ou 1024 noyaux ; à une demi-vie, la loi prévoit la moitié, et le compte tombe voisin.",
+  "fallback_note": "Sans JavaScript et à l'impression, le panneau disparaît. La figure decroissance-courbe (R4) montre la loi et ses repères $N_0/2$, $N_0/4$, $N_0/8$ ; la figure graduée courbe-activite-quadrillee accompagne l'exercice de variation, où la demi-vie se détermine graphiquement. Aucune figure ne montre une population qui tire sa désintégration au sort : c'est ce que ce manipulable apporte.",
+  "pedagogy_wiring": {
+    "why_manipulable": "Les médias de la notion donnent tous leur lecture en légende, et le seul média animé éteint exactement la moitié des noyaux à chaque demi-vie — une loi qui tombe juste au noyau près n'est plus une loi statistique. Trois gestes n'existent qu'en manipulation : poser soi-même la construction de $t_{1/2}$ sur un quadrillage de bac, faire glisser le départ pour voir une largeur qui ne bouge pas, et relancer un tirage pour voir le compte changer.",
+    "predict_then_reveal": "Chaque étape pose une question, l'élève parie AVANT que la scène ne réponde (aucune construction, aucune case vidée, aucune lecture-réponse), puis la scène répond ; à l'étape de la grille, le verdict attend la fin de la course.",
+    "misconceptions": [
+      "mc.physics.decroissance_radioactive.demi-vie-egale-duree-de-vie-totale",
+      "mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda",
+      "mc.physics.decroissance_radioactive.division-lineaire-demi-vies",
+      "mc.physics.decroissance_radioactive.noyau-vieillit",
+      "mc.physics.decroissance_radioactive.noyau-fraicheur-instable",
+      "mc.physics.decroissance_radioactive.loi-population-vs-noyau",
+      "mc.physics.decroissance_radioactive.confond-activite-nombre-noyaux"
+    ]
+  },
+  "spec_ref": "content/pc/decroissance-radioactive/spec-scene-noyaux.md",
+  "adr_ref": "docs/decisions/0041-scenes-3d-de-premiere-partie.md"
+}

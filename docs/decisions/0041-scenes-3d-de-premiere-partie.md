@@ -596,6 +596,35 @@ header : FAUX. La correction écrite d'avance a été retirée ; le test mécani
 reste dans la porte ergonomie commune. ADR 0036 : un diagnostic non rejoué est
 une rumeur — y compris celui d'une critique qu'on a soi-même commandée.
 
+### Addendum (soir du 2026-09-24) — la neuvième scène : deux voies de calcul dans une scène
+
+« La courbe et les noyaux » (pc/decroissance-radioactive, R4, §11.202) porte une
+courbe ANALYTIQUE et une grille STOCHASTIQUE. **Une scène peut porter les deux
+voies, à condition que chaque lecture déclare de laquelle elle vient** (« la loi
+prévoit » / « on compte ») **et que la porte applique à chacune son exigence** :
+des nombres refaits par égalité de chaîne pour la loi (règle de la corde), des
+INVARIANTS à bandes larges pour le tirage (règle de la cuve). Corollaires, mesurés :
+
+- **« Deux tirages diffèrent » se mesure sur le MOTIF, jamais sur le compte** :
+  deux courses donnent le même compte ~3 % du temps, et une porte instable est
+  pire qu'une porte absente. Le compte ne sert qu'à l'inverse — cinq tirages de
+  64 tous à exactement 32 (probabilité ~10⁻⁵) trahissent l'horloge.
+- **Ce qu'aucun comptage ne distingue du bruit se garde autrement, et la porte
+  l'écrit** : p = λΔt au lieu de 1 − e^(−λΔt) déplace la survie de 0,24σ sur
+  1 024 noyaux. La probabilité par pas est exposée dans un attribut de mesure
+  (`data-p-pas`, jamais un texte) ; la porte la recalcule, un test unitaire garde
+  le modèle.
+- **La frontière interdit des FORMES** (√, \sqrt, « écart typ », dater, datant…),
+  cherchées en DÉBUT de mot et en Unicode (`\b` ignore « é » : « intégration »
+  était trouvé dans « désintégrations ») ; l'essai rouge injecte chaque forme
+  dans le panneau et exige qu'elle soit vue.
+
+**Et une règle de rendu, née de la figure d'énoncé :** une figure placée dans
+l'énoncé d'un exercice est FIGÉE à l'étape d'énoncé que déclare son
+`.stages.json` ; ce qui suit — la lecture — est absent du DOM, avec les
+commentaires d'auteur du SVG. Un bouton « Suivant » dans un énoncé donne la
+réponse avant la tentative.
+
 ## Retractions and Corrections
 
 - **2026-09-23 — la « deuxième scène » annoncée n'était pas la bonne

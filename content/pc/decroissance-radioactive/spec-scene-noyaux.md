@@ -7,8 +7,8 @@ l'élève lit lui-même (curseur, crochet de demi-vie, bascule $N \leftrightarro
 une **grille de noyaux** dont chacun tire sa désintégration au sort en direct. La
 première est **analytique** (nombres exacts) ; la seconde est **stochastique**
 (invariants seulement).
-**Statut :** spec pédagogique, **à valider par le propriétaire** (§13 : chaque question
-porte sa réponse par défaut, chacune reste réversible).
+**Statut :** LIVRÉE (2026-09-24) ; les réponses par défaut du §13 ont été appliquées,
+chacune reste réversible.
 **Date :** 2026-09-24. **Auteur :** pedagogy-architect.
 
 **Révision du 2026-09-24 (critique de fidélité au bac), six décisions qui changent la
@@ -38,20 +38,33 @@ Marqueur : `[[embed:courbe-et-noyaux]]` · clé de registre : `courbe-et-noyaux`
 sélecteur de porte : `[data-scene="courbe-et-noyaux"]` · porte :
 `web/scripts/scene-noyaux.mjs`.
 
-Rangée ici, hors du dossier de la notion, tant qu'elle n'est pas construite
-(DÉCISIONS §19 : `dette-manipulable` lit toute spec d'un dossier de notion comme une
-PRESCRIPTION faite à l'élève) ; elle y retourne, sous
-`content/pc/decroissance-radioactive/spec-scene-noyaux.md`, dans le commit qui livre la
-scène.
+**Livrée le 2026-09-24 (HANDOFF §11.202).** Rangée d'abord sous
+`docs/pipeline/propositions/` tant qu'elle n'était pas construite (DÉCISIONS §19 :
+`dette-manipulable` lit toute spec d'un dossier de notion comme une PRESCRIPTION faite
+à l'élève), elle a rejoint le dossier de la notion dans le commit qui livre la scène.
+Les quatre chemins qu'elle nommait existent : la porte `web/scripts/scene-noyaux.mjs`,
+le modèle `web/src/lib/scene2d/noyaux-modele.ts` (et son test unitaire
+`web/scripts/test-noyaux.mjs`), le rendu `web/src/lib/scene2d/noyaux-rendu.ts`, le
+panneau `web/src/components/notion/scene/NoyauxPanel.tsx`.
 
-Cette spec est une PROPOSITION : elle nomme ce qu'on créera après sa validation
-(porte `liens-fichiers`, §11.194 — un marqueur par chemin, à effacer le jour où le
-fichier existe) :
-
-CHEMIN À CRÉER: content/pc/decroissance-radioactive/spec-scene-noyaux.md — cette spec, le jour où la scène est livrée
-CHEMIN À CRÉER: web/scripts/scene-noyaux.mjs — la porte de la scène
-CHEMIN À CRÉER: web/src/lib/scene2d/noyaux-modele.ts — la loi et le tirage
-CHEMIN À CRÉER: web/src/lib/scene2d/noyaux-rendu.ts — le quadrillage, la courbe, la grille
+**Ce que la construction a changé à cette spec, écrit ici plutôt que corrigé en douce :**
+- **Les lectures de la courbe sont à TROIS chiffres significatifs, pas deux** (§5.6
+  disait deux ; les retours du §7 citaient déjà $2{,}59$, $1{,}68$, $2{,}83\times10^{14}$).
+  À deux chiffres, 9,0 et 9,5 jours affichent tous deux $1{,}8\times10^{14}$ : le curseur
+  paraîtrait bloqué — le défaut de l'orbite que §5.4 voulait éviter. L'activité suit la
+  même règle ($A_0 = 4{,}01\times10^{8}$ Bq : $\lambda N_0$ avec la vraie $\lambda$) ; la
+  consigne de S4 écrit donc $A_0 \approx 4{,}0\times10^{8}$ Bq. Test unitaire :
+  `test-noyaux`, les 21 positions du curseur distinctes.
+- **À l'étape libre, l'appareil se choisit par une VUE** (« ce que la scène montre :
+  la courbe / la grille »), pas par un contrôle du registre — comme les vues d'une scène
+  3D. Sans elle, la manœuvre « passe à la grille » de la `suite` de S5 n'avait pas de
+  geste.
+- **Les lectures qui doublaient un curseur sont retirées** (`instant`, `depart` : la
+  valeur est écrite à côté du curseur — leçon de la vague 2 de la corde) ; elles restent
+  au registre.
+- **Le §4.4 (une puce au récapitulatif de R6) n'est pas posé** : R6 n'a pas de
+  récapitulatif (« Pour t'entraîner » : deux exercices). L'inventer serait dessiner une
+  structure que la spec n'a pas conçue — renvoyé au propriétaire (DÉCISIONS §24).
 
 ---
 

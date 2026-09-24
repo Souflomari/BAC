@@ -68,7 +68,10 @@ const PORTE = process.argv.includes("--porte");
 //  Relevé à 14 le même jour, même commit que la scène : pc/ondes-mecaniques-
 //  progressives porte la corde (la photo et le film). Elle ne solde aucune
 //  dette écrite : c'est ce cliquet-ci qu'elle fait monter, pas l'autre.
-const CLIQUET = 14;
+//  Relevé à 15 le même jour, même commit que la scène : pc/decroissance-
+//  radioactive porte la courbe et les noyaux. Elle ne solde, elle non plus,
+//  aucune dette écrite (DÉCISIONS §24) — `dette-manipulable` ne bouge pas.
+const CLIQUET = 15;
 
 const RE_EMBED = /\[\[(?:embed|geogebra|desmos|falstad|phet)[:\]]/gi;
 const parMat = new Map();

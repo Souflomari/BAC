@@ -773,6 +773,56 @@ try {
     else console.log(`  ✓ ${pages.length} pages prérendues · ${boutonsTotal} boutons · aucun actif · ${[...parPatron].map(([p, s]) => `${p} ${s.pages}`).join(" · ")}`);
   }
 
+  // ══ (2026-09-24, HANDOFF §11.202) L'ÉNONCÉ D'UN EXERCICE et ses figures.
+  // Un marqueur `[[figure:slug]]` posé dans l'`intro` d'un exercice était
+  // IMPRIMÉ tel quel (l'énoncé ne passait que par MdBlock) ; puis, une fois
+  // reconnu, il ne l'était toujours pas : le chargeur pose une espace fine
+  // devant « : » (frenchTypography) et le marqueur arrivait sous la forme
+  // « [[figure :slug]] » — ce que le produit réécrit avant de l'écrire
+  // (ADR 0039). Deux mesures, sur le HTML PRÉRENDU :
+  //  (a) PORTÉE — aucune page ne sert un marqueur brut, sous aucune de ses
+  //      formes (espace, espace fine, insécable avant le deux-points) ;
+  //  (b) TÉMOIN — la figure de l'énoncé de r-variation
+  //      (pc/decroissance-radioactive) s'arrête à son étape d'ÉNONCÉ : ni
+  //      l'étape de la construction (la réponse de sa q2), ni les commentaires
+  //      de l'auteur (qui la décrivent), ni « 8,0 jours ».
+  // Testé rouge sur le build d'avant la tolérance des espaces (la figure
+  // absente, le marqueur à l'écran).
+  {
+    console.log(`\n[build] SWEEP: énoncés d'exercice — aucun marqueur brut ; la figure d'énoncé s'arrête à son étape`);
+    checks++;
+    const racine = path.join(WEB, ".next", "server", "app", "notions");
+    const pages = [];
+    (function marcher(d) {
+      for (const e of readdirSync(d)) {
+        const f = path.join(d, e);
+        if (statSync(f).isDirectory()) marcher(f);
+        else if (f.endsWith(".html")) pages.push(f);
+      }
+    })(racine);
+    const BRUT = /\[\[\s*(figure|embed|motion|exercise|checkpoint|video|derivation)[\s\u00a0\u202f]*(:|&#x?[0-9a-f]+;)/i;
+    // (hors <script> et hors COMMENTAIRES : quatre figures de leçon citent un
+    // marqueur dans le commentaire d'auteur de leur SVG — servi, jamais affiché ;
+    // premier passage de cette mesure : « 4 pages servent un marqueur brut »)
+    const bruts = pages.filter((f) => BRUT.test(readFileSync(f, "utf8").replace(/<script[\s\S]*?<\/script>/g, "").replace(/<!--[\s\S]*?-->/g, ""))).map((f) => f.slice(racine.length));
+    const temoin = pages.find((f) => f.endsWith(path.join("pc", "decroissance-radioactive.html")));
+    const html = temoin ? readFileSync(temoin, "utf8") : "";
+    const i = html.indexOf('data-figure-enonce="courbe-activite-quadrillee"');
+    const fig = i < 0 ? "" : html.slice(i, html.indexOf("</svg>", i) + 6);
+    const fautes = [];
+    if (pages.length < 60) fautes.push(`${pages.length} pages de notions seulement (≥ 60 attendues)`);
+    if (bruts.length) fautes.push(`${bruts.length} page(s) servent un marqueur brut : ${bruts.slice(0, 3).join(", ")}`);
+    if (!fig) fautes.push("la figure d'énoncé de r-variation est ABSENTE du HTML servi");
+    else {
+      if (!/id="step-2"/.test(fig)) fautes.push("la figure d'énoncé n'a pas sa courbe (step-2)");
+      if (/id="step-3"/.test(fig)) fautes.push("la figure d'énoncé porte l'étape de la CONSTRUCTION (step-3) — la réponse de sa q2");
+      if (/<!--/.test(fig)) fautes.push("la figure d'énoncé porte les commentaires de l'auteur");
+      if (/8,0(\s|&nbsp;|\u202f|\u00a0)*jours/.test(fig)) fautes.push("la figure d'énoncé contient « 8,0 jours »");
+    }
+    if (fautes.length) failures += fail(fautes.join(" ; "));
+    else console.log(`  ✓ ${pages.length} pages de notions, aucun marqueur brut ; la figure d'énoncé de r-variation s'arrête à la courbe (step-1, step-2), sans commentaire ni lecture`);
+  }
+
   // ══ SWEEPS (July-2026 external-audit instruments — class-level, per §13) ══
 
   // (F2) Prose measure: NO running-text paragraph renders wider than 75ch of

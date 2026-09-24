@@ -2855,6 +2855,24 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.decroissance_radioactive.gamma-change-Z-comme-beta",
       "mc.physics.decroissance_radioactive.gamma-change-isotope"
     ],
+    "DECRO-32": [
+      "mc.physics.decroissance_radioactive.lambda-depend-conditions-externes",
+      "mc.physics.decroissance_radioactive.loi-population-vs-noyau"
+    ],
+    "DECRO-33": [
+      "mc.physics.decroissance_radioactive.lambda-depend-conditions-externes",
+      "mc.physics.decroissance_radioactive.loi-population-vs-noyau"
+    ],
+    "DECRO-34": [
+      "mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda",
+      "mc.physics.decroissance_radioactive.demi-vie-egale-duree-de-vie-totale",
+      "mc.physics.decroissance_radioactive.division-lineaire-demi-vies"
+    ],
+    "DECRO-35": [
+      "mc.physics.decroissance_radioactive.confond-activite-nombre-noyaux",
+      "mc.physics.decroissance_radioactive.lambda-depend-conditions-externes",
+      "mc.physics.decroissance_radioactive.loi-population-vs-noyau"
+    ],
     "DECRO-4": [
       "mc.physics.decroissance_radioactive.gamma-change-A-comme-alpha",
       "mc.physics.decroissance_radioactive.gamma-change-Z-comme-beta",

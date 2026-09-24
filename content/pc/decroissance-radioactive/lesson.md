@@ -219,6 +219,10 @@ Après 1000 ans, environ 88,6 % des noyaux de carbone 14 initialement présents 
 
 ## R4 — Activité, demi-vie et constante de temps
 
+Avant de lire ce chapitre, va le chercher. Ci-dessous, deux appareils et un seul échantillon d'iode 131 — le même que celui de l'exercice qui clôt cette leçon : $N_0 = 4{,}0\times10^{14}$ noyaux à l'instant $0$. Le premier appareil est une **courbe graduée** : le nombre de noyaux qui n'ont pas encore désintégré, jour après jour, avec un curseur que tu déplaces et des graduations que tu lis toi-même. Le second est une **grille** : quelques dizaines de noyaux, un par case, chacun tirant sa désintégration au sort sous tes yeux — parce qu'on ne peut pas dessiner $4{,}0\times10^{14}$ cases. Tu paries d'abord, les appareils répondent ensuite.
+
+[[embed:courbe-et-noyaux]]
+
 ### L'activité : ce que mesure vraiment un détecteur
 
 Le compteur Geiger de l'accroche ne compte pas $N(t)$ directement — il compte le nombre de désintégrations *par seconde*. Cette grandeur porte un nom : l'**activité** $A(t)$, définie comme le nombre de désintégrations par unité de temps :
@@ -259,6 +263,8 @@ $$\boxed{t_{1/2} = \frac{\ln 2}{\lambda}}$$
 
 **Une propriété qu'il faut retenir précisément : après $n$ demi-vies, quel que soit l'instant de départ choisi, il reste $N_0/2^n$.** Et ce n'est pas propre à l'instant $t=0$ — c'est une conséquence directe du caractère sans mémoire établi au chapitre précédent : le noyau ne « sait » pas depuis quand il existe, donc la même loi s'applique à partir de *n'importe quel* instant pris comme nouvelle origine. Deux demi-vies après le début, il reste $N_0/4$ — pas $N_0/2$ retiré deux fois de façon linéaire (ce qui donnerait zéro), mais bien une division par 2 répétée : $N_0 \to N_0/2 \to N_0/4$.
 
+Et voici le geste qui le rend visible, celui que tu viens de faire. Prends un crochet dont la pointe gauche se pose sur la courbe et dont la pointe droite se pose là où il ne reste que la moitié de ce que la gauche indiquait. Pose-le à $t = 0$ : il mesure $8{,}0$ jours. Pose-le à $t = 16$ jours, où il ne reste plus qu'un quart de l'échantillon : il mesure encore $8{,}0$ jours. Sa **hauteur** s'effondre à chaque fois qu'on le déplace vers la droite ; sa **largeur** ne bouge jamais. C'est cela, « sans mémoire », traduit en une durée : l'horloge de la demi-vie repart à zéro à chaque instant où tu décides de la regarder, parce qu'aucun noyau ne sait depuis combien de temps il existe.
+
 [[figure:decroissance-courbe]]
 
 ### La constante de temps τ
@@ -269,17 +275,19 @@ $$t_{1/2} = \tau \ln 2 \approx 0{,}693 \, \tau$$
 
 La demi-vie est donc plus courte que la constante de temps ($\ln 2 < 1$). Après une durée $\tau$, il reste $N_0 e^{-1} \approx 37\%$ des noyaux — pas 50 %, ce chiffre-là correspond à $t_{1/2}$, pas à $\tau$. En pratique, on considère qu'un échantillon a quasiment fini de désintégrer après une dizaine de demi-vies (moins de 0,1 % restant).
 
+La construction, en trois gestes, parce qu'un sujet peut la demander : on trace la **tangente à la courbe au point de départ** ; on suit cette droite jusqu'à ce qu'elle coupe l'**axe des temps** ; l'abscisse de ce point est $\tau$. Ne confonds pas les deux lectures : la **demi-vie** se lit à l'**ordonnée moitié** (on part de l'axe vertical), la **constante de temps** se lit **au bout de la tangente** (on part de la courbe). Sur l'iode 131, cela donne $t_{1/2} = 8{,}0$ jours et $\tau = 11{,}5$ jours : deux durées différentes, sur la même courbe, séparées par le facteur $\ln 2 \approx 0{,}693$.
+
 [[figure:tangente-tau]]
 
 [[checkpoint:cp-r4-demi-vie-lambda]]
 
 ### Exemple — l'iode 131
 
-L'iode 131, utilisé en médecine pour traiter certaines maladies de la thyroïde, a une demi-vie $t_{1/2} = 8$ jours.
+L'iode 131, utilisé en médecine pour traiter certaines maladies de la thyroïde, a une demi-vie $t_{1/2} = 8{,}0$ jours.
 
 *Ce qu'on cherche ici : la fraction restante après 24 jours. Choix du geste : 24 jours, c'est un multiple entier de la demi-vie — on peut passer directement par les divisions par 2 successives plutôt que de recalculer $\lambda$ puis $e^{-\lambda t}$, ce qui est plus rapide et vérifie le résultat.*
 
-$$24\ \text{jours} = 3 \times 8\ \text{jours} = 3 \times t_{1/2}$$
+$$24\ \text{jours} = 3 \times 8{,}0\ \text{jours} = 3 \times t_{1/2}$$
 
 Trois demi-vies écoulées, donc :
 

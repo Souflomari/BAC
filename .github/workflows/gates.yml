@@ -172,7 +172,13 @@ jobs:
       # aussi le comportement des DEUX copies de l'algorithme — item-stats et
       # dom-truth en portent chacune une, et celle d'item-stats n'était
       # gardée par rien.
-      - name: Tests unitaires (apprenant · session · typographie · écriture · épreuves · mélange)
+      #
+      # test-noyaux garde ce que la porte au navigateur de « la courbe et les
+      # noyaux » ne peut pas voir : la probabilité par pas du tirage est
+      # 1 − e^(−λΔt) et non λΔt — (1 − p)^32 = 0,5 à 10⁻¹² près. Un biais de
+      # 1 % sur p décale la survie à une demi-vie de 0,24 écart-type sur 1 024
+      # noyaux : aucun comptage ne le verrait.
+      - name: Tests unitaires (apprenant · session · typographie · écriture · épreuves · mélange · noyaux)
         run: |
           npm run test-learner-model
           npm run test-attempt-events
@@ -180,6 +186,7 @@ jobs:
           npm run test-session
           npm run test-examens
           npm run test-melange
+          npm run test-noyaux
 
       # PORTE LIENS (2026-09-05). Ce projet se pilote par ses documents :
       # `.claude/CLAUDE.md` envoie vers la vision, la vision vers les règles,
@@ -1127,6 +1134,30 @@ jobs:
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
           npm run scene-corde
           node scripts/scene-corde.mjs --essai-rouge
+
+      # PORTE « LA COURBE ET LES NOYAUX » (2026-09-24, HANDOFF §11.202, ADR 0041
+      # addendum du soir). Le troisième manipulable PLAN
+      # (pc/decroissance-radioactive, en tête de R4), et le premier à porter
+      # DEUX VOIES DE CALCUL : la COURBE est la loi en forme fermée — la porte
+      # refait ses nombres par égalité de chaîne (N(t) au curseur aux 21
+      # positions, la largeur du crochet aux 25 départs, λ, τ, A) et lit ses
+      # PIXELS (le quadrillage du bac, la courbe convexe qui passe par le
+      # croisement (8 j ; 2), le crochet d'un intervalle majeur où qu'on le pose) ;
+      # la GRILLE est un tirage — la porte n'en vérifie que des INVARIANTS, avec
+      # des bandes à ±5σ (compte à une demi-vie, écart relatif qui décroît avec
+      # la population, motif qui change d'un tirage à l'autre, aucune case qui
+      # se rallume). Ce qu'aucun comptage ne verrait (λΔt au lieu de
+      # 1 − e^(−λΔt) : 0,24σ sur 1 024 noyaux), elle le LIT dans `data-p-pas`.
+      # Et la frontière du §9 est une sonde PAR FORME (√, \sqrt, écart typ,
+      # dater, datant…) : l'essai rouge les injecte une à une.
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — les vingt-six familles
+      # visées doivent crier, et les cinquante-cinq formes être vues.
+      - name: "La courbe et les noyaux (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-noyaux
+          node scripts/scene-noyaux.mjs --essai-rouge
 
       # PORTE « FIGURES MANIPULABLES » (2026-09-24, HANDOFF §11.199). Chaque
       # `.interactive.json` du corpus — l'inventaire est lu dans content/, pas

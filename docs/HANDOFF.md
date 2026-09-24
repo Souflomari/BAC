@@ -15471,6 +15471,8 @@ frontière qui interdisait des mots que les textes n'employaient pas) et trois
 pas de quadrillage de bac) — tous appliqués dans la spec révisée,
 `docs/pipeline/propositions/pc-decroissance-radioactive-scene-noyaux.md`.
 
+CHEMIN DISPARU: docs/pipeline/propositions/pc-decroissance-radioactive-scene-noyaux.md — la spec a rejoint content/pc/decroissance-radioactive/spec-scene-noyaux.md dans le commit qui livre la scène (§11.202)
+
 **VÉRIFIÉ, sur le build final, même banc, rien d'autre en marche :** les huit
 portes de scène VERTES — orbite 52 mesures, sphère 42, produit vectoriel 46,
 révolution 56, manège 98, particule dans le champ 54, cuve 74 (avertissement de
@@ -15480,3 +15482,99 @@ collante à 56 px sur les huit ; essais rouges de la corde 28/28 et de la cuve
 après la mesure de la consigne (qui déplace la mise en page des huit), la corde,
 la cuve et l'orbite relancées : VERTES. En CI, run 763 (sur f26ed6b3, avant la
 consigne) : `scene-champ` VERT, la corde en 1 min 24 s.
+
+## §11.202 — La courbe et les noyaux : deux voies de calcul dans une scène, un marqueur que la typographie réécrivait, et une figure d'énoncé qui donnait sa réponse
+
+**LA SCÈNE.** Le neuvième manipulable de première partie, le troisième PLAN :
+`pc/decroissance-radioactive`, en tête de R4 (`[[embed:courbe-et-noyaux]]`).
+Deux appareils, un seul à l'écran à la fois. La **courbe** est la loi
+N(t) = N₀·2^(−t/t½) en forme fermée, tracée sur le QUADRILLAGE DU BAC (traits
+forts tous les 8 jours et tous les 10¹⁴ noyaux ou 10⁸ Bq, fins à la moitié — la
+géométrie de la figure 3 de 2022 N) : la demi-vie s'y lit par une CONSTRUCTION
+qui finit sur un croisement de traits forts, et un crochet posé à n'importe quel
+départ garde la même largeur, 8,0 jours. La **grille** est un tirage : 64, 256
+ou 1 024 noyaux, chacun joue à chaque pas de 0,25 jour sa chance
+1 − e^(−λΔt), et personne ne décide combien partiront — la réparation du média
+animé de R3, qui éteignait EXACTEMENT la moitié à chaque demi-vie. Cinq étapes à
+pari (où lire t½ ; si l'on part plus tard ; soixante-quatre noyaux ; ce que
+compte le détecteur ; un isotope de λ double). Elle ne solde aucune dette écrite
+(DÉCISIONS §24) : `media-manipulable` 14 → 15, `dette-manipulable` inchangée.
+
+**Et ce qui l'accompagne, parce que le trou qu'elle invoque n'est pas seulement
+un manque de manipulation** : le vingtième modèle `loi-population-vs-noyau`
+(DECRO-32, 33, 35 : plancher atteint), DECRO-34 (lire t½ dans un TABLEAU), la
+figure graduée `courbe-activite-quadrillee` — et l'exercice de variation, dont
+l'énoncé donnait la réponse de sa propre q2 (« on lit que l'activité tombe à sa
+moitié […] à la date t = 8 jours »), réécrit pour décrire le document sans le
+lire. Les quatre retouches de prose de la spec, sauf la quatrième : R6 n'a pas
+de récapitulatif où la poser (renvoyé au propriétaire).
+
+**LA PORTE (`scene-noyaux`) : 108 mesures, 29 familles, deux passages verts ;
+essai rouge 26/26, et les 55 FORMES de la frontière injectées une à une, toutes
+vues.** Deux exigences, une par voie. La loi : les nombres par égalité de chaîne
+(N(t) au curseur aux 21 positions, le crochet aux 25 départs, λ, τ, A, pour les
+deux isotopes) et les pixels (le quadrillage — fins < forts < courbe en
+contraste —, la courbe convexe qui passe à 0,6 px du croisement (8 j ; 2), le
+crochet de 107 à 108 px pour un intervalle fort de 107,5). Le tirage : des
+INVARIANTS à ±5σ (5 tirages × 3 populations), l'écart relatif qui décroît
+(rapport 4,01 puis 4,32, attendu 4), le MOTIF qui change d'un tirage à l'autre,
+aucune case qui se rallume, 0 éclair, la course de 16 jours en 4,01 s à
+l'horloge. Ce qu'aucun comptage ne verrait — λΔt au lieu de 1 − e^(−λΔt), 0,24σ
+sur 1 024 noyaux —, la porte le LIT dans `data-p-pas`, et `test-noyaux` (armé en
+CI avec les tests unitaires) garde le modèle : (1 − p)³² = 0,5 à 10⁻¹².
+
+**LES PREMIERS ROUGES : quatre, dont trois de la porte.** « intégration »
+trouvé dans « désintégrations » (les formes se cherchent en DÉBUT de mot, en
+Unicode : `\b` ignore les lettres accentuées) ; l'axe lu « AAA » (le texte d'une
+étiquette KaTeX porte deux doubles MathML — on lit `innerText`) ; deux colonnes
+de lecture tombées SUR des traits du quadrillage, où la courbe se fond dans le
+trait (la courbe « à 2,45 » à 24 jours) — les instants de lecture s'écartent des
+traits de 2,5 px et la loi est comparée à l'instant réellement lu ; et le crochet
+de l'isotope rapide, dont la pointe droite est traversée par la courbe en accent
+du second échantillon — pointes allongées à ±7 px, lues à ±6 px où la courbe s'en
+est écartée, la gauche sous la cote (l'anneau du départ la recouvre au-dessus).
+Chaque correction est écrite dans la porte, à côté de la mesure.
+
+**UNE FIGURE DANS L'ÉNONCÉ D'UN EXERCICE — deux défauts que rien ne gardait.**
+L'énoncé d'un exercice passait par `MdBlock` seul : un `[[figure:slug]]` y
+aurait été imprimé. Il est maintenant découpé (`lib/figuresEnonce.ts`), la
+figure rendue par `NotionBody`. Premier essai : aucune figure, et le marqueur à
+l'écran — le chargeur passe l'énoncé par `frenchTypography`, qui pose une espace
+fine devant « : », et `[[figure:…]]` arrivait `[[figure :…]]`. **C'est le
+produit qui réécrit la chose avant de l'écrire (ADR 0039) — et la sonde écrite
+pour le vérifier cherchait, elle aussi, la forme d'origine.** Second défaut :
+la figure graduée a trois étapes, la troisième est la construction de t½ —
+la réponse de la q2 — et une figure étagée a un bouton « Suivant ». L'énoncé
+la montre désormais FIGÉE à l'étape que déclare son `.stages.json`
+(`"enonce": 2`, validé par `validate-content`), les étapes suivantes absentes du
+DOM, les commentaires d'auteur du SVG aussi (ils décrivaient la lecture). La
+figure elle-même : le quadrillage passait par `--figure-grid` (#ECEBE9 sur
+blanc, presque invisible — le papier même de la lecture) ; son titre et sa
+description lue annonçaient « t½ = 8,0 jours ». Corrigés. **Gardé** par une
+mesure neuve de `dom-truth` sur le HTML prérendu : aucune page ne sert un
+marqueur brut (espace, espace fine, insécable), et la figure d'énoncé de
+r-variation s'arrête à sa courbe, sans commentaire ni « 8,0 jours » — rouge sur le
+build d'avant, vert sur celui-ci. Au premier passage, elle a trouvé quatre pages
+« avec marqueur brut » : des commentaires d'auteur de SVG de leçon, servis et
+jamais affichés — la mesure ignore les commentaires, et c'est écrit.
+
+**LES ITEMS et le cliquet `indice-absolu`.** Les quatre items neufs n'avaient
+aucun absolu : la part de clés « qui sur-affirment » baissait, l'ÉCART de la
+notion se creusait (−2,8 → −2,5 points). Le remède de la porte, dans son ordre :
+rendre à une clé l'absolu VRAI — DECRO-34 C, « quel que soit le départ »,
+exactement ce que la scène enseigne —, puis, l'indice INVERSE né de ce seul
+absolu, le poser sur le distracteur dont il EST l'erreur (A, « une demi-vie est
+toujours la moitié de la durée mesurée »). Les quatre cliquets de ficelles verts ;
+les artefacts du modèle apprenant régénérés.
+
+**VÉRIFIÉ, sur le build final, rien d'autre en marche :** `scene-noyaux` VERTE
+deux fois (53 s), essai rouge 26/26 + 55/55 ; `dom-truth` 280 contrôles, 0
+échec ; figures manipulables VERTES (110 mesures, le refactor de `StagedFigure`
+compris) ; `verdict-qcm` de la notion VERT ; `etroit-sweep` : 108 pages × 3
+largeurs, 0 débord ; porte figures (clair et sombre) sur la figure neuve ;
+batterie locale verte, sur l'arbre poussé.
+
+**CE QUI N'A PAS ÉTÉ FAIT, et reste à faire :** la campagne de sabotages du
+PRODUIT (spec §11.4, dix-huit défauts) — le prochain geste, dans un arbre à
+part ; la vague 2 (calme, dessin, ergonomie) sur les captures ; la puce de
+récapitulatif de R6 ; la figure du Pu-238 pour `r-bac` q2.1.

@@ -1756,6 +1756,79 @@ exprès) ; un vrai téléphone ; l'impression (panneau `print:hidden`).
     node scripts/scene-corde.mjs --porte        (lève son propre next start)
     node scripts/scene-corde.mjs --essai-rouge
 
+## `web/scripts/scene-noyaux.mjs` — la courbe dit-elle la LOI, et la grille TIRE-t-elle vraiment au sort ?
+
+**PORTE, armée en CI (job `scene-champ`, vert puis rouge), §11.202, ADR 0041
+(addendum du soir du 2026-09-24).** Le troisième manipulable PLAN de première
+partie (pc/decroissance-radioactive, en tête de R4), et le premier à porter DEUX
+VOIES DE CALCUL : une courbe de décroissance en forme fermée sur le quadrillage
+du bac, et une grille de noyaux qui tirent leur désintégration au sort. Le rendu
+RÉEL, Canvas 2D ; la seconde voie écrite depuis la spec (N₀, t½ ∈ {8 ; 4}, ln 2),
+sans un module du produit.
+
+**Ce qu'elle mesure :**
+
+- **la LOI, par égalité de chaîne** (`nombres`) : N(t) au curseur aux 21
+  positions (trois chiffres), la largeur du crochet « 8,0 jours » et sa hauteur
+  N(t₁) aux 25 départs, λ en j⁻¹ et s⁻¹, τ, A₀, pour les deux isotopes ;
+  t½ = τ ln 2 sur les valeurs AFFICHÉES ; aucun pourcentage hors de la grille ;
+  les pas des contrôles et la demi-vie multiples ENTIERS du pas du tirage ; et
+  **la probabilité par pas lue dans `data-p-pas` et recalculée** (N8 : le seul
+  moyen honnête — λΔt au lieu de 1 − e^(−λΔt) est à 0,24σ sur 1 024 noyaux) ;
+- **les PIXELS de la loi** — des traits lus colonne par colonne, sans repère du
+  produit pour la mesure : `quadrillage` (fin à 4 j, fort à 8, cadre à 10 à
+  l'étape 1 ; fins à 4, 12, 20, 28 et forts à 8, 16, 24 à 32 j ; contrastes
+  fins < forts < courbe ; présent AVANT le pari) ; `axes-lineaires` (forts
+  équidistants à 1 px, les deux axes) ; `courbe-juste` (décroissante, convexe
+  sur des triplets de 4 j, à ≤ 2 px de la loi, par le croisement (8 j ; 2) ; la
+  courbe de l'activité et celle des noyaux confondues ; la seconde courbe par
+  (4 j ; 2)) ; `fenetre-s1` (10 jours tracés, curseur borné à 10) ;
+  `lecture-t-demi` (la construction part de l'axe à la hauteur 2 et tombe sur le
+  trait de 8 j, noyaux et activité) ; `crochet-invariant` (25 largeurs aux pixels,
+  à 1 px entre elles et d'un intervalle fort ; un intervalle fin sur l'isotope
+  rapide) ;
+- **les INVARIANTS du tirage** : `grille-comptee` (les cases pleines aux pixels =
+  le compte lu = `data-restants`) ; `tirage-vivant` (le MOTIF change d'un tirage à
+  l'autre ; cinq tirages de 64 pas tous à 32) ; `tirage-juste` (5 tirages × 3
+  populations à ±5σ, et l'isotope rapide à 4 et 16 jours) ; `dispersion-decroit`
+  (20 tirages à 64 et à 1 024 : rapport des écarts relatifs dans [2 ; 8], attendu
+  4) ; `case-ne-se-rallume-pas` (suivi image par image) ; `eclairs` (WCAG 2.3.1) ;
+  `performance` (la course contre l'HORLOGE : plus vite que déclaré est rouge,
+  plus lent un avertissement) ; `sans-mouvement` ;
+- **les paris, les étapes, avant le pari rien ne répond** (`avant-pari` : 0 px
+  d'accent, ni construction, ni crochet, ni case vidée, ni lecture, ni bouton ; la
+  description lue ne dit ni « moitié » ni « 8,0 jours » à l'étape 1, ni « huit »,
+  « même », « inchangé » à l'étape 2) ; `etapes` (l'appareil d'une autre étape
+  n'existe pas) ; `fuite-inter-etapes` ; `un-seul-echantillon` ; `frontiere` — 55
+  FORMES interdites, chacune avec sa sonde ; `latex` ; `etiquettes` et `cadre`
+  (1 280 et 390 px) ; `theme` ; `console` ; la famille `ergonomie`.
+
+**Au 2026-09-24 (soir) : VERTE deux fois, 108 mesures, 29 familles, 53 s ; essai
+rouge : les 26 familles visées crient, et les 55 formes injectées une à une sont
+toutes vues** (`frontiere-sondes`).
+
+**LES PREMIERS PASSAGES ROUGES, tous de la porte** : une forme cherchée sans
+frontière de mot Unicode (« intégration » dans « désintégrations ») ; le texte
+d'une étiquette KaTeX lu avec ses doubles MathML (« AAA ») ; deux colonnes de
+lecture posées SUR des traits du quadrillage (la courbe s'y fond : « 2,45 » à
+24 jours) ; le crochet de l'isotope rapide, dont la pointe droite est traversée
+par la courbe en accent qu'il mesure — et, une fois les pointes lues à ±6 px, la
+pointe gauche cachée sous l'anneau du départ quand le crochet est bas.
+
+**Compagnons :** `web/scripts/test-noyaux.mjs` (tests unitaires, armé en CI) garde
+le modèle — (1 − p)³² = 0,5 à 10⁻¹², la durée de moitié aux 25 départs, les
+21 positions du curseur distinctes à trois chiffres, aucune case rallumée ;
+`dom-truth` garde la figure d'ÉNONCÉ de l'exercice de variation (aucun marqueur
+brut sur aucune page de notion, sous aucune forme typographique ; la figure
+s'arrête à sa courbe, sans commentaire ni lecture).
+
+**NE DIT RIEN DE :** si les étapes enseignent ; un vrai détecteur (bruit de fond,
+temps mort) ; la campagne de sabotages du PRODUIT (spec §11.4), pas encore faite ;
+l'impression (panneau `print:hidden`).
+
+    node scripts/scene-noyaux.mjs --porte        (lève son propre next start)
+    node scripts/scene-noyaux.mjs --essai-rouge
+
 ## `web/scripts/figures-manipulables.mjs` — chaque figure manipulable fait-elle, au rendu, ce que son module dit ?
 
 **PORTE, armée en CI (job `scene-champ`, vert puis rouge), §11.199.** Une figure

@@ -99,6 +99,17 @@ misconceptions:
     description: "L'élève confond l'activité (nombre de désintégrations par seconde, en Bq) avec le nombre N de noyaux encore présents, en oubliant la relation A = λN qui les relie."
     contradicts_principle: "L'activité A = λN est le nombre de désintégrations par unité de temps (Bq = 1 désintégration/s), pas le nombre de noyaux présents. N est en général bien plus grand que A ; passer de l'un à l'autre exige le facteur λ, en unité cohérente avec le becquerel (s^-1)."
 
+  # Ajouté le 2026-09-24, sur la spec pc-decroissance-radioactive-scene-noyaux
+  # §8.2 : vingtième modèle, débusqué par la scène des noyaux (S3), qui ne
+  # recoupe ni noyau-vieillit/noyau-fraicheur-instable (l'âge du noyau) ni
+  # lambda-depend-conditions-externes (son environnement) — aucun des trois
+  # ne dit ce que celui-ci dit : la confusion entre ce que la loi promet à
+  # une POPULATION et ce qu'elle promettrait à un noyau isolé.
+  - id: mc.physics.decroissance_radioactive.loi-population-vs-noyau
+    label: "« La loi de décroissance vaut noyau par noyau » — ou, à l'inverse, « puisque c'est le hasard, aucun nombre n'est prévisible »"
+    description: "L'élève ne distingue pas ce que la loi promet à une POPULATION de ce qu'elle promettrait à un INDIVIDU. Deux formes opposées, un seul modèle. Forme A (déterministe) : à chaque demi-vie il partirait EXACTEMENT la moitié des noyaux, au noyau près, et un échantillon de 64 noyaux en laisserait exactement 32 — l'élève traite N(t) = N0·e^(−λt) comme une horloge. Forme B (nihiliste) : puisque chaque noyau tire au sort, aucun résultat n'est prévisible et n'importe quel nombre est possible — l'élève conclut du hasard individuel à l'absence de loi collective. Ce modèle répond CORRECTEMENT à toute question de divisions successives (N0/2, N0/4, N0/8) : il ne se révèle qu'en faisant varier le NOMBRE de noyaux, ou en demandant ce qu'on peut affirmer d'un noyau unique."
+    contradicts_principle: "La désintégration d'un noyau donné est imprévisible ; la loi N(t) = N0·e^(−λt) ne décrit que le comportement d'une POPULATION, et elle le décrit d'autant mieux que la population est grande. Sur un petit échantillon, le nombre restant après une demi-vie est VOISIN de la moitié sans lui être égal, et il change d'une expérience à l'autre ; sur un échantillon réel (10^14 noyaux et plus), l'écart devient invisible et la loi est utilisable comme une égalité. Le hasard individuel ne détruit donc pas la loi : c'est le grand nombre qui la rend exploitable."
+
 items:
 
   # ══════════════════════════════════════════════════════════════
@@ -1830,12 +1841,266 @@ items:
       ligne : la somme des $Z$ et celle des $A$ doivent se conserver. Ce contrôle
       attrape à lui seul les trois erreurs classiques sur le $\gamma$.
 
+  # Ajoutés le 2026-09-24, sur la spec pc-decroissance-radioactive-scene-noyaux
+  # §8.3–§8.4 : le vingtième modèle (loi-population-vs-noyau, deux items
+  # qualitatifs) et le geste « lire un document » (un item de lecture de
+  # tableau), qui rejoint ce même modèle par co-comptage de cases. Quatre
+  # items, DECRO-32 à DECRO-35.
+  - id: DECRO-32
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: decroissance_radioactive
+    tags: []
+    primary_misconception: mc.physics.decroissance_radioactive.loi-population-vs-noyau
+    stem: >
+      Un échantillon contient exactement 100 noyaux radioactifs d'un isotope
+      de demi-vie $t_{1/2} = 2{,}0$ heures. Deux heures plus tard, on compte
+      les noyaux qui n'ont pas encore désintégré, puis on recommence
+      l'expérience à l'identique avec un second échantillon de 100 noyaux du
+      même isotope. Que peut-on affirmer sur les deux comptages ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Les deux comptages donneront des nombres voisins de 50, mais rien
+          n'oblige qu'ils soient égaux entre eux ni égaux à 50
+        correct: true
+      - id: B
+        text: >-
+          Les deux donneront exactement 50 : c'est ce que dit la loi de
+          décroissance
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.loi-population-vs-noyau
+        feedback: >
+          Aucun noyau ne « sait » qu'il doit partir pour que le compte tombe
+          rond ; la loi décrit ce que fait une population, et sur cent
+          noyaux le compte varie d'une expérience à l'autre.
+      - id: C
+        text: >-
+          Un résultat comme 5 ou 95 est exactement aussi probable qu'un
+          résultat proche de 50, puisque chaque noyau tire son sort
+          indépendamment
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.loi-population-vs-noyau
+        feedback: >
+          Le hasard de chaque noyau produit au contraire la régularité de
+          l'ensemble : les comptages se placent dans le voisinage de 50, et
+          un résultat comme 5 ou 95 ne se rencontre pas.
+      - id: D
+        text: >-
+          Les deux donneront exactement 50 si les deux échantillons sont
+          restés à la même température
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.lambda-depend-conditions-externes
+        feedback: >
+          $\lambda$ ne dépend d'aucune condition extérieure ; ce n'est pas
+          la température qui empêche de trouver 50 tout rond, c'est le
+          petit nombre de noyaux.
+    correct_feedback: >
+      La loi prévoit le comportement d'une population, pas le sort d'un
+      noyau : sur cent noyaux, elle situe le résultat sans le fixer.
+    solution: |
+      La loi prévoit le comportement d'une **population**, pas le sort d'un
+      noyau. Sur cent noyaux, elle situe le résultat autour de 50 sans le
+      fixer ; sur un échantillon réel, qui en compte des milliers de
+      milliards, l'écart devient invisible et on calcule avec la loi comme
+      avec une égalité.
+
+  - id: DECRO-33
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: decroissance_radioactive
+    tags: []
+    primary_misconception: mc.physics.decroissance_radioactive.loi-population-vs-noyau
+    stem: >
+      On prépare deux échantillons du même isotope au même instant : le
+      premier contient une centaine de noyaux, le second des milliers de
+      milliards. Pour chacun, on compare le nombre restant après une
+      demi-vie à ce que prévoit la loi de décroissance. Lequel des deux
+      suivra la prévision de plus près, et pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Les deux la suivront exactement : la forme de la loi ne dépend
+          pas du nombre de noyaux étudiés
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.loi-population-vs-noyau
+        feedback: >
+          La forme de la loi ne dépend pas du nombre, mais la fidélité avec
+          laquelle un échantillon la suit, si : c'est toute la différence
+          entre une loi de population et une horloge.
+      - id: B
+        text: >-
+          Le grand échantillon : la loi décrit une population, et l'écart à
+          la prévision diminue quand elle grandit
+        correct: true
+      - id: C
+        text: >-
+          Le petit échantillon : avec moins de noyaux, il y a moins de
+          sources d'erreur possibles à corriger
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.loi-population-vs-noyau
+        feedback: >
+          Il n'y a pas d'« erreur » ici ; il y a du hasard, et le hasard se
+          compense d'autant mieux que les tirages sont nombreux.
+      - id: D
+        text: >-
+          Celui qui aura été conservé au frais : ici, c'est la température
+          qui décide, pas la taille
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.lambda-depend-conditions-externes
+        feedback: >
+          Rien de ce qui entoure le noyau ne change $\lambda$ ; la seule
+          grandeur qui décide ici est le nombre de noyaux.
+    correct_feedback: >
+      Le grand échantillon suit la prévision de plus près : plus une
+      population est nombreuse, moins le résultat observé s'écarte de ce
+      que prévoit la loi.
+    solution: |
+      La loi de décroissance décrit une population, et elle la décrit
+      d'autant mieux que la population est grande. Sur le petit
+      échantillon, l'écart au calcul se voit dès le premier comptage ; sur
+      le grand, il devient invisible. La forme de la loi ne change pas avec
+      le nombre de noyaux — c'est la fidélité de l'échantillon à cette
+      forme qui change.
+
+  - id: DECRO-34
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: decroissance_radioactive
+    tags: []
+    primary_misconception: mc.physics.decroissance_radioactive.demi-vie-egale-duree-de-vie-totale
+    stem: |
+      Le tableau donne l'activité $A$ d'un échantillon radioactif, mesurée
+      tous les cinq jours. **Déterminer la demi-vie de cet isotope.**
+
+      | $t$ (jour) | 0 | 5 | 10 | 15 | 20 | 25 | 30 |
+      |---|---|---|---|---|---|---|---|
+      | $A$ ($10^{5}$ Bq) | 8,00 | 5,66 | 4,00 | 2,83 | 2,00 | 1,41 | 1,00 |
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          15 jours : une demi-vie est toujours la moitié de la durée mesurée
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.demi-vie-egale-duree-de-vie-totale
+        feedback: >
+          La moitié dont il s'agit est une moitié d'activité, pas de
+          durée ; la réponse changerait si l'on avait mesuré pendant 40
+          jours, ce qui ne peut pas arriver à une propriété de l'isotope.
+      - id: B
+        text: >-
+          20 jours : deux moitiés d'activité sont retirées entre $t=0$ et
+          $t=20$ jours
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.division-lineaire-demi-vies
+        feedback: >
+          Ces deux divisions par deux occupent deux demi-vies, pas une ; la
+          première est achevée à $t = 10$ j, où l'activité vaut déjà 4,00.
+      - id: C
+        text: >-
+          10 jours : quel que soit le départ, l'activité est divisée
+          par deux en 10 jours
+        correct: true
+      - id: D
+        text: >-
+          14 jours : l'inverse de $\lambda$, tiré directement du tableau
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda
+        feedback: >
+          $1/\lambda$ est la constante de temps $\tau$, pas la demi-vie ;
+          il manque le facteur $\ln 2$, et
+          $t_{1/2} = \tau \ln 2 = 14{,}4 \times 0{,}693 = 10$ jours.
+    correct_feedback: >
+      Entre $t=0$ et $t=10$ j, l'activité passe de 8,00 à 4,00 ; entre
+      $t=10$ et $t=20$ j, de 4,00 à 2,00 : la même durée à chaque division
+      par deux, donc $t_{1/2}=10$ jours.
+    solution: |
+      On cherche deux dates où l'activité est dans le rapport 2, et on
+      prend leur écart ; on vérifie sur une autre paire — le geste est le
+      même que sur une courbe, où l'on part de l'ordonnée moitié.
+
+      Vérification arithmétique : $t_{1/2} = 10$ jours, donc
+      $A(t) = 8{,}00 \times 2^{-t/10}$ :
+      $2^{-0{,}5} = 0{,}70711 \Rightarrow 5{,}66$ ;
+      $2^{-1{,}5} = 0{,}35355 \Rightarrow 2{,}83$ ;
+      $2^{-2{,}5} = 0{,}17678 \Rightarrow 1{,}41$ ;
+      $2^{-3} = 0{,}125 \Rightarrow 1{,}00$ ✓.
+      Et $\lambda = \ln 2/10 = 0{,}0693\ \text{j}^{-1}$,
+      $\tau = 1/\lambda = 14{,}4$ j.
+
+  - id: DECRO-35
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: decroissance_radioactive
+    tags: []
+    primary_misconception: mc.physics.decroissance_radioactive.loi-population-vs-noyau
+    stem: >
+      On suit noyau par noyau, sur une grille de 36 cases, un échantillon
+      de 36 noyaux d'un isotope de demi-vie $3{,}0$ heures. Au bout de
+      $3{,}0$ heures, on compte 21 noyaux encore présents. Un élève
+      déclare : « le comptage est faux, il devait en rester 18 ». Que
+      répondre ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          L'élève a raison : $36/2 = 18$, la loi de décroissance impose ce
+          nombre exactement
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.loi-population-vs-noyau
+        feedback: >
+          Aucun noyau ne se désintègre pour faire tomber le compte juste ;
+          sur trente-six noyaux, l'écart à 18 se voit à chaque essai.
+      - id: B
+        text: >-
+          L'élève a raison, sauf si l'échantillon a été chauffé pendant les
+          trois heures
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.lambda-depend-conditions-externes
+        feedback: >
+          La température ne change ni $\lambda$ ni la demi-vie ; ce qui
+          explique l'écart, c'est le petit nombre de noyaux.
+      - id: C
+        text: >-
+          Le comptage est faux pour une autre raison : on compte des
+          désintégrations, pas des noyaux présents
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.confond-activite-nombre-noyaux
+        feedback: >
+          C'est vrai d'un détecteur, qui compte des désintégrations par
+          seconde ; ici on regarde les cases une par une, et 21 est bien un
+          nombre de noyaux restants. Les deux grandeurs sont reliées par
+          $A = \lambda N$.
+      - id: D
+        text: >-
+          Le comptage n'a rien de faux : la loi situe le résultat autour de
+          18 sans l'imposer
+        correct: true
+    correct_feedback: >
+      Sur trente-six noyaux, l'écart à 18 est normal : c'est le grand
+      nombre, pas trente-six, qui rend la loi exploitable comme une
+      égalité.
+    solution: |
+      La loi de décroissance décrit une population ; sur trente-six noyaux
+      le résultat se place autour de 18 sans y être forcé, et c'est le
+      grand nombre qui, sur un échantillon réel, rend la loi utilisable
+      comme une égalité.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
-# RÉÉCRIT le 2026-09-05, après DECRO-27 à DECRO-31. Huit familles sous le
-# plancher : le vocabulaire du noyau (isotopes contre isobares, élément défini
-# par Z et non par la masse, stabilité gouvernée par N/Z et non par la taille
-# ni par Z seul) et les trois façons de prêter au rayonnement gamma un effet
-# qu'il n'a pas. Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
+# RÉÉCRIT le 2026-09-24, après DECRO-32 à DECRO-35 (spec
+# pc-decroissance-radioactive-scene-noyaux §8.2–§8.4) : un vingtième modèle,
+# loi-population-vs-noyau (la loi promet à une POPULATION, pas à un noyau
+# isolé — débusqué par la scène S3), amené au plancher par trois items ; et
+# un premier item de LECTURE DE TABLEAU (DECRO-34), qui referme le trou
+# « application expérimentale 0 % » pour cette notion. NB : le décompte
+# ci-dessous recompte chaque distracteur des quatre items un par un plutôt
+# que de recopier la ligne « Après application » de la spec — celle-ci omet
+# le distracteur D de DECRO-33 (lambda-depend-conditions-externes), présent
+# dans le corps de la spec (§8.3) mais absent de son propre total récapitulatif ;
+# lambda-depend-conditions-externes est donc à 15 ici, pas 14. Tableau GÉNÉRÉ,
+# gardé par web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -1857,24 +2122,25 @@ coverage_summary:
     mc.physics.decroissance_radioactive.gamma-change-isotope:               { count: 3, items: [DECRO-4, DECRO-30, DECRO-31] }
     mc.physics.decroissance_radioactive.noyau-vieillit:                     { count: 8, items: [DECRO-7, DECRO-8, DECRO-9, DECRO-5, DECRO-12, DECRO-17, DECRO-18, DECRO-21] }
     mc.physics.decroissance_radioactive.noyau-fraicheur-instable:           { count: 7, items: [DECRO-7, DECRO-8, DECRO-9, DECRO-5, DECRO-17, DECRO-19, DECRO-20] }
-    mc.physics.decroissance_radioactive.lambda-depend-conditions-externes:  { count: 12, items: [DECRO-7, DECRO-8, DECRO-9, DECRO-5, DECRO-12, DECRO-13, DECRO-23, DECRO-24, DECRO-26, DECRO-17, DECRO-18, DECRO-21] }
-    mc.physics.decroissance_radioactive.division-lineaire-demi-vies:        { count: 7, items: [DECRO-13, DECRO-6, DECRO-14, DECRO-15, DECRO-16, DECRO-19, DECRO-21] }
-    mc.physics.decroissance_radioactive.demi-vie-egale-duree-de-vie-totale: { count: 6, items: [DECRO-6, DECRO-14, DECRO-15, DECRO-16, DECRO-19, DECRO-20] }
+    mc.physics.decroissance_radioactive.lambda-depend-conditions-externes:  { count: 15, items: [DECRO-7, DECRO-8, DECRO-9, DECRO-5, DECRO-12, DECRO-13, DECRO-23, DECRO-24, DECRO-26, DECRO-17, DECRO-18, DECRO-21, DECRO-32, DECRO-33, DECRO-35] }
+    mc.physics.decroissance_radioactive.division-lineaire-demi-vies:        { count: 8, items: [DECRO-13, DECRO-6, DECRO-14, DECRO-15, DECRO-16, DECRO-19, DECRO-21, DECRO-34] }
+    mc.physics.decroissance_radioactive.demi-vie-egale-duree-de-vie-totale: { count: 7, items: [DECRO-6, DECRO-14, DECRO-15, DECRO-16, DECRO-19, DECRO-20, DECRO-34] }
     mc.physics.decroissance_radioactive.oubli-lambda-dans-exponentielle:    { count: 8, items: [DECRO-12, DECRO-13, DECRO-6, DECRO-14, DECRO-15, DECRO-16, DECRO-18, DECRO-20] }
-    mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda:  { count: 4, items: [DECRO-23, DECRO-24, DECRO-25, DECRO-26] }
-    mc.physics.decroissance_radioactive.confond-activite-nombre-noyaux:     { count: 3, items: [DECRO-23, DECRO-25, DECRO-26] }
-  total_items: 31
+    mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda:  { count: 5, items: [DECRO-23, DECRO-24, DECRO-25, DECRO-26, DECRO-34] }
+    mc.physics.decroissance_radioactive.confond-activite-nombre-noyaux:     { count: 4, items: [DECRO-23, DECRO-25, DECRO-26, DECRO-35] }
+    mc.physics.decroissance_radioactive.loi-population-vs-noyau:            { count: 3, items: [DECRO-32, DECRO-33, DECRO-35] }
+  total_items: 35
   floor: 3
   floor_met: true
   ramp_coverage:
     R0: 3
     R1: 6
     R2: 6
-    R3: 3
-    R4: 7
+    R3: 4
+    R4: 10
     R5: 3
     R6: 3
   honest_state: >-
-    Les dix-neuf misconceptions déclarées sont couvertes, aucune sous le
+    Les vingt misconceptions déclarées sont couvertes, aucune sous le
     plancher. Dix y siègent EXACTEMENT (3 items) : la marge est nulle
     et tout retrait d'item la casse.

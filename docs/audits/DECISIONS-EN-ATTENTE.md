@@ -1047,3 +1047,73 @@ Ce n'est pas la liste des défauts du produit : ceux qui étaient objectifs ont
 été corrigés le jour même et ne figurent pas ici. Ce n'est pas non plus un
 ordre de travail — l'ordre appartient au propriétaire. C'est l'inventaire des
 questions qu'un agent **ne doit pas** trancher seul.
+
+## 24. La courbe et les noyaux : douze questions tranchées par défaut, un vingtième modèle ouvert, et les écarts de la construction
+
+**LE FAIT.** Le neuvième manipulable de première partie — le troisième PLAN — est
+livré dans `pc/decroissance-radioactive`, en tête de R4 (§11.202) : une courbe
+de décroissance sur le quadrillage du bac, et une grille de noyaux qui tirent au
+sort. **Il ne solde aucune dette écrite** ; il se justifie par un trou MESURÉ
+(`REVIEW-2026-09-11` : application expérimentale 0 %, aucun item de lecture de
+courbe, deux « déterminer graphiquement t½ » d'annales posés sur une courbe qui
+n'existait pas ; un média animé qui éteignait exactement la moitié). La spec
+(`spec-scene-noyaux.md` §13) laissait douze questions ; même lecture du mandat
+qu'aux §20, §21, §23.
+
+**CE QUI A ÉTÉ TRANCHÉ PAR DÉFAUT :**
+
+1. **La scène écrit A, comme la leçon** — jamais a. Si le propriétaire adopte a
+   (REVIEW fid-F15), la leçon, `checkpoints.yaml`, `exercises.yaml` et la scène
+   changent dans le MÊME commit ; la porte lit le libellé (N2).
+2. **Le vingtième modèle `loi-population-vs-noyau` est OUVERT** (DECRO-32, 33,
+   35 : plancher, marge nulle). **Pour revenir en arrière** : amender la
+   `description` de `division-lineaire-demi-vies`, ré-étiqueter trois items et
+   deux choix du pari S3.
+3. **Le curseur de l'instant est borné à [0 ; 10] jours partout**, S5 comprise :
+   la non-fuite S1 → S2 est structurelle.
+4. **Le dossier `scene3d/` n'est toujours pas renommé.**
+5. **La course MIXTE** (une étape sur cinq) passait déjà `validate-content` :
+   rien à assouplir.
+6. **Le second isotope reste anonyme** (t½ = 4,0 j, λ double) ; aucun nuclide
+   inventé.
+7. **La scène ouvre R4** ; N₀ et la définition de la demi-vie sont donnés dans la
+   consigne de S1.
+8. **Le paragraphe « sans mémoire » de R3 ne bouge pas.**
+9. **La règle des DEUX VOIES est gravée** (addendum de l'ADR 0041, soir du
+   2026-09-24), avec son corollaire : « deux tirages diffèrent » se mesure sur le
+   MOTIF.
+10. **`pc/lois-de-newton` est inscrite comme la candidate suivante**, non
+    construite.
+11. **Les deux réparations de fidélité sont faites** : l'énoncé de la variation
+    ne donne plus la réponse de sa q2 ; la leçon écrit « 8,0 jours ». **`r-bac`
+    q2.1 est laissé tel quel** : son énoncé décrit déjà le quadrillage sans le
+    lire, et une figure du Pu-238 n'existe pas.
+12. **Les cinq étapes sont gardées**, S4 comprise.
+
+**LES ÉCARTS DE LA CONSTRUCTION, et pourquoi :**
+
+1. **Trois chiffres significatifs aux lectures de la courbe**, pas deux (§5.6) :
+   les retours citaient déjà 2,59, 1,68, 2,83 × 10¹⁴, et à deux chiffres 9,0 et
+   9,5 jours affichent la même valeur — le curseur paraîtrait bloqué. D'où
+   A₀ = 4,01 × 10⁸ Bq affiché (λN₀ avec la vraie λ) et « A₀ ≈ 4,0 × 10⁸ Bq » dans
+   la consigne de S4.
+2. **À l'étape libre, l'appareil se choisit par une VUE** (courbe / grille), pas
+   par un contrôle du registre.
+3. **Les lectures `instant` et `depart` sont retirées des étapes** : la valeur est
+   écrite à côté du curseur.
+4. **La puce de récapitulatif de R6 (§4.4) n'est PAS posée** : R6 n'a pas de
+   récapitulatif. **Au propriétaire** : en créer un, ou poser la puce ailleurs.
+5. **DECRO-34 a été réécrit pour le cliquet `indice-absolu`** : la clé porte
+   « quel que soit le départ » (vrai), le distracteur A « toujours la moitié de la
+   durée mesurée » (son erreur même).
+6. **`lambda-depend-conditions-externes` compte 15 items, pas 14** : le résumé de
+   la spec oubliait DECRO-33 D. L'auteur a compté les items, pas la spec.
+7. **Le quadrillage de la figure graduée n'est plus en `--figure-grid`**
+   (presque invisible) mais en encre douce à opacité réduite ; et une figure
+   placée dans l'ÉNONCÉ d'un exercice s'arrête à l'étape que déclare son
+   `.stages.json` (`"enonce"`) — une clé neuve du format, validée.
+
+**CE QUI RESTE AU PROPRIÉTAIRE :** A ou a ; le récapitulatif de R6 ; la figure du
+Pu-238 ; le champ `habilete` (toujours absent de la notion — le mélange 50/15/35
+reste incalculable, §3) ; et, comme au §23, la règle « un manipulable qui ne solde
+aucune dette se justifie par un trou MESURÉ », acceptée par défaut.

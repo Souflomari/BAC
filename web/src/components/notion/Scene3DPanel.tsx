@@ -16,6 +16,7 @@ import { ChampMagnetiquePanel } from "./scene/ChampMagnetiquePanel";
 import { CordePanel } from "./scene/CordePanel";
 import { CuvePanel } from "./scene/CuvePanel";
 import { ManegePanel } from "./scene/ManegePanel";
+import { NoyauxPanel } from "./scene/NoyauxPanel";
 import { OrbiteGeostationnairePanel } from "./scene/OrbiteGeostationnairePanel";
 import { SpherePlanDroitePanel } from "./scene/SpherePlanDroitePanel";
 import { RevolutionPanel } from "./scene/RevolutionPanel";
@@ -35,6 +36,10 @@ const PANNEAUX: Record<string, React.ComponentType<{ scene: Scene3DDescriptor; c
   // Le deuxième : une corde vue de côté, ANALYTIQUE (une translation, aucun
   // solveur) — la photo de la corde et le film d'un point (spec-scene-corde).
   "corde-photo-film": CordePanel,
+  // Le troisième : une courbe de décroissance sur le quadrillage du bac, et une
+  // grille de noyaux qui tirent leur désintégration au sort — DEUX voies de
+  // calcul, la loi et le tirage (spec-scene-noyaux).
+  "courbe-et-noyaux": NoyauxPanel,
 };
 
 export function Scene3DPanel({ scene, className }: { scene: Scene3DDescriptor; className?: string }) {

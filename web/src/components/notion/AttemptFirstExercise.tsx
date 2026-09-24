@@ -25,6 +25,7 @@
  */
 
 import { memo, useState } from "react";
+import type React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import remarkGfm from "remark-gfm";
@@ -39,6 +40,7 @@ import { Icon } from "@/components/ui/Icon";
 import { Derivation } from "./Derivation";
 import { useAttemptRecorder } from "./AttemptEvents";
 import { useHydrated } from "@/lib/useHydrated";
+import { decouperEnonce } from "@/lib/figuresEnonce";
 
 /** Block-level markdown + KaTeX renderer (stems and reasoning are prose).
  *  Exported so the bank card's intro renders identically (BANK-SPEC §3).
@@ -263,7 +265,31 @@ export function AttemptFirstQuestions({
   );
 }
 
-export function AttemptFirstExercise({ exercise }: { exercise: NotionExercise }) {
+/**
+ * L'énoncé et ses figures (`lib/figuresEnonce.ts`) : un marqueur dont la
+ * figure n'est pas fournie disparaît, comme dans la leçon — jamais de
+ * crochets à l'écran.
+ */
+function EnonceAvecFigures({ md, figures }: { md: string; figures: Record<string, React.ReactNode> }) {
+  const morceaux = decouperEnonce(md);
+  return (
+    <>
+      {morceaux.map((x, i) =>
+        "md" in x ? (
+          <MdBlock key={i} className="[&_p]:text-body-lg">
+            {x.md}
+          </MdBlock>
+        ) : (
+          <div key={i} data-figure-enonce={x.slug}>
+            {figures[x.slug] ?? null}
+          </div>
+        )
+      )}
+    </>
+  );
+}
+
+export function AttemptFirstExercise({ exercise, figures = {} }: { exercise: NotionExercise; figures?: Record<string, React.ReactNode> }) {
   return (
     <section
       data-exercise={exercise.id}
@@ -280,7 +306,7 @@ export function AttemptFirstExercise({ exercise }: { exercise: NotionExercise })
 
       {exercise.intro && (
         <div className="mt-4">
-          <MdBlock className="[&_p]:text-body-lg">{exercise.intro}</MdBlock>
+          <EnonceAvecFigures md={exercise.intro} figures={figures} />
         </div>
       )}
 

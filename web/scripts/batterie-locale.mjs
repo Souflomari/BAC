@@ -187,6 +187,12 @@ const HORS_CHAMP = new Set([
   // la photo de la corde, lus aux pixels ; deux passages en CI (job
   // `scene-champ`) ; `node scripts/scene-corde.mjs --essai-rouge`.
   "scene-corde.mjs",
+  // scene-noyaux, même raison : la courbe et les noyaux
+  // (pc/decroissance-radioactive R4), le troisième manipulable PLAN — une
+  // courbe sur le quadrillage du bac ET une grille qui tire au sort, des
+  // dizaines de tirages ; deux passages en CI (job `scene-champ`) ;
+  // `node scripts/scene-noyaux.mjs --essai-rouge`.
+  "scene-noyaux.mjs",
   // figures-manipulables, même raison : build + navigateur, chaque figure
   // manipulable du corpus au rendu, deux passages en CI (job `scene-champ`) ;
   // `node scripts/figures-manipulables.mjs --essai-rouge`.

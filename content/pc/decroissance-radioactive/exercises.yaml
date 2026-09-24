@@ -115,7 +115,11 @@ exercises:
     intro: |-
       Même structure profonde que l'exercice précédent, enrobage différent : ici la désintégration est de type $\beta^-$ (et non $\alpha$), le contexte est médical (et non un pacemaker), et la question finale porte sur l'activité **restante** (et non sur la fraction désintégrée). Le but est que tu ne puisses pas recopier la solution du sujet 2021 — tu dois reconnaître quelle procédure s'applique.
 
-      L'iode 131 $^{131}_{53}\text{I}$ est un isotope radioactif utilisé en médecine pour traiter certaines maladies de la thyroïde. On prépare un échantillon d'iode 131 d'activité initiale $A_0 = 4{,}0\times10^{8}\ \text{Bq}$, et on enregistre l'évolution de son activité $A(t)$ (en Bq) au cours du temps $t$ (en jours). La courbe part de $A_0$ à $t = 0$ et décroît exponentiellement ; on lit que l'activité tombe à sa moitié, $A_0/2 = 2{,}0\times10^{8}\ \text{Bq}$, à la date $t = 8\ \text{jours}$. On prend $1\ \text{jour} = 86\,400\ \text{s}$.
+      L'iode 131 $^{131}_{53}\text{I}$ est un isotope radioactif utilisé en médecine pour traiter certaines maladies de la thyroïde. On prépare un échantillon d'iode 131 d'activité initiale $A_0 = 4{,}0\times10^{8}\ \text{Bq}$, et on enregistre l'évolution de son activité $A(t)$ (en Bq) au cours du temps $t$ (en jours). On prend $1\ \text{jour} = 86\,400\ \text{s}$.
+
+      La courbe ci-dessous est tracée sur un quadrillage : en abscisse, un trait fort tous les **8 jours** ; en ordonnée, un trait fort tous les **$10^{8}$ Bq**, l'activité initiale étant sur le quatrième.
+
+      [[figure:courbe-activite-quadrillee]]
     questions:
       - id: q1
         stem: |-
@@ -135,9 +139,9 @@ exercises:
         stem: |-
           Déterminer la demi-vie $t_{1/2}$ de l'iode 131 à partir de la courbe.
         reasoning: |-
-          Comme au sujet, on n'a pas besoin de calcul : la demi-vie est la durée au bout de laquelle l'activité est divisée par 2. L'énoncé indique que $A$ passe de $A_0$ à $A_0/2 = 2{,}0\times10^{8}\ \text{Bq}$ à la date $t = 8\ \text{jours}$ — cette date **est** la demi-vie.
+          Comme au sujet, on n'a pas besoin de calcul : la demi-vie est la durée au bout de laquelle l'activité tombe à la moitié de sa valeur initiale. On repère l'ordonnée $A_0/2 = 2{,}0\times10^{8}\ \text{Bq}$ (le deuxième trait fort de l'axe), on trace l'horizontale jusqu'à la courbe, puis on redescend par la verticale jusqu'à l'axe des temps.
 
-          $$t_{1/2} = 8\ \text{jours}$$
+          $$t_{1/2} = 8{,}0\ \text{jours}$$
       - id: q3
         stem: |-
           En déduire la constante radioactive $\lambda$ de l'iode 131.

@@ -75,6 +75,8 @@ import { EmbedPanel } from "./EmbedPanel";
 import { Scene3DPanel } from "./Scene3DPanel";
 import { CheckpointItem } from "./CheckpointItem";
 import { AttemptFirstExercise } from "./AttemptFirstExercise";
+import { slugsFiguresEnonce } from "@/lib/figuresEnonce";
+import { assembleSvg, extractStepGroups } from "@/lib/svgEtapes";
 import { Derivation } from "./Derivation";
 import { ChapterQuestions } from "./ChapterQuestions";
 import { ChapterTransport } from "./ChapterShell";
@@ -750,7 +752,26 @@ export function NotionBody({
     if (seg.kind === "exercise") {
       const ex = exercises?.[seg.slug];
       if (!ex) return null;
-      return <AttemptFirstExercise key={key} exercise={ex} />;
+      // les figures que l'énoncé nomme, rendues ICI (c'est ici que sont les
+      // SVG) par le même chemin qu'une figure de la leçon
+      const figures: Record<string, ReactNode> = {};
+      for (const slug of slugsFiguresEnonce(ex.intro)) {
+        const enonce = mediaStages[slug]?.enonce;
+        const svg = svgBySlug[slug];
+        if (enonce !== undefined && svg) {
+          // l'étape de l'ÉNONCÉ, figée : les étapes suivantes (la lecture)
+          // n'existent pas dans le DOM — pas de « Suivant » qui donnerait la
+          // réponse avant la tentative
+          // … et sans les COMMENTAIRES de l'auteur, qui décrivent souvent la
+          // lecture (« t½ = 8,0 jours ») et arrivent dans le DOM avec le SVG
+          const coupee = assembleSvg(extractStepGroups(svg), enonce, null).replace(/<!--[\s\S]*?-->/g, "");
+          figures[slug] = <MediaDiagramFigure key={`${key}-figure-${slug}`} slug={slug} svg={coupee} label={figureAriaLabel(slug, coupee)} />;
+          continue;
+        }
+        const n = renderSegment({ kind: "figure", slug }, `${key}-figure-${slug}`);
+        if (n) figures[slug] = n;
+      }
+      return <AttemptFirstExercise key={key} exercise={ex} figures={figures} />;
     }
 
     // Stepped derivation (Day-6, §7): learner-paced worked math.
