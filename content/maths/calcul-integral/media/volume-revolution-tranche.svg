@@ -75,8 +75,9 @@
       coupes structurelles (u=0,20 / u=0,85)         : --figure-ink-soft
       ouverture du solide en b                       : --figure-ink
         (suggèrent la rondeur — jamais le foyer)
-      tranche isolée, son rayon, l'étiquette x, la
-        boîte formule                                : --figure-accent (le foyer, étape 3)
+      tranche isolée, son rayon, sa graduation en x,
+        la boîte formule                             : --figure-accent (le foyer, étape 3)
+      l'étiquette x (posée DANS le disque teinté)    : --figure-ink (lisibilité, voir step-3)
       axes                                            : --figure-ink-soft (chrome neutre)
 
     Frontière B1 (spec-extension.md §1.4) — respectée par construction :
@@ -190,12 +191,20 @@
 
     <line x1="285" y1="207" x2="285" y2="108" stroke="var(--figure-accent)" stroke-width="2.4"/>
     <circle cx="285" cy="207" r="3" fill="var(--figure-accent)"/>
-    <text x="292" y="100" font-size="14" font-style="italic"
+    <!-- À GAUCHE du rayon et AU-DESSUS de la courbe : à droite, la méridienne
+         de l'étape 1 barrait 61 % de l'étiquette (sonde « barre » de la porte
+         figures). Ici la courbe passe 8 px sous le texte, et le fond est la
+         surface nue — pas la région teintée. -->
+    <text x="279" y="101" text-anchor="end" font-size="14" font-style="italic"
           fill="var(--figure-accent)">f(x)</text>
 
+    <!-- L'étiquette x est À L'ENCRE, pas à l'accent : elle est posée DANS le
+         disque teinté, et l'accent y tombait à 3,90:1 (porte figures, run
+         749 de la CI — SC 1.4.3 demande 4,5:1). Le trait de graduation, lui,
+         reste à l'accent : c'est lui qui dit « la tranche est ici ». -->
     <line x1="285" y1="204" x2="285" y2="210" stroke="var(--figure-accent)" stroke-width="1.2"/>
     <text x="285" y="222" text-anchor="middle" font-size="12" font-style="italic"
-          fill="var(--figure-accent)">x</text>
+          fill="var(--figure-ink)">x</text>
 
     <line x1="465" y1="124" x2="306" y2="137"
           stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,2"/>
