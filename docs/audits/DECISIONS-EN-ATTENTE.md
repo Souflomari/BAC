@@ -750,7 +750,7 @@ un savoir-faire du chapitre).
 
 ---
 
-## 21. La cuve à ondes : huit questions tranchées par défaut, et six écarts à la spec
+## 21. La cuve à ondes : huit questions tranchées par défaut, et huit écarts à la spec
 
 **LE FAIT.** Le septième manipulable de première partie — le premier PLAN —
 est livré dans `pc/ondes-mecaniques-periodiques`, R5 (§11.197) : une cuve à
@@ -799,7 +799,7 @@ selon la recommandation, l'écrire ici, garder chaque choix réversible.
    des nombres ; la porte a le droit de mesurer ce que le produit n'a pas le
    droit d'enseigner.
 
-**SIX ÉCARTS À LA SPEC, et pourquoi :**
+**HUIT ÉCARTS À LA SPEC, et pourquoi :**
 
 1. **Un ralenti ×5 déclaré, pas le temps réel.** À 40 Hz, 40 rides par seconde
    sur un écran de 60 images ne sont qu'un brouillage. Le même facteur pour les
@@ -823,6 +823,18 @@ selon la recommandation, l'écrire ici, garder chaque choix réversible.
    forte de ce côté. À une échelle unique, en racine, l'ombre d'une ouverture
    de 8λ était peinte pleine d'arcs pendant que le retour du pari disait
    « l'eau n'a presque pas bougé ». Écrit dans le `fit_caveat`.
+
+7. **Devant la paroi, un CANAL** (ajouté après la revue des captures) : bords
+   haut et bas rigides, règle d'un bord à l'autre, seule la bande de gauche
+   absorbe. Avec des bandes sur les quatre côtés, l'onde plane de 5 Hz — quatre
+   longueurs d'onde de large — se déformait en taches avant même la paroi. Une
+   vraie cuve fait comme le canal : sa règle touche les deux bords.
+8. **L'image arrêtée est un INSTANT CHOISI** : la course va à 2,0 s, puis au
+   prochain maximum de l'onde stationnaire devant la paroi (au plus une
+   demi-période). Arrêtée pile à 2,0 s, la cuve à 5 Hz tombait sur un zéro de
+   cette onde — 1 % de son énergie — et l'écran montrait le résidu. La légende
+   dit l'instant et pourquoi ; les mesures gardent leur fenêtre, qui finit à
+   2,0 s.
 
 **ET UN ÉCART AUX ITEMS DE LA SPEC :** OMPP-26 prend d'autres nombres que la
 leçon et le pari S2 (a = 2,0 cm, 20 → 5,0 Hz) — un item qui recopie l'exemple

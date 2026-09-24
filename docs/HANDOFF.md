@@ -15110,7 +15110,7 @@ défaut et écarts : DÉCISIONS §21.
    valait 25 · 74 · 94 · **77** % quand λ s'allongeait : une fente plus étroite
    devant λ qui étalait moins. Cause isolée sur le solveur seul : des bandes
    absorbantes de 2 cm, plus minces que λ = 4 cm (une condition de Mur n'y
-   changeait rien). À 4 cm : 25 · 74 · 95 · 93 — saturé, presque plat.
+   changeait rien). À 4 cm, puis avec le canal : 26 · 75 · 93 · 91 — saturé, presque plat.
 
 Et un troisième, de franchise : le produit promettait de dire quand l'appareil
 ralentit, et disait « ×0,52 » en avançant à 6 % — il mesure désormais contre
@@ -15149,6 +15149,18 @@ appliquée : batterie locale ET suite des essais rouges, en local) :
   de la cuve : 30,7 → 29,4 % obtenables à la ficelle.
 
 Batterie locale : tout vert. Essais rouges : les 67 portes crient.
+
+**APRÈS LA POUSSÉE, LA REVUE DES CAPTURES (même nuit) — un troisième défaut du
+produit, qu'aucune porte ne voyait.** Sur l'étape 2, celle qui porte toute la
+scène, l'eau DEVANT la paroi était faite de taches au lieu de rides droites. Mesuré
+avant de corriger : l'image arrêtée à 2,0 s tombait, à 5 Hz, sur un zéro de
+l'onde stationnaire que renvoie la paroi (1 % de l'énergie de la période ;
+85 % de ce qui restait n'était pas plan) ; et les bandes du haut et du bas
+rongeaient les bords de l'onde incidente. Devant la paroi, la cuve est
+maintenant un canal aux bords rigides ; la course s'arrête au prochain maximum
+(2,05 s à 5 Hz, 2,003 s à 40 Hz) et la légende le dit. λ mesurée devant la
+paroi : 2,02 → 2,00 cm. Une campagne de sabotages lancée entre-temps a été
+ARRÊTÉE et retirée proprement : elle aurait jugé un produit périmé.
 
 **Ce qu'il faut retenir pour la suite :** une simulation a DEUX façons de
 mentir que le calcul ne voit pas — la façon de la MONTRER (l'exposition), et

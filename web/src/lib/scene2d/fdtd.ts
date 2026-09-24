@@ -24,7 +24,7 @@
  *    interférait sur l'arc, et le signal à 60° d'une fente de 0,50 cm y valait
  *    77 % à 5 Hz contre 94 % à 10 Hz — une fente PLUS étroite devant λ qui
  *    étalait MOINS, l'inverse du chapitre (vu par la porte, 2026-09-24). Avec
- *    4 cm : 93 et 95 % (sur le solveur seul, de 0° à 60°, 97 à 100 %) — le
+ *    4 cm : 93 et 91 % (sur le solveur seul, de 0° à 60°, 97 à 100 %) — le
  *    profil presque plat que veut une source étroite dans une paroi rigide. Une condition de Mur au
  *    bord extérieur n'y changeait rien : le reflet venait de l'éponge même.
  *  - une boucle intérieure SANS amortissement ni test : les bandes sont
@@ -97,9 +97,19 @@ export function creerChamp(aCellules: number): Champ {
       // la voisine d'eau dans la direction normale à la face
       if (voisins.length) miroirs.push(i, voisins[0]);
     }
+  // Les bandes, et où elles ne sont PAS. Devant la paroi, la cuve est un
+  // CANAL : ses bords haut et bas sont rigides (miroirs, dans `pas`) et la
+  // règle bat sur toute la largeur — l'onde incidente y reste exactement plane,
+  // comme dans une vraie cuve dont la règle touche les deux bords. Seule la
+  // bande de GAUCHE absorbe (l'onde renvoyée par la paroi y meurt). Derrière la
+  // paroi, la cuve imite l'espace ouvert : bandes à droite, en haut, en bas.
+  // Première version : des bandes sur les quatre côtés, partout. À 5 Hz
+  // (λ = 4 cm), elles rongeaient les bords d'une onde plane large de quatre
+  // longueurs d'onde à peine : devant la paroi, des taches au lieu de rides
+  // droites — vu sur les captures de l'étape 2, celle qui compte le plus.
   for (let y = 0; y < NY; y++)
     for (let x = 0; x < NX; x++) {
-      const d = Math.min(x, NX - 1 - x, y, NY - 1 - y);
+      const d = x < IX_PAROI ? x : Math.min(NX - 1 - x, y, NY - 1 - y);
       if (d >= NB) continue;
       // amortissement quadratique, écrit sous forme de trois coefficients
       const s = 0.3 * ((NB - d) / NB) ** 2;
@@ -131,6 +141,12 @@ export function pas(ch: Champ, f: number) {
   const { u0, u1, u2, ca, cb, ck, paroi, miroirs } = ch;
   // les miroirs d'abord : la paroi présente à l'eau la hauteur de l'eau
   for (let k = 0; k < miroirs.length; k += 2) u1[miroirs[k]] = u1[miroirs[k + 1]];
+  // les bords rigides du canal, devant la paroi (pente nulle en haut et en bas)
+  const bas = (NY - 1) * NX;
+  for (let x = 1; x < IX_PAROI; x++) {
+    u1[x] = u1[NX + x];
+    u1[bas + x] = u1[bas - NX + x];
+  }
   // Au-delà du front, tout est encore nul : la frontière avance d'une cellule
   // par pas au plus (le domaine de dépendance du schéma).
   const xMax = Math.min(NX - 1, ch.front + 1);
@@ -152,9 +168,9 @@ export function pas(ch: Champ, f: number) {
   }
   // l'intérieur de la paroi ne porte pas d'onde (ses faces sont des miroirs)
   for (let y = 0; y < NY; y++) for (let x = IX_PAROI; x < IX_PAROI + NP; x++) if (paroi[y * NX + x]) u2[y * NX + x] = 0;
-  // la source DOUCE, sur toute la hauteur utile
+  // la source DOUCE, d'un bord du canal à l'autre
   const s = source(f, ch.n * DT) * K;
-  for (let y = NB; y < NY - NB; y++) u2[y * NX + IX_REGLE] += s;
+  for (let y = 1; y < NY - 1; y++) u2[y * NX + IX_REGLE] += s;
   ch.u0 = u1;
   ch.u1 = u2;
   ch.u2 = u0;

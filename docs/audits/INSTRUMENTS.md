@@ -1539,7 +1539,8 @@ doigt ; l'impression (panneau `print:hidden`).
 (addendum de la nuit du 2026-09-24).** Le premier manipulable PLAN de première
 partie (pc/ondes-mecaniques-periodiques, R5) : une cuve vue de dessus, dont
 l'eau est CALCULÉE dans le navigateur (équation d'onde en différences finies,
-grille de 0,5 mm, bandes absorbantes de 4 cm), au ralenti ×5 déclaré. Le rendu
+grille de 0,5 mm ; devant la paroi un canal aux bords rigides, derrière elle
+des bandes absorbantes de 4 cm), au ralenti ×5 déclaré. Le rendu
 RÉEL, Canvas 2D, des courses de 2,0 s de cuve (10 s d'écran).
 
 **Ce qu'elle mesure :**
@@ -1560,9 +1561,9 @@ RÉEL, Canvas 2D, des courses de 2,0 s de cuve (10 s d'écran).
   (`mesure-pas-echo`) ; la fréquence au flotteur en cinq points des deux côtés,
   à 1 % et mesurée ; le reflet des bords (> 0, < 10 %) ; la symétrie du profil
   sur l'arc (≤ 3 points) ; **I8** — à λ = 0,50 cm, le signal à 60° croît
-  strictement quand l'ouverture passe de 4,0 à 0,50 cm (5 · 13 · 22 · 25 %) ;
+  strictement quand l'ouverture passe de 4,0 à 0,50 cm (4 · 13 · 20 · 26 %) ;
   **I9** — à a = 0,50 cm, il croît quand λ s'allonge, JUSQU'À SATURER
-  (≥ 85 %), avec ≥ 30 points d'un bout à l'autre (25 · 74 · 95 · 93 %) ;
+  (≥ 85 %), avec ≥ 30 points d'un bout à l'autre (26 · 75 · 93 · 91 %) ;
 - **les pixels, dans les deux sens** — `va-tout-droit` : derrière une ouverture
   de 8λ, l'ombre (5 cm hors de l'axe) est agitée à moins de 25 % de l'axe
   (écart moyen de luminance, carré d'au moins une longueur d'onde) ;

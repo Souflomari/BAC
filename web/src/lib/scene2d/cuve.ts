@@ -123,16 +123,45 @@ export class Course {
   get t() {
     return F.temps(this.ch);
   }
+  /**
+   * L'IMAGE ARRÊTÉE. Devant la paroi, l'eau porte une onde STATIONNAIRE (la
+   * paroi renvoie presque tout) : son image passe par zéro deux fois par
+   * période. Arrêtée pile à 2,0 s, la cuve à 5 Hz tombait sur un de ces zéros
+   * — 1 % de l'énergie de la période, et ce qui restait à l'écran était le
+   * résidu, des taches au lieu de rides (captures de l'étape 2, 2026-09-24).
+   * La course va donc jusqu'à 2,0 s, PUIS jusqu'au prochain maximum de
+   * l'énergie devant la paroi (au plus une demi-période : 0,1 s à 5 Hz). Les
+   * MESURES, elles, restent sur leur fenêtre, qui finit à 2,0 s.
+   */
+  private arretee = false;
+  private eAvant = -1;
+  private monte = false;
   get finie() {
-    return this.ch.n >= this.nPas;
+    return this.arretee;
   }
 
-  /** Avance d'au plus `n` pas (jamais au-delà de la fin). */
+  /** L'énergie de l'eau devant la paroi, le long de l'axe (loin de la règle et de la paroi). */
+  private energieAmont() {
+    const u = this.ch.u1;
+    const base = F.IY_CENTRE * F.NX;
+    let e = 0;
+    for (let x = F.IX_REGLE + 20; x < F.IX_PAROI - 4; x++) e += u[base + x] * u[base + x];
+    return e;
+  }
+
+  /** Avance d'au plus `n` pas (jamais au-delà de l'image arrêtée). */
   avancer(n: number) {
     const fin = this.nPas;
-    for (let k = 0; k < n && this.ch.n < fin; k++) {
+    const limite = fin + Math.round(1 / this.f / F.DT);
+    for (let k = 0; k < n && !this.arretee; k++) {
       F.pas(this.ch, this.f);
-      if (this.ch.n > fin - this.fenetre) {
+      if (this.ch.n >= fin) {
+        const e = this.energieAmont();
+        if (this.eAvant >= 0 && e > this.eAvant) this.monte = true;
+        if ((this.monte && e < this.eAvant) || this.ch.n >= limite) this.arretee = true;
+        this.eAvant = e;
+      }
+      if (this.ch.n > fin - this.fenetre && this.ch.n <= fin) {
         const u = this.ch.u1;
         for (let j = 0; j < this.iArc.length; j++) {
           const v = Math.abs(u[this.iArc[j]]);

@@ -432,11 +432,11 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
                 )}
               </p>
               <p className="text-caption text-secondary">
-                {frenchTypography("Cuve idéalisée : ici toutes les fréquences avancent à la même célérité ; dans une vraie cuve, elle dépend un peu de la longueur d’onde — c’est le chapitre 7. Les bords absorbent l’onde, comme les berges inclinées d’une vraie cuve.")}
+                {frenchTypography("Cuve idéalisée : ici toutes les fréquences avancent à la même célérité ; dans une vraie cuve, elle dépend un peu de la longueur d’onde — c’est le chapitre 7. Derrière la paroi, les bords absorbent l’onde, comme les berges inclinées d’une vraie cuve ; devant, ils sont rigides, et la règle va de l’un à l’autre.")}
               </p>
               {finie && (
                 <p className="text-caption text-secondary" data-fin-course>
-                  {frenchTypography(`Image arrêtée à t = ${K.nombre(K.DUREE, 1)} s de cuve ; la règle continuerait à battre, la cuve n’en montre pas la suite.`)}
+                  {frenchTypography(`Image arrêtée à t = ${K.nombre(tCuve, 2)} s de cuve, à l’instant où les rides devant la paroi sont les plus nettes ; la règle continuerait à battre, la cuve n’en montre pas la suite.`)}
                 </p>
               )}
             </div>

@@ -477,7 +477,7 @@ minces que la longueur d'onde de 4 cm, en renvoyaient une partie, qui
 interférait sur l'arc. Isolé par une expérience sur le solveur seul (bandes de
 2, 4, 6 cm ; une condition de Mur au bord n'y changeait rien) ; à 4 cm, une
 fente étroite devant λ rayonne presque à plat, comme le veut la théorie (97 à
-100 % de 0° à 60° sur le solveur seul ; 95 et 93 % à 60° dans le produit).
+100 % de 0° à 60° sur le solveur seul ; 93 et 91 % à 60° dans le produit).
 Corollaire pour la porte : **une mesure RELATIVE sature** (100 % = le maximum
 sur l'arc) ; exiger qu'elle croisse strictement jusqu'au bout ferait rougir
 sur du bruit. La porte exige la croissance jusqu'à saturation (≥ 85 %), et une
@@ -490,6 +490,20 @@ course de 2 s y durait plus de 90 s. Et le produit, qui promet de dire quand
 l'appareil ralentit, disait « ×0,52 » quand il avançait à 6 % — il divisait les
 pas faits par les pas DEMANDÉS, plafonnés par image. Il mesure désormais contre
 l'horloge.
+
+**7. Une image ARRÊTÉE est un instant CHOISI — et ce choix se relit.** Les
+captures de l'étape 2 (la plus importante de la scène) montraient, devant la
+paroi, des taches au lieu de rides droites. Deux causes superposées, trouvées
+en mesurant avant de corriger : des bandes absorbantes en haut et en bas qui
+rongeaient une onde plane large de quatre longueurs d'onde (devant la paroi, la
+cuve est désormais un CANAL aux bords rigides, comme une vraie cuve dont la
+règle touche les deux bords) ; et un arrêt à 2,0 s pile qui tombait, à 5 Hz,
+sur un ZÉRO de l'onde stationnaire que la paroi renvoie — 1 % de son énergie à
+l'écran, le reste était du résidu. La course s'arrête maintenant au prochain
+maximum, et la légende dit l'instant. Au passage, λ mesurée devant la paroi
+passe de 2,02 à 2,00 cm (0,01 % de l'autre côté). Règle : **quand un produit
+montre un instant d'un phénomène périodique, l'instant fait partie de ce qu'il
+affirme** — la porte lisait des mesures justes sur une image qui ne l'était pas.
 
 ## Retractions and Corrections
 
