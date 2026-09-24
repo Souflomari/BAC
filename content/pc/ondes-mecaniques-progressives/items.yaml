@@ -1559,9 +1559,8 @@ items:
           jamais lire l'un pour l'autre.
       - id: B
         text: >-
-          Il a tort : ici l'abscisse est une distance, pas un temps ;
-          $0{,}50\ \text{m}$ n'est pas $0{,}50\ \text{s}$. La durée du
-          geste s'obtient en divisant par la célérité :
+          Il a tort : une largeur en mètres n'est pas une durée.
+          Divisée par la célérité, elle donne
           $0{,}50/5{,}0 = 0{,}10\ \text{s}$.
         correct: true
       - id: C
@@ -1580,8 +1579,8 @@ items:
           durée : $0{,}50/5{,}0 = 0{,}10\ \text{s}$.
       - id: D
         text: >-
-          On ne peut rien conclure sur une durée sans connaître la
-          fréquence de la source, qui n'est pas donnée dans l'énoncé.
+          Il a tort : pour passer d'une largeur à une durée, il faut la
+          période de la source — et l'énoncé ne la donne pas.
         correct: false
         misconception: mc.physics.pc_omp.periodicite-hors-cadre
         feedback: >
@@ -1665,9 +1664,8 @@ items:
           vitesse de propagation.
       - id: D
         text: >-
-          Du côté du front, le plus loin de $S$ : il rejoue ce que $S$ a
-          fait EN PREMIER — la montée rapide. Flanc raide vers l'avant,
-          traîne douce vers $S$.
+          Du côté du front, loin de $S$ : l'avant de la bosse rejoue
+          toujours ce que $S$ a fait en premier, la montée rapide.
         correct: true
     correct_feedback: >
       Même règle qu'une photo isolée : le point le plus avancé vient
@@ -1821,11 +1819,9 @@ items:
           borne totale et une borne partielle.
       - id: B
         text: >-
-          Filmer la corde à un nombre d'images par seconde connu, choisir
-          deux photos numérotées, repérer un même point identifiable de
-          l'ébranlement (son front, par exemple) sur chacune, et diviser
-          son avancée entre les deux photos par le nombre d'intervalles
-          qui les séparent, multiplié par la durée d'un intervalle.
+          Filmer à cadence connue, repérer le front sur deux photos
+          numérotées, et diviser son avancée par la durée qui les sépare :
+          le nombre d'intervalles multiplié par la durée d'un intervalle.
         correct: true
       - id: C
         text: >-

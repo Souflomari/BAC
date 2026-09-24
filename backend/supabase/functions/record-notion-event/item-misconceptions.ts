@@ -4032,6 +4032,29 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.pc_omp.periodicite-hors-cadre",
       "mc.physics.pc_omp.son-nature"
     ],
+    "OMP-22": [
+      "mc.physics.pc_omp.photo-film-confondus",
+      "mc.physics.pc_omp.retard-relation-fausse"
+    ],
+    "OMP-23": [
+      "mc.physics.pc_omp.periodicite-hors-cadre",
+      "mc.physics.pc_omp.photo-film-confondus",
+      "mc.physics.pc_omp.retard-relation-fausse"
+    ],
+    "OMP-24": [
+      "mc.physics.pc_omp.celerite-depend-source",
+      "mc.physics.pc_omp.photo-film-confondus"
+    ],
+    "OMP-25": [
+      "mc.physics.pc_omp.celerite-est-vitesse-point",
+      "mc.physics.pc_omp.onde-transporte-matiere",
+      "mc.physics.pc_omp.retard-relation-fausse"
+    ],
+    "OMP-26": [
+      "mc.physics.pc_omp.celerite-depend-source",
+      "mc.physics.pc_omp.celerite-est-vitesse-point",
+      "mc.physics.pc_omp.retard-relation-fausse"
+    ],
     "OMP-3": [
       "mc.physics.pc_omp.confusion-transversale-longitudinale"
     ],
