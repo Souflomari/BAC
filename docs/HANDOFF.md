@@ -15352,3 +15352,131 @@ figures. Corrigé aux trois (fa425527). Le reste du run 757 était vert — la c
 ses deux mesures neuves, les figures manipulables et leur neuvième figure, les
 QCM, le téléphone —, mais les portes qui suivent la typographie dans le job
 `gates` n'y ont pas tourné : le run 758 est leur première mesure.
+
+## §11.201 — La corde : la photo et le film ; une porte qui lisait la règle au lieu de la photo ; et une critique rejouée avant d'être crue
+
+**LA SCÈNE (76bffc20).** Le huitième manipulable de première partie, le
+deuxième PLAN : `pc/ondes-mecaniques-progressives`, en tête de R3. Une corde de
+4 m vue de côté, ANALYTIQUE — y(x, t) = y_S(t − x/v), une translation, aucun
+solveur —, au ralenti ×5 et à la verticale ×20 déclarés ; ses deux graphiques,
+le FILM d'un point et la PHOTO de la corde, l'un MIROIR de l'autre. Cinq étapes à
+pari. Elle ne solde aucune dette écrite : elle se justifie par un trou MESURÉ
+(DÉCISIONS §23). Contenu : le onzième modèle `photo-film-confondus` (OMP-22 à 24,
+plancher atteint) ; OMP-25 et OMP-26 (l'item de montage) pour
+`celerite-est-vitesse-point` (3 → 5) ; R3 ouvre sur la scène, une sous-section
+« La photo et le film ». `media-manipulable` : cliquet 13 → 14.
+
+**DEUX RUNS ROUGES, UNE MÊME CAUSE : la batterie locale n'avait pas tourné sur
+l'arbre principal.** La scène a été construite et mesurée dans un arbre de
+travail à part (pour que sa campagne de sabotages ne marche sur rien), puis
+reprise dans l'arbre principal et poussée. Run 760 : la porte de la corde VERTE
+sur le runner (vert puis rouge, 1 min 31 s) — mais les essais rouges du job
+`gates` ont trouvé six portes déjà rouges sur l'arbre intact, toutes nées des
+cinq items neufs : la clé visiblement la plus longue (0 → 3 items), un refus de
+plus (2 → 3), l'écart de sur-affirmation creusé, 35,8 % obtenables à la ficelle,
+et les artefacts du modèle apprenant qui ignoraient le onzième modèle
+(a95e19eb). Run 761 : la spec de la NEUVIÈME scène, rangée dans le dossier de sa
+notion, nommait trois fichiers à créer (`liens-fichiers`) et y était lue comme
+une promesse faite à l'élève (`dette-manipulable`) — elle rejoint
+`docs/pipeline/propositions/` (a4eeb763, DÉCISIONS §19). **Règle, déjà écrite et
+oubliée deux fois dans l'heure : la batterie locale tourne sur l'arbre QU'ON
+POUSSE, pas sur celui où l'on a mesuré.**
+
+**LA CAMPAGNE DE SABOTAGES : quinze défauts du produit, un build chacun, dans
+l'arbre à part.** Quatorze pris par leur famille, dix par elle seule (le détail
+est dans INSTRUMENTS). **Un manqué** : les deux photos de la caméra prises au
+même instant — `photos-distinctes` VERTE. Après le verdict, la scène trace en
+accent une règle entre les deux fronts qu'elle CALCULE ; la porte cherchait « la
+colonne levée la plus à droite » du second cliché et trouvait le bout de cette
+règle. La photo était fausse, la règle juste, la porte lisait la règle — le
+troisième cas de l'ADR 0033. Corrigé (la lecture ignore l'encre colorée) ; le
+même sabotage, rejoué dans l'arbre principal : rouge, sur `photos-distinctes` seule.
+
+**LA VAGUE 2 — trois critiques sur les captures, et ce qui en a été fait.**
+
+*Appliqué* : les `suite` raccourcies de moitié (191 → 90 mots à l'étape 1) ; les
+lectures qui doublaient l'écran retirées (la distance est à côté du curseur, les
+instants dans les titres des clichés, le front sur la photo) — la porte lit
+désormais ces nombres LÀ où ils sont écrits ; l'étape 4 ne rejoue plus l'ancien
+geste puis n'efface plus la corde (5,5 s avant le verdict, dont une demi-seconde
+où rien ne bougeait) : la courbe de référence est tracée en tirets dès le
+départ, une seule course ; la pile de notes allégée (le mode d'emploi une fois, à
+l'étape 1, près du transport) ; l'encart à l'échelle vraie à l'étape 1 seulement ;
+la légende du canvas à 12 px comme les étiquettes ; l'échelle des traits
+monotone (référence 1,4 en tirets < y_S 2,0 < y_M 2,4) ; la pente en accent sur
+la photo seulement (à l'étape libre, l'accent désignait quatre objets) ; la
+main arrondie ; les titres des clichés alignés sur le bord de 4 m. **Deux
+bloquants du dessin, vrais sur les captures** : à l'étape 4, la rampe de 6 cm
+montait SOUS la légende opaque du plateau (la main, S et le palier cachés) ; à
+390 px, le film n'avait que 46 px et « y_S » partait se poser sur la corde. Les
+bandes du canvas se CALCULENT désormais depuis la plus haute élongation de
+l'étape, sous une réserve pour la légende ; au téléphone le plateau de la corde
+passe en 4:3 (format `paysage-haut`) ; les étiquettes évitent la légende et
+l'anneau de M (`disposer` accepte des obstacles). Et l'ergonomie : « Image
+finale » se DÉMONTAIT sous le focus à la fin de la course qu'il abrégeait (focus
+à `<body>`) — même défaut dans la cuve ; il reste monté, et au repos il donne
+l'image finale sans la jouer ; « Repos » inerte au repos (`aria-disabled`) ; la
+valeur d'un curseur n'est plus annoncée deux fois ; la ligne d'un bouton radio
+porte l'anneau du focus (`.ligne-radio`, les huit scènes) ; le `<summary>` d'un
+encadré a sa marge de défilement (`MARGE_FOCUS`, les huit scènes).
+
+*Mesuré, et la porte l'a appris* : `cadre` (aucun pixel d'encre sous la
+légende, mesuré AVEC le geste de 6 cm — la mesure de l'étape 4 se faisait après
+la boucle des gestes, sur la rampe lente) ; chaque étiquette à moins de 36 px de
+ce qu'elle nomme ; aucune sous la légende. Essai rouge 28/28 ; deux sabotages
+neufs, la rampe sous la légende (`cadre` seule, trois mesures) et « y_S » loin de sa courbe
+(`etiquettes` seule, cinq mesures).
+
+*Rejoué, et FAUX* : l'ergonomie affirmait la scène collante INERTE au téléphone
+sur les huit scènes (« un élément de grille ne voyage que dans sa case »), et la
+porte ergonomie verte par vacuité. La correction (une colonne flex) était écrite
+quand la sonde l'a démentie : sur l'ancien panneau, la grille remontée 120 px
+au-dessus de l'écran, la scène reste à 56 px, sous le header — cuve, corde,
+manège. Correction retirée ; la grille est gardée, nommée une fois
+(`GRILLE_SCENE`, `data-scene-grille`). Ce qui était VRAI dans l'affirmation : la
+marge au téléphone pouvait passer par vacuité (aucune commande reconnue dans la
+colonne) — elle l'exige maintenant ; et le test mécanique de la scène collante
+reste dans la porte commune, pour qu'une mise en page ne la décolle pas en
+silence. **Un diagnostic non rejoué est une rumeur (ADR 0036), y compris celui
+d'une critique qu'on a soi-même commandée.**
+
+*Refusé, avec sa raison* : les traits de graduation collés à l'axe (demandés par
+le dessin) — essayés, ils ont fait rougir la porte sans rien casser : la lecture
+de la corde échantillonne aux abscisses mêmes des traits ; la mesure l'emporte
+(ADR 0038). `y_M` en accent après la révélation est GARDÉ (le dessin le voulait
+à l'encre à l'étape 1) : c'est la réponse au pari, et la porte identifie la
+courbe de M par cette couleur. Laissés au propriétaire, parce qu'ils touchent
+l'appareillage des huit scènes : le verdict dit deux fois ; le retour et la
+suite dans une colonne d'environ 40 caractères sur grand écran ; les lectures en
+`text-body-sm`.
+
+*Mesuré, puis corrigé — la mesure de la consigne.* L'ergonomie affirmait la
+consigne à 80–85 caractères par ligne. Mesuré sur le rendu, ligne par ligne :
+jusqu'à 87 (la prose de la leçon, à côté : médiane 66–72, plafond 78). La cause
+n'était pas celle que le commentaire du code croyait (« la mesure se résout dans
+la police du paragraphe, en serif ») : la consigne est en GEIST, dont le zéro —
+l'unité `ch` — fait 11,3 px à 17 px. 58ch ont été essayés : encore 86. `max-w-lead`
+(52ch, 586 px) : 62 à 74 caractères, la mesure de la prose. Les huit scènes
+partagent `ConsigneEtape`. **Une mesure se juge en caractères LUS, pas en `ch`**
+(ADR 0038, une fois de plus : la déclaration était là, l'effet non).
+
+**LA NEUVIÈME SCÈNE, choisie et spécifiée, pas construite.** L'architecte a
+classé les notions sans manipulable sur un trou MESURÉ : `pc/decroissance-
+radioactive` (six annales dédiées ; des « déterminer graphiquement t½ » posés
+sur une courbe sans graduation ; un média animé qui éteint EXACTEMENT la moitié
+des noyaux à chaque demi-vie). La critique de fidélité a trouvé deux bloquants
+(des statistiques chiffrées, √N, écart-type, Poisson, hors des savoir-faire ; une
+frontière qui interdisait des mots que les textes n'employaient pas) et trois
+écarts importants (la notation A de la leçon ; aucun item de lecture de courbe ;
+pas de quadrillage de bac) — tous appliqués dans la spec révisée,
+`docs/pipeline/propositions/pc-decroissance-radioactive-scene-noyaux.md`.
+
+**VÉRIFIÉ, sur le build final, même banc, rien d'autre en marche :** les huit
+portes de scène VERTES — orbite 52 mesures, sphère 42, produit vectoriel 46,
+révolution 56, manège 98, particule dans le champ 54, cuve 74 (avertissement de
+performance honnête, inchangé), corde 108 ; le test mécanique de la scène
+collante à 56 px sur les huit ; essais rouges de la corde 28/28 et de la cuve
+19/19 ; figures manipulables VERTES (110 mesures) ; batterie locale verte. Puis,
+après la mesure de la consigne (qui déplace la mise en page des huit), la corde,
+la cuve et l'orbite relancées : VERTES. En CI, run 763 (sur f26ed6b3, avant la
+consigne) : `scene-champ` VERT, la corde en 1 min 24 s.

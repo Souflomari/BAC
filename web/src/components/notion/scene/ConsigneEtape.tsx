@@ -62,8 +62,13 @@ export function ConsigneEtape({
       {/* La mesure se pose SUR le paragraphe : `ch` se résout dans la police de
           l'élément, et le conteneur est en sans-serif — posée sur lui, la
           mesure laissait passer 77 à 85 caractères de serif par ligne (revue
-          visuelle de la cuve, vague 2 ; le cas de l'ADR 0038). */}
-      <p id={idConsigne} data-consigne className="mt-2 min-w-0 max-w-reading break-words font-display text-body-lg text-primary">
+          visuelle de la cuve, vague 2 ; le cas de l'ADR 0038). Et `lead`
+          (52ch), pas `reading` (65ch) : mesuré sur le rendu (vague 2 de la
+          corde), la consigne est en Geist, dont le zéro — l'unité `ch` — est
+          large (11,3 px à 17 px) ; 65ch y laissaient des lignes de 87
+          caractères, 58ch encore 86, là où la prose de la leçon, en serif,
+          plafonne à 78. La mesure se juge en caractères LUS, pas en `ch`. */}
+      <p id={idConsigne} data-consigne className="mt-2 min-w-0 max-w-lead break-words font-display text-body-lg text-primary">
         <MathText>{consigne}</MathText>
       </p>
     </div>

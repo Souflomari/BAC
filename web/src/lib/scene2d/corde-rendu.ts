@@ -138,7 +138,9 @@ export function creerRenduCorde(canvas: HTMLCanvasElement, hote: HTMLElement): R
     const encart = e.encart ? { x0, x1, y0: corde.y1 + 12, y1: corde.y1 + 28 } : undefined;
     // au-dessus de l'appareil : son titre (« y (cm) », ou celui du geste)
     const haut = (encart ? encart.y1 : corde.y1) + 20;
-    const appareil = { x0, x1: e.vue === "photo" ? x0 + (x1 - x0) * 0.5 : x1, y0: haut, y1: hauteur - 4 };
+    // le petit graphe du geste : 62 % de la largeur (à 50 %, un vide sans
+    // appui en bas à droite, surtout au téléphone — vague 2, dessin)
+    const appareil = { x0, x1: e.vue === "photo" ? x0 + (x1 - x0) * 0.62 : x1, y0: haut, y1: hauteur - 4 };
     return { corde, encart, appareil };
   }
 

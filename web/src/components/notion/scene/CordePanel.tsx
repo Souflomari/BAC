@@ -204,7 +204,7 @@ export function CordePanel({ scene, className }: { scene: Scene3DDescriptor; cla
     // « x (m) » sous la règle graduée : celle de la corde, ou, en vue « photos »,
     // celle de la seconde photo (la corde du haut n'y porte pas de nombres)
     const regleX = etat.vue === "photos" ? p["cliche-b-x4"] : p["corde-x4"];
-    poser(refs.axeX.current, regleX ? (etat.vue === "photos" ? { x: regleX.x - 34, y: regleX.y + 16, visible: !etroit } : { x: regleX.x - 14, y: regleX.y + 22, visible: !etroit }) : cache);
+    poser(refs.axeX.current, regleX ? (etat.vue === "photos" ? { x: regleX.x - 34, y: regleX.y + 16, visible: !etroit } : { x: regleX.x - 26, y: regleX.y + 22, visible: !etroit }) : cache);
     poser(refs.geste.current, en("geste-titre"), "-100%");
     poser(refs.photoA.current, en("cliche-a-titre"), "0%", "-100%");
     poser(refs.photoB.current, en("cliche-b-titre"), "0%", "-100%");
