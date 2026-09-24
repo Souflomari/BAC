@@ -14829,6 +14829,11 @@ courbes ? la notion est-elle SExp, SM, ou les deux — ce qui décide si le suje
 2023 SM entre tel quel au sommet ? l'aparté Riemann pour SM ?) sont au
 propriétaire : `spec-extension.md` §10, DÉCISIONS §18.
 
+**EN LIGNE.** Déploiement lu sur `bac-pink.vercel.app` (`data-build-sha` =
+`e2b2ea2`), la scène ouverte par un vrai Chromium à 390 px (×2) et à 1 280 px,
+CA du relais épinglé comme `deploye-sweep` (§11.137) : état « prete », et après
+le pari, balayée à 270°, « 6π ≈ 18,85 » — les trois quarts de 8π.
+
 **LE RUN 748 A RÉPONDU À §11.192.** Vert, les deux jobs : `gates` 51 min
 34 s, `scenes` 34 min 12 s — dont 18 min 12 s pour les deux passages du champ
 magnétique, ce que la mesure locale annonçait (~9 min chacun). La cinquième
