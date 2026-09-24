@@ -1533,6 +1533,84 @@ doigt ; l'impression (panneau `print:hidden`).
     node scripts/scene-manege.mjs --porte        (lève son propre next start)
     node scripts/scene-manege.mjs --essai-rouge
 
+## `web/scripts/scene-cuve.mjs` — la cuve à ondes dit-elle VRAI ?
+
+**PORTE, armée en CI (job `scene-champ`, vert puis rouge), §11.197, ADR 0041
+(addendum de la nuit du 2026-09-24).** Le premier manipulable PLAN de première
+partie (pc/ondes-mecaniques-periodiques, R5) : une cuve vue de dessus, dont
+l'eau est CALCULÉE dans le navigateur (équation d'onde en différences finies,
+grille de 0,5 mm, bandes absorbantes de 4 cm), au ralenti ×5 déclaré. Le rendu
+RÉEL, Canvas 2D, des courses de 2,0 s de cuve (10 s d'écran).
+
+**Ce qu'elle mesure :**
+
+- **rien avant le clic, et PAS DE 3D même ouvert** — panneau fermé sans
+  canvas ; panneau ouvert, `window.__THREE__` indéfini et un canvas en contexte
+  2d (la lecture des jetons a dû quitter `scene3d/palette.ts`, qui importait
+  three) ;
+- **les nombres de l'énoncé par égalité de chaîne**, depuis les seules
+  constantes de la spec (c = 20 cm/s) : λ = c/f aux quatre crans, la
+  comparaison « a = 8λ », « a = λ/4 », « a = λ »… ; la **grille exacte** —
+  les 15 positions de l'ouverture et les 4 longueurs d'onde en nombre ENTIER de
+  cellules de 0,5 mm ; les deux segments de l'énoncé (crochet de a, règle de
+  λ) dans le rapport a/λ, en pixels, à 2 % ;
+- **les INVARIANTS du champ** (une simulation ne se recalcule pas par un second
+  solveur, spec §11.1) : λ mesurée sur l'eau devant et derrière la paroi,
+  écart < 2 %, juste à 3 %, et **jamais égale au bit près à c/f**
+  (`mesure-pas-echo`) ; la fréquence au flotteur en cinq points des deux côtés,
+  à 1 % et mesurée ; le reflet des bords (> 0, < 10 %) ; la symétrie du profil
+  sur l'arc (≤ 3 points) ; **I8** — à λ = 0,50 cm, le signal à 60° croît
+  strictement quand l'ouverture passe de 4,0 à 0,50 cm (5 · 13 · 22 · 25 %) ;
+  **I9** — à a = 0,50 cm, il croît quand λ s'allonge, JUSQU'À SATURER
+  (≥ 85 %), avec ≥ 30 points d'un bout à l'autre (25 · 74 · 95 · 93 %) ;
+- **les pixels, dans les deux sens** — `va-tout-droit` : derrière une ouverture
+  de 8λ, l'ombre (5 cm hors de l'axe) est agitée à moins de 25 % de l'axe
+  (écart moyen de luminance, carré d'au moins une longueur d'onde) ;
+  `zone-d-ombre` : derrière une ouverture de λ/4, à plus de 40 % ;
+  `une-seule-ouverture` : sur l'eau plate, la colonne de la paroi porte
+  exactement deux morceaux de mur, séparés de a × (px/cm) à 2 px ;
+  `profil-construit` : le profil se trace sous le balayage (0 point au début,
+  13 à la fin) ;
+- **les paris, les étapes, avant le pari rien ne répond** (eau PLATE — 0 pixel
+  agité au-dessus de l'axe —, ni accent, ni lecture, ni bouton de course) ; le
+  verdict attend la course entière, référence à 40 Hz comprise (étape 2) et
+  balayage compris (étape 4) ; `fuite-inter-etapes` (la fréquence répond au
+  pari de l'étape 2, le récepteur à celui de l'étape 4, fente + fréquence
+  ensemble à celui de l'étape 5) ; **la frontière** (ni θ = λ/a, ni largeur
+  angulaire, ni Huygens, ni interférences, ni équation d'onde… ; dans ce que la
+  scène CALCULE, aucun angle que le récepteur ne lit pas) ; aucun LaTeX brut ;
+  les étiquettes ni chevauchées ni hors du cadre ; fond clair ET sombre ;
+  aucune erreur console ; la famille `ergonomie`.
+
+**Au 2026-09-24 (nuit) : VERTE, 68 mesures, 20 familles** (banc calme) ;
+**essai rouge : les 17 familles visées crient** (le premier essai en trouvait
+16 : `avant-clic` ne retournait pas son attente — corrigé), avec un AVERTISSEMENT honnête : sur ce conteneur, le calcul suit
+le ralenti à 0,8–0,9 — la porte le dit, le produit aussi (« ralenti ×5 (×6 sur
+cet appareil) »).
+
+**TROIS PASSAGES ROUGES AVANT LE VERT — deux fois le PRODUIT, une fois la
+porte :**
+
+1. *Le produit.* `va-tout-droit` : l'ombre d'une ouverture de 8λ peinte
+   pleine d'arcs (exposition unique en racine ; le champ était juste). Et
+   `nombres` I9 : 25 · 74 · 94 · 77 % — une fente plus étroite devant λ qui
+   étalait MOINS, par le reflet de bandes absorbantes trop minces.
+2. *La porte.* La course ne finissait pas : la page mesurée était un onglet
+   d'arrière-plan (une image par seconde) — `bringToFront`. Le flotteur compté
+   comme de l'eau agitée ; les « 0° » et « 60° » de la CONSIGNE comptés comme
+   des angles calculés ; un coin de capture hors du plateau arrondi lu comme le
+   fond du thème.
+
+**NE DIT RIEN DE :** si les étapes enseignent ; l'ÉNERGIE (l'image est à
+l'échelle de chaque côté, exprès) ; la monotonie GLOBALE en a/λ (deux réglages
+de même rapport ne donnent pas le même profil dans une cuve finie — la scène ne
+le prétend pas) ; un vrai téléphone (la vitesse du calcul y est lue, pas
+jugée) ; l'impression (panneau `print:hidden` ; la figure statique juste
+dessous est le chemin imprimé).
+
+    node scripts/scene-cuve.mjs --porte        (lève son propre next start)
+    node scripts/scene-cuve.mjs --essai-rouge
+
 ## `web/scripts/glyphes-confondus.mjs` — une police ne dessine pas une lettre comme une autre
 
 **PORTE, armée en CI (job `gates`, vert puis rouge), 2026-09-24.** Née d'une

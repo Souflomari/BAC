@@ -1076,6 +1076,30 @@ jobs:
           npm run scene-lorentz
           node scripts/scene-lorentz.mjs --essai-rouge
 
+      # PORTE « LA CUVE À ONDES » (2026-09-24, HANDOFF §11.197, ADR 0041 addendum).
+      # Le premier manipulable PLAN (pc/ondes-mecaniques-periodiques, R5) : un
+      # champ d'onde CALCULÉ dans le navigateur (différences finies, grille de
+      # 0,5 mm), vu de dessus, qui solde une substitution de la dette de
+      # manipulation. Une simulation ne se recalcule pas par un second solveur :
+      # la seconde voie établit des INVARIANTS — λ = c/f et a/λ par égalité de
+      # chaîne ; a et λ en cellules entières ; λ MESURÉE sur l'eau, la même
+      # devant et derrière la paroi, juste à 3 % et jamais égale au bit près à
+      # c/f (une mesure, pas un écho) ; la fréquence au flotteur des deux côtés ;
+      # à λ fixée, le signal à 60° croît quand l'ouverture se referme ; à
+      # ouverture fixée, il croît quand λ s'allonge. Les PIXELS dans les deux
+      # sens : l'ombre d'une ouverture de 8λ reste calme, celle d'une ouverture
+      # de λ/4 s'agite ; une seule ouverture, de la largeur annoncée. Et pas un
+      # octet de three.js, panneau ouvert. Dans ce job, pas dans `scenes` : ses
+      # courses sont calculées, et c'est ici que le mur a de la marge.
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — dont une célérité fausse
+      # dans la seconde voie : les dix-sept familles visées doivent crier.
+      - name: "Cuve à ondes (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-cuve
+          node scripts/scene-cuve.mjs --essai-rouge
+
 
   # LA LARGEUR D'UN TÉLÉPHONE, EN CI (DÉCISIONS §16, levée par son prémisse).
   # `etroit-sweep` mesure le corpus entier — les leçons chapitres dépliés, les

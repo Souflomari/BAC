@@ -13,19 +13,24 @@ export function SceneOptIn({
   legende,
   onOuvrir,
   className,
+  surtitre = "Scène 3D",
+  libelleOuvrir = "Ouvrir la scène 3D",
 }: {
   sceneId: string;
   titre?: string;
   legende?: string;
   onOuvrir: () => void;
   className?: string;
+  /** « Scène 3D » ; « Simulation » pour la cuve, qui n'est pas en 3D (ADR 0041) */
+  surtitre?: string;
+  libelleOuvrir?: string;
 }) {
   // Désactivé et `aria-busy` tant que React n'a pas la main (ADR 0032).
   const hydrated = useHydrated();
   return (
     <div className={cn("my-10 notion-wide-band print:hidden", className)} data-scene={sceneId} data-scene-etat="ferme">
       <Eyebrow tone="muted" decorative className="mb-3">
-        Scène 3D
+        {surtitre}
       </Eyebrow>
       <div
         className={cn(
@@ -49,7 +54,7 @@ export function SceneOptIn({
           className={cn("btn-primary", "focus-ring")}
         >
           <PlayIcon size={14} />
-          Ouvrir la scène 3D
+          {libelleOuvrir}
         </button>
       </div>
     </div>

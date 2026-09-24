@@ -3922,6 +3922,20 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "OND-DP-1",
       "OND-DP-2"
     ],
+    "OMPP-26": [
+      "OND-DIF-2",
+      "OND-DIF-3",
+      "OND-DIF-4"
+    ],
+    "OMPP-27": [
+      "OND-DIF-2",
+      "OND-DIF-4"
+    ],
+    "OMPP-28": [
+      "OND-DIF-1",
+      "OND-DIF-3",
+      "OND-DIF-4"
+    ],
     "OMPP-3": [
       "OND-FR-1",
       "OND-NAT-1"

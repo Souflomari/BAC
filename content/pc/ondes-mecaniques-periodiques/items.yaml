@@ -18,6 +18,20 @@ misconceptions:
       concentre l'onde en un faisceau plus fin, alors qu'au contraire une
       ouverture de l'ordre de $\lambda$, ou plus petite, fait s'étaler
       l'onde sur un domaine angulaire plus large.
+  - id: OND-DIF-4
+    description: >
+      Condition de diffraction amputée, et non inversée : décide de la
+      diffraction sur la seule valeur de $a$, sans jamais la comparer à
+      $\lambda$ — retient « petite ouverture ⇒ diffraction » comme une
+      règle qui se suffit à elle-même. Formes : croit qu'à ouverture
+      inchangée le motif ne peut pas changer (changer la fréquence de la
+      source ne changerait rien derrière la fente) ; croit que la fente
+      la plus étroite donne toujours le plus grand étalement, quelle que
+      soit l'onde ; parle d'une ouverture « large » ou « étroite » dans
+      l'absolu, en centimètres ou en millimètres, sans second terme. Ce
+      modèle répond CORRECTEMENT à toute question où $\lambda$ est fixée
+      et seule $a$ varie : il ne se révèle qu'en faisant varier $\lambda$
+      à $a$ constante.
   - id: OND-DISP-1
     description: >
       Croit que la célérité d'une onde dans un milieu est toujours une
@@ -1741,6 +1755,278 @@ items:
       $\lambda = T$ reviendrait à égaler des secondes et des mètres ; écrire
       $\lambda = c/T$ donnerait des $\text{m}\cdot\text{s}^{-2}$.
 
+  # Ajouté le 2026-09-24 : OND-DIF-4 (« condition amputée, pas inversée »)
+  # ouvert par spec-scene-cuve.md §8.2 — un modèle qui coche juste PARTOUT
+  # ailleurs dans le corpus (OMPP-19/20/21, cp-r5-diffraction), parce
+  # qu'aucun item existant ne fait varier $\lambda$ à $a$ fixée. Les trois
+  # items ci-dessous sont les seuls du banc à le faire ; les paris de la
+  # scène `cuve-a-ondes` (S2, S5) ne comptent pas pour ce plancher. OMPP-26
+  # prend d'autres nombres que la leçon et le pari S2 ($a = 2{,}0$ cm,
+  # 20 → 5,0 Hz, là où eux prennent 1,0 cm et 40 → 5,0 Hz) : un item qui
+  # recopie l'exemple qu'on vient de lire mesure la mémoire, pas le modèle.
+  # OMPP-26 D porte OND-DIF-2 à la place du « refus de conclure » réservé
+  # par la spec (§8.5 ; le cliquet indice-refus l'interdit ici).
+  - id: OMPP-26
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [diffraction, condition_diffraction, calcul]
+    stem: >
+      Dans une cuve à ondes, une paroi rigide est percée d'une seule
+      ouverture de largeur $a = 2{,}0\ \text{cm}$. Le vibreur bat d'abord
+      à $f = 20\ \text{Hz}$, et la célérité des rides dans l'eau vaut
+      $c = 0{,}20\ \text{m/s}$. Sans toucher à l'ouverture, on ramène le
+      vibreur à $f = 5{,}0\ \text{Hz}$. Que devient l'étalement de
+      l'onde derrière l'ouverture ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Il augmente nettement : à ouverture fixe, $\lambda$ passe de
+          $1{,}0$ à $4{,}0\ \text{cm}$, et le rapport $a/\lambda$ tombe de
+          $2$ à $0{,}50$.
+        correct: true
+      - id: B
+        text: >-
+          Il ne change pas : l'ouverture n'a pas bougé, et c'est sa
+          largeur seule qui fixe l'étalement de l'onde derrière elle.
+        correct: false
+        misconception: OND-DIF-4
+        feedback: >
+          La largeur de l'ouverture ne suffit jamais à elle seule :
+          c'est sa comparaison à $\lambda$ qui décide. À $20\ \text{Hz}$,
+          $\lambda = c/f = 0{,}20/20 = 1{,}0\ \text{cm}$, donc
+          $a = 2\lambda$ — l'ouverture est large devant l'onde. À
+          $5{,}0\ \text{Hz}$, $\lambda = 0{,}20/5{,}0 = 4{,}0\ \text{cm}$,
+          donc $a = \lambda/2$ : la même ouverture, sans avoir bougé
+          d'un dixième de millimètre, est devenue étroite devant cette
+          onde plus longue. C'est le rapport $a/\lambda$ qui commande
+          l'étalement, jamais $a$ seule.
+      - id: C
+        text: >-
+          Il diminue : une onde plus longue passe moins bien par une
+          ouverture aussi étroite, elle en ressort donc plus resserrée.
+        correct: false
+        misconception: OND-DIF-3
+        feedback: >
+          C'est l'inverse : plus $a$ est petit devant $\lambda$, plus
+          l'onde s'étale derrière l'ouverture, jamais elle ne se
+          resserre. Ici $a = \lambda/2$ à $5{,}0\ \text{Hz}$ —
+          l'ouverture est nettement plus petite que l'onde — c'est
+          exactement la situation où l'étalement est le plus marqué, pas
+          le plus resserré.
+      - id: D
+        text: >-
+          Il augmente, mais surtout parce que l'ouverture ralentit
+          l'onde qui la traverse : sa célérité diminue derrière la
+          paroi.
+        correct: false
+        misconception: OND-DIF-2
+        feedback: >
+          La célérité est fixée par le milieu — ici la même eau, la
+          même profondeur, des deux côtés de la paroi — jamais par
+          l'ouverture : elle reste $0{,}20\ \text{m/s}$ avant et après.
+          L'étalement augmente bien, mais pour une seule raison : la
+          longueur d'onde est devenue grande devant $a$
+          ($\lambda = 4{,}0\ \text{cm}$ pour $a = 2{,}0\ \text{cm}$),
+          pas parce que l'ouverture aurait modifié la vitesse de
+          propagation.
+    correct_feedback: >
+      À $20\ \text{Hz}$, $a = 2\lambda$ : l'ouverture est large devant
+      l'onde, l'étalement est faible. En ramenant le vibreur à
+      $5{,}0\ \text{Hz}$ sans toucher à l'ouverture, $\lambda$ passe à
+      $4{,}0\ \text{cm}$ et $a = \lambda/2$ : la même ouverture, devenue
+      étroite devant cette onde plus longue, produit un étalement
+      nettement plus marqué.
+    solution: |
+      $$\lambda_1 = \frac{c}{f_1} = \frac{0{,}20}{20} = 1{,}0\ \text{cm}, \qquad \frac{a}{\lambda_1} = \frac{2{,}0}{1{,}0} = 2$$
+      $$\lambda_2 = \frac{c}{f_2} = \frac{0{,}20}{5{,}0} = 4{,}0\ \text{cm}, \qquad \frac{a}{\lambda_2} = \frac{2{,}0}{4{,}0} = 0{,}50$$
+      L'ouverture, physiquement, n'a pas changé. Ce qui a changé, c'est
+      le rapport $a/\lambda$ : de $2$ (ouverture large devant l'onde,
+      peu de diffraction) à $0{,}50$ (ouverture étroite devant l'onde,
+      diffraction marquée). Ni $c$ ni la largeur $a$ n'interviennent
+      dans ce renversement — seule $\lambda$, fixée par la nouvelle
+      fréquence de la source, en est responsable.
+
+  - id: OMPP-27
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [diffraction, condition_diffraction, application_experimentale, calcul]
+    stem: |
+      Sur un banc à ultrasons (émetteur, fente réglable, récepteur
+      mobile sur un arc), on relève le domaine angulaire dans lequel le
+      récepteur détecte encore un signal, pour quatre réglages :
+
+      | réglage | $a$ (cm) | $f$ (kHz) | domaine détecté |
+      |---|---|---|---|
+      | 1 | 2,0 | 40 | étroit |
+      | 2 | 2,0 | 20 | moyen |
+      | 3 | 1,0 | 40 | moyen |
+      | 4 | 1,0 | 20 | large |
+
+      ($c \approx 340\ \text{m/s}$ dans l'air.) Quelle grandeur classe
+      ces quatre réglages, du plus étroit au plus large ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La largeur de la fente seule : $2{,}0\ \text{cm}$ donne un
+          domaine plus étroit que $1{,}0\ \text{cm}$, quelle que soit la
+          fréquence de l'émetteur.
+        correct: false
+        misconception: OND-DIF-4
+        feedback: >
+          Le tableau contredit cette lecture : les réglages 2
+          ($a = 2{,}0\ \text{cm}$, $f = 20\ \text{kHz}$) et 3
+          ($a = 1{,}0\ \text{cm}$, $f = 40\ \text{kHz}$) donnent le
+          MÊME domaine, « moyen », alors que leurs largeurs sont
+          différentes. La largeur seule ne classe donc rien : c'est son
+          rapport à $\lambda$, qui dépend aussi de $f$, qui compte.
+      - id: B
+        text: >-
+          La fréquence seule : plus elle est élevée, plus le domaine
+          détecté est étroit, quelle que soit la largeur de la fente
+          utilisée.
+        correct: false
+        misconception: OND-DIF-4
+        feedback: >
+          Le même tableau s'y oppose dans l'autre sens : les réglages 2
+          et 3 ont des fréquences différentes ($20$ et $40\ \text{kHz}$)
+          et donnent pourtant le même domaine, « moyen ». La fréquence
+          seule ne suffit pas non plus à classer les réglages — il faut
+          la comparer à $a$, par le rapport $a/\lambda$.
+      - id: C
+        text: >-
+          Le rapport $a/\lambda$, et uniquement lui : il vaut $2{,}4$ pour
+          le réglage 1, $1{,}2$ pour les réglages 2 et 3, et $0{,}59$ pour le
+          réglage 4.
+        correct: true
+      - id: D
+        text: >-
+          La fréquence reçue par le récepteur : elle diminue légèrement
+          en traversant une fente plus étroite, ce qui élargit le
+          domaine détecté derrière elle.
+        correct: false
+        misconception: OND-DIF-2
+        feedback: >
+          La fréquence reçue reste celle de l'émetteur, quelle que soit
+          la largeur de la fente traversée : rien, dans une ouverture
+          percée, ne modifie le rythme d'une onde qui la traverse. Ce
+          qui distingue les quatre réglages n'est pas une fréquence qui
+          aurait changé en route, mais le rapport $a/\lambda$, calculé
+          à partir de la fréquence ÉMISE — inchangée.
+    correct_feedback: >
+      $\lambda = c/f$ donne $0{,}85\ \text{cm}$ à $40\ \text{kHz}$ et
+      $1{,}7\ \text{cm}$ à $20\ \text{kHz}$. Le rapport $a/\lambda$ vaut
+      alors $2{,}4$ (réglage 1), $1{,}2$ (réglages 2 et 3 — même
+      rapport, même domaine « moyen », malgré des largeurs ET des
+      fréquences différentes), et $0{,}59$ (réglage 4) : c'est ce
+      rapport, et lui seul, qui classe les quatre lignes du tableau.
+    solution: |
+      $$\lambda_{40} = \frac{c}{f} = \frac{340}{40\,000} \approx 0{,}85\ \text{cm}, \qquad \lambda_{20} = \frac{340}{20\,000} \approx 1{,}7\ \text{cm}$$
+
+      | réglage | $a$ | $\lambda$ | $a/\lambda$ | domaine |
+      |---|---|---|---|---|
+      | 1 | 2,0 cm | 0,85 cm | 2,4 | étroit |
+      | 2 | 2,0 cm | 1,7 cm | 1,2 | moyen |
+      | 3 | 1,0 cm | 0,85 cm | 1,2 | moyen |
+      | 4 | 1,0 cm | 1,7 cm | 0,59 | large |
+
+      Les réglages 2 et 3, malgré des largeurs ET des fréquences
+      différentes, partagent le même rapport $a/\lambda \approx 1{,}2$
+      et le même domaine détecté : ni $a$ ni $f$ pris isolément ne
+      classent le tableau, seul leur rapport le fait.
+
+  - id: OMPP-28
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [diffraction, condition_diffraction, calcul, resolution_probleme]
+    stem: >
+      Une porte ouverte, de largeur $a = 0{,}80\ \text{m}$, laisse
+      passer, depuis la pièce voisine, une voix ($f \approx
+      300\ \text{Hz}$) et un sifflement aigu ($f \approx
+      8{,}0\ \text{kHz}$) ; $c \approx 340\ \text{m/s}$ dans l'air. On
+      se place dans le couloir, hors de l'alignement de la porte.
+      Qu'entend-on ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le sifflement mieux que la voix : plus la fréquence d'un son
+          est élevée, plus sa longueur d'onde est petite, et c'est une
+          longueur d'onde petite qui permet à un son de mieux
+          contourner un obstacle.
+        correct: false
+        misconception: OND-DIF-1
+        feedback: >
+          C'est l'inverse de la condition de diffraction : une longueur
+          d'onde petite devant l'ouverture ne fait pas mieux contourner
+          l'obstacle, elle fait au contraire filer l'onde presque tout
+          droit. Ici $\lambda_{sifflement} \approx 4{,}3\ \text{cm}$
+          est bien plus petite que $a = 0{,}80\ \text{m}$ : c'est la
+          voix, de fréquence plus basse et de longueur d'onde plus
+          grande ($\lambda \approx 1{,}1\ \text{m}$, proche de $a$),
+          qui diffracte le mieux.
+      - id: B
+        text: >-
+          La voix nettement, le sifflement très peu : $\lambda_{voix}
+          \approx 1{,}1\ \text{m}$ est proche de la largeur de la
+          porte, $\lambda_{sifflement} \approx 4{,}3\ \text{cm}$ en est
+          presque vingt fois plus petite.
+        correct: true
+      - id: C
+        text: >-
+          Les deux pareil : c'est exactement la même porte, de même
+          largeur, qui laisse passer la voix et le sifflement — c'est
+          donc elle seule qui décide de ce qu'on entend hors de son
+          alignement.
+        correct: false
+        misconception: OND-DIF-4
+        feedback: >
+          La porte est bien la même pour les deux sons, mais sa seule
+          largeur ne suffit pas à décider : il faut la comparer à la
+          longueur d'onde de chaque son. Pour la voix, $\lambda \approx
+          1{,}1\ \text{m}$ est proche de $a = 0{,}80\ \text{m}$ : la
+          diffraction est marquée. Pour le sifflement, $\lambda \approx
+          4{,}3\ \text{cm}$ est presque vingt fois plus petite que $a$
+          : la diffraction y est négligeable. Une même ouverture
+          diffracte donc très différemment selon l'onde qu'elle reçoit.
+      - id: D
+        text: >-
+          Ni l'un ni l'autre : hors de l'alignement de la porte, le
+          couloir reste silencieux, pour la voix comme pour le sifflement.
+        correct: false
+        misconception: OND-DIF-3
+        feedback: >
+          Une ouverture de l'ordre de la longueur d'onde ne bloque
+          jamais totalement le son qui la traverse — elle le fait
+          s'étaler, ce qui est l'inverse d'un silence total. C'est le
+          cas de la voix ici ($a \approx 0{,}7\,\lambda$) : on
+          l'entend nettement hors de l'alignement. Seul le sifflement,
+          dont la longueur d'onde est bien plus petite que la porte, y
+          devient très faible — mais « très faible » n'est pas
+          « aucun ».
+    correct_feedback: >
+      $\lambda_{voix} = c/f \approx 1{,}1\ \text{m}$, du même ordre que
+      la largeur de la porte : le rapport $a/\lambda \approx 0{,}7$
+      place la voix dans le régime de diffraction marquée.
+      $\lambda_{sifflement} = c/f \approx 4{,}3\ \text{cm}$, avec
+      $a/\lambda \approx 19$ : le sifflement file presque tout droit,
+      on ne l'entend presque pas hors de l'axe de la porte.
+    solution: |
+      $$\lambda_{voix} = \frac{c}{f_{voix}} = \frac{340}{300} \approx 1{,}1\ \text{m}, \qquad \frac{a}{\lambda_{voix}} = \frac{0{,}80}{1{,}13} \approx 0{,}71$$
+      $$\lambda_{sifflement} = \frac{c}{f_{sifflement}} = \frac{340}{8\,000} \approx 4{,}3\times10^{-2}\ \text{m} = 4{,}3\ \text{cm}, \qquad \frac{a}{\lambda_{sifflement}} = \frac{0{,}80}{0{,}0425} \approx 19$$
+      Pour la voix, $a$ et $\lambda$ sont du même ordre de grandeur :
+      la diffraction est notable, la voix contourne largement
+      l'embrasure de la porte. Pour le sifflement, $a \gg \lambda$ :
+      l'onde se propage presque en ligne droite, dans le prolongement
+      de la porte, et n'atteint presque pas le couloir hors de cet
+      axe. Une seule et même ouverture, deux comportements
+      diamétralement opposés — parce que la condition de diffraction
+      compare $a$ à $\lambda$, jamais $a$ à lui seul.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, et l'ancien avait bien travaillé : il déclarait
 # franchement `floor_met: false` et NOMMAIT la seule famille en dessous —
@@ -1769,9 +2055,10 @@ coverage_summary:
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
     web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
-    OND-DIF-1:  { count: 3, items: [OMPP-19, OMPP-20, OMPP-21] }
-    OND-DIF-2:  { count: 3, items: [OMPP-19, OMPP-20, OMPP-21] }
-    OND-DIF-3:  { count: 3, items: [OMPP-19, OMPP-20, OMPP-21] }
+    OND-DIF-1:  { count: 4, items: [OMPP-19, OMPP-20, OMPP-21, OMPP-28] }
+    OND-DIF-2:  { count: 5, items: [OMPP-19, OMPP-20, OMPP-21, OMPP-26, OMPP-27] }
+    OND-DIF-3:  { count: 5, items: [OMPP-19, OMPP-20, OMPP-21, OMPP-26, OMPP-28] }
+    OND-DIF-4:  { count: 3, items: [OMPP-26, OMPP-27, OMPP-28] }
     OND-DISP-1: { count: 3, items: [OMPP-22, OMPP-23, OMPP-24] }
     OND-DISP-2: { count: 3, items: [OMPP-22, OMPP-23, OMPP-24] }
     OND-DISP-3: { count: 3, items: [OMPP-22, OMPP-23, OMPP-24] }
@@ -1782,7 +2069,7 @@ coverage_summary:
     OND-CALC-1: { count: 7, items: [OMPP-5, OMPP-6, OMPP-12, OMPP-13, OMPP-16, OMPP-18, OMPP-25] }
     OND-PH-2:   { count: 5, items: [OMPP-6, OMPP-11, OMPP-13, OMPP-16, OMPP-17] }
     OND-PH-3:   { count: 3, items: [OMPP-10, OMPP-11, OMPP-16] }
-  total_items: 25
+  total_items: 28
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -1791,7 +2078,7 @@ coverage_summary:
     R2: 4
     R3: 3
     R4: 3
-    R5: 3
+    R5: 6
     R6: 3
     R7: 3
   gated_misconceptions:
@@ -1808,6 +2095,10 @@ coverage_summary:
     ne teste la diffraction de la LUMIÈRE — les deux sont réservés à
     propagation-onde-lumineuse (spec-extension.md §0).
   honest_state: >-
-    Les treize misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Huit y siègent EXACTEMENT (3 items) : la marge est nulle
-    et tout retrait d'item la casse.
+    Les quatorze misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Six y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse. La quatorzième, OND-DIF-4 (« la
+    fente seule décide », ouverte le 2026-09-24 par spec-scene-cuve.md
+    §8.2), est de celles-là : ses trois items (OMPP-26, 27, 28) sont les
+    seuls du banc qui fassent varier $\lambda$ à $a$ fixée — sans eux, un
+    élève qui porte ce modèle cochait juste partout.

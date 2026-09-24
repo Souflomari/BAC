@@ -59,7 +59,12 @@ const PORTE = process.argv.includes("--porte");
 //  misconceptions par leur id (`pedagogy_wiring`). Le cliquet laissé à 20
 //  offrait une place libre, et l'essai rouge §11.136 l'a trouvée au premier
 //  passage complet de la CI : la sabotage (+1) retombait pile sur la limite.
-const CLIQUET = 19;
+//  Descendu à 18 le 2026-09-24, pour la MÊME raison et dans le même commit que
+//  la scène : la cuve à ondes livre l'embed de pc/ondes-mecaniques-periodiques,
+//  et la ligne de spec « (sert OND-DIF-1 et OND-DIF-3) » est devenue
+//  « (OND-DIF-1, OND-DIF-3) » ; le descripteur les nomme dans
+//  `pedagogy_wiring`. L'essai rouge §11.136 l'a vu en local, avant la poussée.
+const CLIQUET = 18;
 //  SENS 2 — mesuré au 2026-09-20, et c'est exactement le compte du §11.69,
 //  retrouvé notion par notion et barreau par barreau : 7 + 4 + 5. La classe
 //  n'a pas bougé depuis qu'elle a été consignée. C'est une PORTE D'OWNER

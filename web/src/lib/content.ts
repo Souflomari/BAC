@@ -1006,10 +1006,11 @@ export function loadNotion(id: string): NotionContent | null {
         const parsed = JSON.parse(raw);
         const slug_key = file.replace(/\.json$/, "");
 
-        // Scène 3D de première partie : pas d'url, une scène et des étapes.
-        // Forme minimale exigée ici (never throw) ; `validate-content` juge
-        // le reste, en échec dur.
-        if (parsed && parsed.tool === "scene3d") {
+        // Scène de première partie : pas d'url, une scène et des étapes.
+        // `scene3d` (three.js) ou `scene2d` (la cuve à ondes, Canvas 2D) —
+        // mêmes pièces, même descripteur. Forme minimale exigée ici (never
+        // throw) ; `validate-content` juge le reste, en échec dur.
+        if (parsed && (parsed.tool === "scene3d" || parsed.tool === "scene2d")) {
           if (typeof parsed.scene !== "string" || !Array.isArray(parsed.etapes) || parsed.etapes.length === 0) continue;
           mediaScenes[slug_key] = {
             slug: slug_key,

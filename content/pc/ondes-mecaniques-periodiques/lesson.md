@@ -262,6 +262,10 @@ Prends position avant de lire la suite. Imagine une fente très large, qu'on ré
 
 [[checkpoint:cp-r5-diffraction]]
 
+Avant de lire la réponse, va la chercher. La cuve ci-dessous est une cuve à ondes vue de dessus : une règle qui bat à une extrémité, des rides droites qui avancent, une paroi percée d'une seule ouverture au milieu. Rien n'y est dessiné à l'avance — l'eau est calculée, ride après ride, pendant que tu regardes. Tu paries d'abord, la cuve répond ensuite.
+
+[[embed:cuve-a-ondes]]
+
 L'expérience tranche, et elle va à l'encontre de l'intuition du jet d'eau. Tant que la fente reste large devant $\lambda$, l'onde continue presque tout droit derrière elle : une zone étroite, dans le prolongement direct de la fente, comme en optique géométrique. Mais à mesure qu'on rétrécit la fente, jusqu'à ce que sa largeur $a$ devienne du même ordre que $\lambda$, ou plus petite, l'onde cesse d'aller tout droit : elle s'étale derrière la fente, sur un domaine angulaire de plus en plus large, comme si la fente elle-même s'était transformée en une nouvelle source rayonnant tout autour d'elle. Ce contournement de l'obstacle, cet étalement, porte un nom : c'est la **diffraction**.
 
 [[figure:cuve-a-ondes-diffraction]]
@@ -276,19 +280,23 @@ $$a \lesssim \lambda$$
 
 Tant que $a$ reste très grand devant $\lambda$, l'onde passe pratiquement en ligne droite : l'étalement, s'il existe, est négligeable. Dès que $a$ se rapproche de $\lambda$, ou devient plus petit qu'elle, l'étalement devient net — et plus $a$ diminue en deçà de $\lambda$, plus cet étalement s'accentue.
 
+Et la comparaison se lit dans les **deux** sens, ce qui est moins évident : on peut rendre une ouverture « étroite » sans y toucher, simplement en allongeant l'onde. Une ouverture de $1{,}0\ \text{cm}$ traversée par des rides de $0{,}50\ \text{cm}$ vaut deux longueurs d'onde : l'onde passe presque tout droit. La **même** ouverture de $1{,}0\ \text{cm}$, traversée par des rides de $4{,}0\ \text{cm}$, ne vaut plus qu'un quart de longueur d'onde : la même ouverture, devenue étroite, fait maintenant diffracter nettement. Rien n'a bougé du côté de la paroi. C'est pourquoi « grande ouverture » et « petite ouverture » ne veulent rien dire tout seuls : ils ne veulent dire quelque chose que **devant une longueur d'onde**.
+
 **Fixe l'image mentale : ce n'est pas « il faut une grande ouverture ».** L'intuition la plus répandue dit l'exact inverse de la réalité : on imagine volontiers qu'il faut une grande ouverture pour bien laisser passer l'onde et observer un effet marqué. C'est faux, et c'est précisément l'inverse : une grande ouverture, $a \gg \lambda$, laisse l'onde filer tout droit, sans diffraction notable. C'est au contraire une ouverture petite — du même ordre que $\lambda$, ou plus petite — qui fait diffracter l'onde nettement. Ce qu'il faut retenir, ce n'est pas « grande ouverture » ou « petite ouverture » dans l'absolu : c'est le sens de la comparaison entre $a$ et $\lambda$.
 
 [[figure:diffraction-fente-fronts]]
 
 ### Ce que la diffraction change, et ce qu'elle ne change jamais
 
-On pourrait se dire que rétrécir le passage change quelque chose à l'onde elle-même — comme un goulot d'étranglement qui accélérerait un fluide qui le traverse. Teste cette idée sur ce qu'on sait déjà : qu'est-ce qui, dans le mécanisme, pourrait faire changer la fréquence $f$ ? $f$ est fixée par la source, uniquement par elle (chapitre 2) — et la fente n'est pas une source, c'est un obstacle passif sur le trajet. Qu'est-ce qui pourrait faire changer la célérité $c$ ? $c$ est fixée par le milieu (chapitres 2 et 5) — et le milieu, de part et d'autre de la fente, est le même air. Rien, dans ce simple passage par une ouverture, ne touche ni à la source ni à la nature du milieu.
+On pourrait se dire que rétrécir le passage change quelque chose à l'onde elle-même — comme un goulot d'étranglement qui accélérerait un fluide qui le traverse. L'image est tentante et elle est fausse pour une raison de fond : dans un goulot, c'est de la **matière** qui s'écoule, et elle doit bien passer quelque part. Dans une onde, rien ne s'écoule — l'eau reste sur place et c'est la perturbation qui avance (une onde transporte de l'énergie, jamais de la matière). Un obstacle percé ne peut donc pas « comprimer » l'onde : il décide seulement **par où** elle peut passer. Teste cette idée sur ce qu'on sait déjà : qu'est-ce qui, dans le mécanisme, pourrait faire changer la fréquence $f$ ? $f$ est fixée par la source, uniquement par elle (chapitre 2) — et la fente n'est pas une source, c'est un obstacle passif sur le trajet. Qu'est-ce qui pourrait faire changer la célérité $c$ ? $c$ est fixée par le milieu (chapitres 2 et 5) — et le milieu, de part et d'autre de la fente, est le même air. Rien, dans ce simple passage par une ouverture, ne touche ni à la source ni à la nature du milieu.
 
 L'onde diffractée garde donc exactement la même fréquence $f$, la même célérité $c$, et — puisque $\lambda = c/f$ (chapitre 3) — la même longueur d'onde $\lambda$ que l'onde incidente, ainsi que la même nature. La diffraction ne change qu'une chose : la géométrie de la propagation, la direction dans laquelle l'onde se répand, l'étendue angulaire qu'elle couvre derrière l'ouverture. Elle ne touche jamais $f$, $\lambda$ ni $c$.
 
 ### Le montage : mesurer l'étalement, pas seulement l'observer
 
 Pour mettre en évidence la diffraction avec des ultrasons, on place, dans l'ordre, un émetteur d'ultrasons de fréquence connue, une fente de largeur réglable $a$, puis un récepteur qu'on peut déplacer sur un arc de cercle centré sur la fente, pour mesurer l'amplitude reçue en fonction de la direction. En réduisant $a$, on voit le domaine angulaire dans lequel le récepteur détecte encore un signal s'élargir : l'onde reçue s'étale sur un domaine de plus en plus large de directions, exactement comme prédit plus haut.
+
+C'est exactement la courbe que la cuve du début de ce chapitre te faisait tracer à la main, en promenant le récepteur sur son arc : un pic étroit autour de $0°$ quand l'ouverture est large devant $\lambda$, un plateau qui s'étend jusqu'au bout de l'arc quand elle est étroite devant $\lambda$. Tu peux y retourner maintenant, en sachant ce que le banc à ultrasons mesure.
 
 [[figure:montage-diffraction-ultrasons]]
 
@@ -369,7 +377,7 @@ Conséquence, pour un signal qui contiendrait à la fois $f_1$ et $f_2$ : dans l
 - Relation fondamentale, dérivée à partir du retard et de la périodicité : $\lambda = cT = c/f$.
 - Cas particulier de l'onde sinusoïdale : le déphasage entre deux points distants de $d$ vaut $\Delta\varphi = 2\pi d/\lambda$ ; $d$ multiple entier de $\lambda$ → concordance de phase ; $d$ multiple impair de $\lambda/2$ → opposition de phase.
 - Le son : onde mécanique longitudinale, périodique si la source l'est ; sa hauteur dépend de $f$ (fixée par la source, jamais par le milieu) ; le milieu ne fixe que $c$, donc $\lambda$.
-- Diffraction : notable quand la dimension $a$ de l'ouverture (ou de l'obstacle) est de l'ordre de, ou inférieure à, $\lambda$ ($a \lesssim \lambda$) ; l'onde diffractée conserve $f$, $\lambda$ et $c$ — seule la géométrie de propagation change.
+- Diffraction : notable quand la dimension $a$ de l'ouverture (ou de l'obstacle) est de l'ordre de, ou inférieure à, $\lambda$ ($a \lesssim \lambda$) ; l'onde diffractée conserve $f$, $\lambda$ et $c$ — seule la géométrie de propagation change ; et cette condition se lit dans les deux sens : à ouverture fixée, allonger l'onde suffit à faire apparaître la diffraction.
 - Milieu dispersif : milieu où la célérité $c$ dépend de la fréquence $f$ de l'onde (non dispersif si $c$ est la même pour toutes les fréquences) ; dans un milieu dispersif, un signal composé de plusieurs fréquences se déforme en se propageant.
 
 ### Exercice de type bac

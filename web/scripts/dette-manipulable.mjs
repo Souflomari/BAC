@@ -50,10 +50,12 @@ const ICI = path.dirname(new URL(import.meta.url).pathname);
 const CONTENU = path.resolve(ICI, "..", "..", "content");
 const PORTE = process.argv.includes("--porte");
 //  Mesuré au 2026-09-20 : 6. Descendu à 5 le 2026-09-23 — orbites-gravite est
-//  livré en scène 3D (ADR 0041). Un cliquet qu'on ne redescend pas quand une
-//  dette est payée laisse une place libre à la suivante, en silence (ADR 0034).
-//  Monter ce nombre, c'est reconnaître une dette de plus.
-const CLIQUET_SUBSTITUTIONS = 5;
+//  livré en scène 3D (ADR 0041). Descendu à 4 le 2026-09-24 — la cuve à ondes
+//  (cuve-a-ondes-diffraction) est livrée en manipulable plan. Un cliquet qu'on
+//  ne redescend pas quand une dette est payée laisse une place libre à la
+//  suivante, en silence (ADR 0034). Monter ce nombre, c'est reconnaître une
+//  dette de plus.
+const CLIQUET_SUBSTITUTIONS = 4;
 
 //  Les scènes 3D de première partie ENREGISTRÉES dans le code. Un descripteur
 //  `"tool": "scene3d"` ne compte pour livré que si sa scène y figure : un
@@ -94,10 +96,11 @@ for (const [cle, dir] of notions) {
     if (!f.endsWith(".json") || /\.(motion|stages|interactive)\.json$/.test(f)) continue;
     try {
       const j = JSON.parse(fs.readFileSync(path.join(media, f), "utf-8"));
-      const scene = j?.tool === "scene3d" && typeof j?.scene === "string" && Object.hasOwn(SCENES, j.scene);
+      // scene3d (three.js) ou scene2d (la cuve à ondes) : le même registre
+      const scene = (j?.tool === "scene3d" || j?.tool === "scene2d") && typeof j?.scene === "string" && Object.hasOwn(SCENES, j.scene);
       if (typeof j?.url === "string" || scene) {
         desc.add(f.slice(0, -5));
-        livres.push({ notion: cle, slug: f.slice(0, -5), moteur: scene ? `scène 3D ${j.scene}` : "iframe" });
+        livres.push({ notion: cle, slug: f.slice(0, -5), moteur: scene ? `scène ${j.tool === "scene2d" ? "2D" : "3D"} ${j.scene}` : "iframe" });
       }
     } catch { /* JSON cassé : l'affaire d'une autre porte */ }
   }

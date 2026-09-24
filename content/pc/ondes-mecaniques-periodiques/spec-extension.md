@@ -127,10 +127,14 @@ $f = 40\ \text{kHz}$, $\lambda = 8{,}5\ \text{mm}$, $c = 340\ \text{m/s}$ — in
   Labels $a$, $\lambda$ exacts, condition annotée.
 - `[[figure:montage-diffraction-ultrasons]]` — **type: structural-diagram · tool: svg+katex.**
   Schéma légendé : émetteur ultrasons → fente réglable ($a$) → récepteur mobile sur arc gradué.
-- `[[embed:cuve-a-ondes-diffraction]]` — **type: manipulable · tool: geogebra/desmos/falstad/phet.**
-  Embarquer une cuve à ondes / ripple tank (PhET « Waves Intro » ou simulateur d'ondes Falstad) —
-  **ne pas la reconstruire** ; l'élève réduit la largeur de la fente et voit l'étalement croître
-  (sert OND-DIF-1 et OND-DIF-3).
+- `[[embed:cuve-a-ondes]]` — **type: manipulable · tool: scene2d.** **LIVRÉ le 2026-09-24**
+  (`spec-scene-cuve.md`, ADR 0041). Prescrit à l'origine sous le slug `cuve-a-ondes-diffraction`,
+  en PhET « Waves Intro » ou Falstad embarqué — « ne pas la reconstruire » ; ces outils sont fermés
+  aux nouveaux embeds depuis l'amendement du 2026-07-07 à l'ADR 0017, la figure statique
+  `cuve-a-ondes-diffraction` l'a remplacée le 2026-09-20 (une substitution écrite), et c'est une cuve
+  de première partie, calculée dans le navigateur, qui la solde. Elle fait ce que la ligne demandait —
+  l'élève réduit la largeur de la fente et voit l'étalement croître (OND-DIF-1, OND-DIF-3) — et ce
+  qu'elle ne demandait pas : la **même** fente traversée par deux ondes (OND-DIF-4).
 
 **HORS-CADRE (citer la limite / exclusion).** Pas de **$\theta = \lambda/a$** (demi-largeur
 angulaire) : cette relation quantitative appartient au chapitre `onde_lumineuse` (cadre p.6),

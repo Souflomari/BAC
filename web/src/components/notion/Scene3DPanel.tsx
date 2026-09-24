@@ -13,6 +13,7 @@
 
 import type { Scene3DDescriptor } from "@/lib/content";
 import { ChampMagnetiquePanel } from "./scene/ChampMagnetiquePanel";
+import { CuvePanel } from "./scene/CuvePanel";
 import { ManegePanel } from "./scene/ManegePanel";
 import { OrbiteGeostationnairePanel } from "./scene/OrbiteGeostationnairePanel";
 import { SpherePlanDroitePanel } from "./scene/SpherePlanDroitePanel";
@@ -26,6 +27,10 @@ const PANNEAUX: Record<string, React.ComponentType<{ scene: Scene3DDescriptor; c
   "produit-vectoriel": VectorielPanel,
   "solide-revolution": RevolutionPanel,
   "manege-rotation": ManegePanel,
+  // Le premier manipulable PLAN sur ces pièces (`"tool": "scene2d"`) : ni
+  // caméra, ni three.js — la diffraction dans une cuve est un phénomène plan
+  // (ADR 0041, première correction).
+  "cuve-a-ondes": CuvePanel,
 };
 
 export function Scene3DPanel({ scene, className }: { scene: Scene3DDescriptor; className?: string }) {

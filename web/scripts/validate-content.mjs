@@ -898,7 +898,7 @@ for (const dir of dirs) {
       if (fs.existsSync(j)) {
         try {
           const desc = JSON.parse(fs.readFileSync(j, "utf8"));
-          if (desc.tool === "scene3d") {
+          if (desc.tool === "scene3d" || desc.tool === "scene2d") {
             for (const f of fautesScene3d(desc)) { console.error(`  ✗ ${dir}: media/${slug}.json (scène 3D) — ${f}`); dirFail++; }
             // Le `misconception:` d'un pari de scène doit être DÉCLARÉ dans le
             // items.yaml de la notion — la règle §11.58 des distracteurs,

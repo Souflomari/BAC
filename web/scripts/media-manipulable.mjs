@@ -61,7 +61,9 @@ const PORTE = process.argv.includes("--porte");
 //  §11.129 (une notion perd sa manipulable) est resté VERT — 11 → 10 tenait
 //  encore le plancher de 10. Le cliquet non resserré ne perdait pas seulement
 //  le gain : il rendait son propre essai rouge aveugle.
-const CLIQUET = 11;
+//  Relevé à 12 le 2026-09-24 (même commit que la scène) : pc/ondes-mecaniques-
+//  periodiques porte la cuve à ondes.
+const CLIQUET = 12;
 
 const RE_EMBED = /\[\[(?:embed|geogebra|desmos|falstad|phet)[:\]]/gi;
 const parMat = new Map();

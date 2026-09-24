@@ -28,6 +28,7 @@ export function Plateau({
   messageSansWebgl,
   onRelancer,
   vues,
+  format = "carre",
   children,
 }: {
   hoteRef: React.RefObject<HTMLDivElement>;
@@ -35,7 +36,8 @@ export function Plateau({
   panneau: EtatPanneau;
   /** ce que le lecteur d'écran entend : la scène décrite en mots */
   description: string;
-  glisser: {
+  /** le glisser-pour-tourner d'une scène 3D ; absent pour une scène plane (la cuve) */
+  glisser?: {
     onPointerDown: React.PointerEventHandler<HTMLCanvasElement>;
     onPointerMove: React.PointerEventHandler<HTMLCanvasElement>;
     onPointerUp: React.PointerEventHandler<HTMLCanvasElement>;
@@ -48,6 +50,12 @@ export function Plateau({
   onRelancer: () => void;
   /** les vues (grand écran), sous la scène */
   vues?: React.ReactNode;
+  /**
+   * « carre » : 4:3 au téléphone, carré sur grand écran (une caméra qui cadre
+   * une sphère) ; « paysage » : 3:2 partout (la cuve à ondes, 24 × 16 cm, vue
+   * de dessus — un carré y perdrait un tiers de l'écran).
+   */
+  format?: "carre" | "paysage";
   /** les étiquettes HTML posées sur la scène (N, P, H…) */
   children?: React.ReactNode;
 }) {
@@ -58,19 +66,20 @@ export function Plateau({
         className={cn(
           "relative w-full overflow-hidden rounded-xl",
           "bg-figure-surface shadow-elevation-1",
-          "aspect-[4/3] bp-expanded:aspect-square"
+          format === "paysage" ? "aspect-[3/2]" : "aspect-[4/3] bp-expanded:aspect-square"
         )}
       >
         <canvas
           ref={canvasRef}
           role="img"
           aria-label={description}
-          className="absolute inset-0 h-full w-full cursor-grab active:cursor-grabbing"
+          className={cn("absolute inset-0 h-full w-full", glisser && "cursor-grab active:cursor-grabbing")}
           style={{ touchAction: "pan-y" }}
-          {...glisser}
+          {...(glisser ?? {})}
         />
         {children}
-        {legende && <p className="pointer-events-none absolute left-3 top-2 text-caption text-secondary">{legende}</p>}
+        {/* une pastille de surface : sur la cuve, la légende tombe sur les rides */}
+        {legende && <p className="pointer-events-none absolute left-2 top-1.5 rounded-sm bg-figure-surface px-1 text-caption text-secondary">{legende}</p>}
 
         {panneau === "chargement" && (
           <div className="absolute inset-0 flex items-center justify-center bg-figure-surface">
@@ -105,12 +114,15 @@ export function Etiquette({
   refEl,
   texte,
   nom,
+  fond,
   children,
 }: {
   refEl: React.RefObject<HTMLSpanElement>;
   texte?: string;
   /** un nom stable pour les portes, qui lisent l'étiquette sans deviner son rendu KaTeX */
   nom?: string;
+  /** une pastille de surface sous le texte — quand la scène peint jusque sous l'étiquette (la cuve) */
+  fond?: boolean;
   children?: React.ReactNode;
 }) {
   return (
@@ -118,7 +130,10 @@ export function Etiquette({
       ref={refEl}
       data-etiquette={nom ?? texte}
       aria-hidden="true"
-      className="pointer-events-none absolute left-0 top-0 whitespace-nowrap text-caption font-semibold text-primary"
+      className={cn(
+        "pointer-events-none absolute left-0 top-0 whitespace-nowrap text-caption font-semibold text-primary",
+        fond && "rounded-sm bg-figure-surface px-1"
+      )}
       style={{ visibility: "hidden" }}
     >
       {children ?? texte}

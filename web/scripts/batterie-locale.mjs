@@ -177,6 +177,11 @@ const HORS_CHAMP = new Set([
   // courses en temps réel, deux passages en CI (job `scenes`) ;
   // `node scripts/scene-manege.mjs --essai-rouge`.
   "scene-manege.mjs",
+  // scene-cuve, même raison : la cuve à ondes (pc/ondes-mecaniques-periodiques
+  // R5), le premier manipulable PLAN — un champ calculé en direct, des courses
+  // au ralenti, deux passages en CI (job `scene-champ`) ;
+  // `node scripts/scene-cuve.mjs --essai-rouge`.
+  "scene-cuve.mjs",
   // etroit-sweep balaie le corpus entier au navigateur, à 320, 360 et 390 px :
   // build ET Playwright, ~6 min. Hors champ ici pour la même raison que
   // dom-truth — ARMÉE en CI dans son propre job, `telephone` (§11.193). Son

@@ -750,6 +750,94 @@ un savoir-faire du chapitre).
 
 ---
 
+## 21. La cuve à ondes : huit questions tranchées par défaut, et six écarts à la spec
+
+**LE FAIT.** Le septième manipulable de première partie — le premier PLAN —
+est livré dans `pc/ondes-mecaniques-periodiques`, R5 (§11.197) : une cuve à
+ondes vue de dessus dont l'eau est CALCULÉE dans le navigateur (différences
+finies, grille de 0,5 mm), cinq étapes à pari. Il solde une substitution
+écrite de la dette de manipulation (la figure statique
+`cuve-a-ondes-diffraction` remplaçait depuis le 2026-09-20 une cuve
+« manipulable, largeur de fente réglable en direct »). La spec de l'architecte
+(`content/pc/ondes-mecaniques-periodiques/spec-scene-cuve.md` §13) laissait
+huit questions au propriétaire ; même lecture du mandat qu'au §20 — trancher
+selon la recommandation, l'écrire ici, garder chaque choix réversible.
+
+**CE QUI A ÉTÉ TRANCHÉ PAR DÉFAUT :**
+
+1. **`"tool": "scene2d"` est accepté**, sur le même registre
+   (`web/src/lib/scene3d/scenes.json`, champ `"dimension": "2d"`), le même
+   chargeur, le même validateur, le même compteur de dette. **Le dossier
+   `scene3d/` n'est PAS renommé** : la spec demandait un commit mécanique
+   séparé, jamais dans celui de la scène — il reste à faire, si le
+   propriétaire le veut.
+2. **Le quatrième modèle `OND-DIF-4` est OUVERT** (« la fente seule décide ») —
+   avec trois items (OMPP-26 à 28). C'était le seul modèle du chapitre qui
+   cochait juste PARTOUT dans le corpus : aucun item ne faisait varier λ à a
+   fixée. Plancher atteint, marge nulle. **Pour revenir en arrière** (spec
+   §8.5) : amender la `description` d'OND-DIF-1, ré-étiqueter trois choix
+   d'items et deux choix de paris, régénérer `coverage_summary` et les
+   artefacts du modèle apprenant.
+3. **Le point d'arrêt `cp-r5-diffraction` reste au-dessus de la scène.** Les
+   paris ont été écrits pour ne pas le doubler (S1 demande une FORME, pas une
+   condition). La contradiction de son champ (`after_R5` pour un marqueur au
+   milieu de R5) est déjà signalée par validate-content, et reste ouverte.
+4. **La légende NOMME la cuve idéalisée** : « ici toutes les fréquences
+   avancent à la même célérité ; dans une vraie cuve, elle dépend un peu de la
+   longueur d'onde — c'est le chapitre 7 ». (La spec disait « chapitre 8 » :
+   c'est R7, « Pour t'entraîner ». La dispersion est R6, le chapitre 7 —
+   corrigé dans la spec, la légende et le `fit_caveat`.)
+5. **Les cinq étapes sont gardées**, S1 comprise : elle installe la fausse règle
+   (« une grande ouverture laisse mieux passer ») que S2 casse.
+6. **La normalisation de l'amplitude est gardée, dans sa forme MAXIMUM** — voir
+   l'écart 3 ci-dessous.
+7. **Les deux items expérimentaux de plus ne sont PAS commandés** dans cette
+   passe : c'est une commande distincte (la spec le dit elle-même).
+   `application_experimentale` passe à 2 items sur 28 avec OMPP-27.
+8. **Les deux règles nées de cette spec sont gravées** dans un addendum de
+   l'ADR 0041 : la seconde voie d'une SIMULATION établit des invariants, pas
+   des nombres ; la porte a le droit de mesurer ce que le produit n'a pas le
+   droit d'enseigner.
+
+**SIX ÉCARTS À LA SPEC, et pourquoi :**
+
+1. **Un ralenti ×5 déclaré, pas le temps réel.** À 40 Hz, 40 rides par seconde
+   sur un écran de 60 images ne sont qu'un brouillage. Le même facteur pour les
+   quatre fréquences (sinon les rides lentes paraîtraient plus rapides, à
+   célérité égale). Affiché en permanence, et le RALENTISSEMENT de l'appareil
+   aussi, mesuré contre l'horloge.
+2. **Une course de 2,0 s de cuve, pas 2,5 s** : le front atteint l'arc vers
+   0,8 s, l'eau à 5 Hz est établie vers 1,5 s ; 2,0 s laisse une fenêtre de
+   mesure de 0,8 s (quatre périodes au cran le plus lent).
+3. **L'amplitude sur l'arc : 100 % = le MAXIMUM lu sur l'arc**, pas la lecture
+   à 0°. Une fente étroite devant λ ne rayonne pas toujours le plus fort droit
+   devant (champ proche, arc à 7 cm) : normalisée à 0°, elle affichait des
+   valeurs au-dessus de 100 %.
+4. **L'étape 5 est sur l'ARC seulement** (fente, fréquence, récepteur) : le
+   flotteur de l'étape 3 y aurait ajouté un quatrième contrôle sans question.
+5. **Une paroi RIGIDE** (pente nulle, cellules miroirs), pas une hauteur
+   imposée nulle : cette dernière faisait rayonner une fente étroite en cos θ,
+   et plaçait des nœuds contre la paroi — sous le flotteur.
+6. **L'image ne montre pas l'énergie** (ajouté après le premier passage de la
+   porte) : de chaque côté de la paroi, elle est à l'échelle de la ride la plus
+   forte de ce côté. À une échelle unique, en racine, l'ombre d'une ouverture
+   de 8λ était peinte pleine d'arcs pendant que le retour du pari disait
+   « l'eau n'a presque pas bougé ». Écrit dans le `fit_caveat`.
+
+**ET UN ÉCART AUX ITEMS DE LA SPEC :** OMPP-26 prend d'autres nombres que la
+leçon et le pari S2 (a = 2,0 cm, 20 → 5,0 Hz) — un item qui recopie l'exemple
+qu'on vient de lire mesure la mémoire ; son troisième distracteur porte
+OND-DIF-2, pas le refus de conclure réservé par la spec (cliquet
+`indice-refus`). OMPP-28 disait « mille fois plus petite » pour un rapport de
+dix-neuf : corrigé avant fusion.
+
+**CE QUI RESTE AU PROPRIÉTAIRE :** le renommage `scene3d/` → `scene/` (commit
+séparé) ; la commande des deux items expérimentaux ; le placement du point
+d'arrêt de R5 ; et le choix même d'une cuve idéalisée non dispersive — le
+seul modèle qui permette de dire, à l'étape 2, « on n'a changé que λ ».
+
+---
+
 ## La PORTÉE de cette page, mesurée
 
 **Cette page ne recense pas toutes les décisions de propriétaire du dépôt.**

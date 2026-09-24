@@ -1,0 +1,268 @@
+{
+  "slug": "cuve-a-ondes",
+  "tool": "scene2d",
+  "type": "manipulable",
+  "scene": "cuve-a-ondes",
+  "title_fr": "La cuve à ondes : une ouverture, deux longueurs à comparer",
+  "caption_fr": "Une cuve vue de dessus, une règle qui bat, une paroi percée d'une seule ouverture — et l'eau calculée ride après ride pendant que tu regardes. Cinq étapes : à chaque fois tu paries d'abord, puis la cuve répond.",
+  "etapes": [
+    {
+      "id": "ouverture-large",
+      "titre": "Une large ouverture, est-ce mieux ?",
+      "consigne": "Une cuve à ondes, vue de dessus. À gauche, une règle vibrante bat $40$ fois par seconde et envoie des rides bien droites, toutes parallèles. Dans cette eau — quatre millimètres de fond — une ride avance à $0{,}20\\ \\text{m/s}$, et deux crêtes voisines sont espacées de $0{,}50\\ \\text{cm}$ : c'est le petit segment dessiné près de la paroi. Au milieu de la cuve, une paroi percée d'une seule ouverture, large de $4{,}0\\ \\text{cm}$ — le grand segment, huit fois le petit. Pour l'instant l'eau est immobile.",
+      "pari": {
+        "question": "Quand la règle se mettra à battre, derrière cette large ouverture, l'onde…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "etalee",
+            "texte": "s'étalera largement des deux côtés : l'ouverture est grande, elle laisse bien passer l'onde, donc l'effet sera marqué",
+            "juste": false,
+            "misconception": "OND-DIF-1",
+            "retour": "Regarde ce que la cuve vient de faire. Derrière l'ouverture, les rides sont restées **droites**, dans un couloir large comme l'ouverture ; sur le côté, derrière la paroi, l'eau n'a presque pas bougé. « Bien laisser passer » et « s'étaler », ce ne sont pas la même chose : une grande ouverture laisse passer beaucoup d'onde, et elle la laisse passer **tout droit**."
+          },
+          {
+            "id": "couloir",
+            "texte": "continuera presque tout droit, dans un couloir à peu près aussi large que l'ouverture",
+            "juste": true,
+            "retour": "Oui. Huit longueurs d'onde tiennent dans cette ouverture : pour une ride de $0{,}50\\ \\text{cm}$, une ouverture de $4{,}0\\ \\text{cm}$ est immense, et l'onde la traverse presque sans s'étaler. Retiens la formulation exacte : ce n'est pas « l'ouverture est grande », c'est « l'ouverture est grande **devant la longueur d'onde** ». Le petit segment dessiné à côté n'est pas une décoration : c'est l'autre terme de la comparaison."
+          },
+          {
+            "id": "resserree",
+            "texte": "ressortira resserrée, en un faisceau plus fin que l'ouverture, comme un jet d'eau forcé par un goulot",
+            "juste": false,
+            "misconception": "OND-DIF-3",
+            "retour": "Mesure le couloir qui sort sur l'image : il fait à peu près la largeur de l'ouverture, pas moins. Une onde n'est pas un jet qu'on comprime — rien, dans une paroi percée, ne pousse l'onde vers l'axe. Une ouverture ne concentre pas l'onde."
+          }
+        ]
+      },
+      "suite": "Fais glisser la largeur de l'ouverture, de $4{,}0$ jusqu'à $0{,}50\\ \\text{cm}$, et relance à chaque fois. Le couloir droit s'ouvre, puis se déforme, puis devient un éventail d'arcs qui contourne les deux bords de la paroi. **À longueur d'onde fixée**, c'est donc bien la largeur de l'ouverture qui commande l'étalement. Note-le : l'étape suivante ne touchera plus à l'ouverture.",
+      "controles": [
+        "fente"
+      ],
+      "lectures": [
+        "largeur",
+        "longueur-onde",
+        "comparaison",
+        "celerite"
+      ],
+      "etat": {
+        "a_cm": 4.0,
+        "f_hz": "40",
+        "chemin": "aucun",
+        "reference": "aucune"
+      }
+    },
+    {
+      "id": "meme-fente-autre-onde",
+      "titre": "La même ouverture, une autre onde",
+      "consigne": "L'ouverture est réglée sur $1{,}0\\ \\text{cm}$, et **on n'y touchera plus** : ni maintenant, ni pendant la course. On change une seule chose, la règle vibrante : elle battait $40$ fois par seconde, elle battra $5{,}0$ fois par seconde. Même cuve, même eau, même fond — donc même célérité, $0{,}20\\ \\text{m/s}$. Seule la longueur des rides change : $4{,}0\\ \\text{cm}$ au lieu de $0{,}50$. La course te montrera d'abord l'ancien réglage, puis le nouveau, avec la même ouverture.",
+      "pari": {
+        "question": "Derrière cette ouverture qui n'a pas bougé, le motif…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "plus-etale",
+            "texte": "s'étalera beaucoup plus : la même ouverture, devant une onde plus longue",
+            "juste": true,
+            "retour": "Oui — et c'est le point le plus important du chapitre. L'ouverture est restée à $1{,}0\\ \\text{cm}$ ; c'est l'onde qui est passée de $0{,}50$ à $4{,}0\\ \\text{cm}$. La même ouverture était **large** pour la première ($a = 2\\lambda$) et **étroite** pour la seconde ($a = \\lambda/4$). La condition ne porte donc jamais sur $a$ seule : elle compare $a$ et $\\lambda$, et on peut la faire basculer en ne touchant qu'à l'une des deux."
+          },
+          {
+            "id": "inchange",
+            "texte": "restera le même : l'ouverture n'a pas changé, et c'est elle qui décide de la diffraction",
+            "juste": false,
+            "misconception": "OND-DIF-4",
+            "retour": "La cuve vient de te montrer les deux, l'un après l'autre, avec la **même** ouverture de $1{,}0\\ \\text{cm}$ : un couloir presque droit, puis un éventail d'arcs qui contourne les deux bords de la paroi. L'ouverture n'a pas bougé d'un dixième de millimètre. Ce qui a changé, c'est l'onde — et donc la **comparaison** : $1{,}0\\ \\text{cm}$ valait deux longueurs d'onde, il n'en vaut plus qu'un quart. Une ouverture n'est jamais « large » ou « étroite » toute seule ; elle l'est **devant une longueur d'onde**."
+          },
+          {
+            "id": "moins-etale",
+            "texte": "se resserrera : une ride de $4{,}0\\ \\text{cm}$ passe mal par $1{,}0\\ \\text{cm}$, elle ressortira plus concentrée",
+            "juste": false,
+            "misconception": [
+              "OND-DIF-3",
+              "OND-DIF-4"
+            ],
+            "retour": "Regarde la seconde moitié de la course. L'onde longue ne « passe pas mal » : elle passe, et elle s'ouvre en éventail, jusque derrière les bords de la paroi — là où la géométrie dirait qu'il n'y a rien. Plus l'ouverture est petite **devant** la longueur d'onde, plus l'onde s'étale."
+          }
+        ]
+      },
+      "suite": "Repasse les quatre battements de la règle sans toucher à l'ouverture : $40$, $20$, $10$, $5{,}0\\ \\text{Hz}$, c'est-à-dire des rides de $0{,}50$, $1{,}0$, $2{,}0$ et $4{,}0\\ \\text{cm}$. La même ouverture de $1{,}0\\ \\text{cm}$ vaut successivement $2\\lambda$, $\\lambda$, $\\lambda/2$, $\\lambda/4$ — et l'éventail s'ouvre à chaque cran.",
+      "controles": [
+        "frequence"
+      ],
+      "lectures": [
+        "longueur-onde",
+        "comparaison",
+        "celerite"
+      ],
+      "etat": {
+        "a_cm": 1.0,
+        "f_hz": "5",
+        "chemin": "aucun",
+        "reference": "40Hz"
+      }
+    },
+    {
+      "id": "ce-qui-ne-change-pas",
+      "titre": "Ce que l'ouverture ne touche pas",
+      "consigne": "Ouverture de $0{,}50\\ \\text{cm}$, rides de $2{,}0\\ \\text{cm}$ : l'onde va largement s'étaler, tu le sais maintenant. Un flotteur est posé sur l'axe, $4{,}0\\ \\text{cm}$ **avant** la paroi ; il enregistre la hauteur de l'eau sous lui. La cuve mesurera aussi, sur l'image, l'écart entre deux crêtes voisines, **de chaque côté** de la paroi.",
+      "pari": {
+        "question": "De l'autre côté de l'ouverture, l'onde s'étale largement. Mais son rythme et l'écart entre ses crêtes…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "tout-conserve",
+            "texte": "restent ceux d'avant la paroi — $10$ crêtes par seconde, $2{,}0\\ \\text{cm}$ d'écart : seule la direction change",
+            "juste": true,
+            "retour": "Oui, et la raison est déjà dans ton cours. Le rythme vient de la règle vibrante, et la paroi n'est pas une règle vibrante : c'est un obstacle percé, qui ne bat rien du tout. La célérité vient de l'eau, et c'est la même eau des deux côtés. Comme $\\lambda = c/f$ et que ni $c$ ni $f$ n'ont changé, $\\lambda$ non plus. La diffraction ne change que la **géométrie**."
+          },
+          {
+            "id": "lambda-comprimee",
+            "texte": "changent : les crêtes ressortent plus serrées, l'ouverture étroite a comprimé l'onde en la laissant passer",
+            "juste": false,
+            "misconception": "OND-DIF-2",
+            "retour": "Compare les deux règles que la cuve vient de poser : $2{,}0\\ \\text{cm}$ avant la paroi, $2{,}0\\ \\text{cm}$ après, mesurés sur les rides. Rien n'a été comprimé. Une ouverture n'agit pas sur l'onde comme une pince sur un ressort : elle décide seulement **par où** l'onde peut passer, pas à quel rythme elle bat."
+          },
+          {
+            "id": "c-goulot",
+            "texte": "changent : l'eau accélère en franchissant l'ouverture, comme dans un goulot, et les crêtes s'écartent",
+            "juste": false,
+            "misconception": "OND-DIF-2",
+            "retour": "Les deux règles mesurées disent le contraire : $2{,}0\\ \\text{cm}$ de chaque côté, et le flotteur compte $10$ crêtes par seconde où qu'on le pose. Si l'onde allait plus vite derrière, au même rythme, ses crêtes s'y écarteraient — elles ne s'écartent pas. Le goulot est une image de **fluide qui s'écoule** ; ici rien ne s'écoule : l'eau reste sur place, c'est la perturbation qui avance, à la vitesse que l'eau lui impose."
+          }
+        ]
+      },
+      "suite": "Fais glisser le flotteur le long de l'axe, de $4{,}0\\ \\text{cm}$ avant la paroi jusqu'à $12\\ \\text{cm}$ après. Le comptage ne bouge pas — $10$ crêtes par seconde partout. L'écart entre crêtes non plus. Ce qui baisse en s'éloignant, c'est **l'amplitude** : la même onde se répartit sur un domaine de plus en plus large. Elle s'étale ; elle ne ralentit pas, et elle ne change pas de rythme.",
+      "controles": [
+        "sonde"
+      ],
+      "lectures": [
+        "lambda-mesuree",
+        "periode-sonde",
+        "amplitude",
+        "celerite"
+      ],
+      "etat": {
+        "a_cm": 0.5,
+        "f_hz": "10",
+        "chemin": "axe",
+        "sonde_cm": -4.0,
+        "reference": "aucune"
+      }
+    },
+    {
+      "id": "sur-l-arc",
+      "titre": "Le récepteur sur l'arc",
+      "consigne": "C'est le montage du cours, transposé dans la cuve. Un arc de cercle centré sur l'ouverture, à $7{,}0\\ \\text{cm}$ d'elle, et un récepteur qu'on déplace dessus pour mesurer l'amplitude reçue **selon la direction** ; $0°$, c'est droit devant l'ouverture. L'ouverture est large — $4{,}0\\ \\text{cm}$ — pour des rides de $0{,}50\\ \\text{cm}$. Après la course, la cuve promènera elle-même le récepteur de $0°$ à $60°$ et tracera ce qu'il lit.",
+      "pari": {
+        "question": "Pendant ce balayage, le récepteur va mesurer…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "partout-pareil",
+            "texte": "à peu près la même amplitude dans toutes les directions : une fois passée l'ouverture, l'onde rayonne de partout",
+            "juste": false,
+            "misconception": "OND-DIF-1",
+            "retour": "Le profil que la cuve vient de tracer tombe vite dès qu'on quitte l'axe : le récepteur ne lit plus, loin de $0°$, qu'une petite part de ce qu'il lisait droit devant. Une ouverture **large devant la longueur d'onde** ne rayonne pas dans toutes les directions — elle envoie l'onde presque tout droit. Ce que tu décris serait vrai d'une ouverture étroite devant $\\lambda$ ; celle-ci en vaut huit."
+          },
+          {
+            "id": "zero-hors-axe",
+            "texte": "exactement zéro dès qu'on sort du prolongement de l'ouverture : en dehors, il n'y a rien du tout",
+            "juste": false,
+            "misconception": "OND-DIF-3",
+            "retour": "Regarde les valeurs hors de l'axe : elles sont petites, mais elles ne sont pas nulles — le récepteur détecte encore. C'est déjà de la diffraction, même ici, même faiblement. Le « zéro net » serait vrai si l'onde suivait des lignes droites ; aucune onde ne fait exactement ça, et c'est précisément pour ça que ce chapitre existe."
+          },
+          {
+            "id": "pic-puis-chute",
+            "texte": "beaucoup droit devant, puis une chute rapide dès qu'on s'écarte de l'axe de l'ouverture",
+            "juste": true,
+            "retour": "Oui. Un pic étroit autour de $0°$, puis de petites valeurs : c'est la signature d'une ouverture large devant la longueur d'onde. Et c'est **cette courbe**, pas une photographie, que donne le banc à ultrasons décrit plus loin dans le chapitre — un récepteur qu'on promène sur un arc et dont on note l'amplitude direction par direction."
+          }
+        ]
+      },
+      "suite": "Réduis maintenant l'ouverture — $1{,}0\\ \\text{cm}$, puis $0{,}50\\ \\text{cm}$ — relance, et promène le récepteur à la main, cran par cran. Avec l'ouverture large, le signal s'éteignait vite en quittant l'axe ; avec la plus étroite, il en reste jusqu'au bout de l'arc, à $60°$. C'est mot pour mot ce que dit le montage à ultrasons du cours : en réduisant $a$, le domaine de directions où le récepteur détecte encore quelque chose **s'élargit**.",
+      "controles": [
+        "recepteur",
+        "fente"
+      ],
+      "lectures": [
+        "amplitude",
+        "angle",
+        "comparaison"
+      ],
+      "etat": {
+        "a_cm": 4.0,
+        "f_hz": "40",
+        "chemin": "arc",
+        "recepteur_deg": 0,
+        "reference": "aucune"
+      }
+    },
+    {
+      "id": "libre",
+      "titre": "À toi : l'ouverture, l'onde, le récepteur",
+      "consigne": "Tout s'ouvre : la largeur de l'ouverture, de $0{,}50$ à $4{,}0\\ \\text{cm}$ ; les quatre battements de la règle, de $5{,}0$ à $40\\ \\text{Hz}$ ; le récepteur sur l'arc. La célérité, elle, ne se règle pas : c'est l'eau qui la fixe, $0{,}20\\ \\text{m/s}$, la même pour tous les réglages.",
+      "pari": {
+        "question": "Tu veux que l'onde s'étale le plus largement possible derrière la paroi. Deux réglages à choisir : la largeur de l'ouverture, et le battement de la règle. Le meilleur, c'est…",
+        "choix": [
+          {
+            "id": "etroite-et-rapide",
+            "texte": "l'ouverture la plus étroite ($0{,}50\\ \\text{cm}$) avec le battement le plus rapide ($40\\ \\text{Hz}$) : la fente la plus fine possible",
+            "juste": false,
+            "misconception": "OND-DIF-4",
+            "retour": "Tu as choisi la fente la plus fine de toute la cuve — et pourtant l'éventail y est plus **étroit** qu'avec la même fente et l'onde la plus longue. Garde l'ouverture à $0{,}50\\ \\text{cm}$ et change seulement le battement, de $40$ à $5{,}0\\ \\text{Hz}$ : le récepteur gagne le haut de l'arc. Dans ton réglage, $a$ et $\\lambda$ valaient tous les deux $0{,}50\\ \\text{cm}$ — rapport $1$. Dans le bon, $a = \\lambda/8$. Ce n'est pas la fente la plus fine qui gagne : c'est la fente la plus fine **devant la longueur d'onde**."
+          },
+          {
+            "id": "tout-grand",
+            "texte": "l'ouverture la plus large ($4{,}0\\ \\text{cm}$) avec le battement le plus lent ($5{,}0\\ \\text{Hz}$) : grande ouverture, grande onde",
+            "juste": false,
+            "misconception": "OND-DIF-1",
+            "retour": "Ici $a$ et $\\lambda$ valent tous les deux $4{,}0\\ \\text{cm}$ : leur rapport vaut $1$, et l'étalement n'est que moyen. Essaie ce réglage, puis garde le même battement et referme l'ouverture jusqu'à $0{,}50\\ \\text{cm}$ : le récepteur trouve beaucoup plus de signal loin de l'axe. « Grand » n'est pas une qualité qui s'additionne — c'est le **rapport** des deux longueurs qui décide."
+          },
+          {
+            "id": "etroite-et-lente",
+            "texte": "l'ouverture la plus étroite ($0{,}50\\ \\text{cm}$) avec le battement le plus lent ($5{,}0\\ \\text{Hz}$)",
+            "juste": true,
+            "retour": "Oui : $a = 0{,}50\\ \\text{cm}$ pour $\\lambda = 4{,}0\\ \\text{cm}$, soit $a = \\lambda/8$ — le plus petit rapport que cette cuve puisse atteindre, et le plus large éventail. Le récepteur trouve du signal jusqu'au bout de l'arc, à $60°$."
+          }
+        ]
+      },
+      "suite": "Vérifie les trois, un par un, en lisant l'amplitude à $60°$ : le signal y est faible avec les deux premiers réglages, net avec le bon. Puis fais l'expérience qui résume tout le chapitre : garde l'ouverture fixe et parcours les quatre battements, puis garde le battement fixe et parcours les largeurs. Les deux manœuvres produisent le même effet, parce qu'elles agissent toutes les deux sur la **même** chose — le rapport entre la largeur de l'ouverture et la longueur d'onde.",
+      "controles": [
+        "fente",
+        "frequence",
+        "recepteur"
+      ],
+      "lectures": [
+        "largeur",
+        "longueur-onde",
+        "comparaison",
+        "amplitude",
+        "angle",
+        "celerite"
+      ],
+      "etat": {
+        "a_cm": 2.0,
+        "f_hz": "10",
+        "chemin": "arc",
+        "recepteur_deg": 0,
+        "reference": "aucune"
+      }
+    }
+  ],
+  "boundary": "Cadre (ondes_periodiques, 2ème Bac PC/SM) : la diffraction d'une onde mécanique, QUALITATIVE et expérimentale — la condition (une ouverture de l'ordre de $\\lambda$ ou plus petite), les caractéristiques conservées ($f$, $\\lambda$, $c$), le montage à récepteur mobile sur un arc. Aucune relation quantitative de diffraction (ni $\\theta$, ni $\\theta = \\lambda/a$ — chapitre de l'onde lumineuse), aucune largeur angulaire affichée en nombre, aucune interférence (une seule ouverture, toujours), aucun principe de Huygens ni source secondaire dessinée, aucune équation de propagation affichée, aucune dispersion (la célérité est la même pour les quatre fréquences), aucune réflexion ni réfraction étudiée, aucune amplitude en unité physique, aucun effet Doppler, aucune 3D. Ce n'est pas une mesure de TP.",
+  "fit_caveat": "Cuve idéalisée NON dispersive : $c = 0{,}20\\ \\text{m/s}$ pour les quatre fréquences ; dans une vraie cuve de 4 mm de fond, une ride de 0,5 cm avance plus lentement (vers 0,12 m/s) — le chapitre 7 le dit ; ici c'est la seule hypothèse qui permette de dire, à l'étape 2, « on n'a changé que $\\lambda$ ». Les bords absorbent l'onde, comme les berges inclinées d'une vraie cuve. Le champ est calculé sur une grille de 0,5 mm où toutes les ouvertures et toutes les longueurs d'onde tombent sur un nombre entier de cellules ; à 10 cellules par longueur d'onde le calcul se trompe d'environ 1 % sur la célérité, d'où les deux chiffres significatifs des lectures mesurées. L'arc est à 7,0 cm : loin pour une ride de 0,5 cm, proche pour une ride de 4 cm — deux réglages de même rapport $a/\\lambda$ n'y donnent pas un profil identique, et la scène ne le prétend nulle part ; ce qu'elle affirme, ce sont les deux sens de variation. L'amplitude est relative (100 % = le maximum sur l'arc, ou sur l'axe, pour ce réglage). De chaque côté de la paroi, l'image est à l'échelle de la ride la plus forte de ce côté (le plus sombre = le plus fort) : elle montre la FORME de l'onde qui passe, pas son énergie — une ouverture étroite laisse passer bien moins d'énergie qu'une large, et l'image ne le montre pas. Les lectures, elles, sont calculées sur le champ. Au ralenti ×5 : à 40 Hz, le temps réel ne serait qu'un brouillage sur un écran à 60 images par seconde (une vraie cuve se regarde, pour la même raison, avec un éclairage adapté). La scène est plus propre qu'une vraie cuve : ni réflexions parasites, ni amortissement visqueux, ni bruit.",
+  "fallback_note": "Sans JavaScript et à l'impression, le panneau disparaît. Les deux figures juste en dessous couvrent le cas « l'ouverture varie à longueur d'onde fixée » ; AUCUNE ne couvre « la longueur d'onde varie à ouverture fixée » — c'est précisément ce que la cuve apporte, et c'est pourquoi le paragraphe « Et la comparaison se lit dans les deux sens », plus bas, l'écrit en prose.",
+  "pedagogy_wiring": {
+    "why_manipulable": "La leçon affirme que la diffraction dépend de la COMPARAISON de $a$ et $\\lambda$, jamais de $a$ seule — et toutes ses figures et tous ses items font varier $a$ à $\\lambda$ fixée. Une comparaison ne se montre qu'en bougeant ses deux termes séparément : la cuve fait varier $\\lambda$ à ouverture fixée (étape 2), ce qu'aucune image du corpus ne fait (spec §2).",
+    "predict_then_reveal": "Chaque étape pose un pari avant toute preuve ; l'eau reste PLATE avant l'engagement ; le verdict attend la course entière (revele_apres_course: 1) — la course à deux phases de l'étape 2, le balayage de l'étape 4 — sauf l'étape libre, dont le pari compare trois réglages (verdict immédiat, puis les contrôles s'ouvrent).",
+    "misconceptions": [
+      "OND-DIF-1",
+      "OND-DIF-2",
+      "OND-DIF-3",
+      "OND-DIF-4"
+    ]
+  },
+  "spec_ref": "content/pc/ondes-mecaniques-periodiques/spec-scene-cuve.md",
+  "adr_ref": "docs/decisions/0041-scenes-3d-de-premiere-partie.md"
+}

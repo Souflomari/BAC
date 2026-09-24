@@ -15065,3 +15065,95 @@ relève ce cliquet dans le même commit.
 
 **Encore à faire :** la vague 2 (calme, visuel, ergonomie) sur les captures
 neuves ; les cinq autres scènes posent encore leurs étiquettes avec `poser`.
+
+## §11.197 — La cuve à ondes : le premier manipulable PLAN, une dette de manipulation soldée, et deux défauts que seule la porte pouvait voir
+
+**CE QUI EST LIVRÉ.** Une cuve à ondes vue de dessus, dans
+`pc/ondes-mecaniques-periodiques`, R5 (la diffraction), juste après le point
+d'arrêt `cp-r5-diffraction` — `[[embed:cuve-a-ondes]]`. L'eau n'est pas
+dessinée : elle est CALCULÉE pendant que l'élève regarde (l'équation d'onde à
+deux dimensions en différences finies, grille de 0,5 mm, 640 × 480 cellules,
+~2 ms par pas), au ralenti ×5 déclaré. Cinq étapes, un pari avant chacune :
+une large ouverture (a = 8λ : l'onde passe tout droit) ; **la même ouverture,
+une autre onde** (a = 1,0 cm fixe, 40 → 5 Hz : a = 2λ puis λ/4 — la seule
+chose qu'aucune figure du corpus ne montrait) ; ce que l'ouverture ne touche
+pas (λ mesurée sur l'eau des deux côtés, la fréquence au flotteur) ; le
+récepteur sur l'arc (le montage à ultrasons du cours, transposé) ; libre.
+C'est le premier manipulable de première partie qui ne soit pas en 3D (ADR
+0041, addendum de la nuit) — mêmes pièces, `"tool": "scene2d"`, pas un octet
+de three.js.
+
+**LA DETTE.** `dette-manipulable` : 5 → 4 substitutions écrites (cliquet
+descendu). La spec d'extension prescrivait une cuve « largeur de fente réglable
+en direct » ; la figure statique `cuve-a-ondes-diffraction` la remplaçait
+depuis le 2026-09-20. Elle reste, juste en dessous, comme chemin imprimé et sans
+JavaScript — son en-tête le dit. `media-manipulable` : 11 → 12 notions (cliquet
+relevé dans le même commit, leçon du run 751).
+
+**LE CONTENU.** Quatre retouches de prose (spec §4) : l'annonce avant la scène ;
+« la comparaison se lit dans les DEUX sens » (exigée : sans elle, le chemin
+imprimé perd exactement ce que la scène apporte) ; l'image du goulot rendue
+réfutable ; deux rappels. Un modèle de misconception ouvert, **OND-DIF-4** (« la
+fente seule décide » — il cochait juste partout), avec trois items (OMPP-26 à
+28) ; `coverage_summary` et artefacts du modèle apprenant régénérés. Choix par
+défaut et écarts : DÉCISIONS §21.
+
+**DEUX DÉFAUTS DU PRODUIT, VUS PAR LA PORTE ET PAR PERSONNE D'AUTRE :**
+
+1. **L'image contredisait la phrase.** Derrière une ouverture de 8λ, l'ombre
+   était peinte pleine d'arcs ; le retour du pari disait « l'eau n'a presque
+   pas bougé ». Le champ était juste (0,01 à 0,1 de l'onde dans l'ombre) : c'est
+   l'exposition — une échelle unique, en racine — qui mentait. Désormais, de
+   chaque côté de la paroi, l'image est à l'échelle de la ride la plus forte de
+   ce côté ; le `fit_caveat` dit ce qu'elle tait (l'énergie).
+2. **Un artefact numérique inversait la leçon.** À 0,50 cm, le signal à 60°
+   valait 25 · 74 · 94 · **77** % quand λ s'allongeait : une fente plus étroite
+   devant λ qui étalait moins. Cause isolée sur le solveur seul : des bandes
+   absorbantes de 2 cm, plus minces que λ = 4 cm (une condition de Mur n'y
+   changeait rien). À 4 cm : 25 · 74 · 95 · 93 — saturé, presque plat.
+
+Et un troisième, de franchise : le produit promettait de dire quand l'appareil
+ralentit, et disait « ×0,52 » en avançant à 6 % — il mesure désormais contre
+l'horloge, et n'affiche plus « ×5 (×5 sur cet appareil) ».
+
+**Au passage :** la légende de la scène, le `fit_caveat` et la spec
+renvoyaient la dispersion au « chapitre 8 » ; c'est le chapitre 7 (R6).
+OMPP-28 disait « mille fois plus petite » pour un rapport de dix-neuf. Les deux
+corrigés avant de partir.
+
+**La porte `scene-cuve` : VERTE, 68 mesures, 20 familles ; essai rouge 17/17**
+(INSTRUMENTS). Armée en CI dans le job `scene-champ`, vert puis rouge.
+
+**CE QUE LES AUTRES PORTES ONT DIT AVANT LA POUSSÉE** (la leçon du run 751,
+appliquée : batterie locale ET suite des essais rouges, en local) :
+
+- **trois portes d'items ont rougi sur les trois items neufs** — la clé
+  d'OMPP-26 était la plus COURTE de 30 caractères (indice inverse), celle
+  d'OMPP-27 de 23 ; aucune clé ne portait d'absolu quand trois distracteurs en
+  portaient ; et, en longueur brute (LaTeX compris), la clé d'OMPP-26
+  rallongée devenait la plus longue — `eleve-ruse` la trouvait à coup sûr.
+  Corrigé par le remède que les portes nomment : la clé porte le contenu
+  (« à ouverture fixe »), l'absolu VRAI (« et uniquement lui ») ; un distracteur
+  dont l'erreur s'écrivait en triple universel (« aucun… jamais… quelle que
+  soit ») la dit maintenant simplement (« le couloir reste silencieux »). Les
+  distracteurs dont l'absolu EST l'erreur (« la largeur seule ») restent armés ;
+- **l'essai rouge §11.136 est revenu AVEUGLE** — `tracabilite-spec` comptait
+  18 étiquettes sans item pour un cliquet à 19 : la ligne de spec « (sert
+  OND-DIF-1 et OND-DIF-3) » est devenue, à la livraison, « (OND-DIF-1,
+  OND-DIF-3) ». Cliquet descendu à 18 dans le même commit — exactement le cas
+  de l'orbite (même cliquet, même cause) ; mesuré contre HEAD dans un
+  worktree jetable avant d'y toucher ;
+- trois lignes de base rescellées (`eleve-ruse`, `indice-absolu`,
+  `indice-longueur`) : elles dataient du 2026-09-20 et plusieurs notions
+  s'étaient améliorées depuis sans que le cliquet suive (ADR 0034). La notion
+  de la cuve : 30,7 → 29,4 % obtenables à la ficelle.
+
+Batterie locale : tout vert. Essais rouges : les 67 portes crient.
+
+**Ce qu'il faut retenir pour la suite :** une simulation a DEUX façons de
+mentir que le calcul ne voit pas — la façon de la MONTRER (l'exposition), et
+la frontière du domaine (les bandes) ; la seconde a inversé la conclusion
+même du chapitre, et seul un sens de variation mesuré aux quatre crans l'a vu.
+Une mesure relative sature : la porte exige la croissance JUSQU'À saturation,
+et une variation franche — et l'essai de sabotage « bandes de 2 cm » prouve que
+ce relâchement ne l'a pas rendue aveugle au défaut qu'il a trouvé.

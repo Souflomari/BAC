@@ -306,5 +306,65 @@
       "angle",
       "points"
     ]
+  },
+  "cuve-a-ondes": {
+    "temps": false,
+    "course": true,
+    "dimension": "2d",
+    "controles": [
+      "fente",
+      "frequence",
+      "sonde",
+      "recepteur"
+    ],
+    "etat": [
+      "a_cm",
+      "f_hz",
+      "chemin",
+      "sonde_cm",
+      "recepteur_deg",
+      "reference"
+    ],
+    "bornes": {
+      "a_cm": [
+        0.5,
+        4.0
+      ],
+      "sonde_cm": [
+        -6.0,
+        14.0
+      ],
+      "recepteur_deg": [
+        -60,
+        60
+      ]
+    },
+    "valeurs": {
+      "f_hz": [
+        "40",
+        "20",
+        "10",
+        "5"
+      ],
+      "chemin": [
+        "aucun",
+        "axe",
+        "arc"
+      ],
+      "reference": [
+        "aucune",
+        "40Hz"
+      ]
+    },
+    "lectures": [
+      "largeur",
+      "longueur-onde",
+      "comparaison",
+      "lambda-mesuree",
+      "periode-sonde",
+      "amplitude",
+      "angle",
+      "celerite"
+    ]
   }
 }

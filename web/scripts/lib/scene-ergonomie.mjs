@@ -35,18 +35,18 @@
 const HEADER = 56;
 
 /** Ouvre la leçon à `url`, attend React, et rend la page et le sélecteur du panneau. */
-async function ouvrirPage(nav, url, scene, largeur, hauteur) {
+async function ouvrirPage(nav, url, scene, largeur, hauteur, ouvrir) {
   const ctx = await nav.newContext({ viewport: { width: largeur, height: hauteur }, deviceScaleFactor: 1 });
   const p = await ctx.newPage();
   await p.goto(url, { waitUntil: "load", timeout: 60000 });
   await p.waitForFunction(() => !!window.__bacVivant, null, { timeout: 40000 }).catch(() => {});
   const sel = `[data-scene="${scene}"]`;
   await p.waitForFunction(
-    (s) => {
-      const b = [...document.querySelectorAll(`${s} button`)].find((x) => x.textContent?.includes("Ouvrir la scène 3D"));
+    ({ s, o }) => {
+      const b = [...document.querySelectorAll(`${s} button`)].find((x) => x.textContent?.includes(o));
       return b && !b.disabled;
     },
-    sel,
+    { s: sel, o: ouvrir },
     { timeout: 40000 }
   ).catch(() => {});
   return { ctx, p, sel };
@@ -95,18 +95,19 @@ export async function cibles(p, sel) {
 /**
  * La famille entière. `noter(famille, ok, detail)` est celui de la porte ;
  * `url` est l'URL du chapitre de la scène ; `lancer(args)` lance Chromium
- * comme la porte le lance.
+ * comme la porte le lance ; `ouvrir` est le libellé du bouton d'ouverture
+ * (« Ouvrir la cuve à ondes » pour la scène plane).
  */
-export async function ergonomie({ lancer, url, scene, noter, essai }) {
+export async function ergonomie({ lancer, url, scene, noter, essai, ouvrir = "Ouvrir la scène 3D" }) {
   const nav = await lancer([]);
   const dire = (ok, detail) => noter("ergonomie", essai ? !ok : ok, detail);
   try {
     // ── Grand écran : ouvrir, parier, avancer, revenir — au clavier ──
     {
-      const { p, sel } = await ouvrirPage(nav, url, scene, 1280, 900);
+      const { p, sel } = await ouvrirPage(nav, url, scene, 1280, 900, ouvrir);
       const q = p.locator(sel);
       await q.scrollIntoViewIfNeeded();
-      await q.getByRole("button", { name: "Ouvrir la scène 3D" }).focus();
+      await q.getByRole("button", { name: ouvrir }).focus();
       await p.keyboard.press("Enter");
       await p.waitForFunction((s) => document.querySelector(s)?.getAttribute("data-scene-etat") !== "ferme", sel, { timeout: 20000 }).catch(() => {});
       await p.waitForTimeout(400);
@@ -150,10 +151,10 @@ export async function ergonomie({ lancer, url, scene, noter, essai }) {
 
     // ── Téléphone : Tab de commande en commande, rien sous la scène collante ──
     {
-      const { p, sel } = await ouvrirPage(nav, url, scene, 390, 844);
+      const { p, sel } = await ouvrirPage(nav, url, scene, 390, 844, ouvrir);
       const q = p.locator(sel);
       await q.scrollIntoViewIfNeeded();
-      await q.getByRole("button", { name: "Ouvrir la scène 3D" }).focus();
+      await q.getByRole("button", { name: ouvrir }).focus();
       await p.keyboard.press("Enter");
       await p.waitForFunction((s) => document.querySelector(s)?.getAttribute("data-scene-etat") !== "ferme", sel, { timeout: 20000 }).catch(() => {});
       await p.waitForTimeout(400);

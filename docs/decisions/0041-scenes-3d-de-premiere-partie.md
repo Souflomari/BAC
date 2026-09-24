@@ -423,6 +423,74 @@ addendum du même jour). Corrigé à la racine, pour tout le produit ; la scène
 écrit aussi désormais ses en-têtes de tableau en KaTeX ($v = d\,\omega$), comme
 la fiche.
 
+## Addendum du 2026-09-24 (nuit) — la cuve à ondes : une scène PLANE sur les mêmes pièces, et ce qu'une simulation doit à sa porte
+
+La première entrée des « Retractions and Corrections » ci-dessous laissait une
+dette : la diffraction dans une cuve est un phénomène PLAN, « à payer par un
+manipulable 2D ». Elle est payée (`pc/ondes-mecaniques-periodiques`, R5 ; spec
+`spec-scene-cuve.md` ; HANDOFF §11.197 ; DÉCISIONS §21). Une cuve vue de
+dessus, dont l'eau est CALCULÉE pendant que l'élève regarde (l'équation d'onde
+en différences finies, grille de 0,5 mm), cinq étapes à pari.
+
+**1. Une scène plane reprend TOUT l'appareillage, sauf la 3D.** Même registre
+(`scenes.json`, `"dimension": "2d"`), même descripteur (`"tool": "scene2d"`),
+même opt-in au clic, mêmes étapes, même pari avant tout, même famille
+ergonomie, même porte au rendu. Ni caméra, ni three.js — et la porte le prouve
+PANNEAU OUVERT : `window.__THREE__` indéfini, canvas en contexte 2d. Il a fallu
+pour cela sortir la lecture des jetons de couleur de `scene3d/palette.ts`, qui
+importait three pour sa `Color` (`lib/jetons-figure.ts`) : importer une pièce
+commune ne doit pas charger le moteur d'une autre.
+
+**2. La seconde voie d'une SIMULATION établit des invariants, pas des nombres.**
+Un second solveur, avec les mêmes approximations, ne prouverait rien de plus ;
+avec d'autres, il donnerait d'autres chiffres. La porte lit donc sur le rendu ce
+que le champ doit satisfaire QUELLE QUE SOIT sa numérique, avec les seules
+constantes de la spec : λ = c/f et a/λ par égalité de chaîne ; a et λ en
+cellules entières ; λ mesurée sur l'eau, la même des deux côtés de la paroi,
+juste à 3 % et jamais égale au bit près à c/f (une mesure, pas un écho du
+réglage) ; la fréquence au flotteur des deux côtés ; et les deux phrases du
+chapitre comme deux SENS DE VARIATION — à λ fixée, le signal à 60° croît quand
+l'ouverture se referme ; à ouverture fixée, il croît quand λ s'allonge.
+
+**3. La porte a le droit de mesurer ce que le produit n'a pas le droit
+d'enseigner.** Le cadre exclut toute largeur angulaire chiffrée (θ = λ/a est
+au chapitre de la lumière) : la scène n'en affiche aucune, et la famille
+`frontiere` le vérifie. Mais la porte, elle, lit des amplitudes angle par angle
+— c'est ainsi qu'elle sait que la scène dit vrai.
+
+**4. Une image de simulation se juge contre la PHRASE qu'elle illustre.** Au
+premier passage, la porte a rougi sur « va tout droit » : derrière une
+ouverture de 8λ, l'ombre était peinte pleine d'arcs, pendant que le retour du
+pari disait « l'eau n'a presque pas bougé ». Le champ, lui, était juste (0,01 à
+0,1 de l'onde dans l'ombre, mesurés) : c'était l'EXPOSITION — une échelle
+unique, en racine, choisie pour que l'onde faible d'une fente étroite reste
+visible. Elle est désormais déclarée, par côté de la paroi (la ride la plus
+forte de ce côté = le plus sombre), et le `fit_caveat` dit ce que l'image tait :
+l'énergie. Règle : **la manière de MONTRER un champ calculé est un choix de
+mesure, et il se vérifie contre les mots de l'étape — pas contre le champ.**
+
+**5. Un artefact numérique peut INVERSER la leçon.** Deuxième passage : à
+ouverture de 0,50 cm, le signal à 60° valait 25 · 74 · 94 · 77 % quand λ
+s'allongeait — une fente plus étroite devant λ qui étalait MOINS. La cause
+n'était ni la physique ni la mesure : des bandes absorbantes de 2 cm, plus
+minces que la longueur d'onde de 4 cm, en renvoyaient une partie, qui
+interférait sur l'arc. Isolé par une expérience sur le solveur seul (bandes de
+2, 4, 6 cm ; une condition de Mur au bord n'y changeait rien) ; à 4 cm, une
+fente étroite devant λ rayonne presque à plat, comme le veut la théorie (97 à
+100 % de 0° à 60° sur le solveur seul ; 95 et 93 % à 60° dans le produit).
+Corollaire pour la porte : **une mesure RELATIVE sature** (100 % = le maximum
+sur l'arc) ; exiger qu'elle croisse strictement jusqu'au bout ferait rougir
+sur du bruit. La porte exige la croissance jusqu'à saturation (≥ 85 %), et une
+variation franche d'un bout à l'autre (≥ 30 points) — un profil plat saturé
+partout ne passerait pas.
+
+**6. Une porte qui pilote un calcul PAR IMAGE doit tenir sa page au premier
+plan.** Un onglet d'arrière-plan reçoit environ une image par seconde : la
+course de 2 s y durait plus de 90 s. Et le produit, qui promet de dire quand
+l'appareil ralentit, disait « ×0,52 » quand il avançait à 6 % — il divisait les
+pas faits par les pas DEMANDÉS, plafonnés par image. Il mesure désormais contre
+l'horloge.
+
 ## Retractions and Corrections
 
 - **2026-09-23 — la « deuxième scène » annoncée n'était pas la bonne
@@ -431,7 +499,8 @@ la fiche.
   passe pas : la diffraction par une fente, dans une cuve, est un phénomène
   PLAN, et une scène 3D y ajouterait du relief sans rien ajouter à l'idée.
   Elle reste une dette de manipulation, à payer par un manipulable 2D. La
-  deuxième scène livrée est la sphère (addendum ci-dessus).
+  deuxième scène livrée est la sphère (addendum ci-dessus). **Payée le 2026-09-24** : la cuve à ondes, manipulable plan sur les mêmes
+  pièces (addendum de la nuit du 2026-09-24).
 - **2026-09-23 — §6 était trop étroit.** « Rien avant l'engagement » ne
   couvrait que le temps et les contrôles ; les fiches, les verdicts, les
   intersections dessinées et les descriptions répondaient au pari avant qu'il
