@@ -90,7 +90,7 @@ export const ORDRE_FONCTIONS: IdFonction[] = ["racine", "cone", "log"];
 
 export const PAS_BALAYAGE = 15; // degrés : 180° et 360° tombent juste
 export const PAS_TRANCHE = 0.25;
-export const TRANCHES_MAX = 40;
+export const TRANCHES_MAX = 16; // 40 noyait l'accent : à 16, les marches se voient encore (revue WAVE 2)
 export const UNITE_MIN = 1;
 export const UNITE_MAX = 3;
 

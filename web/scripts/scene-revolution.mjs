@@ -344,7 +344,7 @@ await suivant();
   // 4. LA FRONTIÈRE : aucune somme écrite, et le volume lu ne dépend pas de n.
   const lus = [];
   let sommes = 0;
-  for (const n of [1, 12, 40]) {
+  for (const n of [1, 8, 16]) {
     await regler("tranches", n);
     lus.push(await lecture("volume"));
     const texte = await panneau.evaluate((el) => el.innerText);
@@ -356,7 +356,7 @@ await suivant();
   const vrai = Math.PI * simpson((x) => FONCTIONS.racine.f(x) ** 2, FONCTIONS.racine.a, FONCTIONS.racine.b);
   const constant = lus.every((t) => t === lus[0]) && proche2(dernierNombre(lus[0]), vrai);
   const ok = sommes === 0 && constant;
-  noter("frontiere", ESSAI ? !ok : ok, `n = 1, 12, 40 : ${sommes} « Σ / somme / total » dans le panneau ; volume lu « ${lus.join(" » / « ")} » (le même, la valeur exacte)`);
+  noter("frontiere", ESSAI ? !ok : ok, `n = 1, 8, 16 : ${sommes} « Σ / somme / total » dans le panneau ; volume lu « ${lus.join(" » / « ")} » (le même, la valeur exacte)`);
   // Les pixels des tranches, vus de côté : chacune a le rayon de f en son milieu.
   if (rendu) {
     await vue("De côté");

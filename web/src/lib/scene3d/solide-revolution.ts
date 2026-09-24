@@ -367,6 +367,27 @@ export function creerSceneRevolution(canvas: HTMLCanvasElement, hote: HTMLElemen
   // qu'on fait tourner la VUE, rien d'autre ne bouge (et un téléphone le sent).
   let cleGeometrie = "";
 
+  // VUE LE LONG DE L'AXE : le fil de fer se tait (revue WAVE 2). Vus de face,
+  // les parallèles deviennent des ANNEAUX concentriques, les méridiennes des
+  // rayons, la courbe un rayon noir, le plan de coupe un carré qui ne dit plus
+  // où l'on coupe : une roue — l'image même de « la coupe est un cercle », que
+  // le pari de la coupe doit casser. Dans cette vue, seule la silhouette
+  // reste ; la réponse arrive en accent après le pari.
+  const FIL_DE_FER: { visible: boolean }[] = [...meridiennes, ...paralleles, courbeFixe, courbeMobile, planCoupe];
+  const voulu = new Map<{ visible: boolean }, boolean>();
+  function memoriserVisibilite() {
+    for (const o of FIL_DE_FER) voulu.set(o, o.visible);
+  }
+  function leLongDeLAxe() {
+    const a = rad(azimut);
+    const e = rad(elevation);
+    return Math.abs(Math.cos(e) * Math.cos(a)) > Math.cos(rad(12));
+  }
+  function appliquerVue() {
+    const axial = leLongDeLAxe();
+    for (const o of FIL_DE_FER) o.visible = (voulu.get(o) ?? o.visible) && !axial;
+  }
+
   function mettreAJour(e: EtatRevolution, montre: MontreRevolution) {
     dernier = { etat: e, montre };
     const F = FONCTIONS[e.fonction];
@@ -398,20 +419,27 @@ export function creerSceneRevolution(canvas: HTMLCanvasElement, hote: HTMLElemen
     regionMobile.visible = !plein && alpha > 1e-6 && !montre.tranches;
     if (regionMobile.visible) remplacer(regionMobile, region(F, alpha));
     remplacerPositions(courbeFixe, courbe(F, 0, xFin));
+    courbeFixe.visible = true;
     courbeMobile.visible = alpha > 1e-6 && !plein;
     if (courbeMobile.visible) remplacerPositions(courbeMobile, courbe(F, alpha, xFin));
 
-    // Les méridiennes, tous les 30°, jusqu'où le balayage est allé.
+    // Les méridiennes, tous les 30°, jusqu'où le balayage est allé : pendant
+    // le balayage elles MESURENT l'angle tourné. Au tour complet elles ne
+    // mesurent plus rien — trois suffisent à dire la rondeur (90°, 180°,
+    // 270°). Et sur les tranches empilées, aucune : dessinées par-dessus les
+    // cylindres, elles se lisaient comme un défaut de rendu (revue WAVE 2).
     meridiennes.forEach((l, k) => {
-      const t = rad(30 * (k + 1));
-      l.visible = t <= alpha + 1e-9;
+      const deg = 30 * (k + 1);
+      const t = rad(deg);
+      l.visible = !montre.tranches && t <= alpha + 1e-9 && (!plein || deg % 90 === 0);
       if (l.visible) remplacerPositions(l, courbe(F, t, xFin));
     });
-    // Quelques parallèles — dont le bord du couvercle.
+    // Quelques parallèles — dont le bord du couvercle ; au tour complet, ce
+    // bord seul.
     paralleles.forEach((l, k) => {
       const x = F.a + ((F.b - F.a) * (k + 1)) / 4;
       const r = F.f(x);
-      l.visible = alpha > 1e-6 && r > 1e-6 && x <= xFin + 1e-9;
+      l.visible = !montre.tranches && alpha > 1e-6 && r > 1e-6 && x <= xFin + 1e-9 && (!plein || k === paralleles.length - 1);
       if (l.visible) remplacerPositions(l, arc(x, r, alpha));
     });
 
@@ -440,6 +468,8 @@ export function creerSceneRevolution(canvas: HTMLCanvasElement, hote: HTMLElemen
 
     // Les tranches, une image.
     poserTranches(F, Math.max(1, Math.round(e.n)), montre.tranches);
+    memoriserVisibilite();
+    appliquerVue();
 
     // Le cube unité.
     cube.visible = montre.cube;
@@ -480,6 +510,7 @@ export function creerSceneRevolution(canvas: HTMLCanvasElement, hote: HTMLElemen
       azimut = a;
       elevation = Math.max(-80, Math.min(88, e));
       placerCamera();
+      appliquerVue();
     },
     redimensionner,
     relireCouleurs() {

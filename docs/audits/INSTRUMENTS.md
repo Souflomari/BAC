@@ -1417,7 +1417,7 @@ les pièces communes. Le rendu RÉEL, WebGL par SwiftShader.
   plus proche.) ;
 - **la frontière SExp** (spec §3.2, B1) — les tranches s'affichent, elles ne
   s'additionnent jamais : aucun « Σ / somme / total » dans le panneau pour
-  n = 1, 12, 40, et le volume lu identique pour les trois ;
+  n = 1, 8, 16 (16 au plus depuis la revue WAVE 2), et le volume lu identique pour les trois ;
 - **les paris, les étapes, avant le pari rien ne répond** (ni fiche, ni
   lectures, ni pixel d'accent pur ou teinté, ni cube, ni issue dans la
   description) ; aucun LaTeX brut ; clavier (deux flèches → unité 1 → 3 cm) ;

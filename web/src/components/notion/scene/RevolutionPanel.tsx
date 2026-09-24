@@ -152,6 +152,15 @@ export function RevolutionPanel({ scene, className }: { scene: Scene3DDescriptor
     setAngles(VUES[v]);
   };
 
+  // La fiche ne montre que ce que les étapes ont DÉJÀ établi : ses lignes
+  // répondaient, dès l'étape 1, aux paris de la coupe (le disque, πf²) et de
+  // l'unité (k³) — rien avant le pari, c'est par SCÈNE, pas par étape (revue
+  // WAVE 2).
+  const acquis = (controle: string) => {
+    const i = etapes.findIndex((e) => e.controles.includes(controle));
+    return i >= 0 && (indexEtape > i || (indexEtape === i && issue));
+  };
+
   // ── Lectures (toutes calculées, jamais recopiées) ──
   const V = R.volume(F);
   const rayon = F.f(etat.x);
@@ -160,8 +169,13 @@ export function RevolutionPanel({ scene, className }: { scene: Scene3DDescriptor
   const partiel = balayageOuvert && etat.alpha < 360;
   const xTexte = R.nombre(etat.x);
 
+  // Pendant le balayage, la phrase dit le volume BALAYÉ, comme la lecture —
+  // deux volumes différents à l'écran au même instant, c'était deux réponses
+  // à une seule question (revue WAVE 2).
   const issueTexte =
-    `Le solide engendré par ${F.texte} a pour volume V = π ∫ f(x)² dx = ${R.enPi(V / Math.PI)} unités de volume. ` +
+    (partiel
+      ? `Balayée de ${etat.alpha}° sur 360°, la région a engendré ${R.enPi((V / Math.PI) * (etat.alpha / 360))} unités de volume ; au tour complet, V = π ∫ f(x)² dx = ${R.enPi(V / Math.PI)}. `
+      : `Le solide engendré par ${F.texte} a pour volume V = π ∫ f(x)² dx = ${R.enPi(V / Math.PI)} unités de volume. `) +
     (montre.coupe || etape.controles.includes("tranche")
       ? `Sa coupe à l’abscisse ${xTexte} est un disque plein de rayon ${R.valeur(rayon)}, d’aire ${R.enPi(rayon * rayon)}.`
       : montre.cube
@@ -334,8 +348,8 @@ export function RevolutionPanel({ scene, className }: { scene: Scene3DDescriptor
               <p className="mb-2 text-caption font-medium text-secondary">Le volume d’un solide de révolution</p>
               <div className="flex flex-col gap-1 text-body-sm text-primary">
                 <MathText>{"$V = \\pi\\displaystyle\\int_a^b \\big(f(x)\\big)^2\\,\\mathrm{d}x$ en unités de volume"}</MathText>
-                <MathText>{"La coupe à l'abscisse $x$ : un disque plein de rayon $f(x)$, d'aire $\\pi f(x)^2$"}</MathText>
-                <MathText>{"Repère orthonormé d'unité $k$ cm : $1$ u.v. $= k^3$ cm³"}</MathText>
+                {acquis("tranche") && <MathText>{"La coupe à l'abscisse $x$ : un disque plein de rayon $f(x)$, d'aire $\\pi f(x)^2$"}</MathText>}
+                {acquis("unite") && <MathText>{"Repère orthonormé d'unité $k$ cm : $1$ u.v. $= k^3$ cm³"}</MathText>}
               </div>
               <p className="mt-2 text-body-sm font-medium text-primary" aria-live="polite" aria-atomic="true" data-issue>
                 {frenchTypography(issueTexte)}
