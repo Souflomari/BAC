@@ -1053,10 +1053,12 @@ jobs:
   # la porte sait rougir, dans CE job, sur CE build (ADR 0034).
   qcm:
     runs-on: ubuntu-latest
-    # install + build + 62 leçons + essai rouge : ~40 min attendues (15 min
-    # 04 s en local pour le corpus, 1 min 31 s pour l'essai rouge ; le runner
-    # était ~2,4 fois plus lent sur les six leçons, run 744). 75 garde la marge
-    # d'un runner plus lent encore, et attrape toujours un vrai blocage.
+    # install + build + 62 leçons + essai rouge : 19 min 54 s au run 749 (le
+    # corpus, 14 min 39 s sur le runner — pas plus lent qu'en local, 15 min 04 s
+    # ; l'essai rouge, 1 min 26 s). L'estimation « ~40 min » extrapolait le
+    # rapport ×2,4 mesuré sur six leçons (run 744) : faux d'un facteur deux, ce
+    # que seul le premier passage pouvait dire. 75 garde la marge d'un runner
+    # lent, et attrape toujours un vrai blocage.
     timeout-minutes: 75
     defaults:
       run:

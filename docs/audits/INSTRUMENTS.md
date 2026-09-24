@@ -1117,7 +1117,9 @@ Remesuré le 2026-09-24, avec le barreau neuf de calcul intégral (§11.193),
 avant d'armer le corpus entier en CI : **1 497 réponses d'item + 364 de point
 d'arrêt** sur 62 leçons, VERT ; 1 629 items, 132 hors banque de fin, 132/132
 surfacés en point d'arrêt ; **15 min 04 s** en local. Essai rouge sur les six
-leçons du job : **177/177** contradictions signalées, 1 min 31 s.
+leçons du job : **177/177** contradictions signalées, 1 min 31 s. **Premier
+passage dans le job `qcm` (run 749) : VERT, les mêmes 1 497 + 364 réponses, en
+14 min 39 s sur le runner ; essai rouge 177/177 ; job entier 19 min 54 s.**
 
 **Pas d'entrée au manifeste des essais rouges**, même raison : la sabotage
 naturelle serait un `.tsx` ou un `.yaml`, et la porte mesure un DOM rendu après
