@@ -999,7 +999,8 @@ jobs:
   # mesure) : 4 débords sur 4, la porte sait rougir.
   telephone:
     runs-on: ubuntu-latest
-    # install + build + balayage + essai rouge : ~15 min attendues.
+    # install + build + balayage + essai rouge : 7 min 48 s au run 749 (le
+    # balayage, 3 min 55 s sur le runner contre 6 min en local).
     timeout-minutes: 40
     defaults:
       run:

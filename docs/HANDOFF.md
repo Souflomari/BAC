@@ -14790,6 +14790,22 @@ rendait 8/9 : la famille `frontiere` retournait son attente ET le volume
 attendu, deux retournements qui s'annulaient. Deux fois le banc avant le
 produit (ADR 0035).
 
+**DEUX ESSAIS ROUGES DU PRODUIT, pour la cinquième porte aussi.** L'essai rouge
+retourne les attentes ; il ne prouve pas que la sonde voit un DÉFAUT réel (ADR
+0038). Deux défauts posés dans le produit — les deux formes de la misconception
+que la scène doit casser —, chacun rebâti et passé à la porte entière, puis
+retiré :
+- la coupe dessinée comme un ANNEAU (le cercle creux de « la circonférence prise
+  pour le disque ») : ROUGE, 2 manquements sur 48, la famille `pixels` seule —
+  le disque vu le long de l'axe n'est plus rempli qu'à 41 % (en x = 1) et
+  38 % (en x = 4) de π R², pour un cercle toujours rond et du bon rayon ;
+- le volume calculé SANS le carré, π ∫ f (« le rayon non élevé au carré ») :
+  ROUGE, 8 manquements sur 48 — les familles `nombres` (sept) et `frontiere`
+  (une), et elles seules : le volume lu vaut 16,76 au lieu de 8π ≈ 25,13 (π ×
+  16/3, l'aire de la région), 3π au lieu de 4π pour le cône, et la conversion en
+  cm³ suit l'erreur ; la famille `frontiere` rougit parce qu'elle compare le
+  volume lu au VRAI, pas seulement à lui-même d'un nombre de tranches à l'autre.
+
 **LA REVUE, ET CE QU'ELLE A CHANGÉ.** Deux critiques indépendants sur la
 livraison (fidélité au bac, pédagogie). Aucun hors-programme, tous les nombres
 justes — et des défauts réels, corrigés :

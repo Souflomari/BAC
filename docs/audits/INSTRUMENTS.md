@@ -1036,7 +1036,9 @@ Référence inscrite : **0 débord**. Mesurée le 2026-09-24 : **0 débord, 6 mi
 02 s** en local. **Son essai rouge** (`--essai-rouge`, neuf) pose un bloc de
 2 000 px dans trois leçons et l'accueil AVANT la mesure, à 320 px : **4
 débords sur 4**, la porte sait rougir — un défaut posé dans le DOM, qui atteint
-la mesure elle-même (ADR 0038), pas une attente retournée.
+la mesure elle-même (ADR 0038), pas une attente retournée. **Premier passage
+en CI (run 749) : VERT, 0 débord sur 108 × 3 en 3 min 55 s — plus vite que le
+conteneur local —, essai rouge 4/4 ; job entier, build compris, 7 min 48 s.**
 
 **Le 2026-09-22 elle a fait seule le travail de toute la batterie.** Un
 correctif d'ergonomie clavier — retirer `.prose-lesson p { overflow-x: auto }`,
@@ -1422,6 +1424,17 @@ les pièces communes. Le rendu RÉEL, WebGL par SwiftShader.
 Mesuré le 2026-09-24 : **48 mesures, 12 familles, VERT** ; `--essai-rouge` —
 dont la misconception même de la leçon, le rayon non élevé au carré
 (V = π ∫ f) : **9/9 familles crient**.
+
+**ET LE PRODUIT, SABOTÉ (ADR 0038).** Retourner les attentes prouve que la porte
+SAIT rougir, pas qu'elle voit un défaut réel. Deux défauts posés dans le code du
+produit, rebâtis, passés à la porte entière, retirés — les deux formes de la
+misconception que la scène doit casser :
+- la coupe dessinée en ANNEAU (`solide-revolution.ts`, rayon intérieur 0,8 f) :
+  **ROUGE, 2/48, famille `pixels` seule** — rempli à 41 % et 38 % de π R², pour
+  un cercle toujours rond et du bon rayon ;
+- le volume sans le carré, π ∫ f (`revolution.ts`) : **ROUGE, 8/48, familles
+  `nombres` (7) et `frontiere` (1) seules** — 16,76 lu pour 8π ≈ 25,13 ; la
+  frontière compare le volume lu au VRAI, d'où son rouge.
 
 **LE PREMIER PASSAGE ÉTAIT ROUGE — SIX FOIS, ET C'ÉTAIT LA SONDE.** Elle jugeait
 « teinté d'accent » un pixel dont l'écart au fond allait vers l'accent ; sur

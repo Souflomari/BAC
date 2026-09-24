@@ -636,11 +636,9 @@ Une troisième question, toujours dans le registre du bac, sur l'intervalle $[1,
      toute primitive candidate ailleurs dans cette leçon (chapitre 2,
      chapitre 8). Aucun nouveau prérequis n'est donc introduit ; signalé
      pour la relecture par prudence, comme le point (2).
-     (6) items.yaml, checkpoints.yaml et le descripteur de scène
-     `media/solide-de-revolution.json` sont produits par d'autres auteurs en
-     parallèle sur la base du même spec-extension.md ; les marqueurs
-     `[[figure:volume-revolution-tranche]]`, `[[figure:unite-de-volume-cube]]`,
-     `[[embed:solide-de-revolution]]` et `[[checkpoint:cp-volume-disque]]`
-     posés dans R9 attendent ces livrables pour résoudre (validate-content les
-     signalera comme non résolus tant qu'ils ne sont pas livrés).
+     (6) [LIVRÉ, 2026-09-24] items.yaml, checkpoints.yaml, les deux figures
+     et le descripteur de scène `media/solide-de-revolution.json` ont été
+     produits en parallèle sur la base du même spec-extension.md, puis revus
+     (spec-extension.md §9 bis) ; les marqueurs de R9 résolvent tous
+     (validate-content : 0 échec). Rien n'attend plus ici.
 -->

@@ -306,6 +306,13 @@ est sombre — et n'importe quel gris plus sombre s'y projette : 78 366 pixels
 couleur moins son gris). Règle pour les portes à venir : une couleur qui porte
 un sens se reconnaît à sa teinte, jamais à sa luminance seule.
 
+**Et la porte a été éprouvée sur le PRODUIT, pas seulement sur ses attentes**
+(ADR 0038). Les deux formes de la misconception, posées dans le code et
+rebâties : la coupe dessinée en anneau fait rougir la famille `pixels` seule
+(disque rempli à 41 et 38 %) ; le volume sans le carré, π ∫ f, fait rougir
+`nombres` et `frontiere` seules (16,76 lu pour 8π ≈ 25,13). Chaque défaut n'a
+atteint que la porte qui le garde.
+
 ## Retractions and Corrections
 
 - **2026-09-23 — la « deuxième scène » annoncée n'était pas la bonne
