@@ -142,7 +142,7 @@ const HORS_CHAMP = new Set([
   "header-manifestes.mjs",
   // verdict-qcm répond à des QCM dans un navigateur sur des leçons construites :
   // build ET Playwright. Hors champ ici pour la même raison que dom-truth —
-  // ARMÉE en CI sur six leçons (§11.184). Son rouge se rejoue :
+  // ARMÉE en CI sur le corpus entier, job `qcm` (§11.184, §11.193). Son rouge se rejoue :
   // `node scripts/verdict-qcm.mjs --essai-rouge <routes…>`.
   "verdict-qcm.mjs",
   // scene-orbite ouvre la scène 3D dans un Chromium qui dessine en WebGL
@@ -167,6 +167,12 @@ const HORS_CHAMP = new Set([
   // révolution, maths/calcul-integral R9), WebGL et deux passages en CI (job
   // `scenes`) ; `node scripts/scene-revolution.mjs --essai-rouge`.
   "scene-revolution.mjs",
+  // etroit-sweep balaie le corpus entier au navigateur, à 320, 360 et 390 px :
+  // build ET Playwright, ~6 min. Hors champ ici pour la même raison que
+  // dom-truth — ARMÉE en CI dans son propre job, `telephone` (§11.193). Son
+  // rouge se rejoue : `node scripts/etroit-sweep.mjs --essai-rouge` (serveur
+  // lancé à part, BASE=…).
+  "etroit-sweep.mjs",
   // temps-de-chargement mesure TTFB/FCP/LCP au navigateur, réseau bridé, trois
   // passages par route : build, Playwright, et des millisecondes qui sont
   // celles de CETTE machine. Ce n'est PAS une porte et ce n'en sera pas une —

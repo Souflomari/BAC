@@ -1064,7 +1064,9 @@ le même arbre.
 
 ## `web/scripts/verdict-qcm.mjs` — l'élève qui répond JUSTE est-il dit juste ?
 
-**PORTE, armée en CI (59ᵉ étape) sur six leçons ; corpus entier à la main.**
+**PORTE, armée en CI sur le corpus ENTIER — job `qcm`, parallèle (§11.193,
+DÉCISIONS §17) ; essai rouge sur six leçons, même build.** Avant : six leçons
+seulement, dans le job `gates` (59ᵉ étape), le corpus à la main.
 Elle lève la note que `dom-truth` portait depuis longtemps sans que personne
 l'atteigne :
 
@@ -1108,6 +1110,12 @@ pas de repli `<details>` — il révèle le feedback de la ligne correcte
 (`revealCorrectFeedback`) ; on exige le verdict, pas le dépliant.
 Corpus : **1 481 réponses d'item + 362 de point d'arrêt**, toutes justes ;
 essai rouge **72/72** sur les deux surfaces.
+
+Remesuré le 2026-09-24, avec le barreau neuf de calcul intégral (§11.193),
+avant d'armer le corpus entier en CI : **1 497 réponses d'item + 364 de point
+d'arrêt** sur 62 leçons, VERT ; 1 629 items, 132 hors banque de fin, 132/132
+surfacés en point d'arrêt ; **15 min 04 s** en local. Essai rouge sur les six
+leçons du job : **177/177** contradictions signalées, 1 min 31 s.
 
 **Pas d'entrée au manifeste des essais rouges**, même raison : la sabotage
 naturelle serait un `.tsx` ou un `.yaml`, et la porte mesure un DOM rendu après

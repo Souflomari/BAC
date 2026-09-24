@@ -14825,3 +14825,15 @@ public et les jobs parallèles ont retiré ce coût : elle tourne dans son propr
 job, `telephone`, avec un essai rouge neuf (un bloc de 2 000 px posé dans
 quatre pages avant la mesure : 4 débords sur 4). Mesurée en local : 0 débord,
 6 min 02 s — et de nouveau 0 avec la leçon neuve (6 min 06 s).
+
+**ET LE VERDICT DES QCM, SUR LE CORPUS ENTIER.** Même prémisse, même levée
+(DÉCISIONS §17) : `verdict-qcm` ne tournait en CI que sur six leçons parce que
+les soixante-deux coûtaient ~13 min d'un job qui n'en avait plus. Il tourne
+maintenant sur le corpus entier dans un job parallèle, `qcm` — chaque item de
+banque et chaque point d'arrêt, les deux sens — et son essai rouge reste sur les
+six leçons historiques, sur le même build. L'étape quitte le job `gates` (~3 min
+de moins sur le mur). Mesuré en local avant d'être armé, avec la leçon neuve :
+vert sur les 62 leçons — 1 497 réponses d'item + 364 de point d'arrêt, 1 629
+items dont 132 hors banque de fin, 132/132 surfacés en point d'arrêt — en
+15 min 04 s ; essai rouge sur les six leçons : 177 contradictions sur 177
+réponses, 1 min 31 s.

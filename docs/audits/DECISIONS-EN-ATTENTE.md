@@ -1,6 +1,6 @@
 # Décisions en attente — ce qui demande le propriétaire
 
-**Dernière mise à jour : 2026-09-24** (§16 levée par son prémisse ; §18 neuve). Cette page existe parce qu'il n'y avait
+**Dernière mise à jour : 2026-09-24** (§16 et §17 levées par leur prémisse ; §18 neuve). Cette page existe parce qu'il n'y avait
 nulle part où voir, d'un coup d'œil, ce qui attend un arbitrage. Les constats
 vivent dans `docs/audits/` et le récit dans `docs/HANDOFF.md` §11 ; ceci est
 seulement la liste, et ce que coûte chaque attente.
@@ -538,7 +538,21 @@ qu'on y pense.
 
 ---
 
-## 17. Le verdict des QCM : six leçons en CI, ou les soixante-deux ?
+## 17. ~~Le verdict des QCM : six leçons en CI, ou les soixante-deux ?~~ — LES SOIXANTE-DEUX, ARMÉES le 2026-09-24
+
+> **LEVÉE PAR SON PRÉMISSE, comme §16** (§11.193). La seule objection écrite
+> ci-dessous est le BUDGET : un job unique de 50 min, où ~13 min de plus
+> passaient au-dessus. Les deux faits ont changé : le dépôt est public (les
+> minutes ne coûtent rien au propriétaire, §0) et les portes lourdes tournent
+> dans des jobs PARALLÈLES (§11.192), où une porte de plus n'allonge pas le mur.
+> `verdict-qcm` tourne sur le corpus entier dans son propre job, `qcm` ; son
+> essai rouge reste sur les six leçons historiques, sur le même build. Mesuré
+> avant d'être armé : vert sur les 62 leçons — **1 497 réponses d'item + 364 de
+> point d'arrêt**, 1 629 items dont 132 hors banque de fin, 132/132 surfacés en
+> point d'arrêt — en **15 min 04 s** ; essai rouge sur les six leçons : **177
+> contradictions sur 177 réponses**, 1 min 31 s. Si le dépôt redevient privé, la
+> question du coût redevient celle du propriétaire.
+
 
 **LE FAIT.** `verdict-qcm` (§11.184) vérifie ce que personne ne vérifiait : après
 une réponse, le produit dit-il « juste » à une bonne réponse et « faux » à un

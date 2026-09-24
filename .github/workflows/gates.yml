@@ -570,41 +570,9 @@ jobs:
           npm run header-manifestes
           node scripts/header-manifestes.mjs --essai-rouge
 
-      # PORTE VERDICT QCM (2026-09-22, §11.184). `dom-truth` portait depuis
-      # longtemps une note qu'aucun instrument n'avait levée :
-      #   TODO(post-answer states): the solution <summary> and correctness rows
-      #   only exist after answering an item — battery v2 should drive one
-      #   interaction.
-      # Personne ne vérifiait donc l'état APRÈS RÉPONSE. C'est le pire défaut
-      # possible pour ce produit : un élève à qui l'on dit « faux » alors qu'il
-      # a juste n'apprend pas — il perd confiance dans le seul juge qu'il a.
-      #
-      # La porte rejoue le MÊME mélange déterministe que le produit
-      # (`lib/shuffle.ts`, graine = id de l'item) pour savoir à quelle POSITION
-      # la bonne réponse atterrit, clique cette position et exige
-      # « Bonne réponse. », puis clique un distracteur et exige l'inverse.
-      # Aucune comparaison de texte rendu : la typographie et KaTeX le
-      # réécrivent (ADR 0039).
-      #
-      # SIX LEÇONS en CI, une par famille de contenu — 73 s mesurées en local
-      # (2 min 54 s sur le runner, run 744). Le « budget de 50 min dont ~38 sont
-      # pris » écrit ici était une estimation LOCALE : le premier vrai runner a
-      # coupé le job à 50 min, 24 étapes avant la fin (§11.188, en-tête du job).
-      # Le corpus ENTIER (62 leçons,
-      # 1 481 réponses, ~13 min) se lance à la main ; l'arbitrage « tout le
-      # corpus en CI ? » est en DECISIONS §17, parce que dépenser le budget du
-      # propriétaire n'est pas une décision de mesure.
-      #
-      # DEUX PASSAGES : vert, puis `--essai-rouge` qui décale de −1 la position
-      # attendue — la cible « juste » tombe alors sur un distracteur ET la
-      # cible « distracteur » sur la vraie bonne réponse, donc les DEUX sens
-      # doivent crier. Une porte verte les deux fois est aveugle (ADR 0034).
-      - name: "Verdict des QCM (vert puis rouge)"
-        run: |
-          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
-          lecons="/notions/maths/suites-numeriques /notions/pc/rlc-serie /notions/philo/la-liberte /notions/svt/liberation-energie-matiere-organique /notions/maths/nombres-complexes-1 /notions/pc/ondes-mecaniques-progressives"
-          node scripts/verdict-qcm.mjs --porte $lecons
-          node scripts/verdict-qcm.mjs --essai-rouge $lecons
+      # LE VERDICT DES QCM est dans le job `qcm`, plus bas, sur le corpus ENTIER
+      # (62 leçons) et EN PARALLÈLE de celui-ci (§11.193, DÉCISIONS §17). Il
+      # tournait ici sur six leçons, faute de budget.
 
       # LES CINQ PORTES DE SCÈNE 3D sont dans le job `scenes`, plus bas, qui
       # tourne EN PARALLÈLE de celui-ci (§11.192, §11.193).
@@ -1070,3 +1038,81 @@ jobs:
           for i in $(seq 1 60); do curl -sf -o /dev/null http://localhost:3433/ && break; sleep 1; done
           node scripts/etroit-sweep.mjs
           node scripts/etroit-sweep.mjs --essai-rouge
+
+  # LE VERDICT DES QCM SUR LE CORPUS ENTIER (DÉCISIONS §17, levée par son
+  # prémisse, comme §16). `verdict-qcm` répond à la question la plus grave du
+  # produit — l'élève qui répond JUSTE est-il dit juste ? — et le job `gates`
+  # ne la posait qu'à six leçons, faute de budget : le corpus entier coûtait
+  # ~13 min locales, le job unique en avait 50 et les avait déjà mangées. Les
+  # deux raisons sont tombées : le dépôt est public, et un job PARALLÈLE
+  # n'allonge pas le mur. Un item cassé SEUL — une donnée mal formée qu'aucune
+  # porte de contenu n'attrape — n'est vu que par le corpus entier.
+  # Vert sur les 62 leçons (chaque item, chaque point d'arrêt, dans les deux
+  # sens), puis l'essai rouge sur les six leçons historiques : il prouve que
+  # la porte sait rougir, dans CE job, sur CE build (ADR 0034).
+  qcm:
+    runs-on: ubuntu-latest
+    # install + build + 62 leçons + essai rouge : ~40 min attendues (15 min
+    # 04 s en local pour le corpus, 1 min 31 s pour l'essai rouge ; le runner
+    # était ~2,4 fois plus lent sur les six leçons, run 744). 75 garde la marge
+    # d'un runner plus lent encore, et attrape toujours un vrai blocage.
+    timeout-minutes: 75
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Cache Next.js build cache
+        uses: actions/cache@v4
+        with:
+          path: web/.next/cache
+          key: nextjs-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}-${{ github.sha }}
+          restore-keys: |
+            nextjs-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}-
+
+      - name: Install Chromium for the QCM verdict
+        run: npx playwright@1.61.1 install --with-deps chromium
+
+      # One retry: the next/font Google fetch is the known transient here.
+      - name: Build
+        run: npm run build || { echo "::warning::build retry (next/font fetch flake)"; npm run build; }
+
+      # PORTE VERDICT QCM (2026-09-22, §11.184). `dom-truth` portait depuis
+      # longtemps une note qu'aucun instrument n'avait levée :
+      #   TODO(post-answer states): the solution <summary> and correctness rows
+      #   only exist after answering an item — battery v2 should drive one
+      #   interaction.
+      # Personne ne vérifiait donc l'état APRÈS RÉPONSE. C'est le pire défaut
+      # possible pour ce produit : un élève à qui l'on dit « faux » alors qu'il
+      # a juste n'apprend pas — il perd confiance dans le seul juge qu'il a.
+      #
+      # La porte rejoue le MÊME mélange déterministe que le produit
+      # (`lib/shuffle.ts`, graine = id de l'item) pour savoir à quelle POSITION
+      # la bonne réponse atterrit, clique cette position et exige
+      # « Bonne réponse. », puis clique un distracteur et exige l'inverse —
+      # chaque item de banque, chaque point d'arrêt. Aucune comparaison de
+      # texte rendu : la typographie et KaTeX le réécrivent (ADR 0039).
+      #
+      # DEUX PASSAGES : vert sur le corpus entier, puis `--essai-rouge` qui
+      # décale de −1 la position attendue — la cible « juste » tombe alors sur
+      # un distracteur ET la cible « distracteur » sur la vraie bonne réponse,
+      # donc les DEUX sens doivent crier. Une porte verte les deux fois est
+      # aveugle (ADR 0034). L'essai rouge garde les six leçons historiques (une
+      # par famille de contenu) : il prouve que la porte sait rougir, pas que
+      # le corpus est juste — c'est le premier passage qui le dit.
+      - name: "Verdict des QCM — le corpus entier (vert), puis six leçons (rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/verdict-qcm.mjs --porte
+          lecons="/notions/maths/suites-numeriques /notions/pc/rlc-serie /notions/philo/la-liberte /notions/svt/liberation-energie-matiere-organique /notions/maths/nombres-complexes-1 /notions/pc/ondes-mecaniques-progressives"
+          node scripts/verdict-qcm.mjs --essai-rouge $lecons
