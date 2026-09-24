@@ -55,6 +55,10 @@ misconceptions:
     label: "« Appliquer la périodicité spatiale (longueur d'onde λ = v·T) à une perturbation unique non périodique »"
     description: "L'élève importe λ = v·T (notion des ondes périodiques) pour une perturbation isolée, ou confond longueur d'onde et retard, ou invoque une fréquence pour un signal non périodique."
     contradicts_principle: "Une perturbation unique n'a ni période T ni longueur d'onde λ : λ = v·T ne concerne que les ondes PÉRIODIQUES (chapitre suivant). Le décalage entre deux points d'une onde progressive est gouverné par le retard τ = d/v."
+  - id: mc.physics.pc_omp.photo-film-confondus
+    label: "« Confondre la PHOTO de la corde (élongation en fonction de la distance x, à un instant figé) et le FILM d'un point (élongation en fonction du temps t, à une abscisse figée) »"
+    description: "L'élève lit ou dessine un graphe sans identifier son axe des abscisses. Formes : recopier le geste de la source y_S(t) tel quel comme aspect de la corde, au lieu de son MIROIR (le point le plus éloigné de S rejoue ce que S a fait en PREMIER) ; lire une durée sur une photo (ou une distance sur un film) sans passer par la célérité ; conclure d'un graphe qu'un point « monte puis descend » alors que le graphe montre une corde, ou l'inverse. Ce modèle répond CORRECTEMENT à toute question purement numérique sur τ = d/v : il ne se révèle qu'en demandant de LIRE ou de DESSINER une corde."
+    contradicts_principle: "Une photo et un film sont deux coupes différentes du même phénomène : la photo fige le temps et parcourt l'espace, le film fige l'espace et parcourt le temps. Sur une photo, une largeur est une DISTANCE (on passe à une durée en divisant par v) et la forme est le geste de la source RETOURNÉ, parce qu'on remonte le temps du geste en s'éloignant de S. Sur un film, l'abscisse est une DURÉE et la courbe de M est celle de S décalée de +τ vers la droite."
 
 items:
   - id: OMP-1
@@ -1428,6 +1432,467 @@ items:
       **Ce qu'on peut légitimement calculer** sur une perturbation unique : sa
       célérité, son retard entre deux points, son amplitude. Pas sa période.
 
+  # Ajoutés le 2026-09-24 (spec-scene-corde.md §8.3, §13 q.3 et q.7) : le
+  # onzième modèle `photo-film-confondus` — l'élève lit ou dessine un graphe
+  # sans identifier son axe des abscisses — et un item de plus sur
+  # `celerite-est-vitesse-point`, dont la famille du banc ne tenait qu'à une
+  # étiquette (OMP-20 D) que son propre feedback contredit (REVIEW-2026-09-19).
+  - id: OMP-22
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [photo, film, aspect_corde]
+    primary_misconception: mc.physics.pc_omp.photo-film-confondus
+    stem: >
+      La source $S$, à l'extrémité d'une corde tendue, monte de $0$ à
+      $2{,}0\ \text{cm}$ en $0{,}10\ \text{s}$, puis reste immobile en
+      position haute. La célérité des perturbations sur cette corde vaut
+      $5{,}0\ \text{m/s}$. On photographie la corde entière à l'instant
+      $t_1 = 0{,}30\ \text{s}$. Quel est l'aspect de la corde sur cette
+      photo ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La corde n'est déformée que sur les $6\ \text{cm}$ qui suivent
+          $S$, et reste au repos au-delà.
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          Vérifie l'opération sur les unités, le contrôle le moins cher de
+          la physique : une durée divisée par une célérité donne
+          $\text{s} \div (\text{m}/\text{s})$, ce n'est pas une longueur.
+          Pour savoir jusqu'où la perturbation est allée en
+          $0{,}30\ \text{s}$, il faut MULTIPLIER :
+          $v\,t_1 = 5{,}0 \times 0{,}30 = 1{,}50\ \text{m}$ — c'est la
+          position du front, pas $6\ \text{cm}$.
+      - id: B
+        text: >-
+          Toute la corde est déformée, l'élongation décroissant
+          progressivement à mesure qu'on s'éloigne de $S$, jusqu'à devenir
+          nulle loin en avant.
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          Une élongation qui décroît progressivement jusqu'à l'infini
+          suppose une célérité infinie, donc aucun front. Ici
+          $v = 5{,}0\ \text{m/s}$ est finie : il existe un point le plus
+          avancé, à $v\,t_1 = 1{,}50\ \text{m}$, au-delà duquel la corde
+          n'a strictement rien reçu. Ce n'est pas une décroissance
+          continue : c'est un plateau, une pente, puis le repos strict.
+      - id: C
+        text: >-
+          La corde est à $2{,}0\ \text{cm}$ de $S$ jusqu'à
+          $1{,}00\ \text{m}$, descend en pente jusqu'à $0$ à
+          $1{,}50\ \text{m}$, et reste au repos au-delà.
+        correct: true
+      - id: D
+        text: >-
+          La corde est au repos jusqu'à $1{,}00\ \text{m}$, puis monte en
+          pente jusqu'à $2{,}0\ \text{cm}$ à $1{,}50\ \text{m}$, et reste à
+          $2{,}0\ \text{cm}$ au-delà.
+        correct: false
+        misconception: mc.physics.pc_omp.photo-film-confondus
+        feedback: >
+          C'est le graphe du geste recopié tel quel le long de la corde —
+          l'erreur la plus fréquente de cette question de bac. Le point le
+          plus avancé (à $1{,}50\ \text{m}$) vient juste d'être atteint : il
+          n'a eu le temps de rejouer que le tout début du geste, c'est-à-dire
+          zéro, pas $2{,}0\ \text{cm}$. Et rien ne peut bouger au-delà du
+          front. En parcourant la corde de $S$ vers l'avant, on remonte le
+          temps du geste : la photo est le geste retourné.
+    correct_feedback: >
+      Trois gestes, dans l'ordre. Où est le front ?
+      $v\,t_1 = 5{,}0 \times 0{,}30 = 1{,}50\ \text{m}$. De quel côté la
+      pente ? Du côté du front, puisqu'il rejoue le DÉBUT du geste. Quelle
+      largeur ? La montée a duré $0{,}10\ \text{s}$, soit
+      $5{,}0 \times 0{,}10 = 0{,}50\ \text{m}$ de corde : la pente va de
+      $1{,}00$ à $1{,}50\ \text{m}$.
+    solution: |
+      **Le front.** La perturbation avance à $v = 5{,}0\ \text{m/s}$ ; à
+      l'instant $t_1 = 0{,}30\ \text{s}$, elle a parcouru
+      $v\,t_1 = 5{,}0 \times 0{,}30 = 1{,}50\ \text{m}$. Au-delà, la corde
+      n'a encore rien reçu : elle est au repos.
+
+      **Le sens de la pente.** Le point le plus avancé (à $1{,}50\ \text{m}$)
+      vient juste d'être atteint : il ne rejoue que le tout début du geste
+      de $S$, c'est-à-dire une élongation nulle. Le point juste après $S$,
+      lui, a été atteint depuis $0{,}30\ \text{s}$ : il a eu le temps de
+      rejouer toute la montée, il est donc à $2{,}0\ \text{cm}$. En
+      s'éloignant de $S$, on remonte donc le temps du geste : la pente
+      descend vers l'avant.
+
+      **La largeur de la pente.** La montée de $S$ a duré $0{,}10\ \text{s}$,
+      soit $v \times 0{,}10 = 0{,}50\ \text{m}$ de corde. La pente occupe
+      donc les $0{,}50\ \text{m}$ situés entre $1{,}00\ \text{m}$ et
+      $1{,}50\ \text{m}$ ; avant $1{,}00\ \text{m}$, tous les points ont fini
+      de monter, la corde y est plate à $2{,}0\ \text{cm}$.
+
+  - id: OMP-23
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [photo, lecture_graphique, distance_vs_duree]
+    primary_misconception: mc.physics.pc_omp.photo-film-confondus
+    stem: >
+      Sur une corde de célérité $v = 5{,}0\ \text{m/s}$, un élève dispose
+      d'un graphe où, en abscisse, figure la distance $x$ à la source, en
+      mètres ; la corde y est déformée entre $x = 0{,}60\ \text{m}$ et
+      $x = 1{,}10\ \text{m}$, et au repos partout ailleurs. Il en conclut :
+      « la perturbation a duré $0{,}50\ \text{s}$ ». Que penser de cette
+      conclusion ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Il a raison : sur un graphe de ce type, la largeur d'une
+          déformation EST, directement, la durée du geste qui l'a créée —
+          ici $0{,}50\ \text{s}$.
+        correct: false
+        misconception: mc.physics.pc_omp.photo-film-confondus
+        feedback: >
+          Sur ce graphe, l'abscisse est une distance $x$, pas un temps $t$
+          — c'est l'énoncé qui le dit. Une largeur en mètres n'est jamais
+          directement une durée en secondes, même quand les deux nombres se
+          ressemblent : $0{,}50\ \text{m}$ n'est pas $0{,}50\ \text{s}$.
+          Pour passer de l'un à l'autre, il faut diviser par la célérité,
+          jamais lire l'un pour l'autre.
+      - id: B
+        text: >-
+          Il a tort : ici l'abscisse est une distance, pas un temps ;
+          $0{,}50\ \text{m}$ n'est pas $0{,}50\ \text{s}$. La durée du
+          geste s'obtient en divisant par la célérité :
+          $0{,}50/5{,}0 = 0{,}10\ \text{s}$.
+        correct: true
+      - id: C
+        text: >-
+          Il a tort, mais l'erreur est dans le sens du calcul : il fallait
+          MULTIPLIER par la célérité,
+          $0{,}50 \times 5{,}0 = 2{,}5\ \text{s}$, pas diviser.
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          Diviser ou multiplier n'est pas affaire d'intuition, c'est
+          affaire d'unités. $0{,}50\ \text{m} \times 5{,}0\ \text{m/s} =
+          2{,}5\ \text{m}^2/\text{s}$ : ce n'est pas une durée. Pour
+          convertir une distance en durée, on DIVISE par la célérité —
+          l'inverse du calcul qui donnerait une distance à partir d'une
+          durée : $0{,}50/5{,}0 = 0{,}10\ \text{s}$.
+      - id: D
+        text: >-
+          On ne peut rien conclure sur une durée sans connaître la
+          fréquence de la source, qui n'est pas donnée dans l'énoncé.
+        correct: false
+        misconception: mc.physics.pc_omp.periodicite-hors-cadre
+        feedback: >
+          Une déformation unique, isolée entre deux zones au repos, n'a pas
+          de fréquence à chercher : la fréquence décrit une répétition, et
+          rien ici ne se répète. La durée du geste se déduit de la largeur
+          de la déformation et de la célérité, $x/v$ — aucune donnée de
+          plus n'est nécessaire.
+    correct_feedback: >
+      L'élève a fait l'erreur la plus fréquente de cette question de bac :
+      confondre les deux axes. Sur ce graphe, l'abscisse est une distance
+      ($x$, en mètres) : la largeur de la déformation,
+      $1{,}10 - 0{,}60 = 0{,}50\ \text{m}$, est une longueur de corde, pas
+      une durée. Pour obtenir la durée du geste, on divise par la
+      célérité : $0{,}50/5{,}0 = 0{,}10\ \text{s}$.
+    solution: |
+      Le graphe donné a pour abscisse la distance $x$ à la source (c'est
+      écrit dans l'énoncé), pas le temps. La déformation occupe
+      $1{,}10 - 0{,}60 = 0{,}50\ \text{m}$ de corde.
+
+      Cette largeur est une DISTANCE. Pour la convertir en durée, on divise
+      par la célérité — jamais l'inverse :
+      $$\frac{0{,}50}{5{,}0} = 0{,}10\ \text{s}$$
+
+      La perturbation a donc duré $0{,}10\ \text{s}$, pas $0{,}50\ \text{s}$ :
+      l'élève a lu un nombre en mètres comme s'il était en secondes.
+
+  - id: OMP-24
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [photo, film, miroir]
+    primary_misconception: mc.physics.pc_omp.photo-film-confondus
+    stem: >
+      Le film du point $M$ d'une corde montre une montée rapide
+      ($0{,}05\ \text{s}$) suivie d'une descente lente ($0{,}15\ \text{s}$).
+      On photographie ensuite la corde à un instant où la perturbation la
+      parcourt en entier. De quel côté se trouve le flanc raide de la bosse
+      sur cette photo ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Du côté de $S$ : c'est là que la montée rapide a été produite,
+          donc c'est là qu'elle doit apparaître sur la photo.
+        correct: false
+        misconception: mc.physics.pc_omp.photo-film-confondus
+        feedback: >
+          C'est l'inverse. Le point juste à côté de $S$ a été atteint il y
+          a longtemps : il a eu le temps de rejouer TOUTE la bosse, montée
+          et descente confondues — il est donc déjà revenu à zéro, pas en
+          train de raidir. C'est le point le plus loin, celui que la
+          perturbation vient juste d'atteindre, qui rejoue le tout début du
+          geste : la montée rapide. Le flanc raide est devant, pas derrière.
+      - id: B
+        text: >-
+          La photo montre une bosse symétrique : l'asymétrie du geste ne
+          se voit que sur le film, jamais sur la photo.
+        correct: false
+        misconception: mc.physics.pc_omp.photo-film-confondus
+        feedback: >
+          La photo garde la forme du geste — RETOURNÉE, pas symétrisée.
+          Rien, dans le mécanisme de propagation de proche en proche, ne
+          vient arrondir ou égaliser les deux flancs : la montée rapide
+          ($0{,}05\ \text{s}$) reste courte, la descente lente
+          ($0{,}15\ \text{s}$) reste longue, seulement échangées de côté.
+          La bosse sur la photo est donc, elle aussi, asymétrique — flanc
+          raide devant, traîne douce derrière.
+      - id: C
+        text: >-
+          Le flanc raide s'adoucit à mesure qu'il avance, parce que
+          l'avant d'une bosse se propage plus vite que son arrière.
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-depend-source
+        feedback: >
+          Sur cette corde, tous les points de la perturbation avancent à
+          la même célérité — elle ne dépend que du milieu, jamais de la
+          partie de la bosse considérée. La bosse se translate sans se
+          déformer : ni l'avant ni l'arrière ne va plus vite que l'autre.
+          Ce qui change de côté, c'est le sens de lecture du geste, pas sa
+          vitesse de propagation.
+      - id: D
+        text: >-
+          Du côté du front, le plus loin de $S$ : il rejoue ce que $S$ a
+          fait EN PREMIER — la montée rapide. Flanc raide vers l'avant,
+          traîne douce vers $S$.
+        correct: true
+    correct_feedback: >
+      Même règle qu'une photo isolée : le point le plus avancé vient
+      d'être atteint, il ne rejoue que le DÉBUT du geste — ici la montée
+      rapide, $0{,}05\ \text{s}$. Le flanc raide (produit en premier) se
+      retrouve donc devant, côté front ; la traîne douce (la descente
+      lente, $0{,}15\ \text{s}$, produite en dernier) reste derrière, côté
+      $S$. La photo est le film retourné.
+    solution: |
+      Le geste de $S$, dans l'ordre où il se produit : montée rapide
+      ($0{,}05\ \text{s}$), puis descente lente ($0{,}15\ \text{s}$).
+
+      Sur la photo, on remonte le temps du geste en s'éloignant de $S$ :
+      le point le plus avancé (le front) vient juste d'être atteint, il ne
+      rejoue que le tout début du geste — la montée rapide. Le point juste
+      après $S$, lui, a été atteint depuis longtemps : il rejoue la fin du
+      geste — la descente lente.
+
+      La photo montre donc un flanc raide du côté du front (la montée
+      rapide, retournée en pente raide côté avant) et une longue traîne
+      douce du côté de $S$ (la descente lente, retournée en pente douce
+      côté arrière) — l'exact inverse du film.
+
+  - id: OMP-25
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [celerite, retard, vitesse_point]
+    primary_misconception: mc.physics.pc_omp.celerite-est-vitesse-point
+    stem: >
+      Sur la corde de l'exemple travaillé du cours, la source $S$ monte de
+      $0$ à $3{,}0\ \text{cm}$ en $0{,}10\ \text{s}$, puis reste immobile
+      en position haute. Un point $M$, à $d = 1{,}2\ \text{m}$ de $S$,
+      commence à bouger avec un retard $\tau = 0{,}30\ \text{s}$, et met
+      lui aussi $0{,}10\ \text{s}$ pour monter de $0$ à $3{,}0\ \text{cm}$.
+      Que valent, respectivement, la célérité de la perturbation le long
+      de la corde et la vitesse moyenne à laquelle $M$ monte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $v = d/\tau = 1{,}2/0{,}30 = 4{,}0\ \text{m/s}$ pour la
+          perturbation ; $0{,}030/0{,}10 = 0{,}30\ \text{m/s}$ pour $M$ —
+          deux vitesses distinctes, la seconde environ treize fois plus
+          petite que la première.
+        correct: true
+      - id: B
+        text: >-
+          $4{,}0\ \text{m/s}$ pour les deux : c'est la vitesse à laquelle
+          $M$ lui-même avance le long de la corde, en même temps qu'il
+          monte.
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-est-vitesse-point
+        feedback: >
+          Deux mouvements bien différents se superposent ici, et il faut
+          les compter séparément. $M$ OSCILLE : il monte de
+          $3{,}0\ \text{cm}$ en $0{,}10\ \text{s}$, verticalement, puis
+          s'arrête — sa vitesse moyenne de montée vaut
+          $0{,}030/0{,}10 = 0{,}30\ \text{m/s}$. La perturbation, elle,
+          AVANCE le long de la corde, horizontalement, à
+          $4{,}0\ \text{m/s}$. $M$ ne se déplace jamais le long de la
+          corde : il reste à $d = 1{,}2\ \text{m}$ de $S$, du début à la
+          fin.
+      - id: C
+        text: >-
+          $v = \tau/d = 0{,}30/1{,}2 = 0{,}25\ \text{m/s}$ pour la
+          perturbation ; $0{,}30\ \text{m/s}$ pour la montée de $M$.
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          Le retard se calcule avec la distance DIVISÉE par la célérité,
+          $\tau = d/v$, donc $v = d/\tau$ — pas l'inverse. Avec le bon
+          rapport : $v = 1{,}2/0{,}30 = 4{,}0\ \text{m/s}$, pas
+          $0{,}25\ \text{m/s}$.
+      - id: D
+        text: >-
+          $M$ n'a pas de vitesse propre à part : c'est la matière de la
+          corde elle-même qui est transportée jusqu'à lui à
+          $4{,}0\ \text{m/s}$, et cette translation est ce qu'on appelle
+          sa « montée ».
+        correct: false
+        misconception: mc.physics.pc_omp.onde-transporte-matiere
+        feedback: >
+          Aucun point de la corde ne voyage le long d'elle : chaque point,
+          une fois atteint, oscille verticalement autour de sa position de
+          repos, puis y reste (ici, il monte et s'arrête en haut). C'est
+          la PERTURBATION — pas la matière de la corde — qui avance à
+          $4{,}0\ \text{m/s}$ ; la « montée » de $M$ est un mouvement
+          vertical sur place, mesuré séparément : $0{,}30\ \text{m/s}$.
+    correct_feedback: >
+      Deux vitesses, deux axes, à ne jamais mélanger. La CÉLÉRITÉ mesure
+      l'avancée de la perturbation le long de la corde :
+      $v = d/\tau = 1{,}2/0{,}30 = 4{,}0\ \text{m/s}$. La vitesse de $M$
+      mesure sa MONTÉE, verticale, sur place :
+      $0{,}030/0{,}10 = 0{,}30\ \text{m/s}$, treize fois moins. $M$ ne
+      quitte jamais l'abscisse $d = 1{,}2\ \text{m}$.
+    solution: |
+      **La célérité de la perturbation** se calcule avec le retard et la
+      distance parcourue le long de la corde :
+      $$v = \frac{d}{\tau} = \frac{1{,}2}{0{,}30} = 4{,}0\ \text{m/s}$$
+
+      **La vitesse moyenne de montée de $M$** se calcule avec la hauteur
+      parcourue et la durée de cette montée — un mouvement vertical, sur
+      place :
+      $$\frac{0{,}030}{0{,}10} = 0{,}30\ \text{m/s}$$
+
+      Deux vitesses, deux directions, deux définitions : l'une décrit à
+      quelle vitesse la perturbation SE PROPAGE le long de la corde,
+      l'autre à quelle vitesse un point du milieu OSCILLE verticalement
+      sur place. $M$, lui, reste en permanence à $d = 1{,}2\ \text{m}$ de
+      $S$ : seule son élongation change, jamais son abscisse.
+
+  # Ajouté le 2026-09-24 (revue à deux critiques) : le savoir-faire « proposer
+  # un montage de mesure du retard temporel ou de la célérité » était à 0 %
+  # dans le banc (REVIEW-2026-09-19, §« Pour le propriétaire »). Item de
+  # protocole, pas de calcul : choisir le bon geste de mesure, pas la bonne
+  # formule.
+  - id: OMP-26
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [protocole_mesure, application_experimentale, celerite_retard]
+    primary_misconception: mc.physics.pc_omp.celerite-est-vitesse-point
+    stem: >
+      On veut mesurer la célérité d'un ébranlement unique, produit une
+      seule fois à une extrémité $S$ d'une corde tendue. On dispose, au
+      choix, d'une caméra qui prend un nombre connu d'images par seconde,
+      ou de deux détecteurs de passage placés le long de la corde et
+      reliés à un chronomètre. Quel protocole permet de déterminer
+      correctement cette célérité ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Filmer la corde, choisir deux photos numérotées, mesurer sur la
+          SECONDE seulement la distance entre $S$ et le front de
+          l'ébranlement, puis diviser cette distance par la durée séparant
+          les deux prises.
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          La distance mesurée part de $S$, à l'instant du départ de
+          l'ébranlement ; la durée utilisée, elle, ne compte que
+          l'intervalle ENTRE les deux photos, pas depuis ce départ. Les
+          deux bornes ne correspondent pas — c'est comme chronométrer
+          seulement le dernier tronçon d'un trajet, puis diviser par la
+          distance totale parcourue depuis le départ. Il faut soit mesurer
+          l'AVANCÉE du front entre les deux photos (une différence de
+          positions), soit diviser la distance totale depuis $S$ par la
+          durée totale écoulée depuis le départ — jamais mélanger une
+          borne totale et une borne partielle.
+      - id: B
+        text: >-
+          Filmer la corde à un nombre d'images par seconde connu, choisir
+          deux photos numérotées, repérer un même point identifiable de
+          l'ébranlement (son front, par exemple) sur chacune, et diviser
+          son avancée entre les deux photos par le nombre d'intervalles
+          qui les séparent, multiplié par la durée d'un intervalle.
+        correct: true
+      - id: C
+        text: >-
+          Filmer la corde à un nombre d'images par seconde connu, choisir
+          deux photos numérotées, mesurer de combien la hauteur du sommet
+          de l'ébranlement a changé entre les deux prises, et diviser
+          cette hauteur par la durée qui les sépare.
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-est-vitesse-point
+        feedback: >
+          Cette hauteur mesure le déplacement VERTICAL d'un point de la
+          corde — sa propre montée ou descente sur place — pas l'avancée
+          HORIZONTALE de l'ébranlement le long de la corde. Diviser une
+          hauteur par une durée donne bien une vitesse, mais celle d'un
+          point qui oscille, pas celle de la perturbation qui se propage :
+          deux mouvements différents, deux vitesses différentes. Pour la
+          célérité, il faut suivre un même point identifiable de la FORME
+          (son front, par exemple) le long de la corde, pas la hauteur
+          d'un point fixe.
+      - id: D
+        text: >-
+          Produire plusieurs ébranlements d'amplitudes différentes (un
+          coup léger, un coup franc), chronométrer chacun entre deux
+          détecteurs placés à distance fixe, et comparer les célérités
+          obtenues pour voir si la source influence la propagation.
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-depend-source
+        feedback: >
+          La célérité ne dépend que du milieu — ici la corde, sa tension,
+          sa masse par unité de longueur — jamais de l'amplitude du coup
+          qui crée l'ébranlement. Faire varier la source ne teste rien qui
+          puisse changer la célérité : les deux mesures redonneraient, aux
+          incertitudes près, la même valeur. Un protocole qui cherche à
+          FAIRE VARIER la célérité doit faire varier le MILIEU (la
+          distance entre les points de mesure, la tension de la corde),
+          jamais l'ébranlement lui-même.
+    correct_feedback: >
+      Le protocole correct isole un même point IDENTIFIABLE de la forme de
+      l'ébranlement (son front, par exemple) et suit son AVANCÉE le long
+      de la corde — une distance horizontale — entre deux instants connus.
+      Diviser cette avancée par la durée écoulée (nombre d'intervalles ×
+      durée d'un intervalle) donne la célérité ; mesurer une hauteur
+      donnerait la vitesse d'un point, pas celle de la perturbation.
+    solution: |
+      **Ce qu'il faut suivre.** Un ébranlement conserve sa forme en se
+      propageant (chapitre 2) : on peut donc repérer, sur deux photos
+      numérotées (ou deux passages devant des détecteurs), le MÊME point
+      de cette forme — son front, par exemple — et mesurer de combien il a
+      AVANCÉ le long de la corde.
+
+      **Ce qu'il ne faut pas mesurer.** La hauteur d'un point de la corde
+      décrit son mouvement VERTICAL, sur place : c'est une autre vitesse,
+      celle d'un point qui oscille, pas celle de la perturbation qui
+      avance. Et une distance mesurée depuis $S$ sur une seule photo,
+      divisée par une durée qui ne part pas de $S$, mélange deux origines
+      différentes.
+
+      **Le calcul.** Avec une caméra à un nombre d'images par seconde
+      connu, la durée entre deux photos numérotées s'obtient en
+      multipliant le nombre d'intervalles qui les séparent par la durée
+      d'un intervalle ; avec deux détecteurs, cette durée se lit
+      directement au chronomètre. Dans les deux cas :
+      $$v = \dfrac{\text{avancée du même point de la forme}}{\text{durée écoulée entre les deux mesures}}$$
+      Cette célérité ne dépend que de la corde : elle ne change ni si l'on
+      change l'amplitude du coup, ni si l'on change la paire de photos
+      choisie, tant que le milieu reste le même.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après OMP-19, OMP-20 et OMP-21. L'ancien déclarait
 # franchement `floor_met: false` et nommait la dette — mais il comptait au
@@ -1444,30 +1909,39 @@ coverage_summary:
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
-    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    apprenant est bâti sur le banc de fin seul ; les paris de la scène
+    corde-photo-film non plus. Tableau recompté contre
     web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
-    mc.physics.pc_omp.onde-transporte-matiere:              { count: 6, items: [OMP-1, OMP-2, OMP-7, OMP-8, OMP-9, OMP-10] }
+    mc.physics.pc_omp.onde-transporte-matiere:              { count: 7, items: [OMP-1, OMP-2, OMP-7, OMP-8, OMP-9, OMP-10, OMP-25] }
     mc.physics.pc_omp.onde-sans-energie:                    { count: 4, items: [OMP-2, OMP-7, OMP-8, OMP-10] }
     mc.physics.pc_omp.onde-sans-milieu:                     { count: 3, items: [OMP-1, OMP-6, OMP-9] }
     mc.physics.pc_omp.confusion-transversale-longitudinale: { count: 4, items: [OMP-3, OMP-11, OMP-12, OMP-17] }
-    mc.physics.pc_omp.celerite-depend-source:               { count: 4, items: [OMP-4, OMP-16, OMP-18, OMP-19] }
-    mc.physics.pc_omp.celerite-est-vitesse-point:           { count: 3, items: [OMP-19, OMP-20, OMP-21] }
-    mc.physics.pc_omp.retard-relation-fausse:               { count: 4, items: [OMP-5, OMP-13, OMP-16, OMP-17] }
+    mc.physics.pc_omp.celerite-depend-source:               { count: 6, items: [OMP-4, OMP-16, OMP-18, OMP-19, OMP-24, OMP-26] }
+    mc.physics.pc_omp.celerite-est-vitesse-point:           { count: 5, items: [OMP-19, OMP-20, OMP-21, OMP-25, OMP-26] }
+    mc.physics.pc_omp.retard-relation-fausse:               { count: 8, items: [OMP-5, OMP-13, OMP-16, OMP-17, OMP-22, OMP-23, OMP-25, OMP-26] }
     mc.physics.pc_omp.front-onde-dimension:                 { count: 3, items: [OMP-6, OMP-14, OMP-15] }
     mc.physics.pc_omp.son-nature:                           { count: 3, items: [OMP-6, OMP-20, OMP-21] }
-    mc.physics.pc_omp.periodicite-hors-cadre:               { count: 3, items: [OMP-18, OMP-19, OMP-21] }
-  total_items: 21
+    mc.physics.pc_omp.periodicite-hors-cadre:               { count: 4, items: [OMP-18, OMP-19, OMP-21, OMP-23] }
+    mc.physics.pc_omp.photo-film-confondus:                 { count: 3, items: [OMP-22, OMP-23, OMP-24] }
+  total_items: 26
   floor: 3
   floor_met: true
   ramp_coverage:
     R0: 3
     R1: 4
     R2: 3
-    R3: 4
+    R3: 9
     R4: 4
     R5: 3
   honest_state: >-
-    Les dix misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Cinq y siègent EXACTEMENT (3 items) : la marge est nulle
-    et tout retrait d'item la casse.
+    Les onze misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Quatre y siègent EXACTEMENT (3 items) : onde-sans-milieu,
+    front-onde-dimension, son-nature, et la onzième, photo-film-confondus
+    (ouverte le 2026-09-24 avec la scène corde-photo-film, spec §8) — la
+    marge y est nulle et tout retrait d'item la casse. OMP-25 et OMP-26
+    remontent celerite-est-vitesse-point à 5, ce qui laisse enfin de la marge
+    si l'étiquette contestée d'OMP-20 D (REVIEW-2026-09-19) venait à tomber.
+    OMP-26 est le premier item du banc sur le savoir-faire « proposer un
+    montage de mesure » (0 % jusqu'ici) — un QCM de protocole, pas encore
+    une production.

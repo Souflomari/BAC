@@ -101,7 +101,13 @@ Direction du déplacement des points de la corde : verticale. Direction de propa
 
 ---
 
-## R3 — Célérité, retard, et la relation $y_M(t) = y_S(t - \tau)$
+## R3 — Célérité, retard, et la relation entre $y_S$ et $y_M$
+
+Avant de lire quoi que ce soit de ce chapitre, va le chercher. Ci-dessous, une corde tendue de quatre mètres : à gauche, la main $S$ qui va lui donner une secousse ; plus loin, un point $M$ que tu pourras déplacer. On appellera **élongation** la hauteur d'un point au-dessus de sa position de repos — $y_S(t)$ pour la main, $y_M(t)$ pour le point $M$. La corde n'est dessinée à l'avance nulle part : sa forme est calculée pendant que tu regardes, à partir du seul geste de la main. Deux appareils t'attendent : un **film**, qui trace l'élongation d'un point au fil du temps, et une **photo**, qui fige la corde entière à un instant choisi. Tu paries d'abord, la corde répond ensuite.
+
+Une donnée de l'appareil, mesurée une fois pour toutes : sur cette corde-là, une secousse met $0{,}30\ \text{s}$ pour aller de $S$ jusqu'à $M$, qui est à $1{,}2\ \text{m}$. Ce qui **fixe** cette durée est précisément l'objet de ce chapitre.
+
+[[embed:corde-photo-film]]
 
 ### La célérité : de quoi elle dépend, et de quoi elle ne dépend pas
 
@@ -177,6 +183,19 @@ $$y_M(t) = y_S(t - \tau)$$
 
 Cette relation dit exactement ce que montrait le mécanisme : la courbe $y_M(t)$ est la courbe $y_S(t)$, **identique dans sa forme**, seulement décalée dans le temps de $\tau$. $M$ ne fait rien de nouveau ; il rejoue, en retard, ce que $S$ a déjà fait.
 
+### La photo et le film : deux graphiques, deux questions
+
+Il y a deux façons de dessiner ce qui se passe sur la corde, et l'examen les demande toutes les deux. Avant de lire un graphe, pose-toi **une seule** question : qu'y a-t-il sur l'axe horizontal ?
+
+- **Le film d'un point.** En abscisse, le **temps** $t$. On choisit un point — $M$, par exemple — et on note sa hauteur seconde après seconde. C'est la courbe $y_M(t)$, et c'est elle que décrit la relation $y_M(t) = y_S(t-\tau)$ : la même courbe que celle de la main, décalée vers la **droite** de $\tau$. Vers la droite, c'est-à-dire **plus tard** : $M$ ne peut pas bouger avant d'avoir été atteint.
+- **La photo de la corde.** En abscisse, la **distance** $x$ depuis $S$. On fige le temps à un instant $t_1$ et on dessine la corde entière. C'est ce qu'un sujet demande quand il parle de « l'aspect de la corde à l'instant $t_1$ » (ou, pour une cuve, de « l'aspect de la surface de l'eau »).
+
+Et voici ce qui piège tout le monde : **la photo n'est pas le geste recopié — c'est le geste retourné.** La raison tient en une phrase. Le point le plus éloigné de $S$ qui bouge est celui qui vient **juste** d'être atteint : il ne rejoue donc que le tout **début** du geste. Le point juste à côté de $S$, lui, a été atteint depuis longtemps : il en rejoue la **fin**. En parcourant la corde de $S$ vers l'avant, on **remonte le temps** du geste.
+
+Reprends la main de l'exemple travaillé : elle monte de $0$ à $3\ \text{cm}$ en $0{,}1\ \text{s}$, puis elle **reste** en haut ; la célérité vaut $4\ \text{m/s}$. Photographions la corde à $t_1 = 0{,}25\ \text{s}$. Le front — le point le plus avancé — est à $v\,t_1 = 4 \times 0{,}25 = 1{,}00\ \text{m}$ de $S$, et il est exactement à zéro : il vient d'être atteint. Le geste de montée a duré $0{,}1\ \text{s}$, soit $4 \times 0{,}1 = 0{,}40\ \text{m}$ de corde : la pente occupe donc les $40\ \text{cm}$ situés entre $0{,}60$ et $1{,}00\ \text{m}$. Avant $0{,}60\ \text{m}$, tous les points ont fini de monter : la corde y est plate, à $3\ \text{cm}$. Au-delà de $1{,}00\ \text{m}$, la perturbation n'est pas encore arrivée : la corde y est plate, à zéro. **Un plateau haut du côté de la main, une pente qui descend vers l'avant, rien au-delà du front** — l'exact retourné du graphe du geste.
+
+Le contrôle qui ne coûte rien, et qui sauve la question à l'examen : sur une photo, **la largeur d'une déformation est une distance**, pas une durée. Pour passer de l'une à l'autre, on divise ou on multiplie par $v$ — jamais autre chose.
+
 [[figure:onde-propagation-retard]]
 
 ### Calcule un retard, puis décris le mouvement
@@ -190,6 +209,8 @@ Calculons le retard :
 $$\tau = \frac{d}{v} = \frac{1{,}2}{4} = 0{,}3\ \text{s}$$
 
 $M$ reproduit donc exactement le mouvement de $S$, mais $0{,}3\ \text{s}$ plus tard. Concrètement : $y_M(t) = 0$ tant que $t < 0{,}3\ \text{s}$ (le mouvement n'est pas encore arrivé jusqu'à $M$) ; puis $y_M$ croît linéairement de $0$ à $3\ \text{cm}$ entre $t = 0{,}3\ \text{s}$ et $t = 0{,}4\ \text{s}$ (le même aller que celui de $S$, décalé de $\tau$) ; puis $y_M$ reste constante, égale à $3\ \text{cm}$, pour $t > 0{,}4\ \text{s}$.
+
+*Et la même situation, vue par l'autre axe.* Un sujet peut demander la suite : « représenter l'aspect de la corde à l'instant $t_1 = 0{,}35\ \text{s}$ ». Deux gestes, dans cet ordre. **Un :** où est le front ? À $v\,t_1 = 4 \times 0{,}35 = 1{,}40\ \text{m}$ de $S$ — au-delà, la corde n'a pas encore bougé. **Deux :** de quel côté la pente ? Du côté du **front**, puisque le front rejoue le début du geste ; elle est large de $4 \times 0{,}1 = 0{,}40\ \text{m}$. La corde est donc à $3\ \text{cm}$ de $S$ jusqu'à $1{,}00\ \text{m}$, redescend jusqu'à zéro à $1{,}40\ \text{m}$, et reste plate ensuite. Et $M$, à $1{,}2\ \text{m}$ ? Il tombe au milieu de la pente, à $1{,}5\ \text{cm}$ — exactement ce que disait son film : à $0{,}35\ \text{s}$, $M$ est à mi-chemin d'une montée commencée à $0{,}3\ \text{s}$. La photo et le film disent la même chose, chacun sur son axe.
 
 [[checkpoint:cp-r3-retard]]
 
@@ -245,6 +266,7 @@ Cette valeur, obtenue par la mesure, est cohérente avec la célérité usuelle 
 - Transversale (déplacement $\perp$ à la propagation, ex. corde) ou longitudinale (déplacement $\parallel$ à la propagation, ex. ressort, son).
 - Célérité $v = d/\Delta t$ : dépend uniquement du milieu (nature, état), jamais de la forme de la perturbation à la source.
 - Retard $\tau = d/v$, et $y_M(t) = y_S(t - \tau)$ : $M$ rejoue le mouvement de $S$, à l'identique, avec ce retard.
+- Deux graphes à ne jamais confondre : le **film** d'un point ($y$ en fonction du **temps** : la courbe de $S$ décalée vers la droite de $\tau$) et la **photo** de la corde ($y$ en fonction de la **distance** : le geste **retourné**, front à $v\,t$, rien au-delà). Sur une photo, une largeur est une distance ; on passe à une durée en divisant par $v$.
 - Ondes à une (corde), deux (surface de l'eau) ou trois (son) dimensions : la géométrie du milieu fixe la forme du front d'onde.
 
 ### Exercice de type bac

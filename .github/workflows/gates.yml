@@ -1024,7 +1024,7 @@ jobs:
   # long des deux, pas leur somme.
   scene-champ:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 50
     defaults:
       run:
         working-directory: web
@@ -1106,6 +1106,27 @@ jobs:
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
           npm run scene-cuve
           node scripts/scene-cuve.mjs --essai-rouge
+
+      # PORTE « LA CORDE : LA PHOTO ET LE FILM » (2026-09-24, HANDOFF §11.201,
+      # ADR 0041 addendum de l'après-midi). Le deuxième manipulable PLAN
+      # (pc/ondes-mecaniques-progressives, R3) : une corde de 4 m calculée par la
+      # seule relation de la leçon, y(x, t) = y_S(t − x/v) — une translation,
+      # aucun solveur. Une seconde voie ANALYTIQUE, donc des NOMBRES refaits par
+      # la porte (chaque τ, front, élongation, chaîne de mesure de la caméra) ;
+      # et les PIXELS dans les deux sens : la photo est le MIROIR du geste (elle
+      # DESCEND vers le front), M rejoue la même courbe τ plus tard, M n'avance
+      # pas, la célérité ne dépend pas du geste, aucune onde ne revient, un seul
+      # geste ; la bosse de l'étape 1 est son propre miroir (sinon elle
+      # répondrait au pari de l'étape 2) ; le front suit le curseur de l'instant ;
+      # aucun éclair (WCAG 2.3.1). Pas un octet de three.js.
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — les vingt-sept familles
+      # visées doivent crier.
+      - name: "La corde, la photo et le film (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-corde
+          node scripts/scene-corde.mjs --essai-rouge
 
       # PORTE « FIGURES MANIPULABLES » (2026-09-24, HANDOFF §11.199). Chaque
       # `.interactive.json` du corpus — l'inventaire est lu dans content/, pas

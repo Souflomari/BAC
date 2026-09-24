@@ -1,0 +1,282 @@
+{
+  "slug": "corde-photo-film",
+  "tool": "scene2d",
+  "type": "manipulable",
+  "scene": "corde-photo-film",
+  "title_fr": "La corde : la photo et le film",
+  "caption_fr": "Une corde de quatre mètres vue de côté, une main qui ne donne qu'une secousse, un point M que tu déplaces — et la corde calculée pendant que tu regardes. Deux appareils : le film d'un point, la photo de la corde entière. Cinq étapes : à chaque fois tu paries d'abord, puis la corde répond.",
+  "etapes": [
+    {
+      "id": "le-film-de-M",
+      "titre": "Le film du point M",
+      "consigne": "Une corde tendue, quatre mètres, vue de côté. La main $S$, à gauche, va donner **une seule** secousse : elle monte de $0$ à $3{,}0\\ \\text{cm}$ en un dixième de seconde, puis redescend en un dixième de seconde, et plus rien. Le point $M$ est à $1{,}2\\ \\text{m}$ de $S$ ; sur cette corde, une secousse met $0{,}30\\ \\text{s}$ pour aller de $S$ à $M$. En dessous, deux axes : le temps en abscisse, l'élongation en ordonnée. La courbe de la main, $y_S(t)$, y sera tracée en direct ; celle de $M$, $y_M(t)$, aussi. Pour l'instant la corde est immobile et les deux axes sont vides.",
+      "pari": {
+        "question": "Sur ces axes, la courbe de $M$ sera…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "avance",
+            "texte": "la même courbe que celle de la main, décalée de $0{,}30\\ \\text{s}$ vers la **gauche** : il y a un retard, donc on l'**ajoute** au temps, $y_M(t) = y_S(t+\\tau)$",
+            "juste": false,
+            "misconception": "mc.physics.pc_omp.retard-relation-fausse",
+            "retour": "Regarde le film que la corde vient de tracer, et regarde surtout le **début**. À $t = 0{,}10\\ \\text{s}$, la main est déjà au sommet — et la ligne de $M$ est encore **parfaitement plate**. $M$ n'a rien fait, parce que rien ne l'avait encore atteint : la secousse était à $0{,}40\\ \\text{m}$, il est à $1{,}2$. Une courbe décalée vers la gauche dirait que $M$ bouge **avant** $S$, c'est-à-dire avant la cause. Le retard **repousse** vers la droite : $y_M(t) = y_S(t-\\tau)$. Le signe moins n'est pas une convention à retenir, c'est l'ordre des choses."
+          },
+          {
+            "id": "retard",
+            "texte": "la même courbe, **à l'identique**, décalée de $0{,}30\\ \\text{s}$ vers la **droite**",
+            "juste": true,
+            "retour": "Oui. Deux choses à retenir séparément, parce que l'examen les demande séparément. **La forme** : identique — même hauteur $3{,}0\\ \\text{cm}$, même montée d'un dixième de seconde, même descente. $M$ n'invente rien, il **rejoue**. **La position** : plus tard de $0{,}30\\ \\text{s}$, jamais plus tôt. C'est tout ce que dit $y_M(t) = y_S(t-\\tau)$ : à l'instant $t$, $M$ affiche ce que $S$ affichait $\\tau$ plus tôt."
+          },
+          {
+            "id": "oscille",
+            "texte": "la même montée, puis une oscillation régulière : une fois atteint, $M$ monte et descend sans arrêt tant que dure l'expérience",
+            "juste": false,
+            "misconception": "mc.physics.pc_omp.periodicite-hors-cadre",
+            "retour": "Compte les allers-retours sur le film : $M$ en fait **un**, exactement un, puis sa ligne redevient plate. C'est logique — la main n'a donné **qu'une** secousse. Un point ne fabrique rien tout seul : il rejoue ce qu'on lui envoie, et on ne lui a envoyé qu'un aller-retour. Les points qui oscillent sans fin existent, mais il faut une source qui vibre sans fin : c'est le chapitre suivant, celui des ondes **périodiques**."
+          }
+        ]
+      },
+      "suite": "Fais glisser $M$ le long de la corde, de $0{,}4$ jusqu'à $3{,}2\\ \\text{m}$, et relance à chaque fois. Deux choses ne bougent pas : la **forme** de la courbe de $M$ (toujours la même bosse, jamais plus basse, jamais plus étalée) et la **façon** dont elle est décalée (toujours vers la droite). Une seule bouge : **de combien**. Note trois valeurs au passage — $0{,}4\\ \\text{m}$ : $0{,}10\\ \\text{s}$ ; $1{,}2\\ \\text{m}$ : $0{,}30\\ \\text{s}$ ; $2{,}4\\ \\text{m}$ : $0{,}60\\ \\text{s}$. Deux fois plus loin, deux fois plus tard. Tu viens de trouver tout seul ce que la suite du chapitre va écrire. Et un dernier chiffre, celui qu'on oublie toujours : pendant que la secousse a parcouru $1{,}2\\ \\text{m}$, **$M$, lui, a parcouru $3{,}0\\ \\text{cm}$ vers le haut, puis $3{,}0\\ \\text{cm}$ vers le bas** — sa vitesse moyenne de montée vaut $0{,}30\\ \\text{m/s}$, **treize fois moins** que les $4{,}0\\ \\text{m/s}$ de la perturbation. L'encart « à l'échelle vraie », sous la corde, montre la même histoire **sans** la dilatation verticale : on y voit presque une ligne droite. Ce sont deux vitesses différentes, et seule la seconde s'appelle la célérité.",
+      "controles": [
+        "point_m"
+      ],
+      "lectures": [
+        "distance",
+        "celerite",
+        "retard",
+        "duree-geste",
+        "vitesse-M"
+      ],
+      "etat": {
+        "d_m": 1.2,
+        "geste": "bosse",
+        "v_ms": "4",
+        "vue": "film",
+        "reference": "aucune"
+      }
+    },
+    {
+      "id": "la-photo-a-t1",
+      "titre": "La photo de la corde",
+      "consigne": "On change le geste de la main, et **seulement** le geste : la corde est la même, la célérité aussi, $4{,}0\\ \\text{m/s}$. Jusqu'ici la main montait puis redescendait ; maintenant elle monte de $0$ à $3{,}0\\ \\text{cm}$ en $0{,}10\\ \\text{s}$ et **elle reste en haut**. Son mouvement est tracé à côté, en petit : une montée droite, puis un palier. On ne filme plus un point : on **photographie la corde entière** à un instant choisi, $t_1 = 0{,}25\\ \\text{s}$. En abscisse, ce n'est plus le temps — c'est la **distance à $S$**, en mètres.",
+      "pari": {
+        "question": "Sur cette photo, la corde ressemblera à…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "recopie",
+            "texte": "au graphe du geste, recopié le long de la corde : zéro juste après $S$, puis une pente qui **monte** jusqu'à $3{,}0\\ \\text{cm}$ à l'endroit le plus avancé, et plus rien au-delà",
+            "juste": false,
+            "misconception": "mc.physics.pc_omp.photo-film-confondus",
+            "retour": "La photo dit exactement le contraire, et la raison est imparable. Le point le plus avancé — celui qui est à $1{,}00\\ \\text{m}$ — vient **juste** d'être atteint : il n'a eu le temps de rejouer que le tout **début** du geste, c'est-à-dire **zéro**. Et le point juste à côté de la main a été atteint il y a $0{,}25\\ \\text{s}$ : il a eu le temps de rejouer **toute** la montée, il est donc à $3{,}0\\ \\text{cm}$. En parcourant la corde de $S$ vers l'avant, tu **remontes** le temps du geste : la photo est le graphe du geste **retourné**. Le piège est qu'un graphe ressemble à un graphe — regarde toujours ce qu'il y a sur l'axe horizontal."
+          },
+          {
+            "id": "retournee",
+            "texte": "à ce même graphe **retourné** : déjà $3{,}0\\ \\text{cm}$ juste après $S$, une pente qui **descend** jusqu'à zéro à l'endroit le plus avancé, et plus rien au-delà",
+            "juste": true,
+            "retour": "Oui, et c'est une question classique de bac : « représenter l'aspect de la corde à un instant donné ». Refais le raisonnement à voix haute, parce que c'est lui qu'on te demandera : **où est le front ?** À $v\\,t_1 = 4{,}0 \\times 0{,}25 = 1{,}00\\ \\text{m}$ — au-delà, la corde n'a pas encore bougé. **De quel côté la pente ?** Du côté du front, parce que le front rejoue le **début** du geste. **Quelle largeur ?** La montée a duré $0{,}10\\ \\text{s}$, soit $4{,}0 \\times 0{,}10 = 0{,}40\\ \\text{m}$ de corde : la pente va de $0{,}60$ à $1{,}00\\ \\text{m}$. Remarque au passage que $M$, à $1{,}2\\ \\text{m}$, est encore **au repos** sur cette photo — normal, son retard est $0{,}30\\ \\text{s}$ et il n'est que $0{,}25$."
+          },
+          {
+            "id": "tout-pres",
+            "texte": "à une corde déformée seulement sur les tout premiers centimètres : en $0{,}25\\ \\text{s}$, la perturbation n'a eu le temps de parcourir que $0{,}25 / 4{,}0 = 0{,}06\\ \\text{m}$",
+            "juste": false,
+            "misconception": "mc.physics.pc_omp.retard-relation-fausse",
+            "retour": "Vérifie l'opération sur les **unités**, c'est le contrôle le moins cher de la physique : des secondes divisées par des mètres par seconde donnent des $\\text{s}^2/\\text{m}$ — pas une longueur. Pour savoir **jusqu'où** la perturbation est allée en $0{,}25\\ \\text{s}$, on **multiplie** : $4{,}0 \\times 0{,}25 = 1{,}00\\ \\text{m}$. On divise pour passer d'une distance à une durée, on multiplie pour l'inverse ; la photo montre le front à $1{,}00\\ \\text{m}$, exactement."
+          }
+        ]
+      },
+      "suite": "Fais glisser l'instant de la photo, cran par cran. Avant $0{,}10\\ \\text{s}$, le geste de la main n'est pas fini : la pente naît au pied de $S$. Ensuite, deux observations, dans cet ordre. **Un :** la forme ne se déforme **plus** — le même palier, la même pente de $0{,}40\\ \\text{m}$ ; elle se contente d'avancer, de $0{,}20\\ \\text{m}$ tous les $0{,}05\\ \\text{s}$. **Deux :** cherche l'instant où le front touche exactement $M$. Tu trouveras $0{,}30\\ \\text{s}$ — et c'est le retard que le film t'a montré à l'étape précédente. La photo et le film racontent la même histoire ; ils ne la racontent simplement pas sur le même axe.",
+      "controles": [
+        "instant"
+      ],
+      "lectures": [
+        "instant",
+        "celerite",
+        "duree-geste",
+        "front"
+      ],
+      "etat": {
+        "d_m": 1.2,
+        "geste": "rampe",
+        "v_ms": "4",
+        "vue": "photo",
+        "instant_s": 0.25,
+        "reference": "aucune"
+      }
+    },
+    {
+      "id": "deux-photos",
+      "titre": "Mesurer la célérité avec deux photos",
+      "consigne": "On revient au geste bref — une bosse, montée et descente en deux dixièmes de seconde — et on filme la corde avec une caméra réglée sur **$20$ images par seconde**. On gardera deux images : la photo n°4 et la photo n°8. Elles seront affichées l'une sous l'autre, avec la même règle graduée en dessous. Objectif : en tirer la célérité, sans qu'on te la donne.",
+      "pari": {
+        "question": "Pour obtenir la célérité à partir de ces deux photos, il faut mesurer…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "avance-du-sommet",
+            "texte": "de combien la **bosse a avancé le long de la corde** entre les deux photos, puis diviser cette distance par la durée qui sépare les deux photos",
+            "juste": true,
+            "retour": "Oui — et remarque que tu pourrais suivre **n'importe quel** repère de la bosse, son sommet, son bord avant, son bord arrière : elle ne se déforme pas, donc tous donnent la même avance ; la scène suit le bord avant, le front. Ici $1{,}60 - 0{,}80 = 0{,}80\\ \\text{m}$ en $0{,}20\\ \\text{s}$, soit $4{,}0\\ \\text{m/s}$. Attention au dénominateur, c'est là que les points se perdent : entre la photo n°4 et la photo n°8, il y a **quatre intervalles** — $4 \\times 1/20 = 0{,}20\\ \\text{s}$ — et non cinq photos. C'est le nombre d'**intervalles** qui compte le temps, jamais le nombre d'images."
+          },
+          {
+            "id": "montee",
+            "texte": "de combien le sommet de la bosse est **monté**, puis diviser par la durée entre les deux photos",
+            "juste": false,
+            "misconception": "mc.physics.pc_omp.celerite-est-vitesse-point",
+            "retour": "Tu mesurerais la vitesse avec laquelle un **point de la corde** monte et descend — une vitesse réelle, mais ce n'est pas celle qu'on cherche. Sur les deux photos, la bosse a exactement la **même hauteur** : ce quotient vaudrait zéro. Ce qui s'est déplacé entre les deux clichés, c'est la **déformation**, le long de la corde. La célérité est la vitesse de cette déformation, jamais celle d'un point."
+          },
+          {
+            "id": "depuis-S",
+            "texte": "la distance entre $S$ et la bosse **sur la seconde photo**, puis diviser par la durée qui sépare les deux photos",
+            "juste": false,
+            "misconception": "mc.physics.pc_omp.retard-relation-fausse",
+            "retour": "Tu mélanges deux histoires : une distance comptée depuis le **début** de l'expérience, et une durée comptée entre les **deux photos**. Le quotient $1{,}60 / 0{,}20 = 8{,}0\\ \\text{m/s}$ est faux d'un facteur deux — et il le serait d'un autre facteur avec un autre écart de photos, ce qui est le meilleur signe qu'une méthode ne tient pas. Une vitesse se calcule toujours avec la distance **parcourue pendant la durée qu'on divise** : mêmes bornes en haut et en bas."
+          }
+        ]
+      },
+      "suite": "Refais la mesure avec les autres écarts de la caméra — $1$, $2$, $5$ intervalles. Les deux nombres changent tous les deux ($0{,}20\\ \\text{m}$ en $0{,}05\\ \\text{s}$, $1{,}00\\ \\text{m}$ en $0{,}25\\ \\text{s}$), et leur **quotient** ne change pas : $4{,}0\\ \\text{m/s}$ à chaque fois. C'est la signature d'une méthode juste. Tu viens de faire, à la main, l'exercice du bac 2015 (session de rattrapage) : une corde filmée à $25$ images par seconde, les photos n°8 et n°12 — le même écart de quatre intervalles.",
+      "controles": [
+        "camera"
+      ],
+      "lectures": [
+        "instant",
+        "front",
+        "mesure-v",
+        "duree-geste"
+      ],
+      "etat": {
+        "d_m": 1.2,
+        "geste": "bosse",
+        "v_ms": "4",
+        "vue": "photos",
+        "camera_n": "4",
+        "reference": "aucune"
+      }
+    },
+    {
+      "id": "le-meme-geste-en-plus-grand",
+      "titre": "Le même geste, deux fois plus haut",
+      "consigne": "Même corde, même tension, même point $M$ à $1{,}2\\ \\text{m}$. On refait exactement le geste de tout à l'heure — monter puis rester en haut, en $0{,}10\\ \\text{s}$ — mais **deux fois plus haut** : $6{,}0\\ \\text{cm}$ au lieu de $3{,}0$. La course te montrera d'abord l'ancien geste, puis le nouveau, et le film gardera les deux courbes l'une sur l'autre.",
+      "pari": {
+        "question": "Avec ce geste deux fois plus ample, $M$ commencera à bouger…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "plus-tot",
+            "texte": "plus tôt : une perturbation plus ample est plus « forte », elle pousse davantage la corde, donc elle avance plus vite",
+            "juste": false,
+            "misconception": "mc.physics.pc_omp.celerite-depend-source",
+            "retour": "Les deux courbes du film partent **au même instant**, $0{,}30\\ \\text{s}$, au pixel près : la grande commence exactement là où la petite avait commencé. Ce qui fixe la vitesse de la perturbation, ce n'est pas ce que tu fais à la corde, c'est **la corde** — sa nature et son état. Une secousse plus ample transporte plus d'énergie et fait monter $M$ plus haut ; elle ne le prévient pas plus tôt."
+          },
+          {
+            "id": "meme-instant",
+            "texte": "au même instant, $0{,}30\\ \\text{s}$ : seule la corde décide de la vitesse à laquelle la perturbation avance",
+            "juste": true,
+            "retour": "Oui. Regarde ce qui a changé et ce qui n'a pas changé, c'est tout le chapitre en une image. **Ce qui change** avec le geste : la hauteur ($6{,}0$ au lieu de $3{,}0\\ \\text{cm}$). **Ce qui ne change pas** : l'instant de départ, la durée de la montée, la forme. Retiens la formule exacte : la célérité est une propriété du **milieu** — la corde, sa tension, sa masse — jamais de la source. Essaie les autres gestes avec le contrôle qui vient de s'ouvrir : tu peux rendre la secousse plus haute ou plus longue, $M$ démarrera toujours à $0{,}30\\ \\text{s}$."
+          },
+          {
+            "id": "deux-fois-plus-tot",
+            "texte": "deux fois plus tôt, à $0{,}15\\ \\text{s}$ : $M$ doit monter deux fois plus haut dans le même dixième de seconde, il va donc deux fois plus vite — et l'onde avec lui",
+            "juste": false,
+            "misconception": [
+              "mc.physics.pc_omp.celerite-est-vitesse-point",
+              "mc.physics.pc_omp.celerite-depend-source"
+            ],
+            "retour": "La première moitié de ton raisonnement est **juste** : $M$ monte bel et bien deux fois plus vite, $0{,}60\\ \\text{m/s}$ au lieu de $0{,}30$ — la lecture le dit. C'est la seconde moitié qui casse : cette vitesse-là est celle d'un **point qui monte et descend sur place**, et elle n'a aucun rapport avec la vitesse à laquelle la déformation **avance le long de la corde**. Deux vitesses, deux noms, deux valeurs : $0{,}60\\ \\text{m/s}$ pour le point, $4{,}0\\ \\text{m/s}$ pour la perturbation — et seule la seconde s'appelle la célérité. Les deux courbes démarrent au même instant."
+          }
+        ]
+      },
+      "suite": "Parcours les quatre gestes sans toucher à rien d'autre : la bosse, la rampe, la rampe deux fois plus haute, la rampe deux fois plus **lente**. Le film change de forme à chaque fois — et l'instant de départ de $M$ ne bouge **jamais** de $0{,}30\\ \\text{s}$. Le dernier geste est le plus instructif : une montée deux fois plus lente donne une pente deux fois plus **longue** sur la corde ($0{,}80\\ \\text{m}$ au lieu de $0{,}40$), sans rien changer à la vitesse du front. La forme de la perturbation façonne **ce qui** voyage ; elle ne décide pas de la vitesse à laquelle ça voyage.",
+      "controles": [
+        "geste"
+      ],
+      "lectures": [
+        "retard",
+        "celerite",
+        "elongation-M",
+        "duree-geste",
+        "vitesse-M"
+      ],
+      "etat": {
+        "d_m": 1.2,
+        "geste": "rampe-haute",
+        "v_ms": "4",
+        "vue": "film",
+        "reference": "rampe"
+      }
+    },
+    {
+      "id": "libre",
+      "titre": "À toi : la distance, le geste, et la corde elle-même",
+      "consigne": "Tout s'ouvre, y compris la corde elle-même : un second cran de tension existe, sur lequel la perturbation avance à $8{,}0\\ \\text{m/s}$ au lieu de $4{,}0$. (Une corde plus tendue transmet plus vite ; la relation $v = \\sqrt{F/\\mu}$, citée plus loin dans ce chapitre, dit de combien — ici, c'est une donnée de l'appareil.) Deux montages, donc. **Montage A :** $M$ à $1{,}6\\ \\text{m}$, sur la corde du cours, $4{,}0\\ \\text{m/s}$. **Montage B :** $M$ à $3{,}2\\ \\text{m}$, sur la corde plus tendue, $8{,}0\\ \\text{m/s}$. Même geste dans les deux cas.",
+      "pari": {
+        "question": "Dans lequel des deux montages $M$ commence-t-il à bouger le premier ?",
+        "choix": [
+          {
+            "id": "le-plus-proche",
+            "texte": "dans le montage A : $M$ y est deux fois plus près de la source, il est donc prévenu le premier",
+            "juste": false,
+            "misconception": "mc.physics.pc_omp.retard-relation-fausse",
+            "retour": "Tu n'as regardé qu'un des deux termes. Le retard n'est pas une distance, c'est une distance **divisée par** une célérité : $\\tau = d/v$. Dans A, $1{,}6 / 4{,}0 = 0{,}40\\ \\text{s}$. Dans B, la distance est bien deux fois plus grande — mais la corde va deux fois plus vite : $3{,}2 / 8{,}0 = 0{,}40\\ \\text{s}$. Vérifie les deux avec les contrôles : les deux films démarrent au même instant. Quand les deux termes d'un rapport doublent ensemble, le rapport ne bouge pas."
+          },
+          {
+            "id": "le-plus-tendu",
+            "texte": "dans le montage B : la corde y est plus tendue, elle transmet plus vite, et c'est la vitesse qui commande",
+            "juste": false,
+            "misconception": "mc.physics.pc_omp.retard-relation-fausse",
+            "retour": "Tu n'as regardé que l'autre terme — c'est l'erreur symétrique de la précédente, et elle tombe sur le même récif. La corde de B transmet bien deux fois plus vite ; seulement $M$ y est deux fois plus loin. $3{,}2 / 8{,}0 = 0{,}40\\ \\text{s}$, exactement comme $1{,}6 / 4{,}0$. Ni la distance seule, ni la célérité seule : c'est leur **rapport** qui fait le retard."
+          },
+          {
+            "id": "en-meme-temps",
+            "texte": "dans les deux au même instant, $0{,}40\\ \\text{s}$ : $1{,}6/4{,}0 = 3{,}2/8{,}0$",
+            "juste": true,
+            "retour": "Oui. Et c'est la bonne façon de tenir la relation $\\tau = d/v$ en tête : elle ne dit pas « plus loin, plus tard » ni « plus tendu, plus tôt », elle dit **un rapport**. Deux réglages différents peuvent donner exactement le même retard, et deux réglages identiques sur un seul terme peuvent tout changer. Vérifie-le : garde la corde tendue et ramène $M$ à $1{,}6\\ \\text{m}$ — le retard tombe à $0{,}20\\ \\text{s}$."
+          }
+        ]
+      },
+      "suite": "Trois manœuvres pour finir, dans cet ordre. **Une :** vérifie le pari — les deux montages, le même $0{,}40\\ \\text{s}$. **Deux :** garde $M$ où il est et parcours les quatre gestes, sur l'une puis l'autre corde : l'instant de départ ne dépend **jamais** du geste, toujours de la corde et de la distance. **Trois :** fais glisser l'instant de la photo, sur la corde tendue, et cherche encore l'instant où le front touche $M$ — tu retrouveras au centième près le retard que le film t'avait donné. Deux appareils, deux axes, un seul nombre.",
+      "controles": [
+        "tension",
+        "point_m",
+        "instant",
+        "geste"
+      ],
+      "lectures": [
+        "distance",
+        "celerite",
+        "retard",
+        "instant",
+        "front",
+        "elongation-M",
+        "duree-geste",
+        "vitesse-M"
+      ],
+      "etat": {
+        "d_m": 1.6,
+        "geste": "bosse",
+        "v_ms": "4",
+        "vue": "film",
+        "instant_s": 0.4,
+        "reference": "aucune"
+      }
+    }
+  ],
+  "boundary": "Cadre (ondes_mecaniques_progressives, 2ème Bac PC/SM) : l'onde progressive à une dimension, la notion de retard temporel, la relation $y_M(t) = y_S(t-\\tau)$ avec $\\tau = d/v$, la célérité propriété du milieu, et la mesure d'une célérité sur des documents. Hors de la scène : toute périodicité (période, fréquence, longueur d'onde — le chapitre suivant ; la main ne fait qu'UN geste par course), toute fonction à deux variables écrite comme telle, toute équation de propagation, toute seconde source (interférences), toute réflexion (le bout lointain absorbe), toute dispersion ou amortissement, tout effet Doppler, toute onde à deux ou trois dimensions, toute énergie chiffrée, tout angle ou pente chiffrés (l'échelle verticale est dilatée).",
+  "boundary_guard_details": "La porte scene-corde refuse dans le panneau ouvert : « λ », « longueur d'onde », « période », « fréquence », « Hz », « sinusoïd », « y(x », « x/v », « ∂ », « réflexion », « interférence », « Doppler », et toute valeur en degrés. Aucune pente n'est affichée ni demandée.",
+  "fit_caveat": "1. L'échelle verticale est dilatée ×20, et l'image l'écrit : $3{,}0$ cm sur $4{,}00$ m de corde, à l'échelle vraie, ne se verraient pas. Toute pente vue à l'écran est donc fausse d'un facteur 20 : la scène n'en affiche aucune et n'en demande jamais. L'encart à l'échelle vraie, à l'étape 1, montre la même corde sans la dilatation — presque une ligne droite. 2. Le temps est ralenti ×5, et c'est écrit : le front traverse la corde en $1{,}00$ s ; la course dure $5{,}0$ s à l'écran (sans ce ralenti, la montée de $M$ occuperait six images). 3. Le bout de la corde absorbe, comme sur une vraie corde de TP terminée par un amortisseur : aucune onde ne revient. 4. La corde est idéale — ni amortissement, ni dispersion : la perturbation se translate sans perdre un dixième de millimètre ni changer de forme. Une vraie corde amortit un peu et disperse légèrement ; c'est le modèle du chapitre, et la seule hypothèse qui permette de dire, à l'étape 4, « on n'a changé que le geste ». 5. La « mesure » de l'étape 3 n'a aucune incertitude, et une vraie en a une : la corde est calculée exactement, le quotient tombe sur $4{,}0$ m/s pile. Sur un vrai film, on lit une position au pixel près sur un quadrillage. Ce que la scène enseigne, c'est la méthode (quoi mesurer, quel dénominateur), pas la dispersion des mesures. 6. La célérité de la corde tendue ($8{,}0$ m/s) est une donnée de l'appareil : la scène dit seulement qu'une corde plus tendue transmet plus vite ($v = \\sqrt{F/\\mu}$ est citée plus loin dans le chapitre) et ne le démontre pas. 7. Une vraie corde montrerait du bruit, une raideur aux petites échelles, et une main qui ne refait jamais deux fois le même geste : la scène est plus propre que la réalité, et ne doit jamais servir d'argument contre une image de TP moins nette.",
+  "param_manipulation_guide": "Retards atteignables, exacts au centième : à $4{,}0$ m/s, $d$ = 0,4 · 0,8 · 1,2 · 1,6 · 2,0 · 2,4 · 2,8 · 3,2 m donne $\\tau$ = 0,10 · 0,20 · 0,30 · 0,40 · 0,50 · 0,60 · 0,70 · 0,80 s ; à $8{,}0$ m/s, la moitié. La caméra (20 images/s) garde la photo n°4 ($t = 0{,}20$ s) et la photo n°(4 + écart) : 1 intervalle → 0,05 s et 0,20 m d'avance ; 2 → 0,10 s et 0,40 m ; 4 → 0,20 s et 0,80 m ; 5 → 0,25 s et 1,00 m. Les pas (0,4 m ; 0,05 s) font tomber chaque retard, chaque instant et chaque durée de geste sur un multiple exact de 5 ms : aucune lecture n'arrondit.",
+  "fallback_note": "Sans JavaScript et à l'impression, le panneau disparaît. La figure onde-propagation-retard couvre la corde à deux instants ; AUCUNE figure du corpus ne montre un graphe en fonction du TEMPS ni l'aspect de la corde à un instant — c'est précisément ce que ce manipulable apporte, et c'est pourquoi la sous-section « La photo et le film : deux graphiques, deux questions » est écrite dans la leçon.",
+  "pedagogy_wiring": {
+    "why_manipulable": "Les cinq médias de la notion dessinent tous la corde dans l'ESPACE ; aucun ne trace une élongation en fonction du TEMPS, et rien ne dit que la photo de la corde et le film d'un point sont deux graphiques différents, dont l'un est le miroir de l'autre. Ce lien ne se voit qu'en bougeant séparément ce que chacun fixe — l'abscisse du point filmé ($d$, donc $\\tau$) et l'instant du cliché ($t_1$, donc le front). Deux figures fixes donnent deux points d'une famille à deux paramètres ; elles ne donnent pas la famille.",
+    "predict_then_reveal": "Chaque étape pose une question, l'élève parie AVANT que la corde ne bouge (corde au repos, axes vides, aucune lecture-réponse), puis la course répond ; le verdict arrive quand la course est finie (sauf à l'étape libre, qui compare deux montages qu'une seule course ne peut pas montrer).",
+    "misconceptions": [
+      "mc.physics.pc_omp.retard-relation-fausse",
+      "mc.physics.pc_omp.periodicite-hors-cadre",
+      "mc.physics.pc_omp.photo-film-confondus",
+      "mc.physics.pc_omp.celerite-est-vitesse-point",
+      "mc.physics.pc_omp.celerite-depend-source"
+    ]
+  },
+  "spec_ref": "content/pc/ondes-mecaniques-progressives/spec-scene-corde.md",
+  "adr_ref": "docs/decisions/0041-scenes-3d-de-premiere-partie.md"
+}

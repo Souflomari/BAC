@@ -13,6 +13,7 @@
 
 import type { Scene3DDescriptor } from "@/lib/content";
 import { ChampMagnetiquePanel } from "./scene/ChampMagnetiquePanel";
+import { CordePanel } from "./scene/CordePanel";
 import { CuvePanel } from "./scene/CuvePanel";
 import { ManegePanel } from "./scene/ManegePanel";
 import { OrbiteGeostationnairePanel } from "./scene/OrbiteGeostationnairePanel";
@@ -31,6 +32,9 @@ const PANNEAUX: Record<string, React.ComponentType<{ scene: Scene3DDescriptor; c
   // caméra, ni three.js — la diffraction dans une cuve est un phénomène plan
   // (ADR 0041, première correction).
   "cuve-a-ondes": CuvePanel,
+  // Le deuxième : une corde vue de côté, ANALYTIQUE (une translation, aucun
+  // solveur) — la photo de la corde et le film d'un point (spec-scene-corde).
+  "corde-photo-film": CordePanel,
 };
 
 export function Scene3DPanel({ scene, className }: { scene: Scene3DDescriptor; className?: string }) {

@@ -65,7 +65,10 @@ const PORTE = process.argv.includes("--porte");
 //  periodiques porte la cuve à ondes.
 //  Relevé à 13 le même jour, même commit : pc/reactions-acido-basiques porte
 //  la figure manipulable du pH (distribution-curseur-pH).
-const CLIQUET = 13;
+//  Relevé à 14 le même jour, même commit que la scène : pc/ondes-mecaniques-
+//  progressives porte la corde (la photo et le film). Elle ne solde aucune
+//  dette écrite : c'est ce cliquet-ci qu'elle fait monter, pas l'autre.
+const CLIQUET = 14;
 
 const RE_EMBED = /\[\[(?:embed|geogebra|desmos|falstad|phet)[:\]]/gi;
 const parMat = new Map();

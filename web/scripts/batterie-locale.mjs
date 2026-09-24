@@ -182,6 +182,11 @@ const HORS_CHAMP = new Set([
   // au ralenti, deux passages en CI (job `scene-champ`) ;
   // `node scripts/scene-cuve.mjs --essai-rouge`.
   "scene-cuve.mjs",
+  // scene-corde, même raison : la corde (pc/ondes-mecaniques-progressives R3),
+  // le deuxième manipulable PLAN — une corde ANALYTIQUE, le film d'un point et
+  // la photo de la corde, lus aux pixels ; deux passages en CI (job
+  // `scene-champ`) ; `node scripts/scene-corde.mjs --essai-rouge`.
+  "scene-corde.mjs",
   // figures-manipulables, même raison : build + navigateur, chaque figure
   // manipulable du corpus au rendu, deux passages en CI (job `scene-champ`) ;
   // `node scripts/figures-manipulables.mjs --essai-rouge`.
