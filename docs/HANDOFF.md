@@ -15277,3 +15277,78 @@ ainsi.
 
 **Au passage :** les curseurs des figures manipulables passent à 48 px (`.curseur`,
 les cinq de maths comprises) ; ils mesuraient 16.
+
+## §11.200 — La dernière dette de manipulation écrite est payée, et une note qui ne s'affichait jamais au moment où elle servait
+
+**LA COURBE DE DOSAGE, MANIPULABLE.** `lecture-Ve-courbe-dosage`
+(pc/reactions-acido-basiques, R10), écrite par un auteur de figures : après la
+dernière étape de la figure, un point glisse SUR la courbe dessinée (V de 0 à 25 mL,
+pas 0,1), deux repères le relient aux axes, V et pH se lisent. Le module évalue les
+trois Bézier du SVG lui-même — pas une formule de dosage qui s'en écarterait : pKA =
+4,8 à 7,5 mL et pH_E = 8,5 à 15,0 mL tombent exacts. La lecture ne dit
+« équivalence » qu'à V_E, « demi-équivalence : pH = pKA » qu'à V_E/2, et RIEN au
+point où pH = 7 (AB-EQU-1). `dette-manipulable` : **0 substitution écrite** (cliquet
+0) — 8 prescriptions, 20 manipulables livrés. La prochaine dette devra monter ce
+nombre, et le dire.
+
+**Une seconde voie qui ne recalcule rien** (`figures-manipulables`) : elle suit le
+trait DESSINÉ dans le SVG rendu, par la géométrie du navigateur (`getPointAtLength`),
+et exige le point mobile SUR ce trait (0,00 px aux six positions) et le pH lu égal au
+sien. Deux positions de plus sont visitées exprès : 13,3 mL (pH ≈ 7) et 15,0 mL.
+Trois sabotages, chacun pris par `physique` SEULE : « équivalence » écrit à pH ≈ 7
+(rouge à 13,3 mL, et là seulement) ; des droites entre les ancres au lieu des Bézier
+(rouge à 9,3 et 13,3 mL, vert aux quatre ancres, où les deux coïncident). Les
+`liaisons` restent vertes, et c'est la leçon : elles comparent le rendu au MODULE —
+quand c'est le module qui ment, seule une voie qui ne passe pas par lui le voit.
+
+**Un nom qu'aucun module ne pouvait porter.** Trois scripts dérivaient le nom exporté
+du slug par `/-([a-z])/` : une capitale déjà là n'était pas « capitalisée », et le
+tiret restait (`lecture-Ve-…` → `lecture-VeCourbeDosage`). La figure aurait été
+comptée non livrée par `dette-manipulable`, et introuvable par `dom-truth` et
+`figures-manipulables`. Vu par l'auteur de la figure, dans son rapport. Les trois
+lisent `/-([a-zA-Z0-9])/` ; `dette-manipulable` exige aussi la clé du registre.
+
+**LA CUVE : UNE NOTE RANGÉE DANS LA LISTE.** À la relecture du code de la vague 2
+(§11.198) : le bloc des notes de la cuve (paragraphes, `<details>`) était DANS le
+`<dl>` des lectures, entre deux lectures. HTML invalide ; lu au lecteur d'écran comme
+une lecture de plus ; et masqué avec la liste jusqu'au verdict — la note « eau pâle »
+ne s'affichait donc JAMAIS pendant la première course à 40 Hz, la seule qui l'exige.
+Aucune porte ne le voyait : la famille `eclairs` mesurait les pixels (justes), aucune
+ne lisait la phrase qui les explique. Le bloc passe après la liste ; deux mesures
+neuves : `listes()` dans le module commun `scene-ergonomie` (chaque `<dl>` d'un
+panneau ne contient que des couples terme/valeur), et, dans `scene-cuve`, la note
+pâle affichée pendant la première course, avant le verdict. **Rouge avant vert, sur
+le produit** : le panneau d'e6c292ac rebâti fait rougir ces deux mesures, et elles
+seules (« ABSENTE » ; « INTRUS : `<div data-notes>` (p,p,p,details) »).
+
+**La mesure du module commun est muette pour la cuve, et elle le dit.** Après le pari
+de l'étape 1, la cuve n'a encore aucune lecture (elles attendent la course) : `listes`
+y compte « 0 liste(s) », ce qui ne prouve rien. C'est pourquoi `scene-cuve` l'appelle
+elle-même, étape 1 RÉVÉLÉE, et exige au moins une liste. Une mesure commune qui passe
+parce qu'il n'y a rien à mesurer est la forme exacte d'ADR 0031 (« un vert dit que
+rien n'a échoué, pas que tout a été mesuré »).
+
+**Campagne locale (même banc, même commande, rien d'autre en marche)** : scene-cuve
+VERTE (73 mesures, 22 familles ; avertissement de performance honnête), essai rouge
+19/19 ; figures-manipulables VERTE (110 mesures, 9 figures), essai rouge 5/5 ; trois
+sabotages du produit, chacun pris par sa famille seule ; puis les six autres portes de
+scène sur le build final, toutes VERTES : orbite, sphère, particule dans le champ,
+produit vectoriel, révolution, manège. **La mesure commune `listes` n'a mordu que
+sur trois d'entre elles** (sphère, produit vectoriel, révolution : une liste chacune,
+lue et juste) ; sur l'orbite, la particule et le manège, comme sur la cuve, les
+lectures attendent le temps ou la course et la mesure ne voit RIEN après le pari —
+écrit ici plutôt que laissé croire. Une porte qui voudrait la faire mordre là devra
+l'appeler, comme `scene-cuve`, au moment où ses lectures existent.
+
+**LE RUN 757 ROUGE, ET CE QU'IL A APPRIS.** La porte typographie (job `gates`) a
+trouvé dans la figure de la chute avec frottement « 0,20 s ; v_lim » avec une
+espace ordinaire — texte réécrit par l'auteur de la figure au commit e6c292ac. La
+batterie locale ne lance pas cette porte : elle lit la page rendue. Le défaut était
+à TROIS endroits, et la porte n'en voit qu'un : le texte statique des SVG (6
+segments dans 4 fichiers, dont deux `aria-label` de calcul intégral qu'aucune porte
+ne lit) ; le texte que les modules écrivent PENDANT la manipulation (cinq modules —
+la porte parcourt les pages sans manipuler) ; les gabarits de lecture des sept
+figures. Corrigé aux trois (fa425527). Le reste du run 757 était vert — la cuve et
+ses deux mesures neuves, les figures manipulables et leur neuvième figure, les
+QCM, le téléphone —, mais les portes qui suivent la typographie dans le job
+`gates` n'y ont pas tourné : le run 758 est leur première mesure.
