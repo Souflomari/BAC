@@ -29,6 +29,7 @@ import * as K from "@/lib/scene2d/cuve";
 import { DT } from "@/lib/scene2d/fdtd";
 import type { RenduCuve } from "@/lib/scene2d/cuve-rendu";
 import { CURSEUR, GRILLE_SCENE, LIGNE_RADIO, MARGE_FOCUS } from "./commun";
+import { EncadreRepli } from "./EncadreRepli";
 import { useSceneRendu } from "./useSceneRendu";
 import { usePari } from "./usePari";
 import { SceneOptIn } from "./SceneOptIn";
@@ -654,12 +655,9 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
               {pari.etapeOuverte && etape.controles.length > 0 && (
                 <p className="text-caption text-secondary">{frenchTypography("Entrée, sur un réglage, relance la cuve. Changer l’ouverture ou le battement remet l’eau au repos.")}</p>
               )}
-              <details className="text-caption text-secondary">
-                <summary className="cursor-pointer select-none">{frenchTypography("Cuve idéalisée : ce que cette cuve simplifie")}</summary>
-                <p className="mt-1">
-                  {frenchTypography("Ici toutes les fréquences avancent à la même célérité ; dans une vraie cuve, elle dépend un peu de la longueur d’onde — c’est le chapitre 7. Derrière la paroi, les bords absorbent l’onde, comme les berges inclinées d’une vraie cuve ; devant, ils sont rigides, et la règle va de l’un à l’autre. De chaque côté de la paroi, l’image est à l’échelle de la ride la plus forte de ce côté : elle montre la forme de l’onde, pas son énergie.")}
-                </p>
-              </details>
+              <EncadreRepli titre="Cuve idéalisée : ce que cette cuve simplifie">
+                {frenchTypography("Ici toutes les fréquences avancent à la même célérité ; dans une vraie cuve, elle dépend un peu de la longueur d’onde — c’est le chapitre 7. Derrière la paroi, les bords absorbent l’onde, comme les berges inclinées d’une vraie cuve ; devant, ils sont rigides, et la règle va de l’un à l’autre. De chaque côté de la paroi, l’image est à l’échelle de la ride la plus forte de ce côté : elle montre la forme de l’onde, pas son énergie.")}
+              </EncadreRepli>
             </div>
           )}
         </div>

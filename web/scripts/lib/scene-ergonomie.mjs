@@ -22,6 +22,20 @@
  *   · cibles — chaque curseur et chaque bouton visible du panneau mesure au
  *     moins 44 px de haut (le plancher du dépôt est 48 ; 44 est le seuil WCAG
  *     2.5.5 — la porte arme le normatif, ADR 0039) ;
+ *   · cibles, suite (vague 2 des noyaux, 2026-09-24) — le `<summary>` d'un
+ *     encadré est une commande : la mesure ne cherchait que `button` et
+ *     `input`, et les encadrés « ce que cette scène simplifie » de la cuve, de
+ *     la corde et des noyaux mesuraient 18 px sans qu'elle le voie (rejoué
+ *     avant correction : 18 px aux trois, à 390 et à 1 280 px). Une cible a
+ *     plusieurs FORMES (ADR 0036). Les liens restent hors de la mesure : un
+ *     lien DANS une phrase est exempté par WCAG 2.5.8 (« inline ») ;
+ *   · révélation après une course — au clavier : Entrée sur « Lancer… », la
+ *     course va au bout, le verdict s'affiche ; le focus doit être VISIBLE.
+ *     Rejoué avant correction : il restait sur « Relancer », que le verdict,
+ *     la suite et les lectures insérés au-dessus avaient poussé à 1 000 px
+ *     sous l'écran (cuve, corde, noyaux, 390 et 1 280 px) — Entrée relançait
+ *     à l'aveugle. Seulement pour les scènes à course (`course` : le nombre de
+ *     « Suivant » jusqu'à l'étape dont le pari attend la course) ;
  *   · lectures — une liste de lectures (<dl>) ne contient que des couples
  *     terme/valeur : la vague 2 de la cuve avait rangé ses notes (paragraphes,
  *     <details>) AU MILIEU de la liste, entre deux lectures — HTML invalide,
@@ -86,7 +100,7 @@ export async function cibles(p, sel) {
       const r = e.getBoundingClientRect();
       return r.width > 0 && r.height > 0 && getComputedStyle(e).visibility !== "hidden";
     };
-    const els = [...panneau.querySelectorAll('button, input[type="range"], input[type="radio"]')].filter(vis);
+    const els = [...panneau.querySelectorAll('button, input[type="range"], input[type="radio"], summary')].filter(vis);
     const petites = [];
     for (const e of els) {
       // Un bouton radio natif est petit PAR NATURE : sa cible, c'est la ligne
@@ -125,7 +139,7 @@ export async function listes(p, sel) {
  * comme la porte le lance ; `ouvrir` est le libellé du bouton d'ouverture
  * (« Ouvrir la cuve à ondes » pour la scène plane).
  */
-export async function ergonomie({ lancer, url, scene, noter, essai, ouvrir = "Ouvrir la scène 3D" }) {
+export async function ergonomie({ lancer, url, scene, noter, essai, ouvrir = "Ouvrir la scène 3D", course }) {
   const nav = await lancer([]);
   const dire = (ok, detail) => noter("ergonomie", essai ? !ok : ok, detail);
   try {
@@ -251,6 +265,78 @@ export async function ergonomie({ lancer, url, scene, noter, essai, ouvrir = "Ou
       );
       dire(!!meca && Math.abs(meca.haut - HEADER) <= 2, `scène collante au téléphone : grille à ${meca ? meca.grille : "?"} px, scène à ${meca ? meca.haut : "ABSENTE"} px (attendu ${HEADER} : collée sous le header)`);
       await p.context().close();
+    }
+    // ── Révélation après une course, au clavier : le focus reste VISIBLE ──
+    // (un navigateur à part, avec le rendu logiciel : une scène 3D doit TOURNER
+    // pour que sa course aille au bout — le reste de la famille s'en passe)
+    if (course !== undefined) {
+      const navC = await lancer(["--use-angle=swiftshader", "--enable-unsafe-swiftshader", "--ignore-gpu-blocklist"]);
+      try {
+        for (const [largeur, hauteur] of [[1280, 900], [390, 844]]) {
+          const { p, sel } = await ouvrirPage(navC, url, scene, largeur, hauteur, ouvrir);
+          const q = p.locator(sel);
+          await q.scrollIntoViewIfNeeded();
+          await q.getByRole("button", { name: ouvrir }).focus();
+          await p.keyboard.press("Enter");
+          await p.waitForFunction((s) => document.querySelector(s)?.getAttribute("data-scene-etat") !== "ferme", sel, { timeout: 20000 }).catch(() => {});
+          await p.waitForTimeout(400);
+          for (let k = 0; k < course; k++) {
+            await q.getByRole("button", { name: "Étape suivante" }).focus();
+            await p.keyboard.press("Enter");
+            await p.waitForTimeout(250);
+          }
+          const choix = q.locator("[data-pari-choix] button").first();
+          const lance = q.locator("button").filter({ hasText: /^\s*Lancer/ }).first();
+          if (!(await choix.count()) || (await q.getAttribute("data-pari")) !== "attente") {
+            dire(false, `révélation après une course (${largeur} px) : l'étape ${course + 1} n'attend pas de pari — mesure muette`);
+            await p.context().close();
+            continue;
+          }
+          await choix.focus();
+          await p.keyboard.press("Enter");
+          await p.waitForTimeout(300);
+          if (!(await lance.count())) {
+            dire(false, `révélation après une course (${largeur} px) : aucun bouton « Lancer… » après le pari — mesure muette`);
+            await p.context().close();
+            continue;
+          }
+          await lance.focus();
+          await p.keyboard.press("Enter");
+          const venue = await p.waitForFunction((s) => document.querySelector(s)?.getAttribute("data-pari") === "revele", sel, { timeout: 45000 }).then(() => true, () => false);
+          await p.waitForTimeout(500);
+          // VISIBLE : dans la fenêtre, et — au téléphone — pas sous la scène
+          // collante quand il est dans sa grille (même plancher que la marge).
+          const f = await p.evaluate(
+            ({ s, header }) => {
+              const a = document.activeElement;
+              if (!a || a === document.body) return { corps: true, quoi: "<body>" };
+              const r = a.getBoundingClientRect();
+              const collant = document.querySelector(s)?.querySelector("canvas")?.closest(".sticky");
+              const grille = a.closest("[data-scene-grille], .grid");
+              const sousGrille = !!collant && !collant.contains(a) && !!grille && collant.closest("[data-scene-grille], .grid") === grille;
+              // la scène ne couvre que ce qui passe SOUS elle : au téléphone
+              // (empilée) ; sur grand écran elle est À CÔTÉ de la colonne — son
+              // bas (1 035 px au premier passage) n'y est pas un plancher
+              const rc = collant?.getBoundingClientRect();
+              const couvre = sousGrille && !!rc && rc.left < r.right && r.left < rc.right;
+              const plancher = couvre ? rc.bottom : header;
+              return {
+                corps: false,
+                visible: r.height > 0 && r.top >= plancher - 1 && r.bottom <= innerHeight + 1,
+                quoi: `${a.tagName.toLowerCase()} « ${(a.textContent ?? "").trim().slice(0, 30)} »`,
+                haut: Math.round(r.top),
+                plancher: Math.round(plancher),
+              };
+            },
+            { s: sel, header: HEADER }
+          );
+          dire(venue && !f.corps && f.visible,
+            `révélation après une course, au clavier (${largeur} px) : ${venue ? `focus sur ${f.quoi} à ${f.haut} px (fenêtre de ${f.plancher} à ${hauteur} px), ${f.visible ? "visible" : "HORS DE VUE"}` : "la révélation n'est pas venue en 45 s — mesure muette"}`);
+          await p.context().close();
+        }
+      } finally {
+        await navC.close();
+      }
     }
   } finally {
     await nav.close();

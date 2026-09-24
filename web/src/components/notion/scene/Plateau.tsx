@@ -236,6 +236,15 @@ export function disposer(
     p: { x: number; y: number; visible: boolean };
     surAncre?: boolean;
     directions?: readonly (readonly [number, number])[];
+    /**
+     * La distance MAXIMALE (px, parmi `DISTANCES`) à laquelle l'étiquette peut
+     * s'écarter de son point. Sans elle, une étiquette gênée par un tracé
+     * voisin part là où il y a de la place — au prix de ce qu'elle nomme
+     * (noyaux, étape 5 : « 8,0 jours », la cote de l'iode, dérivait sous la
+     * courbe du SECOND isotope, qui a 4 jours de demi-vie). Mieux vaut
+     * recouvrir un bout de tracé que nommer autre chose.
+     */
+    portee?: number;
   }[],
   segments: readonly (readonly [Point2, Point2])[],
   cadre: { largeur: number; hauteur: number },
@@ -248,7 +257,7 @@ export function disposer(
 ) {
   const tailles = etiquettes.map(({ el, p }) => (el && p.visible ? { w: el.offsetWidth, h: el.offsetHeight } : null));
   const posees: Boite[] = [...obstacles];
-  const places: (Point2 | null)[] = etiquettes.map(({ p, surAncre, directions }, i) => {
+  const places: (Point2 | null)[] = etiquettes.map(({ p, surAncre, directions, portee }, i) => {
     const t = tailles[i];
     if (!t) return null;
     const boite = (c: Point2): Boite => ({ x0: c.x - t.w / 2 - 2, y0: c.y - t.h / 2 - 2, x1: c.x + t.w / 2 + 2, y1: c.y + t.h / 2 + 2 });
@@ -263,7 +272,7 @@ export function disposer(
     let meilleur: Point2 = { x: p.x, y: p.y };
     let meilleurCout = surAncre ? cout(meilleur, 0, 0) : Infinity;
     const dirs = directions ?? DIRECTIONS;
-    DISTANCES.forEach((g) =>
+    DISTANCES.filter((g) => portee === undefined || g <= portee).forEach((g) =>
       dirs.forEach(([dx, dy], rang) => {
         const c = { x: p.x + dx * (t.w / 2 + 5 + g), y: p.y + dy * (t.h / 2 + 3 + g) };
         const k = cout(c, rang, g);

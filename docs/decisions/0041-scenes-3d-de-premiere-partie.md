@@ -660,3 +660,17 @@ réponse avant la tentative.
   `suite` fausse de l'étape 3 (« l'angle non plus ») est retirée — la porte
   vérifiait les nombres affichés, qui étaient justes, pas la phrase qui les
   annonçait.
+- **2026-09-24 (nuit) — le contrat de focus de l'addendum ergonomie (point 1,
+  « le focus ne tombe jamais à `<body>` ») laissait passer un focus aussi perdu
+  que celui-là : un focus HORS DE L'ÉCRAN.** Dans les six scènes à course,
+  l'élève au clavier lance la course ; le verdict, la suite et les lectures
+  s'insèrent au-dessus de « Lancer… », qui descend de 1 000 à 2 000 px sous
+  l'écran — Entrée relance à l'aveugle. La règle devient : **on ne déplace
+  jamais un focus que l'élève VOIT** ; tombé à `<body>` ou poussé hors de
+  l'écran, il revient au choix retenu, amené dans la vue sans passer sous la
+  scène collante (`PariBloc`). Et le point 6 mesurait les cibles sous une seule
+  forme (`button`, `input`) : le `<summary>` des encadrés, 18 px dans trois
+  scènes, n'était pas compté. Les deux sont mesurés maintenant (famille
+  `ergonomie`, argument `course` ; la famille se lance seule sur les neuf scènes,
+  `scene-ergonomie.mjs`) — rouges sur le produit d'avant (15 manquements), verts
+  après. HANDOFF §11.203.

@@ -68,6 +68,13 @@ export interface RenduNoyaux {
   reperes(): Record<string, Projection>;
   cadre(): { largeur: number; hauteur: number };
   segments(): [Projection, Projection][];
+  /**
+   * Les bandes des NOMBRES d'axes (et de leurs titres) : aucune étiquette ne s'y
+   * pose. Vague 2, dessin : à 390 px, « 8,0 jours » (le crochet) et « second
+   * isotope » tombaient dans la rangée des graduations — « 16  8,0 jours  24 »,
+   * la réponse de l'étape déguisée en graduation.
+   */
+  zones(): { x0: number; y0: number; x1: number; y1: number }[];
 }
 
 /**
@@ -104,6 +111,7 @@ export function creerRenduNoyaux(canvas: HTMLCanvasElement, hote: HTMLElement): 
   let etat: EtatRenduNoyaux | null = null;
   let rep: Record<string, Projection> = {};
   let segs: [Projection, Projection][] = [];
+  let zonesNombres: { x0: number; y0: number; x1: number; y1: number }[] = [];
   /** le tirage trié, pour compter vite à chaque image (clé : l'objet tirage) */
   let trie: { de: Float64Array; fins: Float64Array } | null = null;
 
@@ -111,12 +119,12 @@ export function creerRenduNoyaux(canvas: HTMLCanvasElement, hote: HTMLElement): 
   const P = (x: number, y: number, visible = true): Projection => ({ x, y, visible });
 
   // 12 px : la taille « caption » des jetons, celle des étiquettes posées sur la scène
-  const texte = (t: string, x: number, y: number, aligne: CanvasTextAlign = "center", base: CanvasTextBaseline = "top") => {
+  const texte = (t: string, x: number, y: number, aligne: CanvasTextAlign = "center", base: CanvasTextBaseline = "top", encre = false) => {
     const c = ctx!;
     c.font = `12px ${police}`;
     c.textAlign = aligne;
     c.textBaseline = base;
-    c.fillStyle = css(jetons.encreDouce);
+    c.fillStyle = css(encre ? jetons.encre : jetons.encreDouce);
     c.fillText(t, x, y);
   };
   /** Un trait de 1 px posé au milieu d'un pixel : net, et à ≤ 0,5 px de sa place exacte. */
@@ -130,8 +138,8 @@ export function creerRenduNoyaux(canvas: HTMLCanvasElement, hote: HTMLElement): 
     const yMax = hautAxe(e.grandeur, isotopes);
     // le cadre : à gauche les nombres de l'axe vertical, en bas ceux du temps
     // et, sur une seconde ligne, le titre de l'axe du temps
-    const x0 = Math.max(30, Math.round(largeur * 0.075)), x1 = largeur - 16;
-    const y0 = RESERVE_LEGENDE + 22, y1 = hauteur - 36;
+    const x0 = Math.max(36, Math.round(largeur * 0.075)), x1 = largeur - 16;
+    const y0 = RESERVE_LEGENDE + 28, y1 = hauteur - 36;
     const X = (t: number) => x0 + (t / e.fenetre) * (x1 - x0);
     const Y = (v: number) => y1 - (v / yMax) * (y1 - y0);
 
@@ -139,7 +147,12 @@ export function creerRenduNoyaux(canvas: HTMLCanvasElement, hote: HTMLElement): 
     //    les majeurs, les majeurs plus légers que la courbe (spec §5.2) ──
     // les fins : à mi-chemin de deux majeurs (4 j, 0,5 unité), jamais sur un majeur
     // (le pas vertical et le pas horizontal ne partagent pas le même k : deux boucles)
-    c.strokeStyle = css(jetons.encreDouce, 0.22);
+    // Poids (vague 2) : les FORTS à ~3:1 sur la surface — WCAG 1.4.11, un
+    // graphique nécessaire à la lecture ; ce sont eux qu'on compte (« deux gros
+    // carreaux »). La critique du calme voulait le murmure de 1,98:1 ; la norme
+    // l'emporte sur le goût maison (ADR 0039). Les fins restent en dessous, la
+    // courbe (≈16:1) loin au-dessus.
+    c.strokeStyle = css(jetons.encreDouce, 0.3);
     c.lineWidth = 1;
     c.beginPath();
     for (let t = 4; t <= e.fenetre + 1e-9; t += 8) {
@@ -154,7 +167,7 @@ export function creerRenduNoyaux(canvas: HTMLCanvasElement, hote: HTMLElement): 
     }
     c.stroke();
     // les majeurs : tous les 8 j et tous les 1 unité
-    c.strokeStyle = css(jetons.encreDouce, 0.42);
+    c.strokeStyle = css(jetons.encreDouce, 0.6);
     c.beginPath();
     for (let t = 8; t <= e.fenetre + 1e-9; t += 8) {
       const x = net(X(t));
@@ -181,17 +194,21 @@ export function creerRenduNoyaux(canvas: HTMLCanvasElement, hote: HTMLElement): 
     c.lineTo(x1, net(y1));
     c.stroke();
     // les NOMBRES : les majeurs sauf le dernier (le bord du cadre, comme au sujet)
-    texte("0", x0 - 6, y1 + 5, "right");
+    texte("0", x0 - 10, y1 + 5, "right", "top", true);
     for (let t = 8; t < e.fenetre - 1e-9 || (t <= e.fenetre + 1e-9 && e.fenetre % 8 !== 0); t += 8) {
       if (t >= e.fenetre - 1e-9 && e.fenetre % 8 === 0) break;
-      texte(String(t), X(t), y1 + 5);
+      texte(String(t), X(t), y1 + 5, "center", "top", true);
     }
-    for (let v = 1; v < yMax; v++) texte(String(v), x0 - 6, Y(v), "right", "middle");
+    for (let v = 1; v < yMax; v++) texte(String(v), x0 - 10, Y(v), "right", "middle", true);
+    zonesNombres = [
+      { x0: 0, y0: y1 + 2, x1: largeur, y1: hauteur },
+      { x0: 0, y0: y0 - 6, x1: x0 - 2, y1: y1 + 2 },
+    ];
     for (let t = 0; t <= e.fenetre + 1e-9; t += 4) rep[`axe-t${t}`] = P(X(t), y1);
     rep[`axe-tfin`] = P(X(e.fenetre), y1);
     for (let v = 0; v <= yMax; v++) rep[`axe-y${v}`] = P(x0, Y(v));
     rep["axe-titre-t"] = P(x1, y1 + 26);
-    rep["axe-titre-y"] = P(x0 - 6, RESERVE_LEGENDE + 10);
+    rep["axe-titre-y"] = P(8, RESERVE_LEGENDE + 13);
     segs.push([P(x0, y0), P(x0, y1)], [P(x0, y1), P(x1, y1)]);
 
     // ── les COURBES : le premier échantillon à l'encre, le second en accent ──
@@ -219,8 +236,6 @@ export function creerRenduNoyaux(canvas: HTMLCanvasElement, hote: HTMLElement): 
       const nom = second ? "second" : "courbe";
       rep[`${nom}-0`] = P(X(0), Y(valeurAxe(iso, 0, e.grandeur)));
       rep[`${nom}-fin`] = P(X(e.fenetre), Y(valeurAxe(iso, e.fenetre, e.grandeur)));
-      // où nommer chaque courbe à l'étape libre : là où elles sont bien séparées
-      rep[`${nom}-nom`] = P(X(Math.min(e.fenetre, 6)), Y(valeurAxe(iso, Math.min(e.fenetre, 6), e.grandeur)), e.deuxCourbes);
     }
 
     const iso = e.isotope;
@@ -248,12 +263,17 @@ export function creerRenduNoyaux(canvas: HTMLCanvasElement, hote: HTMLElement): 
     // ── le CROCHET (en accent, après la révélation) : de la courbe à t₁ jusqu'à
     //    la courbe là où il ne reste que la moitié. Sa hauteur s'effondre quand
     //    on le déplace ; sa LARGEUR ne bouge pas (spec §2.2) ──
+    //    À l'étape libre, deux courbes : le crochet prend la TEINTE de la courbe
+    //    qu'il mesure (vague 2, captures : posé en accent sur la courbe noire de
+    //    l'iode, il se lisait comme une mesure de la courbe accent du second
+    //    isotope — la porte, elle, l'écartait avant de lire cette courbe).
     if (e.crochet && e.revele && e.depart !== null) {
+      const teinte = e.deuxCourbes && e.isotope !== "4" ? encre : accent;
       const t1 = e.depart;
       const p1 = P(X(t1), Y(v(t1)));
       const yh = Y(v(t1) / 2);
       const xd = X(t1 + th);
-      c.strokeStyle = accent;
+      c.strokeStyle = teinte;
       c.lineWidth = 1.5;
       c.beginPath();
       c.moveTo(p1.x, p1.y);
@@ -271,7 +291,7 @@ export function creerRenduNoyaux(canvas: HTMLCanvasElement, hote: HTMLElement): 
       c.moveTo(xd, yh - 7);
       c.lineTo(xd, yh + 7);
       c.stroke();
-      c.fillStyle = accent;
+      c.fillStyle = teinte;
       c.beginPath();
       c.arc(xd, yh, 3.5, 0, 2 * Math.PI);
       c.fill();
@@ -353,8 +373,8 @@ export function creerRenduNoyaux(canvas: HTMLCanvasElement, hote: HTMLElement): 
     const n = e.population;
     const cotes = Math.round(Math.sqrt(n));
     const bas = hauteur - 10;
-    const cote = Math.floor(Math.min(bas - RESERVE_LEGENDE - 6, largeur * 0.55) / cotes) * cotes;
-    const gx0 = 12, gy0 = RESERVE_LEGENDE + 6;
+    const cote = Math.floor(Math.min(bas - RESERVE_LEGENDE - 8, largeur * 0.48) / cotes) * cotes;
+    const gx0 = 16, gy0 = RESERVE_LEGENDE + 8;
     const pas = cote / cotes;
     // l'écart entre deux cases : 1 px, 2 px quand elles sont grandes
     const jeu = pas >= 14 ? 2 : 1;
@@ -362,7 +382,7 @@ export function creerRenduNoyaux(canvas: HTMLCanvasElement, hote: HTMLElement): 
     if (e.tirage && (!trie || trie.de !== e.tirage)) trie = { de: e.tirage, fins: Float64Array.from(e.tirage).sort() };
     const videe = (i: number) => e.tirage !== null && e.tirage[i] <= t + 1e-9;
     // les cases pleines d'abord, en un seul remplissage
-    c.fillStyle = css(jetons.encreDouce, 0.9);
+    c.fillStyle = css(jetons.encreDouce, 0.7);
     c.beginPath();
     for (let i = 0; i < n; i++) {
       if (videe(i)) continue;
@@ -371,26 +391,32 @@ export function creerRenduNoyaux(canvas: HTMLCanvasElement, hote: HTMLElement): 
     }
     c.fill();
     // une case vidée n'est PAS effacée : son contour reste — c'est toujours un
-    // noyau, ce n'est plus de l'iode 131 (spec §6). En accent après la
-    // révélation — ADOUCI : à 1 024 cases, un treillis d'accent plein criait
-    // plus fort que tout le reste de la page (captures du premier passage).
-    c.strokeStyle = e.revele ? css(jetons.accent, 0.55) : css(jetons.encreDouce, 0.55);
-    c.lineWidth = 1;
-    c.beginPath();
-    for (let i = 0; i < n; i++) {
-      if (!videe(i)) continue;
-      const cx = gx0 + (i % cotes) * pas, cy = gy0 + Math.floor(i / cotes) * pas;
-      c.rect(cx + jeu / 2 + 0.5, cy + jeu / 2 + 0.5, pas - jeu - 1, pas - jeu - 1);
+    // noyau, ce n'est plus de l'iode 131 (spec §6). JAMAIS en accent (vague 2,
+    // dessin et calme d'accord) : 775 contours d'accent faisaient de la grille
+    // l'objet le plus bruyant de la page, et ils marquaient le COMPLÉMENT de ce
+    // que le pari demandait (combien RESTENT). La figure et le fond tiennent
+    // par « plein / vidé », pas par la teinte ; l'accent de la révélation est
+    // la loi, sur le graphe du compte. Et à 1 024 cases, pas de contour du tout
+    // (calme) : à 6 px, un contour ne dit plus « c'est un noyau », il fait de la neige.
+    if (cotes < 32) {
+      c.strokeStyle = css(jetons.encreDouce, 0.55);
+      c.lineWidth = 1;
+      c.beginPath();
+      for (let i = 0; i < n; i++) {
+        if (!videe(i)) continue;
+        const cx = gx0 + (i % cotes) * pas, cy = gy0 + Math.floor(i / cotes) * pas;
+        c.rect(cx + jeu / 2 + 0.5, cy + jeu / 2 + 0.5, pas - jeu - 1, pas - jeu - 1);
+      }
+      c.stroke();
     }
-    c.stroke();
     rep["grille-0"] = P(gx0, gy0);
     rep["grille-1"] = P(gx0 + cote, gy0 + cote);
 
     // ── le GRAPHE DU COMPTE, à droite : ce qu'on compte, en escalier ; la loi,
     //    en accent, après la révélation (« la courbe superposée ») ──
-    const gauche = gx0 + cote + 44;
-    const cx0 = gauche, cx1 = largeur - 14;
-    const cy0 = RESERVE_LEGENDE + 22, cy1 = hauteur - 36;
+    const gauche = gx0 + cote + 40;
+    const cx0 = gauche, cx1 = largeur - 16;
+    const cy0 = RESERVE_LEGENDE + 22, cy1 = hauteur - 44;
     if (cx1 - cx0 < 40) return;
     const th = N.T_DEMI[e.isotope];
     const GX = (tt: number) => cx0 + (tt / N.COURSE_J) * (cx1 - cx0);
@@ -406,17 +432,20 @@ export function creerRenduNoyaux(canvas: HTMLCanvasElement, hote: HTMLElement): 
       c.lineTo(GX(tt), cy1 + 4);
     }
     c.stroke();
-    // la moitié et l'instant d'une demi-vie : l'énoncé du pari, en tirets doux
-    c.strokeStyle = css(jetons.encreDouce, 0.45);
-    c.lineWidth = 1;
-    c.setLineDash([3, 3]);
-    c.beginPath();
-    c.moveTo(cx0, net(GY(n / 2)));
-    c.lineTo(cx1, net(GY(n / 2)));
-    c.moveTo(net(GX(th)), cy0);
-    c.lineTo(net(GX(th)), cy1);
-    c.stroke();
-    c.setLineDash([]);
+    // la moitié et l'instant d'une demi-vie, en tirets doux — une fois qu'il y
+    // a un tirage à lire (vague 2, calme : avant le pari, un axe vide suffit)
+    if (e.tirage) {
+      c.strokeStyle = css(jetons.encreDouce, 0.45);
+      c.lineWidth = 1;
+      c.setLineDash([3, 3]);
+      c.beginPath();
+      c.moveTo(cx0, net(GY(n / 2)));
+      c.lineTo(cx1, net(GY(n / 2)));
+      c.moveTo(net(GX(th)), cy0);
+      c.lineTo(net(GX(th)), cy1);
+      c.stroke();
+      c.setLineDash([]);
+    }
     texte(String(n), cx0 - 5, GY(n), "right", "middle");
     texte(String(n / 2), cx0 - 5, GY(n / 2), "right", "middle");
     texte("0", cx0 - 5, cy1, "right", "middle");
@@ -426,7 +455,8 @@ export function creerRenduNoyaux(canvas: HTMLCanvasElement, hote: HTMLElement): 
     rep["graphe-n"] = P(cx0, GY(n));
     rep["graphe-demi"] = P(GX(th), cy1);
     rep["graphe-titre"] = P(cx0 - 5, RESERVE_LEGENDE + 10);
-    rep["graphe-titre-t"] = P(cx1, cy1 + 26);
+    rep["graphe-titre-t"] = P(cx1, cy1 + 31);
+    zonesNombres = [{ x0: cx0 - 40, y0: cy1 + 2, x1: largeur, y1: hauteur }];
     segs.push([P(cx0, cy0), P(cx0, cy1)], [P(cx0, cy1), P(cx1, cy1)]);
     if (e.revele) {
       c.strokeStyle = accent;
@@ -468,6 +498,7 @@ export function creerRenduNoyaux(canvas: HTMLCanvasElement, hote: HTMLElement): 
     c.fillRect(0, 0, largeur, hauteur);
     rep = {};
     segs = [];
+    zonesNombres = [];
     if (!etat) return;
     if (etat.support === "courbe") rendreCourbe(etat);
     else rendreGrille(etat);
@@ -495,5 +526,6 @@ export function creerRenduNoyaux(canvas: HTMLCanvasElement, hote: HTMLElement): 
     reperes: () => rep,
     cadre: () => ({ largeur, hauteur }),
     segments: () => segs,
+    zones: () => zonesNombres,
   };
 }

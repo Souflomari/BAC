@@ -501,7 +501,7 @@ await nav.close();
 }
 
 // ── Ergonomie : le clavier et le téléphone, sur le rendu (revue du 2026-09-24) ──
-await ergonomie({ lancer: (args) => chromium.launch({ executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium", args }), url: `${BASE}${LECON}?chapitre=${chapitre}`, scene: "orbite-geostationnaire", noter, essai: ESSAI });
+await ergonomie({ lancer: (args) => chromium.launch({ executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium", args }), url: `${BASE}${LECON}?chapitre=${chapitre}`, scene: "orbite-geostationnaire", noter, essai: ESSAI, course: 0 });
 
 // ── Verdict ──
 const familles = [...new Set(resultats.map((r) => r.famille))];

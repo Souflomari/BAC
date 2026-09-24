@@ -1117,3 +1117,28 @@ qu'aux §20, §21, §23.
 Pu-238 ; le champ `habilete` (toujours absent de la notion — le mélange 50/15/35
 reste incalculable, §3) ; et, comme au §23, la règle « un manipulable qui ne solde
 aucune dette se justifie par un trou MESURÉ », acceptée par défaut.
+
+**ET LA VAGUE 2 (le même soir)** — trois critiques sur les captures ; le détail
+de ce qui a été appliqué est au §11.203. Deux arbitrages entre critiques, écrits
+parce qu'ils engagent les scènes suivantes :
+
+- **Le quadrillage : la NORME l'emporte sur le goût maison.** Le calme voulait le
+  « murmure » (traits forts à 1,98:1 sur la surface) ; le dessin rappelait
+  WCAG 1.4.11 — 3:1 pour un graphique nécessaire à la compréhension, et ces
+  traits-là, l'élève les COMPTE (« descends de deux gros carreaux »). Forts à
+  ≈ 3:1, fins en dessous, la courbe (≈ 16:1) loin au-dessus. ADR 0039 : le
+  normatif s'arme, le maison s'imprime à côté.
+- **Les cases vidées ne sont plus en accent** — les deux critiques d'accord :
+  775 contours d'accent à 1 024 cases faisaient de la grille l'objet le plus
+  bruyant de la page, et marquaient le COMPLÉMENT de ce que le pari demandait
+  (combien restent). Écart à la spec §6, écrit ici.
+
+**Restent au propriétaire, parce qu'ils touchent l'appareillage des neuf
+scènes :** la `suite` composée en `text-body-lg` (le calme la veut au corps du
+texte) ; les choix faux d'un pari qui restent affichés, en entier, après la
+révélation ; le rang de l'étape dit trois fois au lecteur d'écran ; un plancher de
+cible à 44 px dans la porte ergonomie quand la bible écrit 48 ; des raccourcis
+clavier pour relancer. **Et deux affirmations de l'ergonomie, REJOUÉES avant
+toute correction** (le `<summary>` des encadrés à ~18 px de haut dans les neuf
+scènes ; le focus laissé hors de l'écran quand une course révèle le verdict) —
+leur verdict est au §11.203.

@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" width="640" height="440"
      font-family="'IBM Plex Sans', system-ui, sans-serif"
      aria-label="L’activité A d’une dose d’iode 131, en becquerels, en fonction du temps t en jours, tracée sur un quadrillage : traits forts tous les 8 jours et tous les 1×10⁸ Bq, traits fins tous les 4 jours et 0,5×10⁸ Bq, cadre non chiffré à 32 jours et 5×10⁸ Bq. La courbe part de 4,0×10⁸ Bq, sur le quatrième trait fort, et décroît.">
-  <title>L’activité A(t) d’une dose d’iode 131, sur quadrillage</title>
+  <title>Activité d’une dose d’iode 131, sur quadrillage</title>
   <!--
     courbe-activite-quadrillee.svg — courbe STATIQUE de l'activité
     A(t) = A0 · 2^(-t/t½), sur le quadrillage DU BAC (docs/sujets/pc/
@@ -49,7 +49,9 @@
       axes, « 0 », les nombres de graduation, les noms d'axe A (Bq) et
         t (jours) : --figure-ink-soft (chrome neutre, comme les figures
         sœurs decroissance-courbe.svg / tangente-tau.svg / datation-c14.svg) ;
-      la courbe A(t) : --figure-accent ;
+      la courbe A(t) : --figure-ink — c'est le DOCUMENT de l'énoncé,
+        pas la réponse (vague 2, dessin : en accent, la donnée, la
+        construction et la lecture avaient une seule couleur) ;
       la construction de t½ (guides, point, tick renforcé, lecture),
         step-3 SEUL : --figure-accent — rien d'autre n'est en accent
         avant cette étape.
@@ -66,7 +68,7 @@
     <text x="320" y="20" text-anchor="middle"
           font-size="12" font-weight="600" letter-spacing="0.01em"
           fill="var(--figure-ink)">
-      L’activité A(t) d’une dose d’iode 131, sur quadrillage
+      Activité d’une dose d’iode 131, sur quadrillage
     </text>
 
     <!-- Fond du panneau -->
@@ -142,7 +144,7 @@
       L464,322 L480,324.32 L496,326.45 L512,328.41 L528,330.2 L544,331.84
       L560,333.35 L576,334.73 L592,336
     " fill="none"
-      stroke="var(--figure-accent)"
+      stroke="var(--figure-ink)"
       stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
   </g><!-- /step-2 -->
 

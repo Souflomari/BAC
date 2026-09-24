@@ -28,6 +28,7 @@ import { MathText } from "../ChoiceButton";
 import * as C from "@/lib/scene2d/corde";
 import type { RenduCorde, Vue } from "@/lib/scene2d/corde-rendu";
 import { CURSEUR, GRILLE_SCENE, LIGNE_RADIO, MARGE_FOCUS } from "./commun";
+import { EncadreRepli } from "./EncadreRepli";
 import { useSceneRendu } from "./useSceneRendu";
 import { usePari } from "./usePari";
 import { SceneOptIn } from "./SceneOptIn";
@@ -671,14 +672,11 @@ export function CordePanel({ scene, className }: { scene: Scene3DDescriptor; cla
                   )}
                 </p>
               )}
-              <details className="text-caption text-secondary">
-                <summary className="cursor-pointer select-none">{frenchTypography("Corde idéalisée : ce que cette corde simplifie")}</summary>
-                <p className="mt-1">
-                  {frenchTypography(
-                    "Échelle verticale dilatée 20 fois : sans cela, une secousse de 3 cm sur 4 m de corde serait invisible — aucune pente lue à l’écran n’a donc de sens. Ralenti 5 fois : en vrai, tout ce que tu vois ici dure une seconde. L’extrémité lointaine est amortie : aucune onde ne revient. La corde est idéale — ni amortissement, ni dispersion : la secousse avance sans changer de forme."
-                  )}
-                </p>
-              </details>
+              <EncadreRepli titre="Corde idéalisée : ce que cette corde simplifie">
+                {frenchTypography(
+                  "Échelle verticale dilatée 20 fois : sans cela, une secousse de 3 cm sur 4 m de corde serait invisible — aucune pente lue à l’écran n’a donc de sens. Ralenti 5 fois : en vrai, tout ce que tu vois ici dure une seconde. L’extrémité lointaine est amortie : aucune onde ne revient. La corde est idéale — ni amortissement, ni dispersion : la secousse avance sans changer de forme."
+                )}
+              </EncadreRepli>
             </div>
           )}
         </div>

@@ -9,7 +9,7 @@
     {
       "id": "ou-lire-la-demi-vie",
       "titre": "Où se lit la demi-vie",
-      "consigne": "Un échantillon d'iode 131, préparé à l'instant zéro : $4{,}0\\times10^{14}$ noyaux radioactifs. Un appareil a enregistré pendant dix jours le nombre de noyaux qui n'ont **pas encore** désintégré ; voici sa courbe, sur son quadrillage. En abscisse, le temps en jours : un gros trait tous les huit jours. En ordonnée, le nombre de noyaux : un gros trait tous les $10^{14}$, et le départ est sur le quatrième. On appelle **demi-vie** la durée au bout de laquelle il n'en reste plus que la moitié.",
+      "consigne": "Un échantillon d'iode 131, préparé à l'instant zéro : $4{,}0\\times10^{14}$ noyaux radioactifs. Un appareil a enregistré pendant dix jours le nombre de noyaux qui n'ont **pas encore** désintégré ; voici sa courbe, sur un quadrillage de bac — un gros trait tous les huit jours, et tous les $10^{14}$ noyaux. On appelle **demi-vie** la durée au bout de laquelle il n'en reste plus que la moitié.",
       "pari": {
         "question": "Pour lire cette demi-vie sur la courbe, il faut…",
         "choix": [
@@ -42,7 +42,7 @@
           }
         ]
       },
-      "suite": "Refais le geste sur le quadrillage, sans le curseur. **Un :** le départ est sur le quatrième gros trait ; descends de deux gros carreaux : $2{,}0\\times10^{14}$, la moitié. **Deux :** suis ce trait vers la droite jusqu'à la courbe. **Trois :** descends tout droit, sur le gros trait marqué $8$. Le croisement est exact : c'est ainsi que les figures d'examen sont dessinées. Puis promène le curseur : à $4{,}0$ jours, il reste $2{,}83\\times10^{14}$ — pas $3{,}0\\times10^{14}$. La courbe n'est pas une droite : une demi-vie ne se lit jamais au jugé.",
+      "suite": "Promène maintenant le curseur : à $4{,}0$ jours, il reste $2{,}83\\times10^{14}$ noyaux — pas $3{,}0\\times10^{14}$, qui serait la moitié du chemin. La courbe n'est pas une droite : une demi-vie ne se lit jamais au jugé.",
       "controles": [
         "instant"
       ],
@@ -95,7 +95,7 @@
           }
         ]
       },
-      "suite": "Fais glisser l'instant de départ, de zéro à vingt-quatre jours, et regarde deux choses. La **hauteur** du crochet s'effondre : $4{,}0\\times10^{14}$, puis $2{,}0$, puis $1{,}0$, puis $5{,}0\\times10^{13}$. Sa **largeur** ne bouge jamais : $8{,}0$ jours, vingt-cinq fois sur vingt-cinq — exactement un gros carreau du quadrillage, où qu'on le pose. C'est « sans mémoire » traduit en une durée qu'on mesure : la demi-vie de l'iode 131 est la même au premier jour et trois semaines plus tard.",
+      "suite": "Fais glisser le départ, de zéro à vingt-quatre jours. La **hauteur** du crochet s'effondre ; sa **largeur** reste $8{,}0$ jours, vingt-cinq fois sur vingt-cinq — un gros carreau du quadrillage, où qu'on le pose.",
       "controles": [
         "depart"
       ],
@@ -143,12 +143,11 @@
           }
         ]
       },
-      "suite": "Trois observations, aucun calcul. **Une :** relance trois fois à soixante-quatre — trois nombres différents, jamais les mêmes cases, tous voisins de $32$ : le hasard est réel, et il est **encadré**. **Deux :** passe à 256, puis à 1024, en relançant, et surveille l'écart à la loi : à 64 il saute aux yeux, à 1024 il faut le chercher. **Trois :** l'échantillon des deux premières étapes contient des centaines de milliers de milliards de noyaux ; l'écart y est invisible — voilà pourquoi sa courbe était lisse.",
+      "suite": "Passe à 256, puis à 1024, en relançant, et surveille l'écart à la loi : à 64 il saute aux yeux, à 1024 il faut le chercher. L'échantillon des deux premières étapes compte des centaines de milliers de milliards de noyaux : voilà pourquoi sa courbe était lisse.",
       "controles": [
         "population"
       ],
       "lectures": [
-        "population",
         "restants-comptes",
         "noyaux",
         "ecart-a-la-loi",
@@ -193,7 +192,7 @@
           }
         ]
       },
-      "suite": "Bascule d'une grandeur à l'autre en regardant **l'axe**, pas la courbe : le tracé ne bouge pas, ce sont les nombres qui changent — $10^{14}$ noyaux par gros trait d'un côté, $10^{8}$ becquerels de l'autre. C'est le réflexe qui sauve la question à l'examen : avant de lire un graphe, lis ce qu'il y a sur les **deux** axes. Deux sujets nationaux demandent exactement ce geste sur une courbe d'activité — 2021, le plutonium ; 2022, l'iode 131.",
+      "suite": "Bascule d'une grandeur à l'autre en regardant **l'axe**, pas la courbe : le tracé ne bouge pas, ce sont les nombres qui changent. Avant de lire un graphe, lis ses **deux** axes.",
       "controles": [
         "grandeur"
       ],
@@ -241,7 +240,7 @@
           }
         ]
       },
-      "suite": "Quatre manœuvres. **Une :** choisis l'échantillon rapide et promène le crochet : $4{,}0$ jours à chacune des vingt-cinq positions. **Deux :** bascule sur l'activité : $8{,}0\\times10^{8}$ becquerels au départ, deux fois plus pour le **même** nombre de noyaux — $A_0 = \\lambda N_0$, et c'est $\\lambda$ qui a doublé. **Trois :** passe à la grille, à 1024, sur l'isotope rapide : seize jours font maintenant **quatre** demi-vies, et il reste environ 64 cases. **Quatre :** relance trois fois, et regarde ce petit nombre bouger.",
+      "suite": "Choisis l'échantillon rapide et promène le crochet : $4{,}0$ jours à chaque position. Puis passe à la grille, à 1024 : seize jours font maintenant **quatre** demi-vies, il reste environ 64 cases — relance, et regarde ce petit nombre bouger.",
       "controles": [
         "isotope",
         "instant",
@@ -252,15 +251,12 @@
       "lectures": [
         "noyaux",
         "activite",
-        "restants-depart",
         "duree-de-moitie",
         "demi-vie",
         "lambda",
         "tau",
-        "population",
         "restants-comptes",
-        "tirages-precedents",
-        "ecart-a-la-loi"
+        "tirages-precedents"
       ],
       "etat": {
         "t_demi_j": "8",

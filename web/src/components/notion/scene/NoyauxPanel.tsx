@@ -31,6 +31,7 @@ import { MathText } from "../ChoiceButton";
 import * as N from "@/lib/scene2d/noyaux-modele";
 import type { Grandeur, RenduNoyaux, Support } from "@/lib/scene2d/noyaux-rendu";
 import { CURSEUR, GRILLE_SCENE, LIGNE_RADIO, MARGE_FOCUS } from "./commun";
+import { EncadreRepli } from "./EncadreRepli";
 import { useSceneRendu } from "./useSceneRendu";
 import { usePari } from "./usePari";
 import { SceneOptIn } from "./SceneOptIn";
@@ -107,8 +108,15 @@ export function NoyauxPanel({ scene, className }: { scene: Scene3DDescriptor; cl
   const [enLecture, setEnLecture] = useState(false);
   const [tJours, setTJours] = useState(0);
   const [tirage, setTirage] = useState<Float64Array | null>(null);
-  /** les comptes à une demi-vie des derniers tirages (le plus récent à la fin), pour CE réglage */
-  const [historique, setHistorique] = useState<number[]>([]);
+  /**
+   * Les comptes à une demi-vie des derniers tirages, PAR RÉGLAGE (isotope ×
+   * population), le plus récent à la fin. Vague 2, ergonomie : une seule série,
+   * vidée en silence à chaque changement de population — alors que la suite
+   * demande justement de passer de 64 à 1024 et de comparer. Revenir à 64 rend
+   * la série de 64.
+   */
+  const [historiques, setHistoriques] = useState<Record<string, number[]>>({});
+  const nTiragesRef = useRef(0);
   /** combien de tirages depuis l'ouverture (la porte distingue ainsi deux tirages au même compte) */
   const [nTirages, setNTirages] = useState(0);
   const [facteur, setFacteur] = useState(1);
@@ -132,8 +140,6 @@ export function NoyauxPanel({ scene, className }: { scene: Scene3DDescriptor; cl
     tDemi: useRef<HTMLSpanElement>(null),
     crochet: useRef<HTMLSpanElement>(null),
     t1: useRef<HTMLSpanElement>(null),
-    nomA: useRef<HTMLSpanElement>(null),
-    nomB: useRef<HTMLSpanElement>(null),
     grapheY: useRef<HTMLSpanElement>(null),
     grapheT: useRef<HTMLSpanElement>(null),
   };
@@ -157,9 +163,12 @@ export function NoyauxPanel({ scene, className }: { scene: Scene3DDescriptor; cl
   const th = N.T_DEMI[etat.iso];
   // les lectures de l'appareil MONTRÉ : à l'étape libre, la courbe et la grille n'ont pas les mêmes
   const DE_LA_GRILLE = ["population", "restants-comptes", "ecart-a-la-loi", "tirages-precedents"];
-  const lectures = (pari.etapeOuverte ? etape.lectures ?? [] : []).filter((l) =>
-    courbe ? !DE_LA_GRILLE.includes(l) : DE_LA_GRILLE.includes(l) || l === "noyaux"
-  );
+  const lectures = (pari.etapeOuverte ? etape.lectures ?? [] : [])
+    .filter((l) => (courbe ? !DE_LA_GRILLE.includes(l) : DE_LA_GRILLE.includes(l) || l === "noyaux"))
+    // à l'étape libre, la lecture de la grandeur que porte l'AXE, pas les deux
+    // (vague 2, calme : N et A côte à côte y défaisaient la leçon de l'étape 4,
+    // « lis l'axe ») ; l'étape 4, elle, les montre ensemble — c'est son sujet
+    .filter((l) => !(libre && courbe && l === (etat.grandeur === "noyaux" ? "activite" : "noyaux")));
 
   // ── Rendu ──
   const renduRef = useRef<RenduNoyaux | null>(null);
@@ -193,14 +202,16 @@ export function NoyauxPanel({ scene, className }: { scene: Scene3DDescriptor; cl
     disposer(
       [
         { el: refs.tDemi.current, p: en("construction-t", construction && revele && courbe), directions: [[1, -1], [-1, -1], [1, -2]] },
-        { el: refs.crochet.current, p: en("crochet-cote", aDepart && revele && courbe), directions: [[0, 1], [0, 1.6], [0, -1]] },
+        // `portee` : la cote reste contre son crochet, quitte à recouvrir un bout
+        // de tracé (vague 2, captures : à l'étape 5 elle dérivait sous la courbe
+        // du second isotope — « 8,0 jours » y nommait la mauvaise courbe)
+        { el: refs.crochet.current, p: en("crochet-cote", aDepart && revele && courbe), directions: [[0, 1], [0, 1.6], [0, -1], [1, -1], [-1, -1]], portee: 8 },
         { el: refs.t1.current, p: en("depart", aDepart && courbe), directions: [[1, -1], [-1, -1], [1, 0], [-1, 0]] },
-        { el: refs.nomA.current, p: en("courbe-nom", deuxCourbes && courbe), directions: [[1, -1], [0, -1], [1, 0]] },
-        { el: refs.nomB.current, p: en("second-nom", deuxCourbes && courbe), directions: [[-1, 1], [0, 1], [1, 1]] },
       ],
       s.segments(),
       s.cadre(),
-      [boiteLegende(rendu.hoteRef.current)].filter((b): b is NonNullable<typeof b> => b !== null)
+      // la légende du plateau, et les bandes des nombres d'axes (vague 2, dessin)
+      [boiteLegende(rendu.hoteRef.current), ...s.zones()].filter((b): b is NonNullable<typeof b> => b !== null)
     );
     for (const n of REPERES) poser(repRefs.current[n].current, p[n] ?? cache);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -230,7 +241,7 @@ export function NoyauxPanel({ scene, className }: { scene: Scene3DDescriptor; cl
       setIndexEtape(i);
       pari.changerEtape(etapes[indexEtape].id, e.id, i === 0 && indexEtape === etapes.length - 1);
       setEtat((c) => appliquer(e.etat, c));
-      setHistorique([]);
+      setHistoriques({});
       auRepos(false);
     },
     [etapes, pari, indexEtape, auRepos]
@@ -245,10 +256,11 @@ export function NoyauxPanel({ scene, className }: { scene: Scene3DDescriptor; cl
     const t = N.tirer(e.iso, e.population);
     tirageRef.current = t;
     setTirage(t);
-    setNTirages((k) => k + 1);
+    nTiragesRef.current += 1;
+    setNTirages(nTiragesRef.current);
     tRef.current = 0;
     setTJours(0);
-    setAnnonce(sansAnimation ? "Le tirage est calculé sans animation." : "Le tirage commence : chaque noyau joue sa chance.");
+    setAnnonce(`Tirage ${nTiragesRef.current} : ${sansAnimation ? "calculé sans animation." : "chaque noyau joue sa chance."}`);
     setPhase("course");
     setEnLecture(true);
   };
@@ -273,8 +285,10 @@ export function NoyauxPanel({ scene, className }: { scene: Scene3DDescriptor; cl
       if (tirage) {
         const demi = N.restants(tirage, N.T_DEMI[e.iso]);
         const fin = N.restants(tirage, t);
-        setHistorique((h) => [...h, demi].slice(-N.MEMOIRE_TIRAGES));
-        setAnnonce(`Course terminée : ${demi} noyaux restants à ${N.nombre(N.T_DEMI[e.iso], 1)} jours, ${fin} à 16 jours ; image arrêtée.`);
+        const cle = `${e.iso}-${e.population}`;
+        setHistoriques((h) => ({ ...h, [cle]: [...(h[cle] ?? []), demi].slice(-N.MEMOIRE_TIRAGES) }));
+        // le NUMÉRO du tirage : une annonce identique à la précédente n'est pas relue
+        setAnnonce(`Tirage ${nTiragesRef.current} terminé : ${demi} noyaux restants à ${N.nombre(N.T_DEMI[e.iso], 1)} jours, ${fin} à 16 jours ; image arrêtée.`);
       }
     };
     const image = (maintenant: number) => {
@@ -316,10 +330,15 @@ export function NoyauxPanel({ scene, className }: { scene: Scene3DDescriptor; cl
     // la grille : changer d'échantillon ou de population, c'est une autre
     // expérience — la grille redevient pleine, et la ligne des tirages repart
     // à blanc (elle compare des tirages du MÊME réglage)
-    if (patch.population !== undefined || patch.iso !== undefined || patch.support !== undefined) {
-      if (patch.population !== undefined || patch.iso !== undefined) setHistorique([]);
-      if (phaseRef.current !== "repos") auRepos();
-    }
+    // (changer de VUE n'est pas changer d'expérience : le tirage reste — vague 2,
+    // ergonomie ; la suite de l'étape libre demande justement l'aller-retour)
+    if ((patch.population !== undefined || patch.iso !== undefined) && phaseRef.current !== "repos") auRepos(false);
+    // chaque changement d'appareil est DIT : l'image entière change, et la
+    // description du canvas n'est pas réannoncée
+    if (patch.support !== undefined) setAnnonce(patch.support === "grille" ? `Vue : la grille, ${suivant.population} noyaux.` : "Vue : la courbe de l’échantillon réel.");
+    else if (patch.iso !== undefined) setAnnonce(patch.iso === "8" ? "Échantillon : l’iode 131." : "Échantillon : le second isotope, λ deux fois plus grande.");
+    else if (patch.grandeur !== undefined) setAnnonce(patch.grandeur === "noyaux" ? "Axe vertical : le nombre de noyaux restants." : "Axe vertical : l’activité, en becquerels.");
+    else if (patch.population !== undefined) setAnnonce(`Grille de ${patch.population} noyaux, toutes pleines : lance un tirage.`);
   };
 
   if (rendu.panneau === "ferme") {
@@ -370,6 +389,62 @@ export function NoyauxPanel({ scene, className }: { scene: Scene3DDescriptor; cl
       (deuxCourbes ? " Une seconde courbe, en couleur : le second isotope." : "")
     : `Grille de ${n} cases, un noyau par case : ${tirage ? `${compteMaintenant} pleines, ${n - compteMaintenant} vidées` : "toutes pleines"}. À droite, le compte des noyaux restants en fonction du temps.`;
 
+  // Les deux courbes de l'étape libre se nomment dans la LÉGENDE, avec un
+  // échantillon de trait (vague 2, captures) : posés sur le graphe, « second
+  // isotope » (101 px au téléphone, 21 jours d'axe) ne tenait nulle part sous
+  // sa courbe et s'installait dans la rangée des nombres, sur le « 8 ». L'encre
+  // et l'accent diffèrent aussi en CLARTÉ (≈ 3:1) : la clé ne tient pas à la
+  // seule teinte (WCAG 1.4.1).
+  const cleDesCourbes = (
+    <span className="inline-flex flex-wrap items-center gap-x-2" data-cle-courbes>
+      {frenchTypography("Loi tracée :")}{" "}
+      <span className="inline-flex items-center gap-1">
+        <span aria-hidden className="inline-block h-0.5 w-4 rounded-full bg-figure-ink" />
+        {frenchTypography("iode 131")}
+      </span>
+      {/* un vrai séparateur : sans lui, le texte lu est « iode 131second isotope » */}
+      <span className="sr-only">, </span>{" "}
+      <span className="inline-flex items-center gap-1">
+        <span aria-hidden className="inline-block h-0.5 w-4 rounded-full bg-figure-accent" />
+        {frenchTypography("second isotope")}
+      </span>
+    </span>
+  );
+
+  // Les lectures : sous les réglages pour la courbe ; pour la grille, JUSTE SOUS
+  // le bouton qui les produit (vague 2, ergonomie : au téléphone, « On compte »
+  // était à 540 px de « Relancer » — relancer vingt fois, c'était quarante
+  // allers-retours de défilement).
+  const blocLectures =
+    lectures.length > 0 ? (
+      <dl className="flex flex-col gap-2 text-body-sm" data-lectures>
+        {lectures.includes("population") && ligneLecture("population", "Noyaux de la grille", `${n} (${cotes} × ${cotes} cases)`)}
+        {lectures.includes("restants-comptes") &&
+          ligneLecture(
+            "restants-comptes",
+            "On compte",
+            !tirage ? aMesurer : finie ? `${N.restants(tirage, th)} à ${jours(th)} · ${N.restants(tirage, N.COURSE_J)} à 16 jours` : `${compteMaintenant} maintenant`
+          )}
+        {lectures.includes("instant") && ligneLecture("instant", "Instant du curseur", jours(etat.instant))}
+        {lectures.includes("noyaux") &&
+          (courbe
+            ? ligneLecture("noyaux", <MathText>{aCurseur ? "Noyaux restants au curseur, $N(t)$" : "Noyaux restants à l'instant zéro, $N_0$"}</MathText>, `${sci(N.noyaux(etat.iso, tLu))} noyaux`)
+            : ligneLecture("noyaux", "La loi prévoit", `${prevuDemi} à ${jours(th)} · ${prevuFin} à 16 jours`))}
+        {lectures.includes("activite") && ligneLecture("activite", <MathText>{aCurseur ? "Activité au curseur, $A(t)$" : "Activité à l'instant zéro, $A_0$"}</MathText>, `${sci(N.activite(etat.iso, tLu))} Bq`)}
+        {lectures.includes("depart") && ligneLecture("depart", <MathText>{"Départ du crochet, $t_1$"}</MathText>, jours(etat.depart))}
+        {lectures.includes("restants-depart") && ligneLecture("restants-depart", <MathText>{"Hauteur du crochet, à $t_1$"}</MathText>, `${sci(valeur(etat.depart))} ${unite}`)}
+        {lectures.includes("duree-de-moitie") && ligneLecture("duree-de-moitie", "Largeur du crochet : la durée pour tomber à la moitié", jours(N.dureeDeMoitie(etat.iso, etat.depart)))}
+        {lectures.includes("demi-vie") && ligneLecture("demi-vie", <MathText>{`Demi-vie de ${nomIso}, $t_{1/2}$`}</MathText>, jours(th))}
+        {lectures.includes("lambda") &&
+          ligneLecture("lambda", <MathText>{"Constante radioactive, $\\lambda$"}</MathText>, `${N.troisCs(N.lambdaJ(etat.iso))} j⁻¹ · ${N.scientifique(N.lambdaS(etat.iso), 3)} s⁻¹`)}
+        {lectures.includes("tau") && ligneLecture("tau", <MathText>{"Constante de temps, $\\tau = 1/\\lambda$"}</MathText>, `${N.troisCs(N.tau(etat.iso))} jours`)}
+        {lectures.includes("ecart-a-la-loi") &&
+          ligneLecture("ecart-a-la-loi", `Écart à la loi, à ${jours(th)}`, !tirage ? aMesurer : compteDemi === null ? `au passage de ${jours(th)}` : pourcent((Math.abs(compteDemi - prevuDemi) / prevuDemi) * 100))}
+        {lectures.includes("tirages-precedents") &&
+          ligneLecture("tirages-precedents", `Derniers tirages, à ${jours(th)}`, (historiques[`${etat.iso}-${etat.population}`] ?? []).length ? historiques[`${etat.iso}-${etat.population}`].join(" · ") : "aucun encore")}
+      </dl>
+    ) : null;
+
   return (
     <section
       className={cn("my-10 notion-wide-band print:hidden", className)}
@@ -408,7 +483,7 @@ export function NoyauxPanel({ scene, className }: { scene: Scene3DDescriptor; cl
           canvasRef={rendu.canvasRef}
           panneau={rendu.panneau}
           description={description}
-          legende={courbe ? "Loi tracée · valeurs de la leçon" : "Une case = un noyau · 1 jour = 0,25 s"}
+          legende={courbe ? (deuxCourbes ? cleDesCourbes : "Loi tracée · valeurs de la leçon") : mouvementReduit ? "Une case = un noyau" : "Une case = un noyau · 1 jour = 0,25 s"}
           messageSansWebgl="Ce navigateur n’affiche pas la courbe (dessin indisponible). Les paris et les réglages restent."
           onRelancer={rendu.relancer}
           format="paysage-haut"
@@ -424,8 +499,6 @@ export function NoyauxPanel({ scene, className }: { scene: Scene3DDescriptor; cl
           <Etiquette refEl={refs.t1} nom="t1" fond>
             <MathText>{"$t_1$"}</MathText>
           </Etiquette>
-          <Etiquette refEl={refs.nomA} nom="nom-a" texte="iode 131" fond />
-          <Etiquette refEl={refs.nomB} nom="nom-b" texte="second isotope" fond />
           <Etiquette refEl={refs.grapheY} nom="graphe-y" texte="noyaux restants" />
           <Etiquette refEl={refs.grapheT} nom="graphe-t" texte="t (jours)" />
           {REPERES.map((r) => (
@@ -512,11 +585,17 @@ export function NoyauxPanel({ scene, className }: { scene: Scene3DDescriptor; cl
                   <span>Grille pleine</span>
                 </button>
               </div>
-              <p className="text-caption text-secondary" data-temps-grille>
-                {frenchTypography(rapide && enLecture ? `Calcul sans animation : t = ${N.nombre(tJours, 1)} jours.` : `Temps de l’échantillon : t = ${N.nombre(tJours, 1)} jours.`)}
-              </p>
+              {/* Pas de compteur qui défile PENDANT la course (vague 2, calme) :
+                  l'axe du graphe du compte montre déjà l'instant. */}
+              {!enLecture && (
+                <p className="text-caption text-secondary" data-temps-grille>
+                  {frenchTypography(`Temps de l’échantillon : t = ${N.nombre(tJours, 1)} jours.`)}
+                </p>
+              )}
             </div>
           )}
+
+          {!courbe && blocLectures}
 
           <div className="flex flex-col gap-5">
             {ouvre("isotope") && (
@@ -592,52 +671,20 @@ export function NoyauxPanel({ scene, className }: { scene: Scene3DDescriptor; cl
             )}
           </div>
 
-          {lectures.length > 0 && (
-            <dl className="flex flex-col gap-2 text-body-sm" data-lectures>
-              {lectures.includes("population") && ligneLecture("population", "Noyaux de la grille", `${n} (${cotes} × ${cotes} cases)`)}
-              {lectures.includes("restants-comptes") &&
-                ligneLecture(
-                  "restants-comptes",
-                  "On compte",
-                  !tirage ? aMesurer : finie ? `${N.restants(tirage, th)} à ${jours(th)} · ${N.restants(tirage, N.COURSE_J)} à 16 jours` : `${compteMaintenant} maintenant`
-                )}
-              {lectures.includes("instant") && ligneLecture("instant", "Instant du curseur", jours(etat.instant))}
-              {lectures.includes("noyaux") &&
-                (courbe
-                  ? ligneLecture("noyaux", <MathText>{aCurseur ? "Noyaux restants au curseur, $N(t)$" : "Noyaux restants à l'instant zéro, $N_0$"}</MathText>, `${sci(N.noyaux(etat.iso, tLu))} noyaux`)
-                  : ligneLecture("noyaux", "La loi prévoit", `${prevuDemi} à ${jours(th)} · ${prevuFin} à 16 jours`))}
-              {lectures.includes("activite") && ligneLecture("activite", <MathText>{aCurseur ? "Activité au curseur, $A(t)$" : "Activité à l'instant zéro, $A_0$"}</MathText>, `${sci(N.activite(etat.iso, tLu))} Bq`)}
-              {lectures.includes("depart") && ligneLecture("depart", <MathText>{"Départ du crochet, $t_1$"}</MathText>, jours(etat.depart))}
-              {lectures.includes("restants-depart") && ligneLecture("restants-depart", <MathText>{"Hauteur du crochet, à $t_1$"}</MathText>, `${sci(valeur(etat.depart))} ${unite}`)}
-              {lectures.includes("duree-de-moitie") && ligneLecture("duree-de-moitie", "Largeur du crochet : la durée pour tomber à la moitié", jours(N.dureeDeMoitie(etat.iso, etat.depart)))}
-              {lectures.includes("demi-vie") && ligneLecture("demi-vie", <MathText>{`Demi-vie de ${nomIso}, $t_{1/2}$`}</MathText>, jours(th))}
-              {lectures.includes("lambda") &&
-                ligneLecture("lambda", <MathText>{"Constante radioactive, $\\lambda$"}</MathText>, `${N.troisCs(N.lambdaJ(etat.iso))} j⁻¹ · ${N.scientifique(N.lambdaS(etat.iso), 3)} s⁻¹`)}
-              {lectures.includes("tau") && ligneLecture("tau", <MathText>{"Constante de temps, $\\tau = 1/\\lambda$"}</MathText>, `${N.troisCs(N.tau(etat.iso))} jours`)}
-              {lectures.includes("ecart-a-la-loi") &&
-                ligneLecture("ecart-a-la-loi", `Écart à la loi, à ${jours(th)}`, !tirage ? aMesurer : compteDemi === null ? `au passage de ${jours(th)}` : pourcent((Math.abs(compteDemi - prevuDemi) / prevuDemi) * 100))}
-              {lectures.includes("tirages-precedents") &&
-                ligneLecture("tirages-precedents", `Derniers tirages, à ${jours(th)}`, historique.length ? historique.join(" · ") : "aucun encore")}
-            </dl>
-          )}
+          {courbe && blocLectures}
 
           {pari.tempsOuvert && (
             <div className="flex flex-col gap-2" data-notes>
               {finie && !courbe && (
                 <p className="text-caption text-secondary" data-fin-course>
-                  {frenchTypography(
-                    `Image arrêtée à 16 jours ; les noyaux restants continueraient de partir, un par un.${facteur < 0.9 ? " Sur cet appareil, la course a tourné plus lentement que prévu." : ""}`
-                  )}
+                  {frenchTypography("Image arrêtée à 16 jours ; les noyaux restants continueraient de partir, un par un.")}
                 </p>
               )}
-              <details className="text-caption text-secondary">
-                <summary className="cursor-pointer select-none">{frenchTypography("Ce que cette scène simplifie")}</summary>
-                <p className="mt-1">
-                  {frenchTypography(
-                    "La courbe n’est pas une mesure : c’est la loi tracée avec les valeurs de la leçon ; sur un vrai enregistrement, les points sont un peu dispersés. La grille montre un échantillon impossible : un microgramme d’iode 131 contient environ 4,6×10¹⁵ noyaux — c’est pourquoi sa courbe, elle, paraît lisse. Et le temps de la grille est accéléré : seize jours en quatre secondes, un jour vaut un quart de seconde."
-                  )}
-                </p>
-              </details>
+              <EncadreRepli titre="Ce que cette scène simplifie">
+                {frenchTypography(
+                  "La courbe n’est pas une mesure : c’est la loi tracée avec les valeurs de la leçon ; sur un vrai enregistrement, les points sont un peu dispersés. La grille montre un échantillon impossible : un microgramme d’iode 131 contient environ 4,6×10¹⁵ noyaux — c’est pourquoi sa courbe, elle, paraît lisse. Et le temps de la grille est accéléré : seize jours en quatre secondes, un jour vaut un quart de seconde."
+                )}
+              </EncadreRepli>
             </div>
           )}
         </div>

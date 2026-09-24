@@ -1779,7 +1779,9 @@ sans un module du produit.
   produit pour la mesure : `quadrillage` (fin à 4 j, fort à 8, cadre à 10 à
   l'étape 1 ; fins à 4, 12, 20, 28 et forts à 8, 16, 24 à 32 j ; contrastes
   fins < forts < courbe ; présent AVANT le pari) ; `axes-lineaires` (forts
-  équidistants à 1 px, les deux axes) ; `courbe-juste` (décroissante, convexe
+  équidistants à 1,5 px, les deux axes — chaque trait est posé au milieu d'un
+  pixel, deux intervalles diffèrent d'1 px EXACTEMENT, 107 et 108 ; « ≤ 1 »
+  passait par l'arrondi flottant et a rougi à la vague 2, §11.203) ; `courbe-juste` (décroissante, convexe
   sur des triplets de 4 j, à ≤ 2 px de la loi, par le croisement (8 j ; 2) ; la
   courbe de l'activité et celle des noyaux confondues ; la seconde courbe par
   (4 j ; 2)) ; `fenetre-s1` (10 jours tracés, curseur borné à 10) ;
@@ -1790,7 +1792,11 @@ sans un module du produit.
 - **les INVARIANTS du tirage** : `grille-comptee` (les cases pleines aux pixels =
   le compte lu = `data-restants`) ; `tirage-vivant` (le MOTIF change d'un tirage à
   l'autre ; cinq tirages de 64 pas tous à 32) ; `tirage-juste` (5 tirages × 3
-  populations à ±5σ, et l'isotope rapide à 4 et 16 jours) ; `dispersion-decroit`
+  populations à ±5σ chacun, ET leur MOYENNE à ±5σ/√5 — p majorée de 20 % donne
+  ~446 restants sur 1 024 en moyenne, DANS [432 ; 592] : les bandes d'un tirage
+  seul ne l'attrapent qu'environ deux fois sur trois (chaque tirage a ~19 % de
+  chances de tomber sous 432) ; la moyenne l'attrape à 4σ, et vaut pour un biais
+  sur p d'environ 15 % à 1 024, pas 6 % comme la spec l'écrivait ; et l'isotope rapide à 4 et 16 jours) ; `dispersion-decroit`
   (20 tirages à 64 et à 1 024 : rapport des écarts relatifs dans [2 ; 8], attendu
   4) ; `case-ne-se-rallume-pas` (suivi image par image) ; `eclairs` (WCAG 2.3.1) ;
   `performance` (la course contre l'HORLOGE : plus vite que déclaré est rouge,
@@ -1803,9 +1809,20 @@ sans un module du produit.
   FORMES interdites, chacune avec sa sonde ; `latex` ; `etiquettes` et `cadre`
   (1 280 et 390 px) ; `theme` ; `console` ; la famille `ergonomie`.
 
-**Au 2026-09-24 (soir) : VERTE deux fois, 108 mesures, 29 familles, 53 s ; essai
+**Au 2026-09-24 (soir) : VERTE trois fois, 108 puis 109 mesures (la moyenne des tirages ajoutée), 29 familles, 53 s ; essai
 rouge : les 26 familles visées crient, et les 55 formes injectées une à une sont
 toutes vues** (`frontiere-sondes`).
+
+**Depuis la vague 2 (§11.203), 119 mesures** : les étiquettes au téléphone aux
+CINQ étapes (la porte s'arrêtait à la deuxième — sa portée, pas son motif) ; la
+cote du crochet à moins de 36 px du milieu de sa barre ; à l'étape 5, la barre du
+crochet SANS accent quand il mesure l'iode et EN accent quand il mesure le second
+isotope (les deux sens) ; la légende qui nomme les deux courbes, séparées à la
+lecture ; et, dans la famille `ergonomie`, la révélation au clavier (`course: 2`).
+Toutes rouges sur le build d'avant, sauf la dernière, rouge sur le produit d'avant
+par `scene-ergonomie`. **Et une campagne de sabotages du PRODUIT** (spec §11.4 et
+trois de plus), dans un arbre à part : **21 posés, 21 attrapés**, l'arbre
+identique à son cliché après.
 
 **LES PREMIERS PASSAGES ROUGES, tous de la porte** : une forme cherchée sans
 frontière de mot Unicode (« intégration » dans « désintégrations ») ; le texte
@@ -1925,7 +1942,7 @@ KaTeX (ses propres polices, non comparées).
     node scripts/glyphes-confondus.mjs               (lève son propre next start)
     node scripts/glyphes-confondus.mjs --essai-rouge
 
-## `web/scripts/lib/scene-ergonomie.mjs` — la famille `ergonomie` des six portes de scène
+## `web/scripts/lib/scene-ergonomie.mjs` — la famille `ergonomie` des neuf portes de scène
 
 **Module partagé, pas une porte seule** : chaque porte de scène l'appelle
 (`ergonomie({ lancer, url, scene, noter, essai })`) et sa famille entre dans
@@ -1955,6 +1972,34 @@ né d'une affirmation de critique (« la scène collante est inerte au télépho
 sur les huit scènes ») que ce même test, rejoué sur l'ancien panneau, a
 RÉFUTÉE ; il reste pour qu'un changement de mise en page ne la décolle pas en
 silence.
+
+**Depuis la vague 2 des noyaux (§11.203) — deux mesures qui manquaient, chacune
+ROUGE sur le produit d'avant (15 manquements, 6 scènes sur 9) :**
+
+- **la cible a plusieurs FORMES** (ADR 0036) : `cibles()` ne cherchait que
+  `button` et `input` ; le `<summary>` des encadrés « ce que cette scène
+  simplifie » mesurait 18 px dans la cuve, la corde et les noyaux, et la mesure
+  passait. Elle compte maintenant `summary`. Les liens restent dehors, et c'est
+  écrit : un lien DANS une phrase est exempté par WCAG 2.5.8 (« inline ») ;
+- **la révélation après une course** (argument `course` : le nombre de
+  « Suivant » jusqu'à la première étape dont le pari attend la course — les six
+  scènes à course le passent) : au clavier, parier, Entrée sur « Lancer… », la
+  course va au bout ; le focus doit être VISIBLE — dans la fenêtre, et au
+  téléphone pas sous la scène collante. Avant correction : « Relancer » ou
+  « Pause », de 1 072 à 2 013 px, sous l'écran, dans les six, aux deux largeurs.
+  Un navigateur à part, en rendu logiciel : une scène 3D doit TOURNER pour que sa
+  course aille au bout. **Piège vécu le jour même** : le plancher de la scène
+  collante ne vaut que si elle est AU-DESSUS de l'élément ; sur grand écran elle
+  est à côté de la colonne, et son bas (1 035 px) n'y est pas un plancher — la
+  mesure exige un recouvrement horizontal.
+
+**Lancée SEULE** par `web/scripts/scene-ergonomie.mjs` (`npm run
+scene-ergonomie`, ou `BASE=… node scripts/scene-ergonomie.mjs corde noyaux`) : la
+famille sur les neuf scènes, avec les arguments de chaque porte. Ce
+lanceur ne remplace aucune porte — chacune garde sa famille en CI ; il sert au
+correctif COMMUN de l'appareillage, qu'il faudrait sinon vérifier en lançant neuf
+portes (ADR 0035). Au 2026-09-24 : ROUGE sur le produit d'avant (15), VERT après
+(9 scènes, 84 mesures).
 
 **NE DIT RIEN DE :** l'ordre de tabulation sur grand écran (les vues passent
 avant le pari — connu, laissé) ; un lecteur d'écran réel ; les régions live.

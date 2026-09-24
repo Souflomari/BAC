@@ -193,6 +193,12 @@ const HORS_CHAMP = new Set([
   // dizaines de tirages ; deux passages en CI (job `scene-champ`) ;
   // `node scripts/scene-noyaux.mjs --essai-rouge`.
   "scene-noyaux.mjs",
+  // scene-ergonomie lance SEULE, sur les neuf scènes, la famille « ergonomie »
+  // que chaque porte de scène lance déjà à sa fin (ADR 0035 : une porte prise
+  // dans un agrégat doit pouvoir être lancée seule) : build ET navigateur. Pas
+  // de place en CI — la famille y tourne neuf fois, dans les portes de scène ;
+  // c'est l'outil du correctif COMMUN à l'appareillage (§11.203).
+  "scene-ergonomie.mjs",
   // figures-manipulables, même raison : build + navigateur, chaque figure
   // manipulable du corpus au rendu, deux passages en CI (job `scene-champ`) ;
   // `node scripts/figures-manipulables.mjs --essai-rouge`.

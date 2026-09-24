@@ -566,7 +566,7 @@ await nav.close();
 }
 
 // ── Ergonomie : le clavier et le téléphone, sur le rendu (revue du 2026-09-24) ──
-await ergonomie({ lancer: lancer, url: URL_SCENE, scene: SCENE, noter, essai: ESSAI });
+await ergonomie({ lancer: lancer, url: URL_SCENE, scene: SCENE, noter, essai: ESSAI, course: 0 });
 
 // ── Verdict ──
 console.log(`\n${ESSAI ? "ESSAI ROUGE — " : ""}scene-lorentz : une particule chargée dans un champ magnétique (${URL_SCENE})`);

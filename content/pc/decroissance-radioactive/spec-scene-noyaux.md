@@ -62,6 +62,17 @@ panneau `web/src/components/notion/scene/NoyauxPanel.tsx`.
 - **Les lectures qui doublaient un curseur sont retirées** (`instant`, `depart` : la
   valeur est écrite à côté du curseur — leçon de la vague 2 de la corde) ; elles restent
   au registre.
+- **`tirage-juste` (§11.2) ne tient pas sa promesse de « 6 % »** : avec une probabilité
+  majorée de 20 %, la moyenne est ~446 restants sur 1 024, DANS [432 ; 592] — des
+  bandes à ±5σ sur chaque tirage ne l'attrapent qu'environ deux fois sur trois. La porte ajoute la MOYENNE des cinq tirages à
+  ±5σ/√5, qui attrape un biais sur p d'environ 15 % à 1 024 — et le dit. Le biais
+  fin, lui, est gardé par `data-p-pas` (N8), comme prévu.
+- **À l'étape libre, les deux courbes se nomment dans la LÉGENDE, pas sur le graphe**
+  (vague 2, captures) : posé sur le graphe, « second isotope » ne tenait nulle part sous
+  sa courbe au téléphone et s'installait dans la rangée des nombres du temps. Et le
+  **crochet prend la teinte de la courbe qu'il mesure** (encre sur l'iode, accent sur le
+  second isotope) : en accent sur la courbe noire, il se lisait comme une mesure de la
+  courbe accent. Écart au §6 (« le crochet en accent »), écrit ici.
 - **Le §4.4 (une puce au récapitulatif de R6) n'est pas posé** : R6 n'a pas de
   récapitulatif (« Pour t'entraîner » : deux exercices). L'inventer serait dessiner une
   structure que la spec n'a pas conçue — renvoyé au propriétaire (DÉCISIONS §24).
@@ -1381,7 +1392,7 @@ peut pas voir un défaut doit écrire qu'elle ne le peut pas, et le garder autre
 | `lecture-t-demi` | S1 : le guide horizontal part **du trait majeur** $2{,}0\times10^{14}$ ($\le 2$ px de ce trait), rejoint la courbe, et le tick vertical tombe **sur le trait majeur** $8{,}0$ j ($\le 2$ px) — *la construction se termine sur un CROISEMENT de traits, comme la figure 3 de 2022 N* | un guide partant de la **courbe** (construction de $\tau$), ou une construction qui n'aboutit pas sur un croisement, doivent rougir |
 | `quadrillage` | les traits majeurs sont équidistants à $\le 1$ px et tombent sur $8/16/24/32$ j et sur $1/2/3/4/5\ (\times 10^{n})$ ; les traits fins partagent chaque intervalle en **deux** ; **les traits chiffrés sont 8, 16, 24 et non 32** (fidélité au sujet, §5.2) ; le contraste des traits majeurs est **inférieur** à celui de la courbe, et celui des fins inférieur aux majeurs ; le quadrillage est **présent avant le pari** (c'est l'énoncé) | un quadrillage plus contrasté que la courbe, un pas irrégulier, ou un quadrillage qui n'apparaît qu'après le pari, doivent rougir |
 | `courbe-juste` | la courbe est **strictement décroissante et convexe** : sur 33 abscisses échantillonnées, différences premières $< 0$ et secondes $> 0$ ; et elle passe par $N_0/2$ à $t_{1/2}$ à $\le 2$ px | une décroissance **linéaire**, ou une exponentielle de mauvaise demi-vie, doivent rougir |
-| `axes-lineaires` | les graduations de chaque axe sont équidistantes à $\le 1$ px | une échelle **logarithmique** doit rougir (§9.6) |
+| `axes-lineaires` | les graduations de chaque axe sont équidistantes à $\le 1$ px (livré : $\le 1{,}5$ px — chaque trait est posé au demi-pixel, deux intervalles diffèrent d'1 px exactement ; HANDOFF §11.203) | une échelle **logarithmique** doit rougir (§9.6) |
 | `grille-comptee` | S3 : le nombre de cases **vidées**, compté sur les pixels (par chrominance), égale `restants-comptes` **exactement** ; à $t = 0$, **zéro** case vidée | un affichage qui compte autre chose que ce qu'il dessine doit rougir |
 | `tirage-vivant` | S3 : sur 2 courses, le **motif** des cases vidées diffère — mesuré sur l'ensemble des cases, **jamais sur le compte** *(deux courses donnent le même compte environ 3 % du temps ; exiger que les comptes diffèrent rendrait la porte instable, ADR 0036)* | une grille qui éteint **exactement la moitié**, ou toujours les mêmes cases, doit rougir (c'est le défaut du média animé de R3, posé dans le code) |
 | `tirage-juste` | sur 5 courses × 3 populations, `restants-comptes` à $t_{1/2}$ tombe dans $\pm 5\sigma$ : $[12 ; 52]$ à 64, $[88 ; 168]$ à 256, $[432 ; 592]$ à 1024. *Probabilité d'échec par mesure $\approx 5{,}7\times10^{-7}$, soit $\approx 9\times10^{-6}$ sur les 15 — le seuil est choisi pour que la porte ne soit pas instable* | un tirage **biaisé** de plus de 6 % doit rougir |

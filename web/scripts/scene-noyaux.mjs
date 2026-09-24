@@ -355,7 +355,7 @@ const latexBrut = async () => (await panneau.evaluate((el) => el.innerText)).mat
 const ANCRES = { "t-demi": "construction-t", t1: "depart" };
 const PRES = 36;
 async function etiquettesLisibles(ou, q = panneau) {
-  const { textes, larg, haut, legende, ancres, encre } = await q.evaluate((el, ANCRES) => {
+  const { textes, larg, haut, legende, ancres, encre, rangee } = await q.evaluate((el, ANCRES) => {
     const cv = el.querySelector("canvas");
     const rc = cv.getBoundingClientRect();
     const boite = (e) => { const b = e.getBoundingClientRect(); return { x0: b.left - rc.left, y0: b.top - rc.top, x1: b.right - rc.left, y1: b.bottom - rc.top }; };
@@ -368,6 +368,14 @@ async function etiquettesLisibles(ou, q = panneau) {
       const s = el.querySelector(`[data-etiquette="${r}"]`);
       if (s && visible(s)) { const b = s.getBoundingClientRect(); ancres[nom] = { x: b.left - rc.left + b.width / 2, y: b.top - rc.top + b.height / 2 }; }
     }
+    // la cote du crochet : près du MILIEU de sa barre (vague 2, captures — à
+    // 390 px, étape 5, elle avait dérivé à 40 px, sous la courbe de l'AUTRE
+    // isotope, où « 8,0 jours » nommait la mauvaise courbe)
+    const cg = el.querySelector('[data-etiquette="crochet-g"]'), cd = el.querySelector('[data-etiquette="crochet-d"]');
+    if (cg && cd && visible(cg) && visible(cd)) {
+      const a = cg.getBoundingClientRect(), b = cd.getBoundingClientRect();
+      ancres.crochet = { x: (a.left + b.left) / 2 - rc.left, y: (a.top + b.top) / 2 - rc.top };
+    }
     let encre = null;
     if (legende) {
       const dpr = cv.width / cv.clientWidth, g = cv.getContext("2d");
@@ -378,7 +386,11 @@ async function etiquettesLisibles(ou, q = panneau) {
       encre = 0;
       for (let i = 0; i < d.length; i += 4) if (Math.abs(d[i] - f[0]) + Math.abs(d[i + 1] - f[1]) + Math.abs(d[i + 2] - f[2]) > 60) encre++;
     }
-    return { textes, larg: rc.width, haut: rc.height, legende, ancres, encre };
+    // la rangée des NOMBRES d'axe, sous l'axe du temps (courbe) ou du graphe du compte (grille)
+    const o = el.querySelector('[data-etiquette="axe-t0"]') ?? el.querySelector('[data-etiquette="graphe-o"]');
+    let rangee = null;
+    if (o && getComputedStyle(o).visibility === "visible") { const b = o.getBoundingClientRect(); rangee = { y0: b.top - rc.top + b.height / 2 + 4, y1: b.top - rc.top + b.height / 2 + 17 }; }
+    return { textes, larg: rc.width, haut: rc.height, legende, ancres, encre, rangee };
   }, ANCRES);
   const fautes = [];
   for (let i = 0; i < textes.length; i++) {
@@ -386,6 +398,9 @@ async function etiquettesLisibles(ou, q = panneau) {
     if (a.x0 < -1 || a.y0 < -1 || a.x1 > larg + 1 || a.y1 > haut + 1) fautes.push(`« ${a.nom} » hors du cadre`);
     for (let j = i + 1; j < textes.length; j++) { const b = textes[j]; if (a.x0 < b.x1 - 1 && b.x0 < a.x1 - 1 && a.y0 < b.y1 - 1 && b.y0 < a.y1 - 1) fautes.push(`« ${a.nom} » chevauche « ${b.nom} »`); }
     if (legende && a.x0 < legende.x1 - 1 && legende.x0 < a.x1 - 1 && a.y0 < legende.y1 - 1 && legende.y0 < a.y1 - 1) fautes.push(`« ${a.nom} » SOUS la légende`);
+    // aucune étiquette dans la rangée des nombres d'axe, sauf les titres d'axes
+    // (vague 2, dessin : « 16  8,0 jours  24 » — la réponse déguisée en graduation)
+    if (rangee && !["axe-t", "axe-y", "graphe-t", "graphe-y"].includes(a.nom) && a.y0 < rangee.y1 && rangee.y0 < a.y1) fautes.push(`« ${a.nom} » dans la rangée des nombres d'axe`);
     const o = ancres[a.nom];
     if (o) {
       const dist = Math.hypot(Math.max(a.x0 - o.x, 0, o.x - a.x1), Math.max(a.y0 - o.y, 0, o.y - a.y1));
@@ -720,6 +735,14 @@ await parier(indexDe("la-loi-est-une-loi-de-population", "autour-de-32"));
     if (!cc || cc.length !== n || cc.filter(Boolean).length !== (comptes(await lecture("restants-comptes")) ?? [0, -1])[1]) hors.push(`${n} : grille ${cc?.length} cases, comptée ${cc?.filter(Boolean).length} ≠ lecture`);
   }
   juger("tirage-juste", hors.length === 0, `5 tirages × 3 populations, à 8 j : 64 → ${vus[64].join(" · ")} ; 256 → ${vus[256].join(" · ")} ; 1024 → ${vus[1024].join(" · ")}${hors.length ? ` — HORS DES BANDES : ${hors.join(" ; ")}` : " (bandes ±5σ : [12;52], [88;168], [432;592])"}`);
+  // … et la MOYENNE des cinq, à ±5σ/√5. Les bandes d'un tirage seul laissent
+  // passer un biais franc : p majorée de 20 % donne ~446 restants sur 1 024,
+  // DANS [432 ; 592]. La moyenne de cinq le voit (bande [476 ; 548] à 1 024) ;
+  // elle attrape un biais sur p d'environ 15 % à 1 024, pas 6 % comme la spec
+  // l'écrivait (§11.2) — c'est ce qu'elle mesure, et c'est écrit.
+  const moy = (v) => v.reduce((a, b) => a + b, 0) / v.length;
+  const horsMoy = [64, 256, 1024].filter((n) => Math.abs(moy(vus[n]) - n / 2) > (5 * (Math.sqrt(n) / 2)) / Math.sqrt(5));
+  juger("tirage-juste", horsMoy.length === 0, `moyennes des cinq tirages : ${[64, 256, 1024].map((n) => `${n} → ${virgule(moy(vus[n]), 1)} (bande ${virgule(n / 2 - (5 * Math.sqrt(n)) / 2 / Math.sqrt(5), 0)} à ${virgule(n / 2 + (5 * Math.sqrt(n)) / 2 / Math.sqrt(5), 0)})`).join(" ; ")}${horsMoy.length ? ` — HORS : ${horsMoy.join(", ")}` : ""}`);
   // LA DISPERSION DÉCROÎT : écart relatif sur 20 tirages à 64 contre 1024 — attendu 4, bande [2 ; 8]
   const serie = async (n) => { await cocher('[data-controle="population"]', n); const v = []; for (let k = 0; k < 20; k++) v.push((await tirageRapide())?.[0] ?? NaN); return v; };
   const sd = (v) => { const m = v.reduce((a, b) => a + b, 0) / v.length; return Math.sqrt(v.reduce((a, b) => a + (b - m) ** 2, 0) / (v.length - 1)); };
@@ -754,12 +777,17 @@ await etatPose("ce-que-compte-le-detecteur");
     const majeursX = g.rangee.slice(1, -1).filter((p) => p.pic < 120 && p.pic > 40);
     const pos = [8, 16, 24].map((t) => majeursX.find((q) => Math.abs(q.centre - X(g, t)) <= 1.5)?.centre ?? NaN);
     const pasX = [pos[0] - g.x0, pos[1] - pos[0], pos[2] - pos[1], g.x1 - pos[2]];
-    juger("axes-lineaires", pasX.every(Number.isFinite) && Math.max(...pasX) - Math.min(...pasX) <= 1, `étape 4 : intervalles des majeurs du temps ${pasX.map((p) => virgule(p, 1)).join(" · ")} px (équidistants à 1 px)`);
+    // Tolérance 1,5 px, et pourquoi : le produit pose chaque trait au milieu
+    // d'un pixel (±0,5 px), deux intervalles peuvent donc différer d'1 px
+    // EXACTEMENT — 107 et 108. À « ≤ 1 », l'arrondi flottant du barycentre
+    // faisait rougir cette égalité (vague 2 : 107,00 · 108,00, ROUGE) ; elle
+    // passait avant par chance. Une échelle logarithmique les écarte de dizaines de px.
+    juger("axes-lineaires", pasX.every(Number.isFinite) && Math.max(...pasX) - Math.min(...pasX) <= 1.5, `étape 4 : intervalles des majeurs du temps ${pasX.map((p) => virgule(p, 2)).join(" · ")} px (équidistants à 1,5 px — un pixel de pose, plus l'arrondi)`);
     {
       const col = g.colonne.slice(1, -1).filter((p) => p.pic < 120 && p.pic > 40);
       const ys = [1, 2, 3, 4].map((v) => col.find((q) => Math.abs(q.centre - Y(g, v)) <= 1.5)?.centre ?? NaN);
       const pasY = [g.y1 - ys[0], ys[0] - ys[1], ys[1] - ys[2], ys[2] - ys[3], ys[3] - g.yTop];
-      juger("axes-lineaires", pasY.every(Number.isFinite) && Math.max(...pasY) - Math.min(...pasY) <= 1, `étape 4 : intervalles des majeurs verticaux ${pasY.map((p) => virgule(p, 1)).join(" · ")} px (équidistants à 1 px — une échelle logarithmique les écarterait)`);
+      juger("axes-lineaires", pasY.every(Number.isFinite) && Math.max(...pasY) - Math.min(...pasY) <= 1.5, `étape 4 : intervalles des majeurs verticaux ${pasY.map((p) => virgule(p, 2)).join(" · ")} px (équidistants à 1,5 px — une échelle logarithmique les écarterait)`);
     }
     // la courbe des NOYAUX, pour la comparer à celle de l'activité
     var avantBascule = await lireCourbe(g, [2, 6, 10, 14, 18, 22, 26, 30]);
@@ -803,7 +831,8 @@ await parier(indexDe("libre", "deux-fois-plus-grande"));
   juger("paris", /incorrecte/.test(res), `étape 5, pari faux (λ double, t½ double) : « ${res} » — verdict immédiat`);
   juger("etapes", (await controles()) === "depart,grandeur,instant,isotope", `étape 5 révélée, la courbe : contrôles [${await controles()}]`);
   // la seconde courbe, en accent, passe par le croisement (4 j ; 2) — le crochet
-  // (en accent lui aussi) est d'abord écarté : posé à 0, il couvre ce croisement
+  // est d'abord écarté : posé à 0, sa barre (à l'encre sur l'iode, depuis la
+  // vague 2) passe SUR ce croisement
   await glisser("depart", 20);
   const g = await cadreGraphe(32);
   if (g) {
@@ -839,6 +868,25 @@ await parier(indexDe("libre", "deux-fois-plus-grande"));
   }
   juger("crochet-invariant", g && larg.every((w) => Math.abs(w - 4 * g.pxJ) <= 2), `isotope rapide : crochets de ${larg.map((w) => virgule(w, 1)).join(" · ")} px (un intervalle fin : ${g ? virgule(4 * g.pxJ, 1) : "?"} px, à 2 px)`);
   await cocher('[data-controle="isotope"]', "8");
+  // LE CROCHET A LA TEINTE DE SA COURBE, et les courbes se nomment dans la
+  // légende (vague 2, captures). Dans les deux sens : sur l'iode, aucune encre
+  // d'accent sur la barre du crochet (y = 2, de 0,5 à 3,5 jours — la courbe
+  // accent n'y passe pas, elle est à 2,18 à 3,5 j) ; sur le second isotope, la
+  // même barre, en accent, couvre ce segment.
+  if (g) {
+    await glisser("depart", 0);
+    const surIode = await etendueAccent("rangee", Y(g, 2), X(g, 0.5), X(g, 3.5));
+    await cocher('[data-controle="isotope"]', "4");
+    const surSecond = await etendueAccent("rangee", Y(g, 2), X(g, 0.5), X(g, 3.5));
+    await cocher('[data-controle="isotope"]', "8");
+    const couvre = (v) => (v ? v.runs.reduce((n, r) => n + (r.a - r.de), 0) : 0);
+    const lIode = couvre(surIode), lSecond = couvre(surSecond), attendu = X(g, 3.5) - X(g, 0.5);
+    juger("crochet-invariant", lIode <= 2 && lSecond >= attendu - 4,
+      `étape 5 : barre du crochet, d'accent sur ${virgule(lIode, 0)} px quand il mesure l'iode (attendu 0 : l'encre de SA courbe), sur ${virgule(lSecond, 0)} px quand il mesure le second isotope (attendu ≈ ${virgule(attendu, 0)})`);
+    const cle = await panneau.evaluate((el) => (el.querySelector("[data-legende] [data-cle-courbes]")?.textContent ?? "").replace(/\s+/g, " ").trim());
+    // et le texte LU les sépare (« iode 131second isotope » au premier passage)
+    juger("etiquettes", /iode 131\W+second isotope/.test(cle), `étape 5 : la légende nomme les deux courbes, séparées à la lecture (« ${cle || "rien"} »)`);
+  }
   await frontiere("étape 5 révélée, la courbe");
   await etiquettesLisibles("étape 5 révélée, la courbe");
   const brut = (await latexBrut()).length;
@@ -905,6 +953,25 @@ await nav.close();
     await q.locator("[data-pari-choix] li button").nth(2).click();
     await p2.waitForTimeout(200);
     await etiquettesLisibles("390 px, étape 2 révélée", q);
+    // Les étapes 3 à 5 AUSSI (vague 2, captures) : à 390 px, étape 5, « second
+    // isotope » s'était posé dans la rangée des nombres du temps et masquait le
+    // « 8 » — la porte ne mesurait au téléphone que les étapes 1 et 2, et le
+    // placement ne se juge qu'aux dimensions où il se fait (ADR 0031 : la PORTÉE
+    // se mesure à part).
+    await q.getByRole("button", { name: "Étape suivante" }).click();
+    await q.locator("[data-pari-choix] li button").nth(1).click();
+    await q.locator("[data-lancer]").click();
+    await p2.waitForFunction((sc) => document.querySelector(`[data-scene="${sc}"]`)?.getAttribute("data-pari") === "revele", SCENE, { timeout: 30000 }).catch(() => {});
+    await p2.waitForTimeout(200);
+    await etiquettesLisibles("390 px, étape 3 révélée", q);
+    await q.getByRole("button", { name: "Étape suivante" }).click();
+    await q.locator("[data-pari-choix] li button").first().click();
+    await p2.waitForTimeout(200);
+    await etiquettesLisibles("390 px, étape 4 révélée", q);
+    await q.getByRole("button", { name: "Étape suivante" }).click();
+    await q.locator("[data-pari-choix] li button").nth(1).click();
+    await p2.waitForTimeout(200);
+    await etiquettesLisibles("390 px, étape 5 révélée, la courbe", q);
   } finally {
     await nav2.close();
   }
@@ -946,7 +1013,7 @@ await nav.close();
 }
 
 // ── Ergonomie : le clavier et le téléphone, sur le rendu (famille commune) ──
-await ergonomie({ lancer: () => lancer(), url: URL_SCENE, scene: SCENE, noter, essai: ESSAI, ouvrir: OUVRIR });
+await ergonomie({ lancer: () => lancer(), url: URL_SCENE, scene: SCENE, noter, essai: ESSAI, ouvrir: OUVRIR, course: 2 });
 
 // ── Verdict ──
 console.log(`\n${ESSAI ? "ESSAI ROUGE — " : ""}scene-noyaux : la courbe et les noyaux (${URL_SCENE})`);

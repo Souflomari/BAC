@@ -15578,3 +15578,142 @@ batterie locale verte, sur l'arbre poussé.
 PRODUIT (spec §11.4, dix-huit défauts) — le prochain geste, dans un arbre à
 part ; la vague 2 (calme, dessin, ergonomie) sur les captures ; la puce de
 récapitulatif de R6 ; la figure du Pu-238 pour `r-bac` q2.1.
+*(La campagne et la vague 2 sont faites : §11.203.)*
+
+## §11.203 — La courbe et les noyaux, suite : vingt et un défauts posés dans le produit, la vague 2, et une tolérance qui passait par chance
+
+**LA CAMPAGNE DE SABOTAGES DU PRODUIT (spec §11.4) : 21 posés, 21 attrapés.**
+Dans un arbre à part (`git worktree`), chaque défaut est posé dans le PRODUIT,
+le produit rebâti, la porte lancée, le défaut retiré — l'arbre de travail comparé
+à son cliché d'avant, à l'octet, à la fin (IDENTIQUE). Les dix-huit de la spec et
+trois de plus : `p-lineaire` (λΔt au lieu de 1 − e^(−λΔt), 0,24σ sur 1 024 : lu
+dans `data-p-pas`), `demi-vie-en-tau` (le crochet large de τ), `crochet-vieillit`,
+`fenetre-s1-32`, `moitie-exacte` et `graine-fixe` (le média de R3 : la moitié
+EXACTE, le même motif), `tirage-biaise` (p majorée de 20 %),
+`ecart-relatif-constant`, `decroissance-lineaire`, `axe-log`,
+`construction-avant-pari`, `activite-egale-N`, `isotope-etape-4`,
+`racine-dans-la-suite`, `case-rallumee`, `import-three`, `quadrillage-inverse`,
+`pourcentage-remis`, `compte-decale`, `mouvement-ignore`, `course-trop-rapide`.
+Chacun a rougi SA famille ; les rouges collatéraux sont expliqués (la construction
+posée avant le pari fait aussi rougir `axes-lineaires` et `quadrillage` : ses
+tirets recouvrent des traits, à l'anticrénelage près). Le conteneur a redémarré
+au milieu : le défaut à moitié posé a été retiré depuis sa sauvegarde, rejoué, et
+la campagne a repris où elle s'était arrêtée.
+
+**Ce qu'elle a appris : la promesse de la spec était fausse.** `tirage-biaise`
+(§11.2) devait être attrapé par les bandes à ±5σ de chaque tirage, « jusqu'à 6 %
+de biais ». Mesuré : avec p majorée de 20 %, il reste ~446 noyaux sur 1 024 en
+moyenne — DANS la bande [432 ; 592] ; chaque tirage n'a que ~19 % de chances d'en
+sortir, et cinq tirages l'attrapent environ deux fois sur trois. La porte ajoute
+la MOYENNE des cinq tirages à ±5σ/√5 (bandes 23–41, 110–146, 476–548), qui
+l'attrape à 4σ et vaut pour un biais sur p d'environ 15 % à 1 024 — pas 6 %. Le
+biais fin reste gardé par `data-p-pas`, comme prévu. **Une bande honnête sur un
+tirage n'est pas une bande sur le biais : c'est la moyenne qui a l'échelle du
+défaut cherché.**
+
+**LA VAGUE 2 (calme, dessin, ergonomie), sur les captures à 1 280 et 390 px.**
+Appliqué :
+- *le quadrillage à la norme* : traits forts à ≈ 3:1 sur la surface (WCAG 1.4.11
+  — l'élève les COMPTE : « descends de deux gros carreaux »), fins en dessous, la
+  courbe loin au-dessus ; le calme voulait 1,98:1, la norme l'emporte (DÉCISIONS
+  §24, ADR 0039). Les nombres d'axes à l'encre du texte ;
+- *les cases vidées jamais en accent* (775 contours d'accent à 1 024 : l'objet le
+  plus bruyant de la page, et le COMPLÉMENT de ce que le pari demande), sans
+  contour du tout à 1 024 ;
+- *aucune étiquette dans la rangée des graduations* : à 390 px, « 8,0 jours » (le
+  crochet) tombait entre « 16 » et « 24 » — la réponse déguisée en graduation.
+  Les bandes des nombres d'axes sont des obstacles du placement, et la porte
+  (`etiquettes`) le garde ;
+- *les suites raccourcies* (32 à 48 mots) : chacune dit un geste et ce qu'il
+  montre, plus la marche à suivre en trois temps ;
+- *les lectures sous le bouton qui les produit* : au téléphone, « On compte »
+  était à 540 px de « Relancer » ; à l'étape libre, une seule grandeur — celle de
+  l'axe (N et A côte à côte y défaisaient la leçon de l'étape 4) ;
+- *pas de compteur de temps qui défile pendant la course* (l'axe du graphe du
+  compte le montre déjà), plus de clause « la course a tourné plus lentement » ;
+- *les derniers tirages PAR RÉGLAGE* : passer de 64 à 1 024 et revenir rend la
+  série de 64 — elle était vidée en silence, alors que la suite demande justement
+  de comparer ; changer de VUE ne jette plus le tirage ;
+- *chaque changement dit au lecteur d'écran* (vue, échantillon, axe, population),
+  et les tirages NUMÉROTÉS : une annonce identique à la précédente n'est pas relue ;
+- *la figure d'énoncé* : la courbe à l'encre de figure, le titre sans « t½ ».
+
+**UNE TOLÉRANCE QUI PASSAIT PAR CHANCE.** Premier passage de la porte après la
+vague 2 : ROUGE, `axes-lineaires` — « intervalles des majeurs du temps 107,0 ·
+108,0 · 107,0 · 108,0 px (équidistants à 1 px) ». Lu à une décimale, cela se lit
+comme un vert ; imprimé à deux, 107,00 et 108,00 : l'écart est 1 + ε flottant
+(les traits sont lus au barycentre de leur encre). Le produit pose chaque trait au
+milieu d'un pixel, deux intervalles peuvent donc différer d'1 px EXACTEMENT : la
+borne « ≤ 1 » passait avant par l'arrondi, pas par la géométrie. Borne portée à
+1,5 px, raison écrite à côté ; l'échelle logarithmique (`axe-log`) écarte les
+intervalles de dizaines de pixels, la porte reste sensible. **Un chiffre imprimé à
+la précision de la tolérance ne peut pas dire de quel côté il tombe.**
+
+**DEUX AFFIRMATIONS DE L'ERGONOMIE, REJOUÉES AVANT D'ÊTRE CRUES — toutes deux
+vraies, l'une plus étroite qu'annoncée, l'autre plus large.** (1) « Le
+`<summary>` des encadrés mesure ~18 px, dans les neuf scènes » : 18 px, oui —
+dans TROIS scènes, les seules qui ont un encadré (cuve, corde, noyaux). La porte
+ergonomie était verte parce que sa mesure des cibles ne cherchait que `button` et
+`input` : une cible a plusieurs formes (ADR 0036). (2) « Après une course qui
+révèle le verdict, le focus reste sur un bouton poussé hors de l'écran » : dans
+les SIX scènes à course (l'orbite, la particule, le manège — « Pause », la course
+continue —, la cuve, la corde, les noyaux — « Relancer »), à 390 comme à
+1 280 px, de 1 072 à 2 013 px sous le haut de la fenêtre. Le verdict, la suite et
+les lectures s'insèrent AU-DESSUS du bouton ; Entrée relançait à l'aveugle.
+
+**L'instrument d'abord, le produit ensuite.** Deux mesures neuves dans la famille
+commune (`summary` parmi les cibles ; la révélation au clavier, argument
+`course`), et un lanceur qui la fait tourner SEULE sur les neuf scènes
+(`scene-ergonomie.mjs`, ADR 0035). Sur le produit d'avant : ROUGE, 15
+manquements, six scènes sur neuf — les trois sans course restent vertes, ce qui
+est juste. Premier passage, un défaut du BANC : le plancher de la scène collante
+appliqué sur grand écran, où elle est À CÔTÉ de la colonne (« fenêtre de 1 035 à
+900 px ») — la mesure exige maintenant un recouvrement horizontal. Puis le
+produit : un encadré commun (`EncadreRepli` : 48 px, lavis, anneau de focus,
+chevron — le triangle natif disparaît avec `display: flex`), et dans `PariBloc` une
+règle réécrite : on ne déplace jamais un focus que l'élève VOIT ; poussé hors de
+l'écran, il revient au choix retenu, amené dans la vue sans passer sous la scène
+collante. VERT, neuf scènes, 84 mesures.
+
+**LES CAPTURES, LUES, ont trouvé ce qu'aucune porte ne mesurait — à l'étape 5,
+celle des deux courbes.** Au téléphone, « second isotope » (101 px, vingt et un
+jours d'axe) s'était posé dans la rangée des nombres du temps et recouvrait le
+« 8 » ; la cote « 8,0 jours » du crochet de l'iode avait dérivé à 40 px de sa
+barre, SOUS la courbe du second isotope — dont la demi-vie est 4 jours : l'image
+donnait la réponse fausse du pari de l'étape ; et le crochet, en accent sur la
+courbe noire, se lisait comme une mesure de la courbe accent. **La porte, elle,
+contournait ce dernier défaut** : avant de lire la courbe accent à 4 jours, elle
+écartait le crochet (« posé à 0, il couvre ce croisement ») — une porte qui
+s'adapte au produit est un signal (ADR 0038). Et elle ne mesurait les étiquettes
+au téléphone qu'aux étapes 1 et 2 : sa PORTÉE s'arrêtait là (ADR 0031). Quatre
+mesures neuves, ROUGES sur le build d'avant (la cote à 40 px à 1 280 comme à
+390 px, « nom-b » dans la rangée des nombres, l'accent sur la barre du crochet de
+l'iode, aucune légende), puis le produit : les deux courbes se nomment dans la
+LÉGENDE, avec un échantillon de trait (encre et accent diffèrent aussi en clarté,
+≈ 3:1 — la clé ne tient pas à la seule teinte) et un vrai séparateur à la lecture
+(le premier passage lisait « iode 131second isotope ») ; le crochet prend la
+teinte de SA courbe ; et `disposer` (pièce commune) gagne une `portee` : mieux
+vaut recouvrir un bout de tracé que nommer autre chose. Les étapes 3 à 5 sont
+maintenant mesurées au téléphone.
+
+**UNE CAPTURE QUI « NE SE STABILISAIT PAS » n'était pas un défaut du produit.**
+À 390 px, étape 5, la capture d'élément de Playwright attendait sans fin que la
+scène soit « stable ». Sondée image par image (90 images, trois parcours dont le
+sien exact) : immobile. La section mesurait 2 328 px dans une fenêtre de 2 200 :
+c'est l'outil qui fait défiler un élément plus haut que la fenêtre. Capturée dans
+une fenêtre de 3 200 px, elle passe. Écrit ici parce que la première lecture —
+« quelque chose bouge » — était plausible et fausse.
+
+**VÉRIFIÉ, sur le build final, rien d'autre en marche :** `scene-noyaux` VERTE trois fois (109 mesures, puis
+119 avec les mesures neuves), essai rouge 26/26 et les 55 formes vues ; les NEUF
+portes de scène vertes sur le build des deux correctifs communs (orbite 54,
+sphère 42, particule 56, produit vectoriel 46, révolution 56, manège 100, cuve 76
+— avec l'avertissement de machine habituel, « facteur de temps 0,82 à 0,94 » —,
+corde 110, noyaux 111) ; `scene-ergonomie` VERTE sur les neuf (84 mesures) ; porte
+figures, clair et sombre, sur la figure d'énoncé retouchée ; `dom-truth` 280
+contrôles, 0 échec ; batterie locale verte, sur l'arbre poussé.
+
+**RESTENT AU PROPRIÉTAIRE** (DÉCISIONS §24) : la `suite` en `text-body-lg` ; les
+choix faux affichés après la révélation ; le rang de l'étape dit trois fois ; le
+plancher de cible (44 px dans la porte, 48 dans la bible) ; des raccourcis
+clavier ; la puce de récapitulatif de R6 ; la figure du Pu-238 pour `r-bac` q2.1.

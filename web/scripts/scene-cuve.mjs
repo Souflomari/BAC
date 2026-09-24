@@ -674,7 +674,7 @@ await nav.close();
 }
 
 // ── Ergonomie : le clavier et le téléphone, sur le rendu (famille commune) ──
-await ergonomie({ lancer: () => lancer(), url: URL_SCENE, scene: SCENE, noter, essai: ESSAI, ouvrir: OUVRIR });
+await ergonomie({ lancer: () => lancer(), url: URL_SCENE, scene: SCENE, noter, essai: ESSAI, ouvrir: OUVRIR, course: 0 });
 
 // ── Verdict ──
 console.log(`\n${ESSAI ? "ESSAI ROUGE — " : ""}scene-cuve : la cuve à ondes (${URL_SCENE})`);
