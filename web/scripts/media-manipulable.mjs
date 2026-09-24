@@ -56,7 +56,12 @@ const PORTE = process.argv.includes("--porte");
 //  (La troisième scène, la particule dans le champ magnétique, §11.190, ne le
 //  bouge pas : ce cliquet compte des NOTIONS, et pc/chute-mouvements-plans en
 //  portait déjà une.)
-const CLIQUET = 10;
+//  Relevé à 11 le 2026-09-24 : pc/rotation-axe-fixe porte la scène du manège.
+//  L'oubli s'est vu tout seul, et c'est la leçon : au run 751, l'essai rouge
+//  §11.129 (une notion perd sa manipulable) est resté VERT — 11 → 10 tenait
+//  encore le plancher de 10. Le cliquet non resserré ne perdait pas seulement
+//  le gain : il rendait son propre essai rouge aveugle.
+const CLIQUET = 11;
 
 const RE_EMBED = /\[\[(?:embed|geogebra|desmos|falstad|phet)[:\]]/gi;
 const parMat = new Map();

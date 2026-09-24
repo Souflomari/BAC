@@ -15043,9 +15043,25 @@ calme). Le run 750 (3b3a08ef) était vert sur ses quatre jobs.
 **Ce qu'il faut retenir pour la suite :** une porte qui vérifie les NOMBRES
 affichés laisse passer la PHRASE qui les annonce (« l'angle non plus » était
 vert) ; et une police se juge aussi sur ce qu'elle dessine hors de l'alphabet
-latin que le produit emploie. **Encore à faire, écrit ici pour ne pas se
-perdre :** l'essai rouge de `scene-manege` après ces deux familles (le passage
-lancé a été coupé par un redémarrage du conteneur) ; les sabotages produit
-(`fuite-etape3`, `etiquettes-poser`, et les quatre de la construction) ; la
-vague 2 (calme, visuel, ergonomie) sur les captures neuves ; les cinq autres
-scènes posent encore leurs étiquettes avec `poser`.
+latin que le produit emploie.
+
+**VÉRIFIÉ ENSUITE, SUR BANC CALME.** L'essai rouge de `scene-manege` : les
+seize familles visées crient (557 s ; le premier passage avait été coupé par un
+redémarrage du conteneur). Sabotages du PRODUIT, un par build : `fuite-etape3`
+(les sièges rouverts à l'étape 3) → rouges `etapes` et `fuite-inter-etapes`, et
+rien d'autre ; `etiquettes-poser` (les étiquettes recentrées sur leur ancre,
+l'avant-`disposer`) → 17 rouges sur 18 poses, toutes dans `etiquettes`.
+
+**LE RUN 751 A ROUGI SUR UN ESSAI ROUGE, ET C'ÉTAIT UN CLIQUET OUBLIÉ.**
+§11.129 (« une notion perd sa figure manipulable ») est resté VERT : le manège
+a fait de `pc/rotation-axe-fixe` la onzième notion manipulable, le cliquet de
+`media-manipulable` restait à 10, et 11 → 10 tenait encore le plancher. Le
+cliquet non resserré ne perdait pas seulement le gain (ADR 0034) : il rendait
+son propre essai rouge aveugle. Relevé à 11. **La suite `essais-rouges` n'avait
+pas tourné en local avant la poussée** — après le redémarrage, la priorité
+était de mettre le travail à l'abri ; c'est elle qui l'aurait dit. Règle pour
+la suite : une notion qui GAGNE une manipulable (scène, `.interactive.json`)
+relève ce cliquet dans le même commit.
+
+**Encore à faire :** la vague 2 (calme, visuel, ergonomie) sur les captures
+neuves ; les cinq autres scènes posent encore leurs étiquettes avec `poser`.
