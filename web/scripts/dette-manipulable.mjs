@@ -59,7 +59,11 @@ const PORTE = process.argv.includes("--porte");
 //  figures manipulables de première partie (distribution-curseur-pH,
 //  euler-taille-de-pas, sandbox-chute-frottement) — qui comptent désormais
 //  comme livrées (voir « Livrés aussi », plus bas).
-const CLIQUET_SUBSTITUTIONS = 1;
+//  Descendu à 0 le même jour : lecture-Ve-courbe-dosage, la dernière, payée à
+//  son tour par une figure manipulable (un point qu'on fait glisser sur la
+//  courbe de dosage). Plus AUCUNE substitution écrite : la prochaine dette
+//  devra monter ce nombre, et le dire.
+const CLIQUET_SUBSTITUTIONS = 0;
 
 //  Les scènes 3D de première partie ENREGISTRÉES dans le code. Un descripteur
 //  `"tool": "scene3d"` ne compte pour livré que si sa scène y figure : un
@@ -122,8 +126,15 @@ for (const [cle, dir] of notions) {
     if (!f.endsWith(".interactive.json")) continue;
     const slug = f.slice(0, -".interactive.json".length);
     try { JSON.parse(fs.readFileSync(path.join(media, f), "utf-8")); } catch { continue; }
-    const camel = slug.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
-    if (!fs.existsSync(path.join(FIGURES, `${slug}.ts`)) || !new RegExp(`\\b${camel}\\b`).test(REGISTRE)) continue;
+    // Le nom exporté : chaque lettre qui suit un tiret passe en capitale — y
+    // compris une capitale DÉJÀ là. Le motif ne lisait que [a-z] : pour
+    // `lecture-Ve-courbe-dosage` il cherchait « lecture-VeCourbeDosage », un
+    // nom qu'aucun module ne peut porter (même défaut dans dom-truth et
+    // figures-manipulables ; vu par l'auteur de la figure, 2026-09-24). Et la
+    // clé du registre elle-même, entre guillemets, compte aussi.
+    const camel = slug.replace(/-([a-zA-Z0-9])/g, (_, c) => c.toUpperCase());
+    const cle = new RegExp(`["']${slug.replace(/[-]/g, "\\-")}["']\\s*:`);
+    if (!fs.existsSync(path.join(FIGURES, `${slug}.ts`)) || !(new RegExp(`\\b${camel}\\b`).test(REGISTRE) && (cle.test(REGISTRE) || !slug.includes("-")))) continue;
     if (desc.has(slug)) continue;
     desc.add(slug);
     livres.push({ notion: cle, slug, moteur: "figure manipulable" });

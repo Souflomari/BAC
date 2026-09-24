@@ -103,7 +103,7 @@ function loadCurriculum() {
 function loadInteractiveFigureModel(slug) {
   const jiti = jitiFactory(fileURLToPath(import.meta.url), { interopDefault: true });
   const mod = jiti(path.join(WEB, "src/lib/interactive-figures", `${slug}.ts`));
-  const camel = slug.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+  const camel = slug.replace(/-([a-zA-Z0-9])/g, (_, c) => c.toUpperCase());
   return mod[camel];
 }
 // Unique port per run — a fixed port raced ORPHANED servers from prior runs

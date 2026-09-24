@@ -1,14 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 656 404"
      font-family="'IBM Plex Sans', system-ui, sans-serif"
-     aria-label="La courbe pH = f(V) d’un dosage, avec trois points distingués : le point où pH = 7 (bien avant le saut, ce n’est pas l’équivalence), la demi-équivalence à V_E/2 = 7,5 mL où pH ≈ pKA ≈ 4,8, et le véritable point d’équivalence E à V_E = 15,0 mL, pH_E ≈ 8,5.">
+     aria-label="La courbe pH = f(V) d’un dosage, avec trois points distingués : le point où pH = 7 (bien avant le saut, ce n’est pas l’équivalence), la demi-équivalence à V_E/2 = 7,5 mL où pH ≈ pKA ≈ 4,8, et le véritable point d’équivalence E à V_E = 15,0 mL, pH_E ≈ 8,5. Après la dernière étape, un point se fait glisser le long de la courbe entre V = 0 et V = 25 mL ; le volume et le pH lus se recalculent en direct.">
   <title>Trois lectures sur la courbe de dosage — lequel est l&#8217;équivalence ?</title>
   <!--
-    lecture-Ve-courbe-dosage.svg — figure STAGED (4 étapes), rung R10,
-    remplace le marqueur [[embed:lecture-Ve-courbe-dosage]] par une version
-    statique (vague de comblement de couverture, cf. brief). Reprend
-    l'exemple travaillé « les trois lectures sur la même courbe » et vise
-    directement AB-EQU-1 (pH=7 confondu avec l'équivalence) et AB-EQU-3
-    (demi-équivalence confondue avec l'équivalence).
+    lecture-Ve-courbe-dosage.svg — figure STAGED (4 étapes) puis
+    MANIPULABLE (docs/design/INTERACTIVE-FIGURE-SPEC.md), rung R10 : c'est
+    désormais le manipulable que spec-extension.md prescrivait pour ce rung
+    (un curseur qu'on déplace sur la courbe de dosage pour lire V_E) —
+    après la dernière étape, un point se fait glisser le long de la courbe
+    pH = f(V) et affiche le volume et le pH lus en direct
+    (lecture-Ve-courbe-dosage.interactive.json, unlockAfterStage = 4).
+    Reprend l'exemple travaillé « les trois lectures sur la même courbe »
+    et vise directement AB-EQU-1 (pH=7 confondu avec l'équivalence) et
+    AB-EQU-3 (demi-équivalence confondue avec l'équivalence).
 
     Même repère que equivalence-methode-tangentes.svg / zone-virage-sur-
     saut.svg (cohérence du corpus) : x(V)=90+20·V, y(pH)=300−16·pH ; même
@@ -37,6 +41,28 @@
       step-3 : deux points qui ne sont PAS l'équivalence — pH = 7 (avant le
                saut) et la demi-équivalence V_E/2 (pH ≈ pKA).
       step-4 : le vrai point d'équivalence E, au milieu du saut.
+
+    Point manipulable (ajout, ne modifie aucune géométrie existante) :
+    #point-mobile (poignée glissable) et #point-mobile-halo (zone de
+    préhension élargie, --state-dragged) se déplacent sur la MÊME courbe
+    de Bézier que step-2 — aucune formule de substitution :
+    web/src/lib/interactive-figures/lecture-Ve-courbe-dosage.ts reprend
+    VERBATIM les 3 segments cubiques du `d` ci-dessus et résout x(t)=x par
+    bissection (x(t) strictement croissant sur chaque segment — les trois
+    points de contrôle en x y sont strictement croissants, ce qui suffit à
+    le garantir). #repere-vertical et #repere-horizontal (deux <path>,
+    tirés du point vers l'axe V et vers l'axe pH) et la boîte de lecture
+    (#lecture-v-valeur / #lecture-ph-valeur, en haut à droite du panneau —
+    zone libre de toute autre étiquette à n'importe quel V du domaine)
+    affichent « V = … mL » / « pH = … », TOUJOURS numériques : aucun mot
+    qualitatif n'y est jamais écrit. « demi-équivalence » / « équivalence »
+    ne vivent que dans readoutTemplate, sous la figure, via la clé
+    recompute `verdict` — jamais au point pH ≈ 7 (AB-EQU-1). Couleur :
+    --figure-accent partout (même convention que distribution-curseur-pH :
+    le manipulable reprend l'accent déjà réservé à « la bonne lecture »,
+    jamais une couleur neuve). Domaine V ∈ [0 ; 25] mL (toute la courbe
+    tracée au step-2), pas 0,1 mL, valeur initiale V_E/2 = 7,5 mL — voir
+    lecture-Ve-courbe-dosage.interactive.json.
   -->
 
   <!-- Titre -->
@@ -136,6 +162,29 @@
     <text x="98" y="180" text-anchor="start" font-size="11" font-weight="600"
           fill="var(--figure-accent)">pH<tspan dy="3" font-size="8">E</tspan><tspan dy="-3"> ≈ 8,5</tspan></text>
     <text x="399" y="215" font-size="9.5" font-style="italic" fill="var(--figure-accent)">le point d&#8217;inflexion, au milieu du saut</text>
+
+    <!-- ── Point manipulable — déverrouille ICI, à la dernière étape
+         (lecture-Ve-courbe-dosage.interactive.json, unlockAfterStage = 4).
+         État authored ci-dessous = la valeur initiale, V = V_E/2 = 7,5 mL
+         (coïncide avec le point demi-équivalence déjà tracé au step-3 :
+         aucun saut visuel au déverrouillage). Recalculé en direct par
+         web/src/lib/interactive-figures/lecture-Ve-courbe-dosage.ts. ── -->
+    <path id="repere-vertical" d="M240,223.2 L240,300"
+          stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <path id="repere-horizontal" d="M90,223.2 L240,223.2"
+          stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="4,3"/>
+
+    <circle id="point-mobile-halo" cx="240" cy="223.2" r="9" style="cursor:grab"
+            fill="var(--figure-accent)" opacity="0"/>
+    <circle id="point-mobile" cx="240" cy="223.2" r="3.2" style="cursor:grab"
+            fill="var(--figure-accent)"/>
+
+    <rect x="452" y="44" width="172" height="50" rx="8"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="538" y="66" text-anchor="middle" font-size="12.5" font-weight="600"
+          fill="var(--figure-accent)">V = <tspan id="lecture-v-valeur">7,5</tspan> mL</text>
+    <text x="538" y="86" text-anchor="middle" font-size="12.5" font-weight="600"
+          fill="var(--figure-accent)">pH = <tspan id="lecture-ph-valeur">4,8</tspan></text>
   </g><!-- /step-4 -->
 
 </svg>

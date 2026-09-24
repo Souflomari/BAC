@@ -1,0 +1,20 @@
+{
+  "slug": "lecture-Ve-courbe-dosage",
+  "control": {
+    "kind": "drag-point",
+    "axis": "V",
+    "domain": [0, 25],
+    "step": 0.1,
+    "initial": 7.5
+  },
+  "bindings": [
+    { "target": "#point-mobile", "recompute": "point" },
+    { "target": "#point-mobile-halo", "recompute": "pointHalo" },
+    { "target": "#repere-vertical", "recompute": "guideVertical" },
+    { "target": "#repere-horizontal", "recompute": "guideHorizontal" },
+    { "target": "#lecture-v-valeur", "recompute": "vValeur" },
+    { "target": "#lecture-ph-valeur", "recompute": "phValeur" }
+  ],
+  "unlockAfterStage": 4,
+  "readoutTemplate": "V = {value} mL ; pH = {phValeur}{verdict}"
+}

@@ -16,6 +16,7 @@ import { asymptotes } from "./asymptotes";
 import { distributionCurseurPH } from "./distribution-curseur-pH";
 import { eulerTailleDePas } from "./euler-taille-de-pas";
 import { sandboxChuteFrottement } from "./sandbox-chute-frottement";
+import { lectureVeCourbeDosage } from "./lecture-Ve-courbe-dosage";
 
 const REGISTRY: Record<string, InteractiveFigureModel> = {
   "tangente-derivee": tangenteDerivee,
@@ -26,6 +27,7 @@ const REGISTRY: Record<string, InteractiveFigureModel> = {
   "distribution-curseur-pH": distributionCurseurPH,
   "euler-taille-de-pas": eulerTailleDePas,
   "sandbox-chute-frottement": sandboxChuteFrottement,
+  "lecture-Ve-courbe-dosage": lectureVeCourbeDosage,
 };
 
 export function getInteractiveFigureModel(slug: string): InteractiveFigureModel | undefined {

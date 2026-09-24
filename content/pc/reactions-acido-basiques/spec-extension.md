@@ -245,9 +245,14 @@ $C_A$ (déjà amorcé en R9).
   ($V_E$, pH_E). Structure et graduations exactes.
 - `[[figure:equivalence-courbe-derivee]]` — **type: structural-diagram · tool: svg+katex.**
   Courbe dpH/dV = f(V) avec le maximum aligné verticalement sur $V_E$.
-- `[[embed:lecture-Ve-courbe-dosage]]` — **type: manipulable · tool: geogebra/desmos.**
-  Courbe de dosage sur laquelle l'élève place un curseur pour lire $V_E$ ; feedback si l'élève
-  vise pH = 7 (AB-EQU-1) ou la demi-équivalence (AB-EQU-3). Sert le mode application-expérimentale.
+- `[[embed:lecture-Ve-courbe-dosage]]` — **type: manipulable · tool: interactive-svg.** **LIVRÉ le
+  2026-09-24**, en figure manipulable de première partie (INTERACTIVE-FIGURE-SPEC) sur la figure
+  `lecture-Ve-courbe-dosage` elle-même : après sa dernière étape, l'élève fait glisser un point SUR
+  la courbe dessinée (V de 0 à 25 mL, pas 0,1) ; deux repères le relient aux axes, V et pH se
+  lisent. La lecture ne dit « équivalence » qu'à $V_E = 15{,}0$ mL et « demi-équivalence :
+  pH = pKA » qu'à 7,5 mL — jamais au point où pH = 7 (AB-EQU-1). (geogebra/desmos sont fermés aux
+  nouveaux embeds depuis l'amendement du 2026-07-07 à l'ADR 0017.) Sert le mode
+  application-expérimentale.
 
 **HORS-CADRE (citer la limite).** Cadre p.15 : « équivalence **repérée graphiquement**
 (tangentes / dérivée) » — donc **aucune détermination analytique** de $V_E$ ou de pH_E par

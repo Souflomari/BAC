@@ -83,7 +83,7 @@ const jiti = jitiFactory(fileURLToPath(import.meta.url), { interopDefault: true,
 function modele(slug) {
   try {
     const mod = jiti(path.join(WEB, "src/lib/interactive-figures", `${slug}.ts`));
-    return mod[slug.replace(/-([a-z])/g, (_, c) => c.toUpperCase())];
+    return mod[slug.replace(/-([a-zA-Z0-9])/g, (_, c) => c.toUpperCase())];
   } catch {
     return undefined; // pas de module : la figure est rendue sans manipulation — la porte le dit
   }
@@ -130,10 +130,51 @@ const PHYSIQUE = {
   },
   // pc/chute-mouvements-plans, R7 : τ = m/k et v_ℓ = mg/k, k = 2,0 kg/s, g = 9,8
   // (les deux relations de la leçon, et elles seules — v(t) n'y est pas dérivée).
+  // pc/reactions-acido-basiques, R10 : la courbe de dosage. La SECONDE voie ne
+  // relit pas le module (ses trois Bézier) : elle suit la courbe DESSINÉE dans
+  // le SVG rendu (le premier <path> de l'étape 2), par la géométrie du
+  // navigateur — getPointAtLength, bissection sur x = 90 + 20·V — et relit
+  // pH = (300 − y)/16. Le point mobile doit être SUR ce trait, le pH lu doit
+  // être le sien. Et les mots : « équivalence » à V_E = 15,0 mL seulement,
+  // « demi-équivalence » à 7,5 seulement — jamais au point où pH = 7 (AB-EQU-1,
+  // la faute même que la figure doit empêcher d'écrire), visité exprès.
+  "lecture-Ve-courbe-dosage": async (V, [vLu, phLu], lecture, figure) => {
+    const courbe = await figure.evaluate((el, x) => {
+      const trait = el.querySelector("svg #step-2 path");
+      if (!trait) return null;
+      const L = trait.getTotalLength();
+      let lo = 0, hi = L;
+      for (let i = 0; i < 60; i++) {
+        const m = (lo + hi) / 2;
+        if (trait.getPointAtLength(m).x < x) lo = m;
+        else hi = m;
+      }
+      const q = trait.getPointAtLength((lo + hi) / 2);
+      const pt = el.querySelector("svg #point-mobile");
+      return { y: q.y, cx: pt ? parseFloat(pt.getAttribute("cx")) : NaN, cy: pt ? parseFloat(pt.getAttribute("cy")) : NaN };
+    }, 90 + 20 * V);
+    if (!courbe) return { ok: false, detail: "la courbe dessinée (#step-2 path) est introuvable" };
+    const phCourbe = (300 - courbe.y) / 16;
+    const eq = /(^|[^-])équivalence/.test(lecture.replace(/demi-équivalence/g, ""));
+    const demi = /demi-équivalence/.test(lecture);
+    const motsOk = Math.abs(V - 15) < 1e-9 ? eq && !demi : Math.abs(V - 7.5) < 1e-9 ? demi && !eq : !eq && !demi;
+    const surTrait = Math.abs(courbe.cx - (90 + 20 * V)) < 0.02 && Math.abs(courbe.cy - courbe.y) < 0.5;
+    const ok = Math.abs(vLu - V) < 1e-9 && Math.abs(phLu - phCourbe) <= 0.051 && surTrait && motsOk;
+    return {
+      ok,
+      detail: `pH lu ${phLu}, pH du trait dessiné ${phCourbe.toFixed(3)} ; point à (${courbe.cx}, ${courbe.cy}), trait à y = ${courbe.y.toFixed(2)} ; mots : ${eq ? "« équivalence »" : demi ? "« demi-équivalence »" : "aucun"}${motsOk ? "" : " — FAUX à cette position"}`,
+    };
+  },
   "sandbox-chute-frottement": (m, [mLu, tau, vlim]) => {
     const ok = Math.abs(mLu - m) < 1e-9 && Math.abs(tau - m / 2.0) <= 0.0051 && Math.abs(vlim - (m * 9.8) / 2.0) <= 0.0051;
     return { ok, detail: `τ lu ${tau} (m/k = ${(m / 2).toFixed(3)}), v_ℓ lue ${vlim} (mg/k = ${((m * 9.8) / 2).toFixed(3)})` };
   },
+};
+
+/** Des positions que la physique d'une figure exige de visiter, en plus des quatre communes. */
+const EN_PLUS = {
+  // V_E, et le point où la courbe passe par pH = 7 (13,3 mL : le repère de l'étape 3)
+  "lecture-Ve-courbe-dosage": [13.3, 15],
 };
 
 // ── Serveur ────────────────────────────────────────────────────────────────
@@ -211,7 +252,7 @@ for (const fig of figures) {
     const [a, b] = fig.cfg.control.domain;
     const pas = fig.cfg.control.step;
     const cale = (x) => Math.min(b, Math.max(a, a + Math.round((x - a) / pas) * pas));
-    const valeurs = [...new Set([a, fig.cfg.control.initial, cale(a + 0.37 * (b - a)), b].map((x) => Number(x.toFixed(10))))];
+    const valeurs = [...new Set([a, fig.cfg.control.initial, cale(a + 0.37 * (b - a)), b, ...(EN_PLUS[fig.slug] ?? [])].map((x) => Number(x.toFixed(10))))];
     for (const v of valeurs) {
       await curseur.evaluate((el, val) => {
         const set = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value").set;
@@ -245,7 +286,7 @@ for (const fig of figures) {
         noter("lecture", lecture === attendue, `${ou}, à ${md.formatValue(v)} : « ${lecture} »${lecture === attendue ? "" : ` (attendu « ${attendue} »)`}`);
         const phys = PHYSIQUE[fig.slug];
         if (phys) {
-          const r = phys(v, nombres(lecture), lecture);
+          const r = await phys(v, nombres(lecture), lecture, figure);
           noter("physique", r.ok, `${ou}, à ${md.formatValue(v)} : ${r.detail}`);
         }
       }
