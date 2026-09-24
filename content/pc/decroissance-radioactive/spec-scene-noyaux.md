@@ -11,6 +11,29 @@ première est **analytique** (nombres exacts) ; la seconde est **stochastique**
 porte sa réponse par défaut, chacune reste réversible).
 **Date :** 2026-09-24. **Auteur :** pedagogy-architect.
 
+**Révision du 2026-09-24 (critique de fidélité au bac), six décisions qui changent la
+scène :**
+1. **Aucune statistique chiffrée devant l'élève.** Le cadre ne nomme aucune dispersion
+   (`savoir_faire`, yaml l. 115-122) ; §9.8 l'interdisait déjà en mots, et la scène
+   l'employait quand même. Tout $\sqrt{N_0}$, tout « écart typique », toute loi binomiale
+   sort des textes vus par l'élève — il reste l'**observation** : on relance, on obtient
+   un autre nombre ; on multiplie la population, l'écart se voit de moins en moins. Les
+   chiffres de dispersion restent **dans la porte seulement**, marqués comme tels (§5.6).
+2. **La courbe est sur un QUADRILLAGE, celui du bac** (§5.2), et la lecture de $t_{1/2}$
+   devient une **construction** sur ce quadrillage, pas la lecture d'un pourcentage. La
+   lecture `fraction` est **supprimée**.
+3. **La scène écrit $A$, comme la leçon** (majuscule, $A_0 = \lambda N_0$,
+   `lesson.md:224-234`) — jamais $a$ minuscule, pour qu'une seule page ne montre jamais
+   deux notations. Le refactor vers $a$ n'est pas décidé : question 1 du §13.
+4. **Les items changent** (§8.3) : les deux items de comptage de Poisson sont **refusés** ;
+   DECRO-32 et DECRO-33 deviennent qualitatifs, et **deux items de lecture de courbe
+   quadrillée** sont commandés — c'est la seule façon de refermer le trou
+   « application expérimentale 0 % » que cette spec invoque.
+5. **La frontière du §9 interdit des FORMES, pas des noms** (ADR 0036), et chaque forme a
+   son essai rouge (§11.4).
+6. **`fit_caveat` rendu = les points 1 à 3 du §10 seulement** ; la probabilité par pas ne
+   paraît dans aucun champ rendu.
+
 Marqueur : `[[embed:courbe-et-noyaux]]` · clé de registre : `courbe-et-noyaux` ·
 sélecteur de porte : `[data-scene="courbe-et-noyaux"]` · porte :
 `web/scripts/scene-noyaux.mjs`.
@@ -88,9 +111,16 @@ il est inscrit comme tel (§13, question 9).
   - « **Loi $N(t) = N_0 e^{-\lambda t}$ exploitée ; on ne résout pas l'équation
     différentielle $dN/dt = -\lambda N$ au-delà de la connaissance de sa solution.** »
     → La scène **n'intègre rien**. Elle n'affiche que (a) la **forme fermée**
-    $N(t) = N_0\,2^{-t/t_{1/2}}$ et (b) des **tirages de Bernoulli** indépendants, noyau
-    par noyau, qui sont l'hypothèse du chapitre — pas un schéma numérique. Aucune
-    méthode d'Euler, aucun « pas de calcul » affiché, aucun $dN/dt$ à l'écran (§9.1).
+    $N(t) = N_0\,2^{-t/t_{1/2}}$ et (b) le résultat de tirages indépendants, noyau par
+    noyau, qui sont l'hypothèse du chapitre — pas un schéma numérique. Aucune méthode
+    d'Euler, aucun « pas de calcul » affiché, aucun $dN/dt$ à l'écran (§9.1).
+  - **Aucune statistique quantifiée n'est au programme.** Les `savoir_faire` du chapitre
+    (yaml l. 115-122) nomment la loi, sa courbe, $\tau$, $t_{1/2}$, $\lambda$, $A = \lambda N$,
+    le becquerel et la datation — **aucun** ne nomme une dispersion, un écart-type, une
+    loi de probabilité ni une racine de $N$. La scène montre donc la fluctuation
+    **comme un fait observable** (le nombre change d'un tirage à l'autre ; il change
+    proportionnellement moins quand la population grandit) et **ne la chiffre jamais**
+    par une formule. C'est une frontière dure, portée par le §9.8 et sa porte.
 - **`exclusions` du sous-domaine portées en dur** (l. 142–146) : **filiations
   radioactives / équilibre séculaire** · **sections efficaces, neutronique** · **modèles
   nucléaires quantitatifs** · **physique des particules**.
@@ -193,10 +223,18 @@ ne peut pas faire autrement : **une image ne se relance pas.**
 
 S3 est la réparation, et elle tient en un geste : **relancer**. À 64 noyaux, on obtient
 29, puis 35, puis 31 — jamais deux fois les mêmes cases, jamais deux fois le même nombre,
-et toujours autour de 32. Puis on monte à 256, à 1024, et l'écart relatif se resserre
-comme $1/\sqrt{N_0}$ (§5.4). C'est **le mécanisme rendu évident** que R3 promet en prose
-(« de l'hypothèse statistique à la loi de décroissance ») : une seule hypothèse posée
-sur un seul noyau, et la courbe des étapes 1 et 2 **sort toute seule** de la foule.
+et toujours dans le voisinage de 32. Puis on monte à 256, à 1024, et l'écart à la moitié
+**se voit de moins en moins** : à 64 il saute aux yeux, à 1024 il faut le chercher. C'est
+**le mécanisme rendu évident** que R3 promet en prose (« de l'hypothèse statistique à la
+loi de décroissance ») : une seule hypothèse posée sur un seul noyau, et la courbe des
+étapes 1 et 2 **sort toute seule** de la foule.
+
+**Et cela se montre sans une seule statistique chiffrée** — c'est la contrainte du §1, et
+elle est tenable : *on relance, on lit un autre nombre* est une observation ; *l'écart
+typique vaut $\sqrt{N_0}/2$* est un cours de probabilités que ce programme ne porte pas.
+La scène affiche donc les **derniers tirages côte à côte** (une liste de nombres, pas une
+moyenne) et l'**écart à la prévision de la loi** du tirage courant, en pourcentage — deux
+faits de l'écran, aucune formule.
 
 ### 2.5 Trois idées volontairement écartées
 
@@ -237,7 +275,7 @@ qui explique*). Chaque sous-section de R4 répond à un pari :
 | S1 — où lire $t_{1/2}$ | « La demi-vie $t_{1/2}$ » + la définition | R4, `:238-240` | ❌ non |
 | S2 — la largeur invariante | « quel que soit l'instant de départ choisi, il reste $N_0/2^n$ » | R4, `:260` | ❌ non |
 | S3 — la loi de population | « la loi statistique s'applique dès qu'on a assez de noyaux pour que les fluctuations s'effacent » | R3, `:208` — **⚠ AVANT le marqueur** (voir ci-dessous) | ⚠ à moitié |
-| S4 — $N$ contre $a$ | « L'activité… $A(t) = \lambda N(t)$ » + `cp-r4-activite-noyaux` | R4, `:224-236` | ❌ non |
+| S4 — $N$ contre $A$ | « L'activité… $A(t) = \lambda N(t)$ » + `cp-r4-activite-noyaux` | R4, `:224-236` | ❌ non |
 | S5 — $\lambda$ double | « $t_{1/2} = \ln 2/\lambda$ », « $\tau = 1/\lambda$ » + `cp-r4-demi-vie-lambda` | R4, `:258-274` | ❌ non |
 
 **Le seul placement qui laisse quatre paris entiers et le cinquième ouvert est la tête du
@@ -328,7 +366,7 @@ courte que la constante de temps…** » (`lesson.md:270`) et **avant**
 
 > - Sur une courbe, la demi-vie est une **largeur**, et cette largeur est la même où
 >   qu'on la mesure : de $N_0$ à $N_0/2$, ou de $N_0/4$ à $N_0/8$. Elle se lit aussi bien
->   sur une courbe d'**activité** que sur une courbe de **noyaux** — $a = \lambda N$ ne
+>   sur une courbe d'**activité** que sur une courbe de **noyaux** — $A = \lambda N$ ne
 >   fait que changer les graduations, jamais les instants. Et $t_{1/2}$ n'est ni
 >   $\lambda$, ni $1/\lambda$ : $t_{1/2} = \ln 2/\lambda = \tau \ln 2$.
 
@@ -351,7 +389,7 @@ a manipulé. (ADR 0041 §5 — et ici c'est gratuit : les nombres existaient dé
 | $\lambda_A$ | $\mathbf{0{,}0866}\ \text{j}^{-1}$ | $\ln 2 / 8{,}0 = 0{,}693147/8 = 0{,}0866434$ |
 | $\lambda_A$ en s⁻¹ | $\mathbf{1{,}00\times10^{-6}}\ \text{s}^{-1}$ | $0{,}0866434/86\,400 = 1{,}00282\times10^{-6}$ — la valeur que `exercises.yaml:161` emploie |
 | $\tau_A$ | $\mathbf{11{,}5}$ **j** | $1/0{,}0866434 = 11{,}5416$ ; contrôle : $11{,}5416 \times 0{,}693147 = 8{,}0000 = t_{1/2}$ ✓ |
-| $a_0$ | $\mathbf{4{,}0\times10^{8}}$ **Bq** | $1{,}00282\times10^{-6} \times 4{,}0\times10^{14} = 4{,}011\times10^{8}$ → 2 c.s. |
+| $A_0$ | $\mathbf{4{,}0\times10^{8}}$ **Bq** | $1{,}00282\times10^{-6} \times 4{,}0\times10^{14} = 4{,}011\times10^{8}$ → 2 c.s. |
 | demi-vie B | $t_{1/2} = \mathbf{4{,}0}$ **j** | échantillon du **second isotope**, S5 |
 | $\lambda_B$ | $\mathbf{0{,}173}\ \text{j}^{-1}$ | $\ln 2/4{,}0 = 0{,}173287 = \mathbf{2\lambda_A}$ **exactement** |
 | $\tau_B$ | $\mathbf{5{,}77}$ **j** | $1/0{,}173287 = 5{,}7708$ |
@@ -361,15 +399,82 @@ a manipulé. (ADR 0041 §5 — et ici c'est gratuit : les nombres existaient dé
 
 Valeurs de la courbe A aux repères — toutes **exactes** :
 
-| $t$ (j) | 0 | 4,0 | **8,0** | 11,5 ($\approx\tau$) | **16** | **24** | **32** |
+| $t$ (j) | 0 | 4,0 | **8,0** | 10,0 | **16** | **24** | **32** |
 |---|---|---|---|---|---|---|---|
-| $N$ | $4{,}0\times10^{14}$ | $2{,}83\times10^{14}$ | $\mathbf{2{,}0\times10^{14}}$ | $1{,}47\times10^{14}$ | $1{,}0\times10^{14}$ | $5{,}0\times10^{13}$ | $2{,}5\times10^{13}$ |
-| $N/N_0$ | 100 % | 70,7 % | **50,0 %** | 36,8 % | 25,0 % | 12,5 % | 6,25 % |
-| $a$ (Bq) | $4{,}0\times10^{8}$ | $2{,}83\times10^{8}$ | $\mathbf{2{,}0\times10^{8}}$ | $1{,}47\times10^{8}$ | $1{,}0\times10^{8}$ | $5{,}0\times10^{7}$ | $2{,}5\times10^{7}$ |
+| $N$ | $4{,}0\times10^{14}$ | $2{,}83\times10^{14}$ | $\mathbf{2{,}0\times10^{14}}$ | $1{,}68\times10^{14}$ | $1{,}0\times10^{14}$ | $5{,}0\times10^{13}$ | $2{,}5\times10^{13}$ |
+| $A$ (Bq) | $4{,}0\times10^{8}$ | $2{,}83\times10^{8}$ | $\mathbf{2{,}0\times10^{8}}$ | $1{,}68\times10^{8}$ | $1{,}0\times10^{8}$ | $5{,}0\times10^{7}$ | $2{,}5\times10^{7}$ |
 
-*($2^{-0{,}5} = 0{,}70711$ ; $e^{-1} = 0{,}36788$ — le « environ 37 % » de `lesson.md:270`.)*
+*($2^{-0{,}5} = 0{,}70711$ ; $2^{-1{,}25} = 0{,}42045$.)* **La colonne $\tau$ a été
+retirée de cette table exprès** : $\tau = 11{,}54$ j n'est atteignable par **aucun**
+contrôle (le curseur s'arrête à 10 j) et n'est donc **jamais un point de courbe** dans la
+scène. $\tau$ n'existe que comme **lecture** en S5, à côté de $t_{1/2}$ — c'est la seule
+place où la scène l'affiche, et c'est la place où il sert (les deux durées côte à côte).
+Pour mémoire, hors scène : $N(\tau) = N_0 e^{-1} = 1{,}47\times10^{14}$, le « environ
+37 % » de `lesson.md:270` — que la scène **n'affiche pas** (§5.6, `fraction` supprimée).
 
-### 5.2 Les deux voies de calcul, et pourquoi elles cohabitent
+**Aucun pourcentage n'est affiché nulle part dans la scène.** La ligne $N/N_0$ qui figurait
+ici a été retirée : les lectures sont des **nombres de noyaux** et des **becquerels**, lus
+sur un axe gradué, parce que c'est ce qu'un sujet donne et ce qu'il demande de lire. Seule
+exception, et elle n'est pas une fraction de la loi : `ecart-a-la-loi`, en S3 (§5.6).
+
+**Notation : la scène écrit $A$, comme la leçon.** `lesson.md:224-234` écrit $A(t)$ et
+$A_0 = \lambda N_0$ ; `exercises.yaml:118` écrit $A_0 = 4{,}0\times10^{8}$ Bq. Les sujets
+nationaux, eux, écrivent $a(t)$ minuscule (`docs/sujets/pc/decroissance-radioactive.md`
+l. 373), et la `REVIEW` fid-F15 recommande d'adopter $a$ **partout** — refactor **non
+décidé**. Tant qu'il ne l'est pas, la scène suit la leçon : **une page ne doit jamais
+montrer deux notations pour la même grandeur.** *Question 1 du §13, avec sa dépendance :
+si le propriétaire adopte $a$, la leçon, `exercises.yaml` et la scène changent
+**ensemble**, dans le même commit.*
+
+**Écriture de la demi-vie : la scène affiche « 8,0 jours ».** `lesson.md:278` écrit
+« 8 jours » et `exercises.yaml:140` aussi ; la scène ajoute la décimale pour deux raisons
+tenables : toutes ses durées sont à une décimale (`duree-de-moitie`, `depart`, `instant`),
+et l'isotope B impose « 4,0 » pour que la comparaison se lise à la même précision. **Le
+littéral que la porte cherche est donc `8,0` et `4,0`** (§11.1, N4), et les retouches de
+prose du §4 emploient la même forme. *Mineure pour le propriétaire : harmoniser
+`lesson.md:278` en « 8,0 jours », ou accepter les deux écritures du même nombre.*
+
+### 5.2 Le quadrillage — celui de l'examen, à la graduation près
+
+`docs/sujets/pc/decroissance-radioactive.md` l. 383-395 décrit la figure 3 de **2022 N**,
+celle-là même dont la question 3.1 demande « déterminer graphiquement la demi-vie »
+(fichier ouvert, mesures au pixel datées du 2026-08-07) :
+
+> « activité $a$ (Bq) en fonction de $t$ (jour), **sur quadrillage régulier**. […]
+> **Traits majeurs tous les 8 jours et tous les $10^{6}$ Bq, traits fins intermédiaires à
+> 4 jours et $0{,}5\cdot10^{6}$ Bq** […] Courbe partant de $a_0 = 4{,}0\cdot10^{6}$ Bq et
+> passant **exactement par l'intersection des repères $t = 8$ jours et
+> $a = 2\cdot10^{6}$ Bq** — d'où $t_{1/2} = 8$ jours. »
+
+**La scène reprend cette géométrie, à l'exposant près.** Ce n'est pas une décoration :
+c'est ce qui rend la construction *possible*, et c'est ce qui fait que l'élève reconnaîtra
+la figure le jour de l'examen.
+
+| axe | traits **majeurs** (chiffrés) | traits **fins** | cadre |
+|---|---|---|---|
+| temps | tous les **8,0 j** — chiffrés **8, 16, 24** | tous les **4,0 j** | jusqu'à **32 j** (majeur **non chiffré**, comme le sujet) |
+| noyaux | tous les **$1{,}0\times10^{14}$** — chiffrés $10^{14}$, $2\cdot10^{14}$, $3\cdot10^{14}$, $4\cdot10^{14}$ | tous les **$0{,}5\times10^{14}$** | jusqu'à **$5\times10^{14}$** (majeur non chiffré) |
+| activité | tous les **$1{,}0\times10^{8}$ Bq** — chiffrés $10^{8}$, $2\cdot10^{8}$, $3\cdot10^{8}$, $4\cdot10^{8}$ | tous les **$0{,}5\times10^{8}$ Bq** | jusqu'à **$5\times10^{8}$** (majeur non chiffré) |
+
+Ce que cette grille rend **exact**, et qu'aucun réglage ne peut casser :
+
+- $N_0 = 4{,}0\times10^{14}$ est **le quatrième trait majeur chiffré** ; sa moitié,
+  $2{,}0\times10^{14}$, est **le deuxième** — on ne « repère l'ordonnée moitié » pas au
+  jugé : on compte deux carreaux.
+- La courbe passe **exactement par le croisement** ($t = 8{,}0$ j ; $2{,}0\times10^{14}$)
+  — un **croisement de traits majeurs**, comme dans le sujet.
+- Le **crochet de S2 couvre exactement un intervalle majeur** (8,0 j), où qu'on le pose ;
+  sur l'isotope B, exactement **un intervalle fin** (4,0 j). La porte le lit en pixels
+  (§11.2, `crochet-invariant`) : à 17,5 px/j, 140 px et 70 px.
+- Le pas de `instant` ($0{,}5$ j) vaut **un huitième d'intervalle fin** ; celui de `depart`
+  ($1{,}0$ j) un **quart**. Aucun réglage ne tombe entre deux pixels de trait.
+
+**Langue visuelle du quadrillage** (contrainte de porte, §11.2 `quadrillage`) : traits à
+l'**encre douce**, majeurs plus appuyés que les fins, et **jamais** plus contrastés que la
+courbe — un quadrillage qui crie transforme un document en papier millimétré. Il fait
+partie de l'**énoncé** : il est donc visible **avant** le pari, à l'encre, comme les axes.
+
+### 5.3 Les deux voies de calcul, et pourquoi elles cohabitent
 
 **Voie 1 — la COURBE est analytique.** $N(t) = N_0\,2^{-t/t_{1/2}}$, forme fermée. Aucun
 solveur, aucune grille temporelle, **aucune erreur** : les lectures sont exactes, et la
@@ -380,7 +485,11 @@ $\Delta t = 0{,}25$ j, sa désintégration avec la probabilité
 
 $$p = 1 - e^{-\lambda\,\Delta t}$$
 
-— **jamais** $\lambda\,\Delta t$ (§11.4, sabotage n°1). Vérification :
+— **jamais** $\lambda\,\Delta t$ (§11.4, sabotage n°1). **Cette formule ne paraît dans
+aucun champ rendu** : ni consigne, ni légende, ni `fit_caveat`, ni description lue. Elle
+vit ici et dans un commentaire de `noyaux-modele.ts`, et elle est exposée à la porte par
+l'attribut `data-p-pas` — qui est une donnée de mesure, pas un texte. La chaîne `p =` et
+la forme `e^{-λΔt}` sont **interdites dans le panneau** (§9.10). Vérification :
 $\lambda_A \Delta t = 0{,}0216609$, donc $p_A = 1 - e^{-0{,}0216609} = 0{,}0214279$ ; et
 $(1-p_A)^{32} = e^{-32 \times 0{,}0216609} = e^{-0{,}693147} = \mathbf{0{,}500000}$ —
 **exactement** une demi-vie en 32 pas. Pour B : $p_B = 1 - e^{-0{,}0433217} = 0{,}0423967$
@@ -391,10 +500,11 @@ deux voies, à condition que **chaque lecture déclare de laquelle elle vient**,
 porte applique à chacune sa propre exigence* — nombres exacts recalculés pour
 l'analytique (règle de la corde), **invariants seulement** pour la simulation (règle de
 la cuve). Concrètement : `noyaux`, `activite`, `demi-vie`, `duree-de-moitie`, `lambda`,
-`tau` viennent de la **loi** ; `restants-comptes` et `ecart-relatif` viennent du
-**tirage**, et l'écran les distingue par leur libellé (« la loi prévoit » / « on compte »).
+`tau` viennent de la **loi** ; `restants-comptes`, `tirages-precedents` et `ecart-a-la-loi`
+viennent du **tirage**, et l'écran les distingue par leur libellé (« la loi prévoit » /
+« on compte »).
 
-### 5.3 Contrôles (5) — un neuf par étape
+### 5.4 Contrôles (5) — un neuf par étape
 
 | id | ce qu'il règle | valeurs / bornes | pas | ouvert par |
 |---|---|---|---|---|
@@ -411,10 +521,10 @@ la cuve). Concrètement : `noyaux`, `activite`, `demi-vie`, `duree-de-moitie`, `
   l'axe. À chacune, `duree-de-moitie` affiche **8,0 j**, *exactement*, parce que
   $N(t_1+8)/N(t_1) = 2^{-1}$ ne dépend pas de $t_1$. C'est l'invariant le plus fort que
   la scène puisse offrir, et la porte le lit par **égalité de chaîne** aux 25 positions.
-- `instant` au pas de $0{,}5$ j : la lecture change de $2^{-0{,}0625} = 0{,}9576$ d'un cran
-  à l'autre, soit $-4{,}24\ \%$ — **jamais deux positions n'affichent la même valeur à
-  3 chiffres significatifs** (c'est le défaut de l'orbite, « douze positions affichant
-  24,0 h », qu'on ne veut pas reproduire).
+- `instant` au pas de $0{,}5$ j : d'un cran à l'autre la lecture est multipliée par
+  $2^{-0{,}0625} = 0{,}9576$, soit une baisse de $4{,}24\ \%$ — **jamais deux positions
+  n'affichent la même valeur à 3 chiffres significatifs** (c'est le défaut de l'orbite,
+  « douze positions affichant 24,0 h », qu'on ne veut pas reproduire).
 - $\Delta t = 0{,}25$ j divise exactement $1{,}0$ ; $0{,}5$ ; $4{,}0$ et $8{,}0$ : **toute
   position de contrôle tombe sur un pas de simulation**, sans interpolation.
 
@@ -423,9 +533,9 @@ restriction d'étape (que le registre ne saurait pas exprimer) mais une borne gl
 justifiée par l'appareil : *l'enregistrement fin ne couvre que les dix premiers jours*.
 C'est ce qui rend la non-fuite S1 → S2 **structurelle** plutôt que déclarative (§7.6). Ce
 qu'on perd : en S5, la lecture au curseur ne va pas au-delà de 10 j — `depart` (jusqu'à
-24 j) et le crochet couvrent le reste. *Question 2 du §13.*
+24 j) et le crochet couvrent le reste. *Question 3 du §13.*
 
-### 5.4 État (6 clés)
+### 5.5 État (6 clés)
 
 `t_demi_j` (`8` | `4`), `instant_j`, `depart_j`, `population_n`, `grandeur`,
 `support` (`courbe` | `grille`) — plus `fenetre_j` (`10` | `32`), **sans contrôle**.
@@ -440,47 +550,60 @@ corde, `occupants` dans le manège) :
 - **`fenetre_j`** décide jusqu'où **la courbe est tracée et l'axe gradué** : 10 jours en
   S1, 32 jours ensuite. C'est la condition du §2.3.
 
-### 5.5 Lectures — définitions exactes, voie, unité, précision
+### 5.6 Lectures — définitions exactes, voie, unité, précision
 
 | id | ce qui s'affiche | voie | unité | précision | justification |
 |---|---|---|---|---|---|
 | `instant` | $t$ du curseur | — | j | 1 déc. | pas de 0,5 j : exact |
 | `noyaux` | $N(t)$ **prévu par la loi** | loi | noyaux | 2 c.s. | la donnée $N_0$ est à 2 c.s. |
-| `activite` | $a(t) = \lambda N(t)$ | loi | Bq | 2 c.s. | $a_0 = 4{,}0\times10^{8}$, donnée de `exercises.yaml` |
-| `fraction` | $N(t)/N_0$ | loi | % | 1 déc. | 100,0 · 70,7 · 50,0 · 25,0 · 12,5 · 6,3 |
+| `activite` | $A(t) = \lambda N(t)$ — **$A$ majuscule, comme la leçon** | loi | Bq | 2 c.s. | $A_0 = 4{,}0\times10^{8}$, donnée de `exercises.yaml:118` |
 | `depart` | $t_1$ | — | j | 1 déc. | pas de 1,0 j |
 | `restants-depart` | $N(t_1)$ | loi | noyaux | 2 c.s. | |
 | `duree-de-moitie` | la durée pour passer de $N(t_1)$ à $N(t_1)/2$ | loi | j | **1 déc.** | **8,0 aux 25 positions ; 4,0 sur l'isotope B** — c'est une RÉPONSE, jamais visible avant le pari de S2 |
-| `demi-vie` | $t_{1/2}$ de l'échantillon | loi | j | 1 déc. | 8,0 · 4,0 — **réponse** en S1 |
+| `demi-vie` | $t_{1/2}$ de l'échantillon | loi | j | 1 déc. | **8,0** · **4,0** — **réponse** en S1 |
 | `lambda` | $\lambda = \ln 2/t_{1/2}$, en $\text{j}^{-1}$ **et** en $\text{s}^{-1}$ | loi | — | 3 c.s. | 0,0866 j⁻¹ / 1,00×10⁻⁶ s⁻¹ |
 | `tau` | $\tau = 1/\lambda$ | loi | j | 3 c.s. | 11,5 · 5,77 — **S5 seulement** |
 | `population` | $N_0$ de l'échantillon comptable | — | noyaux | entier | 64 · 256 · 1024 |
 | `restants-comptes` | noyaux **encore allumés** dans la grille | **tirage** | noyaux | entier | c'est un **comptage** : exact par nature |
-| `ecart-relatif` | $\lvert$comptés $-$ prévus$\rvert$ / prévus | **tirage** | % | 1 déc. | varie d'une course à l'autre, et c'est le propos |
+| `tirages-precedents` | les comptes des **cinq derniers tirages**, côte à côte | **tirage** | noyaux | entiers | une **liste de faits**, jamais une moyenne ni un écart type (§9.8) |
+| `ecart-a-la-loi` | $\lvert$compté $-$ prévu$\rvert$ / prévu, **pour le tirage courant** | **tirage** | % | 1 déc. | un fait de l'écran, pas une statistique : il change à chaque course, et c'est le propos |
+
+**`fraction` ($N/N_0$ en %) est SUPPRIMÉE.** Elle invitait à lire un pourcentage là où le
+bac demande une **construction sur le quadrillage** ; et, une fois la ligne des
+pourcentages retirée (§5.1), elle était la dernière à en afficher. Conséquence directe sur
+la rédaction : **les retours et les `suite` citent des nombres de noyaux et des
+becquerels, jamais des pourcentages du départ.** La seule lecture en % qui reste est
+`ecart-a-la-loi`, qui ne compare pas à $N_0$ mais à la prévision de la loi.
 
 > **La précision est ici l'inverse du problème de l'orbite.** L'orbite devait *augmenter*
 > sa précision pour qu'une seule position du curseur coche la condition ; la courbe, elle,
 > est analytique et pourrait afficher dix chiffres. Le danger est symétrique : afficher
 > $4{,}011\times10^{8}$ Bq ferait croire à une mesure là où il n'y a qu'un produit de deux
 > données à 2 et 3 chiffres. **Règle : les lectures gardent la précision des données de la
-> leçon, jamais plus.** Et la lecture `restants-comptes`, qui est un vrai comptage, est
-> entière — c'est la seule de la scène qui n'a pas de chiffres significatifs, parce qu'un
-> noyau ne se compte pas à 2 c.s.
+> leçon, jamais plus.** Et `restants-comptes`, qui est un vrai comptage, est entière —
+> c'est la seule de la scène qui n'a pas de chiffres significatifs, parce qu'un noyau ne
+> se compte pas à 2 c.s.
 
-**La fluctuation, chiffrée.** À une demi-vie, le nombre restant suit une binomiale
-$\mathcal{B}(N_0, 1/2)$ : moyenne $N_0/2$, écart-type $\sqrt{N_0}/2$. L'écart **relatif**
-vaut donc $\dfrac{\sqrt{N_0}/2}{N_0/2} = \dfrac{1}{\sqrt{N_0}}$ :
+**La fluctuation, chiffrée — PORTE SEULEMENT, JAMAIS AFFICHÉ.** Le tableau qui suit est un
+**interne de la porte** (§11.2, familles `tirage-juste` et `dispersion-decroit`). Il sert à
+calibrer des bandes de tolérance, et **rien de ce qu'il contient ne doit apparaître dans le
+produit** : ni $\sqrt{N_0}$, ni « écart-type », ni le mot « binomiale », ni un $\sigma$.
+*La porte a le droit de mesurer ce que le produit n'a pas le droit d'enseigner* (règle de
+la cuve, ADR 0041) — et la réciproque est ce que la revue de fidélité a dû rappeler ici :
+**ce que la porte mesure ne devient pas, pour autant, du contenu.**
 
-| $N_0$ | 64 | 256 | 1024 | $4{,}0\times10^{14}$ |
+| $N_0$ (porte) | 64 | 256 | 1024 | $4{,}0\times10^{14}$ |
 |---|---|---|---|---|
-| moyenne à $t_{1/2}$ | 32 | 128 | 512 | $2{,}0\times10^{14}$ |
-| écart-type | 4 | 8 | 16 | $1{,}0\times10^{7}$ |
-| **écart relatif $1/\sqrt{N_0}$** | **12,5 %** | **6,25 %** | **3,125 %** | **$5{,}0\times10^{-8}$** |
+| espérance à $t_{1/2}$ | 32 | 128 | 512 | $2{,}0\times10^{14}$ |
+| écart-type $\sqrt{N_0}/2$ | 4 | 8 | 16 | $1{,}0\times10^{7}$ |
+| écart relatif $1/\sqrt{N_0}$ | 12,5 % | 6,25 % | 3,125 % | $5{,}0\times10^{-8}$ |
 
-**Multiplier la population par 4 divise l'écart relatif par 2** — exact, et c'est la
-`suite` de S3. Et $\sqrt{4{,}0\times10^{14}} = 2{,}0\times10^{7}$ : sur l'échantillon réel,
-l'écart relatif vaut cinq cent-millionièmes, **c'est pourquoi la courbe des étapes 1 et 2
-est lisse**. La boucle se referme.
+**Ce que l'élève en voit, et c'est tout ce qu'il en voit :** à 64 cases, le nombre restant
+saute d'un tirage à l'autre et l'écart à la loi se lit à deux chiffres ; à 1024, il faut
+chercher l'écart pour le voir. Le fait est **observé**, jamais démontré ni formulé — et la
+raison pour laquelle la courbe des étapes 1 et 2 est lisse est dite en une phrase sans
+racine carrée : *cet échantillon-là contient des centaines de milliers de milliards de
+noyaux.*
 
 ---
 
@@ -509,10 +632,11 @@ est lisse**. La boucle se referme.
 
 **La langue visuelle (DESIGN-BIBLE §0, §5, §7 ; ADR 0041 §4).**
 
-- **À l'ENCRE — c'est l'ÉNONCÉ** : les axes et leurs graduations chiffrées, **la courbe
-  elle-même** (c'est le document que le sujet fournit), le repère $N_0$, la grille de
-  cases au départ, le curseur au repos. *Corollaire du manège : une donnée de l'énoncé ne
-  se peint pas dans la couleur de la réponse.*
+- **À l'ENCRE — c'est l'ÉNONCÉ** : les axes et leurs graduations chiffrées, **le
+  quadrillage** (§5.2 : majeurs appuyés, fins plus légers, jamais plus contrastés que la
+  courbe), **la courbe elle-même** (c'est le document que le sujet fournit), le repère
+  $N_0$, la grille de cases au départ, le curseur au repos. *Corollaire du manège : une
+  donnée de l'énoncé ne se peint pas dans la couleur de la réponse.*
 - **À l'ACCENT — et seulement après la révélation** : la construction de lecture (le guide
   horizontal depuis l'ordonnée moitié, le guide vertical, le tick sur l'axe des temps), le
   **crochet** de S2 et sa cote, les cases **éteintes** de S3, le second tracé de S5.
@@ -535,44 +659,54 @@ attend la révélation*).
 
 - **État :** `t_demi_j: "8"`, `support: "courbe"`, `fenetre_j: 10`, `grandeur: "noyaux"`,
   `instant_j: 0`, `depart_j: 0`.
-- **Contrôle ouvert :** `instant` (**neuf**). **Lectures :** `instant`, `noyaux`,
-  `fraction` — et `demi-vie` **après révélation seulement**.
-- **Pas de course** : verdict immédiat, puis la construction se dessine.
+- **Contrôle ouvert :** `instant` (**neuf**). **Lectures :** `instant`, `noyaux` — et
+  `demi-vie` **après révélation seulement**.
+- **Pas de course** : verdict immédiat, puis la construction se dessine **sur le
+  quadrillage**.
 - **Consigne (voix) :** « Un échantillon d'iode 131, préparé à l'instant zéro : il contient
   $4{,}0\times10^{14}$ noyaux radioactifs. Un appareil a enregistré pendant dix jours le
-  nombre de noyaux qui n'ont **pas encore** désintégré, et voici sa courbe. En abscisse, le
-  temps en jours ; en ordonnée, le nombre de noyaux, gradué. On appelle **demi-vie** la
-  durée au bout de laquelle il n'en reste plus que la moitié. Un curseur te laisse lire la
-  courbe point par point. »
+  nombre de noyaux qui n'ont **pas encore** désintégré, et voici sa courbe, sur son
+  quadrillage. En abscisse, le temps en jours : un gros trait tous les huit jours. En
+  ordonnée, le nombre de noyaux : un gros trait tous les $10^{14}$, et le départ est sur
+  le quatrième. On appelle **demi-vie** la durée au bout de laquelle il n'en reste plus que
+  la moitié. Un curseur te laisse lire la courbe point par point. »
 - **Pari :** « Pour lire cette demi-vie sur la courbe, il faut… »
 
 | choix | texte | juste | misconception | retour (casse sur SA conséquence) |
 |---|---|---|---|---|
-| `ordonnee-moitie` | repérer sur l'axe vertical la moitié de $4{,}0\times10^{14}$, soit $2{,}0\times10^{14}$, rejoindre la courbe horizontalement, puis redescendre sur l'axe des temps | **oui** | — | « Oui — et c'est le geste exact que demandent les sujets : *« déterminer graphiquement la demi-vie »*. Trois mouvements, dans cet ordre. **Un :** l'ordonnée moitié, $2{,}0\times10^{14}$ — on part de l'axe **vertical**, pas de la courbe. **Deux :** on rejoint la courbe à l'horizontale. **Trois :** on redescend à la verticale et on lit $8{,}0$ jours. Retiens que la demi-vie est une **abscisse** qu'on obtient en partant d'une **ordonnée** : c'est pour ça qu'on la lit toujours en deux temps. » |
-| `zero-de-la-courbe` | chercher l'instant où la courbe touche l'axe des temps — là où l'échantillon a fini de se désintégrer — et en prendre la moitié | non | **`demi-vie-egale-duree-de-vie-totale`** | « Promène le curseur jusqu'au bout de l'enregistrement et regarde la lecture : à dix jours, il reste encore $1{,}68\times10^{14}$ noyaux, 42 % du départ. Cette courbe ne touche l'axe **nulle part** : à chaque jour qui passe, ce qui reste est **divisé** par quelque chose, jamais **retranché** — et une division ne donne jamais zéro. Il n'existe donc pas d'instant « où c'est fini », et la demi-vie ne peut pas en être la moitié. » |
-| `moitie-du-temps` | prendre la moitié de la durée enregistrée : l'appareil a tourné dix jours, la demi-vie est donc de cinq jours | non | **`demi-vie-egale-duree-de-vie-totale`** *(forme « la moitié du temps »)* | « Pose le curseur à cinq jours : il reste $2{,}59\times10^{14}$ noyaux, soit **65 %** — pas la moitié. Et vérifie le raisonnement lui-même : si on avait arrêté l'appareil à six jours, ta méthode donnerait trois jours ; à vingt jours, dix. La demi-vie changerait avec la durée du branchement, ce qui n'a aucun sens — c'est une propriété de l'iode 131, pas de l'appareil. La moitié dont il est question est une moitié de **noyaux**, jamais de durée. » |
+| `ordonnee-moitie` | repérer sur l'axe vertical la moitié de $4{,}0\times10^{14}$, soit $2{,}0\times10^{14}$, rejoindre la courbe horizontalement, puis redescendre sur l'axe des temps | **oui** | — | « Oui — et c'est le geste exact que demandent les sujets : *« déterminer graphiquement la demi-vie »*. Trois mouvements, dans cet ordre, et le quadrillage les rend faciles. **Un :** l'ordonnée moitié — le départ est sur le **quatrième** gros trait, sa moitié est sur le **deuxième** : $2{,}0\times10^{14}$. On part de l'axe **vertical**, pas de la courbe. **Deux :** on rejoint la courbe à l'horizontale. **Trois :** on redescend à la verticale, et on tombe **pile sur un gros trait** : $8{,}0$ jours. Retiens que la demi-vie est une **abscisse** qu'on obtient en partant d'une **ordonnée** : c'est pour ça qu'on la lit toujours en deux temps. » |
+| `zero-de-la-courbe` | chercher l'instant où la courbe touche l'axe des temps — là où l'échantillon a fini de se désintégrer — et en prendre la moitié | non | **`demi-vie-egale-duree-de-vie-totale`** | « Promène le curseur jusqu'au bout de l'enregistrement et lis : à dix jours, il reste encore $1{,}68\times10^{14}$ noyaux — la courbe est encore bien au-dessus de l'axe. Elle ne le touche **nulle part** : à chaque jour qui passe, ce qui reste est **divisé** par quelque chose, jamais **retranché** — et une division ne donne jamais zéro. Il n'existe donc pas d'instant « où c'est fini », et la demi-vie ne peut pas en être la moitié. » |
+| `moitie-du-temps` | prendre la moitié de la durée enregistrée : l'appareil a tourné dix jours, la demi-vie est donc de cinq jours | non | **`demi-vie-egale-duree-de-vie-totale`** *(forme « la moitié du temps »)* | « Pose le curseur à cinq jours et lis : $2{,}59\times10^{14}$ noyaux. La ligne de la moitié, elle, est à $2{,}0\times10^{14}$ — la courbe est encore au-dessus. Et vérifie le raisonnement lui-même : si on avait arrêté l'appareil à six jours, ta méthode donnerait trois jours ; à vingt jours, dix. La demi-vie changerait avec la durée du branchement, ce qui n'a aucun sens — c'est une propriété de l'iode 131, pas de l'appareil. La moitié dont il est question est une moitié de **noyaux**, jamais de durée. » |
 | `tangente` | tracer la tangente à la courbe au départ et lire où elle coupe l'axe des temps | non | **`confond-demi-vie-constante-lambda`** | « Cette construction existe, elle est juste, et elle donne **autre chose** : la tangente au départ coupe l'axe à $\tau = 11{,}5$ jours, la **constante de temps**. La demi-vie vaut $8{,}0$ jours. Les deux se lisent sur la même courbe et ne sont pas la même durée : $t_{1/2} = \tau \ln 2 \approx 0{,}693\,\tau$. Le chapitre te montrera la construction de $\tau$ ; retiens surtout le départ de chacune — la demi-vie part de l'**ordonnée moitié**, $\tau$ part de la **courbe**. » |
 
-*(Arithmétique des trois retours, vérifiée. `zero-de-la-courbe` :
+*(Arithmétique des retours, vérifiée. `zero-de-la-courbe` :
 $N(10) = 4{,}0\times10^{14} \times 2^{-1{,}25} = 4{,}0\times10^{14} \times 0{,}42045
-= 1{,}68\times10^{14}$, soit **42,0 %**. `moitie-du-temps` :
-$2^{-5/8} = 2^{-0{,}625} = 0{,}64842$, donc $2{,}59\times10^{14}$, soit **64,8 %** →
-affiché 65 %. `tangente` : $\tau = 1/0{,}0866434 = 11{,}5416$ → **11,5 j**, et
-$8{,}0/11{,}5416 = 0{,}6932 = \ln 2$ ✓. Piège évité au passage : **71 % est la valeur à
-$4{,}0$ j**, pas à $5{,}0$ j.)*
+= 1{,}68\times10^{14}$. `moitie-du-temps` : $2^{-5/8} = 2^{-0{,}625} = 0{,}64842$, donc
+$2{,}59\times10^{14}$. `tangente` : $\tau = 1/0{,}0866434 = 11{,}5416$ → **11,5 j**, et
+$8{,}0/11{,}5416 = 0{,}6932 = \ln 2$ ✓. **Aucun de ces retours ne cite un pourcentage** :
+la lecture `fraction` n'existe plus, et un retour ne doit jamais citer un nombre que
+l'écran ne montre pas.)*
 
-- **`suite` :** « Promène le curseur sur les dix jours et note trois couples : à $0$,
-  $4{,}0\times10^{14}$ ; à $4{,}0$ jours, $2{,}83\times10^{14}$, soit 71 % ; à $8{,}0$
-  jours, $2{,}0\times10^{14}$, soit 50,0 %. Regarde le milieu : à la moitié du temps, il
-  ne reste pas les trois quarts ni la moitié, mais 71 % — la courbe n'est pas une droite,
-  et c'est pour ça qu'on ne lit jamais une demi-vie « au jugé ». »
-- **⟂-avant-pari :** la lecture `demi-vie` ; **toute** construction (guide horizontal,
-  guide vertical, tick, cote) ; le curseur posé ailleurs qu'à $t = 0$ ; le verdict ; tout
-  pixel d'accent (mesuré en **chrominance**) ; la description lue au lecteur d'écran ne
+- **`suite` — c'est une CONSTRUCTION, pas une lecture de pourcentage :** « Refais le geste
+  toi-même, sur le quadrillage, sans le curseur. **Un :** pose le doigt sur le trait chiffré
+  $4{,}0\times10^{14}$, celui d'où part la courbe ; descends de deux gros carreaux — tu es
+  sur $2{,}0\times10^{14}$, la moitié. **Deux :** suis ce trait horizontal vers la droite
+  jusqu'à rencontrer la courbe. **Trois :** descends tout droit : tu arrives sur un gros
+  trait de l'axe des temps, celui qui porte le chiffre $8$. Le croisement est **exact**,
+  et c'est ainsi que les figures d'examen sont dessinées — la courbe passe par le
+  croisement de deux traits, pour qu'on puisse lire sans estimer. Vérifie ensuite avec le
+  curseur : à $8{,}0$ jours, il affiche $2{,}0\times10^{14}$. Et remarque en passant ce que
+  la forme t'apprend : à $4{,}0$ jours, à la **moitié** de cette durée, il reste
+  $2{,}83\times10^{14}$ — pas $3{,}0\times10^{14}$, qui serait la moitié du chemin. La
+  courbe n'est pas une droite, et c'est pour ça qu'on ne lit jamais une demi-vie au jugé. »
+- **⟂-avant-pari :** la lecture `demi-vie` ; **toute** construction (trait horizontal de la
+  moitié, trait vertical, tick, cote) ; le curseur posé ailleurs qu'à $t = 0$ ; le verdict ;
+  tout pixel d'accent (mesuré en **chrominance**) ; la description lue au lecteur d'écran ne
   doit contenir ni « moitié », ni « 8,0 jours ».
-  **Reste visible (l'énoncé) :** les axes **gradués en chiffres**, la courbe à l'encre
-  jusqu'à 10 j, le repère $N_0 = 4{,}0\times10^{14}$, le curseur à $t = 0$, et les lectures
-  `instant`, `noyaux`, `fraction` à leur position de départ.
+  **Reste visible (l'énoncé) :** les axes **gradués en chiffres**, **le quadrillage
+  entier** (c'est le papier du document, pas la réponse), la courbe à l'encre jusqu'à 10 j,
+  le repère $N_0 = 4{,}0\times10^{14}$, le curseur à $t = 0$, et les lectures `instant` et
+  `noyaux` à leur position de départ.
 
 ### 7.2 S2 — `et-si-on-part-plus-tard` · « Et si on ne part pas du début »
 
@@ -601,11 +735,10 @@ C'est **l'étape centrale** (§2.2).
 - **`suite` :** « Fais glisser l'instant de départ, de zéro à vingt-quatre jours, cran par
   cran, et regarde **deux** choses à la fois. La **hauteur** du crochet s'effondre :
   $4{,}0\times10^{14}$, puis $2{,}0$, puis $1{,}0$, puis $5{,}0\times10^{13}$. Sa
-  **largeur** ne bouge jamais : $8{,}0$ jours, vingt-cinq fois sur vingt-cinq. C'est la
-  phrase « sans mémoire » traduite en une durée qu'on peut mesurer — et c'est aussi la
-  raison pour laquelle on peut dater un objet : la demi-vie de l'iode 131 est la même
-  aujourd'hui qu'au premier jour de l'échantillon, et la même dans un échantillon vieux de
-  mille ans. »
+  **largeur** ne bouge jamais : $8{,}0$ jours, vingt-cinq fois sur vingt-cinq — et, sur le
+  quadrillage, elle couvre **exactement un gros carreau**, où qu'on la pose. C'est la
+  phrase « sans mémoire » traduite en une durée qu'on peut mesurer : la demi-vie de l'iode
+  131 est la même au premier jour de l'échantillon et trois semaines plus tard. »
 - **⟂-avant-pari :** le **crochet** et sa cote ; `duree-de-moitie` ; le second repère sur
   la courbe ; tout guide ; le verdict ; tout pixel d'accent ; la description lue ne doit
   contenir ni « huit », ni « même », ni « inchangé ».
@@ -619,7 +752,8 @@ C'est **l'étape centrale** (§2.2).
 - **État :** **`support: "grille"`**, **`population_n: 64`**, `t_demi_j: "8"`,
   `grandeur: "noyaux"`.
 - **Contrôle ouvert :** `population` (**neuf**). **Lectures :** `population`,
-  `restants-comptes`, `noyaux` *(ce que la loi prévoit)*, `ecart-relatif`.
+  `restants-comptes`, `noyaux` *(ce que la loi prévoit)*, `ecart-a-la-loi`,
+  `tirages-precedents`.
 - **`revele_apres_course: 1`** — la course va de $0$ à $16$ jours (4,0 s à l'écran), et le
   verdict attend la **fin**.
 - **Consigne :** « On change d'échelle, et **c'est tout ce qui change**. Jusqu'ici
@@ -633,23 +767,24 @@ C'est **l'étape centrale** (§2.2).
 
 | choix | texte | juste | misconception | retour |
 |---|---|---|---|---|
-| `exactement-32` | **exactement 32** cases pleines : la loi dit qu'il en reste la moitié | non | **`loi-population-vs-noyau`** *(nouveau, §8.2 ; forme « la loi est exacte case par case »)* | « Compte : la course vient d'en laisser un nombre qui n'est presque jamais 32. Relance : tu obtiendras encore autre chose, et jamais les mêmes cases. La loi ne **commande** à aucun noyau ; elle dit ce que fait une **foule**. Avec soixante-quatre individus, la foule est trop petite pour que sa moyenne tombe juste — l'écart typique est de quatre cases, soit 12 %. Monte à 1024 avec le contrôle qui vient de s'ouvrir : l'écart relatif tombe à 3 %, et la loi paraît exacte sans l'être davantage. » |
-| `autour-de-32` | un nombre **proche de 32**, et différent à chaque fois qu'on relance | **oui** | — | « Oui, et c'est le cœur du chapitre. Deux affirmations qui semblent s'exclure et qui sont vraies ensemble : **aucun** noyau n'est prévisible — on ne sait dire ni lequel partira, ni quand — et **la population** obéit à une loi si régulière qu'on s'en sert pour dater des os. Ce qui fait le pont entre les deux, c'est le **nombre**. À soixante-quatre noyaux, l'écart typique vaut $\sqrt{64}/2 = 4$ cases sur 32, soit 12 %, et il se voit. Sur $4{,}0\times10^{14}$ noyaux, il vaut cinq cent-millionièmes, et la courbe des étapes précédentes paraît parfaitement lisse. Elle ne l'est pas : elle est **grande**. » |
-| `n-importe-quoi` | n'importe quel nombre entre 0 et 64 : puisque chaque noyau tire au sort, **aucun** résultat n'est prévisible | non | **`loi-population-vs-noyau`** *(forme « hasard = pas de loi »)* | « Relance cinq fois et note les cinq nombres : ils tiennent tous dans une poignée de cases autour de 32 — tu ne verras ni 5, ni 60. Le hasard d'un individu n'interdit pas la régularité d'une foule ; il la **produit**. Chacun des soixante-quatre tire sa pièce, et la somme de soixante-quatre tirages se serre autour de la moitié : l'écart typique vaut quatre cases, pas trente. C'est ce resserrement qui rend la loi utilisable — et il est d'autant plus fort que les noyaux sont nombreux. » |
+| `exactement-32` | **exactement 32** cases pleines : la loi dit qu'il en reste la moitié | non | **`loi-population-vs-noyau`** *(nouveau, §8.2 ; forme « la loi est exacte case par case »)* | « Compte les cases qui restent : le nombre affiché n'est presque jamais 32. Relance : tu obtiendras encore autre chose, et jamais les mêmes cases éteintes. La loi ne **commande** à aucun noyau — aucun ne « sait » qu'il doit partir pour que le compte tombe juste. Elle dit ce que fait une **foule**, et soixante-quatre, c'est une toute petite foule. Monte à 1024 avec le contrôle qui vient de s'ouvrir, et regarde l'écart à la loi : il devient difficile à voir, sans jamais devenir nul. » |
+| `autour-de-32` | un nombre **voisin de 32**, et différent à chaque fois qu'on relance | **oui** | — | « Oui, et c'est le cœur du chapitre. Deux affirmations qui semblent s'exclure et qui sont vraies ensemble : **aucun** noyau n'est prévisible — on ne sait dire ni lequel partira, ni quand — et **la population**, elle, suit une loi assez régulière pour qu'on calcule avec. Ce qui fait le pont entre les deux, c'est le **nombre**. Regarde la ligne des tirages précédents : cinq nombres différents, tous dans le même voisinage, aucun très loin. Monte la population et relance : l'écart à la loi se voit de moins en moins. Sur l'échantillon des deux premières étapes — des centaines de milliers de milliards de noyaux — il ne se voit plus du tout, et c'est pour cela que sa courbe paraissait parfaitement lisse. Elle ne l'est pas : elle est **grande**. » |
+| `n-importe-quoi` | n'importe quel nombre entre 0 et 64 : puisque chaque noyau tire au sort, **aucun** résultat n'est prévisible | non | **`loi-population-vs-noyau`** *(forme « hasard = pas de loi »)* | « Relance cinq fois et lis la ligne des tirages précédents : cinq nombres, tous dans le même voisinage — tu ne verras ni 5, ni 60. Le hasard d'un individu n'interdit pas la régularité d'une foule : il la **produit**. Chacun des soixante-quatre joue sa chance de son côté, et le total, lui, retombe toujours près de la moitié. C'est ce resserrement qui rend la loi utilisable, et il est d'autant plus net que les noyaux sont nombreux — essaie 1024. » |
 
-- **`suite` :** « Trois manœuvres, dans cet ordre. **Une :** relance trois fois à
-  soixante-quatre et note les trois nombres — ils diffèrent, et les cases éteintes ne sont
-  jamais les mêmes. **Deux :** passe à 256, puis à 1024, en relançant à chaque fois.
-  L'écart à la moitié, **en proportion**, se resserre : environ 12 % à 64 (4 cases sur 32),
-  6 % à 256 (8 sur 128), 3 % à 1024 (16 sur 512). Il vaut exactement
-  $1/\sqrt{N_0}$ : multiplie la population par quatre, et il est divisé par deux.
-  **Trois :** applique-le à l'échantillon des étapes 1 et 2 —
-  $\sqrt{4{,}0\times10^{14}} = 2{,}0\times10^{7}$, donc un écart relatif de cinq
-  cent-millionièmes. Voilà pourquoi sa courbe était lisse : non pas parce que la loi est
-  exacte, mais parce que l'échantillon est **grand**. »
+- **`suite` — trois observations, aucun calcul :** « **Une :** relance trois fois à
+  soixante-quatre. Les trois nombres diffèrent, les cases éteintes ne sont jamais les
+  mêmes, et pourtant les trois sont voisins de 32 : le hasard est réel, et il est
+  **encadré**. **Deux :** passe à 256, puis à 1024, en relançant à chaque fois, et surveille
+  une seule lecture — l'écart à la loi. À 64 cases, il saute aux yeux ; à 256, il faut le
+  regarder ; à 1024, il faut le chercher. La loi ne devient pas plus vraie : c'est
+  l'échantillon qui devient plus grand. **Trois :** repense à la courbe des deux premières
+  étapes. Cet échantillon-là contient des centaines de milliers de milliards de noyaux —
+  l'écart y est si petit qu'aucun tracé ne le montrerait. Voilà pourquoi sa courbe était
+  lisse : non pas parce que la loi tombe juste noyau par noyau, mais parce que la foule est
+  immense. »
 - **⟂-avant-pari :** **toute case éteinte** (les 64 sont pleines, sans exception) ; le
-  bouton de course ; `restants-comptes` ; `ecart-relatif` ; la courbe superposée ; le
-  verdict ; tout pixel d'accent.
+  bouton de course ; `restants-comptes` ; `ecart-a-la-loi` ; `tirages-precedents` ; la
+  courbe superposée ; le verdict ; tout pixel d'accent.
   **Reste visible :** la grille pleine à l'encre, la lecture `population` $= 64$, la
   légende de l'appareil (« une case = un noyau »), la durée de la course.
 
@@ -663,15 +798,16 @@ C'est **l'étape centrale** (§2.2).
 - **Consigne :** « Retour à l'échantillon réel, et une question d'appareil. Un détecteur ne
   compte pas les noyaux : il ne peut pas, ils sont enfermés dans la matière. Il compte les
   **désintégrations**, une par une, et affiche combien il en compte **par seconde** : c'est
-  l'**activité**, en becquerels. Sur cet échantillon, il affiche $4{,}0\times10^{8}$ Bq à
-  l'instant zéro. Un bouton va te laisser changer ce que porte l'axe vertical : le nombre
-  de noyaux, ou l'activité. »
+  l'**activité**, notée $A$, en becquerels. Sur cet échantillon, il affiche
+  $A_0 = 4{,}0\times10^{8}$ Bq à l'instant zéro. Un bouton va te laisser changer ce que
+  porte l'axe vertical : le nombre de noyaux, ou l'activité — le quadrillage, lui, ne
+  change pas. »
 - **Pari :** « Sur la courbe de l'**activité**, la demi-vie se lira… »
 
 | choix | texte | juste | misconception | retour |
 |---|---|---|---|---|
-| `au-meme-endroit` | au même endroit, $8{,}0$ jours — mais l'axe portera d'autres nombres : $4{,}0\times10^{8}$, $2{,}0\times10^{8}$, $1{,}0\times10^{8}$ becquerels | **oui** | — | « Oui, et c'est pour cela que les sujets donnent presque toujours une courbe d'**activité**. La raison tient en une ligne : $a = \lambda N$, avec $\lambda$ **constante**. Multiplier toute une courbe par un nombre fixe ne déplace **aucun** instant : quand $N$ est divisé par deux, $a$ l'est au même moment. Deux sujets nationaux demandent exactement ce geste — 2021, sur une courbe d'activité de plutonium ; 2022, sur l'iode 131. Note quand même le facteur : $\lambda = 1{,}00\times10^{-6}\ \text{s}^{-1}$, donc $4{,}0\times10^{14}$ noyaux donnent $4{,}0\times10^{8}$ becquerels — **un million de fois moins**, pas le même nombre. » |
-| `pas-lisible` | nulle part : la demi-vie se définit sur un nombre de **noyaux**, elle n'a pas de sens sur une activité | non | **`confond-activite-nombre-noyaux`** | « Bascule l'axe et compare les deux tracés : ils ont **exactement** la même forme, et la demi-vie s'y lit au même endroit. La demi-vie n'est pas attachée à une grandeur particulière, elle est attachée à une **division par deux** : puisque $a$ est proportionnelle à $N$, tout ce qui divise $N$ par deux divise $a$ par deux, au même instant. Ce que ta réponse touche juste, c'est que $a$ et $N$ **ne sont pas la même chose** — mais elles sont proportionnelles, et c'est ce qui sauve la lecture. » |
+| `au-meme-endroit` | au même endroit, $8{,}0$ jours — mais l'axe portera d'autres nombres : $4{,}0\times10^{8}$, $2{,}0\times10^{8}$, $1{,}0\times10^{8}$ becquerels | **oui** | — | « Oui, et c'est pour cela que les sujets donnent presque toujours une courbe d'**activité**. La raison tient en une ligne : $A = \lambda N$, avec $\lambda$ **constante**. Multiplier toute une courbe par un nombre fixe ne déplace **aucun** instant : quand $N$ est divisé par deux, $A$ l'est au même moment. Refais d'ailleurs la construction sur le nouvel axe : le départ est toujours sur le quatrième gros trait, sa moitié sur le deuxième, et on retombe sur le trait des $8$ jours. Deux sujets nationaux demandent exactement ce geste — 2021, sur une courbe d'activité de plutonium ; 2022, sur l'iode 131. Note quand même le facteur : $\lambda = 1{,}00\times10^{-6}\ \text{s}^{-1}$, donc $4{,}0\times10^{14}$ noyaux donnent $4{,}0\times10^{8}$ becquerels — **un million de fois moins**, pas le même nombre. » |
+| `pas-lisible` | nulle part : la demi-vie se définit sur un nombre de **noyaux**, elle n'a pas de sens sur une activité | non | **`confond-activite-nombre-noyaux`** | « Bascule l'axe et compare les deux tracés : ils ont **exactement** la même forme, et la demi-vie s'y lit au même endroit. La demi-vie n'est pas attachée à une grandeur particulière, elle est attachée à une **division par deux** : puisque $A$ est proportionnelle à $N$, tout ce qui divise $N$ par deux divise $A$ par deux, au même instant. Ce que ta réponse touche juste, c'est que $A$ et $N$ **ne sont pas la même chose** — mais elles sont proportionnelles, et c'est ce qui sauve la lecture. » |
 | `meme-courbe` | au même endroit, et la courbe sera la **même en valeur** : $4{,}0\times10^{14}$ becquerels au départ, puisque l'activité compte les noyaux | non | **`confond-activite-nombre-noyaux`** *(forme « le becquerel compte des noyaux »)* | « Lis les deux axes l'un après l'autre : $4{,}0\times10^{14}$ noyaux d'un côté, $4{,}0\times10^{8}$ becquerels de l'autre. Un becquerel, c'est **une désintégration par seconde** — pas un noyau. Sur cet échantillon, environ quatre cents millions de noyaux partent chaque seconde, sur quatre cents mille milliards présents : le rapport est $\lambda$ exprimée en $\text{s}^{-1}$, soit $1{,}00\times10^{-6}$. L'instant de la demi-vie, lui, est bien le même — c'est la seule chose que les deux courbes partagent. » |
 
 - **`suite` :** « Bascule d'une grandeur à l'autre en regardant **l'axe**, pas la courbe :
@@ -684,7 +820,7 @@ C'est **l'étape centrale** (§2.2).
 - **⟂-avant-pari :** la courbe d'activité ; les graduations de l'axe des becquerels ; la
   lecture `activite` ; le verdict ; tout pixel d'accent.
   **Reste visible :** la courbe des noyaux à l'encre, son axe gradué, la **valeur
-  d'énoncé** $a_0 = 4{,}0\times10^{8}$ Bq **écrite dans la consigne** (elle est donnée par
+  d'énoncé** $A_0 = 4{,}0\times10^{8}$ Bq **écrite dans la consigne** (elle est donnée par
   l'appareil, pas déduite), `demi-vie` $= 8{,}0$ j *(acquis des étapes 1 et 2)*.
 
 ### 7.5 S5 — `libre` · « Un autre isotope, et tout s'ouvre »
@@ -713,7 +849,7 @@ C'est **l'étape centrale** (§2.2).
   rapide et promène-le — $4{,}0$ jours à chacune des vingt-cinq positions, la même
   invariance avec une autre valeur. **Deux :** bascule sur l'activité : $8{,}0\times10^{8}$
   becquerels au départ, **deux fois plus** que le premier échantillon pour le **même**
-  nombre de noyaux — normal, $a_0 = \lambda N_0$ et c'est $\lambda$ qui a doublé.
+  nombre de noyaux — normal, $A_0 = \lambda N_0$ et c'est $\lambda$ qui a doublé.
   **Trois :** passe à la grille, à 1024, sur l'isotope rapide : la course couvre maintenant
   **quatre** demi-vies en seize jours, et il reste environ 64 cases sur 1024. **Quatre :**
   refais ce dernier tirage trois fois, et regarde le petit nombre bouger — c'est le même
@@ -823,9 +959,15 @@ les quatre champs de `items.yaml` :
 ```yaml
   - id: mc.physics.decroissance_radioactive.loi-population-vs-noyau
     label: "« La loi de décroissance vaut noyau par noyau » — ou, à l'inverse, « puisque c'est le hasard, aucun nombre n'est prévisible »"
-    description: "L'élève ne distingue pas ce que la loi promet à une POPULATION de ce qu'elle promettrait à un INDIVIDU. Deux formes opposées, un seul modèle. Forme A (déterministe) : à chaque demi-vie il partirait EXACTEMENT la moitié des noyaux, au noyau près, et un échantillon de 64 noyaux en laisserait exactement 32 — l'élève traite N(t) = N0·e^(−λt) comme une horloge, pas comme une espérance. Forme B (nihiliste) : puisque chaque noyau tire au sort, aucun résultat n'est prévisible et n'importe quel nombre est possible — l'élève conclut du hasard individuel à l'absence de loi collective. Ce modèle répond CORRECTEMENT à toute question de divisions successives (N0/2, N0/4, N0/8) : il ne se révèle qu'en faisant varier le NOMBRE de noyaux, ou en demandant ce qu'on peut affirmer d'un noyau unique."
-    contradicts_principle: "La loi de décroissance est une loi STATISTIQUE : elle donne l'espérance du nombre de noyaux restants, pas une valeur certaine. Pour un échantillon de N0 noyaux, le nombre restant après une demi-vie fluctue autour de N0/2 avec un écart-type √N0/2, soit un écart RELATIF de 1/√N0 — 12 % pour 64 noyaux, 5×10⁻⁸ pour 4,0×10¹⁴. Le hasard individuel ne détruit donc pas la loi : c'est le grand nombre qui la rend exacte en pratique, et c'est pourquoi elle est inutilisable sur un noyau isolé et parfaitement fiable sur un échantillon macroscopique."
+    description: "L'élève ne distingue pas ce que la loi promet à une POPULATION de ce qu'elle promettrait à un INDIVIDU. Deux formes opposées, un seul modèle. Forme A (déterministe) : à chaque demi-vie il partirait EXACTEMENT la moitié des noyaux, au noyau près, et un échantillon de 64 noyaux en laisserait exactement 32 — l'élève traite N(t) = N0·e^(−λt) comme une horloge. Forme B (nihiliste) : puisque chaque noyau tire au sort, aucun résultat n'est prévisible et n'importe quel nombre est possible — l'élève conclut du hasard individuel à l'absence de loi collective. Ce modèle répond CORRECTEMENT à toute question de divisions successives (N0/2, N0/4, N0/8) : il ne se révèle qu'en faisant varier le NOMBRE de noyaux, ou en demandant ce qu'on peut affirmer d'un noyau unique."
+    contradicts_principle: "La désintégration d'un noyau donné est imprévisible ; la loi N(t) = N0·e^(−λt) ne décrit que le comportement d'une POPULATION, et elle le décrit d'autant mieux que la population est grande. Sur un petit échantillon, le nombre restant après une demi-vie est VOISIN de la moitié sans lui être égal, et il change d'une expérience à l'autre ; sur un échantillon réel (10^14 noyaux et plus), l'écart devient invisible et la loi est utilisable comme une égalité. Le hasard individuel ne détruit donc pas la loi : c'est le grand nombre qui la rend exploitable."
 ```
+
+**Note de rédaction pour item-author, à ne pas perdre.** Ces deux champs sont des méta-données
+d'auteur, jamais rendues — mais ils sont écrits **sans aucune statistique chiffrée**, exprès,
+pour que personne ne recopie une formule hors programme dans un `stem` ou un `feedback`
+(§9.8). *Pour l'auteur seulement, et à ne JAMAIS écrire dans un item : l'écart relatif à une
+demi-vie décroît comme $1/\sqrt{N_0}$.*
 
 *Note de séquencement, non négociable* (ADR 0041, addendum du 2026-09-24) :
 `validate-content` exige qu'un `misconception:` employé par un pari de scène soit
@@ -837,10 +979,12 @@ pour couvrir « la loi tombe juste au noyau près ». *Je ne la recommande pas* 
 mettre sous une même étiquette une erreur d'algèbre (soustraire au lieu de diviser) et une
 erreur d'épistémologie (confondre espérance et certitude).
 
-### 8.3 Les trois items que ce modèle exige (specs pour item-author)
+### 8.3 Les deux items QUALITATIFS que ce modèle exige (specs pour item-author)
 
 Plancher de couverture : **≥ 3 items** où au moins un distracteur porte le modèle. **Les
-paris de la scène ne comptent pas.**
+paris de la scène ne comptent pas.** Les deux items qui suivent en portent deux ; le
+troisième est **DECRO-35** (§8.4), qui les rejoint parce qu'un comptage de cases est le
+lieu naturel de ce modèle. Total : **3, plancher atteint, marge nulle.**
 
 **Conventions de ce fichier, à respecter à la lettre :** les items portent `id`, `rung`,
 `difficulty_level`, `skill_code`, `tags`, `primary_misconception`, `stem`, `type: mcq`,
@@ -857,77 +1001,187 @@ items) : ne pas en ajouter** — ce serait un changement de schéma, pas une dé
 
 **DECRO-32** — `rung: "R3"`, `difficulty_level: 2`,
 `primary_misconception: mc.physics.decroissance_radioactive.loi-population-vs-noyau`
+*(qualitatif — aucun chiffre de dispersion, §9.8)*
 
 - *stem :* Un échantillon contient exactement **100** noyaux radioactifs d'un isotope de
   demi-vie $t_{1/2} = 2{,}0$ heures. Deux heures plus tard, on compte les noyaux qui n'ont
-  pas encore désintégré. Que peut-on affirmer ?
-- *clé (A) :* on en comptera un nombre **voisin de 50**, généralement entre 40 et 60, et
-  une seconde expérience identique donnerait un autre nombre.
+  pas encore désintégré, puis on recommence l'expérience à l'identique avec un second
+  échantillon de 100 noyaux du même isotope. Que peut-on affirmer ?
+- *clé (A) :* les deux comptages donneront des nombres **voisins de 50**, mais rien
+  n'oblige les deux à être égaux entre eux ni égaux à 50.
 - *distracteurs :*
-  - (B) « on en comptera **exactement 50** : c'est ce que dit la loi de décroissance »
-    → **`loi-population-vs-noyau`** *(forme déterministe)*. `feedback` : la loi donne la
-    valeur **moyenne** ; avec 100 noyaux, l'écart typique est de $\sqrt{100}/2 = 5$ noyaux,
-    et deux expériences identiques ne donnent pas le même compte.
+  - (B) « les deux donneront **exactement 50** : c'est ce que dit la loi de décroissance »
+    → **`loi-population-vs-noyau`** *(forme déterministe)*. `feedback` : aucun noyau ne
+    « sait » qu'il doit partir pour que le compte tombe rond ; la loi décrit ce que fait
+    une population, et sur cent noyaux le compte varie d'une expérience à l'autre.
   - (C) « on ne peut rien affirmer : chaque noyau tire au sort, donc tout nombre entre 0 et
     100 est également possible » → **`loi-population-vs-noyau`** *(forme nihiliste)*.
-    `feedback` : le hasard individuel **produit** la régularité collective ; les valeurs se
-    serrent autour de 50 à quelques unités près, et 5 ou 95 ne se rencontrent pas.
-  - (D) « on en comptera exactement 50 si l'échantillon est resté à température constante »
-    → **`lambda-depend-conditions-externes`**. `feedback` : $\lambda$ ne dépend d'aucune
-    condition extérieure ; ce n'est pas la température qui empêche de trouver 50 tout rond,
-    c'est le nombre.
-- *solution :* la loi donne une espérance ; l'écart-type vaut $\sqrt{N_0}/2$, soit 5 ici ;
-  l'écart **relatif** $1/\sqrt{N_0}$ vaut 10 % sur 100 noyaux et devient négligeable sur un
-  échantillon réel.
+    `feedback` : le hasard de chaque noyau **produit** la régularité de l'ensemble ; les
+    comptages se placent dans le voisinage de 50, et un résultat comme 5 ou 95 ne se
+    rencontre pas.
+  - (D) « les deux donneront exactement 50 si les deux échantillons sont restés à la même
+    température » → **`lambda-depend-conditions-externes`**. `feedback` : $\lambda$ ne
+    dépend d'aucune condition extérieure ; ce n'est pas la température qui empêche de
+    trouver 50 tout rond, c'est le petit nombre de noyaux.
+- *solution :* la loi prévoit le comportement d'une **population**, pas le sort d'un noyau.
+  Sur cent noyaux, elle situe le résultat sans le fixer ; sur un échantillon réel, qui en
+  compte des milliers de milliards, l'écart devient invisible et on calcule avec la loi
+  comme avec une égalité.
+- *interdit de rédaction :* ni racine carrée, ni « écart-type », ni « en moyenne » suivi
+  d'un chiffre de dispersion (§9.8).
 
 **DECRO-33** — `rung: "R4"`, `difficulty_level: 3`, même `primary_misconception`
+*(qualitatif)*
 
-- *stem :* Deux échantillons du même isotope sont préparés au même instant : le premier
-  contient $1{,}0\times10^{4}$ noyaux, le second $1{,}0\times10^{16}$. Après une demi-vie,
-  on compare, **pour chacun**, le nombre restant à la valeur prévue par la loi. Que
-  constate-t-on ?
-- *clé (A) :* les deux s'écartent de la prévision, mais l'écart **relatif** est bien plus
-  grand pour le petit échantillon : environ 1 % contre $10^{-8}$.
+- *stem :* On prépare deux échantillons du **même** isotope au même instant : le premier
+  contient une centaine de noyaux, le second des milliers de milliards. Pour chacun, on
+  compare le nombre restant après une demi-vie à ce que prévoit la loi de décroissance.
+  Lequel des deux suivra la prévision de plus près, et pourquoi ?
+- *clé (A) :* le **grand** échantillon : la loi décrit le comportement d'une population, et
+  plus la population est nombreuse, moins le résultat s'écarte de la prévision — sur le
+  petit échantillon, l'écart se voit au premier comptage.
 - *distracteurs :*
-  - (B) « les deux tombent exactement sur la prévision : la loi ne dépend pas du nombre de
-    noyaux » → **`loi-population-vs-noyau`**. `feedback` : la loi ne dépend pas du nombre,
-    mais **sa précision, si** — l'écart relatif vaut $1/\sqrt{N_0}$.
-  - (C) « l'écart est le même pour les deux, puisque c'est le même isotope et le même
-    $\lambda$ » → **`loi-population-vs-noyau`**. `feedback` : $\lambda$ fixe la **moyenne**,
-    pas la dispersion ; celle-ci ne dépend que du nombre.
-  - (D) « le grand échantillon s'écarte davantage : il a plus de noyaux, donc plus
-    d'occasions de s'écarter » → **`loi-population-vs-noyau`** *(confusion écart absolu /
-    écart relatif)*. `feedback` : en nombre **absolu** de noyaux, oui — l'écart-type croît
-    comme $\sqrt{N_0}$ ; **rapporté** à la population, il décroît comme $1/\sqrt{N_0}$, et
-    c'est ce rapport qui décide de la qualité de la loi.
+  - (B) « les deux la suivront exactement : la loi ne dépend pas du nombre de noyaux »
+    → **`loi-population-vs-noyau`**. `feedback` : la **forme** de la loi ne dépend pas du
+    nombre, mais la **fidélité** avec laquelle un échantillon la suit, si — c'est toute la
+    différence entre une loi de population et une horloge.
+  - (C) « le **petit** : avec peu de noyaux, il y a moins de sources d'erreur possibles »
+    → **`loi-population-vs-noyau`**. `feedback` : il n'y a pas d'« erreur » ici ; il y a du
+    hasard, et le hasard se compense d'autant mieux que les tirages sont nombreux.
+  - (D) « celui qui aura été conservé au frais, quelle que soit sa taille »
+    → **`lambda-depend-conditions-externes`**. `feedback` : rien de ce qui entoure le noyau
+    ne change $\lambda$ ; la seule grandeur qui décide ici est le **nombre** de noyaux.
 - *exigence de rédaction :* aucun distracteur ne nomme sa propre faute ; chaque `feedback`
-  donne la **raison**, jamais l'étiquette.
+  donne la **raison**, jamais l'étiquette. **Aucun chiffre de dispersion nulle part.**
 
-**DECRO-34** — `rung: "R4"`, `difficulty_level: 4`, même `primary_misconception`
+*(L'item de comptage minute par minute qui figurait ici est **retiré** : c'est une question
+de statistique de Poisson, hors programme, et sa clé ne pouvait pas s'écrire sans un
+$\sqrt{n}$.)*
+
+### 8.4 Les deux questions de LECTURE DE DOCUMENT — et l'obstacle de schéma qu'il faut nommer
+
+Le trou que cette spec invoque (« application expérimentale 0 %, aucun item de lecture de
+courbe ») ne se referme pas avec une scène seule : **il faut que la livraison le referme.**
+Or il y a un obstacle mesuré, et il vaut mieux l'écrire que le découvrir à l'écriture :
+
+> **Aucun item du corpus entier ne porte de figure.** Recherche sur les 62 `items.yaml` de
+> `content/` (`[[figure:`, `figure_slug`, `figure:`) : **zéro occurrence**. Le schéma d'item
+> est textuel ; un « lis la courbe » en QCM de banque n'existe nulle part, et il n'y a pas
+> de champ où l'accrocher.
+
+D'où un paquet en **trois pièces**, dont deux réparent l'existant plutôt que d'ajouter :
+
+**(a) Une figure codée, graduée — `media/courbe-activite-quadrillee`** (diagram-author,
+3 étapes : axes + quadrillage / courbe / construction de $t_{1/2}$). Géométrie du §5.2,
+valeurs de `exercises.yaml` : $A_0 = 4{,}0\times10^{8}$ Bq, $t_{1/2} = 8{,}0$ j, majeurs
+tous les 8 jours et tous les $10^{8}$ Bq, fins à 4 jours et $0{,}5\times10^{8}$ Bq, cadre
+jusqu'à $32$ j. **C'est la figure que la notion n'a pas** (§2.1) et que la `REVIEW` réclame
+(« → figure codée (diagram-author) + items »).
+
+**(b) La correction de `exercises.yaml:118`, qui donne aujourd'hui la réponse de sa propre
+q2.** Texte actuel : « *La courbe part de $A_0$ à $t = 0$ et décroît exponentiellement ;
+**on lit que l'activité tombe à sa moitié, $A_0/2 = 2{,}0\times10^{8}$ Bq, à la date
+$t = 8$ jours**.* » — puis q2 demande de déterminer cette demi-vie **à partir de la
+courbe**. Remplacement proposé, qui décrit le **document** sans livrer la lecture :
+
+> « On enregistre l'activité $A(t)$ de cette dose en fonction du temps. La courbe
+> ci-dessous est tracée sur un quadrillage : en abscisse, un trait fort tous les
+> **8 jours** ; en ordonnée, un trait fort tous les **$10^{8}$ Bq**, l'activité initiale
+> étant sur le quatrième. »
+>
+> `[[figure:courbe-activite-quadrillee]]`
+
+La q2 redevient une vraie lecture, et son `reasoning` (l. 138) doit cesser de dire
+« *l'énoncé indique que…* » pour dire le **geste** : ordonnée moitié, horizontale jusqu'à
+la courbe, verticale jusqu'à l'axe. *Même correction à faire sur `r-bac` q2.1 (Pu-238), dont
+l'en-tête l. 22 assume déjà la transcription en texte faute de figure disponible.*
+
+**(c) Deux items de banque qui exercent le même geste sous la forme que le schéma
+permet : un TABLEAU de valeurs.** « Exploiter des documents/données » du cadre couvre
+explicitement le tableau, et un tableau est un document que le schéma sait porter.
+
+---
+
+**DECRO-34** — `rung: "R4"`, `difficulty_level: 2`,
+`primary_misconception: mc.physics.decroissance_radioactive.demi-vie-egale-duree-de-vie-totale`
+*(lecture de données — le geste « déterminer $t_{1/2}$ » sur un document)*
+
+- *stem :* Le tableau donne l'activité $A$ d'un échantillon radioactif, mesurée tous les
+  cinq jours. **Déterminer la demi-vie de cet isotope.**
+
+  | $t$ (jour) | 0 | 5 | 10 | 15 | 20 | 25 | 30 |
+  |---|---|---|---|---|---|---|---|
+  | $A$ ($10^{5}$ Bq) | 8,00 | 5,66 | 4,00 | 2,83 | 2,00 | 1,41 | 1,00 |
+
+- *clé (A) :* **10 jours** — l'activité passe de $8{,}00$ à $4{,}00$ entre $t = 0$ et
+  $t = 10$ j, puis de $4{,}00$ à $2{,}00$ entre $t = 10$ et $t = 20$ j : la même durée à
+  chaque division par deux.
+- *distracteurs :*
+  - (B) « **15 jours**, la moitié de la durée couverte par le tableau »
+    → **`demi-vie-egale-duree-de-vie-totale`**. `feedback` : la moitié dont il s'agit est
+    une moitié d'**activité**, pas de durée ; et la réponse changerait si l'on avait
+    mesuré pendant 40 jours, ce qui ne peut pas arriver à une propriété de l'isotope.
+  - (C) « **20 jours** : entre 0 et 20 jours l'activité passe de $8{,}00$ à $2{,}00$, soit
+    deux moitiés retirées — $4{,}00$ puis $2{,}00$ » → **`division-lineaire-demi-vies`**.
+    `feedback` : ces deux divisions par deux occupent **deux** demi-vies, pas une ; la
+    première est achevée à $t = 10$ j, où l'activité vaut déjà $4{,}00$.
+  - (D) « **14 jours** : on tire $\lambda$ du tableau, et la demi-vie en est l'inverse »
+    → **`confond-demi-vie-constante-lambda`**. `feedback` : $1/\lambda$ est la constante de
+    temps $\tau$, pas la demi-vie ; il manque le facteur $\ln 2$, et
+    $t_{1/2} = \tau \ln 2 = 14{,}4 \times 0{,}693 = 10$ jours.
+- *solution :* on cherche **deux** dates où l'activité est dans le rapport 2, et on prend
+  leur écart ; on vérifie sur une autre paire — le geste est le même que sur une courbe,
+  où l'on part de l'ordonnée moitié.
+- *arithmétique (vérifiée) :* $t_{1/2} = 10$ j, donc $A(t) = 8{,}00 \times 2^{-t/10}$ :
+  $2^{-0{,}5} = 0{,}70711 \Rightarrow 5{,}66$ ; $2^{-1{,}5} = 0{,}35355 \Rightarrow 2{,}83$ ;
+  $2^{-2{,}5} = 0{,}17678 \Rightarrow 1{,}41$ ; $2^{-3} = 0{,}125 \Rightarrow 1{,}00$ ✓.
+  Et $\lambda = \ln 2/10 = 0{,}0693\ \text{j}^{-1}$, $\tau = 1/\lambda = 14{,}4$ j ✓
+  (le nombre du distracteur D).
+
+**DECRO-35** — `rung: "R4"`, `difficulty_level: 3`,
+`primary_misconception: mc.physics.decroissance_radioactive.loi-population-vs-noyau`
 *(co-étiquetage assumé avec `confond-activite-nombre-noyaux` sur un distracteur)*
 
-- *stem :* Un détecteur placé devant une source très faible compte, minute après minute :
-  18, 24, 15, 21, 19, 26 désintégrations. Un élève conclut : « ces mesures sont fausses,
-  l'activité devrait être constante d'une minute à l'autre ». Que répondre ?
-- *clé (A) :* les mesures sont **compatibles** avec une activité constante : ce sont des
-  comptages d'événements aléatoires, et pour une moyenne d'environ 20 par minute, la
-  dispersion attendue est de l'ordre de $\sqrt{20} \approx 4{,}5$ — exactement ce qu'on
-  observe.
+- *stem :* On suit noyau par noyau, sur une grille de 36 cases, un échantillon de **36**
+  noyaux d'un isotope de demi-vie $3{,}0$ heures. Au bout de $3{,}0$ heures, on compte
+  **21** noyaux encore présents. Un élève déclare : « le comptage est faux, il devait en
+  rester 18 ». Que répondre ?
+- *clé (A) :* le comptage n'a rien de faux : la loi situe le résultat autour de 18 sans
+  l'imposer, et une seconde expérience identique donnerait encore un autre nombre.
 - *distracteurs :*
-  - (B) « il a raison : à activité constante, le détecteur doit afficher le même nombre
-    chaque minute » → **`loi-population-vs-noyau`**.
-  - (C) « il a raison, et la cause est l'échauffement du détecteur, qui modifie $\lambda$ »
-    → **`lambda-depend-conditions-externes`**.
-  - (D) « les mesures sont fausses parce qu'un détecteur compte des **noyaux**, et le
-    nombre de noyaux ne peut que décroître, jamais remonter de 15 à 21 » →
-    **`confond-activite-nombre-noyaux`** *(co-étiqueté `loi-population-vs-noyau`)*.
-- *solution :* l'activité est une **espérance** de comptage ; sur une source faible, la
-  dispersion en $\sqrt{n}$ est visible, et c'est précisément pourquoi on allonge le temps
-  de comptage pour mesurer une faible activité.
+  - (B) « l'élève a raison : $36/2 = 18$, la loi l'exige » → **`loi-population-vs-noyau`**
+    *(forme déterministe)*. `feedback` : aucun noyau ne se désintègre pour faire tomber le
+    compte juste ; sur trente-six noyaux, l'écart à 18 se voit à chaque essai.
+  - (C) « l'élève a raison, sauf si l'échantillon a été chauffé pendant les trois heures »
+    → **`lambda-depend-conditions-externes`**. `feedback` : la température ne change ni
+    $\lambda$ ni la demi-vie ; ce qui explique l'écart, c'est le petit nombre de noyaux.
+  - (D) « le comptage est faux pour une autre raison : on ne compte pas des noyaux, on
+    compte des désintégrations — « 21 » ne peut donc pas être un nombre de noyaux
+    présents » → **`confond-activite-nombre-noyaux`** *(co-étiqueté
+    `loi-population-vs-noyau`)*. `feedback` : c'est vrai d'un **détecteur**, qui compte des
+    désintégrations par seconde ; ici on regarde les cases une par une, et 21 est bien un
+    nombre de noyaux restants. Les deux grandeurs sont reliées par $A = \lambda N$.
+- *solution :* la loi de décroissance décrit une **population** ; sur trente-six noyaux le
+  résultat se place autour de 18 sans y être forcé, et c'est le grand nombre qui, sur un
+  échantillon réel, rend la loi utilisable comme une égalité.
+- *interdit de rédaction :* aucun chiffre de dispersion, aucune racine carrée (§9.8).
 
-**Après application :** `total_items: 34`, `loi-population-vs-noyau: 3` (plancher atteint,
-marge nulle), `confond-activite-nombre-noyaux: 4` (DECRO-34 D), `coverage_summary`
+---
+
+**Après application :** `total_items: **35**` ; `loi-population-vs-noyau: 3` (DECRO-32, 33,
+35 — plancher atteint, marge nulle) ; `demi-vie-egale-duree-de-vie-totale: 7` (+ DECRO-34 B) ;
+`division-lineaire-demi-vies: 8` (+ DECRO-34 C) ; `confond-demi-vie-constante-lambda: 5`
+(+ DECRO-34 D) ; `confond-activite-nombre-noyaux: 4` (+ DECRO-35 D) ;
+`lambda-depend-conditions-externes: 14` (+ DECRO-32 D, DECRO-35 C). `coverage_summary`
 régénéré par `node web/scripts/resume-couverture.mjs`.
+
+**Ce que ce paquet NE referme pas, et il faut le dire.** Le champ `habilete` **n'existe sur
+aucun des 31 items** de cette notion (0 occurrence) ; ajouter les quatre nouveaux ne rend
+donc **pas** le mélange 50 / 15 / 35 calculable — c'est la décision de propriétaire du
+`DECISIONS-EN-ATTENTE` §3, et cette livraison ne la tranche pas. Ce qu'elle change est
+réel et plus modeste : **deux questions d'examen redeviennent faisables** (b), **une courbe
+graduée existe enfin** (a), et **deux items exercent une lecture de document** (c) — là où
+la notion n'en avait aucun.
 
 **Une dette voisine, signalée sans être commandée ici :** la `REVIEW` péd-F4 note que
 $\beta^+$ contre $\beta^-$ (« le piège le plus courant » selon `lesson.md:126`) n'est testé
@@ -938,8 +1192,15 @@ oublier.
 
 ## 9. La frontière de programme — ce que la scène n'affiche jamais
 
-Chaînes **interdites dans le panneau ouvert**, mesurées par la porte (§11.3, `frontiere`).
-Chacune porte sa raison.
+Chaînes **interdites dans le panneau ouvert**, mesurées par la porte (§11.3, `frontiere`),
+**et chacune avec son essai rouge** (§11.4, sabotage 13).
+
+> **On interdit des FORMES, pas des noms** (ADR 0036 : *une chose n'est prouvée absente que
+> si l'on a énuméré ses formes*). Interdire « datation » sans interdire « dater » laisse
+> passer la phrase ; interdire « écart-type » sans interdire `√` et `\sqrt` laisse passer la
+> formule. Chaque ligne ci-dessous liste donc les **variantes d'écriture**, y compris le
+> symbole, la forme LaTeX et les flexions du verbe — et la porte les cherche dans le texte
+> **rendu** (après KaTeX), pas dans la source.
 
 1. **Aucune résolution d'équation différentielle.** `limites` du cadre : la loi est
    *exploitée*, jamais re-dérivée numériquement. Interdits : `Euler`, `dN/dt`, `d N / d t`,
@@ -954,8 +1215,11 @@ Chacune porte sa raison.
    `énergie de liaison`, `MeV`, `u (unité de masse`, `E = mc`, `fission`, `fusion`,
    `courbe d'Aston`.
 4. **Aucune datation.** C'est R5, **après** le marqueur : la scène ne remonte jamais du
-   présent vers une date. Interdits : `datation`, `âge de l'échantillon`,
-   `depuis la mort`, `carbone 14`.
+   présent vers une date. Interdits, **verbe compris** : `datation`, **`dater`**,
+   **`datant`**, **`datée`**, **`âge de`**, `âge d'`, `remonter à`, `depuis la mort`,
+   `carbone 14`, `C-14`, `archéo`. *(La spec elle-même avait laissé passer deux « dater »
+   dans des textes d'élève — S2 `suite` et S3 retour ; ils sont retirés. Une frontière
+   qu'on n'écrit qu'en un mot se traverse avec un autre mot.)*
 5. **Aucune physique des particules, aucune section efficace.** Exclusions du
    sous-domaine. Interdits : `section efficace`, `neutronique`, `quark`, `interaction
    faible`, `antineutrino`.
@@ -965,23 +1229,42 @@ Chacune porte sa raison.
    mesure aussi en pixels (les graduations sont équidistantes).
 7. **Aucune 3D.** Canvas 2D, vue de face, aucune caméra. **`window.__THREE__` doit rester
    indéfini même panneau OUVERT** — famille de porte à part entière (§11.2).
-8. **Aucune incertitude de mesure chiffrée, aucun « écart-type » affiché.** Le mot
-   *écart-type* n'est pas au programme de PC. La scène affiche `ecart-relatif`, un simple
-   pourcentage, et la `suite` de S3 parle d'« écart typique » en **cases**. Interdits :
-   `écart-type`, `σ`, `binomial`, `loi normale`, `intervalle de confiance`.
+8. **AUCUNE STATISTIQUE QUANTIFIÉE — la frontière la plus dure de cette scène.** Les
+   `savoir_faire` du chapitre (yaml l. 115-122) ne nomment **aucune** dispersion : ni
+   écart-type, ni loi de probabilité, ni racine de $N$. La scène montre la fluctuation
+   **comme un fait** (`restants-comptes`, `tirages-precedents`, `ecart-a-la-loi` du tirage
+   courant) et ne la **chiffre** jamais par une formule.
+   **Formes interdites, symboles et LaTeX compris :** `√`, **`\sqrt`**, `racine carrée`,
+   `écart-type`, **`écart typ`** (couvre « écart typique »), `σ`, **`\sigma`**,
+   `dispersion`, `fluctuation` **suivi d'un nombre**, `binomial`, `Binomiale`, `Poisson`,
+   `loi normale`, `intervalle de confiance`, `espérance`, `variance`, `1/√`, `N^(1/2)`,
+   `en moyenne` **suivi d'un ± chiffré**.
    *(La porte, elle, a le droit de mesurer ce que le produit n'a pas le droit d'enseigner —
-   règle de la cuve, ADR 0041 : ses bandes de tolérance sont en $\sigma$, §11.2.)*
+   règle de la cuve, ADR 0041 : ses bandes de tolérance sont en $\sigma$, §11.2, et le
+   tableau de calibrage du §5.6 est marqué **PORTE SEULEMENT**. La réciproque est ce que la
+   revue de fidélité a dû rappeler : **ce que la porte mesure ne devient pas du
+   contenu**.)*
 9. **La scène ne remplace pas un TP.** Le cadre ne liste **aucun** travail pratique pour ce
    sous-domaine (`travaux_pratiques: []`, l. 140). La légende ne prétend donc jamais qu'il
    s'agit d'une mesure réelle : c'est un **appareil simulé**, et c'est écrit (§10).
+10. **Aucune mécanique de la simulation à l'écran.** La probabilité par pas vit dans la
+    spec et dans un commentaire de code ; elle est exposée à la porte par un attribut, pas
+    par un texte (§5.3, M5). Interdits dans le panneau : `p =`, `1 - e^`, `e^{-λΔt}`,
+    `\Delta t`, `pas de temps`, `tirage de Bernoulli`, `générateur`, `graine`, `seed`.
+    Ce que l'élève lit, c'est la **règle physique** (« à chaque instant, la même chance »),
+    jamais son implémentation.
 
 ---
 
 ## 10. Ce que cette scène peut honnêtement prétendre (`fit_caveat`)
 
-Une image calculée est plus crédible qu'une figure dessinée, donc plus dangereuse. Ce
-paragraphe est à reprendre **mot pour mot** dans le champ `fit_caveat` du descripteur, et
-ses points 1, 2 et 3 doivent apparaître **en légende**, une phrase chacun.
+Une image calculée est plus crédible qu'une figure dessinée, donc plus dangereuse.
+
+> **Portée du champ rendu, corrigée :** le `fit_caveat` du descripteur reprend **les points
+> 1, 2 et 3 SEULEMENT**, et ce sont aussi les trois phrases de légende. **Les points 4 à 7
+> ne sont rendus nulle part** : ce sont des notes de conception, pour l'auteur et pour la
+> revue. En particulier, la probabilité par pas du point 4 ne doit apparaître dans **aucun**
+> champ rendu (§9.10) — spec et commentaire de code, rien d'autre.
 
 1. **La courbe n'est pas une mesure : c'est la loi tracée.** Elle est calculée en forme
    fermée à partir de $N_0 = 4{,}0\times10^{14}$ et $t_{1/2} = 8{,}0$ j. Une vraie courbe
@@ -991,26 +1274,34 @@ ses points 1, 2 et 3 doivent apparaître **en légende**, une phrase chacun.
    points de mesure**. *Légende :* « Courbe calculée avec les valeurs de la leçon ; sur un
    vrai enregistrement, les points sont un peu dispersés. »
 2. **La grille montre un échantillon impossible.** Soixante-quatre, 256 ou 1024 noyaux :
-   aucun échantillon réel n'en contient si peu — un microgramme d'iode 131 en contient
-   $10^{15}$. La petite population est un **choix pédagogique**, et c'est exactement ce que
-   la scène veut faire voir : à ces effectifs, la loi bruite ; aux effectifs réels, non.
-   *Légende :* « Une case = un noyau. Un échantillon réel en contient mille milliards de
-   fois plus — c'est pourquoi sa courbe, elle, paraît lisse. »
+   aucun échantillon réel n'en contient si peu. **Un microgramme d'iode 131 contient
+   environ $4{,}6\times10^{15}$ noyaux** — soit à peu près $7\times10^{13}$ fois les
+   64 cases de la scène. *(Arithmétique : $10^{-6}/131 = 7{,}63\times10^{-9}$ mol, et
+   $\times\ 6{,}02\times10^{23} = 4{,}6\times10^{15}$ ; $4{,}6\times10^{15}/64 =
+   7{,}2\times10^{13}$. Pour mémoire, l'échantillon des étapes 1 et 2,
+   $4{,}0\times10^{14}$ noyaux, pèse environ $0{,}09$ µg.)* La petite population est un
+   **choix pédagogique**, et c'est exactement ce que la scène veut faire voir : à ces
+   effectifs, l'écart se voit ; aux effectifs réels, non.
+   *Légende :* « Une case = un noyau. Un microgramme d'iode 131 en contient environ
+   $4{,}6\times10^{15}$ — c'est pourquoi sa courbe, elle, paraît lisse. »
 3. **Le temps est accéléré, et c'est écrit.** Un jour d'échantillon = $0{,}25$ seconde à
    l'écran ; la course de seize jours dure quatre secondes. Facteur affiché
    (`data-facteur-temps`) et **mesuré contre l'horloge**. *Légende :* « Seize jours en
    quatre secondes : un jour vaut un quart de seconde. »
-4. **Le tirage est une vraie simulation, pas une animation.** Chaque noyau tire à chaque
-   pas avec $p = 1 - e^{-\lambda \Delta t}$ ; personne ne décide à l'avance combien
-   partiront. C'est la différence exacte avec le média animé de R3, et c'est ce qui rend
-   S3 possible.
-5. **Rien dans la scène ne démontre que $\lambda$ est indépendante de la température.**
-   La scène **suppose** $\lambda$ constante : c'est son hypothèse, pas son résultat
-   (§2.5). Un élève ne doit pas croire qu'il vient de le vérifier.
-6. **Les deux échantillons de S5 diffèrent par $\lambda$, et la scène ne nomme pas le
-   second isotope.** Doubler $\lambda$ est un réglage d'appareil, pas un nuclide réel
-   choisi — l'honnêteté commande de ne pas inventer un noyau (*question 5, §13*).
-7. **Ce qu'un vrai détecteur montrerait de plus, et qui manque ici :** le bruit de fond, le
+4. *(non rendu — note de conception)* **Le tirage est une vraie simulation, pas une
+   animation.** Chaque noyau tire sa chance à chaque pas, indépendamment des autres et de
+   son passé ; personne ne décide à l'avance combien partiront. C'est la différence exacte
+   avec le média animé de R3, et c'est ce qui rend S3 possible. *La formule de la
+   probabilité par pas est au §5.3 et dans `noyaux-modele.ts` ; elle n'est ni en légende,
+   ni dans le `fit_caveat`, ni dans aucune consigne (§9.10).*
+5. *(non rendu)* **Rien dans la scène ne démontre que $\lambda$ est indépendante de la
+   température.** La scène **suppose** $\lambda$ constante : c'est son hypothèse, pas son
+   résultat (§2.5). Un élève ne doit pas croire qu'il vient de le vérifier.
+6. *(non rendu)* **Les deux échantillons de S5 diffèrent par $\lambda$, et la scène ne
+   nomme pas le second isotope.** Doubler $\lambda$ est un réglage d'appareil, pas un
+   nuclide réel choisi — l'honnêteté commande de ne pas inventer un noyau (*question 6,
+   §13*).
+7. *(non rendu)* **Ce qu'un vrai détecteur montrerait de plus, et qui manque ici :** le bruit de fond, le
    temps mort, l'efficacité de détection (un compteur ne voit pas toutes les
    désintégrations). L'activité affichée est l'activité **de la source**, pas le taux de
    comptage d'un appareil. La scène est **plus propre que la réalité** ; elle ne doit
@@ -1037,8 +1328,8 @@ module se donne raison). Un écart quelconque est un défaut, pas du bruit.
 | # | ce que la porte recalcule | attendu | tolérance |
 |---|---|---|---|
 | N1 | $N(t) = N_0\,2^{-t/t_{1/2}}$ aux **21** positions de `instant` × 2 isotopes | $4{,}0\times10^{14}$ → $1{,}68\times10^{14}$ | **égalité de chaîne** avec la lecture affichée, à 2 c.s. |
-| N2 | $a(t) = \lambda N(t)$, $\lambda = \ln 2/(t_{1/2}\times 86\,400)$ | $4{,}0\times10^{8}$ → … Bq | égalité de chaîne, 2 c.s. |
-| N3 | `fraction` $= N(t)/N_0$ | 100,0 → 42,0 % | égalité de chaîne, 1 déc. |
+| N2 | $A(t) = \lambda N(t)$, $\lambda = \ln 2/(t_{1/2}\times 86\,400)$ | $4{,}0\times10^{8}$ → … Bq | égalité de chaîne, 2 c.s. ; **et le libellé affiché est bien `A`, jamais `a`** (§13, question 1) |
+| N3 | **qu'AUCUN pourcentage de $N/N_0$ n'est affiché** (la lecture `fraction` est supprimée, §5.6) ; la seule lecture en % est `ecart-a-la-loi`, et elle n'apparaît que sur la grille | — | zéro occurrence hors grille |
 | N4 | `duree-de-moitie` aux **25** positions de `depart` × 2 isotopes | **8,0 j** (A) · **4,0 j** (B), **sans exception** | égalité de chaîne, chaîne littérale `8,0` |
 | N5 | `lambda` en $\text{j}^{-1}$ **et** en $\text{s}^{-1}$ ; `tau` ; `demi-vie` | 0,0866 / $1{,}00\times10^{-6}$ / 11,5 / 8,0 — et 0,173 / $2{,}01\times10^{-6}$ / 5,77 / 4,0 | égalité de chaîne, 3 c.s. |
 | N6 | la cohérence interne $t_{1/2} = \tau \ln 2$ **sur les valeurs AFFICHÉES** | $11{,}5 \times 0{,}693 = 7{,}97 \approx 8{,}0$ | 1 % — *chaîne de calcul, pas valeur isolée* |
@@ -1058,8 +1349,9 @@ peut pas voir un défaut doit écrire qu'elle ne le peut pas, et le garder autre
 
 | famille | le sens qui doit passer | le sens qui doit rougir |
 |---|---|---|
-| `crochet-invariant` | S2 : la **largeur en pixels** du crochet est identique aux 25 positions de `depart`, à $\le 1$ px (à 17,5 px/j, 8,0 j = 140 px) ; sur l'isotope B, elle vaut **exactement la moitié**, à $\le 2$ px | un crochet dont la largeur suit $N(t_1)$, ou une demi-vie calculée en $1/\lambda$ (qui donnerait 11,5 j = 202 px), doivent rougir |
-| `lecture-t-demi` | S1 : le guide horizontal part de l'ordonnée $2{,}0\times10^{14}$ ($\le 2$ px du tick gradué), rejoint la courbe, et le tick vertical tombe sur $8{,}0$ j ($\le 2$ px) | un guide partant de la **courbe** (construction de $\tau$) doit rougir |
+| `crochet-invariant` | S2 : la **largeur en pixels** du crochet est identique aux 25 positions de `depart`, à $\le 1$ px (à 17,5 px/j, 8,0 j = 140 px) — soit **exactement un intervalle majeur du quadrillage** ; sur l'isotope B, exactement **un intervalle fin** (70 px), à $\le 2$ px | un crochet dont la largeur suit $N(t_1)$, ou une demi-vie calculée en $1/\lambda$ (qui donnerait 11,5 j = 202 px, une largeur qui ne tombe sur aucun trait), doivent rougir |
+| `lecture-t-demi` | S1 : le guide horizontal part **du trait majeur** $2{,}0\times10^{14}$ ($\le 2$ px de ce trait), rejoint la courbe, et le tick vertical tombe **sur le trait majeur** $8{,}0$ j ($\le 2$ px) — *la construction se termine sur un CROISEMENT de traits, comme la figure 3 de 2022 N* | un guide partant de la **courbe** (construction de $\tau$), ou une construction qui n'aboutit pas sur un croisement, doivent rougir |
+| `quadrillage` | les traits majeurs sont équidistants à $\le 1$ px et tombent sur $8/16/24/32$ j et sur $1/2/3/4/5\ (\times 10^{n})$ ; les traits fins partagent chaque intervalle en **deux** ; **les traits chiffrés sont 8, 16, 24 et non 32** (fidélité au sujet, §5.2) ; le contraste des traits majeurs est **inférieur** à celui de la courbe, et celui des fins inférieur aux majeurs ; le quadrillage est **présent avant le pari** (c'est l'énoncé) | un quadrillage plus contrasté que la courbe, un pas irrégulier, ou un quadrillage qui n'apparaît qu'après le pari, doivent rougir |
 | `courbe-juste` | la courbe est **strictement décroissante et convexe** : sur 33 abscisses échantillonnées, différences premières $< 0$ et secondes $> 0$ ; et elle passe par $N_0/2$ à $t_{1/2}$ à $\le 2$ px | une décroissance **linéaire**, ou une exponentielle de mauvaise demi-vie, doivent rougir |
 | `axes-lineaires` | les graduations de chaque axe sont équidistantes à $\le 1$ px | une échelle **logarithmique** doit rougir (§9.6) |
 | `grille-comptee` | S3 : le nombre de cases **vidées**, compté sur les pixels (par chrominance), égale `restants-comptes` **exactement** ; à $t = 0$, **zéro** case vidée | un affichage qui compte autre chose que ce qu'il dessine doit rougir |
@@ -1115,13 +1407,30 @@ commande** (ADR 0034). Sabotages à outiller, un par famille :
 8. tracer une décroissance linéaire → `courbe-juste`, `lecture-t-demi` ;
 9. passer l'axe vertical en échelle logarithmique → `axes-lineaires`, `frontiere` ;
 10. afficher la construction (ou `duree-de-moitie`) avant le pari → `avant-pari` ;
-11. faire de l'activité $a = N$ (mêmes graduations) → `nombres` (N2) **seule** — c'est la
+11. faire de l'activité $A = N$ (mêmes graduations) → `nombres` (N2) **seule** — c'est la
     misconception `confond-activite-nombre-noyaux` posée dans le code ;
 12. ouvrir `isotope` à l'étape 4 → `fuite-inter-etapes` ;
-13. ajouter au panneau une ligne « on résout $dN/dt = -\lambda N$ par la méthode d'Euler »
-    ou « noyau fils » → `frontiere` ;
-14. rallumer une case en fin de course → `case-ne-se-rallume-pas`, `eclairs` ;
-15. importer `three` dans le module de la scène → `pas-de-3d`.
+13. **une forme interdite du §9 à la fois, insérée dans le panneau — UNE MESURE PAR
+    FORME**, jamais une seule pour la liste entière (ADR 0036 : *une chose n'est prouvée
+    absente que si l'on a énuméré ses formes*). La porte déclare une sonde nommée par
+    forme, et l'essai rouge les parcourt toutes : `Euler`, `dN/dt`, `résoudre l'équation` ·
+    `filiation`, `chaîne de désintégration`, `équilibre séculaire`, `noyau fils` ·
+    `défaut de masse`, `énergie de liaison`, `MeV`, `fission`, `fusion` · `datation`,
+    **`dater`**, **`datant`**, **`âge de`**, `carbone 14` · `section efficace`, `quark` ·
+    `ln(N`, `semi-log`, `logarithmique`, `linéarisation` · **`√`**, **`\sqrt`**,
+    `racine carrée`, `écart-type`, **`écart typ`**, **`σ`**, **`\sigma`**, `dispersion`,
+    `binomial`, `Poisson`, `loi normale`, `espérance`, `variance`, `intervalle de
+    confiance` · `p =`, `1 - e^`, `e^{-λΔt}`, `tirage de Bernoulli`, `seed`. **Chacune doit
+    faire rougir `frontiere` SEULE** ; une forme qui ne fait rien rougir est une sonde
+    manquante, pas un produit propre ;
+14. écrire « la moitié exacte » ou « il en reste toujours $N_0/2$ » dans un retour de S3 →
+    `frontiere` (forme `fluctuation` niée) **et** `tirage-vivant` si le produit suit ;
+15. rallumer une case en fin de course → `case-ne-se-rallume-pas`, `eclairs` ;
+16. importer `three` dans le module de la scène → `pas-de-3d` ;
+17. rendre le quadrillage plus contrasté que la courbe, ou le faire apparaître **après** le
+    pari → `quadrillage` **seule** ;
+18. ré-afficher un pourcentage $N/N_0$ à côté du curseur (la lecture `fraction` remise) →
+    `nombres` (N3) **seule**.
 
 **Un sabotage qui n'atteint pas la porte n'est pas un essai rouge** : il sort en quatrième
 verdict, **AMBIGU** (ADR 0038). Et chaque défaut ne doit faire rougir que **la** porte qui
@@ -1153,11 +1462,17 @@ héritée de la cuve, §13 question 3) :
     "support": ["courbe", "grille"],
     "fenetre_j": ["10", "32"]
   },
-  "lectures": ["instant", "noyaux", "activite", "fraction", "depart",
+  "lectures": ["instant", "noyaux", "activite", "depart",
                "restants-depart", "duree-de-moitie", "demi-vie", "lambda",
-               "tau", "population", "restants-comptes", "ecart-relatif"]
+               "tau", "population", "restants-comptes", "tirages-precedents",
+               "ecart-a-la-loi"]
 }
 ```
+
+*(`fraction` a disparu de la liste — §5.6 ; `ecart-relatif` est renommé `ecart-a-la-loi`,
+parce que « relatif à quoi » était la question que son ancien nom laissait ouverte, et que
+la réponse — *relatif à ce que la loi prévoit*, pas à $N_0$ — est justement ce qui le
+distingue d'un pourcentage de programme.)*
 
 *`t_demi_j`, `population_n` et `fenetre_j` sont des énumérations de **chaînes**, exactement
 comme `v_ms` dans la corde, `f_hz` dans la cuve et `force` dans le manège : des crans,
@@ -1173,7 +1488,7 @@ aucune valeur intermédiaire, **aucune machinerie nouvelle** dans `validate-cont
 | S4 | `courbe` | `32` | `8` | `noyaux` | 0 | 0 | — | `grandeur` | — |
 | S5 | `courbe` | `32` | `8` | `noyaux` | 0 | 0 | `256` | `isotope` | — |
 
-**Point à vérifier avec `validate-content` avant tout code** (question 4, §13) : la scène
+**Point à vérifier avec `validate-content` avant tout code** (question 5, §13) : la scène
 déclare `course: true` mais **une seule** de ses cinq étapes porte `revele_apres_course`.
 Le validateur accepte-t-il une scène à course **mixte** ? Si non, deux replis, dans
 l'ordre de préférence : (a) assouplir le validateur (`revele_apres_course` facultatif par
@@ -1182,15 +1497,20 @@ nulle, ce qui serait un mensonge de descripteur — **à refuser**.
 
 **Ordre de construction, et ce qui doit être vert avant l'étape suivante :**
 
-1. `items.yaml` — déclarer `loi-population-vs-noyau` (§8.2) et écrire DECRO-32/33/34
-   (§8.3) ; régénérer `coverage_summary`. **`validate-content --strict` vert avant la
-   suite** (la scène ne validera pas sans le modèle).
-2. `web/src/lib/scene2d/noyaux-modele.ts` — la loi (forme fermée) **et** le tirage
-   (Bernoulli, $p = 1 - e^{-\lambda\Delta t}$), sans aucun rendu, avec `data-p-pas` exposé.
+1. `items.yaml` — déclarer `loi-population-vs-noyau` (§8.2) et écrire **DECRO-32 à 35**
+   (§8.3) ; régénérer `coverage_summary` (`total_items: 35`). **`validate-content --strict`
+   vert avant la suite** (la scène ne validera pas sans le modèle).
+1 bis. `media/courbe-activite-quadrillee` (§8.4 a) — la figure codée graduée, **et la
+   correction de `exercises.yaml:118` + `r-bac` q2.1** (§8.4 b), qui referment la q2
+   aujourd'hui insoluble. *Ce n'est pas un préalable technique à la scène, mais c'est la
+   pièce qui referme le trou que la scène invoque : ne pas la livrer ferait de §2.1 un
+   argument qu'on n'a pas honoré.*
+2. `web/src/lib/scene2d/noyaux-modele.ts` — la loi (forme fermée) **et** le tirage, sans
+   aucun rendu, avec `data-p-pas` exposé (attribut de mesure, jamais un texte — §9.10).
    Un test unitaire : $(1-p_A)^{32} = 0{,}5$ à $10^{-12}$.
-3. `web/src/lib/scene2d/noyaux-rendu.ts` — la courbe graduée, le crochet, la grille ;
-   palette lue dans les jetons (`lib/jetons-figure.ts`, **pas** `scene3d/palette.ts`, qui
-   importerait three).
+3. `web/src/lib/scene2d/noyaux-rendu.ts` — **le quadrillage** (§5.2), la courbe graduée, le
+   crochet, la grille ; palette lue dans les jetons (`lib/jetons-figure.ts`, **pas**
+   `scene3d/palette.ts`, qui importerait three).
 4. `scenes.json` + le descripteur `media/courbe-et-noyaux.json`.
 5. Les quatre retouches de prose (§4), **le §4.1 avant le marqueur**.
 6. `web/scripts/scene-noyaux.mjs` — la porte, **avec son `--essai-rouge`** ; lancée deux
@@ -1200,56 +1520,73 @@ nulle, ce qui serait un mensonge de descripteur — **à refuser**.
 
 ## 13. Questions au propriétaire — chacune avec sa réponse par défaut
 
-1. **Le vingtième modèle de misconception** (§8.2) : ouvrir `loi-population-vs-noyau` avec
+1. **$A$ ou $a$ pour l'activité** (§5.1, I1). La leçon écrit $A(t)$ et $A_0 = \lambda N_0$
+   (`lesson.md:224-234`), `exercises.yaml:118` aussi ; **les sujets nationaux écrivent $a$**
+   (`docs/sujets/pc/decroissance-radioactive.md` l. 373), et la `REVIEW` fid-F15 recommande
+   d'adopter $a$ partout pour éviter le choc avec le nombre de masse $A$. **Recommandation
+   par défaut : la scène écrit $A$, comme la leçon** — parce qu'une page ne doit jamais
+   montrer deux notations pour la même grandeur, et que la scène est *dans* la leçon.
+   **Dépendance à écrire noir sur blanc :** si le propriétaire adopte $a$, alors
+   `lesson.md`, `checkpoints.yaml`, `exercises.yaml` **et** la scène changent **dans le même
+   commit** — sinon on fabrique exactement le défaut qu'on voulait éviter. La porte lit le
+   libellé affiché (§11.1, N2) : elle rougira le jour où les deux divergeront.
+2. **Le vingtième modèle de misconception** (§8.2) : ouvrir `loi-population-vs-noyau` avec
    ses trois items, ou amender `division-lineaire-demi-vies` ? **Recommandation : ouvrir.**
    C'est le seul modèle du chapitre qui coche la bonne réponse **partout** dans le corpus
    actuel, et c'est le seul que le produit **enseigne activement à l'envers** (le média de
    R3 montre exactement la moitié). Décision humaine : elle touche l'inventaire et un
    `coverage_summary` généré. *Réversible : trois étiquettes d'items, deux choix de paris,
    une `description` à amender.*
-2. **Les bornes de `instant` à $[0\ ;\ 10]$ jours partout** (§5.3), y compris en S5.
+3. **Les bornes de `instant` à $[0\ ;\ 10]$ jours partout** (§5.4), y compris en S5.
    **Recommandation : garder.** C'est ce qui rend la non-fuite S1 → S2 **structurelle** au
    lieu d'être une promesse. Le coût est réel et petit : en S5, le curseur fin ne va pas
    au-delà de dix jours. L'alternative — une borne par étape — demande un champ que le
    registre n'a pas.
-3. **`tool: "scene2d"` et le nom du dossier.** Question héritée des specs de la cuve et de
+4. **`tool: "scene2d"` et le nom du dossier.** Question héritée des specs de la cuve et de
    la corde : faut-il renommer `web/src/lib/scene3d/` (+ `scenes.json`) en `scene/` ?
    **Recommandation :** oui, mais dans un commit mécanique **séparé**, jamais dans celui de
    la scène.
-4. **Une scène à course MIXTE** (§12) : une seule étape sur cinq porte
+5. **Une scène à course MIXTE** (§12) : une seule étape sur cinq porte
    `revele_apres_course`. **Recommandation : assouplir le validateur**, et surtout
    **vérifier ce point avant d'écrire une ligne de rendu** — c'est le seul endroit où cette
    scène sort du gabarit des sept précédentes.
-5. **Le second échantillon de S5 n'est pas nommé** (§10.6) : « un autre isotope, de $\lambda$
+6. **Le second échantillon de S5 n'est pas nommé** (§10.6) : « un autre isotope, de $\lambda$
    deux fois plus grande », $t_{1/2} = 4{,}0$ j. **Recommandation : garder l'anonymat.**
    Aucun nuclide du programme n'a une demi-vie de $4{,}0$ jours exactement, et inventer un
    nom serait la seule contre-vérité de la scène. Si le propriétaire préfère un nuclide
    réel, il faut accepter une demi-vie non ronde (le radon 222 : $3{,}8$ j, valeur que
    `docs/sujets/pc/decroissance-radioactive.md` l. 33 atteste pour 2019 N) — et alors
    $\lambda_B/\lambda_A = 2{,}11$, ce qui affaiblit le pari « deux fois ».
-6. **Le placement en tête de R4** (§3), qui fait ouvrir le chapitre par un manipulable et
+7. **Le placement en tête de R4** (§3), qui fait ouvrir le chapitre par un manipulable et
    impose de donner $N_0$ et la définition de la demi-vie **dans la consigne** avant que la
    prose ne les écrive. **Recommandation : garder.** C'est le seul placement qui laisse
    quatre paris entiers.
-7. **La tension avec R3** (§3, tension n°1) : faut-il **déplacer** le paragraphe
+8. **La tension avec R3** (§3, tension n°1) : faut-il **déplacer** le paragraphe
    « sans mémoire » (`lesson.md:150-152`) après la scène ? **Recommandation : non.** Il
    répond à `cp-r0-predict`, qui est à R0 : le laisser en suspens sur tout un chapitre
    serait pire. S2 demande une **durée**, pas le principe, et ses quatre distracteurs sont
    construits pour attraper l'élève qui a retenu la phrase sans l'avoir comprise.
-8. **Une règle générale née ici, à graver ou à garder en spec** (§5.2) : *une scène peut
+9. **Une règle générale née ici, à graver ou à garder en spec** (§5.3) : *une scène peut
    porter **deux voies de calcul** — analytique et stochastique — à condition que chaque
    lecture déclare de laquelle elle vient, et que la porte applique à chacune son exigence
    (nombres exacts recalculés pour l'une, invariants pour l'autre).* Corollaire mesuré,
    qui vaut d'être écrit : **« deux courses diffèrent » se mesure sur le MOTIF, jamais sur
    le COMPTE** (deux courses donnent le même compte environ 3 % du temps — une porte
    instable est pire qu'une porte absente). Mérite-t-elle un addendum à l'ADR 0041 ?
-9. **La prochaine scène est déjà nommée : `pc/lois-de-newton`** (§0). Deux `savoir_faire`
+10. **La prochaine scène est déjà nommée : `pc/lois-de-newton`** (§0). Deux `savoir_faire`
    du cadre y sont à **0 %** — la base de **Freinet** et le produit $\vec a \cdot \vec v$
    pour la nature du mouvement — dans le sous-domaine le plus lourd de l'examen (**27 %**).
    L'idée est plane (un point sur une trajectoire, deux vecteurs, une décomposition) : une
    scène **2D**, pas une 3D. **Recommandation : l'inscrire comme candidate**, ne pas la
    construire maintenant.
-10. **Couper une étape ?** Si le propriétaire veut une scène à quatre étapes, la
+11. **Deux questions de fidélité, nées de la revue, et qui n'attendent qu'un « oui ».**
+    (a) La **correction de `exercises.yaml:118`** et de `r-bac` q2.1 (§8.4 b) touche deux
+    exercices de sommet **sourcés** : c'est une réparation, pas une réécriture — la q2
+    redevient faisable au lieu d'être répondue par son propre énoncé. (b) L'**écriture de
+    la demi-vie** : la scène affiche « 8,0 jours » là où `lesson.md:278` écrit « 8 jours ».
+    **Recommandation : harmoniser la leçon en « 8,0 jours »**, une retouche d'un caractère,
+    pour que le littéral de la porte et le texte de la leçon soient le même.
+12. **Couper une étape ?** Si le propriétaire veut une scène à quatre étapes, la
     **coupable en premier est S4** (`ce-que-compte-le-detecteur`) : son modèle
     (`confond-activite-nombre-noyaux`) est déjà servi par `cp-r4-activite-noyaux` et par
     trois items, et son geste survit dans la `suite` de S5. Je la garde par défaut, pour
@@ -1272,8 +1609,17 @@ nulle, ce qui serait un mensonge de descripteur — **à refuser**.
 - `node web/scripts/scene-noyaux.mjs --essai-rouge` : **chaque** famille crie, avec le vert
   qui l'a précédée, même dossier, même commande ; et chaque sabotage ne fait rougir que la
   famille qui le garde (§11.4).
-- `node web/scripts/resume-couverture.mjs` régénéré : `total_items` passe à **34**,
-  `loi-population-vs-noyau` à **3**, `confond-activite-nombre-noyaux` à **4**.
+- `node web/scripts/resume-couverture.mjs` régénéré : `total_items` passe à **35**,
+  `loi-population-vs-noyau` à **3**, `confond-activite-nombre-noyaux` à **4**,
+  `demi-vie-egale-duree-de-vie-totale` à **7**, `division-lineaire-demi-vies` à **8**,
+  `confond-demi-vie-constante-lambda` à **5**, `lambda-depend-conditions-externes` à **14**.
+- **La figure `courbe-activite-quadrillee` existe**, et `exercises.yaml:118` ne donne plus
+  la réponse de sa propre q2 (§8.4) — c'est la pièce sans laquelle le trou invoqué au §2.1
+  resterait ouvert après la livraison.
+- **Aucune forme du §9 n'apparaît dans le panneau rendu**, une sonde par forme, et
+  `--essai-rouge` les parcourt toutes (§11.4, sabotage 13). En particulier : **aucun `√`,
+  aucun `σ`, aucun « écart-type », aucun « dater »** — ni dans la scène, ni dans les quatre
+  items, ni dans les retouches de prose.
 - Les quatre retouches de prose (§4) sont posées **aux quatre ancres nommées**, et aucune
   ne précède le marqueur en répondant à un pari.
 - `dette-manipulable` : **inchangée**. Cette scène ne solde aucune dette écrite — elle ne
