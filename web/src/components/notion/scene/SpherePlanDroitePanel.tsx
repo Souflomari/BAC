@@ -28,7 +28,7 @@ import { CheckIcon } from "@/components/ui/Icon";
 import { MathText } from "../ChoiceButton";
 import * as G from "@/lib/scene3d/sphere";
 import type { SceneSphere } from "@/lib/scene3d/sphere-plan";
-import { CURSEUR, LIGNE_RADIO, MARGE_FOCUS, type Vue } from "./commun";
+import { CURSEUR, GRILLE_SCENE, LIGNE_RADIO, MARGE_FOCUS, type Vue } from "./commun";
 import { useSceneRendu } from "./useSceneRendu";
 import { usePari } from "./usePari";
 import { useGlisserVue } from "./useGlisserVue";
@@ -210,7 +210,7 @@ export function SpherePlanDroitePanel({ scene, className }: { scene: Scene3DDesc
         rang={{ index: indexEtape, total: etapes.length }}
       />
 
-      <div className="grid gap-5 bp-expanded:grid-cols-[minmax(0,3fr)_minmax(18rem,2fr)] bp-expanded:items-start">
+      <div className={GRILLE_SCENE} data-scene-grille>
         <Plateau
           hoteRef={rendu.hoteRef}
           canvasRef={rendu.canvasRef}

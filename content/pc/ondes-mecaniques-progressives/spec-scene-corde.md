@@ -449,7 +449,8 @@ invariants.*** (question 9, §13 : mérite-t-elle un addendum à l'ADR 0041 ?)
 | `rampe-lente` | $0 \to 3{,}0$ cm en $0{,}20$ s, puis maintenu | (permanent) | pente de $0{,}80$ m | non |
 
 `rampe` **est** le geste de l'exemple travaillé de la leçon, au dixième de
-centimètre près. `bosse` est l'ébranlement de l'entrée de banque `bk-2015-r-x2`.
+centimètre près. `bosse` est une bosse simple, son propre miroir — pas l'ébranlement
+de `bk-2015-r-x2`, qui est une crête PUIS un creux (voir la correction en tête).
 
 ### 5.2 Contrôles (5)
 

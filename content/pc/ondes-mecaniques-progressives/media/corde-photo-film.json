@@ -4,7 +4,7 @@
   "type": "manipulable",
   "scene": "corde-photo-film",
   "title_fr": "La corde : la photo et le film",
-  "caption_fr": "Une corde de quatre mètres vue de côté, une main qui ne donne qu'une secousse, un point M que tu déplaces — et la corde calculée pendant que tu regardes. Deux appareils : le film d'un point, la photo de la corde entière. Cinq étapes : à chaque fois tu paries d'abord, puis la corde répond.",
+  "caption_fr": "Une corde vue de côté, une seule secousse, un point M que tu déplaces. Deux appareils — le film d'un point, la photo de la corde — et, à chaque étape, tu paries d'abord.",
   "etapes": [
     {
       "id": "le-film-de-M",
@@ -36,15 +36,13 @@
           }
         ]
       },
-      "suite": "Fais glisser $M$ le long de la corde, de $0{,}4$ jusqu'à $3{,}2\\ \\text{m}$, et relance à chaque fois. Deux choses ne bougent pas : la **forme** de la courbe de $M$ (toujours la même bosse, jamais plus basse, jamais plus étalée) et la **façon** dont elle est décalée (toujours vers la droite). Une seule bouge : **de combien**. Note trois valeurs au passage — $0{,}4\\ \\text{m}$ : $0{,}10\\ \\text{s}$ ; $1{,}2\\ \\text{m}$ : $0{,}30\\ \\text{s}$ ; $2{,}4\\ \\text{m}$ : $0{,}60\\ \\text{s}$. Deux fois plus loin, deux fois plus tard. Tu viens de trouver tout seul ce que la suite du chapitre va écrire. Et un dernier chiffre, celui qu'on oublie toujours : pendant que la secousse a parcouru $1{,}2\\ \\text{m}$, **$M$, lui, a parcouru $3{,}0\\ \\text{cm}$ vers le haut, puis $3{,}0\\ \\text{cm}$ vers le bas** — sa vitesse moyenne de montée vaut $0{,}30\\ \\text{m/s}$, **treize fois moins** que les $4{,}0\\ \\text{m/s}$ de la perturbation. L'encart « à l'échelle vraie », sous la corde, montre la même histoire **sans** la dilatation verticale : on y voit presque une ligne droite. Ce sont deux vitesses différentes, et seule la seconde s'appelle la célérité.",
+      "suite": "Fais glisser $M$ le long de la corde, et relance à chaque fois. La **forme** de la courbe de $M$ ne change pas, ni le **sens** du décalage — toujours vers la droite ; seul change **de combien** : deux fois plus loin, deux fois plus tard. Et pendant que la secousse parcourt $1{,}2\\ \\text{m}$, $M$ ne fait que monter puis redescendre de $3{,}0\\ \\text{cm}$ — à $0{,}30\\ \\text{m/s}$ en moyenne, **treize fois moins** que les $4{,}0\\ \\text{m/s}$ de la perturbation. Deux vitesses ; seule la seconde s'appelle la célérité.",
       "controles": [
         "point_m"
       ],
       "lectures": [
-        "distance",
         "celerite",
         "retard",
-        "duree-geste",
         "vitesse-M"
       ],
       "etat": {
@@ -85,15 +83,13 @@
           }
         ]
       },
-      "suite": "Fais glisser l'instant de la photo, cran par cran. Avant $0{,}10\\ \\text{s}$, le geste de la main n'est pas fini : la pente naît au pied de $S$. Ensuite, deux observations, dans cet ordre. **Un :** la forme ne se déforme **plus** — le même palier, la même pente de $0{,}40\\ \\text{m}$ ; elle se contente d'avancer, de $0{,}20\\ \\text{m}$ tous les $0{,}05\\ \\text{s}$. **Deux :** cherche l'instant où le front touche exactement $M$. Tu trouveras $0{,}30\\ \\text{s}$ — et c'est le retard que le film t'a montré à l'étape précédente. La photo et le film racontent la même histoire ; ils ne la racontent simplement pas sur le même axe.",
+      "suite": "Fais glisser l'instant de la photo, cran par cran. Avant $0{,}10\\ \\text{s}$, la pente naît au pied de $S$ ; ensuite, elle ne se déforme **plus** — le même palier, la même pente de $0{,}40\\ \\text{m}$, qui avance de $0{,}20\\ \\text{m}$ tous les $0{,}05\\ \\text{s}$. Cherche l'instant où le front touche exactement $M$ : c'est le retard que le film t'a montré. La photo et le film racontent la même histoire, sur deux axes différents.",
       "controles": [
         "instant"
       ],
       "lectures": [
-        "instant",
         "celerite",
-        "duree-geste",
-        "front"
+        "duree-geste"
       ],
       "etat": {
         "d_m": 1.2,
@@ -134,15 +130,13 @@
           }
         ]
       },
-      "suite": "Refais la mesure avec les autres écarts de la caméra — $1$, $2$, $5$ intervalles. Les deux nombres changent tous les deux ($0{,}20\\ \\text{m}$ en $0{,}05\\ \\text{s}$, $1{,}00\\ \\text{m}$ en $0{,}25\\ \\text{s}$), et leur **quotient** ne change pas : $4{,}0\\ \\text{m/s}$ à chaque fois. C'est la signature d'une méthode juste. Tu viens de faire, à la main, l'exercice du bac 2015 (session de rattrapage) : une corde filmée à $25$ images par seconde, les photos n°8 et n°12 — le même écart de quatre intervalles.",
+      "suite": "Refais la mesure avec les autres écarts — $1$, $2$, $5$ intervalles. Les deux nombres changent, leur **quotient** reste $4{,}0\\ \\text{m/s}$ : c'est la signature d'une méthode juste. C'est l'exercice du bac 2015 (session de rattrapage) : une corde filmée à $25$ images par seconde, les photos n°8 et n°12 — quatre intervalles, là aussi.",
       "controles": [
         "camera"
       ],
       "lectures": [
-        "instant",
         "front",
-        "mesure-v",
-        "duree-geste"
+        "mesure-v"
       ],
       "etat": {
         "d_m": 1.2,
@@ -156,7 +150,7 @@
     {
       "id": "le-meme-geste-en-plus-grand",
       "titre": "Le même geste, deux fois plus haut",
-      "consigne": "Même corde, même tension, même point $M$ à $1{,}2\\ \\text{m}$. On refait exactement le geste de tout à l'heure — monter puis rester en haut, en $0{,}10\\ \\text{s}$ — mais **deux fois plus haut** : $6{,}0\\ \\text{cm}$ au lieu de $3{,}0$. La course te montrera d'abord l'ancien geste, puis le nouveau, et le film gardera les deux courbes l'une sur l'autre.",
+      "consigne": "Même corde, même tension, même point $M$ à $1{,}2\\ \\text{m}$. On refait exactement le geste de tout à l'heure — monter puis rester en haut, en $0{,}10\\ \\text{s}$ — mais **deux fois plus haut** : $6{,}0\\ \\text{cm}$ au lieu de $3{,}0$. Pendant la course, le film garde en tirets la courbe de l'ancien geste.",
       "pari": {
         "question": "Avec ce geste deux fois plus ample, $M$ commencera à bouger…",
         "revele_apres_course": 1,
@@ -186,7 +180,7 @@
           }
         ]
       },
-      "suite": "Parcours les quatre gestes sans toucher à rien d'autre : la bosse, la rampe, la rampe deux fois plus haute, la rampe deux fois plus **lente**. Le film change de forme à chaque fois — et l'instant de départ de $M$ ne bouge **jamais** de $0{,}30\\ \\text{s}$. Le dernier geste est le plus instructif : une montée deux fois plus lente donne une pente deux fois plus **longue** sur la corde ($0{,}80\\ \\text{m}$ au lieu de $0{,}40$), sans rien changer à la vitesse du front. La forme de la perturbation façonne **ce qui** voyage ; elle ne décide pas de la vitesse à laquelle ça voyage.",
+      "suite": "Parcours les quatre gestes, sans toucher à rien d'autre. Le film change de forme à chaque fois ; l'instant de départ de $M$ ne bouge **jamais** de $0{,}30\\ \\text{s}$. La forme de la perturbation décide de **ce qui** voyage, jamais de la vitesse à laquelle ça voyage.",
       "controles": [
         "geste"
       ],
@@ -194,7 +188,6 @@
         "retard",
         "celerite",
         "elongation-M",
-        "duree-geste",
         "vitesse-M"
       ],
       "etat": {
@@ -234,7 +227,7 @@
           }
         ]
       },
-      "suite": "Trois manœuvres pour finir, dans cet ordre. **Une :** vérifie le pari — les deux montages, le même $0{,}40\\ \\text{s}$. **Deux :** garde $M$ où il est et parcours les quatre gestes, sur l'une puis l'autre corde : l'instant de départ ne dépend **jamais** du geste, toujours de la corde et de la distance. **Trois :** fais glisser l'instant de la photo, sur la corde tendue, et cherche encore l'instant où le front touche $M$ — tu retrouveras au centième près le retard que le film t'avait donné. Deux appareils, deux axes, un seul nombre.",
+      "suite": "Vérifie d'abord le pari : les deux montages, le même $0{,}40\\ \\text{s}$. Puis explore : l'instant de départ ne dépend **jamais** du geste, toujours de la corde et de la distance. Et fais glisser l'instant de la photo jusqu'à ce que le front touche $M$ : tu retrouves le retard du film. Deux appareils, deux axes, un seul nombre.",
       "controles": [
         "tension",
         "point_m",
@@ -242,13 +235,10 @@
         "geste"
       ],
       "lectures": [
-        "distance",
         "celerite",
         "retard",
-        "instant",
         "front",
         "elongation-M",
-        "duree-geste",
         "vitesse-M"
       ],
       "etat": {

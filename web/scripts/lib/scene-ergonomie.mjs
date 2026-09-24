@@ -199,6 +199,7 @@ export async function ergonomie({ lancer, url, scene, noter, essai, ouvrir = "Ou
       // Tab depuis le titre, jusqu'à sortir du panneau.
       await q.locator("[data-titre-etape]").focus();
       const caches = [];
+      let grilleVus = 0;
       let vus = 0;
       for (let i = 0; i < 40; i++) {
         await p.keyboard.press("Tab");
@@ -210,20 +211,45 @@ export async function ergonomie({ lancer, url, scene, noter, essai, ouvrir = "Ou
             const r = a.getBoundingClientRect();
             const collant = document.querySelector(s)?.querySelector("canvas")?.closest(".sticky");
             const dansCollant = !!collant?.contains(a);
-            const bas = collant ? collant.getBoundingClientRect().bottom : header;
+            const rc = collant ? collant.getBoundingClientRect() : null;
+            const bas = rc ? rc.bottom : header;
             // La scène collante ne couvre que ce qui défile SOUS elle, dans sa
             // grille ; le transport est hors de la grille : seul le header compte.
-            const sousGrille = !!collant && !!a.closest(".grid") && collant.closest(".grid") === a.closest(".grid");
+            // (La grille est nommée par un attribut, pas par la classe `.grid` :
+            // au téléphone c'est une colonne flex — voir GRILLE_SCENE.)
+            // (et `.grid` : la forme d'avant l'attribut)
+            const grille = a.closest("[data-scene-grille], .grid");
+            const sousGrille = !!collant && !!grille && collant.closest("[data-scene-grille], .grid") === grille;
             const plancher = dansCollant ? header : sousGrille ? bas : header;
-            return { sorti: false, ok: r.top >= plancher - 1, quoi: `${a.tagName.toLowerCase()} « ${(a.textContent ?? a.getAttribute("aria-label") ?? "").trim().slice(0, 30)} »`, top: Math.round(r.top), plancher: Math.round(plancher) };
+            return { sorti: false, ok: r.top >= plancher - 1, dansGrille: sousGrille && !dansCollant, quoi: `${a.tagName.toLowerCase()} « ${(a.textContent ?? a.getAttribute("aria-label") ?? "").trim().slice(0, 30)} »`, top: Math.round(r.top), plancher: Math.round(plancher) };
           },
           { s: sel, header: HEADER }
         );
         if (m.sorti) break;
         vus++;
         if (!m.ok) caches.push(`${m.quoi} à ${m.top} px, sous ${m.plancher} px`);
+        if (m.dansGrille) grilleVus++;
       }
-      dire(vus > 0 && caches.length === 0, `marge au téléphone : ${vus} commande(s) atteintes au Tab, ${caches.length ? `CACHÉES : ${caches.slice(0, 3).join(" · ")}` : "aucune sous la scène collante ni sous le header"}`);
+      // Zéro commande reconnue dans la colonne des réglages : la marge n'a été
+      // mesurée que contre le header — une mesure MUETTE, pas un vert (ADR 0034 ;
+      // l'attribut `data-scene-grille` avait d'abord manqué à l'ancien panneau).
+      dire(vus > 0 && grilleVus > 0 && caches.length === 0, `marge au téléphone : ${vus} commande(s) atteintes au Tab, dont ${grilleVus} dans la colonne des réglages, ${grilleVus === 0 ? "AUCUNE reconnue dans la colonne — mesure muette" : caches.length ? `CACHÉES : ${caches.slice(0, 3).join(" · ")}` : "aucune sous la scène collante ni sous le header"}`);
+      // LA SCÈNE COLLE-T-ELLE ? Le test mécanique, pas une impression : la
+      // grille remontée 120 px au-dessus de l'écran, la scène doit rester sous le
+      // header. (La vague 2 de la corde affirmait la scène inerte au téléphone ;
+      // ce test, rejoué sur l'ancien panneau, a dit le contraire. Il reste pour
+      // qu'un changement de mise en page ne la décolle pas en silence.)
+      const meca = await p.evaluate(
+        ({ s, header }) => {
+          const collant = document.querySelector(s)?.querySelector("canvas")?.closest(".sticky");
+          const grille = collant?.closest("[data-scene-grille], .grid");
+          if (!collant || !grille) return null;
+          window.scrollBy(0, grille.getBoundingClientRect().top + 120);
+          return { haut: Math.round(collant.getBoundingClientRect().top), grille: Math.round(grille.getBoundingClientRect().top) };
+        },
+        { s: sel, header: HEADER }
+      );
+      dire(!!meca && Math.abs(meca.haut - HEADER) <= 2, `scène collante au téléphone : grille à ${meca ? meca.grille : "?"} px, scène à ${meca ? meca.haut : "ABSENTE"} px (attendu ${HEADER} : collée sous le header)`);
       await p.context().close();
     }
   } finally {

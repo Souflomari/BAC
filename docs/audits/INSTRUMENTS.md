@@ -1633,6 +1633,129 @@ dessous est le chemin imprimé).
     node scripts/scene-cuve.mjs --porte        (lève son propre next start)
     node scripts/scene-cuve.mjs --essai-rouge
 
+## `web/scripts/scene-corde.mjs` — la corde dit-elle VRAI, sur la photo ET sur le film ?
+
+**PORTE, armée en CI (job `scene-champ`, vert puis rouge), §11.201, ADR 0041
+(addendum de l'après-midi du 2026-09-24).** Le deuxième manipulable PLAN de
+première partie (pc/ondes-mecaniques-progressives, en tête de R3) : une corde de
+4 m vue de côté, ANALYTIQUE — y(x, t) = y_S(t − x/v), une translation, aucun
+solveur —, au ralenti ×5 et à la verticale ×20 déclarés, avec ses deux
+graphiques : le FILM d'un point (y en fonction de t) et la PHOTO de la corde (y en
+fonction de x). Le rendu RÉEL, Canvas 2D.
+
+**La règle de la cuve ne s'applique pas ici, et c'est écrit dans la porte.** La
+cuve est une SIMULATION : sa seconde voie n'établit que des invariants. La corde
+est ANALYTIQUE : la seconde voie, écrite depuis la SPEC (quatre gestes, v ∈ {4 ;
+8} m/s, caméra à 20 images/s), sans importer un module du produit, refait les
+MÊMES nombres, exactement. Un écart quelconque est un défaut.
+
+**Ce qu'elle mesure :**
+
+- **rien avant le clic, et PAS DE 3D même ouvert** (`avant-clic`, `pas-de-3d`) ;
+- **les nombres par égalité de chaîne** (`nombres`) : τ = d/v aux huit positions
+  et aux deux célérités ; l'élongation et la vitesse de montée de M pour les
+  quatre gestes ; les nombres écrits SUR la scène (le front sur la photo, les
+  instants dans les titres des clichés, la distance à côté du curseur), là où la
+  vague 2 les a retirés des lectures ; la caméra aux quatre écarts (1, 2, 4, 5 intervalles) —
+  instants, fronts, et la chaîne AFFICHÉE (xB − xA) ÷ Δt = v, recalculée depuis
+  ses propres nombres ; `grille-exacte` — τ, t₁ et la durée de chaque geste
+  sont des multiples ENTIERS du pas du modèle (Δt = 5 ms) : le produit ne
+  recale pas τ, c'est la grille des contrôles qui le rend exact, et la porte le
+  vérifie ;
+- **les PIXELS, dans les deux sens** (hauteur de la corde colonne par colonne :
+  barycentre de l'encre, interpolé entre les deux colonnes qui encadrent
+  l'abscisse ; échelle lue sur les repères que le produit pose) :
+  `miroir` — la photo à 0,25 s DESCEND vers le front (≥ 95 % de 3,0 cm à
+  0,20 m, ≤ 30 % à 0,90 m) ; `miroir-inerte` — la bosse de l'étape 1 est son
+  propre miroir (à 2 % près), sinon elle répondrait au pari de l'étape 2 ;
+  `front-net` — au-delà du front, la corde est sur sa ligne de repos (≤ 0,75 px) ;
+  `une-seule-source` — un seul morceau déformé, qui part de S ;
+  `retard-signe` — sur le film, le sommet de M suit celui de S de τ × (px/s), à
+  2 px, À DROITE ; `forme-conservee` — même hauteur et même largeur (3 px, 5 px) ;
+  `M-n-avance-pas` — le repère de M suivi sur ≥ 20 images ne bouge pas en
+  abscisse ; `celerite-independante` — à 0,5 s, les fronts de la rampe et de la
+  rampe deux fois plus haute sont au même endroit ; `exageration` — la verticale
+  vaut ×20 de l'horizontale, l'encart « à l'échelle vraie » ×1 ;
+  `photos-distinctes` — les deux clichés à la même échelle, l'avance lue aux
+  pixels égale v·Δt (l'encre COLORÉE ignorée : voir la campagne, plus bas) ;
+  `pas-de-retour` — à 8,0 m/s et t = 1,0 s, la moitié
+  gauche est au repos ; `pas-de-periodicite` — un seul geste ; `instant-photo` —
+  à l'étape libre, le curseur de l'instant DÉPLACE la corde, et le front lu est
+  celui que la corde montre (lu aux pixels) ;
+- **`eclairs`** (WCAG 2.3.1) — pendant la course, la porte lit le canvas du
+  produit à chaque image ; au vert 0,8 éclair/s au pire point ;
+  **`sans-mouvement`** — mouvement réduit demandé : la course finit sans image
+  intermédiaire ;
+- **les paris, les étapes, avant le pari rien ne répond** (`avant-pari` : corde
+  au repos, 0 px d'accent, ni lecture ni bouton de course, film vide ; `paris` :
+  le verdict attend la course) ; `fuite-inter-etapes` ; **la frontière** (ni
+  période, ni fréquence, ni λ, ni y(x, t), ni x/v, ni réflexion…) ; aucun LaTeX
+  brut ; les étiquettes ni chevauchées, ni sous la légende du plateau, ni hors du
+  cadre, et **chacune à moins de 36 px de ce qu'elle nomme** (1 280 et 390 px) ;
+  **`cadre`** — aucun pixel d'encre sous la légende opaque (mesuré AVEC le geste
+  de 6 cm, à l'étape 4) ; fond
+  clair ET sombre ; aucune erreur console ; la famille `ergonomie` (dont
+  `listes` : les lectures ne contiennent que des couples terme/valeur).
+
+**Au 2026-09-24 (soir), après la vague 2 : VERTE, 108 mesures, 30 familles ;
+essai rouge : les 28 familles visées crient.** En CI (run 760, job
+`scene-champ`) : vert puis rouge en 1 min 31 s.
+
+**Première campagne, quinze sabotages du PRODUIT** (un arbre de travail à part,
+un build chacun) : **quatorze pris par leur famille** — la photo recopiée au lieu
+de retournée → `miroir` ; une bosse asymétrique à l'étape 1 → `miroir-inerte`
+(seule) ; le film de M à τ/2 → `retard-signe` (seule) ; M amorti à 80 % →
+`forme-conservee` (seule) ; M emporté par l'onde → `M-n-avance-pas` (seule) ; une
+célérité qui croît avec l'amplitude → `celerite-independante` (seule) ; les
+IMAGES comptées au lieu des intervalles → `nombres` (seule) ; un bout fixe qui
+renvoie la secousse → `pas-de-retour` (seule) ; la main qui recommence →
+`pas-de-periodicite` ; la verticale à ×10 sous une légende ×20 → `exageration`
+(seule) ; une corde qui frémit avant le front → `front-net` ; le curseur de
+l'instant qui ne bouge pas la corde (le défaut réel de la critique pédagogique)
+→ `instant-photo` (seule) ; la grille d'échantillonnage qui glisse (le défaut
+réel du premier passage) → `eclairs` (seule) ; la demande de mouvement réduit
+ignorée → `sans-mouvement` (seule). **Un MANQUÉ : les deux photos prises au même
+instant → `photos-distinctes` VERTE.** La porte lisait le bout de la RÈGLE que le
+produit trace, en accent, depuis ses propres nombres — pas la photo. Corrigé (la
+lecture ignore l'encre colorée). **Seconde campagne, trois sabotages, dans l'arbre
+principal après la vague 2** : les deux photos au même instant → `photos-distinctes`
+(seule) — le manqué de la première, rattrapé ; la corde de nouveau sous la légende
+(réserve ramenée à 8 px) → `cadre` (seule, trois mesures) ; « y_S » posé à 70 px de
+sa courbe → `etiquettes` (seule, cinq mesures). Après chaque campagne, l'arbre
+comparé à son cliché d'avant : identique.
+
+**LES PASSAGES ROUGES — le produit, la porte, l'essai rouge lui-même :**
+
+1. *Le produit.* 14 éclairs/s au premier passage : les tracés échantillonnaient
+   « n points entre 0 et t », une grille qui GLISSE avec l'instant — les sommets
+   tremblaient d'un pixel à chaque image, invisible sur une capture. Grille FIXE
+   plus les coudes exacts du geste. Et des clichés trop bas, des étiquettes
+   chevauchées, un titre qui montrait `$M$` brut.
+2. *La porte.* Des fenêtres de lecture qui prenaient l'anneau de M pour la
+   corde ; un biais de ±1 px sur `miroir-inerte` (colonne arrondie) — barycentre
+   et interpolation.
+3. *L'essai rouge.* 23/27 au premier essai : il retournait les attentes ET
+   faussait la constante v de la seconde voie — quatre familles fondées sur v,
+   fausses par la constante, étaient remises d'aplomb par le retournement. Une
+   seule inversion par famille (ADR 0034).
+4. *La vague 2.* La rampe de 6 cm montait sous la légende opaque (la main et le
+   palier cachés) et, à 390 px, « y_S » se posait sur la corde, deux bandes
+   au-dessus de son film : VERT pour les étiquettes (ni chevauchées, ni hors du
+   cadre), parce que la mesure de l'étape 4 se faisait après la boucle des gestes,
+   sur la rampe LENTE de 3 cm, et qu'aucune ne demandait à une étiquette d'être
+   PRÈS de ce qu'elle nomme. D'où `cadre` et la distance de 36 px. Et un trait de
+   graduation collé à l'axe (une demande de la même vague) a fait rougir la porte
+   sans rien casser : la lecture de la corde échantillonne aux abscisses mêmes des
+   traits — retiré, la mesure l'emporte (ADR 0038 : un correctif qui fait rougir
+   une porte sans rien casser est un signal).
+
+**NE DIT RIEN DE :** si les étapes enseignent ; l'amortissement réel d'une corde
+(la scène est idéale, et le dit) ; l'onde réfléchie (le bout lointain absorbe,
+exprès) ; un vrai téléphone ; l'impression (panneau `print:hidden`).
+
+    node scripts/scene-corde.mjs --porte        (lève son propre next start)
+    node scripts/scene-corde.mjs --essai-rouge
+
 ## `web/scripts/figures-manipulables.mjs` — chaque figure manipulable fait-elle, au rendu, ce que son module dit ?
 
 **PORTE, armée en CI (job `scene-champ`, vert puis rouge), §11.199.** Une figure
@@ -1748,6 +1871,17 @@ milieu de la sienne. Le module exporte `listes()` : une porte dont les lectures
 n'existent qu'après une course (la cuve, la corde) l'appelle elle-même, au bon
 moment, et exige au moins une liste — après le pari seul, le module en compte zéro
 et ne peut rien dire.
+
+**Depuis la vague 2 de la corde (§11.201) :** la marge au téléphone reconnaît la
+colonne des réglages par un attribut (`data-scene-grille`, la forme d'avant
+`.grid` gardée), et **exige d'y avoir vu au moins une commande** — sans cela, une
+colonne non reconnue était mesurée contre le header seul, et passait (MUETTE,
+pas verte). Et un **test mécanique de la scène collante** : la grille remontée
+120 px au-dessus de l'écran, la scène doit rester à 56 px, sous le header. Il est
+né d'une affirmation de critique (« la scène collante est inerte au téléphone,
+sur les huit scènes ») que ce même test, rejoué sur l'ancien panneau, a
+RÉFUTÉE ; il reste pour qu'un changement de mise en page ne la décolle pas en
+silence.
 
 **NE DIT RIEN DE :** l'ordre de tabulation sur grand écran (les vues passent
 avant le pari — connu, laissé) ; un lecteur d'écran réel ; les régions live.

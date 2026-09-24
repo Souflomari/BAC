@@ -28,7 +28,7 @@ import { MathText } from "../ChoiceButton";
 import * as K from "@/lib/scene2d/cuve";
 import { DT } from "@/lib/scene2d/fdtd";
 import type { RenduCuve } from "@/lib/scene2d/cuve-rendu";
-import { CURSEUR, LIGNE_RADIO, MARGE_FOCUS } from "./commun";
+import { CURSEUR, GRILLE_SCENE, LIGNE_RADIO, MARGE_FOCUS } from "./commun";
 import { useSceneRendu } from "./useSceneRendu";
 import { usePari } from "./usePari";
 import { SceneOptIn } from "./SceneOptIn";
@@ -442,7 +442,7 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
       </Eyebrow>
       <ConsigneEtape idTitre={idTitre} idConsigne={idConsigne} titre={etape.titre} consigne={etape.consigne} cle={etape.id} rang={{ index: indexEtape, total: etapes.length }} />
 
-      <div className="grid gap-5 bp-expanded:grid-cols-[minmax(0,3fr)_minmax(18rem,2fr)] bp-expanded:items-start">
+      <div className={GRILLE_SCENE} data-scene-grille>
         <Plateau
           hoteRef={rendu.hoteRef}
           canvasRef={rendu.canvasRef}
@@ -500,19 +500,22 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
                   {enLecture ? <PauseIcon size={14} /> : <PlayIcon size={14} />}
                   {libelleLancer}
                 </button>
-                {enLecture && !rapide && (phase === "reference" || phase === "mesure") && (
-                  <button
-                    type="button"
-                    className={TRANSPORT_BTN_CLASS}
-                    data-image-finale
-                    onClick={() => {
-                      rapideRef.current = true;
-                      setRapide(true);
-                    }}
-                  >
-                    <span>Image finale</span>
-                  </button>
-                )}
+                {/* Toujours MONTÉ (vague 2 de la corde) : il se démontait sous le
+                    focus à la fin de la course qu'il abrège, et le focus tombait à
+                    <body> ; et « Repos » sautait de place à chaque course. */}
+                <button
+                  type="button"
+                  className={TRANSPORT_BTN_CLASS}
+                  data-image-finale
+                  aria-disabled={!(enLecture && !rapide && (phase === "reference" || phase === "mesure")) || undefined}
+                  onClick={() => {
+                    if (!(enLecture && !rapide && (phase === "reference" || phase === "mesure"))) return;
+                    rapideRef.current = true;
+                    setRapide(true);
+                  }}
+                >
+                  <span>Image finale</span>
+                </button>
                 <button type="button" className={TRANSPORT_BTN_CLASS} onClick={() => reinitialiser()} aria-label="Remettre l’eau au repos">
                   <Icon name="reset" size={13} />
                   <span>Repos</span>

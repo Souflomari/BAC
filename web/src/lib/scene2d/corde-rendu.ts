@@ -40,7 +40,7 @@ export interface EtatRenduCorde {
   trace: number | null;
   /** film, étape 4 : le film de M pour le geste de RÉFÉRENCE, jusqu'à cet instant */
   reference: { geste: C.Geste; jusqua: number } | null;
-  /** l'échelle verticale du film (cm) */
+  /** la plus haute élongation de l'étape (cm) : l'échelle du film, et la place de la corde */
   yMaxFilm: number;
   /** après la révélation : l'accent a le droit d'exister */
   revele: boolean;
@@ -48,7 +48,9 @@ export interface EtatRenduCorde {
   repereTau: boolean;
   /** film : l'instant de départ commun aux deux courbes (étape 4) */
   departCommun: boolean;
-  /** l'encart à l'échelle vraie (×1), sous la corde */
+  /** l'encart à l'échelle vraie (×1) a sa place sous la corde à cette étape */
+  encart: boolean;
+  /** … et il est dessiné (après le verdict) */
   encartVrai: boolean;
   /** photo : la cote du front et la pente, en accent */
   coteFront: boolean;
@@ -72,6 +74,15 @@ export interface RenduCorde {
 
 type Bande = { x0: number; x1: number; y0: number; y1: number };
 
+/**
+ * La hauteur réservée à la légende du plateau (« Corde · ralenti ×5 ·
+ * verticale ×20 »), une pastille opaque posée en haut à gauche : rien de ce
+ * que la corde dessine ne monte sous elle (la porte le mesure, `cadre`).
+ */
+export const RESERVE_LEGENDE = 30;
+/** Sous une ligne de repos graduée : 3 px de vide, les traits (6 px), puis les nombres (12 px), tenus DANS la bande. */
+const GRAD = 24;
+
 export function creerRenduCorde(canvas: HTMLCanvasElement, hote: HTMLElement): RenduCorde {
   const ctx = canvas.getContext("2d");
   if (!ctx) throw new Error("canvas 2d indisponible");
@@ -88,28 +99,52 @@ export function creerRenduCorde(canvas: HTMLCanvasElement, hote: HTMLElement): R
 
   const css = (c: RGB, a = 1) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
 
-  /** La mise en page : la corde en haut, l'appareil dessous. */
-  function bandes(vue: Vue): { corde: Bande; encart?: Bande; appareil?: Bande; a?: Bande; b?: Bande } {
+  /**
+   * La mise en page, CALCULÉE depuis l'amplitude la plus haute que l'étape peut
+   * montrer — plus depuis des fractions fixes de la hauteur (vague 2 : à
+   * l'étape 4, la rampe de 6 cm, dilatée ×20, montait sous la légende du
+   * plateau et y cachait la main, S et le palier ; à 390 px, le film n'avait
+   * plus que 46 px et l'étiquette y_S partait se poser sur la corde).
+   * De haut en bas : la réserve de la légende, la corde (sa plus haute
+   * élongation, puis ses graduations), l'encart à l'échelle vraie s'il est
+   * RÉSERVÉ à cette étape (réservé, pas seulement dessiné : il n'apparaît
+   * qu'après le verdict, et le film ne doit pas sauter à ce moment-là), puis
+   * l'appareil, qui prend le reste.
+   */
+  function bandes(e: EtatRenduCorde): { corde: Bande; encart?: Bande; appareil?: Bande; a?: Bande; b?: Bande } {
     const g = Math.max(34, largeur * 0.1), d = Math.max(14, largeur * 0.035);
-    if (vue === "photos") {
-      return {
-        // trois bandes de même hauteur : une secousse de 3 cm, dilatée ×20,
-        // occupe 0,195 de la hauteur du plateau (3:2) — chaque bande doit la
-        // tenir, graduations comprises (premier passage : la bosse des clichés
-        // débordait sur les graduations de la corde)
-        corde: { x0: g, x1: largeur - d, y0: hauteur * 0.02, y1: hauteur * 0.3 },
-        a: { x0: g, x1: largeur - d, y0: hauteur * 0.36, y1: hauteur * 0.64 },
-        b: { x0: g, x1: largeur - d, y0: hauteur * 0.7, y1: hauteur * 0.98 },
-      };
+    const x0 = g, x1 = largeur - d;
+    const pxM = (x1 - x0) / C.LONGUEUR;
+    // la plus haute élongation de l'étape, en pixels (×20)
+    const h = (e.yMaxFilm / 100) * C.EXAGERATION * pxM;
+    if (e.vue === "photos") {
+      // trois bandes de même hauteur ; la légende des clichés se pose à droite
+      // (vers 3,1 m), où aucune secousse n'arrive : elle partage la hauteur de
+      // la bosse sans la croiser
+      // la corde du haut, SANS nombres : la règle graduée est sous les deux
+      // photos (« la même règle graduée en dessous ») ; ses nombres tombaient
+      // à quelques pixels du cadre de la première photo
+      const hb = h + 6 + GRAD;
+      const hc = h + 6 + 4;
+      const libre = Math.max(0, hauteur - 4 - RESERVE_LEGENDE - hc - 2 * hb);
+      const pas = Math.min(18, libre / 2);
+      const corde = { x0, x1, y0: RESERVE_LEGENDE, y1: RESERVE_LEGENDE + hc };
+      const a = { x0, x1, y0: corde.y1 + pas, y1: corde.y1 + pas + hb };
+      const b = { x0, x1, y0: a.y1 + pas, y1: a.y1 + pas + hb };
+      return { corde, a, b };
     }
-    return {
-      corde: { x0: g, x1: largeur - d, y0: hauteur * 0.07, y1: hauteur * 0.5 },
-      encart: { x0: g, x1: largeur - d, y0: hauteur * 0.53, y1: hauteur * 0.58 },
-      appareil: { x0: g, x1: vue === "photo" ? g + (largeur - g - d) * 0.42 : largeur - d, y0: hauteur * 0.64, y1: hauteur * 0.94 },
-    };
+    const corde = { x0, x1, y0: RESERVE_LEGENDE, y1: RESERVE_LEGENDE + h + 6 + GRAD };
+    // l'encart : son titre à 8 px sous les nombres de la corde (vague 2 : 3 px)
+    const encart = e.encart ? { x0, x1, y0: corde.y1 + 12, y1: corde.y1 + 28 } : undefined;
+    // au-dessus de l'appareil : son titre (« y (cm) », ou celui du geste)
+    const haut = (encart ? encart.y1 : corde.y1) + 20;
+    const appareil = { x0, x1: e.vue === "photo" ? x0 + (x1 - x0) * 0.5 : x1, y0: haut, y1: hauteur - 4 };
+    return { corde, encart, appareil };
   }
 
-  const texte = (t: string, x: number, y: number, aligne: CanvasTextAlign = "center", taille = 11) => {
+  // 12 px : la taille « caption » des jetons, celle des étiquettes posées sur la
+  // scène — le canvas n'a pas une seconde échelle de texte (vague 2 : 10 et 11 px)
+  const texte = (t: string, x: number, y: number, aligne: CanvasTextAlign = "center", taille = 12) => {
     const c = ctx!;
     c.font = `${taille}px ${police}`;
     c.textAlign = aligne;
@@ -143,7 +178,7 @@ export function creerRenduCorde(canvas: HTMLCanvasElement, hote: HTMLElement): R
   function corde(b: Bande, e: EtatRenduCorde, t: number | null, nom: string, graduer = true) {
     const c = ctx!;
     const pxM = (b.x1 - b.x0) / C.LONGUEUR;
-    const base = b.y1 - (graduer ? 16 : 4);
+    const base = b.y1 - (graduer ? GRAD : 4);
     const px = (x: number) => b.x0 + x * pxM;
     // ×20 : un centimètre d'élongation = 20 cm à l'échelle des abscisses
     const pyCm = (yCm: number) => base - (yCm / 100) * C.EXAGERATION * pxM;
@@ -158,13 +193,19 @@ export function creerRenduCorde(canvas: HTMLCanvasElement, hote: HTMLElement): R
     if (graduer) {
       c.strokeStyle = css(jetons.encreDouce);
       c.beginPath();
+      // Les traits restent à 3 px SOUS l'axe (la vague 2 les voulait attachés) :
+      // la porte lit la hauteur de la corde colonne par colonne, et un trait
+      // collé à la ligne de repos, aux abscisses mêmes qu'elle échantillonne
+      // (tous les 0,5 m), déplaçait le centre du trait mesuré — essayé, et vu
+      // par la porte (« cadres vides : 0/8 »). Un défaut visuel mineur contre
+      // une mesure faussée : la mesure l'emporte.
       for (let k = 0; k <= 8; k++) {
         const X = px(k * 0.5);
         c.moveTo(X, base + 3);
         c.lineTo(X, base + (k % 2 === 0 ? 9 : 6));
       }
       c.stroke();
-      for (let k = 0; k <= 4; k++) texte(String(k), px(k), base + 10, "center", 10);
+      for (let k = 0; k <= 4; k++) texte(String(k), px(k), base + 10);
     }
     for (let k = 0; k <= 4; k++) rep[`${nom}-x${k}`] = { x: px(k), y: base, visible: true };
     rep[`${nom}-1cm`] = { x: b.x0, y: pyCm(1), visible: true };
@@ -195,17 +236,21 @@ export function creerRenduCorde(canvas: HTMLCanvasElement, hote: HTMLElement): R
     segs = [];
     if (!etat) return;
     const e = etat;
-    const B = bandes(e.vue);
+    const B = bandes(e);
     const encre = css(jetons.encre), douce = css(jetons.encreDouce), accent = css(jetons.accent), fond = css(jetons.surface);
 
     // ── LA CORDE, toujours ──
     const tCorde = e.anime ? e.t : 0;
-    const K = corde(B.corde, e, tCorde, "corde");
+    const K = corde(B.corde, e, tCorde, "corde", e.vue !== "photos");
     rep["corde-front"] = { x: K.px(C.front(e.v, tCorde)), y: K.base, visible: e.anime };
-    // la main S : un bloc qui tient le bout, et qui monte avec le geste
+    // la main S : un bloc qui tient le bout, et qui monte avec le geste —
+    // arrondi et plus petit (vague 2 : la masse la plus sombre de l'image)
     const yS = K.pyCm(C.source(e.geste, tCorde));
     c.fillStyle = encre;
-    c.fillRect(B.corde.x0 - 8, yS - 10, 7, 20);
+    c.beginPath();
+    if (typeof c.roundRect === "function") c.roundRect(B.corde.x0 - 7.5, yS - 8, 6, 16, 2);
+    else c.rect(B.corde.x0 - 7.5, yS - 8, 6, 16);
+    c.fill();
     rep["S"] = { x: B.corde.x0 - 4.5, y: yS, visible: true };
     // le point M : un anneau posé sur la corde — il monte et descend, il n'avance jamais
     const xM = K.px(e.d), yM = K.pyCm(C.elongation(e.geste, e.v, e.d, tCorde));
@@ -222,25 +267,31 @@ export function creerRenduCorde(canvas: HTMLCanvasElement, hote: HTMLElement): R
     rep["M-axe"] = { x: xM, y: K.base, visible: true };
     segs.push([{ x: B.corde.x0, y: K.base, visible: true }, { x: B.corde.x1, y: K.base, visible: true }]);
 
-    // ── LA COTE DU FRONT, et la pente en accent (après la révélation) : sur la
-    //    photo, et sur la corde de l'étape libre, qu'on photographie au curseur ──
+    // ── LA COTE DU FRONT (après la révélation) : sur la photo, et sur la corde
+    //    de l'étape libre, qu'on photographie au curseur. La PENTE en accent,
+    //    sur la photo seulement — c'est elle que le pari de l'étape 2 regardait ;
+    //    à l'étape libre, l'accent est déjà sur y_M et sur τ (vague 2 : quatre
+    //    objets en accent à la fois, l'accent ne désignait plus rien) ──
     if (e.vue !== "photos" && e.revele && e.coteFront && e.anime) {
       const xf = C.front(e.v, tCorde);
       const debut = Math.max(0, xf - e.v * C.GESTE[e.geste].montee);
-      c.strokeStyle = accent;
-      c.lineWidth = 3.2;
-      c.lineCap = "round";
-      c.beginPath();
-      const n = 60;
-      for (let k = 0; k <= n; k++) {
-        const x = debut + ((xf - debut) * k) / n;
-        const X = K.px(x), Y = K.pyCm(C.elongation(e.geste, e.v, x, tCorde));
-        if (k === 0) c.moveTo(X, Y);
-        else c.lineTo(X, Y);
+      if (e.vue === "photo") {
+        c.strokeStyle = accent;
+        c.lineWidth = 3.2;
+        c.lineCap = "round";
+        c.beginPath();
+        const n = 60;
+        for (let k = 0; k <= n; k++) {
+          const x = debut + ((xf - debut) * k) / n;
+          const X = K.px(x), Y = K.pyCm(C.elongation(e.geste, e.v, x, tCorde));
+          if (k === 0) c.moveTo(X, Y);
+          else c.lineTo(X, Y);
+        }
+        c.stroke();
+        c.lineCap = "butt";
       }
-      c.stroke();
-      c.lineCap = "butt";
       // la cote : un trait vertical jusqu'à l'axe, au front
+      c.strokeStyle = accent;
       c.lineWidth = 1.5;
       c.setLineDash([4, 3]);
       c.beginPath();
@@ -279,7 +330,7 @@ export function creerRenduCorde(canvas: HTMLCanvasElement, hote: HTMLElement): R
     // ── LE FILM ──
     if (e.vue === "film" && B.appareil) {
       const b = B.appareil;
-      const base = b.y1 - 16;
+      const base = b.y1 - 20;
       const ft = (t: number) => b.x0 + (t / C.T_FILM) * (b.x1 - b.x0);
       const fy = (yCm: number) => base - (yCm / e.yMaxFilm) * (base - b.y0 - 6);
       c.strokeStyle = douce;
@@ -297,8 +348,8 @@ export function creerRenduCorde(canvas: HTMLCanvasElement, hote: HTMLElement): R
         c.lineTo(b.x0, fy(y));
       }
       c.stroke();
-      for (const k of [0, 5, 10]) texte(C.nombre(k / 10, 1), ft(k / 10), base + 8, "center", 10);
-      for (let y = 3; y <= e.yMaxFilm + 1e-9; y += 3) texte(String(y), b.x0 - 7, fy(y) - 6, "right", 10);
+      for (const k of [0, 5, 10]) texte(C.nombre(k / 10, 1), ft(k / 10), base + 8);
+      for (let y = 3; y <= e.yMaxFilm + 1e-9; y += 3) texte(String(y), b.x0 - 7, fy(y) - 7, "right");
       rep["film-t0"] = { x: ft(0), y: base, visible: true };
       rep["film-t1"] = { x: ft(1), y: base, visible: true };
       rep["film-y0"] = { x: b.x0, y: base, visible: true };
@@ -321,10 +372,13 @@ export function creerRenduCorde(canvas: HTMLCanvasElement, hote: HTMLElement): R
         c.setLineDash([]);
       };
       // la référence de l'étape 4 : le film de M pour l'ancien geste, à l'encre douce
-      if (e.reference) tracer(e.reference.geste, e.d, Math.min(C.T_FILM, e.reference.jusqua), douce, 1.8, [5, 4]);
+      // l'échelle des traits monte avec l'importance (vague 2 : la référence,
+      // un état passé, pesait plus que y_S, la source qu'on compare) :
+      // référence 1,4 en tirets < y_S 2,0 < y_M 2,4
+      if (e.reference) tracer(e.reference.geste, e.d, Math.min(C.T_FILM, e.reference.jusqua), douce, 1.4, [5, 4]);
       if (e.trace !== null) {
         const j = Math.min(C.T_FILM, e.trace);
-        tracer(e.geste, 0, j, douce, 1.6);
+        tracer(e.geste, 0, j, douce, 2);
         // y_M : à l'encre pendant la course ; en accent une fois la réponse révélée
         tracer(e.geste, e.d, j, e.revele ? accent : encre, 2.4);
         const tauM = C.retard(e.d, e.v);
@@ -378,7 +432,7 @@ export function creerRenduCorde(canvas: HTMLCanvasElement, hote: HTMLElement): R
     // ── LE GESTE, en petit (la donnée de la photo) ──
     if (e.vue === "photo" && B.appareil) {
       const b = B.appareil;
-      const base = b.y1 - 16;
+      const base = b.y1 - 20;
       const tMax = 0.3;
       const ft = (t: number) => b.x0 + (t / tMax) * (b.x1 - b.x0);
       const fy = (yCm: number) => base - (yCm / 3) * (base - b.y0 - 10);
@@ -393,8 +447,8 @@ export function creerRenduCorde(canvas: HTMLCanvasElement, hote: HTMLElement): R
         c.lineTo(ft(k * 0.1), base + 5);
       }
       c.stroke();
-      for (let k = 0; k <= 3; k++) texte(C.nombre(k * 0.1, 1), ft(k * 0.1), base + 7, "center", 10);
-      texte("3", b.x0 - 6, fy(3) - 6, "right", 10);
+      for (let k = 0; k <= 3; k++) texte(C.nombre(k * 0.1, 1), ft(k * 0.1), base + 8);
+      texte("3", b.x0 - 6, fy(3) - 7, "right");
       c.strokeStyle = encre;
       c.lineWidth = 2;
       c.beginPath();
@@ -416,8 +470,9 @@ export function creerRenduCorde(canvas: HTMLCanvasElement, hote: HTMLElement): R
       const cb = corde(BB, e, e.cliches ? e.cliches.tB : null, "cliche-b");
       // les légendes des clichés à droite, vers 3,2 m : aucune secousse n'y
       // arrive avant la dernière photo (au plus 1,80 m à 0,45 s)
-      rep["cliche-a-titre"] = { x: ca.px(3.1), y: BA.y0, visible: true };
-      rep["cliche-b-titre"] = { x: cb.px(3.1), y: BB.y0, visible: true };
+      // (alignées sur le bord de 4 m, comme « x (m) » : la panel les pose par leur droite)
+      rep["cliche-a-titre"] = { x: ca.px(C.LONGUEUR), y: BA.y0, visible: true };
+      rep["cliche-b-titre"] = { x: cb.px(C.LONGUEUR), y: BB.y0, visible: true };
       if (e.cliches && e.revele && e.regleMesure) {
         const xa = C.front(e.v, e.cliches.tA), xb = C.front(e.v, e.cliches.tB);
         c.strokeStyle = accent;

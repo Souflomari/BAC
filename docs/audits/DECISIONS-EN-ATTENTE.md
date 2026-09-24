@@ -941,6 +941,106 @@ endroit où quelqu'un a écrit qu'il en fallait une.)*
 
 ---
 
+## 23. La corde : dix questions tranchées par défaut, un onzième modèle ouvert, et les écarts de la construction
+
+**LE FAIT.** Le huitième manipulable de première partie — le deuxième PLAN — est
+livré dans `pc/ondes-mecaniques-progressives`, en tête de R3 (§11.201) : une
+corde de 4 m vue de côté, ANALYTIQUE (y(x, t) = y_S(t − x/v) : une translation,
+aucun solveur), avec ses deux graphiques — le FILM d'un point (y en fonction de
+t) et la PHOTO de la corde (y en fonction de x). Cinq étapes à pari. **Elle ne
+solde aucune dette de manipulation** : aucune spec n'avait prescrit ici un
+manipulable. Elle se justifie par un trou MESURÉ — les cinq médias de la notion
+dessinent tous la corde dans l'espace, aucun ne trace une élongation en fonction
+du temps, et rien ne dit que la photo est le MIROIR du geste — et par le
+savoir-faire « proposer un montage de mesure », à 0 % dans la REVIEW-2026-09-19.
+La spec de l'architecte (`spec-scene-corde.md` §13) laissait dix questions au
+propriétaire ; même lecture du mandat qu'aux §20 et §21.
+
+**CE QUI A ÉTÉ TRANCHÉ PAR DÉFAUT :**
+
+1. **Le miroir est enseigné, borné** : lecture GRAPHIQUE seulement, la relation
+   montrée reste y_M(t) = y_S(t − τ) avec τ = d/v ; jamais une écriture y(x, t)
+   ni y_S(t − x/v) dans le panneau (la porte `frontiere` l'interdit). Et une
+   demande à part : faire remonter au cadre l'ABSENCE de bloc `limites:` sur ce
+   chapitre — la deuxième après `ondes_periodiques`.
+2. **Le dossier `scene3d/` n'est toujours pas renommé** (commit séparé, s'il est
+   voulu).
+3. **Le onzième modèle `photo-film-confondus` est OUVERT**, avec OMP-22, 23, 24
+   (plancher atteint, marge nulle). C'était le seul modèle du chapitre qui cochait
+   juste PARTOUT : aucune question ne demandait de lire ou de dessiner une corde.
+   **Pour revenir en arrière** (spec §8.5) : amender la `description` de
+   `retard-relation-fausse`, ré-étiqueter trois items et le choix `recopie` du pari
+   S2, retoucher `coverage_summary`.
+4. **La scène ouvre R3**, avant toute prose (le seul placement qui laisse les cinq
+   paris ouverts) ; τ = 0,30 s est donné comme une MESURE de l'appareil avant que
+   τ = d/v soit écrite.
+5. **L'exagération ×20 et le ralenti ×5 sont gardés**, déclarés sur l'image et en
+   légende ; l'encart à l'échelle vraie en est la contrepartie (étape 1).
+6. **Le cran de tension (4,0 → 8,0 m/s) est gardé**, ouvert à l'étape 5 seulement.
+7. **OMP-25 est commandé et livré**, et OMP-26 avec lui
+   (`celerite-est-vitesse-point` : 3 → 5) : la famille ne tient plus à la seule
+   étiquette contestée d'OMP-20 D. OMP-26 est l'item de MONTAGE que la critique
+   de fidélité demandait — « proposer un montage de mesure », le savoir-faire à
+   0 % : deux capteurs, une distance, un retard.
+8. **La scène « ressort » (transversale / longitudinale) reste une candidate**, non
+   construite.
+9. **Les deux règles nées de la spec sont gravées** dans un addendum de l'ADR
+   0041 : une seconde voie ANALYTIQUE recalcule des NOMBRES (une simulation
+   n'établit que des invariants) ; une SYMÉTRIE du réglage d'une étape peut être
+   la condition de non-fuite d'une étape suivante.
+10. **Les cinq étapes sont gardées**, S4 comprise.
+
+**LES ÉCARTS DE LA CONSTRUCTION, et pourquoi :**
+
+1. **Toutes les lectures attendent le verdict**, y compris celles que la spec
+   rangeait dans l'énoncé à l'étape 1 (distance, célérité, retard) : leurs valeurs
+   sont DANS la consigne ; une seule règle pour les cinq étapes, et la même que
+   les sept autres scènes.
+2. **`vitesse-M` s'affiche aussi aux étapes 1 et 4** (la suite de S1 et le retour
+   `deux-fois-plus-tot` de S4 la citent : « la lecture le dit ») ; **l'étape 5 a
+   huit lectures, pas neuf** — `mesure-v` n'a pas de sens sans la caméra.
+3. **Le choix juste de S3 dit « de combien la BOSSE a avancé »**, pas « le sommet »
+   : son propre retour calcule 1,60 − 0,80 m, qui sont les positions du FRONT (le
+   sommet est à 0,40 puis 1,20 m). Le retour dit déjà que tout repère convient.
+4. **Pas de bascule film ↔ photo à l'étape 5** : la bande du haut EST la photo, à
+   l'instant choisi ; la suite dit « fais glisser l'instant de la photo » au lieu de
+   « passe à la photo ».
+5. **Après une course, un réglage montre tout de suite son image finale** (la corde
+   est analytique) ; « Relancer » rejoue la course. La cuve, elle, remettait l'eau
+   au repos : une simulation n'a pas d'image finale sans la calculer.
+6. **`coverage_summary` est recompté à la main** : la spec le disait « généré » ;
+   `resume-couverture.mjs` le VÉRIFIE (portes A–D), il ne l'écrit pas.
+7. **Les clés des cinq items neufs sont réparties sur A/B/C/D** (C, B, D, A, B) :
+   les 21 items existants ont tous leur clé en A — l'application mélange les choix
+   à l'affichage, et l'auteur a préféré ne pas reproduire un biais de rédaction.
+8. **Une citation de banque corrigée dans la spec** : l'exercice de la caméra
+   n'est pas `bk-2018-n-x2` mais `bk-2015-r-x2` (bac 2015, session de
+   rattrapage : 25 images/s, les photos n°8 et n°12). Vu par la critique de
+   fidélité ; la spec porte la note de correction, et la suite de l'étape 3 cite
+   le bon sujet.
+
+**CE QUI RESTE AU PROPRIÉTAIRE :** le bloc `limites:` absent du cadre (deux
+chapitres) ; le renommage `scene3d/` ; la scène « ressort » ; et la règle, nouvelle
+ici, qu'un manipulable qui ne solde aucune dette doit se justifier par un trou
+MESURÉ — acceptée par défaut, jamais écrite ailleurs que dans cette spec. Et une
+demande de la critique pédagogique que le format ne sait pas tenir : des items de
+PRODUCTION (l'élève dessine l'allure de la corde, écrit τ) plutôt que de choix —
+la banque d'items est à choix multiples ; c'est une décision de format, pas un
+item de plus.
+
+**ET LA VAGUE 2 (le même jour) :** trois critiques (calme, dessin, ergonomie) sur
+les captures ; ce qui a été appliqué, refusé et pourquoi est au §11.201. Une de
+leurs affirmations — la scène collante INERTE au téléphone, sur les huit
+scènes — a été **rejouée avant d'être corrigée, et elle était fausse** : la
+correction écrite d'avance a été retirée. Restent au propriétaire, parce
+qu'ils touchent l'appareillage des huit scènes et pas la corde seule : le
+verdict dit deux fois (la pastille « correct » ET la ligne « Bonne réponse ») ;
+le retour et la suite rangés dans une colonne de ~40 caractères sur grand écran
+(la mesure de lecture est de 60 à 70) — les suites de la corde ont été
+raccourcies de moitié, la colonne n'a pas bougé.
+
+---
+
 ## Ce que cette page n'est pas
 
 Ce n'est pas la liste des défauts du produit : ceux qui étaient objectifs ont

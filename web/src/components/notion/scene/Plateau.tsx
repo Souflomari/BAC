@@ -53,9 +53,11 @@ export function Plateau({
   /**
    * « carre » : 4:3 au téléphone, carré sur grand écran (une caméra qui cadre
    * une sphère) ; « paysage » : 3:2 partout (la cuve à ondes, 24 × 16 cm, vue
-   * de dessus — un carré y perdrait un tiers de l'écran).
+   * de dessus — un carré y perdrait un tiers de l'écran) ; « paysage-haut » :
+   * 3:2 sur grand écran, 4:3 au téléphone (la corde : la corde ET un film
+   * empilés — à 3:2 et 390 px, le film n'avait plus que 46 px).
    */
-  format?: "carre" | "paysage";
+  format?: "carre" | "paysage" | "paysage-haut";
   /** les étiquettes HTML posées sur la scène (N, P, H…) */
   children?: React.ReactNode;
 }) {
@@ -66,7 +68,7 @@ export function Plateau({
         className={cn(
           "relative w-full overflow-hidden rounded-xl",
           "bg-figure-surface shadow-elevation-1",
-          format === "paysage" ? "aspect-[3/2]" : "aspect-[4/3] bp-expanded:aspect-square"
+          format === "paysage" ? "aspect-[3/2]" : format === "paysage-haut" ? "aspect-[4/3] bp-expanded:aspect-[3/2]" : "aspect-[4/3] bp-expanded:aspect-square"
         )}
       >
         <canvas
@@ -79,7 +81,7 @@ export function Plateau({
         />
         {children}
         {/* une pastille de surface : sur la cuve, la légende tombe sur les rides */}
-        {legende && <p className="pointer-events-none absolute left-2 top-1.5 rounded-sm bg-figure-surface px-1 text-caption text-secondary">{legende}</p>}
+        {legende && <p className="pointer-events-none absolute left-2 top-1.5 rounded-sm bg-figure-surface px-1 text-caption text-secondary" data-legende>{legende}</p>}
 
         {panneau === "chargement" && (
           <div className="absolute inset-0 flex items-center justify-center bg-figure-surface">
@@ -143,14 +145,21 @@ export function Etiquette({
 }
 
 /** Pose une étiquette sur sa projection (pixels CSS du canvas). */
-export function poser(el: HTMLSpanElement | null, p: { x: number; y: number; visible: boolean }, decalageY = "-50%") {
+export function poser(el: HTMLSpanElement | null, p: { x: number; y: number; visible: boolean }, decalageY = "-50%", decalageX = "-50%") {
   if (!el) return;
-  el.style.transform = `translate(${p.x}px, ${p.y}px) translate(-50%, ${decalageY})`;
+  el.style.transform = `translate(${p.x}px, ${p.y}px) translate(${decalageX}, ${decalageY})`;
   el.style.visibility = p.visible ? "visible" : "hidden";
 }
 
 type Point2 = { x: number; y: number };
-type Boite = { x0: number; y0: number; x1: number; y1: number };
+export type Boite = { x0: number; y0: number; x1: number; y1: number };
+
+/** La boîte de la légende du plateau, en pixels de la scène (null : pas de légende). */
+export function boiteLegende(hote: HTMLElement | null): Boite | null {
+  const l = hote?.querySelector<HTMLElement>("[data-legende]");
+  if (!l) return null;
+  return { x0: l.offsetLeft, y0: l.offsetTop, x1: l.offsetLeft + l.offsetWidth, y1: l.offsetTop + l.offsetHeight };
+}
 
 /** Le segment [a, b] traverse-t-il la boîte ? (découpage de Liang–Barsky) */
 function traverse(a: Point2, b: Point2, r: Boite): boolean {
@@ -229,10 +238,16 @@ export function disposer(
     directions?: readonly (readonly [number, number])[];
   }[],
   segments: readonly (readonly [Point2, Point2])[],
-  cadre: { largeur: number; hauteur: number }
+  cadre: { largeur: number; hauteur: number },
+  /**
+   * Des boîtes déjà OCCUPÉES, que les étiquettes évitent comme elles s'évitent
+   * entre elles : la légende du plateau (une pastille opaque — à l'étape 4 de
+   * la corde, elle recouvrait « S » et « M »), un anneau dessiné…
+   */
+  obstacles: readonly Boite[] = []
 ) {
   const tailles = etiquettes.map(({ el, p }) => (el && p.visible ? { w: el.offsetWidth, h: el.offsetHeight } : null));
-  const posees: Boite[] = [];
+  const posees: Boite[] = [...obstacles];
   const places: (Point2 | null)[] = etiquettes.map(({ p, surAncre, directions }, i) => {
     const t = tailles[i];
     if (!t) return null;

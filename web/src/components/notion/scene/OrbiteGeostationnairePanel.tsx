@@ -29,7 +29,7 @@ import { TRANSPORT_BTN_CLASS } from "../TransportButton";
 import { MathText } from "../ChoiceButton";
 import * as K from "@/lib/scene3d/kepler";
 import type { SceneOrbite } from "@/lib/scene3d/orbite-geostationnaire";
-import { CURSEUR, LIGNE_RADIO, MARGE_FOCUS, type Vue } from "./commun";
+import { CURSEUR, GRILLE_SCENE, LIGNE_RADIO, MARGE_FOCUS, type Vue } from "./commun";
 import { useSceneRendu } from "./useSceneRendu";
 import { usePari } from "./usePari";
 import { useGlisserVue } from "./useGlisserVue";
@@ -270,7 +270,7 @@ export function OrbiteGeostationnairePanel({ scene, className }: { scene: Scene3
         rang={{ index: indexEtape, total: etapes.length }}
       />
 
-      <div className="grid gap-5 bp-expanded:grid-cols-[minmax(0,3fr)_minmax(18rem,2fr)] bp-expanded:items-start">
+      <div className={GRILLE_SCENE} data-scene-grille>
         <Plateau
           hoteRef={rendu.hoteRef}
           canvasRef={rendu.canvasRef}

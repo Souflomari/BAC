@@ -27,7 +27,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { MathText } from "../ChoiceButton";
 import * as R from "@/lib/scene3d/revolution";
 import type { MontreRevolution, SceneRevolution } from "@/lib/scene3d/solide-revolution";
-import { CURSEUR, LIGNE_RADIO, MARGE_FOCUS, type Vue } from "./commun";
+import { CURSEUR, GRILLE_SCENE, LIGNE_RADIO, MARGE_FOCUS, type Vue } from "./commun";
 import { useSceneRendu } from "./useSceneRendu";
 import { usePari } from "./usePari";
 import { useGlisserVue } from "./useGlisserVue";
@@ -253,7 +253,7 @@ export function RevolutionPanel({ scene, className }: { scene: Scene3DDescriptor
         rang={{ index: indexEtape, total: etapes.length }}
       />
 
-      <div className="grid gap-5 bp-expanded:grid-cols-[minmax(0,3fr)_minmax(18rem,2fr)] bp-expanded:items-start">
+      <div className={GRILLE_SCENE} data-scene-grille>
         <Plateau
           hoteRef={rendu.hoteRef}
           canvasRef={rendu.canvasRef}

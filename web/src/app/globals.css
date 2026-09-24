@@ -1366,6 +1366,20 @@ input:-webkit-autofill:active {
   transition: background-color 100000s ease-in-out 0s;
 }
 
+/* ── Ligne de bouton radio d'une scène (.ligne-radio) ─────────────────────────
+   La cible est la LIGNE (48 px, toute la largeur) : c'est elle qui porte
+   l'anneau et le halo quand le rond reçoit le focus au clavier, comme toute
+   autre commande du panneau ; le rond natif n'en porte pas un second. */
+.ligne-radio:has(input:focus-visible) {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--focus-halo);
+}
+.ligne-radio input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
 /* ── Curseur de réglage (.curseur) ──────────────────────────────────────────
    Audit Fable §3.9 : les `input[type=range]` natifs mesuraient 16 px de haut
    avec une poignée de 14 px, alors que le jeton `--touch-target: 48px` existe

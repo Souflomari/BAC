@@ -524,6 +524,78 @@ anime un phénomène périodique rapide doit être jugée contre le critère des
 éclairs, sur ses pixels** — une porte de nombres n'y voit rien, et la revue qui
 l'a trouvé ne mesurait pas.
 
+## Addendum du 2026-09-24 (après-midi) — la corde : une scène ANALYTIQUE, et une fuite qui passe par la donnée elle-même
+
+Le huitième manipulable, le deuxième PLAN : « la corde : la photo et le film »
+(`pc/ondes-mecaniques-progressives`, en tête de R3 ; spec
+`content/pc/ondes-mecaniques-progressives/spec-scene-corde.md`). Une corde de
+4 m vue de côté, calculée par la seule relation de la leçon — y(x, t) =
+y_S(t − x/v) : une TRANSLATION, pas un solveur —, avec ses deux graphiques :
+le FILM d'un point (y en fonction de t) et la PHOTO de la corde (y en fonction
+de x), dont l'un est le MIROIR de l'autre. Mêmes pièces que la cuve (opt-in,
+étapes, paris, plateau paysage, `scene2d`), aucune 3D.
+
+**Elle ne solde aucune dette.** C'est la première scène qui n'acquitte rien
+d'écrit : aucune spec n'avait prescrit ici un manipulable. Elle se justifie
+par un trou MESURÉ (aucun des cinq médias de la notion ne trace une élongation
+en fonction du TEMPS ; rien ne dit que la photo est le geste retourné) et par
+un savoir-faire à 0 % (« proposer un montage de mesure »). `dette-manipulable`
+ne bouge pas ; `media-manipulable` monte d'une notion.
+
+**Deux règles nées de sa spec, gravées ici :**
+
+1. **Une seconde voie ANALYTIQUE recalcule des NOMBRES ; une SIMULATION
+   n'établit que des invariants.** La porte de la cuve s'interdisait de refaire
+   les nombres d'un champ calculé (un second solveur ne prouve rien de plus) ;
+   la porte de la corde, elle, refait chaque τ, chaque front, chaque élongation,
+   chaque chaîne de mesure depuis les constantes de la spec, par sa propre
+   arithmétique, et exige l'égalité de CHAÎNE. Le critère n'est pas la scène,
+   c'est la nature de son calcul.
+2. **Une SYMÉTRIE du réglage d'une étape peut être la condition de non-fuite
+   d'une étape suivante.** Le film de l'étape 1 dessine la corde ; si le geste y
+   était asymétrique, la corde montrerait le miroir — la réponse au pari de
+   l'étape 2 — avant qu'il soit posé. Le geste de l'étape 1 est donc une bosse
+   SYMÉTRIQUE, son propre miroir. Cette fuite-là ne passe ni par un affichage
+   (§6), ni par un réglage ouvert (addendum du soir, `fuite-inter-etapes`) :
+   elle passe par LA DONNÉE. La porte la mesure aux pixels (`miroir-inerte` : la
+   bosse finale est symétrique à 2 % près) et vérifie le descripteur.
+
+**Et une leçon de la critique pédagogique, à ne pas refaire :** la première
+construction ouvrait à l'étape 5 un curseur d'instant qui, en vue « film », ne
+bougeait rien sur la corde, et une lecture du front calculée depuis ce curseur
+plutôt que depuis ce que la corde montrait. Deux affirmations que l'écran ne
+tenait pas — la synthèse même de la scène (« deux appareils, deux axes, un seul
+nombre »). Corrigé, et gardé par une famille de porte (`instant-photo`) qui
+lit le front AUX PIXELS. Règle : **une lecture dit ce que la scène MONTRE, pas
+ce qu'un réglage demande** — les deux divergent dès qu'un réglage ne s'applique
+pas.
+
+**Et une règle de RENDU, née du premier passage de la porte :** un tracé
+échantillonné sur une grille qui GLISSE avec l'instant (« n points entre 0 et
+t ») fait trembler ses sommets d'un pixel à chaque image. Invisible sur une
+capture ; pour la porte `eclairs`, 14 éclairs par seconde (WCAG 2.3.1). Toute
+courbe animée d'une scène se trace sur une grille FIXE — un point par pixel,
+toujours aux mêmes places — plus les COUDES exacts de ce qu'elle dessine. Le
+sabotage qui rétablit la grille glissante est dans la campagne de la porte.
+
+**Et une règle de MESURE, née de la campagne de sabotages :** une porte qui lit
+des pixels lit l'ENCRE DE L'OBJET, jamais un tracé que le produit dérive de ses
+propres nombres. Après le verdict de l'étape 3, la scène trace en accent une
+règle entre les deux fronts qu'elle CALCULE ; la porte cherchait « la colonne
+levée la plus à droite » du second cliché — et trouvait le bout de cette règle.
+Le sabotage « les deux photos au même instant » est resté VERT : la photo était
+fausse, la règle juste, et la porte lisait la règle. Exactement le troisième cas
+de l'ADR 0033 (une porte exacte sur une question plus étroite que son en-tête).
+Corrigé : la lecture ignore l'encre colorée ; rejoué, le même sabotage rougit.
+
+**Et une affirmation de critique, rejouée avant d'être corrigée :** la vague 2
+affirmait la scène collante INERTE au téléphone sur les huit scènes (« un élément
+de grille ne voyage que dans sa case »). Mesuré sur l'ancien panneau — la grille
+remontée 120 px au-dessus de l'écran —, la scène restait à 56 px, sous le
+header : FAUX. La correction écrite d'avance a été retirée ; le test mécanique
+reste dans la porte ergonomie commune. ADR 0036 : un diagnostic non rejoué est
+une rumeur — y compris celui d'une critique qu'on a soi-même commandée.
+
 ## Retractions and Corrections
 
 - **2026-09-23 — la « deuxième scène » annoncée n'était pas la bonne

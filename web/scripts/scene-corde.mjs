@@ -124,6 +124,11 @@ const deuxImages = () => page.evaluate(() => new Promise((r) => requestAnimation
 const attr = (n) => panneau.getAttribute(n);
 const espaces = (t) => (t ?? "").replace(/[\s  ]+/g, " ").trim();
 const lecture = async (cle) => { const l = panneau.locator(`[data-lecture="${cle}"]`); return (await l.count()) ? espaces(await l.first().textContent().catch(() => "")) : ""; };
+/** La valeur affichée à côté d'un curseur (« d = 1,2 m »). */
+const valeurCurseur = async (c) => { const l = panneau.locator(`[data-controle="${c}"] span span`); return (await l.count()) ? espaces(await l.first().textContent().catch(() => "")) : ""; };
+/** Le texte d'une étiquette posée sur la scène, si elle est visible. */
+const etiquetteTexte = async (nom) =>
+  espaces((await panneau.evaluate((el, n) => { const e = el.querySelector(`[data-etiquette="${n}"]`); return e && getComputedStyle(e).visibility === "visible" ? e.textContent ?? "" : ""; }, nom).catch(() => "")) ?? "");
 const controles = async () => (await panneau.locator("[data-controle]").evaluateAll((els) => els.map((e) => e.getAttribute("data-controle")))).sort().join(",");
 const resultat = async () => ((await panneau.locator("[data-pari-bloc] [role=status]").last().textContent().catch(() => "")) ?? "").trim();
 const parier = async (i) => { await panneau.locator("[data-pari-choix] li button").nth(i).click(); await deuxImages(); await page.waitForTimeout(80); };
@@ -164,10 +169,10 @@ async function echelle(nom = "corde") {
  * forte (écart de luminance au fond > 110) entre le haut de la bande et la
  * base + 3 px. L'échelle vient des repères de la même corde.
  */
-async function hauteurs(xs, nom = "corde", haut = 0) {
+async function hauteurs(xs, nom = "corde", haut = 0, sansAccent = false) {
   const e = await echelle(nom);
   if (!e) return null;
-  return panneau.evaluate((el, { xs, e, haut }) => {
+  return panneau.evaluate((el, { xs, e, haut, sansAccent }) => {
     const cv = el.querySelector("canvas");
     const dpr = cv.width / cv.clientWidth;
     const g = cv.getContext("2d");
@@ -186,7 +191,12 @@ async function hauteurs(xs, nom = "corde", haut = 0) {
     // qui encadrent l'abscisse exacte.
     const centre = (X) => {
       const d = g.getImageData(X, y0, 1, y1 - y0).data;
-      const ecart = (k) => Math.abs(0.2126 * d[4 * k] + 0.7152 * d[4 * k + 1] + 0.0722 * d[4 * k + 2] - lf);
+      // `sansAccent` : un pixel COLORÉ (l'accent) compte pour du fond — la corde
+      // est à l'encre, neutre. Sans cela, sur les clichés révélés, la RÈGLE que
+      // le produit trace depuis ses propres nombres (xA, xB) était lue comme la
+      // corde : le sabotage « deux photos au même instant » restait vert.
+      const colore = (k) => Math.max(d[4 * k], d[4 * k + 1], d[4 * k + 2]) - Math.min(d[4 * k], d[4 * k + 1], d[4 * k + 2]) > 40;
+      const ecart = (k) => (sansAccent && colore(k) ? 0 : Math.abs(0.2126 * d[4 * k] + 0.7152 * d[4 * k + 1] + 0.0722 * d[4 * k + 2] - lf));
       let k0 = -1;
       for (let k = 0; k < y1 - y0; k++) if (ecart(k) > 110) { k0 = k; break; }
       if (k0 < 0) return NaN;
@@ -204,7 +214,7 @@ async function hauteurs(xs, nom = "corde", haut = 0) {
       const yc = !Number.isFinite(c0) ? c1 : !Number.isFinite(c1) ? c0 : c0 * (1 - f) + c1 * f;
       return (e.base - yc) / e.pxCm;
     });
-  }, { xs, e, haut });
+  }, { xs, e, haut, sansAccent });
 }
 const jetonCouleur = (nom) => page.evaluate(([sc, n]) => {
   const c = document.createElement("canvas"); c.width = c.height = 1; const x = c.getContext("2d");
@@ -297,19 +307,61 @@ async function frontiere(ou) {
 }
 const latexBrut = async () => (await panneau.evaluate((el) => el.innerText)).match(/\$|\\(tau|text|frac|Delta|times|sqrt)\b/g) ?? [];
 /** Les étiquettes : ni chevauchées, ni hors du cadre. */
+/**
+ * Chaque étiquette qui BOUGE nomme un objet : elle se pose près de lui. La
+ * vague 2 a vu, à 390 px, « y_S » posé sur la CORDE, deux bandes au-dessus du
+ * film qu'il nomme — ni chevauché, ni hors du cadre : vert pour cette porte.
+ * La distance se mesure de la boîte de l'étiquette au repère que le produit
+ * pose sur l'objet.
+ */
+const ANCRES = { "y-S": "film-yS", "y-M": "film-yM", "lettre-M": "M", "lettre-S": "S" };
+const PRES = 36; // px, de la boîte au point
 async function etiquettesLisibles(ou, p = page, q = panneau) {
-  const { textes, larg, haut } = await q.evaluate((el) => {
-    const cv = el.querySelector("canvas").getBoundingClientRect();
-    const textes = [...el.querySelectorAll("[data-etiquette]")].filter((e) => getComputedStyle(e).visibility === "visible" && (e.textContent ?? "").trim()).map((e) => { const b = e.getBoundingClientRect(); return { nom: e.getAttribute("data-etiquette"), x0: b.left - cv.left, y0: b.top - cv.top, x1: b.right - cv.left, y1: b.bottom - cv.top }; });
-    return { textes, larg: cv.width, haut: cv.height };
-  });
+  const { textes, larg, haut, legende, ancres, encre } = await q.evaluate((el, ANCRES) => {
+    const cv = el.querySelector("canvas");
+    const rc = cv.getBoundingClientRect();
+    const boite = (e) => { const b = e.getBoundingClientRect(); return { x0: b.left - rc.left, y0: b.top - rc.top, x1: b.right - rc.left, y1: b.bottom - rc.top }; };
+    const visible = (e) => getComputedStyle(e).visibility === "visible";
+    const textes = [...el.querySelectorAll("[data-etiquette]")].filter((e) => visible(e) && (e.textContent ?? "").trim()).map((e) => ({ nom: e.getAttribute("data-etiquette"), ...boite(e) }));
+    const lg = el.querySelector("[data-legende]");
+    const legende = lg ? boite(lg) : null;
+    // le point d'ancrage de chaque étiquette qui bouge : le repère (span vide) posé par le produit
+    const ancres = {};
+    for (const [nom, r] of Object.entries(ANCRES)) {
+      const s = el.querySelector(`[data-etiquette="${r}"]`);
+      if (s && visible(s)) { const b = s.getBoundingClientRect(); ancres[nom] = { x: b.left - rc.left + b.width / 2, y: b.top - rc.top + b.height / 2 }; }
+    }
+    // l'encre du canvas SOUS la légende : ce que la légende opaque cache
+    let encre = null;
+    if (legende) {
+      const dpr = cv.width / cv.clientWidth, g = cv.getContext("2d");
+      const X0 = Math.max(0, Math.floor(legende.x0 * dpr)), Y0 = Math.max(0, Math.floor(legende.y0 * dpr));
+      const W = Math.max(1, Math.ceil((legende.x1 - legende.x0) * dpr)), H = Math.max(1, Math.ceil((legende.y1 - legende.y0) * dpr));
+      const d = g.getImageData(X0, Y0, W, H).data;
+      const f = g.getImageData(0, cv.height - 1, 1, 1).data; // un coin : le fond
+      encre = 0;
+      for (let i = 0; i < d.length; i += 4) if (Math.abs(d[i] - f[0]) + Math.abs(d[i + 1] - f[1]) + Math.abs(d[i + 2] - f[2]) > 60) encre++;
+    }
+    return { textes, larg: rc.width, haut: rc.height, legende, ancres, encre };
+  }, ANCRES);
   const fautes = [];
   for (let i = 0; i < textes.length; i++) {
     const a = textes[i];
     if (a.x0 < -1 || a.y0 < -1 || a.x1 > larg + 1 || a.y1 > haut + 1) fautes.push(`« ${a.nom} » hors du cadre`);
     for (let j = i + 1; j < textes.length; j++) { const b = textes[j]; if (a.x0 < b.x1 - 1 && b.x0 < a.x1 - 1 && a.y0 < b.y1 - 1 && b.y0 < a.y1 - 1) fautes.push(`« ${a.nom} » chevauche « ${b.nom} »`); }
+    if (legende && a.x0 < legende.x1 - 1 && legende.x0 < a.x1 - 1 && a.y0 < legende.y1 - 1 && legende.y0 < a.y1 - 1) fautes.push(`« ${a.nom} » SOUS la légende`);
+    const o = ancres[a.nom];
+    if (o) {
+      const dx = Math.max(a.x0 - o.x, 0, o.x - a.x1), dy = Math.max(a.y0 - o.y, 0, o.y - a.y1);
+      const dist = Math.hypot(dx, dy);
+      if (dist > PRES) fautes.push(`« ${a.nom} » à ${dist.toFixed(0)} px de ce qu'elle nomme (> ${PRES})`);
+    }
   }
-  juger("etiquettes", fautes.length === 0, `${ou} : ${textes.length} étiquette(s) (${textes.map((t) => t.nom).join(", ")})${fautes.length ? ` — ${fautes.join(" ; ")}` : ", ni chevauchées, dans le cadre"}`);
+  const nAncrees = textes.filter((a) => ancres[a.nom]).length;
+  juger("etiquettes", fautes.length === 0, `${ou} : ${textes.length} étiquette(s) (${textes.map((t) => t.nom).join(", ")})${fautes.length ? ` — ${fautes.join(" ; ")}` : `, ni chevauchées, ni sous la légende, dans le cadre ; ${nAncrees} posée(s) à moins de ${PRES} px de leur objet`}`);
+  // LE CADRE : rien de ce que la corde dessine ne monte sous la légende opaque
+  // (vague 2 : à l'étape 4, la rampe de 6 cm y cachait la main et son palier)
+  juger("cadre", encre === 0, `${ou} : ${encre === null ? "légende ABSENTE" : `${encre} pixel(s) d'encre sous la légende`} (attendu 0)`);
 }
 /** Aucune étape ne répond à un pari suivant (spec §7.6) — la table, écrite ICI. */
 const REPOND_A = { instant: "la-photo-a-t1", camera: "deux-photos", geste: "le-meme-geste-en-plus-grand", tension: "libre" };
@@ -441,10 +493,12 @@ await parier(indexDe("le-film-de-M", "avance"));
   const [a, b] = (await hauteurs([3.4, 3.8])) ?? [NaN, NaN];
   juger("miroir-inerte", Number.isFinite(a) && Number.isFinite(b) && Math.abs(a - b) <= 0.02 * 3, `la corde à t = 1,0 s : ${virgule(a, 2)} cm à 3,4 m, ${virgule(b, 2)} cm à 3,8 m (la bosse est son propre miroir, à 2 % près)`);
   // Les nombres, par la seconde voie
-  const lus = { retard: await lecture("retard"), distance: await lecture("distance"), celerite: await lecture("celerite"), duree: await lecture("duree-geste"), vitesse: await lecture("vitesse-M") };
+  // (la distance n'est plus une lecture — vague 2 : elle doublait l'étiquette
+  // du curseur ; c'est l'étiquette du curseur qu'on lit)
+  const lus = { retard: await lecture("retard"), distance: await valeurCurseur("point_m"), celerite: await lecture("celerite"), vitesse: await lecture("vitesse-M") };
   const vM = GESTES.bosse.A / 100 / GESTES.bosse.montee;
-  const okN = exact(lus.retard, `${virgule(tau, 2)} s`) && exact(lus.distance, "1,2 m") && exact(lus.celerite, `${virgule(V_COURS, 1)} m/s`) && exact(lus.duree, `${virgule(GESTES.bosse.duree, 2)} s`) && lus.vitesse.startsWith(`${virgule(vM, 2)} m/s`);
-  juger("nombres", okN, `étape 1 révélée : retard « ${lus.retard} », distance « ${lus.distance} », célérité « ${lus.celerite} », durée « ${lus.duree} », vitesse de M « ${lus.vitesse} »`);
+  const okN = exact(lus.retard, `${virgule(tau, 2)} s`) && exact(lus.distance, "d = 1,2 m") && exact(lus.celerite, `${virgule(V_COURS, 1)} m/s`) && lus.vitesse.startsWith(`${virgule(vM, 2)} m/s`);
+  juger("nombres", okN, `étape 1 révélée : retard « ${lus.retard} », curseur « ${lus.distance} », célérité « ${lus.celerite} », vitesse de M « ${lus.vitesse} »`);
   // L'exagération, déclarée ×20 ; l'encart, à l'échelle vraie
   const e = await echelle(), en = await echelle("encart");
   const rapport = e ? (e.pxCm * 100) / e.pxM : NaN;
@@ -501,8 +555,9 @@ await parier(indexDe("la-photo-a-t1", "recopie"));
   let morceaux = 0;
   leve.forEach((l, i) => { if (l && (i === 0 || !leve[i - 1])) morceaux++; });
   juger("une-seule-source", morceaux === 1 && leve[0], `photo à 0,25 s : ${morceaux} morceau(x) déformé(s) le long de la corde, ${leve[0] ? "le premier part de S" : "RIEN près de S"}`);
-  const lf = await lecture("front");
-  juger("nombres", lf === `${virgule(Math.min(4, xf), 2)} m`, `front lu « ${lf} » (attendu ${virgule(xf, 2)} m)`);
+  // (le front n'est plus une lecture à l'étape 2 : il est écrit SUR la photo)
+  const lf = await etiquetteTexte("front");
+  juger("nombres", lf === `front : ${virgule(Math.min(4, xf), 2)} m`, `front écrit sur la photo « ${lf} » (attendu ${virgule(xf, 2)} m)`);
   juger("avant-pari", (await pixelsAccent()) > 0, `étape 2 révélée : l'accent (la pente, la cote du front) apparaît après le verdict`);
   juger("etapes", (await controles()) === "instant", `étape 2 révélée : contrôles [${await controles()}]`);
   await sansFuite("la-photo-a-t1");
@@ -513,9 +568,9 @@ await parier(indexDe("la-photo-a-t1", "recopie"));
   for (let k = 0; k <= 20; k++) {
     const ti = Math.round(0.05 * k * 100) / 100;
     await glisser("instant", ti);
-    const lu = await lecture("front");
+    const lu = await etiquetteTexte("front");
     const tl = parseFloat((await attr("data-t")) ?? "NaN");
-    if (lu !== `${virgule(Math.min(4, V_COURS * ti), 2)} m` || Math.abs(tl - ti) > 1e-9) fautes.push(`t₁ = ${ti} : « ${lu} », corde à ${tl} s`);
+    if (lu !== `front : ${virgule(Math.min(4, V_COURS * ti), 2)} m` || Math.abs(tl - ti) > 1e-9) fautes.push(`t₁ = ${ti} : « ${lu} », corde à ${tl} s`);
     if (k % 5 === 0) await grille(`étape 2, t₁ = ${virgule(ti, 2)} s`);
   }
   juger("nombres", fautes.length === 0, `N2 — le front v·t₁ aux 21 instants (4,0 m/s)${fautes.length ? ` : ${fautes.slice(0, 4).join(" ; ")}` : " : les vingt et un exacts"}`);
@@ -547,7 +602,7 @@ await parier(indexDe("deux-photos", "depuis-S"));
   // le front de chaque cliché, lu aux pixels : la colonne levée la plus à droite
   const front = async (nom) => {
     const xs = Array.from({ length: 400 }, (_, k) => Math.round(k * 0.01 * 1000) / 1000);
-    const hs = (await hauteurs(xs, nom, (await echelle(nom)).base - 3 * (await echelle(nom)).pxCm * 1.1 - 8)) ?? [];
+    const hs = (await hauteurs(xs, nom, (await echelle(nom)).base - 3 * (await echelle(nom)).pxCm * 1.1 - 8, true)) ?? [];
     let dernier = -1;
     hs.forEach((v, k) => { if (v > 0.08) dernier = k; });
     return dernier < 0 ? NaN : xs[dernier];
@@ -564,9 +619,10 @@ await parier(indexDe("deux-photos", "depuis-S"));
   const fautes = [];
   for (const n of [1, 2, 4, 5]) {
     await cocher("camera", n);
-    const li = await lecture("instant"), lm = await lecture("mesure-v"), lf = await lecture("front");
+    // (les instants ne sont plus une lecture : ils sont écrits sur les photos)
+    const li = `${await etiquetteTexte("photo-a")} | ${await etiquetteTexte("photo-b")}`, lm = await lecture("mesure-v"), lf = await lecture("front");
     const tA = 4 / 20, tB = (4 + n) / 20;
-    if (li !== `n°4 : ${virgule(tA, 2)} s · n°${4 + n} : ${virgule(tB, 2)} s`) fautes.push(`écart ${n} : instants « ${li} »`);
+    if (li !== `photo n°4 · t = ${virgule(tA, 2)} s | photo n°${4 + n} · t = ${virgule(tB, 2)} s`) fautes.push(`écart ${n} : titres des photos « ${li} »`);
     if (lf !== `${virgule(V_COURS * tA, 2)} m puis ${virgule(V_COURS * tB, 2)} m`) fautes.push(`écart ${n} : fronts « ${lf} »`);
     // la chaîne AFFICHÉE : (xB − xA) ÷ Δt = v, recalculée par la porte depuis ses propres nombres
     const m = lm.replace(/−/g, "-").match(/\(([\d,]+) - ([\d,]+)\) m ÷ ([\d,]+) s = ([\d,]+) m\/s/);
@@ -589,7 +645,12 @@ await parier(indexDe("le-meme-geste-en-plus-grand", "plus-tot"));
 {
   await courir();
   const res = await resultat();
-  juger("paris", /incorrecte/.test(res), `étape 4, verdict après les deux phases : « ${res} »`);
+  juger("paris", /incorrecte/.test(res), `étape 4, verdict après la course : « ${res} »`);
+  // le geste de 6 cm, à t = 0,5 s : la plus haute corde de la scène. Rien sous la
+  // légende, et les étiquettes à leur place — mesuré ICI, avec ce geste (vague 2 :
+  // la mesure de l'étape 4 se faisait après la boucle des gestes, sur la rampe
+  // LENTE de 3 cm, et la rampe haute sous la légende n'était vue par rien)
+  await etiquettesLisibles("étape 4, rampe haute à 0,5 s");
   // la célérité ne dépend pas du geste : le front, aux pixels, au même endroit
   const fHaute = await frontPx();
   await cocher("geste", "rampe");
@@ -599,14 +660,13 @@ await parier(indexDe("le-meme-geste-en-plus-grand", "plus-tot"));
   const fautes = [];
   for (const g of ["bosse", "rampe", "rampe-haute", "rampe-lente"]) {
     await cocher("geste", g);
-    const le = await lecture("elongation-M"), lv = await lecture("vitesse-M"), ld = await lecture("duree-geste");
+    const le = await lecture("elongation-M"), lv = await lecture("vitesse-M");
     const ye = y(g, V_COURS, 1.2, 0.5), vm = GESTES[g].A / 100 / GESTES[g].montee;
     if (le !== `${virgule(ye, 1)} cm`) fautes.push(`${g} : élongation « ${le} » (attendu ${virgule(ye, 1)} cm)`);
     if (!lv.startsWith(`${virgule(vm, 2)} m/s`)) fautes.push(`${g} : vitesse de M « ${lv} »`);
-    if (ld !== `${virgule(GESTES[g].duree, 2)} s`) fautes.push(`${g} : durée « ${ld} »`);
     await grille(`étape 4, geste ${g}`);
   }
-  juger("nombres", fautes.length === 0, `N3 · N7 — M à 1,2 m, t = 0,5 s, pour les quatre gestes${fautes.length ? ` : ${fautes.join(" ; ")}` : " : élongation, vitesse de montée et durée exactes"}`);
+  juger("nombres", fautes.length === 0, `N3 · N7 — M à 1,2 m, t = 0,5 s, pour les quatre gestes${fautes.length ? ` : ${fautes.join(" ; ")}` : " : élongation et vitesse de montée exactes"}`);
   juger("etapes", (await controles()) === "geste", `étape 4 révélée : contrôles [${await controles()}]`);
   await sansFuite("le-meme-geste-en-plus-grand");
   await etiquettesLisibles("étape 4 révélée");
@@ -752,7 +812,7 @@ for (const r of resultats) console.log(`  ${r.ok ? "·" : "✘"} [${r.famille}] 
 for (const a of avertissements) console.log(`  ⚠ [performance] ${a}`);
 if (!pret) { console.error("\nMUET — la corde n'a pas pu dessiner ici : la porte ne peut rien dire des pixels."); process.exit(3); }
 if (ESSAI) {
-  const visees = ["avant-clic", "pas-de-3d", "etapes", "avant-pari", "paris", "nombres", "grille-exacte", "miroir", "miroir-inerte", "front-net", "retard-signe", "forme-conservee", "M-n-avance-pas", "celerite-independante", "exageration", "photos-distinctes", "une-seule-source", "pas-de-retour", "pas-de-periodicite", "instant-photo", "eclairs", "sans-mouvement", "frontiere", "latex", "fuite-inter-etapes", "etiquettes", "ergonomie"];
+  const visees = ["avant-clic", "pas-de-3d", "etapes", "avant-pari", "paris", "nombres", "grille-exacte", "miroir", "miroir-inerte", "front-net", "retard-signe", "forme-conservee", "M-n-avance-pas", "celerite-independante", "exageration", "photos-distinctes", "une-seule-source", "pas-de-retour", "pas-de-periodicite", "instant-photo", "eclairs", "sans-mouvement", "frontiere", "latex", "fuite-inter-etapes", "etiquettes", "cadre", "ergonomie"];
   const crient = visees.filter((f) => resultats.some((r) => r.famille === f && !r.ok));
   console.log(`\n  familles sabotées qui crient : ${crient.length}/${visees.length} (${crient.join(", ")})`);
   const muettes = visees.filter((f) => !crient.includes(f));

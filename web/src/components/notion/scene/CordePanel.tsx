@@ -27,14 +27,14 @@ import { TRANSPORT_BTN_CLASS } from "../TransportButton";
 import { MathText } from "../ChoiceButton";
 import * as C from "@/lib/scene2d/corde";
 import type { RenduCorde, Vue } from "@/lib/scene2d/corde-rendu";
-import { CURSEUR, LIGNE_RADIO, MARGE_FOCUS } from "./commun";
+import { CURSEUR, GRILLE_SCENE, LIGNE_RADIO, MARGE_FOCUS } from "./commun";
 import { useSceneRendu } from "./useSceneRendu";
 import { usePari } from "./usePari";
 import { SceneOptIn } from "./SceneOptIn";
 import { ConsigneEtape } from "./ConsigneEtape";
 import { PariBloc } from "./PariBloc";
 import { TransportEtapes } from "./TransportEtapes";
-import { Etiquette, Plateau, disposer, poser } from "./Plateau";
+import { Etiquette, Plateau, boiteLegende, disposer, poser } from "./Plateau";
 
 interface EtatCorde {
   d: number;
@@ -46,8 +46,14 @@ interface EtatCorde {
   reference: boolean;
 }
 
-/** Où en est la course : au repos, la référence (étape 4), l'effacement, la mesure, la fin. */
-type Phase = "repos" | "reference" | "effacement" | "mesure" | "finie";
+/**
+ * Où en est la course : au repos, la mesure, la fin. (L'étape 4 jouait d'abord
+ * l'ancien geste, effaçait la corde, puis jouait le nouveau : 5,5 s avant le
+ * verdict, dont une demi-seconde où rien ne bougeait. Vague 2 : la comparaison
+ * est portée par la COURBE de référence, tracée en tirets dès le départ de la
+ * course ; une seule course.)
+ */
+type Phase = "repos" | "mesure" | "finie";
 
 const borne = (x: number, a: number, b: number) => Math.min(b, Math.max(a, x));
 const estGeste = (v: unknown): v is C.Geste => C.GESTES.includes(v as C.Geste);
@@ -68,12 +74,10 @@ function appliquer(e: Scene3DEtat | undefined, courant: EtatCorde): EtatCorde {
 }
 
 const ETAT_DE_BASE: EtatCorde = { d: 1.2, geste: "bosse", v: 4, vue: "film", instant: 0.25, ecart: 4, reference: false };
-/** Le geste de la phase de référence de l'étape 4 (spec §5.3). */
+/** Le geste de la courbe de référence de l'étape 4 (spec §5.3). */
 const GESTE_REFERENCE: C.Geste = "rampe";
-/** La durée d'une phase quand l'étape joue une référence (s de corde, spec §6). */
+/** La durée de la course quand l'étape compare à une référence (s de corde, spec §6). */
 const DUREE_PHASE = 0.5;
-/** L'effacement de la corde entre la référence et la mesure, en secondes d'écran. */
-const EFFACEMENT_S = 0.5;
 
 /** Jusqu'où va la course, en s de corde : le film entier, l'instant de la photo, ou la seconde photo. */
 function finCourse(e: EtatCorde): number {
@@ -85,7 +89,7 @@ function finCourse(e: EtatCorde): number {
 const REPERES = [
   "corde-x0", "corde-x1", "corde-x2", "corde-x3", "corde-x4", "corde-1cm", "corde-front", "S", "M", "M-axe",
   "encart-x0", "encart-x4", "encart-1cm",
-  "film-t0", "film-t1", "film-y0", "film-ymax", "film-depart-S", "film-depart-M", "tau-debut", "tau-fin", "depart-commun",
+  "film-t0", "film-t1", "film-y0", "film-ymax", "film-depart-S", "film-depart-M", "film-yS", "film-yM", "tau-debut", "tau-fin", "depart-commun",
   "pente-haut", "pente-bas",
   "cliche-a-x0", "cliche-a-x4", "cliche-a-1cm", "cliche-a-front", "cliche-b-x0", "cliche-b-x4", "cliche-b-1cm", "cliche-b-front",
 ] as const;
@@ -120,7 +124,6 @@ export function CordePanel({ scene, className }: { scene: Scene3DDescriptor; cla
   const [rapide, setRapide] = useState(false);
   const rapideRef = useRef(false);
   const mouvementReduit = useMouvementReduit();
-  const effacementRef = useRef(0);
   const tRef = useRef(0);
   const [annonce, setAnnonce] = useState("");
   const etatRef = useRef<EtatCorde>(etat);
@@ -157,11 +160,9 @@ export function CordePanel({ scene, className }: { scene: Scene3DDescriptor; cla
   const ouvre = (c: string) => pari.etapeOuverte && etape.controles.includes(c);
   const lectures = pari.etapeOuverte ? etape.lectures ?? [] : [];
   const revele = pari.phase === "revele" || pari.phase === "aucun";
-  const reveleRef = useRef(false);
-  reveleRef.current = pari.phase === "revele";
 
   const tau = C.retard(etat.d, etat.v);
-  const anime = phase !== "repos" && phase !== "effacement";
+  const anime = phase !== "repos";
   const tA = C.instantPhoto(C.PHOTO_A), tB = C.instantPhoto(C.PHOTO_A + etat.ecart);
   const cliches = etat.vue === "photos" && finie ? { tA, tB, nA: C.PHOTO_A, nB: C.PHOTO_A + etat.ecart } : null;
   const yMaxFilm = etat.reference || etat.geste === "rampe-haute" || etape.controles.includes("geste") ? 6 : 3;
@@ -171,21 +172,25 @@ export function CordePanel({ scene, className }: { scene: Scene3DDescriptor; cla
   const dessiner = useCallback(() => {
     const s = renduRef.current;
     if (!s) return;
-    const enCourse = phase === "mesure" || phase === "reference";
+    const enCourse = phase === "mesure";
     s.mettreAJour({
       vue: etat.vue,
-      geste: phase === "reference" ? GESTE_REFERENCE : etat.geste,
+      geste: etat.geste,
       v: etat.v,
       d: etat.d,
       t: tCorde,
       anime,
       trace: etat.vue === "film" ? (enCourse ? tCorde : finie ? traceFin : null) : null,
-      reference: etat.vue === "film" && refJusqua !== null && phase !== "reference" ? { geste: GESTE_REFERENCE, jusqua: refJusqua } : null,
+      reference: etat.vue === "film" && refJusqua !== null ? { geste: GESTE_REFERENCE, jusqua: refJusqua } : null,
       yMaxFilm,
       revele: revele && finie,
       repereTau: etat.vue === "film" && !etat.reference,
       departCommun: etat.reference,
-      encartVrai: etat.vue === "film" && lectures.includes("vitesse-M") && !etat.reference && finie && revele,
+      // l'encart à l'échelle vraie sert l'étape 1, et elle seule (vague 2 : il
+      // revenait aux étapes 4 et 5, qu'aucun texte n'y rapportait) ; sa place
+      // est réservée toute l'étape, pour que le film ne saute pas au verdict
+      encart: etat.vue === "film" && indexEtape === 0,
+      encartVrai: etat.vue === "film" && indexEtape === 0 && finie && revele,
       coteFront: etat.vue === "photo" || etape.controles.includes("instant"),
       cliches,
       regleMesure: true,
@@ -196,10 +201,13 @@ export function CordePanel({ scene, className }: { scene: Scene3DDescriptor; cla
     const etroit = s.cadre().largeur < 480;
     const en = (n: string, visible = true) => (p[n] && visible ? p[n] : cache);
     // les étiquettes FIXES : elles nomment l'appareil, elles ne répondent à rien
-    poser(refs.axeX.current, p["corde-x4"] ? { x: p["corde-x4"].x - 14, y: p["corde-x4"].y + 22, visible: !etroit } : cache);
+    // « x (m) » sous la règle graduée : celle de la corde, ou, en vue « photos »,
+    // celle de la seconde photo (la corde du haut n'y porte pas de nombres)
+    const regleX = etat.vue === "photos" ? p["cliche-b-x4"] : p["corde-x4"];
+    poser(refs.axeX.current, regleX ? (etat.vue === "photos" ? { x: regleX.x - 34, y: regleX.y + 16, visible: !etroit } : { x: regleX.x - 14, y: regleX.y + 22, visible: !etroit }) : cache);
     poser(refs.geste.current, en("geste-titre"), "-100%");
-    poser(refs.photoA.current, en("cliche-a-titre"), "0%");
-    poser(refs.photoB.current, en("cliche-b-titre"), "0%");
+    poser(refs.photoA.current, en("cliche-a-titre"), "0%", "-100%");
+    poser(refs.photoB.current, en("cliche-b-titre"), "0%", "-100%");
     // celles qui BOUGENT avec la corde et les courbes : posées sans se chevaucher
     // les titres d'axes d'abord, à leur place (aucune direction essayée) : les
     // étiquettes qui bougent les évitent (premier passage : « y (cm) » sous « y_S »)
@@ -208,17 +216,23 @@ export function CordePanel({ scene, className }: { scene: Scene3DDescriptor; cla
       [
         { el: refs.axeT.current, p: p["film-t1"] ? { x: p["film-t1"].x - 10, y: p["film-t1"].y - 14, visible: true } : cache, surAncre: true, directions: fixe },
         { el: refs.axeY.current, p: p["film-ymax"] ? { x: p["film-ymax"].x - 4, y: p["film-ymax"].y - 16, visible: true } : cache, surAncre: true, directions: fixe },
-        { el: refs.S.current, p: p["S"] ? { x: p["S"].x - 10, y: p["S"].y, visible: true } : cache, surAncre: true, directions: fixe },
-        { el: refs.M.current, p: p["M"] ? { ...p["M"], y: p["M"].y - 14 } : cache, surAncre: true },
-        { el: refs.yS.current, p: en("film-yS"), directions: [[-1, -1], [0, -1], [-1, 0]] },
+        // « S » à gauche de la main ; sous elle si la légende occupe la place
+        { el: refs.S.current, p: p["S"] ? { x: p["S"].x - 10, y: p["S"].y, visible: true } : cache, surAncre: true, directions: [[0, 1.8]] },
+        // « M » au-dessus de l'anneau ; dessous, ou de côté, quand M est haut
+        { el: refs.M.current, p: p["M"] ?? cache, directions: [[0, -1], [0, 1], [1, -1], [-1, -1]] },
+        { el: refs.yS.current, p: en("film-yS"), directions: [[-1, -1], [0, -1], [-1, 0], [1, -1], [1, 0]] },
         { el: refs.yM.current, p: en("film-yM", revele && finie), directions: [[1, -1], [1, 0], [0, -1]] },
         { el: refs.tau.current, p: en("tau"), surAncre: true },
         { el: refs.depart.current, p: en("depart-commun"), directions: [[1, 0], [1, 1]] },
-        { el: refs.front.current, p: en("cote-front"), surAncre: true },
+        { el: refs.front.current, p: en("cote-front"), surAncre: true, directions: [[1, 1], [-1, 1]] },
         { el: refs.regle.current, p: en("regle-mesure"), surAncre: true },
       ],
       s.segments(),
-      s.cadre()
+      s.cadre(),
+      // la légende du plateau (opaque) et l'anneau de M : aucune étiquette dessous
+      [boiteLegende(rendu.hoteRef.current), p["M"] ? { x0: p["M"].x - 8, y0: p["M"].y - 8, x1: p["M"].x + 8, y1: p["M"].y + 8 } : null].filter(
+        (b): b is NonNullable<typeof b> => b !== null
+      )
     );
     for (const n of REPERES) poser(repRefs.current[n].current, p[n] ?? cache);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -258,19 +272,13 @@ export function CordePanel({ scene, className }: { scene: Scene3DDescriptor; cla
     const e = etatRef.current;
     rapideRef.current = sansAnimation;
     setRapide(sansAnimation);
-    effacementRef.current = 0;
     tRef.current = 0;
     setTCorde(0);
-    setAnnonce(sansAnimation ? "La corde est calculée sans animation." : "La main donne sa secousse.");
-    // Après le verdict, relancer sert à EXPLORER : la référence de l'étape 4 ne
-    // se rejoue pas (elle reste tracée), seul le geste choisi repart.
-    if (e.reference && !reveleRef.current) {
-      setRefJusqua(null);
-      setPhase("reference");
-    } else {
-      if (e.reference) setRefJusqua(DUREE_PHASE);
-      setPhase("mesure");
-    }
+    setAnnonce(sansAnimation ? "La corde est calculée sans animation." : e.reference ? "La main donne le nouveau geste ; l’ancien est tracé en tirets." : "La main donne sa secousse.");
+    // l'étape 4 : la courbe de l'ancien geste est tracée ENTIÈRE, en tirets, dès
+    // le départ (après le pari : rien n'existe avant) ; seul le nouveau geste court
+    if (e.reference) setRefJusqua(DUREE_PHASE);
+    setPhase("mesure");
     setEnLecture(true);
   };
 
@@ -305,19 +313,12 @@ export function CordePanel({ scene, className }: { scene: Scene3DDescriptor; cla
       avant = maintenant;
       const ph = phaseRef.current;
       const e = etatRef.current;
-      if (ph === "reference" || ph === "mesure") {
-        const finPhase = ph === "reference" ? DUREE_PHASE : finCourse(e);
+      if (ph === "mesure") {
+        const finPhase = finCourse(e);
         if (rapideRef.current) {
-          // sans animation : l'image finale de la phase, tout de suite
-          if (ph === "reference") {
-            setRefJusqua(DUREE_PHASE);
-            tRef.current = 0;
-            setTCorde(0);
-            setPhase("mesure");
-          } else {
-            terminer(finPhase);
-            return;
-          }
+          // sans animation : l'image finale, tout de suite
+          terminer(finPhase);
+          return;
         } else {
           // un trou de plus de 2 s n'est pas la lenteur de l'appareil : l'onglet était caché
           const dt = Math.min(0.1, dtReel);
@@ -334,23 +335,9 @@ export function CordePanel({ scene, className }: { scene: Scene3DDescriptor; cla
           }
           setTCorde(tRef.current);
           if (tRef.current >= finPhase - 1e-12) {
-            if (ph === "reference") {
-              setRefJusqua(DUREE_PHASE);
-              effacementRef.current = 0;
-              setPhase("effacement");
-              setAnnonce("L’ancien geste est tracé ; la corde revient au repos, puis la main donne le nouveau.");
-            } else {
-              terminer(finPhase);
-              return;
-            }
+            terminer(finPhase);
+            return;
           }
-        }
-      } else if (ph === "effacement") {
-        effacementRef.current += dtReel * 1000;
-        if (effacementRef.current >= EFFACEMENT_S * 1000) {
-          tRef.current = 0;
-          setTCorde(0);
-          setPhase("mesure");
         }
       }
       id = requestAnimationFrame(image);
@@ -441,7 +428,7 @@ export function CordePanel({ scene, className }: { scene: Scene3DDescriptor; cla
       </Eyebrow>
       <ConsigneEtape idTitre={idTitre} idConsigne={idConsigne} titre={etape.titre} consigne={etape.consigne} cle={etape.id} rang={{ index: indexEtape, total: etapes.length }} />
 
-      <div className="grid gap-5 bp-expanded:grid-cols-[minmax(0,3fr)_minmax(18rem,2fr)] bp-expanded:items-start">
+      <div className={GRILLE_SCENE} data-scene-grille>
         <Plateau
           hoteRef={rendu.hoteRef}
           canvasRef={rendu.canvasRef}
@@ -450,7 +437,7 @@ export function CordePanel({ scene, className }: { scene: Scene3DDescriptor; cla
           legende={`Corde · ralenti ×${C.RALENTI} · verticale ×${C.EXAGERATION}`}
           messageSansWebgl="Ce navigateur n’affiche pas la corde (dessin indisponible). Les paris et les réglages restent."
           onRelancer={rendu.relancer}
-          format="paysage"
+          format="paysage-haut"
         >
           <Etiquette refEl={refs.S} nom="lettre-S" texte="S" />
           <Etiquette refEl={refs.M} nom="lettre-M" texte="M" />
@@ -468,7 +455,9 @@ export function CordePanel({ scene, className }: { scene: Scene3DDescriptor; cla
           </Etiquette>
           <Etiquette refEl={refs.depart} nom="depart-commun" texte={`départ : ${C.s(tau)}`} fond />
           <Etiquette refEl={refs.front} nom="front" texte={`front : ${C.m(C.front(etat.v, tPhoto), 2)}`} fond />
-          <Etiquette refEl={refs.geste} nom="geste" texte="le geste de la main, yₛ(t)" />
+          <Etiquette refEl={refs.geste} nom="geste">
+            <MathText>{"le geste de $S$ : $y_S(t)$"}</MathText>
+          </Etiquette>
           <Etiquette refEl={refs.photoA} nom="photo-a" texte={`photo n°${C.PHOTO_A} · t = ${C.s(tA)}`} />
           <Etiquette refEl={refs.photoB} nom="photo-b" texte={`photo n°${C.PHOTO_A + etat.ecart} · t = ${C.s(tB)}`} />
           <Etiquette refEl={refs.regle} nom="regle" texte={`avance : ${C.m(frontB - frontA, 2)}`} fond />
@@ -513,31 +502,46 @@ export function CordePanel({ scene, className }: { scene: Scene3DDescriptor; cla
                   {enLecture ? <PauseIcon size={14} /> : <PlayIcon size={14} />}
                   {libelleLancer}
                 </button>
-                {enLecture && !rapide && (
-                  <button
-                    type="button"
-                    className={TRANSPORT_BTN_CLASS}
-                    data-image-finale
-                    onClick={() => {
+                {/* Toujours MONTÉ, jamais inerte (vague 2) : il se démontait sous
+                    le focus à la fin de la course qu'il abrégeait (focus à <body>),
+                    et « Repos » sautait de place à chaque course. Pendant une
+                    course, il l'abrège ; au repos ou après, il en donne l'image
+                    finale sans la jouer — relancer dix fois ne coûte plus dix
+                    fois cinq secondes. */}
+                <button
+                  type="button"
+                  className={TRANSPORT_BTN_CLASS}
+                  data-image-finale
+                  onClick={() => {
+                    if (phase === "repos" || phase === "finie") demarrer(true);
+                    else {
                       rapideRef.current = true;
                       setRapide(true);
-                    }}
-                  >
-                    <span>Image finale</span>
-                  </button>
-                )}
-                <button type="button" className={TRANSPORT_BTN_CLASS} onClick={() => auRepos()} aria-label="Remettre la corde au repos">
+                      setEnLecture(true);
+                    }
+                  }}
+                >
+                  <span>Image finale</span>
+                </button>
+                <button
+                  type="button"
+                  className={TRANSPORT_BTN_CLASS}
+                  onClick={() => {
+                    if (phase !== "repos") auRepos();
+                  }}
+                  aria-disabled={phase === "repos" || undefined}
+                  aria-label="Remettre la corde au repos"
+                >
                   <Icon name="reset" size={13} />
                   <span>Repos</span>
                 </button>
               </div>
-              <p className="text-caption text-secondary">
-                {frenchTypography(
-                  rapide && enLecture
-                    ? `Calcul sans animation : t = ${C.nombre(tCorde, 2)} s de corde.`
-                    : `Au ralenti ×${C.RALENTI} : une seconde à l’écran montre 0,20 s de corde. Temps de corde : t = ${C.nombre(tCorde, 2)} s${phase === "reference" ? " — d’abord l’ancien geste" : ""}.`
-                )}
+              <p className="text-caption text-secondary" data-temps-corde>
+                {frenchTypography(rapide && enLecture ? `Calcul sans animation : t = ${C.nombre(tCorde, 2)} s de corde.` : `Temps de corde : t = ${C.nombre(tCorde, 2)} s.`)}
               </p>
+              {indexEtape === 0 && (
+                <p className="text-caption text-secondary">{frenchTypography("Après une course, un réglage montre tout de suite sa nouvelle image ; « Relancer », ou Entrée sur un réglage, rejoue la course.")}</p>
+              )}
             </div>
           )}
 
@@ -554,7 +558,7 @@ export function CordePanel({ scene, className }: { scene: Scene3DDescriptor; cla
             {ouvre("point_m") && (
               <label className="flex flex-col gap-1" data-controle="point_m">
                 <span className="text-body-sm text-secondary">
-                  {frenchTypography("Le point M, à la distance de S :")} <span className="tabular-nums text-primary">{frenchTypography(`d = ${C.m(etat.d)}`)}</span>
+                  {frenchTypography("Le point M, à la distance de S :")} <span className="tabular-nums text-primary" aria-hidden="true">{frenchTypography(`d = ${C.m(etat.d)}`)}</span>
                 </span>
                 <input
                   type="range"
@@ -572,7 +576,7 @@ export function CordePanel({ scene, className }: { scene: Scene3DDescriptor; cla
             {ouvre("instant") && (
               <label className="flex flex-col gap-1" data-controle="instant">
                 <span className="text-body-sm text-secondary">
-                  {frenchTypography("L’instant de la photo :")} <span className="tabular-nums text-primary">{frenchTypography(`t₁ = ${C.s(etat.instant)}`)}</span>
+                  {frenchTypography("L’instant de la photo :")} <span className="tabular-nums text-primary" aria-hidden="true">{frenchTypography(`t₁ = ${C.s(etat.instant)}`)}</span>
                 </span>
                 <input
                   type="range"
@@ -663,12 +667,9 @@ export function CordePanel({ scene, className }: { scene: Scene3DDescriptor; cla
               {finie && (
                 <p className="text-caption text-secondary" data-fin-course>
                   {frenchTypography(
-                    `${etat.vue === "photo" ? `Photo prise à t = ${C.nombre(tCorde, 2)} s : la corde est figée.` : etat.vue === "photos" ? "Les deux photos sont prises ; la corde continuerait." : `Image arrêtée à t = ${C.nombre(tCorde, 2)} s de corde ; la main a fini, la corde continuerait, le bout lointain absorbe.`}${ralentiReel > C.RALENTI ? ` Sur cet appareil, la course a tourné au ralenti ×${ralentiReel}.` : ""}`
+                    `${etat.vue === "photo" ? "La corde est figée à l’instant de la photo." : etat.vue === "photos" ? "Les deux photos sont prises ; la corde continuerait." : "Image arrêtée : la corde continuerait, le bout lointain absorbe."}${ralentiReel > C.RALENTI ? ` Sur cet appareil, la course a tourné au ralenti ×${ralentiReel}.` : ""}`
                   )}
                 </p>
-              )}
-              {pari.etapeOuverte && etape.controles.length > 0 && (
-                <p className="text-caption text-secondary">{frenchTypography("Après une course, un réglage montre tout de suite sa nouvelle image ; « Relancer » (ou Entrée sur un réglage) rejoue la course.")}</p>
               )}
               <details className="text-caption text-secondary">
                 <summary className="cursor-pointer select-none">{frenchTypography("Corde idéalisée : ce que cette corde simplifie")}</summary>
