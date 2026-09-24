@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Source_Serif_4 } from "next/font/google";
+import localFont from "next/font/local";
 // Geist vient du paquet officiel Vercel (fontes auto-hébergées via
 // next/font/local en interne) : le manifeste next/font/google de Next 14.2
 // prédate Geist — « Unknown font », constaté au build, risque n°1 du plan.
-import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 // R4 (continuité) : la View Transitions API via next-view-transitions — la
 // seconde dépendance budgétée du plan Studio. Navigation déclenchée par
@@ -47,6 +47,22 @@ const readingSerif = Source_Serif_4({
 // assortie porte tout nombre qui change (tabular-nums). Le sérif ci-dessus
 // ne survit que dans le CORPS des leçons — la lecture longue, là où il
 // gagne sa place.
+//
+// Geist Sans est déclarée ICI, sur le fichier même du paquet (c'est ce que
+// fait `geist/font/sans`, à une ligne près), pour UNE raison : la table cmap
+// de Geist 1.7.2 rattache U+03C9 « ω » au glyphe de U+03A9 « Ω » (uni03A9).
+// Toute vitesse angulaire écrite en texte dans l'interface s'affichait donc
+// en OHM (2026-09-24, capture du manège ; `scripts/glyphes-confondus.mjs`).
+// La plage unicode exclut ce seul point de code : « ω » retombe sur la police
+// de repli, comme θ, φ, α… que Geist n'a pas. À retirer quand une version de
+// Geist dessinera ω : l'essai rouge de la porte charge le fichier BRUT, sans
+// cette plage — le jour où il n'y entend plus ω = Ω, il le dira.
+const GeistSans = localFont({
+  src: "../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2",
+  variable: "--font-geist-sans",
+  weight: "100 900",
+  declarations: [{ prop: "unicode-range", value: "U+0000-03C8, U+03CA-10FFFF" }],
+});
 
 
 // ── Metadata (head pack: July-2026 external-audit F5) ─────────────────────────

@@ -396,6 +396,24 @@ jobs:
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
           node scripts/figure-preview.mjs --dark --porte $svgs
 
+      # PORTE GLYPHES CONFONDUS (2026-09-24). La cmap de Geist 1.7.2 rattache
+      # « ω » (U+03C9) au glyphe de « Ω » (U+03A9) : toute vitesse angulaire
+      # écrite en texte dans l'interface s'affichait en OHM. Le texte source
+      # était juste, et `polices-de-repli` ne pouvait rien voir — Geist PRÉTEND
+      # avoir le glyphe, il n'y a pas de repli. La porte dessine chaque
+      # caractère de l'inventaire du produit dans chaque pile de polices du
+      # site RENDU (corps, lecture en gras et en italique, mono) ; deux
+      # caractères différents au même glyphe rougissent, sauf équivalents NFKC
+      # et homoglyphes de même sens listés un par un. Le second passage charge
+      # le fichier Geist BRUT, sans la plage unicode de layout.tsx, et doit y
+      # entendre ω = Ω, et rien d'autre — le jour où il ne l'entend plus, Geist
+      # a corrigé sa cmap et la plage peut partir. ~20 s les deux.
+      - name: "Porte glyphes confondus (une police ne dessine pas ω comme Ω — vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run glyphes-confondus
+          node scripts/glyphes-confondus.mjs --essai-rouge
+
       # PORTE PRESSE-PAPIER (2026-09-05). Un élève qui révise RECOPIE : ce
       # qu'il colle est un rendu du produit au même titre que la page. KaTeX
       # écrit chaque formule deux fois — un arbre MathML pour les lecteurs

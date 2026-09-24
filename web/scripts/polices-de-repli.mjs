@@ -16,6 +16,12 @@
  * CE QUE ÇA NE DIT PAS : si le repli se VOIT. Une fonte de repli aux métriques
  * proches passe inaperçue ; une autre saute aux yeux. L'instrument localise,
  * il ne juge pas — c'est la capture qui tranche.
+ *
+ * NI CE QU'UNE POLICE DESSINE À LA PLACE (2026-09-24). Geist 1.7.2 PRÉTEND
+ * avoir « ω » et dessine « Ω » : pas de repli, un seul nom de police pour le
+ * nœud — cet instrument n'a rien à dire, et la vitesse angulaire s'affichait
+ * en ohm. Ce défaut-là est mesuré par `glyphes-confondus.mjs` (armé en CI),
+ * qui compare les glyphes, pas les noms de polices.
  */
 import { chromium } from "playwright-core";
 import { spawn } from "child_process";

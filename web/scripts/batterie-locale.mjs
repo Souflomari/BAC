@@ -115,6 +115,11 @@ const ETAPES = [
 // Hors champ ASSUMÉ : navigateur ou build requis. Leur absence est un choix.
 const HORS_CHAMP = new Set([
   "dom-truth.mjs", "figure-preview.mjs", "copie-maths.mjs", "impression.mjs",
+  // glyphes-confondus lève son propre `next start` et dessine l'inventaire du
+  // produit dans les piles de polices du site RENDU : build ET Playwright.
+  // Hors champ ici pour la même raison que dom-truth — ARMÉE en CI
+  // (2026-09-24). Son rouge se rejoue : `node scripts/glyphes-confondus.mjs --essai-rouge`.
+  "glyphes-confondus.mjs",
   "zoom-sweep.mjs", "formules-rendues.mjs", "ancres-uniques.mjs",
   "donnees-sweep.mjs", "typo-francaise.mjs", "accents-manquants.mjs",
   // latex-nu : même famille que typo-francaise — il lance `next start` et lit le
