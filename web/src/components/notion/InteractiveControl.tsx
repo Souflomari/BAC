@@ -83,7 +83,10 @@ export function InteractiveControl({
         value={value}
         onChange={(e) => onChange(parseFloat(e.target.value))}
         aria-valuetext={model.formatValue(value)}
-        className="w-full max-w-sm accent-[var(--color-accent)]"
+        // `.curseur` : une zone de préhension de 48 px (le jeton --touch-target),
+        // pas le curseur natif de 16 px — la même règle que les scènes, qui
+        // manquait ici aux figures manipulables (revue ergonomie de la cuve).
+        className="curseur max-w-sm"
       />
       {readoutTemplate && (
         <p

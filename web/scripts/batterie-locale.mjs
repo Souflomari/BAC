@@ -182,6 +182,10 @@ const HORS_CHAMP = new Set([
   // au ralenti, deux passages en CI (job `scene-champ`) ;
   // `node scripts/scene-cuve.mjs --essai-rouge`.
   "scene-cuve.mjs",
+  // figures-manipulables, même raison : build + navigateur, chaque figure
+  // manipulable du corpus au rendu, deux passages en CI (job `scene-champ`) ;
+  // `node scripts/figures-manipulables.mjs --essai-rouge`.
+  "figures-manipulables.mjs",
   // etroit-sweep balaie le corpus entier au navigateur, à 320, 360 et 390 px :
   // build ET Playwright, ~6 min. Hors champ ici pour la même raison que
   // dom-truth — ARMÉE en CI dans son propre job, `telephone` (§11.193). Son

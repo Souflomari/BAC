@@ -1100,6 +1100,22 @@ jobs:
           npm run scene-cuve
           node scripts/scene-cuve.mjs --essai-rouge
 
+      # PORTE « FIGURES MANIPULABLES » (2026-09-24, HANDOFF §11.199). Chaque
+      # `.interactive.json` du corpus — l'inventaire est lu dans content/, pas
+      # écrit ici : celles d'aujourd'hui ET celles de demain. Sur le rendu réel :
+      # le curseur n'existe qu'à la dernière étape ; à quatre positions, chaque
+      # cible liée du SVG porte exactement ce que le module calcule ; la lecture
+      # est le gabarit rempli ; le curseur mesure ≥ 44 px ; et, pour les figures
+      # qu'elle nomme, une seconde voie recalcule la physique depuis la lecture
+      # (le pH : jamais « 0 » ni « 100 », ce que la leçon réfute). dom-truth
+      # porte cinq balayages écrits à la main ; une sixième figure n'était vue
+      # par rien.
+      - name: "Figures manipulables (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run figures-manipulables
+          node scripts/figures-manipulables.mjs --essai-rouge
+
 
   # LA LARGEUR D'UN TÉLÉPHONE, EN CI (DÉCISIONS §16, levée par son prémisse).
   # `etroit-sweep` mesure le corpus entier — les leçons chapitres dépliés, les

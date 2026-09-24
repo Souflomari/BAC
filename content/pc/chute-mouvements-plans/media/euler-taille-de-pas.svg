@@ -1,13 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" width="640" height="380"
      font-family="'IBM Plex Sans', system-ui, sans-serif"
-     aria-label="Comparaison de la méthode d’Euler avec deux tailles de pas sur la bille de l’exemple travaillé : la courbe vraie, une ligne brisée d’Euler avec un grand pas qui s’écarte visiblement, et une ligne brisée avec un petit pas qui reste proche de la courbe vraie.">
-  <title>Euler — l’effet de la taille du pas Δt</title>
+     aria-label="Comparaison de la méthode d’Euler avec deux tailles de pas sur la bille de l’exemple travaillé : la courbe vraie, une ligne brisée d’Euler avec un grand pas qui s’écarte visiblement, et une ligne brisée avec un petit pas qui reste proche de la courbe vraie. Un curseur Δt recalcule en direct une troisième ligne brisée, qui rejoint exactement l’un ou l’autre repère selon la valeur choisie.">
+  <title>Euler — l’effet de la taille du pas Δt, étape par étape puis manipulable</title>
   <!--
-    euler-taille-de-pas.svg — figure figée (STATIQUE) qui remplace l'embed
-    manipulable [[embed:euler-taille-de-pas]] pour cette passe de
-    couverture (curseur Δt → ici, DEUX tailles de pas fixes tracées contre
-    la courbe vraie). STAGED (graphe : toujours staged). Sert CH-EU-1
-    ("Euler donne la valeur exacte").
+    euler-taille-de-pas.svg — STAGED + MANIPULABLE
+    (docs/design/INTERACTIVE-FIGURE-SPEC.md) : cette figure EST maintenant
+    l'embed manipulable que la spec prescrivait, [[embed:euler-taille-de-pas]]
+    ("curseur Δt") — un curseur Δt qui se déverrouille après la dernière
+    étape (step-3, unlockAfterStage = 3) et recalcule en direct une ligne
+    brisée d'Euler contre les deux repères fixes ci-dessous (Δt = 0,05 s et
+    Δt = 0,02 s, conservés tels quels). STAGED (graphe : toujours staged).
+    Sert CH-EU-1 ("Euler donne la valeur exacte").
 
     Même bille que R7/R8 : m=0,20 kg, k=2,0 kg/s, g≈9,8 m/s², τ=0,10 s,
     v_lim=0,98 m/s, v₀=0. Échelle : origine (t=0,v=0)=(90,320).
@@ -45,6 +48,30 @@
       courbe vraie (référence)         : --figure-accent
       Euler Δt petit (proche du vrai)  : --figure-ink, petits marqueurs ronds
       Euler Δt grand (s'écarte)        : --figure-ink-soft, tireté, marqueurs carrés
+
+    Manipulable (ajouté DANS step-3, après son contenu existant ci-dessus —
+    rien retiré, rien modifié au-dessus de ce paragraphe) :
+    euler-taille-de-pas.interactive.json, control.kind="slider", axe dt,
+    domaine [0,01 s ; 0,05 s], pas 0,01 s, initial = 0,05 s (la plus grande
+    des deux valeurs fixes ci-dessus — à 0,05 s la ligne pilotée tombe
+    EXACTEMENT sur le repère "grand pas" ; à 0,02 s, EXACTEMENT sur le
+    repère "petit pas"). unlockAfterStage = 3 : la dernière étape déjà
+    existante, aucune étape ajoutée. Recalcule :
+      #euler-live-path    — la ligne brisée d'Euler pour le Δt courant,
+                             même fenêtre t ≈ [0 ; 0,30 s] que les deux
+                             repères (N = round(0,30/Δt) pas)
+      #euler-live-dots    — un marqueur losange par point du même Δt
+      #label-dt            — "Δt = … s — à t = … s"
+      #label-comparaison   — "Euler ≈ … · vraie ≈ … (écart …)"
+    Module : web/src/lib/interactive-figures/euler-taille-de-pas.ts — même
+    récurrence que R8 (v_{i+1}=v_i+a_i·Δt, a_i=9,8−10v_i), jamais la forme
+    close 1−e^(−t/τ) affichée nulle part (elle ne sert qu'au calcul interne
+    de la comparaison, comme la courbe vraie elle-même n'est jamais
+    dérivée dans le texte). Couleur : --figure-accent pour les quatre — la
+    ligne pilotée est maintenant « le sujet » de la figure, même
+    convention que le point glissable de tangente-derivee.svg ; pointillé
+    fin (1,5,3) + losanges pour se distinguer du tireté/carrés (grand pas)
+    et du plein/ronds (petit pas) déjà en place.
   -->
 
   <!-- Titre -->
@@ -115,6 +142,27 @@
     <text x="368" y="120" font-size="10.5" fill="var(--figure-ink)">Δt = 0,02 s (petit pas — épouse la courbe)</text>
 
     <text x="330" y="360" text-anchor="middle" font-size="11" fill="var(--figure-accent)">Euler n’est jamais exact : l’écart à la courbe vraie diminue quand Δt diminue</text>
+
+    <!-- Manipulable — curseur Δt (docs/design/INTERACTIVE-FIGURE-SPEC.md),
+         euler-taille-de-pas.interactive.json ; ajouté ICI, après tout le
+         contenu ci-dessus, rien retiré. État initial = Δt 0,05 s : tombe
+         EXACTEMENT sur le repère "grand pas" tracé plus haut. -->
+    <path id="euler-live-path"
+          d="M90,320 L135,207.3 L180,150.95 L225,122.78 L270,108.69 L315,101.64 L360,98.12"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2.1"
+          stroke-dasharray="1.5,3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="euler-live-dots" fill="var(--figure-accent)"
+          d="M87,320 L90,317 L93,320 L90,323 Z
+             M132,207.3 L135,204.3 L138,207.3 L135,210.3 Z
+             M177,150.95 L180,147.95 L183,150.95 L180,153.95 Z
+             M222,122.78 L225,119.78 L228,122.78 L225,125.78 Z
+             M267,108.69 L270,105.69 L273,108.69 L270,111.69 Z
+             M312,101.64 L315,98.64 L318,101.64 L315,104.64 Z
+             M357,98.12 L360,95.12 L363,98.12 L360,101.12 Z"/>
+    <text id="label-dt" x="395" y="175" font-size="12" font-weight="600"
+          fill="var(--figure-accent)">Δt = 0,05 s — à t = 0,3 s</text>
+    <text id="label-comparaison" x="395" y="197" font-size="9.5"
+          fill="var(--figure-accent)">Euler ≈ 0,965 · vraie ≈ 0,931 (écart 0,033)</text>
   </g><!-- /step-3 -->
 
 </svg>

@@ -101,8 +101,12 @@ c'est 50/50. Refermer sur la lecture : « prédominer, ce n'est pas être seul �
 - `[[figure:diagramme-distribution-vs-predominance]]` — **type: structural-diagram · tool: svg+katex.**
   Superposer sur le même axe pH : (haut) l'axe de prédominance à 1D avec la frontière pKA ;
   (bas) les deux courbes de distribution %AH et %A⁻ se croisant à 50 % à pH = pKA. Labels KaTeX exacts.
-- `[[embed:distribution-curseur-pH]]` — **type: manipulable · tool: geogebra/desmos.**
-  Curseur de pH sur l'axe ; les deux pourcentages s'affichent et les deux courbes se remplissent.
+- `[[embed:distribution-curseur-pH]]` — **type: manipulable · tool: interactive-svg.** **LIVRÉ le
+  2026-09-24**, en figure manipulable de première partie (INTERACTIVE-FIGURE-SPEC) sur la figure
+  `distribution-curseur-pH` elle-même : après sa dernière étape, un curseur de pH (1 à 9, pas 0,2)
+  déplace un repère sur les deux courbes et affiche les deux pourcentages — jamais « 0 » ni « 100 »,
+  la leçon réfutant juste avant « la forme dominante a déjà tout pris ». (geogebra/desmos sont fermés
+  aux nouveaux embeds depuis l'amendement du 2026-07-07 à l'ADR 0017.)
   Sert à *sentir* que la somme fait toujours 100 % et que le croisement est à pKA (pas à 7).
 
 **HORS-CADRE (citer la limite).** Pas de diagramme de distribution de **polyacide / multi-pKA**

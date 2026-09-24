@@ -55,7 +55,11 @@ const PORTE = process.argv.includes("--porte");
 //  ne redescend pas quand une dette est payée laisse une place libre à la
 //  suivante, en silence (ADR 0034). Monter ce nombre, c'est reconnaître une
 //  dette de plus.
-const CLIQUET_SUBSTITUTIONS = 4;
+//  Descendu à 1 le même jour : trois substitutions de pc/ payées par des
+//  figures manipulables de première partie (distribution-curseur-pH,
+//  euler-taille-de-pas, sandbox-chute-frottement) — qui comptent désormais
+//  comme livrées (voir « Livrés aussi », plus bas).
+const CLIQUET_SUBSTITUTIONS = 1;
 
 //  Les scènes 3D de première partie ENREGISTRÉES dans le code. Un descripteur
 //  `"tool": "scene3d"` ne compte pour livré que si sa scène y figure : un
@@ -64,7 +68,10 @@ const SCENES = JSON.parse(
   fs.readFileSync(path.resolve(ICI, "..", "src", "lib", "scene3d", "scenes.json"), "utf-8")
 );
 
-const MARQUE = /\[\[embed:([a-z0-9-]+)\]\]/g;
+const FIGURES = path.resolve(ICI, "..", "src", "lib", "interactive-figures");
+const REGISTRE = fs.readFileSync(path.join(FIGURES, "index.ts"), "utf-8");
+
+const MARQUE = /\[\[embed:([a-zA-Z0-9-]+)\]\]/g;
 //  Le « remplace » et le « [[embed: » sont souvent séparés par un retour à la
 //  ligne dans l'en-tête du SVG — un motif sur une seule ligne en manquait un
 //  sur trois. Le `[\s\S]` est là pour ça.
@@ -103,6 +110,23 @@ for (const [cle, dir] of notions) {
         livres.push({ notion: cle, slug: f.slice(0, -5), moteur: scene ? `scène ${j.tool === "scene2d" ? "2D" : "3D"} ${j.scene}` : "iframe" });
       }
     } catch { /* JSON cassé : l'affaire d'une autre porte */ }
+  }
+
+  //  Livrés aussi : une FIGURE MANIPULABLE de première partie (INTERACTIVE-
+  //  FIGURE-SPEC) du même nom que l'embed prescrit — un `.interactive.json` qui
+  //  se lit ET un module enregistré dans le registre de l'application. Sans le
+  //  registre, la figure se rend sans curseur : ce serait une promesse, pas une
+  //  livraison (le même critère que pour une scène, plus haut). Ajouté le
+  //  2026-09-24, quand trois substitutions de pc/ ont été payées ainsi.
+  for (const f of fichiersMedia) {
+    if (!f.endsWith(".interactive.json")) continue;
+    const slug = f.slice(0, -".interactive.json".length);
+    try { JSON.parse(fs.readFileSync(path.join(media, f), "utf-8")); } catch { continue; }
+    const camel = slug.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+    if (!fs.existsSync(path.join(FIGURES, `${slug}.ts`)) || !new RegExp(`\\b${camel}\\b`).test(REGISTRE)) continue;
+    if (desc.has(slug)) continue;
+    desc.add(slug);
+    livres.push({ notion: cle, slug, moteur: "figure manipulable" });
   }
 
   //  Substitués par écrit : un SVG dont l'en-tête le dit.

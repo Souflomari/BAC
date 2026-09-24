@@ -1,26 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 420" width="680" height="420"
      font-family="'IBM Plex Sans', system-ui, sans-serif"
-     aria-label="Deux courbes v(t), pour deux billes de même coefficient de frottement k mais de masses différentes, tombant dans le même fluide : la bille deux fois plus lourde atteint une vitesse limite deux fois plus grande.">
+     aria-label="Deux courbes v(t), pour deux billes de même coefficient de frottement k mais de masses différentes, tombant dans le même fluide : la bille deux fois plus lourde atteint une vitesse limite deux fois plus grande. À la dernière étape, un curseur règle la masse de la seconde bille, de 0,20 à 0,40 kg, et sa courbe, son asymptote et sa vitesse limite suivent.">
   <title>Chute avec frottement — l’effet de la masse sur v_lim (même k)</title>
   <!--
-    sandbox-chute-frottement.svg — figure figée (STATIQUE) qui remplace
-    l'embed manipulable [[embed:sandbox-chute-frottement]] pour cette
-    passe de couverture (curseurs m,k → ici, DEUX masses fixes tracées
-    côte à côte, même k). STAGED (graphe : toujours staged).
+    sandbox-chute-frottement.svg — STAGED + MANIPULABLE
+    (docs/design/INTERACTIVE-FIGURE-SPEC.md). C'est, depuis le 2026-09-24, le
+    manipulable que la spec prescrivait (l'embed sandbox-chute-frottement,
+    « curseurs m, k ») : à partir de la dernière étape (step-3), c'est
+    désormais le manipulable lui-même — un curseur de masse m se
+    déverrouille (k = 2,0 kg/s reste fixe) et recalcule en direct la courbe,
+    l'asymptote et les étiquettes de la bille mobile
+    (sandbox-chute-frottement.interactive.json,
+    web/src/lib/interactive-figures/sandbox-chute-frottement.ts). La bille
+    de référence (step-2, courbe --figure-ink, m₁ = 0,20 kg) reste FIXE —
+    c'est la comparaison avec elle qui rend visible ce que le curseur change.
 
     Sert directement CH-FR-3 : "la masse ne joue jamais dans une chute
     (comme en chute libre)". Contre-exemple : avec frottement, v_lim = mg/k
     dépend de m — le plus lourd va plus vite.
 
-    Bille 1 = EXACTEMENT la bille filée en R7/R8 : m₁=0,20 kg, k=2,0 kg/s,
-    g≈9,8 m/s² ⇒ τ₁=0,10 s, v_lim,1=0,98 m/s.
-    Bille 2 = même forme, même k, masse DOUBLE : m₂=0,40 kg ⇒ τ₂=m₂/k=0,20 s,
-    v_lim,2 = m₂g/k = 1,96 m/s = 2·v_lim,1 (double exactement, cohérent
-    avec v_lim = mg/k linéaire en m, à k fixé).
+    Bille 1 (fixe, step-2) = EXACTEMENT la bille filée en R7/R8 : m₁=0,20 kg,
+    k=2,0 kg/s, g≈9,8 m/s² ⇒ τ₁=0,10 s, v_lim,1=0,98 m/s.
+    Bille mobile (step-3, curseur) : m ∈ [0,20 ; 0,40] kg, pas 0,05 kg,
+    valeur initiale 0,40 kg (= l'ancienne "bille 2", masse double) ; τ=m/k,
+    v_lim=mg/k. À m=0,20 kg, la courbe mobile coïncide EXACTEMENT avec la
+    bille 1 (même m, même k) — glisser le curseur vers 0,40 la fait se
+    décoller et monter : la preuve visuelle de CH-FR-3. Domaine plafonné à
+    0,40 kg pour que v_lim (=mg/k, max 1,96 m/s à m=0,40) reste sous la
+    pointe de flèche de l'axe v (y=60) sans redessiner les axes — à m=0,40,
+    l'asymptote est à y≈89,6, encore ≈30 px sous la pointe.
 
-    Échelle : origine (t=0,v=0)=(90,364). scale_t=520 px/s, scale_v=140
-    px/(m/s). Courbes tracées via v/v_lim=1−e^(−t/τ) (forme relevée
-    expérimentalement — jamais dérivée dans le texte, R7 "limite du cadre"),
+    Échelle (SOURCE UNIQUE, reprise à l'identique dans le module .ts) :
+    origine (t=0,v=0)=(90,364). scale_t=520 px/s, scale_v=140 px/(m/s).
+    Courbes tracées via v/v_lim=1−e^(−t/τ) (forme relevée
+    expérimentalement — jamais dérivée dans le texte, R7 "limite du
+    cadre" ; le module .ts ne fait QUE rejouer cette même forme, pour
+    n'importe quel m — jamais affichée comme formule à l'écran),
     échantillonnées à s=t/τ = 0, 0.25, 0.5, 0.75, 1, 1.5, 2, 2.5, 3, 4, 5 :
 
     Bille 1 (τ=0,10 ; v_lim=0,98) — points (x=90+520t, y=364−140v) :
@@ -28,15 +43,26 @@
       (168,257.40) (194,245.36) (220,238.07) (246,233.63) (298,229.31)
       (350,227.72)   asymptote y = 364−140·0,98 = 227
 
-    Bille 2 (τ=0,20 ; v_lim=1,96) — mêmes points, t doublé :
-      (90,364) (116,303.31) (142,256.0) (168,219.23) (194,190.55)
-      (246,150.81) (298,126.73) (350,112.13) (402,103.26) (506,94.63)
-      (610,91.43)    asymptote y = 364−140·1,96 = 90
+    Bille mobile à m=0,40 kg (état initial du curseur, τ=0,20 ;
+    v_lim=1,96) — mêmes points, t doublé :
+      (90,364) (116,303.3) (142,256.03) (168,219.22) (194,190.55)
+      (246,150.83) (298,126.74) (350,112.12) (402,103.26) (506,94.63)
+      (610,91.45)    asymptote y = 364−140·1,96 = 89,6
+
+    ids recalculés par le curseur (step-3, tous liés dans
+    sandbox-chute-frottement.interactive.json) :
+      #curve-mobile      — la courbe v(t) de la bille mobile
+      #asymptote-mobile  — l'asymptote horizontale à v_lim
+      #label-vlim-tick   — le repère "v_ℓ" sur l'axe (position suit l'asymptote)
+      #label-masse       — l'étiquette "m = … kg" posée sur la courbe (position + texte)
+      #label-lecture     — la phrase de lecture sous le panneau (τ = m/k, v_lim = mg/k)
 
     Rôle des couleurs :
-      courbe bille 1 (référence, plus légère) : --figure-ink
-      courbe bille 2 (plus lourde)             : --figure-accent
-      axes, asymptotes                         : --figure-ink-soft
+      courbe bille 1 (référence FIXE, plus légère)     : --figure-ink
+      asymptote bille 1                                 : --figure-ink-soft
+      courbe bille mobile (curseur, plus lourde à 0,40) : --figure-accent
+      asymptote bille mobile, étiquettes bille mobile   : --figure-accent
+      axes                                               : --figure-ink-soft
   -->
 
   <!-- Titre -->
@@ -45,7 +71,7 @@
     Deux billes, même k, masses différentes — v(t)
   </text>
   <text x="340" y="34" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">
-    k = 2,0 kg/s pour les deux ; seule la masse change
+    k = 2,0 kg/s pour les deux ; seule la masse change
   </text>
 
   <!-- Fond du panneau -->
@@ -81,20 +107,25 @@
   </g><!-- /step-2 -->
 
   <!-- ══════════════════════════════════════════════════════
-       STEP 3 — bille 2, deux fois plus lourde : m₂ = 0,40 kg
+       STEP 3 — bille mobile : curseur de masse m ∈ [0,20 ; 0,40] kg
+       (déverrouille la manipulation — unlockAfterStage = 3)
        ══════════════════════════════════════════════════════ -->
   <g id="step-3">
-    <line x1="90" y1="90" x2="610" y2="90" stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="4,3"/>
-    <text x="82" y="94" text-anchor="end" font-size="10" fill="var(--figure-accent)">v<tspan dy="2" font-size="7">ℓ,2</tspan></text>
+    <path id="asymptote-mobile" d="M90,89.6 L610,89.6" fill="none"
+          stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="4,3"/>
+    <text id="label-vlim-tick" x="82" y="93.6" text-anchor="end" font-size="10"
+          fill="var(--figure-accent)">v<tspan dy="2" font-size="7">ℓ</tspan></text>
 
-    <path d="
-      M90,364 L116,303.31 L142,256.0 L168,219.23 L194,190.55
-      L246,150.81 L298,126.73 L350,112.13 L402,103.26 L506,94.63
-      L610,91.43
+    <path id="curve-mobile" d="
+      M90,364 L116,303.3 L142,256.03 L168,219.22 L194,190.55
+      L246,150.83 L298,126.74 L350,112.12 L402,103.26 L506,94.63
+      L610,91.45
     " fill="none" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-    <text x="420" y="84" font-size="10.5" font-style="italic" fill="var(--figure-accent)">m₂ = 0,40 kg (= 2 m₁)</text>
+    <text id="label-masse" x="420" y="84.26" font-size="10.5" font-style="italic"
+          fill="var(--figure-accent)">m = 0,40 kg</text>
 
-    <text x="340" y="404" text-anchor="middle" font-size="11" fill="var(--figure-accent)">même k, masse double → v<tspan dy="2" font-size="8">ℓ,2</tspan><tspan dy="-2"> = 2·v</tspan><tspan dy="2" font-size="8">ℓ,1</tspan><tspan dy="-2"> : le plus lourd va plus vite</tspan></text>
+    <text id="label-lecture" x="340" y="404" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)">m = 0,40 kg (k inchangé) → τ = m/k = 0,20 s ; v_lim = mg/k = 1,96 m/s</text>
   </g><!-- /step-3 -->
 
 </svg>

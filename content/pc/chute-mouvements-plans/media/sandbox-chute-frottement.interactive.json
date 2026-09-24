@@ -1,0 +1,20 @@
+{
+  "slug": "sandbox-chute-frottement",
+  "control": {
+    "kind": "slider",
+    "axis": "m",
+    "domain": [0.2, 0.4],
+    "step": 0.05,
+    "initial": 0.4
+  },
+  "bindings": [
+    { "target": "#curve-mobile", "recompute": "curvePath" },
+    { "target": "#asymptote-mobile", "recompute": "asymptotePath" },
+    { "target": "#label-vlim-tick", "recompute": "vlimTickPos" },
+    { "target": "#label-masse", "recompute": "masseLabelPos" },
+    { "target": "#label-masse", "recompute": "masseLabelText" },
+    { "target": "#label-lecture", "recompute": "lectureText" }
+  ],
+  "unlockAfterStage": 3,
+  "readoutTemplate": "m = {value} kg : τ = {tau} s, v_lim = {vlim} m/s"
+}

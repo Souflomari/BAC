@@ -13,6 +13,9 @@ import { aireSousCourbe } from "./aire-sous-courbe";
 import { racinesUnite } from "./racines-unite";
 import { suiteEscalier } from "./suite-escalier";
 import { asymptotes } from "./asymptotes";
+import { distributionCurseurPH } from "./distribution-curseur-pH";
+import { eulerTailleDePas } from "./euler-taille-de-pas";
+import { sandboxChuteFrottement } from "./sandbox-chute-frottement";
 
 const REGISTRY: Record<string, InteractiveFigureModel> = {
   "tangente-derivee": tangenteDerivee,
@@ -20,6 +23,9 @@ const REGISTRY: Record<string, InteractiveFigureModel> = {
   "racines-unite": racinesUnite,
   "suite-escalier": suiteEscalier,
   asymptotes,
+  "distribution-curseur-pH": distributionCurseurPH,
+  "euler-taille-de-pas": eulerTailleDePas,
+  "sandbox-chute-frottement": sandboxChuteFrottement,
 };
 
 export function getInteractiveFigureModel(slug: string): InteractiveFigureModel | undefined {

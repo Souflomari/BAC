@@ -15224,3 +15224,56 @@ racine de `docs/`, qui n'existe pas (il vit sous `docs/audits/`). La batterie lo
 tourné. Plusieurs portes lisent ce que git suit ; un fichier neuf non ajouté
 leur est invisible. La batterie rougit désormais d'elle-même quand un fichier
 non ignoré n'est pas suivi : « `git add` avant la batterie ».
+
+## §11.199 — Trois dettes de manipulation payées par des curseurs, une porte qui prend TOUTES les figures manipulables, et deux prescriptions que la casse cachait
+
+**CE QUI EST LIVRÉ.** Trois figures statiques de physique-chimie qui tenaient
+lieu, par écrit, d'un manipulable prescrit deviennent ce manipulable : sur la
+figure étagée elle-même, après sa dernière étape, un curseur lié à une fonction
+connue (INTERACTIVE-FIGURE-SPEC). Écrites en parallèle par trois auteurs de
+figures ; registre, comptes et portes par l'orchestrateur.
+
+- `distribution-curseur-pH` (pc/reactions-acido-basiques, R8) — le pH de 1 à 9 :
+  un repère glisse sur les deux courbes, les deux pourcentages s'affichent. **Jamais
+  « 0 » ni « 100 »** : arrondis à l'unité, ils écrivaient « 100 % » dès pH ≈ 7,1,
+  la phrase même que la leçon réfute juste avant (« la forme dominante a déjà tout
+  pris ») — signalé par l'auteur de la figure, corrigé avant de livrer.
+- `euler-taille-de-pas` (pc/chute-mouvements-plans) — Δt de 0,01 à 0,05 s : la
+  ligne brisée d'Euler, le schéma même de la leçon, contre la courbe vraie ;
+  l'écart à 0,30 s se resserre (0,033 → 0,014 → 0,007) sans jamais s'annuler
+  (CH-EU-1).
+- `sandbox-chute-frottement` (même notion) — la masse de 0,20 à 0,40 kg, k fixe :
+  la courbe, l'asymptote, τ = m/k et v_ℓ = mg/k suivent (CH-FR-3). Un curseur
+  au lieu des deux de la spec : DÉCISIONS §22.
+
+`dette-manipulable` : 4 → **1** substitution (cliquet 1) ; `media-manipulable` :
+12 → **13** notions (cliquet 13), dans le même commit. Reste
+`lecture-Ve-courbe-dosage`.
+
+**UNE PORTE POUR TOUTES LES FIGURES MANIPULABLES** (`figures-manipulables`,
+armée dans le job `scene-champ`). dom-truth portait cinq balayages écrits à la
+main, un par figure pilote : une sixième figure n'était vue par rien, et un id
+mal orthographié ne casse rien — il ne fait rien. La porte lit l'inventaire dans
+`content/` : verrou (rien avant la dernière étape), liaisons (chaque cible porte
+ce que le module calcule, à quatre positions), lecture, cible ≥ 44 px, et une
+SECONDE VOIE physique pour les trois figures neuves (le module seul ne prouve
+que le câblage). **VERTE : 89 mesures, 6 familles, 8 figures. Essai rouge 5/5.
+Quatre sabotages du produit, chacun pris par sa famille** : le pH arrondi à
+l'unité → `physique` ; un id mal orthographié → `liaisons` ; « Euler donne la
+valeur exacte » écrit par le produit → `physique` ; le curseur offert dès la
+première étape → `verrou` (et `liaisons` : les cibles de la dernière étape ne
+sont pas encore dans le DOM). Son premier passage était rouge cinq fois, et
+c'était la porte : un clic intercepté par l'en-tête collant, puis une page en
+mouvement réduit où StagedFigure n'a plus de transport — d'où ses deux passes.
+
+**DEUX PRESCRIPTIONS QUE LA CASSE CACHAIT.** Le motif de `dette-manipulable`
+lisait `[a-z0-9-]+` : `[[embed:distribution-curseur-pH]]` et
+`[[embed:lecture-Ve-courbe-dosage]]` n'étaient comptées nulle part — ni livrées,
+ni muettes. 6 → 8 prescriptions. (Leurs substitutions, elles, se comptaient par
+l'en-tête des SVG : la dette était vue, la promesse non.) Et un en-tête qui disait
+« Ce n'est plus une figure figée qui REMPLACE l'embed » comptait encore comme
+substitution : un motif ne lit pas une négation — l'en-tête ne la tourne plus
+ainsi.
+
+**Au passage :** les curseurs des figures manipulables passent à 48 px (`.curseur`,
+les cinq de maths comprises) ; ils mesuraient 16.

@@ -850,6 +850,44 @@ seul modèle qui permette de dire, à l'étape 2, « on n'a changé que λ ».
 
 ---
 
+## 22. Trois substitutions payées par des figures manipulables — et ce qu'elles ne font pas de ce que la spec demandait
+
+**LE FAIT.** Les quatre substitutions écrites qui restaient étaient toutes des
+graphes de physique-chimie ; trois sont payées le 2026-09-24 par des figures
+manipulables de première partie (INTERACTIVE-FIGURE-SPEC : un curseur lié à une
+fonction connue, sur la figure étagée elle-même, déverrouillé à sa dernière
+étape) — `distribution-curseur-pH` (pc/reactions-acido-basiques),
+`euler-taille-de-pas` et `sandbox-chute-frottement` (pc/chute-mouvements-plans).
+`dette-manipulable` : 4 → 1 ; `media-manipulable` : 12 → 13 notions. Reste
+`lecture-Ve-courbe-dosage`.
+
+**CE QUI A ÉTÉ TRANCHÉ PAR DÉFAUT :**
+
+1. **La chute avec frottement n'a qu'UN curseur, la masse** (0,20 à 0,40 kg),
+   là où la spec écrivait « curseurs $m$, $k$ ». Le mécanisme n'en porte qu'un ;
+   c'est $m$ que la misconception CH-FR-3 met en cause (« la masse ne joue
+   jamais ») ; au-delà de 0,40 kg, $v_\ell$ sortirait de l'axe dessiné. **Pour
+   revenir en arrière** : un second curseur demande d'étendre le mécanisme
+   (deux contrôles), ou une scène 2D — un travail, pas une ligne.
+2. **Le pH va de 1 à 9, pas de 0 à 14**, et les pourcentages ne s'affichent
+   jamais « 0 » ni « 100 » (la minoritaire à deux chiffres significatifs sous
+   1 %). Arrondis à l'unité, ils écrivaient « 100 % » dès pH ≈ 7,1 — la phrase
+   même que la leçon réfute. Aucune relation de Henderson–Hasselbalch n'est
+   affichée (exclusion du cadre) ; la fraction ne sert qu'au calcul.
+3. **Euler : Δt de 0,01 à 0,05 s**, les deux pas de la figure statique
+   atteignables exactement ; la comparaison se lit à $t = 0{,}30$ s (l'instant
+   de vérification de la figure d'origine) ; la « vraie » valeur est dessinée et
+   chiffrée, jamais écrite en formule (la leçon ne la dérive pas).
+4. **Les curseurs des figures passent à 48 px** (`.curseur`), les cinq figures de
+   maths comprises — un changement de pièce commune.
+
+**CE QUI RESTE AU PROPRIÉTAIRE :** `lecture-Ve-courbe-dosage` (lire trois points
+sur une courbe de dosage : un point glissé sur une courbe définie par morceaux
+— le mécanisme `drag-point` le permet, pas encore fait) ; et, si la chute doit
+montrer $k$, le choix entre deux curseurs et une scène.
+
+---
+
 ## La PORTÉE de cette page, mesurée
 
 **Cette page ne recense pas toutes les décisions de propriétaire du dépôt.**

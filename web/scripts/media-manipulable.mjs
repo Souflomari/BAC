@@ -63,7 +63,9 @@ const PORTE = process.argv.includes("--porte");
 //  le gain : il rendait son propre essai rouge aveugle.
 //  Relevé à 12 le 2026-09-24 (même commit que la scène) : pc/ondes-mecaniques-
 //  periodiques porte la cuve à ondes.
-const CLIQUET = 12;
+//  Relevé à 13 le même jour, même commit : pc/reactions-acido-basiques porte
+//  la figure manipulable du pH (distribution-curseur-pH).
+const CLIQUET = 13;
 
 const RE_EMBED = /\[\[(?:embed|geogebra|desmos|falstad|phet)[:\]]/gi;
 const parMat = new Map();

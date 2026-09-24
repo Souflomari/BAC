@@ -275,4 +275,17 @@ Pour chaque figure manipulable, la batterie ajoute :
 
 ## Retraits et corrections
 
-*(néant pour l'instant)*
+- **2026-09-24 — §6 (« dom-truth — les contrôles nouveaux, par figure pilote »)
+  ne couvrait QUE les pilotes.** Chaque figure manipulable devait recevoir son
+  balayage écrit à la main dans dom-truth ; la sixième n'en aurait eu aucun. Une
+  porte générique, `web/scripts/figures-manipulables.mjs`, lit l'inventaire dans
+  `content/` et juge TOUTES les figures au rendu (verrou, liaisons, lecture,
+  cible, et une seconde voie physique pour celles qu'elle nomme). Les balayages
+  de dom-truth restent : ils jugent le geste (glisser, clavier, impression).
+- **2026-09-24 — le curseur natif de 16 px.** `InteractiveControl` rendait un
+  `input[type=range]` natif, la règle du dépôt (`.curseur`, 48 px) ne
+  s'appliquait qu'aux scènes. Il porte désormais `.curseur`.
+- **2026-09-24 — « jamais un état persistant » tient, mais une figure peut
+  borner son domaine pour la pédagogie** : `distribution-curseur-pH` s'arrête à
+  pH ∈ [1 ; 9] et n'affiche jamais « 0 » ni « 100 » — la leçon réfute juste avant
+  « la forme dominante a déjà tout pris » (§11.199).

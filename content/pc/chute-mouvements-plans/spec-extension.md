@@ -131,9 +131,13 @@ l'asymptote $v_\ell$ à $t=\tau$). Refermer : la solution complète $v(t)$ n'est
 - `[[figure:bilan-forces-chute-frottement]]` — **type: structural-diagram · tool: svg+katex.**
   Deux instantanés : au début ($\vec P$ seul « efficace », $\vec f$ petit) ; à $v_\ell$
   ($\vec P$ et $\vec f$ opposés et égaux). Vecteurs et labels exacts.
-- `[[embed:sandbox-chute-frottement]]` — **type: manipulable · tool: geogebra/desmos.**
-  Curseurs $m$, $k$ ; la courbe $v=f(t)$ se redessine, $v_\ell$ et $\tau$ s'affichent. Sert
-  CH-FR-3 (voir $v_\ell$ monter avec $m$).
+- `[[embed:sandbox-chute-frottement]]` — **type: manipulable · tool: interactive-svg.** **LIVRÉ le
+  2026-09-24**, en figure manipulable de première partie (INTERACTIVE-FIGURE-SPEC) sur la figure
+  `sandbox-chute-frottement` elle-même — avec UN curseur, la masse $m$ (0,20 à 0,40 kg), $k$ restant
+  fixe : le mécanisme n'en porte qu'un, et c'est $m$ que CH-FR-3 met en cause. La courbe de la
+  seconde bille, son asymptote, $\tau = m/k$ et $v_\ell = mg/k$ suivent ; la première reste la
+  référence. (geogebra/desmos : fermés aux nouveaux embeds, amendement du 2026-07-07 à l'ADR 0017.)
+  Sert CH-FR-3 (voir $v_\ell$ monter avec $m$).
 
 **HORS-CADRE (citer la limite).** **Aucune intégration analytique fermée** de l'ODE (pas de
 séparation des variables, pas de $v(t)=v_\ell(1-e^{-t/\tau})$ dérivée) — miroir exact de la
@@ -202,9 +206,12 @@ après ligne (le frottement mord de plus en plus) et que $v_i$ tend vers le $v_\
 - `[[figure:tableau-euler-pas-a-pas]]` — **type: structural-diagram · tool: svg+katex.**
   Le tableau $t_i / v_i / a_i / v_{i+1}$ rempli, plus le schéma géométrique « marcher le long de
   la tangente sur $\Delta t$, puis recalculer ». Structure exacte.
-- `[[embed:euler-taille-de-pas]]` — **type: manipulable · tool: geogebra/desmos.**
-  Curseur $\Delta t$ : la ligne brisée d'Euler se superpose à la courbe « vraie » ; en réduisant
-  $\Delta t$, l'écart se resserre. Sert directement CH-EU-1.
+- `[[embed:euler-taille-de-pas]]` — **type: manipulable · tool: interactive-svg.** **LIVRÉ le
+  2026-09-24**, en figure manipulable de première partie (INTERACTIVE-FIGURE-SPEC) sur la figure
+  `euler-taille-de-pas` elle-même : curseur $\Delta t$ (0,01 à 0,05 s), la ligne brisée d'Euler — le
+  schéma même de la leçon — se superpose à la courbe « vraie », et l'écart à $t = 0{,}30$ s
+  s'affiche ; il se resserre sans jamais s'annuler. (geogebra/desmos : fermés aux nouveaux embeds.)
+  Sert directement CH-EU-1.
 
 **HORS-CADRE (citer la limite).** Cadre p.11 : « Méthode d'Euler : **seule méthode numérique au
 programme**. » → ne présenter aucune autre méthode (Euler implicite, Runge-Kutta, point milieu).
