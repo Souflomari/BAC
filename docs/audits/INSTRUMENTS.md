@@ -78,10 +78,10 @@
 
 | Instrument | Mesure | Ne dit RIEN de |
 |---|---|---|
-| `web/scripts/figure-preview.mjs` | Une figure hors du site, **sept classes** : texte hors CADRE, texte hors de SON PANNEAU, chevauchements d'étiquettes, tracés qui barrent du texte, aplats restés clairs en thème sombre, **contraste d'un texte contre ce qui est vraiment peint derrière lui**, **texte effacé par une étape ultérieure**. Le contraste est jugé en deux temps — le modèle de peinture propose, un ÉTAGE PIXEL dispose (capture, retrait du texte, recapture, couleur médiane du fond). `--pixels-tous` passe TOUS les textes du corpus au crible des pixels (~25 min) ; `--porte` arme les deux classes propres (cadre, panneau) et tourne en CI | La GRAVITÉ d'une collision en thème sombre (contraste non rejugé). Le HALO (`paint-order`) : l'étage pixel le retire avec le texte et juge quand même sur la teinte — aucune figure ne s'en sert aujourd'hui. Un texte sous 0,5 d'opacité, traité comme un ornement. Les trois classes non armées restent informatives — 7 chevauchements, 85 tracés, 2 aplats, tous documentés |
+| `web/scripts/figure-preview.mjs` | Une figure hors du site, **sept classes** : texte hors CADRE, texte hors de SON PANNEAU, chevauchements d'étiquettes, tracés qui barrent du texte, aplats restés clairs en thème sombre, **contraste d'un texte contre ce qui est vraiment peint derrière lui**, **texte effacé par une étape ultérieure**. Le contraste est jugé en deux temps — le modèle de peinture propose, un ÉTAGE PIXEL dispose (capture, retrait du texte, recapture, couleur médiane du fond). `--pixels-tous` passe TOUS les textes du corpus au crible des pixels (~25 min) ; `--porte` arme les deux classes propres (cadre, panneau) et tourne en CI. **`--dark` a mesuré le thème CLAIR du 2026-09-05 au 2026-09-24** (§11.195) : il prenait les jetons de `.dark` jusqu'à la fin de `tokens.generated.css`, où le bloc `@media print` redéclare les jetons clairs — les PNG « -sombre » étaient identiques à l'octet près. Les jetons sont maintenant composés comme le navigateur les compose (la base, puis le seul bloc `.dark`), et l'instrument sort MUET (code 2) si la surface sombre vaut la claire ; `--jetons` rejoue ce contrôle sans navigateur (essais rouges §11.195 a/b). Re-mesuré en vrai sombre : 259 figures, aucune classe armée ne crie | La GRAVITÉ d'une collision en thème sombre (contraste non rejugé). Le HALO (`paint-order`) : l'étage pixel le retire avec le texte et juge quand même sur la teinte — aucune figure ne s'en sert aujourd'hui. Un texte sous 0,5 d'opacité, traité comme un ornement. Les trois classes non armées restent informatives — 7 chevauchements, 85 tracés, 2 aplats, tous documentés |
 | `web/scripts/etroit-sweep.mjs` | 108 pages (62 leçons, 46 autres — compté le 2026-09-24 ; 70 à l'origine) × 3 largeurs de téléphone (320/360/390) : débord horizontal, chapitres dépliés ; **armée en CI** (job `telephone`, §11.193) **Ouvre les 39 épreuves** (2026-09-05) : la liste se lit par `routes-examens.mjs`, et chaque sujet est ouvert en deux clics — « Commencer », puis « Terminer » — sans lesquels l'instrument mesurait le masthead et déclarait la page propre. | La lisibilité. Une page peut ne pas déborder ET rester illisible — c'est ce que la sonde de figures a montré |
 | `web/scripts/horsligne-sweep.mjs` | Six scènes de coupure réseau : navigation par chapitre, clic vers une autre leçon, bouton Retour, leçon déjà visitée, réponse à un QCM, retour du réseau. **Ce qui tient tient ; ce qui casse est borné** — voir `docs/audits/hors-ligne.md` | Le réseau qui RAMPE au lieu de mourir (latence + pertes de paquets), et la coupure pendant un enregistrement |
-| `web/scripts/polices-de-repli.mjs` | Quels caractères ne sont PAS dessinés par la police du site, et par quoi ils le sont — via `CSS.getPlatformFontsForNode` (protocole DevTools), qui rend les fontes RÉELLEMENT utilisées et le compte de glyphes. Produit l'INVENTAIRE des caractères à couvrir : `ᵉ` (66), l'arabe (~500), les symboles mathématiques écrits en Unicode (~120) | Si le repli se VOIT — l'instrument localise, la capture tranche. Et la fonte de repli MESURÉE est celle de ce conteneur Linux : sur un téléphone ce sera Roboto/Noto ou San Francisco |
+| `web/scripts/polices-de-repli.mjs` | Quels caractères ne sont PAS dessinés par la police du site, et par quoi ils le sont — via `CSS.getPlatformFontsForNode` (protocole DevTools), qui rend les fontes RÉELLEMENT utilisées et le compte de glyphes. Produit l'INVENTAIRE des caractères à couvrir : `ᵉ` (66), l'arabe (~500), les symboles mathématiques écrits en Unicode (~120) | Si le repli se VOIT — l'instrument localise, la capture tranche. Et la fonte de repli MESURÉE est celle de ce conteneur Linux : sur un téléphone ce sera Roboto/Noto ou San Francisco. **Ni ce qu'une police dessine À LA PLACE** : Geist prétend avoir « ω » et dessine « Ω » — pas de repli, rien à dire ; c'est `glyphes-confondus.mjs` qui le mesure (2026-09-24) |
 | `web/scripts/recherche-navigateur.mjs` | Ce que ⌘F trouve : un mot du chapitre ouvert (témoin), un mot qui n'existe QUE dans un chapitre replié, et le texte du MathML masqué de KaTeX. A montré que **10 chapitres sur 11 sont hors d'atteinte de la recherche** — la moitié « ⌘F » de l'arbitrage des chapitres, enfin mesurée | Firefox et Safari (moteurs de recherche différents), et l'interface ⌘F elle-même : on passe par `window.find()`, qui partage la machinerie mais n'est pas l'UI |
 | `web/scripts/typo-francaise.mjs` | La typographie FRANÇAISE dans le texte rendu, chapitres dépliés : apostrophe droite entre deux lettres, espace manquante devant `; : ?`, guillemets mal espacés. Attribue chaque écart au SITE DE RENDU (le chemin des éléments), ce qui dit où corriger. A trouvé ~1 100 écarts hors prose — figures, `\text{}` des formules, titres, libellés du programme. **Unité de mesure : le BLOC, depuis le 2026-09-21 (§11.164).** Elle lisait chaque NŒUD DE TEXTE séparément et annonçait 0 alors que 152 apostrophes droites étaient lisibles sur 50 des 71 pages : « l'**amylase** » pose l'apostrophe en fin de nœud, la lettre suivante dans le nœud d'à côté. Elle partageait l'angle mort du plugin qu'elle surveille. Trois frontières cassent la chaîne : le bloc, un nœud sauté (code, MathML), et chaque formule KaTeX (îlot). 110 pages (62 leçons + 39 épreuves ouvertes et corrigées + accueil, examens, matières, atelier, connexion), zéro écart aujourd'hui ; `--porte` armée, essai rouge de la porte en HANDOFF §11.164. **QUATRIÈME AXE, ET IL VA DANS L'AUTRE SENS (§11.165)** : l'espace insécable EN TROP — une fine posée DANS une formule, lue dans l'annotation TeX que KaTeX conserve, c'est-à-dire dans ce que le moteur a réellement reçu. Une seule direction se triche : appliquer la règle partout rend la première verte et FABRIQUE la seconde, ce qui était littéralement le cas — `frenchTypography` est appelée sur des chaînes brutes à une soixantaine d'endroits, LaTeX compris, et coupait des `\;` entre la contre-oblique et le point-virgule (24 sur 10 pages, 24 avertissements KaTeX à chaque construction). Éprouvé rouge par reconstruction : 1, 1, 2, 1, 2, 3 sur les six premières pages touchées | Le point d'exclamation (factorielle `n!`), les commentaires XML des figures, et le `style` inliné d'une figure (du CSS, pas du français — exclu explicitement) |
 | `web/scripts/impression.mjs` | Ce que l'élève obtient sur le PAPIER : six contrôles en émulation `print`, dans les DEUX thèmes, sur 65 pages — chrome masqué, chapitres dépliés, rien hors colonne, figures dans la page, encre sur papier. A trouvé qu'un élève lisant en thème sombre **imprimait des aplats noirs** (les jetons de figure n'étaient pas remis au clair). `--porte` armée en CI | Le PDF réel (nombre de pages, coupures effectives, rendu des polices), les autres formats de papier, et le COÛT EN ENCRE d'un aplat conforme à l'écran |
@@ -1452,3 +1452,149 @@ au doigt ; l'impression (panneau `print:hidden`) ; les fonctions `cone` et
 
     node scripts/scene-revolution.mjs --porte        (lève son propre next start)
     node scripts/scene-revolution.mjs --essai-rouge
+
+## `web/scripts/scene-manege.mjs` — la scène du manège dit-elle VRAI ?
+
+**PORTE, armée en CI (job `scenes`, vert puis rouge), §11.195, ADR 0041.** La
+sixième scène 3D de première partie (pc/rotation-axe-fixe, R2) : le moment
+d'une force PAR RAPPORT À UN AXE. Le rendu RÉEL, WebGL par SwiftShader, des
+courses en TEMPS RÉEL (4,0 s de poussée ; la roue basculée jusqu'à
+l'équilibre, ≈ 1,08 s).
+
+**Ce qu'elle mesure :**
+
+- **rien avant le clic** — `window.__THREE__` indéfini tant que la scène est
+  fermée ;
+- **les nombres**, par une SECONDE voie écrite depuis les seules constantes de
+  la leçon (M = 60, R = 1,50, m = 25, F = 30, g = 9,8, t = 4,0), sans importer
+  le produit : J(r) = ½MR² + 2mr² à r = 0,10 / 0,30 / 0,80 / 1,50 (68,0 ·
+  72,0 · 99,5 · 180,0) ; M = F × r (45,0 et 6,0) ; θ̈ à TROIS décimales
+  (0,625 · 0,250 · 0,083 — « 0,63 » serait rouge) ; ω et θ à 4,0 s (2,5 / 1,0 /
+  0,3 rad/s ; 5,0 rad (286°) / 2,0 (115°) / 0,7 (38°)) ; la fiche des deux
+  points en fin de course (0,75 / 3,75 m/s, 1,50 / 7,50 m) et PENDANT la course
+  (chaque instantané — temps et fiche lus d'un seul `evaluate` — sur v = d θ̈ t
+  au temps qu'il porte) ; le « 0,0 N·m » du poids et de la poussée radiale par
+  ÉGALITÉ DE CHAÎNE dans 18 réglages ; le moment de la roue basculée, lu à
+  deux valeurs (« au lâcher : 367,5 · à l'équilibre : 0,0 ») ;
+- **les pixels, dans les deux sens** — `ne-tourne-pas` : le poids et la
+  radiale, 4,0 s de course, **0 pixel** changé ; la tangentielle, ~3 000 ;
+  `angle-mesure` : vu du dessus, le rayon peint a tourné de 286,5° et 114,6°
+  (attendus 286,5 et 114,6, ±2°), peint à l'encre sur toute sa longueur ;
+  `axe-bascule` : la roue, le siège descend d'un rayon et tourne de 90° ± 2°,
+  axe vertical il ne bouge pas ; `poids-vu-de-dessus` : de côté la flèche du
+  poids fait 1,6 rayon de haut pour 3 px de large, du dessus 0,2 rayon ;
+  `bras-de-levier` : le segment de la roue part à un rayon, décroît, finit à 0
+  — et AUCUN segment pour le poids avec l'axe vertical. Chaque longueur lue sur
+  les repères du produit est vérifiée aux pixels (encre ou accent peint entre
+  eux). Les captures masquent les étiquettes HTML et centrent le canvas : une
+  étiquette qui paraît, ou le header collant qui passe devant, n'est pas « de
+  l'image qui bouge » ;
+- **les paris, les étapes, avant le pari rien ne répond** (ni lecture, ni
+  fiche, ni bouton de course, ni pixel d'accent en chrominance, ni issue dans la
+  description) ; pendant la course le verdict attend ; **la frontière** (aucun
+  « moment cinétique », ∧, « période », « amplitude »… ; axe basculé, ni ω, ni
+  θ̈, ni durée à l'écran) ; aucun LaTeX brut ; les trois vues au clavier ; fond
+  clair ET sombre ; sans WebGL, pari, course et calcul restent ; aucune erreur
+  console ; la famille `ergonomie` (ci-dessous) ;
+- **`fuite-inter-etapes`** (2026-09-24, revue des captures) — ce qu'une étape
+  révélée OUVRE n'atteint pas l'état qu'un pari SUIVANT fait deviner. La table
+  est écrite dans la porte, contre le descripteur : les sièges répondent au pari
+  de l'étape 4, la poussée départage celui de l'étape 5. Née d'un vrai défaut :
+  l'étape 3 ouvrait les sièges, et à 1,50 m on lisait ω = 1,0 rad/s, la réponse
+  de l'étape 4. L'étape 3 ouvre maintenant `instant`, vérifié à 0,8 · 2,0 ·
+  3,2 · 4,0 s — à 3,2 s par ÉGALITÉ DE CHAÎNE (« 0,60 m/s », « 3,00 m/s ») ;
+- **`etiquettes`** (même jour) — deux étiquettes de texte ne se chevauchent pas,
+  aucune n'est barrée par la flèche, le bras de levier ou le rayon peint (lus sur
+  les repères du produit ; Liang–Barsky réécrit dans la porte), aucune ne sort
+  du canvas — 18 poses, dont 6 à 390 px ; la trace dit ce qui a CHANGÉ entre les
+  deux essais (« essai précédent : la poussée radiale », pas « sièges à
+  1,50 m » quand seule la force a changé).
+
+**Au 2026-09-24 au soir : VERTE, 96 mesures, 19 familles, 556 s** (banc
+calme ; 474 s avant les deux familles neuves et la passe à 390 px). La
+disposition des étiquettes, première version, a été prise en défaut deux fois
+sur 90 mesures (une étiquette barrée par le rayon peint, une hors du cadre) —
+c'était le PRODUIT, cette fois.
+
+**LE PREMIER PASSAGE ÉTAIT ROUGE — SIX FOIS, ET C'ÉTAIT LA PORTE** (sous
+charge, pendant un autre banc — ADR 0040) : une pause « à 3,2 s » en temps réel
+tombait après la fin de la course et en relançait une autre ; une longueur lue
+une image trop tôt ; une lecture exigée avant la révélation (le contrat même
+l'interdit) ; une capture où le header collant passait devant le canvas
+(1 128 px « changés » sur un manège immobile) ; une boucle d'instantanés comptée
+en tours et non en temps, alors que le temps simulé avance d'au plus 0,25 s par
+image. Aucun des six n'était un défaut du produit.
+
+**NE DIT RIEN DE :** si les étapes enseignent ; si une PHRASE dit vrai (la
+`suite` fausse de l'étape 3 est passée verte : les nombres affichés étaient
+justes, pas la phrase qui les annonçait) ; un vrai téléphone ; le glisser au
+doigt ; l'impression (panneau `print:hidden`).
+
+    node scripts/scene-manege.mjs --porte        (lève son propre next start)
+    node scripts/scene-manege.mjs --essai-rouge
+
+## `web/scripts/glyphes-confondus.mjs` — une police ne dessine pas une lettre comme une autre
+
+**PORTE, armée en CI (job `gates`, vert puis rouge), 2026-09-24.** Née d'une
+capture du manège : « à ω constante » s'affichait « à Ω constante ». La table
+cmap de Geist 1.7.2 (`node_modules/geist/dist/fonts/geist-sans/Geist-Variable.ttf`,
+lue octet par octet) rattache **U+03C9 « ω » au glyphe 640, `uni03A9` — celui
+de « Ω »**. Toute vitesse angulaire écrite en TEXTE dans l'interface — légendes,
+choix de QCM, étiquettes de misconceptions (« Utiliser ω² au lieu de ω… »),
+titres de leçon — se lisait en ohm. Le correctif (layout.tsx) déclare Geist sur
+le fichier même du paquet avec une plage unicode qui exclut ce seul point de
+code : « ω » retombe sur la police de repli, comme θ, φ, α… que Geist n'a pas.
+
+**Pourquoi rien ne le voyait** — trois formes de la même cécité (ADR 0036) :
+le texte source est juste (un grep y trouve « ω ») ; `polices-de-repli.mjs`
+cherche les caractères qu'une police N'A PAS, et Geist prétend avoir ω — un seul
+nom de police pour le nœud, rien à signaler ; une capture ne le montre qu'à qui
+lit la LETTRE et pas le mot. C'est le produit — sa police — qui réécrit le
+caractère avant de l'écrire (ADR 0039).
+
+**Ce qu'elle mesure :** chaque caractère hors ASCII de `content/` et `web/src/`
+(284 au 2026-09-24, diacritiques combinants exceptés) est dessiné sur un canvas
+dans chacune des six piles de polices du site RENDU — le corps (400 et 600), la
+lecture (400, gras, italique), la mono — après chargement de TOUTES les faces
+déclarées (un canvas ne déclenche aucun chargement : il dessine avec ce qui est
+là). Deux caractères différents à la même image et à la même chasse sont
+CONFONDUS. Ont le droit de partager un glyphe : les équivalents NFKC (µ/μ, Ω
+U+2126/U+03A9, les espaces) et les homoglyphes de même sens listés un par un
+(`MEMES_SIGNES` : ⟂ U+27C2 et ⊥ U+22A5, « perpendiculaire » tous les deux). Les
+invisibles par nature (\p{Z}, \p{C}, \p{M}) ne sont pas comparés ; le tofu est
+compté à part.
+
+**Rouge avant vert, sur le produit :** build d'avant le correctif — 3
+confusions (ω = Ω dans le corps en 400 et en 600 ; ⟂ = ⊥ dans la mono de
+repli, qui a fait naître `MEMES_SIGNES`) ; build d'après — 6 piles, 0
+confusion. **L'essai rouge** charge le fichier Geist BRUT tel que le site le
+sert, sans la plage unicode, et doit y entendre ω = Ω et rien d'autre : le jour
+où il ne l'entend plus, Geist a corrigé sa cmap — la plage de layout.tsx peut
+partir, et l'essai avec.
+
+**NE DIT RIEN DE :** la police d'un vrai téléphone (les replis `local("Arial")`
+échouent sur la machine de CI, qui dessine avec DejaVu : ce qui est mesuré,
+c'est ce que NOS polices font, et que le repli n'est pas Geist) ; les glyphes
+dessinés dans les figures SVG (police déclarée par la figure, pas par le site) ;
+KaTeX (ses propres polices, non comparées).
+
+    node scripts/glyphes-confondus.mjs               (lève son propre next start)
+    node scripts/glyphes-confondus.mjs --essai-rouge
+
+## `web/scripts/lib/scene-ergonomie.mjs` — la famille `ergonomie` des six portes de scène
+
+**Module partagé, pas une porte seule** : chaque porte de scène l'appelle
+(`ergonomie({ lancer, url, scene, noter, essai })`) et sa famille entre dans
+l'essai rouge de la porte. Né de la revue ergonomie du 2026-09-24 (§11.195), qui
+a trouvé sur le RENDU ce que les cinq portes ne mesuraient pas. Au clavier
+seulement, dans des pages NEUVES : **ouvrir** (Entrée sur « Ouvrir la scène
+3D » → le focus sur le titre de l'étape), **parier** (Entrée sur un choix → le
+focus reste dans le panneau), **avancer** (Entrée sur « Suivant » → le focus sur
+le titre neuf, VISIBLE sous le header), **revenir** (« Précédent » à l'étape 1
+reste focalisable, inerte) ; au **téléphone** (390 px), Tab de commande en
+commande : aucune ne se range sous la scène collante ni sous le header
+(WCAG 2.2 — 2.4.11) ; toute cible visible ≥ 44 px (WCAG 2.5.5 — le normatif ;
+le plancher maison est 48).
+
+**NE DIT RIEN DE :** l'ordre de tabulation sur grand écran (les vues passent
+avant le pari — connu, laissé) ; un lecteur d'écran réel ; les régions live.

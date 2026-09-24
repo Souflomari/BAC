@@ -14889,3 +14889,163 @@ sa garde de dérive était rouge sur l'arbre intact, et avec elle trois essais
 rouges que la CI lance. Corrigé avant de pousser (e2b2ea2e). Deux fois en une
 nuit, la vérification locale d'avant-poussée a payé : c'est elle qui rend la CI
 verte, pas la chance.
+
+## §11.195 — Le run 749 rouge sur un vrai défaut, une porte sombre aveugle depuis dix-neuf jours, l'ergonomie des scènes mesurée, et une sixième scène : le manège
+
+**LE RUN 749 A ROUGI, ET IL AVAIT RAISON.** Trois jobs verts (`telephone`,
+`qcm`, `scenes` — la cinquième scène comprise, 4 min 08 s en CI), et `gates`
+arrêté à « Porte figures (thème clair) » : l'étiquette « x » de la figure neuve
+du barreau R9 (`volume-revolution-tranche.svg`), à l'accent DANS le disque
+teinté, mesurait 3,90:1 aux pixels. Elle passe à l'encre ; le rayon « f(x) »,
+barré à 61 % par la méridienne (sonde informative), passe au-dessus de la
+courbe. Leçon d'avant-poussée, écrite pour la suivante : **une figure neuve
+passe `figure-preview --porte` (clair ET sombre) avant de quitter la machine** —
+la batterie locale ne la lance pas (navigateur, hors champ).
+
+**`gates` s'étant arrêté à l'étape 22, trente-cinq étapes n'avaient pas
+tourné.** Le job entier a été rejoué en local, dans un worktree du commit exact,
+avec les COMMANDES du workflow (ADR 0040 ; seule adaptation : le chemin de
+Chromium) : **53 étapes, 0 rouge** — dont presse-papier (16 min 25 s ici contre
+6 en CI), impression, zoom, formules, ancres.
+
+**LA PORTE « FIGURES — THÈME SOMBRE » MESURAIT LE THÈME CLAIR DEPUIS LE
+2026-09-05.** Vu en regardant la figure neuve dans les deux thèmes : les PNG
+« -sombre » étaient identiques à l'octet près aux PNG clairs. `figure-preview
+--dark` prenait les jetons de `.dark` jusqu'à la FIN de `tokens.generated.css`,
+où le bloc `@media print` (087440e2, « le papier n'a pas de thème ») redéclare
+tous les jetons clairs ; collectés dans l'ordre, ils gagnaient. Dix-neuf jours
+de vert sur le mauvais thème (ADR 0039 : deux valeurs qui devraient différer et
+sont égales à l'octet près sont un défaut de mesure). Corrigé : les jetons sont
+composés comme le navigateur les compose, et l'instrument sort MUET si la
+surface sombre vaut la claire ; `--jetons` rejoue ce contrôle sans navigateur ;
+essais rouges §11.195 (a) — le défaut réel remis — et (b) — un `.dark` qui perd
+sa surface. **Re-mesuré en vrai sombre : 259 figures, aucune classe armée ne
+crie** ; les défauts sombres (23 contrastes graves, 2 aplats restés clairs) sont
+tous dans les deux figures déjà versées à la dette owner. L'aveuglement n'a rien
+caché — c'est maintenant une mesure, plus une supposition.
+
+**LE SOLIDE DE RÉVOLUTION, REVU « CALME » (WAVE 2).** Vu le long de l'axe avant
+le pari de la coupe, le fil de fer dessinait une ROUE (la réponse, « un disque
+plein », peinte avant la question) : il s'efface à moins de 12° de l'axe. La
+fiche répondait dès l'étape 1 aux paris des étapes 2 et 5 : ses lignes attendent
+la révélation de l'étape qui les établit (« rien avant le pari » vaut pour la
+SCÈNE). Pendant le balayage, la phrase disait le volume complet et la lecture le
+volume balayé : elle dit les deux. 16 tranches au plus (40 noyaient l'accent).
+
+**L'ERGONOMIE DES SCÈNES, MESURÉE SUR LE RENDU.** La revue WAVE 2 a trouvé,
+dans les cinq scènes, le focus renvoyé à `<body>` à l'ouverture, à CHAQUE pari
+et au retour à l'étape 1 ; « Suivant » qui laissait l'écran sur la queue d'un
+panneau de 1 400 à 1 900 px ; des curseurs natifs de 16 px alors que `.curseur`
+(48 px) existait sans un seul emploi ; une phrase d'issue en région live, relue
+à chaque cran de curseur ; une colonne de réglages de 212 px à 840 px. Corrigé
+dans les PIÈCES COMMUNES (ADR 0041, addendum du 2026-09-24, suite) — et le choix
+coché qui garde le focus vaut pour TOUT le produit : chaque point d'arrêt des
+62 leçons renvoyait le focus à `<body>` après une réponse. Mesuré par une
+famille neuve, `ergonomie` (`scripts/lib/scene-ergonomie.mjs`), dans les six
+portes de scène.
+
+**UNE SIXIÈME SCÈNE : LE MANÈGE** (`pc/rotation-axe-fixe`, R2 ; spec de
+l'architecte `content/pc/rotation-axe-fixe/spec-scene-manege.md` ; DÉCISIONS
+§20). La figure plane dessine l'axe comme un point ; une force parallèle à
+l'axe y est indessinable. La leçon ne comptait que « deux façons d'avoir un
+moment nul » ; l'énoncé marocain en compte trois. Le poids d'un enfant assis au
+bord (245 N, à 1,50 m) : quatre secondes de course, **pas un pixel ne bouge** ;
+l'axe basculé, le même poids, au même point, donne 367,5 N·m et la roue
+descend de 90°. Puis deux points d'un même disque (même angle, 1,50 m contre
+7,50 m), la répartition de la masse (J = 72,0 → 180,0, ω divisée par 2,5 et non
+par 5 ou 25), l'étape libre. Sa porte, `scene-manege` : VERTE, 71 mesures,
+17 familles, 474 s sur banc calme (avant la revue des captures, §11.196) ;
+un dixième modèle de misconception et trois items (ROT-26, 27, 28) ; la prose
+« Trois façons d'avoir un moment nul », et la dépendance à l'AXE écrite en
+prose (critique pédagogique, B2) ; `validate-content` exige désormais qu'un pari
+de scène nomme un modèle DÉCLARÉ (essai rouge §11.195 c).
+
+**LES DEUX CRITIQUES DE LA VAGUE 1 ONT TROUVÉ DE VRAIES CHOSES.** Fidélité :
+aucun dépassement de cadre, mais « le maximum atteignable » (0,625) était faux
+à r = 0,10 m (0,662) ; « M = m g d » écrit sans sa condition (vrai à
+l'horizontale seulement — R6 dit m g d sin θ) ; l'arrêt à l'équilibre sans la
+phrase honnête que porte l'arrêt à 4,0 s ; g non déclaré là où 245 N paraît.
+Pédagogie, deux bloquants : **à la révélation de l'étape 2, l'écran affichait
+0,0 N·m — le nombre du MAUVAIS pari** (la roue est à l'équilibre quand le
+verdict tombe) : la lecture garde désormais « au lâcher : 367,5 · à
+l'équilibre : 0,0 » ; et la prose écrivait « 367,5 ne veut rien dire » sans
+jamais écrire l'antidote. Plus : θ̈ nommé deux chapitres trop tôt par la phrase
+d'issue, la clé des paris toujours en deuxième position, deux distracteurs
+d'item qui ne tiraient personne, une promesse (« au moment précis où ω vaut
+2,0 ») que la scène ne pouvait pas tenir. Tout corrigé ; ce qui reste ouvert
+est en DÉCISIONS §20.
+
+**LES SIX PORTES DE SCÈNE, SUR BANC CALME, UNE À UNE** (ADR 0040 — rien
+d'autre ne tournait ; build du travail en cours, avant la revue des captures) :
+
+| porte | verdict | durée |
+|---|---|---|
+| `scene-manege` | VERTE, 71 mesures, 17 familles | 474 s |
+| `scene-revolution` | VERTE, 54 mesures, 13 familles | 152 s |
+| `scene-vectoriel` | VERTE, 44 mesures, 12 familles | 187 s |
+| `scene-sphere` | VERTE, 40 mesures, 12 familles | 148 s |
+| `scene-orbite` | VERTE, 50 mesures, 12 familles | 159 s |
+| `scene-lorentz` | VERTE, 52 mesures, 14 familles | 574 s |
+
+La famille `ergonomie` est verte dans les six (au téléphone : 6 à 8 commandes
+atteintes au Tab, aucune sous la scène collante ni sous le header, toutes
+≥ 44 px).
+
+**LE RUN 750 (3b3a08ef, la revue calme du solide de révolution) : QUATRE JOBS
+VERTS.** `scenes` 39 min 23 s — dont **18 min 20 s pour la seule porte Lorentz**
+(03:30:28 → 03:48:48), près de la moitié du job ; `gates` 54 min 57 s (53
+étapes) ; `qcm` 19 min 43 s ; `telephone` 7 min 44 s. D'où, dans ce commit, un
+job `scene-champ` pour Lorentz seule : sans lui, le manège (474 s sur banc
+calme, davantage en CI) aurait porté `scenes` vers 50 min, sous un plafond de
+job à 60.
+
+## §11.196 — La revue des captures : ω s'affichait en ohm dans toute l'interface, et une étape du manège répondait au pari suivant
+
+**CE QU'ON A FAIT : REGARDER.** Les captures du manège (1 280, 390, sombre),
+prises pour la vague 2, ont été LUES avant d'être envoyées aux critiques. La
+porte était verte (71 mesures, 17 familles). Quatre défauts réels en sont sortis,
+qu'aucune famille ne mesurait.
+
+**1. « ω » S'AFFICHAIT « Ω », DANS TOUT LE PRODUIT.** « à ω constante » se
+lisait « à Ω constante ». La table cmap de Geist 1.7.2 rattache U+03C9 au
+glyphe `uni03A9` (lu octet par octet dans `Geist-Variable.ttf` ; au canvas :
+même image, même chasse). Toute vitesse angulaire écrite en TEXTE dans
+l'interface — légendes, choix de QCM, étiquettes de misconceptions
+(« Utiliser ω² au lieu de ω… »), titres de leçon — se lisait en ohm. Corrigé à
+la racine (layout.tsx, une plage unicode ; ADR 0030, addendum). **Rien ne
+pouvait le voir** : le texte source est juste ; `polices-de-repli` cherche les
+caractères qu'une police N'A PAS, et Geist prétend avoir ω. Porte neuve,
+`glyphes-confondus` (armée, job `gates`) : 284 caractères, six piles, rouge
+avant vert sur le produit (3 → 0), essai rouge sur le fichier Geist BRUT.
+
+**2. L'ÉTAPE 3 DU MANÈGE RÉPONDAIT AU PARI DE L'ÉTAPE 4.** Elle ouvrait le
+curseur des sièges : à 1,50 m, ω = 1,0 rad/s — la réponse exacte du pari
+suivant. Et sa `suite` promettait « l'angle non plus » : faux, J change avec les
+sièges. Elle ouvre maintenant `instant` (la même course, au pas de 0,1 s — t =
+3,2 s pile, 0,60 et 3,00 m/s ; en temps réel la porte n'avait jamais fait mieux
+que 3,25 s). Règle écrite (ADR 0041, addendum du soir ; spec amendée ;
+DÉCISIONS §20.5) : **ce qu'une étape révélée ouvre ne doit pas atteindre l'état
+qu'un pari suivant fait deviner.** Famille `fuite-inter-etapes`.
+
+**3. DES ÉTIQUETTES ILLISIBLES DANS LA VUE QUI COMPTE.** Vue du dessus — celle
+que le retour du pari de l'étape 1 demande —, « 245 N » et « dans le plan de
+rotation : 0 N » tombaient au même point ; de côté, « 245 N » barré par sa
+flèche. `disposer` (Plateau) : coût le plus bas, hors cadre ≫ sur une étiquette
+≫ barrée ≫ loin. Première version (« première place parfaite ») prise en défaut
+2 fois sur 90 mesures par la famille neuve `etiquettes` — c'était le produit.
+
+**4. « Moment de le poids »** → « du » ; la trace de l'essai précédent disait
+« sièges à 1,50 m » quand seule la FORCE avait changé : elle dit ce qui diffère.
+
+**La porte `scene-manege` : VERTE, 96 mesures, 19 familles, 556 s** (banc
+calme). Le run 750 (3b3a08ef) était vert sur ses quatre jobs.
+
+**Ce qu'il faut retenir pour la suite :** une porte qui vérifie les NOMBRES
+affichés laisse passer la PHRASE qui les annonce (« l'angle non plus » était
+vert) ; et une police se juge aussi sur ce qu'elle dessine hors de l'alphabet
+latin que le produit emploie. **Encore à faire, écrit ici pour ne pas se
+perdre :** l'essai rouge de `scene-manege` après ces deux familles (le passage
+lancé a été coupé par un redémarrage du conteneur) ; les sabotages produit
+(`fuite-etape3`, `etiquettes-poser`, et les quatre de la construction) ; la
+vague 2 (calme, visuel, ergonomie) sur les captures neuves ; les cinq autres
+scènes posent encore leurs étiquettes avec `poser`.

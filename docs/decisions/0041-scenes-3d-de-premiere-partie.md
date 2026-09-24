@@ -313,6 +313,116 @@ rebâties : la coupe dessinée en anneau fait rougir la famille `pixels` seule
 `nombres` et `frontiere` seules (16,76 lu pour 8π ≈ 25,13). Chaque défaut n'a
 atteint que la porte qui le garde.
 
+## Addendum du 2026-09-24 (suite) — la sixième scène : le manège ; et l'ergonomie devient une famille de porte
+
+`pc/rotation-axe-fixe`, R2, `[[embed:manege-axe-fixe]]`, juste après la figure
+plane du moment d'une force. Critère du §1, au mot près : la figure plane
+dessine l'axe comme un POINT (⊙) et toutes les forces dans le plan de la page ;
+une force PARALLÈLE à l'axe y est indessinable — vue de dessus un point, vue de
+côté un énorme bras de levier. Le poids d'un enfant assis au bord (245 N, à
+1,50 m) ne fait pas tourner le manège d'un degré ; l'axe basculé, le même
+poids, au même point, à la même distance, donne 367,5 N·m. Le moment n'est pas
+une propriété de la force : c'est celle d'un couple (force, axe). Cinq étapes à
+pari (le poids parallèle, l'axe basculé, deux points d'un même disque, la
+répartition de la masse, l'étape libre), spec de l'architecte :
+`content/pc/rotation-axe-fixe/spec-scene-manege.md`.
+
+**Une scène à course en TEMPS RÉEL.** La poussée dure 4,0 s, comme dans
+l'exemple travaillé de R4 : aucun facteur d'échelle temporelle à déclarer, donc
+aucun à mal lire. Pour le poids, la preuve EST la durée pendant laquelle il ne
+se passe rien ; le verdict attend la course entière. L'axe basculé s'arrête à
+l'équilibre (≈ 1,08 s) : aucune oscillation, le chapitre 7 est renvoyé, pas
+entamé. Le zéro du moment est STRUCTUREL dans le code (la composante d'une force
+parallèle à Δ est posée à 0, jamais obtenue par un cos 90° flottant), et la
+porte le lit par égalité de chaîne, « 0,0 N·m », à toutes les distances.
+
+**Les forces sont l'ÉNONCÉ, pas la réponse : à l'encre.** Le poids et la
+poussée restent visibles avant le pari, sur une seule échelle (1,00 m pour
+100 N — le rapport 8:1 est l'argument). Ce que la scène AJOUTE pour répondre —
+la droite d'action, le bras de levier, les arcs — est à l'accent et n'existe
+qu'après le pari. Corollaire écrit pour les scènes à venir : une donnée de
+l'énoncé ne se peint pas dans la couleur de la réponse, sinon la règle « aucun
+pixel d'accent avant le pari » devient impossible à tenir honnêtement.
+
+**Un pari de scène nomme un modèle DÉCLARÉ.** La scène vise un dixième modèle
+de misconception, `moment-force-direction-vs-axe` (DÉCISIONS §20). La spec
+exigeait qu'il soit déclaré au moment où la scène est validée ; rien ne le
+vérifiait — la règle §11.58 ne lisait que les items et les points d'arrêt.
+`validate-content` l'exige maintenant des paris de scène et de
+`pedagogy_wiring` (essai rouge §11.195 c).
+
+**L'ergonomie, mesurée sur le rendu — une famille commune aux six portes.** La
+revue WAVE 2 de la cinquième scène a trouvé, sur le RENDU : le focus renvoyé à
+`<body>` à l'ouverture, à chaque pari, et en revenant à l'étape 1 ; « Suivant »
+qui laissait l'écran sur la queue d'un panneau de 1 400 à 1 900 px ; des
+curseurs natifs de 16 px (poignée de 14) alors que `.curseur` (48 px) existait
+sans emploi ; une phrase d'issue en région live, relue à chaque cran de
+curseur ; une colonne de réglages de 212 px à 840 px de large. Devenu commun,
+dans les pièces partagées :
+1. **le focus ne tombe jamais à `<body>`** — le titre de l'étape le reçoit à
+   l'ouverture et à chaque changement d'étape (la page remonte au haut de la
+   scène si le titre est hors de vue, sans animation) ; le choix coché reste
+   focalisable (`aria-disabled`) — dans TOUT le produit, pas seulement dans
+   les scènes : chaque point d'arrêt renvoyait le focus à `<body>` ; « Ton
+   pari : … » le reçoit quand il remplace la liste ; « Précédent » à l'étape 1
+   est `aria-disabled` ;
+2. **les curseurs sont `.curseur`** (poignée à l'encre douce dans une scène :
+   l'accent reste à l'objet étudié) ;
+3. **chaque étape garde son pari** ; « Recommencer » repart à blanc ;
+4. **une seule région live par geste** : la phrase d'issue ne l'est plus quand
+   elle suit un curseur (le verdict de l'orbite, qui ne change qu'à la bascule,
+   le reste) ;
+5. **la colonne des réglages ne descend jamais sous 18rem** ; au téléphone, les
+   vues suivent le pari et le lancement, plus la fiche ;
+6. **la porte le mesure** : `scripts/lib/scene-ergonomie.mjs`, famille
+   `ergonomie` de chacune des six portes — ouvrir, parier, avancer, revenir AU
+   CLAVIER sans perdre le focus ; au téléphone, Tab de commande en commande sans
+   qu'aucune ne se range sous la scène collante ni sous le header ; toute cible
+   visible du panneau ≥ 44 px (WCAG 2.5.5 — le normatif armé, ADR 0039).
+
+## Addendum du 2026-09-24 (soir) — la revue des captures : un réglage qui répondait au pari SUIVANT, et des étiquettes qui se posent
+
+Le manège était vert (71 mesures, 17 familles). Les captures prises pour la
+vague 2 ont montré, en les LISANT, trois choses qu'aucune famille ne mesurait.
+
+**1. Le contrat du §6 vaut ENTRE les étapes.** L'étape 3 (« deux points, un
+seul angle ») ouvrait, après sa révélation, le curseur des sièges. Le pousser à
+1,50 m et relancer affichait ω = 1,0 rad/s — la réponse exacte du pari de
+l'étape 4, une étape avant qu'il soit posé. Et sa `suite` promettait « l'angle
+non plus » : faux, déplacer les sièges déplace des masses, J change, l'angle
+avec. Chaque famille regardait SON étape ; la fuite passait d'une étape à
+l'autre par un RÉGLAGE. Règle, désormais : **ce qu'une étape révélée ouvre ne
+doit pas atteindre l'état qu'un pari suivant fait deviner** — un réglage est le
+seul chemin vers un état. C'est la deuxième FORME de la même fuite (ADR 0036) :
+le 2026-09-24 au matin, les lignes de fiche du solide de révolution
+répondaient aux paris suivants dès l'étape 1 ; le soir, un curseur. L'étape 3
+ouvre maintenant `instant` — la même course, parcourue à la main, au pas de
+0,1 s : il atteint t = 3,2 s EXACTEMENT, où la fiche affiche les 0,60 et
+3,00 m/s de R1 (en temps réel, la porte n'avait jamais fait mieux que 3,25 s ;
+un élève non plus). Famille `fuite-inter-etapes` : la porte écrit elle-même
+quel réglage répond à quel pari (les sièges → étape 4, la poussée → étape 5),
+contre le descripteur.
+
+**2. Une étiquette de texte se POSE ; elle ne se centre pas sur son ancre.**
+`poser` centre une étiquette sur le point qu'elle nomme. Vue du dessus — la vue
+que le retour du pari de l'étape 1 demande —, « 245 N » et « dans le plan de
+rotation : 0 N » tombaient sur le même point, illisibles ; de côté, « 245 N »
+était barré par sa propre flèche. `disposer` (pièce commune, `Plateau.tsx`)
+essaie l'ancre puis douze directions à huit distances et garde la place au coût
+le plus bas : hors du cadre ≫ sur une étiquette ≫ barrée par un trait ≫ loin.
+Première version en « première place parfaite, sinon la première libre » : la
+porte l'a prise en défaut deux fois sur quatre-vingt-dix mesures. Famille
+`etiquettes`, à 1 280 ET à 390 px, écrite une seconde fois dans la porte
+(Liang–Barsky, rien d'importé). Les cinq premières scènes posent encore leurs
+étiquettes avec `poser` — des lettres (N, P, S, H, Δ), sans collision vue ; les
+faire passer à `disposer` est ouvert, leurs portes ne le mesurent pas.
+
+**3. Ce que la scène écrit en texte passe par la police du chrome.** « à ω
+constante » s'affichait « à Ω constante » : Geist dessine ω comme Ω (ADR 0030,
+addendum du même jour). Corrigé à la racine, pour tout le produit ; la scène
+écrit aussi désormais ses en-têtes de tableau en KaTeX ($v = d\,\omega$), comme
+la fiche.
+
 ## Retractions and Corrections
 
 - **2026-09-23 — la « deuxième scène » annoncée n'était pas la bonne
@@ -327,3 +437,23 @@ atteint que la porte qui le garde.
   intersections dessinées et les descriptions répondaient au pari avant qu'il
   soit posé, dans les deux premières scènes. Corrigé et gardé par les portes
   (addendum du soir) ; la règle est élargie à tout ce qui dépend de l'issue.
+- **2026-09-24 — « 1, 12 ou 40 tranches » (addendum de la cinquième scène) est
+  devenu « 1, 8 ou 16 ».** La revue calme a jugé qu'à 40 tranches l'accent
+  noyait la scène ; le curseur s'arrête à 16, la porte mesure l'invariance du
+  volume à n = 1, 8, 16. L'argument (aucune somme, la valeur exacte à tout n)
+  est inchangé.
+- **2026-09-24 — §7 disait le contrat de focus « vérifié en donnant le focus,
+  pas en le supposant » ; il ne l'était pas.** Une seule mesure de clavier
+  existait (deux flèches sur un curseur, scène 5), et la revue ergonomie a
+  trouvé le focus perdu à l'ouverture, à chaque pari et au retour à l'étape 1,
+  dans les cinq scènes. Corrigé dans les pièces communes et gardé par la
+  famille `ergonomie` des six portes (addendum ci-dessus). Une règle écrite au
+  présent n'est pas une règle vérifiée.
+- **2026-09-24 (soir) — l'élargissement du §6 du 2026-09-23 (« à tout ce qui
+  dépend de l'issue ») était encore trop étroit.** Il pensait l'ÉTAPE : ce
+  qu'elle affiche avant son propre pari. Une étape révélée pouvait ouvrir le
+  réglage qui répond au pari de l'étape SUIVANTE (manège, étape 3 → étape 4).
+  Corrigé et gardé (addendum du soir, famille `fuite-inter-etapes`) ; la
+  `suite` fausse de l'étape 3 (« l'angle non plus ») est retirée — la porte
+  vérifiait les nombres affichés, qui étaient justes, pas la phrase qui les
+  annonçait.

@@ -64,6 +64,30 @@ ton, une famille typographique, retenue.
 - Deux dépendances au plus seront ajoutées sur toute la refonte
   (`cmdk`, `next-view-transitions` en spike R4).
 
+## Addendum du 2026-09-24 — Geist dessinait « ω » comme « Ω »
+
+La grotesque choisie ici porte un défaut de sa table cmap (Geist 1.7.2, le
+paquet `geist`) : **U+03C9 « ω » y est rattaché au glyphe `uni03A9`, celui de
+« Ω »**. Toute vitesse angulaire écrite en texte dans le chrome — légendes des
+scènes, choix de QCM, étiquettes de misconceptions, titres — s'affichait en
+ohm. Vu sur une capture du manège (« à Ω constante »), confirmé en lisant la
+table octet par octet et en dessinant les deux caractères : image identique,
+chasse identique.
+
+Décision : Geist Sans est déclarée dans `layout.tsx` sur le fichier même du
+paquet (`next/font/local`, comme `geist/font/sans` le fait à une ligne près),
+avec une plage unicode qui exclut ce seul point de code. « ω » retombe sur la
+police de repli, comme θ, φ, α… que Geist n'a pas du tout. Aucune autre
+famille, aucun jeton ne change. La porte `glyphes-confondus.mjs` (armée en CI)
+dessine chaque caractère du produit dans chaque pile de polices du site rendu
+et rougit si deux caractères différents partagent un glyphe ; son essai rouge
+charge le fichier Geist BRUT et doit y entendre ω = Ω — le jour où il ne
+l'entend plus, la plage peut partir.
+
+Ce que ça dit du choix d'une police, pour la prochaine : **une police se juge
+aussi sur ce qu'elle dessine hors de l'alphabet latin que le produit emploie**
+— ici le grec des sciences. Le choix de 2026-08 l'a jugée sur le latin.
+
 ## Retractions and Corrections
 
 *(néant à la création)*

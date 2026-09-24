@@ -1,6 +1,6 @@
 # Décisions en attente — ce qui demande le propriétaire
 
-**Dernière mise à jour : 2026-09-24** (§16 et §17 levées par leur prémisse ; §18 et §19 neuves). Cette page existe parce qu'il n'y avait
+**Dernière mise à jour : 2026-09-24** (§16 et §17 levées par leur prémisse ; §18, §19 et §20 neuves — §20 tranchée par défaut, réversible). Cette page existe parce qu'il n'y avait
 nulle part où voir, d'un coup d'œil, ce qui attend un arbitrage. Les constats
 vivent dans `docs/audits/` et le récit dans `docs/HANDOFF.md` §11 ; ceci est
 seulement la liste, et ce que coûte chaque attente.
@@ -664,6 +664,89 @@ construction écrit (§12.1), contrat « rien avant le pari » par étape (§7),
 frontière de programme en douze interdits (§9), la porte en huit familles
 (§11.4). Coût : ~25-40 Ko de données chargées au clic, une porte de ~3 min dans
 le job `scenes`, quatre items à maintenir.
+
+---
+
+## 20. Le manège : un dixième modèle de misconception, pris par défaut — et réversible en une ligne
+
+**LE FAIT.** La sixième scène 3D (`pc/rotation-axe-fixe`, R2, §11.195) repose
+sur un trou de la leçon que la spec de l'architecte a mesuré : « Deux façons
+d'avoir un moment nul » — la force sur l'axe, la force radiale. L'énoncé
+marocain en compte trois : nul dès que la droite d'action **rencontre l'axe ou
+lui est parallèle**. Le cas parallèle (le poids d'un enfant assis au bord d'un
+manège, 245 N à 1,50 m, qui ne le fait pas tourner d'un degré) n'était écrit
+nulle part, et c'est le seul que la 3D peut montrer. La spec
+(`content/pc/rotation-axe-fixe/spec-scene-manege.md` §12) laissait quatre
+questions au propriétaire ; le mandat permanent (« ne t'arrête pas pour mon
+accord ») a été lu comme : trancher selon la recommandation de l'architecte,
+l'écrire ici, et garder chaque choix réversible.
+
+**CE QUI A ÉTÉ TRANCHÉ PAR DÉFAUT :**
+
+1. **Le dixième modèle est OUVERT** — `moment-force-direction-vs-axe`, avec
+   trois items de banc (ROT-26, ROT-27 à R2 ; ROT-28 à R6, co-étiqueté avec le
+   pendule pesant). Recommandation de la spec (§8.2) : l'élève qui répond
+   367,5 N·m pour le poids n'ignore pas le bras de levier, il échoue sur la
+   DIRECTION — deux modèles sous une même étiquette, c'est un compteur qui ne
+   dit plus lequel tourne. Plancher atteint, marge nulle (3 items).
+   **Pour revenir en arrière** (voie de repli §8.5) : amender le seul
+   `contradicts_principle` de `moment-force-sans-bras-de-levier`, ré-étiqueter
+   les trois items et les trois choix de pari concernés, régénérer
+   `coverage_summary` et les artefacts du modèle apprenant — une ligne par
+   étiquette, aucune prose à réécrire.
+2. **Les retouches de prose sont appliquées** (spec §4) : l'annonce avant la
+   scène, « Trois façons d'avoir un moment nul » (exigée : sans elle, le chemin
+   imprimé et le chemin sans WebGL perdent le cas parallèle), la parenthèse de
+   R4 (« la réaction verticale du sol » décrivait un objet absent de la
+   situation), deux rappels en R3 et R4. Une correction de plus, hors spec :
+   « Ce deuxième fait est celui qu'on va réutiliser » désignait la réaction de
+   l'axe — c'est le PREMIER cas (force appliquée sur l'axe) ; le texte dit
+   maintenant « Le premier cas ».
+3. **La troisième étape (deux points, un seul angle) est gardée** : la spec la
+   désignait comme la seule coupable si l'on voulait quatre étapes. La
+   critique pédagogique a montré que ce n'est plus un choix libre : la
+   consigne de l'étape 4 cite le résultat de l'étape 3 (2,5 rad/s, 5,0 rad à
+   0,30 m) — couper l'une casse l'autre.
+4. **Les trois vues restent disponibles avant le pari**, comme dans les cinq
+   autres scènes (équivalent clavier du glisser, WCAG 2.4.11).
+5. **(ajouté le soir, après la revue des captures) L'étape 3 ouvre l'INSTANT,
+   plus les sièges.** Le curseur des sièges y donnait à lire, une étape trop
+   tôt, la réponse du pari de l'étape 4 (ω = 1,0 rad/s à 1,50 m), et la
+   `suite` promettait « l'angle non plus » — faux. L'instant parcourt la même
+   course au pas de 0,1 s et atteint t = 3,2 s exactement (les nombres de R1).
+   C'est un choix de conception, pas une correction de faute seulement : un
+   propriétaire qui préférerait l'exploration des sièges dès l'étape 3
+   devrait accepter que le pari de l'étape 4 soit éventé pour qui explore —
+   la porte (`fuite-inter-etapes`) rougirait, exprès. Spec amendée (§5.1,
+   §7.3, §7.6).
+
+**DEUX ÉCARTS À LA SPEC, IMPOSÉS PAR DES PORTES ARMÉES :** les troisièmes
+distracteurs de ROT-26 et ROT-27 (« impossible sans la masse du disque »,
+« indécidable sans le moment d'inertie ») REFUSAIENT de conclure — le cliquet
+`indice-refus` interdit d'en ajouter à cette notion (11 items où le refus n'est
+jamais vrai) ; ils sont devenus des affirmations engagées qui portent le même
+modèle. Et « un poids ne fait jamais tourner » (ROT-28) a perdu son « jamais »
+(cliquet `indice-absolu`).
+
+**CE QUE LES CRITIQUES DE LA VAGUE 1 ONT LAISSÉ OUVERT** (le reste est
+corrigé, §11.195) : le point d'arrêt de R2 ne sonde toujours que le cas
+$d = 0$ — une variante « force parallèle à l'axe » est à écrire ; les trois
+items neufs sont tous d'« utilisation des ressources », aucun ne lit de données
+expérimentales, et le champ `habilete` reste vide sur les 28 items de la notion
+(le 50/15/35 du cadre y est incalculable, déjà signalé par la REVIEW du
+2026-09-19) ; ROT-28, barre tenue à l'horizontale, ne sépare pas le modèle
+`pendule-pesant-bras-de-levier-…` (d sin θ = d à 90°) — une troisième position
+le ferait.
+
+**CE QUI RESTE AU PROPRIÉTAIRE** (spec §12.5, non comblé par cette scène) :
+le mouvement uniformément varié, que la scène MONTRE mais que la leçon n'écrit
+toujours pas ; l'accélération normale $a_N$ ; le système composé
+(translation + rotation, fil, poulie), exigé par les trois annales de la
+notion. Ce sont des travaux de prose et d'items, à ordonner séparément — et la critique
+de fidélité recommande de commencer par le système composé, à R7, avec une
+lecture de données expérimentales, AVANT tout nouvel item à R2 (R2 est
+désormais le barreau le plus chargé de la notion, pour un savoir qui n'est pas
+un savoir-faire du chapitre).
 
 ---
 
