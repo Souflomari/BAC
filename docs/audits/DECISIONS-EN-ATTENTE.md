@@ -1,6 +1,6 @@
 # Décisions en attente — ce qui demande le propriétaire
 
-**Dernière mise à jour : 2026-09-24** (§16 et §17 levées par leur prémisse ; §18 neuve). Cette page existe parce qu'il n'y avait
+**Dernière mise à jour : 2026-09-24** (§16 et §17 levées par leur prémisse ; §18 et §19 neuves). Cette page existe parce qu'il n'y avait
 nulle part où voir, d'un coup d'œil, ce qui attend un arbitrage. Les constats
 vivent dans `docs/audits/` et le récit dans `docs/HANDOFF.md` §11 ; ceci est
 seulement la liste, et ce que coûte chaque attente.
@@ -623,6 +623,43 @@ laissé le reste au propriétaire (`content/maths/calcul-integral/spec-extension
 indépendants), la frontière SExp (aucune somme, gardée par la porte de la
 scène), et la décision de créer `conversion-unites-volume` à côté de
 `conversion-unites-aire` plutôt que de l'élargir.
+
+---
+
+## 19. La première scène SVT est spécifiée — elle attend le dégel
+
+**LE FAIT.** La SVT n'a aucune figure manipulable (0 sur 11, §1 et §12), sur la
+matière dont la VISION dit « SVT thinking is visual, so it needs real
+schema-construction interactions, **not displayed images** ». Une scène 3D est
+prête à construire pour `svt/chaines-de-montagnes`, R1 :
+`content/svt/chaines-de-montagnes/spec-scene-foyers.md` (architecte
+pédagogique, 2026-09-24). Les **vrais** séismes sous les Andes (catalogue USGS,
+M ≥ 4,5, 2000 → 2023 : 3 074 foyers, jusqu'à 602 km) : vus du dessus, une tache ;
+vus le long de la fosse, une bande inclinée — le plan de Wadati-Benioff, que le
+cadre exige par son nom et que la leçon ne fait qu'affirmer. L'élève TRACE
+lui-même le plan (pendage réel ≈ 22-23°, huit foyers sur dix à moins de 25 km),
+lit sous quel plan se posent les 41 volcans (≈ 115-190 km), puis refait la même
+mesure sur l'Himalaya (400 foyers, aucun au-delà de 89 km). Données du domaine
+public, citées à l'écran ; mesures déjà faites (spec §3).
+
+**POURQUOI ELLE N'EST PAS CONSTRUITE.** Le contenu SVT est **gelé** par décision
+du propriétaire (`docs/cadre/curriculum/svt.yaml`, en-tête ; « SVT stays frozen
+per the standing owner decision », `docs/pipeline/mastery-push-plan.md`). La
+scène touche `lesson.md` (le marqueur, et surtout trois retouches de prose sans
+lesquelles elle arrive APRÈS les paragraphes qui donnent déjà la réponse, ADR
+0041 §6), `checkpoints.yaml` (`cp-r1-himalaya` change d'objet) et `items.yaml`
+(une misconception neuve, `plan-de-sismicite-mal-lu`, et quatre items dont un
+de niveau 1 et un au dernier barreau). Un mandat général d'avancer ne lève pas
+un gel écrit ; il n'a donc pas été levé par défaut.
+
+**CE QUI EST DEMANDÉ :** lever le gel pour cette notion — ou pour la SVT entière,
+ce qui est la question du §1 — et trancher les points ouverts de la spec (§12.2 :
+le format QCM de la SVT, le champ `habilete`, le seuil de 80 % de la lecture
+d'ajustement, une figure figée de repli). Le reste est prêt : ordre de
+construction écrit (§12.1), contrat « rien avant le pari » par étape (§7),
+frontière de programme en douze interdits (§9), la porte en huit familles
+(§11.4). Coût : ~25-40 Ko de données chargées au clic, une porte de ~3 min dans
+le job `scenes`, quatre items à maintenir.
 
 ---
 
