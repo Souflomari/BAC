@@ -38,6 +38,21 @@ Marqueur : `[[embed:courbe-et-noyaux]]` · clé de registre : `courbe-et-noyaux`
 sélecteur de porte : `[data-scene="courbe-et-noyaux"]` · porte :
 `web/scripts/scene-noyaux.mjs`.
 
+Rangée ici, hors du dossier de la notion, tant qu'elle n'est pas construite
+(DÉCISIONS §19 : `dette-manipulable` lit toute spec d'un dossier de notion comme une
+PRESCRIPTION faite à l'élève) ; elle y retourne, sous
+`content/pc/decroissance-radioactive/spec-scene-noyaux.md`, dans le commit qui livre la
+scène.
+
+Cette spec est une PROPOSITION : elle nomme ce qu'on créera après sa validation
+(porte `liens-fichiers`, §11.194 — un marqueur par chemin, à effacer le jour où le
+fichier existe) :
+
+CHEMIN À CRÉER: content/pc/decroissance-radioactive/spec-scene-noyaux.md — cette spec, le jour où la scène est livrée
+CHEMIN À CRÉER: web/scripts/scene-noyaux.mjs — la porte de la scène
+CHEMIN À CRÉER: web/src/lib/scene2d/noyaux-modele.ts — la loi et le tirage
+CHEMIN À CRÉER: web/src/lib/scene2d/noyaux-rendu.ts — le quadrillage, la courbe, la grille
+
 ---
 
 ## 0. Le classement — pourquoi cette notion, et pourquoi pas l'autre
