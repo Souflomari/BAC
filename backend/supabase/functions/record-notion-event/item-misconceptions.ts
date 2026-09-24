@@ -4792,6 +4792,19 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.pc_rotation_axe_fixe.cinematique-angulaire-derivees-confondues",
       "mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee"
     ],
+    "ROT-26": [
+      "mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort",
+      "mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe",
+      "mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier"
+    ],
+    "ROT-27": [
+      "mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe",
+      "mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier"
+    ],
+    "ROT-28": [
+      "mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe",
+      "mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones"
+    ],
     "ROT-3": [
       "mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort",
       "mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise"

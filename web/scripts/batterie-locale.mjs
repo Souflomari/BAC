@@ -167,6 +167,11 @@ const HORS_CHAMP = new Set([
   // révolution, maths/calcul-integral R9), WebGL et deux passages en CI (job
   // `scenes`) ; `node scripts/scene-revolution.mjs --essai-rouge`.
   "scene-revolution.mjs",
+  // scene-manege, même raison : la sixième scène 3D (le manège — le moment
+  // d'une force PAR RAPPORT À UN AXE, pc/rotation-axe-fixe R2), WebGL, des
+  // courses en temps réel, deux passages en CI (job `scenes`) ;
+  // `node scripts/scene-manege.mjs --essai-rouge`.
+  "scene-manege.mjs",
   // etroit-sweep balaie le corpus entier au navigateur, à 320, 360 et 390 px :
   // build ET Playwright, ~6 min. Hors champ ici pour la même raison que
   // dom-truth — ARMÉE en CI dans son propre job, `telephone` (§11.193). Son

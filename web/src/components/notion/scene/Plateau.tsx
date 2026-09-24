@@ -132,3 +132,127 @@ export function poser(el: HTMLSpanElement | null, p: { x: number; y: number; vis
   el.style.transform = `translate(${p.x}px, ${p.y}px) translate(-50%, ${decalageY})`;
   el.style.visibility = p.visible ? "visible" : "hidden";
 }
+
+type Point2 = { x: number; y: number };
+type Boite = { x0: number; y0: number; x1: number; y1: number };
+
+/** Le segment [a, b] traverse-t-il la boîte ? (découpage de Liang–Barsky) */
+function traverse(a: Point2, b: Point2, r: Boite): boolean {
+  let t0 = 0;
+  let t1 = 1;
+  const dx = b.x - a.x;
+  const dy = b.y - a.y;
+  const p = [-dx, dx, -dy, dy];
+  const q = [a.x - r.x0, r.x1 - a.x, a.y - r.y0, r.y1 - a.y];
+  for (let i = 0; i < 4; i++) {
+    if (p[i] === 0) {
+      if (q[i] < 0) return false;
+    } else {
+      const t = q[i] / p[i];
+      if (p[i] < 0) {
+        if (t > t1) return false;
+        if (t > t0) t0 = t;
+      } else {
+        if (t < t0) return false;
+        if (t < t1) t1 = t;
+      }
+    }
+  }
+  return true;
+}
+
+const chevauche = (a: Boite, b: Boite) => a.x0 < b.x1 && b.x0 < a.x1 && a.y0 < b.y1 && b.y0 < a.y1;
+
+/** Les directions essayées autour de l'ancre, dans cet ordre de préférence. */
+const DIRECTIONS: readonly (readonly [number, number])[] = [
+  [1, 0],
+  [-1, 0],
+  [0, 1],
+  [0, -1],
+  [1, -1],
+  [1, 1],
+  [-1, -1],
+  [-1, 1],
+  [0.5, -1],
+  [-0.5, -1],
+  [0.5, 1],
+  [-0.5, 1],
+];
+/** Les distances (px) entre l'ancre et le bord le plus proche de l'étiquette. */
+const DISTANCES = [0, 8, 18, 32, 50, 75, 105, 140];
+
+/**
+ * Pose des étiquettes de TEXTE autour de leur ancre sans qu'elles se
+ * chevauchent, sans qu'un trait de la scène les barre, et dans le cadre.
+ *
+ * Né des captures du manège (2026-09-24) : vue du dessus — la vue même que le
+ * retour du pari demande —, « 245 N » et « dans le plan de rotation : 0 N »
+ * tombaient sur le même point ; vue de côté, « 245 N » était barré par sa
+ * propre flèche. `poser` centre une étiquette SUR son ancre ; une ancre posée
+ * sur un trait donne une étiquette barrée.
+ *
+ * Pour chaque étiquette, dans l'ordre donné (la première est prioritaire), on
+ * essaie son ancre si `surAncre` (une ancre déjà décalée de la géométrie),
+ * puis douze directions à huit distances, et l'on garde la place au COÛT le
+ * plus bas : hors du cadre ≫ sur une étiquette déjà posée ≫ barrée par un
+ * trait ≫ loin de l'ancre. Une première version gardait la première place
+ * parfaite, sinon la première qui ne chevauchait rien — la porte l'a prise en
+ * défaut deux fois sur quatre-vingt-dix mesures (une étiquette barrée par le
+ * rayon peint, une autre hors du cadre) : quand rien n'est parfait, c'est la
+ * moins mauvaise qu'il faut, pas la première.
+ *
+ * Les REPÈRES sans texte ne passent jamais par ici : la porte les lit à leur
+ * point exact. Toutes les tailles sont lues AVANT toute écriture (une seule
+ * mise en page par image).
+ */
+export function disposer(
+  etiquettes: {
+    el: HTMLSpanElement | null;
+    p: { x: number; y: number; visible: boolean };
+    surAncre?: boolean;
+    directions?: readonly (readonly [number, number])[];
+  }[],
+  segments: readonly (readonly [Point2, Point2])[],
+  cadre: { largeur: number; hauteur: number }
+) {
+  const tailles = etiquettes.map(({ el, p }) => (el && p.visible ? { w: el.offsetWidth, h: el.offsetHeight } : null));
+  const posees: Boite[] = [];
+  const places: (Point2 | null)[] = etiquettes.map(({ p, surAncre, directions }, i) => {
+    const t = tailles[i];
+    if (!t) return null;
+    const boite = (c: Point2): Boite => ({ x0: c.x - t.w / 2 - 2, y0: c.y - t.h / 2 - 2, x1: c.x + t.w / 2 + 2, y1: c.y + t.h / 2 + 2 });
+    const cout = (c: Point2, rang: number, g: number) => {
+      const b = boite(c);
+      const deborde = Math.max(0, -b.x0) + Math.max(0, -b.y0) + Math.max(0, b.x1 - cadre.largeur) + Math.max(0, b.y1 - cadre.hauteur);
+      let n = (deborde > 0 ? 100000 + deborde : 0) + g + rang * 0.01;
+      for (const o of posees) if (chevauche(o, b)) n += 10000;
+      for (const [a, z] of segments) if (traverse(a, z, b)) n += 1000;
+      return n;
+    };
+    let meilleur: Point2 = { x: p.x, y: p.y };
+    let meilleurCout = surAncre ? cout(meilleur, 0, 0) : Infinity;
+    const dirs = directions ?? DIRECTIONS;
+    DISTANCES.forEach((g) =>
+      dirs.forEach(([dx, dy], rang) => {
+        const c = { x: p.x + dx * (t.w / 2 + 5 + g), y: p.y + dy * (t.h / 2 + 3 + g) };
+        const k = cout(c, rang, g);
+        if (k < meilleurCout) {
+          meilleurCout = k;
+          meilleur = c;
+        }
+      })
+    );
+    posees.push(boite(meilleur));
+    return meilleur;
+  });
+  etiquettes.forEach(({ el }, i) => {
+    if (!el) return;
+    const c = places[i];
+    if (!c) {
+      el.style.visibility = "hidden";
+      return;
+    }
+    el.style.transform = `translate(${c.x}px, ${c.y}px) translate(-50%, -50%)`;
+    el.style.visibility = "visible";
+  });
+}

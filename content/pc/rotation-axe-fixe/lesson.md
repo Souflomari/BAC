@@ -98,7 +98,7 @@ Pour une force $\vec F$ appliquée en un point du solide et dirigée tangentiell
 
 $$\mathcal{M}_\Delta(\vec F) = \pm\,d \cdot F$$
 
-où $d$ est la distance entre l'axe $\Delta$ et la droite d'action de $\vec F$ (le **bras de levier**), et $F$ la norme de la force. Tu la retrouveras parfois notée $M_\Delta(\vec F)$, sans le style calligraphié — c'est exactement la même grandeur. Elle se mesure en newton-mètre ($\text{N}\cdot\text{m}$).
+où $d$ est la distance entre l'axe $\Delta$ et la droite d'action de $\vec F$ (le **bras de levier**), et $F$ la norme de la force — pour une force qui, comme celle-ci, est contenue dans le plan perpendiculaire à l'axe. Tu la retrouveras parfois notée $M_\Delta(\vec F)$, sans le style calligraphié — c'est exactement la même grandeur. Elle se mesure en newton-mètre ($\text{N}\cdot\text{m}$).
 
 Le signe traduit le sens dans lequel la force tend à faire tourner le solide, par rapport au sens positif choisi pour $\theta$ : $+$ si $\vec F$ tend à faire tourner dans le sens positif, $-$ sinon.
 
@@ -106,14 +106,25 @@ Pourquoi c'est écrit comme un produit $d \times F$, et pas juste $F$ : parce qu
 
 [[figure:moment-force]]
 
-### Deux façons d'avoir un moment nul
+Avant d'aller plus loin, une question. Un enfant de $25\ \text{kg}$ est assis tout au bord du manège : son poids vaut $P = mg = 245\ \text{N}$ (avec $g = 9{,}8\ \text{N}\cdot\text{kg}^{-1}$) — huit fois une poussée de $30\ \text{N}$, celle d'un enfant qui pousse le manège — et il s'exerce à $1{,}50\ \text{m}$ de l'axe, la plus grande distance possible sur ce disque. Que vaut le moment de ce poids par rapport à $\Delta$ ? La scène ci-dessous te fait parier avant de montrer, puis te laisse tourner autour de la situation.
+
+[[embed:manege-axe-fixe]]
+
+### Trois façons d'avoir un moment nul
 
 Ce point est essentiel, et il confronte directement l'erreur la plus fréquente sur ce sujet : **une force non nulle peut avoir un moment strictement nul.**
 
 - Si la force est appliquée **exactement sur l'axe** ($d = 0$), son moment est nul, quelle que soit son intensité $F$ : $\mathcal{M}_\Delta(\vec F) = 0 \times F = 0$. La force existe bien, elle s'exerce bien sur le solide — mais elle ne le fait pas tourner d'un iota.
 - Si la force est dirigée **radialement** — droit vers l'axe, ou droit à l'opposé, sans aucune composante tangentielle — elle ne fait pas tourner le solide non plus, pour la même raison géométrique : elle n'a pas de « bras de levier » utile dans le sens de la rotation.
+- Si la droite d'action de la force est **parallèle à l'axe**, son moment est nul lui aussi — et cette fois, ce n'est pas parce qu'elle serait « près » de l'axe : elle peut en être très loin. Le poids d'un enfant assis au bord du manège vaut $245\ \text{N}$ et s'exerce à $1{,}50\ \text{m}$ de l'axe, et il ne fait pas tourner le manège d'un degré. La raison est la même que pour les deux autres cas, dite dans l'autre sens : ce qui fait tourner un solide autour de $\Delta$, c'est ce que la force a **dans le plan perpendiculaire à l'axe** — et une force parallèle à l'axe n'y a rien du tout.
 
-Ce deuxième fait est celui qu'on va réutiliser tout au long du chapitre : la réaction de l'axe sur le solide (la force que l'axe exerce pour maintenir le solide en place) s'applique précisément **au niveau de l'axe** — son bras de levier est nul par construction. Son moment par rapport à $\Delta$ est donc **toujours nul**, quelle que soit son intensité. Elle disparaît systématiquement des équations de rotation qu'on va écrire dans ce chapitre.
+On retient les trois cas d'un seul coup, comme le fait l'énoncé classique : **le moment d'une force par rapport à un axe est nul dès que sa droite d'action rencontre l'axe ou lui est parallèle.** Les deux premiers cas (force appliquée sur l'axe, force radiale) sont deux façons de rencontrer l'axe ; le troisième est le cas parallèle.
+
+Attention, du coup, à la portée de la formule : dans $\mathcal{M}_\Delta(\vec F) = \pm\,d\cdot F$, $d$ est le bras de levier de ce que la force a **dans le plan perpendiculaire à l'axe**. Appliquer $d\cdot F$ à une force parallèle à l'axe — $1{,}50 \times 245 = 367{,}5$ pour le poids de l'enfant, autour de l'axe vertical du manège — c'est multiplier une distance par une force qui ne fait rien tourner autour de **cet** axe : le nombre sort, et ici il ne veut rien dire.
+
+Attention à ne pas en tirer « un poids ne fait jamais tourner ». Le moment ne se calcule pas pour une force toute seule : il se calcule **par rapport à un axe**. Bascule l'axe du manège à l'horizontale — le manège devient une roue verticale : le même poids, au même point, à la même distance, se retrouve **perpendiculaire** à l'axe. Quand le siège est à la hauteur de l'axe, son moment vaut bien $1{,}50 \times 245 = 367{,}5\ \text{N}\cdot\text{m}$, et la roue part — puis ce moment diminue à mesure que le siège descend et que son bras de levier raccourcit. C'est exactement ce qui fera osciller le pendule pesant du chapitre 7.
+
+Le premier cas est celui qu'on va réutiliser tout au long du chapitre : la réaction de l'axe sur le solide (la force que l'axe exerce pour maintenir le solide en place) s'applique précisément **au niveau de l'axe** — son bras de levier est nul par construction. Son moment par rapport à $\Delta$ est donc **toujours nul**, quelle que soit son intensité. Elle disparaît systématiquement des équations de rotation qu'on va écrire dans ce chapitre.
 
 ### Arrête-toi — une grande force peut avoir un effet nul
 
@@ -229,6 +240,8 @@ $$J_{total,B} = J_{disque} + J_{enfants,B} = 67{,}5 + 112{,}5 = 180{,}0\ \text{k
 
 La configuration B a un moment d'inertie **deux fois et demi plus grand** que la configuration A ($180$ contre $72\ \text{kg}\cdot\text{m}^2$), pour exactement la même masse totale embarquée ($60 + 25 + 25 = 110\ \text{kg}$ dans les deux cas). C'est ce nombre-là, $J_\Delta$, qui va gouverner combien le manège accélère pour une poussée donnée — c'est l'objet du chapitre suivant.
 
+Ces deux nombres, $72{,}0$ et $180{,}0\ \text{kg}\cdot\text{m}^2$, sont ceux que la scène du chapitre 3 affichait quand tu faisais glisser les sièges : tu peux y retourner maintenant, en sachant d'où ils viennent.
+
 ---
 
 ## R4 — La relation fondamentale de la dynamique de rotation
@@ -288,7 +301,7 @@ Rappel utile (chapitre 3) : la réaction de l'axe sur le solide a toujours un mo
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* on reprend la poussée du chapitre 3 (sur le bord, $F=30\ \text{N}$, à $d=1{,}5\ \text{m}$, donc $\mathcal{M}_\Delta(\vec F) = 45\ \text{N}\cdot\text{m}$) et les deux valeurs de $J_\Delta$ trouvées au chapitre 4, pour voir, chiffres à l'appui, si le manège de la configuration A (masses près du centre) réagit vraiment plus vite que celui de la configuration B.
 
-On applique la relation fondamentale à chaque configuration, la seule force ayant un moment non nul étant la poussée (la réaction de l'axe a un moment nul, le poids et la réaction verticale du sol n'ont pas de moment tangentiel utile ici) :
+On applique la relation fondamentale à chaque configuration, la seule force ayant un moment non nul étant la poussée (la réaction de l'axe a un moment nul — elle s'applique sur l'axe lui-même ; quant aux poids du disque et des enfants, ils sont verticaux, donc **parallèles à l'axe** : leur moment par rapport à $\Delta$ est nul aussi, où que l'on soit assis) :
 
 **Configuration A** ($J_{total,A} = 72{,}0\ \text{kg}\cdot\text{m}^2$) :
 
@@ -301,6 +314,8 @@ $$\ddot\theta_B = \frac{\mathcal{M}_\Delta(\vec F)}{J_{total,B}} = \frac{45}{180
 La configuration A accélère deux fois et demie plus vite que la configuration B — exactement l'inverse du rapport des $J_\Delta$, comme pour la masse en translation. En partant du repos, et l'accélération angulaire étant constante (comme un mouvement uniformément accéléré déjà rencontré en translation, on intègre de la même façon), la vitesse angulaire après $t = 4{,}0\ \text{s}$ vaut $\omega = \ddot\theta\,t$ :
 
 $$\omega_A(4{,}0) = 0{,}625 \times 4{,}0 = 2{,}5\ \text{rad/s} \qquad \omega_B(4{,}0) = 0{,}25 \times 4{,}0 = 1{,}0\ \text{rad/s}$$
+
+Là encore : $0{,}625$ et $0{,}25\ \text{rad/s}^2$, puis $2{,}5$ et $1{,}0\ \text{rad/s}$ après $4{,}0\ \text{s}$ — ce sont exactement les nombres que la scène du chapitre 3 mesurait sur ses courses.
 
 En reconvertissant en vitesse linéaire du bord du manège ($R = 1{,}5\ \text{m}$, relation $v = R\,\omega$ établie au chapitre 2) :
 
@@ -358,7 +373,7 @@ Ce système va nous permettre de mettre tout ce chapitre au travail en même tem
 
 **Bilan des moments par rapport à $\Delta$.** Deux forces s'exercent sur le solide : son poids $\vec P = m\vec g$, appliqué en $G$, et la réaction de l'axe, appliquée sur l'axe lui-même. Par le chapitre 3, la réaction de l'axe a un bras de levier nul : son moment par rapport à $\Delta$ est **toujours nul**. Seul le poids contribue.
 
-**Le moment du poids.** Le poids est vertical. Quand la droite $\Delta G$ fait un angle $\theta$ avec la verticale, la distance entre l'axe $\Delta$ et la ligne d'action verticale du poids — le vrai bras de levier — est le côté du triangle rectangle $\Delta G$ (hypoténuse, longueur $d$) opposé à l'angle $\theta$, c'est-à-dire $d\sin\theta$. Le moment du poids vaut donc, en norme, $mg\,d\sin\theta$ ; le signe est négatif parce que ce moment tend **toujours** à ramener $\theta$ vers $0$, quel que soit le sens de l'écart (à droite de la verticale, il pousse vers la gauche ; à gauche, vers la droite) :
+**Le moment du poids.** Le poids est vertical — et l'axe, ici, est horizontal : c'est pour cela que ce poids a un moment (autour d'un axe vertical, le même poids n'en aurait aucun, chapitre 3). Quand la droite $\Delta G$ fait un angle $\theta$ avec la verticale, la distance entre l'axe $\Delta$ et la ligne d'action verticale du poids — le vrai bras de levier — est le côté du triangle rectangle $\Delta G$ (hypoténuse, longueur $d$) opposé à l'angle $\theta$, c'est-à-dire $d\sin\theta$. Le moment du poids vaut donc, en norme, $mg\,d\sin\theta$ ; le signe est négatif parce que ce moment tend **toujours** à ramener $\theta$ vers $0$, quel que soit le sens de l'écart (à droite de la verticale, il pousse vers la gauche ; à gauche, vers la droite) :
 
 $$\mathcal{M}_\Delta(\vec P) = -mg\,d\sin\theta$$
 
@@ -429,7 +444,7 @@ Ce ne sont pas des manques : un exercice de mécanique assemble presque toujours
 
 - La rotation d'un solide rigide autour d'un axe fixe $\Delta$ se décrit avec un seul angle, l'**abscisse angulaire** $\theta(t)$, commun à tout le solide ; sa **vitesse angulaire** $\omega = \dot\theta$ et son **accélération angulaire** $\ddot\theta = \dot\omega$ en découlent.
 - La vitesse **linéaire** d'un point du solide à distance $d$ de l'axe vaut $v = d\,\omega$ : $\omega$ est la même partout sur le solide, $v$ ne l'est pas.
-- Le **moment d'une force** par rapport à $\Delta$, $\mathcal{M}_\Delta(\vec F) = \pm\,d\cdot F$, mesure son efficacité à faire tourner : une force au bras de levier nul ($d=0$, ou appliquée sur l'axe) a un moment nul, quelle que soit son intensité.
+- Le **moment d'une force** par rapport à $\Delta$, $\mathcal{M}_\Delta(\vec F) = \pm\,d\cdot F$, mesure son efficacité à faire tourner : il est nul, quelle que soit l'intensité de la force, dès que sa droite d'action **rencontre l'axe ou lui est parallèle** (force appliquée sur l'axe, force radiale, force parallèle à l'axe) — et il dépend de l'axe choisi, pas de la force seule.
 - Le **moment d'inertie** $J_\Delta = \sum_i m_i d_i^2$ mesure la résistance d'un solide à changer sa rotation : il dépend de la masse **et** de sa répartition par rapport à l'axe (une masse deux fois plus loin compte quatre fois plus). Il est additif, et se lit directement sur une table pour les solides usuels (tige, disque, cylindre).
 - La **relation fondamentale de la dynamique de rotation**, $\sum \mathcal{M}_\Delta(\vec F_{ext}) = J_\Delta\,\ddot\theta$, est l'analogue exact — et justifié terme à terme — de $\sum \vec F_{ext} = m\,\vec a_G$.
 - L'**énergie cinétique de rotation** $E_c = \frac12 J_\Delta \omega^2$ suit la même forme que $\frac12 m v^2$, avec la même substitution.

@@ -249,5 +249,62 @@
       "volume_cm3",
       "verification_cone"
     ]
+  },
+  "manege-rotation": {
+    "temps": false,
+    "course": true,
+    "controles": [
+      "force",
+      "axe",
+      "distance",
+      "bras",
+      "instant"
+    ],
+    "etat": [
+      "force",
+      "axe",
+      "r_sieges",
+      "r_poussee",
+      "occupants",
+      "vue"
+    ],
+    "bornes": {
+      "r_sieges": [
+        0.1,
+        1.5
+      ],
+      "r_poussee": [
+        0.2,
+        1.5
+      ]
+    },
+    "valeurs": {
+      "force": [
+        "poids",
+        "radiale",
+        "tangentielle"
+      ],
+      "axe": [
+        "vertical",
+        "horizontal"
+      ],
+      "occupants": [
+        "deux",
+        "un"
+      ],
+      "vue": [
+        "dessus",
+        "biais",
+        "cote"
+      ]
+    },
+    "lectures": [
+      "moment",
+      "inertie",
+      "acceleration",
+      "omega",
+      "angle",
+      "points"
+    ]
   }
 }

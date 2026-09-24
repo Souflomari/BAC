@@ -51,6 +51,31 @@ misconceptions:
       composante tangentielle), a un moment rigoureusement NUL, quelle que
       soit son intensité ; et à force égale, c'est le plus grand bras de
       levier qui produit le plus grand moment, jamais l'inverse.
+  - id: mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe
+    label: >-
+      « Une force loin de l'axe a forcément un moment : sa DIRECTION par
+      rapport à l'axe ne change rien »
+    description: >-
+      L'élève calcule $d\cdot F$ sans regarder la direction de la force par
+      rapport à l'AXE. Formes : attribuer un moment non nul à une force
+      parallèle à l'axe (le poids d'un enfant assis au bord d'un manège
+      horizontal, « $1{,}50 \times 245$ ») ; prendre la distance du point
+      d'application à l'axe pour bras de levier alors que la droite d'action
+      est parallèle à l'axe ; croire que le moment est une propriété de la
+      force seule, indépendante de l'axe choisi. Forme SYMÉTRIQUE, née de la
+      correction de la première : après avoir vu qu'un poids ne fait pas
+      tourner un manège d'axe vertical, généraliser « un poids ne fait jamais
+      tourner » et refuser son moment au pendule pesant, dont l'axe est
+      horizontal.
+    contradicts_principle: >-
+      Le moment d'une force par rapport à un axe $\Delta$ est nul dès que sa
+      droite d'action RENCONTRE l'axe ou lui est PARALLÈLE ; seule la
+      composante de la force située dans le plan perpendiculaire à $\Delta$
+      peut faire tourner, et le bras de levier est la distance de $\Delta$ à
+      la droite d'action de cette composante. Le moment n'est donc pas une
+      propriété de la force seule : la même force, au même point, à la même
+      distance, donne $0$ avec un axe vertical et jusqu'à $mgd$ avec un axe
+      horizontal (le bras de levier étant celui de la position occupée).
   - id: mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable
     label: >-
       « $\omega$ et $v$ sont la même grandeur : un point du solide a la
@@ -2038,6 +2063,295 @@ items:
       constante : la rotation est uniforme. $\theta$ croît, $\omega$ non,
       $\ddot\theta = 0$.
 
+  # Ajoutés le 2026-09-24, suite à spec-scene-manege.md §8.2-8.3 : la scène
+  # « manège » distingue deux modèles jusque-là fusionnés sous
+  # `moment-force-sans-bras-de-levier` — appliquer d×F sans bras de levier
+  # (ignorer le bras) et appliquer d×F sans regarder la DIRECTION de la force
+  # par rapport à l'axe (bras correct, direction ignorée). Le second modèle,
+  # `moment-force-direction-vs-axe`, ouvre ici avec son plancher de 3 items —
+  # ROT-26 et ROT-27 en R2 (le cas parallèle, sous deux formes), ROT-28 en R6
+  # (co-étiqueté avec la famille pendule pesant : la forme SYMÉTRIQUE de la
+  # même erreur, « un poids ne fait jamais tourner », y est visée).
+  - id: ROT-26
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_rotation_axe_fixe
+    tags: [moment_force, moment_nul, axe_direction]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe
+    stem: >
+      Un manège est un disque horizontal qui tourne autour d'un axe vertical
+      fixe $\Delta$ passant par son centre. Un enfant de $25\ \text{kg}$
+      s'assoit tout au bord, à $1{,}50\ \text{m}$ de l'axe. On prend
+      $g = 9{,}8\ \text{m}\cdot\text{s}^{-2}$. Que vaut le moment de son
+      poids par rapport à $\Delta$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $367{,}5\ \text{N}\cdot\text{m}$, en multipliant les $245\
+          \text{N}$ du poids par les $1{,}50\ \text{m}$ qui séparent
+          l'enfant de l'axe.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe
+        feedback: >
+          Ce calcul prend la plus grande distance disponible sur ce disque,
+          $1{,}50\ \text{m}$, mais le bras de levier ne se lit pas
+          seulement sur la position du point d'application : il faut
+          regarder la direction de la force par rapport à l'axe. Le poids
+          est vertical, et l'axe $\Delta$ l'est aussi : sa droite d'action
+          lui est donc parallèle, et une force parallèle à l'axe n'a rien
+          dans le plan où le manège peut tourner. Le produit
+          $1{,}50\times245$ multiplie une distance par une force qui ne
+          fait rien tourner — le nombre existe, mais il ne représente aucun
+          effet de rotation.
+      - id: B
+        text: >-
+          $0\ \text{N}\cdot\text{m}$ : le poids de l'enfant est vertical,
+          donc parallèle à l'axe $\Delta$, sans composante dans le plan de
+          rotation.
+        correct: true
+      - id: C
+        text: >-
+          $245\ \text{N}\cdot\text{m}$ : c'est la valeur du poids de
+          l'enfant, déjà exprimée dans l'unité du moment.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
+        feedback: >
+          Ce choix recopie $245$, qui est une force, en newtons ; un moment
+          se mesure en newton-mètres et se calcule par $d\times F$, jamais
+          en recopiant $F$ tel quel. Et ici, même ce calcul serait hors de
+          propos : le poids est parallèle à l'axe $\Delta$, donc son moment
+          est rigoureusement nul.
+      - id: D
+        text: >-
+          Environ $184\ \text{N}\cdot\text{m}$ : l'axe reprend la moitié
+          du poids de l'enfant, et l'autre moitié, $122{,}5\ \text{N}$,
+          agit à $1{,}50\ \text{m}$ de l'axe.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: >
+          Rien dans l'énoncé ne partage le poids entre l'axe et le manège :
+          ce partage est inventé. Et même une moitié du poids resterait
+          verticale, donc parallèle à l'axe $\Delta$ : quelle que soit la
+          part de la force qu'on retient, une force parallèle à l'axe n'a
+          aucune composante dans le plan de rotation, et son moment par
+          rapport à $\Delta$ est nul.
+    correct_feedback: >
+      Le poids de l'enfant est vertical, exactement comme l'axe $\Delta$ :
+      sa droite d'action lui est donc parallèle. Une force parallèle à
+      l'axe n'a aucune composante dans le plan perpendiculaire à $\Delta$ —
+      le seul plan où un moment peut exister : $\mathcal{M}_\Delta(\vec P) =
+      0$, malgré les $245\ \text{N}$ de la force et le $1{,}50\ \text{m}$
+      qui la sépare de l'axe.
+    solution: |
+      **Ce qui décide, ce n'est pas la distance à l'axe, c'est la direction
+      de la force par rapport à cet axe.**
+
+      Le poids de l'enfant :
+      $$P = mg = 25 \times 9{,}8 = 245\ \text{N}$$
+
+      est une force verticale. Le manège tourne autour d'un axe $\Delta$
+      lui aussi vertical : la droite d'action du poids est donc
+      **parallèle** à $\Delta$.
+
+      Le moment d'une force par rapport à un axe est nul dès que sa droite
+      d'action rencontre l'axe **ou lui est parallèle** :
+      $$\mathcal{M}_\Delta(\vec P) = 0$$
+
+      Appliquer $d\times F$ sans vérifier cette condition —
+      $1{,}50\times245 = 367{,}5$ — revient à multiplier une distance par
+      une force qui n'a aucune composante dans le plan de rotation : le
+      nombre existe, mais il ne correspond à aucun effet réel.
+
+  - id: ROT-27
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_rotation_axe_fixe
+    tags: [moment_force, moment_nul, axe_direction]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe
+    stem: >
+      Un manège tourne autour d'un axe vertical fixe $\Delta$. On applique
+      au même point $A$, situé à $1{,}20\ \text{m}$ de l'axe, trois forces
+      successives de même intensité $F = 100\ \text{N}$ : $\vec F_1$
+      verticale vers le bas, $\vec F_2$ horizontale dirigée droit vers
+      l'axe, $\vec F_3$ horizontale perpendiculaire au rayon $\Delta A$.
+      Lesquelles de ces forces font tourner le manège ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\vec F_1$ et $\vec F_3$ : les deux sont appliquées à
+          $1{,}20\ \text{m}$ de l'axe $\Delta$.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe
+        feedback: >
+          La distance à l'axe est la même pour les trois forces,
+          $1{,}20\ \text{m}$ : ce n'est donc pas elle qui les départage.
+          $\vec F_1$ est verticale, comme l'axe $\Delta$ : sa droite
+          d'action lui est parallèle, et son moment est nul, même
+          appliquée à $1{,}20\ \text{m}$. Seule $\vec F_3$ est
+          perpendiculaire au rayon $\Delta A$, avec une composante
+          tangentielle complète.
+      - id: B
+        text: >-
+          Les trois forces ont le même moment, $120\ \text{N}\cdot\text{m}$
+          : même intensité, même point d'application $A$.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
+        feedback: >
+          Même intensité et même point d'application ne donnent pas le même
+          moment : la direction de chaque force par rapport à l'axe
+          $\Delta$ compte tout autant. $\vec F_1$ est parallèle à l'axe
+          (moment nul), $\vec F_2$ est radiale, sa droite d'action passant
+          par $\Delta$ (moment nul aussi) : seule $\vec F_3$, tangentielle,
+          donne $1{,}20\times100 = 120\ \text{N}\cdot\text{m}$.
+      - id: C
+        text: >-
+          $\vec F_3$ seule : sa droite d'action est perpendiculaire au
+          rayon $\Delta A$, donc entièrement dans le plan de rotation.
+        correct: true
+      - id: D
+        text: >-
+          $\vec F_2$ seule : dirigée droit vers l'axe, c'est elle qui
+          transmet le mieux sa force au manège.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
+        feedback: >
+          La droite d'action d'une force dirigée droit vers l'axe passe par
+          $\Delta$ : son bras de levier est nul, et son moment aussi, quelle
+          que soit son intensité. Pour faire tourner, une force doit avoir
+          une composante perpendiculaire au rayon : c'est $\vec F_3$,
+          entièrement tangentielle, qui donne
+          $1{,}20\times100 = 120\ \text{N}\cdot\text{m}$.
+    correct_feedback: >
+      Seule $\vec F_3$ a un moment non nul : perpendiculaire au rayon
+      $\Delta A$, elle est entièrement tangentielle,
+      $\mathcal{M}_\Delta(\vec F_3) = 1{,}20\times100 = 120\
+      \text{N}\cdot\text{m}$. $\vec F_1$, verticale, est parallèle à l'axe
+      $\Delta$ (lui aussi vertical) : moment nul. $\vec F_2$, dirigée droit
+      vers l'axe, est radiale : sa droite d'action passe par $\Delta$,
+      moment nul aussi.
+    solution: |
+      **Trois forces, même intensité, même point d'application — mais
+      trois directions différentes par rapport à l'axe $\Delta$.**
+
+      $\vec F_1$ est verticale. L'axe $\Delta$ est vertical (le manège
+      tourne autour d'un axe vertical) : la droite d'action de $\vec F_1$
+      lui est donc **parallèle**.
+      $$\mathcal{M}_\Delta(\vec F_1) = 0$$
+
+      $\vec F_2$ est horizontale, dirigée droit vers l'axe : sa droite
+      d'action **rencontre** $\Delta$.
+      $$\mathcal{M}_\Delta(\vec F_2) = 0$$
+
+      $\vec F_3$ est horizontale, perpendiculaire au rayon $\Delta A$ :
+      elle est entièrement tangentielle, dans le plan perpendiculaire à
+      $\Delta$.
+      $$\mathcal{M}_\Delta(\vec F_3) = 1{,}20 \times 100 = 120\
+      \text{N}\cdot\text{m}$$
+
+      Trois forces de même intensité, appliquées au même point, à la même
+      distance de l'axe — et une seule fait tourner le manège. Ce n'est ni
+      l'intensité ni la distance qui décide : c'est la direction de la
+      force par rapport à l'axe.
+
+  - id: ROT-28
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_rotation_axe_fixe
+    tags: [moment_force, axe_direction, pendule_pesant]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe
+    stem: >
+      Une barre homogène de longueur $L = 0{,}80\ \text{m}$ et de masse
+      $m = 2{,}5\ \text{kg}$ tourne autour d'un axe fixe $\Delta$ passant
+      par une de ses extrémités ; son centre d'inertie $G$ est à
+      $\Delta G = 0{,}40\ \text{m}$ de l'axe. On prend
+      $g = 9{,}8\ \text{m}\cdot\text{s}^{-2}$.
+      Cas 1 : $\Delta$ est vertical (la barre balaie un plan horizontal).
+      Cas 2 : $\Delta$ est horizontal, la barre pouvant tourner dans un
+      plan vertical ; on la maintient à l'horizontale avant de la lâcher.
+      Comparer le moment du poids dans les deux cas.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Les deux valent $9{,}8\ \text{N}\cdot\text{m}$ : même poids,
+          même distance $\Delta G$ dans les deux cas.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe
+        feedback: >
+          Le poids et la distance $\Delta G$ sont en effet identiques dans
+          les deux cas — mais c'est la direction du poids par rapport à
+          l'axe $\Delta$ qui décide du moment. Dans
+          le cas 1, l'axe est vertical et le poids aussi : ils sont
+          parallèles, le moment y est nul. Dans le cas 2 seulement, l'axe
+          horizontal rend le poids perpendiculaire à $\Delta$, ce qui donne
+          le moment non nul.
+      - id: B
+        text: >-
+          Les deux valent $0\ \text{N}\cdot\text{m}$ : un poids est dirigé
+          vers le bas, il ne fait pas tourner la barre.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe
+        feedback: >
+          C'est la généralisation que le cas 1 rend tentante — et c'est
+          justement elle qu'il faut casser : le poids n'a pas changé entre
+          les deux cas, mais l'axe si. Dans le cas 1 (axe vertical), le
+          poids lui est parallèle : moment nul. Dans le cas 2 (axe
+          horizontal), le même poids devient perpendiculaire à l'axe : il
+          a maintenant un bras de levier, $\Delta G$, et un moment bien
+          réel, $9{,}8\ \text{N}\cdot\text{m}$.
+      - id: C
+        text: >-
+          Cas 1 : $0\ \text{N}\cdot\text{m}$ ; cas 2 :
+          $19{,}6\ \text{N}\cdot\text{m}$, en prenant la longueur de la
+          barre, $0{,}80\ \text{m}$, comme bras de levier.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones
+        feedback: >
+          Le cas 1 est correct. Mais dans le cas 2, le poids s'applique en
+          $G$ : le bras de levier n'est pas la longueur de
+          la barre, c'est la distance de l'axe au centre d'inertie $G$,
+          soit $\Delta G = 0{,}40\ \text{m}$ — la moitié de la longueur,
+          pas la longueur entière. Le moment vaut $9{,}8\
+          \text{N}\cdot\text{m}$, pas le double.
+      - id: D
+        text: >-
+          Cas 1 : $0\ \text{N}\cdot\text{m}$ ; cas 2 :
+          $9{,}8\ \text{N}\cdot\text{m}$ — le poids n'a pas changé, c'est
+          la direction de l'axe qui décide.
+        correct: true
+    correct_feedback: >
+      Dans les deux cas, le poids vaut $P = mg = 2{,}5\times9{,}8 =
+      24{,}5\ \text{N}$, appliqué au même point $G$, à la même distance
+      $\Delta G = 0{,}40\ \text{m}$. Seul l'axe change de direction. Cas 1
+      (axe vertical) : le poids, vertical, lui est parallèle — moment nul.
+      Cas 2 (axe horizontal, barre à l'horizontale) : le poids est
+      perpendiculaire à l'axe, entièrement dans le plan de rotation —
+      $\mathcal{M}_\Delta = P\times\Delta G = 24{,}5\times0{,}40 =
+      9{,}8\ \text{N}\cdot\text{m}$.
+    solution: |
+      **Le poids ne change pas ; c'est l'axe qui change de direction.**
+
+      Poids de la barre :
+      $$P = mg = 2{,}5 \times 9{,}8 = 24{,}5\ \text{N}$$
+
+      **Cas 1 — axe $\Delta$ vertical.** La barre balaie un plan
+      horizontal : le poids, vertical, est **parallèle** à $\Delta$.
+      $$\mathcal{M}_\Delta(\vec P)_{\text{cas 1}} = 0$$
+
+      **Cas 2 — axe $\Delta$ horizontal, barre à l'horizontale.** Le
+      poids, toujours vertical, est maintenant **perpendiculaire** à
+      l'axe : il est entièrement dans le plan de rotation, avec pour bras
+      de levier la distance $\Delta G = 0{,}40\ \text{m}$ (et non la
+      longueur de la barre, $0{,}80\ \text{m}$).
+      $$\mathcal{M}_\Delta(\vec P)_{\text{cas 2}} = P \times \Delta G =
+      24{,}5 \times 0{,}40 = 9{,}8\ \text{N}\cdot\text{m}$$
+
+      Même poids, même $\Delta G$, même point d'application — et deux
+      moments radicalement différents, $0$ puis $9{,}8\ \text{N}\cdot
+      \text{m}$ : c'est la direction de l'axe, seule, qui a tout changé.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05. L'ancien déclarait franchement `floor_met: false` et
 # nommait ce qui manquait — mais il comptait au `primary_misconception` (une
@@ -2048,6 +2362,11 @@ items:
 # le plancher : `cinematique-angulaire-derivees-confondues` et
 # `moment-inertie-additivite-erronee`, à 2 items chacune. ROT-25 les vise
 # ensemble. Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
+# RÉGÉNÉRÉ le 2026-09-24 : dixième modèle (`moment-force-direction-vs-axe`,
+# spec-scene-manege §8.2) et ROT-26…28. Recompter a montré que la ligne de
+# `mecanisme-alternatif-…` omettait ROT-2 (12 écrits, 13 réels) — la porte ne
+# vérifie que `total_items` et `floor_met`, pas les lignes : un tableau dit
+# « généré » ne l'est que si on le régénère.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -2057,25 +2376,26 @@ coverage_summary:
     web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
     mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise:                   { count: 6, items: [ROT-3, ROT-4, ROT-7, ROT-8, ROT-22, ROT-23] }
-    mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier:                 { count: 4, items: [ROT-1, ROT-2, ROT-12, ROT-22] }
+    mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier:                 { count: 6, items: [ROT-1, ROT-2, ROT-12, ROT-22, ROT-26, ROT-27] }
+    mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe:                    { count: 3, items: [ROT-26, ROT-27, ROT-28] }
     mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable:                     { count: 3, items: [ROT-5, ROT-6, ROT-11] }
     mc.physics.pc_rotation_axe_fixe.cinematique-angulaire-derivees-confondues:        { count: 3, items: [ROT-10, ROT-22, ROT-25] }
     mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee:              { count: 3, items: [ROT-14, ROT-15, ROT-24] }
     mc.physics.pc_rotation_axe_fixe.energie-cinetique-rotation-formule-fausse:        { count: 3, items: [ROT-16, ROT-17, ROT-18] }
     mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee:                { count: 3, items: [ROT-13, ROT-18, ROT-25] }
-    mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones: { count: 3, items: [ROT-19, ROT-20, ROT-21] }
-    mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort: { count: 12, items: [ROT-1, ROT-3, ROT-5, ROT-6, ROT-7, ROT-8, ROT-9, ROT-11, ROT-14, ROT-15, ROT-16, ROT-23] }
-  total_items: 25
+    mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones: { count: 4, items: [ROT-19, ROT-20, ROT-21, ROT-28] }
+    mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort: { count: 14, items: [ROT-1, ROT-2, ROT-3, ROT-5, ROT-6, ROT-7, ROT-8, ROT-9, ROT-11, ROT-14, ROT-15, ROT-16, ROT-23, ROT-26] }
+  total_items: 28
   floor: 3
   floor_met: true
   ramp_coverage:
     R0: 3
     R1: 4   # ROT-6 rapatrié de R4 le 2026-09-19 : son énoncé est un pur v = R.omega
-    R2: 3
+    R2: 5   # ROT-26, ROT-27 (2026-09-24) : le cas PARALLÈLE du moment nul, que la leçon n'écrivait pas
     R3: 4
     R4: 2   # conséquence ASSUMÉE : le barreau de la relation fondamentale, coeur du chapitre, ne porte plus que deux items (ROT-14, ROT-15)
     R5: 3
-    R6: 3
+    R6: 4   # ROT-28 : la même barre, deux axes — co-étiquetée avec la famille du pendule pesant
     R7: 3
   note_banc_herite: >-
     Le banc ROT-1…ROT-24 a été écrit AVANT que l'inventaire de misconceptions
@@ -2088,6 +2408,7 @@ coverage_summary:
     distracteur dans ce banc hérité — alors qu'un seul item en fait sa tête
     d'affiche.
   honest_state: >-
-    Les neuf misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Six y siègent EXACTEMENT (3 items) : la marge est nulle
-    et tout retrait d'item la casse.
+    Les dix misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Six y siègent EXACTEMENT (3 items), dont la neuve
+    (`moment-force-direction-vs-axe`) : la marge est nulle et tout retrait
+    d'item la casse.

@@ -840,9 +840,15 @@ jobs:
   # `gates` 51 min 34 s.
   scenes:
     runs-on: ubuntu-latest
-    # Cinq scènes vert puis rouge + install + build : ~40 min attendues (34 au
-    # run 748 avec quatre ; la cinquième, ~2 min 30 par passage en local). 60
-    # garde la marge d'un runner lent et attrape encore un vrai blocage.
+    # MESURÉ au run 749 (cinq scènes, vert puis rouge) : 40 min 18 s, dont
+    # 18 min 24 s pour le champ magnétique seul (orbite 4:49, sphère 3:57,
+    # vectoriel 5:12, révolution 4:08). La sixième scène (le manège, des
+    # courses en temps réel) et la famille ergonomie ajoutée à chaque porte
+    # l'auraient mené au plafond de 60 : le champ magnétique part dans SON job
+    # (`scene-champ`, ci-dessous), qui tourne en même temps. Ici : quatre
+    # scènes + le manège, ~40 min attendues (le manège seul, vert puis rouge,
+    # ~18 min : ses courses sont en temps réel, 556 s par passage sur un banc
+    # calme, passe à 390 px comprise) ; 60 garde la marge d'un runner lent.
     timeout-minutes: 60
     defaults:
       run:
@@ -926,28 +932,6 @@ jobs:
           npm run scene-sphere
           node scripts/scene-sphere.mjs --essai-rouge
 
-      # PORTE SCÈNE 3D « UNE PARTICULE CHARGÉE DANS UN CHAMP MAGNÉTIQUE »
-      # (2026-09-23, §11.190, ADR 0041). La troisième scène (pc/chute-mouvements-
-      # plans, R6), sur les mêmes pièces. Elle LANCE la particule et attend la
-      # course en temps réel (2 ns de vol par seconde) : les nombres (R, F, la
-      # déviation de l'exemple travaillé, le demi-tour quand R < ℓ) recalculés
-      # par une SECONDE implémentation ; le CÔTÉ où la trajectoire s'infléchit,
-      # lu dans les PIXELS pour les quatre couples charge × sens du champ ; le
-      # cercle dessiné deux fois plus petit quand B double ; la vitesse lue
-      # constante pendant la course. Et, comme les deux autres depuis §11.190 :
-      # AVANT LE PARI, RIEN NE RÉPOND. Depuis §11.192, le GLYPHE du champ : vu
-      # comme le manuel, l'entrant se lit ⊗ et le sortant ⊙ — lu à l'échelle
-      # de l'écran, entre deux repères que le produit pose.
-      #
-      # DEUX PASSAGES : vert, puis `--essai-rouge` — dont la misconception même
-      # de la leçon (un rayon qui croîtrait avec B ; le côté de v ∧ B sans le
-      # signe de q) : les dix familles doivent crier.
-      - name: "Scène 3D du champ magnétique (vert puis rouge)"
-        run: |
-          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
-          npm run scene-lorentz
-          node scripts/scene-lorentz.mjs --essai-rouge
-
       # PORTE SCÈNE 3D « LE PRODUIT VECTORIEL » (2026-09-23, §11.191, ADR 0041).
       # La quatrième scène (maths/geometrie-espace, R3). Les nombres (u ∧ v, sa
       # norme, les aires, les deux produits scalaires nuls) recalculés par une
@@ -983,6 +967,97 @@ jobs:
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
           npm run scene-revolution
           node scripts/scene-revolution.mjs --essai-rouge
+
+      # PORTE SCÈNE 3D « LE MANÈGE » (2026-09-24, §11.195, ADR 0041). La sixième
+      # scène (pc/rotation-axe-fixe, R2) : le moment d'une force PAR RAPPORT À UN
+      # AXE. Le poids d'un enfant au bord (245 N, à 1,50 m) ne fait pas tourner
+      # le manège ; l'axe basculé, le même poids donne 367,5 N·m. Les nombres
+      # par une SECONDE voie (J = ½MR² + 2mr², θ̈ = M/J, ω et θ à 4,0 s, la
+      # fiche v = dω, s = dθ) ; les PIXELS dans les deux sens (le poids : 4,0 s
+      # sans un pixel qui bouge ; la poussée tangentielle : il part ; 286° et
+      # 115° lus du dessus ; la roue qui descend de 90° ; la flèche du poids
+      # qui s'écrase vue d'en haut ; le bras de levier qui fond, et AUCUN bras
+      # pour une force parallèle à l'axe) ; la frontière (ni moment cinétique,
+      # ni période) ; et la famille ERGONOMIE partagée (clavier, téléphone).
+      # Depuis la revue des captures (même jour) : AUCUNE ÉTAPE NE RÉPOND À UN
+      # PARI SUIVANT (l'étape 3 ouvrait les sièges, et donnait à lire la réponse
+      # de l'étape 4) ; LES ÉTIQUETTES SE LISENT (ni chevauchées, ni barrées par
+      # leur flèche, ni hors du cadre — à 1 280 et à 390 px).
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — dont J sans le disque et le
+      # poids qui tournerait : les seize familles doivent crier.
+      - name: "Scène 3D du manège (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-manege
+          node scripts/scene-manege.mjs --essai-rouge
+
+  # LE CHAMP MAGNÉTIQUE, SEUL (2026-09-24). Sa porte est la plus longue des
+  # scènes (18 min 24 s au run 749, vert puis rouge : des courses en ralenti,
+  # quatre couples charge × sens lus aux pixels). Seule dans son job, elle
+  # tourne pendant que `scenes` passe les cinq autres : le mur est celui du plus
+  # long des deux, pas leur somme.
+  scene-champ:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      # next/font/google fetches fonts at build time; the cache gives the
+      # loader a fallback when the runner's fetch to Google flakes (the
+      # "Cannot read properties of null (reading '1')" build failure) and
+      # speeds up rebuilds.
+      - name: Cache Next.js build cache
+        uses: actions/cache@v4
+        with:
+          path: web/.next/cache
+          key: nextjs-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}-${{ github.sha }}
+          restore-keys: |
+            nextjs-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}-
+
+      # web/ pins playwright-core; install the matching Chromium build and
+      # hand its path to the scene gates via PW_CHROMIUM_PATH.
+      - name: Install Chromium for the scene gates
+        run: npx playwright@1.61.1 install --with-deps chromium
+
+      # One retry: the next/font Google fetch is the known transient here.
+      - name: Build
+        run: npm run build || { echo "::warning::build retry (next/font fetch flake)"; npm run build; }
+
+      # PORTE SCÈNE 3D « UNE PARTICULE CHARGÉE DANS UN CHAMP MAGNÉTIQUE »
+      # (2026-09-23, §11.190, ADR 0041). La troisième scène (pc/chute-mouvements-
+      # plans, R6), sur les mêmes pièces. Elle LANCE la particule et attend la
+      # course en temps réel (2 ns de vol par seconde) : les nombres (R, F, la
+      # déviation de l'exemple travaillé, le demi-tour quand R < ℓ) recalculés
+      # par une SECONDE implémentation ; le CÔTÉ où la trajectoire s'infléchit,
+      # lu dans les PIXELS pour les quatre couples charge × sens du champ ; le
+      # cercle dessiné deux fois plus petit quand B double ; la vitesse lue
+      # constante pendant la course. Et, comme les deux autres depuis §11.190 :
+      # AVANT LE PARI, RIEN NE RÉPOND. Depuis §11.192, le GLYPHE du champ : vu
+      # comme le manuel, l'entrant se lit ⊗ et le sortant ⊙ — lu à l'échelle
+      # de l'écran, entre deux repères que le produit pose.
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — dont la misconception même
+      # de la leçon (un rayon qui croîtrait avec B ; le côté de v ∧ B sans le
+      # signe de q) : les dix familles doivent crier.
+      - name: "Scène 3D du champ magnétique (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-lorentz
+          node scripts/scene-lorentz.mjs --essai-rouge
+
 
   # LA LARGEUR D'UN TÉLÉPHONE, EN CI (DÉCISIONS §16, levée par son prémisse).
   # `etroit-sweep` mesure le corpus entier — les leçons chapitres dépliés, les
