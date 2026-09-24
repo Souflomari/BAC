@@ -900,6 +900,30 @@ for (const dir of dirs) {
           const desc = JSON.parse(fs.readFileSync(j, "utf8"));
           if (desc.tool === "scene3d") {
             for (const f of fautesScene3d(desc)) { console.error(`  ✗ ${dir}: media/${slug}.json (scène 3D) — ${f}`); dirFail++; }
+            // Le `misconception:` d'un pari de scène doit être DÉCLARÉ dans le
+            // items.yaml de la notion — la règle §11.58 des distracteurs,
+            // étendue aux paris (spec-scene-manege §8.5 : « un misconception
+            // employé par le descripteur doit être déclaré au moment où la
+            // scène est validée »). Rien ne le vérifiait : une coquille dans
+            // un descripteur passait, et nommait un modèle qui n'existe nulle
+            // part. Les listes `pedagogy_wiring.misconceptions` aussi.
+            const declareesScene = new Set(
+              (Array.isArray(yamlDocs["items.yaml"]?.misconceptions) ? yamlDocs["items.yaml"].misconceptions : [])
+                .map((m) => m?.id).filter((x) => typeof x === "string"),
+            );
+            if (declareesScene.size) {
+              const vus = [
+                ...(desc.etapes ?? []).flatMap((e) => (e?.pari?.choix ?? []).flatMap((c) =>
+                  [c?.misconception].flat().filter(Boolean).map((v) => [v, `étape ${e?.id ?? "?"}, choix ${c?.id ?? "?"}`]))),
+                ...[desc.pedagogy_wiring?.misconceptions ?? []].flat().map((v) => [v, "pedagogy_wiring"]),
+              ];
+              for (const [v, ou] of vus) {
+                if (typeof v === "string" && !declareesScene.has(v)) {
+                  console.error(`  ✗ ${dir}: media/${slug}.json (scène 3D) — ${ou} : misconception « ${v} » NON DÉCLARÉE dans items.yaml`);
+                  dirFail++;
+                }
+              }
+            }
           } else if (!desc.url && !desc.url_base) console.error(`  ⚠ ${dir}: [[embed:${slug}]] has no url — shows the "à venir" placeholder`);
         } catch (err) { console.error(`  ✗ ${dir}: media/${slug}.json invalid JSON → ${err.message.split("\n")[0]}`); dirFail++; }
       } else {
