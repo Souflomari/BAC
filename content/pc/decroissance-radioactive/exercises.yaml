@@ -19,8 +19,15 @@ exercises:
   # "2021 — session normale — Exercice III". Stimulateur cardiaque au
   # plutonium 238 : désintégration α (Soddy), courbe d'activité a(t), lecture
   # graphique de t_1/2, déduction de λ, calcul de N0 depuis a0, durée de
-  # fonctionnement efficace. La figure (courbe a(t) en Bq) est transcrite EN
-  # TEXTE dans l'intro — pas de [[figure:]] orpheline encodant d'autres nombres.
+  # fonctionnement efficace. La figure (courbe a(t) en Bq) est REDESSINÉE
+  # (media/courbe-activite-pu238.svg, [[figure:courbe-activite-pu238]] dans
+  # l'intro) à partir des seules graduations de la transcription (ordonnée
+  # 2,5×10¹⁰ ; 5×10¹⁰ ; 7,5×10¹⁰ ; 10¹¹ Bq — abscisse 20, 40, 60, 80, 100 ans)
+  # et du corrigé (q2 : t½ ≈ 88 ans ; q4 : a0 = 10¹¹ Bq) — le scan original
+  # n'est pas dans le dépôt. Aucun autre nombre n'y est encodé ; le
+  # quadrillage fin (4 ans / 0,5×10¹⁰ Bq) fait tomber la lecture pile sur un
+  # trait. Le paragraphe « La courbe. » ci-dessous reste la transcription
+  # fidèle du document (texte) ; la figure en est le tracé.
   - id: r-bac
     title: "Exercice de type bac — désintégration du plutonium 238 (2021)"
     sourcing:
@@ -38,6 +45,8 @@ exercises:
       **Données.** On dispose des noyaux suivants (symbole et couple $(Z, A)$) : protactinium $^{238}_{91}\text{Pa}$, uranium $^{234}_{92}\text{U}$, uranium $^{238}_{92}\text{U}$, neptunium $^{238}_{93}\text{Np}$, plutonium $^{238}_{94}\text{Pu}$. On prend $1\ \text{an} = 365\ \text{jours}$.
 
       **La courbe.** Un enregistrement donne l'évolution de l'activité $a(t)$ (en becquerels) d'un échantillon de plutonium 238 présent dans le stimulateur, en fonction du temps $t$ (en années). L'instant d'implantation est pris comme origine des dates ($t = 0$). L'axe des ordonnées $a$ est gradué en $2{,}5\times10^{10},\ 5\times10^{10},\ 7{,}5\times10^{10},\ 10^{11}\ \text{Bq}$ ; l'axe des abscisses $t$ en $20,\ 40,\ 60,\ 80,\ 100\ \text{ans}$. La courbe est une décroissance exponentielle qui part de $a_0 \approx 10^{11}\ \text{Bq}$ à $t = 0$ et décroît régulièrement.
+
+      [[figure:courbe-activite-pu238]]
     questions:
       - id: q1
         part: "Partie I — La transformation nucléaire"

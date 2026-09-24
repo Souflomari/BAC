@@ -1087,7 +1087,12 @@ qu'aux §20, §21, §23.
 11. **Les deux réparations de fidélité sont faites** : l'énoncé de la variation
     ne donne plus la réponse de sa q2 ; la leçon écrit « 8,0 jours ». **`r-bac`
     q2.1 est laissé tel quel** : son énoncé décrit déjà le quadrillage sans le
-    lire, et une figure du Pu-238 n'existe pas.
+    lire, et une figure du Pu-238 n'existe pas. *(Tranché par défaut le 2026-09-24, §11.205 :
+    la question demande « graphiquement » une demi-vie que l'élève ne pouvait
+    lire nulle part — la figure est REDESSINÉE d'après la transcription (ses
+    graduations) et le corrigé (t½ ≈ 88 ans, a₀ = 10¹¹ Bq), aucun autre nombre,
+    et elle le dit dans son commentaire d'auteur. **Pour revenir en arrière** :
+    retirer le marqueur de `r-bac` ; la figure reste inerte.)*
 12. **Les cinq étapes sont gardées**, S4 comprise.
 
 **LES ÉCARTS DE LA CONSTRUCTION, et pourquoi :**
@@ -1114,7 +1119,7 @@ qu'aux §20, §21, §23.
    `.stages.json` (`"enonce"`) — une clé neuve du format, validée.
 
 **CE QUI RESTE AU PROPRIÉTAIRE :** A ou a ; le récapitulatif de R6 ; la figure du
-Pu-238 ; le champ `habilete` (toujours absent de la notion — le mélange 50/15/35
+Pu-238 (faite par défaut depuis, §11.205 — reste à la confronter au scan d'origine) ; le champ `habilete` (toujours absent de la notion — le mélange 50/15/35
 reste incalculable, §3) ; et, comme au §23, la règle « un manipulable qui ne solde
 aucune dette se justifie par un trou MESURÉ », acceptée par défaut.
 
@@ -1205,9 +1210,20 @@ tête de la spec et au §11.204) :
 14. **La colonne de 330 px à 1 280 px** (critique de l'ergonomie : le retour en
     maths dans un couloir de ~35 caractères, la cellule gauche vide sous la scène
     collante). C'est `GRILLE_SCENE` (3fr/2fr), commune aux dix panneaux : la changer
-    rejoue les étiquettes des dix portes à 1 280 px. **Proposé** : ~1fr/1fr à partir
-    de `bp-expanded`, ou une bande plus large pour les scènes ; à mesurer avant (la
-    capture de la critique était recadrée à 824 px).
+    rejoue les étiquettes des dix portes à 1 280 px. **MESURÉ (rejoué le soir même,
+    cinq scènes, 1 280 / 1 440 / 1 920 px)** : la bande de scène fait 814 à 823 px
+    À TOUTES CES LARGEURS — c'est la colonne de contenu de la leçon qui la borne
+    (`.notion-content`, colonne 3 de la grille de page) — donc la scène ~480 px et la
+    colonne ~320 px, retours de pari à 43–45 caractères par ligne (le bas de la
+    fourchette lisible ; la critique disait ~35, sur un retour chargé de maths). Le
+    « vide sous la scène » des captures pleine page n'en est pas un : la scène est
+    collante, elle suit la lecture. **Les deux leviers, et leur prix :** (a) 1fr/1fr
+    dans la bande : colonne ~400 px (~55 caractères), mais les dix scènes perdent 17 %
+    de largeur (31 % de surface) — sur le produit dont la scène EST le contenu ; (b)
+    une bande de scène qui sort de la colonne de contenu aux grands écrans : c'est la
+    grille de PAGE, où des options d'écran large attendent déjà l'avis du propriétaire
+    (`wideOption`, NotionPageView). **Non tranché, parce que les deux touchent ce qui
+    n'est pas à trancher par défaut** ; la mesure est là pour qu'il le soit.
 15. **Un bouton « revenir au réglage de l'énoncé »** : non — un contrôle de plus par
     étape, contre la règle « un contrôle neuf par étape » (ADR 0041) ; « Précédent »
     puis « Suivant » repose déjà l'état de l'étape.

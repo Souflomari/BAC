@@ -15869,3 +15869,50 @@ maintenant la scène sans son marqueur.
 `exclusions` citées par la spec (`source: derived`) ; le critère λ/a > 10⁻³ (un
 corrigé, pas le cadre) ; le nom de la couleur de 600 nm ; et, communs aux dix
 scènes, le verdict dit quatre fois et la colonne de 330 px à 1 280 px.
+
+## §11.205 — Le même soir : une question « graphique » sans graphe, un quadrillage à 2,0:1 qui se disait à 3:1, et un témoin qui ne gardait que lui-même
+
+**LE SUJET NATIONAL 2021 DEMANDAIT DE LIRE UNE COURBE QUE L'ÉLÈVE N'AVAIT PAS.**
+`r-bac` (pc/decroissance-radioactive, le stimulateur au plutonium 238) pose en q2
+« Déterminer graphiquement la demi-vie », et son énoncé ne portait qu'une
+DESCRIPTION de la courbe — laissé tel quel au §24 parce que « une figure du
+Pu-238 n'existe pas ». Tranché par défaut : la figure `courbe-activite-pu238` est
+REDESSINÉE d'après la transcription (ordonnée graduée 2,5 ; 5 ; 7,5 ; 10 × 10¹⁰ Bq,
+abscisse 20 à 100 ans) et le corrigé (a₀ = 10¹¹ Bq, t½ ≈ 88 ans), aucun autre
+nombre ; fins tous les 4 ans et 0,5 × 10¹⁰ Bq, pour que la lecture tombe sur un
+trait ; trois étapes, l'énoncé FIGÉ à la deuxième (la courbe), la construction —
+la réponse — seulement dans la troisième. Premier rendu lu : « t (ans) » écrit sur
+« 100 » au bout de l'axe ; le nom de l'axe est passé sous la rangée des
+graduations. Le scan d'origine n'est pas dans le dépôt : la figure le dit.
+
+**LE QUADRILLAGE DE SA SŒUR ÉTAIT À 2,0:1.** L'auteur de la figure, en calculant
+son opacité au lieu de recopier celle du modèle, a trouvé que
+`courbe-activite-quadrillee` (la figure d'énoncé de `r-variation`, §11.202)
+posait ses traits forts à 42 % d'encre douce : 2,02:1 sur la surface, rejoué et
+confirmé — alors que la décision du §24 (« la NORME l'emporte, forts à ≈ 3:1 »)
+était écrite pour le quadrillage de la SCÈNE, où l'« environ » valait 2,91 (même
+soir, §11.204). Les deux figures prennent la même recette : forts à 68 % (3,5:1 en
+clair, 4,5:1 en sombre), fins à 30 %. Ce sont les deux seules figures du corpus à
+quadrillage de lecture (balayage des SVG). Porte figures, clair et sombre, tous
+les pixels : verte sur les deux.
+
+**UN TÉMOIN NOMMÉ NE GARDE QUE LUI-MÊME.** `dom-truth` vérifiait, sur le HTML
+prérendu, que la figure d'énoncé de `r-variation` s'arrête à son étape d'énoncé —
+UNE figure, nommée. La seconde serait passée sans que personne ne la regarde. La
+mesure garde maintenant TOUTE figure servie en énoncé (`data-figure-enonce`),
+contre l'étape que déclare SON `.stages.json`, sans commentaire d'auteur, et deux
+témoins avec la lecture qu'ils ne doivent pas montrer (« 8,0 jours », « 88 ans ») ;
+et elle se déclare aveugle si elle voit moins de figures que de témoins. ROUGE sur
+le build d'avant (la figure de `r-bac` absente), VERTE après : 2 figures servies,
+chacune arrêtée à son étape.
+
+**ET UNE MESURE QUI N'A RIEN CHANGÉ, parce qu'elle ne le devait pas** (DÉCISIONS
+§25.14) : la colonne des scènes fait ~320 px à 1 280, 1 440 ET 1 920 px — c'est
+la colonne de contenu de la page qui borne la bande — et les retours s'y lisent à
+43–45 caractères par ligne. Les deux leviers coûtent, l'un 17 % de la largeur des
+dix scènes, l'autre la grille de page que le propriétaire n'a pas encore tranchée.
+
+**VÉRIFIÉ :** `validate-content` de la notion ; porte figures clair et sombre
+(`--pixels-tous`) sur les deux figures ; `dom-truth` 280 contrôles, 0 échec, sur le
+build qui les porte (rouge sur le précédent) ; batterie locale verte, sur l'arbre
+poussé.

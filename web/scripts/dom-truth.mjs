@@ -24,7 +24,7 @@
 
 import { chromium } from "playwright-core";
 import { spawn, execSync } from "child_process";
-import { readFileSync, readdirSync, statSync } from "fs";
+import { existsSync, readFileSync, readdirSync, statSync } from "fs";
 import { fileURLToPath } from "url";
 import path from "path";
 import jitiFactory from "jiti";
@@ -782,10 +782,16 @@ try {
   // (ADR 0039). Deux mesures, sur le HTML PRÉRENDU :
   //  (a) PORTÉE — aucune page ne sert un marqueur brut, sous aucune de ses
   //      formes (espace, espace fine, insécable avant le deux-points) ;
-  //  (b) TÉMOIN — la figure de l'énoncé de r-variation
+  //  (b) TÉMOINS — la figure de l'énoncé de r-variation
   //      (pc/decroissance-radioactive) s'arrête à son étape d'ÉNONCÉ : ni
   //      l'étape de la construction (la réponse de sa q2), ni les commentaires
-  //      de l'auteur (qui la décrivent), ni « 8,0 jours ».
+  //      de l'auteur (qui la décrivent), ni « 8,0 jours » ; et, depuis le
+  //      2026-09-24, celle de r-bac (le plutonium 238, redessinée d'après la
+  //      transcription du sujet 2021), sans « 88 ans ».
+  //  (c) PORTÉE des témoins — TOUTE figure d'énoncé servie
+  //      (`data-figure-enonce`), où qu'elle soit, s'arrête à l'étape que
+  //      déclare son `.stages.json` : un témoin nommé ne garde que lui-même,
+  //      et la figure suivante n'aurait été vue par personne (ADR 0031).
   // Testé rouge sur le build d'avant la tolérance des espaces (la figure
   // absente, le marqueur à l'écran).
   {
@@ -807,20 +813,50 @@ try {
     const bruts = pages.filter((f) => BRUT.test(readFileSync(f, "utf8").replace(/<script[\s\S]*?<\/script>/g, "").replace(/<!--[\s\S]*?-->/g, ""))).map((f) => f.slice(racine.length));
     const temoin = pages.find((f) => f.endsWith(path.join("pc", "decroissance-radioactive.html")));
     const html = temoin ? readFileSync(temoin, "utf8") : "";
-    const i = html.indexOf('data-figure-enonce="courbe-activite-quadrillee"');
-    const fig = i < 0 ? "" : html.slice(i, html.indexOf("</svg>", i) + 6);
+    const figureDe = (h, slug) => { const i = h.indexOf(`data-figure-enonce="${slug}"`); return i < 0 ? "" : h.slice(i, h.indexOf("</svg>", i) + 6); };
     const fautes = [];
     if (pages.length < 60) fautes.push(`${pages.length} pages de notions seulement (≥ 60 attendues)`);
     if (bruts.length) fautes.push(`${bruts.length} page(s) servent un marqueur brut : ${bruts.slice(0, 3).join(", ")}`);
-    if (!fig) fautes.push("la figure d'énoncé de r-variation est ABSENTE du HTML servi");
-    else {
-      if (!/id="step-2"/.test(fig)) fautes.push("la figure d'énoncé n'a pas sa courbe (step-2)");
-      if (/id="step-3"/.test(fig)) fautes.push("la figure d'énoncé porte l'étape de la CONSTRUCTION (step-3) — la réponse de sa q2");
-      if (/<!--/.test(fig)) fautes.push("la figure d'énoncé porte les commentaires de l'auteur");
-      if (/8,0(\s|&nbsp;|\u202f|\u00a0)*jours/.test(fig)) fautes.push("la figure d'énoncé contient « 8,0 jours »");
+    // les témoins : chacun sa figure, son exercice, la lecture qu'il ne doit pas montrer
+    const TEMOINS = [
+      ["courbe-activite-quadrillee", "r-variation", /8,0(\s|&nbsp;|\u202f|\u00a0)*jours/, "« 8,0 jours »"],
+      ["courbe-activite-pu238", "r-bac", /88(\s|&nbsp;|\u202f|\u00a0)*ans/, "« 88 ans »"],
+    ];
+    for (const [slug, ex, lecture, dit] of TEMOINS) {
+      const fig = figureDe(html, slug);
+      if (!fig) { fautes.push(`la figure d'énoncé de ${ex} (${slug}) est ABSENTE du HTML servi`); continue; }
+      if (!/id="step-2"/.test(fig)) fautes.push(`la figure d'énoncé de ${ex} n'a pas sa courbe (step-2)`);
+      if (/id="step-3"/.test(fig)) fautes.push(`la figure d'énoncé de ${ex} porte l'étape de la CONSTRUCTION (step-3) — la réponse de sa q2`);
+      if (/<!--/.test(fig)) fautes.push(`la figure d'énoncé de ${ex} porte les commentaires de l'auteur`);
+      if (lecture.test(fig)) fautes.push(`la figure d'énoncé de ${ex} contient ${dit}`);
     }
+    // la portée : toute figure d'énoncé servie, contre l'étape que déclare son .stages.json
+    const declares = new Map();
+    for (const matiere of readdirSync(path.join(WEB, "..", "content"))) {
+      const dm = path.join(WEB, "..", "content", matiere);
+      if (!statSync(dm).isDirectory()) continue;
+      for (const notion of readdirSync(dm)) {
+        const media = path.join(dm, notion, "media");
+        if (!existsSync(media)) continue;
+        for (const f of readdirSync(media)) if (f.endsWith(".stages.json")) { try { const j = JSON.parse(readFileSync(path.join(media, f), "utf8")); if (Number.isInteger(j.enonce)) declares.set(f.replace(/\.stages\.json$/, ""), j.enonce); } catch {} }
+      }
+    }
+    let servies = 0;
+    for (const f of pages) {
+      const h = readFileSync(f, "utf8");
+      for (const m of h.matchAll(/data-figure-enonce="([a-z0-9-]+)"/g)) {
+        servies++;
+        const slug = m[1], n = declares.get(slug);
+        const fig = figureDe(h.slice(m.index), slug);
+        if (n === undefined) { fautes.push(`${slug} est servie en figure d'énoncé sans étape d'énoncé déclarée`); continue; }
+        const au_dela = [...fig.matchAll(/id="step-(\d+)"/g)].map((x) => +x[1]).filter((k) => k > n);
+        if (au_dela.length) fautes.push(`${slug} (${f.slice(racine.length)}) porte l'étape ${au_dela.join(", ")} au-delà de son énoncé (${n})`);
+        if (/<!--/.test(fig)) fautes.push(`${slug} (${f.slice(racine.length)}) porte les commentaires de l'auteur`);
+      }
+    }
+    if (servies < TEMOINS.length) fautes.push(`${servies} figure(s) d'énoncé servie(s) — moins que les ${TEMOINS.length} témoins : la mesure ne voit pas ce qu'elle garde`);
     if (fautes.length) failures += fail(fautes.join(" ; "));
-    else console.log(`  ✓ ${pages.length} pages de notions, aucun marqueur brut ; la figure d'énoncé de r-variation s'arrête à la courbe (step-1, step-2), sans commentaire ni lecture`);
+    else console.log(`  ✓ ${pages.length} pages de notions, aucun marqueur brut ; ${servies} figure(s) d'énoncé servie(s), chacune arrêtée à l'étape que déclare son .stages.json, sans commentaire ; les témoins r-variation et r-bac s'arrêtent à la courbe, sans leur lecture`);
   }
 
   // ══ SWEEPS (July-2026 external-audit instruments — class-level, per §13) ══
