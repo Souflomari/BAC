@@ -29,7 +29,7 @@ import { TRANSPORT_BTN_CLASS } from "../TransportButton";
 import { MathText } from "../ChoiceButton";
 import * as K from "@/lib/scene3d/kepler";
 import type { SceneOrbite } from "@/lib/scene3d/orbite-geostationnaire";
-import { CURSEUR, MARGE_FOCUS, type Vue } from "./commun";
+import { CURSEUR, LIGNE_RADIO, MARGE_FOCUS, type Vue } from "./commun";
 import { useSceneRendu } from "./useSceneRendu";
 import { usePari } from "./usePari";
 import { useGlisserVue } from "./useGlisserVue";
@@ -141,7 +141,8 @@ export function OrbiteGeostationnairePanel({ scene, className }: { scene: Scene3
       const e = etapes[i];
       setIndexEtape(i);
       setEnLecture(false);
-      pari.reinitialiser();
+      // Chaque étape garde son pari ; « Recommencer » (dernière → première) repart à blanc.
+      pari.changerEtape(etapes[indexEtape].id, e.id, i === 0 && indexEtape === etapes.length - 1);
       setEtat((courant) => appliquer(e.etat, courant));
       const v = nomVue(e.etat?.vue);
       if (v) {
@@ -149,7 +150,7 @@ export function OrbiteGeostationnairePanel({ scene, className }: { scene: Scene3
         setAngles(VUES[v]);
       }
     },
-    [etapes, pari]
+    [etapes, pari, indexEtape]
   );
 
   // ── Le temps : il ne coule que lancé à la main ──
@@ -260,9 +261,16 @@ export function OrbiteGeostationnairePanel({ scene, className }: { scene: Scene3
       <Eyebrow tone="muted" decorative className="mb-3">
         Scène 3D
       </Eyebrow>
-      <ConsigneEtape idTitre={idTitre} idConsigne={idConsigne} titre={etape.titre} consigne={etape.consigne} />
+      <ConsigneEtape
+        idTitre={idTitre}
+        idConsigne={idConsigne}
+        titre={etape.titre}
+        consigne={etape.consigne}
+        cle={etape.id}
+        rang={{ index: indexEtape, total: etapes.length }}
+      />
 
-      <div className="grid gap-5 bp-expanded:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] bp-expanded:items-start">
+      <div className="grid gap-5 bp-expanded:grid-cols-[minmax(0,3fr)_minmax(18rem,2fr)] bp-expanded:items-start">
         <Plateau
           hoteRef={rendu.hoteRef}
           canvasRef={rendu.canvasRef}
@@ -343,6 +351,10 @@ export function OrbiteGeostationnairePanel({ scene, className }: { scene: Scene3
           )}
 
           {/* La suite, et le contrôle neuf de l'étape — une fois le pari révélé */}
+          {/* Au téléphone, les vues viennent juste après le pari et le lancement —
+              plus après la fiche, à 1 500 px de la scène qu'elles tournent. */}
+          <VuesBloc vues={VUES} vue={vue} onVue={choisirVue} visibilite="flex bp-expanded:hidden" />
+
           {pari.etapeOuverte && etape.suite && (
             <p className="min-w-0 break-words font-display text-body-lg text-primary" data-suite>
               <MathText>{etape.suite}</MathText>
@@ -420,7 +432,7 @@ export function OrbiteGeostationnairePanel({ scene, className }: { scene: Scene3
                   [-1, "Sens contraire (vers l’ouest)"],
                 ] as const
               ).map(([v, libelle]) => (
-                <label key={v} className="flex min-h-touch items-center gap-2 text-body-sm text-primary">
+                <label key={v} className={LIGNE_RADIO}>
                   <input
                     type="radio"
                     name={`${idTitre}-sens`}
@@ -443,7 +455,7 @@ export function OrbiteGeostationnairePanel({ scene, className }: { scene: Scene3
                   ["geocentrique", "Géocentrique : centré sur la Terre, axes fixes"],
                 ] as const
               ).map(([v, libelle]) => (
-                <label key={v} className="flex min-h-touch items-center gap-2 text-body-sm text-primary">
+                <label key={v} className={LIGNE_RADIO}>
                   <input
                     type="radio"
                     name={`${idTitre}-ref`}
@@ -513,9 +525,6 @@ export function OrbiteGeostationnairePanel({ scene, className }: { scene: Scene3
             </div>
           )}
         </div>
-
-        {/* Au téléphone, les vues viennent APRÈS les réglages. */}
-        <VuesBloc vues={VUES} vue={vue} onVue={choisirVue} visibilite="flex bp-expanded:hidden" />
       </div>
 
       <TransportEtapes index={indexEtape} total={etapes.length} onAller={allerA} idConsigne={idConsigne} />

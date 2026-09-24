@@ -27,7 +27,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { MathText } from "../ChoiceButton";
 import * as R from "@/lib/scene3d/revolution";
 import type { MontreRevolution, SceneRevolution } from "@/lib/scene3d/solide-revolution";
-import { CURSEUR, MARGE_FOCUS, type Vue } from "./commun";
+import { CURSEUR, LIGNE_RADIO, MARGE_FOCUS, type Vue } from "./commun";
 import { useSceneRendu } from "./useSceneRendu";
 import { usePari } from "./usePari";
 import { useGlisserVue } from "./useGlisserVue";
@@ -132,7 +132,8 @@ export function RevolutionPanel({ scene, className }: { scene: Scene3DDescriptor
     (i: number) => {
       const e = etapes[i];
       setIndexEtape(i);
-      pari.reinitialiser();
+      // Chaque étape garde son pari ; « Recommencer » (dernière → première) repart à blanc.
+      pari.changerEtape(etapes[indexEtape].id, e.id, i === 0 && indexEtape === etapes.length - 1);
       setEtat((courant) => appliquer(e.etat, courant));
       const v = nomVue(e.etat?.vue);
       if (v) {
@@ -140,7 +141,7 @@ export function RevolutionPanel({ scene, className }: { scene: Scene3DDescriptor
         setAngles(VUES[v]);
       }
     },
-    [etapes, pari]
+    [etapes, pari, indexEtape]
   );
 
   const glisser = useGlisserVue(
@@ -156,9 +157,12 @@ export function RevolutionPanel({ scene, className }: { scene: Scene3DDescriptor
   // répondaient, dès l'étape 1, aux paris de la coupe (le disque, πf²) et de
   // l'unité (k³) — rien avant le pari, c'est par SCÈNE, pas par étape (revue
   // WAVE 2).
+  // « Acquis » = l'étape qui l'établit a été RÉVÉLÉE — pas seulement dépassée :
+  // un élève qui passe une étape sans parier ne reçoit pas sa réponse en prime.
   const acquis = (controle: string) => {
-    const i = etapes.findIndex((e) => e.controles.includes(controle));
-    return i >= 0 && (indexEtape > i || (indexEtape === i && issue));
+    const e = etapes.find((x) => x.controles.includes(controle));
+    if (!e) return false;
+    return e.pari ? pari.revelee(e.id, etape.id) : etapes.indexOf(e) <= indexEtape;
   };
 
   // ── Lectures (toutes calculées, jamais recopiées) ──
@@ -240,9 +244,16 @@ export function RevolutionPanel({ scene, className }: { scene: Scene3DDescriptor
       <Eyebrow tone="muted" decorative className="mb-3">
         Scène 3D
       </Eyebrow>
-      <ConsigneEtape idTitre={idTitre} idConsigne={idConsigne} titre={etape.titre} consigne={etape.consigne} />
+      <ConsigneEtape
+        idTitre={idTitre}
+        idConsigne={idConsigne}
+        titre={etape.titre}
+        consigne={etape.consigne}
+        cle={etape.id}
+        rang={{ index: indexEtape, total: etapes.length }}
+      />
 
-      <div className="grid gap-5 bp-expanded:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] bp-expanded:items-start">
+      <div className="grid gap-5 bp-expanded:grid-cols-[minmax(0,3fr)_minmax(18rem,2fr)] bp-expanded:items-start">
         <Plateau
           hoteRef={rendu.hoteRef}
           canvasRef={rendu.canvasRef}
@@ -284,6 +295,10 @@ export function RevolutionPanel({ scene, className }: { scene: Scene3DDescriptor
             />
           )}
 
+          {/* Au téléphone, les vues viennent juste après le pari et le lancement —
+              plus après la fiche, à 1 500 px de la scène qu'elles tournent. */}
+          <VuesBloc vues={VUES} vue={vue} onVue={choisirVue} visibilite="flex bp-expanded:hidden" />
+
           {pari.etapeOuverte && etape.suite && (
             <p className="min-w-0 break-words font-display text-body-lg text-primary" data-suite>
               <MathText>{etape.suite}</MathText>
@@ -305,7 +320,7 @@ export function RevolutionPanel({ scene, className }: { scene: Scene3DDescriptor
             <fieldset className="flex flex-col gap-1" data-controle="fonction">
               <legend className="mb-1 text-body-sm text-secondary">La fonction qui tourne</legend>
               {R.ORDRE_FONCTIONS.map((id) => (
-                <label key={id} className="flex min-h-touch items-center gap-2 text-body-sm text-primary">
+                <label key={id} className={LIGNE_RADIO}>
                   <input
                     type="radio"
                     name={`${idTitre}-fonction`}
@@ -351,14 +366,12 @@ export function RevolutionPanel({ scene, className }: { scene: Scene3DDescriptor
                 {acquis("tranche") && <MathText>{"La coupe à l'abscisse $x$ : un disque plein de rayon $f(x)$, d'aire $\\pi f(x)^2$"}</MathText>}
                 {acquis("unite") && <MathText>{"Repère orthonormé d'unité $k$ cm : $1$ u.v. $= k^3$ cm³"}</MathText>}
               </div>
-              <p className="mt-2 text-body-sm font-medium text-primary" aria-live="polite" aria-atomic="true" data-issue>
+              <p className="mt-2 text-body-sm font-medium text-primary" data-issue>
                 {frenchTypography(issueTexte)}
               </p>
             </div>
           )}
         </div>
-
-        <VuesBloc vues={VUES} vue={vue} onVue={choisirVue} visibilite="flex bp-expanded:hidden" />
       </div>
 
       <TransportEtapes index={indexEtape} total={etapes.length} onAller={allerA} idConsigne={idConsigne} />

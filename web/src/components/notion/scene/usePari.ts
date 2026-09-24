@@ -17,18 +17,32 @@
  * la scène ?) et `montre` (la scène l'a-t-elle montré ?).
  *
  * La révélation est COLLANTE : une fois montrée, remettre le temps à zéro ne
- * la cache pas. `reinitialiser` est appelé par le panneau en changeant
- * d'étape, dans le même lot que le changement d'index (pas d'image
- * intermédiaire où le pari d'une étape s'afficherait avec l'état d'une autre).
+ * la cache pas.
+ *
+ * CHAQUE ÉTAPE GARDE SON PARI (revue ergonomie, 2026-09-24). Avant, revenir en
+ * arrière effaçait le pari : l'élève qui voulait relire une étape devait
+ * re-répondre à une question dont il connaissait la réponse — un clic de
+ * routine, et deux pertes de focus. `changerEtape(depuis, vers)` range le pari
+ * de l'étape quittée et rend celui de l'étape où l'on arrive (ou rien) ;
+ * `oublier` (« Recommencer ») vide la mémoire : un nouveau passage repart à
+ * blanc. Le panneau l'appelle dans le MÊME lot que le changement d'index — pas
+ * d'image intermédiaire où le pari d'une étape s'afficherait avec l'état
+ * d'une autre.
  */
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { NotionChoice, Scene3DPari } from "@/lib/content";
 
 export type PhasePari = "aucun" | "attente" | "note" | "revele";
 
+interface Memoire {
+  choixId: string;
+  revele: boolean;
+}
+
 export function usePari(pari: Scene3DPari | undefined, { attend, montre }: { attend: boolean; montre: boolean }) {
   const [choixId, setChoixId] = useState<string | null>(null);
   const [revele, setRevele] = useState(false);
+  const memoire = useRef(new Map<string, Memoire>());
 
   useEffect(() => {
     if (pari && choixId !== null && !revele && montre) setRevele(true);
@@ -55,10 +69,23 @@ export function usePari(pari: Scene3DPari | undefined, { attend, montre }: { att
     },
     [attend]
   );
-  const reinitialiser = useCallback(() => {
-    setChoixId(null);
-    setRevele(false);
-  }, []);
+
+  const changerEtape = useCallback(
+    (depuis: string, vers: string, oublier = false) => {
+      if (oublier) memoire.current.clear();
+      else if (choixId !== null) memoire.current.set(depuis, { choixId, revele });
+      const m = memoire.current.get(vers);
+      setChoixId(m?.choixId ?? null);
+      setRevele(m?.revele ?? false);
+    },
+    [choixId, revele]
+  );
+
+  /** l'étape `cle` a-t-elle été révélée (étape courante comprise, via `courante`) ? */
+  const revelee = useCallback(
+    (cle: string, courante: string) => (cle === courante ? phase === "revele" : memoire.current.get(cle)?.revele === true),
+    [phase]
+  );
 
   return {
     phase,
@@ -66,7 +93,8 @@ export function usePari(pari: Scene3DPari | undefined, { attend, montre }: { att
     choixRetenu: pari?.choix.find((c) => c.id === choixId),
     choixNotion,
     choisir,
-    reinitialiser,
+    changerEtape,
+    revelee,
     /** le temps (s'il existe) s'ouvre dès le pari */
     tempsOuvert: phase !== "attente",
     /** le contrôle, la suite, les lectures ET l'issue de l'étape, une fois révélé */

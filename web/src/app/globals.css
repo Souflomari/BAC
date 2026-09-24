@@ -1378,7 +1378,13 @@ input:-webkit-autofill:active {
    6 px, la poignée 24 px. Le halo de focus reprend celui du reste du site.
    Les deux moteurs ont des pseudo-éléments incompatibles — d'où la
    duplication WebKit/Firefox, qui ne peut pas être factorisée (un sélecteur
-   inconnu invalide toute la règle qui le contient). */
+   inconnu invalide toute la règle qui le contient).
+
+   RESTÉE SANS EMPLOI jusqu'au 2026-09-24 : les scènes 3D ont réintroduit le
+   curseur natif de 14 px que cette règle corrigeait (revue ergonomie — « une
+   règle présente et sans effet », ADR 0038). La poignée lit
+   `--curseur-poignee` : l'accent par défaut, l'encre douce avec
+   `.curseur-neutre` — dans une scène, l'accent est réservé à l'objet étudié. */
 .curseur {
   -webkit-appearance: none;
   appearance: none;
@@ -1403,7 +1409,7 @@ input:-webkit-autofill:active {
 .curseur::-moz-range-progress {
   height: 6px;
   border-radius: 999px;
-  background: var(--color-accent);
+  background: var(--curseur-poignee, var(--color-accent));
 }
 .curseur::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -1411,7 +1417,7 @@ input:-webkit-autofill:active {
   width: 24px;
   height: 24px;
   border-radius: 999px;
-  background: var(--color-accent);
+  background: var(--curseur-poignee, var(--color-accent));
   border: 2px solid var(--color-surface-raised);
   /* (48 − 6) / 2 − (24 − 6) / 2 = centrage de la poignée sur la piste */
   margin-top: -9px;
@@ -1421,7 +1427,7 @@ input:-webkit-autofill:active {
   width: 24px;
   height: 24px;
   border-radius: 999px;
-  background: var(--color-accent);
+  background: var(--curseur-poignee, var(--color-accent));
   border: 2px solid var(--color-surface-raised);
   transition: box-shadow var(--duration-micro) var(--ease-enter);
 }
@@ -1430,6 +1436,9 @@ input:-webkit-autofill:active {
 }
 .curseur:focus-visible::-moz-range-thumb {
   box-shadow: 0 0 0 4px var(--focus-halo);
+}
+.curseur-neutre {
+  --curseur-poignee: var(--figure-ink-soft);
 }
 
 /* ── « La page se prépare… » (HydrationNotice, HANDOFF §11.28) ────────────

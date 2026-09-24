@@ -39,8 +39,11 @@ export const TRANSPORT_BTN_CLASS = cn(
   "state-layer",
   // Focus ring matches the rounded-md (8px) host corner (ADR 0024).
   "focus-ring [--focus-radius:8px]",
-  // The single disabled mechanism.
-  "disabled:opacity-disabled disabled:cursor-not-allowed"
+  // The single disabled mechanism — and its FOCUSABLE twin: a button that must
+  // keep the focus when it goes inert (the scene transport at step 1) says so
+  // with `aria-disabled`, and looks exactly the same.
+  "disabled:opacity-disabled disabled:cursor-not-allowed",
+  "aria-disabled:opacity-disabled aria-disabled:cursor-not-allowed"
 );
 
 export const TransportButton = forwardRef<

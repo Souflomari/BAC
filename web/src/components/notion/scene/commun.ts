@@ -11,8 +11,21 @@
 
 export type EtatPanneau = "ferme" | "chargement" | "prete" | "sans-webgl" | "erreur";
 
-/** Le curseur neutre : l'accent est réservé à l'action et à l'objet étudié (§2). */
-export const CURSEUR = "w-full accent-figure-ink-soft";
+/**
+ * Le curseur neutre : l'accent est réservé à l'action et à l'objet étudié (§2).
+ * `.curseur` (globals.css) : boîte de 48 px, piste de 6, poignée de 24 — le
+ * natif mesurait 16 px et sa poignée 14, sur le contrôle que l'élève tient
+ * pendant quatre étapes sur cinq (revue ergonomie, 2026-09-24).
+ */
+export const CURSEUR = "curseur curseur-neutre";
+
+/**
+ * Une ligne de bouton radio : la cible fait déjà 48 px de haut et toute la
+ * largeur, mais sur grand écran elle se lisait comme du texte inerte — ni
+ * curseur de pointage, ni voile au survol, les seules commandes du panneau hors
+ * du vocabulaire de survol du produit (revue ergonomie, 2026-09-24).
+ */
+export const LIGNE_RADIO = "state-layer flex min-h-touch cursor-pointer items-center gap-2 rounded-md px-2 text-body-sm text-primary";
 
 /**
  * Un contrôle qui reçoit le focus (Tab) ou vers lequel on défile ne doit

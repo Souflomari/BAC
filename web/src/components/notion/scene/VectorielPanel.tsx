@@ -27,7 +27,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { MathText } from "../ChoiceButton";
 import * as G from "@/lib/scene3d/vectoriel";
 import type { SceneVectoriel } from "@/lib/scene3d/produit-vectoriel";
-import { CURSEUR, MARGE_FOCUS, type Vue } from "./commun";
+import { CURSEUR, LIGNE_RADIO, MARGE_FOCUS, type Vue } from "./commun";
 import { useSceneRendu } from "./useSceneRendu";
 import { usePari } from "./usePari";
 import { useGlisserVue } from "./useGlisserVue";
@@ -113,7 +113,8 @@ export function VectorielPanel({ scene, className }: { scene: Scene3DDescriptor;
     (i: number) => {
       const e = etapes[i];
       setIndexEtape(i);
-      pari.reinitialiser();
+      // Chaque étape garde son pari ; « Recommencer » (dernière → première) repart à blanc.
+      pari.changerEtape(etapes[indexEtape].id, e.id, i === 0 && indexEtape === etapes.length - 1);
       setEtat((courant) => appliquer(e.etat, courant));
       const v = nomVue(e.etat?.vue);
       if (v) {
@@ -121,7 +122,7 @@ export function VectorielPanel({ scene, className }: { scene: Scene3DDescriptor;
         setAngles(VUES[v]);
       }
     },
-    [etapes, pari]
+    [etapes, pari, indexEtape]
   );
 
   const glisser = useGlisserVue(
@@ -202,9 +203,16 @@ export function VectorielPanel({ scene, className }: { scene: Scene3DDescriptor;
       <Eyebrow tone="muted" decorative className="mb-3">
         Scène 3D
       </Eyebrow>
-      <ConsigneEtape idTitre={idTitre} idConsigne={idConsigne} titre={etape.titre} consigne={etape.consigne} />
+      <ConsigneEtape
+        idTitre={idTitre}
+        idConsigne={idConsigne}
+        titre={etape.titre}
+        consigne={etape.consigne}
+        cle={etape.id}
+        rang={{ index: indexEtape, total: etapes.length }}
+      />
 
-      <div className="grid gap-5 bp-expanded:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] bp-expanded:items-start">
+      <div className="grid gap-5 bp-expanded:grid-cols-[minmax(0,3fr)_minmax(18rem,2fr)] bp-expanded:items-start">
         <Plateau
           hoteRef={rendu.hoteRef}
           canvasRef={rendu.canvasRef}
@@ -250,6 +258,10 @@ export function VectorielPanel({ scene, className }: { scene: Scene3DDescriptor;
             />
           )}
 
+          {/* Au téléphone, les vues viennent juste après le pari et le lancement —
+              plus après la fiche, à 1 500 px de la scène qu'elles tournent. */}
+          <VuesBloc vues={VUES} vue={vue} onVue={choisirVue} visibilite="flex bp-expanded:hidden" />
+
           {pari.etapeOuverte && etape.suite && (
             <p className="min-w-0 break-words font-display text-body-lg text-primary" data-suite>
               <MathText>{etape.suite}</MathText>
@@ -274,7 +286,7 @@ export function VectorielPanel({ scene, className }: { scene: Scene3DDescriptor;
                   ["vu", "$\\vec v \\wedge \\vec u$"],
                 ] as const
               ).map(([o, libelle]) => (
-                <label key={o} className="flex min-h-touch items-center gap-2 text-body-sm text-primary">
+                <label key={o} className={LIGNE_RADIO}>
                   <input
                     type="radio"
                     name={`${idTitre}-ordre`}
@@ -311,14 +323,12 @@ export function VectorielPanel({ scene, className }: { scene: Scene3DDescriptor;
                 <MathText>{"$\\|\\vec u \\wedge \\vec v\\| = \\|\\vec u\\|\\,\\|\\vec v\\|\\,\\sin\\theta$ : l'aire du parallélogramme"}</MathText>
                 <MathText>{"$\\vec v \\wedge \\vec u = -\\,\\vec u \\wedge \\vec v$"}</MathText>
               </div>
-              <p className="mt-2 text-body-sm font-medium text-primary" aria-live="polite" aria-atomic="true" data-issue>
+              <p className="mt-2 text-body-sm font-medium text-primary" data-issue>
                 {frenchTypography(issueTexte)}
               </p>
             </div>
           )}
         </div>
-
-        <VuesBloc vues={VUES} vue={vue} onVue={choisirVue} visibilite="flex bp-expanded:hidden" />
       </div>
 
       <TransportEtapes index={indexEtape} total={etapes.length} onAller={allerA} idConsigne={idConsigne} />

@@ -40,6 +40,7 @@
  */
 import { chromium } from "playwright-core";
 import { readFileSync } from "node:fs";
+import { ergonomie } from "./lib/scene-ergonomie.mjs";
 
 const ESSAI = process.argv.includes("--essai-rouge");
 const PORT = Number(process.env.PORT_SPHERE ?? 3500 + (process.pid % 90));
@@ -352,6 +353,9 @@ await nav.close();
   await nav2.close();
 }
 
+// ── Ergonomie : le clavier et le téléphone, sur le rendu (revue du 2026-09-24) ──
+await ergonomie({ lancer: lancer, url: URL_SCENE, scene: "sphere-plan-droite", noter, essai: ESSAI });
+
 // ── Verdict ──
 console.log(`\n${ESSAI ? "ESSAI ROUGE — " : ""}scene-sphere : sphère, plan, droite (${URL_SCENE})`);
 for (const r of resultats) console.log(`  ${r.ok ? "·" : "✘"} [${r.famille}] ${r.detail}`);
@@ -360,7 +364,7 @@ if (!rendu) {
   process.exit(3);
 }
 if (ESSAI) {
-  const visees = ["avant-clic", "nombres", "pixels", "etapes", "paris", "avant-pari", "latex", "sans-webgl"];
+  const visees = ["avant-clic", "nombres", "pixels", "etapes", "paris", "avant-pari", "latex", "sans-webgl", "ergonomie"];
   const crient = visees.filter((f) => resultats.some((r) => r.famille === f && !r.ok));
   console.log(`\n  familles sabotées qui crient : ${crient.length}/${visees.length} (${crient.join(", ")})`);
   if (crient.length !== visees.length) {

@@ -60,6 +60,7 @@
  *   BASE=http://127.0.0.1:3000 node scripts/scene-orbite.mjs --porte
  */
 import { chromium } from "playwright-core";
+import { ergonomie } from "./lib/scene-ergonomie.mjs";
 
 const ESSAI = process.argv.includes("--essai-rouge");
 const PORT = Number(process.env.PORT_SCENE ?? 3600 + (process.pid % 90));
@@ -499,6 +500,9 @@ await nav.close();
   await nav2.close();
 }
 
+// ── Ergonomie : le clavier et le téléphone, sur le rendu (revue du 2026-09-24) ──
+await ergonomie({ lancer: (args) => chromium.launch({ executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium", args }), url: `${BASE}${LECON}?chapitre=${chapitre}`, scene: "orbite-geostationnaire", noter, essai: ESSAI });
+
 // ── Verdict ──
 const familles = [...new Set(resultats.map((r) => r.famille))];
 console.log(`\n${ESSAI ? "ESSAI ROUGE — " : ""}scene-orbite : la scène 3D de l'orbite géostationnaire (${BASE}${LECON}?chapitre=${chapitre})`);
@@ -510,7 +514,7 @@ if (!rendu) {
 }
 if (ESSAI) {
   // Chaque famille dont on a retourné l'attente doit avoir crié.
-  const visees = ["avant-clic", "nombres", "pixels", "etapes", "paris", "avant-pari", "sans-webgl"];
+  const visees = ["avant-clic", "nombres", "pixels", "etapes", "paris", "avant-pari", "sans-webgl", "ergonomie"];
   const crient = visees.filter((f) => resultats.some((r) => r.famille === f && !r.ok));
   console.log(`\n  familles sabotées qui crient : ${crient.length}/${visees.length} (${crient.join(", ")})`);
   if (crient.length !== visees.length) {

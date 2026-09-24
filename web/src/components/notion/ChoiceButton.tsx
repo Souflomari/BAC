@@ -147,11 +147,19 @@ export function ChoiceButton({
   const revealedFeedback =
     isRevealedCorrect && revealCorrectFeedback ? choice.feedback : undefined;
 
+  // LE CHOIX RETENU GARDE LE FOCUS (revue ergonomie, 2026-09-24). Désactiver
+  // le bouton qui a le focus le renvoie à <body> : l'élève au clavier qui
+  // venait de répondre repartait du haut de la page — à chaque point d'arrêt
+  // du produit, et à chaque pari des scènes 3D. Le choix coché reste donc
+  // focalisable (`aria-disabled`, son onClick ne fait déjà plus rien) ; les
+  // autres sortent de l'ordre de tabulation (`disabled`), comme avant.
+  const inerte = answered && !isSelected;
   return (
     <li>
       <button
         type="button"
-        disabled={answered || !hydrated}
+        disabled={inerte || !hydrated}
+        aria-disabled={(answered && isSelected) || undefined}
         aria-busy={!hydrated || undefined}
         onClick={() => !answered && onSelect(choice.id)}
         aria-pressed={isSelected}
