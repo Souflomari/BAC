@@ -619,6 +619,17 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
                   <MathText>{"$\\lambda$ mesurée sur l'eau"}</MathText>,
                   releveCourant && Number.isFinite(lamDevant) && Number.isFinite(lamDerriere) ? `avant : ${K.deuxCS(lamDevant)} cm · après : ${K.deuxCS(lamDerriere)} cm` : aMesurer
                 )}
+              {lectures.includes("periode-sonde") && ligneLecture("periode-sonde", "Crêtes par seconde, au flotteur", releveCourant && Number.isFinite(fSonde) ? `${K.deuxCS(fSonde)} Hz` : aMesurer)}
+              {lectures.includes("amplitude") &&
+                ligneLecture(
+                  "amplitude",
+                  etat.chemin === "arc" ? "Amplitude au récepteur (100 % = le maximum sur l’arc)" : "Amplitude au flotteur (100 % = le maximum sur l’axe)",
+                  releveCourant ? `${K.nombre(etat.chemin === "arc" ? ampArc : ampSonde, 0)} %` : aMesurer
+                )}
+              {lectures.includes("angle") && ligneLecture("angle", "Direction du récepteur", `${angleLu}°`)}
+              {lectures.includes("celerite") && ligneLecture("celerite", "Célérité, fixée par l’eau", `${K.nombre(0.2, 2)} m/s`)}
+            </dl>
+          )}
 
           {/* Les notes, APRÈS les lectures : entre la commande et le réglage
               qu'elle sert, cinq paragraphes éloignaient le bouton du curseur
@@ -647,17 +658,6 @@ export function CuvePanel({ scene, className }: { scene: Scene3DDescriptor; clas
                 </p>
               </details>
             </div>
-          )}
-              {lectures.includes("periode-sonde") && ligneLecture("periode-sonde", "Crêtes par seconde, au flotteur", releveCourant && Number.isFinite(fSonde) ? `${K.deuxCS(fSonde)} Hz` : aMesurer)}
-              {lectures.includes("amplitude") &&
-                ligneLecture(
-                  "amplitude",
-                  etat.chemin === "arc" ? "Amplitude au récepteur (100 % = le maximum sur l’arc)" : "Amplitude au flotteur (100 % = le maximum sur l’axe)",
-                  releveCourant ? `${K.nombre(etat.chemin === "arc" ? ampArc : ampSonde, 0)} %` : aMesurer
-                )}
-              {lectures.includes("angle") && ligneLecture("angle", "Direction du récepteur", `${angleLu}°`)}
-              {lectures.includes("celerite") && ligneLecture("celerite", "Célérité, fixée par l’eau", `${K.nombre(0.2, 2)} m/s`)}
-            </dl>
           )}
         </div>
       </div>

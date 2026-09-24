@@ -41,7 +41,7 @@
  */
 import { chromium } from "playwright-core";
 import { readFileSync } from "node:fs";
-import { ergonomie } from "./lib/scene-ergonomie.mjs";
+import { ergonomie, listes } from "./lib/scene-ergonomie.mjs";
 
 const ESSAI = process.argv.includes("--essai-rouge");
 const PORT = Number(process.env.PORT_CUVE ?? 3800 + (process.pid % 90));
@@ -460,10 +460,20 @@ await parier(indexDe("ouverture-large", "etalee"));
     const r = await eclairs(1000);
     const ok = r.images >= 20 && r.fraction < 0.25;
     noter("eclairs", ESSAI ? !ok : ok, `40 Hz au ralenti ×5, cuve pleine : ${Math.round(r.fraction * 100)} % d'une fenêtre de 10° éclaire plus de 3 fois par seconde (au plus ${r.maxParS} éclairs/s en un point ; ${r.images} images lues ; attendu < 25 %, WCAG 2.3.1)`);
+    // L'eau pâle se DIT, pendant la course qui l'exige — la première, avant le
+    // verdict (la vague 2 rangeait la note dans la liste des lectures, masquée
+    // jusqu'au verdict : elle ne s'affichait jamais au moment où elle servait).
+    const note = await panneau.locator("[data-pale]").isVisible().catch(() => false);
+    noter("eclairs", ESSAI ? !note : note, `pendant la première course à 40 Hz, avant le verdict : la note « eau pâle » est ${note ? "affichée" : "ABSENTE"}`);
   });
   const res = await resultat();
   noter("paris", ESSAI ? !/incorrecte/.test(res) : /incorrecte/.test(res), `étape 1, verdict après la course : « ${res} »`);
   await nombresEnonce("étape 1 révélée");
+  {
+    const l = await listes(page, `[data-scene="${SCENE}"]`);
+    const ok = l.n > 0 && l.fautes.length === 0;
+    noter("ergonomie", ESSAI ? !ok : ok, `étape 1 révélée : ${l.n} liste(s) de lectures, ${l.fautes.length ? `INTRUS : ${l.fautes.slice(0, 3).join(" · ")}` : "rien que des couples terme/valeur"}`);
+  }
   const ombre = await agitationRelative(3.0, 5.0);
   const ok = ombre !== null && ombre.axe > 20 && ombre.rapport < 0.25;
   noter("va-tout-droit", ESSAI ? !ok : ok, `a = 8λ : à 3 cm derrière la paroi, l'ombre (5 cm hors de l'axe) est agitée à ${ombre === null ? "?" : Math.round(ombre.rapport * 100)} % de l'axe (écarts moyens ${ombre ? `${ombre.ici.toFixed(1)} / ${ombre.axe.toFixed(1)}` : "?"} niveaux ; attendu < 25 %)`);

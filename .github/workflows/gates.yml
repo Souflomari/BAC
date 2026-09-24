@@ -100,6 +100,13 @@ jobs:
     # approchait 85 min : les quatre portes de scène 3D tournent maintenant dans
     # le job `scenes`, en parallèle. Ce job-ci redescend vers ~60 min ; le
     # plafond de 90 reste jusqu'à ce qu'un run le mesure.
+    #
+    # MESURÉ au run 755 (2026-09-24, cinq jobs, tous VERTS) : ce job, 44 min
+    # 00 s — stockage refusé 7:29, presse-papier 6:01, impression 4:53, réduire
+    # les animations 4:43, dom-truth 3:20 ; c'est lui qui fait le mur du run.
+    # En parallèle : `scenes` 41 min 44 s (le manège seul 18:16), `scene-champ`
+    # 27 min 46 s, `qcm` 19 min 48 s, `telephone` 7 min 48 s. L'estimation de
+    # ~60 min était haute ; 90 garde le double — pas touché.
     timeout-minutes: 90
     defaults:
       run:

@@ -21,7 +21,14 @@
  *     rangée sous la scène collante ni sous le header (WCAG 2.2 — 2.4.11) ;
  *   · cibles — chaque curseur et chaque bouton visible du panneau mesure au
  *     moins 44 px de haut (le plancher du dépôt est 48 ; 44 est le seuil WCAG
- *     2.5.5 — la porte arme le normatif, ADR 0039).
+ *     2.5.5 — la porte arme le normatif, ADR 0039) ;
+ *   · lectures — une liste de lectures (<dl>) ne contient que des couples
+ *     terme/valeur : la vague 2 de la cuve avait rangé ses notes (paragraphes,
+ *     <details>) AU MILIEU de la liste, entre deux lectures — HTML invalide,
+ *     lu par un lecteur d'écran comme une lecture de plus, et masqué avant le
+ *     verdict avec la liste (la note « eau pâle » ne s'affichait donc jamais
+ *     pendant la première course, celle qui l'exige). Vu à la relecture du
+ *     code, pas par une porte : 2026-09-24.
  *
  * Tout se passe dans des pages NEUVES : la famille ne dépend pas du parcours
  * principal de la porte, et ne le perturbe pas. WebGL n'y sert à rien — ce sont
@@ -92,6 +99,26 @@ export async function cibles(p, sel) {
   }, sel);
 }
 
+/** Les listes de lectures du panneau : un enfant qui n'est pas un couple dt/dd est une faute. */
+export async function listes(p, sel) {
+  return p.evaluate((s) => {
+    const panneau = document.querySelector(s);
+    const fautes = [];
+    let n = 0;
+    for (const dl of panneau?.querySelectorAll("dl") ?? []) {
+      n++;
+      for (const e of dl.children) {
+        const t = e.tagName.toLowerCase();
+        if (t === "dt" || t === "dd") continue;
+        const enfants = [...e.children].map((c) => c.tagName.toLowerCase());
+        if (t === "div" && enfants.length > 0 && enfants.every((c) => c === "dt" || c === "dd")) continue;
+        fautes.push(`<${t}${e.getAttributeNames().filter((a) => a.startsWith("data-")).map((a) => ` ${a}`).join("")}> (${enfants.join(",") || "texte"})`);
+      }
+    }
+    return { n, fautes };
+  }, sel);
+}
+
 /**
  * La famille entière. `noter(famille, ok, detail)` est celui de la porte ;
  * `url` est l'URL du chapitre de la scène ; `lancer(args)` lance Chromium
@@ -121,6 +148,8 @@ export async function ergonomie({ lancer, url, scene, noter, essai, ouvrir = "Ou
         await p.waitForTimeout(400);
         const f2 = await focus(p, sel);
         dire(f2.dans && !f2.corps, `pari au clavier : focus sur ${f2.quoi}${f2.corps ? " — TOMBÉ À <body>" : ""}`);
+        const l = await listes(p, sel);
+        dire(l.fautes.length === 0, `lectures après le pari : ${l.n} liste(s), ${l.fautes.length ? `INTRUS : ${l.fautes.slice(0, 3).join(" · ")}` : "rien que des couples terme/valeur"}`);
       } else dire(false, "pari au clavier : aucun choix à l'étape 1");
 
       const suivant = q.getByRole("button", { name: "Étape suivante" });
