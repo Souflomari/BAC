@@ -86,8 +86,20 @@ const CHEMIN = new RegExp(`(?<![\\w/.@-])((?:${RACINES})/[A-Za-z0-9._\\-/]+\\.[A
  * La sonde n'exempte QUE le chemin nommé, et seulement dans ce fichier-là.
  * Un marqueur qui vaudrait pour tout un fichier ferait taire l'instrument
  * pour le renvoi cassé qu'on y introduira demain.
+ *
+ * LE CAS SYMÉTRIQUE (2026-09-24, §11.194) : ce qui n'existe PAS ENCORE. Une
+ * spec s'écrit avant ce qu'elle commande (RULES §5 : l'architecte d'abord) ;
+ * tant qu'elle voyageait avec sa construction dans le même commit, ses
+ * chemins résolvaient. Une PROPOSITION rangée en attente d'une décision du
+ * propriétaire (DÉCISIONS §19) nomme des fichiers qu'on ne créera qu'après.
+ * Même règle, même granularité — un chemin à la fois, nommé :
+ *
+ *     CHEMIN À CRÉER: web/src/lib/scene3d/data/exemple-a-creer.json — ce qu'on y mettra
+ *
+ * Le jour où le fichier existe, le marqueur ne dispense plus rien (le chemin
+ * résout) : il faut alors l'effacer, comme on efface une consigne exécutée.
  */
-const MARQUEUR = /CHEMIN DISPARU:\s*([A-Za-z0-9._\-/]+)/g;
+const MARQUEUR = /CHEMIN (?:DISPARU|À CRÉER):\s*([A-Za-z0-9._\-/]+)/g;
 
 /** La zone d'ARCHIVE — les textes qui nomment volontairement le disparu. */
 const ARCHIVE = [

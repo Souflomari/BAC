@@ -632,8 +632,12 @@ scène), et la décision de créer `conversion-unites-volume` à côté de
 matière dont la VISION dit « SVT thinking is visual, so it needs real
 schema-construction interactions, **not displayed images** ». Une scène 3D est
 prête à construire pour `svt/chaines-de-montagnes`, R1 :
-`content/svt/chaines-de-montagnes/spec-scene-foyers.md` (architecte
-pédagogique, 2026-09-24). Les **vrais** séismes sous les Andes (catalogue USGS,
+`docs/pipeline/propositions/svt-chaines-de-montagnes-scene-foyers.md`
+(architecte pédagogique, 2026-09-24 — rangée hors du dossier de la notion tant
+qu'elle n'est pas adoptée : `dette-manipulable` lit toute spec d'un dossier de
+notion comme une PRESCRIPTION, et une prescription non livrée fait rougir la
+CI ; c'est juste — une proposition n'est pas encore une promesse faite à
+l'élève). Les **vrais** séismes sous les Andes (catalogue USGS,
 M ≥ 4,5, 2000 → 2023 : 3 074 foyers, jusqu'à 602 km) : vus du dessus, une tache ;
 vus le long de la fosse, une bande inclinée — le plan de Wadati-Benioff, que le
 cadre exige par son nom et que la leçon ne fait qu'affirmer. L'élève TRACE

@@ -14858,3 +14858,34 @@ vert sur les 62 leçons — 1 497 réponses d'item + 364 de point d'arrêt, 1 62
 items dont 132 hors banque de fin, 132/132 surfacés en point d'arrêt — en
 15 min 04 s ; essai rouge sur les six leçons : 177 contradictions sur 177
 réponses, 1 min 31 s.
+
+## §11.194 — La première scène SVT, proposée puis rangée : deux portes l'ont exigé
+
+**LA PROPOSITION.** La SVT n'a aucun manipulable (0 sur 11) ; une scène 3D
+est spécifiée pour `svt/chaines-de-montagnes` (architecte pédagogique) sur les
+VRAIS séismes sous les Andes — catalogue USGS, M ≥ 4,5, 2000 → 2023, 3 074
+foyers jusqu'à 602 km, mesurés avant la spec : une tache vue du dessus, une
+bande inclinée vue le long de la fosse ; ajustée par un plan pivotant sur la
+fosse, la part des foyers à moins de 25 km culmine à **80 % pour 22°** (32 % à
+15°, 25 % à 30° — un pic net, que l'élève sent au curseur) ; sous les 41
+volcans (NOAA), le plan est à 115-190 km ; sous l'Himalaya, 400 foyers et
+aucun au-delà de 89 km. Elle n'est PAS construite : le contenu SVT est gelé
+par décision du propriétaire, et la scène touche la leçon, ses points d'arrêt
+et son banc. DÉCISIONS §19 dit ce qui est demandé.
+
+**DEUX PORTES L'ONT RANGÉE, et elles avaient raison.** Posée dans le dossier
+de la notion, la spec faisait rougir `dette-manipulable` (toute spec d'un
+dossier de notion est une PRESCRIPTION ; `[[embed:foyers-sismiques]]` ni livré
+ni substitué = une promesse tombée sans un mot) et `liens-fichiers` (une spec
+nomme les fichiers qu'elle commande avant qu'ils existent). Vu en local, avant
+de pousser — le commit fautif n'a jamais atteint la CI. La proposition vit dans
+`docs/pipeline/propositions/` jusqu'à son adoption, et `liens-fichiers` a
+gagné un marqueur symétrique de « CHEMIN DISPARU: » — « CHEMIN À CRÉER: », un
+chemin à la fois, à effacer quand la chose existe.
+
+**LA MÊME NUIT, LA BATTERIE LOCALE A ATTRAPÉ UN OUBLI DE MA PART** : le job
+`telephone` lançait `etroit-sweep`, que la batterie ne déclarait nulle part —
+sa garde de dérive était rouge sur l'arbre intact, et avec elle trois essais
+rouges que la CI lance. Corrigé avant de pousser (e2b2ea2e). Deux fois en une
+nuit, la vérification locale d'avant-poussée a payé : c'est elle qui rend la CI
+verte, pas la chance.

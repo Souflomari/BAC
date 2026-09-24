@@ -1,6 +1,18 @@
 # spec — scène 3D `foyers-sismiques` (SVT · chaines-de-montagnes, R1)
 
 **Statut : PROPOSITION, non validée.** Écrite le 2026-09-24 par pedagogy-architect.
+**Rangée ici, et non dans `content/svt/chaines-de-montagnes/`, tant qu'elle
+n'est pas adoptée** (DÉCISIONS-EN-ATTENTE §19) : dans le dossier de la notion,
+`dette-manipulable` la lirait comme une prescription de manipulable non livrée.
+À l'adoption, elle y retourne (`spec-scene-foyers.md`) avec la scène.
+
+Chemins que cette proposition commande et qui n'existent pas encore (la porte
+`liens-fichiers` les dispense un par un ; à effacer quand ils existeront) :
+
+    CHEMIN À CRÉER: content/svt/chaines-de-montagnes/media/foyers-sismiques.json — le descripteur de la scène
+    CHEMIN À CRÉER: web/src/lib/scene3d/data/foyers-andes.json — les foyers andins extraits (§3.5)
+    CHEMIN À CRÉER: content/svt/chaines-de-montagnes/spec-scene-foyers.md — cette spec, à l'adoption
+
 Rien ici n'est à construire avant la validation du propriétaire : la scène touche
 `lesson.md`, `items.yaml` et `checkpoints.yaml` d'une matière que la campagne
 déclare **GELÉE** (`docs/cadre/curriculum/svt.yaml`, `coverage_notes`). Le gel
