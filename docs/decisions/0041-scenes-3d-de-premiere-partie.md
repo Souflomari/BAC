@@ -708,6 +708,74 @@ neuves, rouges d'abord sur le build fautif : une étiquette OPAQUE ne cache pas 
 réponse (le nom de $\vec u_T$ couvrait 95 px d'accent au pied des flèches), et un
 nom ne se pose que sur ce qui se voit.
 
+## Addendum du 2026-09-25 (suite) — le banc de modulation : un étage qui n'existe qu'à la révélation, deux lectures qui divergent, et une spec qui violait sa propre frontière
+
+Le douzième manipulable, sixième PLAN : `banc-de-modulation`, en tête de R3 de
+`pc/ondes-em-modulation` (HANDOFF §11.207). Un multiplieur (une boîte noire marquée X),
+l'écran d'un oscilloscope — 10 × 8 divisions, 1,00 V/div, 0,50 ms/div —, et, à S4, un
+détecteur de crête. Ni temps ni course. Cinq pièces neuves.
+
+**1. Une révélation peut faire APPARAÎTRE un étage du schéma.** Au banc de diffraction,
+`etat_revele` posait un réglage ; ici (`sortie: "modulee-et-detectee"`), il BRANCHE le
+détecteur : la diode, $R_0$ et $C_0$ dans le montage, et le second tracé sur l'écran.
+Avant, l'étage n'est pas caché : il n'EXISTE PAS dans le DOM — on ne peut pas répondre
+au pari du détecteur depuis une étape où le détecteur n'est pas. `avant-pari` y mesure
+l'absence des repères de l'étage ; `fuite-inter-etapes` réécrit la table des états
+ATTEIGNABLES avant chaque étape (l'état posé, sa révélation, puis chaque contrôle
+ouvert sur tous ses crans) et vérifie que « détecteur branché » n'apparaît qu'à la
+révélation de S4, et « (1,2 kHz, détecteur) » qu'à S5.
+
+**2. Là où une méthode de lecture SATURE, la scène affiche les deux lectures, l'une
+sous l'autre.** Dès que $m \ge 1$, $U_{min}$ lu vaut 0 et
+$(U_{max}-U_{min})/(U_{max}+U_{min})$ rend exactement 1,00 quel que soit le vrai $m$ ;
+et $(U_{max}+U_{min})/2$ cesse d'être $A$ (1,25 V contre 1,00 V à $m = 1{,}50$). Le
+taux LU et le taux RÉGLÉ, l'amplitude LUE et l'amplitude RÉGLÉE : identiques tant que la
+méthode tient, différents dès qu'elle cède — la porte (N4) exige les DEUX sens. Une
+lecture qui sature affichée seule enseignerait un faux nombre ; la réglée seule
+cacherait pourquoi les sujets demandent alors de « conclure sur la qualité ».
+
+**3. Les notes d'honnêteté sont du texte, et le texte fuit.** Les quatre lignes de
+`fit_caveat` parlent du taux $m$ et du détecteur ; affichées dès S1, elles écrivaient
+« diode » trois étapes avant le pari du détecteur. Les notes suivent la chaîne comme
+le reste : la ligne sur $m$ à partir de S2, celle du détecteur une fois l'étage
+branché. `formule-graduee` lit les notes avec le panneau.
+
+**4. Une spec peut violer sa propre frontière — et se tromper là où elle ne
+recalcule pas.** Les textes que la spec rédigeait portaient des formes que son §9
+interdisait (« montage de TP », « 5 % » de la sortie du détecteur, « ondulation »,
+« au demi-carreau près », « déphasée ») : la frontière s'applique AUX TEXTES DE LA
+SPEC, qui ne sont qu'une proposition de plus. Et la spec, vérifiée nombre par nombre,
+se trompait sur ce qu'elle ne recalculait pas : un argument de sensibilité faux (à
+2 V/div, les crêtes ne « deviennent » pas 6 et 2 V — ce sont les divisions qui
+changent) ; « la descente dure un quart de période » (une demi) ; « 8,06 div »
+(8,08) ; et une récurrence du détecteur qui, sous la bosse retournée ($m > 1$),
+chargeait le condensateur sur une crête NÉGATIVE. La vague 1 a trouvé deux
+défauts de plus — un contrôle prescrit qui n'existait pas, et la contradiction de
+notation que la sous-section neuve créait avec la leçon qu'elle devait réconcilier.
+
+**5. Une courbe se trace sur une grille de pixels FIXE, plus les instants exacts de
+ses crêtes ; et son origine est celle des traits.** Échantillonnées au pixel seul,
+les crêtes d'une porteuse à 8 kHz tombaient sous l'enveloppe d'un écart qui changeait
+avec le cran — l'enveloppe n'aurait pas été « inerte », ce que la scène existe pour
+montrer. Et l'axe tracé au milieu d'un pixel (`net`) tombait un demi-pixel sous le zéro
+des courbes : l'origine des tracés est désormais celle des traits.
+
+**6. Une porte lit un tracé aux instants que la PHYSIQUE désigne, jamais à ses extrema
+locaux — et un quadrillage se peint opaque.** L'enveloppe ne touche une porteuse
+qu'aux extrema de celle-ci, $t_k = k\,T_p/2$ ; entre deux, l'extremum LOCAL du tracé
+tombe à côté et dessous (1,5 px à 1,2 kHz). La première porte lisait les maxima locaux
+et rougissait sur un produit juste ; elle lit maintenant aux $t_k$, avec le signe que la
+spec prescrit — ce qui lui fait MESURER l'opposition de phase sous la bosse, au lieu de
+la supposer. Et Chromium compose DEUX FOIS les sous-chemins qui se croisent dans un
+même trait semi-transparent (sonde : 168 au nœud contre 204 sur la ligne) : chaque nœud
+d'une grille à 30 % devient un point à 51 %, un faux sommet pour qui lit l'écran — la
+porte comprise. Le banc de modulation peint sa grille en couleur opaque (le voile de
+l'encre sur la surface, calculé depuis les jetons, donc juste dans les deux thèmes), et
+c'est la règle des rendus plans à venir. **Dette écrite** : `diffraction-rendu.ts` et
+`noyaux-rendu.ts` peignent encore leurs quadrillages en transparence, trait par trait —
+leurs nœuds sont plus sombres que leurs lignes ; leurs portes ne lisent pas de crêtes à
+travers, et sont vertes. À reprendre dans une passe commune, portes relancées.
+
 ## Retractions and Corrections
 
 - **2026-09-23 — la « deuxième scène » annoncée n'était pas la bonne

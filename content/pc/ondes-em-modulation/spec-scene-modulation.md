@@ -1,22 +1,69 @@
 # spec — manipulable 2D `banc-de-modulation` (PC · `ondes-em-modulation`, R3)
 
-**Statut : PROPOSITION (2026-09-25), non construite.** Écrite par pedagogy-architect,
-rangée sous `docs/pipeline/propositions/` tant qu'elle n'est pas construite
-(DÉCISIONS §19 : dans le dossier d'une notion, `dette-manipulable` lit toute spec
-comme une PRESCRIPTION). À la livraison, elle rejoint le dossier de la notion sous
-`content/pc/ondes-em-modulation/spec-scene-modulation.md`, dans le commit qui livre
-la scène.
+**Statut : LIVRÉE (2026-09-25, HANDOFF §11.207)** ; les réponses par défaut du §13 ont
+été appliquées (DÉCISIONS §27), chacune reste réversible — les deux BLOQUANTS de la
+`REVIEW-2026-09-12`, eux, restent ouverts. Écrite le 2026-09-25 par
+pedagogy-architect, rangée d'abord sous `docs/pipeline/propositions/`, elle a rejoint le
+dossier de la notion dans le commit qui livre la scène. Les chemins qu'elle nommait
+existent : le descripteur `content/pc/ondes-em-modulation/media/banc-de-modulation.json`,
+le modèle `web/src/lib/scene2d/modulation-modele.ts` (et son test unitaire
+`web/scripts/test-modulation.mjs`), le rendu `web/src/lib/scene2d/modulation-rendu.ts`,
+le panneau `web/src/components/notion/scene/ModulationPanel.tsx`, la porte
+`web/scripts/scene-modulation.mjs`.
 
-**Chemins que ce document commande et qui n'existent pas encore** (la porte des liens
-les exempte un par un) :
-
-    CHEMIN À CRÉER: content/pc/ondes-em-modulation/media/banc-de-modulation.json — le descripteur de la scène (content-author)
-    CHEMIN À CRÉER: content/pc/ondes-em-modulation/spec-scene-modulation.md — la destination de ce document à la livraison
-    CHEMIN À CRÉER: web/src/lib/scene2d/modulation-modele.ts — le modèle (frontend-builder) : produit, enveloppe, extrema, détecteur
-    CHEMIN À CRÉER: web/src/lib/scene2d/modulation-rendu.ts — le rendu 2D (frontend-builder) : l'écran, la grille, les deux tracés
-    CHEMIN À CRÉER: web/src/components/notion/scene/ModulationPanel.tsx — le panneau (frontend-builder)
-    CHEMIN À CRÉER: web/scripts/test-modulation.mjs — le test unitaire du modèle
-    CHEMIN À CRÉER: web/scripts/scene-modulation.mjs — la porte de la scène (+ son `--essai-rouge`)
+**Ce que la construction, la porte et les revues ont changé à cette spec, écrit ici
+plutôt que corrigé en douce :**
+- **Le détecteur est une récurrence sur les DEUX extrema de chaque période de
+  porteuse** (§5.2 la posait sur les seules crêtes positives, avec $|1 + m\sin|$).
+  Identique tant que $m < 1$ ; sous la bosse retournée ($m > 1$), la crête positive
+  est à l'instant IMPAIR, et la récurrence du §5.2 chargeait le condensateur sur une
+  crête négative. **Entre deux crêtes**, le tracé vaut $\max(\text{décharge}, u_S)$ :
+  la diode idéale remonte le flanc de la porteuse (les oscillogrammes des sujets le
+  dessinent ainsi) au lieu de sauter à la verticale. La porte refait les deux.
+- **Le crochet de comptage couvre TOUTE la largeur** (« 20 oscillations », et non
+  « 2 oscillations » sous une division) : c'est le geste que les retours de S1
+  prescrivent (« compte sur toute la largeur »), et il tombe sur un entier aux quatre
+  crans ; sous une division, il aurait compté 0,6 oscillation à 1,2 kHz.
+- **`amplitude-a` affiche l'amplitude LUE et l'amplitude RÉGLÉE**, comme les deux
+  taux : $(U_{max}+U_{min})/2$ cesse d'être $A$ dès que $m > 1$ (1,25 V contre 1,00 V).
+- **Les notes d'honnêteté suivent la chaîne** : la ligne sur $m$ à partir de S2, celle
+  du détecteur une fois l'étage branché (§7.6 : le texte fuit) ; deux lignes de plus —
+  la phase (les formules s'écrivent avec cos, l'écran est décalé d'un quart de
+  période) et les quatre traits fins (§10.7 et §10.9, rendus sur la revue de fidélité).
+- **Les textes de la spec qui violaient son propre §9 sont réécrits** : « montage de
+  TP » (§9.15) → « montage d'électronique », « banc d'essai » ; « 5 % » de la sortie
+  du détecteur (§9.12) → « presque rien » ; « ondulation » → « petites dents de scie » ;
+  « au demi-carreau près » (§9.13) retiré ; « déphasée » → « changée de signe ».
+- **Les erreurs de la spec, corrigées** : le retour « différence » de S2 (à 2 V/div,
+  les crêtes ne deviennent pas 6 et 2 V — ce sont les divisions qui changent ; et ce
+  bouton n'existe pas dans la scène : il rompt maintenant sur le curseur de $S_m$) ;
+  « une descente qui dure un quart de période » → une demi ; « 8,06 div » → 8,08 ;
+  la formule du retour juste de S2 écrite avec cos, comme les sujets.
+- **La vague 1 (fidélité bac, pédagogie)** : la sous-section de notation contredisait
+  la leçon qu'elle devait réconcilier — les deux conventions sont maintenant NOMMÉES,
+  et la définition de $m$ en R3 ne dit plus « l'amplitude de la porteuse » ; « on ne
+  lit ni $S_m$ ni $U_0$ » vaut pour la SORTIE seulement ; $A$ n'est pas lisible en
+  divisions (seul $m$ l'est) ; les consignes de S2, S3 et S5 ne lisent plus les crêtes
+  à la place de l'élève ; le titre et la consigne de S5 ne répondent plus à ses choix ;
+  le titre de S4 ne dit plus « fenêtre » ; OEM-28 en forme de sujet (vérifier et
+  conclure). Le §4.4 est posé APRÈS le paragraphe de la surmodulation (et non entre la
+  définition de $m$ et « $m < 1$ ») : il parle de $m \ge 1$.
+- **Le plateau est carré, le montage en bande au-dessus de l'écran**, l'écran calé à
+  gauche : la marge de droite porte les noms des voies et les cotes, comme un
+  oscilloscope. Au téléphone, le montage fait au moins 80 px et le fil de $u(t)$ est à
+  24 px sous son haut (son nom passait sous la légende) ; $R_0$ se nomme à GAUCHE de sa
+  résistance (à droite, il tombait sur le rail).
+- **Le quadrillage et les axes sont peints en couleur OPAQUE** (le voile de l'encre
+  douce sur la surface) : en transparence, les nœuds de la grille, composés deux fois,
+  étaient des points plus sombres qu'elle — de faux sommets pour qui lit l'écran, la
+  porte comprise.
+- **Une étiquette qui répond n'a de TEXTE qu'après sa révélation** ($U_{max}$,
+  $U_{min}$, $u_C$, $R_0$, $C_0$, les cotes, « ici, elle ne suit plus ») : cachée, elle
+  restait dans le texte du panneau, et le texte fuit (§7.6). Le repère de S5 dit « ici,
+  $C_0$ se vide » : « ici, le condensateur se vide » faisait six divisions au téléphone
+  et couvrait la crête de $u_C$ que l'étape fait regarder ; les cercles d'accent sont
+  des obstacles pour les étiquettes. **Ce qui n'est pas armé** : M3 (la frontière exacte du décrochage) —
+  cinq crans de rhéostat n'en approchent aucun à 5 % ; écrit dans l'en-tête de la porte.
 
 **Ce que ce document est.** Le cadrage pédagogique complet du **douzième**
 manipulable de première partie et du **sixième PLAN** (ADR 0041, `"tool": "scene2d"`,
@@ -1246,7 +1293,7 @@ entre deux crêtes ✓, et $0{,}050$ ms est bien **2,5 fois plus petit** que $0{
 | `augmenter-r` | « Parce que le rhéostat est mal réglé, et cela n'a rien à voir avec la porteuse : il suffit de l'augmenter. » | non | **`demodulation-detecteur-crete`** *(forme « les deux bornes sont indépendantes »)* | « Fais-le, c'est le meilleur moyen de voir pourquoi non. À $10$ kΩ, la courbe cesse de faire des dents de scie — et se met à **rater la descente**. À $25$ kΩ, elle la rate franchement. Tu as échangé un échec contre l'autre, sans jamais passer par un réglage correct : il n'existe pas ici. La raison est arithmétique : il faudrait une constante de temps à la fois **bien plus grande** que $0{,}833$ ms et **bien plus petite** que $2{,}50$ ms. Entre les deux il y a un facteur trois. **Ce n'est pas le rhéostat qu'il faut changer, c'est la porteuse.** » |
 
 *(Arithmétique vérifiée, §5.7. À $F = 1{,}2$ kHz : $T_p = 1/1200 = 0{,}833$ ms ✓ ;
-$\tau = 5000\times10^{-7} = 0{,}500$ ms ✓, soit $T_p/\tau = 1{,}667$ et
+$\tau = 5000\times10^{-7} = 5{,}00\times10^{-4}$ s, soit $0{,}500$ ms ✓, soit $T_p/\tau = 1{,}667$ et
 $e^{-1{,}667} = 0{,}189$ → **81 % perdus entre deux crêtes** ✓ : dents de scie
 profondes. À $10$ kΩ, $\tau = 1{,}00$ ms et $T_p/\tau = 0{,}833$,
 $e^{-0{,}833} = 0{,}435$ ; la descente maximale de l'enveloppe est

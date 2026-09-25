@@ -1225,6 +1225,30 @@ jobs:
           npm run scene-tremplin
           node scripts/scene-tremplin.mjs --essai-rouge
 
+      # PORTE « LE BANC DE MODULATION » (2026-09-25, HANDOFF §11.207). Le
+      # sixième manipulable PLAN (pc/ondes-em-modulation, en tête de R3), sans
+      # temps ni course, et le premier dont la révélation fait APPARAÎTRE un
+      # étage du schéma (le détecteur, à S4). ANALYTIQUE, détecteur compris : la
+      # porte refait U_max, U_min, A, m lu et m réglé aux 9 couples, les
+      # comptages de porteuse, R0C0 et la fenêtre aux 20 couples, et lit les
+      # PIXELS dans les deux sens — l'échelle LUE sur le quadrillage (quatre
+      # traits fins par division), l'ENVELOPPE INERTE aux quatre porteuses (la
+      # mesure centrale, lue aux extrema de la porteuse t_k = k·Tp/2), le
+      # comptage par les passages à zéro, les crêtes contre les extrema
+      # affichés, le pincement et ses crêtes RETOURNÉES (opposition de phase),
+      # aucune crête retournée à m = 1, la courbe du condensateur contre la
+      # récurrence rejouée, le décrochage. La chaîne
+      # est un état qui fuit : ni U_max avant S2, ni m < 1 avant S3, ni R0C0
+      # avant S4 ; et la table des états atteignables est réécrite ICI.
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — les familles visées doivent
+      # crier, et chaque forme de la frontière être vue.
+      - name: "Le banc de modulation (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-modulation
+          node scripts/scene-modulation.mjs --essai-rouge
+
       # PORTE « FIGURES MANIPULABLES » (2026-09-24, HANDOFF §11.199). Chaque
       # `.interactive.json` du corpus — l'inventaire est lu dans content/, pas
       # écrit ici : celles d'aujourd'hui ET celles de demain. Sur le rendu réel :

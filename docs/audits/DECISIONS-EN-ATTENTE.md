@@ -1367,3 +1367,96 @@ Pythagore, que la scène fait parier et qu'aucun item n'évaluait.
     Partie II du sujet 2019 n'est pas transcrite — spec §8.4) ; un champ de FORME
     par distracteur (la granularité A–E : une décision de schéma) ; `m/s` contre
     `m·s⁻¹` dans les items (convention du fichier, à trancher pour tout le corpus).
+
+## 27. Le banc de modulation : quinze questions tranchées par défaut, un modèle ouvert, et deux BLOQUANTS qui restent ouverts
+
+**LE FAIT.** Le douzième manipulable de première partie — le sixième PLAN — est livré
+dans `pc/ondes-em-modulation`, en tête de R3 (§11.207) : un multiplieur (une boîte
+noire marquée X), l'écran d'un oscilloscope (10 × 8 divisions, 1,00 V/div,
+0,50 ms/div), puis, à la révélation de S4, un détecteur de crête (diode, $R_0$ ∥
+$C_0$). **Il ne solde aucune dette écrite** (le dossier n'avait aucun `spec.md`) ;
+il se justifie par un trou MESURÉ (spec §0.3) : sept sujets sur sept font lire un
+oscillogramme, et aucun item, aucune figure de la notion ne portait de quadrillage,
+de sensibilité ni d'extrema chiffrés. `media-manipulable` 17 → 18. La spec
+(`content/pc/ondes-em-modulation/spec-scene-modulation.md` §13) laissait quinze
+questions ; même lecture du mandat qu'aux §20 à §26 — **sauf pour les deux
+BLOQUANTS, qui ne se tranchent pas par défaut**.
+
+**CE QUI RESTE OUVERT, et que cette livraison ne touche pas :**
+
+- **BLOQUANT n° 1 (REVIEW-2026-09-12) : $F_p = 2$ kHz publié contre $1003 \pm 15$ Hz
+  mesuré, au sommet `r-bac` (2017 N).** `exercises.yaml` et `bank.yaml` sont
+  inchangés dans le commit de la scène. La scène s'en écarte mesurablement : ses
+  crans de porteuse sont 1,2 · 2,4 · 4,0 · 8,0 kHz, et 2,0 kHz est une forme
+  interdite de sa frontière (`scene-modulation`, `frontiere` et N12).
+- **BLOQUANT n° 2 : le conflit de notation $U_0$ / $P_m$ / $A$.** La spec proposait
+  une réconciliation (§4.3) ; elle est écrite (voir 2), mais elle reste une décision
+  de propriétaire, et la réponse de repli est prête (spec §13.2 : $kP_m = 1$).
+
+**CE QUI A ÉTÉ TRANCHÉ PAR DÉFAUT :**
+
+1. **La notion, malgré les deux BLOQUANTS** : oui — le premier ne touche aucun
+   fichier de cette livraison, le second est armé plutôt que contourné.
+2. **La réconciliation de notation est ADOPTÉE** : une sous-section « Le montage des
+   sujets » (le multiplieur, $u_S = k\,u(t)\,p(t)$, $A = kP_mU_0$, $m = S_m/U_0$) ;
+   le paragraphe « piège de notation » nomme les deux conventions (au chapitre 3,
+   $U_0$ est l'amplitude du signal émis sans message ; dans le montage, la
+   composante continue de la modulante, et la porteuse $p(t)$ a pour amplitude
+   $P_m$) ; la définition de $m$ en R3 ne dit plus « l'amplitude de la porteuse »
+   (les deux revues de la vague 1 l'ont trouvée en CONTRADICTION avec la
+   sous-section neuve). **Pour revenir en arrière** : $k = 0{,}500$ V⁻¹, retirer
+   `amplitude-a` et la sous-section (spec §13.2).
+3. **Le huitième modèle `lecture-oscillogramme` est OUVERT**, avec OEM-25 à 27
+   (plancher atteint, marge nulle). Réversible : une entrée d'inventaire, quatre
+   étiquettes d'items, deux choix de paris.
+4. **En tête de R3**, seul placement qui laisse les cinq paris entiers.
+5. **$k = 0{,}250$ V⁻¹ et $P_m = 2{,}00$ V affichés**, une fois, dans la légende du
+   plateau : sans eux, $A = U_0$ et le piège se referme tout seul.
+6. **Quatre sous-graduations par division**, et non cinq : les neuf couples
+   d'extrema tombent SUR un trait ; l'écart est DIT dans les notes de la scène (la
+   revue de fidélité : « non déclaré » — il l'est maintenant).
+7. **La garde de périmètre de `checkpoints.yaml`**, qui interdisait le spectre que
+   le cadre imprime et que 2023 N demande, **est corrigée** (une phrase). La prose du
+   spectre reste DUE — tâche à part (et `bank.yaml`, bk-2023-n-x3 q3, donne des
+   raies latérales « de hauteur moitié » : c'est $Am/2$, un QUART à $m = 0{,}5$ —
+   correction objective, faite dans un commit à part, AVANT celui de la scène, qui
+   laisse `bank.yaml` identique ; consignée dans la REVIEW de la notion).
+8. **2,0 kHz écarté** des crans.
+9. **`habilete` posé sur les quatre items neufs seulement** (3 ×
+   `application_experimentale`, 1 × `résolution`, le vocabulaire de `rlc-serie`) :
+   le mélange 50/15/35 de la notion reste incalculable — c'est le §3.
+10. **Les notes de bas de figure** de `modulation-amplitude.svg` (rapport 6) et
+    `bonne-surmodulation.svg` (rapport 4) restent non chiffrées : retouche de figure,
+    à commander à part.
+11. **La légende de `detecteur-crete.stages.json` ne bouge pas** : la prose porte le
+    critère chiffré.
+12. **Le trapèze (mode XY) n'est pas introduit** : absent des sujets du dépôt
+    (mesuré). À vérifier auprès de la source par le propriétaire.
+13. **Aucun point d'arrêt neuf** : les cinq paris sont les portes de R3.
+14. **`web/src/lib/scene3d/` toujours pas renommé** — septième spec à le demander.
+15. **Cinq étapes** : S5 est la seule à relier $F \gg f$ à la fenêtre du détecteur.
+
+**LA VAGUE 1 (fidélité bac, pédagogie).** Aucun débordement du cadre ; tous les
+nombres recalculés justes. Appliqué : la contradiction de notation (2) ; « on ne lit
+ni $S_m$ ni $U_0$ » restreint à l'oscillogramme de SORTIE (2021 N les lit sur la
+voie d'entrée) ; le récapitulatif ne dit plus $A$ lisible en divisions (seul $m$
+l'est) ; « pas seulement un confort de lisibilité » (la condition 1 justifiée deux
+fois, sans contradiction) ; la fenêtre du banc dite ÉTROITE (un facteur 4–5, contre
+un à deux ordres de grandeur dans les sujets) ; le réglage de 0,500 ms nommé ;
+OEM-28 en forme de sujet ($R_0$ donné, vérifier et conclure — un menu de résistances
+penchait vers le dimensionnement) ; à S2, le retour « différence » prescrivait un
+bouton de sensibilité qui n'existe pas — il rompt maintenant sur le curseur de
+$S_m$ ; les consignes de S2, S3 et S5 ne lisent plus les crêtes À LA PLACE de
+l'élève ; le titre et la consigne de S5 ne répondent plus à deux de ses choix ; le
+titre de S4 ne dit plus « fenêtre » ; « s'il n'était jamais rechargé » ; la phase
+(cos écrit, écran décalé d'un quart de période) et les quatre traits fins dits dans
+les notes.
+
+**Non appliqué, et pourquoi :**
+
+16. **Étiqueter les 24 items anciens en `habilete`** (fidélité) : c'est le §3, pour
+    les 62 notions, pas une retouche de scène.
+17. **`porteuse-vs-signal-modulant` sous-servi par la scène** (pédagogie : un seul
+    distracteur, le moins cher de S1) : ACCEPTÉ — la scène confronte ce modèle par le
+    BALAYAGE de S1 (l'enveloppe qui ne bouge pas), pas par un pari ; OEM-27 D le porte
+    en item.

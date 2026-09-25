@@ -18,6 +18,7 @@ import { CuvePanel } from "./scene/CuvePanel";
 import { DiffractionPanel } from "./scene/DiffractionPanel";
 import { TremplinPanel } from "./scene/TremplinPanel";
 import { ManegePanel } from "./scene/ManegePanel";
+import { ModulationPanel } from "./scene/ModulationPanel";
 import { NoyauxPanel } from "./scene/NoyauxPanel";
 import { OrbiteGeostationnairePanel } from "./scene/OrbiteGeostationnairePanel";
 import { SpherePlanDroitePanel } from "./scene/SpherePlanDroitePanel";
@@ -46,6 +47,9 @@ const PANNEAUX: Record<string, React.ComponentType<{ scene: Scene3DDescriptor; c
   // le réglage que le pari interrogeait, et la règle répond.
   "banc-de-diffraction": DiffractionPanel,
   "tremplin-circulaire": TremplinPanel,
+  // Le sixième : un multiplieur et un écran d'oscilloscope, sans temps ni course —
+  // la révélation de S4 BRANCHE l'étage de détection (spec-scene-modulation).
+  "banc-de-modulation": ModulationPanel,
 };
 
 export function Scene3DPanel({ scene, className }: { scene: Scene3DDescriptor; className?: string }) {

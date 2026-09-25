@@ -79,7 +79,12 @@ const PORTE = process.argv.includes("--porte");
 //  porte le tremplin circulaire. Aucune dette écrite : le trou qu'il ferme est
 //  MESURÉ — aucune figure du corpus ne montrait le vecteur accélération sur
 //  une trajectoire courbe, ni ses deux composantes (spec §1).
-const CLIQUET = 17;
+//  Relevé à 18 le même jour, même commit que la scène : pc/ondes-em-modulation
+//  porte le banc de modulation. Aucune dette écrite (le dossier n'avait aucun
+//  `spec.md`) : le trou qu'il ferme est MESURÉ — sept sujets sur sept font
+//  lire un oscillogramme, et aucune figure de la notion ne portait de
+//  quadrillage ni de sensibilité (spec §0.3, §2.1).
+const CLIQUET = 18;
 
 const RE_EMBED = /\[\[(?:embed|geogebra|desmos|falstad|phet)[:\]]/gi;
 const parMat = new Map();

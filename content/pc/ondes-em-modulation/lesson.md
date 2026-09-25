@@ -110,6 +110,24 @@ Garde ces valeurs — $U_0=6\ \text{V}$, $f_p=900\ \text{kHz}$, $S_m=3\ \text{V}
 
 ## R3 — La condition de bonne modulation
 
+Avant d'énoncer ces conditions, on va **voir** le signal du chapitre précédent sur un écran. Le montage est celui des sujets : un **multiplieur** reçoit, sur une entrée, la tension à transmettre et, sur l'autre, la porteuse ; sa sortie est branchée sur un **oscilloscope**. L'écran fait $10$ divisions sur $8$, réglé à **1,00 V par division** en vertical et **0,50 ms par division** en horizontal. À chaque étape, tu paries d'abord ; l'écran répond ensuite.
+
+[[embed:banc-de-modulation]]
+
+### Le montage des sujets : un multiplieur, et la forme qu'on te demande
+
+Sur la paillasse comme dans les sujets, on ne fabrique pas $s(t)$ à la main : on utilise un circuit intégré **multiplieur**, noté X, qui a deux entrées et une sortie. Les sujets notent souvent $F$ la fréquence de la porteuse (ton $f_p$) et $f$ celle du signal (ton $f_{signal}$). On applique sur une entrée la tension à transmettre, décalée d'une composante continue, $u(t) = U_0 + S_m\cos(2\pi f t)$, et sur l'autre la porteuse, $p(t) = P_m\cos(2\pi F t)$. Le circuit délivre leur produit, $u_S(t) = k\,u(t)\,p(t)$, où $k$ est une constante du composant. Tout le geste est une mise en facteur :
+
+$$u_S(t) = k\,P_m\,U_0\left[1 + \frac{S_m}{U_0}\cos(2\pi f t)\right]\cos(2\pi F t)$$
+
+d'où l'amplitude $A = k\,P_m\,U_0$ et le taux de modulation $m = \dfrac{S_m}{U_0}$.
+
+**Attention au piège de notation.** Au chapitre 3, on a appelé $U_0$ l'amplitude de la porteuse : c'est l'amplitude du signal émis quand aucun message ne passe. Dans le montage des sujets, le mot *porteuse* désigne la tension $p(t)$ appliquée à une entrée du multiplieur, d'amplitude $P_m$ ; et $U_0$ y est la **composante continue de la tension modulante**, sur l'autre entrée. Dans $m = S_m/U_0$, c'est toujours ce $U_0$-là : $P_m$ n'entre jamais dans $m$, et n'entre dans $A$ que multipliée par $k$. Donc $A \neq U_0$, sauf dans le cas d'école où $kP_m = 1$ — celui du chapitre 3. Sur le banc ci-dessus, $kP_m = 0{,}500$ : il affiche $A = 2{,}00\ \text{V}$ pour $U_0 = 4{,}0\ \text{V}$.
+
+La forme $s(t) = (U_0 + s_m(t))\cos(2\pi f_p t)$ du chapitre 3 est le **même signal**, écrit une fois tout regroupé : elle correspond à $kP_m = 1$. Le taux $m$ est le même dans les deux écritures, parce qu'il compare toujours $S_m$ à la composante continue de la modulante.
+
+Dernier réflexe : les sujets n'échangent pas seulement les lettres, ils échangent les **entrées** — la tension modulante est sur $E_1$ dans un sujet, sur $E_2$ dans un autre. Repère **quelle tension porte la composante continue**, jamais le numéro de l'entrée.
+
 Pour que la modulation fonctionne vraiment — pour que l'enveloppe reproduise fidèlement $s_m(t)$, et qu'on puisse la retrouver à la réception — deux conditions doivent être respectées. On les découvre en se demandant, à chaque fois, ce qui casserait le mécanisme si elles n'étaient pas là.
 
 ### Condition 1 : $f_p \gg f_{signal}$
@@ -120,7 +138,7 @@ Il faut donc que la porteuse oscille beaucoup plus vite que le signal qu'elle tr
 
 $$f_p \gg f_{signal}$$
 
-C'est cette condition qui garantit que chaque cycle du signal informatif contient un grand nombre d'oscillations de la porteuse — assez pour que l'enveloppe se dessine clairement, comme une courbe tracée point par point avec une résolution largement suffisante.
+C'est cette condition qui garantit que chaque cycle du signal informatif contient un grand nombre d'oscillations de la porteuse — assez pour que l'enveloppe se dessine clairement, comme une courbe tracée point par point avec une résolution largement suffisante. On verra à la démodulation qu'elle compte aussi pour une autre raison.
 
 ### Condition 2 : le taux de modulation $m < 1$
 
@@ -130,7 +148,7 @@ Le signal $s_m(t)$ oscille entre $-S_m$ et $+S_m$, où $S_m$ est son amplitude m
 
 $$U_0 - S_m > 0 \quad\Longleftrightarrow\quad S_m < U_0$$
 
-On formalise ça avec le **taux de modulation** (ou indice de modulation), le rapport entre l'amplitude maximale du signal et l'amplitude de la porteuse :
+On formalise ça avec le **taux de modulation** (ou indice de modulation), le rapport entre l'amplitude maximale du signal et la composante continue $U_0$ — l'amplitude du signal émis quand aucun message ne passe :
 
 $$m = \frac{S_m}{U_0}$$
 
@@ -139,6 +157,12 @@ La condition $S_m < U_0$ se réécrit alors simplement :
 $$m < 1$$
 
 Quand $m < 1$, l'enveloppe reste toujours positive et reproduit fidèlement $s_m(t)$ : c'est une **bonne modulation**. Quand $m \geq 1$, l'amplitude instantanée $U_0+s_m(t)$ s'annule ou deviendrait négative à certains instants : la tension modulée se déforme, l'oscillation rapide change brutalement de phase là où l'amplitude formelle serait négative, et l'enveloppe ne suit plus fidèlement le signal d'origine. On appelle ça la **surmodulation**, et un récepteur ne peut plus reconstituer correctement le message à partir d'une telle tension.
+
+**Sur l'oscillogramme de la tension modulée — la sortie du multiplieur —, on ne lit ni $S_m$ ni $U_0$** (si un sujet affiche aussi la voie d'entrée, $U_0$ y est la valeur moyenne de la tension modulante et $S_m$ son amplitude). Sur la sortie, on lit deux hauteurs de crête : $U_{max}$ aux renflements de l'enveloppe, $U_{min}$ aux resserrements. Comme $U_{max} = A(1+m)$ et $U_{min} = A(1-m)$, leur somme élimine $m$ et leur différence sur leur somme élimine $A$ :
+
+$$A = \frac{U_{max}+U_{min}}{2} \qquad m = \frac{U_{max}-U_{min}}{U_{max}+U_{min}}$$
+
+Le réflexe qui fait gagner du temps : $m$ est un **rapport**, il se calcule **directement en divisions**, sans convertir en volts — la sensibilité verticale est inutile ici. Et une limite à connaître : dès que $m \geq 1$, l'enveloppe **touche l'axe**, $U_{min}$ vaut $0$, et la formule rend **exactement 1**, quel que soit le vrai $m$. C'est pourquoi, dans ce cas, les sujets demandent de **conclure sur la qualité** de la modulation plutôt que de mesurer un nombre.
 
 ### Exemple numérique : vérifier la condition, puis casser volontairement la condition
 
@@ -181,6 +205,12 @@ Le dispositif qui fait ça s'appelle un **détecteur de crête** (ou détecteur 
 - Un premier élément (une diode) ne laisse passer le courant que dans un sens : il ne garde donc que la moitié positive de chaque oscillation rapide, celle qui monte vers les sommets.
 - Un condensateur, placé juste après, se charge très rapidement à chaque nouveau sommet de l'oscillation rapide — presque instantanément, tellement le temps de charge est court devant la période $1/f_p$ de l'oscillation rapide. Entre deux sommets, ce condensateur se décharge lentement à travers le reste du circuit, un peu comme le condensateur du chapitre RC qui se décharge progressivement dans une résistance.
 - Le résultat : la tension aux bornes du condensateur monte en flèche à chaque sommet, puis redescend doucement jusqu'au sommet suivant, qu'elle rattrape. Elle suit ainsi, de près, la courbe des sommets successifs — c'est-à-dire l'enveloppe elle-même, donc $U_0 + s_m(t)$.
+
+Ce compromis — charge rapide, décharge lente — a un **critère chiffré**, et les sujets demandent de le vérifier. La décharge doit être **lente devant la période de la porteuse** : sinon le condensateur se vide entre deux sommets, et sa tension **retombe sur la porteuse**. Elle doit être **rapide devant la période du signal** : sinon elle **rate les descentes** de l'enveloppe et s'en va presque tout droit. Avec $R_0$ la résistance dans laquelle se décharge le condensateur $C_0$ :
+
+$$\frac{1}{F} \ll R_0C_0 \ll \frac{1}{f} \qquad\text{c'est-à-dire}\qquad T_p \ll R_0C_0 \ll T_s$$
+
+Sur le banc du chapitre 4, à $F = 8{,}0\ \text{kHz}$ et au réglage qui marche ($R_0 = 5{,}0\ \text{k}\Omega$) : $1/F = 0{,}125\ \text{ms}$, $R_0C_0 = 0{,}500\ \text{ms}$, $1/f = 2{,}50\ \text{ms}$ — quatre fois l'une, cinq fois moins que l'autre. Cette fenêtre est étroite parce que la porteuse du banc n'est que vingt fois plus rapide que le signal ; dans les sujets, les écarts sont souvent d'un ou deux ordres de grandeur. Et une conséquence que la scène fait découvrir : **cette fenêtre n'existe que si $F \gg f$**. Si la porteuse n'est que trois fois plus rapide que le signal, **aucune** valeur de $R_0C_0$ ne convient. La première condition de bonne modulation n'est donc pas seulement un confort de lisibilité : c'est aussi elle qui **ouvre** la fenêtre du détecteur.
 
 Il ne reste plus qu'à retirer la composante continue $U_0$ (un simple filtrage qu'on ne détaille pas ici) pour obtenir $s_m(t)$, le signal informatif, prêt à être amplifié et envoyé dans un haut-parleur.
 
@@ -259,7 +289,9 @@ Une centaine de picofarads : c'est exactement l'ordre de grandeur des condensate
 - Une antenne ne rayonne efficacement une onde que si sa taille est de l'ordre du QUART de sa longueur d'onde ($\lambda/4$, avec $\lambda=c/f$) : impossible pour un signal audio (des centaines de km), réalisable pour une porteuse à quelques centaines de kHz-MHz (quelques dizaines à centaines de m).
 - Modulation d'amplitude : $s(t) = (U_0+s_m(t))\cos(2\pi f_p t)$ — l'amplitude instantanée porte l'information, la fréquence $f_p$ ne change jamais.
 - Bonne modulation : $f_p \gg f_{signal}$ (enveloppe lisible) et $m = S_m/U_0 < 1$ (pas de surmodulation, enveloppe toujours positive).
+- Sur un oscillogramme : $m = (U_{max}-U_{min})/(U_{max}+U_{min})$ se calcule **en divisions**, sans convertir ; $A = (U_{max}+U_{min})/2$ est une tension, qui demande la sensibilité verticale. Le signe visible de la surmodulation, c'est l'enveloppe qui **touche l'axe**.
 - Démodulation : un détecteur de crête retrace l'enveloppe (charge rapide, décharge lente), et ne fonctionne bien que si la modulation d'origine n'était pas surmodulée.
+- Le détecteur exige $1/F \ll R_0C_0 \ll 1/f$ : trop petite, la constante de temps fait **suivre la porteuse** ; trop grande, elle fait **rater la descente** de l'enveloppe.
 - Réception : un circuit oscillant (bobine + condensateur variable) accordé sur $f_0 = 1/(2\pi\sqrt{LC})$ sélectionne, parmi toutes les porteuses captées par l'antenne, celle dont $f_p$ coïncide avec $f_0$.
 
 ### Exercice de type bac

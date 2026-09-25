@@ -16037,3 +16037,92 @@ Deux lectures du journal à ne pas refaire : `import-three` est attrapé par
 `pas-de-3d`, que le décompte des rouges ne listait pas (le motif `[A-Za-z-]` du script
 ignorait le chiffre de « 3d ») ; `nature-par-norme` l'est par `nombres`, qui ÉTAIT sa
 famille visée.
+
+## §11.207 — Le banc de modulation : un étage qui n'existe qu'à la révélation, deux lectures qui divergent, et une spec qui violait sa propre frontière
+
+**LA SCÈNE.** Le douzième manipulable de première partie, le sixième PLAN :
+`pc/ondes-em-modulation`, en tête de R3 (`[[embed:banc-de-modulation]]`), avant les deux
+conditions de bonne modulation. Le montage des sujets en bande, au-dessus de l'écran :
+deux sources, un multiplieur — une boîte noire marquée X, jamais de schéma interne —,
+puis, à la révélation de S4, un détecteur de crête (diode, $R_0$ ∥ $C_0$ = 100 nF).
+En dessous, l'écran d'un oscilloscope, 10 × 8 divisions, 1,00 V/div et 0,50 ms/div,
+calé à gauche. Ni temps ni course : un oscilloscope en régime établi ne « démarre »
+pas. Cinq étapes à pari : S1 deux rythmes (compter la porteuse sur toute la largeur,
+l'enveloppe d'un resserrement au suivant — 5,00 div, 400 Hz ; la porteuse promenée sur
+quatre crans, l'enveloppe INERTE) ; S2 le taux par deux crêtes ($(U_{max}-U_{min}) /
+(U_{max}+U_{min})$, et pourquoi pas le rapport brut) ; S3 on baisse la composante
+continue (la révélation la POSE à 2,0 V : le pincement, la bosse retournée) ; S4 le
+détecteur (la révélation le BRANCHE ; à 25 kΩ la courbe rate la descente) ; S5 le
+diagnostic (1,2 kHz : le taux est bon, le rhéostat aussi, et rien ne marche — la
+porteuse est trop lente). Elle ne solde aucune dette écrite ; elle comble un trou
+MESURÉ (spec §0.3 : sept sujets sur sept font lire un oscillogramme, aucun item ni
+figure de la notion n'avait de quadrillage) : `media-manipulable` 17 → 18. Spec :
+`content/pc/ondes-em-modulation/spec-scene-modulation.md`, avec, en tête, ce que la
+construction, la porte et les revues y ont changé.
+
+**Ce qui l'accompagne** (en partie déjà poussé : 5e25fb0a, 47ff8420, fca5b7ef). Le
+modèle `modulation-modele.ts` et `test-modulation` (10 tests) ; le huitième modèle
+de misconception `lecture-oscillogramme`, ouvert (OEM-25 à 27), et OEM-28 (la fenêtre
+du détecteur, en forme de sujet) ; la sous-section « Le montage des sujets : un
+multiplieur, et la forme qu'on te demande », le paragraphe du piège de notation, la
+lecture de l'oscillogramme et la double inégalité du détecteur dans la prose ; la
+garde de `checkpoints.yaml` qui interdisait le spectre, corrigée ; la hauteur des
+raies latérales de bk-2023-n-x3 q3 (le QUART, pas la moitié).
+
+**LA PORTE (`scene-modulation`) : VERTE deux fois, 138 mesures, 26 familles ; essai
+rouge 24/24, et les 49 FORMES de la frontière injectées une à une, toutes vues.** Armée
+en CI (job `scene-champ`, vert puis rouge : ≈ 2 min de plus). Quatre passages avant le
+vert : 24 rouges, 8, 6, 1 — et plus de la moitié venaient de la PORTE.
+
+*Ce qu'elle a vu dans le PRODUIT :* les étiquettes-réponses cachées gardaient leur
+TEXTE dans le panneau (« U_max » dès S1, « condensateur » avant S4 — la leçon de $a_T$
+au tremplin, rejouée) : elles n'ont de contenu qu'après leur révélation ; au téléphone,
+$u(t)$ passait sous la légende et $R_0$ sur le rail ; les nœuds du quadrillage,
+composés deux fois (51 % au lieu de 30 %), étaient de faux sommets — et un seul chemin
+n'y change rien, **Chromium compose deux fois les sous-chemins qui se croisent dans un
+même trait** (mesuré à la sonde : 168 contre 204) : grille et axes sont peints en
+couleur OPAQUE ; le repère de S5 était caché sous son propre nom.
+
+*Ce qu'elle a appris d'elle-même (chaque correction est écrite au-dessus de sa
+mesure) :* un compte de traits fins faux (cinq, et non six) ; les horizontales lues sur
+deux colonnes que le tracé brouillait (relues sur des rangées) ; le barycentre d'une
+colonne, 10 px sous une crête aiguë (le détecteur se lit maintenant en deux temps :
+barycentre là où le modèle est plat — 445 colonnes —, plage d'encre ailleurs) ; des
+lobes coupés par une crête plate peinte à mi-pixel et par l'axe (le comptage est
+devenu une droite des moindres carrés sur les passages à zéro : 6,00 · 11,99 · 20,00 ·
+40,00). Et deux leçons plus générales. **L'extremum LOCAL d'une porteuse lente n'est pas
+un point de l'enveloppe** : à 1,2 kHz il tombe à côté de la crête et SOUS elle (2,026
+contre 2,063 V) ; l'enveloppe ne touche le tracé qu'aux extrema de la porteuse, $t_k =
+k\,T_p/2$ — c'est là, aux instants que la physique désigne, que la porte lit
+maintenant. **Et une coïncidence de valeurs peut rendre un masque aveugle** : l'enveloppe
+de départ de S3 ($U_0 = 4$) passe exactement par le sommet de la bosse ($0{,}5 \times
+|4-3| = 0{,}5 \times |2-3|$) ; masquée, elle effaçait la bosse ; la porte écarte
+maintenant chaque échantillon qu'elle frôle à 3 px, et lit la bosse aux instants
+voisins — 8 crêtes retournées, l'opposition de phase MESURÉE.
+
+**LA VAGUE 1 (fidélité bac, pédagogie)** : aucun débordement du cadre, tous les
+nombres recalculés justes ; deux défauts de fond — la contradiction de notation que la
+sous-section neuve créait avec la définition de $m$ en R3, et un bouton de sensibilité
+prescrit par un retour de S2 qui n'existait pas. Le détail : DÉCISIONS §27.
+
+**LA VAGUE 2 (dessin, calme, ergonomie, cohérence)** est commandée sur les captures de
+ce build (1 280 et 390 px, les cinq étapes avant et après le pari, les balayages de
+réglages, le thème sombre) ; ses retours et leur tri suivent dans le commit d'après.
+
+**VÉRIFIÉ, sur le build final, rien d'autre en marche :** `scene-modulation` VERTE deux
+fois (138 mesures, 26 familles), essai rouge 24/24 et 49 formes vues ; `scene-ergonomie`
+VERTE sur les DOUZE scènes (110 mesures) ; `scene-tremplin` VERTE sur ce même build
+(118 mesures, 30 familles — la porte corrigée par la campagne, et les retouches de la
+vague 1 de Newton) ; `test-modulation` 10/10 ; `dom-truth` 280 contrôles, 0 échec ;
+`verdict-qcm` de `ondes-em-modulation` et de `lois-de-newton` VERT (60 réponses d'item,
+10 de point d'arrêt) ; `validate-content` sur les 62 notions, lancé comme la CI ;
+`liens-fichiers`, `arithmetique-rendue` (elle a trouvé, dans la spec déplacée, une
+égalité qui mêlait secondes et millisecondes : écrite en clair), `media-manipulable`
+18/62, `dette-manipulable`, `tracabilite-spec`, `build-learner-inputs --verifie`,
+`portee-portes`. **La campagne de sabotages du PRODUIT reste à faire** (arbre à part,
+comme au §11.206).
+
+**RESTENT AU PROPRIÉTAIRE** (DÉCISIONS §27) : les deux BLOQUANTS de la
+`REVIEW-2026-09-12` ($F_p = 2$ kHz publié contre 1 003 Hz mesuré au sommet `r-bac` ;
+le conflit $U_0$ / $P_m$ / $A$, dont la réconciliation est écrite et réversible) ;
+$k$ et $P_m$ affichés ; quatre sous-graduations au lieu de cinq.

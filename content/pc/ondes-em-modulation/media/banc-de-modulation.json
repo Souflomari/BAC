@@ -1,0 +1,321 @@
+{
+  "slug": "banc-de-modulation",
+  "tool": "scene2d",
+  "type": "manipulable",
+  "scene": "banc-de-modulation",
+  "title_fr": "Le banc de modulation : un multiplieur, un écran, un détecteur",
+  "caption_fr": "Un multiplieur, l'écran d'un oscilloscope et, plus tard, un détecteur de crête. Règle la porteuse, le signal, la composante continue, le rhéostat — et lis l'écran comme dans les sujets : en divisions d'abord, avec la calibration ensuite. À chaque étape, tu paries d'abord.",
+  "boundary": "Cadre (électricité → applications_modulation, 2ème Bac PC/SM) : « modulation d'amplitude (principe de modulation et de démodulation) » ; l'amplitude du signal modulé, fonction affine de la tension modulante ; les conditions anti-surmodulation ; exploiter les courbes expérimentales ; reconnaître les étages sur un schéma. La scène est TEMPORELLE et QUALITATIVE côté détecteur : un oscilloscope en fonction du temps, jamais un spectre ; le multiplieur est une boîte noire, jamais un schéma interne ; le détecteur est un étage, jamais un filtre calculé. Hors de la scène : spectre et bandes latérales, régime sinusoïdal forcé, notation complexe, puissance, composants actifs, fonction de transfert et diagramme de Bode, circuit d'accord et sélection (R5), modulation de fréquence, démodulation synchrone, antenne et longueur d'onde (R1), débit, pourcentage d'ondulation et frontière chiffrée du décrochage, incertitudes, et toute valeur en arbitrage du sujet national 2017.",
+  "fit_caveat": "1. Banc d'essai : la porteuse va de 1,2 à 8,0 kHz, soit un rapport F/f de 3 à 20, comme sur les oscillogrammes des sujets ; une porteuse de radio (900 kHz) ferait 450 oscillations par division — indessinable. 2. Oscilloscope idéal : les hauteurs sont calculées ; sur un vrai écran le trait a une épaisseur, et m n'est connu qu'à quelques centièmes. 3. On lit l'enveloppe — la courbe que les sommets touchent —, comme le font les sujets ; sur un vrai oscillogramme, la crête la plus haute tracée n'atteint pas tout à fait le maximum de l'enveloppe. 4. Diode et condensateur parfaits (aucune tension de seuil) ; les petites dents de scie qui restent au meilleur réglage viennent de ce que la porteuse n'est que 20 fois plus rapide que le signal ; sur une vraie radio, elle l'est environ 300 fois. 5. Les formules s'écrivent avec cos ; l'écran est décalé d'un quart de période d'enveloppe, pour que les quatre extrema tombent dans le cadre. 6. Quatre traits fins par division, et non cinq comme sur un oscilloscope réel : chaque crête lue tombe ainsi exactement sur un trait.",
+  "fallback_note": "Sans JavaScript et à l'impression, le panneau disparaît. Les figures modulation-amplitude (chapitre 3) et bonne-surmodulation (chapitre 4) couvrent les deux formes statiques — une bonne modulation, une surmodulation — et detecteur-crete (chapitre 5) couvre le principe du détecteur. Aucune figure du corpus ne porte de quadrillage, de sensibilité, d'extrema chiffrés, ni de réglage : c'est ce que le banc apporte, et les paragraphes qui le suivent l'écrivent en toutes lettres.",
+  "pedagogy_wiring": {
+    "why_manipulable": "Le fait à montrer est qu'une chose reste IDENTIQUE pendant qu'une autre change : quand on change la fréquence de la porteuse, l'enveloppe ne bouge pas d'un pixel — seul le nombre d'oscillations sous elle change, de 6 à 40. Une figure en montre une ; les quatre crans la montrent quatre fois. Puis le même écran construit le taux par deux crêtes, fait toucher l'axe à la frontière exacte m = 1, et fait échouer le détecteur dans les deux sens avec un seul rhéostat.",
+    "predict_then_reveal": "Chaque étape pose une question ; l'élève parie AVANT toute marque de réponse (flèche de période, curseurs, pincements, tracé du condensateur). Sans temps, le verdict est immédiat : à S3 la révélation baisse la composante continue, à S4 elle branche l'étage de détection — l'écran répond avant le texte ; les réglages de l'étape s'ouvrent ensuite.",
+    "misconceptions": [
+      "mc.physics.pc_ondes_em_modulation.porteuse-vs-signal-modulant",
+      "mc.physics.pc_ondes_em_modulation.lecture-oscillogramme",
+      "mc.physics.pc_ondes_em_modulation.taux-modulation-calcul",
+      "mc.physics.pc_ondes_em_modulation.surmodulation-nature",
+      "mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete"
+    ]
+  },
+  "spec_ref": "content/pc/ondes-em-modulation/spec-scene-modulation.md",
+  "adr_ref": "docs/decisions/0041-scenes-3d-de-premiere-partie.md",
+  "etapes": [
+    {
+      "id": "deux-rythmes",
+      "titre": "Deux rythmes sur un seul écran",
+      "consigne": "Un montage d'électronique, vu en schéma. En haut, un circuit intégré **multiplieur**, le rectangle marqué X : on lui envoie, sur une entrée, la tension à transmettre, $u(t)$, et sur l'autre une tension sinusoïdale rapide, la porteuse $p(t)$. Sa sortie part dans un **oscilloscope**, dont tu vois l'écran en dessous : dix divisions en largeur, huit en hauteur, quatre traits fins par division sur les axes. Les réglages sont écrits sous l'écran : **1,00 volt par division** en vertical, **0,50 milliseconde par division** en horizontal. Sur l'écran, un tracé : une oscillation très rapide, dont les sommets montent et descendent lentement — l'enveloppe, celle du chapitre précédent. Deux rythmes cohabitent, et c'est tout l'exercice de lecture.",
+      "pari": {
+        "question": "Sur cet écran, laquelle de ces quatre affirmations est juste ?",
+        "choix": [
+          {
+            "id": "roles-echanges",
+            "texte": "La fréquence du **signal modulant** est $4{,}0$ kHz.",
+            "juste": false,
+            "retour": "Le nombre est juste, c'est le nom qui est faux : $4{,}0$ kHz, c'est le rythme **rapide** — vingt oscillations serrées sur les dix divisions. Le signal modulant, lui, est le rythme **lent**, celui qui fait monter et descendre les sommets, et l'écran vient de le chiffrer : $400$ hertz, dix fois moins. Retiens l'ordre de grandeur : en modulation d'amplitude, la porteuse est la **haute** fréquence, et c'est elle qui ne change pas.",
+            "misconception": "mc.physics.pc_ondes_em_modulation.porteuse-vs-signal-modulant"
+          },
+          {
+            "id": "porteuse-4k",
+            "texte": "La fréquence de la **porteuse** est $4{,}0$ kHz.",
+            "juste": true,
+            "retour": "Oui. Et retiens la **chaîne** de lecture, parce que c'est elle que les sujets notent, pas le résultat. Pour la porteuse, on **compte** : vingt oscillations complètes sur les dix divisions, soit $T_p = \\dfrac{10 \\times 0{,}50}{20} = 0{,}250$ ms, donc $F = 4{,}00$ kHz. Pour l'enveloppe, on **repère deux extrema de même type** : d'un resserrement au resserrement suivant, exactement $5{,}00$ divisions, soit $T = 2{,}50$ ms, donc $f = 400$ Hz. Jamais deux extrema de types différents. Le rapport vaut $F/f = 10$."
+          },
+          {
+            "id": "demi-periode",
+            "texte": "La fréquence du **signal modulant** est $800$ Hz.",
+            "juste": false,
+            "retour": "Tu as compté $2{,}50$ divisions, soit $1{,}25$ ms — et c'est bien une distance réelle sur l'écran : celle qui sépare un **renflement** du **resserrement** voisin. Mais ce n'est qu'une **demi**-période : pour revenir au même état, l'enveloppe doit remonter. D'un resserrement au resserrement suivant, la scène vient de le mesurer : $5{,}00$ divisions, $2{,}50$ ms, $400$ Hz. **Une période va d'un extremum à l'extremum de même type.**",
+            "misconception": "mc.physics.pc_ondes_em_modulation.lecture-oscillogramme"
+          },
+          {
+            "id": "division-inversee",
+            "texte": "La fréquence de la **porteuse** est $1{,}00$ kHz : elle fait deux oscillations par division, donc sa période vaut deux divisions.",
+            "juste": false,
+            "retour": "La première moitié est juste — il y a bien deux oscillations par division — et la seconde est retournée. Deux oscillations **dans** une division, c'est une oscillation dans une **demi**-division : $T_p = 0{,}500$ div $= 0{,}250$ ms, donc $4{,}00$ kHz. Ta lecture donnerait une oscillation tous les deux carreaux, c'est-à-dire **quatre fois moins serré** que ce que tu vois. Le contrôle qui ne trompe pas : compte sur **toute** la largeur — vingt oscillations pour $5{,}00$ ms.",
+            "misconception": "mc.physics.pc_ondes_em_modulation.lecture-oscillogramme"
+          }
+        ]
+      },
+      "suite": "Maintenant promène la porteuse sur ses quatre crans : $1{,}2$ ; $2{,}4$ ; $4{,}0$ ; $8{,}0$ kilohertz. Compte à chaque fois — $6$, $12$, $20$, $40$ oscillations. Surveille l'enveloppe : elle ne bouge pas. Et au cran du bas, compte les crêtes qui la dessinent sur une période : trois seulement.",
+      "controles": [
+        "porteuse"
+      ],
+      "lectures": [
+        "comptage-porteuse",
+        "porteuse-lue",
+        "signal-lu",
+        "rapport-frequences"
+      ],
+      "etat": {
+        "F_khz": "4.0",
+        "Sm_v": "2.0",
+        "U0_v": "4.0",
+        "R0_kohm": "5.0",
+        "sortie": "modulee",
+        "reference": "aucune"
+      }
+    },
+    {
+      "id": "le-taux-par-deux-cretes",
+      "titre": "Le taux de modulation, lu sur deux crêtes",
+      "consigne": "Même écran, même réglage, même sensibilité : $1{,}00$ volt par division. Regarde maintenant les **hauteurs** : compte de combien de divisions l'oscillation rapide s'écarte de l'axe aux renflements, puis aux resserrements. Ce sont les deux seules mesures que ce genre de courbe donne — on les note $U_{max}$ et $U_{min}$. Tu as aussi les deux réglages d'entrée : la composante continue $U_0 = 4{,}0$ V et l'amplitude du signal $S_m = 2{,}0$ V.",
+      "pari": {
+        "question": "Que vaut le taux de modulation ?",
+        "choix": [
+          {
+            "id": "difference-sur-somme",
+            "texte": "$m = \\dfrac{3{,}00 - 1{,}00}{3{,}00 + 1{,}00} = 0{,}50$",
+            "juste": true,
+            "retour": "Oui, et voici **pourquoi** cette combinaison-là et pas une autre. La sortie du multiplieur s'écrit $u_S = A\\big[1 + m\\cos(2\\pi f t)\\big]\\cos(2\\pi F t)$ : au renflement la parenthèse vaut $1 + m$, au resserrement $1 - m$. Donc $U_{max} = A(1+m)$ et $U_{min} = A(1-m)$. Leur **somme** fait $2A$ : elle efface $m$ et donne $A = \\dfrac{3{,}00 + 1{,}00}{2} = 2{,}00$ V. Leur **différence sur leur somme** efface $A$ et ne laisse que $m$. Et remarque ce que ça te fait gagner le jour de l'examen : $m$ est un **rapport**, tu peux le calculer **en divisions**, sans jamais convertir en volts."
+          },
+          {
+            "id": "rapport-des-extrema",
+            "texte": "$m = \\dfrac{1{,}00}{3{,}00} = 0{,}33$",
+            "juste": false,
+            "retour": "Le rapport brut $U_{min}/U_{max}$ est une grandeur qui existe, mais ce n'est pas $m$. Vérifie sur tes propres réglages : $S_m/U_0 = 2{,}0/4{,}0 = 0{,}50$, pas $0{,}33$. L'écart vient de $A$ : les deux extrema le contiennent, et un simple rapport ne l'élimine pas — il faut passer par $\\dfrac{(1+m)-(1-m)}{(1+m)+(1-m)} = \\dfrac{2m}{2} = m$. Fais glisser $S_m$ sur ses trois crans et calcule les deux chaque fois : $m$ vaut $0{,}25$ ; $0{,}50$ ; $0{,}75$, le rapport brut $0{,}60$ ; $0{,}33$ ; $0{,}14$. La seconde suite **baisse** quand le signal grandit : elle ne mesure pas la modulation.",
+            "misconception": "mc.physics.pc_ondes_em_modulation.taux-modulation-calcul"
+          },
+          {
+            "id": "difference",
+            "texte": "$m = 3{,}00 - 1{,}00 = 2{,}00$",
+            "juste": false,
+            "retour": "Une différence de deux tensions est une **tension** : ton résultat vaut $2{,}00$ **volts**, et un taux de modulation est un nombre **sans unité**. Fais glisser $S_m$ sur ses trois crans et compare : la différence vaut $1{,}00$ ; $2{,}00$ ; $3{,}00$ V — exactement $S_m$, la **taille** du signal. Le taux, lui, vaut $0{,}25$ ; $0{,}50$ ; $0{,}75$ : cette taille **rapportée** à $U_0$. C'est le rapport qui dit si le signal est grand devant la composante continue — deux volts de différence, ce serait énorme sur un volt, et presque rien sur cent.",
+            "misconception": "mc.physics.pc_ondes_em_modulation.taux-modulation-calcul"
+          },
+          {
+            "id": "impossible",
+            "texte": "On ne peut pas : $m = S_m/U_0$, et un écran ne donne ni $S_m$ ni $U_0$.",
+            "juste": false,
+            "retour": "La définition que tu cites est la bonne, et c'est justement ce que l'écran vient de retrouver **sans** elle : $U_{max} = kP_m(U_0 + S_m)$ et $U_{min} = kP_m(U_0 - S_m)$, donc leur différence sur leur somme vaut $\\dfrac{2S_m}{2U_0} = \\dfrac{S_m}{U_0}$ — **la constante $kP_m$ disparaît**. Les deux lectures sont affichées l'une sous l'autre : $0{,}50$ et $0{,}50$. C'est pour cela que les sujets ne donnent ni $k$ ni $P_m$ : le rapport les élimine.",
+            "misconception": "mc.physics.pc_ondes_em_modulation.taux-modulation-calcul"
+          }
+        ]
+      },
+      "suite": "Fais glisser $S_m$ sur ses trois crans, à $U_0 = 4{,}0$ V. Les crêtes passent à $2{,}50$ et $1{,}50$, puis $3{,}00$ et $1{,}00$, puis $3{,}50$ et $0{,}50$ : $m$ vaut $0{,}25$ ; $0{,}50$ ; $0{,}75$. Et regarde $A$ : $2{,}00$ V, immobile, **moitié moins que $U_0$**.",
+      "controles": [
+        "modulante"
+      ],
+      "lectures": [
+        "porteuse-lue",
+        "signal-lu",
+        "extrema",
+        "amplitude-a",
+        "taux-lu",
+        "entrees",
+        "taux-regle"
+      ],
+      "etat": {
+        "F_khz": "4.0",
+        "Sm_v": "2.0",
+        "U0_v": "4.0",
+        "R0_kohm": "5.0",
+        "sortie": "modulee",
+        "reference": "aucune"
+      }
+    },
+    {
+      "id": "on-baisse-la-continue",
+      "titre": "On baisse la composante continue",
+      "consigne": "On a monté le signal à $S_m = 3{,}0$ volts — lis les deux hauteurs sur l'écran. Le resserrement est devenu étroit — il s'en faut de peu que les crêtes touchent l'axe. **On ne va pas toucher au signal.** On va baisser l'autre réglage, la composante continue, de $4{,}0$ volts à $2{,}0$ volts. Le message, lui, reste exactement le même : $3{,}0$ volts d'amplitude, $400$ hertz.",
+      "pari": {
+        "question": "En baissant $U_0$ de $4{,}0$ à $2{,}0$ V, le tracé va…",
+        "choix": [
+          {
+            "id": "pincement",
+            "texte": "se **pincer** : l'enveloppe descendra jusqu'à **toucher l'axe**, deux fois par période, et entre les deux contacts une petite bosse **retournée** apparaîtra.",
+            "juste": true,
+            "retour": "Oui — regarde-la. L'enveloppe touche zéro à $3{,}08$ et $4{,}42$ divisions, remonte à une petite bosse de $0{,}50$ division, puis retouche zéro. Sous cette bosse, l'oscillation rapide est **retournée** — ses crêtes hautes sont devenues basses : la leçon l'appelle une inversion de phase. C'est ce que $U_0 + s_m(t)$ « voudrait » être — négatif — et une amplitude ne l'est jamais. On appelle ça la **surmodulation**, et la frontière est nette : elle commence quand $S_m$ atteint $U_0$, c'est-à-dire quand $m = S_m/U_0$ atteint $1$. Ici $m = 3{,}0/2{,}0 = 1{,}50$. **Et lis les deux taux, l'un sous l'autre** : l'écran donne $1{,}00$, le réglage $1{,}50$. La lecture par les extrema ne peut **jamais** dépasser $1$, puisque $U_{min}$ ne descend pas sous zéro. C'est pour ça que les sujets, dans ce cas, demandent de **conclure sur la qualité** plutôt que de mesurer un nombre."
+          },
+          {
+            "id": "plus-bas-mais-fidele",
+            "texte": "rester fidèle : l'enveloppe descendra simplement plus bas, et le message passera aussi bien.",
+            "juste": false,
+            "retour": "L'enveloppe ne descend pas « plus bas » : elle **s'arrête à zéro** et **remonte**. Regarde la forme obtenue : entre deux renflements, il n'y a plus un creux mais **deux contacts avec l'axe, encadrant une bosse**. Cette bosse n'existe dans aucun signal de départ — le message, lui, fait une descente et une remontée, pas trois. Compare avec le trait interrompu, l'enveloppe d'avant : elle avait **un** creux par période. Ce n'est pas la même forme, donc ce n'est plus le même message.",
+            "misconception": "mc.physics.pc_ondes_em_modulation.surmodulation-nature"
+          },
+          {
+            "id": "mieux-module",
+            "texte": "s'améliorer : $m$ passe de $0{,}75$ à $1{,}50$, et plus $m$ est grand, plus l'information est marquée.",
+            "juste": false,
+            "retour": "Le calcul est juste et la conclusion est retournée. Jusqu'à $m = 1$, oui : plus $m$ est grand, plus l'enveloppe est contrastée. **Au-delà, elle se replie.** Ce que tu as gagné en contraste, tu l'as perdu en **forme** : deux contacts avec l'axe et une bosse, là où le message n'a qu'un creux. Et ce n'est pas rattrapable à la réception, parce que l'information détruite n'est plus dans le signal — elle a été perdue **à l'émission**. C'est un défaut d'émetteur, pas de récepteur.",
+            "misconception": "mc.physics.pc_ondes_em_modulation.surmodulation-nature"
+          },
+          {
+            "id": "disparait",
+            "texte": "disparaître par endroits : là où $U_0 + s_m(t)$ serait négatif, l'amplitude n'existe pas, et l'écran restera vide sur ces intervalles.",
+            "juste": false,
+            "retour": "L'intuition n'est pas absurde — une amplitude négative n'existe pas — mais l'écran n'est pas vide : regarde entre $3{,}08$ et $4{,}42$ divisions. Il y a du signal, et il est **retourné**. Ce que le produit $k\\,u(t)\\,p(t)$ fabrique quand $u(t)$ devient négatif, ce n'est pas rien : c'est la porteuse **changée de signe**, ses crêtes hautes devenues basses. Une amplitude n'est jamais négative ; un **produit**, si.",
+            "misconception": "mc.physics.pc_ondes_em_modulation.surmodulation-nature"
+          }
+        ]
+      },
+      "suite": "Remonte $U_0$ cran par cran, sans toucher au signal. À $3{,}0$ V, $m$ vaut exactement $1{,}00$ : l'enveloppe **effleure** l'axe, un point par creux, plus de bosse. À $4{,}0$ V, $m = 0{,}75$ : le creux se rouvre.",
+      "controles": [
+        "continue"
+      ],
+      "lectures": [
+        "extrema",
+        "amplitude-a",
+        "taux-lu",
+        "entrees",
+        "taux-regle"
+      ],
+      "etat": {
+        "F_khz": "4.0",
+        "Sm_v": "3.0",
+        "U0_v": "4.0",
+        "R0_kohm": "5.0",
+        "sortie": "modulee",
+        "reference": "depart"
+      },
+      "etat_revele": {
+        "U0_v": "2.0"
+      }
+    },
+    {
+      "id": "la-fenetre-du-detecteur",
+      "titre": "Le détecteur de crête",
+      "consigne": "On passe à la réception, et on monte la porteuse à $8{,}0$ kilohertz pour se rapprocher d'un vrai montage : quarante oscillations sur l'écran, vingt par période d'enveloppe — la porteuse fait une oscillation en $0{,}125$ milliseconde, l'enveloppe une période en $2{,}50$ millisecondes. La modulation est bonne — $m = 0{,}50$. Derrière le multiplieur, on va brancher l'étage qui retrouve le message : une **diode**, qui ne laisse passer que les alternances positives, puis un **condensateur** $C_0 = 100$ nanofarads en parallèle avec un **rhéostat** réglé sur $R_0 = 25$ kilohms. Le condensateur se charge à chaque crête et se décharge dans le rhéostat entre deux crêtes — la décharge d'un RC, comme au chapitre du dipôle RC. Sa constante de temps : $R_0C_0 = 2{,}50$ millisecondes.",
+      "pari": {
+        "question": "Quand on affichera la tension aux bornes du condensateur, on verra…",
+        "choix": [
+          {
+            "id": "epouse",
+            "texte": "une courbe qui **épouse l'enveloppe** : c'est le principe même du montage, il est fait pour ça.",
+            "juste": false,
+            "retour": "Le montage est fait pour ça, et il ne le fait pas à ce réglage — c'est exactement ce que les sujets font vérifier. Regarde la descente : l'enveloppe plonge, la courbe du condensateur **s'en va presque tout droit** et ne la rejoint qu'au creux suivant. La raison est un nombre : $R_0C_0 = 2{,}50$ ms, c'est **la période entière de l'enveloppe**. Un condensateur qui met une période à se vider ne peut pas suivre une descente qui dure une demi-période.",
+            "misconception": "mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete"
+          },
+          {
+            "id": "suit-porteuse",
+            "texte": "une courbe qui **suit la porteuse**, crête par crête, en dents de scie profondes : le condensateur se vide entre deux sommets.",
+            "juste": false,
+            "retour": "C'est le bon échec, au mauvais moment : celui-là arrive quand la constante de temps est **trop petite**, et ici elle est **énorme** — $2{,}50$ ms contre $0{,}125$ ms entre deux crêtes, vingt fois plus. Entre deux sommets, le condensateur ne perd presque rien : la courbe est presque lisse. Descends le rhéostat à $0{,}5$ kilohm tout à l'heure, et tu verras exactement ce que tu viens de décrire. **Deux échecs opposés, deux bornes.**",
+            "misconception": "mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete"
+          },
+          {
+            "id": "rate-la-descente",
+            "texte": "une courbe qui **monte** avec l'enveloppe mais **rate la descente** : elle s'en va presque en ligne droite et ne rattrape l'enveloppe qu'au creux suivant.",
+            "juste": true,
+            "retour": "Oui. Le condensateur monte instantanément à chaque nouvelle crête — ça, il sait faire —, mais il ne peut **descendre** qu'à la vitesse que lui impose $R_0C_0$. Ici $R_0C_0 = 2{,}50$ ms, c'est la période entière de l'enveloppe : beaucoup trop lent. D'où la **fenêtre** que tout détecteur de crête exige, et qu'il faut savoir vérifier : $$\\frac{1}{F} \\ll R_0C_0 \\ll \\frac{1}{f}.$$ Assez **grande** devant la période de la porteuse pour ne pas se vider entre deux crêtes ; assez **petite** devant la période du signal pour ne pas rater ses descentes. Les trois durées sont dans les lectures : $0{,}125$ ms · $2{,}50$ ms · $2{,}50$ ms. La borne de droite n'est pas respectée — elle est **atteinte**."
+          },
+          {
+            "id": "constante",
+            "texte": "une tension **constante** : chargé au premier sommet, le condensateur ne se décharge plus.",
+            "juste": false,
+            "retour": "Il se décharge : il y a un rhéostat en parallèle, et c'est tout son rôle. La courbe **descend** — regarde-la — simplement trop lentement. Chiffre-le : s'il n'était jamais rechargé, en une période d'enveloppe — $2{,}50$ ms — il perdrait un facteur $e^{-1}$, près des deux tiers de sa tension. Une décharge de deux tiers par période n'est pas « rien » ; c'est seulement la mauvaise forme. Sans rhéostat, oui, la tension resterait en haut — et le message serait perdu pour de bon.",
+            "misconception": "mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete"
+          }
+        ]
+      },
+      "suite": "Descends le rhéostat cran par cran, et regarde la même descente. À $10$ kΩ elle décroche encore. À $5{,}0$ kΩ elle épouse l'enveloppe, en dents de scie fines. À $2{,}0$ puis $0{,}5$ kΩ, le condensateur se vide entre deux sommets et la courbe retombe sur la porteuse. Trois régimes, deux échecs, un réglage.",
+      "controles": [
+        "detecteur"
+      ],
+      "lectures": [
+        "porteuse-lue",
+        "signal-lu",
+        "constante-temps",
+        "fenetre"
+      ],
+      "etat": {
+        "F_khz": "8.0",
+        "Sm_v": "2.0",
+        "U0_v": "4.0",
+        "R0_kohm": "25",
+        "sortie": "modulee",
+        "reference": "aucune"
+      },
+      "etat_revele": {
+        "sortie": "modulee-et-detectee"
+      }
+    },
+    {
+      "id": "libre",
+      "titre": "Un dernier écran, à diagnostiquer",
+      "consigne": "Dernier écran, et une situation qui n'a rien d'artificiel — celle d'un élève qui a tout vérifié et qui échoue quand même. Le signal est celui de l'étape précédente. Le détecteur est branché, le rhéostat sur $5{,}0$ kilohms — le réglage qui marchait. Et pourtant la courbe du condensateur ne ressemble plus du tout à l'enveloppe. Le montage n'a pas bougé ; l'écran, si : compte, lis, compare.",
+      "pari": {
+        "question": "Pourquoi la démodulation échoue-t-elle ?",
+        "choix": [
+          {
+            "id": "m-trop-petit",
+            "texte": "Parce que $m = 0{,}50$ est trop petit : il faut un taux proche de $1$ pour que le détecteur ait assez de signal à suivre.",
+            "juste": false,
+            "retour": "Monte $S_m$ et regarde : à $m = 0{,}75$, la courbe du condensateur est **exactement aussi mauvaise**, et à $m = 1{,}50$ elle est pire, parce que le signal lui-même est déformé. Le taux décide de la **hauteur** de l'enveloppe ; il ne décide pas de la **vitesse** à laquelle le condensateur peut la suivre. Ces deux questions sont indépendantes — c'est pour ça que les sujets les posent séparément.",
+            "misconception": "mc.physics.pc_ondes_em_modulation.surmodulation-nature"
+          },
+          {
+            "id": "porteuse-trop-lente",
+            "texte": "Parce que la porteuse est trop lente : sa période, $0{,}833$ ms, est **plus grande** que la constante de temps $R_0C_0 = 0{,}500$ ms. Le condensateur se vide entre deux crêtes.",
+            "juste": true,
+            "retour": "Oui, et va jusqu'au bout du raisonnement, parce que c'est la conclusion la plus utile du chapitre. La borne de gauche exige $R_0C_0 \\gg 1/F = 0{,}833$ ms : il faudrait monter le rhéostat. Essaie — à $10$ kΩ, $R_0C_0 = 1{,}00$ ms, et la courbe **rate la descente**. À $25$ kΩ, $2{,}50$ ms : c'est $1/f$ tout entier, pire encore. **Aucun** des cinq crans ne convient, et ce n'est pas un défaut du rhéostat : entre $0{,}833$ ms et $2{,}50$ ms il n'y a qu'un facteur trois, et un « $\\ll \\dots \\ll$ » n'y tient pas. **La fenêtre du détecteur n'existe que si $F \\gg f$.** La première condition de bonne modulation n'est donc pas seulement un confort de lisibilité : c'est aussi elle qui rend la démodulation possible. Remonte la porteuse à $8{,}0$ kHz, laisse le rhéostat sur $5{,}0$ kΩ, et tout rentre dans l'ordre."
+          },
+          {
+            "id": "constante-trop-grande",
+            "texte": "Parce que la constante de temps est **trop grande** : $R_0C_0$ dépasse la période du signal.",
+            "juste": false,
+            "retour": "Les trois durées sont dans les lectures ; lis-les dans l'ordre : $1/F = 0{,}833$ ms, $R_0C_0 = 0{,}500$ ms, $1/f = 2{,}50$ ms. La constante de temps est **cinq fois plus petite** que la période du signal : la borne de droite est largement respectée. C'est la borne de **gauche** qui est violée, et de façon spectaculaire — $R_0C_0$ n'est même pas plus grande que $1/F$, elle est plus **petite**. Regarde la forme, elle le dit aussi : une courbe qui rate la descente s'en va **tout droit** ; une courbe qui se vide entre deux crêtes fait des **dents de scie**. Tu as des dents de scie.",
+            "misconception": "mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete"
+          },
+          {
+            "id": "augmenter-r",
+            "texte": "Parce que le rhéostat est mal réglé, et cela n'a rien à voir avec la porteuse : il suffit de l'augmenter.",
+            "juste": false,
+            "retour": "Fais-le, c'est le meilleur moyen de voir pourquoi non. À $10$ kΩ, la courbe cesse de faire des dents de scie — et se met à **rater la descente**. À $25$ kΩ, elle la rate franchement. Tu as échangé un échec contre l'autre, sans jamais passer par un réglage correct : il n'existe pas ici. La raison est arithmétique : il faudrait une constante de temps à la fois **bien plus grande** que $0{,}833$ ms et **bien plus petite** que $2{,}50$ ms. Entre les deux il y a un facteur trois. **Ce n'est pas le rhéostat qu'il faut changer, c'est la porteuse.**",
+            "misconception": "mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete"
+          }
+        ]
+      },
+      "suite": "Trois vérifications, dans cet ordre. Un : $F/f$ — il faut qu'il soit grand ; à $8{,}0$ kHz il vaut $20$. Deux : $m = S_m/U_0$ — il faut qu'il soit sous $1$. Trois : les trois durées de la fenêtre. Trouve un réglage où les trois passent.",
+      "controles": [
+        "porteuse",
+        "modulante",
+        "continue",
+        "detecteur"
+      ],
+      "lectures": [
+        "comptage-porteuse",
+        "porteuse-lue",
+        "signal-lu",
+        "rapport-frequences",
+        "extrema",
+        "amplitude-a",
+        "taux-lu",
+        "entrees",
+        "taux-regle",
+        "constante-temps",
+        "fenetre"
+      ],
+      "etat": {
+        "F_khz": "1.2",
+        "Sm_v": "2.0",
+        "U0_v": "4.0",
+        "R0_kohm": "5.0",
+        "sortie": "modulee-et-detectee",
+        "reference": "aucune"
+      }
+    }
+  ]
+}

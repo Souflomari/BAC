@@ -1,7 +1,7 @@
 /**
  * test-modulation.mjs — le modèle du « banc de modulation »
  * (web/src/lib/scene2d/modulation-modele.ts ; spec
- * docs/pipeline/propositions/pc-ondes-em-modulation-scene-modulation.md §5, §14).
+ * content/pc/ondes-em-modulation/spec-scene-modulation.md §5, §14).
  *
  * Ce que ce test garde, avant tout navigateur :
  *  - les 9 couples (U0, Sm) de la table du §5.4 : U_max, U_min, A, m réglé,

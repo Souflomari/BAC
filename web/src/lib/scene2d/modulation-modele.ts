@@ -1,7 +1,7 @@
 /**
  * modulation-modele.ts — « le banc de modulation » : le multiplieur, l'écran,
  * le détecteur, et rien d'autre (spec
- * docs/pipeline/propositions/pc-ondes-em-modulation-scene-modulation.md §5).
+ * content/pc/ondes-em-modulation/spec-scene-modulation.md §5).
  *
  * UNE SEULE VOIE DE CALCUL, ANALYTIQUE, en millisecondes (F en kHz est donc
  * un nombre d'oscillations PAR MILLISECONDE ; f = 400 Hz en vaut 0,4) :

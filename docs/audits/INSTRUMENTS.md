@@ -1988,6 +1988,73 @@ faire (ADR 0033) ; et un AMBIGU — `course-traverse` n'atteignait pas l'écran 
 attrapés par leur famille ; la porte propre VERTE avant et après (118 mesures, 30
 familles), l'arbre identique à son cliché. HANDOFF §11.206.
 
+## `web/scripts/scene-modulation.mjs` — l'écran dit-il ce que le multiplieur et le détecteur imposent ?
+
+**Porte du « banc de modulation »** (pc/ondes-em-modulation, en tête de R3 ; spec
+`content/pc/ondes-em-modulation/spec-scene-modulation.md` §11 ; HANDOFF §11.207). Le
+sixième manipulable PLAN, SANS course : un oscilloscope en régime établi. `next
+start` + Chromium, le panneau trouvé par `[data-scene="banc-de-modulation"]`.
+`test-modulation` (10 tests, en CI) garde le modèle.
+
+**La scène est ANALYTIQUE, détecteur compris : la porte refait chaque nombre** depuis
+les constantes de la spec écrites chez elle ($kP_m = 0{,}5$, $f = 400$ Hz, 0,50
+ms/div) : les quatre crans de porteuse (comptage, $T_p$, $F$, $F/f$ — N5), les neuf
+couples $(U_0, S_m)$ ($U_{max}$, $U_{min}$, $A$ lue et réglée, $m$ lu et réglé — N1 à
+N4, dont les DEUX sens de N4 : identiques tant que $m \le 1$, différents au-delà), les
+cinq crans du rhéostat (N6), la fenêtre aux vingt couples $(F, R_0)$ (N7), et le
+détecteur lui-même, rejoué par sa propre récurrence sur les deux extrema de chaque
+période de porteuse (N8).
+
+**Les PIXELS, dans les deux sens.** L'échelle n'est jamais donnée : la GRILLE est lue
+(11 verticales sur la rangée à 3,8 divisions, où aucun tracé ne monte ; 9 horizontales
+sur deux colonnes ; les traits fins au quart de division sur l'axe vertical ; les axes
+médians sur une ligne majeure). Puis : `enveloppe-inerte` — LA mesure centrale : aux
+quatre crans de porteuse, le tracé, lu aux EXTREMA DE LA PORTEUSE ($t_k = k\,T_p/2$, où
+$u_S = kP_m\,u(t_k)\,(-1)^k$ — là, et seulement là, l'enveloppe touche le tracé), tombe
+sur l'enveloppe de la spec, et d'un cran à l'autre sur la même courbe ; `comptage` (la
+période de la porteuse lue sur les passages à zéro montants, par une droite des
+moindres carrés : 6,00 · 11,99 · 20,00 · 40,00 oscillations) ; `cretes-et-grille` (les crêtes aux quatre extrema contre les nombres
+AFFICHÉS, les curseurs $U_{max}$ / $U_{min}$) ; `pincement` (à $m = 1{,}50$ : quatre
+contacts avec l'axe, et sous les bosses des crêtes RETOURNÉES — l'opposition de phase,
+mesurée : 8 ; à $m = 0{,}75$ le tracé ne touche pas l'axe) ; `contact-exact` (à $m = 1$ :
+le tracé effleure l'axe au creux, et aucune crête ne se retourne) ; `deux-traces` ($u_S$ symétrique, $u_C$
+au-dessus de l'axe et continu) ; `detecteur` (la courbe épaisse contre la récurrence
+rejouée : au barycentre sur les colonnes où le modèle est plat, 445 ; dans la plage
+d'encre pleine ailleurs — à 0,5 kΩ la décharge descend de 23 px par colonne ; M2 — le décrochage absent à 0,500 ms, présent à 1,00 et
+2,50 ms) ; `palette` (une seule encre : $u_S$ et $u_C$ se distinguent par l'épaisseur,
+jamais par la teinte) ; `immobile`.
+
+**Et l'appareillage :** `avant-clic`, `pas-de-3d`, `etapes` (la révélation POSE le
+réglage du pari : la composante continue à 2,0 V à S3, l'étage de détection BRANCHÉ à
+S4 — il n'existe pas dans le DOM avant), `avant-pari`, `paris`, `annonce`,
+`formule-graduee` (ni $U_{max}$ ni « taux » avant S2, ni seuil avant S3, ni détecteur
+avant S4 — notes comprises : le texte fuit), `fuite-inter-etapes` (la table des états
+ATTEIGNABLES réécrite contre le descripteur), `frontiere` (49 FORMES, une sonde
+chacune : aucun spectre, aucune résonance, aucun composant actif, aucune valeur de
+2017 N…), `latex`, `etiquettes` et `cadre` (1 280 et 390 px), `theme`, `console`,
+`ergonomie`.
+
+**Ce qui n'est pas armé, et pourquoi** : M3, la frontière exacte du décrochage
+($R_0C_0 = 1/(2\pi f m)$) — cinq crans de rhéostat n'en approchent aucun à 5 % ; ce qui
+la mériterait : un réglage continu de $R_0$.
+
+**Au 2026-09-25 : VERTE deux fois, 138 mesures, 26 familles ; essai rouge 24/24, et les
+49 formes de la frontière injectées une à une, toutes vues.** Premier passage : 24
+rouges, et plus de la moitié venaient de la PORTE. Défauts du PRODUIT qu'elle a vus :
+les étiquettes-réponses cachées qui laissaient leur TEXTE dans le panneau (« U_max »
+avant S2, « condensateur » avant S4) ; au téléphone, $u(t)$ sous la légende et $R_0$ sur
+le rail ; les nœuds du quadrillage composés deux fois (51 % au lieu de 30 % — même dans
+un seul chemin, Chromium les compose deux fois : mesuré à la sonde), faux sommets
+lus comme des crêtes ; le repère de S5 caché sous son propre nom. Défauts de la PORTE,
+trouvés en la lançant : un compte de traits fins faux (5 et non 6) ; les horizontales
+lues sur deux colonnes que le tracé brouillait ; le barycentre d'une colonne, 10 px
+sous une crête aiguë ; l'extremum LOCAL du tracé pris pour un point de l'enveloppe (à
+1,2 kHz il tombe à côté, et dessous) ; des lobes coupés par une crête plate peinte à
+mi-pixel et par l'axe ; et l'enveloppe de départ (S3) lue comme le tracé — puis, une
+fois masquée, masquant la bosse, qui passe EXACTEMENT par elle (0,5 × |4 − 3| = 0,5 ×
+|2 − 3|). Chaque correction est écrite dans le code, au-dessus de la mesure qu'elle
+corrige.
+
 ## `web/scripts/figures-manipulables.mjs` — chaque figure manipulable fait-elle, au rendu, ce que son module dit ?
 
 **PORTE, armée en CI (job `scene-champ`, vert puis rouge), §11.199.** Une figure
@@ -2084,7 +2151,7 @@ KaTeX (ses propres polices, non comparées).
     node scripts/glyphes-confondus.mjs               (lève son propre next start)
     node scripts/glyphes-confondus.mjs --essai-rouge
 
-## `web/scripts/lib/scene-ergonomie.mjs` — la famille `ergonomie` des neuf portes de scène
+## `web/scripts/lib/scene-ergonomie.mjs` — la famille `ergonomie` des portes de scène (douze au 2026-09-25)
 
 **Module partagé, pas une porte seule** : chaque porte de scène l'appelle
 (`ergonomie({ lancer, url, scene, noter, essai })`) et sa famille entre dans

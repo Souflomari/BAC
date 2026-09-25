@@ -203,6 +203,12 @@ const HORS_CHAMP = new Set([
   // sujet 2019, la piste et les flèches lues aux pixels ; deux passages en CI
   // (job `scene-champ`) ; `node scripts/scene-tremplin.mjs --essai-rouge`.
   "scene-tremplin.mjs",
+  // scene-modulation, même raison : le banc de modulation (pc/ondes-em-
+  // modulation R3), le sixième manipulable PLAN — l'écran d'un oscilloscope lu
+  // à l'échelle de SA grille, l'enveloppe inerte aux quatre porteuses, le
+  // détecteur contre sa récurrence ; deux passages en CI (job `scene-champ`) ;
+  // `node scripts/scene-modulation.mjs --essai-rouge`.
+  "scene-modulation.mjs",
   // scene-ergonomie lance SEULE, sur les neuf scènes, la famille « ergonomie »
   // que chaque porte de scène lance déjà à sa fin (ADR 0035 : une porte prise
   // dans un agrégat doit pouvoir être lancée seule) : build ET navigateur. Pas
