@@ -1245,3 +1245,95 @@ tête de la spec et au §11.204) :
     le bord de la cuve (0,5), la verticale du curseur des noyaux (0,5) — ne sont pas
     des traits qu'on LIT comme le quadrillage : non examinés ici, nommés pour qu'ils
     le soient.
+
+## 26. Le tremplin circulaire : quatorze questions tranchées par défaut, un modèle ouvert, et ce que la vague 2 n'a pas obtenu
+
+**LE FAIT.** Le onzième manipulable de première partie — le cinquième PLAN — est
+livré dans `pc/lois-de-newton`, dans R3, entre « Construire $\vec a_G$ » et l'énoncé
+de la deuxième loi (§11.206) : la piste du sujet national 2019 N — une droite qui
+descend à 10°, un tremplin circulaire qui la relève jusqu'à C, à 18° —, la moto
+réduite à son centre d'inertie, et la base de Freinet. **Il ne solde aucune dette
+écrite** ; il se justifie par un trou MESURÉ (spec §0) : la base de Freinet et le
+produit $\vec a\cdot\vec v$, deux savoir-faire du cadre, ne sont enseignés nulle part
+dans la notion, et `chute-mouvements-plans` y renvoie. `media-manipulable` 16 → 17.
+La spec (`content/pc/lois-de-newton/spec-scene-tremplin.md` §13) laissait quatorze
+questions ; même lecture du mandat qu'aux §20, §21, §23, §24, §25.
+
+**CE QUI A ÉTÉ TRANCHÉ PAR DÉFAUT :**
+
+1. **La scène est CINÉMATIQUE** : ni force, ni masse, ni poids — elle est posée AVANT
+   l'énoncé de la deuxième loi, et la frontière « aucune force » est gardée forme par
+   forme (`frontiere`). La projection de $\sum\vec F = m\vec a$ sur la base reste à la
+   prose. Réversible : une sixième étape après l'énoncé, avec un second marqueur.
+2. **Pas de bosse** (courbure inverse) : la piste du sujet n'en a pas ; LDN-36 la porte,
+   chiffrée.
+3. **Dans R3**, à l'ordre du `programme` du cadre (le repère de Freinet dans la ligne
+   du vecteur accélération, avant la deuxième loi). Coût assumé : R3 s'allonge.
+4. **Le modèle `acceleration-traitee-comme-un-nombre` est OUVERT**, avec LDN-34 à 37 :
+   c'est le seul qui cochait la bonne réponse aux 33 items d'avant, tous rectilignes.
+   **Pour revenir en arrière** : onze étiquettes de choix, quatre
+   `primary_misconception`, une `description` à amender (spec §8.2).
+5. **Aucun point d'arrêt de plus** dans R3 : les cinq paris de la scène sont les
+   portes d'engagement ; un clone de LDN-34 aggraverait les items pré-dépensés que la
+   `REVIEW-2026-09-12` reproche déjà à la notion.
+6. **Aucun graphe** $a_N = f(v)$ : la lecture d'une pente n'est enseignée nulle part
+   dans la notion ; l'invariant se lit en produit ($a_N \times R = v^2$, à S3).
+7. **La garde de périmètre de `checkpoints.yaml`** (« translation seulement ») est
+   retouchée — sans changer le périmètre : « mouvement du centre d'inertie, rectiligne
+   ou curviligne (base de Freinet) ; pas de rotation d'un solide autour d'un axe ».
+8. **`web/src/lib/scene3d/` n'est toujours pas renommé** — sixième spec à le demander.
+9. **« Freinet » dans la scène**, comme le cadre et les sujets ; la leçon nomme Frenet
+   une fois, dans sa parenthèse d'orthographe. La porte le garde (`frontiere`, forme
+   « Frenet »). *Décision humaine sur un nom propre : réversible en une ligne.*
+10. **`habilete` n'est pas ajouté** aux items : c'est le §3, pour les 62 notions.
+11. **Le BLOQUANT 525 N / 532 N de la `REVIEW-2026-09-12` RESTE OUVERT.** La scène ne
+    le touche pas (ni $F$, ni $m$, ni $g$) — mais elle attire l'œil sur ce sujet précis :
+    un élève qui reconnaît la piste ira lire la banque, et y trouvera deux corrigés
+    contradictoires. **À trancher par le propriétaire**, pas par défaut.
+12. **$R = 20$ m est une constante INVENTÉE** (le sujet ne donne aucun rayon) et
+    gardée : gaz tenus à l'accélération du sujet, elle amène la moto en C à
+    20,3 m·s⁻¹, à 1,5 % des 20 m·s⁻¹ que le sujet donne. La provenance est écrite dans
+    la légende de la scène.
+13. **Cinq étapes** : S2 (le carré de la vitesse) est la seule où la dépendance
+    quadratique s'établit par une expérience.
+14. **Les deux règles nées ici sont gravées** en addendum de l'ADR 0041 (l'objet-réponse
+    sans existence d'énoncé ; une frontière de RANG dans la page), avec une troisième,
+    née de la construction : de deux flèches colinéaires, la plus courte dessus.
+
+**Les écarts de la construction** (pas de flèche $\vec v$, `etat_revele` en deux
+temps, $\vec u_N$ à l'encre, plateau en paysage, référence retirée à S4…) sont écrits
+en tête de la spec, pas ici.
+
+**CE QUE LA VAGUE 2 A DEMANDÉ ET N'A PAS OBTENU, et pourquoi :**
+
+15. **« 18° » coupé** (critique du calme : « un détail séduisant », aucun texte ne s'en
+    sert) : non — c'est une donnée de l'ÉNONCÉ (le sujet dessine C à 18°), et la spec la
+    prescrit (§6.2). **Au propriétaire** si l'on veut une scène qui s'écarte du dessin
+    du sujet.
+16. **$\vec a\cdot\vec v$ retiré du tableau de bord** (calme : « trois nombres affichés
+    deux fois ») : non — la critique d'ergonomie juge ce doublon UTILE (le tableau est
+    le seul qui survit au défilement, au téléphone, vers les réglages), et c'est la
+    leçon de la vague 2 du banc. Le tableau a même gagné $\|\vec a\|$ aux étapes du
+    pilotage.
+17. **« 10° » et son horizontale masqués après la révélation** (calme, au téléphone) :
+    non — une donnée de l'énoncé ne disparaît pas quand la réponse arrive.
+18. **« Relancer » en bouton de contour, et le fond teinté du bon choix retiré**
+    (calme : l'accent dilué sur quatre objets) : c'est l'appareillage COMMUN — le
+    bouton plein est celui des cinq scènes à course, le fond teinté celui de
+    `PariBloc` dans les onze. **Proposition pour une passe commune** : bouton de contour
+    une fois la réponse vue ; à trancher avec le §25.13 (le verdict dit quatre fois).
+19. **La colonne de lecture à 1 280 px** (ergonomie : ~33 caractères, une lecture
+    renvoyée à la ligne) : c'est le §25.14, mesuré et laissé au propriétaire.
+20. **« Image finale » renommé « Fin de la course » pendant une course** (ergonomie) :
+    commun aux cinq scènes à course — même passe que le 18. **Et la course la plus
+    longue** (9,0 m·s⁻¹ en B, gaz : la moto part ARRÊTÉE à −9,0 m, 12 s à l'écran) est la
+    conséquence de la spec (le même pilotage sur la droite) ; Pause et « Image finale »
+    l'abrègent.
+21. **Les constantes du dessin sur la grille de 8** (marge 14, témoins à 16,5 du bas,
+    réserve de légende 30) : non — la réserve de 30 est celle des quatre rendus plans
+    (`corde`, `noyaux`, `diffraction`, `tremplin`) ; la marge et la rangée des témoins
+    sont LOCALES, et 2 px de plus ou de moins ne changent rien à ce qu'on lit : pas
+    touchées. Vérifié par `grep` avant de l'écrire (la critique disait « hors grille »,
+    pas « commun »).
+22. **`--figure-surface` en blanc pur** (la bible l'interdit) : un jeton de TOUTES les
+    figures ; au registre de dette, pas dans cette scène.

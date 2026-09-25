@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
  * scene-ergonomie — la famille « ergonomie » des portes de scène, lancée SEULE,
- * sur les dix scènes (le banc de diffraction depuis le 2026-09-24).
+ * sur les onze scènes (le banc de diffraction depuis le 2026-09-24, le
+ * tremplin circulaire depuis le 2026-09-25).
  *
  * POURQUOI (2026-09-24, vague 2 des noyaux). La famille vit dans
  * `lib/scene-ergonomie.mjs` et chaque porte de scène l'appelle à la fin, après
@@ -42,6 +43,8 @@ const SCENES = [
   { nom: "noyaux", lecon: "/notions/pc/decroissance-radioactive", scene: "courbe-et-noyaux", ouvrir: "Ouvrir la courbe et les noyaux", course: 2 },
   // sans course : la lumière ne met rien de mesurable à traverser deux mètres
   { nom: "diffraction", lecon: "/notions/pc/propagation-onde-lumineuse", scene: "banc-de-diffraction", ouvrir: "Ouvrir le banc de diffraction" },
+  // la course de la première étape : le verdict attend que la moto soit en B
+  { nom: "tremplin", lecon: "/notions/pc/lois-de-newton", scene: "tremplin-circulaire", ouvrir: "Ouvrir le tremplin", course: 0 },
 ].filter((s) => CHOIX.length === 0 || CHOIX.includes(s.nom));
 if (!SCENES.length) { console.error(`scene-ergonomie : aucune scène ne s'appelle ${CHOIX.join(", ")}.`); process.exit(2); }
 

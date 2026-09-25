@@ -1920,6 +1920,63 @@ fait rougir. Arbre IDENTIQUE à son cliché après la campagne, porte propre VER
 RENDU, déclaré) ; un lecteur d'écran réel ; les tailles de taches sous 8 px (leurs
 nombres, si).
 
+
+## `web/scripts/scene-tremplin.mjs` — la flèche d'accélération est-elle celle que la piste dessinée impose ?
+
+**Porte du « tremplin circulaire »** (pc/lois-de-newton, R3, avant l'énoncé de la
+deuxième loi ; spec `content/pc/lois-de-newton/spec-scene-tremplin.md` §11 ; HANDOFF
+§11.206). Le cinquième manipulable PLAN, à COURSE (−9,0 m → B, ralenti ×6). `next
+start` + Chromium, le panneau trouvé par `[data-scene="tremplin-circulaire"]`.
+`test-tremplin` (8 tests, en CI) garde le modèle.
+
+**La scène est ANALYTIQUE : la porte refait chaque nombre** depuis les constantes de
+la spec écrites chez elle : $a_N = v^2/R$ aux 12 couples, $a_T$ signé, $\|\vec a\|$,
+$\vec a\cdot\vec v$ et la nature aux 36 réglages, $a_N\times R = 324$ sur les valeurs
+AFFICHÉES (S3), $v$ et $a_N$ le long de l'arc (20,3 m·s⁻¹ en C aux gaz), l'identité
+gaz/freinage de la norme, les crans.
+
+**Les PIXELS, dans les deux sens.** L'échelle des longueurs est LUE sur le témoin
+« 5 m », celle des accélérations sur le témoin « 10 m·s⁻² » (plages d'encre continues ;
+les deux témoins sont sur la même rangée). **La piste est LUE** : la droite par
+moindres carrés sur des colonnes d'encre (10,0° à 0,5°), l'arc par un cercle ajusté
+(Kåsa, puis Gauss–Newton — Kåsa seul donnait −4 % sur 28°) sur les centres SOUS-PIXEL
+du trait (barycentre de la noirceur ; au rang entier, le rayon à 10 m flottait de 8 %),
+les plages de plus de 5 px écartées (le trait de B croisait la piste et tirait le
+cercle de 10 %). `arc-de-cercle` : rayon à 3 % de R × l'échelle lue, rotation à 1°,
+écart au cercle, et la droite TANGENTE au cercle en B. La tangente en G se lit sur la
+droite (et en B), ou par une CORDE symétrique dans l'arc. Puis : `fleches-a-l-echelle`
+(‖a‖ et ses composantes = valeur × échelle lue, à 3 px + 1 %), `composition` (pointe
+de $a_T$ + pointe de $a_N$ = pointe de $\vec a$), `normale-vers-le-centre` (90° de la
+piste lue à 1°, vers le centre du cercle lu), `tangente-vraie`, `signe-du-produit` (le
+signe affiché contre l'angle DESSINÉ), `droite-sans-normale` (aucun accent à vitesse
+tenue, aucun $\vec u_N$, « pas de courbure »), `echelle-constante`,
+`unitaires-constants` (longueur déclarée ET les deux ailes de la pointe vues au
+repère — sous une flèche d'accent, une longueur ne se lit pas), `palette`, `eclairs`
+(image par image pendant une course), `course` (départ, arrêt en B, durée à l'HORLOGE
+à 20 %, aux 9 couples ; un réglage pendant une relance l'ARRÊTE), `sans-mouvement`.
+Chaque famille imprime sa MARGE à côté de son seuil (pire flèche 1,6 px + 1 %,
+composition 1,9 px, perpendicularité 0,03°).
+
+**Et le reste de l'appareillage :** `avant-pari` (une absence TOTALE : ni accent, ni
+flèche, ni $\vec u_N$, ni centre, ni lecture — l'objet-réponse n'a pas d'existence
+d'énoncé) ; `etapes` (l'engagement pose le réglage de la question, la révélation le
+repère) ; `paris` ; `annonce` (la révélation ET chaque relance disent l'arrivée) ;
+`formule-graduee` (ni « $v$ au carré » avant S2, ni $v^2/R$ avant S3, ni $dv/dt$ ni
+$\vec a\cdot\vec v$ avant S4) ; `fuite-inter-etapes` ; `frontiere` — 55 FORMES,
+chacune avec sa sonde (le saut, les forces — une frontière de RANG —, l'angulaire,
+l'énergie, la gravitation, Frenet écrit sans i…) ; `latex` ; `etiquettes` et `cadre`
+(1 280 et 390 px ; une étiquette OPAQUE ne cache pas la réponse ; un nom ne se pose que
+sur une flèche visible ; le bout de « départ » se voit) ; `immobile` ; `theme` ;
+`console` ; `ergonomie`.
+
+**Au 2026-09-25 : VERTE deux fois, 118 mesures, 30 familles ; essai rouge 28/28, et
+chaque forme injectée est vue.** Premier passage : 16 rouges — dont la réponse de S4
+INVISIBLE (a_T sous le liseré de u_T), le nom « 5 m » posé sur son propre témoin, et
+un faux positif de la porte (« portée par u_N » est un participe, pas la portée du
+saut). Trois défauts de la PORTE trouvés en la lançant : le témoin lu jusque dans le
+suivant, les tirets du rayon qui allongeaient les flèches (d'où l'accent FORT), et
+l'ajustement de Kåsa. Chaque mesure neuve de la vague 2 a été lancée D'ABORD sur le
+build d'avant, et y a rougi.
 ## `web/scripts/figures-manipulables.mjs` — chaque figure manipulable fait-elle, au rendu, ce que son module dit ?
 
 **PORTE, armée en CI (job `scene-champ`, vert puis rouge), §11.199.** Une figure

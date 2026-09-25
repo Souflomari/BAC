@@ -1,22 +1,54 @@
 # spec — manipulable 2D `tremplin-circulaire` (PC · `lois-de-newton`, R3)
 
-**Statut : PROPOSITION, non validée.** Écrite le 2026-09-24 par pedagogy-architect.
-**Rangée ici, et non dans `content/pc/lois-de-newton/`, tant qu'elle n'est pas
-adoptée** (DÉCISIONS-EN-ATTENTE §19) : dans le dossier d'une notion,
-`dette-manipulable` lit toute spec comme une **prescription** de manipulable, et
-une prescription non livrée fait rougir la CI. À l'adoption, elle y retourne sous
-`spec-scene-tremplin.md`, avec la scène.
+**Statut : LIVRÉE (2026-09-25, HANDOFF §11.206)** ; les réponses par défaut du §13 ont
+été appliquées, chacune reste réversible. Écrite le 2026-09-24 par pedagogy-architect,
+rangée d'abord sous `docs/pipeline/propositions/` tant qu'elle n'était pas construite
+(DÉCISIONS §19 : dans le dossier d'une notion, `dette-manipulable` lit toute spec comme
+une PRESCRIPTION), elle a rejoint le dossier de la notion dans le commit qui livre la
+scène. Les chemins qu'elle nommait existent : le descripteur
+`content/pc/lois-de-newton/media/tremplin-circulaire.json`, le modèle
+`web/src/lib/scene2d/tremplin-modele.ts` (et son test unitaire
+`web/scripts/test-tremplin.mjs`), le rendu `web/src/lib/scene2d/tremplin-rendu.ts`, le
+panneau `web/src/components/notion/scene/TremplinPanel.tsx`, la porte
+`web/scripts/scene-tremplin.mjs`.
 
-Chemins que cette proposition commande et qui n'existent pas encore (la porte
-`liens-fichiers` les dispense un par un ; à effacer quand ils existeront) :
-
-    CHEMIN À CRÉER: content/pc/lois-de-newton/media/tremplin-circulaire.json — le descripteur de la scène
-    CHEMIN À CRÉER: web/src/lib/scene2d/tremplin-modele.ts — le modèle (cinématique, sans rendu)
-    CHEMIN À CRÉER: web/src/lib/scene2d/tremplin-rendu.ts — le rendu Canvas 2D
-    CHEMIN À CRÉER: web/src/components/notion/scene/TremplinPanel.tsx — le panneau
-    CHEMIN À CRÉER: web/scripts/scene-tremplin.mjs — la porte (avec son --essai-rouge)
-    CHEMIN À CRÉER: web/scripts/test-tremplin.mjs — le test unitaire du modèle
-    CHEMIN À CRÉER: content/pc/lois-de-newton/spec-scene-tremplin.md — cette spec, à l'adoption
+**Ce que la construction, la porte et la vague 2 ont changé à cette spec, écrit ici
+plutôt que corrigé en douce :**
+- **Ni flèche $\vec v$, ni témoin des vitesses** (§5.8, §6.2 les prescrivaient). En B,
+  $\vec v$, $\vec u_T$ et $a_T\vec u_T$ sont COLINÉAIRES : trois flèches sur une même
+  droite, dont deux à des échelles différentes, ne se lisaient pas. La vitesse est un
+  NOMBRE sur la scène (le compteur du tableau de bord, « $v = 18{,}0$ », qui ne bouge
+  pas pendant la course — c'est le fait de S1) ; sa direction, c'est $\vec u_T$. Deux
+  échelles, deux témoins ; `echelle-constante` en vérifie deux.
+- **Les lectures n'existent qu'après le pari**, comme dans les dix autres scènes.
+- **`etat_revele` se pose en DEUX temps, pour une scène à course** : l'ENGAGEMENT pose
+  le réglage que la question décrit (S2 : 9,0 → 18,0 m·s⁻¹ — la course doit courir dans
+  ce réglage-là), sans le repère ; la RÉVÉLATION pose le repère où la course s'est
+  arrêtée (B) et le DIT dans la région vivante.
+- **$\vec u_N$ est à l'ENCRE** (§6.2 le voulait à l'accent) : c'est la BASE, un
+  vecteur de convention ; l'accent reste à la seule réponse — l'accélération.
+- **Le centre** : « centre du virage » à côté de son point quand il tombe dans le
+  cadre ; sinon « centre : à 20 m » au bout du rayon coupé au bord.
+- **Le plateau est carré** ; les accélérations à $0{,}0115 \times$ la largeur par
+  m·s⁻² (à 0,0085, les flèches de S4 et leurs noms se serraient dans 60 px) ; B à 88 px
+  du bas (une rangée d'étiquettes entre la piste et les témoins) ; 3,4 m après C
+  (l'étiquette « 18° » sortait du cadre à $R = 30$ m).
+- **De deux flèches colinéaires, la plus COURTE est dessinée dessus.** Toujours
+  par-dessus, $\vec u_T$ et son liseré effaçaient $a_T$ tout entier aux gaz (25 px sous
+  30 px) ; toujours dessous, $\vec u_N$ disparaissait sous la flèche de S1. Quand les
+  deux pointes se confondent (à 3 px près), le NOM du vecteur unitaire se retire.
+- **À S4, pas de flèche de référence** (`reference: aucune`) : la flèche « vitesse
+  tenue » EST la composante normale d'aujourd'hui — un fantôme superposé à $a_N$.
+- **Le retour de S1 dit « la partie droite », pas « la pente »** (une forme du §9).
+- **À S5, la lecture $a_N\times R$ est retirée** (vague 2 : un reste de S3) ; N3 se
+  lit à S3, aux quatre tremplins, à 18,0 m·s⁻¹ — pas aux douze couples du §11.1.
+- **Tolérances de la porte** (§11.2) : les flèches à 3 px + 1 % (et non 2 px — la
+  pointe lissée perd ~1,5 px sur l'accent fort ; pire mesuré : 1,6 px + 1 %), la
+  composition à 3,5 px (pire : 1,9 px) ; la normale et $\vec u_T$ à 1°, comme
+  prescrit (pire : 0,03°) ; l'arc à 3 % du rayon et 1° de rotation. Les vecteurs
+  unitaires se jugent par leur longueur DÉCLARÉE et les deux AILES de leur pointe —
+  sous une flèche d'accent, leur longueur ne se lit pas aux pixels.
+- **Ce qui n'est pas appliqué de la vague 2, et pourquoi** : DÉCISIONS §26.
 
 **Ce que ce document est.** Le cadrage pédagogique complet d'un manipulable
 **PLAN** de première partie (ADR 0041, `"tool": "scene2d"`, mêmes pièces que la

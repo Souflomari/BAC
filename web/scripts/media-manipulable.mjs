@@ -75,7 +75,11 @@ const PORTE = process.argv.includes("--porte");
 //  lumineuse porte le banc de diffraction. Aucune dette écrite non plus : le
 //  trou qu'il ferme est MESURÉ (la seule figure de diffraction du corpus, sans
 //  un nombre, exagérait son angle d'un facteur 54 sans le dire — spec §2.1).
-const CLIQUET = 16;
+//  Relevé à 17 le 2026-09-25, même commit que la scène : pc/lois-de-newton
+//  porte le tremplin circulaire. Aucune dette écrite : le trou qu'il ferme est
+//  MESURÉ — aucune figure du corpus ne montrait le vecteur accélération sur
+//  une trajectoire courbe, ni ses deux composantes (spec §1).
+const CLIQUET = 17;
 
 const RE_EMBED = /\[\[(?:embed|geogebra|desmos|falstad|phet)[:\]]/gi;
 const parMat = new Map();

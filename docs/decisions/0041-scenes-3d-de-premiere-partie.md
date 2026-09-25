@@ -667,6 +667,47 @@ la liste des lectures défile, la scène non. Une ligne radio COCHÉE porte une 
 « environ 3:1 » écrit à côté d'un trait n'est pas une mesure : 0,6 d'encre douce
 donnait 2,91:1 dans le graphe des noyaux comme dans celui du banc (0,7 : 3,6:1).
 
+## Addendum du 2026-09-25 — le tremplin circulaire : une réponse sans existence d'énoncé, une frontière de RANG, et deux flèches sur une même droite
+
+Le onzième manipulable, cinquième PLAN : `tremplin-circulaire`, dans R3 de
+`pc/lois-de-newton`, AVANT l'énoncé de la deuxième loi (HANDOFF §11.206). La moto du
+sujet national 2019 N sur sa piste ; une course de −9,0 m jusqu'à B, au ralenti ×6 ;
+la base de Freinet et le vecteur accélération. Quatre pièces neuves.
+
+**1. `etat_revele`, dans une scène à COURSE, se pose en deux temps.** Au banc (sans
+course), la révélation posait le réglage d'un coup. Ici la course doit courir DANS le
+réglage que la question décrit (S2 : « à 18,0 au lieu de 9,0 ») : l'ENGAGEMENT pose
+les clés de réglage de `etat_revele`, sans le repère ; la RÉVÉLATION, à la fin de la
+course, pose le repère où elle s'est arrêtée et le DIT. La porte mesure les deux
+temps (`etapes` : « l'engagement pose v = 18 »).
+
+**2. L'objet-réponse peut n'avoir AUCUNE existence d'énoncé.** Le manège avait posé
+« une donnée de l'énoncé ne se peint pas dans la couleur de la réponse ». Ici le
+vecteur $\vec a$ EST le concept enseigné : il n'a rien à peindre à l'encre, à aucune
+étape, à aucun repère, même quand il est non nul et banal (sur la droite, en
+freinant). `avant-pari` y mesure une absence TOTALE — ni flèche, ni $\vec u_N$, ni
+centre, ni lecture —, pas une absence d'accent.
+
+**3. Une scène peut être bornée par son RANG dans la page.** La frontière « aucune
+force, aucune masse » ne vient d'aucune `limite` du cadre : elle vient de ce que la
+scène précède le paragraphe qui énonce la deuxième loi. C'est une frontière de
+PLACEMENT, et elle se garde exactement comme une frontière de programme — forme par
+forme (`frontiere` : « force », « \vec F », « 525 N », « centripète »…). Le solide de
+révolution bornait le PROGRAMME ; ici, c'est la PAGE.
+
+**4. De deux flèches COLINÉAIRES, la plus courte est dessinée dessus.** Les vecteurs
+unitaires de la base sont, par définition, colinéaires aux composantes de
+l'accélération. Dessinés toujours par-dessus, $\vec u_T$ et son liseré effaçaient
+$a_T$ tout entier aux gaz (25 px sous 30) — la réponse de S4 était invisible, et la
+porte l'a vue (`fleches-a-l-echelle` : « composante −1 px ») ; dessinés toujours
+dessous, $\vec u_N$ disparaissait sous la flèche de S1 et son nom flottait sur rien.
+L'ordre de peinture se décide par la LONGUEUR ; quand les deux pointes se confondent
+(à 3 px), le nom du vecteur unitaire se retire. Même règle pour la flèche de
+référence (« départ »), dont le bout est un anneau par-dessus tout. Et deux mesures
+neuves, rouges d'abord sur le build fautif : une étiquette OPAQUE ne cache pas la
+réponse (le nom de $\vec u_T$ couvrait 95 px d'accent au pied des flèches), et un
+nom ne se pose que sur ce qui se voit.
+
 ## Retractions and Corrections
 
 - **2026-09-23 — la « deuxième scène » annoncée n'était pas la bonne

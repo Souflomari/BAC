@@ -15916,3 +15916,96 @@ dix scènes, l'autre la grille de page que le propriétaire n'a pas encore tranc
 (`--pixels-tous`) sur les deux figures ; `dom-truth` 280 contrôles, 0 échec, sur le
 build qui les porte (rouge sur le précédent) ; batterie locale verte, sur l'arbre
 poussé.
+
+## §11.206 — Le tremplin circulaire : la base de Freinet sur la piste du sujet, une réponse qui disparaissait sous sa propre base, et une porte qui a dû apprendre à lire une piste
+
+**LA SCÈNE.** Le onzième manipulable de première partie, le cinquième PLAN :
+`pc/lois-de-newton`, dans R3, entre « Construire $\vec a_G$ » et l'énoncé de la
+deuxième loi (`[[embed:tremplin-circulaire]]`). La piste du sujet national 2019 N,
+vue de côté — une droite qui descend à 10°, un tremplin circulaire qui la relève
+jusqu'à C, à 18° —, la moto réduite à son centre d'inertie, et la base de Freinet.
+Cinq étapes à pari, chacune avec une COURSE (la moto part 9,0 m avant B et s'arrête
+en B, au ralenti ×6) : S1 la vitesse tenue (le compteur reste à 18,0 et une flèche de
+16,2 m·s⁻² apparaît en B, vers le centre), S2 deux fois plus vite (quatre fois la
+flèche), S3 deux fois plus serré (le double ; $a_N \times R = 324$), S4 les gaz (la
+flèche bascule vers l'avant : $a_T$, $\|\vec a\|$, $\vec a\cdot\vec v$), S5 tout
+s'ouvre (la nature du mouvement se lit sur le signe de $\vec a\cdot\vec v$). Aucune
+force, aucune masse : la scène précède la deuxième loi, et sa frontière est une
+frontière de RANG (ADR 0041, addendum du 2026-09-25). Elle ne solde aucune dette
+écrite ; elle comble un trou mesuré (la base de Freinet et $\vec a\cdot\vec v$,
+enseignées nulle part dans la notion) : `media-manipulable` 16 → 17. Spec :
+`content/pc/lois-de-newton/spec-scene-tremplin.md`, avec, en tête, ce que la
+construction, la porte et la vague 2 y ont changé.
+
+**Ce qui l'accompagne.** Le modèle `acceleration-traitee-comme-un-nombre`, ouvert
+(LDN-34 à 37) ; la prose de R3 (§4.3 à 4.5 de la spec : les deux composantes, la
+nature du mouvement, l'exemple refait à la main, deux puces au récapitulatif) ; le
+renvoi de `chute-mouvements-plans` vers le tremplin ; la garde de périmètre de
+`checkpoints.yaml` retouchée (« rectiligne ou curviligne ») ; les artefacts du modèle
+apprenant régénérés ; `test-tremplin` (8 tests) armé en CI avec les tests unitaires.
+
+**LA PORTE (`scene-tremplin`) : VERTE deux fois, 118 mesures, 30 familles ; essai
+rouge 28/28, et les 55 FORMES de la frontière injectées une à une, toutes vues.**
+Armée en CI (job `scene-champ`, vert puis rouge). Premier passage : 16 rouges, et la
+moitié ne venait pas du produit. **Trois défauts de la PORTE, trouvés en la
+lançant :** le témoin des mètres lu jusque dans le témoin voisin (même rangée) ; les
+tirets du rayon, partis de G dans la direction de la composante normale, qui
+allongeaient la flèche (d'où l'accent FORT, à 80 % de sa chrominance) ; et la piste —
+lue d'abord par un cercle de Kåsa, biaisé de −4 % sur un arc de 28°, puis au rang
+entier (±8 % sur le rayon de 10 m, dont la flèche d'arc fait 4,5 px), puis contaminée
+par le trait de B (une plage de 7 px acceptée comme piste : +10 %). Elle se lit
+maintenant au SOUS-PIXEL (barycentre de la noirceur), en écartant les plages de plus
+de 5 px, par Kåsa puis Gauss–Newton : 168,3 px pour 166,0 à 10 m, 498,9 pour 498,0 à
+30 m, écart au cercle 0,11 px ; et la tangente en G se lit sur une CORDE symétrique
+(0,04° pour $\vec u_T$ ; le rayon du cercle ajusté donnait 1,7°). Chaque famille
+imprime sa MARGE : pire flèche 1,6 px + 1 %, composition 1,9 px, perpendicularité
+0,03°.
+
+**LE DÉFAUT QUE LA PORTE A VU AVANT MOI : LA RÉPONSE DE S4 ÉTAIT INVISIBLE.** Aux gaz,
+$a_T$ mesure 4,50 m·s⁻², 25 px ; $\vec u_T$, dessiné par-dessus avec son liseré de
+fond, en fait 30 : il l'effaçait tout entier (`fleches-a-l-echelle` : « composante −1
+px »). Dessiner la base dessous a fait l'inverse (u_N disparaissait sous la flèche de
+S1, et son nom flottait sur rien). **La règle retenue : de deux flèches colinéaires,
+la plus COURTE passe dessus** ; quand les deux pointes se confondent (à 3 px), le nom
+du vecteur unitaire se retire. Et deux mesures neuves, rouges d'abord sur le build
+fautif : une étiquette OPAQUE ne cache pas la réponse (le nom de $\vec u_T$ couvrait
+95 px d'accent au pied des flèches) ; un nom ne se pose que sur une flèche visible.
+
+**LA VAGUE 2 (calme, dessin, ergonomie), sur les captures à 1 280 et 390 px — chaque
+affirmation vérifiée sur la capture ou le code avant d'être appliquée.** Appliqué :
+- *le plateau en PAYSAGE* (3:2 sur grand écran) : carré, le dessin tenait dans le
+  quart du bas pendant toute la course, pour un centre de virage qui n'apparaît
+  qu'après le pari (deux critiques d'accord) ; hors du cadre, le rayon s'arrête au
+  bord et dit « centre : à 20 m », comme au téléphone ;
+- *la référence « départ »* dessinée PAR-DESSUS la réponse, son bout en anneau (sous
+  l'accent, il n'en restait qu'un point noir au milieu de la flèche) ; retirée à S4,
+  où elle EST la composante normale ;
+- *le parallélogramme à 3,2:1* (2,4:1 à l'opacité 0,55), le centre avec un liseré, la
+  droite qui vient du bord, les deux témoins dans la même voix, « centre » et
+  « départ » en étiquettes discrètes (un appui, pas l'énoncé ni la réponse) ;
+- *au téléphone* : $\|\vec a\|$ sur le tableau de bord aux étapes du pilotage (le
+  pilotage est SOUS les lectures ; seul le tableau reste sous les yeux) ; la lecture
+  $a_N\times R$ retirée de S5 (un reste de S3) ;
+- *le lecteur d'écran et le geste* : chaque RELANCE dit son arrivée en B (la position
+  « au milieu » revenait « à l'entrée » en silence) ; un réglage pendant une relance
+  ARRÊTE la course (elle courait dans l'ancien réglage, figé à son départ) ; la
+  description du canvas ne réécrit plus un nombre vivant à chaque image ; le pari
+  dit « Lance la moto » (il disait « lance le temps »).
+Chacune de ces mesures neuves a été lancée D'ABORD sur le build d'avant, et y a rougi.
+Non appliqué, et pourquoi : DÉCISIONS §26 (15 à 22) — « 18° » est une donnée de
+l'énoncé ; le doublon du tableau est utile ; le bouton plein et « Image finale » sont
+l'appareillage commun des cinq scènes à course ; la colonne, c'est le §25.14.
+
+**VÉRIFIÉ, sur le build final, rien d'autre en marche :** `scene-tremplin` VERTE deux
+fois (118 mesures, 30 familles), essai rouge 28/28 et 55 formes vues ;
+`scene-ergonomie` VERTE sur les ONZE scènes (102 mesures) ; `test-tremplin` 8/8 ;
+`dom-truth` 280 contrôles, 0 échec ; `verdict-qcm` de la notion VERT (34 réponses
+d'item, 5 de point d'arrêt) ; `etroit-sweep` : 108 pages × 3 largeurs, 0 débord ;
+`validate-content` de la notion ; `liens-fichiers` ; batterie locale verte, sur l'arbre
+poussé. **La campagne de sabotages du PRODUIT reste à faire** (arbre à part, comme au
+§11.203 et au §11.204) : c'est elle qui dira si chaque famille attrape SON défaut.
+
+**RESTENT AU PROPRIÉTAIRE** (DÉCISIONS §26) : le BLOQUANT 525 N / 532 N de la
+`REVIEW-2026-09-12`, que la scène rend plus visible ; « Freinet » dans la scène ; le
+rayon de 20 m, inventé et écrit comme tel ; et, communs, le bouton plein des scènes à
+course et la colonne de 330 px.

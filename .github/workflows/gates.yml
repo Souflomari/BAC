@@ -183,7 +183,13 @@ jobs:
       # largeurs de la table de la spec à trois chiffres (la précision qui rend
       # VRAI à l'écran a × L = 0,240), les 17 positions de l'écran, et le fil
       # qui diffracte comme la fente de 0,080 mm AU BIT PRÈS (une seule fonction).
-      - name: Tests unitaires (apprenant · session · typographie · écriture · épreuves · mélange · noyaux · diffraction)
+      #
+      # test-tremplin garde le modèle du « tremplin circulaire » : les tables
+      # A à E de la spec (a_N = v²/R aux 12 couples, ‖a‖ aux 36 réglages, a·v et
+      # la nature), le ZÉRO de la composante normale sur la droite — une
+      # BRANCHE, pas un rayon infini —, la géométrie (C à 18°, le cercle tangent
+      # à la droite en B) et la course (partie à −9,0 m, arrêtée en B).
+      - name: Tests unitaires (apprenant · session · typographie · écriture · épreuves · mélange · noyaux · diffraction · tremplin)
         run: |
           npm run test-learner-model
           npm run test-attempt-events
@@ -193,6 +199,7 @@ jobs:
           npm run test-melange
           npm run test-noyaux
           npm run test-diffraction
+          npm run test-tremplin
 
       # PORTE LIENS (2026-09-05). Ce projet se pilote par ses documents :
       # `.claude/CLAUDE.md` envoie vers la vision, la vision vers les règles,
@@ -1188,6 +1195,28 @@ jobs:
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
           npm run scene-diffraction
           node scripts/scene-diffraction.mjs --essai-rouge
+
+      # PORTE « LE TREMPLIN CIRCULAIRE » (2026-09-25, HANDOFF §11.206). Le
+      # cinquième manipulable PLAN (pc/lois-de-newton, R3), et le premier à
+      # COURSE dont l'engagement pose un réglage : la moto part à −9,0 m et
+      # s'arrête en B, au ralenti ×6 mesuré contre l'HORLOGE. ANALYTIQUE : la
+      # porte refait v, a_N = v²/R, a_T, ‖a‖, a·v et la nature aux 36 réglages
+      # (et le long de l'arc), et lit les PIXELS dans les deux sens — la piste
+      # LUE (une droite à 10°, un cercle de rayon R × l'échelle lue sur le
+      # témoin, que la droite touche en B), la flèche à l'échelle du SECOND
+      # témoin, la composante normale à 90° de la piste lue et vers le centre du
+      # cercle lu, la pointe de a au bout du parallélogramme, le signe de a·v
+      # contre l'angle DESSINÉ, et, sur la droite, aucune composante normale.
+      # La relation est un état qui fuit : ni « v au carré » avant S2, ni v²/R
+      # avant S3, ni dv/dt ni a·v avant S4.
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — les familles visées doivent
+      # crier, et chaque forme de la frontière être vue.
+      - name: "Le tremplin circulaire (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-tremplin
+          node scripts/scene-tremplin.mjs --essai-rouge
 
       # PORTE « FIGURES MANIPULABLES » (2026-09-24, HANDOFF §11.199). Chaque
       # `.interactive.json` du corpus — l'inventaire est lu dans content/, pas

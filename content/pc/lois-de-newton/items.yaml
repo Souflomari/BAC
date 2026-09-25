@@ -129,6 +129,28 @@ misconceptions:
       enlever un frein revenait à ajouter un moteur. Sans force motrice,
       supprimer le frottement maintient la vitesse constante (inertie), il ne
       l'augmente pas.
+  # Vingtième modèle. Ajouté le 2026-09-24, spec pedagogy-architect
+  # content/pc/lois-de-newton/spec-scene-tremplin.md §8.2 : les
+  # 33 items existants décrivent tous des mouvements RECTILIGNES ; ce modèle
+  # y répond juste et reste invisible tant que la trajectoire ne tourne pas.
+  - id: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+    label: "L'accélération traitée comme un NOMBRE : dérivée de la vitesse-nombre, sans composante normale, et dont le signe seul dirait la nature du mouvement"
+    description: >-
+      L'élève dérive la NORME de la vitesse au lieu du VECTEUR vitesse. Quatre
+      formes. Forme A — une seule composante : à norme constante dans un virage il
+      conclut a = 0 (la direction qui tourne ne compte pas), ou, quand la norme
+      varie, il laisse l'accélération inchangée (la composante tangentielle ne
+      compte pas). Forme B — la normale mal orientée : il admet une composante
+      normale mais la dirige vers l'EXTÉRIEUR du virage, au lieu du centre de
+      courbure. Forme C — la loi de a_N perdue : a_N croîtrait comme v et non
+      comme v², ou avec R au lieu de 1/R, ou ne dépendrait ni de v ni de R.
+      Forme D — la nature lue sur un nombre : « accéléré » parce que a n'est pas
+      nul, ou la norme de a prise égale à sa seule composante tangentielle ; alors
+      que la nature se lit sur le SIGNE de a·v, qui ne dépend d'aucun axe choisi.
+      Ce modèle répond CORRECTEMENT à tout exercice RECTILIGNE — c'est-à-dire aux
+      33 items et aux 6 entrées de banque actuelles de la notion : sur une droite,
+      dériver la norme ou le vecteur revient au même au signe près. Il ne se révèle
+      qu'en demandant ce que devient l'accélération quand la TRAJECTOIRE TOURNE.
 
 items:
   - id: LDN-1
@@ -2473,6 +2495,297 @@ items:
       GALILÉEN ? », c'est-à-dire non accéléré. Une voiture à vitesse constante
       l'est ; la même voiture en train de freiner ne l'est plus.
 
+  # Ajoutés le 2026-09-24 — spec pedagogy-architect
+  # content/pc/lois-de-newton/spec-scene-tremplin.md §8.2-§8.3 :
+  # QUATRE items (LDN-34 à LDN-37) pour le vingtième modèle,
+  # acceleration-traitee-comme-un-nombre — dériver la NORME de la vitesse au
+  # lieu du VECTEUR, structurellement invisible sur les 33 items rectilignes
+  # existants (il y répond juste). Placés AVANT l'énoncé de la deuxième loi :
+  # aucune force, aucune masse, aucun newton, aucune « centripète/centrifuge ».
+  - id: LDN-34
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+    stem: >
+      Un motard aborde un tremplin circulaire de rayon $R = 20\ \text{m}$ et le
+      parcourt en tenant exactement sa vitesse : son compteur affiche
+      $18\ \text{m/s}$ à l'entrée, au milieu et à la sortie du tremplin. Que
+      peut-on dire du vecteur accélération de la moto au milieu du tremplin ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non nul, perpendiculaire à la vitesse, dirigé vers le centre du
+          tremplin, de norme $v^2/R = 16{,}2\ \text{m/s}^2$.
+        correct: true
+      - id: B
+        text: >-
+          Nul, puisque la vitesse affichée par le compteur ne change pas
+          entre l'entrée et la sortie.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          C'est la NORME de la vitesse qui ne change pas ici ; le vecteur
+          vitesse, lui, tourne de 28° entre l'entrée et la sortie du
+          tremplin. L'accélération mesure la variation du VECTEUR, pas celle
+          du nombre affiché au compteur : un mouvement circulaire à vitesse
+          tenue est accéléré bien que sa norme reste constante.
+      - id: C
+        text: >-
+          Perpendiculaire à la vitesse, mais dirigé vers l'extérieur du
+          tremplin, loin du centre.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          La trajectoire s'incurve vers le centre du tremplin ; une
+          composante d'accélération dirigée vers l'extérieur la courberait
+          dans l'autre sens. Le vecteur unitaire normal pointe, par
+          définition, vers le centre de courbure — jamais à l'opposé.
+      - id: D
+        text: >-
+          Dirigé vers l'avant, dans le sens du mouvement, car il faut bien
+          quelque chose pour entraîner la moto.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-entretient-mouvement
+        feedback: >
+          Une accélération dirigée vers l'avant ferait grandir la norme de
+          la vitesse ; or l'énoncé précise qu'elle reste la même du début à
+          la fin du tremplin. Ce n'est pas parce qu'un mobile avance qu'il
+          lui faut une accélération dans le sens du mouvement : c'est la
+          variation du vecteur vitesse, direction comprise, qui définit
+          l'accélération.
+    correct_feedback: >
+      Un vecteur vitesse peut changer de deux façons indépendantes : sa
+      norme et sa direction. Ici la norme reste $18\ \text{m/s}$ tout du
+      long, mais la direction tourne à mesure que la moto suit la courbe du
+      tremplin — c'est cette rotation que mesure la composante normale de
+      l'accélération, $v^2/R$, dirigée vers le centre.
+    solution: |
+      **Ce que dit le compteur, et ce qu'il ne dit pas.** La norme de la
+      vitesse reste $18\ \text{m/s}$ à l'entrée, au milieu et à la sortie :
+      rien ne le contredit. Mais un vecteur vitesse porte aussi une
+      direction, et celle-ci tourne à mesure que la moto suit la courbe du
+      tremplin — le compteur ne montre que la norme, jamais la direction.
+
+      **Le calcul.** L'accélération se décompose en une composante le long
+      du mouvement (nulle ici, puisque la norme ne change pas) et une
+      composante perpendiculaire, dirigée vers le centre de courbure :
+      $$a_N = \frac{v^2}{R} = \frac{18^2}{20} = \frac{324}{20} = 16{,}2\ \text{m/s}^2$$
+
+      **Ce qu'il faut en retenir.** Un mouvement circulaire à vitesse tenue
+      est accéléré, alors même que le compteur n'indique aucun changement.
+
+  - id: LDN-35
+    rung: "R8"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+    stem: >
+      Sur un tremplin circulaire de rayon $R = 20\ \text{m}$ pris à vitesse
+      tenue, la composante normale de l'accélération vaut
+      $4{,}05\ \text{m/s}^2$ à $9{,}0\ \text{m/s}$. Que vaut-elle (i) à
+      $18\ \text{m/s}$ sur ce même tremplin, puis (ii) à $18\ \text{m/s}$
+      sur un tremplin de rayon $R = 10\ \text{m}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $16{,}2\ \text{m/s}^2$, puis $32{,}4\ \text{m/s}^2$.
+        correct: true
+      - id: B
+        text: >-
+          $8{,}10\ \text{m/s}^2$, puis $16{,}2\ \text{m/s}^2$.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          Doubler la vitesse ne double pas la composante normale de
+          l'accélération, il la quadruple : elle varie comme le carré de la
+          vitesse, pas comme la vitesse elle-même.
+      - id: C
+        text: >-
+          $16{,}2\ \text{m/s}^2$, puis $8{,}10\ \text{m/s}^2$.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          Le rayon est au dénominateur de $v^2/R$, pas au numérateur : un
+          tremplin plus serré (rayon plus petit) réclame une composante
+          normale plus grande, pas plus petite.
+      - id: D
+        text: >-
+          $16{,}2\ \text{m/s}^2$, puis $64{,}8\ \text{m/s}^2$.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          Le carré porte sur la vitesse seule : diviser le rayon par deux
+          double la composante normale, il ne la quadruple pas. $v^2/R$
+          n'élève pas $R$ au carré.
+    correct_feedback: >
+      La composante normale de l'accélération vaut $v^2/R$ : elle varie
+      comme le carré de la vitesse et comme l'inverse du rayon. Un contrôle
+      simple, sans division : le produit $a_N \times R$ vaut $v^2$ dans les
+      deux cas, soit $324$.
+    solution: |
+      **La relation.** $a_N = \dfrac{v^2}{R}$, où $R$ est le rayon du
+      tremplin.
+
+      **(i) Même tremplin, vitesse doublée.**
+      $$a_N = \frac{18^2}{20} = \frac{324}{20} = 16{,}2\ \text{m/s}^2$$
+      quatre fois la valeur à $9{,}0\ \text{m/s}$ ($4{,}05 \times 4 =
+      16{,}2$), parce que la vitesse intervient au carré.
+
+      **(ii) Même vitesse, rayon divisé par deux.**
+      $$a_N = \frac{18^2}{10} = \frac{324}{10} = 32{,}4\ \text{m/s}^2$$
+      le double de (i), parce que le rayon est au dénominateur.
+
+      **Vérification.** $a_N \times R$ vaut $324$ dans les deux cas,
+      exactement $v^2$.
+
+  - id: LDN-36
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+    stem: >
+      Une voiture franchit le sommet d'un dos d'âne dont le rayon de
+      courbure vaut $R = 50\ \text{m}$, à la vitesse constante de
+      $20\ \text{m/s}$. Au sommet, quelle est la direction de la composante
+      normale de son accélération, et quelle est sa valeur ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Vers le bas, droit vers le centre de courbure ;
+          $a_N = v^2/R = 8{,}0\ \text{m/s}^2$.
+        correct: true
+      - id: B
+        text: >-
+          Vers le haut, comme la route qui pousse la voiture ;
+          $a_N = 8{,}0\ \text{m/s}^2$.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          Le vecteur unitaire normal ne pointe ni « vers le haut » ni « du
+          côté de la route » : il pointe vers le centre de courbure,
+          c'est-à-dire du côté concave de la trajectoire. Au sommet d'une
+          bosse, ce centre est en dessous de la route, pas au-dessus.
+      - id: C
+        text: >-
+          Nulle, car la vitesse de la voiture reste constante au passage du
+          sommet.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          La norme de la vitesse est constante, mais sa direction ne l'est
+          pas : au sommet, la voiture passe de « monter » à « descendre ».
+          C'est ce changement de direction que mesure la composante normale
+          de l'accélération, non nulle même à vitesse tenue.
+      - id: D
+        text: >-
+          Vers le bas, vers le centre de courbure ;
+          $a_N = v/R = 0{,}40\ \text{m/s}^2$.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          $v/R$ n'est même pas une accélération : son unité est celle de
+          l'inverse d'un temps, pas celle d'une accélération. C'est
+          $v^2/R$, avec la vitesse au carré, qui donne des mètres par
+          seconde au carré.
+    correct_feedback: >
+      Au sommet d'un dos d'âne, le centre de courbure de la trajectoire est
+      sous la route : la composante normale de l'accélération y pointe vers
+      le bas, avec $a_N = v^2/R = 20^2/50 = 8{,}0\ \text{m/s}^2$.
+    solution: |
+      **Où est le centre de courbure.** Au sommet d'une bosse, la
+      trajectoire est concave vers le bas : son centre de courbure se
+      trouve sous la route, pas au-dessus. Le vecteur unitaire normal
+      pointe toujours vers ce centre.
+
+      **Le calcul.**
+      $$a_N = \frac{v^2}{R} = \frac{20^2}{50} = \frac{400}{50} = 8{,}0\ \text{m/s}^2$$
+
+      **Contrôle dimensionnel.** $v/R$ donnerait
+      $\mathrm{m\,s^{-1}}/\mathrm{m} = \mathrm{s^{-1}}$, l'inverse d'un
+      temps — pas une accélération. Seul $v^2/R$ a la bonne dimension,
+      $\mathrm{L\,T^{-2}}$.
+
+  - id: LDN-37
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+    stem: >
+      Sur la partie rectiligne inclinée de sa piste, un motard accélère
+      ($dv/dt > 0$) ; plus loin, sur une portion horizontale, il freine
+      ($dv/dt < 0$). Dans les deux cas, on calcule le produit scalaire
+      $\vec a\cdot\vec v$. Que peut-on en dire ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\vec a\cdot\vec v$ est positif quand la vitesse croît, négatif
+          quand elle diminue, quel que soit l'axe choisi.
+        correct: true
+      - id: B
+        text: >-
+          $\vec a\cdot\vec v$ est toujours positif, puisque le
+          motard avance dans les deux cas.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          $\vec a\cdot\vec v$ ne dit pas dans quel sens on avance : il dit
+          si la norme de la vitesse grandit ou diminue. Il vaut
+          $\dfrac{dv}{dt}\,v$, avec $v>0$ : son signe est celui de $dv/dt$,
+          pas celui du déplacement.
+      - id: C
+        text: >-
+          Au freinage, le signe dépend de l'axe choisi : orienté vers
+          l'arrière, cet axe rend $\vec a\cdot\vec v$ positif.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          C'est le signe d'une composante qui dépend de l'axe choisi ; un
+          produit scalaire de deux vecteurs n'en dépend pas. C'est
+          exactement pour cette raison que le programme demande ce produit
+          plutôt qu'un signe de composante.
+      - id: D
+        text: >-
+          Au freinage, $\vec a\cdot\vec v$ est nul, car $\vec a$ et
+          $\vec v$ sont de sens opposés.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          Le produit scalaire s'annule quand les deux vecteurs sont
+          perpendiculaires, pas quand ils sont de sens opposés. De sens
+          opposés, il est au contraire négatif, et sa valeur absolue est
+          maximale.
+    correct_feedback: >
+      $\vec a\cdot\vec v = \dfrac{dv}{dt}\,v$, car la composante normale de
+      $\vec a$ est perpendiculaire à $\vec v$ et disparaît du produit.
+      Comme $v>0$ toujours, le signe de $\vec a\cdot\vec v$ est celui de
+      $dv/dt$ : positif à l'accélération, négatif au freinage — et ceci ne
+      dépend du choix d'aucun axe.
+    solution: |
+      **Le produit scalaire, terme à terme.** Dans une base liée à la
+      trajectoire, $\vec a = \dfrac{dv}{dt}\vec u_T + \dfrac{v^2}{R}\vec
+      u_N$ et $\vec v = v\,\vec u_T$. Comme $\vec u_N$ est perpendiculaire
+      à $\vec u_T$ :
+      $$\vec a\cdot\vec v = \left(\frac{dv}{dt}\vec u_T + \frac{v^2}{R}\vec u_N\right)\cdot\left(v\,\vec u_T\right) = \frac{dv}{dt}\,v$$
+
+      **Le signe.** Avec $v>0$ toujours, le signe de $\vec a\cdot\vec v$
+      est exactement celui de $dv/dt$ : positif à la montée en vitesse,
+      négatif au freinage, nul à vitesse tenue.
+
+      **Pourquoi ce produit, et pas un signe de composante.** Une
+      composante de $\vec a$ change de signe selon l'axe choisi pour la
+      projeter ; le produit scalaire $\vec a\cdot\vec v$, lui, ne dépend
+      d'aucun axe — c'est ce qui en fait un critère fiable pour lire la
+      nature d'un mouvement.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après LDN-28 à LDN-33. Dix familles siégeaient sous le
 # plancher de 3 items du banc : la relativité du mouvement, le référentiel
@@ -2487,7 +2800,7 @@ coverage_summary:
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
     web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
-    mc.physics.pc_lois_newton.force-entretient-mouvement:                { count: 6, items: [LDN-1, LDN-7, LDN-8, LDN-9, LDN-13, LDN-25] }
+    mc.physics.pc_lois_newton.force-entretient-mouvement:                { count: 7, items: [LDN-1, LDN-7, LDN-8, LDN-9, LDN-13, LDN-25, LDN-34] }
     mc.physics.pc_lois_newton.impetus-elan-stocke:                       { count: 3, items: [LDN-2, LDN-7, LDN-8] }
     mc.physics.pc_lois_newton.force-verticale-composante-horizontale:    { count: 3, items: [LDN-2, LDN-8, LDN-30] }
     mc.physics.pc_lois_newton.force-liee-a-vitesse:                      { count: 3, items: [LDN-1, LDN-3, LDN-14] }
@@ -2506,20 +2819,23 @@ coverage_summary:
     mc.physics.pc_lois_newton.projection-plan-incline:                   { count: 3, items: [LDN-6, LDN-23, LDN-24] }
     mc.physics.pc_lois_newton.frottement-mal-traite:                     { count: 5, items: [LDN-6, LDN-13, LDN-20, LDN-25, LDN-26] }
     mc.physics.pc_lois_newton.frottement-absent-accelere:                { count: 3, items: [LDN-7, LDN-29, LDN-31] }
-  total_items: 33
+    mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre:      { count: 4, items: [LDN-34, LDN-35, LDN-36, LDN-37] }
+  total_items: 37
   floor: 3
   floor_met: true
   ramp_coverage:
     R0: 3
     R1: 5
     R2: 4
-    R3: 4
+    R3: 6
     R4: 3
     R5: 4
     R6: 4
     R7: 3
-    R8: 3
+    R8: 5
   honest_state: >-
-    Les dix-neuf misconceptions déclarées sont couvertes, aucune sous le
+    Les vingt misconceptions déclarées sont couvertes, aucune sous le
     plancher. Quatorze y siègent EXACTEMENT (3 items) : la marge est nulle
-    et tout retrait d'item la casse.
+    et tout retrait d'item la casse. La vingtième,
+    acceleration-traitee-comme-un-nombre (2026-09-24, le tremplin
+    circulaire), en a quatre : marge 1.

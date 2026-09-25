@@ -336,7 +336,7 @@ Avant de lire la suite, mets cette règle à l'épreuve — et devine ce qu'elle
 
 ### Première conséquence : la norme de la vitesse ne change pas
 
-Voici le point qui rend ce mouvement complètement différent de celui du projectile. Décompose l'accélération dans la base de Freinet, comme au chapitre des lois de Newton — une composante tangentielle (le long de la vitesse) et une composante normale (perpendiculaire, tournée vers l'intérieur de la courbe, où $R$ désigne le rayon de courbure) :
+Voici le point qui rend ce mouvement complètement différent de celui du projectile. Décompose l'accélération dans la base de Freinet, comme au chapitre 4 de la leçon « Lois de Newton », sur le tremplin circulaire — une composante tangentielle (le long de la vitesse) et une composante normale (perpendiculaire, tournée vers l'intérieur de la courbe, où $R$ désigne le rayon de courbure) :
 
 $$\vec{a} = \frac{dv}{dt}\,\vec{u}_T + \frac{v^2}{R}\,\vec{u}_N$$
 

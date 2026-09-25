@@ -198,6 +198,11 @@ const HORS_CHAMP = new Set([
   // nombres de L = 2λD/a refaits, la tache lue contre la règle ; deux passages
   // en CI (job `scene-champ`) ; `node scripts/scene-diffraction.mjs --essai-rouge`.
   "scene-diffraction.mjs",
+  // scene-tremplin, même raison : le tremplin circulaire (pc/lois-de-newton
+  // R3), le cinquième manipulable PLAN — la base de Freinet sur la piste du
+  // sujet 2019, la piste et les flèches lues aux pixels ; deux passages en CI
+  // (job `scene-champ`) ; `node scripts/scene-tremplin.mjs --essai-rouge`.
+  "scene-tremplin.mjs",
   // scene-ergonomie lance SEULE, sur les neuf scènes, la famille « ergonomie »
   // que chaque porte de scène lance déjà à sa fin (ADR 0035 : une porte prise
   // dans un agrégat doit pouvoir être lancée seule) : build ET navigateur. Pas

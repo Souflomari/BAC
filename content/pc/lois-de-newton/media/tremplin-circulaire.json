@@ -1,0 +1,325 @@
+{
+  "slug": "tremplin-circulaire",
+  "tool": "scene2d",
+  "type": "manipulable",
+  "scene": "tremplin-circulaire",
+  "title_fr": "Le tremplin circulaire",
+  "caption_fr": "La moto du sujet national de 2019 sur sa piste : une droite, puis un tremplin circulaire. Règle la vitesse, le rayon, le pilotage — et regarde ce que devient son vecteur accélération. À chaque étape, tu paries d'abord. Le sujet ne donne pas le rayon du tremplin : 20 m est choisi, parce qu'avec les gaz la moto arrive alors en C à 20,3 m·s⁻¹, à 1,5 % des 20 m·s⁻¹ que le sujet donne en C.",
+  "boundary": "Cadre (mécanique → lois_de_newton, 2ème Bac PC/SM) : « vecteur vitesse / vecteur accélération (repère de Freinet) » ; les coordonnées de l'accélération dans la base de Freinet ; le produit $\\vec a\\cdot\\vec v$ pour la nature du mouvement. La scène est CINÉMATIQUE : posée avant l'énoncé de la deuxième loi, elle ne dessine, ne nomme ni ne mesure aucune force, aucune masse. Hors de la scène : le saut après C (chapitre voisin), toute force (centripète comprise), toute énergie, toute grandeur angulaire, la gravitation et les satellites, les équations différentielles, le trièdre et la torsion, les frottements, tout graphe, tout angle autre que 10°, 18° et 28°.",
+  "fit_caveat": "1. Deux échelles : une pour les longueurs de la piste, une pour les accélérations ; chacune a son témoin sur la scène, et une flèche d'accélération ne se compare jamais à une longueur de piste. 2. $\\vec u_T$ et $\\vec u_N$ sont unitaires : leur longueur est une convention, elle ne mesure rien ; et sur la partie droite, $\\vec u_N$ n'a pas de sens — la trajectoire ne tourne pas. 3. Le motard est réduit à son centre d'inertie ; aucune masse n'intervient. 4. Le raccordement en B est idéalisé : la piste passe d'un coup de la droite au cercle ; sur une vraie piste, le passage est adouci.",
+  "fallback_note": "Sans JavaScript et à l'impression, le panneau disparaît. La figure vecteur-vitesse-tangente (chapitre 2) couvre la construction du vecteur vitesse tangent à une trajectoire courbe ; aucune figure du corpus ne montre le vecteur accélération sur une trajectoire courbe, ni ses deux composantes, ni le produit a·v — c'est ce que le tremplin apporte, et les paragraphes qui le suivent l'écrivent en toutes lettres.",
+  "pedagogy_wiring": {
+    "why_manipulable": "Le fait à montrer est qu'un NOMBRE ne bouge pas pendant qu'un VECTEUR tourne : le compteur reste à 18,0 et une flèche de 16,2 m·s⁻² apparaît en B. Il faut voir le nombre rester fixe pendant la course, et la composante normale naître en franchissant B ; puis régler la vitesse, le rayon et le pilotage pour construire la relation entière, et lire la nature du mouvement sur a·v.",
+    "predict_then_reveal": "Chaque étape pose une question ; l'élève parie AVANT toute flèche d'accélération (elle n'a aucune existence d'énoncé), puis lance la moto : la course s'arrête en B, la flèche y apparaît, et le verdict suit ; les réglages de l'étape s'ouvrent ensuite.",
+    "misconceptions": [
+      "mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre",
+      "mc.physics.pc_lois_newton.force-entretient-mouvement",
+      "mc.physics.pc_lois_newton.force-liee-a-vitesse",
+      "mc.physics.pc_lois_newton.resultante-mal-composee"
+    ]
+  },
+  "spec_ref": "content/pc/lois-de-newton/spec-scene-tremplin.md",
+  "adr_ref": "docs/decisions/0041-scenes-3d-de-premiere-partie.md",
+  "etapes": [
+    {
+      "id": "le-virage-a-vitesse-tenue",
+      "titre": "Le tremplin, à vitesse tenue",
+      "consigne": "La piste du sujet national de 2019, vue de côté : une droite qui descend à 10°, raccordée en B à un **tremplin circulaire de 20 mètres de rayon** qui relève la piste jusqu'au point C, où elle s'arrête. Le motard aborde le tremplin à **18,0 mètres par seconde** et **tient exactement cette vitesse** : le compteur affichera 18,0 partout. La moto est réduite à un point ; on y a dessiné $\\vec u_T$, le vecteur **unitaire** tangent à la piste, dans le sens du mouvement — sa longueur est une convention, elle ne mesure rien.",
+      "pari": {
+        "question": "Quand la moto arrivera en B, à l'entrée du tremplin, son vecteur **accélération**…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "nulle",
+            "texte": "sera **nul** : la vitesse ne change pas, donc il n'y a pas d'accélération",
+            "juste": false,
+            "retour": "Regarde le compteur pendant toute la course : **18,0** du début à la fin, et pourtant une flèche est apparue en B. Elle mesure **16,2 m·s⁻²** — plus de **trois fois et demie** l'accélération que la moto avait sur la partie droite, dans le sujet. Ce qui ne change pas, c'est le **nombre** 18. Le **vecteur** vitesse, lui, va tourner de **28°** entre B et C : même longueur, autre direction. Et l'accélération mesure la variation du **vecteur**, pas celle du nombre.",
+            "misconception": "mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre"
+          },
+          {
+            "id": "vers-lavant",
+            "texte": "sera dirigé **vers l'avant**, dans le sens du mouvement : il faut bien quelque chose pour entraîner la moto dans le virage",
+            "juste": false,
+            "retour": "Le compteur ne bouge pas : 18,0 à l'entrée, 18,0 au milieu, 18,0 en C. Une accélération dirigée vers l'avant **ferait grandir la vitesse** — c'est sa définition même. La flèche apparue en B est **perpendiculaire** à la piste : elle n'entraîne rien, elle **fait tourner**. Fais glisser la moto sur les quatre repères, et lis le compteur à chacun.",
+            "misconception": "mc.physics.pc_lois_newton.force-entretient-mouvement"
+          },
+          {
+            "id": "vers-le-centre",
+            "texte": "sera **perpendiculaire** à la piste, dirigé vers l'**intérieur** du virage",
+            "juste": true,
+            "retour": "Oui. La flèche pointe vers le **centre** du tremplin — le centre du cercle dont l'arc B-C est une portion — et vaut **16,2 m·s⁻²**. C'est la **composante normale** de l'accélération, $a_N$, portée par le vecteur unitaire $\\vec u_N$ qui va, par définition, **vers le centre de courbure**. Elle n'existe que là où la trajectoire tourne : sur la droite, pendant la course, aucune flèche n'est apparue."
+          },
+          {
+            "id": "vers-lexterieur",
+            "texte": "sera perpendiculaire à la piste, dirigé vers l'**extérieur** du virage : dans un virage, on est projeté vers l'extérieur",
+            "juste": false,
+            "retour": "La sensation est réelle ; la conclusion est retournée. Entre B et C, la piste s'incurve **vers le haut**, du côté du centre du cercle. Une accélération dirigée vers l'extérieur courberait la trajectoire **de l'autre côté** : la moto quitterait la piste au lieu de la suivre. L'accélération pointe du côté vers lequel la trajectoire **tourne** — c'est ce que « vers le centre de courbure » veut dire. Ce que tu sens vers l'extérieur, c'est ton propre corps qui continue **tout droit** pendant que la moto tourne sous toi : la balle du bus qui freine, au chapitre 2.",
+            "misconception": "mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre"
+          }
+        ]
+      },
+      "suite": "Promène la moto sur les quatre repères. Sur la droite : aucune flèche, et « pas de courbure ». Dans l'arc : **16,2** partout, toujours vers le centre — et la flèche tourne avec la moto.",
+      "controles": [
+        "position"
+      ],
+      "lectures": [
+        "vitesse",
+        "rayon",
+        "acceleration-normale"
+      ],
+      "etat": {
+        "v_ms": "18",
+        "R_m": "20",
+        "regime": "tenue",
+        "repere": "approche",
+        "reference": "aucune"
+      },
+      "etat_revele": {
+        "repere": "entree"
+      }
+    },
+    {
+      "id": "deux-fois-plus-vite",
+      "titre": "Deux fois plus vite, même tremplin",
+      "consigne": "Même tremplin — 20 mètres de rayon, **on n'y touchera plus** — et le motard tient toujours sa vitesse. Mais il aborde le virage **deux fois moins vite** : **9,0 mètres par seconde**. En B, la flèche vers le centre mesure alors **4,05 m·s⁻²**. On va le renvoyer à **18,0**, deux fois plus vite, sur le même tremplin.",
+      "pari": {
+        "question": "À 18,0 m·s⁻¹ au lieu de 9,0, la flèche vers le centre mesurera…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "deux-fois",
+            "texte": "**8,10 m·s⁻²** — deux fois plus : l'accélération suit la vitesse",
+            "juste": false,
+            "retour": "La flèche affiche **16,2**, pas 8,10 : **quatre fois** plus, pas deux. Doubler la vitesse agit **deux fois** : la moto passe deux fois plus vite par chaque point du virage, **et** sa direction doit tourner deux fois plus vite aussi. Deux effets qui se multiplient : c'est la **vitesse au carré** qui compte, et $2^2 = 4$.",
+            "misconception": "mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre"
+          },
+          {
+            "id": "quatre-fois",
+            "texte": "**16,2 m·s⁻²** — quatre fois plus",
+            "juste": true,
+            "retour": "Oui, et retiens la forme exacte de ce résultat : c'est **$v$ au carré** qui est au numérateur. Doubler la vitesse **quadruple** la composante normale. Parcours les trois vitesses sans toucher au tremplin : **4,05**, **7,20**, **16,2** — et compare-les aux carrés 81, 144, 324. Les deux suites sont dans le même rapport."
+          },
+          {
+            "id": "inchangee",
+            "texte": "**4,05 m·s⁻²** — inchangée : c'est le virage qui décide, et il n'a pas changé",
+            "juste": false,
+            "retour": "Le virage n'a pas changé, et la flèche a changé quand même : **4,05** puis **16,2**. Le virage fixe la **forme** de la trajectoire ; la vitesse décide **à quelle cadence** on la parcourt. Passe les trois vitesses à tremplin fixe et lis : 4,05 · 7,20 · 16,2.",
+            "misconception": "mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre"
+          },
+          {
+            "id": "moitie",
+            "texte": "**2,03 m·s⁻²** — deux fois moins : plus on va vite, **moins on a le temps** de tourner",
+            "juste": false,
+            "retour": "« Moins de temps » est vrai, et il joue **contre** ton intuition : c'est justement parce que le même changement de direction doit se faire en **deux fois moins de temps** que l'accélération est plus grande. Une accélération, c'est *par seconde* — moins de secondes pour la même rotation, donc davantage à chaque seconde. La flèche affiche **16,2**.",
+            "misconception": "mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre"
+          }
+        ]
+      },
+      "suite": "Repasse les trois vitesses sans toucher au tremplin : 9,0 · 12,0 · 18,0 donnent **4,05** · **7,20** · **16,2**. Écris les carrés à côté : 81 · 144 · 324. Les deux suites sont dans le même rapport, exactement.",
+      "controles": [
+        "vitesse"
+      ],
+      "lectures": [
+        "vitesse",
+        "rayon",
+        "acceleration-normale"
+      ],
+      "etat": {
+        "v_ms": "9",
+        "R_m": "20",
+        "regime": "tenue",
+        "repere": "approche",
+        "reference": "depart"
+      },
+      "etat_revele": {
+        "v_ms": "18",
+        "repere": "entree"
+      }
+    },
+    {
+      "id": "deux-fois-plus-serre",
+      "titre": "Deux fois plus serré, même vitesse",
+      "consigne": "Le motard revient à **18,0 mètres par seconde** et tient sa vitesse — **on n'y touchera plus**. C'est le tremplin qui change : il est maintenant très ouvert, **30 mètres de rayon**, et en B la flèche vers le centre mesure **10,8 m·s⁻²**. On va le **resserrer à 15 mètres** : deux fois plus serré, à la même vitesse.",
+      "pari": {
+        "question": "Sur un tremplin deux fois plus serré, à la même vitesse, la flèche vers le centre mesurera…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "moitie",
+            "texte": "**5,40 m·s⁻²** — deux fois moins : un virage plus serré, c'est moins de place, donc moins d'accélération",
+            "juste": false,
+            "retour": "La flèche affiche **21,6** : deux fois **plus**. Parcours les quatre tremplins à 18,0 m·s⁻¹ : 32,4 · 21,6 · 16,2 · 10,8 quand le rayon va de 10 à 30 mètres. Plus serré, plus de flèche : le virage le plus serré demande le plus de changement de direction par mètre parcouru.",
+            "misconception": "mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre"
+          },
+          {
+            "id": "double",
+            "texte": "**21,6 m·s⁻²** — deux fois plus",
+            "juste": true,
+            "retour": "Oui, et la relation est maintenant complète, puisqu'on a fait varier les deux grandeurs : $$a_N = \\dfrac{v^2}{R}$$ La vitesse **au carré** au numérateur, le **rayon de courbure** au dénominateur. Vérifie-la sans division : multiplie les deux nombres affichés. $10{,}8\\times30 = 324$ ; $21{,}6\\times15 = 324$. Et $324$, c'est $18^2$ — le carré de la vitesse au compteur."
+          },
+          {
+            "id": "quatre-fois",
+            "texte": "**43,2 m·s⁻²** — quatre fois plus : comme pour la vitesse, l'effet est au carré",
+            "juste": false,
+            "retour": "Le carré existe, mais pas là. La flèche affiche **21,6**, exactement le double. Contrôle-le sur les tremplins de 10 et 20 mètres : **32,4** et **16,2**, un facteur deux, pas quatre. Le carré porte sur la **vitesse** ; le rayon agit au premier degré.",
+            "misconception": "mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre"
+          },
+          {
+            "id": "inchangee",
+            "texte": "**10,8 m·s⁻²** — inchangée : la vitesse n'a pas bougé, et c'est elle qui décide",
+            "juste": false,
+            "retour": "La vitesse n'a pas bougé, et la flèche a changé quand même : **10,8** puis **21,6**. À vitesse égale, c'est la **forme** du virage qui décide de combien la direction doit tourner à chaque mètre. Parcours les quatre tremplins : 32,4 · 21,6 · 16,2 · 10,8.",
+            "misconception": "mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre"
+          }
+        ]
+      },
+      "suite": "Parcours les quatre tremplins à 18,0 m·s⁻¹ et multiplie chaque fois les deux nombres affichés : $32{,}4\\times10$ ; $21{,}6\\times15$ ; $16{,}2\\times20$ ; $10{,}8\\times30$. Toujours **324**, le carré de 18.",
+      "controles": [
+        "rayon"
+      ],
+      "lectures": [
+        "vitesse",
+        "rayon",
+        "acceleration-normale",
+        "aN-fois-R"
+      ],
+      "etat": {
+        "v_ms": "18",
+        "R_m": "30",
+        "regime": "tenue",
+        "repere": "approche",
+        "reference": "depart"
+      },
+      "etat_revele": {
+        "R_m": "15",
+        "repere": "entree"
+      }
+    },
+    {
+      "id": "gaz-ou-frein",
+      "titre": "Il garde les gaz",
+      "consigne": "Retour au tremplin de **20 mètres**, abordé à **18,0 m·s⁻¹**, avec sa flèche de **16,2 m·s⁻²** tournée vers le centre. Jusqu'ici le motard **tenait** sa vitesse. Cette fois il **garde les gaz** : dans le virage, sa vitesse gagne **4,50 mètres par seconde chaque seconde** — exactement ce qu'elle gagnait sur la partie droite, dans le sujet.",
+      "pari": {
+        "question": "Avec les gaz, à l'entrée du tremplin, le vecteur accélération…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "somme-des-nombres",
+            "texte": "pointe toujours **exactement vers le centre**, mais plus long : **20,7 m·s⁻²**, c'est-à-dire $16{,}2 + 4{,}5$",
+            "juste": false,
+            "retour": "Deux vecteurs qui ne sont pas dans la même direction ne s'additionnent pas comme deux nombres. Ceux-ci sont **perpendiculaires** : 16,2 vers le centre, 4,50 vers l'avant. La scène dessine le rectangle qu'ils ferment ; sa diagonale mesure $\\sqrt{16{,}2^2 + 4{,}50^2} = 16{,}8$ m·s⁻² — **moins** que ta somme, et **pas dans la même direction** : elle penche vers l'avant.",
+            "misconception": "mc.physics.pc_lois_newton.resultante-mal-composee"
+          },
+          {
+            "id": "bascule-vers-lavant",
+            "texte": "**bascule vers l'avant** : il garde sa composante vers le centre (**16,2**) et gagne une composante dans le sens du mouvement (**4,50**) ; l'ensemble mesure **16,8 m·s⁻²**",
+            "juste": true,
+            "retour": "Oui — et voici la relation entière, maintenant qu'on a fait varier les trois choses : $$\\vec a = \\dfrac{dv}{dt}\\,\\vec u_T + \\dfrac{v^2}{R}\\,\\vec u_N$$ Une composante **tangentielle**, $dv/dt$, qui dit comment la vitesse **grandit ou diminue** ; une composante **normale**, $v^2/R$, qui dit comment la direction **tourne**. La norme vaut $\\sqrt{4{,}50^2+16{,}2^2} = 16{,}8$. Une lecture neuve apparaît : $\\vec a\\cdot\\vec v = +81{,}0$ m²·s⁻³. Elle vaut $\\frac{dv}{dt}\\times v$ — la composante normale **disparaît du produit**, parce qu'elle est perpendiculaire à la vitesse. Son signe donne la **nature** du mouvement : positif, **accéléré**."
+          },
+          {
+            "id": "tout-vers-lavant",
+            "texte": "se couche **entièrement** dans le sens du mouvement : **4,50 m·s⁻²**, puisque c'est la vitesse qui augmente",
+            "juste": false,
+            "retour": "La composante vers l'avant est juste — c'est bien 4,50 — mais elle n'a pas chassé l'autre. Le virage n'a pas disparu parce qu'on a mis les gaz : le rayon est toujours de 20 mètres, la direction doit toujours tourner. La flèche vers le centre est toujours là, à **16,2**, et la scène dessine les deux.",
+            "misconception": "mc.physics.pc_lois_newton.force-liee-a-vitesse"
+          },
+          {
+            "id": "inchangee",
+            "texte": "**ne change pas** : **16,2 m·s⁻²** vers le centre — c'est le virage qui décide de l'accélération",
+            "juste": false,
+            "retour": "À l'étape 1, la vitesse ne changeait pas et une flèche est apparue : la **direction** qui tourne compte. Ici, la **norme** change en plus, et elle compte tout autant. La flèche mesure maintenant **16,8** et **penche vers l'avant** : elle a gardé ses 16,2 vers le centre **et** gagné 4,50 vers l'avant. Les deux façons de changer s'ajoutent, comme deux côtés d'un rectangle.",
+            "misconception": "mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre"
+          }
+        ]
+      },
+      "suite": "Passe les trois pilotages sans rien toucher d'autre : gaz, vitesse tenue, freinage. La flèche penche en avant, se redresse vers le centre, penche en arrière ; $\\vec a\\cdot\\vec v$ vaut **+81,0**, **0**, **−81,0**. Et la composante vers le centre ne bouge d'aucun chiffre : **16,2** dans les trois cas.",
+      "controles": [
+        "pilotage"
+      ],
+      "lectures": [
+        "vitesse",
+        "rayon",
+        "acceleration-normale",
+        "acceleration-tangentielle",
+        "acceleration",
+        "produit-a-v",
+        "nature"
+      ],
+      "etat": {
+        "v_ms": "18",
+        "R_m": "20",
+        "regime": "tenue",
+        "repere": "approche",
+        "reference": "aucune"
+      },
+      "etat_revele": {
+        "regime": "gaz",
+        "repere": "entree"
+      }
+    },
+    {
+      "id": "libre",
+      "titre": "Tout s'ouvre : la nature du mouvement",
+      "consigne": "Dernière situation, puis tout s'ouvre. Le motard aborde le tremplin de **20 mètres** à **12,0 m·s⁻¹**, et il **freine** : sa vitesse perd **4,50 mètres par seconde chaque seconde** — l'intensité des gaz de l'étape précédente, dans l'autre sens.",
+      "pari": {
+        "question": "À l'entrée du tremplin, la **nature** de son mouvement et la **norme** de son accélération sont…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "retarde-8-49",
+            "texte": "**retardé** ; $\\|\\vec a\\| = 8{,}49$ m·s⁻²",
+            "juste": true,
+            "retour": "Oui, et les deux morceaux comptent. La **nature** : $\\vec a\\cdot\\vec v = -4{,}50\\times12{,}0 = -54{,}0$ m²·s⁻³, négatif, donc **retardé** — la composante normale n'entre pas dans ce produit. La **norme** : $\\sqrt{4{,}50^2 + 7{,}20^2} = 8{,}49$ m·s⁻². Refais maintenant le geste qui résume le chapitre : remets les **gaz** au même endroit. La norme reste **8,49**, et $\\vec a\\cdot\\vec v$ passe à **+54,0**. Deux mouvements de natures opposées, la **même** norme d'accélération : seul le produit $\\vec a\\cdot\\vec v$ les sépare."
+          },
+          {
+            "id": "retarde-4-50",
+            "texte": "**retardé** ; $\\|\\vec a\\| = 4{,}50$ m·s⁻² — c'est le freinage qui donne l'accélération",
+            "juste": false,
+            "retour": "La nature est juste, la norme ne l'est pas : la scène affiche **8,49**. 4,50 n'est qu'**une** des deux composantes, celle qui est le long du mouvement. L'autre, **7,20** vers le centre, existe aussi, et elle est même **plus grande**. Un vecteur a une norme, pas un signe : $\\sqrt{4{,}50^2+7{,}20^2} = 8{,}49$. Le signe, lui, vit dans $\\vec a\\cdot\\vec v$, et c'est lui seul qui dit « retardé ».",
+            "misconception": "mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre"
+          },
+          {
+            "id": "accelere-8-49",
+            "texte": "**accéléré** ; $\\|\\vec a\\| = 8{,}49$ m·s⁻² — l'accélération n'est pas nulle, donc le mouvement est accéléré",
+            "juste": false,
+            "retour": "La norme est juste, la nature ne l'est pas. « Accéléré » ne veut pas dire « qui a une accélération » : **tout** mouvement courbe en a une. Cela veut dire « **dont la vitesse grandit** », et c'est le signe de $\\vec a\\cdot\\vec v$ qui le dit : ici **−54,0**, donc **retardé** — le compteur est passé de 15,0 à 12,0 pendant la course. Et à vitesse **tenue** dans le virage, $\\vec a\\cdot\\vec v = 0$ et $\\|\\vec a\\| = 7{,}20$ : mouvement **uniforme**, accélération **non nulle**.",
+            "misconception": "mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre"
+          },
+          {
+            "id": "retarde-2-70",
+            "texte": "**retardé** ; $\\|\\vec a\\| = 2{,}70$ m·s⁻² — on retranche le freinage de la composante vers le centre : $7{,}20 - 4{,}50$",
+            "juste": false,
+            "retour": "On ne retranche que ce qui est sur la **même** droite. Ces deux composantes sont **perpendiculaires** : l'une ne peut ni renforcer ni annuler l'autre. La scène dessine le rectangle qu'elles ferment ; sa diagonale vaut $\\sqrt{7{,}20^2+4{,}50^2} = 8{,}49$ — plus grande que chacune des deux. Une diagonale est toujours plus longue qu'un côté.",
+            "misconception": "mc.physics.pc_lois_newton.resultante-mal-composee"
+          }
+        ]
+      },
+      "suite": "Trois vérifications. Tremplin et vitesse fixes : la norme est la même aux gaz et au frein, $\\vec a\\cdot\\vec v$ change de signe. Vitesse tenue : $\\vec a\\cdot\\vec v = 0$, et la flèche n'est jamais nulle dans l'arc. Sur la droite : la composante vers le centre est nulle, à tous les réglages.",
+      "controles": [
+        "position",
+        "vitesse",
+        "rayon",
+        "pilotage"
+      ],
+      "lectures": [
+        "vitesse",
+        "rayon",
+        "acceleration-normale",
+        "acceleration-tangentielle",
+        "acceleration",
+        "produit-a-v",
+        "nature"
+      ],
+      "etat": {
+        "v_ms": "12",
+        "R_m": "20",
+        "regime": "freinage",
+        "repere": "approche",
+        "reference": "aucune"
+      },
+      "etat_revele": {
+        "repere": "entree"
+      }
+    }
+  ]
+}

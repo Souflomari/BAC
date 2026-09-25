@@ -570,5 +570,61 @@
       "diametre-deduit",
       "theta-mesure"
     ]
+  },
+  "tremplin-circulaire": {
+    "temps": false,
+    "course": true,
+    "dimension": "2d",
+    "controles": [
+      "position",
+      "vitesse",
+      "rayon",
+      "pilotage"
+    ],
+    "etat": [
+      "v_ms",
+      "R_m",
+      "regime",
+      "repere",
+      "reference"
+    ],
+    "valeurs": {
+      "v_ms": [
+        "9",
+        "12",
+        "18"
+      ],
+      "R_m": [
+        "10",
+        "15",
+        "20",
+        "30"
+      ],
+      "regime": [
+        "gaz",
+        "tenue",
+        "freinage"
+      ],
+      "repere": [
+        "approche",
+        "entree",
+        "milieu",
+        "sortie"
+      ],
+      "reference": [
+        "aucune",
+        "depart"
+      ]
+    },
+    "lectures": [
+      "vitesse",
+      "rayon",
+      "acceleration-normale",
+      "acceleration-tangentielle",
+      "acceleration",
+      "produit-a-v",
+      "nature",
+      "aN-fois-R"
+    ]
   }
 }

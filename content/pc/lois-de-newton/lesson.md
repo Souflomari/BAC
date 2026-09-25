@@ -120,6 +120,62 @@ $$\vec{a}_G = \frac{d\vec{v}_G}{dt}$$
 
 $\vec{a}_G$ mesure la façon dont $\vec{v}_G$ change — en norme (le solide accélère ou ralentit) et/ou en direction (le solide tourne). Si $\vec{v}_G$ est constant, alors $\vec{a}_G = \vec{0}$ : c'est exactement le principe d'inertie, vu comme un cas particulier de ce qu'on énonce maintenant.
 
+### Comment un vecteur vitesse change — la base de Freinet
+
+$\vec{a}_G = d\vec{v}_G/dt$ mesure la variation d'un **vecteur**, pas d'un nombre. La scène qui suit reprend la piste du sujet national 2019 : une partie rectiligne inclinée, puis un tremplin circulaire, jusqu'au point C où la piste s'arrête. Une moto l'aborde à une vitesse donnée. Tu paries d'abord sur ce que devient $\vec{a}_G$ à l'entrée du virage ; la piste répond ensuite. Les lectures se font en $\text{m}\cdot\text{s}^{-1}$, en $\text{m}\cdot\text{s}^{-2}$, et en mètres.
+
+[[embed:tremplin-circulaire]]
+
+### Deux façons de changer, deux composantes
+
+Le vecteur vitesse s'écrit $\vec v = v\,\vec u_T$, où $\vec u_T$ est un vecteur **unitaire**, tangent à la trajectoire, dans le sens du mouvement — avec toujours $v > 0$. À côté de lui, un second vecteur unitaire $\vec u_N$, perpendiculaire à $\vec u_T$, dirigé vers le centre de courbure de la trajectoire — c'est-à-dire du côté vers lequel la trajectoire tourne, jamais « vers le haut », jamais « vers la route ». Le couple $(\vec u_T\,;\,\vec u_N)$ forme la **base de Freinet** : une base **mobile**, qui voyage avec le point et tourne avec la trajectoire.
+
+Dans cette base, l'accélération se décompose en deux termes :
+
+$$\vec{a} = \frac{dv}{dt}\,\vec{u}_T + \frac{v^2}{R}\,\vec{u}_N$$
+
+où $R$ est le rayon de courbure au point considéré.
+
+Deux cas limites éclairent la formule. Sur une **droite**, $R \to \infty$, donc $v^2/R \to 0$ : $\vec a$ est tout entier porté par $\vec u_T$. À l'inverse, quand la vitesse garde une norme **constante**, $dv/dt = 0$ : $\vec a$ devient purement normal, et surtout **non nul** — un mouvement circulaire uniforme est accéléré bien que la norme ne change pas.
+
+Un contrôle rapide confirme que $v^2/R$ est bien une accélération :
+
+$$\left[\frac{v^2}{R}\right] = \frac{(\text{L}\cdot\text{T}^{-1})^2}{\text{L}} = \text{L}\cdot\text{T}^{-2}$$
+
+soit des mètres par seconde carrée.
+
+(Un mot d'orthographe : les sujets écrivent souvent la base $(\vec u\,;\,\vec n)$ et les composantes $a_\tau$, $a_n$, et ils impriment presque toujours « Freinet » — du nom d'un pédagogue sans rapport — là où le mathématicien qui a construit cette base s'appelle en réalité Frenet. Les deux graphies circulent le jour de l'examen ; reconnais-les.)
+
+### La nature du mouvement : le signe de $\vec a\cdot\vec v$
+
+Le produit scalaire $\vec a\cdot\vec v$ tranche. Comme $\vec u_N$ est perpendiculaire à $\vec v$, la composante normale disparaît du produit :
+
+$$\vec a\cdot\vec v = \frac{dv}{dt}\,v$$
+
+Et comme $v > 0$ toujours, le signe de $\vec a\cdot\vec v$ est celui de $dv/dt$. D'où la règle : positif, le mouvement est **accéléré** ; négatif, il est **retardé** ; nul, il est **uniforme**.
+
+C'est ce qui coûte des points au bac : le signe d'une composante dépend de l'axe choisi pour projeter, alors que le signe de $\vec a\cdot\vec v$ ne dépend d'**aucun** axe. C'est pour ça que le programme demande ce produit, pas un signe lu au hasard d'une projection.
+
+Et **uniforme ne veut pas dire $\vec a = \vec 0$** : dans le tremplin, à vitesse tenue, $\vec a\cdot\vec v = 0$ alors que $\|\vec a\| = 16{,}2\ \text{m}\cdot\text{s}^{-2}$.
+
+### Exemple travaillé : le tremplin, gaz et freinage
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* retrouver à la main ce que la scène affiche, et voir ce qui change vraiment entre deux pilotages opposés.
+
+À l'entrée du tremplin ($R = 20\ \text{m}$), la moto file à $v = 18\ \text{m}\cdot\text{s}^{-1}$. **Gaz gardés**, $dv/dt = +4{,}5\ \text{m}\cdot\text{s}^{-2}$ :
+
+$$a_N = \frac{18^2}{20} = 16{,}2\ \text{m}\cdot\text{s}^{-2}$$
+
+$$\|\vec a\| = \sqrt{16{,}2^2 + 4{,}5^2} = \sqrt{282{,}69} = 16{,}8\ \text{m}\cdot\text{s}^{-2}$$
+
+$$\vec a\cdot\vec v = 4{,}5 \times 18 = +81{,}0\ \text{m}^2\cdot\text{s}^{-3}$$
+
+→ **accéléré**.
+
+**Freinage**, $dv/dt = -4{,}5\ \text{m}\cdot\text{s}^{-2}$ : $a_N$ ne dépend pas du signe de $dv/dt$, ni $\|\vec a\|$ qui n'utilise que son carré — donc **le même** $a_N = 16{,}2$ et **la même** norme $16{,}8\ \text{m}\cdot\text{s}^{-2}$. Seul $\vec a\cdot\vec v = -81{,}0$ change de signe : **retardé**.
+
+Deux mouvements de natures opposées, avec exactement la **même** norme d'accélération — seul le produit $\vec a\cdot\vec v$ les sépare.
+
 ### L'énoncé de la deuxième loi
 
 **Dans un référentiel galiléen, la somme vectorielle des forces extérieures appliquées à un solide de masse $m$ est égale au produit de sa masse par le vecteur accélération de son centre d'inertie :**
@@ -350,6 +406,8 @@ Le solide accélère bien dans le sens de la descente ($a_{G,x} > 0$), parce que
 
 - Un mouvement se décrit toujours par rapport à un **référentiel** ; les lois de Newton n'y sont valables que si ce référentiel est **galiléen** (référentiel terrestre, géocentrique, héliocentrique selon l'échelle du problème).
 - Le **centre d'inertie $G$** représente tout le solide en translation ; son vecteur vitesse $\vec{v}_G$ et son vecteur accélération $\vec{a}_G = \dfrac{d\vec{v}_G}{dt}$ sont des VECTEURS, pas de simples nombres.
+- Dans la **base de Freinet** $(\vec u_T\,;\,\vec u_N)$, mobile et liée à la trajectoire, $\vec a = \dfrac{dv}{dt}\,\vec u_T + \dfrac{v^2}{R}\,\vec u_N$ : nulle composante normale sur une droite ($R \to \infty$), mais purement normale et **non nulle** à vitesse de norme constante — un mouvement circulaire uniforme est accéléré.
+- Le signe de $\vec a\cdot\vec v$ donne la **nature** du mouvement — accéléré, retardé, uniforme — sans dépendre d'aucun axe de projection ; et **uniforme ne veut pas dire $\vec a = \vec 0$**.
 - **1ʳᵉ loi (principe d'inertie) :** $\sum \vec{F}_{ext} = \vec{0} \iff \vec{v}_G$ constant. Ce n'est pas le mouvement qui a besoin d'une force, c'est sa VARIATION — c'est exactement ce que le palet du chapitre 1 démontrait.
 - **2ᵉ loi :** $\sum \vec{F}_{ext} = m\,\vec{a}_G$. La masse mesure l'inertie : à force égale, un solide plus massif accélère moins.
 - **3ᵉ loi (actions réciproques) :** $\vec{F}_{B \to A} = -\vec{F}_{A \to B}$, toujours vraie, sur deux corps DIFFÉRENTS — à ne jamais confondre avec deux forces en équilibre sur un même corps.

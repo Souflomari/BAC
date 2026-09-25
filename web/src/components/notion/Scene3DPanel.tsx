@@ -16,6 +16,7 @@ import { ChampMagnetiquePanel } from "./scene/ChampMagnetiquePanel";
 import { CordePanel } from "./scene/CordePanel";
 import { CuvePanel } from "./scene/CuvePanel";
 import { DiffractionPanel } from "./scene/DiffractionPanel";
+import { TremplinPanel } from "./scene/TremplinPanel";
 import { ManegePanel } from "./scene/ManegePanel";
 import { NoyauxPanel } from "./scene/NoyauxPanel";
 import { OrbiteGeostationnairePanel } from "./scene/OrbiteGeostationnairePanel";
@@ -44,6 +45,7 @@ const PANNEAUX: Record<string, React.ComponentType<{ scene: Scene3DDescriptor; c
   // Le quatrième : un banc d'optique, sans temps ni course — la révélation pose
   // le réglage que le pari interrogeait, et la règle répond.
   "banc-de-diffraction": DiffractionPanel,
+  "tremplin-circulaire": TremplinPanel,
 };
 
 export function Scene3DPanel({ scene, className }: { scene: Scene3DDescriptor; className?: string }) {

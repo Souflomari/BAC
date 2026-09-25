@@ -120,6 +120,7 @@ export function Etiquette({
   texte,
   nom,
   fond,
+  discret,
   children,
 }: {
   refEl: React.RefObject<HTMLSpanElement>;
@@ -128,6 +129,12 @@ export function Etiquette({
   nom?: string;
   /** une pastille de surface sous le texte — quand la scène peint jusque sous l'étiquette (la cuve) */
   fond?: boolean;
+  /**
+   * un APPUI (le centre du virage, la flèche de départ) et non un point de
+   * l'énoncé ni une réponse : graisse normale, encre secondaire — la hiérarchie
+   * des étiquettes suit celle des traits (vague 2 du tremplin)
+   */
+  discret?: boolean;
   children?: React.ReactNode;
 }) {
   return (
@@ -138,7 +145,8 @@ export function Etiquette({
       className={cn(
         "pointer-events-none absolute left-0 top-0 whitespace-nowrap text-caption font-semibold text-primary",
         // une pastille : un peu d'air vertical, et une graisse moyenne — la pastille assure déjà le contraste
-        fond && "rounded-sm bg-figure-surface px-1.5 py-0.5 font-medium"
+        fond && "rounded-sm bg-figure-surface px-1.5 py-0.5 font-medium",
+        discret && "font-normal text-secondary"
       )}
       style={{ visibility: "hidden" }}
     >
