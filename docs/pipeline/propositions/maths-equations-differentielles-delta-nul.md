@@ -1,6 +1,9 @@
 # spec — le cas $\Delta = 0$ (Maths · `equations-differentielles`, **R4 = chapitre 5**)
 
-**Statut : PROPOSITION, non construite — pas encore revue.**
+**Statut : CONSTRUITE le 2026-09-25** (commit `b70f9a41` : exemple travaillé, deux lignes de
+mécanisme, `racine-double-sans-x`, EQDIFF-31 à 33, `cp-r4-racine-double`) ; les sept questions
+du §6 sont tranchées par défaut et écrites dans `docs/audits/DECISIONS-EN-ATTENTE.md` §30.
+*Écart de construction* : la clé d'EQDIFF-33 raccourcie de 224 à 145 caractères (`eleve-ruse`).
 Écrite le 2026-09-25 par pedagogy-architect. **Petite spec** : un exemple travaillé, un modèle
 d'erreur, trois items, un point d'arrêt. Rien d'autre.
 

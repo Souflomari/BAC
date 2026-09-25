@@ -1728,3 +1728,44 @@ scène) :
   condition qui mériterait une porte : une mesure de la hauteur des chiffres peints, à A et
   à A+.
 - **`--figure-surface` en blanc pur** (dessin) : un jeton de tout le produit.
+
+## 30. Le cas $\Delta = 0$ d'équations-différentielles : sept questions tranchées par défaut, deux modèles laissés en dette — et une contre-oblique SVT qu'on n'a pas le droit de corriger
+
+**LE FAIT.** La leçon énonçait $(Ax+B)e^{rx}$ pour la racine double sans jamais la montrer au
+travail : ni exemple, ni item, ni point d'arrêt — et c'est le seul cas du chapitre 5 (R4)
+qu'un sujet VÉRIFIÉ atteste. La dette est payée (commit `b70f9a41`) sur la spec
+`docs/pipeline/propositions/maths-equations-differentielles-delta-nul.md` : un exemple
+travaillé ($y''+6y'+9y=0$, $y(0)=1$, $y'(0)=-1$), deux lignes de mécanisme présentées comme
+une VÉRIFICATION (la leçon admet la réciproque), un modèle d'erreur `racine-double-sans-x`,
+EQDIFF-31 à 33 et `cp-r4-racine-double`. Sept questions (spec §6) ; même lecture du mandat
+qu'aux §20 à §29 : chacune reçoit sa réponse par défaut, écrite ici, réversible.
+
+**CE QUI A ÉTÉ TRANCHÉ PAR DÉFAUT :**
+
+1. **Un modèle, deux manifestations** (Q1) : le facteur $x$ OUBLIÉ en $\Delta=0$ et
+   TRANSPORTÉ en $\Delta>0$ sont un seul modèle, comme `oscillateur-A-B-roles` réunit trois
+   gestes. *Pour défaire* : scinder le bloc, et nourrir chaque moitié jusqu'à trois items.
+2. **Deux modèles NON déclarés restent en dette** (Q2) : le signe de $r_0=-\frac{b}{2a}$, et
+   $A$ lu directement sur $y'(0)$. L'architecte les juge les deux erreurs suivantes par
+   fréquence — **sans annale pour le mesurer** : une seule annale vérifiée existe pour toute la
+   notion. Au propriétaire : les armer (six items), ou non.
+3. **EQDIFF-4 choix D n'est pas re-tagué** (Q3).
+4. **Le point d'arrêt est à la fin du chapitre 5** (Q4), au plus près de ce qu'il contrôle.
+5. **L'arbitrage de filière n'est pas tranché ici** (Q5) — le contenu est valide dans les deux
+   issues ; la question va à research-lead avec le cadre maths non autoritatif (§29.1).
+6. **Les deux lignes de mécanisme sont écrites** (Q6), bornées : le crochet
+   $\bigl[(ar^2+br+c)x+(2ar+b)\bigr]e^{rx}$, rattaché à la ligne $(-6+6)$ du calcul qui
+   précède. *Pour défaire* : supprimer le paragraphe « Pourquoi seulement quand
+   $\Delta = 0$ » — rien d'autre n'en dépend.
+7. **Les nombres de l'exemple sont gardés** (Q7).
+
+**Un écart de construction, écrit** : la clé d'EQDIFF-33 a été RACCOURCIE (224 → 145
+caractères) après que `eleve-ruse` l'a choisie sans rien savoir — la plus longue d'au moins
+20 caractères et 20 %. Le fond de la clé n'a pas changé.
+
+**UNE DETTE QU'ON N'A PAS LE DROIT DE PAYER.** `content/svt/transmission-caracteres/items.yaml:51`
+écrit `$1/4 \\times 1/4 = 1/16$` dans un bloc YAML plié (`>`), où la contre-oblique n'est
+pas un échappement : KaTeX y lirait un saut de ligne puis « times ». Aucun composant n'affiche
+aujourd'hui `contradicts_principle` — le défaut est LATENT. Le même défaut, dans quatre
+notions non gelées, est corrigé (`19fb8d97`, 28 lignes) ; celle-ci ne l'est pas parce que
+**SVT est gelée**. Au dégel : `\\times` → `\times`, une ligne.
