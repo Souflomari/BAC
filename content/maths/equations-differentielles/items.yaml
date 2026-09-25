@@ -214,6 +214,21 @@ misconceptions:
       reliant $y'$ à $y$ en CHAQUE point — pas une valeur numérique ni un point
       stationnaire isolé.
 
+  - id: mc.math.maths_equations_differentielles.racine-double-sans-x
+    label: "Cas Δ=0 : le facteur x n'est pas relié à la racine double"
+    description: >-
+      L'élève ne relie pas le facteur $x$ au cas $\Delta=0$ : il écrit
+      $y=Ae^{r_0x}$ (ou $Ae^{r_0x}+Be^{r_0x}$, qui se réduit à une seule
+      constante) quand la racine est double, ou au contraire transporte le
+      facteur $x$ dans un cas à deux racines distinctes. La forme est choisie
+      sans que le discriminant décide.
+    contradicts_principle: >-
+      Une équation du second ordre a DEUX constantes libres. Quand la racine
+      est double, la seconde ne peut venir que du facteur $x$ : $xe^{r_0x}$ est
+      alors solution, et $(Ax+B)e^{r_0x}$ est la forme complète. Ce facteur ne
+      se justifie QUE là — substitué dans une équation à racines distinctes, il
+      laisse un reste non nul.
+
 items:
 
   # ── R1 · y'=ay : la famille complète, pas une fonction isolée ───────────────
@@ -1951,6 +1966,228 @@ items:
       à $t = \tau$, on a parcouru $63\,\%$ du chemin ; à $5\tau$, plus de
       $99\,\%$.
 
+  # ── R4 · Δ=0 : le facteur x du cas racine double ─────────────────────────
+  - id: EQDIFF-31
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_equations_differentielles
+    tags: [second_ordre, racine_double]
+    primary_misconception: mc.math.maths_equations_differentielles.racine-double-sans-x
+    stem: >
+      Les solutions sur $\mathbb{R}$ de l'équation différentielle
+      $y'' - 10y' + 25y = 0$ sont les fonctions :
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $y(x) = (Ax+B)e^{5x}$, $A, B \in \mathbb{R}$
+        correct: true
+      - id: B
+        text: >-
+          $y(x) = Ae^{5x}$, $A \in \mathbb{R}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.racine-double-sans-x
+        feedback: >
+          Ce choix garde la bonne racine ($r_0=5$) mais oublie le facteur $x$
+          du cas $\Delta=0$ : il ne reste qu'une seule constante. Vérifie :
+          $y=Ae^{5x}$ donne $y'=5Ae^{5x}=5y$, donc $y'(0)=5\,y(0)$ est imposé
+          d'avance — $y(0)$ et $y'(0)$ ne peuvent pas être fixés
+          indépendamment, ce qu'une équation du second ordre exige.
+      - id: C
+        text: >-
+          $y(x) = Ae^{5x} + Be^{5x}$, $A, B \in \mathbb{R}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.racine-double-sans-x
+        feedback: >
+          Ce choix reprend le gabarit du cas $\Delta>0$ (deux exponentielles
+          distinctes) en écrivant la même racine deux fois. Réduis
+          l'écriture : $Ae^{5x}+Be^{5x}=(A+B)e^{5x}$ — une seule constante
+          sous deux lettres, pas deux constantes indépendantes.
+      - id: D
+        text: >-
+          $y(x) = xe^{5x}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.solution-fonction-unique
+        feedback: >
+          Ce choix ne retient qu'un représentant de la famille — celui où
+          $A=1$ et $B=0$ dans la forme complète. $xe^{5x}$ est bien UNE
+          solution, ce n'est pas l'ensemble des solutions : il manque la
+          constante devant $e^{5x}$ et celle devant $xe^{5x}$.
+    correct_feedback: >
+      $\Delta = 10^2-4\times25 = 100-100=0$ donne une racine double
+      $r_0=\dfrac{10}{2}=5$. La solution générale du cas $\Delta=0$ est
+      $(Ax+B)e^{r_0x}$, avec DEUX constantes — la seconde vient du facteur
+      $x$, qui n'existe QUE dans ce cas.
+    solution: |
+      **Le trinôme.** $r^2-10r+25=0$.
+
+      **Le discriminant.** $\Delta = (-10)^2-4\times1\times25 = 100-100=0$ :
+      racine double $r_0=\dfrac{10}{2}=5$, et $r^2-10r+25=(r-5)^2$.
+
+      **La forme du cas $\Delta=0$.** Deux constantes libres, dont la seconde
+      vient du facteur $x$ — jamais d'une deuxième lettre collée à la même
+      exponentielle :
+      $$y(x) = (Ax+B)e^{5x}, \qquad A,B \in \mathbb{R}$$
+
+      **Le contrôle.** $y=Ae^{5x}$ n'a qu'une constante : $y'(0)=5\,y(0)$ est
+      imposé d'avance, rien à ajuster indépendamment. $y=Ae^{5x}+Be^{5x}$ se
+      réduit à $(A+B)e^{5x}$ — même défaut sous une autre écriture.
+
+  - id: EQDIFF-32
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: maths_equations_differentielles
+    tags: [second_ordre, racine_double, discriminant]
+    primary_misconception: mc.math.maths_equations_differentielles.racine-double-sans-x
+    stem: >
+      Parmi les équations suivantes, laquelle admet pour ensemble de
+      solutions exactement les fonctions $x \mapsto (Ax+B)e^{2x}$,
+      $A, B \in \mathbb{R}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $y'' - 4y' + 4y = 0$
+        correct: true
+      - id: B
+        text: >-
+          $y'' - 5y' + 6y = 0$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.racine-double-sans-x
+        feedback: >
+          Le trinôme a bien $2$ pour racine ($\Delta=25-24=1>0$, racines $2$
+          et $3$), et c'est le piège : la présence de $2$ ne suffit pas à
+          autoriser le facteur $x$. Substitue $y=(Ax+B)e^{2x}$ dans
+          $y''-5y'+6y$ : il reste $-Ae^{2x}$, non nul dès que $A\neq0$ — $2$
+          n'est ici qu'une racine SIMPLE, pas double.
+      - id: C
+        text: >-
+          $y'' - 4y = 0$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.racine-double-sans-x
+        feedback: >
+          Même piège sous une autre équation : $\Delta=0+16=16>0$ donne les
+          racines $2$ et $-2$. Substitue $y=(Ax+B)e^{2x}$ dans $y''-4y$ : il
+          reste $4Ae^{2x}$, non nul dès que $A\neq0$ — $2$ est une racine
+          simple, la seconde racine est $-2$, pas $2$ une seconde fois.
+      - id: D
+        text: >-
+          $y'' + 4y = 0$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.signe-second-membre-second-ordre
+        feedback: >
+          Ici $\Delta=0-16=-16<0$ : il n'y a pas de racine réelle, encore
+          moins une racine double — les solutions sont
+          $A\cos(2x)+B\sin(2x)$. Lire $\sqrt{4}=2$ comme un taux exponentiel
+          confond les deux cas : substitue $y=e^{2x}$ dans $y''+4y$, il reste
+          $8e^{2x}\neq0$.
+    correct_feedback: >
+      $r^2-4r+4=(r-2)^2$ : $\Delta=16-16=0$, racine double $r_0=2$. C'est la
+      seule des quatre équations dont $2$ est une racine DOUBLE — dans les
+      deux autres équations du second ordre, $2$ n'est qu'une racine simple,
+      et la substitution le prouve.
+    solution: |
+      **Le sens inverse.** On part de la solution pour retrouver l'équation :
+      $(Ax+B)e^{2x}$ est la forme du cas $\Delta=0$ avec $r_0=2$, donc
+      l'équation caractéristique cherchée est $(r-2)^2=0$, soit
+      $r^2-4r+4=0$.
+
+      **Vérification.** $a=1$, $b=-4$, $c=4$ : $\Delta=16-4\times4=0$ ✓,
+      $r_0=\dfrac{4}{2}=2$ ✓.
+
+      **Ce que la racine $2$ ne suffit pas à garantir.** $2$ est AUSSI
+      racine de $y''-5y'+6y=0$ (avec $3$) et de $y''-4y=0$ (avec $-2$) —
+      mais dans ces deux équations, $2$ est une racine SIMPLE : le facteur
+      $x$ n'y est solution de rien. Substituer $(Ax+B)e^{2x}$ le prouve à
+      chaque fois : il reste un résidu non nul en $A$.
+
+      **Le résidu, en une formule.** Substituer $xe^{rx}$ dans $ay''+by'+cy$
+      quand $r$ est déjà racine du trinôme laisse $(2ar+b)\,e^{rx}$ : il
+      s'annule exactement quand $r=-\dfrac{b}{2a}$, c'est-à-dire quand la
+      racine est double.
+
+  - id: EQDIFF-33
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: maths_equations_differentielles
+    tags: [second_ordre, racine_double, conditions_initiales]
+    primary_misconception: mc.math.maths_equations_differentielles.racine-double-sans-x
+    stem: >
+      Pour résoudre $(E) : y'' + 8y' + 16y = 0$, un élève écrit : « le
+      discriminant est nul, la racine double est $r_0=-4$, donc les
+      solutions sont $y(x)=Ce^{-4x}$, $C \in \mathbb{R}$ ». On lui demande
+      ensuite la solution qui vérifie $y(0)=1$ et $y'(0)=0$. Que faut-il en
+      conclure ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Son écriture est incomplète : dans le cas $\Delta=0$, les solutions
+          sont les $(Ax+B)e^{-4x}$, et celle qui est cherchée est
+          $y(x)=(4x+1)e^{-4x}$.
+        correct: true
+      - id: B
+        text: >-
+          Son écriture est juste : il n'existe pas de fonction qui vérifie
+          les deux conditions à la fois, car une racine double ne donne
+          qu'une constante — seule $y(0)$ peut être imposée.
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.racine-double-sans-x
+        feedback: >
+          C'est la signature exacte de l'erreur : tenir la forme à une seule
+          constante et en conclure, à tort, que l'énoncé est impossible.
+          $C=1$ force $y'(0)=-4$ dans CETTE forme-là — mais la forme est
+          incomplète. Avec les DEUX constantes du cas $\Delta=0$,
+          $(Ax+B)e^{-4x}$, la contradiction disparaît : $B=1$, puis
+          $A-4B=0$ donne $A=4$.
+      - id: C
+        text: >-
+          Une infinité de fonctions vérifient les deux conditions : deux
+          conditions ne suffisent pas à fixer une solution du second ordre.
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.nombre-solutions-condition
+        feedback: >
+          Ce n'est pas le nombre de conditions qui pose problème : deux
+          conditions initiales sur une équation du second ordre fixent $A$
+          ET $B$ chacune à une valeur unique — ici $B=1$ puis $A=4$, pas une
+          famille de solutions. L'erreur de l'élève est ailleurs : la forme
+          qu'il utilise n'a qu'une constante, pas deux.
+      - id: D
+        text: >-
+          $y(x)=e^{-4x}$ convient : c'est la solution de $(E)$, et les
+          conditions ne servent qu'à la vérifier.
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.solution-fonction-unique
+        feedback: >
+          $e^{-4x}$ (le cas $C=1$) vérifie bien l'équation homogène, mais
+          pas les DEUX conditions : sa dérivée donne $y'(0)=-4\neq0$. Une
+          équation différentielle ne détermine jamais une fonction unique —
+          ici encore moins, puisque la contradiction sur $y'(0)$ montre que
+          la forme elle-même est incomplète.
+    correct_feedback: >
+      L'élève a juste le trinôme et la racine ($r_0=-4$), mais pas la
+      forme : le cas $\Delta=0$ demande $(Ax+B)e^{-4x}$, DEUX constantes.
+      Avec $B=y(0)=1$ et $A-4B=y'(0)=0$, on obtient $A=4$, d'où
+      $y(x)=(4x+1)e^{-4x}$.
+    solution: |
+      **Le trinôme et la racine.** $r^2+8r+16=(r+4)^2$ : $\Delta=64-64=0$,
+      racine double $r_0=-4$. Jusque-là l'élève a raison.
+
+      **Ce qui manque.** La forme du cas $\Delta=0$ est $(Ax+B)e^{-4x}$, pas
+      $Ce^{-4x}$ — cette dernière n'a qu'une constante, alors que l'équation
+      est du second ordre et réclame deux conditions.
+
+      **Le compte qui tombe faux.** Avec $y=Ce^{-4x}$ : $y(0)=C=1$ force
+      $C$, puis $y'(x)=-4Ce^{-4x}$ donne $y'(0)=-4$ — pas $0$. Une seule
+      constante ne peut pas encaisser deux conditions indépendantes.
+
+      **La solution complète.** $y(0)=B=1$. En dérivant le produit,
+      $y'(x)=[A-4(Ax+B)]e^{-4x}$, donc $y'(0)=A-4B=0 \implies A=4$.
+      $$y(x) = (4x+1)e^{-4x}$$
+
+      **Le contrôle.** $y'(x)=-16x\,e^{-4x}$, donc $y'(0)=0$ ✓ ; et
+      $y(0)=1$ ✓.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après EQDIFF-22 à EQDIFF-30. Seize familles siégeaient
 # sous le plancher de 3 items du banc : la nature de l'inconnue et la famille de
@@ -1958,6 +2195,15 @@ items:
 # période de l'oscillateur, la constante de temps, et les deux modèles de
 # l'accroche. Tableau GÉNÉRÉ contre web/scripts/lib/couverture-compte.mjs,
 # gardé par web/scripts/resume-couverture.mjs.
+# COMPLÉTÉ À LA MAIN le 2026-09-25 — EQDIFF-31 à -33 ajoutent le modèle
+# mc...racine-double-sans-x (cas Δ=0, facteur x oublié ou transporté à tort),
+# cf. docs/pipeline/propositions/maths-equations-differentielles-delta-nul.md
+# §3-4. Deltas : total_items 30→33 ; ramp_coverage.R4 4→7 ; nouveau modèle 3 ;
+# solution-fonction-unique 3→5 ; signe-second-membre-second-ordre 4→5 ;
+# nombre-solutions-condition 3→4. Ce bloc n'est PAS généré par une commande —
+# il est écrit à la main (voir l'en-tête de resume-couverture.mjs) et VÉRIFIÉ
+# par `node web/scripts/couverture-diagnostique.mjs --porte` et
+# `node web/scripts/resume-couverture.mjs --porte` : à relancer.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -1966,7 +2212,7 @@ coverage_summary:
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
     web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
-    mc.math.maths_equations_differentielles.solution-fonction-unique:           { count: 3, items: [EQDIFF-1, EQDIFF-22, EQDIFF-23] }
+    mc.math.maths_equations_differentielles.solution-fonction-unique:           { count: 5, items: [EQDIFF-1, EQDIFF-22, EQDIFF-23, EQDIFF-31, EQDIFF-33] }
     mc.math.maths_equations_differentielles.signe-exposant:                     { count: 3, items: [EQDIFF-1, EQDIFF-10, EQDIFF-13] }
     mc.math.maths_equations_differentielles.ed-comme-primitive:                 { count: 3, items: [EQDIFF-1, EQDIFF-22, EQDIFF-24] }
     mc.math.maths_equations_differentielles.coefficient-a-mal-identifie:        { count: 3, items: [EQDIFF-10, EQDIFF-22, EQDIFF-24] }
@@ -1977,9 +2223,9 @@ coverage_summary:
     mc.math.maths_equations_differentielles.condition-initiale-exposant-sans-a: { count: 3, items: [EQDIFF-3, EQDIFF-25, EQDIFF-26] }
     mc.math.maths_equations_differentielles.resolution-exponentielle-lineaire:  { count: 3, items: [EQDIFF-3, EQDIFF-20, EQDIFF-23] }
     mc.math.maths_equations_differentielles.signe-a-comportement:               { count: 3, items: [EQDIFF-11, EQDIFF-19, EQDIFF-26] }
-    mc.math.maths_equations_differentielles.nombre-solutions-condition:         { count: 3, items: [EQDIFF-15, EQDIFF-25, EQDIFF-26] }
+    mc.math.maths_equations_differentielles.nombre-solutions-condition:         { count: 4, items: [EQDIFF-15, EQDIFF-25, EQDIFF-26, EQDIFF-33] }
     mc.math.maths_equations_differentielles.omega-vs-omega2:                    { count: 3, items: [EQDIFF-4, EQDIFF-16, EQDIFF-21] }
-    mc.math.maths_equations_differentielles.signe-second-membre-second-ordre:   { count: 4, items: [EQDIFF-4, EQDIFF-18, EQDIFF-27, EQDIFF-29] }
+    mc.math.maths_equations_differentielles.signe-second-membre-second-ordre:   { count: 5, items: [EQDIFF-4, EQDIFF-18, EQDIFF-27, EQDIFF-29, EQDIFF-32] }
     mc.math.maths_equations_differentielles.oscillateur-B-sans-omega:           { count: 3, items: [EQDIFF-5, EQDIFF-21, EQDIFF-27] }
     mc.math.maths_equations_differentielles.oscillateur-A-B-roles:              { count: 4, items: [EQDIFF-4, EQDIFF-5, EQDIFF-18, EQDIFF-21] }
     mc.math.maths_equations_differentielles.periode-omega:                      { count: 4, items: [EQDIFF-16, EQDIFF-27, EQDIFF-28, EQDIFF-30] }
@@ -1988,7 +2234,8 @@ coverage_summary:
     mc.math.maths_equations_differentielles.modele-taux-constant:               { count: 3, items: [EQDIFF-7, EQDIFF-8, EQDIFF-29] }
     mc.math.maths_equations_differentielles.modele-sans-ecart:                  { count: 3, items: [EQDIFF-7, EQDIFF-8, EQDIFF-29] }
     mc.math.maths_equations_differentielles.ed-inconnue-nombre:                 { count: 3, items: [EQDIFF-9, EQDIFF-23, EQDIFF-24] }
-  total_items: 30
+    mc.math.maths_equations_differentielles.racine-double-sans-x:               { count: 3, items: [EQDIFF-31, EQDIFF-32, EQDIFF-33] }
+  total_items: 33
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -1996,10 +2243,12 @@ coverage_summary:
     R1: 6
     R2: 3
     R3: 5
-    R4: 4
+    R4: 7
     R5: 5
     R6: 3
   honest_state: >-
-    Les vingt-deux misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Quinze y siègent EXACTEMENT (3 items) : la marge est nulle
-    et tout retrait d'item la casse.
+    Les vingt-trois misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Quatorze y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item les casse. R4 (chapitre 5) est le seul rung porté
+    par un sujet vérifié (bac SExp 2022 N, cas Δ=0) ; il était le seul sans
+    checkpoint jusqu'au 2026-09-25 (cf. checkpoints.yaml, cp-r4-racine-double).

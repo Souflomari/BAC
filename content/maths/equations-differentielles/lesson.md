@@ -407,6 +407,44 @@ $$\boxed{y(x) = 2e^{x} - e^{2x}}$$
 
 **Le piège nommé de ce cas général.** Oublier le facteur $x$ du cas $\Delta=0$ et écrire $y=Ae^{r_0x}$ tout court. Il ne resterait qu'**une** constante libre, alors qu'une équation du second ordre en demande deux : impossible de satisfaire deux conditions initiales indépendantes. Le compte des constantes est le contrôle qui débusque l'erreur avant tout calcul.
 
+### Exemple travaillé — la racine double ($\Delta = 0$)
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* la même méthode que pour $\Delta>0$ — trinôme, discriminant, solution générale, conditions initiales, contrôle —, mais avec une racine double la forme change, et ça se vérifie deux fois : une fois en mettant le piège en défaut, une fois en substituant le résultat dans l'équation.
+
+Résous $(E_2) : y'' + 6y' + 9y = 0$ avec $y(0) = 1$ et $y'(0) = -1$.
+
+**Le trinôme.** Ici $a=1$, $b=6$, $c=9$, donc l'équation caractéristique est $r^2+6r+9=0$.
+
+**Le discriminant.** $\Delta = 6^2-4\times1\times9 = 36-36 = 0$ : racine double $r_0 = -\dfrac{b}{2a} = -\dfrac{6}{2} = -3$. Une lecture directe sur le trinôme confirme : $r^2+6r+9=(r+3)^2$, un carré parfait — c'est à ça que ressemble $\Delta=0$.
+
+**Le piège, avant la formule.** Si l'on écrivait $y(x)=Ce^{-3x}$, le piège nommé plus haut, alors $y(0)=C$ forcerait $C=1$, et il ne resterait plus rien à régler : $y'(x)=-3Ce^{-3x}$ donnerait $y'(0)=-3$, alors que l'énoncé demande $-1$. Une seule constante ne peut pas encaisser deux conditions : le compte des constantes devient ici un nombre qui tombe faux — c'est exactement ce que le paragraphe qui précède annonçait sans jamais le montrer.
+
+**Le facteur $x$, vérifié par substitution.** $y(x)=xe^{-3x}$ est elle aussi solution de $(E_2)$, et elle n'est pas un multiple de $e^{-3x}$ :
+
+$$y' = (1-3x)e^{-3x}, \qquad y'' = (9x-6)e^{-3x}$$
+
+$$y''+6y'+9y = \bigl[(9x-6) + 6(1-3x) + 9x\bigr]e^{-3x} = \bigl[(9-18+9)x + (-6+6)\bigr]e^{-3x} = 0$$
+
+La moitié manquante existe : on vient de la vérifier.
+
+**Pourquoi seulement quand $\Delta = 0$ — une vérification, pas une preuve.** Le même calcul, fait sur $ay''+by'+cy$ avec $y=xe^{rx}$, laisse $\bigl[(ar^2+br+c)\,x + (2ar+b)\bigr]e^{rx}$. La première parenthèse s'annule dès que $r$ est une racine ; la seconde, seulement si $r = -\dfrac{b}{2a}$ — c'est-à-dire exactement quand la racine est double. Ici, $2\times(-3)+6 = 0$ : c'est la ligne $(-6+6)$ du calcul ci-dessus.
+
+**La solution générale.** $y(x)=(Ax+B)e^{-3x}$, $A,B\in\mathbb{R}$ — deux constantes.
+
+**Les conditions initiales.** $y(0)=B=1$. Puis $y'(x)=Ae^{-3x}-3(Ax+B)e^{-3x}=(A-3Ax-3B)e^{-3x}$, donc $y'(0)=A-3B=-1$, d'où $A=2$ :
+
+$$\boxed{y(x) = (2x+1)e^{-3x}}$$
+
+$A$ ne se lit pas directement sur $y'(0)$ : la dérivée d'un produit fait apparaître $A-3B$, pas $A$ seul.
+
+**Le contrôle, à faire systématiquement — deux niveaux.** Les conditions : $y(0)=1$ ✔ ; $y'(x)=(2-6x-3)e^{-3x}=-(6x+1)e^{-3x}$, donc $y'(0)=-1$ ✔. L'équation elle-même, par substitution : $y''=(18x-3)e^{-3x}$, et
+
+$$y''+6y'+9y = \bigl[(18x-3)+6(-6x-1)+9(2x+1)\bigr]e^{-3x} = \bigl[(18-36+18)x + (-3-6+9)\bigr]e^{-3x} = 0 \ ✔$$
+
+Deux annulations séparées — celle des termes en $x$ et celle des constantes. C'est précisément ce que le facteur $x$ permet, et ce qu'une seule exponentielle ne pourrait pas faire.
+
+[[checkpoint:cp-r4-racine-double]]
+
 ---
 
 ## R5 — Reconnaître l'équation en physique : RC, RL, oscillateur

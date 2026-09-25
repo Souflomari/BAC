@@ -17,6 +17,9 @@ skill_code: maths_equations_differentielles
 #                                             Probes palier-recopie-b.
 #   cp-r3-condition-initiale (after R3)        rupture : condition initiale en x0≠0 — elle fixe C
 #                                             en résolvant Ce^{ax0}=y0. Probes condition-initiale-sans-decalage.
+#   cp-r4-racine-double      (after R4)        rupture : Δ=0 — le facteur x est la SEULE façon
+#                                             d'obtenir la deuxième constante du second ordre.
+#                                             Probes racine-double-sans-x. Ajouté 2026-09-25.
 #   cp-verif-substitution    (before r-bac)    rupture : vérifier une solution EN LA SUBSTITUANT
 #                                             dans l'équation. Probes signe-exposant.
 #
@@ -218,6 +221,57 @@ checkpoints:
         feedback: |
           $C=6/2=3$ divise par $a$ de façon linéaire. Mais $C$ sort de
           $Ce^{2}=6$ (relation exponentielle) : $C=6e^{-2}$, pas $6/2$.
+
+  - id: cp-r4-racine-double
+    rung: "R4"
+    habilete: utilisation
+    skill_code: maths_equations_differentielles
+    tags: [checkpoint, formative, misconception_driven, maths_equations_differentielles, second_ordre, racine_double]
+    primary_misconception: mc.math.maths_equations_differentielles.racine-double-sans-x
+    item_source: clone_of_EQDIFF-31
+    lesson_placement: after_R4
+    stem: |
+      Quel est l'ensemble des solutions sur $\mathbb{R}$ de
+      $y'' - 6y' + 9y = 0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          $y(x) = (Ax+B)e^{3x}$, $A, B \in \mathbb{R}$
+        correct: true
+        feedback: |
+          Exact. $r^2-6r+9=(r-3)^2$ : $\Delta=36-36=0$, racine double
+          $r_0=\dfrac{6}{2}=3$. Le cas $\Delta=0$ demande DEUX constantes —
+          la seconde vient du facteur $x$, qui n'existe QUE dans ce cas.
+      - id: B
+        text: |
+          $y(x) = Ae^{3x}$, $A \in \mathbb{R}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.racine-double-sans-x
+        feedback: |
+          Modèle détecté : le facteur $x$ du cas $\Delta=0$ a été oublié. La
+          racine $r_0=3$ est juste, mais une seule constante ne peut pas
+          fixer $y(0)$ ET $y'(0)$ indépendamment, puisque $y'(0)=3\,y(0)$ est
+          imposé d'avance par cette écriture.
+      - id: C
+        text: |
+          $y(x) = Ae^{3x} + Be^{3x}$, $A, B \in \mathbb{R}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.racine-double-sans-x
+        feedback: |
+          Modèle détecté : le gabarit du cas $\Delta>0$ appliqué à une racine
+          écrite deux fois. Réduis : $Ae^{3x}+Be^{3x}=(A+B)e^{3x}$ — une seule
+          constante sous deux lettres, pas deux constantes indépendantes.
+      - id: D
+        text: |
+          $y(x) = xe^{3x}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.solution-fonction-unique
+        feedback: |
+          Modèle détecté : un représentant unique de la famille ($A=1$, $B=0$
+          dans la forme complète), pas l'ensemble des solutions. $xe^{3x}$
+          est bien UNE solution ; il manque la constante devant $e^{3x}$ et
+          celle devant $xe^{3x}$.
 
   - id: cp-verif-substitution
     rung: "R1"

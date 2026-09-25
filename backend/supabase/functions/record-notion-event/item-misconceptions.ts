@@ -709,6 +709,19 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.maths_equations_differentielles.periode-omega",
       "mc.math.maths_equations_differentielles.tau-inverse"
     ],
+    "EQDIFF-31": [
+      "mc.math.maths_equations_differentielles.racine-double-sans-x",
+      "mc.math.maths_equations_differentielles.solution-fonction-unique"
+    ],
+    "EQDIFF-32": [
+      "mc.math.maths_equations_differentielles.racine-double-sans-x",
+      "mc.math.maths_equations_differentielles.signe-second-membre-second-ordre"
+    ],
+    "EQDIFF-33": [
+      "mc.math.maths_equations_differentielles.nombre-solutions-condition",
+      "mc.math.maths_equations_differentielles.racine-double-sans-x",
+      "mc.math.maths_equations_differentielles.solution-fonction-unique"
+    ],
     "EQDIFF-4": [
       "mc.math.maths_equations_differentielles.omega-vs-omega2",
       "mc.math.maths_equations_differentielles.oscillateur-A-B-roles",
@@ -752,6 +765,10 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.maths_equations_differentielles.condition-initiale-exposant-sans-a",
       "mc.math.maths_equations_differentielles.condition-initiale-sans-decalage",
       "mc.math.maths_equations_differentielles.resolution-exponentielle-lineaire"
+    ],
+    "cp-r4-racine-double": [
+      "mc.math.maths_equations_differentielles.racine-double-sans-x",
+      "mc.math.maths_equations_differentielles.solution-fonction-unique"
     ],
     "cp-verif-substitution": [
       "mc.math.maths_equations_differentielles.coefficient-a-mal-identifie",
