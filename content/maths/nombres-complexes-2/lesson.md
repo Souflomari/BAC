@@ -364,7 +364,7 @@ Et si on te donnait la même transformation écrite $z' = iz + 2 - 2i$ ? C'est l
 
 ### Le rapport qui encode toute la forme d'un triangle
 
-Ce rapport $w$ n'est pas un outil neuf : c'est le coefficient du chapitre 6, lu à l'envers. Là-bas, on connaissait $c$ et on cherchait l'image ; ici, on connaît deux points et leurs images, et c'est $c$ lui-même qu'on retrouve.
+Le rapport qui suit n'est pas un outil neuf : c'est le coefficient du chapitre 6, lu à l'envers. Là-bas, le centre et $c$ donnaient l'image d'un point ; ici, le centre $A$, un point $B$ et son image $C$ redonnent $c$.
 
 Soient $A$, $B$, $C$ trois points d'affixes $z_A$, $z_B$, $z_C$, avec $B\neq A$. On s'intéresse au nombre complexe
 
