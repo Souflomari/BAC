@@ -1434,6 +1434,16 @@ total $3+5+4+6+3+4+4+3+5 = 37$ ✓. `coverage_summary` régénéré par
   **Reste dû**, et c'est un travail de table de mesures, pas de scène.
 - **Les équations aux dimensions** ne sont touchées que par une ligne de prose
   (§4.3) et un `feedback` (LDN-36 D). **Reste dû.**
+- **La rampe ne monte pas jusqu'au bac pour ce qu'on vient d'enseigner** (vague 1,
+  critique pédagogique, 2026-09-25) : le sommet de R8 est la **Partie I** du sujet
+  2019 N (rectiligne) et `bank.yaml` n'a **aucune** entrée qui demande la base de
+  Freinet ou $\vec a\cdot\vec v$ — le savoir-faire plafonne aux items. Candidats
+  à mesurer : la **Partie II** du même sujet (« tremplin circulaire B'C' puis
+  saut », NON transcrite — `docs/sujets/pc/lois-de-newton.md:17-20` ; on ne sait
+  donc pas si elle interroge l'arc ou seulement le saut) et le sujet 2012 R
+  (Jupiter, §2.4, dans la banque de `chute-mouvements-plans`). **Reste dû**, et c'est une transcription
+  vérifiée d'un sujet réel, pas un item de plus. *Omis de cette liste à la
+  livraison ; la critique l'a trouvé — ce qu'on n'arme pas s'écrit (ADR 0035).*
 
 ---
 

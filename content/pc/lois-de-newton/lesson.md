@@ -118,6 +118,12 @@ De la même façon qu'on a construit $\vec{v}_G$ à partir de $\overrightarrow{O
 
 $$\vec{a}_G = \frac{d\vec{v}_G}{dt}$$
 
+Dans un repère cartésien $(O\,;\,\vec i,\vec j)$ fixe, ses coordonnées sont les dérivées de celles de la vitesse — donc les dérivées secondes de celles de la position :
+
+$$a_x = \frac{dv_x}{dt} = \frac{d^2x}{dt^2}, \qquad a_y = \frac{dv_y}{dt} = \frac{d^2y}{dt^2}, \qquad \|\vec a_G\| = \sqrt{a_x^2 + a_y^2}$$
+
+C'est cette écriture qu'on projette sur les axes quand on applique la deuxième loi, un peu plus bas. Ses axes restent fixes pendant que la trajectoire, elle, peut tourner.
+
 $\vec{a}_G$ mesure la façon dont $\vec{v}_G$ change — en norme (le solide accélère ou ralentit) et/ou en direction (le solide tourne). Si $\vec{v}_G$ est constant, alors $\vec{a}_G = \vec{0}$ : c'est exactement le principe d'inertie, vu comme un cas particulier de ce qu'on énonce maintenant.
 
 ### Comment un vecteur vitesse change — la base de Freinet
@@ -128,7 +134,7 @@ $\vec{a}_G = d\vec{v}_G/dt$ mesure la variation d'un **vecteur**, pas d'un nombr
 
 ### Deux façons de changer, deux composantes
 
-Le vecteur vitesse s'écrit $\vec v = v\,\vec u_T$, où $\vec u_T$ est un vecteur **unitaire**, tangent à la trajectoire, dans le sens du mouvement — avec toujours $v > 0$. À côté de lui, un second vecteur unitaire $\vec u_N$, perpendiculaire à $\vec u_T$, dirigé vers le centre de courbure de la trajectoire — c'est-à-dire du côté vers lequel la trajectoire tourne, jamais « vers le haut », jamais « vers la route ». Le couple $(\vec u_T\,;\,\vec u_N)$ forme la **base de Freinet** : une base **mobile**, qui voyage avec le point et tourne avec la trajectoire.
+Le vecteur vitesse s'écrit $\vec v = v\,\vec u_T$, où $\vec u_T$ est un vecteur **unitaire**, tangent à la trajectoire, dans le sens du mouvement — avec toujours $v > 0$. À côté de lui, un second vecteur unitaire $\vec u_N$, perpendiculaire à $\vec u_T$, dirigé vers le centre de courbure de la trajectoire — c'est-à-dire du côté vers lequel la trajectoire tourne. Ni « vers le haut », ni « vers la route » : et surtout pas vers l'extérieur, même si c'est de ce côté qu'on se sent poussé dans un virage. Une accélération dirigée vers l'extérieur courberait la trajectoire dans l'autre sens — la moto quitterait la piste au lieu de la suivre. Le couple $(\vec u_T\,;\,\vec u_N)$ forme la **base de Freinet** : une base **mobile**, qui voyage avec le point et tourne avec la trajectoire.
 
 Dans cette base, l'accélération se décompose en deux termes :
 
@@ -136,7 +142,9 @@ $$\vec{a} = \frac{dv}{dt}\,\vec{u}_T + \frac{v^2}{R}\,\vec{u}_N$$
 
 où $R$ est le rayon de courbure au point considéré.
 
-Deux cas limites éclairent la formule. Sur une **droite**, $R \to \infty$, donc $v^2/R \to 0$ : $\vec a$ est tout entier porté par $\vec u_T$. À l'inverse, quand la vitesse garde une norme **constante**, $dv/dt = 0$ : $\vec a$ devient purement normal, et surtout **non nul** — un mouvement circulaire uniforme est accéléré bien que la norme ne change pas.
+Pourquoi $v^2$, et pourquoi $1/R$ ? La composante normale mesure à quelle vitesse le vecteur $\vec v$ **tourne**. Aller deux fois plus vite agit deux fois : on passe deux fois plus vite par chaque point du virage, donc la direction tourne deux fois plus vite, **et** le vecteur qui tourne est deux fois plus long — d'où $v \times v$. Un virage deux fois plus serré fait tourner la direction deux fois plus à chaque mètre parcouru — d'où $R$ au dénominateur, au premier degré seulement.
+
+Deux cas limites éclairent la formule. Sur une **droite**, la trajectoire ne tourne pas : pas de composante normale (formellement, $R \to \infty$ et $v^2/R \to 0$), et $\vec a$ est tout entier porté par $\vec u_T$. À l'inverse, quand la vitesse garde une norme **constante**, $dv/dt = 0$ : $\vec a$ devient purement normal, et surtout **non nul** — un mouvement circulaire uniforme est accéléré bien que la norme ne change pas.
 
 Un contrôle rapide confirme que $v^2/R$ est bien une accélération :
 
@@ -144,7 +152,7 @@ $$\left[\frac{v^2}{R}\right] = \frac{(\text{L}\cdot\text{T}^{-1})^2}{\text{L}} =
 
 soit des mètres par seconde carrée.
 
-(Un mot d'orthographe : les sujets écrivent souvent la base $(\vec u\,;\,\vec n)$ et les composantes $a_\tau$, $a_n$, et ils impriment presque toujours « Freinet » — du nom d'un pédagogue sans rapport — là où le mathématicien qui a construit cette base s'appelle en réalité Frenet. Les deux graphies circulent le jour de l'examen ; reconnais-les.)
+**Les notations des sujets.** La même base s'écrit aussi $(\vec u\,;\,\vec n)$ ou $(\vec\tau\,;\,\vec n)$, et la même relation $\vec a = a_\tau\,\vec\tau + a_n\,\vec n$, avec $a_\tau = dv/dt$ et $a_n = v^2/R$. Méfie-toi d'une lettre : certains sujets (les satellites, plus tard dans l'année) appellent $\vec u$ le vecteur unitaire **radial sortant**, qui s'éloigne du centre — l'opposé de $\vec n$. Lis la figure avant d'écrire un signe. Et les sujets impriment « Freinet » là où le mathématicien s'appelait Frenet : c'est la même base.
 
 ### La nature du mouvement : le signe de $\vec a\cdot\vec v$
 
@@ -162,11 +170,17 @@ Et **uniforme ne veut pas dire $\vec a = \vec 0$** : dans le tremplin, à vitess
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* retrouver à la main ce que la scène affiche, et voir ce qui change vraiment entre deux pilotages opposés.
 
-À l'entrée du tremplin ($R = 20\ \text{m}$), la moto file à $v = 18\ \text{m}\cdot\text{s}^{-1}$. **Gaz gardés**, $dv/dt = +4{,}5\ \text{m}\cdot\text{s}^{-2}$ :
+À l'entrée du tremplin — le sujet ne donne pas son rayon ; on prend $R = 20\ \text{m}$ —, la moto file à $v = 18\ \text{m}\cdot\text{s}^{-1}$. **Gaz gardés**, $dv/dt = +4{,}5\ \text{m}\cdot\text{s}^{-2}$.
+
+D'abord la composante normale, parce qu'elle ne dépend que de $v$ et de $R$ — pas du pilotage :
 
 $$a_N = \frac{18^2}{20} = 16{,}2\ \text{m}\cdot\text{s}^{-2}$$
 
+Ensuite la norme. Les deux composantes sont **perpendiculaires** — l'une le long de la piste, l'autre vers le centre : elles ne s'ajoutent pas comme deux nombres ($16{,}2 + 4{,}5 = 20{,}7$ serait faux). Elles ferment un rectangle dont $\vec a$ est la diagonale, d'où Pythagore :
+
 $$\|\vec a\| = \sqrt{16{,}2^2 + 4{,}5^2} = \sqrt{282{,}69} = 16{,}8\ \text{m}\cdot\text{s}^{-2}$$
+
+Enfin la nature du mouvement, lue sur le signe du produit — la composante normale n'y entre pas :
 
 $$\vec a\cdot\vec v = 4{,}5 \times 18 = +81{,}0\ \text{m}^2\cdot\text{s}^{-3}$$
 

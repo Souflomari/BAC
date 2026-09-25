@@ -33,7 +33,7 @@
             "id": "nulle",
             "texte": "sera **nul** : la vitesse ne change pas, donc il n'y a pas d'accélération",
             "juste": false,
-            "retour": "Regarde le compteur pendant toute la course : **18,0** du début à la fin, et pourtant une flèche est apparue en B. Elle mesure **16,2 m·s⁻²** — plus de **trois fois et demie** l'accélération que la moto avait sur la partie droite, dans le sujet. Ce qui ne change pas, c'est le **nombre** 18. Le **vecteur** vitesse, lui, va tourner de **28°** entre B et C : même longueur, autre direction. Et l'accélération mesure la variation du **vecteur**, pas celle du nombre.",
+            "retour": "Regarde le compteur pendant toute la course : **18,0** du début à la fin, et pourtant une flèche est apparue en B. Elle mesure **16,2 m·s⁻²** — plus de **trois fois et demie** les **4,5 m·s⁻²** que le sujet donne à la moto sur la partie droite. Ce qui ne change pas, c'est le **nombre** 18. Le **vecteur** vitesse, lui, va tourner de **28°** entre B et C : même longueur, autre direction. Et l'accélération mesure la variation du **vecteur**, pas celle du nombre.",
             "misconception": "mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre"
           },
           {
@@ -47,7 +47,7 @@
             "id": "vers-le-centre",
             "texte": "sera **perpendiculaire** à la piste, dirigé vers l'**intérieur** du virage",
             "juste": true,
-            "retour": "Oui. La flèche pointe vers le **centre** du tremplin — le centre du cercle dont l'arc B-C est une portion — et vaut **16,2 m·s⁻²**. C'est la **composante normale** de l'accélération, $a_N$, portée par le vecteur unitaire $\\vec u_N$ qui va, par définition, **vers le centre de courbure**. Elle n'existe que là où la trajectoire tourne : sur la droite, pendant la course, aucune flèche n'est apparue."
+            "retour": "Oui. La flèche pointe vers le **centre** du tremplin — le centre du cercle dont l'arc B-C est une portion — et vaut **16,2 m·s⁻²**. C'est la **composante normale** de l'accélération, $a_N$, portée par le vecteur unitaire $\\vec u_N$ qui va, par définition, **vers le centre de courbure**. Elle n'existe que là où la trajectoire tourne : sur la droite, pendant la course, aucune flèche n'est apparue. Pourquoi vers le centre ? Parce que la variation du vecteur vitesse pointe du côté où il tourne : une accélération vers l'extérieur courberait la trajectoire dans l'autre sens."
           },
           {
             "id": "vers-lexterieur",
@@ -97,7 +97,7 @@
             "id": "quatre-fois",
             "texte": "**16,2 m·s⁻²** — quatre fois plus",
             "juste": true,
-            "retour": "Oui, et retiens la forme exacte de ce résultat : c'est **$v$ au carré** qui est au numérateur. Doubler la vitesse **quadruple** la composante normale. Parcours les trois vitesses sans toucher au tremplin : **4,05**, **7,20**, **16,2** — et compare-les aux carrés 81, 144, 324. Les deux suites sont dans le même rapport."
+            "retour": "Oui, et retiens la forme exacte de ce résultat : c'est **$v$ au carré** qui est au numérateur. Doubler la vitesse **quadruple** la composante normale. Pourquoi deux fois deux ? La moto passe deux fois plus vite par chaque point du virage, donc sa direction doit tourner deux fois plus vite ; et le vecteur qui tourne est deux fois plus long. Deux effets qui se multiplient. Parcours les trois vitesses sans toucher au tremplin : **4,05**, **7,20**, **16,2** — et compare-les aux carrés 81, 144, 324. Les deux suites sont dans le même rapport."
           },
           {
             "id": "inchangee",
@@ -155,7 +155,7 @@
             "id": "double",
             "texte": "**21,6 m·s⁻²** — deux fois plus",
             "juste": true,
-            "retour": "Oui, et la relation est maintenant complète, puisqu'on a fait varier les deux grandeurs : $$a_N = \\dfrac{v^2}{R}$$ La vitesse **au carré** au numérateur, le **rayon de courbure** au dénominateur. Vérifie-la sans division : multiplie les deux nombres affichés. $10{,}8\\times30 = 324$ ; $21{,}6\\times15 = 324$. Et $324$, c'est $18^2$ — le carré de la vitesse au compteur."
+            "retour": "Oui, et la relation est maintenant complète, puisqu'on a fait varier les deux grandeurs : $$a_N = \\dfrac{v^2}{R}$$ La vitesse **au carré** au numérateur, le **rayon de courbure** au dénominateur. Pourquoi au premier degré ? Un virage deux fois plus serré fait tourner la direction deux fois plus à chaque mètre parcouru — deux fois, pas quatre. Vérifie-la sans division : multiplie les deux nombres affichés. $10{,}8\\times30 = 324$ ; $21{,}6\\times15 = 324$. Et $324$, c'est $18^2$ — le carré de la vitesse au compteur."
           },
           {
             "id": "quatre-fois",
