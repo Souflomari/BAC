@@ -3652,6 +3652,9 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "LDN-37": [
       "mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre"
     ],
+    "LDN-38": [
+      "mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre"
+    ],
     "LDN-4": [
       "mc.physics.pc_lois_newton.action-reaction-inegale-ou-conditionnelle",
       "mc.physics.pc_lois_newton.action-reaction-meme-corps"

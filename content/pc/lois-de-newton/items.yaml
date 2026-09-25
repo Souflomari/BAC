@@ -136,7 +136,7 @@ misconceptions:
   - id: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
     label: "L'accélération traitée comme un NOMBRE : dérivée de la vitesse-nombre, sans composante normale, et dont le signe seul dirait la nature du mouvement"
     description: >-
-      L'élève dérive la NORME de la vitesse au lieu du VECTEUR vitesse. Quatre
+      L'élève dérive la NORME de la vitesse au lieu du VECTEUR vitesse. Cinq
       formes. Forme A — une seule composante : à norme constante dans un virage il
       conclut a = 0 (la direction qui tourne ne compte pas), ou, quand la norme
       varie, il laisse l'accélération inchangée (la composante tangentielle ne
@@ -147,6 +147,10 @@ misconceptions:
       Forme D — la nature lue sur un nombre : « accéléré » parce que a n'est pas
       nul, ou la norme de a prise égale à sa seule composante tangentielle ; alors
       que la nature se lit sur le SIGNE de a·v, qui ne dépend d'aucun axe choisi.
+      Forme E — la composition perdue : ‖a‖ obtenue en additionnant ou en
+      soustrayant a_T et a_N comme deux nombres, alors que ce sont deux
+      composantes PERPENDICULAIRES d'un même vecteur, composées par Pythagore
+      (‖a‖ = √(a_T² + a_N²)), jamais par une somme ou une différence algébrique.
       Ce modèle répond CORRECTEMENT à tout exercice RECTILIGNE — c'est-à-dire aux
       33 items et aux 6 entrées de banque actuelles de la notion : sur une droite,
       dériver la norme ou le vecteur revient au même au signe près. Il ne se révèle
@@ -2502,6 +2506,15 @@ items:
   # lieu du VECTEUR, structurellement invisible sur les 33 items rectilignes
   # existants (il y répond juste). Placés AVANT l'énoncé de la deuxième loi :
   # aucune force, aucune masse, aucun newton, aucune « centripète/centrifuge ».
+  # RÉVISÉS le 2026-09-25 — revue vague 1 (item-author) : LDN-37 ne
+  # discriminait pas le modèle (stem rectiligne, où a_N est structurellement
+  # nul) — réécrit sur le tremplin (arc), gaz puis freinage, a_N non nul et
+  # qui disparaît du produit a·v. La clause « quel que soit l'axe choisi »,
+  # seul absolu des quatre clés, déplacée du choix A vers le tronc. LDN-34 :
+  # formule + valeur retirées de la clé (seule à les porter). LDN-36 : le
+  # dos d'âne nommé « arc de cercle » (le bac ne donne un rayon de courbure
+  # que pour un arc). AJOUT de LDN-38 (R8, la composition ‖a‖=√(a_T²+a_N²),
+  # Forme E déclarée ci-dessus) : CINQ items (LDN-34 à LDN-38).
   - id: LDN-34
     rung: "R3"
     difficulty_level: 2
@@ -2517,8 +2530,8 @@ items:
     choices:
       - id: A
         text: >-
-          Non nul, perpendiculaire à la vitesse, dirigé vers le centre du
-          tremplin, de norme $v^2/R = 16{,}2\ \text{m/s}^2$.
+          Non nul, perpendiculaire à la vitesse, et dirigé vers le centre
+          du tremplin.
         correct: true
       - id: B
         text: >-
@@ -2650,10 +2663,10 @@ items:
     tags: []
     primary_misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
     stem: >
-      Une voiture franchit le sommet d'un dos d'âne dont le rayon de
-      courbure vaut $R = 50\ \text{m}$, à la vitesse constante de
-      $20\ \text{m/s}$. Au sommet, quelle est la direction de la composante
-      normale de son accélération, et quelle est sa valeur ?
+      Une voiture franchit le sommet d'un dos d'âne, modélisé au sommet par
+      un arc de cercle de rayon $R = 50\ \text{m}$, à la vitesse constante
+      de $20\ \text{m/s}$. Au sommet, quelle est la direction de la
+      composante normale de son accélération, et quelle est sa valeur ?
     type: mcq
     choices:
       - id: A
@@ -2719,72 +2732,172 @@ items:
     tags: []
     primary_misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
     stem: >
-      Sur la partie rectiligne inclinée de sa piste, un motard accélère
-      ($dv/dt > 0$) ; plus loin, sur une portion horizontale, il freine
-      ($dv/dt < 0$). Dans les deux cas, on calcule le produit scalaire
-      $\vec a\cdot\vec v$. Que peut-on en dire ?
+      Sur le tremplin circulaire de rayon $R = 20\ \text{m}$, au même point
+      de l'arc, la moto passe deux fois à $v = 18\ \text{m/s}$ : une fois
+      moteur relancé ($dv/dt = +4{,}5\ \text{m/s}^2$), une fois freins
+      serrés ($dv/dt = -4{,}5\ \text{m/s}^2$). Pour savoir si le mouvement
+      est accéléré ou retardé, on calcule le produit scalaire
+      $\vec a\cdot\vec v$. Que vaut-il dans chaque cas ?
     type: mcq
     choices:
       - id: A
         text: >-
-          $\vec a\cdot\vec v$ est positif quand la vitesse croît, négatif
-          quand elle diminue, quel que soit l'axe choisi.
+          $+81{,}0\ \text{m}^2/\text{s}^3$ moteur relancé (mouvement
+          accéléré), puis $-81{,}0\ \text{m}^2/\text{s}^3$ au freinage
+          (mouvement retardé) : le signe suit celui de $dv/dt$, quel que
+          soit l'axe choisi.
         correct: true
       - id: B
         text: >-
-          $\vec a\cdot\vec v$ est toujours positif, puisque le
-          motard avance dans les deux cas.
+          $+81{,}0\ \text{m}^2/\text{s}^3$ dans les deux cas : tant que la
+          moto avance, le produit est toujours positif.
         correct: false
         misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
         feedback: >
-          $\vec a\cdot\vec v$ ne dit pas dans quel sens on avance : il dit
-          si la norme de la vitesse grandit ou diminue. Il vaut
-          $\dfrac{dv}{dt}\,v$, avec $v>0$ : son signe est celui de $dv/dt$,
-          pas celui du déplacement.
+          $\vec a\cdot\vec v$ ne dit pas dans quel sens la moto avance : il
+          dit si la norme de la vitesse grandit ou diminue. Il vaut
+          $a_T\,v$, avec $v>0$ : son signe est celui de $dv/dt$, pas celui
+          du déplacement — ici $dv/dt$ change de signe entre les deux
+          passages, donc $\vec a\cdot\vec v$ aussi.
       - id: C
         text: >-
-          Au freinage, le signe dépend de l'axe choisi : orienté vers
-          l'arrière, cet axe rend $\vec a\cdot\vec v$ positif.
+          Au freinage, $\vec a\cdot\vec v$ devient
+          $+81{,}0\ \text{m}^2/\text{s}^3$ si l'on choisit un axe orienté
+          vers l'arrière : le signe dépend de l'axe.
         correct: false
         misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
         feedback: >
-          C'est le signe d'une composante qui dépend de l'axe choisi ; un
-          produit scalaire de deux vecteurs n'en dépend pas. C'est
-          exactement pour cette raison que le programme demande ce produit
-          plutôt qu'un signe de composante.
+          C'est le signe d'une COMPOSANTE qui dépend de l'axe choisi pour
+          projeter $\vec a$ ; le produit scalaire $\vec a\cdot\vec v$, lui,
+          n'en dépend pas — c'est exactement pour cette raison que le
+          programme demande ce produit plutôt qu'un signe de composante.
       - id: D
         text: >-
-          Au freinage, $\vec a\cdot\vec v$ est nul, car $\vec a$ et
-          $\vec v$ sont de sens opposés.
+          $\|\vec a\| = 16{,}8\ \text{m/s}^2$ dans les deux cas : la norme
+          de l'accélération ne changeant pas, la nature du mouvement ne
+          change pas non plus.
         correct: false
         misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
         feedback: >
-          Le produit scalaire s'annule quand les deux vecteurs sont
-          perpendiculaires, pas quand ils sont de sens opposés. De sens
-          opposés, il est au contraire négatif, et sa valeur absolue est
-          maximale.
+          La norme $\|\vec a\| = \sqrt{a_T^2+a_N^2}$ est en effet la même
+          aux gaz et au freinage (la composante normale
+          $a_N = 16{,}2\ \text{m/s}^2$ ne dépend pas du régime) — mais la
+          NATURE du mouvement ne se lit pas sur cette norme : elle se lit
+          sur le SIGNE de $\vec a\cdot\vec v = a_T\,v$, qui change avec
+          $dv/dt$. Deux mouvements de natures opposées peuvent avoir
+          exactement la même norme d'accélération.
     correct_feedback: >
-      $\vec a\cdot\vec v = \dfrac{dv}{dt}\,v$, car la composante normale de
-      $\vec a$ est perpendiculaire à $\vec v$ et disparaît du produit.
-      Comme $v>0$ toujours, le signe de $\vec a\cdot\vec v$ est celui de
-      $dv/dt$ : positif à l'accélération, négatif au freinage — et ceci ne
-      dépend du choix d'aucun axe.
+      $\vec a\cdot\vec v = a_T\,v$, car la composante normale, perpendiculaire
+      à $\vec v$, ne contribue pas au produit scalaire. Avec
+      $v = 18\ \text{m/s} > 0$ dans les deux cas, le signe de
+      $\vec a\cdot\vec v$ est exactement celui de $dv/dt$ :
+      $+81{,}0\ \text{m}^2/\text{s}^3$ moteur relancé (accéléré),
+      $-81{,}0\ \text{m}^2/\text{s}^3$ au freinage (retardé) — sans qu'aucun
+      axe n'ait dû être choisi.
     solution: |
-      **Le produit scalaire, terme à terme.** Dans une base liée à la
-      trajectoire, $\vec a = \dfrac{dv}{dt}\vec u_T + \dfrac{v^2}{R}\vec
-      u_N$ et $\vec v = v\,\vec u_T$. Comme $\vec u_N$ est perpendiculaire
-      à $\vec u_T$ :
+      **Le produit scalaire, terme à terme.** Dans la base de Freinet,
+      $\vec a = \dfrac{dv}{dt}\vec u_T + \dfrac{v^2}{R}\vec u_N$ et
+      $\vec v = v\,\vec u_T$. Comme $\vec u_N$ est perpendiculaire à
+      $\vec u_T$ :
       $$\vec a\cdot\vec v = \left(\frac{dv}{dt}\vec u_T + \frac{v^2}{R}\vec u_N\right)\cdot\left(v\,\vec u_T\right) = \frac{dv}{dt}\,v$$
 
-      **Le signe.** Avec $v>0$ toujours, le signe de $\vec a\cdot\vec v$
-      est exactement celui de $dv/dt$ : positif à la montée en vitesse,
-      négatif au freinage, nul à vitesse tenue.
+      La composante normale $a_N = v^2/R = 18^2/20 = 16{,}2\ \text{m/s}^2$
+      existe bel et bien ici (la trajectoire est un arc, pas une droite) —
+      mais elle DISPARAÎT du produit, précisément parce qu'elle est
+      perpendiculaire à $\vec v$.
 
-      **Pourquoi ce produit, et pas un signe de composante.** Une
-      composante de $\vec a$ change de signe selon l'axe choisi pour la
-      projeter ; le produit scalaire $\vec a\cdot\vec v$, lui, ne dépend
-      d'aucun axe — c'est ce qui en fait un critère fiable pour lire la
-      nature d'un mouvement.
+      **L'application numérique.**
+      $$\text{moteur relancé : } \vec a\cdot\vec v = (+4{,}5)\times18 = +81{,}0\ \text{m}^2/\text{s}^3 \quad\text{(accéléré)}$$
+      $$\text{freinage : } \vec a\cdot\vec v = (-4{,}5)\times18 = -81{,}0\ \text{m}^2/\text{s}^3 \quad\text{(retardé)}$$
+
+      **Pourquoi ce produit, et pas un signe de composante, ni la norme de
+      $\vec a$.** Une composante de $\vec a$ change de signe selon l'axe
+      choisi pour la projeter ; le produit scalaire $\vec a\cdot\vec v$,
+      lui, ne dépend d'aucun axe. Et la norme
+      $\|\vec a\| = \sqrt{a_T^2+a_N^2} = 16{,}8\ \text{m/s}^2$ est la MÊME
+      dans les deux régimes : c'est le signe de $\vec a\cdot\vec v$, pas sa
+      valeur absolue ni celle de $\vec a$, qui distingue accéléré de
+      retardé.
+
+  # Ajouté le 2026-09-25 — revue vague 1, cinquième item du vingtième
+  # modèle : la COMPOSITION des deux composantes (Pythagore), qu'aucun des
+  # quatre premiers n'exerçait. Situation S5 du descripteur de scène
+  # (v = 12 m/s en B, R = 20 m, freinage).
+  - id: LDN-38
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+    stem: >
+      Sur le tremplin circulaire de rayon $R = 20\ \text{m}$, au point
+      d'entrée $B$, la moto roule à $v = 12\ \text{m/s}$ et freine
+      ($dv/dt = -4{,}50\ \text{m/s}^2$). Quelle est la norme du vecteur
+      accélération en ce point ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\|\vec a\| = \sqrt{a_T^2+a_N^2} = \sqrt{4{,}50^2+7{,}20^2} =
+          8{,}49\ \text{m/s}^2$
+        correct: true
+      - id: B
+        text: >-
+          $\|\vec a\| = a_T + a_N = 4{,}50+7{,}20 = 11{,}7\ \text{m/s}^2$
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          $a_T$ et $a_N$ sont deux composantes PERPENDICULAIRES d'un même
+          vecteur (l'une tangente à la trajectoire, l'autre normale, vers
+          le centre) : les additionner comme deux nombres revient à les
+          traiter comme colinéaires. Seul le théorème de Pythagore compose
+          deux vecteurs orthogonaux — $\|\vec a\| = \sqrt{a_T^2+a_N^2}$ —,
+          et cette norme est plus petite que la somme des deux normes.
+      - id: C
+        text: >-
+          $\|\vec a\| = a_N - a_T = 7{,}20-4{,}50 = 2{,}70\ \text{m/s}^2$
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          Soustraire une composante de l'autre ne donnerait la norme de
+          leur somme que si $a_T$ et $a_N$ étaient colinéaires, de sens
+          opposés. Ici elles sont PERPENDICULAIRES ($\vec u_T \perp
+          \vec u_N$ par construction de la base de Freinet) : ni la somme
+          ni la différence de leurs normes ne composent correctement deux
+          vecteurs orthogonaux — seul $\sqrt{a_T^2+a_N^2}$ le fait.
+      - id: D
+        text: >-
+          $\|\vec a\| = a_T = 4{,}50\ \text{m/s}^2$ (seule la composante
+          tangentielle)
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          Cette composante traduit bien le freinage, mais elle n'est pas
+          seule : la trajectoire est courbe ici, donc une composante
+          normale $a_N = v^2/R = 12^2/20 = 7{,}20\ \text{m/s}^2$ existe
+          aussi — et elle est même plus grande que $a_T$ en valeur absolue.
+          La norme du vecteur accélération combine les deux composantes
+          par Pythagore, pas la seule composante tangentielle.
+    correct_feedback: >
+      $a_T$ et $a_N$ sont les deux composantes du vecteur $\vec a$ dans la
+      base de Freinet, et elles sont perpendiculaires par construction : la
+      norme de leur somme vectorielle suit le théorème de Pythagore, pas
+      une addition ou une soustraction algébrique.
+      $\|\vec a\| = \sqrt{4{,}50^2+7{,}20^2} = \sqrt{72{,}09} =
+      8{,}49\ \text{m/s}^2$.
+    solution: |
+      **Les deux composantes, dans la base de Freinet.**
+      $$a_T = \frac{dv}{dt} = -4{,}50\ \text{m/s}^2 \qquad a_N = \frac{v^2}{R} = \frac{12^2}{20} = \frac{144}{20} = 7{,}20\ \text{m/s}^2$$
+
+      **Pourquoi Pythagore, et pas une somme.** $\vec u_T$ et $\vec u_N$
+      sont, par construction, perpendiculaires : $\vec a = a_T\vec u_T +
+      a_N\vec u_N$ est la somme de deux vecteurs orthogonaux, dont la norme
+      se calcule comme l'hypoténuse d'un triangle rectangle de côtés
+      $|a_T|$ et $a_N$ — jamais comme une somme ou une différence
+      algébrique de deux nombres.
+
+      **Le calcul.**
+      $$\|\vec a\| = \sqrt{a_T^2+a_N^2} = \sqrt{(-4{,}50)^2+7{,}20^2} = \sqrt{20{,}25+51{,}84} = \sqrt{72{,}09} = 8{,}49\ \text{m/s}^2$$
 
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après LDN-28 à LDN-33. Dix familles siégeaient sous le
@@ -2792,6 +2905,9 @@ items:
 # galiléen, le caractère vectoriel de la vitesse, le bilan des forces, l'idée
 # qu'ôter le frottement accélère — et cinq erreurs de calcul ou de lecture des
 # trois lois. Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
+# MIS À JOUR À LA MAIN le 2026-09-25, revue vague 1 : ajout de LDN-38
+# (acceleration-traitee-comme-un-nombre, Forme E — la composition). Aucun
+# autre item retiré ni déplacé ; les dix-neuf autres comptes sont inchangés.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -2819,8 +2935,8 @@ coverage_summary:
     mc.physics.pc_lois_newton.projection-plan-incline:                   { count: 3, items: [LDN-6, LDN-23, LDN-24] }
     mc.physics.pc_lois_newton.frottement-mal-traite:                     { count: 5, items: [LDN-6, LDN-13, LDN-20, LDN-25, LDN-26] }
     mc.physics.pc_lois_newton.frottement-absent-accelere:                { count: 3, items: [LDN-7, LDN-29, LDN-31] }
-    mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre:      { count: 4, items: [LDN-34, LDN-35, LDN-36, LDN-37] }
-  total_items: 37
+    mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre:      { count: 5, items: [LDN-34, LDN-35, LDN-36, LDN-37, LDN-38] }
+  total_items: 38
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2832,10 +2948,21 @@ coverage_summary:
     R5: 4
     R6: 4
     R7: 3
-    R8: 5
+    R8: 6
   honest_state: >-
     Les vingt misconceptions déclarées sont couvertes, aucune sous le
     plancher. Quatorze y siègent EXACTEMENT (3 items) : la marge est nulle
     et tout retrait d'item la casse. La vingtième,
     acceleration-traitee-comme-un-nombre (2026-09-24, le tremplin
-    circulaire), en a quatre : marge 1.
+    circulaire ; complétée le 2026-09-25 par LDN-38, la composition
+    ‖a‖ = √(a_T² + a_N²)), en a désormais cinq : marge 2, au même niveau que
+    referentiel-toujours-galileen et frottement-mal-traite (5 chacune) et
+    loin derrière force-entretient-mouvement (7). Les trois distracteurs de
+    LDN-38 qui composent a_T et a_N par somme ou différence (au lieu de
+    Pythagore) sont tagués sous ce même modèle plutôt que sous
+    resultante-mal-composee : la description déclarée de ce dernier vise
+    spécifiquement la composition de FORCES colinéaires de sens opposés (et
+    la division par la mauvaise grandeur), pas la composition de deux
+    composantes d'accélération PERPENDICULAIRES — un mécanisme différent,
+    même si le geste fautif (additionner au lieu de composer) se
+    ressemble. Signalé pour revue plutôt que tranché en silence.

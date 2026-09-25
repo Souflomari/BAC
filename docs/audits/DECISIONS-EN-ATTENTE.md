@@ -1337,3 +1337,33 @@ en tête de la spec, pas ici.
     pas « commun »).
 22. **`--figure-surface` en blanc pur** (la bible l'interdit) : un jeton de TOUTES les
     figures ; au registre de dette, pas dans cette scène.
+
+**LA VAGUE 1 (fidélité bac, pédagogie), sur ce que d6de1457 a ajouté — aucun
+bloquant, tous les nombres recalculés justes.** Appliqué (81c030fe et le commit
+qui suit) : le POURQUOI de $v^2/R$ et du sens vers le centre, dans la prose et dans
+les trois retours justes (il n'existait que dans les distracteurs, que l'élève qui
+parie juste ne lit jamais) ; les coordonnées cartésiennes de $\vec a$, moitié du
+savoir-faire du cadre ; l'exemple annoté geste par geste ; les notations des sujets
+et le piège du $\vec u$ radial sortant ; R = 20 m dit choisi ; LDN-37 reposé sur le
+tremplin (sur une droite, il ne pouvait pas révéler son modèle) ; LDN-34 sans
+indice de forme ; LDN-36 en arc de cercle ; **LDN-38, neuf** : la norme par
+Pythagore, que la scène fait parier et qu'aucun item n'évaluait.
+
+23. **L'absolu de la clé de LDN-37 (« quel que soit l'axe choisi ») est GARDÉ**,
+    contre la critique pédagogique (« indice inversé ») : déplacé dans l'énoncé, il
+    rendait le distracteur C (« le signe dépend de l'axe ») faux PAR L'ÉNONCÉ ; et
+    le cliquet `indice-absolu` mesure l'absolu VRAI d'une clé comme le sens qui ne
+    paie pas l'élève rusé. Le distracteur B porte l'absolu qui EST son erreur
+    (« toujours positif tant que la moto avance »). Cliquet tenu, `eleve-ruse` tenu.
+24. **Le modèle de LDN-38** : ses trois distracteurs (somme, différence, $a_T$ seul)
+    sont étiquetés `acceleration-traitee-comme-un-nombre`, dont la description gagne
+    une **forme E — la composition perdue** ; pas `resultante-mal-composee`, dont la
+    description parle de forces COLINÉAIRES de sens opposés. **Au propriétaire** : un
+    jugement, pas un fait — la « résultante mal composée » pourrait s'élargir aux
+    vecteurs perpendiculaires, et les trois choix y migreraient.
+25. **Non appliqué, et écrit** : un item à document expérimental (0 % d'application
+    expérimentale dans la notion — la table de mesures reste due, spec §8.4) ; la
+    rampe jusqu'à un sujet réel qui demande Freinet ou $\vec a\cdot\vec v$ (la
+    Partie II du sujet 2019 n'est pas transcrite — spec §8.4) ; un champ de FORME
+    par distracteur (la granularité A–E : une décision de schéma) ; `m/s` contre
+    `m·s⁻¹` dans les items (convention du fichier, à trancher pour tout le corpus).
