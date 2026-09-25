@@ -20,16 +20,16 @@ misconceptions:
   - id: M-OSC-FORM-1
     label: "Formule de la période propre inversée, ou dépouillée de son 2π et de sa racine"
     description: >-
-      L'élève écrit $T_0 = \\sqrt{m/k}$ sans le $2\\pi$, met le rapport à
-      l'envers ($\\sqrt{k/m}$, $\\sqrt{C/J}$), oublie la racine, confond
-      $\\omega_0$ et $f_0$ (facteur $2\\pi$), ou applique au pendule pesant la
+      L'élève écrit $T_0 = \sqrt{m/k}$ sans le $2\pi$, met le rapport à
+      l'envers ($\sqrt{k/m}$, $\sqrt{C/J}$), oublie la racine, confond
+      $\omega_0$ et $f_0$ (facteur $2\pi$), ou applique au pendule pesant la
       formule du pendule simple.
     contradicts_principle: >-
       Une même architecture pour les quatre oscillateurs :
-      $T_0 = 2\\pi\\sqrt{\\text{inertie}/\\text{rappel}}$ — $m/k$, $L/g$,
-      $J_\\Delta/(mgd)$, $J/C$ — d'où $\\omega_0 = \\sqrt{\\text{rappel}/\\text{inertie}}$
-      et $f_0 = \\omega_0/(2\\pi)$. Inverser le rapport, perdre la racine ou le
-      $2\\pi$ change l'ordre de grandeur du résultat.
+      $T_0 = 2\pi\sqrt{\text{inertie}/\text{rappel}}$ — $m/k$, $L/g$,
+      $J_\Delta/(mgd)$, $J/C$ — d'où $\omega_0 = \sqrt{\text{rappel}/\text{inertie}}$
+      et $f_0 = \omega_0/(2\pi)$. Inverser le rapport, perdre la racine ou le
+      $2\pi$ change l'ordre de grandeur du résultat.
   - id: M-OSC-RAID-1
     label: "« Plus raide, donc plus lent »"
     description: >-
@@ -38,7 +38,7 @@ misconceptions:
       l'oscillateur. Variante : la raideur n'interviendrait pas du tout.
     contradicts_principle: >-
       La raideur est le terme de RAPPEL, au dénominateur de la période :
-      $T_0 = 2\\pi\\sqrt{m/k}$. Un rappel plus fort ramène plus vite vers
+      $T_0 = 2\pi\sqrt{m/k}$. Un rappel plus fort ramène plus vite vers
       l'équilibre, donc la période DIMINUE et l'oscillateur va plus vite.
   - id: M-OSC-EQD-1
     label: "Équation différentielle de l'oscillateur mal posée"
@@ -46,7 +46,7 @@ misconceptions:
       L'élève écrit un signe $-$ devant le terme de rappel, laisse un second
       membre non nul ($mg$), ou n'écrit qu'une dérivée première.
     contradicts_principle: >-
-      La deuxième loi de Newton projetée donne $\\ddot{x} + \\dfrac{k}{m}x = 0$ :
+      La deuxième loi de Newton projetée donne $\ddot{x} + \dfrac{k}{m}x = 0$ :
       dérivée SECONDE, signe $+$ devant le terme de rappel (c'est lui qui ramène
       vers l'équilibre), et second membre NUL sur un banc horizontal, où le
       poids est compensé par la réaction du support.
@@ -56,13 +56,13 @@ misconceptions:
       L'élève place l'énergie cinétique maximale aux extrémités, la croit
       constante, confond énergie potentielle élastique et de pesanteur selon
       l'oscillateur, fait varier $E_m$ comme l'amplitude plutôt que comme son
-      carré, ou oublie le facteur $\\frac12$.
+      carré, ou oublie le facteur $\frac12$.
     contradicts_principle: >-
       L'énergie mécanique se CONSERVE et s'échange : $E_c$ est maximale au
       passage par l'équilibre, nulle aux extrémités, où l'énergie potentielle
       est maximale. Cette énergie potentielle est ÉLASTIQUE pour un ressort
-      ($\\frac12 k x^2$), de PESANTEUR pour un pendule simple, de TORSION pour un
-      fil ($\\frac12 C\\theta^2$). Et $E_m \\propto X_m^2$ : doubler l'amplitude
+      ($\frac12 k x^2$), de PESANTEUR pour un pendule simple, de TORSION pour un
+      fil ($\frac12 C\theta^2$). Et $E_m \propto X_m^2$ : doubler l'amplitude
       quadruple l'énergie.
   - id: M-OSC-LIBRE-1
     label: "Un oscillateur libre sans frottement s'arrêterait — ou s'amplifierait"
@@ -79,12 +79,12 @@ misconceptions:
   - id: M-OSC-PHASE-1
     label: "Phase à l'origine lue sans le sens du lancer"
     description: >-
-      L'élève choisit le signe de $\\varphi$ au hasard, ou juge qu'on ne peut la
+      L'élève choisit le signe de $\varphi$ au hasard, ou juge qu'on ne peut la
       déterminer sans connaître d'abord l'amplitude.
     contradicts_principle: >-
-      $\\varphi$ se lit dans les CONDITIONS INITIALES, position ET sens de la
+      $\varphi$ se lit dans les CONDITIONS INITIALES, position ET sens de la
       vitesse : un lancer depuis l'équilibre dans le sens positif impose
-      $x(0)=0$ et $\\dot{x}(0)>0$, donc $\\varphi = -\\pi/2$. L'amplitude, elle,
+      $x(0)=0$ et $\dot{x}(0)>0$, donc $\varphi = -\pi/2$. L'amplitude, elle,
       n'intervient pas dans ce choix.
   - id: M-OSC-AMO-1
     label: "Amortissement confondu avec une dérive de la période"
