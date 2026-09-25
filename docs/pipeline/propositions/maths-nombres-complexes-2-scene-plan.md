@@ -1252,7 +1252,9 @@ mouvement réel et il est mesuré comme tel** : deux traits fins et un arc qui g
 produisent aucune paire de variations opposées sur une fenêtre de 10° (le critère WCAG 2.3.1
 porte sur des surfaces, pas sur des traits) — *attendu vide, mesuré quand même, et sous
 `prefers-reduced-motion` le balayage est remplacé par **trois positions discrètes
-supplémentaires**, sans continuum.* **Aucune courbe tracée**, donc aucune grille glissante
+supplémentaires**, sans continuum.* **[Remplacé à la construction — bloc « Ce que la
+construction a changé », point 2 : sous `prefers-reduced-motion`, rien ne change, le
+balayage étant une manipulation directe ; ces trois positions ne sont pas construites.]** **Aucune courbe tracée**, donc aucune grille glissante
 à surveiller (règle de la corde).
 
 **Aucune trace entre étapes** : chaque étape repart de son état déclaré. **Aucune VUE** : la
