@@ -62,7 +62,16 @@ plutôt que corrigé en douce :**
   restait dans le texte du panneau, et le texte fuit (§7.6). Le repère de S5 dit « ici,
   $C_0$ se vide » : « ici, le condensateur se vide » faisait six divisions au téléphone
   et couvrait la crête de $u_C$ que l'étape fait regarder ; les cercles d'accent sont
-  des obstacles pour les étiquettes. **Ce qui n'est pas armé** : M3 (la frontière exacte du décrochage) —
+  des obstacles pour les étiquettes.
+- **La vague 2 (dessin, calme, ergonomie, cohérence ; HANDOFF §11.207)** : la grille à
+  3:1 (le §6 disait « quadrillage à 30 % » : 1,62:1, sous le plancher des objets
+  graphiques — elle reste sous les tracés) et les traits fins à sa teinte ; l'enveloppe
+  de départ plus légère que le tracé vivant ; UNE bosse entourée ; « 20 oscillations »
+  dans la rangée de calibration et la cote de période au-dessus de l'écran (sur le cadre,
+  leurs pastilles l'effaçaient) ; un renvoi du cercle à « ici, … » ; la légende $k$, $P_m$
+  à partir de S2 ; l'unité dans la légende des réglages, le nombre seul sur le cran ;
+  les lectures en clauses, en KaTeX, avec `\dfrac`, et le rapport $F/f$ après les taux ;
+  S1 sans gras sur la calibration, avec « sensibilité » et « balayage ». **Ce qui n'est pas armé** : M3 (la frontière exacte du décrochage) —
   cinq crans de rhéostat n'en approchent aucun à 5 % ; écrit dans l'en-tête de la porte.
 
 **Ce que ce document est.** Le cadrage pédagogique complet du **douzième**

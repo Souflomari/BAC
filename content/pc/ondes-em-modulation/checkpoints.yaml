@@ -202,9 +202,10 @@ checkpoints:
     lesson_placement: after_R3
 
     stem: |
-      Une porteuse d'amplitude $U_0 = 4\ \text{V}$ est modulée par un signal
-      d'amplitude maximale $S_m = 6\ \text{V}$. **Que vaut le taux de modulation,
-      et quelle est la qualité de la modulation ?**
+      La tension modulante appliquée au multiplieur a une composante continue
+      $U_0 = 4\ \text{V}$ et un signal d'amplitude maximale $S_m = 6\ \text{V}$.
+      **Que vaut le taux de modulation, et quelle est la qualité de la
+      modulation ?**
 
     type: mcq
 
@@ -215,9 +216,10 @@ checkpoints:
         correct: true
         feedback: |
           Exact. $m = S_m/U_0 = 1{,}5 > 1$ : c'est une surmodulation. Au pire
-          instant, l'amplitude instantanée $U_0 + s_m(t)$ vaudrait
-          $U_0 - S_m = -2\ \text{V}$, impossible pour une amplitude réelle :
-          l'enveloppe se déforme et ne reproduit plus fidèlement le signal.
+          instant, la tension modulante $U_0 + s_m(t)$ vaudrait
+          $U_0 - S_m = -2\ \text{V}$ : elle change de signe, et l'enveloppe,
+          qui la suit en valeur absolue, se replie — elle ne reproduit plus
+          fidèlement le signal.
 
       - id: B
         text: >-
@@ -226,7 +228,7 @@ checkpoints:
         misconception: mc.physics.pc_ondes_em_modulation.taux-modulation-calcul
         feedback: |
           Modèle détecté : rapport inversé. Le taux se définit comme
-          $m = S_m/U_0$ (le signal rapporté à la porteuse), pas l'inverse.
+          $m = S_m/U_0$ (le signal rapporté à la composante continue), pas l'inverse.
           Inverser le rapport masque justement la surmodulation réelle : ici
           $S_m > U_0$, donc $m = 6/4 = 1{,}5 > 1$.
 
@@ -247,7 +249,7 @@ checkpoints:
         misconception: mc.physics.pc_ondes_em_modulation.surmodulation-nature
         feedback: |
           Le calcul est juste, la conclusion inversée. La bonne modulation exige
-          $m < 1$ : au-delà, l'amplitude instantanée deviendrait négative à
+          $m < 1$ : au-delà, la tension modulante deviendrait négative à
           certains instants, ce qui **déforme** le signal (surmodulation) — ce
           n'est pas une modulation « meilleure », c'est une modulation ratée.
 

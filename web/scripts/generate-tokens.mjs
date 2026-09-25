@@ -47,8 +47,14 @@ const HEADER = `/* GENERATED FILE — DO NOT EDIT.
 `;
 
 /** One `selector { --k: v; … }` block. */
-function emitBlock(selector, vars) {
+function emitBlock(selector, vars, scheme = null) {
   const lines = Object.entries(vars).map(([k, v]) => `  ${k}: ${v};`);
+  // LE THÈME DIT AUSSI SON SCHÉMA AU NAVIGATEUR (vague 2 du banc de modulation,
+  // 2026-09-25). Sans `color-scheme`, les contrôles NATIFS (boutons radio, cases,
+  // barres de défilement) restaient peints en clair dans le thème sombre : un
+  // bouton radio NON coché y était un disque blanc plein — cinq crans de rhéostat
+  // qui avaient tous l'air cochés. Le bloc d'impression, plus bas, le remet en clair.
+  if (scheme) lines.push(`  color-scheme: ${scheme};`);
   return `${selector} {\n${lines.join("\n")}\n}\n`;
 }
 
@@ -89,7 +95,7 @@ function generate() {
       theme.selector === ":root"
         ? { ...theme.vars, ...invariant, ...motionVars() }
         : theme.vars;
-    return emitBlock(theme.selector, vars);
+    return emitBlock(theme.selector, vars, theme.selector === ".dark" ? "dark" : "light");
   });
   return `${HEADER}\n${blocks.join("\n")}\n${emitPrint()}`;
 }

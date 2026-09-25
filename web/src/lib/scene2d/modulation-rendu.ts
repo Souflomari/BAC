@@ -189,6 +189,7 @@ export function creerRenduModulation(canvas: HTMLCanvasElement, hote: HTMLElemen
       rep["borne-uS"] = P(xFin, ySortie);
       rep["nom-uS-montage"] = P((xb1 + xFin) / 2, ySortie);
       trait(xs1, yRail, xFin, yRail);
+      borne(xFin, yRail);
     } else {
       // l'étage de détection : diode, puis R0 ∥ C0 vers la masse, puis la voie 2
       trait(xb1, ySortie, xNoeud, ySortie);
@@ -232,7 +233,9 @@ export function creerRenduModulation(canvas: HTMLCanvasElement, hote: HTMLElemen
       borne(xFin, ySortie);
       rep["borne-uC"] = P(xFin, ySortie);
       rep["nom-uC-montage"] = P((xC + xFin) / 2, ySortie);
-      trait(xs1, yRail, xC, yRail);
+      // le rail va jusqu'à la borne de la voie, comme la sortie : un port à deux bornes
+      trait(xs1, yRail, xFin, yRail);
+      borne(xFin, yRail);
     }
     // la masse : un symbole sous le rail, entre les deux sources
     const xm = (xs1 + xs2) / 2;
@@ -263,8 +266,12 @@ export function creerRenduModulation(canvas: HTMLCanvasElement, hote: HTMLElemen
     // aux croisements (51 %) — même dans un seul chemin, Chromium les compose deux fois,
     // mesuré — et chaque nœud de la grille devient un point plus sombre qu'elle, un faux
     // sommet de tracé pour qui lit l'écran
+    // À 3:1 sur la surface (vague 2) : c'est une règle qu'on COMPTE (« 5,00 div »), un objet
+    // graphique porteur de sens — à 30 % d'encre douce, 1,62:1, elle disparaissait sous
+    // quarante oscillations. Toujours sous les tracés (u_S 7,8:1).
+    const teinteGrille = voile(jetons.encre, 0.47);
     c.lineWidth = 1;
-    c.strokeStyle = voile(jetons.encreDouce, 0.3);
+    c.strokeStyle = teinteGrille;
     c.beginPath();
     for (let k = 1; k < M.DIV_X; k++) {
       if (k === M.DIV_X / 2) continue;
@@ -277,14 +284,17 @@ export function creerRenduModulation(canvas: HTMLCanvasElement, hote: HTMLElemen
       c.lineTo(x1, net(y0 + k * d));
     }
     c.stroke();
-    // les deux axes médians, et leurs QUATRE traits fins par division (opaques, même raison)
-    c.strokeStyle = voile(jetons.encreDouce, 0.7);
+    // les deux axes médians (4,9:1), et leurs QUATRE traits fins par division à la teinte de
+    // la grille : plus fort, le peigne faisait de l'axe la bande la plus lourde de l'écran,
+    // là même où le tracé passe par zéro (vague 2, calme)
+    c.strokeStyle = voile(jetons.encre, 0.62);
     c.beginPath();
     c.moveTo(x0, net(yc));
     c.lineTo(x1, net(yc));
     c.moveTo(net(x0 + w / 2), y0);
     c.lineTo(net(x0 + w / 2), y1);
     c.stroke();
+    c.strokeStyle = teinteGrille;
     c.beginPath();
     for (let k = 1; k < M.DIV_X * M.SOUS_DIV; k++) {
       if (k % M.SOUS_DIV === 0) continue;
@@ -329,7 +339,9 @@ export function creerRenduModulation(canvas: HTMLCanvasElement, hote: HTMLElemen
     // l'enveloppe de DÉPART, en tirets d'encre, quand elle n'est plus la courante
     const ref = e.reference;
     if (ref && (ref.U0 !== r.U0 || ref.Sm !== r.Sm)) {
-      c.strokeStyle = css(jetons.encre, 0.85);
+      // PLUS LÉGÈRE que le tracé vivant (vague 2, dessin et calme d'accord) : à l'encre 0,85,
+      // le souvenir était 1,4 fois plus contrasté que le présent qu'on doit lire
+      c.strokeStyle = voile(jetons.encreDouce, 0.6);
       c.lineWidth = 1;
       tirets(true);
       for (const s of [1, -1]) {
@@ -407,6 +419,30 @@ export function creerRenduModulation(canvas: HTMLCanvasElement, hote: HTMLElemen
     /** un cercle d'accent est un OBSTACLE pour les étiquettes (ses deux diagonales) : sans quoi le
      *  nom « ici, C0 se vide » se posait sur son propre repère (porte, 390 px et 1 280 px) */
     const obstacleRond = (x: number, y: number, r: number) => segs.push([P(x - r, y - r), P(x + r, y + r)], [P(x - r, y + r), P(x + r, y - r)]);
+    /**
+     * Un RENVOI : un trait court d'accent qui part du cercle vers la diagonale où l'étiquette
+     * (de largeur ESTIMÉE `lEtiq`) tient hors des tracés et dans le plateau ; l'étiquette se
+     * pose au bout (repères `${nom}-ancre` et `${nom}-dir`). « ici » sans renvoi ne montrait
+     * rien : au téléphone, le nom tombait à 100 px de son cercle (vague 2, dessin).
+     */
+    const renvoi = (nom: string, x: number, y: number, lEtiq: number) => {
+      const hauteurE = 22, r = 7, L = 12;
+      const libre = (dx: number, dy: number) => {
+        const ex = x + (dx * (r + L)) / Math.SQRT2, ey = y + (dy * (r + L)) / Math.SQRT2;
+        const cx = ex + dx * (lEtiq / 2 + 5), cy = ey + dy * (hauteurE / 2 + 3);
+        const b = { x0: cx - lEtiq / 2 - 2, y0: cy - hauteurE / 2 - 2, x1: cx + lEtiq / 2 + 2, y1: cy + hauteurE / 2 + 2 };
+        if (b.x0 < 0 || b.y0 < RESERVE_LEGENDE || b.x1 > largeur || b.y1 > hauteur) return false;
+        return !zonesLibres.some((z) => z.x0 < b.x1 && b.x0 < z.x1 && z.y0 < b.y1 && b.y0 < z.y1);
+      };
+      const choix = ([[1, -1], [-1, -1], [1, 1], [-1, 1]] as const).find(([dx, dy]) => libre(dx, dy)) ?? ([1, -1] as const);
+      const [dx, dy] = choix;
+      const x1 = x + (dx * r) / Math.SQRT2, y1 = y + (dy * r) / Math.SQRT2;
+      const x2 = x + (dx * (r + L)) / Math.SQRT2, y2 = y + (dy * (r + L)) / Math.SQRT2;
+      c.lineWidth = 1.2;
+      trait(x1, y1, x2, y2);
+      rep[`${nom}-ancre`] = P(x2, y2);
+      rep[`${nom}-dir`] = P(dx, dy);
+    };
     const fleche = (xa: number, ya: number, xb: number, yb: number) => {
       const L = Math.hypot(xb - xa, yb - ya), ux = (xb - xa) / L, uy = (yb - ya) / L;
       c.beginPath();
@@ -437,7 +473,9 @@ export function creerRenduModulation(canvas: HTMLCanvasElement, hote: HTMLElemen
       fleche(X(ta), yf, X(tb), yf);
       rep["periode-a"] = P(X(ta), yf);
       rep["periode-b"] = P(X(tb), yf);
-      rep["cote-periode"] = P((X(ta) + X(tb)) / 2, yf);
+      // la cote se pose AU-DESSUS du cadre, dans l'intervalle : sur le trait du cadre, sa
+      // pastille l'effaçait (vague 2, dessin)
+      rep["cote-periode"] = P((X(ta) + X(tb)) / 2, y0 - 14);
     }
     if (e.marques.includes("comptage")) {
       // un crochet sur TOUTE la largeur : on compte sur l'écran entier
@@ -451,6 +489,9 @@ export function creerRenduModulation(canvas: HTMLCanvasElement, hote: HTMLElemen
       c.stroke();
       segs.push([P(x0, yk), P(x1, yk)]);
       rep["crochet-comptage"] = P((x0 + x1) / 2, yk);
+      // son nombre, dans la rangée de calibration, entre « V/div » et « ms/div » — là où un
+      // oscilloscope l'écrit, et hors du cadre qu'il effaçait
+      rep["cote-comptage"] = P((x0 + x1) / 2, y1 + 4);
     }
     if (e.marques.includes("extrema")) {
       // deux curseurs horizontaux, à U_max et U_min, et un crochet entre eux, dans la marge
@@ -482,7 +523,9 @@ export function creerRenduModulation(canvas: HTMLCanvasElement, hote: HTMLElemen
       });
       // la bosse retournée, entourée (m > 1 seulement : à m = 1, il n'y en a pas)
       if (zeros.length === 4) {
-        for (const [a, b, i] of [[zeros[0], zeros[1], 0], [zeros[2], zeros[3], 1]] as const) {
+        // UNE bosse entourée (spec §6, au singulier ; vague 2, calme) : la seconde, identique,
+        // l'œil la trouve seul — la marquer aussi faisait d'un repère une décoration
+        for (const [a, b, i] of [[zeros[0], zeros[1], 0]] as const) {
           const bosse = M.bosseSecondaire(r.U0, r.Sm);
           const cx = (X(a) + X(b)) / 2, rx = (X(b) - X(a)) / 2 - 7, ry = bosse * d + 6;
           if (rx > 4) {
@@ -512,6 +555,7 @@ export function creerRenduModulation(canvas: HTMLCanvasElement, hote: HTMLElemen
           c.stroke();
           obstacleRond(X(tp), Y(uC(tp)), 7);
           rep["decrochage"] = P(X(tp), Y(uC(tp)));
+          renvoi("decrochage", X(tp), Y(uC(tp)), 150);
         }
       }
       if (e.marques.includes("vidange")) {
@@ -534,6 +578,7 @@ export function creerRenduModulation(canvas: HTMLCanvasElement, hote: HTMLElemen
           c.stroke();
           obstacleRond(X(tp), Y(uC(tp)), 7);
           rep["vidange"] = P(X(tp), Y(uC(tp)));
+          renvoi("vidange", X(tp), Y(uC(tp)), 100);
         }
       }
     }
@@ -552,7 +597,8 @@ export function creerRenduModulation(canvas: HTMLCanvasElement, hote: HTMLElemen
     // au moins 80 px : deux fils d'entrée, leurs noms, les sources et le rail (à 62, au téléphone,
     // les deux entrées n'étaient qu'à 10 px l'une de l'autre une fois le nom de u(t) logé)
     const hMontage = Math.round(Math.max(80, Math.min(104, hauteur * 0.19)));
-    const intervalle = 20, calib = 24;
+    // 28 : la cote de période se pose dans l'intervalle, au-dessus du cadre
+    const intervalle = 28, calib = 24;
     const yEcran = RESERVE_LEGENDE + hMontage + intervalle;
     const dH = (hauteur - yEcran - calib) / M.DIV_Y;
     const dW = (largeur - 10 - MARGE_DROITE) / M.DIV_X;

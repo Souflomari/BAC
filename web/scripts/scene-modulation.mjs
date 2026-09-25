@@ -192,7 +192,10 @@ const classer = (q = panneau) => q.evaluate((el, J) => {
   const cf = chroma(...J.surface);
   const ca = chroma(...J.accent).map((x, i) => x - cf[i]), na = Math.hypot(...ca);
   const lf = lum(...J.surface), le = lum(...J.encre), ld = lum(...J.douce);
-  const forte = (le + ld) / 2, trait = lf - 0.5 * (lf - ld);
+  // un trait fin couvert à 30 % compte : une crête plate posée sur un DEMI-pixel se peint en deux
+  // rangées à 50 % (178 et 183 sur blanc, sonde) — au seuil de 50 %, la crête de U_min disparaissait
+  // à 39 px par division. La grille (plus sombre depuis la vague 2) est écartée par sa PLACE.
+  const forte = (le + ld) / 2, trait = lf - 0.3 * (lf - ld);
   const cls = new Uint8Array(cv.width * cv.height), L = new Float32Array(cv.width * cv.height);
   let accentN = 0, horsPalette = 0;
   for (let i = 0, k = 0; i < d.length; i += 4, k++) {
@@ -248,7 +251,13 @@ async function grilleLue(q = panneau) {
     const x0R = Math.ceil(hg.x + 2), x1R = Math.floor(bd.x - 2);
     const rangee = (Y) => { let n = 0; for (let X = x0R; X <= x1R; X++) if (sombre(X, Y)) n++; return n / (x1R - x0R + 1); };
     const horizontales = centres(Math.floor(hg.y - 3), Math.ceil(bd.y + 3), (Y) => rangee(Y) >= 0.6);
-    return { verticales, horizontales, hg, bd, dEst };
+    // LA TEINTE DE LA GRILLE, lue là où aucun tracé ne monte (la rangée à 3,8 div), sur les
+    // verticales intérieures hors axe : depuis la vague 2, la grille est à 3:1 — plus sombre que le
+    // seuil des tracés —, et un pixel de grille ne compte comme encre que s'il est NETTEMENT plus
+    // sombre qu'elle (un tracé qui la croise)
+    const lums = verticales.slice(1, -1).filter((_, i) => i !== 4).map((v) => L[yR * w + Math.round(v - 0.5)]).sort((a, b) => a - b);
+    const lumGrille = lums.length ? lums[Math.floor(lums.length / 2)] : 0;
+    return { verticales, horizontales, hg, bd, dEst, lumGrille };
   }, { hg, bd });
 }
 
@@ -273,8 +282,11 @@ const traitsFins = (xAxe, y0, yFin) => panneau.evaluate((el, { xAxe, y0, yFin })
  * En px CSS relatifs au canvas.
  */
 const colonnes = (G, masque = null) => panneau.evaluate((el, { G, masque }) => {
-  const { cls, w } = window.__cls;
+  const { cls, w, L } = window.__cls;
   const out = [];
+  // la grille : sur ses lignes, un pixel n'est de l'encre que s'il est plus sombre qu'elle de 15
+  const surGrille = (X, Y) => G.g.verticales.some((v) => Math.abs(X + 0.5 - v) <= 0.6) || G.g.horizontales.some((h) => Math.abs(Y + 0.5 - h) <= 0.6);
+  const grille = (X, Y) => L[Y * w + X] >= G.lumGrille - 15 && surGrille(X, Y);
   // l'enveloppe de DÉPART (tirets d'encre, S3) est un décor que la porte sait situer : ±E0(t),
   // rejouée ici depuis la spec — sans ce masque, sa branche basse se lisait comme la crête
   // négative du tracé (3,50 div au renflement), et la haute comme un tracé qui ne touche pas l'axe
@@ -291,9 +303,9 @@ const colonnes = (G, masque = null) => panneau.evaluate((el, { G, masque }) => {
     const surRef = (Y) => yRef.length > 0 && Math.min(...yRef.map((y) => Math.abs(Y + 0.5 - y))) <= 1.6;
     for (let Y = Math.ceil(G.y0 + 2); Y <= Math.floor(G.y1 - 2); Y++) {
       const c = cls[Y * w + X], dy = Math.abs(Y + 0.5 - G.yc);
-      if (c === 2 && !decor && !surRef(Y)) { sw += 1; sy += Y + 0.5; if (forteHaut === null) forteHaut = Y + 0.5; forteBas = Y + 0.5; }
+      if (c === 2 && !decor && !surRef(Y) && !grille(X, Y)) { sw += 1; sy += Y + 0.5; if (forteHaut === null) forteHaut = Y + 0.5; forteBas = Y + 0.5; }
       // l'axe horizontal (1 px) et, aux colonnes des traits fins, leurs ±3 px ne sont pas un tracé
-      if (dy <= 1 || (tick && dy <= 3.5) || decor || surRef(Y)) continue;
+      if (dy <= 1 || (tick && dy <= 3.5) || decor || surRef(Y) || grille(X, Y)) continue;
       if (c === 2 || c === 3) { if (top === null) top = Y + 0.5; bot = Y + 0.5; }
     }
     out.push({ x: xc, top, bot, forte: sw ? sy / sw : null, forteHaut, forteBas, nForte: sw });
@@ -307,7 +319,7 @@ async function repereMesure(q = panneau) {
   if (!g || g.verticales.length < 2) return null;
   const V = g.verticales, H = g.horizontales;
   const d = (V[V.length - 1] - V[0]) / 10;
-  return { g, d, x0: V[0], x1: V[V.length - 1], y0: H[0], y1: H[H.length - 1], yc: (H[0] + H[H.length - 1]) / 2, xAxe: (V[0] + V[V.length - 1]) / 2 };
+  return { g, d, x0: V[0], x1: V[V.length - 1], y0: H[0], y1: H[H.length - 1], yc: (H[0] + H[H.length - 1]) / 2, xAxe: (V[0] + V[V.length - 1]) / 2, lumGrille: g.lumGrille };
 }
 const tDe = (G, x) => ((x - G.x0) / G.d) * MS_DIV;
 /** L'enveloppe de départ, quand le produit la DESSINE (référence « départ » et réglage changé) : le masque de `colonnes`. */
@@ -331,7 +343,7 @@ async function avantPari(ou, interdits = [], sansDetecteur = false) {
   const desc = (await panneau.locator("canvas").getAttribute("aria-label")) ?? "";
   const dits = interdits.filter((m) => (m instanceof RegExp ? m.test(desc) : desc.includes(m))).map(String);
   const cal = await lecture("calibration");
-  const ok = accentN === 0 && lectures.length === 0 && reponse.length === 0 && dits.length === 0 && (await controles()) === "" && cal.includes("1,00 V/div");
+  const ok = accentN === 0 && lectures.length === 0 && reponse.length === 0 && dits.length === 0 && (await controles()) === "" && cal.includes("$1,00$ V/div");
   juger("avant-pari", ok, `${ou}, avant le pari : ${accentN} px d'accent, lectures-réponses ${lectures.length ? `PRÉSENTES (${lectures.join(", ")})` : "absentes"}, calibration « ${cal} », ${reponse.length ? `RÉPONSE DESSINÉE : ${reponse.join(", ")}` : "aucune marque de réponse"}${sansDetecteur ? ", aucun étage de détection" : ""}, contrôles [${await controles()}]${dits.length ? ` — la description DIT : ${dits.join(", ")}` : ""}`);
 }
 
@@ -424,7 +436,7 @@ async function formule(ou, attendu) {
     TAUX: /(^|[^\p{L}])taux(?![\p{L}])/iu.test(t),
     M_EGAL: /(^|[^\p{L}_\\])m\s*=/u.test(t),
     A_EGAL: /(^|[^\p{L}_\\])A\s*=/u.test(t),
-    FORMULE_M: /\\frac\{U_\{max\}\s*-\s*U_\{min\}\}\{U_\{max\}\s*\+\s*U_\{min\}\}/u.test(t),
+    FORMULE_M: /\\d?frac\{U_\{max\}\s*-\s*U_\{min\}\}\{U_\{max\}\s*\+\s*U_\{min\}\}/u.test(t),
     SEUIL: /m\s*(<|\\leq|\\geq|≥|≤|\\ge|\\le)\s*1|(^|[^\p{L}])surmodulation|(^|[^\p{L}])pincement|bonne modulation|mauvaise modulation/iu.test(t),
     DETECTEUR: /R_0\s*C_0|R_0C_0|R0C0|(^|[^\p{L}])détecteur|(^|[^\p{L}])diode|(^|[^\p{L}])décharge|(^|[^\p{L}])condensateur|(^|[^\p{L}])rhéostat/iu.test(t),
     LL: /\\ll|≪/u.test(t),
@@ -573,7 +585,11 @@ function compterOscillations(G, cols) {
   if (xs.length < 3) return { n: NaN, passages: xs.length, residu: Infinity };
   const ecarts = xs.slice(1).map((x, i) => x - xs[i]).sort((a, b) => a - b);
   const T0 = ecarts[Math.floor(ecarts.length / 2)];
-  const idx = xs.map((x) => Math.round((x - xs[0]) / T0));
+  // chaque passage numéroté depuis le PRÉCÉDENT (un écart vaut 1 ou 2 périodes) : numérotés depuis le
+  // premier avec une période médiane en pixels ENTIERS (10 pour 9,75), l'erreur s'accumulait sur
+  // quarante passages et la droite déraillait (38,56 lues pour 40)
+  const idx = [0];
+  for (let i = 1; i < xs.length; i++) idx.push(idx[i - 1] + Math.max(1, Math.round((xs[i] - xs[i - 1]) / T0)));
   const m = xs.length, sx = idx.reduce((a, b) => a + b, 0), sy = xs.reduce((a, b) => a + b, 0);
   const sxx = idx.reduce((a, b) => a + b * b, 0), sxy = idx.reduce((a, b, i) => a + b * xs[i], 0);
   const pente = (m * sxy - sx * sy) / (m * sxx - sx * sx), orig = (sy - pente * sx) / m;
@@ -636,10 +652,10 @@ try {
       await cocher("porteuse", F.toFixed(1));
       const n = Math.round(F * DUREE);
       const att = {
-        "comptage-porteuse": `${n} oscillations complètes sur les 10 divisions`,
+        "comptage-porteuse": `$${n}$ oscillations complètes sur les $10$ divisions`,
         "porteuse-lue": `$T_p = ${trois(1 / F)}$ ms · $F = ${trois(F)}$ kHz`,
-        "signal-lu": "5,00 div → $T = 2,50$ ms · $f = 400$ Hz",
-        "rapport-frequences": String(Math.round(F * 1000) / 400),
+        "signal-lu": "$5,00$ div → $T = 2,50$ ms · $f = 400$ Hz",
+        "rapport-frequences": `$${Math.round(F * 1000) / 400}$`,
       };
       for (const [k, v] of Object.entries(att)) { const l = await lecture(k); if (l !== v) fautes.push(`F = ${F} : ${k} « ${l} » (attendu « ${v} »)`); }
       // les pixels : la MESURE CENTRALE, l'enveloppe inerte — aux instants t_k de la spec
@@ -661,8 +677,10 @@ try {
       if (F >= 4) for (let i = 1; i < tk.length - 1; i++) {
         const s = tk[i], a2 = tk[i - 1], b2 = tk[i + 1];
         if (s.att <= 0 || a2.k !== s.k - 1 || b2.k !== s.k + 1 || s.lu === null || a2.lu === null || b2.lu === null) continue;
-        const bas = -(a2.lu + b2.lu) / 2;
-        if (Math.abs(bas - s.lu) > 1.5 + 0.02 * s.lu) fSym.push(`F = ${F} à ${virgule((s.x - G.x0) / G.d, 2)} div : ${virgule(s.lu, 1)} px en haut, ${virgule(bas, 1)} en bas`);
+        // l'ÉCART À L'ENVELOPPE, en haut et en bas (moyenne des deux voisines) : comparer les hauteurs
+        // elles-mêmes mêlait la courbure de l'enveloppe (1,9 px au creux, à 4 kHz) à l'asymétrie
+        const ecartHaut = s.lu - s.att, ecartBas = (Math.abs(a2.lu) - Math.abs(a2.att) + Math.abs(b2.lu) - Math.abs(b2.att)) / 2;
+        if (Math.abs(ecartHaut - ecartBas) > 1.5) fSym.push(`F = ${F} à ${virgule((s.x - G.x0) / G.d, 2)} div : écart à l'enveloppe ${virgule(ecartHaut, 1)} px en haut, ${virgule(ecartBas, 1)} en bas`);
       }
     }
     // d'un cran à l'autre : chaque crête contre l'enveloppe du cran le plus dense, interpolée
@@ -675,7 +693,7 @@ try {
     juger("nombres", fautes.length === 0, `N5 — les quatre crans de porteuse : ${fautes.length ? fautes.slice(0, 3).join(" ; ") : "6 · 12 · 20 · 40 oscillations ; T_p 0,833 · 0,417 · 0,250 · 0,125 ms ; F/f 3 · 6 · 10 · 20"}`);
     juger("enveloppe-inerte", fEnv.length === 0 && pireCroise <= 1.8, `aux quatre crans (U0 = 4,0 V, Sm = 2,0 V), le tracé DESSINÉ aux ${Object.values(profils).reduce((a, p) => a + p.length, 0)} extrema de la porteuse (t_k = k·T_p/2) contre l'enveloppe de la spec : pire écart ${virgule(pireEnv, 2)} px (≤ 1,2) ; d'un cran à l'autre, ${virgule(pireCroise, 2)} px (≤ 1,8)${fEnv.length ? ` — ${fEnv.slice(0, 3).join(" ; ")}` : ""}`);
     juger("comptage", fCompte.length === 0, `la période de la porteuse, lue sur les passages à zéro montants du tracé : ${fCompte.length ? fCompte.join(" ; ") : `${compte.join(" · ")} oscillations sur les 10 divisions (attendu 6 · 12 · 20 · 40, à 0,05)`}`);
-    juger("deux-traces", fSym.length === 0, `u_S symétrique autour de l'axe (F = 4,0 et 8,0 kHz) : ${fSym.length ? fSym.slice(0, 2).join(" ; ") : "l'enveloppe du bas est le miroir de celle du haut, à 1,5 px"}`);
+    juger("deux-traces", fSym.length === 0, `u_S symétrique autour de l'axe (F = 4,0 et 8,0 kHz) : ${fSym.length ? fSym.slice(0, 2).join(" ; ") : "en haut comme en bas, le même écart à l'enveloppe, à 1,5 px"}`);
     await cocher("porteuse", "4.0");
     // la RÉPONSE de S1 : la double flèche entre deux resserrements, et le crochet
     const a = await repere("periode-a"), b = await repere("periode-b"), k = await repere("crochet-comptage");
@@ -706,9 +724,9 @@ try {
     const { max, min } = extrema(U0, Sm);
     const att = {
       extrema: `$U_{max} = ${virgule(max, 2)}$ div $= ${virgule(max, 2)}$ V · $U_{min} = ${virgule(min, 2)}$ div $= ${virgule(min, 2)}$ V`,
-      "amplitude-a": `lue : $\\frac{U_{max}+U_{min}}{2} = ${virgule((max + min) / 2, 2)}$ V · réglée : $A = kP_mU_0 = ${virgule(KPM * U0, 2)}$ V`,
+      "amplitude-a": `lue : $\\dfrac{U_{max}+U_{min}}{2} = ${virgule((max + min) / 2, 2)}$ V · réglée : $A = kP_mU_0 = ${virgule(KPM * U0, 2)}$ V`,
       entrees: `$U_0 = ${virgule(U0, 1)}$ V · $S_m = ${virgule(Sm, 1)}$ V`,
-      "taux-lu": `$m = \\frac{U_{max}-U_{min}}{U_{max}+U_{min}} = ${virgule((max - min) / (max + min), 2)}$`,
+      "taux-lu": `$m = \\dfrac{U_{max}-U_{min}}{U_{max}+U_{min}} = ${virgule((max - min) / (max + min), 2)}$`,
       "taux-regle": `$m = S_m/U_0 = ${virgule(Sm / U0, 2)}$`,
     };
     const fautes = [];
@@ -985,8 +1003,12 @@ try {
   const clair = await fond(), jc = await jetonCouleur("--figure-surface");
   await page.evaluate(() => document.documentElement.classList.add("dark")); await deuxImages(); await page.waitForTimeout(150);
   const sombre = await fond(), js = await jetonCouleur("--figure-surface");
+  const schema = await page.evaluate(() => getComputedStyle(document.documentElement).colorScheme);
   await page.evaluate(() => document.documentElement.classList.remove("dark"));
   noter("theme", pres(clair, jc) && pres(sombre, js) && !pres(clair, sombre), `fond clair ${clair} (jeton ${jc}) ; sombre ${sombre} (jeton ${js})`);
+  // vague 2 : sans `color-scheme: dark`, les boutons radio NON cochés du thème sombre étaient des
+  // disques blancs pleins — cinq crans qui avaient tous l'air cochés
+  juger("theme", /dark/.test(schema ?? ""), `thème sombre : color-scheme « ${schema} » (attendu dark : les contrôles natifs suivent le thème)`);
 }
 
 // ── La frontière sait-elle rougir, FORME PAR FORME ? (essai rouge seulement) ──
@@ -1046,7 +1068,7 @@ await ergonomie({ lancer: () => lancer(), url: URL_SCENE, scene: SCENE, noter, e
 console.log(`\n${ESSAI ? "ESSAI ROUGE — " : ""}scene-modulation : le banc de modulation (${URL_SCENE})`);
 for (const r of resultats) console.log(`  ${r.ok ? "·" : "✘"} [${r.famille}] ${r.detail}`);
 if (ESSAI) {
-  const visees = ["avant-clic", "pas-de-3d", "etapes", "avant-pari", "paris", "nombres", "grille", "enveloppe-inerte", "cretes-et-grille", "comptage", "pincement", "contact-exact", "deux-traces", "detecteur", "palette", "formule-graduee", "fuite-inter-etapes", "frontiere", "latex", "etiquettes", "cadre", "immobile", "annonce", "ergonomie"];
+  const visees = ["avant-clic", "pas-de-3d", "etapes", "avant-pari", "paris", "nombres", "grille", "enveloppe-inerte", "cretes-et-grille", "comptage", "pincement", "contact-exact", "deux-traces", "detecteur", "palette", "formule-graduee", "fuite-inter-etapes", "frontiere", "latex", "etiquettes", "cadre", "immobile", "annonce", "theme", "ergonomie"];
   const crient = visees.filter((f) => resultats.some((r) => r.famille === f && !r.ok));
   console.log(`\n  familles sabotées qui crient : ${crient.length}/${visees.length} (${crient.join(", ")})`);
   const muettes = visees.filter((f) => !crient.includes(f));

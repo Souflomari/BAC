@@ -110,7 +110,7 @@ Garde ces valeurs — $U_0=6\ \text{V}$, $f_p=900\ \text{kHz}$, $S_m=3\ \text{V}
 
 ## R3 — La condition de bonne modulation
 
-Avant d'énoncer ces conditions, on va **voir** le signal du chapitre précédent sur un écran. Le montage est celui des sujets : un **multiplieur** reçoit, sur une entrée, la tension à transmettre et, sur l'autre, la porteuse ; sa sortie est branchée sur un **oscilloscope**. L'écran fait $10$ divisions sur $8$, réglé à **1,00 V par division** en vertical et **0,50 ms par division** en horizontal. À chaque étape, tu paries d'abord ; l'écran répond ensuite.
+Avant d'énoncer ces conditions, on va **voir** le signal du chapitre précédent sur un écran. Le montage est celui des sujets : un **multiplieur** reçoit, sur une entrée, la tension à transmettre et, sur l'autre, la porteuse ; sa sortie est branchée sur un **oscilloscope**. Comme les sujets, la scène note $F$ la fréquence de la porteuse (ton $f_p$) et $f$ celle du signal (ton $f_{signal}$). L'écran fait $10$ divisions sur $8$, réglé à **1,00 V par division** en vertical et **0,50 ms par division** en horizontal. À chaque étape, tu paries d'abord ; l'écran répond ensuite.
 
 [[embed:banc-de-modulation]]
 
@@ -162,7 +162,7 @@ Quand $m < 1$, l'enveloppe reste toujours positive et reproduit fidèlement $s_m
 
 $$A = \frac{U_{max}+U_{min}}{2} \qquad m = \frac{U_{max}-U_{min}}{U_{max}+U_{min}}$$
 
-Le réflexe qui fait gagner du temps : $m$ est un **rapport**, il se calcule **directement en divisions**, sans convertir en volts — la sensibilité verticale est inutile ici. Et une limite à connaître : dès que $m \geq 1$, l'enveloppe **touche l'axe**, $U_{min}$ vaut $0$, et la formule rend **exactement 1**, quel que soit le vrai $m$. C'est pourquoi, dans ce cas, les sujets demandent de **conclure sur la qualité** de la modulation plutôt que de mesurer un nombre.
+Le réflexe qui fait gagner du temps : $m$ est un **rapport**, il se calcule **directement en divisions**, sans convertir en volts — la sensibilité verticale est inutile ici. Et une limite à connaître : dès que $m \geq 1$, l'enveloppe **touche l'axe**, $U_{min}$ vaut $0$, et la formule rend **exactement 1**, quel que soit le vrai $m$ — et la demi-somme ne rend plus $A$. C'est pourquoi, dans ce cas, les sujets demandent de **conclure sur la qualité** de la modulation plutôt que de mesurer un nombre.
 
 ### Exemple numérique : vérifier la condition, puis casser volontairement la condition
 
@@ -203,12 +203,12 @@ On l'a vu au chapitre 3 : l'information est entièrement portée par l'enveloppe
 Le dispositif qui fait ça s'appelle un **détecteur de crête** (ou détecteur d'enveloppe). Son mécanisme, décrit qualitativement :
 
 - Un premier élément (une diode) ne laisse passer le courant que dans un sens : il ne garde donc que la moitié positive de chaque oscillation rapide, celle qui monte vers les sommets.
-- Un condensateur, placé juste après, se charge très rapidement à chaque nouveau sommet de l'oscillation rapide — presque instantanément, tellement le temps de charge est court devant la période $1/f_p$ de l'oscillation rapide. Entre deux sommets, ce condensateur se décharge lentement à travers le reste du circuit, un peu comme le condensateur du chapitre RC qui se décharge progressivement dans une résistance.
+- Un condensateur, placé juste après, se charge très rapidement à chaque nouveau sommet de l'oscillation rapide — presque instantanément, tellement le temps de charge est court devant la période $1/F$ de l'oscillation rapide. Entre deux sommets, ce condensateur se décharge lentement à travers le reste du circuit, un peu comme le condensateur du chapitre RC qui se décharge progressivement dans une résistance.
 - Le résultat : la tension aux bornes du condensateur monte en flèche à chaque sommet, puis redescend doucement jusqu'au sommet suivant, qu'elle rattrape. Elle suit ainsi, de près, la courbe des sommets successifs — c'est-à-dire l'enveloppe elle-même, donc $U_0 + s_m(t)$.
 
 Ce compromis — charge rapide, décharge lente — a un **critère chiffré**, et les sujets demandent de le vérifier. La décharge doit être **lente devant la période de la porteuse** : sinon le condensateur se vide entre deux sommets, et sa tension **retombe sur la porteuse**. Elle doit être **rapide devant la période du signal** : sinon elle **rate les descentes** de l'enveloppe et s'en va presque tout droit. Avec $R_0$ la résistance dans laquelle se décharge le condensateur $C_0$ :
 
-$$\frac{1}{F} \ll R_0C_0 \ll \frac{1}{f} \qquad\text{c'est-à-dire}\qquad T_p \ll R_0C_0 \ll T_s$$
+$$\frac{1}{F} \ll R_0C_0 \ll \frac{1}{f} \qquad\text{c'est-à-dire}\qquad T_p \ll R_0C_0 \ll T$$
 
 Sur le banc du chapitre 4, à $F = 8{,}0\ \text{kHz}$ et au réglage qui marche ($R_0 = 5{,}0\ \text{k}\Omega$) : $1/F = 0{,}125\ \text{ms}$, $R_0C_0 = 0{,}500\ \text{ms}$, $1/f = 2{,}50\ \text{ms}$ — quatre fois l'une, cinq fois moins que l'autre. Cette fenêtre est étroite parce que la porteuse du banc n'est que vingt fois plus rapide que le signal ; dans les sujets, les écarts sont souvent d'un ou deux ordres de grandeur. Et une conséquence que la scène fait découvrir : **cette fenêtre n'existe que si $F \gg f$**. Si la porteuse n'est que trois fois plus rapide que le signal, **aucune** valeur de $R_0C_0$ ne convient. La première condition de bonne modulation n'est donc pas seulement un confort de lisibilité : c'est aussi elle qui **ouvre** la fenêtre du détecteur.
 

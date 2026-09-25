@@ -129,7 +129,7 @@ const STRAIGHT_QUOTED_PROSE = /"([^"\n]*\p{L}[^"\n]*)"/gu;
  * same non-breaking bind in French typography.
  */
 const UNITES = [
-  "MeV", "kHz", "MHz", "min", "mol", "bar", "rad", "µs", "µF", "ms", "cm", "mm", "km",
+  "MeV", "kHz", "MHz", "kΩ", "min", "mol", "bar", "rad", "µs", "µF", "ms", "cm", "mm", "km",
   "mL", "kg", "mg", "kJ", "mV", "mA", "nF", "pF", "mH", "eV", "tr", "°C", "Wb", "Hz",
   "Pa", "°", "%", "m", "s", "h", "g", "L", "N", "J", "W", "V", "A", "K", "T", "F", "H", "C", "Ω",
 ];

@@ -87,7 +87,10 @@ export function useSceneRendu<R extends RenduScene>(
       rendu.relireCouleurs();
       dessinerRef.current();
     });
-    mo.observe(document.documentElement, { attributes: true, attributeFilter: ["class", "data-theme"] });
+    // « style » : le réglage de taille du texte pose --font-scale en style EN LIGNE sur <html> ;
+    // sans lui, les étiquettes grandissaient à la place calculée pour l'ancienne taille, jusqu'au
+    // prochain réglage (vague 2 du banc de modulation — les douze scènes)
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ["class", "data-theme", "style"] });
     const perdu = (ev: Event) => {
       ev.preventDefault();
       surPerteRef.current?.();

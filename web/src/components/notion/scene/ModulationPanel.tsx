@@ -21,7 +21,7 @@
  * avant S4.
  */
 
-import { createRef, useCallback, useEffect, useId, useRef, useState } from "react";
+import { Fragment, createRef, useCallback, useEffect, useId, useRef, useState } from "react";
 import type React from "react";
 import type { Scene3DDescriptor, Scene3DEtat } from "@/lib/content";
 import { cn } from "@/lib/utils";
@@ -86,6 +86,23 @@ const REPERES = [
 ] as const;
 
 // ── L'écriture des nombres ────────────────────────────────────────────────
+/**
+ * Une lecture en CLAUSES : chacune un bloc en ligne borné à la colonne — elle passe ENTIÈRE à
+ * la ligne suivante si elle tient, et ne se coupe en elle-même que si elle seule dépasse (texte
+ * à 200 %, 320 px : insécable, elle aurait débordé). Coupée n'importe où, la lecture laissait
+ * « = » en fin de ligne et l'unité seule sur la suivante (vague 2, dessin et ergonomie : la règle
+ * SI de `frenchTypography` meurt à la frontière du `$`, et ne pouvait rien y faire).
+ */
+const enClauses = (s: string) =>
+  s.split(" · ").map((clause, i) => (
+    <Fragment key={i}>
+      {i > 0 && " "}
+      <span className="inline-block max-w-full">
+        {i > 0 && "· "}
+        <MathText>{clause}</MathText>
+      </span>
+    </Fragment>
+  ));
 const V2 = (x: number) => M.nombre(x, 2);
 const tex = (s: string) => s.replace(/,/g, "{,}");
 const ms3 = (x: number) => `${M.troisCs(x)} ms`;
@@ -166,6 +183,8 @@ export function ModulationPanel({ scene, className }: { scene: Scene3DDescriptor
     const p = s.reperes();
     const cache = { x: 0, y: 0, visible: false };
     const en = (n: string, visible = true) => (p[n] && visible ? p[n] : cache);
+    const dir = (n: string): [number, number] => (p[n] ? [p[n].x, p[n].y] : [1, -1]);
+    const decale = (q: { x: number; y: number; visible: boolean }, dy: number) => ({ ...q, y: q.y + dy });
     // la calibration : sous le cadre, aux deux coins (une place fixe, rien ne s'y croise)
     poser(refs.calV.current, en("calibration-v"), "0%", "0%");
     poser(refs.calT.current, en("calibration-t"), "0%", "-100%");
@@ -176,10 +195,13 @@ export function ModulationPanel({ scene, className }: { scene: Scene3DDescriptor
         { el: refs.uC.current, p: en("fin-uC", detecte), directions: [[1, -1], [1, 0], [1, -1.6], [1, 1]], portee: 32 },
         { el: refs.max.current, p: en("curseur-max"), directions: [[1, 0], [1, -1], [1, 1]], portee: 18 },
         { el: refs.min.current, p: en("curseur-min"), directions: [[1, 0], [1, 1], [1, -1]], portee: 18 },
-        { el: refs.periode.current, p: en("cote-periode"), directions: [[0, -1], [0, -1.6], [0, 1]], portee: 18 },
-        { el: refs.comptage.current, p: en("crochet-comptage"), directions: [[0, 1], [0, 1.6], [0, -1]], portee: 18 },
-        { el: refs.decrochage.current, p: en("decrochage"), directions: [[1, -1], [0, -1], [-1, -1], [1, 0]], portee: 32 },
-        { el: refs.vidange.current, p: en("vidange"), directions: [[1, -1], [0, -1], [-1, -1], [1, 0]], portee: 32 },
+        // les deux cotes ont une place FIXE, hors du cadre (vague 2) : la période dans
+        // l'intervalle au-dessus de l'écran, le compte dans la rangée de calibration
+        { el: refs.periode.current, p: en("cote-periode"), surAncre: true, directions: [] },
+        { el: refs.comptage.current, p: decale(en("cote-comptage"), 9), surAncre: true, directions: [] },
+        // « ici » se pose au bout de son RENVOI, dans la diagonale que le rendu a trouvée libre
+        { el: refs.decrochage.current, p: en("decrochage-ancre"), directions: [dir("decrochage-dir")], portee: 8 },
+        { el: refs.vidange.current, p: en("vidange-ancre"), directions: [dir("vidange-dir")], portee: 8 },
         { el: refs.ref.current, p: en("reference"), directions: [[0, -1], [1, -1], [-1, -1]], portee: 18 },
         // le montage
         { el: refs.u.current, p: en("entree-u"), directions: [[0, -1], [0.5, -1], [-0.5, -1]], portee: 8 },
@@ -289,33 +311,39 @@ export function ModulationPanel({ scene, className }: { scene: Scene3DDescriptor
 
   const blocLectures = (
     <dl className="flex flex-col gap-2 text-body-sm" data-lectures>
-      {/* la calibration est l'ÉNONCÉ : visible à toutes les étapes, avant tout pari */}
-      {ligneLecture("calibration", "Réglages de l’écran", "1,00 V/div · 0,50 ms/div · 10 × 8 divisions")}
-      {lectures.includes("comptage-porteuse") && ligneLecture("comptage-porteuse", "Porteuse, comptée", `${n} oscillations complètes sur les 10 divisions`)}
-      {lectures.includes("porteuse-lue") && ligneLecture("porteuse-lue", "Porteuse, lue", <MathText>{`$T_p = ${tex(M.troisCs(Tp))}$ ms · $F = ${tex(M.troisCs(g.F))}$ kHz`}</MathText>)}
+      {/* la calibration est l'ÉNONCÉ : visible à toutes les étapes, avant tout pari. Chaque
+          valeur est en clauses insécables, et chaque nombre en KaTeX — une calibration et une
+          période sont la même sorte de grandeur (vague 2, dessin : deux polices dans une liste) */}
+      {ligneLecture("calibration", "Réglages de l’écran", enClauses("$1{,}00$ V/div · $0{,}50$ ms/div · $10 \\times 8$ divisions"))}
+      {lectures.includes("comptage-porteuse") && ligneLecture("comptage-porteuse", "Porteuse, comptée", enClauses(`$${n}$ oscillations complètes sur les $10$ divisions`))}
+      {lectures.includes("porteuse-lue") && ligneLecture("porteuse-lue", "Porteuse, lue", enClauses(`$T_p = ${tex(M.troisCs(Tp))}$ ms · $F = ${tex(M.troisCs(g.F))}$ kHz`))}
       {lectures.includes("signal-lu") &&
-        ligneLecture("signal-lu", "Signal modulant, lu", <MathText>{`5,00 div → $T = ${tex(M.troisCs(M.T_ENV_MS))}$ ms · $f = ${M.F_SIGNAL_HZ}$ Hz`}</MathText>)}
-      {lectures.includes("rapport-frequences") && ligneLecture("rapport-frequences", <MathText>{"Rapport $F/f$"}</MathText>, String(M.rapportFrequences(g.F)))}
+        ligneLecture("signal-lu", "Signal modulant, lu", enClauses(`$5{,}00$ div → $T = ${tex(M.troisCs(M.T_ENV_MS))}$ ms · $f = ${M.F_SIGNAL_HZ}$ Hz`))}
       {lectures.includes("extrema") &&
         ligneLecture(
           "extrema",
           "Crêtes, lues",
-          <MathText>{`$U_{max} = ${tex(V2(ext.max))}$ div $= ${tex(V2(ext.max))}$ V · $U_{min} = ${tex(V2(ext.min))}$ div $= ${tex(V2(ext.min))}$ V`}</MathText>
+          enClauses(`$U_{max} = ${tex(V2(ext.max))}$ div $= ${tex(V2(ext.max))}$ V · $U_{min} = ${tex(V2(ext.min))}$ div $= ${tex(V2(ext.min))}$ V`)
         )}
+      {/* en fraction d'affichage : en ligne, les indices de U_max tombaient à 7 px (vague 2, dessin) */}
       {lectures.includes("amplitude-a") &&
         ligneLecture(
           "amplitude-a",
           <MathText>{"Amplitude $A$"}</MathText>,
-          <MathText>{`lue : $\\frac{U_{max}+U_{min}}{2} = ${tex(V2(M.amplitudeLue(ext.max, ext.min)))}$ V · réglée : $A = kP_mU_0 = ${tex(V2(M.amplitudeA(g.U0)))}$ V`}</MathText>
+          enClauses(`lue : $\\dfrac{U_{max}+U_{min}}{2} = ${tex(V2(M.amplitudeLue(ext.max, ext.min)))}$ V · réglée : $A = kP_mU_0 = ${tex(V2(M.amplitudeA(g.U0)))}$ V`)
         )}
-      {lectures.includes("entrees") && ligneLecture("entrees", "Entrées réglées", <MathText>{`$U_0 = ${tex(M.cran(etat.U0))}$ V · $S_m = ${tex(M.cran(etat.Sm))}$ V`}</MathText>)}
+      {lectures.includes("entrees") && ligneLecture("entrees", "Entrées réglées", enClauses(`$U_0 = ${tex(M.cran(etat.U0))}$ V · $S_m = ${tex(M.cran(etat.Sm))}$ V`))}
       {lectures.includes("taux-lu") &&
-        ligneLecture("taux-lu", "Taux, lu", <MathText>{`$m = \\frac{U_{max}-U_{min}}{U_{max}+U_{min}} = ${tex(V2(M.tauxLu(ext.max, ext.min)))}$`}</MathText>)}
-      {lectures.includes("taux-regle") && ligneLecture("taux-regle", "Taux, réglé", <MathText>{`$m = S_m/U_0 = ${tex(V2(M.tauxRegle(g.Sm, g.U0)))}$`}</MathText>)}
+        ligneLecture("taux-lu", "Taux, lu", enClauses(`$m = \\dfrac{U_{max}-U_{min}}{U_{max}+U_{min}} = ${tex(V2(M.tauxLu(ext.max, ext.min)))}$`))}
+      {lectures.includes("taux-regle") && ligneLecture("taux-regle", "Taux, réglé", enClauses(`$m = S_m/U_0 = ${tex(V2(M.tauxRegle(g.Sm, g.U0)))}$`))}
+      {/* le rapport APRÈS les taux : à S5, les trois vérifications que la suite nomme (F/f, m,
+          les trois durées) sont les dernières lignes, juste au-dessus des réglages (vague 2,
+          ergonomie : 570 px les séparaient au téléphone) */}
+      {lectures.includes("rapport-frequences") && ligneLecture("rapport-frequences", <MathText>{"Rapport $F/f$"}</MathText>, enClauses(`$${M.rapportFrequences(g.F)}$`))}
       {lectures.includes("constante-temps") &&
-        ligneLecture("constante-temps", "Constante de temps", <MathText>{`$R_0C_0 = ${tex(M.cran(etat.R0))}$ kΩ × ${M.C0_NF} nF $= ${tex(M.troisCs(tau))}$ ms`}</MathText>)}
+        ligneLecture("constante-temps", "Constante de temps", enClauses(`$R_0C_0 = ${tex(M.cran(etat.R0))}$ kΩ × ${M.C0_NF} nF $= ${tex(M.troisCs(tau))}$ ms`))}
       {lectures.includes("fenetre") &&
-        ligneLecture("fenetre", "Les trois durées", <MathText>{`$1/F = ${tex(M.troisCs(Tp))}$ ms · $R_0C_0 = ${tex(M.troisCs(tau))}$ ms · $1/f = ${tex(M.troisCs(M.T_ENV_MS))}$ ms`}</MathText>)}
+        ligneLecture("fenetre", "Les trois durées", enClauses(`$1/F = ${tex(M.troisCs(Tp))}$ ms · $R_0C_0 = ${tex(M.troisCs(tau))}$ ms · $1/f = ${tex(M.troisCs(M.T_ENV_MS))}$ ms`))}
     </dl>
   );
 
@@ -331,14 +359,19 @@ export function ModulationPanel({ scene, className }: { scene: Scene3DDescriptor
       : []),
   ];
 
-  const groupe = (id: string, legende: string, valeurs: readonly string[], courant: string, unite: string, choisir: (v: string) => void) => (
+  // L'unité dans la LÉGENDE, le nombre seul sur le cran (vague 2, calme et ergonomie d'accord) :
+  // « 1,2 kHz » répété quatre fois faisait passer le quatrième cran à la ligne — une échelle lue
+  // 3 + 1. La légende est lue avec chaque bouton, et chaque réglage est DIT avec son unité.
+  const groupe = (id: string, legende: string, valeurs: readonly string[], courant: string, choisir: (v: string) => void) => (
     <fieldset className="flex flex-col gap-1" data-controle={id}>
-      <legend className="mb-1 text-body-sm text-secondary">{frenchTypography(legende)}</legend>
+      <legend className="mb-1 text-body-sm text-secondary">
+        <MathText>{legende}</MathText>
+      </legend>
       <div className="flex flex-wrap gap-x-1">
         {valeurs.map((x) => (
           <label key={x} className={LIGNE_RADIO}>
             <input type="radio" name={`${idTitre}-${id}`} value={x} checked={courant === x} onChange={() => choisir(x)} className="accent-figure-ink-soft" />
-            <span className="tabular-nums">{frenchTypography(`${M.cran(x)} ${unite}`)}</span>
+            <span className="tabular-nums">{frenchTypography(M.cran(x))}</span>
           </label>
         ))}
       </div>
@@ -347,7 +380,8 @@ export function ModulationPanel({ scene, className }: { scene: Scene3DDescriptor
 
   return (
     <section
-      className={cn("my-10 notion-wide-band print:hidden", className)}
+      // scroll-mt : « Étape n / 5 » ne passe plus sous le header à chaque « Suivant » (vague 2, ergonomie)
+      className={cn("my-10 scroll-mt-14 bp-expanded:scroll-mt-20 notion-wide-band print:hidden", className)}
       aria-labelledby={idTitre}
       data-scene={scene.scene}
       data-scene-etat={rendu.panneau}
@@ -371,7 +405,9 @@ export function ModulationPanel({ scene, className }: { scene: Scene3DDescriptor
           canvasRef={rendu.canvasRef}
           panneau={rendu.panneau}
           description={description}
-          legende={<MathText>{"$k = 0{,}250$ V⁻¹ · $P_m = 2{,}00$ V"}</MathText>}
+          // k et P_m servent à partir de S2 (A = kP_mU_0) : à S1, deux constantes inutilisables
+          // à la place d'un titre (vague 2, calme)
+          legende={indexEtape >= 1 ? <MathText>{"$k = 0{,}250$ V⁻¹ · $P_m = 2{,}00$ V"}</MathText> : undefined}
           messageSansWebgl="Ce navigateur n’affiche pas le banc (dessin indisponible). Les paris et les réglages restent."
           onRelancer={rendu.relancer}
           // le montage ET l'écran empilés : en 4:3 au téléphone, l'écran n'aurait
@@ -452,10 +488,10 @@ export function ModulationPanel({ scene, className }: { scene: Scene3DDescriptor
           {libre && blocLectures}
 
           <div className="flex flex-col gap-5">
-            {ouvre("porteuse") && groupe("porteuse", "La porteuse (fréquence F)", M.PORTEUSES, etat.F, "kHz", (x) => regler({ F: x as M.Porteuse }))}
-            {ouvre("modulante") && groupe("modulante", "Le signal à transmettre (amplitude Sm)", M.MODULANTES, etat.Sm, "V", (x) => regler({ Sm: x as M.Modulante }))}
-            {ouvre("continue") && groupe("continue", "La composante continue (U0)", M.CONTINUES, etat.U0, "V", (x) => regler({ U0: x as M.Continue }))}
-            {ouvre("detecteur") && detecte && groupe("detecteur", "Le rhéostat du détecteur (R0)", M.DETECTEURS, etat.R0, "kΩ", (x) => regler({ R0: x as M.Detecteur }))}
+            {ouvre("porteuse") && groupe("porteuse", "La porteuse, fréquence $F$ (kHz)", M.PORTEUSES, etat.F, (x) => regler({ F: x as M.Porteuse }))}
+            {ouvre("modulante") && groupe("modulante", "Le signal modulant, amplitude $S_m$ (V)", M.MODULANTES, etat.Sm, (x) => regler({ Sm: x as M.Modulante }))}
+            {ouvre("continue") && groupe("continue", "La composante continue $U_0$ (V)", M.CONTINUES, etat.U0, (x) => regler({ U0: x as M.Continue }))}
+            {ouvre("detecteur") && detecte && groupe("detecteur", "Le rhéostat du détecteur, $R_0$ (kΩ)", M.DETECTEURS, etat.R0, (x) => regler({ R0: x as M.Detecteur }))}
           </div>
 
           {!libre && blocLectures}

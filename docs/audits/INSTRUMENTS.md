@@ -2055,6 +2055,18 @@ fois masquée, masquant la bosse, qui passe EXACTEMENT par elle (0,5 × |4 − 3
 |2 − 3|). Chaque correction est écrite dans le code, au-dessus de la mesure qu'elle
 corrige.
 
+**Après la vague 2 (même jour) : VERTE deux fois, 139 mesures.** La grille est passée à 3:1
+— plus sombre que le seuil des tracés : la porte en LIT la teinte là où aucun tracé ne
+monte, et sur ses lignes un pixel n'est de l'encre que s'il est plus sombre qu'elle de 15.
+La division tombée à 39 px a posé le creux de l'enveloppe à 19,5 px, sur un DEMI-pixel :
+la crête fine s'y peint en deux rangées à 50 % (178 et 183, sonde), sous le seuil — le
+trait compte désormais dès 30 % de couverture. Le comptage numérote chaque passage à
+zéro depuis le précédent (depuis le premier, une période médiane en pixels ENTIERS — 10
+pour 9,75 — accumulait l'erreur sur quarante passages) ; la symétrie compare l'ÉCART à
+l'enveloppe en haut et en bas (les hauteurs brutes mêlaient la courbure du creux). Et
+`theme` mesure le schéma de couleurs du thème sombre (`color-scheme`), ROUGE d'abord sur
+le build d'avant (« normal »).
+
 ## `web/scripts/figures-manipulables.mjs` — chaque figure manipulable fait-elle, au rendu, ce que son module dit ?
 
 **PORTE, armée en CI (job `scene-champ`, vert puis rouge), §11.199.** Une figure

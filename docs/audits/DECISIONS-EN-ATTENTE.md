@@ -1460,3 +1460,23 @@ les notes.
     distracteur, le moins cher de S1) : ACCEPTÉ — la scène confronte ce modèle par le
     BALAYAGE de S1 (l'enveloppe qui ne bouge pas), pas par un pari ; OEM-27 D le porte
     en item.
+
+**CE QUE LA VAGUE 2 A DEMANDÉ ET N'A PAS OBTENU, et pourquoi** (le reste est appliqué,
+HANDOFF §11.207) :
+
+18. **Les étiquettes-réponses à l'accent** (dessin : « $U_{max}$ » et « $u_S$ » se lisent
+    comme une seule liste) : non — ce serait la seule des douze scènes à le faire.
+    **Proposition pour une passe commune** : une variante `accent` d'`Etiquette`,
+    appliquée aux noms de RÉPONSE des douze scènes à la fois, portes relancées.
+19. **À S5, les réglages avant les lectures** (calme : la mise en page change à la
+    dernière étape) : non — c'est l'ordre du banc de diffraction (§25), gardé pour la
+    même raison (sous quatre groupes de réglages, les lectures tombaient loin sous la
+    scène collante au téléphone). La réponse retenue est celle de l'ergonomie : les
+    trois vérifications que nomme la suite sont les DERNIÈRES lectures, au contact des
+    réglages. **Au propriétaire** si la régularité l'emporte.
+20. **Les choix non retenus à 38 % d'opacité** (ergonomie : 2,3:1, sous le plancher de
+    4,5:1, alors que les retours y renvoient) : l'état désactivé de l'ADR 0024, commun à
+    tout point d'arrêt du produit. **Au propriétaire**, pour tout le produit.
+21. **À S5, n'afficher que les quatre lectures que la suite nomme** (calme : « douze
+    lignes, la réponse calme est quatre ») : non — la spec (§7.5) prescrit les onze, et
+    la porte les lit toutes ; la retouche 19 met les quatre au bas.

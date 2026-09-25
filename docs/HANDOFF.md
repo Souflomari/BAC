@@ -16105,9 +16105,63 @@ nombres recalculés justes ; deux défauts de fond — la contradiction de notat
 sous-section neuve créait avec la définition de $m$ en R3, et un bouton de sensibilité
 prescrit par un retour de S2 qui n'existait pas. Le détail : DÉCISIONS §27.
 
-**LA VAGUE 2 (dessin, calme, ergonomie, cohérence)** est commandée sur les captures de
-ce build (1 280 et 390 px, les cinq étapes avant et après le pari, les balayages de
-réglages, le thème sombre) ; ses retours et leur tri suivent dans le commit d'après.
+**LA VAGUE 2 (dessin, calme, ergonomie, cohérence), sur les captures à 1 280 et 390 px —
+chaque affirmation vérifiée sur la capture ou le code avant d'être appliquée.** Le calme
+l'a dite « le plus calme des douze bancs » ; le dessin, « premium dans le dessin, pas
+dans la colonne des lectures ». Appliqué :
+- **produit ENTIER — le thème sombre déclare son schéma.** `color-scheme` n'existait que
+  dans le bloc d'impression : dans le thème sombre, un bouton radio NON coché était un
+  disque blanc plein, et le cran coché le point le plus TERNE du groupe (calme et
+  ergonomie, chacun de son côté ; vérifié dans le code et sur la capture). Le générateur
+  de jetons l'émet maintenant par thème (`light` sur `:root`, `dark` sur `.dark`) ; la
+  porte le mesure (`theme`), ROUGE d'abord sur le build d'avant (« normal »).
+- **produit ENTIER — la taille du texte relaie les étiquettes des douze scènes** : le
+  réglage pose `--font-scale` en style en ligne sur `<html>`, que l'observateur des
+  scènes ne regardait pas (`useSceneRendu`, un mot) ; et `kΩ` rejoint les unités que la
+  typographie lie à leur nombre.
+- *la grille à 3:1* (elle était à 1,62:1 — une règle qu'on COMPTE, disparue sous quarante
+  oscillations), les axes à 4,9:1, les traits fins à la teinte de la grille (le calme
+  voulait l'axe moins lourd : les deux obtiennent ce qu'ils demandaient) ; l'enveloppe de
+  départ PLUS LÉGÈRE que le tracé vivant (elle était 1,4 fois plus contrastée) ; une seule
+  bosse entourée (spec §6, au singulier) ; la borne du rail ;
+- *les cotes hors du cadre* (leurs pastilles effaçaient le cadre) : « 20 oscillations »
+  dans la rangée de calibration, entre « V/div » et « ms/div », la période au-dessus de
+  l'écran ; *un renvoi* du cercle à « ici, … » (au téléphone, le nom tombait à 100 px de
+  son cercle) ;
+- *les lectures* : des clauses insécables (la ligne se coupait après « = », l'unité seule
+  dessous), chaque nombre en KaTeX (deux polices dans une même liste), `\dfrac` (des
+  indices à 7 px), et le rapport $F/f$ après les taux — à S5, les trois vérifications
+  que la suite nomme sont les dernières lignes, juste au-dessus des réglages (570 px les
+  séparaient au téléphone) ;
+- *les réglages* : l'unité dans la légende, le nombre seul sur le cran (quatre crans sur
+  une ligne, et non 3 + 1), les symboles en KaTeX (« (U0) » se lisait « (UO) »), « le
+  signal modulant » (trois noms pour une entrée) ; la marge de défilement de la section ;
+- *les textes* : la légende $k$, $P_m$ à partir de S2 ; S1 sans gras sur les deux
+  valeurs de calibration, et avec « sensibilité » et « balayage » ; « un rhéostat — une
+  résistance réglable — » ; les notes d'honnêteté du descripteur alignées sur celles du
+  panneau ;
+- *la cohérence avec la leçon* : le point d'arrêt de R3 appelait encore $U_0$ « la
+  porteuse » (sous une scène qui montre $A \neq U_0$) — il dit « la composante continue
+  de la tension modulante » ; $F$ et $f$ reliés à $f_p$ et $f_{signal}$ AVANT la scène ;
+  $1/f_p$ → $1/F$ et $T_s$ → $T$ en R4 ; « et la demi-somme ne rend plus $A$ ».
+Non appliqué, et pourquoi (DÉCISIONS §27, suite) : les étiquettes-réponses à l'accent
+(une passe commune aux douze scènes, pas une) ; à S5, les réglages AVANT les lectures
+(le calme le demandait par régularité ; l'ordre du banc de diffraction est gardé, et la
+réponse est l'ergonomie : les trois vérifications au bas des lectures) ; les choix non
+retenus à 38 % d'opacité (ADR 0024, tout le produit) ; les quadrillages transparents de
+`diffraction-rendu` et `noyaux-rendu` (dette écrite, ADR 0041).
+
+**VÉRIFIÉ après la vague 2, sur le build final, rien d'autre en marche :**
+`scene-modulation` VERTE deux fois (139 mesures, 26 familles), essai rouge 25/25 et les
+49 formes vues ; `scene-ergonomie` VERTE sur les douze scènes (l'observateur partagé a
+changé) ; `dom-truth` 280/0 ; `verdict-qcm` de la notion (le point d'arrêt reformulé) ;
+la porte figures en thème SOMBRE (261 figures — le schéma de couleurs a changé) ; la
+porte impression (le papier reste clair) ; la batterie locale, entière et verte ; et une
+sonde de débord : à 320 px texte à 200 %, à 390 et à 1 280 px, aux cinq étapes, rien ne
+fait défiler la page de côté (les clauses insécables débordaient à 200 % : elles sont
+devenues des blocs en ligne bornés à la colonne). La vague 2 a fait bouger quatre
+critères de la porte — la grille lue, le seuil de 30 %, le comptage numéroté pas à pas,
+la symétrie par l'écart — : INSTRUMENTS.
 
 **VÉRIFIÉ, sur le build final, rien d'autre en marche :** `scene-modulation` VERTE deux
 fois (138 mesures, 26 familles), essai rouge 24/24 et 49 formes vues ; `scene-ergonomie`
