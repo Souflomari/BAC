@@ -1417,7 +1417,9 @@ BLOQUANTS, qui ne se tranchent pas par défaut**.
    revue de fidélité : « non déclaré » — il l'est maintenant).
 7. **La garde de périmètre de `checkpoints.yaml`**, qui interdisait le spectre que
    le cadre imprime et que 2023 N demande, **est corrigée** (une phrase). La prose du
-   spectre reste DUE — tâche à part (et `bank.yaml`, bk-2023-n-x3 q3, donne des
+   spectre, DUE à la livraison, est **payée** le même jour (« Le même signal, vu en
+   fréquences : trois raies », en fin de R2 ; le raisonnement de bk-2023-n-x3 q3 cite
+   maintenant le chapitre 3) — tâche à part (et `bank.yaml`, bk-2023-n-x3 q3, donne des
    raies latérales « de hauteur moitié » : c'est $Am/2$, un QUART à $m = 0{,}5$ —
    correction objective, faite dans un commit à part, AVANT celui de la scène, qui
    laisse `bank.yaml` identique ; consignée dans la REVIEW de la notion).

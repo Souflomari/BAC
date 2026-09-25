@@ -630,6 +630,17 @@ try {
       juger("grille", manquants.length === 0 && intrus.length === 0 && attendus.length >= 5, `axe vertical : ${t.length} traits fins lus pour ${attendus.length} attendus au quart de division (4 sous-graduations) ; ${manquants.length} manquant(s), ${intrus.length} trait(s) hors du quart${intrus.length ? ` (à ${intrus.map((u) => virgule((u - G.y0) / G.d, 2)).join(", ")} div)` : ""}`);
       const cal = await panneau.evaluate((el) => ["calibration-v", "calibration-t"].map((n) => (el.querySelector(`[data-etiquette="${n}"]`)?.textContent ?? "").trim()));
       juger("grille", cal[0] === "1,00 V/div" && cal[1] === "0,50 ms/div", `calibration sous l'écran : « ${cal[0]} » et « ${cal[1]} »`);
+      // la grille est une règle qu'on COMPTE : un objet graphique porteur de sens, ≥ 3:1 sur la surface
+      // (WCAG 1.4.11 ; vague 2 — à 30 % d'encre douce, elle était à 1,62:1). Lue sur une verticale
+      // intérieure, à la rangée où aucun tracé ne monte.
+      const contraste = await panneau.evaluate((el, { x, y, surf }) => {
+        const px = el.querySelector("canvas").getContext("2d").getImageData(Math.round(x - 0.5), Math.round(y), 1, 1).data;
+        const lin = (c) => { c /= 255; return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; };
+        const Lr = (r, g, b) => 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+        const a = Lr(px[0], px[1], px[2]), s = Lr(...surf);
+        return (Math.max(a, s) + 0.05) / (Math.min(a, s) + 0.05);
+      }, { x: V[2], y: G.y0 + 0.2 * G.d, surf: J.surface });
+      juger("grille", contraste >= 3, `la grille à ${virgule(contraste, 2)}:1 sur la surface (≥ 3:1, plancher des objets graphiques)`);
       juger("grille", Math.abs(G.xAxe - V[5]) <= 1 && Math.abs(G.yc - H[4]) <= 1, `les deux axes médians tombent sur une ligne majeure (${virgule(Math.abs(G.xAxe - V[5]), 2)} et ${virgule(Math.abs(G.yc - H[4]), 2)} px)`);
     }
   }

@@ -535,7 +535,10 @@ entries:
         questions de cette entrée ; signalé à l'orchestrateur /
         pedagogy-architect pour arbitrage (ajouter un complément de rung, ou
         assumer que cette question reste hors-ramp et sert seulement de
-        matière de banque) — non résolu ici.
+        matière de banque). RÉSOLU le 2026-09-25 : la sous-section « Le même
+        signal, vu en fréquences : trois raies » ferme R2 (le cadre imprime
+        le spectre, pc-physique-chimie.yaml:236), et le raisonnement de q3
+        cite le chapitre 3.
     intro: |-
       **Modulation d'amplitude d'un signal (examen national, session normale 2023, Exercice 3 — §3).**
 
@@ -598,12 +601,12 @@ entries:
         stem: |-
           **(0,5 pt)** Représenter l'allure du spectre de fréquences du signal modulé $u(t)$ sans respect d'échelle très précise.
         reasoning: |-
-          Cette question mobilise une technique que la leçon ne couvre pas : chapitres 3 à 4 décrivent le signal modulé dans le domaine temporel (l'enveloppe), jamais dans le domaine fréquentiel — aucun chapitre à citer ici. On applique directement la relation trigonométrique de produit-somme, $\cos p \cos q = \frac{1}{2}[\cos(p-q)+\cos(p+q)]$, à la forme canonique donnée dans l'intro : le terme en $\cos(2\pi f_s t)\cos(2\pi f_p t)$ se scinde en deux oscillations pures, à $f_p-f_s$ et $f_p+f_s$. Le spectre attendu porte donc trois raies : une raie centrale à $f_p$, de hauteur $A$, encadrée de deux raies latérales symétriques à $f_p \pm f_s$, chacune de hauteur $Am/2$ — le quart de la raie centrale, puisque $m=0{,}5$.
+          C'est la dernière sous-section du chapitre 3, « Le même signal, vu en fréquences : trois raies ». On applique la relation trigonométrique de produit-somme, $\cos p \cos q = \frac{1}{2}[\cos(p-q)+\cos(p+q)]$, à la forme canonique donnée dans l'intro : le terme en $\cos(2\pi f_s t)\cos(2\pi f_p t)$ se scinde en deux oscillations pures, à $f_p-f_s$ et $f_p+f_s$. Le spectre attendu porte donc trois raies : une raie centrale à $f_p$, de hauteur $A$, encadrée de deux raies latérales symétriques à $f_p \pm f_s$, chacune de hauteur $Am/2$ — le quart de la raie centrale, puisque $m=0{,}5$.
         steps:
           - math: 'u(t) = A\cos(2\pi f_p t) + A m \cos(2\pi f_s t)\cos(2\pi f_p t)'
             note: "On developpe la forme canonique donnée par l'énoncé."
           - math: 'Am\cos(2\pi f_s t)\cos(2\pi f_p t) = \frac{Am}{2}\cos(2\pi (f_p-f_s) t) + \frac{Am}{2}\cos(2\pi (f_p+f_s) t)'
-            note: "Relation trigonométrique produit-somme (hors chapitres de la leçon), appliquee directement."
+            note: "Relation trigonométrique produit-somme, comme au chapitre 3 (« trois raies »)."
           - math: 'u(t) = A\cos(2\pi f_p t) + \frac{Am}{2}\cos(2\pi (f_p-f_s) t) + \frac{Am}{2}\cos(2\pi (f_p+f_s) t)'
             note: "Trois composantes pures : le spectre est fait de trois raies."
           - math: 'f_p - f_s = 4000 - 200 = 3800\ \text{Hz} \qquad f_p + f_s = 4000 + 200 = 4200\ \text{Hz}'

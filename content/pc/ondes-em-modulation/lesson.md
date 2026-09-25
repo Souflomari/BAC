@@ -106,6 +106,16 @@ Garde ces valeurs — $U_0=6\ \text{V}$, $f_p=900\ \text{kHz}$, $S_m=3\ \text{V}
 
 [[checkpoint:cp-r2-porteuse-signal]]
 
+### Le même signal, vu en fréquences : trois raies
+
+Un oscilloscope montre $s(t)$ en fonction du temps. On peut aussi se demander quelles **fréquences** ce signal contient — c'est son **spectre de fréquences**, et les sujets demandent parfois d'en représenter l'allure. Avec un signal informatif sinusoïdal, $s_m(t) = S_m\cos(2\pi f_{signal} t)$, la relation $\cos a \cos b = \frac{1}{2}\big[\cos(a-b) + \cos(a+b)\big]$ sépare $s(t)$ en trois oscillations pures :
+
+$$s(t) = U_0\cos(2\pi f_p t) + \frac{S_m}{2}\cos\big(2\pi(f_p - f_{signal})t\big) + \frac{S_m}{2}\cos\big(2\pi(f_p + f_{signal})t\big)$$
+
+Le spectre porte donc **trois raies** : une raie centrale à $f_p$, de hauteur $U_0$ ; et deux raies **latérales**, symétriques, à $f_p - f_{signal}$ et $f_p + f_{signal}$, chacune de hauteur $S_m/2$. Avec l'exemple ci-dessus : trois raies à $897$, $900$ et $903\ \text{kHz}$, de hauteurs $1{,}5$ ; $6$ ; $1{,}5\ \text{V}$ — chaque raie latérale fait le quart de la raie centrale.
+
+La raie centrale ne dépend pas du message : c'est la porteuse seule. Ce sont les raies latérales qui le portent — leur écart à $f_p$ est la fréquence du signal, leur hauteur suit son amplitude. C'est une autre façon de voir que la porteuse, seule, ne transporte rien.
+
 ---
 
 ## R3 — La condition de bonne modulation
@@ -288,6 +298,7 @@ Une centaine de picofarads : c'est exactement l'ordre de grandeur des condensate
 
 - Une antenne ne rayonne efficacement une onde que si sa taille est de l'ordre du QUART de sa longueur d'onde ($\lambda/4$, avec $\lambda=c/f$) : impossible pour un signal audio (des centaines de km), réalisable pour une porteuse à quelques centaines de kHz-MHz (quelques dizaines à centaines de m).
 - Modulation d'amplitude : $s(t) = (U_0+s_m(t))\cos(2\pi f_p t)$ — l'amplitude instantanée porte l'information, la fréquence $f_p$ ne change jamais.
+- Le spectre d'un signal modulé par une note pure : **trois raies**, à $f_p - f_{signal}$, $f_p$ et $f_p + f_{signal}$ ; la raie centrale (hauteur $U_0$) est la porteuse seule, les deux raies latérales (hauteur $S_m/2$ chacune) portent le message.
 - Bonne modulation : $f_p \gg f_{signal}$ (enveloppe lisible) et $m = S_m/U_0 < 1$ (pas de surmodulation, enveloppe toujours positive).
 - Sur un oscillogramme : $m = (U_{max}-U_{min})/(U_{max}+U_{min})$ se calcule **en divisions**, sans convertir ; $A = (U_{max}+U_{min})/2$ est une tension, qui demande la sensibilité verticale. Le signe visible de la surmodulation, c'est l'enveloppe qui **touche l'axe**.
 - Démodulation : un détecteur de crête retrace l'enveloppe (charge rapide, décharge lente), et ne fonctionne bien que si la modulation d'origine n'était pas surmodulée.
