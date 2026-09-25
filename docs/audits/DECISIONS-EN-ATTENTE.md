@@ -1600,3 +1600,73 @@ l'ordre de l'étape ; la légende de la carte fermée ramenée à trois phrases.
     peu coûteuse est prise (le témoin garde ses 14 px et monte à la hauteur des
     dépôts, entre les deux béchers) ; une barre grise de 130 px ajoutait un objet au
     dessin pour dire ce que 14 px disent.
+
+---
+
+## 29. Le plan complexe : quinze questions tranchées par défaut, deux modèles ouverts, et cinq écarts de la construction
+
+**LE FAIT.** Le quatorzième manipulable de première partie — le huitième PLAN, le premier
+des mathématiques sans 3D — est livré dans `maths/nombres-complexes-2`, en tête de R5
+(HANDOFF §11.209) : le plan, son cercle unité, un point sur cinq positions, un coefficient
+sur sept crans, un centre, et trois formules à lire à l'envers. **Il ne solde aucune dette
+écrite** ; il se justifie par un trou MESURÉ (spec §0.1) : aucune figure du corpus ne
+distinguait l'angle d'une transformation de l'argument de l'image, et la seule figure du
+chapitre montre EXACTEMENT le cas qui ne les distingue pas ($c = 1+i$, $z = 3$). La spec
+(`docs/pipeline/propositions/maths-nombres-complexes-2-scene-plan.md` §13) laissait quinze
+questions ; même lecture du mandat qu'aux §20 à §28 : chacune reçoit sa réponse par défaut,
+écrite ici, réversible.
+
+**CE QUI A ÉTÉ TRANCHÉ PAR DÉFAUT :**
+
+1. **Le cadre maths n'est pas autoritatif** (`maths-sm.yaml`, `maths-sexp.yaml` :
+   « PROPOSITION — NON AUTORITATIVE ») : on construit quand même, et on le déclare ; la
+   frontière du §9 repose sur des bornes `derived — À VALIDER`. **La décision la plus lourde,
+   au propriétaire** : faire passer les trois portes de RULES §5 au cadre maths.
+2. **« Similitude »** : interdit dans le PANNEAU (la porte le cherche), employé UNE fois dans
+   la prose, marqué SM.
+3. **Aucune sixième étape sur $w$** : c'est R6 ; une SECONDE scène est prévue ensuite, son
+   cahier des charges est au §13.3 de la spec (trois points, $w$, le centre d'une rotation
+   reconstruit depuis un couple point/image).
+4. **L'hybride** : cinq positions exactes, plus un balayage continu à S3 après la
+   révélation (écart de construction n° 2 ci-dessous).
+5. **Aucune animation** : `temps` et `course` faux ; l'angle se lit.
+6. **Aucun cran $z = 0$** ($\arg 0$ n'est pas défini).
+7. **Le `spec.md` manquant de la notion n'est PAS écrit** : quinze modèles restent non
+   revendiqués rung par rung. **Reste dû**, pedagogy-architect, notion entière.
+8. **`angle-lu-depuis-l-axe` est UN modèle** (4 items), pas deux.
+9. **Aucune translation dans la scène** ($a = 1$ : trois lectures vides) ; la prose la nomme.
+10. **Aucune figure figée de repli** : la `fallback_note` écrit le coût — sans JavaScript,
+    l'élève perd le rapport comme quotient, l'angle comme écart et le centre comme point
+    fixe, et la figure qui reste (`rotation-homothetie`) montre le cas dégénéré.
+11. **Servie aux deux filières ; S5 (`les-deux`) est de profondeur SM**, déclaré ;
+    `rotation-A` et `homothetie-A` couvrent seuls le périmètre SExp. *Pour défaire* : S5
+    part sur `rotation-A` — une valeur d'`etat` dans le descripteur.
+12. **Le dossier `scene3d/` garde son nom** (huit scènes planes sur quatorze) — question
+    héritée du banc d'électrolyse.
+13. **Le titre de R5 n'est pas touché**, alors qu'il nomme les deux réponses de S1
+    (« rotation et homothétie »). Correctif proposé : une QUESTION pour titre.
+14. **`cp-r5-ecriture` ne mesure pas la forme développée** ; la reprise la pose en prose,
+    NBCOMPLEX2-38 est le seul objet qui la mesure, au banc de fin.
+15. **L'arbitrage « second degré dans ℂ » n'est pas clos** : cadres et corpus divergent ;
+    routé à research-lead, hors périmètre de la scène.
+
+**DEUX MODÈLES OUVERTS** (item-author) : `multiplication-rotation-par-defaut` à 3 items
+(marge NULLE, déclarée) et `angle-lu-depuis-l-axe` à 4.
+
+**CINQ ÉCARTS DE LA CONSTRUCTION, écrits dans l'en-tête de la spec** (« Ce que la
+construction a changé »), dont deux qu'un propriétaire pourrait vouloir défaire :
+
+- **Le balayage n'efface que ce qui dépend de la POSITION** (les affixes de $M$, $M'$ et
+  leurs arguments) ; $|c|$, les distances, le rapport, $\arg c$ et l'écart restent écrits,
+  exacts à chaque position — les voir immobiles pendant que les directions tournent EST le
+  fait de S3. La spec (§6.1) les effaçait tous. *Pour défaire* : effacer aussi les cinq
+  invariants — une ligne du panneau, et la famille `balayage-invariants` à réécrire.
+- **Au clavier, le balayage ne se relâche qu'à Échap ou en quittant le curseur** ; sous
+  `prefers-reduced-motion`, rien ne change (une manipulation directe n'est pas une
+  animation) — les « trois positions discrètes » du §6.1 ne sont pas construites.
+- `argument-image` n'existe qu'au centre $O$ ; une sixième clé d'état, `image` ; les nombres
+  des axes peints sur le canvas ; onze misconceptions au câblage, pas dix.
+
+**ET CE QUE LA VAGUE 2 N'A PAS ENCORE VU** : le panneau n'a été relu que par la porte et
+par mes captures. Les étiquettes au téléphone portent désormais des FILETS quand elles ont
+dû s'éloigner de leur point — un choix de dessin qu'aucun critique n'a jugé.

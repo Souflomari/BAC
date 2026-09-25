@@ -313,20 +313,44 @@ for (const n of notions) {
   //  qui compare une notion à son propre passé, il n'y a pas de bruit à
   //  filtrer — il y a un changement, ou il n'y en a pas. Une première version
   //  de ce sens portait une marge de « +2 points » ; c'était rejouer à
-  //  l'intérieur la faute que l'ADR venait de nommer. Ce qui subsiste est la
-  //  comparaison de RATIOS exacts, pour qu'un arrondi ne fasse pas crier une
-  //  porte tout seul, et un garde de PORTÉE (≥ 20 distracteurs) — qui n'est pas
-  //  un seuil anti-bruit mais le refus de juger une notion de quatre choix.
+  //  l'intérieur la faute que l'ADR venait de nommer. Ce qui subsiste : une
+  //  comparaison EXACTE (plus de ratios arrondis — un compte, ci-dessous), et un
+  //  garde de PORTÉE (≥ 20 distracteurs) — qui n'est pas un seuil anti-bruit mais
+  //  le refus de juger une notion de quatre choix.
+  //
+  //  UN COMPTE, PAS UN RATIO (§11.209, 2026-09-25). La première écriture
+  //  comparait l'écart des deux TAUX — et un taux se DILUE. Deux défauts, de même
+  //  cause, dans les deux sens :
+  //   • la fausse alarme : sept items SANS aucun absolu entrent dans
+  //     `maths/nombres-complexes-2` (NBCOMPLEX2-35 à -41) ; les deux taux glissent
+  //     vers zéro, l'écart « monte » de −1,7 à −1,5 point, et la porte crie une
+  //     régression là où rien n'a empiré ;
+  //   • le masque, pire : sur une notion à écart POSITIF, les mêmes items propres
+  //     font BAISSER l'écart — assez pour cacher un « toujours » gratuit ajouté
+  //     au même moment à un distracteur (`philo/la-liberte` : +26,4 → +21,5
+  //     points, VERT, avec un distracteur sur-affirmant de plus).
+  //  C'est la faute que l'en-tête du cliquet nomme pour les deux premiers sens —
+  //  « ajouter de bons items ferait baisser son pourcentage sans avoir réparé un
+  //  seul item » — commise par le troisième. D'où un COMPTE : les distracteurs qui
+  //  sur-affirment AU-DELÀ de ce que le taux des clés prédit,
+  //      excès = distAbs − cleAbs × (distTotal / cleTotal).
+  //  Des items sans absolu ne le bougent pas (à quatre choix, distTotal/cleTotal
+  //  reste 3 : 2 030 items éligibles sur 2 033) ; un absolu gagné par un
+  //  distracteur l'augmente de 1, un absolu perdu par une clé de 3. Une première
+  //  correction — ne garder que la partie POSITIVE de l'écart — rendait l'essai
+  //  §11.108 AMBIGU (sa casse laisse l'écart négatif) : défaite, et écrite là
+  //  (§11.209).
   if (ref.distTotal !== undefined && n.distTotal >= 20) {
-    const r = (a, b) => (b > 0 ? a / b : 0);
-    const ecartNow = r(n.distAbs, n.distTotal) - r(n.cleAbs, n.cleTotal);
-    const ecartRef = r(ref.distAbs, ref.distTotal) - r(ref.cleAbs, ref.cleTotal);
+    const exces = (x) => (x.cleTotal > 0 ? x.distAbs - x.cleAbs * (x.distTotal / x.cleTotal) : x.distAbs);
+    const ecartNow = exces(n);
+    const ecartRef = exces(ref);
     const ecart = pct(n.distAbs, n.distTotal) - pct(n.cleAbs, n.cleTotal);
     const refEcart = pct(ref.distAbs, ref.distTotal) - pct(ref.cleAbs, ref.cleTotal);
     if (ecartNow > ecartRef + 1e-9) {
       echecs.push(
         `${cle} — ÉCART de sur-affirmation : ${signe(refEcart)} → ${signe(ecart)} points ` +
-          `(clés ${pct(n.cleAbs, n.cleTotal)} %, distracteurs ${pct(n.distAbs, n.distTotal)} %). ` +
+          `(clés ${pct(n.cleAbs, n.cleTotal)} %, distracteurs ${pct(n.distAbs, n.distTotal)} % ; ` +
+          `distracteurs sur-affirmants au-delà du taux des clés : ${ecartRef.toFixed(1)} → ${ecartNow.toFixed(1)}). ` +
           `Barrer ce qui sur-affirme épargne la clé plus souvent qu'avant.`
       );
     }

@@ -230,6 +230,44 @@ misconceptions:
       un cercle ou une médiatrice selon la forme ; « rapport imaginaire pur »
       donne un angle droit, donc le cercle de diamètre [AB] : chaque condition a
       son lieu propre.
+  # Deux modèles neufs (scène `plan-complexe-transformation`, R5 / chapitre 6 —
+  # docs/pipeline/propositions/maths-nombres-complexes-2-scene-plan.md §8.2,
+  # vague 1, 2026-09-25). Servis par NBCOMPLEX2-35 à -41 (§8.3).
+  - id: mc.math.maths_complexes_trigo.multiplication-rotation-par-defaut
+    label: >-
+      « Toute multiplication fait tourner — et d'un quart de tour : l'angle est
+      celui de i, jamais celui qu'on lit sur le coefficient »
+    description: >-
+      Ayant vu que z ↦ iz est une rotation d'un quart de tour, l'élève
+      généralise : toute multiplication par un complexe ferait tourner, et
+      d'un quart de tour par défaut. Il applique une rotation là où le
+      coefficient n'en porte aucune (c réel positif), ou un quart de tour là
+      où l'argument du coefficient vaut tout autre chose (π/6, π/4). Le
+      symptôme mécanique est constant : arg(c) n'est jamais calculé.
+    contradicts_principle: >-
+      L'angle d'une multiplication par c est arg(c), et rien d'autre : il se
+      LIT sur le coefficient, il ne se suppose pas. i = e^{iπ/2} fait tourner
+      d'un quart de tour parce que SON argument vaut π/2 ; un c d'argument 0
+      (réel positif) ne fait tourner de rien, un c d'argument π/6 fait tourner
+      de π/6. Le quart de tour est une propriété de i, pas de la
+      multiplication.
+  - id: mc.math.maths_complexes_trigo.angle-lu-depuis-l-axe
+    label: >-
+      « Angle d'une transformation lu comme une DIRECTION (depuis l'axe réel)
+      au lieu de l'ÉCART entre deux directions »
+    description: >-
+      Devant M et son image M′, l'élève donne arg(z′) — la direction de
+      l'image mesurée depuis l'axe réel — comme angle de la rotation ; ou
+      donne arg(z′ − z), la direction du déplacement. Forme jumelle sur les
+      longueurs : il donne OM′ pour le rapport de l'homothétie, au lieu du
+      quotient OM′/OM. Dans les deux cas la grandeur et l'opération sont les
+      bonnes ; c'est le point de départ de la mesure qui est faux.
+    contradicts_principle: >-
+      L'angle d'une rotation (ou d'une rotation-homothétie) de centre Ω est
+      l'ÉCART arg(z′ − z_Ω) − arg(z − z_Ω) = arg((z′ − z_Ω)/(z − z_Ω)) =
+      arg(c), et son rapport est le QUOTIENT ΩM′/ΩM = |c|. arg(z′) ne donne
+      l'angle que si arg(z − z_Ω) = 0, et OM′ ne donne le rapport que si
+      ΩM = 1 : deux cas particuliers, pas la règle.
 items:
   - id: NBCOMPLEX2-1
     rung: "R1"
@@ -2285,12 +2323,430 @@ items:
       **Le contrôle visuel.** $1 \mapsto 5$ : le point reste sur le demi-axe réel
       positif, cinq fois plus loin.
 
+  # ── NBCOMPLEX2-35 à -41 — scène `plan-complexe-transformation` (R5 / chapitre 6)
+  # docs/pipeline/propositions/maths-nombres-complexes-2-scene-plan.md §8.3,
+  # vague 1, 2026-09-25. Trois items soldent `angle-lu-depuis-l-axe` (-35, -36,
+  # -37), trois soldent `multiplication-rotation-par-defaut` (-39, -40, -41),
+  # un septième (-38) solde le savoir-faire de cadre « caractériser z'=az+b »
+  # (rapport, angle, centre), à 0/34 avant cette livraison.
+  - id: NBCOMPLEX2-35
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_complexes_trigo
+    tags: [rotation, angle, ecart-directions]
+    primary_misconception: mc.math.maths_complexes_trigo.angle-lu-depuis-l-axe
+    stem: >
+      Dans le plan complexe, $M$ a pour affixe $z = 2i$ et son image $M'$ par
+      une rotation de centre $O$ a pour affixe $z' = -1 + \sqrt3\,i$. Quel
+      est l'angle de cette rotation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{\\pi}{6}$"
+        correct: true
+      - id: B
+        text: "$\\dfrac{2\\pi}{3}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.angle-lu-depuis-l-axe
+        feedback: >
+          Tu donnes $\arg(z')$ — la direction de $M'$ mesurée depuis l'axe
+          réel — au lieu de l'angle de la rotation. Ici $\arg(z)=\pi/2$ n'est
+          pas nul : l'angle de la rotation est l'ÉCART $\arg(z')-\arg(z)$, pas
+          $\arg(z')$ seul.
+      - id: C
+        text: "$\\dfrac{7\\pi}{6}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.produit-quotient-argument-operation
+        feedback: >
+          Tu as ADDITIONNÉ les deux arguments ($\pi/2+2\pi/3$) au lieu de les
+          SOUSTRAIRE. L'angle d'une rotation de centre $O$ est
+          $\arg(z')-\arg(z)$ ; cette somme n'a pas de sens géométrique ici.
+      - id: D
+        text: "$-\\dfrac{\\pi}{6}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.rotation-sens-inverse
+        feedback: >
+          C'est l'opposé du bon angle : tu as tourné dans le sens indirect
+          (horaire). L'écart $\arg(z')-\arg(z) = 2\pi/3-\pi/2 = \pi/6$ est
+          POSITIF, donc la rotation est de sens direct.
+    correct_feedback: >
+      $|z|=|2i|=2$ et $|z'|=|-1+\sqrt3\,i|=2$ : les modules sont égaux, c'est
+      bien une rotation. $\arg(z)=\pi/2$, $\arg(z')=2\pi/3$ : l'angle de la
+      rotation est l'ÉCART $\arg(z')-\arg(z) = 2\pi/3-\pi/2 = \pi/6$.
+    solution: |
+      **Vérifier que c'est une rotation.** $|z| = 2$, $|z'| = \sqrt{1+3} = 2$ :
+      les modules sont égaux, aucune homothétie.
+
+      **L'angle est un écart, pas une direction.** $\arg(z) = \arg(2i) =
+      \dfrac{\pi}{2}$. Le point $-1+\sqrt3\,i$ est dans le deuxième quadrant
+      ($\cos\theta=-\tfrac12$, $\sin\theta=\tfrac{\sqrt3}{2}$), donc
+      $\arg(z') = \dfrac{2\pi}{3}$.
+
+      **Conclusion.**
+      $$\theta = \arg(z') - \arg(z) = \frac{2\pi}{3} - \frac{\pi}{2} = \frac{\pi}{6}$$
+
+  - id: NBCOMPLEX2-36
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_complexes_trigo
+    tags: [homothetie, rapport, ecart-directions]
+    primary_misconception: mc.math.maths_complexes_trigo.angle-lu-depuis-l-axe
+    stem: >
+      $M$ a pour affixe $z = 1+i$ et son image $M'$ par une homothétie de
+      centre $O$ a pour affixe $z' = 3+3i$. Quel est le rapport de cette
+      homothétie ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$3$"
+        correct: true
+      - id: B
+        text: "$3\\sqrt2$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.angle-lu-depuis-l-axe
+        feedback: >
+          Tu donnes $OM'$ — la distance de $M'$ à l'origine — au lieu du
+          rapport. Le rapport d'une homothétie est le QUOTIENT $OM'/OM$, pas
+          $OM'$ seul : ici $OM=\sqrt2 \neq 1$, les deux ne coïncident pas.
+      - id: C
+        text: "$2\\sqrt2$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.produit-modules-additionnes
+        feedback: >
+          C'est la DIFFÉRENCE $OM'-OM = 3\sqrt2-\sqrt2$, pas le rapport. Le
+          rapport d'une homothétie est un quotient de longueurs, jamais une
+          différence.
+      - id: D
+        text: "$3+3i$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.homothetie-rapport-complexe
+        feedback: >
+          Le rapport d'une homothétie est un nombre RÉEL — l'affixe $3+3i$ de
+          $M'$ elle-même n'en est pas un. Le rapport est $|c|$, le module du
+          coefficient qui envoie $z$ sur $z'$, pas $z'$ lui-même.
+    correct_feedback: >
+      $OM=|z|=\sqrt2$, $OM'=|z'|=\sqrt{9+9}=3\sqrt2$. Le rapport d'une
+      homothétie est le QUOTIENT $OM'/OM = 3\sqrt2/\sqrt2 = 3$.
+    solution: |
+      **Les deux longueurs.** $OM = |1+i| = \sqrt2$. $OM' = |3+3i| =
+      \sqrt{9+9} = 3\sqrt2$.
+
+      **Le rapport est un quotient.**
+      $$k = \frac{OM'}{OM} = \frac{3\sqrt2}{\sqrt2} = 3$$
+
+      **Le contrôle.** $OM'-OM = 2\sqrt2$ n'est pas un rapport ; $3+3i$ est
+      une affixe, pas un réel.
+
+  - id: NBCOMPLEX2-37
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: maths_complexes_trigo
+    tags: [rotation, centre-quelconque, angle]
+    primary_misconception: mc.math.maths_complexes_trigo.angle-lu-depuis-l-axe
+    stem: >
+      $A$, $M$ et $M'$ ont pour affixes $z_A = 1$, $z = 2$ et $z' = 1+i$.
+      $M'$ est l'image de $M$ par une rotation de centre $A$. Quel est
+      l'angle de cette rotation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{\\pi}{2}$"
+        correct: true
+      - id: B
+        text: "$\\dfrac{\\pi}{4}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.angle-lu-depuis-l-axe
+        feedback: >
+          C'est $\arg(z')$ — la direction de $M'$ depuis $O$. Mais la
+          rotation est centrée en $A$, pas en $O$ : l'angle se mesure depuis
+          $A$, par l'écart $\arg(z'-z_A)-\arg(z-z_A)$.
+      - id: C
+        text: "$\\dfrac{3\\pi}{4}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.angle-lu-depuis-l-axe
+        feedback: >
+          C'est $\arg(z'-z)$ — la direction du déplacement de $M$ vers $M'$,
+          pas l'angle de la rotation. L'angle se lit sur
+          $\overrightarrow{AM}$ et $\overrightarrow{AM'}$, pas sur
+          $\overrightarrow{MM'}$.
+      - id: D
+        text: "$-\\dfrac{\\pi}{2}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.rotation-sens-inverse
+        feedback: >
+          C'est l'opposé du bon angle : $\dfrac{z'-z_A}{z-z_A} =
+          \dfrac{i}{1} = i$, d'argument $+\pi/2$. Le sens est direct, pas
+          indirect.
+    correct_feedback: >
+      L'angle d'une rotation de centre $A$ n'est ni $\arg(z')$ ni
+      $\arg(z'-z)$ : c'est $\arg\!\left(\dfrac{z'-z_A}{z-z_A}\right)$. Ici
+      $\dfrac{z'-z_A}{z-z_A} = \dfrac{i}{1} = i$, d'argument $\pi/2$.
+    solution: |
+      **Vérifier que c'est une rotation.** $|z-z_A| = 1$, $|z'-z_A| = |i| =
+      1$ : les distances à $A$ sont égales, aucune homothétie.
+
+      **L'angle se mesure DEPUIS LE CENTRE $A$, pas depuis $O$.**
+      $$\theta = \arg\!\left(\frac{z'-z_A}{z-z_A}\right) = \arg\!\left(\frac{i}{1}\right) = \frac{\pi}{2}$$
+
+      **Les deux pièges.** $\arg(z') = \arg(1+i) = \pi/4$ est la direction de
+      $M'$ depuis $O$ ; $\arg(z'-z) = \arg(-1+i) = 3\pi/4$ est la direction du
+      déplacement $\overrightarrow{MM'}$. Ni l'un ni l'autre n'est l'angle de
+      la rotation, qui se lit depuis $A$.
+
+  - id: NBCOMPLEX2-38
+    rung: "R5"
+    difficulty_level: 5
+    skill_code: maths_complexes_trigo
+    tags: [ecriture-complexe, rotation, homothetie, centre]
+    primary_misconception: mc.math.maths_complexes_trigo.transformation-centre-oublie
+    stem: >
+      La transformation du plan qui, à tout point $M$ d'affixe $z$, associe
+      le point $M'$ d'affixe $z' = (1-i)\,z + 2i$, est la composée d'une
+      rotation et d'une homothétie de même centre. Lesquelles ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          rotation d'angle $-\dfrac{\pi}{4}$, homothétie de rapport $\sqrt2$,
+          de centre le point d'affixe $2$
+        correct: true
+      - id: B
+        text: >-
+          rotation d'angle $-\dfrac{\pi}{4}$, homothétie de rapport $\sqrt2$,
+          de centre $O$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.transformation-centre-oublie
+        feedback: >
+          L'angle et le rapport sont corrects, mais le CENTRE est faux :
+          appliquer $z \mapsto (1-i)z$ directement revient à centrer en $O$,
+          en oubliant le terme constant $+2i$. Le vrai centre est le point
+          fixe $\omega = b/(1-a) = 2i/i = 2$, pas $O$.
+      - id: C
+        text: >-
+          rotation d'angle $-\dfrac{\pi}{4}$, homothétie de rapport
+          $1-i$, de centre le point d'affixe $2$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.homothetie-rapport-complexe
+        feedback: >
+          Le rapport d'une homothétie est un RÉEL, jamais le coefficient
+          complexe $a$ lui-même. Ici $a=1-i$ code À LA FOIS la rotation et
+          l'homothétie : le rapport est $|a|=\sqrt2$, l'angle est
+          $\arg(a)=-\pi/4$.
+      - id: D
+        text: >-
+          rotation d'angle $+\dfrac{\pi}{4}$, homothétie de rapport
+          $\sqrt2$, de centre le point d'affixe $2$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.rotation-sens-inverse
+        feedback: >
+          Le signe de l'angle est inversé : $\arg(1-i)=-\pi/4$ (quatrième
+          quadrant, $\cos=\sqrt2/2>0$, $\sin=-\sqrt2/2<0$), pas $+\pi/4$.
+    correct_feedback: >
+      $a=1-i$, $b=2i$. Rapport $|a|=\sqrt2$, angle $\arg(a)=-\pi/4$. Le
+      centre est le point fixe : $\omega = \dfrac{b}{1-a} = \dfrac{2i}{i} =
+      2$ — vérifié par la définition : $(1-i)\times 2+2i = 2-2i+2i = 2$.
+    solution: |
+      **Identifier $a$ et $b$.** $z' = (1-i)z + 2i$ : $a = 1-i$, $b = 2i$.
+
+      **Rapport et angle, depuis $a$.** $|a| = |1-i| = \sqrt2$.
+      $\arg(a) = \arg(1-i) = -\dfrac{\pi}{4}$ (quatrième quadrant).
+
+      **Le centre : le point qui ne bouge pas.** On résout $\omega =
+      a\omega+b$ :
+      $$\omega = \frac{b}{1-a} = \frac{2i}{1-(1-i)} = \frac{2i}{i} = 2$$
+      Vérification directe : $(1-i)\times 2 + 2i = 2-2i+2i = 2$ ✓ — $\omega=2$
+      est bien fixe.
+
+      **Conclusion.** Rotation d'angle $-\pi/4$, homothétie de rapport
+      $\sqrt2$, toutes deux de centre le point d'affixe $2$.
+
+  - id: NBCOMPLEX2-39
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_complexes_trigo
+    tags: [homothetie, rotation, angle-par-defaut]
+    primary_misconception: mc.math.maths_complexes_trigo.multiplication-rotation-par-defaut
+    stem: >
+      La transformation qui, à tout point $M$ d'affixe $z$, associe $M'$
+      d'affixe $z' = 3z$ est…
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          une homothétie de centre $O$ et de rapport $3$, sans rotation
+        correct: true
+      - id: B
+        text: >-
+          la composée d'une rotation d'un quart de tour et d'une
+          homothétie de rapport $3$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.multiplication-rotation-par-defaut
+        feedback: >
+          Le quart de tour est une propriété de $i$, pas de toute
+          multiplication. Ici $c=3$ est réel positif : $\arg(3)=0$, donc
+          AUCUNE rotation. Le quart de tour suppose un argument $\pi/2$, ce
+          qui n'est pas le cas ici.
+      - id: C
+        text: >-
+          une rotation de centre $O$ et d'angle $3$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.similitude-module-argument-roles
+        feedback: >
+          Le module et l'argument sont échangés : $3$ est le MODULE de $c$
+          (le rapport de l'homothétie), pas un angle. L'angle de rotation
+          vient de $\arg(c)$, qui vaut ici $0$.
+      - id: D
+        text: >-
+          la composée d'une rotation d'angle $\pi$ et d'une homothétie
+          de rapport $3$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.reel-positif-donne-rotation
+        feedback: >
+          Un réel STRICTEMENT POSITIF a un argument nul, pas $\pi$ :
+          $3 = 3\,e^{i\cdot 0}$. Un angle $\pi$ correspondrait à un
+          coefficient réel NÉGATIF, comme $-3$.
+    correct_feedback: >
+      $3 = 3\,e^{i\cdot 0}$ : module $3$, argument nul. La transformation est
+      une homothétie pure — ni demi-tour, ni quart de tour.
+    solution: |
+      **Écrire $c$ sous forme exponentielle.** $c = 3 = 3\,e^{i\cdot 0}$.
+
+      **Lire les deux effets séparément.** Module $3$ : homothétie de
+      rapport $3$. Argument $0$ : aucune rotation, quel que soit l'angle
+      qu'on pourrait imaginer par défaut.
+
+      **Le contrôle visuel.** Le point d'affixe $1$ est envoyé sur $3$ : il
+      reste sur le même demi-axe réel — rien n'a tourné.
+
+  - id: NBCOMPLEX2-40
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: maths_complexes_trigo
+    tags: [rotation, angle, argument]
+    primary_misconception: mc.math.maths_complexes_trigo.multiplication-rotation-par-defaut
+    stem: >
+      On associe à tout point $M$ d'affixe $z$ le point $M'$ d'affixe
+      $z' = (1+i\sqrt3)\,z$. De quel angle la direction
+      $\big(\vec u, \overrightarrow{OM}\big)$ tourne-t-elle ?
+    type: mcq
+    choices:
+      - id: A
+        text: "de $\\dfrac{\\pi}{3}$"
+        correct: true
+      - id: B
+        text: "d'un quart de tour, $\\dfrac{\\pi}{2}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.multiplication-rotation-par-defaut
+        feedback: >
+          Le quart de tour est ce qu'a fait $i$, pas ce que fait
+          $1+i\sqrt3$. Il faut LIRE l'argument du coefficient, pas le
+          supposer égal à celui de $i$ : $\arg(1+i\sqrt3) = \pi/3$, pas
+          $\pi/2$.
+      - id: C
+        text: "de $-\\dfrac{\\pi}{3}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.rotation-sens-inverse
+        feedback: >
+          C'est l'opposé du bon angle : $\sin\theta = \sqrt3/2 > 0$ place
+          l'argument dans le sens direct (positif), pas indirect.
+      - id: D
+        text: >-
+          cela dépend du point $M$ : l'angle n'est pas le même pour tous
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.angle-lu-depuis-l-axe
+        feedback: >
+          L'angle d'une multiplication par un complexe fixe $c$ est
+          TOUJOURS $\arg(c)$, quel que soit le point de départ : c'est ce
+          qui distingue un angle de rotation (un écart, le même partout)
+          d'une direction de point (qui, elle, change avec $M$).
+    correct_feedback: >
+      $|1+i\sqrt3| = \sqrt{1+3} = 2$, $\cos\theta = 1/2$, $\sin\theta =
+      \sqrt3/2$ : $\arg(1+i\sqrt3) = \pi/3$. La direction tourne de
+      $\pi/3$, un ÉCART constant, le même pour tout point $M$ non nul.
+    solution: |
+      **Lire l'argument du coefficient.** $c = 1+i\sqrt3$ : $|c| =
+      \sqrt{1+3} = 2$, $\cos\theta = 1/2$, $\sin\theta = \sqrt3/2$, donc
+      $\arg(c) = \pi/3$.
+
+      **Ce dont l'angle NE dépend PAS.** L'angle de rotation d'une
+      multiplication par $c$ fixe est $\arg(c)$ seul : il ne dépend ni du
+      point $M$, ni de son argument de départ. C'est ce qui distingue une
+      ROTATION (l'écart est constant) d'une simple direction lue sur $M'$
+      (qui, elle, dépend de $M$).
+
+      **Le contrôle.** Le point $1$ tourne de $\pi/3$ vers $1+i\sqrt3$ ; le
+      point $i$ tourne du MÊME angle $\pi/3$ vers $i(1+i\sqrt3) = -\sqrt3+i$.
+
+  - id: NBCOMPLEX2-41
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: maths_complexes_trigo
+    tags: [rotation, angle, argument]
+    primary_misconception: mc.math.maths_complexes_trigo.multiplication-rotation-par-defaut
+    stem: >
+      On multiplie tout le plan par $c = -1 + i$. De quel angle le plan
+      tourne-t-il ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{3\\pi}{4}$"
+        correct: true
+      - id: B
+        text: "$\\dfrac{\\pi}{2}$ — un quart de tour"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.multiplication-rotation-par-defaut
+        feedback: >
+          Le quart de tour est une propriété de $i$, pas de $-1+i$. Ici
+          $\arg(-1+i) = 3\pi/4$ : il faut le CALCULER depuis $\cos\theta$ et
+          $\sin\theta$, pas le supposer égal à celui de $i$ parce que $c$
+          contient un $i$.
+      - id: C
+        text: "$-\\dfrac{\\pi}{4}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.argument-un-seul-signe
+        feedback: >
+          C'est l'angle de référence $\pi/4$, pris avec le mauvais signe,
+          sans avoir vérifié les DEUX signes : $\cos\theta=-\sqrt2/2<0$ et
+          $\sin\theta=\sqrt2/2>0$ placent $-1+i$ dans le DEUXIÈME quadrant,
+          pas le quatrième.
+      - id: D
+        text: "$\\sqrt2$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.similitude-module-argument-roles
+        feedback: >
+          $\sqrt2$ est le MODULE de $c$ (le rapport de l'homothétie), pas
+          son argument. L'angle de rotation est $\arg(c)$, une valeur en
+          radians — pas une longueur.
+    correct_feedback: >
+      $|-1+i|=\sqrt2$, $\cos\theta=-\sqrt2/2$, $\sin\theta=\sqrt2/2$ : ces
+      deux signes placent $\theta$ dans le deuxième quadrant,
+      $\theta=3\pi/4$.
+    solution: |
+      **Le module.** $|c| = |-1+i| = \sqrt{1+1} = \sqrt2$.
+
+      **L'argument, avec les deux signes.** $\cos\theta = -\dfrac{\sqrt2}{2}$,
+      $\sin\theta = \dfrac{\sqrt2}{2}$ : angle de référence $\pi/4$, et les
+      signes ($\cos<0$, $\sin>0$) placent $\theta$ dans le deuxième
+      quadrant :
+      $$\theta = \pi - \frac{\pi}{4} = \frac{3\pi}{4}$$
+
+      **Conclusion.** Le plan tourne de $3\pi/4$ — ni un quart de tour
+      ($\pi/2$, la signature de $i$ seul), ni l'angle de référence non
+      corrigé ($-\pi/4$).
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après NBCOMPLEX2-25 à NBCOMPLEX2-34. Seize familles
 # sous le plancher : le module et son argument, la définition de $e^{i\theta}$,
 # la périodicité $2\pi$, la formule de Moivre, les racines $n$-ièmes, et les
 # cinq façons de mal lire une similitude. C'était la dernière notion du corpus
-# à combler. Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
+# à combler.
+# RÉÉCRIT à nouveau le 2026-09-25, après NBCOMPLEX2-35 à NBCOMPLEX2-41 (scène
+# `plan-complexe-transformation`, R5 / chapitre 6 — voir
+# docs/pipeline/propositions/maths-nombres-complexes-2-scene-plan.md §8). Deux
+# modèles neufs déclarés (`multiplication-rotation-par-defaut`,
+# `angle-lu-depuis-l-axe`) ; six modèles existants sortis de la marge nulle ;
+# `mult-par-i-non-rotation` inchangé (la scène ne le sert plus — §8.1 de la
+# spec). Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -2300,12 +2756,12 @@ coverage_summary:
     web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
     mc.math.maths_complexes_trigo.mult-par-i-non-rotation:             { count: 3, items: [NBCOMPLEX2-7, NBCOMPLEX2-8, NBCOMPLEX2-9] }
-    mc.math.maths_complexes_trigo.argument-un-seul-signe:              { count: 3, items: [NBCOMPLEX2-1, NBCOMPLEX2-10, NBCOMPLEX2-23] }
+    mc.math.maths_complexes_trigo.argument-un-seul-signe:              { count: 4, items: [NBCOMPLEX2-1, NBCOMPLEX2-10, NBCOMPLEX2-23, NBCOMPLEX2-41] }
     mc.math.maths_complexes_trigo.module-oubli-racine:                 { count: 3, items: [NBCOMPLEX2-10, NBCOMPLEX2-25, NBCOMPLEX2-34] }
     mc.math.maths_complexes_trigo.arg-conjugue-oppose-compose:         { count: 3, items: [NBCOMPLEX2-11, NBCOMPLEX2-25, NBCOMPLEX2-27] }
     mc.math.maths_complexes_trigo.definition-exponentielle-erronee:    { count: 3, items: [NBCOMPLEX2-13, NBCOMPLEX2-26, NBCOMPLEX2-27] }
-    mc.math.maths_complexes_trigo.produit-modules-additionnes:         { count: 3, items: [NBCOMPLEX2-2, NBCOMPLEX2-12, NBCOMPLEX2-14] }
-    mc.math.maths_complexes_trigo.produit-quotient-argument-operation: { count: 3, items: [NBCOMPLEX2-2, NBCOMPLEX2-12, NBCOMPLEX2-14] }
+    mc.math.maths_complexes_trigo.produit-modules-additionnes:         { count: 4, items: [NBCOMPLEX2-2, NBCOMPLEX2-12, NBCOMPLEX2-14, NBCOMPLEX2-36] }
+    mc.math.maths_complexes_trigo.produit-quotient-argument-operation: { count: 4, items: [NBCOMPLEX2-2, NBCOMPLEX2-12, NBCOMPLEX2-14, NBCOMPLEX2-35] }
     mc.math.maths_complexes_trigo.moivre-module-multiplie:             { count: 3, items: [NBCOMPLEX2-3, NBCOMPLEX2-15, NBCOMPLEX2-26] }
     mc.math.maths_complexes_trigo.moivre-argument-mal-transforme:      { count: 4, items: [NBCOMPLEX2-3, NBCOMPLEX2-15, NBCOMPLEX2-26, NBCOMPLEX2-27] }
     mc.math.maths_complexes_trigo.argument-non-2pi-periodique:         { count: 3, items: [NBCOMPLEX2-15, NBCOMPLEX2-25, NBCOMPLEX2-28] }
@@ -2313,16 +2769,18 @@ coverage_summary:
     mc.math.maths_complexes_trigo.racines-nombre-incomplet:            { count: 3, items: [NBCOMPLEX2-4, NBCOMPLEX2-16, NBCOMPLEX2-23] }
     mc.math.maths_complexes_trigo.racines-pas-2pi-sur-n:               { count: 4, items: [NBCOMPLEX2-4, NBCOMPLEX2-17, NBCOMPLEX2-28, NBCOMPLEX2-33] }
     mc.math.maths_complexes_trigo.racines-module-non-racine:           { count: 3, items: [NBCOMPLEX2-16, NBCOMPLEX2-23, NBCOMPLEX2-33] }
-    mc.math.maths_complexes_trigo.similitude-module-argument-roles:    { count: 3, items: [NBCOMPLEX2-5, NBCOMPLEX2-29, NBCOMPLEX2-34] }
-    mc.math.maths_complexes_trigo.homothetie-rapport-complexe:         { count: 4, items: [NBCOMPLEX2-5, NBCOMPLEX2-29, NBCOMPLEX2-30, NBCOMPLEX2-31] }
-    mc.math.maths_complexes_trigo.reel-positif-donne-rotation:         { count: 3, items: [NBCOMPLEX2-18, NBCOMPLEX2-30, NBCOMPLEX2-34] }
-    mc.math.maths_complexes_trigo.transformation-centre-oublie:        { count: 3, items: [NBCOMPLEX2-18, NBCOMPLEX2-19, NBCOMPLEX2-22] }
-    mc.math.maths_complexes_trigo.rotation-sens-inverse:               { count: 3, items: [NBCOMPLEX2-19, NBCOMPLEX2-22, NBCOMPLEX2-32] }
+    mc.math.maths_complexes_trigo.similitude-module-argument-roles:    { count: 5, items: [NBCOMPLEX2-5, NBCOMPLEX2-29, NBCOMPLEX2-34, NBCOMPLEX2-39, NBCOMPLEX2-41] }
+    mc.math.maths_complexes_trigo.homothetie-rapport-complexe:         { count: 6, items: [NBCOMPLEX2-5, NBCOMPLEX2-29, NBCOMPLEX2-30, NBCOMPLEX2-31, NBCOMPLEX2-36, NBCOMPLEX2-38] }
+    mc.math.maths_complexes_trigo.reel-positif-donne-rotation:         { count: 4, items: [NBCOMPLEX2-18, NBCOMPLEX2-30, NBCOMPLEX2-34, NBCOMPLEX2-39] }
+    mc.math.maths_complexes_trigo.transformation-centre-oublie:        { count: 4, items: [NBCOMPLEX2-18, NBCOMPLEX2-19, NBCOMPLEX2-22, NBCOMPLEX2-38] }
+    mc.math.maths_complexes_trigo.rotation-sens-inverse:               { count: 6, items: [NBCOMPLEX2-19, NBCOMPLEX2-22, NBCOMPLEX2-32, NBCOMPLEX2-37, NBCOMPLEX2-38, NBCOMPLEX2-40] }
     mc.math.maths_complexes_trigo.rotation-angle-comme-coefficient:    { count: 4, items: [NBCOMPLEX2-19, NBCOMPLEX2-29, NBCOMPLEX2-30, NBCOMPLEX2-31] }
     mc.math.maths_complexes_trigo.ecriture-complexe-oubli-constante:   { count: 3, items: [NBCOMPLEX2-22, NBCOMPLEX2-31, NBCOMPLEX2-32] }
     mc.math.maths_complexes_trigo.lecture-w-module-argument:           { count: 3, items: [NBCOMPLEX2-6, NBCOMPLEX2-20, NBCOMPLEX2-21] }
     mc.math.maths_complexes_trigo.ensemble-points-locus-confondu:      { count: 3, items: [NBCOMPLEX2-24, NBCOMPLEX2-32, NBCOMPLEX2-33] }
-  total_items: 34
+    mc.math.maths_complexes_trigo.multiplication-rotation-par-defaut:  { count: 3, items: [NBCOMPLEX2-39, NBCOMPLEX2-40, NBCOMPLEX2-41] }
+    mc.math.maths_complexes_trigo.angle-lu-depuis-l-axe:               { count: 4, items: [NBCOMPLEX2-35, NBCOMPLEX2-36, NBCOMPLEX2-37, NBCOMPLEX2-40] }
+  total_items: 41
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2331,10 +2789,22 @@ coverage_summary:
     R2: 5
     R3: 4
     R4: 4
-    R5: 7
+    R5: 14
     R6: 4
     R7: 3
   honest_state: >-
-    Les vingt-trois misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Dix-neuf y siègent EXACTEMENT (3 items) : la marge est nulle
-    et tout retrait d'item la casse.
+    Les vingt-cinq misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Treize y siègent EXACTEMENT (3 items) : la marge est nulle et
+    tout retrait d'item la casse — parmi elles, `multiplication-rotation-par-defaut`
+    (modèle neuf, NBCOMPLEX2-39/-40/-41), qui part directement sans marge,
+    déclaré tel quel au §8.4 de la spec, pas un oubli de cette passe.
+    `angle-lu-depuis-l-axe` (l'autre modèle neuf) part avec une marge de un
+    (4 items : NBCOMPLEX2-35, -36, -37, -40). Six modèles existants sortent
+    de la marge nulle avec cette livraison (`argument-un-seul-signe`,
+    `produit-modules-additionnes`, `produit-quotient-argument-operation`,
+    `similitude-module-argument-roles`, `reel-positif-donne-rotation`,
+    `transformation-centre-oublie`) ; `rotation-sens-inverse` et
+    `homothetie-rapport-complexe` gagnent le plus de marge (respectivement +3
+    et +2). `mult-par-i-non-rotation` reste à 3, tous en R0 : la scène ne le
+    sert pas (§8.1 de la spec — la première version de la spec le visait par
+    erreur, corrigée en vague 1).

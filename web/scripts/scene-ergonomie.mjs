@@ -50,6 +50,8 @@ const SCENES = [
   { nom: "modulation", lecon: "/notions/pc/ondes-em-modulation", scene: "banc-de-modulation", ouvrir: "Ouvrir le banc de modulation" },
   // la course de la première étape : le verdict attend la fin de la manipulation (30 min, 2 s d'écran)
   { nom: "electrolyse", lecon: "/notions/pc/electrolyse", scene: "banc-electrolyse", ouvrir: "Ouvrir le banc d’électrolyse", course: 0 },
+  // sans course : le verdict est immédiat, c'est le plan qui répond
+  { nom: "plan-complexe", lecon: "/notions/maths/nombres-complexes-2", scene: "plan-complexe-transformation", ouvrir: "Ouvrir le plan complexe" },
 ].filter((s) => CHOIX.length === 0 || CHOIX.includes(s.nom));
 if (!SCENES.length) { console.error(`scene-ergonomie : aucune scène ne s'appelle ${CHOIX.join(", ")}.`); process.exit(2); }
 

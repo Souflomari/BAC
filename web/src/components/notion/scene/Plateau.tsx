@@ -264,6 +264,14 @@ export function disposer(
      * est cachée et le bloc se réduit à l'étiquette du dessous.
      */
     chapeau?: { el: HTMLSpanElement | null; visible: boolean };
+    /**
+     * Au-delà de cette distance (px, du point au bord de l'étiquette), un FILET relie
+     * l'étiquette à son point (plan complexe : au téléphone, une affixe longue ne tient
+     * pas près de son point). Le placeur le sait : une place dont le filet traverserait
+     * une étiquette déjà posée, ou qui couvrirait un filet déjà tiré, coûte cher. Le
+     * filet retenu est rendu avec la place, au client de le tracer.
+     */
+    filet?: number;
   }[],
   segments: readonly (readonly [Point2, Point2])[],
   cadre: { largeur: number; hauteur: number },
@@ -273,7 +281,7 @@ export function disposer(
    * la corde, elle recouvrait « S » et « M »), un anneau dessiné…
    */
   obstacles: readonly Boite[] = []
-) {
+): ({ x: number; y: number; w: number; h: number; filet: [Point2, Point2] | null } | null)[] {
   const ECART_CHAPEAU = 2;
   const tailles = etiquettes.map(({ el, p, chapeau }) => {
     if (!el || !p.visible) return null;
@@ -282,7 +290,18 @@ export function disposer(
     return c ? { w: Math.max(w, c.w), h: h + ECART_CHAPEAU + c.h, bas: h, haut: c.h } : { w, h, bas: h, haut: 0 };
   });
   const posees: Boite[] = [...obstacles];
-  const places: (Point2 | null)[] = etiquettes.map(({ p, surAncre, directions, portee }, i) => {
+  const filets: [Point2, Point2][] = [];
+  const filetsRetenus: ([Point2, Point2] | null)[] = etiquettes.map(() => null);
+  /** Le filet d'une place : du bord du point (7 px) au bord de la boîte (2 px) — null si la place est assez proche. */
+  const filetDe = (p: Point2, c: Point2, t: { w: number; h: number }, seuil: number | undefined): [Point2, Point2] | null => {
+    if (seuil === undefined) return null;
+    const qx = Math.max(c.x - t.w / 2, Math.min(p.x, c.x + t.w / 2)), qy = Math.max(c.y - t.h / 2, Math.min(p.y, c.y + t.h / 2));
+    const d = Math.hypot(qx - p.x, qy - p.y);
+    if (d <= seuil) return null;
+    const ux = (qx - p.x) / d, uy = (qy - p.y) / d;
+    return [{ x: p.x + ux * 7, y: p.y + uy * 7 }, { x: qx - ux * 2, y: qy - uy * 2 }];
+  };
+  const places: (Point2 | null)[] = etiquettes.map(({ p, surAncre, directions, portee, filet }, i) => {
     const t = tailles[i];
     if (!t) return null;
     const boite = (c: Point2): Boite => ({ x0: c.x - t.w / 2 - 2, y0: c.y - t.h / 2 - 2, x1: c.x + t.w / 2 + 2, y1: c.y + t.h / 2 + 2 });
@@ -292,6 +311,14 @@ export function disposer(
       let n = (deborde > 0 ? 100000 + deborde : 0) + g + rang * 0.01;
       for (const o of posees) if (chevauche(o, b)) n += 10000;
       for (const [a, z] of segments) if (traverse(a, z, b)) n += 1000;
+      // une étiquette posée sur un filet déjà tiré le coupe ; un filet qui traverse une étiquette
+      // ou un obstacle disparaît dessous
+      for (const [a, z] of filets) if (traverse(a, z, b)) n += 5000;
+      const f = filetDe(p, c, t, filet);
+      // une boîte qui CONTIENT déjà le point (le chiffre d'une graduation sous le milieu d'un arc)
+      // ne peut pas être évitée par son filet : elle ne compte pas
+      const contient = (o: Boite) => p.x >= o.x0 && p.x <= o.x1 && p.y >= o.y0 && p.y <= o.y1;
+      if (f) for (const o of posees) if (!contient(o) && traverse(f[0], f[1], o)) n += 5000;
       return n;
     };
     let meilleur: Point2 = { x: p.x, y: p.y };
@@ -308,6 +335,11 @@ export function disposer(
       })
     );
     posees.push(boite(meilleur));
+    const f = filetDe(p, meilleur, t, filet);
+    if (f) {
+      filets.push(f);
+      filetsRetenus[i] = f;
+    }
     return meilleur;
   });
   etiquettes.forEach(({ el, p, chapeau }, i) => {
@@ -332,5 +364,11 @@ export function disposer(
     const dx = t.haut > 0 ? bord(el.offsetWidth) : 0;
     el.style.transform = `translate(${c.x + dx}px, ${c.y + t.h / 2 - t.bas / 2}px) translate(-50%, -50%)`;
     el.style.visibility = "visible";
+  });
+  // la place retenue de chaque bloc (centre et taille), pour qui veut la RELIER à son point
+  // (le plan complexe tire un filet quand l'étiquette a dû s'éloigner)
+  return etiquettes.map((_, i) => {
+    const c = places[i], t = tailles[i];
+    return c && t ? { x: c.x, y: c.y, w: t.w, h: t.h, filet: filetsRetenus[i] } : null;
   });
 }

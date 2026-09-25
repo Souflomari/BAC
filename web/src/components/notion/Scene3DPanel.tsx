@@ -25,6 +25,7 @@ import { OrbiteGeostationnairePanel } from "./scene/OrbiteGeostationnairePanel";
 import { SpherePlanDroitePanel } from "./scene/SpherePlanDroitePanel";
 import { RevolutionPanel } from "./scene/RevolutionPanel";
 import { VectorielPanel } from "./scene/VectorielPanel";
+import { PlanComplexePanel } from "./scene/PlanComplexePanel";
 
 const PANNEAUX: Record<string, React.ComponentType<{ scene: Scene3DDescriptor; className?: string }>> = {
   "orbite-geostationnaire": OrbiteGeostationnairePanel,
@@ -54,6 +55,10 @@ const PANNEAUX: Record<string, React.ComponentType<{ scene: Scene3DDescriptor; c
   // Le septième : la paillasse de la leçon — la tension décide du SENS, la charge I·Δt de la
   // QUANTITÉ, et une balance mesure la constante de Faraday (spec-scene-electrolyse).
   "banc-electrolyse": ElectrolysePanel,
+  // Le huitième, et le premier des mathématiques en plan : un point, un coefficient, un
+  // centre — le rapport, l'angle comme ÉCART, le centre comme point fixe (spec
+  // docs/pipeline/propositions/maths-nombres-complexes-2-scene-plan.md). Tout y est EXACT.
+  "plan-complexe-transformation": PlanComplexePanel,
 };
 
 export function Scene3DPanel({ scene, className }: { scene: Scene3DDescriptor; className?: string }) {

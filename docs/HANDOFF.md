@@ -16321,3 +16321,100 @@ lancer. L'arbre à part est retiré (son lien `node_modules` défait d'abord).
 **RESTENT** : au propriétaire, les seize questions de la spec §13 tranchées par défaut
 (DÉCISIONS §28), dont la redistribution du chapitre du seuil et la figure de repli sans
 JavaScript, et ce que la vague 2 a demandé sans l'obtenir (§28, points 22 à 29).
+
+---
+
+## §11.209 — Le plan complexe : un nombre, deux effets, un point qui ne bouge pas — et deux portes qui ont appris à compter
+
+**LA SCÈNE.** Le quatorzième manipulable de première partie, le huitième PLAN, et le
+premier des MATHÉMATIQUES sans 3D : `maths/nombres-complexes-2`, en tête de R5
+(`[[embed:plan-complexe-transformation]]`), précédé d'un paragraphe d'annonce qui dit à
+l'élève que la scène EXHIBE et ne démontre pas. Le plan, son cercle unité, un point $M$
+sur cinq positions, un coefficient sur sept crans, un centre ($O$ ou $A(2)$), et à S5 trois
+formules données. Cinq paris : **S1** multiplier par $2$ — agrandir SANS tourner (le quart
+de tour appartient à $i$, pas à la multiplication : le modèle neuf
+`multiplication-rotation-par-defaut`) ; **S2** le rapport comme QUOTIENT de deux
+longueurs ; **S3** l'angle comme ÉCART de deux directions, jamais la direction d'un point
+(le modèle neuf `angle-lu-depuis-l-axe`) — les deux lectures, `angle` et « argument de
+l'image », affichées l'une sous l'autre, égales sur l'axe réel seulement ; **S4** le
+centre comme point FIXE (un anneau se pose sur $A$) ; **S5** lire $z' = (1+i)z + 1 - i$ à
+l'envers : $\omega = b/(1-a) = 1+i$, que la scène POSE à la révélation — il n'existe nulle
+part avant.
+
+**EXACT, OU RIEN.** Aucune lecture n'affiche un décimal : un petit type (un complexe dont
+les deux parties vivent dans $\mathbb{Q}(\sqrt3)$) porte toute l'arithmétique ; les
+flottants ne servent qu'à dessiner et à reconnaître un argument (un `atan2` qui tombe à
+$10^{-9}$ près sur un multiple de $\pi/12$). La borne $-\pi$ que la grille déclenche
+($c = -2$, $z = 1+i$ : écart brut $-\pi$) s'écrit $+\pi$. `test-plan-complexe` (10 tests)
+garde les tables A à E de la spec, en formes ET en valeurs, et rougit sur trois
+sabotages du modèle (sans réduction mod $2\pi$ ; l'oubli du $+b$ — la faute que l'auteur
+de la spec avait commise ; $\omega = b/(1+a)$).
+
+**LE CONTENU.** item-author : les deux modèles déclarés, NBCOMPLEX2-35 à -41 (le choix
+juste de -39 perd un « aucune », seul absolu de son item ; le gras des énoncés retiré, il
+ne tombait que sur des distracteurs), `coverage_summary` refait (41 items). content-author :
+l'annonce et le marqueur, la sous-section « Reconnaître une transformation écrite
+$z' = az + b$ », un second exemple travaillé hors de l'axe réel, la reprise de
+`cp-r5-ecriture` en prose, deux puces au récapitulatif, le descripteur. Il a REFUSÉ une
+consigne venue de moi en cours de route (le balayage qui n'efface que le positionnel),
+parce qu'elle contredisait la spec et qu'il ne pouvait pas la vérifier — il avait raison ;
+la décision est maintenant écrite dans la spec, avec les quatre autres de la
+construction (en-tête, « Ce que la construction a changé »).
+
+**LA PORTE `scene-plan-complexe`** (INSTRUMENTS). Elle refait chaque nombre en flottants
+ET compare les FORMES aux tables de la spec (« $2\sqrt5$ » et « $4{,}47$ » : même nombre,
+pas la même réponse), par un petit lecteur de TeX à elle, aux 70 + 15 états. Aux pixels :
+l'échelle LUE par régression sur les traits des graduations des deux axes (isotropie à
+0,5 %, cordes du cercle unité, cadre carré), les points cherchés comme des DISQUES
+(barycentre sous-pixel) là où leur affixe les met, l'arc lu sur ses pixels d'accent entre
+ΩM et ΩM′ avec sa pointe, le point fixe immobile, le balayage qui garde les invariants
+écrits et rend tout au relâchement, au clavier puis à la souris. **Premier passage : 135
+rouges sur 628 mesures — une centaine venaient de la porte** (`Object.keys` range d'abord
+les clés qui ressemblent à des entiers : la table A se lisait dans le désordre ; le
+quadrillage compté comme de l'encre sous les étiquettes ; un point fixe cherché en encre
+sous le carré d'accent de Ω). **Les défauts du PRODUIT qu'elle a trouvés** : `\OmegaM`
+(une macro KaTeX inconnue, en rouge) ; « centre » écrit à S2 et S3 (« Distances au
+centre ») et « arc » dans l'encadré à S2, contre la formule graduée ; le titre de S4 qui
+affichait `$O$` brut (d'où une règle neuve de `validate-content` : un titre d'étape ne
+porte pas de LaTeX, essai rouge fait) ; les segments colinéaires dans le mauvais ordre
+(l'accent de OM′ recouvrait l'encre de OM) ; l'origine posée sur un pixel entier, un
+demi-pixel à côté des axes, lu dans les rapports de longueurs ; et surtout la
+**mise en page des étiquettes au téléphone** : à 20 px par unité, « M′(½ + ½i) » ne tient
+pas entre O et M, « M′((√3 − 1) + (√3 + 1)i) » mesure 170 px sur 358. D'où, dans
+`disposer` (pièce commune, rétrocompatible) : un **filet** qui relie une étiquette
+éloignée de plus de 14 px à son point — le placeur choisit la place EN SACHANT le filet
+qu'elle demande (un filet qui traverserait une étiquette, ou une étiquette posée sur un
+filet, coûte cher) — et la porte exige le filet, lu aux pixels. Les affixes longues
+s'écrivent sur deux lignes ; l'angle, en ligne sur le plan (π/6), pleine fraction dans
+la liste ; l'étiquette d'angle cherche d'abord le long de la BISSECTRICE, là où le
+secteur s'élargit. **Puis VERTE trois fois (631 mesures, 28 familles), et une quatrième à 632 quand N9 (le
+compte des crans) a rejoint la porte ; essai rouge 27/27 et 17 formes de frontière vues.** En CI dans le job `telephone`.
+
+**DEUX PORTES QUI ONT APPRIS À COMPTER** — c'est la partie qui dépasse la scène.
+
+1. `indice-absolu`, troisième sens (l'ÉCART, §11.108), comparait des **RATIOS** — et un
+   ratio se DILUE. Sept items sans un seul absolu ont fait rougir `nombres-complexes-2`
+   (écart −1,7 → −1,5 point : les deux taux glissent vers zéro). Le défaut symétrique est
+   pire et il était RÉEL : sur une notion à écart positif, des items propres font baisser
+   l'écart assez pour **masquer** un absolu gratuit. Il masquait exactement ça dans
+   `pc/ondes-em-modulation` — OEM-27 D, « le motif se répète **toutes les** 4,0
+   divisions », écrit par moi au banc de modulation, que la porte laissait passer
+   (+10 → +10 points) ; réécrit « revient au bout de ». Le sens compte désormais des
+   DISTRACTEURS au-delà de ce que le taux des clés prédit,
+   `distAbs − cleAbs × distTotal / cleTotal` — invariant quand on ajoute des items sans
+   absolu (2 030 items éligibles sur 2 033 ont quatre choix). **Une première correction
+   (ne garder que la partie positive de l'écart) a été DÉFAITE** : elle rendait AMBIGU
+   l'essai §11.108, dont la casse laisse l'écart négatif. Essai rouge neuf §11.209 : le
+   masque lui-même (sept items propres et un « toujours » gratuit dans
+   `philo/la-liberte` — l'écart des taux BAISSE de +26,4 à +20,8, le compte MONTE de 19 à
+   20) ; §11.108 rejoué, toujours rouge.
+2. `validate-content` : un titre d'étape de scène ne porte ni `$` ni `\` (il ne passe pas
+   par KaTeX). Rouge sur l'ancien titre de S4, vert sur le nouveau.
+
+**RESTENT** : la **vague 2** (dessin, calme, ergonomie sur les captures) et la **campagne
+de sabotages du produit** (la liste du §11.4 de la spec : l'arc tracé depuis l'axe réel,
+`angle` qui affiche l'argument de l'image, la réduction mod $2\pi$ retirée, le repère
+anisotrope, la fenêtre paysage, $z' = a(z-\omega)$…) ; au propriétaire, les questions du
+§13 de la spec tranchées par défaut (DÉCISIONS §29), dont le cran `les-deux` de profondeur
+SM à S5, et le mot « similitude » une fois dans la prose. La spec reste sous
+`docs/pipeline/propositions/` tant que la vague 2 n'est pas passée.

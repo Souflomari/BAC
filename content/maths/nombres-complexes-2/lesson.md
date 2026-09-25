@@ -268,6 +268,10 @@ Les trois racines cubiques de $8i$ sont donc $2e^{i\pi/6}$, $2e^{i5\pi/6}$ et $2
 
 ## R5 — Interprétation géométrique : rotation et homothétie
 
+Au chapitre 1, une question restait en suspens : $i$ fait tourner tout le plan d'un quart de tour sans l'agrandir — mais est-ce que **tout** nombre complexe se comporte pareil quand on multiplie par lui, ou bien certains agrandissent aussi ? Avant de démontrer la réponse, on va d'abord la mettre à l'épreuve sur quelques cas choisis. Attention à ce que ce plan est : un banc d'essai, pas une preuve. Quelques cas bien choisis ne démontrent rien en mathématiques — la démonstration, elle, vient juste après, et elle vaut pour tous les complexes à la fois.
+
+[[embed:plan-complexe-transformation]]
+
 ### Ce que fait, en général, la multiplication par un complexe fixe
 
 Reviens à la question du chapitre 1. Fixe un complexe non nul $c=re^{i\theta}$, et regarde ce qui se passe quand on associe, à un point $M$ d'affixe $z$, le point $M'$ d'affixe $z' = c\,z$.
@@ -294,6 +298,34 @@ Donc cette transformation est la composée d'une rotation de centre $A$ et d'ang
 
 Deux cas particuliers valent d'être repérés : si $c$ est un réel strictement positif ($\theta=0$), il n'y a aucune rotation — seulement une homothétie. Si $|c|=1$, il n'y a aucun changement de taille — seulement une rotation.
 
+### Reconnaître une transformation écrite $z' = az + b$
+
+Développe $z'-\omega = a(z-\omega)$ : tu obtiens $z' = az + \omega(1-a)$, c'est-à-dire $z'=az+b$ en posant $b=\omega(1-a)$. Toute transformation de ce chapitre s'écrit donc aussi sous cette forme développée.
+
+La question utile est la réciproque : à partir d'une écriture $z'=az+b$ donnée, comment retrouver le rapport, l'angle et le centre ? Pour $a\neq 1$, le centre $\omega$ est le seul point qui ne bouge pas — on ne le devine pas, on le **résout** : c'est la définition même du point fixe, $\omega=a\omega+b$, qui fournit l'équation, et elle donne
+
+$$\omega = \frac{b}{1-a}$$
+
+Le rapport se lit directement sur $a$ : c'est $|a|$, un réel positif. L'angle aussi : c'est $\arg(a)$.
+
+Deux cas particuliers, déjà rencontrés sur $c$, se relisent ici sur $a$ : si $a$ est un réel strictement positif, aucune rotation — une homothétie seule. Si $|a|=1$, aucun agrandissement — une rotation seule.
+
+Et un cas mérite d'être écarté explicitement : $a=1$. Alors $\dfrac{b}{1-a}$ n'a pas de sens — une division par $0$ — et c'est normal : $z'=z+b$ n'a **aucun** point fixe, c'est une translation, la transformation même du chapitre 1.
+
+**Exemple travaillé.** Reconnaître la transformation $z' = iz + 2-2i$.
+
+**Ce qu'on cherche et pourquoi ce geste :** l'écriture est déjà développée, donc $a$ et $b$ se lisent directement ; il reste à en tirer le rapport et l'angle, puis le centre par résolution.
+
+$$a = i, \qquad b = 2-2i, \qquad |a| = 1, \qquad \arg(a) = \frac{\pi}{2}$$
+
+$$\omega = a\omega+b \iff \omega = \frac{b}{1-a} = \frac{2-2i}{1-i} = \frac{2(1-i)}{1-i} = 2$$
+
+C'est donc la rotation de centre le point d'affixe $2$ et d'angle $\dfrac{\pi}{2}$.
+
+**Vérification par la seconde route :** $z'-2 = iz+2-2i-2 = iz-2i = i(z-2)$ ✓ — on retrouve exactement la forme factorisée, centrée en $2$.
+
+En filière Sciences Mathématiques, cette transformation porte un nom : une **similitude directe** de rapport $|a|$, d'angle $\arg(a)$ et de centre $\omega$.
+
 ### Exemple travaillé
 
 Soit $c=1+i$. Déterminer l'image du point $M$ d'affixe $z=3$ par la transformation $z'=cz$ (centrée en $O$), et décrire cette transformation.
@@ -308,15 +340,31 @@ La transformation est donc la composée d'une rotation de centre $O$ et d'angle 
 
 **Vérification géométrique :** $z=3$ a pour module $3$ et pour argument $0$. D'après la règle, $z'$ doit avoir pour module $3\sqrt2$ et pour argument $0+\pi/4=\pi/4$. Or $|3+3i| = \sqrt{9+9}=\sqrt{18}=3\sqrt2$, et $3+3i$ a bien pour argument $\pi/4$ (car $\cos = \sin = \frac{3}{3\sqrt2}=\frac{\sqrt2}{2}$). Les deux méthodes coïncident.
 
+**Un second exemple, cette fois hors de l'axe réel :** garde le même $c=1+i$, mais prends $M$ d'affixe $z=2i$.
+
+$$z' = (1+i)(2i) = 2i+2i^2 = -2+2i$$
+
+Lis d'abord les distances : $|z|=2$ et $|z'|=2\sqrt2$, donc $\dfrac{|z'|}{|z|}=\sqrt2=|c|$ — la règle du rapport tient, comme sur le premier exemple. Lis maintenant les directions : $\arg(z)=\dfrac{\pi}{2}$ et $\arg(z')=\dfrac{3\pi}{4}$. Ces deux nombres ne sont pas égaux à $\arg(c)$ pris isolément — c'est leur **écart** qui l'est : $\dfrac{3\pi}{4}-\dfrac{\pi}{2}=\dfrac{\pi}{4}=\arg(c)$.
+
+L'angle d'une rotation est une **différence** de deux directions, jamais la direction de l'image : sur le premier exemple, les deux coïncidaient **parce que** $\arg(3)=0$ — un hasard de cet exemple-là, pas une règle générale.
+
 [[figure:rotation-homothetie]]
 
+Un dernier arrêt sur ce chapitre : le plan t'a fait trouver où arrive un point ; ici, on vérifie comment on l'écrit.
+
 [[checkpoint:cp-r5-ecriture]]
+
+Et si on te donnait la même transformation écrite $z' = iz + 2 - 2i$ ? C'est la même : développe $z' - 2 = i(z-2)$ et tu retrouves les deux termes. Le centre, lui, ne se lit plus — il se cherche.
+
+<!-- renvoi explicite pour l'entraînement (spec §4.7) : NBCOMPLEX2-38 -->
 
 ---
 
 ## R6 — Configurations : la nature d'un triangle, l'alignement
 
 ### Le rapport qui encode toute la forme d'un triangle
+
+Ce rapport $w$ n'est pas un outil neuf : c'est le coefficient du chapitre 6, lu à l'envers. Là-bas, on connaissait $c$ et on cherchait l'image ; ici, on connaît deux points et leurs images, et c'est $c$ lui-même qu'on retrouve.
 
 Soient $A$, $B$, $C$ trois points d'affixes $z_A$, $z_B$, $z_C$, avec $B\neq A$. On s'intéresse au nombre complexe
 
@@ -366,6 +414,9 @@ $w$ est imaginaire pur non nul, donc le triangle est **rectangle en $A$**. Et $|
 ## R7 — Pour t'entraîner
 
 Tu as maintenant tous les outils du chapitre : l'argument et les formes trigonométrique/exponentielle, les règles du produit, du quotient et de Moivre, les racines n-ièmes, et surtout la lecture géométrique d'un rapport de complexes (rotation, orthogonalité, nature d'un triangle, lieux de points). L'exercice de type bac ci-dessous les rassemble.
+
+- $|c|$ multiplie une longueur, $\arg(c)$ **ajoute** un angle — et cet angle est un **écart**, jamais la direction d'un point.
+- une transformation écrite $z' = az+b$ se caractérise par $|a|$, $\arg(a)$ et $\omega = \dfrac{b}{1-a}$.
 
 Avant de te lancer, un dernier réflexe sur les ensembles de points :
 

@@ -215,6 +215,12 @@ const HORS_CHAMP = new Set([
   // témoin « 1 g », l'aiguille et les flèches lues aux pixels ; deux passages
   // en CI (job `telephone`) ; `node scripts/scene-electrolyse.mjs --essai-rouge`.
   "scene-electrolyse.mjs",
+  // scene-plan-complexe, même raison : le plan complexe (maths/nombres-
+  // complexes-2, en tête de R5), le huitième manipulable PLAN — les formes
+  // EXACTES comparées aux tables de la spec aux 85 états, l'échelle lue sur les
+  // graduations, l'arc lu entre les bonnes directions ; deux passages en CI
+  // (job `telephone`) ; `node scripts/scene-plan-complexe.mjs --essai-rouge`.
+  "scene-plan-complexe.mjs",
   // scene-ergonomie lance SEULE, sur les neuf scènes, la famille « ergonomie »
   // que chaque porte de scène lance déjà à sa fin (ADR 0035 : une porte prise
   // dans un agrégat doit pouvoir être lancée seule) : build ET navigateur. Pas

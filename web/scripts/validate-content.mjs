@@ -167,6 +167,9 @@ function fautesScene3d(desc) {
     const ou = `étape ${i + 1}${e?.id ? ` (${e.id})` : ""}`;
     for (const champ of ["id", "titre", "consigne"])
       if (typeof e?.[champ] !== "string" || !e[champ].trim()) fautes.push(`${ou} : « ${champ} » manquant`);
+    // Le TITRE d'une étape ne passe pas par KaTeX (`ConsigneEtape` : texte seul) :
+    // « autour de $O$ ? » s'affichait tel quel (plan complexe, S4, captures de construction)
+    if (typeof e?.titre === "string" && /[$\\]/.test(e.titre)) fautes.push(`${ou} : le titre contient du LaTeX (« $ » ou « \\ »), qui s'afficherait brut — un titre est du texte seul`);
     if (vus.has(e?.id)) fautes.push(`${ou} : id en double`);
     vus.add(e?.id);
     if (!Array.isArray(e?.controles) || e.controles.length === 0) fautes.push(`${ou} : aucun contrôle ouvert`);

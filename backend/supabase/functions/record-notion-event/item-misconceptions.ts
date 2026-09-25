@@ -1692,10 +1692,44 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.maths_complexes_trigo.reel-positif-donne-rotation",
       "mc.math.maths_complexes_trigo.similitude-module-argument-roles"
     ],
+    "NBCOMPLEX2-35": [
+      "mc.math.maths_complexes_trigo.angle-lu-depuis-l-axe",
+      "mc.math.maths_complexes_trigo.produit-quotient-argument-operation",
+      "mc.math.maths_complexes_trigo.rotation-sens-inverse"
+    ],
+    "NBCOMPLEX2-36": [
+      "mc.math.maths_complexes_trigo.angle-lu-depuis-l-axe",
+      "mc.math.maths_complexes_trigo.homothetie-rapport-complexe",
+      "mc.math.maths_complexes_trigo.produit-modules-additionnes"
+    ],
+    "NBCOMPLEX2-37": [
+      "mc.math.maths_complexes_trigo.angle-lu-depuis-l-axe",
+      "mc.math.maths_complexes_trigo.rotation-sens-inverse"
+    ],
+    "NBCOMPLEX2-38": [
+      "mc.math.maths_complexes_trigo.homothetie-rapport-complexe",
+      "mc.math.maths_complexes_trigo.rotation-sens-inverse",
+      "mc.math.maths_complexes_trigo.transformation-centre-oublie"
+    ],
+    "NBCOMPLEX2-39": [
+      "mc.math.maths_complexes_trigo.multiplication-rotation-par-defaut",
+      "mc.math.maths_complexes_trigo.reel-positif-donne-rotation",
+      "mc.math.maths_complexes_trigo.similitude-module-argument-roles"
+    ],
     "NBCOMPLEX2-4": [
       "mc.math.maths_complexes_trigo.equation-complexe-cherche-reels",
       "mc.math.maths_complexes_trigo.racines-nombre-incomplet",
       "mc.math.maths_complexes_trigo.racines-pas-2pi-sur-n"
+    ],
+    "NBCOMPLEX2-40": [
+      "mc.math.maths_complexes_trigo.angle-lu-depuis-l-axe",
+      "mc.math.maths_complexes_trigo.multiplication-rotation-par-defaut",
+      "mc.math.maths_complexes_trigo.rotation-sens-inverse"
+    ],
+    "NBCOMPLEX2-41": [
+      "mc.math.maths_complexes_trigo.argument-un-seul-signe",
+      "mc.math.maths_complexes_trigo.multiplication-rotation-par-defaut",
+      "mc.math.maths_complexes_trigo.similitude-module-argument-roles"
     ],
     "NBCOMPLEX2-5": [
       "mc.math.maths_complexes_trigo.homothetie-rapport-complexe",

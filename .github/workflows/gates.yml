@@ -201,7 +201,13 @@ jobs:
       # quotient Q/n(e⁻) sur les valeurs AFFICHÉES — 9,65·10⁴ à six charges,
       # 9,70·10⁴ à la septième), les deux couples de même charge, l'invariance
       # au câblage, et la tension absente de TOUTE fonction de calcul.
-      - name: Tests unitaires (apprenant · session · typographie · écriture · épreuves · mélange · noyaux · diffraction · tremplin · modulation · électrolyse)
+      #
+      # test-plan-complexe garde le modèle EXACT du « plan complexe » : les
+      # tables A à E de la spec en FORMES exactes (ℚ(√3)[i], jamais un
+      # flottant affiché) et en valeurs recalculées par une seconde voie, la
+      # borne −π réécrite +π à c = −2, z' depuis a ET b (jamais depuis a et ω),
+      # ω recoupé par la définition, les 85 états dans le cadre [−9 ; 9]².
+      - name: Tests unitaires (apprenant · session · typographie · écriture · épreuves · mélange · noyaux · diffraction · tremplin · modulation · électrolyse · plan complexe)
         run: |
           npm run test-learner-model
           npm run test-attempt-events
@@ -214,6 +220,7 @@ jobs:
           npm run test-tremplin
           npm run test-modulation
           npm run test-electrolyse
+          npm run test-plan-complexe
 
       # PORTE LIENS (2026-09-05). Ce projet se pilote par ses documents :
       # `.claude/CLAUDE.md` envoie vers la vision, la vision vers les règles,
@@ -1349,6 +1356,23 @@ jobs:
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
           npm run scene-electrolyse
           node scripts/scene-electrolyse.mjs --essai-rouge
+
+      # PORTE « LE PLAN COMPLEXE » (2026-09-25, HANDOFF §11.209). Le huitième
+      # manipulable PLAN, et le premier des mathématiques sans 3D
+      # (maths/nombres-complexes-2, en tête de R5). ANALYTIQUE et EXACT : la
+      # porte refait chaque nombre en flottants ET compare les FORMES exactes
+      # aux tables de la spec (« 2\sqrt{5} » et « 4,47 » sont le même nombre et
+      # pas la même réponse), aux 70 + 15 états. Aux PIXELS, dans les deux
+      # sens : l'échelle LUE sur les graduations (isotropie, cadre carré), les
+      # points cherchés comme des disques à la place que leur affixe demande,
+      # l'arc lu entre les deux BONNES directions (jamais depuis l'axe réel), le
+      # point fixe immobile, le balayage qui garde les invariants écrits.
+      # Ici, dans `telephone`, pour la même raison que l'électrolyse (budget).
+      - name: "Le plan complexe (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-plan-complexe
+          node scripts/scene-plan-complexe.mjs --essai-rouge
 
   # LE VERDICT DES QCM SUR LE CORPUS ENTIER (DÉCISIONS §17, levée par son
   # prémisse, comme §16). `verdict-qcm` répond à la question la plus grave du

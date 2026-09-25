@@ -1,0 +1,270 @@
+{
+  "slug": "plan-complexe-transformation",
+  "tool": "scene2d",
+  "type": "manipulable",
+  "scene": "plan-complexe-transformation",
+  "title_fr": "Le plan complexe : un coefficient, deux effets, et un point qui ne bouge pas",
+  "caption_fr": "Le plan complexe, son cercle de rayon $1$, et un point $M$ dont tu changes le coefficient, la position ou le centre. À chaque étape, tu paries d'abord sur ce que devient $M$. Le plan répond ensuite, avec les nombres exacts de la leçon — jamais un décimal.",
+  "boundary": "Cadre (maths, 2ème Bac SM et SExp) : la transformation du plan $z \\mapsto cz$, puis $z'-z_\\Omega=c(z-z_\\Omega)$ — rapport $|c|$, angle $\\arg(c)$ comme écart de deux directions, centre comme point fixe — et sa forme développée $z'=az+b$ (rapport $|a|$, angle $\\arg(a)$, centre $\\omega=b/(1-a)$ obtenu par résolution). Placée en tête du chapitre 6 (interprétation géométrique), avant la prose qui l'explique. Hors scène : la lecture de $w=(z_C-z_A)/(z_B-z_A)$ et la nature d'un triangle (chapitre 7) ; toute similitude indirecte ou antidéplacement ; la composition de deux transformations nommées ; les racines n-ièmes ; l'algèbre linéaire ; la trigonométrie au-delà de la table du chapitre 2 ; le second degré dans $\\mathbb{C}$ ; les coordonnées polaires nommées ; toute 3D.",
+  "fit_caveat": "1. La scène ne démontre rien : elle exhibe la règle sur 70 états (35 couples coefficient-point, aux deux centres, plus 15 en mode énoncé) — un échantillon, jamais une preuve ; la démonstration est la prose qui suit, et le paragraphe d'annonce le dit à l'élève avant le marqueur. 2. Les nombres affichés sont exacts ; le DESSIN, lui, est arrondi au pixel — un point comme $(\\sqrt3-1)+(\\sqrt3+1)i$ est tracé à $\\pm 0{,}5$ px. 3. L'échelle est isotrope et constante : une longueur se compare à une longueur sur toute la scène, et le cercle unité est l'étalon. 4. L'arc de l'angle est dessiné à un rayon fixe, indépendant de la distance au centre — une exagération constante et déclarée, sans quoi l'arc d'un point proche du centre serait invisible. 5. La scène ne montre qu'une seule transformation à la fois, jamais deux composées. 6. Le point $M$ ne se déplace pas librement : cinq positions choisies pour que toute lecture reste exacte — le balayage de l'étape 3 fait voir un continuum, mais sans jamais afficher un chiffre. 7. La scène ne dit rien de la translation ($a=1$, aucun point fixe) : elle n'a pas de cran pour ce cas, et il est nommé par la prose seule. 8. Le mode « les deux » (rotation et homothétie ensemble) est de profondeur Sciences Mathématiques ; les modes « rotation-A » et « homothétie-A » couvrent seuls le périmètre Sciences Expérimentales, et toutes les annales qui ont guidé cette scène sont SM. 9. La scène ne prépare pas la route inverse la plus fréquente du bac — trouver le centre d'une rotation d'angle donné à partir d'un point et de son image : elle enseigne à partir d'une formule donnée, pas à partir d'un couple point/image.",
+  "fallback_note": "Sans JavaScript et à l'impression, le panneau disparaît. La figure « rotation-homothetie », plus bas dans le chapitre, couvre le cas $c=1+i$, $z=3$, centre $O$ — exactement le cas qui ne distingue pas l'angle de la transformation de l'argument de l'image, puisque ce $z$ est sur l'axe réel. L'élève sans JavaScript perd donc les trois faits centraux que cette scène installe : le rapport comme quotient de deux longueurs, l'angle comme écart de deux directions, et le centre comme point qui ne bouge pas.",
+  "pedagogy_wiring": {
+    "why_manipulable": "Sept médias couvrent la notion et un seul est manipulable — un curseur sur $n$, au rang des racines n-ièmes, que le cadre Sciences Expérimentales exclut. Aucune figure ne fait varier un coefficient, ne déplace un point, ni ne change un centre : la figure de ce chapitre est gelée sur un seul $c$ et un seul $z$, et ce $z$ est sur l'axe réel — elle ne peut donc pas distinguer l'angle de la transformation de l'argument de l'image. Il faut garder $c$ et bouger $M$, ou l'inverse, pour séparer ce que le module fait de ce que l'argument fait ; il faut sortir de l'axe réel pour voir que l'angle est un écart, pas une direction ; il faut essayer plusieurs points pour constater qu'un seul centre ne bouge pas. Aucune figure ne fait ce geste, et dix entrées de banque sur dix le demandent à l'écrit.",
+    "predict_then_reveal": "Cinq paris, un verdict immédiat : tant que l'élève n'a pas choisi, l'image $M'$, son segment, l'arc et toute lecture qui dépend de l'issue n'existent pas dans le panneau. Après l'engagement, c'est le plan qui répond avant le texte — $M'$ se pose, le segment se trace, l'arc apparaît et les lectures de l'étape s'écrivent — et chaque « suite » fait chercher, jamais relire, l'invariant que l'étape vient d'installer.",
+    "misconceptions": [
+      "mc.math.maths_complexes_trigo.reel-positif-donne-rotation",
+      "mc.math.maths_complexes_trigo.multiplication-rotation-par-defaut",
+      "mc.math.maths_complexes_trigo.similitude-module-argument-roles",
+      "mc.math.maths_complexes_trigo.produit-modules-additionnes",
+      "mc.math.maths_complexes_trigo.homothetie-rapport-complexe",
+      "mc.math.maths_complexes_trigo.angle-lu-depuis-l-axe",
+      "mc.math.maths_complexes_trigo.produit-quotient-argument-operation",
+      "mc.math.maths_complexes_trigo.rotation-sens-inverse",
+      "mc.math.maths_complexes_trigo.transformation-centre-oublie",
+      "mc.math.maths_complexes_trigo.ecriture-complexe-oubli-constante",
+      "mc.math.maths_complexes_trigo.rotation-angle-comme-coefficient"
+    ]
+  },
+  "spec_ref": "docs/pipeline/propositions/maths-nombres-complexes-2-scene-plan.md",
+  "adr_ref": "docs/decisions/0041-scenes-3d-de-premiere-partie.md",
+  "etapes": [
+    {
+      "id": "agrandir-sans-tourner",
+      "titre": "Agrandir, ou tourner ?",
+      "consigne": "Le plan complexe, son cercle de rayon $1$, et un point $M$ d'affixe $z = 1+i$ — au point $(1;1)$. Au chapitre 1, tu as vu ce que fait la multiplication par $i$ : elle fait tourner d'un quart de tour, sans changer les distances. La question laissée ouverte était : est-ce que tous les nombres complexes font ça ? On commence par le plus simple. Le coefficient est $c = 2$.",
+      "pari": {
+        "question": "On multiplie $z$ par $c = 2$. Le point $M$ arrive…",
+        "choix": [
+          {
+            "id": "meme-direction",
+            "texte": "en $2+2i$ — deux fois plus loin de $O$, dans exactement la même direction",
+            "juste": true,
+            "retour": "Oui, et retiens le mécanisme, pas le résultat : $c = 2$ est un réel positif, son argument vaut $0$, donc il n'ajoute aucun angle. Ce qu'il fait, il le fait sur la longueur : $OM$ passe de $\\sqrt2$ à $2\\sqrt2$. Le chapitre 1 t'avait montré l'autre moitié de l'idée, avec $i$ ; en voici la première. Un nombre complexe porte deux informations, et elles ne servent pas à la même chose."
+          },
+          {
+            "id": "demi-tour",
+            "texte": "en $-2-2i$ — un demi-tour, puis deux fois plus loin",
+            "juste": false,
+            "misconception": "mc.math.maths_complexes_trigo.reel-positif-donne-rotation",
+            "retour": "Regarde le plan : $M'$ est en $2+2i$, sur la même demi-droite issue de $O$. Le demi-tour existe bien, mais il appartient à un autre coefficient : essaie $c = -2$, tu l'obtiendras exactement. Un réel positif ne fait tourner de rien ; c'est un réel négatif qui fait le demi-tour."
+          },
+          {
+            "id": "quart-de-tour",
+            "texte": "en $-2+2i$ — un quart de tour, puis deux fois plus loin : multiplier, c'est tourner",
+            "juste": false,
+            "misconception": "mc.math.maths_complexes_trigo.multiplication-rotation-par-defaut",
+            "retour": "Le plan dit $2+2i$ : rien n'a tourné. Le quart de tour n'était pas une propriété de « multiplier » — c'était une propriété de $i$, et de lui seul. Le chapitre 1 te l'avait même écrit : comme $|i| = 1$, la multiplication par $i$ ne change aucune longueur. C'est une phrase sur $i$, pas sur la multiplication. L'angle ne se devine pas : il se lit sur le coefficient. Ici $\\arg(2) = 0$, donc aucun tour."
+          },
+          {
+            "id": "agrandissement-nul",
+            "texte": "en $O$ — ce qui agrandit, c'est $\\arg(2) = 0$ : tout se ramène à l'origine",
+            "juste": false,
+            "misconception": "mc.math.maths_complexes_trigo.similitude-module-argument-roles",
+            "retour": "Prends ton modèle au sérieux une seconde : agrandir par zéro écraserait le plan entier sur un seul point, et il n'y aurait plus rien à regarder. Le plan, lui, montre $M'$ à $2\\sqrt2$ de $O$. Les deux nombres de $c$ ne sont pas interchangeables : c'est le module qui agit sur les longueurs, et un argument n'est pas une longueur."
+          }
+        ]
+      },
+      "suite": "Promène le coefficient sur les sept crans, sans rien changer d'autre. Deux d'entre eux laissent $M$ sur sa demi-droite ; un seul le rapproche de $O$ ; un seul l'envoie exactement à l'opposé, de l'autre côté de $O$. Trouve-les.",
+      "controles": ["coefficient"],
+      "lectures": ["module-c"],
+      "etat": {
+        "c": "2",
+        "z": "1+i",
+        "centre": "O",
+        "enonce": "coefficient",
+        "reference": "depart",
+        "image": "cachee"
+      }
+    },
+    {
+      "id": "le-rapport",
+      "titre": "De combien plus loin ?",
+      "consigne": "Nouveau coefficient : $c = 2i$. Son module vaut $2$ — la scène l'affiche. Le point $M$ est en $1-i$, au point $(1;-1)$ : il est à la distance $OM = \\sqrt2$ de l'origine. On ne demande pas encore où il va ; on demande à quelle distance de $O$.",
+      "pari": {
+        "question": "Après la multiplication par $c = 2i$, la distance $OM'$ vaudra…",
+        "choix": [
+          {
+            "id": "produit",
+            "texte": "$2\\sqrt2$ — la distance est multipliée par $|c| = 2$",
+            "juste": true,
+            "retour": "Oui. $\\dfrac{OM'}{OM} = \\dfrac{2\\sqrt2}{\\sqrt2} = 2 = |c|$ : un quotient de deux longueurs, un réel positif, sans unité. C'est ce qu'on appellera le rapport. Et note ce qu'il ne dit pas : rien sur la direction."
+          },
+          {
+            "id": "somme",
+            "texte": "$2 + \\sqrt2$ — on ajoute le module de $c$ à la distance de départ",
+            "juste": false,
+            "misconception": "mc.math.maths_complexes_trigo.produit-modules-additionnes",
+            "retour": "La scène affiche $2\\sqrt2 \\approx 2{,}83$, pas $2+\\sqrt2 \\approx 3{,}41$. L'addition serait la règle si multiplier deux complexes additionnait leurs modules — or le chapitre 3 a établi le contraire : $|zz'| = |z| \\times |z'|$. Et il y a un test que tu peux faire toi-même : une somme ajoute toujours la même chose, quel que soit le point de départ ; un produit, non. Promène le point et regarde lequel des deux comportements tu vois."
+          },
+          {
+            "id": "argument-rapport",
+            "texte": "$\\dfrac{\\pi\\sqrt2}{2}$ — la distance est multipliée par l'argument de $c$, qui vaut $\\dfrac{\\pi}{2}$",
+            "juste": false,
+            "misconception": "mc.math.maths_complexes_trigo.similitude-module-argument-roles",
+            "retour": "La scène affiche $2\\sqrt2 \\approx 2{,}83$ ; ton modèle prédit $\\approx 2{,}22$, donc un point plus près de $O$ qu'il ne l'est. L'argument de $c$ est un angle ; multiplier une longueur par un angle ne donne pas une longueur. Les deux nombres de $c$ ne sont pas interchangeables : le module agit sur les longueurs, et c'est tout ce que cette étape demande."
+          },
+          {
+            "id": "rapport-complexe",
+            "texte": "$2\\sqrt2\\,i$ — le rapport vaut $2i$, donc $OM' = \\sqrt2 \\times 2i$",
+            "juste": false,
+            "misconception": "mc.math.maths_complexes_trigo.homothetie-rapport-complexe",
+            "retour": "Ce nombre n'est pas une distance : une distance est un réel positif, et $2\\sqrt2\\,i$ ne l'est pas. C'est le cœur de l'erreur, et il vaut pour tout le chapitre : le nombre complexe $c$ code l'agrandissement, il n'est pas l'agrandissement. Ce qui agrandit, c'est son module, $|2i| = 2$."
+          }
+        ]
+      },
+      "suite": "Garde le coefficient et promène le point sur les cinq positions. Combien y en a-t-il où le quotient $\\dfrac{OM'}{OM}$ ne vaut pas $2$ ? Lis les deux distances à chaque fois avant de répondre.",
+      "controles": ["point"],
+      "lectures": ["module-c", "distances", "rapport"],
+      "etat": {
+        "c": "2i",
+        "z": "1-i",
+        "centre": "O",
+        "enonce": "coefficient",
+        "reference": "depart",
+        "image": "cachee"
+      }
+    },
+    {
+      "id": "l-angle-est-un-ecart",
+      "titre": "L'angle : par rapport à quoi ?",
+      "consigne": "Coefficient $c = \\sqrt3 + i$ ; son module vaut $2$, la scène l'affiche. Le point $M$ est en $2i$, donc sa direction depuis $O$ fait un angle de $\\dfrac{\\pi}{2}$ avec l'axe réel. Son image $M'$ est en $-2 + 2\\sqrt3\\,i$, et la direction de $M'$ depuis $O$ fait un angle de $\\dfrac{2\\pi}{3}$ avec l'axe réel. Les deux directions sont tracées sur le plan. La question porte sur un troisième nombre.",
+      "pari": {
+        "question": "De quel angle le plan a-t-il tourné ?",
+        "choix": [
+          {
+            "id": "ecart",
+            "texte": "$\\dfrac{\\pi}{6}$ — l'écart entre les deux directions : $\\dfrac{2\\pi}{3} - \\dfrac{\\pi}{2}$",
+            "juste": true,
+            "retour": "Oui, et c'est la chose à retenir de ce chapitre : l'angle d'une transformation est une différence de deux directions, jamais la direction d'un point. La scène vient de tracer l'arc : il part de $OM$, il arrive à $OM'$, et il mesure $\\dfrac{\\pi}{6}$ — qui est exactement $\\arg(c)$. Le chapitre 3 l'écrivait déjà, mais dans l'autre sens : $\\arg(z') = \\arg(c) + \\arg(z)$. Retourne l'égalité, tu obtiens $\\arg(z') - \\arg(z) = \\arg(c)$."
+          },
+          {
+            "id": "arg-image",
+            "texte": "$\\dfrac{2\\pi}{3}$ — c'est l'angle de $M'$, lu depuis l'axe réel",
+            "juste": false,
+            "misconception": "mc.math.maths_complexes_trigo.angle-lu-depuis-l-axe",
+            "retour": "$\\dfrac{2\\pi}{3}$ est bien un angle du dessin, mais ce n'est pas celui-là : c'est la direction de $M'$, mesurée depuis l'axe réel. Or $M$ ne partait pas de l'axe réel — il partait de $\\dfrac{\\pi}{2}$. Il n'a donc pas parcouru $\\dfrac{2\\pi}{3}$, il a parcouru ce qui reste : $\\dfrac{2\\pi}{3} - \\dfrac{\\pi}{2} = \\dfrac{\\pi}{6}$. Change le point et regarde : la direction de $M'$ change à chaque fois, l'arc ne change jamais."
+          },
+          {
+            "id": "somme",
+            "texte": "$\\dfrac{7\\pi}{6}$ — on additionne les deux directions, $\\dfrac{2\\pi}{3} + \\dfrac{\\pi}{2}$",
+            "juste": false,
+            "misconception": "mc.math.maths_complexes_trigo.produit-quotient-argument-operation",
+            "retour": "L'addition est la bonne opération, mais elle est déjà faite. Le chapitre 3 dit $\\arg(z') = \\arg(c) + \\arg(z)$ : c'est $\\arg(z')$ qui est la somme — $\\dfrac{\\pi}{6} + \\dfrac{\\pi}{2} = \\dfrac{2\\pi}{3}$, tu peux le vérifier sur l'écran. Pour retrouver $\\arg(c)$ à partir des deux autres, il faut donc soustraire, pas additionner encore."
+          },
+          {
+            "id": "horaire",
+            "texte": "$-\\dfrac{\\pi}{6}$ — le même angle, mais dans le sens horaire",
+            "juste": false,
+            "misconception": "mc.math.maths_complexes_trigo.rotation-sens-inverse",
+            "retour": "La grandeur est juste, le sens ne l'est pas — et le signe est ce que les correcteurs lisent en premier. Regarde l'arc : il va de $OM$ vers $OM'$, c'est-à-dire de $\\dfrac{\\pi}{2}$ vers $\\dfrac{2\\pi}{3}$, donc dans le sens qui augmente l'angle : le sens direct, positif. Un $-\\dfrac{\\pi}{6}$ enverrait $M$ vers $\\dfrac{\\pi}{3}$, de l'autre côté."
+          }
+        ]
+      },
+      "suite": "Promène le point sur les cinq positions, coefficient inchangé. Sur combien d'entre elles les deux lectures d'angle affichent-elles le même nombre ? Et sur combien l'écart change-t-il ? Maintenant fais glisser $M$ avec le balayage, sans lâcher : les deux directions tournent, et l'ouverture de l'arc, elle, reste la même. Puis garde le point et promène le coefficient : combien laissent la distance finale inchangée, et combien laissent l'arc inchangé ? Ce ne sont pas les mêmes réglages.",
+      "controles": ["coefficient", "point", "balayage"],
+      "lectures": ["module-c", "distances", "rapport", "argument-c", "angle", "argument-image"],
+      "etat": {
+        "c": "sqrt3+i",
+        "z": "2i",
+        "centre": "O",
+        "enonce": "coefficient",
+        "reference": "aucune",
+        "image": "donnee"
+      }
+    },
+    {
+      "id": "le-point-qui-ne-bouge-pas",
+      "titre": "Et si on tournait ailleurs qu'autour de O ?",
+      "consigne": "Jusqu'ici, tout tournait autour de $O$. On change une seule chose : le centre. Voici $A$, au point $(2;0)$. On applique une rotation d'angle $\\dfrac{\\pi}{2}$, de centre $A$ — pas de centre $O$. Le point $M$ est en $4$, sur l'axe réel, donc à la distance $2$ de $A$.",
+      "pari": {
+        "question": "$M$ arrive…",
+        "choix": [
+          {
+            "id": "autour-de-A",
+            "texte": "en $2+2i$ — un quart de tour autour de $A$, à distance $2$ de $A$",
+            "juste": true,
+            "retour": "Oui, et regarde ce que la scène vient d'ajouter : un anneau sur $A$. $A$ est le seul point du plan qui ne bouge pas. C'est ça, un centre — pas un décor, pas une origine : le point fixe. Le calcul s'écrit $z' - z_A = e^{i\\pi/2}(z - z_A)$, c'est-à-dire $z' - 2 = i\\,(4-2) = 2i$, donc $z' = 2 + 2i$. Les $z - z_A$ des deux côtés sont exactement ce qui fixe $A$."
+          },
+          {
+            "id": "autour-de-O",
+            "texte": "en $4i$ — un quart de tour, donc $z' = i\\,z = 4i$",
+            "juste": false,
+            "misconception": "mc.math.maths_complexes_trigo.transformation-centre-oublie",
+            "retour": "$4i$ est l'image par la rotation de centre $O$ : tu as bien tourné d'un quart de tour, mais autour du mauvais point. Bascule le centre sur $O$ et tu obtiendras exactement $4i$ — puis reviens sur $A$ : $2+2i$. Le coefficient donne l'angle ; il ne dit rien du centre, qui doit être écrit à part : $z' - z_A = c\\,(z - z_A)$."
+          },
+          {
+            "id": "oubli-constante",
+            "texte": "en $2i$ — on calcule $i\\,(z - z_A) = i\\,(4-2) = 2i$",
+            "juste": false,
+            "misconception": "mc.math.maths_complexes_trigo.ecriture-complexe-oubli-constante",
+            "retour": "Le geste est bon jusqu'à l'avant-dernière ligne : $i(z - z_A)$ vaut bien $2i$. Mais ce $2i$ n'est pas $z'$ — c'est $z' - z_A$, le vecteur $\\overrightarrow{AM'}$, pas l'affixe du point. Il reste à repartir de $A$ : $z' = z_A + 2i = 2 + 2i$. Vérifie sur le plan : depuis $A(2;0)$, monter de $2$ mène en $(2;2)$, pas en $(0;2)$."
+          },
+          {
+            "id": "angle-coefficient",
+            "texte": "en $2 + \\pi$ sur l'axe réel — on multiplie par l'angle : $z' = 2 + \\dfrac{\\pi}{2}(4-2)$",
+            "juste": false,
+            "misconception": "mc.math.maths_complexes_trigo.rotation-angle-comme-coefficient",
+            "retour": "Ce point ne quitte pas l'axe réel : une rotation d'un quart de tour qui laisse le point sur sa droite, c'est déjà une contradiction. L'angle $\\dfrac{\\pi}{2}$ n'est pas le coefficient — le coefficient est $e^{i\\pi/2} = i$, de module $1$, et c'est son argument qui vaut $\\dfrac{\\pi}{2}$. Multiplier par $\\dfrac{\\pi}{2}$ (environ $1{,}57$) ne fait qu'agrandir un peu."
+          }
+        ]
+      },
+      "suite": "Cherche le point qui ne bouge pas. Promène $M$ sur les cinq positions : à chaque fois, $AM' = AM$ et l'arc vaut $\\dfrac{\\pi}{2}$ — sauf en une position. Trouve-la. Puis bascule le centre sur $O$ : le point fixe change de place, la rotation non.",
+      "controles": ["centre", "point"],
+      "lectures": ["module-c", "argument-c", "distances", "rapport", "angle", "point-fixe", "ecriture"],
+      "etat": {
+        "c": "i",
+        "z": "4",
+        "centre": "A",
+        "enonce": "coefficient",
+        "reference": "depart",
+        "image": "cachee"
+      }
+    },
+    {
+      "id": "lire-a-l-envers",
+      "titre": "On te donne la formule : retrouve la transformation",
+      "consigne": "Dernière question, et c'est celle que les sujets d'examen posent. On ne te donne plus un coefficient et un centre : on te donne une formule, et une seule — $z' = (1+i)\\,z + 1 - i$. À tout point $M$ d'affixe $z$, elle associe le point $M'$ d'affixe $z'$. Le point $M$ est en $4$ ; son image est en $5 + 3i$, la scène la montre. Un centre, tu viens de voir ce que c'est : le point qui ne bouge pas. Sers-t'en.",
+      "pari": {
+        "question": "Cette transformation est…",
+        "choix": [
+          {
+            "id": "omega-racine2-pi4",
+            "texte": "une rotation d'angle $\\dfrac{\\pi}{4}$ et une homothétie de rapport $\\sqrt2$, de centre le point d'affixe $1+i$",
+            "juste": true,
+            "retour": "Oui. Les deux premiers nombres se lisent sur $a = 1+i$ : $|a| = \\sqrt2$ est le rapport, $\\arg(a) = \\dfrac{\\pi}{4}$ est l'angle. Le troisième ne se lit pas, il se cherche : le centre est le point qui ne bouge pas, donc celui qui vérifie $\\omega = a\\omega + b$. On résout, et $\\omega = \\dfrac{b}{1-a} = \\dfrac{1-i}{-i} = 1+i$. Mets $M$ en $1+i$ : il ne bougera pas."
+          },
+          {
+            "id": "centre-O",
+            "texte": "une rotation d'angle $\\dfrac{\\pi}{4}$ et une homothétie de rapport $\\sqrt2$, de centre $O$",
+            "juste": false,
+            "misconception": "mc.math.maths_complexes_trigo.transformation-centre-oublie",
+            "retour": "Teste-le sur le plan : si le centre était $O$, alors $O$ ne bougerait pas. Or l'image de $z = 0$ par cette formule vaut $b = 1-i$ — $O$ bouge. Le $+\\,b$ est précisément ce qui déplace le centre hors de l'origine ; sans lui, on aurait $z' = az$, et là seulement le centre serait $O$."
+          },
+          {
+            "id": "rapport-complexe",
+            "texte": "une rotation d'angle $\\dfrac{\\pi}{4}$ et une homothétie de rapport $1+i$, de centre le point d'affixe $1+i$",
+            "juste": false,
+            "misconception": "mc.math.maths_complexes_trigo.homothetie-rapport-complexe",
+            "retour": "Le centre est juste, le rapport ne l'est pas : un rapport d'homothétie est toujours un réel. $1+i$ est le coefficient entier — il code les deux effets à la fois, et c'est bien pour ça qu'on doit le séparer : son module $\\sqrt2$ pour l'agrandissement, son argument $\\dfrac{\\pi}{4}$ pour la rotation. Lis les distances sur l'écran : $\\Omega M = \\sqrt{10}$, $\\Omega M' = 2\\sqrt5$, leur quotient est $\\sqrt2$."
+          },
+          {
+            "id": "roles-intervertis",
+            "texte": "une rotation d'angle $\\sqrt2$ et une homothétie de rapport $\\dfrac{\\pi}{4}$, de centre $O$",
+            "juste": false,
+            "misconception": "mc.math.maths_complexes_trigo.similitude-module-argument-roles",
+            "retour": "Les deux rôles sont échangés, et le centre avec. Un test d'ordre de grandeur suffit : un rapport de $\\dfrac{\\pi}{4} \\approx 0{,}79$ rapprocherait $M'$ du centre, et l'écran montre le contraire. Le module est une longueur, donc un rapport ; l'argument est un angle, donc l'angle. Ils ne sont pas interchangeables."
+          }
+        ]
+      },
+      "suite": "Trois formules, le même geste. Sur $z' = 2z - 2$ : $a = 2$, réel positif — aucune rotation, et $\\omega = \\dfrac{-2}{1-2} = 2$. Sur $z' = iz + 2 - 2i$ : $|a| = 1$ — aucun agrandissement, et $\\omega = 2$. Cette dernière, c'est la transformation de l'étape précédente, écrite autrement : son centre est le $A$ que tu avais posé. Sur chacune des trois, promène $M$ et lis $\\dfrac{z'-\\omega}{z-\\omega}$ : c'est toujours $a$, à tous les points. C'est la définition du centre, retournée.",
+      "controles": ["enonce", "point", "coefficient", "centre"],
+      "lectures": ["module-c", "distances", "rapport", "argument-c", "angle", "argument-image", "point-fixe", "ecriture", "rapport-inverse"],
+      "etat": {
+        "enonce": "les-deux",
+        "z": "4",
+        "reference": "aucune",
+        "image": "donnee"
+      }
+    }
+  ]
+}

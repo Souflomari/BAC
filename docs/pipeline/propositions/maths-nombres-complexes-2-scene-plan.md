@@ -1,7 +1,44 @@
 # spec — manipulable 2D `plan-complexe-transformation` (Maths · `nombres-complexes-2`, **R5**)
 
-**Statut : PROPOSITION, non construite — RÉVISÉE APRÈS LA VAGUE 1 (2026-09-25).** Écrite le
-2026-09-25 par pedagogy-architect.
+**Statut : EN CONSTRUCTION (2026-09-25) — spec révisée après la vague 1, puis amendée par la
+construction (bloc suivant).** Écrite le 2026-09-25 par pedagogy-architect.
+
+> ## Ce que la construction a changé — cinq décisions, chacune écrite là où elle agit
+>
+> 1. **`argument-image` n'existe qu'au centre $O$, en mode `coefficient`.** Ailleurs, l'argument
+>    de $z'$ n'est pas une fraction de $\pi$ ($5+3i$ à S5 : $\arctan\tfrac35$) et le §5.4
+>    interdit le décimal : la ligne DISPARAÎT plutôt que d'écrire « — » (une lecture vide au
+>    milieu d'une liste enseigne un trou, §5.2 B). Elle vit donc à S3, et à S5 au seul cran
+>    `enonce: coefficient` avec le centre $O$. *`PlanComplexePanel.tsx`, `argumentsExacts`.*
+> 2. **Le BALAYAGE n'efface que ce qui dépend de la POSITION** — les affixes de $M$ et $M'$ sur
+>    le plan, et `argument-image`. **Les invariants restent écrits** : $|c|$, les distances
+>    ($M$ glisse sur son cercle : $\Omega M$ ne change pas), le rapport, $\arg(c)$, l'écart et
+>    l'étiquette de l'arc. Ils sont EXACTS à chaque position — c'est la règle même qui le
+>    garantit — et les voir immobiles pendant que les deux directions tournent EST le fait de
+>    S3. Le §6.1 effaçait tout pour qu'aucun décimal ne paraisse ; l'intention tient (aucun
+>    nombre inexact ne s'écrit), la règle est plus fine. *Porte : la famille du §11.2 devient
+>    `balayage-invariants` — pendant, les lectures positionnelles valent « — » et les
+>    invariantes sont IDENTIQUES au caractère près ; relâché, tout revient. L'essai n° 22 ter
+>    devient « une lecture positionnelle chiffrée pendant le balayage ».* Content-author a
+>    signalé la contradiction avec le §6.1 avant qu'elle ne soit écrite ici : il avait raison
+>    de ne pas l'appliquer sans source.
+>    **Au clavier**, le balayage ne se relâche pas au `keyup` (un appui de flèche ne montrerait
+>    qu'un éclair) : $M$ reste déplacé jusqu'à Échap ou la sortie du curseur. **Sous
+>    `prefers-reduced-motion`, rien ne change** : le balayage est une manipulation DIRECTE — rien
+>    ne bouge sans la main —, pas une animation (WCAG 2.3.3 vise le mouvement déclenché, pas
+>    celui qu'on tient) ; les « trois positions discrètes » du §6.1 ne sont pas construites.
+> 3. **Une sixième clé d'état, `image` (`cachee` | `donnee`)**, posée par les étapes comme
+>    `reference` : elle dit si $M'$ est l'ÉNONCÉ (S3, S5 : à l'encre avant le pari). Les deux
+>    exceptions du §7.6 sont ainsi écrites dans le DESCRIPTEUR, pas devinées par le code.
+> 4. **Les nombres des axes et les noms $\vec u$, $\vec v$ sont peints sur le canvas** (12 px,
+>    la police du chrome, comme les graduations du banc de diffraction) : ce sont des entiers et
+>    deux lettres, pas des formules. Les étiquettes HTML (KaTeX) sont $M$, $M'$, le centre
+>    quand il n'est pas $O$, l'angle et « départ » — **cinq au plus**, sous le budget de six
+>    du §6.2. Les noms $\vec u$, $\vec v$ disparaissent avec les graduations fines (côté
+>    < 540 px).
+> 5. **`pedagogy_wiring.misconceptions` compte ONZE ids, pas dix** (content-author, recompté sur
+>    les vingt choix du §7) ; et l'inventaire des décimales du §9.8 oubliait $0{,}79$ (S5,
+>    `roles-intervertis`), en position « ordre de grandeur » comme les autres.
 
 > ## Ce que la vague 1 a changé
 >
