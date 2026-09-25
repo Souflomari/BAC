@@ -24,6 +24,12 @@
  *      toute formule rendue. Le filtre sur la marque de commande est
  *      délibéré : « 30 $ » n'est pas du LaTeX, et une paire de dollars sans
  *      rien de mathématique dedans ne prouve rien.
+ *      SECONDE FORME (§11.210, 2026-09-25) : une paire SERRÉE — `$M$`, `$1$`,
+ *      un dollar collé à son contenu des deux côtés. Le filtre ci-dessus y
+ *      était aveugle par construction, et c'est exactement ce que montrait
+ *      la carte fermée d'une scène (« un cercle de rayon $1$, et un point
+ *      $M$ »). Une somme d'argent met une espace entre le nombre et le signe
+ *      (« 30 $ ») ; elle ne produit jamais cette forme.
  *
  *   2. IL L'ENTEND. La même chose dans un `aria-label`, un `alt`, un `title`,
  *      le titre du document ou la méta-description — c'est-à-dire là où
@@ -110,8 +116,15 @@ for (const route of routes) {
     // Chapitres dépliés : ce que l'élève voit au fil de sa lecture.
     for (const g of racine.querySelectorAll("[hidden]")) g.removeAttribute("hidden");
 
-    const LU = /\$[^$\n]*[\\^_{}][^$\n]*\$/g;
-    const ENTENDU = /\$[^$\n]*[\\^_{}][^$\n]*\$|\\[a-zA-Z]{2,}|[\^_]\{/;
+    // Deux formes du LaTeX lu (ADR 0036 : on énumère les FORMES) : une paire dont le
+    // contenu porte une marque de commande, OU une paire SERRÉE — un « $ » collé à un
+    // contenu court, sans espace ni après l'ouvrant ni avant le fermant : « $M$ »,
+    // « $1$ ». La première forme seule était aveugle à la seconde (§11.209 : la
+    // légende d'une carte de scène affichait « rayon $1$, et un point $M$ »), et le
+    // filtre qui écarte « 30 $ » — une somme, pas une formule — tient toujours :
+    // une somme met une espace entre le nombre et le signe.
+    const LU = /\$[^$\n]*[\\^_{}][^$\n]*\$|\$(?=[^\s$])[^$\n]{0,30}[^\s$]\$|\$[^\s$]\$/g;
+    const ENTENDU = /\$[^$\n]*[\\^_{}][^$\n]*\$|\$(?=[^\s$])[^$\n]{0,30}[^\s$]\$|\$[^\s$]\$|\\[a-zA-Z]{2,}|[\^_]\{/;
 
     let lu = 0, entendu = 0;
     const ex = [];

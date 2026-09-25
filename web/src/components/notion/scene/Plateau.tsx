@@ -163,7 +163,14 @@ export function poser(el: HTMLSpanElement | null, p: { x: number; y: number; vis
 }
 
 type Point2 = { x: number; y: number };
-export type Boite = { x0: number; y0: number; x1: number; y1: number };
+/**
+ * Une boîte occupée. `traversable` : un FILET peut la couper sans que ce soit un conflit — la
+ * bande de part et d'autre d'un axe (plan complexe) écarte les PASTILLES des graduations, mais
+ * un filet qui franchit l'axe le coupe comme n'importe quel trait (800, pas 5 000). Sans cette
+ * nuance, le placeur jugeait grave une disposition que la porte accepte, et en préférait une
+ * que la porte refuse (vague 2, S5 au téléphone).
+ */
+export type Boite = { x0: number; y0: number; x1: number; y1: number; traversable?: boolean };
 
 /** La boîte de la légende du plateau, en pixels de la scène (null : pas de légende). */
 export function boiteLegende(hote: HTMLElement | null): Boite | null {
@@ -216,6 +223,13 @@ const DIRECTIONS: readonly (readonly [number, number])[] = [
 ];
 /** Les distances (px) entre l'ancre et le bord le plus proche de l'étiquette. */
 const DISTANCES = [0, 8, 18, 32, 50, 75, 105, 140];
+
+/** Deux segments se COUPENT-ils (hors extrémités communes) ? — le filet d'une étiquette contre un trait du dessin */
+function croise(a: Point2, b: Point2, c: Point2, d: Point2): boolean {
+  const o = (p: Point2, q: Point2, r: Point2) => (q.x - p.x) * (r.y - p.y) - (q.y - p.y) * (r.x - p.x);
+  const d1 = o(c, d, a), d2 = o(c, d, b), d3 = o(a, b, c), d4 = o(a, b, d);
+  return ((d1 > 0 && d2 < 0) || (d1 < 0 && d2 > 0)) && ((d3 > 0 && d4 < 0) || (d3 < 0 && d4 > 0));
+}
 
 /**
  * Pose des étiquettes de TEXTE autour de leur ancre sans qu'elles se
@@ -281,7 +295,7 @@ export function disposer(
    * la corde, elle recouvrait « S » et « M »), un anneau dessiné…
    */
   obstacles: readonly Boite[] = []
-): ({ x: number; y: number; w: number; h: number; filet: [Point2, Point2] | null } | null)[] {
+): ({ x: number; y: number; w: number; h: number; filet: [Point2, Point2] | null; cout: number; graves: number } | null)[] {
   const ECART_CHAPEAU = 2;
   const tailles = etiquettes.map(({ el, p, chapeau }) => {
     if (!el || !p.visible) return null;
@@ -292,6 +306,8 @@ export function disposer(
   const posees: Boite[] = [...obstacles];
   const filets: [Point2, Point2][] = [];
   const filetsRetenus: ([Point2, Point2] | null)[] = etiquettes.map(() => null);
+  const couts: number[] = etiquettes.map(() => 0);
+  const graves: number[] = etiquettes.map(() => 0);
   /** Le filet d'une place : du bord du point (7 px) au bord de la boîte (2 px) — null si la place est assez proche. */
   const filetDe = (p: Point2, c: Point2, t: { w: number; h: number }, seuil: number | undefined): [Point2, Point2] | null => {
     if (seuil === undefined) return null;
@@ -305,26 +321,36 @@ export function disposer(
     const t = tailles[i];
     if (!t) return null;
     const boite = (c: Point2): Boite => ({ x0: c.x - t.w / 2 - 2, y0: c.y - t.h / 2 - 2, x1: c.x + t.w / 2 + 2, y1: c.y + t.h / 2 + 2 });
-    const cout = (c: Point2, rang: number, g: number) => {
+    // le coût d'une place, et le nombre de ses conflits GRAVES — ceux qu'une porte refuse : hors
+    // du cadre, sur une étiquette ou un obstacle, un trait sous la pastille, un filet sous une
+    // étiquette. Un filet qui coupe un trait coûte (800) sans être grave : on le montre, on ne
+    // le refuse pas. Le compte sert à l'appelant qui compare deux ordres (plan complexe).
+    const evaluer = (c: Point2, rang: number, g: number): [number, number] => {
       const b = boite(c);
       const deborde = Math.max(0, -b.x0) + Math.max(0, -b.y0) + Math.max(0, b.x1 - cadre.largeur) + Math.max(0, b.y1 - cadre.hauteur);
       let n = (deborde > 0 ? 100000 + deborde : 0) + g + rang * 0.01;
-      for (const o of posees) if (chevauche(o, b)) n += 10000;
-      for (const [a, z] of segments) if (traverse(a, z, b)) n += 1000;
+      let graves = deborde > 0 ? 1 : 0;
+      for (const o of posees) if (chevauche(o, b)) { n += 10000; graves++; }
+      for (const [a, z] of segments) if (traverse(a, z, b)) { n += 1000; graves++; }
       // une étiquette posée sur un filet déjà tiré le coupe ; un filet qui traverse une étiquette
       // ou un obstacle disparaît dessous
-      for (const [a, z] of filets) if (traverse(a, z, b)) n += 5000;
+      for (const [a, z] of filets) if (traverse(a, z, b)) { n += 5000; graves++; }
       const f = filetDe(p, c, t, filet);
       // une boîte qui CONTIENT déjà le point (le chiffre d'une graduation sous le milieu d'un arc)
       // ne peut pas être évitée par son filet : elle ne compte pas
       const contient = (o: Boite) => p.x >= o.x0 && p.x <= o.x1 && p.y >= o.y0 && p.y <= o.y1;
-      if (f) for (const o of posees) if (!contient(o) && traverse(f[0], f[1], o)) n += 5000;
-      return n;
+      if (f) for (const o of posees) if (!o.traversable && !contient(o) && traverse(f[0], f[1], o)) { n += 5000; graves++; }
+      // un filet qui COUPE un trait du dessin se lit comme un troisième trait (plan complexe,
+      // vague 2 : au téléphone, le filet de « π/6 » traversait OM et OM′) — moins grave qu'une
+      // étiquette coupée, plus qu'un peu d'éloignement
+      if (f) for (const [a, z] of segments) if (croise(f[0], f[1], a, z)) n += 800;
+      return [n, graves];
     };
+    const cout = (c: Point2, rang: number, g: number) => evaluer(c, rang, g)[0];
     let meilleur: Point2 = { x: p.x, y: p.y };
     let meilleurCout = surAncre ? cout(meilleur, 0, 0) : Infinity;
     const dirs = directions ?? DIRECTIONS;
-    DISTANCES.filter((g) => portee === undefined || g <= portee).forEach((g) =>
+    const essayer = (g: number) =>
       dirs.forEach(([dx, dy], rang) => {
         const c = { x: p.x + dx * (t.w / 2 + 5 + g), y: p.y + dy * (t.h / 2 + 3 + g) };
         const k = cout(c, rang, g);
@@ -332,9 +358,27 @@ export function disposer(
           meilleurCout = k;
           meilleur = c;
         }
-      })
-    );
+      });
+    DISTANCES.filter((g) => portee === undefined || g <= portee).forEach(essayer);
+    // UNE ÉTIQUETTE RELIÉE PAR UN FILET cherche plus loin plutôt que d'en chevaucher une autre
+    // (plan complexe, vague 2 : au téléphone, à S4, « A(2) » se posait 2,5 px sous « M(1 + i ») —
+    // aucune place à moins de 50 px ne valait moins qu'un chevauchement). Un filet plus long est
+    // un moindre mal ; les étiquettes sans filet gardent leur portée, et les places qui ne
+    // chevauchaient rien ne bougent pas. Mais plus loin, on ne prend qu'une place PROPRE (sous
+    // 1 000 : ni chevauchement, ni trait sous la pastille, ni filet sous une autre étiquette) —
+    // le premier essai prenait un filet passé SOUS « M′(1 − i) », que la porte refusait
+    if (filet !== undefined && portee !== undefined && meilleurCout >= 10000) {
+      const avant = { cout: meilleurCout, place: meilleur };
+      DISTANCES.filter((g) => g > portee && g <= 2 * portee).forEach(essayer);
+      if (meilleurCout >= 1000) {
+        meilleurCout = avant.cout;
+        meilleur = avant.place;
+      }
+    }
+    // le rang et la distance ne changent pas le compte des conflits graves
+    graves[i] = evaluer(meilleur, 0, 0)[1];
     posees.push(boite(meilleur));
+    couts[i] = meilleurCout;
     const f = filetDe(p, meilleur, t, filet);
     if (f) {
       filets.push(f);
@@ -366,9 +410,10 @@ export function disposer(
     el.style.visibility = "visible";
   });
   // la place retenue de chaque bloc (centre et taille), pour qui veut la RELIER à son point
-  // (le plan complexe tire un filet quand l'étiquette a dû s'éloigner)
+  // (le plan complexe tire un filet quand l'étiquette a dû s'éloigner) — ce qu'elle a COÛTÉ, et
+  // ses conflits GRAVES, pour qui veut comparer deux ordres de pose
   return etiquettes.map((_, i) => {
     const c = places[i], t = tailles[i];
-    return c && t ? { x: c.x, y: c.y, w: t.w, h: t.h, filet: filetsRetenus[i] } : null;
+    return c && t ? { x: c.x, y: c.y, w: t.w, h: t.h, filet: filetsRetenus[i], cout: couts[i], graves: graves[i] } : null;
   });
 }

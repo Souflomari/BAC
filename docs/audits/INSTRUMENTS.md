@@ -764,7 +764,15 @@ n'aurait jamais dû lui parvenir.
 **Axe 1 — il le LIT.** Une paire de `$` dont le contenu porte une marque de
 commande (`\`, `^`, `_`, `{`, `}`), dans un nœud de texte **hors de toute
 formule rendue**. Le filtre sur la marque est délibéré : « 30 $ » n'est pas du
-LaTeX.
+LaTeX. **Seconde forme depuis le 2026-09-25 (§11.210) : la paire SERRÉE** — un
+dollar collé à son contenu des deux côtés, `$M$`, `$1$`. Le filtre ci-dessus y
+était aveugle par construction, et c'est exactement ce que la carte fermée de
+chaque scène affichait (« un cercle de rayon $1$, et un point $M$ »). Une somme
+met une espace entre le nombre et le signe ; elle ne produit jamais cette forme.
+Prouvé dans les deux sens, même commande que la CI, 110 pages : l'ANCIENNE
+règle verte sur le build d'avant le correctif (aveugle), la nouvelle ROUGE sur
+ce même build (3 formules, la carte du plan complexe), verte sur le build
+corrigé — aucun faux positif ailleurs.
 
 **Axe 2 — il l'ENTEND.** La même chose dans un `aria-label`, un `alt`, un
 `title`, le titre du document ou la méta-description — là où **aucun moteur ne
@@ -793,6 +801,13 @@ accolades LaTeX, étrangères à cette convention, sont refusées.
 39 épreuves ouvertes *et* corrigées + 9 pages hors leçon), 0 sur les deux axes.
 Hors de la batterie locale pour la même raison que `typo-francaise` : il lui
 faut un build et un navigateur.
+
+**Ce qu'il ne voit pas, écrit à côté (§11.210)** : ce qui n'apparaît qu'APRÈS un
+geste. Il lit la page telle qu'elle se sert, sans rien ouvrir : la légende
+complète d'une intégration externe (PhET, GeoGebra) ne s'affiche qu'une fois
+l'intégration ouverte — celle du ressort portait `$T \approx 2\pi\sqrt{m/k}$` au
+784ᵉ caractère, et il ne l'aurait jamais lue. Le correctif (la légende par le
+moteur de formules) couvre les deux états ; l'instrument, le premier seulement.
 
 ---
 
@@ -2223,9 +2238,23 @@ frontière vues.** En CI dans le job `telephone`.
 
 **Ce qu'elle ne mesure PAS, écrit à côté** (ADR 0035) : le PAS des graduations (tous les 1
 ou tous les 2 selon la largeur) — l'échelle est lue sur les traits, qui existent à toutes
-les unités ; les noms $\vec u$, $\vec v$ ; la forme des pointes des axes. La campagne de
-sabotages du PRODUIT (spec §11.4) reste à jouer : jusqu'à elle, la preuve que les familles
-voient est l'essai rouge de la porte, qui n'est qu'une preuve d'anti-vacuité.
+les unités ; les noms $\vec u$, $\vec v$ ; la forme des pointes des axes ; le nombre d'axe
+omis sous un point (vague 2) — aucune famille ne regarde les nombres des axes.
+
+**Vague 2 (2026-09-25, HANDOFF §11.210) : 807 mesures, 29 familles.** Depuis que S4 et S5
+n'écrivent plus que ce qu'elles découvrent ou emploient, les **35 couples
+coefficient-point** se lisent à S3 (la seule étape qui écrit les six lectures) ; les 70 de
+S5 restent, sur les lectures qui y restent. `balayage-invariants` exige en plus qu'UNE
+flèche déplace $M$ d'au moins 3 px (au cran de 1°, rien ne bougeait), que le début et le
+relâchement du geste soient DITS par la région vivante, et que la valeur parlée du curseur
+varie. **`lectures-entieres`** (neuve) : chaque formule d'une lecture tient dans sa case et
+dans sa liste, à 1 280, 390 et au grand texte — la BOÎTE de la formule, pas le
+`scrollWidth` de la case (un radical KaTeX y ajoute 2 px invisibles). **IMPRIMÉ, pas
+armé** (ADR 0039) : les filets qui coupent un trait du dessin, que le placeur fait payer
+mais peut garder (`○ [etiquettes-filets]`). **Et la porte ne meurt plus en silence** : sur
+une exception, elle imprime ce qu'elle a mesuré puis `✘ [execution]` avec les erreurs de la
+page (une campagne avait lu « MANQUÉ » deux plantages du panneau) ; elle refuse de démarrer
+si un serveur répond déjà sur son port.
 
 ## `web/scripts/figures-manipulables.mjs` — chaque figure manipulable fait-elle, au rendu, ce que son module dit ?
 

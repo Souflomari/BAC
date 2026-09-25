@@ -72,7 +72,6 @@
         "z": "1+i",
         "centre": "O",
         "enonce": "coefficient",
-        "reference": "depart",
         "image": "cachee"
       }
     },
@@ -120,14 +119,13 @@
         "z": "1-i",
         "centre": "O",
         "enonce": "coefficient",
-        "reference": "depart",
         "image": "cachee"
       }
     },
     {
       "id": "l-angle-est-un-ecart",
       "titre": "L'angle : par rapport à quoi ?",
-      "consigne": "Coefficient $c = \\sqrt3 + i$ ; son module vaut $2$, la scène l'affiche. Le point $M$ est en $2i$, donc sa direction depuis $O$ fait un angle de $\\dfrac{\\pi}{2}$ avec l'axe réel. Son image $M'$ est en $-2 + 2\\sqrt3\\,i$, et la direction de $M'$ depuis $O$ fait un angle de $\\dfrac{2\\pi}{3}$ avec l'axe réel. Les deux directions sont tracées sur le plan. La question porte sur un troisième nombre.",
+      "consigne": "Coefficient $c = \\sqrt3 + i$ ; son module vaut $2$, la scène l'affiche. Le point $M$ est en $2i$, donc sa direction depuis $O$ fait un angle de $\\dfrac{\\pi}{2}$ avec l'axe réel. Son image $M'$ est en $-2 + 2\\sqrt3\\,i$, et la direction de $M'$ depuis $O$ fait un angle de $\\dfrac{2\\pi}{3}$ avec l'axe réel. La question porte sur un troisième nombre.",
       "pari": {
         "question": "De quel angle le plan a-t-il tourné ?",
         "choix": [
@@ -160,7 +158,7 @@
           }
         ]
       },
-      "suite": "Promène le point sur les cinq positions, coefficient inchangé. Sur combien d'entre elles les deux lectures d'angle affichent-elles le même nombre ? Et sur combien l'écart change-t-il ? Maintenant fais glisser $M$ avec le balayage, sans lâcher : les deux directions tournent, et l'ouverture de l'arc, elle, reste la même. Puis garde le point et promène le coefficient : combien laissent la distance finale inchangée, et combien laissent l'arc inchangé ? Ce ne sont pas les mêmes réglages.",
+      "suite": "Promène le point sur les cinq positions, coefficient inchangé : sur combien d'entre elles les deux lectures d'angle affichent-elles le même nombre ? Puis fais glisser $M$ avec le balayage, sans lâcher : les deux directions tournent, et l'ouverture de l'arc, elle, reste la même.",
       "controles": ["coefficient", "point", "balayage"],
       "lectures": ["module-c", "distances", "rapport", "argument-c", "angle", "argument-image"],
       "etat": {
@@ -168,7 +166,6 @@
         "z": "2i",
         "centre": "O",
         "enonce": "coefficient",
-        "reference": "aucune",
         "image": "donnee"
       }
     },
@@ -210,13 +207,12 @@
       },
       "suite": "Cherche le point qui ne bouge pas. Promène $M$ sur les cinq positions : à chaque fois, $AM' = AM$ et l'arc vaut $\\dfrac{\\pi}{2}$ — sauf en une position. Trouve-la. Puis bascule le centre sur $O$ : le point fixe change de place, la rotation non.",
       "controles": ["centre", "point"],
-      "lectures": ["module-c", "argument-c", "distances", "rapport", "angle", "point-fixe", "ecriture"],
+      "lectures": ["distances", "angle", "point-fixe", "ecriture"],
       "etat": {
         "c": "i",
         "z": "4",
         "centre": "A",
         "enonce": "coefficient",
-        "reference": "depart",
         "image": "cachee"
       }
     },
@@ -256,13 +252,12 @@
           }
         ]
       },
-      "suite": "Trois formules, le même geste. Sur $z' = 2z - 2$ : $a = 2$, réel positif — aucune rotation, et $\\omega = \\dfrac{-2}{1-2} = 2$. Sur $z' = iz + 2 - 2i$ : $|a| = 1$ — aucun agrandissement, et $\\omega = 2$. Cette dernière, c'est la transformation de l'étape précédente, écrite autrement : son centre est le $A$ que tu avais posé. Sur chacune des trois, promène $M$ et lis $\\dfrac{z'-\\omega}{z-\\omega}$ : c'est toujours $a$, à tous les points. C'est la définition du centre, retournée.",
+      "suite": "Le même geste sur $z' = iz + 2 - 2i$ : $|a| = 1$, aucun agrandissement, et $\\omega = \\dfrac{2-2i}{1-i} = 2$ — c'est la rotation de l'étape précédente, écrite autrement, et son centre est le $A$ que tu avais posé. Sur chaque formule, promène $M$ et lis $\\dfrac{z'-\\omega}{z-\\omega}$ : c'est toujours $a$, à tous les points. C'est la définition du centre, retournée.",
       "controles": ["enonce", "point", "coefficient", "centre"],
-      "lectures": ["module-c", "distances", "rapport", "argument-c", "angle", "argument-image", "point-fixe", "ecriture", "rapport-inverse"],
+      "lectures": ["distances", "rapport", "angle", "point-fixe", "ecriture", "rapport-inverse"],
       "etat": {
         "enonce": "les-deux",
         "z": "4",
-        "reference": "aucune",
         "image": "donnee"
       }
     }

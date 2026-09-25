@@ -1667,6 +1667,64 @@ construction a changé »), dont deux qu'un propriétaire pourrait vouloir défa
 - `argument-image` n'existe qu'au centre $O$ ; une sixième clé d'état, `image` ; les nombres
   des axes peints sur le canvas ; onze misconceptions au câblage, pas dix.
 
-**ET CE QUE LA VAGUE 2 N'A PAS ENCORE VU** : le panneau n'a été relu que par la porte et
-par mes captures. Les étiquettes au téléphone portent désormais des FILETS quand elles ont
-dû s'éloigner de leur point — un choix de dessin qu'aucun critique n'a jugé.
+**LA VAGUE 2 (2026-09-25, HANDOFF §11.210)** — le calme, le dessin et l'ergonomie ont lu
+les captures à 1 280 px, à 390 px et à 390 px au grand texte. **Les trois ont trouvé le même
+défaut d'abord** : la carte fermée affichait « un cercle de rayon $1$, et un point $M$ »,
+dollars compris — la première chose que l'élève voit de la scène. Il était commun à toutes
+les scènes (la carte ne passait pas par le moteur de formules) et aux légendes des
+intégrations externes, et invisible à `latex-nu`, qui n'entendait une paire de dollars que
+si elle portait une marque de commande (`\`, `^`, `_`, accolades).
+
+*Pris* : la carte et les légendes par le moteur de formules (l'aperçu de 120 caractères ne
+coupe plus dans une paire) et `latex-nu` apprend la paire SERRÉE ; les lectures de S4 et S5
+réduites à ce que l'étape découvre ou emploie (règle du calme) — S4 : distances, angle, point
+fixe, écriture ; S5 : distances, rapport, angle, point fixe, écriture, rapport inverse, soit
+six au lieu de neuf, **deux de plus que le calme ne demandait** (les distances, parce qu'un
+retour de S5 les cite, $\Omega M = \sqrt{10}$ et $\Omega M' = 2\sqrt5$ ; l'angle, parce que
+c'est lui qui trace l'arc — le plan répond avant le texte) ; la porte lit désormais les 35
+couples coefficient-point à S3, la seule étape qui écrit les six lectures ; la suite de S3
+réduite à une question et au balayage, celle de S5 à une formule travaillée et au rapport
+inverse ; la phrase de S3 qui racontait le dessin ; **le fantôme « départ » retiré** (le
+calme le jugeait inutile, le dessin le jugeait anonyme — on retire plutôt qu'on nomme) ; le
+balayage au cran de 5 (au cran de 1, une flèche déplaçait $M$ de moins d'un pixel), son
+début et son relâchement DITS, sa valeur parlée qui varie, « Échap » dans le libellé
+visible ; le nom des boutons radio en clair ; une valeur-formule SOUS son terme, à gauche ;
+la ligne des arguments qui garde sa hauteur pendant le balayage ; l'écart entre les cibles ;
+l'affixe empilée sans double parenthèse ; le nombre d'axe qu'un point recouvrirait, omis ;
+un filet qui coupe un trait du dessin coûte au placeur (la porte IMPRIME, sans rougir, ceux
+qui restent).
+
+*Réfuté* : « les valeurs sont coupées au milieu de la formule » (dessin, B2) — la capture
+citée montrait $z' = iz$ en entier, qui est l'écriture complète pour $c = i$ et le centre
+$O$. La capture ne tranchait pas ; une mesure le fait désormais (`lectures-entieres` :
+chaque formule d'une lecture tient entre les bords de sa liste, à 1 280, 390 et au grand
+texte).
+
+*Refusé, avec sa raison* : cacher le cercle unité quand le centre n'est pas $O$ (calme) —
+c'est l'étalon déclaré de l'échelle (`fit_caveat` 3), et la porte d'isotropie le lit ; ôter
+l'une des deux directions de la consigne de S3 (calme) — les quatre choix du pari les citent
+toutes les deux, et $\frac{2\pi}{3}$ ne se lit pas sur le plan sans rapporteur ; `\tfrac`
+dans les choix du pari (dessin) — à cette taille, $\frac{\pi}{6}$ en `\tfrac` a été mesuré
+illisible à la construction, et c'est la réponse ; la composition de la carte fermée (dessin,
+« doux ») — partagée par toutes les scènes, et le calme en est l'adversaire ; le saut-retour
+de $M$ sur un simple clic de la piste (ergonomie) — c'est la règle du relâchement qui se
+montre ; ranger les lectures selon les contrôles VISIBLES (ergonomie) — à S5, basculer « Ce
+qui est donné » ferait sauter les lectures au-dessus ou au-dessous du bouton qu'on vient de
+cliquer ; l'ordre se décide par étape, pas par clic.
+
+*Au propriétaire, parce que c'est PARTAGÉ* (aucune de ces décisions n'est celle d'une
+scène) :
+
+- **Le plateau collant au téléphone** (ergonomie) : 358 px de carré + 56 px d'en-tête =
+  414 px tenus ; sur un écran de 667 px, il reste 268 px pour lire — et à S3 le geste est
+  modal (lâcher pour faire défiler remet $M$ à sa place). Plafonner le plateau en hauteur
+  au téléphone changerait les mesures au téléphone de chaque porte de scène.
+- **« Bonne réponse. » dit une quatrième fois** et **les trois mauvais choix gardés en
+  pleine taille après le verdict** (calme) : `PariBloc`, commun aux quatorze scènes.
+- **Le transport en bas d'un panneau de 2 200 à 2 900 px** (ergonomie) : `TransportEtapes`,
+  commun.
+- **Les nombres des canvas sourds à la taille du texte** (dessin) : les cinq rendus plans
+  écrivent `12px` en dur, et aucun ne se redessine quand l'élève change la taille — la
+  condition qui mériterait une porte : une mesure de la hauteur des chiffres peints, à A et
+  à A+.
+- **`--figure-surface` en blanc pur** (dessin) : un jeton de tout le produit.

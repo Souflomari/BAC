@@ -25,7 +25,7 @@
  * · etapes · paris · avant-pari · nombres (N1…N10, aux 70 + 15 états) ·
  * isotropie · quadrillage-opaque · point-a-sa-place · colineaires ·
  * longueurs-au-rapport · arc-entre-les-bonnes-directions · point-fixe-immobile
- * · une-seule-etiquette-au-point-fixe · balayage-invariants · palette ·
+ * · une-seule-etiquette-au-point-fixe · balayage-invariants · lectures-entieres · palette ·
  * formule-graduee · fuite-inter-etapes · frontiere · katex · etiquettes ·
  * etiquettes-pres · cadre · immobile · annonce · theme · console · ergonomie.
  *
@@ -151,6 +151,12 @@ if (!process.env.BASE) {
   const { spawn } = await import("node:child_process");
   const fs = await import("node:fs");
   const os = await import("node:os");
+  // LE BANC D'ABORD (ADR 0035) : si un serveur répond DÉJÀ sur ce port, le nôtre ne s'y lierait
+  // pas, et la porte mesurerait l'ancien — un autre build que celui qu'elle croit juger
+  if (await fetch(BASE + "/").then(() => true, () => false)) {
+    console.error(`scene-plan-complexe : un serveur répond déjà sur le port ${PORT} — il serait mesuré à la place du build. L'arrêter, ou choisir PORT_PLAN.`);
+    process.exit(1);
+  }
   const journal = `${os.tmpdir()}/scene-plan-complexe-${PORT}-${process.pid}.log`;
   const fd = fs.openSync(journal, "w");
   serveur = spawn("npx", ["next", "start", "-p", String(PORT)], { cwd: new URL("..", import.meta.url).pathname, stdio: ["ignore", fd, fd], detached: true });
@@ -182,6 +188,20 @@ page.on("console", (m) => { if (m.type() === "error") erreurs.push(`console : ${
 const resultats = [];
 const noter = (famille, ok, detail) => resultats.push({ famille, ok: !!ok, detail });
 const juger = (famille, ok, detail) => noter(famille, ESSAI ? !ok : ok, detail);
+// UNE PORTE QUI MEURT EN COURS DE MESURE perdait tout ce qu'elle avait déjà vu : une exception
+// (un clic que le panneau, planté, ne prend plus) sortait sans rien imprimer, et la campagne de
+// sabotages lisait « MANQUÉ » là où la porte avait déjà rougi trois fois (campagne du plan
+// complexe, 2026-09-25 : deux sabotages de calcul plantaient le rendu à l'étape 3). Elle imprime
+// désormais ce qu'elle a mesuré, puis l'ARRÊT lui-même, rouge, avec les erreurs de la page.
+process.on("uncaughtException", (e) => {
+  for (const r of resultats) console.log(`  ${r.ok ? "·" : "✘"} [${r.famille}] ${r.detail}`);
+  console.log(`  ✘ [execution] la porte s'est ARRÊTÉE en cours de mesure : ${String(e?.message ?? e).split("\n")[0]}`);
+  for (const x of erreurs.slice(0, 3)) console.log(`      ${x.slice(0, 240)}`);
+  console.log(`\nROUGE — arrêt en cours de mesure, après ${resultats.length} mesure(s) (${resultats.filter((r) => !r.ok).length} rouge(s)).`);
+  process.exit(1);
+});
+/** Ce qui s'IMPRIME sans compter (ni mesure, ni rouge) : les règles de la maison (ADR 0039) */
+const imprimes = [];
 
 const descripteur = JSON.parse(readFileSync(new URL("../../content/maths/nombres-complexes-2/media/plan-complexe-transformation.json", import.meta.url), "utf-8"));
 const E = descripteur.etapes;
@@ -227,6 +247,8 @@ const attr = (n) => panneau.getAttribute(n);
 const installer = (p) => p.evaluate(() => {
   window.__tex = (el) => {
     const c = el.cloneNode(true);
+    // ce qui est RÉSERVÉ (invisible et muet, pour garder une hauteur) n'est ni vu ni entendu : pas lu
+    c.querySelectorAll("[data-reserve]").forEach((r) => r.remove());
     c.querySelectorAll(".katex").forEach((k) => { const a = k.querySelector('annotation[encoding="application/x-tex"]'); k.replaceWith(document.createTextNode(` ${a ? a.textContent : k.textContent} `)); });
     return (c.textContent ?? "").replace(/[\s  ]+/g, " ").trim();
   };
@@ -486,6 +508,41 @@ async function formule(ou, id, emploie = []) {
   juger("formule-graduee", fautes.length === 0, `les textes du descripteur (consignes, questions, choix, retours, suites — ceux qu'aucun parcours n'affiche) : ${fautes.length ? fautes.slice(0, 4).join(" ; ") : "aucune forme avant son étape"}`);
 }
 
+/**
+ * LES LECTURES, ENTIÈRES (vague 2, dessin) : une formule KaTeX ne se coupe pas — trop large,
+ * elle DÉBORDE sa colonne, et ce qui dépasse est rogné par le bord du panneau. La critique
+ * l'affirmait sur des captures (« z′ = iz » coupé) ; la capture ne tranche pas (c'était la
+ * valeur entière, à c = i et centre O), la boîte, si : chaque formule d'une lecture doit
+ * tenir entre les bords de la liste, et dans sa propre case.
+ */
+async function lecturesEntieres(ou, q = panneau) {
+  const r = await q.evaluate((el) => {
+    const dl = el.querySelector("[data-lectures]");
+    if (!dl) return null;
+    const b = dl.getBoundingClientRect();
+    // la BOÎTE de chaque formule, pas le `scrollWidth` de sa case : sous un radical, KaTeX pose
+    // un étai de 2 px (`vlist-s`) qu'il annule par une marge de −2 px — invisible, mais compté
+    // par `scrollWidth` (premier passage : « √2 » donné pour débordant dans une case de 23 px
+    // où sa boîte tenait de 0 à 23)
+    const dehors = [], horsCase = [];
+    let n = 0;
+    for (const dd of dl.querySelectorAll("[data-lecture]")) {
+      n++;
+      const c = dd.getBoundingClientRect();
+      for (const k of dd.querySelectorAll(".katex")) {
+        if (k.closest("[data-reserve]")) continue;
+        const kb = k.getBoundingClientRect();
+        if (kb.right > b.right + 0.5 || kb.left < b.left - 0.5) dehors.push(`${dd.getAttribute("data-lecture")} (${Math.round(kb.left - b.left)} → ${Math.round(kb.right - b.left)} px pour une liste de ${Math.round(b.width)})`);
+        else if (kb.right > c.right + 0.5 || kb.left < c.left - 0.5) horsCase.push(`${dd.getAttribute("data-lecture")} (${Math.round(kb.left - c.left)} → ${Math.round(kb.right - c.left)} px pour une case de ${Math.round(c.width)})`);
+      }
+    }
+    return { n, dehors, defile: horsCase, largeur: Math.round(b.width) };
+  });
+  if (!r) return juger("lectures-entieres", false, `${ou} : aucune liste de lectures`);
+  const ok = r.n > 0 && r.dehors.length === 0 && r.defile.length === 0;
+  juger("lectures-entieres", ok, `${ou} : ${r.n} lecture(s) dans ${r.largeur} px — ${ok ? "chaque formule tient entre les bords de la liste" : [r.n === 0 ? "AUCUNE lecture (mesure vide)" : "", r.dehors.length ? `DÉBORDENT : ${r.dehors.join(", ")}` : "", r.defile.length ? `sortent de leur case : ${r.defile.join(", ")}` : ""].filter(Boolean).join(" ; ")}`);
+}
+
 /** Les étiquettes : ni chevauchées, ni sous la légende, dans le cadre ; sur du blanc ; au plus six ; près de ce qu'elles nomment. */
 /** Au-delà de ces distances (px, du point au bord de l'étiquette), un FILET doit relier l'étiquette à son point (le seuil du produit : 14). */
 const PRES = [["nom-m", "m", 14], ["nom-mp", "mp", 14], ["nom-centre", "centre", 14], ["nom-angle", "arc-milieu", 20]];
@@ -538,7 +595,15 @@ async function etiquettesLisibles(ou, q = panneau) {
   juger("cadre", encre === 0, `${ou} : ${encre} pixel(s) d'encre sous la légende, qui les CACHE (attendu 0)`);
   const parNom = Object.fromEntries(textes.map((t) => [t.nom, t]));
   const ecart = (b, p) => Math.hypot(Math.max(b.x0 - p.x, 0, p.x - b.x1), Math.max(b.y0 - p.y, 0, p.y - b.y1));
-  const loin = [], vus = [];
+  const loin = [], vus = [], coupes = [];
+  // les traits que la porte connaît elle-même : les deux axes, et les segments du centre (ou de O) à M et à M′
+  const coupe = (a, b, c, d) => { const o = (p, q2, r) => (q2.x - p.x) * (r.y - p.y) - (q2.y - p.y) * (r.x - p.x); const d1 = o(c, d, a), d2 = o(c, d, b), d3 = o(a, b, c), d4 = o(a, b, d); return d1 * d2 < 0 && d3 * d4 < 0; };
+  const pivot = reperes.centre ?? reperes.origine;
+  const traits = [
+    ...(reperes.origine ? [["l'axe réel", { x: -1e4, y: reperes.origine.y }, { x: 1e4, y: reperes.origine.y }], ["l'axe imaginaire", { x: reperes.origine.x, y: -1e4 }, { x: reperes.origine.x, y: 1e4 }]] : []),
+    ...(pivot && reperes.m ? [["le segment vers M", pivot, reperes.m]] : []),
+    ...(pivot && reperes.mp ? [["le segment vers M′", pivot, reperes.mp]] : []),
+  ];
   for (const [nom, ref, max] of PRES) {
     const b = parNom[nom], p = reperes[ref];
     if (!b || !p) continue;
@@ -569,10 +634,17 @@ async function etiquettesLisibles(ou, q = panneau) {
       return { n, oui };
     }, { p, qx, qy });
     const relie = tr.n > 0 && tr.oui / tr.n >= 0.85;
+    if (relie) {
+      const L = Math.hypot(qx - p.x, qy - p.y), a = { x: p.x + ((qx - p.x) / L) * 7, y: p.y + ((qy - p.y) / L) * 7 };
+      for (const [nt, u, v] of traits) if (coupe(a, { x: qx, y: qy }, u, v)) coupes.push(`le filet de « ${nom.replace("nom-", "")} » coupe ${nt}`);
+    }
     vus.push(`${nom.replace("nom-", "")} ${d.toFixed(0)}${relie ? " (filet)" : ""}`);
     if (!relie) loin.push(`« ${nom} » à ${d.toFixed(1)} px de ${ref} (au plus ${lim}), et AUCUN filet ne l'y relie (${tr.oui}/${tr.n})`);
   }
   juger("etiquettes-pres", loin.length === 0 && vus.length >= 1, `${ou} : ${loin.length ? loin.join(" ; ") : `chacune près de ce qu'elle nomme (px : ${vus.join(" · ")})`}`);
+  // IMPRIMÉ, PAS ARMÉ (ADR 0039 : une règle de la maison s'imprime à côté sans rougir) : le placeur
+  // fait payer un filet qui coupe un trait, mais peut le garder quand toute autre place est pire
+  if (coupes.length) imprimes.push(`[etiquettes-filets] ${ou} : ${coupes.join(" ; ")} (le placeur n'a pas trouvé mieux)`);
 }
 
 // ── L'échelle et les positions : la porte place elle-même chaque point ──
@@ -631,6 +703,16 @@ async function ouvertApres(k) {
 }
 
 /** Tout ce qu'un état affiche, mesuré contre la seconde voie (N1…N10) et contre ses pixels. */
+/** La chaîne est-elle ENTOURÉE d'une paire de parenthèses (celle qui s'ouvre en tête se ferme en queue) ? */
+function entoure(x) {
+  if (!x.startsWith("(")) return false;
+  let p = 0;
+  for (let i = 0; i < x.length; i++) {
+    if (x[i] === "(") p++;
+    else if (x[i] === ")" && --p === 0) return i === x.length - 1;
+  }
+  return false;
+}
 async function mesurerEtat(c, zc, centre, enonce, ou) {
   const t = transfo(c, centre, enonce);
   const z = POINT[zc], zp = image(t, z);
@@ -643,7 +725,10 @@ async function mesurerEtat(c, zc, centre, enonce, ou) {
     if (eMp) f.push(`N8 : une étiquette de M′ au point fixe (« ${eMp} »)`);
     if (eM !== "M=M'") f.push(`N8 : l'étiquette du point fixe dit « ${eM} » (attendu « M=M' »)`);
   } else {
-    const aff = eMp.replace(/^M'\(/, "").replace(/\)$/, "");
+    // « M'(2+2i) » sur une ligne ; « M' » puis l'affixe nue sur deux (sans parenthèses de plus
+    // autour d'une affixe qui en porte déjà) — on n'ôte que la paire qui ENTOURE l'affixe
+    const reste = eMp.replace(/^M'/, "");
+    const aff = entoure(reste) ? reste.slice(1, -1) : reste;
     const v = evalTex(aff);
     if (!v || !proche(v, zp)) f.push(`N1 : M′ affiché « ${aff} » vaut ${v ? v.map((x) => x.toFixed(4)).join(" ; ") : "?"}, attendu ${zp.map((x) => x.toFixed(4)).join(" ; ")}`);
     if (enonce === "coefficient" && centre === "O" && aff !== TABLE_A[c][POINTS.indexOf(zc)]) f.push(`N1 : forme « ${aff} » ≠ table A « ${TABLE_A[c][POINTS.indexOf(zc)]} »`);
@@ -844,13 +929,24 @@ if (pret) {
     const m0 = await repere("m");
     const INV = ["module-c", "distances", "rapport", "argument-c", "angle"];
     const curseur = panneau.locator('[data-controle="balayage"] input');
+    const dit = () => panneau.locator("[data-annonce]").textContent().then((x) => (x ?? "").trim());
+    const f = [];
     await curseur.focus();
-    for (let j = 0; j < 40; j++) await page.keyboard.press("ArrowRight");
+    // UNE flèche doit se VOIR (vague 2, ergonomie : au cran de 1°, une pression déplaçait M de
+    // moins d'un pixel) — et le début du geste doit se DIRE, une fois
+    await page.keyboard.press("ArrowRight");
     await deuxImages(); await page.waitForTimeout(60);
+    const m05 = await repere("m");
+    if (!m05 || !m0 || dist(m0, m05) < 3) f.push(`une flèche déplace M de ${m0 && m05 ? dist(m0, m05).toFixed(1) : "?"} px (au moins 3 : sinon rien ne bouge à l'écran)`);
+    const dit1 = await dit(), vt1 = await curseur.getAttribute("aria-valuetext");
+    if (!/glisse sur son cercle/.test(dit1) || !/restent les mêmes/.test(dit1)) f.push(`le début du balayage n'est pas dit (région vivante : « ${dit1} »)`);
+    for (let j = 1; j < 8; j++) await page.keyboard.press("ArrowRight");
+    await deuxImages(); await page.waitForTimeout(60);
+    const vt8 = await curseur.getAttribute("aria-valuetext");
+    if (!vt1 || !vt8 || vt1 === vt8 || !/Échap/.test(vt8)) f.push(`la valeur dite du curseur ne varie pas avec le geste (« ${vt1} » puis « ${vt8} »)`);
     const pendant = await lectures();
     const m1 = await repere("m");
     const eM = await etiquette("nom-m"), eMp = await etiquette("nom-mp");
-    const f = [];
     for (const l of INV) if (pendant[l] !== avant[l]) f.push(`« ${l} » CHANGE (${avant[l]} → ${pendant[l]})`);
     if (pendant["argument-image"] !== "—") f.push(`argument de l'image « ${pendant["argument-image"]} » pendant le balayage (attendu « — »)`);
     if (/\d/.test(eM + eMp)) f.push(`un chiffre sur les étiquettes de M/M′ (« ${eM} », « ${eMp} »)`);
@@ -867,6 +963,7 @@ if (pret) {
     if (!a || Math.abs(a.min) > 0.14 || Math.abs(a.max - Math.PI / 6) > 0.2) f.push(`l'arc, pendant le balayage, ${a ? `va de ${(a.min * 57.3).toFixed(0)}° à ${(a.max * 57.3).toFixed(0)}°` : "INTROUVABLE"} (attendu 0° → 30° depuis ΩM)`);
     await page.keyboard.press("Escape");
     await deuxImages(); await page.waitForTimeout(60);
+    if (!/revenu à sa place/.test(await dit())) f.push(`le relâchement n'est pas dit (région vivante : « ${await dit()} »)`);
     const apres = await lectures();
     const m2 = await repere("m");
     for (const l of Object.keys(avant)) if (apres[l] !== avant[l]) f.push(`« ${l} » n'est pas revenue (${avant[l]} → ${apres[l]})`);
@@ -883,11 +980,16 @@ if (pret) {
     await deuxImages(); await page.waitForTimeout(60);
     const lache = await lectures();
     for (const l of Object.keys(avant)) if (lache[l] !== avant[l]) f.push(`à la souris, « ${l} » n'est pas revenue au relâchement`);
-    juger("balayage-invariants", f.length === 0, `étape 3 : ${f.length ? f.join(" ; ") : `au clavier puis à la souris, pendant le balayage M glisse de ${dist(m0, m1).toFixed(0)} px, les cinq invariants restent écrits au caractère près, l'argument de l'image vaut « — », aucun chiffre sur M et M′, l'arc garde 30° entre ΩM et ΩM′ ; relâché, tout revient`}`);
+    juger("balayage-invariants", f.length === 0, `étape 3 : ${f.length ? f.join(" ; ") : `au clavier puis à la souris, une flèche déplace M de ${dist(m0, m05).toFixed(1)} px et huit de ${dist(m0, m1).toFixed(0)} px ; les cinq invariants restent écrits au caractère près, l'argument de l'image vaut « — », aucun chiffre sur M et M′, l'arc garde 30° entre ΩM et ΩM′ ; le début et le relâchement sont DITS, la valeur du curseur varie ; relâché, tout revient`}`);
   }
   // N5 et N6 aux cinq points, à c = √3 + i : l'écart ne bouge pas, et ne coïncide avec l'argument de l'image que sur l'axe réel
   for (const z of POINTS) { await cocher("point", z); await mesurerEtat("sqrt3+i", z, "O", "coefficient", `étape 3, z = ${z}`); }
-  await cocher("point", "2i");
+  // LES 35 COUPLES coefficient-point, à l'étape qui écrit les six lectures : depuis la vague 2,
+  // S4 et S5 n'écrivent plus que ce qu'elles découvrent ou emploient (le module et l'argument de
+  // c, l'argument de l'image n'y sont plus), et c'est ici que N2, N4 et N5 se mesurent partout
+  for (const c of COEFS) { await cocher("coefficient", c); for (const z of POINTS) { await cocher("point", z); await mesurerEtat(c, z, "O", "coefficient", `étape 3, c = ${c}, z = ${z}`); } }
+  await cocher("coefficient", "sqrt3+i"); await cocher("point", "2i");
+  await lecturesEntieres("1 280 px, étape 3");
   await suivant();
 
   // ── S4 ──
@@ -951,6 +1053,7 @@ if (pret) {
     for (const c of COEFS) { await cocher("coefficient", c); for (const z of POINTS) { await cocher("point", z); await mesurerEtat(c, z, centre, "coefficient", `centre ${centre}, c = ${c}, z = ${z}`); } }
   }
   await cocher("enonce", "les-deux"); await cocher("point", "4");
+  await lecturesEntieres("1 280 px, étape 5 révélée");
   await frontiere("étape 5 révélée");
   await katex("étape 5 révélée");
   await etiquettesLisibles("1 280 px, étape 5 révélée");
@@ -1030,6 +1133,7 @@ await nav.close();
       await parier(juste(k), q, p2);
       await p2.waitForTimeout(120);
       await etiquettesLisibles(`390 px, étape ${k + 1} révélée`, q);
+      await lecturesEntieres(`390 px, étape ${k + 1} révélée`, q);
       if (k === 0) for (const c of ["0.5", "-2", "2i", "sqrt3+i"]) { await cocher("coefficient", c, q, p2); await etiquettesLisibles(`390 px, étape 1, c = ${c}`, q); }
       if (k === 3) for (const z of ["2", "1+i", "2i"]) { await cocher("point", z, q, p2); await etiquettesLisibles(`390 px, étape 4, z = ${z}`, q); }
       if (k === 4) for (const en of ["rotation-A", "homothetie-A"]) { await cocher("enonce", en, q, p2); await etiquettesLisibles(`390 px, étape 5, ${en}`, q); }
@@ -1037,7 +1141,11 @@ await nav.close();
     }
     await p2.evaluate(() => document.documentElement.style.setProperty("--font-scale", "1.125"));
     await p2.waitForTimeout(120);
-    for (const en of ["les-deux", "rotation-A"]) { await cocher("enonce", en, q, p2); await etiquettesLisibles(`390 px, texte A+ (×1,125), étape 5, ${en}`, q); }
+    for (const en of ["les-deux", "rotation-A"]) { await cocher("enonce", en, q, p2); await etiquettesLisibles(`390 px, texte A+ (×1,125), étape 5, ${en}`, q); await lecturesEntieres(`390 px, texte A+ (×1,125), étape 5, ${en}`, q); }
+    // la forme la plus large : le coefficient 1 + i autour de A, « z′ − 2 = (1 + i)(z − 2) » et sa forme développée
+    await cocher("enonce", "coefficient", q, p2); await cocher("centre", "A", q, p2); await cocher("coefficient", "1+i", q, p2);
+    await lecturesEntieres("390 px, texte A+ (×1,125), étape 5, c = 1 + i autour de A", q);
+    await cocher("enonce", "les-deux", q, p2);
     await p2.evaluate(() => document.documentElement.style.removeProperty("--font-scale"));
     await frontiere("390 px, étape 5 révélée", q);
   } finally {
@@ -1051,9 +1159,10 @@ await ergonomie({ lancer: () => lancer(), url: URL_SCENE, scene: SCENE, noter, e
 // ── Verdict ──
 console.log(`\n${ESSAI ? "ESSAI ROUGE — " : ""}scene-plan-complexe : le plan complexe (${URL_SCENE})`);
 for (const r of resultats) console.log(`  ${r.ok ? "·" : "✘"} [${r.famille}] ${r.detail}`);
+for (const x of imprimes) console.log(`  ○ ${x}`);
 if (!pret) { console.error("\nMUET — la scène n'a pas pu dessiner ici : la porte ne peut rien dire des pixels."); process.exit(3); }
 if (ESSAI) {
-  const visees = ["avant-clic", "pas-de-3d", "etapes", "paris", "avant-pari", "nombres", "isotropie", "quadrillage-opaque", "point-a-sa-place", "colineaires", "longueurs-au-rapport", "arc-entre-les-bonnes-directions", "point-fixe-immobile", "une-seule-etiquette-au-point-fixe", "balayage-invariants", "palette", "formule-graduee", "fuite-inter-etapes", "frontiere", "katex", "etiquettes", "etiquettes-pres", "cadre", "immobile", "annonce", "theme", "ergonomie"];
+  const visees = ["avant-clic", "pas-de-3d", "etapes", "paris", "avant-pari", "nombres", "isotropie", "quadrillage-opaque", "point-a-sa-place", "colineaires", "longueurs-au-rapport", "arc-entre-les-bonnes-directions", "point-fixe-immobile", "une-seule-etiquette-au-point-fixe", "balayage-invariants", "lectures-entieres", "palette", "formule-graduee", "fuite-inter-etapes", "frontiere", "katex", "etiquettes", "etiquettes-pres", "cadre", "immobile", "annonce", "theme", "ergonomie"];
   const crient = visees.filter((f) => resultats.some((r) => r.famille === f && !r.ok));
   console.log(`\n  familles sabotées qui crient : ${crient.length}/${visees.length} (${crient.join(", ")})`);
   const muettes = visees.filter((f) => !crient.includes(f));

@@ -58,8 +58,6 @@ export interface EtatRenduPlan {
   anneau: boolean;
   /** l'angle de la transformation en douzièmes de π, tracé de ΩM vers ΩM' ; null : pas d'arc */
   arc: number | null;
-  /** l'image au réglage de départ de l'étape, en tirets ; null : rien */
-  reference: Pt | null;
 }
 
 export interface RenduPlan {
@@ -73,7 +71,7 @@ export interface RenduPlan {
   cadre(): { largeur: number; hauteur: number };
   segments(): [Projection, Projection][];
   /** les nombres des axes : aucune étiquette ne s'y pose */
-  zones(): { x0: number; y0: number; x1: number; y1: number }[];
+  zones(): { x0: number; y0: number; x1: number; y1: number; traversable?: boolean }[];
   /** px par unité (la porte la LIT sur le cercle unité et les graduations ; ceci ne sert qu'aux étiquettes) */
   echelle(): number;
   /** trace, PAR-DESSUS l'image rendue, les filets qui relient une étiquette éloignée à son point */
@@ -103,7 +101,7 @@ export function creerRenduPlan(canvas: HTMLCanvasElement, hote: HTMLElement): Re
   let etat: EtatRenduPlan | null = null;
   let rep: Record<string, Projection> = {};
   let segs: [Projection, Projection][] = [];
-  let zonesNombres: { x0: number; y0: number; x1: number; y1: number }[] = [];
+  let zonesNombres: { x0: number; y0: number; x1: number; y1: number; traversable?: boolean }[] = [];
   let s = 1;
 
   const css = (c: RGB) => `rgb(${c[0]},${c[1]},${c[2]})`;
@@ -176,7 +174,9 @@ export function creerRenduPlan(canvas: HTMLCanvasElement, hote: HTMLElement): Re
     segs.push([P(0, y0), P(largeur, y0)], [P(x0, 0), P(x0, hauteur)]);
     // les traits des graduations dépassent de 4 px de part et d'autre de l'axe : une bande
     // qu'aucune pastille ne recouvre (captures : « M(4) » mordait sur un trait)
-    zonesNombres.push({ x0: 0, y0: y0 - 5, x1: largeur, y1: y0 + 5 }, { x0: x0 - 5, y0: 0, x1: x0 + 5, y1: hauteur });
+    // traversables par un FILET (qui coupe alors l'axe, un trait comme un autre) : la bande
+    // n'écarte que les PASTILLES des graduations
+    zonesNombres.push({ x0: 0, y0: y0 - 5, x1: largeur, y1: y0 + 5, traversable: true }, { x0: x0 - 5, y0: 0, x1: x0 + 5, y1: hauteur, traversable: true });
     rep["axe-x-droite"] = P(largeur - 1, y0);
     rep["axe-y-haut"] = P(x0, 1);
 
@@ -197,24 +197,32 @@ export function creerRenduPlan(canvas: HTMLCanvasElement, hote: HTMLElement): Re
       c.lineTo(x0 + 3, net(Y(k)));
     }
     c.stroke();
-    // les nombres de l'axe réel, SOUS l'axe ; ceux de l'axe imaginaire, à GAUCHE
+    // les nombres de l'axe réel, SOUS l'axe ; ceux de l'axe imaginaire, à GAUCHE — sauf celui
+    // qu'un POINT recouvrirait : M en 2i posait son disque sur le « 2 » de l'axe imaginaire, et
+    // l'étiquette du point dit déjà ce nombre (vague 2, dessin)
+    const marques = [e.m, e.mp, e.centre].filter((p): p is Pt => p !== null).map((p) => [X(p[0]), Y(p[1])] as const);
+    const sousUnPoint = (b: { x0: number; y0: number; x1: number; y1: number }) => marques.some(([x, y]) => x > b.x0 - 7 && x < b.x1 + 7 && y > b.y0 - 7 && y < b.y1 + 7);
     c.textAlign = "center";
     c.textBaseline = "top";
     for (let k = -FENETRE + 1; k < FENETRE; k++) {
       if (k === 0 || k % pas !== 0) continue;
       const t = nombre(k), w = c.measureText(t).width;
-      c.fillText(t, X(k), y0 + 6);
-      zonesNombres.push({ x0: X(k) - w / 2 - 1, y0: y0 + 5, x1: X(k) + w / 2 + 1, y1: y0 + 20 });
       rep[`grad-x${k}`] = P(X(k), y0);
+      const b = { x0: X(k) - w / 2 - 1, y0: y0 + 5, x1: X(k) + w / 2 + 1, y1: y0 + 20 };
+      if (sousUnPoint(b)) continue;
+      c.fillText(t, X(k), y0 + 6);
+      zonesNombres.push(b);
     }
     c.textAlign = "right";
     c.textBaseline = "middle";
     for (let k = -FENETRE + 1; k < FENETRE; k++) {
       if (k === 0 || k % pas !== 0) continue;
       const t = nombre(k), w = c.measureText(t).width;
-      c.fillText(t, x0 - 7, Y(k));
-      zonesNombres.push({ x0: x0 - 8 - w, y0: Y(k) - 8, x1: x0 - 6, y1: Y(k) + 8 });
       rep[`grad-y${k}`] = P(x0, Y(k));
+      const b = { x0: x0 - 8 - w, y0: Y(k) - 8, x1: x0 - 6, y1: Y(k) + 8 };
+      if (sousUnPoint(b)) continue;
+      c.fillText(t, x0 - 7, Y(k));
+      zonesNombres.push(b);
     }
     // O, en bas à gauche de l'origine
     c.textAlign = "right";
@@ -276,19 +284,6 @@ export function creerRenduPlan(canvas: HTMLCanvasElement, hote: HTMLElement): Re
     rep["cercle-s"] = P(X(0), Y(-1));
     rep["coin-hg"] = P(X(-FENETRE), Y(FENETRE));
     rep["coin-bd"] = P(X(FENETRE), Y(-FENETRE));
-
-    // ── l'image de départ, en tirets d'encre douce ──
-    if (e.reference) {
-      c.strokeStyle = voile(jetons.encreDouce, 0.9);
-      c.lineWidth = 1.25;
-      c.setLineDash([3, 2.5]);
-      c.beginPath();
-      c.arc(X(e.reference[0]), Y(e.reference[1]), 5.5, 0, 2 * Math.PI);
-      c.stroke();
-      c.setLineDash([]);
-      rep["ref"] = P(X(e.reference[0]), Y(e.reference[1]));
-      zonesNombres.push({ x0: X(e.reference[0]) - 8, y0: Y(e.reference[1]) - 8, x1: X(e.reference[0]) + 8, y1: Y(e.reference[1]) + 8 });
-    }
 
     const ctr: Pt = e.centre ?? [0, 0];
     const cx = X(ctr[0]), cy = Y(ctr[1]);

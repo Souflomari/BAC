@@ -1,7 +1,27 @@
 # spec — manipulable 2D `plan-complexe-transformation` (Maths · `nombres-complexes-2`, **R5**)
 
-**Statut : EN CONSTRUCTION (2026-09-25) — spec révisée après la vague 1, puis amendée par la
-construction (bloc suivant).** Écrite le 2026-09-25 par pedagogy-architect.
+**Statut : LIVRÉE (2026-09-25) — spec révisée après la vague 1, amendée par la construction,
+puis par la vague 2 (deux blocs suivants).** Écrite le 2026-09-25 par pedagogy-architect.
+
+> ## Ce que la vague 2 a changé (dessin, calme, ergonomie — HANDOFF §11.210, DÉCISIONS §29)
+>
+> 1. **Les lectures de S4 et S5 ne portent plus que ce que l'étape découvre ou emploie** (règle
+>    du calme) : S4 → distances, angle, point fixe, écriture ; S5 → distances, rapport, angle,
+>    point fixe, écriture, rapport inverse (six, pas neuf — les distances parce qu'un retour de
+>    S5 les cite, l'angle parce que c'est lui qui trace l'arc). Le §11 se lit en conséquence :
+>    N2, N4 et N5 se mesurent aux 35 couples **à S3**.
+> 2. **Le fantôme « départ » n'existe plus** (clé d'état `reference` retirée du descripteur, du
+>    registre et du rendu) : il marquait une histoire qu'aucune question ne posait, et n'avait
+>    pas d'étiquette. Les points 3 et 4 du bloc suivant qui le nomment sont caducs sur ce point.
+> 3. **Les suites de S3 et S5** : une question et un geste (S3 : les deux lectures d'angle aux
+>    cinq positions, puis le balayage ; S5 : une formule travaillée, $z' = iz + 2 - 2i$, et le
+>    rapport inverse). La consigne de S3 ne raconte plus le dessin.
+> 4. **Le balayage** avance par crans de 5° (au cran de 1°, une flèche ne déplaçait rien de
+>    visible) ; son début et son relâchement sont dits par la région vivante ; « Échap » est
+>    dans le libellé visible.
+> 5. **Le dessin** : le nombre d'un axe qu'un point recouvrirait est omis ; l'affixe empilée
+>    perd sa double parenthèse ; les filets évitent de couper un trait ; le centre et $M$ se
+>    placent dans l'ordre qui laisse le moins de conflits.
 
 > ## Ce que la construction a changé — cinq décisions, chacune écrite là où elle agit
 >

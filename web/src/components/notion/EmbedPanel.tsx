@@ -44,9 +44,27 @@ import { useState } from "react";
 import { useHydrated } from "@/lib/useHydrated";
 import type { EmbedDescriptor } from "@/lib/content";
 import { cn } from "@/lib/utils";
-import { frenchTypography } from "@/lib/frenchTypography";
+import { MathText } from "./ChoiceButton";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { ExternalLinkIcon, InteractiveIcon, PlayIcon } from "@/components/ui/Icon";
+
+/**
+ * L'aperçu de la légende, coupé à `n` caractères SANS couper une formule (§11.210) : la
+ * légende passe par le moteur de formules, et `slice(0, 120)` pouvait tomber entre les
+ * deux « $ » d'une paire — la formule se serait affichée en source, dollar compris. On
+ * recule au dernier « $ » ouvrant quand la coupe en laisse un seul, puis au dernier blanc.
+ */
+function apercu(texte: string, n: number): string {
+  if (texte.length <= n) return texte;
+  const impair = (x: string) => (x.match(/\$/g) ?? []).length % 2 === 1;
+  let coupe = texte.slice(0, n);
+  if (impair(coupe)) coupe = coupe.slice(0, coupe.lastIndexOf("$"));
+  const blanc = coupe.lastIndexOf(" ");
+  if (blanc > n / 2) coupe = coupe.slice(0, blanc);
+  // le blanc peut être DANS une formule plus tôt (« $a + b$c… ») : la parité se revérifie
+  if (impair(coupe)) coupe = coupe.slice(0, coupe.lastIndexOf("$"));
+  return `${coupe.trimEnd().replace(/[,;:—–-]$/, "").trimEnd()}…`;
+}
 
 interface EmbedPanelProps {
   embed: EmbedDescriptor | null;
@@ -142,7 +160,7 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
             {embed.caption && (
               // #1: caption at 12px must pass 4.5:1 — promoted from tertiary to secondary
               <p className="text-caption text-secondary max-w-[48ch] leading-relaxed">
-                {frenchTypography(embed.caption.slice(0, 120))}{embed.caption.length > 120 ? "…" : ""}
+                <MathText>{apercu(embed.caption, 120)}</MathText>
               </p>
             )}
           </div>
@@ -277,7 +295,7 @@ export function EmbedPanel({ embed, className }: EmbedPanelProps) {
                   "max-w-[56ch] leading-relaxed"
                 )}
               >
-                {frenchTypography(embed.caption)}
+                <MathText>{embed.caption}</MathText>
               </p>
             </div>
           )}

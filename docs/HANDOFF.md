@@ -16418,3 +16418,90 @@ anisotrope, la fenêtre paysage, $z' = a(z-\omega)$…) ; au propriétaire, les 
 §13 de la spec tranchées par défaut (DÉCISIONS §29), dont le cran `les-deux` de profondeur
 SM à S5, et le mot « similitude » une fois dans la prose. La spec reste sous
 `docs/pipeline/propositions/` tant que la vague 2 n'est pas passée.
+
+## §11.210 — La vague 2 du plan complexe : une carte qui affichait « $M$ », une porte qui ne l'entendait pas, une porte qui mourait sans rien dire
+
+**LE DÉFAUT COMMUN D'ABORD.** Les trois critiques de la vague 2 (dessin, calme, ergonomie)
+ont trouvé le même défaut avant tout autre : la carte FERMÉE de la scène — la première
+chose que l'élève en voit — affichait « un cercle de rayon $1$, et un point $M$ »,
+dollars compris. `SceneOptIn` passait le titre et la légende par la seule typographie
+française, jamais par le moteur de formules ; toutes les scènes étaient exposées (une
+seule avait une formule dans sa légende), et `EmbedPanel` faisait de même pour les
+légendes des intégrations externes (celle du ressort, PhET, porte `$T \approx
+2\pi\sqrt{m/k}$` au 784ᵉ caractère, affichée à l'ouverture). Les deux passent désormais
+par `MathText` ; l'aperçu de 120 caractères ne coupe plus au milieu d'une paire.
+
+**ET `latex-nu` NE L'ENTENDAIT PAS — par construction.** Son premier axe ne retenait une
+paire de dollars que si elle portait une marque de commande (`\`, `^`, `_`, accolades),
+pour ne pas prendre « 30 $ » pour une formule. `$M$` et `$1$` n'en portent aucune. Seconde
+forme ajoutée (ADR 0036 : on énumère les FORMES) : la paire SERRÉE, un dollar collé à son
+contenu des deux côtés — ce qu'une somme d'argent ne produit jamais. **Prouvé dans les deux
+sens avec la commande de la CI, 110 pages** : l'ancienne règle VERTE sur le build d'avant
+le correctif (aveugle), la nouvelle ROUGE sur ce même build (3 formules, la carte du plan
+complexe), puis VERTE sur le build corrigé — aucun faux positif ailleurs. Ce qu'elle ne
+voit toujours pas, écrit dans INSTRUMENTS : ce qui n'apparaît qu'après un geste (la légende
+complète d'une intégration ouverte).
+
+**CE QUE LA VAGUE 2 A CHANGÉ DANS LA SCÈNE** (le détail, les refus et les questions
+partagées : DÉCISIONS §29) : les lectures de S4 et S5 réduites à ce que l'étape découvre
+ou emploie (S5 : six au lieu de neuf) ; les 35 couples coefficient-point désormais mesurés
+à S3, la seule étape qui écrit les six lectures ; les suites de S3 et S5 à une question et
+un geste ; le fantôme « départ » retiré ; le balayage au cran de 5, son début et son
+relâchement DITS, sa valeur parlée qui varie, « Échap » dans le libellé visible ; le nom
+des boutons radio en clair ; une formule SOUS son terme ; la ligne des arguments qui garde
+sa hauteur pendant le balayage ; le nombre d'un axe qu'un point recouvrirait, omis ;
+l'affixe empilée sans double parenthèse ; un filet qui coupe un trait coûte au placeur.
+
+**UNE CRITIQUE RÉFUTÉE, REMPLACÉE PAR UNE MESURE.** Le dessin affirmait des valeurs
+« coupées au milieu de la formule » ; la capture citée montrait $z' = iz$ en entier, qui
+est l'écriture complète pour $c = i$ au centre $O$. La capture ne tranchait pas : la
+famille neuve `lectures-entieres` le fait (chaque formule d'une lecture tient dans sa case
+et dans sa liste, à 1 280, 390 et au grand texte). **Son premier passage était faux** :
+quatre rouges sur « √2 », qui tenait dans sa case — sous un radical, KaTeX pose un étai de
+2 px (`vlist-s`) qu'il annule par une marge de −2 px, invisible mais compté par
+`scrollWidth`. Elle lit désormais la BOÎTE de chaque formule.
+
+**LES ÉTIQUETTES : ENLEVER DEUX MARQUES A DÉPLACÉ TOUT LE RESTE.** Retirer le fantôme
+« départ » et le nombre d'axe sous un point a libéré de la place — et fait rougir la porte
+à deux endroits qui étaient verts, parce que le placeur est GLOUTON : au téléphone, à S4
+($z = 1+i$), « $A(2)$ » se posait 2,5 px sous « $M(1+i)$ ». Quatre essais, chacun MESURÉ
+par la porte entière (807 mesures) avant le suivant : (1) chercher plus loin avant de
+chevaucher — ne trouve rien de propre ; (2) poser le centre avant $M$ et $M'$ — répare S4,
+casse deux états de S5 ; (3) essayer les deux ordres et garder le moins conflictuel — le
+compte des conflits prenait deux filets qui coupent un trait (800 chacun, IMPRIMÉS par la
+porte, pas refusés) pour un conflit, et préférait une pastille posée sur un filet ; (4)
+compter à part les conflits GRAVES (ceux que la porte refuse) — même résultat, et c'est la
+capture qui a dit pourquoi : la bande de ±5 px autour d'un axe, posée pour écarter les
+pastilles des graduations, comptait comme un obstacle pour les FILETS aussi, si bien que
+l'ancienne disposition verte (un filet qui franchit l'axe) passait pour grave. La bande est
+désormais `traversable` par un filet. **La leçon : une règle du placeur et une règle de la
+porte qui disent la même chose avec deux seuils différents finissent par se contredire au
+premier état serré** — c'est la capture, pas le raisonnement, qui a trouvé laquelle.
+
+**UNE PORTE QUI MOURAIT SANS RIEN DIRE.** La campagne de sabotages, lancée sur le code
+d'avant la vague 2, a rendu « MANQUÉ » pour ses deux premiers sabotages. Ce n'était pas une
+porte aveugle : le sabotage faisait PLANTER le panneau à l'étape 3, un clic sur un bouton
+radio attendait 15 s, et l'exception sortait du processus avant l'impression — les rouges
+déjà mesurés (N1 dès S1) étaient perdus. `scene-plan-complexe` imprime désormais, sur une
+exception, tout ce qu'elle a mesuré puis l'ARRÊT lui-même (`✘ [execution]`, avec les
+erreurs de la page) ; et elle refuse de démarrer si un serveur répond déjà sur son port.
+La campagne a été arrêtée pour être rejouée sur le code de la vague 2, avec trois
+sabotages de plus (le cran de 1°, le balayage muet, l'écriture sur une ligne).
+
+**ET LE BANC, UNE FOIS DE PLUS (ADR 0035).** `pkill -f "next start …"` ne tue rien : le
+processus se renomme `next-server`. Un ancien serveur tenait le port de ma sonde et servait
+un `.next` reconstruit sous lui — « élément invisible », pendant dix minutes, sur un
+produit sain. Tuer par `next[-]server` ou par PID, et lire `/proc/<pid>/cwd` pour savoir de
+quel arbre il sert.
+
+**VÉRIFIÉ, sur le build de la vague 2, avec les commandes de la CI** : `scene-plan-complexe`
+VERTE trois fois (807 mesures, 29 familles ; trois filets qui coupent un trait IMPRIMÉS),
+essai rouge 28/28 familles et toutes les formes de la frontière vues ; `scene-ergonomie`
+verte sur les 14 scènes (la carte fermée passe désormais par le moteur de formules pour
+toutes) ; `latex-nu` vert sur 110 pages ; `typo-francaise` verte sur les trois pages
+touchées ; la batterie locale verte. **RESTE** : la campagne de sabotages du produit, à
+rejouer sur ce code (35 sabotages, dont les trois neufs) ; au propriétaire, les cinq
+questions PARTAGÉES de DÉCISIONS §29 (le plateau collant au téléphone, `PariBloc` qui dit
+« Bonne réponse » une quatrième fois et garde les mauvais choix en pleine taille, le
+transport en bas du panneau, les nombres des canvas sourds à la taille du texte,
+`--figure-surface` en blanc pur).

@@ -2,7 +2,7 @@
 
 /** La scène FERMÉE : une carte calme, un seul bouton (opt-in, comme EmbedPanel). */
 import { cn } from "@/lib/utils";
-import { frenchTypography } from "@/lib/frenchTypography";
+import { MathText } from "../ChoiceButton";
 import { useHydrated } from "@/lib/useHydrated";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { InteractiveIcon, PlayIcon } from "@/components/ui/Icon";
@@ -41,14 +41,21 @@ export function SceneOptIn({
       >
         <InteractiveIcon size={36} className="text-border-soft" />
         <div className="flex flex-col gap-1">
-          <p className="text-body-sm font-medium text-secondary">{frenchTypography(titre ?? "Scène manipulable")}</p>
+          {/* le titre et la légende passent par le moteur de formules (§11.210) : la carte
+              fermée du plan complexe affichait « rayon $1$, et un point $M$ » tel quel — la
+              première chose que l'élève voit de la scène */}
+          <p className="text-body-sm font-medium text-secondary">
+            <MathText>{titre ?? "Scène manipulable"}</MathText>
+          </p>
           {/* ALIGNÉE À GAUCHE dans un bloc centré : au-delà de deux ou trois lignes, un
               paragraphe centré n'a plus de bord fixe où revenir (la légende du tremplin
               fait quinze lignes au téléphone) ; une légende d'une ligne, dont la boîte
               épouse le texte, reste centrée (vague 2 du banc d'électrolyse, dessin et
               ergonomie) */}
           {legende && (
-            <p className="mx-auto text-left text-caption text-secondary max-w-[52ch] leading-relaxed">{frenchTypography(legende)}</p>
+            <p className="mx-auto text-left text-caption text-secondary max-w-[52ch] leading-relaxed">
+              <MathText>{legende}</MathText>
+            </p>
           )}
         </div>
         <button

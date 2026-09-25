@@ -51,7 +51,6 @@ interface EtatPlan {
   z: M.Point;
   centre: M.Centre;
   enonce: M.Enonce;
-  reference: "aucune" | "depart";
   /** M' est-il DONNÉ par la consigne (S3, S5) ? il est alors à l'encre, avant le pari */
   image: "cachee" | "donnee";
 }
@@ -65,18 +64,17 @@ function appliquer(e: Scene3DEtat | undefined, c: EtatPlan): EtatPlan {
     z: dans(M.POINTS, e.z) ? e.z : c.z,
     centre: dans(M.CENTRES, e.centre) ? e.centre : c.centre,
     enonce: dans(M.ENONCES, e.enonce) ? e.enonce : c.enonce,
-    reference: e.reference === "depart" ? "depart" : e.reference === "aucune" ? "aucune" : c.reference,
     image: e.image === "donnee" ? "donnee" : e.image === "cachee" ? "cachee" : c.image,
   };
 }
 
-const ETAT_DE_BASE: EtatPlan = { c: "2", z: "1+i", centre: "O", enonce: "coefficient", reference: "aucune", image: "cachee" };
+const ETAT_DE_BASE: EtatPlan = { c: "2", z: "1+i", centre: "O", enonce: "coefficient", image: "cachee" };
 
 const REPERES = [
   "origine", "cercle-e", "cercle-n", "cercle-o", "cercle-s", "coin-hg", "coin-bd", "axe-x-droite", "axe-y-haut",
   ...Array.from({ length: 17 }, (_, k) => `grad-x${k - 8}`).filter((n) => n !== "grad-x0"),
   ...Array.from({ length: 17 }, (_, k) => `grad-y${k - 8}`).filter((n) => n !== "grad-y0"),
-  "m", "mp", "centre", "anneau", "ref", "arc-debut", "arc-fin", "arc-milieu",
+  "m", "mp", "centre", "anneau", "arc-debut", "arc-fin", "arc-milieu",
 ] as const;
 
 /** Un nombre TeX dit en clair (la description du canvas, la région vivante) */
@@ -91,6 +89,14 @@ function enClair(t: string): string {
     .replace(/\((\d+)\)\//g, "$1/")
     .replace(/'/g, "′")
     .replace(/-/g, "−");
+}
+
+/** La valeur du balayage, dite : ce qu'elle CHANGE, pas un nombre de degrés que la scène n'écrit nulle part */
+function valeurBalayage(b: number): string {
+  if (b === 0) return "M à sa place";
+  const q = Math.abs(b);
+  const part = q < 30 ? "d’un peu" : q < 68 ? "d’environ un huitième de tour" : q < 113 ? "d’environ un quart de tour" : q < 158 ? "d’environ trois huitièmes de tour" : "d’environ un demi-tour";
+  return `M déplacé ${part}, dans le sens ${b > 0 ? "direct" : "indirect"} ; Échap le remet à sa place`;
 }
 
 /**
@@ -207,12 +213,6 @@ export function PlanComplexePanel({ scene, className }: { scene: Scene3DDescript
   })();
   const arc = revele && lit("angle") && k !== null && k !== 0 ? k : null;
   const anneau = revele && lit("point-fixe");
-  const depart = (() => {
-    if (etat.reference !== "depart" || !revele) return null;
-    const e0 = appliquer(etape.etat, etat);
-    const zp0 = M.image(M.transformation(e0), M.point(e0.z));
-    return M.egal(zp0, Zp) ? null : zp0;
-  })();
 
   // ── Rendu ──
   const renduRef = useRef<RenduPlan | null>(null);
@@ -227,7 +227,6 @@ export function PlanComplexePanel({ scene, className }: { scene: Scene3DDescript
       centreAccent: !t.donne,
       anneau,
       arc,
-      reference: depart ? M.enFlottants(depart) : null,
     });
     s.rendre();
     const p = s.reperes();
@@ -250,8 +249,28 @@ export function PlanComplexePanel({ scene, className }: { scene: Scene3DDescript
     // téléphone, « M′(½ + ½i) » ne tient pas entre O et M, et une étiquette loin de ce qu'elle
     // nomme en nomme une autre (captures de construction). Le placeur choisit la place EN
     // SACHANT le filet qu'elle demande ; on trace ceux qu'il a retenus.
-    const places = disposer(entrees, s.segments(), s.cadre(), [boiteLegende(rendu.hoteRef.current), ...s.zones()].filter((b): b is NonNullable<typeof b> => b !== null));
-    s.lier(places.flatMap((b) => (b?.filet ? [b.filet] : [])));
+    // DEUX ORDRES, le moins conflictuel gagne (vague 2) : le placeur est GLOUTON, et aucun ordre
+    // n'est bon partout. Le centre posé en dernier ne trouvait plus de place propre au téléphone
+    // (S4, z = 1 + i : « A(2) » 2,5 px sous « M(1 + i) ») ; posé avant M et M′, il gâchait deux
+    // états de S5 qui allaient bien. On pose dans l'ordre habituel ; s'il reste un conflit GRAVE
+    // (un chevauchement, un trait sous une pastille, un filet sous une étiquette — pas un filet
+    // qui coupe un trait : compter celui-là avait fait préférer, à S5, une pastille sur l'axe),
+    // on essaie le centre d'abord, et on garde le meilleur des deux.
+    const obstacles = [boiteLegende(rendu.hoteRef.current), ...s.zones()].filter((b): b is NonNullable<typeof b> => b !== null);
+    const placerDans = (ordre: readonly number[]) => {
+      const r = disposer(ordre.map((k) => entrees[k]), s.segments(), s.cadre(), obstacles);
+      const conflits = r.reduce((a, b) => a + (b?.graves ?? 0), 0);
+      const somme = r.reduce((a, b) => a + (b?.cout ?? 0), 0);
+      return { r, conflits, somme };
+    };
+    const HABITUEL = [0, 1, 2, 3], CENTRE_D_ABORD = [0, 3, 1, 2];
+    let places = placerDans(HABITUEL);
+    if (places.conflits > 0) {
+      const autre = placerDans(CENTRE_D_ABORD);
+      if (autre.conflits < places.conflits || (autre.conflits === places.conflits && autre.somme < places.somme)) places = autre;
+      else places = placerDans(HABITUEL); // le dernier appel a posé les étiquettes : on repose l'ordre retenu
+    }
+    s.lier(places.r.flatMap((b) => (b?.filet ? [b.filet] : [])));
     for (const n of REPERES) poser(repRefs.current[n].current, p[n] ?? cache);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [etat, revele, balayage, indexEtape, pari.phase]);
@@ -262,13 +281,33 @@ export function PlanComplexePanel({ scene, className }: { scene: Scene3DDescript
     dessiner();
   }, [dessiner]);
 
+  // LE BALAYAGE, DIT (vague 2, ergonomie) : au clavier et au lecteur d'écran, rien ne l'annonçait —
+  // l'étiquette du canvas est un `role="img"`, et ses changements ne sont pas lus. Le DÉBUT d'un
+  // geste et son RELÂCHEMENT sont dits une fois chacun ; ce qui reste pendant le geste, la valeur
+  // du curseur le dit. Aucun mot ici que l'étape 3 n'a pas encore le droit d'écrire (« centre »).
+  const balayageRef = useRef(0);
+  balayageRef.current = balayage;
+  const balayer = (v: number) => {
+    if (balayageRef.current === 0 && v !== 0) {
+      const o = etatRef.current.centre === "O" ? "O" : "A";
+      setAnnonce(`M glisse sur son cercle autour de ${o} : les distances ${o}M et ${o}M′, leur rapport et l’angle restent les mêmes ; les affixes ne sont plus écrites.`);
+    }
+    setBalayage(v);
+  };
+  const relacher = () => {
+    if (balayageRef.current !== 0) setAnnonce("M revenu à sa place.");
+    setBalayage(0);
+  };
+  const relacherRef = useRef(relacher);
+  relacherRef.current = relacher;
+
   // Relâché, le balayage rend M à sa place — même si la main quitte le curseur
   const tient = useRef(false);
   useEffect(() => {
     const lacher = () => {
       if (!tient.current) return;
       tient.current = false;
-      setBalayage(0);
+      relacherRef.current();
     };
     window.addEventListener("pointerup", lacher);
     window.addEventListener("pointercancel", lacher);
@@ -317,10 +356,14 @@ export function PlanComplexePanel({ scene, className }: { scene: Scene3DDescript
     );
   }
 
-  const ligneLecture = (cleL: string, terme: React.ReactNode, valeur: React.ReactNode) => (
-    <div key={cleL} className="flex min-w-0 flex-wrap items-baseline justify-between gap-x-3 border-b border-subtle pb-1.5">
+  // Une valeur SCALAIRE se lit à droite de son terme ; une FORMULE (deux distances, l'écriture
+  // complexe) passe SOUS son terme, à gauche : poussée à droite, elle se retrouvait seule sur
+  // une ligne, collée au bord de la colonne, loin du terme qu'elle complète (vague 2, dessin
+  // et ergonomie)
+  const ligneLecture = (cleL: string, terme: React.ReactNode, valeur: React.ReactNode, formule = false) => (
+    <div key={cleL} className={cn("flex min-w-0 border-b border-subtle pb-1.5", formule ? "flex-col gap-1" : "flex-wrap items-baseline justify-between gap-x-3")}>
       <dt className="text-secondary">{terme}</dt>
-      <dd className="ml-auto text-right tabular-nums text-primary" data-lecture={cleL}>
+      <dd className={cn("tabular-nums text-primary", formule ? "min-w-0 pl-3" : "ml-auto text-right")} data-lecture={cleL}>
         {typeof valeur === "string" ? frenchTypography(valeur) : valeur}
       </dd>
     </div>
@@ -348,7 +391,7 @@ export function PlanComplexePanel({ scene, className }: { scene: Scene3DDescript
             le plan ne peut pas montrer sans un nombre. */}
         {lit("module-c") && ligneLecture("module-c", <MathText>{coefficientMode ? "Module du coefficient, $|c|$" : "Module de $a$, $|a|$"}</MathText>, math(grand(M.texRadical(M.moduleDe(t.a)))))}
         {lit("distances") &&
-          ligneLecture("distances", !coefficientMode ? "Distances au centre" : etat.centre === "O" ? "Distances à l’origine" : "Distances au centre A", <MathText>{`$${nomCentre} M = ${grand(OM)}$ et $${nomCentre} M' = ${grand(OMp)}$`}</MathText>)}
+          ligneLecture("distances", !coefficientMode ? "Distances au centre" : etat.centre === "O" ? "Distances à l’origine" : "Distances au centre A", <MathText>{`$${nomCentre} M = ${grand(OM)}$ et $${nomCentre} M' = ${grand(OMp)}$`}</MathText>, true)}
         {lit("rapport") && ligneLecture("rapport", <MathText>{`Rapport des distances, $\\dfrac{${nomCentre} M'}{${nomCentre} M}$`}</MathText>, rap ? math(grand(M.texRadical(rap))) : TIRET)}
         {lit("argument-c") && ligneLecture("argument-c", <MathText>{`Argument ${coefficientMode ? "du coefficient" : "de $a$"}, $\\arg(${lettre})$`}</MathText>, argC === null ? TIRET : math(grand(M.texAngle(argC))))}
         {lit("angle") && ligneLecture("angle", <DeuxLignes titre="Angle de la transformation" sous="l’écart des deux directions" />, k === null ? TIRET : math(grand(M.texAngle(k))))}
@@ -357,26 +400,29 @@ export function PlanComplexePanel({ scene, className }: { scene: Scene3DDescript
           ligneLecture(
             "argument-image",
             <DeuxLignes titre="Argument de l’image" sous="lu depuis l’axe réel" />,
-            balaie ? (
-              TIRET
-            ) : (
-              <span className="flex flex-col items-end gap-1.5">
+            <span className="grid justify-items-end">
+              {/* pendant le balayage, les deux valeurs restent EN PLACE, invisibles et muettes, sous
+                  le tiret : la ligne garde sa hauteur, et le curseur ne glisse plus sous le doigt au
+                  moment du contact (vague 2, ergonomie) — `data-reserve` : la porte ne les lit pas */}
+              {balaie && <span className="self-center [grid-area:1/1]">{TIRET}</span>}
+              <span className={cn("flex flex-col items-end gap-1.5 [grid-area:1/1]", balaie && "invisible")} aria-hidden={balaie || undefined} data-reserve={balaie ? "" : undefined}>
                 <span data-arg="image">{math(`\\arg(z')=${grand(M.texAngle(argZp!))}`)}</span>
                 <span className="text-secondary" data-arg="point">
                   {math(`\\arg(z)=${grand(M.texAngle(argZ!))}`)}
                 </span>
               </span>
-            )
+            </span>
           )}
         {lit("point-fixe") && ligneLecture("point-fixe", "Point fixe : le centre, qui ne bouge pas", math(M.texComplexe(t.omega)))}
         {lit("ecriture") &&
           ligneLecture(
             "ecriture",
             "Écriture complexe",
-            <span className="flex flex-col items-end gap-1">
+            <span className="flex flex-col items-start gap-1">
               <span data-forme="factorisee">{math(M.texFactorisee(t))}</span>
               {etape.controles.includes("enonce") && <span data-forme="developpee">{math(M.texDeveloppee(t))}</span>}
-            </span>
+            </span>,
+            true
           )}
         {lit("rapport-inverse") && ligneLecture("rapport-inverse", <MathText>{"$\\dfrac{z'-\\omega}{z-\\omega}$, avec $\\omega$ l’affixe du centre"}</MathText>, quo ? math(M.texComplexe(quo)) : TIRET)}
       </dl>
@@ -387,10 +433,13 @@ export function PlanComplexePanel({ scene, className }: { scene: Scene3DDescript
       <legend className="mb-1 text-body-sm text-secondary">
         <MathText>{legende}</MathText>
       </legend>
-      <div className="flex flex-wrap gap-x-1">
+      {/* des cibles de 48 px bord à bord : « ½ », « i » et « 2 » étaient à un doigt l'un de l'autre */}
+      <div className="flex flex-wrap gap-x-2 gap-y-1">
         {valeurs.map((x) => (
           <label key={x} className={LIGNE_RADIO}>
-            <input type="radio" name={`${idTitre}-${id}`} value={x} checked={courant === x} onChange={() => choisir(x)} className="accent-figure-ink-soft" />
+            {/* le NOM dit en clair : un nom qui ne passe que par le MathML de KaTeX est lu vide
+                par plusieurs couples lecteur d'écran / navigateur (vague 2, ergonomie) */}
+            <input type="radio" name={`${idTitre}-${id}`} value={x} checked={courant === x} onChange={() => choisir(x)} aria-label={enClair(texte(x).replace(/\$/g, ""))} className="accent-figure-ink-soft" />
             <span className="tabular-nums">
               <MathText>{texte(x)}</MathText>
             </span>
@@ -402,7 +451,7 @@ export function PlanComplexePanel({ scene, className }: { scene: Scene3DDescript
 
   const lacher = () => {
     tient.current = false;
-    setBalayage(0);
+    relacher();
   };
   const groupes: Record<string, () => React.ReactNode> = {
     enonce: () =>
@@ -415,23 +464,25 @@ export function PlanComplexePanel({ scene, className }: { scene: Scene3DDescript
     balayage: () => (
       <label key="balayage" className="flex flex-col gap-1" data-controle="balayage">
         <span className="text-body-sm text-secondary">
-          <MathText>{"Faire glisser $M$ sur son cercle — sans lâcher"}</MathText>
+          <MathText>{"Faire glisser $M$ sur son cercle — sans lâcher ; au clavier, les flèches, puis Échap"}</MathText>
         </span>
         <input
           type="range"
           min={-180}
           max={180}
-          step={1}
+          // un cran de 5 : au cran de 1, une flèche déplaçait M de moins d'un pixel — rien ne
+          // bougeait à l'écran, et il fallait vingt-cinq pressions pour voir quelque chose
+          step={5}
           value={balayage}
           onPointerDown={() => {
             tient.current = true;
           }}
-          onChange={(e) => setBalayage(parseInt(e.target.value, 10) || 0)}
+          onChange={(e) => balayer(parseInt(e.target.value, 10) || 0)}
           onKeyDown={(e) => {
             if (e.key === "Escape") lacher();
           }}
           onBlur={lacher}
-          aria-valuetext={balayage === 0 ? "M à sa place" : "M déplacé sur son cercle ; relâcher, ou Échap, le remet à sa place"}
+          aria-valuetext={valeurBalayage(balayage)}
           className={CURSEUR}
         />
       </label>
@@ -496,7 +547,9 @@ export function PlanComplexePanel({ scene, className }: { scene: Scene3DDescript
           <Etiquette refEl={refs.mp} nom="nom-mp" fond>
             {mpMontre && !fixe && (
               <span className={etat.image === "donnee" ? undefined : "text-figure-accent"}>
-                {balaie ? math("M'") : longue(texZp) ? <span className="flex flex-col items-center leading-tight">{math("M'")}{math(`(${texZp})`)}</span> : math(`M'(${texZp})`)}
+                {/* sur deux lignes, le nom est déjà séparé de l'affixe : pas de parenthèses autour de
+                    « (√3 + 1) + (1 − √3)i », qui en porte déjà (vague 2, dessin) */}
+                {balaie ? math("M'") : longue(texZp) ? <span className="flex flex-col items-center leading-tight">{math("M'")}{math(texZp)}</span> : math(`M'(${texZp})`)}
               </span>
             )}
           </Etiquette>
@@ -545,7 +598,6 @@ export function PlanComplexePanel({ scene, className }: { scene: Scene3DDescript
                 {frenchTypography(
                   "Cinq positions pour le point, sept coefficients : c’est ce qui permet d’écrire chaque nombre exactement — une racine, une fraction de π, jamais un décimal. Entre deux positions, le point ne se pose pas. Le plan montre la règle sur des exemples ; il ne la démontre pas, et la démonstration vient juste après, dans le cours." +
                     ((etape.lectures ?? []).includes("angle") ? " L’arc de l’angle est dessiné à la même taille quel que soit l’éloignement du point : sans cela, tout près, il serait invisible." : "") +
-                    (etat.reference === "depart" ? " Le petit cercle en tirets marque où arrivait le point au réglage de départ de l’étape." : "") +
                     " Le dessin est exact au pixel près, les nombres sont exacts tout court."
                 )}
               </EncadreRepli>
