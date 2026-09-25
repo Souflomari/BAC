@@ -464,7 +464,11 @@ async function etiquettesLisibles(ou, q = panneau) {
     const chroma = (r, g2, b) => { const m = (r + g2 + b) / 3; return [r - m, g2 - m, b - m]; };
     const cf = chroma(f[0], f[1], f[2]);
     const ca = chroma(ac[0], ac[1], ac[2]).map((x, i) => x - cf[i]), na = Math.hypot(...ca);
-    const estAccent = (r, g2, b) => { const c = chroma(r, g2, b).map((x, i) => x - cf[i]), nc = Math.hypot(...c); return nc >= 0.8 * na && (c[0] * ca[0] + c[1] * ca[1] + c[2] * ca[2]) / (nc * na) > 0.85; };
+    // un pixel au moins À MOITIÉ d'accent : un trait d'accent de 1,5 px posé à cheval sur deux
+    // rangées n'en couvre que 75 % chacune, et le seuil de 80 % (celui de l'accent FORT) le
+    // rendait invisible — « 20 oscillations » posé sur son crochet restait vert (campagne de
+    // sabotages du produit, 2026-09-25 : le seul manqué des trente)
+    const estAccent = (r, g2, b) => { const c = chroma(r, g2, b).map((x, i) => x - cf[i]), nc = Math.hypot(...c); return nc >= 0.5 * na && (c[0] * ca[0] + c[1] * ca[1] + c[2] * ca[2]) / (nc * na) > 0.85; };
     for (const a of textes) {
       const x0 = Math.max(0, Math.floor(a.x0 * dpr)), y0 = Math.max(0, Math.floor(a.y0 * dpr));
       const w = Math.min(cv.width - x0, Math.ceil((a.x1 - a.x0) * dpr)), h = Math.min(cv.height - y0, Math.ceil((a.y1 - a.y0) * dpr));

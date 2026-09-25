@@ -4,7 +4,7 @@
   "type": "manipulable",
   "scene": "banc-electrolyse",
   "title_fr": "Le banc d'électrolyse : la tension décide du sens, la charge de la quantité",
-  "caption_fr": "La cellule des chapitres 1 à 4, sur la paillasse : une lame de cuivre (B), une lame de zinc (A), un pont salin, un générateur dont la borne + est à gauche, un rhéostat qui tient le courant, un ampèremètre, un chronomètre et deux balances. Échange les fils, change la durée, le courant, la tension — et pèse. À chaque étape, tu paries d'abord. Tous les nombres sont ceux de la leçon (0,200 A pendant 1 h 30 déposent 0,366 g de zinc) ; la disposition — la borne + à gauche, les électrodes nommées (A) et (B) — et la formule « courant d'intensité constante » sont celles des sujets.",
+  "caption_fr": "La cellule des chapitres 1 à 4 sur sa paillasse : générateur, rhéostat, ampèremètre, chronomètre et deux balances. Échange les fils, change la durée, le courant, la tension — et pèse ; à chaque étape, tu paries d'abord. Les nombres sont ceux de la leçon, la disposition celle des sujets.",
   "boundary": "Cadre (chimie → électrolyse, 2ème Bac PC/SM) : le sens forcé imposé par un générateur, la polarité des électrodes, la quantité d'électricité $Q = I\\cdot\\Delta t$ et la constante de Faraday ; la force électromotrice est MESURÉE, jamais calculée. Hors scène : les potentiels standards et Nernst, la surtension, toute loi reliant le courant à la tension, l'énergie et la puissance, la thermodynamique, le rendement, les gaz et le volume molaire (chapitre 6), les applications industrielles et les autres métaux, les concentrations, le pH, les graphes, les incertitudes chiffrées ; la scène n'est pas un TP.",
   "fit_caveat": "1. L'épaisseur du dépôt est très exagérée, d'un facteur constant et déclaré : un dépôt réel de cette masse fait quelques dizaines de micromètres. Le facteur est le même aux 27 états et aux deux lames, et un témoin le montre : deux fois plus de masse, deux fois plus épais. Le nombre est sur la balance. 2. On pèse la lame avant et après ; le banc affiche la différence au fil de la manipulation, comme si la pesée était continue — une commodité de lecture. 3. Un rhéostat maintient le courant : l'ampèremètre affiche la même valeur à toutes les tensions. Sans lui, monter la tension ferait monter le courant, et le dépôt avec ; le banc ne montre pas ce cas, parce que la relation qui le chiffrerait n'est pas au programme de ce chapitre. 4. Deux récipients reliés par un pont salin, le montage de ce chapitre ; les sujets dessinent le plus souvent un tube en U, deux électrodes dans la même solution — le dessin change, pas le raisonnement.",
   "fallback_note": "Sans JavaScript et à l'impression, le panneau disparaît — et rien ne le remplace. Les trois figures de cette leçon (la cellule, le seuil de tension, l'électrolyse de l'eau) montrent un montage et un mécanisme ; aucune ne porte une masse, une durée ou une intensité, donc aucune ne montre ce que ce banc enseigne : que le dépôt suit le produit $I\\,\\Delta t$, que la tension n'y entre pas, et qu'une pesée suffit à mesurer la constante de Faraday. L'élève sans JavaScript perd ces trois faits et s'en remet aux paragraphes qui suivent le banc, qui les écrivent en toutes lettres. C'est un argument pour une figure de repli (question au propriétaire, spec §13.6), pas contre la scène.",
@@ -26,7 +26,7 @@
     {
       "id": "on-echange-les-fils",
       "titre": "On échange les deux fils",
-      "consigne": "La cellule des quatre premiers chapitres, sur la paillasse. À gauche, la lame de **cuivre (B)** dans sa solution ; à droite, la lame de **zinc (A)** dans la sienne ; entre les deux, le pont salin. En haut, le générateur : sa borne **plus** est à **gauche**, sa borne **moins** à **droite** — lis-les sur le dessin, elles ne sont pas toujours du même côté. Il est réglé sur $6{,}0$ volts, bien au-dessus de la force électromotrice propre de la cellule — environ $1{,}1$ volt, le chapitre 4 vient de l'établir. Sur le fil de gauche, un **rhéostat** : c'est lui qui maintient le courant à $0{,}200$ ampère, quoi qu'il arrive. Dans ce branchement-là, tu le sais depuis le chapitre 2 : le zinc se dépose, le cuivre se dissout. On va maintenant **échanger les deux fils** — la borne plus sur le **zinc (A)** — sans rien changer d'autre.",
+      "consigne": "La cellule des quatre premiers chapitres, sur la paillasse. À gauche, la lame de **cuivre (B)** dans sa solution ; à droite, la lame de **zinc (A)** dans la sienne ; entre les deux, le pont salin. En haut, le générateur : sa borne **plus** est à **gauche**, sa borne **moins** à **droite** — lis-les sur le dessin, elles ne sont pas toujours du même côté. Il est réglé sur $6{,}0$ volts, bien au-dessus de la force électromotrice propre de la cellule — environ $1{,}1$ volt, le chapitre 4 vient de l'établir. Sur le fil de gauche, un **rhéostat** maintient le courant à $0{,}200$ ampère, quoi qu'il arrive. Dans ce branchement-là, tu le sais depuis le chapitre 2 : le zinc se dépose, le cuivre se dissout. On va maintenant **échanger les deux fils** — la borne plus sur le **zinc (A)** — sans rien changer d'autre.",
       "pari": {
         "question": "Les deux fils échangés, la lame de zinc (A)…",
         "revele_apres_course": 1,
@@ -67,7 +67,6 @@
       "lectures": [
         "fem",
         "sens",
-        "intensite",
         "duree"
       ],
       "etat": {
@@ -92,7 +91,7 @@
             "id": "double",
             "texte": "**$0{,}366$ g** — deux fois plus",
             "juste": true,
-            "retour": "Oui. Et voici **pourquoi**, parce que c'est le mécanisme qu'il faut tenir : le rhéostat **maintient le courant**, donc il passe autant d'électricité dans la deuxième seconde que dans la première, et autant dans la trois-millième. **Chaque seconde apporte exactement autant que la précédente** — regarde la balance monter pendant la manipulation, elle monte à vitesse constante. Deux fois plus de temps, deux fois plus de zinc. Parcours les trois durées sans toucher à rien d'autre : $0{,}122$ · $0{,}183$ · $0{,}366$ gramme."
+            "retour": "Oui. Et voici **pourquoi**, parce que c'est le mécanisme qu'il faut tenir : le rhéostat **maintient le courant**, donc il passe autant d'électricité dans la deuxième seconde que dans la première, et autant dans la trois-millième. **Chaque seconde apporte exactement autant que la précédente** — regarde la balance monter pendant la manipulation, elle monte à vitesse constante. Deux fois plus de temps, deux fois plus de zinc."
           },
           {
             "id": "inchangee",
@@ -124,7 +123,6 @@
       "lectures": [
         "fem",
         "sens",
-        "intensite",
         "duree",
         "masse-zinc"
       ],
@@ -175,7 +173,7 @@
           }
         ]
       },
-      "suite": "Cherche les deux paires de réglages qui déposent **exactement** la même masse. $0{,}100$ A pendant 1 h 30 et $0{,}200$ A pendant 45 min : $0{,}183$ g tous les deux, $540$ C tous les deux. $0{,}200$ A pendant 1 h 30 et $0{,}400$ A pendant 45 min : $0{,}366$ g, $1\\,080$ C. Ce qui décide, c'est le **produit**.",
+      "suite": "Avec les deux contrôles, cherche les deux paires de réglages qui déposent **exactement** la même masse, et compare leurs charges. Ce qui décide, c'est le **produit**.",
       "controles": [
         "courant",
         "duree"
@@ -183,7 +181,6 @@
       "lectures": [
         "fem",
         "sens",
-        "intensite",
         "duree",
         "masse-zinc",
         "charge"
@@ -243,11 +240,8 @@
       "lectures": [
         "fem",
         "sens",
-        "intensite",
         "duree",
         "charge",
-        "masse-zinc",
-        "masse-cuivre",
         "quantite-electrons"
       ],
       "etat": {
@@ -269,7 +263,7 @@
             "id": "rien-ne-bouge",
             "texte": "**aucun des trois ne bouge d'un chiffre**",
             "juste": true,
-            "retour": "Oui — et c'est la phrase à emporter de tout ce chapitre. **La tension décide SI la transformation forcée a lieu, et dans quel sens ; à courant maintenu constant, c'est la charge $Q = I\\,\\Delta t$ qui décide de COMBIEN.** Regarde les trois lectures : $2\\,160$ C, $0{,}732$ g, et le quotient $$F = \\frac{Q}{n(e^-)} = \\frac{2\\,160}{2{,}239\\times10^{-2}} \\approx 9{,}65\\times10^{4}\\ \\text{C·mol}^{-1}$$ Ce nombre porte un nom : c'est la **constante de Faraday**, la charge que porte **une mole d'électrons**. Tu viens de la **mesurer** — avec une balance, un chronomètre, un ampèremètre et une demi-équation, et rien d'autre. Elle ne dépend de rien : ni du métal, ni du bain, ni du réglage, ni de la tension. C'est pour cela qu'on peut la tabuler une fois pour toutes, et c'est pour cela qu'elle vaut la même chose dans ton énoncé d'examen et dans ce bécher."
+            "retour": "Oui — et c'est la phrase à emporter de tout ce chapitre. **La tension décide SI la transformation forcée a lieu, et dans quel sens ; à courant maintenu constant, c'est la charge $Q = I\\,\\Delta t$ qui décide de COMBIEN.** Regarde les trois nombres : $2\\,160$ C, $0{,}732$ g sur la balance, et, dans les lectures, le quotient $Q/n(e^-) \\approx 9{,}65\\times10^{4}$ C·mol⁻¹. Ce nombre porte un nom : c'est la **constante de Faraday**, la charge que porte **une mole d'électrons**. Tu viens de la **mesurer** — avec une balance, un chronomètre, un ampèremètre et une demi-équation, et rien d'autre. Elle ne dépend de rien : ni du métal, ni du bain, ni du réglage, ni de la tension. C'est pour cela qu'on peut la tabuler une fois pour toutes, et c'est pour cela qu'elle vaut la même chose dans ton énoncé d'examen et dans ce bécher."
           },
           {
             "id": "tout-double",
@@ -302,14 +296,10 @@
         "duree"
       ],
       "lectures": [
-        "tension",
         "fem",
         "sens",
-        "intensite",
         "duree",
         "charge",
-        "masse-zinc",
-        "masse-cuivre",
         "quantite-electrons",
         "faraday-mesure"
       ],

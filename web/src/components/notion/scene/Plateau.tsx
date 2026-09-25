@@ -256,6 +256,14 @@ export function disposer(
      * recouvrir un bout de tracé que nommer autre chose.
      */
     portee?: number;
+    /**
+     * Une seconde étiquette EMPILÉE au-dessus de celle-ci, dans la même colonne :
+     * les deux sont placées comme un seul bloc, centrées l'une sur l'autre (banc
+     * d'électrolyse, vague 2 : le rôle « anode » placé seul, à côté de sa lame,
+     * n'avait nulle part où aller et coupait la paroi du bécher). Invisible, elle
+     * est cachée et le bloc se réduit à l'étiquette du dessous.
+     */
+    chapeau?: { el: HTMLSpanElement | null; visible: boolean };
   }[],
   segments: readonly (readonly [Point2, Point2])[],
   cadre: { largeur: number; hauteur: number },
@@ -266,7 +274,13 @@ export function disposer(
    */
   obstacles: readonly Boite[] = []
 ) {
-  const tailles = etiquettes.map(({ el, p }) => (el && p.visible ? { w: el.offsetWidth, h: el.offsetHeight } : null));
+  const ECART_CHAPEAU = 2;
+  const tailles = etiquettes.map(({ el, p, chapeau }) => {
+    if (!el || !p.visible) return null;
+    const c = chapeau?.el && chapeau.visible ? { w: chapeau.el.offsetWidth, h: chapeau.el.offsetHeight } : null;
+    const w = el.offsetWidth, h = el.offsetHeight;
+    return c ? { w: Math.max(w, c.w), h: h + ECART_CHAPEAU + c.h, bas: h, haut: c.h } : { w, h, bas: h, haut: 0 };
+  });
   const posees: Boite[] = [...obstacles];
   const places: (Point2 | null)[] = etiquettes.map(({ p, surAncre, directions, portee }, i) => {
     const t = tailles[i];
@@ -296,14 +310,27 @@ export function disposer(
     posees.push(boite(meilleur));
     return meilleur;
   });
-  etiquettes.forEach(({ el }, i) => {
-    if (!el) return;
+  etiquettes.forEach(({ el, p, chapeau }, i) => {
     const c = places[i];
-    if (!c) {
+    const t = tailles[i];
+    // un bloc empilé s'aligne sur le bord TOURNÉ VERS son ancre (centré au-dessus d'elle, il
+    // reste centré) : la colonne colle à ce qu'elle nomme, et l'étiquette la plus étroite
+    // ne s'en écarte pas de la demi-différence des largeurs
+    const bord = (w: number) => (!c || !t || Math.abs(c.x - p.x) < 1 ? 0 : c.x > p.x ? w / 2 - t.w / 2 : t.w / 2 - w / 2);
+    if (chapeau?.el) {
+      if (c && t && t.haut > 0) {
+        // le chapeau en haut du bloc, l'étiquette en bas
+        chapeau.el.style.transform = `translate(${c.x + bord(chapeau.el.offsetWidth)}px, ${c.y - t.h / 2 + t.haut / 2}px) translate(-50%, -50%)`;
+        chapeau.el.style.visibility = "visible";
+      } else chapeau.el.style.visibility = "hidden";
+    }
+    if (!el) return;
+    if (!c || !t) {
       el.style.visibility = "hidden";
       return;
     }
-    el.style.transform = `translate(${c.x}px, ${c.y}px) translate(-50%, -50%)`;
+    const dx = t.haut > 0 ? bord(el.offsetWidth) : 0;
+    el.style.transform = `translate(${c.x + dx}px, ${c.y + t.h / 2 - t.bas / 2}px) translate(-50%, -50%)`;
     el.style.visibility = "visible";
   });
 }

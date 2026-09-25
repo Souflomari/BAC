@@ -72,6 +72,12 @@ export interface RenduElectrolyse {
 
 /** La hauteur réservée à la légende du plateau. */
 export const RESERVE_LEGENDE = 30;
+/**
+ * La hauteur (px) gardée libre au-dessus de la tête de chaque lame pour sa colonne
+ * d'étiquettes — le nom de la lame et, empilé, son rôle : 18 + 2 + 22 px mesurés au
+ * rendu, ×1,125 au grand texte, plus les marges du placeur (2 + 2) et son écart à l'ancre (3).
+ */
+export const COLONNE_NOMS = 60;
 /** La plus grande déviation de l'aiguille : 0,500 A au bout du cadran, à 55°. */
 export const DEVIATION_PLEINE_ECHELLE = 55;
 /** L'intensité du bout du cadran (A). */
@@ -147,21 +153,32 @@ export function creerRenduElectrolyse(canvas: HTMLCanvasElement, hote: HTMLEleme
     const lu = M.lire(e.iMa, e.dureeS, e.cablage, e.p);
 
     // ── la géométrie : ne dépend QUE de la taille du dessin ──
+    // (vague 2) au téléphone, entre le fil horizontal et la tête des lames, il y avait 83 px
+    // pour l'instrument (36) ET la colonne nom + rôle de la lame (46 ; 51 au grand texte) :
+    // rien n'y tenait, et le placeur rejetait la colonne à 31 px de sa lame. Les béchers
+    // descendent (0,54 → 0,56 H), les lames sortent moins du bain (0,05 → 0,03 H), la
+    // descente sous le générateur se resserre (0,06 → 0,05 H), et les instruments ne
+    // restent à mi-hauteur que si la colonne des noms garde sa place (COLONNE_NOMS).
     const xL = 0.25 * W, xR = 0.75 * W, bw = 0.3 * W;
-    const gx = W / 2, gy = Math.max(RESERVE_LEGENDE + 18, Math.round(0.11 * H));
+    // la légende, puis les signes + et − posés 15 px au-dessus des bornes : au grand texte
+    // (×1,125), à +18 le « + » passait sous la légende
+    const gx = W / 2, gy = Math.max(RESERVE_LEGENDE + 22, Math.round(0.11 * H));
     const r = Math.max(13, Math.min(20, 0.04 * W));
     const xPlus = gx - r - 16, xMoins = gx + r + 16;
-    const y1 = gy + r + 8, y2 = y1 + Math.max(16, Math.min(30, 0.06 * H));
-    const yB0 = 0.54 * H, yB1 = 0.84 * H;
+    const y1 = gy + r + 8, y2 = y1 + Math.max(16, Math.min(30, 0.05 * H));
+    const yB0 = 0.56 * H, yB1 = 0.84 * H;
     const yLiq = yB0 + 0.14 * (yB1 - yB0);
-    const yL0 = yB0 - 0.05 * H, yL1 = yB1 - 0.1 * (yB1 - yB0);
+    const yL0 = yB0 - 0.03 * H, yL1 = yB1 - 0.1 * (yB1 - yB0);
     const yMi = (yLiq + yL1) / 2;
     const lw = Math.max(14, Math.min(24, 0.034 * W));
     // px par GRAMME, constant : il ne dépend que de la largeur (aucun réglage n'y entre)
     pxParG = 0.016 * W;
     const yBal0 = yB1 + 6, yBal1 = Math.min(H - 6, yBal0 + Math.max(22, Math.min(34, 0.09 * H)));
-    const yInstr = (y2 + yL0) / 2;
     const rA = Math.max(16, Math.min(24, 0.05 * W, (yL0 - y2) / 2 - 6));
+    const hRh = Math.min(28, (yL0 - y2) * 0.45);
+    // la demi-hauteur de ce que les instruments occupent (le cadran, ou le rhéostat et sa flèche)
+    const dI = Math.max(rA + 2, hRh / 2 + 4);
+    const yInstr = Math.max(y2 + dI + 3, Math.min((y2 + yL0) / 2, yL0 - COLONNE_NOMS - dI));
 
     // ── le générateur : un cercle, le symbole de la pile, ses deux bornes ──
     c.fillStyle = surface;
@@ -224,7 +241,7 @@ export function creerRenduElectrolyse(canvas: HTMLCanvasElement, hote: HTMLEleme
     rep["coin-d"] = P(xR, y2);
 
     // le rhéostat : une résistance traversée d'une flèche (la valeur se RÈGLE)
-    const hRh = Math.min(28, (yL0 - y2) * 0.45), wRh = 10;
+    const wRh = 10;
     c.fillStyle = surface;
     c.strokeStyle = encre;
     c.lineWidth = 1.5;
@@ -331,7 +348,13 @@ export function creerRenduElectrolyse(canvas: HTMLCanvasElement, hote: HTMLEleme
 
     // ── les deux lames : ce que la course dépose, ce qu'elle dissout ──
     const epaisseur = (m: number) => Math.abs(m) * pxParG;
+    // LE TRAIT porte le signal, le REMPLISSAGE la quantité (vague 2) : un dépôt plein à
+    // l'accent était, en thème sombre, le seul bloc qui brillait ; et au plus petit
+    // réglage (0,061 g : 0,45 px) la lame qui gagne ne portait AUCUNE marque, quand
+    // celle qui perd gardait son contour en tirets de 1,5 px. Les deux lames portent
+    // désormais un trait de même poids — plein pour le gain, en tirets pour la perte.
     const teinteDepot = e.accentDepot ? accent : voile(jetons.encre, 0.62);
+    const fondDepot = e.accentDepot ? voile(jetons.accent, 0.55) : voile(jetons.encre, 0.36);
     const teinteLame = voile(jetons.encreDouce, 0.3);
     for (const [xc, m, nom] of [[xL, lu.masseCuivre, "cu"], [xR, lu.masseZinc, "zn"]] as const) {
       const t = epaisseur(m);
@@ -352,10 +375,24 @@ export function creerRenduElectrolyse(canvas: HTMLCanvasElement, hote: HTMLEleme
         c.fill();
         c.stroke();
         if (t > 0) {
-          c.fillStyle = teinteDepot;
+          c.fillStyle = fondDepot;
           c.fillRect(g0 - t, yLiq + 1, t, yL1 - yLiq - 1 + t);
           c.fillRect(d0, yLiq + 1, t, yL1 - yLiq - 1 + t);
           c.fillRect(g0, yL1, lw, t);
+          // le bord EXTÉRIEUR du dépôt, tracé EN DEDANS : le bord peint reste à g0 − t
+          // (l'épaisseur lue ne change pas) ; sous 1,5 px, c'est le contour de la lame
+          // qui passe à l'accent — le pendant du contour en tirets de l'autre lame
+          const m2 = 0.75;
+          c.strokeStyle = teinteDepot;
+          c.lineWidth = 1.5;
+          c.lineCap = "butt";
+          c.lineJoin = "miter";
+          c.beginPath();
+          c.moveTo(g0 - t + m2, yLiq + 1);
+          c.lineTo(g0 - t + m2, yL1 + t - m2);
+          c.lineTo(d0 + t - m2, yL1 + t - m2);
+          c.lineTo(d0 + t - m2, yLiq + 1);
+          c.stroke();
         }
       } else {
         // la lame PERD : sa partie immergée s'amincit de t sur chaque face ;
@@ -402,8 +439,10 @@ export function creerRenduElectrolyse(canvas: HTMLCanvasElement, hote: HTMLEleme
     }
 
     // ── le témoin d'épaisseur : « 1 g », au même facteur que les dépôts ──
+    // À LA HAUTEUR DES DÉPÔTS, entre les deux béchers (vague 2) : sous les balances, il
+    // fallait traverser 130 px et changer de rangée pour le comparer à ce qu'il mesure.
     if (e.temoin) {
-      const yt = (yBal0 + yBal1) / 2, ht = 14, xt = W / 2 - 18;
+      const yt = yMi, ht = 14, xt = W / 2 - 18;
       c.fillStyle = voile(jetons.encre, 0.62);
       c.fillRect(xt, yt - ht / 2, pxParG, ht);
       rep["temoin-g"] = P(xt, yt);

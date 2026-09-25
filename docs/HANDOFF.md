@@ -16181,6 +16181,25 @@ comme au §11.206).
 le conflit $U_0$ / $P_m$ / $A$, dont la réconciliation est écrite et réversible) ;
 $k$ et $P_m$ affichés ; quatre sous-graduations au lieu de cinq.
 
+**LA CAMPAGNE DE SABOTAGES DU PRODUIT (ADR 0038), faite le 2026-09-25** dans un arbre à
+part (`eafddc9a`, trente sabotages, chacun nommant la famille qui DOIT rougir) : **28 sur
+30 attrapés du premier coup**, la porte verte avant et après (140 mesures, 26 familles),
+l'arbre identique à son cliché. Les deux autres ne se ressemblent pas :
+- **`cote-sur-le-crochet` MANQUÉ — la porte était aveugle.** « 20 oscillations » reposé
+  sur son crochet, dans l'écran : sa pastille opaque cache le crochet, qui est À L'ACCENT.
+  `etiquettes` mesurait bien « une pastille ne cache pas la réponse », mais ne comptait
+  que l'accent FORT (80 % de la teinte) ; un trait de 1,5 px posé à cheval sur deux rangées
+  n'en couvre que 75 % chacune — il n'existait pas. Le seuil est maintenant la MOITIÉ de
+  la teinte : VERT sur le produit propre (140/26, aucune fausse alarme), puis ROUGE rejoué
+  sur le sabotage (196 pixels d'accent cachés, trois mesures).
+- **`sans-reference` n'était pas un essai** : le build échouait (`false && ref && …` fait
+  perdre à TypeScript le rétrécissement de `ref`) — un sabotage qui n'atteint pas la
+  porte (ADR 0038, le verdict AMBIGU). Réécrit en une condition jamais vraie qui garde le
+  rétrécissement, rejoué : ROUGE par `[etapes]`, la famille visée.
+
+**Soit 30 sur 30**, la porte corrigée. L'arbre à part est retiré (son lien `node_modules`
+défait d'abord, pour que la suppression ne suive pas le lien).
+
 ## §11.208 — Le banc d'électrolyse : deux boutons à deux rôles, une colonne de tension MUETTE, et une constante qu'une balance mesure
 
 **LA SCÈNE.** Le treizième manipulable de première partie, le septième PLAN :
@@ -16240,7 +16259,51 @@ course par son texte « Lancer… » ; le banc dit « Fermer le circuit ». Le l
 désormais `button[data-lancer]` (les sept panneaux à course le portent), le texte en
 repli — et il reste PARESSEUX : le bouton n'existe qu'après le pari.
 
-**RESTENT** : la campagne de sabotages du PRODUIT (ADR 0038) ; la vague 2 (dessin,
-calme, ergonomie) sur les captures ; au propriétaire, les seize questions de la spec
-§13 tranchées par défaut (DÉCISIONS §28), dont la redistribution du chapitre du seuil
-et la figure de repli sans JavaScript.
+**LA VAGUE 2 (même jour) — trois critiques sur les captures, un même défaut vu trois
+fois.** Le calme, le dessin et l'ergonomie ont vu, chacun de son côté, le « − » du
+générateur exilé à 34 px de sa borne au téléphone, collé à la légende : la consigne de
+S1 dit « lis-les sur le dessin », et la borne de droite n'avait plus de signe. Le dessin a
+vu les pastilles « anode » / « cathode » découper la paroi des béchers, et la lame qui
+gagne SANS marque au plus petit réglage (0,061 g : un demi-pixel) quand celle qui perd
+garde un contour de 1,5 px. Appliqué :
+- **les signes ne quittent plus leur borne** (portée 0), la légende est courte
+  (« Accéléré : 1 s pour 15 min ») ;
+- **le rôle est EMPILÉ sur le nom de sa lame**, dans une colonne au-dessus du bécher
+  (spec §6.2) — une extension de `disposer` : une étiquette peut porter un « chapeau »,
+  les deux placées comme un bloc et alignées sur le bord tourné vers ce qu'elles nomment.
+  Pour que la colonne tienne au téléphone ET au grand texte, la paillasse a été
+  re-budgétée (béchers à 0,56 H, lames à 0,03 H au-dessus du bord, descente à 0,05 H,
+  instruments à mi-hauteur SEULEMENT s'il reste 60 px à la colonne) : trois builds et
+  trois mesures des boîtes avant qu'elle tienne — la première version posait le nom à
+  31 px de sa lame, faute d'UN pixel ;
+- **le dépôt a un trait plein à l'accent**, tracé en dedans (l'épaisseur peinte ne
+  change pas), et un remplissage allégé — il ne brille plus en thème sombre ;
+- **le témoin « 1 g » est à la hauteur des dépôts** ;
+- **les lectures ne répètent plus la paillasse** : S5 passe de 10 lignes à 6 ; la liste
+  ne change plus de côté qu'à S5 ; les réglages suivent l'ordre de l'étape (la tension
+  d'abord, à S5) ; les deux fractions sont en `\tfrac` ;
+- **les nombres dits trois fois sont dits une fois** (S2, S3, S5), la carte fermée tient
+  en trois phrases, et **la lecture de l'ampèremètre n'existe que circuit fermé** (à S1,
+  « 0,200 A » s'affichait à côté d'un cadran sans aiguille — vu en relisant la retouche).
+
+**LA PORTE, et ce qu'elle ne voyait pas.** `etiquettes` ne comptait l'encre sous une
+étiquette que pour celles SANS fond : une pastille posée sur une paroi la cachait sans
+qu'aucune mesure le dise — la chose cherchée sous une seule de ses formes (ADR 0036). Et
+« ne rien chevaucher » n'était pas « être près de ce qu'on nomme » : une porte exacte sur
+une question plus étroite que son nom (ADR 0033). Trois ajouts : l'encre sous TOUTE
+étiquette ; `etiquettes-pres` (chaque étiquette à moins de 12 à 20 px de ce qu'elle
+nomme, le rôle EMPILÉ sur son nom) ; au plus petit réglage, les deux lames marquées du
+même poids (`lame-et-balance`) ; et un passage au grand texte (×1,125) au téléphone. Les
+nombres que la liste ne porte plus se lisent sur les étiquettes de la paillasse, et
+`etapes` vérifie qu'aucune lecture ne revient répéter le dessin. **Essai sur le VRAI
+défaut** : la porte neuve contre le build d'avant — ROUGE, 36 manquements, tous dans les
+familles neuves (pastilles sur 1 012 et 1 034 pixels d'encre, le « − » à 29 px, un trait
+de 1,0 px). Puis, sur le produit retouché, **VERTE deux fois (170 mesures, 32
+familles)**, essai rouge 31/31, `scene-modulation` VERTE sur le même build (140/26 :
+`disposer` est commun), `scene-ergonomie` VERTE sur les 13 scènes. Quatre sabotages
+neufs pour la campagne (33 en tout).
+
+**RESTENT** : la campagne de sabotages du PRODUIT (ADR 0038 ; 33 sabotages prêts, ancres
+vérifiées) ; au propriétaire, les seize questions de la spec §13 tranchées par défaut
+(DÉCISIONS §28), dont la redistribution du chapitre du seuil et la figure de repli sans
+JavaScript, et ce que la vague 2 a demandé sans l'obtenir (§28, points 22 à 29).

@@ -1553,3 +1553,47 @@ ici, réversible.
     marqueur `data-lancer` (les six panneaux à course le portent), son texte en repli.
 21. **Le « A » de l'ampèremètre est un symbole TRACÉ**, pas une étiquette : une lettre
     de 16 px de haut ne tenait pas dans un cadran de 16 px de rayon sans toucher son bord.
+
+**LA VAGUE 2 — trois critiques sur les captures (calme, dessin, ergonomie).** Le
+détail de ce qui est appliqué est au HANDOFF §11.208 : le « − » du générateur,
+exilé à 34 px de sa borne au téléphone, rendu à sa borne ; le rôle de chaque lame
+EMPILÉ sur son nom au-dessus du bécher (sa pastille coupait la paroi) ; le dépôt
+bordé d'un trait de même poids que le contour en tirets de la lame qui perd ; le
+témoin « 1 g » monté à la hauteur des dépôts ; les lectures qui répétaient la
+paillasse retirées ; les nombres dits trois fois dits une fois ; les contrôles dans
+l'ordre de l'étape ; la légende de la carte fermée ramenée à trois phrases.
+
+**CE QUE LA VAGUE 2 A DEMANDÉ ET N'A PAS OBTENU, et pourquoi :**
+
+22. **Une seule place pour les lectures, à toutes les étapes** (calme, ergonomie :
+    elles changeaient de côté entre S2 et S3) : À MOITIÉ. Le seuil était « plus d'un
+    groupe de réglages », ce qui faisait basculer la liste dès S3 ; il est
+    maintenant « plus de deux » — la liste ne bascule plus qu'à S5, l'étape libre,
+    comme aux bancs de diffraction et de modulation (§27, point 19). À S5, les deux
+    nombres qui ne doivent pas bouger ($Q$ et le quotient) sont au-dessus du réglage
+    de la tension, qui vient maintenant EN PREMIER. **Au propriétaire**, pour les
+    quatre bancs à étape libre à la fois, si la régularité l'emporte.
+23. **« Lecture ci-contre » dans la consigne de S1** (calme : la f.é.m. est dite dans
+    la consigne ET dans les lectures) : non — avant le pari, les lectures n'existent
+    pas ; la consigne est le seul endroit où l'élève lit $E \approx 1{,}1$ V au moment
+    de parier. La phrase du rhéostat, elle, est raccourcie (le nombre est sur
+    l'ampèremètre).
+24. **Le verdict dit trois fois** (calme : la carte cochée, le retour teinté, la ligne
+    « Bonne réponse. ») : l'appareil commun des treize scènes et des points d'arrêt.
+    **Passe commune**, pas une retouche de banc.
+25. **Le surtitre « Simulation » et « Étape 1 / 5 » écrit deux fois** (calme) : même
+    réponse, appareil commun.
+26. **Replier les choix non retenus sur leur première ligne** (calme, confiance la
+    plus basse de son rapport) : non — l'élève qui s'est trompé doit pouvoir relire
+    ce qu'il a écarté, et les retours y renvoient. **Au propriétaire.**
+27. **La légende de la carte fermée, centrée sur neuf à douze lignes** (dessin,
+    ergonomie) : la légende de CE banc passe à trois phrases ; l'alignement à gauche
+    du paragraphe est une classe de `SceneOptIn`, commune aux treize scènes. **Passe
+    commune.**
+28. **Des raccourcis clavier dans l'appareil des scènes** (ergonomie : espace pour
+    lancer, flèches entre étapes) : hors d'un banc, pour les treize à la fois.
+    **Feuille de route.**
+29. **Le témoin « 1 g » haut comme la lame immergée** (dessin) : non — la version
+    peu coûteuse est prise (le témoin garde ses 14 px et monte à la hauteur des
+    dépôts, entre les deux béchers) ; une barre grise de 130 px ajoutait un objet au
+    dessin pour dire ce que 14 px disent.

@@ -20,8 +20,8 @@
  * electrons-a-contresens · fils-croises · etiquettes-electrodes ·
  * lame-et-balance · teinte-du-bain · palette · formule-graduee ·
  * fuite-inter-etapes · frontiere (une sonde par FORME, et les trois grilles de
- * nombres) · fleches-chimiques · latex · etiquettes et cadre (1 280 et 390 px)
- * · immobile · annonce · theme · console · ergonomie.
+ * nombres) · fleches-chimiques · latex · etiquettes, etiquettes-pres et cadre
+ * (1 280 et 390 px, et 390 px au grand texte) · immobile · annonce · theme · console · ergonomie.
  *
  * Ce que la porte NE mesure PAS, écrit à côté de ce qu'elle mesure (ADR 0035) :
  * la règle d'échelle en centimètres de la spec (§11.2, `echelle-constante`,
@@ -302,6 +302,42 @@ async function lameLue(nom, q = panneau) {
 }
 
 /**
+ * La MARQUE d'une lame le long de sa partie immergée : rangée par rangée, la plage
+ * d'ACCENT qui touche son bord d'origine (à ±2 px) — la part des rangées marquées, et
+ * la largeur médiane de la plage. Un trait plein marque toutes les rangées ; un contour
+ * en tirets, trois sur cinq. Née de la vague 2 : au plus petit réglage (0,061 g, moins
+ * d'un demi-pixel de dépôt), la lame qui gagne ne portait qu'un liseré d'un demi-pixel,
+ * quand celle qui perd gardait un contour de 1,5 px — et `lame-et-balance` ne regardait
+ * que le réglage le plus fort.
+ */
+async function marqueLame(nom, q = panneau) {
+  const h = await repere(`lame-${nom}-haut`, q), m = await repere(`lame-${nom}-mi`, q), t = await repere(`lame-${nom}-tete`, q);
+  if (!h || !m || !t) return null;
+  const haut = await bordsLame(h.x, h.y, q);
+  if (!haut) return null;
+  const yLiq = 2 * h.y - t.y, yFond = 2 * m.y - yLiq;
+  return q.evaluate((el, { xg, y0, y1 }) => {
+    const { cls, w, dpr } = window.__cls;
+    const acc = (X, Y) => X >= 0 && X < w && (cls[Y * w + X] === 1 || cls[Y * w + X] === 3);
+    const X0 = Math.round(xg * dpr), R = Math.round(2 * dpr);
+    let n = 0, marquees = 0;
+    const larg = [];
+    for (let Y = Math.round(y0 * dpr); Y <= Math.round(y1 * dpr); Y++) {
+      n++;
+      let a = null;
+      for (let X = X0 - R; X <= X0 + R; X++) if (acc(X, Y)) { a = X; break; }
+      if (a === null) continue;
+      marquees++;
+      let b = a;
+      while (acc(b + 1, Y)) b++;
+      larg.push((b - a + 1) / dpr);
+    }
+    larg.sort((u, v) => u - v);
+    return { part: n ? marquees / n : 0, largeur: larg.length ? larg[Math.floor(larg.length / 2)] : 0 };
+  }, { xg: haut.gExt, y0: yLiq + 3, y1: yFond - 3 });
+}
+
+/**
  * L'aiguille : les pixels d'encre ou d'accent DANS le cadran, au-dessus du
  * pivot, en deçà de la graduation — leur abscisse moyenne relative au pivot.
  */
@@ -525,21 +561,48 @@ async function flechesChimiques(ou) {
   return { n: eqs.length, demi: eqs.filter((x) => /e\^-|e\^\{-\}/.test(x)).length, fautes };
 }
 
-/** Les étiquettes : ni chevauchées, ni sous la légende, dans le cadre ; sans fond, sur du blanc. */
+/**
+ * OÙ chaque étiquette doit se tenir : à moins de `max` px (du point de référence au
+ * bord de sa boîte) de ce qu'elle NOMME, référence lue sur les repères de la porte.
+ * `rayon` retranche la demi-taille de l'objet (le cadran, le rhéostat). Né de la
+ * vague 2 : au téléphone, le « − » du générateur était à 34 px de sa borne, collé
+ * à la légende, et aucune famille ne mesurait la distance à l'objet nommé —
+ * `etiquettes` vérifiait qu'une étiquette ne chevauche rien, pas qu'elle reste
+ * près de ce qu'elle dit.
+ */
+const PRES = [
+  ["nom-plus", ["borne-plus"], 12],
+  ["nom-moins", ["borne-moins"], 12],
+  ["nom-cuivre", ["lame-cu-tete"], 12],
+  ["nom-zinc", ["lame-zn-tete"], 12],
+  ["nom-tension", ["borne-moins", "borne-plus", "gen"], 20],
+  ["nom-intensite", ["ampere-pivot"], 20, "cadran"],
+  ["nom-rheostat", ["rheostat"], 20, 14],
+  ["nom-pont", ["pont"], 12],
+  ["nom-temoin", ["temoin-d"], 10],
+];
+/** Le rôle d'une lame est EMPILÉ sur son nom : même colonne (un bord commun, celui tourné vers la lame), 4 px d'écart au plus. */
+const PILES = [["nom-role-cu", "nom-cuivre"], ["nom-role-zn", "nom-zinc"]];
+
+/** Les étiquettes : ni chevauchées, ni sous la légende, dans le cadre ; sur du blanc ; près de ce qu'elles nomment. */
 async function etiquettesLisibles(ou, q = panneau) {
-  const { textes, larg, haut, obstacles, encre } = await q.evaluate((el) => {
+  const { textes, larg, haut, obstacles, encre, reperes } = await q.evaluate((el) => {
     const cv = el.querySelector("canvas");
     const rc = cv.getBoundingClientRect();
     const boite = (e) => { const b = e.getBoundingClientRect(); return { x0: b.left - rc.left, y0: b.top - rc.top, x1: b.right - rc.left, y1: b.bottom - rc.top }; };
     const visible = (e) => getComputedStyle(e).visibility === "visible";
     const transparent = (e) => { const c = getComputedStyle(e).backgroundColor; return c === "transparent" || /rgba\(.*,\s*0\)$/.test(c); };
-    const textes = [...el.querySelectorAll("[data-etiquette]")].filter((e) => visible(e) && (e.textContent ?? "").trim()).map((e) => ({ nom: e.getAttribute("data-etiquette"), sansFond: transparent(e), ...boite(e) }));
+    const tous = [...el.querySelectorAll("[data-etiquette]")].filter(visible);
+    const textes = tous.filter((e) => (e.textContent ?? "").trim()).map((e) => ({ nom: e.getAttribute("data-etiquette"), sansFond: transparent(e), ...boite(e) }));
+    const reperes = Object.fromEntries(tous.filter((e) => !(e.textContent ?? "").trim()).map((e) => { const b = boite(e); return [e.getAttribute("data-etiquette"), { x: (b.x0 + b.x1) / 2, y: (b.y0 + b.y1) / 2 }]; }));
     const obstacles = [...el.querySelectorAll("[data-legende]")].map((e) => ({ nom: "légende", ...boite(e) }));
     const dpr = cv.width / cv.clientWidth, g = cv.getContext("2d");
     const f = g.getImageData(cv.width - 1, cv.height - 1, 1, 1).data;
     for (const a of textes) {
-      if (!a.sansFond) continue;
-      // les lectures posées DANS leur instrument (balances, « A ») : sur son fond blanc, jamais sur son trait
+      // AVEC ou SANS fond : une étiquette ne se pose pas sur un trait. Sans fond, elle est
+      // barrée ; AVEC, sa pastille opaque CACHE le dessin — le rôle « anode » posé à
+      // cheval sur la paroi du bécher y découpait un trou de 20 px (vague 2), et la
+      // famille ne lisait que les étiquettes sans fond
       const x0 = Math.max(0, Math.floor(a.x0 * dpr)), y0 = Math.max(0, Math.floor(a.y0 * dpr));
       const w = Math.min(cv.width - x0, Math.ceil((a.x1 - a.x0) * dpr)), h = Math.min(cv.height - y0, Math.ceil((a.y1 - a.y0) * dpr));
       a.encreDessous = 0;
@@ -552,7 +615,7 @@ async function etiquettesLisibles(ou, q = panneau) {
       const d = g.getImageData(Math.max(0, Math.floor(o.x0 * dpr)), Math.max(0, Math.floor(o.y0 * dpr)), Math.max(1, Math.ceil((o.x1 - o.x0) * dpr)), Math.max(1, Math.ceil((o.y1 - o.y0) * dpr))).data;
       for (let i = 0; i < d.length; i += 4) if (Math.abs(d[i] - f[0]) + Math.abs(d[i + 1] - f[1]) + Math.abs(d[i + 2] - f[2]) > 60) encre++;
     }
-    return { textes, larg: rc.width, haut: rc.height, obstacles, encre };
+    return { textes, larg: rc.width, haut: rc.height, obstacles, encre, reperes };
   });
   const fautes = [];
   for (let i = 0; i < textes.length; i++) {
@@ -560,10 +623,32 @@ async function etiquettesLisibles(ou, q = panneau) {
     if (a.x0 < -1 || a.y0 < -1 || a.x1 > larg + 1 || a.y1 > haut + 1) fautes.push(`« ${a.nom} » hors du cadre`);
     for (let j = i + 1; j < textes.length; j++) { const b = textes[j]; if (a.x0 < b.x1 - 1 && b.x0 < a.x1 - 1 && a.y0 < b.y1 - 1 && b.y0 < a.y1 - 1) fautes.push(`« ${a.nom} » chevauche « ${b.nom} »`); }
     for (const o of obstacles) if (a.x0 < o.x1 - 1 && o.x0 < a.x1 - 1 && a.y0 < o.y1 - 1 && o.y0 < a.y1 - 1) fautes.push(`« ${a.nom} » SOUS la légende`);
-    if (a.encreDessous > 0) fautes.push(`« ${a.nom} », sans fond, posée sur ${a.encreDessous} pixel(s) d'encre`);
+    if (a.encreDessous > 0) fautes.push(`« ${a.nom} », ${a.sansFond ? "sans fond" : "à pastille"}, posée sur ${a.encreDessous} pixel(s) d'encre`);
   }
-  juger("etiquettes", fautes.length === 0, `${ou} : ${textes.length} étiquette(s)${fautes.length ? ` — ${fautes.join(" ; ")}` : ", ni chevauchées, ni sous la légende, dans le cadre, aucune sans fond posée sur un trait"}`);
+  juger("etiquettes", fautes.length === 0, `${ou} : ${textes.length} étiquette(s)${fautes.length ? ` — ${fautes.join(" ; ")}` : ", ni chevauchées, ni sous la légende, dans le cadre, aucune (pastille ou non) posée sur un trait"}`);
   juger("cadre", encre === 0, `${ou} : ${encre} pixel(s) dessiné(s) sous la légende, qui les CACHE (attendu 0)`);
+  // près de ce qu'elles nomment
+  const parNom = Object.fromEntries(textes.map((t) => [t.nom, t]));
+  const ecart = (b, p) => Math.hypot(Math.max(b.x0 - p.x, 0, p.x - b.x1), Math.max(b.y0 - p.y, 0, p.y - b.y1));
+  const loin = [], vus = [];
+  for (const [nom, refs, max, rayon] of PRES) {
+    const b = parNom[nom];
+    const ps = refs.map((r) => reperes[r]).filter(Boolean);
+    if (!b || !ps.length) continue;
+    let r0 = typeof rayon === "number" ? rayon : 0;
+    if (rayon === "cadran" && reperes["ampere-zero"] && reperes["ampere-pivot"]) r0 = (reperes["ampere-pivot"].y - reperes["ampere-zero"].y) / 0.72;
+    const d = Math.max(0, Math.min(...ps.map((p) => ecart(b, p))) - r0);
+    vus.push(`${nom.replace("nom-", "")} ${virgule(d, 0)}`);
+    if (d > max) loin.push(`« ${nom} » à ${virgule(d, 1)} px de ${refs[0]} (au plus ${max})`);
+  }
+  for (const [role, nom] of PILES) {
+    const r = parNom[role], n = parNom[nom];
+    if (!r || !n) continue;
+    const jeu = n.y0 - r.y1, dx = Math.min(Math.abs(r.x0 - n.x0), Math.abs(r.x1 - n.x1));
+    vus.push(`${role.replace("nom-", "")}/${nom.replace("nom-", "")} ${virgule(jeu, 0)}`);
+    if (jeu < -0.5 || jeu > 4 || dx > 1.5) loin.push(`« ${role} » n'est pas EMPILÉ sur « ${nom} » (écart vertical ${virgule(jeu, 1)} px, aucun bord commun : ${virgule(dx, 1)} px)`);
+  }
+  juger("etiquettes-pres", loin.length === 0 && vus.length >= 4, `${ou} : ${loin.length ? loin.join(" ; ") : `chacune près de ce qu'elle nomme (px : ${vus.join(" · ")})`}`);
 }
 /** L'état posé par l'étape. */
 async function etatPose(id, pAttendu) {
@@ -673,8 +758,8 @@ try {
     juger("avant-pari", accentN > 50, `étape 1 révélée : ${accentN} px d'accent (la réponse — aiguille, flèches, dépôt — apparaît avec l'accent)`);
     await circuitLu("étape 1 révélée (fils échangés)", "accord");
     await lamesEtBalances("étape 1 révélée (fils échangés)");
-    const lu = { sens: await lecture("sens"), i: await lecture("intensite"), d: await lecture("duree"), fem: await lecture("fem") };
-    juger("nombres", lu.sens === SENS.accord && lu.i === "0,200 A" && lu.d === DUREE[1800] && lu.fem === "environ 1,1 V", `N7 (étape 1) — sens « ${lu.sens} », I « ${lu.i} », Δt « ${lu.d} », E « ${lu.fem} »`);
+    const lu = { sens: await lecture("sens"), i: await etiquette("nom-intensite"), d: await lecture("duree"), fem: await lecture("fem") };
+    juger("nombres", lu.sens === SENS.accord && lu.i === "0,200 A" && lu.d === DUREE[1800] && lu.fem === "environ 1,1 V", `N7 (étape 1) — sens « ${lu.sens} », I à l'ampèremètre « ${lu.i} », Δt « ${lu.d} », E « ${lu.fem} »`);
     await cocher("branchement", "oppose");
     await circuitLu("étape 1, fils rétablis", "oppose");
     juger("nombres", (await lecture("sens")) === SENS.oppose, `N7 (étape 1, fils rétablis) — sens « ${await lecture("sens")} »`);
@@ -779,8 +864,8 @@ try {
     jugerCourse("étape 4 (1 h 30, 0,400 A)", c, 5400);
     await juste("combien-d-electrons", await resultat());
     await revelePose("combien-d-electrons");
-    const n = await lecture("quantite-electrons"), mc = await lecture("masse-cuivre"), q = await lecture("charge");
-    juger("nombres", n === `${sci(attendu(400, 5400).n, 4)} mol` && mc === "−0,711 g" && q === "2 160 C", `N5 (étape 4) — n(e⁻) « ${n} », cuivre « ${mc} », Q « ${q} »`);
+    const n = await lecture("quantite-electrons"), mc = await etiquette("nom-balance-cu"), q = await lecture("charge");
+    juger("nombres", n === `${sci(attendu(400, 5400).n, 4)} mol` && mc === "−0,711 g" && q === "2 160 C", `N5 (étape 4) — n(e⁻) « ${n} », balance du cuivre « ${mc} », Q « ${q} »`);
     juger("fuite-inter-etapes", (await panneau.locator('[data-lecture="faraday-mesure"]').count()) === 0 && !(await panneau.locator('[data-controle="tension"]').count()), `étape 4 révélée : « faraday-mesure » absente du DOM, la tension non réglable`);
   }
   await formule("étape 4 révélée", "combien-d-electrons", ["compte"]);
@@ -814,7 +899,8 @@ try {
         const parTension = [];
         for (const u of TENSIONS) {
           await cocher("tension", u);
-          const lu = { q: await lecture("charge"), zn: await lecture("masse-zinc"), cu: await lecture("masse-cuivre"), n: await lecture("quantite-electrons"), f: await lecture("faraday-mesure"), i: await lecture("intensite"), s: await lecture("sens") };
+          // les masses et l'intensité sur la PAILLASSE (balances, ampèremètre) : la liste ne les répète plus (vague 2)
+          const lu = { q: await lecture("charge"), zn: await etiquette("nom-balance-zn"), cu: await etiquette("nom-balance-cu"), n: await lecture("quantite-electrons"), f: await lecture("faraday-mesure"), i: await etiquette("nom-intensite"), s: await lecture("sens") };
           const at = { q: `${milliers(a.Q)} C`, zn: masse(a.zn), cu: masse(a.cu), n: `${sci(a.n, 4)} mol`, f: `${sci(a.f, 3)} C·mol⁻¹`, i: `${virgule(i / 1000, 3)} A`, s: SENS.oppose };
           for (const k of ["q", "zn", "cu", "n", "f", "s"]) if (lu[k] !== at[k]) fN.push(`${i} mA · ${d} s · ${u} V : ${k} « ${lu[k]} » (attendu « ${at[k]} »)`);
           if (lu.i !== at.i) fN8.push(`${u} V, ${i} mA : l'ampèremètre lit « ${lu.i} »`);
@@ -859,13 +945,31 @@ try {
       for (const d of DUREES) {
         await cocher("courant", String(i)); await cocher("duree", String(d));
         await cocher("branchement", "oppose");
-        const o = { zn: await lecture("masse-zinc"), f: await lecture("faraday-mesure") };
+        const o = { zn: await etiquette("nom-balance-zn"), f: await lecture("faraday-mesure") };
         await cocher("branchement", "accord");
-        const ac = { zn: await lecture("masse-zinc"), f: await lecture("faraday-mesure"), s: await lecture("sens") };
+        const ac = { zn: await etiquette("nom-balance-zn"), f: await lecture("faraday-mesure"), s: await lecture("sens") };
         const a = attendu(i, d, "accord");
         if (ac.f !== o.f || ac.zn !== masse(a.zn) || ac.s !== SENS.accord) fN9.push(`${i}·${d} : « ${o.zn} » → « ${ac.zn} », quotient « ${o.f} » → « ${ac.f} », sens « ${ac.s} »`);
       }
     juger("nombres", fN9.length === 0, `N9 — les 9 couples, fils échangés : ${fN9.length ? fN9.slice(0, 3).join(" ; ") : "les masses changent de signe, le quotient ne bouge pas d'un caractère, le sens devient spontané"}`);
+    // la MARQUE des deux lames au plus petit réglage (0,100 A ; 30 min : 0,061 et 0,059 g,
+    // moins d'un demi-pixel) : la lame qui gagne porte un trait PLEIN, celle qui perd son
+    // contour en TIRETS — de même poids, dans les deux branchements
+    {
+      const fM = [], vusM = [];
+      await cocher("courant", "100"); await cocher("duree", "1800");
+      for (const cab of ["accord", "oppose"]) {
+        await cocher("branchement", cab);
+        await classer();
+        const [gagne, perd] = cab === "oppose" ? ["zn", "cu"] : ["cu", "zn"];
+        const g = await marqueLame(gagne), p = await marqueLame(perd);
+        const dire = (x) => (x ? `${Math.round(x.part * 100)} % des rangées, ${virgule(x.largeur, 1)} px` : "ILLISIBLE");
+        vusM.push(`${cab} : ${gagne} gagne ${dire(g)} ; ${perd} perd ${dire(p)}`);
+        if (!g || g.part < 0.9 || g.largeur < 1.5) fM.push(`${cab} — la lame ${gagne} GAGNE : ${dire(g)} (attendu un trait plein : ≥ 90 % des rangées, ≥ 1,5 px)`);
+        if (!p || p.part < 0.3 || p.part > 0.85 || p.largeur < 1.5) fM.push(`${cab} — la lame ${perd} PERD : ${dire(p)} (attendu des tirets : 30 à 85 % des rangées, ≥ 1,5 px)`);
+      }
+      juger("lame-et-balance", fM.length === 0, `au plus petit réglage (0,100 A ; 30 min), les deux lames marquées du même poids : ${fM.length ? fM.join(" ; ") : vusM.join(" · ")}`);
+    }
     // les pixels du circuit et des lames, fils échangés puis rétablis (0,400 A ; 1 h 30)
     await cocher("courant", "400"); await cocher("duree", "5400");
     await cocher("branchement", "accord");
@@ -887,8 +991,8 @@ try {
     const n = async (c) => panneau.locator(`[data-controle="${c}"] input`).count();
     const crans = [await n("tension"), await n("branchement"), await n("courant"), await n("duree")];
     juger("nombres", crans.join(",") === "3,2,3,3", `N10 — crans : ${crans[0]} tensions, ${crans[1]} branchements, ${crans[2]} intensités, ${crans[3]} durées (attendu 3, 2, 3, 3)`);
-    const lt = await lecture("tension");
-    juger("nombres", lt === "6,0 V", `la lecture de la tension, S5 seulement : « ${lt} »`);
+    const lt = await etiquette("nom-tension");
+    juger("nombres", lt === "6,0 V", `la tension, lue au générateur : « ${lt} »`);
   }
   {
     const { horsPalette } = await classer();
@@ -926,6 +1030,12 @@ try {
     for (const l of lecturesInterdites[e.id] ?? []) if ((e.lectures ?? []).includes(l)) fautes.push(`${e.id} lit « ${l} »`);
   }
   juger("fuite-inter-etapes", fautes.length === 0, `table du §7.6 A : ${fautes.length ? fautes.join(" ; ") : "branchement à S1 et S5, durée de S2 à S5 (héritée à S3, déclaré), courant de S3 à S5, tension à S5 seulement ; n(e⁻) pas avant S4, le quotient pas avant S5"}`);
+  // une lecture ne RÉPÈTE pas la paillasse (vague 2) : tension au générateur, intensité à
+  // l'ampèremètre, masses sur les balances ; la masse du zinc reste à S2 et S3, où elle est
+  // la réponse et se lit contre la durée
+  const surLaPaillasse = { "on-echange-les-fils": ["tension", "intensite", "masse-cuivre"], "deux-fois-plus-longtemps": ["tension", "intensite", "masse-cuivre"], "deux-fois-moins-de-courant": ["tension", "intensite", "masse-cuivre"], "combien-d-electrons": ["tension", "intensite", "masse-zinc", "masse-cuivre"], "on-double-la-tension": ["tension", "intensite", "masse-zinc", "masse-cuivre"] };
+  const doubles = descripteur.etapes.flatMap((e) => (e.lectures ?? []).filter((l) => surLaPaillasse[e.id]?.includes(l)).map((l) => `${e.id} : « ${l} »`));
+  juger("etapes", doubles.length === 0, `aucune lecture ne répète ce que la paillasse affiche (tension, intensité, masses à S4-S5)${doubles.length ? ` — RÉPÉTÉES : ${doubles.join(" ; ")}` : ""}`);
 }
 
 // Le thème sombre repeint le fond.
@@ -1024,6 +1134,17 @@ await nav.close();
       }
       if (k < 4) { await q.getByRole("button", { name: "Étape suivante" }).click(); await p2.waitForTimeout(200); }
     }
+    // au plus grand texte (A+, ×1,125 : le réglage du site) — l'étape la plus chargée, les
+    // deux branchements. Le budget des étiquettes est en pixels fixes, leur taille en rem :
+    // la vague 2 demandait de tirer le téléphone ET le grand texte avant de croire la mise en page
+    await p2.evaluate(() => document.documentElement.style.setProperty("--font-scale", "1.125"));
+    await p2.waitForTimeout(120);
+    for (const c of ["accord", "oppose"]) {
+      await q.locator(`[data-controle="branchement"] input[value="${c}"]`).check();
+      await p2.waitForTimeout(150);
+      await etiquettesLisibles(`390 px, texte A+ (×1,125), étape 5, ${c === "accord" ? "fils échangés" : "fils de la leçon"}`, q);
+    }
+    await p2.evaluate(() => document.documentElement.style.removeProperty("--font-scale"));
     await frontiere("390 px, étape 5 révélée", q);
   } finally {
     await nav2.close();
@@ -1038,7 +1159,7 @@ console.log(`\n${ESSAI ? "ESSAI ROUGE — " : ""}scene-electrolyse : le banc d'�
 for (const r of resultats) console.log(`  ${r.ok ? "·" : "✘"} [${r.famille}] ${r.detail}`);
 if (!pret) { console.error("\nMUET — la scène n'a pas pu dessiner ici : la porte ne peut rien dire des pixels."); process.exit(3); }
 if (ESSAI) {
-  const visees = ["avant-clic", "pas-de-3d", "etapes", "avant-pari", "paris", "course", "eclairs", "sans-mouvement", "nombres", "depot-a-l-echelle", "echelle-constante", "aiguille", "courant-oriente", "electrons-a-contresens", "fils-croises", "etiquettes-electrodes", "lame-et-balance", "teinte-du-bain", "palette", "formule-graduee", "fuite-inter-etapes", "frontiere", "fleches-chimiques", "latex", "etiquettes", "cadre", "immobile", "annonce", "theme", "ergonomie"];
+  const visees = ["avant-clic", "pas-de-3d", "etapes", "avant-pari", "paris", "course", "eclairs", "sans-mouvement", "nombres", "depot-a-l-echelle", "echelle-constante", "aiguille", "courant-oriente", "electrons-a-contresens", "fils-croises", "etiquettes-electrodes", "lame-et-balance", "teinte-du-bain", "palette", "formule-graduee", "fuite-inter-etapes", "frontiere", "fleches-chimiques", "latex", "etiquettes", "etiquettes-pres", "cadre", "immobile", "annonce", "theme", "ergonomie"];
   const crient = visees.filter((f) => resultats.some((r) => r.famille === f && !r.ok));
   console.log(`\n  familles sabotées qui crient : ${crient.length}/${visees.length} (${crient.join(", ")})`);
   const muettes = visees.filter((f) => !crient.includes(f));

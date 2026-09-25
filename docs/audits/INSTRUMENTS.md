@@ -2067,6 +2067,13 @@ l'enveloppe en haut et en bas (les hauteurs brutes mêlaient la courbure du creu
 `theme` mesure le schéma de couleurs du thème sombre (`color-scheme`), ROUGE d'abord sur
 le build d'avant (« normal »).
 
+**La campagne de sabotages du PRODUIT (2026-09-25, HANDOFF §11.207) : 28 sur 30, puis
+30 sur 30.** Le manqué était un angle mort de `etiquettes` : une pastille opaque posée sur
+un trait d'accent de 1,5 px ne « cachait » rien, parce que la mesure ne comptait que
+l'accent FORT (80 % de la teinte) et qu'un trait à cheval sur deux rangées n'en couvre
+que 75 %. Le seuil est la moitié de la teinte — VERT sur le produit propre, ROUGE sur le
+sabotage rejoué. L'autre était un sabotage qui ne compilait pas : réécrit, attrapé.
+
 ## `web/scripts/scene-electrolyse.mjs` — la paillasse dit-elle ce que la loi de Faraday impose, et rien de ce qu'elle interdit ?
 
 **Porte du « banc d'électrolyse »** (pc/electrolyse, en tête de R4 ; spec
@@ -2114,8 +2121,9 @@ etapes` (la table §7.6 A réécrite ICI, la durée HÉRITÉE à S3 déclarée ;
 avant S4, le quotient avant S5), `frontiere` (26 formes du §9, une sonde par forme, et
 les trois grilles de nombres — V et volt(s), A et ampère(s), min — lues sur la SOURCE
 TeX), `fleches-chimiques` (une formule à flèche qui contient $e^-$ porte ⇌, une autre
-non), `latex`, `etiquettes` et `cadre` (1 280 et 390 px, aux cinq étapes, avant et
-après le pari), `sans-mouvement`, `theme`, `console`, `ergonomie`.
+non), `latex`, `etiquettes`, `etiquettes-pres` et `cadre` (1 280 et 390 px, aux cinq
+étapes, avant et après le pari, et au grand texte), `sans-mouvement`, `theme`,
+`console`, `ergonomie`.
 
 **Ce qu'elle a appris en se lançant (premier passage : 32 rouges, 145 mesures).** Plus
 de la moitié venaient de la porte : le `textContent` d'une formule KaTeX concatène le
@@ -2132,6 +2140,21 @@ règle d'échelle en centimètres de la spec — le produit n'en dessine pas.
 injecte chaque forme interdite une à une. **La campagne de sabotages du PRODUIT reste
 due** (ADR 0038 : un essai rouge qui retourne les attentes ne prouve pas que les
 familles VOIENT un défaut réel).
+
+**La vague 2 (2026-09-25) : ce que `etiquettes` ne voyait pas.** L'encre sous une
+étiquette n'était comptée que SANS fond : une pastille qui cachait la paroi d'un bécher
+passait. Elle est comptée sous TOUTE étiquette. `etiquettes-pres` (neuve) mesure la
+distance de chaque étiquette à ce qu'elle nomme — le signe à sa borne, le nom au bout de
+sa lame (12 px), la tension au générateur, l'intensité au cadran, le rhéostat à son
+symbole (20 px), le témoin à son trait — et que le rôle soit EMPILÉ sur son nom (un bord
+commun, 4 px au plus). `lame-et-balance` regarde aussi le plus PETIT réglage (0,100 A ;
+30 min) : rangée par rangée, la plage d'accent qui touche le bord d'origine — un trait
+plein pour la lame qui gagne, des tirets pour celle qui perd, 1,5 px au moins. Et le
+téléphone est tiré une fois au grand texte (×1,125). Les grandeurs que la liste ne porte
+plus (intensité, tension, masses à S4-S5) se lisent sur les étiquettes de la paillasse ;
+`etapes` refuse une lecture qui répète le dessin. Essayée d'abord contre le build
+d'AVANT : ROUGE, 36 manquements, tous dans ces familles ; puis VERTE deux fois sur le
+produit retouché (170 mesures, 32 familles), essai rouge 31/31.
 
 **CI :** job `telephone` (vert puis rouge) — `scene-champ` et `scenes` tiennent déjà 43
 et 42 min sur leurs 50 et 60 (run 773), `telephone` 8 sur 40.

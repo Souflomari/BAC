@@ -49,6 +49,35 @@ corrigé en douce :**
   symboles d'autres métaux sont cherchés en position chimique : « Au bout de 30 min »
   n'est pas de l'or.
 
+**Ce que la vague 2 (dessin, calme, ergonomie ; DÉCISIONS §28, points 22 à 29) a changé
+à cette spec :**
+- **Les lectures ne répètent plus la paillasse** (§5.9 ; tables de S1 à S5). `intensite`
+  quitte les cinq étapes (l'ampèremètre l'affiche), `tension` quitte S5 (le générateur),
+  `masse-zinc` et `masse-cuivre` quittent S4 et S5 (les balances). `masse-zinc` reste à
+  S2 et S3, où elle EST la réponse et se lit contre la durée. Les lignes N1–N12 du §11.1
+  se lisent désormais, pour ces grandeurs, sur les étiquettes de la paillasse
+  (`nom-balance-zn`, `nom-balance-cu`, `nom-intensite`, `nom-tension`) — la porte le fait,
+  et vérifie qu'aucune lecture ne revient répéter le dessin.
+- **Le rôle de chaque lame est EMPILÉ sur son nom**, au-dessus du bécher — la colonne
+  étroite du §6.2. Posé à mi-hauteur à côté de la lame, il n'avait nulle part où aller
+  entre la paroi et la lame, et sa pastille coupait la paroi.
+- **Le dépôt est bordé d'un trait plein à l'accent, son remplissage allégé** : au plus
+  petit réglage (0,061 g, moins d'un demi-pixel), la lame qui gagne ne portait aucune
+  marque quand celle qui perd gardait son contour en tirets. Le trait est tracé EN
+  DEDANS du bord : l'épaisseur peinte, celle que la porte lit, ne change pas.
+- **Le témoin « 1 g » est à la hauteur des dépôts**, entre les deux béchers (il était
+  sous les balances).
+- **La légende du plateau dit « Accéléré : 1 s pour 15 min »** : la phrase longue
+  poussait le signe « − » de la borne hors de sa place au téléphone ; et les deux signes
+  ne quittent plus leur borne, quelle que soit la place.
+- **La lecture de l'ampèremètre n'existe que circuit fermé** : à S1, avant la course, le
+  cadran est vide — ni aiguille, ni « 0,200 A » à côté d'un instrument qui ne mesure
+  rien. Le réglage du rhéostat est dans la consigne.
+- **Le retour juste de S5 ne pose plus sa formule en affichage** (une fraction à deux
+  étages dans une colonne de 290 px) : le quotient est dit en ligne, et la lecture le
+  porte. La `suite` de S3 ne redonne plus la paire du retour ; celle du retour de S2 ne
+  redit plus la suite. Les deux fractions des lectures sont en `\tfrac`.
+
 ---
 
 ## Ce que la vague 1 a changé (2026-09-25)

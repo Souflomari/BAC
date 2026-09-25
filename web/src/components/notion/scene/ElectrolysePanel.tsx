@@ -140,7 +140,11 @@ export function ElectrolysePanel({ scene, className }: { scene: Scene3DDescripto
   const ouvre = (c: string) => pari.etapeOuverte && etape.controles.includes(c);
   const revele = pari.phase === "revele" || pari.phase === "aucun";
   const engage = pari.phase !== "attente";
-  const libre = etape.controles.length > 1;
+  // l'étape LIBRE, celle des quatre groupes de réglages (S5) : ses lectures précèdent les
+  // contrôles, comme aux bancs de diffraction et de modulation. Le seuil était « plus d'un
+  // groupe » : la liste passait au-dessus dès S3, où il n'y en a que deux, et changeait de
+  // côté entre S2 et S3 sans raison visible (vague 2, ergonomie et charge)
+  const libre = etape.controles.length > 2;
   const lectures = pari.etapeOuverte ? etape.lectures ?? [] : [];
   const premiere = indexEtape === 0;
 
@@ -186,17 +190,23 @@ export function ElectrolysePanel({ scene, className }: { scene: Scene3DDescripto
     poser(refs.balanceCu.current, en("balance-cu"));
     poser(refs.balanceZn.current, en("balance-zn"));
     poser(refs.chrono.current, en("chrono"), "0%", "-100%");
-    const gauche = { ...en("lame-cu-mi"), x: en("lame-cu-mi").x - 22 };
-    const droite = { ...en("lame-zn-mi"), x: en("lame-zn-mi").x + 22 };
     disposer(
       [
-        { el: refs.plus.current, p: { ...en("borne-plus"), y: en("borne-plus").y - 15 }, surAncre: true, directions: [[0, -1], [-1, -1], [-1, 0]], portee: 8 },
-        { el: refs.moins.current, p: { ...en("borne-moins"), y: en("borne-moins").y - 15 }, surAncre: true, directions: [[0, -1], [1, -1], [1, 0]], portee: 8 },
-        { el: refs.roleCu.current, p: roles ? gauche : cache, directions: [[-1, 0], [-1, -1], [-1, 1]], portee: 18 },
-        { el: refs.roleZn.current, p: roles ? droite : cache, directions: [[1, 0], [1, -1], [1, 1]], portee: 18 },
-        { el: refs.cuivre.current, p: en("lame-cu-tete"), directions: [[-1, 0], [-1, -1], [-1, 1], [1, -1]], portee: 18 },
-        { el: refs.zinc.current, p: en("lame-zn-tete"), directions: [[1, 0], [1, -1], [1, 1], [-1, -1]], portee: 18 },
-        { el: refs.intensite.current, p: en("intensite"), directions: [[1, 0], [1, 1], [1, -1], [-1, 1]], portee: 32 },
+        // un signe ne quitte JAMAIS sa borne (portée 0) : au téléphone, le « − » partait
+        // à 34 px, à côté de la légende, et la borne de droite n'avait plus de signe (vague 2)
+        { el: refs.plus.current, p: { ...en("borne-plus"), y: en("borne-plus").y - 15 }, surAncre: true, directions: [[0, -1], [-1, -1], [-1, 0]], portee: 0 },
+        { el: refs.moins.current, p: { ...en("borne-moins"), y: en("borne-moins").y - 15 }, surAncre: true, directions: [[0, -1], [1, -1], [1, 0]], portee: 0 },
+        // le nom de la lame et, EMPILÉ au-dessus, son rôle : une colonne au-dessus du
+        // bécher (spec §6.2). Posé seul à mi-hauteur, le rôle n'avait nulle part où
+        // aller entre la paroi et la lame, et sa pastille coupait la paroi (vague 2). L'ancre
+        // est 1 px au-dessus de la tête : la zone de la lame commence 2 px au-dessus, et le
+        // bloc (avec sa marge) finit juste au bord — au grand texte, au téléphone, il n'y a
+        // pas un pixel de plus
+        { el: refs.cuivre.current, p: { ...en("lame-cu-tete"), y: en("lame-cu-tete").y - 1 }, chapeau: { el: refs.roleCu.current, visible: roles }, directions: [[-1, -1], [-1, 0], [-1, 1], [1, -1]], portee: 18 },
+        { el: refs.zinc.current, p: { ...en("lame-zn-tete"), y: en("lame-zn-tete").y - 1 }, chapeau: { el: refs.roleZn.current, visible: roles }, directions: [[1, -1], [1, 0], [1, 1], [-1, -1]], portee: 18 },
+        // la lecture de l'ampèremètre n'existe que circuit FERMÉ : à S1, avant la course, le
+        // cadran est vide (ni aiguille ni nombre) — le réglage du rhéostat est dans la consigne
+        { el: refs.intensite.current, p: en("intensite", circuit), directions: [[1, 0], [1, 1], [1, -1], [-1, 1]], portee: 32 },
         { el: refs.tension.current, p: en("tension"), directions: [[1, 0], [1, -1], [1, 1]], portee: 18 },
         { el: refs.rheostat.current, p: en("rheostat-nom"), directions: [[-1, 0], [-1, -1], [-1, 1]], portee: 18 },
         { el: refs.i.current, p: en("i-g-mi", circuit), surAncre: true, directions: [[0, -1], [1, -1], [-1, -1]], portee: 8 },
@@ -342,31 +352,34 @@ export function ElectrolysePanel({ scene, className }: { scene: Scene3DDescripto
   const blocLectures =
     lectures.length > 0 ? (
       <dl className="flex flex-col gap-2 text-body-sm" data-lectures>
-        {lectures.includes("tension") && ligneLecture("tension", <MathText>{"Tension du générateur, $U$"}</MathText>, M.ecrireTension(+etat.u))}
+        {/* Une lecture ne RÉPÈTE pas la paillasse (vague 2, charge) : la tension est au
+            générateur, l'intensité à l'ampèremètre, les masses sur les balances — collantes,
+            elles. La liste ne porte que ce que le dessin ne peut pas montrer ; la masse du
+            zinc y reste à S2 et S3, où elle EST la réponse et se lit contre la durée. */}
         {lectures.includes("fem") && ligneLecture("fem", <MathText>{"Force électromotrice propre de la cellule, $E$"}</MathText>, `environ ${M.ecrireTension(M.FEM)}`)}
         {lectures.includes("sens") && ligneLecture("sens", "Sens de la transformation", M.ECRIRE_SENS[fin.sens])}
-        {lectures.includes("intensite") && ligneLecture("intensite", <MathText>{"Intensité, tenue par le rhéostat, $I$"}</MathText>, M.ecrireIntensite(+etat.i))}
         {lectures.includes("duree") && ligneLecture("duree", <MathText>{"Durée, $\\Delta t$"}</MathText>, `${DUREE_CRAN[etat.duree]} = ${M.entier(+etat.duree)} s`)}
         {lectures.includes("charge") && ligneLecture("charge", <MathText>{"Quantité d’électricité, $Q = I\\,\\Delta t$"}</MathText>, `${M.ecrireCharge(fin.Q)} C`)}
         {lectures.includes("masse-zinc") && ligneLecture("masse-zinc", "Masse gagnée par la lame de zinc (A)", `${M.ecrireMasse(fin.masseZinc)} g`)}
-        {lectures.includes("masse-cuivre") && ligneLecture("masse-cuivre", "Masse gagnée par la lame de cuivre (B)", `${M.ecrireMasse(fin.masseCuivre)} g`)}
+        {/* \tfrac, pas \dfrac : une fraction en style d'affichage faisait de ces deux
+            lignes les seules à trois étages, la valeur rejetée sous le dénominateur */}
         {lectures.includes("quantite-electrons") &&
           ligneLecture(
             "quantite-electrons",
-            <MathText>{"Électrons échangés, $n(e^-) = \\dfrac{2\\,m(Zn)}{M(Zn)}$"}</MathText>,
+            <MathText>{"Électrons échangés, $n(e^-) = \\tfrac{2\\,m(Zn)}{M(Zn)}$"}</MathText>,
             <MathText>{`$${M.scientifique(fin.electrons, 4)}$ mol`}</MathText>
           )}
         {lectures.includes("faraday-mesure") &&
           ligneLecture(
             "faraday-mesure",
-            <MathText>{"Charge par mole d’électrons, $\\dfrac{Q}{n(e^-)}$"}</MathText>,
+            <MathText>{"Charge par mole d’électrons, $\\tfrac{Q}{n(e^-)}$"}</MathText>,
             <MathText>{`$${M.scientifique(fin.faraday, 3)}$ C·mol⁻¹`}</MathText>
           )}
       </dl>
     ) : null;
 
   const groupe = (id: string, legende: string, valeurs: readonly string[], courant: string, texte: (v: string) => string, choisir: (v: string) => void) => (
-    <fieldset className="flex flex-col gap-1" data-controle={id}>
+    <fieldset key={id} className="flex flex-col gap-1" data-controle={id}>
       <legend className="mb-1 text-body-sm text-secondary">
         <MathText>{legende}</MathText>
       </legend>
@@ -380,6 +393,13 @@ export function ElectrolysePanel({ scene, className }: { scene: Scene3DDescripto
       </div>
     </fieldset>
   );
+
+  const groupes: Record<string, () => React.ReactNode> = {
+    branchement: () => groupe("branchement", "Le branchement", M.CABLAGES, etat.cablage, (v) => BRANCHEMENT[v as M.Cablage], (v) => regler({ cablage: v as M.Cablage })),
+    duree: () => groupe("duree", "La durée, $\\Delta t$", M.DUREES, etat.duree, (v) => DUREE_CRAN[v as M.Duree], (v) => regler({ duree: v as M.Duree })),
+    courant: () => groupe("courant", "L’intensité que tient le rhéostat, $I$", M.INTENSITES, etat.i, (v) => M.ecrireIntensite(+v), (v) => regler({ i: v as M.Intensite })),
+    tension: () => groupe("tension", "La tension du générateur, $U$", M.TENSIONS, etat.u, (v) => M.ecrireTension(+v), (v) => regler({ u: v as M.Tension })),
+  };
 
   const libelleLancer = enLecture ? "Pause" : phase === "course" ? "Reprendre" : finie || revele ? "Refaire la manipulation" : "Fermer le circuit";
   const balanceClasse = (m: number) => cn("tabular-nums", accentDepot && m !== 0 ? accentTexte : "text-primary");
@@ -411,7 +431,9 @@ export function ElectrolysePanel({ scene, className }: { scene: Scene3DDescripto
           canvasRef={rendu.canvasRef}
           panneau={rendu.panneau}
           description={description}
-          legende="Accéléré : 1 s pour un quart d’heure"
+          // COURTE : au téléphone, la pastille de « … un quart d’heure » (211 px) arrivait
+          // sur la borne − du générateur, et le signe s'en allait (vague 2)
+          legende="Accéléré : 1 s pour 15 min"
           messageSansWebgl="Ce navigateur n’affiche pas la paillasse (dessin indisponible). Les paris et les réglages restent."
           onRelancer={rendu.relancer}
           // CARRÉE partout : le générateur, les deux fils, les instruments, les
@@ -517,12 +539,9 @@ export function ElectrolysePanel({ scene, className }: { scene: Scene3DDescripto
 
           {libre && blocLectures}
 
-          <div className="flex flex-col gap-5">
-            {ouvre("branchement") && groupe("branchement", "Le branchement", M.CABLAGES, etat.cablage, (v) => BRANCHEMENT[v as M.Cablage], (v) => regler({ cablage: v as M.Cablage }))}
-            {ouvre("duree") && groupe("duree", "La durée, $\\Delta t$", M.DUREES, etat.duree, (v) => DUREE_CRAN[v as M.Duree], (v) => regler({ duree: v as M.Duree }))}
-            {ouvre("courant") && groupe("courant", "L’intensité que tient le rhéostat, $I$", M.INTENSITES, etat.i, (v) => M.ecrireIntensite(+v), (v) => regler({ i: v as M.Intensite }))}
-            {ouvre("tension") && groupe("tension", "La tension du générateur, $U$", M.TENSIONS, etat.u, (v) => M.ecrireTension(+v), (v) => regler({ u: v as M.Tension }))}
-          </div>
+          {/* dans l'ordre que l'ÉTAPE déclare : à S5, « on double la tension », la tension
+              vient en premier, sous les deux nombres qui ne doivent pas bouger (vague 2) */}
+          <div className="flex flex-col gap-5">{etape.controles.filter(ouvre).map((c) => groupes[c]?.())}</div>
 
           {!libre && blocLectures}
 
