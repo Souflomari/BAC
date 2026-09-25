@@ -3839,6 +3839,20 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "OEM-24": [
       "mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete"
     ],
+    "OEM-25": [
+      "mc.physics.pc_ondes_em_modulation.lecture-oscillogramme"
+    ],
+    "OEM-26": [
+      "mc.physics.pc_ondes_em_modulation.lecture-oscillogramme",
+      "mc.physics.pc_ondes_em_modulation.taux-modulation-calcul"
+    ],
+    "OEM-27": [
+      "mc.physics.pc_ondes_em_modulation.lecture-oscillogramme",
+      "mc.physics.pc_ondes_em_modulation.porteuse-vs-signal-modulant"
+    ],
+    "OEM-28": [
+      "mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete"
+    ],
     "OEM-3": [
       "mc.physics.pc_ondes_em_modulation.porteuse-vs-signal-modulant"
     ],

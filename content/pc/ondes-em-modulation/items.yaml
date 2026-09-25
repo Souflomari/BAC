@@ -39,6 +39,10 @@ misconceptions:
     label: "« Rôle du circuit accordé (sélection par f0 = 1/(2π√(LC))) mal compris »"
     description: "L'élève croit que régler C agit sur l'émetteur, stocke de l'énergie, amplifie tout, se trompe sur le sens de variation de C ou sur la manipulation de la formule, ou pense que l'antenne ne reçoit qu'une station."
     contradicts_principle: "L'antenne reçoit toutes les porteuses superposées. Le circuit accordé règle f0 = 1/(2π√(LC)) ; quand f0 = f_p, il privilégie cette station. Régler C n'agit pas sur l'émetteur ; f0 et C varient en sens inverse à L fixe ; C = 1/((2π f_p)² L)."
+  - id: mc.physics.pc_ondes_em_modulation.lecture-oscillogramme
+    label: "« Un oscillogramme se lit comme un graphe déjà gradué : sans calibration, entre deux extrema quelconques, ou en inversant oscillations/division »"
+    description: "L'élève lit une durée ou une tension directement en carreaux sans la multiplier par la sensibilité ; prend une flèche ou une ligne chiffrée de l'écran pour un repère de la courbe ; compte une « période » entre deux extrema de types DIFFÉRENTS (donc une demi-période) ; ou inverse « N oscillations par division » en « N divisions par oscillation »."
+    contradicts_principle: "Un oscillogramme ne porte aucune unité : il porte des divisions et deux sensibilités (V/div, ms/div). Toute durée se lit (nombre de divisions) × (ms/div) et toute tension (nombre de divisions) × (V/div). Une période va d'un extremum à l'extremum de MÊME type. Et un rapport de deux tensions (comme m) se calcule directement en divisions, sans conversion."
 
 items:
   - id: OEM-1
@@ -1528,6 +1532,264 @@ items:
       déchargeant lentement ensuite, retient la valeur des sommets et relie
       leur courbe — l'enveloppe $U_0+s_m(t)$. Sans lui, pas de démodulation.
 
+  # ── OEM-25…OEM-28 : le banc de modulation (spec
+  # content/pc/ondes-em-modulation/spec-scene-modulation.md §8.3-8.4). Trois
+  # items pour le huitième modèle, `lecture-oscillogramme` — un oscillogramme
+  # DÉCRIT en mots, faute de figure dans le schéma d'item —, et un item pour la
+  # double inégalité du détecteur, que `bk-2025-n-x3` réclame. `habilete` est
+  # posé sur ces quatre-là seulement : le mélange cognitif de la notion reste
+  # incalculable tant que les 24 autres n'en portent pas (DÉCISIONS §3).
+  - id: OEM-25
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_ondes_em_modulation
+    habilete: application_experimentale
+    tags: []
+    primary_misconception: mc.physics.pc_ondes_em_modulation.lecture-oscillogramme
+    stem: >
+      Un signal modulé en amplitude est observé sur un oscilloscope dont le
+      balayage horizontal est réglé sur $2{,}0\ \text{ms/div}$ ; l'écran fait
+      $10$ divisions de large. On relève un renflement de l'enveloppe à
+      $1{,}0$ division du bord gauche, un resserrement à $4{,}0$ divisions,
+      et le renflement suivant à $7{,}0$ divisions. Que vaut la fréquence du
+      signal modulant ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$83\\ \\text{Hz}$ : d'un renflement au renflement suivant, $6{,}0$ divisions, soit $12\\ \\text{ms}$."
+        correct: true
+      - id: B
+        text: "$167\\ \\text{Hz}$ : d'un renflement au resserrement voisin, $3{,}0$ divisions, soit $6{,}0\\ \\text{ms}$."
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.lecture-oscillogramme
+        feedback: >
+          Trois divisions séparent bien un renflement du resserrement voisin,
+          mais l'enveloppe n'est revenue à son état de départ qu'au renflement
+          SUIVANT : de renflement à renflement, il y a $6{,}0$ divisions. Une
+          période va toujours d'un extremum à l'extremum de même type — sinon
+          on ne mesure qu'une demi-période.
+      - id: C
+        text: "$0{,}17\\ \\text{Hz}$ : d'un renflement au suivant, la période du signal vaut $6{,}0$."
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.lecture-oscillogramme
+        feedback: >
+          $6{,}0$ est un nombre de divisions, pas une durée. Une division vaut
+          $2{,}0\ \text{ms}$ : la période est $6{,}0 \times 2{,}0 = 12\ \text{ms}$,
+          pas $6{,}0\ \text{s}$. Sur un oscillogramme, aucune durée ne se lit
+          sans passer par le réglage du balayage.
+      - id: D
+        text: "$500\\ \\text{Hz}$ : la période vaut $2{,}0\\ \\text{ms}$, la valeur affichée par le réglage horizontal de l'écran."
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.lecture-oscillogramme
+        feedback: >
+          $2{,}0\ \text{ms/div}$ est l'échelle de l'écran, pas une durée du
+          signal — la même confusion que prendre une flèche de calibration
+          pour une flèche de période. Une durée se construit : (nombre de
+          divisions) × (ms par division), ici $6{,}0 \times 2{,}0 = 12\ \text{ms}$.
+    correct_feedback: >
+      D'un renflement au renflement suivant il y a $7{,}0 - 1{,}0 = 6{,}0$
+      divisions, soit $T = 6{,}0 \times 2{,}0 = 12\ \text{ms}$, et
+      $f = 1/T \approx 83\ \text{Hz}$. Deux extrema de même type, puis la
+      sensibilité : c'est toute la lecture.
+    solution: |
+      Une période de l'enveloppe va d'un extremum à l'extremum de **même
+      type** : ici du renflement à $1{,}0$ division au renflement à
+      $7{,}0$ divisions, soit $6{,}0$ divisions.
+
+      $$T = 6{,}0 \times 2{,}0\ \text{ms} = 12\ \text{ms} \qquad f = \frac{1}{12\times10^{-3}} \approx 83\ \text{Hz}$$
+
+      Contrôle : le resserrement à $4{,}0$ divisions tombe au milieu, à
+      une demi-période de chaque renflement, et $83\ \text{Hz}$ est une
+      fréquence audible basse, cohérente avec un signal modulant.
+
+  - id: OEM-26
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_ondes_em_modulation
+    habilete: application_experimentale
+    tags: []
+    primary_misconception: mc.physics.pc_ondes_em_modulation.lecture-oscillogramme
+    stem: >
+      Sur l'oscillogramme d'un signal modulé en amplitude, l'axe vertical ne
+      porte que trois valeurs chiffrées, $-1{,}0\ \text{V}$, $0$ et
+      $+1{,}0\ \text{V}$ ; l'écart de $0$ à $+1{,}0\ \text{V}$ couvre
+      $2$ divisions. Aux renflements, les crêtes culminent à $3{,}0$
+      divisions au-dessus de l'axe ; aux resserrements, à $1{,}0$ division.
+      Que valent $U_{max}$ et le taux de modulation $m$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$U_{max} = 1{,}5\\ \\text{V}$ et $m = 0{,}50$, puisqu'une division vaut ici $0{,}50\\ \\text{V}$."
+        correct: true
+      - id: B
+        text: "$U_{max} = 1{,}0\\ \\text{V}$ et $U_{min} = 0$, les deux valeurs chiffrées que l'axe porte au-dessus des crêtes basses : $m = 1{,}0$."
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.lecture-oscillogramme
+        feedback: >
+          $+1{,}0\ \text{V}$ et $0$ sont des repères d'axe : ils marquent des
+          hauteurs, pas des sommets du tracé. Les crêtes montent à $3{,}0$
+          divisions, bien au-dessus du repère $+1{,}0\ \text{V}$, et
+          redescendent à $1{,}0$ division, pas à zéro. On lit un extremum là où
+          les crêtes culminent réellement.
+      - id: C
+        text: "$U_{max} = 3{,}0\\ \\text{V}$ et $m = 0{,}50$, puisque les crêtes culminent à $3{,}0$ divisions."
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.lecture-oscillogramme
+        feedback: >
+          $3{,}0$ est un nombre de divisions, pas de volts. L'énoncé donne
+          l'échelle autrement que d'habitude — de $0$ à $1{,}0\ \text{V}$ sur
+          deux divisions, donc $0{,}50\ \text{V}$ par division — et
+          $3{,}0 \times 0{,}50 = 1{,}5\ \text{V}$. Le taux, lui, est juste : un
+          rapport ne dépend pas de l'échelle.
+      - id: D
+        text: "$U_{max} = 1{,}5\\ \\text{V}$ et $m = 0{,}33$, le rapport de la crête basse à la crête haute."
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.taux-modulation-calcul
+        feedback: >
+          La conversion est juste, la combinaison non. $U_{max} = A(1+m)$ et
+          $U_{min} = A(1-m)$ : c'est la différence sur la somme qui élimine
+          $A$, soit $\dfrac{1{,}5 - 0{,}50}{1{,}5 + 0{,}50} = 0{,}50$. Le simple
+          rapport $U_{min}/U_{max}$ garde $A$ dedans.
+    correct_feedback: >
+      Deux divisions pour $1{,}0\ \text{V}$ : une division vaut
+      $0{,}50\ \text{V}$, d'où $U_{max} = 1{,}5\ \text{V}$ et
+      $U_{min} = 0{,}50\ \text{V}$. Et $m$ se calcule même sans convertir :
+      $\dfrac{3{,}0 - 1{,}0}{3{,}0 + 1{,}0} = 0{,}50$, en divisions.
+    solution: |
+      L'échelle : $2$ divisions pour $1{,}0\ \text{V}$, donc
+      $0{,}50\ \text{V}$ par division.
+
+      $$U_{max} = 3{,}0 \times 0{,}50 = 1{,}5\ \text{V} \qquad U_{min} = 1{,}0 \times 0{,}50 = 0{,}50\ \text{V}$$
+
+      $$m = \frac{U_{max} - U_{min}}{U_{max} + U_{min}} = \frac{1{,}5 - 0{,}50}{1{,}5 + 0{,}50} = 0{,}50$$
+
+      $m < 1$ : bonne modulation. Le raccourci : $m$ est un rapport, donc
+      $\dfrac{3{,}0 - 1{,}0}{3{,}0 + 1{,}0} = 0{,}50$ directement en
+      divisions, sans conversion.
+
+  - id: OEM-27
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: pc_ondes_em_modulation
+    habilete: application_experimentale
+    tags: []
+    primary_misconception: mc.physics.pc_ondes_em_modulation.lecture-oscillogramme
+    stem: >
+      Un signal modulé en amplitude est observé avec un balayage horizontal de
+      $0{,}20\ \text{ms/div}$. On compte $5$ oscillations de la porteuse par
+      division, et l'enveloppe se répète toutes les $4{,}0$ divisions. Que
+      vaut la fréquence $F$ de la porteuse ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$25\\ \\text{kHz}$ : une oscillation occupe un cinquième de division, soit $0{,}040\\ \\text{ms}$."
+        correct: true
+      - id: B
+        text: "$1{,}0\\ \\text{kHz}$ : cinq oscillations par division, donc une période de cinq divisions, soit $1{,}0\\ \\text{ms}$."
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.lecture-oscillogramme
+        feedback: >
+          Cinq oscillations DANS une division, c'est une oscillation dans un
+          cinquième de division. Ta lecture décrit un tracé vingt-cinq fois
+          plus lâche : sur les $4{,}0$ divisions d'une période d'enveloppe, on
+          verrait moins d'une oscillation, pas vingt.
+      - id: C
+        text: "$5{,}0\\ \\text{kHz}$ : une oscillation par division, de période $0{,}20\\ \\text{ms}$."
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.lecture-oscillogramme
+        feedback: >
+          $0{,}20\ \text{ms}$ est la durée d'une DIVISION, pas celle d'une
+          oscillation — et l'énoncé en compte cinq par division. La période de
+          la porteuse est $0{,}20/5 = 0{,}040\ \text{ms}$.
+      - id: D
+        text: "$1{,}25\\ \\text{kHz}$ : le motif se répète toutes les $4{,}0$ divisions, soit $0{,}80\\ \\text{ms}$."
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.porteuse-vs-signal-modulant
+        feedback: >
+          Ce qui se répète toutes les $4{,}0$ divisions, c'est l'enveloppe :
+          $1{,}25\ \text{kHz}$ est la fréquence du signal modulant, le rythme
+          LENT. La porteuse est le rythme rapide, les oscillations serrées
+          sous l'enveloppe — vingt fois plus rapide ici.
+    correct_feedback: >
+      Cinq oscillations par division : une oscillation dure
+      $0{,}20/5 = 0{,}040\ \text{ms}$, donc $F = 25\ \text{kHz}$. L'enveloppe,
+      elle, se répète en $0{,}80\ \text{ms}$ : $f = 1{,}25\ \text{kHz}$, et
+      $F/f = 20$.
+    solution: |
+      $$T_p = \frac{0{,}20\ \text{ms}}{5} = 0{,}040\ \text{ms} = 4{,}0\times10^{-5}\ \text{s} \qquad F = \frac{1}{4{,}0\times10^{-5}} = 2{,}5\times10^{4}\ \text{Hz} = 25\ \text{kHz}$$
+
+      Contrôle : l'enveloppe dure $4{,}0 \times 0{,}20 = 0{,}80\ \text{ms}$,
+      soit $f = 1{,}25\ \text{kHz}$, et $F/f = 25/1{,}25 = 20$ — exactement
+      les $5 \times 4{,}0 = 20$ oscillations qu'on compte sous une période
+      d'enveloppe.
+
+  - id: OEM-28
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_ondes_em_modulation
+    habilete: résolution
+    tags: []
+    primary_misconception: mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete
+    stem: >
+      Un signal modulé porte une porteuse de fréquence $F = 20\ \text{kHz}$ et
+      un signal modulant de fréquence $f = 500\ \text{Hz}$. On le démodule par
+      un détecteur de crête dont le condensateur vaut $C_0 = 47\ \text{nF}$, en
+      parallèle avec une résistance $R_0 = 10\ \text{k}\Omega$. La démodulation
+      est-elle de bonne qualité ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : $R_0C_0 = 0{,}47\\ \\text{ms}$ est plus grande que $1/F = 0{,}050\\ \\text{ms}$, donc le condensateur ne suit plus les crêtes."
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete
+        feedback: >
+          C'est l'inverse : la décharge DOIT être lente devant la période de la
+          porteuse. Si $R_0C_0$ était plus petite que $1/F$, le condensateur se
+          viderait entre deux crêtes et sa tension retomberait sur la porteuse.
+          Être grande devant $1/F$, c'est la borne de gauche respectée.
+      - id: B
+        text: "Oui : $R_0C_0 = 0{,}47\\ \\text{ms}$ est grande devant $1/F = 0{,}050\\ \\text{ms}$ et petite devant $1/f = 2{,}0\\ \\text{ms}$."
+        correct: true
+      - id: C
+        text: "Non : $R_0C_0 = 0{,}47\\ \\text{ms}$ est plus petite que $1/f = 2{,}0\\ \\text{ms}$, donc le condensateur se vide trop vite."
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete
+        feedback: >
+          C'est encore l'inverse : la décharge DOIT être rapide devant la
+          période du signal, sinon le condensateur rate les descentes de
+          l'enveloppe et s'en va presque tout droit. Être petite devant $1/f$,
+          c'est la borne de droite respectée.
+      - id: D
+        text: "Oui : la seule condition est $R_0C_0 \\gg 1/F$, et $0{,}47\\ \\text{ms}$ vaut près de dix fois $0{,}050\\ \\text{ms}$."
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete
+        feedback: >
+          La conclusion est juste, le critère est à moitié. Une décharge lente
+          devant la porteuse ne suffit pas : trop lente, elle ne suit plus les
+          descentes de l'enveloppe. Il y a DEUX bornes,
+          $1/F \ll R_0C_0 \ll 1/f$ ; avec $R_0 = 100\ \text{k}\Omega$,
+          $R_0C_0 = 4{,}7\ \text{ms}$ tiendrait la première et violerait la
+          seconde.
+    correct_feedback: >
+      Il faut $1/F \ll R_0C_0 \ll 1/f$, soit
+      $0{,}050\ \text{ms} \ll R_0C_0 \ll 2{,}0\ \text{ms}$. Avec
+      $R_0C_0 = 0{,}47\ \text{ms}$ : environ neuf fois la borne de gauche,
+      quatre fois moins que celle de droite. Les deux bornes tiennent : la
+      démodulation est de bonne qualité.
+    solution: |
+      Les deux bornes :
+
+      $$\frac{1}{F} = \frac{1}{2{,}0\times10^{4}} = 5{,}0\times10^{-5}\ \text{s} = 0{,}050\ \text{ms} \qquad \frac{1}{f} = \frac{1}{500} = 2{,}0\times10^{-3}\ \text{s} = 2{,}0\ \text{ms}$$
+
+      La constante de temps :
+
+      $$R_0C_0 = 1{,}0\times10^{4} \times 4{,}7\times10^{-8} = 4{,}7\times10^{-4}\ \text{s} = 0{,}47\ \text{ms}$$
+
+      $0{,}050 \ll 0{,}47 \ll 2{,}0$ : la décharge est lente devant la
+      période de la porteuse (le condensateur ne se vide pas entre deux
+      crêtes) et rapide devant celle du signal (il suit les descentes de
+      l'enveloppe). La démodulation est de bonne qualité.
+
 # ──────────────────────────────────────────────────────────────────────────────
 # COVERAGE SUMMARY (backfilled in the summit-conversion pass)
 #
@@ -1542,33 +1804,40 @@ items:
 # ──────────────────────────────────────────────────────────────────────────────
 coverage_summary:
   method: "item-level, by primary_misconception (one item = one count)"
-  total_items: 24
+  total_items: 28
   per_misconception:
     mc.physics.pc_ondes_em_modulation.antenne-taille-vs-longueur-onde: 4    # OEM-1, OEM-7, OEM-8, OEM-9
     mc.physics.pc_ondes_em_modulation.lambda-relation-cf: 3                 # OEM-10, OEM-11, OEM-22
     mc.physics.pc_ondes_em_modulation.porteuse-vs-signal-modulant: 4        # OEM-2, OEM-3, OEM-12, OEM-13
     mc.physics.pc_ondes_em_modulation.taux-modulation-calcul: 3             # OEM-4, OEM-19, OEM-23
     mc.physics.pc_ondes_em_modulation.surmodulation-nature: 3              # OEM-5, OEM-16, OEM-20
-    mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete: 3      # OEM-14, OEM-15, OEM-24
+    mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete: 4      # OEM-14, OEM-15, OEM-24, OEM-28
     mc.physics.pc_ondes_em_modulation.circuit-accorde-selection: 4         # OEM-6, OEM-17, OEM-18, OEM-21
+    mc.physics.pc_ondes_em_modulation.lecture-oscillogramme: 3             # OEM-25, OEM-26, OEM-27
   floor: 3
   floor_met: true
   ramp_coverage:
     R0: 3   # OEM-7, OEM-8, OEM-9
     R1: 4   # OEM-1, OEM-10, OEM-11, OEM-22
     R2: 3   # OEM-2, OEM-12, OEM-13
-    R3: 4   # OEM-3, OEM-4, OEM-5, OEM-23
-    R4: 4   # OEM-14, OEM-15, OEM-16, OEM-24
+    R3: 7   # OEM-3, OEM-4, OEM-5, OEM-23, OEM-25, OEM-26, OEM-27
+    R4: 5   # OEM-14, OEM-15, OEM-16, OEM-24, OEM-28
     R5: 3   # OEM-6, OEM-17, OEM-18
     R6: 3   # OEM-19, OEM-20, OEM-21
   note: >
-    Floor closed and per-distractor tagging promoted in this pass. OEM-1…OEM-21:
-    every distractor now carries a `misconception:` field (added without
-    deleting or weakening any existing stem, feedback, or solution — additive
-    only). OEM-22…OEM-24: 3 new stems closing the three under-covered models
-    (lambda-relation-cf 2→3, taux-modulation-calcul 2→3,
-    demodulation-detecteur-crete 2→3), each a fresh stem (not a memorizable
-    restatement of an existing item, nor of the r-bac 2017 sujet or the
-    r-variation training exercise). Per-distractor tags are diagnostic metadata
-    layered onto the item-level `primary_misconception` floor count; they do not
-    change the coverage method or counts above.
+    Floor closed and per-distractor tagging promoted in the summit-conversion
+    pass. OEM-1…OEM-21: every distractor carries a `misconception:` field
+    (added without deleting or weakening any existing stem, feedback, or
+    solution — additive only). OEM-22…OEM-24: 3 new stems closing the three
+    models then under the floor (lambda-relation-cf 2→3,
+    taux-modulation-calcul 2→3, demodulation-detecteur-crete 2→3).
+    OEM-25…OEM-28 (the banc-de-modulation delivery, spec §8): an eighth model,
+    lecture-oscillogramme — the reading gesture 7 real sujets out of 7 demand
+    and no item exercised — at the floor with zero margin (OEM-25…27, each an
+    oscillogram DESCRIBED in words, the item schema carrying no figure); and
+    OEM-28, the detector's double inequality 1/F ≪ R0C0 ≪ 1/f that
+    bk-2025-n-x3 flagged as taught nowhere (demodulation-detecteur-crete 3→4).
+    Only these four carry `habilete`: the notion's cognitive mix stays
+    uncomputable while the 24 others carry none. Per-distractor tags are
+    diagnostic metadata layered onto the item-level floor count; they do not
+    change the method or counts above.

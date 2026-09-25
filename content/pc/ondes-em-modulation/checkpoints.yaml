@@ -36,9 +36,11 @@ skill_code: pc_ondes_em_modulation
 # Boundary guard: 2ème Bac PC modulation d'amplitude. Antenne rayonne à
 # l'échelle de λ = c/f ; modulation s(t) = (U0 + sm)cos(2π fp t), l'info dans
 # l'amplitude ; m = Sm/U0, m<1 bonne modulation ; démodulation par détecteur de
-# crête (enveloppe) ; sélection par circuit accordé f0 = 1/(2π√(LC)). Pas de
-# décomposition spectrale quantitative (bandes latérales Fp±fs) ni de résonance
-# en régime sinusoïdal forcé.
+# crête (enveloppe) ; sélection par circuit accordé f0 = 1/(2π√(LC)). Le
+# spectre de fréquences EST au cadre (« connaître et exploiter », traitement
+# qualitatif) : l'allure à trois raies, Fp et Fp ± fs, que demande 2023 N
+# (bk-2023-n-x3 q3) — corrigé le 2026-09-25, cette garde l'interdisait (spec
+# du banc de modulation §13.7). Pas de résonance en régime sinusoïdal forcé.
 # ──────────────────────────────────────────────────────────────────────────────
 
 checkpoints:

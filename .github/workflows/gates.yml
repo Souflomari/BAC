@@ -189,7 +189,13 @@ jobs:
       # la nature), le ZÉRO de la composante normale sur la droite — une
       # BRANCHE, pas un rayon infini —, la géométrie (C à 18°, le cercle tangent
       # à la droite en B) et la course (partie à −9,0 m, arrêtée en B).
-      - name: Tests unitaires (apprenant · session · typographie · écriture · épreuves · mélange · noyaux · diffraction · tremplin)
+      #
+      # test-modulation garde le modèle du « banc de modulation » : les 9
+      # couples (U0, Sm) de la table des extrema, le PLANCHER de U_min à 0 —
+      # une branche, pas un arrondi —, les 4 crans de porteuse (des comptages
+      # ENTIERS), les zéros de l'enveloppe surmodulée, et la récurrence du
+      # détecteur identique à celle de la spec à 10⁻¹² tant que m < 1.
+      - name: Tests unitaires (apprenant · session · typographie · écriture · épreuves · mélange · noyaux · diffraction · tremplin · modulation)
         run: |
           npm run test-learner-model
           npm run test-attempt-events
@@ -200,6 +206,7 @@ jobs:
           npm run test-noyaux
           npm run test-diffraction
           npm run test-tremplin
+          npm run test-modulation
 
       # PORTE LIENS (2026-09-05). Ce projet se pilote par ses documents :
       # `.claude/CLAUDE.md` envoie vers la vision, la vision vers les règles,
