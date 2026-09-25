@@ -142,6 +142,10 @@ Reviens à l'exemple : à $U = 0{,}9\ \text{V}$, rien ne s'inverse - le courant 
 
 ## R4 — La quantité d'électricité : $Q = I\,\Delta t = n(e^-)\,F$, réutilisée à l'envers
 
+Avant la relation, la paillasse. C'est la cellule de l'accroche, celle que les chapitres 1 à 4 ont suivie : une lame de zinc, une lame de cuivre, un pont salin, un générateur réglable — et le seuil du chapitre 4 est déjà franchi. On y lit trois instruments : un **ampèremètre** (en ampères), une **balance** (en grammes, au milligramme) et un **chronomètre**. On y règle la **tension** du générateur, et l'**intensité**, qu'un rhéostat en série maintient à la valeur affichée. Les manipulations sont accélérées : une seconde à l'écran pour un quart d'heure. Tu paries d'abord ; la paillasse répond ensuite.
+
+[[embed:banc-electrolyse]]
+
 ### La même loi, un sens inversé
 
 Tu connais déjà cette relation (leçon précédente, chapitre 7) : le courant $I$, maintenu pendant une durée $\Delta t$, fait circuler une quantité d'électricité
@@ -159,6 +163,10 @@ $$I\,\Delta t = n(e^-)\,F$$
 Cette relation ne dépend en rien du dispositif - pile ou électrolyse - dans lequel le courant circule : c'est une relation purement électrique entre charge, courant, durée et quantité de matière d'électrons.
 
 Ce qui change, c'est le **sens physique** de ce qu'elle mesure. Dans une pile (chapitre 7, leçon précédente), cette relation chiffrait l'**usure** : la masse de réactif qui disparaît irréversiblement de l'anode à mesure que la pile fonctionne. Dans une électrolyse, elle chiffre au contraire un **dépôt** ou une **transformation forcée** : la masse de matière qui apparaît à une électrode, construite de force par le courant que le générateur impose.
+
+### La tension décide *si* ; la charge décide *combien*
+
+Le banc vient de séparer deux rôles que la leçon n'avait jamais séparés. La **tension** imposée décide **si** la transformation forcée a lieu, et **dans quel sens** : c'est le seuil du chapitre 4. Mais **à courant maintenu constant** — ce que fait tout montage d'électrolyse, et ce que les sujets veulent dire quand ils écrivent « intensité constante » — elle ne décide pas de **combien** il se transforme. La quantité se lit sur le **courant** et la **durée**, et seulement sur leur produit $I\,\Delta t$ : $0{,}100\ \text{A}$ pendant $1\ \text{h}\ 30$ et $0{,}200\ \text{A}$ pendant $45\ \text{min}$ déposent exactement la même masse, parce que $0{,}100 \times 5400 = 0{,}200 \times 2700 = 540\ \text{C}$. Une fois le seuil franchi, et tant que le courant est maintenu, la tension ne figure dans aucun calcul de masse : la monter change ce que l'installation consomme, pas ce qu'elle produit. Si l'on ne maintenait pas le courant, monter la tension le ferait monter, et le dépôt avec — c'est pour cela que tous les énoncés précisent « à intensité constante ».
 
 ### Exemple travaillé
 
@@ -179,6 +187,26 @@ $$m(Zn) = n(Zn) \times M(Zn) \approx 5{,}6\times10^{-3} \times 65{,}4 \approx 0{
 Remarque quelque chose de frappant : ce sont exactement les mêmes $1080\ \text{C}$, la même quantité de matière d'électrons, et la même masse de zinc - $0{,}37\ \text{g}$ - que dans l'exemple travaillé du chapitre 7 de la leçon sur les piles. Mais là où cette masse de zinc **disparaissait** progressivement de l'anode (la pile s'usait), ici elle **apparaît** à la cathode (l'électrolyse la dépose). Le calcul ne change pas d'un iota ; c'est le sens physique de la transformation qui s'est inversé - exactement comme le générateur a inversé le sens de la réaction elle-même.
 
 À l'anode, le cuivre se dissout selon la même logique : $n(Cu) = n(e^-)/2 \approx 5{,}6\times10^{-3}\ \text{mol}$, soit une masse dissoute $m(Cu) \approx 5{,}6\times10^{-3} \times 63{,}5 \approx 0{,}36\ \text{g}$.
+
+### Le geste inverse : mesurer la constante de Faraday
+
+Jusqu'ici, $F$ était **donnée**, et servait à trouver une masse. La chaîne se parcourt aussi dans l'autre sens : on **pèse**, et on en déduit $F$. Il faut quatre mesures, et rien d'autre : l'intensité $I$ (maintenue constante), la durée $\Delta t$, la masse déposée $m$, et la masse molaire $M$ du métal (donnée). La demi-équation fournit le cinquième ingrédient, qui n'est pas une mesure : le nombre $z$ d'électrons échangés par atome.
+
+$$n(\text{métal}) = \frac{m}{M} \quad\longrightarrow\quad n(e^-) = z\,\frac{m}{M} \quad\longrightarrow\quad F = \frac{Q}{n(e^-)} = \frac{I\,\Delta t}{z\,m/M}$$
+
+Avec les nombres du banc : $I = 0{,}400\ \text{A}$ pendant $\Delta t = 1\ \text{h}\ 30 = 5400\ \text{s}$ déposent $m(Zn) = 0{,}732\ \text{g}$, avec $M(Zn) = 65{,}4\ \text{g/mol}$ et $z = 2$ :
+
+$$Q = 0{,}400 \times 5400 = 2160\ \text{C}$$
+
+$$n(e^-) = \frac{2 \times 0{,}732}{65{,}4} \approx 2{,}239\times10^{-2}\ \text{mol}$$
+
+$$F = \frac{2160}{2{,}239\times10^{-2}} \approx 9{,}65\times10^{4}\ \text{C/mol}$$
+
+La même valeur sort de n'importe quelle électrolyse — autre métal, autre bain, autre courant, autre durée, autre tension : ce qui change d'une manipulation à l'autre, c'est le $z$ de la demi-équation et la masse molaire, jamais $F$. C'est ce qui permet de la tabuler une fois pour toutes. Et en isolant $m$, on retrouve la relation qui sert dans l'autre sens :
+
+$$m = \frac{M\,I\,\Delta t}{z\,F}$$
+
+Un conseil de manipulation, chiffré : plus le dépôt est petit, plus l'arrondi de la pesée pèse lourd. La même mesure menée $45\ \text{min}$ à $0{,}100\ \text{A}$ ne dépose que $0{,}091\ \text{g}$, et la même arithmétique donne alors $9{,}70\times10^{4}\ \text{C/mol}$ — un demi pour cent à côté. Fais durer la manipulation.
 
 ### Teste l'idée avant de la croire : « la loi de Faraday ne s'applique qu'aux piles »
 
@@ -260,6 +288,8 @@ Dans les trois cas, le même schéma se répète : la cathode produit ce qu'on c
 - L'anode reste, comme dans une pile, le siège de l'oxydation ; la cathode reste le siège de la réduction. Mais la polarité s'inverse : en électrolyse, l'anode est la borne +, la cathode la borne − - l'exact opposé de la pile -, parce que c'est le générateur qui impose la polarité, et donc le mécanisme, plutôt que l'inverse.
 - Il faut que le générateur impose une tension supérieure, en valeur absolue, à la force électromotrice propre de la cellule pour inverser réellement le sens de la réaction ; en dessous de ce seuil, le sens spontané continue de l'emporter, simplement freiné.
 - La quantité d'électricité mise en jeu suit la même loi que pour la pile, $Q = I\,\Delta t = n(e^-)\,F$ - sauf qu'elle sert ici à calculer une masse déposée ou transformée, pas une masse consommée par usure.
+- La tension décide **si** la transformation a lieu et **dans quel sens** ; à courant maintenu constant, la charge $Q = I\,\Delta t$ décide **de combien**. Deux réglages de même produit $I\,\Delta t$ déposent la même masse, et la tension ne figure dans aucun calcul de masse.
+- La chaîne se parcourt dans les deux sens : de $I$ et $\Delta t$ vers la masse, $m = \dfrac{M\,I\,\Delta t}{z\,F}$ ; et de la masse pesée vers $F = \dfrac{I\,\Delta t}{z\,m/M}$. $F$ est universelle : la charge d'une mole d'électrons, la même quels que soient le métal, le bain, le courant, la durée et la tension.
 - L'électrolyse ne produit jamais d'énergie électrique nette : elle en consomme, pour construire des produits qu'aucune réaction spontanée ne fournirait (électrolyse de l'eau, dépôt métallique par galvanoplastie, production industrielle de l'aluminium).
 
 ### Exercice de type bac

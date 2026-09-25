@@ -1,0 +1,327 @@
+{
+  "slug": "banc-electrolyse",
+  "tool": "scene2d",
+  "type": "manipulable",
+  "scene": "banc-electrolyse",
+  "title_fr": "Le banc d'électrolyse : la tension décide du sens, la charge de la quantité",
+  "caption_fr": "La cellule des chapitres 1 à 4, sur la paillasse : une lame de cuivre (B), une lame de zinc (A), un pont salin, un générateur dont la borne + est à gauche, un rhéostat qui tient le courant, un ampèremètre, un chronomètre et deux balances. Échange les fils, change la durée, le courant, la tension — et pèse. À chaque étape, tu paries d'abord. Tous les nombres sont ceux de la leçon (0,200 A pendant 1 h 30 déposent 0,366 g de zinc) ; la disposition — la borne + à gauche, les électrodes nommées (A) et (B) — et la formule « courant d'intensité constante » sont celles des sujets.",
+  "boundary": "Cadre (chimie → électrolyse, 2ème Bac PC/SM) : le sens forcé imposé par un générateur, la polarité des électrodes, la quantité d'électricité $Q = I\\cdot\\Delta t$ et la constante de Faraday ; la force électromotrice est MESURÉE, jamais calculée. Hors scène : les potentiels standards et Nernst, la surtension, toute loi reliant le courant à la tension, l'énergie et la puissance, la thermodynamique, le rendement, les gaz et le volume molaire (chapitre 6), les applications industrielles et les autres métaux, les concentrations, le pH, les graphes, les incertitudes chiffrées ; la scène n'est pas un TP.",
+  "fit_caveat": "1. L'épaisseur du dépôt est très exagérée, d'un facteur constant et déclaré : un dépôt réel de cette masse fait quelques dizaines de micromètres. Le facteur est le même aux 27 états et aux deux lames, et un témoin le montre : deux fois plus de masse, deux fois plus épais. Le nombre est sur la balance. 2. On pèse la lame avant et après ; le banc affiche la différence au fil de la manipulation, comme si la pesée était continue — une commodité de lecture. 3. Un rhéostat maintient le courant : l'ampèremètre affiche la même valeur à toutes les tensions. Sans lui, monter la tension ferait monter le courant, et le dépôt avec ; le banc ne montre pas ce cas, parce que la relation qui le chiffrerait n'est pas au programme de ce chapitre. 4. Deux récipients reliés par un pont salin, le montage de ce chapitre ; les sujets dessinent le plus souvent un tube en U, deux électrodes dans la même solution — le dessin change, pas le raisonnement.",
+  "fallback_note": "Sans JavaScript et à l'impression, le panneau disparaît — et rien ne le remplace. Les trois figures de cette leçon (la cellule, le seuil de tension, l'électrolyse de l'eau) montrent un montage et un mécanisme ; aucune ne porte une masse, une durée ou une intensité, donc aucune ne montre ce que ce banc enseigne : que le dépôt suit le produit $I\\,\\Delta t$, que la tension n'y entre pas, et qu'une pesée suffit à mesurer la constante de Faraday. L'élève sans JavaScript perd ces trois faits et s'en remet aux paragraphes qui suivent le banc, qui les écrivent en toutes lettres. C'est un argument pour une figure de repli (question au propriétaire, spec §13.6), pas contre la scène.",
+  "pedagogy_wiring": {
+    "why_manipulable": "La leçon dit « anode = borne + » et le tableau du chapitre 3 garde le zinc du côté du moins : aucun texte ne change un câblage, aucun exemple ne fait varier le courant, aucun ne donne une tension à employer, et la constante de Faraday est DONNÉE partout, déterminée nulle part. Il faut deux boutons à deux rôles pour voir que la tension décide du sens et que la charge décide de la quantité : échanger les fils fait changer de côté l'aiguille, les flèches et les rôles ; doubler la durée ou le courant double la pesée ; doubler la tension ne change rien — et la balance, divisée par la demi-équation, mesure la constante.",
+    "predict_then_reveal": "Chaque étape pose une question ; l'élève parie AVANT que le circuit se ferme. La course répond : l'aiguille prend son côté, le chronomètre part, la balance monte et s'arrête à la durée réglée — la paillasse répond avant le texte, et les réglages de l'étape s'ouvrent ensuite.",
+    "misconceptions": [
+      "mc.physics.pc_electrolyse.polarite-comme-pile",
+      "mc.physics.pc_electrolyse.seuil-tension-continu",
+      "mc.physics.pc_electrolyse.tension-decide-la-quantite",
+      "mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique",
+      "mc.physics.pc_electrolyse.faraday-calcul-unites",
+      "mc.physics.pc_electrolyse.faraday-constante-universelle"
+    ]
+  },
+  "spec_ref": "content/pc/electrolyse/spec-scene-electrolyse.md",
+  "adr_ref": "docs/decisions/0041-scenes-3d-de-premiere-partie.md",
+  "etapes": [
+    {
+      "id": "on-echange-les-fils",
+      "titre": "On échange les deux fils",
+      "consigne": "La cellule des quatre premiers chapitres, sur la paillasse. À gauche, la lame de **cuivre (B)** dans sa solution ; à droite, la lame de **zinc (A)** dans la sienne ; entre les deux, le pont salin. En haut, le générateur : sa borne **plus** est à **gauche**, sa borne **moins** à **droite** — lis-les sur le dessin, elles ne sont pas toujours du même côté. Il est réglé sur $6{,}0$ volts, bien au-dessus de la force électromotrice propre de la cellule — environ $1{,}1$ volt, le chapitre 4 vient de l'établir. Sur le fil de gauche, un **rhéostat** : c'est lui qui maintient le courant à $0{,}200$ ampère, quoi qu'il arrive. Dans ce branchement-là, tu le sais depuis le chapitre 2 : le zinc se dépose, le cuivre se dissout. On va maintenant **échanger les deux fils** — la borne plus sur le **zinc (A)** — sans rien changer d'autre.",
+      "pari": {
+        "question": "Les deux fils échangés, la lame de zinc (A)…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "se-dissout-anode",
+            "texte": "se **dissout** : c'est maintenant la borne **plus** qui l'alimente, donc l'oxydation s'y produit — elle est devenue l'**anode**",
+            "juste": true,
+            "retour": "Oui, et **retiens le mécanisme, pas le résultat** : la borne **plus** **tire** les électrons hors du métal qu'elle alimente ; une espèce à son contact doit donc en céder — $Zn \\rightleftharpoons Zn^{2+} + 2\\,e^-$, une **oxydation**, donc une **anode**. Le rôle n'est attaché ni au métal, ni au côté du dessin : **il est attaché à la borne**. Et remarque ce qui vient de se passer en plus : dans ce branchement, la cellule évolue dans son **sens spontané** — le générateur ne force plus rien, il accompagne."
+          },
+          {
+            "id": "grossit-toujours",
+            "texte": "continue de **grossir** : le zinc est la cathode de cette cellule, c'est une propriété du couple, pas du câblage",
+            "juste": false,
+            "retour": "La lame (A) s'est dissoute. Aucune électrode n'est « la cathode de cette cellule » une fois pour toutes : **anode** et **cathode** nomment ce qui S'Y PRODUIT, et en électrolyse c'est le générateur qui décide où se produit quoi. Le tableau du chapitre 3 gardait le zinc du côté du moins parce qu'on n'y touchait jamais aux fils ; ici on y touche, et la même lame passe de cathode à anode sans qu'on ait changé un atome. Échange les fils dans un sens puis dans l'autre.",
+            "misconception": "mc.physics.pc_electrolyse.polarite-comme-pile"
+          },
+          {
+            "id": "se-dissout-cathode",
+            "texte": "se dissout, et elle reste donc la **cathode** : c'est la lame qui perd de la matière",
+            "juste": false,
+            "retour": "Le sens est juste, le nom ne l'est pas — et c'est le seul mot de tout le chapitre qui ne change **jamais** de camp : **anode = oxydation, cathode = réduction**, dans une pile comme dans un électrolyseur. Une lame qui se dissout cède des électrons : c'est une oxydation, donc une **anode**. Ce qui s'inverse entre pile et électrolyse, c'est la **polarité** associée à ce nom, jamais le nom lui-même.",
+            "misconception": "mc.physics.pc_electrolyse.polarite-comme-pile"
+          },
+          {
+            "id": "rien-sous-le-seuil",
+            "texte": "ne change pas : il faudrait d'abord **redépasser le seuil de 1,1 volt dans l'autre sens** pour que quoi que ce soit s'inverse",
+            "juste": false,
+            "retour": "La lame (A) s'est dissoute tout de suite. **Le seuil du chapitre 4 n'est pas une propriété de la cellule : c'est le prix à payer pour forcer le sens que la chimie refuse.** Dans ce branchement-ci, le générateur pousse dans le sens que la cellule veut déjà — il n'y a rien à vaincre, et il n'y a donc rien à dépasser.",
+            "misconception": "mc.physics.pc_electrolyse.seuil-tension-continu"
+          }
+        ]
+      },
+      "suite": "Repasse les deux branchements. Regarde trois choses changer de côté **ensemble** : l'aiguille de l'ampèremètre, les flèches du courant sur les fils, et les deux étiquettes **anode** et **cathode**. Ce sont les trois faces d'un même fait.",
+      "controles": [
+        "branchement"
+      ],
+      "lectures": [
+        "fem",
+        "sens",
+        "intensite",
+        "duree"
+      ],
+      "etat": {
+        "u_v": "6.0",
+        "cablage": "oppose",
+        "i_ma": "200",
+        "duree_s": "1800"
+      },
+      "etat_revele": {
+        "cablage": "accord"
+      }
+    },
+    {
+      "id": "deux-fois-plus-longtemps",
+      "titre": "Deux fois plus longtemps",
+      "consigne": "Retour au branchement forcé : borne plus sur le cuivre (B), le zinc (A) se dépose. Le rhéostat **maintient le courant à $0{,}200$ ampère** du début à la fin — c'est ce que fait un vrai montage, et c'est ce que les sujets veulent dire quand ils écrivent « courant d'intensité constante ». On a laissé tourner **45 minutes** : on a pesé la lame (A) avant et après, et le dépôt fait **$0{,}183$ gramme**. On va refaire exactement la même manipulation pendant **1 heure 30**, deux fois plus longtemps.",
+      "pari": {
+        "question": "Au bout d'1 h 30, le dépôt de zinc pèsera…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "double",
+            "texte": "**$0{,}366$ g** — deux fois plus",
+            "juste": true,
+            "retour": "Oui. Et voici **pourquoi**, parce que c'est le mécanisme qu'il faut tenir : le rhéostat **maintient le courant**, donc il passe autant d'électricité dans la deuxième seconde que dans la première, et autant dans la trois-millième. **Chaque seconde apporte exactement autant que la précédente** — regarde la balance monter pendant la manipulation, elle monte à vitesse constante. Deux fois plus de temps, deux fois plus de zinc. Parcours les trois durées sans toucher à rien d'autre : $0{,}122$ · $0{,}183$ · $0{,}366$ gramme."
+          },
+          {
+            "id": "inchangee",
+            "texte": "**$0{,}183$ g** — la même : à courant maintenu, c'est la **tension** qui fixe la quantité déposée, et elle n'a pas changé",
+            "juste": false,
+            "retour": "La balance affiche $0{,}366$, le double. La tension n'a effectivement pas changé — et la masse a changé quand même. **La tension décide si le dépôt a lieu ; à courant maintenu, elle ne décide pas de combien il y en a.** Ce qui s'accumule, c'est ce qui passe dans le fil pendant qu'on attend. Laisse tourner 30 minutes, puis 45, puis 1 h 30 : $0{,}122$ · $0{,}183$ · $0{,}366$.",
+            "misconception": "mc.physics.pc_electrolyse.tension-decide-la-quantite"
+          },
+          {
+            "id": "quadruple",
+            "texte": "**$0{,}732$ g** — quatre fois plus : on double la durée, **et** on double du même coup ce qui a circulé",
+            "juste": false,
+            "retour": "Le doublement est compté deux fois. La durée double, et **c'est tout ce qui double** : ce qui a circulé pendant cette durée est la même chose que ce qu'on mesure. La balance affiche $0{,}366$, pas $0{,}732$.",
+            "misconception": "mc.physics.pc_electrolyse.tension-decide-la-quantite"
+          },
+          {
+            "id": "sous-lineaire",
+            "texte": "**$0{,}275$ g** — plus qu'à 45 minutes, mais pas le double : le dépôt qui s'épaissit freine la suite",
+            "juste": false,
+            "retour": "L'intuition est bonne pour beaucoup de phénomènes, et elle est fausse ici : la balance affiche $0{,}366$, le double exact. La couche déposée ne gêne pas la suivante — le courant est **maintenu** à $0{,}200$ ampère du début à la fin. Lis la balance pendant la manipulation : elle monte à vitesse constante, sans jamais ralentir.",
+            "misconception": "mc.physics.pc_electrolyse.tension-decide-la-quantite"
+          }
+        ]
+      },
+      "suite": "Les trois durées, sans rien toucher d'autre : 30 min, 45 min, 1 h 30 donnent $0{,}122$ · $0{,}183$ · $0{,}366$ gramme. Écris les durées à côté : $1\\,800$, $2\\,700$, $5\\,400$ secondes. Les deux suites sont dans le même rapport.",
+      "controles": [
+        "duree"
+      ],
+      "lectures": [
+        "fem",
+        "sens",
+        "intensite",
+        "duree",
+        "masse-zinc"
+      ],
+      "etat": {
+        "u_v": "6.0",
+        "cablage": "oppose",
+        "i_ma": "200",
+        "duree_s": "2700"
+      },
+      "etat_revele": {
+        "duree_s": "5400"
+      }
+    },
+    {
+      "id": "deux-fois-moins-de-courant",
+      "titre": "Deux fois moins de courant",
+      "consigne": "Même montage, même **1 h 30** — et le dépôt pèse **$0{,}366$ gramme**, tu viens de le voir. Cette fois, on règle le rhéostat pour maintenir le courant à **$0{,}100$ ampère** au lieu de $0{,}200$ : deux fois moins de courant, pendant exactement la même durée.",
+      "pari": {
+        "question": "Avec deux fois moins de courant pendant la même durée, le dépôt pèsera…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "moitie",
+            "texte": "**$0{,}183$ g** — deux fois moins",
+            "juste": true,
+            "retour": "Oui — et la relation est maintenant complète, puisqu'on a fait varier les deux grandeurs. Ce qui décide de la masse, c'est la **quantité d'électricité** qui a traversé la cellule : $$Q = I\\,\\Delta t$$ **le courant multiplié par la durée**, en **coulombs**. Vérifie-le autrement, sans division : $0{,}100 \\times 5\\,400 = 540$ et $0{,}200 \\times 2\\,700 = 540$ — deux réglages, la même charge, et la balance affiche $0{,}183$ gramme dans les deux cas. Les deux contrôles sont ouverts : essaie."
+          },
+          {
+            "id": "inchangee",
+            "texte": "**$0{,}366$ g** — la même : c'est la tension ($6{,}0$ V) qui décide, et elle n'a pas bougé",
+            "juste": false,
+            "retour": "La balance affiche $0{,}183$, la moitié. La tension n'a pas bougé, et la masse a été divisée par deux : **la tension ne figure pas dans ce calcul**. Elle a servi une fois, au chapitre 4, pour que le sens s'impose ; tout le reste se joue entre le courant et la durée.",
+            "misconception": "mc.physics.pc_electrolyse.tension-decide-la-quantite"
+          },
+          {
+            "id": "quart",
+            "texte": "**$0{,}091$ g** — quatre fois moins",
+            "juste": false,
+            "retour": "Le rapport est appliqué deux fois. Diviser le courant par deux divise la masse par **deux**, pas par quatre : la balance affiche $0{,}183$. Pour obtenir $0{,}091$ gramme, il faudrait diviser **et** le courant **et** la durée — les deux contrôles te permettent d'essayer.",
+            "misconception": "mc.physics.pc_electrolyse.tension-decide-la-quantite"
+          },
+          {
+            "id": "rien",
+            "texte": "**$0{,}000$ g** — rien du tout : à $0{,}100$ ampère, le courant est trop faible pour qu'un dépôt se forme",
+            "juste": false,
+            "retour": "Il y a bien un seuil dans cette leçon, et il n'est pas là. **Le seuil du chapitre 4 est sur la TENSION, et il décide du SENS.** Le courant, lui, n'est pas une condition à franchir : c'est un **facteur** de la charge, et il ne décide que de la **cadence**. À $0{,}100$ ampère le dépôt se forme, deux fois plus lentement, et la balance affiche $0{,}183$ gramme. Refais la manipulation et regarde-la monter — plus doucement, mais elle monte.",
+            "misconception": "mc.physics.pc_electrolyse.tension-decide-la-quantite"
+          }
+        ]
+      },
+      "suite": "Cherche les deux paires de réglages qui déposent **exactement** la même masse. $0{,}100$ A pendant 1 h 30 et $0{,}200$ A pendant 45 min : $0{,}183$ g tous les deux, $540$ C tous les deux. $0{,}200$ A pendant 1 h 30 et $0{,}400$ A pendant 45 min : $0{,}366$ g, $1\\,080$ C. Ce qui décide, c'est le **produit**.",
+      "controles": [
+        "courant",
+        "duree"
+      ],
+      "lectures": [
+        "fem",
+        "sens",
+        "intensite",
+        "duree",
+        "masse-zinc",
+        "charge"
+      ],
+      "etat": {
+        "u_v": "6.0",
+        "cablage": "oppose",
+        "i_ma": "200",
+        "duree_s": "5400"
+      },
+      "etat_revele": {
+        "i_ma": "100"
+      }
+    },
+    {
+      "id": "combien-d-electrons",
+      "titre": "Combien de moles d'électrons ont traversé ?",
+      "consigne": "Dernière mesure avant la synthèse. Rhéostat sur **$0{,}400$ ampère**, **1 heure 30** : la charge vaut $0{,}400 \\times 5\\,400 = 2\\,160$ coulombs, et la balance affichera **$0{,}732$ gramme** de zinc — tu peux le retrouver à l'étape précédente. On te donne deux choses de plus, et elles ne viennent pas d'une mesure : la masse molaire du zinc, $65{,}4$ grammes par mole, et la demi-équation de la cathode, $Zn^{2+} + 2\\,e^- \\rightleftharpoons Zn$. **Attention à la route :** on ne sait pas encore quelle charge porte une mole d'électrons — c'est justement ce que l'étape suivante va mesurer. La seule route ouverte part donc de la **balance**.",
+      "pari": {
+        "question": "Combien de moles d'électrons ont traversé la cellule pendant cette manipulation ?",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "deux-par-atome",
+            "texte": "$2{,}239\\times10^{-2}$ mol",
+            "juste": true,
+            "retour": "Oui. La balance donne d'abord les atomes : $n(Zn) = \\dfrac{0{,}732}{65{,}4} = 1{,}119\\times10^{-2}$ mole. Puis la demi-équation donne les électrons : **chaque atome déposé en a consommé DEUX**, donc $n(e^-) = 2\\,n(Zn) = 2{,}239\\times10^{-2}$ mole. Retiens le sens de la flèche : on est parti d'une **pesée**, on a traversé une **demi-équation**, on est arrivé à un **nombre d'électrons** — sans jamais avoir eu besoin de savoir quelle charge ils portent. C'est précisément ce qui rend l'étape suivante possible."
+          },
+          {
+            "id": "un-par-atome",
+            "texte": "$1{,}119\\times10^{-2}$ mol — autant d'électrons que d'atomes de zinc déposés",
+            "juste": false,
+            "retour": "C'est le nombre d'**atomes** de zinc, pas celui des électrons : $\\dfrac{0{,}732}{65{,}4} = 1{,}119\\times10^{-2}$ mole. La demi-équation $Zn^{2+} + 2\\,e^- \\rightleftharpoons Zn$ dit qu'il en a fallu **deux** pour chacun d'eux. Il est passé **deux fois plus** d'électrons que d'atomes déposés : $2{,}239\\times10^{-2}$ mole.",
+            "misconception": "mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique"
+          },
+          {
+            "id": "moitie",
+            "texte": "$5{,}596\\times10^{-3}$ mol — on divise par 2, comme dans l'exemple du chapitre 5",
+            "juste": false,
+            "retour": "La division par 2 existe bien, et elle va dans l'autre sens. Au chapitre 5, on **partait** des électrons pour **arriver** aux atomes : $n(Zn) = \\dfrac{n(e^-)}{2}$. Ici on part des atomes : il faut donc **multiplier** par 2, pas diviser. $n(e^-) = 2 \\times 1{,}119\\times10^{-2} = 2{,}239\\times10^{-2}$ mole — et un coup d'œil suffisait : il ne peut pas être passé **moins** d'électrons que d'atomes déposés.",
+            "misconception": "mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique"
+          },
+          {
+            "id": "charge-en-moles",
+            "texte": "$2{,}16\\times10^{3}$ mol — la quantité d'électricité qui a traversé, exprimée en moles",
+            "juste": false,
+            "retour": "$2\\,160$ est une **charge**, en coulombs : ce n'est pas un nombre de moles, et les deux ne se convertissent pas en changeant d'étiquette. Deux mille moles d'électrons dans un bécher de laboratoire serait d'ailleurs absurde — l'ordre de grandeur doit alerter. Passer d'une charge à une quantité de matière demande un facteur de conversion, et **c'est exactement ce que l'étape suivante va mesurer**.",
+            "misconception": "mc.physics.pc_electrolyse.faraday-calcul-unites"
+          }
+        ]
+      },
+      "suite": "Refais le comptage à deux autres réglages. $0{,}200$ A pendant 1 h 30 : $1\\,080$ C, $0{,}366$ g, $1{,}119\\times10^{-2}$ mol d'électrons. $0{,}100$ A pendant 45 min : $270$ C, $0{,}091$ g, $2{,}783\\times10^{-3}$ mol. Le rapport des électrons suit celui des charges, à chaque fois.",
+      "controles": [
+        "courant",
+        "duree"
+      ],
+      "lectures": [
+        "fem",
+        "sens",
+        "intensite",
+        "duree",
+        "charge",
+        "masse-zinc",
+        "masse-cuivre",
+        "quantite-electrons"
+      ],
+      "etat": {
+        "u_v": "6.0",
+        "cablage": "oppose",
+        "i_ma": "400",
+        "duree_s": "5400"
+      }
+    },
+    {
+      "id": "on-double-la-tension",
+      "titre": "On double la tension : que devient tout cela ?",
+      "consigne": "Exactement la même manipulation : branchement forcé, rhéostat sur **$0{,}400$ ampère**, **1 h 30**. À $6{,}0$ volts, elle a donné **$2\\,160$ coulombs**, **$0{,}732$ gramme** de zinc et **$2{,}239\\times10^{-2}$ mole** d'électrons. On va maintenant monter le générateur à **$12{,}0$ volts — deux fois plus** — et **le rhéostat continuera de tenir l'aiguille sur $0{,}400$ ampère** : c'est son rôle, et c'est ce que veut dire « courant d'intensité constante » dans les énoncés d'examen.",
+      "pari": {
+        "question": "À $12{,}0$ volts, la **charge**, la **masse déposée**, et le **nombre de coulombs par mole** qu'on obtient en divisant la première par la quantité de matière d'électrons…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "rien-ne-bouge",
+            "texte": "**aucun des trois ne bouge d'un chiffre**",
+            "juste": true,
+            "retour": "Oui — et c'est la phrase à emporter de tout ce chapitre. **La tension décide SI la transformation forcée a lieu, et dans quel sens ; à courant maintenu constant, c'est la charge $Q = I\\,\\Delta t$ qui décide de COMBIEN.** Regarde les trois lectures : $2\\,160$ C, $0{,}732$ g, et le quotient $$F = \\frac{Q}{n(e^-)} = \\frac{2\\,160}{2{,}239\\times10^{-2}} \\approx 9{,}65\\times10^{4}\\ \\text{C·mol}^{-1}$$ Ce nombre porte un nom : c'est la **constante de Faraday**, la charge que porte **une mole d'électrons**. Tu viens de la **mesurer** — avec une balance, un chronomètre, un ampèremètre et une demi-équation, et rien d'autre. Elle ne dépend de rien : ni du métal, ni du bain, ni du réglage, ni de la tension. C'est pour cela qu'on peut la tabuler une fois pour toutes, et c'est pour cela qu'elle vaut la même chose dans ton énoncé d'examen et dans ce bécher."
+          },
+          {
+            "id": "tout-double",
+            "texte": "la charge et la masse **doublent** toutes les deux (deux fois plus de volts, deux fois plus de tout) ; le quotient, lui, ne bouge pas",
+            "juste": false,
+            "retour": "Regarde l'ampèremètre : $0{,}400$ ampère, à $6{,}0$ volts comme à $12{,}0$. C'est le rhéostat qui le tient — c'est son seul rôle. Mais la charge, c'est le courant **multiplié par la durée** : ni l'un ni l'autre n'a changé, donc $Q$ vaut toujours $2\\,160$ C, et la balance affiche toujours $0{,}732$ g. La tension n'apparaît dans aucun de ces deux calculs.",
+            "misconception": "mc.physics.pc_electrolyse.tension-decide-la-quantite"
+          },
+          {
+            "id": "masse-seule-double",
+            "texte": "la charge ne bouge pas (le courant est tenu), mais la masse **double** parce que le générateur pousse plus fort ; le quotient est donc **deux fois plus petit**",
+            "juste": false,
+            "retour": "Suis ta propre phrase jusqu'au bout : si la même charge déposait deux fois plus de zinc, il faudrait que les mêmes électrons aient déposé deux fois plus d'atomes. Il n'y a **rien d'autre** que les électrons pour déposer les atomes, et la demi-équation en demande deux par atome — toujours deux. La balance affiche $0{,}732$ g aux deux tensions, et le quotient ne bouge pas.",
+            "misconception": "mc.physics.pc_electrolyse.tension-decide-la-quantite"
+          },
+          {
+            "id": "quotient-varie",
+            "texte": "la charge et la masse ne bougent pas, mais le **nombre** obtenu change quand même : il dépend des conditions de la manipulation",
+            "juste": false,
+            "retour": "Si les deux nombres qu'on divise ne bougent pas, leur quotient ne peut pas bouger — c'est de l'arithmétique avant d'être de la chimie. Et c'est plus profond que ça : ce quotient vaut $9{,}65\\times10^{4}$ coulombs par mole ici, et il vaudrait la même chose avec un autre métal, un autre bain, un autre courant, une autre durée. C'est la charge d'**une mole d'électrons** — et un électron porte la même charge partout. Parcours les trois tensions, puis les neuf couples : le nombre ne bouge pas.",
+            "misconception": "mc.physics.pc_electrolyse.faraday-constante-universelle"
+          }
+        ]
+      },
+      "suite": "Trois vérifications. **Un :** refais la mesure aux neuf couples — $9{,}65\\times10^{4}$ partout, **sauf** à $0{,}100$ A pendant 45 min, où le plus petit dépôt ($0{,}091$ g), arrondi au milligramme, donne $9{,}70\\times10^{4}$ : fais durer les manipulations. **Deux :** divise $0{,}732$ par $65{,}4$ et $0{,}711$ par $63{,}5$ — même nombre de moles, deux masses différentes. **Trois :** échange les fils ; les deux balances changent de signe, et le nombre ne bouge pas.",
+      "controles": [
+        "tension",
+        "branchement",
+        "courant",
+        "duree"
+      ],
+      "lectures": [
+        "tension",
+        "fem",
+        "sens",
+        "intensite",
+        "duree",
+        "charge",
+        "masse-zinc",
+        "masse-cuivre",
+        "quantite-electrons",
+        "faraday-mesure"
+      ],
+      "etat": {
+        "u_v": "6.0",
+        "cablage": "oppose",
+        "i_ma": "400",
+        "duree_s": "5400"
+      },
+      "etat_revele": {
+        "u_v": "12.0"
+      }
+    }
+  ]
+}

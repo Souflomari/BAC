@@ -209,6 +209,12 @@ const HORS_CHAMP = new Set([
   // détecteur contre sa récurrence ; deux passages en CI (job `scene-champ`) ;
   // `node scripts/scene-modulation.mjs --essai-rouge`.
   "scene-modulation.mjs",
+  // scene-electrolyse, même raison : le banc d'électrolyse (pc/electrolyse,
+  // en tête de R4), le septième manipulable PLAN — la loi de Faraday refaite
+  // aux 27 états (la tension MUETTE : 9 jeux de valeurs), le dépôt lu contre le
+  // témoin « 1 g », l'aiguille et les flèches lues aux pixels ; deux passages
+  // en CI (job `telephone`) ; `node scripts/scene-electrolyse.mjs --essai-rouge`.
+  "scene-electrolyse.mjs",
   // scene-ergonomie lance SEULE, sur les neuf scènes, la famille « ergonomie »
   // que chaque porte de scène lance déjà à sa fin (ADR 0035 : une porte prise
   // dans un agrégat doit pouvoir être lancée seule) : build ET navigateur. Pas

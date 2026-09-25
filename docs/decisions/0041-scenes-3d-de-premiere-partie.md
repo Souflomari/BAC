@@ -776,6 +776,32 @@ c'est la règle des rendus plans à venir. **Dette écrite** : `diffraction-rend
 leurs nœuds sont plus sombres que leurs lignes ; leurs portes ne lisent pas de crêtes à
 travers, et sont vertes. À reprendre dans une passe commune, portes relancées.
 
+## Addendum du 2026-09-25 (soir) — le banc d'électrolyse : une colonne muette se mesure comme une égalité, et une formule se lit par sa source
+
+Le treizième manipulable (`pc/electrolyse`, en tête de R4 ; HANDOFF §11.208), le
+septième PLAN, à course. Trois points qui valent au-delà de lui :
+
+1. **Montrer qu'une grandeur N'AGIT PAS est un fait de première classe, et il se
+   mesure comme une ÉGALITÉ DE CHAÎNES, pas comme une absence.** Le cœur du banc est
+   que la tension ne décide que du sens : aux trois tensions, charge, masse et quotient
+   doivent être les MÊMES caractères (27 états, 9 jeux de valeurs — la ligne N12 de la
+   porte). La façon la plus sûre de le tenir est structurelle : la tension n'est
+   l'argument d'AUCUNE fonction de calcul du modèle, et le test unitaire le vérifie
+   sur les signatures. Une scène qui veut enseigner « ceci ne compte pas » doit donner
+   à ce bouton un rôle réel (ici, le sens et l'aiguille qui ne bouge pas) — sinon l'élève
+   apprend qu'il est décoratif, pas qu'il est muet.
+2. **Le texte d'une formule KaTeX se lit par sa SOURCE** (prolongement de l'ADR 0039,
+   « la forme que le produit écrit »). Son `textContent` concatène le MathML, la source
+   TeX et le rendu : « $1{,}1$ volt » s'y lit « 1,11{,}11,1 volt ». Toute sonde de
+   frontière, de formule graduée ou de nombre remplace chaque `.katex` par son
+   annotation avant de chercher.
+3. **Un petit effet se lit par son GENRE avant sa mesure.** À 30 min et 0,200 A, la
+   lame qui se dissout ne perd qu'un pixel : la mesure ne tranche plus. Le rendu garde
+   le contour d'origine en TIRETS, et la porte lit sur une colonne si l'accent y est
+   PLEIN (un dépôt) ou en TIRETS (une entaille) — une lecture catégorielle qui tient à
+   1 px, puis la mesure là où elle a un sens. C'est le même geste que le côté de
+   l'aiguille (un signe) avant sa déviation (un nombre).
+
 ## Retractions and Corrections
 
 - **2026-09-23 — la « deuxième scène » annoncée n'était pas la bonne

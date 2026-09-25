@@ -2067,6 +2067,75 @@ l'enveloppe en haut et en bas (les hauteurs brutes mêlaient la courbure du creu
 `theme` mesure le schéma de couleurs du thème sombre (`color-scheme`), ROUGE d'abord sur
 le build d'avant (« normal »).
 
+## `web/scripts/scene-electrolyse.mjs` — la paillasse dit-elle ce que la loi de Faraday impose, et rien de ce qu'elle interdit ?
+
+**Porte du « banc d'électrolyse »** (pc/electrolyse, en tête de R4 ; spec
+`content/pc/electrolyse/spec-scene-electrolyse.md` §11 ; HANDOFF §11.208). Le septième
+manipulable PLAN, À COURSE (Δt/900, mesurée contre l'horloge). `next start` +
+Chromium, le panneau trouvé par `[data-scene="banc-electrolyse"]`.
+`test-electrolyse` (9 tests, en CI) garde le modèle.
+
+**La scène est ANALYTIQUE : la porte refait chaque nombre** depuis les constantes de la
+spec écrites chez elle ($M(Zn) = 65{,}4$, $M(Cu) = 63{,}5$, $F = 9{,}65\times10^{4}$,
+$z = 2$), EN CASCADE SUR LES VALEURS AFFICHÉES (la masse au milligramme, puis $n(e^-)$
+à quatre chiffres, puis le quotient à trois) : Q, les deux masses, $n(e^-)$, le quotient
+et le sens aux 27 états (N1 à N7) ; l'ampèremètre identique aux trois tensions (N8) ; les
+masses qui changent de signe et le quotient qui ne bouge pas d'un caractère quand on
+échange les fils (N9) ; les crans (N10) ; la course à Δt/900 (N11) ; et **N12, la ligne
+de la démonstration** : aux 9 couples $(I ; \Delta t)$, charge, masse et quotient
+identiques AU CARACTÈRE PRÈS aux trois tensions — 27 états, 9 jeux de valeurs. Et N6
+exige l'ÉCART : $9{,}70\times10^{4}$ au septième réglage (0,100 A ; 45 min), le fait
+pédagogique gardé comme un nombre.
+
+**Les PIXELS, dans les deux sens.** L'échelle n'est jamais donnée : le facteur px/g est
+LU sur le témoin « 1 g ». `depot-a-l-echelle` (aux 27 états, le dépôt du zinc — le bord
+extérieur qui sort — et l'amincissement du cuivre — le bord intérieur qui rentre —
+valent la masse AFFICHÉE × le facteur, à 1,5 px) ; `echelle-constante` (le témoin
+identique aux 27 états, le dépôt identique aux trois tensions) ; `aiguille` (du côté du
+sens, lue sur l'encre du cadran ; la MÊME position aux trois tensions ; plus déviée à
+0,100 < 0,200 < 0,400 A) ; `courant-oriente` et `electrons-a-contresens` (la pointe de
+chaque flèche, là où la colonne peinte est la plus haute ; de la borne + vers sa lame,
+et à l'opposé pour les électrons) ; `fils-croises` (de l'encre au croisement en
+`accord`, aucune en `oppose`) ; `etiquettes-electrodes` (« anode » sur la lame de la
+borne +, les lettres (A) et (B) sur LEUR lame) ; `lame-et-balance` (le GENRE sur une
+colonne juste hors du bord d'origine — accent plein : dépôt ; en tirets : lame
+entamée —, qui tranche même à 1 px, puis la mesure) ; `teinte-du-bain` (l'opacité, en
+fraction d'encre douce, monte dans le bain qui gagne des ions et baisse dans l'autre ;
+chaque pixel reste sur le segment fond → encre douce : la teinte ne vire pas) ;
+`palette` ; `immobile` ; `eclairs` (pendant une course de 6 s).
+
+**Et l'appareillage :** `avant-clic`, `pas-de-3d`, `etapes` (l'engagement POSE le
+réglage du pari, S4 n'en a pas et c'est déclaré), `avant-pari` (à S1 : ni aiguille, ni
+flèche, ni rôle, lames neuves ; de S2 à S5 : l'énoncé PRÉSENT — aiguille et rôles à
+l'encre, la pesée que la consigne annonce — et rien de plus), `paris`, `course`,
+`annonce`, `formule-graduee` (la table §7.6 C étape par étape, sur le panneau ET sur
+tous les textes du descripteur — les retours qu'aucun parcours n'affiche), `fuite-inter-
+etapes` (la table §7.6 A réécrite ICI, la durée HÉRITÉE à S3 déclarée ; $n(e^-)$ absent
+avant S4, le quotient avant S5), `frontiere` (26 formes du §9, une sonde par forme, et
+les trois grilles de nombres — V et volt(s), A et ampère(s), min — lues sur la SOURCE
+TeX), `fleches-chimiques` (une formule à flèche qui contient $e^-$ porte ⇌, une autre
+non), `latex`, `etiquettes` et `cadre` (1 280 et 390 px, aux cinq étapes, avant et
+après le pari), `sans-mouvement`, `theme`, `console`, `ergonomie`.
+
+**Ce qu'elle a appris en se lançant (premier passage : 32 rouges, 145 mesures).** Plus
+de la moitié venaient de la porte : le `textContent` d'une formule KaTeX concatène le
+MathML, la source et le rendu — « $1{,}1$ volt » s'y lisait « 11,1 V » ; « constante »
+seule est le mot des énoncés (« intensité constante ») ; « Au bout de 30 min » n'est pas
+de l'or ; les tirets du contour d'une lame entamée se lisaient comme un dépôt de 2,8 px.
+Défauts du produit : quatre étiquettes posées sur un trait (les signes des bornes, le
+« A » du cadran, « pont salin » sur son tube) et une note qui écrivait « masse » à S1.
+Puis VERTE deux fois (145, puis 146 mesures ; 31 familles) et essai rouge 30/30, les 29
+formes de la frontière vues. **Ce qu'elle ne mesure pas, écrit dans son en-tête** : la
+règle d'échelle en centimètres de la spec — le produit n'en dessine pas.
+
+**`--essai-rouge`** retourne chaque jugement (chaque famille visée doit crier) et
+injecte chaque forme interdite une à une. **La campagne de sabotages du PRODUIT reste
+due** (ADR 0038 : un essai rouge qui retourne les attentes ne prouve pas que les
+familles VOIENT un défaut réel).
+
+**CI :** job `telephone` (vert puis rouge) — `scene-champ` et `scenes` tiennent déjà 43
+et 42 min sur leurs 50 et 60 (run 773), `telephone` 8 sur 40.
+
 ## `web/scripts/figures-manipulables.mjs` — chaque figure manipulable fait-elle, au rendu, ce que son module dit ?
 
 **PORTE, armée en CI (job `scene-champ`, vert puis rouge), §11.199.** Une figure
@@ -2203,8 +2272,10 @@ ROUGE sur le produit d'avant (15 manquements, 6 scènes sur 9) :**
   passait. Elle compte maintenant `summary`. Les liens restent dehors, et c'est
   écrit : un lien DANS une phrase est exempté par WCAG 2.5.8 (« inline ») ;
 - **la révélation après une course** (argument `course` : le nombre de
-  « Suivant » jusqu'à la première étape dont le pari attend la course — les six
-  scènes à course le passent) : au clavier, parier, Entrée sur « Lancer… », la
+  « Suivant » jusqu'à la première étape dont le pari attend la course — les sept
+  scènes à course le passent) : au clavier, parier, Entrée sur le bouton de course
+  (trouvé par son marqueur `data-lancer` depuis le banc d'électrolyse, qui dit
+  « Fermer le circuit » ; son texte « Lancer… » en repli, pour les scènes 3D), la
   course va au bout ; le focus doit être VISIBLE — dans la fenêtre, et au
   téléphone pas sous la scène collante. Avant correction : « Relancer » ou
   « Pause », de 1 072 à 2 013 px, sous l'écran, dans les six, aux deux largeurs.

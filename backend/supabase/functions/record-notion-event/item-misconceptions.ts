@@ -3094,6 +3094,25 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.pc_electrolyse.polarite-comme-pile",
       "mc.physics.pc_electrolyse.sens-courant-electrons"
     ],
+    "ELECTROLYSE-25": [
+      "mc.physics.pc_electrolyse.seuil-tension-continu",
+      "mc.physics.pc_electrolyse.tension-decide-la-quantite"
+    ],
+    "ELECTROLYSE-26": [
+      "mc.physics.pc_electrolyse.tension-decide-la-quantite"
+    ],
+    "ELECTROLYSE-27": [
+      "mc.physics.pc_electrolyse.faraday-constante-universelle",
+      "mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique"
+    ],
+    "ELECTROLYSE-28": [
+      "mc.physics.pc_electrolyse.faraday-constante-universelle",
+      "mc.physics.pc_electrolyse.tension-decide-la-quantite"
+    ],
+    "ELECTROLYSE-29": [
+      "mc.physics.pc_electrolyse.faraday-constante-universelle",
+      "mc.physics.pc_electrolyse.tension-decide-la-quantite"
+    ],
     "ELECTROLYSE-3": [
       "mc.physics.pc_electrolyse.electrolyse-source-energie"
     ],

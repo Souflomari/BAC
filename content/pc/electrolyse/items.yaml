@@ -33,6 +33,39 @@ misconceptions:
     label: "« Mauvais bilan de matière entre les électrodes » (rapport H₂/O₂, anode soluble, conservation en série)"
     description: "L'élève se trompe sur le rapport des quantités formées aux deux électrodes : mauvais rapport molaire, ou oubli que le même n(e⁻) traverse les deux électrodes en série."
     contradicts_principle: "Le circuit étant en série, le même n(e⁻) traverse les deux électrodes. Le rapport des quantités suit les demi-équations (2 mol H₂ pour 1 mol O₂) ; une anode soluble redépose autant de métal qu'il s'en dépose à la cathode."
+  - id: mc.physics.pc_electrolyse.tension-decide-la-quantite
+    label: "« La quantité transformée se lit sur la tension » (la tension prise pour ce qui compte, à la place de la charge Q = I·Δt)"
+    description: >-
+      L'élève fait décider la quantité de matière transformée par la TENSION du
+      générateur, au lieu de la charge Q = I·Δt. Deux formes. Forme A — la tension
+      dans la loi : à courant maintenu constant, la masse déposée croîtrait avec U
+      (« deux fois plus de volts, deux fois plus de dépôt »), ou l'élève écrit
+      Q = U·Δt, ou il compense une durée plus courte en montant la tension, ou il
+      conclut d'une consommation d'énergie plus grande à une production plus
+      grande. Forme C — la charge lue comme autre chose qu'un produit :
+      l'intensité seule décide (« un fort courant dépose beaucoup, même
+      brièvement »), ou la durée seule décide, ou le facteur est compté deux fois
+      (doubler la durée quadruplerait la masse), ou la proportionnalité est perdue
+      (le dépôt « freinerait » en s'épaississant), ou l'une des deux grandeurs est
+      lue comme une CONDITION À FRANCHIR plutôt que comme un FACTEUR (« en dessous
+      d'un certain courant, rien ne se dépose »), par transport du seuil de
+      tension du chapitre précédent. Ce modèle répond CORRECTEMENT aux exercices
+      qui donnent seulement I et Δt : il ne se révèle qu'en faisant VARIER la
+      tension à charge constante, ou la charge à tension constante.
+    contradicts_principle: "À COURANT MAINTENU CONSTANT — ce que fait tout montage d'électrolyse, et ce que veut dire « intensité constante » dans les énoncés —, la tension décide SI la transformation forcée a lieu et dans quel sens (U > E) ; la charge Q = I·Δt décide de COMBIEN. La relation m = M·I·Δt/(z·F) ne contient aucune tension. Sans rhéostat, monter la tension ferait monter le courant, donc le dépôt : c'est pour cela que les énoncés précisent l'intensité constante."
+  - id: mc.physics.pc_electrolyse.faraday-constante-universelle
+    label: "« La constante de Faraday dépend du métal, du bain ou du réglage » (F prise pour une propriété de l'expérience au lieu d'une constante universelle)"
+    description: >-
+      L'élève traite F comme une grandeur propre à l'expérience. Trois visages.
+      (1) Propriété du MÉTAL : « le faraday du zinc vaut le double de celui d'un
+      métal qui n'échange qu'un électron » — le z de la demi-équation est absorbé
+      dans la constante. (2) Propriété du RÉGLAGE : diviser le courant par deux
+      diviserait F par deux, ou monter la tension le changerait. (3) Propriété du
+      BAIN ou du MONTAGE : il faudrait « mesurer le faraday de son bain » avant de
+      pouvoir calculer quoi que ce soit, ou deux manipulations différentes
+      doivent donner deux valeurs différentes. Ce modèle reste invisible tant que
+      F est seulement DONNÉE : il ne se révèle que lorsqu'on la DÉTERMINE.
+    contradicts_principle: "F est la charge que porte UNE MOLE D'ÉLECTRONS : une constante universelle, la même quels que soient le métal, le bain, le courant, la durée et la tension — parce qu'un électron porte la même charge partout. Ce qui change d'une électrolyse à l'autre, c'est le z de la demi-équation et la masse molaire, jamais F. C'est précisément ce qui permet de la tabuler une fois pour toutes."
 
 items:
 
@@ -1451,6 +1484,380 @@ items:
       c'est le lien entre polarité et rôle chimique (anode = borne $+$), pas la
       définition du courant.
 
+  # ── la tension prise pour ce qui fixe la quantité ; F prise pour une ──
+  # ── propriété de l'expérience (les deux modèles du banc d'électrolyse) ──
+  - id: ELECTROLYSE-25
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_electrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_electrolyse.tension-decide-la-quantite
+    stem: >
+      On réalise deux électrolyses d'une même solution de sulfate de cuivre(II),
+      avec les mêmes électrodes. Un rhéostat placé en série permet de maintenir
+      l'intensité à $I = 0{,}50\ \text{A}$ dans les deux essais. Essai 1 : le
+      générateur est réglé sur $U = 4{,}0\ \text{V}$, pendant
+      $\Delta t = 20\ \text{min}$. Essai 2 : le générateur est réglé sur
+      $U = 12{,}0\ \text{V}$, pendant la même durée. Les deux tensions dépassent
+      le seuil de la cellule. Comment se comparent les masses de cuivre
+      déposées ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elles sont égales : la même quantité d'électricité,
+          $Q = I\,\Delta t = 600\ \text{C}$, a traversé la cellule dans les deux
+          essais
+        correct: true
+      - id: B
+        text: >-
+          L'essai 2 dépose trois fois plus de cuivre : la tension y est trois
+          fois plus grande, et c'est elle qui pousse le dépôt
+        correct: false
+        misconception: mc.physics.pc_electrolyse.tension-decide-la-quantite
+        feedback: >
+          Le rhéostat maintient la même intensité dans les deux essais, et la
+          durée est la même : $Q = 0{,}50 \times 1\,200 = 600\ \text{C}$ des
+          deux côtés. La tension ne figure nulle part dans
+          $m = \dfrac{M\,I\,\Delta t}{z\,F}$ : elle a décidé que le dépôt aurait
+          lieu, pas combien il y en aurait.
+      - id: C
+        text: >-
+          L'essai 2 dépose un peu plus de cuivre : au-dessus du seuil, plus on
+          le dépasse, plus la transformation est poussée
+        correct: false
+        misconception: mc.physics.pc_electrolyse.seuil-tension-continu
+        feedback: >
+          Le franchissement du seuil est net, pas graduel. Dès que $U$ dépasse
+          $E$, le sens forcé l'emporte entièrement ; le dépasser davantage ne
+          « pousse » pas la transformation plus loin. Ce qui fixe la quantité,
+          c'est la charge qui a traversé la cellule.
+      - id: D
+        text: >-
+          L'essai 2 dépose davantage : il a consommé plus d'énergie électrique,
+          et cette énergie se retrouve dans le métal déposé
+        correct: false
+        misconception: mc.physics.pc_electrolyse.tension-decide-la-quantite
+        feedback: >
+          La prémisse est exacte : à même intensité et même durée, une tension
+          plus grande fait consommer davantage. La conclusion ne l'est pas :
+          cette énergie supplémentaire ne fabrique pas un atome de plus, elle se
+          dissipe en chaleur, notamment dans le rhéostat. Ce qui est déposé se
+          compte en électrons, et les électrons se comptent en coulombs.
+    correct_feedback: >
+      Les masses sont égales. Le rhéostat tient la même intensité et la durée
+      est la même : la même charge de $600\ \text{C}$ traverse la cellule, donc
+      le même nombre d'électrons, donc le même nombre d'atomes de cuivre. La
+      tension a seulement décidé que le sens forcé l'emporte.
+    solution: |
+      **La durée en secondes.** $\Delta t = 20 \times 60 = 1\,200\ \text{s}$.
+
+      **La charge, dans chaque essai.**
+      $$Q = I\,\Delta t = 0{,}50 \times 1\,200 = 600\ \text{C}$$
+      La tension n'intervient pas : le rhéostat maintient la même intensité
+      dans les deux essais.
+
+      **La masse.** Comme $n(e^-) = \dfrac{Q}{F}$ et
+      $n(Cu) = \dfrac{n(e^-)}{2}$, la même charge dépose la même quantité de
+      cuivre : les deux masses sont **égales**.
+
+      **À retenir.** La tension décide **si** la transformation forcée a lieu
+      (il faut $U > E$) ; à courant maintenu constant, la charge
+      $Q = I\,\Delta t$ décide **de combien**.
+
+  - id: ELECTROLYSE-26
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_electrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_electrolyse.tension-decide-la-quantite
+    stem: >
+      Une électrolyse dépose $0{,}183\ \text{g}$ de zinc en $45\ \text{min}$,
+      sous un courant maintenu constant à $I = 0{,}200\ \text{A}$. On veut
+      déposer exactement la même masse en maintenant cette fois le courant à
+      $I' = 0{,}400\ \text{A}$. Quelle durée faut-il ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $22{,}5\ \text{min}$ : la charge $Q = I\,\Delta t$ doit rester la
+          même, donc la durée est divisée par deux
+        correct: true
+      - id: B
+        text: >-
+          $45\ \text{min}$, sans changement : la masse déposée est fixée par la
+          tension du générateur, qui n'a pas été modifiée
+        correct: false
+        misconception: mc.physics.pc_electrolyse.tension-decide-la-quantite
+        feedback: >
+          La tension ne figure pas dans le calcul d'une masse. À
+          $0{,}400\ \text{A}$ pendant $45\ \text{min}$, la charge vaut
+          $1\,080\ \text{C}$, le double des $540\ \text{C}$ visés : le dépôt
+          serait deux fois trop lourd, quelle que soit la tension.
+      - id: C
+        text: >-
+          $90\ \text{min}$ : le courant a été doublé, il faut donc doubler la
+          durée dans la même proportion
+        correct: false
+        misconception: mc.physics.pc_electrolyse.tension-decide-la-quantite
+        feedback: >
+          Le rapport est retourné. Le courant et la durée se multiplient :
+          doubler l'un oblige à diviser l'autre pour garder le même produit. À
+          $0{,}400\ \text{A}$ pendant $90\ \text{min}$, la charge vaut
+          $2\,160\ \text{C}$, quatre fois la charge visée.
+      - id: D
+        text: >-
+          $11{,}25\ \text{min}$ : doubler le courant double à la fois la vitesse
+          du dépôt et sa masse, donc la durée est divisée par quatre
+        correct: false
+        misconception: mc.physics.pc_electrolyse.tension-decide-la-quantite
+        feedback: >
+          Le rapport est appliqué deux fois. Doubler l'intensité double la
+          vitesse du dépôt, et c'est tout : il faut diviser la durée par deux,
+          pas par quatre. En $675\ \text{s}$ à $0{,}400\ \text{A}$, il ne passe
+          que $270\ \text{C}$, la moitié de ce qu'il faut.
+    correct_feedback: >
+      $22{,}5\ \text{min}$. La masse suit la charge $Q = I\,\Delta t$ : pour la
+      garder, le produit doit rester $540\ \text{C}$, donc la durée est divisée
+      par deux quand l'intensité est doublée.
+    solution: |
+      **La charge du premier dépôt.** $\Delta t = 45 \times 60 = 2\,700\ \text{s}$,
+      d'où
+      $$Q = I\,\Delta t = 0{,}200 \times 2\,700 = 540\ \text{C}$$
+
+      **La même masse, c'est la même charge.** La masse déposée ne dépend que de
+      $Q$ (pour un métal donné) :
+      $$\Delta t' = \frac{Q}{I'} = \frac{540}{0{,}400} = 1\,350\ \text{s} = 22{,}5\ \text{min}$$
+
+      **Vérification.** $0{,}400 \times 1\,350 = 540\ \text{C}$ : le produit
+      est conservé. La tension n'intervient à aucune étape.
+
+  - id: ELECTROLYSE-27
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_electrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_electrolyse.faraday-constante-universelle
+    stem: |
+      Pour déterminer la constante de Faraday, on réalise trois essais sur la
+      même cellule : on dépose du zinc ($Zn^{2+} + 2\,e^- \rightleftharpoons Zn$)
+      à courant maintenu constant, et on pèse la lame avant et après, au
+      milligramme. On donne $M(Zn) = 65{,}4\ \text{g/mol}$.
+
+      | essai | quantité d'électricité $Q$ | masse déposée $m$ |
+      |---|---|---|
+      | 1 | $270\ \text{C}$ | $0{,}091\ \text{g}$ |
+      | 2 | $540\ \text{C}$ | $0{,}183\ \text{g}$ |
+      | 3 | $2\,160\ \text{C}$ | $0{,}732\ \text{g}$ |
+
+      Les trois essais donnent-ils la même valeur de $F$, et lequel est le plus
+      fiable ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La même valeur à moins de $1\ \%$ près, environ
+          $9{,}65\times10^{4}\ \text{C/mol}$ ; l'essai 3 est le plus fiable,
+          l'arrondi de la pesée y pesant le moins
+        correct: true
+      - id: B
+        text: >-
+          Des valeurs différentes, et c'est attendu : $F$ dépend de la quantité
+          d'électricité qu'on a fait passer dans la cellule
+        correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-constante-universelle
+        feedback: >
+          Les trois valeurs ne diffèrent qu'à cause de la pesée, pas à cause de
+          $F$ : elles s'écartent de moins de $1\ \%$, pas d'un facteur. $F$ est
+          la charge d'une mole d'électrons ; si elle dépendait de la charge
+          qu'on fait passer, ce ne serait pas une constante, et on ne pourrait
+          pas la tabuler.
+      - id: C
+        text: >-
+          La valeur trouvée ne vaut que pour le zinc : avec un autre métal, $F$
+          serait différente, et il faudrait la déterminer de nouveau
+        correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-constante-universelle
+        feedback: >
+          Le métal intervient une fois, par le $z$ de sa demi-équation et par sa
+          masse molaire, et les deux sont connus, pas mesurés. Une fois qu'on
+          compte des électrons, le métal a disparu du calcul : un électron porte
+          la même charge partout. Un autre métal donnerait la même valeur.
+      - id: D
+        text: >-
+          La même valeur, environ $1{,}93\times10^{5}\ \text{C/mol}$ ; l'essai 3
+          est le plus fiable, l'arrondi de la pesée y pesant le moins
+        correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique
+        feedback: >
+          Le raisonnement sur la fiabilité est juste, le comptage ne l'est pas :
+          ce résultat prend $n(e^-) = n(Zn)$. La demi-équation demande deux
+          électrons par atome, $n(e^-) = 2\,n(Zn)$ : avec deux fois plus
+          d'électrons au dénominateur, le quotient est deux fois plus petit.
+    correct_feedback: >
+      Les trois essais donnent la même valeur à moins de $1\ \%$ près, et le
+      plus gros dépôt donne la plus sûre : l'arrondi au milligramme représente
+      environ $1\ \%$ de $0{,}091\ \text{g}$, mais moins de $0{,}2\ \%$ de
+      $0{,}732\ \text{g}$. Fais durer la manipulation.
+    solution: |
+      **La chaîne, pour chaque essai.** On compte les atomes, puis les
+      électrons (deux par atome), puis on divise la charge :
+      $$n(e^-) = \frac{2\,m}{M} \qquad F = \frac{Q}{n(e^-)}$$
+
+      **Essai 1.** $n(e^-) = \dfrac{0{,}182}{65{,}4} \approx 2{,}783\times10^{-3}\ \text{mol}$,
+      d'où $F = \dfrac{270}{2{,}783\times10^{-3}} \approx 9{,}70\times10^{4}\ \text{C/mol}$.
+
+      **Essai 2.** $n(e^-) = \dfrac{0{,}366}{65{,}4} \approx 5{,}596\times10^{-3}\ \text{mol}$,
+      d'où $F = \dfrac{540}{5{,}596\times10^{-3}} \approx 9{,}65\times10^{4}\ \text{C/mol}$.
+
+      **Essai 3.** $n(e^-) = \dfrac{1{,}464}{65{,}4} \approx 2{,}239\times10^{-2}\ \text{mol}$,
+      d'où $F = \dfrac{2\,160}{2{,}239\times10^{-2}} \approx 9{,}65\times10^{4}\ \text{C/mol}$.
+
+      **La fiabilité.** Les trois valeurs s'écartent de moins de $1\ \%$ : c'est
+      la même constante. L'écart vient de la pesée, arrondie au milligramme
+      dans les trois cas ; ce milligramme pèse d'autant moins que le dépôt est
+      gros. L'essai 3 est le plus fiable.
+
+  - id: ELECTROLYSE-28
+    rung: "R6"
+    difficulty_level: 5
+    skill_code: pc_electrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_electrolyse.tension-decide-la-quantite
+    stem: >
+      Un technicien doit déposer par électrolyse une masse donnée de métal sur
+      une pièce, dans un bain donné, en un temps imposé. Il dispose d'une
+      alimentation dont il peut régler la tension, et d'un rhéostat qui lui
+      permet de maintenir l'intensité du courant à la valeur qu'il choisit. Sur
+      quoi doit-il agir, et pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Sur la tension, pour dépasser le seuil, puis sur l'intensité, pour que
+          le produit $I\,\Delta t$ donne la masse voulue
+        correct: true
+      - id: B
+        text: >-
+          Sur la tension seule, en la calculant à partir de la masse voulue :
+          c'est elle qui fixe la quantité de métal déposée
+        correct: false
+        misconception: mc.physics.pc_electrolyse.tension-decide-la-quantite
+        feedback: >
+          Aucune relation du chapitre ne relie une masse à une tension. La masse
+          se calcule par $m = \dfrac{M\,I\,\Delta t}{z\,F}$, où la tension ne
+          figure pas. Régler la tension sans régler le courant, c'est choisir
+          si le dépôt a lieu sans choisir combien il y en aura.
+      - id: C
+        text: >-
+          Sur la durée seule : l'intensité ne change pas la masse finale, elle
+          ne change que la vitesse à laquelle le dépôt se forme
+        correct: false
+        misconception: mc.physics.pc_electrolyse.tension-decide-la-quantite
+        feedback: >
+          La durée est imposée par l'énoncé : il ne peut pas agir dessus. Et
+          l'intensité change bel et bien la masse : à durée fixée, doubler
+          l'intensité double la charge, donc le dépôt. Ce n'est pas seulement
+          une vitesse, c'est un facteur du produit $I\,\Delta t$.
+      - id: D
+        text: >-
+          Il mesure d'abord la constante de Faraday de son bain, qui change d'un
+          bain à l'autre, puis il règle l'intensité
+        correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-constante-universelle
+        feedback: >
+          $F$ ne change pas d'un bain à l'autre : c'est la charge d'une mole
+          d'électrons, la même partout. Ce qui change d'un bain à l'autre, c'est
+          le $z$ de la demi-équation et la masse molaire du métal, qui se
+          lisent tous les deux sans aucune mesure.
+    correct_feedback: >
+      La tension décide si la transformation a lieu et dans quel sens ; la
+      charge décide de combien. La durée étant imposée, c'est l'intensité qui
+      reste à choisir, et le rhéostat la maintient.
+    solution: |
+      **Deux réglages, deux rôles.**
+
+      - La **tension** fixe le **sens** : il faut $U > E$ pour que la
+        transformation forcée l'emporte. C'est une condition, un oui ou un non.
+      - La **charge** $Q = I\,\Delta t$ fixe la **quantité** :
+        $$m = \frac{M\,I\,\Delta t}{z\,F}$$
+
+      **Ce qui reste à choisir.** La masse, le bain (donc $M$ et $z$) et la durée
+      sont imposés ; $F$ est une constante. La seule inconnue de réglage est
+      l'intensité :
+      $$I = \frac{z\,F\,m}{M\,\Delta t}$$
+      que le rhéostat maintient pendant toute la durée.
+
+  - id: ELECTROLYSE-29
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_electrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_electrolyse.faraday-constante-universelle
+    stem: >
+      Deux binômes déterminent la constante de Faraday à partir de deux
+      électrolyses différentes. Le binôme 1 dépose du zinc
+      ($Zn^{2+} + 2\,e^- \rightleftharpoons Zn$) ; le binôme 2 dépose de
+      l'argent ($Ag^+ + e^- \rightleftharpoons Ag$). Ils n'ont ni le même bain,
+      ni la même intensité, ni la même durée, ni la même tension de générateur.
+      Que doivent-ils trouver ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La même valeur, environ $9{,}65\times10^{4}\ \text{C/mol}$ : c'est la
+          charge d'une mole d'électrons, pour le zinc comme pour l'argent
+        correct: true
+      - id: B
+        text: >-
+          Le binôme 1 trouve le double du binôme 2, parce que le zinc échange
+          deux électrons par atome et l'argent un seul
+        correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-constante-universelle
+        feedback: >
+          Le facteur 2 existe, et il n'est pas dans $F$ : il est dans le passage
+          de la masse aux électrons, $n(e^-) = 2\,n(Zn)$ pour le zinc et
+          $n(e^-) = n(Ag)$ pour l'argent. Une fois ce passage fait, les deux
+          binômes divisent une charge par un nombre d'électrons, et obtiennent
+          la même chose.
+      - id: C
+        text: >-
+          Des valeurs différentes, puisque ni le bain, ni l'intensité, ni la
+          durée, ni la tension ne sont les mêmes
+        correct: false
+        misconception: mc.physics.pc_electrolyse.faraday-constante-universelle
+        feedback: >
+          Une constante ne dépend pas des conditions dans lesquelles on la
+          mesure : c'est ce que le mot veut dire. Doubler l'intensité double la
+          charge et le nombre d'électrons : le quotient ne bouge pas. Et la
+          tension n'entre dans aucun des deux.
+      - id: D
+        text: >-
+          La même valeur, à condition que les deux binômes aient réglé leur
+          générateur sur la même tension
+        correct: false
+        misconception: mc.physics.pc_electrolyse.tension-decide-la-quantite
+        feedback: >
+          La tension n'entre ni dans la charge, $Q = I\,\Delta t$, ni dans le
+          comptage des électrons, qui part de la balance. Deux montages à des
+          tensions différentes, mais à même intensité maintenue et même durée,
+          donnent la même charge, la même masse et le même quotient.
+    correct_feedback: >
+      La même valeur. Le métal intervient par le $z$ de sa demi-équation et par
+      sa masse molaire, au moment de compter les électrons ; une fois ce
+      comptage fait, il ne reste qu'une charge divisée par une quantité
+      d'électrons, et un électron porte la même charge partout.
+    solution: |
+      **La chaîne, pour chaque binôme.**
+      $$n(e^-) = z\,\frac{m}{M} \qquad F = \frac{Q}{n(e^-)} = \frac{I\,\Delta t}{z\,m/M}$$
+      avec $z = 2$ pour le zinc et $z = 1$ pour l'argent.
+
+      **Ce qui est propre au métal, et ce qui ne l'est pas.** Le $z$ et la masse
+      molaire sont propres au métal : ils servent à passer de la masse pesée au
+      nombre d'électrons. Le quotient obtenu ensuite ne l'est pas : c'est la
+      charge d'une mole d'électrons, environ $9{,}65\times10^{4}\ \text{C/mol}$,
+      pour les deux binômes.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05. L'ancien déclarait franchement `floor_met: false` et
 # nommait trois familles sous le plancher — mais il comptait au
@@ -1460,6 +1867,9 @@ items:
 # ELECTROLYSE-23 et 24 les referment, avec des énoncés distincts et non des
 # clones mémorisables des items existants. Tableau GÉNÉRÉ, gardé par
 # web/scripts/resume-couverture.mjs.
+# 2026-09-25 : ELECTROLYSE-25 à 29 ouvrent les deux modèles du banc
+# d'électrolyse (tension-decide-la-quantite, faraday-constante-universelle ;
+# content/pc/electrolyse/spec-scene-electrolyse.md §8).
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -1471,12 +1881,14 @@ coverage_summary:
     mc.physics.pc_electrolyse.sens-force-vs-spontane:              { count: 4, items: [ELECTROLYSE-7, ELECTROLYSE-8, ELECTROLYSE-9, ELECTROLYSE-20] }
     mc.physics.pc_electrolyse.polarite-comme-pile:                 { count: 5, items: [ELECTROLYSE-1, ELECTROLYSE-2, ELECTROLYSE-11, ELECTROLYSE-21, ELECTROLYSE-24] }
     mc.physics.pc_electrolyse.electrolyse-source-energie:          { count: 3, items: [ELECTROLYSE-3, ELECTROLYSE-4, ELECTROLYSE-22] }
-    mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique: { count: 6, items: [ELECTROLYSE-5, ELECTROLYSE-6, ELECTROLYSE-15, ELECTROLYSE-18, ELECTROLYSE-19, ELECTROLYSE-21] }
+    mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique: { count: 7, items: [ELECTROLYSE-5, ELECTROLYSE-6, ELECTROLYSE-15, ELECTROLYSE-18, ELECTROLYSE-19, ELECTROLYSE-21, ELECTROLYSE-27] }
     mc.physics.pc_electrolyse.faraday-calcul-unites:               { count: 4, items: [ELECTROLYSE-5, ELECTROLYSE-6, ELECTROLYSE-15, ELECTROLYSE-19] }
-    mc.physics.pc_electrolyse.seuil-tension-continu:               { count: 7, items: [ELECTROLYSE-7, ELECTROLYSE-8, ELECTROLYSE-9, ELECTROLYSE-12, ELECTROLYSE-13, ELECTROLYSE-14, ELECTROLYSE-20] }
+    mc.physics.pc_electrolyse.seuil-tension-continu:               { count: 8, items: [ELECTROLYSE-7, ELECTROLYSE-8, ELECTROLYSE-9, ELECTROLYSE-12, ELECTROLYSE-13, ELECTROLYSE-14, ELECTROLYSE-20, ELECTROLYSE-25] }
     mc.physics.pc_electrolyse.sens-courant-electrons:              { count: 3, items: [ELECTROLYSE-10, ELECTROLYSE-23, ELECTROLYSE-24] }
     mc.physics.pc_electrolyse.bilan-matiere-electrodes:            { count: 3, items: [ELECTROLYSE-16, ELECTROLYSE-17, ELECTROLYSE-23] }
-  total_items: 24
+    mc.physics.pc_electrolyse.tension-decide-la-quantite:          { count: 4, items: [ELECTROLYSE-25, ELECTROLYSE-26, ELECTROLYSE-28, ELECTROLYSE-29] }
+    mc.physics.pc_electrolyse.faraday-constante-universelle:       { count: 3, items: [ELECTROLYSE-27, ELECTROLYSE-28, ELECTROLYSE-29] }
+  total_items: 29
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -1484,9 +1896,9 @@ coverage_summary:
     R1: 4
     R2: 4
     R3: 3
-    R4: 4
+    R4: 7
     R5: 3
-    R6: 3
+    R6: 5
   gated_misconceptions:
     # Les quatre familles sondées par un checkpoint de la leçon — un ÉCHO
     # formatif du banc, jamais un substitut : elles ne comptent pas deux fois.
@@ -1497,6 +1909,9 @@ coverage_summary:
   gated_floor: 3
   gated_floor_met: true
   honest_state: >-
-    Les huit misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Trois y siègent EXACTEMENT (3 items) : la marge est nulle
-    et tout retrait d'item la casse.
+    Les dix misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Quatre y siègent EXACTEMENT (3 items) — dont
+    faraday-constante-universelle, ouverte le 2026-09-25 : la marge est
+    nulle et tout retrait d'item la casse. La sur-représentation du seuil
+    baisse (7/24, puis 8/29) sans se refermer : la réparation demandée est
+    un retrait de contenu, et aucun n'a été fait.

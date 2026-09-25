@@ -195,7 +195,13 @@ jobs:
       # une branche, pas un arrondi —, les 4 crans de porteuse (des comptages
       # ENTIERS), les zéros de l'enveloppe surmodulée, et la récurrence du
       # détecteur identique à celle de la spec à 10⁻¹² tant que m < 1.
-      - name: Tests unitaires (apprenant · session · typographie · écriture · épreuves · mélange · noyaux · diffraction · tremplin · modulation)
+      #
+      # test-electrolyse garde le modèle du « banc d'électrolyse » : les tables
+      # A à E de la spec (Q, les deux masses au milligramme, n(e⁻) et le
+      # quotient Q/n(e⁻) sur les valeurs AFFICHÉES — 9,65·10⁴ à six charges,
+      # 9,70·10⁴ à la septième), les deux couples de même charge, l'invariance
+      # au câblage, et la tension absente de TOUTE fonction de calcul.
+      - name: Tests unitaires (apprenant · session · typographie · écriture · épreuves · mélange · noyaux · diffraction · tremplin · modulation · électrolyse)
         run: |
           npm run test-learner-model
           npm run test-attempt-events
@@ -207,6 +213,7 @@ jobs:
           npm run test-diffraction
           npm run test-tremplin
           npm run test-modulation
+          npm run test-electrolyse
 
       # PORTE LIENS (2026-09-05). Ce projet se pilote par ses documents :
       # `.claude/CLAUDE.md` envoie vers la vision, la vision vers les règles,
@@ -1321,6 +1328,27 @@ jobs:
           for i in $(seq 1 60); do curl -sf -o /dev/null http://localhost:3433/ && break; sleep 1; done
           node scripts/etroit-sweep.mjs
           node scripts/etroit-sweep.mjs --essai-rouge
+
+      # PORTE « LE BANC D'ÉLECTROLYSE » (2026-09-25, HANDOFF §11.208). Le
+      # septième manipulable PLAN (pc/electrolyse, en tête de R4), à COURSE.
+      # ICI et non dans `scene-champ` ni `scenes` : ces deux jobs tiennent déjà
+      # 43 et 42 min sur leurs 50 et 60 (run 773) ; celui-ci 8 sur 40. ANALYTIQUE :
+      # la porte refait Q, les deux masses, n(e⁻) et le quotient aux 27 états —
+      # et la ligne N12, la démonstration : aux trois tensions, les mêmes
+      # chaînes AU CARACTÈRE PRÈS (27 états, 9 jeux de valeurs) — et lit les
+      # PIXELS dans les deux sens : le dépôt contre le témoin « 1 g », l'aiguille
+      # (du côté du sens, immobile quand la tension change), les flèches du
+      # courant et des électrons, le croisement des fils, les rôles posés sur
+      # la lame de la borne +, le bain qui fonce sans virer. La course est
+      # mesurée contre l'HORLOGE (Δt/900).
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — les familles visées doivent
+      # crier, et chaque forme de la frontière être vue.
+      - name: "Le banc d'électrolyse (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-electrolyse
+          node scripts/scene-electrolyse.mjs --essai-rouge
 
   # LE VERDICT DES QCM SUR LE CORPUS ENTIER (DÉCISIONS §17, levée par son
   # prémisse, comme §16). `verdict-qcm` répond à la question la plus grave du

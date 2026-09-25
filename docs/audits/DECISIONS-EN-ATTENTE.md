@@ -1482,3 +1482,74 @@ HANDOFF §11.207) :
 21. **À S5, n'afficher que les quatre lectures que la suite nomme** (calme : « douze
     lignes, la réponse calme est quatre ») : non — la spec (§7.5) prescrit les onze, et
     la porte les lit toutes ; la retouche 19 met les quatre au bas.
+
+## 28. Le banc d'électrolyse : seize questions tranchées par défaut, deux modèles ouverts, et les écarts de la construction
+
+**LE FAIT.** Le treizième manipulable de première partie — le septième PLAN — est
+livré dans `pc/electrolyse`, en tête de R4 (HANDOFF §11.208) : la cellule zinc/cuivre
+de l'accroche sur sa paillasse, un générateur dont la borne + est à gauche, un
+rhéostat qui tient le courant, un ampèremètre à zéro central, un chronomètre et deux
+balances. **Il ne solde aucune dette écrite** ; il se justifie par un trou MESURÉ
+(spec §0.1) : aucun des 24 items ni des 9 sujets ne donne une tension à employer,
+aucun exemple ne fait varier le courant, et la constante de Faraday est DONNÉE dans
+100 % des énoncés, déterminée dans 0 %. `media-manipulable` 18 → 19. La spec
+(`content/pc/electrolyse/spec-scene-electrolyse.md` §13) laissait seize questions ;
+même lecture du mandat qu'aux §20 à §27 : chacune reçoit sa réponse par défaut, écrite
+ici, réversible.
+
+**CE QUI A ÉTÉ TRANCHÉ PAR DÉFAUT :**
+
+1. **Le placement** : en tête de R4, sans étape de seuil (la vague 1 l'avait retirée ;
+   le chemin de retour est écrit, spec §13.1).
+2. **La redistribution du chapitre du seuil** : la scène ne coupe rien ; la part de
+   `seuil-tension-continu` baisse par dilution (7/24 → 8/29) sans se refermer.
+   **Au propriétaire**, indépendamment de la scène.
+3. **Aucune dépendance du courant à la tension** : le rhéostat tient le courant, et la
+   porte le garde dans les deux sens (N8, N12, `aiguille`).
+4. **La balance au milligramme** : l'invariant est vrai à l'écran sur six réglages sur
+   sept, et le septième produit l'écart réel ($9{,}70\times10^{4}$) qui porte
+   ELECTROLYSE-27 et la suite de S5.
+5. **Aucun écart « réaliste » fabriqué sur $F$** : le seul écart vient d'un arrondi de
+   pesée.
+6. **Le repli sans JavaScript est déclaré, pas payé** (`fallback_note`) : une figure
+   figée à trois étapes reste la réponse proposée (spec §13.6).
+7. **Aucun graphe $m = f(Q)$** : la lecture d'une pente n'est enseignée nulle part dans
+   la notion.
+8. **S1 est gardée**, bien que dérivable de R2 : elle attrape le rôle attaché au métal,
+   que le tableau de R2 encourage.
+9. **La cellule de la LEÇON**, pas une cellule de banque ; la disposition (borne + à
+   gauche, (A) et (B)) et la formule « courant d'intensité constante » viennent des
+   sujets, et la légende le dit.
+10. **Aucun champ `habilete`** sur les cinq items neufs (c'est le §3, pour les 62
+    notions).
+11. **La durée HÉRITÉE à S3** : gardée, déclarée dans la table que la porte réécrit
+    (`fuite-inter-etapes`) ; aucune lecture de S4 ou S5 n'existe à S3.
+12. **Un quatrième modèle à marge NULLE** (`faraday-constante-universelle`, 3 items) :
+    accepté et déclaré dans le `honest_state` d'`items.yaml`.
+13. **Aucun point d'arrêt de plus** : les cinq paris jouent ce rôle, `cp-faraday`
+    devient la reprise.
+14. **`tool: "scene2d"`** et le dossier `scene3d/` pour le registre : la question
+    héritée, inchangée.
+15. **Les trois règles générales nées ici** restent en spec, pas dans l'ADR (une scène
+    ne suffit pas à les graver).
+16. **Cinq étapes**, aucune coupée.
+
+**CE QUE LA CONSTRUCTION A CHANGÉ, écrit plutôt que glissé :**
+
+17. **La règle d'échelle en centimètres n'est pas dessinée** (§6.2, §11.2
+    `echelle-constante`, second volet) : la paillasse est un SCHÉMA ; la seule échelle
+    que le produit trace est celle du dépôt, avec son témoin « 1 g ». La porte l'écrit
+    dans son en-tête (ce qu'elle ne mesure pas).
+18. **Les balances affichent leur valeur dès S1** (0,000 g, puis −0,122 et +0,118 g
+    après la révélation), là où la table §7.6 C interdisait `g)` à S1 : le signe de la
+    balance est la troisième face du fait de S1 (la lame (A) s'est dissoute). Les MOTS
+    « masse » et « pèse » restent interdits à S1, et la porte le mesure ; la note
+    « ce que ce banc simplifie » a été réécrite pour ne pas les employer.
+19. **Avant le pari de S2 à S5, l'aiguille, les flèches et les rôles sont là, à
+    l'encre** (§7.2 « reste visible ») — la table générique §11.2 disait « aucune
+    aiguille » ; la porte suit la règle PAR ÉTAPE.
+20. **Le bouton de la course dit « Fermer le circuit »**, le geste de la paillasse :
+    la famille commune `ergonomie` trouve désormais le bouton de course par son
+    marqueur `data-lancer` (les six panneaux à course le portent), son texte en repli.
+21. **Le « A » de l'ampèremètre est un symbole TRACÉ**, pas une étiquette : une lettre
+    de 16 px de haut ne tenait pas dans un cadran de 16 px de rayon sans toucher son bord.

@@ -19,6 +19,7 @@ import { DiffractionPanel } from "./scene/DiffractionPanel";
 import { TremplinPanel } from "./scene/TremplinPanel";
 import { ManegePanel } from "./scene/ManegePanel";
 import { ModulationPanel } from "./scene/ModulationPanel";
+import { ElectrolysePanel } from "./scene/ElectrolysePanel";
 import { NoyauxPanel } from "./scene/NoyauxPanel";
 import { OrbiteGeostationnairePanel } from "./scene/OrbiteGeostationnairePanel";
 import { SpherePlanDroitePanel } from "./scene/SpherePlanDroitePanel";
@@ -50,6 +51,9 @@ const PANNEAUX: Record<string, React.ComponentType<{ scene: Scene3DDescriptor; c
   // Le sixième : un multiplieur et un écran d'oscilloscope, sans temps ni course —
   // la révélation de S4 BRANCHE l'étage de détection (spec-scene-modulation).
   "banc-de-modulation": ModulationPanel,
+  // Le septième : la paillasse de la leçon — la tension décide du SENS, la charge I·Δt de la
+  // QUANTITÉ, et une balance mesure la constante de Faraday (spec-scene-electrolyse).
+  "banc-electrolyse": ElectrolysePanel,
 };
 
 export function Scene3DPanel({ scene, className }: { scene: Scene3DDescriptor; className?: string }) {

@@ -84,7 +84,11 @@ const PORTE = process.argv.includes("--porte");
 //  `spec.md`) : le trou qu'il ferme est MESURÉ — sept sujets sur sept font
 //  lire un oscillogramme, et aucune figure de la notion ne portait de
 //  quadrillage ni de sensibilité (spec §0.3, §2.1).
-const CLIQUET = 18;
+//  Relevé à 19 le même jour, même commit que la scène : pc/electrolyse porte
+//  le banc d'électrolyse. Aucune dette écrite : le trou qu'il ferme est MESURÉ
+//  — aucun des 24 items ni des 9 sujets ne donne une tension à employer, et la
+//  constante de Faraday est donnée partout, déterminée nulle part (spec §0.1).
+const CLIQUET = 19;
 
 const RE_EMBED = /\[\[(?:embed|geogebra|desmos|falstad|phet)[:\]]/gi;
 const parMat = new Map();

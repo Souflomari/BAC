@@ -16180,3 +16180,67 @@ comme au §11.206).
 `REVIEW-2026-09-12` ($F_p = 2$ kHz publié contre 1 003 Hz mesuré au sommet `r-bac` ;
 le conflit $U_0$ / $P_m$ / $A$, dont la réconciliation est écrite et réversible) ;
 $k$ et $P_m$ affichés ; quatre sous-graduations au lieu de cinq.
+
+## §11.208 — Le banc d'électrolyse : deux boutons à deux rôles, une colonne de tension MUETTE, et une constante qu'une balance mesure
+
+**LA SCÈNE.** Le treizième manipulable de première partie, le septième PLAN :
+`pc/electrolyse`, en tête de R4 (`[[embed:banc-electrolyse]]`), précédé d'un paragraphe
+d'annonce neutre. La cellule de l'accroche sur sa paillasse : une lame de cuivre (B) à
+gauche, une lame de zinc (A) à droite, un pont salin, un générateur dont la borne + est
+à GAUCHE (la disposition de trois sujets), un rhéostat sur le fil du cuivre, un
+ampèremètre à zéro central sur celui du zinc, un chronomètre, deux balances. Une COURSE
+accélérée ×900 (1 s d'écran pour un quart d'heure) : on ferme le circuit, l'aiguille
+prend son côté, la balance monte et s'arrête à la durée réglée. Cinq paris : **S1** on
+échange les fils (la lame de zinc devient l'anode et se dissout — le rôle est attaché à
+la BORNE, pas au métal ; les fils se croisent sous le générateur) ; **S2** deux fois plus
+longtemps (0,183 → 0,366 g) ; **S3** deux fois moins de courant (0,366 → 0,183 g, et
+$Q = I\,\Delta t$ : deux couples de même produit, la même pesée au caractère près) ;
+**S4** combien de moles d'électrons (par la balance et la demi-équation :
+$2{,}239\times10^{-2}$ mol) ; **S5** on double la tension, le rhéostat tient
+0,400 A — **rien ne bouge d'un chiffre**, et le quotient $Q/n(e^-)$ se nomme :
+$9{,}65\times10^{4}$ C·mol⁻¹, la constante de Faraday, MESURÉE. Au septième réglage
+(0,100 A ; 45 min) la pesée arrondie donne $9{,}70\times10^{4}$ : fais durer les
+manipulations.
+
+**LE TROU QU'ELLE FERME, mesuré** (spec §0.1) : aucun des 24 items ni des 9 sujets ne
+donnait une tension à EMPLOYER, aucun exemple ne faisait varier le courant, et $F$ était
+donnée dans 100 % des énoncés, déterminée dans 0 % — le travail pratique du cadre était
+couvert à 0 %. Deux modèles invisibles au corpus : `tension-decide-la-quantite` et
+`faraday-constante-universelle`.
+
+**LE CONTENU.** `items.yaml` : les deux modèles déclarés (avec `contradicts_principle`),
+ELECTROLYSE-25 à 29 écrits sur la spec §8.3 (trois R4, deux R6 ; aucun champ
+`habilete`), `coverage_summary` refait contre le compteur — 29 items,
+`tension-decide-la-quantite` 4, `faraday-constante-universelle` 3 (marge NULLE,
+déclarée), `seuil-tension-continu` 7 → 8. Deux choix de la spec réécrits parce qu'ils
+refusaient de s'engager (« On ne peut pas conclure », `indice-refus`) et la clé
+d'ELECTROLYSE-29, seule à sur-affirmer (`indice-absolu` l'a vue : « quel que soit le
+métal » → « pour le zinc comme pour l'argent »). `lesson.md` : l'annonce avant le
+marqueur (§4.1), « La tension décide *si* ; la charge décide *combien* » avant
+l'exemple travaillé (§4.3), « Le geste inverse : mesurer la constante de Faraday »
+après lui (§4.4, la chaîne balance → électrons → $F$, les nombres du banc refaits, et
+$m = MI\Delta t/(zF)$), deux puces au récapitulatif. Artefacts du modèle apprenant
+régénérés. `media-manipulable` 18 → 19.
+
+**LA PORTE `scene-electrolyse`** (INSTRUMENTS) : les nombres aux 27 états en cascade sur
+les valeurs AFFICHÉES, N12 (la tension muette : 27 états, 9 jeux de valeurs), l'écart
+du septième réglage EXIGÉ ; aux pixels le dépôt contre le témoin « 1 g », l'aiguille,
+les flèches, le croisement, les rôles, la lame qui gagne ou perd, le bain qui fonce sans
+virer. **Premier passage : 32 rouges sur 145 mesures, plus de la moitié dans la porte**
+(le texte d'une formule KaTeX lu trois fois ; « intensité constante » pris pour le nom
+de la constante ; « Au bout de » pris pour de l'or ; des tirets pris pour un dépôt).
+Défauts du produit : quatre étiquettes sur un trait (le « A » du cadran est devenu un
+symbole tracé), une note qui écrivait « masse » à S1. **Puis VERTE deux fois (145, 146
+mesures, 31 familles), essai rouge 30/30 et 29 formes de frontière vues.** En CI dans le
+job `telephone` (8 min sur 40) : `scene-champ` et `scenes` sont à 43 et 42 min sur 50 et
+60. `test-electrolyse` (9 tests) rejoint les tests unitaires.
+
+**UNE PIÈCE COMMUNE TOUCHÉE** : `scripts/lib/scene-ergonomie.mjs` trouvait le bouton de
+course par son texte « Lancer… » ; le banc dit « Fermer le circuit ». Le locator prend
+désormais `button[data-lancer]` (les sept panneaux à course le portent), le texte en
+repli — et il reste PARESSEUX : le bouton n'existe qu'après le pari.
+
+**RESTENT** : la campagne de sabotages du PRODUIT (ADR 0038) ; la vague 2 (dessin,
+calme, ergonomie) sur les captures ; au propriétaire, les seize questions de la spec
+§13 tranchées par défaut (DÉCISIONS §28), dont la redistribution du chapitre du seuil
+et la figure de repli sans JavaScript.

@@ -1,10 +1,53 @@
 # spec — manipulable 2D `banc-electrolyse` (PC · `electrolyse`, **R4**)
 
-**Statut : PROPOSITION (2026-09-25), non construite — RÉVISÉE après la vague 1.** Écrite
-par pedagogy-architect, rangée sous `docs/pipeline/propositions/` tant qu'elle n'est pas
-construite (DÉCISIONS §19 : dans le dossier d'une notion, `dette-manipulable` lit toute
-spec comme une PRESCRIPTION). À la livraison, elle rejoint le dossier de la notion sous
-`content/pc/electrolyse/spec-scene-electrolyse.md`, dans le commit qui livre la scène.
+**Statut : LIVRÉE (2026-09-25, HANDOFF §11.208)** ; les réponses par défaut du §13 ont
+été appliquées (DÉCISIONS §28), chacune reste réversible. Écrite le 2026-09-25 par
+pedagogy-architect, révisée après la vague 1, rangée d'abord sous
+`docs/pipeline/propositions/`, elle a rejoint le dossier de la notion dans le commit qui
+livre la scène. Les chemins qu'elle nommait existent : le descripteur
+`content/pc/electrolyse/media/banc-electrolyse.json`, le modèle
+`web/src/lib/scene2d/electrolyse-modele.ts` (et son test unitaire
+`web/scripts/test-electrolyse.mjs`), le rendu `web/src/lib/scene2d/electrolyse-rendu.ts`,
+le panneau `web/src/components/notion/scene/ElectrolysePanel.tsx`, la porte
+`web/scripts/scene-electrolyse.mjs`, et les items ELECTROLYSE-25 à 29.
+
+**Ce que la construction et la porte ont changé à cette spec, écrit ici plutôt que
+corrigé en douce :**
+- **La règle d'échelle en centimètres n'est pas dessinée** (§6.2 ; §11.2,
+  `echelle-constante`, second volet). La paillasse est un SCHÉMA — béchers, fils et
+  instruments ne sont à aucune échelle commune — et la seule échelle que le produit trace
+  est celle du dépôt, avec son témoin « 1 g » (à partir de S2, quand la masse est le
+  sujet). Le facteur ne dépend que de la largeur du dessin (0,016 × largeur px par gramme :
+  8,00 px/g à 1 280 px) ; la porte le LIT sur le témoin, aux 27 états.
+- **Les balances affichent leur valeur dès S1** (0,000 g, puis −0,122 g et +0,118 g
+  après la révélation), là où la table §7.6 C interdisait `g)` à S1 : le signe de la
+  balance est la troisième face du fait de S1. Les MOTS « masse » et « pèse » restent
+  interdits à S1, et la porte les cherche dans le panneau ENTIER — la note « ce que ce
+  banc simplifie » les employait : réécrite.
+- **Avant le pari de S2 à S5, l'aiguille, les flèches et les étiquettes de rôle sont
+  là, à l'encre** — c'est le « reste visible » du §7.2 ; la table générique du §11.2
+  (« aucune aiguille ») ne vaut qu'à S1. La porte suit la règle PAR ÉTAPE, et elle vérifie
+  aussi le côté présent : à S2 et après, l'énoncé qui manquerait serait une faute.
+- **L'ampèremètre est à ZÉRO CENTRAL** (c'est ce qui rend lisible « l'aiguille change de
+  côté », §7.1) ; son « A » est un symbole TRACÉ sous le pivot, pas une étiquette — une
+  lettre de 16 px de haut ne tenait pas dans un cadran de 16 px de rayon.
+- **Échanger les fils se DESSINE** : en `accord`, les deux fils se croisent sous le
+  générateur, l'un passant par-dessus l'autre ; le rhéostat reste sur le fil du cuivre,
+  l'ampèremètre sur celui du zinc. Les flèches du courant (au-dessus des fils
+  horizontaux) et des électrons (en tirets, dessous) sont lues aux pixels par la porte.
+- **La lame qui perd garde son contour d'origine en tirets** (l'« entaille ») : à 30 min
+  et 0,200 A, l'amincissement vaut 1 pixel ; les tirets disent le sens même quand la
+  mesure ne le peut plus, et la porte lit ce genre (dépôt plein / contour en tirets) sur
+  une colonne, avant la mesure.
+- **Le bouton de la course dit « Fermer le circuit »** — le geste de la paillasse ; la
+  famille commune `ergonomie` trouve désormais un bouton de course par son marqueur
+  `data-lancer`.
+- **La frontière et la formule graduée se lisent sur la source TeX des formules** : le
+  texte d'une formule KaTeX concatène le MathML, la source et le rendu, et « $1{,}1$ volt »
+  s'y lisait « 11,1 V » (premier passage). « constante » seule est le mot des énoncés
+  (« intensité constante ») : la porte cherche le NOM (« constante de Faraday »). Les
+  symboles d'autres métaux sont cherchés en position chimique : « Au bout de 30 min »
+  n'est pas de l'or.
 
 ---
 

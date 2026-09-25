@@ -286,7 +286,11 @@ export async function ergonomie({ lancer, url, scene, noter, essai, ouvrir = "Ou
             await p.waitForTimeout(250);
           }
           const choix = q.locator("[data-pari-choix] button").first();
-          const lance = q.locator("button").filter({ hasText: /^\s*Lancer/ }).first();
+          // le bouton de la course : marqué `data-lancer` dans les six panneaux à course
+          // (le banc d'électrolyse dit « Fermer le circuit », le geste de la paillasse) ;
+          // sinon, son texte (« Lancer le temps » des scènes 3D)
+          // (un locator est PARESSEUX : le bouton n'existe qu'après le pari)
+          const lance = q.locator("button[data-lancer]").or(q.locator("button").filter({ hasText: /^\s*Lancer/ })).first();
           if (!(await choix.count()) || (await q.getAttribute("data-pari")) !== "attente") {
             dire(false, `révélation après une course (${largeur} px) : l'étape ${course + 1} n'attend pas de pari — mesure muette`);
             await p.context().close();
