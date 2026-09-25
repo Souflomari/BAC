@@ -1,6 +1,47 @@
 # spec — manipulable 2D `plan-complexe-transformation` (Maths · `nombres-complexes-2`, **R5**)
 
-**Statut : PROPOSITION, non construite.** Écrite le 2026-09-25 par pedagogy-architect.
+**Statut : PROPOSITION, non construite — RÉVISÉE APRÈS LA VAGUE 1 (2026-09-25).** Écrite le
+2026-09-25 par pedagogy-architect.
+
+> ## Ce que la vague 1 a changé
+>
+> **Deux critiques, verdict commun : construire, mais pas telle qu'écrite.**
+>
+> **Deux BLOQUANTS pédagogiques, tous deux appliqués.**
+> **B1** — `quart-de-tour` (S1) portait `mult-par-i-non-rotation`, dont le sens déclaré est
+> l'erreur **inverse** ; la sur-généralisation que R0 fabrique n'était **déclarée nulle
+> part**. → **Second modèle neuf** `multiplication-rotation-par-defaut` (§8.2 a) **+ trois
+> items** (NBCOMPLEX2-39, -40, -41) ; §2.2, §3 et le registre du §8.1 corrigés ; le choix
+> faible `angle-deux` remplacé par `agrandissement-nul`.
+> **B2** — un distracteur de S2 affichait une valeur qui ne se déduisait pas de son propre
+> modèle ($\times\pi$ au lieu de $\times\tfrac{\pi}{2}$). → corrigé, **et la règle est armée
+> au §14.0** : *la valeur de chaque choix se recalcule depuis le modèle que son étiquette
+> nomme.*
+>
+> **Un défaut de fidélité qui touche ma propre honnêteté d'instrument (S1).** J'avais écrit
+> « aucune clé `exclusions` dans les fichiers maths » **en citant un `grep` que je n'avais pas
+> lancé** — et `exclusions_transversales` existe (7 entrées SM, 8 SExp), dont **quatre
+> mordent ici**. Corrigé au §1, au §9.5, au §9.6 et au §13.1 ; **consigné au §15.9**.
+>
+> **Un défaut de géométrie (S5) qui a produit une règle.** Trois des 70 états atteignables
+> tombaient **hors du cadre** ; mon audit n'avait lu que la moitié d'entre eux. Cause : la
+> **forme** du cadre. → **la fenêtre devient CARRÉE** ($[-9;9]^2$) et un cran de point change
+> ($-2+2i \to 1-i$). **Règle écrite pour les scènes à venir : l'ensemble atteignable d'une
+> scène de rotation est stable par rotation, donc il se borne par un DISQUE — son cadre est
+> carré, ou il ment** (§5.1).
+>
+> **Deux décisions retournées.** Le mot « **similitude** » est désormais autorisé **une fois
+> dans la prose**, marqué SM (fidélité S3) — **le panneau reste interdit**. Et le refus du
+> continu devient un **HYBRIDE** (pédagogie I6) : un **balayage muet** à S3, sans aucun
+> chiffre, qui laisse les cinq crans exacts intacts.
+>
+> **Sept items au lieu de quatre, 41 au total**, tous les planchers recomptés (§8.4) ; **cinq
+> essais rouges de plus** ; **trois questions au propriétaire de plus** (§13.13 à §13.15) ;
+> **cinq entrées d'honnêteté de plus** (§15.9 à §15.13).
+>
+> *Tout ce que les critiques ont demandé de garder n'a pas bougé : la structure en cinq
+> étapes, le placement en tête de R5, la chaîne graduée du §2.3, la frontière de rang, le
+> contrat de porte, et la précision exacte.*
 Quatorzième manipulable de première partie, **huitième PLAN** (ADR 0041, `"tool": "scene2d"`,
 mêmes pièces que la cuve, la corde, les noyaux, le banc de diffraction, le tremplin, le banc
 de modulation et le banc d'électrolyse). **Première scène de maths sans 3D** — les trois
@@ -86,13 +127,18 @@ geste que dix entrées de banque sur dix demandent à l'écrit.
 R6 (la lecture de $w = \dfrac{z_C-z_A}{z_B-z_A}$) est le rung où le bac atterrit. On pourrait
 croire que c'est là qu'il faut poser la scène. **Quatre mesures disent R5.**
 
-1. **La masse des modèles déclarés est en R5.** Famille R5 : **sept** modèles
+1. **La masse des modèles déclarés est en R5.** Famille R5 : **huit** modèles
    (`mult-par-i-non-rotation`, `similitude-module-argument-roles`,
    `homothetie-rapport-complexe`, `reel-positif-donne-rotation`,
    `transformation-centre-oublie`, `rotation-sens-inverse`,
-   `rotation-angle-comme-coefficient`, plus `ecriture-complexe-oubli-constante` — huit avec
-   lui), **11 items**. Famille R6 : **deux** modèles (`lecture-w-module-argument`,
+   `rotation-angle-comme-coefficient`, `ecriture-complexe-oubli-constante`), **11 items**.
+   Famille R6 : **deux** modèles (`lecture-w-module-argument`,
    `ensemble-points-locus-confondu`), **5 items**.
+   *Précision de vague 1 : des huit, **la scène n'en sert que sept** —
+   `mult-par-i-non-rotation` en est retiré, sa définition déclarée décrivant l'erreur inverse
+   de celle que R5 produit (§8.1, correctif B1). **En revanche la scène en déclare deux
+   neufs**, ce qui porte à neuf les modèles de la famille R5, et à dix ceux que la scène
+   sert (en recrutant `produit-modules-additionnes` à S2).*
 2. **Le défaut de R5 est écrit et mesuré** (fait **e**) ; celui de R6 ne l'est pas — la revue
    juge R6 « mécanisme central expédié sur le mot *précisément* » (D10), un défaut de PROSE,
    pas de manipulation.
@@ -130,6 +176,13 @@ bornait la PAGE ; ici, c'est la PAGE aussi.*
   et c'est de la prose.
 - **Les équations du second degré dans $\mathbb{C}$** : arbitrage rendu vers la leçon sœur
   (`bank.yaml:77-95`), passe de raccordement due sur huit entrées. **Hors scène** (§9.10).
+  ⚠ **SIGNAL, non un constat clos (fidélité S10) :** les deux cadres assignent cet outil au
+  chapitre **de cette leçon-ci** — `maths-sm.yaml:221` (`lesson_slug: nombres-complexes-2`) et
+  `:224` (« *Résolution d'équations dans ℂ (second degré à coefficients complexes…)* ») ;
+  `maths-sexp.yaml:247` et `:249` (« *second degré à coefficients réels…* »). L'arbitrage
+  propriétaire l'a placé dans la leçon **sœur**. **Ce n'est donc pas une divergence réglée,
+  c'est une divergence cadre ↔ corpus qui subsiste, et elle se route à `research-lead`**, pas
+  se consigne comme acquise.
 - **R1, R2, R3 n'exigent toujours aucun engagement** (`REVIEW:160-163`, D2 : trois rungs, zéro
   `[[checkpoint:]]`). La scène est en R5 ; elle ne referme rien de cela. **Reste dû.**
 - **La marche en réponse construite** entre 34 items QCM et un sujet SM à neuf questions
@@ -151,6 +204,11 @@ bornait la PAGE ; ici, c'est la PAGE aussi.*
 
 - **Filière / matière :** **deux** filières concernées — `sciences_mathematiques` (SM-A/SM-B)
   et `sciences_experimentales` (Sciences Physiques) / `mathematiques`.
+  ⚠ **Mais les DIX entrées de banque de cette notion sont `filiere: "SM"`** (`bank.yaml:22`,
+  « *Filière SCIENCES MATHÉMATIQUES (A) et (B), BIOF, pour les dix* »). **Toute la preuve
+  d'examen citée dans ce document est donc SM.** *Aucun sujet SExp de nombres complexes n'est
+  dans le corpus de la notion ; ce que la scène « prépare » pour un élève SExp est déduit du
+  cadre, pas mesuré sur des annales. Déclaré, pas maquillé (fidélité S2).*
 - **Domaine → sous-domaine → chapitre :**
   - **SM** : `algebre_geometrie` → **`nombres_complexes`** → **`complexes_moivre_racines_transformations`** (`maths-sm.yaml:193-232`).
   - **SExp** : `algebre_geometrie` → **`nombres_complexes`** → **`complexes_equations_geometrie`** (`maths-sexp.yaml:226-258`).
@@ -171,9 +229,10 @@ bornait la PAGE ; ici, c'est la PAGE aussi.*
     **50 % · 35 % · 15 %**. *Coefficient 7 (contesté 7-vs-5), 3 h.*
   - **NON-VERDICT DÉCLARÉ** : le champ `habilete` n'existe sur aucun des 34 items, donc **le
     rapport n'est calculable ni avant ni après cette livraison** (§0.3). Tout ce qu'on peut
-    dire à la lecture : des quatre items neufs du §8.3, NBCOMPLEX2-35 et -36 ressemblent à de
-    l'**application directe**, -37 et -38 à de l'**application non explicite**, et **personne
-    ne peut le mesurer**.
+    dire à la lecture : des **sept** items neufs du §8.3, NBCOMPLEX2-35, -36 et -39
+    ressemblent à de l'**application directe**, -37, -38, -40 et -41 à de l'**application non
+    explicite**, **aucun à de la synthèse de niveau 3** (§8.4, fidélité S7), et **personne ne
+    peut le mesurer**.
 - **`competences_ciblees` du sous-domaine :**
   - SM (`:207`) : « *Maîtriser les formes d'un complexe, la formule de Moivre et les racines
     n-ièmes, résoudre des équations dans ℂ, et **exploiter les transformations géométriques
@@ -222,11 +281,39 @@ bornait la PAGE ; ici, c'est la PAGE aussi.*
      (§9.2). *§13.2.*
   4. **Aucune racine n-ième, aucune équation $z^n = a$** dans le panneau : exclusion SExp
      explicite, et sans objet ici (§9.6).
-- **`exclusions` :** ni `maths-sm.yaml` ni `maths-sexp.yaml` **ne portent de clé
-  `exclusions`** — à la différence de `pc-physique-chimie.yaml`. **Constaté, pas contourné :**
-  `grep -n "exclusions" docs/cadre/curriculum/maths-*.yaml` ⇒ **0**. Les seules bornes
-  disponibles sont les `limites` ci-dessus, toutes `derived`. *C'est un écart de structure
-  entre fichiers de cadre, à router vers research-lead (§13.1).*
+- **`exclusions` : elles EXISTENT, et ma première version disait le contraire.**
+
+  > ⚠ **Correction (vague 1, fidélité S1) — et c'est une faute d'instrument, pas une faute de
+  > lecture.** La première version de ce §1 écrivait : « *ni `maths-sm.yaml` ni
+  > `maths-sexp.yaml` ne portent de clé `exclusions` […] `grep -n "exclusions"
+  > docs/cadre/curriculum/maths-*.yaml` ⇒ **0*** ». **La commande citée n'a jamais été
+  > lancée** — et si elle l'avait été, elle aurait trouvé, puisque `exclusions_transversales`
+  > **contient** la chaîne cherchée. J'ai cherché une chose sous **une seule de ses formes**,
+  > puis j'ai attribué à un grep un résultat que je n'avais pas mesuré. C'est ADR 0036 au mot
+  > près, plus une citation de commande fabriquée. **Réparé ici ; §15.9 le consigne.**
+
+  Les deux fichiers portent une clé **`exclusions_transversales`** au **niveau du fichier**
+  (pas du sous-domaine) : **7 entrées** dans `maths-sm.yaml:340-347`, **8** dans
+  `maths-sexp.yaml:300-308`, toutes `source: derived — À VALIDER`. **Quatre mordent ici**, et
+  elles sont portées en dur au §9 :
+  1. `maths-sexp.yaml:305` — « *Racines n-ièmes générales / résolution de zⁿ=a dans ℂ :
+     **SPÉCIFIQUE SM**. SExp : second degré à coefficients réels seulement.* » → **§9.5**.
+  2. `maths-sexp.yaml:302` — « *Structures algébriques (lois de composition, groupes,
+     anneaux, corps, **espaces vectoriels**) : **SPÉCIFIQUE SM**. Absent du cadre SExp.* »
+     et `maths-sm.yaml:343` — « *Réduction d'endomorphismes (valeurs propres,
+     diagonalisation) : **Hors 2e Bac** ; les espaces vectoriels s'arrêtent aux
+     bases/dimension/applications linéaires.* » → **§9.6**.
+  3. `maths-sexp.yaml:306` — « *Produit mixte / déterminant 3×3 […]* » → **§9.6** également
+     (la forme `déterminant`).
+  4. `maths-sm.yaml:347` — « *Géométrie de l'espace comme objet d'EXAMEN NATIONAL* » : sans
+     objet ici (scène plane), **cité pour mémoire**.
+
+  *Ce qui reste à router vers research-lead n'est donc PAS « les fichiers maths n'ont pas
+  d'exclusions » — c'est, plus étroitement : **la granularité diffère de
+  `pc-physique-chimie.yaml`**, qui porte des `exclusions` **par sous-domaine** là où les
+  fichiers maths n'en portent qu'au niveau du fichier. Aucune exclusion propre au
+  sous-domaine `nombres_complexes` n'existe ; les bornes fines de ce chapitre vivent dans ses
+  `limites` (toutes `derived`). §13.1.*
 - **La frontière qui mord le plus fort est INTERNE, et elle est double.**
   1. **Le rang dans la leçon.** La scène est en tête de **R5 (chapitre 6)**. À cet endroit
      l'élève a lu R0 (la multiplication par $i$), R1 (argument, forme trigonométrique), R2
@@ -287,8 +374,26 @@ Le point que la scène existe pour installer, en une phrase :
 **Et la leçon pose les deux moitiés sans jamais les opposer.** R0 donne un $c$ de module $1$
 (« ça fait tourner, ça n'agrandit pas », `lesson.md:23`) ; R2 donne deux **formules** ; R5
 donne un exemple où les deux effets arrivent ensemble sur un point qui ne permet pas de les
-départager. Un élève sort de là avec « multiplier, c'est tourner », et `items.yaml:2302` le
-mesure : `mult-par-i-non-rotation` est à **3 items**, tous en R0.
+départager.
+
+> **Correction de vague 1 (pédagogie B1) — l'erreur que R0 fabrique n'est PAS celle que
+> l'inventaire déclare.** La première version de ce paragraphe concluait « *un élève sort de
+> là avec « multiplier, c'est tourner », et `items.yaml:2302` le mesure :
+> `mult-par-i-non-rotation` est à 3 items* ». **C'est faux, et dans le sens exactement
+> opposé.** Le modèle déclaré (`items.yaml:15-18`) dit : « *L'élève interprète $z \mapsto iz$
+> […] comme un changement de taille, un déplacement, ou une symétrie axiale, **au lieu d'une
+> rotation** d'un quart de tour* » — c'est **l'échec à VOIR une rotation**. Ses quatre choix
+> de point d'arrêt le confirment (`checkpoints.yaml:91-122` : agrandissement, translation,
+> symétrie). **L'erreur que R0 fabrique est la réciproque : « toute multiplication fait
+> tourner, et d'un quart de tour, parce que c'est ce que $i$ a fait » — l'argument de $c$
+> n'est jamais lu. Elle n'est déclarée nulle part, et rien ne la mesure. §8.2 la déclare.**
+>
+> **Et R0 n'est pas muet sur le module, contrairement à ce que ce §2.2 laissait croire** :
+> `checkpoints.yaml:98-100`, au-dessus du marqueur, écrit déjà « *Comme $\vert i\vert = 1$, la
+> multiplication par $i$ ne change aucune longueur : elle fait seulement tourner.* » **Le
+> principe est donc ÉNONCÉ avant la scène ; ce qui manque, c'est le second cas** — un $c$ dont
+> le module n'est pas $1$, sur lequel la phrase se retourne. *L'audit du §3 porte désormais
+> cette citation, et le coût résiduel de S1 y est déclaré.*
 
 ### 2.3 L'antidote obligatoire : une chaîne construite en CINQ temps
 
@@ -310,10 +415,15 @@ propre énoncé exige (correctif de vague 1 du banc d'électrolyse).
 - **S5** ajoute la forme **développée** $z' = az+b$, le geste inverse $\omega = \dfrac{b}{1-a}$,
   et le rapport $\dfrac{z'-\omega}{z-\omega}$.
 
-**Contrainte non négociable et mesurable** (table exacte au §7.6 C, mesurée au §11.2
-`formule-graduee`) : `rapport`, `AM'/AM`, `|c| =` pas avant **S2** ; `\arg(c)`, `angle`,
-`\pi/6`, `e^{i\theta}` **en position de coefficient** pas avant **S3** ; `centre`, `point
-fixe`, `invariant`, `z' - z_\Omega` pas avant **S4** ; `z' = az + b`, `\omega`,
+**Contrainte non négociable et mesurable. La table du §7.6 C est la SEULE autorité ; ce qui
+suit en est un résumé, et il ne doit jamais la contredire** (correctif de vague 1,
+fidélité S10 : ce résumé interdisait `\arg(c)` avant S3 pendant que la table du §7.6 C
+l'autorisait à S1 sous la forme $\arg(2)=0$ — deux règles pour une seule mesure) :
+`rapport`, `AM'/AM`, `|c| =` pas avant **S2** ; **la LECTURE `argument-c`, l'`angle`,
+$\dfrac{\pi}{6}$ et $e^{i\theta}$ en position de coefficient** pas avant **S3** — *la seule
+occurrence autorisée plus tôt est la chaîne littérale $\arg(2) = 0$ dans le retour juste de
+S1, qui justifie l'absence de rotation et ne chiffre aucun angle* ; `centre`, `point fixe`,
+`invariant`, `z' - z_\Omega` pas avant **S4** ; `z' = az + b`, `\omega`,
 `\dfrac{b}{1-a}` pas avant **S5**. La porte le lit dans le `textContent` **rendu**, en
 remplaçant chaque `.katex` par son **annotation TeX** (leçon du banc d'électrolyse : le
 `textContent` d'une formule KaTeX concatène MathML, source et rendu).
@@ -373,16 +483,38 @@ Ligne exacte à insérer (seule sur sa ligne, comme l'exige `MARKER_LINE`) :
 précédée du paragraphe d'annonce neutre du §4.1.
 
 **Pourquoi là, et pourquoi pas ailleurs** (ADR 0041 §6 : *la scène vient AVANT la prose qui
-explique*). Vérification étape par étape contre le texte **déjà lu** au marqueur
-(`lesson.md:1-268`, soit R0 à R4 en entier) :
+explique*).
 
-| étape | la prose (ou le point d'arrêt) qui répondrait | où elle est | déjà lue au marqueur ? |
+> **L'audit a été ÉLARGI par la vague 1 (pédagogie I4).** Sa première version ne lisait que
+> la **prose** de `lesson.md:1-268`. Elle laissait dehors deux sources qui sont **au-dessus du
+> marqueur** et que l'élève a lues : **(a) le TITRE de R5 lui-même** — « *R5 —
+> Interprétation géométrique : **rotation et homothétie*** » (`lesson.md:269`), qui **nomme
+> les deux réponses de S1 avant toute étape** ; **(b) les retours des points d'arrêt situés
+> au-dessus**, en particulier `checkpoints.yaml:98-100` (`cp-r0-predict`, choix B) : « *Comme
+> $\vert i\vert = 1$, la multiplication par $i$ ne change aucune longueur : elle fait
+> seulement tourner.* » **Le principe « le module décide de la longueur » est donc déjà écrit,
+> sur un cas.**
+
+Vérification étape par étape contre **tout** ce qui est lu au marqueur — prose
+(`lesson.md:1-269`, R0 à R4 **titre de R5 compris**) **et** retours de `cp-r0-predict` et
+`cp-r4-racines` :
+
+| étape | ce qui répondrait | où | déjà lu au marqueur ? |
 |---|---|---|---|
-| **S1** — $c=2$ : ça agrandit, ça ne tourne pas | `lesson.md:295` (« *si $c$ est un réel strictement positif […] seulement une homothétie* ») | **R5, APRÈS** le marqueur | ⚠️ **dérivable de R2, jamais montré — écrit franchement ci-dessous** |
-| **S2** — le rapport des longueurs | $\vert zz'\vert = \vert z\vert\vert z'\vert$ à `:129` | R2, avant | ⚠️ **la formule est lue ; la longueur multipliée ne l'est pas** |
-| **S3** — l'angle est un ÉCART | **nulle part** : `:277` écrit $\arg(z') = \theta + \arg(z)$, **jamais** $\arg(z') - \arg(z) = \theta$, et l'exemple ne peut pas les distinguer (fait **d**) | — | ❌ **non** |
+| **S1** — $c=2$ : ça agrandit, ça ne tourne pas | `lesson.md:295` ; **le TITRE de R5 (`:269`) nomme « rotation et homothétie »** ; `checkpoints.yaml:98-100` pose déjà « $\vert i\vert=1$ ⟹ aucune longueur ne change » | `:295` **APRÈS** ; le titre et le retour **AVANT** | ⚠️ **partiellement lu — coût déclaré ci-dessous** |
+| **S2** — le rapport des longueurs | $\vert zz'\vert = \vert z\vert\vert z'\vert$ à `:129` ; `checkpoints.yaml:98-100` sur le cas $\vert c\vert = 1$ | R2 et R0, **AVANT** | ⚠️ **la formule et un cas sont lus ; la longueur MULTIPLIÉE ne l'est pas** |
+| **S3** — l'angle est un ÉCART | **la règle est DÉRIVABLE** ($\arg(zz') = \arg z + \arg z'$, `:129`, se retourne en une ligne) ; **mais la LECTURE GÉOMÉTRIQUE — « cet écart est l'arc qu'on mesure de $OM$ à $OM'$ » — n'est écrite nulle part** dans R0–R4, et l'exemple de R5 ne peut pas la distinguer de $\arg(z')$ (fait **d**) | — | ❌ **non** *(formulation corrigée, pédagogie M1 : ce n'est pas la règle qui manque, c'est sa lecture sur la figure)* |
 | **S4** — le centre, et le point qui ne bouge pas | `:285-293` | **R5, APRÈS** | ❌ non |
 | **S5** — caractériser $z' = az + b$ | **nulle part dans la notion** (`REVIEW:100-105`, 0/34 items) | — | ❌ **non** |
+
+**Le coût résiduel, déclaré (pédagogie I4).** Le titre de R5 donne les deux MOTS que S1 fait
+choisir. **Je ne le retire pas** — renommer un titre de rung dépasse cette spec — mais je le
+déclare, et je **commande une alternative** à content-author : **un titre en forme de
+question**, par exemple « *R5 — Que fait, géométriquement, une multiplication par un complexe
+fixe ?* », qui reprend l'accroche de R0 (`lesson.md:9`) et n'énonce aucune des deux réponses.
+*Si le titre n'est pas changé, S1 perd une partie de sa force et cela reste vrai : un élève
+qui lit le titre sait qu'il y a une homothétie quelque part. **Ce qu'il ne sait toujours pas,
+c'est laquelle des deux agit, ni sur quoi** — et c'est ce que S1 fait choisir.* **§13.13.**
 
 **Deux tensions réelles, écrites plutôt que maquillées.**
 
@@ -394,8 +526,10 @@ explique*). Vérification étape par étape contre le texte **déjà lu** au mar
    » (`:23`). Sa question de sortie l'admet elle-même : « *Est-ce que tout nombre complexe
    produit, de la même façon, une rotation — **et peut-être aussi un agrandissement*** ? »
    (`:25`). **Le « peut-être aussi » attend quatre rungs sa réponse, et la reçoit en prose.**
-   La scène la rend en un pari. *Et le modèle est déclaré, avec trois items :
-   `mult-par-i-non-rotation` (`items.yaml:2302`).*
+   La scène la rend en un pari. *Le modèle que cette généralisation abusive produit
+   — « toute multiplication fait tourner, et d'un quart de tour » — **n'est PAS**
+   `mult-par-i-non-rotation`, qui décrit l'erreur inverse : il est **déclaré neuf au §8.2**
+   (correctif de vague 1, pédagogie B1).*
 2. **S1, S2 et S3 posent les questions du chapitre où elles SONT ; S4 aussi ; S5 pose une
    question qu'aucun chapitre ne pose.** C'est un écart de phase **inverse** de celui que la
    vague 1 du banc d'électrolyse a refusé : là-bas la scène enseignait le chapitre SUIVANT ;
@@ -404,6 +538,18 @@ explique*). Vérification étape par étape contre le texte **déjà lu** au mar
    prose du §4.4.** Une étape qui exerce un geste qu'aucun paragraphe ne pose est exactement
    l'anti-motif que `REVIEW:132-137` (S8) reproche déjà à `cp-ensemble-points` — « *méthode
    dans la réponse, l'anti-motif* ». **On ne le refait pas.**
+
+   **Et ce n'est pas un geste inventé : l'examen le demande, et la banque le porte déjà.**
+   `bank.yaml:1985` (2017 N, q1b2) : « *Montrer que $M_1$ est l'image de $M_2$ par la
+   rotation de centre le point $\Omega$ d'affixe $\omega = \dfrac{1+i}{2}$ et d'angle
+   $\dfrac{\pi}{2}$* », et son raisonnement (`:1987`) écrit **exactement la route de S5** :
+   « *La relation $z_1 = iz_2+1$ […] est une application affine $z \mapsto iz+1$ […] Le
+   multiplicateur $i$ a pour module $1$ et pour argument $\dfrac{\pi}{2}$ […] c'est le signe
+   d'une rotation d'angle $\dfrac{\pi}{2}$, **de centre le point fixe de cette application,
+   solution de $\omega = i\omega+1$*** » — la résolution étant posée à `:1989`.
+   **Un sujet national fait donc déjà, en 0,5 point, ce qu'aucun paragraphe de la notion
+   n'enseigne.** *C'est l'argument le plus fort du §0.1 f, et il manquait à la première
+   version de ce document.*
 
 **Ce que le placement NE fait pas.** `cp-r5-ecriture` reste où il est, **après** R5
 (`lesson.md:313`), et **n'est pas modifié** : il teste l'**écriture** (quelle formule ?), la
@@ -422,12 +568,24 @@ notion, et n'introduit **aucune** citation « chapitre N » nouvelle vers un aut
 ### 4.1 Le paragraphe d'annonce — AVANT le marqueur
 
 **Emplacement :** juste après le titre `## R5` (`lesson.md:269`), avant le marqueur.
-**Longueur : 40 à 60 mots. Ton : neutre, il n'annonce aucune réponse.**
+**Longueur : 70 à 95 mots** *(budget relevé en vague 1, pédagogie M3 : il doit désormais
+porter quatre choses, pas trois).* **Ton : neutre, il n'annonce aucune réponse.**
 
 Il doit : (a) rappeler la question laissée ouverte au chapitre 1 (`lesson.md:25`) ; (b) dire
 qu'on va la trancher **en essayant**, avant de la démontrer ; (c) **ne nommer ni rotation, ni
-homothétie, ni rapport, ni angle, ni centre comme des résultats**. *Interdit : toute phrase de
-la forme « tu verras que… ». C'est le correctif « pédagogie 8 » du banc d'électrolyse.*
+homothétie, ni rapport, ni angle, ni centre comme des résultats** ; et **(d) — clause
+déplacée ici depuis le `fit_caveat` (§10.1), parce qu'une réserve qui ne vit que dans un champ
+de métadonnées n'est lue par personne — dire à l'élève, en une phrase, que *ce qu'il va
+essayer ne démontre rien* : le plan lui montrera la règle sur une poignée de cas, et **la
+démonstration, c'est le paragraphe qui suit**.**
+
+*Formulation possible pour (d), à retravailler par content-author : « Attention à ce que ce
+plan est : un banc d'essai, pas une preuve. Quelques cas bien choisis ne démontrent rien en
+mathématiques — la démonstration vient juste après, et elle vaut pour tous les complexes à la
+fois. »* **C'est la seule clause du §4.1 dont le contenu est non négociable** : sans elle,
+une scène de maths qui « vérifie » une règle sur 70 cas enseigne, en creux, que vérifier
+suffit. *Interdit, en revanche : toute phrase de la forme « tu verras que… ». C'est le
+correctif « pédagogie 8 » du banc d'électrolyse.*
 
 ### 4.2 Le marqueur
 
@@ -489,9 +647,23 @@ $\omega = \dfrac{2-2i}{1-i} = \dfrac{2(1-i)}{1-i} = 2$ ⟹ **la rotation de cent
 d'affixe $2$ et d'angle $\dfrac{\pi}{2}$**. **Vérification par la seconde route**, comme le
 fait le reste de la notion : $z' - 2 = iz + 2 - 2i - 2 = iz - 2i = i(z-2)$ ✓.
 
-*Le mot « **similitude** » n'est PAS employé dans ce paragraphe* (§9.2, `maths-sexp.yaml:258`
-le réserve à SM ; la notion ne le définit nulle part et `items.yaml:2067` l'emploie déjà sans
-le définir). *§13.2 dit comment défaire.*
+**Le mot « similitude directe » est employé UNE fois, et une seule, explicitement marqué SM**
+*(décision retournée en vague 1, fidélité S3).* La première version l'interdisait partout ;
+c'était trop. Le cadre SM **le nomme** comme savoir-faire (`maths-sm.yaml:229`), neuf entrées
+de banque sur dix sont SM, et un élève SM qui rencontre le mot pour la première fois dans un
+énoncé d'examen est mal servi. **La prose écrit donc, une fois, une phrase de la forme :**
+> « En filière Sciences Mathématiques, cette transformation porte un nom : une **similitude
+> directe** de rapport $\vert a\vert$, d'angle $\arg(a)$ et de centre $\omega$. »
+
+**Trois contraintes qui vont avec, et qui sont mesurables :** le mot apparaît **une** fois, il
+est **marqué de filière**, il arrive **après** que les trois grandeurs ont été construites
+(jamais avant), et il **ne devient jamais une condition de compréhension** — tout le
+paragraphe se lit sans lui. *`items.yaml:2067` l'emploie déjà sans l'avoir défini
+(`REVIEW:104`) : cette phrase le régularise au passage.*
+
+⚠️ **L'interdiction reste ENTIÈRE dans le PANNEAU** (§9.2) — la scène ne l'écrit jamais, et
+son essai rouge reste armé. *La prose peut nommer ce qu'un élève lira dans un sujet ; une
+scène servie aux deux filières, non. §13.2.*
 
 ### 4.5 Une phrase de raccord en tête de R6 — et rien de plus
 
@@ -507,13 +679,39 @@ $\arg(c)$ **ajoute** un angle — et cet angle est un **écart**, jamais la dire
 point » ; (b) « une transformation écrite $z' = az+b$ se caractérise par $|a|$, $\arg(a)$ et
 $\omega = \dfrac{b}{1-a}$ ».
 
-### 4.7 Aucun nouveau point d'arrêt
+### 4.7 Aucun nouveau point d'arrêt — mais `cp-r5-ecriture` gagne sa REPRISE, et c'est un livrable
 
-`cp-r5-ecriture` reste tel quel, à sa place (`lesson.md:313`). *Motif : la scène porte cinq
-paris ; ajouter un sixième QCM au même rung serait de la redondance, et `REVIEW:201-204` (D13)
-dit que ce dont ce rung manque n'est pas un QCM de plus.* **En revanche, `REVIEW:196-198`
-(D11) reste dû** : `cp-r5-ecriture` est un marqueur nu, sans phrase de cadrage ni de reprise.
-**Cette spec ne le referme pas.**
+`cp-r5-ecriture` **garde ses quatre choix inchangés**, à sa place (`lesson.md:313`). *Motif :
+la scène porte cinq paris ; ajouter un sixième QCM au même rung serait de la redondance, et
+`REVIEW:201-204` (D13) dit que ce dont ce rung manque n'est pas un QCM de plus.*
+
+**Mais une chose change, et c'est un livrable de cette spec** *(vague 1, pédagogie I2 + I7)*.
+`REVIEW:196-198` (D11) relève que les points d'arrêt R4/R5/R6 sont des **marqueurs nus**,
+sans phrase de cadrage avant ni de reprise après — contrairement à R0. **Ici, le manque est
+aggravé par la scène** : S5 enseigne la forme **développée** $z' = az+b$, et
+`cp-r5-ecriture` n'interroge que la forme **factorisée**. Sans reprise, le rung se termine sur
+une compétence que la scène a construite et que rien ne referme.
+
+**Livrable, à content-author (la phrase) et à item-author (le contenu) :**
+
+- **Une phrase de cadrage AVANT le marqueur** (15 à 25 mots), qui dit ce qu'on va vérifier —
+  l'**écriture**, pas le lieu — et distingue explicitement la question de celle du plan
+  (« *le plan t'a fait trouver **où** arrive un point ; ici, on vérifie **comment on
+  l'écrit*** »).
+- **Une REPRISE APRÈS le point d'arrêt** (30 à 45 mots) qui **pose la question de la forme
+  développée sur le même exemple** : *« Et si on te donnait la même transformation écrite
+  $z' = iz + 2 - 2i$ ? C'est la même : développe $z' - 2 = i(z-2)$ et tu retrouves les deux
+  termes. Le centre, lui, ne se lit plus — il se cherche. »*
+  **Contraintes :** la reprise emploie **les nombres de S4** ($z_A = 2$, angle
+  $\dfrac{\pi}{2}$, $a = i$, $b = 2-2i$) ; elle **ne redonne pas** $\omega = \dfrac{b}{1-a}$
+  (déjà écrit au §4.4, deux sous-sections plus haut) ; et elle renvoie explicitement à
+  NBCOMPLEX2-38 pour l'entraînement.
+- **Coût résiduel, déclaré :** ce n'est **pas** un cinquième choix ajouté au point d'arrêt.
+  `cp-r5-ecriture` reste **quatre choix sur la forme factorisée seulement** ; un élève qui
+  réussit le point d'arrêt n'a toujours **rien** démontré sur $z'=az+b$ — cela ne se mesure
+  que sur NBCOMPLEX2-38 (§8.3), au banc de fin. *Si le propriétaire veut que le point d'arrêt
+  le mesure, c'est un cinquième choix ou un `cp-r5-forme-developpee` — une décision d'item, et
+  je ne la prends pas ici.* **§13.14.**
 
 ---
 
@@ -521,8 +719,27 @@ dit que ce dont ce rung manque n'est pas un QCM de plus.* **En revanche, `REVIEW
 
 ### 5.1 Le repère — isotrope, fixe, gradué, et c'est une décision de porte
 
-**Fenêtre de données : $x \in [-9 ; 9]$, $y \in [-5 ; 5]$. Elle ne change JAMAIS**, à aucune
-étape, à aucun réglage.
+**Fenêtre de données : $x \in [-9 ; 9]$, $y \in [-9 ; 9]$ — un CARRÉ. Elle ne change
+JAMAIS**, à aucune étape, à aucun réglage.
+
+> **Corrigée en vague 1 (fidélité S5), et la règle qui en sort vaut pour les scènes à venir.**
+> La première version proposait une fenêtre **paysage**, $18 \times 10$. Le critique a trouvé
+> **trois états atteignables sur 70 dont l'image tombe hors du cadre** — et il avait raison :
+> mon audit des bornes n'avait lu que les 35 états de centre $O$, et **même là j'avais manqué
+> $c = 2i$, $z = 4 \Rightarrow z' = 8i$** en affirmant que l'ordonnée extrême valait $4$.
+>
+> **La cause n'est pas l'arithmétique, c'est la FORME du cadre.** Dans une scène de rotation,
+> l'ensemble atteignable est **stable par les rotations du coefficient** : si un point est
+> atteignable à distance $8$ sur l'axe réel, alors son image par un $c$ d'argument
+> $\dfrac{\pi}{2}$ est atteignable à distance $8$ sur l'axe imaginaire. **Un cadre
+> rectangulaire laisse donc toujours sortir quelque chose — il suffit de tourner.** Règle,
+> écrite pour les scènes suivantes : **l'ensemble atteignable d'une scène de rotation se borne
+> par un DISQUE ; son cadre est CARRÉ, ou il ment.** *La porte le mesure (§11.2,
+> `isotropie`, second volet : demi-largeur $=$ demi-hauteur au pixel près).*
+>
+> *Un cran a changé avec la fenêtre (§5.2 B) : le point $-2+2i$ devient $1-i$, sans quoi
+> $c=-2$ le projetterait en $10-4i$ depuis le centre $A$. Les **70** états sont recomptés au
+> §5.3, et l'excursion maximale y est écrite.*
 
 > **L'isotropie est la décision de rendu la plus lourde de cette scène, et le dépôt a déjà
 > payé pour l'avoir oubliée — DANS CETTE NOTION.** `docs/ops/SCENE-CONTRACT.md:186-203` :
@@ -543,11 +760,20 @@ $\vec v$ vertical, comme `lesson.md:39`), **les graduations entières**, l'origi
 **le cercle unité**. *Le cercle unité n'est pas décoratif : c'est l'étalon qui rend « $|c|=1$ »
 lisible sans lire un nombre, et c'est la vérification visuelle de l'isotropie.*
 
-**Échelle mesurée :** à $1\,280$ px de large, le plateau fait $\approx 1\,150$ px ⟹
-$\approx 64$ px/unité. **À 390 px : $\approx 21{,}7$ px/unité** — deux points distants d'une
-unité sont à 22 px. *Conséquence à budgéter (§6.2) : sous 600 px, les nombres des axes ne sont
-tracés que tous les **2** unités, et seules les étiquettes de $M$, $M'$, du centre et de
-l'angle subsistent.*
+**Échelle mesurée, refaite pour le cadre carré.** Le plateau est **carré** : son côté vaut
+$\min(\text{largeur disponible},\ \text{hauteur plafond})$. À $1\,280$ px, avec un plafond de
+hauteur de **560 px** (la scène est collante, ADR 0041 §7 : elle ne doit pas manger l'écran),
+le plateau fait $560 \times 560$ ⟹ $560/18 \approx \mathbf{31}$ px/unité, et la colonne des
+réglages occupe le reste de la largeur. **À 390 px : $390 \times 390$ ⟹ $390/18 \approx
+\mathbf{21{,}7}$ px/unité** — *identique à la fenêtre paysage précédente, parce que c'est la
+largeur qui contraint au téléphone.* Deux points distants d'une unité sont à 22 px ; le cercle
+unité fait 43 px de diamètre.
+
+*Conséquences à budgéter (§6.2) : sous 600 px, les nombres des axes ne sont tracés que tous
+les **2** unités, et seules les étiquettes de $M$, $M'$, du centre et de l'angle subsistent.
+**Et le plateau ne remplit plus la largeur au bureau** — c'est le choix du produit vectoriel
+(« cadrer le pire cas laissait la moitié du canvas vide », ADR 0041, addendum de la quatrième
+scène) : un cadre stable vaut mieux qu'un cadre plein.*
 
 ### 5.2 Les crans — et pourquoi ces valeurs-là
 
@@ -575,13 +801,25 @@ travaillé de `lesson.md:84-90`).*
 
 **B — les cinq points** (`z`) :
 
-| cran | $z$ | $|z|$ | $\arg(z)$ | pourquoi ce cran |
-|---|---|---|---|---|
-| `1+i` | $1+i$ | $\sqrt2$ | $\dfrac{\pi}{4}$ | l'état de S1 ; **et le centre $\Omega$ de S5** |
-| `2i` | $2i$ | $2$ | $\dfrac{\pi}{2}$ | l'état de S2 et de S3 ; **hors de l'axe réel** |
-| `2` | $2$ | $2$ | $0$ | **sur l'axe réel** (le cas dégénéré de S3) ; **et le centre $A$ de S4** |
-| `4` | $4$ | $4$ | $0$ | l'état de S4, à distance $2$ de $A$ |
-| `-2+2i` | $-2+2i$ | $2\sqrt2$ | $\dfrac{3\pi}{4}$ | le deuxième quadrant |
+| cran | $z$ | $\vert z\vert$ | $\arg(z)$ | $\vert z - 2\vert$ *(distance à $A$)* | pourquoi ce cran |
+|---|---|---|---|---|---|
+| `1+i` | $1+i$ | $\sqrt2$ | $\dfrac{\pi}{4}$ | $\sqrt2$ | l'état de S1 ; **et le centre $\Omega$ de S5** |
+| `2i` | $2i$ | $2$ | $\dfrac{\pi}{2}$ | $2\sqrt2$ | l'état de S3 ; **hors de l'axe réel** |
+| `2` | $2$ | $2$ | $0$ | $0$ | **sur l'axe réel** (le cas dégénéré de S3) ; **et le centre $A$ de S4** |
+| `4` | $4$ | $4$ | $0$ | $2$ | l'état de S4, à distance $2$ de $A$ |
+| **`1-i`** | $1-i$ | $\sqrt2$ | $-\dfrac{\pi}{4}$ | $\sqrt2$ | **l'état de S2** ; le **seul argument NÉGATIF** de la grille |
+
+> **Ce cran a changé en vague 1 (fidélité S5) : `-2+2i` → `1-i`.** Motif mesuré : depuis le
+> centre $A(2)$, $-2+2i$ est à $2\sqrt5 \approx 4{,}47$, et $c = -2$ l'y projetait en
+> $10-4i$, $c = 2i$ en $-2-8i$ — deux des trois états hors cadre. $1-i$ est à $\sqrt2$ de $A$
+> et à $\sqrt2$ de $O$ : **il ne sort jamais.**
+>
+> **Ce qu'on perd, écrit :** le seul point du **deuxième quadrant** de la grille, et la ligne
+> $\arg(z) = \dfrac{3\pi}{4}$ de la table de S3. *La grille ne couvre donc plus que les
+> quadrants I, IV et l'axe imaginaire positif.* **Ce qu'on gagne :** le **seul argument
+> négatif** de la scène — qui fait exister, sur un cran réel, la convention
+> $]-\pi;\pi]$ que le §5.4 impose et que la porte mesure (fidélité S6). *Les IMAGES, elles,
+> visitent les quatre quadrants : $c = -2$ envoie $1+i$ en $-2-2i$ (quadrant III).*
 
 **Il n'y a pas de cran $z = 0$, et c'est délibéré** : $\arg(0)$ n'est pas défini
 (`lesson.md:43`), et une lecture d'argument vide au milieu d'une liste enseignerait un trou au
@@ -613,6 +851,26 @@ $\dfrac{1-i}{1-(1+i)} = \dfrac{1-i}{-i} = \dfrac{(1-i)\,i}{-i\cdot i} = \dfrac{i
 > permet à la `suite` de S5 de fermer la boucle sans une ligne de prose : *« c'est la
 > transformation de l'étape précédente ; son centre est le $A$ que tu avais posé. »*
 
+> ⚠ **`les-deux` est de PROFONDEUR SM, et c'est une décision déclarée** *(vague 1,
+> fidélité S2)*. Le cran `les-deux` ($a = 1+i$ : $\vert a\vert \neq 1$ **et**
+> $\arg(a) \neq 0$) est le cas **mixte** — rotation ET homothétie de même centre. Or
+> `maths-sexp.yaml:258` borne SExp ainsi : « *Similitudes/compositions de transformations
+> approfondies : plutôt SM. **SExp reste à translation/homothétie/rotation via z'=az+b**.* »
+> **Le cas mixte est donc, en toute rigueur, de profondeur SM.**
+>
+> **Les deux autres crans couvrent SEULS le périmètre SExp** : `rotation-A`
+> ($\vert a\vert = 1$, rotation pure) et `homothetie-A` ($a$ réel positif, homothétie pure).
+>
+> **`les-deux` reste néanmoins l'état de S5, et c'est un CHOIX, pas un oubli.** Trois motifs :
+> (a) la leçon elle-même enseigne le cas mixte aux deux filières — `lesson.md:279` écrit
+> « *la composée de ces deux-là* » sans marquer de filière, et le corpus n'a **aucune**
+> métadonnée `filiere` (`REVIEW:113-120`) ; (b) les **dix** entrées de banque sont SM
+> (§1) ; (c) un cran mixte est le seul où le pari de S5 peut faire choisir **entre** rapport
+> et angle — avec $\vert a\vert = 1$, la moitié des distracteurs s'effondre.
+> **Conséquence si le scoping de filière est un jour tranché : `les-deux` devient le cran
+> SM, et S5 bascule sur `rotation-A` pour SExp — c'est un changement d'`etat`, rien de
+> plus.** *§10.8, §13.11.*
+
 **E — la référence** (`reference`) : `aucune` · `depart` (trace en tirets l'image obtenue au
 réglage initial de l'étape). *État sans contrôle, posé par les étapes — même contrat qu'au
 banc de diffraction (`reference` dans `etat`, absent de `controles`).*
@@ -621,39 +879,54 @@ banc de diffraction (`reference` dans `etat`, absent de `controles`).*
 
 **A — les $7 \times 5 = 35$ images, en mode `coefficient`, centre $O$** (le produit $cz$) :
 
-| $c \backslash z$ | $1+i$ | $2i$ | $2$ | $4$ | $-2+2i$ |
+| $c \backslash z$ | $1+i$ | $2i$ | $2$ | $4$ | $1-i$ |
 |---|---|---|---|---|---|
-| $2$ | $2+2i$ | $4i$ | $4$ | $8$ | $-4+4i$ |
-| $\tfrac12$ | $\tfrac12+\tfrac12 i$ | $i$ | $1$ | $2$ | $-1+i$ |
-| $i$ | $-1+i$ | $-2$ | $2i$ | $4i$ | $-2-2i$ |
-| $-2$ | $-2-2i$ | $-4i$ | $-4$ | $-8$ | $4-4i$ |
-| $1+i$ | $2i$ | $-2+2i$ | $2+2i$ | $4+4i$ | $-4$ |
-| $2i$ | $-2+2i$ | $-4$ | $4i$ | $8i$ | $-4-4i$ |
-| $\sqrt3+i$ | $(\sqrt3-1)+(\sqrt3+1)i$ | $-2+2\sqrt3\,i$ | $2\sqrt3+2i$ | $4\sqrt3+4i$ | $(-2\sqrt3-2)+(2\sqrt3-2)i$ |
+| $2$ | $2+2i$ | $4i$ | $4$ | $\mathbf{8}$ | $2-2i$ |
+| $\tfrac12$ | $\tfrac12+\tfrac12 i$ | $i$ | $1$ | $2$ | $\tfrac12-\tfrac12 i$ |
+| $i$ | $-1+i$ | $-2$ | $2i$ | $4i$ | $1+i$ |
+| $-2$ | $-2-2i$ | $-4i$ | $-4$ | $\mathbf{-8}$ | $-2+2i$ |
+| $1+i$ | $2i$ | $-2+2i$ | $2+2i$ | $4+4i$ | $2$ |
+| $2i$ | $-2+2i$ | $-4$ | $4i$ | $\mathbf{8i}$ | $2+2i$ |
+| $\sqrt3+i$ | $(\sqrt3-1)+(\sqrt3+1)i$ | $-2+2\sqrt3\,i$ | $2\sqrt3+2i$ | $\mathbf{4\sqrt3+4i}$ | $(\sqrt3+1)+(1-\sqrt3)i$ |
 
-*Vérifications des sept cases non triviales : $i(1+i) = i+i^2 = -1+i$ ✓ ·
-$(1+i)(1+i) = 1+2i+i^2 = 2i$ ✓ · $(1+i)(2i) = 2i+2i^2 = -2+2i$ ✓ ·
-$(1+i)(-2+2i) = -2+2i-2i+2i^2 = -4$ ✓ · $(2i)(2i) = 4i^2 = -4$ ✓ ·
-$(\sqrt3+i)(2i) = 2\sqrt3 i + 2i^2 = -2+2\sqrt3 i$ ✓ ·
+*Vérifications des neuf cases non triviales : $i(1+i) = i+i^2 = -1+i$ ✓ ·
+$i(1-i) = i-i^2 = 1+i$ ✓ · $(1+i)(1+i) = 1+2i+i^2 = 2i$ ✓ ·
+$(1+i)(2i) = 2i+2i^2 = -2+2i$ ✓ · $(1+i)(1-i) = 1-i^2 = 2$ ✓ · $(2i)(2i) = 4i^2 = -4$ ✓ ·
+$(2i)(1-i) = 2i-2i^2 = 2+2i$ ✓ ·
 $(\sqrt3+i)(1+i) = \sqrt3+\sqrt3 i + i + i^2 = (\sqrt3-1)+(\sqrt3+1)i$ ✓ ·
-$(\sqrt3+i)(-2+2i) = -2\sqrt3+2\sqrt3 i -2i+2i^2 = (-2\sqrt3-2)+(2\sqrt3-2)i$ ✓.*
+$(\sqrt3+i)(1-i) = \sqrt3-\sqrt3 i + i - i^2 = (\sqrt3+1)+(1-\sqrt3)i$ ✓ ·
+$(\sqrt3+i)(2i) = 2\sqrt3 i + 2i^2 = -2+2\sqrt3 i$ ✓.*
 
-**Bornes du dessin, vérifiées case par case :** l'abscisse extrême est $\pm 8$
-($c = \pm 2$, $z = 4$), l'ordonnée extrême $\pm 4$ ($c=\pm2$, $z=2i$ ou $-2+2i$ ;
-$c=2i$, $z=-2+2i$). **Tout tient dans $[-9;9]\times[-5;5]$**, avec une unité de marge
-partout. *C'est la fenêtre qui a été choisie POUR cela, et la porte le vérifie aux 35 cases.*
+**Bornes du dessin — les 70 états vérifiés, et l'excursion maximale écrite**
+*(refait en vague 1, fidélité S5 : la première version n'auditait que les 35 états de centre
+$O$, et y manquait $8i$)* :
 
-**B — les modules, en mode `coefficient`, centre $O$** ($|z'| = |c|\,|z|$) :
+| | états | excursion maximale $\vert z'\vert$ | les cases extrêmes | marge au cadre $[-9;9]^2$ |
+|---|---|---|---|---|
+| **centre $O$** | 35 | $\mathbf{8}$ $\;(= \vert c\vert_{\max}\times\vert z\vert_{\max} = 2\times4)$ | $8$ · $-8$ · $8i$ · $4i$ · $4\sqrt3+4i$ *(module $8$ : $\sqrt{48+16}$)* | **1 unité** |
+| **centre $A(2)$** | 35 | $\mathbf{2 + 4\sqrt2 \approx 7{,}66}$ $\;(\vert z'-2\vert \le 2\times2\sqrt2)$ | $6-4i$ · $-2-4i$ · $-2+4i$ · $6$ | **$\ge 1{,}3$ unité** |
 
-| $|c| \backslash |z|$ | $\sqrt2$ | $2$ | $2$ | $4$ | $2\sqrt2$ |
-|---|---|---|---|---|---|
-| $2$ | $2\sqrt2$ | $4$ | $4$ | $8$ | $4\sqrt2$ |
-| $\tfrac12$ | $\tfrac{\sqrt2}{2}$ | $1$ | $1$ | $2$ | $\sqrt2$ |
-| $1$ | $\sqrt2$ | $2$ | $2$ | $4$ | $2\sqrt2$ |
+*Le cas extrême de centre $A$ est $z = 2i$ (le plus éloigné de $A$, à $2\sqrt2$) avec un $c$ de
+module $2$ : $2 + (-2)(-2+2i) = 6-4i$ ✓ · $2 + 2i(-2+2i) = -2-4i$ ✓ · $2 + 2(-2+2i) = -2+4i$ ✓.*
+**Aucun des 70 états ne sort du cadre, et la porte le vérifie aux 70** (§11.1 N1, §11.2
+`point-a-sa-place`).
 
-*Les sept coefficients n'ont que **trois** modules ($2$, $\tfrac12$, $1$, et $\sqrt2$ pour
-`1+i`) : la table se lit en quatre lignes. $\sqrt2 \times \sqrt2 = 2$ ✓,
-$\sqrt2 \times 2\sqrt2 = 4$ ✓, $\sqrt2 \times 4 = 4\sqrt2$ ✓.*
+**B — les modules, en mode `coefficient`, centre $O$** ($|z'| = |c|\,|z|$). *Les sept
+coefficients n'ont que **QUATRE** modules distincts — $2$ (quatre crans : `2`, `-2`, `2i`,
+`sqrt3+i`), $\tfrac12$, $1$, $\sqrt2$ — donc la table entière tient en **quatre** lignes
+(correctif de vague 1, fidélité S9 : la version précédente annonçait « trois » puis en
+listait quatre, **et omettait la ligne $\sqrt2$**) :*
+
+| $\vert c\vert \;\backslash\; \vert z\vert$ | $\sqrt2$ *(`1+i`, `1-i`)* | $2$ *(`2i`)* | $2$ *(`2`)* | $4$ *(`4`)* |
+|---|---|---|---|---|
+| $2$ | $2\sqrt2$ | $4$ | $4$ | $8$ |
+| $\tfrac12$ | $\tfrac{\sqrt2}{2}$ | $1$ | $1$ | $2$ |
+| $1$ | $\sqrt2$ | $2$ | $2$ | $4$ |
+| $\boldsymbol{\sqrt2}$ *(`1+i`)* | $\mathbf{2}$ | $\mathbf{2\sqrt2}$ | $\mathbf{2\sqrt2}$ | $\mathbf{4\sqrt2}$ |
+
+*Vérifications de la ligne neuve : $\sqrt2 \times \sqrt2 = 2$ ✓ · $\sqrt2 \times 2 = 2\sqrt2$ ✓ ·
+$\sqrt2 \times 4 = 4\sqrt2$ ✓. Et les deux crans de module $\sqrt2$ (`1+i`, `1-i`) partagent
+toute la première colonne.*
 
 **C — les arguments, avec $c = \sqrt3+i$ ($\arg c = \dfrac{\pi}{6}$) — LA TABLE DE S3 :**
 
@@ -663,13 +936,22 @@ $\sqrt2 \times 2\sqrt2 = 4$ ✓, $\sqrt2 \times 4 = 4\sqrt2$ ✓.*
 | $2i$ | $\dfrac{\pi}{2}$ | $-2+2\sqrt3\,i$ | $\dfrac{2\pi}{3}$ | $\dfrac{\pi}{6}$ |
 | $2$ | $0$ | $2\sqrt3+2i$ | $\dfrac{\pi}{6}$ | $\dfrac{\pi}{6}$ |
 | $4$ | $0$ | $4\sqrt3+4i$ | $\dfrac{\pi}{6}$ | $\dfrac{\pi}{6}$ |
-| $-2+2i$ | $\dfrac{3\pi}{4}$ | $(-2\sqrt3-2)+(2\sqrt3-2)i$ | $\dfrac{11\pi}{12}$ | $\dfrac{\pi}{6}$ |
+| $1-i$ | $-\dfrac{\pi}{4}$ | $(\sqrt3+1)+(1-\sqrt3)i$ | $-\dfrac{\pi}{12}$ | $\dfrac{\pi}{6}$ |
 
 *Vérifications : $\dfrac{\pi}{4}+\dfrac{\pi}{6} = \dfrac{3\pi}{12}+\dfrac{2\pi}{12} =
 \dfrac{5\pi}{12}$ ✓ · $\dfrac{\pi}{2}+\dfrac{\pi}{6} = \dfrac{3\pi}{6}+\dfrac{\pi}{6} =
 \dfrac{2\pi}{3}$ ✓ (et $-2+2\sqrt3 i$ est en deuxième quadrant, module $\sqrt{4+12}=4$,
 $\cos = -\tfrac12$, $\sin = \tfrac{\sqrt3}{2}$ ⟹ $\dfrac{2\pi}{3}$ ✓) ·
-$\dfrac{3\pi}{4}+\dfrac{\pi}{6} = \dfrac{9\pi}{12}+\dfrac{2\pi}{12} = \dfrac{11\pi}{12}$ ✓.*
+$-\dfrac{\pi}{4}+\dfrac{\pi}{6} = -\dfrac{3\pi}{12}+\dfrac{2\pi}{12} = -\dfrac{\pi}{12}$ ✓
+(et $(\sqrt3+1)+(1-\sqrt3)i \approx (2{,}732\,;\,-0{,}732)$, module $\sqrt{8}=2\sqrt2$,
+$\arctan\!\left(\dfrac{-0{,}732}{2{,}732}\right) = -0{,}2618$ rad $= -\dfrac{\pi}{12}$ ✓).*
+
+> **La ligne $1-i$ est neuve (fidélité S5) et elle rend un service que l'ancienne ne rendait
+> pas : c'est le seul argument NÉGATIF de la table.** Elle fait exister, sur un cran réel, la
+> convention $]-\pi;\pi]$ du §5.4 — et la lecture `argument-image` y affiche
+> $-\dfrac{\pi}{4}$ **sous** $-\dfrac{\pi}{12}$, deux négatifs dont l'écart est positif.
+> *Ce que la table a perdu : la ligne $\dfrac{3\pi}{4} \to \dfrac{11\pi}{12}$, seul point du
+> deuxième quadrant. Déclaré au §5.2 B.*
 
 > **Les deux lignes $z = 2$ et $z = 4$ sont le cœur de S3, et il faut les regarder en
 > face :** ce sont les deux seules où $\arg(z')$ **EST** $\dfrac{\pi}{6}$, c'est-à-dire où
@@ -684,18 +966,22 @@ rapport $1$, angle $\dfrac{\pi}{2}$.
 
 | $z$ | $z - 2$ | $z' = 2 + i(z-2)$ | $AM$ | $AM'$ |
 |---|---|---|---|---|
-| $1+i$ | $-1+i$ | $2 + i(-1+i) = 1 - i$ | $\sqrt2$ | $\sqrt2$ |
-| $2i$ | $-2+2i$ | $2 + i(-2+2i) = -2i$ … soit $0-2i$ | $2\sqrt2$ | $2\sqrt2$ |
+| $1+i$ | $-1+i$ | $1 - i$ | $\sqrt2$ | $\sqrt2$ |
+| $2i$ | $-2+2i$ | $-2i$ | $2\sqrt2$ | $2\sqrt2$ |
 | $2$ | $0$ | $2$ — **le point ne bouge pas** | $0$ | $0$ |
 | $4$ | $2$ | $2+2i$ | $2$ | $2$ |
-| $-2+2i$ | $-4+2i$ | $2 + i(-4+2i) = -4i$ … soit $0-4i$ | $2\sqrt5$ | $2\sqrt5$ |
+| $1-i$ | $-1-i$ | $3-i$ | $\sqrt2$ | $\sqrt2$ |
 
 *Vérifications : $i(-1+i) = -i + i^2 = -1-i$, donc $z' = 2-1-i = 1-i$ ✓, et
 $|1-i-2| = |-1-i| = \sqrt2 = |{-1+i}|$ ✓ · $i(-2+2i) = -2i+2i^2 = -2-2i$, donc
 $z' = 2-2-2i = -2i$ ✓, et $|-2i-2| = |-2-2i| = 2\sqrt2 = |-2+2i|$ ✓ ·
-$i(-4+2i) = -4i+2i^2 = -2-4i$, donc $z' = 2-2-4i = -4i$ ✓, et $|-4i-2| = |-2-4i| =
-\sqrt{4+16} = 2\sqrt5 = |-4+2i|$ ✓.*
-**Tous ces points tiennent dans la fenêtre** ($y$ minimal $-4$) ✓.
+$i(-1-i) = -i-i^2 = 1-i$, donc $z' = 2+1-i = 3-i$ ✓, et $|3-i-2| = |1-i| = \sqrt2 =
+|-1-i|$ ✓.*
+**Tous ces points tiennent dans la fenêtre** (excursion maximale $|-2i| = 2$) ✓.
+
+**La colonne $AM = AM'$ est exacte aux cinq lignes, et c'est le fait de S4** : $|c| = |i| = 1$,
+donc la rotation **conserve les distances au centre**, y compris la distance nulle du point
+fixe. *La porte le mesure comme une égalité de chaîne (§11.1 N3).*
 
 **E — le mode `les-deux` : $z' = (1+i)z + 1-i$, centre $\Omega(1;1)$ — S5 :**
 
@@ -705,7 +991,7 @@ $i(-4+2i) = -4i+2i^2 = -2-4i$, donc $z' = 2-2-4i = -4i$ ✓, et $|-4i-2| = |-2-4
 | $2i$ | $-1+i$ | $-1+i$ | $-2$ | $\sqrt2$ | $2$ | $\sqrt2$ | $1+i$ |
 | $2$ | $3+i$ | $1-i$ | $2$ | $\sqrt2$ | $2$ | $\sqrt2$ | $1+i$ |
 | $4$ | $5+3i$ | $3-i$ | $4+2i$ | $\sqrt{10}$ | $2\sqrt5$ | $\sqrt2$ | $1+i$ |
-| $-2+2i$ | $-3-i$ | $-3+i$ | $-4-2i$ | $\sqrt{10}$ | $2\sqrt5$ | $\sqrt2$ | $1+i$ |
+| $1-i$ | $3-i$ | $-2i$ | $2-2i$ | $2$ | $2\sqrt2$ | $\sqrt2$ | $1+i$ |
 
 > **Un défaut de cette spec, trouvé en la vérifiant et écrit ici plutôt que corrigé en
 > douce.** Le premier jet de cette table donnait $z=2i \Rightarrow z' = -2+2i$ (l'image par
@@ -721,16 +1007,21 @@ $-1+i-(1+i) = -2$ ✓ ; $\dfrac{-2}{-1+i} = \dfrac{-2(-1-i)}{(-1)^2+1^2} = \dfra
 Les trois autres lignes : $z=2 \Rightarrow (1+i)2+1-i = 2+2i+1-i = 3+i$ ✓,
 $\dfrac{2}{1-i} = \dfrac{2(1+i)}{2} = 1+i$ ✓ · $z=4 \Rightarrow 4+4i+1-i = 5+3i$ ✓,
 $\dfrac{4+2i}{3-i} = \dfrac{(4+2i)(3+i)}{9+1} = \dfrac{12+4i+6i+2i^2}{10} = \dfrac{10+10i}{10}
-= 1+i$ ✓ · $z=-2+2i \Rightarrow (1+i)(-2+2i) = -4$, donc $-4+1-i = -3-i$ ✓,
-$\dfrac{-4-2i}{-3+i} = \dfrac{(-4-2i)(-3-i)}{9+1} = \dfrac{12+4i+6i+2i^2}{10} = 1+i$ ✓.*
+= 1+i$ ✓ · $z=1-i \Rightarrow (1+i)(1-i) = 2$, donc $2+1-i = 3-i$ ✓ ;
+$z-\omega = 1-i-1-i = -2i$, $z'-\omega = 3-i-1-i = 2-2i$, et
+$\dfrac{2-2i}{-2i} = \dfrac{(2-2i)\,i}{-2i\cdot i} = \dfrac{2i+2}{2} = 1+i$ ✓.*
 
 **Le fait que la scène existe pour montrer, en une ligne :** la dernière colonne est
 **constante**. $\dfrac{z'-\omega}{z-\omega} = a$ pour tout $M$, et c'est la définition même du
 centre. *La porte le mesure comme une **égalité de chaîne** aux cinq points, aux trois
 transformations (§11.1, N7).*
 
-**Bornes du dessin en mode `enonce` :** le point extrême est $(5;3)$ (`les-deux`, $z=4$) et
-$(6;0)$ (`homothetie-A`, $z=4 \Rightarrow z' = 6$). Tout tient ✓.
+**Bornes du dessin en mode `enonce`, les $3 \times 5 = 15$ états vérifiés :** l'excursion
+extrême est $(5;3)$ (`les-deux`, $z=4$) et $(6;0)$ (`homothetie-A`, $z=4 \Rightarrow z'=6$) ;
+`rotation-A` reproduit exactement la table **D** (c'est la même transformation). **Tout tient
+dans $[-9;9]^2$ avec au moins 3 unités de marge** ✓. *Les deux autres crans, vérifiés :
+`homothetie-A` ($z'=2z-2$) donne $2i$, $-2+4i$, $\mathbf{2}$ (fixe), $6$, $-2i$ ;
+`rotation-A` ($z'=iz+2-2i$) donne $1-i$, $-2i$, $\mathbf{2}$ (fixe), $2+2i$, $3-i$.*
 
 ### 5.4 La précision — **exacte, ou rien**
 
@@ -746,33 +1037,61 @@ $(6;0)$ (`homothetie-A`, $z=4 \Rightarrow z' = 6$). Tout tient ✓.
    décimal. *La leçon travaille en radians (`lesson.md:39`) ; elle emploie « $90°$ » et « un
    quart de tour » **en mots** à `:21`. Les retours de pari ont donc le droit d'écrire « un
    quart de tour » ; **aucune lecture** n'a le droit d'écrire un degré (§9.8).*
-2. **Les arguments sont donnés dans $\,]-\pi ; \pi]$**, et les écarts aussi. *Motif : c'est
-   la convention de tous les corrigés de la banque (`bank.yaml:348` écrit
+2. **Les arguments sont donnés dans $\,]-\pi ; \pi]$, et l'ÉCART est RAMENÉ dans le même
+   intervalle — modulo $2\pi$, avec $-\pi$ écrit $+\pi$** *(règle explicitée en vague 1,
+   fidélité S6 : la première version disait « les écarts aussi » sans dire comment)*.
+   *Motif : c'est la convention de tous les corrigés de la banque (`bank.yaml:348` écrit
    $-\dfrac{\pi}{2}$, pas $\dfrac{3\pi}{2}$). Un écart négatif s'affiche négatif.*
+
+   **La règle, écrite comme un calcul** : `angle` $= \arg(z'-z_\Omega) - \arg(z-z_\Omega)$,
+   **puis** ramené par $+2k\pi$ dans $]-\pi;\pi]$, et **la borne $-\pi$ est réécrite $+\pi$**
+   (l'intervalle est ouvert à gauche, fermé à droite).
+
+   **Ce n'est pas une précaution théorique : la grille la déclenche.** Les deux arguments
+   vivant chacun dans $]-\pi;\pi]$, leur différence brute vit dans $]-2\pi;2\pi[$, et **deux
+   états de la grille tombent exactement sur $-\pi$** :
+   $c=-2$, $z=1+i$ ($\arg z' = -\dfrac{3\pi}{4}$, $\arg z = \dfrac{\pi}{4}$, différence brute
+   $-\pi$) et $c=-2$, $z=2i$ ($-\dfrac{\pi}{2} - \dfrac{\pi}{2} = -\pi$). **La scène doit y
+   afficher $+\pi$**, qui est aussi $\arg(-2)$ ✓ — sans la règle, elle afficherait $-\pi$ et
+   contredirait sa propre lecture `argument-c`. *Porte : §11.1 N6 ; essai rouge : §11.4, n° 8
+   bis.*
+
+   *Déclaré : **aucun état de la grille ne produit une différence brute strictement hors de
+   $[-\pi;\pi]$** — je l'ai cherché sur les 70 et n'en ai trouvé aucun. La réduction n'est
+   donc exercée qu'à la **borne**. C'est un vrai cas, et c'est le seul (§15.10).*
 3. **Les deux formes de $c$ ne sont jamais affichées au même endroit.** La forme **algébrique**
    est sur la scène, près du badge du coefficient ; les deux moitiés exponentielles
    ($|c|$ et $\arg c$) sont des **lectures**, et elles apparaissent à des étapes
    différentes (§2.3). *C'est la graduation, et c'est mesuré.*
 
-### 5.5 Contrôles (4) — un neuf par étape, sauf une, déclarée
+### 5.5 Contrôles (5) — un neuf par étape, plus le balayage de S3
 
 | id | ce qu'il règle | valeurs | ouvert par |
 |---|---|---|---|
 | `coefficient` | $c$ | `2` · `0.5` · `i` · `-2` · `1+i` · `2i` · `sqrt3+i` | **S1**, **S3** *(rouvert)*, S5 |
-| `point` | $z$ | `1+i` · `2i` · `2` · `4` · `-2+2i` | **S2**, **S3** *(rouvert)*, S4, S5 |
+| `point` | $z$ | `1+i` · `2i` · `2` · `4` · **`1-i`** | **S2**, **S3** *(rouvert)*, S4, S5 |
 | `centre` | $z_\Omega$ | `O` · `A` | **S4**, S5 |
 | `enonce` | la forme donnée | `coefficient` · `rotation-A` · `homothetie-A` · `les-deux` | **S5** |
+| **`balayage`** | un glissement **continu** de $M$ sur son cercle | *aucun cran, aucune borne d'état* | **S3 seulement, et seulement APRÈS la révélation** |
 
 **Aucun curseur continu. Aucune borne.** *Tout est en crans discrets, pour la raison du §5.4 :
 un réglage continu produirait des nombres que la scène ne saurait afficher exactement.*
 **Aucune clé de `bornes` dans le registre** — c'est la première scène du dépôt dans ce cas, et
 c'est déclaré (§12).
 
-**S3 n'ouvre AUCUN contrôle neuf**, et c'est voulu : son pari porte sur une **lecture** (quel
-angle mesure-t-on ?), pas sur un réglage. Elle **rouvre** `coefficient` et `point` pour que sa
-`suite` puisse promener les deux et faire constater l'invariance de l'écart. *Précédent
-explicite : le banc d'électrolyse, S4 (« son pari porte sur une lecture, pas un réglage »).
-La non-fuite est tenue par les **lectures**, pas par les réglages (§7.6 A).*
+**S3 n'ouvre aucun contrôle neuf qui RÈGLE quoi que ce soit**, et c'est voulu : son pari porte
+sur une **lecture** (quel angle mesure-t-on ?), pas sur un réglage. Elle **rouvre**
+`coefficient` et `point` pour que sa `suite` puisse promener les deux et faire constater
+l'invariance de l'écart. *Précédent explicite : le banc d'électrolyse, S4 (« son pari porte
+sur une lecture, pas un réglage »). La non-fuite est tenue par les **lectures**, pas par les
+réglages (§7.6 A).*
+
+**Et elle ouvre `balayage`, qui est un contrôle d'un genre neuf** *(ajouté en vague 1,
+pédagogie I6)* : il **explore sans régler** — aucun cran, aucune clé d'`etat`, aucune lecture
+chiffrée pendant qu'il agit, et l'état retrouvé intact au relâchement (§6.1). *Il ne compte
+donc pas comme « le contrôle neuf de l'étape » au sens de l'ADR 0041 §4 : il n'ouvre aucun
+état que la table du §7.6 A doive énumérer. **C'est une pièce que le dépôt n'a pas encore, et
+le §15.12 le déclare.***
 
 ### 5.6 État (5 clés) et lectures (9)
 
@@ -848,10 +1167,35 @@ temps ; **il n'y en a aucun ici**.
 - après l'engagement : $M'$ se pose, son segment se trace, l'arc apparaît, les lectures de
   l'étape s'écrivent. **C'est le plan qui répond, avant le texte.**
 
-**Éclairs et mouvement réduit.** Rien n'anime : la famille `eclairs` est **attendue
-structurellement vide**, et **mesurée quand même** (§11.3) — *une chose n'est prouvée absente
-que si l'on a énuméré ses formes* (ADR 0036). Sous `prefers-reduced-motion`, rien ne change :
-il n'y a aucune transition à supprimer. **Aucune courbe tracée**, donc aucune grille glissante
+**Une exception, et une seule : le BALAYAGE de S3** *(décision de vague 1, pédagogie I6 —
+l'hybride, adopté par défaut)*. À S3, **après la révélation**, un contrôle
+supplémentaire permet de faire glisser $M$ **continûment** sur le cercle de rayon $\vert
+z\vert$, et **pendant ce glissement toutes les lectures chiffrées sont remplacées par
+« — »** : seuls les deux segments et l'arc bougent. **Le balayage ne s'arrête sur rien, ne
+pose aucun cran, et ne modifie pas l'état** — quand on le relâche, la scène est exactement où
+elle était.
+
+> **Pourquoi c'est le bon compromis, et pourquoi ce n'est pas un reniement du §2.6.** Ce que
+> le §2.6 refuse, c'est un $z$ **quelconque avec des lectures chiffrées** — parce qu'alors la
+> scène afficherait « $0{,}52$ rad » là où le bac écrit $\dfrac{\pi}{6}$. **Le balayage
+> n'affiche aucun nombre** : il ne sert qu'à faire voir, en un geste, que **l'arc garde son
+> ouverture pendant que les deux directions tournent**. C'est précisément le fait de S3, et
+> c'est le seul endroit de la scène où un continuum dit quelque chose qu'aucun cran ne dit.
+> **Les cinq crans exacts restent intacts, et toutes les valeurs restent exactes.**
+>
+> **Deux conséquences dures :** (a) la famille de porte **`aucune-lecture-chiffree-pendant-le-balayage`**
+> (§11.2), mesurée dans les deux sens — aucun chiffre pendant, tous les chiffres après ;
+> (b) le balayage **n'existe pas avant la révélation de S3** (`fuite-inter-etapes`), et
+> **il n'existe à aucune autre étape**.
+
+**Éclairs et mouvement réduit.** Hors balayage, rien n'anime : la famille `eclairs` est
+**attendue structurellement vide**, et **mesurée quand même** (§11.3) — *une chose n'est
+prouvée absente que si l'on a énuméré ses formes* (ADR 0036). **Le balayage, lui, est un
+mouvement réel et il est mesuré comme tel** : deux traits fins et un arc qui glissent ne
+produisent aucune paire de variations opposées sur une fenêtre de 10° (le critère WCAG 2.3.1
+porte sur des surfaces, pas sur des traits) — *attendu vide, mesuré quand même, et sous
+`prefers-reduced-motion` le balayage est remplacé par **trois positions discrètes
+supplémentaires**, sans continuum.* **Aucune courbe tracée**, donc aucune grille glissante
 à surveiller (règle de la corde).
 
 **Aucune trace entre étapes** : chaque étape repart de son état déclaré. **Aucune VUE** : la
@@ -930,12 +1274,22 @@ attend la révélation*).
   simple. Le coefficient est $c = 2$. »
 - **Pari :** « On multiplie $z$ par $c = 2$. Le point $M$ arrive… »
 
+> **Table refaite en vague 1 (pédagogie B1 + M4).** Deux choix ont changé. **(a)**
+> `quart-de-tour` était rattaché à `mult-par-i-non-rotation` : **faux, et dans le sens
+> opposé** — le modèle déclaré (`items.yaml:15-18`) décrit l'élève qui **ne voit pas** une
+> rotation, pas celui qui en **invente** une. Il est rattaché au **modèle neuf du §8.2**.
+> **(b)** `angle-deux` (« tourné de $2$ radians ») est **supprimé** : deux erreurs
+> superposées, et « $2$ radians » est un registre que la notion n'emploie **jamais** (elle
+> écrit en fractions de $\pi$). Il est remplacé par `rapport-nul`, qui instancie
+> `similitude-module-argument-roles` **proprement et sur un point exact**.
+
 | choix | texte | juste | misconception | retour (casse sur SA conséquence) |
 |---|---|---|---|---|
 | `meme-direction` | en $2+2i$ — **deux fois plus loin** de $O$, dans **exactement la même direction** | **oui** | — | « Oui, et **retiens le mécanisme, pas le résultat** : $c = 2$ est un réel **positif**, son argument vaut $0$, donc il n'ajoute **aucun** angle. Ce qu'il fait, il le fait sur la **longueur** : $OM$ passe de $\sqrt2$ à $2\sqrt2$. Le chapitre 1 t'avait montré l'autre moitié de l'idée, avec $i$ ; en voici la première. Un nombre complexe porte **deux** informations, et elles ne servent pas à la même chose. » |
 | `demi-tour` | en $-2-2i$ — un **demi-tour**, puis deux fois plus loin | non | **`reel-positif-donne-rotation`** | « Regarde le plan : $M'$ est en $2+2i$, sur la **même** demi-droite issue de $O$. Le demi-tour existe bien, mais il appartient à un **autre** coefficient : essaie $c = -2$, tu l'obtiendras exactement. Un réel **positif** ne fait tourner de rien ; c'est un réel **négatif** qui fait le demi-tour. » |
-| `quart-de-tour` | en $-2+2i$ — un **quart de tour**, puis deux fois plus loin : multiplier, c'est tourner | non | **`mult-par-i-non-rotation`** | « Le plan dit $2+2i$. Le quart de tour n'était pas une propriété de « multiplier » : c'était une propriété de **$i$**, et le chapitre 1 le disait déjà — $|i| = 1$, donc rien ne s'éloignait. Essaie $c = i$ puis $c = 2$ : le premier tourne sans agrandir, le second agrandit sans tourner. **Ce sont deux effets séparés.** » |
-| `angle-deux` | à la **même distance** de $O$, tourné de $2$ radians : le $2$ est l'angle | non | **`similitude-module-argument-roles`** | « Deux erreurs se recouvrent ici, et c'est la seconde qui compte. La première : $M'$ est deux fois plus loin, la distance a changé. La seconde, plus profonde : **$2$ n'est pas un angle ici**. Deux radians, ce sont environ $115°$ — plus d'un quart de tour ; le plan n'a pas tourné d'un degré. Le nombre qui donne un angle, ce sera l'**argument** de $c$, et $\arg(2) = 0$. » |
+| `quart-de-tour` | en $-2+2i$ — un **quart de tour**, puis deux fois plus loin : multiplier, c'est tourner | non | **`multiplication-rotation-par-defaut`** *(modèle neuf, §8.2)* | « Le plan dit $2+2i$ : rien n'a tourné. Le quart de tour n'était pas une propriété de « multiplier » — c'était une propriété de **$i$**, et de lui seul. Le chapitre 1 te l'avait même écrit : *comme $\vert i\vert = 1$, la multiplication par $i$ ne change aucune longueur*. C'est une phrase sur **$i$**, pas sur la multiplication. L'angle ne se devine pas : il se **lit** sur le coefficient. Ici $\arg(2) = 0$, donc aucun tour. » |
+| `agrandissement-nul` | en $O$ — ce qui agrandit, c'est $\arg(2) = 0$ : tout se ramène à l'origine | non | **`similitude-module-argument-roles`** | « Prends ton modèle au sérieux une seconde : agrandir par **zéro** écraserait le plan entier sur un seul point, et il n'y aurait plus rien à regarder. Le plan, lui, montre $M'$ à $2\sqrt2$ de $O$. Les deux nombres de $c$ ne sont pas interchangeables : c'est le **module** qui agit sur les longueurs, et un argument n'est pas une longueur. » |
+| | *(le mot « **rapport** » est volontairement absent de ce choix et de son retour : il est interdit à S1 par le §7.6 C, parce que c'est S2 qui le construit comme un **quotient**)* | | | |
 
 - **`suite` (36 mots) :** « Promène le coefficient sur les sept crans, sans rien changer
   d'autre. **Deux** d'entre eux laissent $M$ sur sa demi-droite ; **un seul** le rapproche de
@@ -951,38 +1305,55 @@ attend la révélation*).
 
 ### 7.2 S2 — `le-rapport` · « De combien plus loin ? »
 
-> **Un choix de nombres, pris contre un défaut de stem trouvé en écrivant.** Le premier jet
-> posait $M$ en $2i$ ($OM = 2$) avec $|c| = 2$ : **la somme et le produit y valent tous deux
-> $4$**, et le distracteur « on additionne » atteignait la **bonne réponse**. C'est une
-> *contamination de la réponse juste* — un défaut de **stem**, à corriger, et non un
-> co-étiquetage de distracteur, qui lui serait légitime. **$M$ passe donc en $-2+2i$** :
-> $OM = 2\sqrt2$, produit $= 4\sqrt2$, somme $= 2+2\sqrt2$, distincts ✓.
+> **Deux corrections de nombres, l'une trouvée en écrivant, l'autre par la vague 1.**
+>
+> **(a) Un défaut de stem.** Le premier jet posait $M$ en $2i$ ($OM = 2$) avec $|c| = 2$ :
+> **la somme et le produit y valent tous deux $4$**, et le distracteur « on additionne »
+> atteignait la **bonne réponse**. C'est une *contamination de la réponse juste* — un défaut
+> de **stem**, à corriger, et non un co-étiquetage de distracteur, qui lui serait légitime.
+>
+> **(b) Un distracteur dont la valeur ne venait pas de son propre modèle** *(fidélité /
+> pédagogie B2, BLOQUANT)*. Le choix `argument-rapport` porte l'étiquette « *on multiplie la
+> distance par l'**argument** de $c$* » et affichait $2\sqrt2 \times \pi$ — or
+> $\arg(2i) = \dfrac{\pi}{2}$, **pas $\pi$**. Le nombre ne se déduisait pas du modèle que son
+> propre texte annonce. **Corrigé, et la règle est armée au §14 : la valeur de chaque choix
+> de pari est RECALCULÉE depuis le modèle que son étiquette nomme.**
+>
+> **$M$ passe en $1-i$** — le cran neuf du §5.2 B, non atteignable à S1 (où `point` est
+> verrouillé sur $1+i$).
 
-- **État :** `c: "2i"`, `z: "-2+2i"`, `centre: "O"`, `enonce: "coefficient"`,
+- **État :** `c: "2i"`, `z: "1-i"`, `centre: "O"`, `enonce: "coefficient"`,
   `reference: "depart"`.
 - **`etat_revele` :** aucun (la révélation pose $M'$).
 - **Contrôle ouvert :** `point` (**neuf**). *`coefficient` est **absent du DOM** : $c$ est
   verrouillé sur $2i$.* **Lectures :** `module-c`, `distances`, `rapport`.
-- **Les nombres :** $OM = |-2+2i| = 2\sqrt2$ · $z' = (2i)(-2+2i) = -4i + 4i^2 = -4-4i$ ·
-  $OM' = |-4-4i| = 4\sqrt2$ ✓ · rapport $= 2 = |2i|$ ✓. *Le point $(-4;-4)$ tient dans la
-  fenêtre ✓.*
+- **Les nombres :** $OM = |1-i| = \sqrt2$ · $z' = (2i)(1-i) = 2i - 2i^2 = 2+2i$ ·
+  $OM' = |2+2i| = 2\sqrt2$ ✓ · rapport $= \dfrac{2\sqrt2}{\sqrt2} = 2 = |2i|$ ✓. *Le point
+  $(2;2)$ tient dans la fenêtre ✓.*
+- **Les quatre valeurs, recalculées chacune depuis SON modèle, et distinctes :** produit
+  $2\sqrt2 \approx 2{,}83$ · somme $2+\sqrt2 \approx 3{,}41$ ·
+  « distance $\times \arg(c)$ » $= \sqrt2 \times \dfrac{\pi}{2} = \dfrac{\pi\sqrt2}{2}
+  \approx 2{,}22$ · « distance $\times c$ » $= 2\sqrt2\,i$ **(non réel)**. ✓
 - **Consigne (voix) :** « Nouveau coefficient : $c = 2i$. Son module vaut $2$ — la scène
-  l'affiche. Le point $M$ est en $-2+2i$, au point $(-2;2)$ : il est à la distance
-  $OM = 2\sqrt2$ de l'origine. On ne demande pas encore **où** il va ; on demande **à quelle
+  l'affiche. Le point $M$ est en $1-i$, au point $(1;-1)$ : il est à la distance
+  $OM = \sqrt2$ de l'origine. On ne demande pas encore **où** il va ; on demande **à quelle
   distance de $O$**. »
 - **Pari :** « Après la multiplication par $c = 2i$, la distance $OM'$ vaudra… »
 
 | choix | texte | juste | misconception | retour |
 |---|---|---|---|---|
-| `produit` | $4\sqrt2$ — la distance est **multipliée** par $\vert c\vert = 2$ | **oui** | — | « Oui. $\dfrac{OM'}{OM} = \dfrac{4\sqrt2}{2\sqrt2} = 2 = \vert c\vert$ : un **quotient de deux longueurs**, un réel positif, sans unité. C'est ce qu'on appellera le **rapport**. Et note ce qu'il ne dit pas : rien sur la direction. » |
-| `somme` | $2 + 2\sqrt2$ — on **ajoute** le module de $c$ à la distance de départ | non | **`produit-modules-additionnes`** | « La scène affiche $4\sqrt2$, pas $2+2\sqrt2$. L'addition serait la règle si multiplier deux complexes additionnait leurs modules — or le chapitre 3 a établi le contraire : $\vert zz'\vert = \vert z\vert \times \vert z'\vert$. Ce qui s'**additionne**, tu le verras à l'étape suivante, ce sont les **arguments**. Deux opérations, deux grandeurs. » |
-| `argument-rapport` | $2\sqrt2 \times \pi$ — la distance est multipliée par l'**argument** de $c$ | non | **`similitude-module-argument-roles`** | « La scène affiche $4\sqrt2$. L'argument de $c$ est un **angle** ; multiplier une longueur par un angle ne donne pas une longueur. Les deux nombres de $c$ ne sont pas interchangeables : le **module** agit sur les longueurs, et c'est tout ce que cette étape demande. » |
-| `rapport-complexe` | $2\sqrt2 \times 2i$ — le rapport vaut $2i$ | non | **`homothetie-rapport-complexe`** | « Ce nombre n'est pas une distance : une distance est un **réel positif**. C'est le cœur de l'erreur, et il vaut pour tout le chapitre : le nombre complexe $c$ **code** l'agrandissement, il n'**est** pas l'agrandissement. Ce qui agrandit, c'est son **module**, $\vert 2i\vert = 2$. » |
+| `produit` | $2\sqrt2$ — la distance est **multipliée** par $\vert c\vert = 2$ | **oui** | — | « Oui. $\dfrac{OM'}{OM} = \dfrac{2\sqrt2}{\sqrt2} = 2 = \vert c\vert$ : un **quotient de deux longueurs**, un réel positif, sans unité. C'est ce qu'on appellera le **rapport**. Et note ce qu'il ne dit pas : rien sur la direction. » |
+| `somme` | $2 + \sqrt2$ — on **ajoute** le module de $c$ à la distance de départ | non | **`produit-modules-additionnes`** | « La scène affiche $2\sqrt2 \approx 2{,}83$, pas $2+\sqrt2 \approx 3{,}41$. L'addition serait la règle si multiplier deux complexes additionnait leurs modules — or le chapitre 3 a établi le contraire : $\vert zz'\vert = \vert z\vert \times \vert z'\vert$. Et il y a un test que tu peux faire toi-même : une somme ajoute **toujours la même chose**, quel que soit le point de départ ; un produit, non. Promène le point et regarde lequel des deux comportements tu vois. » |
+| `argument-rapport` | $\dfrac{\pi\sqrt2}{2}$ — la distance est multipliée par l'**argument** de $c$, qui vaut $\dfrac{\pi}{2}$ | non | **`similitude-module-argument-roles`** | « La scène affiche $2\sqrt2 \approx 2{,}83$ ; ton modèle prédit $\approx 2{,}22$, donc un point **plus près** de $O$ qu'il ne l'est. L'argument de $c$ est un **angle** ; multiplier une longueur par un angle ne donne pas une longueur. Les deux nombres de $c$ ne sont pas interchangeables : le **module** agit sur les longueurs, et c'est tout ce que cette étape demande. » |
+| `rapport-complexe` | $2\sqrt2\,i$ — le rapport vaut $2i$, donc $OM' = \sqrt2 \times 2i$ | non | **`homothetie-rapport-complexe`** | « Ce nombre n'est pas une distance : une distance est un **réel positif**, et $2\sqrt2\,i$ ne l'est pas. C'est le cœur de l'erreur, et il vaut pour tout le chapitre : le nombre complexe $c$ **code** l'agrandissement, il n'**est** pas l'agrandissement. Ce qui agrandit, c'est son **module**, $\vert 2i\vert = 2$. » |
 
-- **`suite` (34 mots) :** « Garde le coefficient et promène le point sur les cinq positions.
-  Lis les deux distances à chaque fois, et fais leur quotient : $\sqrt2 \to 2\sqrt2$,
-  $2 \to 4$, $4 \to 8$. **Toujours $2$.** »
-  *Vérifié sur la table B du §5.3 : $|c| = 2$, donc $OM' = 2\,OM$ aux cinq points ✓.*
+- **`suite` — une RECHERCHE, pas un relevé** (36 mots) *(correctif de vague 1, pédagogie I5 :
+  la version précédente imprimait la suite des quotients, c'est-à-dire l'invariant lui-même —
+  il ne restait rien à trouver)* : « Garde le coefficient et promène le point sur les cinq
+  positions. **Combien y en a-t-il où le quotient $\dfrac{OM'}{OM}$ ne vaut pas $2$ ?** Lis
+  les deux distances à chaque fois avant de répondre. »
+  *Réponse : **zéro** — vérifié sur la table B du §5.3, $|c| = 2$ donc $OM' = 2\,OM$ aux cinq
+  points. **C'est la même grammaire qu'en S1 et en S4** : l'élève cherche, il ne relit pas.*
 - **⟂-avant-pari :** $M'$, son affixe, son segment ; les lectures `distances` et `rapport` ;
   tout arc ; le verdict ; tout pixel d'accent ; et la phrase lue ne contient ni « $4\sqrt2$ »,
   ni « deux fois ».
@@ -993,9 +1364,13 @@ attend la révélation*).
   `reference: "aucune"`.
 - **`etat_revele` :** aucun. *La révélation **trace l'arc** et ouvre les trois lectures
   d'angle ; elle ne change aucun réglage.*
-- **Contrôle ouvert :** **aucun de neuf** ; `coefficient` et `point` sont **rouverts**
-  (§5.5, déclaré). **Lectures :** `module-c`, `distances`, `rapport`, **`argument-c`**,
-  **`angle`**, **`argument-image`**.
+- **Contrôles :** `coefficient` et `point` **rouverts** (§5.5, déclaré) ; **et un contrôle
+  neuf, `balayage`** *(décision de vague 1, pédagogie I6)* — un glissement **continu** de $M$
+  sur son cercle de rayon $\vert z\vert$, **ouvert seulement après la révélation**, **pendant
+  lequel toutes les lectures chiffrées affichent « — »**, qui ne pose aucun cran et ne modifie
+  pas l'état (§6.1). *C'est le seul continuum de la scène, et il est muet.*
+  **Lectures :** `module-c`, `distances`, `rapport`, **`argument-c`**, **`angle`**,
+  **`argument-image`**.
 - **Consigne (voix) :** « Coefficient $c = \sqrt3 + i$ ; son module vaut $2$, la scène
   l'affiche. Le point $M$ est en $2i$, donc sa direction depuis $O$ fait un angle de
   $\dfrac{\pi}{2}$ avec l'axe réel. Son image $M'$ est en $-2 + 2\sqrt3\,i$, et **la direction
@@ -1010,18 +1385,30 @@ attend la révélation*).
 | `somme` | $\dfrac{7\pi}{6}$ — on additionne les deux directions, $\dfrac{2\pi}{3} + \dfrac{\pi}{2}$ | non | **`produit-quotient-argument-operation`** | « L'addition est la bonne opération, mais elle est déjà faite. Le chapitre 3 dit $\arg(z') = \arg(c) + \arg(z)$ : c'est $\arg(z')$ qui **est** la somme — $\dfrac{\pi}{6} + \dfrac{\pi}{2} = \dfrac{2\pi}{3}$, tu peux le vérifier sur l'écran. Pour retrouver $\arg(c)$ à partir des deux autres, il faut donc **soustraire**, pas additionner encore. » |
 | `horaire` | $-\dfrac{\pi}{6}$ — le même angle, mais dans le sens **horaire** | non | **`rotation-sens-inverse`** | « La grandeur est juste, le sens ne l'est pas — et le signe est ce que les correcteurs lisent en premier. Regarde l'arc : il va de $OM$ **vers** $OM'$, c'est-à-dire de $\dfrac{\pi}{2}$ vers $\dfrac{2\pi}{3}$, donc dans le sens qui **augmente** l'angle : le sens direct, positif. Un $-\dfrac{\pi}{6}$ enverrait $M$ vers $\dfrac{\pi}{3}$, de l'autre côté. » |
 
-- **`suite` (52 mots) :** « Promène le point sur les cinq positions, coefficient inchangé.
-  $\arg(z')$ vaut tour à tour $\dfrac{5\pi}{12}$, $\dfrac{2\pi}{3}$, $\dfrac{\pi}{6}$,
-  $\dfrac{\pi}{6}$, $\dfrac{11\pi}{12}$ — **et l'écart ne bouge jamais de $\dfrac{\pi}{6}$.**
-  Regarde surtout les deux points de l'axe réel : là, et là seulement, les deux lectures
-  **se confondent**. C'est un accident de ces deux points-là. »
-  *Vérifié sur la table C du §5.3 ✓. **Cette phrase est la charnière de toute la scène** : elle
-  désamorce par avance l'exemple travaillé que l'élève lira trois paragraphes plus bas
-  (`lesson.md:299`, $z=3$, $\arg z = 0$).*
-- **Et un second balayage, à écrire dans la même `suite` :** « Puis garde le point et promène
-  le **coefficient** : $c = 2$ et $c = 2i$ ont le même module — la distance finale est la
-  même, l'arc non. $c = i$ et $c = 2i$ ont le même argument — l'arc est le même, la distance
-  non. » *Vérifié : $|2| = |2i| = 2$ ✓ ; $\arg(i) = \arg(2i) = \dfrac{\pi}{2}$ ✓ (§5.2 A).*
+- **`suite` — une RECHERCHE en trois temps** (58 mots) *(correctif de vague 1, pédagogie I5 :
+  la version précédente imprimait la suite des cinq $\arg(z')$ et l'invariant, il ne restait
+  rien à chercher)* :
+  1. « Promène le point sur les cinq positions, coefficient inchangé. **Sur combien d'entre
+     elles les deux lectures d'angle affichent-elles le MÊME nombre ?** »
+     *Réponse : **deux** — les deux points de l'axe réel, $z = 2$ et $z = 4$
+     (table C du §5.3 : $\arg(z') = \dfrac{\pi}{6} = $ l'écart). **C'est la charnière de toute
+     la scène** : ces deux points-là sont exactement le cas de l'exemple travaillé que
+     l'élève lira trois paragraphes plus bas (`lesson.md:299`, $z = 3$, $\arg z = 0$), et
+     c'est la `suite` qui le lui fait TROUVER au lieu de le lui dire.*
+  2. « **Et sur combien l'écart change-t-il ?** »
+     *Réponse : **zéro** — l'écart vaut $\dfrac{\pi}{6}$ aux cinq (table C ✓).*
+  3. « Maintenant **fais glisser** $M$ avec le balayage, sans lâcher : les deux directions
+     tournent, et l'ouverture de l'arc, elle, ne bouge pas. »
+     *C'est le seul moment où le continuum dit quelque chose qu'aucun cran ne dit — et il le
+     dit **sans un chiffre** (§6.1).*
+- **Et un second parcours, à écrire dans la même `suite` :** « Garde le point et promène le
+  **coefficient**. **Trouve les deux qui laissent la distance finale inchangée, et les deux
+  qui laissent l'arc inchangé — ce ne sont pas les mêmes paires.** »
+  *Réponses : même distance finale ⟹ même module ⟹ $\{2 ; -2 ; 2i ; \sqrt3+i\}$, quatre crans
+  de module $2$ (§5.3 B) ; même arc ⟹ même argument ⟹ $\{i ; 2i\}$ (tous deux
+  $\dfrac{\pi}{2}$) et $\{2 ; \tfrac12\}$ (tous deux $0$). **La formulation « les deux » est
+  donc FAUSSE pour la distance, qui en a quatre** — texte à écrire : « **combien** laissent la
+  distance finale inchangée ? **et combien laissent l'arc inchangé ?** ». Vérifié au §5.2 A.*
 - **⟂-avant-pari :** l'**arc** et son étiquette ; les lectures `argument-c`, `angle` et
   `argument-image` ; le verdict ; tout pixel d'accent ajouté par rapport à l'état d'énoncé.
   *$M'$ et son affixe **sont ici l'ÉNONCÉ** — la consigne les donne — donc ils sont à
@@ -1057,6 +1444,29 @@ attend la révélation*).
   rotation non. »
   *Vérifié sur la table D du §5.3 : $AM' = AM$ aux cinq points ✓ ; la position exceptionnelle
   est $z = 2$, où $M = A$ et où $AM = AM' = 0$ ✓ ; le rapport y affiche « — » (§5.6).*
+
+#### S4 confrontée à `cp-r5-ecriture`, choix par choix
+
+*Le §3 affirmait que les deux sont « complémentaires, jamais doublons » **sans jamais le
+vérifier** — la vague 1 l'a relevé (pédagogie I7). Voici la vérification, et elle change une
+conclusion.*
+
+| modèle | le choix de S4 | le choix de `cp-r5-ecriture` (`checkpoints.yaml:210-247`) | doublon ? |
+|---|---|---|---|
+| `transformation-centre-oublie` | `autour-de-O` : **un LIEU**, $4i$ — « où le point arrive si l'on tourne autour de $O$ » | B : **une ÉCRITURE**, $z' = i\,z$ — « quelle formule » | **non** : l'un se lit sur le plan, l'autre sur la page. *Mais ils nomment le même défaut, et l'élève qui échoue aux deux échoue deux fois au même endroit — ce qui est **voulu** : c'est le modèle le plus lourd de R5.* |
+| `rotation-angle-comme-coefficient` | `angle-coefficient` : $2+\pi$, **un point de l'axe réel** — l'absurdité se VOIT | D : $z' - 2 = \dfrac{\pi}{2}(z-2)$, **une formule** — l'absurdité se raisonne | **non** |
+| `ecriture-complexe-oubli-constante` | `oubli-constante` : $2i$, le **vecteur** pris pour l'affixe | **absent** de `cp-r5-ecriture` | **non** — *et c'est S4 seule qui le sert ici* |
+| `rotation-sens-inverse` | **absent** de S4 (le quatrième choix est `angle-coefficient`) | C : $z'-2 = -i(z-2)$ | **non** — *et c'est le point d'arrêt seul qui le sert* |
+
+**Conclusion, corrigée : ils ne se doublent pas, et ils se COMPLÈTENT exactement** — chacun
+sert un modèle que l'autre laisse de côté (`ecriture-complexe-oubli-constante` pour la scène,
+`rotation-sens-inverse` pour le point d'arrêt), et ils partagent les deux autres **dans deux
+registres différents** (lieu / écriture). *C'est ce que le §3 affirmait ; c'est maintenant
+mesuré.*
+
+**Le coût résiduel, lui aussi mesuré :** **ni l'un ni l'autre n'interroge la forme développée
+$z' = az+b$**, que S5 enseigne. C'est le motif du livrable §4.7 (la reprise) et de
+NBCOMPLEX2-38 (§8.3). **Rien, dans le rung, ne mesure ce savoir-faire avant le banc de fin.**
 - **⟂-avant-pari :** $M'$, son affixe, son segment ; **l'anneau de point fixe** ; l'arc ; les
   lectures `angle`, `point-fixe`, `ecriture` ; le verdict ; tout pixel d'accent. *$A$, son nom
   et son affixe **sont l'ÉNONCÉ** (la consigne les donne) : ils restent à l'ENCRE. **Ce qui
@@ -1076,7 +1486,12 @@ attend la révélation*).
 - **Consigne (voix) :** « Dernière question, et c'est celle que les sujets d'examen posent. On
   ne te donne plus un coefficient et un centre : on te donne **une formule**, et une seule —
   $z' = (1+i)\,z + 1 - i$. À tout point $M$ d'affixe $z$, elle associe le point $M'$ d'affixe
-  $z'$. Le point $M$ est en $4$ ; son image est en $5 + 3i$, la scène la montre. »
+  $z'$. Le point $M$ est en $4$ ; son image est en $5 + 3i$, la scène la montre.
+  **Un centre, tu viens de voir ce que c'est : le point qui ne bouge pas. Sers-t'en.** »
+  *(La dernière phrase est un ajout de vague 1, pédagogie I1 : elle **réactive S4** au lieu
+  de laisser l'élève affronter une question neuve sans rappel. **Contrainte :** elle ne nomme
+  ni $\omega$, ni $\dfrac{b}{1-a}$, ni « résoudre » — elle rappelle une **propriété**, pas une
+  méthode, et le §7.6 C l'autorise explicitement à S5 comme à S4.)*
 - **Pari :** « Cette transformation est… »
 
 | choix | texte | juste | misconception | retour |
@@ -1117,8 +1532,16 @@ d'accent avant le pari » devient impossible à tenir honnêtement*) :
 
 | étape | ce qui est visible AVANT le pari, en plus | pourquoi | ce que ça coûte |
 |---|---|---|---|
-| **S3** | $M'$, son affixe, son segment, **à l'ENCRE** | la consigne **donne** $\arg(z') = \dfrac{2\pi}{3}$ ; le pari ne porte pas sur où va $M$, mais sur **quel angle on mesure** | rien : l'arc, `angle`, `argument-c` et `argument-image` restent absents |
+| **S3** | $M'$, son affixe, son segment, **et les DEUX valeurs $\arg(z) = \dfrac{\pi}{2}$ et $\arg(z') = \dfrac{2\pi}{3}$** — le tout **à l'ENCRE** | la consigne **donne** les deux directions ; **le pari ne porte pas sur leurs valeurs, mais sur LAQUELLE des trois quantités qu'on peut former avec elles est l'angle de la transformation** | rien : l'**arc**, la lecture `angle`, la lecture `argument-c` et la lecture `argument-image` restent absents. *Précision ajoutée en vague 1 (pédagogie M2) : la version précédente ne listait que $M'$, alors que la consigne énonce déjà les deux arguments — l'exception était plus large que ce que la table déclarait, ce qui aurait fait rougir `avant-pari` sur un produit conforme à la spec.* |
 | **S5** | $M'$, son affixe, son segment, **à l'ENCRE** | la consigne **donne** $z' = 5+3i$ ; le pari porte sur la **nature** de la transformation | rien : $\Omega$, l'anneau, `point-fixe`, `rapport-inverse`, `module-c`, `argument-c` et l'écriture factorisée restent absents |
+
+> **Et une distinction que la porte doit tenir à S3 : « la valeur est ÉNONCÉE » n'est pas
+> « la LECTURE existe ».** $\arg(z) = \dfrac{\pi}{2}$ et $\arg(z') = \dfrac{2\pi}{3}$ sont
+> **écrits dans la consigne**, à l'encre ; la **lecture `argument-image`**, qui les range
+> l'une sous l'autre en regard de `angle`, **n'existe pas dans le DOM avant la révélation**.
+> *Ce sont deux objets différents : un texte d'énoncé et une ligne de mesure. La famille
+> `avant-pari` mesure la seconde, pas le premier, et la table ci-dessus est ce qui le lui
+> dit.*
 
 #### A — la fuite par les RÉGLAGES
 
@@ -1129,11 +1552,11 @@ produit la réponse d'un pari ultérieur.*
 
 | étape | contrôle(s) ouvert(s) | ce qu'ils atteignent | un pari suivant est-il mis en danger ? |
 |---|---|---|---|
-| **S1** | `coefficient` seul (7) | les 7 coefficients, **sur le seul point $1+i$**, centre $O$ | **non** pour S2 : `point` est fermé — l'état de S2 ($z = -2+2i$) est **hors d'atteinte** — et **`distances` et `rapport` n'existent dans le DOM à aucune étape antérieure à S2**. **non** pour S3 : `angle`, `argument-c`, `argument-image` absents, **aucun arc tracé**. **non** pour S4/S5 : `centre` et `enonce` fermés. |
+| **S1** | `coefficient` seul (7) | les 7 coefficients, **sur le seul point $1+i$**, centre $O$ | **non** pour S2 : `point` est fermé — l'état de S2 ($z = 1-i$) est **hors d'atteinte** — et **`distances` et `rapport` n'existent dans le DOM à aucune étape antérieure à S2**. **non** pour S3 : `angle`, `argument-c`, `argument-image` absents, **aucun arc tracé**. **non** pour S4/S5 : `centre` et `enonce` fermés. |
 | **S2** | `point` seul (5) | les 5 points, **au seul coefficient $2i$**, centre $O$ | **non** pour S3 : le coefficient $\sqrt3+i$ est hors d'atteinte, et les trois lectures d'angle n'existent pas. **non** pour S4/S5 : contrôles et lectures absents. |
-| **S3** | aucun neuf ; `coefficient` et `point` **rouverts** | les 35 couples, centre $O$ | **non** pour S4 : `centre` est fermé — **tout est centré en $O$**, et `point-fixe` et `ecriture` n'existent pas. **non** pour S5 : `enonce` fermé, `rapport-inverse` absent. |
+| **S3** | `balayage` (**neuf, et seulement APRÈS la révélation**) ; `coefficient` et `point` **rouverts** | les 35 couples, centre $O$, **plus un continuum de positions de $M$ sur son cercle** | **non** pour S4 : `centre` est fermé — **tout est centré en $O$**, et `point-fixe` et `ecriture` n'existent pas. **non** pour S5 : `enonce` fermé, `rapport-inverse` absent. **Et le balayage n'ajoute aucun état atteignable au sens de la table : il n'affiche AUCUN chiffre et ne pose AUCUN cran** (§6.1) — la porte le vérifie comme une absence, famille `aucune-lecture-chiffree-pendant-le-balayage`. |
 | **S4** | `centre` (neuf) + `point` (rouvert) | 2 centres × 5 points, **au seul coefficient $i$** | **non** pour S5 : `enonce` est fermé, donc **aucune transformation de la forme $z'=az+b$ n'existe** ; `rapport-inverse` absent ; et la forme **développée** de `ecriture` n'est écrite nulle part. |
-| **S5** | les quatre | tout | — |
+| **S5** | les quatre contrôles de réglage *(pas `balayage`, qui reste propre à S3)* | tout | — |
 
 **L'héritage est DÉCLARÉ**, comme au banc d'électrolyse : `point` est rouvert à S3, S4 et S5 ;
 `coefficient` à S3 et S5. *Sans lui, aucune `suite` ne pourrait faire constater un
@@ -1148,8 +1571,8 @@ autres.*
 
 | les retours de… | ce qu'ils disent | menacent-ils le pari suivant ? |
 |---|---|---|
-| **S1** | « deux effets séparés », $\arg(2) = 0$, « essaie $c=-2$ », « $OM$ passe de $\sqrt2$ à $2\sqrt2$ » | ⚠️ **une quasi-fuite, tranchée.** Le retour juste écrit « *$OM$ passe de $\sqrt2$ à $2\sqrt2$* » — c'est un rapport de $2$, donc le fait de S2. **Phrase conservée**, parce qu'elle est la **conséquence directe du pari de S1** (« deux fois plus loin » est le choix même) et qu'elle ne nomme ni « rapport », ni « quotient », ni $|c|$ ; **règle posée : aucun retour de S1 n'écrit le mot « rapport » ni une division.** *§11.2, `formule-graduee`, S1.* |
-| **S2** | $\dfrac{OM'}{OM} = \vert c\vert$, « rien sur la direction », « ce qui s'additionne, ce sont les arguments » | ⚠️ **une fuite trouvée et supprimée.** Le retour de `somme` annonçait « *tu le verras à l'étape suivante* » et nommait les arguments comme la grandeur qui s'additionne — il donnait l'objet de S3 **et** son opération. **Membre de phrase retiré** ; le retour s'arrête à « *le chapitre 3 a établi le contraire : $\vert zz'\vert = \vert z\vert\vert z'\vert$* ». **Règle : aucun retour de S2 ne nomme un ANGLE.** |
+| **S1** | « deux effets séparés », $\arg(2) = 0$, « essaie $c=-2$ », « $OM$ passe de $\sqrt2$ à $2\sqrt2$ », « agrandir par zéro écraserait le plan », « l'angle se **lit** sur le coefficient » | ⚠️ **deux quasi-fuites, tranchées.** (a) Le retour juste écrit « *$OM$ passe de $\sqrt2$ à $2\sqrt2$* » — c'est un rapport de $2$, donc le fait de S2. **Phrase conservée**, parce qu'elle est la **conséquence directe du pari de S1** (« deux fois plus loin » est le choix même) et qu'elle ne nomme ni « rapport », ni « quotient », ni une division ; **règle posée : aucun retour de S1 n'écrit le mot « rapport » ni une division.** (b) Le retour de `quart-de-tour` écrit « *l'angle ne se devine pas : il se lit sur le coefficient* » — cela ne donne **pas** le pari de S3, qui ne demande pas d'**où** vient l'angle mais **laquelle** des trois quantités de l'écran il est. **Conservé, et vérifié mot à mot : aucun retour de S1 ne contient « écart », « différence », ni $\arg(z')$.** *§11.2, `formule-graduee`, S1.* |
+| **S2** | $\dfrac{OM'}{OM} = \vert c\vert$, « rien sur la direction », « une somme ajoute toujours la même chose », « un argument est un angle » | ⚠️ **une fuite trouvée et supprimée.** Le retour de `somme` annonçait « *ce qui s'**additionne**, tu le verras à l'étape suivante, ce sont les **arguments*** » — il donnait l'objet de S3 **et** son opération. **Phrase retirée** et remplacée par un test que l'élève peut faire **à S2** (« une somme ajoute toujours la même chose ; un produit, non »). **Règle : aucun retour de S2 ne dit ce qui arrive aux ANGLES.** *Le mot « angle » subsiste dans le retour de `argument-rapport` (« l'argument de $c$ est un **angle** ») — c'est une phrase sur ce qu'un argument EST, pas sur ce qu'il fait, et le §7.6 C l'autorise nommément à S2.* |
 | **S3** | l'écart, $\arg(z')-\arg(z) = \arg(c)$, le sens direct, l'accident de l'axe réel | **non** : aucun ne nomme un centre, un point fixe ni une écriture. *Vérifié mot à mot : les quatre retours ne contiennent ni « centre », ni « fixe », ni « $z_A$ ».* |
 | **S4** | le point fixe, $z'-z_A = c(z-z_A)$, « le coefficient ne dit rien du centre » | **non** : aucun n'écrit $z' = az+b$ ni $\omega = \dfrac{b}{1-a}$, et aucun ne dit qu'on peut **retrouver** un centre à partir d'une formule. *C'est même le contraire : S4 **donne** le centre, S5 le fait **chercher**.* |
 | **S5** | tout | — |
@@ -1161,8 +1584,8 @@ révélation de… ». Une consigne a le droit d'imprimer ce que son propre éno
 
 | pendant l'étape… | **autorisé** (consigne + retours + lectures) | **interdit** |
 |---|---|---|
-| **S1** | `rotation`, `homothétie`, `agrandir`, `tourner`, `module`, `\vert c\vert`, `argument` *(seulement dans « $\arg(2)=0$ », en position de justification)*, `demi-tour`, `quart de tour` | `rapport`, `quotient`, `\dfrac{OM'}{OM}`, `÷`, `/` *(entre deux longueurs)*, `angle de la transformation`, `écart`, `\arg(z')`, `centre`, `point fixe`, `z' - z_A`, `z' = az`, `\omega` |
-| **S2** | + `rapport`, `quotient`, `\dfrac{OM'}{OM}`, `\vert zz'\vert = \vert z\vert\vert z'\vert`, `distance`, `longueur` | `angle`, `\arg(c)`, `\arg(z')`, `écart`, `\pi/`, `e^{i`, `direct`, `horaire`, `centre`, `point fixe`, `\omega`, `az + b` |
+| **S1** | `rotation`, `homothétie`, `agrandir`, `tourner`, `module`, `\vert c\vert`, `argument` **et la chaîne littérale $\arg(2) = 0$** *(en position de justification : pourquoi il n'y a pas de rotation)*, `demi-tour`, `quart de tour`, `angle` *(dans « l'angle se lit sur le coefficient », jamais chiffré)* | `rapport`, `quotient`, `\dfrac{OM'}{OM}`, `÷`, `/` *(entre deux longueurs)*, `écart`, `différence`, `\arg(z')`, `\arg(z)`, **toute fraction de $\pi$ autre que le littéral $0$**, `centre`, `point fixe`, `z' - z_A`, `z' = az`, `\omega` |
+| **S2** | + `rapport`, `quotient`, `\dfrac{OM'}{OM}`, `\vert zz'\vert = \vert z\vert\vert z'\vert`, `distance`, `longueur`, **`\arg(c)` et sa valeur $\dfrac{\pi}{2}$** *(le distracteur `argument-rapport` doit pouvoir nommer le nombre qu'il emploie — correctif B2 : une valeur de choix se recalcule depuis son modèle, donc elle doit être écrite)*, `angle` *(dans « un argument est un angle », jamais comme grandeur de la transformation)* | `\arg(z')`, `\arg(z)`, `écart`, `différence`, `angle de la transformation`, `arc`, `direct`, `horaire`, `centre`, `point fixe`, `\omega`, `az + b` |
 | **S3** | + `angle`, `écart`, `\arg(c)`, `\arg(z)`, `\arg(z')`, `\pi/6`, `e^{i\theta}`, `sens direct`, `arc` | `centre`, `point fixe`, `invariant`, `ne bouge pas`, `z' - z_A`, `z_\Omega`, `\omega`, `az + b`, `b/(1-a)` |
 | **S4** | + `centre`, `point fixe`, `ne bouge pas`, `z' - z_A = c\,(z - z_A)` **(factorisée seule)** | `z' = az + b`, `az+b`, `\omega =`, `\dfrac{b}{1-a}`, `développ`, `\dfrac{z'-\omega}{z-\omega}` |
 | **S5** | tout | — |
@@ -1205,23 +1628,80 @@ revendiqués. §13.7.*
 
 | modèle existant | compte actuel | où la scène le casse | **sur quelle conséquence il casse** |
 |---|---|---|---|
-| `mult-par-i-non-rotation` | 3 | **S1**, choix `quart-de-tour` | le plan affiche $2+2i$ : le quart de tour n'était pas une propriété de « multiplier », mais de $i$ — et la `suite` de S1 fait trouver les **deux** crans qui ne tournent pas |
+| ~~`mult-par-i-non-rotation`~~ | 3 | **AUCUNE ÉTAPE — ligne RETIRÉE en vague 1 (pédagogie B1)** | *La première version rattachait `quart-de-tour` (S1) à ce modèle. **C'est l'erreur inverse** : le modèle déclaré (`items.yaml:15-18`) décrit l'élève qui prend $z \mapsto iz$ pour un agrandissement, un déplacement ou une symétrie **au lieu d'une rotation**. À S1, la bonne réponse **est** un agrandissement sans rotation : le modèle n'y a aucun distracteur possible. **La scène ne le sert pas, et il reste à 3 items, tous en R0.*** |
+| **`multiplication-rotation-par-defaut`** *(modèle NEUF, §8.2)* | **0 → 3** | **S1**, choix `quart-de-tour` | le plan affiche $2+2i$ : rien n'a tourné. Le quart de tour était une propriété de **$i$** — et `checkpoints.yaml:98-100`, au-dessus du marqueur, le disait déjà en toutes lettres pour $\vert i\vert = 1$. La `suite` fait trouver les **deux** crans qui ne tournent pas |
 | `reel-positif-donne-rotation` | 3 | **S1**, choix `demi-tour` | le demi-tour existe, et il appartient à $c = -2$ : la `suite` le fait **produire** exprès |
-| `similitude-module-argument-roles` | 3 | **S1** (`angle-deux`), **S2** (`argument-rapport`), **S5** (`roles-intervertis`) | un ordre de grandeur suffit : $\dfrac{\pi}{4} < 1$ rapprocherait $M'$, et l'écran montre le contraire |
-| `homothetie-rapport-complexe` | 4 | **S2** (`rapport-complexe`), **S5** (`rapport-complexe`) | $2\sqrt2 \times 2i$ n'est pas une distance ; l'écran affiche $4\sqrt2$, un réel |
-| `produit-modules-additionnes` | 3 | **S2**, choix `somme` | $2+2\sqrt2 \neq 4\sqrt2$, et la `suite` fait refaire le quotient aux cinq points |
+| `similitude-module-argument-roles` | 3 | **S1** (`agrandissement-nul`), **S2** (`argument-rapport`), **S5** (`roles-intervertis`) | un ordre de grandeur suffit : agrandir par $0$ écraserait le plan, et $\dfrac{\pi}{4} < 1$ rapprocherait $M'$ — l'écran montre le contraire dans les deux cas |
+| `homothetie-rapport-complexe` | 4 | **S2** (`rapport-complexe`), **S5** (`rapport-complexe`) | $\sqrt2 \times 2i$ n'est pas une distance ; l'écran affiche $2\sqrt2$, un réel |
+| `produit-modules-additionnes` | 3 | **S2**, choix `somme` | $2+\sqrt2 \approx 3{,}41 \neq 2\sqrt2 \approx 2{,}83$, et la `suite` fait chercher **combien** de points démentent le quotient (réponse : zéro) |
 | `produit-quotient-argument-operation` | 3 | **S3**, choix `somme` | l'addition **est déjà faite** : $\dfrac{\pi}{6}+\dfrac{\pi}{2} = \dfrac{2\pi}{3}$ est à l'écran |
 | `rotation-sens-inverse` | 3 | **S3**, choix `horaire` | l'arc **tracé** va de $\dfrac{\pi}{2}$ vers $\dfrac{2\pi}{3}$ : il augmente |
 | `transformation-centre-oublie` | 3 | **S4** (`autour-de-O`), **S5** (`centre-O`) | bascule le centre sur $O$ et **obtiens** $4i$ ; à S5, l'image de $0$ vaut $1-i$ — $O$ bouge |
 | `ecriture-complexe-oubli-constante` | 3 | **S4**, choix `oubli-constante` | $2i$ est le **vecteur** $\overrightarrow{AM'}$, pas l'affixe : depuis $A(2;0)$, monter de $2$ mène en $(2;2)$ |
 | `rotation-angle-comme-coefficient` | 4 | **S4**, choix `angle-coefficient` | une rotation d'un quart de tour qui laisse le point sur l'axe réel est une contradiction visible |
 
-**Dix modèles servis, et aucun n'est servi deux fois pour la même raison.** *Les treize autres
-modèles de l'inventaire (argument/quadrant, module, conjugué, exponentielle, Moivre,
-périodicité, racines, lecture de $w$, lieux) ne sont **pas** visés : ils appartiennent à R1,
-R3, R4, R6 et R7. **La scène ne les touche pas, et c'est déclaré.***
+**Dix modèles servis — huit de l'inventaire existant, deux neufs — et aucun n'est servi deux
+fois pour la même raison.** *Les quinze autres modèles de l'inventaire (argument/quadrant,
+module, conjugué, exponentielle, Moivre, périodicité, racines, **multiplication par $i$ prise
+pour autre chose qu'une rotation**, lecture de $w$, lieux) ne sont **pas** visés : ils
+appartiennent à R0, R1, R3, R4, R6 et R7. **La scène ne les touche pas, et c'est déclaré.***
 
-### 8.2 Le modèle neuf : `angle-lu-depuis-l-axe` — la mesure qui le rend nécessaire
+### 8.2 Les DEUX modèles neufs — et la mesure qui rend chacun nécessaire
+
+*La première version n'en déclarait qu'un. La vague 1 (pédagogie B1, BLOQUANT) a montré que le
+second était déjà **utilisé** par la scène sous une étiquette qui décrit l'erreur inverse.*
+
+#### 8.2 a — `multiplication-rotation-par-defaut` (neuf, vague 1)
+
+**Ce que R0 fabrique, et que rien ne nomme.** Le chapitre 1 travaille **un seul** coefficient
+géométrique, $i$, et conclut « *multiplier par $i$ […] ça **fait tourner** tout le plan d'un
+quart de tour* » (`lesson.md:23`). L'élève en sort avec une règle sur-généralisée :
+**toute multiplication fait tourner, et d'un quart de tour, parce que c'est ce qu'on a vu** —
+**l'argument du coefficient n'est jamais lu.**
+
+**Pourquoi ce n'est PAS `mult-par-i-non-rotation`.** Ce modèle-là décrit l'erreur **inverse** :
+« *L'élève interprète $z \mapsto iz$ […] comme un changement de taille, un déplacement, ou une
+symétrie axiale, **au lieu d'une rotation** d'un quart de tour* » (`items.yaml:15-18`), et ses
+quatre choix de point d'arrêt le confirment (`checkpoints.yaml:91-122` : agrandissement,
+translation, symétrie). **Un élève qui invente une rotation là où il n'y en a pas n'est pas
+cet élève-là.**
+
+**Pourquoi ce n'est PAS non plus `reel-positif-donne-rotation`.** Celui-ci est **borné au cas
+$c$ réel strictement positif** et sa forme canonique est l'angle $\pi$ (`items.yaml:169-174` :
+« *souvent d'angle $\pi$* »). Le modèle neuf est plus large : il s'applique **quel que soit**
+$c$, et sa signature est le **quart de tour par défaut**, transféré de $i$. *Les deux se
+croisent à S1, et les deux distracteurs y sont séparés proprement : `demi-tour` → l'angle
+$\pi$ du modèle borné ; `quart-de-tour` → le quart de tour par défaut du modèle neuf.*
+
+**Et rien ne le mesure aujourd'hui.** `grep` sur les 23 modèles : aucun `contradicts_principle`
+ne porte « l'argument décide de l'angle » ; le seul énoncé proche du corpus est
+`checkpoints.yaml:98-100`, qui dit la moitié **module** de la règle, sur le seul cas
+$\vert i\vert = 1$.
+
+**Déclaration à ajouter à `items.yaml` (bloc `misconceptions:`) :**
+
+```yaml
+  - id: mc.math.maths_complexes_trigo.multiplication-rotation-par-defaut
+    label: >-
+      « Toute multiplication fait tourner — et d'un quart de tour : l'angle est
+      celui de i, jamais celui qu'on lit sur le coefficient »
+    description: >-
+      Ayant vu que z ↦ iz est une rotation d'un quart de tour, l'élève
+      généralise : toute multiplication par un complexe ferait tourner, et
+      d'un quart de tour par défaut. Il applique une rotation là où le
+      coefficient n'en porte aucune (c réel positif), ou un quart de tour là
+      où l'argument du coefficient vaut tout autre chose (π/6, π/4). Le
+      symptôme mécanique est constant : arg(c) n'est jamais calculé.
+    contradicts_principle: >-
+      L'angle d'une multiplication par c est arg(c), et rien d'autre : il se
+      LIT sur le coefficient, il ne se suppose pas. i = e^{iπ/2} fait tourner
+      d'un quart de tour parce que SON argument vaut π/2 ; un c d'argument 0
+      (réel positif) ne fait tourner de rien, un c d'argument π/6 fait tourner
+      de π/6. Le quart de tour est une propriété de i, pas de la
+      multiplication.
+```
+
+#### 8.2 b — `angle-lu-depuis-l-axe` (neuf) — la mesure qui le rend nécessaire
 
 **Aucun des 23 modèles ne nomme l'erreur que S3 attrape.** Les deux plus proches sont
 `similitude-module-argument-roles` (les rôles de $|c|$ et $\arg(c)$ **intervertis**) et
@@ -1268,10 +1748,12 @@ parce que ses deux formes **contredisaient deux principes différents** ; ici el
 contredisent le même. **Si la vague 1 juge le contraire, le scindement est propre** : forme A
 = angles (items -35, -37), forme B = longueurs (item -36). §13.8.*
 
-### 8.3 Les quatre items que ce modèle exige (specs pour item-author)
+### 8.3 Les SEPT items que les deux modèles exigent (specs pour item-author)
 
 **Plancher : ≥ 3 items par modèle neuf.** Trois items portent `angle-lu-depuis-l-axe` en
-`primary_misconception` ; un quatrième solde le savoir-faire de cadre à 0/34 (§0.1 f).
+`primary_misconception` (**-35, -36, -37**) ; **trois portent
+`multiplication-rotation-par-defaut`** (**-39, -40, -41**, ajoutés en vague 1) ; un
+septième (**-38**) solde le savoir-faire de cadre à 0/34 (§0.1 f).
 *Chaque distracteur porte un `misconception:` nommé, comme le reste du fichier.*
 
 **NBCOMPLEX2-35 — R5, application directe.** *(`primary_misconception:
@@ -1310,7 +1792,7 @@ différence $= 3\sqrt2 - \sqrt2 = 2\sqrt2$ ✓.*
 
 **NBCOMPLEX2-37 — R5, application non explicite (centre $\neq O$).**
 *(`primary_misconception: angle-lu-depuis-l-axe`)*
-> $A$, $M$ et $M'$ ont pour affixes $z_A = 2$, $z = 4$ et $z' = 2+2i$. $M'$ est l'image de
+> $A$, $M$ et $M'$ ont pour affixes $z_A = 1$, $z = 2$ et $z' = 1+i$. $M'$ est l'image de
 > $M$ par une **rotation de centre $A$**. Quel est l'angle de cette rotation ?
 
 | | texte | misconception |
@@ -1320,9 +1802,18 @@ différence $= 3\sqrt2 - \sqrt2 = 2\sqrt2$ ✓.*
 | C | $\dfrac{3\pi}{4}$ | `angle-lu-depuis-l-axe` *(c'est $\arg(z'-z)$, la direction du déplacement)* |
 | D | $-\dfrac{\pi}{2}$ | `rotation-sens-inverse` |
 
-*Vérifications : $\dfrac{z'-z_A}{z-z_A} = \dfrac{2i}{2} = i$, d'argument $\dfrac{\pi}{2}$ ✓ ;
-$\arg(2+2i) = \dfrac{\pi}{4}$ ✓ ; $z'-z = 2+2i-4 = -2+2i$, d'argument $\dfrac{3\pi}{4}$ ✓ ;
-$|z-z_A| = |z'-z_A| = 2$ — **c'est bien une rotation** ✓.*
+*Vérifications : $\dfrac{z'-z_A}{z-z_A} = \dfrac{i}{1} = i$, d'argument $\dfrac{\pi}{2}$ ✓ ;
+$\arg(1+i) = \dfrac{\pi}{4}$ ✓ ; $z'-z = 1+i-2 = -1+i$, d'argument $\dfrac{3\pi}{4}$ ✓
+(deuxième quadrant, $\cos = -\tfrac{\sqrt2}{2}$, $\sin = \tfrac{\sqrt2}{2}$) ;
+$|z-z_A| = |z'-z_A| = 1$ — **c'est bien une rotation** ✓. **Les trois angles proposés sont des
+angles de la table de R1** (`lesson.md:71-74`), donc tous plausibles.*
+
+> **Nombres changés en vague 1 (pédagogie I3).** La première version posait $z_A = 2$,
+> $z = 4$, $z' = 2+2i$ — **l'état exact de S4**, au caractère près. Un item de banque qui
+> rejoue la position d'une étape ne mesure plus le modèle, il mesure la mémoire de l'écran.
+> Le triplet $(1\,;\,2\,;\,1+i)$ conserve les trois arguments de table et n'apparaît nulle
+> part dans la scène.
+
 **Deux distracteurs sur le même modèle, et c'est voulu** : ce sont les **deux directions
 fausses** que le dessin offre, et un élève qui les prend toutes deux pour plausibles n'a pas
 un demi-modèle, il a le modèle entier.
@@ -1331,50 +1822,160 @@ un demi-modèle, il a le modèle entier.
 *(`primary_misconception: transformation-centre-oublie`)* — **c'est l'item qui solde le
 savoir-faire de cadre à 0/34** (`maths-sm.yaml:229`, `maths-sexp.yaml:254`).
 > La transformation du plan qui, à tout point $M$ d'affixe $z$, associe le point $M'$
-> d'affixe $z' = i\,z + 2 - 2i$, est…
+> d'affixe $z' = (1-i)\,z + 2i$, est la composée d'une rotation et d'une homothétie de même
+> centre. Lesquelles ?
 
 | | texte | misconception |
 |---|---|---|
-| **A** | la rotation de centre le point d'affixe $2$ et d'angle $\dfrac{\pi}{2}$ | **juste** |
-| B | la rotation de centre $O$ et d'angle $\dfrac{\pi}{2}$ | `transformation-centre-oublie` |
-| C | la rotation de centre le point d'affixe $2-2i$ et d'angle $\dfrac{\pi}{2}$ *(le $b$ pris pour le centre)* | `transformation-centre-oublie` |
-| D | la rotation de centre le point d'affixe $2$ et d'angle $-\dfrac{\pi}{2}$ | `rotation-sens-inverse` |
+| **A** | rotation d'angle $-\dfrac{\pi}{4}$, homothétie de rapport $\sqrt2$, **de centre le point d'affixe $2$** | **juste** |
+| B | rotation d'angle $-\dfrac{\pi}{4}$, homothétie de rapport $\sqrt2$, **de centre $O$** | `transformation-centre-oublie` |
+| C | rotation d'angle $-\dfrac{\pi}{4}$, homothétie **de rapport $1-i$**, de centre le point d'affixe $2$ | `homothetie-rapport-complexe` |
+| D | rotation d'angle $\boldsymbol{+\dfrac{\pi}{4}}$, homothétie de rapport $\sqrt2$, de centre le point d'affixe $2$ | `rotation-sens-inverse` |
 
-*Vérifications : $\omega = \dfrac{b}{1-a} = \dfrac{2-2i}{1-i} = \dfrac{2(1-i)}{1-i} = 2$ ✓,
-recoupé par la définition : $i\cdot 2 + 2-2i = 2$ ✓ ; $|a| = |i| = 1$ ⟹ **rotation pure**,
-aucun agrandissement ✓ ; $\arg(i) = \dfrac{\pi}{2}$ ✓. **C'est exactement l'exemple travaillé
-commandé au §4.4** — l'item le réutilise, comme la notion réutilise ses propres exemples.*
-⚠️ **Note pour item-author : un cinquième item serait nécessaire si l'on voulait un
-distracteur `similitude-module-argument-roles` ici ; il n'y en a pas, parce qu'avec
-$|a| = 1$ intervertir les rôles donnerait « rotation d'angle $1$, homothétie de rapport
-$\dfrac{\pi}{2}$ » — grammaticalement plausible mais visuellement absurde, et surtout déjà
-servi trois fois par la scène. Déclaré, pas oublié.**
+*Vérifications : $a = 1-i$, $b = 2i$ ; $\omega = \dfrac{b}{1-a} = \dfrac{2i}{1-(1-i)} =
+\dfrac{2i}{i} = 2$ ✓, **recoupé par la définition** : $(1-i)\cdot 2 + 2i = 2-2i+2i = 2$ ✓ ;
+$\vert a\vert = \vert 1-i\vert = \sqrt2$ ✓ ; $\arg(1-i) = -\dfrac{\pi}{4}$ ✓ (quatrième
+quadrant, $\cos = \tfrac{\sqrt2}{2}$, $\sin = -\tfrac{\sqrt2}{2}$).*
+
+> **Item refait en vague 1, pour trois motifs distincts.**
+>
+> **(a) Il rejouait un paragraphe** (pédagogie I3). Sa version précédente, $z' = iz+2-2i$,
+> était **mot pour mot l'exemple travaillé commandé au §4.4**. Un item de banque qui reprend
+> l'exemple de sa propre leçon mesure la mémoire, pas le savoir-faire.
+>
+> **(b) Il n'exerçait que deux grandeurs sur trois** (fidélité S4). Avec $\vert a\vert = 1$,
+> le **rapport** ne se jouait jamais — alors que le savoir-faire de cadre en nomme trois :
+> « *Caractériser une similitude directe (**rapport, angle, centre**)* »
+> (`maths-sm.yaml:229`). $a = 1-i$ met les trois en jeu, et **un angle négatif** par-dessus.
+>
+> **(c) Son choix C n'instanciait pas le modèle qu'il portait** (fidélité S8). « Le $b$ pris
+> pour le centre » n'est pas `transformation-centre-oublie`, dont la description est précise :
+> « *L'élève écrit $z' = c\cdot z$ (centrée en $O$) pour une transformation de centre $A$,
+> **oubliant les termes $z - z_A$*** » (`items.yaml:178-180`). **C devient un distracteur de
+> rapport**, et `transformation-centre-oublie` n'est plus servi qu'une fois par item —
+> proprement, en B.
+>
+> **`centre-lu-sur-b` est consigné comme modèle CANDIDAT, pas déclaré.** *Motif, et c'est un
+> refus mesuré : je n'ai **aucune** donnée de fréquence. Aucune entrée de banque de cette
+> notion ne demande de caractériser un $z'=az+b$ **donné** — les deux qui en approchent
+> (`bank.yaml:1987`, `:1176`) **construisent** le centre depuis un couple point/image, elles
+> ne le lisent pas sur une formule. Déclarer un troisième modèle neuf sur une intuition, dans
+> la même livraison que deux modèles mesurés, serait exactement ce que le §8.2 reproche à
+> l'inventaire existant.* **Porté au §13.3 comme candidat de la scène R6.**
+>
+> **$\omega = 2$ est conservé** : c'est le centre de `cp-r5-ecriture`
+> (`checkpoints.yaml:204-205`) et celui de S4. *L'écho scène ↔ prose passe désormais par
+> l'exemple travaillé du §4.4 ($z' = iz + 2-2i$) et par la reprise du §4.7 — **plus par
+> l'item**.*
+
+---
+
+**Les TROIS items que le second modèle neuf exige** *(`multiplication-rotation-par-defaut`,
+§8.2 a ; plancher ≥ 3)*.
+
+**NBCOMPLEX2-39 — R5, application directe.**
+*(`primary_misconception: multiplication-rotation-par-defaut`)*
+> La transformation qui, à tout point $M$ d'affixe $z$, associe $M'$ d'affixe $z' = 3z$ est…
+
+| | texte | misconception |
+|---|---|---|
+| **A** | une homothétie de centre $O$ et de rapport $3$, **sans aucune rotation** | **juste** |
+| B | la composée d'une rotation d'un **quart de tour** et d'une homothétie de rapport $3$ | `multiplication-rotation-par-defaut` |
+| C | une rotation de centre $O$ et d'**angle $3$** | `similitude-module-argument-roles` |
+| D | la composée d'une rotation d'**angle $\pi$** et d'une homothétie de rapport $3$ | `reel-positif-donne-rotation` |
+
+*Vérifications : $\vert 3\vert = 3$, $\arg(3) = 0$ ⟹ homothétie seule ✓. Le choix D est la
+**forme canonique** du modèle qu'il porte (`items.yaml:169-174` : « *souvent d'angle $\pi$* »)
+et le choix B en est la forme « quart de tour par défaut ». **Les deux sont donc bien
+distingués.***
+
+**NBCOMPLEX2-40 — R5, application non explicite.**
+*(`primary_misconception: multiplication-rotation-par-defaut`)*
+> On associe à tout point $M$ d'affixe $z$ le point $M'$ d'affixe $z' = (1+i\sqrt3)\,z$. De
+> quel angle la direction $\big(\vec u, \overrightarrow{OM}\big)$ tourne-t-elle ?
+
+| | texte | misconception |
+|---|---|---|
+| **A** | de $\dfrac{\pi}{3}$ | **juste** |
+| B | d'un **quart de tour**, $\dfrac{\pi}{2}$ | `multiplication-rotation-par-defaut` |
+| C | de $-\dfrac{\pi}{3}$ | `rotation-sens-inverse` |
+| D | cela **dépend du point $M$** : l'angle n'est pas le même pour tous | `angle-lu-depuis-l-axe` |
+
+*Vérifications : $\vert 1+i\sqrt3\vert = \sqrt{1+3} = 2$, $\cos = \tfrac12$,
+$\sin = \tfrac{\sqrt3}{2}$ ⟹ $\arg = \dfrac{\pi}{3}$ ✓ (table `lesson.md:71-74`).
+**Le choix D est exactement l'autre modèle neuf** : un élève qui croit que l'angle est une
+**direction** croit aussi qu'il change avec le point. C'est le co-étiquetage légitime — deux
+modèles atteignant un même distracteur —, pas un défaut de stem.*
+
+**NBCOMPLEX2-41 — R5, application non explicite (lire $\arg(c)$ quand il n'est pas évident).**
+*(`primary_misconception: multiplication-rotation-par-defaut`)*
+> On multiplie tout le plan par $c = -1 + i$. De quel angle le plan tourne-t-il ?
+
+| | texte | misconception |
+|---|---|---|
+| **A** | $\dfrac{3\pi}{4}$ | **juste** |
+| B | $\dfrac{\pi}{2}$ — un quart de tour | `multiplication-rotation-par-defaut` |
+| C | $-\dfrac{\pi}{4}$ | `argument-un-seul-signe` |
+| D | $\sqrt2$ | `similitude-module-argument-roles` |
+
+*Vérifications : $\vert -1+i\vert = \sqrt2$ ; $\cos\theta = -\dfrac{\sqrt2}{2}$,
+$\sin\theta = \dfrac{\sqrt2}{2}$ ⟹ $\theta = \dfrac{3\pi}{4}$ ✓ ; l'angle de référence
+$\arctan\!\left(\dfrac{1}{-1}\right) = -\dfrac{\pi}{4}$ est **exactement** ce que produit
+`argument-un-seul-signe` (`items.yaml:26-32` : « *l'angle de référence […] sans vérifier
+séparément les signes de $\cos$ et de $\sin$* ») ✓. **Cet item est le seul du paquet à
+recruter un modèle de R1** : il relie le savoir-faire « lire un argument » au savoir-faire
+« reconnaître une rotation », et c'est voulu — le symptôme du modèle neuf est que
+**$\arg(c)$ n'est jamais calculé**, donc un item qui l'oblige à le calculer *pour de bon* est
+le plus diagnostique des trois.*
 
 ### 8.4 Le solde de couverture, honnête
 
-| modèle | avant | après | marge au plancher (3) |
-|---|---|---|---|
-| **`angle-lu-depuis-l-axe`** *(neuf)* | — | **3** (-35, -36, -37) | **0 — déclarée** |
-| `transformation-centre-oublie` | 3 | **5** (+ -38 primaire, + -38 distracteur C) — **compté 4 au niveau ITEM** | 1 |
-| `rotation-sens-inverse` | 3 | **5** (+ -37 D, + -38 D) | 2 |
-| `produit-quotient-argument-operation` | 3 | **4** (+ -35 C) | 1 |
-| `produit-modules-additionnes` | 3 | **4** (+ -36 C) | 1 |
-| `homothetie-rapport-complexe` | 4 | **5** (+ -36 D) | 2 |
-| **`total_items`** | **34** | **38** | — |
+*Recompté intégralement après la vague 1. Comptes au niveau **ITEM** (un item compte une fois
+par modèle, qu'il le porte en `primary_misconception` ou dans un distracteur) — c'est la
+méthode déclarée d'`items.yaml:2294-2301`.*
+
+| modèle | avant | après | items ajoutés | marge au plancher (3) |
+|---|---|---|---|---|
+| **`angle-lu-depuis-l-axe`** *(neuf b)* | — | **4** | -35, -36, -37 *(primaires)*, -40 D | **1** |
+| **`multiplication-rotation-par-defaut`** *(neuf a)* | — | **3** | -39, -40, -41 *(primaires)* | **0 — déclarée** |
+| `transformation-centre-oublie` | 3 | **4** | -38 *(primaire)* | 1 |
+| `rotation-sens-inverse` | 3 | **6** | -37 D, -38 D, -40 C | 3 |
+| `homothetie-rapport-complexe` | 4 | **6** | -36 D, -38 C | 3 |
+| `similitude-module-argument-roles` | 3 | **5** | -39 C, -41 D | 2 |
+| `produit-quotient-argument-operation` | 3 | **4** | -35 C | 1 |
+| `produit-modules-additionnes` | 3 | **4** | -36 C | 1 |
+| `reel-positif-donne-rotation` | 3 | **4** | -39 D | 1 |
+| `argument-un-seul-signe` *(modèle de R1, recruté)* | 3 | **4** | -41 C | 1 |
+| `mult-par-i-non-rotation` | 3 | **3** | *(aucun — §8.1)* | 0 |
+| **`total_items`** | **34** | **41** | **+7** | — |
 
 **Aucun item n'est retiré.** *`items.yaml:2302-2324` porte **onze** modèles à exactement 3 ;
-tout retrait casserait un plancher, et cette livraison n'en fait aucun.*
+tout retrait casserait un plancher, et cette livraison n'en fait aucun. **Elle en sort trois
+de la marge nulle** (`similitude-module-argument-roles`, `reel-positif-donne-rotation`,
+`argument-un-seul-signe`) **et en crée un** (`multiplication-rotation-par-defaut`).*
 
 **Ce que ce paquet NE referme pas :**
-- **`mult-par-i-non-rotation` reste à 3 items, tous en R0** : la scène le vise à S1 mais
-  n'ajoute aucun item pour lui. **Reste dû.**
-- **`reel-positif-donne-rotation` reste à 3.** Idem.
-- **Aucun des quatre items neufs ne porte de champ `habilete`** : c'est
-  `DECISIONS-EN-ATTENTE` §3 / `REVIEW:107` (S5), et cela se tranche pour les 62 notions à la
-  fois. La conséquence est **déclarée** au §0.3 comme un non-verdict, pas maquillée.
-- **Les quatre items neufs sont des QCM.** `REVIEW:201-204` (D13) dit que la lacune
-  structurelle de cette notion est l'absence de rung en **réponse construite**. **Quatre QCM
-  de plus ne la referment pas**, et je ne prétends pas le contraire.
+- **`mult-par-i-non-rotation` reste à 3 items, tous en R0** — et **la scène ne le sert plus du
+  tout** depuis le correctif B1 (§8.1). *La première version prétendait le viser à S1 ;
+  c'était faux.* **Reste dû, et il est désormais moins couvert qu'on ne le croyait.**
+- **`multiplication-rotation-par-defaut` part à marge nulle**, comme
+  `angle-lu-depuis-l-axe` dans la version précédente. *Un modèle neuf à exactement trois items
+  n'est confidence-bearing qu'au plancher : le moindre retrait le casse.* **Déclaré.**
+- ⚠️ **Le paquet ajoute 0 % de niveau 3 contre une cible SM de 20 %** *(fidélité S7)*.
+  `bac-reference.md:127-128` : « *Mathématiques : plusieurs exercices, avec une **question de
+  synthèse terminale** portant la demande de niveau 3.* » **Les sept items neufs sont
+  d'application (directe ou non explicite) ; aucun ne demande une synthèse en situation
+  inhabituelle**, et par construction un QCM à quatre choix s'y prête mal. *La cible SM est
+  40 / 40 / **20***(`maths-sm.yaml:39-42`)*, et cette livraison sert les deux premiers tiers
+  seulement.* **C'est un manque déclaré, pas un verdict** — le champ `habilete` n'existant
+  sur aucun item, **le rapport reste incalculable avant comme après** (§0.3, non-verdict
+  ADR 0034). *Ce qui porterait le niveau 3 dans cette notion, c'est le sommet
+  `[[exercise:r-bac]]`, pas le banc.*
+- **Aucun des sept items neufs ne porte de champ `habilete`** : `DECISIONS-EN-ATTENTE` §3 /
+  `REVIEW:107` (S5), tranché pour les 62 notions à la fois.
+- **Les sept items neufs sont des QCM.** `REVIEW:201-204` (D13) dit que la lacune structurelle
+  de cette notion est l'absence de rung en **réponse construite**. **Sept QCM de plus ne la
+  referment pas**, et je ne prétends pas le contraire.
 
 ---
 
@@ -1401,11 +2002,21 @@ Chaînes **interdites dans le panneau ouvert**, mesurées par la porte (§11.3, 
    `lieu`, `médiatrice`, `cercle de diamètre`, `angle inscrit`, `Thalès`.
    *Le mot « **cercle** » seul est autorisé — la scène en dessine un, le cercle unité — mais
    `cercle de` suivi d'un nom de construction ne l'est pas. La porte cherche les syntagmes.*
-2. **Le mot « similitude » et ses dérivés.** `maths-sexp.yaml:258` le réserve à SM ;
-   `maths-sm.yaml:232` en exclut la forme indirecte ; la notion ne le définit nulle part et
-   `items.yaml:2067` l'emploie sans le définir (`REVIEW:104`). Interdits dans le panneau :
-   `similitude`, `similitudes`, `similaire` *(en position de transformation)*, `semblable`
-   *(idem)*. **La scène dit : rotation, homothétie, rapport, angle, centre.** *§13.2.*
+2. **Le mot « similitude » et ses dérivés — INTERDITS DANS LE PANNEAU, autorisés UNE fois
+   dans la PROSE.** `maths-sexp.yaml:258` le réserve à SM ; `maths-sm.yaml:232` en exclut la
+   forme indirecte ; `items.yaml:2067` l'emploie déjà sans le définir (`REVIEW:104`).
+   Interdits **dans le panneau** : `similitude`, `similitudes`, `similaire` *(en position de
+   transformation)*, `semblable` *(idem)*. **La scène dit : rotation, homothétie, rapport,
+   angle, centre.**
+   > **Décision retournée en vague 1 (fidélité S3), et la frontière n'est plus la même des
+   > deux côtés.** La première version interdisait le mot **partout**, prose comprise. C'était
+   > trop : le cadre SM le **nomme** comme savoir-faire (`maths-sm.yaml:229`), les dix
+   > entrées de banque sont SM, et un élève SM qui découvre le mot dans un énoncé d'examen est
+   > mal servi. **La prose l'emploie donc une fois, marquée de filière (§4.4) ; le panneau,
+   > jamais.** *Motif de l'asymétrie : la prose peut porter une marque de filière en clair ; un
+   > panneau servi aux deux filières, sans métadonnée `filiere` dans tout le corpus
+   > (`REVIEW:113-120`), ne le peut pas.* **L'essai rouge du §11.4 reste armé sur le panneau.**
+   *§13.2.*
 3. **Aucune similitude indirecte, aucun antidéplacement.** `maths-sm.yaml:232` :
    « *Pas de similitudes indirectes/antidéplacements approfondis (au-delà de z ↦ conjugué) ;
    pas de géométrie projective.* » Interdits : `indirecte`, `antidéplacement`,
@@ -1417,15 +2028,26 @@ Chaînes **interdites dans le panneau ouvert**, mesurées par la porte (§11.3, 
    `conjuguée par`. *La phrase « **composée d'une rotation et d'une homothétie de même
    centre** » est **autorisée** : c'est la phrase de la leçon (`lesson.md:279`), et elle
    décrit **une** transformation, pas l'enchaînement de deux.*
-5. **Aucune racine n-ième, aucune équation $z^n = a$.** Exclusion SExp explicite
-   (`maths-sexp.yaml:257`), et sans objet en R5. Interdits : `racine n-ième`, `racine
-   $n$-ième`, `racines de l'unité`, `z^n =`, `z^{n}`, `\rho e^{i\alpha}`, `2k\pi/n`,
-   `k = 0,1`, `polygone régulier`.
-6. **Aucune algèbre linéaire, aucune matrice.** *Le sous-domaine `structures_algebriques` est
-   un AUTRE sous-domaine (`maths-sm.yaml:235`), et `espaces_vectoriels` y porte
-   `lesson_slug: null` (`:258`) : il n'est enseigné nulle part.* Interdits : `matrice`,
-   `\begin{pmatrix}`, `\begin{bmatrix}`, `déterminant`, `\det`, `application linéaire`,
-   `endomorphisme`, `noyau`, `vecteur propre`, `base canonique`, `\mathbb{R}^2`.
+5. **Aucune racine n-ième, aucune équation $z^n = a$.** **`exclusions_transversales`**,
+   `maths-sexp.yaml:305` : « *Racines n-ièmes générales / résolution de zⁿ=a dans ℂ :
+   SPÉCIFIQUE SM. SExp : second degré à coefficients réels seulement.* » ; recoupé par la
+   `limite` du chapitre, `maths-sexp.yaml:257`. **Sans objet en R5**, et interdit quand même.
+   Interdits : `racine n-ième`, `racine $n$-ième`, `racines de l'unité`, `z^n =`, `z^{n}`,
+   `\rho e^{i\alpha}`, `2k\pi/n`, `k = 0,1`, `polygone régulier`.
+   *(Citation corrigée en vague 1, fidélité S1 : la première version ne citait que la
+   `limite` du chapitre et ignorait l'exclusion de niveau fichier, qu'elle déclarait
+   inexistante.)*
+6. **Aucune algèbre linéaire, aucune matrice.** **`exclusions_transversales`**,
+   `maths-sexp.yaml:302` : « *Structures algébriques (lois de composition, groupes, anneaux,
+   corps, **espaces vectoriels**) : SPÉCIFIQUE SM. Absent du cadre SExp.* » — et
+   `maths-sm.yaml:343` : « *Réduction d'endomorphismes (valeurs propres, diagonalisation) :
+   **Hors 2e Bac** ; les espaces vectoriels s'arrêtent aux bases/dimension/applications
+   linéaires.* » ; plus `maths-sexp.yaml:306` pour le **déterminant**. *Côté SM,
+   `structures_algebriques` est de surcroît un **autre** sous-domaine (`maths-sm.yaml:235`),
+   et `espaces_vectoriels` y porte `lesson_slug: null` (`:258`) : il n'est enseigné nulle
+   part.* Interdits : `matrice`, `\begin{pmatrix}`, `\begin{bmatrix}`, `déterminant`, `\det`,
+   `application linéaire`, `endomorphisme`, `noyau`, `vecteur propre`, `base canonique`,
+   `\mathbb{R}^2`.
 7. **Aucune trigonométrie au-delà de la table de R1.** Interdits : `linéaris`, `Euler`,
    `e^{i\theta}+e^{-i\theta}`, `angle moitié`, `\cos^2`, `\cos^3`, `\sin^2`, `\sin^3`,
    `\tan`, `arctan`, `formule d'addition` *(la leçon l'emploie à `:123` ; la SCÈNE ne
@@ -1434,10 +2056,16 @@ Chaînes **interdites dans le panneau ouvert**, mesurées par la porte (§11.3, 
 8. **Aucun décimal dans une lecture, aucun degré.** *C'est la frontière de PRÉCISION du §5.4,
    et elle est spécifique à cette scène.* La porte relève, **dans les lectures uniquement**,
    toute occurrence de `,` ou `.` entre deux chiffres, et toute occurrence de `°`, `degré`,
-   `deg`. *Les **retours de pari** ont le droit d'écrire « environ $115°$ » et « environ
-   $1{,}57$ » : ce sont des arguments d'ordre de grandeur adressés à un modèle faux, et ils
-   sont **déclarés ici** pour que la porte les cherche au bon endroit — dans les lectures, pas
-   dans le panneau entier.*
+   `deg`. **Et pendant le balayage de S3, les lectures chiffrées n'affichent que « — »**
+   (§6.1) — *une lecture vide n'est pas un décimal, et c'est précisément pour cela que le
+   continuum est admis.*
+   *Les **retours de pari** ont le droit d'écrire « environ $2{,}83$ » et « environ $115°$ » :
+   ce sont des arguments d'ordre de grandeur adressés à un modèle faux, et ils sont **déclarés
+   ici** pour que la porte les cherche au bon endroit — dans les lectures, pas dans le panneau
+   entier. **Relu après la vague 1 : la seule occurrence de « $115°$ » disparaît avec le choix
+   `angle-deux`, supprimé de S1 (§7.1) ; les décimales qui subsistent dans les retours sont
+   $2{,}83$, $3{,}41$ et $2{,}22$ (S2) et $1{,}57$ (S4), toutes en position « ordre de
+   grandeur ».***
 9. **Aucune équation du second degré dans $\mathbb{C}$.** C'est la leçon sœur
    (`bank.yaml:77-95`). Interdits : `discriminant`, `\Delta =`, `a z^2`, `az^2`,
    `second degré`, `Viète`, `somme et produit des racines`, `\delta^2`.
@@ -1460,12 +2088,18 @@ Un plan calculé est plus crédible qu'une figure dessinée, donc plus dangereux
 affiche des **valeurs exactes** — l'affichage qui ressemble le plus à une preuve.
 
 1. **La scène ne démontre rien : elle exhibe.** Elle montre la règle sur **70 états**
-   ($7 \times 5$ en mode direct, $\times 2$ centres, plus $3 \times 5$ en mode `enonce`) —
+   ($7 \times 5$ coefficients-points $\times\, 2$ centres), plus **15** en mode `enonce` —
    c'est un échantillon, pas une preuve. **La démonstration est la prose de R5, qui vient
-   juste après** (`lesson.md:273-293`), et le paragraphe d'annonce du §4.1 doit le dire.
+   juste après** (`lesson.md:273-293`).
    *C'est le seul endroit du dépôt où cette réserve est structurelle : en physique, une scène
    qui vérifie une loi sur dix réglages est convaincante ; en mathématiques, dix cas ne
    prouvent rien, et un élève de SM le sait.*
+   ⚠️ **Cette clause ne vit PLUS seulement ici : elle est REMONTÉE dans le paragraphe
+   d'annonce du §4.1, adressée à l'élève, avant le marqueur** *(correctif de vague 1,
+   pédagogie M3)*. *Motif : une réserve qui n'existe que dans un champ `fit_caveat` de
+   descripteur n'est lue par personne — et celle-ci est la seule qui change ce que l'élève
+   croit avoir obtenu en sortant de la scène. Elle reste ici **aussi**, pour le critique et
+   pour la porte.*
 2. **Les nombres sont exacts ; le DESSIN est arrondi au pixel.** Le point
    $(\sqrt3-1) + (\sqrt3+1)i$ est affiché exactement et **tracé** à $0{,}73$ et $2{,}73$
    unités, donc à $\pm\,0{,}5$ px. Les lectures affirment des valeurs exactes ; le dessin
@@ -1486,6 +2120,23 @@ affiche des **valeurs exactes** — l'affichage qui ressemble le plus à une pre
    par la prose commandée au §4.4, point 5**, et **n'est pas un cran de la scène** : un mode
    sans point fixe ferait afficher « — » à trois lectures sur neuf, et enseignerait un trou.
    *§13.9.*
+8. **Le cran `les-deux` est de profondeur SM** (`maths-sexp.yaml:258` : « *SExp reste à
+   translation/homothétie/rotation via $z'=az+b$* ») **et c'est l'état de S5.** Les deux
+   autres crans — `rotation-A` ($\vert a\vert = 1$) et `homothetie-A` ($a$ réel positif) —
+   **couvrent seuls le périmètre SExp**. *Décision déclarée au §5.2 D, pas un oubli ; §13.11
+   dit comment la défaire.* **Et toute la preuve d'examen de ce document est SM**
+   (`bank.yaml:22`, dix entrées sur dix) : ce que la scène « prépare » pour un élève SExp est
+   **déduit du cadre, jamais mesuré sur des annales**.
+9. **La scène ne prépare PAS la route inverse la plus fréquente du bac** *(sous-couverture
+   relevée en vague 1)*. Elle enseigne à trouver le centre **à partir d'une formule**
+   ($\omega = \dfrac{b}{1-a}$). Or deux entrées de banque sur dix demandent l'autre route :
+   **le centre d'une rotation d'angle donné qui envoie un point sur un autre**,
+   $\omega = \dfrac{z' - e^{i\theta}z}{1 - e^{i\theta}}$ — `bank.yaml:475` (2020 N, où elle
+   est « *résolue en $p$ une fois pour toutes* ») et `bank.yaml:1176` (2021 N, qui la pose en
+   toutes lettres et renvoie explicitement au sujet 2020). **Aucune étape ne la fait faire, et
+   aucun des sept items neufs ne la demande.** *C'est le même geste algébrique — un point fixe
+   qu'on résout — appliqué à une donnée différente. **Reste dû**, et c'est de la prose et des
+   items, pas de la scène.*
 
 ---
 
@@ -1517,11 +2168,11 @@ les seules constantes de cette spec.
 |---|---|---|---|
 | N1 | $z' = c\,z$ aux **35** couples, centre $O$ | la table **A** du §5.3 | **égalité de chaîne** sur l'étiquette de $M'$, **plus** égalité numérique à $10^{-9}$ |
 | N2 | $\vert c\vert$ aux 7 crans | $2$ · $\tfrac12$ · $1$ · $2$ · $\sqrt2$ · $2$ · $2$ | égalité de chaîne avec `module-c` |
-| N3 | $\Omega M$, $\Omega M'$ et leur quotient aux 35 couples × 2 centres | tables **B** et **D** | égalité de chaîne avec `distances` et `rapport` ; **« — » quand $M = \Omega$** |
+| N3 | $\Omega M$, $\Omega M'$ et leur quotient **aux 70 états** ($35 \times 2$ centres), **recalculés par la seconde implémentation de la porte pour CHACUN** — les tables **B** et **D** de la spec ne sont qu'un **contrôle ponctuel**, jamais la source | tables **B** et **D** en contrôle | égalité de chaîne avec `distances` et `rapport` ; **« — » quand $M = \Omega$**. *(Reformulé en vague 1, fidélité S9 : la première rédaction laissait croire que la porte comparait à une table de cinq lignes.)* |
 | N4 | $\arg(c)$ aux 7 crans | $0$ · $0$ · $\tfrac{\pi}{2}$ · $\pi$ · $\tfrac{\pi}{4}$ · $\tfrac{\pi}{2}$ · $\tfrac{\pi}{6}$ | égalité de chaîne, **fractions de $\pi$**, dans $]-\pi;\pi]$ |
 | **N5** | **LA LIGNE DU MODÈLE NEUF** : `angle` et `argument-image` sont **deux lectures distinctes**, aux 35 couples — **égales exactement aux points $z \in \{2 ; 4\}$ (axe réel) et différentes aux trois autres** | table **C** du §5.3 | **égalité de chaîne dans les DEUX sens** ; *une scène où `angle` = `argument-image` partout, ou jamais, doit rougir* |
-| N6 | l'**invariance de l'écart** : à $c$ fixé, `angle` est **identique au caractère près** aux 5 points ; à $\vert c\vert$ fixé, `rapport` est identique aux 5 points | $\tfrac{\pi}{6}$ ; $2$ | **égalité de chaîne exacte**, aux 7 coefficients |
-| N7 | en mode `enonce` : $z'$, $\omega$, $\vert a\vert$, $\arg(a)$ et $\dfrac{z'-\omega}{z-\omega}$ aux **3 × 5** états — **$z'$ recalculé depuis $a$ ET $b$**, $\omega$ recalculé **deux fois** (par $\dfrac{b}{1-a}$ et par la résolution de $\omega = a\omega+b$) | table **E** du §5.3 et §5.2 D | égalité de chaîne ; **$\dfrac{z'-\omega}{z-\omega}$ identique au caractère près aux 4 points non fixes**, aux 3 transformations |
+| N6 | l'**invariance de l'écart** : à $c$ fixé, `angle` est **identique au caractère près** aux 5 points ; à $\vert c\vert$ fixé, `rapport` est identique aux 5 points. **ET la RÉDUCTION mod $2\pi$** : à $c = -2$, l'écart brut vaut $-\pi$ aux points $1+i$ et $2i$, et la scène doit afficher $\boldsymbol{+\pi}$ | $\tfrac{\pi}{6}$ ; $2$ ; **$+\pi$ jamais $-\pi$** | **égalité de chaîne exacte**, aux 7 coefficients et aux 35 couples ; *toute lecture `angle` hors de $]-\pi;\pi]$ fait rougir* (§5.4, fidélité S6) |
+| N7 | en mode `enonce` : $z'$, $\omega$, $\vert a\vert$, $\arg(a)$ et $\dfrac{z'-\omega}{z-\omega}$ aux **15** états ($3 \times 5$), **tous recalculés par la seconde implémentation** — **$z'$ depuis $a$ ET $b$, jamais depuis $a$ et $\omega$** (§5.3 E), et $\omega$ recalculé **deux fois** (par $\dfrac{b}{1-a}$ **et** par la résolution de $\omega = a\omega+b$) | table **E** du §5.3 et §5.2 D **en contrôle ponctuel** | égalité de chaîne ; **$\dfrac{z'-\omega}{z-\omega}$ identique au caractère près aux 4 points non fixes**, aux 3 transformations |
 | N8 | le **point fixe** : `point-fixe` vaut $z_\Omega$, et l'image du point fixe est **le point fixe lui-même** | $2$ (S4, `rotation-A`, `homothetie-A`) · $1+i$ (`les-deux`) | égalité de chaîne, **et** $z' = z$ au caractère près |
 | N9 | les **crans** : `coefficient` en a exactement 7, `point` 5, `centre` 2, `enonce` 4 ; **aucune valeur intermédiaire, aucune borne continue** | — | exact |
 | N10 | **aucun décimal, aucun degré** dans les neuf lectures, aux 70 états | — | §9.8 ; *relevé sur les lectures seules, pas sur le panneau* |
@@ -1534,7 +2185,8 @@ champ magnétique). Lancée à $1\,280$ **et** 390 px au minimum.*
 
 | famille | le sens qui doit passer | le sens qui doit rougir |
 |---|---|---|
-| **`isotropie`** | le facteur px/unité mesuré sur l'axe des réels et sur l'axe des imaginaires est **identique à $\le 0{,}5\%$**, aux deux largeurs ; et le **cercle unité** mesure le même nombre de pixels horizontalement et verticalement à $\le 1$ px | un repère où `x_length/x_span ≠ y_length/y_span` doit rougir **seul** — *c'est le défaut RÉEL du 2026-08-14 dans cette notion (`SCENE-CONTRACT.md:186-203`, 36,9 % d'écart), et la porte existe pour qu'il ne revienne pas* |
+| **`isotropie`** | **deux volets.** (a) le facteur px/unité mesuré sur l'axe des réels et sur l'axe des imaginaires est **identique à $\le 0{,}5\%$**, aux deux largeurs, et le **cercle unité** mesure le même nombre de pixels horizontalement et verticalement à $\le 1$ px ; (b) **le cadre est CARRÉ** — demi-largeur $=$ demi-hauteur de la fenêtre de données, et le plateau lui-même est carré au pixel près | un repère où `x_length/x_span ≠ y_length/y_span` doit rougir **seul** — *c'est le défaut RÉEL du 2026-08-14 dans cette notion (`SCENE-CONTRACT.md:186-203`, 36,9 % d'écart)* ; **et une fenêtre paysage doit rougir sur le volet (b) seul** — *c'est le défaut de la première version de cette spec (§5.1)* |
+| **`aucune-lecture-chiffree-pendant-le-balayage`** | **pendant** le balayage de S3 : les neuf lectures affichent **« — »** et **aucun chiffre** n'apparaît dans le panneau qui n'y était pas avant ; les deux segments et l'arc, eux, **bougent** (mesuré aux pixels sur trois positions du balayage) | **après** le relâchement : les lectures redeviennent **exactement** celles d'avant (même chaîne, au caractère près) et l'état n'a pas changé. **Un balayage qui afficherait un décimal doit rougir ; un balayage inerte aux pixels aussi** ; *et le balayage présent à une autre étape que S3, ou avant la révélation de S3, fait rougir `fuite-inter-etapes`* |
 | `point-a-sa-place` | $M$ et $M'$ sont dessinés **à la position que leur affixe demande**, à $\le 2$ px, aux 70 états | un $M'$ dessiné depuis un autre nombre que celui affiché doit rougir ; une position **plafonnée** au bord du cadre aussi |
 | `longueurs-au-rapport` | le rapport des **longueurs en pixels** des segments $\Omega M'$ et $\Omega M$ égale la lecture `rapport`, à $\le 2\%$, aux 70 états | un segment dessiné à une autre échelle que l'autre doit rougir **seule** |
 | **`arc-entre-les-bonnes-directions`** | l'arc tracé **part de la direction $\Omega M$ et arrive à la direction $\Omega M'$** — mesuré aux pixels, en lisant les deux extrémités de l'arc et en les comparant aux deux directions ; son **sens** suit le signe de `angle` | **un arc tracé depuis l'AXE RÉEL doit rougir** *(c'est la misconception `angle-lu-depuis-l-axe` posée dans le code, et c'est le sabotage le plus important de la campagne)* ; un arc tracé dans le sens inverse aussi |
@@ -1544,7 +2196,7 @@ champ magnétique). Lancée à $1\,280$ **et** 390 px au minimum.*
 | `palette` | tout pixel teinté du canvas a la **teinte** d'un jeton `--figure-*` lu à l'exécution ; relecture au changement de thème | une couleur posée en dur doit rougir **seule** |
 | `quadrillage-opaque` | les **nœuds** du quadrillage ont la même valeur que ses **lignes**, à $\le 2$ niveaux | un quadrillage peint en transparence trait par trait doit rougir *(règle du banc de modulation)* |
 | `formule-graduee` | **la table C du §7.6, étape par étape** : le panneau ne contient aucune des chaînes interdites de l'étape courante (consigne, retours, lectures et région vivante confondues), et contient bien celles que l'étape autorise et emploie | écrire « rapport » dans un retour de S1, ou « centre » dans un retour de S3, doit rougir **seule** |
-| `fuite-inter-etapes` | la porte **réécrit elle-même** la table A du §7.6 contre le descripteur, et énumère les états ATTEIGNABLES avant chaque étape : `coefficient` ouvert à S1, S3, S5 ; `point` à S2, S3, S4, S5 ; `centre` **qu'à S4 et S5** ; `enonce` **qu'à S5** ; et `angle`/`argument-c`/`argument-image` **absents du DOM avant S3**, `point-fixe`/`ecriture` **avant S4**, `rapport-inverse` **avant S5** | ouvrir `centre` dès S3, ou faire exister `rapport-inverse` à S4, doit rougir |
+| `fuite-inter-etapes` | la porte **réécrit elle-même** la table A du §7.6 contre le descripteur, et énumère les états ATTEIGNABLES avant chaque étape : `coefficient` ouvert à S1, S3, S5 ; `point` à S2, S3, S4, S5 ; `centre` **qu'à S4 et S5** ; `enonce` **qu'à S5** ; **`balayage` QU'À S3, et seulement après la révélation** ; et `angle`/`argument-c`/`argument-image` **absents du DOM avant S3**, `point-fixe`/`ecriture` **avant S4**, `rapport-inverse` **avant S5** | ouvrir `centre` dès S3, faire exister `rapport-inverse` à S4, ou ouvrir `balayage` à S2 ou avant la révélation de S3, doit rougir |
 | `pas-de-3d` | `window.__THREE__` **indéfini panneau OUVERT** ; aucun contexte `webgl` créé ; le canvas est en `2d` | un `import("three")` dans le module de la scène doit rougir |
 
 ### 11.3 Les autres familles
@@ -1583,6 +2235,10 @@ Un rouge ne prouve rien sans le vert qui l'a précédé, **dans ce dossier, avec
    dans l'autre sens** *(une porte qui n'exigerait que « les deux diffèrent » resterait
    verte)* ;
 8. inverser le signe de `angle` → **N4 / N5** et `arc-entre-les-bonnes-directions` ;
+8 bis. **supprimer la réduction mod $2\pi$** (afficher l'écart brut) → **N6 seule**, et
+    **seulement à $c = -2$** : l'écart y tombe à $-\pi$ au lieu de $+\pi$, aux points $1+i$ et
+    $2i$ (§5.4, fidélité S6). *Un sabotage qui ne rougirait à aucun autre coefficient est le
+    signe que la sonde est au bon endroit ;*
 9. arrondir une lecture à deux décimales ($1{,}41$ pour $\sqrt2$, $0{,}52$ pour
    $\dfrac{\pi}{6}$) → **N10 seule** ;
 10. afficher un angle en degrés → **N10 seule** ;
@@ -1607,6 +2263,18 @@ Un rouge ne prouve rien sans le vert qui l'a précédé, **dans ce dossier, avec
     un retour de S3, ou « $z' = az+b$ » dans un retour de S4 → `formule-graduee` **seule**,
     **une mesure par étape** ;
 22. ajouter un cran $c = 1$ → **N9 seule** ;
+22 bis. **rendre la fenêtre PAYSAGE** ($18 \times 10$, la première version de cette spec) →
+    **`isotropie` volet (b) seule**, *et `point-a-sa-place` sur les trois états que le critique
+    a trouvés : centre $O$ / $c=2i$ / $z=4$ ; centre $A$ / $c=-2$ ou $c=2i$ / avec l'ancien
+    cran $-2+2i$. **Ce sabotage est le seul de la campagne à reproduire un défaut RÉEL de la
+    spec, et il doit être joué avec l'ancien jeu de crans*** ;
+22 ter. **faire afficher un chiffre pendant le balayage** (n'importe lequel des neuf) →
+    **`aucune-lecture-chiffree-pendant-le-balayage` seule** ;
+22 quater. **rendre le balayage inerte** (le contrôle existe, rien ne bouge aux pixels) →
+    **la même famille, dans l'autre sens** ; *un contrôle qui ne fait rien enseigne qu'il est
+    décoratif (leçon du bouton de tension au banc d'électrolyse)* ;
+22 quinquies. **ouvrir le balayage à S2, ou avant la révélation de S3** →
+    **`fuite-inter-etapes` seule** ;
 23. `import("three")` dans le module de la scène → `pas-de-3d` ;
 24. **une forme interdite du §9 à la fois, insérée dans le panneau — UNE MESURE PAR FORME**,
     jamais une seule pour la liste entière (ADR 0036) : `w =`, `z_C`, `isocèle`,
@@ -1635,11 +2303,11 @@ héritée, §13.12) :
 "plan-complexe-transformation": {
   "temps": false,
   "dimension": "2d",
-  "controles": ["coefficient", "point", "centre", "enonce"],
+  "controles": ["coefficient", "point", "centre", "enonce", "balayage"],
   "etat": ["c", "z", "centre", "enonce", "reference"],
   "valeurs": {
     "c": ["2", "0.5", "i", "-2", "1+i", "2i", "sqrt3+i"],
-    "z": ["1+i", "2i", "2", "4", "-2+2i"],
+    "z": ["1+i", "2i", "2", "4", "1-i"],
     "centre": ["O", "A"],
     "enonce": ["coefficient", "rotation-A", "homothetie-A", "les-deux"],
     "reference": ["aucune", "depart"]
@@ -1653,9 +2321,13 @@ héritée, §13.12) :
 
 > **Pas de clé `bornes`, et c'est une première.** Les treize scènes livrées en ont toutes une
 > (sauf `banc-de-modulation` et `banc-electrolyse`, entièrement en crans). Ici **tout** est en
-> crans, pour la raison du §5.4. *`validate-content` doit accepter une scène sans `bornes` —
-> à vérifier avant construction (§15.4) ; si elle ne l'accepte pas, c'est le validateur qu'il
-> faut corriger, pas la scène qu'il faut doter d'un curseur.*
+> crans **sauf le balayage**, qui n'a pas de bornes déclarables au sens du registre : il
+> parcourt un **cercle**, il ne pose aucun état, et il n'écrit aucune clé d'`etat`
+> (§6.1). *Conséquence : `balayage` est un contrôle qu'aucune clé d'état ne suit — c'est la
+> **deuxième** particularité à vérifier contre `validate-content`, qui exige aujourd'hui
+> qu'un contrôle ouvert par une étape corresponde à quelque chose de réglable (§15.4). Si le
+> validateur le refuse, **c'est lui qu'il faut étendre** : un contrôle d'exploration muet est
+> une pièce nouvelle, pas une irrégularité.*
 
 **Descripteur** (`content/maths/nombres-complexes-2/media/plan-complexe-transformation.json`),
 mêmes clés qu'au banc de diffraction : `slug`, `tool: "scene2d"`, `type: "manipulable"`,
@@ -1665,10 +2337,11 @@ choix[]}`, `suite`, `controles[]`, `lectures[]`, `etat{}`, **pas d'`etat_revele`
 `fallback_note`, `pedagogy_wiring{why_manipulable, predict_then_reveal, misconceptions[]}`,
 `spec_ref`, `adr_ref`.
 
-**`pedagogy_wiring.misconceptions` (dix ids)** — *`validate-content` exige qu'un pari de scène
-nomme un modèle DÉCLARÉ (ADR 0041, addendum du manège) : **`angle-lu-depuis-l-axe` doit être
-déclaré dans `items.yaml` AVANT que la scène soit validée**, sans quoi la porte de validation
-échoue en dur.*
+**`pedagogy_wiring.misconceptions` (dix ids : les huit existants du §8.1 + les DEUX neufs)**
+— *`validate-content` exige qu'un pari de scène nomme un modèle DÉCLARÉ (ADR 0041, addendum du
+manège) : **`angle-lu-depuis-l-axe` ET `multiplication-rotation-par-defaut` doivent être
+déclarés dans `items.yaml` AVANT que la scène soit validée**, sans quoi la porte de validation
+échoue en dur. **`mult-par-i-non-rotation` n'y figure PAS** (§8.1).*
 
 **`fallback_note` à écrire :** sans JavaScript et à l'impression, le panneau disparaît. **La
 figure `rotation-homothetie`, plus bas dans le chapitre, couvre le cas $c = 1+i$, $z = 3$,
@@ -1678,8 +2351,10 @@ comme quotient, l'angle comme écart, et le centre comme point fixe. **Le coût 
 est écrit** ; §13.10 dit ce qu'il faudrait commander pour le payer.*
 
 **Ordre de construction :**
-1. **item-author** déclare `angle-lu-depuis-l-axe` dans `items.yaml` (§8.2) et écrit les
-   quatre items (§8.3). *Sans cela, rien d'autre ne valide.*
+1. **item-author** déclare **les DEUX modèles neufs** dans `items.yaml` (§8.2 a et b) et écrit
+   les **sept** items (§8.3). *Sans cela, rien d'autre ne valide.*
+1 bis. **content-author** écrit la **reprise de `cp-r5-ecriture`** (§4.7) — c'est un livrable
+   de cette spec, et il ne dépend d'aucun code.
 2. **frontend-builder** écrit `plan-complexe-modele.ts` (les formes exactes : un petit type
    « entier + entier·$i$ + entier·$\sqrt3$ », pas des flottants) et son test unitaire
    `test-plan-complexe.mjs` contre les tables du §5.3.
@@ -1699,33 +2374,59 @@ est écrit** ; §13.10 dit ce qu'il faudrait commander pour le payer.*
 
 1. **LE CADRE MATHS N'EST PAS AUTORITATIF, et toute cette spec en dépend.** (§0.3, §1.)
    `maths-sm.yaml:12-17` et `maths-sexp.yaml:10-16` : « PROPOSITION — NON AUTORITATIVE », les
-   trois portes de RULES §5 non passées, le PDF officiel scanné sans couche texte, **aucune
-   clé `exclusions`** dans les deux fichiers. **Défaut : on construit quand même, et on le
-   déclare** — les `limites` citées au §1 sont toutes `derived`, donc reconstruites.
+   trois portes de RULES §5 non passées, le PDF officiel scanné sans couche texte.
+   **Défaut : on construit quand même, et on le déclare** — les `limites` **et les
+   `exclusions_transversales`** citées au §1 sont toutes `source: derived — À VALIDER`.
    *Pour défaire :* faire passer les trois portes **avant** de construire. **Coût du défaut :
-   si une `limite` dérivée est fausse, le §9 interdit des formes que le programme autorise
-   (perte pédagogique silencieuse) ou autorise des formes qu'il interdit (brèche de cadre).
+   si une borne dérivée est fausse, le §9 interdit des formes que le programme autorise (perte
+   pédagogique silencieuse) ou autorise des formes qu'il interdit (brèche de cadre).**
    **C'est la décision la plus lourde de ce document, et elle appartient à l'humain.**
-2. **Le mot « similitude » est-il interdit dans le panneau ?** (§9.2, §4.4.) **Défaut : OUI,
-   interdit** — `maths-sexp.yaml:258` le réserve à SM, la notion ne le définit nulle part, et
-   `items.yaml:2067` l'emploie déjà sans le définir (`REVIEW:104`). *Pour défaire :* le
-   définir d'abord en prose (une phrase dans la sous-section du §4.4), le déclarer SM-only, et
-   retirer la ligne 2 du §9 **plus** son essai rouge. **Coût du défaut : la scène nomme un
-   objet du programme SM par une périphrase (« rotation et homothétie de même centre ») là où
-   un sujet écrira « similitude directe ». Ce n'est pas rien.**
-3. **Une sixième étape sur la lecture de $w$ ?** (§0.2, §2.6, §9.1.) **Défaut : NON** — c'est
-   R6, et la scène est en R5 ; l'écart de phase est exactement ce que la vague 1 du banc
-   d'électrolyse a refusé. *Pour défaire :* **une SECONDE scène**, en tête de R6, sur le même
-   moteur et les mêmes pièces : trois points, le rapport $w$, et la table des configurations
-   — les misconceptions `lecture-w-module-argument` et `ensemble-points-locus-confondu` y
-   trouveraient enfin autre chose qu'un triangle gelé. **C'est la suite naturelle de ce
-   document, et je la recommande** — mais pas dans la même scène.
-4. **Le point $M$ doit-il être librement déplaçable ?** (§2.6, §5.2 B, §10.6.) **Défaut :
-   NON — cinq positions discrètes.** *Motif : avec un $z$ quelconque, aucune lecture n'est
-   exacte, et la scène afficherait « $0{,}52$ rad » là où le bac écrit $\dfrac{\pi}{6}$
-   (§5.4).* *Pour défaire :* accepter les décimales, lever le §9.8 et la ligne N10 de la
-   porte. **Je ne le recommande pas** : c'est précisément ce qui distingue une scène de maths
-   d'une scène de physique.
+   > ⚠️ **Corrigé en vague 1 (fidélité S1) : cette entrée affirmait « aucune clé `exclusions`
+   > dans les deux fichiers ». C'était faux** — `exclusions_transversales` existe au niveau du
+   > fichier (7 entrées SM, 8 SExp), et quatre mordent sur cette scène (§1). **Ce qui reste à
+   > router vers research-lead est plus étroit** : la **granularité** diffère de
+   > `pc-physique-chimie.yaml`, qui porte des `exclusions` **par sous-domaine** ; les fichiers
+   > maths n'en ont qu'au niveau fichier, et **aucune borne propre au sous-domaine
+   > `nombres_complexes`**.
+2. **Le mot « similitude » : interdit où ?** (§9.2, §4.4.) **Défaut RETOURNÉ en vague 1
+   (fidélité S3) : interdit dans le PANNEAU, autorisé UNE fois dans la PROSE, marqué SM.**
+   *Motifs : `maths-sm.yaml:229` le nomme comme savoir-faire, les dix entrées de banque sont
+   SM (`bank.yaml:22`), et `items.yaml:2067` l'emploie déjà sans l'avoir défini
+   (`REVIEW:104`) — la prose du §4.4 régularise cet emploi au passage.* *Pour défaire dans un
+   sens :* le réinterdire partout (c'était la version 1) — **coût : un élève SM rencontre le
+   mot pour la première fois dans un sujet d'examen.** *Pour défaire dans l'autre :* l'ouvrir
+   au panneau — **coût : un panneau servi aux deux filières écrit un mot que le cadre réserve
+   à l'une, sans qu'aucune métadonnée `filiere` n'existe dans le corpus pour l'en empêcher.**
+3. **Une sixième étape sur la lecture de $w$ ?** (§0.2, §2.6, §9.1.) **Défaut : NON dans
+   cette scène — et une SECONDE SCÈNE, PRÉVUE ENSUITE** *(passée de « recommandée » à
+   « prévue » en vague 1)*. C'est R6, et la scène est en R5 ; l'écart de phase est exactement
+   ce que la vague 1 du banc d'électrolyse a refusé.
+   **Le cahier des charges de la scène R6, déjà connu :** trois points et le rapport
+   $w = \dfrac{z_C-z_A}{z_B-z_A}$, sur le même moteur et les mêmes pièces ; les misconceptions
+   `lecture-w-module-argument` (3 items) et `ensemble-points-locus-confondu` (3 items) y
+   trouveraient enfin autre chose qu'un triangle gelé ; **elle porterait le savoir-faire
+   `bank.yaml:475` / `:1176`** — le centre d'une rotation reconstruit depuis un couple
+   point/image, $\omega = \dfrac{z' - e^{i\theta}z}{1-e^{i\theta}}$, que **cette** scène ne
+   prépare pas (§10.9) ; et elle est le **seul endroit sensé** pour trancher le modèle
+   candidat **`centre-lu-sur-b`** (§8.3, NBCOMPLEX2-38), dont la fréquence n'est aujourd'hui
+   mesurée par rien. *Elle refermerait aussi `REVIEW:132-137` (S8), le lieu « rapport
+   imaginaire pur ⟹ cercle de diamètre » enseigné pour la première fois dans un retour
+   d'item.*
+4. **Le point $M$ doit-il être librement déplaçable ?** (§2.6, §5.2 B, §6.1, §10.6.)
+   **Défaut RETOURNÉ en vague 1 (pédagogie I6) : l'HYBRIDE.** Trois options, et la raison de
+   chacune :
+
+   | option | ce que c'est | ce qu'on gagne | ce qu'on perd |
+   |---|---|---|---|
+   | **(a) discret pur** *(version 1)* | cinq positions, rien d'autre | toute lecture exacte, une porte simple | on ne voit jamais l'arc garder son ouverture **pendant** que les directions tournent — le fait même de S3 |
+   | **(b) HYBRIDE — DÉFAUT** | les cinq crans **plus** un balayage continu **muet** à S3, après la révélation, pendant lequel les neuf lectures affichent « — » | le geste continu **là où il dit quelque chose**, sans un seul décimal ; les crans exacts intacts | une famille de porte de plus, et un contrôle qui n'écrit aucune clé d'état (§12) |
+   | **(c) libre avec décimales** | $M$ traîné partout, lectures arrondies | le confort d'un GeoGebra | **la scène afficherait « $0{,}52$ rad » là où le bac écrit $\dfrac{\pi}{6}$** — elle enseignerait la mauvaise écriture |
+
+   *Pour défaire vers (a) :* retirer le contrôle `balayage`, sa famille de porte et ses trois
+   essais rouges (22 ter, quater, quinquies) ; **rien d'autre ne bouge** — c'est un ajout
+   strictement additif. *Pour défaire vers (c) :* lever le §9.8 et la ligne N10 de la porte.
+   **Je ne recommande toujours pas (c)** : c'est précisément ce qui distingue une scène de
+   maths d'une scène de physique.
 5. **La scène doit-elle ANIMER le point le long de son arc ?** (§2.6, §6.1.) **Défaut : NON**
    — `temps: false`, `course: false`, l'angle se lit. *Pour défaire :* ajouter
    `course: true` et `revele_apres_course: 1`, un facteur de ralenti déclaré, la famille
@@ -1739,11 +2440,13 @@ est écrit** ; §13.10 dit ce qu'il faudrait commander pour le payer.*
    leçon — « *pour $z=0$, aucune direction n'a de sens* ». **Coût : une ligne de rendu et une
    ligne de porte ; gain : un cas limite nommé.** *Réversible à tout moment.*
 7. **Faut-il écrire le `spec.md` manquant de la notion ?** (§8, `REVIEW:156-159`, D1.)
-   **Défaut : ce document NE l'est PAS.** Il revendique **neuf** modèles pour un rung et en
-   déclare un dixième ; **quatorze restent non revendiqués**. *Pour défaire :* une passe
-   pedagogy-architect sur la notion entière, avec assignation rung par rung — **c'est un
-   travail distinct, plus gros que cette scène**, et la REVIEW le route déjà. **Reste dû.**
-8. **Le modèle neuf doit-il être UN ou DEUX ?** (§8.2.) **Défaut : UN**, parce que les deux
+   **Défaut : ce document NE l'est PAS.** Il revendique **huit** modèles existants pour un
+   rung et en déclare **deux** neufs ; **quinze restent non revendiqués**. *Pour défaire :*
+   une passe pedagogy-architect sur la notion entière, avec assignation rung par rung —
+   **c'est un travail distinct, plus gros que cette scène**, et la REVIEW le route déjà.
+   **Reste dû.**
+8. **`angle-lu-depuis-l-axe` doit-il être UN modèle ou DEUX ?** (§8.2 b.) **Défaut : UN**,
+   parce que les deux
    formes (angle, longueur) contredisent **le même** principe et se corrigent par **le même**
    geste. *Pour défaire :* scinder en `angle-lu-depuis-l-axe` (items -35, -37) et
    `longueur-lue-depuis-l-origine` (item -36) — **et alors le second tombe à 1 item, donc
@@ -1764,19 +2467,53 @@ est écrit** ; §13.10 dit ce qu'il faudrait commander pour le payer.*
     marqué), posée juste après le marqueur. **Coût : un SVG + son `.stages.json`, dans une
     notion qui en porte déjà sept dont une orpheline.** *Et cela réglerait au passage l'orpheline
     `rotation-complexe` (`REVIEW:139-141`, S9), si on la remplace plutôt que d'en ajouter une.*
-11. **La scène est-elle servie aux élèves SExp ?** (§0.3, `REVIEW:113-120`, S6.) **Défaut :
-    OUI, et sans métadonnée** — comme le reste de la notion, qui ne déclare aucune `filiere`.
-    *Le contenu de la scène est dans les deux cadres* (`maths-sexp.yaml:250` écrit
-    `z' = az + b`), *contrairement à R4 qui est une exclusion SExp.* *Pour défaire :* le
-    scoping filière est une décision de schéma corpus-wide, escaladée par la REVIEW au
-    propriétaire et à research-lead. **Cette scène ne l'ouvre pas — mais elle est, par
-    construction, du bon côté de la frontière.**
+11. **La scène est-elle servie aux élèves SExp — et S5 est-elle de profondeur SM ?** (§0.3,
+    §5.2 D, §10.8, `REVIEW:113-120`, S6 ; fidélité S2.) **Défaut : OUI servie, et OUI, l'état
+    de S5 (`les-deux`) est de profondeur SM — déclaré, pas caché.**
+    *Le cœur de la scène est dans les deux cadres* (`maths-sexp.yaml:250` écrit `z' = az + b`
+    en toutes lettres), *contrairement à R4 qui est une exclusion SExp.* **Mais le cas MIXTE**
+    ($\vert a\vert \neq 1$ **et** $\arg a \neq 0$) **est réservé à SM par
+    `maths-sexp.yaml:258`**, et c'est l'état de départ de S5. **`rotation-A` et
+    `homothetie-A` couvrent seuls le périmètre SExp**, et ils sont tous deux des crans réels
+    de la scène.
+    *Pour défaire, si le scoping filière est un jour tranché :* **S5 bascule sur
+    `rotation-A` pour SExp — c'est un changement d'`etat` dans le descripteur, rien de plus.**
+    *Coût de ce défaut-là : le pari de S5 perd la moitié de ses distracteurs, puisque avec
+    $\vert a\vert = 1$ le rapport ne se joue plus.* **Et rappel : les dix entrées de banque
+    sont SM (`bank.yaml:22`) — ce que la scène prépare pour un élève SExp est déduit du cadre,
+    jamais mesuré.**
 12. **Le dossier `web/src/lib/scene3d/` s'appelle toujours `scene3d` alors qu'il porte
     huit scènes PLANES sur quatorze.** **Défaut : on n'y touche pas** — c'est une question
     héritée, déjà posée par le banc d'électrolyse (son §13.14). *Pour défaire :* un renommage
     en `scenes/`, qui touche quatorze portes, quatorze panneaux et le registre. **Décision de
     propriétaire, à prendre indépendamment de cette scène, et de préférence entre deux
     livraisons.**
+13. **Le TITRE de R5 nomme les deux réponses de S1.** (§3, pédagogie I4.)
+    `lesson.md:269` : « *R5 — Interprétation géométrique : **rotation et homothétie*** ».
+    **Défaut : on ne le change pas, et on déclare le coût** — renommer un titre de rung
+    dépasse le périmètre d'une spec de scène. *Pour défaire :* content-author remplace le
+    titre par une **question**, par exemple « *Que fait, géométriquement, une multiplication
+    par un complexe fixe ?* », qui reprend l'accroche de R0 (`lesson.md:9`) et n'énonce
+    aucune des deux réponses. **Coût du défaut : un élève qui lit le titre sait qu'il y a une
+    homothétie quelque part — il ne sait toujours pas laquelle des deux moitiés agit, ni sur
+    quoi, et c'est cela que S1 fait choisir. Coût du correctif : une ligne, et une passe de
+    cohérence sur les renvois « chapitre 6 » du corpus.**
+14. **`cp-r5-ecriture` doit-il mesurer la forme développée $z' = az+b$ ?** (§4.7, §7.4,
+    pédagogie I2/I7.) **Défaut : NON pour le point d'arrêt, OUI pour la reprise et pour le
+    banc.** Le point d'arrêt garde ses quatre choix sur la forme **factorisée** ; une
+    **reprise** (30 à 45 mots) pose la question de la forme développée sans l'évaluer ;
+    **NBCOMPLEX2-38 est le seul objet qui la MESURE**, et il est au banc de fin. *Pour
+    défaire :* un cinquième choix au point d'arrêt, ou un `cp-r5-forme-developpee` séparé —
+    **décision d'item, que je ne prends pas ici.** **Coût du défaut, mesuré au §7.4 : un élève
+    qui réussit `cp-r5-ecriture` n'a rien démontré sur $z'=az+b$, et rien dans le rung ne le
+    lui dit.**
+15. **L'arbitrage « second degré dans $\mathbb{C}$ » est-il clos ?** (§0.3, fidélité S10.)
+    **Défaut : NON — c'est un SIGNAL ouvert, pas un fait acquis, et il sort du périmètre de
+    cette scène.** Les deux cadres assignent l'outil au chapitre **de cette leçon**
+    (`maths-sm.yaml:221`, `:224` ; `maths-sexp.yaml:247`, `:249`) ; l'arbitrage propriétaire
+    consigné dans `bank.yaml:77-95` l'a placé dans la **leçon sœur**. **La divergence
+    cadre ↔ corpus subsiste**, et elle se route à `research-lead`. *Cette spec n'y touche
+    pas ; elle refuse seulement de l'écrire comme réglée, ce que sa première version faisait.*
 
 ---
 
@@ -1784,17 +2521,35 @@ est écrit** ; §13.10 dit ce qu'il faudrait commander pour le payer.*
 
 La scène est **faite** quand, et seulement quand :
 
-1. `angle-lu-depuis-l-axe` est **déclaré** dans `items.yaml` et les quatre items du §8.3
-   existent, chaque distracteur portant un `misconception:` nommé.
+0. ⚠️ **RÈGLE ARMÉE EN VAGUE 1 (pédagogie B2), à vérifier AVANT tout le reste : la valeur de
+   CHAQUE choix de pari est recalculée depuis le modèle que son étiquette nomme.** Pour les
+   vingt choix de la scène (5 étapes × 4) **et** pour les vingt-huit choix des sept items
+   neufs, on refait le calcul que le texte du choix annonce, et on vérifie (a) qu'il donne
+   bien le nombre affiché, (b) qu'il **diffère de la bonne réponse**. *Motif : le choix
+   `argument-rapport` de S2 annonçait « on multiplie par l'argument de $c$ » et affichait un
+   nombre obtenu avec $\pi$ au lieu de $\dfrac{\pi}{2}$ — le distracteur ne pointait plus vers
+   son modèle. **Un distracteur dont la valeur ne se déduit pas de son propre modèle ne
+   diagnostique rien : il est du bruit qui ressemble à un diagnostic.*** *Et le sous-cas (b)
+   est le défaut de stem attrapé au §7.2 a.*
+1. **Les DEUX modèles neufs** sont **déclarés** dans `items.yaml` (§8.2 a et b) et les
+   **sept** items du §8.3 existent, chaque distracteur portant un `misconception:` nommé.
+   **Et `mult-par-i-non-rotation` n'apparaît NI dans `pedagogy_wiring`, NI dans un choix de la
+   scène** (§8.1).
+1 bis. La **reprise de `cp-r5-ecriture`** (§4.7) est écrite, et la phrase de cadrage avant le
+   marqueur aussi.
 2. Le test unitaire `test-plan-complexe.mjs` passe sur **les cinq tables du §5.3**, en formes
-   exactes **et** en flottants.
+   exactes **et** en flottants, **et sur les 70 + 15 états**, pas seulement sur les lignes
+   tabulées.
 3. `validate-content` passe : scène enregistrée, contrôles connus, **tout contrôle ouvert par
    au moins une étape**, aucun `revele_apres_h`, aucun `etat_revele` (déclaré), chaque pari
    nommant un modèle déclaré.
 4. La porte `scene-plan-complexe.mjs` sort **VERT** à $1\,280$ **et** à 390 px, **lancée trois
    fois** (une porte instable est pire qu'une porte absente).
-5. `--essai-rouge` : **les 24 sabotages du §11.4 font crier la famille annoncée, et elle
-   seule**. Un sabotage qui n'atteint pas la porte sort **AMBIGU**, jamais vert.
+5. `--essai-rouge` : **les 29 sabotages du §11.4 font crier la famille annoncée, et elle
+   seule** (24 + les cinq ajoutés en vague 1 : 8 bis, 22 bis à 22 quinquies). Un sabotage qui
+   n'atteint pas la porte sort **AMBIGU**, jamais vert. **Le n° 22 bis — la fenêtre paysage —
+   se rejoue avec l'ANCIEN jeu de crans**, sans quoi il ne reproduit pas le défaut qu'il
+   garde.
 6. La prose du §4 est écrite, **et l'exemple travaillé hors de l'axe réel (§4.3) est en
    place** — sans lui, la scène enseigne quelque chose que le chapitre contredit trois
    paragraphes plus bas.
@@ -1810,12 +2565,14 @@ La scène est **faite** quand, et seulement quand :
 
 1. **Je n'ai pas exécuté le produit.** Toutes les positions de pixels, les budgets
    d'étiquettes et les facteurs px/unité de cette spec sont **calculés**, pas mesurés. Les
-   nombres de $21{,}7$ px/unité à 390 px et de $64$ px/unité à $1\,280$ px supposent une
-   largeur de plateau que je n'ai pas relevée sur le rendu.
+   nombres de $21{,}7$ px/unité à 390 px et de $31$ px/unité à $1\,280$ px supposent un
+   **plafond de hauteur de plateau de 560 px** que j'ai **choisi**, pas relevé sur le rendu
+   (§5.1).
 2. **Je n'ai pas lu le code des panneaux existants.** `disposer`, `useSceneRendu`, `usePari`,
    `Plateau`, `jetons-figure.ts` sont nommés d'après l'ADR 0041 et les specs sœurs ; je n'ai
-   vérifié ni leurs signatures, ni qu'un plateau **carré-ish** (18 × 10 unités) s'y insère
-   sans retouche. **À vérifier par frontend-builder avant de commencer.**
+   vérifié ni leurs signatures, ni qu'un plateau **CARRÉ** s'y insère sans retouche — **et
+   c'est plus contraignant qu'un plateau paysage**, puisque les huit scènes planes livrées
+   sont toutes en format large. **À vérifier par frontend-builder avant de commencer.**
 3. **`etat_revele` absent aux cinq étapes : est-ce accepté ?** Le banc de diffraction, le
    tremplin et le banc de modulation l'emploient ; la sphère ne l'a pas. Je **déclare** que
    cette scène n'en a pas — la révélation ne change aucun réglage, elle **ajoute** du dessin
@@ -1837,3 +2594,34 @@ La scène est **faite** quand, et seulement quand :
    ne bouge pas, **sur la base de `grep` et non d'une exécution des deux instruments.**
 8. **Le cadre est une proposition non validée** (§13.1). C'est écrit trois fois dans ce
    document parce que c'est la chose qu'il ne faut pas oublier.
+
+*Ajouts de la vague 1 — ce que la révision a appris sur sa propre honnêteté :*
+
+9. ⚠️ **J'ai cité une commande que je n'avais pas lancée, et elle disait le contraire du
+   vrai.** La version 1 du §1 écrivait « *`grep -n "exclusions" docs/cadre/curriculum/maths-*.yaml`
+   ⇒ **0*** » pour conclure que les fichiers maths n'ont pas d'exclusions. **La chaîne
+   cherchée est contenue dans `exclusions_transversales`** : si la commande avait tourné, elle
+   aurait trouvé. **Deux fautes en une** — chercher une chose sous **une seule de ses formes**
+   (ADR 0036), et **attribuer à un instrument un résultat qu'on n'a pas mesuré** (ADR 0040 :
+   *« vérifier le BANC avant le produit »*). *Corrigé au §1 et au §13.1. **Toutes les autres
+   commandes citées dans ce document ont été relancées pendant la révision** ; celles du §0.1
+   sont des `grep` et des `ls` dont j'ai relu la sortie.*
+10. **La réduction mod $2\pi$ n'est exercée qu'à la BORNE.** J'ai cherché sur les 70 états un
+    écart brut strictement hors de $[-\pi;\pi]$ : **je n'en ai trouvé aucun**. Les deux seuls
+    cas sont $-\pi$ exactement ($c=-2$ sur $1+i$ et sur $2i$). *La règle du §5.4 est donc
+    juste et sa porte utile, mais elle ne garde qu'un cas limite — **pas** un cas général, et
+    je ne veux pas laisser croire le contraire.*
+11. **Je n'ai pas revérifié les 70 états un par un après le changement de cran.** J'ai
+    recalculé **les bornes** (par $\vert c\vert_{\max} \times \vert z\vert_{\max}$ et par
+    $2 + \vert c\vert_{\max}\vert z-2\vert_{\max}$) et **les cases extrêmes**, pas les 70
+    images. *C'est ce raisonnement-là qui avait échoué la première fois, parce que je l'avais
+    appliqué à un cadre rectangulaire ; il est valide sur un cadre carré, mais **c'est le test
+    unitaire du §14.2 qui doit le prouver, pas ce document**.*
+12. **Le balayage de S3 est une pièce NEUVE du dépôt** : un contrôle qui n'écrit aucune clé
+    d'état et n'affiche aucun nombre. Aucune des treize scènes livrées n'en a. *Je n'ai
+    vérifié ni que `validate-content` l'accepte, ni que `usePari`/`Plateau` savent ouvrir un
+    contrôle après une révélation sans le compter comme un réglage d'étape (§12, §15.4).*
+13. **Je n'ai pas mesuré la fréquence de `centre-lu-sur-b`** (§8.3). C'est précisément
+    pourquoi il est consigné comme **candidat** et non déclaré : refuser de déclarer un modèle
+    faute de mesure est le seul geste honnête disponible, et il est écrit à côté des deux
+    modèles que j'ai déclarés parce que je les ai mesurés.
