@@ -99,8 +99,16 @@ function egalAffiche(texte, attendu) {
 let serveur = null;
 if (!process.env.BASE) {
   const { spawn } = await import("node:child_process");
+  // La sortie du serveur est GARDÉE (run 775, 2026-09-25 : la seconde
+  // invocation — l'essai rouge — n'a pas vu `next start` répondre en 60 s,
+  // sans rien d'autre à lire). Un diagnostic non rejoué est une rumeur
+  // (ADR 0036) : la prochaine fois, le journal dira pourquoi.
+  const fs = await import("node:fs");
+  const os = await import("node:os");
+  const journal = `${os.tmpdir()}/scene-orbite-${PORT}-${process.pid}.log`;
+  const fd = fs.openSync(journal, "w");
   serveur = spawn("npx", ["next", "start", "-p", String(PORT)], {
-    cwd: new URL("..", import.meta.url).pathname, stdio: "ignore", detached: true,
+    cwd: new URL("..", import.meta.url).pathname, stdio: ["ignore", fd, fd], detached: true,
   });
   let vivant = false;
   for (let i = 0; i < 60; i++) {
@@ -108,6 +116,8 @@ if (!process.env.BASE) {
   }
   if (!vivant) {
     console.error("scene-orbite : `next start` n'a pas répondu. Build absent ?");
+    console.error(`  port ${PORT} ; serveur ${serveur.exitCode === null ? "toujours vivant" : `sorti (code ${serveur.exitCode})`} ; sa sortie :`);
+    try { console.error(fs.readFileSync(journal, "utf8").split("\n").slice(-25).map((l) => "  | " + l).join("\n")); } catch {}
     try { process.kill(-serveur.pid); } catch {}
     process.exit(1);
   }
